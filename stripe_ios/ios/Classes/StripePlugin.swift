@@ -4,19 +4,22 @@ import Stripe
 import PassKit
 
 
-public class SwiftStripeIosPlugin: StripeSdk, FlutterPlugin {
+public class StripePlugin: StripeSdk, FlutterPlugin {
    
     private var paymentSheet: PaymentSheet?
     private var paymentSheetFlowController: PaymentSheet.FlowController?
 
     public static func register(with registrar: FlutterPluginRegistrar) {
+        // Method Channel
         let channel = FlutterMethodChannel(name: "flutter.stripe/payments", binaryMessenger: registrar.messenger())
-        let instance = SwiftStripeIosPlugin()
+        let instance = StripePlugin()
         registrar.addMethodCallDelegate(instance, channel: channel)
         
+        // Apple Pay Button
         let applePayFactory = ApplePayButtonViewFactory(messenger: registrar.messenger())
         registrar.register(applePayFactory, withId: "flutter.stripe/apple_pay")
         
+        // Card Field
         let cardFieldFactory = CardFieldViewFactory(messenger: registrar.messenger())
         registrar.register(cardFieldFactory, withId: "flutter.stripe/card_field")
     }
@@ -25,12 +28,24 @@ public class SwiftStripeIosPlugin: StripeSdk, FlutterPlugin {
         switch call.method {
         case "initialise":
             return initialise(call, result: result)
-        case "configure3dSecure":
-            return configure3dSecure(call, result: result)
+        case "createTokenForCVCUpdate":
+            return createTokenForCVCUpdate(call, result: result)
+        case "confirmSetupIntent":
+            return confirmSetupIntent(call, result: result)
+        case "confirmApplePayPayment":
+            return confirmApplePayPayment(call, result: result)
         case "isApplePaySupported":
             return isApplePaySupported(call, result:result)
         case "presentApplePay":
             return presentApplePay(call, result: result)
+        case "configure3dSecure":
+            return configure3dSecure(call, result: result)
+        case "handleCardAction":
+            return handleCardAction(call, result: result)
+        case "confirmPaymentMethod":
+            return confirmPaymentMethod(call, result: result)
+        case "retrievePaymentIntent":
+            return retrievePaymentIntent(call, result: result)
         case "setupPaymentSheet":
             return setupPaymentSheet(call, result: result)
         case "presentPaymentOptions":
@@ -45,7 +60,7 @@ public class SwiftStripeIosPlugin: StripeSdk, FlutterPlugin {
     }
     
     
-    public func resolver(forResult result: @escaping FlutterResult) -> RCTPromiseResolveBlock {
+    public func resolver(for result: @escaping FlutterResult) -> RCTPromiseResolveBlock {
         return { (response) in
             if let list = response as? [Any],
                let  data = list.first {
@@ -56,7 +71,7 @@ public class SwiftStripeIosPlugin: StripeSdk, FlutterPlugin {
         }
     }
     
-    public func rejecter(forResult result: @escaping FlutterResult) -> RCTPromiseRejectBlock {
+    public func rejecter(for result: @escaping FlutterResult) -> RCTPromiseRejectBlock {
         return { (code, message, error) in
             result(FlutterError.init(code: code ?? "Failed", message: message, details: error))
         }
@@ -65,7 +80,7 @@ public class SwiftStripeIosPlugin: StripeSdk, FlutterPlugin {
 
 
 // Mark: MethodChannel handlers
-extension  SwiftStripeIosPlugin {
+extension  StripePlugin {
     
     public func initialise(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? Dictionary<String, AnyObject>,
@@ -81,6 +96,118 @@ extension  SwiftStripeIosPlugin {
         result(nil)
     }
     
+    func createTokenForCVCUpdate(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? Dictionary<String, AnyObject> else {
+            result("Not a valid fields")
+            return
+        }
+        let cvc = arguments["cvc"] as? String
+        createTokenForCVCUpdate(cvc: cvc, resolver: resolver(for: result), rejecter: rejecter(for: result))
+    }
+    
+    func confirmSetupIntent (_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? Dictionary<String, AnyObject>,
+              let setupIntentClientSecret = arguments["setupIntentClientSecret"] as? String,
+        let data = arguments["data"] as? NSDictionary,
+        let options = arguments["options"] as? NSDictionary else {
+            result("Not a valid fields")
+            return
+        }
+        confirmSetupIntent(setupIntentClientSecret: setupIntentClientSecret, data: data, options: options,resolver: resolver(for: result), rejecter: rejecter(for: result))
+    }
+    
+    public func confirmApplePayPayment(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? Dictionary<String, AnyObject>,
+        let clientSecret = arguments["clientSecret"] as? String else {
+            result("Not a valid fields")
+            return
+        }
+        confirmApplePayPayment(
+            clientSecret: clientSecret,
+            resolver: resolver(for: result),
+            rejecter: rejecter(for: result)
+        )
+    }
+    
+    public func isApplePaySupported(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        isApplePaySupported(
+            resolver: resolver(for: result),
+            rejecter: rejecter(for: result)
+        )
+    }
+    
+    public func presentApplePay(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let params = call.arguments as? NSDictionary else {
+            result(FlutterError.init(code: ApplePayErrorType.Failed.rawValue, message: "Invalid parametes", details: nil))
+            return
+        }
+        presentApplePay(
+            params: params,
+            resolver: resolver(for: result),
+            rejecter: rejecter(for: result)
+        )
+    }
+    
+    
+    func createPaymentMethod(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? Dictionary<String, AnyObject>,
+        let data = arguments["data"] as? NSDictionary,
+        let options = arguments["options"] as? NSDictionary else {
+            result("Not a valid fields")
+            return
+        }
+         createPaymentMethod(
+            data: data,
+            options: options,
+            resolver: resolver(for: result),
+            rejecter: rejecter(for: result)
+        )
+    }
+    
+    func handleCardAction(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? Dictionary<String, AnyObject>,
+        let paymentIntentClientSecret = arguments["paymentIntentClientSecret"] as? String else {
+            result("Not a valid fields")
+            return
+        }
+        handleCardAction(
+            paymentIntentClientSecret: paymentIntentClientSecret,
+            resolver: resolver(for: result),
+            rejecter: rejecter(for: result)
+        )
+    }
+    
+    func confirmPaymentMethod(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? Dictionary<String, AnyObject>,
+        let paymentIntentClientSecret = arguments["paymentIntentClientSecret"] as? String,
+        let data = arguments["data"] as? NSDictionary,
+        let options = arguments["options"] as? NSDictionary else {
+            result("Not a valid fields")
+            return
+        }
+        confirmPaymentMethod(
+            paymentIntentClientSecret: paymentIntentClientSecret,
+            data: data,
+            options: options,
+            resolver: resolver(for: result),
+            rejecter: rejecter(for: result)
+        )
+    }
+    
+    func retrievePaymentIntent(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? Dictionary<String, AnyObject>,
+        let clientSecret = arguments["clientSecret"] as? String else {
+            result("Not a valid fields")
+            return
+        }
+        retrievePaymentIntent(
+            clientSecret: clientSecret,
+            resolver: resolver(for: result),
+            rejecter: rejecter(for: result)
+        )
+    }
+    
+    
     public func configure3dSecure(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? Dictionary<String, AnyObject>,
         let params = arguments["params"] as? NSDictionary else {
@@ -91,19 +218,6 @@ extension  SwiftStripeIosPlugin {
         result(nil)
     }
     
-    public func isApplePaySupported(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        isApplePaySupported(resolver: resolver(forResult: result), rejecter: rejecter(forResult: result))
-    }
-    
-    
-    
-    public func presentApplePay(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        guard let params = call.arguments as? NSDictionary else {
-            result(FlutterError.init(code: ApplePayErrorType.Failed.rawValue, message: "Invalid parametes", details: nil))
-            return
-        }
-        presentApplePay(params: params, resolver: resolver(forResult: result), rejecter: rejecter(forResult: result))
-    }
     
     
     // This should be using  StripeSdk.swift  when the PaymentSheet PR is merged

@@ -10,7 +10,7 @@
 
 @implementation StripeIosPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-  [SwiftStripeIosPlugin registerWithRegistrar:registrar];
+  [StripePlugin registerWithRegistrar:registrar];
     
 }
 @end
