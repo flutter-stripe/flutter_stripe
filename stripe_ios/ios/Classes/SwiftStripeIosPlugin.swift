@@ -4,21 +4,12 @@ import Stripe
 import PassKit
 
 
-public class SwiftStripeIosPlugin: NSObject, FlutterPlugin {
-    var merchantIdentifier: String? = nil
-    
-    var applePayCompletionCallback: STPIntentClientSecretCompletionBlock? = nil
-    var applePayRequestResult: FlutterResult? = nil
-    
+public class SwiftStripeIosPlugin: StripeSdk, FlutterPlugin {
+   
     private var paymentSheet: PaymentSheet?
     private var paymentSheetFlowController: PaymentSheet.FlowController?
-//    var applePayRequestRejecter: RCTPromiseRejectBlock? = nil
-//    var applePayCompletionRejecter: RCTPromiseRejectBlock? = nil
-//    var confirmSetupIntentPromise: RCTResponseSenderBlock? = nil
-//    var confirmApplePayPaymentResolver: RCTPromiseResolveBlock? = nil
-    
+
     public static func register(with registrar: FlutterPluginRegistrar) {
-        
         let channel = FlutterMethodChannel(name: "flutter.stripe/payments", binaryMessenger: registrar.messenger())
         let instance = SwiftStripeIosPlugin()
         registrar.addMethodCallDelegate(instance, channel: channel)
@@ -33,59 +24,64 @@ public class SwiftStripeIosPlugin: NSObject, FlutterPlugin {
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
         case "initialise":
-            handleInitialise(call, result: result)
-            break;
+            return initialise(call, result: result)
         case "configure3dSecure":
-            handleConfigure3dSecure(call, result: result)
-            break;
+            return configure3dSecure(call, result: result)
         case "isApplePaySupported":
-            print("checking")
-            handleIsApplePaySupported(call, result:result)
-            break;
+            return isApplePaySupported(call, result:result)
         case "presentApplePay":
-            handlePresentApplePay(call, result: result)
-            break;
+            return presentApplePay(call, result: result)
         case "setupPaymentSheet":
-            setupPaymentSheet(call, result: result)
-            break;
+            return setupPaymentSheet(call, result: result)
         case "presentPaymentOptions":
-            presentPaymentOptions(call, result: result)
-            break;
+            return presentPaymentOptions(call, result: result)
         case "paymentSheetConfirmPayment":
-            paymentSheetConfirmPayment(call, result: result)
-            break;
+            return paymentSheetConfirmPayment(call, result: result)
         case "presentPaymentSheet":
-            presentPaymentSheet(call, result: result)
-            break;
+            return presentPaymentSheet(call, result: result)
         default:
             result(FlutterMethodNotImplemented)
         }
     }
+    
+    
+    public func resolver(forResult result: @escaping FlutterResult) -> RCTPromiseResolveBlock {
+        return { (response) in
+            if let list = response as? [Any],
+               let  data = list.first {
+                result(data)
+            } else {
+                result(response)
+            }
+        }
+    }
+    
+    public func rejecter(forResult result: @escaping FlutterResult) -> RCTPromiseRejectBlock {
+        return { (code, message, error) in
+            result(FlutterError.init(code: code ?? "Failed", message: message, details: error))
+        }
+    }
 }
 
+
+// Mark: MethodChannel handlers
 extension  SwiftStripeIosPlugin {
     
-    public func handleInitialise(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+    public func initialise(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? Dictionary<String, AnyObject>,
         let publishableKey = arguments["publishableKey"] as? String else {
             result("Not a valid fields")
             return
         }
-        let stripeAccountId :  String? = arguments["stripeAccountId"] as? String
-        let params :  NSDictionary? = arguments["params"] as? NSDictionary
-        let merchantIdentifier: String? = arguments["merchantIdentifier"]  as? String
-        StripeAPI.defaultPublishableKey = publishableKey
-        initialise(
-            publishableKey: publishableKey,
-            appInfo: nil,
-            stripeAccountId: stripeAccountId,
-            params: params,
-            merchantIdentifier: merchantIdentifier
-        )
+        let stripeAccountId = arguments["stripeAccountId"] as? String
+        let appInfo = arguments["appInfo"] as? NSDictionary
+        let params = arguments["params"] as? NSDictionary
+        let merchantIdentifier = arguments["merchantIdentifier"]  as? String
+        initialise(publishableKey: publishableKey, appInfo: appInfo ?? [:], stripeAccountId: stripeAccountId, params: params, merchantIdentifier: merchantIdentifier)
         result(nil)
     }
     
-    public func handleConfigure3dSecure(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+    public func configure3dSecure(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? Dictionary<String, AnyObject>,
         let params = arguments["params"] as? NSDictionary else {
             result("Not a valid fields")
@@ -95,77 +91,22 @@ extension  SwiftStripeIosPlugin {
         result(nil)
     }
     
-    public func handleIsApplePaySupported(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        let isSupported = isApplePaySupported()
-        print(isSupported)
-        result(isSupported)
+    public func isApplePaySupported(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        isApplePaySupported(resolver: resolver(forResult: result), rejecter: rejecter(forResult: result))
     }
     
-    public func handlePresentApplePay(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        guard let params = call.arguments as? Dictionary<String, AnyObject> else {
+    
+    
+    public func presentApplePay(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let params = call.arguments as? NSDictionary else {
             result(FlutterError.init(code: ApplePayErrorType.Failed.rawValue, message: "Invalid parametes", details: nil))
             return
         }
-        if (merchantIdentifier == nil) {
-            result(FlutterError.init(code: ApplePayErrorType.Failed.rawValue, message: "You must provide merchantIdentifier", details: nil))
-             return
-        }
- 
-         guard let summaryItems = params["cartItems"] as? NSArray else {
-            result(FlutterError.init(code: ApplePayErrorType.Failed.rawValue, message: "You must provide the items for purchase", details: nil))
-             return
-         }
-         guard let country = params["country"] as? String else {
-            result(FlutterError.init(code: ApplePayErrorType.Failed.rawValue, message: "You must provide the country", details: nil))
-             return
-         }
-         guard let currency = params["currency"] as? String else {
-            result(FlutterError.init(code: ApplePayErrorType.Failed.rawValue, message: "You must provide the payment currency", details: nil))
-            return
-         }
- 
-         self.applePayRequestResult = result
- 
-         let merchantIdentifier = self.merchantIdentifier ?? ""
-         let paymentRequest = StripeAPI.paymentRequest(withMerchantIdentifier: merchantIdentifier, country: country, currency: currency)
- 
-         let requiredShippingAddressFields = params["requiredShippingAddressFields"] as? NSArray ?? NSArray()
-         let requiredBillingContactFields = params["requiredBillingContactFields"] as? NSArray ?? NSArray()
-         let shippingMethods = params["shippingMethods"] as? NSArray ?? NSArray()
- 
-         paymentRequest.requiredShippingContactFields = Set(requiredShippingAddressFields.map {
-             Mappers.mapToPKContactField(field: $0 as! String)
-         })
- 
-         paymentRequest.requiredBillingContactFields = Set(requiredBillingContactFields.map {
-             Mappers.mapToPKContactField(field: $0 as! String)
-         })
- 
-         paymentRequest.shippingMethods = Mappers.mapToShippingMethods(shippingMethods: shippingMethods)
- 
-         var paymentSummaryItems: [PKPaymentSummaryItem] = []
- 
-         if let items = summaryItems as? [[String : Any]] {
-             for item in items {
-                 let label = item["label"] as? String ?? ""
-                 let amount = NSDecimalNumber(string: item["amount"] as? String ?? "")
-                 paymentSummaryItems.append(PKPaymentSummaryItem(label: label, amount: amount))
-             }
-         }
-        
-         paymentRequest.paymentSummaryItems = paymentSummaryItems
-         if let applePayContext = STPApplePayContext(paymentRequest: paymentRequest, delegate: self) {
-             DispatchQueue.main.async {
-                applePayContext.presentApplePay(on: UIApplication.shared.keyWindow?.rootViewController ?? UIViewController())
-             }
-         } else {
-           result(FlutterError.init(code: ApplePayErrorType.Failed.rawValue, message: "Apple pay request failed", details: nil))
-           return
-         }
+        presentApplePay(params: params, resolver: resolver(forResult: result), rejecter: rejecter(forResult: result))
     }
     
     
-    
+    // This should be using  StripeSdk.swift  when the PaymentSheet PR is merged
     func setupPaymentSheet(_ call: FlutterMethodCall, result: @escaping FlutterResult) -> Void  {
         guard let params = call.arguments as? Dictionary<String, AnyObject> else {
             result(FlutterError.init(code: PaymentSheetErrorType.Failed.rawValue, message: "Invalid parametes", details: nil))
@@ -283,87 +224,3 @@ extension  SwiftStripeIosPlugin {
         
 }
 
-extension  SwiftStripeIosPlugin {
-    
-    func initialise(publishableKey: String,  appInfo: NSDictionary?, stripeAccountId: String?, params: NSDictionary?, merchantIdentifier: String?) -> Void {
-        if let params = params {
-            configure3dSecure(params)
-        }
-        STPAPIClient.shared.publishableKey = publishableKey
-        STPAPIClient.shared.stripeAccount = stripeAccountId
-        
-        let name = appInfo?["name"] as? String ?? ""
-        let partnerId = appInfo?["partnerId"] as? String ?? ""
-        let version = appInfo?["version"] as? String ?? ""
-        let url = appInfo?["url"] as? String ?? ""
-        
-        STPAPIClient.shared.appInfo = STPAppInfo(name: name, partnerId: partnerId, version: version, url: url)
-        self.merchantIdentifier = merchantIdentifier
-    }
-    
-    func configure3dSecure(_ params: NSDictionary) {
-        let threeDSCustomizationSettings = STPPaymentHandler.shared().threeDSCustomizationSettings
-        let uiCustomization = Mappers.mapUICustomization(params)
-    
-        threeDSCustomizationSettings.uiCustomization = uiCustomization
-   }
-    
-    func isApplePaySupported() -> Bool {
-      return StripeAPI.deviceSupportsApplePay()
-    }
-
-}
-
-extension SwiftStripeIosPlugin: STPApplePayContextDelegate {
-    
-    public func applePayContext(_ context: STPApplePayContext, didCreatePaymentMethod paymentMethod: STPPaymentMethod, paymentInformation: PKPayment, completion: @escaping STPIntentClientSecretCompletionBlock) {
-           self.applePayCompletionCallback = completion
-           self.applePayRequestResult?(nil)
-        
-    }
-    
-    
-    public func applePayContext(_ context: STPApplePayContext, didCompleteWith status: STPPaymentStatus, error: Error?) {
-        switch status {
-        case .success:
-//            applePayCompletionRejecter = nil
-            applePayRequestResult = nil
-//            confirmApplePayPaymentResolver?([NSNull()])
-            break
-        case .error:
-            let message = "Apple pay completion failed"
-//            applePayCompletionRejecter?(ApplePayErrorType.Failed.rawValue, message, nil)
-            applePayRequestResult?(FlutterError(code: ApplePayErrorType.Failed.rawValue, message: message, details: nil))
-            applePayRequestResult = nil
-//            applePayCompletionRejecter = nil
-
-            break
-        case .userCancellation:
-            let message = "Apple pay payment has been cancelled"
-//            applePayCompletionRejecter?(ApplePayErrorType.Canceled.rawValue, message, nil)
-            applePayRequestResult?(FlutterError(code: ApplePayErrorType.Canceled.rawValue, message: message, details: nil))
-            applePayRequestResult = nil
-//            applePayCompletionRejecter = nil
-
-            break
-        @unknown default:
-            let message = "Cannot complete payment"
-//            applePayCompletionRejecter?(ApplePayErrorType.Unknown.rawValue, message, nil)
-             applePayRequestResult?(FlutterError(code: ApplePayErrorType.Unknown.rawValue, message: message, details: nil))
-             applePayRequestResult = nil
-//            applePayCompletionRejecter = nil
-        }
-    }
-}
-
-
-extension SwiftStripeIosPlugin: STPAuthenticationContext {
-    public func authenticationPresentingViewController() -> UIViewController {
-        if let topViewController = UIApplication.shared.keyWindow?.rootViewController {
-           return topViewController
-        }
-       return UIViewController()
-    }
-    
-
-}
