@@ -1,0 +1,42 @@
+PODS:
+  - Flutter (1.0.0)
+  - integration_test (0.0.1):
+    - Flutter
+  - Stripe (21.0.0-mc-beta-1):
+    - Stripe/Stripe3DS2 (= 21.0.0-mc-beta-1)
+  - Stripe/Stripe3DS2 (21.0.0-mc-beta-1)
+  - stripe_ios (0.0.1):
+    - Flutter
+    - Stripe (~> 21.0.0-mc-beta-1)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - integration_test (from `.symlinks/plugins/integration_test/ios`)
+  - Stripe (from `https://github.com/stripe/stripe-ios.git`, branch `davidme/mc-beta-2-no-asset-catalogs`)
+  - stripe_ios (from `.symlinks/plugins/stripe_ios/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  integration_test:
+    :path: ".symlinks/plugins/integration_test/ios"
+  Stripe:
+    :branch: davidme/mc-beta-2-no-asset-catalogs
+    :git: https://github.com/stripe/stripe-ios.git
+  stripe_ios:
+    :path: ".symlinks/plugins/stripe_ios/ios"
+
+CHECKOUT OPTIONS:
+  Stripe:
+    :commit: d45c0dca933c73b22c259da7adddd24a4abc2157
+    :git: https://github.com/stripe/stripe-ios.git
+
+SPEC CHECKSUMS:
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  integration_test: 6eb66a19f7104200dcfdd62bc0077e1b09686e4f
+  Stripe: 4f9369bb8f036ed106d12355e622d934c2ec60a1
+  stripe_ios: 70cc76157f253daef7abacf87edf6c22bb2ea661
+
+PODFILE CHECKSUM: 9c31903ef5a54e64ac01b6d9803a084d7a2387f0
+
+COCOAPODS: 1.10.1
