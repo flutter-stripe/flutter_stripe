@@ -3,6 +3,8 @@ package com.facebook.react.bridge;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
 import io.flutter.plugin.common.PluginRegistry;
 
 import java.util.ArrayList;
@@ -12,9 +14,10 @@ public class ReactContextBaseJavaModule implements PluginRegistry.ActivityResult
 
     private final ArrayList<ActivityEventListener> eventListeners = new ArrayList<>();
 
-    protected ReactContextBaseJavaModule(Activity activity, PluginRegistry.Registrar registrar) {
-        this.activity = activity;
-        registrar.addActivityResultListener(this);
+    protected ReactContextBaseJavaModule(ActivityPluginBinding binding) {
+        this.activity = binding.getActivity();
+
+        binding.addActivityResultListener(this);
     }
 
     protected Context getReactApplicationContext() {
