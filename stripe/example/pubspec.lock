@@ -234,6 +234,13 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  stripe_android:
+    dependency: transitive
+    description:
+      path: "../../stripe_android"
+      relative: true
+    source: path
+    version: "0.0.1"
   stripe_ios:
     dependency: transitive
     description:

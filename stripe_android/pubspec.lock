@@ -43,13 +43,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0"
-  equatable:
-    dependency: transitive
-    description:
-      name: equatable
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -67,13 +60,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  json_annotation:
-    dependency: transitive
-    description:
-      name: json_annotation
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.0.0"
   matcher:
     dependency: transitive
     description:
@@ -95,13 +81,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
-  plugin_platform_interface:
-    dependency: transitive
-    description:
-      name: plugin_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.0-nullsafety.2"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -135,27 +114,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
-  stripe_android:
-    dependency: "direct main"
-    description:
-      path: "../stripe_android"
-      relative: true
-    source: path
-    version: "0.0.1"
-  stripe_ios:
-    dependency: "direct main"
-    description:
-      path: "../stripe_ios"
-      relative: true
-    source: path
-    version: "0.0.1"
-  stripe_platform_interface:
-    dependency: "direct main"
-    description:
-      path: "../stripe_platform_interface"
-      relative: true
-    source: path
-    version: "0.0.0+1"
   term_glyph:
     dependency: transitive
     description:
@@ -185,5 +143,5 @@ packages:
     source: hosted
     version: "2.1.0"
 sdks:
-  dart: ">=2.12.0-224.0.dev <3.0.0"
+  dart: ">=2.12.0-0.0 <3.0.0"
   flutter: ">=1.20.0"
