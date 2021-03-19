@@ -1,5 +1,7 @@
 package com.facebook.react.bridge;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
 /**
@@ -7,4 +9,7 @@ import java.util.ArrayList;
  */
 public class WritableArray extends ArrayList<Object> {
 
+    public void pushString(@NotNull String value) {
+        add(value);
+    }
 }

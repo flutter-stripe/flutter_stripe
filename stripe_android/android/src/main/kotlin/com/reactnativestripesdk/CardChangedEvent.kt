@@ -1,8 +1,6 @@
 package com.reactnativestripesdk
 
-import com.facebook.react.bridge.Arguments
-import com.facebook.react.bridge.WritableMap
-import com.facebook.react.uimanager.events.Event
+/*import com.facebook.react.uimanager.events.Event
 import com.facebook.react.uimanager.events.RCTEventEmitter
 
 internal class CardChangedEvent constructor(viewTag: Int, private val cardDetails: MutableMap<String, Any>, private val postalCodeEnabled: Boolean, private val complete: Boolean) : Event<CardChangedEvent>(viewTag) {
@@ -39,4 +37,4 @@ internal class CardChangedEvent constructor(viewTag: Int, private val cardDetail
     const val EVENT_NAME = "onCardChange"
   }
 
-}
+}*/

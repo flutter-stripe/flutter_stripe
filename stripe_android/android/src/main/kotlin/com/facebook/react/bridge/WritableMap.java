@@ -1,5 +1,7 @@
 package com.facebook.react.bridge;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +30,11 @@ public class WritableMap extends HashMap<String, Object> implements Map<String, 
         put(key, value);
     }
 
-    public void putArray(String key, WritableNativeArray value) {
+    public void putArray(String key, WritableArray value) {
         put(key, value);
+    }
+
+    public void putNull(@NotNull String key) {
+        put(key, null);
     }
 }
