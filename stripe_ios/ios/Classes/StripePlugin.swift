@@ -5,14 +5,16 @@ import PassKit
 
 
 public class StripePlugin: StripeSdk, FlutterPlugin {
-   
+    
     private var paymentSheet: PaymentSheet?
     private var paymentSheetFlowController: PaymentSheet.FlowController?
+    
+    private var channel: FlutterMethodChannel
 
     public static func register(with registrar: FlutterPluginRegistrar) {
         // Method Channel
         let channel = FlutterMethodChannel(name: "flutter.stripe/payments", binaryMessenger: registrar.messenger())
-        let instance = StripePlugin()
+        let instance = StripePlugin(channel: channel)
         registrar.addMethodCallDelegate(instance, channel: channel)
         
         // Apple Pay Button
@@ -22,6 +24,11 @@ public class StripePlugin: StripeSdk, FlutterPlugin {
         // Card Field
         let cardFieldFactory = CardFieldViewFactory(messenger: registrar.messenger())
         registrar.register(cardFieldFactory, withId: "flutter.stripe/card_field")
+    }
+    
+    public init(channel : FlutterMethodChannel) {
+        self.channel = channel
+        super.init()
     }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -76,6 +83,11 @@ public class StripePlugin: StripeSdk, FlutterPlugin {
             result(FlutterError.init(code: code ?? "Failed", message: message, details: error))
         }
     }
+    
+    override
+    func sendEvent(withName name: String, body: [String:  Any]) {
+        channel.invokeMethod(name, arguments: body)
+   }
 }
 
 
@@ -114,6 +126,19 @@ extension  StripePlugin {
             return
         }
         confirmSetupIntent(setupIntentClientSecret: setupIntentClientSecret, data: data, options: options,resolver: resolver(for: result), rejecter: rejecter(for: result))
+    }
+    
+    public func updateApplePaySummaryItems(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? Dictionary<String, AnyObject>,
+        let summaryItems = arguments["summaryItems"] as? NSArray else {
+            result("Not a valid fields")
+            return
+        }
+        updateApplePaySummaryItems(
+            summaryItems: summaryItems,
+            resolver: resolver(for: result),
+            rejecter: rejecter(for: result)
+        )
     }
     
     public func confirmApplePayPayment(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -336,5 +361,8 @@ extension  StripePlugin {
             }
         }
         
+     
 }
+
+
 

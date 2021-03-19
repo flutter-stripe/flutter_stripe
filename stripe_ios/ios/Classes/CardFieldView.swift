@@ -40,8 +40,6 @@ class CardFieldViewFactory: NSObject, FlutterPlatformViewFactory {
 class FlutterCardFieldView: NSObject, FlutterPlatformView {
     private var _view: UIView
 
-    
-    
     private var cardFieldView: CardFieldView?
     
     private let channel: FlutterMethodChannel
@@ -62,8 +60,8 @@ class FlutterCardFieldView: NSObject, FlutterPlatformView {
         createNativeView()
         channel.setMethodCallHandler(handle)
         if let arguments = args as? [String: Any] {
-            onPostalCodeChange(arguments)
-            onDecorationChange(arguments)
+            updatePostalCodeEnabled(arguments)
+            updateDectoration(arguments)
         }
     }
     
@@ -73,12 +71,12 @@ class FlutterCardFieldView: NSObject, FlutterPlatformView {
         switch call.method {
         case "onPostalCodeEnabledChanged":
             if  let arguments = call.arguments as? [String : Any] {
-                onPostalCodeChange(arguments)
+                updatePostalCodeEnabled(arguments)
             }
           result(nil)
         case "onDecorationChanged":
             if  let arguments = call.arguments as? [String : Any] {
-                onDecorationChange(arguments)
+                updateDectoration(arguments)
             }
           result(nil)
         case "focus":
@@ -117,13 +115,13 @@ class FlutterCardFieldView: NSObject, FlutterPlatformView {
         channel.invokeMethod("onCardChange", arguments: arguments)
     }
     
-    func onPostalCodeChange(_ arguments: [String: Any]) {
+    func updatePostalCodeEnabled(_ arguments: [String: Any]) {
         if let postalCodeEnabled = arguments["enablePostalCode"] as? Bool {
             cardFieldView?.postalCodeEnabled = postalCodeEnabled
         }
     }
     
-    func onDecorationChange(_ arguments: [String: Any]) {
+    func updateDectoration(_ arguments: [String: Any]) {
         var backgroundColor:  UIColor?
         var textColor:  UIColor?
         var placeholderColor:  UIColor?
@@ -307,22 +305,6 @@ class CardFieldView: UIView {
       }
       return .lightGray
     }()
-    
-    func paymentContext(_ paymentContext: STPPaymentContext, didFailToLoadWithError error: Error) {
-        //
-    }
-    
-    func paymentContextDidChange(_ paymentContext: STPPaymentContext) {
-        //
-    }
-    
-    func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPPaymentStatusBlock) {
-        //
-    }
-    
-    func paymentContext(_ paymentContext: STPPaymentContext, didFinishWith status: STPPaymentStatus, error: Error?) {
-        //
-    }
     
     
     func focus() {

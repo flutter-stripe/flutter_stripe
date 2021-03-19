@@ -1,5 +1,4 @@
 import Stripe
-
 class Mappers {
     class func mapToPKContactField(field: String) -> PKContactField {
         switch field {
@@ -12,7 +11,7 @@ class Mappers {
         }
     }
     
-    class func mapToShippingMethodType(type: String?) -> PKPaymentSummaryItemType {
+    class func mapToPaymentSummaryItemType(type: String?) -> PKPaymentSummaryItemType {
         if let type = type {
             switch type {
             case "pending": return PKPaymentSummaryItemType.pending
@@ -32,7 +31,7 @@ class Mappers {
                 let amount = NSDecimalNumber(string: method["amount"] as? String ?? "")
                 let identifier = method["identifier"] as! String
                 let detail = method["detail"] as? String ?? ""
-                let type = Mappers.mapToShippingMethodType(type: method["type"] as? String)
+                let type = Mappers.mapToPaymentSummaryItemType(type: method["type"] as? String)
                 let pm = PKShippingMethod.init(label: label, amount: amount, type: type)
                 pm.identifier = identifier
                 pm.detail = detail
@@ -41,6 +40,46 @@ class Mappers {
         }
         
         return shippingMethodsList
+    }
+    
+    class func mapFromShippingMethod(shippingMethod: PKShippingMethod) -> NSDictionary {
+        let method: NSDictionary = [
+            "detail": shippingMethod.detail ?? "",
+            "identifier": shippingMethod.identifier ?? "",
+                        "amount": shippingMethod.amount.stringValue,
+            "type": shippingMethod.type,
+            "label": shippingMethod.label
+        ]
+        
+        return method
+    }
+    
+    class func mapFromShippingContact(shippingContact: PKContact) -> NSDictionary {
+        let name: NSDictionary = [
+           "familyName": shippingContact.name?.familyName ?? "",
+           "namePrefix": shippingContact.name?.namePrefix ?? "",
+           "nameSuffix": shippingContact.name?.nameSuffix ?? "",
+           "givenName": shippingContact.name?.givenName ?? "",
+           "middleName": shippingContact.name?.middleName ?? "",
+           "nickname": shippingContact.name?.nickname ?? "",
+        ]
+        let contact: NSDictionary = [
+            "emailAddress": shippingContact.emailAddress ?? "",
+            "phoneNumber": shippingContact.phoneNumber?.stringValue ?? "",
+            "name": name,
+            "postalAddress": [
+                "city": shippingContact.postalAddress?.city,
+                "country": shippingContact.postalAddress?.country,
+                "postalCode": shippingContact.postalAddress?.postalCode,
+                "state": shippingContact.postalAddress?.state,
+                "street": shippingContact.postalAddress?.street,
+                "isoCountryCode": shippingContact.postalAddress?.isoCountryCode,
+                "subAdministrativeArea": shippingContact.postalAddress?.subAdministrativeArea,
+                "subLocality": shippingContact.postalAddress?.subLocality,
+            ],
+        ]
+        
+        return contact
     }
     
     
@@ -86,9 +125,9 @@ class Mappers {
     class func mapCardParamsToPaymentMethodParams(params: NSDictionary, billingDetails: STPPaymentMethodBillingDetails?) -> STPPaymentMethodParams {
         let cardSourceParams = STPCardParams()
         cardSourceParams.number = params["number"] as? String
-        cardSourceParams.cvc = params["cvc"]  as? String
-        cardSourceParams.expMonth = params["expiryMonth"]  as! UInt
-        cardSourceParams.expYear = params["expiryYear"]  as! UInt
+        cardSourceParams.cvc = params["cvc"] as? String
+        cardSourceParams.expMonth = params["expiryMonth"] as! UInt
+        cardSourceParams.expYear = params["expiryYear"] as! UInt
         
         let cardParams = STPPaymentMethodCardParams(cardSourceParams: cardSourceParams)
         return STPPaymentMethodParams(card: cardParams, billingDetails: billingDetails, metadata: nil)
@@ -309,9 +348,10 @@ class Mappers {
     class func mapCardParams(params: NSDictionary) -> STPPaymentMethodCardParams {
         let cardSourceParams = STPCardParams()
         cardSourceParams.number = params["number"] as? String
-        cardSourceParams.cvc = params["cvc"]  as? String
-        cardSourceParams.expMonth = params["expiryMonth"]  as! UInt
-        cardSourceParams.expYear = params["expiryYear"]  as! UInt
+        cardSourceParams.cvc = params["cvc"] as? String
+        cardSourceParams.expMonth = params["expiryMonth"] as! UInt
+        cardSourceParams.expYear = params["expiryYear"] as! UInt
+        
         return STPPaymentMethodCardParams(cardSourceParams: cardSourceParams)
     }
     
@@ -393,15 +433,6 @@ class Mappers {
         
         return intent
     }
-    
-    @available(iOS 13.0, *)
-        class func mapToUserInterfaceStyle(_ style: String) -> PaymentSheet.UserInterfaceStyle {
-            switch style {
-            case "alwaysDark": return PaymentSheet.UserInterfaceStyle.alwaysDark
-            case "alwaysLight": return PaymentSheet.UserInterfaceStyle.alwaysLight
-            default: return PaymentSheet.UserInterfaceStyle.automatic
-            }
-        }
     
     class func mapUICustomization(_ params: NSDictionary) -> STPThreeDSUICustomization {
         let uiCustomization = STPThreeDSUICustomization()
@@ -504,4 +535,13 @@ class Mappers {
     class func convertDateToUnixTimestamp(date: Date) -> UInt64 {
         return UInt64(date.timeIntervalSince1970 * 1000.0)
     }
+    
+    @available(iOS 13.0, *)
+          class func mapToUserInterfaceStyle(_ style: String) -> PaymentSheet.UserInterfaceStyle {
+              switch style {
+              case "alwaysDark": return PaymentSheet.UserInterfaceStyle.alwaysDark
+              case "alwaysLight": return PaymentSheet.UserInterfaceStyle.alwaysLight
+              default: return PaymentSheet.UserInterfaceStyle.automatic
+              }
+          }
 }
