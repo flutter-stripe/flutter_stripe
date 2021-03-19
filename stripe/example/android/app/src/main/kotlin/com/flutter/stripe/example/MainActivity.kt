@@ -1,4 +1,4 @@
-package flutter.stripe.example
+package com.flutter.stripe.example
 
 import io.flutter.embedding.android.FlutterActivity
 

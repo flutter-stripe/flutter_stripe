@@ -22,40 +22,45 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private lateinit var stripeSdk: StripeSdkModule
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "stripe_android")
+        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter.stripe/payments")
         channel.setMethodCallHandler(this)
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
         when (call.method) {
             "initialise" -> stripeSdk.initialise(
-                    publishableKey = call.safeArgument("publishableKey"),
-                    appInfo = call.safeArgument("appInfo"),
-                    params = call.safeArgument("params"),
-                    stripeAccountId = call.safeArgument("stripeAccountId")
+                    publishableKey = call.requiredArgument("publishableKey"),
+                    appInfo = call.requiredArgument("appInfo"),
+                    params = call.optionalArgument("params"),
+                    stripeAccountId = call.optionalArgument("stripeAccountId")
+            )
+            "createPaymentMethod" -> stripeSdk.createPaymentMethod(
+                    data = call.requiredArgument("data"),
+                    options = call.requiredArgument("options"),
+                    promise = Promise(result)
             )
             "createTokenForCVCUpdate" -> stripeSdk.createTokenForCVCUpdate(
-                    cvc = call.safeArgument("cvc"),
+                    cvc = call.requiredArgument("cvc"),
                     promise = Promise(result)
             )
             "confirmSetupIntent" -> stripeSdk.confirmSetupIntent(
-                    setupIntentClientSecret = call.safeArgument("setupIntentClientSecret"),
-                    data = call.safeArgument("data"),
-                    options = call.safeArgument("options"),
+                    setupIntentClientSecret = call.requiredArgument("setupIntentClientSecret"),
+                    data = call.requiredArgument("data"),
+                    options = call.requiredArgument("options"),
                     promise = Promise(result)
             )
             "handleCardAction" -> stripeSdk.handleCardAction(
-                    paymentIntentClientSecret = call.safeArgument("paymentIntentClientSecret"),
+                    paymentIntentClientSecret = call.requiredArgument("paymentIntentClientSecret"),
                     promise = Promise(result)
             )
             "confirmPaymentMethod" -> stripeSdk.confirmPaymentMethod(
-                    paymentIntentClientSecret = call.safeArgument("paymentIntentClientSecret"),
-                    data = call.safeArgument("data"),
-                    options = call.safeArgument("options"),
+                    paymentIntentClientSecret = call.requiredArgument("paymentIntentClientSecret"),
+                    data = call.requiredArgument("data"),
+                    options = call.requiredArgument("options"),
                     promise = Promise(result)
             )
             "retrievePaymentIntent" -> stripeSdk.retrievePaymentIntent(
-                    clientSecret = call.safeArgument("clientSecret"),
+                    clientSecret = call.requiredArgument("clientSecret"),
                     promise = Promise(result)
             )
             else -> result.notImplemented()
@@ -80,9 +85,16 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
 }
 
-private inline fun <reified T> MethodCall.safeArgument(key: String): T {
-    if (T::class is ReadableMap) {
-        ReadableMap(argument<Map<String, Any>>(key) ?: error("Required parameter $key not available"))
+private inline fun <reified T> MethodCall.optionalArgument(key: String): T? {
+    if (T::class.java == ReadableMap::class.java) {
+        return ReadableMap(argument<Map<String, Any>>(key) ?: mapOf()) as T
     }
-    return argument<T>(key) ?: error("Required parameter $key not available")
+    return argument<T>(key)
+}
+
+private inline fun <reified T> MethodCall.requiredArgument(key: String): T {
+    if (T::class.java == ReadableMap::class.java) {
+        return ReadableMap(argument<Map<String, Any>>(key) ?: error("Required parameter $key not set")) as T
+    }
+    return argument<T>(key) ?: error("Required parameter $key not set")
 }
