@@ -1,4 +1,4 @@
-group 'com.example.stripe_android'
+group 'com.flutter.stripe'
 version '1.0-SNAPSHOT'
 
 buildscript {

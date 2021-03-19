@@ -5,3 +5,5 @@
 .pub/
 
 build/
+/.idea/
+/stripe_android/android/.gradle/

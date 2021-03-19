@@ -28,7 +28,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.example.stripe_android
+        package: com.flutter.stripe
         pluginClass: StripeAndroidPlugin
 
   # To add assets to your plugin package, add an assets section, like this:

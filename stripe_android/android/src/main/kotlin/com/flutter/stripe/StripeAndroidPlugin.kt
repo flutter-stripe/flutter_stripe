@@ -1,4 +1,4 @@
-package com.example.stripe_android
+package com.flutter.stripe
 
 import androidx.annotation.NonNull
 import com.reactnativestripesdk.StripeSdkModule
