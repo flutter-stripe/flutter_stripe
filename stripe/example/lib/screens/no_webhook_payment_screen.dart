@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stripe/stripe.dart';
 
 class NoWebhookPaymentScreen extends StatelessWidget {
   @override
@@ -7,7 +8,7 @@ class NoWebhookPaymentScreen extends StatelessWidget {
       appBar: AppBar(),
       body: Column(
         children: [
-          // TODO add card view here
+          CardField(),
           ElevatedButton(
             onPressed: _handlePayPress,
             child: Text('Pay'),

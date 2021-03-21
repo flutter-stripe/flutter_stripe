@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stripe/stripe.dart';
 
 class WebhookPaymentScreen extends StatelessWidget {
   @override
@@ -8,7 +9,7 @@ class WebhookPaymentScreen extends StatelessWidget {
       body: Column(
         children: [
           TextField(),
-          // TODO add card field here
+          CardField(),
           CheckboxListTile(
             value: true,
             onChanged: (check) {},

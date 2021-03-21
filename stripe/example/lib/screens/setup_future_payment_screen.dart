@@ -18,7 +18,7 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
         body: Column(
           children: [
             TextField(),
-            // TODO add card view here
+            CardField(),
             ElevatedButton(
               onPressed: _handlePayPress,
               child: Text('Save'),

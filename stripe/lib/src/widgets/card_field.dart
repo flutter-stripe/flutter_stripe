@@ -1,12 +1,69 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:stripe/stripe.dart';
 import 'package:stripe_platform_interface/src/models/card_field_input.dart';
 
 typedef CardChangedCallback = void Function(CardFieldInputDetails? details);
 typedef CardFocusCallback = void Function(CardFieldName? focusedField);
+
+// TODO refactor this for parameters
+class CardField extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    switch (defaultTargetPlatform) {
+      case TargetPlatform.android:
+        return AndroidCardField();
+      case TargetPlatform.iOS:
+        return UiKitCardField();
+      default:
+        throw UnsupportedError("Unsupported platform view");
+    }
+    ;
+  }
+}
+
+class AndroidCardField extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // This is used in the platform side to register the view.
+    final String viewType = 'flutter.stripe/card_field';
+    // Pass parameters to the platform side.
+    final Map<String, dynamic> creationParams = <String, dynamic>{};
+
+    return ConstrainedBox(
+      constraints:
+          BoxConstraints.tightFor(height: kApplePayButtonDefaultHeight),
+      child: PlatformViewLink(
+        viewType: viewType,
+        surfaceFactory:
+            (BuildContext context, PlatformViewController controller) {
+          return AndroidViewSurface(
+            controller:
+                controller as AndroidViewController, // TODO get rid of casting?
+            gestureRecognizers: const <Factory<OneSequenceGestureRecognizer>>{},
+            hitTestBehavior: PlatformViewHitTestBehavior.opaque,
+          );
+        },
+        onCreatePlatformView: (PlatformViewCreationParams params) {
+          return PlatformViewsService.initSurfaceAndroidView(
+            id: params.id,
+            viewType: viewType,
+            layoutDirection: TextDirection.ltr,
+            creationParams: creationParams,
+            creationParamsCodec: StandardMessageCodec(),
+          )
+            ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
+            ..create();
+        },
+      ),
+    );
+  }
+}
 
 class UiKitCardField extends StatefulWidget {
   final CardChangedCallback? onChange;
