@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart';
 import 'package:stripe/stripe.dart';
+import 'package:stripe_example/screens/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,6 +61,7 @@ class _MyAppState extends State<MyApp> {
         child: Center(
             child: Column(
           children: [
+            HomeScreen(),
             ValueListenableBuilder(
               valueListenable: Stripe.instance.isApplePaySupported,
               builder: (context, isSupported, _) {
@@ -171,7 +173,7 @@ class _MyAppState extends State<MyApp> {
       print('Payment Intent $paymentIntent');
     } catch (e) {
       log('Unexpected Error while presenting Sheet', error: e);
-     // rethrow;
+      // rethrow;
     }
   }
 
