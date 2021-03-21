@@ -1,30 +1,23 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:stripe_platform_interface/src/models/errors.dart';
 import 'package:stripe_platform_interface/src/models/payment_methods.dart';
 
-class SetupIntent {
-  String id;
-  String clientSecret;
-  StripeError<String>? lastSetupError;
-  String? created;
-  bool livemode;
-  String? paymentMethodId;
-  SetupStatus status;
-  List<PaymentMethodType> paymentMethodTypes;
-  FutureUsage usage;
-  String? description;
+part 'setup_intent.freezed.dart';
 
-  SetupIntent({
-    required this.id,
-     required this.clientSecret,
-    this.lastSetupError,
-    this.created,
-    required this.livemode,
-    this.paymentMethodId,
-    required this.status,
-    required this.paymentMethodTypes,
-    required this.usage,
-    this.description,
-  });
+@freezed
+class SetupIntent with _$SetupIntent {
+  const factory SetupIntent({
+    required String id,
+    required String clientSecret,
+    required bool livemode,
+    required SetupStatus status,
+    required List<PaymentMethodType> paymentMethodTypes,
+    required FutureUsage usage,
+    StripeError<String>? lastSetupError,
+    String? created,
+    String? paymentMethodId,
+    String? description,
+  }) = _SetupIntent;
 }
 
 enum FutureUsage { unknown, none, onSession, offSession, oneTime }
