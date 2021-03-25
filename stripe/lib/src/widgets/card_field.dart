@@ -27,13 +27,28 @@ class CardField extends StatelessWidget {
   }
 }
 
-class AndroidCardField extends StatelessWidget {
+class AndroidCardField extends StatefulWidget {
+  final CardChangedCallback? onChange;
+  final CardFocusCallback? onFocus;
+
+  const AndroidCardField({Key? key, this.onChange, this.onFocus})
+      : super(key: key);
+
+  @override
+  _AndroidCardFieldState createState() => _AndroidCardFieldState();
+}
+
+class _AndroidCardFieldState extends State<AndroidCardField> {
+  late MethodChannel methodChannel;
+
   @override
   Widget build(BuildContext context) {
     // This is used in the platform side to register the view.
     final String viewType = 'flutter.stripe/card_field';
     // Pass parameters to the platform side.
-    final Map<String, dynamic> creationParams = <String, dynamic>{};
+    final Map<String, dynamic> creationParams = <String, dynamic>{
+      'postalCodeEnabled': false // for testing
+    };
 
     return ConstrainedBox(
       constraints:
@@ -50,18 +65,71 @@ class AndroidCardField extends StatelessWidget {
           );
         },
         onCreatePlatformView: (PlatformViewCreationParams params) {
+          methodChannel =
+              MethodChannel('flutter.stripe/card_field/${params.id}');
+          methodChannel.setMethodCallHandler((call) async {
+            if (call.method == 'onFocusChange') {
+              try {
+                final arguments = Map<String, dynamic>.from(call.arguments);
+                onFocusChanged(arguments);
+              } catch (e) {
+                // todo:  how to handle this errors?
+                log('Error', error: e);
+              }
+            } else if (call.method == 'onCardChange') {
+              onCardChanged(Map<String, dynamic>.from(call.arguments));
+            }
+            return;
+          });
           return PlatformViewsService.initSurfaceAndroidView(
             id: params.id,
             viewType: viewType,
             layoutDirection: TextDirection.ltr,
             creationParams: creationParams,
             creationParamsCodec: StandardMessageCodec(),
+            //onFocus: _onFocusChange
           )
             ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
             ..create();
         },
       ),
     );
+  }
+
+  void onFocusChanged(Map<String, dynamic> arguments) {
+    try {
+      final CardFieldFocusName field = CardFieldFocusName.fromJson(arguments);
+      if (field.focusedField != null) {
+        //_focusNode.requestFocus();
+      }
+      widget.onFocus?.call(field.focusedField);
+    } catch (e) {
+      // todo:  how to handle this errors?
+      log('Error', error: e);
+    }
+  }
+
+  void _onFocusChange(bool isFocused) {
+    final MethodChannel? methodChannel = this.methodChannel;
+    if (methodChannel == null) {
+      return;
+    }
+    if (!isFocused) {
+      methodChannel.invokeMethod('clearFocus');
+      return;
+    }
+    methodChannel.invokeMethod('focus');
+  }
+
+  void onCardChanged(Map<String, dynamic> arguments) {
+    try {
+      final CardFieldInputDetails details =
+          CardFieldInputDetails.fromJson(arguments);
+      widget.onChange?.call(details);
+    } catch (e) {
+      // todo:  how to handle this errors?
+      log('Error', error: e);
+    }
   }
 }
 
