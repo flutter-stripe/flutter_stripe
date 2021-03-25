@@ -30,10 +30,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
         when (call.method) {
             "initialise" -> stripeSdk.initialise(
-                    publishableKey = call.requiredArgument("publishableKey"),
-                    appInfo = call.requiredArgument("appInfo"),
-                    params = call.optionalArgument("params"),
-                    stripeAccountId = call.optionalArgument("stripeAccountId")
+                    params = call.requiredArgument("params")
             )
             "createPaymentMethod" -> stripeSdk.createPaymentMethod(
                     data = call.requiredArgument("data"),
@@ -46,7 +43,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             )
             "confirmSetupIntent" -> stripeSdk.confirmSetupIntent(
                     setupIntentClientSecret = call.requiredArgument("setupIntentClientSecret"),
-                    data = call.requiredArgument("data"),
+                    params = call.requiredArgument("data"),
                     options = call.requiredArgument("options"),
                     promise = Promise(result)
             )
@@ -56,7 +53,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             )
             "confirmPaymentMethod" -> stripeSdk.confirmPaymentMethod(
                     paymentIntentClientSecret = call.requiredArgument("paymentIntentClientSecret"),
-                    data = call.requiredArgument("data"),
+                    params = call.requiredArgument("params"),
                     options = call.requiredArgument("options"),
                     promise = Promise(result)
             )

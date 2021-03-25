@@ -36,6 +36,10 @@ public class ReactContextBaseJavaModule implements PluginRegistry.ActivityResult
         eventListeners.remove(listener);
     }
 
+    public String getName() {
+        return "StripeSdk";
+    }
+
     @Override
     public boolean onActivityResult(int requestCode, int resultCode, Intent data) {
         for (ActivityEventListener eventListener : eventListeners) {
