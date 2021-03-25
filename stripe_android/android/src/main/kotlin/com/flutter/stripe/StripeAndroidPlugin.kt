@@ -24,7 +24,9 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter.stripe/payments")
         channel.setMethodCallHandler(this)
-        flutterPluginBinding.platformViewRegistry.registerViewFactory("flutter.stripe/card_field", StripeSdkCardPlatformViewFactory())
+        flutterPluginBinding
+                .platformViewRegistry
+                .registerViewFactory("flutter.stripe/card_field", StripeSdkCardPlatformViewFactory(channel))
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {

@@ -7,10 +7,15 @@
 package com.reactnativestripesdk
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.WritableMap
+import com.facebook.react.uimanager.events.Event
 
-internal class CardFocusEvent constructor(viewTag: Int, private val focusField: String?) {
+internal class CardFocusEvent constructor(viewTag: Int, private val focusField: String?): Event<CardFocusEvent>(viewTag) {
 
-  private fun serializeEventData(): WritableMap {
+  override fun getEventName(): String {
+    return EVENT_NAME
+  }
+
+  override fun serializeEventData(): WritableMap {
     val eventData = Arguments.createMap()
     eventData.putString("focusedField", focusField)
 

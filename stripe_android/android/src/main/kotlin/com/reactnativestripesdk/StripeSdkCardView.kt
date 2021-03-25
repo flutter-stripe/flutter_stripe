@@ -5,23 +5,22 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
-import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.facebook.react.bridge.ReadableMap
-import com.stripe.android.databinding.CardInputWidgetBinding
+import com.facebook.react.uimanager.events.EventDispatcher
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
+import com.stripe.android.databinding.CardInputWidgetBinding
 import com.stripe.android.view.CardInputListener
 import com.stripe.android.view.CardInputWidget
 
-class StripeSdkCardView(context: Context) : FrameLayout(context) {
+class StripeSdkCardView(context: Context, private val mEventDispatcher: EventDispatcher) : FrameLayout(context) {
   private var mCardWidget: CardInputWidget
   private val cardDetails: MutableMap<String, Any> = mutableMapOf("number" to "", "cvc" to "", "expiryMonth" to "", "expiryYear" to "", "postalCode" to "")
 
   init {
-    mCardWidget = CardInputWidget(context);
+    mCardWidget = CardInputWidget(context)
 
     addView(mCardWidget)
     setListeners()
@@ -129,7 +128,7 @@ class StripeSdkCardView(context: Context) : FrameLayout(context) {
 
   fun onCardChanged() {
     val complete = mCardWidget.cardParams != null
-    //mEventDispatcher?.dispatchEvent(CardChangedEvent(id, cardDetails, mCardWidget.postalCodeEnabled, complete))
+    mEventDispatcher?.dispatchEvent(CardChangedEvent(id, cardDetails, mCardWidget.postalCodeEnabled, complete))
   }
 
   private fun setListeners() {
@@ -138,7 +137,7 @@ class StripeSdkCardView(context: Context) : FrameLayout(context) {
       override fun onExpirationComplete() {}
       override fun onCvcComplete() {}
       override fun onFocusChange(focusField: CardInputListener.FocusField) {
-          //mEventDispatcher?.dispatchEvent( CardFocusEvent(id, focusField.name))
+          mEventDispatcher?.dispatchEvent( CardFocusEvent(id, focusField.name))
       }
     })
 
