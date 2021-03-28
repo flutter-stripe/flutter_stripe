@@ -77,8 +77,8 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
               'Success: Setup intent created. Intent status: ${setupIntentResult.status}')));
       //setSetupIntent(setupIntentResult);
     }).catchError((error) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Error code: ${error.code} - ${error.message}')));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Error code: ${error}')));
     });
   }
 
