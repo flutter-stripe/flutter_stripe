@@ -28,65 +28,6 @@ class PaymentMethod with _$PaymentMethod {
       _$PaymentMethodFromJson(json);
 }
 
-abstract class PaymentMethodParams {
-  String get type;
-  BillingDetails? billingDetails;
-  PaymentMethodParams();
-}
-
-@JsonSerializable(explicitToJson: true)
-class AliPayParams extends PaymentMethodParams {
-  final String type = 'Alipay';
-  AliPayParams();
-  factory AliPayParams.fromJson(Map<String, dynamic> json) =>
-      _$AliPayParamsFromJson(json);
-  Map<String, dynamic> toJson() => _$AliPayParamsToJson(this);
-}
-
-class CardParams extends PaymentMethodParams {
-  final String type = 'Card';
-
-  factory CardParams({
-    required CardFieldInputDetails details,
-    PaymentIntentsFutureUsage? setupFutureUsage,
-  }) =>
-      _DetailedCardParams(
-        details,
-        setupFutureUsage,
-      );
-
-  factory CardParams.fromMethodId({
-    required String paymentMethodId,
-    String? cvc,
-  }) =>
-      _PaymentMethodCardParams(paymentMethodId, cvc);
-  CardParams._();
-}
-
-@JsonSerializable(explicitToJson: true)
-class _DetailedCardParams extends CardParams {
-  final CardFieldInputDetails details;
-  final PaymentIntentsFutureUsage? setupFutureUsage;
-
-  _DetailedCardParams(this.details, this.setupFutureUsage) : super._();
-
-  factory _DetailedCardParams.fromJson(Map<String, dynamic> json) =>
-      _$_DetailedCardParamsFromJson(json);
-  Map<String, dynamic> toJson() => _$_DetailedCardParamsToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class _PaymentMethodCardParams extends CardParams {
-  final String paymentMethodId;
-  final String? cvc;
-
-  _PaymentMethodCardParams(this.paymentMethodId, this.cvc) : super._();
-
-  factory _PaymentMethodCardParams.fromJson(Map<String, dynamic> json) =>
-      _$_PaymentMethodCardParamsFromJson(json);
-  Map<String, dynamic> toJson() => _$_PaymentMethodCardParamsToJson(this);
-}
-
 @freezed
 class BillingDetails with _$BillingDetails {
   const factory BillingDetails({
@@ -218,4 +159,26 @@ enum PaymentMethodType {
   Sofort,
   Upi,
   Unknown
+}
+
+@freezed
+class PaymentMethodParams with _$PaymentMethodParams {
+  const factory PaymentMethodParams.card({
+    @Default('card') String type,
+    required CardFieldInputDetails details,
+    PaymentIntentsFutureUsage? setupFutureUsage,
+  }) = _PaymentMethodParamsCard;
+
+  const factory PaymentMethodParams.cardFromMethodId({
+    @Default('card') String type,
+    required String paymentMethodId,
+    String? cvc,
+  }) = _PaymentMethodParamsCardWithMethodId;
+
+  const factory PaymentMethodParams.aliPay({
+    @Default('Alipay') String type,
+  }) = _PaymentMethodParamsAli;
+
+  factory PaymentMethodParams.fromJson(Map<String, dynamic> json) =>
+      _$PaymentMethodParamsFromJson(json);
 }

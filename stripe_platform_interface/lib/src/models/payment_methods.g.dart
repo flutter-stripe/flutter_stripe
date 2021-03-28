@@ -6,98 +6,6 @@ part of 'payment_methods.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AliPayParams _$AliPayParamsFromJson(Map<String, dynamic> json) {
-  return AliPayParams()
-    ..billingDetails = json['billingDetails'] == null
-        ? null
-        : BillingDetails.fromJson(
-            json['billingDetails'] as Map<String, dynamic>);
-}
-
-Map<String, dynamic> _$AliPayParamsToJson(AliPayParams instance) =>
-    <String, dynamic>{
-      'billingDetails': instance.billingDetails?.toJson(),
-    };
-
-_DetailedCardParams _$_DetailedCardParamsFromJson(Map<String, dynamic> json) {
-  return _DetailedCardParams(
-    CardFieldInputDetails.fromJson(json['details'] as Map<String, dynamic>),
-    _$enumDecodeNullable(
-        _$PaymentIntentsFutureUsageEnumMap, json['setupFutureUsage']),
-  )..billingDetails = json['billingDetails'] == null
-      ? null
-      : BillingDetails.fromJson(json['billingDetails'] as Map<String, dynamic>);
-}
-
-Map<String, dynamic> _$_DetailedCardParamsToJson(
-        _DetailedCardParams instance) =>
-    <String, dynamic>{
-      'billingDetails': instance.billingDetails?.toJson(),
-      'details': instance.details.toJson(),
-      'setupFutureUsage':
-          _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
-    };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
-K? _$enumDecodeNullable<K, V>(
-  Map<K, V> enumValues,
-  dynamic source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    return null;
-  }
-  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
-}
-
-const _$PaymentIntentsFutureUsageEnumMap = {
-  PaymentIntentsFutureUsage.OffSession: 'OffSession',
-  PaymentIntentsFutureUsage.OnSession: 'OnSession',
-};
-
-_PaymentMethodCardParams _$_PaymentMethodCardParamsFromJson(
-    Map<String, dynamic> json) {
-  return _PaymentMethodCardParams(
-    json['paymentMethodId'] as String,
-    json['cvc'] as String?,
-  )..billingDetails = json['billingDetails'] == null
-      ? null
-      : BillingDetails.fromJson(json['billingDetails'] as Map<String, dynamic>);
-}
-
-Map<String, dynamic> _$_PaymentMethodCardParamsToJson(
-        _PaymentMethodCardParams instance) =>
-    <String, dynamic>{
-      'billingDetails': instance.billingDetails?.toJson(),
-      'paymentMethodId': instance.paymentMethodId,
-      'cvc': instance.cvc,
-    };
-
 _$_PaymentMethod _$_$_PaymentMethodFromJson(Map<String, dynamic> json) {
   return _$_PaymentMethod(
     id: json['id'] as String,
@@ -134,6 +42,32 @@ Map<String, dynamic> _$_$_PaymentMethodToJson(_$_PaymentMethod instance) =>
       'sofort': instance.sofort,
       'upi': instance.upi,
     };
+
+K _$enumDecode<K, V>(
+  Map<K, V> enumValues,
+  Object? source, {
+  K? unknownValue,
+}) {
+  if (source == null) {
+    throw ArgumentError(
+      'A value must be provided. Supported values: '
+      '${enumValues.values.join(', ')}',
+    );
+  }
+
+  return enumValues.entries.singleWhere(
+    (e) => e.value == source,
+    orElse: () {
+      if (unknownValue == null) {
+        throw ArgumentError(
+          '`$source` is not one of the supported values: '
+          '${enumValues.values.join(', ')}',
+        );
+      }
+      return MapEntry(unknownValue, enumValues.values.first);
+    },
+  ).key;
+}
 
 const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.AfterpayClearpay: 'AfterpayClearpay',
@@ -248,6 +182,17 @@ Map<String, dynamic> _$_$_CardToJson(_$_Card instance) => <String, dynamic>{
       'last4': instance.last4,
     };
 
+K? _$enumDecodeNullable<K, V>(
+  Map<K, V> enumValues,
+  dynamic source, {
+  K? unknownValue,
+}) {
+  if (source == null) {
+    return null;
+  }
+  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
+}
+
 const _$CardBrandEnumMap = {
   CardBrand.american: 'american',
   CardBrand.dinersClub: 'dinersClub',
@@ -316,4 +261,60 @@ _$_Upi _$_$_UpiFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$_$_UpiToJson(_$_Upi instance) => <String, dynamic>{
       'vpa': instance.vpa,
+    };
+
+_$_PaymentMethodParamsCard _$_$_PaymentMethodParamsCardFromJson(
+    Map<String, dynamic> json) {
+  return _$_PaymentMethodParamsCard(
+    type: json['type'] as String? ?? 'card',
+    details:
+        CardFieldInputDetails.fromJson(json['details'] as Map<String, dynamic>),
+    setupFutureUsage: _$enumDecodeNullable(
+        _$PaymentIntentsFutureUsageEnumMap, json['setupFutureUsage']),
+  );
+}
+
+Map<String, dynamic> _$_$_PaymentMethodParamsCardToJson(
+        _$_PaymentMethodParamsCard instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'details': instance.details,
+      'setupFutureUsage':
+          _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
+    };
+
+const _$PaymentIntentsFutureUsageEnumMap = {
+  PaymentIntentsFutureUsage.OffSession: 'OffSession',
+  PaymentIntentsFutureUsage.OnSession: 'OnSession',
+};
+
+_$_PaymentMethodParamsCardWithMethodId
+    _$_$_PaymentMethodParamsCardWithMethodIdFromJson(
+        Map<String, dynamic> json) {
+  return _$_PaymentMethodParamsCardWithMethodId(
+    type: json['type'] as String? ?? 'card',
+    paymentMethodId: json['paymentMethodId'] as String,
+    cvc: json['cvc'] as String?,
+  );
+}
+
+Map<String, dynamic> _$_$_PaymentMethodParamsCardWithMethodIdToJson(
+        _$_PaymentMethodParamsCardWithMethodId instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'paymentMethodId': instance.paymentMethodId,
+      'cvc': instance.cvc,
+    };
+
+_$_PaymentMethodParamsAli _$_$_PaymentMethodParamsAliFromJson(
+    Map<String, dynamic> json) {
+  return _$_PaymentMethodParamsAli(
+    type: json['type'] as String? ?? 'Alipay',
+  );
+}
+
+Map<String, dynamic> _$_$_PaymentMethodParamsAliToJson(
+        _$_PaymentMethodParamsAli instance) =>
+    <String, dynamic>{
+      'type': instance.type,
     };

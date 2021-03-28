@@ -3,6 +3,7 @@ import 'package:stripe_platform_interface/src/models/errors.dart';
 import 'package:stripe_platform_interface/src/models/payment_methods.dart';
 
 part 'setup_intent.freezed.dart';
+part 'setup_intent.g.dart';
 
 @freezed
 class SetupIntent with _$SetupIntent {
@@ -13,11 +14,14 @@ class SetupIntent with _$SetupIntent {
     required SetupStatus status,
     required List<PaymentMethodType> paymentMethodTypes,
     required FutureUsage usage,
-    StripeError<String>? lastSetupError,
+    // StripeError<String>? lastSetupError,
     String? created,
     String? paymentMethodId,
     String? description,
   }) = _SetupIntent;
+
+  factory SetupIntent.fromJson(Map<String, dynamic> json) =>
+      _$SetupIntentFromJson(json);
 }
 
 enum FutureUsage { unknown, none, onSession, offSession, oneTime }

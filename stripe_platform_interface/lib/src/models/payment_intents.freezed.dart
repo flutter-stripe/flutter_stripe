@@ -34,7 +34,6 @@ class _$PaymentIntentTearOff {
       String? description,
       String? receiptEmail,
       String? canceledAt,
-      LastPaymentError? lastPaymentError,
       ShippingDetails? shipping}) {
     return _PaymentIntent(
       id: id,
@@ -50,7 +49,6 @@ class _$PaymentIntentTearOff {
       description: description,
       receiptEmail: receiptEmail,
       canceledAt: canceledAt,
-      lastPaymentError: lastPaymentError,
       shipping: shipping,
     );
   }
@@ -78,8 +76,8 @@ mixin _$PaymentIntent {
       throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get receiptEmail => throw _privateConstructorUsedError;
-  String? get canceledAt => throw _privateConstructorUsedError;
-  LastPaymentError? get lastPaymentError => throw _privateConstructorUsedError;
+  String? get canceledAt =>
+      throw _privateConstructorUsedError; // LastPaymentError? lastPaymentError,
   ShippingDetails? get shipping => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -107,7 +105,6 @@ abstract class $PaymentIntentCopyWith<$Res> {
       String? description,
       String? receiptEmail,
       String? canceledAt,
-      LastPaymentError? lastPaymentError,
       ShippingDetails? shipping});
 
   $ShippingDetailsCopyWith<$Res>? get shipping;
@@ -137,7 +134,6 @@ class _$PaymentIntentCopyWithImpl<$Res>
     Object? description = freezed,
     Object? receiptEmail = freezed,
     Object? canceledAt = freezed,
-    Object? lastPaymentError = freezed,
     Object? shipping = freezed,
   }) {
     return _then(_value.copyWith(
@@ -193,10 +189,6 @@ class _$PaymentIntentCopyWithImpl<$Res>
           ? _value.canceledAt
           : canceledAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastPaymentError: lastPaymentError == freezed
-          ? _value.lastPaymentError
-          : lastPaymentError // ignore: cast_nullable_to_non_nullable
-              as LastPaymentError?,
       shipping: shipping == freezed
           ? _value.shipping
           : shipping // ignore: cast_nullable_to_non_nullable
@@ -237,7 +229,6 @@ abstract class _$PaymentIntentCopyWith<$Res>
       String? description,
       String? receiptEmail,
       String? canceledAt,
-      LastPaymentError? lastPaymentError,
       ShippingDetails? shipping});
 
   @override
@@ -270,7 +261,6 @@ class __$PaymentIntentCopyWithImpl<$Res>
     Object? description = freezed,
     Object? receiptEmail = freezed,
     Object? canceledAt = freezed,
-    Object? lastPaymentError = freezed,
     Object? shipping = freezed,
   }) {
     return _then(_PaymentIntent(
@@ -326,10 +316,6 @@ class __$PaymentIntentCopyWithImpl<$Res>
           ? _value.canceledAt
           : canceledAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastPaymentError: lastPaymentError == freezed
-          ? _value.lastPaymentError
-          : lastPaymentError // ignore: cast_nullable_to_non_nullable
-              as LastPaymentError?,
       shipping: shipping == freezed
           ? _value.shipping
           : shipping // ignore: cast_nullable_to_non_nullable
@@ -356,7 +342,6 @@ class _$_PaymentIntent implements _PaymentIntent {
       this.description,
       this.receiptEmail,
       this.canceledAt,
-      this.lastPaymentError,
       this.shipping});
 
   factory _$_PaymentIntent.fromJson(Map<String, dynamic> json) =>
@@ -388,14 +373,12 @@ class _$_PaymentIntent implements _PaymentIntent {
   final String? receiptEmail;
   @override
   final String? canceledAt;
-  @override
-  final LastPaymentError? lastPaymentError;
-  @override
+  @override // LastPaymentError? lastPaymentError,
   final ShippingDetails? shipping;
 
   @override
   String toString() {
-    return 'PaymentIntent(id: $id, amount: $amount, created: $created, currency: $currency, status: $status, clientSecret: $clientSecret, livemode: $livemode, paymentMethodId: $paymentMethodId, captureMethod: $captureMethod, confirmationMethod: $confirmationMethod, description: $description, receiptEmail: $receiptEmail, canceledAt: $canceledAt, lastPaymentError: $lastPaymentError, shipping: $shipping)';
+    return 'PaymentIntent(id: $id, amount: $amount, created: $created, currency: $currency, status: $status, clientSecret: $clientSecret, livemode: $livemode, paymentMethodId: $paymentMethodId, captureMethod: $captureMethod, confirmationMethod: $confirmationMethod, description: $description, receiptEmail: $receiptEmail, canceledAt: $canceledAt, shipping: $shipping)';
   }
 
   @override
@@ -438,9 +421,6 @@ class _$_PaymentIntent implements _PaymentIntent {
             (identical(other.canceledAt, canceledAt) ||
                 const DeepCollectionEquality()
                     .equals(other.canceledAt, canceledAt)) &&
-            (identical(other.lastPaymentError, lastPaymentError) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastPaymentError, lastPaymentError)) &&
             (identical(other.shipping, shipping) ||
                 const DeepCollectionEquality()
                     .equals(other.shipping, shipping)));
@@ -462,7 +442,6 @@ class _$_PaymentIntent implements _PaymentIntent {
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(receiptEmail) ^
       const DeepCollectionEquality().hash(canceledAt) ^
-      const DeepCollectionEquality().hash(lastPaymentError) ^
       const DeepCollectionEquality().hash(shipping);
 
   @JsonKey(ignore: true)
@@ -491,7 +470,6 @@ abstract class _PaymentIntent implements PaymentIntent {
       String? description,
       String? receiptEmail,
       String? canceledAt,
-      LastPaymentError? lastPaymentError,
       ShippingDetails? shipping}) = _$_PaymentIntent;
 
   factory _PaymentIntent.fromJson(Map<String, dynamic> json) =
@@ -524,9 +502,7 @@ abstract class _PaymentIntent implements PaymentIntent {
   String? get receiptEmail => throw _privateConstructorUsedError;
   @override
   String? get canceledAt => throw _privateConstructorUsedError;
-  @override
-  LastPaymentError? get lastPaymentError => throw _privateConstructorUsedError;
-  @override
+  @override // LastPaymentError? lastPaymentError,
   ShippingDetails? get shipping => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

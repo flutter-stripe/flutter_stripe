@@ -2521,3 +2521,645 @@ abstract class _Upi implements Upi {
   @JsonKey(ignore: true)
   _$UpiCopyWith<_Upi> get copyWith => throw _privateConstructorUsedError;
 }
+
+PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType'] as String) {
+    case 'card':
+      return _PaymentMethodParamsCard.fromJson(json);
+    case 'cardFromMethodId':
+      return _PaymentMethodParamsCardWithMethodId.fromJson(json);
+    case 'aliPay':
+      return _PaymentMethodParamsAli.fromJson(json);
+
+    default:
+      throw FallThroughError();
+  }
+}
+
+/// @nodoc
+class _$PaymentMethodParamsTearOff {
+  const _$PaymentMethodParamsTearOff();
+
+  _PaymentMethodParamsCard card(
+      {String type = 'card',
+      required CardFieldInputDetails details,
+      PaymentIntentsFutureUsage? setupFutureUsage}) {
+    return _PaymentMethodParamsCard(
+      type: type,
+      details: details,
+      setupFutureUsage: setupFutureUsage,
+    );
+  }
+
+  _PaymentMethodParamsCardWithMethodId cardFromMethodId(
+      {String type = 'card', required String paymentMethodId, String? cvc}) {
+    return _PaymentMethodParamsCardWithMethodId(
+      type: type,
+      paymentMethodId: paymentMethodId,
+      cvc: cvc,
+    );
+  }
+
+  _PaymentMethodParamsAli aliPay({String type = 'Alipay'}) {
+    return _PaymentMethodParamsAli(
+      type: type,
+    );
+  }
+
+  PaymentMethodParams fromJson(Map<String, Object> json) {
+    return PaymentMethodParams.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $PaymentMethodParams = _$PaymentMethodParamsTearOff();
+
+/// @nodoc
+mixin _$PaymentMethodParams {
+  String get type => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String type, CardFieldInputDetails details,
+            PaymentIntentsFutureUsage? setupFutureUsage)
+        card,
+    required TResult Function(String type, String paymentMethodId, String? cvc)
+        cardFromMethodId,
+    required TResult Function(String type) aliPay,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String type, CardFieldInputDetails details,
+            PaymentIntentsFutureUsage? setupFutureUsage)?
+        card,
+    TResult Function(String type, String paymentMethodId, String? cvc)?
+        cardFromMethodId,
+    TResult Function(String type)? aliPay,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentMethodParamsCard value) card,
+    required TResult Function(_PaymentMethodParamsCardWithMethodId value)
+        cardFromMethodId,
+    required TResult Function(_PaymentMethodParamsAli value) aliPay,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAli value)? aliPay,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentMethodParamsCopyWith<PaymentMethodParams> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentMethodParamsCopyWith<$Res> {
+  factory $PaymentMethodParamsCopyWith(
+          PaymentMethodParams value, $Res Function(PaymentMethodParams) then) =
+      _$PaymentMethodParamsCopyWithImpl<$Res>;
+  $Res call({String type});
+}
+
+/// @nodoc
+class _$PaymentMethodParamsCopyWithImpl<$Res>
+    implements $PaymentMethodParamsCopyWith<$Res> {
+  _$PaymentMethodParamsCopyWithImpl(this._value, this._then);
+
+  final PaymentMethodParams _value;
+  // ignore: unused_field
+  final $Res Function(PaymentMethodParams) _then;
+
+  @override
+  $Res call({
+    Object? type = freezed,
+  }) {
+    return _then(_value.copyWith(
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$PaymentMethodParamsCardCopyWith<$Res>
+    implements $PaymentMethodParamsCopyWith<$Res> {
+  factory _$PaymentMethodParamsCardCopyWith(_PaymentMethodParamsCard value,
+          $Res Function(_PaymentMethodParamsCard) then) =
+      __$PaymentMethodParamsCardCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String type,
+      CardFieldInputDetails details,
+      PaymentIntentsFutureUsage? setupFutureUsage});
+}
+
+/// @nodoc
+class __$PaymentMethodParamsCardCopyWithImpl<$Res>
+    extends _$PaymentMethodParamsCopyWithImpl<$Res>
+    implements _$PaymentMethodParamsCardCopyWith<$Res> {
+  __$PaymentMethodParamsCardCopyWithImpl(_PaymentMethodParamsCard _value,
+      $Res Function(_PaymentMethodParamsCard) _then)
+      : super(_value, (v) => _then(v as _PaymentMethodParamsCard));
+
+  @override
+  _PaymentMethodParamsCard get _value =>
+      super._value as _PaymentMethodParamsCard;
+
+  @override
+  $Res call({
+    Object? type = freezed,
+    Object? details = freezed,
+    Object? setupFutureUsage = freezed,
+  }) {
+    return _then(_PaymentMethodParamsCard(
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      details: details == freezed
+          ? _value.details
+          : details // ignore: cast_nullable_to_non_nullable
+              as CardFieldInputDetails,
+      setupFutureUsage: setupFutureUsage == freezed
+          ? _value.setupFutureUsage
+          : setupFutureUsage // ignore: cast_nullable_to_non_nullable
+              as PaymentIntentsFutureUsage?,
+    ));
+  }
+}
+
+@JsonSerializable()
+
+/// @nodoc
+class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
+  const _$_PaymentMethodParamsCard(
+      {this.type = 'card', required this.details, this.setupFutureUsage});
+
+  factory _$_PaymentMethodParamsCard.fromJson(Map<String, dynamic> json) =>
+      _$_$_PaymentMethodParamsCardFromJson(json);
+
+  @JsonKey(defaultValue: 'card')
+  @override
+  final String type;
+  @override
+  final CardFieldInputDetails details;
+  @override
+  final PaymentIntentsFutureUsage? setupFutureUsage;
+
+  @override
+  String toString() {
+    return 'PaymentMethodParams.card(type: $type, details: $details, setupFutureUsage: $setupFutureUsage)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _PaymentMethodParamsCard &&
+            (identical(other.type, type) ||
+                const DeepCollectionEquality().equals(other.type, type)) &&
+            (identical(other.details, details) ||
+                const DeepCollectionEquality()
+                    .equals(other.details, details)) &&
+            (identical(other.setupFutureUsage, setupFutureUsage) ||
+                const DeepCollectionEquality()
+                    .equals(other.setupFutureUsage, setupFutureUsage)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(type) ^
+      const DeepCollectionEquality().hash(details) ^
+      const DeepCollectionEquality().hash(setupFutureUsage);
+
+  @JsonKey(ignore: true)
+  @override
+  _$PaymentMethodParamsCardCopyWith<_PaymentMethodParamsCard> get copyWith =>
+      __$PaymentMethodParamsCardCopyWithImpl<_PaymentMethodParamsCard>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String type, CardFieldInputDetails details,
+            PaymentIntentsFutureUsage? setupFutureUsage)
+        card,
+    required TResult Function(String type, String paymentMethodId, String? cvc)
+        cardFromMethodId,
+    required TResult Function(String type) aliPay,
+  }) {
+    return card(type, details, setupFutureUsage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String type, CardFieldInputDetails details,
+            PaymentIntentsFutureUsage? setupFutureUsage)?
+        card,
+    TResult Function(String type, String paymentMethodId, String? cvc)?
+        cardFromMethodId,
+    TResult Function(String type)? aliPay,
+    required TResult orElse(),
+  }) {
+    if (card != null) {
+      return card(type, details, setupFutureUsage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentMethodParamsCard value) card,
+    required TResult Function(_PaymentMethodParamsCardWithMethodId value)
+        cardFromMethodId,
+    required TResult Function(_PaymentMethodParamsAli value) aliPay,
+  }) {
+    return card(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAli value)? aliPay,
+    required TResult orElse(),
+  }) {
+    if (card != null) {
+      return card(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_PaymentMethodParamsCardToJson(this)..['runtimeType'] = 'card';
+  }
+}
+
+abstract class _PaymentMethodParamsCard implements PaymentMethodParams {
+  const factory _PaymentMethodParamsCard(
+          {String type,
+          required CardFieldInputDetails details,
+          PaymentIntentsFutureUsage? setupFutureUsage}) =
+      _$_PaymentMethodParamsCard;
+
+  factory _PaymentMethodParamsCard.fromJson(Map<String, dynamic> json) =
+      _$_PaymentMethodParamsCard.fromJson;
+
+  @override
+  String get type => throw _privateConstructorUsedError;
+  CardFieldInputDetails get details => throw _privateConstructorUsedError;
+  PaymentIntentsFutureUsage? get setupFutureUsage =>
+      throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$PaymentMethodParamsCardCopyWith<_PaymentMethodParamsCard> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$PaymentMethodParamsCardWithMethodIdCopyWith<$Res>
+    implements $PaymentMethodParamsCopyWith<$Res> {
+  factory _$PaymentMethodParamsCardWithMethodIdCopyWith(
+          _PaymentMethodParamsCardWithMethodId value,
+          $Res Function(_PaymentMethodParamsCardWithMethodId) then) =
+      __$PaymentMethodParamsCardWithMethodIdCopyWithImpl<$Res>;
+  @override
+  $Res call({String type, String paymentMethodId, String? cvc});
+}
+
+/// @nodoc
+class __$PaymentMethodParamsCardWithMethodIdCopyWithImpl<$Res>
+    extends _$PaymentMethodParamsCopyWithImpl<$Res>
+    implements _$PaymentMethodParamsCardWithMethodIdCopyWith<$Res> {
+  __$PaymentMethodParamsCardWithMethodIdCopyWithImpl(
+      _PaymentMethodParamsCardWithMethodId _value,
+      $Res Function(_PaymentMethodParamsCardWithMethodId) _then)
+      : super(_value, (v) => _then(v as _PaymentMethodParamsCardWithMethodId));
+
+  @override
+  _PaymentMethodParamsCardWithMethodId get _value =>
+      super._value as _PaymentMethodParamsCardWithMethodId;
+
+  @override
+  $Res call({
+    Object? type = freezed,
+    Object? paymentMethodId = freezed,
+    Object? cvc = freezed,
+  }) {
+    return _then(_PaymentMethodParamsCardWithMethodId(
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      paymentMethodId: paymentMethodId == freezed
+          ? _value.paymentMethodId
+          : paymentMethodId // ignore: cast_nullable_to_non_nullable
+              as String,
+      cvc: cvc == freezed
+          ? _value.cvc
+          : cvc // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+@JsonSerializable()
+
+/// @nodoc
+class _$_PaymentMethodParamsCardWithMethodId
+    implements _PaymentMethodParamsCardWithMethodId {
+  const _$_PaymentMethodParamsCardWithMethodId(
+      {this.type = 'card', required this.paymentMethodId, this.cvc});
+
+  factory _$_PaymentMethodParamsCardWithMethodId.fromJson(
+          Map<String, dynamic> json) =>
+      _$_$_PaymentMethodParamsCardWithMethodIdFromJson(json);
+
+  @JsonKey(defaultValue: 'card')
+  @override
+  final String type;
+  @override
+  final String paymentMethodId;
+  @override
+  final String? cvc;
+
+  @override
+  String toString() {
+    return 'PaymentMethodParams.cardFromMethodId(type: $type, paymentMethodId: $paymentMethodId, cvc: $cvc)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _PaymentMethodParamsCardWithMethodId &&
+            (identical(other.type, type) ||
+                const DeepCollectionEquality().equals(other.type, type)) &&
+            (identical(other.paymentMethodId, paymentMethodId) ||
+                const DeepCollectionEquality()
+                    .equals(other.paymentMethodId, paymentMethodId)) &&
+            (identical(other.cvc, cvc) ||
+                const DeepCollectionEquality().equals(other.cvc, cvc)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(type) ^
+      const DeepCollectionEquality().hash(paymentMethodId) ^
+      const DeepCollectionEquality().hash(cvc);
+
+  @JsonKey(ignore: true)
+  @override
+  _$PaymentMethodParamsCardWithMethodIdCopyWith<
+          _PaymentMethodParamsCardWithMethodId>
+      get copyWith => __$PaymentMethodParamsCardWithMethodIdCopyWithImpl<
+          _PaymentMethodParamsCardWithMethodId>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String type, CardFieldInputDetails details,
+            PaymentIntentsFutureUsage? setupFutureUsage)
+        card,
+    required TResult Function(String type, String paymentMethodId, String? cvc)
+        cardFromMethodId,
+    required TResult Function(String type) aliPay,
+  }) {
+    return cardFromMethodId(type, paymentMethodId, cvc);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String type, CardFieldInputDetails details,
+            PaymentIntentsFutureUsage? setupFutureUsage)?
+        card,
+    TResult Function(String type, String paymentMethodId, String? cvc)?
+        cardFromMethodId,
+    TResult Function(String type)? aliPay,
+    required TResult orElse(),
+  }) {
+    if (cardFromMethodId != null) {
+      return cardFromMethodId(type, paymentMethodId, cvc);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentMethodParamsCard value) card,
+    required TResult Function(_PaymentMethodParamsCardWithMethodId value)
+        cardFromMethodId,
+    required TResult Function(_PaymentMethodParamsAli value) aliPay,
+  }) {
+    return cardFromMethodId(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAli value)? aliPay,
+    required TResult orElse(),
+  }) {
+    if (cardFromMethodId != null) {
+      return cardFromMethodId(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_PaymentMethodParamsCardWithMethodIdToJson(this)
+      ..['runtimeType'] = 'cardFromMethodId';
+  }
+}
+
+abstract class _PaymentMethodParamsCardWithMethodId
+    implements PaymentMethodParams {
+  const factory _PaymentMethodParamsCardWithMethodId(
+      {String type,
+      required String paymentMethodId,
+      String? cvc}) = _$_PaymentMethodParamsCardWithMethodId;
+
+  factory _PaymentMethodParamsCardWithMethodId.fromJson(
+          Map<String, dynamic> json) =
+      _$_PaymentMethodParamsCardWithMethodId.fromJson;
+
+  @override
+  String get type => throw _privateConstructorUsedError;
+  String get paymentMethodId => throw _privateConstructorUsedError;
+  String? get cvc => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$PaymentMethodParamsCardWithMethodIdCopyWith<
+          _PaymentMethodParamsCardWithMethodId>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$PaymentMethodParamsAliCopyWith<$Res>
+    implements $PaymentMethodParamsCopyWith<$Res> {
+  factory _$PaymentMethodParamsAliCopyWith(_PaymentMethodParamsAli value,
+          $Res Function(_PaymentMethodParamsAli) then) =
+      __$PaymentMethodParamsAliCopyWithImpl<$Res>;
+  @override
+  $Res call({String type});
+}
+
+/// @nodoc
+class __$PaymentMethodParamsAliCopyWithImpl<$Res>
+    extends _$PaymentMethodParamsCopyWithImpl<$Res>
+    implements _$PaymentMethodParamsAliCopyWith<$Res> {
+  __$PaymentMethodParamsAliCopyWithImpl(_PaymentMethodParamsAli _value,
+      $Res Function(_PaymentMethodParamsAli) _then)
+      : super(_value, (v) => _then(v as _PaymentMethodParamsAli));
+
+  @override
+  _PaymentMethodParamsAli get _value => super._value as _PaymentMethodParamsAli;
+
+  @override
+  $Res call({
+    Object? type = freezed,
+  }) {
+    return _then(_PaymentMethodParamsAli(
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+@JsonSerializable()
+
+/// @nodoc
+class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
+  const _$_PaymentMethodParamsAli({this.type = 'Alipay'});
+
+  factory _$_PaymentMethodParamsAli.fromJson(Map<String, dynamic> json) =>
+      _$_$_PaymentMethodParamsAliFromJson(json);
+
+  @JsonKey(defaultValue: 'Alipay')
+  @override
+  final String type;
+
+  @override
+  String toString() {
+    return 'PaymentMethodParams.aliPay(type: $type)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _PaymentMethodParamsAli &&
+            (identical(other.type, type) ||
+                const DeepCollectionEquality().equals(other.type, type)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(type);
+
+  @JsonKey(ignore: true)
+  @override
+  _$PaymentMethodParamsAliCopyWith<_PaymentMethodParamsAli> get copyWith =>
+      __$PaymentMethodParamsAliCopyWithImpl<_PaymentMethodParamsAli>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String type, CardFieldInputDetails details,
+            PaymentIntentsFutureUsage? setupFutureUsage)
+        card,
+    required TResult Function(String type, String paymentMethodId, String? cvc)
+        cardFromMethodId,
+    required TResult Function(String type) aliPay,
+  }) {
+    return aliPay(type);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String type, CardFieldInputDetails details,
+            PaymentIntentsFutureUsage? setupFutureUsage)?
+        card,
+    TResult Function(String type, String paymentMethodId, String? cvc)?
+        cardFromMethodId,
+    TResult Function(String type)? aliPay,
+    required TResult orElse(),
+  }) {
+    if (aliPay != null) {
+      return aliPay(type);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentMethodParamsCard value) card,
+    required TResult Function(_PaymentMethodParamsCardWithMethodId value)
+        cardFromMethodId,
+    required TResult Function(_PaymentMethodParamsAli value) aliPay,
+  }) {
+    return aliPay(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAli value)? aliPay,
+    required TResult orElse(),
+  }) {
+    if (aliPay != null) {
+      return aliPay(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_PaymentMethodParamsAliToJson(this)..['runtimeType'] = 'aliPay';
+  }
+}
+
+abstract class _PaymentMethodParamsAli implements PaymentMethodParams {
+  const factory _PaymentMethodParamsAli({String type}) =
+      _$_PaymentMethodParamsAli;
+
+  factory _PaymentMethodParamsAli.fromJson(Map<String, dynamic> json) =
+      _$_PaymentMethodParamsAli.fromJson;
+
+  @override
+  String get type => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$PaymentMethodParamsAliCopyWith<_PaymentMethodParamsAli> get copyWith =>
+      throw _privateConstructorUsedError;
+}

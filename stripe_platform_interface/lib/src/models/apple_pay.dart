@@ -28,8 +28,6 @@ class ApplePayShippingMethod with _$ApplePayShippingMethod {
 
   factory ApplePayShippingMethod.fromJson(Map<String, dynamic> json) =>
       _$ApplePayShippingMethodFromJson(json);
-
-  // Map<String, dynamic> toJson() => _$ApplePayShippingMethodToJson(this);
 }
 
 @freezed

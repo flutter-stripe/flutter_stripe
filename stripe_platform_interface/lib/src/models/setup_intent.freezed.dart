@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+SetupIntent _$SetupIntentFromJson(Map<String, dynamic> json) {
+  return _SetupIntent.fromJson(json);
+}
+
 /// @nodoc
 class _$SetupIntentTearOff {
   const _$SetupIntentTearOff();
@@ -23,7 +27,6 @@ class _$SetupIntentTearOff {
       required SetupStatus status,
       required List<PaymentMethodType> paymentMethodTypes,
       required FutureUsage usage,
-      StripeError<String>? lastSetupError,
       String? created,
       String? paymentMethodId,
       String? description}) {
@@ -34,11 +37,14 @@ class _$SetupIntentTearOff {
       status: status,
       paymentMethodTypes: paymentMethodTypes,
       usage: usage,
-      lastSetupError: lastSetupError,
       created: created,
       paymentMethodId: paymentMethodId,
       description: description,
     );
+  }
+
+  SetupIntent fromJson(Map<String, Object> json) {
+    return SetupIntent.fromJson(json);
   }
 }
 
@@ -53,12 +59,13 @@ mixin _$SetupIntent {
   SetupStatus get status => throw _privateConstructorUsedError;
   List<PaymentMethodType> get paymentMethodTypes =>
       throw _privateConstructorUsedError;
-  FutureUsage get usage => throw _privateConstructorUsedError;
-  StripeError<String>? get lastSetupError => throw _privateConstructorUsedError;
+  FutureUsage get usage =>
+      throw _privateConstructorUsedError; // StripeError<String>? lastSetupError,
   String? get created => throw _privateConstructorUsedError;
   String? get paymentMethodId => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SetupIntentCopyWith<SetupIntent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -76,7 +83,6 @@ abstract class $SetupIntentCopyWith<$Res> {
       SetupStatus status,
       List<PaymentMethodType> paymentMethodTypes,
       FutureUsage usage,
-      StripeError<String>? lastSetupError,
       String? created,
       String? paymentMethodId,
       String? description});
@@ -98,7 +104,6 @@ class _$SetupIntentCopyWithImpl<$Res> implements $SetupIntentCopyWith<$Res> {
     Object? status = freezed,
     Object? paymentMethodTypes = freezed,
     Object? usage = freezed,
-    Object? lastSetupError = freezed,
     Object? created = freezed,
     Object? paymentMethodId = freezed,
     Object? description = freezed,
@@ -128,10 +133,6 @@ class _$SetupIntentCopyWithImpl<$Res> implements $SetupIntentCopyWith<$Res> {
           ? _value.usage
           : usage // ignore: cast_nullable_to_non_nullable
               as FutureUsage,
-      lastSetupError: lastSetupError == freezed
-          ? _value.lastSetupError
-          : lastSetupError // ignore: cast_nullable_to_non_nullable
-              as StripeError<String>?,
       created: created == freezed
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
@@ -162,7 +163,6 @@ abstract class _$SetupIntentCopyWith<$Res>
       SetupStatus status,
       List<PaymentMethodType> paymentMethodTypes,
       FutureUsage usage,
-      StripeError<String>? lastSetupError,
       String? created,
       String? paymentMethodId,
       String? description});
@@ -186,7 +186,6 @@ class __$SetupIntentCopyWithImpl<$Res> extends _$SetupIntentCopyWithImpl<$Res>
     Object? status = freezed,
     Object? paymentMethodTypes = freezed,
     Object? usage = freezed,
-    Object? lastSetupError = freezed,
     Object? created = freezed,
     Object? paymentMethodId = freezed,
     Object? description = freezed,
@@ -216,10 +215,6 @@ class __$SetupIntentCopyWithImpl<$Res> extends _$SetupIntentCopyWithImpl<$Res>
           ? _value.usage
           : usage // ignore: cast_nullable_to_non_nullable
               as FutureUsage,
-      lastSetupError: lastSetupError == freezed
-          ? _value.lastSetupError
-          : lastSetupError // ignore: cast_nullable_to_non_nullable
-              as StripeError<String>?,
       created: created == freezed
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
@@ -236,6 +231,8 @@ class __$SetupIntentCopyWithImpl<$Res> extends _$SetupIntentCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_SetupIntent implements _SetupIntent {
   const _$_SetupIntent(
@@ -245,10 +242,12 @@ class _$_SetupIntent implements _SetupIntent {
       required this.status,
       required this.paymentMethodTypes,
       required this.usage,
-      this.lastSetupError,
       this.created,
       this.paymentMethodId,
       this.description});
+
+  factory _$_SetupIntent.fromJson(Map<String, dynamic> json) =>
+      _$_$_SetupIntentFromJson(json);
 
   @override
   final String id;
@@ -262,9 +261,7 @@ class _$_SetupIntent implements _SetupIntent {
   final List<PaymentMethodType> paymentMethodTypes;
   @override
   final FutureUsage usage;
-  @override
-  final StripeError<String>? lastSetupError;
-  @override
+  @override // StripeError<String>? lastSetupError,
   final String? created;
   @override
   final String? paymentMethodId;
@@ -273,7 +270,7 @@ class _$_SetupIntent implements _SetupIntent {
 
   @override
   String toString() {
-    return 'SetupIntent(id: $id, clientSecret: $clientSecret, livemode: $livemode, status: $status, paymentMethodTypes: $paymentMethodTypes, usage: $usage, lastSetupError: $lastSetupError, created: $created, paymentMethodId: $paymentMethodId, description: $description)';
+    return 'SetupIntent(id: $id, clientSecret: $clientSecret, livemode: $livemode, status: $status, paymentMethodTypes: $paymentMethodTypes, usage: $usage, created: $created, paymentMethodId: $paymentMethodId, description: $description)';
   }
 
   @override
@@ -295,9 +292,6 @@ class _$_SetupIntent implements _SetupIntent {
                     .equals(other.paymentMethodTypes, paymentMethodTypes)) &&
             (identical(other.usage, usage) ||
                 const DeepCollectionEquality().equals(other.usage, usage)) &&
-            (identical(other.lastSetupError, lastSetupError) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastSetupError, lastSetupError)) &&
             (identical(other.created, created) ||
                 const DeepCollectionEquality()
                     .equals(other.created, created)) &&
@@ -318,7 +312,6 @@ class _$_SetupIntent implements _SetupIntent {
       const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(paymentMethodTypes) ^
       const DeepCollectionEquality().hash(usage) ^
-      const DeepCollectionEquality().hash(lastSetupError) ^
       const DeepCollectionEquality().hash(created) ^
       const DeepCollectionEquality().hash(paymentMethodId) ^
       const DeepCollectionEquality().hash(description);
@@ -327,6 +320,11 @@ class _$_SetupIntent implements _SetupIntent {
   @override
   _$SetupIntentCopyWith<_SetupIntent> get copyWith =>
       __$SetupIntentCopyWithImpl<_SetupIntent>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_SetupIntentToJson(this);
+  }
 }
 
 abstract class _SetupIntent implements SetupIntent {
@@ -337,10 +335,12 @@ abstract class _SetupIntent implements SetupIntent {
       required SetupStatus status,
       required List<PaymentMethodType> paymentMethodTypes,
       required FutureUsage usage,
-      StripeError<String>? lastSetupError,
       String? created,
       String? paymentMethodId,
       String? description}) = _$_SetupIntent;
+
+  factory _SetupIntent.fromJson(Map<String, dynamic> json) =
+      _$_SetupIntent.fromJson;
 
   @override
   String get id => throw _privateConstructorUsedError;
@@ -355,9 +355,7 @@ abstract class _SetupIntent implements SetupIntent {
       throw _privateConstructorUsedError;
   @override
   FutureUsage get usage => throw _privateConstructorUsedError;
-  @override
-  StripeError<String>? get lastSetupError => throw _privateConstructorUsedError;
-  @override
+  @override // StripeError<String>? lastSetupError,
   String? get created => throw _privateConstructorUsedError;
   @override
   String? get paymentMethodId => throw _privateConstructorUsedError;

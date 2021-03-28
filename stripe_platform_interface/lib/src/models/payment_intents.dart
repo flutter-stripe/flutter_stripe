@@ -23,7 +23,7 @@ class PaymentIntent with _$PaymentIntent {
     String? description,
     String? receiptEmail,
     String? canceledAt,
-    LastPaymentError? lastPaymentError,
+    // LastPaymentError? lastPaymentError,
     ShippingDetails? shipping,
   }) = _PaymentIntent;
 
@@ -34,50 +34,6 @@ class PaymentIntent with _$PaymentIntent {
 enum CaptureMethod { Manual, Automatic }
 
 enum ConfirmationMethod { Manual, Automatic }
-
-@JsonSerializable(explicitToJson: true)
-class LastPaymentError extends StripeError<String> {
-  LastPaymentError({
-    required String code,
-    required this.type,
-    required this.paymentMethod,
-    required String message,
-  }) : super(code, message);
-  final LastPaymentErrorType type;
-
-  final PaymentMethod paymentMethod;
-
-  @override
-  bool operator ==(Object other) =>
-      other is LastPaymentError &&
-      code == other.code &&
-      message == other.message &&
-      type == other.type &&
-      paymentMethod == other.paymentMethod;
-
-  factory LastPaymentError.fromJson(Map<String, dynamic> json) =>
-      _$LastPaymentErrorFromJson(json);
-  Map<String, dynamic> toJson() => _$LastPaymentErrorToJson(this);
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode * 38 +
-      code.hashCode +
-      message.hashCode +
-      type.hashCode +
-      paymentMethod.hashCode;
-}
-
-enum LastPaymentErrorType {
-  ApiConnection,
-  Api,
-  Authentication,
-  Card,
-  Idempotency,
-  InvalidRequest,
-  RateLimit,
-  Unknown
-}
 
 @freezed
 class ShippingDetails with _$ShippingDetails {
