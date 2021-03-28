@@ -793,14 +793,14 @@ class _$AddressTearOff {
 
   _Address call(
       {required String city,
-      required String county,
+      required String country,
       required String line1,
       required String line2,
       required String postalCode,
       required String state}) {
     return _Address(
       city: city,
-      county: county,
+      country: country,
       line1: line1,
       line2: line2,
       postalCode: postalCode,
@@ -819,7 +819,7 @@ const $Address = _$AddressTearOff();
 /// @nodoc
 mixin _$Address {
   String get city => throw _privateConstructorUsedError;
-  String get county => throw _privateConstructorUsedError;
+  String get country => throw _privateConstructorUsedError;
   String get line1 => throw _privateConstructorUsedError;
   String get line2 => throw _privateConstructorUsedError;
   String get postalCode => throw _privateConstructorUsedError;
@@ -836,7 +836,7 @@ abstract class $AddressCopyWith<$Res> {
       _$AddressCopyWithImpl<$Res>;
   $Res call(
       {String city,
-      String county,
+      String country,
       String line1,
       String line2,
       String postalCode,
@@ -854,7 +854,7 @@ class _$AddressCopyWithImpl<$Res> implements $AddressCopyWith<$Res> {
   @override
   $Res call({
     Object? city = freezed,
-    Object? county = freezed,
+    Object? country = freezed,
     Object? line1 = freezed,
     Object? line2 = freezed,
     Object? postalCode = freezed,
@@ -865,9 +865,9 @@ class _$AddressCopyWithImpl<$Res> implements $AddressCopyWith<$Res> {
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String,
-      county: county == freezed
-          ? _value.county
-          : county // ignore: cast_nullable_to_non_nullable
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
               as String,
       line1: line1 == freezed
           ? _value.line1
@@ -896,7 +896,7 @@ abstract class _$AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
   @override
   $Res call(
       {String city,
-      String county,
+      String country,
       String line1,
       String line2,
       String postalCode,
@@ -915,7 +915,7 @@ class __$AddressCopyWithImpl<$Res> extends _$AddressCopyWithImpl<$Res>
   @override
   $Res call({
     Object? city = freezed,
-    Object? county = freezed,
+    Object? country = freezed,
     Object? line1 = freezed,
     Object? line2 = freezed,
     Object? postalCode = freezed,
@@ -926,9 +926,9 @@ class __$AddressCopyWithImpl<$Res> extends _$AddressCopyWithImpl<$Res>
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String,
-      county: county == freezed
-          ? _value.county
-          : county // ignore: cast_nullable_to_non_nullable
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
               as String,
       line1: line1 == freezed
           ? _value.line1
@@ -956,7 +956,7 @@ class __$AddressCopyWithImpl<$Res> extends _$AddressCopyWithImpl<$Res>
 class _$_Address implements _Address {
   const _$_Address(
       {required this.city,
-      required this.county,
+      required this.country,
       required this.line1,
       required this.line2,
       required this.postalCode,
@@ -968,7 +968,7 @@ class _$_Address implements _Address {
   @override
   final String city;
   @override
-  final String county;
+  final String country;
   @override
   final String line1;
   @override
@@ -980,7 +980,7 @@ class _$_Address implements _Address {
 
   @override
   String toString() {
-    return 'Address(city: $city, county: $county, line1: $line1, line2: $line2, postalCode: $postalCode, state: $state)';
+    return 'Address(city: $city, country: $country, line1: $line1, line2: $line2, postalCode: $postalCode, state: $state)';
   }
 
   @override
@@ -989,8 +989,9 @@ class _$_Address implements _Address {
         (other is _Address &&
             (identical(other.city, city) ||
                 const DeepCollectionEquality().equals(other.city, city)) &&
-            (identical(other.county, county) ||
-                const DeepCollectionEquality().equals(other.county, county)) &&
+            (identical(other.country, country) ||
+                const DeepCollectionEquality()
+                    .equals(other.country, country)) &&
             (identical(other.line1, line1) ||
                 const DeepCollectionEquality().equals(other.line1, line1)) &&
             (identical(other.line2, line2) ||
@@ -1006,7 +1007,7 @@ class _$_Address implements _Address {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(city) ^
-      const DeepCollectionEquality().hash(county) ^
+      const DeepCollectionEquality().hash(country) ^
       const DeepCollectionEquality().hash(line1) ^
       const DeepCollectionEquality().hash(line2) ^
       const DeepCollectionEquality().hash(postalCode) ^
@@ -1026,7 +1027,7 @@ class _$_Address implements _Address {
 abstract class _Address implements Address {
   const factory _Address(
       {required String city,
-      required String county,
+      required String country,
       required String line1,
       required String line2,
       required String postalCode,
@@ -1037,7 +1038,7 @@ abstract class _Address implements Address {
   @override
   String get city => throw _privateConstructorUsedError;
   @override
-  String get county => throw _privateConstructorUsedError;
+  String get country => throw _privateConstructorUsedError;
   @override
   String get line1 => throw _privateConstructorUsedError;
   @override

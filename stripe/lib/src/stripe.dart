@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stripe_platform_interface/src/method_channel_stripe.dart';
 import 'package:stripe_platform_interface/src/models/apple_pay.dart';
+import 'package:stripe_platform_interface/src/models/app_info.dart';
 import 'package:stripe_platform_interface/src/models/errors.dart';
 import 'package:stripe_platform_interface/src/models/payment_intents.dart';
 import 'package:stripe_platform_interface/src/models/payment_methods.dart';
@@ -46,7 +47,7 @@ class Stripe {
 
   Future<void> initialise({
     required String publishableKey,
-    // AppInfo? appInfo,
+    required AppInfo appInfo,
     String? stripeAccountId,
     ThreeDSecureConfigurationParams? threeDSecureParams,
     String? merchantIdentifier,
@@ -56,6 +57,7 @@ class Stripe {
     }
     await _platform.initialise(
         publishableKey: publishableKey,
+        appInfo: appInfo,
         stripeAccountId: stripeAccountId,
         threeDSecureParams: threeDSecureParams,
         merchantIdentifier: merchantIdentifier);
@@ -75,7 +77,7 @@ class Stripe {
       final paymentMethod = await _platform.createPaymentMethod(data, options);
       return paymentMethod;
     } on StripeError catch (error) {
-      throw StripeError<CreatePaymentMethodError>(error.code, error.message);
+      throw StripeError.generic(message: error.message, code: error.message);
     }
   }
 
@@ -84,7 +86,7 @@ class Stripe {
       final paymentMethod = await _platform.retrievePaymentIntent(clientSecret);
       return paymentMethod;
     } on StripeError catch (error) {
-      throw StripeError<RetrievePaymentIntentError>(error.code, error.message);
+      throw StripeError.generic(message: error.message, code: error.message);
     }
   }
 
@@ -106,8 +108,7 @@ class Stripe {
     ApplePayPresentParams params,
   ) async {
     if (!isApplePaySupported.value) {
-      throw StripeError<ApplePayError>(
-          ApplePayError.canceled, 'APPLE_PAY_NOT_SUPPORTED_MESSAGE');
+      //throw StripeError<ApplePayError>(ApplePayError.canceled, 'APPLE_PAY_NOT_SUPPORTED_MESSAGE');
     }
     try {
       await _platform.presentApplePay(params);
@@ -120,8 +121,7 @@ class Stripe {
     String clientSecret,
   ) async {
     if (!isApplePaySupported.value) {
-      throw StripeError<ApplePayError>(
-          ApplePayError.canceled, 'APPLE_PAY_NOT_SUPPORTED_MESSAGE');
+      //throw StripeError<ApplePayError>(ApplePayError.canceled, 'APPLE_PAY_NOT_SUPPORTED_MESSAGE');
     }
     try {
       await _platform.confirmApplePayPayment(clientSecret);
@@ -138,7 +138,8 @@ class Stripe {
           await _platform.handleCardAction(paymentIntentClientSecret);
       return paymentIntent;
     } on StripeError catch (error) {
-      throw StripeError<CardActionError>(error.code, error.message);
+      //throw StripeError<CardActionError>(error.code, error.message);
+      rethrow;
     }
   }
 
@@ -152,7 +153,8 @@ class Stripe {
           paymentIntentClientSecret, data, options);
       return setupIntent;
     } on StripeError catch (error) {
-      throw StripeError<CardActionError>(error.code, error.message);
+      //throw StripeError<CardActionError>(error.code, error.message);
+      rethrow;
     }
   }
 
@@ -165,7 +167,8 @@ class Stripe {
       );
       return tokenId;
     } on StripeError catch (error) {
-      throw StripeError<CardActionError>(error.code, error.message);
+      //throw StripeError<CardActionError>(error.code, error.message);
+      rethrow;
     }
   }
 
@@ -177,7 +180,8 @@ class Stripe {
       );
       return option;
     } on StripeError catch (error) {
-      throw StripeError<CardActionError>(error.code, error.message);
+      //throw StripeError<CardActionError>(error.code, error.message);
+      rethrow;
     }
   }
 
@@ -187,7 +191,8 @@ class Stripe {
       final option = await _platform.presentPaymentSheet(clientSecret);
       return option;
     } on StripeError catch (error) {
-      throw StripeError<CardActionError>(error.code, error.message);
+      //throw StripeError<CardActionError>(error.code, error.message);
+      rethrow;
     } finally {
       _isPaymentSheetDisplayed.value = false;
     }
@@ -198,7 +203,8 @@ class Stripe {
       final option = await _platform.paymentSheetConfirmPayment();
       return option;
     } on StripeError catch (error) {
-      throw StripeError<CardActionError>(error.code, error.message);
+      //throw StripeError<CardActionError>(error.code, error.message);
+      rethrow;
     }
   }
 
@@ -207,7 +213,8 @@ class Stripe {
       final option = await _platform.presentPaymentOptions();
       return option;
     } on StripeError catch (error) {
-      throw StripeError<CardActionError>(error.code, error.message);
+      //throw StripeError<CardActionError>(error.code, error.message);
+      rethrow;
     }
   }
 }
@@ -217,11 +224,13 @@ class StripeProvider extends StatefulWidget {
     Key? key,
     required this.publishableKey,
     required this.child,
+    required this.appInfo,
     this.merchantIdentifier,
     this.threeDSecureParams,
     this.stripeAccountId,
   }) : super(key: key);
 
+  final AppInfo appInfo;
   final Widget child;
   final String publishableKey;
   final String? merchantIdentifier;
@@ -259,6 +268,7 @@ class _StripeProviderState extends State<StripeProvider> {
 
   Future<void> initialise() async {
     Stripe.instance.initialise(
+      appInfo: widget.appInfo,
       publishableKey: widget.publishableKey,
       stripeAccountId: widget.stripeAccountId,
       threeDSecureParams: widget.threeDSecureParams,

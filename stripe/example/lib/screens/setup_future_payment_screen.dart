@@ -9,7 +9,7 @@ class SetupFuturePaymentScreen extends StatefulWidget {
 
 class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
   PaymentIntent retrievedPaymentIntent;
-  CardFieldInputDetails card;
+  CardFieldInputDetails _card;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,13 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
         body: Column(
           children: [
             TextField(),
-            CardField(),
+            CardField(
+              onCardChanged: (card) {
+                setState(() {
+                  _card = card;
+                });
+              },
+            ),
             ElevatedButton(
               onPressed: _handlePayPress,
               child: Text('Save'),
@@ -36,7 +42,7 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
   }
 
   Future<void> _handlePayPress() async {
-    if (card == null) {
+    if (_card == null) {
       return;
     }
 
@@ -47,19 +53,22 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
     final BillingDetails billingDetails = BillingDetails(
       email: 'email',
       phone: '+48888000888',
-      /*addressCity: 'Houston',
-      addressCountry: 'US',
-      addressLine1: '1459  Circle Drive',
-      addressLine2: 'Texas',
-      addressPostalCode: '77063',*/
+      address: Address(
+        city: 'Houston',
+        country: 'US', // TODO country
+        line1: '1459  Circle Drive',
+        line2: 'test',
+        state: 'Texas',
+        postalCode: '77063',
+      ),
     ); // mocked data for tests
 
     // 3. Confirm setup intent
     await Stripe.instance
         .confirmSetupIntent(
             clientSecret,
-            CardParams(
-              details: card,
+            PaymentMethodParams.card(
+              details: _card,
               //billingDetails,
             ))
         .then((setupIntentResult) {

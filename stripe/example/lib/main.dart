@@ -21,6 +21,7 @@ class App extends StatelessWidget {
     return StripeProvider(
       publishableKey: 'pk_test_oDBTDWWrb1kezz6lwq9zmeoW00XmZlpvM6',
       merchantIdentifier: 'Hello',
+      appInfo: AppInfo(),
       child: DismissFocusOverlay(
         child: MaterialApp(
           //  theme: ThemeData.light(),

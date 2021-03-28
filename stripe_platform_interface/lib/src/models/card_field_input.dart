@@ -5,8 +5,7 @@ part 'card_field_input.g.dart';
 
 @JsonSerializable()
 class CardDecoration extends Equatable {
-
-  CardDecoration( {
+  CardDecoration({
     this.backgroundColor,
     this.textColor,
     this.borderColor,
@@ -14,7 +13,7 @@ class CardDecoration extends Equatable {
     this.textErrorColor,
     this.borderRadius,
   });
-  
+
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   final Color? backgroundColor;
 
@@ -31,12 +30,12 @@ class CardDecoration extends Equatable {
   final Color? textErrorColor;
 
   @override
-  List<Object?> get props => [backgroundColor, textColor,borderColor, textErrorColor, borderWidth ];
+  List<Object?> get props =>
+      [backgroundColor, textColor, borderColor, textErrorColor, borderWidth];
 
   factory CardDecoration.fromJson(Map<String, dynamic> json) =>
       _$CardDecorationFromJson(json);
   Map<String, dynamic> toJson() => _$CardDecorationToJson(this);
-  
 }
 
 class ColorKey {
@@ -57,19 +56,19 @@ class ColorKey {
 @JsonSerializable()
 class CardFieldInputDetails {
   CardFieldInputDetails({
-    required this.last4,
+    required this.number,
+    required this.cvc,
     required this.expiryMonth,
     required this.expiryYear,
     this.postalCode,
-    required this.brand,
     required this.complete,
   });
 
-  final String last4;
+  final String number;
+  final String cvc;
   final int expiryMonth;
   final int expiryYear;
   final String? postalCode;
-  final CardBrand brand;
   final bool complete;
 
   factory CardFieldInputDetails.fromJson(Map<String, dynamic> json) =>

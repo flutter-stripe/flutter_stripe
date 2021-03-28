@@ -44,7 +44,7 @@ class BillingDetails with _$BillingDetails {
 class Address with _$Address {
   const factory Address({
     required String city,
-    required String county,
+    required String country,
     required String line1,
     required String line2,
     required String postalCode,

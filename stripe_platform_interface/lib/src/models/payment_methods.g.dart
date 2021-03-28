@@ -112,7 +112,7 @@ Map<String, dynamic> _$_$_BillingDetailsToJson(_$_BillingDetails instance) =>
 _$_Address _$_$_AddressFromJson(Map<String, dynamic> json) {
   return _$_Address(
     city: json['city'] as String,
-    county: json['county'] as String,
+    country: json['country'] as String,
     line1: json['line1'] as String,
     line2: json['line2'] as String,
     postalCode: json['postalCode'] as String,
@@ -123,7 +123,7 @@ _$_Address _$_$_AddressFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$_$_AddressToJson(_$_Address instance) =>
     <String, dynamic>{
       'city': instance.city,
-      'county': instance.county,
+      'country': instance.country,
       'line1': instance.line1,
       'line2': instance.line2,
       'postalCode': instance.postalCode,
