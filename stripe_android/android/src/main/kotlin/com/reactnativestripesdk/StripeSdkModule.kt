@@ -21,7 +21,6 @@ class StripeSdkModule(context: ActivityPluginBinding) : ReactContextBaseJavaModu
   private var confirmSetupIntentPromise: Promise? = null
 
   private val mActivityEventListener = object : BaseActivityEventListener() {
-
     override fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent) {
       stripe.onSetupResult(requestCode, data, object : ApiResultCallback<SetupIntentResult> {
         override fun onSuccess(result: SetupIntentResult) {
@@ -51,7 +50,9 @@ class StripeSdkModule(context: ActivityPluginBinding) : ReactContextBaseJavaModu
           val paymentIntent = result.intent
 
           when (paymentIntent.status) {
-            StripeIntent.Status.Succeeded -> {
+            StripeIntent.Status.Succeeded,
+            StripeIntent.Status.Processing,
+            StripeIntent.Status.RequiresCapture -> {
               confirmPromise?.resolve(mapFromPaymentIntentResult(paymentIntent))
               handleCardActionPromise?.resolve(mapFromPaymentIntentResult(paymentIntent))
             }
@@ -87,7 +88,7 @@ class StripeSdkModule(context: ActivityPluginBinding) : ReactContextBaseJavaModu
   private lateinit var stripe: Stripe
 
   init {
-    context.addActivityResultListener(mActivityEventListener)
+    context.addActivityResultListener(mActivityEventListener);
   }
 
   private fun configure3dSecure(params: ReadableMap) {
