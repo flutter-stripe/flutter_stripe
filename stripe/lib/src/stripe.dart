@@ -81,17 +81,6 @@ class Stripe {
     }
   }
 
-  Future<PaymentMethod> createPaymentMethodFromGooglePay(
-      Map<String, dynamic> data) async {
-    try {
-      final paymentMethod =
-          await _platform.createPaymentMethodFromGooglePay(data);
-      return paymentMethod;
-    } on StripeError catch (error) {
-      throw StripeError.generic(message: error.message, code: error.message);
-    }
-  }
-
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret) async {
     try {
       final paymentMethod = await _platform.retrievePaymentIntent(clientSecret);

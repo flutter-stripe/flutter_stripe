@@ -41,9 +41,6 @@ abstract class StripePlatform extends PlatformInterface {
     Map<String, String> options = const {},
   ]);
 
-  Future<PaymentMethod> createPaymentMethodFromGooglePay(
-      Map<String, dynamic> data);
-
   Future<PaymentIntent> handleCardAction(String paymentIntentClientSecret);
   Future<PaymentIntent> confirmPaymentMethod(
       String paymentIntentClientSecret, PaymentMethodParams data,

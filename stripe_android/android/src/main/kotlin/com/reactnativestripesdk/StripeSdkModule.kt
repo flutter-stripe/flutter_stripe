@@ -1,16 +1,13 @@
 package com.reactnativestripesdk
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.AsyncTask
 import com.facebook.react.bridge.*
 import com.stripe.android.*
-import com.stripe.android.model.PaymentMethod
-import com.stripe.android.model.PaymentMethodCreateParams
-import com.stripe.android.model.StripeIntent
-import com.stripe.android.model.Token
+import com.stripe.android.model.*
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
-import org.json.JSONObject
 
 class StripeSdkModule(context: ActivityPluginBinding) : ReactContextBaseJavaModule(context) {
   override fun getName(): String {
@@ -231,30 +228,5 @@ class StripeSdkModule(context: ActivityPluginBinding) : ReactContextBaseJavaModu
     } catch (error: PaymentMethodCreateParamsException) {
       promise.reject(ConfirmPaymentErrorType.Failed.toString(), error.localizedMessage)
     }
-  }
-
-
-  /// not part of original plugin
-
-  @ReactMethod
-  fun createPaymentMethodFromGooglePay(data: ReadableMap, promise: Promise) {
-    val paymentDataJson = JSONObject(data)
-
-    //val shippingInformation = GooglePayResult.fromJson(paymentDataJson).shippingInformation
-    // TODO do we need it?
-    val paymentMethodCreateParams = PaymentMethodCreateParams.createFromGooglePay(paymentDataJson)
-
-    stripe.createPaymentMethod(
-            paymentMethodCreateParams,
-            callback = object : ApiResultCallback<PaymentMethod> {
-              override fun onError(e: Exception) {
-                confirmPromise?.reject("Failed", e.localizedMessage)
-              }
-
-              override fun onSuccess(result: PaymentMethod) {
-                val paymentMethodMap: WritableMap = mapFromPaymentMethod(result)
-                promise.resolve(paymentMethodMap)
-              }
-            })
   }
 }
