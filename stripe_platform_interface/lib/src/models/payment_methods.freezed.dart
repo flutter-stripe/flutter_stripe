@@ -383,7 +383,7 @@ class __$PaymentMethodCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_PaymentMethod implements _PaymentMethod {
@@ -703,7 +703,7 @@ class __$BillingDetailsCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_BillingDetails implements _BillingDetails {
@@ -950,7 +950,7 @@ class __$AddressCopyWithImpl<$Res> extends _$AddressCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_Address implements _Address {
@@ -1171,7 +1171,7 @@ class __$AuBecsDebitCopyWithImpl<$Res> extends _$AuBecsDebitCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_AuBecsDebit implements _AuBecsDebit {
@@ -1358,7 +1358,7 @@ class __$BacsDebitCopyWithImpl<$Res> extends _$BacsDebitCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_BacsDebit implements _BacsDebit {
@@ -1612,7 +1612,7 @@ class __$CardCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_Card implements _Card {
@@ -1815,7 +1815,7 @@ class __$FpxCopyWithImpl<$Res> extends _$FpxCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_Fpx implements _Fpx {
@@ -1967,7 +1967,7 @@ class __$IdealCopyWithImpl<$Res> extends _$IdealCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_Ideal implements _Ideal {
@@ -2158,7 +2158,7 @@ class __$SepaDebitCopyWithImpl<$Res> extends _$SepaDebitCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_SepaDebit implements _SepaDebit {
@@ -2331,7 +2331,7 @@ class __$SofortCopyWithImpl<$Res> extends _$SofortCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_Sofort implements _Sofort {
@@ -2472,7 +2472,7 @@ class __$UpiCopyWithImpl<$Res> extends _$UpiCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_Upi implements _Upi {
@@ -2664,6 +2664,8 @@ abstract class _$PaymentMethodParamsCardCopyWith<$Res>
       {String type,
       CardFieldInputDetails details,
       PaymentIntentsFutureUsage? setupFutureUsage});
+
+  $CardFieldInputDetailsCopyWith<$Res> get details;
 }
 
 /// @nodoc
@@ -2698,6 +2700,13 @@ class __$PaymentMethodParamsCardCopyWithImpl<$Res>
           : setupFutureUsage // ignore: cast_nullable_to_non_nullable
               as PaymentIntentsFutureUsage?,
     ));
+  }
+
+  @override
+  $CardFieldInputDetailsCopyWith<$Res> get details {
+    return $CardFieldInputDetailsCopyWith<$Res>(_value.details, (value) {
+      return _then(_value.copyWith(details: value));
+    });
   }
 }
 

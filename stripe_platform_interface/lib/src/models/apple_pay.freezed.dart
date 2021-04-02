@@ -172,7 +172,7 @@ class __$ApplePayShippingMethodCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_ApplePayShippingMethod implements _ApplePayShippingMethod {
@@ -622,7 +622,7 @@ class __$ApplePayPresentParamsCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_ApplePayPresentParams implements _ApplePayPresentParams {

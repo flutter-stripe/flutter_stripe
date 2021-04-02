@@ -18,6 +18,7 @@ enum ApplePayContactFieldsType {
 
 @freezed
 class ApplePayShippingMethod with _$ApplePayShippingMethod {
+  @JsonSerializable(explicitToJson: true)
   const factory ApplePayShippingMethod({
     required String label,
     required String amount,
@@ -43,6 +44,7 @@ class ApplePayCartSummaryItem with _$ApplePayCartSummaryItem {
 
 @freezed
 class ApplePayPresentParams with _$ApplePayPresentParams {
+  @JsonSerializable(explicitToJson: true)
   const factory ApplePayPresentParams({
     required List<ApplePayCartSummaryItem> cartItems,
     required String country,

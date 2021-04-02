@@ -2,13 +2,12 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:stripe_platform_interface/src/models/payment_methods.dart';
 
-import 'errors.dart';
-
 part 'payment_intents.freezed.dart';
 part 'payment_intents.g.dart';
 
 @freezed
 class PaymentIntent with _$PaymentIntent {
+  @JsonSerializable(explicitToJson: true)
   const factory PaymentIntent({
     required String id,
     required num amount,
@@ -37,6 +36,7 @@ enum ConfirmationMethod { Manual, Automatic }
 
 @freezed
 class ShippingDetails with _$ShippingDetails {
+  @JsonSerializable(explicitToJson: true)
   const factory ShippingDetails({
     required Address address,
     required String name,

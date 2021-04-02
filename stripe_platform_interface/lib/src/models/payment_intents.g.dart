@@ -44,7 +44,7 @@ Map<String, dynamic> _$_$_PaymentIntentToJson(_$_PaymentIntent instance) =>
       'description': instance.description,
       'receiptEmail': instance.receiptEmail,
       'canceledAt': instance.canceledAt,
-      'shipping': instance.shipping,
+      'shipping': instance.shipping?.toJson(),
     };
 
 K _$enumDecode<K, V>(
@@ -106,7 +106,7 @@ _$_ShippingDetails _$_$_ShippingDetailsFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$_$_ShippingDetailsToJson(_$_ShippingDetails instance) =>
     <String, dynamic>{
-      'address': instance.address,
+      'address': instance.address.toJson(),
       'name': instance.name,
       'carrier': instance.carrier,
       'phone': instance.phone,

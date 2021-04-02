@@ -1,41 +1,27 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/painting.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'card_field_input.g.dart';
+part 'card_field_input.freezed.dart';
 
-@JsonSerializable()
-class CardDecoration extends Equatable {
-  CardDecoration({
-    this.backgroundColor,
-    this.textColor,
-    this.borderColor,
-    this.borderWidth,
-    this.textErrorColor,
-    this.borderRadius,
-  });
-
-  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  final Color? backgroundColor;
-
-  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  final Color? textColor;
-
-  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  final Color? borderColor;
-
-  final double? borderWidth;
-  final double? borderRadius;
-
-  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  final Color? textErrorColor;
-
-  @override
-  List<Object?> get props =>
-      [backgroundColor, textColor, borderColor, textErrorColor, borderWidth];
+@freezed
+class CardDecoration with _$CardDecoration {
+  @JsonSerializable(explicitToJson: true)
+  factory CardDecoration({
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+        Color? backgroundColor,
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+        Color? textColor,
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+        Color? borderColor,
+    double? borderWidth,
+    double? borderRadius,
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+        Color? textErrorColor,
+  }) = _CardDecoration;
 
   factory CardDecoration.fromJson(Map<String, dynamic> json) =>
       _$CardDecorationFromJson(json);
-  Map<String, dynamic> toJson() => _$CardDecorationToJson(this);
 }
 
 class ColorKey {
@@ -53,38 +39,30 @@ class ColorKey {
   }
 }
 
-@JsonSerializable()
-class CardFieldInputDetails {
-  CardFieldInputDetails({
-    required this.number,
-    required this.cvc,
-    required this.expiryMonth,
-    required this.expiryYear,
-    this.postalCode,
-    required this.complete,
-  });
-
-  final String number;
-  final String cvc;
-  final int expiryMonth;
-  final int expiryYear;
-  final String? postalCode;
-  final bool complete;
+@freezed
+class CardFieldInputDetails with _$CardFieldInputDetails {
+  @JsonSerializable(explicitToJson: true)
+  const factory CardFieldInputDetails({
+    required String last4,
+    required int expiryMonth,
+    required int expiryYear,
+    required CardBrand brand,
+    required bool complete,
+    required String? postalCode,
+  }) = _CardFieldInputDetails;
 
   factory CardFieldInputDetails.fromJson(Map<String, dynamic> json) =>
       _$CardFieldInputDetailsFromJson(json);
-  Map<String, dynamic> toJson() => _$CardFieldInputDetailsToJson(this);
 }
 
-@JsonSerializable()
-class CardFieldFocusName {
-  final CardFieldName? focusedField;
-
-  CardFieldFocusName(this.focusedField);
+@freezed
+class CardFieldFocusName with _$CardFieldFocusName {
+  @JsonSerializable(explicitToJson: true)
+  factory CardFieldFocusName({CardFieldName? focusedField}) =
+      _CardFieldFocusName;
 
   factory CardFieldFocusName.fromJson(Map<String, dynamic> json) =>
       _$CardFieldFocusNameFromJson(json);
-  Map<String, dynamic> toJson() => _$CardFieldFocusNameToJson(this);
 }
 
 enum CardFieldName {

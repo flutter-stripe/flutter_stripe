@@ -31,16 +31,16 @@ Map<String, dynamic> _$_$_PaymentMethodToJson(_$_PaymentMethod instance) =>
       'id': instance.id,
       'liveMode': instance.liveMode,
       'customerId': instance.customerId,
-      'billingDetails': instance.billingDetails,
+      'billingDetails': instance.billingDetails.toJson(),
       'type': _$PaymentMethodTypeEnumMap[instance.type],
-      'auBecsDebit': instance.auBecsDebit,
-      'bacsDebit': instance.bacsDebit,
-      'card': instance.card,
-      'fpx': instance.fpx,
-      'ideal': instance.ideal,
-      'sepaDebit': instance.sepaDebit,
-      'sofort': instance.sofort,
-      'upi': instance.upi,
+      'auBecsDebit': instance.auBecsDebit.toJson(),
+      'bacsDebit': instance.bacsDebit.toJson(),
+      'card': instance.card.toJson(),
+      'fpx': instance.fpx.toJson(),
+      'ideal': instance.ideal.toJson(),
+      'sepaDebit': instance.sepaDebit.toJson(),
+      'sofort': instance.sofort.toJson(),
+      'upi': instance.upi.toJson(),
     };
 
 K _$enumDecode<K, V>(
@@ -106,7 +106,7 @@ Map<String, dynamic> _$_$_BillingDetailsToJson(_$_BillingDetails instance) =>
       'email': instance.email,
       'phone': instance.phone,
       'name': instance.name,
-      'address': instance.address,
+      'address': instance.address?.toJson(),
     };
 
 _$_Address _$_$_AddressFromJson(Map<String, dynamic> json) {
