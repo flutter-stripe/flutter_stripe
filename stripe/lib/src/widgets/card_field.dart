@@ -13,13 +13,21 @@ typedef CardFocusCallback = void Function(CardFieldName? focusedField);
 
 // TODO refactor this for parameters
 class CardField extends StatelessWidget {
+  final CardChangedCallback onCardChanged;
+
+  const CardField({Key? key, required this.onCardChanged}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        return AndroidCardField();
+        return AndroidCardField(
+          onChange: onCardChanged,
+        );
       case TargetPlatform.iOS:
-        return UiKitCardField();
+        return UiKitCardField(
+          onChange: onCardChanged,
+        );
       default:
         throw UnsupportedError("Unsupported platform view");
     }
@@ -265,22 +273,4 @@ class _UiKitCardFieldState extends State<UiKitCardField> {
     } */
     super.didUpdateWidget(oldWidget);
   }
-}
-
-class NativeCardDetails extends CardFieldInputDetails {
-  NativeCardDetails({
-    required String last4,
-    required int expiryMonth,
-    required int expiryYear,
-    String? postalCode,
-    required CardBrand brand,
-    required bool complete,
-  }) : super(
-          last4: last4,
-          expiryMonth: expiryMonth,
-          expiryYear: expiryYear,
-          postalCode: postalCode,
-          brand: brand,
-          complete: complete,
-        );
 }

@@ -8,7 +8,9 @@ class NoWebhookPaymentScreen extends StatelessWidget {
       appBar: AppBar(),
       body: Column(
         children: [
-          CardField(),
+          CardField(
+            onCardChanged: (_) {},
+          ),
           ElevatedButton(
             onPressed: _handlePayPress,
             child: Text('Pay'),

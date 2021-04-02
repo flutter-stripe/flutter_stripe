@@ -9,7 +9,7 @@ class SetupFuturePaymentScreen extends StatefulWidget {
 
 class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
   PaymentIntent retrievedPaymentIntent;
-  CardFieldInputDetails card;
+  CardFieldInputDetails _card;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,13 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
         body: Column(
           children: [
             TextField(),
-            CardField(),
+            CardField(
+              onCardChanged: (card) {
+                setState(() {
+                  _card = card;
+                });
+              },
+            ),
             ElevatedButton(
               onPressed: _handlePayPress,
               child: Text('Save'),
@@ -36,7 +42,7 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
   }
 
   Future<void> _handlePayPress() async {
-    if (card == null) {
+    if (_card == null) {
       return;
     }
 
@@ -47,19 +53,19 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
     final BillingDetails billingDetails = BillingDetails(
       email: 'email',
       phone: '+48888000888',
-      /*addressCity: 'Houston',
-      addressCountry: 'US',
+      addressCity: 'Houston',
+      addressCountry: 'US', // TODO country
       addressLine1: '1459  Circle Drive',
-      addressLine2: 'Texas',
-      addressPostalCode: '77063',*/
+      addressLine2: 'test',
+      adressPostalCode: '77063',
     ); // mocked data for tests
 
     // 3. Confirm setup intent
     await Stripe.instance
         .confirmSetupIntent(
             clientSecret,
-            CardParams(
-              details: card,
+            PaymentMethodParams.card(
+              details: _card,
               //billingDetails,
             ))
         .then((setupIntentResult) {
@@ -68,8 +74,8 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
               'Success: Setup intent created. Intent status: ${setupIntentResult.status}')));
       //setSetupIntent(setupIntentResult);
     }).catchError((error) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Error code: ${error.code} - ${error.message}')));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Error code: ${error}')));
     });
   }
 

@@ -12,7 +12,7 @@ abstract class StripePlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static StripePlatform _instance = MethodChannelStripe();
+  static StripePlatform _instance = MethodChannelStripeFactory().create();
 
   /// The default instance of [StripePlatform] to use.
   ///
@@ -28,10 +28,10 @@ abstract class StripePlatform extends PlatformInterface {
 
   Future<void> initialise({
     required String publishableKey,
-    // AppInfo? appInfo,
     String? stripeAccountId,
     ThreeDSecureConfigurationParams? threeDSecureParams,
     String? merchantIdentifier,
+    String? urlScheme,
   });
 
   Future<PaymentMethod> createPaymentMethod(

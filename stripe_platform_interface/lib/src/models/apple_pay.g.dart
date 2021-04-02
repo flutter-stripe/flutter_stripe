@@ -6,9 +6,9 @@ part of 'apple_pay.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ApplePayShippingMethod _$ApplePayShippingMethodFromJson(
+_$_ApplePayShippingMethod _$_$_ApplePayShippingMethodFromJson(
     Map<String, dynamic> json) {
-  return ApplePayShippingMethod(
+  return _$_ApplePayShippingMethod(
     label: json['label'] as String,
     amount: json['amount'] as String,
     identifier: json['identifier'] as String,
@@ -18,13 +18,13 @@ ApplePayShippingMethod _$ApplePayShippingMethodFromJson(
   );
 }
 
-Map<String, dynamic> _$ApplePayShippingMethodToJson(
-        ApplePayShippingMethod instance) =>
+Map<String, dynamic> _$_$_ApplePayShippingMethodToJson(
+        _$_ApplePayShippingMethod instance) =>
     <String, dynamic>{
       'label': instance.label,
       'amount': instance.amount,
-      'type': _$ApplePayShippingMethodTypeEnumMap[instance.type],
       'identifier': instance.identifier,
+      'type': _$ApplePayShippingMethodTypeEnumMap[instance.type],
       'detail': instance.detail,
     };
 
@@ -70,35 +70,35 @@ const _$ApplePayShippingMethodTypeEnumMap = {
   ApplePayShippingMethodType.pending: 'pending',
 };
 
-ApplePayCartSummaryItem _$ApplePayCartSummaryItemFromJson(
+_$_ApplePayCartSummaryItem _$_$_ApplePayCartSummaryItemFromJson(
     Map<String, dynamic> json) {
-  return ApplePayCartSummaryItem(
+  return _$_ApplePayCartSummaryItem(
     label: json['label'] as String,
     amount: json['amount'] as String,
   );
 }
 
-Map<String, dynamic> _$ApplePayCartSummaryItemToJson(
-        ApplePayCartSummaryItem instance) =>
+Map<String, dynamic> _$_$_ApplePayCartSummaryItemToJson(
+        _$_ApplePayCartSummaryItem instance) =>
     <String, dynamic>{
       'label': instance.label,
       'amount': instance.amount,
     };
 
-ApplePayPresentParams _$ApplePayPresentParamsFromJson(
+_$_ApplePayPresentParams _$_$_ApplePayPresentParamsFromJson(
     Map<String, dynamic> json) {
-  return ApplePayPresentParams(
+  return _$_ApplePayPresentParams(
     cartItems: (json['cartItems'] as List<dynamic>)
         .map((e) => ApplePayCartSummaryItem.fromJson(e as Map<String, dynamic>))
         .toList(),
     country: json['country'] as String,
     currency: json['currency'] as String,
-    requiredBillingContactFields:
-        (json['requiredBillingContactFields'] as List<dynamic>?)
-            ?.map((e) => _$enumDecode(_$ApplePayContactFieldsTypeEnumMap, e))
-            .toList(),
     requiredShippingAddressFields:
         (json['requiredShippingAddressFields'] as List<dynamic>?)
+            ?.map((e) => _$enumDecode(_$ApplePayContactFieldsTypeEnumMap, e))
+            .toList(),
+    requiredBillingContactFields:
+        (json['requiredBillingContactFields'] as List<dynamic>?)
             ?.map((e) => _$enumDecode(_$ApplePayContactFieldsTypeEnumMap, e))
             .toList(),
     shippingMethods: (json['shippingMethods'] as List<dynamic>?)
@@ -107,8 +107,8 @@ ApplePayPresentParams _$ApplePayPresentParamsFromJson(
   );
 }
 
-Map<String, dynamic> _$ApplePayPresentParamsToJson(
-        ApplePayPresentParams instance) =>
+Map<String, dynamic> _$_$_ApplePayPresentParamsToJson(
+        _$_ApplePayPresentParams instance) =>
     <String, dynamic>{
       'cartItems': instance.cartItems.map((e) => e.toJson()).toList(),
       'country': instance.country,

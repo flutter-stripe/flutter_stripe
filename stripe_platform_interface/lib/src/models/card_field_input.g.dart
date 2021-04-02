@@ -6,18 +6,18 @@ part of 'card_field_input.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CardDecoration _$CardDecorationFromJson(Map<String, dynamic> json) {
-  return CardDecoration(
+_$_CardDecoration _$_$_CardDecorationFromJson(Map<String, dynamic> json) {
+  return _$_CardDecoration(
     backgroundColor: ColorKey.fromJson(json['backgroundColor']),
     textColor: ColorKey.fromJson(json['textColor']),
     borderColor: ColorKey.fromJson(json['borderColor']),
     borderWidth: (json['borderWidth'] as num?)?.toDouble(),
-    textErrorColor: ColorKey.fromJson(json['textErrorColor']),
     borderRadius: (json['borderRadius'] as num?)?.toDouble(),
+    textErrorColor: ColorKey.fromJson(json['textErrorColor']),
   );
 }
 
-Map<String, dynamic> _$CardDecorationToJson(CardDecoration instance) =>
+Map<String, dynamic> _$_$_CardDecorationToJson(_$_CardDecoration instance) =>
     <String, dynamic>{
       'backgroundColor': ColorKey.toJson(instance.backgroundColor),
       'textColor': ColorKey.toJson(instance.textColor),
@@ -27,27 +27,27 @@ Map<String, dynamic> _$CardDecorationToJson(CardDecoration instance) =>
       'textErrorColor': ColorKey.toJson(instance.textErrorColor),
     };
 
-CardFieldInputDetails _$CardFieldInputDetailsFromJson(
+_$_CardFieldInputDetails _$_$_CardFieldInputDetailsFromJson(
     Map<String, dynamic> json) {
-  return CardFieldInputDetails(
+  return _$_CardFieldInputDetails(
     last4: json['last4'] as String,
     expiryMonth: json['expiryMonth'] as int,
     expiryYear: json['expiryYear'] as int,
-    postalCode: json['postalCode'] as String?,
     brand: _$enumDecode(_$CardBrandEnumMap, json['brand']),
     complete: json['complete'] as bool,
+    postalCode: json['postalCode'] as String?,
   );
 }
 
-Map<String, dynamic> _$CardFieldInputDetailsToJson(
-        CardFieldInputDetails instance) =>
+Map<String, dynamic> _$_$_CardFieldInputDetailsToJson(
+        _$_CardFieldInputDetails instance) =>
     <String, dynamic>{
       'last4': instance.last4,
       'expiryMonth': instance.expiryMonth,
       'expiryYear': instance.expiryYear,
-      'postalCode': instance.postalCode,
       'brand': _$CardBrandEnumMap[instance.brand],
       'complete': instance.complete,
+      'postalCode': instance.postalCode,
     };
 
 K _$enumDecode<K, V>(
@@ -87,13 +87,16 @@ const _$CardBrandEnumMap = {
   CardBrand.unknown: 'unknown',
 };
 
-CardFieldFocusName _$CardFieldFocusNameFromJson(Map<String, dynamic> json) {
-  return CardFieldFocusName(
-    _$enumDecodeNullable(_$CardFieldNameEnumMap, json['focusedField']),
+_$_CardFieldFocusName _$_$_CardFieldFocusNameFromJson(
+    Map<String, dynamic> json) {
+  return _$_CardFieldFocusName(
+    focusedField:
+        _$enumDecodeNullable(_$CardFieldNameEnumMap, json['focusedField']),
   );
 }
 
-Map<String, dynamic> _$CardFieldFocusNameToJson(CardFieldFocusName instance) =>
+Map<String, dynamic> _$_$_CardFieldFocusNameToJson(
+        _$_CardFieldFocusName instance) =>
     <String, dynamic>{
       'focusedField': _$CardFieldNameEnumMap[instance.focusedField],
     };

@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/services.dart';
-import 'package:flutter/foundation.dart';
 import 'package:stripe_platform_interface/src/models/setup_intent.dart';
 import 'package:stripe_platform_interface/src/models/three_d_secure.dart';
 import 'package:stripe_platform_interface/src/models/payment_methods.dart';
@@ -9,20 +8,25 @@ import 'package:stripe_platform_interface/src/models/payment_intents.dart';
 import 'package:stripe_platform_interface/src/models/apple_pay.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
-const Map<String, String> appInfo = {
-  "name": "flutter_stripe",
-  "partnerId": "flutter_stripe",
-  "version": "0.0.0",
-  "url": "https://github.com/fluttercommunity/flutter_stripe/"
-};
+import '../stripe_platform_interface.dart';
+import 'models/app_info.dart';
+
+const _appInfo = AppInfo(
+    name: "flutter_stripe",
+    version: "0.0.0",
+    url: "https://github.com/fluttercommunity/flutter_stripe/");
 
 /// An implementation of [StripePlatform] that uses method channels.
 class MethodChannelStripe extends StripePlatform {
-  @visibleForTesting
-  MethodChannel methodChannel = MethodChannel('flutter.stripe/payments');
+  MethodChannelStripe({
+    required MethodChannel methodChannel,
+    required EventChannel eventChannel,
+  })   : _eventChannel = eventChannel,
+        _methodChannel = methodChannel;
 
-  @visibleForTesting
-  EventChannel eventChannel = EventChannel('flutter.stripe/events');
+  final MethodChannel _methodChannel;
+
+  final EventChannel _eventChannel;
 
   @override
   Future<void> initialise({
@@ -30,14 +34,27 @@ class MethodChannelStripe extends StripePlatform {
     String? stripeAccountId,
     ThreeDSecureConfigurationParams? threeDSecureParams,
     String? merchantIdentifier,
+    String? urlScheme,
   }) async {
-    await methodChannel.invokeMethod('initialise', {
+    await _methodChannel.invokeMethod('initialise', {
       'publishableKey': publishableKey,
       'stripeAccountId': stripeAccountId,
       'merchantIdentifier': merchantIdentifier,
-      'appInfo': appInfo
-      //   'threeDSecureParams': threeDSecureParams,
+      'appInfo': _appInfo.toJson(),
+      'threeDSecureParams': threeDSecureParams,
     });
+  }
+
+  @override
+  Future<PaymentMethod> createPaymentMethod(
+    PaymentMethodParams params, [
+    Map<String, String> options = const {},
+  ]) async {
+    final result = await _methodChannel.invokeMethod('createPaymentMethod', {
+      'data': params.toJson(),
+      'options': options,
+    });
+    return PaymentMethod.fromJson(result.unfoldToNonNull());
   }
 
   @override
@@ -47,51 +64,66 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<void> confirmApplePayPayment(String clientSecret) {
-    // TODO: implement confirmApplePayPayment
-    throw UnimplementedError();
+  Future<void> confirmApplePayPayment(String clientSecret) async {
+    await _methodChannel.invokeMethod('confirmApplePayPayment', {
+      'clientSecret': clientSecret,
+    });
   }
 
   @override
   Future<PaymentIntent> confirmPaymentMethod(
-      String paymentIntentClientSecret, PaymentMethodParams data,
-      [Map<String, String> options = const {}]) {
-    // TODO: implement confirmPaymentMethod
-    throw UnimplementedError();
+    String paymentIntentClientSecret,
+    PaymentMethodParams params, [
+    Map<String, String> options = const {},
+  ]) async {
+    final result = await _methodChannel.invokeMethod('confirmPaymentMethod', {
+      'paymentIntentClientSecret': paymentIntentClientSecret,
+      'data': params.toJson(),
+      'options': options,
+    });
+    return PaymentIntent.fromJson(result.unfoldToNonNull());
   }
 
   @override
   Future<SetupIntent> confirmSetupIntent(
-      String paymentIntentClientSecret, PaymentMethodParams data,
-      [Map<String, String> options = const {}]) {
-    // TODO: implement confirmSetupIntent
-    throw UnimplementedError();
+    String paymentIntentClientSecret,
+    PaymentMethodParams params, [
+    Map<String, String> options = const {},
+  ]) async {
+    final result = await _methodChannel.invokeMethod('confirmSetupIntent', {
+      'paymentIntentClientSecret': paymentIntentClientSecret,
+      'data': params.toJson(),
+      'options': options,
+    });
+
+    return SetupIntent.fromJson(result.unfoldToNonNull());
   }
 
   @override
-  Future<PaymentMethod> createPaymentMethod(PaymentMethodParams data,
-      [Map<String, String> options = const {}]) {
-    // TODO: implement createPaymentMethod
-    throw UnimplementedError();
+  Future<String> createTokenForCVCUpdate(String cvc) async {
+    final result = await _methodChannel.invokeMethod(
+      'createTokenForCVCUpdate',
+      {'cvc': cvc},
+    );
+
+    return result.unfoldToNonNull();
   }
 
   @override
-  Future<String> createTokenForCVCUpdate(String cvc) {
-    // TODO: implement createTokenForCVCUpdate
-    throw UnimplementedError();
-  }
+  Future<PaymentIntent> handleCardAction(
+      String paymentIntentClientSecret) async {
+    final result = await _methodChannel.invokeMethod('handleCardAction', {
+      'paymentIntentClientSecret': paymentIntentClientSecret,
+    });
 
-  @override
-  Future<PaymentIntent> handleCardAction(String paymentIntentClientSecret) {
-    // TODO: implement handleCardAction
-    throw UnimplementedError();
+    return PaymentIntent.fromJson(result.unfoldToNonNull());
   }
 
   @override
   Future<bool> isApplePaySupported() async {
     if (!Platform.isIOS) return false;
     final bool? isSupported =
-        await methodChannel.invokeMethod('isApplePaySupported');
+        await _methodChannel.invokeMethod('isApplePaySupported');
     return isSupported ?? false;
   }
 
@@ -99,25 +131,28 @@ class MethodChannelStripe extends StripePlatform {
   Future<void> presentApplePay(ApplePayPresentParams params) async {
     if (!Platform.isIOS)
       throw UnsupportedError('Apple Pay is only available for iOS devices');
-    await methodChannel.invokeMethod('presentApplePay', params.toJson());
+    await _methodChannel.invokeMethod('presentApplePay', params.toJson());
   }
 
   @override
-  Future<PaymentIntent> retrievePaymentIntent(String clientSecret) {
-    // TODO: implement retrievePaymentIntent
-    throw UnimplementedError();
+  Future<PaymentIntent> retrievePaymentIntent(String clientSecret) async {
+    final result = await _methodChannel.invokeMethod('retrievePaymentIntent', {
+      'clientSecret': clientSecret,
+    });
+
+    return PaymentIntent.fromJson(result.unfoldToNonNull());
   }
 
   @override
   Future<PaymentIntent> paymentSheetConfirmPayment() async {
     final options =
-        await methodChannel.invokeMethod('paymentSheetConfirmPayment');
+        await _methodChannel.invokeMethod('paymentSheetConfirmPayment');
     return PaymentIntent.fromJson(Map<String, dynamic>.from(options));
   }
 
   @override
   Future<PaymentOption?> presentPaymentOptions() async {
-    final options = await methodChannel.invokeMethod('presentPaymentOptions');
+    final options = await _methodChannel.invokeMethod('presentPaymentOptions');
     return options != null
         ? PaymentOption.fromJson(Map<String, dynamic>.from(options))
         : null;
@@ -125,7 +160,7 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<PaymentIntent> presentPaymentSheet(String? clientSecret) async {
-    final options = await methodChannel
+    final options = await _methodChannel
         .invokeMethod('presentPaymentSheet', {clientSecret: clientSecret});
     return PaymentIntent.fromJson(Map<String, dynamic>.from(options));
   }
@@ -134,9 +169,30 @@ class MethodChannelStripe extends StripePlatform {
   Future<PaymentOption?> setupPaymentSheet(
       SetupPaymentSheetParams params) async {
     final options =
-        await methodChannel.invokeMethod('setupPaymentSheet', params.toJson());
+        await _methodChannel.invokeMethod('setupPaymentSheet', params.toJson());
     return options != null
         ? PaymentOption.fromJson(Map<String, dynamic>.from(options))
         : null;
+  }
+}
+
+class MethodChannelStripeFactory {
+  const MethodChannelStripeFactory();
+
+  StripePlatform create() {
+    return MethodChannelStripe(
+      methodChannel: MethodChannel('flutter.stripe/payments'),
+      eventChannel: EventChannel('flutter.stripe/events'),
+    );
+  }
+}
+
+extension UnfoldToNonNull<T> on T? {
+  T unfoldToNonNull() {
+    if (this == null) {
+      throw AssertionError('Result should not be null');
+    } else {
+      return this!;
+    }
   }
 }

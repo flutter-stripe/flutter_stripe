@@ -1,5 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'apple_pay.freezed.dart';
 part 'apple_pay.g.dart';
 
 enum ApplePayShippingMethodType {
@@ -15,60 +16,44 @@ enum ApplePayContactFieldsType {
   postalAddress
 }
 
-@JsonSerializable(explicitToJson: true)
-class ApplePayShippingMethod {
-  ApplePayShippingMethod({
-    required this.label,
-    required this.amount,
-    required this.identifier,
-    this.type,
-    this.detail,
-  });
-  final String label;
-  final String amount;
-  final ApplePayShippingMethodType? type;
-  final String identifier;
-  final String? detail;
-
+@freezed
+class ApplePayShippingMethod with _$ApplePayShippingMethod {
+  @JsonSerializable(explicitToJson: true)
+  const factory ApplePayShippingMethod({
+    required String label,
+    required String amount,
+    required String identifier,
+    ApplePayShippingMethodType? type,
+    String? detail,
+  }) = _ApplePayShippingMethod;
 
   factory ApplePayShippingMethod.fromJson(Map<String, dynamic> json) =>
       _$ApplePayShippingMethodFromJson(json);
-  Map<String, dynamic> toJson() => _$ApplePayShippingMethodToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
-class ApplePayCartSummaryItem {
-  ApplePayCartSummaryItem({
-    required this.label,
-    required this.amount,
-  });
-  final String label;
-  final String amount;
-
+@freezed
+class ApplePayCartSummaryItem with _$ApplePayCartSummaryItem {
+  const factory ApplePayCartSummaryItem({
+    required String label,
+    required String amount,
+  }) = _ApplePayCartSummaryItem;
 
   factory ApplePayCartSummaryItem.fromJson(Map<String, dynamic> json) =>
       _$ApplePayCartSummaryItemFromJson(json);
-  Map<String, dynamic> toJson() => _$ApplePayCartSummaryItemToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
-class ApplePayPresentParams {
-  ApplePayPresentParams({
-    required this.cartItems,
-    required this.country,
-    required this.currency,
-    this.requiredBillingContactFields,
-    this.requiredShippingAddressFields,
-    this.shippingMethods,
-  });
-  final List<ApplePayCartSummaryItem> cartItems;
-  final String country;
-  final String currency;
-  final List<ApplePayContactFieldsType>? requiredShippingAddressFields;
-  final List<ApplePayContactFieldsType>? requiredBillingContactFields;
-  final List<ApplePayShippingMethod>? shippingMethods;
+@freezed
+class ApplePayPresentParams with _$ApplePayPresentParams {
+  @JsonSerializable(explicitToJson: true)
+  const factory ApplePayPresentParams({
+    required List<ApplePayCartSummaryItem> cartItems,
+    required String country,
+    required String currency,
+    List<ApplePayContactFieldsType>? requiredShippingAddressFields,
+    List<ApplePayContactFieldsType>? requiredBillingContactFields,
+    List<ApplePayShippingMethod>? shippingMethods,
+  }) = _ApplePayPresentParams;
 
-   factory ApplePayPresentParams.fromJson(Map<String, dynamic> json) =>
+  factory ApplePayPresentParams.fromJson(Map<String, dynamic> json) =>
       _$ApplePayPresentParamsFromJson(json);
-  Map<String, dynamic> toJson() => _$ApplePayPresentParamsToJson(this);
 }

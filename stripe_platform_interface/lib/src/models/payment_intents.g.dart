@@ -6,49 +6,44 @@ part of 'payment_intents.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PaymentIntent _$PaymentIntentFromJson(Map<String, dynamic> json) {
-  return PaymentIntent(
+_$_PaymentIntent _$_$_PaymentIntentFromJson(Map<String, dynamic> json) {
+  return _$_PaymentIntent(
     id: json['id'] as String,
     amount: json['amount'] as num,
     created: json['created'] as int,
     currency: json['currency'] as String,
     status: _$enumDecode(_$PaymentIntentsStatusEnumMap, json['status']),
-    description: json['description'] as String?,
-    receiptEmail: json['receiptEmail'] as String?,
-    canceledAt: json['canceledAt'] as String?,
     clientSecret: json['clientSecret'] as String,
     livemode: json['livemode'] as bool,
     paymentMethodId: json['paymentMethodId'] as String,
     captureMethod: _$enumDecode(_$CaptureMethodEnumMap, json['captureMethod']),
     confirmationMethod:
         _$enumDecode(_$ConfirmationMethodEnumMap, json['confirmationMethod']),
-    lastPaymentError: json['lastPaymentError'] == null
-        ? null
-        : LastPaymentError.fromJson(
-            json['lastPaymentError'] as Map<String, dynamic>),
+    description: json['description'] as String?,
+    receiptEmail: json['receiptEmail'] as String?,
+    canceledAt: json['canceledAt'] as String?,
     shipping: json['shipping'] == null
         ? null
         : ShippingDetails.fromJson(json['shipping'] as Map<String, dynamic>),
   );
 }
 
-Map<String, dynamic> _$PaymentIntentToJson(PaymentIntent instance) =>
+Map<String, dynamic> _$_$_PaymentIntentToJson(_$_PaymentIntent instance) =>
     <String, dynamic>{
       'id': instance.id,
       'amount': instance.amount,
       'created': instance.created,
       'currency': instance.currency,
       'status': _$PaymentIntentsStatusEnumMap[instance.status],
-      'description': instance.description,
-      'receiptEmail': instance.receiptEmail,
-      'canceledAt': instance.canceledAt,
       'clientSecret': instance.clientSecret,
       'livemode': instance.livemode,
       'paymentMethodId': instance.paymentMethodId,
       'captureMethod': _$CaptureMethodEnumMap[instance.captureMethod],
       'confirmationMethod':
           _$ConfirmationMethodEnumMap[instance.confirmationMethod],
-      'lastPaymentError': instance.lastPaymentError?.toJson(),
+      'description': instance.description,
+      'receiptEmail': instance.receiptEmail,
+      'canceledAt': instance.canceledAt,
       'shipping': instance.shipping?.toJson(),
     };
 
@@ -99,37 +94,8 @@ const _$ConfirmationMethodEnumMap = {
   ConfirmationMethod.Automatic: 'Automatic',
 };
 
-LastPaymentError _$LastPaymentErrorFromJson(Map<String, dynamic> json) {
-  return LastPaymentError(
-    code: json['code'] as String,
-    type: _$enumDecode(_$LastPaymentErrorTypeEnumMap, json['type']),
-    paymentMethod:
-        PaymentMethod.fromJson(json['paymentMethod'] as Map<String, dynamic>),
-    message: json['message'] as String,
-  );
-}
-
-Map<String, dynamic> _$LastPaymentErrorToJson(LastPaymentError instance) =>
-    <String, dynamic>{
-      'message': instance.message,
-      'code': instance.code,
-      'type': _$LastPaymentErrorTypeEnumMap[instance.type],
-      'paymentMethod': instance.paymentMethod.toJson(),
-    };
-
-const _$LastPaymentErrorTypeEnumMap = {
-  LastPaymentErrorType.ApiConnection: 'ApiConnection',
-  LastPaymentErrorType.Api: 'Api',
-  LastPaymentErrorType.Authentication: 'Authentication',
-  LastPaymentErrorType.Card: 'Card',
-  LastPaymentErrorType.Idempotency: 'Idempotency',
-  LastPaymentErrorType.InvalidRequest: 'InvalidRequest',
-  LastPaymentErrorType.RateLimit: 'RateLimit',
-  LastPaymentErrorType.Unknown: 'Unknown',
-};
-
-ShippingDetails _$ShippingDetailsFromJson(Map<String, dynamic> json) {
-  return ShippingDetails(
+_$_ShippingDetails _$_$_ShippingDetailsFromJson(Map<String, dynamic> json) {
+  return _$_ShippingDetails(
     address: Address.fromJson(json['address'] as Map<String, dynamic>),
     name: json['name'] as String,
     carrier: json['carrier'] as String,
@@ -138,7 +104,7 @@ ShippingDetails _$ShippingDetailsFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ShippingDetailsToJson(ShippingDetails instance) =>
+Map<String, dynamic> _$_$_ShippingDetailsToJson(_$_ShippingDetails instance) =>
     <String, dynamic>{
       'address': instance.address.toJson(),
       'name': instance.name,
