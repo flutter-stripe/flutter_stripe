@@ -8,6 +8,7 @@ part 'payment_methods.g.dart';
 
 @freezed
 class PaymentMethod with _$PaymentMethod {
+  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethod({
     required String id,
     required bool liveMode,
@@ -30,33 +31,25 @@ class PaymentMethod with _$PaymentMethod {
 
 @freezed
 class BillingDetails with _$BillingDetails {
+  @JsonSerializable(explicitToJson: true)
   const factory BillingDetails({
     String? email,
     String? phone,
     String? name,
-    Address? address,
+    String? adressPostalCode,
+    String? addressCity,
+    String? addressCountry,
+    String? addressLine1,
+    String? addressLine2,
+    String? addressLine3,
   }) = _BillingDetails;
   factory BillingDetails.fromJson(Map<String, dynamic> json) =>
       _$BillingDetailsFromJson(json);
 }
 
 @freezed
-class Address with _$Address {
-  const factory Address({
-    required String city,
-    required String country,
-    required String line1,
-    required String line2,
-    required String postalCode,
-    required String state,
-  }) = _Address;
-
-  factory Address.fromJson(Map<String, dynamic> json) =>
-      _$AddressFromJson(json);
-}
-
-@freezed
 class AuBecsDebit with _$AuBecsDebit {
+  @JsonSerializable(explicitToJson: true)
   const factory AuBecsDebit({
     String? fingerprint,
     String? last4,
@@ -69,6 +62,7 @@ class AuBecsDebit with _$AuBecsDebit {
 
 @freezed
 class BacsDebit with _$BacsDebit {
+  @JsonSerializable(explicitToJson: true)
   const factory BacsDebit({
     String? sortCode,
     String? fingerprint,
@@ -80,6 +74,7 @@ class BacsDebit with _$BacsDebit {
 
 @freezed
 class Card with _$Card {
+  @JsonSerializable(explicitToJson: true)
   const factory Card({
     CardBrand? brand,
     String? country,
@@ -95,6 +90,7 @@ class Card with _$Card {
 
 @freezed
 class Fpx with _$Fpx {
+  @JsonSerializable(explicitToJson: true)
   const factory Fpx({
     String? bank,
   }) = _Fpx;
@@ -104,6 +100,7 @@ class Fpx with _$Fpx {
 
 @freezed
 class Ideal with _$Ideal {
+  @JsonSerializable(explicitToJson: true)
   const factory Ideal({
     String? bankIdentifierCode,
     String? bank,
@@ -113,6 +110,7 @@ class Ideal with _$Ideal {
 
 @freezed
 class SepaDebit with _$SepaDebit {
+  @JsonSerializable(explicitToJson: true)
   const factory SepaDebit({
     String? country,
     String? bankCode,
@@ -126,6 +124,7 @@ class SepaDebit with _$SepaDebit {
 
 @freezed
 class Sofort with _$Sofort {
+  @JsonSerializable(explicitToJson: true)
   const factory Sofort({String? country}) = _Sofort;
 
   factory Sofort.fromJson(Map<String, dynamic> json) => _$SofortFromJson(json);
@@ -133,6 +132,7 @@ class Sofort with _$Sofort {
 
 @freezed
 class Upi with _$Upi {
+  @JsonSerializable(explicitToJson: true)
   const factory Upi({
     String? vpa,
   }) = _Upi;

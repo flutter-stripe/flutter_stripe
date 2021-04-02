@@ -383,7 +383,7 @@ class __$PaymentMethodCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_PaymentMethod implements _PaymentMethod {
@@ -563,12 +563,25 @@ class _$BillingDetailsTearOff {
   const _$BillingDetailsTearOff();
 
   _BillingDetails call(
-      {String? email, String? phone, String? name, Address? address}) {
+      {String? email,
+      String? phone,
+      String? name,
+      String? adressPostalCode,
+      String? addressCity,
+      String? addressCountry,
+      String? addressLine1,
+      String? addressLine2,
+      String? addressLine3}) {
     return _BillingDetails(
       email: email,
       phone: phone,
       name: name,
-      address: address,
+      adressPostalCode: adressPostalCode,
+      addressCity: addressCity,
+      addressCountry: addressCountry,
+      addressLine1: addressLine1,
+      addressLine2: addressLine2,
+      addressLine3: addressLine3,
     );
   }
 
@@ -585,7 +598,12 @@ mixin _$BillingDetails {
   String? get email => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
-  Address? get address => throw _privateConstructorUsedError;
+  String? get adressPostalCode => throw _privateConstructorUsedError;
+  String? get addressCity => throw _privateConstructorUsedError;
+  String? get addressCountry => throw _privateConstructorUsedError;
+  String? get addressLine1 => throw _privateConstructorUsedError;
+  String? get addressLine2 => throw _privateConstructorUsedError;
+  String? get addressLine3 => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -598,9 +616,16 @@ abstract class $BillingDetailsCopyWith<$Res> {
   factory $BillingDetailsCopyWith(
           BillingDetails value, $Res Function(BillingDetails) then) =
       _$BillingDetailsCopyWithImpl<$Res>;
-  $Res call({String? email, String? phone, String? name, Address? address});
-
-  $AddressCopyWith<$Res>? get address;
+  $Res call(
+      {String? email,
+      String? phone,
+      String? name,
+      String? adressPostalCode,
+      String? addressCity,
+      String? addressCountry,
+      String? addressLine1,
+      String? addressLine2,
+      String? addressLine3});
 }
 
 /// @nodoc
@@ -617,7 +642,12 @@ class _$BillingDetailsCopyWithImpl<$Res>
     Object? email = freezed,
     Object? phone = freezed,
     Object? name = freezed,
-    Object? address = freezed,
+    Object? adressPostalCode = freezed,
+    Object? addressCity = freezed,
+    Object? addressCountry = freezed,
+    Object? addressLine1 = freezed,
+    Object? addressLine2 = freezed,
+    Object? addressLine3 = freezed,
   }) {
     return _then(_value.copyWith(
       email: email == freezed
@@ -632,22 +662,31 @@ class _$BillingDetailsCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      address: address == freezed
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as Address?,
+      adressPostalCode: adressPostalCode == freezed
+          ? _value.adressPostalCode
+          : adressPostalCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressCity: addressCity == freezed
+          ? _value.addressCity
+          : addressCity // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressCountry: addressCountry == freezed
+          ? _value.addressCountry
+          : addressCountry // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressLine1: addressLine1 == freezed
+          ? _value.addressLine1
+          : addressLine1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressLine2: addressLine2 == freezed
+          ? _value.addressLine2
+          : addressLine2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressLine3: addressLine3 == freezed
+          ? _value.addressLine3
+          : addressLine3 // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
-  }
-
-  @override
-  $AddressCopyWith<$Res>? get address {
-    if (_value.address == null) {
-      return null;
-    }
-
-    return $AddressCopyWith<$Res>(_value.address!, (value) {
-      return _then(_value.copyWith(address: value));
-    });
   }
 }
 
@@ -658,10 +697,16 @@ abstract class _$BillingDetailsCopyWith<$Res>
           _BillingDetails value, $Res Function(_BillingDetails) then) =
       __$BillingDetailsCopyWithImpl<$Res>;
   @override
-  $Res call({String? email, String? phone, String? name, Address? address});
-
-  @override
-  $AddressCopyWith<$Res>? get address;
+  $Res call(
+      {String? email,
+      String? phone,
+      String? name,
+      String? adressPostalCode,
+      String? addressCity,
+      String? addressCountry,
+      String? addressLine1,
+      String? addressLine2,
+      String? addressLine3});
 }
 
 /// @nodoc
@@ -680,7 +725,12 @@ class __$BillingDetailsCopyWithImpl<$Res>
     Object? email = freezed,
     Object? phone = freezed,
     Object? name = freezed,
-    Object? address = freezed,
+    Object? adressPostalCode = freezed,
+    Object? addressCity = freezed,
+    Object? addressCountry = freezed,
+    Object? addressLine1 = freezed,
+    Object? addressLine2 = freezed,
+    Object? addressLine3 = freezed,
   }) {
     return _then(_BillingDetails(
       email: email == freezed
@@ -695,19 +745,48 @@ class __$BillingDetailsCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      address: address == freezed
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as Address?,
+      adressPostalCode: adressPostalCode == freezed
+          ? _value.adressPostalCode
+          : adressPostalCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressCity: addressCity == freezed
+          ? _value.addressCity
+          : addressCity // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressCountry: addressCountry == freezed
+          ? _value.addressCountry
+          : addressCountry // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressLine1: addressLine1 == freezed
+          ? _value.addressLine1
+          : addressLine1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressLine2: addressLine2 == freezed
+          ? _value.addressLine2
+          : addressLine2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressLine3: addressLine3 == freezed
+          ? _value.addressLine3
+          : addressLine3 // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_BillingDetails implements _BillingDetails {
-  const _$_BillingDetails({this.email, this.phone, this.name, this.address});
+  const _$_BillingDetails(
+      {this.email,
+      this.phone,
+      this.name,
+      this.adressPostalCode,
+      this.addressCity,
+      this.addressCountry,
+      this.addressLine1,
+      this.addressLine2,
+      this.addressLine3});
 
   factory _$_BillingDetails.fromJson(Map<String, dynamic> json) =>
       _$_$_BillingDetailsFromJson(json);
@@ -719,11 +798,21 @@ class _$_BillingDetails implements _BillingDetails {
   @override
   final String? name;
   @override
-  final Address? address;
+  final String? adressPostalCode;
+  @override
+  final String? addressCity;
+  @override
+  final String? addressCountry;
+  @override
+  final String? addressLine1;
+  @override
+  final String? addressLine2;
+  @override
+  final String? addressLine3;
 
   @override
   String toString() {
-    return 'BillingDetails(email: $email, phone: $phone, name: $name, address: $address)';
+    return 'BillingDetails(email: $email, phone: $phone, name: $name, adressPostalCode: $adressPostalCode, addressCity: $addressCity, addressCountry: $addressCountry, addressLine1: $addressLine1, addressLine2: $addressLine2, addressLine3: $addressLine3)';
   }
 
   @override
@@ -736,8 +825,24 @@ class _$_BillingDetails implements _BillingDetails {
                 const DeepCollectionEquality().equals(other.phone, phone)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.address, address) ||
-                const DeepCollectionEquality().equals(other.address, address)));
+            (identical(other.adressPostalCode, adressPostalCode) ||
+                const DeepCollectionEquality()
+                    .equals(other.adressPostalCode, adressPostalCode)) &&
+            (identical(other.addressCity, addressCity) ||
+                const DeepCollectionEquality()
+                    .equals(other.addressCity, addressCity)) &&
+            (identical(other.addressCountry, addressCountry) ||
+                const DeepCollectionEquality()
+                    .equals(other.addressCountry, addressCountry)) &&
+            (identical(other.addressLine1, addressLine1) ||
+                const DeepCollectionEquality()
+                    .equals(other.addressLine1, addressLine1)) &&
+            (identical(other.addressLine2, addressLine2) ||
+                const DeepCollectionEquality()
+                    .equals(other.addressLine2, addressLine2)) &&
+            (identical(other.addressLine3, addressLine3) ||
+                const DeepCollectionEquality()
+                    .equals(other.addressLine3, addressLine3)));
   }
 
   @override
@@ -746,7 +851,12 @@ class _$_BillingDetails implements _BillingDetails {
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(phone) ^
       const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(address);
+      const DeepCollectionEquality().hash(adressPostalCode) ^
+      const DeepCollectionEquality().hash(addressCity) ^
+      const DeepCollectionEquality().hash(addressCountry) ^
+      const DeepCollectionEquality().hash(addressLine1) ^
+      const DeepCollectionEquality().hash(addressLine2) ^
+      const DeepCollectionEquality().hash(addressLine3);
 
   @JsonKey(ignore: true)
   @override
@@ -764,7 +874,12 @@ abstract class _BillingDetails implements BillingDetails {
       {String? email,
       String? phone,
       String? name,
-      Address? address}) = _$_BillingDetails;
+      String? adressPostalCode,
+      String? addressCity,
+      String? addressCountry,
+      String? addressLine1,
+      String? addressLine2,
+      String? addressLine3}) = _$_BillingDetails;
 
   factory _BillingDetails.fromJson(Map<String, dynamic> json) =
       _$_BillingDetails.fromJson;
@@ -776,280 +891,20 @@ abstract class _BillingDetails implements BillingDetails {
   @override
   String? get name => throw _privateConstructorUsedError;
   @override
-  Address? get address => throw _privateConstructorUsedError;
+  String? get adressPostalCode => throw _privateConstructorUsedError;
+  @override
+  String? get addressCity => throw _privateConstructorUsedError;
+  @override
+  String? get addressCountry => throw _privateConstructorUsedError;
+  @override
+  String? get addressLine1 => throw _privateConstructorUsedError;
+  @override
+  String? get addressLine2 => throw _privateConstructorUsedError;
+  @override
+  String? get addressLine3 => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$BillingDetailsCopyWith<_BillingDetails> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-Address _$AddressFromJson(Map<String, dynamic> json) {
-  return _Address.fromJson(json);
-}
-
-/// @nodoc
-class _$AddressTearOff {
-  const _$AddressTearOff();
-
-  _Address call(
-      {required String city,
-      required String country,
-      required String line1,
-      required String line2,
-      required String postalCode,
-      required String state}) {
-    return _Address(
-      city: city,
-      country: country,
-      line1: line1,
-      line2: line2,
-      postalCode: postalCode,
-      state: state,
-    );
-  }
-
-  Address fromJson(Map<String, Object> json) {
-    return Address.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Address = _$AddressTearOff();
-
-/// @nodoc
-mixin _$Address {
-  String get city => throw _privateConstructorUsedError;
-  String get country => throw _privateConstructorUsedError;
-  String get line1 => throw _privateConstructorUsedError;
-  String get line2 => throw _privateConstructorUsedError;
-  String get postalCode => throw _privateConstructorUsedError;
-  String get state => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $AddressCopyWith<Address> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AddressCopyWith<$Res> {
-  factory $AddressCopyWith(Address value, $Res Function(Address) then) =
-      _$AddressCopyWithImpl<$Res>;
-  $Res call(
-      {String city,
-      String country,
-      String line1,
-      String line2,
-      String postalCode,
-      String state});
-}
-
-/// @nodoc
-class _$AddressCopyWithImpl<$Res> implements $AddressCopyWith<$Res> {
-  _$AddressCopyWithImpl(this._value, this._then);
-
-  final Address _value;
-  // ignore: unused_field
-  final $Res Function(Address) _then;
-
-  @override
-  $Res call({
-    Object? city = freezed,
-    Object? country = freezed,
-    Object? line1 = freezed,
-    Object? line2 = freezed,
-    Object? postalCode = freezed,
-    Object? state = freezed,
-  }) {
-    return _then(_value.copyWith(
-      city: city == freezed
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String,
-      country: country == freezed
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String,
-      line1: line1 == freezed
-          ? _value.line1
-          : line1 // ignore: cast_nullable_to_non_nullable
-              as String,
-      line2: line2 == freezed
-          ? _value.line2
-          : line2 // ignore: cast_nullable_to_non_nullable
-              as String,
-      postalCode: postalCode == freezed
-          ? _value.postalCode
-          : postalCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      state: state == freezed
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
-  factory _$AddressCopyWith(_Address value, $Res Function(_Address) then) =
-      __$AddressCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {String city,
-      String country,
-      String line1,
-      String line2,
-      String postalCode,
-      String state});
-}
-
-/// @nodoc
-class __$AddressCopyWithImpl<$Res> extends _$AddressCopyWithImpl<$Res>
-    implements _$AddressCopyWith<$Res> {
-  __$AddressCopyWithImpl(_Address _value, $Res Function(_Address) _then)
-      : super(_value, (v) => _then(v as _Address));
-
-  @override
-  _Address get _value => super._value as _Address;
-
-  @override
-  $Res call({
-    Object? city = freezed,
-    Object? country = freezed,
-    Object? line1 = freezed,
-    Object? line2 = freezed,
-    Object? postalCode = freezed,
-    Object? state = freezed,
-  }) {
-    return _then(_Address(
-      city: city == freezed
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String,
-      country: country == freezed
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String,
-      line1: line1 == freezed
-          ? _value.line1
-          : line1 // ignore: cast_nullable_to_non_nullable
-              as String,
-      line2: line2 == freezed
-          ? _value.line2
-          : line2 // ignore: cast_nullable_to_non_nullable
-              as String,
-      postalCode: postalCode == freezed
-          ? _value.postalCode
-          : postalCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      state: state == freezed
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-@JsonSerializable()
-
-/// @nodoc
-class _$_Address implements _Address {
-  const _$_Address(
-      {required this.city,
-      required this.country,
-      required this.line1,
-      required this.line2,
-      required this.postalCode,
-      required this.state});
-
-  factory _$_Address.fromJson(Map<String, dynamic> json) =>
-      _$_$_AddressFromJson(json);
-
-  @override
-  final String city;
-  @override
-  final String country;
-  @override
-  final String line1;
-  @override
-  final String line2;
-  @override
-  final String postalCode;
-  @override
-  final String state;
-
-  @override
-  String toString() {
-    return 'Address(city: $city, country: $country, line1: $line1, line2: $line2, postalCode: $postalCode, state: $state)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _Address &&
-            (identical(other.city, city) ||
-                const DeepCollectionEquality().equals(other.city, city)) &&
-            (identical(other.country, country) ||
-                const DeepCollectionEquality()
-                    .equals(other.country, country)) &&
-            (identical(other.line1, line1) ||
-                const DeepCollectionEquality().equals(other.line1, line1)) &&
-            (identical(other.line2, line2) ||
-                const DeepCollectionEquality().equals(other.line2, line2)) &&
-            (identical(other.postalCode, postalCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.postalCode, postalCode)) &&
-            (identical(other.state, state) ||
-                const DeepCollectionEquality().equals(other.state, state)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(city) ^
-      const DeepCollectionEquality().hash(country) ^
-      const DeepCollectionEquality().hash(line1) ^
-      const DeepCollectionEquality().hash(line2) ^
-      const DeepCollectionEquality().hash(postalCode) ^
-      const DeepCollectionEquality().hash(state);
-
-  @JsonKey(ignore: true)
-  @override
-  _$AddressCopyWith<_Address> get copyWith =>
-      __$AddressCopyWithImpl<_Address>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$_$_AddressToJson(this);
-  }
-}
-
-abstract class _Address implements Address {
-  const factory _Address(
-      {required String city,
-      required String country,
-      required String line1,
-      required String line2,
-      required String postalCode,
-      required String state}) = _$_Address;
-
-  factory _Address.fromJson(Map<String, dynamic> json) = _$_Address.fromJson;
-
-  @override
-  String get city => throw _privateConstructorUsedError;
-  @override
-  String get country => throw _privateConstructorUsedError;
-  @override
-  String get line1 => throw _privateConstructorUsedError;
-  @override
-  String get line2 => throw _privateConstructorUsedError;
-  @override
-  String get postalCode => throw _privateConstructorUsedError;
-  @override
-  String get state => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  _$AddressCopyWith<_Address> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1171,7 +1026,7 @@ class __$AuBecsDebitCopyWithImpl<$Res> extends _$AuBecsDebitCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_AuBecsDebit implements _AuBecsDebit {
@@ -1358,7 +1213,7 @@ class __$BacsDebitCopyWithImpl<$Res> extends _$BacsDebitCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_BacsDebit implements _BacsDebit {
@@ -1612,7 +1467,7 @@ class __$CardCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_Card implements _Card {
@@ -1815,7 +1670,7 @@ class __$FpxCopyWithImpl<$Res> extends _$FpxCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_Fpx implements _Fpx {
@@ -1967,7 +1822,7 @@ class __$IdealCopyWithImpl<$Res> extends _$IdealCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_Ideal implements _Ideal {
@@ -2158,7 +2013,7 @@ class __$SepaDebitCopyWithImpl<$Res> extends _$SepaDebitCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_SepaDebit implements _SepaDebit {
@@ -2331,7 +2186,7 @@ class __$SofortCopyWithImpl<$Res> extends _$SofortCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_Sofort implements _Sofort {
@@ -2472,7 +2327,7 @@ class __$UpiCopyWithImpl<$Res> extends _$UpiCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_Upi implements _Upi {
@@ -2664,6 +2519,8 @@ abstract class _$PaymentMethodParamsCardCopyWith<$Res>
       {String type,
       CardFieldInputDetails details,
       PaymentIntentsFutureUsage? setupFutureUsage});
+
+  $CardFieldInputDetailsCopyWith<$Res> get details;
 }
 
 /// @nodoc
@@ -2698,6 +2555,13 @@ class __$PaymentMethodParamsCardCopyWithImpl<$Res>
           : setupFutureUsage // ignore: cast_nullable_to_non_nullable
               as PaymentIntentsFutureUsage?,
     ));
+  }
+
+  @override
+  $CardFieldInputDetailsCopyWith<$Res> get details {
+    return $CardFieldInputDetailsCopyWith<$Res>(_value.details, (value) {
+      return _then(_value.copyWith(details: value));
+    });
   }
 }
 

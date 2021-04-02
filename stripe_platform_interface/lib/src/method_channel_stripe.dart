@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/services.dart';
-import 'package:stripe_platform_interface/src/models/app_info.dart';
 import 'package:stripe_platform_interface/src/models/setup_intent.dart';
 import 'package:stripe_platform_interface/src/models/three_d_secure.dart';
 import 'package:stripe_platform_interface/src/models/payment_methods.dart';
@@ -10,10 +9,10 @@ import 'package:stripe_platform_interface/src/models/apple_pay.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 import '../stripe_platform_interface.dart';
+import 'models/app_info.dart';
 
 const _appInfo = AppInfo(
     name: "flutter_stripe",
-    partnerId: "flutter_stripe",
     version: "0.0.0",
     url: "https://github.com/fluttercommunity/flutter_stripe/");
 
@@ -32,7 +31,6 @@ class MethodChannelStripe extends StripePlatform {
   @override
   Future<void> initialise({
     required String publishableKey,
-    required AppInfo appInfo,
     String? stripeAccountId,
     ThreeDSecureConfigurationParams? threeDSecureParams,
     String? merchantIdentifier,
@@ -42,7 +40,7 @@ class MethodChannelStripe extends StripePlatform {
       'publishableKey': publishableKey,
       'stripeAccountId': stripeAccountId,
       'merchantIdentifier': merchantIdentifier,
-      'appInfo': appInfo.toJson(),
+      'appInfo': _appInfo.toJson(),
       'threeDSecureParams': threeDSecureParams,
     });
   }

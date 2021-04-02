@@ -324,7 +324,7 @@ class __$PaymentIntentCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_PaymentIntent implements _PaymentIntent {
@@ -681,7 +681,7 @@ class __$ShippingDetailsCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_ShippingDetails implements _ShippingDetails {

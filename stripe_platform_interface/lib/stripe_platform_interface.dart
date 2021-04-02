@@ -1,7 +1,6 @@
 library stripe_platform_interface;
 
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-import 'package:stripe_platform_interface/src/models/app_info.dart';
 import 'models.dart';
 import 'src/method_channel_stripe.dart';
 import 'src/models/setup_intent.dart';
@@ -29,7 +28,6 @@ abstract class StripePlatform extends PlatformInterface {
 
   Future<void> initialise({
     required String publishableKey,
-    required AppInfo appInfo,
     String? stripeAccountId,
     ThreeDSecureConfigurationParams? threeDSecureParams,
     String? merchantIdentifier,

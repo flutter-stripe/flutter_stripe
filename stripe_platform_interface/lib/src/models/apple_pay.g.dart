@@ -110,7 +110,7 @@ _$_ApplePayPresentParams _$_$_ApplePayPresentParamsFromJson(
 Map<String, dynamic> _$_$_ApplePayPresentParamsToJson(
         _$_ApplePayPresentParams instance) =>
     <String, dynamic>{
-      'cartItems': instance.cartItems,
+      'cartItems': instance.cartItems.map((e) => e.toJson()).toList(),
       'country': instance.country,
       'currency': instance.currency,
       'requiredShippingAddressFields': instance.requiredShippingAddressFields
@@ -119,7 +119,8 @@ Map<String, dynamic> _$_$_ApplePayPresentParamsToJson(
       'requiredBillingContactFields': instance.requiredBillingContactFields
           ?.map((e) => _$ApplePayContactFieldsTypeEnumMap[e])
           .toList(),
-      'shippingMethods': instance.shippingMethods,
+      'shippingMethods':
+          instance.shippingMethods?.map((e) => e.toJson()).toList(),
     };
 
 const _$ApplePayContactFieldsTypeEnumMap = {
