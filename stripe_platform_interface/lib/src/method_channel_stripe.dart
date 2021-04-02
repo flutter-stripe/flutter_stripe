@@ -61,10 +61,10 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<PaymentMethod> createPaymentMethodFromGooglePay(
-      PaymentMethodParams params) async {
+      Map<String, dynamic> data) async {
     final result =
         await _methodChannel.invokeMethod('createPaymentMethodFromGooglePay', {
-      'data': params.toJson(),
+      'data': data,
     });
     return PaymentMethod.fromJson(result.unfoldToNonNull());
   }

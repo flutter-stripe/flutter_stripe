@@ -82,7 +82,7 @@ class Stripe {
   }
 
   Future<PaymentMethod> createPaymentMethodFromGooglePay(
-      PaymentMethodParams data) async {
+      Map<String, dynamic> data) async {
     try {
       final paymentMethod =
           await _platform.createPaymentMethodFromGooglePay(data);

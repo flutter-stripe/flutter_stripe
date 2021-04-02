@@ -42,7 +42,7 @@ abstract class StripePlatform extends PlatformInterface {
   ]);
 
   Future<PaymentMethod> createPaymentMethodFromGooglePay(
-      PaymentMethodParams data);
+      Map<String, dynamic> data);
 
   Future<PaymentIntent> handleCardAction(String paymentIntentClientSecret);
   Future<PaymentIntent> confirmPaymentMethod(
