@@ -4,6 +4,8 @@ import androidx.annotation.NonNull
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReadableMap
 import com.reactnativestripesdk.StripeSdkModule
+import com.stripe.android.model.GooglePayResult
+import com.stripe.android.model.PaymentMethodCreateParams
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -11,6 +13,7 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
+import org.json.JSONObject
 
 /** StripeAndroidPlugin */
 class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
@@ -63,6 +66,10 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     clientSecret = call.requiredArgument("clientSecret"),
                     promise = Promise(result)
             )
+            "createPaymentMethodFromGooglePay" -> stripeSdk.createPaymentMethodFromGooglePay(
+                    data = call.requiredArgument("data"),
+                    promise = Promise(result)
+            )
             else -> result.notImplemented()
         }
     }
@@ -94,7 +101,8 @@ private inline fun <reified T> MethodCall.optionalArgument(key: String): T? {
 
 private inline fun <reified T> MethodCall.requiredArgument(key: String): T {
     if (T::class.java == ReadableMap::class.java) {
-        return ReadableMap(argument<Map<String, Any>>(key) ?: error("Required parameter $key not set")) as T
+        return ReadableMap(argument<Map<String, Any>>(key)
+                ?: error("Required parameter $key not set")) as T
     }
     return argument<T>(key) ?: error("Required parameter $key not set")
 }

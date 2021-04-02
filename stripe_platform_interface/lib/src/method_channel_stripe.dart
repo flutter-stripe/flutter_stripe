@@ -60,6 +60,16 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
+  Future<PaymentMethod> createPaymentMethodFromGooglePay(
+      PaymentMethodParams params) async {
+    final result =
+        await _methodChannel.invokeMethod('createPaymentMethodFromGooglePay', {
+      'data': params.toJson(),
+    });
+    return PaymentMethod.fromJson(result.unfoldToNonNull());
+  }
+
+  @override
   Future<void> configure3dSecure(ThreeDSecureConfigurationParams params) {
     // TODO: implement configure3dSecure
     throw UnimplementedError();
