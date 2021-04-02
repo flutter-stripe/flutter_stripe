@@ -27,9 +27,18 @@ Map<String, dynamic> _$_$_CardDecorationToJson(_$_CardDecoration instance) =>
       'textErrorColor': ColorKey.toJson(instance.textErrorColor),
     };
 
-_$_CardFieldInputDetails _$_$_CardFieldInputDetailsFromJson(
+_$_CardFieldInputDetailsDefault _$_$_CardFieldInputDetailsDefaultFromJson(
     Map<String, dynamic> json) {
-  return _$_CardFieldInputDetails(
+  return _$_CardFieldInputDetailsDefault();
+}
+
+Map<String, dynamic> _$_$_CardFieldInputDetailsDefaultToJson(
+        _$_CardFieldInputDetailsDefault instance) =>
+    <String, dynamic>{};
+
+_$_CardFieldInputDetailsCard _$_$_CardFieldInputDetailsCardFromJson(
+    Map<String, dynamic> json) {
+  return _$_CardFieldInputDetailsCard(
     last4: json['last4'] as String,
     expiryMonth: json['expiryMonth'] as int,
     expiryYear: json['expiryYear'] as int,
@@ -39,8 +48,8 @@ _$_CardFieldInputDetails _$_$_CardFieldInputDetailsFromJson(
   );
 }
 
-Map<String, dynamic> _$_$_CardFieldInputDetailsToJson(
-        _$_CardFieldInputDetails instance) =>
+Map<String, dynamic> _$_$_CardFieldInputDetailsCardToJson(
+        _$_CardFieldInputDetailsCard instance) =>
     <String, dynamic>{
       'last4': instance.last4,
       'expiryMonth': instance.expiryMonth,
@@ -86,6 +95,19 @@ const _$CardBrandEnumMap = {
   CardBrand.visa: 'visa',
   CardBrand.unknown: 'unknown',
 };
+
+_$_CardFieldInputDetailsWithToken _$_$_CardFieldInputDetailsWithTokenFromJson(
+    Map<String, dynamic> json) {
+  return _$_CardFieldInputDetailsWithToken(
+    token: json['token'] as String,
+  );
+}
+
+Map<String, dynamic> _$_$_CardFieldInputDetailsWithTokenToJson(
+        _$_CardFieldInputDetailsWithToken instance) =>
+    <String, dynamic>{
+      'token': instance.token,
+    };
 
 _$_CardFieldFocusName _$_$_CardFieldFocusNameFromJson(
     Map<String, dynamic> json) {

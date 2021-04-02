@@ -20,15 +20,9 @@ class StripeSdkModule(context: ActivityPluginBinding) : ReactContextBaseJavaModu
   private var handleCardActionPromise: Promise? = null
   private var confirmSetupIntentPromise: Promise? = null
 
-  private val mActivityEventListener = object : BaseActivityEventListener(
-          stripeProvider = {
-            if (this::stripe.isInitialized) {
-              stripe
-            } else null
-          }
-  ) {
-    override fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent) {
-      stripe.onSetupResult(requestCode, data, object : ApiResultCallback<SetupIntentResult> {
+  private val mActivityEventListener = object : BaseActivityEventListener() {
+    override fun onActivityResult(activity: Activity?, requestCode: Int, resultCode: Int, data: Intent?): Boolean {
+      val onSetupResult = stripe.onSetupResult(requestCode, data, object : ApiResultCallback<SetupIntentResult> {
         override fun onSuccess(result: SetupIntentResult) {
           val setupIntent = result.intent
           when (setupIntent.status) {
@@ -51,7 +45,7 @@ class StripeSdkModule(context: ActivityPluginBinding) : ReactContextBaseJavaModu
         }
       })
 
-      stripe.onPaymentResult(requestCode, data, object : ApiResultCallback<PaymentIntentResult> {
+      val onPaymentResult = stripe.onPaymentResult(requestCode, data, object : ApiResultCallback<PaymentIntentResult> {
         override fun onSuccess(result: PaymentIntentResult) {
           val paymentIntent = result.intent
 
@@ -88,6 +82,8 @@ class StripeSdkModule(context: ActivityPluginBinding) : ReactContextBaseJavaModu
           handleCardActionPromise?.reject(NextPaymentActionErrorType.Failed.toString(), e.toString())
         }
       })
+
+      return onSetupResult || onPaymentResult
     }
   }
 

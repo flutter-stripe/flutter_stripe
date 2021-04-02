@@ -78,7 +78,7 @@ class MethodChannelStripe extends StripePlatform {
   ]) async {
     final result = await _methodChannel.invokeMethod('confirmPaymentMethod', {
       'paymentIntentClientSecret': paymentIntentClientSecret,
-      'data': params.toJson(),
+      'params': params.toJson(),
       'options': options,
     });
     return PaymentIntent.fromJson(result.unfoldToNonNull());

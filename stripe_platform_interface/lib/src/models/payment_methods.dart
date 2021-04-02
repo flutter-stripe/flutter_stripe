@@ -163,14 +163,17 @@ enum PaymentMethodType {
 
 @freezed
 class PaymentMethodParams with _$PaymentMethodParams {
+  const factory PaymentMethodParams(String type) = _PaymentMethodParamsDefault;
+
+  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodParams.card({
-    @Default('card') String type,
-    required CardFieldInputDetails details,
+    @Default('Card') String type,
+    required CardFieldInputDetails cardDetails,
     PaymentIntentsFutureUsage? setupFutureUsage,
   }) = _PaymentMethodParamsCard;
 
   const factory PaymentMethodParams.cardFromMethodId({
-    @Default('card') String type,
+    @Default('Card') String type,
     required String paymentMethodId,
     String? cvc,
   }) = _PaymentMethodParamsCardWithMethodId;
