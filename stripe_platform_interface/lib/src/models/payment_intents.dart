@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:stripe_platform_interface/src/models/payment_methods.dart';
 
+import 'address.dart';
+
 part 'payment_intents.freezed.dart';
 part 'payment_intents.g.dart';
 

@@ -36,26 +36,15 @@ class BillingDetails with _$BillingDetails {
     String? email,
     String? phone,
     String? name,
-    Address? address,
+    String? adressPostalCode,
+    String? addressCity,
+    String? addressCountry,
+    String? addressLine1,
+    String? addressLine2,
+    String? addressLine3,
   }) = _BillingDetails;
   factory BillingDetails.fromJson(Map<String, dynamic> json) =>
       _$BillingDetailsFromJson(json);
-}
-
-@freezed
-class Address with _$Address {
-  @JsonSerializable(explicitToJson: true)
-  const factory Address({
-    required String city,
-    required String country,
-    required String line1,
-    required String line2,
-    required String postalCode,
-    required String state,
-  }) = _Address;
-
-  factory Address.fromJson(Map<String, dynamic> json) =>
-      _$AddressFromJson(json);
 }
 
 @freezed

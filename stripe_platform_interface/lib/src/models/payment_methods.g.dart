@@ -95,9 +95,12 @@ _$_BillingDetails _$_$_BillingDetailsFromJson(Map<String, dynamic> json) {
     email: json['email'] as String?,
     phone: json['phone'] as String?,
     name: json['name'] as String?,
-    address: json['address'] == null
-        ? null
-        : Address.fromJson(json['address'] as Map<String, dynamic>),
+    adressPostalCode: json['adressPostalCode'] as String?,
+    addressCity: json['addressCity'] as String?,
+    addressCountry: json['addressCountry'] as String?,
+    addressLine1: json['addressLine1'] as String?,
+    addressLine2: json['addressLine2'] as String?,
+    addressLine3: json['addressLine3'] as String?,
   );
 }
 
@@ -106,28 +109,12 @@ Map<String, dynamic> _$_$_BillingDetailsToJson(_$_BillingDetails instance) =>
       'email': instance.email,
       'phone': instance.phone,
       'name': instance.name,
-      'address': instance.address?.toJson(),
-    };
-
-_$_Address _$_$_AddressFromJson(Map<String, dynamic> json) {
-  return _$_Address(
-    city: json['city'] as String,
-    country: json['country'] as String,
-    line1: json['line1'] as String,
-    line2: json['line2'] as String,
-    postalCode: json['postalCode'] as String,
-    state: json['state'] as String,
-  );
-}
-
-Map<String, dynamic> _$_$_AddressToJson(_$_Address instance) =>
-    <String, dynamic>{
-      'city': instance.city,
-      'country': instance.country,
-      'line1': instance.line1,
-      'line2': instance.line2,
-      'postalCode': instance.postalCode,
-      'state': instance.state,
+      'adressPostalCode': instance.adressPostalCode,
+      'addressCity': instance.addressCity,
+      'addressCountry': instance.addressCountry,
+      'addressLine1': instance.addressLine1,
+      'addressLine2': instance.addressLine2,
+      'addressLine3': instance.addressLine3,
     };
 
 _$_AuBecsDebit _$_$_AuBecsDebitFromJson(Map<String, dynamic> json) {
