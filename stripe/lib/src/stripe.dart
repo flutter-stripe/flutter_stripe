@@ -47,7 +47,6 @@ class Stripe {
 
   Future<void> initialise({
     required String publishableKey,
-    required AppInfo appInfo,
     String? stripeAccountId,
     ThreeDSecureConfigurationParams? threeDSecureParams,
     String? merchantIdentifier,
@@ -57,7 +56,6 @@ class Stripe {
     }
     await _platform.initialise(
         publishableKey: publishableKey,
-        appInfo: appInfo,
         stripeAccountId: stripeAccountId,
         threeDSecureParams: threeDSecureParams,
         merchantIdentifier: merchantIdentifier);
@@ -224,13 +222,11 @@ class StripeProvider extends StatefulWidget {
     Key? key,
     required this.publishableKey,
     required this.child,
-    required this.appInfo,
     this.merchantIdentifier,
     this.threeDSecureParams,
     this.stripeAccountId,
   }) : super(key: key);
 
-  final AppInfo appInfo;
   final Widget child;
   final String publishableKey;
   final String? merchantIdentifier;
@@ -268,7 +264,6 @@ class _StripeProviderState extends State<StripeProvider> {
 
   Future<void> initialise() async {
     Stripe.instance.initialise(
-      appInfo: widget.appInfo,
       publishableKey: widget.publishableKey,
       stripeAccountId: widget.stripeAccountId,
       threeDSecureParams: widget.threeDSecureParams,

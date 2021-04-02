@@ -53,14 +53,11 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
     final BillingDetails billingDetails = BillingDetails(
       email: 'email',
       phone: '+48888000888',
-      address: Address(
-        city: 'Houston',
-        country: 'US', // TODO country
-        line1: '1459  Circle Drive',
-        line2: 'test',
-        state: 'Texas',
-        postalCode: '77063',
-      ),
+      addressCity: 'Houston',
+      addressCountry: 'US', // TODO country
+      addressLine1: '1459  Circle Drive',
+      addressLine2: 'test',
+      adressPostalCode: '77063',
     ); // mocked data for tests
 
     // 3. Confirm setup intent
