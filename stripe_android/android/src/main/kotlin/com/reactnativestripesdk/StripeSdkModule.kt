@@ -5,7 +5,10 @@ import android.content.Intent
 import android.os.AsyncTask
 import com.facebook.react.bridge.*
 import com.stripe.android.*
-import com.stripe.android.model.*
+import com.stripe.android.model.PaymentMethod
+import com.stripe.android.model.PaymentMethodCreateParams
+import com.stripe.android.model.StripeIntent
+import com.stripe.android.model.Token
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 import org.json.JSONObject
 
@@ -20,7 +23,13 @@ class StripeSdkModule(context: ActivityPluginBinding) : ReactContextBaseJavaModu
   private var handleCardActionPromise: Promise? = null
   private var confirmSetupIntentPromise: Promise? = null
 
-  private val mActivityEventListener = object : BaseActivityEventListener() {
+  private val mActivityEventListener = object : BaseActivityEventListener(
+          stripeProvider = {
+            if (this::stripe.isInitialized) {
+              stripe
+            } else null
+          }
+  ) {
     override fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent) {
       stripe.onSetupResult(requestCode, data, object : ApiResultCallback<SetupIntentResult> {
         override fun onSuccess(result: SetupIntentResult) {
