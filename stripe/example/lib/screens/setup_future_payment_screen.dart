@@ -65,7 +65,7 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
         .confirmSetupIntent(
             clientSecret,
             PaymentMethodParams.card(
-              details: _card,
+              cardDetails: _card,
               //billingDetails,
             ))
         .then((setupIntentResult) {

@@ -12,17 +12,17 @@ class PaymentMethod with _$PaymentMethod {
   const factory PaymentMethod({
     required String id,
     required bool liveMode,
+    required String type,
     required String customerId,
     required BillingDetails billingDetails,
-    required PaymentMethodType type,
-    required AuBecsDebit auBecsDebit,
-    required BacsDebit bacsDebit,
-    required Card card,
-    required Fpx fpx,
-    required Ideal ideal,
-    required SepaDebit sepaDebit,
-    required Sofort sofort,
-    required Upi upi,
+    @JsonKey(name: 'Card') required Card card,
+    @JsonKey(name: 'SepaDebit') required SepaDebit sepaDebit,
+    @JsonKey(name: 'BacsDebit') required BacsDebit bacsDebit,
+    @JsonKey(name: 'AuBecsDebit') required AuBecsDebit auBecsDebit,
+    @JsonKey(name: 'Sofort') required Sofort sofort,
+    @JsonKey(name: 'Ideal') required Ideal ideal,
+    @JsonKey(name: 'Fpx') required Fpx fpx,
+    @JsonKey(name: 'Upi') required Upi upi,
   }) = _PaymentMethod;
 
   factory PaymentMethod.fromJson(Map<String, dynamic> json) =>
@@ -36,12 +36,12 @@ class BillingDetails with _$BillingDetails {
     String? email,
     String? phone,
     String? name,
-    String? adressPostalCode,
-    String? addressCity,
-    String? addressCountry,
-    String? addressLine1,
-    String? addressLine2,
-    String? addressLine3,
+    String? postalCode,
+    String? city,
+    String? state,
+    String? country,
+    @JsonKey(name: 'line1') String? addressLine1,
+    @JsonKey(name: 'line2') String? addressLine2,
   }) = _BillingDetails;
   factory BillingDetails.fromJson(Map<String, dynamic> json) =>
       _$BillingDetailsFromJson(json);
@@ -80,7 +80,6 @@ class Card with _$Card {
     String? country,
     String? expYear,
     String? expMonth,
-    String? fingerprint,
     String? funding,
     String? last4,
   }) = _Card;
@@ -93,6 +92,7 @@ class Fpx with _$Fpx {
   @JsonSerializable(explicitToJson: true)
   const factory Fpx({
     String? bank,
+    String? accountHolderType,
   }) = _Fpx;
 
   factory Fpx.fromJson(Map<String, dynamic> json) => _$FpxFromJson(json);
@@ -163,9 +163,12 @@ enum PaymentMethodType {
 
 @freezed
 class PaymentMethodParams with _$PaymentMethodParams {
+  const factory PaymentMethodParams(String type) = _PaymentMethodParamsDefault;
+
+  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodParams.card({
     @Default('card') String type,
-    required CardFieldInputDetails details,
+    required CardFieldInputDetails cardDetails,
     PaymentIntentsFutureUsage? setupFutureUsage,
   }) = _PaymentMethodParamsCard;
 

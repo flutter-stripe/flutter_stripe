@@ -43,12 +43,13 @@ class ColorKey {
 class CardFieldInputDetails with _$CardFieldInputDetails {
   @JsonSerializable(explicitToJson: true)
   const factory CardFieldInputDetails({
-    required String last4,
+    required String number,
     required int expiryMonth,
     required int expiryYear,
-    required CardBrand brand,
-    required bool complete,
-    required String? postalCode,
+    required String cvc,
+    String? name,
+    String? postalCode,
+    String? currency,
   }) = _CardFieldInputDetails;
 
   factory CardFieldInputDetails.fromJson(Map<String, dynamic> json) =>

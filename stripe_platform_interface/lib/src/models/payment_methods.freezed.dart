@@ -23,30 +23,30 @@ class _$PaymentMethodTearOff {
   _PaymentMethod call(
       {required String id,
       required bool liveMode,
+      required String type,
       required String customerId,
       required BillingDetails billingDetails,
-      required PaymentMethodType type,
-      required AuBecsDebit auBecsDebit,
-      required BacsDebit bacsDebit,
-      required Card card,
-      required Fpx fpx,
-      required Ideal ideal,
-      required SepaDebit sepaDebit,
-      required Sofort sofort,
-      required Upi upi}) {
+      @JsonKey(name: 'Card') required Card card,
+      @JsonKey(name: 'SepaDebit') required SepaDebit sepaDebit,
+      @JsonKey(name: 'BacsDebit') required BacsDebit bacsDebit,
+      @JsonKey(name: 'AuBecsDebit') required AuBecsDebit auBecsDebit,
+      @JsonKey(name: 'Sofort') required Sofort sofort,
+      @JsonKey(name: 'Ideal') required Ideal ideal,
+      @JsonKey(name: 'Fpx') required Fpx fpx,
+      @JsonKey(name: 'Upi') required Upi upi}) {
     return _PaymentMethod(
       id: id,
       liveMode: liveMode,
+      type: type,
       customerId: customerId,
       billingDetails: billingDetails,
-      type: type,
-      auBecsDebit: auBecsDebit,
-      bacsDebit: bacsDebit,
       card: card,
-      fpx: fpx,
-      ideal: ideal,
       sepaDebit: sepaDebit,
+      bacsDebit: bacsDebit,
+      auBecsDebit: auBecsDebit,
       sofort: sofort,
+      ideal: ideal,
+      fpx: fpx,
       upi: upi,
     );
   }
@@ -63,16 +63,24 @@ const $PaymentMethod = _$PaymentMethodTearOff();
 mixin _$PaymentMethod {
   String get id => throw _privateConstructorUsedError;
   bool get liveMode => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
   String get customerId => throw _privateConstructorUsedError;
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
-  PaymentMethodType get type => throw _privateConstructorUsedError;
-  AuBecsDebit get auBecsDebit => throw _privateConstructorUsedError;
-  BacsDebit get bacsDebit => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Card')
   Card get card => throw _privateConstructorUsedError;
-  Fpx get fpx => throw _privateConstructorUsedError;
-  Ideal get ideal => throw _privateConstructorUsedError;
+  @JsonKey(name: 'SepaDebit')
   SepaDebit get sepaDebit => throw _privateConstructorUsedError;
+  @JsonKey(name: 'BacsDebit')
+  BacsDebit get bacsDebit => throw _privateConstructorUsedError;
+  @JsonKey(name: 'AuBecsDebit')
+  AuBecsDebit get auBecsDebit => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Sofort')
   Sofort get sofort => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Ideal')
+  Ideal get ideal => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Fpx')
+  Fpx get fpx => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Upi')
   Upi get upi => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -89,26 +97,26 @@ abstract class $PaymentMethodCopyWith<$Res> {
   $Res call(
       {String id,
       bool liveMode,
+      String type,
       String customerId,
       BillingDetails billingDetails,
-      PaymentMethodType type,
-      AuBecsDebit auBecsDebit,
-      BacsDebit bacsDebit,
-      Card card,
-      Fpx fpx,
-      Ideal ideal,
-      SepaDebit sepaDebit,
-      Sofort sofort,
-      Upi upi});
+      @JsonKey(name: 'Card') Card card,
+      @JsonKey(name: 'SepaDebit') SepaDebit sepaDebit,
+      @JsonKey(name: 'BacsDebit') BacsDebit bacsDebit,
+      @JsonKey(name: 'AuBecsDebit') AuBecsDebit auBecsDebit,
+      @JsonKey(name: 'Sofort') Sofort sofort,
+      @JsonKey(name: 'Ideal') Ideal ideal,
+      @JsonKey(name: 'Fpx') Fpx fpx,
+      @JsonKey(name: 'Upi') Upi upi});
 
   $BillingDetailsCopyWith<$Res> get billingDetails;
-  $AuBecsDebitCopyWith<$Res> get auBecsDebit;
-  $BacsDebitCopyWith<$Res> get bacsDebit;
   $CardCopyWith<$Res> get card;
-  $FpxCopyWith<$Res> get fpx;
-  $IdealCopyWith<$Res> get ideal;
   $SepaDebitCopyWith<$Res> get sepaDebit;
+  $BacsDebitCopyWith<$Res> get bacsDebit;
+  $AuBecsDebitCopyWith<$Res> get auBecsDebit;
   $SofortCopyWith<$Res> get sofort;
+  $IdealCopyWith<$Res> get ideal;
+  $FpxCopyWith<$Res> get fpx;
   $UpiCopyWith<$Res> get upi;
 }
 
@@ -125,16 +133,16 @@ class _$PaymentMethodCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? liveMode = freezed,
+    Object? type = freezed,
     Object? customerId = freezed,
     Object? billingDetails = freezed,
-    Object? type = freezed,
-    Object? auBecsDebit = freezed,
-    Object? bacsDebit = freezed,
     Object? card = freezed,
-    Object? fpx = freezed,
-    Object? ideal = freezed,
     Object? sepaDebit = freezed,
+    Object? bacsDebit = freezed,
+    Object? auBecsDebit = freezed,
     Object? sofort = freezed,
+    Object? ideal = freezed,
+    Object? fpx = freezed,
     Object? upi = freezed,
   }) {
     return _then(_value.copyWith(
@@ -146,6 +154,10 @@ class _$PaymentMethodCopyWithImpl<$Res>
           ? _value.liveMode
           : liveMode // ignore: cast_nullable_to_non_nullable
               as bool,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
       customerId: customerId == freezed
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
@@ -154,38 +166,34 @@ class _$PaymentMethodCopyWithImpl<$Res>
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
               as BillingDetails,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as PaymentMethodType,
-      auBecsDebit: auBecsDebit == freezed
-          ? _value.auBecsDebit
-          : auBecsDebit // ignore: cast_nullable_to_non_nullable
-              as AuBecsDebit,
-      bacsDebit: bacsDebit == freezed
-          ? _value.bacsDebit
-          : bacsDebit // ignore: cast_nullable_to_non_nullable
-              as BacsDebit,
       card: card == freezed
           ? _value.card
           : card // ignore: cast_nullable_to_non_nullable
               as Card,
-      fpx: fpx == freezed
-          ? _value.fpx
-          : fpx // ignore: cast_nullable_to_non_nullable
-              as Fpx,
-      ideal: ideal == freezed
-          ? _value.ideal
-          : ideal // ignore: cast_nullable_to_non_nullable
-              as Ideal,
       sepaDebit: sepaDebit == freezed
           ? _value.sepaDebit
           : sepaDebit // ignore: cast_nullable_to_non_nullable
               as SepaDebit,
+      bacsDebit: bacsDebit == freezed
+          ? _value.bacsDebit
+          : bacsDebit // ignore: cast_nullable_to_non_nullable
+              as BacsDebit,
+      auBecsDebit: auBecsDebit == freezed
+          ? _value.auBecsDebit
+          : auBecsDebit // ignore: cast_nullable_to_non_nullable
+              as AuBecsDebit,
       sofort: sofort == freezed
           ? _value.sofort
           : sofort // ignore: cast_nullable_to_non_nullable
               as Sofort,
+      ideal: ideal == freezed
+          ? _value.ideal
+          : ideal // ignore: cast_nullable_to_non_nullable
+              as Ideal,
+      fpx: fpx == freezed
+          ? _value.fpx
+          : fpx // ignore: cast_nullable_to_non_nullable
+              as Fpx,
       upi: upi == freezed
           ? _value.upi
           : upi // ignore: cast_nullable_to_non_nullable
@@ -201,37 +209,9 @@ class _$PaymentMethodCopyWithImpl<$Res>
   }
 
   @override
-  $AuBecsDebitCopyWith<$Res> get auBecsDebit {
-    return $AuBecsDebitCopyWith<$Res>(_value.auBecsDebit, (value) {
-      return _then(_value.copyWith(auBecsDebit: value));
-    });
-  }
-
-  @override
-  $BacsDebitCopyWith<$Res> get bacsDebit {
-    return $BacsDebitCopyWith<$Res>(_value.bacsDebit, (value) {
-      return _then(_value.copyWith(bacsDebit: value));
-    });
-  }
-
-  @override
   $CardCopyWith<$Res> get card {
     return $CardCopyWith<$Res>(_value.card, (value) {
       return _then(_value.copyWith(card: value));
-    });
-  }
-
-  @override
-  $FpxCopyWith<$Res> get fpx {
-    return $FpxCopyWith<$Res>(_value.fpx, (value) {
-      return _then(_value.copyWith(fpx: value));
-    });
-  }
-
-  @override
-  $IdealCopyWith<$Res> get ideal {
-    return $IdealCopyWith<$Res>(_value.ideal, (value) {
-      return _then(_value.copyWith(ideal: value));
     });
   }
 
@@ -243,9 +223,37 @@ class _$PaymentMethodCopyWithImpl<$Res>
   }
 
   @override
+  $BacsDebitCopyWith<$Res> get bacsDebit {
+    return $BacsDebitCopyWith<$Res>(_value.bacsDebit, (value) {
+      return _then(_value.copyWith(bacsDebit: value));
+    });
+  }
+
+  @override
+  $AuBecsDebitCopyWith<$Res> get auBecsDebit {
+    return $AuBecsDebitCopyWith<$Res>(_value.auBecsDebit, (value) {
+      return _then(_value.copyWith(auBecsDebit: value));
+    });
+  }
+
+  @override
   $SofortCopyWith<$Res> get sofort {
     return $SofortCopyWith<$Res>(_value.sofort, (value) {
       return _then(_value.copyWith(sofort: value));
+    });
+  }
+
+  @override
+  $IdealCopyWith<$Res> get ideal {
+    return $IdealCopyWith<$Res>(_value.ideal, (value) {
+      return _then(_value.copyWith(ideal: value));
+    });
+  }
+
+  @override
+  $FpxCopyWith<$Res> get fpx {
+    return $FpxCopyWith<$Res>(_value.fpx, (value) {
+      return _then(_value.copyWith(fpx: value));
     });
   }
 
@@ -267,34 +275,34 @@ abstract class _$PaymentMethodCopyWith<$Res>
   $Res call(
       {String id,
       bool liveMode,
+      String type,
       String customerId,
       BillingDetails billingDetails,
-      PaymentMethodType type,
-      AuBecsDebit auBecsDebit,
-      BacsDebit bacsDebit,
-      Card card,
-      Fpx fpx,
-      Ideal ideal,
-      SepaDebit sepaDebit,
-      Sofort sofort,
-      Upi upi});
+      @JsonKey(name: 'Card') Card card,
+      @JsonKey(name: 'SepaDebit') SepaDebit sepaDebit,
+      @JsonKey(name: 'BacsDebit') BacsDebit bacsDebit,
+      @JsonKey(name: 'AuBecsDebit') AuBecsDebit auBecsDebit,
+      @JsonKey(name: 'Sofort') Sofort sofort,
+      @JsonKey(name: 'Ideal') Ideal ideal,
+      @JsonKey(name: 'Fpx') Fpx fpx,
+      @JsonKey(name: 'Upi') Upi upi});
 
   @override
   $BillingDetailsCopyWith<$Res> get billingDetails;
   @override
-  $AuBecsDebitCopyWith<$Res> get auBecsDebit;
-  @override
-  $BacsDebitCopyWith<$Res> get bacsDebit;
-  @override
   $CardCopyWith<$Res> get card;
-  @override
-  $FpxCopyWith<$Res> get fpx;
-  @override
-  $IdealCopyWith<$Res> get ideal;
   @override
   $SepaDebitCopyWith<$Res> get sepaDebit;
   @override
+  $BacsDebitCopyWith<$Res> get bacsDebit;
+  @override
+  $AuBecsDebitCopyWith<$Res> get auBecsDebit;
+  @override
   $SofortCopyWith<$Res> get sofort;
+  @override
+  $IdealCopyWith<$Res> get ideal;
+  @override
+  $FpxCopyWith<$Res> get fpx;
   @override
   $UpiCopyWith<$Res> get upi;
 }
@@ -314,16 +322,16 @@ class __$PaymentMethodCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? liveMode = freezed,
+    Object? type = freezed,
     Object? customerId = freezed,
     Object? billingDetails = freezed,
-    Object? type = freezed,
-    Object? auBecsDebit = freezed,
-    Object? bacsDebit = freezed,
     Object? card = freezed,
-    Object? fpx = freezed,
-    Object? ideal = freezed,
     Object? sepaDebit = freezed,
+    Object? bacsDebit = freezed,
+    Object? auBecsDebit = freezed,
     Object? sofort = freezed,
+    Object? ideal = freezed,
+    Object? fpx = freezed,
     Object? upi = freezed,
   }) {
     return _then(_PaymentMethod(
@@ -335,6 +343,10 @@ class __$PaymentMethodCopyWithImpl<$Res>
           ? _value.liveMode
           : liveMode // ignore: cast_nullable_to_non_nullable
               as bool,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
       customerId: customerId == freezed
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
@@ -343,38 +355,34 @@ class __$PaymentMethodCopyWithImpl<$Res>
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
               as BillingDetails,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as PaymentMethodType,
-      auBecsDebit: auBecsDebit == freezed
-          ? _value.auBecsDebit
-          : auBecsDebit // ignore: cast_nullable_to_non_nullable
-              as AuBecsDebit,
-      bacsDebit: bacsDebit == freezed
-          ? _value.bacsDebit
-          : bacsDebit // ignore: cast_nullable_to_non_nullable
-              as BacsDebit,
       card: card == freezed
           ? _value.card
           : card // ignore: cast_nullable_to_non_nullable
               as Card,
-      fpx: fpx == freezed
-          ? _value.fpx
-          : fpx // ignore: cast_nullable_to_non_nullable
-              as Fpx,
-      ideal: ideal == freezed
-          ? _value.ideal
-          : ideal // ignore: cast_nullable_to_non_nullable
-              as Ideal,
       sepaDebit: sepaDebit == freezed
           ? _value.sepaDebit
           : sepaDebit // ignore: cast_nullable_to_non_nullable
               as SepaDebit,
+      bacsDebit: bacsDebit == freezed
+          ? _value.bacsDebit
+          : bacsDebit // ignore: cast_nullable_to_non_nullable
+              as BacsDebit,
+      auBecsDebit: auBecsDebit == freezed
+          ? _value.auBecsDebit
+          : auBecsDebit // ignore: cast_nullable_to_non_nullable
+              as AuBecsDebit,
       sofort: sofort == freezed
           ? _value.sofort
           : sofort // ignore: cast_nullable_to_non_nullable
               as Sofort,
+      ideal: ideal == freezed
+          ? _value.ideal
+          : ideal // ignore: cast_nullable_to_non_nullable
+              as Ideal,
+      fpx: fpx == freezed
+          ? _value.fpx
+          : fpx // ignore: cast_nullable_to_non_nullable
+              as Fpx,
       upi: upi == freezed
           ? _value.upi
           : upi // ignore: cast_nullable_to_non_nullable
@@ -390,17 +398,17 @@ class _$_PaymentMethod implements _PaymentMethod {
   const _$_PaymentMethod(
       {required this.id,
       required this.liveMode,
+      required this.type,
       required this.customerId,
       required this.billingDetails,
-      required this.type,
-      required this.auBecsDebit,
-      required this.bacsDebit,
-      required this.card,
-      required this.fpx,
-      required this.ideal,
-      required this.sepaDebit,
-      required this.sofort,
-      required this.upi});
+      @JsonKey(name: 'Card') required this.card,
+      @JsonKey(name: 'SepaDebit') required this.sepaDebit,
+      @JsonKey(name: 'BacsDebit') required this.bacsDebit,
+      @JsonKey(name: 'AuBecsDebit') required this.auBecsDebit,
+      @JsonKey(name: 'Sofort') required this.sofort,
+      @JsonKey(name: 'Ideal') required this.ideal,
+      @JsonKey(name: 'Fpx') required this.fpx,
+      @JsonKey(name: 'Upi') required this.upi});
 
   factory _$_PaymentMethod.fromJson(Map<String, dynamic> json) =>
       _$_$_PaymentMethodFromJson(json);
@@ -410,31 +418,39 @@ class _$_PaymentMethod implements _PaymentMethod {
   @override
   final bool liveMode;
   @override
+  final String type;
+  @override
   final String customerId;
   @override
   final BillingDetails billingDetails;
   @override
-  final PaymentMethodType type;
-  @override
-  final AuBecsDebit auBecsDebit;
-  @override
-  final BacsDebit bacsDebit;
-  @override
+  @JsonKey(name: 'Card')
   final Card card;
   @override
-  final Fpx fpx;
-  @override
-  final Ideal ideal;
-  @override
+  @JsonKey(name: 'SepaDebit')
   final SepaDebit sepaDebit;
   @override
+  @JsonKey(name: 'BacsDebit')
+  final BacsDebit bacsDebit;
+  @override
+  @JsonKey(name: 'AuBecsDebit')
+  final AuBecsDebit auBecsDebit;
+  @override
+  @JsonKey(name: 'Sofort')
   final Sofort sofort;
   @override
+  @JsonKey(name: 'Ideal')
+  final Ideal ideal;
+  @override
+  @JsonKey(name: 'Fpx')
+  final Fpx fpx;
+  @override
+  @JsonKey(name: 'Upi')
   final Upi upi;
 
   @override
   String toString() {
-    return 'PaymentMethod(id: $id, liveMode: $liveMode, customerId: $customerId, billingDetails: $billingDetails, type: $type, auBecsDebit: $auBecsDebit, bacsDebit: $bacsDebit, card: $card, fpx: $fpx, ideal: $ideal, sepaDebit: $sepaDebit, sofort: $sofort, upi: $upi)';
+    return 'PaymentMethod(id: $id, liveMode: $liveMode, type: $type, customerId: $customerId, billingDetails: $billingDetails, card: $card, sepaDebit: $sepaDebit, bacsDebit: $bacsDebit, auBecsDebit: $auBecsDebit, sofort: $sofort, ideal: $ideal, fpx: $fpx, upi: $upi)';
   }
 
   @override
@@ -446,31 +462,31 @@ class _$_PaymentMethod implements _PaymentMethod {
             (identical(other.liveMode, liveMode) ||
                 const DeepCollectionEquality()
                     .equals(other.liveMode, liveMode)) &&
+            (identical(other.type, type) ||
+                const DeepCollectionEquality().equals(other.type, type)) &&
             (identical(other.customerId, customerId) ||
                 const DeepCollectionEquality()
                     .equals(other.customerId, customerId)) &&
             (identical(other.billingDetails, billingDetails) ||
                 const DeepCollectionEquality()
                     .equals(other.billingDetails, billingDetails)) &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
-            (identical(other.auBecsDebit, auBecsDebit) ||
-                const DeepCollectionEquality()
-                    .equals(other.auBecsDebit, auBecsDebit)) &&
-            (identical(other.bacsDebit, bacsDebit) ||
-                const DeepCollectionEquality()
-                    .equals(other.bacsDebit, bacsDebit)) &&
             (identical(other.card, card) ||
                 const DeepCollectionEquality().equals(other.card, card)) &&
-            (identical(other.fpx, fpx) ||
-                const DeepCollectionEquality().equals(other.fpx, fpx)) &&
-            (identical(other.ideal, ideal) ||
-                const DeepCollectionEquality().equals(other.ideal, ideal)) &&
             (identical(other.sepaDebit, sepaDebit) ||
                 const DeepCollectionEquality()
                     .equals(other.sepaDebit, sepaDebit)) &&
+            (identical(other.bacsDebit, bacsDebit) ||
+                const DeepCollectionEquality()
+                    .equals(other.bacsDebit, bacsDebit)) &&
+            (identical(other.auBecsDebit, auBecsDebit) ||
+                const DeepCollectionEquality()
+                    .equals(other.auBecsDebit, auBecsDebit)) &&
             (identical(other.sofort, sofort) ||
                 const DeepCollectionEquality().equals(other.sofort, sofort)) &&
+            (identical(other.ideal, ideal) ||
+                const DeepCollectionEquality().equals(other.ideal, ideal)) &&
+            (identical(other.fpx, fpx) ||
+                const DeepCollectionEquality().equals(other.fpx, fpx)) &&
             (identical(other.upi, upi) ||
                 const DeepCollectionEquality().equals(other.upi, upi)));
   }
@@ -480,16 +496,16 @@ class _$_PaymentMethod implements _PaymentMethod {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(liveMode) ^
+      const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(customerId) ^
       const DeepCollectionEquality().hash(billingDetails) ^
-      const DeepCollectionEquality().hash(type) ^
-      const DeepCollectionEquality().hash(auBecsDebit) ^
-      const DeepCollectionEquality().hash(bacsDebit) ^
       const DeepCollectionEquality().hash(card) ^
-      const DeepCollectionEquality().hash(fpx) ^
-      const DeepCollectionEquality().hash(ideal) ^
       const DeepCollectionEquality().hash(sepaDebit) ^
+      const DeepCollectionEquality().hash(bacsDebit) ^
+      const DeepCollectionEquality().hash(auBecsDebit) ^
       const DeepCollectionEquality().hash(sofort) ^
+      const DeepCollectionEquality().hash(ideal) ^
+      const DeepCollectionEquality().hash(fpx) ^
       const DeepCollectionEquality().hash(upi);
 
   @JsonKey(ignore: true)
@@ -507,17 +523,17 @@ abstract class _PaymentMethod implements PaymentMethod {
   const factory _PaymentMethod(
       {required String id,
       required bool liveMode,
+      required String type,
       required String customerId,
       required BillingDetails billingDetails,
-      required PaymentMethodType type,
-      required AuBecsDebit auBecsDebit,
-      required BacsDebit bacsDebit,
-      required Card card,
-      required Fpx fpx,
-      required Ideal ideal,
-      required SepaDebit sepaDebit,
-      required Sofort sofort,
-      required Upi upi}) = _$_PaymentMethod;
+      @JsonKey(name: 'Card') required Card card,
+      @JsonKey(name: 'SepaDebit') required SepaDebit sepaDebit,
+      @JsonKey(name: 'BacsDebit') required BacsDebit bacsDebit,
+      @JsonKey(name: 'AuBecsDebit') required AuBecsDebit auBecsDebit,
+      @JsonKey(name: 'Sofort') required Sofort sofort,
+      @JsonKey(name: 'Ideal') required Ideal ideal,
+      @JsonKey(name: 'Fpx') required Fpx fpx,
+      @JsonKey(name: 'Upi') required Upi upi}) = _$_PaymentMethod;
 
   factory _PaymentMethod.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethod.fromJson;
@@ -527,26 +543,34 @@ abstract class _PaymentMethod implements PaymentMethod {
   @override
   bool get liveMode => throw _privateConstructorUsedError;
   @override
+  String get type => throw _privateConstructorUsedError;
+  @override
   String get customerId => throw _privateConstructorUsedError;
   @override
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
   @override
-  PaymentMethodType get type => throw _privateConstructorUsedError;
-  @override
-  AuBecsDebit get auBecsDebit => throw _privateConstructorUsedError;
-  @override
-  BacsDebit get bacsDebit => throw _privateConstructorUsedError;
-  @override
+  @JsonKey(name: 'Card')
   Card get card => throw _privateConstructorUsedError;
   @override
-  Fpx get fpx => throw _privateConstructorUsedError;
-  @override
-  Ideal get ideal => throw _privateConstructorUsedError;
-  @override
+  @JsonKey(name: 'SepaDebit')
   SepaDebit get sepaDebit => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'BacsDebit')
+  BacsDebit get bacsDebit => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'AuBecsDebit')
+  AuBecsDebit get auBecsDebit => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'Sofort')
   Sofort get sofort => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'Ideal')
+  Ideal get ideal => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'Fpx')
+  Fpx get fpx => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'Upi')
   Upi get upi => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -566,22 +590,22 @@ class _$BillingDetailsTearOff {
       {String? email,
       String? phone,
       String? name,
-      String? adressPostalCode,
-      String? addressCity,
-      String? addressCountry,
-      String? addressLine1,
-      String? addressLine2,
-      String? addressLine3}) {
+      String? postalCode,
+      String? city,
+      String? state,
+      String? country,
+      @JsonKey(name: 'line1') String? addressLine1,
+      @JsonKey(name: 'line2') String? addressLine2}) {
     return _BillingDetails(
       email: email,
       phone: phone,
       name: name,
-      adressPostalCode: adressPostalCode,
-      addressCity: addressCity,
-      addressCountry: addressCountry,
+      postalCode: postalCode,
+      city: city,
+      state: state,
+      country: country,
       addressLine1: addressLine1,
       addressLine2: addressLine2,
-      addressLine3: addressLine3,
     );
   }
 
@@ -598,12 +622,14 @@ mixin _$BillingDetails {
   String? get email => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
-  String? get adressPostalCode => throw _privateConstructorUsedError;
-  String? get addressCity => throw _privateConstructorUsedError;
-  String? get addressCountry => throw _privateConstructorUsedError;
+  String? get postalCode => throw _privateConstructorUsedError;
+  String? get city => throw _privateConstructorUsedError;
+  String? get state => throw _privateConstructorUsedError;
+  String? get country => throw _privateConstructorUsedError;
+  @JsonKey(name: 'line1')
   String? get addressLine1 => throw _privateConstructorUsedError;
+  @JsonKey(name: 'line2')
   String? get addressLine2 => throw _privateConstructorUsedError;
-  String? get addressLine3 => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -620,12 +646,12 @@ abstract class $BillingDetailsCopyWith<$Res> {
       {String? email,
       String? phone,
       String? name,
-      String? adressPostalCode,
-      String? addressCity,
-      String? addressCountry,
-      String? addressLine1,
-      String? addressLine2,
-      String? addressLine3});
+      String? postalCode,
+      String? city,
+      String? state,
+      String? country,
+      @JsonKey(name: 'line1') String? addressLine1,
+      @JsonKey(name: 'line2') String? addressLine2});
 }
 
 /// @nodoc
@@ -642,12 +668,12 @@ class _$BillingDetailsCopyWithImpl<$Res>
     Object? email = freezed,
     Object? phone = freezed,
     Object? name = freezed,
-    Object? adressPostalCode = freezed,
-    Object? addressCity = freezed,
-    Object? addressCountry = freezed,
+    Object? postalCode = freezed,
+    Object? city = freezed,
+    Object? state = freezed,
+    Object? country = freezed,
     Object? addressLine1 = freezed,
     Object? addressLine2 = freezed,
-    Object? addressLine3 = freezed,
   }) {
     return _then(_value.copyWith(
       email: email == freezed
@@ -662,17 +688,21 @@ class _$BillingDetailsCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      adressPostalCode: adressPostalCode == freezed
-          ? _value.adressPostalCode
-          : adressPostalCode // ignore: cast_nullable_to_non_nullable
+      postalCode: postalCode == freezed
+          ? _value.postalCode
+          : postalCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      addressCity: addressCity == freezed
-          ? _value.addressCity
-          : addressCity // ignore: cast_nullable_to_non_nullable
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
               as String?,
-      addressCountry: addressCountry == freezed
-          ? _value.addressCountry
-          : addressCountry // ignore: cast_nullable_to_non_nullable
+      state: state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String?,
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
               as String?,
       addressLine1: addressLine1 == freezed
           ? _value.addressLine1
@@ -681,10 +711,6 @@ class _$BillingDetailsCopyWithImpl<$Res>
       addressLine2: addressLine2 == freezed
           ? _value.addressLine2
           : addressLine2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      addressLine3: addressLine3 == freezed
-          ? _value.addressLine3
-          : addressLine3 // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -701,12 +727,12 @@ abstract class _$BillingDetailsCopyWith<$Res>
       {String? email,
       String? phone,
       String? name,
-      String? adressPostalCode,
-      String? addressCity,
-      String? addressCountry,
-      String? addressLine1,
-      String? addressLine2,
-      String? addressLine3});
+      String? postalCode,
+      String? city,
+      String? state,
+      String? country,
+      @JsonKey(name: 'line1') String? addressLine1,
+      @JsonKey(name: 'line2') String? addressLine2});
 }
 
 /// @nodoc
@@ -725,12 +751,12 @@ class __$BillingDetailsCopyWithImpl<$Res>
     Object? email = freezed,
     Object? phone = freezed,
     Object? name = freezed,
-    Object? adressPostalCode = freezed,
-    Object? addressCity = freezed,
-    Object? addressCountry = freezed,
+    Object? postalCode = freezed,
+    Object? city = freezed,
+    Object? state = freezed,
+    Object? country = freezed,
     Object? addressLine1 = freezed,
     Object? addressLine2 = freezed,
-    Object? addressLine3 = freezed,
   }) {
     return _then(_BillingDetails(
       email: email == freezed
@@ -745,17 +771,21 @@ class __$BillingDetailsCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      adressPostalCode: adressPostalCode == freezed
-          ? _value.adressPostalCode
-          : adressPostalCode // ignore: cast_nullable_to_non_nullable
+      postalCode: postalCode == freezed
+          ? _value.postalCode
+          : postalCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      addressCity: addressCity == freezed
-          ? _value.addressCity
-          : addressCity // ignore: cast_nullable_to_non_nullable
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
               as String?,
-      addressCountry: addressCountry == freezed
-          ? _value.addressCountry
-          : addressCountry // ignore: cast_nullable_to_non_nullable
+      state: state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String?,
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
               as String?,
       addressLine1: addressLine1 == freezed
           ? _value.addressLine1
@@ -764,10 +794,6 @@ class __$BillingDetailsCopyWithImpl<$Res>
       addressLine2: addressLine2 == freezed
           ? _value.addressLine2
           : addressLine2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      addressLine3: addressLine3 == freezed
-          ? _value.addressLine3
-          : addressLine3 // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -781,12 +807,12 @@ class _$_BillingDetails implements _BillingDetails {
       {this.email,
       this.phone,
       this.name,
-      this.adressPostalCode,
-      this.addressCity,
-      this.addressCountry,
-      this.addressLine1,
-      this.addressLine2,
-      this.addressLine3});
+      this.postalCode,
+      this.city,
+      this.state,
+      this.country,
+      @JsonKey(name: 'line1') this.addressLine1,
+      @JsonKey(name: 'line2') this.addressLine2});
 
   factory _$_BillingDetails.fromJson(Map<String, dynamic> json) =>
       _$_$_BillingDetailsFromJson(json);
@@ -798,21 +824,23 @@ class _$_BillingDetails implements _BillingDetails {
   @override
   final String? name;
   @override
-  final String? adressPostalCode;
+  final String? postalCode;
   @override
-  final String? addressCity;
+  final String? city;
   @override
-  final String? addressCountry;
+  final String? state;
   @override
+  final String? country;
+  @override
+  @JsonKey(name: 'line1')
   final String? addressLine1;
   @override
+  @JsonKey(name: 'line2')
   final String? addressLine2;
-  @override
-  final String? addressLine3;
 
   @override
   String toString() {
-    return 'BillingDetails(email: $email, phone: $phone, name: $name, adressPostalCode: $adressPostalCode, addressCity: $addressCity, addressCountry: $addressCountry, addressLine1: $addressLine1, addressLine2: $addressLine2, addressLine3: $addressLine3)';
+    return 'BillingDetails(email: $email, phone: $phone, name: $name, postalCode: $postalCode, city: $city, state: $state, country: $country, addressLine1: $addressLine1, addressLine2: $addressLine2)';
   }
 
   @override
@@ -825,24 +853,22 @@ class _$_BillingDetails implements _BillingDetails {
                 const DeepCollectionEquality().equals(other.phone, phone)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.adressPostalCode, adressPostalCode) ||
+            (identical(other.postalCode, postalCode) ||
                 const DeepCollectionEquality()
-                    .equals(other.adressPostalCode, adressPostalCode)) &&
-            (identical(other.addressCity, addressCity) ||
+                    .equals(other.postalCode, postalCode)) &&
+            (identical(other.city, city) ||
+                const DeepCollectionEquality().equals(other.city, city)) &&
+            (identical(other.state, state) ||
+                const DeepCollectionEquality().equals(other.state, state)) &&
+            (identical(other.country, country) ||
                 const DeepCollectionEquality()
-                    .equals(other.addressCity, addressCity)) &&
-            (identical(other.addressCountry, addressCountry) ||
-                const DeepCollectionEquality()
-                    .equals(other.addressCountry, addressCountry)) &&
+                    .equals(other.country, country)) &&
             (identical(other.addressLine1, addressLine1) ||
                 const DeepCollectionEquality()
                     .equals(other.addressLine1, addressLine1)) &&
             (identical(other.addressLine2, addressLine2) ||
                 const DeepCollectionEquality()
-                    .equals(other.addressLine2, addressLine2)) &&
-            (identical(other.addressLine3, addressLine3) ||
-                const DeepCollectionEquality()
-                    .equals(other.addressLine3, addressLine3)));
+                    .equals(other.addressLine2, addressLine2)));
   }
 
   @override
@@ -851,12 +877,12 @@ class _$_BillingDetails implements _BillingDetails {
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(phone) ^
       const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(adressPostalCode) ^
-      const DeepCollectionEquality().hash(addressCity) ^
-      const DeepCollectionEquality().hash(addressCountry) ^
+      const DeepCollectionEquality().hash(postalCode) ^
+      const DeepCollectionEquality().hash(city) ^
+      const DeepCollectionEquality().hash(state) ^
+      const DeepCollectionEquality().hash(country) ^
       const DeepCollectionEquality().hash(addressLine1) ^
-      const DeepCollectionEquality().hash(addressLine2) ^
-      const DeepCollectionEquality().hash(addressLine3);
+      const DeepCollectionEquality().hash(addressLine2);
 
   @JsonKey(ignore: true)
   @override
@@ -874,12 +900,12 @@ abstract class _BillingDetails implements BillingDetails {
       {String? email,
       String? phone,
       String? name,
-      String? adressPostalCode,
-      String? addressCity,
-      String? addressCountry,
-      String? addressLine1,
-      String? addressLine2,
-      String? addressLine3}) = _$_BillingDetails;
+      String? postalCode,
+      String? city,
+      String? state,
+      String? country,
+      @JsonKey(name: 'line1') String? addressLine1,
+      @JsonKey(name: 'line2') String? addressLine2}) = _$_BillingDetails;
 
   factory _BillingDetails.fromJson(Map<String, dynamic> json) =
       _$_BillingDetails.fromJson;
@@ -891,17 +917,19 @@ abstract class _BillingDetails implements BillingDetails {
   @override
   String? get name => throw _privateConstructorUsedError;
   @override
-  String? get adressPostalCode => throw _privateConstructorUsedError;
+  String? get postalCode => throw _privateConstructorUsedError;
   @override
-  String? get addressCity => throw _privateConstructorUsedError;
+  String? get city => throw _privateConstructorUsedError;
   @override
-  String? get addressCountry => throw _privateConstructorUsedError;
+  String? get state => throw _privateConstructorUsedError;
   @override
+  String? get country => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'line1')
   String? get addressLine1 => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'line2')
   String? get addressLine2 => throw _privateConstructorUsedError;
-  @override
-  String? get addressLine3 => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$BillingDetailsCopyWith<_BillingDetails> get copyWith =>
@@ -1298,7 +1326,6 @@ class _$CardTearOff {
       String? country,
       String? expYear,
       String? expMonth,
-      String? fingerprint,
       String? funding,
       String? last4}) {
     return _Card(
@@ -1306,7 +1333,6 @@ class _$CardTearOff {
       country: country,
       expYear: expYear,
       expMonth: expMonth,
-      fingerprint: fingerprint,
       funding: funding,
       last4: last4,
     );
@@ -1326,7 +1352,6 @@ mixin _$Card {
   String? get country => throw _privateConstructorUsedError;
   String? get expYear => throw _privateConstructorUsedError;
   String? get expMonth => throw _privateConstructorUsedError;
-  String? get fingerprint => throw _privateConstructorUsedError;
   String? get funding => throw _privateConstructorUsedError;
   String? get last4 => throw _privateConstructorUsedError;
 
@@ -1344,7 +1369,6 @@ abstract class $CardCopyWith<$Res> {
       String? country,
       String? expYear,
       String? expMonth,
-      String? fingerprint,
       String? funding,
       String? last4});
 }
@@ -1363,7 +1387,6 @@ class _$CardCopyWithImpl<$Res> implements $CardCopyWith<$Res> {
     Object? country = freezed,
     Object? expYear = freezed,
     Object? expMonth = freezed,
-    Object? fingerprint = freezed,
     Object? funding = freezed,
     Object? last4 = freezed,
   }) {
@@ -1383,10 +1406,6 @@ class _$CardCopyWithImpl<$Res> implements $CardCopyWith<$Res> {
       expMonth: expMonth == freezed
           ? _value.expMonth
           : expMonth // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fingerprint: fingerprint == freezed
-          ? _value.fingerprint
-          : fingerprint // ignore: cast_nullable_to_non_nullable
               as String?,
       funding: funding == freezed
           ? _value.funding
@@ -1410,7 +1429,6 @@ abstract class _$CardCopyWith<$Res> implements $CardCopyWith<$Res> {
       String? country,
       String? expYear,
       String? expMonth,
-      String? fingerprint,
       String? funding,
       String? last4});
 }
@@ -1430,7 +1448,6 @@ class __$CardCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res>
     Object? country = freezed,
     Object? expYear = freezed,
     Object? expMonth = freezed,
-    Object? fingerprint = freezed,
     Object? funding = freezed,
     Object? last4 = freezed,
   }) {
@@ -1450,10 +1467,6 @@ class __$CardCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res>
       expMonth: expMonth == freezed
           ? _value.expMonth
           : expMonth // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fingerprint: fingerprint == freezed
-          ? _value.fingerprint
-          : fingerprint // ignore: cast_nullable_to_non_nullable
               as String?,
       funding: funding == freezed
           ? _value.funding
@@ -1476,7 +1489,6 @@ class _$_Card implements _Card {
       this.country,
       this.expYear,
       this.expMonth,
-      this.fingerprint,
       this.funding,
       this.last4});
 
@@ -1492,15 +1504,13 @@ class _$_Card implements _Card {
   @override
   final String? expMonth;
   @override
-  final String? fingerprint;
-  @override
   final String? funding;
   @override
   final String? last4;
 
   @override
   String toString() {
-    return 'Card(brand: $brand, country: $country, expYear: $expYear, expMonth: $expMonth, fingerprint: $fingerprint, funding: $funding, last4: $last4)';
+    return 'Card(brand: $brand, country: $country, expYear: $expYear, expMonth: $expMonth, funding: $funding, last4: $last4)';
   }
 
   @override
@@ -1518,9 +1528,6 @@ class _$_Card implements _Card {
             (identical(other.expMonth, expMonth) ||
                 const DeepCollectionEquality()
                     .equals(other.expMonth, expMonth)) &&
-            (identical(other.fingerprint, fingerprint) ||
-                const DeepCollectionEquality()
-                    .equals(other.fingerprint, fingerprint)) &&
             (identical(other.funding, funding) ||
                 const DeepCollectionEquality()
                     .equals(other.funding, funding)) &&
@@ -1535,7 +1542,6 @@ class _$_Card implements _Card {
       const DeepCollectionEquality().hash(country) ^
       const DeepCollectionEquality().hash(expYear) ^
       const DeepCollectionEquality().hash(expMonth) ^
-      const DeepCollectionEquality().hash(fingerprint) ^
       const DeepCollectionEquality().hash(funding) ^
       const DeepCollectionEquality().hash(last4);
 
@@ -1556,7 +1562,6 @@ abstract class _Card implements Card {
       String? country,
       String? expYear,
       String? expMonth,
-      String? fingerprint,
       String? funding,
       String? last4}) = _$_Card;
 
@@ -1570,8 +1575,6 @@ abstract class _Card implements Card {
   String? get expYear => throw _privateConstructorUsedError;
   @override
   String? get expMonth => throw _privateConstructorUsedError;
-  @override
-  String? get fingerprint => throw _privateConstructorUsedError;
   @override
   String? get funding => throw _privateConstructorUsedError;
   @override
@@ -1589,9 +1592,10 @@ Fpx _$FpxFromJson(Map<String, dynamic> json) {
 class _$FpxTearOff {
   const _$FpxTearOff();
 
-  _Fpx call({String? bank}) {
+  _Fpx call({String? bank, String? accountHolderType}) {
     return _Fpx(
       bank: bank,
+      accountHolderType: accountHolderType,
     );
   }
 
@@ -1606,6 +1610,7 @@ const $Fpx = _$FpxTearOff();
 /// @nodoc
 mixin _$Fpx {
   String? get bank => throw _privateConstructorUsedError;
+  String? get accountHolderType => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1616,7 +1621,7 @@ mixin _$Fpx {
 abstract class $FpxCopyWith<$Res> {
   factory $FpxCopyWith(Fpx value, $Res Function(Fpx) then) =
       _$FpxCopyWithImpl<$Res>;
-  $Res call({String? bank});
+  $Res call({String? bank, String? accountHolderType});
 }
 
 /// @nodoc
@@ -1630,11 +1635,16 @@ class _$FpxCopyWithImpl<$Res> implements $FpxCopyWith<$Res> {
   @override
   $Res call({
     Object? bank = freezed,
+    Object? accountHolderType = freezed,
   }) {
     return _then(_value.copyWith(
       bank: bank == freezed
           ? _value.bank
           : bank // ignore: cast_nullable_to_non_nullable
+              as String?,
+      accountHolderType: accountHolderType == freezed
+          ? _value.accountHolderType
+          : accountHolderType // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -1645,7 +1655,7 @@ abstract class _$FpxCopyWith<$Res> implements $FpxCopyWith<$Res> {
   factory _$FpxCopyWith(_Fpx value, $Res Function(_Fpx) then) =
       __$FpxCopyWithImpl<$Res>;
   @override
-  $Res call({String? bank});
+  $Res call({String? bank, String? accountHolderType});
 }
 
 /// @nodoc
@@ -1660,11 +1670,16 @@ class __$FpxCopyWithImpl<$Res> extends _$FpxCopyWithImpl<$Res>
   @override
   $Res call({
     Object? bank = freezed,
+    Object? accountHolderType = freezed,
   }) {
     return _then(_Fpx(
       bank: bank == freezed
           ? _value.bank
           : bank // ignore: cast_nullable_to_non_nullable
+              as String?,
+      accountHolderType: accountHolderType == freezed
+          ? _value.accountHolderType
+          : accountHolderType // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -1674,16 +1689,18 @@ class __$FpxCopyWithImpl<$Res> extends _$FpxCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_Fpx implements _Fpx {
-  const _$_Fpx({this.bank});
+  const _$_Fpx({this.bank, this.accountHolderType});
 
   factory _$_Fpx.fromJson(Map<String, dynamic> json) => _$_$_FpxFromJson(json);
 
   @override
   final String? bank;
+  @override
+  final String? accountHolderType;
 
   @override
   String toString() {
-    return 'Fpx(bank: $bank)';
+    return 'Fpx(bank: $bank, accountHolderType: $accountHolderType)';
   }
 
   @override
@@ -1691,12 +1708,17 @@ class _$_Fpx implements _Fpx {
     return identical(this, other) ||
         (other is _Fpx &&
             (identical(other.bank, bank) ||
-                const DeepCollectionEquality().equals(other.bank, bank)));
+                const DeepCollectionEquality().equals(other.bank, bank)) &&
+            (identical(other.accountHolderType, accountHolderType) ||
+                const DeepCollectionEquality()
+                    .equals(other.accountHolderType, accountHolderType)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(bank);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(bank) ^
+      const DeepCollectionEquality().hash(accountHolderType);
 
   @JsonKey(ignore: true)
   @override
@@ -1710,12 +1732,14 @@ class _$_Fpx implements _Fpx {
 }
 
 abstract class _Fpx implements Fpx {
-  const factory _Fpx({String? bank}) = _$_Fpx;
+  const factory _Fpx({String? bank, String? accountHolderType}) = _$_Fpx;
 
   factory _Fpx.fromJson(Map<String, dynamic> json) = _$_Fpx.fromJson;
 
   @override
   String? get bank => throw _privateConstructorUsedError;
+  @override
+  String? get accountHolderType => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$FpxCopyWith<_Fpx> get copyWith => throw _privateConstructorUsedError;
@@ -2380,6 +2404,8 @@ abstract class _Upi implements Upi {
 
 PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType'] as String) {
+    case 'default':
+      return _PaymentMethodParamsDefault.fromJson(json);
     case 'card':
       return _PaymentMethodParamsCard.fromJson(json);
     case 'cardFromMethodId':
@@ -2396,13 +2422,19 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
 class _$PaymentMethodParamsTearOff {
   const _$PaymentMethodParamsTearOff();
 
+  _PaymentMethodParamsDefault call(String type) {
+    return _PaymentMethodParamsDefault(
+      type,
+    );
+  }
+
   _PaymentMethodParamsCard card(
       {String type = 'card',
-      required CardFieldInputDetails details,
+      required CardFieldInputDetails cardDetails,
       PaymentIntentsFutureUsage? setupFutureUsage}) {
     return _PaymentMethodParamsCard(
       type: type,
-      details: details,
+      cardDetails: cardDetails,
       setupFutureUsage: setupFutureUsage,
     );
   }
@@ -2435,8 +2467,9 @@ mixin _$PaymentMethodParams {
   String get type => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String type, CardFieldInputDetails details,
+  TResult when<TResult extends Object?>(
+    TResult Function(String type) $default, {
+    required TResult Function(String type, CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         card,
     required TResult Function(String type, String paymentMethodId, String? cvc)
@@ -2445,8 +2478,9 @@ mixin _$PaymentMethodParams {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String type, CardFieldInputDetails details,
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String type)? $default, {
+    TResult Function(String type, CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         card,
     TResult Function(String type, String paymentMethodId, String? cvc)?
@@ -2456,7 +2490,8 @@ mixin _$PaymentMethodParams {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
+  TResult map<TResult extends Object?>(
+    TResult Function(_PaymentMethodParamsDefault value) $default, {
     required TResult Function(_PaymentMethodParamsCard value) card,
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
@@ -2464,7 +2499,8 @@ mixin _$PaymentMethodParams {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PaymentMethodParamsDefault value)? $default, {
     TResult Function(_PaymentMethodParamsCard value)? card,
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
@@ -2509,6 +2545,159 @@ class _$PaymentMethodParamsCopyWithImpl<$Res>
 }
 
 /// @nodoc
+abstract class _$PaymentMethodParamsDefaultCopyWith<$Res>
+    implements $PaymentMethodParamsCopyWith<$Res> {
+  factory _$PaymentMethodParamsDefaultCopyWith(
+          _PaymentMethodParamsDefault value,
+          $Res Function(_PaymentMethodParamsDefault) then) =
+      __$PaymentMethodParamsDefaultCopyWithImpl<$Res>;
+  @override
+  $Res call({String type});
+}
+
+/// @nodoc
+class __$PaymentMethodParamsDefaultCopyWithImpl<$Res>
+    extends _$PaymentMethodParamsCopyWithImpl<$Res>
+    implements _$PaymentMethodParamsDefaultCopyWith<$Res> {
+  __$PaymentMethodParamsDefaultCopyWithImpl(_PaymentMethodParamsDefault _value,
+      $Res Function(_PaymentMethodParamsDefault) _then)
+      : super(_value, (v) => _then(v as _PaymentMethodParamsDefault));
+
+  @override
+  _PaymentMethodParamsDefault get _value =>
+      super._value as _PaymentMethodParamsDefault;
+
+  @override
+  $Res call({
+    Object? type = freezed,
+  }) {
+    return _then(_PaymentMethodParamsDefault(
+      type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+@JsonSerializable()
+
+/// @nodoc
+class _$_PaymentMethodParamsDefault implements _PaymentMethodParamsDefault {
+  const _$_PaymentMethodParamsDefault(this.type);
+
+  factory _$_PaymentMethodParamsDefault.fromJson(Map<String, dynamic> json) =>
+      _$_$_PaymentMethodParamsDefaultFromJson(json);
+
+  @override
+  final String type;
+
+  @override
+  String toString() {
+    return 'PaymentMethodParams(type: $type)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _PaymentMethodParamsDefault &&
+            (identical(other.type, type) ||
+                const DeepCollectionEquality().equals(other.type, type)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(type);
+
+  @JsonKey(ignore: true)
+  @override
+  _$PaymentMethodParamsDefaultCopyWith<_PaymentMethodParamsDefault>
+      get copyWith => __$PaymentMethodParamsDefaultCopyWithImpl<
+          _PaymentMethodParamsDefault>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String type) $default, {
+    required TResult Function(String type, CardFieldInputDetails cardDetails,
+            PaymentIntentsFutureUsage? setupFutureUsage)
+        card,
+    required TResult Function(String type, String paymentMethodId, String? cvc)
+        cardFromMethodId,
+    required TResult Function(String type) aliPay,
+  }) {
+    return $default(type);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String type)? $default, {
+    TResult Function(String type, CardFieldInputDetails cardDetails,
+            PaymentIntentsFutureUsage? setupFutureUsage)?
+        card,
+    TResult Function(String type, String paymentMethodId, String? cvc)?
+        cardFromMethodId,
+    TResult Function(String type)? aliPay,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(type);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PaymentMethodParamsDefault value) $default, {
+    required TResult Function(_PaymentMethodParamsCard value) card,
+    required TResult Function(_PaymentMethodParamsCardWithMethodId value)
+        cardFromMethodId,
+    required TResult Function(_PaymentMethodParamsAli value) aliPay,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PaymentMethodParamsDefault value)? $default, {
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAli value)? aliPay,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_PaymentMethodParamsDefaultToJson(this)
+      ..['runtimeType'] = 'default';
+  }
+}
+
+abstract class _PaymentMethodParamsDefault implements PaymentMethodParams {
+  const factory _PaymentMethodParamsDefault(String type) =
+      _$_PaymentMethodParamsDefault;
+
+  factory _PaymentMethodParamsDefault.fromJson(Map<String, dynamic> json) =
+      _$_PaymentMethodParamsDefault.fromJson;
+
+  @override
+  String get type => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$PaymentMethodParamsDefaultCopyWith<_PaymentMethodParamsDefault>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$PaymentMethodParamsCardCopyWith<$Res>
     implements $PaymentMethodParamsCopyWith<$Res> {
   factory _$PaymentMethodParamsCardCopyWith(_PaymentMethodParamsCard value,
@@ -2517,10 +2706,10 @@ abstract class _$PaymentMethodParamsCardCopyWith<$Res>
   @override
   $Res call(
       {String type,
-      CardFieldInputDetails details,
+      CardFieldInputDetails cardDetails,
       PaymentIntentsFutureUsage? setupFutureUsage});
 
-  $CardFieldInputDetailsCopyWith<$Res> get details;
+  $CardFieldInputDetailsCopyWith<$Res> get cardDetails;
 }
 
 /// @nodoc
@@ -2538,7 +2727,7 @@ class __$PaymentMethodParamsCardCopyWithImpl<$Res>
   @override
   $Res call({
     Object? type = freezed,
-    Object? details = freezed,
+    Object? cardDetails = freezed,
     Object? setupFutureUsage = freezed,
   }) {
     return _then(_PaymentMethodParamsCard(
@@ -2546,9 +2735,9 @@ class __$PaymentMethodParamsCardCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      details: details == freezed
-          ? _value.details
-          : details // ignore: cast_nullable_to_non_nullable
+      cardDetails: cardDetails == freezed
+          ? _value.cardDetails
+          : cardDetails // ignore: cast_nullable_to_non_nullable
               as CardFieldInputDetails,
       setupFutureUsage: setupFutureUsage == freezed
           ? _value.setupFutureUsage
@@ -2558,19 +2747,19 @@ class __$PaymentMethodParamsCardCopyWithImpl<$Res>
   }
 
   @override
-  $CardFieldInputDetailsCopyWith<$Res> get details {
-    return $CardFieldInputDetailsCopyWith<$Res>(_value.details, (value) {
-      return _then(_value.copyWith(details: value));
+  $CardFieldInputDetailsCopyWith<$Res> get cardDetails {
+    return $CardFieldInputDetailsCopyWith<$Res>(_value.cardDetails, (value) {
+      return _then(_value.copyWith(cardDetails: value));
     });
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
   const _$_PaymentMethodParamsCard(
-      {this.type = 'card', required this.details, this.setupFutureUsage});
+      {this.type = 'card', required this.cardDetails, this.setupFutureUsage});
 
   factory _$_PaymentMethodParamsCard.fromJson(Map<String, dynamic> json) =>
       _$_$_PaymentMethodParamsCardFromJson(json);
@@ -2579,13 +2768,13 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
   @override
   final String type;
   @override
-  final CardFieldInputDetails details;
+  final CardFieldInputDetails cardDetails;
   @override
   final PaymentIntentsFutureUsage? setupFutureUsage;
 
   @override
   String toString() {
-    return 'PaymentMethodParams.card(type: $type, details: $details, setupFutureUsage: $setupFutureUsage)';
+    return 'PaymentMethodParams.card(type: $type, cardDetails: $cardDetails, setupFutureUsage: $setupFutureUsage)';
   }
 
   @override
@@ -2594,9 +2783,9 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
         (other is _PaymentMethodParamsCard &&
             (identical(other.type, type) ||
                 const DeepCollectionEquality().equals(other.type, type)) &&
-            (identical(other.details, details) ||
+            (identical(other.cardDetails, cardDetails) ||
                 const DeepCollectionEquality()
-                    .equals(other.details, details)) &&
+                    .equals(other.cardDetails, cardDetails)) &&
             (identical(other.setupFutureUsage, setupFutureUsage) ||
                 const DeepCollectionEquality()
                     .equals(other.setupFutureUsage, setupFutureUsage)));
@@ -2606,7 +2795,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(type) ^
-      const DeepCollectionEquality().hash(details) ^
+      const DeepCollectionEquality().hash(cardDetails) ^
       const DeepCollectionEquality().hash(setupFutureUsage);
 
   @JsonKey(ignore: true)
@@ -2617,21 +2806,23 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String type, CardFieldInputDetails details,
+  TResult when<TResult extends Object?>(
+    TResult Function(String type) $default, {
+    required TResult Function(String type, CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         card,
     required TResult Function(String type, String paymentMethodId, String? cvc)
         cardFromMethodId,
     required TResult Function(String type) aliPay,
   }) {
-    return card(type, details, setupFutureUsage);
+    return card(type, cardDetails, setupFutureUsage);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String type, CardFieldInputDetails details,
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String type)? $default, {
+    TResult Function(String type, CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         card,
     TResult Function(String type, String paymentMethodId, String? cvc)?
@@ -2640,14 +2831,15 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     required TResult orElse(),
   }) {
     if (card != null) {
-      return card(type, details, setupFutureUsage);
+      return card(type, cardDetails, setupFutureUsage);
     }
     return orElse();
   }
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
+  TResult map<TResult extends Object?>(
+    TResult Function(_PaymentMethodParamsDefault value) $default, {
     required TResult Function(_PaymentMethodParamsCard value) card,
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
@@ -2658,7 +2850,8 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PaymentMethodParamsDefault value)? $default, {
     TResult Function(_PaymentMethodParamsCard value)? card,
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
@@ -2680,7 +2873,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
 abstract class _PaymentMethodParamsCard implements PaymentMethodParams {
   const factory _PaymentMethodParamsCard(
           {String type,
-          required CardFieldInputDetails details,
+          required CardFieldInputDetails cardDetails,
           PaymentIntentsFutureUsage? setupFutureUsage}) =
       _$_PaymentMethodParamsCard;
 
@@ -2689,7 +2882,7 @@ abstract class _PaymentMethodParamsCard implements PaymentMethodParams {
 
   @override
   String get type => throw _privateConstructorUsedError;
-  CardFieldInputDetails get details => throw _privateConstructorUsedError;
+  CardFieldInputDetails get cardDetails => throw _privateConstructorUsedError;
   PaymentIntentsFutureUsage? get setupFutureUsage =>
       throw _privateConstructorUsedError;
   @override
@@ -2799,8 +2992,9 @@ class _$_PaymentMethodParamsCardWithMethodId
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String type, CardFieldInputDetails details,
+  TResult when<TResult extends Object?>(
+    TResult Function(String type) $default, {
+    required TResult Function(String type, CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         card,
     required TResult Function(String type, String paymentMethodId, String? cvc)
@@ -2812,8 +3006,9 @@ class _$_PaymentMethodParamsCardWithMethodId
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String type, CardFieldInputDetails details,
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String type)? $default, {
+    TResult Function(String type, CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         card,
     TResult Function(String type, String paymentMethodId, String? cvc)?
@@ -2829,7 +3024,8 @@ class _$_PaymentMethodParamsCardWithMethodId
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
+  TResult map<TResult extends Object?>(
+    TResult Function(_PaymentMethodParamsDefault value) $default, {
     required TResult Function(_PaymentMethodParamsCard value) card,
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
@@ -2840,7 +3036,8 @@ class _$_PaymentMethodParamsCardWithMethodId
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PaymentMethodParamsDefault value)? $default, {
     TResult Function(_PaymentMethodParamsCard value)? card,
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
@@ -2954,8 +3151,9 @@ class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String type, CardFieldInputDetails details,
+  TResult when<TResult extends Object?>(
+    TResult Function(String type) $default, {
+    required TResult Function(String type, CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         card,
     required TResult Function(String type, String paymentMethodId, String? cvc)
@@ -2967,8 +3165,9 @@ class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String type, CardFieldInputDetails details,
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String type)? $default, {
+    TResult Function(String type, CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         card,
     TResult Function(String type, String paymentMethodId, String? cvc)?
@@ -2984,7 +3183,8 @@ class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
+  TResult map<TResult extends Object?>(
+    TResult Function(_PaymentMethodParamsDefault value) $default, {
     required TResult Function(_PaymentMethodParamsCard value) card,
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
@@ -2995,7 +3195,8 @@ class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PaymentMethodParamsDefault value)? $default, {
     TResult Function(_PaymentMethodParamsCard value)? card,
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
