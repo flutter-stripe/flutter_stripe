@@ -143,12 +143,12 @@ class Stripe {
 
   Future<SetupIntent> confirmSetupIntent(
     String paymentIntentClientSecret,
-    PaymentMethodParams data, [
+    PaymentMethodParams params, [
     Map<String, String> options = const {},
   ]) async {
     try {
       final setupIntent = await _platform.confirmSetupIntent(
-          paymentIntentClientSecret, data, options);
+          paymentIntentClientSecret, params, options);
       return setupIntent;
     } on StripeError catch (error) {
       //throw StripeError<CardActionError>(error.code, error.message);

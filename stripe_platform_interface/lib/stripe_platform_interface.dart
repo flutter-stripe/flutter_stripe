@@ -51,7 +51,7 @@ abstract class StripePlatform extends PlatformInterface {
   Future<void> presentApplePay(ApplePayPresentParams params);
   Future<void> confirmApplePayPayment(String clientSecret);
   Future<SetupIntent> confirmSetupIntent(
-      String setupIntentClientSecret, PaymentMethodParams data,
+      String setupIntentClientSecret, PaymentMethodParams params,
       [Map<String, String> options = const {}]);
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret);
   Future<String> createTokenForCVCUpdate(String cvc);

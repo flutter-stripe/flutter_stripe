@@ -95,7 +95,7 @@ class MethodChannelStripe extends StripePlatform {
     final result = await _methodChannel
         .invokeMapMethod<String, dynamic>('confirmSetupIntent', {
       'setupIntentClientSecret': setupIntentClientSecret,
-      'data': params.toJson(),
+      'params': params.toJson(),
       'options': options,
     });
 
