@@ -10,15 +10,32 @@ part 'setup_intent.g.dart';
 class SetupIntent with _$SetupIntent {
   @JsonSerializable(explicitToJson: true)
   const factory SetupIntent({
-    required PaymentMethodParams paymentMethodCreateParams,
+    required String id,
+    required String status,
+    required String description,
+    required bool livemode,
     required String clientSecret,
-    String? returnUrl,
-    String? mandateId,
-    String? mandateData,
+    required String paymentMethodId,
+    required String usage,
+    required List<PaymentMethodType> paymentMethodTypes,
+    int? created,
+    LastSetupError? lastSetupError,
   }) = _SetupIntent;
 
   factory SetupIntent.fromJson(Map<String, dynamic> json) =>
       _$SetupIntentFromJson(json);
+}
+
+@freezed
+class LastSetupError with _$LastSetupError {
+  @JsonSerializable(explicitToJson: true)
+  const factory LastSetupError({
+    required String code,
+    required String message,
+  }) = _LastSetupError;
+
+  factory LastSetupError.fromJson(Map<String, dynamic> json) =>
+      _$LastSetupErrorFromJson(json);
 }
 
 enum FutureUsage { unknown, none, onSession, offSession, oneTime }

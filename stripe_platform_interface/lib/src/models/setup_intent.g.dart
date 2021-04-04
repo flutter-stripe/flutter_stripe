@@ -8,20 +8,96 @@ part of 'setup_intent.dart';
 
 _$_SetupIntent _$_$_SetupIntentFromJson(Map<String, dynamic> json) {
   return _$_SetupIntent(
-    paymentMethodCreateParams: PaymentMethodParams.fromJson(
-        json['paymentMethodCreateParams'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    status: json['status'] as String,
+    description: json['description'] as String,
+    livemode: json['livemode'] as bool,
     clientSecret: json['clientSecret'] as String,
-    returnUrl: json['returnUrl'] as String?,
-    mandateId: json['mandateId'] as String?,
-    mandateData: json['mandateData'] as String?,
+    paymentMethodId: json['paymentMethodId'] as String,
+    usage: json['usage'] as String,
+    paymentMethodTypes: (json['paymentMethodTypes'] as List<dynamic>)
+        .map((e) => _$enumDecode(_$PaymentMethodTypeEnumMap, e))
+        .toList(),
+    created: json['created'] as int?,
+    lastSetupError: json['lastSetupError'] == null
+        ? null
+        : LastSetupError.fromJson(
+            json['lastSetupError'] as Map<String, dynamic>),
   );
 }
 
 Map<String, dynamic> _$_$_SetupIntentToJson(_$_SetupIntent instance) =>
     <String, dynamic>{
-      'paymentMethodCreateParams': instance.paymentMethodCreateParams.toJson(),
+      'id': instance.id,
+      'status': instance.status,
+      'description': instance.description,
+      'livemode': instance.livemode,
       'clientSecret': instance.clientSecret,
-      'returnUrl': instance.returnUrl,
-      'mandateId': instance.mandateId,
-      'mandateData': instance.mandateData,
+      'paymentMethodId': instance.paymentMethodId,
+      'usage': instance.usage,
+      'paymentMethodTypes': instance.paymentMethodTypes
+          .map((e) => _$PaymentMethodTypeEnumMap[e])
+          .toList(),
+      'created': instance.created,
+      'lastSetupError': instance.lastSetupError?.toJson(),
+    };
+
+K _$enumDecode<K, V>(
+  Map<K, V> enumValues,
+  Object? source, {
+  K? unknownValue,
+}) {
+  if (source == null) {
+    throw ArgumentError(
+      'A value must be provided. Supported values: '
+      '${enumValues.values.join(', ')}',
+    );
+  }
+
+  return enumValues.entries.singleWhere(
+    (e) => e.value == source,
+    orElse: () {
+      if (unknownValue == null) {
+        throw ArgumentError(
+          '`$source` is not one of the supported values: '
+          '${enumValues.values.join(', ')}',
+        );
+      }
+      return MapEntry(unknownValue, enumValues.values.first);
+    },
+  ).key;
+}
+
+const _$PaymentMethodTypeEnumMap = {
+  PaymentMethodType.AfterpayClearpay: 'AfterpayClearpay',
+  PaymentMethodType.Card: 'Card',
+  PaymentMethodType.Alipay: 'Alipay',
+  PaymentMethodType.Grabpay: 'Grabpay',
+  PaymentMethodType.Ideal: 'Ideal',
+  PaymentMethodType.Fpx: 'Fpx',
+  PaymentMethodType.CardPresent: 'CardPresent',
+  PaymentMethodType.SepaDebit: 'SepaDebit',
+  PaymentMethodType.AuBecsDebit: 'AuBecsDebit',
+  PaymentMethodType.BacsDebit: 'BacsDebit',
+  PaymentMethodType.Giropay: 'Giropay',
+  PaymentMethodType.P24: 'P24',
+  PaymentMethodType.Eps: 'Eps',
+  PaymentMethodType.Bancontact: 'Bancontact',
+  PaymentMethodType.Oxxo: 'Oxxo',
+  PaymentMethodType.Sofort: 'Sofort',
+  PaymentMethodType.Upi: 'Upi',
+  PaymentMethodType.Unknown: 'Unknown',
+};
+
+_$_LastSetupError _$_$_LastSetupErrorFromJson(Map<String, dynamic> json) {
+  return _$_LastSetupError(
+    code: json['code'] as String,
+    message: json['message'] as String,
+  );
+}
+
+Map<String, dynamic> _$_$_LastSetupErrorToJson(_$_LastSetupError instance) =>
+    <String, dynamic>{
+      'code': instance.code,
+      'message': instance.message,
     };
