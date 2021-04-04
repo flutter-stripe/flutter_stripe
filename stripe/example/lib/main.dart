@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart';
 import 'package:stripe/stripe.dart';
+import 'package:stripe_example/config.dart';
 import 'package:stripe_example/screens/home_screen.dart';
 
 void main() async {
@@ -19,7 +20,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StripeProvider(
-      publishableKey: 'pk_test_oDBTDWWrb1kezz6lwq9zmeoW00XmZlpvM6',
+      publishableKey: stripePublishableKey,
       merchantIdentifier: 'Hello',
       child: DismissFocusOverlay(
         child: MaterialApp(

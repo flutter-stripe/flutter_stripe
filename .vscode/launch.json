@@ -8,8 +8,11 @@
             "name": "example",
             "cwd": "stripe/example",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "args": [
+                "--dart-define",
+                "STRIPE_PUBLISHABLE_KEY=${config:STRIPE_PUBLISHABLE_KEY}",
+            ],
         },
-      
     ]
 }
