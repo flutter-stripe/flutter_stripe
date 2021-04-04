@@ -41,7 +41,7 @@ abstract class StripePlatform extends PlatformInterface {
 
   Future<PaymentIntent> handleCardAction(String paymentIntentClientSecret);
   Future<PaymentIntent> confirmPaymentMethod(
-      String paymentIntentClientSecret, PaymentMethodParams data,
+      String paymentIntentClientSecret, PaymentMethodParams params,
       [Map<String, String> options = const {}]);
   Future<void> configure3dSecure(ThreeDSecureConfigurationParams params);
   Future<bool> isApplePaySupported() async {
@@ -51,13 +51,9 @@ abstract class StripePlatform extends PlatformInterface {
   Future<void> presentApplePay(ApplePayPresentParams params);
   Future<void> confirmApplePayPayment(String clientSecret);
   Future<SetupIntent> confirmSetupIntent(
-      String paymentIntentClientSecret, PaymentMethodParams data,
+      String setupIntentClientSecret, PaymentMethodParams data,
       [Map<String, String> options = const {}]);
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret);
   Future<String> createTokenForCVCUpdate(String cvc);
 
-  Future<PaymentOption?> setupPaymentSheet(SetupPaymentSheetParams params);
-  Future<PaymentIntent> presentPaymentSheet(String? clientSecret);
-  Future<PaymentIntent> paymentSheetConfirmPayment();
-  Future<PaymentOption?> presentPaymentOptions();
 }

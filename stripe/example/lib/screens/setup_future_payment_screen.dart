@@ -53,11 +53,11 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
     final BillingDetails billingDetails = BillingDetails(
       email: 'email',
       phone: '+48888000888',
-      addressCity: 'Houston',
-      addressCountry: 'US', // TODO country
+      city: 'Houston',
+      country: 'US', // TODO country
       addressLine1: '1459  Circle Drive',
       addressLine2: 'test',
-      adressPostalCode: '77063',
+      postalCode: '77063',
     ); // mocked data for tests
 
     // 3. Confirm setup intent
@@ -71,7 +71,7 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
         .then((setupIntentResult) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
-              'Success: Setup intent created. Intent status: ${setupIntentResult.status}')));
+              'Success: Setup intent created. Intent status: ${setupIntentResult}')));
       //setSetupIntent(setupIntentResult);
     }).catchError((error) {
       ScaffoldMessenger.of(context)
