@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart';
 import 'package:stripe/stripe.dart';
 import 'package:stripe_example/config.dart';
+import '.env.dart';
 import 'package:stripe_example/screens/home_screen.dart';
 
 void main() async {

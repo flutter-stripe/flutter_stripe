@@ -1,4 +1,0 @@
-{
-    //Replace <ADD_YOUR_KEY_HERE> with your key
-    "STRIPE_PUBLISHABLE_KEY": "<ADD_YOUR_KEY_HERE>"
-}
