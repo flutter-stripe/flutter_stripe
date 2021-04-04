@@ -1,59 +1,39 @@
-class ThreeDSecureConfigurationParams
-    with ThreeDSecureIosThemeMixin, ThreeDSecureIosThemeMixin {
-  num? timeout;
-  ThreeDSecureLabelThemeData? label;
-  ThreeDSecureNavigationBarThemeData? navigationBar;
-  ThreeDSecureTextFieldThemeData? textField;
-  ThreeDSecureSubmitButtonThemeData? submitButton;
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'three_d_secure.freezed.dart';
+part 'three_d_secure.g.dart';
+
+@freezed
+class ThreeDSecureConfigurationParams with _$ThreeDSecureConfigurationParams {
+  @JsonSerializable(explicitToJson: true)
+  const factory ThreeDSecureConfigurationParams({
+    required ThreeDSecureNavigationBarThemeData navigationBar,
+    int? timeout,
+    ThreeDSecureLabelThemeData? label,
+    ThreeDSecureTextFieldThemeData? textField,
+    ThreeDSecureSubmitButtonThemeData? submitButton,
+  }) = _ThreeDSecureConfigurationParams;
+
+  factory ThreeDSecureConfigurationParams.fromJson(Map<String, dynamic> json) =>
+      _$ThreeDSecureConfigurationParamsFromJson(json);
 }
 
-class ThreeDSecureNavigationBarStyle {
-  final int value;
-
-  const ThreeDSecureNavigationBarStyle._(this.value);
-
-  static const ThreeDSecureNavigationBarStyle system =
-      const ThreeDSecureNavigationBarStyle._(0);
-  static const ThreeDSecureNavigationBarStyle black =
-      const ThreeDSecureNavigationBarStyle._(1);
-  static const ThreeDSecureNavigationBarStyle blackTranslucent =
-      const ThreeDSecureNavigationBarStyle._(2);
-}
-
-class ThreeDSecureIOsNavigationBarProps {
-  ThreeDSecureNavigationBarStyle? barStyle;
-  bool? translucent;
-  String? barTintColor;
-}
-
-mixin ThreeDSecureIosThemeMixin {
-  String? backgroundColor;
-  ThreeDSecureFooterThemeData? footerTheme;
-}
-
-mixin ThreeDSecureAndroidThemeMixin {
-  String? accentColor;
-}
-
-mixin ThreeDSecureIosNavigationBarThemeMixin {
-  ThreeDSecureNavigationBarStyle? barStyle;
-  bool? translucent;
-  String? barTintColor;
-}
-
-mixin ThreeDSecureAndroidNavigationBarThemeMixin {
-  String? statusBarColor;
-  String? backgroundColor;
-}
-
+@freezed
 class ThreeDSecureNavigationBarThemeData
-    with
-        ThreeDSecureIosNavigationBarThemeMixin,
-        ThreeDSecureAndroidNavigationBarThemeMixin {
-  String? headerText;
-  String? buttonText;
-  String? textColor;
-  double? textFontSize;
+    with _$ThreeDSecureNavigationBarThemeData {
+  @JsonSerializable(explicitToJson: true)
+  const factory ThreeDSecureNavigationBarThemeData({
+    String? headerText,
+    String? buttonText,
+    String? textColor,
+    String? statusBarColor,
+    String? backgroundColor,
+    double? textFontSize,
+  }) = _ThreeDSecureNavigationBarThemeData;
+
+  factory ThreeDSecureNavigationBarThemeData.fromJson(
+          Map<String, dynamic> json) =>
+      _$ThreeDSecureNavigationBarThemeDataFromJson(json);
 }
 
 class ThreeDSecureFooterThemeData {
@@ -63,24 +43,47 @@ class ThreeDSecureFooterThemeData {
   String? textColor;
 }
 
-class ThreeDSecureLabelThemeData {
-  String? headingTextColor;
-  String? textColor;
-  double? textFontSize;
-  double? headingFontSize;
+@freezed
+class ThreeDSecureLabelThemeData with _$ThreeDSecureLabelThemeData {
+  @JsonSerializable(explicitToJson: true)
+  const factory ThreeDSecureLabelThemeData({
+    String? headingTextColor,
+    String? textColor,
+    double? textFontSize,
+    double? headingFontSize,
+  }) = _ThreeDSecureLabelThemeData;
+
+  factory ThreeDSecureLabelThemeData.fromJson(Map<String, dynamic> json) =>
+      _$ThreeDSecureLabelThemeDataFromJson(json);
 }
 
-class ThreeDSecureTextFieldThemeData {
-  String? borderColor;
-  double? borderWidth;
-  double? cornerRadius;
-  String? textColor;
-  double? textFontSize;
+@freezed
+class ThreeDSecureTextFieldThemeData with _$ThreeDSecureTextFieldThemeData {
+  @JsonSerializable(explicitToJson: true)
+  const factory ThreeDSecureTextFieldThemeData({
+    String? borderColor,
+    double? borderWidth,
+    double? cornerRadius,
+    String? textColor,
+    double? textFontSize,
+  }) = _ThreeDSecureTextFieldThemeData;
+
+  factory ThreeDSecureTextFieldThemeData.fromJson(Map<String, dynamic> json) =>
+      _$ThreeDSecureTextFieldThemeDataFromJson(json);
 }
 
-class ThreeDSecureSubmitButtonThemeData {
-  String? backgroundColor;
-  double? cornerRadius;
-  String? textColor;
-  double? textFontSize;
+@freezed
+class ThreeDSecureSubmitButtonThemeData
+    with _$ThreeDSecureSubmitButtonThemeData {
+  @JsonSerializable(explicitToJson: true)
+  const factory ThreeDSecureSubmitButtonThemeData({
+    String? backgroundColor,
+    double? cornerRadius,
+    String? textColor,
+    double? textFontSize,
+  }) = _ThreeDSecureSubmitButtonThemeData;
+
+  factory ThreeDSecureSubmitButtonThemeData.fromJson(
+          Map<String, dynamic> json) =>
+      _$ThreeDSecureSubmitButtonThemeDataFromJson(json);
 }
