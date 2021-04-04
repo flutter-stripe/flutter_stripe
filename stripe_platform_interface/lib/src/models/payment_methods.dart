@@ -172,42 +172,50 @@ class PaymentMethodParams with _$PaymentMethodParams {
     PaymentIntentsFutureUsage? setupFutureUsage,
   }) = _PaymentMethodParamsCard;
 
+  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodParams.cardFromMethodId({
     @Default('CardId') String type,
     required String paymentMethodId,
     String? cvc,
   }) = _PaymentMethodParamsCardWithMethodId;
 
+  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodParams.aliPay({
     @Default('Alipay') String type,
   }) = _PaymentMethodParamsAli;
 
+  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodParams.ideal({
     @Default('Ideal') String type,
     BillingDetails? billingDetails,
     String? bankName,
   }) = _PaymentMethodParamsIdeal;
 
+  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodParams.bankContact({
     @Default('Bancontact') String type,
     required BillingDetails billingDetails,
   }) = _PaymentMethodParamsBankContact;
 
+  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodParams.giroPay({
     @Default('Giropay') String type,
     required BillingDetails billingDetails,
   }) = _PaymentMethodParamsGiroPay;
 
+  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodParams.eps({
     @Default('Eps') String type,
     required BillingDetails billingDetails,
   }) = _PaymentMethodParamsEps;
 
+  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodParams.grabPay({
     @Default('GrabPay') String type,
     required BillingDetails billingDetails,
   }) = _PaymentMethodParamsPay;
 
+  @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodParams.p24({
     @Default('P24') String type,
     required BillingDetails billingDetails,

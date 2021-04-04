@@ -21,25 +21,17 @@ class _$SetupIntentTearOff {
   const _$SetupIntentTearOff();
 
   _SetupIntent call(
-      {required String id,
+      {required PaymentMethodParams paymentMethodCreateParams,
       required String clientSecret,
-      required bool livemode,
-      required SetupStatus status,
-      required List<PaymentMethodType> paymentMethodTypes,
-      required FutureUsage usage,
-      String? created,
-      String? paymentMethodId,
-      String? description}) {
+      String? returnUrl,
+      String? mandateId,
+      String? mandateData}) {
     return _SetupIntent(
-      id: id,
+      paymentMethodCreateParams: paymentMethodCreateParams,
       clientSecret: clientSecret,
-      livemode: livemode,
-      status: status,
-      paymentMethodTypes: paymentMethodTypes,
-      usage: usage,
-      created: created,
-      paymentMethodId: paymentMethodId,
-      description: description,
+      returnUrl: returnUrl,
+      mandateId: mandateId,
+      mandateData: mandateData,
     );
   }
 
@@ -53,17 +45,12 @@ const $SetupIntent = _$SetupIntentTearOff();
 
 /// @nodoc
 mixin _$SetupIntent {
-  String get id => throw _privateConstructorUsedError;
-  String get clientSecret => throw _privateConstructorUsedError;
-  bool get livemode => throw _privateConstructorUsedError;
-  SetupStatus get status => throw _privateConstructorUsedError;
-  List<PaymentMethodType> get paymentMethodTypes =>
+  PaymentMethodParams get paymentMethodCreateParams =>
       throw _privateConstructorUsedError;
-  FutureUsage get usage =>
-      throw _privateConstructorUsedError; // StripeError<String>? lastSetupError,
-  String? get created => throw _privateConstructorUsedError;
-  String? get paymentMethodId => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
+  String get clientSecret => throw _privateConstructorUsedError;
+  String? get returnUrl => throw _privateConstructorUsedError;
+  String? get mandateId => throw _privateConstructorUsedError;
+  String? get mandateData => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -77,15 +64,13 @@ abstract class $SetupIntentCopyWith<$Res> {
           SetupIntent value, $Res Function(SetupIntent) then) =
       _$SetupIntentCopyWithImpl<$Res>;
   $Res call(
-      {String id,
+      {PaymentMethodParams paymentMethodCreateParams,
       String clientSecret,
-      bool livemode,
-      SetupStatus status,
-      List<PaymentMethodType> paymentMethodTypes,
-      FutureUsage usage,
-      String? created,
-      String? paymentMethodId,
-      String? description});
+      String? returnUrl,
+      String? mandateId,
+      String? mandateData});
+
+  $PaymentMethodParamsCopyWith<$Res> get paymentMethodCreateParams;
 }
 
 /// @nodoc
@@ -98,54 +83,42 @@ class _$SetupIntentCopyWithImpl<$Res> implements $SetupIntentCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? id = freezed,
+    Object? paymentMethodCreateParams = freezed,
     Object? clientSecret = freezed,
-    Object? livemode = freezed,
-    Object? status = freezed,
-    Object? paymentMethodTypes = freezed,
-    Object? usage = freezed,
-    Object? created = freezed,
-    Object? paymentMethodId = freezed,
-    Object? description = freezed,
+    Object? returnUrl = freezed,
+    Object? mandateId = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
+      paymentMethodCreateParams: paymentMethodCreateParams == freezed
+          ? _value.paymentMethodCreateParams
+          : paymentMethodCreateParams // ignore: cast_nullable_to_non_nullable
+              as PaymentMethodParams,
       clientSecret: clientSecret == freezed
           ? _value.clientSecret
           : clientSecret // ignore: cast_nullable_to_non_nullable
               as String,
-      livemode: livemode == freezed
-          ? _value.livemode
-          : livemode // ignore: cast_nullable_to_non_nullable
-              as bool,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as SetupStatus,
-      paymentMethodTypes: paymentMethodTypes == freezed
-          ? _value.paymentMethodTypes
-          : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
-              as List<PaymentMethodType>,
-      usage: usage == freezed
-          ? _value.usage
-          : usage // ignore: cast_nullable_to_non_nullable
-              as FutureUsage,
-      created: created == freezed
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
+      returnUrl: returnUrl == freezed
+          ? _value.returnUrl
+          : returnUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      paymentMethodId: paymentMethodId == freezed
-          ? _value.paymentMethodId
-          : paymentMethodId // ignore: cast_nullable_to_non_nullable
+      mandateId: mandateId == freezed
+          ? _value.mandateId
+          : mandateId // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      mandateData: mandateData == freezed
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
+  }
+
+  @override
+  $PaymentMethodParamsCopyWith<$Res> get paymentMethodCreateParams {
+    return $PaymentMethodParamsCopyWith<$Res>(_value.paymentMethodCreateParams,
+        (value) {
+      return _then(_value.copyWith(paymentMethodCreateParams: value));
+    });
   }
 }
 
@@ -157,15 +130,14 @@ abstract class _$SetupIntentCopyWith<$Res>
       __$SetupIntentCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
+      {PaymentMethodParams paymentMethodCreateParams,
       String clientSecret,
-      bool livemode,
-      SetupStatus status,
-      List<PaymentMethodType> paymentMethodTypes,
-      FutureUsage usage,
-      String? created,
-      String? paymentMethodId,
-      String? description});
+      String? returnUrl,
+      String? mandateId,
+      String? mandateData});
+
+  @override
+  $PaymentMethodParamsCopyWith<$Res> get paymentMethodCreateParams;
 }
 
 /// @nodoc
@@ -180,52 +152,32 @@ class __$SetupIntentCopyWithImpl<$Res> extends _$SetupIntentCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? id = freezed,
+    Object? paymentMethodCreateParams = freezed,
     Object? clientSecret = freezed,
-    Object? livemode = freezed,
-    Object? status = freezed,
-    Object? paymentMethodTypes = freezed,
-    Object? usage = freezed,
-    Object? created = freezed,
-    Object? paymentMethodId = freezed,
-    Object? description = freezed,
+    Object? returnUrl = freezed,
+    Object? mandateId = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_SetupIntent(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
+      paymentMethodCreateParams: paymentMethodCreateParams == freezed
+          ? _value.paymentMethodCreateParams
+          : paymentMethodCreateParams // ignore: cast_nullable_to_non_nullable
+              as PaymentMethodParams,
       clientSecret: clientSecret == freezed
           ? _value.clientSecret
           : clientSecret // ignore: cast_nullable_to_non_nullable
               as String,
-      livemode: livemode == freezed
-          ? _value.livemode
-          : livemode // ignore: cast_nullable_to_non_nullable
-              as bool,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as SetupStatus,
-      paymentMethodTypes: paymentMethodTypes == freezed
-          ? _value.paymentMethodTypes
-          : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
-              as List<PaymentMethodType>,
-      usage: usage == freezed
-          ? _value.usage
-          : usage // ignore: cast_nullable_to_non_nullable
-              as FutureUsage,
-      created: created == freezed
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
+      returnUrl: returnUrl == freezed
+          ? _value.returnUrl
+          : returnUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      paymentMethodId: paymentMethodId == freezed
-          ? _value.paymentMethodId
-          : paymentMethodId // ignore: cast_nullable_to_non_nullable
+      mandateId: mandateId == freezed
+          ? _value.mandateId
+          : mandateId // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      mandateData: mandateData == freezed
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -236,85 +188,62 @@ class __$SetupIntentCopyWithImpl<$Res> extends _$SetupIntentCopyWithImpl<$Res>
 /// @nodoc
 class _$_SetupIntent implements _SetupIntent {
   const _$_SetupIntent(
-      {required this.id,
+      {required this.paymentMethodCreateParams,
       required this.clientSecret,
-      required this.livemode,
-      required this.status,
-      required this.paymentMethodTypes,
-      required this.usage,
-      this.created,
-      this.paymentMethodId,
-      this.description});
+      this.returnUrl,
+      this.mandateId,
+      this.mandateData});
 
   factory _$_SetupIntent.fromJson(Map<String, dynamic> json) =>
       _$_$_SetupIntentFromJson(json);
 
   @override
-  final String id;
+  final PaymentMethodParams paymentMethodCreateParams;
   @override
   final String clientSecret;
   @override
-  final bool livemode;
+  final String? returnUrl;
   @override
-  final SetupStatus status;
+  final String? mandateId;
   @override
-  final List<PaymentMethodType> paymentMethodTypes;
-  @override
-  final FutureUsage usage;
-  @override // StripeError<String>? lastSetupError,
-  final String? created;
-  @override
-  final String? paymentMethodId;
-  @override
-  final String? description;
+  final String? mandateData;
 
   @override
   String toString() {
-    return 'SetupIntent(id: $id, clientSecret: $clientSecret, livemode: $livemode, status: $status, paymentMethodTypes: $paymentMethodTypes, usage: $usage, created: $created, paymentMethodId: $paymentMethodId, description: $description)';
+    return 'SetupIntent(paymentMethodCreateParams: $paymentMethodCreateParams, clientSecret: $clientSecret, returnUrl: $returnUrl, mandateId: $mandateId, mandateData: $mandateData)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _SetupIntent &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.paymentMethodCreateParams,
+                    paymentMethodCreateParams) ||
+                const DeepCollectionEquality().equals(
+                    other.paymentMethodCreateParams,
+                    paymentMethodCreateParams)) &&
             (identical(other.clientSecret, clientSecret) ||
                 const DeepCollectionEquality()
                     .equals(other.clientSecret, clientSecret)) &&
-            (identical(other.livemode, livemode) ||
+            (identical(other.returnUrl, returnUrl) ||
                 const DeepCollectionEquality()
-                    .equals(other.livemode, livemode)) &&
-            (identical(other.status, status) ||
-                const DeepCollectionEquality().equals(other.status, status)) &&
-            (identical(other.paymentMethodTypes, paymentMethodTypes) ||
+                    .equals(other.returnUrl, returnUrl)) &&
+            (identical(other.mandateId, mandateId) ||
                 const DeepCollectionEquality()
-                    .equals(other.paymentMethodTypes, paymentMethodTypes)) &&
-            (identical(other.usage, usage) ||
-                const DeepCollectionEquality().equals(other.usage, usage)) &&
-            (identical(other.created, created) ||
+                    .equals(other.mandateId, mandateId)) &&
+            (identical(other.mandateData, mandateData) ||
                 const DeepCollectionEquality()
-                    .equals(other.created, created)) &&
-            (identical(other.paymentMethodId, paymentMethodId) ||
-                const DeepCollectionEquality()
-                    .equals(other.paymentMethodId, paymentMethodId)) &&
-            (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)));
+                    .equals(other.mandateData, mandateData)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(paymentMethodCreateParams) ^
       const DeepCollectionEquality().hash(clientSecret) ^
-      const DeepCollectionEquality().hash(livemode) ^
-      const DeepCollectionEquality().hash(status) ^
-      const DeepCollectionEquality().hash(paymentMethodTypes) ^
-      const DeepCollectionEquality().hash(usage) ^
-      const DeepCollectionEquality().hash(created) ^
-      const DeepCollectionEquality().hash(paymentMethodId) ^
-      const DeepCollectionEquality().hash(description);
+      const DeepCollectionEquality().hash(returnUrl) ^
+      const DeepCollectionEquality().hash(mandateId) ^
+      const DeepCollectionEquality().hash(mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -329,38 +258,26 @@ class _$_SetupIntent implements _SetupIntent {
 
 abstract class _SetupIntent implements SetupIntent {
   const factory _SetupIntent(
-      {required String id,
+      {required PaymentMethodParams paymentMethodCreateParams,
       required String clientSecret,
-      required bool livemode,
-      required SetupStatus status,
-      required List<PaymentMethodType> paymentMethodTypes,
-      required FutureUsage usage,
-      String? created,
-      String? paymentMethodId,
-      String? description}) = _$_SetupIntent;
+      String? returnUrl,
+      String? mandateId,
+      String? mandateData}) = _$_SetupIntent;
 
   factory _SetupIntent.fromJson(Map<String, dynamic> json) =
       _$_SetupIntent.fromJson;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  PaymentMethodParams get paymentMethodCreateParams =>
+      throw _privateConstructorUsedError;
   @override
   String get clientSecret => throw _privateConstructorUsedError;
   @override
-  bool get livemode => throw _privateConstructorUsedError;
+  String? get returnUrl => throw _privateConstructorUsedError;
   @override
-  SetupStatus get status => throw _privateConstructorUsedError;
+  String? get mandateId => throw _privateConstructorUsedError;
   @override
-  List<PaymentMethodType> get paymentMethodTypes =>
-      throw _privateConstructorUsedError;
-  @override
-  FutureUsage get usage => throw _privateConstructorUsedError;
-  @override // StripeError<String>? lastSetupError,
-  String? get created => throw _privateConstructorUsedError;
-  @override
-  String? get paymentMethodId => throw _privateConstructorUsedError;
-  @override
-  String? get description => throw _privateConstructorUsedError;
+  String? get mandateData => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SetupIntentCopyWith<_SetupIntent> get copyWith =>

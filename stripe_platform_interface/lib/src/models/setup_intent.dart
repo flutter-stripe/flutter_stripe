@@ -1,6 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:stripe_platform_interface/src/models/payment_methods.dart';
 
+import '../../models.dart';
+
 part 'setup_intent.freezed.dart';
 part 'setup_intent.g.dart';
 
@@ -8,16 +10,11 @@ part 'setup_intent.g.dart';
 class SetupIntent with _$SetupIntent {
   @JsonSerializable(explicitToJson: true)
   const factory SetupIntent({
-    required String id,
+    required PaymentMethodParams paymentMethodCreateParams,
     required String clientSecret,
-    required bool livemode,
-    required SetupStatus status,
-    required List<PaymentMethodType> paymentMethodTypes,
-    required FutureUsage usage,
-    // StripeError<String>? lastSetupError,
-    String? created,
-    String? paymentMethodId,
-    String? description,
+    String? returnUrl,
+    String? mandateId,
+    String? mandateData,
   }) = _SetupIntent;
 
   factory SetupIntent.fromJson(Map<String, dynamic> json) =>

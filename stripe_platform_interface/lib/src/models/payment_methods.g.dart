@@ -314,7 +314,7 @@ Map<String, dynamic> _$_$_PaymentMethodParamsIdealToJson(
         _$_PaymentMethodParamsIdeal instance) =>
     <String, dynamic>{
       'type': instance.type,
-      'billingDetails': instance.billingDetails,
+      'billingDetails': instance.billingDetails?.toJson(),
       'bankName': instance.bankName,
     };
 
@@ -331,7 +331,7 @@ Map<String, dynamic> _$_$_PaymentMethodParamsBankContactToJson(
         _$_PaymentMethodParamsBankContact instance) =>
     <String, dynamic>{
       'type': instance.type,
-      'billingDetails': instance.billingDetails,
+      'billingDetails': instance.billingDetails.toJson(),
     };
 
 _$_PaymentMethodParamsGiroPay _$_$_PaymentMethodParamsGiroPayFromJson(
@@ -347,7 +347,7 @@ Map<String, dynamic> _$_$_PaymentMethodParamsGiroPayToJson(
         _$_PaymentMethodParamsGiroPay instance) =>
     <String, dynamic>{
       'type': instance.type,
-      'billingDetails': instance.billingDetails,
+      'billingDetails': instance.billingDetails.toJson(),
     };
 
 _$_PaymentMethodParamsEps _$_$_PaymentMethodParamsEpsFromJson(
@@ -363,7 +363,7 @@ Map<String, dynamic> _$_$_PaymentMethodParamsEpsToJson(
         _$_PaymentMethodParamsEps instance) =>
     <String, dynamic>{
       'type': instance.type,
-      'billingDetails': instance.billingDetails,
+      'billingDetails': instance.billingDetails.toJson(),
     };
 
 _$_PaymentMethodParamsPay _$_$_PaymentMethodParamsPayFromJson(
@@ -379,7 +379,7 @@ Map<String, dynamic> _$_$_PaymentMethodParamsPayToJson(
         _$_PaymentMethodParamsPay instance) =>
     <String, dynamic>{
       'type': instance.type,
-      'billingDetails': instance.billingDetails,
+      'billingDetails': instance.billingDetails.toJson(),
     };
 
 _$_PaymentMethodParamsP24 _$_$_PaymentMethodParamsP24FromJson(
@@ -395,5 +395,5 @@ Map<String, dynamic> _$_$_PaymentMethodParamsP24ToJson(
         _$_PaymentMethodParamsP24 instance) =>
     <String, dynamic>{
       'type': instance.type,
-      'billingDetails': instance.billingDetails,
+      'billingDetails': instance.billingDetails.toJson(),
     };

@@ -3097,7 +3097,7 @@ class __$PaymentMethodParamsCardWithMethodIdCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_PaymentMethodParamsCardWithMethodId
@@ -3304,7 +3304,7 @@ class __$PaymentMethodParamsAliCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
@@ -3511,7 +3511,7 @@ class __$PaymentMethodParamsIdealCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
@@ -3729,7 +3729,7 @@ class __$PaymentMethodParamsBankContactCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_PaymentMethodParamsBankContact
@@ -3941,7 +3941,7 @@ class __$PaymentMethodParamsGiroPayCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
@@ -4149,7 +4149,7 @@ class __$PaymentMethodParamsEpsCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
@@ -4356,7 +4356,7 @@ class __$PaymentMethodParamsPayCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
@@ -4563,7 +4563,7 @@ class __$PaymentMethodParamsP24CopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 
 /// @nodoc
 class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
