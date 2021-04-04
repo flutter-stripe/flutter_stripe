@@ -50,7 +50,8 @@ class MethodChannelStripe extends StripePlatform {
     PaymentMethodParams data, [
     Map<String, String> options = const {},
   ]) async {
-    final result = await _methodChannel.invokeMethod('createPaymentMethod', {
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('createPaymentMethod', {
       'data': data.toJson(),
       'options': options,
     });
@@ -76,7 +77,8 @@ class MethodChannelStripe extends StripePlatform {
     PaymentMethodParams params, [
     Map<String, String> options = const {},
   ]) async {
-    final result = await _methodChannel.invokeMethod('confirmPaymentMethod', {
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('confirmPaymentMethod', {
       'paymentIntentClientSecret': paymentIntentClientSecret,
       'data': params.toJson(),
       'options': options,
@@ -90,7 +92,8 @@ class MethodChannelStripe extends StripePlatform {
     PaymentMethodParams params, [
     Map<String, String> options = const {},
   ]) async {
-    final result = await _methodChannel.invokeMethod('confirmSetupIntent', {
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('confirmSetupIntent', {
       'setupIntentClientSecret': setupIntentClientSecret,
       'data': params.toJson(),
       'options': options,
@@ -101,7 +104,7 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<String> createTokenForCVCUpdate(String cvc) async {
-    final result = await _methodChannel.invokeMethod(
+    final result = await _methodChannel.invokeMethod<String>(
       'createTokenForCVCUpdate',
       {'cvc': cvc},
     );
@@ -112,7 +115,8 @@ class MethodChannelStripe extends StripePlatform {
   @override
   Future<PaymentIntent> handleCardAction(
       String paymentIntentClientSecret) async {
-    final result = await _methodChannel.invokeMethod('handleCardAction', {
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('handleCardAction', {
       'paymentIntentClientSecret': paymentIntentClientSecret,
     });
 
@@ -136,7 +140,8 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret) async {
-    final result = await _methodChannel.invokeMethod('retrievePaymentIntent', {
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('retrievePaymentIntent', {
       'clientSecret': clientSecret,
     });
 
