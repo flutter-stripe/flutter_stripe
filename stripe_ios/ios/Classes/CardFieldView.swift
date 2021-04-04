@@ -52,7 +52,7 @@ class FlutterCardFieldView: NSObject, FlutterPlatformView {
     ) {
         channel = FlutterMethodChannel(name: "flutter.stripe/card_field/\(viewId)",
                                            binaryMessenger: messenger)
-        _view = FLEmbedView()
+        _view = UIView()
         super.init()
      
         
@@ -103,7 +103,12 @@ class FlutterCardFieldView: NSObject, FlutterPlatformView {
         self.cardFieldView = CardFieldView(frame: CGRect.zero, delegate: self)
       
       if let cardFieldView = self.cardFieldView {
+        cardFieldView.translatesAutoresizingMaskIntoConstraints = false
         _view.addSubview(cardFieldView)
+        cardFieldView.topAnchor.constraint(equalTo: _view.topAnchor).isActive = true
+        cardFieldView.bottomAnchor.constraint(equalTo: _view.bottomAnchor).isActive = true
+        cardFieldView.leftAnchor.constraint(equalTo: _view.leftAnchor).isActive = true
+        cardFieldView.rightAnchor.constraint(equalTo: _view.rightAnchor).isActive = true
       }
     }
     
