@@ -161,63 +161,62 @@ enum PaymentMethodType {
   Unknown
 }
 
-@freezed
+@Freezed(unionKey: 'type')
 class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams(String type) = _PaymentMethodParamsDefault;
 
   @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('Card')
   const factory PaymentMethodParams.card({
-    @Default('Card') String type,
     required CardFieldInputDetails cardDetails,
     PaymentIntentsFutureUsage? setupFutureUsage,
   }) = _PaymentMethodParamsCard;
 
   @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('CardId')
   const factory PaymentMethodParams.cardFromMethodId({
-    @Default('CardId') String type,
     required String paymentMethodId,
     String? cvc,
   }) = _PaymentMethodParamsCardWithMethodId;
 
   @JsonSerializable(explicitToJson: true)
-  const factory PaymentMethodParams.aliPay({
-    @Default('Alipay') String type,
-  }) = _PaymentMethodParamsAli;
+  @FreezedUnionValue('Alipay')
+  const factory PaymentMethodParams.aliPay() = _PaymentMethodParamsAli;
 
   @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('Ideal')
   const factory PaymentMethodParams.ideal({
-    @Default('Ideal') String type,
     BillingDetails? billingDetails,
     String? bankName,
   }) = _PaymentMethodParamsIdeal;
 
   @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('Bancontact')
   const factory PaymentMethodParams.bankContact({
-    @Default('Bancontact') String type,
     required BillingDetails billingDetails,
   }) = _PaymentMethodParamsBankContact;
 
   @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('Giropay')
   const factory PaymentMethodParams.giroPay({
-    @Default('Giropay') String type,
     required BillingDetails billingDetails,
   }) = _PaymentMethodParamsGiroPay;
 
   @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('Eps')
   const factory PaymentMethodParams.eps({
-    @Default('Eps') String type,
     required BillingDetails billingDetails,
   }) = _PaymentMethodParamsEps;
 
   @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('GrabPay')
   const factory PaymentMethodParams.grabPay({
-    @Default('GrabPay') String type,
     required BillingDetails billingDetails,
   }) = _PaymentMethodParamsPay;
 
   @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('P24')
   const factory PaymentMethodParams.p24({
-    @Default('P24') String type,
     required BillingDetails billingDetails,
   }) = _PaymentMethodParamsP24;
 

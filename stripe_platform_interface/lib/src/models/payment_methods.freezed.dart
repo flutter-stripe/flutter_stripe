@@ -2403,26 +2403,26 @@ abstract class _Upi implements Upi {
 }
 
 PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType'] as String) {
+  switch (json['type'] as String) {
     case 'default':
       return _PaymentMethodParamsDefault.fromJson(json);
-    case 'card':
+    case 'Card':
       return _PaymentMethodParamsCard.fromJson(json);
-    case 'cardFromMethodId':
+    case 'CardId':
       return _PaymentMethodParamsCardWithMethodId.fromJson(json);
-    case 'aliPay':
+    case 'Alipay':
       return _PaymentMethodParamsAli.fromJson(json);
-    case 'ideal':
+    case 'Ideal':
       return _PaymentMethodParamsIdeal.fromJson(json);
-    case 'bankContact':
+    case 'Bancontact':
       return _PaymentMethodParamsBankContact.fromJson(json);
-    case 'giroPay':
+    case 'Giropay':
       return _PaymentMethodParamsGiroPay.fromJson(json);
-    case 'eps':
+    case 'Eps':
       return _PaymentMethodParamsEps.fromJson(json);
-    case 'grabPay':
+    case 'GrabPay':
       return _PaymentMethodParamsPay.fromJson(json);
-    case 'p24':
+    case 'P24':
       return _PaymentMethodParamsP24.fromJson(json);
 
     default:
@@ -2441,78 +2441,62 @@ class _$PaymentMethodParamsTearOff {
   }
 
   _PaymentMethodParamsCard card(
-      {String type = 'Card',
-      required CardFieldInputDetails cardDetails,
+      {required CardFieldInputDetails cardDetails,
       PaymentIntentsFutureUsage? setupFutureUsage}) {
     return _PaymentMethodParamsCard(
-      type: type,
       cardDetails: cardDetails,
       setupFutureUsage: setupFutureUsage,
     );
   }
 
   _PaymentMethodParamsCardWithMethodId cardFromMethodId(
-      {String type = 'CardId', required String paymentMethodId, String? cvc}) {
+      {required String paymentMethodId, String? cvc}) {
     return _PaymentMethodParamsCardWithMethodId(
-      type: type,
       paymentMethodId: paymentMethodId,
       cvc: cvc,
     );
   }
 
-  _PaymentMethodParamsAli aliPay({String type = 'Alipay'}) {
-    return _PaymentMethodParamsAli(
-      type: type,
-    );
+  _PaymentMethodParamsAli aliPay() {
+    return const _PaymentMethodParamsAli();
   }
 
   _PaymentMethodParamsIdeal ideal(
-      {String type = 'Ideal',
-      BillingDetails? billingDetails,
-      String? bankName}) {
+      {BillingDetails? billingDetails, String? bankName}) {
     return _PaymentMethodParamsIdeal(
-      type: type,
       billingDetails: billingDetails,
       bankName: bankName,
     );
   }
 
   _PaymentMethodParamsBankContact bankContact(
-      {String type = 'Bancontact', required BillingDetails billingDetails}) {
+      {required BillingDetails billingDetails}) {
     return _PaymentMethodParamsBankContact(
-      type: type,
       billingDetails: billingDetails,
     );
   }
 
   _PaymentMethodParamsGiroPay giroPay(
-      {String type = 'Giropay', required BillingDetails billingDetails}) {
+      {required BillingDetails billingDetails}) {
     return _PaymentMethodParamsGiroPay(
-      type: type,
       billingDetails: billingDetails,
     );
   }
 
-  _PaymentMethodParamsEps eps(
-      {String type = 'Eps', required BillingDetails billingDetails}) {
+  _PaymentMethodParamsEps eps({required BillingDetails billingDetails}) {
     return _PaymentMethodParamsEps(
-      type: type,
       billingDetails: billingDetails,
     );
   }
 
-  _PaymentMethodParamsPay grabPay(
-      {String type = 'GrabPay', required BillingDetails billingDetails}) {
+  _PaymentMethodParamsPay grabPay({required BillingDetails billingDetails}) {
     return _PaymentMethodParamsPay(
-      type: type,
       billingDetails: billingDetails,
     );
   }
 
-  _PaymentMethodParamsP24 p24(
-      {String type = 'P24', required BillingDetails billingDetails}) {
+  _PaymentMethodParamsP24 p24({required BillingDetails billingDetails}) {
     return _PaymentMethodParamsP24(
-      type: type,
       billingDetails: billingDetails,
     );
   }
@@ -2527,47 +2511,38 @@ const $PaymentMethodParams = _$PaymentMethodParamsTearOff();
 
 /// @nodoc
 mixin _$PaymentMethodParams {
-  String get type => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(String type, CardFieldInputDetails cardDetails,
+    required TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         card,
-    required TResult Function(String type, String paymentMethodId, String? cvc)
+    required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function(String type) aliPay,
-    required TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)
+    required TResult Function() aliPay,
+    required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
-    required TResult Function(String type, BillingDetails billingDetails)
-        bankContact,
-    required TResult Function(String type, BillingDetails billingDetails)
-        giroPay,
-    required TResult Function(String type, BillingDetails billingDetails) eps,
-    required TResult Function(String type, BillingDetails billingDetails)
-        grabPay,
-    required TResult Function(String type, BillingDetails billingDetails) p24,
+    required TResult Function(BillingDetails billingDetails) bankContact,
+    required TResult Function(BillingDetails billingDetails) giroPay,
+    required TResult Function(BillingDetails billingDetails) eps,
+    required TResult Function(BillingDetails billingDetails) grabPay,
+    required TResult Function(BillingDetails billingDetails) p24,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(String type, CardFieldInputDetails cardDetails,
+    TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         card,
-    TResult Function(String type, String paymentMethodId, String? cvc)?
-        cardFromMethodId,
-    TResult Function(String type)? aliPay,
-    TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)?
-        ideal,
-    TResult Function(String type, BillingDetails billingDetails)? bankContact,
-    TResult Function(String type, BillingDetails billingDetails)? giroPay,
-    TResult Function(String type, BillingDetails billingDetails)? eps,
-    TResult Function(String type, BillingDetails billingDetails)? grabPay,
-    TResult Function(String type, BillingDetails billingDetails)? p24,
+    TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
+    TResult Function()? aliPay,
+    TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(BillingDetails billingDetails)? bankContact,
+    TResult Function(BillingDetails billingDetails)? giroPay,
+    TResult Function(BillingDetails billingDetails)? eps,
+    TResult Function(BillingDetails billingDetails)? grabPay,
+    TResult Function(BillingDetails billingDetails)? p24,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -2604,9 +2579,6 @@ mixin _$PaymentMethodParams {
   }) =>
       throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $PaymentMethodParamsCopyWith<PaymentMethodParams> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2614,7 +2586,6 @@ abstract class $PaymentMethodParamsCopyWith<$Res> {
   factory $PaymentMethodParamsCopyWith(
           PaymentMethodParams value, $Res Function(PaymentMethodParams) then) =
       _$PaymentMethodParamsCopyWithImpl<$Res>;
-  $Res call({String type});
 }
 
 /// @nodoc
@@ -2625,28 +2596,14 @@ class _$PaymentMethodParamsCopyWithImpl<$Res>
   final PaymentMethodParams _value;
   // ignore: unused_field
   final $Res Function(PaymentMethodParams) _then;
-
-  @override
-  $Res call({
-    Object? type = freezed,
-  }) {
-    return _then(_value.copyWith(
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$PaymentMethodParamsDefaultCopyWith<$Res>
-    implements $PaymentMethodParamsCopyWith<$Res> {
+abstract class _$PaymentMethodParamsDefaultCopyWith<$Res> {
   factory _$PaymentMethodParamsDefaultCopyWith(
           _PaymentMethodParamsDefault value,
           $Res Function(_PaymentMethodParamsDefault) then) =
       __$PaymentMethodParamsDefaultCopyWithImpl<$Res>;
-  @override
   $Res call({String type});
 }
 
@@ -2714,23 +2671,19 @@ class _$_PaymentMethodParamsDefault implements _PaymentMethodParamsDefault {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(String type, CardFieldInputDetails cardDetails,
+    required TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         card,
-    required TResult Function(String type, String paymentMethodId, String? cvc)
+    required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function(String type) aliPay,
-    required TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)
+    required TResult Function() aliPay,
+    required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
-    required TResult Function(String type, BillingDetails billingDetails)
-        bankContact,
-    required TResult Function(String type, BillingDetails billingDetails)
-        giroPay,
-    required TResult Function(String type, BillingDetails billingDetails) eps,
-    required TResult Function(String type, BillingDetails billingDetails)
-        grabPay,
-    required TResult Function(String type, BillingDetails billingDetails) p24,
+    required TResult Function(BillingDetails billingDetails) bankContact,
+    required TResult Function(BillingDetails billingDetails) giroPay,
+    required TResult Function(BillingDetails billingDetails) eps,
+    required TResult Function(BillingDetails billingDetails) grabPay,
+    required TResult Function(BillingDetails billingDetails) p24,
   }) {
     return $default(type);
   }
@@ -2739,20 +2692,17 @@ class _$_PaymentMethodParamsDefault implements _PaymentMethodParamsDefault {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(String type, CardFieldInputDetails cardDetails,
+    TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         card,
-    TResult Function(String type, String paymentMethodId, String? cvc)?
-        cardFromMethodId,
-    TResult Function(String type)? aliPay,
-    TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)?
-        ideal,
-    TResult Function(String type, BillingDetails billingDetails)? bankContact,
-    TResult Function(String type, BillingDetails billingDetails)? giroPay,
-    TResult Function(String type, BillingDetails billingDetails)? eps,
-    TResult Function(String type, BillingDetails billingDetails)? grabPay,
-    TResult Function(String type, BillingDetails billingDetails)? p24,
+    TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
+    TResult Function()? aliPay,
+    TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(BillingDetails billingDetails)? bankContact,
+    TResult Function(BillingDetails billingDetails)? giroPay,
+    TResult Function(BillingDetails billingDetails)? eps,
+    TResult Function(BillingDetails billingDetails)? grabPay,
+    TResult Function(BillingDetails billingDetails)? p24,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -2804,8 +2754,7 @@ class _$_PaymentMethodParamsDefault implements _PaymentMethodParamsDefault {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_PaymentMethodParamsDefaultToJson(this)
-      ..['runtimeType'] = 'default';
+    return _$_$_PaymentMethodParamsDefaultToJson(this)..['type'] = 'default';
   }
 }
 
@@ -2816,24 +2765,19 @@ abstract class _PaymentMethodParamsDefault implements PaymentMethodParams {
   factory _PaymentMethodParamsDefault.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsDefault.fromJson;
 
-  @override
   String get type => throw _privateConstructorUsedError;
-  @override
   @JsonKey(ignore: true)
   _$PaymentMethodParamsDefaultCopyWith<_PaymentMethodParamsDefault>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$PaymentMethodParamsCardCopyWith<$Res>
-    implements $PaymentMethodParamsCopyWith<$Res> {
+abstract class _$PaymentMethodParamsCardCopyWith<$Res> {
   factory _$PaymentMethodParamsCardCopyWith(_PaymentMethodParamsCard value,
           $Res Function(_PaymentMethodParamsCard) then) =
       __$PaymentMethodParamsCardCopyWithImpl<$Res>;
-  @override
   $Res call(
-      {String type,
-      CardFieldInputDetails cardDetails,
+      {CardFieldInputDetails cardDetails,
       PaymentIntentsFutureUsage? setupFutureUsage});
 
   $CardFieldInputDetailsCopyWith<$Res> get cardDetails;
@@ -2853,15 +2797,10 @@ class __$PaymentMethodParamsCardCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? type = freezed,
     Object? cardDetails = freezed,
     Object? setupFutureUsage = freezed,
   }) {
     return _then(_PaymentMethodParamsCard(
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
       cardDetails: cardDetails == freezed
           ? _value.cardDetails
           : cardDetails // ignore: cast_nullable_to_non_nullable
@@ -2882,18 +2821,16 @@ class __$PaymentMethodParamsCardCopyWithImpl<$Res>
 }
 
 @JsonSerializable(explicitToJson: true)
+@FreezedUnionValue('Card')
 
 /// @nodoc
 class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
   const _$_PaymentMethodParamsCard(
-      {this.type = 'Card', required this.cardDetails, this.setupFutureUsage});
+      {required this.cardDetails, this.setupFutureUsage});
 
   factory _$_PaymentMethodParamsCard.fromJson(Map<String, dynamic> json) =>
       _$_$_PaymentMethodParamsCardFromJson(json);
 
-  @JsonKey(defaultValue: 'Card')
-  @override
-  final String type;
   @override
   final CardFieldInputDetails cardDetails;
   @override
@@ -2901,15 +2838,13 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
 
   @override
   String toString() {
-    return 'PaymentMethodParams.card(type: $type, cardDetails: $cardDetails, setupFutureUsage: $setupFutureUsage)';
+    return 'PaymentMethodParams.card(cardDetails: $cardDetails, setupFutureUsage: $setupFutureUsage)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _PaymentMethodParamsCard &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
             (identical(other.cardDetails, cardDetails) ||
                 const DeepCollectionEquality()
                     .equals(other.cardDetails, cardDetails)) &&
@@ -2921,7 +2856,6 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(cardDetails) ^
       const DeepCollectionEquality().hash(setupFutureUsage);
 
@@ -2935,49 +2869,42 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(String type, CardFieldInputDetails cardDetails,
+    required TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         card,
-    required TResult Function(String type, String paymentMethodId, String? cvc)
+    required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function(String type) aliPay,
-    required TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)
+    required TResult Function() aliPay,
+    required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
-    required TResult Function(String type, BillingDetails billingDetails)
-        bankContact,
-    required TResult Function(String type, BillingDetails billingDetails)
-        giroPay,
-    required TResult Function(String type, BillingDetails billingDetails) eps,
-    required TResult Function(String type, BillingDetails billingDetails)
-        grabPay,
-    required TResult Function(String type, BillingDetails billingDetails) p24,
+    required TResult Function(BillingDetails billingDetails) bankContact,
+    required TResult Function(BillingDetails billingDetails) giroPay,
+    required TResult Function(BillingDetails billingDetails) eps,
+    required TResult Function(BillingDetails billingDetails) grabPay,
+    required TResult Function(BillingDetails billingDetails) p24,
   }) {
-    return card(type, cardDetails, setupFutureUsage);
+    return card(cardDetails, setupFutureUsage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(String type, CardFieldInputDetails cardDetails,
+    TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         card,
-    TResult Function(String type, String paymentMethodId, String? cvc)?
-        cardFromMethodId,
-    TResult Function(String type)? aliPay,
-    TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)?
-        ideal,
-    TResult Function(String type, BillingDetails billingDetails)? bankContact,
-    TResult Function(String type, BillingDetails billingDetails)? giroPay,
-    TResult Function(String type, BillingDetails billingDetails)? eps,
-    TResult Function(String type, BillingDetails billingDetails)? grabPay,
-    TResult Function(String type, BillingDetails billingDetails)? p24,
+    TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
+    TResult Function()? aliPay,
+    TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(BillingDetails billingDetails)? bankContact,
+    TResult Function(BillingDetails billingDetails)? giroPay,
+    TResult Function(BillingDetails billingDetails)? eps,
+    TResult Function(BillingDetails billingDetails)? grabPay,
+    TResult Function(BillingDetails billingDetails)? p24,
     required TResult orElse(),
   }) {
     if (card != null) {
-      return card(type, cardDetails, setupFutureUsage);
+      return card(cardDetails, setupFutureUsage);
     }
     return orElse();
   }
@@ -3025,40 +2952,34 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_PaymentMethodParamsCardToJson(this)..['runtimeType'] = 'card';
+    return _$_$_PaymentMethodParamsCardToJson(this)..['type'] = 'Card';
   }
 }
 
 abstract class _PaymentMethodParamsCard implements PaymentMethodParams {
   const factory _PaymentMethodParamsCard(
-          {String type,
-          required CardFieldInputDetails cardDetails,
+          {required CardFieldInputDetails cardDetails,
           PaymentIntentsFutureUsage? setupFutureUsage}) =
       _$_PaymentMethodParamsCard;
 
   factory _PaymentMethodParamsCard.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsCard.fromJson;
 
-  @override
-  String get type => throw _privateConstructorUsedError;
   CardFieldInputDetails get cardDetails => throw _privateConstructorUsedError;
   PaymentIntentsFutureUsage? get setupFutureUsage =>
       throw _privateConstructorUsedError;
-  @override
   @JsonKey(ignore: true)
   _$PaymentMethodParamsCardCopyWith<_PaymentMethodParamsCard> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$PaymentMethodParamsCardWithMethodIdCopyWith<$Res>
-    implements $PaymentMethodParamsCopyWith<$Res> {
+abstract class _$PaymentMethodParamsCardWithMethodIdCopyWith<$Res> {
   factory _$PaymentMethodParamsCardWithMethodIdCopyWith(
           _PaymentMethodParamsCardWithMethodId value,
           $Res Function(_PaymentMethodParamsCardWithMethodId) then) =
       __$PaymentMethodParamsCardWithMethodIdCopyWithImpl<$Res>;
-  @override
-  $Res call({String type, String paymentMethodId, String? cvc});
+  $Res call({String paymentMethodId, String? cvc});
 }
 
 /// @nodoc
@@ -3076,15 +2997,10 @@ class __$PaymentMethodParamsCardWithMethodIdCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? type = freezed,
     Object? paymentMethodId = freezed,
     Object? cvc = freezed,
   }) {
     return _then(_PaymentMethodParamsCardWithMethodId(
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
       paymentMethodId: paymentMethodId == freezed
           ? _value.paymentMethodId
           : paymentMethodId // ignore: cast_nullable_to_non_nullable
@@ -3098,20 +3014,18 @@ class __$PaymentMethodParamsCardWithMethodIdCopyWithImpl<$Res>
 }
 
 @JsonSerializable(explicitToJson: true)
+@FreezedUnionValue('CardId')
 
 /// @nodoc
 class _$_PaymentMethodParamsCardWithMethodId
     implements _PaymentMethodParamsCardWithMethodId {
   const _$_PaymentMethodParamsCardWithMethodId(
-      {this.type = 'CardId', required this.paymentMethodId, this.cvc});
+      {required this.paymentMethodId, this.cvc});
 
   factory _$_PaymentMethodParamsCardWithMethodId.fromJson(
           Map<String, dynamic> json) =>
       _$_$_PaymentMethodParamsCardWithMethodIdFromJson(json);
 
-  @JsonKey(defaultValue: 'CardId')
-  @override
-  final String type;
   @override
   final String paymentMethodId;
   @override
@@ -3119,15 +3033,13 @@ class _$_PaymentMethodParamsCardWithMethodId
 
   @override
   String toString() {
-    return 'PaymentMethodParams.cardFromMethodId(type: $type, paymentMethodId: $paymentMethodId, cvc: $cvc)';
+    return 'PaymentMethodParams.cardFromMethodId(paymentMethodId: $paymentMethodId, cvc: $cvc)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _PaymentMethodParamsCardWithMethodId &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
             (identical(other.paymentMethodId, paymentMethodId) ||
                 const DeepCollectionEquality()
                     .equals(other.paymentMethodId, paymentMethodId)) &&
@@ -3138,7 +3050,6 @@ class _$_PaymentMethodParamsCardWithMethodId
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(paymentMethodId) ^
       const DeepCollectionEquality().hash(cvc);
 
@@ -3153,49 +3064,42 @@ class _$_PaymentMethodParamsCardWithMethodId
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(String type, CardFieldInputDetails cardDetails,
+    required TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         card,
-    required TResult Function(String type, String paymentMethodId, String? cvc)
+    required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function(String type) aliPay,
-    required TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)
+    required TResult Function() aliPay,
+    required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
-    required TResult Function(String type, BillingDetails billingDetails)
-        bankContact,
-    required TResult Function(String type, BillingDetails billingDetails)
-        giroPay,
-    required TResult Function(String type, BillingDetails billingDetails) eps,
-    required TResult Function(String type, BillingDetails billingDetails)
-        grabPay,
-    required TResult Function(String type, BillingDetails billingDetails) p24,
+    required TResult Function(BillingDetails billingDetails) bankContact,
+    required TResult Function(BillingDetails billingDetails) giroPay,
+    required TResult Function(BillingDetails billingDetails) eps,
+    required TResult Function(BillingDetails billingDetails) grabPay,
+    required TResult Function(BillingDetails billingDetails) p24,
   }) {
-    return cardFromMethodId(type, paymentMethodId, cvc);
+    return cardFromMethodId(paymentMethodId, cvc);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(String type, CardFieldInputDetails cardDetails,
+    TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         card,
-    TResult Function(String type, String paymentMethodId, String? cvc)?
-        cardFromMethodId,
-    TResult Function(String type)? aliPay,
-    TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)?
-        ideal,
-    TResult Function(String type, BillingDetails billingDetails)? bankContact,
-    TResult Function(String type, BillingDetails billingDetails)? giroPay,
-    TResult Function(String type, BillingDetails billingDetails)? eps,
-    TResult Function(String type, BillingDetails billingDetails)? grabPay,
-    TResult Function(String type, BillingDetails billingDetails)? p24,
+    TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
+    TResult Function()? aliPay,
+    TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(BillingDetails billingDetails)? bankContact,
+    TResult Function(BillingDetails billingDetails)? giroPay,
+    TResult Function(BillingDetails billingDetails)? eps,
+    TResult Function(BillingDetails billingDetails)? grabPay,
+    TResult Function(BillingDetails billingDetails)? p24,
     required TResult orElse(),
   }) {
     if (cardFromMethodId != null) {
-      return cardFromMethodId(type, paymentMethodId, cvc);
+      return cardFromMethodId(paymentMethodId, cvc);
     }
     return orElse();
   }
@@ -3244,26 +3148,22 @@ class _$_PaymentMethodParamsCardWithMethodId
   @override
   Map<String, dynamic> toJson() {
     return _$_$_PaymentMethodParamsCardWithMethodIdToJson(this)
-      ..['runtimeType'] = 'cardFromMethodId';
+      ..['type'] = 'CardId';
   }
 }
 
 abstract class _PaymentMethodParamsCardWithMethodId
     implements PaymentMethodParams {
   const factory _PaymentMethodParamsCardWithMethodId(
-      {String type,
-      required String paymentMethodId,
+      {required String paymentMethodId,
       String? cvc}) = _$_PaymentMethodParamsCardWithMethodId;
 
   factory _PaymentMethodParamsCardWithMethodId.fromJson(
           Map<String, dynamic> json) =
       _$_PaymentMethodParamsCardWithMethodId.fromJson;
 
-  @override
-  String get type => throw _privateConstructorUsedError;
   String get paymentMethodId => throw _privateConstructorUsedError;
   String? get cvc => throw _privateConstructorUsedError;
-  @override
   @JsonKey(ignore: true)
   _$PaymentMethodParamsCardWithMethodIdCopyWith<
           _PaymentMethodParamsCardWithMethodId>
@@ -3271,13 +3171,10 @@ abstract class _PaymentMethodParamsCardWithMethodId
 }
 
 /// @nodoc
-abstract class _$PaymentMethodParamsAliCopyWith<$Res>
-    implements $PaymentMethodParamsCopyWith<$Res> {
+abstract class _$PaymentMethodParamsAliCopyWith<$Res> {
   factory _$PaymentMethodParamsAliCopyWith(_PaymentMethodParamsAli value,
           $Res Function(_PaymentMethodParamsAli) then) =
       __$PaymentMethodParamsAliCopyWithImpl<$Res>;
-  @override
-  $Res call({String type});
 }
 
 /// @nodoc
@@ -3290,103 +3187,71 @@ class __$PaymentMethodParamsAliCopyWithImpl<$Res>
 
   @override
   _PaymentMethodParamsAli get _value => super._value as _PaymentMethodParamsAli;
-
-  @override
-  $Res call({
-    Object? type = freezed,
-  }) {
-    return _then(_PaymentMethodParamsAli(
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 @JsonSerializable(explicitToJson: true)
+@FreezedUnionValue('Alipay')
 
 /// @nodoc
 class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
-  const _$_PaymentMethodParamsAli({this.type = 'Alipay'});
+  const _$_PaymentMethodParamsAli();
 
   factory _$_PaymentMethodParamsAli.fromJson(Map<String, dynamic> json) =>
       _$_$_PaymentMethodParamsAliFromJson(json);
 
-  @JsonKey(defaultValue: 'Alipay')
-  @override
-  final String type;
-
   @override
   String toString() {
-    return 'PaymentMethodParams.aliPay(type: $type)';
+    return 'PaymentMethodParams.aliPay()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _PaymentMethodParamsAli &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)));
+    return identical(this, other) || (other is _PaymentMethodParamsAli);
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(type);
-
-  @JsonKey(ignore: true)
-  @override
-  _$PaymentMethodParamsAliCopyWith<_PaymentMethodParamsAli> get copyWith =>
-      __$PaymentMethodParamsAliCopyWithImpl<_PaymentMethodParamsAli>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(String type, CardFieldInputDetails cardDetails,
+    required TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         card,
-    required TResult Function(String type, String paymentMethodId, String? cvc)
+    required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function(String type) aliPay,
-    required TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)
+    required TResult Function() aliPay,
+    required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
-    required TResult Function(String type, BillingDetails billingDetails)
-        bankContact,
-    required TResult Function(String type, BillingDetails billingDetails)
-        giroPay,
-    required TResult Function(String type, BillingDetails billingDetails) eps,
-    required TResult Function(String type, BillingDetails billingDetails)
-        grabPay,
-    required TResult Function(String type, BillingDetails billingDetails) p24,
+    required TResult Function(BillingDetails billingDetails) bankContact,
+    required TResult Function(BillingDetails billingDetails) giroPay,
+    required TResult Function(BillingDetails billingDetails) eps,
+    required TResult Function(BillingDetails billingDetails) grabPay,
+    required TResult Function(BillingDetails billingDetails) p24,
   }) {
-    return aliPay(type);
+    return aliPay();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(String type, CardFieldInputDetails cardDetails,
+    TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         card,
-    TResult Function(String type, String paymentMethodId, String? cvc)?
-        cardFromMethodId,
-    TResult Function(String type)? aliPay,
-    TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)?
-        ideal,
-    TResult Function(String type, BillingDetails billingDetails)? bankContact,
-    TResult Function(String type, BillingDetails billingDetails)? giroPay,
-    TResult Function(String type, BillingDetails billingDetails)? eps,
-    TResult Function(String type, BillingDetails billingDetails)? grabPay,
-    TResult Function(String type, BillingDetails billingDetails)? p24,
+    TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
+    TResult Function()? aliPay,
+    TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(BillingDetails billingDetails)? bankContact,
+    TResult Function(BillingDetails billingDetails)? giroPay,
+    TResult Function(BillingDetails billingDetails)? eps,
+    TResult Function(BillingDetails billingDetails)? grabPay,
+    TResult Function(BillingDetails billingDetails)? p24,
     required TResult orElse(),
   }) {
     if (aliPay != null) {
-      return aliPay(type);
+      return aliPay();
     }
     return orElse();
   }
@@ -3434,33 +3299,23 @@ class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_PaymentMethodParamsAliToJson(this)..['runtimeType'] = 'aliPay';
+    return _$_$_PaymentMethodParamsAliToJson(this)..['type'] = 'Alipay';
   }
 }
 
 abstract class _PaymentMethodParamsAli implements PaymentMethodParams {
-  const factory _PaymentMethodParamsAli({String type}) =
-      _$_PaymentMethodParamsAli;
+  const factory _PaymentMethodParamsAli() = _$_PaymentMethodParamsAli;
 
   factory _PaymentMethodParamsAli.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsAli.fromJson;
-
-  @override
-  String get type => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  _$PaymentMethodParamsAliCopyWith<_PaymentMethodParamsAli> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$PaymentMethodParamsIdealCopyWith<$Res>
-    implements $PaymentMethodParamsCopyWith<$Res> {
+abstract class _$PaymentMethodParamsIdealCopyWith<$Res> {
   factory _$PaymentMethodParamsIdealCopyWith(_PaymentMethodParamsIdeal value,
           $Res Function(_PaymentMethodParamsIdeal) then) =
       __$PaymentMethodParamsIdealCopyWithImpl<$Res>;
-  @override
-  $Res call({String type, BillingDetails? billingDetails, String? bankName});
+  $Res call({BillingDetails? billingDetails, String? bankName});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
 }
@@ -3479,15 +3334,10 @@ class __$PaymentMethodParamsIdealCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? type = freezed,
     Object? billingDetails = freezed,
     Object? bankName = freezed,
   }) {
     return _then(_PaymentMethodParamsIdeal(
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
       billingDetails: billingDetails == freezed
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
@@ -3512,18 +3362,15 @@ class __$PaymentMethodParamsIdealCopyWithImpl<$Res>
 }
 
 @JsonSerializable(explicitToJson: true)
+@FreezedUnionValue('Ideal')
 
 /// @nodoc
 class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
-  const _$_PaymentMethodParamsIdeal(
-      {this.type = 'Ideal', this.billingDetails, this.bankName});
+  const _$_PaymentMethodParamsIdeal({this.billingDetails, this.bankName});
 
   factory _$_PaymentMethodParamsIdeal.fromJson(Map<String, dynamic> json) =>
       _$_$_PaymentMethodParamsIdealFromJson(json);
 
-  @JsonKey(defaultValue: 'Ideal')
-  @override
-  final String type;
   @override
   final BillingDetails? billingDetails;
   @override
@@ -3531,15 +3378,13 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
 
   @override
   String toString() {
-    return 'PaymentMethodParams.ideal(type: $type, billingDetails: $billingDetails, bankName: $bankName)';
+    return 'PaymentMethodParams.ideal(billingDetails: $billingDetails, bankName: $bankName)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _PaymentMethodParamsIdeal &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
             (identical(other.billingDetails, billingDetails) ||
                 const DeepCollectionEquality()
                     .equals(other.billingDetails, billingDetails)) &&
@@ -3551,7 +3396,6 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(billingDetails) ^
       const DeepCollectionEquality().hash(bankName);
 
@@ -3565,49 +3409,42 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(String type, CardFieldInputDetails cardDetails,
+    required TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         card,
-    required TResult Function(String type, String paymentMethodId, String? cvc)
+    required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function(String type) aliPay,
-    required TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)
+    required TResult Function() aliPay,
+    required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
-    required TResult Function(String type, BillingDetails billingDetails)
-        bankContact,
-    required TResult Function(String type, BillingDetails billingDetails)
-        giroPay,
-    required TResult Function(String type, BillingDetails billingDetails) eps,
-    required TResult Function(String type, BillingDetails billingDetails)
-        grabPay,
-    required TResult Function(String type, BillingDetails billingDetails) p24,
+    required TResult Function(BillingDetails billingDetails) bankContact,
+    required TResult Function(BillingDetails billingDetails) giroPay,
+    required TResult Function(BillingDetails billingDetails) eps,
+    required TResult Function(BillingDetails billingDetails) grabPay,
+    required TResult Function(BillingDetails billingDetails) p24,
   }) {
-    return ideal(type, billingDetails, bankName);
+    return ideal(billingDetails, bankName);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(String type, CardFieldInputDetails cardDetails,
+    TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         card,
-    TResult Function(String type, String paymentMethodId, String? cvc)?
-        cardFromMethodId,
-    TResult Function(String type)? aliPay,
-    TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)?
-        ideal,
-    TResult Function(String type, BillingDetails billingDetails)? bankContact,
-    TResult Function(String type, BillingDetails billingDetails)? giroPay,
-    TResult Function(String type, BillingDetails billingDetails)? eps,
-    TResult Function(String type, BillingDetails billingDetails)? grabPay,
-    TResult Function(String type, BillingDetails billingDetails)? p24,
+    TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
+    TResult Function()? aliPay,
+    TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(BillingDetails billingDetails)? bankContact,
+    TResult Function(BillingDetails billingDetails)? giroPay,
+    TResult Function(BillingDetails billingDetails)? eps,
+    TResult Function(BillingDetails billingDetails)? grabPay,
+    TResult Function(BillingDetails billingDetails)? p24,
     required TResult orElse(),
   }) {
     if (ideal != null) {
-      return ideal(type, billingDetails, bankName);
+      return ideal(billingDetails, bankName);
     }
     return orElse();
   }
@@ -3655,38 +3492,32 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_PaymentMethodParamsIdealToJson(this)..['runtimeType'] = 'ideal';
+    return _$_$_PaymentMethodParamsIdealToJson(this)..['type'] = 'Ideal';
   }
 }
 
 abstract class _PaymentMethodParamsIdeal implements PaymentMethodParams {
   const factory _PaymentMethodParamsIdeal(
-      {String type,
-      BillingDetails? billingDetails,
+      {BillingDetails? billingDetails,
       String? bankName}) = _$_PaymentMethodParamsIdeal;
 
   factory _PaymentMethodParamsIdeal.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsIdeal.fromJson;
 
-  @override
-  String get type => throw _privateConstructorUsedError;
   BillingDetails? get billingDetails => throw _privateConstructorUsedError;
   String? get bankName => throw _privateConstructorUsedError;
-  @override
   @JsonKey(ignore: true)
   _$PaymentMethodParamsIdealCopyWith<_PaymentMethodParamsIdeal> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$PaymentMethodParamsBankContactCopyWith<$Res>
-    implements $PaymentMethodParamsCopyWith<$Res> {
+abstract class _$PaymentMethodParamsBankContactCopyWith<$Res> {
   factory _$PaymentMethodParamsBankContactCopyWith(
           _PaymentMethodParamsBankContact value,
           $Res Function(_PaymentMethodParamsBankContact) then) =
       __$PaymentMethodParamsBankContactCopyWithImpl<$Res>;
-  @override
-  $Res call({String type, BillingDetails billingDetails});
+  $Res call({BillingDetails billingDetails});
 
   $BillingDetailsCopyWith<$Res> get billingDetails;
 }
@@ -3706,14 +3537,9 @@ class __$PaymentMethodParamsBankContactCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? type = freezed,
     Object? billingDetails = freezed,
   }) {
     return _then(_PaymentMethodParamsBankContact(
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
       billingDetails: billingDetails == freezed
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
@@ -3730,34 +3556,29 @@ class __$PaymentMethodParamsBankContactCopyWithImpl<$Res>
 }
 
 @JsonSerializable(explicitToJson: true)
+@FreezedUnionValue('Bancontact')
 
 /// @nodoc
 class _$_PaymentMethodParamsBankContact
     implements _PaymentMethodParamsBankContact {
-  const _$_PaymentMethodParamsBankContact(
-      {this.type = 'Bancontact', required this.billingDetails});
+  const _$_PaymentMethodParamsBankContact({required this.billingDetails});
 
   factory _$_PaymentMethodParamsBankContact.fromJson(
           Map<String, dynamic> json) =>
       _$_$_PaymentMethodParamsBankContactFromJson(json);
 
-  @JsonKey(defaultValue: 'Bancontact')
-  @override
-  final String type;
   @override
   final BillingDetails billingDetails;
 
   @override
   String toString() {
-    return 'PaymentMethodParams.bankContact(type: $type, billingDetails: $billingDetails)';
+    return 'PaymentMethodParams.bankContact(billingDetails: $billingDetails)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _PaymentMethodParamsBankContact &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
             (identical(other.billingDetails, billingDetails) ||
                 const DeepCollectionEquality()
                     .equals(other.billingDetails, billingDetails)));
@@ -3766,7 +3587,6 @@ class _$_PaymentMethodParamsBankContact
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(billingDetails);
 
   @JsonKey(ignore: true)
@@ -3779,49 +3599,42 @@ class _$_PaymentMethodParamsBankContact
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(String type, CardFieldInputDetails cardDetails,
+    required TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         card,
-    required TResult Function(String type, String paymentMethodId, String? cvc)
+    required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function(String type) aliPay,
-    required TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)
+    required TResult Function() aliPay,
+    required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
-    required TResult Function(String type, BillingDetails billingDetails)
-        bankContact,
-    required TResult Function(String type, BillingDetails billingDetails)
-        giroPay,
-    required TResult Function(String type, BillingDetails billingDetails) eps,
-    required TResult Function(String type, BillingDetails billingDetails)
-        grabPay,
-    required TResult Function(String type, BillingDetails billingDetails) p24,
+    required TResult Function(BillingDetails billingDetails) bankContact,
+    required TResult Function(BillingDetails billingDetails) giroPay,
+    required TResult Function(BillingDetails billingDetails) eps,
+    required TResult Function(BillingDetails billingDetails) grabPay,
+    required TResult Function(BillingDetails billingDetails) p24,
   }) {
-    return bankContact(type, billingDetails);
+    return bankContact(billingDetails);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(String type, CardFieldInputDetails cardDetails,
+    TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         card,
-    TResult Function(String type, String paymentMethodId, String? cvc)?
-        cardFromMethodId,
-    TResult Function(String type)? aliPay,
-    TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)?
-        ideal,
-    TResult Function(String type, BillingDetails billingDetails)? bankContact,
-    TResult Function(String type, BillingDetails billingDetails)? giroPay,
-    TResult Function(String type, BillingDetails billingDetails)? eps,
-    TResult Function(String type, BillingDetails billingDetails)? grabPay,
-    TResult Function(String type, BillingDetails billingDetails)? p24,
+    TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
+    TResult Function()? aliPay,
+    TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(BillingDetails billingDetails)? bankContact,
+    TResult Function(BillingDetails billingDetails)? giroPay,
+    TResult Function(BillingDetails billingDetails)? eps,
+    TResult Function(BillingDetails billingDetails)? grabPay,
+    TResult Function(BillingDetails billingDetails)? p24,
     required TResult orElse(),
   }) {
     if (bankContact != null) {
-      return bankContact(type, billingDetails);
+      return bankContact(billingDetails);
     }
     return orElse();
   }
@@ -3870,36 +3683,31 @@ class _$_PaymentMethodParamsBankContact
   @override
   Map<String, dynamic> toJson() {
     return _$_$_PaymentMethodParamsBankContactToJson(this)
-      ..['runtimeType'] = 'bankContact';
+      ..['type'] = 'Bancontact';
   }
 }
 
 abstract class _PaymentMethodParamsBankContact implements PaymentMethodParams {
   const factory _PaymentMethodParamsBankContact(
-          {String type, required BillingDetails billingDetails}) =
+          {required BillingDetails billingDetails}) =
       _$_PaymentMethodParamsBankContact;
 
   factory _PaymentMethodParamsBankContact.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsBankContact.fromJson;
 
-  @override
-  String get type => throw _privateConstructorUsedError;
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
-  @override
   @JsonKey(ignore: true)
   _$PaymentMethodParamsBankContactCopyWith<_PaymentMethodParamsBankContact>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$PaymentMethodParamsGiroPayCopyWith<$Res>
-    implements $PaymentMethodParamsCopyWith<$Res> {
+abstract class _$PaymentMethodParamsGiroPayCopyWith<$Res> {
   factory _$PaymentMethodParamsGiroPayCopyWith(
           _PaymentMethodParamsGiroPay value,
           $Res Function(_PaymentMethodParamsGiroPay) then) =
       __$PaymentMethodParamsGiroPayCopyWithImpl<$Res>;
-  @override
-  $Res call({String type, BillingDetails billingDetails});
+  $Res call({BillingDetails billingDetails});
 
   $BillingDetailsCopyWith<$Res> get billingDetails;
 }
@@ -3918,14 +3726,9 @@ class __$PaymentMethodParamsGiroPayCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? type = freezed,
     Object? billingDetails = freezed,
   }) {
     return _then(_PaymentMethodParamsGiroPay(
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
       billingDetails: billingDetails == freezed
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
@@ -3942,32 +3745,27 @@ class __$PaymentMethodParamsGiroPayCopyWithImpl<$Res>
 }
 
 @JsonSerializable(explicitToJson: true)
+@FreezedUnionValue('Giropay')
 
 /// @nodoc
 class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
-  const _$_PaymentMethodParamsGiroPay(
-      {this.type = 'Giropay', required this.billingDetails});
+  const _$_PaymentMethodParamsGiroPay({required this.billingDetails});
 
   factory _$_PaymentMethodParamsGiroPay.fromJson(Map<String, dynamic> json) =>
       _$_$_PaymentMethodParamsGiroPayFromJson(json);
 
-  @JsonKey(defaultValue: 'Giropay')
-  @override
-  final String type;
   @override
   final BillingDetails billingDetails;
 
   @override
   String toString() {
-    return 'PaymentMethodParams.giroPay(type: $type, billingDetails: $billingDetails)';
+    return 'PaymentMethodParams.giroPay(billingDetails: $billingDetails)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _PaymentMethodParamsGiroPay &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
             (identical(other.billingDetails, billingDetails) ||
                 const DeepCollectionEquality()
                     .equals(other.billingDetails, billingDetails)));
@@ -3976,7 +3774,6 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(billingDetails);
 
   @JsonKey(ignore: true)
@@ -3989,49 +3786,42 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(String type, CardFieldInputDetails cardDetails,
+    required TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         card,
-    required TResult Function(String type, String paymentMethodId, String? cvc)
+    required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function(String type) aliPay,
-    required TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)
+    required TResult Function() aliPay,
+    required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
-    required TResult Function(String type, BillingDetails billingDetails)
-        bankContact,
-    required TResult Function(String type, BillingDetails billingDetails)
-        giroPay,
-    required TResult Function(String type, BillingDetails billingDetails) eps,
-    required TResult Function(String type, BillingDetails billingDetails)
-        grabPay,
-    required TResult Function(String type, BillingDetails billingDetails) p24,
+    required TResult Function(BillingDetails billingDetails) bankContact,
+    required TResult Function(BillingDetails billingDetails) giroPay,
+    required TResult Function(BillingDetails billingDetails) eps,
+    required TResult Function(BillingDetails billingDetails) grabPay,
+    required TResult Function(BillingDetails billingDetails) p24,
   }) {
-    return giroPay(type, billingDetails);
+    return giroPay(billingDetails);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(String type, CardFieldInputDetails cardDetails,
+    TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         card,
-    TResult Function(String type, String paymentMethodId, String? cvc)?
-        cardFromMethodId,
-    TResult Function(String type)? aliPay,
-    TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)?
-        ideal,
-    TResult Function(String type, BillingDetails billingDetails)? bankContact,
-    TResult Function(String type, BillingDetails billingDetails)? giroPay,
-    TResult Function(String type, BillingDetails billingDetails)? eps,
-    TResult Function(String type, BillingDetails billingDetails)? grabPay,
-    TResult Function(String type, BillingDetails billingDetails)? p24,
+    TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
+    TResult Function()? aliPay,
+    TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(BillingDetails billingDetails)? bankContact,
+    TResult Function(BillingDetails billingDetails)? giroPay,
+    TResult Function(BillingDetails billingDetails)? eps,
+    TResult Function(BillingDetails billingDetails)? grabPay,
+    TResult Function(BillingDetails billingDetails)? p24,
     required TResult orElse(),
   }) {
     if (giroPay != null) {
-      return giroPay(type, billingDetails);
+      return giroPay(billingDetails);
     }
     return orElse();
   }
@@ -4079,36 +3869,29 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_PaymentMethodParamsGiroPayToJson(this)
-      ..['runtimeType'] = 'giroPay';
+    return _$_$_PaymentMethodParamsGiroPayToJson(this)..['type'] = 'Giropay';
   }
 }
 
 abstract class _PaymentMethodParamsGiroPay implements PaymentMethodParams {
   const factory _PaymentMethodParamsGiroPay(
-      {String type,
-      required BillingDetails billingDetails}) = _$_PaymentMethodParamsGiroPay;
+      {required BillingDetails billingDetails}) = _$_PaymentMethodParamsGiroPay;
 
   factory _PaymentMethodParamsGiroPay.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsGiroPay.fromJson;
 
-  @override
-  String get type => throw _privateConstructorUsedError;
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
-  @override
   @JsonKey(ignore: true)
   _$PaymentMethodParamsGiroPayCopyWith<_PaymentMethodParamsGiroPay>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$PaymentMethodParamsEpsCopyWith<$Res>
-    implements $PaymentMethodParamsCopyWith<$Res> {
+abstract class _$PaymentMethodParamsEpsCopyWith<$Res> {
   factory _$PaymentMethodParamsEpsCopyWith(_PaymentMethodParamsEps value,
           $Res Function(_PaymentMethodParamsEps) then) =
       __$PaymentMethodParamsEpsCopyWithImpl<$Res>;
-  @override
-  $Res call({String type, BillingDetails billingDetails});
+  $Res call({BillingDetails billingDetails});
 
   $BillingDetailsCopyWith<$Res> get billingDetails;
 }
@@ -4126,14 +3909,9 @@ class __$PaymentMethodParamsEpsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? type = freezed,
     Object? billingDetails = freezed,
   }) {
     return _then(_PaymentMethodParamsEps(
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
       billingDetails: billingDetails == freezed
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
@@ -4150,32 +3928,27 @@ class __$PaymentMethodParamsEpsCopyWithImpl<$Res>
 }
 
 @JsonSerializable(explicitToJson: true)
+@FreezedUnionValue('Eps')
 
 /// @nodoc
 class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
-  const _$_PaymentMethodParamsEps(
-      {this.type = 'Eps', required this.billingDetails});
+  const _$_PaymentMethodParamsEps({required this.billingDetails});
 
   factory _$_PaymentMethodParamsEps.fromJson(Map<String, dynamic> json) =>
       _$_$_PaymentMethodParamsEpsFromJson(json);
 
-  @JsonKey(defaultValue: 'Eps')
-  @override
-  final String type;
   @override
   final BillingDetails billingDetails;
 
   @override
   String toString() {
-    return 'PaymentMethodParams.eps(type: $type, billingDetails: $billingDetails)';
+    return 'PaymentMethodParams.eps(billingDetails: $billingDetails)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _PaymentMethodParamsEps &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
             (identical(other.billingDetails, billingDetails) ||
                 const DeepCollectionEquality()
                     .equals(other.billingDetails, billingDetails)));
@@ -4184,7 +3957,6 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(billingDetails);
 
   @JsonKey(ignore: true)
@@ -4197,49 +3969,42 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(String type, CardFieldInputDetails cardDetails,
+    required TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         card,
-    required TResult Function(String type, String paymentMethodId, String? cvc)
+    required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function(String type) aliPay,
-    required TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)
+    required TResult Function() aliPay,
+    required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
-    required TResult Function(String type, BillingDetails billingDetails)
-        bankContact,
-    required TResult Function(String type, BillingDetails billingDetails)
-        giroPay,
-    required TResult Function(String type, BillingDetails billingDetails) eps,
-    required TResult Function(String type, BillingDetails billingDetails)
-        grabPay,
-    required TResult Function(String type, BillingDetails billingDetails) p24,
+    required TResult Function(BillingDetails billingDetails) bankContact,
+    required TResult Function(BillingDetails billingDetails) giroPay,
+    required TResult Function(BillingDetails billingDetails) eps,
+    required TResult Function(BillingDetails billingDetails) grabPay,
+    required TResult Function(BillingDetails billingDetails) p24,
   }) {
-    return eps(type, billingDetails);
+    return eps(billingDetails);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(String type, CardFieldInputDetails cardDetails,
+    TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         card,
-    TResult Function(String type, String paymentMethodId, String? cvc)?
-        cardFromMethodId,
-    TResult Function(String type)? aliPay,
-    TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)?
-        ideal,
-    TResult Function(String type, BillingDetails billingDetails)? bankContact,
-    TResult Function(String type, BillingDetails billingDetails)? giroPay,
-    TResult Function(String type, BillingDetails billingDetails)? eps,
-    TResult Function(String type, BillingDetails billingDetails)? grabPay,
-    TResult Function(String type, BillingDetails billingDetails)? p24,
+    TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
+    TResult Function()? aliPay,
+    TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(BillingDetails billingDetails)? bankContact,
+    TResult Function(BillingDetails billingDetails)? giroPay,
+    TResult Function(BillingDetails billingDetails)? eps,
+    TResult Function(BillingDetails billingDetails)? grabPay,
+    TResult Function(BillingDetails billingDetails)? p24,
     required TResult orElse(),
   }) {
     if (eps != null) {
-      return eps(type, billingDetails);
+      return eps(billingDetails);
     }
     return orElse();
   }
@@ -4287,35 +4052,29 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_PaymentMethodParamsEpsToJson(this)..['runtimeType'] = 'eps';
+    return _$_$_PaymentMethodParamsEpsToJson(this)..['type'] = 'Eps';
   }
 }
 
 abstract class _PaymentMethodParamsEps implements PaymentMethodParams {
   const factory _PaymentMethodParamsEps(
-      {String type,
-      required BillingDetails billingDetails}) = _$_PaymentMethodParamsEps;
+      {required BillingDetails billingDetails}) = _$_PaymentMethodParamsEps;
 
   factory _PaymentMethodParamsEps.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsEps.fromJson;
 
-  @override
-  String get type => throw _privateConstructorUsedError;
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
-  @override
   @JsonKey(ignore: true)
   _$PaymentMethodParamsEpsCopyWith<_PaymentMethodParamsEps> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$PaymentMethodParamsPayCopyWith<$Res>
-    implements $PaymentMethodParamsCopyWith<$Res> {
+abstract class _$PaymentMethodParamsPayCopyWith<$Res> {
   factory _$PaymentMethodParamsPayCopyWith(_PaymentMethodParamsPay value,
           $Res Function(_PaymentMethodParamsPay) then) =
       __$PaymentMethodParamsPayCopyWithImpl<$Res>;
-  @override
-  $Res call({String type, BillingDetails billingDetails});
+  $Res call({BillingDetails billingDetails});
 
   $BillingDetailsCopyWith<$Res> get billingDetails;
 }
@@ -4333,14 +4092,9 @@ class __$PaymentMethodParamsPayCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? type = freezed,
     Object? billingDetails = freezed,
   }) {
     return _then(_PaymentMethodParamsPay(
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
       billingDetails: billingDetails == freezed
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
@@ -4357,32 +4111,27 @@ class __$PaymentMethodParamsPayCopyWithImpl<$Res>
 }
 
 @JsonSerializable(explicitToJson: true)
+@FreezedUnionValue('GrabPay')
 
 /// @nodoc
 class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
-  const _$_PaymentMethodParamsPay(
-      {this.type = 'GrabPay', required this.billingDetails});
+  const _$_PaymentMethodParamsPay({required this.billingDetails});
 
   factory _$_PaymentMethodParamsPay.fromJson(Map<String, dynamic> json) =>
       _$_$_PaymentMethodParamsPayFromJson(json);
 
-  @JsonKey(defaultValue: 'GrabPay')
-  @override
-  final String type;
   @override
   final BillingDetails billingDetails;
 
   @override
   String toString() {
-    return 'PaymentMethodParams.grabPay(type: $type, billingDetails: $billingDetails)';
+    return 'PaymentMethodParams.grabPay(billingDetails: $billingDetails)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _PaymentMethodParamsPay &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
             (identical(other.billingDetails, billingDetails) ||
                 const DeepCollectionEquality()
                     .equals(other.billingDetails, billingDetails)));
@@ -4391,7 +4140,6 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(billingDetails);
 
   @JsonKey(ignore: true)
@@ -4404,49 +4152,42 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(String type, CardFieldInputDetails cardDetails,
+    required TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         card,
-    required TResult Function(String type, String paymentMethodId, String? cvc)
+    required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function(String type) aliPay,
-    required TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)
+    required TResult Function() aliPay,
+    required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
-    required TResult Function(String type, BillingDetails billingDetails)
-        bankContact,
-    required TResult Function(String type, BillingDetails billingDetails)
-        giroPay,
-    required TResult Function(String type, BillingDetails billingDetails) eps,
-    required TResult Function(String type, BillingDetails billingDetails)
-        grabPay,
-    required TResult Function(String type, BillingDetails billingDetails) p24,
+    required TResult Function(BillingDetails billingDetails) bankContact,
+    required TResult Function(BillingDetails billingDetails) giroPay,
+    required TResult Function(BillingDetails billingDetails) eps,
+    required TResult Function(BillingDetails billingDetails) grabPay,
+    required TResult Function(BillingDetails billingDetails) p24,
   }) {
-    return grabPay(type, billingDetails);
+    return grabPay(billingDetails);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(String type, CardFieldInputDetails cardDetails,
+    TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         card,
-    TResult Function(String type, String paymentMethodId, String? cvc)?
-        cardFromMethodId,
-    TResult Function(String type)? aliPay,
-    TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)?
-        ideal,
-    TResult Function(String type, BillingDetails billingDetails)? bankContact,
-    TResult Function(String type, BillingDetails billingDetails)? giroPay,
-    TResult Function(String type, BillingDetails billingDetails)? eps,
-    TResult Function(String type, BillingDetails billingDetails)? grabPay,
-    TResult Function(String type, BillingDetails billingDetails)? p24,
+    TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
+    TResult Function()? aliPay,
+    TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(BillingDetails billingDetails)? bankContact,
+    TResult Function(BillingDetails billingDetails)? giroPay,
+    TResult Function(BillingDetails billingDetails)? eps,
+    TResult Function(BillingDetails billingDetails)? grabPay,
+    TResult Function(BillingDetails billingDetails)? p24,
     required TResult orElse(),
   }) {
     if (grabPay != null) {
-      return grabPay(type, billingDetails);
+      return grabPay(billingDetails);
     }
     return orElse();
   }
@@ -4494,35 +4235,29 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_PaymentMethodParamsPayToJson(this)..['runtimeType'] = 'grabPay';
+    return _$_$_PaymentMethodParamsPayToJson(this)..['type'] = 'GrabPay';
   }
 }
 
 abstract class _PaymentMethodParamsPay implements PaymentMethodParams {
   const factory _PaymentMethodParamsPay(
-      {String type,
-      required BillingDetails billingDetails}) = _$_PaymentMethodParamsPay;
+      {required BillingDetails billingDetails}) = _$_PaymentMethodParamsPay;
 
   factory _PaymentMethodParamsPay.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsPay.fromJson;
 
-  @override
-  String get type => throw _privateConstructorUsedError;
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
-  @override
   @JsonKey(ignore: true)
   _$PaymentMethodParamsPayCopyWith<_PaymentMethodParamsPay> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$PaymentMethodParamsP24CopyWith<$Res>
-    implements $PaymentMethodParamsCopyWith<$Res> {
+abstract class _$PaymentMethodParamsP24CopyWith<$Res> {
   factory _$PaymentMethodParamsP24CopyWith(_PaymentMethodParamsP24 value,
           $Res Function(_PaymentMethodParamsP24) then) =
       __$PaymentMethodParamsP24CopyWithImpl<$Res>;
-  @override
-  $Res call({String type, BillingDetails billingDetails});
+  $Res call({BillingDetails billingDetails});
 
   $BillingDetailsCopyWith<$Res> get billingDetails;
 }
@@ -4540,14 +4275,9 @@ class __$PaymentMethodParamsP24CopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? type = freezed,
     Object? billingDetails = freezed,
   }) {
     return _then(_PaymentMethodParamsP24(
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
       billingDetails: billingDetails == freezed
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
@@ -4564,32 +4294,27 @@ class __$PaymentMethodParamsP24CopyWithImpl<$Res>
 }
 
 @JsonSerializable(explicitToJson: true)
+@FreezedUnionValue('P24')
 
 /// @nodoc
 class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
-  const _$_PaymentMethodParamsP24(
-      {this.type = 'P24', required this.billingDetails});
+  const _$_PaymentMethodParamsP24({required this.billingDetails});
 
   factory _$_PaymentMethodParamsP24.fromJson(Map<String, dynamic> json) =>
       _$_$_PaymentMethodParamsP24FromJson(json);
 
-  @JsonKey(defaultValue: 'P24')
-  @override
-  final String type;
   @override
   final BillingDetails billingDetails;
 
   @override
   String toString() {
-    return 'PaymentMethodParams.p24(type: $type, billingDetails: $billingDetails)';
+    return 'PaymentMethodParams.p24(billingDetails: $billingDetails)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _PaymentMethodParamsP24 &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
             (identical(other.billingDetails, billingDetails) ||
                 const DeepCollectionEquality()
                     .equals(other.billingDetails, billingDetails)));
@@ -4598,7 +4323,6 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(billingDetails);
 
   @JsonKey(ignore: true)
@@ -4611,49 +4335,42 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(String type, CardFieldInputDetails cardDetails,
+    required TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         card,
-    required TResult Function(String type, String paymentMethodId, String? cvc)
+    required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function(String type) aliPay,
-    required TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)
+    required TResult Function() aliPay,
+    required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
-    required TResult Function(String type, BillingDetails billingDetails)
-        bankContact,
-    required TResult Function(String type, BillingDetails billingDetails)
-        giroPay,
-    required TResult Function(String type, BillingDetails billingDetails) eps,
-    required TResult Function(String type, BillingDetails billingDetails)
-        grabPay,
-    required TResult Function(String type, BillingDetails billingDetails) p24,
+    required TResult Function(BillingDetails billingDetails) bankContact,
+    required TResult Function(BillingDetails billingDetails) giroPay,
+    required TResult Function(BillingDetails billingDetails) eps,
+    required TResult Function(BillingDetails billingDetails) grabPay,
+    required TResult Function(BillingDetails billingDetails) p24,
   }) {
-    return p24(type, billingDetails);
+    return p24(billingDetails);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(String type, CardFieldInputDetails cardDetails,
+    TResult Function(CardFieldInputDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         card,
-    TResult Function(String type, String paymentMethodId, String? cvc)?
-        cardFromMethodId,
-    TResult Function(String type)? aliPay,
-    TResult Function(
-            String type, BillingDetails? billingDetails, String? bankName)?
-        ideal,
-    TResult Function(String type, BillingDetails billingDetails)? bankContact,
-    TResult Function(String type, BillingDetails billingDetails)? giroPay,
-    TResult Function(String type, BillingDetails billingDetails)? eps,
-    TResult Function(String type, BillingDetails billingDetails)? grabPay,
-    TResult Function(String type, BillingDetails billingDetails)? p24,
+    TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
+    TResult Function()? aliPay,
+    TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(BillingDetails billingDetails)? bankContact,
+    TResult Function(BillingDetails billingDetails)? giroPay,
+    TResult Function(BillingDetails billingDetails)? eps,
+    TResult Function(BillingDetails billingDetails)? grabPay,
+    TResult Function(BillingDetails billingDetails)? p24,
     required TResult orElse(),
   }) {
     if (p24 != null) {
-      return p24(type, billingDetails);
+      return p24(billingDetails);
     }
     return orElse();
   }
@@ -4701,22 +4418,18 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_PaymentMethodParamsP24ToJson(this)..['runtimeType'] = 'p24';
+    return _$_$_PaymentMethodParamsP24ToJson(this)..['type'] = 'P24';
   }
 }
 
 abstract class _PaymentMethodParamsP24 implements PaymentMethodParams {
   const factory _PaymentMethodParamsP24(
-      {String type,
-      required BillingDetails billingDetails}) = _$_PaymentMethodParamsP24;
+      {required BillingDetails billingDetails}) = _$_PaymentMethodParamsP24;
 
   factory _PaymentMethodParamsP24.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsP24.fromJson;
 
-  @override
-  String get type => throw _privateConstructorUsedError;
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
-  @override
   @JsonKey(ignore: true)
   _$PaymentMethodParamsP24CopyWith<_PaymentMethodParamsP24> get copyWith =>
       throw _privateConstructorUsedError;
