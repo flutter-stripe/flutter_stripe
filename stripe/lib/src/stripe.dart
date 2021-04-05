@@ -143,12 +143,12 @@ class Stripe {
 
   Future<SetupIntent> confirmSetupIntent(
     String paymentIntentClientSecret,
-    PaymentMethodParams data, [
+    PaymentMethodParams params, [
     Map<String, String> options = const {},
   ]) async {
     try {
       final setupIntent = await _platform.confirmSetupIntent(
-          paymentIntentClientSecret, data, options);
+          paymentIntentClientSecret, params, options);
       return setupIntent;
     } on StripeError catch (error) {
       //throw StripeError<CardActionError>(error.code, error.message);
@@ -164,52 +164,6 @@ class Stripe {
         cvc,
       );
       return tokenId;
-    } on StripeError catch (error) {
-      //throw StripeError<CardActionError>(error.code, error.message);
-      rethrow;
-    }
-  }
-
-  Future<PaymentOption?> setupPaymentSheet(
-      SetupPaymentSheetParams params) async {
-    try {
-      final option = await _platform.setupPaymentSheet(
-        params,
-      );
-      return option;
-    } on StripeError catch (error) {
-      //throw StripeError<CardActionError>(error.code, error.message);
-      rethrow;
-    }
-  }
-
-  Future<PaymentIntent> presentPaymentSheet(String? clientSecret) async {
-    _isPaymentSheetDisplayed.value = true;
-    try {
-      final option = await _platform.presentPaymentSheet(clientSecret);
-      return option;
-    } on StripeError catch (error) {
-      //throw StripeError<CardActionError>(error.code, error.message);
-      rethrow;
-    } finally {
-      _isPaymentSheetDisplayed.value = false;
-    }
-  }
-
-  Future<PaymentIntent> paymentSheetConfirmPayment() async {
-    try {
-      final option = await _platform.paymentSheetConfirmPayment();
-      return option;
-    } on StripeError catch (error) {
-      //throw StripeError<CardActionError>(error.code, error.message);
-      rethrow;
-    }
-  }
-
-  Future<PaymentOption?> presentPaymentOptions() async {
-    try {
-      final option = await _platform.presentPaymentOptions();
-      return option;
     } on StripeError catch (error) {
       //throw StripeError<CardActionError>(error.code, error.message);
       rethrow;
