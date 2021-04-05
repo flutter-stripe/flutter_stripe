@@ -41,21 +41,16 @@ class ColorKey {
 
 @freezed
 class CardFieldInputDetails with _$CardFieldInputDetails {
-  const factory CardFieldInputDetails() = _CardFieldInputDetailsDefault;
-
   @JsonSerializable(explicitToJson: true)
-  const factory CardFieldInputDetails.card({
-    required String last4,
+  const factory CardFieldInputDetails({
+    required String number,
     required int expiryMonth,
     required int expiryYear,
-    required CardBrand brand,
-    required bool complete,
-    required String? postalCode,
-  }) = _CardFieldInputDetailsCard;
-
-  const factory CardFieldInputDetails.cardFromToken({
-    required String token,
-  }) = _CardFieldInputDetailsWithToken;
+    required String cvc,
+    String? name,
+    String? postalCode,
+    String? currency,
+  }) = _CardFieldInputDetails;
 
   factory CardFieldInputDetails.fromJson(Map<String, dynamic> json) =>
       _$CardFieldInputDetailsFromJson(json);

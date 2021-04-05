@@ -47,11 +47,12 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<PaymentMethod> createPaymentMethod(
-    PaymentMethodParams params, [
+    PaymentMethodParams data, [
     Map<String, String> options = const {},
   ]) async {
-    final result = await _methodChannel.invokeMethod('createPaymentMethod', {
-      'data': params.toJson(),
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('createPaymentMethod', {
+      'data': data.toJson(),
       'options': options,
     });
     return PaymentMethod.fromJson(result.unfoldToNonNull());
@@ -76,7 +77,8 @@ class MethodChannelStripe extends StripePlatform {
     PaymentMethodParams params, [
     Map<String, String> options = const {},
   ]) async {
-    final result = await _methodChannel.invokeMethod('confirmPaymentMethod', {
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('confirmPaymentMethod', {
       'paymentIntentClientSecret': paymentIntentClientSecret,
       'params': params.toJson(),
       'options': options,
@@ -86,13 +88,14 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<SetupIntent> confirmSetupIntent(
-    String paymentIntentClientSecret,
+    String setupIntentClientSecret,
     PaymentMethodParams params, [
     Map<String, String> options = const {},
   ]) async {
-    final result = await _methodChannel.invokeMethod('confirmSetupIntent', {
-      'paymentIntentClientSecret': paymentIntentClientSecret,
-      'data': params.toJson(),
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('confirmSetupIntent', {
+      'setupIntentClientSecret': setupIntentClientSecret,
+      'params': params.toJson(),
       'options': options,
     });
 
@@ -101,7 +104,7 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<String> createTokenForCVCUpdate(String cvc) async {
-    final result = await _methodChannel.invokeMethod(
+    final result = await _methodChannel.invokeMethod<String>(
       'createTokenForCVCUpdate',
       {'cvc': cvc},
     );
@@ -112,7 +115,8 @@ class MethodChannelStripe extends StripePlatform {
   @override
   Future<PaymentIntent> handleCardAction(
       String paymentIntentClientSecret) async {
-    final result = await _methodChannel.invokeMethod('handleCardAction', {
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('handleCardAction', {
       'paymentIntentClientSecret': paymentIntentClientSecret,
     });
 
@@ -136,43 +140,12 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret) async {
-    final result = await _methodChannel.invokeMethod('retrievePaymentIntent', {
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('retrievePaymentIntent', {
       'clientSecret': clientSecret,
     });
 
     return PaymentIntent.fromJson(result.unfoldToNonNull());
-  }
-
-  @override
-  Future<PaymentIntent> paymentSheetConfirmPayment() async {
-    final options =
-        await _methodChannel.invokeMethod('paymentSheetConfirmPayment');
-    return PaymentIntent.fromJson(Map<String, dynamic>.from(options));
-  }
-
-  @override
-  Future<PaymentOption?> presentPaymentOptions() async {
-    final options = await _methodChannel.invokeMethod('presentPaymentOptions');
-    return options != null
-        ? PaymentOption.fromJson(Map<String, dynamic>.from(options))
-        : null;
-  }
-
-  @override
-  Future<PaymentIntent> presentPaymentSheet(String? clientSecret) async {
-    final options = await _methodChannel
-        .invokeMethod('presentPaymentSheet', {clientSecret: clientSecret});
-    return PaymentIntent.fromJson(Map<String, dynamic>.from(options));
-  }
-
-  @override
-  Future<PaymentOption?> setupPaymentSheet(
-      SetupPaymentSheetParams params) async {
-    final options =
-        await _methodChannel.invokeMethod('setupPaymentSheet', params.toJson());
-    return options != null
-        ? PaymentOption.fromJson(Map<String, dynamic>.from(options))
-        : null;
   }
 }
 

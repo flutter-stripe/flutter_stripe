@@ -55,7 +55,7 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
     ) {
         channel = FlutterMethodChannel(name: "flutter.stripe/apple_pay/\(viewId)",
                                            binaryMessenger: messenger)
-        _view = FLEmbedView()
+        _view = UIView()
         super.init()
         if  let arguments = args as? Dictionary<String, AnyObject> {
             type = arguments["type"] as? NSNumber
@@ -97,32 +97,17 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
        let paymentButtonStyle = PKPaymentButtonStyle(rawValue: self.style as? Int ?? 2) ?? .black
        self.applePayButton = PKPaymentButton(paymentButtonType: paymentButtonType, paymentButtonStyle: paymentButtonStyle)
       
-      if let applePayButton = self.applePayButton {
-        applePayButton.frame = _view.frame
-          applePayButton.addTarget(self, action: #selector(handleApplePayButtonTapped), for: .touchUpInside)
-        _view.addSubview(applePayButton)
-      }
+        if let applePayButton = self.applePayButton {
+           applePayButton.translatesAutoresizingMaskIntoConstraints = false
+           applePayButton.addTarget(self, action: #selector(handleApplePayButtonTapped), for: .touchUpInside)
+           _view.addSubview(applePayButton)
+           
+           applePayButton.topAnchor.constraint(equalTo: _view.topAnchor).isActive = true
+           applePayButton.bottomAnchor.constraint(equalTo: _view.bottomAnchor).isActive = true
+           applePayButton.leftAnchor.constraint(equalTo: _view.leftAnchor).isActive = true
+           applePayButton.rightAnchor.constraint(equalTo: _view.rightAnchor).isActive = true
+
+        }
     }
-    
-    
-    
-}
 
-
-class FLEmbedView : UIView {
-  
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-  }
-  
-  required init?(coder: NSCoder) {
-    super.init(coder: coder)
-  }
-
-  override func layoutSubviews() {
-    for view in subviews {
-        view.frame = self.frame
-    }
-    super.layoutSubviews()
-  }
 }

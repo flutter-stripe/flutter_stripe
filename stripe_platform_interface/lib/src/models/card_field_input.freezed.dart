@@ -328,47 +328,29 @@ abstract class _CardDecoration implements CardDecoration {
 
 CardFieldInputDetails _$CardFieldInputDetailsFromJson(
     Map<String, dynamic> json) {
-  switch (json['runtimeType'] as String) {
-    case 'default':
-      return _CardFieldInputDetailsDefault.fromJson(json);
-    case 'card':
-      return _CardFieldInputDetailsCard.fromJson(json);
-    case 'cardFromToken':
-      return _CardFieldInputDetailsWithToken.fromJson(json);
-
-    default:
-      throw FallThroughError();
-  }
+  return _CardFieldInputDetails.fromJson(json);
 }
 
 /// @nodoc
 class _$CardFieldInputDetailsTearOff {
   const _$CardFieldInputDetailsTearOff();
 
-  _CardFieldInputDetailsDefault call() {
-    return const _CardFieldInputDetailsDefault();
-  }
-
-  _CardFieldInputDetailsCard card(
-      {required String last4,
+  _CardFieldInputDetails call(
+      {required String number,
       required int expiryMonth,
       required int expiryYear,
-      required CardBrand brand,
-      required bool complete,
-      required String? postalCode}) {
-    return _CardFieldInputDetailsCard(
-      last4: last4,
+      required String cvc,
+      String? name,
+      String? postalCode,
+      String? currency}) {
+    return _CardFieldInputDetails(
+      number: number,
       expiryMonth: expiryMonth,
       expiryYear: expiryYear,
-      brand: brand,
-      complete: complete,
+      cvc: cvc,
+      name: name,
       postalCode: postalCode,
-    );
-  }
-
-  _CardFieldInputDetailsWithToken cardFromToken({required String token}) {
-    return _CardFieldInputDetailsWithToken(
-      token: token,
+      currency: currency,
     );
   }
 
@@ -382,42 +364,18 @@ const $CardFieldInputDetails = _$CardFieldInputDetailsTearOff();
 
 /// @nodoc
 mixin _$CardFieldInputDetails {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
-    required TResult Function(String last4, int expiryMonth, int expiryYear,
-            CardBrand brand, bool complete, String? postalCode)
-        card,
-    required TResult Function(String token) cardFromToken,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function(String last4, int expiryMonth, int expiryYear,
-            CardBrand brand, bool complete, String? postalCode)?
-        card,
-    TResult Function(String token)? cardFromToken,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_CardFieldInputDetailsDefault value) $default, {
-    required TResult Function(_CardFieldInputDetailsCard value) card,
-    required TResult Function(_CardFieldInputDetailsWithToken value)
-        cardFromToken,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_CardFieldInputDetailsDefault value)? $default, {
-    TResult Function(_CardFieldInputDetailsCard value)? card,
-    TResult Function(_CardFieldInputDetailsWithToken value)? cardFromToken,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  String get number => throw _privateConstructorUsedError;
+  int get expiryMonth => throw _privateConstructorUsedError;
+  int get expiryYear => throw _privateConstructorUsedError;
+  String get cvc => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get postalCode => throw _privateConstructorUsedError;
+  String? get currency => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CardFieldInputDetailsCopyWith<CardFieldInputDetails> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -425,6 +383,14 @@ abstract class $CardFieldInputDetailsCopyWith<$Res> {
   factory $CardFieldInputDetailsCopyWith(CardFieldInputDetails value,
           $Res Function(CardFieldInputDetails) then) =
       _$CardFieldInputDetailsCopyWithImpl<$Res>;
+  $Res call(
+      {String number,
+      int expiryMonth,
+      int expiryYear,
+      String cvc,
+      String? name,
+      String? postalCode,
+      String? currency});
 }
 
 /// @nodoc
@@ -435,159 +401,21 @@ class _$CardFieldInputDetailsCopyWithImpl<$Res>
   final CardFieldInputDetails _value;
   // ignore: unused_field
   final $Res Function(CardFieldInputDetails) _then;
-}
-
-/// @nodoc
-abstract class _$CardFieldInputDetailsDefaultCopyWith<$Res> {
-  factory _$CardFieldInputDetailsDefaultCopyWith(
-          _CardFieldInputDetailsDefault value,
-          $Res Function(_CardFieldInputDetailsDefault) then) =
-      __$CardFieldInputDetailsDefaultCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$CardFieldInputDetailsDefaultCopyWithImpl<$Res>
-    extends _$CardFieldInputDetailsCopyWithImpl<$Res>
-    implements _$CardFieldInputDetailsDefaultCopyWith<$Res> {
-  __$CardFieldInputDetailsDefaultCopyWithImpl(
-      _CardFieldInputDetailsDefault _value,
-      $Res Function(_CardFieldInputDetailsDefault) _then)
-      : super(_value, (v) => _then(v as _CardFieldInputDetailsDefault));
-
-  @override
-  _CardFieldInputDetailsDefault get _value =>
-      super._value as _CardFieldInputDetailsDefault;
-}
-
-@JsonSerializable()
-
-/// @nodoc
-class _$_CardFieldInputDetailsDefault implements _CardFieldInputDetailsDefault {
-  const _$_CardFieldInputDetailsDefault();
-
-  factory _$_CardFieldInputDetailsDefault.fromJson(Map<String, dynamic> json) =>
-      _$_$_CardFieldInputDetailsDefaultFromJson(json);
-
-  @override
-  String toString() {
-    return 'CardFieldInputDetails()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _CardFieldInputDetailsDefault);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
-    required TResult Function(String last4, int expiryMonth, int expiryYear,
-            CardBrand brand, bool complete, String? postalCode)
-        card,
-    required TResult Function(String token) cardFromToken,
-  }) {
-    return $default();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function(String last4, int expiryMonth, int expiryYear,
-            CardBrand brand, bool complete, String? postalCode)?
-        card,
-    TResult Function(String token)? cardFromToken,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_CardFieldInputDetailsDefault value) $default, {
-    required TResult Function(_CardFieldInputDetailsCard value) card,
-    required TResult Function(_CardFieldInputDetailsWithToken value)
-        cardFromToken,
-  }) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_CardFieldInputDetailsDefault value)? $default, {
-    TResult Function(_CardFieldInputDetailsCard value)? card,
-    TResult Function(_CardFieldInputDetailsWithToken value)? cardFromToken,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$_$_CardFieldInputDetailsDefaultToJson(this)
-      ..['runtimeType'] = 'default';
-  }
-}
-
-abstract class _CardFieldInputDetailsDefault implements CardFieldInputDetails {
-  const factory _CardFieldInputDetailsDefault() =
-      _$_CardFieldInputDetailsDefault;
-
-  factory _CardFieldInputDetailsDefault.fromJson(Map<String, dynamic> json) =
-      _$_CardFieldInputDetailsDefault.fromJson;
-}
-
-/// @nodoc
-abstract class _$CardFieldInputDetailsCardCopyWith<$Res> {
-  factory _$CardFieldInputDetailsCardCopyWith(_CardFieldInputDetailsCard value,
-          $Res Function(_CardFieldInputDetailsCard) then) =
-      __$CardFieldInputDetailsCardCopyWithImpl<$Res>;
-  $Res call(
-      {String last4,
-      int expiryMonth,
-      int expiryYear,
-      CardBrand brand,
-      bool complete,
-      String? postalCode});
-}
-
-/// @nodoc
-class __$CardFieldInputDetailsCardCopyWithImpl<$Res>
-    extends _$CardFieldInputDetailsCopyWithImpl<$Res>
-    implements _$CardFieldInputDetailsCardCopyWith<$Res> {
-  __$CardFieldInputDetailsCardCopyWithImpl(_CardFieldInputDetailsCard _value,
-      $Res Function(_CardFieldInputDetailsCard) _then)
-      : super(_value, (v) => _then(v as _CardFieldInputDetailsCard));
-
-  @override
-  _CardFieldInputDetailsCard get _value =>
-      super._value as _CardFieldInputDetailsCard;
 
   @override
   $Res call({
-    Object? last4 = freezed,
+    Object? number = freezed,
     Object? expiryMonth = freezed,
     Object? expiryYear = freezed,
-    Object? brand = freezed,
-    Object? complete = freezed,
+    Object? cvc = freezed,
+    Object? name = freezed,
     Object? postalCode = freezed,
+    Object? currency = freezed,
   }) {
-    return _then(_CardFieldInputDetailsCard(
-      last4: last4 == freezed
-          ? _value.last4
-          : last4 // ignore: cast_nullable_to_non_nullable
+    return _then(_value.copyWith(
+      number: number == freezed
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
               as String,
       expiryMonth: expiryMonth == freezed
           ? _value.expiryMonth
@@ -597,17 +425,92 @@ class __$CardFieldInputDetailsCardCopyWithImpl<$Res>
           ? _value.expiryYear
           : expiryYear // ignore: cast_nullable_to_non_nullable
               as int,
-      brand: brand == freezed
-          ? _value.brand
-          : brand // ignore: cast_nullable_to_non_nullable
-              as CardBrand,
-      complete: complete == freezed
-          ? _value.complete
-          : complete // ignore: cast_nullable_to_non_nullable
-              as bool,
+      cvc: cvc == freezed
+          ? _value.cvc
+          : cvc // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
       postalCode: postalCode == freezed
           ? _value.postalCode
           : postalCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      currency: currency == freezed
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$CardFieldInputDetailsCopyWith<$Res>
+    implements $CardFieldInputDetailsCopyWith<$Res> {
+  factory _$CardFieldInputDetailsCopyWith(_CardFieldInputDetails value,
+          $Res Function(_CardFieldInputDetails) then) =
+      __$CardFieldInputDetailsCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String number,
+      int expiryMonth,
+      int expiryYear,
+      String cvc,
+      String? name,
+      String? postalCode,
+      String? currency});
+}
+
+/// @nodoc
+class __$CardFieldInputDetailsCopyWithImpl<$Res>
+    extends _$CardFieldInputDetailsCopyWithImpl<$Res>
+    implements _$CardFieldInputDetailsCopyWith<$Res> {
+  __$CardFieldInputDetailsCopyWithImpl(_CardFieldInputDetails _value,
+      $Res Function(_CardFieldInputDetails) _then)
+      : super(_value, (v) => _then(v as _CardFieldInputDetails));
+
+  @override
+  _CardFieldInputDetails get _value => super._value as _CardFieldInputDetails;
+
+  @override
+  $Res call({
+    Object? number = freezed,
+    Object? expiryMonth = freezed,
+    Object? expiryYear = freezed,
+    Object? cvc = freezed,
+    Object? name = freezed,
+    Object? postalCode = freezed,
+    Object? currency = freezed,
+  }) {
+    return _then(_CardFieldInputDetails(
+      number: number == freezed
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String,
+      expiryMonth: expiryMonth == freezed
+          ? _value.expiryMonth
+          : expiryMonth // ignore: cast_nullable_to_non_nullable
+              as int,
+      expiryYear: expiryYear == freezed
+          ? _value.expiryYear
+          : expiryYear // ignore: cast_nullable_to_non_nullable
+              as int,
+      cvc: cvc == freezed
+          ? _value.cvc
+          : cvc // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      postalCode: postalCode == freezed
+          ? _value.postalCode
+          : postalCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      currency: currency == freezed
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -616,301 +519,117 @@ class __$CardFieldInputDetailsCardCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 
 /// @nodoc
-class _$_CardFieldInputDetailsCard implements _CardFieldInputDetailsCard {
-  const _$_CardFieldInputDetailsCard(
-      {required this.last4,
+class _$_CardFieldInputDetails implements _CardFieldInputDetails {
+  const _$_CardFieldInputDetails(
+      {required this.number,
       required this.expiryMonth,
       required this.expiryYear,
-      required this.brand,
-      required this.complete,
-      required this.postalCode});
+      required this.cvc,
+      this.name,
+      this.postalCode,
+      this.currency});
 
-  factory _$_CardFieldInputDetailsCard.fromJson(Map<String, dynamic> json) =>
-      _$_$_CardFieldInputDetailsCardFromJson(json);
+  factory _$_CardFieldInputDetails.fromJson(Map<String, dynamic> json) =>
+      _$_$_CardFieldInputDetailsFromJson(json);
 
   @override
-  final String last4;
+  final String number;
   @override
   final int expiryMonth;
   @override
   final int expiryYear;
   @override
-  final CardBrand brand;
+  final String cvc;
   @override
-  final bool complete;
+  final String? name;
   @override
   final String? postalCode;
+  @override
+  final String? currency;
 
   @override
   String toString() {
-    return 'CardFieldInputDetails.card(last4: $last4, expiryMonth: $expiryMonth, expiryYear: $expiryYear, brand: $brand, complete: $complete, postalCode: $postalCode)';
+    return 'CardFieldInputDetails(number: $number, expiryMonth: $expiryMonth, expiryYear: $expiryYear, cvc: $cvc, name: $name, postalCode: $postalCode, currency: $currency)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _CardFieldInputDetailsCard &&
-            (identical(other.last4, last4) ||
-                const DeepCollectionEquality().equals(other.last4, last4)) &&
+        (other is _CardFieldInputDetails &&
+            (identical(other.number, number) ||
+                const DeepCollectionEquality().equals(other.number, number)) &&
             (identical(other.expiryMonth, expiryMonth) ||
                 const DeepCollectionEquality()
                     .equals(other.expiryMonth, expiryMonth)) &&
             (identical(other.expiryYear, expiryYear) ||
                 const DeepCollectionEquality()
                     .equals(other.expiryYear, expiryYear)) &&
-            (identical(other.brand, brand) ||
-                const DeepCollectionEquality().equals(other.brand, brand)) &&
-            (identical(other.complete, complete) ||
-                const DeepCollectionEquality()
-                    .equals(other.complete, complete)) &&
+            (identical(other.cvc, cvc) ||
+                const DeepCollectionEquality().equals(other.cvc, cvc)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.postalCode, postalCode) ||
                 const DeepCollectionEquality()
-                    .equals(other.postalCode, postalCode)));
+                    .equals(other.postalCode, postalCode)) &&
+            (identical(other.currency, currency) ||
+                const DeepCollectionEquality()
+                    .equals(other.currency, currency)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(last4) ^
+      const DeepCollectionEquality().hash(number) ^
       const DeepCollectionEquality().hash(expiryMonth) ^
       const DeepCollectionEquality().hash(expiryYear) ^
-      const DeepCollectionEquality().hash(brand) ^
-      const DeepCollectionEquality().hash(complete) ^
-      const DeepCollectionEquality().hash(postalCode);
+      const DeepCollectionEquality().hash(cvc) ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(postalCode) ^
+      const DeepCollectionEquality().hash(currency);
 
   @JsonKey(ignore: true)
   @override
-  _$CardFieldInputDetailsCardCopyWith<_CardFieldInputDetailsCard>
-      get copyWith =>
-          __$CardFieldInputDetailsCardCopyWithImpl<_CardFieldInputDetailsCard>(
-              this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
-    required TResult Function(String last4, int expiryMonth, int expiryYear,
-            CardBrand brand, bool complete, String? postalCode)
-        card,
-    required TResult Function(String token) cardFromToken,
-  }) {
-    return card(last4, expiryMonth, expiryYear, brand, complete, postalCode);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function(String last4, int expiryMonth, int expiryYear,
-            CardBrand brand, bool complete, String? postalCode)?
-        card,
-    TResult Function(String token)? cardFromToken,
-    required TResult orElse(),
-  }) {
-    if (card != null) {
-      return card(last4, expiryMonth, expiryYear, brand, complete, postalCode);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_CardFieldInputDetailsDefault value) $default, {
-    required TResult Function(_CardFieldInputDetailsCard value) card,
-    required TResult Function(_CardFieldInputDetailsWithToken value)
-        cardFromToken,
-  }) {
-    return card(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_CardFieldInputDetailsDefault value)? $default, {
-    TResult Function(_CardFieldInputDetailsCard value)? card,
-    TResult Function(_CardFieldInputDetailsWithToken value)? cardFromToken,
-    required TResult orElse(),
-  }) {
-    if (card != null) {
-      return card(this);
-    }
-    return orElse();
-  }
+  _$CardFieldInputDetailsCopyWith<_CardFieldInputDetails> get copyWith =>
+      __$CardFieldInputDetailsCopyWithImpl<_CardFieldInputDetails>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_CardFieldInputDetailsCardToJson(this)..['runtimeType'] = 'card';
+    return _$_$_CardFieldInputDetailsToJson(this);
   }
 }
 
-abstract class _CardFieldInputDetailsCard implements CardFieldInputDetails {
-  const factory _CardFieldInputDetailsCard(
-      {required String last4,
+abstract class _CardFieldInputDetails implements CardFieldInputDetails {
+  const factory _CardFieldInputDetails(
+      {required String number,
       required int expiryMonth,
       required int expiryYear,
-      required CardBrand brand,
-      required bool complete,
-      required String? postalCode}) = _$_CardFieldInputDetailsCard;
+      required String cvc,
+      String? name,
+      String? postalCode,
+      String? currency}) = _$_CardFieldInputDetails;
 
-  factory _CardFieldInputDetailsCard.fromJson(Map<String, dynamic> json) =
-      _$_CardFieldInputDetailsCard.fromJson;
+  factory _CardFieldInputDetails.fromJson(Map<String, dynamic> json) =
+      _$_CardFieldInputDetails.fromJson;
 
-  String get last4 => throw _privateConstructorUsedError;
+  @override
+  String get number => throw _privateConstructorUsedError;
+  @override
   int get expiryMonth => throw _privateConstructorUsedError;
+  @override
   int get expiryYear => throw _privateConstructorUsedError;
-  CardBrand get brand => throw _privateConstructorUsedError;
-  bool get complete => throw _privateConstructorUsedError;
+  @override
+  String get cvc => throw _privateConstructorUsedError;
+  @override
+  String? get name => throw _privateConstructorUsedError;
+  @override
   String? get postalCode => throw _privateConstructorUsedError;
+  @override
+  String? get currency => throw _privateConstructorUsedError;
+  @override
   @JsonKey(ignore: true)
-  _$CardFieldInputDetailsCardCopyWith<_CardFieldInputDetailsCard>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$CardFieldInputDetailsWithTokenCopyWith<$Res> {
-  factory _$CardFieldInputDetailsWithTokenCopyWith(
-          _CardFieldInputDetailsWithToken value,
-          $Res Function(_CardFieldInputDetailsWithToken) then) =
-      __$CardFieldInputDetailsWithTokenCopyWithImpl<$Res>;
-  $Res call({String token});
-}
-
-/// @nodoc
-class __$CardFieldInputDetailsWithTokenCopyWithImpl<$Res>
-    extends _$CardFieldInputDetailsCopyWithImpl<$Res>
-    implements _$CardFieldInputDetailsWithTokenCopyWith<$Res> {
-  __$CardFieldInputDetailsWithTokenCopyWithImpl(
-      _CardFieldInputDetailsWithToken _value,
-      $Res Function(_CardFieldInputDetailsWithToken) _then)
-      : super(_value, (v) => _then(v as _CardFieldInputDetailsWithToken));
-
-  @override
-  _CardFieldInputDetailsWithToken get _value =>
-      super._value as _CardFieldInputDetailsWithToken;
-
-  @override
-  $Res call({
-    Object? token = freezed,
-  }) {
-    return _then(_CardFieldInputDetailsWithToken(
-      token: token == freezed
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-@JsonSerializable()
-
-/// @nodoc
-class _$_CardFieldInputDetailsWithToken
-    implements _CardFieldInputDetailsWithToken {
-  const _$_CardFieldInputDetailsWithToken({required this.token});
-
-  factory _$_CardFieldInputDetailsWithToken.fromJson(
-          Map<String, dynamic> json) =>
-      _$_$_CardFieldInputDetailsWithTokenFromJson(json);
-
-  @override
-  final String token;
-
-  @override
-  String toString() {
-    return 'CardFieldInputDetails.cardFromToken(token: $token)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _CardFieldInputDetailsWithToken &&
-            (identical(other.token, token) ||
-                const DeepCollectionEquality().equals(other.token, token)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(token);
-
-  @JsonKey(ignore: true)
-  @override
-  _$CardFieldInputDetailsWithTokenCopyWith<_CardFieldInputDetailsWithToken>
-      get copyWith => __$CardFieldInputDetailsWithTokenCopyWithImpl<
-          _CardFieldInputDetailsWithToken>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
-    required TResult Function(String last4, int expiryMonth, int expiryYear,
-            CardBrand brand, bool complete, String? postalCode)
-        card,
-    required TResult Function(String token) cardFromToken,
-  }) {
-    return cardFromToken(token);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function(String last4, int expiryMonth, int expiryYear,
-            CardBrand brand, bool complete, String? postalCode)?
-        card,
-    TResult Function(String token)? cardFromToken,
-    required TResult orElse(),
-  }) {
-    if (cardFromToken != null) {
-      return cardFromToken(token);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_CardFieldInputDetailsDefault value) $default, {
-    required TResult Function(_CardFieldInputDetailsCard value) card,
-    required TResult Function(_CardFieldInputDetailsWithToken value)
-        cardFromToken,
-  }) {
-    return cardFromToken(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_CardFieldInputDetailsDefault value)? $default, {
-    TResult Function(_CardFieldInputDetailsCard value)? card,
-    TResult Function(_CardFieldInputDetailsWithToken value)? cardFromToken,
-    required TResult orElse(),
-  }) {
-    if (cardFromToken != null) {
-      return cardFromToken(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$_$_CardFieldInputDetailsWithTokenToJson(this)
-      ..['runtimeType'] = 'cardFromToken';
-  }
-}
-
-abstract class _CardFieldInputDetailsWithToken
-    implements CardFieldInputDetails {
-  const factory _CardFieldInputDetailsWithToken({required String token}) =
-      _$_CardFieldInputDetailsWithToken;
-
-  factory _CardFieldInputDetailsWithToken.fromJson(Map<String, dynamic> json) =
-      _$_CardFieldInputDetailsWithToken.fromJson;
-
-  String get token => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$CardFieldInputDetailsWithTokenCopyWith<_CardFieldInputDetailsWithToken>
-      get copyWith => throw _privateConstructorUsedError;
+  _$CardFieldInputDetailsCopyWith<_CardFieldInputDetails> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 CardFieldFocusName _$CardFieldFocusNameFromJson(Map<String, dynamic> json) {

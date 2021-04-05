@@ -96,17 +96,6 @@ class _MyAppState extends State<MyApp> {
                 print('On card changed ${card.toJson()}');
               },
             ),
-            ValueListenableBuilder(
-              valueListenable: Stripe.instance.isPaymentSheetDisplayed,
-              builder: (context, isDisplayed, _) {
-                final onPressed =
-                    isDisplayed || isGettingConfig ? null : presentPaymentSheet;
-                return ElevatedButton(
-                  onPressed: onPressed,
-                  child: Text('Open PaymentSheet'),
-                );
-              },
-            ),
             if (paymentIntent != null)
               Expanded(
                 child: Padding(
@@ -145,35 +134,6 @@ class _MyAppState extends State<MyApp> {
       );
     } catch (e) {
       log('Unexpected Error while presenting Apple Pay', error: e);
-    }
-  }
-
-  Future<void> presentPaymentSheet() async {
-    try {
-      final isDark = Theme.of(context).brightness == Brightness.dark;
-
-      final config = await getPaymentConfig();
-      await Stripe.instance.setupPaymentSheet(
-        SetupPaymentSheetParams(
-          merchantDisplayName: "Stripe Flutter Example",
-          customerId: config['customer'],
-          customerEphemeralKeySecret: config['ephemeralKey'],
-          paymentIntentClientSecret: config["paymentIntent"],
-          applePay: true,
-          customFlow: false,
-          style: isDark
-              ? PaymentSheetBrightness.alwaysDark
-              : PaymentSheetBrightness.alwaysLight,
-        ),
-      );
-      final paymentIntent = await Stripe.instance.presentPaymentSheet(null);
-      setState(() {
-        this.paymentIntent = paymentIntent;
-      });
-      print('Payment Intent $paymentIntent');
-    } catch (e) {
-      log('Unexpected Error while presenting Sheet', error: e);
-      // rethrow;
     }
   }
 

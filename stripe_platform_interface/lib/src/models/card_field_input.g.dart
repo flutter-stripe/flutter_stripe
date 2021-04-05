@@ -27,36 +27,43 @@ Map<String, dynamic> _$_$_CardDecorationToJson(_$_CardDecoration instance) =>
       'textErrorColor': ColorKey.toJson(instance.textErrorColor),
     };
 
-_$_CardFieldInputDetailsDefault _$_$_CardFieldInputDetailsDefaultFromJson(
+_$_CardFieldInputDetails _$_$_CardFieldInputDetailsFromJson(
     Map<String, dynamic> json) {
-  return _$_CardFieldInputDetailsDefault();
-}
-
-Map<String, dynamic> _$_$_CardFieldInputDetailsDefaultToJson(
-        _$_CardFieldInputDetailsDefault instance) =>
-    <String, dynamic>{};
-
-_$_CardFieldInputDetailsCard _$_$_CardFieldInputDetailsCardFromJson(
-    Map<String, dynamic> json) {
-  return _$_CardFieldInputDetailsCard(
-    last4: json['last4'] as String,
+  return _$_CardFieldInputDetails(
+    number: json['number'] as String,
     expiryMonth: json['expiryMonth'] as int,
     expiryYear: json['expiryYear'] as int,
-    brand: _$enumDecode(_$CardBrandEnumMap, json['brand']),
-    complete: json['complete'] as bool,
+    cvc: json['cvc'] as String,
+    name: json['name'] as String?,
     postalCode: json['postalCode'] as String?,
+    currency: json['currency'] as String?,
   );
 }
 
-Map<String, dynamic> _$_$_CardFieldInputDetailsCardToJson(
-        _$_CardFieldInputDetailsCard instance) =>
+Map<String, dynamic> _$_$_CardFieldInputDetailsToJson(
+        _$_CardFieldInputDetails instance) =>
     <String, dynamic>{
-      'last4': instance.last4,
+      'number': instance.number,
       'expiryMonth': instance.expiryMonth,
       'expiryYear': instance.expiryYear,
-      'brand': _$CardBrandEnumMap[instance.brand],
-      'complete': instance.complete,
+      'cvc': instance.cvc,
+      'name': instance.name,
       'postalCode': instance.postalCode,
+      'currency': instance.currency,
+    };
+
+_$_CardFieldFocusName _$_$_CardFieldFocusNameFromJson(
+    Map<String, dynamic> json) {
+  return _$_CardFieldFocusName(
+    focusedField:
+        _$enumDecodeNullable(_$CardFieldNameEnumMap, json['focusedField']),
+  );
+}
+
+Map<String, dynamic> _$_$_CardFieldFocusNameToJson(
+        _$_CardFieldFocusName instance) =>
+    <String, dynamic>{
+      'focusedField': _$CardFieldNameEnumMap[instance.focusedField],
     };
 
 K _$enumDecode<K, V>(
@@ -84,44 +91,6 @@ K _$enumDecode<K, V>(
     },
   ).key;
 }
-
-const _$CardBrandEnumMap = {
-  CardBrand.american: 'american',
-  CardBrand.dinersClub: 'dinersClub',
-  CardBrand.discover: 'discover',
-  CardBrand.jCB: 'jCB',
-  CardBrand.masterCard: 'masterCard',
-  CardBrand.unionPay: 'unionPay',
-  CardBrand.visa: 'visa',
-  CardBrand.unknown: 'unknown',
-};
-
-_$_CardFieldInputDetailsWithToken _$_$_CardFieldInputDetailsWithTokenFromJson(
-    Map<String, dynamic> json) {
-  return _$_CardFieldInputDetailsWithToken(
-    token: json['token'] as String,
-  );
-}
-
-Map<String, dynamic> _$_$_CardFieldInputDetailsWithTokenToJson(
-        _$_CardFieldInputDetailsWithToken instance) =>
-    <String, dynamic>{
-      'token': instance.token,
-    };
-
-_$_CardFieldFocusName _$_$_CardFieldFocusNameFromJson(
-    Map<String, dynamic> json) {
-  return _$_CardFieldFocusName(
-    focusedField:
-        _$enumDecodeNullable(_$CardFieldNameEnumMap, json['focusedField']),
-  );
-}
-
-Map<String, dynamic> _$_$_CardFieldFocusNameToJson(
-        _$_CardFieldFocusName instance) =>
-    <String, dynamic>{
-      'focusedField': _$CardFieldNameEnumMap[instance.focusedField],
-    };
 
 K? _$enumDecodeNullable<K, V>(
   Map<K, V> enumValues,
