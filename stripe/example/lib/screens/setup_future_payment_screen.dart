@@ -45,9 +45,8 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
     // just for testing purposes
     final test = await Stripe.instance.confirmPaymentMethod(
         'paymentIntentClientSecret',
-        PaymentMethodParams.card(
-            cardDetails: CardFieldInputDetails.cardFromToken(
-                token: 'examplePaymentMethodToken')));
+        PaymentMethodParams.cardFromToken(
+            cardDetails: CardTokenDetails(token: 'examplePaymentMethodToken')));
     print(test);
     if (_card == null) {
       return;
