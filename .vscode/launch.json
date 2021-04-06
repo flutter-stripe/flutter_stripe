@@ -8,8 +8,7 @@
             "name": "example",
             "cwd": "stripe/example",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
         },
-      
     ]
 }

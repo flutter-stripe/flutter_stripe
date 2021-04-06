@@ -1,5 +1,10 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/material.dart' hide Card;
 import 'package:stripe/stripe.dart';
+import 'package:http/http.dart' as http;
+import 'package:stripe_example/config.dart';
 
 class SetupFuturePaymentScreen extends StatefulWidget {
   @override
@@ -45,9 +50,9 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
     if (_card == null) {
       return;
     }
-
+ try {
     // 1. Create setup intent on backend
-    const clientSecret = ''; //await createSetupIntentOnBackend(email);
+    final clientSecret = await createSetupIntentOnBackend('test@gmail.com');
 
     // 2. Gather customer billing information (ex. email)
     final BillingDetails billingDetails = BillingDetails(
@@ -61,22 +66,27 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
     ); // mocked data for tests
 
     // 3. Confirm setup intent
-    await Stripe.instance
-        .confirmSetupIntent(
-            clientSecret,
-            PaymentMethodParams.card(
-              cardDetails: _card,
-              //billingDetails,
-            ))
-        .then((setupIntentResult) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+   
+      final setupIntentResult = await Stripe.instance.confirmSetupIntent(
+          clientSecret,
+          PaymentMethodParams.card(
+            cardDetails: _card,
+            //billingDetails,
+          ));
+      log('Setup Intent created $setupIntentResult');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
           content: Text(
-              'Success: Setup intent created. Intent status: ${setupIntentResult}')));
+              'Success: Setup intent created. Intent status: ${setupIntentResult}'),
+        ),
+      );
       //setSetupIntent(setupIntentResult);
-    }).catchError((error) {
+
+    } catch (error, s) {
+      log('Error while saving payment', error: error, stackTrace: s);
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text('Error code: ${error}')));
-    });
+    }
   }
 
   void _handleOffSessionPayment() {}
@@ -108,5 +118,23 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
     } else {
       Alert.alert('Success', 'The payment was confirmed successfully!');
     }*/
+  }
+
+  Future<String> createSetupIntentOnBackend(String email) async {
+    final url = Uri.parse('${kApiUrl}/create-setup-intent');
+    final response = await http.post(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: json.encode({
+        'email': email,
+      }),
+    );
+    final Map<String, dynamic> bodyResponse = json.decode(response.body);
+    final clientSecret = bodyResponse['clientSecret'] as String;
+    log('Client token  $clientSecret');
+
+    return clientSecret;
   }
 }
