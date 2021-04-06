@@ -173,6 +173,13 @@ class PaymentMethodParams with _$PaymentMethodParams {
   }) = _PaymentMethodParamsCard;
 
   @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('Card')
+  const factory PaymentMethodParams.cardFromToken({
+    required CardTokenDetails cardDetails,
+    PaymentIntentsFutureUsage? setupFutureUsage,
+  }) = _PaymentMethodParamsCardWithToken;
+
+  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('CardId')
   const factory PaymentMethodParams.cardFromMethodId({
     required String paymentMethodId,

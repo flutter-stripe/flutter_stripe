@@ -21,9 +21,8 @@ class StripeSdkModule(context: ActivityPluginBinding) : ReactContextBaseJavaModu
   private var confirmSetupIntentPromise: Promise? = null
 
   private val mActivityEventListener = object : BaseActivityEventListener() {
-
-    override fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent) {
-      stripe.onSetupResult(requestCode, data, object : ApiResultCallback<SetupIntentResult> {
+    override fun onActivityResult(activity: Activity?, requestCode: Int, resultCode: Int, data: Intent?): Boolean {
+      val onSetupResult = stripe.onSetupResult(requestCode, data, object : ApiResultCallback<SetupIntentResult> {
         override fun onSuccess(result: SetupIntentResult) {
           val setupIntent = result.intent
           when (setupIntent.status) {
@@ -46,12 +45,14 @@ class StripeSdkModule(context: ActivityPluginBinding) : ReactContextBaseJavaModu
         }
       })
 
-      stripe.onPaymentResult(requestCode, data, object : ApiResultCallback<PaymentIntentResult> {
+      val onPaymentResult = stripe.onPaymentResult(requestCode, data, object : ApiResultCallback<PaymentIntentResult> {
         override fun onSuccess(result: PaymentIntentResult) {
           val paymentIntent = result.intent
 
           when (paymentIntent.status) {
-            StripeIntent.Status.Succeeded -> {
+            StripeIntent.Status.Succeeded,
+            StripeIntent.Status.Processing,
+            StripeIntent.Status.RequiresCapture -> {
               confirmPromise?.resolve(mapFromPaymentIntentResult(paymentIntent))
               handleCardActionPromise?.resolve(mapFromPaymentIntentResult(paymentIntent))
             }
@@ -81,13 +82,15 @@ class StripeSdkModule(context: ActivityPluginBinding) : ReactContextBaseJavaModu
           handleCardActionPromise?.reject(NextPaymentActionErrorType.Failed.toString(), e.toString())
         }
       })
+
+      return onSetupResult || onPaymentResult
     }
   }
 
   private lateinit var stripe: Stripe
 
   init {
-    context.addActivityResultListener(mActivityEventListener)
+    context.addActivityResultListener(mActivityEventListener);
   }
 
   private fun configure3dSecure(params: ReadableMap) {

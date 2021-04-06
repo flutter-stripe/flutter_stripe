@@ -47,6 +47,12 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
   }
 
   Future<void> _handlePayPress() async {
+    // just for testing purposes
+    final test = await Stripe.instance.confirmPaymentMethod(
+        'paymentIntentClientSecret',
+        PaymentMethodParams.cardFromToken(
+            cardDetails: CardTokenDetails(token: 'examplePaymentMethodToken')));
+    print(test);
     if (_card == null) {
       return;
     }

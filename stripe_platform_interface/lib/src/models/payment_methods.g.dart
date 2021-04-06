@@ -265,6 +265,24 @@ const _$PaymentIntentsFutureUsageEnumMap = {
   PaymentIntentsFutureUsage.OnSession: 'OnSession',
 };
 
+_$_PaymentMethodParamsCardWithToken
+    _$_$_PaymentMethodParamsCardWithTokenFromJson(Map<String, dynamic> json) {
+  return _$_PaymentMethodParamsCardWithToken(
+    cardDetails:
+        CardTokenDetails.fromJson(json['cardDetails'] as Map<String, dynamic>),
+    setupFutureUsage: _$enumDecodeNullable(
+        _$PaymentIntentsFutureUsageEnumMap, json['setupFutureUsage']),
+  );
+}
+
+Map<String, dynamic> _$_$_PaymentMethodParamsCardWithTokenToJson(
+        _$_PaymentMethodParamsCardWithToken instance) =>
+    <String, dynamic>{
+      'cardDetails': instance.cardDetails.toJson(),
+      'setupFutureUsage':
+          _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
+    };
+
 _$_PaymentMethodParamsCardWithMethodId
     _$_$_PaymentMethodParamsCardWithMethodIdFromJson(
         Map<String, dynamic> json) {
