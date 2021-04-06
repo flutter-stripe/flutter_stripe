@@ -45,7 +45,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             )
             "confirmSetupIntent" -> stripeSdk.confirmSetupIntent(
                     setupIntentClientSecret = call.requiredArgument("setupIntentClientSecret"),
-                    params = call.requiredArgument("data"),
+                    params = call.requiredArgument("params"),
                     options = call.requiredArgument("options"),
                     promise = Promise(result)
             )
