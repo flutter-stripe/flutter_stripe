@@ -1,4 +1,5 @@
 import Stripe
+
 class Mappers {
     class func mapToPKContactField(field: String) -> PKContactField {
         switch field {
@@ -46,7 +47,7 @@ class Mappers {
         let method: NSDictionary = [
             "detail": shippingMethod.detail ?? "",
             "identifier": shippingMethod.identifier ?? "",
-                        "amount": shippingMethod.amount.stringValue,
+						"amount": shippingMethod.amount.stringValue,
             "type": shippingMethod.type,
             "label": shippingMethod.label
         ]
@@ -122,17 +123,40 @@ class Mappers {
         }
     }
     
-    class func mapCardParamsToPaymentMethodParams(params: NSDictionary, billingDetails: STPPaymentMethodBillingDetails?) -> STPPaymentMethodParams {
-        let cardSourceParams = STPCardParams()
-        cardSourceParams.number = params["number"] as? String
-        cardSourceParams.cvc = params["cvc"] as? String
-        cardSourceParams.expMonth = params["expiryMonth"] as! UInt
-        cardSourceParams.expYear = params["expiryYear"] as! UInt
-        
-        let cardParams = STPPaymentMethodCardParams(cardSourceParams: cardSourceParams)
-        return STPPaymentMethodParams(card: cardParams, billingDetails: billingDetails, metadata: nil)
+    class func mapToPaymentMethodType(type: String?) -> STPPaymentMethodType? {
+        if let type = type {
+            switch type {
+            case "Card": return STPPaymentMethodType.card
+            case "Alipay": return STPPaymentMethodType.alipay
+            case "GrabPay": return STPPaymentMethodType.grabPay
+            case "Ideal": return STPPaymentMethodType.iDEAL
+            case "Fpx": return STPPaymentMethodType.FPX
+            case "CardPresent": return STPPaymentMethodType.cardPresent
+            case "SepaDebit": return STPPaymentMethodType.SEPADebit
+            case "AuBecsDebit": return STPPaymentMethodType.AUBECSDebit
+            case "BacsDebit": return STPPaymentMethodType.bacsDebit
+            case "Giropay": return STPPaymentMethodType.giropay
+            case "P24": return STPPaymentMethodType.przelewy24
+            case "Eps": return STPPaymentMethodType.EPS
+            case "Bancontact": return STPPaymentMethodType.bancontact
+            case "Oxxo": return STPPaymentMethodType.OXXO
+            case "Sofort": return STPPaymentMethodType.sofort
+            case "Upi": return STPPaymentMethodType.UPI
+            default: return STPPaymentMethodType.unknown
+            }
+        }
+        return nil
     }
-    
+
+    class func mapToPaymentMethodCardParams(params: NSDictionary) -> STPPaymentMethodCardParams {
+        let cardSourceParams = STPCardParams()
+        cardSourceParams.number = RCTConvert.nsString(params["number"])
+        cardSourceParams.cvc = RCTConvert.nsString(params["cvc"])
+        cardSourceParams.expMonth = RCTConvert.nsuInteger(params["expiryMonth"])
+        cardSourceParams.expYear = RCTConvert.nsuInteger(params["expiryYear"])
+        
+        return STPPaymentMethodCardParams(cardSourceParams: cardSourceParams)
+    }
     
     class func mapCaptureMethod(_ captureMethod: STPPaymentIntentCaptureMethod?) -> String {
         if let captureMethod = captureMethod {
@@ -237,20 +261,23 @@ class Mappers {
         return "Unknown"
     }
     
-    class func mapToBillingDetails(billingDetails: NSDictionary) -> STPPaymentMethodBillingDetails {
+    class func mapToBillingDetails(billingDetails: NSDictionary?) -> STPPaymentMethodBillingDetails? {
+        guard let billingDetails = billingDetails else {
+            return nil
+        }
         let billing = STPPaymentMethodBillingDetails()
-        billing.email = billingDetails["email"] as? String
-        billing.phone = billingDetails["phone"] as? String
-        billing.name = billingDetails["name"] as? String
+        billing.email = RCTConvert.nsString(billingDetails["email"])
+        billing.phone = RCTConvert.nsString(billingDetails["phone"])
+        billing.name = RCTConvert.nsString(billingDetails["name"])
         
         let billingAddres = STPPaymentMethodAddress()
         
-        billingAddres.city = billingDetails["addressCity"] as? String
-        billingAddres.postalCode = billingDetails["addressPostalCode"] as? String
-        billingAddres.country = billingDetails["addressCountry"] as? String
-        billingAddres.line1 = billingDetails["addressLine1"] as? String
-        billingAddres.line2 = billingDetails["addressLine2"] as? String
-        billingAddres.state = billingDetails["addressState"] as? String
+        billingAddres.city = RCTConvert.nsString(billingDetails["addressCity"])
+        billingAddres.postalCode = RCTConvert.nsString(billingDetails["addressPostalCode"])
+        billingAddres.country = RCTConvert.nsString(billingDetails["addressCountry"])
+        billingAddres.line1 = RCTConvert.nsString(billingDetails["addressLine1"])
+        billingAddres.line2 = RCTConvert.nsString(billingDetails["addressLine2"])
+        billingAddres.state = RCTConvert.nsString(billingDetails["addressState"])
         
         billing.address = billingAddres
         
@@ -278,18 +305,18 @@ class Mappers {
     class func mapCardBrand(_ brand: STPCardBrand?) -> String {
         if let brand = brand {
             switch brand {
-            case STPCardBrand.visa: return "visa"
-            case STPCardBrand.amex: return "americanExpress"
-            case STPCardBrand.mastercard: return "masterCard"
-            case STPCardBrand.discover: return "discover"
-            case STPCardBrand.JCB: return "jCB"
-            case STPCardBrand.dinersClub: return "dinersClub"
-            case STPCardBrand.unionPay: return "unionPay"
-            case STPCardBrand.unknown: return "unknown"
-            default: return "unknown"
+            case STPCardBrand.visa: return "Visa"
+            case STPCardBrand.amex: return "AmericanExpress"
+            case STPCardBrand.mastercard: return "MasterCard"
+            case STPCardBrand.discover: return "Discover"
+            case STPCardBrand.JCB: return "JCB"
+            case STPCardBrand.dinersClub: return "DinersClub"
+            case STPCardBrand.unionPay: return "UnionPay"
+            case STPCardBrand.unknown: return "Unknown"
+            default: return "Unknown"
             }
         }
-        return "unknown"
+        return "Unknown"
     }
     
     class func mapFromPaymentMethod(_ paymentMethod: STPPaymentMethod) -> NSDictionary {
@@ -347,10 +374,10 @@ class Mappers {
     
     class func mapCardParams(params: NSDictionary) -> STPPaymentMethodCardParams {
         let cardSourceParams = STPCardParams()
-        cardSourceParams.number = params["number"] as? String
-        cardSourceParams.cvc = params["cvc"] as? String
-        cardSourceParams.expMonth = params["expiryMonth"] as! UInt
-        cardSourceParams.expYear = params["expiryYear"] as! UInt
+        cardSourceParams.number = RCTConvert.nsString(params["number"])
+        cardSourceParams.cvc = RCTConvert.nsString(params["cvc"])
+        cardSourceParams.expMonth = RCTConvert.nsuInteger(params["expiryMonth"])
+        cardSourceParams.expYear = RCTConvert.nsuInteger(params["expiryYear"])
         
         return STPPaymentMethodCardParams(cardSourceParams: cardSourceParams)
     }
@@ -432,6 +459,10 @@ class Mappers {
         
         
         return intent
+    }
+    
+    class func mapToReturnURL(urlScheme: String, paymentType: STPPaymentMethodType) -> String {
+        return urlScheme + "://safepay"
     }
     
     class func mapUICustomization(_ params: NSDictionary) -> STPThreeDSUICustomization {
@@ -535,13 +566,4 @@ class Mappers {
     class func convertDateToUnixTimestamp(date: Date) -> UInt64 {
         return UInt64(date.timeIntervalSince1970 * 1000.0)
     }
-    
-    @available(iOS 13.0, *)
-          class func mapToUserInterfaceStyle(_ style: String) -> PaymentSheet.UserInterfaceStyle {
-              switch style {
-              case "alwaysDark": return PaymentSheet.UserInterfaceStyle.alwaysDark
-              case "alwaysLight": return PaymentSheet.UserInterfaceStyle.alwaysLight
-              default: return PaymentSheet.UserInterfaceStyle.automatic
-              }
-          }
 }
