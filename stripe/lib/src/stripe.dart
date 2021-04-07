@@ -1,14 +1,7 @@
+import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:stripe_platform_interface/src/method_channel_stripe.dart';
-import 'package:stripe_platform_interface/src/models/apple_pay.dart';
-import 'package:stripe_platform_interface/src/models/app_info.dart';
-import 'package:stripe_platform_interface/src/models/errors.dart';
-import 'package:stripe_platform_interface/src/models/payment_intents.dart';
-import 'package:stripe_platform_interface/src/models/payment_methods.dart';
-import 'package:stripe_platform_interface/src/models/setup_intent.dart';
-import 'package:stripe_platform_interface/src/models/three_d_secure.dart';
+import 'package:stripe_platform_interface/models.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 class Stripe {
@@ -36,41 +29,101 @@ class Stripe {
   static late final Stripe instance = Stripe._();
   Stripe._();
 
-  late ValueListenable<bool> ready = _isApplePaySupported;
-  final ValueNotifier<bool> _ready = ValueNotifier(false);
+  String? _publishableKey;
+  static String get publishableKey {
+    assert(instance._publishableKey != null,
+        'A publishableKey is required and missing');
+    return instance._publishableKey!;
+  }
 
-  late ValueListenable<bool> isApplePaySupported = _isApplePaySupported;
-  final ValueNotifier<bool> _isApplePaySupported = ValueNotifier(false);
+  static set publishableKey(String value) {
+    if (value == instance._publishableKey) return;
+    instance._publishableKey = value;
+    instance.markNeedsSettings();
+  }
 
-  late ValueListenable<bool> isPaymentSheetDisplayed = _isPaymentSheetDisplayed;
-  final ValueNotifier<bool> _isPaymentSheetDisplayed = ValueNotifier(false);
+  String? _stripeAccountId;
+  static String? get stripeAccountId => instance._stripeAccountId;
+  static set stripeAccountId(String? value) {
+    if (value == instance._stripeAccountId) return;
+    instance._stripeAccountId = value;
+    instance.markNeedsSettings();
+  }
 
-  Future<void> initialise({
+  ThreeDSecureConfigurationParams? _threeDSecureParams;
+  static ThreeDSecureConfigurationParams? get threeDSecureParams =>
+      instance._threeDSecureParams;
+  static set threeDSecureParams(ThreeDSecureConfigurationParams? value) {
+    if (value == instance._threeDSecureParams) return;
+    instance._threeDSecureParams = value;
+    instance.markNeedsSettings();
+  }
+
+  String? _merchantIdentifier;
+  static String? get merchantIdentifier => instance._merchantIdentifier;
+  static set merchantIdentifier(String? value) {
+    if (value == instance._merchantIdentifier) return;
+    instance._merchantIdentifier = value;
+    instance.markNeedsSettings();
+  }
+
+  bool _needsSettings = true;
+  void markNeedsSettings() {
+    _needsSettings = true;
+  }
+
+  Future<void>? settingsFuture;
+  FutureOr<void> awaitForSettings() {
+    if (_needsSettings) settingsFuture = applySettings();
+    if (settingsFuture != null) return settingsFuture;
+    return null;
+  }
+
+  Future<void> applySettings() {
+    return _initialise(
+      publishableKey: publishableKey,
+      merchantIdentifier: merchantIdentifier,
+      stripeAccountId: stripeAccountId,
+      threeDSecureParams: threeDSecureParams,
+    );
+  }
+
+  Future<void> _initialise({
     required String publishableKey,
     String? stripeAccountId,
     ThreeDSecureConfigurationParams? threeDSecureParams,
     String? merchantIdentifier,
   }) async {
-    if (_ready.value != false) {
-      _ready.value = false;
-    }
     await _platform.initialise(
-        publishableKey: publishableKey,
-        stripeAccountId: stripeAccountId,
-        threeDSecureParams: threeDSecureParams,
-        merchantIdentifier: merchantIdentifier);
-    _ready.value = true;
+      publishableKey: publishableKey,
+      stripeAccountId: stripeAccountId,
+      threeDSecureParams: threeDSecureParams,
+      merchantIdentifier: merchantIdentifier,
+    );
   }
 
+  ValueListenable<bool> get isApplePaySupported {
+    if (_isApplePaySupported == null) {
+      _isApplePaySupported = ValueNotifier(false);
+      checkApplePaySupport();
+    }
+    return _isApplePaySupported!;
+  }
+
+  ValueNotifier<bool>? _isApplePaySupported;
+
   Future<void> checkApplePaySupport() async {
+    await awaitForSettings();
     final isSupported = await _platform.isApplePaySupported();
-    _isApplePaySupported.value = isSupported;
+    _isApplePaySupported ??= ValueNotifier(false);
+    _isApplePaySupported?.value = isSupported;
   }
 
   Future<PaymentMethod> createPaymentMethod(
     PaymentMethodParams data, [
     Map<String, String> options = const {},
   ]) async {
+    await awaitForSettings();
     try {
       final paymentMethod = await _platform.createPaymentMethod(data, options);
       return paymentMethod;
@@ -80,6 +133,7 @@ class Stripe {
   }
 
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret) async {
+    await awaitForSettings();
     try {
       final paymentMethod = await _platform.retrievePaymentIntent(clientSecret);
       return paymentMethod;
@@ -93,6 +147,7 @@ class Stripe {
     PaymentMethodParams data, [
     Map<String, String> options = const {},
   ]) async {
+    await awaitForSettings();
     try {
       final paymentMethod = await _platform.confirmPaymentMethod(
           paymentIntentClientSecret, data, options);
@@ -105,6 +160,7 @@ class Stripe {
   Future<void> presentApplePay(
     ApplePayPresentParams params,
   ) async {
+    await awaitForSettings();
     if (!isApplePaySupported.value) {
       //throw StripeError<ApplePayError>(ApplePayError.canceled, 'APPLE_PAY_NOT_SUPPORTED_MESSAGE');
     }
@@ -118,6 +174,7 @@ class Stripe {
   Future<void> confirmApplePayPayment(
     String clientSecret,
   ) async {
+    await awaitForSettings();
     if (!isApplePaySupported.value) {
       //throw StripeError<ApplePayError>(ApplePayError.canceled, 'APPLE_PAY_NOT_SUPPORTED_MESSAGE');
     }
@@ -131,6 +188,7 @@ class Stripe {
   Future<PaymentIntent> handleCardAction(
     String paymentIntentClientSecret,
   ) async {
+    await awaitForSettings();
     try {
       final paymentIntent =
           await _platform.handleCardAction(paymentIntentClientSecret);
@@ -146,6 +204,7 @@ class Stripe {
     PaymentMethodParams params, [
     Map<String, String> options = const {},
   ]) async {
+    await awaitForSettings();
     try {
       final setupIntent = await _platform.confirmSetupIntent(
           paymentIntentClientSecret, params, options);
@@ -159,6 +218,7 @@ class Stripe {
   Future<String?> createTokenForCVCUpdate(
     String cvc,
   ) async {
+    await awaitForSettings();
     try {
       final tokenId = await _platform.createTokenForCVCUpdate(
         cvc,
@@ -167,64 +227,6 @@ class Stripe {
     } on StripeError catch (error) {
       //throw StripeError<CardActionError>(error.code, error.message);
       rethrow;
-    }
-  }
-}
-
-class StripeProvider extends StatefulWidget {
-  const StripeProvider({
-    Key? key,
-    required this.publishableKey,
-    required this.child,
-    this.merchantIdentifier,
-    this.threeDSecureParams,
-    this.stripeAccountId,
-  }) : super(key: key);
-
-  final Widget child;
-  final String publishableKey;
-  final String? merchantIdentifier;
-  final ThreeDSecureConfigurationParams? threeDSecureParams;
-  final String? stripeAccountId;
-
-  @override
-  _StripeProviderState createState() => _StripeProviderState();
-}
-
-class _StripeProviderState extends State<StripeProvider> {
-  bool ready = false;
-
-  @override
-  void initState() {
-    initialise();
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return widget.child;
-  }
-
-  @override
-  void didUpdateWidget(covariant StripeProvider oldWidget) {
-    if (widget.publishableKey != oldWidget.publishableKey ||
-        widget.merchantIdentifier != oldWidget.merchantIdentifier ||
-        //   widget.threeDSecureParams != oldWidget.threeDSecureParams || Make equatable first
-        widget.stripeAccountId != oldWidget.stripeAccountId) {
-      initialise();
-    }
-    super.didUpdateWidget(oldWidget);
-  }
-
-  Future<void> initialise() async {
-    Stripe.instance.initialise(
-      publishableKey: widget.publishableKey,
-      stripeAccountId: widget.stripeAccountId,
-      threeDSecureParams: widget.threeDSecureParams,
-      merchantIdentifier: widget.merchantIdentifier,
-    );
-    if (mounted) {
-      setState(() => ready = true);
     }
   }
 }
