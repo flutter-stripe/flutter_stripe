@@ -13,22 +13,18 @@ import 'package:stripe_example/screens/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Stripe.instance.checkApplePaySupport();
+  Stripe.publishableKey = stripePublishableKey;
   runApp(App());
 }
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return StripeProvider(
-      publishableKey: stripePublishableKey,
-      merchantIdentifier: 'Hello',
-      child: DismissFocusOverlay(
-        child: MaterialApp(
-          //  theme: ThemeData.light(),
-          theme: ThemeData.dark(),
-          home: MyApp(),
-        ),
+    return DismissFocusOverlay(
+      child: MaterialApp(
+        //  theme: ThemeData.light(),
+        theme: ThemeData.dark(),
+        home: MyApp(),
       ),
     );
   }
