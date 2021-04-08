@@ -12,12 +12,12 @@ class SetupIntent with _$SetupIntent {
   const factory SetupIntent({
     required String id,
     required String status,
-    required String description,
     required bool livemode,
     required String clientSecret,
     required String paymentMethodId,
     required String usage,
     required List<PaymentMethodType> paymentMethodTypes,
+    String? description,
     int? created,
     LastSetupError? lastSetupError,
   }) = _SetupIntent;

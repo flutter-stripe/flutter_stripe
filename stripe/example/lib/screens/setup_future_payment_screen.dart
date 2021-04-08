@@ -43,11 +43,13 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
               child: Text('Save'),
             ),
             ElevatedButton(
-              onPressed: _handleOffSessionPayment,
+              onPressed:
+                  _setupIntentResult != null ? _handleOffSessionPayment : null,
               child: Text('Pay with saved card off-session'),
             ),
             ElevatedButton(
-              onPressed: _handleRecoveryFlow,
+              onPressed:
+                  _retrievedPaymentIntent != null ? _handleRecoveryFlow : null,
               child: Text('Authenticate payment (recovery flow)'),
             ),
           ],

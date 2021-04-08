@@ -31,9 +31,12 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
         when (call.method) {
-            "initialise" -> stripeSdk.initialise(
-                    params = ReadableMap(call.arguments as Map<String, Any>)
-            )
+            "initialise" -> {
+                stripeSdk.initialise(
+                        params = ReadableMap(call.arguments as Map<String, Any>)
+                )
+                result.success(null)
+            }
             "createPaymentMethod" -> stripeSdk.createPaymentMethod(
                     data = call.requiredArgument("data"),
                     options = call.requiredArgument("options"),
