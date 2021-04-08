@@ -5,6 +5,7 @@ import 'package:flutter/material.dart' hide Card;
 import 'package:http/http.dart' as http;
 import 'package:stripe/stripe.dart';
 import 'package:stripe_example/config.dart';
+import 'package:stripe_example/widgets/loading_button.dart';
 
 class SetupFuturePaymentScreen extends StatefulWidget {
   @override
@@ -38,19 +39,19 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
                 });
               },
             ),
-            ElevatedButton(
+            LoadingButton(
               onPressed: _handlePayPress,
-              child: Text('Save'),
+              text: 'Save',
             ),
-            ElevatedButton(
+            LoadingButton(
               onPressed:
                   _setupIntentResult != null ? _handleOffSessionPayment : null,
-              child: Text('Pay with saved card off-session'),
+              text: 'Pay with saved card off-session',
             ),
-            ElevatedButton(
+            LoadingButton(
               onPressed:
                   _retrievedPaymentIntent != null ? _handleRecoveryFlow : null,
-              child: Text('Authenticate payment (recovery flow)'),
+              text: 'Authenticate payment (recovery flow)',
             ),
           ],
         ));
@@ -145,7 +146,7 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
     });
   }
 
-  void _handleRecoveryFlow() {
+  Future<void> _handleRecoveryFlow() async {
     final billingDetails = BillingDetails(
         email: _email,
         phone: '+48888000888',
@@ -157,7 +158,7 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
 
     // TODO lastPaymentError
     if (_retrievedPaymentIntent?.paymentMethodId != null && _card != null) {
-      Stripe.instance.confirmPaymentMethod(
+      await Stripe.instance.confirmPaymentMethod(
         _retrievedPaymentIntent!.clientSecret,
         PaymentMethodParams.cardFromMethodId(
             paymentMethodId: _retrievedPaymentIntent!.paymentMethodId),

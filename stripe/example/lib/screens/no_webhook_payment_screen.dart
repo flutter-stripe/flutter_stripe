@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:stripe/stripe.dart';
+import 'package:stripe_example/widgets/loading_button.dart';
 
 import '../config.dart';
 
@@ -27,9 +28,9 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
               });
             },
           ),
-          ElevatedButton(
+          LoadingButton(
             onPressed: _handlePayPress,
-            child: Text('Pay'),
+            text: 'Pay',
           ),
         ],
       ),

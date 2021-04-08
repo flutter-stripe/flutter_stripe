@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:stripe/stripe.dart';
+import 'package:stripe_example/widgets/loading_button.dart';
 
 import '../config.dart';
 
@@ -36,13 +37,13 @@ class _CVCReCollectionScreenState extends State<CVCReCollectionScreen> {
               });
             },
           ),
-          ElevatedButton(
+          LoadingButton(
             onPressed: _payAsynchronously,
-            child: Text('Pay with Webhook'),
+            text: 'Pay with Webhook',
           ),
-          ElevatedButton(
+          LoadingButton(
             onPressed: _paySynchronously,
-            child: Text('Pay Synchronously'),
+            text: 'Pay Synchronously',
           ),
         ],
       ),

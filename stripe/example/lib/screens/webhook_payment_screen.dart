@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:stripe/stripe.dart';
+import 'package:stripe_example/widgets/loading_button.dart';
 
 import '../config.dart';
 
@@ -45,9 +46,9 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
             },
             title: Text('Save card during payment'),
           ),
-          ElevatedButton(
+          LoadingButton(
             onPressed: _handlePayPress,
-            child: Text('Pay'),
+            text: 'Pay',
           ),
         ],
       ),
@@ -76,7 +77,7 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
     // 3. Confirm payment with card details
     // The rest will be done automatically using webhooks
     final paymentIntent = await Stripe.instance.confirmPaymentMethod(
-      clientSecret,
+      clientSecret['clientSecret'],
       PaymentMethodParams.card(
           cardDetails: _card!,
           setupFutureUsage:
@@ -87,7 +88,7 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
         content: Text('Success!: The payment was confirmed successfully!')));
   }
 
-  Future<String> fetchPaymentIntentClientSecret() async {
+  Future<Map<String, dynamic>> fetchPaymentIntentClientSecret() async {
     final url = Uri.parse('${kApiUrl}/create-payment-intent');
     final response = await http.post(
       url,

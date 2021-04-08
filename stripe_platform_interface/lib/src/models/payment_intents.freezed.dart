@@ -33,7 +33,7 @@ class _$PaymentIntentTearOff {
       required ConfirmationMethod confirmationMethod,
       String? description,
       String? receiptEmail,
-      String? canceledAt,
+      int? canceledAt,
       ShippingDetails? shipping}) {
     return _PaymentIntent(
       id: id,
@@ -76,7 +76,7 @@ mixin _$PaymentIntent {
       throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get receiptEmail => throw _privateConstructorUsedError;
-  String? get canceledAt =>
+  int? get canceledAt =>
       throw _privateConstructorUsedError; // LastPaymentError? lastPaymentError,
   ShippingDetails? get shipping => throw _privateConstructorUsedError;
 
@@ -104,7 +104,7 @@ abstract class $PaymentIntentCopyWith<$Res> {
       ConfirmationMethod confirmationMethod,
       String? description,
       String? receiptEmail,
-      String? canceledAt,
+      int? canceledAt,
       ShippingDetails? shipping});
 
   $ShippingDetailsCopyWith<$Res>? get shipping;
@@ -188,7 +188,7 @@ class _$PaymentIntentCopyWithImpl<$Res>
       canceledAt: canceledAt == freezed
           ? _value.canceledAt
           : canceledAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       shipping: shipping == freezed
           ? _value.shipping
           : shipping // ignore: cast_nullable_to_non_nullable
@@ -228,7 +228,7 @@ abstract class _$PaymentIntentCopyWith<$Res>
       ConfirmationMethod confirmationMethod,
       String? description,
       String? receiptEmail,
-      String? canceledAt,
+      int? canceledAt,
       ShippingDetails? shipping});
 
   @override
@@ -315,7 +315,7 @@ class __$PaymentIntentCopyWithImpl<$Res>
       canceledAt: canceledAt == freezed
           ? _value.canceledAt
           : canceledAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       shipping: shipping == freezed
           ? _value.shipping
           : shipping // ignore: cast_nullable_to_non_nullable
@@ -372,7 +372,7 @@ class _$_PaymentIntent implements _PaymentIntent {
   @override
   final String? receiptEmail;
   @override
-  final String? canceledAt;
+  final int? canceledAt;
   @override // LastPaymentError? lastPaymentError,
   final ShippingDetails? shipping;
 
@@ -469,7 +469,7 @@ abstract class _PaymentIntent implements PaymentIntent {
       required ConfirmationMethod confirmationMethod,
       String? description,
       String? receiptEmail,
-      String? canceledAt,
+      int? canceledAt,
       ShippingDetails? shipping}) = _$_PaymentIntent;
 
   factory _PaymentIntent.fromJson(Map<String, dynamic> json) =
@@ -501,7 +501,7 @@ abstract class _PaymentIntent implements PaymentIntent {
   @override
   String? get receiptEmail => throw _privateConstructorUsedError;
   @override
-  String? get canceledAt => throw _privateConstructorUsedError;
+  int? get canceledAt => throw _privateConstructorUsedError;
   @override // LastPaymentError? lastPaymentError,
   ShippingDetails? get shipping => throw _privateConstructorUsedError;
   @override
