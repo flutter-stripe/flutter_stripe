@@ -9,7 +9,7 @@ class WebhookPaymentScreen extends StatelessWidget {
       body: Column(
         children: [
           TextField(),
-          CardField(),
+          CardField(onCardChanged: (CardFieldInputDetails? details) {  },),
           CheckboxListTile(
             value: true,
             onChanged: (check) {},

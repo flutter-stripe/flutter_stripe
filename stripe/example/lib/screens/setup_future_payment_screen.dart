@@ -13,8 +13,9 @@ class SetupFuturePaymentScreen extends StatefulWidget {
 }
 
 class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
-  PaymentIntent retrievedPaymentIntent;
-  CardFieldInputDetails _card;
+  PaymentIntent? retrievedPaymentIntent;
+  CardFieldInputDetails? _card;
+  String? _email;
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +77,7 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
       final setupIntentResult = await Stripe.instance.confirmSetupIntent(
           clientSecret,
           PaymentMethodParams.card(
-            cardDetails: _card,
+            cardDetails: _card!,
             //billingDetails,
           ));
       log('Setup Intent created $setupIntentResult');

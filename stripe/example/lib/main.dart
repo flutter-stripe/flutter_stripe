@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart';
 import 'package:stripe/stripe.dart';
 import 'package:stripe_example/config.dart';
-import '.env.dart';
+import 'package:stripe_example/.env.dart';
 import 'package:stripe_example/screens/home_screen.dart';
 
 void main() async {
@@ -36,7 +37,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  PaymentIntent paymentIntent;
+  PaymentIntent? paymentIntent;
 
   bool isGettingConfig = false;
 
@@ -60,9 +61,10 @@ class _MyAppState extends State<MyApp> {
             child: Column(
           children: [
             HomeScreen(),
+            if (Platform.isIOS)
             ValueListenableBuilder(
               valueListenable: Stripe.instance.isApplePaySupported,
-              builder: (context, isSupported, _) {
+              builder: (context, dynamic isSupported, _) {
                 if (isSupported) {
                   return ApplePayButton(
                     width: 240,
@@ -79,27 +81,12 @@ class _MyAppState extends State<MyApp> {
               },
             ),
             SizedBox(height: 15),
-            UiKitCardField(
-              decoration: CardDecoration(
-                backgroundColor: Theme.of(context).cardColor,
-                borderRadius: 0,
-                borderColor: Colors.green,
-                textColor: Colors.green,
-              ),
-              enablePostalCode: false,
-              onFocus: (field) {
-                print('On focus changed $field');
-              },
-              onChange: (card) {
-                print('On card changed ${card.toJson()}');
-              },
-            ),
             if (paymentIntent != null)
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.all(8),
                   child: Text(
-                    paymentIntentString(paymentIntent),
+                    paymentIntentString(paymentIntent!),
                   ),
                 ),
               ),
@@ -135,7 +122,7 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  Future<Map<String, String>> getPaymentConfig() async {
+  Future<Map<String, String>?> getPaymentConfig() async {
     setState(() {
       isGettingConfig = true;
     });
@@ -153,14 +140,15 @@ class _MyAppState extends State<MyApp> {
       setState(() {
         isGettingConfig = false;
       });
+      return null;
     }
   }
 }
 
 class DismissFocusOverlay extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
 
-  const DismissFocusOverlay({Key key, this.child}) : super(key: key);
+  const DismissFocusOverlay({Key? key, this.child}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -169,7 +157,7 @@ class DismissFocusOverlay extends StatelessWidget {
         FocusScopeNode currentFocus = FocusScope.of(context);
         if (!currentFocus.hasPrimaryFocus &&
             currentFocus.focusedChild != null) {
-          FocusManager.instance.primaryFocus.unfocus();
+          FocusManager.instance.primaryFocus!.unfocus();
         }
       },
     );
