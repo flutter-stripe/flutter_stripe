@@ -11,9 +11,9 @@ class PaymentMethod with _$PaymentMethod {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentMethod({
     required String id,
-    required bool liveMode,
+    required bool livemode,
     required String type,
-    required String customerId,
+    String? customerId,
     required BillingDetails billingDetails,
     @JsonKey(name: 'Card') required Card card,
     @JsonKey(name: 'SepaDebit') required SepaDebit sepaDebit,

@@ -9,9 +9,9 @@ part of 'payment_methods.dart';
 _$_PaymentMethod _$_$_PaymentMethodFromJson(Map<String, dynamic> json) {
   return _$_PaymentMethod(
     id: json['id'] as String,
-    liveMode: json['liveMode'] as bool,
+    livemode: json['livemode'] as bool,
     type: json['type'] as String,
-    customerId: json['customerId'] as String,
+    customerId: json['customerId'] as String?,
     billingDetails:
         BillingDetails.fromJson(json['billingDetails'] as Map<String, dynamic>),
     card: Card.fromJson(json['Card'] as Map<String, dynamic>),
@@ -29,7 +29,7 @@ _$_PaymentMethod _$_$_PaymentMethodFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$_$_PaymentMethodToJson(_$_PaymentMethod instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'liveMode': instance.liveMode,
+      'livemode': instance.livemode,
       'type': instance.type,
       'customerId': instance.customerId,
       'billingDetails': instance.billingDetails.toJson(),

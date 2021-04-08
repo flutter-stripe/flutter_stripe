@@ -22,9 +22,9 @@ class _$PaymentMethodTearOff {
 
   _PaymentMethod call(
       {required String id,
-      required bool liveMode,
+      required bool livemode,
       required String type,
-      required String customerId,
+      String? customerId,
       required BillingDetails billingDetails,
       @JsonKey(name: 'Card') required Card card,
       @JsonKey(name: 'SepaDebit') required SepaDebit sepaDebit,
@@ -36,7 +36,7 @@ class _$PaymentMethodTearOff {
       @JsonKey(name: 'Upi') required Upi upi}) {
     return _PaymentMethod(
       id: id,
-      liveMode: liveMode,
+      livemode: livemode,
       type: type,
       customerId: customerId,
       billingDetails: billingDetails,
@@ -62,9 +62,9 @@ const $PaymentMethod = _$PaymentMethodTearOff();
 /// @nodoc
 mixin _$PaymentMethod {
   String get id => throw _privateConstructorUsedError;
-  bool get liveMode => throw _privateConstructorUsedError;
+  bool get livemode => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
-  String get customerId => throw _privateConstructorUsedError;
+  String? get customerId => throw _privateConstructorUsedError;
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
   @JsonKey(name: 'Card')
   Card get card => throw _privateConstructorUsedError;
@@ -96,9 +96,9 @@ abstract class $PaymentMethodCopyWith<$Res> {
       _$PaymentMethodCopyWithImpl<$Res>;
   $Res call(
       {String id,
-      bool liveMode,
+      bool livemode,
       String type,
-      String customerId,
+      String? customerId,
       BillingDetails billingDetails,
       @JsonKey(name: 'Card') Card card,
       @JsonKey(name: 'SepaDebit') SepaDebit sepaDebit,
@@ -132,7 +132,7 @@ class _$PaymentMethodCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? liveMode = freezed,
+    Object? livemode = freezed,
     Object? type = freezed,
     Object? customerId = freezed,
     Object? billingDetails = freezed,
@@ -150,9 +150,9 @@ class _$PaymentMethodCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      liveMode: liveMode == freezed
-          ? _value.liveMode
-          : liveMode // ignore: cast_nullable_to_non_nullable
+      livemode: livemode == freezed
+          ? _value.livemode
+          : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
       type: type == freezed
           ? _value.type
@@ -161,7 +161,7 @@ class _$PaymentMethodCopyWithImpl<$Res>
       customerId: customerId == freezed
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       billingDetails: billingDetails == freezed
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
@@ -274,9 +274,9 @@ abstract class _$PaymentMethodCopyWith<$Res>
   @override
   $Res call(
       {String id,
-      bool liveMode,
+      bool livemode,
       String type,
-      String customerId,
+      String? customerId,
       BillingDetails billingDetails,
       @JsonKey(name: 'Card') Card card,
       @JsonKey(name: 'SepaDebit') SepaDebit sepaDebit,
@@ -321,7 +321,7 @@ class __$PaymentMethodCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? liveMode = freezed,
+    Object? livemode = freezed,
     Object? type = freezed,
     Object? customerId = freezed,
     Object? billingDetails = freezed,
@@ -339,9 +339,9 @@ class __$PaymentMethodCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      liveMode: liveMode == freezed
-          ? _value.liveMode
-          : liveMode // ignore: cast_nullable_to_non_nullable
+      livemode: livemode == freezed
+          ? _value.livemode
+          : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
       type: type == freezed
           ? _value.type
@@ -350,7 +350,7 @@ class __$PaymentMethodCopyWithImpl<$Res>
       customerId: customerId == freezed
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       billingDetails: billingDetails == freezed
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
@@ -397,9 +397,9 @@ class __$PaymentMethodCopyWithImpl<$Res>
 class _$_PaymentMethod implements _PaymentMethod {
   const _$_PaymentMethod(
       {required this.id,
-      required this.liveMode,
+      required this.livemode,
       required this.type,
-      required this.customerId,
+      this.customerId,
       required this.billingDetails,
       @JsonKey(name: 'Card') required this.card,
       @JsonKey(name: 'SepaDebit') required this.sepaDebit,
@@ -416,11 +416,11 @@ class _$_PaymentMethod implements _PaymentMethod {
   @override
   final String id;
   @override
-  final bool liveMode;
+  final bool livemode;
   @override
   final String type;
   @override
-  final String customerId;
+  final String? customerId;
   @override
   final BillingDetails billingDetails;
   @override
@@ -450,7 +450,7 @@ class _$_PaymentMethod implements _PaymentMethod {
 
   @override
   String toString() {
-    return 'PaymentMethod(id: $id, liveMode: $liveMode, type: $type, customerId: $customerId, billingDetails: $billingDetails, card: $card, sepaDebit: $sepaDebit, bacsDebit: $bacsDebit, auBecsDebit: $auBecsDebit, sofort: $sofort, ideal: $ideal, fpx: $fpx, upi: $upi)';
+    return 'PaymentMethod(id: $id, livemode: $livemode, type: $type, customerId: $customerId, billingDetails: $billingDetails, card: $card, sepaDebit: $sepaDebit, bacsDebit: $bacsDebit, auBecsDebit: $auBecsDebit, sofort: $sofort, ideal: $ideal, fpx: $fpx, upi: $upi)';
   }
 
   @override
@@ -459,9 +459,9 @@ class _$_PaymentMethod implements _PaymentMethod {
         (other is _PaymentMethod &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.liveMode, liveMode) ||
+            (identical(other.livemode, livemode) ||
                 const DeepCollectionEquality()
-                    .equals(other.liveMode, liveMode)) &&
+                    .equals(other.livemode, livemode)) &&
             (identical(other.type, type) ||
                 const DeepCollectionEquality().equals(other.type, type)) &&
             (identical(other.customerId, customerId) ||
@@ -495,7 +495,7 @@ class _$_PaymentMethod implements _PaymentMethod {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(liveMode) ^
+      const DeepCollectionEquality().hash(livemode) ^
       const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(customerId) ^
       const DeepCollectionEquality().hash(billingDetails) ^
@@ -522,9 +522,9 @@ class _$_PaymentMethod implements _PaymentMethod {
 abstract class _PaymentMethod implements PaymentMethod {
   const factory _PaymentMethod(
       {required String id,
-      required bool liveMode,
+      required bool livemode,
       required String type,
-      required String customerId,
+      String? customerId,
       required BillingDetails billingDetails,
       @JsonKey(name: 'Card') required Card card,
       @JsonKey(name: 'SepaDebit') required SepaDebit sepaDebit,
@@ -541,11 +541,11 @@ abstract class _PaymentMethod implements PaymentMethod {
   @override
   String get id => throw _privateConstructorUsedError;
   @override
-  bool get liveMode => throw _privateConstructorUsedError;
+  bool get livemode => throw _privateConstructorUsedError;
   @override
   String get type => throw _privateConstructorUsedError;
   @override
-  String get customerId => throw _privateConstructorUsedError;
+  String? get customerId => throw _privateConstructorUsedError;
   @override
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
   @override
