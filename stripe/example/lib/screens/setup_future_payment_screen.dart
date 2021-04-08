@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart' hide Card;
-import 'package:stripe/stripe.dart';
 import 'package:http/http.dart' as http;
+import 'package:stripe/stripe.dart';
 import 'package:stripe_example/config.dart';
 
 class SetupFuturePaymentScreen extends StatefulWidget {
@@ -13,9 +13,10 @@ class SetupFuturePaymentScreen extends StatefulWidget {
 }
 
 class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
-  PaymentIntent? retrievedPaymentIntent;
+  PaymentIntent? _retrievedPaymentIntent;
   CardFieldInputDetails? _card;
-  String? _email;
+  SetupIntent? _setupIntentResult;
+  String _email = "";
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,13 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
         appBar: AppBar(),
         body: Column(
           children: [
-            TextField(),
+            TextField(
+              onChanged: (value) {
+                setState(() {
+                  _email = value;
+                });
+              },
+            ),
             CardField(
               onCardChanged: (card) {
                 setState(() {
@@ -48,32 +55,26 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
   }
 
   Future<void> _handlePayPress() async {
-    // just for testing purposes
-    final test = await Stripe.instance.confirmPaymentMethod(
-        'paymentIntentClientSecret',
-        PaymentMethodParams.cardFromToken(
-            cardDetails: CardTokenDetails(token: 'examplePaymentMethodToken')));
-    print(test);
     if (_card == null) {
       return;
     }
- try {
-    // 1. Create setup intent on backend
-    final clientSecret = await createSetupIntentOnBackend('test@gmail.com');
+    try {
+      // 1. Create setup intent on backend
+      final clientSecret = await _createSetupIntentOnBackend(_email);
 
-    // 2. Gather customer billing information (ex. email)
-    final BillingDetails billingDetails = BillingDetails(
-      email: 'email',
-      phone: '+48888000888',
-      city: 'Houston',
-      country: 'US', // TODO country
-      addressLine1: '1459  Circle Drive',
-      addressLine2: 'test',
-      postalCode: '77063',
-    ); // mocked data for tests
+      // 2. Gather customer billing information (ex. email)
+      final BillingDetails billingDetails = BillingDetails(
+        email: 'email',
+        phone: '+48888000888',
+        city: 'Houston',
+        country: 'US',
+        addressLine1: '1459  Circle Drive',
+        addressLine2: 'test',
+        postalCode: '77063',
+      ); // mocked data for tests
 
-    // 3. Confirm setup intent
-   
+      // 3. Confirm setup intent
+
       final setupIntentResult = await Stripe.instance.confirmSetupIntent(
           clientSecret,
           PaymentMethodParams.card(
@@ -87,8 +88,9 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
               'Success: Setup intent created. Intent status: ${setupIntentResult}'),
         ),
       );
-      //setSetupIntent(setupIntentResult);
-
+      setState(() {
+        _setupIntentResult = setupIntentResult;
+      });
     } catch (error, s) {
       log('Error while saving payment', error: error, stackTrace: s);
       ScaffoldMessenger.of(context)
@@ -96,38 +98,72 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
     }
   }
 
-  void _handleOffSessionPayment() {}
-
-  void _handleRecoveryFlow() {
-    /*BillingDetails billingDetails = BillingDetails(
-      email: email,
-      phone: '+48888000888',
-      addressCity: 'Houston',
-      addressCountry: 'US',
-      addressLine1: '1459  Circle Drive',
-      addressLine2: 'Texas',
-      addressPostalCode: '77063',
-    ); // mocked data for tests
-
-    if (retrievedPaymentIntent?.lastPaymentError?.paymentMethod.id && card) {
-    Stripe.instance.confirmPaymentMethod(
-      retrievedPaymentIntent.clientSecret,
-      PaymentMethodParams(
-        type: 'Card',
-        billingDetails,
-        paymentMethodId:
-        retrievedPaymentIntent?.lastPaymentError?.paymentMethod.id,
-      ),
-    )
-
-    if (error) {
-      Alert.alert(`Error code: ${error.code}`, error.message);
+  Future<void> _handleOffSessionPayment() async {
+    final res = await _chargeCardOffSession();
+    if (res['error'] != null) {
+      // If the PaymentIntent has any other status, the payment did not succeed and the request fails.
+      // Notify your customer e.g., by email, text, push notification) to complete the payment.
+      // We recommend creating a recovery flow in your app that shows why the payment failed initially and lets your customer retry.
+      _handleRetrievePaymentIntent(res['clientSecret']);
     } else {
-      Alert.alert('Success', 'The payment was confirmed successfully!');
-    }*/
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('Success!: The payment was confirmed successfully!')));
+    }
+
+    log('charge off session result: $res');
   }
 
-  Future<String> createSetupIntentOnBackend(String email) async {
+  // When customer back to the App to complete the payment, retrieve the PaymentIntent via clientSecret.
+  // Check the PaymentIntent’s lastPaymentError to inspect why the payment attempt failed.
+  // For card errors, you can show the user the last payment error’s message. Otherwise, you can show a generic failure message.
+  Future<void> _handleRetrievePaymentIntent(String clientSecret) async {
+    final paymentIntent =
+        await Stripe.instance.retrievePaymentIntent(clientSecret);
+    /*final errorCode = paymentIntent.lastPaymentError?.code;
+
+    var failureReason = 'Payment failed, try again.'; // Default to a generic error message
+    if (paymentIntent?.lastPaymentError?.type == 'Card') {
+      failureReason = paymentIntent.lastPaymentError.message;
+    }*/
+    final errorCode = false;
+
+    if (errorCode) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('failureReason')));
+      //setPaymentError(errorCode);
+    }
+    // If the last payment error is authentication_required allow customer to complete the payment without asking your customers to re-enter their details.
+    if (errorCode == 'authentication_required') {
+      // Allow to complete the payment with the existing PaymentMethod.
+    } else {
+      // Collect a new PaymentMethod from the customer...
+    }
+    setState(() {
+      _retrievedPaymentIntent = paymentIntent;
+    });
+  }
+
+  void _handleRecoveryFlow() {
+    final billingDetails = BillingDetails(
+        email: _email,
+        phone: '+48888000888',
+        city: 'Houston',
+        country: 'US',
+        addressLine1: '1459  Circle Drive',
+        addressLine2: 'Texas',
+        postalCode: '77063'); // mocked data for tests
+
+    // TODO lastPaymentError
+    if (_retrievedPaymentIntent?.paymentMethodId != null && _card != null) {
+      Stripe.instance.confirmPaymentMethod(
+        _retrievedPaymentIntent!.clientSecret,
+        PaymentMethodParams.cardFromMethodId(
+            paymentMethodId: _retrievedPaymentIntent!.paymentMethodId),
+      );
+    }
+  }
+
+  Future<String> _createSetupIntentOnBackend(String email) async {
     final url = Uri.parse('${kApiUrl}/create-setup-intent');
     final response = await http.post(
       url,
@@ -143,5 +179,17 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
     log('Client token  $clientSecret');
 
     return clientSecret;
+  }
+
+  Future<Map<String, dynamic>> _chargeCardOffSession() async {
+    final url = Uri.parse('${kApiUrl}/charge-card-off-session');
+    final response = await http.post(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: json.encode({'email': _email}),
+    );
+    return json.decode(response.body);
   }
 }
