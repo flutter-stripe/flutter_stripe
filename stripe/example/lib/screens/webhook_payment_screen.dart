@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:stripe/stripe.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
+import 'package:stripe_platform_interface/models.dart';
 
 import '../config.dart';
 
@@ -64,15 +65,18 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
     final clientSecret = await fetchPaymentIntentClientSecret();
 
     // 2. Gather customer billing information (ex. email)
-    final billingDetails = BillingDetails(
-      email: 'email@stripe.com',
-      phone: '+48888000888',
-      city: 'Houston',
-      country: 'US',
-      addressLine1: '1459  Circle Drive',
-      addressLine2: 'Texas',
-      postalCode: '77063',
-    ); // mocked data for tests
+    // final billingDetails = BillingDetails(
+    //   email: 'email@stripe.com',
+    //   phone: '+48888000888',
+    //   address: Address(
+    //   city: 'Houston',
+    //   country: 'US',
+    //   line1: '1459  Circle Drive',
+    //   line2: '',
+    //   state: 'Texas',
+    //   postalCode: '77063',
+    // ) ,
+    // ); // mo mocked data for tests
 
     // 3. Confirm payment with card details
     // The rest will be done automatically using webhooks

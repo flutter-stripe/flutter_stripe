@@ -1,11 +1,12 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
+import 'package:stripe_platform_interface/src/models/apple_pay.dart';
+import 'package:stripe_platform_interface/src/models/payment_intents.dart';
+import 'package:stripe_platform_interface/src/models/payment_methods.dart';
 import 'package:stripe_platform_interface/src/models/setup_intent.dart';
 import 'package:stripe_platform_interface/src/models/three_d_secure.dart';
-import 'package:stripe_platform_interface/src/models/payment_methods.dart';
-import 'package:stripe_platform_interface/src/models/payment_intents.dart';
-import 'package:stripe_platform_interface/src/models/apple_pay.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 import '../stripe_platform_interface.dart';
@@ -55,7 +56,9 @@ class MethodChannelStripe extends StripePlatform {
       'data': data.toJson(),
       'options': options,
     });
-    return PaymentMethod.fromJson(result.unfoldToNonNull());
+    return PaymentMethod.fromJson(
+      jsonDecode(jsonEncode(result.unfoldToNonNull())),
+    );
   }
 
   @override

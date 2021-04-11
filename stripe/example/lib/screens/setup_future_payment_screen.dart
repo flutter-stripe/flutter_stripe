@@ -66,15 +66,18 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
       final clientSecret = await _createSetupIntentOnBackend(_email);
 
       // 2. Gather customer billing information (ex. email)
-      final BillingDetails billingDetails = BillingDetails(
-        email: 'email',
-        phone: '+48888000888',
-        city: 'Houston',
-        country: 'US',
-        addressLine1: '1459  Circle Drive',
-        addressLine2: 'test',
-        postalCode: '77063',
-      ); // mocked data for tests
+      // final billingDetails = BillingDetails(
+      //   email: 'email@stripe.com',
+      //   phone: '+48888000888',
+      //   address: Address(
+      //     city: 'Houston',
+      //     country: 'US',
+      //     line1: '1459  Circle Drive',
+      //     line2: '',
+      //     state: 'Texas',
+      //     postalCode: '77063',
+      //   ),
+      // ); // mo/ mocked data for tests
 
       // 3. Confirm setup intent
 
@@ -147,14 +150,18 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
   }
 
   Future<void> _handleRecoveryFlow() async {
-    final billingDetails = BillingDetails(
-        email: _email,
-        phone: '+48888000888',
-        city: 'Houston',
-        country: 'US',
-        addressLine1: '1459  Circle Drive',
-        addressLine2: 'Texas',
-        postalCode: '77063'); // mocked data for tests
+    // final billingDetails = BillingDetails(
+    //   email: 'email@stripe.com',
+    //   phone: '+48888000888',
+    //   address: Address(
+    //     city: 'Houston',
+    //     country: 'US',
+    //     line1: '1459  Circle Drive',
+    //     line2: '',
+    //     state: 'Texas',
+    //     postalCode: '77063',
+    //   ),
+    // ); // mo/ mocked data for tests
 
     // TODO lastPaymentError
     if (_retrievedPaymentIntent?.paymentMethodId != null && _card != null) {

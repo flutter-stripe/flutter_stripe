@@ -43,15 +43,19 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
     }
 
     // 1. Gather customer billing information (ex. email)
-    final billingDetails = BillingDetails(
-      email: 'email@stripe.com',
-      phone: '+48888000888',
-      city: 'Houston',
-      country: 'US',
-      addressLine1: '1459  Circle Drive',
-      addressLine2: 'Texas',
-      postalCode: '77063',
-    ); // mocked data for tests
+
+    // final billingDetails = BillingDetails(
+    //   email: 'email@stripe.com',
+    //   phone: '+48888000888',
+    //   address: Address(
+    //     city: 'Houston',
+    //     country: 'US',
+    //     line1: '1459  Circle Drive',
+    //     line2: '',
+    //     state: 'Texas',
+    //     postalCode: '77063',
+    //   ),
+    // ); // mocked data for tests
 
     // 2. Create payment method
     final paymentMethod = await Stripe.instance

@@ -46,28 +46,20 @@ Map<String, dynamic> _$_$_PaymentMethodToJson(_$_PaymentMethod instance) =>
 _$_BillingDetails _$_$_BillingDetailsFromJson(Map<String, dynamic> json) {
   return _$_BillingDetails(
     email: json['email'] as String?,
+    address: json['address'] == null
+        ? null
+        : Address.fromJson(json['address'] as Map<String, dynamic>),
     phone: json['phone'] as String?,
     name: json['name'] as String?,
-    postalCode: json['postalCode'] as String?,
-    city: json['city'] as String?,
-    state: json['state'] as String?,
-    country: json['country'] as String?,
-    addressLine1: json['line1'] as String?,
-    addressLine2: json['line2'] as String?,
   );
 }
 
 Map<String, dynamic> _$_$_BillingDetailsToJson(_$_BillingDetails instance) =>
     <String, dynamic>{
       'email': instance.email,
+      'address': instance.address?.toJson(),
       'phone': instance.phone,
       'name': instance.name,
-      'postalCode': instance.postalCode,
-      'city': instance.city,
-      'state': instance.state,
-      'country': instance.country,
-      'line1': instance.addressLine1,
-      'line2': instance.addressLine2,
     };
 
 _$_AuBecsDebit _$_$_AuBecsDebitFromJson(Map<String, dynamic> json) {
@@ -102,71 +94,23 @@ Map<String, dynamic> _$_$_BacsDebitToJson(_$_BacsDebit instance) =>
 
 _$_Card _$_$_CardFromJson(Map<String, dynamic> json) {
   return _$_Card(
-    brand: _$enumDecodeNullable(_$CardBrandEnumMap, json['brand']),
+    brand: json['brand'] as String?,
     country: json['country'] as String?,
-    expYear: json['expYear'] as String?,
-    expMonth: json['expMonth'] as String?,
+    expYear: json['expYear'] as int?,
+    expMonth: json['expMonth'] as int?,
     funding: json['funding'] as String?,
     last4: json['last4'] as String?,
   );
 }
 
 Map<String, dynamic> _$_$_CardToJson(_$_Card instance) => <String, dynamic>{
-      'brand': _$CardBrandEnumMap[instance.brand],
+      'brand': instance.brand,
       'country': instance.country,
       'expYear': instance.expYear,
       'expMonth': instance.expMonth,
       'funding': instance.funding,
       'last4': instance.last4,
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
-K? _$enumDecodeNullable<K, V>(
-  Map<K, V> enumValues,
-  dynamic source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    return null;
-  }
-  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
-}
-
-const _$CardBrandEnumMap = {
-  CardBrand.american: 'american',
-  CardBrand.dinersClub: 'dinersClub',
-  CardBrand.discover: 'discover',
-  CardBrand.jCB: 'jCB',
-  CardBrand.masterCard: 'masterCard',
-  CardBrand.unionPay: 'unionPay',
-  CardBrand.visa: 'visa',
-  CardBrand.unknown: 'unknown',
-};
 
 _$_Fpx _$_$_FpxFromJson(Map<String, dynamic> json) {
   return _$_Fpx(
@@ -259,6 +203,43 @@ Map<String, dynamic> _$_$_PaymentMethodParamsCardToJson(
       'setupFutureUsage':
           _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
     };
+
+K _$enumDecode<K, V>(
+  Map<K, V> enumValues,
+  Object? source, {
+  K? unknownValue,
+}) {
+  if (source == null) {
+    throw ArgumentError(
+      'A value must be provided. Supported values: '
+      '${enumValues.values.join(', ')}',
+    );
+  }
+
+  return enumValues.entries.singleWhere(
+    (e) => e.value == source,
+    orElse: () {
+      if (unknownValue == null) {
+        throw ArgumentError(
+          '`$source` is not one of the supported values: '
+          '${enumValues.values.join(', ')}',
+        );
+      }
+      return MapEntry(unknownValue, enumValues.values.first);
+    },
+  ).key;
+}
+
+K? _$enumDecodeNullable<K, V>(
+  Map<K, V> enumValues,
+  dynamic source, {
+  K? unknownValue,
+}) {
+  if (source == null) {
+    return null;
+  }
+  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
+}
 
 const _$PaymentIntentsFutureUsageEnumMap = {
   PaymentIntentsFutureUsage.OffSession: 'OffSession',
