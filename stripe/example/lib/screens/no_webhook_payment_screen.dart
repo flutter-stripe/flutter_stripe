@@ -79,11 +79,12 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
     }
 
     if (paymentIntentResult['clientSecret'] != null &&
-        paymentIntentResult['requiresAction'] == false) {
+        paymentIntentResult['requiresAction'] == null) {
       // Payment succedeed
 
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('Success!: The payment was confirmed successfully!')));
+      return;
     }
 
     if (paymentIntentResult['clientSecret'] != null &&
