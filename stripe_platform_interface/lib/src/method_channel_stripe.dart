@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
@@ -57,7 +56,7 @@ class MethodChannelStripe extends StripePlatform {
       'options': options,
     });
     return PaymentMethod.fromJson(
-      jsonDecode(jsonEncode(result.unfoldToNonNull())),
+      result.unfoldToNonNull(),
     );
   }
 
@@ -157,7 +156,10 @@ class MethodChannelStripeFactory {
 
   StripePlatform create() {
     return MethodChannelStripe(
-      methodChannel: MethodChannel('flutter.stripe/payments'),
+      methodChannel: MethodChannel(
+        'flutter.stripe/payments',
+        JSONMethodCodec(),
+      ),
       eventChannel: EventChannel('flutter.stripe/events'),
     );
   }
