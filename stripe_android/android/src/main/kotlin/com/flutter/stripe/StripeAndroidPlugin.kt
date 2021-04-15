@@ -36,7 +36,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         when (call.method) {
             "initialise" -> {
                 stripeSdk.initialise(
-                        params = ReadableMap(call.arguments as Map<String, Any>)
+                        params = ReadableMap(call.arguments as JSONObject)
                 )
                 result.success(null)
             }
@@ -93,14 +93,14 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
 private inline fun <reified T> MethodCall.optionalArgument(key: String): T? {
     if (T::class.java == ReadableMap::class.java) {
-        return ReadableMap(argument<Map<String, Any>>(key) ?: mapOf()) as T
+        return ReadableMap(argument<JSONObject>(key) ?: JSONObject()) as T
     }
     return argument<T>(key)
 }
 
 private inline fun <reified T> MethodCall.requiredArgument(key: String): T {
     if (T::class.java == ReadableMap::class.java) {
-        return ReadableMap(argument<Map<String, Any>>(key) ?: error("Required parameter $key not set")) as T
+        return ReadableMap(argument<JSONObject>(key) ?: error("Required parameter $key not set")) as T
     }
     return argument<T>(key) ?: error("Required parameter $key not set")
 }

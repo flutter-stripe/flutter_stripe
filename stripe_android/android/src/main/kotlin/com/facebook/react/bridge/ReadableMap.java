@@ -1,47 +1,44 @@
 package com.facebook.react.bridge;
 
+import androidx.annotation.Nullable;
+
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by FFuF, Jonas Bark on 2019-10-02.
  */
-public class ReadableMap extends HashMap<String, Object> {
+public class ReadableMap {
 
-    public ReadableMap() {
-        super();
-    }
+    private JSONObject map;
 
-    public ReadableMap(Map<String, Object> map) {
-        super();
-        putAll(map);
+    public ReadableMap(JSONObject map) {
+        this.map = map;
     }
 
     public boolean hasKey(String key) {
-        return containsKey(key) && get(key) != null;
+        return map.opt(key) != null && !map.isNull(key);
     }
 
-    public String getString(String key) {
-        return (String) get(key);
-    }
-
-    public Boolean getBoolean(String key) {
-        return (Boolean) get(key);
-    }
-
-    public ReadableArray getArray(String key) {
-        return (ReadableArray) get(key);
+    public @Nullable String getString(String key) {
+        if (hasKey(key)) {
+            return map.optString(key);
+        } else {
+            return null;
+        }
     }
 
     public Integer getInt(String key) {
-        return (Integer) get(key);
+        return map.optInt(key);
     }
 
-    @SuppressWarnings("unchecked")
-    public ReadableMap getMap(String key) {
-        if (get(key) instanceof Map) {
-            return new ReadableMap((Map<String, Object>) get(key));
+    public @Nullable ReadableMap getMap(String key) {
+        if (map.optJSONObject(key) != null && map.optJSONObject(key) != JSONObject.NULL) {
+            return new ReadableMap(map.optJSONObject(key));
+        } else {
+            return null;
         }
-        return (ReadableMap) get(key);
     }
 }
