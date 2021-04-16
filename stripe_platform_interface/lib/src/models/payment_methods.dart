@@ -5,7 +5,6 @@ import 'package:stripe_platform_interface/src/models/payment_intents.dart';
 
 import 'address.dart';
 
-
 part 'payment_methods.freezed.dart';
 part 'payment_methods.g.dart';
 
@@ -166,7 +165,6 @@ class PaymentMethodParams with _$PaymentMethodParams {
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Card')
   const factory PaymentMethodParams.card({
-    required CardFieldInputDetails cardDetails,
     PaymentIntentsFutureUsage? setupFutureUsage,
   }) = _PaymentMethodParamsCard;
 

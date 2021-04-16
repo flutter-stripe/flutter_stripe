@@ -189,8 +189,6 @@ Map<String, dynamic> _$_$_PaymentMethodParamsDefaultToJson(
 _$_PaymentMethodParamsCard _$_$_PaymentMethodParamsCardFromJson(
     Map<String, dynamic> json) {
   return _$_PaymentMethodParamsCard(
-    cardDetails: CardFieldInputDetails.fromJson(
-        json['cardDetails'] as Map<String, dynamic>),
     setupFutureUsage: _$enumDecodeNullable(
         _$PaymentIntentsFutureUsageEnumMap, json['setupFutureUsage']),
   );
@@ -199,7 +197,6 @@ _$_PaymentMethodParamsCard _$_$_PaymentMethodParamsCardFromJson(
 Map<String, dynamic> _$_$_PaymentMethodParamsCardToJson(
         _$_PaymentMethodParamsCard instance) =>
     <String, dynamic>{
-      'cardDetails': instance.cardDetails.toJson(),
       'setupFutureUsage':
           _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
     };

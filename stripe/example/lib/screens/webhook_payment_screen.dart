@@ -48,7 +48,7 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
             title: Text('Save card during payment'),
           ),
           LoadingButton(
-            onPressed: _handlePayPress,
+            onPressed: _card?.complete == true ? _handlePayPress : null,
             text: 'Pay',
           ),
         ],
@@ -83,7 +83,6 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
     final paymentIntent = await Stripe.instance.confirmPaymentMethod(
       clientSecret['clientSecret'],
       PaymentMethodParams.card(
-          cardDetails: _card!,
           setupFutureUsage:
               _saveCard == true ? PaymentIntentsFutureUsage.OffSession : null),
     );

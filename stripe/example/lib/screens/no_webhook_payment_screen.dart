@@ -29,7 +29,7 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
             },
           ),
           LoadingButton(
-            onPressed: _handlePayPress,
+            onPressed: _card?.complete == true ? _handlePayPress : null,
             text: 'Pay',
           ),
         ],
@@ -58,8 +58,8 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
     // ); // mocked data for tests
 
     // 2. Create payment method
-    final paymentMethod = await Stripe.instance
-        .createPaymentMethod(PaymentMethodParams.card(cardDetails: _card!));
+    final paymentMethod =
+        await Stripe.instance.createPaymentMethod(PaymentMethodParams.card());
 
     // 3. call API to create PaymentIntent
     final paymentIntentResult = await callNoWebhookPayEndpointMethodId(

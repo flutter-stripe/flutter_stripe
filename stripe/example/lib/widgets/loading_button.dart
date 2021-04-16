@@ -18,7 +18,7 @@ class _LoadingButtonState extends State<LoadingButton> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: _isLoading ? null : _loadFuture,
+      onPressed: (_isLoading || widget.onPressed == null) ? null : _loadFuture,
       child: _isLoading
           ? SizedBox(height: 16, width: 16, child: CircularProgressIndicator())
           : Text(widget.text),

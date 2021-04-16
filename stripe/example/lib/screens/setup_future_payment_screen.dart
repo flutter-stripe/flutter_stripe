@@ -40,7 +40,7 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
               },
             ),
             LoadingButton(
-              onPressed: _handlePayPress,
+              onPressed: _card?.complete == true ? _handlePayPress : null,
               text: 'Save',
             ),
             LoadingButton(
@@ -84,9 +84,8 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
       final setupIntentResult = await Stripe.instance.confirmSetupIntent(
           clientSecret,
           PaymentMethodParams.card(
-            cardDetails: _card!,
-            //billingDetails,
-          ));
+              //billingDetails,
+              ));
       log('Setup Intent created $setupIntentResult');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
