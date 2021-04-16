@@ -4,8 +4,7 @@ import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.WritableMap
 import com.facebook.react.uimanager.events.Event
 
-internal class CardChangedEvent constructor(viewTag: Int, private val cardDetails: MutableMap<String, Any>, private val postalCodeEnabled: Boolean, private val complete: Boolean): Event<CardChangedEvent>(viewTag) {
-
+internal class CardChangedEvent constructor(viewTag: Int, private val cardDetails: MutableMap<String, Any>, private val postalCodeEnabled: Boolean, private val complete: Boolean) : Event<CardChangedEvent>(viewTag) {
   override fun getEventName(): String {
     return EVENT_NAME
   }
@@ -16,12 +15,10 @@ internal class CardChangedEvent constructor(viewTag: Int, private val cardDetail
 
   override fun serializeEventData(): WritableMap {
     val eventData = Arguments.createMap()
-    eventData.putString("number", cardDetails["number"].toString())
-    val expMonth = getValOr(cardDetails, "expiryMonth", null)
-    val expYear = getValOr(cardDetails, "expiryYear", null)
-    eventData.putString("cvc", cardDetails["cvc"].toString())
-    eventData.putInt("expiryMonth", expMonth?.toInt() ?: 0)
-    eventData.putInt("expiryYear", expYear?.toInt() ?: 0)
+    eventData.putString("brand", cardDetails["brand"]?.toString())
+    eventData.putString("last4", cardDetails["last4"]?.toString())
+    eventData.putString("expiryMonth", cardDetails["expiryMonth"]?.toString())
+    eventData.putString("expiryYear", cardDetails["expiryYear"]?.toString())
     eventData.putBoolean("complete", complete)
 
     if (postalCodeEnabled) {

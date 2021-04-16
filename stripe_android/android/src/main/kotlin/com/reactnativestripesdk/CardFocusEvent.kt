@@ -9,8 +9,7 @@ import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.WritableMap
 import com.facebook.react.uimanager.events.Event
 
-internal class CardFocusEvent constructor(viewTag: Int, private val focusField: String?): Event<CardFocusEvent>(viewTag) {
-
+internal class CardFocusEvent constructor(viewTag: Int, private val focusField: String?) : Event<CardFocusEvent>(viewTag) {
   override fun getEventName(): String {
     return EVENT_NAME
   }
@@ -23,7 +22,7 @@ internal class CardFocusEvent constructor(viewTag: Int, private val focusField: 
   }
 
   companion object {
-    const val EVENT_NAME = "onFocusChange"
+    const val EVENT_NAME = "topFocusChange"
   }
 
 }

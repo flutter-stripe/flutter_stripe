@@ -12,15 +12,22 @@ import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.stripe.android.databinding.CardInputWidgetBinding
+import com.stripe.android.model.PaymentMethodCreateParams
 import com.stripe.android.view.CardInputListener
 import com.stripe.android.view.CardInputWidget
 
 class StripeSdkCardView(context: Context, private val mEventDispatcher: EventDispatcher) : FrameLayout(context) {
   private var mCardWidget: CardInputWidget
-  private val cardDetails: MutableMap<String, Any> = mutableMapOf("number" to "", "cvc" to "", "expiryMonth" to "", "expiryYear" to "", "postalCode" to "")
+  val cardDetails: MutableMap<String, Any> = mutableMapOf("brand" to "", "last4" to "", "expiryMonth" to "", "expiryYear" to "", "postalCode" to "")
+  var cardParams: PaymentMethodCreateParams.Card? = null
 
   init {
-    mCardWidget = CardInputWidget(context)
+    mCardWidget = CardInputWidget(context);
+
+    val binding = CardInputWidgetBinding.bind(mCardWidget)
+    binding.container.isFocusable = true
+    binding.container.isFocusableInTouchMode = true
+    binding.container.requestFocus()
 
     addView(mCardWidget)
     setListeners()
@@ -28,23 +35,12 @@ class StripeSdkCardView(context: Context, private val mEventDispatcher: EventDis
     viewTreeObserver.addOnGlobalLayoutListener { requestLayout() }
   }
 
-  fun setValue(value: ReadableMap) {
-    mCardWidget.setCardNumber(getValOr(value, "number", null))
-    mCardWidget.setCvcCode(getValOr(value, "cvc", null))
-
-    if (value.hasKey("expiryMonth") && value.hasKey("expiryYear")) {
-      val month = value.getInt("expiryMonth")
-      val year = value.getInt("expiryYear")
-      mCardWidget.setExpiryDate(month, year)
-    }
-  }
-
   fun setCardStyle(value: ReadableMap) {
     val binding = CardInputWidgetBinding.bind(mCardWidget)
     val borderWidth = getIntOrNull(value, "borderWidth")
     val backgroundColor = getValOr(value, "backgroundColor", null)
     val borderColor = getValOr(value, "borderColor", null)
-    val cornerRadius = getIntOrNull(value, "cornerRadius") ?: 0
+    val borderRadius = getIntOrNull(value, "borderRadius") ?: 0
     val textColor = getValOr(value, "textColor", null)
     val fontSize = getIntOrNull(value,"fontSize")
     val placeholderColor = getValOr(value, "placeholderColor", null)
@@ -79,7 +75,7 @@ class StripeSdkCardView(context: Context, private val mEventDispatcher: EventDis
     mCardWidget.background = MaterialShapeDrawable(
       ShapeAppearanceModel()
         .toBuilder()
-        .setAllCorners(CornerFamily.ROUNDED, (cornerRadius * 2).toFloat())
+        .setAllCorners(CornerFamily.ROUNDED, (borderRadius * 2).toFloat())
         .build()
     ).also { shape ->
       shape.strokeWidth = 0.0f
@@ -127,35 +123,33 @@ class StripeSdkCardView(context: Context, private val mEventDispatcher: EventDis
   }
 
   fun onCardChanged() {
-    val complete = mCardWidget.cardParams != null
-    mEventDispatcher?.dispatchEvent(CardChangedEvent(id, cardDetails, mCardWidget.postalCodeEnabled, complete))
+    mCardWidget.paymentMethodCard?.let { cardParams = it }
+    mEventDispatcher?.dispatchEvent(
+      CardChangedEvent(id, cardDetails, mCardWidget.postalCodeEnabled, cardParams != null))
   }
 
   private fun setListeners() {
     mCardWidget.setCardInputListener(object : CardInputListener {
-      override fun onCardComplete() {}
+      override fun onCardComplete() {
+        mCardWidget.cardParams?.let {
+          cardDetails["brand"] = mapCardBrand(it.brand)
+          cardDetails["last4"] = it.last4
+        }
+        onCardChanged()
+      }
       override fun onExpirationComplete() {}
-      override fun onCvcComplete() {}
+      override fun onCvcComplete() {
+        mCardWidget.cardParams?.let {
+          cardDetails["brand"] = mapCardBrand(it.brand)
+          cardDetails["last4"] = it.last4
+        }
+        onCardChanged()
+      }
       override fun onFocusChange(focusField: CardInputListener.FocusField) {
-          mEventDispatcher?.dispatchEvent( CardFocusEvent(id, focusField.name))
-      }
-    })
-
-    mCardWidget.setCardNumberTextWatcher(object : TextWatcher {
-      override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-      override fun afterTextChanged(p0: Editable?) {}
-      override fun onTextChanged(var1: CharSequence?, var2: Int, var3: Int, var4: Int) {
-        cardDetails["number"] = var1.toString()
-        onCardChanged()
-      }
-    })
-
-    mCardWidget.setCvcNumberTextWatcher(object : TextWatcher {
-      override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-      override fun afterTextChanged(p0: Editable?) {}
-      override fun onTextChanged(var1: CharSequence?, var2: Int, var3: Int, var4: Int) {
-        cardDetails["cvc"] = var1.toString()
-        onCardChanged()
+        if (mEventDispatcher != null) {
+          mEventDispatcher?.dispatchEvent(
+            CardFocusEvent(id, focusField.name))
+        }
       }
     })
 

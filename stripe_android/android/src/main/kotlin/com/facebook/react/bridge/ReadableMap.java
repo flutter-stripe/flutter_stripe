@@ -2,10 +2,8 @@ package com.facebook.react.bridge;
 
 import androidx.annotation.Nullable;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by FFuF, Jonas Bark on 2019-10-02.
@@ -40,5 +38,9 @@ public class ReadableMap {
         } else {
             return null;
         }
+    }
+
+    public boolean getBoolean(@NotNull String key) {
+        return map.optBoolean(key);
     }
 }

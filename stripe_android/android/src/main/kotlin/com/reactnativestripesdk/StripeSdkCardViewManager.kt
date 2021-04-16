@@ -1,37 +1,47 @@
 package com.reactnativestripesdk
 
+import android.content.Context
 import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.uimanager.events.EventDispatcher
 
+const val CARD_FIELD_INSTANCE_NAME = "CardFieldInstance"
 
-/*class StripeSdkCardViewManager : SimpleViewManager<StripeSdkCardView>() {
-  override fun getName() = "CardField"
+class StripeSdkCardViewManager {
+  fun getName() = "CardField"
 
-  override fun getExportedCustomDirectEventTypeConstants(): MutableMap<String, Any> {
-    return MapBuilder.of(
-      CardFocusEvent.EVENT_NAME, MapBuilder.of("registrationName", "onFocus"),
-      CardChangedEvent.EVENT_NAME, MapBuilder.of("registrationName", "onCardChange"))
-  }
+  private var cardViewInstanceMap: MutableMap<String, Any?> = mutableMapOf()
 
-  private fun isNotEmptyField(field: Any?): Boolean {
-    return (field as CharSequence).isNotEmpty()
-  }
-
-  @ReactProp(name = "postalCodeEnabled")
   fun setPostalCodeEnabled(view: StripeSdkCardView, postalCodeEnabled: Boolean = true) {
     view.setPostalCodeEnabled(postalCodeEnabled);
   }
 
-  @ReactProp(name = "cardStyle")
   fun setCardStyle(view: StripeSdkCardView, cardStyle: ReadableMap) {
     view.setCardStyle(cardStyle);
   }
 
-  @ReactProp(name = "placeholder")
   fun setPlaceHolders(view: StripeSdkCardView, placeholder: ReadableMap) {
     view.setPlaceHolders(placeholder);
   }
 
-  override fun createViewInstance(reactContext: ThemedReactContext): StripeSdkCardView {
-    return StripeSdkCardView(reactContext)
+  fun createViewInstance(reactContext: Context, mEventDispatcher: EventDispatcher): StripeSdkCardView {
+    // as it's reasonable we handle only one CardField component on the same screen
+    if (cardViewInstanceMap[CARD_FIELD_INSTANCE_NAME] != null) {
+      throw Exception("Only one CardField component on the same screen allowed")
+    }
+
+    cardViewInstanceMap[CARD_FIELD_INSTANCE_NAME] = StripeSdkCardView(reactContext, mEventDispatcher)
+    return cardViewInstanceMap[CARD_FIELD_INSTANCE_NAME] as StripeSdkCardView
   }
-}*/
+
+  fun onDropViewInstance(view: StripeSdkCardView) {
+
+    this.cardViewInstanceMap[CARD_FIELD_INSTANCE_NAME] = null
+  }
+
+  fun getCardViewInstance(): StripeSdkCardView? {
+    if (cardViewInstanceMap[CARD_FIELD_INSTANCE_NAME] != null) {
+      return cardViewInstanceMap[CARD_FIELD_INSTANCE_NAME] as StripeSdkCardView
+    }
+    return null
+  }
+}

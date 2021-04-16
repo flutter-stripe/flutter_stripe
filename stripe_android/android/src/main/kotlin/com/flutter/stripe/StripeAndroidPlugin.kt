@@ -3,6 +3,7 @@ package com.flutter.stripe
 import androidx.annotation.NonNull
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReadableMap
+import com.reactnativestripesdk.StripeSdkCardViewManager
 import com.reactnativestripesdk.StripeSdkModule
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
@@ -24,12 +25,16 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private lateinit var channel: MethodChannel
     private lateinit var stripeSdk: StripeSdkModule
 
+    private val stripeSdkCardViewManager: StripeSdkCardViewManager by lazy {
+        StripeSdkCardViewManager()
+    }
+
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter.stripe/payments", JSONMethodCodec.INSTANCE)
         channel.setMethodCallHandler(this)
         flutterPluginBinding
                 .platformViewRegistry
-                .registerViewFactory("flutter.stripe/card_field", StripeSdkCardPlatformViewFactory(flutterPluginBinding))
+                .registerViewFactory("flutter.stripe/card_field", StripeSdkCardPlatformViewFactory(flutterPluginBinding, stripeSdkCardViewManager))
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
@@ -78,7 +83,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-        stripeSdk = StripeSdkModule(binding)
+        stripeSdk = StripeSdkModule(binding, stripeSdkCardViewManager)
     }
 
     override fun onDetachedFromActivityForConfigChanges() {
