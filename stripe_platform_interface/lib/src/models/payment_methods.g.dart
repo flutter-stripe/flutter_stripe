@@ -191,6 +191,10 @@ _$_PaymentMethodParamsCard _$_$_PaymentMethodParamsCardFromJson(
   return _$_PaymentMethodParamsCard(
     setupFutureUsage: _$enumDecodeNullable(
         _$PaymentIntentsFutureUsageEnumMap, json['setupFutureUsage']),
+    billingDetails: json['billingDetails'] == null
+        ? null
+        : BillingDetails.fromJson(
+            json['billingDetails'] as Map<String, dynamic>),
   );
 }
 
@@ -199,6 +203,7 @@ Map<String, dynamic> _$_$_PaymentMethodParamsCardToJson(
     <String, dynamic>{
       'setupFutureUsage':
           _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
+      'billingDetails': instance.billingDetails?.toJson(),
     };
 
 K _$enumDecode<K, V>(

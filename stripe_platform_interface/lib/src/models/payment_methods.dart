@@ -166,6 +166,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
   @FreezedUnionValue('Card')
   const factory PaymentMethodParams.card({
     PaymentIntentsFutureUsage? setupFutureUsage,
+    BillingDetails? billingDetails,
   }) = _PaymentMethodParamsCard;
 
   @JsonSerializable(explicitToJson: true)

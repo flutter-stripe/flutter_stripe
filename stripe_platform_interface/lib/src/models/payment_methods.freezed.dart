@@ -2314,9 +2314,12 @@ class _$PaymentMethodParamsTearOff {
     );
   }
 
-  _PaymentMethodParamsCard card({PaymentIntentsFutureUsage? setupFutureUsage}) {
+  _PaymentMethodParamsCard card(
+      {PaymentIntentsFutureUsage? setupFutureUsage,
+      BillingDetails? billingDetails}) {
     return _PaymentMethodParamsCard(
       setupFutureUsage: setupFutureUsage,
+      billingDetails: billingDetails,
     );
   }
 
@@ -2394,7 +2397,9 @@ mixin _$PaymentMethodParams {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage) card,
+    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)
+        card,
     required TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         cardFromToken,
@@ -2413,7 +2418,9 @@ mixin _$PaymentMethodParams {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage)? card,
+    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        card,
     TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
@@ -2556,7 +2563,9 @@ class _$_PaymentMethodParamsDefault implements _PaymentMethodParamsDefault {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage) card,
+    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)
+        card,
     required TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         cardFromToken,
@@ -2578,7 +2587,9 @@ class _$_PaymentMethodParamsDefault implements _PaymentMethodParamsDefault {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage)? card,
+    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        card,
     TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
@@ -2666,7 +2677,11 @@ abstract class _$PaymentMethodParamsCardCopyWith<$Res> {
   factory _$PaymentMethodParamsCardCopyWith(_PaymentMethodParamsCard value,
           $Res Function(_PaymentMethodParamsCard) then) =
       __$PaymentMethodParamsCardCopyWithImpl<$Res>;
-  $Res call({PaymentIntentsFutureUsage? setupFutureUsage});
+  $Res call(
+      {PaymentIntentsFutureUsage? setupFutureUsage,
+      BillingDetails? billingDetails});
+
+  $BillingDetailsCopyWith<$Res>? get billingDetails;
 }
 
 /// @nodoc
@@ -2684,13 +2699,29 @@ class __$PaymentMethodParamsCardCopyWithImpl<$Res>
   @override
   $Res call({
     Object? setupFutureUsage = freezed,
+    Object? billingDetails = freezed,
   }) {
     return _then(_PaymentMethodParamsCard(
       setupFutureUsage: setupFutureUsage == freezed
           ? _value.setupFutureUsage
           : setupFutureUsage // ignore: cast_nullable_to_non_nullable
               as PaymentIntentsFutureUsage?,
+      billingDetails: billingDetails == freezed
+          ? _value.billingDetails
+          : billingDetails // ignore: cast_nullable_to_non_nullable
+              as BillingDetails?,
     ));
+  }
+
+  @override
+  $BillingDetailsCopyWith<$Res>? get billingDetails {
+    if (_value.billingDetails == null) {
+      return null;
+    }
+
+    return $BillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
+      return _then(_value.copyWith(billingDetails: value));
+    });
   }
 }
 
@@ -2699,17 +2730,20 @@ class __$PaymentMethodParamsCardCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
-  const _$_PaymentMethodParamsCard({this.setupFutureUsage});
+  const _$_PaymentMethodParamsCard(
+      {this.setupFutureUsage, this.billingDetails});
 
   factory _$_PaymentMethodParamsCard.fromJson(Map<String, dynamic> json) =>
       _$_$_PaymentMethodParamsCardFromJson(json);
 
   @override
   final PaymentIntentsFutureUsage? setupFutureUsage;
+  @override
+  final BillingDetails? billingDetails;
 
   @override
   String toString() {
-    return 'PaymentMethodParams.card(setupFutureUsage: $setupFutureUsage)';
+    return 'PaymentMethodParams.card(setupFutureUsage: $setupFutureUsage, billingDetails: $billingDetails)';
   }
 
   @override
@@ -2718,13 +2752,17 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
         (other is _PaymentMethodParamsCard &&
             (identical(other.setupFutureUsage, setupFutureUsage) ||
                 const DeepCollectionEquality()
-                    .equals(other.setupFutureUsage, setupFutureUsage)));
+                    .equals(other.setupFutureUsage, setupFutureUsage)) &&
+            (identical(other.billingDetails, billingDetails) ||
+                const DeepCollectionEquality()
+                    .equals(other.billingDetails, billingDetails)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(setupFutureUsage);
+      const DeepCollectionEquality().hash(setupFutureUsage) ^
+      const DeepCollectionEquality().hash(billingDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -2736,7 +2774,9 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage) card,
+    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)
+        card,
     required TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         cardFromToken,
@@ -2751,14 +2791,16 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     required TResult Function(BillingDetails billingDetails) grabPay,
     required TResult Function(BillingDetails billingDetails) p24,
   }) {
-    return card(setupFutureUsage);
+    return card(setupFutureUsage, billingDetails);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage)? card,
+    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        card,
     TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
@@ -2773,7 +2815,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     required TResult orElse(),
   }) {
     if (card != null) {
-      return card(setupFutureUsage);
+      return card(setupFutureUsage, billingDetails);
     }
     return orElse();
   }
@@ -2830,14 +2872,15 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
 
 abstract class _PaymentMethodParamsCard implements PaymentMethodParams {
   const factory _PaymentMethodParamsCard(
-          {PaymentIntentsFutureUsage? setupFutureUsage}) =
-      _$_PaymentMethodParamsCard;
+      {PaymentIntentsFutureUsage? setupFutureUsage,
+      BillingDetails? billingDetails}) = _$_PaymentMethodParamsCard;
 
   factory _PaymentMethodParamsCard.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsCard.fromJson;
 
   PaymentIntentsFutureUsage? get setupFutureUsage =>
       throw _privateConstructorUsedError;
+  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsCardCopyWith<_PaymentMethodParamsCard> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2945,7 +2988,9 @@ class _$_PaymentMethodParamsCardWithToken
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage) card,
+    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)
+        card,
     required TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         cardFromToken,
@@ -2967,7 +3012,9 @@ class _$_PaymentMethodParamsCardWithToken
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage)? card,
+    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        card,
     TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
@@ -3146,7 +3193,9 @@ class _$_PaymentMethodParamsCardWithMethodId
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage) card,
+    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)
+        card,
     required TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         cardFromToken,
@@ -3168,7 +3217,9 @@ class _$_PaymentMethodParamsCardWithMethodId
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage)? card,
+    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        card,
     TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
@@ -3303,7 +3354,9 @@ class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage) card,
+    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)
+        card,
     required TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         cardFromToken,
@@ -3325,7 +3378,9 @@ class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage)? card,
+    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        card,
     TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
@@ -3501,7 +3556,9 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage) card,
+    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)
+        card,
     required TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         cardFromToken,
@@ -3523,7 +3580,9 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage)? card,
+    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        card,
     TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
@@ -3696,7 +3755,9 @@ class _$_PaymentMethodParamsBankContact
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage) card,
+    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)
+        card,
     required TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         cardFromToken,
@@ -3718,7 +3779,9 @@ class _$_PaymentMethodParamsBankContact
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage)? card,
+    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        card,
     TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
@@ -3888,7 +3951,9 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage) card,
+    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)
+        card,
     required TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         cardFromToken,
@@ -3910,7 +3975,9 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage)? card,
+    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        card,
     TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
@@ -4076,7 +4143,9 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage) card,
+    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)
+        card,
     required TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         cardFromToken,
@@ -4098,7 +4167,9 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage)? card,
+    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        card,
     TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
@@ -4264,7 +4335,9 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage) card,
+    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)
+        card,
     required TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         cardFromToken,
@@ -4286,7 +4359,9 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage)? card,
+    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        card,
     TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
@@ -4452,7 +4527,9 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(String type) $default, {
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage) card,
+    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)
+        card,
     required TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)
         cardFromToken,
@@ -4474,7 +4551,9 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String type)? $default, {
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage)? card,
+    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        card,
     TResult Function(CardTokenDetails cardDetails,
             PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,

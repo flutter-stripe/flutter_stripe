@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:stripe_platform_interface/models.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 class Stripe {
