@@ -23,23 +23,23 @@ class _$SetupIntentTearOff {
   _SetupIntent call(
       {required String id,
       required String status,
-      required String description,
       required bool livemode,
       required String clientSecret,
       required String paymentMethodId,
       required String usage,
       required List<PaymentMethodType> paymentMethodTypes,
+      String? description,
       int? created,
       LastSetupError? lastSetupError}) {
     return _SetupIntent(
       id: id,
       status: status,
-      description: description,
       livemode: livemode,
       clientSecret: clientSecret,
       paymentMethodId: paymentMethodId,
       usage: usage,
       paymentMethodTypes: paymentMethodTypes,
+      description: description,
       created: created,
       lastSetupError: lastSetupError,
     );
@@ -57,13 +57,13 @@ const $SetupIntent = _$SetupIntentTearOff();
 mixin _$SetupIntent {
   String get id => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
   bool get livemode => throw _privateConstructorUsedError;
   String get clientSecret => throw _privateConstructorUsedError;
   String get paymentMethodId => throw _privateConstructorUsedError;
   String get usage => throw _privateConstructorUsedError;
   List<PaymentMethodType> get paymentMethodTypes =>
       throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   int? get created => throw _privateConstructorUsedError;
   LastSetupError? get lastSetupError => throw _privateConstructorUsedError;
 
@@ -81,12 +81,12 @@ abstract class $SetupIntentCopyWith<$Res> {
   $Res call(
       {String id,
       String status,
-      String description,
       bool livemode,
       String clientSecret,
       String paymentMethodId,
       String usage,
       List<PaymentMethodType> paymentMethodTypes,
+      String? description,
       int? created,
       LastSetupError? lastSetupError});
 
@@ -105,12 +105,12 @@ class _$SetupIntentCopyWithImpl<$Res> implements $SetupIntentCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? status = freezed,
-    Object? description = freezed,
     Object? livemode = freezed,
     Object? clientSecret = freezed,
     Object? paymentMethodId = freezed,
     Object? usage = freezed,
     Object? paymentMethodTypes = freezed,
+    Object? description = freezed,
     Object? created = freezed,
     Object? lastSetupError = freezed,
   }) {
@@ -122,10 +122,6 @@ class _$SetupIntentCopyWithImpl<$Res> implements $SetupIntentCopyWith<$Res> {
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
               as String,
       livemode: livemode == freezed
           ? _value.livemode
@@ -147,6 +143,10 @@ class _$SetupIntentCopyWithImpl<$Res> implements $SetupIntentCopyWith<$Res> {
           ? _value.paymentMethodTypes
           : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
               as List<PaymentMethodType>,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       created: created == freezed
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
@@ -180,12 +180,12 @@ abstract class _$SetupIntentCopyWith<$Res>
   $Res call(
       {String id,
       String status,
-      String description,
       bool livemode,
       String clientSecret,
       String paymentMethodId,
       String usage,
       List<PaymentMethodType> paymentMethodTypes,
+      String? description,
       int? created,
       LastSetupError? lastSetupError});
 
@@ -207,12 +207,12 @@ class __$SetupIntentCopyWithImpl<$Res> extends _$SetupIntentCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? status = freezed,
-    Object? description = freezed,
     Object? livemode = freezed,
     Object? clientSecret = freezed,
     Object? paymentMethodId = freezed,
     Object? usage = freezed,
     Object? paymentMethodTypes = freezed,
+    Object? description = freezed,
     Object? created = freezed,
     Object? lastSetupError = freezed,
   }) {
@@ -224,10 +224,6 @@ class __$SetupIntentCopyWithImpl<$Res> extends _$SetupIntentCopyWithImpl<$Res>
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
               as String,
       livemode: livemode == freezed
           ? _value.livemode
@@ -249,6 +245,10 @@ class __$SetupIntentCopyWithImpl<$Res> extends _$SetupIntentCopyWithImpl<$Res>
           ? _value.paymentMethodTypes
           : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
               as List<PaymentMethodType>,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       created: created == freezed
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
@@ -268,12 +268,12 @@ class _$_SetupIntent implements _SetupIntent {
   const _$_SetupIntent(
       {required this.id,
       required this.status,
-      required this.description,
       required this.livemode,
       required this.clientSecret,
       required this.paymentMethodId,
       required this.usage,
       required this.paymentMethodTypes,
+      this.description,
       this.created,
       this.lastSetupError});
 
@@ -285,8 +285,6 @@ class _$_SetupIntent implements _SetupIntent {
   @override
   final String status;
   @override
-  final String description;
-  @override
   final bool livemode;
   @override
   final String clientSecret;
@@ -297,13 +295,15 @@ class _$_SetupIntent implements _SetupIntent {
   @override
   final List<PaymentMethodType> paymentMethodTypes;
   @override
+  final String? description;
+  @override
   final int? created;
   @override
   final LastSetupError? lastSetupError;
 
   @override
   String toString() {
-    return 'SetupIntent(id: $id, status: $status, description: $description, livemode: $livemode, clientSecret: $clientSecret, paymentMethodId: $paymentMethodId, usage: $usage, paymentMethodTypes: $paymentMethodTypes, created: $created, lastSetupError: $lastSetupError)';
+    return 'SetupIntent(id: $id, status: $status, livemode: $livemode, clientSecret: $clientSecret, paymentMethodId: $paymentMethodId, usage: $usage, paymentMethodTypes: $paymentMethodTypes, description: $description, created: $created, lastSetupError: $lastSetupError)';
   }
 
   @override
@@ -314,9 +314,6 @@ class _$_SetupIntent implements _SetupIntent {
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.status, status) ||
                 const DeepCollectionEquality().equals(other.status, status)) &&
-            (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
             (identical(other.livemode, livemode) ||
                 const DeepCollectionEquality()
                     .equals(other.livemode, livemode)) &&
@@ -331,6 +328,9 @@ class _$_SetupIntent implements _SetupIntent {
             (identical(other.paymentMethodTypes, paymentMethodTypes) ||
                 const DeepCollectionEquality()
                     .equals(other.paymentMethodTypes, paymentMethodTypes)) &&
+            (identical(other.description, description) ||
+                const DeepCollectionEquality()
+                    .equals(other.description, description)) &&
             (identical(other.created, created) ||
                 const DeepCollectionEquality()
                     .equals(other.created, created)) &&
@@ -344,12 +344,12 @@ class _$_SetupIntent implements _SetupIntent {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(status) ^
-      const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(livemode) ^
       const DeepCollectionEquality().hash(clientSecret) ^
       const DeepCollectionEquality().hash(paymentMethodId) ^
       const DeepCollectionEquality().hash(usage) ^
       const DeepCollectionEquality().hash(paymentMethodTypes) ^
+      const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(created) ^
       const DeepCollectionEquality().hash(lastSetupError);
 
@@ -368,12 +368,12 @@ abstract class _SetupIntent implements SetupIntent {
   const factory _SetupIntent(
       {required String id,
       required String status,
-      required String description,
       required bool livemode,
       required String clientSecret,
       required String paymentMethodId,
       required String usage,
       required List<PaymentMethodType> paymentMethodTypes,
+      String? description,
       int? created,
       LastSetupError? lastSetupError}) = _$_SetupIntent;
 
@@ -385,8 +385,6 @@ abstract class _SetupIntent implements SetupIntent {
   @override
   String get status => throw _privateConstructorUsedError;
   @override
-  String get description => throw _privateConstructorUsedError;
-  @override
   bool get livemode => throw _privateConstructorUsedError;
   @override
   String get clientSecret => throw _privateConstructorUsedError;
@@ -397,6 +395,8 @@ abstract class _SetupIntent implements SetupIntent {
   @override
   List<PaymentMethodType> get paymentMethodTypes =>
       throw _privateConstructorUsedError;
+  @override
+  String? get description => throw _privateConstructorUsedError;
   @override
   int? get created => throw _privateConstructorUsedError;
   @override

@@ -35,8 +35,11 @@ internal fun mapConfirmationMethod(captureMethod: PaymentIntent.ConfirmationMeth
   }
 }
 
-internal fun mapToReturnURL(urlScheme: String): String {
-  return "$urlScheme://safepay"
+internal fun mapToReturnURL(urlScheme: String?): String? {
+  if (urlScheme != null) {
+    return "$urlScheme://safepay"
+  }
+  return null
 }
 
 internal fun mapIntentShipping(shipping: PaymentIntent.Shipping): WritableMap {
@@ -261,32 +264,6 @@ internal fun mapFromPaymentIntentLastErrorType(errorType: PaymentIntent.Error.Ty
   }
 }
 
-internal fun mapToPaymentMethodCreateParams(cardData: ReadableMap): PaymentMethodCreateParams {
-  val cardParams = CardParams(
-    cardData.getString("number").orEmpty(),
-    cardData.getInt("expiryMonth"),
-    cardData.getInt("expiryYear"),
-    cardData.getString("cvc"),
-    if (cardData.hasKey("name")) cardData.getString("name") else null,
-    if (cardData.hasKey("postalCode")) Address.Builder().setPostalCode(cardData.getString("postalCode").orEmpty()).build() else null,
-    if (cardData.hasKey("currency")) cardData.getString("currency") else null,
-    null)
-    return PaymentMethodCreateParams.createCard(cardParams)
-}
-
-internal fun mapToCard(card: ReadableMap): PaymentMethodCreateParams.Card {
-  if (card.hasKey("token")) {
-    return PaymentMethodCreateParams.Card.create(card.getString("token"))
-  } else {
-    return PaymentMethodCreateParams.Card.Builder()
-            .setCvc(card.getString("cvc"))
-            .setExpiryMonth(card.getInt("expiryMonth"))
-            .setExpiryYear(card.getInt("expiryYear"))
-            .setNumber(card.getString("number").orEmpty())
-            .build()
-  }
-}
-
 fun getValOr(map: ReadableMap, key: String, default: String? = ""): String? {
   return if (map.hasKey(key)) map.getString(key) else default
 }
@@ -312,6 +289,24 @@ internal fun mapToBillingDetails(billingDetails: ReadableMap?): PaymentMethod.Bi
     .build()
 }
 
+internal fun mapToShippingDetails(shippingDetails: ReadableMap?): ConfirmPaymentIntentParams.Shipping? {
+  if (shippingDetails == null) {
+    return null
+  }
+
+  return ConfirmPaymentIntentParams.Shipping(
+    name = getValOr(shippingDetails, "name") ?: "",
+    address = Address.Builder()
+      .setLine1(getValOr(shippingDetails, "addressLine1"))
+      .setLine2(getValOr(shippingDetails, "addressLine2"))
+      .setCity(getValOr(shippingDetails, "addressCity"))
+      .setState(getValOr(shippingDetails, "addressState"))
+      .setCountry(getValOr(shippingDetails, "addressCountry"))
+      .setPostalCode(getValOr(shippingDetails, "addressPostalCode"))
+      .build()
+  )
+}
+
 private fun getStringOrNull(map: ReadableMap?, key: String): String? {
   return if (map?.hasKey(key) == true) map.getString(key) else null
 }
@@ -322,6 +317,10 @@ fun getIntOrNull(map: ReadableMap?, key: String): Int? {
 
 fun getMapOrNull(map: ReadableMap?, key: String): ReadableMap? {
   return if (map?.hasKey(key) == true) map.getMap(key) else null
+}
+
+fun getBooleanOrFalse(map: ReadableMap?, key: String): Boolean {
+  return if (map?.hasKey(key) == true) map.getBoolean(key) else false
 }
 
 private fun convertToUnixTimestamp(timestamp: Long): Int {
@@ -380,7 +379,7 @@ fun mapToUICustomization(params: ReadableMap): PaymentAuthConfig.Stripe3ds2UiCus
   getIntOrNull(textBoxCustomization, "borderWidth")?.let {
     textBoxCustomizationBuilder.setBorderWidth(it)
   }
-  getIntOrNull(textBoxCustomization, "cornerRadius")?.let {
+  getIntOrNull(textBoxCustomization, "borderRadius")?.let {
     textBoxCustomizationBuilder.setCornerRadius(it)
   }
   getIntOrNull(textBoxCustomization, "textFontSize")?.let {
@@ -390,7 +389,7 @@ fun mapToUICustomization(params: ReadableMap): PaymentAuthConfig.Stripe3ds2UiCus
   getStringOrNull(buttonCustomization, "backgroundColor")?.let {
     buttonCustomizationBuilder.setBackgroundColor(it)
   }
-  getIntOrNull(buttonCustomization, "cornerRadius")?.let {
+  getIntOrNull(buttonCustomization, "borderRadius")?.let {
     buttonCustomizationBuilder.setCornerRadius(it)
   }
   getStringOrNull(buttonCustomization, "textColor")?.let {
@@ -466,10 +465,10 @@ internal fun mapSetupIntentUsage(type: StripeIntent.Usage?): String {
   }
 }
 
-fun mapToPaymentIntentFutureUsage(type: String?): ConfirmPaymentIntentParams.SetupFutureUsage {
+fun mapToPaymentIntentFutureUsage(type: String?): ConfirmPaymentIntentParams.SetupFutureUsage? {
   return when (type) {
     "OffSession" ->  ConfirmPaymentIntentParams.SetupFutureUsage.OffSession
     "OnSession" ->  ConfirmPaymentIntentParams.SetupFutureUsage.OnSession
-    else ->  ConfirmPaymentIntentParams.SetupFutureUsage.OnSession
+    else ->  null
   }
 }

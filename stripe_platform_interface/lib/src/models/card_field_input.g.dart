@@ -42,26 +42,24 @@ Map<String, dynamic> _$_$_CardTokenDetailsToJson(
 _$_CardFieldInputDetails _$_$_CardFieldInputDetailsFromJson(
     Map<String, dynamic> json) {
   return _$_CardFieldInputDetails(
-    number: json['number'] as String,
-    expiryMonth: json['expiryMonth'] as int,
-    expiryYear: json['expiryYear'] as int,
-    cvc: json['cvc'] as String,
-    name: json['name'] as String?,
+    last4: json['last4'] as String?,
+    expiryMonth: json['expiryMonth'] as String?,
+    expiryYear: json['expiryYear'] as String?,
+    complete: json['complete'] as bool,
     postalCode: json['postalCode'] as String?,
-    currency: json['currency'] as String?,
+    brand: json['brand'] as String?,
   );
 }
 
 Map<String, dynamic> _$_$_CardFieldInputDetailsToJson(
         _$_CardFieldInputDetails instance) =>
     <String, dynamic>{
-      'number': instance.number,
+      'last4': instance.last4,
       'expiryMonth': instance.expiryMonth,
       'expiryYear': instance.expiryYear,
-      'cvc': instance.cvc,
-      'name': instance.name,
+      'complete': instance.complete,
       'postalCode': instance.postalCode,
-      'currency': instance.currency,
+      'brand': instance.brand,
     };
 
 _$_CardFieldFocusName _$_$_CardFieldFocusNameFromJson(

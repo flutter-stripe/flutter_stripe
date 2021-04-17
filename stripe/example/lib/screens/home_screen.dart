@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:stripe_example/screens/no_webhook_payment_screen.dart';
-import 'package:stripe_example/screens/setup_future_payment_screen.dart';
-import 'package:stripe_example/screens/webhook_payment_screen.dart';
+import '../screens/no_webhook_payment_screen.dart';
+import '../screens/setup_future_payment_screen.dart';
+import '../screens/webhook_payment_screen.dart';
 
 import 'cvc_re_collection_screen.dart';
 

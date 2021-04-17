@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../models.dart';
+import 'payment_methods.dart';
+
 
 part 'errors.freezed.dart';
 

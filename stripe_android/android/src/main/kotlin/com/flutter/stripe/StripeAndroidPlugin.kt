@@ -3,14 +3,18 @@ package com.flutter.stripe
 import androidx.annotation.NonNull
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReadableMap
+import com.reactnativestripesdk.StripeSdkCardViewManager
 import com.reactnativestripesdk.StripeSdkModule
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
+import io.flutter.plugin.common.JSONMethodCodec
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
+import org.json.JSONObject
+
 
 /** StripeAndroidPlugin */
 class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
@@ -21,19 +25,26 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private lateinit var channel: MethodChannel
     private lateinit var stripeSdk: StripeSdkModule
 
+    private val stripeSdkCardViewManager: StripeSdkCardViewManager by lazy {
+        StripeSdkCardViewManager()
+    }
+
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter.stripe/payments")
+        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter.stripe/payments", JSONMethodCodec.INSTANCE)
         channel.setMethodCallHandler(this)
         flutterPluginBinding
                 .platformViewRegistry
-                .registerViewFactory("flutter.stripe/card_field", StripeSdkCardPlatformViewFactory(flutterPluginBinding))
+                .registerViewFactory("flutter.stripe/card_field", StripeSdkCardPlatformViewFactory(flutterPluginBinding, stripeSdkCardViewManager))
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
         when (call.method) {
-            "initialise" -> stripeSdk.initialise(
-                    params = ReadableMap(call.arguments as Map<String, Any>)
-            )
+            "initialise" -> {
+                stripeSdk.initialise(
+                        params = ReadableMap(call.arguments as JSONObject)
+                )
+                result.success(null)
+            }
             "createPaymentMethod" -> stripeSdk.createPaymentMethod(
                     data = call.requiredArgument("data"),
                     options = call.requiredArgument("options"),
@@ -72,7 +83,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-        stripeSdk = StripeSdkModule(binding)
+        stripeSdk = StripeSdkModule(binding, stripeSdkCardViewManager)
     }
 
     override fun onDetachedFromActivityForConfigChanges() {
@@ -87,14 +98,14 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
 private inline fun <reified T> MethodCall.optionalArgument(key: String): T? {
     if (T::class.java == ReadableMap::class.java) {
-        return ReadableMap(argument<Map<String, Any>>(key) ?: mapOf()) as T
+        return ReadableMap(argument<JSONObject>(key) ?: JSONObject()) as T
     }
     return argument<T>(key)
 }
 
 private inline fun <reified T> MethodCall.requiredArgument(key: String): T {
     if (T::class.java == ReadableMap::class.java) {
-        return ReadableMap(argument<Map<String, Any>>(key) ?: error("Required parameter $key not set")) as T
+        return ReadableMap(argument<JSONObject>(key) ?: error("Required parameter $key not set")) as T
     }
     return argument<T>(key) ?: error("Required parameter $key not set")
 }

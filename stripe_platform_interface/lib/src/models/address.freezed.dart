@@ -21,12 +21,12 @@ class _$AddressTearOff {
   const _$AddressTearOff();
 
   _Address call(
-      {required String city,
-      required String country,
-      required String line1,
-      required String line2,
-      required String postalCode,
-      required String state}) {
+      {required String? city,
+      required String? country,
+      required String? line1,
+      required String? line2,
+      required String? postalCode,
+      required String? state}) {
     return _Address(
       city: city,
       country: country,
@@ -47,12 +47,12 @@ const $Address = _$AddressTearOff();
 
 /// @nodoc
 mixin _$Address {
-  String get city => throw _privateConstructorUsedError;
-  String get country => throw _privateConstructorUsedError;
-  String get line1 => throw _privateConstructorUsedError;
-  String get line2 => throw _privateConstructorUsedError;
-  String get postalCode => throw _privateConstructorUsedError;
-  String get state => throw _privateConstructorUsedError;
+  String? get city => throw _privateConstructorUsedError;
+  String? get country => throw _privateConstructorUsedError;
+  String? get line1 => throw _privateConstructorUsedError;
+  String? get line2 => throw _privateConstructorUsedError;
+  String? get postalCode => throw _privateConstructorUsedError;
+  String? get state => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -64,12 +64,12 @@ abstract class $AddressCopyWith<$Res> {
   factory $AddressCopyWith(Address value, $Res Function(Address) then) =
       _$AddressCopyWithImpl<$Res>;
   $Res call(
-      {String city,
-      String country,
-      String line1,
-      String line2,
-      String postalCode,
-      String state});
+      {String? city,
+      String? country,
+      String? line1,
+      String? line2,
+      String? postalCode,
+      String? state});
 }
 
 /// @nodoc
@@ -93,27 +93,27 @@ class _$AddressCopyWithImpl<$Res> implements $AddressCopyWith<$Res> {
       city: city == freezed
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       country: country == freezed
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       line1: line1 == freezed
           ? _value.line1
           : line1 // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       line2: line2 == freezed
           ? _value.line2
           : line2 // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       postalCode: postalCode == freezed
           ? _value.postalCode
           : postalCode // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       state: state == freezed
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -124,12 +124,12 @@ abstract class _$AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
       __$AddressCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String city,
-      String country,
-      String line1,
-      String line2,
-      String postalCode,
-      String state});
+      {String? city,
+      String? country,
+      String? line1,
+      String? line2,
+      String? postalCode,
+      String? state});
 }
 
 /// @nodoc
@@ -154,27 +154,27 @@ class __$AddressCopyWithImpl<$Res> extends _$AddressCopyWithImpl<$Res>
       city: city == freezed
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       country: country == freezed
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       line1: line1 == freezed
           ? _value.line1
           : line1 // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       line2: line2 == freezed
           ? _value.line2
           : line2 // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       postalCode: postalCode == freezed
           ? _value.postalCode
           : postalCode // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       state: state == freezed
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -195,17 +195,17 @@ class _$_Address implements _Address {
       _$_$_AddressFromJson(json);
 
   @override
-  final String city;
+  final String? city;
   @override
-  final String country;
+  final String? country;
   @override
-  final String line1;
+  final String? line1;
   @override
-  final String line2;
+  final String? line2;
   @override
-  final String postalCode;
+  final String? postalCode;
   @override
-  final String state;
+  final String? state;
 
   @override
   String toString() {
@@ -255,27 +255,27 @@ class _$_Address implements _Address {
 
 abstract class _Address implements Address {
   const factory _Address(
-      {required String city,
-      required String country,
-      required String line1,
-      required String line2,
-      required String postalCode,
-      required String state}) = _$_Address;
+      {required String? city,
+      required String? country,
+      required String? line1,
+      required String? line2,
+      required String? postalCode,
+      required String? state}) = _$_Address;
 
   factory _Address.fromJson(Map<String, dynamic> json) = _$_Address.fromJson;
 
   @override
-  String get city => throw _privateConstructorUsedError;
+  String? get city => throw _privateConstructorUsedError;
   @override
-  String get country => throw _privateConstructorUsedError;
+  String? get country => throw _privateConstructorUsedError;
   @override
-  String get line1 => throw _privateConstructorUsedError;
+  String? get line1 => throw _privateConstructorUsedError;
   @override
-  String get line2 => throw _privateConstructorUsedError;
+  String? get line2 => throw _privateConstructorUsedError;
   @override
-  String get postalCode => throw _privateConstructorUsedError;
+  String? get postalCode => throw _privateConstructorUsedError;
   @override
-  String get state => throw _privateConstructorUsedError;
+  String? get state => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AddressCopyWith<_Address> get copyWith =>

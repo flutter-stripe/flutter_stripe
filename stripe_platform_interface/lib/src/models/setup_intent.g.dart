@@ -10,7 +10,6 @@ _$_SetupIntent _$_$_SetupIntentFromJson(Map<String, dynamic> json) {
   return _$_SetupIntent(
     id: json['id'] as String,
     status: json['status'] as String,
-    description: json['description'] as String,
     livemode: json['livemode'] as bool,
     clientSecret: json['clientSecret'] as String,
     paymentMethodId: json['paymentMethodId'] as String,
@@ -18,6 +17,7 @@ _$_SetupIntent _$_$_SetupIntentFromJson(Map<String, dynamic> json) {
     paymentMethodTypes: (json['paymentMethodTypes'] as List<dynamic>)
         .map((e) => _$enumDecode(_$PaymentMethodTypeEnumMap, e))
         .toList(),
+    description: json['description'] as String?,
     created: json['created'] as int?,
     lastSetupError: json['lastSetupError'] == null
         ? null
@@ -30,7 +30,6 @@ Map<String, dynamic> _$_$_SetupIntentToJson(_$_SetupIntent instance) =>
     <String, dynamic>{
       'id': instance.id,
       'status': instance.status,
-      'description': instance.description,
       'livemode': instance.livemode,
       'clientSecret': instance.clientSecret,
       'paymentMethodId': instance.paymentMethodId,
@@ -38,6 +37,7 @@ Map<String, dynamic> _$_$_SetupIntentToJson(_$_SetupIntent instance) =>
       'paymentMethodTypes': instance.paymentMethodTypes
           .map((e) => _$PaymentMethodTypeEnumMap[e])
           .toList(),
+      'description': instance.description,
       'created': instance.created,
       'lastSetupError': instance.lastSetupError?.toJson(),
     };

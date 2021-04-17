@@ -1,9 +1,12 @@
 library stripe_platform_interface;
 
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-import 'models.dart';
 import 'src/method_channel_stripe.dart';
+import 'src/models/apple_pay.dart';
+import 'src/models/payment_intents.dart';
+import 'src/models/payment_methods.dart';
 import 'src/models/setup_intent.dart';
+import 'src/models/three_d_secure.dart';
 
 export 'models.dart';
 

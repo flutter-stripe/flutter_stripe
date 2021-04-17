@@ -1,8 +1,9 @@
 import 'package:flutter/painting.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
-part 'card_field_input.g.dart';
+
 part 'card_field_input.freezed.dart';
+part 'card_field_input.g.dart';
 
 @freezed
 class CardDecoration with _$CardDecoration {
@@ -54,13 +55,12 @@ class CardTokenDetails with _$CardTokenDetails {
 class CardFieldInputDetails with _$CardFieldInputDetails {
   @JsonSerializable(explicitToJson: true)
   const factory CardFieldInputDetails({
-    required String number,
-    required int expiryMonth,
-    required int expiryYear,
-    required String cvc,
-    String? name,
+    String? last4,
+    String? expiryMonth,
+    String? expiryYear,
+    required bool complete,
     String? postalCode,
-    String? currency,
+    String? brand,
   }) = _CardFieldInputDetails;
 
   factory CardFieldInputDetails.fromJson(Map<String, dynamic> json) =>

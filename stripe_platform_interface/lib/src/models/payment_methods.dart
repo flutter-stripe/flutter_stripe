@@ -3,6 +3,8 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:stripe_platform_interface/src/models/card_field_input.dart';
 import 'package:stripe_platform_interface/src/models/payment_intents.dart';
 
+import 'address.dart';
+
 part 'payment_methods.freezed.dart';
 part 'payment_methods.g.dart';
 
@@ -11,9 +13,9 @@ class PaymentMethod with _$PaymentMethod {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentMethod({
     required String id,
-    required bool liveMode,
+    required bool livemode,
     required String type,
-    required String customerId,
+    String? customerId,
     required BillingDetails billingDetails,
     @JsonKey(name: 'Card') required Card card,
     @JsonKey(name: 'SepaDebit') required SepaDebit sepaDebit,
@@ -34,14 +36,9 @@ class BillingDetails with _$BillingDetails {
   @JsonSerializable(explicitToJson: true)
   const factory BillingDetails({
     String? email,
+    Address? address,
     String? phone,
     String? name,
-    String? postalCode,
-    String? city,
-    String? state,
-    String? country,
-    @JsonKey(name: 'line1') String? addressLine1,
-    @JsonKey(name: 'line2') String? addressLine2,
   }) = _BillingDetails;
   factory BillingDetails.fromJson(Map<String, dynamic> json) =>
       _$BillingDetailsFromJson(json);
@@ -76,10 +73,10 @@ class BacsDebit with _$BacsDebit {
 class Card with _$Card {
   @JsonSerializable(explicitToJson: true)
   const factory Card({
-    CardBrand? brand,
+    String? brand,
     String? country,
-    String? expYear,
-    String? expMonth,
+    int? expYear,
+    int? expMonth,
     String? funding,
     String? last4,
   }) = _Card;
@@ -168,7 +165,6 @@ class PaymentMethodParams with _$PaymentMethodParams {
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Card')
   const factory PaymentMethodParams.card({
-    required CardFieldInputDetails cardDetails,
     PaymentIntentsFutureUsage? setupFutureUsage,
   }) = _PaymentMethodParamsCard;
 

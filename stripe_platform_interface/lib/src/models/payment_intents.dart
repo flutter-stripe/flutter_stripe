@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:stripe_platform_interface/src/models/payment_methods.dart';
 
 import 'address.dart';
 
@@ -23,7 +22,7 @@ class PaymentIntent with _$PaymentIntent {
     required ConfirmationMethod confirmationMethod,
     String? description,
     String? receiptEmail,
-    String? canceledAt,
+    int? canceledAt,
     // LastPaymentError? lastPaymentError,
     ShippingDetails? shipping,
   }) = _PaymentIntent;
