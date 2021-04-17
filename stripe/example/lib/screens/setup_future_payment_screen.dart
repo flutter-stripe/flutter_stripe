@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:stripe/stripe.dart';
 import 'package:stripe_example/config.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
+import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 class SetupFuturePaymentScreen extends StatefulWidget {
   @override
@@ -66,26 +67,27 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
       final clientSecret = await _createSetupIntentOnBackend(_email);
 
       // 2. Gather customer billing information (ex. email)
-      // final billingDetails = BillingDetails(
-      //   email: 'email@stripe.com',
-      //   phone: '+48888000888',
-      //   address: Address(
-      //     city: 'Houston',
-      //     country: 'US',
-      //     line1: '1459  Circle Drive',
-      //     line2: '',
-      //     state: 'Texas',
-      //     postalCode: '77063',
-      //   ),
-      // ); // mo/ mocked data for tests
+      final billingDetails = BillingDetails(
+        email: 'email@stripe.com',
+        phone: '+48888000888',
+        address: Address(
+          city: 'Houston',
+          country: 'US',
+          line1: '1459  Circle Drive',
+          line2: '',
+          state: 'Texas',
+          postalCode: '77063',
+        ),
+      ); // mo/ mocked data for tests
 
       // 3. Confirm setup intent
 
       final setupIntentResult = await Stripe.instance.confirmSetupIntent(
-          clientSecret,
-          PaymentMethodParams.card(
-              //billingDetails,
-              ));
+        clientSecret,
+        PaymentMethodParams.card(
+          billingDetails: billingDetails,
+        ),
+      );
       log('Setup Intent created $setupIntentResult');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
