@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
@@ -127,7 +128,7 @@ class Stripe {
       final paymentMethod = await _platform.createPaymentMethod(data, options);
       return paymentMethod;
     } on StripeError catch (error) {
-      throw StripeError.generic(message: error.message, code: error.message);
+      throw StripeError(message: error.message, code: error.message);
     }
   }
 
@@ -137,7 +138,7 @@ class Stripe {
       final paymentMethod = await _platform.retrievePaymentIntent(clientSecret);
       return paymentMethod;
     } on StripeError catch (error) {
-      throw StripeError.generic(message: error.message, code: error.message);
+      throw StripeError(message: error.message, code: error.message);
     }
   }
 
