@@ -1,35 +1,34 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'payment_methods.dart';
-
-
 part 'errors.freezed.dart';
+part 'errors.g.dart';
 
-enum ConfirmPaymentError { canceled, failed, unkown }
+enum ConfirmPaymentError { canceled, failed, unknown }
 
-enum CardActionError { canceled, failed, unkown }
+enum CardActionError { canceled, failed, unknown }
 
-enum ConfirmSetupIntentError { canceled, failed, unkown }
+enum ConfirmSetupIntentError { canceled, failed, unknown }
 
 enum CreatePaymentMethodError { failed }
-enum RetrievePaymentIntentError { canceled }
+enum PaymentIntentError { unknown }
 
-enum ApplePayError { canceled, failed, unkown }
+enum ApplePayError { canceled, failed, unknown }
 
 @freezed
 class StripeError<T> with _$StripeError<T> {
-  const factory StripeError.generic({
+  @JsonSerializable(explicitToJson: true)
+  const factory StripeError({
     required String message,
-    required T code,
+    @JsonKey(fromJson: _dataFromJson, toJson: _dataToJson) required T code,
   }) = _StripeErrorGeneric;
 
-  const factory StripeError.lastPayment({
-    required String code,
-    required LastPaymentErrorType type,
-    required PaymentMethod paymentMethod,
-    required String message,
-  }) = _StripeErrorLastPayment;
+  factory StripeError.fromJson(Map<String, dynamic> json) =>
+      _$StripeErrorFromJson<T>(json);
 }
+
+T _dataFromJson<T>(Map<String, dynamic> input) => input['code'] as T;
+
+Map<String, dynamic> _dataToJson<T>(T input) => {'code': input};
 
 enum LastPaymentErrorType {
   ApiConnection,
