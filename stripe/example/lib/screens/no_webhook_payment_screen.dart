@@ -103,15 +103,14 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
         cardActionError.message
         );
       } else*/
-      if (paymentIntent != null) {
-        if (paymentIntent.status == PaymentIntentsStatus.RequiresConfirmation) {
-          // 5. Call API to confirm intent
-          await confirmIntent(paymentIntent.id);
-        } else {
-          // Payment succedeed
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text('Error: ${paymentIntentResult['error']}')));
-        }
+
+      if (paymentIntent.status == PaymentIntentsStatus.RequiresConfirmation) {
+        // 5. Call API to confirm intent
+        await confirmIntent(paymentIntent.id);
+      } else {
+        // Payment succedeed
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Error: ${paymentIntentResult['error']}')));
       }
     }
   }
@@ -131,7 +130,7 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
   Future<Map<String, dynamic>> callNoWebhookPayEndpointIntentId({
     required String paymentIntentId,
   }) async {
-    final url = Uri.parse('${kApiUrl}/charge-card-off-session');
+    final url = Uri.parse('$kApiUrl/charge-card-off-session');
     final response = await http.post(
       url,
       headers: {
@@ -148,7 +147,7 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
     required String currency,
     List<Map<String, dynamic>>? items,
   }) async {
-    final url = Uri.parse('${kApiUrl}/charge-card-off-session');
+    final url = Uri.parse('$kApiUrl/charge-card-off-session');
     final response = await http.post(
       url,
       headers: {

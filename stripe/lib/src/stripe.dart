@@ -6,28 +6,24 @@ import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 class Stripe {
   /// Disables the platform override in order to use a manually registered
+  // ignore: comment_references
   /// [SharePlatform] for testing purposes.
   /// See https://github.com/flutter/flutter/issues/52267 for more details.
-  @visibleForTesting
-  static set disableSharePlatformOverride(bool override) {
-    _disablePlatformOverride = override;
-  }
+  ///
 
-  static bool _disablePlatformOverride = false;
+  Stripe._();
+
   static StripePlatform? __platform;
 
   // This is to manually endorse the Linux plugin until automatic registration
   // of dart plugins is implemented.
   // See https://github.com/flutter/flutter/issues/52267 for more details.
   static StripePlatform get _platform {
-    if (__platform == null) {
-      __platform ??= StripePlatform.instance;
-    }
+    __platform ??= StripePlatform.instance;
     return __platform!;
   }
 
   static late final Stripe instance = Stripe._();
-  Stripe._();
 
   String? _publishableKey;
   static String get publishableKey {
@@ -37,7 +33,9 @@ class Stripe {
   }
 
   static set publishableKey(String value) {
-    if (value == instance._publishableKey) return;
+    if (value == instance._publishableKey) {
+      return;
+    }
     instance._publishableKey = value;
     instance.markNeedsSettings();
   }
@@ -45,7 +43,9 @@ class Stripe {
   String? _stripeAccountId;
   static String? get stripeAccountId => instance._stripeAccountId;
   static set stripeAccountId(String? value) {
-    if (value == instance._stripeAccountId) return;
+    if (value == instance._stripeAccountId) {
+      return;
+    }
     instance._stripeAccountId = value;
     instance.markNeedsSettings();
   }
@@ -54,7 +54,9 @@ class Stripe {
   static ThreeDSecureConfigurationParams? get threeDSecureParams =>
       instance._threeDSecureParams;
   static set threeDSecureParams(ThreeDSecureConfigurationParams? value) {
-    if (value == instance._threeDSecureParams) return;
+    if (value == instance._threeDSecureParams) {
+      return;
+    }
     instance._threeDSecureParams = value;
     instance.markNeedsSettings();
   }
@@ -62,7 +64,9 @@ class Stripe {
   String? _merchantIdentifier;
   static String? get merchantIdentifier => instance._merchantIdentifier;
   static set merchantIdentifier(String? value) {
-    if (value == instance._merchantIdentifier) return;
+    if (value == instance._merchantIdentifier) {
+      return;
+    }
     instance._merchantIdentifier = value;
     instance.markNeedsSettings();
   }
@@ -74,19 +78,21 @@ class Stripe {
 
   Future<void>? settingsFuture;
   FutureOr<void> awaitForSettings() {
-    if (_needsSettings) settingsFuture = applySettings();
-    if (settingsFuture != null) return settingsFuture;
+    if (_needsSettings) {
+      settingsFuture = applySettings();
+    }
+    if (settingsFuture != null) {
+      return settingsFuture;
+    }
     return null;
   }
 
-  Future<void> applySettings() {
-    return _initialise(
-      publishableKey: publishableKey,
-      merchantIdentifier: merchantIdentifier,
-      stripeAccountId: stripeAccountId,
-      threeDSecureParams: threeDSecureParams,
-    );
-  }
+  Future<void> applySettings() => _initialise(
+        publishableKey: publishableKey,
+        merchantIdentifier: merchantIdentifier,
+        stripeAccountId: stripeAccountId,
+        threeDSecureParams: threeDSecureParams,
+      );
 
   Future<void> _initialise({
     required String publishableKey,
@@ -152,7 +158,7 @@ class Stripe {
       final paymentMethod = await _platform.confirmPaymentMethod(
           paymentIntentClientSecret, data, options);
       return paymentMethod;
-    } on StripeError catch (error) {
+    } on StripeError catch (_) {
       rethrow;
     }
   }
@@ -162,11 +168,12 @@ class Stripe {
   ) async {
     await awaitForSettings();
     if (!isApplePaySupported.value) {
-      //throw StripeError<ApplePayError>(ApplePayError.canceled, 'APPLE_PAY_NOT_SUPPORTED_MESSAGE');
+      //throw StripeError<ApplePayError>
+      //(ApplePayError.canceled, 'APPLE_PAY_NOT_SUPPORTED_MESSAGE');
     }
     try {
       await _platform.presentApplePay(params);
-    } on StripeError catch (error) {
+    } on StripeError {
       rethrow;
     }
   }
@@ -176,11 +183,12 @@ class Stripe {
   ) async {
     await awaitForSettings();
     if (!isApplePaySupported.value) {
-      //throw StripeError<ApplePayError>(ApplePayError.canceled, 'APPLE_PAY_NOT_SUPPORTED_MESSAGE');
+      //throw StripeError<ApplePayError>
+      //(ApplePayError.canceled, 'APPLE_PAY_NOT_SUPPORTED_MESSAGE');
     }
     try {
       await _platform.confirmApplePayPayment(clientSecret);
-    } on StripeError catch (error) {
+    } on StripeError {
       rethrow;
     }
   }
@@ -193,7 +201,7 @@ class Stripe {
       final paymentIntent =
           await _platform.handleCardAction(paymentIntentClientSecret);
       return paymentIntent;
-    } on StripeError catch (error) {
+    } on StripeError {
       //throw StripeError<CardActionError>(error.code, error.message);
       rethrow;
     }
@@ -209,7 +217,7 @@ class Stripe {
       final setupIntent = await _platform.confirmSetupIntent(
           paymentIntentClientSecret, params, options);
       return setupIntent;
-    } on StripeError catch (error) {
+    } on StripeError {
       //throw StripeError<CardActionError>(error.code, error.message);
       rethrow;
     }
@@ -224,7 +232,7 @@ class Stripe {
         cvc,
       );
       return tokenId;
-    } on StripeError catch (error) {
+    } on StripeError {
       //throw StripeError<CardActionError>(error.code, error.message);
       rethrow;
     }
