@@ -1,12 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:stripe_platform_interface/src/models/card_field_input.dart';
-import 'package:stripe_platform_interface/src/models/payment_intents.dart';
 
 import 'address.dart';
+import 'card_field_input.dart';
+import 'payment_intents.dart';
 
 part 'payment_methods.freezed.dart';
 part 'payment_methods.g.dart';
+
+// ignore_for_file: constant_identifier_names
 
 @freezed
 class PaymentMethod with _$PaymentMethod {
@@ -15,7 +17,6 @@ class PaymentMethod with _$PaymentMethod {
     required String id,
     required bool livemode,
     required String type,
-    String? customerId,
     required BillingDetails billingDetails,
     @JsonKey(name: 'Card') required Card card,
     @JsonKey(name: 'SepaDebit') required SepaDebit sepaDebit,
@@ -25,6 +26,7 @@ class PaymentMethod with _$PaymentMethod {
     @JsonKey(name: 'Ideal') required Ideal ideal,
     @JsonKey(name: 'Fpx') required Fpx fpx,
     @JsonKey(name: 'Upi') required Upi upi,
+    String? customerId,
   }) = _PaymentMethod;
 
   factory PaymentMethod.fromJson(Map<String, dynamic> json) =>

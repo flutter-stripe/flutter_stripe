@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'errors.freezed.dart';
 part 'errors.g.dart';
+// ignore_for_file: constant_identifier_names
 
 enum ConfirmPaymentError { canceled, failed, unknown }
 
@@ -15,7 +16,7 @@ enum PaymentIntentError { unknown }
 enum ApplePayError { canceled, failed, unknown }
 
 @freezed
-class StripeError<T> with _$StripeError<T> {
+class StripeError<T> with _$StripeError<T>, Exception {
   @JsonSerializable(explicitToJson: true)
   const factory StripeError({
     required String message,
@@ -26,6 +27,7 @@ class StripeError<T> with _$StripeError<T> {
       _$StripeErrorFromJson<T>(json);
 }
 
+// ignore: avoid_as 
 T _dataFromJson<T>(Map<String, dynamic> input) => input['code'] as T;
 
 Map<String, dynamic> _dataToJson<T>(T input) => {'code': input};

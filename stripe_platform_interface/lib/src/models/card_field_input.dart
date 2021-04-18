@@ -28,9 +28,7 @@ class CardDecoration with _$CardDecoration {
 class ColorKey {
   const ColorKey();
 
-  static int? toJson(Color? value) {
-    return value?.value;
-  }
+  static int? toJson(Color? value) => value?.value;
 
   static Color? fromJson(value) {
     if (value is int) {
@@ -55,10 +53,10 @@ class CardTokenDetails with _$CardTokenDetails {
 class CardFieldInputDetails with _$CardFieldInputDetails {
   @JsonSerializable(explicitToJson: true)
   const factory CardFieldInputDetails({
+    required bool complete,
     String? last4,
     String? expiryMonth,
     String? expiryYear,
-    required bool complete,
     String? postalCode,
     String? brand,
   }) = _CardFieldInputDetails;

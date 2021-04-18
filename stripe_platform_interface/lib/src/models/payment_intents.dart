@@ -6,6 +6,8 @@ import 'address.dart';
 part 'payment_intents.freezed.dart';
 part 'payment_intents.g.dart';
 
+// ignore_for_file: constant_identifier_names
+
 @freezed
 class PaymentIntent with _$PaymentIntent {
   @JsonSerializable(explicitToJson: true)
