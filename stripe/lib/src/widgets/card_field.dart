@@ -49,6 +49,9 @@ class AndroidCardField extends StatefulWidget {
 class _AndroidCardFieldState extends State<AndroidCardField> {
   late MethodChannel methodChannel;
 
+  FocusNode _focusNode = FocusNode(debugLabel: 'AndroidCardField');
+  int? _viewId;
+
   @override
   Widget build(BuildContext context) {
     // This is used in the platform side to register the view.
@@ -65,11 +68,16 @@ class _AndroidCardFieldState extends State<AndroidCardField> {
         viewType: viewType,
         surfaceFactory:
             (BuildContext context, PlatformViewController controller) {
-          return AndroidViewSurface(
-            controller:
-                controller as AndroidViewController, // TODO get rid of casting?
-            gestureRecognizers: const <Factory<OneSequenceGestureRecognizer>>{},
-            hitTestBehavior: PlatformViewHitTestBehavior.opaque,
+          return Focus(
+            focusNode: _focusNode,
+            onFocusChange: _onFocusChange,
+            child: AndroidViewSurface(
+              controller: controller
+                  as AndroidViewController, // TODO get rid of casting?
+              gestureRecognizers: const <
+                  Factory<OneSequenceGestureRecognizer>>{},
+              hitTestBehavior: PlatformViewHitTestBehavior.opaque,
+            ),
           );
         },
         onCreatePlatformView: (PlatformViewCreationParams params) {
@@ -89,6 +97,8 @@ class _AndroidCardFieldState extends State<AndroidCardField> {
             }
             return;
           });
+          _viewId = params.id;
+          _focusNode.debugLabel = 'UiKitCardField(id: $_viewId)';
           return PlatformViewsService.initSurfaceAndroidView(
             id: params.id,
             viewType: viewType,
@@ -108,7 +118,7 @@ class _AndroidCardFieldState extends State<AndroidCardField> {
     try {
       final CardFieldFocusName field = CardFieldFocusName.fromJson(arguments);
       if (field.focusedField != null) {
-        //_focusNode.requestFocus();
+        _focusNode.requestFocus();
       }
       widget.onFocus?.call(field.focusedField);
     } catch (e) {
