@@ -12,7 +12,7 @@ abstract class StripePlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static StripePlatform _instance = MethodChannelStripeFactory().create();
+  static StripePlatform _instance = const MethodChannelStripeFactory().create();
 
   /// The default instance of [StripePlatform] to use.
   ///
@@ -44,14 +44,12 @@ abstract class StripePlatform extends PlatformInterface {
       String paymentIntentClientSecret, PaymentMethodParams params,
       [Map<String, String> options = const {}]);
   Future<void> configure3dSecure(ThreeDSecureConfigurationParams params);
-  Future<bool> isApplePaySupported() async {
-    return false;
-  }
+  Future<bool> isApplePaySupported() async => false;
 
   Future<void> presentApplePay(ApplePayPresentParams params);
   Future<void> confirmApplePayPayment(String clientSecret);
   Future<SetupIntent> confirmSetupIntent(
-      String setupIntentClientSecret, PaymentMethodParams params,
+      String setupIntentClientSecret, PaymentMethodParams data,
       [Map<String, String> options = const {}]);
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret);
   Future<String> createTokenForCVCUpdate(String cvc);

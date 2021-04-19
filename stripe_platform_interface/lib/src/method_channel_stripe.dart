@@ -1,15 +1,14 @@
 import 'dart:io';
 
 import 'package:flutter/services.dart';
-import 'package:stripe_platform_interface/src/models/apple_pay.dart';
-import 'package:stripe_platform_interface/src/models/errors.dart';
-import 'package:stripe_platform_interface/src/models/payment_intents.dart';
-import 'package:stripe_platform_interface/src/models/payment_methods.dart';
-import 'package:stripe_platform_interface/src/models/setup_intent.dart';
-import 'package:stripe_platform_interface/src/models/three_d_secure.dart';
-import 'package:stripe_platform_interface/src/stripe_platform_interface.dart';
 
 import 'models/app_info.dart';
+import 'models/apple_pay.dart';
+import 'models/errors.dart';
+import 'models/payment_intents.dart';
+import 'models/payment_methods.dart';
+import 'models/setup_intent.dart';
+import 'models/three_d_secure.dart';
 import 'stripe_platform_interface.dart';
 
 const _appInfo = AppInfo(
@@ -21,13 +20,9 @@ const _appInfo = AppInfo(
 class MethodChannelStripe extends StripePlatform {
   MethodChannelStripe({
     required MethodChannel methodChannel,
-    required EventChannel eventChannel,
-  })   : _eventChannel = eventChannel,
-        _methodChannel = methodChannel;
+  }) : _methodChannel = methodChannel;
 
   final MethodChannel _methodChannel;
-
-  final EventChannel _eventChannel;
 
   @override
   Future<void> initialise({
@@ -63,7 +58,7 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<void> configure3dSecure(ThreeDSecureConfigurationParams params) {
-    // TODO: implement configure3dSecure
+    //TODO: implement configure3dSecure
     throw UnimplementedError();
   }
 
@@ -89,7 +84,7 @@ class MethodChannelStripe extends StripePlatform {
       });
       return PaymentIntent.fromJson(result.unfoldToNonNull());
     } on Exception catch (_) {
-      throw StripeError<PaymentIntentError>(
+      throw const StripeError<PaymentIntentError>(
         code: PaymentIntentError.unknown,
         message: "Confirming payment intent failed",
       );
@@ -133,7 +128,7 @@ class MethodChannelStripe extends StripePlatform {
 
       return PaymentIntent.fromJson(result.unfoldToNonNull());
     } on Exception catch (_) {
-      throw StripeError<PaymentIntentError>(
+      throw const StripeError<PaymentIntentError>(
         code: PaymentIntentError.unknown,
         message: "Handle  payment intent for card failed",
       );
@@ -142,16 +137,19 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<bool> isApplePaySupported() async {
-    if (!Platform.isIOS) return false;
-    final bool? isSupported =
+    if (!Platform.isIOS) {
+      return false;
+    }
+    final isSupported =
         await _methodChannel.invokeMethod('isApplePaySupported');
     return isSupported ?? false;
   }
 
   @override
   Future<void> presentApplePay(ApplePayPresentParams params) async {
-    if (!Platform.isIOS)
+    if (!Platform.isIOS) {
       throw UnsupportedError('Apple Pay is only available for iOS devices');
+    }
     await _methodChannel.invokeMethod('presentApplePay', params.toJson());
   }
 
@@ -165,7 +163,7 @@ class MethodChannelStripe extends StripePlatform {
 
       return PaymentIntent.fromJson(result.unfoldToNonNull());
     } on Exception catch (_) {
-      throw StripeError<PaymentIntentError>(
+      throw const StripeError<PaymentIntentError>(
         code: PaymentIntentError.unknown,
         message: "Retrieving payment intent failed",
       );
@@ -176,15 +174,12 @@ class MethodChannelStripe extends StripePlatform {
 class MethodChannelStripeFactory {
   const MethodChannelStripeFactory();
 
-  StripePlatform create() {
-    return MethodChannelStripe(
-      methodChannel: MethodChannel(
-        'flutter.stripe/payments',
-        JSONMethodCodec(),
-      ),
-      eventChannel: EventChannel('flutter.stripe/events'),
-    );
-  }
+  StripePlatform create() => MethodChannelStripe(
+        methodChannel: const MethodChannel(
+          'flutter.stripe/payments',
+          JSONMethodCodec(),
+        ),
+      );
 }
 
 extension UnfoldToNonNull<T> on T? {

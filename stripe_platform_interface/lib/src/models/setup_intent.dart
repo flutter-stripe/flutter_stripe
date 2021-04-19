@@ -1,8 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:stripe_platform_interface/src/models/payment_methods.dart';
+
+import 'payment_methods.dart';
 
 part 'setup_intent.freezed.dart';
 part 'setup_intent.g.dart';
+// ignore_for_file: constant_identifier_names
 
 @freezed
 class SetupIntent with _$SetupIntent {

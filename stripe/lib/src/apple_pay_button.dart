@@ -5,14 +5,9 @@ import 'package:flutter/services.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 //
-const double kApplePayButtonDefaultHeight = 48.0;
+const double kApplePayButtonDefaultHeight = 48;
 
 class ApplePayButton extends StatelessWidget {
-  final ApplePayButtonStyle style;
-  final ApplePayButtonType type;
-  final VoidCallback? onPressed;
-  final BoxConstraints? constraints;
-
   ApplePayButton({
     Key? key,
     this.style = ApplePayButtonStyle.black,
@@ -25,16 +20,20 @@ class ApplePayButton extends StatelessWidget {
         constraints = (width != null || height != null)
             ? constraints?.tighten(width: width, height: height) ??
                 BoxConstraints.tightFor(width: width, height: height)
-            : constraints;
+            : constraints,
+        super(key: key);
+
+  final ApplePayButtonStyle style;
+  final ApplePayButtonType type;
+  final VoidCallback? onPressed;
+  final BoxConstraints? constraints;
 
   @override
-  Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: constraints ??
-          BoxConstraints.tightFor(height: kApplePayButtonDefaultHeight),
-      child: _platform,
-    );
-  }
+  Widget build(BuildContext context) => ConstrainedBox(
+        constraints: constraints ??
+            const BoxConstraints.tightFor(height: kApplePayButtonDefaultHeight),
+        child: _platform,
+      );
 
   Widget get _platform {
     switch (defaultTargetPlatform) {
@@ -52,19 +51,16 @@ class ApplePayButton extends StatelessWidget {
 }
 
 class UiKitApplePayButton extends StatefulWidget {
-  final ApplePayButtonStyle style;
-  final ApplePayButtonType type;
-  final VoidCallback? onPressed;
-
-  UiKitApplePayButton({
+  const UiKitApplePayButton({
     Key? key,
     this.style = ApplePayButtonStyle.black,
     this.type = ApplePayButtonType.plain,
     this.onPressed,
-    double? width,
-    double? height = kApplePayButtonDefaultHeight,
   }) : super(key: key);
 
+  final ApplePayButtonStyle style;
+  final ApplePayButtonType type;
+  final VoidCallback? onPressed;
   @override
   _UiKitApplePayButtonState createState() => _UiKitApplePayButtonState();
 }
@@ -74,17 +70,19 @@ class _UiKitApplePayButtonState extends State<UiKitApplePayButton> {
 
   @override
   Widget build(BuildContext context) {
-    final int type = _mapButtonType(widget.type);
-    final int style = mapButtonStyle(widget.style);
+    final type = _mapButtonType(widget.type);
+    final style = mapButtonStyle(widget.style);
 
     return UiKitView(
       viewType: 'flutter.stripe/apple_pay',
-      creationParamsCodec: StandardMessageCodec(),
+      creationParamsCodec: const StandardMessageCodec(),
       creationParams: {'type': type, 'style': style},
       onPlatformViewCreated: (viewId) {
         methodChannel = MethodChannel('flutter.stripe/apple_pay/$viewId');
         methodChannel?.setMethodCallHandler((call) async {
-          if (call.method == 'onPressed') widget.onPressed?.call();
+          if (call.method == 'onPressed') {
+            widget.onPressed?.call();
+          }
           return;
         });
       },
@@ -94,8 +92,8 @@ class _UiKitApplePayButtonState extends State<UiKitApplePayButton> {
   @override
   void didUpdateWidget(covariant UiKitApplePayButton oldWidget) {
     if (widget.style != oldWidget.style || widget.type != oldWidget.type) {
-      final int type = _mapButtonType(widget.type);
-      final int style = mapButtonStyle(widget.style);
+      final type = _mapButtonType(widget.type);
+      final style = mapButtonStyle(widget.style);
       methodChannel?.invokeMethod('updateStyle', {
         'type': type,
         'style': style,

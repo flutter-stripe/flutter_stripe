@@ -4,6 +4,7 @@ part 'apple_pay.freezed.dart';
 part 'apple_pay.g.dart';
 
 enum ApplePayShippingMethodType {
+  // ignore: lines_longer_than_80_chars
   ready, //final has been replaced with pending as final is a reserved word in dart
   pending
 }

@@ -80,6 +80,7 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
 
     // 3. Confirm payment with card details
     // The rest will be done automatically using webhooks
+    // ignore: unused_local_variable
     final paymentIntent = await Stripe.instance.confirmPaymentMethod(
       clientSecret['clientSecret'],
       PaymentMethodParams.card(
@@ -94,7 +95,7 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
   }
 
   Future<Map<String, dynamic>> fetchPaymentIntentClientSecret() async {
-    final url = Uri.parse('${kApiUrl}/create-payment-intent');
+    final url = Uri.parse('$kApiUrl/create-payment-intent');
     final response = await http.post(
       url,
       headers: {

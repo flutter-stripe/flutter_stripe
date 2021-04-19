@@ -92,7 +92,7 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-              'Success: Setup intent created. Intent status: ${setupIntentResult}'),
+              'Success: Setup intent created. Intent status: $setupIntentResult'),
         ),
       );
       setState(() {
@@ -101,7 +101,7 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
     } catch (error, s) {
       log('Error while saving payment', error: error, stackTrace: s);
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Error code: ${error}')));
+          .showSnackBar(SnackBar(content: Text('Error code: $error')));
     }
   }
 
@@ -139,12 +139,6 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
           .showSnackBar(SnackBar(content: Text('failureReason')));
       //setPaymentError(errorCode);
     }
-    // If the last payment error is authentication_required allow customer to complete the payment without asking your customers to re-enter their details.
-    if (errorCode == 'authentication_required') {
-      // Allow to complete the payment with the existing PaymentMethod.
-    } else {
-      // Collect a new PaymentMethod from the customer...
-    }
     setState(() {
       _retrievedPaymentIntent = paymentIntent;
     });
@@ -175,7 +169,7 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
   }
 
   Future<String> _createSetupIntentOnBackend(String email) async {
-    final url = Uri.parse('${kApiUrl}/create-setup-intent');
+    final url = Uri.parse('$kApiUrl/create-setup-intent');
     final response = await http.post(
       url,
       headers: {
@@ -193,7 +187,7 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
   }
 
   Future<Map<String, dynamic>> _chargeCardOffSession() async {
-    final url = Uri.parse('${kApiUrl}/charge-card-off-session');
+    final url = Uri.parse('$kApiUrl/charge-card-off-session');
     final response = await http.post(
       url,
       headers: {
