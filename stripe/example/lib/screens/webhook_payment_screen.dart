@@ -23,20 +23,28 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
     return Scaffold(
       appBar: AppBar(),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          TextField(
-            onChanged: (value) {
-              setState(() {
-                _email = value;
-              });
-            },
+          Padding(
+            padding: EdgeInsets.all(16),
+            child: TextField(
+               decoration: InputDecoration(hintText: 'Email'),
+              onChanged: (value) {
+                setState(() {
+                  _email = value;
+                });
+              },
+            ),
           ),
-          CardField(
-            onCardChanged: (card) {
-              setState(() {
-                _card = card;
-              });
-            },
+          Padding(
+            padding: EdgeInsets.all(16),
+            child: CardField(
+              onCardChanged: (card) {
+                setState(() {
+                  _card = card;
+                });
+              },
+            ),
           ),
           CheckboxListTile(
             value: _saveCard,
@@ -47,9 +55,12 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
             },
             title: Text('Save card during payment'),
           ),
-          LoadingButton(
-            onPressed: _card?.complete == true ? _handlePayPress : null,
-            text: 'Pay',
+          Padding(
+            padding: EdgeInsets.all(16),
+            child: LoadingButton(
+              onPressed: _card?.complete == true ? _handlePayPress : null,
+              text: 'Pay',
+            ),
           ),
         ],
       ),

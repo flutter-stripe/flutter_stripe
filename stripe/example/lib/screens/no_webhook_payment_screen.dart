@@ -22,16 +22,22 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
       appBar: AppBar(),
       body: Column(
         children: [
-          CardField(
-            onCardChanged: (card) {
-              setState(() {
-                _card = card;
-              });
-            },
+          Padding(
+            padding: EdgeInsets.all(16),
+            child: CardField(
+              onCardChanged: (card) {
+                setState(() {
+                  _card = card;
+                });
+              },
+            ),
           ),
-          LoadingButton(
-            onPressed: _card?.complete == true ? _handlePayPress : null,
-            text: 'Pay',
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: LoadingButton(
+              onPressed: _card?.complete == true ? _handlePayPress : null,
+              text: 'Pay',
+            ),
           ),
         ],
       ),

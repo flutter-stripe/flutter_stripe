@@ -24,27 +24,41 @@ class _CVCReCollectionScreenState extends State<CVCReCollectionScreen> {
       appBar: AppBar(),
       body: Column(
         children: [
-          TextField(
-            onChanged: (value) {
-              setState(() {
-                _email = value;
-              });
-            },
+          Padding(
+            padding: EdgeInsets.all(16),
+            child: TextField(
+              decoration: InputDecoration(hintText: 'Email'),
+              onChanged: (value) {
+                setState(() {
+                  _email = value;
+                });
+              },
+            ),
           ),
-          TextField(
-            onChanged: (value) {
-              setState(() {
-                _cvc = value;
-              });
-            },
+          Padding(
+            padding: EdgeInsets.all(16),
+            child: TextField(
+              decoration: InputDecoration(hintText: 'CVC'),
+              onChanged: (value) {
+                setState(() {
+                  _cvc = value;
+                });
+              },
+            ),
           ),
-          LoadingButton(
-            onPressed: _payAsynchronously,
-            text: 'Pay with Webhook',
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: LoadingButton(
+              onPressed: _payAsynchronously,
+              text: 'Pay with Webhook',
+            ),
           ),
-          LoadingButton(
-            onPressed: _paySynchronously,
-            text: 'Pay Synchronously',
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: LoadingButton(
+              onPressed: _paySynchronously,
+              text: 'Pay Synchronously',
+            ),
           ),
         ],
       ),

@@ -1,13 +1,9 @@
-import 'dart:async';
-import 'dart:convert';
-import 'dart:developer';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:stripe/stripe.dart';
 import 'package:stripe_example/.env.dart';
-import 'package:stripe_example/screens/home_screen.dart';
+import 'screens/screens.dart';
+
+import 'widgets/dismiss_focus_overlay.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,22 +16,20 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return DismissFocusOverlay(
       child: MaterialApp(
-        //  theme: ThemeData.light(),
-        theme: ThemeData.dark(),
-        home: MyApp(),
+      //  theme: ThemeData.light(),
+      //  theme: ThemeData.dark(),
+        home: HomePage(),
       ),
     );
   }
 }
 
-class MyApp extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  _MyAppState createState() => _MyAppState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _MyAppState extends State<MyApp> {
-  bool isGettingConfig = false;
-
+class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
@@ -47,56 +41,24 @@ class _MyAppState extends State<MyApp> {
       appBar: AppBar(
         title: const Text('Plugin example app'),
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(vertical: 32, horizontal: 24),
-        child: Center(
-            child: Column(
-          children: [
-            HomeScreen(),
+      body: Column(children: [
+        ...ListTile.divideTiles(
+          context: context,
+          tiles: [
+            for (final example in Example.values)
+              ListTile(
+                onTap: () {
+                  final route = MaterialPageRoute(builder: example.builder);
+                  Navigator.push(context, route);
+                },
+                title: Text(example.title),
+                trailing: Icon(
+                  Icons.chevron_right_rounded,
+                ),
+              ),
           ],
-        )),
-      ),
-    );
-  }
-
-  Future<Map<String, String>?> getPaymentConfig() async {
-    setState(() {
-      isGettingConfig = true;
-    });
-    try {
-      final url = 'https://stripe-flutter.glitch.me/payment-sheet';
-      final response = await http.post(Uri.parse(url));
-      print('Response status: ${response.statusCode}');
-      print('Response body: ${response.body}');
-
-      return Map<String, String>.from(jsonDecode(response.body));
-    } catch (e) {
-      log('Unexpected Error while getting customer id', error: e);
-      //rethrow;
-    } finally {
-      setState(() {
-        isGettingConfig = false;
-      });
-      return null;
-    }
-  }
-}
-
-class DismissFocusOverlay extends StatelessWidget {
-  final Widget? child;
-
-  const DismissFocusOverlay({Key? key, this.child}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      child: child,
-      onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus &&
-            currentFocus.focusedChild != null) {
-          FocusManager.instance.primaryFocus!.unfocus();
-        }
-      },
+        ),
+      ]),
     );
   }
 }

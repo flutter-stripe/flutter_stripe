@@ -25,34 +25,53 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
     return Scaffold(
         appBar: AppBar(),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            TextField(
-              onChanged: (value) {
-                setState(() {
-                  _email = value;
-                });
-              },
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: TextField(
+                decoration: InputDecoration(hintText: 'Email'),
+                onChanged: (value) {
+                  setState(() {
+                    _email = value;
+                  });
+                },
+              ),
             ),
-            CardField(
-              onCardChanged: (card) {
-                setState(() {
-                  _card = card;
-                });
-              },
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: CardField(
+                onCardChanged: (card) {
+                  setState(() {
+                    _card = card;
+                  });
+                },
+              ),
             ),
-            LoadingButton(
-              onPressed: _card?.complete == true ? _handlePayPress : null,
-              text: 'Save',
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: LoadingButton(
+                onPressed: _card?.complete == true ? _handlePayPress : null,
+                text: 'Save',
+              ),
             ),
-            LoadingButton(
-              onPressed:
-                  _setupIntentResult != null ? _handleOffSessionPayment : null,
-              text: 'Pay with saved card off-session',
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: LoadingButton(
+                onPressed: _setupIntentResult != null
+                    ? _handleOffSessionPayment
+                    : null,
+                text: 'Pay with saved card off-session',
+              ),
             ),
-            LoadingButton(
-              onPressed:
-                  _retrievedPaymentIntent != null ? _handleRecoveryFlow : null,
-              text: 'Authenticate payment (recovery flow)',
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: LoadingButton(
+                onPressed: _retrievedPaymentIntent != null
+                    ? _handleRecoveryFlow
+                    : null,
+                text: 'Authenticate payment (recovery flow)',
+              ),
             ),
           ],
         ));
