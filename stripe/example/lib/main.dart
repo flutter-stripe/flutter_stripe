@@ -1,14 +1,11 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
 import 'package:http/http.dart' as http;
-import 'package:flutter/services.dart';
 import 'package:stripe/stripe.dart';
-import 'package:stripe_example/config.dart';
 import 'package:stripe_example/.env.dart';
 import 'package:stripe_example/screens/home_screen.dart';
 
@@ -37,8 +34,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  PaymentIntent? paymentIntent;
-
   bool isGettingConfig = false;
 
   @override
@@ -48,9 +43,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final applePayButtonStyle =
-        isDark ? ApplePayButtonStyle.white : ApplePayButtonStyle.black;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Plugin example app'),
@@ -61,65 +53,10 @@ class _MyAppState extends State<MyApp> {
             child: Column(
           children: [
             HomeScreen(),
-            if (Platform.isIOS)
-            ValueListenableBuilder(
-              valueListenable: Stripe.instance.isApplePaySupported,
-              builder: (context, dynamic isSupported, _) {
-                if (isSupported) {
-                  return ApplePayButton(
-                    width: 240,
-                    type: ApplePayButtonType.book,
-                    style: applePayButtonStyle,
-                    onPressed: () {
-                      presentApplePay();
-                      print('On Apple pay tapped');
-                    },
-                  );
-                } else {
-                  return Text('Apple Pay Not Supported');
-                }
-              },
-            ),
-            SizedBox(height: 15),
-            if (paymentIntent != null)
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.all(8),
-                  child: Text(
-                    paymentIntentString(paymentIntent!),
-                  ),
-                ),
-              ),
           ],
         )),
       ),
     );
-  }
-
-  String paymentIntentString(PaymentIntent intent) {
-    String result = 'PaymentIntent: {\n';
-    for (final entry in intent.toJson().entries) {
-      if (entry.key == 'description') continue;
-      result += ' ${entry.key} : ${entry.value}\n';
-    }
-    result += '}';
-    return result;
-  }
-
-  Future<void> presentApplePay() async {
-    try {
-      await Stripe.instance.presentApplePay(
-        ApplePayPresentParams(
-          cartItems: [
-            ApplePayCartSummaryItem(label: 'Item 1', amount: '20.0'),
-          ],
-          country: 'ES',
-          currency: 'EUR',
-        ),
-      );
-    } catch (e) {
-      log('Unexpected Error while presenting Apple Pay', error: e);
-    }
   }
 
   Future<Map<String, String>?> getPaymentConfig() async {
