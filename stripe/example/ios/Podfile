@@ -31,8 +31,6 @@ target 'Runner' do
   use_frameworks!
   use_modular_headers!
 
-  pod 'Stripe', :git => 'https://github.com/stripe/stripe-ios.git', :branch => 'davidme/mc-beta-2-no-asset-catalogs'
-
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
 

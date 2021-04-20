@@ -9,8 +9,15 @@ import Foundation
 import UIKit
 import Stripe
 
+let CARD_FIELD_INSTANCE_ID = "CardFieldInstance"
 
-class CardFieldViewFactory: NSObject, FlutterPlatformViewFactory {
+protocol CardFieldDelegate {
+    func onDidCreateViewInstance(id: String, reference: Any?) -> Void
+    func onDidDestroyViewInstance(id: String) -> Void
+}
+
+
+public class CardFieldViewFactory: NSObject, FlutterPlatformViewFactory, CardFieldDelegate {
     private var messenger: FlutterBinaryMessenger
     
     init(messenger: FlutterBinaryMessenger) {
@@ -18,21 +25,40 @@ class CardFieldViewFactory: NSObject, FlutterPlatformViewFactory {
         super.init()
     }
 
-    func create(
+    public func create(
         withFrame frame: CGRect,
         viewIdentifier viewId: Int64,
         arguments args: Any?
     ) -> FlutterPlatformView {
+        // as it's reasonable we handle only one CardField component on the same screen
+       if (cardFieldMap[CARD_FIELD_INSTANCE_ID] != nil) {
+        // TODO: throw an exception
+       }
         return FlutterCardFieldView(
             frame: frame,
             viewIdentifier: viewId,
             arguments: args,
-            binaryMessenger: messenger)
+            binaryMessenger: messenger,
+            delegate: self)
     }
     
-    func createArgsCodec() -> FlutterMessageCodec & NSObjectProtocol {
+    public func createArgsCodec() -> FlutterMessageCodec & NSObjectProtocol {
        return FlutterStandardMessageCodec.sharedInstance()
     }
+    
+    public let cardFieldMap: NSMutableDictionary = [:]
+
+   func onDidCreateViewInstance(id: String, reference: Any?) -> Void {
+       cardFieldMap[id] = reference
+   }
+       
+   func onDidDestroyViewInstance(id: String) {
+       cardFieldMap[id] = nil
+   }
+           
+   public func getCardFieldReference(id: String) -> Any? {
+       return self.cardFieldMap[id]
+   }
 }
 
 
@@ -44,12 +70,16 @@ class FlutterCardFieldView: NSObject, FlutterPlatformView {
     
     private let channel: FlutterMethodChannel
     
+    public var delegate: CardFieldDelegate?
+    
     init(
         frame: CGRect,
         viewIdentifier viewId: Int64,
         arguments args: Any?,
-        binaryMessenger messenger: FlutterBinaryMessenger
+        binaryMessenger messenger: FlutterBinaryMessenger,
+        delegate: CardFieldDelegate
     ) {
+        self.delegate = delegate
         channel = FlutterMethodChannel(name: "flutter.stripe/card_field/\(viewId)",
                                            binaryMessenger: messenger)
         _view = UIView()
@@ -63,9 +93,15 @@ class FlutterCardFieldView: NSObject, FlutterPlatformView {
             updatePostalCodeEnabled(arguments)
             updateDectoration(arguments)
         }
+        
+        self.delegate?.onDidCreateViewInstance(id: CARD_FIELD_INSTANCE_ID, reference: self)
     }
     
+    deinit {
+        self.delegate?.onDidDestroyViewInstance(id: CARD_FIELD_INSTANCE_ID)
+    }
     
+
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
@@ -186,19 +222,17 @@ extension FlutterCardFieldView : STPPaymentCardTextFieldDelegate {
     func paymentCardTextFieldDidChange(_ textField: STPPaymentCardTextField) {
         if let cardFieldView  = cardFieldView {
             let brand = STPCardValidator.brand(forNumber: textField.cardParams.number ?? "")
-            var cardData: [String: Any] = [
-                "number": textField.cardParams.number ?? "",
-                "cvc": textField.cardParams.cvc ?? "",
-                "expiryMonth": textField.cardParams.expMonth ?? 0,
-                "expiryYear": textField.cardParams.expYear ?? 0,
-                "complete": textField.isValid,
-                "brand": Mappers.mapCardBrand(brand),
-                "last4": textField.cardParams.last4 ?? ""
-            ]
-            if (cardFieldView.postalCodeEnabled) {
-                cardData["postalCode"] = textField.postalCode ?? ""
-            }
-            onCardChange(cardData)
+           var cardData: [String: Any] = [
+               "expiryMonth": textField.cardParams.expMonth?.stringValue ?? "",
+               "expiryYear": textField.cardParams.expYear?.stringValue ?? "",
+               "complete": textField.isValid,
+               "brand": Mappers.mapCardBrand(brand),
+               "last4": textField.cardParams.last4 ?? ""
+           ]
+           if (cardFieldView.postalCodeEnabled) {
+               cardData["postalCode"] = textField.postalCode ?? ""
+           }
+           onCardChange(cardData)
         }
     }
     
@@ -207,7 +241,7 @@ extension FlutterCardFieldView : STPPaymentCardTextFieldDelegate {
 
 class CardFieldView: UIView {
     
-   private var cardField = STPPaymentCardTextField()
+   public var cardField = STPPaymentCardTextField()
     
     @objc var postalCodeEnabled: Bool = true {
         didSet {

@@ -62,6 +62,11 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
               text: 'Pay',
             ),
           ),
+          if(_card != null)
+          Padding(
+            padding: EdgeInsets.all(16),
+            child: Text(_card!.toJson().toString())
+          ),
         ],
       ),
     );

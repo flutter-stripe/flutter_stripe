@@ -22,4 +22,6 @@ class RCTConvert {
 
 protocol FlutterPluginBinding {
     func sendEvent(withName name: String, body: [String:  Any]);
+    
+    var cardFieldUIManager : CardFieldViewFactory? { get  };
 }

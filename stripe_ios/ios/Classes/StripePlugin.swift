@@ -14,21 +14,25 @@ public class StripePlugin: StripeSdk, FlutterPlugin {
     public static func register(with registrar: FlutterPluginRegistrar) {
         // Method Channel
         let channel = FlutterMethodChannel(name: "flutter.stripe/payments", binaryMessenger: registrar.messenger())
-        let instance = StripePlugin(channel: channel)
+        
+        // Card Field
+       let cardFieldFactory = CardFieldViewFactory(messenger: registrar.messenger())
+        registrar.register(cardFieldFactory, withId: "flutter.stripe/card_field")
+        
+        let instance = StripePlugin(channel: channel, cardFieldUIManager: cardFieldFactory)
         registrar.addMethodCallDelegate(instance, channel: channel)
         
         // Apple Pay Button
         let applePayFactory = ApplePayButtonViewFactory(messenger: registrar.messenger())
         registrar.register(applePayFactory, withId: "flutter.stripe/apple_pay")
         
-        // Card Field
-        let cardFieldFactory = CardFieldViewFactory(messenger: registrar.messenger())
-        registrar.register(cardFieldFactory, withId: "flutter.stripe/card_field")
+    
     }
     
-    public init(channel : FlutterMethodChannel) {
+    public init(channel : FlutterMethodChannel, cardFieldUIManager : CardFieldViewFactory? ) {
         self.channel = channel
         super.init()
+        self.cardFieldUIManager = cardFieldUIManager
     }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {

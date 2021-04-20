@@ -211,7 +211,8 @@ class _UiKitCardFieldState extends State<UiKitCardField> {
                     log('Error', error: e);
                   }
                 } else if (call.method == 'onCardChange') {
-                  onCardChanged(Map<String, dynamic>.from(call.arguments));
+                  final map = Map<String, dynamic>.from(call.arguments);
+                  onCardChanged(map);
                 }
                 return;
               });
@@ -250,9 +251,9 @@ class _UiKitCardFieldState extends State<UiKitCardField> {
     try {
       final details = CardFieldInputDetails.fromJson(arguments);
       widget.onChange?.call(details);
-    } on Exception catch (e) {
+    }  catch (e, s) {
       // todo:  how to handle this errors?
-      log('Error', error: e);
+      log('Error', error: e, stackTrace: s);
     }
   }
 
