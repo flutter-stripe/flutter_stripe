@@ -24,7 +24,6 @@ class _$PaymentMethodTearOff {
       {required String id,
       required bool livemode,
       required String type,
-      String? customerId,
       required BillingDetails billingDetails,
       @JsonKey(name: 'Card') required Card card,
       @JsonKey(name: 'SepaDebit') required SepaDebit sepaDebit,
@@ -33,12 +32,12 @@ class _$PaymentMethodTearOff {
       @JsonKey(name: 'Sofort') required Sofort sofort,
       @JsonKey(name: 'Ideal') required Ideal ideal,
       @JsonKey(name: 'Fpx') required Fpx fpx,
-      @JsonKey(name: 'Upi') required Upi upi}) {
+      @JsonKey(name: 'Upi') required Upi upi,
+      String? customerId}) {
     return _PaymentMethod(
       id: id,
       livemode: livemode,
       type: type,
-      customerId: customerId,
       billingDetails: billingDetails,
       card: card,
       sepaDebit: sepaDebit,
@@ -48,6 +47,7 @@ class _$PaymentMethodTearOff {
       ideal: ideal,
       fpx: fpx,
       upi: upi,
+      customerId: customerId,
     );
   }
 
@@ -64,7 +64,6 @@ mixin _$PaymentMethod {
   String get id => throw _privateConstructorUsedError;
   bool get livemode => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
-  String? get customerId => throw _privateConstructorUsedError;
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
   @JsonKey(name: 'Card')
   Card get card => throw _privateConstructorUsedError;
@@ -82,6 +81,7 @@ mixin _$PaymentMethod {
   Fpx get fpx => throw _privateConstructorUsedError;
   @JsonKey(name: 'Upi')
   Upi get upi => throw _privateConstructorUsedError;
+  String? get customerId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -98,7 +98,6 @@ abstract class $PaymentMethodCopyWith<$Res> {
       {String id,
       bool livemode,
       String type,
-      String? customerId,
       BillingDetails billingDetails,
       @JsonKey(name: 'Card') Card card,
       @JsonKey(name: 'SepaDebit') SepaDebit sepaDebit,
@@ -107,7 +106,8 @@ abstract class $PaymentMethodCopyWith<$Res> {
       @JsonKey(name: 'Sofort') Sofort sofort,
       @JsonKey(name: 'Ideal') Ideal ideal,
       @JsonKey(name: 'Fpx') Fpx fpx,
-      @JsonKey(name: 'Upi') Upi upi});
+      @JsonKey(name: 'Upi') Upi upi,
+      String? customerId});
 
   $BillingDetailsCopyWith<$Res> get billingDetails;
   $CardCopyWith<$Res> get card;
@@ -134,7 +134,6 @@ class _$PaymentMethodCopyWithImpl<$Res>
     Object? id = freezed,
     Object? livemode = freezed,
     Object? type = freezed,
-    Object? customerId = freezed,
     Object? billingDetails = freezed,
     Object? card = freezed,
     Object? sepaDebit = freezed,
@@ -144,6 +143,7 @@ class _$PaymentMethodCopyWithImpl<$Res>
     Object? ideal = freezed,
     Object? fpx = freezed,
     Object? upi = freezed,
+    Object? customerId = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -158,10 +158,6 @@ class _$PaymentMethodCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      customerId: customerId == freezed
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String?,
       billingDetails: billingDetails == freezed
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
@@ -198,6 +194,10 @@ class _$PaymentMethodCopyWithImpl<$Res>
           ? _value.upi
           : upi // ignore: cast_nullable_to_non_nullable
               as Upi,
+      customerId: customerId == freezed
+          ? _value.customerId
+          : customerId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -276,7 +276,6 @@ abstract class _$PaymentMethodCopyWith<$Res>
       {String id,
       bool livemode,
       String type,
-      String? customerId,
       BillingDetails billingDetails,
       @JsonKey(name: 'Card') Card card,
       @JsonKey(name: 'SepaDebit') SepaDebit sepaDebit,
@@ -285,7 +284,8 @@ abstract class _$PaymentMethodCopyWith<$Res>
       @JsonKey(name: 'Sofort') Sofort sofort,
       @JsonKey(name: 'Ideal') Ideal ideal,
       @JsonKey(name: 'Fpx') Fpx fpx,
-      @JsonKey(name: 'Upi') Upi upi});
+      @JsonKey(name: 'Upi') Upi upi,
+      String? customerId});
 
   @override
   $BillingDetailsCopyWith<$Res> get billingDetails;
@@ -323,7 +323,6 @@ class __$PaymentMethodCopyWithImpl<$Res>
     Object? id = freezed,
     Object? livemode = freezed,
     Object? type = freezed,
-    Object? customerId = freezed,
     Object? billingDetails = freezed,
     Object? card = freezed,
     Object? sepaDebit = freezed,
@@ -333,6 +332,7 @@ class __$PaymentMethodCopyWithImpl<$Res>
     Object? ideal = freezed,
     Object? fpx = freezed,
     Object? upi = freezed,
+    Object? customerId = freezed,
   }) {
     return _then(_PaymentMethod(
       id: id == freezed
@@ -347,10 +347,6 @@ class __$PaymentMethodCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      customerId: customerId == freezed
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String?,
       billingDetails: billingDetails == freezed
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
@@ -387,6 +383,10 @@ class __$PaymentMethodCopyWithImpl<$Res>
           ? _value.upi
           : upi // ignore: cast_nullable_to_non_nullable
               as Upi,
+      customerId: customerId == freezed
+          ? _value.customerId
+          : customerId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -399,7 +399,6 @@ class _$_PaymentMethod implements _PaymentMethod {
       {required this.id,
       required this.livemode,
       required this.type,
-      this.customerId,
       required this.billingDetails,
       @JsonKey(name: 'Card') required this.card,
       @JsonKey(name: 'SepaDebit') required this.sepaDebit,
@@ -408,7 +407,8 @@ class _$_PaymentMethod implements _PaymentMethod {
       @JsonKey(name: 'Sofort') required this.sofort,
       @JsonKey(name: 'Ideal') required this.ideal,
       @JsonKey(name: 'Fpx') required this.fpx,
-      @JsonKey(name: 'Upi') required this.upi});
+      @JsonKey(name: 'Upi') required this.upi,
+      this.customerId});
 
   factory _$_PaymentMethod.fromJson(Map<String, dynamic> json) =>
       _$_$_PaymentMethodFromJson(json);
@@ -419,8 +419,6 @@ class _$_PaymentMethod implements _PaymentMethod {
   final bool livemode;
   @override
   final String type;
-  @override
-  final String? customerId;
   @override
   final BillingDetails billingDetails;
   @override
@@ -447,10 +445,12 @@ class _$_PaymentMethod implements _PaymentMethod {
   @override
   @JsonKey(name: 'Upi')
   final Upi upi;
+  @override
+  final String? customerId;
 
   @override
   String toString() {
-    return 'PaymentMethod(id: $id, livemode: $livemode, type: $type, customerId: $customerId, billingDetails: $billingDetails, card: $card, sepaDebit: $sepaDebit, bacsDebit: $bacsDebit, auBecsDebit: $auBecsDebit, sofort: $sofort, ideal: $ideal, fpx: $fpx, upi: $upi)';
+    return 'PaymentMethod(id: $id, livemode: $livemode, type: $type, billingDetails: $billingDetails, card: $card, sepaDebit: $sepaDebit, bacsDebit: $bacsDebit, auBecsDebit: $auBecsDebit, sofort: $sofort, ideal: $ideal, fpx: $fpx, upi: $upi, customerId: $customerId)';
   }
 
   @override
@@ -464,9 +464,6 @@ class _$_PaymentMethod implements _PaymentMethod {
                     .equals(other.livemode, livemode)) &&
             (identical(other.type, type) ||
                 const DeepCollectionEquality().equals(other.type, type)) &&
-            (identical(other.customerId, customerId) ||
-                const DeepCollectionEquality()
-                    .equals(other.customerId, customerId)) &&
             (identical(other.billingDetails, billingDetails) ||
                 const DeepCollectionEquality()
                     .equals(other.billingDetails, billingDetails)) &&
@@ -488,7 +485,10 @@ class _$_PaymentMethod implements _PaymentMethod {
             (identical(other.fpx, fpx) ||
                 const DeepCollectionEquality().equals(other.fpx, fpx)) &&
             (identical(other.upi, upi) ||
-                const DeepCollectionEquality().equals(other.upi, upi)));
+                const DeepCollectionEquality().equals(other.upi, upi)) &&
+            (identical(other.customerId, customerId) ||
+                const DeepCollectionEquality()
+                    .equals(other.customerId, customerId)));
   }
 
   @override
@@ -497,7 +497,6 @@ class _$_PaymentMethod implements _PaymentMethod {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(livemode) ^
       const DeepCollectionEquality().hash(type) ^
-      const DeepCollectionEquality().hash(customerId) ^
       const DeepCollectionEquality().hash(billingDetails) ^
       const DeepCollectionEquality().hash(card) ^
       const DeepCollectionEquality().hash(sepaDebit) ^
@@ -506,7 +505,8 @@ class _$_PaymentMethod implements _PaymentMethod {
       const DeepCollectionEquality().hash(sofort) ^
       const DeepCollectionEquality().hash(ideal) ^
       const DeepCollectionEquality().hash(fpx) ^
-      const DeepCollectionEquality().hash(upi);
+      const DeepCollectionEquality().hash(upi) ^
+      const DeepCollectionEquality().hash(customerId);
 
   @JsonKey(ignore: true)
   @override
@@ -524,7 +524,6 @@ abstract class _PaymentMethod implements PaymentMethod {
       {required String id,
       required bool livemode,
       required String type,
-      String? customerId,
       required BillingDetails billingDetails,
       @JsonKey(name: 'Card') required Card card,
       @JsonKey(name: 'SepaDebit') required SepaDebit sepaDebit,
@@ -533,7 +532,8 @@ abstract class _PaymentMethod implements PaymentMethod {
       @JsonKey(name: 'Sofort') required Sofort sofort,
       @JsonKey(name: 'Ideal') required Ideal ideal,
       @JsonKey(name: 'Fpx') required Fpx fpx,
-      @JsonKey(name: 'Upi') required Upi upi}) = _$_PaymentMethod;
+      @JsonKey(name: 'Upi') required Upi upi,
+      String? customerId}) = _$_PaymentMethod;
 
   factory _PaymentMethod.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethod.fromJson;
@@ -544,8 +544,6 @@ abstract class _PaymentMethod implements PaymentMethod {
   bool get livemode => throw _privateConstructorUsedError;
   @override
   String get type => throw _privateConstructorUsedError;
-  @override
-  String? get customerId => throw _privateConstructorUsedError;
   @override
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
   @override
@@ -572,6 +570,8 @@ abstract class _PaymentMethod implements PaymentMethod {
   @override
   @JsonKey(name: 'Upi')
   Upi get upi => throw _privateConstructorUsedError;
+  @override
+  String? get customerId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$PaymentMethodCopyWith<_PaymentMethod> get copyWith =>

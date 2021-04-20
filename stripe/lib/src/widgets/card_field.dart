@@ -84,7 +84,7 @@ class _AndroidCardFieldState extends State<AndroidCardField> {
           methodChannel =
               MethodChannel('flutter.stripe/card_field/${params.id}');
           methodChannel.setMethodCallHandler((call) async {
-            if (call.method == 'onFocusChange') {
+            if (call.method == 'topFocusChange') {
               try {
                 final arguments = Map<String, dynamic>.from(call.arguments);
                 onFocusChanged(arguments);
@@ -98,7 +98,6 @@ class _AndroidCardFieldState extends State<AndroidCardField> {
             return;
           });
           _viewId = params.id;
-          _focusNode.debugLabel = 'UiKitCardField(id: $_viewId)';
           return PlatformViewsService.initSurfaceAndroidView(
             id: params.id,
             viewType: viewType,
@@ -251,7 +250,7 @@ class _UiKitCardFieldState extends State<UiKitCardField> {
     try {
       final details = CardFieldInputDetails.fromJson(arguments);
       widget.onChange?.call(details);
-    }  catch (e, s) {
+    } catch (e, s) {
       // todo:  how to handle this errors?
       log('Error', error: e, stackTrace: s);
     }

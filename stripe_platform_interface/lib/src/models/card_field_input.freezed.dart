@@ -487,17 +487,17 @@ class _$CardFieldInputDetailsTearOff {
   const _$CardFieldInputDetailsTearOff();
 
   _CardFieldInputDetails call(
-      {String? last4,
+      {required bool complete,
+      String? last4,
       String? expiryMonth,
       String? expiryYear,
-      required bool complete,
       String? postalCode,
       String? brand}) {
     return _CardFieldInputDetails(
+      complete: complete,
       last4: last4,
       expiryMonth: expiryMonth,
       expiryYear: expiryYear,
-      complete: complete,
       postalCode: postalCode,
       brand: brand,
     );
@@ -513,10 +513,10 @@ const $CardFieldInputDetails = _$CardFieldInputDetailsTearOff();
 
 /// @nodoc
 mixin _$CardFieldInputDetails {
+  bool get complete => throw _privateConstructorUsedError;
   String? get last4 => throw _privateConstructorUsedError;
   String? get expiryMonth => throw _privateConstructorUsedError;
   String? get expiryYear => throw _privateConstructorUsedError;
-  bool get complete => throw _privateConstructorUsedError;
   String? get postalCode => throw _privateConstructorUsedError;
   String? get brand => throw _privateConstructorUsedError;
 
@@ -532,10 +532,10 @@ abstract class $CardFieldInputDetailsCopyWith<$Res> {
           $Res Function(CardFieldInputDetails) then) =
       _$CardFieldInputDetailsCopyWithImpl<$Res>;
   $Res call(
-      {String? last4,
+      {bool complete,
+      String? last4,
       String? expiryMonth,
       String? expiryYear,
-      bool complete,
       String? postalCode,
       String? brand});
 }
@@ -551,14 +551,18 @@ class _$CardFieldInputDetailsCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? complete = freezed,
     Object? last4 = freezed,
     Object? expiryMonth = freezed,
     Object? expiryYear = freezed,
-    Object? complete = freezed,
     Object? postalCode = freezed,
     Object? brand = freezed,
   }) {
     return _then(_value.copyWith(
+      complete: complete == freezed
+          ? _value.complete
+          : complete // ignore: cast_nullable_to_non_nullable
+              as bool,
       last4: last4 == freezed
           ? _value.last4
           : last4 // ignore: cast_nullable_to_non_nullable
@@ -571,10 +575,6 @@ class _$CardFieldInputDetailsCopyWithImpl<$Res>
           ? _value.expiryYear
           : expiryYear // ignore: cast_nullable_to_non_nullable
               as String?,
-      complete: complete == freezed
-          ? _value.complete
-          : complete // ignore: cast_nullable_to_non_nullable
-              as bool,
       postalCode: postalCode == freezed
           ? _value.postalCode
           : postalCode // ignore: cast_nullable_to_non_nullable
@@ -595,10 +595,10 @@ abstract class _$CardFieldInputDetailsCopyWith<$Res>
       __$CardFieldInputDetailsCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? last4,
+      {bool complete,
+      String? last4,
       String? expiryMonth,
       String? expiryYear,
-      bool complete,
       String? postalCode,
       String? brand});
 }
@@ -616,14 +616,18 @@ class __$CardFieldInputDetailsCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? complete = freezed,
     Object? last4 = freezed,
     Object? expiryMonth = freezed,
     Object? expiryYear = freezed,
-    Object? complete = freezed,
     Object? postalCode = freezed,
     Object? brand = freezed,
   }) {
     return _then(_CardFieldInputDetails(
+      complete: complete == freezed
+          ? _value.complete
+          : complete // ignore: cast_nullable_to_non_nullable
+              as bool,
       last4: last4 == freezed
           ? _value.last4
           : last4 // ignore: cast_nullable_to_non_nullable
@@ -636,10 +640,6 @@ class __$CardFieldInputDetailsCopyWithImpl<$Res>
           ? _value.expiryYear
           : expiryYear // ignore: cast_nullable_to_non_nullable
               as String?,
-      complete: complete == freezed
-          ? _value.complete
-          : complete // ignore: cast_nullable_to_non_nullable
-              as bool,
       postalCode: postalCode == freezed
           ? _value.postalCode
           : postalCode // ignore: cast_nullable_to_non_nullable
@@ -657,10 +657,10 @@ class __$CardFieldInputDetailsCopyWithImpl<$Res>
 /// @nodoc
 class _$_CardFieldInputDetails implements _CardFieldInputDetails {
   const _$_CardFieldInputDetails(
-      {this.last4,
+      {required this.complete,
+      this.last4,
       this.expiryMonth,
       this.expiryYear,
-      required this.complete,
       this.postalCode,
       this.brand});
 
@@ -668,13 +668,13 @@ class _$_CardFieldInputDetails implements _CardFieldInputDetails {
       _$_$_CardFieldInputDetailsFromJson(json);
 
   @override
+  final bool complete;
+  @override
   final String? last4;
   @override
   final String? expiryMonth;
   @override
   final String? expiryYear;
-  @override
-  final bool complete;
   @override
   final String? postalCode;
   @override
@@ -682,13 +682,16 @@ class _$_CardFieldInputDetails implements _CardFieldInputDetails {
 
   @override
   String toString() {
-    return 'CardFieldInputDetails(last4: $last4, expiryMonth: $expiryMonth, expiryYear: $expiryYear, complete: $complete, postalCode: $postalCode, brand: $brand)';
+    return 'CardFieldInputDetails(complete: $complete, last4: $last4, expiryMonth: $expiryMonth, expiryYear: $expiryYear, postalCode: $postalCode, brand: $brand)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _CardFieldInputDetails &&
+            (identical(other.complete, complete) ||
+                const DeepCollectionEquality()
+                    .equals(other.complete, complete)) &&
             (identical(other.last4, last4) ||
                 const DeepCollectionEquality().equals(other.last4, last4)) &&
             (identical(other.expiryMonth, expiryMonth) ||
@@ -697,9 +700,6 @@ class _$_CardFieldInputDetails implements _CardFieldInputDetails {
             (identical(other.expiryYear, expiryYear) ||
                 const DeepCollectionEquality()
                     .equals(other.expiryYear, expiryYear)) &&
-            (identical(other.complete, complete) ||
-                const DeepCollectionEquality()
-                    .equals(other.complete, complete)) &&
             (identical(other.postalCode, postalCode) ||
                 const DeepCollectionEquality()
                     .equals(other.postalCode, postalCode)) &&
@@ -710,10 +710,10 @@ class _$_CardFieldInputDetails implements _CardFieldInputDetails {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(complete) ^
       const DeepCollectionEquality().hash(last4) ^
       const DeepCollectionEquality().hash(expiryMonth) ^
       const DeepCollectionEquality().hash(expiryYear) ^
-      const DeepCollectionEquality().hash(complete) ^
       const DeepCollectionEquality().hash(postalCode) ^
       const DeepCollectionEquality().hash(brand);
 
@@ -731,10 +731,10 @@ class _$_CardFieldInputDetails implements _CardFieldInputDetails {
 
 abstract class _CardFieldInputDetails implements CardFieldInputDetails {
   const factory _CardFieldInputDetails(
-      {String? last4,
+      {required bool complete,
+      String? last4,
       String? expiryMonth,
       String? expiryYear,
-      required bool complete,
       String? postalCode,
       String? brand}) = _$_CardFieldInputDetails;
 
@@ -742,13 +742,13 @@ abstract class _CardFieldInputDetails implements CardFieldInputDetails {
       _$_CardFieldInputDetails.fromJson;
 
   @override
+  bool get complete => throw _privateConstructorUsedError;
+  @override
   String? get last4 => throw _privateConstructorUsedError;
   @override
   String? get expiryMonth => throw _privateConstructorUsedError;
   @override
   String? get expiryYear => throw _privateConstructorUsedError;
-  @override
-  bool get complete => throw _privateConstructorUsedError;
   @override
   String? get postalCode => throw _privateConstructorUsedError;
   @override

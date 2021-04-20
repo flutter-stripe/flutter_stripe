@@ -25,7 +25,21 @@ class StripeSdkCardPlatformView(
                     channel.invokeMethod(event.getEventName(), event.serializeEventData())
                 }
             }
-            stripeSdkCardViewManager.createViewInstance(context, eventHandler)
+            val view = stripeSdkCardViewManager.createViewInstance(context, eventHandler)
+            channel.setMethodCallHandler { call, result ->
+                when (call.method) {
+                    "focus" -> {
+                        view.requestFocus()
+                        result.success(null)
+                    }
+                    "clearFocus" -> {
+                        view.clearFocus()
+                        result.success(null)
+                    }
+                    else -> result.notImplemented()
+                }
+            }
+            view
         }
         if (creationParams?.containsKey("cardStyle") == true) {
             stripeSdkCardViewManager.setCardStyle(instance, creationParams["cardStyle"] as ReadableMap)

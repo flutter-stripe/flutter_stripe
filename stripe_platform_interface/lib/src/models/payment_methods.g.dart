@@ -11,7 +11,6 @@ _$_PaymentMethod _$_$_PaymentMethodFromJson(Map<String, dynamic> json) {
     id: json['id'] as String,
     livemode: json['livemode'] as bool,
     type: json['type'] as String,
-    customerId: json['customerId'] as String?,
     billingDetails:
         BillingDetails.fromJson(json['billingDetails'] as Map<String, dynamic>),
     card: Card.fromJson(json['Card'] as Map<String, dynamic>),
@@ -23,6 +22,7 @@ _$_PaymentMethod _$_$_PaymentMethodFromJson(Map<String, dynamic> json) {
     ideal: Ideal.fromJson(json['Ideal'] as Map<String, dynamic>),
     fpx: Fpx.fromJson(json['Fpx'] as Map<String, dynamic>),
     upi: Upi.fromJson(json['Upi'] as Map<String, dynamic>),
+    customerId: json['customerId'] as String?,
   );
 }
 
@@ -31,7 +31,6 @@ Map<String, dynamic> _$_$_PaymentMethodToJson(_$_PaymentMethod instance) =>
       'id': instance.id,
       'livemode': instance.livemode,
       'type': instance.type,
-      'customerId': instance.customerId,
       'billingDetails': instance.billingDetails.toJson(),
       'Card': instance.card.toJson(),
       'SepaDebit': instance.sepaDebit.toJson(),
@@ -41,6 +40,7 @@ Map<String, dynamic> _$_$_PaymentMethodToJson(_$_PaymentMethod instance) =>
       'Ideal': instance.ideal.toJson(),
       'Fpx': instance.fpx.toJson(),
       'Upi': instance.upi.toJson(),
+      'customerId': instance.customerId,
     };
 
 _$_BillingDetails _$_$_BillingDetailsFromJson(Map<String, dynamic> json) {
