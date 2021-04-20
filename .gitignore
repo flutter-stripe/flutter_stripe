@@ -7,3 +7,6 @@
 build/
 /.idea/
 /stripe_android/android/.gradle/
+
+.flutter-plugins
+.flutter-plugins-dependencies
