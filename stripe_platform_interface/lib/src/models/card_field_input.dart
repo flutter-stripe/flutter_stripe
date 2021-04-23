@@ -76,10 +76,10 @@ class CardFieldFocusName with _$CardFieldFocusName {
 }
 
 enum CardFieldName {
-  cardNumber,
-  cvc,
-  expiryDate,
-  postalCode,
+  @JsonValue("CardNumber") cardNumber,
+  @JsonValue("Cvc") cvc,
+  @JsonValue("ExpiryDate") expiryDate,
+  @JsonValue("PostalCode") postalCode,
 }
 
 enum CardBrand {

@@ -42,10 +42,10 @@ Map<String, dynamic> _$_$_CardTokenDetailsToJson(
 _$_CardFieldInputDetails _$_$_CardFieldInputDetailsFromJson(
     Map<String, dynamic> json) {
   return _$_CardFieldInputDetails(
+    complete: json['complete'] as bool,
     last4: json['last4'] as String?,
     expiryMonth: json['expiryMonth'] as String?,
     expiryYear: json['expiryYear'] as String?,
-    complete: json['complete'] as bool,
     postalCode: json['postalCode'] as String?,
     brand: json['brand'] as String?,
   );
@@ -54,10 +54,10 @@ _$_CardFieldInputDetails _$_$_CardFieldInputDetailsFromJson(
 Map<String, dynamic> _$_$_CardFieldInputDetailsToJson(
         _$_CardFieldInputDetails instance) =>
     <String, dynamic>{
+      'complete': instance.complete,
       'last4': instance.last4,
       'expiryMonth': instance.expiryMonth,
       'expiryYear': instance.expiryYear,
-      'complete': instance.complete,
       'postalCode': instance.postalCode,
       'brand': instance.brand,
     };
@@ -114,8 +114,8 @@ K? _$enumDecodeNullable<K, V>(
 }
 
 const _$CardFieldNameEnumMap = {
-  CardFieldName.cardNumber: 'cardNumber',
-  CardFieldName.cvc: 'cvc',
-  CardFieldName.expiryDate: 'expiryDate',
-  CardFieldName.postalCode: 'postalCode',
+  CardFieldName.cardNumber: 'CardNumber',
+  CardFieldName.cvc: 'Cvc',
+  CardFieldName.expiryDate: 'ExpiryDate',
+  CardFieldName.postalCode: 'PostalCode',
 };

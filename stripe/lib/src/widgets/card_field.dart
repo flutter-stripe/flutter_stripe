@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
@@ -13,150 +14,13 @@ typedef CardChangedCallback = void Function(CardFieldInputDetails? details);
 typedef CardFocusCallback = void Function(CardFieldName? focusedField);
 
 // TODO refactor this for parameters
-class CardField extends StatelessWidget {
-  const CardField({
+class CardField extends StatefulWidget {
+  CardField({
+    Key? key,
     required this.onCardChanged,
-    Key? key,
-  }) : super(key: key);
-
-  final CardChangedCallback onCardChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.android:
-        return AndroidCardField(
-          onChange: onCardChanged,
-        );
-      case TargetPlatform.iOS:
-        return UiKitCardField(
-          onChange: onCardChanged,
-        );
-      default:
-        throw UnsupportedError("Unsupported platform view");
-    }
-  }
-}
-
-class AndroidCardField extends StatefulWidget {
-  const AndroidCardField({Key? key, this.onChange, this.onFocus})
-      : super(key: key);
-
-  final CardChangedCallback? onChange;
-  final CardFocusCallback? onFocus;
-
-  @override
-  _AndroidCardFieldState createState() => _AndroidCardFieldState();
-}
-
-class _AndroidCardFieldState extends State<AndroidCardField> {
-  late MethodChannel methodChannel;
-
-  final _focusNode = FocusNode(debugLabel: 'AndroidCardField');
-  int? _viewId;
-
-  @override
-  Widget build(BuildContext context) {
-    // This is used in the platform side to register the view.
-    const viewType = 'flutter.stripe/card_field';
-    // Pass parameters to the platform side.
-    final creationParams = <String, dynamic>{
-      'postalCodeEnabled': false // for testing
-    };
-
-    return ConstrainedBox(
-      constraints:
-          const BoxConstraints.tightFor(height: kApplePayButtonDefaultHeight),
-      child: PlatformViewLink(
-        viewType: viewType,
-        surfaceFactory: (context, controller) => Focus(
-          focusNode: _focusNode,
-          onFocusChange: _onFocusChange,
-          child: AndroidViewSurface(
-            controller: controller
-                // ignore: avoid_as
-                as AndroidViewController, // TODO get rid of casting?
-            gestureRecognizers: const <Factory<OneSequenceGestureRecognizer>>{},
-            hitTestBehavior: PlatformViewHitTestBehavior.opaque,
-          ),
-        ),
-        onCreatePlatformView: (params) {
-          methodChannel =
-              MethodChannel('flutter.stripe/card_field/${params.id}');
-          methodChannel.setMethodCallHandler((call) async {
-            if (call.method == 'onFocusChange') {
-              try {
-                final arguments = Map<String, dynamic>.from(call.arguments);
-                onFocusChanged(arguments);
-              } on Exception catch (e) {
-                // todo:  how to handle this errors?
-                log('Error', error: e);
-              }
-            } else if (call.method == 'onCardChange') {
-              onCardChanged(Map<String, dynamic>.from(call.arguments));
-            }
-            return;
-          });
-          _viewId = params.id;
-          _focusNode.debugLabel = 'UiKitCardField(id: $_viewId)';
-          return PlatformViewsService.initSurfaceAndroidView(
-            id: params.id,
-            viewType: viewType,
-            layoutDirection: TextDirection.ltr,
-            creationParams: creationParams,
-            creationParamsCodec: const StandardMessageCodec(),
-            //onFocus: _onFocusChange
-          )
-            ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
-            ..create();
-        },
-      ),
-    );
-  }
-
-  void onFocusChanged(Map<String, dynamic> arguments) {
-    try {
-      final field = CardFieldFocusName.fromJson(arguments);
-      if (field.focusedField != null) {
-        _focusNode.requestFocus();
-      }
-      widget.onFocus?.call(field.focusedField);
-    } on Exception catch (e) {
-      // todo:  how to handle this errors?
-      log('Error', error: e);
-    }
-  }
-
-  void _onFocusChange(bool isFocused) {
-    final MethodChannel? methodChannel = this.methodChannel;
-    if (methodChannel == null) {
-      return;
-    }
-    if (!isFocused) {
-      methodChannel.invokeMethod('clearFocus');
-      return;
-    }
-    methodChannel.invokeMethod('focus');
-  }
-
-  void onCardChanged(Map<String, dynamic> arguments) {
-    try {
-      final details = CardFieldInputDetails.fromJson(arguments);
-      widget.onChange?.call(details);
-    } on Exception catch (e) {
-      // todo:  how to handle this errors?
-      log('Error', error: e);
-    }
-  }
-}
-
-class UiKitCardField extends StatefulWidget {
-  UiKitCardField({
-    Key? key,
-    this.onChange,
     this.onFocus,
-    this.enablePostalCode = true,
     this.decoration,
+    this.enablePostalCode = false,
     double? width,
     double? height = kApplePayButtonDefaultHeight,
     BoxConstraints? constraints,
@@ -167,76 +31,125 @@ class UiKitCardField extends StatefulWidget {
             : constraints,
         super(key: key);
 
-  final CardChangedCallback? onChange;
+  final BoxConstraints? constraints;
   final CardFocusCallback? onFocus;
+  final CardChangedCallback onCardChanged;
+
   final CardDecoration? decoration;
   final bool enablePostalCode;
 
-  final BoxConstraints? constraints;
+  // This is used in the platform side to register the view.
+  static const _viewType = 'flutter.stripe/card_field';
 
   @override
-  _UiKitCardFieldState createState() => _UiKitCardFieldState();
+  _CardFieldState createState() => _CardFieldState();
 }
 
-class _UiKitCardFieldState extends State<UiKitCardField> {
-  MethodChannel? methodChannel;
+class _CardFieldState extends State<CardField> {
+  MethodChannel? _methodChannel;
 
-  final _focusNode = FocusNode(debugLabel: 'UiKitCardField');
+  final _focusNode =
+      FocusNode(debugLabel: 'CardField', descendantsAreFocusable: false);
 
   @override
-  Widget build(BuildContext context) => ConstrainedBox(
-        constraints: widget.constraints ??
-            const BoxConstraints.tightFor(height: kApplePayButtonDefaultHeight),
-        child: Focus(
-          focusNode: _focusNode,
-          onFocusChange: _onFocusChange,
-          child: UiKitView(
-            viewType: 'flutter.stripe/card_field',
-            creationParamsCodec: const StandardMessageCodec(),
-            creationParams: {
-              if (widget.decoration != null)
-                'decoration': widget.decoration!.toJson(),
-              'enablePostalCode': widget.enablePostalCode,
-            },
-            onPlatformViewCreated: (viewId) {
-              methodChannel =
-                  MethodChannel('flutter.stripe/card_field/$viewId');
-              methodChannel?.setMethodCallHandler((call) async {
-                if (call.method == 'onFocusChange') {
-                  try {
-                    final arguments = Map<String, dynamic>.from(call.arguments);
-                    onFocusChanged(arguments);
-                  } on Exception catch (e) {
-                    // todo:  how to handle this errors?
-                    log('Error', error: e);
-                  }
-                } else if (call.method == 'onCardChange') {
-                  final map = Map<String, dynamic>.from(call.arguments);
-                  onCardChanged(map);
-                }
-                return;
-              });
-              _focusNode.debugLabel = 'UiKitCardField(id: $viewId)';
-            },
-          ),
-        ),
-      );
+  Widget build(BuildContext context) {
+    // Pass parameters to the platform side.
+    final creationParams = <String, dynamic>{
+      if (widget.decoration != null) 'decoration': widget.decoration!.toJson(),
+      'enablePostalCode': widget.enablePostalCode,
+    };
 
-  void onFocusChanged(Map<String, dynamic> arguments) {
-    try {
-      final field = CardFieldFocusName.fromJson(arguments);
-      if (field.focusedField != null) {
-        _focusNode.requestFocus();
+    Widget platform;
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      platform = AndroidCardField(
+        viewType: CardField._viewType,
+        creationParams: creationParams,
+        onPlatformViewCreated: onPlatformViewCreated,
+      );
+    } else if (defaultTargetPlatform == TargetPlatform.iOS) {
+      platform = UiKitCardField(
+        viewType: CardField._viewType,
+        creationParams: creationParams,
+        onPlatformViewCreated: onPlatformViewCreated,
+      );
+    } else {
+      throw UnsupportedError("Unsupported platform view");
+    }
+    final constraints = widget.constraints ??
+        BoxConstraints.expand(height: kApplePayButtonDefaultHeight);
+    return ConstrainedBox(
+      constraints: constraints,
+      child: Focus(
+        descendantsAreFocusable: false,
+        canRequestFocus: true,
+        onKey: (node, event) {
+          log('On key $event');
+          return true;
+        },
+        focusNode: _focusNode,
+        onFocusChange: _handleFrameworkFocusChanged,
+        child: platform,
+      ),
+    );
+  }
+
+  @override
+  void didUpdateWidget(covariant CardField oldWidget) {
+    if (widget.enablePostalCode != oldWidget.enablePostalCode) {
+      _methodChannel?.invokeMethod('onPostalCodeEnabledChanged', {
+        'enablePostalCode': widget.enablePostalCode,
+      });
+    }
+    if (widget.decoration != oldWidget.decoration) {
+      _methodChannel?.invokeMethod('onDecorationChanged', {
+        'decoration': widget.decoration?.toJson(),
+      });
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  void onPlatformViewCreated(int viewId) {
+    _focusNode.debugLabel = 'CardField(id: $viewId)';
+    _methodChannel = MethodChannel('flutter.stripe/card_field/$viewId');
+    _methodChannel?.setMethodCallHandler((call) async {
+      if (call.method == 'onFocusChange' || call.method == "topFocusChange") {
+        _handlePlatformFocusChanged(call.arguments);
+      } else if (call.method == 'onCardChange') {
+        _handleCardChanged(call.arguments);
       }
-      widget.onFocus?.call(field.focusedField);
-    } on Exception catch (e) {
-      // todo:  how to handle this errors?
-      log('Error', error: e);
+    });
+  }
+
+  void _handleCardChanged(dynamic arguments) {
+    try {
+      final map = Map<String, dynamic>.from(arguments);
+      final details = CardFieldInputDetails.fromJson(map);
+      widget.onCardChanged.call(details);
+    } catch (e) {
+      log('An error ocurred while while parsing card arguments, this should not happen, please consider creating an issue at https://github.com/flutter-stripe/flutter_stripe/issues/new');
+      rethrow;
     }
   }
 
-  void _onFocusChange(bool isFocused) {
-    final methodChannel = this.methodChannel;
+  /// Handler called when a field from the platform card field has been focused
+  void _handlePlatformFocusChanged(dynamic arguments) {
+    try {
+      final map = Map<String, dynamic>.from(arguments);
+      final field = CardFieldFocusName.fromJson(map);
+      if (field.focusedField != null && WidgetsBinding.instance!.focusManager.primaryFocus !=  _focusNode) {
+        _focusNode.requestFocus();
+      }
+      widget.onFocus?.call(field.focusedField);
+    } catch (e) {
+      log('An error ocurred while while parsing card arguments, this should not happen, please consider creating an issue at https://github.com/flutter-stripe/flutter_stripe/issues/new');
+      rethrow;
+    }
+  }
+
+  /// Handler called when the focus changes in the node attached to the platform
+  /// view. This updates the correspondant platform view to keep it in sync.
+  void _handleFrameworkFocusChanged(bool isFocused) {
+    final MethodChannel? methodChannel = _methodChannel;
     if (methodChannel == null) {
       return;
     }
@@ -244,39 +157,72 @@ class _UiKitCardFieldState extends State<UiKitCardField> {
       methodChannel.invokeMethod('clearFocus');
       return;
     }
-    methodChannel.invokeMethod('focus');
+    scheduleMicrotask(() {
+      methodChannel.invokeMethod('requestFocus');
+    });
   }
+}
 
-  void onCardChanged(Map<String, dynamic> arguments) {
-    try {
-      final details = CardFieldInputDetails.fromJson(arguments);
-      widget.onChange?.call(details);
-    }  catch (e, s) {
-      // todo:  how to handle this errors?
-      log('Error', error: e, stackTrace: s);
-    }
-  }
+class AndroidCardField extends StatelessWidget {
+  const AndroidCardField({
+    Key? key,
+    required this.viewType,
+    required this.creationParams,
+    required this.onPlatformViewCreated,
+  }) : super(key: key);
+
+  final String viewType;
+  final Map<String, dynamic> creationParams;
+  final PlatformViewCreatedCallback onPlatformViewCreated;
 
   @override
-  void didUpdateWidget(covariant UiKitCardField oldWidget) {
-    if (widget.enablePostalCode != oldWidget.enablePostalCode) {
-      methodChannel?.invokeMethod('onPostalCodeEnabledChanged', {
-        'enablePostalCode': widget.enablePostalCode,
-      });
-    }
-    if (widget.decoration != oldWidget.decoration) {
-      methodChannel?.invokeMethod('onDecorationChanged', {
-        'decoration': widget.decoration?.toJson(),
-      });
-    }
-    /*   if (widget.style != oldWidget.style || widget.type != oldWidget.type) {
-      final int type = _mapButtonType(widget.type);
-      final int style = mapButtonStyle(widget.style);
-      methodChannel?.invokeMethod('updateStyle', {
-        'type': type,
-        'style': style,
-      });
-    } */
-    super.didUpdateWidget(oldWidget);
+  Widget build(BuildContext context) {
+    return PlatformViewLink(
+      viewType: viewType,
+      surfaceFactory: (context, controller) => AndroidViewSurface(
+        controller: controller
+            // ignore: avoid_as
+            as AndroidViewController,
+        gestureRecognizers: const <Factory<OneSequenceGestureRecognizer>>{},
+        hitTestBehavior: PlatformViewHitTestBehavior.opaque,
+      ),
+      onCreatePlatformView: (params) {
+        onPlatformViewCreated(params.id);
+        return PlatformViewsService.initSurfaceAndroidView(
+          id: params.id,
+          viewType: viewType,
+          layoutDirection: Directionality.of(context),
+          creationParams: creationParams,
+          creationParamsCodec: const StandardMessageCodec(),
+        )
+          ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
+          ..create();
+      },
+    );
+  }
+}
+
+class UiKitCardField extends StatelessWidget {
+  UiKitCardField({
+    Key? key,
+    required this.viewType,
+    required this.creationParams,
+    required this.onPlatformViewCreated,
+  }) : super(key: key);
+
+  final String viewType;
+  final Map<String, dynamic> creationParams;
+  final PlatformViewCreatedCallback onPlatformViewCreated;
+
+  @override
+  Widget build(BuildContext context) {
+    return UiKitView(
+      viewType: viewType,
+      creationParamsCodec: const StandardMessageCodec(),
+      creationParams: creationParams,
+      onPlatformViewCreated: (viewId) {
+        onPlatformViewCreated(viewId);
+      },
+    );
   }
 }

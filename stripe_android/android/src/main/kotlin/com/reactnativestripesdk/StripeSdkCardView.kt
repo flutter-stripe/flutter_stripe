@@ -17,7 +17,7 @@ import com.stripe.android.view.CardInputListener
 import com.stripe.android.view.CardInputWidget
 
 class StripeSdkCardView(context: Context, private val mEventDispatcher: EventDispatcher) : FrameLayout(context) {
-  private var mCardWidget: CardInputWidget
+  var mCardWidget: CardInputWidget
   val cardDetails: MutableMap<String, Any> = mutableMapOf("brand" to "", "last4" to "", "expiryMonth" to "", "expiryYear" to "", "postalCode" to "")
   var cardParams: PaymentMethodCreateParams.Card? = null
 
