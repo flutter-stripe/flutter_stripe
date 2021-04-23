@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.widget.FrameLayout
 import com.facebook.react.bridge.ReadableMap
@@ -25,6 +26,12 @@ class StripeSdkCardView(context: Context, private val mEventDispatcher: EventDis
     mCardWidget = CardInputWidget(context);
 
     val binding = CardInputWidgetBinding.bind(mCardWidget)
+
+    listOf(binding.cardNumberEditText, binding.cvcEditText, binding.expiryDateEditText).forEach {
+      // TODO remove this workaround once https://github.com/flutter/flutter/issues/81029 and/or https://github.com/flutter/flutter/issues/80961 is fixed
+      it.inputType = InputType.TYPE_CLASS_TEXT
+    }
+
     binding.container.isFocusable = true
     binding.container.isFocusableInTouchMode = true
     binding.container.requestFocus()
