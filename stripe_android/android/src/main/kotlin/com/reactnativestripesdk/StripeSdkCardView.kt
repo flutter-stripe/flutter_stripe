@@ -38,31 +38,31 @@ class StripeSdkCardView(context: Context, private val mEventDispatcher: EventDis
   fun setCardStyle(value: ReadableMap) {
     val binding = CardInputWidgetBinding.bind(mCardWidget)
     val borderWidth = getIntOrNull(value, "borderWidth")
-    val backgroundColor = getValOr(value, "backgroundColor", null)
-    val borderColor = getValOr(value, "borderColor", null)
+    val backgroundColor = getIntOrNull(value, "backgroundColor")
+    val borderColor = getIntOrNull(value, "borderColor")
     val borderRadius = getIntOrNull(value, "borderRadius") ?: 0
-    val textColor = getValOr(value, "textColor", null)
+    val textColor = getIntOrNull(value, "textColor")
     val fontSize = getIntOrNull(value,"fontSize")
-    val placeholderColor = getValOr(value, "placeholderColor", null)
-    val textErrorColor = getValOr(value, "textErrorColor", null)
+    val placeholderColor = getIntOrNull(value, "placeholderColor")
+    val textErrorColor = getIntOrNull(value, "textErrorColor")
 
     textColor?.let {
-      binding.cardNumberEditText.setTextColor(Color.parseColor(it))
-      binding.cvcEditText.setTextColor(Color.parseColor(it))
-      binding.expiryDateEditText.setTextColor(Color.parseColor(it))
-      binding.postalCodeEditText.setTextColor(Color.parseColor(it))
+      binding.cardNumberEditText.setTextColor(it)
+      binding.cvcEditText.setTextColor(it)
+      binding.expiryDateEditText.setTextColor(it)
+      binding.postalCodeEditText.setTextColor(it)
     }
     textErrorColor?.let {
-      binding.cardNumberEditText.setErrorColor(Color.parseColor(it))
-      binding.cvcEditText.setErrorColor(Color.parseColor(it))
-      binding.expiryDateEditText.setErrorColor(Color.parseColor(it))
-      binding.postalCodeEditText.setErrorColor(Color.parseColor(it))
+      binding.cardNumberEditText.setErrorColor(it)
+      binding.cvcEditText.setErrorColor(it)
+      binding.expiryDateEditText.setErrorColor(it)
+      binding.postalCodeEditText.setErrorColor(it)
     }
     placeholderColor?.let {
-      binding.cardNumberEditText.setHintTextColor(Color.parseColor(it))
-      binding.cvcEditText.setHintTextColor(Color.parseColor(it))
-      binding.expiryDateEditText.setHintTextColor(Color.parseColor(it))
-      binding.postalCodeEditText.setHintTextColor(Color.parseColor(it))
+      binding.cardNumberEditText.setHintTextColor(it)
+      binding.cvcEditText.setHintTextColor(it)
+      binding.expiryDateEditText.setHintTextColor(it)
+      binding.postalCodeEditText.setHintTextColor(it)
     }
     fontSize?.let {
       binding.cardNumberEditText.textSize = it.toFloat()
@@ -70,6 +70,8 @@ class StripeSdkCardView(context: Context, private val mEventDispatcher: EventDis
       binding.expiryDateEditText.textSize = it.toFloat()
       binding.postalCodeEditText.textSize = it.toFloat()
     }
+
+
 
     mCardWidget.setPadding(40, 0 ,40 ,0)
     mCardWidget.background = MaterialShapeDrawable(
@@ -85,10 +87,10 @@ class StripeSdkCardView(context: Context, private val mEventDispatcher: EventDis
         shape.strokeWidth = (it * 2).toFloat()
       }
       borderColor?.let {
-        shape.strokeColor = ColorStateList.valueOf(Color.parseColor(it))
+        shape.strokeColor = ColorStateList.valueOf(it)
       }
       backgroundColor?.let {
-        shape.fillColor = ColorStateList.valueOf(Color.parseColor(it))
+        shape.fillColor = ColorStateList.valueOf(it)
       }
     }
   }
@@ -191,3 +193,4 @@ class StripeSdkCardView(context: Context, private val mEventDispatcher: EventDis
     layout(left, top, right, bottom)
   }
 }
+

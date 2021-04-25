@@ -10,6 +10,9 @@ import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 import '../../stripe.dart';
 
+const kCardFieldDefaultHeight = 48.0;
+const kCardFieldDefaultFontSize = 17.0;
+
 typedef CardChangedCallback = void Function(CardFieldInputDetails? details);
 typedef CardFocusCallback = void Function(CardFieldName? focusedField);
 
@@ -19,11 +22,14 @@ class CardField extends StatefulWidget {
     Key? key,
     required this.onCardChanged,
     this.onFocus,
-    this.decoration,
+    this.style,
+    this.placeholder,
     this.enablePostalCode = false,
     double? width,
-    double? height = kApplePayButtonDefaultHeight,
+    double? height = kCardFieldDefaultHeight,
     BoxConstraints? constraints,
+    this.focusNode,
+    this.autofocus = false,
   })  : assert(constraints == null || constraints.debugAssertIsValid()),
         constraints = (width != null || height != null)
             ? constraints?.tighten(width: width, height: height) ??
@@ -34,12 +40,18 @@ class CardField extends StatefulWidget {
   final BoxConstraints? constraints;
   final CardFocusCallback? onFocus;
   final CardChangedCallback onCardChanged;
-
-  final CardDecoration? decoration;
+  final CardStyle? style;
+  final CardPlaceholder? placeholder;
   final bool enablePostalCode;
+  final FocusNode? focusNode;
+  final bool autofocus;
 
   // This is used in the platform side to register the view.
   static const _viewType = 'flutter.stripe/card_field';
+
+  // By platform level limitations only one CardField is allowed at the same time
+  // A unique key is used to throw an expection before multiple platform views are created
+  static late final _key = UniqueKey();
 
   @override
   _CardFieldState createState() => _CardFieldState();
@@ -50,24 +62,58 @@ class _CardFieldState extends State<CardField> {
 
   final _focusNode =
       FocusNode(debugLabel: 'CardField', descendantsAreFocusable: false);
+  FocusNode get _effectiveNode => widget.focusNode ?? _focusNode;
+
+  CardStyle? _lastStyle;
+  CardStyle resolveStyle(CardStyle? style) {
+    final theme = Theme.of(context);
+    final baseTextStyle = Theme.of(context).textTheme.subtitle1;
+    return CardStyle(
+      borderWidth: 0,
+      backgroundColor: Colors.transparent,
+      borderColor: Colors.transparent,
+      borderRadius: 0,
+      cursorColor: theme.textSelectionTheme.cursorColor ?? theme.primaryColor,
+      textColor: Colors.red,
+      fontSize: baseTextStyle?.fontSize ?? kCardFieldDefaultFontSize,
+      textErrorColor:
+          theme.inputDecorationTheme.errorStyle?.color ?? theme.errorColor,
+      placeholderColor:
+          theme.inputDecorationTheme.hintStyle?.color ?? theme.hintColor,
+    ).apply(style);
+  }
+
+  CardPlaceholder? _lastPlaceholder;
+  CardPlaceholder resolvePlaceholder(CardPlaceholder? placeholder) {
+    return CardPlaceholder(
+      number: '1234123412341234',
+      expiration: 'MM/YY',
+      cvc: 'CVC',
+    ).apply(placeholder);
+  }
 
   @override
   Widget build(BuildContext context) {
+    final style = resolveStyle(widget.style);
+    final placeholder = resolvePlaceholder(widget.placeholder);
     // Pass parameters to the platform side.
     final creationParams = <String, dynamic>{
-      if (widget.decoration != null) 'decoration': widget.decoration!.toJson(),
+      'cardStyle': style.toJson(),
+      'placeholder': placeholder.toJson(),
       'enablePostalCode': widget.enablePostalCode,
     };
 
     Widget platform;
     if (defaultTargetPlatform == TargetPlatform.android) {
       platform = AndroidCardField(
+        key: CardField._key,
         viewType: CardField._viewType,
         creationParams: creationParams,
         onPlatformViewCreated: onPlatformViewCreated,
       );
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       platform = UiKitCardField(
+        key: CardField._key,
         viewType: CardField._viewType,
         creationParams: creationParams,
         onPlatformViewCreated: onPlatformViewCreated,
@@ -76,21 +122,36 @@ class _CardFieldState extends State<CardField> {
       throw UnsupportedError("Unsupported platform view");
     }
     final constraints = widget.constraints ??
-        BoxConstraints.expand(height: kApplePayButtonDefaultHeight);
-    return ConstrainedBox(
-      constraints: constraints,
+        BoxConstraints.expand(height: kCardFieldDefaultHeight);
+
+    return Listener(
+      onPointerDown: (_) {
+        if (!_effectiveNode.hasFocus) _effectiveNode.requestFocus();
+      },
       child: Focus(
+        autofocus: true,
         descendantsAreFocusable: false,
-        canRequestFocus: true,
-        onKey: (node, event) {
-          log('On key $event');
-          return true;
-        },
-        focusNode: _focusNode,
+        focusNode: _effectiveNode,
         onFocusChange: _handleFrameworkFocusChanged,
-        child: platform,
+        child: ConstrainedBox(
+          constraints: constraints,
+          child: platform,
+        ),
       ),
     );
+  }
+
+  @override
+  void didChangeDependencies() {
+    _lastStyle ??= resolveStyle(widget.style);
+    final style = resolveStyle(widget.style);
+    if (style != _lastStyle) {
+      _methodChannel?.invokeMethod('onStyleChanged', {
+        'cardStyle': style.toJson(),
+      });
+    }
+    _lastStyle = style;
+    super.didChangeDependencies();
   }
 
   @override
@@ -100,11 +161,21 @@ class _CardFieldState extends State<CardField> {
         'enablePostalCode': widget.enablePostalCode,
       });
     }
-    if (widget.decoration != oldWidget.decoration) {
-      _methodChannel?.invokeMethod('onDecorationChanged', {
-        'decoration': widget.decoration?.toJson(),
+    _lastStyle ??= resolveStyle(oldWidget.style);
+    final style = resolveStyle(widget.style);
+    if (style != _lastStyle) {
+      _methodChannel?.invokeMethod('onStyleChanged', {
+        'cardStyle': style.toJson(),
       });
     }
+    _lastStyle = style;
+    final placeholder = resolvePlaceholder(widget.placeholder);
+    if (placeholder != _lastPlaceholder) {
+      _methodChannel?.invokeMethod('onPlaceholderChanged', {
+        'placeholder': placeholder.toJson(),
+      });
+    }
+    _lastPlaceholder = placeholder;
     super.didUpdateWidget(oldWidget);
   }
 
@@ -136,8 +207,10 @@ class _CardFieldState extends State<CardField> {
     try {
       final map = Map<String, dynamic>.from(arguments);
       final field = CardFieldFocusName.fromJson(map);
-      if (field.focusedField != null && WidgetsBinding.instance!.focusManager.primaryFocus !=  _focusNode) {
-        _focusNode.requestFocus();
+      if (field.focusedField != null &&
+          WidgetsBinding.instance!.focusManager.primaryFocus !=
+              _effectiveNode) {
+        _effectiveNode.requestFocus();
       }
       widget.onFocus?.call(field.focusedField);
     } catch (e) {
@@ -153,13 +226,19 @@ class _CardFieldState extends State<CardField> {
     if (methodChannel == null) {
       return;
     }
+    setState(() {});
     if (!isFocused) {
       methodChannel.invokeMethod('clearFocus');
       return;
     }
-    scheduleMicrotask(() {
-      methodChannel.invokeMethod('requestFocus');
-    });
+
+    methodChannel.invokeMethod('requestFocus');
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
   }
 }
 
@@ -217,6 +296,7 @@ class UiKitCardField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return UiKitView(
+      hitTestBehavior: PlatformViewHitTestBehavior.opaque,
       viewType: viewType,
       creationParamsCodec: const StandardMessageCodec(),
       creationParams: creationParams,

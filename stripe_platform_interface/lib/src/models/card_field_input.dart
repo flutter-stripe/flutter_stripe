@@ -6,23 +6,65 @@ part 'card_field_input.freezed.dart';
 part 'card_field_input.g.dart';
 
 @freezed
-class CardDecoration with _$CardDecoration {
+class CardStyle with _$CardStyle {
   @JsonSerializable(explicitToJson: true)
-  factory CardDecoration({
+  factory CardStyle({
+    double? borderWidth,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
         Color? backgroundColor,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? textColor,
-    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
         Color? borderColor,
-    double? borderWidth,
     double? borderRadius,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+        Color? cursorColor,
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+        Color? textColor,
+    double? fontSize,
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
         Color? textErrorColor,
-  }) = _CardDecoration;
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+        Color? placeholderColor,
+  }) = _CardStyleConstructor;
 
-  factory CardDecoration.fromJson(Map<String, dynamic> json) =>
-      _$CardDecorationFromJson(json);
+  CardStyle._();
+
+  CardStyle apply(CardStyle? style) => copyWith(
+        borderWidth: style?.borderWidth ?? borderWidth,
+        backgroundColor: style?.backgroundColor ?? backgroundColor,
+        borderColor: style?.borderColor ?? borderColor,
+        borderRadius: style?.borderRadius ?? borderRadius,
+        cursorColor: style?.cursorColor ?? cursorColor,
+        textColor: style?.textColor ?? textColor,
+        fontSize: style?.fontSize ?? fontSize,
+        textErrorColor: style?.textErrorColor ?? textErrorColor,
+        placeholderColor: style?.placeholderColor ?? placeholderColor,
+      );
+
+  factory CardStyle.fromJson(Map<String, dynamic> json) =>
+      _$CardStyleFromJson(json);
+}
+
+@freezed
+class CardPlaceholder with _$CardPlaceholder {
+  @JsonSerializable(explicitToJson: true)
+  factory CardPlaceholder({
+    String? number,
+    String? expiration,
+    String? cvc,
+    String? postalCode,
+  }) = _CardPlaceholderConstructor;
+
+  factory CardPlaceholder.fromJson(Map<String, dynamic> json) =>
+      _$CardPlaceholderFromJson(json);
+
+  CardPlaceholder._();
+
+  CardPlaceholder apply(CardPlaceholder? placeholder) => copyWith(
+        number: placeholder?.number ?? number,
+        expiration: placeholder?.expiration ?? expiration,
+        cvc: placeholder?.cvc ?? cvc,
+        postalCode: placeholder?.postalCode ?? postalCode,
+      );
 }
 
 class ColorKey {
@@ -31,10 +73,7 @@ class ColorKey {
   static int? toJson(Color? value) => value?.value;
 
   static Color? fromJson(value) {
-    if (value is int) {
-      return Color(value);
-    }
-    return null;
+    throw ('Not implemented');
   }
 }
 
@@ -76,10 +115,14 @@ class CardFieldFocusName with _$CardFieldFocusName {
 }
 
 enum CardFieldName {
-  @JsonValue("CardNumber") cardNumber,
-  @JsonValue("Cvc") cvc,
-  @JsonValue("ExpiryDate") expiryDate,
-  @JsonValue("PostalCode") postalCode,
+  @JsonValue("CardNumber")
+  cardNumber,
+  @JsonValue("Cvc")
+  cvc,
+  @JsonValue("ExpiryDate")
+  expiryDate,
+  @JsonValue("PostalCode")
+  postalCode,
 }
 
 enum CardBrand {

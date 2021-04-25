@@ -34,12 +34,13 @@ public class CardFieldViewFactory: NSObject, FlutterPlatformViewFactory, CardFie
        if (cardFieldMap[CARD_FIELD_INSTANCE_ID] != nil) {
         // TODO: throw an exception
        }
-        return FlutterCardFieldView(
+        return CardFieldView(
             frame: frame,
             viewIdentifier: viewId,
             arguments: args,
             binaryMessenger: messenger,
-            delegate: self)
+            delegate: self
+        )
     }
     
     public func createArgsCodec() -> FlutterMessageCodec & NSObjectProtocol {
@@ -63,10 +64,10 @@ public class CardFieldViewFactory: NSObject, FlutterPlatformViewFactory, CardFie
 
 
 
-class FlutterCardFieldView: NSObject, FlutterPlatformView {
+class CardFieldView: NSObject, FlutterPlatformView, STPPaymentCardTextFieldDelegate {
     private var _view: UIView
 
-    private var cardFieldView: CardFieldView?
+    var cardField = STPPaymentCardTextField()
     
     private let channel: FlutterMethodChannel
     
@@ -83,15 +84,24 @@ class FlutterCardFieldView: NSObject, FlutterPlatformView {
         channel = FlutterMethodChannel(name: "flutter.stripe/card_field/\(viewId)",
                                            binaryMessenger: messenger)
         _view = UIView()
+       
+        
         super.init()
-     
+        cardField.delegate = self
+        cardField.translatesAutoresizingMaskIntoConstraints = false
+        _view.addSubview(cardField)
+        cardField.topAnchor.constraint(equalTo: _view.topAnchor).isActive = true
+        cardField.bottomAnchor.constraint(equalTo: _view.bottomAnchor).isActive = true
+        cardField.leftAnchor.constraint(equalTo: _view.leftAnchor).isActive = true
+        cardField.rightAnchor.constraint(equalTo: _view.rightAnchor).isActive = true
         
         // iOS views can be created here
-        createNativeView()
+       
         channel.setMethodCallHandler(handle)
         if let arguments = args as? [String: Any] {
             updatePostalCodeEnabled(arguments)
-            updateDectoration(arguments)
+            updateCardStyle(arguments)
+            updatePlaceholder(arguments)
         }
         
         self.delegate?.onDidCreateViewInstance(id: CARD_FIELD_INSTANCE_ID, reference: self)
@@ -102,7 +112,6 @@ class FlutterCardFieldView: NSObject, FlutterPlatformView {
     }
     
 
-    
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
         case "onPostalCodeEnabledChanged":
@@ -110,16 +119,21 @@ class FlutterCardFieldView: NSObject, FlutterPlatformView {
                 updatePostalCodeEnabled(arguments)
             }
           result(nil)
-        case "onDecorationChanged":
+        case "onStyleChanged":
             if  let arguments = call.arguments as? [String : Any] {
-                updateDectoration(arguments)
+                updateCardStyle(arguments)
             }
           result(nil)
-        case "focus":
-          cardFieldView?.focus()
+        case "onPlaceholderChanged":
+            if  let arguments = call.arguments as? [String : Any] {
+                updatePlaceholder(arguments)
+            }
+          result(nil)
+        case "requestFocus":
+            focus()
           result(nil)
         case "clearFocus":
-           cardFieldView?.clearFocus()
+            clearFocus()
           result(nil)
         default:
             result(FlutterMethodNotImplemented)
@@ -130,23 +144,6 @@ class FlutterCardFieldView: NSObject, FlutterPlatformView {
         return _view
     }
 
-    func createNativeView(){
-        
-       if let cardFieldView = self.cardFieldView {
-        cardFieldView.removeFromSuperview()
-       }
-      
-        self.cardFieldView = CardFieldView(frame: CGRect.zero, delegate: self)
-      
-      if let cardFieldView = self.cardFieldView {
-        cardFieldView.translatesAutoresizingMaskIntoConstraints = false
-        _view.addSubview(cardFieldView)
-        cardFieldView.topAnchor.constraint(equalTo: _view.topAnchor).isActive = true
-        cardFieldView.bottomAnchor.constraint(equalTo: _view.bottomAnchor).isActive = true
-        cardFieldView.leftAnchor.constraint(equalTo: _view.leftAnchor).isActive = true
-        cardFieldView.rightAnchor.constraint(equalTo: _view.rightAnchor).isActive = true
-      }
-    }
     
     func onFocusChange(_ arguments: [String: Any]) {
         channel.invokeMethod("onFocusChange", arguments: arguments)
@@ -158,193 +155,115 @@ class FlutterCardFieldView: NSObject, FlutterPlatformView {
     
     func updatePostalCodeEnabled(_ arguments: [String: Any]) {
         if let postalCodeEnabled = arguments["enablePostalCode"] as? Bool {
-            cardFieldView?.postalCodeEnabled = postalCodeEnabled
-        }
-    }
-    
-    func updateDectoration(_ arguments: [String: Any]) {
-        var backgroundColor:  UIColor?
-        var textColor:  UIColor?
-        var placeholderColor:  UIColor?
-        var borderColor:  UIColor?
-        var borderWidth:  CGFloat?
-        var borderRadius:  CGFloat?
-        var textErrorColor:  UIColor?
-        if  let decoration = arguments["decoration"] as? [String : Any] {
-            
-            if let argb =  decoration["backgroundColor"] as? UInt {
-                backgroundColor = UIColor.init(argb: argb)
-            }
-            if let argb =  decoration["textColor"] as? UInt {
-                textColor = UIColor.init(argb: argb)
-            }
-            if let argb =  decoration["placeholderColor"] as? UInt {
-                placeholderColor = UIColor.init(argb: argb)
-            }
-            if let argb =  decoration["borderColor"] as? UInt {
-                borderColor = UIColor.init(argb: argb)
-            }
-            if let argb =  decoration["textErrorColor"] as? UInt {
-                textErrorColor = UIColor.init(argb: argb)
-            }
-            borderWidth = decoration["borderWidth"] as? CGFloat
-            borderRadius = decoration["borderRadius"] as? CGFloat
-        }
-        cardFieldView?.cardBackgroundColor = backgroundColor
-        cardFieldView?.textColor = textColor
-        cardFieldView?.placeholderColor = placeholderColor
-        cardFieldView?.borderColor = borderColor
-        cardFieldView?.borderWidth = borderWidth
-        cardFieldView?.textErrorColor = textErrorColor
-        cardFieldView?.borderRadius = borderRadius
-    }
-    
-    
-}
-
-extension FlutterCardFieldView : STPPaymentCardTextFieldDelegate {
-    func paymentCardTextFieldDidBeginEditingNumber(_ textField: STPPaymentCardTextField) {
-        onFocusChange(["focusedField": "cardNumber"])
-    }
-    
-    func paymentCardTextFieldDidBeginEditingCVC(_ textField: STPPaymentCardTextField) {
-        onFocusChange(["focusedField": "cvc"])
-    }
-    
-    func paymentCardTextFieldDidBeginEditingExpiration(_ textField: STPPaymentCardTextField) {
-        onFocusChange(["focusedField": "expiryDate"])
-    }
-    
-    func paymentCardTextFieldDidBeginEditingPostalCode(_ textField: STPPaymentCardTextField) {
-        onFocusChange(["focusedField": "postalCode"])
-    }
-    
-    func paymentCardTextFieldDidChange(_ textField: STPPaymentCardTextField) {
-        if let cardFieldView  = cardFieldView {
-            let brand = STPCardValidator.brand(forNumber: textField.cardParams.number ?? "")
-           var cardData: [String: Any] = [
-               "expiryMonth": textField.cardParams.expMonth?.stringValue ?? "",
-               "expiryYear": textField.cardParams.expYear?.stringValue ?? "",
-               "complete": textField.isValid,
-               "brand": Mappers.mapCardBrand(brand),
-               "last4": textField.cardParams.last4 ?? ""
-           ]
-           if (cardFieldView.postalCodeEnabled) {
-               cardData["postalCode"] = textField.postalCode ?? ""
-           }
-           onCardChange(cardData)
-        }
-    }
-    
-}
-
-
-class CardFieldView: UIView {
-    
-   public var cardField = STPPaymentCardTextField()
-    
-    @objc var postalCodeEnabled: Bool = true {
-        didSet {
             cardField.postalCodeEntryEnabled = postalCodeEnabled
         }
     }
     
-    init(frame: CGRect, delegate: STPPaymentCardTextFieldDelegate) {
-        super.init(frame: frame)
-        cardField.delegate = delegate
-        self.addSubview(cardField)
+    func updateCardStyle(_ arguments: [String: Any]) {
+        if let cardStyle = arguments["cardStyle"] as? NSDictionary {
+            self.cardStyle = cardStyle
+        }
     }
     
-    
-    override func layoutSubviews() {
-        cardField.frame = self.bounds
+    func updatePlaceholder(_ arguments: [String: Any]) {
+        if let placeholder = arguments["placeholder"] as? NSDictionary {
+            self.placeholder = placeholder
+        }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    public var cardBackgroundColor: UIColor? {
-        get {
-          return cardField.backgroundColor
-        }
-        set {
-           cardField.backgroundColor = newValue
-        }
-      }
-    
-    @objc public var textColor: UIColor?  {
-        get {
-          return cardField.textColor
-        }
-        set {
-           var defaultColor: UIColor = .black
-           if #available(iOS 13.0, *) {
-             defaultColor = .label
-           }
-
-          cardField.textColor = newValue ?? defaultColor
-        }
-      }
-    
-    @objc public var placeholderColor: UIColor?  {
-        get {
-          return cardField.placeholderColor
-        }
-        set {
-            cardField.placeholderColor = newValue ?? CardFieldView.placeholderGrayColor
-        }
-      }
-    
-    @objc public var borderColor: UIColor?  {
-        get {
-          return cardField.borderColor
-        }
-        set {
-            cardField.borderColor = newValue ?? CardFieldView.placeholderGrayColor
-        }
-      }
-    
-    @objc public var textErrorColor: UIColor?  {
-        get {
-          return cardField.textErrorColor
-        }
-        set {
-            var defaultColor: UIColor = .red
-            if #available(iOS 13.0, *) {
-              defaultColor = .systemRed
+    var cardStyle: NSDictionary = NSDictionary() {
+        didSet {
+            if let borderWidth = cardStyle["borderWidth"]  as? Int {
+                cardField.borderWidth = CGFloat(borderWidth)
+            } else {
+                cardField.borderWidth = CGFloat(0)
             }
+            if let backgroundColor = cardStyle["backgroundColor"]  as? UInt {
+                cardField.backgroundColor = UIColor(argb: backgroundColor)
+            }
+            if let borderColor = cardStyle["borderColor"] as? UInt {
+                cardField.borderColor = UIColor(argb: borderColor)
+            }
+            if let borderRadius = cardStyle["borderRadius"]  as? Int {
+                cardField.cornerRadius = CGFloat(borderRadius)
+            }
+            if let cursorColor = cardStyle["cursorColor"]  as? UInt {
+                cardField.cursorColor = UIColor(argb: cursorColor)
+            }
+            if let textColor = cardStyle["textColor"]  as? UInt {
+                cardField.textColor = UIColor(argb: textColor)
+            }
+            if let textErrorColor = cardStyle["textErrorColor"]  as? UInt {
+                cardField.textErrorColor = UIColor(argb: textErrorColor)
+            }
+            if let fontSize = cardStyle["fontSize"]  as? Int {
+                cardField.font = UIFont.systemFont(ofSize: CGFloat(fontSize))
+            }
+            if let placeholderColor = cardStyle["placeholderColor"]  as? UInt {
+                cardField.placeholderColor = UIColor(argb: placeholderColor)
+            }
+            
+        }
+    }
+    
+    var placeholder: NSDictionary = NSDictionary() {
+      didSet {
+          if let numberPlaceholder = placeholder["number"]  as? String {
+              cardField.numberPlaceholder = numberPlaceholder
+          } else {
+              cardField.numberPlaceholder = "1234123412341234"
+          }
+          if let expirationPlaceholder = placeholder["expiration"]  as? String {
+            cardField.expirationPlaceholder = expirationPlaceholder
+          } else {
+            cardField.expirationPlaceholder = "MM/YY"
+          }
+          if let cvcPlaceholder = placeholder["cvc"]  as? String {
+              cardField.cvcPlaceholder = cvcPlaceholder
+          }  else {
+            cardField.cvcPlaceholder = "CVC"
+          }
+          if let postalCodePlaceholder = placeholder["postalCode"]  as? String {
+            cardField.postalCodePlaceholder = postalCodePlaceholder
+          } else {
+            cardField.postalCodePlaceholder = nil
+          }
+      }
+  }
+    
 
-            cardField.textErrorColor = newValue ?? defaultColor
-        }
-      }
+    func paymentCardTextFieldDidBeginEditingNumber(_ textField: STPPaymentCardTextField) {
+        onFocusChange(["focusedField": "CardNumber"])
+    }
     
-     public var borderWidth: CGFloat?  {
-        get {
-          return cardField.borderWidth
-        }
-        set {
-          cardField.borderWidth = newValue ?? 1.0
-        }
-      }
+    func paymentCardTextFieldDidBeginEditingCVC(_ textField: STPPaymentCardTextField) {
+        onFocusChange(["focusedField": "Cvc"])
+    }
     
-    public var borderRadius: CGFloat?  {
-       get {
-         return cardField.cornerRadius
+    func paymentCardTextFieldDidBeginEditingExpiration(_ textField: STPPaymentCardTextField) {
+        onFocusChange(["focusedField": "ExpiryDate"])
+    }
+    
+    func paymentCardTextFieldDidBeginEditingPostalCode(_ textField: STPPaymentCardTextField) {
+        onFocusChange(["focusedField": "PostalCode"])
+    }
+    
+    func paymentCardTextFieldDidChange(_ textField: STPPaymentCardTextField) {
+    
+       let brand = STPCardValidator.brand(forNumber: textField.cardParams.number ?? "")
+       var cardData: [String: Any] = [
+           "expiryMonth": textField.cardParams.expMonth?.stringValue ?? "",
+           "expiryYear": textField.cardParams.expYear?.stringValue ?? "",
+           "complete": textField.isValid,
+           "brand": Mappers.mapCardBrand(brand),
+           "last4": textField.cardParams.last4 ?? ""
+       ]
+       if (cardField.postalCodeEntryEnabled) {
+           cardData["postalCode"] = textField.postalCode ?? ""
        }
-       set {
-         cardField.cornerRadius = newValue ?? 5.0
-       }
-     }
-   
-    
-    static let placeholderGrayColor: UIColor = {
-      if #available(iOS 13.0, *) {
-        return .systemGray2
-      }
-      return .lightGray
-    }()
-    
+       onCardChange(cardData)
+        
+    }
     
     func focus() {
         cardField.becomeFirstResponder()
@@ -353,4 +272,5 @@ class CardFieldView: UIView {
     func clearFocus() {
         cardField.resignFirstResponder()
     }
+    
 }

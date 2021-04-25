@@ -15,6 +15,7 @@ import com.stripe.android.databinding.CardInputWidgetBinding
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
+import org.json.JSONObject
 
 
 class StripeSdkCardPlatformView(
@@ -25,10 +26,10 @@ class StripeSdkCardPlatformView(
         private val stripeSdkCardViewManager: StripeSdkCardViewManager
 ) : PlatformView, MethodChannel.MethodCallHandler {
 
-    var cardView:  StripeSdkCardView? = null
+    lateinit var cardView:  StripeSdkCardView
 
-    override fun getView(): View {
-        val instance = stripeSdkCardViewManager.getCardViewInstance() ?: let {
+    init {
+        cardView = stripeSdkCardViewManager.getCardViewInstance() ?: let {
             val eventHandler = object : EventDispatcher {
                 override fun dispatchEvent(event: Event<*>) {
                     channel.invokeMethod(event.getEventName(), event.serializeEventData())
@@ -36,46 +37,65 @@ class StripeSdkCardPlatformView(
             }
             stripeSdkCardViewManager.createViewInstance(context, eventHandler)
         }
-        cardView = instance
         channel.setMethodCallHandler(this)
         if (creationParams?.containsKey("cardStyle") == true) {
-            stripeSdkCardViewManager.setCardStyle(instance, creationParams["cardStyle"] as ReadableMap)
+            stripeSdkCardViewManager.setCardStyle(cardView, ReadableMap(JSONObject(creationParams["cardStyle"] as Map<String, Any>)))
         }
         if (creationParams?.containsKey("placeholder") == true) {
-            stripeSdkCardViewManager.setPlaceHolders(instance, creationParams["placeholder"] as ReadableMap)
+            stripeSdkCardViewManager.setPlaceHolders(cardView, ReadableMap(JSONObject(creationParams["placeholder"] as Map<String, Any>)))
         }
         if (creationParams?.containsKey("postalCodeEnabled") == true) {
-            stripeSdkCardViewManager.setPostalCodeEnabled(instance, creationParams["postalCodeEnabled"] as Boolean)
+            stripeSdkCardViewManager.setPostalCodeEnabled(cardView, creationParams["postalCodeEnabled"] as Boolean)
         }
-        val binding = CardInputWidgetBinding.bind(cardView!!.mCardWidget)
+        val binding = CardInputWidgetBinding.bind(cardView.mCardWidget)
         // Temporal fix to https://github.com/flutter/flutter/issues/81029
         binding.cardNumberEditText.inputType = InputType.TYPE_CLASS_TEXT
         binding.cvcEditText.inputType = InputType.TYPE_CLASS_TEXT
         binding.expiryDateEditText.inputType = InputType.TYPE_CLASS_TEXT
-        return instance
+    }
+
+    override fun getView(): View {
+        return cardView
     }
 
     override fun dispose() {
-
         stripeSdkCardViewManager.getCardViewInstance()?.let {
             stripeSdkCardViewManager.onDropViewInstance(it)
         }
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: MethodChannel.Result) {
+
         when (call.method) {
+            "onStyleChanged" -> {
+                val arguments = ReadableMap(JSONObject(call.arguments as Map<String, Any>))
+                stripeSdkCardViewManager.setCardStyle(cardView, arguments.getMap("cardStyle") as  ReadableMap)
+                result.success(null)
+            }
+            "onPlaceholderChanged" -> {
+                val arguments = ReadableMap(JSONObject(call.arguments as Map<String, Any>))
+                stripeSdkCardViewManager.setPlaceHolders(cardView,  arguments.getMap("placeholder") as ReadableMap )
+                result.success(null)
+            }
+            "onPostalCodeEnabledChanged" -> {
+                val arguments = ReadableMap(JSONObject(call.arguments as Map<String, Any>))
+                stripeSdkCardViewManager.setPostalCodeEnabled(cardView, arguments.getBoolean("enablePostalCode") as Boolean)
+                result.success(null)
+            }
             "requestFocus" -> {
-                val binding = CardInputWidgetBinding.bind(cardView!!.mCardWidget)
+                val binding = CardInputWidgetBinding.bind(cardView.mCardWidget)
                 binding.cardNumberEditText.requestFocus()
                 val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+                result.success(null)
             }
             "clearFocus" -> {
                 // Hide keyboard
                 val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(cardView!!.getWindowToken(), 0)
+                imm.hideSoftInputFromWindow(cardView.getWindowToken(), 0)
                 // Clear focus
-                cardView?.clearFocus()
+                cardView.clearFocus()
+                result.success(null)
             }
         }
     }
