@@ -31,6 +31,7 @@ class StripeSdkCardPlatformView(
                     channel.invokeMethod(event.getEventName(), event.serializeEventData())
                 }
             }
+
             val cardView = stripeSdkCardViewManager.createViewInstance(context, eventHandler)
 
             val binding = CardInputWidgetBinding.bind(cardView.mCardWidget)
@@ -58,7 +59,6 @@ class StripeSdkCardPlatformView(
                     else -> result.notImplemented()
                 }
             }
-            cardView
         }
         channel.setMethodCallHandler(this)
         if (creationParams?.containsKey("cardStyle") == true) {

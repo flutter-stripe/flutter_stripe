@@ -235,6 +235,7 @@ class _CardFieldState extends State<CardField> {
     methodChannel.invokeMethod('requestFocus');
   }
 
+
   @override
   void dispose() {
     _focusNode.dispose();
