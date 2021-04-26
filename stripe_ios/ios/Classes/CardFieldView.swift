@@ -146,7 +146,7 @@ class CardFieldView: NSObject, FlutterPlatformView, STPPaymentCardTextFieldDeleg
 
     
     func onFocusChange(_ arguments: [String: Any]) {
-        channel.invokeMethod("onFocusChange", arguments: arguments)
+        channel.invokeMethod("topFocusChange", arguments: arguments)
     }
     
     func onCardChange(_ arguments: [String: Any]) {

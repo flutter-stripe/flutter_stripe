@@ -183,7 +183,7 @@ class _CardFieldState extends State<CardField> {
     _focusNode.debugLabel = 'CardField(id: $viewId)';
     _methodChannel = MethodChannel('flutter.stripe/card_field/$viewId');
     _methodChannel?.setMethodCallHandler((call) async {
-      if (call.method == 'onFocusChange' || call.method == "topFocusChange") {
+      if (call.method == "topFocusChange") {
         _handlePlatformFocusChanged(call.arguments);
       } else if (call.method == 'onCardChange') {
         _handleCardChanged(call.arguments);
