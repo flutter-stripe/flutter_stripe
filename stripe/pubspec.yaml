@@ -17,6 +17,8 @@ dependencies:
     path: ../stripe_ios/
   stripe_android:
     path: ../stripe_android/  
+  stripe_web:
+    path: ../stripe_web/  
 
 dev_dependencies:
   flutter_test:

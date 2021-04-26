@@ -61,7 +61,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_web_plugins:
-    dependency: transitive
+    dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -147,20 +147,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
-  stripe_android:
-    dependency: "direct main"
-    description:
-      path: "../stripe_android"
-      relative: true
-    source: path
-    version: "0.0.1"
-  stripe_ios:
-    dependency: "direct main"
-    description:
-      path: "../stripe_ios"
-      relative: true
-    source: path
-    version: "0.0.1"
   stripe_platform_interface:
     dependency: "direct main"
     description:
@@ -168,13 +154,6 @@ packages:
       relative: true
     source: path
     version: "0.0.0+1"
-  stripe_web:
-    dependency: "direct main"
-    description:
-      path: "../stripe_web"
-      relative: true
-    source: path
-    version: "0.0.1"
   term_glyph:
     dependency: transitive
     description:
