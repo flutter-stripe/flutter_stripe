@@ -105,14 +105,14 @@ class _CardFieldState extends State<CardField> {
 
     Widget platform;
     if (defaultTargetPlatform == TargetPlatform.android) {
-      platform = AndroidCardField(
+      platform = _AndroidCardField(
         key: CardField._key,
         viewType: CardField._viewType,
         creationParams: creationParams,
         onPlatformViewCreated: onPlatformViewCreated,
       );
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
-      platform = UiKitCardField(
+      platform = _UiKitCardField(
         key: CardField._key,
         viewType: CardField._viewType,
         creationParams: creationParams,
@@ -243,8 +243,8 @@ class _CardFieldState extends State<CardField> {
   }
 }
 
-class AndroidCardField extends StatelessWidget {
-  const AndroidCardField({
+class _AndroidCardField extends StatelessWidget {
+  const _AndroidCardField({
     Key? key,
     required this.viewType,
     required this.creationParams,
@@ -282,8 +282,8 @@ class AndroidCardField extends StatelessWidget {
   }
 }
 
-class UiKitCardField extends StatelessWidget {
-  UiKitCardField({
+class _UiKitCardField extends StatelessWidget {
+  _UiKitCardField({
     Key? key,
     required this.viewType,
     required this.creationParams,
