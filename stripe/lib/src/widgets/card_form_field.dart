@@ -65,39 +65,32 @@ class _CardFormFieldState extends State<CardFormField> {
     // For adding a framework input decorator, the platform one is removed
     // together with the extra padding
     final platformCardHeight = style.fontSize! + 31;
-    const platformPadding = EdgeInsets.fromLTRB(12, 10, 10, 12);
+    const platformMargin = EdgeInsets.fromLTRB(12, 10, 10, 12);
 
-    final cardHeight = platformCardHeight - platformPadding.vertical;
+    final cardHeight = platformCardHeight - platformMargin.vertical;
     return InputDecorator(
       isFocused: _node.hasFocus,
       decoration: inputDecoration,
       baseStyle: widget.style,
       child: SizedBox(
         height: cardHeight,
-        child: Stack(
-          children: [
-            Positioned(
-              top: -platformPadding.top,
-              bottom: -platformPadding.bottom,
-              left: -platformPadding.left,
-              right: -platformPadding.right,
-              child: CardField(
-                height: platformCardHeight,
-                focusNode: _node,
-                style: style,
-                placeholder: CardPlaceholder(
-                  number: widget.numberHintText,
-                  expiration: widget.expirationHintText,
-                  cvc: widget.cvcHintText,
-                  postalCode: widget.postalCodeHintText,
-                ),
-                enablePostalCode: widget.enablePostalCode,
-                onCardChanged: widget.onCardChanged,
-                autofocus: widget.autofocus,
-                onFocus: widget.onFocus,
-              ),
+        child: CustomSingleChildLayout(
+          delegate: const _NegativeMarginLayout(margin: platformMargin),
+          child: CardField(
+            height: platformCardHeight,
+            focusNode: _node,
+            style: style,
+            placeholder: CardPlaceholder(
+              number: widget.numberHintText,
+              expiration: widget.expirationHintText,
+              cvc: widget.cvcHintText,
+              postalCode: widget.postalCodeHintText,
             ),
-          ],
+            enablePostalCode: widget.enablePostalCode,
+            onCardChanged: widget.onCardChanged,
+            autofocus: widget.autofocus,
+            onFocus: widget.onFocus,
+          ),
         ),
       ),
     );
@@ -120,5 +113,33 @@ class _CardFormFieldState extends State<CardFormField> {
       textErrorColor: decoration.errorStyle?.color,
       placeholderColor: decoration.hintStyle?.color,
     );
+  }
+}
+
+
+// Crops a view by a given negative margin values.
+// http://ln.hixie.ch/?start=1515099369&count=1
+class _NegativeMarginLayout extends SingleChildLayoutDelegate {
+  const _NegativeMarginLayout({required this.margin});
+
+  final EdgeInsets margin;
+
+  @override
+  BoxConstraints getConstraintsForChild(BoxConstraints constraints) {
+    final biggest = super.getConstraintsForChild(constraints).biggest;
+    return BoxConstraints.expand(
+      width: biggest.width + margin.horizontal,
+      height: biggest.height + margin.vertical,
+    );
+  }
+
+  @override
+  Offset getPositionForChild(Size size, Size childSize) {
+    return super.getPositionForChild(size, childSize) - margin.topLeft;
+  }
+
+  @override
+  bool shouldRelayout(covariant _NegativeMarginLayout oldDelegate) {
+    return margin != oldDelegate.margin;
   }
 }
