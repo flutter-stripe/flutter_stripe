@@ -5,6 +5,8 @@ import androidx.annotation.Nullable;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
+import java.util.Map;
+
 /**
  * Created by FFuF, Jonas Bark on 2019-10-02.
  */
@@ -15,6 +17,11 @@ public class ReadableMap {
     public ReadableMap(JSONObject map) {
         this.map = map;
     }
+    public ReadableMap(Map<String, Object> map) {
+        this.map = new JSONObject(map);
+    }
+
+
 
     public boolean hasKey(String key) {
         return map.opt(key) != null && !map.isNull(key);
