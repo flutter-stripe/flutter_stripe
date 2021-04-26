@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
@@ -8,19 +7,16 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
-import '../../stripe.dart';
-
 const kCardFieldDefaultHeight = 48.0;
 const kCardFieldDefaultFontSize = 17.0;
 
 typedef CardChangedCallback = void Function(CardFieldInputDetails? details);
 typedef CardFocusCallback = void Function(CardFieldName? focusedField);
 
-// TODO refactor this for parameters
 class CardField extends StatefulWidget {
   CardField({
-    Key? key,
     required this.onCardChanged,
+    Key? key,
     this.onFocus,
     this.style,
     this.placeholder,
@@ -49,8 +45,10 @@ class CardField extends StatefulWidget {
   // This is used in the platform side to register the view.
   static const _viewType = 'flutter.stripe/card_field';
 
-  // By platform level limitations only one CardField is allowed at the same time
-  // A unique key is used to throw an expection before multiple platform views are created
+  // By platform level limitations only one CardField is allowed at the same
+  // time.
+  // A unique key is used to throw an expection before multiple platform
+  // views are created
   static late final _key = UniqueKey();
 
   @override
@@ -84,13 +82,12 @@ class _CardFieldState extends State<CardField> {
   }
 
   CardPlaceholder? _lastPlaceholder;
-  CardPlaceholder resolvePlaceholder(CardPlaceholder? placeholder) {
-    return CardPlaceholder(
-      number: '1234123412341234',
-      expiration: 'MM/YY',
-      cvc: 'CVC',
-    ).apply(placeholder);
-  }
+  CardPlaceholder resolvePlaceholder(CardPlaceholder? placeholder) =>
+      CardPlaceholder(
+        number: '1234123412341234',
+        expiration: 'MM/YY',
+        cvc: 'CVC',
+      ).apply(placeholder);
 
   @override
   Widget build(BuildContext context) {
@@ -122,11 +119,13 @@ class _CardFieldState extends State<CardField> {
       throw UnsupportedError("Unsupported platform view");
     }
     final constraints = widget.constraints ??
-        BoxConstraints.expand(height: kCardFieldDefaultHeight);
+        const BoxConstraints.expand(height: kCardFieldDefaultHeight);
 
     return Listener(
       onPointerDown: (_) {
-        if (!_effectiveNode.hasFocus) _effectiveNode.requestFocus();
+        if (!_effectiveNode.hasFocus) {
+          _effectiveNode.requestFocus();
+        }
       },
       child: Focus(
         autofocus: true,
@@ -191,11 +190,12 @@ class _CardFieldState extends State<CardField> {
     });
   }
 
-  void _handleCardChanged(dynamic arguments) {
+  void _handleCardChanged(arguments) {
     try {
       final map = Map<String, dynamic>.from(arguments);
       final details = CardFieldInputDetails.fromJson(map);
       widget.onCardChanged.call(details);
+      // ignore: avoid_catches_without_on_clauses
     } catch (e) {
       log('An error ocurred while while parsing card arguments, this should not happen, please consider creating an issue at https://github.com/flutter-stripe/flutter_stripe/issues/new');
       rethrow;
@@ -203,7 +203,7 @@ class _CardFieldState extends State<CardField> {
   }
 
   /// Handler called when a field from the platform card field has been focused
-  void _handlePlatformFocusChanged(dynamic arguments) {
+  void _handlePlatformFocusChanged(arguments) {
     try {
       final map = Map<String, dynamic>.from(arguments);
       final field = CardFieldFocusName.fromJson(map);
@@ -213,6 +213,7 @@ class _CardFieldState extends State<CardField> {
         _effectiveNode.requestFocus();
       }
       widget.onFocus?.call(field.focusedField);
+      // ignore: avoid_catches_without_on_clauses
     } catch (e) {
       log('An error ocurred while while parsing card arguments, this should not happen, please consider creating an issue at https://github.com/flutter-stripe/flutter_stripe/issues/new');
       rethrow;
@@ -222,7 +223,7 @@ class _CardFieldState extends State<CardField> {
   /// Handler called when the focus changes in the node attached to the platform
   /// view. This updates the correspondant platform view to keep it in sync.
   void _handleFrameworkFocusChanged(bool isFocused) {
-    final MethodChannel? methodChannel = _methodChannel;
+    final methodChannel = _methodChannel;
     if (methodChannel == null) {
       return;
     }
@@ -234,7 +235,6 @@ class _CardFieldState extends State<CardField> {
 
     methodChannel.invokeMethod('requestFocus');
   }
-
 
   @override
   void dispose() {
@@ -283,7 +283,7 @@ class _AndroidCardField extends StatelessWidget {
 }
 
 class _UiKitCardField extends StatelessWidget {
-  _UiKitCardField({
+  const _UiKitCardField({
     Key? key,
     required this.viewType,
     required this.creationParams,
@@ -297,13 +297,10 @@ class _UiKitCardField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return UiKitView(
-      hitTestBehavior: PlatformViewHitTestBehavior.opaque,
       viewType: viewType,
       creationParamsCodec: const StandardMessageCodec(),
       creationParams: creationParams,
-      onPlatformViewCreated: (viewId) {
-        onPlatformViewCreated(viewId);
-      },
+      onPlatformViewCreated: onPlatformViewCreated,
     );
   }
 }

@@ -1,26 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:stripe/stripe.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
+import '../../stripe.dart';
+
 class CardFormField extends StatefulWidget {
-  final InputDecoration? decoration;
-
-  final CardFocusCallback? onFocus;
-  final CardChangedCallback onCardChanged;
-  final TextStyle? style;
-  final Color? cursorColor;
-  final bool enablePostalCode;
-
-  final String? numberHintText;
-  final String? expirationHintText;
-  final String? cvcHintText;
-  final String? postalCodeHintText;
-
-  final bool autofocus;
-
   const CardFormField({
-    Key? key,
     required this.onCardChanged,
+    Key? key,
     this.onFocus,
     this.decoration,
     this.enablePostalCode = false,
@@ -33,12 +19,24 @@ class CardFormField extends StatefulWidget {
     this.postalCodeHintText,
   }) : super(key: key);
 
+  final InputDecoration? decoration;
+  final CardFocusCallback? onFocus;
+  final CardChangedCallback onCardChanged;
+  final TextStyle? style;
+  final Color? cursorColor;
+  final bool enablePostalCode;
+  final String? numberHintText;
+  final String? expirationHintText;
+  final String? cvcHintText;
+  final String? postalCodeHintText;
+  final bool autofocus;
+
   @override
   _CardFormFieldState createState() => _CardFormFieldState();
 }
 
 class _CardFormFieldState extends State<CardFormField> {
-  FocusNode _node = FocusNode(descendantsAreFocusable: false);
+  final FocusNode _node = FocusNode(descendantsAreFocusable: false);
 
   @override
   void initState() {
@@ -48,8 +46,9 @@ class _CardFormFieldState extends State<CardFormField> {
 
   @override
   void dispose() {
-    _node.removeListener(updateState);
-    _node.dispose();
+    _node
+      ..removeListener(updateState)
+      ..dispose();
     super.dispose();
   }
 
@@ -66,7 +65,7 @@ class _CardFormFieldState extends State<CardFormField> {
     // For adding a framework input decorator, the platform one is removed
     // together with the extra padding
     final platformCardHeight = style.fontSize! + 31;
-    final platformPadding = EdgeInsets.fromLTRB(12, 10, 10, 12);
+    const platformPadding = EdgeInsets.fromLTRB(12, 10, 10, 12);
 
     final cardHeight = platformCardHeight - platformPadding.vertical;
     return InputDecorator(
@@ -76,7 +75,6 @@ class _CardFormFieldState extends State<CardFormField> {
       child: SizedBox(
         height: cardHeight,
         child: Stack(
-          fit: StackFit.loose,
           children: [
             Positioned(
               top: -platformPadding.top,
@@ -107,7 +105,7 @@ class _CardFormFieldState extends State<CardFormField> {
 
   InputDecoration effectiveDecoration(InputDecoration? decoration) {
     final theme = Theme.of(context).inputDecorationTheme;
-    final cardDecoration = decoration ?? InputDecoration();
+    final cardDecoration = decoration ?? const InputDecoration();
     return cardDecoration.applyDefaults(theme);
   }
 
