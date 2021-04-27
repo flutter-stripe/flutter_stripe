@@ -4,6 +4,8 @@
 .packages
 .pub/
 
+.env.dart
+
 build/
 /.idea/
 /stripe_android/android/.gradle/

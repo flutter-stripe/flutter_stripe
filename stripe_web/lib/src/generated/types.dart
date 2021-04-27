@@ -1,11 +1,33 @@
+//@dart=2.9
 @JS()
 library types;
 
+export 'extended.dart';
+import 'dart:js';
+
 import "package:js/js.dart";
 import "package:js/js_util.dart" show promiseToFuture;
+import 'package:stripe_web/src/generated/extended.dart';
 
 /// Type definitions for stripe-v3 3.1
 /// Project: https://stripe.com/
+/// Definitions by: Andy Hawkins <https://github.com/a904guy/,http://a904guy.com>
+/// Eric J. Smith <https://github.com/ejsmith>
+/// Amrit Kahlon <https://github.com/amritk>
+/// Adam Cmiel <https://github.com/adamcmiel>
+/// Justin Leider <https://github.com/jleider>
+/// Kamil Gałuszka <https://github.com/galuszkak>
+/// Stefan Langeder <https://github.com/slangeder>
+/// Marlos Borges <https://github.com/marlosin>
+/// Thomas Marek <https://github.com/ttmarek>
+/// Kim Ehrenpohl <https://github.com/kimehrenpohl>
+/// Krishna Pravin <https://github.com/KrishnaPravin>
+/// Hiroshi Ioka <https://github.com/hirochachacha>
+/// Austin Turner <https://github.com/paustint>
+/// Kevin Soltysiak <https://github.com/ksol>
+/// Kohei Matsubara <https://github.com/matsuby>
+/// Marko Kaznovac <https://github.com/kaznovac>
+/// Hartley Robertson <https://github.com/hartleyrobertson>
 /// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 @JS()
 external StripeStatic get Stripe;
@@ -19,14 +41,6 @@ abstract class StripeStatic {
   external stripe_Stripe call(String publicKey, [StripeOptions options]);
   external num get version;
   external set version(num v);
-}
-
-@anonymous
-@JS()
-abstract class stripe_Stripe {
-  external Elements elements([ElementsCreateOptions options]);
-  external StripePaymentRequest paymentRequest(
-      StripePaymentRequestOptions options);
 }
 
 @anonymous
@@ -67,9 +81,8 @@ abstract class _stripe_Stripe {
     PaymentMethodData data);
 */
   external Promise<PaymentMethodResponse> createPaymentMethod(
-      dynamic /*'card'|'card_present'|PaymentMethodData*/ type_data,
-      [Element? element,
-      CreatePaymentMethodOptions? options]);
+    dynamic /*'card'|'card_present'|PaymentMethodData*/ paymentMethodData,
+  );
   external Promise<PaymentIntentResponse> retrievePaymentIntent(
       String clientSecret);
   /*external Promise<PaymentIntentResponse> handleCardPayment(
@@ -80,20 +93,20 @@ abstract class _stripe_Stripe {
     [HandleCardPaymentWithoutElementsOptions options]);
 */
   external Promise<PaymentIntentResponse> handleCardPayment(String clientSecret,
-      [dynamic? /*Element|HandleCardPaymentWithoutElementsOptions*/ element_options,
-      HandleCardPaymentOptions? options]);
+      [dynamic /*Element|HandleCardPaymentWithoutElementsOptions*/ element_options,
+      HandleCardPaymentOptions options]);
 
   /// Use stripe.confirmCardPayment when the customer submits your payment form.
   /// When called, it will confirm the PaymentIntent with data you provide and
   /// carry out 3DS or other next actions if they are required.
   external Promise<PaymentIntentResponse> confirmCardPayment(
       String clientSecret,
-      [ConfirmCardPaymentData? data,
-      ConfirmCardPaymentOptions? options]);
+      [ConfirmCardPaymentData data,
+      ConfirmCardPaymentOptions options]);
   external Promise<PaymentIntentResponse> handleCardAction(String clientSecret);
   external Promise<PaymentIntentResponse> confirmSepaDebitPayment(
       String clientSecret,
-      [ConfirmSepaDebitPaymentData? data]);
+      [ConfirmSepaDebitPaymentData data]);
   /*external Promise<SetupIntentResponse> handleCardSetup(
     String clientSecret, Element element,
     [HandleCardSetupOptions data]);
@@ -102,15 +115,15 @@ abstract class _stripe_Stripe {
     [HandleCardSetupOptionsWithoutElementsOptions data]);
 */
   external Promise<SetupIntentResponse> handleCardSetup(String clientSecret,
-      [dynamic? /*Element|HandleCardSetupOptionsWithoutElementsOptions*/ element_data,
-      HandleCardSetupOptions? data]);
+      [dynamic /*Element|HandleCardSetupOptionsWithoutElementsOptions*/ element_data,
+      HandleCardSetupOptions data]);
   external Promise<SetupIntentResponse> confirmCardSetup(String clientSecret,
-      [ConfirmCardSetupData? data, ConfirmCardSetupOptions? options]);
+      [ConfirmCardSetupData data, ConfirmCardSetupOptions options]);
   external Promise<SetupIntentResponse> retrieveSetupIntent(
       String clientSecret);
   external Promise<SetupIntentResponse> confirmSepaDebitSetup(
       String clientSecret,
-      [ConfirmSepaDebitSetupData? data]);
+      [ConfirmSepaDebitSetupData data]);
   /*external Promise<PaymentIntentResponse> confirmPaymentIntent(
     String clientSecret, Element element,
     [ConfirmPaymentIntentOptions options]);
@@ -121,24 +134,33 @@ abstract class _stripe_Stripe {
 */
   external Promise<PaymentIntentResponse> confirmPaymentIntent(
       String clientSecret,
-      [dynamic? /*Element|ConfirmPaymentIntentWithoutElementsOptions*/ element_options,
-      ConfirmPaymentIntentOptions? options]);
+      [dynamic /*Element|ConfirmPaymentIntentWithoutElementsOptions*/ element_options,
+      ConfirmPaymentIntentOptions options]);
 }
 
-extension stripe_StripeExtensions on stripe_Stripe {
+@anonymous
+@JS()
+abstract class stripe_Stripe {
+  external Elements elements([ElementsCreateOptions options]);
+  external StripePaymentRequest paymentRequest(
+      StripePaymentRequestOptions options);
+} 
+
+extension StripeJSExtension on stripe_Stripe {
+
   Future<TokenResponse> createToken(
       dynamic /*Element|'bank_account'|'pii'*/ element_name,
       [dynamic /*TokenOptions|BankAccountTokenOptions|PiiTokenOptions*/ options]) {
     final Object t = this;
-    final _stripe_Stripe tt = t as  _stripe_Stripe;
+    final _stripe_Stripe tt = t;
     return promiseToFuture(tt.createToken(element_name, options));
   }
 
   Future<SourceResponse> createSource(
       dynamic /*Element|SourceOptions*/ element_options,
-      [dynamic? /*{ owner?: OwnerInfo }*/ options]) {
+      [dynamic /*{ owner?: OwnerInfo }*/ options]) {
     final Object t = this;
-    final _stripe_Stripe tt = t as _stripe_Stripe;
+    final _stripe_Stripe tt = t;
     if (options == null) {
       return promiseToFuture(tt.createSource(element_options));
     }
@@ -147,45 +169,37 @@ extension stripe_StripeExtensions on stripe_Stripe {
 
   Future<SourceResponse> retrieveSource(RetrieveSourceOptions options) {
     final Object t = this;
-    final _stripe_Stripe tt = t as _stripe_Stripe;
+    final _stripe_Stripe tt = t;
     return promiseToFuture(tt.retrieveSource(options));
   }
 
-  Future<
-          dynamic /*void|{
-        error: Error;
-    }*/
-          >
-      redirectToCheckout(
-          dynamic /*StripeClientCheckoutOptions|StripeServerCheckoutOptions*/ options) {
+  Future<CheckoutResponse> redirectToCheckout(
+      dynamic /*StripeClientCheckoutOptions|StripeServerCheckoutOptions*/ options) {
     final Object t = this;
-    final _stripe_Stripe tt = t as _stripe_Stripe;
+    final _stripe_Stripe tt = t;
     return promiseToFuture(tt.redirectToCheckout(options));
   }
 
   Future<PaymentMethodResponse> createPaymentMethod(
-      dynamic /*'card'|'card_present'|PaymentMethodData*/ type_data,
-      [Element? element,
-      CreatePaymentMethodOptions? options]) {
+    dynamic /*'card'|'card_present'|PaymentMethodData*/ paymentMethodData,
+  ) {
     final Object t = this;
-    final _stripe_Stripe tt = t as _stripe_Stripe;
-    if (element == null && options == null) {
-      return promiseToFuture(tt.createPaymentMethod(type_data));
-    }
-    return promiseToFuture(tt.createPaymentMethod(type_data, element, options));
+    final _stripe_Stripe tt = t;
+
+    return promiseToFuture(tt.createPaymentMethod(paymentMethodData));
   }
 
   Future<PaymentIntentResponse> retrievePaymentIntent(String clientSecret) {
     final Object t = this;
-    final _stripe_Stripe tt = t as _stripe_Stripe;
+    final _stripe_Stripe tt = t;
     return promiseToFuture(tt.retrievePaymentIntent(clientSecret));
   }
 
   Future<PaymentIntentResponse> handleCardPayment(String clientSecret,
       [dynamic /*Element|HandleCardPaymentWithoutElementsOptions*/ element_options,
-      HandleCardPaymentOptions? options]) {
+      HandleCardPaymentOptions options]) {
     final Object t = this;
-    final _stripe_Stripe tt = t as _stripe_Stripe;
+    final _stripe_Stripe tt = t;
     if (options == null) {
       return promiseToFuture(
           tt.handleCardPayment(clientSecret, element_options));
@@ -195,30 +209,30 @@ extension stripe_StripeExtensions on stripe_Stripe {
   }
 
   Future<PaymentIntentResponse> confirmCardPayment(String clientSecret,
-      [ConfirmCardPaymentData? data, ConfirmCardPaymentOptions? options]) {
+      [ConfirmCardPaymentData data, ConfirmCardPaymentOptions options]) {
     final Object t = this;
-    final _stripe_Stripe tt = t as _stripe_Stripe;
+    final _stripe_Stripe tt = t;
     return promiseToFuture(tt.confirmCardPayment(clientSecret, data, options));
   }
 
   Future<PaymentIntentResponse> handleCardAction(String clientSecret) {
     final Object t = this;
-    final _stripe_Stripe tt = t as _stripe_Stripe;
+    final _stripe_Stripe tt = t;
     return promiseToFuture(tt.handleCardAction(clientSecret));
   }
 
   Future<PaymentIntentResponse> confirmSepaDebitPayment(String clientSecret,
-      [ConfirmSepaDebitPaymentData? data,]) {
+      [ConfirmSepaDebitPaymentData data]) {
     final Object t = this;
-    final _stripe_Stripe tt = t as _stripe_Stripe;
+    final _stripe_Stripe tt = t;
     return promiseToFuture(tt.confirmSepaDebitPayment(clientSecret, data));
   }
 
   Future<SetupIntentResponse> handleCardSetup(String clientSecret,
       [dynamic /*Element|HandleCardSetupOptionsWithoutElementsOptions*/ element_data,
-      HandleCardSetupOptions? data]) {
+      HandleCardSetupOptions data]) {
     final Object t = this;
-    final _stripe_Stripe tt = t as _stripe_Stripe;
+    final _stripe_Stripe tt = t;
     if (data == null) {
       return promiseToFuture(tt.handleCardSetup(clientSecret, element_data));
     }
@@ -227,30 +241,30 @@ extension stripe_StripeExtensions on stripe_Stripe {
   }
 
   Future<SetupIntentResponse> confirmCardSetup(String clientSecret,
-      [ConfirmCardSetupData? data, ConfirmCardSetupOptions? options]) {
+      [ConfirmCardSetupData data, ConfirmCardSetupOptions options]) {
     final Object t = this;
-    final _stripe_Stripe tt = t as _stripe_Stripe;
+    final _stripe_Stripe tt = t;
     return promiseToFuture(tt.confirmCardSetup(clientSecret, data, options));
   }
 
   Future<SetupIntentResponse> retrieveSetupIntent(String clientSecret) {
     final Object t = this;
-    final _stripe_Stripe tt = t as _stripe_Stripe;
+    final _stripe_Stripe tt = t;
     return promiseToFuture(tt.retrieveSetupIntent(clientSecret));
   }
 
   Future<SetupIntentResponse> confirmSepaDebitSetup(String clientSecret,
-      [ConfirmSepaDebitSetupData? data]) {
+      [ConfirmSepaDebitSetupData data]) {
     final Object t = this;
-    final _stripe_Stripe tt = t as _stripe_Stripe;
+    final _stripe_Stripe tt = t;
     return promiseToFuture(tt.confirmSepaDebitSetup(clientSecret, data));
   }
 
   Future<PaymentIntentResponse> confirmPaymentIntent(String clientSecret,
       [dynamic /*Element|ConfirmPaymentIntentWithoutElementsOptions*/ element_options,
-      ConfirmPaymentIntentOptions? options]) {
+      ConfirmPaymentIntentOptions options]) {
     final Object t = this;
-    final _stripe_Stripe tt = t as _stripe_Stripe;
+    final _stripe_Stripe tt = t;
     if (options == null) {
       return promiseToFuture(
           tt.confirmPaymentIntent(clientSecret, element_options));
@@ -268,8 +282,10 @@ extension stripe_StripeExtensions on stripe_Stripe {
 @anonymous
 @JS()
 abstract class StripeClientCheckoutOptions {
-  external List<StripeCheckoutItem> get items;
-  external set items(List<StripeCheckoutItem> v);
+  external JsArray<StripeCheckoutItem> get items;
+  external set items(JsArray<StripeCheckoutItem> v);
+  external JsArray<JsObject> get lineItems;
+  external set lineItems(JsArray<JsObject> v);
   external String get successUrl;
   external set successUrl(String v);
   external String get cancelUrl;
@@ -282,14 +298,16 @@ abstract class StripeClientCheckoutOptions {
   external set billingAddressCollection(String /*'required'|'auto'|''*/ v);
   external String get locale;
   external set locale(String v);
-  external factory StripeClientCheckoutOptions(
-      {List<StripeCheckoutItem> items,
-      String successUrl,
-      String cancelUrl,
-      String clientReferenceId,
-      String customerEmail,
-      String /*'required'|'auto'|''*/ billingAddressCollection,
-      String locale});
+  external factory StripeClientCheckoutOptions({
+    JsArray<JsObject> items,
+    JsArray<JsObject> lineItems,
+    String successUrl,
+    String cancelUrl,
+    String clientReferenceId,
+    String customerEmail,
+    String /*'required'|'auto'|''*/ billingAddressCollection,
+    String locale,
+  });
 }
 
 @anonymous
@@ -314,19 +332,29 @@ abstract class StripeCheckoutItem {
 
 @anonymous
 @JS()
+abstract class StripeCheckoutLineItem {
+  external String get price;
+  external set price(String v);
+  external num get quantity;
+  external set quantity(num v);
+  external factory StripeCheckoutLineItem({String price, num quantity});
+}
+
+@anonymous
+@JS()
 abstract class StripeOptions {
   external String get stripeAccount;
   external set stripeAccount(String v);
   external String get apiVersion;
   external set apiVersion(String v);
-  external List<String> get betas;
-  external set betas(List<String> v);
+  external JsArray<String> get betas;
+  external set betas(JsArray<String> v);
   external String get locale;
   external set locale(String v);
   external factory StripeOptions(
       {String stripeAccount,
       String apiVersion,
-      List<String> betas,
+      JsArray<String> betas,
       String locale});
 }
 
@@ -1019,28 +1047,6 @@ abstract class Metadata {
 
 @anonymous
 @JS()
-abstract class List<T> {
-  /// Value is 'list'
-  external String /*'list'*/ get object;
-  external set object(String /*'list'*/ v);
-
-  /// An array containing the actual response elements, paginated by any request parameters.
-  external List<T> get data;
-  external set data(List<T> v);
-
-  /// Whether or not there are more elements available after this set. If false, this set comprises the end of the list.
-  external bool get has_more;
-  external set has_more(bool v);
-
-  /// The URL for accessing this list.
-  external String get url;
-  external set url(String v);
-  external factory List(
-      {String /*'list'*/ object, List<T> data, bool has_more, String url});
-}
-
-@anonymous
-@JS()
 abstract class BillingDetailsAddress {
   external String get city;
   external set city(String v);
@@ -1148,6 +1154,19 @@ abstract class CreatePaymentMethodOptions {
   external set metadata(Metadata v);
   external factory CreatePaymentMethodOptions(
       {BillingDetails billing_details, Metadata metadata});
+}
+
+@anonymous
+@JS()
+abstract class CreatePaymentMethodCardData {
+  external String get type;
+  external set type(String v);
+
+  external Element get card;
+  external set card(Element v);
+
+  external factory CreatePaymentMethodCardData(
+      {String type = 'card', Element card});
 }
 
 @anonymous
@@ -1296,7 +1315,7 @@ abstract class HandleCardPaymentWithoutElementsOptions
 }
 
 /// Data to be sent with the request.
-/// Refer to the Payment Intents API for a full list of parameters.
+/// Refer to the Payment Intents API for a full JsArray of parameters.
 @anonymous
 @JS()
 abstract class ConfirmCardPaymentData {
@@ -1864,15 +1883,15 @@ abstract class StripePaymentRequestUpdateOptions {
   external set currency(String v);
   external DisplayItem get total;
   external set total(DisplayItem v);
-  external List<DisplayItem> get displayItems;
-  external set displayItems(List<DisplayItem> v);
-  external List<ShippingOption> get shippingOptions;
-  external set shippingOptions(List<ShippingOption> v);
+  external JsArray<DisplayItem> get displayItems;
+  external set displayItems(JsArray<DisplayItem> v);
+  external JsArray<ShippingOption> get shippingOptions;
+  external set shippingOptions(JsArray<ShippingOption> v);
   external factory StripePaymentRequestUpdateOptions(
       {String currency,
       DisplayItem total,
-      List<DisplayItem> displayItems,
-      List<ShippingOption> shippingOptions});
+      JsArray<DisplayItem> displayItems,
+      JsArray<ShippingOption> shippingOptions});
 }
 
 @anonymous
@@ -1897,8 +1916,8 @@ abstract class StripePaymentRequestOptions
       bool requestShipping,
       String currency,
       DisplayItem total,
-      List<DisplayItem> displayItems,
-      List<ShippingOption> shippingOptions});
+      JsArray<DisplayItem> displayItems,
+      JsArray<ShippingOption> shippingOptions});
 }
 
 @anonymous
@@ -1908,15 +1927,15 @@ abstract class UpdateDetails {
   external set status(String /*'success'|'fail'|'invalid_shipping_address'*/ v);
   external DisplayItem get total;
   external set total(DisplayItem v);
-  external List<DisplayItem> get displayItems;
-  external set displayItems(List<DisplayItem> v);
-  external List<ShippingOption> get shippingOptions;
-  external set shippingOptions(List<ShippingOption> v);
+  external JsArray<DisplayItem> get displayItems;
+  external set displayItems(JsArray<DisplayItem> v);
+  external JsArray<ShippingOption> get shippingOptions;
+  external set shippingOptions(JsArray<ShippingOption> v);
   external factory UpdateDetails(
       {String /*'success'|'fail'|'invalid_shipping_address'*/ status,
       DisplayItem total,
-      List<DisplayItem> displayItems,
-      List<ShippingOption> shippingOptions});
+      JsArray<DisplayItem> displayItems,
+      JsArray<ShippingOption> shippingOptions});
 }
 
 @anonymous
@@ -1939,8 +1958,8 @@ abstract class ShippingOption {
 abstract class ShippingAddress {
   external String get country;
   external set country(String v);
-  external List<String> get addressLine;
-  external set addressLine(List<String> v);
+  external JsArray<String> get addressLine;
+  external set addressLine(JsArray<String> v);
   external String get region;
   external set region(String v);
   external String get city;
@@ -1957,7 +1976,7 @@ abstract class ShippingAddress {
   external set dependentLocality(String v);
   external factory ShippingAddress(
       {String country,
-      List<String> addressLine,
+      JsArray<String> addressLine,
       String region,
       String city,
       String postalCode,
@@ -2066,9 +2085,9 @@ abstract class _StripePaymentRequest {
 }
 
 extension StripePaymentRequestExtensions on StripePaymentRequest {
-  Future<bool? /*{ applePay?: boolean }|Null*/ > canMakePayment() {
+  Future<dynamic /*{ applePay?: boolean }|Null*/ > canMakePayment() {
     final Object t = this;
-    final _StripePaymentRequest tt = t as _StripePaymentRequest;
+    final _StripePaymentRequest tt = t;
     return promiseToFuture(tt.canMakePayment());
   }
 }
@@ -2080,11 +2099,11 @@ extension StripePaymentRequestExtensions on StripePaymentRequest {
 @anonymous
 @JS()
 abstract class ElementsCreateOptions {
-  external List<Font> get fonts;
-  external set fonts(List<Font> v);
+  external JsArray<Font> get fonts;
+  external set fonts(JsArray<Font> v);
   external String get locale;
   external set locale(String v);
-  external factory ElementsCreateOptions({List<Font> fonts, String locale});
+  external factory ElementsCreateOptions({JsArray<Font> fonts, String locale});
 }
 
 typedef void handler(
@@ -2101,9 +2120,9 @@ abstract class Element {
   /*external void on('click' event, void handler({ preventDefault: () => void } response));*/
   external void on(String /*'blur'|'change'|'focus'|'ready'|'click'*/ event,
       void handler(dynamic /*{ preventDefault: () => void }*/ response));
-  /*external void addEventListener('blur'|'change'|'focus'|'ready' event, handler handler);*/
-  /*external void addEventListener('click' event, void handler({ preventDefault: () => void } response));*/
-  external void addEventListener(
+  /*external void addEventJsArrayener('blur'|'change'|'focus'|'ready' event, handler handler);*/
+  /*external void addEventJsArrayener('click' event, void handler({ preventDefault: () => void } response));*/
+  external void addEventJsArrayener(
       String /*'blur'|'change'|'focus'|'ready'|'click'*/ event,
       void handler(dynamic /*{ preventDefault: () => void }*/ response));
   external void focus();
@@ -2113,16 +2132,6 @@ abstract class Element {
   external void destroy();
   external void update(ElementsOptions options);
 }
-
-
-@JS()
-@anonymous
-class ElementChangeValueOptionsResponse {
-  external dynamic get postalCode;
-  // Must have an unnamed factory constructor with named arguments.
-  external factory ElementChangeValueOptionsResponse({bool postalCode});
-}
-
 
 @anonymous
 @JS()
@@ -2135,7 +2144,7 @@ abstract class ElementChangeResponse {
   external set complete(bool v);
   external bool get empty;
   external set empty(bool v);
-  external dynamic get value;
+  external dynamic /*{ postalCode: string | number }|String*/ get value;
   external set value(dynamic /*{ postalCode: string | number }|String*/ v);
   external String get country;
   external set country(String v);
@@ -2157,11 +2166,11 @@ abstract class ElementChangeResponse {
 @anonymous
 @JS()
 abstract class ElementOptions {
-  external List<Font> get fonts;
-  external set fonts(List<Font> v);
+  external JsArray<Font> get fonts;
+  external set fonts(JsArray<Font> v);
   external String get locale;
   external set locale(String v);
-  external factory ElementOptions({List<Font> fonts, String locale});
+  external factory ElementOptions({JsArray<Font> fonts, String locale});
 }
 
 /*type elementsType = 'card' |
@@ -2242,8 +2251,8 @@ abstract class ElementsOptions {
   external set value(dynamic /*String|JSMap of <String,String>*/ v);
   external StripePaymentRequest get paymentRequest;
   external set paymentRequest(StripePaymentRequest v);
-  external List<String> get supportedCountries;
-  external set supportedCountries(List<String> v);
+  external JsArray<String> get supportedCountries;
+  external set supportedCountries(JsArray<String> v);
   external bool get disabled;
   external set disabled(bool v);
   external factory ElementsOptions(
@@ -2274,7 +2283,7 @@ abstract class ElementsOptions {
           style,
       dynamic /*String|JSMap of <String,String>*/ value,
       StripePaymentRequest paymentRequest,
-      List<String> supportedCountries,
+      JsArray<String> supportedCountries,
       bool disabled});
 }
 
@@ -2555,8 +2564,8 @@ abstract class PaymentIntent {
   external set capture_method(String /*'automatic'|'manual'*/ v);
 
   /// Charges that were created by this PaymentIntent, if any.
-  external List<Charge> get charges;
-  external set charges(List<Charge> v);
+  external JsArray<Charge> get charges;
+  external set charges(JsArray<Charge> v);
 
   /// The client secret of this PaymentIntent. Used for client-side retrieval using a publishable key. Please refer to dynamic authentication guide on how client_secret should be handled.
   external String get client_secret;
@@ -2608,9 +2617,9 @@ abstract class PaymentIntent {
   external String /*String|Null*/ get payment_method;
   external set payment_method(String /*String|Null*/ v);
 
-  /// The list of payment method types (e.g. card) that this PaymentIntent is allowed to use.
-  external List<String> get payment_method_types;
-  external set payment_method_types(List<String> v);
+  /// The JsArray of payment method types (e.g. card) that this PaymentIntent is allowed to use.
+  external JsArray<String> get payment_method_types;
+  external set payment_method_types(JsArray<String> v);
 
   /// Email address that the receipt for the resulting payment will be sent to.
   external String /*String|Null*/ get receipt_email;
@@ -2675,7 +2684,7 @@ abstract class PaymentIntent {
       num /*num|Null*/ canceled_at,
       String /*'duplicate'|'fraudulent'|'requested_by_customer'|'abandoned'|'failed_invoice'|'void_invoice'|'automatic'|Null*/ cancelation_reason,
       String /*'automatic'|'manual'*/ capture_method,
-      List<Charge> charges,
+      JsArray<Charge> charges,
       String client_secret,
       String /*'automatic'|'manual'*/ confirmation_method,
       num created,
@@ -2688,7 +2697,7 @@ abstract class PaymentIntent {
       dynamic /*PaymentIntentNextActionUseStripeSdk|PaymentIntentNextActionRedirectToUrl*/ next_action,
       String /*String|Null*/ on_behalf_of,
       String /*String|Null*/ payment_method,
-      List<String> payment_method_types,
+      JsArray<String> payment_method_types,
       String /*String|Null*/ receipt_email,
       String /*String|Null*/ review,
       ShippingDetails /*ShippingDetails|Null*/ shipping,
@@ -2776,7 +2785,7 @@ abstract class Charge {
   external String /*String|Null*/ get dispute;
   external set dispute(String /*String|Null*/ v);
 
-  /// Error code explaining reason for charge failure if available (see the errors section for a list of
+  /// Error code explaining reason for charge failure if available (see the errors section for a JsArray of
   /// codes: https://stripe.com/docs/api#errors).
   external String /*String|Null*/ get failure_code;
   external set failure_code(String /*String|Null*/ v);
@@ -2895,9 +2904,9 @@ abstract class Charge {
   external bool get refunded;
   external set refunded(bool v);
 
-  /// A list of refunds that have been applied to the charge.
-  external List<Refund> get refunds;
-  external set refunds(List<Refund> v);
+  /// A JsArray of refunds that have been applied to the charge.
+  external JsArray<Refund> get refunds;
+  external set refunds(JsArray<Refund> v);
 
   /// ID of the review associated with this charge if one exists.
   external String /*String|Null*/ get review;
@@ -2990,7 +2999,7 @@ abstract class Charge {
       String /*String|Null*/ receipt_number,
       String receipt_url,
       bool refunded,
-      List<Refund> refunds,
+      JsArray<Refund> refunds,
       String /*String|Null*/ review,
       ShippingDetails /*ShippingDetails|Null*/ shipping,
       Source source,
@@ -3721,9 +3730,9 @@ abstract class SetupIntent {
   external String /*String|Null*/ get payment_method;
   external set payment_method(String /*String|Null*/ v);
 
-  /// The list of payment method types (e.g. card) that this SetupIntent is allowed to set up.
-  external List<String> get payment_method_types;
-  external set payment_method_types(List<String> v);
+  /// The JsArray of payment method types (e.g. card) that this SetupIntent is allowed to set up.
+  external JsArray<String> get payment_method_types;
+  external set payment_method_types(JsArray<String> v);
 
   /// Status of this SetupIntent
   external String /*'requires_payment_method'|'requires_confirmation'|'requires_action'|'processing'|'canceled'|'succeeded'*/ get status;
@@ -3752,7 +3761,7 @@ abstract class SetupIntent {
       dynamic /*SetupIntentNextActionUseStripeSdk|SetupIntentNextActionRedirectToUrl*/ next_action,
       String /*String|Null*/ on_behalf_of,
       String /*String|Null*/ payment_method,
-      List<String> payment_method_types,
+      JsArray<String> payment_method_types,
       String /*'requires_payment_method'|'requires_confirmation'|'requires_action'|'processing'|'canceled'|'succeeded'*/ status,
       String /*'on_session'|'off_session'*/ usage});
 }

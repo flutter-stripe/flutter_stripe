@@ -1,10 +1,12 @@
+//@dart=2.12
 import 'dart:developer';
 import 'dart:html';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:stripe_web/src/web_stripe.dart';
 import '../stripe_web.dart';
-import 'generated/stripe.dart' as s;
+import 'generated/types.dart' as s;
 
 class ApplePayButton extends StatefulWidget {
   final FocusNode? focusNode;
@@ -37,7 +39,7 @@ class _WebStripeCardState extends State<ApplePayButton> {
 
   void initStripe() {
     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-      var paymentRequest = stripe.paymentRequest(
+      var paymentRequest = WebStripe.js.paymentRequest(
         s.StripePaymentRequestOptions(
           country: 'ES',
           currency: 'eur',
@@ -50,7 +52,7 @@ class _WebStripeCardState extends State<ApplePayButton> {
         ),
       );
 
-      element = stripe.elements().create(
+      element = WebStripe.js.elements().create(
             'paymentRequestButton',
             s.ElementsOptions(paymentRequest: paymentRequest),
           );

@@ -10,5 +10,28 @@
             "request": "launch",
             "type": "dart",
         },
+        {
+            "name": "server",
+            "cwd": "stripe/example/server",
+            "request": "launch",
+            "type": "node",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run",
+                "start:dev"
+            ]
+        },
+        {
+            "name": "web",
+            "cwd": "stripe_web/example",
+            "request": "launch",
+            "type": "dart",
+        },
+        {
+            "name": "checkout",
+            "cwd": "stripe_checkout/example",
+            "request": "launch",
+            "type": "dart",
+        },
     ]
 }

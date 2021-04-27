@@ -5,8 +5,9 @@ author:
 homepage:
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.9.0 <3.0.0"
   flutter: ">=2.0.0"
+  
 
 dependencies:
   flutter:
@@ -15,6 +16,7 @@ dependencies:
     sdk: flutter
   stripe_platform_interface:
     path: ../stripe_platform_interface
+
     
 
 dev_dependencies:
@@ -22,4 +24,9 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
+  plugin:
+    platforms:
+      web:
+        pluginClass: WebStripe
+        fileName: stripe_web.dart
 

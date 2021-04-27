@@ -20,12 +20,22 @@ const stripe = new Stripe(stripeSecretKey, {
 
 const app = express();
 
+
 app.use(
   (
     req: express.Request,
     res: express.Response,
     next: express.NextFunction
   ): void => {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     if (req.originalUrl === '/webhook') {
       next();
     } else {
@@ -158,15 +168,19 @@ app.post(
   }
 );
 
+
 app.post(
   '/pay-without-webhooks',
   async (req: express.Request, res: express.Response): Promise<void> => {
+    console.log('Hello :)');
+    
     const {
       paymentMethodId,
       paymentIntentId,
       items,
       currency,
       useStripeSdk,
+      return_url,
       cvcToken,
       email,
     }: {
@@ -174,7 +188,8 @@ app.post(
       paymentIntentId?: string;
       cvcToken?: string;
       items: Order;
-      currency: string;
+      currency: string;  
+      return_url?: string;
       useStripeSdk: boolean;
       email?: string;
     } = req.body;
@@ -232,6 +247,7 @@ app.post(
           confirmation_method: 'manual',
           currency,
           payment_method: paymentMethodId,
+          return_url: return_url,
           // If a mobile client passes `useStripeSdk`, set `use_stripe_sdk=true`
           // to take advantage of new authentication features in mobile SDKs.
           use_stripe_sdk: useStripeSdk,
@@ -253,7 +269,6 @@ app.post(
     }
   }
 );
-
 app.post('/create-setup-intent', async (req, res) => {
   const {
     email,
@@ -271,6 +286,35 @@ app.post('/create-setup-intent', async (req, res) => {
     clientSecret: setupIntent.client_secret,
   });
 });
+
+
+app.post('/create-checkout-session', async (req, res) => {
+  const {
+    port,
+  }: { port?: string;} = req.body;
+  var effectivePort = port ?? 8080;
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: [
+      {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: 'Stubborn Attachments',
+            images: ['https://i.imgur.com/EHyR2nP.png'],
+          },
+          unit_amount: 2000,
+        },
+        quantity: 1,
+      },
+    ],
+    mode: 'payment',
+    success_url: `http://localhost:${effectivePort}/#/success`,
+    cancel_url: `http://localhost:${effectivePort}/#/canceled`,
+  });
+  res.json({ id: session.id });
+});
+
 
 // Expose a endpoint as a webhook handler for asynchronous events.
 // Configure your webhook in the stripe developer dashboard:

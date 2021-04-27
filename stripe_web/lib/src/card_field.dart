@@ -1,3 +1,4 @@
+//@dart=2.12
 import 'dart:developer';
 import 'dart:html';
 import 'dart:js';
@@ -5,9 +6,10 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
+import 'package:stripe_web/src/web_stripe.dart';
 import '../stripe_web.dart';
-import 'generated/stripe.dart' as s;
-import 'generated/stripe.dart';
+import 'generated/types.dart' as s;
+
 
 class WebCardField extends StatefulWidget {
   WebCardField({
@@ -55,12 +57,13 @@ class _WebStripeCardState extends State<WebCardField> {
     super.initState();
   }
 
-  s.Element? element;
+  s.Element? get element => WebStripe.element;
+  set element(s.Element? value) => WebStripe.element = value;
 
   void initStripe() {
     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
       Future.delayed(Duration(milliseconds: 1), () {
-        element = stripe.elements().create('card', createOptions())
+        element = WebStripe.js.elements().create('card', createOptions())
           ..mount('#card-element')
           ..on('blur', allowInterop(requestBlur))
           ..on('focus', allowInterop(requestFocus))
@@ -78,7 +81,7 @@ class _WebStripeCardState extends State<WebCardField> {
   }
 
   void onCardChanged(response) {
-    if (response is ElementChangeResponse) {
+    if (response is s.ElementChangeResponse) {
       String? postalCode;
       final value = response.value;
       if (value is s.ElementChangeValueOptionsResponse) {
@@ -122,10 +125,9 @@ class _WebStripeCardState extends State<WebCardField> {
     );
   }
 
-  ElementsOptions createOptions() {
-    return ElementsOptions(
+  s.ElementsOptions createOptions() {
+    return s.ElementsOptions(
       hidePostalCode: !widget.enablePostalCode,
-      placeholder: widget.placeholder?.number ?? '1234123412341234',
     );
   }
 

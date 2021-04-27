@@ -26,6 +26,8 @@ abstract class StripePlatform extends PlatformInterface {
     _instance = instance;
   }
 
+  bool get updateSettingsLazily => true;
+
   Future<void> initialise({
     required String publishableKey,
     String? stripeAccountId,

@@ -1,3 +1,4 @@
+//@dart=2.12
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stripe_web/stripe_web.dart';

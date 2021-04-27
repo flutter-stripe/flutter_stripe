@@ -12,9 +12,10 @@ import 'models/three_d_secure.dart';
 import 'stripe_platform_interface.dart';
 
 const _appInfo = AppInfo(
-    name: "flutter_stripe",
-    version: "0.0.0",
-    url: "https://github.com/fluttercommunity/flutter_stripe/");
+  name: "flutter_stripe",
+  version: "0.0.0",
+  url: "https://github.com/fluttercommunity/flutter_stripe/",
+);
 
 /// An implementation of [StripePlatform] that uses method channels.
 class MethodChannelStripe extends StripePlatform {

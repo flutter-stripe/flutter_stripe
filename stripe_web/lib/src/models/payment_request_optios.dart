@@ -1,2 +1,2 @@
 
-import '../generated/stripe.dart' as s;
+import '../js/stripe.dart' as s;
