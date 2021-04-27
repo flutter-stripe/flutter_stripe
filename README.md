@@ -77,7 +77,7 @@ To initialize Stripe in your Flutter app, use the `Stripe` base class.
     - `cp server/.env.example server/.env` and set the variable values in your newly created `.env` file.
 - Start the example
     - Terminal 1: `yarn example start:server`
-    - Terminal 2: `flutter run -d ios` / `flutter run -d android`
+    - Terminal 2: `flutter run`
 
 ##### Additional steps for webhook forwarding
 
