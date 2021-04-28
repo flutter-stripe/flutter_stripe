@@ -61,26 +61,51 @@ const $PaymentMethod = _$PaymentMethodTearOff();
 
 /// @nodoc
 mixin _$PaymentMethod {
+  /// Unique identifier.
   String get id => throw _privateConstructorUsedError;
+
+  /// Whether or not the object exists in livemode.
   bool get livemode => throw _privateConstructorUsedError;
+
+  /// The type of the paymentmethod.
   String get type => throw _privateConstructorUsedError;
+
+  /// Billing information related to the payment method.
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
+
+  /// Containing additional data in case paymentmethod type is card.
   @JsonKey(name: 'Card')
   Card get card => throw _privateConstructorUsedError;
+
+  /// Containing additional data in case paymentmethod type is sepa.
   @JsonKey(name: 'SepaDebit')
   SepaDebit get sepaDebit => throw _privateConstructorUsedError;
+
+  /// Containing additional data in case paymentmethod type is Bacs debit.
   @JsonKey(name: 'BacsDebit')
   BacsDebit get bacsDebit => throw _privateConstructorUsedError;
+
+  /// Containing additional data in case paymentmethod type is Aubecs debit.
   @JsonKey(name: 'AuBecsDebit')
   AuBecsDebit get auBecsDebit => throw _privateConstructorUsedError;
+
+  /// Containing additional data in case paymentmethod type is sofort.
   @JsonKey(name: 'Sofort')
   Sofort get sofort => throw _privateConstructorUsedError;
+
+  /// Containing additional data in case paymentmethod type is Ideal.
   @JsonKey(name: 'Ideal')
   Ideal get ideal => throw _privateConstructorUsedError;
+
+  /// Containing additional data in case paymentmethod type is FPX.
   @JsonKey(name: 'Fpx')
   Fpx get fpx => throw _privateConstructorUsedError;
+
+  /// Containing additional data in case paymentmethod type is UPI.
   @JsonKey(name: 'Upi')
   Upi get upi => throw _privateConstructorUsedError;
+
+  /// Id related to the customer to which this paymentmethod has been saved.
   String? get customerId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -414,38 +439,64 @@ class _$_PaymentMethod implements _PaymentMethod {
       _$_$_PaymentMethodFromJson(json);
 
   @override
+
+  /// Unique identifier.
   final String id;
   @override
+
+  /// Whether or not the object exists in livemode.
   final bool livemode;
   @override
+
+  /// The type of the paymentmethod.
   final String type;
   @override
+
+  /// Billing information related to the payment method.
   final BillingDetails billingDetails;
   @override
+
+  /// Containing additional data in case paymentmethod type is card.
   @JsonKey(name: 'Card')
   final Card card;
   @override
+
+  /// Containing additional data in case paymentmethod type is sepa.
   @JsonKey(name: 'SepaDebit')
   final SepaDebit sepaDebit;
   @override
+
+  /// Containing additional data in case paymentmethod type is Bacs debit.
   @JsonKey(name: 'BacsDebit')
   final BacsDebit bacsDebit;
   @override
+
+  /// Containing additional data in case paymentmethod type is Aubecs debit.
   @JsonKey(name: 'AuBecsDebit')
   final AuBecsDebit auBecsDebit;
   @override
+
+  /// Containing additional data in case paymentmethod type is sofort.
   @JsonKey(name: 'Sofort')
   final Sofort sofort;
   @override
+
+  /// Containing additional data in case paymentmethod type is Ideal.
   @JsonKey(name: 'Ideal')
   final Ideal ideal;
   @override
+
+  /// Containing additional data in case paymentmethod type is FPX.
   @JsonKey(name: 'Fpx')
   final Fpx fpx;
   @override
+
+  /// Containing additional data in case paymentmethod type is UPI.
   @JsonKey(name: 'Upi')
   final Upi upi;
   @override
+
+  /// Id related to the customer to which this paymentmethod has been saved.
   final String? customerId;
 
   @override
@@ -539,38 +590,64 @@ abstract class _PaymentMethod implements PaymentMethod {
       _$_PaymentMethod.fromJson;
 
   @override
+
+  /// Unique identifier.
   String get id => throw _privateConstructorUsedError;
   @override
+
+  /// Whether or not the object exists in livemode.
   bool get livemode => throw _privateConstructorUsedError;
   @override
+
+  /// The type of the paymentmethod.
   String get type => throw _privateConstructorUsedError;
   @override
+
+  /// Billing information related to the payment method.
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
   @override
+
+  /// Containing additional data in case paymentmethod type is card.
   @JsonKey(name: 'Card')
   Card get card => throw _privateConstructorUsedError;
   @override
+
+  /// Containing additional data in case paymentmethod type is sepa.
   @JsonKey(name: 'SepaDebit')
   SepaDebit get sepaDebit => throw _privateConstructorUsedError;
   @override
+
+  /// Containing additional data in case paymentmethod type is Bacs debit.
   @JsonKey(name: 'BacsDebit')
   BacsDebit get bacsDebit => throw _privateConstructorUsedError;
   @override
+
+  /// Containing additional data in case paymentmethod type is Aubecs debit.
   @JsonKey(name: 'AuBecsDebit')
   AuBecsDebit get auBecsDebit => throw _privateConstructorUsedError;
   @override
+
+  /// Containing additional data in case paymentmethod type is sofort.
   @JsonKey(name: 'Sofort')
   Sofort get sofort => throw _privateConstructorUsedError;
   @override
+
+  /// Containing additional data in case paymentmethod type is Ideal.
   @JsonKey(name: 'Ideal')
   Ideal get ideal => throw _privateConstructorUsedError;
   @override
+
+  /// Containing additional data in case paymentmethod type is FPX.
   @JsonKey(name: 'Fpx')
   Fpx get fpx => throw _privateConstructorUsedError;
   @override
+
+  /// Containing additional data in case paymentmethod type is UPI.
   @JsonKey(name: 'Upi')
   Upi get upi => throw _privateConstructorUsedError;
   @override
+
+  /// Id related to the customer to which this paymentmethod has been saved.
   String? get customerId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -606,9 +683,16 @@ const $BillingDetails = _$BillingDetailsTearOff();
 
 /// @nodoc
 mixin _$BillingDetails {
+  /// Email address.
   String? get email => throw _privateConstructorUsedError;
+
+  /// Billing address.
   Address? get address => throw _privateConstructorUsedError;
+
+  /// Billing phone number.
   String? get phone => throw _privateConstructorUsedError;
+
+  /// Full name.
   String? get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -737,12 +821,20 @@ class _$_BillingDetails implements _BillingDetails {
       _$_$_BillingDetailsFromJson(json);
 
   @override
+
+  /// Email address.
   final String? email;
   @override
+
+  /// Billing address.
   final Address? address;
   @override
+
+  /// Billing phone number.
   final String? phone;
   @override
+
+  /// Full name.
   final String? name;
 
   @override
@@ -795,12 +887,20 @@ abstract class _BillingDetails implements BillingDetails {
       _$_BillingDetails.fromJson;
 
   @override
+
+  /// Email address.
   String? get email => throw _privateConstructorUsedError;
   @override
+
+  /// Billing address.
   Address? get address => throw _privateConstructorUsedError;
   @override
+
+  /// Billing phone number.
   String? get phone => throw _privateConstructorUsedError;
   @override
+
+  /// Full name.
   String? get name => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -834,8 +934,13 @@ const $AuBecsDebit = _$AuBecsDebitTearOff();
 
 /// @nodoc
 mixin _$AuBecsDebit {
+  /// Unique identifier for the bankaccount.
   String? get fingerprint => throw _privateConstructorUsedError;
+
+  /// Last 4 digits of the bankaccount number.
   String? get last4 => throw _privateConstructorUsedError;
+
+  /// Siz digit number identifying the bank or branch for this account.
   String? get bsbNumber => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -936,10 +1041,16 @@ class _$_AuBecsDebit implements _AuBecsDebit {
       _$_$_AuBecsDebitFromJson(json);
 
   @override
+
+  /// Unique identifier for the bankaccount.
   final String? fingerprint;
   @override
+
+  /// Last 4 digits of the bankaccount number.
   final String? last4;
   @override
+
+  /// Siz digit number identifying the bank or branch for this account.
   final String? bsbNumber;
 
   @override
@@ -987,10 +1098,16 @@ abstract class _AuBecsDebit implements AuBecsDebit {
       _$_AuBecsDebit.fromJson;
 
   @override
+
+  /// Unique identifier for the bankaccount.
   String? get fingerprint => throw _privateConstructorUsedError;
   @override
+
+  /// Last 4 digits of the bankaccount number.
   String? get last4 => throw _privateConstructorUsedError;
   @override
+
+  /// Siz digit number identifying the bank or branch for this account.
   String? get bsbNumber => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -1024,8 +1141,13 @@ const $BacsDebit = _$BacsDebitTearOff();
 
 /// @nodoc
 mixin _$BacsDebit {
+  /// Sort code of the bankaccount.
   String? get sortCode => throw _privateConstructorUsedError;
+
+  /// Unique identifier for the bankaccount.
   String? get fingerprint => throw _privateConstructorUsedError;
+
+  /// Last 4 digits of the bank account.
   String? get last4 => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1123,10 +1245,16 @@ class _$_BacsDebit implements _BacsDebit {
       _$_$_BacsDebitFromJson(json);
 
   @override
+
+  /// Sort code of the bankaccount.
   final String? sortCode;
   @override
+
+  /// Unique identifier for the bankaccount.
   final String? fingerprint;
   @override
+
+  /// Last 4 digits of the bank account.
   final String? last4;
 
   @override
@@ -1174,10 +1302,16 @@ abstract class _BacsDebit implements BacsDebit {
       _$_BacsDebit.fromJson;
 
   @override
+
+  /// Sort code of the bankaccount.
   String? get sortCode => throw _privateConstructorUsedError;
   @override
+
+  /// Unique identifier for the bankaccount.
   String? get fingerprint => throw _privateConstructorUsedError;
   @override
+
+  /// Last 4 digits of the bank account.
   String? get last4 => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -1220,11 +1354,22 @@ const $Card = _$CardTearOff();
 
 /// @nodoc
 mixin _$Card {
+  /// The brand associated to the card e.g. (visa, amex).
   String? get brand => throw _privateConstructorUsedError;
+
+  /// Two letter iso code.
   String? get country => throw _privateConstructorUsedError;
+
+  /// four digit number representing the year of expiry of the card.
   int? get expYear => throw _privateConstructorUsedError;
+
+  /// two digit number representing the month of expire of the card.
   int? get expMonth => throw _privateConstructorUsedError;
+
+  /// card funding type e.g. (credit, debit).
   String? get funding => throw _privateConstructorUsedError;
+
+  /// last four digits of the card.
   String? get last4 => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1368,16 +1513,28 @@ class _$_Card implements _Card {
       _$_$_CardFromJson(json);
 
   @override
+
+  /// The brand associated to the card e.g. (visa, amex).
   final String? brand;
   @override
+
+  /// Two letter iso code.
   final String? country;
   @override
+
+  /// four digit number representing the year of expiry of the card.
   final int? expYear;
   @override
+
+  /// two digit number representing the month of expire of the card.
   final int? expMonth;
   @override
+
+  /// card funding type e.g. (credit, debit).
   final String? funding;
   @override
+
+  /// last four digits of the card.
   final String? last4;
 
   @override
@@ -1440,16 +1597,28 @@ abstract class _Card implements Card {
   factory _Card.fromJson(Map<String, dynamic> json) = _$_Card.fromJson;
 
   @override
+
+  /// The brand associated to the card e.g. (visa, amex).
   String? get brand => throw _privateConstructorUsedError;
   @override
+
+  /// Two letter iso code.
   String? get country => throw _privateConstructorUsedError;
   @override
+
+  /// four digit number representing the year of expiry of the card.
   int? get expYear => throw _privateConstructorUsedError;
   @override
+
+  /// two digit number representing the month of expire of the card.
   int? get expMonth => throw _privateConstructorUsedError;
   @override
+
+  /// card funding type e.g. (credit, debit).
   String? get funding => throw _privateConstructorUsedError;
   @override
+
+  /// last four digits of the card.
   String? get last4 => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -1481,7 +1650,10 @@ const $Fpx = _$FpxTearOff();
 
 /// @nodoc
 mixin _$Fpx {
+  /// the customer bank
   String? get bank => throw _privateConstructorUsedError;
+
+  /// accountholder type
   String? get accountHolderType => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1566,8 +1738,12 @@ class _$_Fpx implements _Fpx {
   factory _$_Fpx.fromJson(Map<String, dynamic> json) => _$_$_FpxFromJson(json);
 
   @override
+
+  /// the customer bank
   final String? bank;
   @override
+
+  /// accountholder type
   final String? accountHolderType;
 
   @override
@@ -1609,8 +1785,12 @@ abstract class _Fpx implements Fpx {
   factory _Fpx.fromJson(Map<String, dynamic> json) = _$_Fpx.fromJson;
 
   @override
+
+  /// the customer bank
   String? get bank => throw _privateConstructorUsedError;
   @override
+
+  /// accountholder type
   String? get accountHolderType => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -1642,7 +1822,10 @@ const $Ideal = _$IdealTearOff();
 
 /// @nodoc
 mixin _$Ideal {
+  /// The BIC code of the bank
   String? get bankIdentifierCode => throw _privateConstructorUsedError;
+
+  /// The bank of the customer
   String? get bank => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1728,8 +1911,12 @@ class _$_Ideal implements _Ideal {
       _$_$_IdealFromJson(json);
 
   @override
+
+  /// The BIC code of the bank
   final String? bankIdentifierCode;
   @override
+
+  /// The bank of the customer
   final String? bank;
 
   @override
@@ -1771,8 +1958,12 @@ abstract class _Ideal implements Ideal {
   factory _Ideal.fromJson(Map<String, dynamic> json) = _$_Ideal.fromJson;
 
   @override
+
+  /// The BIC code of the bank
   String? get bankIdentifierCode => throw _privateConstructorUsedError;
   @override
+
+  /// The bank of the customer
   String? get bank => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -1807,9 +1998,16 @@ const $SepaDebit = _$SepaDebitTearOff();
 
 /// @nodoc
 mixin _$SepaDebit {
+  /// Two letter ISO code representing the country of the bank account.
   String? get country => throw _privateConstructorUsedError;
+
+  /// Bank code associated with the bankaccount.
   String? get bankCode => throw _privateConstructorUsedError;
+
+  /// Unique ID for the bank account.
   String? get fingerprint => throw _privateConstructorUsedError;
+
+  /// Last four characters of IBAN.
   String? get last4 => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1920,12 +2118,20 @@ class _$_SepaDebit implements _SepaDebit {
       _$_$_SepaDebitFromJson(json);
 
   @override
+
+  /// Two letter ISO code representing the country of the bank account.
   final String? country;
   @override
+
+  /// Bank code associated with the bankaccount.
   final String? bankCode;
   @override
+
+  /// Unique ID for the bank account.
   final String? fingerprint;
   @override
+
+  /// Last four characters of IBAN.
   final String? last4;
 
   @override
@@ -1980,12 +2186,20 @@ abstract class _SepaDebit implements SepaDebit {
       _$_SepaDebit.fromJson;
 
   @override
+
+  /// Two letter ISO code representing the country of the bank account.
   String? get country => throw _privateConstructorUsedError;
   @override
+
+  /// Bank code associated with the bankaccount.
   String? get bankCode => throw _privateConstructorUsedError;
   @override
+
+  /// Unique ID for the bank account.
   String? get fingerprint => throw _privateConstructorUsedError;
   @override
+
+  /// Last four characters of IBAN.
   String? get last4 => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -2017,6 +2231,7 @@ const $Sofort = _$SofortTearOff();
 
 /// @nodoc
 mixin _$Sofort {
+  /// Two letter ISO code representing the country of the bank account.
   String? get country => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -2092,6 +2307,8 @@ class _$_Sofort implements _Sofort {
       _$_$_SofortFromJson(json);
 
   @override
+
+  /// Two letter ISO code representing the country of the bank account.
   final String? country;
 
   @override
@@ -2128,6 +2345,8 @@ abstract class _Sofort implements Sofort {
   factory _Sofort.fromJson(Map<String, dynamic> json) = _$_Sofort.fromJson;
 
   @override
+
+  /// Two letter ISO code representing the country of the bank account.
   String? get country => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -2158,6 +2377,7 @@ const $Upi = _$UpiTearOff();
 
 /// @nodoc
 mixin _$Upi {
+  /// The customer's vpa.
   String? get vpa => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -2232,6 +2452,8 @@ class _$_Upi implements _Upi {
   factory _$_Upi.fromJson(Map<String, dynamic> json) => _$_$_UpiFromJson(json);
 
   @override
+
+  /// The customer's vpa.
   final String? vpa;
 
   @override
@@ -2268,6 +2490,8 @@ abstract class _Upi implements Upi {
   factory _Upi.fromJson(Map<String, dynamic> json) = _$_Upi.fromJson;
 
   @override
+
+  /// The customer's vpa.
   String? get vpa => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
