@@ -38,6 +38,8 @@ import 'package:stripe/stripe.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
+  // set the publishable key for Stripe - this is mandatory
   Stripe.publishableKey = stripePublishableKey;
   runApp(App());
 }
@@ -69,6 +71,22 @@ To initialize Stripe in your Flutter app, use the `Stripe` base class.
 
 `Stripe` offers `publishableKey`, `stripeAccountId`, `threeDSecureParams` and `merchantIdentifier`. Only `publishableKey` is required.
 
+## Dart API
+The library offers several methods to handle stripe related actions:
+```dart
+Future<PaymentMethod> createPaymentMethod(...);
+Future<PaymentIntent> handleCardAction(...);
+Future<PaymentIntent> confirmPaymentMethod(...);
+Future<void> configure3dSecure(...);
+Future<bool> isApplePaySupported();
+Future<void> presentApplePay(...);
+Future<void> confirmApplePayPayment(...);
+Future<SetupIntent> confirmSetupIntent(...);
+Future<PaymentIntent> retrievePaymentIntent(...);
+Future<String> createTokenForCVCUpdate(...);
+```
+The example app offers examples on how to use these methods.
+
 ## Run the example app
 
 - Install the dependencies
@@ -83,3 +101,7 @@ To initialize Stripe in your Flutter app, use the `Stripe` base class.
 
 - [Install the `stripe-cli`](https://stripe.com/docs/stripe-cli)
 - Run `stripe listen --forward-to localhost:4242/webhook`
+
+## Known issues
+
+- the Card field on Android has focus issues - it's being tracked in [#14](https://github.com/flutter-stripe/flutter_stripe/issues/14) and related to issues in the Flutter framework
