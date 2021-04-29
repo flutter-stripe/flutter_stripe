@@ -6,25 +6,52 @@ part of 'card_field_input.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CardDecoration _$_$_CardDecorationFromJson(Map<String, dynamic> json) {
-  return _$_CardDecoration(
-    backgroundColor: ColorKey.fromJson(json['backgroundColor']),
-    textColor: ColorKey.fromJson(json['textColor']),
-    borderColor: ColorKey.fromJson(json['borderColor']),
+_$_CardStyleConstructor _$_$_CardStyleConstructorFromJson(
+    Map<String, dynamic> json) {
+  return _$_CardStyleConstructor(
     borderWidth: (json['borderWidth'] as num?)?.toDouble(),
+    backgroundColor: ColorKey.fromJson(json['backgroundColor']),
+    borderColor: ColorKey.fromJson(json['borderColor']),
     borderRadius: (json['borderRadius'] as num?)?.toDouble(),
+    cursorColor: ColorKey.fromJson(json['cursorColor']),
+    textColor: ColorKey.fromJson(json['textColor']),
+    fontSize: (json['fontSize'] as num?)?.toDouble(),
     textErrorColor: ColorKey.fromJson(json['textErrorColor']),
+    placeholderColor: ColorKey.fromJson(json['placeholderColor']),
   );
 }
 
-Map<String, dynamic> _$_$_CardDecorationToJson(_$_CardDecoration instance) =>
+Map<String, dynamic> _$_$_CardStyleConstructorToJson(
+        _$_CardStyleConstructor instance) =>
     <String, dynamic>{
-      'backgroundColor': ColorKey.toJson(instance.backgroundColor),
-      'textColor': ColorKey.toJson(instance.textColor),
-      'borderColor': ColorKey.toJson(instance.borderColor),
       'borderWidth': instance.borderWidth,
+      'backgroundColor': ColorKey.toJson(instance.backgroundColor),
+      'borderColor': ColorKey.toJson(instance.borderColor),
       'borderRadius': instance.borderRadius,
+      'cursorColor': ColorKey.toJson(instance.cursorColor),
+      'textColor': ColorKey.toJson(instance.textColor),
+      'fontSize': instance.fontSize,
       'textErrorColor': ColorKey.toJson(instance.textErrorColor),
+      'placeholderColor': ColorKey.toJson(instance.placeholderColor),
+    };
+
+_$_CardPlaceholderConstructor _$_$_CardPlaceholderConstructorFromJson(
+    Map<String, dynamic> json) {
+  return _$_CardPlaceholderConstructor(
+    number: json['number'] as String?,
+    expiration: json['expiration'] as String?,
+    cvc: json['cvc'] as String?,
+    postalCode: json['postalCode'] as String?,
+  );
+}
+
+Map<String, dynamic> _$_$_CardPlaceholderConstructorToJson(
+        _$_CardPlaceholderConstructor instance) =>
+    <String, dynamic>{
+      'number': instance.number,
+      'expiration': instance.expiration,
+      'cvc': instance.cvc,
+      'postalCode': instance.postalCode,
     };
 
 _$_CardTokenDetails _$_$_CardTokenDetailsFromJson(Map<String, dynamic> json) {

@@ -12,191 +12,242 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CardDecoration _$CardDecorationFromJson(Map<String, dynamic> json) {
-  return _CardDecoration.fromJson(json);
+CardStyle _$CardStyleFromJson(Map<String, dynamic> json) {
+  return _CardStyleConstructor.fromJson(json);
 }
 
 /// @nodoc
-class _$CardDecorationTearOff {
-  const _$CardDecorationTearOff();
+class _$CardStyleTearOff {
+  const _$CardStyleTearOff();
 
-  _CardDecoration call(
-      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  _CardStyleConstructor call(
+      {double? borderWidth,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? backgroundColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textColor,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? borderColor,
-      double? borderWidth,
       double? borderRadius,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textErrorColor}) {
-    return _CardDecoration(
-      backgroundColor: backgroundColor,
-      textColor: textColor,
-      borderColor: borderColor,
+          Color? cursorColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? textColor,
+      double? fontSize,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? textErrorColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? placeholderColor}) {
+    return _CardStyleConstructor(
       borderWidth: borderWidth,
+      backgroundColor: backgroundColor,
+      borderColor: borderColor,
       borderRadius: borderRadius,
+      cursorColor: cursorColor,
+      textColor: textColor,
+      fontSize: fontSize,
       textErrorColor: textErrorColor,
+      placeholderColor: placeholderColor,
     );
   }
 
-  CardDecoration fromJson(Map<String, Object> json) {
-    return CardDecoration.fromJson(json);
+  CardStyle fromJson(Map<String, Object> json) {
+    return CardStyle.fromJson(json);
   }
 }
 
 /// @nodoc
-const $CardDecoration = _$CardDecorationTearOff();
+const $CardStyle = _$CardStyleTearOff();
 
 /// @nodoc
-mixin _$CardDecoration {
+mixin _$CardStyle {
+  double? get borderWidth => throw _privateConstructorUsedError;
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get backgroundColor => throw _privateConstructorUsedError;
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get textColor => throw _privateConstructorUsedError;
-  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get borderColor => throw _privateConstructorUsedError;
-  double? get borderWidth => throw _privateConstructorUsedError;
   double? get borderRadius => throw _privateConstructorUsedError;
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get cursorColor => throw _privateConstructorUsedError;
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get textColor => throw _privateConstructorUsedError;
+  double? get fontSize => throw _privateConstructorUsedError;
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get textErrorColor => throw _privateConstructorUsedError;
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get placeholderColor => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CardDecorationCopyWith<CardDecoration> get copyWith =>
+  $CardStyleCopyWith<CardStyle> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CardDecorationCopyWith<$Res> {
-  factory $CardDecorationCopyWith(
-          CardDecoration value, $Res Function(CardDecoration) then) =
-      _$CardDecorationCopyWithImpl<$Res>;
+abstract class $CardStyleCopyWith<$Res> {
+  factory $CardStyleCopyWith(CardStyle value, $Res Function(CardStyle) then) =
+      _$CardStyleCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      {double? borderWidth,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? backgroundColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textColor,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? borderColor,
-      double? borderWidth,
       double? borderRadius,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textErrorColor});
+          Color? cursorColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? textColor,
+      double? fontSize,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? textErrorColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? placeholderColor});
 }
 
 /// @nodoc
-class _$CardDecorationCopyWithImpl<$Res>
-    implements $CardDecorationCopyWith<$Res> {
-  _$CardDecorationCopyWithImpl(this._value, this._then);
+class _$CardStyleCopyWithImpl<$Res> implements $CardStyleCopyWith<$Res> {
+  _$CardStyleCopyWithImpl(this._value, this._then);
 
-  final CardDecoration _value;
+  final CardStyle _value;
   // ignore: unused_field
-  final $Res Function(CardDecoration) _then;
+  final $Res Function(CardStyle) _then;
 
   @override
   $Res call({
-    Object? backgroundColor = freezed,
-    Object? textColor = freezed,
-    Object? borderColor = freezed,
     Object? borderWidth = freezed,
+    Object? backgroundColor = freezed,
+    Object? borderColor = freezed,
     Object? borderRadius = freezed,
+    Object? cursorColor = freezed,
+    Object? textColor = freezed,
+    Object? fontSize = freezed,
     Object? textErrorColor = freezed,
+    Object? placeholderColor = freezed,
   }) {
     return _then(_value.copyWith(
+      borderWidth: borderWidth == freezed
+          ? _value.borderWidth
+          : borderWidth // ignore: cast_nullable_to_non_nullable
+              as double?,
       backgroundColor: backgroundColor == freezed
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
-              as Color?,
-      textColor: textColor == freezed
-          ? _value.textColor
-          : textColor // ignore: cast_nullable_to_non_nullable
               as Color?,
       borderColor: borderColor == freezed
           ? _value.borderColor
           : borderColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      borderWidth: borderWidth == freezed
-          ? _value.borderWidth
-          : borderWidth // ignore: cast_nullable_to_non_nullable
-              as double?,
       borderRadius: borderRadius == freezed
           ? _value.borderRadius
           : borderRadius // ignore: cast_nullable_to_non_nullable
               as double?,
+      cursorColor: cursorColor == freezed
+          ? _value.cursorColor
+          : cursorColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      textColor: textColor == freezed
+          ? _value.textColor
+          : textColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      fontSize: fontSize == freezed
+          ? _value.fontSize
+          : fontSize // ignore: cast_nullable_to_non_nullable
+              as double?,
       textErrorColor: textErrorColor == freezed
           ? _value.textErrorColor
           : textErrorColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      placeholderColor: placeholderColor == freezed
+          ? _value.placeholderColor
+          : placeholderColor // ignore: cast_nullable_to_non_nullable
               as Color?,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$CardDecorationCopyWith<$Res>
-    implements $CardDecorationCopyWith<$Res> {
-  factory _$CardDecorationCopyWith(
-          _CardDecoration value, $Res Function(_CardDecoration) then) =
-      __$CardDecorationCopyWithImpl<$Res>;
+abstract class _$CardStyleConstructorCopyWith<$Res>
+    implements $CardStyleCopyWith<$Res> {
+  factory _$CardStyleConstructorCopyWith(_CardStyleConstructor value,
+          $Res Function(_CardStyleConstructor) then) =
+      __$CardStyleConstructorCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      {double? borderWidth,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? backgroundColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textColor,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? borderColor,
-      double? borderWidth,
       double? borderRadius,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textErrorColor});
+          Color? cursorColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? textColor,
+      double? fontSize,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? textErrorColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? placeholderColor});
 }
 
 /// @nodoc
-class __$CardDecorationCopyWithImpl<$Res>
-    extends _$CardDecorationCopyWithImpl<$Res>
-    implements _$CardDecorationCopyWith<$Res> {
-  __$CardDecorationCopyWithImpl(
-      _CardDecoration _value, $Res Function(_CardDecoration) _then)
-      : super(_value, (v) => _then(v as _CardDecoration));
+class __$CardStyleConstructorCopyWithImpl<$Res>
+    extends _$CardStyleCopyWithImpl<$Res>
+    implements _$CardStyleConstructorCopyWith<$Res> {
+  __$CardStyleConstructorCopyWithImpl(
+      _CardStyleConstructor _value, $Res Function(_CardStyleConstructor) _then)
+      : super(_value, (v) => _then(v as _CardStyleConstructor));
 
   @override
-  _CardDecoration get _value => super._value as _CardDecoration;
+  _CardStyleConstructor get _value => super._value as _CardStyleConstructor;
 
   @override
   $Res call({
-    Object? backgroundColor = freezed,
-    Object? textColor = freezed,
-    Object? borderColor = freezed,
     Object? borderWidth = freezed,
+    Object? backgroundColor = freezed,
+    Object? borderColor = freezed,
     Object? borderRadius = freezed,
+    Object? cursorColor = freezed,
+    Object? textColor = freezed,
+    Object? fontSize = freezed,
     Object? textErrorColor = freezed,
+    Object? placeholderColor = freezed,
   }) {
-    return _then(_CardDecoration(
+    return _then(_CardStyleConstructor(
+      borderWidth: borderWidth == freezed
+          ? _value.borderWidth
+          : borderWidth // ignore: cast_nullable_to_non_nullable
+              as double?,
       backgroundColor: backgroundColor == freezed
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
-              as Color?,
-      textColor: textColor == freezed
-          ? _value.textColor
-          : textColor // ignore: cast_nullable_to_non_nullable
               as Color?,
       borderColor: borderColor == freezed
           ? _value.borderColor
           : borderColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      borderWidth: borderWidth == freezed
-          ? _value.borderWidth
-          : borderWidth // ignore: cast_nullable_to_non_nullable
-              as double?,
       borderRadius: borderRadius == freezed
           ? _value.borderRadius
           : borderRadius // ignore: cast_nullable_to_non_nullable
               as double?,
+      cursorColor: cursorColor == freezed
+          ? _value.cursorColor
+          : cursorColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      textColor: textColor == freezed
+          ? _value.textColor
+          : textColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      fontSize: fontSize == freezed
+          ? _value.fontSize
+          : fontSize // ignore: cast_nullable_to_non_nullable
+              as double?,
       textErrorColor: textErrorColor == freezed
           ? _value.textErrorColor
           : textErrorColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      placeholderColor: placeholderColor == freezed
+          ? _value.placeholderColor
+          : placeholderColor // ignore: cast_nullable_to_non_nullable
               as Color?,
     ));
   }
@@ -205,125 +256,389 @@ class __$CardDecorationCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 
 /// @nodoc
-class _$_CardDecoration implements _CardDecoration {
-  _$_CardDecoration(
-      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+class _$_CardStyleConstructor extends _CardStyleConstructor {
+  _$_CardStyleConstructor(
+      {this.borderWidth,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           this.backgroundColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.textColor,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           this.borderColor,
-      this.borderWidth,
       this.borderRadius,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.textErrorColor});
+          this.cursorColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.textColor,
+      this.fontSize,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.textErrorColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.placeholderColor})
+      : super._();
 
-  factory _$_CardDecoration.fromJson(Map<String, dynamic> json) =>
-      _$_$_CardDecorationFromJson(json);
+  factory _$_CardStyleConstructor.fromJson(Map<String, dynamic> json) =>
+      _$_$_CardStyleConstructorFromJson(json);
 
+  @override
+  final double? borderWidth;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   final Color? backgroundColor;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  final Color? textColor;
-  @override
-  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   final Color? borderColor;
-  @override
-  final double? borderWidth;
   @override
   final double? borderRadius;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? cursorColor;
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? textColor;
+  @override
+  final double? fontSize;
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   final Color? textErrorColor;
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? placeholderColor;
 
   @override
   String toString() {
-    return 'CardDecoration(backgroundColor: $backgroundColor, textColor: $textColor, borderColor: $borderColor, borderWidth: $borderWidth, borderRadius: $borderRadius, textErrorColor: $textErrorColor)';
+    return 'CardStyle(borderWidth: $borderWidth, backgroundColor: $backgroundColor, borderColor: $borderColor, borderRadius: $borderRadius, cursorColor: $cursorColor, textColor: $textColor, fontSize: $fontSize, textErrorColor: $textErrorColor, placeholderColor: $placeholderColor)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _CardDecoration &&
-            (identical(other.backgroundColor, backgroundColor) ||
-                const DeepCollectionEquality()
-                    .equals(other.backgroundColor, backgroundColor)) &&
-            (identical(other.textColor, textColor) ||
-                const DeepCollectionEquality()
-                    .equals(other.textColor, textColor)) &&
-            (identical(other.borderColor, borderColor) ||
-                const DeepCollectionEquality()
-                    .equals(other.borderColor, borderColor)) &&
+        (other is _CardStyleConstructor &&
             (identical(other.borderWidth, borderWidth) ||
                 const DeepCollectionEquality()
                     .equals(other.borderWidth, borderWidth)) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                const DeepCollectionEquality()
+                    .equals(other.backgroundColor, backgroundColor)) &&
+            (identical(other.borderColor, borderColor) ||
+                const DeepCollectionEquality()
+                    .equals(other.borderColor, borderColor)) &&
             (identical(other.borderRadius, borderRadius) ||
                 const DeepCollectionEquality()
                     .equals(other.borderRadius, borderRadius)) &&
+            (identical(other.cursorColor, cursorColor) ||
+                const DeepCollectionEquality()
+                    .equals(other.cursorColor, cursorColor)) &&
+            (identical(other.textColor, textColor) ||
+                const DeepCollectionEquality()
+                    .equals(other.textColor, textColor)) &&
+            (identical(other.fontSize, fontSize) ||
+                const DeepCollectionEquality()
+                    .equals(other.fontSize, fontSize)) &&
             (identical(other.textErrorColor, textErrorColor) ||
                 const DeepCollectionEquality()
-                    .equals(other.textErrorColor, textErrorColor)));
+                    .equals(other.textErrorColor, textErrorColor)) &&
+            (identical(other.placeholderColor, placeholderColor) ||
+                const DeepCollectionEquality()
+                    .equals(other.placeholderColor, placeholderColor)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(backgroundColor) ^
-      const DeepCollectionEquality().hash(textColor) ^
-      const DeepCollectionEquality().hash(borderColor) ^
       const DeepCollectionEquality().hash(borderWidth) ^
+      const DeepCollectionEquality().hash(backgroundColor) ^
+      const DeepCollectionEquality().hash(borderColor) ^
       const DeepCollectionEquality().hash(borderRadius) ^
-      const DeepCollectionEquality().hash(textErrorColor);
+      const DeepCollectionEquality().hash(cursorColor) ^
+      const DeepCollectionEquality().hash(textColor) ^
+      const DeepCollectionEquality().hash(fontSize) ^
+      const DeepCollectionEquality().hash(textErrorColor) ^
+      const DeepCollectionEquality().hash(placeholderColor);
 
   @JsonKey(ignore: true)
   @override
-  _$CardDecorationCopyWith<_CardDecoration> get copyWith =>
-      __$CardDecorationCopyWithImpl<_CardDecoration>(this, _$identity);
+  _$CardStyleConstructorCopyWith<_CardStyleConstructor> get copyWith =>
+      __$CardStyleConstructorCopyWithImpl<_CardStyleConstructor>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_CardDecorationToJson(this);
+    return _$_$_CardStyleConstructorToJson(this);
   }
 }
 
-abstract class _CardDecoration implements CardDecoration {
-  factory _CardDecoration(
-      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+abstract class _CardStyleConstructor extends CardStyle {
+  factory _CardStyleConstructor(
+      {double? borderWidth,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? backgroundColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textColor,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? borderColor,
-      double? borderWidth,
       double? borderRadius,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textErrorColor}) = _$_CardDecoration;
+          Color? cursorColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? textColor,
+      double? fontSize,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? textErrorColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? placeholderColor}) = _$_CardStyleConstructor;
+  _CardStyleConstructor._() : super._();
 
-  factory _CardDecoration.fromJson(Map<String, dynamic> json) =
-      _$_CardDecoration.fromJson;
+  factory _CardStyleConstructor.fromJson(Map<String, dynamic> json) =
+      _$_CardStyleConstructor.fromJson;
 
+  @override
+  double? get borderWidth => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get backgroundColor => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get textColor => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get borderColor => throw _privateConstructorUsedError;
-  @override
-  double? get borderWidth => throw _privateConstructorUsedError;
   @override
   double? get borderRadius => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get cursorColor => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get textColor => throw _privateConstructorUsedError;
+  @override
+  double? get fontSize => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get textErrorColor => throw _privateConstructorUsedError;
   @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get placeholderColor => throw _privateConstructorUsedError;
+  @override
   @JsonKey(ignore: true)
-  _$CardDecorationCopyWith<_CardDecoration> get copyWith =>
+  _$CardStyleConstructorCopyWith<_CardStyleConstructor> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+CardPlaceholder _$CardPlaceholderFromJson(Map<String, dynamic> json) {
+  return _CardPlaceholderConstructor.fromJson(json);
+}
+
+/// @nodoc
+class _$CardPlaceholderTearOff {
+  const _$CardPlaceholderTearOff();
+
+  _CardPlaceholderConstructor call(
+      {String? number, String? expiration, String? cvc, String? postalCode}) {
+    return _CardPlaceholderConstructor(
+      number: number,
+      expiration: expiration,
+      cvc: cvc,
+      postalCode: postalCode,
+    );
+  }
+
+  CardPlaceholder fromJson(Map<String, Object> json) {
+    return CardPlaceholder.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $CardPlaceholder = _$CardPlaceholderTearOff();
+
+/// @nodoc
+mixin _$CardPlaceholder {
+  String? get number => throw _privateConstructorUsedError;
+  String? get expiration => throw _privateConstructorUsedError;
+  String? get cvc => throw _privateConstructorUsedError;
+  String? get postalCode => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CardPlaceholderCopyWith<CardPlaceholder> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CardPlaceholderCopyWith<$Res> {
+  factory $CardPlaceholderCopyWith(
+          CardPlaceholder value, $Res Function(CardPlaceholder) then) =
+      _$CardPlaceholderCopyWithImpl<$Res>;
+  $Res call(
+      {String? number, String? expiration, String? cvc, String? postalCode});
+}
+
+/// @nodoc
+class _$CardPlaceholderCopyWithImpl<$Res>
+    implements $CardPlaceholderCopyWith<$Res> {
+  _$CardPlaceholderCopyWithImpl(this._value, this._then);
+
+  final CardPlaceholder _value;
+  // ignore: unused_field
+  final $Res Function(CardPlaceholder) _then;
+
+  @override
+  $Res call({
+    Object? number = freezed,
+    Object? expiration = freezed,
+    Object? cvc = freezed,
+    Object? postalCode = freezed,
+  }) {
+    return _then(_value.copyWith(
+      number: number == freezed
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String?,
+      expiration: expiration == freezed
+          ? _value.expiration
+          : expiration // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cvc: cvc == freezed
+          ? _value.cvc
+          : cvc // ignore: cast_nullable_to_non_nullable
+              as String?,
+      postalCode: postalCode == freezed
+          ? _value.postalCode
+          : postalCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$CardPlaceholderConstructorCopyWith<$Res>
+    implements $CardPlaceholderCopyWith<$Res> {
+  factory _$CardPlaceholderConstructorCopyWith(
+          _CardPlaceholderConstructor value,
+          $Res Function(_CardPlaceholderConstructor) then) =
+      __$CardPlaceholderConstructorCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String? number, String? expiration, String? cvc, String? postalCode});
+}
+
+/// @nodoc
+class __$CardPlaceholderConstructorCopyWithImpl<$Res>
+    extends _$CardPlaceholderCopyWithImpl<$Res>
+    implements _$CardPlaceholderConstructorCopyWith<$Res> {
+  __$CardPlaceholderConstructorCopyWithImpl(_CardPlaceholderConstructor _value,
+      $Res Function(_CardPlaceholderConstructor) _then)
+      : super(_value, (v) => _then(v as _CardPlaceholderConstructor));
+
+  @override
+  _CardPlaceholderConstructor get _value =>
+      super._value as _CardPlaceholderConstructor;
+
+  @override
+  $Res call({
+    Object? number = freezed,
+    Object? expiration = freezed,
+    Object? cvc = freezed,
+    Object? postalCode = freezed,
+  }) {
+    return _then(_CardPlaceholderConstructor(
+      number: number == freezed
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String?,
+      expiration: expiration == freezed
+          ? _value.expiration
+          : expiration // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cvc: cvc == freezed
+          ? _value.cvc
+          : cvc // ignore: cast_nullable_to_non_nullable
+              as String?,
+      postalCode: postalCode == freezed
+          ? _value.postalCode
+          : postalCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+
+/// @nodoc
+class _$_CardPlaceholderConstructor extends _CardPlaceholderConstructor {
+  _$_CardPlaceholderConstructor(
+      {this.number, this.expiration, this.cvc, this.postalCode})
+      : super._();
+
+  factory _$_CardPlaceholderConstructor.fromJson(Map<String, dynamic> json) =>
+      _$_$_CardPlaceholderConstructorFromJson(json);
+
+  @override
+  final String? number;
+  @override
+  final String? expiration;
+  @override
+  final String? cvc;
+  @override
+  final String? postalCode;
+
+  @override
+  String toString() {
+    return 'CardPlaceholder(number: $number, expiration: $expiration, cvc: $cvc, postalCode: $postalCode)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _CardPlaceholderConstructor &&
+            (identical(other.number, number) ||
+                const DeepCollectionEquality().equals(other.number, number)) &&
+            (identical(other.expiration, expiration) ||
+                const DeepCollectionEquality()
+                    .equals(other.expiration, expiration)) &&
+            (identical(other.cvc, cvc) ||
+                const DeepCollectionEquality().equals(other.cvc, cvc)) &&
+            (identical(other.postalCode, postalCode) ||
+                const DeepCollectionEquality()
+                    .equals(other.postalCode, postalCode)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(number) ^
+      const DeepCollectionEquality().hash(expiration) ^
+      const DeepCollectionEquality().hash(cvc) ^
+      const DeepCollectionEquality().hash(postalCode);
+
+  @JsonKey(ignore: true)
+  @override
+  _$CardPlaceholderConstructorCopyWith<_CardPlaceholderConstructor>
+      get copyWith => __$CardPlaceholderConstructorCopyWithImpl<
+          _CardPlaceholderConstructor>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_CardPlaceholderConstructorToJson(this);
+  }
+}
+
+abstract class _CardPlaceholderConstructor extends CardPlaceholder {
+  factory _CardPlaceholderConstructor(
+      {String? number,
+      String? expiration,
+      String? cvc,
+      String? postalCode}) = _$_CardPlaceholderConstructor;
+  _CardPlaceholderConstructor._() : super._();
+
+  factory _CardPlaceholderConstructor.fromJson(Map<String, dynamic> json) =
+      _$_CardPlaceholderConstructor.fromJson;
+
+  @override
+  String? get number => throw _privateConstructorUsedError;
+  @override
+  String? get expiration => throw _privateConstructorUsedError;
+  @override
+  String? get cvc => throw _privateConstructorUsedError;
+  @override
+  String? get postalCode => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$CardPlaceholderConstructorCopyWith<_CardPlaceholderConstructor>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 CardTokenDetails _$CardTokenDetailsFromJson(Map<String, dynamic> json) {
