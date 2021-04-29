@@ -49,6 +49,8 @@ const $ThreeDSecureConfigurationParams =
 mixin _$ThreeDSecureConfigurationParams {
   ThreeDSecureNavigationBarThemeData get navigationBar =>
       throw _privateConstructorUsedError;
+
+  /// desired timeout in miliseconds
   int? get timeout => throw _privateConstructorUsedError;
   ThreeDSecureLabelThemeData? get label => throw _privateConstructorUsedError;
   ThreeDSecureTextFieldThemeData? get textField =>
@@ -256,6 +258,8 @@ class _$_ThreeDSecureConfigurationParams
   @override
   final ThreeDSecureNavigationBarThemeData navigationBar;
   @override
+
+  /// desired timeout in miliseconds
   final int? timeout;
   @override
   final ThreeDSecureLabelThemeData? label;
@@ -327,6 +331,8 @@ abstract class _ThreeDSecureConfigurationParams
   ThreeDSecureNavigationBarThemeData get navigationBar =>
       throw _privateConstructorUsedError;
   @override
+
+  /// desired timeout in miliseconds
   int? get timeout => throw _privateConstructorUsedError;
   @override
   ThreeDSecureLabelThemeData? get label => throw _privateConstructorUsedError;

@@ -3,11 +3,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'three_d_secure.freezed.dart';
 part 'three_d_secure.g.dart';
 
+/// Parameters to configure the 3d secure screen.
 @freezed
 class ThreeDSecureConfigurationParams with _$ThreeDSecureConfigurationParams {
   @JsonSerializable(explicitToJson: true)
   const factory ThreeDSecureConfigurationParams({
     required ThreeDSecureNavigationBarThemeData navigationBar,
+    /// desired timeout in miliseconds
     int? timeout,
     ThreeDSecureLabelThemeData? label,
     ThreeDSecureTextFieldThemeData? textField,

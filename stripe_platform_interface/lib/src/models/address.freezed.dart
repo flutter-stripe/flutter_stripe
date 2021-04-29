@@ -47,11 +47,20 @@ const $Address = _$AddressTearOff();
 
 /// @nodoc
 mixin _$Address {
+  /// City, town or district.
   String? get city => throw _privateConstructorUsedError;
   String? get country => throw _privateConstructorUsedError;
+
+  /// Address line1 (e.g. Street, C/O , PO Box).
   String? get line1 => throw _privateConstructorUsedError;
+
+  /// Address line2 (e.g. building, appartment or unit).
   String? get line2 => throw _privateConstructorUsedError;
+
+  /// ZIP or postal code.
   String? get postalCode => throw _privateConstructorUsedError;
+
+  /// State or province.
   String? get state => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -195,16 +204,26 @@ class _$_Address implements _Address {
       _$_$_AddressFromJson(json);
 
   @override
+
+  /// City, town or district.
   final String? city;
   @override
   final String? country;
   @override
+
+  /// Address line1 (e.g. Street, C/O , PO Box).
   final String? line1;
   @override
+
+  /// Address line2 (e.g. building, appartment or unit).
   final String? line2;
   @override
+
+  /// ZIP or postal code.
   final String? postalCode;
   @override
+
+  /// State or province.
   final String? state;
 
   @override
@@ -265,16 +284,26 @@ abstract class _Address implements Address {
   factory _Address.fromJson(Map<String, dynamic> json) = _$_Address.fromJson;
 
   @override
+
+  /// City, town or district.
   String? get city => throw _privateConstructorUsedError;
   @override
   String? get country => throw _privateConstructorUsedError;
   @override
+
+  /// Address line1 (e.g. Street, C/O , PO Box).
   String? get line1 => throw _privateConstructorUsedError;
   @override
+
+  /// Address line2 (e.g. building, appartment or unit).
   String? get line2 => throw _privateConstructorUsedError;
   @override
+
+  /// ZIP or postal code.
   String? get postalCode => throw _privateConstructorUsedError;
   @override
+
+  /// State or province.
   String? get state => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
