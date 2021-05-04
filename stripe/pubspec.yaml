@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  stripe_android: 0.0.0+2
+  stripe_android: 0.0.0+3
   stripe_ios: 0.0.0+1
   stripe_platform_interface: 0.0.0+1
 
