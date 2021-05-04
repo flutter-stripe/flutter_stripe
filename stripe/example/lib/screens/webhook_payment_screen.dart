@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:stripe/stripe.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 

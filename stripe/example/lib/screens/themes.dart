@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:stripe/stripe.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 class ThemeCardExample extends StatefulWidget {
   @override
