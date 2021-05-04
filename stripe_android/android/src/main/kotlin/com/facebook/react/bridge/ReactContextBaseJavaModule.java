@@ -14,10 +14,8 @@ public class ReactContextBaseJavaModule implements PluginRegistry.ActivityResult
 
     private final ArrayList<ActivityEventListener> eventListeners = new ArrayList<>();
 
-    protected ReactContextBaseJavaModule(ActivityPluginBinding binding) {
-        this.activity = binding.getActivity();
-
-        binding.addActivityResultListener(this);
+    protected ReactContextBaseJavaModule(Activity activity) {
+        this.activity = activity;
     }
 
     protected Context getReactApplicationContext() {

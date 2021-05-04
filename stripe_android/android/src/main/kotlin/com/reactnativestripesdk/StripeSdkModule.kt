@@ -13,7 +13,7 @@ import com.stripe.android.view.AddPaymentMethodActivityStarter
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 
 
-class StripeSdkModule(context: ActivityPluginBinding, cardFieldManager: StripeSdkCardViewManager) : ReactContextBaseJavaModule(context) {
+class StripeSdkModule(context: Activity, cardFieldManager: StripeSdkCardViewManager) : ReactContextBaseJavaModule(context) {
   private var cardFieldManager: StripeSdkCardViewManager = cardFieldManager
 
   override fun getName(): String {
@@ -28,7 +28,7 @@ class StripeSdkModule(context: ActivityPluginBinding, cardFieldManager: StripeSd
 
   private var confirmPaymentClientSecret: String? = null
 
-  private val mActivityEventListener = object : BaseActivityEventListener() {
+  internal val mActivityEventListener = object : BaseActivityEventListener() {
     override fun onActivityResult(a: Activity?, requestCode: Int, resultCode: Int, data: Intent?): Boolean {
       val onSetupResult = stripe.onSetupResult(requestCode, data, object : ApiResultCallback<SetupIntentResult> {
         override fun onSuccess(result: SetupIntentResult) {
@@ -114,10 +114,6 @@ class StripeSdkModule(context: ActivityPluginBinding, cardFieldManager: StripeSd
   }
 
   private lateinit var stripe: Stripe
-
-  init {
-    context.addActivityResultListener(mActivityEventListener)
-  }
 
   private fun configure3dSecure(params: ReadableMap) {
     val stripe3dsConfigBuilder = PaymentAuthConfig.Stripe3ds2Config.Builder()

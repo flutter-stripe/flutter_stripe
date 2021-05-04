@@ -13,6 +13,7 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
+import io.flutter.plugin.common.PluginRegistry
 import org.json.JSONObject
 
 
@@ -24,6 +25,17 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     /// when the Flutter Engine is detached from the Activity
     private lateinit var channel: MethodChannel
     private lateinit var stripeSdk: StripeSdkModule
+
+
+    companion object {
+        @JvmStatic
+        fun registerWith(registrar: PluginRegistry.Registrar) {
+            val plugin = StripeAndroidPlugin()
+            plugin.stripeSdk = StripeSdkModule(registrar.activity(), StripeSdkCardViewManager())
+            registrar.addActivityResultListener(plugin.stripeSdk)
+            registrar.addActivityResultListener(plugin.stripeSdk.mActivityEventListener)
+        }
+    }
 
     private val stripeSdkCardViewManager: StripeSdkCardViewManager by lazy {
         StripeSdkCardViewManager()
@@ -83,7 +95,9 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-        stripeSdk = StripeSdkModule(binding, stripeSdkCardViewManager)
+        stripeSdk = StripeSdkModule(binding.activity, stripeSdkCardViewManager)
+        binding.addActivityResultListener(stripeSdk)
+        binding.addActivityResultListener(stripeSdk.mActivityEventListener)
     }
 
     override fun onDetachedFromActivityForConfigChanges() {
