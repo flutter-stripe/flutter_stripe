@@ -68,7 +68,7 @@ class _ThemeCardExampleState extends State<ThemeCardExample> {
               alignment: Alignment.center,
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
               color: theme.scaffoldBackgroundColor,
-              child: CardFormField(
+              child: CardField(
                 autofocus: true,
                 enablePostalCode: true,
                 onCardChanged: (_) {},

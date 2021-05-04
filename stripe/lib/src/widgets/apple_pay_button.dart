@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
-//
 const double kApplePayButtonDefaultHeight = 48;
 
 class ApplePayButton extends StatelessWidget {
@@ -38,7 +37,7 @@ class ApplePayButton extends StatelessWidget {
   Widget get _platform {
     switch (defaultTargetPlatform) {
       case TargetPlatform.iOS:
-        return UiKitApplePayButton(
+        return _UiKitApplePayButton(
           type: type,
           style: style,
           onPressed: onPressed,
@@ -50,8 +49,8 @@ class ApplePayButton extends StatelessWidget {
   }
 }
 
-class UiKitApplePayButton extends StatefulWidget {
-  const UiKitApplePayButton({
+class _UiKitApplePayButton extends StatefulWidget {
+  const _UiKitApplePayButton({
     Key? key,
     this.style = ApplePayButtonStyle.black,
     this.type = ApplePayButtonType.plain,
@@ -65,7 +64,7 @@ class UiKitApplePayButton extends StatefulWidget {
   _UiKitApplePayButtonState createState() => _UiKitApplePayButtonState();
 }
 
-class _UiKitApplePayButtonState extends State<UiKitApplePayButton> {
+class _UiKitApplePayButtonState extends State<_UiKitApplePayButton> {
   MethodChannel? methodChannel;
 
   @override
@@ -90,7 +89,7 @@ class _UiKitApplePayButtonState extends State<UiKitApplePayButton> {
   }
 
   @override
-  void didUpdateWidget(covariant UiKitApplePayButton oldWidget) {
+  void didUpdateWidget(covariant _UiKitApplePayButton oldWidget) {
     if (widget.style != oldWidget.style || widget.type != oldWidget.type) {
       final type = _mapButtonType(widget.type);
       final style = mapButtonStyle(widget.style);
