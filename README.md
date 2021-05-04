@@ -1,5 +1,6 @@
 <img src="https://user-images.githubusercontent.com/19904063/116995247-20519e80-acda-11eb-8e1b-7d0efbd193ad.png" height="36" />
 
+> 🚨 flutter_stripe is in beta - please provide feedback (and/or contribute) if you find issues 💙️
 
 # flutter_stripe
 
@@ -97,7 +98,7 @@ The example app offers examples on how to use these methods.
 - Set up env vars for a local backend
     - `cp server/.env.example server/.env` and set the variable values in your newly created `.env` file.
 - Start the example
-    - Terminal 1: `yarn example start:server`
+    - Terminal 1: `cd server && yarn example start:server`
     - Terminal 2: `flutter run`
 
 ##### Additional steps for webhook forwarding
