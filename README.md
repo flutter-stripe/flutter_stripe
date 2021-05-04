@@ -1,3 +1,6 @@
+<img src="https://user-images.githubusercontent.com/19904063/116995247-20519e80-acda-11eb-8e1b-7d0efbd193ad.png" height="36" />
+
+
 # flutter_stripe
 
 The Stripe Flutter SDK allows you to build delightful payment experiences in your native Android and iOS apps using Flutter. We provide powerful and customizable UI screens and elements that can be used out-of-the-box to collect your users' payment details.
@@ -34,7 +37,7 @@ Compatible with apps targeting iOS 11 or above.
 
 ```dart
 // main.dart
-import 'package:stripe/stripe.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
