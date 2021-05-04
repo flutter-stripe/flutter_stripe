@@ -32,10 +32,9 @@ class Example {
       title: 'Re-collect CVC',
       builder: (c) => CVCReCollectionScreen(),
     ),
-     Example(
+    Example(
       title: 'Card themes',
       builder: (c) => ThemeCardExample(),
     )
-
   ];
 }

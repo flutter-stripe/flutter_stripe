@@ -28,7 +28,7 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
           Padding(
             padding: EdgeInsets.all(16),
             child: TextField(
-               decoration: InputDecoration(hintText: 'Email'),
+              decoration: InputDecoration(hintText: 'Email'),
               onChanged: (value) {
                 setState(() {
                   _email = value;
@@ -62,11 +62,10 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
               text: 'Pay',
             ),
           ),
-          if(_card != null)
-          Padding(
-            padding: EdgeInsets.all(16),
-            child: Text(_card!.toJson().toString())
-          ),
+          if (_card != null)
+            Padding(
+                padding: EdgeInsets.all(16),
+                child: Text(_card!.toJson().toString())),
         ],
       ),
     );

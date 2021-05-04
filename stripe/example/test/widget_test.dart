@@ -10,5 +10,4 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:stripe_example/main.dart';
 
-void main() {
-}
+void main() {}

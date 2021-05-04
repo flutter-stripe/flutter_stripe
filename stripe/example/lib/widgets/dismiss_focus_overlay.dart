@@ -1,4 +1,3 @@
-
 import 'package:flutter/widgets.dart';
 
 class DismissFocusOverlay extends StatelessWidget {

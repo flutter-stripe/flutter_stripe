@@ -138,23 +138,23 @@ packages:
   stripe_android:
     dependency: "direct main"
     description:
-      path: "../stripe_android"
-      relative: true
-    source: path
-    version: "0.0.1"
+      name: stripe_android
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.0+2"
   stripe_ios:
     dependency: "direct main"
     description:
-      path: "../stripe_ios"
-      relative: true
-    source: path
-    version: "0.0.1"
+      name: stripe_ios
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.0+1"
   stripe_platform_interface:
     dependency: "direct main"
     description:
-      path: "../stripe_platform_interface"
-      relative: true
-    source: path
+      name: stripe_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "0.0.0+1"
   term_glyph:
     dependency: transitive

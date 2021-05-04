@@ -1,8 +1,7 @@
 name: flutter_stripe
-description: A new flutter plugin project.
-version: 1.0.0+1
-author:
-homepage:
+description: Flutter library for Stripe.
+version: 1.0.0+2
+repository: https://github.com/flutter-stripe/flutter_stripe
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -11,16 +10,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  stripe_platform_interface:
-    path: ../stripe_platform_interface/
-  stripe_ios:
-    path: ../stripe_ios/
-  stripe_android:
-    path: ../stripe_android/  
+  stripe_android: 0.0.0+2
+  stripe_ios: 0.0.0+1
+  stripe_platform_interface: 0.0.0+1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+    
 
 
 
