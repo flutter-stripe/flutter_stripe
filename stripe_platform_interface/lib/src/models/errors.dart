@@ -27,7 +27,7 @@ class StripeError<T> with _$StripeError<T>, Exception {
       _$StripeErrorFromJson<T>(json);
 }
 
-// ignore: avoid_as 
+// ignore: avoid_as
 T _dataFromJson<T>(Map<String, dynamic> input) => input['code'] as T;
 
 Map<String, dynamic> _dataToJson<T>(T input) => {'code': input};

@@ -9,6 +9,7 @@ class ThreeDSecureConfigurationParams with _$ThreeDSecureConfigurationParams {
   @JsonSerializable(explicitToJson: true)
   const factory ThreeDSecureConfigurationParams({
     required ThreeDSecureNavigationBarThemeData navigationBar,
+
     /// desired timeout in miliseconds
     int? timeout,
     ThreeDSecureLabelThemeData? label,
