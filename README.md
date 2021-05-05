@@ -1,3 +1,5 @@
+[![pub package](https://img.shields.io/pub/v/flutter_stripe.svg)](https://pub.dev/packages/flutter_stripe)
+
 <img src="https://user-images.githubusercontent.com/19904063/116995247-20519e80-acda-11eb-8e1b-7d0efbd193ad.png" height="36" />
 
 > 🚨 flutter_stripe is in beta - please provide feedback (and/or contribute) if you find issues 💙️
