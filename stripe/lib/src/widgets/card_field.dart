@@ -7,12 +7,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
-const kCardFieldDefaultHeight = 48.0;
-const kCardFieldDefaultFontSize = 17.0;
-
-typedef CardChangedCallback = void Function(CardFieldInputDetails? details);
-typedef CardFocusCallback = void Function(CardFieldName? focusedField);
-
+/// Customizable form that collects card information.
 class CardField extends StatefulWidget {
   const CardField({
     required this.onCardChanged,
@@ -29,16 +24,39 @@ class CardField extends StatefulWidget {
     this.postalCodeHintText,
   }) : super(key: key);
 
+  /// Decoration related to the input fields.
   final InputDecoration? decoration;
+
+  /// Callback that will be executed when a specific field gets focus.
   final CardFocusCallback? onFocus;
+
+  /// Callback that will be executed when the card information changes.
   final CardChangedCallback onCardChanged;
+
+  /// Textstyle of the card input fields.
   final TextStyle? style;
+
+  /// Color of the cursor when a field gets focus.
   final Color? cursorColor;
+
+  /// Whether or not to show the postalcode field in the form.
+  /// Defaults is `false`.
   final bool enablePostalCode;
+
+  /// Hint text for the card number field.
   final String? numberHintText;
+
+  /// Hint text for the expiration date field.
   final String? expirationHintText;
+
+  /// Hint text for the cvc field.
   final String? cvcHintText;
+
+  /// Hint text for the postal code field.
   final String? postalCodeHintText;
+
+  /// Defines whether or not to automatically focus on the cardfield/
+  /// Default is `false`.
   final bool autofocus;
 
   @override
@@ -445,3 +463,9 @@ class _UiKitCardField extends StatelessWidget {
     );
   }
 }
+
+const kCardFieldDefaultHeight = 48.0;
+const kCardFieldDefaultFontSize = 17.0;
+
+typedef CardChangedCallback = void Function(CardFieldInputDetails? details);
+typedef CardFocusCallback = void Function(CardFieldName? focusedField);
