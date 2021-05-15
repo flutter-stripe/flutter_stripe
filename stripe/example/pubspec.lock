@@ -166,9 +166,9 @@ packages:
   stripe_android:
     dependency: transitive
     description:
-      name: stripe_android
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "../../stripe_android"
+      relative: true
+    source: path
     version: "0.0.0+3"
   stripe_ios:
     dependency: transitive
@@ -180,9 +180,9 @@ packages:
   stripe_platform_interface:
     dependency: transitive
     description:
-      name: stripe_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "../../stripe_platform_interface"
+      relative: true
+    source: path
     version: "0.0.0+1"
   term_glyph:
     dependency: transitive

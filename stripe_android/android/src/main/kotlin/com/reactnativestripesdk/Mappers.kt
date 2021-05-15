@@ -315,6 +315,10 @@ fun getIntOrNull(map: ReadableMap?, key: String): Int? {
   return if (map?.hasKey(key) == true) map.getInt(key) else null
 }
 
+public fun getBooleanOrNull(map: ReadableMap?, key: String): Boolean? {
+  return if (map?.hasKey(key) == true) map.getBoolean(key) else null
+}
+
 fun getMapOrNull(map: ReadableMap?, key: String): ReadableMap? {
   return if (map?.hasKey(key) == true) map.getMap(key) else null
 }
@@ -410,6 +414,11 @@ fun mapToUICustomization(params: ReadableMap): PaymentAuthConfig.Stripe3ds2UiCus
     .setButtonCustomization(
       buttonCustomizationBuilder.build(),
       PaymentAuthConfig.Stripe3ds2UiCustomization.ButtonType.SUBMIT
+    )
+
+    .setButtonCustomization(
+      buttonCustomizationBuilder.build(),
+      PaymentAuthConfig.Stripe3ds2UiCustomization.ButtonType.CONTINUE
     )
 
   getStringOrNull(params, "backgroundColor")?.let {
