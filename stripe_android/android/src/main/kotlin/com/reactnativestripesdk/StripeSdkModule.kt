@@ -151,7 +151,7 @@ class StripeSdkModule(private val context: ActivityPluginBinding, cardFieldManag
   private val mPaymentSheetReceiver: BroadcastReceiver = object : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent) {
       if (intent.action == ON_FRAGMENT_CREATED) {
-        paymentSheetFragment = (currentActivity as AppCompatActivity).supportFragmentManager.findFragmentByTag("payment_sheet_launch_fragment") as PaymentSheetFragment
+        paymentSheetFragment = currentActivity.supportFragmentManager.findFragmentByTag("payment_sheet_launch_fragment") as PaymentSheetFragment
       }
       if (intent.action == ON_PAYMENT_RESULT_ACTION) {
         when (intent.extras?.getParcelable<PaymentSheetResult>("paymentResult")) {
@@ -244,7 +244,7 @@ class StripeSdkModule(private val context: ActivityPluginBinding, cardFieldManag
 
   @ReactMethod
   fun initPaymentSheet(params: ReadableMap, promise: Promise) {
-    val activity = currentActivity as AppCompatActivity
+    val activity = currentActivity
 
     if (activity == null) {
       promise.reject("Fail", "Activity doesn't exist")
@@ -302,7 +302,7 @@ class StripeSdkModule(private val context: ActivityPluginBinding, cardFieldManag
   }
 
   private fun payWithFpx() {
-    AddPaymentMethodActivityStarter(currentActivity as AppCompatActivity)
+    AddPaymentMethodActivityStarter(currentActivity)
       .startForResult(AddPaymentMethodActivityStarter.Args.Builder()
         .setPaymentMethodType(PaymentMethod.Type.Fpx)
         .build()

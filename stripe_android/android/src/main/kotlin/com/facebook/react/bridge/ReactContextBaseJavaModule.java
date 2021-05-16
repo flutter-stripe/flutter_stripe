@@ -6,6 +6,7 @@ import android.content.Intent;
 
 import java.util.ArrayList;
 
+import io.flutter.embedding.android.FlutterFragmentActivity;
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
 import io.flutter.plugin.common.PluginRegistry;
 
@@ -22,8 +23,11 @@ public class ReactContextBaseJavaModule implements PluginRegistry.ActivityResult
         return activity;
     }
 
-    protected Activity getCurrentActivity() {
-        return activity;
+    protected FlutterFragmentActivity getCurrentActivity() {
+        if (!(activity instanceof FlutterFragmentActivity)) {
+            throw new IllegalStateException("Ensure that your Main Activity is subclassed by FlutterFragmentActivity");
+        }
+        return (FlutterFragmentActivity) activity;
     }
 
     protected void addActivityEventListener(ActivityEventListener listener) {
