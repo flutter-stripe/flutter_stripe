@@ -30,7 +30,7 @@ Map<String, dynamic> _$_$_SetupParametersToJson(_$_SetupParameters instance) =>
 _$_PresentParameters _$_$_PresentParametersFromJson(Map<String, dynamic> json) {
   return _$_PresentParameters(
     clientSecret: json['clientSecret'] as String,
-    confirmPayment: json['confirmPayment'] as bool?,
+    confirmPayment: json['confirmPayment'] as bool? ?? false,
   );
 }
 

@@ -346,7 +346,7 @@ class _$PresentPaymentSheetParametersTearOff {
   const _$PresentPaymentSheetParametersTearOff();
 
   _PresentParameters call(
-      {required String clientSecret, bool? confirmPayment}) {
+      {required String clientSecret, bool confirmPayment = false}) {
     return _PresentParameters(
       clientSecret: clientSecret,
       confirmPayment: confirmPayment,
@@ -368,7 +368,7 @@ mixin _$PresentPaymentSheetParameters {
 
   /// Flag that determines whether or not to present payment options or
   /// directly goes to confirm payment.
-  bool? get confirmPayment => throw _privateConstructorUsedError;
+  bool get confirmPayment => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -382,7 +382,7 @@ abstract class $PresentPaymentSheetParametersCopyWith<$Res> {
           PresentPaymentSheetParameters value,
           $Res Function(PresentPaymentSheetParameters) then) =
       _$PresentPaymentSheetParametersCopyWithImpl<$Res>;
-  $Res call({String clientSecret, bool? confirmPayment});
+  $Res call({String clientSecret, bool confirmPayment});
 }
 
 /// @nodoc
@@ -407,7 +407,7 @@ class _$PresentPaymentSheetParametersCopyWithImpl<$Res>
       confirmPayment: confirmPayment == freezed
           ? _value.confirmPayment
           : confirmPayment // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
     ));
   }
 }
@@ -419,7 +419,7 @@ abstract class _$PresentParametersCopyWith<$Res>
           _PresentParameters value, $Res Function(_PresentParameters) then) =
       __$PresentParametersCopyWithImpl<$Res>;
   @override
-  $Res call({String clientSecret, bool? confirmPayment});
+  $Res call({String clientSecret, bool confirmPayment});
 }
 
 /// @nodoc
@@ -446,7 +446,7 @@ class __$PresentParametersCopyWithImpl<$Res>
       confirmPayment: confirmPayment == freezed
           ? _value.confirmPayment
           : confirmPayment // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
     ));
   }
 }
@@ -455,7 +455,8 @@ class __$PresentParametersCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_PresentParameters implements _PresentParameters {
-  const _$_PresentParameters({required this.clientSecret, this.confirmPayment});
+  const _$_PresentParameters(
+      {required this.clientSecret, this.confirmPayment = false});
 
   factory _$_PresentParameters.fromJson(Map<String, dynamic> json) =>
       _$_$_PresentParametersFromJson(json);
@@ -464,11 +465,12 @@ class _$_PresentParameters implements _PresentParameters {
 
   /// Key used for client-side retrieval using a publishable key.
   final String clientSecret;
+  @JsonKey(defaultValue: false)
   @override
 
   /// Flag that determines whether or not to present payment options or
   /// directly goes to confirm payment.
-  final bool? confirmPayment;
+  final bool confirmPayment;
 
   @override
   String toString() {
@@ -507,7 +509,7 @@ class _$_PresentParameters implements _PresentParameters {
 abstract class _PresentParameters implements PresentPaymentSheetParameters {
   const factory _PresentParameters(
       {required String clientSecret,
-      bool? confirmPayment}) = _$_PresentParameters;
+      bool confirmPayment}) = _$_PresentParameters;
 
   factory _PresentParameters.fromJson(Map<String, dynamic> json) =
       _$_PresentParameters.fromJson;
@@ -520,7 +522,7 @@ abstract class _PresentParameters implements PresentPaymentSheetParameters {
 
   /// Flag that determines whether or not to present payment options or
   /// directly goes to confirm payment.
-  bool? get confirmPayment => throw _privateConstructorUsedError;
+  bool get confirmPayment => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$PresentParametersCopyWith<_PresentParameters> get copyWith =>
