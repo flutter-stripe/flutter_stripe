@@ -70,6 +70,9 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
 
   Future<void> _displayPaymentSheet() async {
     // 3. display the payment sheet.
-    await Stripe.instance.presentPaymentSheet(stripePublishableKey);
+    await Stripe.instance.presentPaymentSheet(
+        parameters: const PresentPaymentSheetParameters(
+      clientSecret: stripePublishableKey,
+    ));
   }
 }

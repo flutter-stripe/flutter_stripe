@@ -70,7 +70,12 @@ class CardPlaceholder with _$CardPlaceholder {
 class ColorKey {
   const ColorKey();
 
-  static int? toJson(Color? value) => value?.value;
+  static String? toJson(Color? color) {
+    if (color != null) {
+      // ignore: lines_longer_than_80_chars
+      return '#${color.value.toRadixString(16).padLeft(6, '0').toUpperCase()}';
+    }
+  }
 
   static Color? fromJson(value) {
     throw UnimplementedError();
