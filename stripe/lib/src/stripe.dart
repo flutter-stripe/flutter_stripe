@@ -254,9 +254,11 @@ class Stripe {
     }
   }
 
-  Future<void> initPaymentSheet() async {
+  Future<void> initPaymentSheet({
+    required SetupPaymentSheetParameters paymentSheetParameters,
+  }) async {
     await _awaitForSettings();
-    await _platform.initPaymentSheet(const SetupPaymentSheetParameters());
+    await _platform.initPaymentSheet(paymentSheetParameters);
   }
 
   Future<void> presentPaymentSheet(String clientSecret) async {

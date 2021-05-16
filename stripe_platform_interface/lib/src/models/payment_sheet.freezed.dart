@@ -24,7 +24,7 @@ class _$SetupPaymentSheetParametersTearOff {
   _SetupParameters call(
       {bool customFlow = false,
       String? customerEphemeralKeySecret,
-      String? paymentIntentClientSecret,
+      required String paymentIntentClientSecret,
       String? merchantDisplayName,
       String? merchantCountryCode,
       bool testEnv = false}) {
@@ -55,7 +55,7 @@ mixin _$SetupPaymentSheetParameters {
   String? get customerEphemeralKeySecret => throw _privateConstructorUsedError;
 
   /// Secret used for client-side retrieval using a publishable key.
-  String? get paymentIntentClientSecret => throw _privateConstructorUsedError;
+  String get paymentIntentClientSecret => throw _privateConstructorUsedError;
 
   /// Display name of the merchant
   String? get merchantDisplayName => throw _privateConstructorUsedError;
@@ -81,7 +81,7 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
   $Res call(
       {bool customFlow,
       String? customerEphemeralKeySecret,
-      String? paymentIntentClientSecret,
+      String paymentIntentClientSecret,
       String? merchantDisplayName,
       String? merchantCountryCode,
       bool testEnv});
@@ -117,7 +117,7 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res>
       paymentIntentClientSecret: paymentIntentClientSecret == freezed
           ? _value.paymentIntentClientSecret
           : paymentIntentClientSecret // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       merchantDisplayName: merchantDisplayName == freezed
           ? _value.merchantDisplayName
           : merchantDisplayName // ignore: cast_nullable_to_non_nullable
@@ -144,7 +144,7 @@ abstract class _$SetupParametersCopyWith<$Res>
   $Res call(
       {bool customFlow,
       String? customerEphemeralKeySecret,
-      String? paymentIntentClientSecret,
+      String paymentIntentClientSecret,
       String? merchantDisplayName,
       String? merchantCountryCode,
       bool testEnv});
@@ -182,7 +182,7 @@ class __$SetupParametersCopyWithImpl<$Res>
       paymentIntentClientSecret: paymentIntentClientSecret == freezed
           ? _value.paymentIntentClientSecret
           : paymentIntentClientSecret // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       merchantDisplayName: merchantDisplayName == freezed
           ? _value.merchantDisplayName
           : merchantDisplayName // ignore: cast_nullable_to_non_nullable
@@ -206,7 +206,7 @@ class _$_SetupParameters implements _SetupParameters {
   const _$_SetupParameters(
       {this.customFlow = false,
       this.customerEphemeralKeySecret,
-      this.paymentIntentClientSecret,
+      required this.paymentIntentClientSecret,
       this.merchantDisplayName,
       this.merchantCountryCode,
       this.testEnv = false});
@@ -226,7 +226,7 @@ class _$_SetupParameters implements _SetupParameters {
   @override
 
   /// Secret used for client-side retrieval using a publishable key.
-  final String? paymentIntentClientSecret;
+  final String paymentIntentClientSecret;
   @override
 
   /// Display name of the merchant
@@ -298,7 +298,7 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   const factory _SetupParameters(
       {bool customFlow,
       String? customerEphemeralKeySecret,
-      String? paymentIntentClientSecret,
+      required String paymentIntentClientSecret,
       String? merchantDisplayName,
       String? merchantCountryCode,
       bool testEnv}) = _$_SetupParameters;
@@ -317,7 +317,7 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   @override
 
   /// Secret used for client-side retrieval using a publishable key.
-  String? get paymentIntentClientSecret => throw _privateConstructorUsedError;
+  String get paymentIntentClientSecret => throw _privateConstructorUsedError;
   @override
 
   /// Display name of the merchant

@@ -14,7 +14,7 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     String? customerEphemeralKeySecret,
 
     /// Secret used for client-side retrieval using a publishable key.
-    String? paymentIntentClientSecret,
+    required String paymentIntentClientSecret,
 
     /// Display name of the merchant
     String? merchantDisplayName,
