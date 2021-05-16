@@ -39,7 +39,7 @@ class PresentPaymentSheetParameters with _$PresentPaymentSheetParameters {
 
     /// Flag that determines whether or not to present payment options or
     /// directly goes to confirm payment.
-    bool? confirmPayment,
+    @Default(false) bool confirmPayment,
   }) = _PresentParameters;
 
   factory PresentPaymentSheetParameters.fromJson(Map<String, dynamic> json) =>
