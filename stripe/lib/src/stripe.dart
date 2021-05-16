@@ -255,10 +255,12 @@ class Stripe {
   }
 
   Future<void> initPaymentSheet() async {
+    await _awaitForSettings();
     await _platform.initPaymentSheet(const SetupPaymentSheetParameters());
   }
 
   Future<void> presentPaymentSheet(String clientSecret) async {
+    await _awaitForSettings();
     await _platform.presentPaymentSheet(
       PresentPaymentSheetParameters(clientSecret: clientSecret),
     );
