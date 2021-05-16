@@ -49,6 +49,8 @@ const $Address = _$AddressTearOff();
 mixin _$Address {
   /// City, town or district.
   String? get city => throw _privateConstructorUsedError;
+
+  /// Country
   String? get country => throw _privateConstructorUsedError;
 
   /// Address line1 (e.g. Street, C/O , PO Box).
@@ -208,6 +210,8 @@ class _$_Address implements _Address {
   /// City, town or district.
   final String? city;
   @override
+
+  /// Country
   final String? country;
   @override
 
@@ -288,6 +292,8 @@ abstract class _Address implements Address {
   /// City, town or district.
   String? get city => throw _privateConstructorUsedError;
   @override
+
+  /// Country
   String? get country => throw _privateConstructorUsedError;
   @override
 
