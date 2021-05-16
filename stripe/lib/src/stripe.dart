@@ -261,11 +261,11 @@ class Stripe {
     await _platform.initPaymentSheet(paymentSheetParameters);
   }
 
-  Future<void> presentPaymentSheet(String clientSecret) async {
+  Future<void> presentPaymentSheet({
+    required PresentPaymentSheetParameters parameters,
+  }) async {
     await _awaitForSettings();
-    await _platform.presentPaymentSheet(
-      PresentPaymentSheetParameters(clientSecret: clientSecret),
-    );
+    await _platform.presentPaymentSheet(parameters);
   }
 
   Future<void> confirmPaymentSheetPayment() async {
