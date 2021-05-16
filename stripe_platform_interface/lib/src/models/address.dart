@@ -11,6 +11,8 @@ class Address with _$Address {
   const factory Address({
     /// City, town or district.
     required String? city,
+
+    /// Country
     required String? country,
 
     /// Address line1 (e.g. Street, C/O , PO Box).

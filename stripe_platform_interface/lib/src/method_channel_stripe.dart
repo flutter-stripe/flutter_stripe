@@ -7,6 +7,7 @@ import 'models/apple_pay.dart';
 import 'models/errors.dart';
 import 'models/payment_intents.dart';
 import 'models/payment_methods.dart';
+import 'models/payment_sheet.dart';
 import 'models/setup_intent.dart';
 import 'models/three_d_secure.dart';
 import 'stripe_platform_interface.dart';
@@ -168,6 +169,27 @@ class MethodChannelStripe extends StripePlatform {
         message: "Retrieving payment intent failed",
       );
     }
+  }
+
+  @override
+  Future<void> initPaymentSheet(SetupPaymentSheetParameters params) async {
+    await _methodChannel.invokeMapMethod(
+      'initPaymentSheet',
+      {'params': params.toJson()},
+    );
+  }
+
+  @override
+  Future<void> presentPaymentSheet(PresentPaymentSheetParameters params) async {
+    await _methodChannel.invokeMapMethod(
+      'presentPaymentSheet',
+      {'params': params.toJson()},
+    );
+  }
+
+  @override
+  Future<void> confirmPaymentSheetPayment() async {
+    await _methodChannel.invokeMethod('confirmPaymentSheetPayment');
   }
 }
 
