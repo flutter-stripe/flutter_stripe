@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:stripe_example/screens/themes.dart';
+
 import '../screens/no_webhook_payment_screen.dart';
 import '../screens/setup_future_payment_screen.dart';
 import '../screens/webhook_payment_screen.dart';
-
 import 'cvc_re_collection_screen.dart';
+import 'payment_sheet_screen.dart';
+import 'themes.dart';
 
 class Example {
   final String title;
@@ -35,6 +36,10 @@ class Example {
     Example(
       title: 'Card themes',
       builder: (c) => ThemeCardExample(),
-    )
+    ),
+    Example(
+      title: 'Payment sheet',
+      builder: (context) => PaymentSheetScreen(),
+    ),
   ];
 }
