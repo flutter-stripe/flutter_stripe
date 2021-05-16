@@ -10,7 +10,7 @@ _$_SetupParameters _$_$_SetupParametersFromJson(Map<String, dynamic> json) {
   return _$_SetupParameters(
     customFlow: json['customFlow'] as bool? ?? false,
     customerEphemeralKeySecret: json['customerEphemeralKeySecret'] as String?,
-    paymentIntentClientSecret: json['paymentIntentClientSecret'] as String?,
+    paymentIntentClientSecret: json['paymentIntentClientSecret'] as String,
     merchantDisplayName: json['merchantDisplayName'] as String?,
     merchantCountryCode: json['merchantCountryCode'] as String?,
     testEnv: json['testEnv'] as bool? ?? false,
