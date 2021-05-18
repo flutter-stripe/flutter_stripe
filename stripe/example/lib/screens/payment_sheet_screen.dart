@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
 
-import '../.env.example.dart';
+import '../.env.dart';
 import '../config.dart';
 
 class PaymentSheetScreen extends StatefulWidget {
@@ -73,6 +73,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
     await Stripe.instance.presentPaymentSheet(
         parameters: const PresentPaymentSheetParameters(
       clientSecret: stripePublishableKey,
+      confirmPayment: true,
     ));
   }
 }
