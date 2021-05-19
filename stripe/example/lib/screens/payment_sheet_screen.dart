@@ -92,6 +92,16 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
         clientSecret: stripePublishableKey,
         confirmPayment: true,
       ));
+
+      setState(() {
+        _paymentSheetInitialized = false;
+      });
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Payment succesfully completed'),
+        ),
+      );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(

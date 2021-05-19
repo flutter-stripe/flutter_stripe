@@ -181,7 +181,7 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<void> presentPaymentSheet(PresentPaymentSheetParameters params) async {
-    await _methodChannel.invokeMapMethod(
+    await _methodChannel.invokeMethod(
       'presentPaymentSheet',
       {'params': params.toJson()},
     );
