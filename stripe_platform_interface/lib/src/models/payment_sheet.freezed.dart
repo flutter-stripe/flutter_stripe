@@ -23,17 +23,25 @@ class _$SetupPaymentSheetParametersTearOff {
 
   _SetupParameters call(
       {bool customFlow = false,
+      String? customerId,
       String? customerEphemeralKeySecret,
       required String paymentIntentClientSecret,
       String? merchantDisplayName,
       String? merchantCountryCode,
+      bool? applePay,
+      @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style,
+      bool? googlePay,
       bool testEnv = false}) {
     return _SetupParameters(
       customFlow: customFlow,
+      customerId: customerId,
       customerEphemeralKeySecret: customerEphemeralKeySecret,
       paymentIntentClientSecret: paymentIntentClientSecret,
       merchantDisplayName: merchantDisplayName,
       merchantCountryCode: merchantCountryCode,
+      applePay: applePay,
+      style: style,
+      googlePay: googlePay,
       testEnv: testEnv,
     );
   }
@@ -51,6 +59,10 @@ mixin _$SetupPaymentSheetParameters {
   ///Whether or not to display a custom flow
   bool get customFlow => throw _privateConstructorUsedError;
 
+  /// The identifier of the Stripe Customer object.
+  /// See https://stripe.com/docs/api/customers/object#customer_object-id
+  String? get customerId => throw _privateConstructorUsedError;
+
   ///A temp key can be used for API operations that require a secret key.
   String? get customerEphemeralKeySecret => throw _privateConstructorUsedError;
 
@@ -62,6 +74,20 @@ mixin _$SetupPaymentSheetParameters {
 
   /// ISO country code of the country where the merchant is located
   String? get merchantCountryCode => throw _privateConstructorUsedError;
+
+  /// Configuration related to Apple Pay
+  /// If set, PaymentSheet displays Apple Pay as a payment option
+  /// A merchantCountryCode would then be required
+  bool? get applePay => throw _privateConstructorUsedError;
+
+  /// Style options for colors in PaymentSheet
+  @JsonKey(toJson: UserInterfaceStyleKey.toJson)
+  ThemeMode? get style => throw _privateConstructorUsedError;
+
+  /// Configuration related to Google Pay
+  /// If set, PaymentSheet displays Google Pay as a payment option
+  /// A merchantCountryCode would then be required
+  bool? get googlePay => throw _privateConstructorUsedError;
 
   /// Flag for using the test environment
   bool get testEnv => throw _privateConstructorUsedError;
@@ -80,10 +106,14 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
       _$SetupPaymentSheetParametersCopyWithImpl<$Res>;
   $Res call(
       {bool customFlow,
+      String? customerId,
       String? customerEphemeralKeySecret,
       String paymentIntentClientSecret,
       String? merchantDisplayName,
       String? merchantCountryCode,
+      bool? applePay,
+      @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style,
+      bool? googlePay,
       bool testEnv});
 }
 
@@ -99,10 +129,14 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res>
   @override
   $Res call({
     Object? customFlow = freezed,
+    Object? customerId = freezed,
     Object? customerEphemeralKeySecret = freezed,
     Object? paymentIntentClientSecret = freezed,
     Object? merchantDisplayName = freezed,
     Object? merchantCountryCode = freezed,
+    Object? applePay = freezed,
+    Object? style = freezed,
+    Object? googlePay = freezed,
     Object? testEnv = freezed,
   }) {
     return _then(_value.copyWith(
@@ -110,6 +144,10 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res>
           ? _value.customFlow
           : customFlow // ignore: cast_nullable_to_non_nullable
               as bool,
+      customerId: customerId == freezed
+          ? _value.customerId
+          : customerId // ignore: cast_nullable_to_non_nullable
+              as String?,
       customerEphemeralKeySecret: customerEphemeralKeySecret == freezed
           ? _value.customerEphemeralKeySecret
           : customerEphemeralKeySecret // ignore: cast_nullable_to_non_nullable
@@ -126,6 +164,18 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res>
           ? _value.merchantCountryCode
           : merchantCountryCode // ignore: cast_nullable_to_non_nullable
               as String?,
+      applePay: applePay == freezed
+          ? _value.applePay
+          : applePay // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      style: style == freezed
+          ? _value.style
+          : style // ignore: cast_nullable_to_non_nullable
+              as ThemeMode?,
+      googlePay: googlePay == freezed
+          ? _value.googlePay
+          : googlePay // ignore: cast_nullable_to_non_nullable
+              as bool?,
       testEnv: testEnv == freezed
           ? _value.testEnv
           : testEnv // ignore: cast_nullable_to_non_nullable
@@ -143,10 +193,14 @@ abstract class _$SetupParametersCopyWith<$Res>
   @override
   $Res call(
       {bool customFlow,
+      String? customerId,
       String? customerEphemeralKeySecret,
       String paymentIntentClientSecret,
       String? merchantDisplayName,
       String? merchantCountryCode,
+      bool? applePay,
+      @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style,
+      bool? googlePay,
       bool testEnv});
 }
 
@@ -164,10 +218,14 @@ class __$SetupParametersCopyWithImpl<$Res>
   @override
   $Res call({
     Object? customFlow = freezed,
+    Object? customerId = freezed,
     Object? customerEphemeralKeySecret = freezed,
     Object? paymentIntentClientSecret = freezed,
     Object? merchantDisplayName = freezed,
     Object? merchantCountryCode = freezed,
+    Object? applePay = freezed,
+    Object? style = freezed,
+    Object? googlePay = freezed,
     Object? testEnv = freezed,
   }) {
     return _then(_SetupParameters(
@@ -175,6 +233,10 @@ class __$SetupParametersCopyWithImpl<$Res>
           ? _value.customFlow
           : customFlow // ignore: cast_nullable_to_non_nullable
               as bool,
+      customerId: customerId == freezed
+          ? _value.customerId
+          : customerId // ignore: cast_nullable_to_non_nullable
+              as String?,
       customerEphemeralKeySecret: customerEphemeralKeySecret == freezed
           ? _value.customerEphemeralKeySecret
           : customerEphemeralKeySecret // ignore: cast_nullable_to_non_nullable
@@ -191,6 +253,18 @@ class __$SetupParametersCopyWithImpl<$Res>
           ? _value.merchantCountryCode
           : merchantCountryCode // ignore: cast_nullable_to_non_nullable
               as String?,
+      applePay: applePay == freezed
+          ? _value.applePay
+          : applePay // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      style: style == freezed
+          ? _value.style
+          : style // ignore: cast_nullable_to_non_nullable
+              as ThemeMode?,
+      googlePay: googlePay == freezed
+          ? _value.googlePay
+          : googlePay // ignore: cast_nullable_to_non_nullable
+              as bool?,
       testEnv: testEnv == freezed
           ? _value.testEnv
           : testEnv // ignore: cast_nullable_to_non_nullable
@@ -205,10 +279,14 @@ class __$SetupParametersCopyWithImpl<$Res>
 class _$_SetupParameters implements _SetupParameters {
   const _$_SetupParameters(
       {this.customFlow = false,
+      this.customerId,
       this.customerEphemeralKeySecret,
       required this.paymentIntentClientSecret,
       this.merchantDisplayName,
       this.merchantCountryCode,
+      this.applePay,
+      @JsonKey(toJson: UserInterfaceStyleKey.toJson) this.style,
+      this.googlePay,
       this.testEnv = false});
 
   factory _$_SetupParameters.fromJson(Map<String, dynamic> json) =>
@@ -219,6 +297,11 @@ class _$_SetupParameters implements _SetupParameters {
 
   ///Whether or not to display a custom flow
   final bool customFlow;
+  @override
+
+  /// The identifier of the Stripe Customer object.
+  /// See https://stripe.com/docs/api/customers/object#customer_object-id
+  final String? customerId;
   @override
 
   ///A temp key can be used for API operations that require a secret key.
@@ -235,6 +318,23 @@ class _$_SetupParameters implements _SetupParameters {
 
   /// ISO country code of the country where the merchant is located
   final String? merchantCountryCode;
+  @override
+
+  /// Configuration related to Apple Pay
+  /// If set, PaymentSheet displays Apple Pay as a payment option
+  /// A merchantCountryCode would then be required
+  final bool? applePay;
+  @override
+
+  /// Style options for colors in PaymentSheet
+  @JsonKey(toJson: UserInterfaceStyleKey.toJson)
+  final ThemeMode? style;
+  @override
+
+  /// Configuration related to Google Pay
+  /// If set, PaymentSheet displays Google Pay as a payment option
+  /// A merchantCountryCode would then be required
+  final bool? googlePay;
   @JsonKey(defaultValue: false)
   @override
 
@@ -243,7 +343,7 @@ class _$_SetupParameters implements _SetupParameters {
 
   @override
   String toString() {
-    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, merchantDisplayName: $merchantDisplayName, merchantCountryCode: $merchantCountryCode, testEnv: $testEnv)';
+    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, merchantDisplayName: $merchantDisplayName, merchantCountryCode: $merchantCountryCode, applePay: $applePay, style: $style, googlePay: $googlePay, testEnv: $testEnv)';
   }
 
   @override
@@ -253,6 +353,9 @@ class _$_SetupParameters implements _SetupParameters {
             (identical(other.customFlow, customFlow) ||
                 const DeepCollectionEquality()
                     .equals(other.customFlow, customFlow)) &&
+            (identical(other.customerId, customerId) ||
+                const DeepCollectionEquality()
+                    .equals(other.customerId, customerId)) &&
             (identical(other.customerEphemeralKeySecret,
                     customerEphemeralKeySecret) ||
                 const DeepCollectionEquality().equals(
@@ -269,6 +372,14 @@ class _$_SetupParameters implements _SetupParameters {
             (identical(other.merchantCountryCode, merchantCountryCode) ||
                 const DeepCollectionEquality()
                     .equals(other.merchantCountryCode, merchantCountryCode)) &&
+            (identical(other.applePay, applePay) ||
+                const DeepCollectionEquality()
+                    .equals(other.applePay, applePay)) &&
+            (identical(other.style, style) ||
+                const DeepCollectionEquality().equals(other.style, style)) &&
+            (identical(other.googlePay, googlePay) ||
+                const DeepCollectionEquality()
+                    .equals(other.googlePay, googlePay)) &&
             (identical(other.testEnv, testEnv) ||
                 const DeepCollectionEquality().equals(other.testEnv, testEnv)));
   }
@@ -277,10 +388,14 @@ class _$_SetupParameters implements _SetupParameters {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(customFlow) ^
+      const DeepCollectionEquality().hash(customerId) ^
       const DeepCollectionEquality().hash(customerEphemeralKeySecret) ^
       const DeepCollectionEquality().hash(paymentIntentClientSecret) ^
       const DeepCollectionEquality().hash(merchantDisplayName) ^
       const DeepCollectionEquality().hash(merchantCountryCode) ^
+      const DeepCollectionEquality().hash(applePay) ^
+      const DeepCollectionEquality().hash(style) ^
+      const DeepCollectionEquality().hash(googlePay) ^
       const DeepCollectionEquality().hash(testEnv);
 
   @JsonKey(ignore: true)
@@ -297,10 +412,14 @@ class _$_SetupParameters implements _SetupParameters {
 abstract class _SetupParameters implements SetupPaymentSheetParameters {
   const factory _SetupParameters(
       {bool customFlow,
+      String? customerId,
       String? customerEphemeralKeySecret,
       required String paymentIntentClientSecret,
       String? merchantDisplayName,
       String? merchantCountryCode,
+      bool? applePay,
+      @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style,
+      bool? googlePay,
       bool testEnv}) = _$_SetupParameters;
 
   factory _SetupParameters.fromJson(Map<String, dynamic> json) =
@@ -310,6 +429,11 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
 
   ///Whether or not to display a custom flow
   bool get customFlow => throw _privateConstructorUsedError;
+  @override
+
+  /// The identifier of the Stripe Customer object.
+  /// See https://stripe.com/docs/api/customers/object#customer_object-id
+  String? get customerId => throw _privateConstructorUsedError;
   @override
 
   ///A temp key can be used for API operations that require a secret key.
@@ -326,6 +450,23 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
 
   /// ISO country code of the country where the merchant is located
   String? get merchantCountryCode => throw _privateConstructorUsedError;
+  @override
+
+  /// Configuration related to Apple Pay
+  /// If set, PaymentSheet displays Apple Pay as a payment option
+  /// A merchantCountryCode would then be required
+  bool? get applePay => throw _privateConstructorUsedError;
+  @override
+
+  /// Style options for colors in PaymentSheet
+  @JsonKey(toJson: UserInterfaceStyleKey.toJson)
+  ThemeMode? get style => throw _privateConstructorUsedError;
+  @override
+
+  /// Configuration related to Google Pay
+  /// If set, PaymentSheet displays Google Pay as a payment option
+  /// A merchantCountryCode would then be required
+  bool? get googlePay => throw _privateConstructorUsedError;
   @override
 
   /// Flag for using the test environment

@@ -281,13 +281,13 @@ class Mappers {
             return nil
         }
         let shippingAddress = STPPaymentIntentShippingDetailsAddressParams(line1: shippingDetails["addressLine1"] as? String ?? "")
-
-        shippingAddress.city = RCTConvert.nsString(shippingDetails["addressCity"])
-        shippingAddress.postalCode = RCTConvert.nsString(shippingDetails["addressPostalCode"])
-        shippingAddress.country = RCTConvert.nsString(shippingDetails["addressCountry"])
-        shippingAddress.line1 = RCTConvert.nsString(shippingDetails["addressLine1"])!
-        shippingAddress.line2 = RCTConvert.nsString(shippingDetails["addressLine2"])
-        shippingAddress.state = RCTConvert.nsString(shippingDetails["addressState"])
+        
+        shippingAddress.city = shippingDetails["addressCity"] as? String
+        shippingAddress.postalCode = shippingDetails["addressPostalCode"] as? String
+        shippingAddress.country = shippingDetails["addressCountry"] as? String
+        shippingAddress.line1 = shippingDetails["addressLine1"] as? String ?? ""
+        shippingAddress.line2 = shippingDetails["addressLine2"] as? String
+        shippingAddress.state = shippingDetails["addressState"] as? String
 
         let shipping = STPPaymentIntentShippingDetailsParams(address: shippingAddress, name: shippingDetails["name"] as? String ?? "")
 
@@ -375,9 +375,6 @@ class Mappers {
             "Sofort": [
                 "country": paymentMethod.sofort?.country
             ],
-            "Upi": [
-                "vpa": paymentMethod.upi?.vpa
-            ],
         ]
         return method
     }
@@ -456,6 +453,15 @@ class Mappers {
         
         
         return intent
+    }
+    
+    @available(iOS 13.0, *)
+    class func mapToUserInterfaceStyle(_ style: String) -> PaymentSheet.UserInterfaceStyle {
+        switch style {
+        case "alwaysDark": return PaymentSheet.UserInterfaceStyle.alwaysDark
+        case "alwaysLight": return PaymentSheet.UserInterfaceStyle.alwaysLight
+        default: return PaymentSheet.UserInterfaceStyle.automatic
+        }
     }
     
     class func mapToReturnURL(urlScheme: String) -> String {
