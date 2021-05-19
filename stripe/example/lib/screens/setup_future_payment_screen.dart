@@ -111,7 +111,8 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-              'Success: Setup intent created. Intent status: $setupIntentResult'),
+            'Success: Setup intent created. Intent status: $setupIntentResult',
+          ),
         ),
       );
       setState(() {
