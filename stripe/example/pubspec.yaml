@@ -12,12 +12,17 @@ dependencies:
     sdk: flutter
   flutter_stripe:
     path: ../
+  pay: ^1.0.1
   http: ^0.13.1
   
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/

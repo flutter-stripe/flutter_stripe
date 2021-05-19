@@ -173,19 +173,6 @@ Map<String, dynamic> _$_$_UpiToJson(_$_Upi instance) => <String, dynamic>{
       'vpa': instance.vpa,
     };
 
-_$_PaymentMethodParamsDefault _$_$_PaymentMethodParamsDefaultFromJson(
-    Map<String, dynamic> json) {
-  return _$_PaymentMethodParamsDefault(
-    json['type'] as String,
-  );
-}
-
-Map<String, dynamic> _$_$_PaymentMethodParamsDefaultToJson(
-        _$_PaymentMethodParamsDefault instance) =>
-    <String, dynamic>{
-      'type': instance.type,
-    };
-
 _$_PaymentMethodParamsCard _$_$_PaymentMethodParamsCardFromJson(
     Map<String, dynamic> json) {
   return _$_PaymentMethodParamsCard(
@@ -251,8 +238,7 @@ const _$PaymentIntentsFutureUsageEnumMap = {
 _$_PaymentMethodParamsCardWithToken
     _$_$_PaymentMethodParamsCardWithTokenFromJson(Map<String, dynamic> json) {
   return _$_PaymentMethodParamsCardWithToken(
-    cardDetails:
-        CardTokenDetails.fromJson(json['cardDetails'] as Map<String, dynamic>),
+    token: json['token'] as String,
     setupFutureUsage: _$enumDecodeNullable(
         _$PaymentIntentsFutureUsageEnumMap, json['setupFutureUsage']),
   );
@@ -261,7 +247,7 @@ _$_PaymentMethodParamsCardWithToken
 Map<String, dynamic> _$_$_PaymentMethodParamsCardWithTokenToJson(
         _$_PaymentMethodParamsCardWithToken instance) =>
     <String, dynamic>{
-      'cardDetails': instance.cardDetails.toJson(),
+      'token': instance.token,
       'setupFutureUsage':
           _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
     };

@@ -82,16 +82,7 @@ class ColorKey {
   }
 }
 
-@freezed
-class CardTokenDetails with _$CardTokenDetails {
-  @JsonSerializable(explicitToJson: true)
-  const factory CardTokenDetails({
-    required String token,
-  }) = _CardTokenDetails;
 
-  factory CardTokenDetails.fromJson(Map<String, dynamic> json) =>
-      _$CardTokenDetailsFromJson(json);
-}
 
 @freezed
 class CardFieldInputDetails with _$CardFieldInputDetails {

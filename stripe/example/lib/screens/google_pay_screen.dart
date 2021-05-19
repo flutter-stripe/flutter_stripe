@@ -5,25 +5,30 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
-
+import 'package:pay/pay.dart' as pay;
 import '../config.dart';
 
-class ApplePayScreen extends StatefulWidget {
+const _paymentItems = [
+  pay.PaymentItem(
+    label: 'Total',
+    amount: '99.99',
+    status: pay.PaymentItemStatus.final_price,
+  )
+];
+
+class GooglePayScreen extends StatefulWidget {
   @override
   _ApplePayScreenState createState() => _ApplePayScreenState();
 }
 
-class _ApplePayScreenState extends State<ApplePayScreen> {
-
+class _ApplePayScreenState extends State<GooglePayScreen> {
   @override
   void initState() {
-    Stripe.instance.isApplePaySupported.addListener(update);
     super.initState();
   }
 
   @override
   void dispose() {
-    Stripe.instance.isApplePaySupported.removeListener(update);
     super.dispose();
   }
 
@@ -36,48 +41,46 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
     return Scaffold(
       appBar: AppBar(),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          if (Stripe.instance.isApplePaySupported.value)
-            Padding(
-              padding: EdgeInsets.all(16),
-              child: ApplePayButton(
-                onPressed: _handlePayPress,
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: pay.GooglePayButton(
+              paymentConfigurationAsset: 'google_pay_payment_profile.json',
+              paymentItems: _paymentItems,
+              margin: const EdgeInsets.only(top: 15),
+              onPaymentResult: onGooglePayResult,
+              loadingIndicator: const Center(
+                child: CircularProgressIndicator(),
               ),
-            )
-          else
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text('Apple Pay is not available in this device'),
             ),
+          )
         ],
       ),
     );
   }
 
-  Future<void> _handlePayPress() async {
+  Future<void> onGooglePayResult(paymentResult) async {
     try {
-      // 1. Present Apple Pay sheet
-      await Stripe.instance.presentApplePay(
-        ApplePayPresentParams(
-          cartItems: [
-            ApplePayCartSummaryItem(
-              label: 'Product Test',
-              amount: '20',
-            ),
-          ],
-          country: 'Es',
-          currency: 'EUR',
-        ),
-      );
-
-      // 2. fetch Intent Client Secret from backend
+      debugPrint(paymentResult.toString());
+      // 1. fetch Intent Client Secret from backend
       final response = await fetchPaymentIntentClientSecret();
       final clientSecret = response['clientSecret'];
 
-      // 2. Confirm apple pay payment
-      await Stripe.instance.confirmApplePayPayment(clientSecret);
+      final params = PaymentMethodParams.cardFromToken(
+        token: paymentResult['paymentMethodData']['tokenizationData']
+            ['token'], // TODO extract the actual token
+      );
+      print(params.toJson());
+      // 1. Confirm Google pay payment method
+      await Stripe.instance.confirmPaymentMethod(
+        clientSecret,
+        params,
+      );
+
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Apple Pay payment succesfully completed')),
+        const SnackBar(
+            content: Text('Google Pay payment succesfully completed')),
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
