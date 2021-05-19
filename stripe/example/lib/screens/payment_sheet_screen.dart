@@ -18,6 +18,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -77,9 +78,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
       });
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('$e'),
-        ),
+        SnackBar(content: Text('Error: $e')),
       );
     }
   }
