@@ -73,7 +73,7 @@ packages:
       name: freezed_annotation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.1"
+    version: "0.14.2"
   http:
     dependency: "direct main"
     description:
@@ -141,7 +141,7 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.1"
+    version: "1.8.0"
   stack_trace:
     dependency: transitive
     description:
@@ -173,9 +173,9 @@ packages:
   stripe_ios:
     dependency: transitive
     description:
-      name: stripe_ios
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "../../stripe_ios"
+      relative: true
+    source: path
     version: "0.0.0+1"
   stripe_platform_interface:
     dependency: transitive
@@ -197,7 +197,7 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.0"
+    version: "0.2.19"
   typed_data:
     dependency: transitive
     description:
