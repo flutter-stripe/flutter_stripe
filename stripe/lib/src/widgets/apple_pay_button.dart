@@ -4,7 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
-const double kApplePayButtonDefaultHeight = 48;
+const double _kApplePayButtonDefaultHeight = 48;
+
+///Customizable button that when pressed shows a native Apple pay button and
+/// creates an apple payment intent when pressed.
+///
+/// This button works only for iOS, when tapped on Android it will throw an
+/// [UnimplementedError].
 
 class ApplePayButton extends StatelessWidget {
   ApplePayButton({
@@ -13,7 +19,7 @@ class ApplePayButton extends StatelessWidget {
     this.type = ApplePayButtonType.plain,
     this.onPressed,
     double? width,
-    double? height = kApplePayButtonDefaultHeight,
+    double? height = _kApplePayButtonDefaultHeight,
     BoxConstraints? constraints,
   })  : assert(constraints == null || constraints.debugAssertIsValid()),
         constraints = (width != null || height != null)
@@ -22,15 +28,31 @@ class ApplePayButton extends StatelessWidget {
             : constraints,
         super(key: key);
 
+  /// Style of the the apple payment button.
+  ///
+  /// This determines mainly the used color scheme of the button. To configure
+  /// more appearance output. Use [type] for changing the appearance.
+  /// Default is [ApplePayButtonStyle.black].
   final ApplePayButtonStyle style;
+
+  /// Type of aapple pay button.
+  ///
+  /// The type determines multiple aspects of the appearance of the apple pay
+  /// button e.g.: elevation, shadow etc. For changing the color see [style].
+  /// Default is [ApplePayButtonType.plain].
   final ApplePayButtonType type;
+
+  /// Callback that is executed when the button is pressed.
   final VoidCallback? onPressed;
+
+  /// Additional constraints for the Apple pay button widget.
   final BoxConstraints? constraints;
 
   @override
   Widget build(BuildContext context) => ConstrainedBox(
         constraints: constraints ??
-            const BoxConstraints.tightFor(height: kApplePayButtonDefaultHeight),
+            const BoxConstraints.tightFor(
+                height: _kApplePayButtonDefaultHeight),
         child: _platform,
       );
 
