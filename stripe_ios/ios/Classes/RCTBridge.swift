@@ -25,3 +25,32 @@ protocol FlutterPluginBinding {
     
     var cardFieldUIManager : CardFieldViewFactory? { get  };
 }
+
+
+
+class RCTBridge {
+    
+    public var cardFieldUIManager : CardFieldViewFactory?
+    
+    func module(forName name: String) -> CardFieldViewFactory? {
+       return cardFieldUIManager
+    }
+    
+}
+
+public class RCTEventEmitter : NSObject {
+    
+    let bridge: RCTBridge = RCTBridge()
+    
+    func sendEvent(withName name: String, body: [String : Any]) {
+        
+    }
+    
+    func supportedEvents() -> [String]! {
+        return []
+    }
+    
+    static func requiresMainQueueSetup() -> Bool {
+        return false
+    }
+}

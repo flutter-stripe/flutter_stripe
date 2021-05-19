@@ -16,8 +16,11 @@ protocol CardFieldDelegate {
     func onDidDestroyViewInstance(id: String) -> Void
 }
 
+protocol CardFieldManager {
+    func getCardFieldReference(id: String) -> Any?
+}
 
-public class CardFieldViewFactory: NSObject, FlutterPlatformViewFactory, CardFieldDelegate {
+public class CardFieldViewFactory: NSObject, FlutterPlatformViewFactory, CardFieldDelegate, CardFieldManager {
     private var messenger: FlutterBinaryMessenger
     
     init(messenger: FlutterBinaryMessenger) {
@@ -70,6 +73,8 @@ class CardFieldView: NSObject, FlutterPlatformView, STPPaymentCardTextFieldDeleg
     var cardField = STPPaymentCardTextField()
     
     private let channel: FlutterMethodChannel
+    
+    public var cardParams: STPPaymentMethodCardParams? = nil
     
     public var delegate: CardFieldDelegate?
     
@@ -249,7 +254,6 @@ class CardFieldView: NSObject, FlutterPlatformView, STPPaymentCardTextFieldDeleg
     }
     
     func paymentCardTextFieldDidChange(_ textField: STPPaymentCardTextField) {
-    
        let brand = STPCardValidator.brand(forNumber: textField.cardParams.number ?? "")
        var cardData: [String: Any] = [
            "expiryMonth": textField.cardParams.expMonth?.stringValue ?? "",
@@ -262,7 +266,9 @@ class CardFieldView: NSObject, FlutterPlatformView, STPPaymentCardTextFieldDeleg
            cardData["postalCode"] = textField.postalCode ?? ""
        }
        onCardChange(cardData)
-        
+       if (textField.isValid) {
+           self.cardParams = textField.cardParams
+       }
     }
     
     func focus() {

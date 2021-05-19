@@ -32,13 +32,19 @@ public class StripePlugin: StripeSdk, FlutterPlugin {
     public init(channel : FlutterMethodChannel, cardFieldUIManager : CardFieldViewFactory? ) {
         self.channel = channel
         super.init()
-        self.cardFieldUIManager = cardFieldUIManager
+        self.bridge.cardFieldUIManager = cardFieldUIManager
     }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
         case "initialise":
             return initialise(call, result: result)
+        case "initPaymentSheet":
+            return initPaymentSheet(call, result: result)
+        case "confirmPaymentSheetPayment":
+            return confirmPaymentSheetPayment(call, result: result)
+        case "presentPaymentSheet":
+            return presentPaymentSheet(call, result: result)
         case "createTokenForCVCUpdate":
             return createTokenForCVCUpdate(call, result: result)
         case "confirmSetupIntent":
@@ -101,8 +107,29 @@ extension  StripePlugin {
             result("Not a valid fields")
             return
         }
-        initialise(params: params)
-        result(nil)
+        initialise(params: params, resolver: resolver(for: result), rejecter: rejecter(for: result))
+    }
+    
+    public func initPaymentSheet(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? FlutterMap,
+              let params = arguments["params"] as? NSDictionary else {
+            result("Not a valid fields")
+            return
+        }
+        initPaymentSheet(params: params, resolver: resolver(for: result), rejecter: rejecter(for: result))
+    }
+    
+    public func confirmPaymentSheetPayment(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        confirmPaymentSheetPayment(resolver: resolver(for: result), rejecter: rejecter(for: result))
+    }
+    
+    public func presentPaymentSheet(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? FlutterMap,
+              let params = arguments["params"] as? NSDictionary else {
+            result("Not a valid fields")
+            return
+        }
+        presentPaymentSheet(params: params, resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
     
     func createTokenForCVCUpdate(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -114,7 +141,7 @@ extension  StripePlugin {
         createTokenForCVCUpdate(cvc: cvc, resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
     
-    func confirmSetupIntent (_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+    func confirmSetupIntent(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
               let setupIntentClientSecret = arguments["setupIntentClientSecret"] as? String,
         let params = arguments["params"] as? NSDictionary,

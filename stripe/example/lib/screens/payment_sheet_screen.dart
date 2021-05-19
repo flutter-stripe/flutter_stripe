@@ -19,16 +19,20 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: _paymentSheetInitialized
-            ? TextButton(
-                onPressed: _displayPaymentSheet,
-                child: const Text('Show payment sheet'),
-              )
-            : TextButton(
-                onPressed: _initPaymentSheet,
-                child: const Text('Init payment sheet'),
-              ),
-      ),
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextButton(
+            onPressed: _paymentSheetInitialized ? null : _initPaymentSheet,
+            child: const Text('Init payment sheet'),
+          ),
+          const SizedBox(height: 24),
+          TextButton(
+            onPressed: _paymentSheetInitialized ? _displayPaymentSheet : null,
+            child: const Text('Show payment sheet'),
+          ),
+        ],
+      )),
     );
   }
 
@@ -47,33 +51,53 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
   }
 
   Future<void> _initPaymentSheet() async {
-    // 1. create payment intent on the server
-    final result = await _createTestPaymentSheet();
+    try {
+      // 1. create payment intent on the server
+      final result = await _createTestPaymentSheet();
 
-    if (result['error'] != null) {
+      if (result['error'] != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Error code: ${result['error']}')));
+        return;
+      }
+
+      // 2. initialize the payment sheet
+      await Stripe.instance.initPaymentSheet(
+        paymentSheetParameters: SetupPaymentSheetParameters(
+          applePay: true,
+          style: ThemeMode.dark,
+          merchantCountryCode: 'ES',
+          merchantDisplayName: 'Fluter Stripe Store Demo',
+          paymentIntentClientSecret: result['paymentIntent'],
+          customerEphemeralKeySecret: result['paymentIntent'],
+        ),
+      );
+      setState(() {
+        _paymentSheetInitialized = true;
+      });
+    } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error code: ${result['error']}')));
-      return;
+        SnackBar(
+          content: Text('$e'),
+        ),
+      );
     }
-
-    // 2. initialize the payment sheet
-    await Stripe.instance.initPaymentSheet(
-      paymentSheetParameters: SetupPaymentSheetParameters(
-        paymentIntentClientSecret: result['paymentIntent'],
-        customerEphemeralKeySecret: result['paymentIntent'],
-      ),
-    );
-    setState(() {
-      _paymentSheetInitialized = true;
-    });
   }
 
   Future<void> _displayPaymentSheet() async {
-    // 3. display the payment sheet.
-    await Stripe.instance.presentPaymentSheet(
-        parameters: const PresentPaymentSheetParameters(
-      clientSecret: stripePublishableKey,
-      confirmPayment: true,
-    ));
+    try {
+      // 3. display the payment sheet.
+      await Stripe.instance.presentPaymentSheet(
+          parameters: const PresentPaymentSheetParameters(
+        clientSecret: stripePublishableKey,
+        confirmPayment: true,
+      ));
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('$e'),
+        ),
+      );
+    }
   }
 }
