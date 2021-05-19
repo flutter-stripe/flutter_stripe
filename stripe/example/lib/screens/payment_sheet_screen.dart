@@ -65,11 +65,14 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
       await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
           applePay: true,
+          googlePay: true,
           style: ThemeMode.dark,
-          merchantCountryCode: 'ES',
+          testEnv: true,
+          merchantCountryCode: 'DE',
           merchantDisplayName: 'Flutter Stripe Store Demo',
+          customerId: _paymentSheetData!['customer'],
           paymentIntentClientSecret: _paymentSheetData!['paymentIntent'],
-          customerEphemeralKeySecret: _paymentSheetData!['ephermalKey'],
+          customerEphemeralKeySecret: _paymentSheetData!['ephemeralKey'],
         ),
       );
       setState(() {});
