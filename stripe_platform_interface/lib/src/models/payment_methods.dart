@@ -263,7 +263,7 @@ enum PaymentMethodType {
 
 @Freezed(unionKey: 'type')
 class PaymentMethodParams with _$PaymentMethodParams {
-  const factory PaymentMethodParams(String type) = _PaymentMethodParamsDefault;
+ // const factory PaymentMethodParams(String type) = _PaymentMethodParamsDefault;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Card')
@@ -275,7 +275,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Card')
   const factory PaymentMethodParams.cardFromToken({
-    required CardTokenDetails cardDetails,
+    required String token,
     PaymentIntentsFutureUsage? setupFutureUsage,
   }) = _PaymentMethodParamsCardWithToken;
 

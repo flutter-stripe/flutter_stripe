@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stripe_example/screens/apple_pay_screen.dart';
+import 'package:stripe_example/screens/google_pay_screen.dart';
 
 import '../screens/no_webhook_payment_screen.dart';
 import '../screens/setup_future_payment_screen.dart';
@@ -29,6 +30,10 @@ class Example {
     Example(
       title: 'Apple Pay payment (iOS)',
       builder: (c) => ApplePayScreen(),
+    ),
+     Example(
+      title: 'Google Pay payment (Android)',
+      builder: (c) => GooglePayScreen(),
     ),
     Example(
       title: 'Setup Future Payment',
