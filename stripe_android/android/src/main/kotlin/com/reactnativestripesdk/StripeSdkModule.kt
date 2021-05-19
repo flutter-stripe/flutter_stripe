@@ -239,6 +239,8 @@ class StripeSdkModule(private val context: ActivityPluginBinding, cardFieldManag
     this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_CONFIGURE_FLOW_CONTROLLER));
     this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_FRAGMENT_CREATED));
 
+    context.addActivityResultListener(this)
+    context.addActivityResultListener(mActivityEventListener)
     promise.resolve(null)
   }
 
