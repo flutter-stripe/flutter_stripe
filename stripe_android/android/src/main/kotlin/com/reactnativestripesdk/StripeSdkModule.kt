@@ -31,6 +31,7 @@ class StripeSdkModule(private val context: ActivityPluginBinding, cardFieldManag
   private var onConfirmSetupIntentError: Callback? = null
   private var onConfirmSetupIntentSuccess: Callback? = null
   private var urlScheme: String? = null
+  private var broadcastReceiversAdded = false
 
   private var confirmPromise: Promise? = null
   private var handleCardActionPromise: Promise? = null
@@ -114,7 +115,8 @@ class StripeSdkModule(private val context: ActivityPluginBinding, cardFieldManag
         }
       })
 
-      paymentSheetFragment?.activity?.activityResultRegistry?.dispatchResult(requestCode, resultCode, data)
+      // TODO this line causes the broadcastReceiver to be called twice
+      //paymentSheetFragment?.activity?.activityResultRegistry?.dispatchResult(requestCode, resultCode, data)
 
       try {
         val result = AddPaymentMethodActivityStarter.Result.fromIntent(data)
@@ -234,13 +236,17 @@ class StripeSdkModule(private val context: ActivityPluginBinding, cardFieldManag
 
     PaymentConfiguration.init(reactApplicationContext, publishableKey, stripeAccountId)
 
-    this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_PAYMENT_RESULT_ACTION));
-    this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_PAYMENT_OPTION_ACTION));
-    this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_CONFIGURE_FLOW_CONTROLLER));
-    this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_FRAGMENT_CREATED));
+    if (!broadcastReceiversAdded) {
+      // TODO move this outside of the module
+      broadcastReceiversAdded = true
+      this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_PAYMENT_RESULT_ACTION));
+      this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_PAYMENT_OPTION_ACTION));
+      this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_CONFIGURE_FLOW_CONTROLLER));
+      this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_FRAGMENT_CREATED));
+      context.addActivityResultListener(this)
+      context.addActivityResultListener(mActivityEventListener)
+    }
 
-    context.addActivityResultListener(this)
-    context.addActivityResultListener(mActivityEventListener)
     promise.resolve(null)
   }
 
