@@ -13,7 +13,7 @@ public class StripePlugin: StripeSdk, FlutterPlugin {
 
     public static func register(with registrar: FlutterPluginRegistrar) {
         // Method Channel
-        let channel = FlutterMethodChannel(name: "flutter.stripe/payments", binaryMessenger: registrar.messenger())
+        let channel = FlutterMethodChannel(name: "flutter.stripe/payments", binaryMessenger: registrar.messenger(), codec: FlutterJSONMethodCodec())
         
         // Card Field
        let cardFieldFactory = CardFieldViewFactory(messenger: registrar.messenger())
@@ -61,6 +61,8 @@ public class StripePlugin: StripeSdk, FlutterPlugin {
             return confirmPaymentMethod(call, result: result)
         case "retrievePaymentIntent":
             return retrievePaymentIntent(call, result: result)
+        case "createPaymentMethod":
+            return createPaymentMethod(call, result: result)
         default:
             result(FlutterMethodNotImplemented)
         }
