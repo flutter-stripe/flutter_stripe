@@ -90,6 +90,10 @@ Future<void> confirmApplePayPayment(...);
 Future<SetupIntent> confirmSetupIntent(...);
 Future<PaymentIntent> retrievePaymentIntent(...);
 Future<String> createTokenForCVCUpdate(...);
+
+Future<void> initPaymentSheet(...);
+Future<void> presentPaymentSheet(...);
+Future<void> confirmPaymentSheetPayment()
 ```
 The example app offers examples on how to use these methods.
 
