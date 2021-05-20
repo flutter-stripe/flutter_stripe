@@ -15,10 +15,9 @@ import com.stripe.android.*
 import com.stripe.android.model.*
 import com.stripe.android.paymentsheet.PaymentSheetResult
 import com.stripe.android.view.AddPaymentMethodActivityStarter
-import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 
 
-class StripeSdkModule(private val context: ActivityPluginBinding, cardFieldManager: StripeSdkCardViewManager) : ReactContextBaseJavaModule(context) {
+class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: StripeSdkCardViewManager) : ReactContextBaseJavaModule(reactContext) {
   private var cardFieldManager: StripeSdkCardViewManager = cardFieldManager
 
   override fun getName(): String {
@@ -31,7 +30,6 @@ class StripeSdkModule(private val context: ActivityPluginBinding, cardFieldManag
   private var onConfirmSetupIntentError: Callback? = null
   private var onConfirmSetupIntentSuccess: Callback? = null
   private var urlScheme: String? = null
-  private var broadcastReceiversAdded = false
 
   private var confirmPromise: Promise? = null
   private var handleCardActionPromise: Promise? = null
@@ -43,8 +41,8 @@ class StripeSdkModule(private val context: ActivityPluginBinding, cardFieldManag
   private var confirmPaymentClientSecret: String? = null
 
   private val mActivityEventListener = object : BaseActivityEventListener() {
-    override fun onActivityResult(a: Activity?, requestCode: Int, resultCode: Int, data: Intent?): Boolean {
-      val onSetupResult = stripe.onSetupResult(requestCode, data, object : ApiResultCallback<SetupIntentResult> {
+    override fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent) {
+      stripe.onSetupResult(requestCode, data, object : ApiResultCallback<SetupIntentResult> {
         override fun onSuccess(result: SetupIntentResult) {
           val setupIntent = result.intent
           when (setupIntent.status) {
@@ -67,7 +65,7 @@ class StripeSdkModule(private val context: ActivityPluginBinding, cardFieldManag
         }
       })
 
-      val onPaymentResult = stripe.onPaymentResult(requestCode, data, object : ApiResultCallback<PaymentIntentResult> {
+      stripe.onPaymentResult(requestCode, data, object : ApiResultCallback<PaymentIntentResult> {
         override fun onSuccess(result: PaymentIntentResult) {
           val paymentIntent = result.intent
 
@@ -115,8 +113,8 @@ class StripeSdkModule(private val context: ActivityPluginBinding, cardFieldManag
         }
       })
 
-      // TODO this line causes the broadcastReceiver to be called twice
-      //paymentSheetFragment?.activity?.activityResultRegistry?.dispatchResult(requestCode, resultCode, data)
+      // TODO add an integration test for commenting this out
+      // paymentSheetFragment?.activity?.activityResultRegistry?.dispatchResult(requestCode, resultCode, data)
 
       try {
         val result = AddPaymentMethodActivityStarter.Result.fromIntent(data)
@@ -126,11 +124,14 @@ class StripeSdkModule(private val context: ActivityPluginBinding, cardFieldManag
       } catch (e: java.lang.Exception) {
         Log.d("Error", e.localizedMessage)
       }
-      return onSetupResult || onPaymentResult
     }
   }
 
   private lateinit var stripe: Stripe
+
+  init {
+    reactContext.addActivityEventListener(mActivityEventListener);
+  }
 
   private fun configure3dSecure(params: ReadableMap) {
     val stripe3dsConfigBuilder = PaymentAuthConfig.Stripe3ds2Config.Builder()
@@ -140,20 +141,20 @@ class StripeSdkModule(private val context: ActivityPluginBinding, cardFieldManag
     val uiCustomization = mapToUICustomization(params)
 
     PaymentAuthConfig.init(
-      PaymentAuthConfig.Builder()
-        .set3ds2Config(
-          stripe3dsConfigBuilder
-            .setUiCustomization(uiCustomization)
-            .build()
-        )
-        .build()
+            PaymentAuthConfig.Builder()
+                    .set3ds2Config(
+                            stripe3dsConfigBuilder
+                                    .setUiCustomization(uiCustomization)
+                                    .build()
+                    )
+                    .build()
     )
   }
 
   private val mPaymentSheetReceiver: BroadcastReceiver = object : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent) {
       if (intent.action == ON_FRAGMENT_CREATED) {
-        paymentSheetFragment = currentActivity.supportFragmentManager.findFragmentByTag("payment_sheet_launch_fragment") as PaymentSheetFragment
+        paymentSheetFragment = (currentActivity as AppCompatActivity).supportFragmentManager.findFragmentByTag("payment_sheet_launch_fragment") as PaymentSheetFragment
       }
       if (intent.action == ON_PAYMENT_RESULT_ACTION) {
         when (intent.extras?.getParcelable<PaymentSheetResult>("paymentResult")) {
@@ -236,23 +237,17 @@ class StripeSdkModule(private val context: ActivityPluginBinding, cardFieldManag
 
     PaymentConfiguration.init(reactApplicationContext, publishableKey, stripeAccountId)
 
-    if (!broadcastReceiversAdded) {
-      // TODO move this outside of the module
-      broadcastReceiversAdded = true
-      this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_PAYMENT_RESULT_ACTION));
-      this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_PAYMENT_OPTION_ACTION));
-      this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_CONFIGURE_FLOW_CONTROLLER));
-      this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_FRAGMENT_CREATED));
-      context.addActivityResultListener(this)
-      context.addActivityResultListener(mActivityEventListener)
-    }
+    this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_PAYMENT_RESULT_ACTION));
+    this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_PAYMENT_OPTION_ACTION));
+    this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_CONFIGURE_FLOW_CONTROLLER));
+    this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_FRAGMENT_CREATED));
 
     promise.resolve(null)
   }
 
   @ReactMethod
   fun initPaymentSheet(params: ReadableMap, promise: Promise) {
-    val activity = currentActivity
+    val activity = currentActivity as AppCompatActivity
 
     if (activity == null) {
       promise.reject("Fail", "Activity doesn't exist")
@@ -283,9 +278,9 @@ class StripeSdkModule(private val context: ActivityPluginBinding, cardFieldManag
 
       it.arguments = bundle
     }
-      activity.supportFragmentManager.beginTransaction()
-        .add(fragment, "payment_sheet_launch_fragment")
-        .commit()
+    activity.supportFragmentManager.beginTransaction()
+            .add(fragment, "payment_sheet_launch_fragment")
+            .commit()
     if (!customFlow) {
       this.initPaymentSheetPromise?.resolve(null)
     }
@@ -310,22 +305,22 @@ class StripeSdkModule(private val context: ActivityPluginBinding, cardFieldManag
   }
 
   private fun payWithFpx() {
-    AddPaymentMethodActivityStarter(currentActivity)
-      .startForResult(AddPaymentMethodActivityStarter.Args.Builder()
-        .setPaymentMethodType(PaymentMethod.Type.Fpx)
-        .build()
-      )
+    AddPaymentMethodActivityStarter(currentActivity as AppCompatActivity)
+            .startForResult(AddPaymentMethodActivityStarter.Args.Builder()
+                    .setPaymentMethodType(PaymentMethod.Type.Fpx)
+                    .build()
+            )
   }
 
   private fun onFpxPaymentMethodResult(result: AddPaymentMethodActivityStarter.Result) {
     when (result) {
       is AddPaymentMethodActivityStarter.Result.Success -> {
         stripe.confirmPayment(currentActivity!!,
-          ConfirmPaymentIntentParams.createWithPaymentMethodId(
-            result.paymentMethod.id!!,
-            confirmPaymentClientSecret!!,
-            returnUrl = mapToReturnURL(urlScheme)
-          ));
+                ConfirmPaymentIntentParams.createWithPaymentMethodId(
+                        result.paymentMethod.id!!,
+                        confirmPaymentClientSecret!!,
+                        returnUrl = mapToReturnURL(urlScheme)
+                ));
       }
       is AddPaymentMethodActivityStarter.Result.Failure -> {
         confirmPromise?.reject(ConfirmPaymentErrorType.Failed.toString(), result.exception.localizedMessage)
@@ -345,33 +340,33 @@ class StripeSdkModule(private val context: ActivityPluginBinding, cardFieldManag
             ?: throw PaymentMethodCreateParamsException("Card details not complete")
     val paymentMethodCreateParams = PaymentMethodCreateParams.create(cardParams, billingDetailsParams)
     stripe.createPaymentMethod(
-      paymentMethodCreateParams,
-      callback = object : ApiResultCallback<PaymentMethod> {
-        override fun onError(e: Exception) {
-          promise.reject("Failed", e.localizedMessage)
-        }
+            paymentMethodCreateParams,
+            callback = object : ApiResultCallback<PaymentMethod> {
+              override fun onError(e: Exception) {
+                promise.reject("Failed", e.localizedMessage)
+              }
 
-        override fun onSuccess(result: PaymentMethod) {
-          val paymentMethodMap: WritableMap = mapFromPaymentMethod(result)
-          promise.resolve(paymentMethodMap)
-        }
-      })
+              override fun onSuccess(result: PaymentMethod) {
+                val paymentMethodMap: WritableMap = mapFromPaymentMethod(result)
+                promise.resolve(paymentMethodMap)
+              }
+            })
   }
 
   @ReactMethod
   fun createTokenForCVCUpdate(cvc: String, promise: Promise) {
     stripe.createCvcUpdateToken(
-      cvc,
-      callback = object : ApiResultCallback<Token> {
-        override fun onSuccess(result: Token) {
-          val tokenId = result.id
-          promise.resolve(tokenId)
-        }
+            cvc,
+            callback = object : ApiResultCallback<Token> {
+              override fun onSuccess(result: Token) {
+                val tokenId = result.id
+                promise.resolve(tokenId)
+              }
 
-        override fun onError(e: Exception) {
-          promise.reject("Failed", e.localizedMessage)
-        }
-      }
+              override fun onError(e: Exception) {
+                promise.reject("Failed", e.localizedMessage)
+              }
+            }
     )
   }
 
@@ -427,7 +422,7 @@ class StripeSdkModule(private val context: ActivityPluginBinding, cardFieldManag
     }
   }
 
-  /*@ReactMethod
+  @ReactMethod
   fun registerConfirmSetupIntentCallbacks(successCallback: Callback, errorCallback: Callback) {
     onConfirmSetupIntentError = errorCallback
     onConfirmSetupIntentSuccess = successCallback
@@ -437,7 +432,7 @@ class StripeSdkModule(private val context: ActivityPluginBinding, cardFieldManag
   fun unregisterConfirmSetupIntentCallbacks() {
     onConfirmSetupIntentError = null
     onConfirmSetupIntentSuccess = null
-  }*/
+  }
 
   @ReactMethod
   fun confirmSetupIntent(setupIntentClientSecret: String, params: ReadableMap, options: ReadableMap, promise: Promise) {

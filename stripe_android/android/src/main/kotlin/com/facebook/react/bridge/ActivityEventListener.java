@@ -6,5 +6,5 @@ import android.content.Intent;
 import androidx.annotation.Nullable;
 
 public interface ActivityEventListener {
-    public boolean onActivityResult(@Nullable Activity a, int requestCode, int resultCode, @Nullable Intent data);
+    public void onActivityResult(Activity a, int requestCode, int resultCode, Intent data);
 }
