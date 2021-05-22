@@ -1,3 +1,5 @@
 name: stripe
 packages:
   - /**
+scripts:
+  format: melos exec -- flutter format .
