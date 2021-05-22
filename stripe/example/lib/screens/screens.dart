@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:stripe_example/screens/themes.dart';
+import 'package:stripe_example/screens/apple_pay_screen.dart';
+import 'package:stripe_example/screens/google_pay_screen.dart';
+
 import '../screens/no_webhook_payment_screen.dart';
 import '../screens/setup_future_payment_screen.dart';
 import '../screens/webhook_payment_screen.dart';
-
 import 'cvc_re_collection_screen.dart';
+import 'payment_sheet_screen.dart';
+import 'themes.dart';
 
 class Example {
   final String title;
@@ -25,6 +28,14 @@ class Example {
       builder: (c) => NoWebhookPaymentScreen(),
     ),
     Example(
+      title: 'Apple Pay payment (iOS)',
+      builder: (c) => ApplePayScreen(),
+    ),
+     Example(
+      title: 'Google Pay payment (Android)',
+      builder: (c) => GooglePayScreen(),
+    ),
+    Example(
       title: 'Setup Future Payment',
       builder: (c) => SetupFuturePaymentScreen(),
     ),
@@ -35,6 +46,10 @@ class Example {
     Example(
       title: 'Card themes',
       builder: (c) => ThemeCardExample(),
-    )
+    ),
+    Example(
+      title: 'Payment sheet',
+      builder: (context) => PaymentSheetScreen(),
+    ),
   ];
 }

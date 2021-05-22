@@ -41,9 +41,9 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         when (call.method) {
             "initialise" -> {
                 stripeSdk.initialise(
-                        params = ReadableMap(call.arguments as JSONObject)
+                        params = ReadableMap(call.arguments as JSONObject),
+                        promise = Promise(result)
                 )
-                result.success(null)
             }
             "createPaymentMethod" -> stripeSdk.createPaymentMethod(
                     data = call.requiredArgument("data"),
@@ -74,6 +74,25 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     clientSecret = call.requiredArgument("clientSecret"),
                     promise = Promise(result)
             )
+            "initPaymentSheet" -> stripeSdk.initPaymentSheet(
+                    params = call.requiredArgument("params"),
+                    promise = Promise(result)
+            )
+            "presentPaymentSheet" -> stripeSdk.presentPaymentSheet(
+                    params = call.requiredArgument("params"),
+                    promise = Promise(result)
+            )
+            "confirmPaymentSheetPayment" -> stripeSdk.confirmPaymentSheetPayment(
+                    promise = Promise(result)
+            )
+            /*"registerConfirmSetupIntentCallbacks" -> stripeSdk.registerConfirmSetupIntentCallbacks(
+                    successCallback = Promise(result),
+                    errorCallback = Promise(result),
+            )
+            "unregisterConfirmSetupIntentCallbacks" -> {
+                stripeSdk.unregisterConfirmSetupIntentCallbacks()
+                result.success(null)
+            }*/
             else -> result.notImplemented()
         }
     }

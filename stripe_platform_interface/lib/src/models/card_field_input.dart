@@ -26,6 +26,9 @@ class CardStyle with _$CardStyle {
         Color? placeholderColor,
   }) = _CardStyleConstructor;
 
+  factory CardStyle.fromJson(Map<String, dynamic> json) =>
+      _$CardStyleFromJson(json);
+
   CardStyle._();
 
   CardStyle apply(CardStyle? style) => copyWith(
@@ -39,9 +42,6 @@ class CardStyle with _$CardStyle {
         textErrorColor: style?.textErrorColor ?? textErrorColor,
         placeholderColor: style?.placeholderColor ?? placeholderColor,
       );
-
-  factory CardStyle.fromJson(Map<String, dynamic> json) =>
-      _$CardStyleFromJson(json);
 }
 
 @freezed
@@ -70,23 +70,19 @@ class CardPlaceholder with _$CardPlaceholder {
 class ColorKey {
   const ColorKey();
 
-  static int? toJson(Color? value) => value?.value;
+  static String? toJson(Color? color) {
+    if (color != null) {
+      // ignore: lines_longer_than_80_chars
+      return '#${color.value.toRadixString(16).padLeft(6, '0').toUpperCase()}';
+    }
+  }
 
   static Color? fromJson(value) {
-    throw ('Not implemented');
+    throw UnimplementedError();
   }
 }
 
-@freezed
-class CardTokenDetails with _$CardTokenDetails {
-  @JsonSerializable(explicitToJson: true)
-  const factory CardTokenDetails({
-    required String token,
-  }) = _CardTokenDetails;
 
-  factory CardTokenDetails.fromJson(Map<String, dynamic> json) =>
-      _$CardTokenDetailsFromJson(json);
-}
 
 @freezed
 class CardFieldInputDetails with _$CardFieldInputDetails {

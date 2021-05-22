@@ -254,6 +254,24 @@ class Stripe {
     }
   }
 
+  Future<void> initPaymentSheet({
+    required SetupPaymentSheetParameters paymentSheetParameters,
+  }) async {
+    await _awaitForSettings();
+    await _platform.initPaymentSheet(paymentSheetParameters);
+  }
+
+  Future<void> presentPaymentSheet({
+    required PresentPaymentSheetParameters parameters,
+  }) async {
+    await _awaitForSettings();
+    await _platform.presentPaymentSheet(parameters);
+  }
+
+  Future<void> confirmPaymentSheetPayment() async {
+    await _platform.confirmPaymentSheetPayment();
+  }
+
   FutureOr<void> _awaitForSettings() {
     if (_needsSettings) {
       _settingsFuture = applySettings();

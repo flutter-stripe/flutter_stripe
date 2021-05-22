@@ -4,6 +4,7 @@ import 'method_channel_stripe.dart';
 import 'models/apple_pay.dart';
 import 'models/payment_intents.dart';
 import 'models/payment_methods.dart';
+import 'models/payment_sheet.dart';
 import 'models/setup_intent.dart';
 import 'models/three_d_secure.dart';
 
@@ -45,6 +46,15 @@ abstract class StripePlatform extends PlatformInterface {
       [Map<String, String> options = const {}]);
   Future<void> configure3dSecure(ThreeDSecureConfigurationParams params);
   Future<bool> isApplePaySupported() async => false;
+
+  /// Configure the payment sheet using [SetupPaymentSheetParameters] as config.
+  Future<void> initPaymentSheet(SetupPaymentSheetParameters params);
+
+  /// Display the payment sheet.
+  Future<void> presentPaymentSheet(PresentPaymentSheetParameters params);
+
+  /// Confirm the payment on a payment sheet.
+  Future<void> confirmPaymentSheetPayment();
 
   Future<void> presentApplePay(ApplePayPresentParams params);
   Future<void> confirmApplePayPayment(String clientSecret);

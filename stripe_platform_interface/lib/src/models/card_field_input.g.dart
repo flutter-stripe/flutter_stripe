@@ -54,18 +54,6 @@ Map<String, dynamic> _$_$_CardPlaceholderConstructorToJson(
       'postalCode': instance.postalCode,
     };
 
-_$_CardTokenDetails _$_$_CardTokenDetailsFromJson(Map<String, dynamic> json) {
-  return _$_CardTokenDetails(
-    token: json['token'] as String,
-  );
-}
-
-Map<String, dynamic> _$_$_CardTokenDetailsToJson(
-        _$_CardTokenDetails instance) =>
-    <String, dynamic>{
-      'token': instance.token,
-    };
-
 _$_CardFieldInputDetails _$_$_CardFieldInputDetailsFromJson(
     Map<String, dynamic> json) {
   return _$_CardFieldInputDetails(
