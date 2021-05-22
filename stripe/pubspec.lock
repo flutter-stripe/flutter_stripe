@@ -7,7 +7,7 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.5.0"
+    version: "2.6.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -145,9 +145,9 @@ packages:
   stripe_ios:
     dependency: "direct main"
     description:
-      name: stripe_ios
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "../stripe_ios"
+      relative: true
+    source: path
     version: "0.0.0+1"
   stripe_platform_interface:
     dependency: "direct main"
