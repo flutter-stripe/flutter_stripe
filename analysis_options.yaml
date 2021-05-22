@@ -16,6 +16,8 @@ analyzer:
     missing_return: warning
     # allow having TODOs in the code
     todo: ignore
+    # TODO (albertus-stripe): Remove this once the melos PR is merged since this won't be an issue anymore
+    invalid_dependency: ignore
   exclude:
     - "bin/cache/**"
     - "**/*.freezed.dart"
