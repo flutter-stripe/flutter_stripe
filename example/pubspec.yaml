@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_stripe:
-    path: ../
+    path: ../stripe
   pay: ^1.0.1
   http: ^0.13.1
   
