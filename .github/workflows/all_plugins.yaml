@@ -44,6 +44,8 @@ jobs:
   test:
     name: test
     runs-on: macOS-latest
+    # TODO (albertus-stripe): Remove if:false once we have some tests on stripe and stripe_platform_interface package
+    if: false
     steps:
     - uses: actions/checkout@v2
     - uses: subosito/flutter-action@v1
@@ -55,12 +57,6 @@ jobs:
 
     - name: "Run test on stripe"
       run: cd stripe && flutter test && cd ..
-
-    - name: "Run test on stripe_android"
-      run: cd stripe_android && flutter test && cd ..
-
-    - name: "Run test on stripe_ios"
-      run: cd stripe_ios && flutter test && cd ..
 
     - name: "Run test on stripe_platform_interface"
       run: cd stripe_platform_interface && flutter test && cd ..
