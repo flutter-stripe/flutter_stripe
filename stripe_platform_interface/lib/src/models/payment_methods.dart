@@ -2,7 +2,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'address.dart';
-import 'card_field_input.dart';
 import 'payment_intents.dart';
 
 part 'payment_methods.freezed.dart';

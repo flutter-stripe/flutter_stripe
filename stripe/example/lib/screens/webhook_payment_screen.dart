@@ -15,7 +15,7 @@ class WebhookPaymentScreen extends StatefulWidget {
 
 class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
   CardFieldInputDetails? _card;
-  String _email = "";
+  String _email = '';
   bool? _saveCard = false;
 
   @override

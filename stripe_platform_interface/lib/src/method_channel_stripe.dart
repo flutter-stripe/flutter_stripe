@@ -13,9 +13,9 @@ import 'models/three_d_secure.dart';
 import 'stripe_platform_interface.dart';
 
 const _appInfo = AppInfo(
-    name: "flutter_stripe",
-    version: "0.0.0",
-    url: "https://github.com/fluttercommunity/flutter_stripe/");
+    name: 'flutter_stripe',
+    version: '0.0.0',
+    url: 'https://github.com/fluttercommunity/flutter_stripe/');
 
 /// An implementation of [StripePlatform] that uses method channels.
 class MethodChannelStripe extends StripePlatform {
@@ -87,7 +87,7 @@ class MethodChannelStripe extends StripePlatform {
     } on Exception catch (_) {
       throw const StripeError<PaymentIntentError>(
         code: PaymentIntentError.unknown,
-        message: "Confirming payment intent failed",
+        message: 'Confirming payment intent failed',
       );
     }
   }
@@ -131,7 +131,7 @@ class MethodChannelStripe extends StripePlatform {
     } on Exception catch (_) {
       throw const StripeError<PaymentIntentError>(
         code: PaymentIntentError.unknown,
-        message: "Handle  payment intent for card failed",
+        message: 'Handle  payment intent for card failed',
       );
     }
   }
@@ -166,7 +166,7 @@ class MethodChannelStripe extends StripePlatform {
     } on Exception catch (_) {
       throw const StripeError<PaymentIntentError>(
         code: PaymentIntentError.unknown,
-        message: "Retrieving payment intent failed",
+        message: 'Retrieving payment intent failed',
       );
     }
   }

@@ -1,0 +1,21 @@
+# This is the default analysis_options.yaml for all packages and examples
+# If a package needs specific rules, create the analysis_options.yaml on it
+# include this file, like:
+#
+# include: ../analysis_options.yaml
+#
+# TODO (albertus-stripe): Change this to all_lint_rules.yaml for stricter lint and better codebase going forward after all documentation on public members are done.
+include: package:pedantic/analysis_options.1.11.0.yaml
+
+analyzer:
+  errors:
+    # treat missing required parameters as a warning (not a hint)
+    missing_required_param: warning
+    # treat missing returns as a warning (not a hint)
+    missing_return: warning
+  exclude:
+    - "bin/cache/**"
+    - "**/*.freezed.dart"
+    - "**/*.g.dart"
+    - "**/*.mocks.dart"
+    - "**/generated/**"
