@@ -4,8 +4,9 @@
 #
 # include: ../analysis_options.yaml
 #
-# TODO (albertus-stripe): Change this to all_lint_rules.yaml for stricter lint and better codebase going forward after all documentation on public members are done.
 include: package:pedantic/analysis_options.1.11.0.yaml
+
+# TODO (albertus-stripe): Add "public_member_api_docs" linter after all public member documentation are finished.
 
 analyzer:
   errors:
@@ -13,6 +14,8 @@ analyzer:
     missing_required_param: warning
     # treat missing returns as a warning (not a hint)
     missing_return: warning
+    # allow having TODOs in the code
+    todo: ignore
   exclude:
     - "bin/cache/**"
     - "**/*.freezed.dart"
