@@ -22,7 +22,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/flutter-action@v1
+      - uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
 
@@ -43,7 +43,7 @@ jobs:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/flutter-action@v1
+    - uses: subosito/flutter-action@v1
       with:
         channel: 'stable'
 
