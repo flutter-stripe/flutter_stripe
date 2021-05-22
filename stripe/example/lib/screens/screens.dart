@@ -31,7 +31,7 @@ class Example {
       title: 'Apple Pay payment (iOS)',
       builder: (c) => ApplePayScreen(),
     ),
-     Example(
+    Example(
       title: 'Google Pay payment (Android)',
       builder: (c) => GooglePayScreen(),
     ),

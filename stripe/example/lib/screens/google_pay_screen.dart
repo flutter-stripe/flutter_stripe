@@ -56,8 +56,8 @@ class _GooglePayScreenState extends State<GooglePayScreen> {
                 child: CircularProgressIndicator(),
               ),
               onPressed: () async {
-                 // 1. Add your stripe publishable key to assets/google_pay_payment_profile.json
-                  await debugChangedStripePublishableKey();
+                // 1. Add your stripe publishable key to assets/google_pay_payment_profile.json
+                await debugChangedStripePublishableKey();
               },
               onError: (e) {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -78,7 +78,6 @@ class _GooglePayScreenState extends State<GooglePayScreen> {
     try {
       // 1. Add your stripe publishable key to assets/google_pay_payment_profile.json
 
-      
       debugPrint(paymentResult.toString());
       // 2. fetch Intent Client Secret from backend
       final response = await fetchPaymentIntentClientSecret();
@@ -133,8 +132,10 @@ class _GooglePayScreenState extends State<GooglePayScreen> {
       final profile =
           await rootBundle.loadString('assets/google_pay_payment_profile.json');
       final isValidKey = !profile.contains('<ADD_YOUR_KEY_HERE>');
-      assert(isValidKey,
-          'No stripe publishable key added to assets/google_pay_payment_profile.json',);
+      assert(
+        isValidKey,
+        'No stripe publishable key added to assets/google_pay_payment_profile.json',
+      );
     }
   }
 }
