@@ -26,17 +26,20 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: "Run Analyze on stripe"
-        run: cd stripe && flutter pub get && flutter analyze && cd ..
+      - name: "Setup and install dependencies"
+        run: ./scripts/update-packages
+
+      - name: "Run analyze on stripe"
+        run: cd stripe && flutter analyze && cd ..
 
       - name: "Run analyze on stripe_android"
-        run: cd stripe_android && flutter pub get && flutter analyze && cd ..
+        run: cd stripe_android && flutter analyze && cd ..
 
       - name: "Run analyze on stripe_ios"
-        run: cd stripe_ios && flutter pub get && flutter analyze && cd ..
+        run: cd stripe_ios && flutter analyze && cd ..
 
       - name: "Run analyze on stripe_platform_interface"
-        run: cd stripe_platform_interface && flutter pub get && flutter analyze && cd ..
+        run: cd stripe_platform_interface && flutter analyze && cd ..
 
   test:
     name: test
@@ -47,14 +50,17 @@ jobs:
       with:
         channel: 'stable'
 
+    - name: "Setup and install dependencies"
+      run: ./scripts/update-packages
+
     - name: "Run test on stripe"
-      run: cd stripe && flutter pub get && flutter test && cd ..
+      run: cd stripe && flutter test && cd ..
 
     - name: "Run test on stripe_android"
-      run: cd stripe_android && flutter pub get && flutter test && cd ..
+      run: cd stripe_android && flutter test && cd ..
 
     - name: "Run test on stripe_ios"
-      run: cd stripe_ios && flutter pub get && flutter test && cd ..
+      run: cd stripe_ios && flutter test && cd ..
 
     - name: "Run test on stripe_platform_interface"
-      run: cd stripe_platform_interface && flutter pub get && flutter test && cd ..
+      run: cd stripe_platform_interface && flutter test && cd ..
