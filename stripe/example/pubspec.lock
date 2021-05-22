@@ -66,7 +66,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.0.0+3"
+    version: "1.1.0"
   flutter_svg:
     dependency: transitive
     description:
