@@ -1,6 +1,5 @@
 package com.reactnativestripesdk
 
-import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.text.Editable
@@ -11,6 +10,8 @@ import android.widget.FrameLayout
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.bridge.WritableMap
 import com.facebook.react.bridge.WritableNativeMap
+import com.facebook.react.uimanager.ThemedReactContext
+import com.facebook.react.uimanager.UIManagerModule
 import com.facebook.react.uimanager.events.EventDispatcher
 import com.stripe.android.databinding.CardInputWidgetBinding
 import com.google.android.material.shape.CornerFamily
@@ -23,8 +24,9 @@ import com.stripe.android.view.CardInputListener
 import com.stripe.android.view.CardInputWidget
 import com.stripe.android.view.StripeEditText
 
-class AuBECSDebitFormView(context: Context, private val mEventDispatcher: EventDispatcher) : FrameLayout(context) {
+class AuBECSDebitFormView(private val context: ThemedReactContext) : FrameLayout(context) {
   private lateinit var becsDebitWidget: BecsDebitWidget
+  private var mEventDispatcher: EventDispatcher? = context.getNativeModule(UIManagerModule::class.java)?.eventDispatcher
   private var formStyle: ReadableMap? = null
 
   fun setCompanyName(name: String?) {

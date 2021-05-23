@@ -19,7 +19,7 @@ import java.util.Set;
 import io.flutter.embedding.android.FlutterFragmentActivity;
 
 @SuppressLint("RestrictedApi")
-public class ReactComponentActivityWrapper extends AppCompatActivity {
+public class ReactComponentActivityWrapper {
 
     private final FlutterFragmentActivity activity;
 
@@ -29,7 +29,10 @@ public class ReactComponentActivityWrapper extends AppCompatActivity {
         this.activity = activity;
     }
 
-    @Override
+    public FlutterFragmentActivity getActivity() {
+        return activity;
+    }
+
     public Intent registerReceiver(@NotNull BroadcastReceiver receiver, @NotNull IntentFilter intentFilter) {
         if (!registeredIntentFilterActions.contains(intentFilter.getAction(0))) {
             registeredIntentFilterActions.add(intentFilter.getAction(0));
@@ -38,12 +41,5 @@ public class ReactComponentActivityWrapper extends AppCompatActivity {
             System.out.println("HI");
         }
         return null;
-    }
-
-    @NonNull
-    @Override
-    @NotNull
-    public FragmentManager getSupportFragmentManager() {
-        return activity.getSupportFragmentManager();
     }
 }

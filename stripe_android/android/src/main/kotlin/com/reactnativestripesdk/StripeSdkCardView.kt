@@ -1,12 +1,13 @@
 package com.reactnativestripesdk
 
-import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.FrameLayout
 import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.uimanager.ThemedReactContext
+import com.facebook.react.uimanager.UIManagerModule
 import com.facebook.react.uimanager.events.EventDispatcher
 import com.stripe.android.databinding.CardInputWidgetBinding
 import com.google.android.material.shape.CornerFamily
@@ -16,13 +17,15 @@ import com.stripe.android.model.PaymentMethodCreateParams
 import com.stripe.android.view.CardInputListener
 import com.stripe.android.view.CardInputWidget
 
-class StripeSdkCardView(context: Context, private val mEventDispatcher: EventDispatcher) : FrameLayout(context) {
+class StripeSdkCardView(private val context: ThemedReactContext) : FrameLayout(context) {
   var mCardWidget: CardInputWidget
   val cardDetails: MutableMap<String, Any> = mutableMapOf("brand" to "", "last4" to "", "expiryMonth" to "", "expiryYear" to "", "postalCode" to "")
   var cardParams: PaymentMethodCreateParams.Card? = null
+  private var mEventDispatcher: EventDispatcher?
 
   init {
     mCardWidget = CardInputWidget(context);
+    mEventDispatcher = context.getNativeModule(UIManagerModule::class.java)?.eventDispatcher
 
     val binding = CardInputWidgetBinding.bind(mCardWidget)
     binding.container.isFocusable = true

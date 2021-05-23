@@ -6,15 +6,13 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.NonNull
 import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.uimanager.events.Event
-import com.facebook.react.uimanager.events.EventDispatcher
+import com.facebook.react.uimanager.ThemedReactContext
 import com.reactnativestripesdk.StripeSdkCardView
 import com.reactnativestripesdk.StripeSdkCardViewManager
 import com.stripe.android.databinding.CardInputWidgetBinding
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
-import org.json.JSONObject
 
 
 class StripeSdkCardPlatformView(
@@ -29,12 +27,7 @@ class StripeSdkCardPlatformView(
 
     init {
         cardView =  stripeSdkCardViewManager.getCardViewInstance() ?: let {
-            val eventHandler = object : EventDispatcher {
-                override fun dispatchEvent(event: Event<*>) {
-                    channel.invokeMethod(event.getEventName(), event.serializeEventData())
-                }
-            }
-            return@let stripeSdkCardViewManager.createViewInstance(context, eventHandler)
+            return@let stripeSdkCardViewManager.createViewInstance(ThemedReactContext(context, channel))
         }
         channel.setMethodCallHandler(this)
         if (creationParams?.containsKey("cardStyle") == true) {

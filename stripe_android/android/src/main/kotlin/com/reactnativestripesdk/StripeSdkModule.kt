@@ -154,7 +154,7 @@ class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: S
   private val mPaymentSheetReceiver: BroadcastReceiver = object : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent) {
       if (intent.action == ON_FRAGMENT_CREATED) {
-        paymentSheetFragment = (currentActivity as AppCompatActivity).supportFragmentManager.findFragmentByTag("payment_sheet_launch_fragment") as PaymentSheetFragment
+        paymentSheetFragment = currentActivity.activity.supportFragmentManager.findFragmentByTag("payment_sheet_launch_fragment") as PaymentSheetFragment
       }
       if (intent.action == ON_PAYMENT_RESULT_ACTION) {
         when (intent.extras?.getParcelable<PaymentSheetResult>("paymentResult")) {
@@ -247,7 +247,7 @@ class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: S
 
   @ReactMethod
   fun initPaymentSheet(params: ReadableMap, promise: Promise) {
-    val activity = currentActivity as AppCompatActivity
+    val activity = currentActivity
 
     if (activity == null) {
       promise.reject("Fail", "Activity doesn't exist")
@@ -278,7 +278,7 @@ class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: S
 
       it.arguments = bundle
     }
-    activity.supportFragmentManager.beginTransaction()
+    activity.activity.supportFragmentManager.beginTransaction()
             .add(fragment, "payment_sheet_launch_fragment")
             .commit()
     if (!customFlow) {
@@ -315,7 +315,7 @@ class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: S
   private fun onFpxPaymentMethodResult(result: AddPaymentMethodActivityStarter.Result) {
     when (result) {
       is AddPaymentMethodActivityStarter.Result.Success -> {
-        stripe.confirmPayment(currentActivity!!,
+        stripe.confirmPayment(currentActivity!!.activity,
                 ConfirmPaymentIntentParams.createWithPaymentMethodId(
                         result.paymentMethod.id!!,
                         confirmPaymentClientSecret!!,
@@ -375,7 +375,7 @@ class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: S
     val activity = currentActivity
     if (activity != null) {
       handleCardActionPromise = promise
-      stripe.handleNextActionForPayment(activity, paymentIntentClientSecret)
+      stripe.handleNextActionForPayment(activity.activity, paymentIntentClientSecret)
     }
   }
 
@@ -404,7 +404,7 @@ class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: S
     try {
       val confirmParams = factory.createConfirmParams(paymentMethodType)
       confirmParams.shipping = mapToShippingDetails(getMapOrNull(params, "shippingDetails"))
-      stripe.confirmPayment(currentActivity!!, confirmParams)
+      stripe.confirmPayment(currentActivity!!.activity, confirmParams)
     } catch (error: PaymentMethodCreateParamsException) {
       promise.reject(ConfirmPaymentErrorType.Failed.toString(), error.localizedMessage)
     }
@@ -450,7 +450,7 @@ class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: S
 
     try {
       val confirmParams = factory.createSetupParams(paymentMethodType)
-      stripe.confirmSetupIntent(currentActivity!!, confirmParams)
+      stripe.confirmSetupIntent(currentActivity!!.activity, confirmParams)
     } catch (error: PaymentMethodCreateParamsException) {
       promise.reject(ConfirmPaymentErrorType.Failed.toString(), error.localizedMessage)
     }

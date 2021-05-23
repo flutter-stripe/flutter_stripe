@@ -1,26 +1,30 @@
 package com.reactnativestripesdk
 
-import android.content.Context
 import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.uimanager.events.EventDispatcher
+import com.facebook.react.common.MapBuilder
+import com.facebook.react.uimanager.SimpleViewManager
+import com.facebook.react.uimanager.ThemedReactContext
+import com.facebook.react.uimanager.annotations.ReactProp
 
-class AuBECSDebitFormViewManager {
-  fun getName() = "AuBECSDebitForm"
+class AuBECSDebitFormViewManager : SimpleViewManager<AuBECSDebitFormView>() {
+  override fun getName() = "AuBECSDebitForm"
 
-  fun getExportedCustomDirectEventTypeConstants(): MutableMap<String, Any> {
-    return mutableMapOf(
-      FormCompleteEvent.EVENT_NAME to mapOf("registrationName" to "onCompleteAction"))
+  override fun getExportedCustomDirectEventTypeConstants(): MutableMap<String, Any> {
+    return MapBuilder.of(
+      FormCompleteEvent.EVENT_NAME, MapBuilder.of("registrationName", "onCompleteAction"))
   }
 
+  @ReactProp(name = "companyName")
   fun setCompanyName(view: AuBECSDebitFormView, name: String?) {
     view.setCompanyName(name);
   }
 
+  @ReactProp(name = "formStyle")
   fun setFormStyle(view: AuBECSDebitFormView, style: ReadableMap) {
     view.setFormStyle(style);
   }
 
-  fun createViewInstance(reactContext: Context, mEventDispatcher: EventDispatcher): AuBECSDebitFormView {
-    return AuBECSDebitFormView(reactContext, mEventDispatcher)
+  override fun createViewInstance(reactContext: ThemedReactContext): AuBECSDebitFormView {
+    return AuBECSDebitFormView(reactContext)
   }
 }
