@@ -1,6 +1,0 @@
-#!/bin/bash
-
-cd stripe_android && flutter pub get && cd ..
-cd stripe_ios && flutter pub get && cd ..
-cd stripe && flutter pub get && cd ..
-cd stripe_platform_interface && flutter pub get && cd ..

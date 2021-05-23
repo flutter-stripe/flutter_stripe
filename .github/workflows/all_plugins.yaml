@@ -13,37 +13,45 @@ on:
       - "docs/**"
       - "website/**"
       - "**.md"
-
-# TODO (albertus-stripe): Change the steps of each job once the melos PR is merged
-# Reference: https://github.com/FirebaseExtended/flutterfire/blob/master/.github/workflows/all_plugins.yaml
 jobs:
   analyze:
     name: analyze
-    runs-on: macos-latest
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
 
-      - name: "Setup and install dependencies"
-        run: ./scripts/update-packages
+      - name: "Install Tools"
+        run: |
+          ./.github/workflows/scripts/install-tools.sh
+      
+      - name: "Bootstrap Workspace"
+        run: melos bootstrap
+        
+      - name: "Get dependencies"
+        run: melos run get
+      
+      - name: "Set env keys"
+        env: 
+          STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY }}
+        run: |
+          ./.github/workflows/scripts/env-files.sh
 
-      - name: "Run analyze on stripe"
-        run: cd stripe && flutter analyze && cd ..
-
-      - name: "Run analyze on stripe_android"
-        run: cd stripe_android && flutter analyze && cd ..
-
-      - name: "Run analyze on stripe_ios"
-        run: cd stripe_ios && flutter analyze && cd ..
-
-      - name: "Run analyze on stripe_platform_interface"
-        run: cd stripe_platform_interface && flutter analyze && cd ..
+      - name: "Run Analyze"
+        run: melos run analyze
+     
+      - name: "Pub Check"
+        run: |
+          melos exec -c 1 --no-private --ignore="*example*"  -- \
+            pub publish --dry-run
 
   test:
     name: test
-    runs-on: macOS-latest
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
     # TODO (albertus-stripe): Remove if:false once we have some tests on stripe and stripe_platform_interface package
     if: false
     steps:
@@ -52,11 +60,21 @@ jobs:
       with:
         channel: 'stable'
 
-    - name: "Setup and install dependencies"
-      run: ./scripts/update-packages
+    - name: "Install Tools"
+      run: |
+        ./.github/workflows/scripts/install-tools.sh
+    
+    - name: "Bootstrap Workspace"
+      run: melos bootstrap
+      
+    - name: "Get dependencies"
+      run: melos run get
+    
+    - name: "Set env keys"
+      env: 
+        STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY }}
+      run: |
+        ./.github/workflows/scripts/env-files.sh
 
-    - name: "Run test on stripe"
-      run: cd stripe && flutter test && cd ..
-
-    - name: "Run test on stripe_platform_interface"
-      run: cd stripe_platform_interface && flutter test && cd ..
+    - name: "Run test"
+      run: melos run test
