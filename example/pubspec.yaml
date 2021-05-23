@@ -10,8 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_stripe:
-    path: ../stripe
+  flutter_stripe: ^1.0.1
   pay: ^1.0.1
   http: ^0.13.1
   
