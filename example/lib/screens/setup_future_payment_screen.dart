@@ -18,7 +18,7 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
   PaymentIntent? _retrievedPaymentIntent;
   CardFieldInputDetails? _card;
   SetupIntent? _setupIntentResult;
-  String _email = "";
+  String _email = '';
 
   @override
   Widget build(BuildContext context) {
@@ -131,7 +131,7 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
       // If the PaymentIntent has any other status, the payment did not succeed and the request fails.
       // Notify your customer e.g., by email, text, push notification) to complete the payment.
       // We recommend creating a recovery flow in your app that shows why the payment failed initially and lets your customer retry.
-      _handleRetrievePaymentIntent(res['clientSecret']);
+      await _handleRetrievePaymentIntent(res['clientSecret']);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('Success!: The payment was confirmed successfully!')));

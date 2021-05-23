@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:stripe_example/widgets/loading_button.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 import 'package:pay/pay.dart' as pay;
 import '../config.dart';
@@ -84,7 +83,7 @@ class _GooglePayScreenState extends State<GooglePayScreen> {
       final clientSecret = response['clientSecret'];
       final token =
           paymentResult['paymentMethodData']['tokenizationData']['token'];
-      final Map<String, dynamic> tokenJson = Map.castFrom(json.decode(token));
+      final tokenJson = Map.castFrom(json.decode(token));
       print(tokenJson);
 
       final params = PaymentMethodParams.cardFromToken(

@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
-import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 import '../config.dart';
 
@@ -15,8 +14,8 @@ class CVCReCollectionScreen extends StatefulWidget {
 }
 
 class _CVCReCollectionScreenState extends State<CVCReCollectionScreen> {
-  String _email = "";
-  String _cvc = "";
+  String _email = '';
+  String _cvc = '';
 
   @override
   Widget build(BuildContext context) {
@@ -81,13 +80,6 @@ class _CVCReCollectionScreenState extends State<CVCReCollectionScreen> {
 
     // 2. Confirm payment with CVC
     // The rest will be done automatically using webhooks
-    final paymentIntent = await Stripe.instance.confirmPaymentMethod(
-      paymentMethod['clientSecret'],
-      PaymentMethodParams.cardFromMethodId(
-        paymentMethodId: paymentMethod['paymentMethodId'],
-        cvc: _cvc,
-      ),
-    );
 
     /*if (paymentIntent.paymentIntentError) {
       ScaffoldMessenger.of(context)
