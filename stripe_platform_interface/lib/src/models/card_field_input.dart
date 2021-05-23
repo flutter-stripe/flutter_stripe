@@ -82,8 +82,6 @@ class ColorKey {
   }
 }
 
-
-
 @freezed
 class CardFieldInputDetails with _$CardFieldInputDetails {
   @JsonSerializable(explicitToJson: true)

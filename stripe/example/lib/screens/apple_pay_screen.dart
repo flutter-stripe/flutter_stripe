@@ -14,7 +14,6 @@ class ApplePayScreen extends StatefulWidget {
 }
 
 class _ApplePayScreenState extends State<ApplePayScreen> {
-
   @override
   void initState() {
     Stripe.instance.isApplePaySupported.addListener(update);
@@ -77,7 +76,8 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
       // 2. Confirm apple pay payment
       await Stripe.instance.confirmApplePayPayment(clientSecret);
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Apple Pay payment succesfully completed')),
+        const SnackBar(
+            content: Text('Apple Pay payment succesfully completed')),
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(

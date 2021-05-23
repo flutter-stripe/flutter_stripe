@@ -7,7 +7,7 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.5.0"
+    version: "2.6.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -66,7 +66,7 @@ packages:
       name: freezed_annotation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.1"
+    version: "0.14.2"
   json_annotation:
     dependency: transitive
     description:
@@ -141,21 +141,21 @@ packages:
       path: "../stripe_android"
       relative: true
     source: path
-    version: "0.0.0+3"
+    version: "0.0.1"
   stripe_ios:
     dependency: "direct main"
     description:
-      name: stripe_ios
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.0+1"
+      path: "../stripe_ios"
+      relative: true
+    source: path
+    version: "0.0.1"
   stripe_platform_interface:
     dependency: "direct main"
     description:
       path: "../stripe_platform_interface"
       relative: true
     source: path
-    version: "0.0.0+1"
+    version: "0.0.1"
   term_glyph:
     dependency: transitive
     description:

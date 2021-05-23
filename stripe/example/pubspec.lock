@@ -7,7 +7,7 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.5.0"
+    version: "2.6.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -66,7 +66,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.0.0+3"
+    version: "1.0.1"
   flutter_svg:
     dependency: transitive
     description:
@@ -237,21 +237,21 @@ packages:
       path: "../../stripe_android"
       relative: true
     source: path
-    version: "0.0.0+3"
+    version: "0.0.1"
   stripe_ios:
     dependency: transitive
     description:
       path: "../../stripe_ios"
       relative: true
     source: path
-    version: "0.0.0+1"
+    version: "0.0.1"
   stripe_platform_interface:
     dependency: transitive
     description:
       path: "../../stripe_platform_interface"
       relative: true
     source: path
-    version: "0.0.0+1"
+    version: "0.0.1"
   term_glyph:
     dependency: transitive
     description:

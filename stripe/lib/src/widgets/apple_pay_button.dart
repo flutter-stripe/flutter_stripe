@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:stripe_platform_interface/stripe_platform_interface.dart';
+import '../model/apple_pay_button.dart';
 
 const double _kApplePayButtonDefaultHeight = 48;
 
