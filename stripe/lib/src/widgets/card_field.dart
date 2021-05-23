@@ -275,7 +275,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField> {
         onPlatformViewCreated: onPlatformViewCreated,
       );
     } else {
-      throw UnsupportedError("Unsupported platform view");
+      throw UnsupportedError('Unsupported platform view');
     }
     final constraints = widget.constraints ??
         const BoxConstraints.expand(height: kCardFieldDefaultHeight);
@@ -341,7 +341,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField> {
     _focusNode.debugLabel = 'CardField(id: $viewId)';
     _methodChannel = MethodChannel('flutter.stripe/card_field/$viewId');
     _methodChannel?.setMethodCallHandler((call) async {
-      if (call.method == "topFocusChange") {
+      if (call.method == 'topFocusChange') {
         _handlePlatformFocusChanged(call.arguments);
       } else if (call.method == 'onCardChange') {
         _handleCardChanged(call.arguments);

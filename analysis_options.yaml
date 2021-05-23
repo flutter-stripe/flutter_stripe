@@ -1,0 +1,26 @@
+# This is the default analysis_options.yaml for all packages and examples
+# If a package needs specific rules, create the analysis_options.yaml on it
+# include this file, like:
+#
+# include: ../analysis_options.yaml
+#
+include: package:pedantic/analysis_options.1.11.0.yaml
+
+# TODO (albertus-stripe): Add "public_member_api_docs" linter after all public member documentation are finished.
+
+analyzer:
+  errors:
+    # treat missing required parameters as a warning (not a hint)
+    missing_required_param: warning
+    # treat missing returns as a warning (not a hint)
+    missing_return: warning
+    # allow having TODOs in the code
+    todo: ignore
+    # TODO (albertus-stripe): Remove this once the melos PR is merged since this won't be an issue anymore
+    invalid_dependency: ignore
+  exclude:
+    - "bin/cache/**"
+    - "**/*.freezed.dart"
+    - "**/*.g.dart"
+    - "**/*.mocks.dart"
+    - "**/generated/**"

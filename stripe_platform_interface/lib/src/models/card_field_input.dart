@@ -82,8 +82,6 @@ class ColorKey {
   }
 }
 
-
-
 @freezed
 class CardFieldInputDetails with _$CardFieldInputDetails {
   @JsonSerializable(explicitToJson: true)
@@ -111,13 +109,13 @@ class CardFieldFocusName with _$CardFieldFocusName {
 }
 
 enum CardFieldName {
-  @JsonValue("CardNumber")
+  @JsonValue('CardNumber')
   cardNumber,
-  @JsonValue("Cvc")
+  @JsonValue('Cvc')
   cvc,
-  @JsonValue("ExpiryDate")
+  @JsonValue('ExpiryDate')
   expiryDate,
-  @JsonValue("PostalCode")
+  @JsonValue('PostalCode')
   postalCode,
 }
 

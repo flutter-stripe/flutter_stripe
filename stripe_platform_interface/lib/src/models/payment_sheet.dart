@@ -33,8 +33,7 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     bool? applePay,
 
     /// Style options for colors in PaymentSheet
-    @JsonKey(toJson: UserInterfaceStyleKey.toJson)      
-    ThemeMode? style,
+    @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style,
 
     /// Configuration related to Google Pay
     /// If set, PaymentSheet displays Google Pay as a payment option
