@@ -58,3 +58,5 @@ build/
 **/*.env
 
 lcov.info
+
+**/pubspec.lock
