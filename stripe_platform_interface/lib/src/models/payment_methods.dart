@@ -262,7 +262,7 @@ enum PaymentMethodType {
 
 @Freezed(unionKey: 'type')
 class PaymentMethodParams with _$PaymentMethodParams {
- // const factory PaymentMethodParams(String type) = _PaymentMethodParamsDefault;
+  // const factory PaymentMethodParams(String type) = _PaymentMethodParamsDefault;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Card')
