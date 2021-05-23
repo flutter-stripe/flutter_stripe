@@ -1,36 +1,40 @@
 package com.reactnativestripesdk
 
-import android.content.Context
 import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.uimanager.events.EventDispatcher
+import com.facebook.react.common.MapBuilder
+import com.facebook.react.uimanager.SimpleViewManager
+import com.facebook.react.uimanager.ThemedReactContext
+import com.facebook.react.uimanager.annotations.ReactProp
 
 const val CARD_FIELD_INSTANCE_NAME = "CardFieldInstance"
 
-class StripeSdkCardViewManager {
-  fun getName() = "CardField"
+class StripeSdkCardViewManager : SimpleViewManager<StripeSdkCardView>() {
+  override fun getName() = "CardField"
 
   private var cardViewInstanceMap: MutableMap<String, Any?> = mutableMapOf()
 
-  fun getExportedCustomDirectEventTypeConstants(): MutableMap<String, Any> {
-    return mutableMapOf(
-      CardFocusEvent.EVENT_NAME to mapOf("registrationName" to "onFocusChange"),
-      CardChangedEvent.EVENT_NAME to mapOf("registrationName" to "onCardChange")
-    )
+  override fun getExportedCustomDirectEventTypeConstants(): MutableMap<String, Any> {
+    return MapBuilder.of(
+      CardFocusEvent.EVENT_NAME, MapBuilder.of("registrationName", "onFocusChange"),
+      CardChangedEvent.EVENT_NAME, MapBuilder.of("registrationName", "onCardChange"))
   }
 
+  @ReactProp(name = "postalCodeEnabled")
   fun setPostalCodeEnabled(view: StripeSdkCardView, postalCodeEnabled: Boolean = true) {
     view.setPostalCodeEnabled(postalCodeEnabled);
   }
 
+  @ReactProp(name = "cardStyle")
   fun setCardStyle(view: StripeSdkCardView, cardStyle: ReadableMap) {
     view.setCardStyle(cardStyle);
   }
 
+  @ReactProp(name = "placeholder")
   fun setPlaceHolders(view: StripeSdkCardView, placeholder: ReadableMap) {
     view.setPlaceHolders(placeholder);
   }
 
-  fun createViewInstance(reactContext: Context, mEventDispatcher: EventDispatcher): StripeSdkCardView {
+  override fun createViewInstance(reactContext: ThemedReactContext): StripeSdkCardView {
     // as it's reasonable we handle only one CardField component on the same screen
     // TODO: temporary commented out due to android state persistence and improper behavior after app reload
 //    if (cardViewInstanceMap[CARD_FIELD_INSTANCE_NAME] != null) {
@@ -40,11 +44,13 @@ class StripeSdkCardViewManager {
 //      exceptionManager?.reportException(error)
 //    }
 
-    cardViewInstanceMap[CARD_FIELD_INSTANCE_NAME] = StripeSdkCardView(reactContext, mEventDispatcher)
+    cardViewInstanceMap[CARD_FIELD_INSTANCE_NAME] = StripeSdkCardView(reactContext)
     return cardViewInstanceMap[CARD_FIELD_INSTANCE_NAME] as StripeSdkCardView
   }
 
-  fun onDropViewInstance(view: StripeSdkCardView) {
+  override fun onDropViewInstance(view: StripeSdkCardView) {
+    super.onDropViewInstance(view)
+
     this.cardViewInstanceMap[CARD_FIELD_INSTANCE_NAME] = null
   }
 

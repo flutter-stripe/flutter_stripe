@@ -2,13 +2,9 @@ package com.facebook.react.uimanager.events
 
 import com.facebook.react.bridge.WritableMap
 
-open class Event<T>(viewTag: Int) {
+abstract class Event<T>(val viewTag: Int) {
 
-    open fun getEventName(): String {
-        TODO("Not yet implemented")
-    }
+    abstract fun dispatch(rctEventEmitter: RCTEventEmitter)
 
-    open fun serializeEventData(): WritableMap {
-        TODO("Not yet implemented")
-    }
+    abstract fun getEventName(): String
 }

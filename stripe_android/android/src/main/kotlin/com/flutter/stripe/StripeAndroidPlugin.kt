@@ -2,6 +2,7 @@ package com.flutter.stripe
 
 import androidx.annotation.NonNull
 import com.facebook.react.bridge.Promise
+import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReadableMap
 import com.reactnativestripesdk.StripeSdkCardViewManager
 import com.reactnativestripesdk.StripeSdkModule
@@ -42,7 +43,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             "initialise" -> {
                 stripeSdk.initialise(
                         params = ReadableMap(call.arguments as JSONObject),
-                        promise = Promise(result)
+                        promise = Promise(result),
                 )
             }
             "createPaymentMethod" -> stripeSdk.createPaymentMethod(
@@ -102,7 +103,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-        stripeSdk = StripeSdkModule(binding, stripeSdkCardViewManager)
+        stripeSdk = StripeSdkModule(ReactApplicationContext(binding), stripeSdkCardViewManager)
     }
 
     override fun onDetachedFromActivityForConfigChanges() {
