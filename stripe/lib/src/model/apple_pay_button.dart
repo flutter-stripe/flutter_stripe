@@ -1,3 +1,4 @@
+/// Predefined types for the Apple pay button.
 enum ApplePayButtonType {
   plain,
   buy,
@@ -17,6 +18,7 @@ enum ApplePayButtonType {
   tip
 }
 
+/// Predefined styles for the Apple pay button.
 enum ApplePayButtonStyle {
   white,
   whiteOutline,
