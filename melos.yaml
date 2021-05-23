@@ -2,5 +2,8 @@ name: stripe
 packages:
   - /**
 scripts:
+  analyze: melos exec -- flutter analyze
   format: melos exec -- flutter format .
+  get: melos exec -- flutter pub get
+  test: melos exec -- flutter test
 

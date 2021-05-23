@@ -26,20 +26,23 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: "Setup and install dependencies"
-        run: ./scripts/update-packages
+      - name: "Install Tools"
+        run: |
+          ./.github/workflows/scripts/install-tools.sh
+      
+      - name: "Bootstrap Workspace"
+        run: melos bootstrap
+        
+      - name: "Get dependencies"
+        run: melos run get
 
-      - name: "Run analyze on stripe"
-        run: cd stripe && flutter analyze && cd ..
-
-      - name: "Run analyze on stripe_android"
-        run: cd stripe_android && flutter analyze && cd ..
-
-      - name: "Run analyze on stripe_ios"
-        run: cd stripe_ios && flutter analyze && cd ..
-
-      - name: "Run analyze on stripe_platform_interface"
-        run: cd stripe_platform_interface && flutter analyze && cd ..
+      - name: "Run Analyze"
+        run: melos run analyze
+     
+      - name: "Pub Check"
+        run: |
+          melos exec -c 1 --no-private --ignore="*example*"  -- \
+            pub publish --dry-run
 
   test:
     name: test
@@ -52,11 +55,15 @@ jobs:
       with:
         channel: 'stable'
 
-    - name: "Setup and install dependencies"
-      run: ./scripts/update-packages
-
-    - name: "Run test on stripe"
-      run: cd stripe && flutter test && cd ..
-
-    - name: "Run test on stripe_platform_interface"
-      run: cd stripe_platform_interface && flutter test && cd ..
+    - name: "Install Tools"
+      run: |
+        ./.github/workflows/scripts/install-tools.sh
+    
+    - name: "Bootstrap Workspace"
+      run: melos bootstrap
+      
+    - name: "Get dependencies"
+      run: melos run get
+    
+    - name: "Run test"
+      run: melos run test
