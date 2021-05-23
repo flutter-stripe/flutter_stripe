@@ -1,7 +1,7 @@
 ## 1.0.1
 
- - **FEAT**: first melos version.
+- Include Payment Sheet
 
-## 1.0.0+3
+## 1.0.0
 
 * Initial beta release

@@ -1,7 +1,6 @@
-## 0.0.1
 
- - **FEAT**: first melos version.
+## 0.0.1 - Payment Sheet
 
-## 0.0.1
+Include Payment Sheet
 
-* TODO: Describe initial release.
+## 0.0.0 - First Version

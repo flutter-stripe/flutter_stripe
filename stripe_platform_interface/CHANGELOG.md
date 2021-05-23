@@ -1,7 +1,7 @@
-## 0.0.1
 
- - **FEAT**: first melos version.
 
-## [0.0.1] - TODO: Add release date.
+## 0.0.1 - Payment Sheet
 
-* TODO: Describe initial release.
+Include Payment Sheet
+
+## 0.0.0 - First Version
