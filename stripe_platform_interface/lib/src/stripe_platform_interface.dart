@@ -44,7 +44,6 @@ abstract class StripePlatform extends PlatformInterface {
   Future<PaymentIntent> confirmPaymentMethod(
       String paymentIntentClientSecret, PaymentMethodParams params,
       [Map<String, String> options = const {}]);
-  Future<void> configure3dSecure(ThreeDSecureConfigurationParams params);
   Future<bool> isApplePaySupported() async => false;
 
   /// Configure the payment sheet using [SetupPaymentSheetParameters] as config.

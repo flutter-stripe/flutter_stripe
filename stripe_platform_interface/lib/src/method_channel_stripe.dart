@@ -58,12 +58,6 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<void> configure3dSecure(ThreeDSecureConfigurationParams params) {
-    //TODO: implement configure3dSecure
-    throw UnimplementedError();
-  }
-
-  @override
   Future<void> confirmApplePayPayment(String clientSecret) async {
     await _methodChannel.invokeMethod('confirmApplePayPayment', {
       'clientSecret': clientSecret,
