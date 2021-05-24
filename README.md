@@ -122,4 +122,29 @@ The example app offers examples on how to use these methods.
 
 ## Known issues
 
-- the Card field on Android has focus issues - it's being tracked in [#14](https://github.com/flutter-stripe/flutter_stripe/issues/14) and related to issues in the Flutter framework
+- The Card field on Android has focus issues - it's being tracked in [#14](https://github.com/flutter-stripe/flutter_stripe/issues/14) and related to issues in the Flutter framework. If this is a 
+blocker for your project consider using the PaymentSheet alternative
+
+## Contributing
+
+You can help us make this project better, feel free to open an new issue or a pull request.
+
+
+##### Setup 
+
+This project uses [melos](https://github.com/invertase/melos) to manage all the packages inside this repo.
+- Install melos: `dart pub global activate melos`
+- Setup melos in your local folder: `melos bootstrap`
+
+##### Useful commands
+
+- Format `melos run format`
+- Analyze `melos run analyze`
+- Test `melos run test`
+- Pub get `melos run get`
+
+##### Publishing
+
+- Use `melos version` and `melos publish` to keep all the repositories in sync
+
+

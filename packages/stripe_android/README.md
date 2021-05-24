@@ -1,15 +1,14 @@
-# stripe_android
+[![pub package](https://img.shields.io/pub/v/stripe_android.svg)](https://pub.dartlang.org/packages/stripe_android)
 
-A new flutter plugin project.
+This is an implementation of the [`stripe_platform_interface`](https://github.com/flutter-stripe/flutter_stripe/tree/main/packages/stripe_platform_interface) package for Android.
 
-## Getting Started
+## Usage
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+### With the `flutter_stripe` plugin
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This package is the endorsed implementation of the [`flutter_stripe` plugin](https://pub.dev/packages/flutter_stripe), so it gets automatically added to your [dependencies](https://flutter.dev/platform-plugins/) by adding the `flutter_stripe` package to your `pubspec.yaml`:
 
+```yaml
+dependencies:
+  flutter_stripe: 
+```
