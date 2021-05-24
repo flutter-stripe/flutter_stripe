@@ -130,7 +130,7 @@ blocker for your project consider using the PaymentSheet alternative
 You can help us make this project better, feel free to open an new issue or a pull request.
 
 
-##### Setup up
+##### Setup 
 
 This project uses [melos](https://github.com/invertase/melos) to manage all the packages inside this repo.
 - Install melos: `dart pub global activate melos`
