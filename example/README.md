@@ -1,16 +1,20 @@
-# stripe_example
+# Stripe project example
 
 Demonstrates how to use the stripe plugin.
 
-## Getting Started
+## Run the example app
 
-This project is a starting point for a Flutter application.
+- Install the dependencies
+    - `flutter pub get`
+- Set up env vars for the flutter app and a local backend. 
+    -  [Get your test Stripe API keys](https://stripe.com/docs/keys)
+    - `cp lib/.env.dart lib/.env.dart` and set your Stripe publishable key.
+    - `cp server/.env.example server/.env` and set the variable values in your newly created `.env` file.
+- Start the example
+    - Terminal 1: `cd server && yarn example start:server`
+    - Terminal 2: `flutter run`
 
-A few resources to get you started if this is your first Flutter project:
+##### Additional steps for webhook forwarding
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Install the `stripe-cli`](https://stripe.com/docs/stripe-cli)
+- Run `stripe listen --forward-to localhost:4242/webhook`
