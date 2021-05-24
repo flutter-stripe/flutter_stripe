@@ -89,13 +89,12 @@ class _ThemeCardExampleState extends State<ThemeCardExample> {
               child: ListView(
                 children: [
                   SizedBox(height: 20),
-                  
                   ...ListTile.divideTiles(context: context, tiles: [
                     SwitchListTile.adaptive(
-            title: Text('Show postal code field'),
-            value: postalCodeEnabled,
-            onChanged: (v) => setState(() => postalCodeEnabled = v),
-          ),
+                      title: Text('Show postal code field'),
+                      value: postalCodeEnabled,
+                      onChanged: (v) => setState(() => postalCodeEnabled = v),
+                    ),
                     for (final theme in themes.entries)
                       Theme(
                         data: theme.value,
@@ -124,7 +123,6 @@ class _ThemeCardExampleState extends State<ThemeCardExample> {
               ),
             ),
           ),
-          
         ],
       ),
     );
