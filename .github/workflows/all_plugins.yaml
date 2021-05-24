@@ -73,10 +73,13 @@ jobs:
       run: melos run unittest
       
     - name: "Start dev server"
-      run: cd example/server/ && npm install && (npm run start:dev &) && cd ..
+      working-directory: example/server
+      run: npm install && (npm run start:dev &) && cd ..
 
     - name: "Set IP address"
+      working-directory: example
       run: echo "const kApiUrl='$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')';" > integration_test/ip.dart
 
     - name: "Run test"
+      working-directory: example
       run: flutter drive --driver test_driver/integration_test.dart --target=integration_test/app_test.dart
