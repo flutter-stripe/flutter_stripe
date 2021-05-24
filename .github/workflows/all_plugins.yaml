@@ -74,7 +74,7 @@ jobs:
       
     - name: "Start dev server"
       working-directory: example/server
-      run: npm install && (npm run start:dev &) && cd ..
+      run: npm install && (npm run start:dev &)
 
     - name: "Set IP address"
       working-directory: example
