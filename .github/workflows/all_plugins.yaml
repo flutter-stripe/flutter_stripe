@@ -78,7 +78,7 @@ jobs:
 
     - name: "Set IP address"
       working-directory: example
-      run: echo "const kApiUrl='$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')';" > integration_test/ip.dart
+      run: echo "const kApiUrl='$(ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}')';" > integration_test/ip.dart
 
     - name: "Print ip.dart"
       working-directory: example
