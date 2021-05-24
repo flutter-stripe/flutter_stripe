@@ -121,4 +121,5 @@ The example app offers examples on how to use these methods.
 
 ## Known issues
 
-- the Card field on Android has focus issues - it's being tracked in [#14](https://github.com/flutter-stripe/flutter_stripe/issues/14) and related to issues in the Flutter framework
+- the Card field on Android has focus issues - it's being tracked in [#14](https://github.com/flutter-stripe/flutter_stripe/issues/14) and related to issues in the Flutter framework. If this is a 
+blocker for your project consider using the PaymentSheet alternative
