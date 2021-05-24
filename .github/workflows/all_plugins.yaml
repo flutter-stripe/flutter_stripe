@@ -65,8 +65,18 @@ jobs:
     - name: "Set env keys"
       env: 
         STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY }}
+        STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
       run: |
         ./.github/workflows/scripts/env-files.sh
 
     - name: "Run unittest"
       run: melos run unittest
+      
+    - name: "Start dev server"
+      run: cd example/server/ && npm install && (npm run start:dev &) && cd ..
+
+    - name: "Set IP address"
+      run: echo "const kApiUrl='$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')';" > integration_test/ip.dart
+
+    - name: "Run test"
+      run: flutter drive --driver test_driver/integration_test.dart --target=integration_test/app_test.dart
