@@ -40,7 +40,10 @@ void main() {
 }
 
 Future<Map<String, dynamic>> _createTestPaymentSheet() async {
-  final url = Uri.parse('http://$kApiUrl:4242/payment-sheet');
+  // ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' could return multiple IPs, divided by new line - use the last one
+  final ipAddress = kApiUrl.split('\n').last;
+  print('IP Address of the server: $ipAddress');
+  final url = Uri.parse('http://$ipAddress:4242/payment-sheet');
   final response = await http.post(
     url,
     headers: {
