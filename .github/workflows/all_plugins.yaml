@@ -80,6 +80,10 @@ jobs:
       working-directory: example
       run: echo "const kApiUrl='$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')';" > integration_test/ip.dart
 
+    - name: "Print ip.dart"
+      working-directory: example
+      run: cat integration_test/ip.dart
+
     - name: "Run test"
       working-directory: example
       run: flutter drive --driver test_driver/integration_test.dart --target=integration_test/app_test.dart
