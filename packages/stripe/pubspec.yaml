@@ -2,7 +2,7 @@ name: flutter_stripe
 description: Flutter library for Stripe.
 version: 1.0.1
 homepage: https://github.com/flutter-stripe/flutter_stripe
-repository: https://github.com/flutter-stripe/flutter_stripe/tree/main/stripe
+repository: https://github.com/flutter-stripe/flutter_stripe
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
