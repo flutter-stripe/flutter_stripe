@@ -1,3 +1,7 @@
+## 1.0.1+2
+
+ - Fix Colors in CardField [#64](https://github.com/flutter-stripe/flutter_stripe/pull/64)
+
 ## 0.0.1+1
 
  - Minor fix [#57](https://github.com/flutter-stripe/flutter_stripe/issues/57)
