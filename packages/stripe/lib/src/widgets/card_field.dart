@@ -231,7 +231,9 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField> {
       borderColor: Colors.transparent,
       borderRadius: 0,
       cursorColor: theme.textSelectionTheme.cursorColor ?? theme.primaryColor,
-      textColor: Colors.red,
+      textColor: style?.textColor ??
+          baseTextStyle?.color ??
+          kCardFieldDefaultTextColor,
       fontSize: baseTextStyle?.fontSize ?? kCardFieldDefaultFontSize,
       textErrorColor:
           theme.inputDecorationTheme.errorStyle?.color ?? theme.errorColor,
@@ -466,6 +468,7 @@ class _UiKitCardField extends StatelessWidget {
 
 const kCardFieldDefaultHeight = 48.0;
 const kCardFieldDefaultFontSize = 17.0;
+const kCardFieldDefaultTextColor = Colors.black;
 
 typedef CardChangedCallback = void Function(CardFieldInputDetails? details);
 typedef CardFocusCallback = void Function(CardFieldName? focusedField);

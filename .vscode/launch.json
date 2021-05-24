@@ -6,7 +6,7 @@
     "configurations": [
         {
             "name": "example",
-            "cwd": "stripe/example",
+            "cwd": "example",
             "request": "launch",
             "type": "dart",
         },
