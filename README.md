@@ -1,12 +1,16 @@
-[![pub package](https://img.shields.io/pub/v/flutter_stripe.svg)](https://pub.dev/packages/flutter_stripe)
-
 <img src="https://user-images.githubusercontent.com/19904063/116995247-20519e80-acda-11eb-8e1b-7d0efbd193ad.png" height="36" />
+
+
+
+# Flutter Stripe
+[![pub package](https://img.shields.io/pub/v/flutter_stripe.svg)](https://pub.dev/packages/flutter_stripe) ![build](https://img.shields.io/github/workflow/status/flutter-stripe/flutter_stripe/all_plugins?logo=github)
 
 > 🚨 flutter_stripe is in beta - please provide feedback (and/or contribute) if you find issues 💙️
 
-# flutter_stripe
-
 The Stripe Flutter SDK allows you to build delightful payment experiences in your native Android and iOS apps using Flutter. We provide powerful and customizable UI screens and elements that can be used out-of-the-box to collect your users' payment details.
+
+![payment_sheet](https://user-images.githubusercontent.com/19904063/119301240-6d35ee80-bc62-11eb-98ea-f71d2d1949bb.png)
+
 
 ## Features
 
@@ -19,6 +23,8 @@ The Stripe Flutter SDK allows you to build delightful payment experiences in you
 **SCA-Ready**: The SDK automatically performs native [3D Secure authentication](https://stripe.com/docs/payments/3d-secure) if needed to comply with [Strong Customer Authentication](https://stripe.com/docs/strong-customer-authentication) regulation in Europe.
 
 **Native UI**: We provide native screens and elements to securely collect payment details on Android and iOS.
+
+**Pre-built payments UI**: Learn how to integrate Payment Sheet, the new pre-built payments UI for mobile apps. This pre-built UI lets you accept cards, Apple Pay, and Google Pay out of the box, and includes support for saving & reusing cards. 
 
 ## Installation
 
@@ -101,7 +107,9 @@ The example app offers examples on how to use these methods.
 
 - Install the dependencies
     - `flutter pub get`
-- Set up env vars for a local backend
+- Set up env vars for the flutter app and a local backend. 
+    -  [Get your test Stripe API keys](https://stripe.com/docs/keys)
+    - `cp lib/.env.dart lib/.env.dart` and set your Stripe publishable key.
     - `cp server/.env.example server/.env` and set the variable values in your newly created `.env` file.
 - Start the example
     - Terminal 1: `cd server && yarn example start:server`
