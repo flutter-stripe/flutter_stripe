@@ -86,4 +86,7 @@ jobs:
 
     - name: "Run test"
       working-directory: example
-      run: flutter drive --driver test_driver/integration_test.dart --target=integration_test/app_test.dart
+      uses: reactivecircus/android-emulator-runner@v2
+      with:
+        api-level: 29
+        script: sleep 15 && flutter drive --driver test_driver/integration_test.dart --target=integration_test/app_test.dart
