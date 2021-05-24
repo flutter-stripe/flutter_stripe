@@ -73,7 +73,7 @@ class ColorKey {
   static String? toJson(Color? color) {
     if (color != null) {
       // ignore: lines_longer_than_80_chars
-      return '#${color.value.toRadixString(16).padLeft(6, '0').toUpperCase()}';
+      return '#${color.value.toRadixString(16).padLeft(8, '0').toUpperCase()}';
     }
   }
 
