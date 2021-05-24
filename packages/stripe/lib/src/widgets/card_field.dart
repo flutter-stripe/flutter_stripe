@@ -258,7 +258,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField> {
     final creationParams = <String, dynamic>{
       'cardStyle': style.toJson(),
       'placeholder': placeholder.toJson(),
-      'enablePostalCode': widget.enablePostalCode,
+      'postalCodeEnabled': widget.enablePostalCode,
     };
 
     Widget platform;
@@ -318,7 +318,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField> {
   void didUpdateWidget(covariant _MethodChannelCardField oldWidget) {
     if (widget.enablePostalCode != oldWidget.enablePostalCode) {
       _methodChannel?.invokeMethod('onPostalCodeEnabledChanged', {
-        'enablePostalCode': widget.enablePostalCode,
+        'postalCodeEnabled': widget.enablePostalCode,
       });
     }
     _lastStyle ??= resolveStyle(oldWidget.style);

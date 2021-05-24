@@ -159,7 +159,7 @@ class CardFieldView: NSObject, FlutterPlatformView, STPPaymentCardTextFieldDeleg
     }
     
     func updatePostalCodeEnabled(_ arguments: [String: Any]) {
-        if let postalCodeEnabled = arguments["enablePostalCode"] as? Bool {
+        if let postalCodeEnabled = arguments["postalCodeEnabled"] as? Bool {
             cardField.postalCodeEntryEnabled = postalCodeEnabled
         }
     }
