@@ -14,6 +14,9 @@ dependencies:
   stripe_android: 1.3.0
   stripe_ios: 1.3.0
   stripe_platform_interface: 1.3.0
+  stripe_web:
+    path: ../stripe_web/
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

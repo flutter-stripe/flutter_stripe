@@ -15,6 +15,7 @@ const String _kDebugPCIMessage =
     'https://stripe.com/docs/security/guide#validating-pci-compliance. \n'
     'To handle PCI compliance yourself and allow to edit card data programatically,'
     'set `dangerouslyGetFullCardDetails: true`';
+import 'package:stripe_web/stripe_web.dart';
 
 /// Customizable form that collects card information.
 class CardField extends StatefulWidget {
@@ -194,34 +195,45 @@ class _CardFieldState extends State<CardField> {
     const platformMargin = EdgeInsets.fromLTRB(12, 10, 10, 12);
 
     final cardHeight = platformCardHeight - platformMargin.vertical;
+
+    final placeholder = CardPlaceholder(
+      number: widget.numberHintText,
+      expiration: widget.expirationHintText,
+      cvc: widget.cvcHintText,
+      postalCode: widget.postalCodeHintText,
+    );
+
+    final _platform = kIsWeb
+        ? WebCardField(
+            height: platformCardHeight,
+            focusNode: _node,
+            onCardChanged: widget.onCardChanged,
+            enablePostalCode: widget.enablePostalCode,
+            autofocus: widget.autofocus,
+            onFocus: widget.onFocus,
+            placeholder: placeholder,
+            style: style,
+          )
+        : CustomSingleChildLayout(
+            delegate: const _NegativeMarginLayout(margin: platformMargin),
+            child: _MethodChannelCardField(
+              height: platformCardHeight,
+              focusNode: _node,
+              style: style,
+              placeholder: placeholder,
+              enablePostalCode: widget.enablePostalCode,
+              onCardChanged: widget.onCardChanged,
+              autofocus: widget.autofocus,
+              onFocus: widget.onFocus,
+            ),
+          );
     return InputDecorator(
       isFocused: _node.hasFocus,
       decoration: inputDecoration,
       baseStyle: widget.style,
       child: SizedBox(
         height: cardHeight,
-        child: CustomSingleChildLayout(
-          delegate: const _NegativeMarginLayout(margin: platformMargin),
-          child: _MethodChannelCardField(
-            height: platformCardHeight,
-            focusNode: _node,
-            controller: controller,
-            style: style,
-            placeholder: CardPlaceholder(
-              number: widget.numberHintText,
-              expiration: widget.expirationHintText,
-              cvc: widget.cvcHintText,
-              postalCode: widget.postalCodeHintText,
-            ),
-            dangerouslyGetFullCardDetails: widget.dangerouslyGetFullCardDetails,
-            dangerouslyUpdateFullCardDetails:
-                widget.dangerouslyUpdateFullCardDetails,
-            enablePostalCode: widget.enablePostalCode,
-            onCardChanged: widget.onCardChanged,
-            autofocus: widget.autofocus,
-            onFocus: widget.onFocus,
-          ),
-        ),
+        child: _platform,
       ),
     );
   }
