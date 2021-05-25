@@ -37,6 +37,10 @@ dart pub add flutter_stripe
 #### Android
 
 - Android 5.0 (API level 21) and above
+- Kotlin version 1.5.0 and above
+
+https://github.com/flutter-stripe/flutter_stripe/blob/79b201a2e9b827196d6a97bb41e1d0e526632a5a/example/android/build.gradle#L2
+
 - Using a descendant of `Theme.AppCompact` for your activity
 
 https://github.com/flutter-stripe/flutter_stripe/blob/384d390c8a90d19dc62c73faa5226fa931fd6d44/example/android/app/src/main/res/values/styles.xml#L15
