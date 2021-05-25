@@ -9,6 +9,7 @@ class ThemeCardExample extends StatefulWidget {
 
 class _ThemeCardExampleState extends State<ThemeCardExample> {
   late String _index = 'Filled Green';
+  bool postalCodeEnabled = false;
 
   Map<String, ThemeData> get themes => {
         'Default': ThemeData.light().copyWith(),
@@ -70,7 +71,7 @@ class _ThemeCardExampleState extends State<ThemeCardExample> {
               color: theme.scaffoldBackgroundColor,
               child: CardField(
                 autofocus: true,
-                enablePostalCode: true,
+                enablePostalCode: postalCodeEnabled,
                 onCardChanged: (_) {},
                 decoration: InputDecoration(
                   labelText: theme.inputDecorationTheme.floatingLabelBehavior ==
@@ -89,6 +90,11 @@ class _ThemeCardExampleState extends State<ThemeCardExample> {
                 children: [
                   SizedBox(height: 20),
                   ...ListTile.divideTiles(context: context, tiles: [
+                    SwitchListTile.adaptive(
+                      title: Text('Show postal code field'),
+                      value: postalCodeEnabled,
+                      onChanged: (v) => setState(() => postalCodeEnabled = v),
+                    ),
                     for (final theme in themes.entries)
                       Theme(
                         data: theme.value,
@@ -116,7 +122,7 @@ class _ThemeCardExampleState extends State<ThemeCardExample> {
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );

@@ -72,7 +72,7 @@ class StripeSdkCardPlatformView(
             }
             "onPostalCodeEnabledChanged" -> {
                 val arguments = ReadableMap(call.arguments as Map<String, Any>)
-                stripeSdkCardViewManager.setPostalCodeEnabled(cardView, arguments.getBoolean("enablePostalCode") as Boolean)
+                stripeSdkCardViewManager.setPostalCodeEnabled(cardView, arguments.getBoolean("postalCodeEnabled") as Boolean)
                 result.success(null)
             }
             "requestFocus" -> {
