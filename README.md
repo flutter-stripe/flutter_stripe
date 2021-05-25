@@ -36,7 +36,16 @@ dart pub add flutter_stripe
 
 #### Android
 
-Android 5.0 (API level 21) and above
+- Android 5.0 (API level 21) and above
+- Using a descendant of `Theme.AppCompact` for your activity
+
+https://github.com/flutter-stripe/flutter_stripe/blob/384d390c8a90d19dc62c73faa5226fa931fd6d44/example/android/app/src/main/res/values/styles.xml#L15
+
+- Using `FlutterFragmentAcitivity` instead of  `FlutterActivity` in `MainActivity.kt`
+
+https://github.com/flutter-stripe/flutter_stripe/blob/79b201a2e9b827196d6a97bb41e1d0e526632a5a/example/android/app/src/main/kotlin/com/flutter/stripe/example/MainActivity.kt#L6
+
+Why? Stripe SDK makes use of AppCompact theme for their UI components and Fragment for the Payment Sheet
 
 #### iOS
 
