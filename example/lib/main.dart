@@ -1,6 +1,8 @@
+//@dart=2.9
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_example/.env.dart';
+import 'screens/checkout/checkout_screen.dart';
 import 'screens/screens.dart';
 
 import 'widgets/dismiss_focus_overlay.dart';
@@ -17,6 +19,9 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return DismissFocusOverlay(
       child: MaterialApp(
+        routes: {
+          ...CheckoutScreenExample.routes
+        },
         //  theme: ThemeData.light(),
         //  theme: ThemeData.dark(),
         home: HomePage(),

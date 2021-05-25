@@ -20,6 +20,10 @@ app.use(
     res: express.Response,
     next: express.NextFunction
   ): void => {
+     // Only for local dev purposes
+     res.setHeader('Access-Control-Allow-Origin', '*');
+     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     if (req.originalUrl === '/webhook') {
       next();
     } else {
@@ -504,6 +508,43 @@ app.post('/payment-sheet', async (_, res) => {
   });
 });
 
+
+app.post('/create-checkout-session', async (req, res) => {
+  const {
+    port,
+  }: { port?: string;} = req.body;
+  var effectivePort = port ?? 8080;
+  const { secret_key } = getKeys();
+
+  const stripe = new Stripe(secret_key as string, {
+    apiVersion: '2020-08-27',
+    typescript: true,
+  });
+
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: [
+      {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: 'Stubborn Attachments',
+            images: ['https://i.imgur.com/EHyR2nP.png'],
+          },
+          unit_amount: 2000,
+        },
+        quantity: 1,
+      },
+    ],
+    mode: 'payment',
+    success_url: `http://localhost:${effectivePort}/#/success`,
+    cancel_url: `http://localhost:${effectivePort}/#/canceled`,
+  });
+  res.json({ id: session.id });
+});
+
 app.listen(4242, (): void =>
   console.log(`Node server listening on port ${4242}!`)
 );
+
+

@@ -13,6 +13,8 @@ dependencies:
     sdk: flutter
   stripe_android: ^1.0.1+2
   stripe_ios: ^1.0.1+2
+  stripe_web:
+    path: ../stripe_web/
   stripe_platform_interface: ^1.0.1+2
 dev_dependencies:
   flutter_test:

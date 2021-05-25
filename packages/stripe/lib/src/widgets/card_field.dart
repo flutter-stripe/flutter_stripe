@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
+import 'package:stripe_web/stripe_web.dart';
 
 /// Customizable form that collects card information.
 class CardField extends StatefulWidget {
@@ -97,30 +98,45 @@ class _CardFieldState extends State<CardField> {
     const platformMargin = EdgeInsets.fromLTRB(12, 10, 10, 12);
 
     final cardHeight = platformCardHeight - platformMargin.vertical;
+
+    final placeholder = CardPlaceholder(
+      number: widget.numberHintText,
+      expiration: widget.expirationHintText,
+      cvc: widget.cvcHintText,
+      postalCode: widget.postalCodeHintText,
+    );
+
+    final _platform = kIsWeb
+        ? WebCardField(
+            height: platformCardHeight,
+            focusNode: _node,
+            onCardChanged: widget.onCardChanged,
+            enablePostalCode: widget.enablePostalCode,
+            autofocus: widget.autofocus,
+            onFocus: widget.onFocus,
+            placeholder: placeholder,
+            style: style,
+          )
+        : CustomSingleChildLayout(
+            delegate: const _NegativeMarginLayout(margin: platformMargin),
+            child: _MethodChannelCardField(
+              height: platformCardHeight,
+              focusNode: _node,
+              style: style,
+              placeholder: placeholder,
+              enablePostalCode: widget.enablePostalCode,
+              onCardChanged: widget.onCardChanged,
+              autofocus: widget.autofocus,
+              onFocus: widget.onFocus,
+            ),
+          );
     return InputDecorator(
       isFocused: _node.hasFocus,
       decoration: inputDecoration,
       baseStyle: widget.style,
       child: SizedBox(
         height: cardHeight,
-        child: CustomSingleChildLayout(
-          delegate: const _NegativeMarginLayout(margin: platformMargin),
-          child: _MethodChannelCardField(
-            height: platformCardHeight,
-            focusNode: _node,
-            style: style,
-            placeholder: CardPlaceholder(
-              number: widget.numberHintText,
-              expiration: widget.expirationHintText,
-              cvc: widget.cvcHintText,
-              postalCode: widget.postalCodeHintText,
-            ),
-            enablePostalCode: widget.enablePostalCode,
-            onCardChanged: widget.onCardChanged,
-            autofocus: widget.autofocus,
-            onFocus: widget.onFocus,
-          ),
-        ),
+        child: _platform,
       ),
     );
   }

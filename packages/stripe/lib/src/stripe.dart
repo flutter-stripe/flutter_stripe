@@ -304,6 +304,9 @@ class Stripe {
   bool _needsSettings = true;
   void markNeedsSettings() {
     _needsSettings = true;
+     if (!_platform.updateSettingsLazily) {
+      _awaitForSettings();
+    }
   }
 
   Future<void> _initialise({

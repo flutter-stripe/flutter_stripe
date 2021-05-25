@@ -5,9 +5,12 @@ import 'package:stripe_example/screens/google_pay_screen.dart';
 import '../screens/no_webhook_payment_screen.dart';
 import '../screens/setup_future_payment_screen.dart';
 import '../screens/webhook_payment_screen.dart';
+import 'checkout/checkout_screen.dart';
 import 'cvc_re_collection_screen.dart';
 import 'payment_sheet_screen.dart';
 import 'themes.dart';
+import 'web/no_webhook_payment_screen.dart';
+import 'web/payment_element.dart';
 
 class Example {
   final String title;
@@ -50,6 +53,18 @@ class Example {
     Example(
       title: 'Payment sheet',
       builder: (context) => PaymentSheetScreen(),
+    ),
+    Example(
+      title: 'Checkout Package - Checkouts',
+      builder: (context) => CheckoutScreenExample(),
+    ),
+    Example(
+      title: 'Web Package - Card Field',
+      builder: (context) => WebCardPaymentScreen(),
+    ),
+    Example(
+      title: 'Web Package - PaymentElementExample',
+      builder: (context) => PaymentElementExample(),
     ),
   ];
 }
