@@ -21,9 +21,12 @@ const _appInfo = AppInfo(
 class MethodChannelStripe extends StripePlatform {
   MethodChannelStripe({
     required MethodChannel methodChannel,
-  }) : _methodChannel = methodChannel;
+    required bool platformIsIos,
+  })  : _methodChannel = methodChannel,
+        _platformIsIos = platformIsIos;
 
   final MethodChannel _methodChannel;
+  final bool _platformIsIos;
 
   @override
   Future<void> initialise({
@@ -132,7 +135,7 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<bool> isApplePaySupported() async {
-    if (!Platform.isIOS) {
+    if (!_platformIsIos) {
       return false;
     }
     final isSupported =
@@ -142,7 +145,7 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<void> presentApplePay(ApplePayPresentParams params) async {
-    if (!Platform.isIOS) {
+    if (!_platformIsIos) {
       throw UnsupportedError('Apple Pay is only available for iOS devices');
     }
     await _methodChannel.invokeMethod('presentApplePay', params.toJson());
@@ -191,11 +194,11 @@ class MethodChannelStripeFactory {
   const MethodChannelStripeFactory();
 
   StripePlatform create() => MethodChannelStripe(
-        methodChannel: const MethodChannel(
-          'flutter.stripe/payments',
-          JSONMethodCodec(),
-        ),
-      );
+      methodChannel: const MethodChannel(
+        'flutter.stripe/payments',
+        JSONMethodCodec(),
+      ),
+      platformIsIos: Platform.isIOS);
 }
 
 extension UnfoldToNonNull<T> on T? {
