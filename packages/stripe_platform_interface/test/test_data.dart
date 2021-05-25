@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:stripe_platform_interface/src/models/payment_intents.dart';
 import 'package:stripe_platform_interface/src/models/payment_methods.dart';
 import 'package:stripe_platform_interface/src/models/setup_intent.dart';
@@ -82,12 +83,12 @@ extension PaymentIntentTestInstance on PaymentIntent {
         'amount': amount,
         'created': created,
         'currency': currency,
-        'status': _convertEnum(status),
+        'status': describeEnum(status),
         'clientSecret': clientSecret,
         'livemode': livemode,
         'paymentMethodId': paymentMethodId,
-        'captureMethod': _convertEnum(captureMethod),
-        'confirmationMethod': _convertEnum(confirmationMethod),
+        'captureMethod': describeEnum(captureMethod),
+        'confirmationMethod': describeEnum(confirmationMethod),
         'description': description,
         'receiptEmail': receiptEmail,
         'canceledAt': canceledAt,
@@ -113,13 +114,9 @@ extension SetupIntentTestInstance on SetupIntent {
         'paymentMethodId': paymentMethodId,
         'usage': usage,
         'paymentMethodTypes':
-            paymentMethodTypes.map((e) => _convertEnum(e)).toList(),
+            paymentMethodTypes.map((e) => describeEnum(e)).toList(),
         'description': description,
         'created': created,
         'lastSetupError': lastSetupError,
       };
-}
-
-String _convertEnum<T>(T value) {
-  return value.toString().split('${value.runtimeType.toString()}.').last;
 }
