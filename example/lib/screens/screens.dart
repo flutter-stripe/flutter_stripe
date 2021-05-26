@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen_custom_flow.dart';
@@ -202,13 +203,15 @@ class Example extends StatelessWidget {
       title: 'Checkout Package - Checkouts',
       builder: (context) => CheckoutScreenExample(),
     ),
-    Example(
-      title: 'Web Package - Card Field',
-      builder: (context) => WebCardPaymentScreen(),
-    ),
-    Example(
-      title: 'Web Package - PaymentElementExample',
-      builder: (context) => PaymentElementExample(),
-    ),
+    if (kIsWeb) ...[
+      Example(
+        title: 'Web Package - Card Field',
+        builder: (context) => WebCardPaymentScreen(),
+      ),
+      Example(
+        title: 'Web Package - PaymentElementExample',
+        builder: (context) => PaymentElementExample(),
+      ),
+    ]
   ];
 }
