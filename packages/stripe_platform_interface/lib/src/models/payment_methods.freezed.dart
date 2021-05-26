@@ -25,14 +25,14 @@ class _$PaymentMethodTearOff {
       required bool livemode,
       required String type,
       required BillingDetails billingDetails,
-      @JsonKey(name: 'Card') required Card card,
-      @JsonKey(name: 'SepaDebit') required SepaDebit sepaDebit,
-      @JsonKey(name: 'BacsDebit') required BacsDebit bacsDebit,
-      @JsonKey(name: 'AuBecsDebit') required AuBecsDebit auBecsDebit,
-      @JsonKey(name: 'Sofort') required Sofort sofort,
-      @JsonKey(name: 'Ideal') required Ideal ideal,
-      @JsonKey(name: 'Fpx') required Fpx fpx,
-      @JsonKey(name: 'Upi') required Upi upi,
+      @JsonKey(name: 'card') required Card card,
+      @JsonKey(name: 'sepa_debit') required SepaDebit sepaDebit,
+      @JsonKey(name: 'bacs_debit') required BacsDebit bacsDebit,
+      @JsonKey(name: 'au_becs_debit') required AuBecsDebit auBecsDebit,
+      @JsonKey(name: 'sofort') required Sofort sofort,
+      @JsonKey(name: 'ideal') required Ideal ideal,
+      @JsonKey(name: 'fpx') required Fpx fpx,
+      @JsonKey(name: 'upi') required Upi upi,
       String? customerId}) {
     return _PaymentMethod(
       id: id,
@@ -74,35 +74,35 @@ mixin _$PaymentMethod {
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
 
   /// Containing additional data in case paymentmethod type is card.
-  @JsonKey(name: 'Card')
+  @JsonKey(name: 'card')
   Card get card => throw _privateConstructorUsedError;
 
   /// Containing additional data in case paymentmethod type is sepa.
-  @JsonKey(name: 'SepaDebit')
+  @JsonKey(name: 'sepa_debit')
   SepaDebit get sepaDebit => throw _privateConstructorUsedError;
 
   /// Containing additional data in case paymentmethod type is Bacs debit.
-  @JsonKey(name: 'BacsDebit')
+  @JsonKey(name: 'bacs_debit')
   BacsDebit get bacsDebit => throw _privateConstructorUsedError;
 
   /// Containing additional data in case paymentmethod type is Aubecs debit.
-  @JsonKey(name: 'AuBecsDebit')
+  @JsonKey(name: 'au_becs_debit')
   AuBecsDebit get auBecsDebit => throw _privateConstructorUsedError;
 
   /// Containing additional data in case paymentmethod type is sofort.
-  @JsonKey(name: 'Sofort')
+  @JsonKey(name: 'sofort')
   Sofort get sofort => throw _privateConstructorUsedError;
 
   /// Containing additional data in case paymentmethod type is Ideal.
-  @JsonKey(name: 'Ideal')
+  @JsonKey(name: 'ideal')
   Ideal get ideal => throw _privateConstructorUsedError;
 
   /// Containing additional data in case paymentmethod type is FPX.
-  @JsonKey(name: 'Fpx')
+  @JsonKey(name: 'fpx')
   Fpx get fpx => throw _privateConstructorUsedError;
 
   /// Containing additional data in case paymentmethod type is UPI.
-  @JsonKey(name: 'Upi')
+  @JsonKey(name: 'upi')
   Upi get upi => throw _privateConstructorUsedError;
 
   /// Id related to the customer to which this paymentmethod has been saved.
@@ -124,14 +124,14 @@ abstract class $PaymentMethodCopyWith<$Res> {
       bool livemode,
       String type,
       BillingDetails billingDetails,
-      @JsonKey(name: 'Card') Card card,
-      @JsonKey(name: 'SepaDebit') SepaDebit sepaDebit,
-      @JsonKey(name: 'BacsDebit') BacsDebit bacsDebit,
-      @JsonKey(name: 'AuBecsDebit') AuBecsDebit auBecsDebit,
-      @JsonKey(name: 'Sofort') Sofort sofort,
-      @JsonKey(name: 'Ideal') Ideal ideal,
-      @JsonKey(name: 'Fpx') Fpx fpx,
-      @JsonKey(name: 'Upi') Upi upi,
+      @JsonKey(name: 'card') Card card,
+      @JsonKey(name: 'sepa_debit') SepaDebit sepaDebit,
+      @JsonKey(name: 'bacs_debit') BacsDebit bacsDebit,
+      @JsonKey(name: 'au_becs_debit') AuBecsDebit auBecsDebit,
+      @JsonKey(name: 'sofort') Sofort sofort,
+      @JsonKey(name: 'ideal') Ideal ideal,
+      @JsonKey(name: 'fpx') Fpx fpx,
+      @JsonKey(name: 'upi') Upi upi,
       String? customerId});
 
   $BillingDetailsCopyWith<$Res> get billingDetails;
@@ -302,14 +302,14 @@ abstract class _$PaymentMethodCopyWith<$Res>
       bool livemode,
       String type,
       BillingDetails billingDetails,
-      @JsonKey(name: 'Card') Card card,
-      @JsonKey(name: 'SepaDebit') SepaDebit sepaDebit,
-      @JsonKey(name: 'BacsDebit') BacsDebit bacsDebit,
-      @JsonKey(name: 'AuBecsDebit') AuBecsDebit auBecsDebit,
-      @JsonKey(name: 'Sofort') Sofort sofort,
-      @JsonKey(name: 'Ideal') Ideal ideal,
-      @JsonKey(name: 'Fpx') Fpx fpx,
-      @JsonKey(name: 'Upi') Upi upi,
+      @JsonKey(name: 'card') Card card,
+      @JsonKey(name: 'sepa_debit') SepaDebit sepaDebit,
+      @JsonKey(name: 'bacs_debit') BacsDebit bacsDebit,
+      @JsonKey(name: 'au_becs_debit') AuBecsDebit auBecsDebit,
+      @JsonKey(name: 'sofort') Sofort sofort,
+      @JsonKey(name: 'ideal') Ideal ideal,
+      @JsonKey(name: 'fpx') Fpx fpx,
+      @JsonKey(name: 'upi') Upi upi,
       String? customerId});
 
   @override
@@ -425,14 +425,14 @@ class _$_PaymentMethod implements _PaymentMethod {
       required this.livemode,
       required this.type,
       required this.billingDetails,
-      @JsonKey(name: 'Card') required this.card,
-      @JsonKey(name: 'SepaDebit') required this.sepaDebit,
-      @JsonKey(name: 'BacsDebit') required this.bacsDebit,
-      @JsonKey(name: 'AuBecsDebit') required this.auBecsDebit,
-      @JsonKey(name: 'Sofort') required this.sofort,
-      @JsonKey(name: 'Ideal') required this.ideal,
-      @JsonKey(name: 'Fpx') required this.fpx,
-      @JsonKey(name: 'Upi') required this.upi,
+      @JsonKey(name: 'card') required this.card,
+      @JsonKey(name: 'sepa_debit') required this.sepaDebit,
+      @JsonKey(name: 'bacs_debit') required this.bacsDebit,
+      @JsonKey(name: 'au_becs_debit') required this.auBecsDebit,
+      @JsonKey(name: 'sofort') required this.sofort,
+      @JsonKey(name: 'ideal') required this.ideal,
+      @JsonKey(name: 'fpx') required this.fpx,
+      @JsonKey(name: 'upi') required this.upi,
       this.customerId});
 
   factory _$_PaymentMethod.fromJson(Map<String, dynamic> json) =>
@@ -457,42 +457,42 @@ class _$_PaymentMethod implements _PaymentMethod {
   @override
 
   /// Containing additional data in case paymentmethod type is card.
-  @JsonKey(name: 'Card')
+  @JsonKey(name: 'card')
   final Card card;
   @override
 
   /// Containing additional data in case paymentmethod type is sepa.
-  @JsonKey(name: 'SepaDebit')
+  @JsonKey(name: 'sepa_debit')
   final SepaDebit sepaDebit;
   @override
 
   /// Containing additional data in case paymentmethod type is Bacs debit.
-  @JsonKey(name: 'BacsDebit')
+  @JsonKey(name: 'bacs_debit')
   final BacsDebit bacsDebit;
   @override
 
   /// Containing additional data in case paymentmethod type is Aubecs debit.
-  @JsonKey(name: 'AuBecsDebit')
+  @JsonKey(name: 'au_becs_debit')
   final AuBecsDebit auBecsDebit;
   @override
 
   /// Containing additional data in case paymentmethod type is sofort.
-  @JsonKey(name: 'Sofort')
+  @JsonKey(name: 'sofort')
   final Sofort sofort;
   @override
 
   /// Containing additional data in case paymentmethod type is Ideal.
-  @JsonKey(name: 'Ideal')
+  @JsonKey(name: 'ideal')
   final Ideal ideal;
   @override
 
   /// Containing additional data in case paymentmethod type is FPX.
-  @JsonKey(name: 'Fpx')
+  @JsonKey(name: 'fpx')
   final Fpx fpx;
   @override
 
   /// Containing additional data in case paymentmethod type is UPI.
-  @JsonKey(name: 'Upi')
+  @JsonKey(name: 'upi')
   final Upi upi;
   @override
 
@@ -576,14 +576,14 @@ abstract class _PaymentMethod implements PaymentMethod {
       required bool livemode,
       required String type,
       required BillingDetails billingDetails,
-      @JsonKey(name: 'Card') required Card card,
-      @JsonKey(name: 'SepaDebit') required SepaDebit sepaDebit,
-      @JsonKey(name: 'BacsDebit') required BacsDebit bacsDebit,
-      @JsonKey(name: 'AuBecsDebit') required AuBecsDebit auBecsDebit,
-      @JsonKey(name: 'Sofort') required Sofort sofort,
-      @JsonKey(name: 'Ideal') required Ideal ideal,
-      @JsonKey(name: 'Fpx') required Fpx fpx,
-      @JsonKey(name: 'Upi') required Upi upi,
+      @JsonKey(name: 'card') required Card card,
+      @JsonKey(name: 'sepa_debit') required SepaDebit sepaDebit,
+      @JsonKey(name: 'bacs_debit') required BacsDebit bacsDebit,
+      @JsonKey(name: 'au_becs_debit') required AuBecsDebit auBecsDebit,
+      @JsonKey(name: 'sofort') required Sofort sofort,
+      @JsonKey(name: 'ideal') required Ideal ideal,
+      @JsonKey(name: 'fpx') required Fpx fpx,
+      @JsonKey(name: 'upi') required Upi upi,
       String? customerId}) = _$_PaymentMethod;
 
   factory _PaymentMethod.fromJson(Map<String, dynamic> json) =
@@ -608,42 +608,42 @@ abstract class _PaymentMethod implements PaymentMethod {
   @override
 
   /// Containing additional data in case paymentmethod type is card.
-  @JsonKey(name: 'Card')
+  @JsonKey(name: 'card')
   Card get card => throw _privateConstructorUsedError;
   @override
 
   /// Containing additional data in case paymentmethod type is sepa.
-  @JsonKey(name: 'SepaDebit')
+  @JsonKey(name: 'sepa_debit')
   SepaDebit get sepaDebit => throw _privateConstructorUsedError;
   @override
 
   /// Containing additional data in case paymentmethod type is Bacs debit.
-  @JsonKey(name: 'BacsDebit')
+  @JsonKey(name: 'bacs_debit')
   BacsDebit get bacsDebit => throw _privateConstructorUsedError;
   @override
 
   /// Containing additional data in case paymentmethod type is Aubecs debit.
-  @JsonKey(name: 'AuBecsDebit')
+  @JsonKey(name: 'au_becs_debit')
   AuBecsDebit get auBecsDebit => throw _privateConstructorUsedError;
   @override
 
   /// Containing additional data in case paymentmethod type is sofort.
-  @JsonKey(name: 'Sofort')
+  @JsonKey(name: 'sofort')
   Sofort get sofort => throw _privateConstructorUsedError;
   @override
 
   /// Containing additional data in case paymentmethod type is Ideal.
-  @JsonKey(name: 'Ideal')
+  @JsonKey(name: 'ideal')
   Ideal get ideal => throw _privateConstructorUsedError;
   @override
 
   /// Containing additional data in case paymentmethod type is FPX.
-  @JsonKey(name: 'Fpx')
+  @JsonKey(name: 'fpx')
   Fpx get fpx => throw _privateConstructorUsedError;
   @override
 
   /// Containing additional data in case paymentmethod type is UPI.
-  @JsonKey(name: 'Upi')
+  @JsonKey(name: 'upi')
   Upi get upi => throw _privateConstructorUsedError;
   @override
 

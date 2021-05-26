@@ -28,35 +28,35 @@ class PaymentMethod with _$PaymentMethod {
     required BillingDetails billingDetails,
 
     /// Containing additional data in case paymentmethod type is card.
-    @JsonKey(name: 'Card') required Card card,
+    @JsonKey(name: 'card') required Card card,
 
     /// Containing additional data in case paymentmethod type is sepa.
 
-    @JsonKey(name: 'SepaDebit') required SepaDebit sepaDebit,
+    @JsonKey(name: 'sepa_debit') required SepaDebit sepaDebit,
 
     /// Containing additional data in case paymentmethod type is Bacs debit.
 
-    @JsonKey(name: 'BacsDebit') required BacsDebit bacsDebit,
+    @JsonKey(name: 'bacs_debit') required BacsDebit bacsDebit,
 
     /// Containing additional data in case paymentmethod type is Aubecs debit.
 
-    @JsonKey(name: 'AuBecsDebit') required AuBecsDebit auBecsDebit,
+    @JsonKey(name: 'au_becs_debit') required AuBecsDebit auBecsDebit,
 
     /// Containing additional data in case paymentmethod type is sofort.
 
-    @JsonKey(name: 'Sofort') required Sofort sofort,
+    @JsonKey(name: 'sofort') required Sofort sofort,
 
     /// Containing additional data in case paymentmethod type is Ideal.
 
-    @JsonKey(name: 'Ideal') required Ideal ideal,
+    @JsonKey(name: 'ideal') required Ideal ideal,
 
     /// Containing additional data in case paymentmethod type is FPX.
 
-    @JsonKey(name: 'Fpx') required Fpx fpx,
+    @JsonKey(name: 'fpx') required Fpx fpx,
 
     /// Containing additional data in case paymentmethod type is UPI.
 
-    @JsonKey(name: 'Upi') required Upi upi,
+    @JsonKey(name: 'upi') required Upi upi,
 
     /// Id related to the customer to which this paymentmethod has been saved.
     String? customerId,
