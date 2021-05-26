@@ -63,7 +63,7 @@ class _PaymentElementState extends State<PaymentElement> {
 
   void initStripe() {
     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-      Future.delayed(Duration(milliseconds: 1), () {
+      Future.delayed(Duration(milliseconds: 100), () {
         element = WebStripe.js.elements().create('payment', createOptions())
           ..mount('#payment-element')
           ..on('blur', allowInterop(requestBlur))
