@@ -19,7 +19,7 @@ dependencies:
   stripe_platform_interface:
     git:
       url: https://github.com/dariuspo/flutter_stripe.git
-      path: packages/stripe_android
+      path: packages/stripe_platform_interface
 
 dev_dependencies:
   flutter_test:
