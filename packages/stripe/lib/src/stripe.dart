@@ -34,7 +34,7 @@ class Stripe {
 
   /// Sets the publishable key that is used to identify the account on the
   /// Stripe platform.
-  static set urlScheme(String value) {
+  static set urlScheme(String? value) {
     if (value == instance._urlScheme) {
       return;
     }
@@ -43,10 +43,8 @@ class Stripe {
   }
 
   /// Retrieves the publishable API key.
-  static String get urlScheme {
-    assert(instance._urlScheme != null,
-        'A publishableKey is required and missing');
-    return instance._urlScheme!;
+  static String? get urlScheme {
+    return instance._urlScheme;
   }
 
   /// Retrieves the id associate with the Stripe account.
