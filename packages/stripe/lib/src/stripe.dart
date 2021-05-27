@@ -32,6 +32,23 @@ class Stripe {
     return instance._publishableKey!;
   }
 
+  /// Sets the publishable key that is used to identify the account on the
+  /// Stripe platform.
+  static set urlScheme(String value) {
+    if (value == instance._urlScheme) {
+      return;
+    }
+    instance._urlScheme = value;
+    instance.markNeedsSettings();
+  }
+
+  /// Retrieves the publishable API key.
+  static String get urlScheme {
+    assert(instance._urlScheme != null,
+        'A publishableKey is required and missing');
+    return instance._urlScheme!;
+  }
+
   /// Retrieves the id associate with the Stripe account.
   static String? get stripeAccountId => instance._stripeAccountId;
 
@@ -77,6 +94,7 @@ class Stripe {
         merchantIdentifier: merchantIdentifier,
         stripeAccountId: stripeAccountId,
         threeDSecureParams: threeDSecureParams,
+        urlScheme: urlScheme,
       );
 
   /// Exposes a [ValueListenable] whether or not Apple pay is supported for this
@@ -288,6 +306,7 @@ class Stripe {
 
   String? _publishableKey;
   String? _stripeAccountId;
+  String? _urlScheme;
   ThreeDSecureConfigurationParams? _threeDSecureParams;
   String? _merchantIdentifier;
 
@@ -302,6 +321,7 @@ class Stripe {
   }
 
   bool _needsSettings = true;
+
   void markNeedsSettings() {
     _needsSettings = true;
   }
@@ -311,13 +331,14 @@ class Stripe {
     String? stripeAccountId,
     ThreeDSecureConfigurationParams? threeDSecureParams,
     String? merchantIdentifier,
+    String? urlScheme,
   }) async {
     await _platform.initialise(
-      publishableKey: publishableKey,
-      stripeAccountId: stripeAccountId,
-      threeDSecureParams: threeDSecureParams,
-      merchantIdentifier: merchantIdentifier,
-    );
+        publishableKey: publishableKey,
+        stripeAccountId: stripeAccountId,
+        threeDSecureParams: threeDSecureParams,
+        merchantIdentifier: merchantIdentifier,
+        urlScheme: urlScheme);
   }
 
   ValueNotifier<bool>? _isApplePaySupported;

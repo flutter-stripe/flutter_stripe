@@ -11,9 +11,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  stripe_android: ^1.0.1+3
+  stripe_android:
+    path: ../stripe_android
   stripe_ios: ^1.0.1+3
   stripe_platform_interface: ^1.0.1+3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -219,7 +219,7 @@ class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: S
     val stripeAccountId = getValOr(params, "stripeAccountId", null)
     val urlScheme = getValOr(params, "urlScheme", null)
     val setUrlSchemeOnAndroid = getBooleanOrFalse(params, "setUrlSchemeOnAndroid")
-    this.urlScheme = if (setUrlSchemeOnAndroid) urlScheme else null
+    this.urlScheme = urlScheme
 
     getMapOrNull(params, "threeDSecureParams")?.let {
       configure3dSecure(it)
