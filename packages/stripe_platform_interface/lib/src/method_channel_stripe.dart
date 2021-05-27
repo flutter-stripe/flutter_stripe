@@ -42,6 +42,7 @@ class MethodChannelStripe extends StripePlatform {
       'merchantIdentifier': merchantIdentifier,
       'appInfo': _appInfo.toJson(),
       'threeDSecureParams': threeDSecureParams,
+      'urlScheme': urlScheme,
     });
   }
 
