@@ -294,7 +294,10 @@ const $ApplePayCartSummaryItem = _$ApplePayCartSummaryItemTearOff();
 
 /// @nodoc
 mixin _$ApplePayCartSummaryItem {
+  /// Short localized description of the item.
   String get label => throw _privateConstructorUsedError;
+
+  /// The monetary amount.
   String get amount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -388,8 +391,12 @@ class _$_ApplePayCartSummaryItem implements _ApplePayCartSummaryItem {
       _$_$_ApplePayCartSummaryItemFromJson(json);
 
   @override
+
+  /// Short localized description of the item.
   final String label;
   @override
+
+  /// The monetary amount.
   final String amount;
 
   @override
@@ -434,8 +441,12 @@ abstract class _ApplePayCartSummaryItem implements ApplePayCartSummaryItem {
       _$_ApplePayCartSummaryItem.fromJson;
 
   @override
+
+  /// Short localized description of the item.
   String get label => throw _privateConstructorUsedError;
   @override
+
+  /// The monetary amount.
   String get amount => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -479,14 +490,27 @@ const $ApplePayPresentParams = _$ApplePayPresentParamsTearOff();
 
 /// @nodoc
 mixin _$ApplePayPresentParams {
+  /// Line Items of the payment request.
   List<ApplePayCartSummaryItem> get cartItems =>
       throw _privateConstructorUsedError;
+
+  /// The two letter ISO 3166 country code representing the merchant.
   String get country => throw _privateConstructorUsedError;
+
+  /// The three letter ISO 4217 code for the currency.
   String get currency => throw _privateConstructorUsedError;
+
+  /// Fields that will be shown on the required shipping address section. If
+  /// empty no fields will be displayed.
   List<ApplePayContactFieldsType>? get requiredShippingAddressFields =>
       throw _privateConstructorUsedError;
+
+  /// Fields that will be shown on the required billing address section. If
+  /// empty no fields will be displayed.
   List<ApplePayContactFieldsType>? get requiredBillingContactFields =>
       throw _privateConstructorUsedError;
+
+  /// List of available shipping methods for goods.
   List<ApplePayShippingMethod>? get shippingMethods =>
       throw _privateConstructorUsedError;
 
@@ -638,16 +662,30 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
       _$_$_ApplePayPresentParamsFromJson(json);
 
   @override
+
+  /// Line Items of the payment request.
   final List<ApplePayCartSummaryItem> cartItems;
   @override
+
+  /// The two letter ISO 3166 country code representing the merchant.
   final String country;
   @override
+
+  /// The three letter ISO 4217 code for the currency.
   final String currency;
   @override
+
+  /// Fields that will be shown on the required shipping address section. If
+  /// empty no fields will be displayed.
   final List<ApplePayContactFieldsType>? requiredShippingAddressFields;
   @override
+
+  /// Fields that will be shown on the required billing address section. If
+  /// empty no fields will be displayed.
   final List<ApplePayContactFieldsType>? requiredBillingContactFields;
   @override
+
+  /// List of available shipping methods for goods.
   final List<ApplePayShippingMethod>? shippingMethods;
 
   @override
@@ -719,19 +757,33 @@ abstract class _ApplePayPresentParams implements ApplePayPresentParams {
       _$_ApplePayPresentParams.fromJson;
 
   @override
+
+  /// Line Items of the payment request.
   List<ApplePayCartSummaryItem> get cartItems =>
       throw _privateConstructorUsedError;
   @override
+
+  /// The two letter ISO 3166 country code representing the merchant.
   String get country => throw _privateConstructorUsedError;
   @override
+
+  /// The three letter ISO 4217 code for the currency.
   String get currency => throw _privateConstructorUsedError;
   @override
+
+  /// Fields that will be shown on the required shipping address section. If
+  /// empty no fields will be displayed.
   List<ApplePayContactFieldsType>? get requiredShippingAddressFields =>
       throw _privateConstructorUsedError;
   @override
+
+  /// Fields that will be shown on the required billing address section. If
+  /// empty no fields will be displayed.
   List<ApplePayContactFieldsType>? get requiredBillingContactFields =>
       throw _privateConstructorUsedError;
   @override
+
+  /// List of available shipping methods for goods.
   List<ApplePayShippingMethod>? get shippingMethods =>
       throw _privateConstructorUsedError;
   @override
