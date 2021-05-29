@@ -18,6 +18,8 @@ The Stripe Flutter SDK allows you to build delightful payment experiences in you
 
 **Apple Pay**: We provide a [seamless integration with Apple Pay](https://stripe.com/docs/apple-pay).
 
+**Google Pay**: By integrating the [Pay plugin](https://pub.dev/packages/pay) we provide a seamless integration with Google pay. All you need to do is add your stripe publishable key to the payment profile. See our example for more information. 
+
 **Payment methods**: Accepting more [payment methods](https://stripe.com/docs/payments/payment-methods/overview) helps your business expand its global reach and improve checkout conversion.
 
 **SCA-Ready**: The SDK automatically performs native [3D Secure authentication](https://stripe.com/docs/payments/3d-secure) if needed to comply with [Strong Customer Authentication](https://stripe.com/docs/strong-customer-authentication) regulation in Europe.
@@ -114,7 +116,7 @@ The example app offers examples on how to use these methods.
     - `flutter pub get`
 - Set up env vars for the flutter app and a local backend. 
     -  [Get your test Stripe API keys](https://stripe.com/docs/keys)
-    - `cp lib/.env.dart lib/.env.dart` and set your Stripe publishable key.
+    - `cp lib/.env.example.dart lib/.env.dart` and set your Stripe publishable key.
     - `cp server/.env.example server/.env` and set the variable values in your newly created `.env` file.
 - Start the example
     - Terminal 1: `cd server && yarn example start:server`
