@@ -59,17 +59,24 @@ const $CardStyle = _$CardStyleTearOff();
 
 /// @nodoc
 mixin _$CardStyle {
+  /// Width for the border.
   double? get borderWidth => throw _privateConstructorUsedError;
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get backgroundColor => throw _privateConstructorUsedError;
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get borderColor => throw _privateConstructorUsedError;
+
+  /// Borderradius that can give the Cardfield rounded corners.
   double? get borderRadius => throw _privateConstructorUsedError;
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get cursorColor => throw _privateConstructorUsedError;
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get textColor => throw _privateConstructorUsedError;
+
+  /// Font size.
   double? get fontSize => throw _privateConstructorUsedError;
+
+  /// Color of the input in case incorrect data is entered.
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get textErrorColor => throw _privateConstructorUsedError;
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -279,6 +286,8 @@ class _$_CardStyleConstructor extends _CardStyleConstructor {
       _$_$_CardStyleConstructorFromJson(json);
 
   @override
+
+  /// Width for the border.
   final double? borderWidth;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -287,6 +296,8 @@ class _$_CardStyleConstructor extends _CardStyleConstructor {
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   final Color? borderColor;
   @override
+
+  /// Borderradius that can give the Cardfield rounded corners.
   final double? borderRadius;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -295,8 +306,12 @@ class _$_CardStyleConstructor extends _CardStyleConstructor {
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   final Color? textColor;
   @override
+
+  /// Font size.
   final double? fontSize;
   @override
+
+  /// Color of the input in case incorrect data is entered.
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   final Color? textErrorColor;
   @override
@@ -389,6 +404,8 @@ abstract class _CardStyleConstructor extends CardStyle {
       _$_CardStyleConstructor.fromJson;
 
   @override
+
+  /// Width for the border.
   double? get borderWidth => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -397,6 +414,8 @@ abstract class _CardStyleConstructor extends CardStyle {
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get borderColor => throw _privateConstructorUsedError;
   @override
+
+  /// Borderradius that can give the Cardfield rounded corners.
   double? get borderRadius => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -405,8 +424,12 @@ abstract class _CardStyleConstructor extends CardStyle {
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get textColor => throw _privateConstructorUsedError;
   @override
+
+  /// Font size.
   double? get fontSize => throw _privateConstructorUsedError;
   @override
+
+  /// Color of the input in case incorrect data is entered.
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get textErrorColor => throw _privateConstructorUsedError;
   @override
@@ -446,9 +469,16 @@ const $CardPlaceholder = _$CardPlaceholderTearOff();
 
 /// @nodoc
 mixin _$CardPlaceholder {
+  /// Localized placeholder for card number field.
   String? get number => throw _privateConstructorUsedError;
+
+  /// Localized placeholder for expiration field.
   String? get expiration => throw _privateConstructorUsedError;
+
+  /// Localized placeholder for cvc field.
   String? get cvc => throw _privateConstructorUsedError;
+
+  /// Localized placeholder for postal code field.
   String? get postalCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -567,12 +597,20 @@ class _$_CardPlaceholderConstructor extends _CardPlaceholderConstructor {
       _$_$_CardPlaceholderConstructorFromJson(json);
 
   @override
+
+  /// Localized placeholder for card number field.
   final String? number;
   @override
+
+  /// Localized placeholder for expiration field.
   final String? expiration;
   @override
+
+  /// Localized placeholder for cvc field.
   final String? cvc;
   @override
+
+  /// Localized placeholder for postal code field.
   final String? postalCode;
 
   @override
@@ -628,12 +666,20 @@ abstract class _CardPlaceholderConstructor extends CardPlaceholder {
       _$_CardPlaceholderConstructor.fromJson;
 
   @override
+
+  /// Localized placeholder for card number field.
   String? get number => throw _privateConstructorUsedError;
   @override
+
+  /// Localized placeholder for expiration field.
   String? get expiration => throw _privateConstructorUsedError;
   @override
+
+  /// Localized placeholder for cvc field.
   String? get cvc => throw _privateConstructorUsedError;
   @override
+
+  /// Localized placeholder for postal code field.
   String? get postalCode => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -677,11 +723,22 @@ const $CardFieldInputDetails = _$CardFieldInputDetailsTearOff();
 
 /// @nodoc
 mixin _$CardFieldInputDetails {
+  /// Indicates whether the card field input is complete.
   bool get complete => throw _privateConstructorUsedError;
+
+  /// Last 4 digits of the entered card number.
   String? get last4 => throw _privateConstructorUsedError;
+
+  /// Month of the entered expiry date of the card.
   String? get expiryMonth => throw _privateConstructorUsedError;
+
+  /// Year of the entered expiry date of the card.
   String? get expiryYear => throw _privateConstructorUsedError;
+
+  /// Entered postcal code.
   String? get postalCode => throw _privateConstructorUsedError;
+
+  /// Brand of the card.
   String? get brand => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -832,16 +889,28 @@ class _$_CardFieldInputDetails implements _CardFieldInputDetails {
       _$_$_CardFieldInputDetailsFromJson(json);
 
   @override
+
+  /// Indicates whether the card field input is complete.
   final bool complete;
   @override
+
+  /// Last 4 digits of the entered card number.
   final String? last4;
   @override
+
+  /// Month of the entered expiry date of the card.
   final String? expiryMonth;
   @override
+
+  /// Year of the entered expiry date of the card.
   final String? expiryYear;
   @override
+
+  /// Entered postcal code.
   final String? postalCode;
   @override
+
+  /// Brand of the card.
   final String? brand;
 
   @override
@@ -906,16 +975,28 @@ abstract class _CardFieldInputDetails implements CardFieldInputDetails {
       _$_CardFieldInputDetails.fromJson;
 
   @override
+
+  /// Indicates whether the card field input is complete.
   bool get complete => throw _privateConstructorUsedError;
   @override
+
+  /// Last 4 digits of the entered card number.
   String? get last4 => throw _privateConstructorUsedError;
   @override
+
+  /// Month of the entered expiry date of the card.
   String? get expiryMonth => throw _privateConstructorUsedError;
   @override
+
+  /// Year of the entered expiry date of the card.
   String? get expiryYear => throw _privateConstructorUsedError;
   @override
+
+  /// Entered postcal code.
   String? get postalCode => throw _privateConstructorUsedError;
   @override
+
+  /// Brand of the card.
   String? get brand => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
