@@ -239,6 +239,7 @@ class Upi with _$Upi {
   factory Upi.fromJson(Map<String, dynamic> json) => _$UpiFromJson(json);
 }
 
+/// Enum that specifies the payment type.
 enum PaymentMethodType {
   AfterpayClearpay,
   Card,
@@ -261,68 +262,119 @@ enum PaymentMethodType {
 }
 
 @Freezed(unionKey: 'type')
-class PaymentMethodParams with _$PaymentMethodParams {
-  // const factory PaymentMethodParams(String type) = _PaymentMethodParamsDefault;
 
+/// Parameters that specify the desired configuration of a specific payment method.
+class PaymentMethodParams with _$PaymentMethodParams {
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Card')
+
+  /// Config parameters for card payment method.
   const factory PaymentMethodParams.card({
+    /// Indicates whether or not you want to reuse this method for future payments.
+
     PaymentIntentsFutureUsage? setupFutureUsage,
+
+    /// Billing information.
+
     BillingDetails? billingDetails,
   }) = _PaymentMethodParamsCard;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Card')
+
+  /// Config parameters for card with token payment method.
   const factory PaymentMethodParams.cardFromToken({
+    /// Token.
     required String token,
+
+    /// Indicates whether or not you want to reuse this method for future payments.
     PaymentIntentsFutureUsage? setupFutureUsage,
   }) = _PaymentMethodParamsCardWithToken;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('CardId')
+
+  /// Config parameters for card from method id payment method.
   const factory PaymentMethodParams.cardFromMethodId({
     required String paymentMethodId,
+
+    /// cvc of the cart
     String? cvc,
   }) = _PaymentMethodParamsCardWithMethodId;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Alipay')
+
+  /// Config parameters for ali pay card payment method.
+
   const factory PaymentMethodParams.aliPay() = _PaymentMethodParamsAli;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Ideal')
+
+  /// Config parameters for ideal payment method.
+
   const factory PaymentMethodParams.ideal({
+    /// Billing information.
+
     BillingDetails? billingDetails,
+
+    /// The name of bank.
     String? bankName,
   }) = _PaymentMethodParamsIdeal;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Bancontact')
+
+  /// Config parameters for bankcontact payment method.
+
   const factory PaymentMethodParams.bankContact({
+    /// Billing information.
+
     required BillingDetails billingDetails,
   }) = _PaymentMethodParamsBankContact;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Giropay')
+
+  /// Config parameters for giropay payment method.
+
   const factory PaymentMethodParams.giroPay({
+    /// Billing information.
+
     required BillingDetails billingDetails,
   }) = _PaymentMethodParamsGiroPay;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Eps')
+
+  /// Config parameters for eps payment method.
+
   const factory PaymentMethodParams.eps({
+    /// Billing information.
+
     required BillingDetails billingDetails,
   }) = _PaymentMethodParamsEps;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('GrabPay')
+
+  /// Config parameters for GrabPay payment method.
+
   const factory PaymentMethodParams.grabPay({
+    /// Billing information.
+
     required BillingDetails billingDetails,
   }) = _PaymentMethodParamsPay;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('P24')
+
+  /// Config parameters for P24 payment method.
+
   const factory PaymentMethodParams.p24({
+    /// Billing information.
+
     required BillingDetails billingDetails,
   }) = _PaymentMethodParamsP24;
 

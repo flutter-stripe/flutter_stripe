@@ -2765,8 +2765,12 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
       _$_$_PaymentMethodParamsCardFromJson(json);
 
   @override
+
+  /// Indicates whether or not you want to reuse this method for future payments.
   final PaymentIntentsFutureUsage? setupFutureUsage;
   @override
+
+  /// Billing information.
   final BillingDetails? billingDetails;
 
   @override
@@ -2901,8 +2905,11 @@ abstract class _PaymentMethodParamsCard implements PaymentMethodParams {
   factory _PaymentMethodParamsCard.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsCard.fromJson;
 
+  /// Indicates whether or not you want to reuse this method for future payments.
   PaymentIntentsFutureUsage? get setupFutureUsage =>
       throw _privateConstructorUsedError;
+
+  /// Billing information.
   BillingDetails? get billingDetails => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsCardCopyWith<_PaymentMethodParamsCard> get copyWith =>
@@ -2963,8 +2970,12 @@ class _$_PaymentMethodParamsCardWithToken
       _$_$_PaymentMethodParamsCardWithTokenFromJson(json);
 
   @override
+
+  /// Token.
   final String token;
   @override
+
+  /// Indicates whether or not you want to reuse this method for future payments.
   final PaymentIntentsFutureUsage? setupFutureUsage;
 
   @override
@@ -3100,7 +3111,10 @@ abstract class _PaymentMethodParamsCardWithToken
   factory _PaymentMethodParamsCardWithToken.fromJson(
       Map<String, dynamic> json) = _$_PaymentMethodParamsCardWithToken.fromJson;
 
+  /// Token.
   String get token => throw _privateConstructorUsedError;
+
+  /// Indicates whether or not you want to reuse this method for future payments.
   PaymentIntentsFutureUsage? get setupFutureUsage =>
       throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -3164,6 +3178,8 @@ class _$_PaymentMethodParamsCardWithMethodId
   @override
   final String paymentMethodId;
   @override
+
+  /// cvc of the cart
   final String? cvc;
 
   @override
@@ -3302,6 +3318,8 @@ abstract class _PaymentMethodParamsCardWithMethodId
       _$_PaymentMethodParamsCardWithMethodId.fromJson;
 
   String get paymentMethodId => throw _privateConstructorUsedError;
+
+  /// cvc of the cart
   String? get cvc => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsCardWithMethodIdCopyWith<
@@ -3515,8 +3533,12 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
       _$_$_PaymentMethodParamsIdealFromJson(json);
 
   @override
+
+  /// Billing information.
   final BillingDetails? billingDetails;
   @override
+
+  /// The name of bank.
   final String? bankName;
 
   @override
@@ -3651,7 +3673,10 @@ abstract class _PaymentMethodParamsIdeal implements PaymentMethodParams {
   factory _PaymentMethodParamsIdeal.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsIdeal.fromJson;
 
+  /// Billing information.
   BillingDetails? get billingDetails => throw _privateConstructorUsedError;
+
+  /// The name of bank.
   String? get bankName => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsIdealCopyWith<_PaymentMethodParamsIdeal> get copyWith =>
@@ -3715,6 +3740,8 @@ class _$_PaymentMethodParamsBankContact
       _$_$_PaymentMethodParamsBankContactFromJson(json);
 
   @override
+
+  /// Billing information.
   final BillingDetails billingDetails;
 
   @override
@@ -3846,6 +3873,7 @@ abstract class _PaymentMethodParamsBankContact implements PaymentMethodParams {
   factory _PaymentMethodParamsBankContact.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsBankContact.fromJson;
 
+  /// Billing information.
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsBankContactCopyWith<_PaymentMethodParamsBankContact>
@@ -3906,6 +3934,8 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
       _$_$_PaymentMethodParamsGiroPayFromJson(json);
 
   @override
+
+  /// Billing information.
   final BillingDetails billingDetails;
 
   @override
@@ -4035,6 +4065,7 @@ abstract class _PaymentMethodParamsGiroPay implements PaymentMethodParams {
   factory _PaymentMethodParamsGiroPay.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsGiroPay.fromJson;
 
+  /// Billing information.
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsGiroPayCopyWith<_PaymentMethodParamsGiroPay>
@@ -4093,6 +4124,8 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
       _$_$_PaymentMethodParamsEpsFromJson(json);
 
   @override
+
+  /// Billing information.
   final BillingDetails billingDetails;
 
   @override
@@ -4222,6 +4255,7 @@ abstract class _PaymentMethodParamsEps implements PaymentMethodParams {
   factory _PaymentMethodParamsEps.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsEps.fromJson;
 
+  /// Billing information.
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsEpsCopyWith<_PaymentMethodParamsEps> get copyWith =>
@@ -4280,6 +4314,8 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
       _$_$_PaymentMethodParamsPayFromJson(json);
 
   @override
+
+  /// Billing information.
   final BillingDetails billingDetails;
 
   @override
@@ -4409,6 +4445,7 @@ abstract class _PaymentMethodParamsPay implements PaymentMethodParams {
   factory _PaymentMethodParamsPay.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsPay.fromJson;
 
+  /// Billing information.
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsPayCopyWith<_PaymentMethodParamsPay> get copyWith =>
@@ -4467,6 +4504,8 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
       _$_$_PaymentMethodParamsP24FromJson(json);
 
   @override
+
+  /// Billing information.
   final BillingDetails billingDetails;
 
   @override
@@ -4596,6 +4635,7 @@ abstract class _PaymentMethodParamsP24 implements PaymentMethodParams {
   factory _PaymentMethodParamsP24.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsP24.fromJson;
 
+  /// Billing information.
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsP24CopyWith<_PaymentMethodParamsP24> get copyWith =>
