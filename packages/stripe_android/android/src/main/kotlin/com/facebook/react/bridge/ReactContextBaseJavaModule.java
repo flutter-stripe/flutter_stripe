@@ -1,16 +1,12 @@
 package com.facebook.react.bridge;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-import androidx.core.app.ComponentActivity;
-
 import java.util.ArrayList;
 
 import io.flutter.embedding.android.FlutterFragmentActivity;
-import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
 import io.flutter.plugin.common.PluginRegistry;
 
 public class ReactContextBaseJavaModule implements PluginRegistry.ActivityResultListener {
@@ -31,16 +27,8 @@ public class ReactContextBaseJavaModule implements PluginRegistry.ActivityResult
         return activity;
     }
 
-    protected ReactComponentActivityWrapper getCurrentActivity() {
+    public ReactComponentActivityWrapper getCurrentActivity() {
         return activityWrapper;
-    }
-
-    protected void addActivityEventListener(ActivityEventListener listener) {
-        eventListeners.add(listener);
-    }
-
-    protected void removeActivityEventListener(ActivityEventListener listener) {
-        eventListeners.remove(listener);
     }
 
     public String getName() {
