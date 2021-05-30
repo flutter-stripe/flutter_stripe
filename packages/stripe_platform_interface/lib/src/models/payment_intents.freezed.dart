@@ -63,21 +63,47 @@ const $PaymentIntent = _$PaymentIntentTearOff();
 
 /// @nodoc
 mixin _$PaymentIntent {
+  /// Unique identifier.
   String get id => throw _privateConstructorUsedError;
+
+  /// Amount that will be collected in the payment intent.
   num get amount => throw _privateConstructorUsedError;
+
+  /// Timestamp since epoch that represents the time the intent is created.
   int get created => throw _privateConstructorUsedError;
+
+  /// The three letter ISO 4217 code for the currency.
   String get currency => throw _privateConstructorUsedError;
+
+  /// Current status of the intent.
   PaymentIntentsStatus get status => throw _privateConstructorUsedError;
+
+  /// The client is secret is used for handling the payment from the Client side.
   String get clientSecret => throw _privateConstructorUsedError;
+
+  /// Determines whether the intent is in live mode or in test mode.
   bool get livemode => throw _privateConstructorUsedError;
+
+  /// Id of the payment method used in this intent.
   String get paymentMethodId => throw _privateConstructorUsedError;
+
+  /// How the funds will be caputure from the customer's account.
   CaptureMethod get captureMethod => throw _privateConstructorUsedError;
+
+  /// Method of how the payment will be confirmed.
   ConfirmationMethod get confirmationMethod =>
       throw _privateConstructorUsedError;
+
+  /// Localized description that provides additional context to users.
   String? get description => throw _privateConstructorUsedError;
+
+  /// Email address where the receipt will be send to.
   String? get receiptEmail => throw _privateConstructorUsedError;
-  int? get canceledAt =>
-      throw _privateConstructorUsedError; // LastPaymentError? lastPaymentError,
+
+  /// Timestamp since epoch when the intent is cancelled.
+  int? get canceledAt => throw _privateConstructorUsedError;
+
+  /// Shipping information of the payment intent.
   ShippingDetails? get shipping => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -348,32 +374,60 @@ class _$_PaymentIntent implements _PaymentIntent {
       _$_$_PaymentIntentFromJson(json);
 
   @override
+
+  /// Unique identifier.
   final String id;
   @override
+
+  /// Amount that will be collected in the payment intent.
   final num amount;
   @override
+
+  /// Timestamp since epoch that represents the time the intent is created.
   final int created;
   @override
+
+  /// The three letter ISO 4217 code for the currency.
   final String currency;
   @override
+
+  /// Current status of the intent.
   final PaymentIntentsStatus status;
   @override
+
+  /// The client is secret is used for handling the payment from the Client side.
   final String clientSecret;
   @override
+
+  /// Determines whether the intent is in live mode or in test mode.
   final bool livemode;
   @override
+
+  /// Id of the payment method used in this intent.
   final String paymentMethodId;
   @override
+
+  /// How the funds will be caputure from the customer's account.
   final CaptureMethod captureMethod;
   @override
+
+  /// Method of how the payment will be confirmed.
   final ConfirmationMethod confirmationMethod;
   @override
+
+  /// Localized description that provides additional context to users.
   final String? description;
   @override
+
+  /// Email address where the receipt will be send to.
   final String? receiptEmail;
   @override
+
+  /// Timestamp since epoch when the intent is cancelled.
   final int? canceledAt;
-  @override // LastPaymentError? lastPaymentError,
+  @override
+
+  /// Shipping information of the payment intent.
   final ShippingDetails? shipping;
 
   @override
@@ -476,33 +530,61 @@ abstract class _PaymentIntent implements PaymentIntent {
       _$_PaymentIntent.fromJson;
 
   @override
+
+  /// Unique identifier.
   String get id => throw _privateConstructorUsedError;
   @override
+
+  /// Amount that will be collected in the payment intent.
   num get amount => throw _privateConstructorUsedError;
   @override
+
+  /// Timestamp since epoch that represents the time the intent is created.
   int get created => throw _privateConstructorUsedError;
   @override
+
+  /// The three letter ISO 4217 code for the currency.
   String get currency => throw _privateConstructorUsedError;
   @override
+
+  /// Current status of the intent.
   PaymentIntentsStatus get status => throw _privateConstructorUsedError;
   @override
+
+  /// The client is secret is used for handling the payment from the Client side.
   String get clientSecret => throw _privateConstructorUsedError;
   @override
+
+  /// Determines whether the intent is in live mode or in test mode.
   bool get livemode => throw _privateConstructorUsedError;
   @override
+
+  /// Id of the payment method used in this intent.
   String get paymentMethodId => throw _privateConstructorUsedError;
   @override
+
+  /// How the funds will be caputure from the customer's account.
   CaptureMethod get captureMethod => throw _privateConstructorUsedError;
   @override
+
+  /// Method of how the payment will be confirmed.
   ConfirmationMethod get confirmationMethod =>
       throw _privateConstructorUsedError;
   @override
+
+  /// Localized description that provides additional context to users.
   String? get description => throw _privateConstructorUsedError;
   @override
+
+  /// Email address where the receipt will be send to.
   String? get receiptEmail => throw _privateConstructorUsedError;
   @override
+
+  /// Timestamp since epoch when the intent is cancelled.
   int? get canceledAt => throw _privateConstructorUsedError;
-  @override // LastPaymentError? lastPaymentError,
+  @override
+
+  /// Shipping information of the payment intent.
   ShippingDetails? get shipping => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -543,10 +625,20 @@ const $ShippingDetails = _$ShippingDetailsTearOff();
 
 /// @nodoc
 mixin _$ShippingDetails {
+  /// Recipient address.
   Address get address => throw _privateConstructorUsedError;
+
+  /// Recipient name.
   String get name => throw _privateConstructorUsedError;
+
+  /// Deliver service that will ship the product
   String get carrier => throw _privateConstructorUsedError;
+
+  /// Recipient phone number.
   String get phone => throw _privateConstructorUsedError;
+
+  /// Tracking number of the shipment. If multiple tracking numbers separate them
+  /// with commas.
   String get trackingNumber => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -696,14 +788,25 @@ class _$_ShippingDetails implements _ShippingDetails {
       _$_$_ShippingDetailsFromJson(json);
 
   @override
+
+  /// Recipient address.
   final Address address;
   @override
+
+  /// Recipient name.
   final String name;
   @override
+
+  /// Deliver service that will ship the product
   final String carrier;
   @override
+
+  /// Recipient phone number.
   final String phone;
   @override
+
+  /// Tracking number of the shipment. If multiple tracking numbers separate them
+  /// with commas.
   final String trackingNumber;
 
   @override
@@ -762,14 +865,25 @@ abstract class _ShippingDetails implements ShippingDetails {
       _$_ShippingDetails.fromJson;
 
   @override
+
+  /// Recipient address.
   Address get address => throw _privateConstructorUsedError;
   @override
+
+  /// Recipient name.
   String get name => throw _privateConstructorUsedError;
   @override
+
+  /// Deliver service that will ship the product
   String get carrier => throw _privateConstructorUsedError;
   @override
+
+  /// Recipient phone number.
   String get phone => throw _privateConstructorUsedError;
   @override
+
+  /// Tracking number of the shipment. If multiple tracking numbers separate them
+  /// with commas.
   String get trackingNumber => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
