@@ -18,6 +18,8 @@ The Stripe Flutter SDK allows you to build delightful payment experiences in you
 
 **Apple Pay**: We provide a [seamless integration with Apple Pay](https://stripe.com/docs/apple-pay).
 
+**Google Pay**: The plugin can easily act as payment provider for the [Pay plugin](#Pay-Plugin-support) that enables you to seamlessly integrate Google Pay or Apple Pay. All you need to do is add your stripe publishable key to the payment profile.
+
 **Payment methods**: Accepting more [payment methods](https://stripe.com/docs/payments/payment-methods/overview) helps your business expand its global reach and improve checkout conversion.
 
 **SCA-Ready**: The SDK automatically performs native [3D Secure authentication](https://stripe.com/docs/payments/3d-secure) if needed to comply with [Strong Customer Authentication](https://stripe.com/docs/strong-customer-authentication) regulation in Europe.
@@ -58,7 +60,7 @@ void main() async {
   
   // set the publishable key for Stripe - this is mandatory
   Stripe.publishableKey = stripePublishableKey;
-  runApp(App());
+  runApp(PaymentScreen());
 }
 
 // payment_screen.dart
@@ -68,14 +70,22 @@ class PaymentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Container(
-        alignment: Alignment.center,
-        padding: EdgeInsets.all(16),
-        child: CardField(
-          onCardChanged: (card) {
-            print(card);
-          },
-        ),
+      body: Column(
+        children: [
+          CardField(
+            onCardChanged: (card) {
+              print(card);
+            },
+          ),
+          TextButton(
+            onPressed: () {
+              // create payment method
+              final paymentMethod =
+                  await Stripe.instance.createPaymentMethod(PaymentMethodParams.card());
+            }
+            child: Text('pay'),
+          )
+        ],
       ),
     );
   }
@@ -108,13 +118,33 @@ Future<void> confirmPaymentSheetPayment()
 ```
 The example app offers examples on how to use these methods.
 
+## Pay Plugin support
+flutter_stripe fully supports the [Pay plugin](https://pub.dev/packages/pay) from the Google Pay team. By including a few lines you can integrate Stripe as a payment processor for Google / Apple Pay:
+```dart
+Future<void> onGooglePayResult(paymentResult) async {
+    final response = await fetchPaymentIntentClientSecret();
+    final clientSecret = response['clientSecret'];
+    final token = paymentResult['paymentMethodData']['tokenizationData']['token'];
+    final tokenJson = Map.castFrom(json.decode(token));
+    
+    final params = PaymentMethodParams.cardFromToken(
+      token: tokenJson['id'],
+    );
+    // Confirm Google pay payment method
+    await Stripe.instance.confirmPaymentMethod(
+      clientSecret,
+      params,
+    );
+}
+``` 
+
 ## Run the example app
 
 - Install the dependencies
     - `flutter pub get`
 - Set up env vars for the flutter app and a local backend. 
     -  [Get your test Stripe API keys](https://stripe.com/docs/keys)
-    - `cp lib/.env.dart lib/.env.dart` and set your Stripe publishable key.
+    - `cp lib/.env.example.dart lib/.env.dart` and set your Stripe publishable key.
     - `cp server/.env.example server/.env` and set the variable values in your newly created `.env` file.
 - Start the example
     - Terminal 1: `cd server && yarn example start:server`
