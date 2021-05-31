@@ -305,7 +305,7 @@ class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: S
   }
 
   private fun payWithFpx() {
-    AddPaymentMethodActivityStarter(currentActivity as AppCompatActivity)
+    AddPaymentMethodActivityStarter(currentActivity.activity as AppCompatActivity)
             .startForResult(AddPaymentMethodActivityStarter.Args.Builder()
                     .setPaymentMethodType(PaymentMethod.Type.Fpx)
                     .build()

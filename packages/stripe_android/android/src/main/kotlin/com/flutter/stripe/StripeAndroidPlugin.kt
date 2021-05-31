@@ -6,6 +6,7 @@ import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReadableMap
 import com.reactnativestripesdk.StripeSdkCardViewManager
 import com.reactnativestripesdk.StripeSdkModule
+import io.flutter.embedding.android.FlutterFragmentActivity
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -24,7 +25,11 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     /// This local reference serves to register the plugin with the Flutter Engine and unregister it
     /// when the Flutter Engine is detached from the Activity
     private lateinit var channel: MethodChannel
-    private lateinit var stripeSdk: StripeSdkModule
+    lateinit var stripeSdk: StripeSdkModule
+
+    // set to true when the plugin has initialized - this is used as an indicator to receive
+    // activity results
+    var isInitialized = false
 
     private val stripeSdkCardViewManager: StripeSdkCardViewManager by lazy {
         StripeSdkCardViewManager()
@@ -39,12 +44,21 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
+        if (!this::stripeSdk.isInitialized) {
+            result.error(
+        "flutter_stripe initialization failed",
+        "The plugin failed to initialize. Are you using FlutterFragmentActivity? Please check the README: https://github.com/flutter-stripe/flutter_stripe#android",
+        null
+            )
+            return
+        }
         when (call.method) {
             "initialise" -> {
                 stripeSdk.initialise(
                         params = ReadableMap(call.arguments as JSONObject),
                         promise = Promise(result),
                 )
+                isInitialized = true
             }
             "createPaymentMethod" -> stripeSdk.createPaymentMethod(
                     data = call.requiredArgument("data"),
@@ -103,7 +117,11 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-        stripeSdk = StripeSdkModule(ReactApplicationContext(binding), stripeSdkCardViewManager)
+        if (binding.activity is FlutterFragmentActivity) {
+            stripeSdk = StripeSdkModule(ReactApplicationContext(binding, this), stripeSdkCardViewManager)
+        } else {
+            // no-op - will throw errors when method channel is called
+        }
     }
 
     override fun onDetachedFromActivityForConfigChanges() {
@@ -113,6 +131,9 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
 
     override fun onDetachedFromActivity() {
+        if (this::stripeSdk.isInitialized) {
+            stripeSdk.currentActivity.unregisterReceivers()
+        }
     }
 }
 
