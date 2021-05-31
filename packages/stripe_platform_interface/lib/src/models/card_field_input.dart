@@ -6,23 +6,44 @@ part 'card_field_input.freezed.dart';
 part 'card_field_input.g.dart';
 
 @freezed
+
+/// Styiling information for the cardfield.
 class CardStyle with _$CardStyle {
   @JsonSerializable(explicitToJson: true)
   factory CardStyle({
+    /// Width for the border.
     double? borderWidth,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+
+        /// Background color of the cardfield
+        ///
+        /// Make sure that there is enough contrast with the text color.
         Color? backgroundColor,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+
+        /// Border color of the cardfield.
         Color? borderColor,
+
+    /// Borderradius that can give the Cardfield rounded corners.
     double? borderRadius,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+
+        /// Cursor color when the card has focus.
         Color? cursorColor,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+
+        /// Color of the typed text on the Card fuekd.
         Color? textColor,
+
+    /// Font size.
     double? fontSize,
+
+    /// Color of the input in case incorrect data is entered.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
         Color? textErrorColor,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+
+        /// Color of the placeholder text.
         Color? placeholderColor,
   }) = _CardStyleConstructor;
 
@@ -45,12 +66,21 @@ class CardStyle with _$CardStyle {
 }
 
 @freezed
+
+/// Localized text for the placeholders of the card fields.
 class CardPlaceholder with _$CardPlaceholder {
   @JsonSerializable(explicitToJson: true)
   factory CardPlaceholder({
+    /// Localized placeholder for card number field.
     String? number,
+
+    /// Localized placeholder for expiration field.
     String? expiration,
+
+    /// Localized placeholder for cvc field.
     String? cvc,
+
+    /// Localized placeholder for postal code field.
     String? postalCode,
   }) = _CardPlaceholderConstructor;
 
@@ -59,6 +89,9 @@ class CardPlaceholder with _$CardPlaceholder {
 
   CardPlaceholder._();
 
+  /// Apply a new placeholder object on an existing placeholder.
+  ///
+  /// In case fields are null the original value will be used.
   CardPlaceholder apply(CardPlaceholder? placeholder) => copyWith(
         number: placeholder?.number ?? number,
         expiration: placeholder?.expiration ?? expiration,
@@ -67,6 +100,9 @@ class CardPlaceholder with _$CardPlaceholder {
       );
 }
 
+/// Deserialization object for colors.
+///
+/// This object is used to translate Flutter color objects to hex strings used by the stripe sdk.
 class ColorKey {
   const ColorKey();
 
@@ -83,14 +119,27 @@ class ColorKey {
 }
 
 @freezed
+
+/// User input details.
 class CardFieldInputDetails with _$CardFieldInputDetails {
   @JsonSerializable(explicitToJson: true)
   const factory CardFieldInputDetails({
+    /// Indicates whether the card field input is complete.
     required bool complete,
+
+    /// Last 4 digits of the entered card number.
     String? last4,
+
+    /// Month of the entered expiry date of the card.
     String? expiryMonth,
+
+    /// Year of the entered expiry date of the card.
     String? expiryYear,
+
+    /// Entered postcal code.
     String? postalCode,
+
+    /// Brand of the card.
     String? brand,
   }) = _CardFieldInputDetails;
 
@@ -98,6 +147,7 @@ class CardFieldInputDetails with _$CardFieldInputDetails {
       _$CardFieldInputDetailsFromJson(json);
 }
 
+/// Used to communicate with the card handler on the native platform side when focus changes.
 @freezed
 class CardFieldFocusName with _$CardFieldFocusName {
   @JsonSerializable(explicitToJson: true)
@@ -108,24 +158,18 @@ class CardFieldFocusName with _$CardFieldFocusName {
       _$CardFieldFocusNameFromJson(json);
 }
 
+/// Enum representing the different fiels on the card field.
 enum CardFieldName {
   @JsonValue('CardNumber')
+  /// Card number field.
   cardNumber,
   @JsonValue('Cvc')
+  /// Cvc field.
   cvc,
   @JsonValue('ExpiryDate')
+  /// Expiry date field.
   expiryDate,
   @JsonValue('PostalCode')
+  /// Postal code field.
   postalCode,
-}
-
-enum CardBrand {
-  american,
-  dinersClub,
-  discover,
-  jCB,
-  masterCard,
-  unionPay,
-  visa,
-  unknown
 }

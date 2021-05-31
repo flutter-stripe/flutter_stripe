@@ -5,6 +5,8 @@ part 'payment_sheet.freezed.dart';
 part 'payment_sheet.g.dart';
 
 /// Parameters used to setup a Payment sheet.
+///
+/// For more info about the payment sheet see: https://stripe.com/docs/payments/accept-a-payment.
 @freezed
 class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
   const factory SetupPaymentSheetParameters({

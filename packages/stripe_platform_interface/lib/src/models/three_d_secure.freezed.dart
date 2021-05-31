@@ -47,14 +47,21 @@ const $ThreeDSecureConfigurationParams =
 
 /// @nodoc
 mixin _$ThreeDSecureConfigurationParams {
+  /// Styling for the 3d secure navigation bar.
   ThreeDSecureNavigationBarThemeData get navigationBar =>
       throw _privateConstructorUsedError;
 
-  /// desired timeout in miliseconds
+  /// Desired timeout in milliseconds.
   int? get timeout => throw _privateConstructorUsedError;
+
+  /// Styling for the 3d secure label.
   ThreeDSecureLabelThemeData? get label => throw _privateConstructorUsedError;
+
+  /// Styling for the 3d secure textfield.
   ThreeDSecureTextFieldThemeData? get textField =>
       throw _privateConstructorUsedError;
+
+  /// Styling for the 3d secure confirmation button.
   ThreeDSecureSubmitButtonThemeData? get submitButton =>
       throw _privateConstructorUsedError;
 
@@ -256,16 +263,24 @@ class _$_ThreeDSecureConfigurationParams
       _$_$_ThreeDSecureConfigurationParamsFromJson(json);
 
   @override
+
+  /// Styling for the 3d secure navigation bar.
   final ThreeDSecureNavigationBarThemeData navigationBar;
   @override
 
-  /// desired timeout in miliseconds
+  /// Desired timeout in milliseconds.
   final int? timeout;
   @override
+
+  /// Styling for the 3d secure label.
   final ThreeDSecureLabelThemeData? label;
   @override
+
+  /// Styling for the 3d secure textfield.
   final ThreeDSecureTextFieldThemeData? textField;
   @override
+
+  /// Styling for the 3d secure confirmation button.
   final ThreeDSecureSubmitButtonThemeData? submitButton;
 
   @override
@@ -328,18 +343,26 @@ abstract class _ThreeDSecureConfigurationParams
       _$_ThreeDSecureConfigurationParams.fromJson;
 
   @override
+
+  /// Styling for the 3d secure navigation bar.
   ThreeDSecureNavigationBarThemeData get navigationBar =>
       throw _privateConstructorUsedError;
   @override
 
-  /// desired timeout in miliseconds
+  /// Desired timeout in milliseconds.
   int? get timeout => throw _privateConstructorUsedError;
   @override
+
+  /// Styling for the 3d secure label.
   ThreeDSecureLabelThemeData? get label => throw _privateConstructorUsedError;
   @override
+
+  /// Styling for the 3d secure textfield.
   ThreeDSecureTextFieldThemeData? get textField =>
       throw _privateConstructorUsedError;
   @override
+
+  /// Styling for the 3d secure confirmation button.
   ThreeDSecureSubmitButtonThemeData? get submitButton =>
       throw _privateConstructorUsedError;
   @override
@@ -385,11 +408,22 @@ const $ThreeDSecureNavigationBarThemeData =
 
 /// @nodoc
 mixin _$ThreeDSecureNavigationBarThemeData {
+  /// Localised text of the header.
   String? get headerText => throw _privateConstructorUsedError;
+
+  /// localised text of the button
   String? get buttonText => throw _privateConstructorUsedError;
+
+  /// Color in hex to display navigation bar header text.
   String? get textColor => throw _privateConstructorUsedError;
+
+  /// Color in hex for the status bar.
   String? get statusBarColor => throw _privateConstructorUsedError;
+
+  /// Color in hex to display navigation bar background.
   String? get backgroundColor => throw _privateConstructorUsedError;
+
+  /// Font size of header text.
   double? get textFontSize => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -547,16 +581,28 @@ class _$_ThreeDSecureNavigationBarThemeData
       _$_$_ThreeDSecureNavigationBarThemeDataFromJson(json);
 
   @override
+
+  /// Localised text of the header.
   final String? headerText;
   @override
+
+  /// localised text of the button
   final String? buttonText;
   @override
+
+  /// Color in hex to display navigation bar header text.
   final String? textColor;
   @override
+
+  /// Color in hex for the status bar.
   final String? statusBarColor;
   @override
+
+  /// Color in hex to display navigation bar background.
   final String? backgroundColor;
   @override
+
+  /// Font size of header text.
   final double? textFontSize;
 
   @override
@@ -626,16 +672,28 @@ abstract class _ThreeDSecureNavigationBarThemeData
       _$_ThreeDSecureNavigationBarThemeData.fromJson;
 
   @override
+
+  /// Localised text of the header.
   String? get headerText => throw _privateConstructorUsedError;
   @override
+
+  /// localised text of the button
   String? get buttonText => throw _privateConstructorUsedError;
   @override
+
+  /// Color in hex to display navigation bar header text.
   String? get textColor => throw _privateConstructorUsedError;
   @override
+
+  /// Color in hex for the status bar.
   String? get statusBarColor => throw _privateConstructorUsedError;
   @override
+
+  /// Color in hex to display navigation bar background.
   String? get backgroundColor => throw _privateConstructorUsedError;
   @override
+
+  /// Font size of header text.
   double? get textFontSize => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -676,9 +734,15 @@ const $ThreeDSecureLabelThemeData = _$ThreeDSecureLabelThemeDataTearOff();
 
 /// @nodoc
 mixin _$ThreeDSecureLabelThemeData {
+  /// Color in hex for header text.
   String? get headingTextColor => throw _privateConstructorUsedError;
+
+  /// Color in hex for label text.
   String? get textColor => throw _privateConstructorUsedError;
-  double? get textFontSize => throw _privateConstructorUsedError;
+
+  /// Font size for label text.
+  double? get textFontSize =>
+      throw _privateConstructorUsedError; // Font size for header.
   double? get headingFontSize => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -805,12 +869,18 @@ class _$_ThreeDSecureLabelThemeData implements _ThreeDSecureLabelThemeData {
       _$_$_ThreeDSecureLabelThemeDataFromJson(json);
 
   @override
+
+  /// Color in hex for header text.
   final String? headingTextColor;
   @override
+
+  /// Color in hex for label text.
   final String? textColor;
   @override
+
+  /// Font size for label text.
   final double? textFontSize;
-  @override
+  @override // Font size for header.
   final double? headingFontSize;
 
   @override
@@ -868,12 +938,18 @@ abstract class _ThreeDSecureLabelThemeData
       _$_ThreeDSecureLabelThemeData.fromJson;
 
   @override
+
+  /// Color in hex for header text.
   String? get headingTextColor => throw _privateConstructorUsedError;
   @override
+
+  /// Color in hex for label text.
   String? get textColor => throw _privateConstructorUsedError;
   @override
+
+  /// Font size for label text.
   double? get textFontSize => throw _privateConstructorUsedError;
-  @override
+  @override // Font size for header.
   double? get headingFontSize => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -916,10 +992,19 @@ const $ThreeDSecureTextFieldThemeData =
 
 /// @nodoc
 mixin _$ThreeDSecureTextFieldThemeData {
+  /// Color in hex for the border
   String? get borderColor => throw _privateConstructorUsedError;
+
+  /// Thickness of the textfield border.
   double? get borderWidth => throw _privateConstructorUsedError;
+
+  /// Radius for the textfield corners.
   double? get cornerRadius => throw _privateConstructorUsedError;
+
+  /// Color in hex for the textfield value.
   String? get textColor => throw _privateConstructorUsedError;
+
+  /// Font size for the textfield text.
   double? get textFontSize => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1063,14 +1148,24 @@ class _$_ThreeDSecureTextFieldThemeData
       _$_$_ThreeDSecureTextFieldThemeDataFromJson(json);
 
   @override
+
+  /// Color in hex for the border
   final String? borderColor;
   @override
+
+  /// Thickness of the textfield border.
   final double? borderWidth;
   @override
+
+  /// Radius for the textfield corners.
   final double? cornerRadius;
   @override
+
+  /// Color in hex for the textfield value.
   final String? textColor;
   @override
+
+  /// Font size for the textfield text.
   final double? textFontSize;
 
   @override
@@ -1133,14 +1228,24 @@ abstract class _ThreeDSecureTextFieldThemeData
       _$_ThreeDSecureTextFieldThemeData.fromJson;
 
   @override
+
+  /// Color in hex for the border
   String? get borderColor => throw _privateConstructorUsedError;
   @override
+
+  /// Thickness of the textfield border.
   double? get borderWidth => throw _privateConstructorUsedError;
   @override
+
+  /// Radius for the textfield corners.
   double? get cornerRadius => throw _privateConstructorUsedError;
   @override
+
+  /// Color in hex for the textfield value.
   String? get textColor => throw _privateConstructorUsedError;
   @override
+
+  /// Font size for the textfield text.
   double? get textFontSize => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -1181,9 +1286,16 @@ const $ThreeDSecureSubmitButtonThemeData =
 
 /// @nodoc
 mixin _$ThreeDSecureSubmitButtonThemeData {
+  /// Color in hex for button background
   String? get backgroundColor => throw _privateConstructorUsedError;
+
+  /// Button corner radius.
   double? get cornerRadius => throw _privateConstructorUsedError;
+
+  /// Color in hex for button text.
   String? get textColor => throw _privateConstructorUsedError;
+
+  /// Font size for the button text.
   double? get textFontSize => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1314,12 +1426,20 @@ class _$_ThreeDSecureSubmitButtonThemeData
       _$_$_ThreeDSecureSubmitButtonThemeDataFromJson(json);
 
   @override
+
+  /// Color in hex for button background
   final String? backgroundColor;
   @override
+
+  /// Button corner radius.
   final double? cornerRadius;
   @override
+
+  /// Color in hex for button text.
   final String? textColor;
   @override
+
+  /// Font size for the button text.
   final double? textFontSize;
 
   @override
@@ -1379,12 +1499,20 @@ abstract class _ThreeDSecureSubmitButtonThemeData
       _$_ThreeDSecureSubmitButtonThemeData.fromJson;
 
   @override
+
+  /// Color in hex for button background
   String? get backgroundColor => throw _privateConstructorUsedError;
   @override
+
+  /// Button corner radius.
   double? get cornerRadius => throw _privateConstructorUsedError;
   @override
+
+  /// Color in hex for button text.
   String? get textColor => throw _privateConstructorUsedError;
   @override
+
+  /// Font size for the button text.
   double? get textFontSize => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

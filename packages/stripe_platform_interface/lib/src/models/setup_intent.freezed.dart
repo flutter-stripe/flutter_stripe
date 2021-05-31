@@ -55,16 +55,37 @@ const $SetupIntent = _$SetupIntentTearOff();
 
 /// @nodoc
 mixin _$SetupIntent {
+  /// Unique identifier.
   String get id => throw _privateConstructorUsedError;
+
+  /// Status of the intent.
+  ///
+  /// See https://stripe.com/docs/payments/intents#intent-statuses.
   String get status => throw _privateConstructorUsedError;
+
+  /// Determines whether the intent is in live mode or in test mode.
   bool get livemode => throw _privateConstructorUsedError;
+
+  /// The client is secret is used for handling the payment from the Client side.
   String get clientSecret => throw _privateConstructorUsedError;
+
+  /// Id of the payment method used in this intent.
   String get paymentMethodId => throw _privateConstructorUsedError;
+
+  /// Indicates how the intent is used in the future.
   String get usage => throw _privateConstructorUsedError;
+
+  /// List of payment method types associated with this intent.
   List<PaymentMethodType> get paymentMethodTypes =>
       throw _privateConstructorUsedError;
+
+  /// Localized description that provides additional context to users.
   String? get description => throw _privateConstructorUsedError;
+
+  /// Timestamp since epoch that represents the time the intent is created.
   int? get created => throw _privateConstructorUsedError;
+
+  /// Error encountered since last configmration.
   LastSetupError? get lastSetupError => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -281,24 +302,46 @@ class _$_SetupIntent implements _SetupIntent {
       _$_$_SetupIntentFromJson(json);
 
   @override
+
+  /// Unique identifier.
   final String id;
   @override
+
+  /// Status of the intent.
+  ///
+  /// See https://stripe.com/docs/payments/intents#intent-statuses.
   final String status;
   @override
+
+  /// Determines whether the intent is in live mode or in test mode.
   final bool livemode;
   @override
+
+  /// The client is secret is used for handling the payment from the Client side.
   final String clientSecret;
   @override
+
+  /// Id of the payment method used in this intent.
   final String paymentMethodId;
   @override
+
+  /// Indicates how the intent is used in the future.
   final String usage;
   @override
+
+  /// List of payment method types associated with this intent.
   final List<PaymentMethodType> paymentMethodTypes;
   @override
+
+  /// Localized description that provides additional context to users.
   final String? description;
   @override
+
+  /// Timestamp since epoch that represents the time the intent is created.
   final int? created;
   @override
+
+  /// Error encountered since last configmration.
   final LastSetupError? lastSetupError;
 
   @override
@@ -381,25 +424,47 @@ abstract class _SetupIntent implements SetupIntent {
       _$_SetupIntent.fromJson;
 
   @override
+
+  /// Unique identifier.
   String get id => throw _privateConstructorUsedError;
   @override
+
+  /// Status of the intent.
+  ///
+  /// See https://stripe.com/docs/payments/intents#intent-statuses.
   String get status => throw _privateConstructorUsedError;
   @override
+
+  /// Determines whether the intent is in live mode or in test mode.
   bool get livemode => throw _privateConstructorUsedError;
   @override
+
+  /// The client is secret is used for handling the payment from the Client side.
   String get clientSecret => throw _privateConstructorUsedError;
   @override
+
+  /// Id of the payment method used in this intent.
   String get paymentMethodId => throw _privateConstructorUsedError;
   @override
+
+  /// Indicates how the intent is used in the future.
   String get usage => throw _privateConstructorUsedError;
   @override
+
+  /// List of payment method types associated with this intent.
   List<PaymentMethodType> get paymentMethodTypes =>
       throw _privateConstructorUsedError;
   @override
+
+  /// Localized description that provides additional context to users.
   String? get description => throw _privateConstructorUsedError;
   @override
+
+  /// Timestamp since epoch that represents the time the intent is created.
   int? get created => throw _privateConstructorUsedError;
   @override
+
+  /// Error encountered since last configmration.
   LastSetupError? get lastSetupError => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -432,7 +497,10 @@ const $LastSetupError = _$LastSetupErrorTearOff();
 
 /// @nodoc
 mixin _$LastSetupError {
+  /// Code.
   String get code => throw _privateConstructorUsedError;
+
+  /// Message.
   String get message => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -525,8 +593,12 @@ class _$_LastSetupError implements _LastSetupError {
       _$_$_LastSetupErrorFromJson(json);
 
   @override
+
+  /// Code.
   final String code;
   @override
+
+  /// Message.
   final String message;
 
   @override
@@ -569,8 +641,12 @@ abstract class _LastSetupError implements LastSetupError {
       _$_LastSetupError.fromJson;
 
   @override
+
+  /// Code.
   String get code => throw _privateConstructorUsedError;
   @override
+
+  /// Message.
   String get message => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
