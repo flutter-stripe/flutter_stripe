@@ -2520,6 +2520,8 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
       return _PaymentMethodParamsPay.fromJson(json);
     case 'P24':
       return _PaymentMethodParamsP24.fromJson(json);
+    case 'Fpx':
+      return _PaymentMethodParamsFpx.fromJson(json);
 
     default:
       throw FallThroughError();
@@ -2599,6 +2601,12 @@ class _$PaymentMethodParamsTearOff {
     );
   }
 
+  _PaymentMethodParamsFpx fpx({required bool testOfflineBank}) {
+    return _PaymentMethodParamsFpx(
+      testOfflineBank: testOfflineBank,
+    );
+  }
+
   PaymentMethodParams fromJson(Map<String, Object> json) {
     return PaymentMethodParams.fromJson(json);
   }
@@ -2627,6 +2635,7 @@ mixin _$PaymentMethodParams {
     required TResult Function(BillingDetails billingDetails) eps,
     required TResult Function(BillingDetails billingDetails) grabPay,
     required TResult Function(BillingDetails billingDetails) p24,
+    required TResult Function(bool testOfflineBank) fpx,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -2644,6 +2653,7 @@ mixin _$PaymentMethodParams {
     TResult Function(BillingDetails billingDetails)? eps,
     TResult Function(BillingDetails billingDetails)? grabPay,
     TResult Function(BillingDetails billingDetails)? p24,
+    TResult Function(bool testOfflineBank)? fpx,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -2662,6 +2672,7 @@ mixin _$PaymentMethodParams {
     required TResult Function(_PaymentMethodParamsEps value) eps,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -2677,6 +2688,7 @@ mixin _$PaymentMethodParams {
     TResult Function(_PaymentMethodParamsEps value)? eps,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -2821,6 +2833,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     required TResult Function(BillingDetails billingDetails) eps,
     required TResult Function(BillingDetails billingDetails) grabPay,
     required TResult Function(BillingDetails billingDetails) p24,
+    required TResult Function(bool testOfflineBank) fpx,
   }) {
     return card(setupFutureUsage, billingDetails);
   }
@@ -2841,6 +2854,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(BillingDetails billingDetails)? eps,
     TResult Function(BillingDetails billingDetails)? grabPay,
     TResult Function(BillingDetails billingDetails)? p24,
+    TResult Function(bool testOfflineBank)? fpx,
     required TResult orElse(),
   }) {
     if (card != null) {
@@ -2865,6 +2879,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     required TResult Function(_PaymentMethodParamsEps value) eps,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
   }) {
     return card(this);
   }
@@ -2883,6 +2898,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(_PaymentMethodParamsEps value)? eps,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
     required TResult orElse(),
   }) {
     if (card != null) {
@@ -3025,6 +3041,7 @@ class _$_PaymentMethodParamsCardWithToken
     required TResult Function(BillingDetails billingDetails) eps,
     required TResult Function(BillingDetails billingDetails) grabPay,
     required TResult Function(BillingDetails billingDetails) p24,
+    required TResult Function(bool testOfflineBank) fpx,
   }) {
     return cardFromToken(token, setupFutureUsage);
   }
@@ -3045,6 +3062,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(BillingDetails billingDetails)? eps,
     TResult Function(BillingDetails billingDetails)? grabPay,
     TResult Function(BillingDetails billingDetails)? p24,
+    TResult Function(bool testOfflineBank)? fpx,
     required TResult orElse(),
   }) {
     if (cardFromToken != null) {
@@ -3069,6 +3087,7 @@ class _$_PaymentMethodParamsCardWithToken
     required TResult Function(_PaymentMethodParamsEps value) eps,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
   }) {
     return cardFromToken(this);
   }
@@ -3087,6 +3106,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(_PaymentMethodParamsEps value)? eps,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
     required TResult orElse(),
   }) {
     if (cardFromToken != null) {
@@ -3230,6 +3250,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     required TResult Function(BillingDetails billingDetails) eps,
     required TResult Function(BillingDetails billingDetails) grabPay,
     required TResult Function(BillingDetails billingDetails) p24,
+    required TResult Function(bool testOfflineBank) fpx,
   }) {
     return cardFromMethodId(paymentMethodId, cvc);
   }
@@ -3250,6 +3271,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(BillingDetails billingDetails)? eps,
     TResult Function(BillingDetails billingDetails)? grabPay,
     TResult Function(BillingDetails billingDetails)? p24,
+    TResult Function(bool testOfflineBank)? fpx,
     required TResult orElse(),
   }) {
     if (cardFromMethodId != null) {
@@ -3274,6 +3296,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     required TResult Function(_PaymentMethodParamsEps value) eps,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
   }) {
     return cardFromMethodId(this);
   }
@@ -3292,6 +3315,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(_PaymentMethodParamsEps value)? eps,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
     required TResult orElse(),
   }) {
     if (cardFromMethodId != null) {
@@ -3388,6 +3412,7 @@ class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
     required TResult Function(BillingDetails billingDetails) eps,
     required TResult Function(BillingDetails billingDetails) grabPay,
     required TResult Function(BillingDetails billingDetails) p24,
+    required TResult Function(bool testOfflineBank) fpx,
   }) {
     return aliPay();
   }
@@ -3408,6 +3433,7 @@ class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
     TResult Function(BillingDetails billingDetails)? eps,
     TResult Function(BillingDetails billingDetails)? grabPay,
     TResult Function(BillingDetails billingDetails)? p24,
+    TResult Function(bool testOfflineBank)? fpx,
     required TResult orElse(),
   }) {
     if (aliPay != null) {
@@ -3432,6 +3458,7 @@ class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
     required TResult Function(_PaymentMethodParamsEps value) eps,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
   }) {
     return aliPay(this);
   }
@@ -3450,6 +3477,7 @@ class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
     TResult Function(_PaymentMethodParamsEps value)? eps,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
     required TResult orElse(),
   }) {
     if (aliPay != null) {
@@ -3589,6 +3617,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     required TResult Function(BillingDetails billingDetails) eps,
     required TResult Function(BillingDetails billingDetails) grabPay,
     required TResult Function(BillingDetails billingDetails) p24,
+    required TResult Function(bool testOfflineBank) fpx,
   }) {
     return ideal(billingDetails, bankName);
   }
@@ -3609,6 +3638,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(BillingDetails billingDetails)? eps,
     TResult Function(BillingDetails billingDetails)? grabPay,
     TResult Function(BillingDetails billingDetails)? p24,
+    TResult Function(bool testOfflineBank)? fpx,
     required TResult orElse(),
   }) {
     if (ideal != null) {
@@ -3633,6 +3663,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     required TResult Function(_PaymentMethodParamsEps value) eps,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
   }) {
     return ideal(this);
   }
@@ -3651,6 +3682,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(_PaymentMethodParamsEps value)? eps,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
     required TResult orElse(),
   }) {
     if (ideal != null) {
@@ -3788,6 +3820,7 @@ class _$_PaymentMethodParamsBankContact
     required TResult Function(BillingDetails billingDetails) eps,
     required TResult Function(BillingDetails billingDetails) grabPay,
     required TResult Function(BillingDetails billingDetails) p24,
+    required TResult Function(bool testOfflineBank) fpx,
   }) {
     return bankContact(billingDetails);
   }
@@ -3808,6 +3841,7 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(BillingDetails billingDetails)? eps,
     TResult Function(BillingDetails billingDetails)? grabPay,
     TResult Function(BillingDetails billingDetails)? p24,
+    TResult Function(bool testOfflineBank)? fpx,
     required TResult orElse(),
   }) {
     if (bankContact != null) {
@@ -3832,6 +3866,7 @@ class _$_PaymentMethodParamsBankContact
     required TResult Function(_PaymentMethodParamsEps value) eps,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
   }) {
     return bankContact(this);
   }
@@ -3850,6 +3885,7 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(_PaymentMethodParamsEps value)? eps,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
     required TResult orElse(),
   }) {
     if (bankContact != null) {
@@ -3982,6 +4018,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     required TResult Function(BillingDetails billingDetails) eps,
     required TResult Function(BillingDetails billingDetails) grabPay,
     required TResult Function(BillingDetails billingDetails) p24,
+    required TResult Function(bool testOfflineBank) fpx,
   }) {
     return giroPay(billingDetails);
   }
@@ -4002,6 +4039,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(BillingDetails billingDetails)? eps,
     TResult Function(BillingDetails billingDetails)? grabPay,
     TResult Function(BillingDetails billingDetails)? p24,
+    TResult Function(bool testOfflineBank)? fpx,
     required TResult orElse(),
   }) {
     if (giroPay != null) {
@@ -4026,6 +4064,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     required TResult Function(_PaymentMethodParamsEps value) eps,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
   }) {
     return giroPay(this);
   }
@@ -4044,6 +4083,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(_PaymentMethodParamsEps value)? eps,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
     required TResult orElse(),
   }) {
     if (giroPay != null) {
@@ -4172,6 +4212,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     required TResult Function(BillingDetails billingDetails) eps,
     required TResult Function(BillingDetails billingDetails) grabPay,
     required TResult Function(BillingDetails billingDetails) p24,
+    required TResult Function(bool testOfflineBank) fpx,
   }) {
     return eps(billingDetails);
   }
@@ -4192,6 +4233,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(BillingDetails billingDetails)? eps,
     TResult Function(BillingDetails billingDetails)? grabPay,
     TResult Function(BillingDetails billingDetails)? p24,
+    TResult Function(bool testOfflineBank)? fpx,
     required TResult orElse(),
   }) {
     if (eps != null) {
@@ -4216,6 +4258,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     required TResult Function(_PaymentMethodParamsEps value) eps,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
   }) {
     return eps(this);
   }
@@ -4234,6 +4277,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(_PaymentMethodParamsEps value)? eps,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
     required TResult orElse(),
   }) {
     if (eps != null) {
@@ -4362,6 +4406,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     required TResult Function(BillingDetails billingDetails) eps,
     required TResult Function(BillingDetails billingDetails) grabPay,
     required TResult Function(BillingDetails billingDetails) p24,
+    required TResult Function(bool testOfflineBank) fpx,
   }) {
     return grabPay(billingDetails);
   }
@@ -4382,6 +4427,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(BillingDetails billingDetails)? eps,
     TResult Function(BillingDetails billingDetails)? grabPay,
     TResult Function(BillingDetails billingDetails)? p24,
+    TResult Function(bool testOfflineBank)? fpx,
     required TResult orElse(),
   }) {
     if (grabPay != null) {
@@ -4406,6 +4452,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     required TResult Function(_PaymentMethodParamsEps value) eps,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
   }) {
     return grabPay(this);
   }
@@ -4424,6 +4471,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(_PaymentMethodParamsEps value)? eps,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
     required TResult orElse(),
   }) {
     if (grabPay != null) {
@@ -4552,6 +4600,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     required TResult Function(BillingDetails billingDetails) eps,
     required TResult Function(BillingDetails billingDetails) grabPay,
     required TResult Function(BillingDetails billingDetails) p24,
+    required TResult Function(bool testOfflineBank) fpx,
   }) {
     return p24(billingDetails);
   }
@@ -4572,6 +4621,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(BillingDetails billingDetails)? eps,
     TResult Function(BillingDetails billingDetails)? grabPay,
     TResult Function(BillingDetails billingDetails)? p24,
+    TResult Function(bool testOfflineBank)? fpx,
     required TResult orElse(),
   }) {
     if (p24 != null) {
@@ -4596,6 +4646,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     required TResult Function(_PaymentMethodParamsEps value) eps,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
   }) {
     return p24(this);
   }
@@ -4614,6 +4665,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(_PaymentMethodParamsEps value)? eps,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
     required TResult orElse(),
   }) {
     if (p24 != null) {
@@ -4639,5 +4691,187 @@ abstract class _PaymentMethodParamsP24 implements PaymentMethodParams {
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsP24CopyWith<_PaymentMethodParamsP24> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$PaymentMethodParamsFpxCopyWith<$Res> {
+  factory _$PaymentMethodParamsFpxCopyWith(_PaymentMethodParamsFpx value,
+          $Res Function(_PaymentMethodParamsFpx) then) =
+      __$PaymentMethodParamsFpxCopyWithImpl<$Res>;
+  $Res call({bool testOfflineBank});
+}
+
+/// @nodoc
+class __$PaymentMethodParamsFpxCopyWithImpl<$Res>
+    extends _$PaymentMethodParamsCopyWithImpl<$Res>
+    implements _$PaymentMethodParamsFpxCopyWith<$Res> {
+  __$PaymentMethodParamsFpxCopyWithImpl(_PaymentMethodParamsFpx _value,
+      $Res Function(_PaymentMethodParamsFpx) _then)
+      : super(_value, (v) => _then(v as _PaymentMethodParamsFpx));
+
+  @override
+  _PaymentMethodParamsFpx get _value => super._value as _PaymentMethodParamsFpx;
+
+  @override
+  $Res call({
+    Object? testOfflineBank = freezed,
+  }) {
+    return _then(_PaymentMethodParamsFpx(
+      testOfflineBank: testOfflineBank == freezed
+          ? _value.testOfflineBank
+          : testOfflineBank // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+@FreezedUnionValue('Fpx')
+
+/// @nodoc
+class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
+  const _$_PaymentMethodParamsFpx({required this.testOfflineBank});
+
+  factory _$_PaymentMethodParamsFpx.fromJson(Map<String, dynamic> json) =>
+      _$_$_PaymentMethodParamsFpxFromJson(json);
+
+  @override
+  final bool testOfflineBank;
+
+  @override
+  String toString() {
+    return 'PaymentMethodParams.fpx(testOfflineBank: $testOfflineBank)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _PaymentMethodParamsFpx &&
+            (identical(other.testOfflineBank, testOfflineBank) ||
+                const DeepCollectionEquality()
+                    .equals(other.testOfflineBank, testOfflineBank)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(testOfflineBank);
+
+  @JsonKey(ignore: true)
+  @override
+  _$PaymentMethodParamsFpxCopyWith<_PaymentMethodParamsFpx> get copyWith =>
+      __$PaymentMethodParamsFpxCopyWithImpl<_PaymentMethodParamsFpx>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)
+        card,
+    required TResult Function(
+            String token, PaymentIntentsFutureUsage? setupFutureUsage)
+        cardFromToken,
+    required TResult Function(String paymentMethodId, String? cvc)
+        cardFromMethodId,
+    required TResult Function() aliPay,
+    required TResult Function(BillingDetails? billingDetails, String? bankName)
+        ideal,
+    required TResult Function(BillingDetails billingDetails) bankContact,
+    required TResult Function(BillingDetails billingDetails) giroPay,
+    required TResult Function(BillingDetails billingDetails) eps,
+    required TResult Function(BillingDetails billingDetails) grabPay,
+    required TResult Function(BillingDetails billingDetails) p24,
+    required TResult Function(bool testOfflineBank) fpx,
+  }) {
+    return fpx(testOfflineBank);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        card,
+    TResult Function(String token, PaymentIntentsFutureUsage? setupFutureUsage)?
+        cardFromToken,
+    TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
+    TResult Function()? aliPay,
+    TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(BillingDetails billingDetails)? bankContact,
+    TResult Function(BillingDetails billingDetails)? giroPay,
+    TResult Function(BillingDetails billingDetails)? eps,
+    TResult Function(BillingDetails billingDetails)? grabPay,
+    TResult Function(BillingDetails billingDetails)? p24,
+    TResult Function(bool testOfflineBank)? fpx,
+    required TResult orElse(),
+  }) {
+    if (fpx != null) {
+      return fpx(testOfflineBank);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentMethodParamsCard value) card,
+    required TResult Function(_PaymentMethodParamsCardWithToken value)
+        cardFromToken,
+    required TResult Function(_PaymentMethodParamsCardWithMethodId value)
+        cardFromMethodId,
+    required TResult Function(_PaymentMethodParamsAli value) aliPay,
+    required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsBankContact value)
+        bankContact,
+    required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
+    required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPay value) grabPay,
+    required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
+  }) {
+    return fpx(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAli value)? aliPay,
+    TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsBankContact value)? bankContact,
+    TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
+    TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPay value)? grabPay,
+    TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
+    required TResult orElse(),
+  }) {
+    if (fpx != null) {
+      return fpx(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_PaymentMethodParamsFpxToJson(this)..['type'] = 'Fpx';
+  }
+}
+
+abstract class _PaymentMethodParamsFpx implements PaymentMethodParams {
+  const factory _PaymentMethodParamsFpx({required bool testOfflineBank}) =
+      _$_PaymentMethodParamsFpx;
+
+  factory _PaymentMethodParamsFpx.fromJson(Map<String, dynamic> json) =
+      _$_PaymentMethodParamsFpx.fromJson;
+
+  bool get testOfflineBank => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$PaymentMethodParamsFpxCopyWith<_PaymentMethodParamsFpx> get copyWith =>
       throw _privateConstructorUsedError;
 }

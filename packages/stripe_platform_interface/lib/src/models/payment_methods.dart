@@ -378,6 +378,12 @@ class PaymentMethodParams with _$PaymentMethodParams {
     required BillingDetails billingDetails,
   }) = _PaymentMethodParamsP24;
 
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('Fpx')
+  const factory PaymentMethodParams.fpx({
+    required bool testOfflineBank,
+  }) = _PaymentMethodParamsFpx;
+
   factory PaymentMethodParams.fromJson(Map<String, dynamic> json) =>
       _$PaymentMethodParamsFromJson(json);
 }
