@@ -305,9 +305,8 @@ class PaymentMethodParams with _$PaymentMethodParams {
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Alipay')
 
-  /// Config parameters for ali pay card payment method.
-
-  const factory PaymentMethodParams.aliPay() = _PaymentMethodParamsAli;
+  /// Config parameters for Alipay card payment method.
+  const factory PaymentMethodParams.alipay() = _PaymentMethodParamsAlipay;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Ideal')

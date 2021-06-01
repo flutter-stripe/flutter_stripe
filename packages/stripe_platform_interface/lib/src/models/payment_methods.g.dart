@@ -268,13 +268,13 @@ Map<String, dynamic> _$_$_PaymentMethodParamsCardWithMethodIdToJson(
       'cvc': instance.cvc,
     };
 
-_$_PaymentMethodParamsAli _$_$_PaymentMethodParamsAliFromJson(
+_$_PaymentMethodParamsAlipay _$_$_PaymentMethodParamsAlipayFromJson(
     Map<String, dynamic> json) {
-  return _$_PaymentMethodParamsAli();
+  return _$_PaymentMethodParamsAlipay();
 }
 
-Map<String, dynamic> _$_$_PaymentMethodParamsAliToJson(
-        _$_PaymentMethodParamsAli instance) =>
+Map<String, dynamic> _$_$_PaymentMethodParamsAlipayToJson(
+        _$_PaymentMethodParamsAlipay instance) =>
     <String, dynamic>{};
 
 _$_PaymentMethodParamsIdeal _$_$_PaymentMethodParamsIdealFromJson(
