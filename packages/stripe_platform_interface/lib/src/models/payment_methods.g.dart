@@ -364,3 +364,16 @@ Map<String, dynamic> _$_$_PaymentMethodParamsP24ToJson(
     <String, dynamic>{
       'billingDetails': instance.billingDetails.toJson(),
     };
+
+_$_PaymentMethodParamsFpx _$_$_PaymentMethodParamsFpxFromJson(
+    Map<String, dynamic> json) {
+  return _$_PaymentMethodParamsFpx(
+    testOfflineBank: json['testOfflineBank'] as bool,
+  );
+}
+
+Map<String, dynamic> _$_$_PaymentMethodParamsFpxToJson(
+        _$_PaymentMethodParamsFpx instance) =>
+    <String, dynamic>{
+      'testOfflineBank': instance.testOfflineBank,
+    };
