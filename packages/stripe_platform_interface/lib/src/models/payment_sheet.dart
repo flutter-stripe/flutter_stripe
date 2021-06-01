@@ -11,6 +11,10 @@ part 'payment_sheet.g.dart';
 class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
   const factory SetupPaymentSheetParameters({
     ///Whether or not to display a custom flow
+    ///
+    /// When value is `false` make sure [PresentPaymentSheetParameters.confirmPayment]
+    /// is set to `true`. If value is set to `true` [PresentPaymentSheetParameters.confirmPayment]
+    /// has to be set to `false`.
     @Default(false) bool customFlow,
 
     /// The identifier of the Stripe Customer object.
@@ -79,6 +83,11 @@ class PresentPaymentSheetParameters with _$PresentPaymentSheetParameters {
 
     /// Flag that determines whether or not to present payment options or
     /// directly goes to confirm payment.
+    ///
+    ///  When value is `false` make sure [SetupPaymentSheetParameters.customFlow]
+    /// is set to `true` when initializing the payment sheet.
+    /// If value is set to `true` [SetupPaymentSheetParameters.customFlow]
+    /// has to be set to `false` when initializing the payment sheet.
     @Default(false) bool confirmPayment,
   }) = _PresentParameters;
 

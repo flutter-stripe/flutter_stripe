@@ -57,6 +57,10 @@ const $SetupPaymentSheetParameters = _$SetupPaymentSheetParametersTearOff();
 /// @nodoc
 mixin _$SetupPaymentSheetParameters {
   ///Whether or not to display a custom flow
+  ///
+  /// When value is `false` make sure [PresentPaymentSheetParameters.confirmPayment]
+  /// is set to `true`. If value is set to `true` [PresentPaymentSheetParameters.confirmPayment]
+  /// has to be set to `false`.
   bool get customFlow => throw _privateConstructorUsedError;
 
   /// The identifier of the Stripe Customer object.
@@ -296,6 +300,10 @@ class _$_SetupParameters implements _SetupParameters {
   @override
 
   ///Whether or not to display a custom flow
+  ///
+  /// When value is `false` make sure [PresentPaymentSheetParameters.confirmPayment]
+  /// is set to `true`. If value is set to `true` [PresentPaymentSheetParameters.confirmPayment]
+  /// has to be set to `false`.
   final bool customFlow;
   @override
 
@@ -428,6 +436,10 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   @override
 
   ///Whether or not to display a custom flow
+  ///
+  /// When value is `false` make sure [PresentPaymentSheetParameters.confirmPayment]
+  /// is set to `true`. If value is set to `true` [PresentPaymentSheetParameters.confirmPayment]
+  /// has to be set to `false`.
   bool get customFlow => throw _privateConstructorUsedError;
   @override
 
@@ -509,6 +521,11 @@ mixin _$PresentPaymentSheetParameters {
 
   /// Flag that determines whether or not to present payment options or
   /// directly goes to confirm payment.
+  ///
+  ///  When value is `false` make sure [SetupPaymentSheetParameters.customFlow]
+  /// is set to `true` when initializing the payment sheet.
+  /// If value is set to `true` [SetupPaymentSheetParameters.customFlow]
+  /// has to be set to `false` when initializing the payment sheet.
   bool get confirmPayment => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -611,6 +628,11 @@ class _$_PresentParameters implements _PresentParameters {
 
   /// Flag that determines whether or not to present payment options or
   /// directly goes to confirm payment.
+  ///
+  ///  When value is `false` make sure [SetupPaymentSheetParameters.customFlow]
+  /// is set to `true` when initializing the payment sheet.
+  /// If value is set to `true` [SetupPaymentSheetParameters.customFlow]
+  /// has to be set to `false` when initializing the payment sheet.
   final bool confirmPayment;
 
   @override
@@ -663,6 +685,11 @@ abstract class _PresentParameters implements PresentPaymentSheetParameters {
 
   /// Flag that determines whether or not to present payment options or
   /// directly goes to confirm payment.
+  ///
+  ///  When value is `false` make sure [SetupPaymentSheetParameters.customFlow]
+  /// is set to `true` when initializing the payment sheet.
+  /// If value is set to `true` [SetupPaymentSheetParameters.customFlow]
+  /// has to be set to `false` when initializing the payment sheet.
   bool get confirmPayment => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
