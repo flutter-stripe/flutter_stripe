@@ -213,7 +213,7 @@ extension  StripePlugin {
     
     func createPaymentMethod(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
-        let params = arguments["params"] as? NSDictionary,
+        let params = arguments["data"] as? NSDictionary,
         let options = arguments["options"] as? NSDictionary else {
             result(FlutterError.invalidParams)
             return
