@@ -49,6 +49,8 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
       return;
     }
 
+    try {
+
     // 1. Gather customer billing information (ex. email)
 
     final billingDetails = BillingDetails(
@@ -119,6 +121,11 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
             SnackBar(content: Text('Error: ${paymentIntentResult['error']}')));
       }
     }
+
+    } catch (e) {
+       ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Error: $e')));
+    }
   }
 
   Future<void> confirmIntent(String paymentIntentId) async {
@@ -153,7 +160,7 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
     required String currency,
     List<Map<String, dynamic>>? items,
   }) async {
-    final url = Uri.parse('$kApiUrl/charge-card-off-session');
+    final url = Uri.parse('$kApiUrl/pay-without-webhooks');
     final response = await http.post(
       url,
       headers: {
