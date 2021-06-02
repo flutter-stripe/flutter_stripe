@@ -16,6 +16,7 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - pay_ios (from `.symlinks/plugins/pay_ios/ios`)
   - stripe_ios (from `.symlinks/plugins/stripe_ios/ios`)
+  - webview_flutter (from `.symlinks/plugins/webview_flutter/ios`)
 
 SPEC REPOS:
   trunk:
@@ -29,13 +30,15 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/pay_ios/ios"
   stripe_ios:
     :path: ".symlinks/plugins/stripe_ios/ios"
+  webview_flutter:
+    :path: ".symlinks/plugins/webview_flutter/ios"
 
 SPEC CHECKSUMS:
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   pay_ios: 8c7beb9c61d885f3f51b61f75f8793023fc8843a
-  Stripe: 90596971ef49bade169f68bc59369a796b30a045
-  stripe_ios: 669a91fd06d17954dedeaebec35c56bf1c72a602
-  StripeCore: c09b492efc3b269a6ff875ad738ca366db97e03b
+  Stripe: 515db5536fd659b5d79a0898ce1b882b61ab597e
+  stripe_ios: ce035050135b58a5a838e0d410d53b26f1dc026a
+  webview_flutter: 9f491a9b5a66f2573946a389b2677987b0ff8c0b
 
 PODFILE CHECKSUM: 4e8f8b2be68aeea4c0d5beb6ff1e79fface1d048
 

@@ -4,8 +4,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stripe_example/config.dart';
-import 'package:stripe_web/stripe_web.dart';
+import 'package:stripe_example/.env.dart';
 import 'package:http/http.dart' as http;
+import 'package:stripe_web/stripe_web.dart';
 
 class PaymentElementExample extends StatefulWidget {
   @override
@@ -55,7 +56,7 @@ class _ThemeCardExampleState extends State<PaymentElementExample> {
               autofocus: true,
               enablePostalCode: true,
               onCardChanged: (_) {},
-              clientSecret: clientSecret!,
+              clientSecret: clientSecret ?? '',
             ) : Center(
               child: CircularProgressIndicator(),
             ) 

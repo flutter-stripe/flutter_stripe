@@ -12,4 +12,7 @@ scripts:
         - test
       scope: "*interface*"
 
+  test: melos exec -- flutter test
+  clean: melos exec -- flutter clean
+  server: cd example/server/ && npm run start
 

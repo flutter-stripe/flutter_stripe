@@ -9,6 +9,7 @@ import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 import 'package:stripe_web/src/web_stripe.dart';
 import '../stripe_web.dart';
 import 'generated/types.dart' as s;
+import 'models/card.dart';
 
 
 class WebCardField extends StatefulWidget {
@@ -108,7 +109,7 @@ class _WebStripeCardState extends State<WebCardField> {
         const BoxConstraints.expand(height: kCardFieldDefaultHeight);
 
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8),
+      padding: EdgeInsets.symmetric(vertical: 4),
       child: Focus(
         focusNode: _effectiveNode,
         onFocusChange: (focus) {

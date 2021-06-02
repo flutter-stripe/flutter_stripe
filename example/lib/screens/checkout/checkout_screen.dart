@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:stripe_example/.env.dart';
-import 'package:stripe_example/screens/checkout/platforms/stripe_checkout.dart'
-    if (dart.library.js) 'package:stripe_example/screens/checkout/platforms/stripe_checkout_web.dart';
+import 'platforms/stripe_checkout.dart'
+    if (dart.library.js) 'platforms/stripe_checkout_web.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
