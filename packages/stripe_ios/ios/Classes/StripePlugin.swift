@@ -104,7 +104,7 @@ extension  StripePlugin {
     
     public func initialise(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let params = call.arguments as? NSDictionary else {
-            result("Not a valid fields")
+            result(FlutterError.invalidParams)
             return
         }
         initialise(params: params, resolver: resolver(for: result), rejecter: rejecter(for: result))
@@ -113,7 +113,7 @@ extension  StripePlugin {
     public func initPaymentSheet(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
               let params = arguments["params"] as? NSDictionary else {
-            result("Not a valid fields")
+            result(FlutterError.invalidParams)
             return
         }
         initPaymentSheet(params: params, resolver: resolver(for: result), rejecter: rejecter(for: result))
@@ -126,7 +126,7 @@ extension  StripePlugin {
     public func presentPaymentSheet(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
               let params = arguments["params"] as? NSDictionary else {
-            result("Not a valid fields")
+            result(FlutterError.invalidParams)
             return
         }
         presentPaymentSheet(params: params, resolver: resolver(for: result), rejecter: rejecter(for: result))
@@ -134,7 +134,7 @@ extension  StripePlugin {
     
     func createTokenForCVCUpdate(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap else {
-            result("Not a valid fields")
+            result(FlutterError.invalidParams)
             return
         }
         let cvc = arguments["cvc"] as? String
@@ -146,7 +146,7 @@ extension  StripePlugin {
               let setupIntentClientSecret = arguments["setupIntentClientSecret"] as? String,
         let params = arguments["params"] as? NSDictionary,
         let options = arguments["options"] as? NSDictionary else {
-            result("Not a valid fields")
+            result(FlutterError.invalidParams)
             return
         }
         confirmSetupIntent(setupIntentClientSecret: setupIntentClientSecret, params: params, options: options,resolver: resolver(for: result), rejecter: rejecter(for: result))
@@ -155,7 +155,7 @@ extension  StripePlugin {
     public func updateApplePaySummaryItems(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let summaryItems = arguments["summaryItems"] as? NSArray else {
-            result("Not a valid fields")
+            result(FlutterError.invalidParams)
             return
         }
         updateApplePaySummaryItems(
@@ -168,7 +168,7 @@ extension  StripePlugin {
     public func confirmApplePayPayment(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let clientSecret = arguments["clientSecret"] as? String else {
-            result("Not a valid fields")
+            result(FlutterError.invalidParams)
             return
         }
         confirmApplePayPayment(
@@ -215,7 +215,7 @@ extension  StripePlugin {
         guard let arguments = call.arguments as? FlutterMap,
         let params = arguments["params"] as? NSDictionary,
         let options = arguments["options"] as? NSDictionary else {
-            result("Not a valid fields")
+            result(FlutterError.invalidParams)
             return
         }
          createPaymentMethod(
@@ -229,7 +229,7 @@ extension  StripePlugin {
     func handleCardAction(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let paymentIntentClientSecret = arguments["paymentIntentClientSecret"] as? String else {
-            result("Not a valid fields")
+            result(FlutterError.invalidParams)
             return
         }
         handleCardAction(
@@ -244,7 +244,7 @@ extension  StripePlugin {
         let paymentIntentClientSecret = arguments["paymentIntentClientSecret"] as? String,
         let params = arguments["params"] as? NSDictionary,
         let options = arguments["options"] as? NSDictionary else {
-            result("Not a valid fields")
+            result(FlutterError.invalidParams)
             return
         }
         confirmPaymentMethod(
@@ -259,7 +259,7 @@ extension  StripePlugin {
     func retrievePaymentIntent(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let clientSecret = arguments["clientSecret"] as? String else {
-            result("Not a valid fields")
+            result(FlutterError.invalidParams)
             return
         }
         retrievePaymentIntent(
@@ -273,7 +273,7 @@ extension  StripePlugin {
     public func configure3dSecure(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let params = arguments["params"] as? NSDictionary else {
-            result("Not a valid fields")
+            result(FlutterError.invalidParams)
             return
         }
         configure3dSecure(params)
