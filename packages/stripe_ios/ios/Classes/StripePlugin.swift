@@ -77,12 +77,14 @@ public class StripePlugin: StripeSdk, FlutterPlugin {
     
     public func resolver(for result: @escaping FlutterResult) -> RCTPromiseResolveBlock {
         return { (response) in
+            var data : Any?
             if let list = response as? [Any],
-               let  data = list.first {
-                result(data)
+               let first = list.first {
+                data = first
             } else {
-                result(response)
+                data = response
             }
+            result(NSNull.replaceForNil(data as AnyObject))
         }
     }
     
