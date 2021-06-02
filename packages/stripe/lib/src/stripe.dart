@@ -312,6 +312,7 @@ class Stripe {
     ThreeDSecureConfigurationParams? threeDSecureParams,
     String? merchantIdentifier,
   }) async {
+     _needsSettings = false;
     await _platform.initialise(
       publishableKey: publishableKey,
       stripeAccountId: stripeAccountId,

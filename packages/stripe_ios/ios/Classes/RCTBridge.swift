@@ -19,6 +19,19 @@ class RCTConvert {
     }
 }
 
+extension NSNull {
+    static func replaceForNil(_ value: AnyObject?) -> AnyObject? {
+        if let map = value as? FlutterMap {
+            return map.mapValues { replaceForNil($0) } as AnyObject
+        } else if let array = value as? Array<AnyObject?> {
+            return array.map { replaceForNil($0) } as AnyObject
+        } else if value is NSNull {
+            return nil;
+        } else {
+            return value
+        }
+    }
+}
 
 protocol FlutterPluginBinding {
     func sendEvent(withName name: String, body: [String:  Any]);

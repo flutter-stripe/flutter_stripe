@@ -183,11 +183,11 @@ class CardFieldView: NSObject, FlutterPlatformView, STPPaymentCardTextFieldDeleg
             } else {
                 cardField.borderWidth = CGFloat(0)
             }
-            if let backgroundColor = cardStyle["backgroundColor"]  as? UInt {
-                cardField.backgroundColor = UIColor(argb: backgroundColor)
+            if let backgroundColor = cardStyle["backgroundColor"]  as? String {
+                cardField.backgroundColor = UIColor(hexString: backgroundColor)
             }
-            if let borderColor = cardStyle["borderColor"] as? UInt {
-                cardField.borderColor = UIColor(argb: borderColor)
+            if let borderColor = cardStyle["borderColor"] as? String {
+                cardField.borderColor = UIColor(hexString: borderColor)
             }
             if let borderRadius = cardStyle["borderRadius"]  as? Int {
                 cardField.cornerRadius = CGFloat(borderRadius)
@@ -195,17 +195,17 @@ class CardFieldView: NSObject, FlutterPlatformView, STPPaymentCardTextFieldDeleg
             if let cursorColor = cardStyle["cursorColor"]  as? UInt {
                 cardField.cursorColor = UIColor(argb: cursorColor)
             }
-            if let textColor = cardStyle["textColor"]  as? UInt {
-                cardField.textColor = UIColor(argb: textColor)
+            if let textColor = cardStyle["textColor"]  as? String {
+                cardField.textColor = UIColor(hexString: textColor)
             }
-            if let textErrorColor = cardStyle["textErrorColor"]  as? UInt {
-                cardField.textErrorColor = UIColor(argb: textErrorColor)
+            if let textErrorColor = cardStyle["textErrorColor"]  as? String {
+                cardField.textErrorColor = UIColor(hexString: textErrorColor)
             }
             if let fontSize = cardStyle["fontSize"]  as? Int {
                 cardField.font = UIFont.systemFont(ofSize: CGFloat(fontSize))
             }
-            if let placeholderColor = cardStyle["placeholderColor"]  as? UInt {
-                cardField.placeholderColor = UIColor(argb: placeholderColor)
+            if let placeholderColor = cardStyle["placeholderColor"]  as? String {
+                cardField.placeholderColor = UIColor(hexString: placeholderColor)
             }
             
         }
