@@ -18,6 +18,7 @@ const _appInfo = AppInfo(
 
 /// An implementation of [StripePlatform] that uses method channels.
 class WebStripe extends StripePlatform {
+ 
   static s.stripe_Stripe? __stripe;
   s.stripe_Stripe get _stripe {
     assert(__stripe != null);

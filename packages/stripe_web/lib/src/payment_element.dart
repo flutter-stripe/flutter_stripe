@@ -6,6 +6,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
+import 'package:stripe_web/src/models/card.dart';
 import 'package:stripe_web/src/web_stripe.dart';
 import '../stripe_web.dart';
 import 'generated/types.dart' as s;

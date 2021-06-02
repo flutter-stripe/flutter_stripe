@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:stripe_example/screens/apple_pay_screen.dart';
 import 'package:stripe_example/screens/google_pay_screen.dart';
+import 'package:stripe_example/screens/web/screens.dart';
 
 import '../screens/no_webhook_payment_screen.dart';
 import '../screens/setup_future_payment_screen.dart';
@@ -10,8 +11,7 @@ import 'checkout/checkout_screen.dart';
 import 'cvc_re_collection_screen.dart';
 import 'payment_sheet_screen.dart';
 import 'themes.dart';
-import 'web/no_webhook_payment_screen.dart';
-import 'web/payment_element.dart';
+
 
 class Example {
   final String title;
@@ -23,6 +23,7 @@ class Example {
   });
 
   static List<Example> values = [
+    ...webExamples,
     Example(
       title: 'Card payment using webhooks',
       builder: (c) => WebhookPaymentScreen(),
@@ -59,15 +60,6 @@ class Example {
       title: 'Checkout Package - Checkouts',
       builder: (context) => CheckoutScreenExample(),
     ),
-    if (kIsWeb) ...[
-      Example(
-        title: 'Web Package - Card Field',
-        builder: (context) => WebCardPaymentScreen(),
-      ),
-      Example(
-        title: 'Web Package - PaymentElementExample',
-        builder: (context) => PaymentElementExample(),
-      ),
-    ]
+    
   ];
 }

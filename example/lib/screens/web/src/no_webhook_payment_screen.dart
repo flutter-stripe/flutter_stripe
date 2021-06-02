@@ -4,12 +4,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_example/config.dart';
-import 'package:stripe_example/screens/checkout/platforms/stripe_checkout_web.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
-import 'package:stripe_web/stripe_web.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 import 'package:http/http.dart' as http;
-
+import 'package:stripe_web/stripe_web.dart';
 
 class WebCardPaymentScreen extends StatefulWidget {
   @override
@@ -27,7 +25,7 @@ class _NoWebhookPaymentScreenState extends State<WebCardPaymentScreen> {
         children: [
           Padding(
             padding: EdgeInsets.all(16),
-            child: CardFormField(
+            child: CardField(
               onCardChanged: (card) {
                 setState(() {
                   _card = card;

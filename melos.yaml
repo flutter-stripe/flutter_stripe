@@ -6,4 +6,6 @@ scripts:
   format: melos exec -- flutter format .
   get: melos exec -- flutter pub get
   test: melos exec -- flutter test
+  clean: melos exec -- flutter clean
+  server: cd example/server/ && npm run start
 

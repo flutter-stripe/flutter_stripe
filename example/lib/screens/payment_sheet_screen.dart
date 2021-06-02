@@ -14,22 +14,36 @@ class PaymentSheetScreen extends StatefulWidget {
 class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
   Map<String, dynamic>? _paymentSheetData;
 
+  bool customFlow = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
           child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          SwitchListTile.adaptive(
+            title: const Text('CustomFlow'),
+            value: customFlow,
+            onChanged: (bool? value) {
+              setState(() {
+                customFlow = value ?? false;
+                _paymentSheetData = null;
+              });
+            },
+          ),
+          Divider(),
           TextButton(
             onPressed: _paymentSheetData != null ? null : _initPaymentSheet,
-            child: const Text('Init payment sheet'),
+            child: const Text('1. Init payment sheet'),
           ),
-          const SizedBox(height: 24),
+          Divider(),
           TextButton(
             onPressed: _paymentSheetData != null ? _displayPaymentSheet : null,
-            child: const Text('Show payment sheet'),
+            child: const Text('2. Show payment sheet'),
           ),
         ],
       )),
@@ -68,6 +82,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
           googlePay: true,
           style: ThemeMode.dark,
           testEnv: true,
+          customFlow: customFlow,
           merchantCountryCode: 'DE',
           merchantDisplayName: 'Flutter Stripe Store Demo',
           customerId: _paymentSheetData!['customer'],
@@ -89,18 +104,25 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
       await Stripe.instance.presentPaymentSheet(
           parameters: PresentPaymentSheetParameters(
         clientSecret: _paymentSheetData!['paymentIntent'],
-        confirmPayment: true,
+        confirmPayment: !customFlow,
       ));
 
       setState(() {
         _paymentSheetData = null;
       });
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Payment succesfully completed'),
-        ),
-      );
+      if (customFlow) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Payment selected'),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Payment succesfully completed'),
+          ),
+        );
+      }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
