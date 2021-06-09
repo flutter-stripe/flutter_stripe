@@ -74,42 +74,35 @@ class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: S
             StripeIntent.Status.Processing,
             StripeIntent.Status.RequiresCapture -> {
               confirmPromise?.resolve(mapFromPaymentIntentResult(paymentIntent))
-              handleCardActionPromise?.resolve(mapFromPaymentIntentResult(paymentIntent))
             }
             StripeIntent.Status.RequiresAction -> {
               if (isPaymentIntentNextActionVoucherBased(paymentIntent.nextActionType)) {
                 confirmPromise?.resolve(mapFromPaymentIntentResult(paymentIntent))
-                handleCardActionPromise?.resolve(mapFromPaymentIntentResult(paymentIntent))
               } else {
                 val errorMessage = paymentIntent.lastPaymentError?.message.orEmpty()
                 confirmPromise?.reject(ConfirmPaymentErrorType.Canceled.toString(), errorMessage)
-                handleCardActionPromise?.reject(NextPaymentActionErrorType.Canceled.toString(), errorMessage)
               }
             }
             StripeIntent.Status.RequiresPaymentMethod -> {
               val errorMessage = paymentIntent.lastPaymentError?.message.orEmpty()
               confirmPromise?.reject(ConfirmPaymentErrorType.Failed.toString(), errorMessage)
-              handleCardActionPromise?.reject(NextPaymentActionErrorType.Failed.toString(), errorMessage)
             }
             StripeIntent.Status.RequiresConfirmation -> {
-              handleCardActionPromise?.resolve(mapFromPaymentIntentResult(paymentIntent))
+              confirmPromise?.resolve(mapFromPaymentIntentResult(paymentIntent))
             }
             StripeIntent.Status.Canceled -> {
               val errorMessage = paymentIntent.lastPaymentError?.message.orEmpty()
               confirmPromise?.reject(ConfirmPaymentErrorType.Canceled.toString(), errorMessage)
-              handleCardActionPromise?.reject(NextPaymentActionErrorType.Canceled.toString(), errorMessage)
             }
             else -> {
               val errorMessage = "unhandled error: ${paymentIntent.status}"
               confirmPromise?.reject(ConfirmPaymentErrorType.Unknown.toString(), errorMessage)
-              handleCardActionPromise?.reject(NextPaymentActionErrorType.Unknown.toString(), errorMessage)
             }
           }
         }
 
         override fun onError(e: Exception) {
           confirmPromise?.reject(ConfirmPaymentErrorType.Failed.toString(), e.toString())
-          handleCardActionPromise?.reject(NextPaymentActionErrorType.Failed.toString(), e.toString())
         }
       })
 
@@ -374,7 +367,7 @@ class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: S
   fun handleCardAction(paymentIntentClientSecret: String, promise: Promise) {
     val activity = currentActivity
     if (activity != null) {
-      handleCardActionPromise = promise
+      confirmPromise = promise
       stripe.handleNextActionForPayment(activity.activity, paymentIntentClientSecret)
     }
   }
