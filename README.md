@@ -1,4 +1,6 @@
+
 <img src="https://user-images.githubusercontent.com/19904063/116995247-20519e80-acda-11eb-8e1b-7d0efbd193ad.png" height="36" />
+
 
 # Flutter Stripe
 
@@ -6,9 +8,13 @@
 
 > 🚨 flutter_stripe is in beta - please provide feedback (and/or contribute) if you find issues 💙️
 
+
 The Stripe Flutter SDK allows you to build delightful payment experiences in your native Android and iOS apps using Flutter. We provide powerful and customizable UI screens and elements that can be used out-of-the-box to collect your users' payment details.
 
-![payment_sheet](https://user-images.githubusercontent.com/19904063/119301240-6d35ee80-bc62-11eb-98ea-f71d2d1949bb.png)
+
+![stripe-flutter_cover](https://user-images.githubusercontent.com/19904063/121511757-48bf6d80-c9e9-11eb-9674-0fec35e26ef5.png)
+
+
 
 ## Features
 
