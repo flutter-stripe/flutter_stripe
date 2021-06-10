@@ -2507,7 +2507,7 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
     case 'CardId':
       return _PaymentMethodParamsCardWithMethodId.fromJson(json);
     case 'Alipay':
-      return _PaymentMethodParamsAli.fromJson(json);
+      return _PaymentMethodParamsAlipay.fromJson(json);
     case 'Ideal':
       return _PaymentMethodParamsIdeal.fromJson(json);
     case 'Bancontact':
@@ -2557,8 +2557,8 @@ class _$PaymentMethodParamsTearOff {
     );
   }
 
-  _PaymentMethodParamsAli aliPay() {
-    return const _PaymentMethodParamsAli();
+  _PaymentMethodParamsAlipay alipay() {
+    return const _PaymentMethodParamsAlipay();
   }
 
   _PaymentMethodParamsIdeal ideal(
@@ -2627,7 +2627,7 @@ mixin _$PaymentMethodParams {
         cardFromToken,
     required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function() aliPay,
+    required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
     required TResult Function(BillingDetails billingDetails) bankContact,
@@ -2646,7 +2646,7 @@ mixin _$PaymentMethodParams {
     TResult Function(String token, PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
-    TResult Function()? aliPay,
+    TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
     TResult Function(BillingDetails billingDetails)? bankContact,
     TResult Function(BillingDetails billingDetails)? giroPay,
@@ -2664,7 +2664,7 @@ mixin _$PaymentMethodParams {
         cardFromToken,
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
-    required TResult Function(_PaymentMethodParamsAli value) aliPay,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsBankContact value)
         bankContact,
@@ -2681,7 +2681,7 @@ mixin _$PaymentMethodParams {
     TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
-    TResult Function(_PaymentMethodParamsAli value)? aliPay,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsBankContact value)? bankContact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
@@ -2825,7 +2825,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
         cardFromToken,
     required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function() aliPay,
+    required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
     required TResult Function(BillingDetails billingDetails) bankContact,
@@ -2847,7 +2847,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(String token, PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
-    TResult Function()? aliPay,
+    TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
     TResult Function(BillingDetails billingDetails)? bankContact,
     TResult Function(BillingDetails billingDetails)? giroPay,
@@ -2871,7 +2871,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
         cardFromToken,
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
-    required TResult Function(_PaymentMethodParamsAli value) aliPay,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsBankContact value)
         bankContact,
@@ -2891,7 +2891,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
-    TResult Function(_PaymentMethodParamsAli value)? aliPay,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsBankContact value)? bankContact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
@@ -3033,7 +3033,7 @@ class _$_PaymentMethodParamsCardWithToken
         cardFromToken,
     required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function() aliPay,
+    required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
     required TResult Function(BillingDetails billingDetails) bankContact,
@@ -3055,7 +3055,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(String token, PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
-    TResult Function()? aliPay,
+    TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
     TResult Function(BillingDetails billingDetails)? bankContact,
     TResult Function(BillingDetails billingDetails)? giroPay,
@@ -3079,7 +3079,7 @@ class _$_PaymentMethodParamsCardWithToken
         cardFromToken,
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
-    required TResult Function(_PaymentMethodParamsAli value) aliPay,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsBankContact value)
         bankContact,
@@ -3099,7 +3099,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
-    TResult Function(_PaymentMethodParamsAli value)? aliPay,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsBankContact value)? bankContact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
@@ -3242,7 +3242,7 @@ class _$_PaymentMethodParamsCardWithMethodId
         cardFromToken,
     required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function() aliPay,
+    required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
     required TResult Function(BillingDetails billingDetails) bankContact,
@@ -3264,7 +3264,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(String token, PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
-    TResult Function()? aliPay,
+    TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
     TResult Function(BillingDetails billingDetails)? bankContact,
     TResult Function(BillingDetails billingDetails)? giroPay,
@@ -3288,7 +3288,7 @@ class _$_PaymentMethodParamsCardWithMethodId
         cardFromToken,
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
-    required TResult Function(_PaymentMethodParamsAli value) aliPay,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsBankContact value)
         bankContact,
@@ -3308,7 +3308,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
-    TResult Function(_PaymentMethodParamsAli value)? aliPay,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsBankContact value)? bankContact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
@@ -3352,42 +3352,43 @@ abstract class _PaymentMethodParamsCardWithMethodId
 }
 
 /// @nodoc
-abstract class _$PaymentMethodParamsAliCopyWith<$Res> {
-  factory _$PaymentMethodParamsAliCopyWith(_PaymentMethodParamsAli value,
-          $Res Function(_PaymentMethodParamsAli) then) =
-      __$PaymentMethodParamsAliCopyWithImpl<$Res>;
+abstract class _$PaymentMethodParamsAlipayCopyWith<$Res> {
+  factory _$PaymentMethodParamsAlipayCopyWith(_PaymentMethodParamsAlipay value,
+          $Res Function(_PaymentMethodParamsAlipay) then) =
+      __$PaymentMethodParamsAlipayCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$PaymentMethodParamsAliCopyWithImpl<$Res>
+class __$PaymentMethodParamsAlipayCopyWithImpl<$Res>
     extends _$PaymentMethodParamsCopyWithImpl<$Res>
-    implements _$PaymentMethodParamsAliCopyWith<$Res> {
-  __$PaymentMethodParamsAliCopyWithImpl(_PaymentMethodParamsAli _value,
-      $Res Function(_PaymentMethodParamsAli) _then)
-      : super(_value, (v) => _then(v as _PaymentMethodParamsAli));
+    implements _$PaymentMethodParamsAlipayCopyWith<$Res> {
+  __$PaymentMethodParamsAlipayCopyWithImpl(_PaymentMethodParamsAlipay _value,
+      $Res Function(_PaymentMethodParamsAlipay) _then)
+      : super(_value, (v) => _then(v as _PaymentMethodParamsAlipay));
 
   @override
-  _PaymentMethodParamsAli get _value => super._value as _PaymentMethodParamsAli;
+  _PaymentMethodParamsAlipay get _value =>
+      super._value as _PaymentMethodParamsAlipay;
 }
 
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('Alipay')
 
 /// @nodoc
-class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
-  const _$_PaymentMethodParamsAli();
+class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
+  const _$_PaymentMethodParamsAlipay();
 
-  factory _$_PaymentMethodParamsAli.fromJson(Map<String, dynamic> json) =>
-      _$_$_PaymentMethodParamsAliFromJson(json);
+  factory _$_PaymentMethodParamsAlipay.fromJson(Map<String, dynamic> json) =>
+      _$_$_PaymentMethodParamsAlipayFromJson(json);
 
   @override
   String toString() {
-    return 'PaymentMethodParams.aliPay()';
+    return 'PaymentMethodParams.alipay()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _PaymentMethodParamsAli);
+    return identical(this, other) || (other is _PaymentMethodParamsAlipay);
   }
 
   @override
@@ -3404,7 +3405,7 @@ class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
         cardFromToken,
     required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function() aliPay,
+    required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
     required TResult Function(BillingDetails billingDetails) bankContact,
@@ -3414,7 +3415,7 @@ class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
     required TResult Function(BillingDetails billingDetails) p24,
     required TResult Function(bool testOfflineBank) fpx,
   }) {
-    return aliPay();
+    return alipay();
   }
 
   @override
@@ -3426,7 +3427,7 @@ class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
     TResult Function(String token, PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
-    TResult Function()? aliPay,
+    TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
     TResult Function(BillingDetails billingDetails)? bankContact,
     TResult Function(BillingDetails billingDetails)? giroPay,
@@ -3436,8 +3437,8 @@ class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
     TResult Function(bool testOfflineBank)? fpx,
     required TResult orElse(),
   }) {
-    if (aliPay != null) {
-      return aliPay();
+    if (alipay != null) {
+      return alipay();
     }
     return orElse();
   }
@@ -3450,7 +3451,7 @@ class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
         cardFromToken,
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
-    required TResult Function(_PaymentMethodParamsAli value) aliPay,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsBankContact value)
         bankContact,
@@ -3460,7 +3461,7 @@ class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
   }) {
-    return aliPay(this);
+    return alipay(this);
   }
 
   @override
@@ -3470,7 +3471,7 @@ class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
     TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
-    TResult Function(_PaymentMethodParamsAli value)? aliPay,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsBankContact value)? bankContact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
@@ -3480,23 +3481,23 @@ class _$_PaymentMethodParamsAli implements _PaymentMethodParamsAli {
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     required TResult orElse(),
   }) {
-    if (aliPay != null) {
-      return aliPay(this);
+    if (alipay != null) {
+      return alipay(this);
     }
     return orElse();
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_PaymentMethodParamsAliToJson(this)..['type'] = 'Alipay';
+    return _$_$_PaymentMethodParamsAlipayToJson(this)..['type'] = 'Alipay';
   }
 }
 
-abstract class _PaymentMethodParamsAli implements PaymentMethodParams {
-  const factory _PaymentMethodParamsAli() = _$_PaymentMethodParamsAli;
+abstract class _PaymentMethodParamsAlipay implements PaymentMethodParams {
+  const factory _PaymentMethodParamsAlipay() = _$_PaymentMethodParamsAlipay;
 
-  factory _PaymentMethodParamsAli.fromJson(Map<String, dynamic> json) =
-      _$_PaymentMethodParamsAli.fromJson;
+  factory _PaymentMethodParamsAlipay.fromJson(Map<String, dynamic> json) =
+      _$_PaymentMethodParamsAlipay.fromJson;
 }
 
 /// @nodoc
@@ -3609,7 +3610,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
         cardFromToken,
     required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function() aliPay,
+    required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
     required TResult Function(BillingDetails billingDetails) bankContact,
@@ -3631,7 +3632,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(String token, PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
-    TResult Function()? aliPay,
+    TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
     TResult Function(BillingDetails billingDetails)? bankContact,
     TResult Function(BillingDetails billingDetails)? giroPay,
@@ -3655,7 +3656,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
         cardFromToken,
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
-    required TResult Function(_PaymentMethodParamsAli value) aliPay,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsBankContact value)
         bankContact,
@@ -3675,7 +3676,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
-    TResult Function(_PaymentMethodParamsAli value)? aliPay,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsBankContact value)? bankContact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
@@ -3812,7 +3813,7 @@ class _$_PaymentMethodParamsBankContact
         cardFromToken,
     required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function() aliPay,
+    required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
     required TResult Function(BillingDetails billingDetails) bankContact,
@@ -3834,7 +3835,7 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(String token, PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
-    TResult Function()? aliPay,
+    TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
     TResult Function(BillingDetails billingDetails)? bankContact,
     TResult Function(BillingDetails billingDetails)? giroPay,
@@ -3858,7 +3859,7 @@ class _$_PaymentMethodParamsBankContact
         cardFromToken,
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
-    required TResult Function(_PaymentMethodParamsAli value) aliPay,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsBankContact value)
         bankContact,
@@ -3878,7 +3879,7 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
-    TResult Function(_PaymentMethodParamsAli value)? aliPay,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsBankContact value)? bankContact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
@@ -4010,7 +4011,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
         cardFromToken,
     required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function() aliPay,
+    required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
     required TResult Function(BillingDetails billingDetails) bankContact,
@@ -4032,7 +4033,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(String token, PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
-    TResult Function()? aliPay,
+    TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
     TResult Function(BillingDetails billingDetails)? bankContact,
     TResult Function(BillingDetails billingDetails)? giroPay,
@@ -4056,7 +4057,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
         cardFromToken,
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
-    required TResult Function(_PaymentMethodParamsAli value) aliPay,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsBankContact value)
         bankContact,
@@ -4076,7 +4077,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
-    TResult Function(_PaymentMethodParamsAli value)? aliPay,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsBankContact value)? bankContact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
@@ -4204,7 +4205,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
         cardFromToken,
     required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function() aliPay,
+    required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
     required TResult Function(BillingDetails billingDetails) bankContact,
@@ -4226,7 +4227,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(String token, PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
-    TResult Function()? aliPay,
+    TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
     TResult Function(BillingDetails billingDetails)? bankContact,
     TResult Function(BillingDetails billingDetails)? giroPay,
@@ -4250,7 +4251,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
         cardFromToken,
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
-    required TResult Function(_PaymentMethodParamsAli value) aliPay,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsBankContact value)
         bankContact,
@@ -4270,7 +4271,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
-    TResult Function(_PaymentMethodParamsAli value)? aliPay,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsBankContact value)? bankContact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
@@ -4398,7 +4399,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
         cardFromToken,
     required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function() aliPay,
+    required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
     required TResult Function(BillingDetails billingDetails) bankContact,
@@ -4420,7 +4421,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(String token, PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
-    TResult Function()? aliPay,
+    TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
     TResult Function(BillingDetails billingDetails)? bankContact,
     TResult Function(BillingDetails billingDetails)? giroPay,
@@ -4444,7 +4445,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
         cardFromToken,
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
-    required TResult Function(_PaymentMethodParamsAli value) aliPay,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsBankContact value)
         bankContact,
@@ -4464,7 +4465,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
-    TResult Function(_PaymentMethodParamsAli value)? aliPay,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsBankContact value)? bankContact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
@@ -4592,7 +4593,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
         cardFromToken,
     required TResult Function(String paymentMethodId, String? cvc)
         cardFromMethodId,
-    required TResult Function() aliPay,
+    required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
     required TResult Function(BillingDetails billingDetails) bankContact,
@@ -4614,7 +4615,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(String token, PaymentIntentsFutureUsage? setupFutureUsage)?
         cardFromToken,
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
-    TResult Function()? aliPay,
+    TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
     TResult Function(BillingDetails billingDetails)? bankContact,
     TResult Function(BillingDetails billingDetails)? giroPay,
@@ -4638,7 +4639,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
         cardFromToken,
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
-    required TResult Function(_PaymentMethodParamsAli value) aliPay,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsBankContact value)
         bankContact,
@@ -4658,7 +4659,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
-    TResult Function(_PaymentMethodParamsAli value)? aliPay,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsBankContact value)? bankContact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
