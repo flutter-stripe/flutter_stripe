@@ -86,11 +86,11 @@ class PaymentScreen extends StatelessWidget {
             },
           ),
           TextButton(
-            onPressed: () {
+            onPressed: () async {
               // create payment method
               final paymentMethod =
                   await Stripe.instance.createPaymentMethod(PaymentMethodParams.card());
-            }
+            },
             child: Text('pay'),
           )
         ],
