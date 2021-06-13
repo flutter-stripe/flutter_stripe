@@ -190,9 +190,9 @@ class __$AddressCopyWithImpl<$Res> extends _$AddressCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_Address implements _Address {
   const _$_Address(
       {required this.city,

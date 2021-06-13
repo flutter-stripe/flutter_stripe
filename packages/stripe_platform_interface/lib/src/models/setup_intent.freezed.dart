@@ -282,9 +282,9 @@ class __$SetupIntentCopyWithImpl<$Res> extends _$SetupIntentCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_SetupIntent implements _SetupIntent {
   const _$_SetupIntent(
       {required this.id,
@@ -583,9 +583,9 @@ class __$LastSetupErrorCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_LastSetupError implements _LastSetupError {
   const _$_LastSetupError({required this.code, required this.message});
 

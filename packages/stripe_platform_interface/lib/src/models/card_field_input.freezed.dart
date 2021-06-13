@@ -260,9 +260,9 @@ class __$CardStyleConstructorCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_CardStyleConstructor extends _CardStyleConstructor {
   _$_CardStyleConstructor(
       {this.borderWidth,
@@ -585,9 +585,9 @@ class __$CardPlaceholderConstructorCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_CardPlaceholderConstructor extends _CardPlaceholderConstructor {
   _$_CardPlaceholderConstructor(
       {this.number, this.expiration, this.cvc, this.postalCode})
@@ -699,8 +699,8 @@ class _$CardFieldInputDetailsTearOff {
   _CardFieldInputDetails call(
       {required bool complete,
       String? last4,
-      String? expiryMonth,
-      String? expiryYear,
+      int? expiryMonth,
+      int? expiryYear,
       String? postalCode,
       String? brand}) {
     return _CardFieldInputDetails(
@@ -730,10 +730,10 @@ mixin _$CardFieldInputDetails {
   String? get last4 => throw _privateConstructorUsedError;
 
   /// Month of the entered expiry date of the card.
-  String? get expiryMonth => throw _privateConstructorUsedError;
+  int? get expiryMonth => throw _privateConstructorUsedError;
 
   /// Year of the entered expiry date of the card.
-  String? get expiryYear => throw _privateConstructorUsedError;
+  int? get expiryYear => throw _privateConstructorUsedError;
 
   /// Entered postcal code.
   String? get postalCode => throw _privateConstructorUsedError;
@@ -755,8 +755,8 @@ abstract class $CardFieldInputDetailsCopyWith<$Res> {
   $Res call(
       {bool complete,
       String? last4,
-      String? expiryMonth,
-      String? expiryYear,
+      int? expiryMonth,
+      int? expiryYear,
       String? postalCode,
       String? brand});
 }
@@ -791,11 +791,11 @@ class _$CardFieldInputDetailsCopyWithImpl<$Res>
       expiryMonth: expiryMonth == freezed
           ? _value.expiryMonth
           : expiryMonth // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       expiryYear: expiryYear == freezed
           ? _value.expiryYear
           : expiryYear // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       postalCode: postalCode == freezed
           ? _value.postalCode
           : postalCode // ignore: cast_nullable_to_non_nullable
@@ -818,8 +818,8 @@ abstract class _$CardFieldInputDetailsCopyWith<$Res>
   $Res call(
       {bool complete,
       String? last4,
-      String? expiryMonth,
-      String? expiryYear,
+      int? expiryMonth,
+      int? expiryYear,
       String? postalCode,
       String? brand});
 }
@@ -856,11 +856,11 @@ class __$CardFieldInputDetailsCopyWithImpl<$Res>
       expiryMonth: expiryMonth == freezed
           ? _value.expiryMonth
           : expiryMonth // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       expiryYear: expiryYear == freezed
           ? _value.expiryYear
           : expiryYear // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       postalCode: postalCode == freezed
           ? _value.postalCode
           : postalCode // ignore: cast_nullable_to_non_nullable
@@ -873,9 +873,9 @@ class __$CardFieldInputDetailsCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_CardFieldInputDetails implements _CardFieldInputDetails {
   const _$_CardFieldInputDetails(
       {required this.complete,
@@ -899,11 +899,11 @@ class _$_CardFieldInputDetails implements _CardFieldInputDetails {
   @override
 
   /// Month of the entered expiry date of the card.
-  final String? expiryMonth;
+  final int? expiryMonth;
   @override
 
   /// Year of the entered expiry date of the card.
-  final String? expiryYear;
+  final int? expiryYear;
   @override
 
   /// Entered postcal code.
@@ -966,8 +966,8 @@ abstract class _CardFieldInputDetails implements CardFieldInputDetails {
   const factory _CardFieldInputDetails(
       {required bool complete,
       String? last4,
-      String? expiryMonth,
-      String? expiryYear,
+      int? expiryMonth,
+      int? expiryYear,
       String? postalCode,
       String? brand}) = _$_CardFieldInputDetails;
 
@@ -985,11 +985,11 @@ abstract class _CardFieldInputDetails implements CardFieldInputDetails {
   @override
 
   /// Month of the entered expiry date of the card.
-  String? get expiryMonth => throw _privateConstructorUsedError;
+  int? get expiryMonth => throw _privateConstructorUsedError;
   @override
 
   /// Year of the entered expiry date of the card.
-  String? get expiryYear => throw _privateConstructorUsedError;
+  int? get expiryYear => throw _privateConstructorUsedError;
   @override
 
   /// Entered postcal code.
@@ -1100,9 +1100,9 @@ class __$CardFieldFocusNameCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_CardFieldFocusName implements _CardFieldFocusName {
   _$_CardFieldFocusName({this.focusedField});
 

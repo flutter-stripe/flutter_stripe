@@ -15,10 +15,10 @@ _$_PaymentIntent _$_$_PaymentIntentFromJson(Map<String, dynamic> json) {
     status: _$enumDecode(_$PaymentIntentsStatusEnumMap, json['status']),
     clientSecret: json['clientSecret'] as String,
     livemode: json['livemode'] as bool,
-    paymentMethodId: json['paymentMethodId'] as String,
     captureMethod: _$enumDecode(_$CaptureMethodEnumMap, json['captureMethod']),
     confirmationMethod:
         _$enumDecode(_$ConfirmationMethodEnumMap, json['confirmationMethod']),
+    paymentMethodId: json['paymentMethodId'] as String?,
     description: json['description'] as String?,
     receiptEmail: json['receiptEmail'] as String?,
     canceledAt: json['canceledAt'] as int?,
@@ -37,10 +37,10 @@ Map<String, dynamic> _$_$_PaymentIntentToJson(_$_PaymentIntent instance) =>
       'status': _$PaymentIntentsStatusEnumMap[instance.status],
       'clientSecret': instance.clientSecret,
       'livemode': instance.livemode,
-      'paymentMethodId': instance.paymentMethodId,
       'captureMethod': _$CaptureMethodEnumMap[instance.captureMethod],
       'confirmationMethod':
           _$ConfirmationMethodEnumMap[instance.confirmationMethod],
+      'paymentMethodId': instance.paymentMethodId,
       'description': instance.description,
       'receiptEmail': instance.receiptEmail,
       'canceledAt': instance.canceledAt,

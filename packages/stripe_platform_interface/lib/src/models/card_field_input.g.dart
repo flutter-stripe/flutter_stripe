@@ -59,8 +59,8 @@ _$_CardFieldInputDetails _$_$_CardFieldInputDetailsFromJson(
   return _$_CardFieldInputDetails(
     complete: json['complete'] as bool,
     last4: json['last4'] as String?,
-    expiryMonth: json['expiryMonth'] as String?,
-    expiryYear: json['expiryYear'] as String?,
+    expiryMonth: json['expiryMonth'] as int?,
+    expiryYear: json['expiryYear'] as int?,
     postalCode: json['postalCode'] as String?,
     brand: json['brand'] as String?,
   );

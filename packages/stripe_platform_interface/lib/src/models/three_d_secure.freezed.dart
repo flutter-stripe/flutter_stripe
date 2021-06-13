@@ -246,9 +246,9 @@ class __$ThreeDSecureConfigurationParamsCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_ThreeDSecureConfigurationParams
     implements _ThreeDSecureConfigurationParams {
   const _$_ThreeDSecureConfigurationParams(
@@ -563,9 +563,9 @@ class __$ThreeDSecureNavigationBarThemeDataCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_ThreeDSecureNavigationBarThemeData
     implements _ThreeDSecureNavigationBarThemeData {
   const _$_ThreeDSecureNavigationBarThemeData(
@@ -855,9 +855,9 @@ class __$ThreeDSecureLabelThemeDataCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_ThreeDSecureLabelThemeData implements _ThreeDSecureLabelThemeData {
   const _$_ThreeDSecureLabelThemeData(
       {this.headingTextColor,
@@ -1131,9 +1131,9 @@ class __$ThreeDSecureTextFieldThemeDataCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_ThreeDSecureTextFieldThemeData
     implements _ThreeDSecureTextFieldThemeData {
   const _$_ThreeDSecureTextFieldThemeData(
@@ -1410,9 +1410,9 @@ class __$ThreeDSecureSubmitButtonThemeDataCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_ThreeDSecureSubmitButtonThemeData
     implements _ThreeDSecureSubmitButtonThemeData {
   const _$_ThreeDSecureSubmitButtonThemeData(

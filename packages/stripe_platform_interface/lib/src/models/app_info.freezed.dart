@@ -138,9 +138,9 @@ class __$AppInfoCopyWithImpl<$Res> extends _$AppInfoCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_AppInfo implements _AppInfo {
   const _$_AppInfo({this.name, this.partnerId, this.url, this.version});
 

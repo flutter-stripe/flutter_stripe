@@ -28,9 +28,9 @@ class _$PaymentIntentTearOff {
       required PaymentIntentsStatus status,
       required String clientSecret,
       required bool livemode,
-      required String paymentMethodId,
       required CaptureMethod captureMethod,
       required ConfirmationMethod confirmationMethod,
+      String? paymentMethodId,
       String? description,
       String? receiptEmail,
       int? canceledAt,
@@ -43,9 +43,9 @@ class _$PaymentIntentTearOff {
       status: status,
       clientSecret: clientSecret,
       livemode: livemode,
-      paymentMethodId: paymentMethodId,
       captureMethod: captureMethod,
       confirmationMethod: confirmationMethod,
+      paymentMethodId: paymentMethodId,
       description: description,
       receiptEmail: receiptEmail,
       canceledAt: canceledAt,
@@ -84,15 +84,15 @@ mixin _$PaymentIntent {
   /// Determines whether the intent is in live mode or in test mode.
   bool get livemode => throw _privateConstructorUsedError;
 
-  /// Id of the payment method used in this intent.
-  String get paymentMethodId => throw _privateConstructorUsedError;
-
   /// How the funds will be caputure from the customer's account.
   CaptureMethod get captureMethod => throw _privateConstructorUsedError;
 
   /// Method of how the payment will be confirmed.
   ConfirmationMethod get confirmationMethod =>
       throw _privateConstructorUsedError;
+
+  /// Id of the payment method used in this intent.
+  String? get paymentMethodId => throw _privateConstructorUsedError;
 
   /// Localized description that provides additional context to users.
   String? get description => throw _privateConstructorUsedError;
@@ -125,9 +125,9 @@ abstract class $PaymentIntentCopyWith<$Res> {
       PaymentIntentsStatus status,
       String clientSecret,
       bool livemode,
-      String paymentMethodId,
       CaptureMethod captureMethod,
       ConfirmationMethod confirmationMethod,
+      String? paymentMethodId,
       String? description,
       String? receiptEmail,
       int? canceledAt,
@@ -154,9 +154,9 @@ class _$PaymentIntentCopyWithImpl<$Res>
     Object? status = freezed,
     Object? clientSecret = freezed,
     Object? livemode = freezed,
-    Object? paymentMethodId = freezed,
     Object? captureMethod = freezed,
     Object? confirmationMethod = freezed,
+    Object? paymentMethodId = freezed,
     Object? description = freezed,
     Object? receiptEmail = freezed,
     Object? canceledAt = freezed,
@@ -191,10 +191,6 @@ class _$PaymentIntentCopyWithImpl<$Res>
           ? _value.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
-      paymentMethodId: paymentMethodId == freezed
-          ? _value.paymentMethodId
-          : paymentMethodId // ignore: cast_nullable_to_non_nullable
-              as String,
       captureMethod: captureMethod == freezed
           ? _value.captureMethod
           : captureMethod // ignore: cast_nullable_to_non_nullable
@@ -203,6 +199,10 @@ class _$PaymentIntentCopyWithImpl<$Res>
           ? _value.confirmationMethod
           : confirmationMethod // ignore: cast_nullable_to_non_nullable
               as ConfirmationMethod,
+      paymentMethodId: paymentMethodId == freezed
+          ? _value.paymentMethodId
+          : paymentMethodId // ignore: cast_nullable_to_non_nullable
+              as String?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -249,9 +249,9 @@ abstract class _$PaymentIntentCopyWith<$Res>
       PaymentIntentsStatus status,
       String clientSecret,
       bool livemode,
-      String paymentMethodId,
       CaptureMethod captureMethod,
       ConfirmationMethod confirmationMethod,
+      String? paymentMethodId,
       String? description,
       String? receiptEmail,
       int? canceledAt,
@@ -281,9 +281,9 @@ class __$PaymentIntentCopyWithImpl<$Res>
     Object? status = freezed,
     Object? clientSecret = freezed,
     Object? livemode = freezed,
-    Object? paymentMethodId = freezed,
     Object? captureMethod = freezed,
     Object? confirmationMethod = freezed,
+    Object? paymentMethodId = freezed,
     Object? description = freezed,
     Object? receiptEmail = freezed,
     Object? canceledAt = freezed,
@@ -318,10 +318,6 @@ class __$PaymentIntentCopyWithImpl<$Res>
           ? _value.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
-      paymentMethodId: paymentMethodId == freezed
-          ? _value.paymentMethodId
-          : paymentMethodId // ignore: cast_nullable_to_non_nullable
-              as String,
       captureMethod: captureMethod == freezed
           ? _value.captureMethod
           : captureMethod // ignore: cast_nullable_to_non_nullable
@@ -330,6 +326,10 @@ class __$PaymentIntentCopyWithImpl<$Res>
           ? _value.confirmationMethod
           : confirmationMethod // ignore: cast_nullable_to_non_nullable
               as ConfirmationMethod,
+      paymentMethodId: paymentMethodId == freezed
+          ? _value.paymentMethodId
+          : paymentMethodId // ignore: cast_nullable_to_non_nullable
+              as String?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -350,9 +350,9 @@ class __$PaymentIntentCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_PaymentIntent implements _PaymentIntent {
   const _$_PaymentIntent(
       {required this.id,
@@ -362,9 +362,9 @@ class _$_PaymentIntent implements _PaymentIntent {
       required this.status,
       required this.clientSecret,
       required this.livemode,
-      required this.paymentMethodId,
       required this.captureMethod,
       required this.confirmationMethod,
+      this.paymentMethodId,
       this.description,
       this.receiptEmail,
       this.canceledAt,
@@ -403,16 +403,16 @@ class _$_PaymentIntent implements _PaymentIntent {
   final bool livemode;
   @override
 
-  /// Id of the payment method used in this intent.
-  final String paymentMethodId;
-  @override
-
   /// How the funds will be caputure from the customer's account.
   final CaptureMethod captureMethod;
   @override
 
   /// Method of how the payment will be confirmed.
   final ConfirmationMethod confirmationMethod;
+  @override
+
+  /// Id of the payment method used in this intent.
+  final String? paymentMethodId;
   @override
 
   /// Localized description that provides additional context to users.
@@ -432,7 +432,7 @@ class _$_PaymentIntent implements _PaymentIntent {
 
   @override
   String toString() {
-    return 'PaymentIntent(id: $id, amount: $amount, created: $created, currency: $currency, status: $status, clientSecret: $clientSecret, livemode: $livemode, paymentMethodId: $paymentMethodId, captureMethod: $captureMethod, confirmationMethod: $confirmationMethod, description: $description, receiptEmail: $receiptEmail, canceledAt: $canceledAt, shipping: $shipping)';
+    return 'PaymentIntent(id: $id, amount: $amount, created: $created, currency: $currency, status: $status, clientSecret: $clientSecret, livemode: $livemode, captureMethod: $captureMethod, confirmationMethod: $confirmationMethod, paymentMethodId: $paymentMethodId, description: $description, receiptEmail: $receiptEmail, canceledAt: $canceledAt, shipping: $shipping)';
   }
 
   @override
@@ -457,15 +457,15 @@ class _$_PaymentIntent implements _PaymentIntent {
             (identical(other.livemode, livemode) ||
                 const DeepCollectionEquality()
                     .equals(other.livemode, livemode)) &&
-            (identical(other.paymentMethodId, paymentMethodId) ||
-                const DeepCollectionEquality()
-                    .equals(other.paymentMethodId, paymentMethodId)) &&
             (identical(other.captureMethod, captureMethod) ||
                 const DeepCollectionEquality()
                     .equals(other.captureMethod, captureMethod)) &&
             (identical(other.confirmationMethod, confirmationMethod) ||
                 const DeepCollectionEquality()
                     .equals(other.confirmationMethod, confirmationMethod)) &&
+            (identical(other.paymentMethodId, paymentMethodId) ||
+                const DeepCollectionEquality()
+                    .equals(other.paymentMethodId, paymentMethodId)) &&
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
@@ -490,9 +490,9 @@ class _$_PaymentIntent implements _PaymentIntent {
       const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(clientSecret) ^
       const DeepCollectionEquality().hash(livemode) ^
-      const DeepCollectionEquality().hash(paymentMethodId) ^
       const DeepCollectionEquality().hash(captureMethod) ^
       const DeepCollectionEquality().hash(confirmationMethod) ^
+      const DeepCollectionEquality().hash(paymentMethodId) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(receiptEmail) ^
       const DeepCollectionEquality().hash(canceledAt) ^
@@ -518,9 +518,9 @@ abstract class _PaymentIntent implements PaymentIntent {
       required PaymentIntentsStatus status,
       required String clientSecret,
       required bool livemode,
-      required String paymentMethodId,
       required CaptureMethod captureMethod,
       required ConfirmationMethod confirmationMethod,
+      String? paymentMethodId,
       String? description,
       String? receiptEmail,
       int? canceledAt,
@@ -559,10 +559,6 @@ abstract class _PaymentIntent implements PaymentIntent {
   bool get livemode => throw _privateConstructorUsedError;
   @override
 
-  /// Id of the payment method used in this intent.
-  String get paymentMethodId => throw _privateConstructorUsedError;
-  @override
-
   /// How the funds will be caputure from the customer's account.
   CaptureMethod get captureMethod => throw _privateConstructorUsedError;
   @override
@@ -570,6 +566,10 @@ abstract class _PaymentIntent implements PaymentIntent {
   /// Method of how the payment will be confirmed.
   ConfirmationMethod get confirmationMethod =>
       throw _privateConstructorUsedError;
+  @override
+
+  /// Id of the payment method used in this intent.
+  String? get paymentMethodId => throw _privateConstructorUsedError;
   @override
 
   /// Localized description that provides additional context to users.
@@ -773,9 +773,9 @@ class __$ShippingDetailsCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_ShippingDetails implements _ShippingDetails {
   const _$_ShippingDetails(
       {required this.address,

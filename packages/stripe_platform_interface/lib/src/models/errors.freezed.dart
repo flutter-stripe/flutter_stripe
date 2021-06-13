@@ -127,9 +127,9 @@ class __$StripeErrorGenericCopyWithImpl<T, $Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_StripeErrorGeneric<T> implements _StripeErrorGeneric<T> {
   const _$_StripeErrorGeneric(
       {required this.message,

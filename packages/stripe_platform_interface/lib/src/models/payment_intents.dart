@@ -37,14 +37,15 @@ class PaymentIntent with _$PaymentIntent {
     /// Determines whether the intent is in live mode or in test mode.
     required bool livemode,
 
-    /// Id of the payment method used in this intent.
-    required String paymentMethodId,
-
     /// How the funds will be caputure from the customer's account.
     required CaptureMethod captureMethod,
 
     /// Method of how the payment will be confirmed.
     required ConfirmationMethod confirmationMethod,
+
+    /// Id of the payment method used in this intent.
+    String? paymentMethodId,
+
     /// Localized description that provides additional context to users.
     String? description,
 

@@ -277,9 +277,8 @@ class __$SetupParametersCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_SetupParameters implements _SetupParameters {
   const _$_SetupParameters(
       {this.customFlow = false,
@@ -609,9 +608,8 @@ class __$PresentParametersCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_PresentParameters implements _PresentParameters {
   const _$_PresentParameters(
       {required this.clientSecret, this.confirmPayment = false});

@@ -131,10 +131,10 @@ class CardFieldInputDetails with _$CardFieldInputDetails {
     String? last4,
 
     /// Month of the entered expiry date of the card.
-    String? expiryMonth,
+    int? expiryMonth,
 
     /// Year of the entered expiry date of the card.
-    String? expiryYear,
+    int? expiryYear,
 
     /// Entered postcal code.
     String? postalCode,

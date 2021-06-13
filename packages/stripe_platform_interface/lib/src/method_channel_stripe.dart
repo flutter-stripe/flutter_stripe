@@ -80,7 +80,10 @@ class MethodChannelStripe extends StripePlatform {
         'params': params.toJson(),
         'options': options,
       });
-      return PaymentIntent.fromJson(result.unfoldToNonNull());
+
+      final tmp = result?['paymentIntent'] as Map<String, dynamic>;
+
+      return PaymentIntent.fromJson(tmp.unfoldToNonNull());
     } on Exception catch (_) {
       throw const StripeError<PaymentIntentError>(
         code: PaymentIntentError.unknown,
@@ -124,7 +127,9 @@ class MethodChannelStripe extends StripePlatform {
         'paymentIntentClientSecret': paymentIntentClientSecret,
       });
 
-      return PaymentIntent.fromJson(result.unfoldToNonNull());
+      final tmp = result?['paymentIntent'] as Map<String, dynamic>;
+
+      return PaymentIntent.fromJson(tmp.unfoldToNonNull());
     } on Exception catch (_) {
       throw const StripeError<PaymentIntentError>(
         code: PaymentIntentError.unknown,
@@ -159,7 +164,9 @@ class MethodChannelStripe extends StripePlatform {
         'clientSecret': clientSecret,
       });
 
-      return PaymentIntent.fromJson(result.unfoldToNonNull());
+      final tmp = result?['paymentIntent'] as Map<String, dynamic>;
+
+      return PaymentIntent.fromJson(tmp.unfoldToNonNull());
     } on Exception catch (_) {
       throw const StripeError<PaymentIntentError>(
         code: PaymentIntentError.unknown,
