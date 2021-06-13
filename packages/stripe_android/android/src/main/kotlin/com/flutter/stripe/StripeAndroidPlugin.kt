@@ -27,10 +27,6 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private lateinit var channel: MethodChannel
     lateinit var stripeSdk: StripeSdkModule
 
-    // set to true when the plugin has initialized - this is used as an indicator to receive
-    // activity results
-    var isInitialized = false
-
     private val stripeSdkCardViewManager: StripeSdkCardViewManager by lazy {
         StripeSdkCardViewManager()
     }
@@ -58,7 +54,6 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                         params = ReadableMap(call.arguments as JSONObject),
                         promise = Promise(result),
                 )
-                isInitialized = true
             }
             "createPaymentMethod" -> stripeSdk.createPaymentMethod(
                     data = call.requiredArgument("data"),
@@ -100,6 +95,10 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             "confirmPaymentSheetPayment" -> stripeSdk.confirmPaymentSheetPayment(
                     promise = Promise(result)
             )
+            "createToken" -> stripeSdk.createToken(
+                    promise = Promise(result),
+                    params = call.requiredArgument("params")
+            )
             /*"registerConfirmSetupIntentCallbacks" -> stripeSdk.registerConfirmSetupIntentCallbacks(
                     successCallback = Promise(result),
                     errorCallback = Promise(result),
@@ -118,7 +117,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
         if (binding.activity is FlutterFragmentActivity) {
-            stripeSdk = StripeSdkModule(ReactApplicationContext(binding, this), stripeSdkCardViewManager)
+            stripeSdk = StripeSdkModule(ReactApplicationContext(binding), stripeSdkCardViewManager)
         } else {
             // no-op - will throw errors when method channel is called
         }

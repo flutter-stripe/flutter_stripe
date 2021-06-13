@@ -14,17 +14,14 @@ import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
 public class ReactApplicationContext extends ContextWrapper {
 
     private final ActivityPluginBinding binding;
-    private final StripeAndroidPlugin pluginInstance;
 
-    public ReactApplicationContext(ActivityPluginBinding binding, StripeAndroidPlugin pluginInstance) {
+    public ReactApplicationContext(ActivityPluginBinding binding) {
         super(binding.getActivity());
         this.binding = binding;
-        this.pluginInstance = pluginInstance;
     }
 
     public void addActivityEventListener(@NotNull BaseActivityEventListener activityEventListener) {
         activityEventListener.activity = new WeakReference(binding.getActivity());
-        activityEventListener.setPluginInstance(pluginInstance);
         binding.addActivityResultListener(activityEventListener);
     }
 
