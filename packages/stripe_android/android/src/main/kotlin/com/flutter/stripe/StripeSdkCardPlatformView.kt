@@ -46,7 +46,7 @@ class StripeSdkCardPlatformView(
 
     /**
      * https://github.com/flutter-stripe/flutter_stripe/issues/14
-     * https://github.com/flutter/engine/pull/26602 introduced HC_PLATFORM_VIEW was introduced in
+     * https://github.com/flutter/engine/pull/26602 HC_PLATFORM_VIEW was introduced in
      * that PR - we're checking for its availability and apply the old fix accordingly
      */
     private fun applyFocusFix() {
