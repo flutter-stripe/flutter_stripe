@@ -161,15 +161,19 @@ class CardFieldFocusName with _$CardFieldFocusName {
 /// Enum representing the different fiels on the card field.
 enum CardFieldName {
   @JsonValue('CardNumber')
+
   /// Card number field.
   cardNumber,
   @JsonValue('Cvc')
+
   /// Cvc field.
   cvc,
   @JsonValue('ExpiryDate')
+
   /// Expiry date field.
   expiryDate,
   @JsonValue('PostalCode')
+
   /// Postal code field.
   postalCode,
 }

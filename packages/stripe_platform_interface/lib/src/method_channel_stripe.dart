@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/services.dart';
+import 'package:stripe_platform_interface/src/models/create_token_data.dart';
 
 import 'models/app_info.dart';
 import 'models/apple_pay.dart';
@@ -198,6 +199,21 @@ class MethodChannelStripe extends StripePlatform {
   @override
   Future<void> confirmPaymentSheetPayment() async {
     await _methodChannel.invokeMethod('confirmPaymentSheetPayment');
+  }
+
+  @override
+  Future<TokenData> createToken(CreateTokenParams params) async {
+    try {
+      final result = await _methodChannel.invokeMapMethod<String, dynamic>(
+          'createToken', {'params': params.toJson()});
+
+      return TokenData.fromJson(result.unfoldToNonNull());
+    } on Exception catch (e) {
+      throw StripeError<CreateTokenError>(
+        code: CreateTokenError.unknown,
+        message: 'Create token failed with exception: $e',
+      );
+    }
   }
 }
 

@@ -2,6 +2,7 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'method_channel_stripe.dart';
 import 'models/apple_pay.dart';
+import 'models/create_token_data.dart';
 import 'models/payment_intents.dart';
 import 'models/payment_methods.dart';
 import 'models/payment_sheet.dart';
@@ -57,6 +58,11 @@ abstract class StripePlatform extends PlatformInterface {
 
   Future<void> presentApplePay(ApplePayPresentParams params);
   Future<void> confirmApplePayPayment(String clientSecret);
+
+  /// Creates a token for card details.
+  ///
+  /// Note this method is legacy and it is advised to use [PaymentIntent].
+  Future<TokenData> createToken(CreateTokenParams params);
   Future<SetupIntent> confirmSetupIntent(
       String setupIntentClientSecret, PaymentMethodParams data,
       [Map<String, String> options = const {}]);
