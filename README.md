@@ -172,8 +172,8 @@ Future<void> onGooglePayResult(paymentResult) async {
 
 ## Known issues
 
-- The Card field on Android has focus issues - it's being tracked in [#14](https://github.com/flutter-stripe/flutter_stripe/issues/14) and related to issues in the Flutter framework. If this is a
-  blocker for your project consider using the PaymentSheet alternative
+- The Card field on Android has focus issues on older Flutter versions - it has been fixed by the Flutter framework in
+  the master branch. The issue is being tracked in [#14](https://github.com/flutter-stripe/flutter_stripe/issues/14).
 
 ## Contributing
 
