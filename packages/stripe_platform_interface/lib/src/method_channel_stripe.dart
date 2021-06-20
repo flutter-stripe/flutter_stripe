@@ -104,8 +104,9 @@ class MethodChannelStripe extends StripePlatform {
       'params': data.toJson(),
       'options': options,
     });
+    final tmp = result.unfoldToNonNull();
 
-    return SetupIntent.fromJson(result.unfoldToNonNull());
+    return SetupIntent.fromJson(tmp['setupIntent']);
   }
 
   @override
