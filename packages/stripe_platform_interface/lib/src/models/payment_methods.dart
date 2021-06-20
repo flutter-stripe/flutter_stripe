@@ -327,7 +327,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
 
   /// Config parameters for bankcontact payment method.
 
-  const factory PaymentMethodParams.bankContact({
+  const factory PaymentMethodParams.bancontact({
     /// Billing information.
 
     required BillingDetails billingDetails,
@@ -382,6 +382,42 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.fpx({
     required bool testOfflineBank,
   }) = _PaymentMethodParamsFpx;
+
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('SepaDebit')
+  const factory PaymentMethodParams.sepaDebit({
+    required String iban,
+    PaymentIntentsFutureUsage? setupFutureUsage,
+
+    /// Billing information.
+    required BillingDetails billingDetails,
+  }) = _PaymentMethodParamsSepaDebit;
+
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('Sofort')
+  const factory PaymentMethodParams.sofort({
+    required String country,
+    PaymentIntentsFutureUsage? setupFutureUsage,
+
+    /// Billing information.
+    required BillingDetails billingDetails,
+  }) = _PaymentMethodParamsSofort;
+
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('AfterpayClearpay')
+  const factory PaymentMethodParams.afterpayClearpay({
+    required ShippingDetails shippingDetails,
+
+    /// Billing information.
+    required BillingDetails billingDetails,
+  }) = _PaymentMethodParamsAfterpayClearpay;
+
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('Oxxo')
+  const factory PaymentMethodParams.oxxo({
+    /// Billing information.
+    required BillingDetails billingDetails,
+  }) = _PaymentMethodParamsOxxo;
 
   factory PaymentMethodParams.fromJson(Map<String, dynamic> json) =>
       _$PaymentMethodParamsFromJson(json);

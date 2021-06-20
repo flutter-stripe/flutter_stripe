@@ -377,3 +377,75 @@ Map<String, dynamic> _$_$_PaymentMethodParamsFpxToJson(
     <String, dynamic>{
       'testOfflineBank': instance.testOfflineBank,
     };
+
+_$_PaymentMethodParamsSepaDebit _$_$_PaymentMethodParamsSepaDebitFromJson(
+    Map<String, dynamic> json) {
+  return _$_PaymentMethodParamsSepaDebit(
+    iban: json['iban'] as String,
+    setupFutureUsage: _$enumDecodeNullable(
+        _$PaymentIntentsFutureUsageEnumMap, json['setupFutureUsage']),
+    billingDetails:
+        BillingDetails.fromJson(json['billingDetails'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$_$_PaymentMethodParamsSepaDebitToJson(
+        _$_PaymentMethodParamsSepaDebit instance) =>
+    <String, dynamic>{
+      'iban': instance.iban,
+      'setupFutureUsage':
+          _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
+      'billingDetails': instance.billingDetails.toJson(),
+    };
+
+_$_PaymentMethodParamsSofort _$_$_PaymentMethodParamsSofortFromJson(
+    Map<String, dynamic> json) {
+  return _$_PaymentMethodParamsSofort(
+    country: json['country'] as String,
+    setupFutureUsage: _$enumDecodeNullable(
+        _$PaymentIntentsFutureUsageEnumMap, json['setupFutureUsage']),
+    billingDetails:
+        BillingDetails.fromJson(json['billingDetails'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$_$_PaymentMethodParamsSofortToJson(
+        _$_PaymentMethodParamsSofort instance) =>
+    <String, dynamic>{
+      'country': instance.country,
+      'setupFutureUsage':
+          _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
+      'billingDetails': instance.billingDetails.toJson(),
+    };
+
+_$_PaymentMethodParamsAfterpayClearpay
+    _$_$_PaymentMethodParamsAfterpayClearpayFromJson(
+        Map<String, dynamic> json) {
+  return _$_PaymentMethodParamsAfterpayClearpay(
+    shippingDetails: ShippingDetails.fromJson(
+        json['shippingDetails'] as Map<String, dynamic>),
+    billingDetails:
+        BillingDetails.fromJson(json['billingDetails'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$_$_PaymentMethodParamsAfterpayClearpayToJson(
+        _$_PaymentMethodParamsAfterpayClearpay instance) =>
+    <String, dynamic>{
+      'shippingDetails': instance.shippingDetails.toJson(),
+      'billingDetails': instance.billingDetails.toJson(),
+    };
+
+_$_PaymentMethodParamsOxxo _$_$_PaymentMethodParamsOxxoFromJson(
+    Map<String, dynamic> json) {
+  return _$_PaymentMethodParamsOxxo(
+    billingDetails:
+        BillingDetails.fromJson(json['billingDetails'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$_$_PaymentMethodParamsOxxoToJson(
+        _$_PaymentMethodParamsOxxo instance) =>
+    <String, dynamic>{
+      'billingDetails': instance.billingDetails.toJson(),
+    };
