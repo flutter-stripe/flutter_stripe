@@ -298,71 +298,81 @@ Map<String, dynamic> _$_$_PaymentMethodParamsIdealToJson(
 _$_PaymentMethodParamsBankContact _$_$_PaymentMethodParamsBankContactFromJson(
     Map<String, dynamic> json) {
   return _$_PaymentMethodParamsBankContact(
-    billingDetails:
-        BillingDetails.fromJson(json['billingDetails'] as Map<String, dynamic>),
+    billingDetails: json['billingDetails'] == null
+        ? null
+        : BillingDetails.fromJson(
+            json['billingDetails'] as Map<String, dynamic>),
   );
 }
 
 Map<String, dynamic> _$_$_PaymentMethodParamsBankContactToJson(
         _$_PaymentMethodParamsBankContact instance) =>
     <String, dynamic>{
-      'billingDetails': instance.billingDetails.toJson(),
+      'billingDetails': instance.billingDetails?.toJson(),
     };
 
 _$_PaymentMethodParamsGiroPay _$_$_PaymentMethodParamsGiroPayFromJson(
     Map<String, dynamic> json) {
   return _$_PaymentMethodParamsGiroPay(
-    billingDetails:
-        BillingDetails.fromJson(json['billingDetails'] as Map<String, dynamic>),
+    billingDetails: json['billingDetails'] == null
+        ? null
+        : BillingDetails.fromJson(
+            json['billingDetails'] as Map<String, dynamic>),
   );
 }
 
 Map<String, dynamic> _$_$_PaymentMethodParamsGiroPayToJson(
         _$_PaymentMethodParamsGiroPay instance) =>
     <String, dynamic>{
-      'billingDetails': instance.billingDetails.toJson(),
+      'billingDetails': instance.billingDetails?.toJson(),
     };
 
 _$_PaymentMethodParamsEps _$_$_PaymentMethodParamsEpsFromJson(
     Map<String, dynamic> json) {
   return _$_PaymentMethodParamsEps(
-    billingDetails:
-        BillingDetails.fromJson(json['billingDetails'] as Map<String, dynamic>),
+    billingDetails: json['billingDetails'] == null
+        ? null
+        : BillingDetails.fromJson(
+            json['billingDetails'] as Map<String, dynamic>),
   );
 }
 
 Map<String, dynamic> _$_$_PaymentMethodParamsEpsToJson(
         _$_PaymentMethodParamsEps instance) =>
     <String, dynamic>{
-      'billingDetails': instance.billingDetails.toJson(),
+      'billingDetails': instance.billingDetails?.toJson(),
     };
 
 _$_PaymentMethodParamsPay _$_$_PaymentMethodParamsPayFromJson(
     Map<String, dynamic> json) {
   return _$_PaymentMethodParamsPay(
-    billingDetails:
-        BillingDetails.fromJson(json['billingDetails'] as Map<String, dynamic>),
+    billingDetails: json['billingDetails'] == null
+        ? null
+        : BillingDetails.fromJson(
+            json['billingDetails'] as Map<String, dynamic>),
   );
 }
 
 Map<String, dynamic> _$_$_PaymentMethodParamsPayToJson(
         _$_PaymentMethodParamsPay instance) =>
     <String, dynamic>{
-      'billingDetails': instance.billingDetails.toJson(),
+      'billingDetails': instance.billingDetails?.toJson(),
     };
 
 _$_PaymentMethodParamsP24 _$_$_PaymentMethodParamsP24FromJson(
     Map<String, dynamic> json) {
   return _$_PaymentMethodParamsP24(
-    billingDetails:
-        BillingDetails.fromJson(json['billingDetails'] as Map<String, dynamic>),
+    billingDetails: json['billingDetails'] == null
+        ? null
+        : BillingDetails.fromJson(
+            json['billingDetails'] as Map<String, dynamic>),
   );
 }
 
 Map<String, dynamic> _$_$_PaymentMethodParamsP24ToJson(
         _$_PaymentMethodParamsP24 instance) =>
     <String, dynamic>{
-      'billingDetails': instance.billingDetails.toJson(),
+      'billingDetails': instance.billingDetails?.toJson(),
     };
 
 _$_PaymentMethodParamsFpx _$_$_PaymentMethodParamsFpxFromJson(
@@ -376,4 +386,84 @@ Map<String, dynamic> _$_$_PaymentMethodParamsFpxToJson(
         _$_PaymentMethodParamsFpx instance) =>
     <String, dynamic>{
       'testOfflineBank': instance.testOfflineBank,
+    };
+
+_$_PaymentMethodParamsSepaDebit _$_$_PaymentMethodParamsSepaDebitFromJson(
+    Map<String, dynamic> json) {
+  return _$_PaymentMethodParamsSepaDebit(
+    iban: json['iban'] as String,
+    setupFutureUsage: _$enumDecodeNullable(
+        _$PaymentIntentsFutureUsageEnumMap, json['setupFutureUsage']),
+    billingDetails: json['billingDetails'] == null
+        ? null
+        : BillingDetails.fromJson(
+            json['billingDetails'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$_$_PaymentMethodParamsSepaDebitToJson(
+        _$_PaymentMethodParamsSepaDebit instance) =>
+    <String, dynamic>{
+      'iban': instance.iban,
+      'setupFutureUsage':
+          _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
+      'billingDetails': instance.billingDetails?.toJson(),
+    };
+
+_$_PaymentMethodParamsSofort _$_$_PaymentMethodParamsSofortFromJson(
+    Map<String, dynamic> json) {
+  return _$_PaymentMethodParamsSofort(
+    country: json['country'] as String,
+    setupFutureUsage: _$enumDecodeNullable(
+        _$PaymentIntentsFutureUsageEnumMap, json['setupFutureUsage']),
+    billingDetails: json['billingDetails'] == null
+        ? null
+        : BillingDetails.fromJson(
+            json['billingDetails'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$_$_PaymentMethodParamsSofortToJson(
+        _$_PaymentMethodParamsSofort instance) =>
+    <String, dynamic>{
+      'country': instance.country,
+      'setupFutureUsage':
+          _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
+      'billingDetails': instance.billingDetails?.toJson(),
+    };
+
+_$_PaymentMethodParamsAfterpayClearpay
+    _$_$_PaymentMethodParamsAfterpayClearpayFromJson(
+        Map<String, dynamic> json) {
+  return _$_PaymentMethodParamsAfterpayClearpay(
+    shippingDetails: ShippingDetails.fromJson(
+        json['shippingDetails'] as Map<String, dynamic>),
+    billingDetails: json['billingDetails'] == null
+        ? null
+        : BillingDetails.fromJson(
+            json['billingDetails'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$_$_PaymentMethodParamsAfterpayClearpayToJson(
+        _$_PaymentMethodParamsAfterpayClearpay instance) =>
+    <String, dynamic>{
+      'shippingDetails': instance.shippingDetails.toJson(),
+      'billingDetails': instance.billingDetails?.toJson(),
+    };
+
+_$_PaymentMethodParamsOxxo _$_$_PaymentMethodParamsOxxoFromJson(
+    Map<String, dynamic> json) {
+  return _$_PaymentMethodParamsOxxo(
+    billingDetails: json['billingDetails'] == null
+        ? null
+        : BillingDetails.fromJson(
+            json['billingDetails'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$_$_PaymentMethodParamsOxxoToJson(
+        _$_PaymentMethodParamsOxxo instance) =>
+    <String, dynamic>{
+      'billingDetails': instance.billingDetails?.toJson(),
     };

@@ -327,10 +327,10 @@ class PaymentMethodParams with _$PaymentMethodParams {
 
   /// Config parameters for bankcontact payment method.
 
-  const factory PaymentMethodParams.bankContact({
+  const factory PaymentMethodParams.bancontact({
     /// Billing information.
 
-    required BillingDetails billingDetails,
+    BillingDetails? billingDetails,
   }) = _PaymentMethodParamsBankContact;
 
   @JsonSerializable(explicitToJson: true)
@@ -341,7 +341,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.giroPay({
     /// Billing information.
 
-    required BillingDetails billingDetails,
+    BillingDetails? billingDetails,
   }) = _PaymentMethodParamsGiroPay;
 
   @JsonSerializable(explicitToJson: true)
@@ -352,7 +352,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.eps({
     /// Billing information.
 
-    required BillingDetails billingDetails,
+    BillingDetails? billingDetails,
   }) = _PaymentMethodParamsEps;
 
   @JsonSerializable(explicitToJson: true)
@@ -363,7 +363,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.grabPay({
     /// Billing information.
 
-    required BillingDetails billingDetails,
+    BillingDetails? billingDetails,
   }) = _PaymentMethodParamsPay;
 
   @JsonSerializable(explicitToJson: true)
@@ -374,7 +374,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.p24({
     /// Billing information.
 
-    required BillingDetails billingDetails,
+    BillingDetails? billingDetails,
   }) = _PaymentMethodParamsP24;
 
   @JsonSerializable(explicitToJson: true)
@@ -382,6 +382,42 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.fpx({
     required bool testOfflineBank,
   }) = _PaymentMethodParamsFpx;
+
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('SepaDebit')
+  const factory PaymentMethodParams.sepaDebit({
+    required String iban,
+    PaymentIntentsFutureUsage? setupFutureUsage,
+
+    /// Billing information.
+    BillingDetails? billingDetails,
+  }) = _PaymentMethodParamsSepaDebit;
+
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('Sofort')
+  const factory PaymentMethodParams.sofort({
+    required String country,
+    PaymentIntentsFutureUsage? setupFutureUsage,
+
+    /// Billing information.
+    BillingDetails? billingDetails,
+  }) = _PaymentMethodParamsSofort;
+
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('AfterpayClearpay')
+  const factory PaymentMethodParams.afterpayClearpay({
+    required ShippingDetails shippingDetails,
+
+    /// Billing information.
+    BillingDetails? billingDetails,
+  }) = _PaymentMethodParamsAfterpayClearpay;
+
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('Oxxo')
+  const factory PaymentMethodParams.oxxo({
+    /// Billing information.
+    BillingDetails? billingDetails,
+  }) = _PaymentMethodParamsOxxo;
 
   factory PaymentMethodParams.fromJson(Map<String, dynamic> json) =>
       _$PaymentMethodParamsFromJson(json);
