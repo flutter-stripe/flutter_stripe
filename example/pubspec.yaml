@@ -10,9 +10,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_stripe: ^1.0.2
+  flutter_stripe:
+    path: ../packages/stripe
   pay: ^1.0.1
   http: ^0.13.1
+
+dependency_overrides:
+  stripe_android:
+    path: ../packages/stripe_android
   
 
 dev_dependencies:
