@@ -330,7 +330,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.bancontact({
     /// Billing information.
 
-    required BillingDetails billingDetails,
+    BillingDetails? billingDetails,
   }) = _PaymentMethodParamsBankContact;
 
   @JsonSerializable(explicitToJson: true)
@@ -341,7 +341,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.giroPay({
     /// Billing information.
 
-    required BillingDetails billingDetails,
+    BillingDetails? billingDetails,
   }) = _PaymentMethodParamsGiroPay;
 
   @JsonSerializable(explicitToJson: true)
@@ -352,7 +352,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.eps({
     /// Billing information.
 
-    required BillingDetails billingDetails,
+    BillingDetails? billingDetails,
   }) = _PaymentMethodParamsEps;
 
   @JsonSerializable(explicitToJson: true)
@@ -363,7 +363,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.grabPay({
     /// Billing information.
 
-    required BillingDetails billingDetails,
+    BillingDetails? billingDetails,
   }) = _PaymentMethodParamsPay;
 
   @JsonSerializable(explicitToJson: true)
@@ -374,7 +374,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.p24({
     /// Billing information.
 
-    required BillingDetails billingDetails,
+    BillingDetails? billingDetails,
   }) = _PaymentMethodParamsP24;
 
   @JsonSerializable(explicitToJson: true)
@@ -390,7 +390,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
     PaymentIntentsFutureUsage? setupFutureUsage,
 
     /// Billing information.
-    required BillingDetails billingDetails,
+    BillingDetails? billingDetails,
   }) = _PaymentMethodParamsSepaDebit;
 
   @JsonSerializable(explicitToJson: true)
@@ -400,7 +400,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
     PaymentIntentsFutureUsage? setupFutureUsage,
 
     /// Billing information.
-    required BillingDetails billingDetails,
+    BillingDetails? billingDetails,
   }) = _PaymentMethodParamsSofort;
 
   @JsonSerializable(explicitToJson: true)
@@ -409,14 +409,14 @@ class PaymentMethodParams with _$PaymentMethodParams {
     required ShippingDetails shippingDetails,
 
     /// Billing information.
-    required BillingDetails billingDetails,
+    BillingDetails? billingDetails,
   }) = _PaymentMethodParamsAfterpayClearpay;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Oxxo')
   const factory PaymentMethodParams.oxxo({
     /// Billing information.
-    required BillingDetails billingDetails,
+    BillingDetails? billingDetails,
   }) = _PaymentMethodParamsOxxo;
 
   factory PaymentMethodParams.fromJson(Map<String, dynamic> json) =>
