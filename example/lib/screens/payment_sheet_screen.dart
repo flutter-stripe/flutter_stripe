@@ -80,6 +80,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error: $e')),
       );
+      rethrow;
     }
   }
 
@@ -107,6 +108,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
           content: Text('$e'),
         ),
       );
+       rethrow;
     }
   }
 }
