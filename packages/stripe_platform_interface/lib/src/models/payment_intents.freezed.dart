@@ -23,7 +23,7 @@ class _$PaymentIntentTearOff {
   _PaymentIntent call(
       {required String id,
       required num amount,
-      required int created,
+      required String created,
       required String currency,
       required PaymentIntentsStatus status,
       required String clientSecret,
@@ -70,7 +70,7 @@ mixin _$PaymentIntent {
   num get amount => throw _privateConstructorUsedError;
 
   /// Timestamp since epoch that represents the time the intent is created.
-  int get created => throw _privateConstructorUsedError;
+  String get created => throw _privateConstructorUsedError;
 
   /// The three letter ISO 4217 code for the currency.
   String get currency => throw _privateConstructorUsedError;
@@ -120,7 +120,7 @@ abstract class $PaymentIntentCopyWith<$Res> {
   $Res call(
       {String id,
       num amount,
-      int created,
+      String created,
       String currency,
       PaymentIntentsStatus status,
       String clientSecret,
@@ -174,7 +174,7 @@ class _$PaymentIntentCopyWithImpl<$Res>
       created: created == freezed
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       currency: currency == freezed
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
@@ -244,7 +244,7 @@ abstract class _$PaymentIntentCopyWith<$Res>
   $Res call(
       {String id,
       num amount,
-      int created,
+      String created,
       String currency,
       PaymentIntentsStatus status,
       String clientSecret,
@@ -301,7 +301,7 @@ class __$PaymentIntentCopyWithImpl<$Res>
       created: created == freezed
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       currency: currency == freezed
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
@@ -384,7 +384,7 @@ class _$_PaymentIntent implements _PaymentIntent {
   @override
 
   /// Timestamp since epoch that represents the time the intent is created.
-  final int created;
+  final String created;
   @override
 
   /// The three letter ISO 4217 code for the currency.
@@ -513,7 +513,7 @@ abstract class _PaymentIntent implements PaymentIntent {
   const factory _PaymentIntent(
       {required String id,
       required num amount,
-      required int created,
+      required String created,
       required String currency,
       required PaymentIntentsStatus status,
       required String clientSecret,
@@ -540,7 +540,7 @@ abstract class _PaymentIntent implements PaymentIntent {
   @override
 
   /// Timestamp since epoch that represents the time the intent is created.
-  int get created => throw _privateConstructorUsedError;
+  String get created => throw _privateConstructorUsedError;
   @override
 
   /// The three letter ISO 4217 code for the currency.

@@ -55,8 +55,11 @@ class MethodChannelStripe extends StripePlatform {
       'data': data.toJson(),
       'options': options,
     });
+
+    final tmp = result?['paymentMethod'] as Map<String, dynamic>; 
+
     return PaymentMethod.fromJson(
-      result.unfoldToNonNull(),
+      tmp.unfoldToNonNull(),
     );
   }
 
@@ -178,7 +181,7 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<void> initPaymentSheet(SetupPaymentSheetParameters params) async {
-    await _methodChannel.invokeMapMethod(
+    await _methodChannel.invokeMethod(
       'initPaymentSheet',
       {'params': params.toJson()},
     );

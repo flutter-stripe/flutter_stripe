@@ -10,7 +10,7 @@ _$_PaymentIntent _$_$_PaymentIntentFromJson(Map<String, dynamic> json) {
   return _$_PaymentIntent(
     id: json['id'] as String,
     amount: json['amount'] as num,
-    created: json['created'] as int,
+    created: json['created'] as String,
     currency: json['currency'] as String,
     status: _$enumDecode(_$PaymentIntentsStatusEnumMap, json['status']),
     clientSecret: json['clientSecret'] as String,

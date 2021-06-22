@@ -47,8 +47,7 @@ class SetupIntent with _$SetupIntent {
     String? description,
 
     /// Timestamp since epoch that represents the time the intent is created.
-
-    int? created,
+    String? created,
 
     /// Error encountered since last configmration.
     LastSetupError? lastSetupError,

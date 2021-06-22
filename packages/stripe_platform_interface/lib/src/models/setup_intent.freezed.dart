@@ -29,7 +29,7 @@ class _$SetupIntentTearOff {
       required String usage,
       required List<PaymentMethodType> paymentMethodTypes,
       String? description,
-      int? created,
+      String? created,
       LastSetupError? lastSetupError}) {
     return _SetupIntent(
       id: id,
@@ -83,7 +83,7 @@ mixin _$SetupIntent {
   String? get description => throw _privateConstructorUsedError;
 
   /// Timestamp since epoch that represents the time the intent is created.
-  int? get created => throw _privateConstructorUsedError;
+  String? get created => throw _privateConstructorUsedError;
 
   /// Error encountered since last configmration.
   LastSetupError? get lastSetupError => throw _privateConstructorUsedError;
@@ -108,7 +108,7 @@ abstract class $SetupIntentCopyWith<$Res> {
       String usage,
       List<PaymentMethodType> paymentMethodTypes,
       String? description,
-      int? created,
+      String? created,
       LastSetupError? lastSetupError});
 
   $LastSetupErrorCopyWith<$Res>? get lastSetupError;
@@ -171,7 +171,7 @@ class _$SetupIntentCopyWithImpl<$Res> implements $SetupIntentCopyWith<$Res> {
       created: created == freezed
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       lastSetupError: lastSetupError == freezed
           ? _value.lastSetupError
           : lastSetupError // ignore: cast_nullable_to_non_nullable
@@ -207,7 +207,7 @@ abstract class _$SetupIntentCopyWith<$Res>
       String usage,
       List<PaymentMethodType> paymentMethodTypes,
       String? description,
-      int? created,
+      String? created,
       LastSetupError? lastSetupError});
 
   @override
@@ -273,7 +273,7 @@ class __$SetupIntentCopyWithImpl<$Res> extends _$SetupIntentCopyWithImpl<$Res>
       created: created == freezed
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       lastSetupError: lastSetupError == freezed
           ? _value.lastSetupError
           : lastSetupError // ignore: cast_nullable_to_non_nullable
@@ -338,7 +338,7 @@ class _$_SetupIntent implements _SetupIntent {
   @override
 
   /// Timestamp since epoch that represents the time the intent is created.
-  final int? created;
+  final String? created;
   @override
 
   /// Error encountered since last configmration.
@@ -417,7 +417,7 @@ abstract class _SetupIntent implements SetupIntent {
       required String usage,
       required List<PaymentMethodType> paymentMethodTypes,
       String? description,
-      int? created,
+      String? created,
       LastSetupError? lastSetupError}) = _$_SetupIntent;
 
   factory _SetupIntent.fromJson(Map<String, dynamic> json) =
@@ -461,7 +461,7 @@ abstract class _SetupIntent implements SetupIntent {
   @override
 
   /// Timestamp since epoch that represents the time the intent is created.
-  int? get created => throw _privateConstructorUsedError;
+  String? get created => throw _privateConstructorUsedError;
   @override
 
   /// Error encountered since last configmration.
