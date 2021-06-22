@@ -64,7 +64,7 @@ public class StripePlugin: StripeSdk, FlutterPlugin {
         case "handleCardAction":
             return handleCardAction(call, result: result)
         case "confirmPaymentMethod":
-            return confirmPaymentMethod(call, result: result)
+            return confirmPayment(call, result: result)
         case "retrievePaymentIntent":
             return retrievePaymentIntent(call, result: result)
         case "createPaymentMethod":
@@ -160,8 +160,10 @@ extension  StripePlugin {
             result(FlutterError.invalidParams)
             return
         }
+        let errorAddressFields = arguments["errorAddressFields"] as? [NSDictionary]  ?? []
         updateApplePaySummaryItems(
             summaryItems: summaryItems,
+            errorAddressFields: errorAddressFields,
             resolver: resolver(for: result),
             rejecter: rejecter(for: result)
         )
@@ -241,7 +243,7 @@ extension  StripePlugin {
         )
     }
     
-    func confirmPaymentMethod(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+    func confirmPayment(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let paymentIntentClientSecret = arguments["paymentIntentClientSecret"] as? String,
         let params = arguments["params"] as? NSDictionary,
@@ -249,7 +251,7 @@ extension  StripePlugin {
             result(FlutterError.invalidParams)
             return
         }
-        confirmPaymentMethod(
+        confirmPayment(
             paymentIntentClientSecret: paymentIntentClientSecret,
             params: params,
             options: options,

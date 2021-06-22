@@ -40,6 +40,15 @@ protocol FlutterPluginBinding {
 }
 
 
+extension FlutterError {
+    static func invalidParams(_ message: String?) -> FlutterError {
+        return FlutterError.init(code: "Invalid Params", message: message, details: nil)
+    }
+    
+    static var invalidParams: FlutterError {
+        return FlutterError.init(code: "Invalid Params", message: "", details: "")
+    }
+}
 
 class RCTBridge {
     
