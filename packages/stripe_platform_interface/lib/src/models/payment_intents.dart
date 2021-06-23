@@ -53,7 +53,7 @@ class PaymentIntent with _$PaymentIntent {
     String? receiptEmail,
 
     /// Timestamp since epoch when the intent is cancelled.
-    int? canceledAt,
+    String? canceledAt,
 
     /// Shipping information of the payment intent.
     ShippingDetails? shipping,
@@ -124,6 +124,7 @@ enum PaymentIntentsFutureUsage {
 enum PaymentIntentsStatus {
   /// Completed.
   Succeeded,
+
   /// No payment method is attached to the intent.
   RequiresPaymentMethod,
 

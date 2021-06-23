@@ -21,7 +21,7 @@ _$_PaymentIntent _$_$_PaymentIntentFromJson(Map<String, dynamic> json) {
     paymentMethodId: json['paymentMethodId'] as String?,
     description: json['description'] as String?,
     receiptEmail: json['receiptEmail'] as String?,
-    canceledAt: json['canceledAt'] as int?,
+    canceledAt: json['canceledAt'] as String?,
     shipping: json['shipping'] == null
         ? null
         : ShippingDetails.fromJson(json['shipping'] as Map<String, dynamic>),

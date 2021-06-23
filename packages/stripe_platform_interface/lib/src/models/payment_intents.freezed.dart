@@ -33,7 +33,7 @@ class _$PaymentIntentTearOff {
       String? paymentMethodId,
       String? description,
       String? receiptEmail,
-      int? canceledAt,
+      String? canceledAt,
       ShippingDetails? shipping}) {
     return _PaymentIntent(
       id: id,
@@ -101,7 +101,7 @@ mixin _$PaymentIntent {
   String? get receiptEmail => throw _privateConstructorUsedError;
 
   /// Timestamp since epoch when the intent is cancelled.
-  int? get canceledAt => throw _privateConstructorUsedError;
+  String? get canceledAt => throw _privateConstructorUsedError;
 
   /// Shipping information of the payment intent.
   ShippingDetails? get shipping => throw _privateConstructorUsedError;
@@ -130,7 +130,7 @@ abstract class $PaymentIntentCopyWith<$Res> {
       String? paymentMethodId,
       String? description,
       String? receiptEmail,
-      int? canceledAt,
+      String? canceledAt,
       ShippingDetails? shipping});
 
   $ShippingDetailsCopyWith<$Res>? get shipping;
@@ -214,7 +214,7 @@ class _$PaymentIntentCopyWithImpl<$Res>
       canceledAt: canceledAt == freezed
           ? _value.canceledAt
           : canceledAt // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       shipping: shipping == freezed
           ? _value.shipping
           : shipping // ignore: cast_nullable_to_non_nullable
@@ -254,7 +254,7 @@ abstract class _$PaymentIntentCopyWith<$Res>
       String? paymentMethodId,
       String? description,
       String? receiptEmail,
-      int? canceledAt,
+      String? canceledAt,
       ShippingDetails? shipping});
 
   @override
@@ -341,7 +341,7 @@ class __$PaymentIntentCopyWithImpl<$Res>
       canceledAt: canceledAt == freezed
           ? _value.canceledAt
           : canceledAt // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       shipping: shipping == freezed
           ? _value.shipping
           : shipping // ignore: cast_nullable_to_non_nullable
@@ -424,7 +424,7 @@ class _$_PaymentIntent implements _PaymentIntent {
   @override
 
   /// Timestamp since epoch when the intent is cancelled.
-  final int? canceledAt;
+  final String? canceledAt;
   @override
 
   /// Shipping information of the payment intent.
@@ -523,7 +523,7 @@ abstract class _PaymentIntent implements PaymentIntent {
       String? paymentMethodId,
       String? description,
       String? receiptEmail,
-      int? canceledAt,
+      String? canceledAt,
       ShippingDetails? shipping}) = _$_PaymentIntent;
 
   factory _PaymentIntent.fromJson(Map<String, dynamic> json) =
@@ -581,7 +581,7 @@ abstract class _PaymentIntent implements PaymentIntent {
   @override
 
   /// Timestamp since epoch when the intent is cancelled.
-  int? get canceledAt => throw _privateConstructorUsedError;
+  String? get canceledAt => throw _privateConstructorUsedError;
   @override
 
   /// Shipping information of the payment intent.
