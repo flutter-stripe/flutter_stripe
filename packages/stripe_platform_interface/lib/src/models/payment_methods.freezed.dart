@@ -2504,7 +2504,7 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
       return _PaymentMethodParamsCard.fromJson(json);
     case 'Card':
       return _PaymentMethodParamsCardWithToken.fromJson(json);
-    case 'CardId':
+    case 'Card':
       return _PaymentMethodParamsCardWithMethodId.fromJson(json);
     case 'Alipay':
       return _PaymentMethodParamsAlipay.fromJson(json);
@@ -3331,7 +3331,7 @@ class __$PaymentMethodParamsCardWithMethodIdCopyWithImpl<$Res>
 }
 
 @JsonSerializable(explicitToJson: true)
-@FreezedUnionValue('CardId')
+@FreezedUnionValue('Card')
 
 /// @nodoc
 class _$_PaymentMethodParamsCardWithMethodId
@@ -3510,7 +3510,7 @@ class _$_PaymentMethodParamsCardWithMethodId
   @override
   Map<String, dynamic> toJson() {
     return _$_$_PaymentMethodParamsCardWithMethodIdToJson(this)
-      ..['type'] = 'CardId';
+      ..['type'] = 'Card';
   }
 }
 

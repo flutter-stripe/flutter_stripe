@@ -292,7 +292,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
   }) = _PaymentMethodParamsCardWithToken;
 
   @JsonSerializable(explicitToJson: true)
-  @FreezedUnionValue('CardId')
+  @FreezedUnionValue('Card')
 
   /// Config parameters for card from method id payment method.
   const factory PaymentMethodParams.cardFromMethodId({
