@@ -30,7 +30,7 @@ class CreateTokenParams with _$CreateTokenParams {
 class TokenData with _$TokenData {
   const factory TokenData({
     /// Unique identifier of the token
-    required String tokenId,
+    required String id,
 
     /// Timestamp when token was created
     @JsonKey(name: 'created') required String createdDateTime,

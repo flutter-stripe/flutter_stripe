@@ -57,7 +57,7 @@ class MethodChannelStripe extends StripePlatform {
       'options': options,
     });
 
-    final tmp = result?['paymentMethod'] as Map<String, dynamic>; 
+    final tmp = result?['paymentMethod'] as Map<String, dynamic>;
 
     return PaymentMethod.fromJson(
       tmp.unfoldToNonNull(),

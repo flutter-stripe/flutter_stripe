@@ -124,7 +124,7 @@ extension SetupIntentTestInstance on SetupIntent {
 
 extension TokenDataTestInstance on TokenData {
   static TokenData create(String id) => TokenData(
-        tokenId: id,
+        id: id,
         createdDateTime: 'createdDateTime',
         type: TokenType.Card,
         livemode: false,
@@ -132,7 +132,7 @@ extension TokenDataTestInstance on TokenData {
       );
 
   Map<String, dynamic> jsonMap() => {
-        'tokenId': tokenId,
+        'id': id,
         'livemode': livemode,
         'type': describeEnum(type),
         'created': createdDateTime,

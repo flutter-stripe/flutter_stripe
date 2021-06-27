@@ -139,9 +139,8 @@ class __$CreateTokenParamsCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_CreateTokenParams implements _CreateTokenParams {
   const _$_CreateTokenParams({this.type = TokenType.Card, this.address});
 
@@ -220,14 +219,14 @@ class _$TokenDataTearOff {
   const _$TokenDataTearOff();
 
   _TokenData call(
-      {required String tokenId,
+      {required String id,
       @JsonKey(name: 'created') required String createdDateTime,
       required TokenType type,
       required bool livemode,
       BankAccount? bankAccount,
       CardData? card}) {
     return _TokenData(
-      tokenId: tokenId,
+      id: id,
       createdDateTime: createdDateTime,
       type: type,
       livemode: livemode,
@@ -247,7 +246,7 @@ const $TokenData = _$TokenDataTearOff();
 /// @nodoc
 mixin _$TokenData {
   /// Unique identifier of the token
-  String get tokenId => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
 
   /// Timestamp when token was created
   @JsonKey(name: 'created')
@@ -276,7 +275,7 @@ abstract class $TokenDataCopyWith<$Res> {
   factory $TokenDataCopyWith(TokenData value, $Res Function(TokenData) then) =
       _$TokenDataCopyWithImpl<$Res>;
   $Res call(
-      {String tokenId,
+      {String id,
       @JsonKey(name: 'created') String createdDateTime,
       TokenType type,
       bool livemode,
@@ -297,7 +296,7 @@ class _$TokenDataCopyWithImpl<$Res> implements $TokenDataCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? tokenId = freezed,
+    Object? id = freezed,
     Object? createdDateTime = freezed,
     Object? type = freezed,
     Object? livemode = freezed,
@@ -305,9 +304,9 @@ class _$TokenDataCopyWithImpl<$Res> implements $TokenDataCopyWith<$Res> {
     Object? card = freezed,
   }) {
     return _then(_value.copyWith(
-      tokenId: tokenId == freezed
-          ? _value.tokenId
-          : tokenId // ignore: cast_nullable_to_non_nullable
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       createdDateTime: createdDateTime == freezed
           ? _value.createdDateTime
@@ -362,7 +361,7 @@ abstract class _$TokenDataCopyWith<$Res> implements $TokenDataCopyWith<$Res> {
       __$TokenDataCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String tokenId,
+      {String id,
       @JsonKey(name: 'created') String createdDateTime,
       TokenType type,
       bool livemode,
@@ -386,7 +385,7 @@ class __$TokenDataCopyWithImpl<$Res> extends _$TokenDataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? tokenId = freezed,
+    Object? id = freezed,
     Object? createdDateTime = freezed,
     Object? type = freezed,
     Object? livemode = freezed,
@@ -394,9 +393,9 @@ class __$TokenDataCopyWithImpl<$Res> extends _$TokenDataCopyWithImpl<$Res>
     Object? card = freezed,
   }) {
     return _then(_TokenData(
-      tokenId: tokenId == freezed
-          ? _value.tokenId
-          : tokenId // ignore: cast_nullable_to_non_nullable
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       createdDateTime: createdDateTime == freezed
           ? _value.createdDateTime
@@ -422,12 +421,11 @@ class __$TokenDataCopyWithImpl<$Res> extends _$TokenDataCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_TokenData implements _TokenData {
   const _$_TokenData(
-      {required this.tokenId,
+      {required this.id,
       @JsonKey(name: 'created') required this.createdDateTime,
       required this.type,
       required this.livemode,
@@ -440,7 +438,7 @@ class _$_TokenData implements _TokenData {
   @override
 
   /// Unique identifier of the token
-  final String tokenId;
+  final String id;
   @override
 
   /// Timestamp when token was created
@@ -465,16 +463,15 @@ class _$_TokenData implements _TokenData {
 
   @override
   String toString() {
-    return 'TokenData(tokenId: $tokenId, createdDateTime: $createdDateTime, type: $type, livemode: $livemode, bankAccount: $bankAccount, card: $card)';
+    return 'TokenData(id: $id, createdDateTime: $createdDateTime, type: $type, livemode: $livemode, bankAccount: $bankAccount, card: $card)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _TokenData &&
-            (identical(other.tokenId, tokenId) ||
-                const DeepCollectionEquality()
-                    .equals(other.tokenId, tokenId)) &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.createdDateTime, createdDateTime) ||
                 const DeepCollectionEquality()
                     .equals(other.createdDateTime, createdDateTime)) &&
@@ -493,7 +490,7 @@ class _$_TokenData implements _TokenData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(tokenId) ^
+      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(createdDateTime) ^
       const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(livemode) ^
@@ -513,7 +510,7 @@ class _$_TokenData implements _TokenData {
 
 abstract class _TokenData implements TokenData {
   const factory _TokenData(
-      {required String tokenId,
+      {required String id,
       @JsonKey(name: 'created') required String createdDateTime,
       required TokenType type,
       required bool livemode,
@@ -526,7 +523,7 @@ abstract class _TokenData implements TokenData {
   @override
 
   /// Unique identifier of the token
-  String get tokenId => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @override
 
   /// Timestamp when token was created
@@ -800,9 +797,9 @@ class __$CardDataCopyWithImpl<$Res> extends _$CardDataCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_CardData implements _CardData {
   const _$_CardData(
       {required this.brand,
@@ -1170,9 +1167,8 @@ class __$BankAccountCopyWithImpl<$Res> extends _$BankAccountCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_BankAccount implements _BankAccount {
   const _$_BankAccount(
       {required this.accountHolderType,

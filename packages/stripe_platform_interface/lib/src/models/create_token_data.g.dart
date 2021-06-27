@@ -66,7 +66,7 @@ const _$TokenTypeEnumMap = {
 
 _$_TokenData _$_$_TokenDataFromJson(Map<String, dynamic> json) {
   return _$_TokenData(
-    tokenId: json['tokenId'] as String,
+    id: json['id'] as String,
     createdDateTime: json['created'] as String,
     type: _$enumDecode(_$TokenTypeEnumMap, json['type']),
     livemode: json['livemode'] as bool,
@@ -81,7 +81,7 @@ _$_TokenData _$_$_TokenDataFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$_$_TokenDataToJson(_$_TokenData instance) =>
     <String, dynamic>{
-      'tokenId': instance.tokenId,
+      'id': instance.id,
       'created': instance.createdDateTime,
       'type': _$TokenTypeEnumMap[instance.type],
       'livemode': instance.livemode,
