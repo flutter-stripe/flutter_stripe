@@ -8,15 +8,15 @@ extension PaymentMethodTestInstance on PaymentMethod {
         id: id,
         livemode: false,
         type: 'paymentType',
-        billingDetails: BillingDetails(),
-        card: Card(),
-        sepaDebit: SepaDebit(),
-        bacsDebit: BacsDebit(),
-        auBecsDebit: AuBecsDebit(),
-        sofort: Sofort(),
-        ideal: Ideal(),
-        fpx: Fpx(),
-        upi: Upi(),
+        billingDetails: const BillingDetails(),
+        card: const Card(),
+        sepaDebit: const SepaDebit(),
+        bacsDebit: const BacsDebit(),
+        auBecsDebit: const AuBecsDebit(),
+        sofort: const Sofort(),
+        ideal: const Ideal(),
+        fpx: const Fpx(),
+        upi: const Upi(),
       );
 
   Map<String, dynamic> jsonMap() => {
@@ -68,7 +68,7 @@ extension PaymentIntentTestInstance on PaymentIntent {
   static PaymentIntent create(String id) => PaymentIntent(
         id: id,
         amount: 100,
-        created: 10,
+        created: '10',
         currency: 'Usd',
         status: PaymentIntentsStatus.Succeeded,
         clientSecret: 'clientSecret',

@@ -183,7 +183,7 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
       await Stripe.instance.confirmPaymentMethod(
         _retrievedPaymentIntent!.clientSecret,
         PaymentMethodParams.cardFromMethodId(
-            paymentMethodId: _retrievedPaymentIntent!.paymentMethodId!),
+            paymentMethodId: _retrievedPaymentIntent!.paymentMethodId),
       );
     }
   }
