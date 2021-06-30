@@ -38,6 +38,9 @@ class CardStyle with _$CardStyle {
     /// Font size.
     double? fontSize,
 
+    /// Font family
+    String? fontFamily,
+
     /// Color of the input in case incorrect data is entered.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
         Color? textErrorColor,
@@ -62,6 +65,7 @@ class CardStyle with _$CardStyle {
         fontSize: style?.fontSize ?? fontSize,
         textErrorColor: style?.textErrorColor ?? textErrorColor,
         placeholderColor: style?.placeholderColor ?? placeholderColor,
+        fontFamily: style?.fontFamily ?? fontFamily,
       );
 }
 

@@ -5,6 +5,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 /// Customizable form that collects card information.
@@ -17,6 +18,7 @@ class CardField extends StatefulWidget {
     this.enablePostalCode = false,
     this.style,
     this.autofocus = false,
+    this.dangerouslyGetFullCardDetails = false,
     this.cursorColor,
     this.numberHintText,
     this.expirationHintText,
@@ -58,6 +60,15 @@ class CardField extends StatefulWidget {
   /// Defines whether or not to automatically focus on the cardfield/
   /// Default is `false`.
   final bool autofocus;
+
+  /// When true the Full card details will be returned.
+  ///
+  /// WARNING!!! Only do this if you're certain that you fulfill the necessary
+  /// PCI compliance requirements. Make sure that you're not mistakenly logging
+  /// or storing full card details! See the docs for
+  /// details: https://stripe.com/docs/security/guide#validating-pci-compliance
+  /// Default is `false`.
+  final bool dangerouslyGetFullCardDetails;
 
   @override
   _CardFieldState createState() => _CardFieldState();
@@ -135,9 +146,15 @@ class _CardFieldState extends State<CardField> {
     final fontSize = widget.style?.fontSize ??
         Theme.of(context).textTheme.subtitle1?.fontSize ??
         kCardFieldDefaultFontSize;
+
+    final fontFamily = widget.style?.fontFamily ??
+        Theme.of(context).textTheme.subtitle1?.fontFamily ??
+        kCardFieldDefaultFontFamily;
+
     return CardStyle(
       textColor: widget.style?.color,
       fontSize: fontSize,
+      fontFamily: fontFamily,
       cursorColor: widget.cursorColor,
       textErrorColor: decoration.errorStyle?.color,
       placeholderColor: decoration.hintStyle?.color,
@@ -235,6 +252,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField> {
           baseTextStyle?.color ??
           kCardFieldDefaultTextColor,
       fontSize: baseTextStyle?.fontSize ?? kCardFieldDefaultFontSize,
+      fontFamily: baseTextStyle?.fontFamily ?? kCardFieldDefaultFontFamily,
       textErrorColor:
           theme.inputDecorationTheme.errorStyle?.color ?? theme.errorColor,
       placeholderColor:
@@ -469,6 +487,7 @@ class _UiKitCardField extends StatelessWidget {
 const kCardFieldDefaultHeight = 48.0;
 const kCardFieldDefaultFontSize = 17.0;
 const kCardFieldDefaultTextColor = Colors.black;
+const kCardFieldDefaultFontFamily = 'Roboto';
 
 typedef CardChangedCallback = void Function(CardFieldInputDetails? details);
 typedef CardFocusCallback = void Function(CardFieldName? focusedField);
