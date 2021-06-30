@@ -41,6 +41,12 @@ class StripeSdkCardPlatformView(
         if (creationParams?.containsKey("postalCodeEnabled") == true) {
             stripeSdkCardViewManager.setPostalCodeEnabled(cardView, creationParams["postalCodeEnabled"] as Boolean)
         }
+        if (creationParams?.containsKey("dangerouslyGetFullCardDetails") == true) {
+            stripeSdkCardViewManager.setDangerouslyGetFullCardDetails(cardView, creationParams["dangerouslyGetFullCardDetails"] as Boolean)
+        }
+        if (creationParams?.containsKey("autofocus") == true) {
+            stripeSdkCardViewManager.setAutofocus(cardView, creationParams["autofocus"] as Boolean)
+        }
         applyFocusFix()
     }
 
@@ -63,17 +69,6 @@ class StripeSdkCardPlatformView(
         } catch (e: Exception) {
             Log.e("Stripe Plugin", "Error", e)
         }
-        if (creationParams?.containsKey("dangerouslyGetFullCardDetails") == true) {
-            stripeSdkCardViewManager.setDangerouslyGetFullCardDetails(cardView, creationParams["dangerouslyGetFullCardDetails"] as Boolean)
-        }
-        if (creationParams?.containsKey("autofocus") == true) {
-            stripeSdkCardViewManager.setAutofocus(cardView, creationParams["autofocus"] as Boolean)
-        }
-        // Temporal fix to https://github.com/flutter/flutter/issues/81029
-        val binding = CardInputWidgetBinding.bind(cardView.mCardWidget)
-        binding.cardNumberEditText.inputType = InputType.TYPE_CLASS_TEXT
-        binding.cvcEditText.inputType = InputType.TYPE_CLASS_TEXT
-        binding.expiryDateEditText.inputType = InputType.TYPE_CLASS_TEXT
     }
 
     override fun getView(): View {

@@ -21,7 +21,7 @@ public class ReactApplicationContext extends ContextWrapper {
     }
 
     public void addActivityEventListener(@NotNull BaseActivityEventListener activityEventListener) {
-        activityEventListener.activity = new WeakReference(binding.getActivity());
+        activityEventListener.activity = new WeakReference<>(binding.getActivity());
         binding.addActivityResultListener(activityEventListener);
     }
 
