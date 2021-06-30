@@ -30,7 +30,8 @@ class _LegacyTokenScreenState extends State<LegacyTokenScreen> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: LoadingButton(
-              onPressed: _card?.complete == true ? _handleCreateTokenPress : null,
+              onPressed:
+                  _card?.complete == true ? _handleCreateTokenPress : null,
               text: 'Create token',
             ),
           ),
@@ -57,7 +58,7 @@ class _LegacyTokenScreenState extends State<LegacyTokenScreen> {
       ); // mocked data for tests
 
       // 2. Create payment method
-      final tokenData = await Stripe.instance.createToken(
+      await Stripe.instance.createToken(
           CreateTokenParams(type: TokenType.Card, address: address));
 
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(

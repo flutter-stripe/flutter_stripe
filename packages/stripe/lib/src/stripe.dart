@@ -57,6 +57,20 @@ class Stripe {
     instance.markNeedsSettings();
   }
 
+  /// Sets the custom url scheme
+  static set urlScheme(String? value) {
+    if (value == instance._urlScheme) {
+      return;
+    }
+    instance._urlScheme = value;
+    instance.markNeedsSettings();
+  }
+
+  /// Retrieves the custom url scheme
+  static String? get urlScheme {
+    return instance._urlScheme;
+  }
+
   /// Retrieves the merchant identifier.
   static String? get merchantIdentifier => instance._merchantIdentifier;
 
@@ -71,12 +85,13 @@ class Stripe {
 
   /// Reconfigures the Stripe platform by applying the current values for
   /// [publishableKey], [merchantIdentifier], [stripeAccountId],
-  /// [threeDSecureParams]
+  /// [threeDSecureParams], [urlScheme]
   Future<void> applySettings() => _initialise(
         publishableKey: publishableKey,
         merchantIdentifier: merchantIdentifier,
         stripeAccountId: stripeAccountId,
         threeDSecureParams: threeDSecureParams,
+        urlScheme: urlScheme,
       );
 
   /// Exposes a [ValueListenable] whether or not Apple pay is supported for this
@@ -306,6 +321,7 @@ class Stripe {
   String? _stripeAccountId;
   ThreeDSecureConfigurationParams? _threeDSecureParams;
   String? _merchantIdentifier;
+  String? _urlScheme;
 
   static StripePlatform? __platform;
 
@@ -327,6 +343,7 @@ class Stripe {
     String? stripeAccountId,
     ThreeDSecureConfigurationParams? threeDSecureParams,
     String? merchantIdentifier,
+    String? urlScheme,
   }) async {
     _needsSettings = false;
     await _platform.initialise(
@@ -334,6 +351,7 @@ class Stripe {
       stripeAccountId: stripeAccountId,
       threeDSecureParams: threeDSecureParams,
       merchantIdentifier: merchantIdentifier,
+      urlScheme: urlScheme,
     );
   }
 
