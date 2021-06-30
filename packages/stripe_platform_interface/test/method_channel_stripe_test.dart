@@ -401,5 +401,53 @@ void main() {
         expect(completer.isCompleted, true);
       });
     });
+
+    group('create token', () {
+      late CreateTokenParams params;
+      late TokenData result;
+
+      setUp(() {
+        params = const CreateTokenParams();
+      });
+      group('When create token succeeds', () {
+        setUp(() async {
+          sut = MethodChannelStripe(
+            platformIsIos: false,
+            methodChannel: MethodChannelMock(
+                    channelName: methodChannelName,
+                    method: 'createToken',
+                    result: TokenDataTestInstance.create('tokenId').jsonMap())
+                .methodChannel,
+          );
+
+          result = await sut.createToken(params);
+        });
+
+        test('It returns correct data', () {
+          expect(result, TokenDataTestInstance.create('tokenId'));
+        });
+      });
+
+      group('When create token fails', () {
+        setUp(() async {
+          sut = MethodChannelStripe(
+            platformIsIos: false,
+            methodChannel: MethodChannelMock(
+                    channelName: methodChannelName,
+                    method: 'createToken',
+                    result: Exception('whoops'))
+                .methodChannel,
+          );
+        });
+
+        test('It returns correct data', () async {
+          expect(
+              () async => await sut.createToken(params),
+              throwsA(
+                const TypeMatcher<StripeError<CreateTokenError>>(),
+              ));
+        });
+      });
+    });
   });
 }

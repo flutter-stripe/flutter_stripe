@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:stripe_platform_interface/src/models/create_token_data.dart';
 import 'package:stripe_platform_interface/src/models/payment_intents.dart';
 import 'package:stripe_platform_interface/src/models/payment_methods.dart';
 import 'package:stripe_platform_interface/src/models/setup_intent.dart';
@@ -118,5 +119,30 @@ extension SetupIntentTestInstance on SetupIntent {
         'description': description,
         'created': created,
         'lastSetupError': lastSetupError,
+      };
+}
+
+extension TokenDataTestInstance on TokenData {
+  static TokenData create(String id) => TokenData(
+        id: id,
+        createdDateTime: 'createdDateTime',
+        type: TokenType.Card,
+        livemode: false,
+        card: const CardData(brand: 'Visa'),
+      );
+
+  Map<String, dynamic> jsonMap() => {
+        'id': id,
+        'livemode': livemode,
+        'type': describeEnum(type),
+        'created': createdDateTime,
+        'card': {
+          'brand': card?.brand,
+          'country': card?.country,
+          'expYear': card?.expYear,
+          'expMonth': card?.expMonth,
+          'funding': card?.funding,
+          'last4': card?.last4,
+        },
       };
 }

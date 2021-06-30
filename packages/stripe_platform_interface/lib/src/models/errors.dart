@@ -6,6 +6,8 @@ part 'errors.g.dart';
 // ignore_for_file: constant_identifier_names
 enum PaymentIntentError { unknown }
 
+enum CreateTokenError { unknown }
+
 @freezed
 
 /// Wrapper class that represents an error with the Stripe platform.

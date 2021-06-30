@@ -416,9 +416,9 @@ class __$PaymentMethodCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_PaymentMethod implements _PaymentMethod {
   const _$_PaymentMethod(
       {required this.id,
@@ -811,9 +811,9 @@ class __$BillingDetailsCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_BillingDetails implements _BillingDetails {
   const _$_BillingDetails({this.email, this.address, this.phone, this.name});
 
@@ -1031,9 +1031,9 @@ class __$AuBecsDebitCopyWithImpl<$Res> extends _$AuBecsDebitCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_AuBecsDebit implements _AuBecsDebit {
   const _$_AuBecsDebit({this.fingerprint, this.last4, this.bsbNumber});
 
@@ -1235,9 +1235,9 @@ class __$BacsDebitCopyWithImpl<$Res> extends _$BacsDebitCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_BacsDebit implements _BacsDebit {
   const _$_BacsDebit({this.sortCode, this.fingerprint, this.last4});
 
@@ -1497,9 +1497,9 @@ class __$CardCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_Card implements _Card {
   const _$_Card(
       {this.brand,
@@ -1729,9 +1729,9 @@ class __$FpxCopyWithImpl<$Res> extends _$FpxCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_Fpx implements _Fpx {
   const _$_Fpx({this.bank, this.accountHolderType});
 
@@ -1901,9 +1901,9 @@ class __$IdealCopyWithImpl<$Res> extends _$IdealCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_Ideal implements _Ideal {
   const _$_Ideal({this.bankIdentifierCode, this.bank});
 
@@ -2107,9 +2107,9 @@ class __$SepaDebitCopyWithImpl<$Res> extends _$SepaDebitCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_SepaDebit implements _SepaDebit {
   const _$_SepaDebit(
       {this.country, this.bankCode, this.fingerprint, this.last4});
@@ -2297,9 +2297,9 @@ class __$SofortCopyWithImpl<$Res> extends _$SofortCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_Sofort implements _Sofort {
   const _$_Sofort({this.country});
 
@@ -2443,9 +2443,9 @@ class __$UpiCopyWithImpl<$Res> extends _$UpiCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_Upi implements _Upi {
   const _$_Upi({this.vpa});
 
@@ -2843,10 +2843,10 @@ class __$PaymentMethodParamsCardCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
+
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('Card')
-
-/// @nodoc
 class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
   const _$_PaymentMethodParamsCard(
       {this.setupFutureUsage, this.billingDetails});
@@ -3085,10 +3085,10 @@ class __$PaymentMethodParamsCardWithTokenCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
+
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('Card')
-
-/// @nodoc
 class _$_PaymentMethodParamsCardWithToken
     implements _PaymentMethodParamsCardWithToken {
   const _$_PaymentMethodParamsCardWithToken(
@@ -3330,10 +3330,10 @@ class __$PaymentMethodParamsCardWithMethodIdCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
+
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('Card')
-
-/// @nodoc
 class _$_PaymentMethodParamsCardWithMethodId
     implements _PaymentMethodParamsCardWithMethodId {
   const _$_PaymentMethodParamsCardWithMethodId(
@@ -3554,10 +3554,10 @@ class __$PaymentMethodParamsAlipayCopyWithImpl<$Res>
       super._value as _PaymentMethodParamsAlipay;
 }
 
+/// @nodoc
+
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('Alipay')
-
-/// @nodoc
 class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
   const _$_PaymentMethodParamsAlipay();
 
@@ -3769,10 +3769,10 @@ class __$PaymentMethodParamsIdealCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
+
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('Ideal')
-
-/// @nodoc
 class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
   const _$_PaymentMethodParamsIdeal({this.billingDetails, this.bankName});
 
@@ -4017,10 +4017,10 @@ class __$PaymentMethodParamsBankContactCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
+
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('Bancontact')
-
-/// @nodoc
 class _$_PaymentMethodParamsBankContact
     implements _PaymentMethodParamsBankContact {
   const _$_PaymentMethodParamsBankContact({this.billingDetails});
@@ -4255,10 +4255,10 @@ class __$PaymentMethodParamsGiroPayCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
+
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('Giropay')
-
-/// @nodoc
 class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
   const _$_PaymentMethodParamsGiroPay({this.billingDetails});
 
@@ -4488,10 +4488,10 @@ class __$PaymentMethodParamsEpsCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
+
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('Eps')
-
-/// @nodoc
 class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
   const _$_PaymentMethodParamsEps({this.billingDetails});
 
@@ -4721,10 +4721,10 @@ class __$PaymentMethodParamsPayCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
+
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('GrabPay')
-
-/// @nodoc
 class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
   const _$_PaymentMethodParamsPay({this.billingDetails});
 
@@ -4954,10 +4954,10 @@ class __$PaymentMethodParamsP24CopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
+
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('P24')
-
-/// @nodoc
 class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
   const _$_PaymentMethodParamsP24({this.billingDetails});
 
@@ -5174,10 +5174,10 @@ class __$PaymentMethodParamsFpxCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
+
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('Fpx')
-
-/// @nodoc
 class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
   const _$_PaymentMethodParamsFpx({required this.testOfflineBank});
 
@@ -5420,10 +5420,10 @@ class __$PaymentMethodParamsSepaDebitCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
+
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('SepaDebit')
-
-/// @nodoc
 class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
   const _$_PaymentMethodParamsSepaDebit(
       {required this.iban, this.setupFutureUsage, this.billingDetails});
@@ -5686,10 +5686,10 @@ class __$PaymentMethodParamsSofortCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
+
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('Sofort')
-
-/// @nodoc
 class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
   const _$_PaymentMethodParamsSofort(
       {required this.country, this.setupFutureUsage, this.billingDetails});
@@ -5955,10 +5955,10 @@ class __$PaymentMethodParamsAfterpayClearpayCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
+
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('AfterpayClearpay')
-
-/// @nodoc
 class _$_PaymentMethodParamsAfterpayClearpay
     implements _PaymentMethodParamsAfterpayClearpay {
   const _$_PaymentMethodParamsAfterpayClearpay(
@@ -6206,10 +6206,10 @@ class __$PaymentMethodParamsOxxoCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
+
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('Oxxo')
-
-/// @nodoc
 class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
   const _$_PaymentMethodParamsOxxo({this.billingDetails});
 

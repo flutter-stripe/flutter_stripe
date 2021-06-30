@@ -509,7 +509,7 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
 
         STPAPIClient.shared.createToken(withCard: cardSourceParams) { token, error in
             if let token = token {
-                resolve(Mappers.createResult("token", Mappers.mapFromToken(token: token)))
+                resolve(Mappers.mapFromToken(token: token))
             } else {
                 resolve(Errors.createError(CreateTokenErrorType.Failed.rawValue, error?.localizedDescription))
             }
