@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('Plugin example app'),
       ),
-      body: Column(children: [
+      body: ListView(children: [
         ...ListTile.divideTiles(
           context: context,
           tiles: [
