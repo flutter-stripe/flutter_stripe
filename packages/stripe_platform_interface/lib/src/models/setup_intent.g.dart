@@ -18,7 +18,7 @@ _$_SetupIntent _$_$_SetupIntentFromJson(Map<String, dynamic> json) {
         .map((e) => _$enumDecode(_$PaymentMethodTypeEnumMap, e))
         .toList(),
     description: json['description'] as String?,
-    created: json['created'] as int?,
+    created: json['created'] as String?,
     lastSetupError: json['lastSetupError'] == null
         ? null
         : LastSetupError.fromJson(

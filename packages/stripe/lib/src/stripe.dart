@@ -57,6 +57,20 @@ class Stripe {
     instance.markNeedsSettings();
   }
 
+  /// Sets the custom url scheme
+  static set urlScheme(String? value) {
+    if (value == instance._urlScheme) {
+      return;
+    }
+    instance._urlScheme = value;
+    instance.markNeedsSettings();
+  }
+
+  /// Retrieves the custom url scheme
+  static String? get urlScheme {
+    return instance._urlScheme;
+  }
+
   /// Retrieves the merchant identifier.
   static String? get merchantIdentifier => instance._merchantIdentifier;
 
@@ -71,12 +85,13 @@ class Stripe {
 
   /// Reconfigures the Stripe platform by applying the current values for
   /// [publishableKey], [merchantIdentifier], [stripeAccountId],
-  /// [threeDSecureParams]
+  /// [threeDSecureParams], [urlScheme]
   Future<void> applySettings() => _initialise(
         publishableKey: publishableKey,
         merchantIdentifier: merchantIdentifier,
         stripeAccountId: stripeAccountId,
         threeDSecureParams: threeDSecureParams,
+        urlScheme: urlScheme,
       );
 
   /// Exposes a [ValueListenable] whether or not Apple pay is supported for this
@@ -117,6 +132,22 @@ class Stripe {
     try {
       final paymentMethod = await _platform.createPaymentMethod(data, options);
       return paymentMethod;
+    } on StripeError catch (error) {
+      throw StripeError(message: error.message, code: error.message);
+    }
+  }
+
+  /// Creates a single-use token that represents a credit card’s details.
+  ///
+  /// Tokens are considered legacy, use [PaymentMethod] and [PaymentIntent]
+  /// instead.
+  /// /// Throws an [StripeError] in case createToken fails.
+
+  Future<TokenData> createToken(CreateTokenParams params) async {
+    await _awaitForSettings();
+    try {
+      final tokenData = await _platform.createToken(params);
+      return tokenData;
     } on StripeError catch (error) {
       throw StripeError(message: error.message, code: error.message);
     }
@@ -290,6 +321,7 @@ class Stripe {
   String? _stripeAccountId;
   ThreeDSecureConfigurationParams? _threeDSecureParams;
   String? _merchantIdentifier;
+  String? _urlScheme;
 
   static StripePlatform? __platform;
 
@@ -311,13 +343,15 @@ class Stripe {
     String? stripeAccountId,
     ThreeDSecureConfigurationParams? threeDSecureParams,
     String? merchantIdentifier,
+    String? urlScheme,
   }) async {
-     _needsSettings = false;
+    _needsSettings = false;
     await _platform.initialise(
       publishableKey: publishableKey,
       stripeAccountId: stripeAccountId,
       threeDSecureParams: threeDSecureParams,
       merchantIdentifier: merchantIdentifier,
+      urlScheme: urlScheme,
     );
   }
 

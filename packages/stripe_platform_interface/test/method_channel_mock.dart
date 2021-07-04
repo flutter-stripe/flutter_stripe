@@ -10,7 +10,7 @@ class MethodChannelMock {
     required this.method,
     this.delay = Duration.zero,
     this.result,
-  }) : methodChannel = MethodChannel(channelName, JSONMethodCodec()) {
+  }) : methodChannel = MethodChannel(channelName, const JSONMethodCodec()) {
     methodChannel.setMockMethodCallHandler(_handler);
   }
 

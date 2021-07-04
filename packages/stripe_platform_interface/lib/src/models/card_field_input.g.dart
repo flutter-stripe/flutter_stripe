@@ -16,6 +16,7 @@ _$_CardStyleConstructor _$_$_CardStyleConstructorFromJson(
     cursorColor: ColorKey.fromJson(json['cursorColor']),
     textColor: ColorKey.fromJson(json['textColor']),
     fontSize: (json['fontSize'] as num?)?.toDouble(),
+    fontFamily: json['fontFamily'] as String?,
     textErrorColor: ColorKey.fromJson(json['textErrorColor']),
     placeholderColor: ColorKey.fromJson(json['placeholderColor']),
   );
@@ -31,6 +32,7 @@ Map<String, dynamic> _$_$_CardStyleConstructorToJson(
       'cursorColor': ColorKey.toJson(instance.cursorColor),
       'textColor': ColorKey.toJson(instance.textColor),
       'fontSize': instance.fontSize,
+      'fontFamily': instance.fontFamily,
       'textErrorColor': ColorKey.toJson(instance.textErrorColor),
       'placeholderColor': ColorKey.toJson(instance.placeholderColor),
     };
@@ -59,8 +61,8 @@ _$_CardFieldInputDetails _$_$_CardFieldInputDetailsFromJson(
   return _$_CardFieldInputDetails(
     complete: json['complete'] as bool,
     last4: json['last4'] as String?,
-    expiryMonth: json['expiryMonth'] as String?,
-    expiryYear: json['expiryYear'] as String?,
+    expiryMonth: json['expiryMonth'] as int?,
+    expiryYear: json['expiryYear'] as int?,
     postalCode: json['postalCode'] as String?,
     brand: json['brand'] as String?,
   );

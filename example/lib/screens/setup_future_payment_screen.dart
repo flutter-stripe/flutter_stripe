@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart' hide Card;
-import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:http/http.dart' as http;
 import 'package:stripe_example/config.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
@@ -183,7 +183,7 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
       await Stripe.instance.confirmPaymentMethod(
         _retrievedPaymentIntent!.clientSecret,
         PaymentMethodParams.cardFromMethodId(
-            paymentMethodId: _retrievedPaymentIntent!.paymentMethodId),
+            paymentMethodId: _retrievedPaymentIntent!.paymentMethodId!),
       );
     }
   }

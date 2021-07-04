@@ -43,10 +43,13 @@ void main() {
           methodChannel: MethodChannelMock(
             channelName: methodChannelName,
             method: 'createPaymentMethod',
-            result: PaymentMethodTestInstance.create('id1').jsonMap(),
+            result: {
+              "paymentMethod": PaymentMethodTestInstance.create('id1').jsonMap()
+            },
           ).methodChannel,
         );
-        result = await sut.createPaymentMethod(PaymentMethodParams.card());
+        result =
+            await sut.createPaymentMethod(const PaymentMethodParams.card());
       });
 
       test('It returns payment method', () {
@@ -85,11 +88,14 @@ void main() {
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
               method: 'confirmPaymentMethod',
-              result: PaymentIntentTestInstance.create('id1').toJsonMap(),
+              result: {
+                "paymentIntent":
+                    PaymentIntentTestInstance.create('id1').toJsonMap()
+              },
             ).methodChannel,
           );
           result = await sut.confirmPaymentMethod(
-              'secret', PaymentMethodParams.card());
+              'secret', const PaymentMethodParams.card());
         });
 
         test('It returns payment intent', () {
@@ -113,7 +119,7 @@ void main() {
           expect(
             () async => await sut.confirmPaymentMethod(
               'secret',
-              PaymentMethodParams.card(),
+              const PaymentMethodParams.card(),
             ),
             throwsA(const TypeMatcher<StripeError<PaymentIntentError>>()),
           );
@@ -130,12 +136,15 @@ void main() {
           methodChannel: MethodChannelMock(
             channelName: methodChannelName,
             method: 'confirmSetupIntent',
-            result: SetupIntentTestInstance.create('id1').toJsonMap('id1'),
+            result: {
+              "setupIntent":
+                  SetupIntentTestInstance.create('id1').toJsonMap('id1')
+            },
           ).methodChannel,
         );
         result = await sut.confirmSetupIntent(
           'setupIntentClientSecret',
-          PaymentMethodParams.card(),
+          const PaymentMethodParams.card(),
         );
       });
 
@@ -174,7 +183,10 @@ void main() {
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
               method: 'handleCardAction',
-              result: PaymentIntentTestInstance.create('id1').toJsonMap(),
+              result: {
+                "paymentIntent":
+                    PaymentIntentTestInstance.create('id1').toJsonMap()
+              },
             ).methodChannel,
           );
           result = await sut.handleCardAction('paymentIntentId');
@@ -240,7 +252,7 @@ void main() {
           );
           await sut
               .presentApplePay(
-                ApplePayPresentParams(
+                const ApplePayPresentParams(
                   cartItems: [],
                   country: 'country',
                   currency: 'currency',
@@ -269,7 +281,7 @@ void main() {
         test('It completes operation', () {
           expect(
             () => sut.presentApplePay(
-              ApplePayPresentParams(
+              const ApplePayPresentParams(
                 cartItems: [],
                 country: 'country',
                 currency: 'currency',
@@ -290,7 +302,10 @@ void main() {
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
               method: 'retrievePaymentIntent',
-              result: PaymentIntentTestInstance.create('id1').toJsonMap(),
+              result: {
+                "paymentIntent":
+                    PaymentIntentTestInstance.create('id1').toJsonMap()
+              },
             ).methodChannel,
           );
           result = await sut.retrievePaymentIntent('clientSecret');
@@ -332,7 +347,7 @@ void main() {
         );
         await sut
             .initPaymentSheet(
-              SetupPaymentSheetParameters(
+              const SetupPaymentSheetParameters(
                   paymentIntentClientSecret: 'paymentIntentClientSecret'),
             )
             .then((_) => completer.complete());
@@ -356,8 +371,8 @@ void main() {
           ).methodChannel,
         );
         await sut
-            .presentPaymentSheet(
-                PresentPaymentSheetParameters(clientSecret: 'clientSecret'))
+            .presentPaymentSheet(const PresentPaymentSheetParameters(
+                clientSecret: 'clientSecret'))
             .then((_) => completer.complete());
       });
 
@@ -384,6 +399,54 @@ void main() {
 
       test('It completes operation', () {
         expect(completer.isCompleted, true);
+      });
+    });
+
+    group('create token', () {
+      late CreateTokenParams params;
+      late TokenData result;
+
+      setUp(() {
+        params = const CreateTokenParams();
+      });
+      group('When create token succeeds', () {
+        setUp(() async {
+          sut = MethodChannelStripe(
+            platformIsIos: false,
+            methodChannel: MethodChannelMock(
+                    channelName: methodChannelName,
+                    method: 'createToken',
+                    result: TokenDataTestInstance.create('tokenId').jsonMap())
+                .methodChannel,
+          );
+
+          result = await sut.createToken(params);
+        });
+
+        test('It returns correct data', () {
+          expect(result, TokenDataTestInstance.create('tokenId'));
+        });
+      });
+
+      group('When create token fails', () {
+        setUp(() async {
+          sut = MethodChannelStripe(
+            platformIsIos: false,
+            methodChannel: MethodChannelMock(
+                    channelName: methodChannelName,
+                    method: 'createToken',
+                    result: Exception('whoops'))
+                .methodChannel,
+          );
+        });
+
+        test('It returns correct data', () async {
+          expect(
+              () async => await sut.createToken(params),
+              throwsA(
+                const TypeMatcher<StripeError<CreateTokenError>>(),
+              ));
+        });
       });
     });
   });

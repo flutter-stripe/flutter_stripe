@@ -29,18 +29,22 @@ class _LoadingButtonState extends State<LoadingButton> {
     setState(() {
       _isLoading = true;
     });
-    if (kDebugMode) {
+    
+    try {
       await widget.onPressed!();
-    } else {
-      try {
-        await widget.onPressed!();
-      } catch (e) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('Error $e')));
+    } catch (e) {
+      if (kDebugMode) {
+        rethrow;
+      } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Error $e')));
       }
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
     }
-    setState(() {
-      _isLoading = false;
-    });
+
+  
   }
 }

@@ -23,7 +23,19 @@ class ThreeDSecureConfigurationParams with _$ThreeDSecureConfigurationParams {
 
     /// Styling for the 3d secure confirmation button.
 
-    ThreeDSecureSubmitButtonThemeData? submitButton,
+    ThreeDSecureButtonThemeData? submitButton,
+
+    /// Styling for the 3d secure cancel button.
+    ThreeDSecureButtonThemeData? cancelButton,
+
+    /// Styling for the 3d secure next button.
+    ThreeDSecureButtonThemeData? nextButton,
+
+    /// Styling for the 3d secure continue button.
+    ThreeDSecureButtonThemeData? continueButton,
+
+    /// Styling for the 3d secure resend button.
+    ThreeDSecureButtonThemeData? resendButton,
   }) = _ThreeDSecureConfigurationParams;
 
   factory ThreeDSecureConfigurationParams.fromJson(Map<String, dynamic> json) =>
@@ -119,12 +131,11 @@ class ThreeDSecureTextFieldThemeData with _$ThreeDSecureTextFieldThemeData {
 
 @freezed
 
-/// Styling info related to the 3d secure confirmation button.
+/// Styling info related to the 3d secure button.
 
-class ThreeDSecureSubmitButtonThemeData
-    with _$ThreeDSecureSubmitButtonThemeData {
+class ThreeDSecureButtonThemeData with _$ThreeDSecureButtonThemeData {
   @JsonSerializable(explicitToJson: true)
-  const factory ThreeDSecureSubmitButtonThemeData({
+  const factory ThreeDSecureButtonThemeData({
     /// Color in hex for button background
     String? backgroundColor,
 
@@ -136,9 +147,8 @@ class ThreeDSecureSubmitButtonThemeData
 
     /// Font size for the button text.
     double? textFontSize,
-  }) = _ThreeDSecureSubmitButtonThemeData;
+  }) = _ThreeDSecureButtonThemeData;
 
-  factory ThreeDSecureSubmitButtonThemeData.fromJson(
-          Map<String, dynamic> json) =>
-      _$ThreeDSecureSubmitButtonThemeDataFromJson(json);
+  factory ThreeDSecureButtonThemeData.fromJson(Map<String, dynamic> json) =>
+      _$ThreeDSecureButtonThemeDataFromJson(json);
 }

@@ -125,6 +125,7 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
     } catch (e) {
        ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('Error: $e')));
+            rethrow;
     }
   }
 

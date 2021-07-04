@@ -254,10 +254,11 @@ class CardFieldView: NSObject, FlutterPlatformView, STPPaymentCardTextFieldDeleg
     }
     
     func paymentCardTextFieldDidChange(_ textField: STPPaymentCardTextField) {
+        
        let brand = STPCardValidator.brand(forNumber: textField.cardParams.number ?? "")
-       var cardData: [String: Any] = [
-           "expiryMonth": textField.cardParams.expMonth?.stringValue ?? "",
-           "expiryYear": textField.cardParams.expYear?.stringValue ?? "",
+       var cardData: [String: Any?] = [
+           "expiryMonth": textField.cardParams.expMonth,
+           "expiryYear": textField.cardParams.expYear,
            "complete": textField.isValid,
            "brand": Mappers.mapCardBrand(brand),
            "last4": textField.cardParams.last4 ?? ""
@@ -268,7 +269,10 @@ class CardFieldView: NSObject, FlutterPlatformView, STPPaymentCardTextFieldDeleg
        onCardChange(cardData)
        if (textField.isValid) {
            self.cardParams = textField.cardParams
+       } else {
+          self.cardParams = nil
        }
+    
     }
     
     func focus() {

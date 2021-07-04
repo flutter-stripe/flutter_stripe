@@ -22,8 +22,24 @@ _$_ThreeDSecureConfigurationParams _$_$_ThreeDSecureConfigurationParamsFromJson(
             json['textField'] as Map<String, dynamic>),
     submitButton: json['submitButton'] == null
         ? null
-        : ThreeDSecureSubmitButtonThemeData.fromJson(
+        : ThreeDSecureButtonThemeData.fromJson(
             json['submitButton'] as Map<String, dynamic>),
+    cancelButton: json['cancelButton'] == null
+        ? null
+        : ThreeDSecureButtonThemeData.fromJson(
+            json['cancelButton'] as Map<String, dynamic>),
+    nextButton: json['nextButton'] == null
+        ? null
+        : ThreeDSecureButtonThemeData.fromJson(
+            json['nextButton'] as Map<String, dynamic>),
+    continueButton: json['continueButton'] == null
+        ? null
+        : ThreeDSecureButtonThemeData.fromJson(
+            json['continueButton'] as Map<String, dynamic>),
+    resendButton: json['resendButton'] == null
+        ? null
+        : ThreeDSecureButtonThemeData.fromJson(
+            json['resendButton'] as Map<String, dynamic>),
   );
 }
 
@@ -35,6 +51,10 @@ Map<String, dynamic> _$_$_ThreeDSecureConfigurationParamsToJson(
       'label': instance.label?.toJson(),
       'textField': instance.textField?.toJson(),
       'submitButton': instance.submitButton?.toJson(),
+      'cancelButton': instance.cancelButton?.toJson(),
+      'nextButton': instance.nextButton?.toJson(),
+      'continueButton': instance.continueButton?.toJson(),
+      'resendButton': instance.resendButton?.toJson(),
     };
 
 _$_ThreeDSecureNavigationBarThemeData
@@ -100,9 +120,9 @@ Map<String, dynamic> _$_$_ThreeDSecureTextFieldThemeDataToJson(
       'textFontSize': instance.textFontSize,
     };
 
-_$_ThreeDSecureSubmitButtonThemeData
-    _$_$_ThreeDSecureSubmitButtonThemeDataFromJson(Map<String, dynamic> json) {
-  return _$_ThreeDSecureSubmitButtonThemeData(
+_$_ThreeDSecureButtonThemeData _$_$_ThreeDSecureButtonThemeDataFromJson(
+    Map<String, dynamic> json) {
+  return _$_ThreeDSecureButtonThemeData(
     backgroundColor: json['backgroundColor'] as String?,
     cornerRadius: (json['cornerRadius'] as num?)?.toDouble(),
     textColor: json['textColor'] as String?,
@@ -110,8 +130,8 @@ _$_ThreeDSecureSubmitButtonThemeData
   );
 }
 
-Map<String, dynamic> _$_$_ThreeDSecureSubmitButtonThemeDataToJson(
-        _$_ThreeDSecureSubmitButtonThemeData instance) =>
+Map<String, dynamic> _$_$_ThreeDSecureButtonThemeDataToJson(
+        _$_ThreeDSecureButtonThemeData instance) =>
     <String, dynamic>{
       'backgroundColor': instance.backgroundColor,
       'cornerRadius': instance.cornerRadius,

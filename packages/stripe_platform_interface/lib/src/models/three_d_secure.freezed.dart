@@ -26,13 +26,21 @@ class _$ThreeDSecureConfigurationParamsTearOff {
       int? timeout,
       ThreeDSecureLabelThemeData? label,
       ThreeDSecureTextFieldThemeData? textField,
-      ThreeDSecureSubmitButtonThemeData? submitButton}) {
+      ThreeDSecureButtonThemeData? submitButton,
+      ThreeDSecureButtonThemeData? cancelButton,
+      ThreeDSecureButtonThemeData? nextButton,
+      ThreeDSecureButtonThemeData? continueButton,
+      ThreeDSecureButtonThemeData? resendButton}) {
     return _ThreeDSecureConfigurationParams(
       navigationBar: navigationBar,
       timeout: timeout,
       label: label,
       textField: textField,
       submitButton: submitButton,
+      cancelButton: cancelButton,
+      nextButton: nextButton,
+      continueButton: continueButton,
+      resendButton: resendButton,
     );
   }
 
@@ -62,7 +70,23 @@ mixin _$ThreeDSecureConfigurationParams {
       throw _privateConstructorUsedError;
 
   /// Styling for the 3d secure confirmation button.
-  ThreeDSecureSubmitButtonThemeData? get submitButton =>
+  ThreeDSecureButtonThemeData? get submitButton =>
+      throw _privateConstructorUsedError;
+
+  /// Styling for the 3d secure cancel button.
+  ThreeDSecureButtonThemeData? get cancelButton =>
+      throw _privateConstructorUsedError;
+
+  /// Styling for the 3d secure next button.
+  ThreeDSecureButtonThemeData? get nextButton =>
+      throw _privateConstructorUsedError;
+
+  /// Styling for the 3d secure continue button.
+  ThreeDSecureButtonThemeData? get continueButton =>
+      throw _privateConstructorUsedError;
+
+  /// Styling for the 3d secure resend button.
+  ThreeDSecureButtonThemeData? get resendButton =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -82,12 +106,20 @@ abstract class $ThreeDSecureConfigurationParamsCopyWith<$Res> {
       int? timeout,
       ThreeDSecureLabelThemeData? label,
       ThreeDSecureTextFieldThemeData? textField,
-      ThreeDSecureSubmitButtonThemeData? submitButton});
+      ThreeDSecureButtonThemeData? submitButton,
+      ThreeDSecureButtonThemeData? cancelButton,
+      ThreeDSecureButtonThemeData? nextButton,
+      ThreeDSecureButtonThemeData? continueButton,
+      ThreeDSecureButtonThemeData? resendButton});
 
   $ThreeDSecureNavigationBarThemeDataCopyWith<$Res> get navigationBar;
   $ThreeDSecureLabelThemeDataCopyWith<$Res>? get label;
   $ThreeDSecureTextFieldThemeDataCopyWith<$Res>? get textField;
-  $ThreeDSecureSubmitButtonThemeDataCopyWith<$Res>? get submitButton;
+  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get submitButton;
+  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get cancelButton;
+  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get nextButton;
+  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get continueButton;
+  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get resendButton;
 }
 
 /// @nodoc
@@ -106,6 +138,10 @@ class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res>
     Object? label = freezed,
     Object? textField = freezed,
     Object? submitButton = freezed,
+    Object? cancelButton = freezed,
+    Object? nextButton = freezed,
+    Object? continueButton = freezed,
+    Object? resendButton = freezed,
   }) {
     return _then(_value.copyWith(
       navigationBar: navigationBar == freezed
@@ -127,7 +163,23 @@ class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res>
       submitButton: submitButton == freezed
           ? _value.submitButton
           : submitButton // ignore: cast_nullable_to_non_nullable
-              as ThreeDSecureSubmitButtonThemeData?,
+              as ThreeDSecureButtonThemeData?,
+      cancelButton: cancelButton == freezed
+          ? _value.cancelButton
+          : cancelButton // ignore: cast_nullable_to_non_nullable
+              as ThreeDSecureButtonThemeData?,
+      nextButton: nextButton == freezed
+          ? _value.nextButton
+          : nextButton // ignore: cast_nullable_to_non_nullable
+              as ThreeDSecureButtonThemeData?,
+      continueButton: continueButton == freezed
+          ? _value.continueButton
+          : continueButton // ignore: cast_nullable_to_non_nullable
+              as ThreeDSecureButtonThemeData?,
+      resendButton: resendButton == freezed
+          ? _value.resendButton
+          : resendButton // ignore: cast_nullable_to_non_nullable
+              as ThreeDSecureButtonThemeData?,
     ));
   }
 
@@ -163,14 +215,62 @@ class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res>
   }
 
   @override
-  $ThreeDSecureSubmitButtonThemeDataCopyWith<$Res>? get submitButton {
+  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get submitButton {
     if (_value.submitButton == null) {
       return null;
     }
 
-    return $ThreeDSecureSubmitButtonThemeDataCopyWith<$Res>(
-        _value.submitButton!, (value) {
+    return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_value.submitButton!,
+        (value) {
       return _then(_value.copyWith(submitButton: value));
+    });
+  }
+
+  @override
+  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get cancelButton {
+    if (_value.cancelButton == null) {
+      return null;
+    }
+
+    return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_value.cancelButton!,
+        (value) {
+      return _then(_value.copyWith(cancelButton: value));
+    });
+  }
+
+  @override
+  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get nextButton {
+    if (_value.nextButton == null) {
+      return null;
+    }
+
+    return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_value.nextButton!,
+        (value) {
+      return _then(_value.copyWith(nextButton: value));
+    });
+  }
+
+  @override
+  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get continueButton {
+    if (_value.continueButton == null) {
+      return null;
+    }
+
+    return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_value.continueButton!,
+        (value) {
+      return _then(_value.copyWith(continueButton: value));
+    });
+  }
+
+  @override
+  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get resendButton {
+    if (_value.resendButton == null) {
+      return null;
+    }
+
+    return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_value.resendButton!,
+        (value) {
+      return _then(_value.copyWith(resendButton: value));
     });
   }
 }
@@ -188,7 +288,11 @@ abstract class _$ThreeDSecureConfigurationParamsCopyWith<$Res>
       int? timeout,
       ThreeDSecureLabelThemeData? label,
       ThreeDSecureTextFieldThemeData? textField,
-      ThreeDSecureSubmitButtonThemeData? submitButton});
+      ThreeDSecureButtonThemeData? submitButton,
+      ThreeDSecureButtonThemeData? cancelButton,
+      ThreeDSecureButtonThemeData? nextButton,
+      ThreeDSecureButtonThemeData? continueButton,
+      ThreeDSecureButtonThemeData? resendButton});
 
   @override
   $ThreeDSecureNavigationBarThemeDataCopyWith<$Res> get navigationBar;
@@ -197,7 +301,15 @@ abstract class _$ThreeDSecureConfigurationParamsCopyWith<$Res>
   @override
   $ThreeDSecureTextFieldThemeDataCopyWith<$Res>? get textField;
   @override
-  $ThreeDSecureSubmitButtonThemeDataCopyWith<$Res>? get submitButton;
+  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get submitButton;
+  @override
+  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get cancelButton;
+  @override
+  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get nextButton;
+  @override
+  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get continueButton;
+  @override
+  $ThreeDSecureButtonThemeDataCopyWith<$Res>? get resendButton;
 }
 
 /// @nodoc
@@ -220,6 +332,10 @@ class __$ThreeDSecureConfigurationParamsCopyWithImpl<$Res>
     Object? label = freezed,
     Object? textField = freezed,
     Object? submitButton = freezed,
+    Object? cancelButton = freezed,
+    Object? nextButton = freezed,
+    Object? continueButton = freezed,
+    Object? resendButton = freezed,
   }) {
     return _then(_ThreeDSecureConfigurationParams(
       navigationBar: navigationBar == freezed
@@ -241,14 +357,30 @@ class __$ThreeDSecureConfigurationParamsCopyWithImpl<$Res>
       submitButton: submitButton == freezed
           ? _value.submitButton
           : submitButton // ignore: cast_nullable_to_non_nullable
-              as ThreeDSecureSubmitButtonThemeData?,
+              as ThreeDSecureButtonThemeData?,
+      cancelButton: cancelButton == freezed
+          ? _value.cancelButton
+          : cancelButton // ignore: cast_nullable_to_non_nullable
+              as ThreeDSecureButtonThemeData?,
+      nextButton: nextButton == freezed
+          ? _value.nextButton
+          : nextButton // ignore: cast_nullable_to_non_nullable
+              as ThreeDSecureButtonThemeData?,
+      continueButton: continueButton == freezed
+          ? _value.continueButton
+          : continueButton // ignore: cast_nullable_to_non_nullable
+              as ThreeDSecureButtonThemeData?,
+      resendButton: resendButton == freezed
+          ? _value.resendButton
+          : resendButton // ignore: cast_nullable_to_non_nullable
+              as ThreeDSecureButtonThemeData?,
     ));
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_ThreeDSecureConfigurationParams
     implements _ThreeDSecureConfigurationParams {
   const _$_ThreeDSecureConfigurationParams(
@@ -256,7 +388,11 @@ class _$_ThreeDSecureConfigurationParams
       this.timeout,
       this.label,
       this.textField,
-      this.submitButton});
+      this.submitButton,
+      this.cancelButton,
+      this.nextButton,
+      this.continueButton,
+      this.resendButton});
 
   factory _$_ThreeDSecureConfigurationParams.fromJson(
           Map<String, dynamic> json) =>
@@ -281,11 +417,27 @@ class _$_ThreeDSecureConfigurationParams
   @override
 
   /// Styling for the 3d secure confirmation button.
-  final ThreeDSecureSubmitButtonThemeData? submitButton;
+  final ThreeDSecureButtonThemeData? submitButton;
+  @override
+
+  /// Styling for the 3d secure cancel button.
+  final ThreeDSecureButtonThemeData? cancelButton;
+  @override
+
+  /// Styling for the 3d secure next button.
+  final ThreeDSecureButtonThemeData? nextButton;
+  @override
+
+  /// Styling for the 3d secure continue button.
+  final ThreeDSecureButtonThemeData? continueButton;
+  @override
+
+  /// Styling for the 3d secure resend button.
+  final ThreeDSecureButtonThemeData? resendButton;
 
   @override
   String toString() {
-    return 'ThreeDSecureConfigurationParams(navigationBar: $navigationBar, timeout: $timeout, label: $label, textField: $textField, submitButton: $submitButton)';
+    return 'ThreeDSecureConfigurationParams(navigationBar: $navigationBar, timeout: $timeout, label: $label, textField: $textField, submitButton: $submitButton, cancelButton: $cancelButton, nextButton: $nextButton, continueButton: $continueButton, resendButton: $resendButton)';
   }
 
   @override
@@ -305,7 +457,19 @@ class _$_ThreeDSecureConfigurationParams
                     .equals(other.textField, textField)) &&
             (identical(other.submitButton, submitButton) ||
                 const DeepCollectionEquality()
-                    .equals(other.submitButton, submitButton)));
+                    .equals(other.submitButton, submitButton)) &&
+            (identical(other.cancelButton, cancelButton) ||
+                const DeepCollectionEquality()
+                    .equals(other.cancelButton, cancelButton)) &&
+            (identical(other.nextButton, nextButton) ||
+                const DeepCollectionEquality()
+                    .equals(other.nextButton, nextButton)) &&
+            (identical(other.continueButton, continueButton) ||
+                const DeepCollectionEquality()
+                    .equals(other.continueButton, continueButton)) &&
+            (identical(other.resendButton, resendButton) ||
+                const DeepCollectionEquality()
+                    .equals(other.resendButton, resendButton)));
   }
 
   @override
@@ -315,7 +479,11 @@ class _$_ThreeDSecureConfigurationParams
       const DeepCollectionEquality().hash(timeout) ^
       const DeepCollectionEquality().hash(label) ^
       const DeepCollectionEquality().hash(textField) ^
-      const DeepCollectionEquality().hash(submitButton);
+      const DeepCollectionEquality().hash(submitButton) ^
+      const DeepCollectionEquality().hash(cancelButton) ^
+      const DeepCollectionEquality().hash(nextButton) ^
+      const DeepCollectionEquality().hash(continueButton) ^
+      const DeepCollectionEquality().hash(resendButton);
 
   @JsonKey(ignore: true)
   @override
@@ -336,7 +504,11 @@ abstract class _ThreeDSecureConfigurationParams
           int? timeout,
           ThreeDSecureLabelThemeData? label,
           ThreeDSecureTextFieldThemeData? textField,
-          ThreeDSecureSubmitButtonThemeData? submitButton}) =
+          ThreeDSecureButtonThemeData? submitButton,
+          ThreeDSecureButtonThemeData? cancelButton,
+          ThreeDSecureButtonThemeData? nextButton,
+          ThreeDSecureButtonThemeData? continueButton,
+          ThreeDSecureButtonThemeData? resendButton}) =
       _$_ThreeDSecureConfigurationParams;
 
   factory _ThreeDSecureConfigurationParams.fromJson(Map<String, dynamic> json) =
@@ -363,7 +535,27 @@ abstract class _ThreeDSecureConfigurationParams
   @override
 
   /// Styling for the 3d secure confirmation button.
-  ThreeDSecureSubmitButtonThemeData? get submitButton =>
+  ThreeDSecureButtonThemeData? get submitButton =>
+      throw _privateConstructorUsedError;
+  @override
+
+  /// Styling for the 3d secure cancel button.
+  ThreeDSecureButtonThemeData? get cancelButton =>
+      throw _privateConstructorUsedError;
+  @override
+
+  /// Styling for the 3d secure next button.
+  ThreeDSecureButtonThemeData? get nextButton =>
+      throw _privateConstructorUsedError;
+  @override
+
+  /// Styling for the 3d secure continue button.
+  ThreeDSecureButtonThemeData? get continueButton =>
+      throw _privateConstructorUsedError;
+  @override
+
+  /// Styling for the 3d secure resend button.
+  ThreeDSecureButtonThemeData? get resendButton =>
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -563,9 +755,9 @@ class __$ThreeDSecureNavigationBarThemeDataCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_ThreeDSecureNavigationBarThemeData
     implements _ThreeDSecureNavigationBarThemeData {
   const _$_ThreeDSecureNavigationBarThemeData(
@@ -855,9 +1047,9 @@ class __$ThreeDSecureLabelThemeDataCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_ThreeDSecureLabelThemeData implements _ThreeDSecureLabelThemeData {
   const _$_ThreeDSecureLabelThemeData(
       {this.headingTextColor,
@@ -1131,9 +1323,9 @@ class __$ThreeDSecureTextFieldThemeDataCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_ThreeDSecureTextFieldThemeData
     implements _ThreeDSecureTextFieldThemeData {
   const _$_ThreeDSecureTextFieldThemeData(
@@ -1253,21 +1445,21 @@ abstract class _ThreeDSecureTextFieldThemeData
       get copyWith => throw _privateConstructorUsedError;
 }
 
-ThreeDSecureSubmitButtonThemeData _$ThreeDSecureSubmitButtonThemeDataFromJson(
+ThreeDSecureButtonThemeData _$ThreeDSecureButtonThemeDataFromJson(
     Map<String, dynamic> json) {
-  return _ThreeDSecureSubmitButtonThemeData.fromJson(json);
+  return _ThreeDSecureButtonThemeData.fromJson(json);
 }
 
 /// @nodoc
-class _$ThreeDSecureSubmitButtonThemeDataTearOff {
-  const _$ThreeDSecureSubmitButtonThemeDataTearOff();
+class _$ThreeDSecureButtonThemeDataTearOff {
+  const _$ThreeDSecureButtonThemeDataTearOff();
 
-  _ThreeDSecureSubmitButtonThemeData call(
+  _ThreeDSecureButtonThemeData call(
       {String? backgroundColor,
       double? cornerRadius,
       String? textColor,
       double? textFontSize}) {
-    return _ThreeDSecureSubmitButtonThemeData(
+    return _ThreeDSecureButtonThemeData(
       backgroundColor: backgroundColor,
       cornerRadius: cornerRadius,
       textColor: textColor,
@@ -1275,17 +1467,16 @@ class _$ThreeDSecureSubmitButtonThemeDataTearOff {
     );
   }
 
-  ThreeDSecureSubmitButtonThemeData fromJson(Map<String, Object> json) {
-    return ThreeDSecureSubmitButtonThemeData.fromJson(json);
+  ThreeDSecureButtonThemeData fromJson(Map<String, Object> json) {
+    return ThreeDSecureButtonThemeData.fromJson(json);
   }
 }
 
 /// @nodoc
-const $ThreeDSecureSubmitButtonThemeData =
-    _$ThreeDSecureSubmitButtonThemeDataTearOff();
+const $ThreeDSecureButtonThemeData = _$ThreeDSecureButtonThemeDataTearOff();
 
 /// @nodoc
-mixin _$ThreeDSecureSubmitButtonThemeData {
+mixin _$ThreeDSecureButtonThemeData {
   /// Color in hex for button background
   String? get backgroundColor => throw _privateConstructorUsedError;
 
@@ -1300,16 +1491,16 @@ mixin _$ThreeDSecureSubmitButtonThemeData {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ThreeDSecureSubmitButtonThemeDataCopyWith<ThreeDSecureSubmitButtonThemeData>
+  $ThreeDSecureButtonThemeDataCopyWith<ThreeDSecureButtonThemeData>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ThreeDSecureSubmitButtonThemeDataCopyWith<$Res> {
-  factory $ThreeDSecureSubmitButtonThemeDataCopyWith(
-          ThreeDSecureSubmitButtonThemeData value,
-          $Res Function(ThreeDSecureSubmitButtonThemeData) then) =
-      _$ThreeDSecureSubmitButtonThemeDataCopyWithImpl<$Res>;
+abstract class $ThreeDSecureButtonThemeDataCopyWith<$Res> {
+  factory $ThreeDSecureButtonThemeDataCopyWith(
+          ThreeDSecureButtonThemeData value,
+          $Res Function(ThreeDSecureButtonThemeData) then) =
+      _$ThreeDSecureButtonThemeDataCopyWithImpl<$Res>;
   $Res call(
       {String? backgroundColor,
       double? cornerRadius,
@@ -1318,13 +1509,13 @@ abstract class $ThreeDSecureSubmitButtonThemeDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ThreeDSecureSubmitButtonThemeDataCopyWithImpl<$Res>
-    implements $ThreeDSecureSubmitButtonThemeDataCopyWith<$Res> {
-  _$ThreeDSecureSubmitButtonThemeDataCopyWithImpl(this._value, this._then);
+class _$ThreeDSecureButtonThemeDataCopyWithImpl<$Res>
+    implements $ThreeDSecureButtonThemeDataCopyWith<$Res> {
+  _$ThreeDSecureButtonThemeDataCopyWithImpl(this._value, this._then);
 
-  final ThreeDSecureSubmitButtonThemeData _value;
+  final ThreeDSecureButtonThemeData _value;
   // ignore: unused_field
-  final $Res Function(ThreeDSecureSubmitButtonThemeData) _then;
+  final $Res Function(ThreeDSecureButtonThemeData) _then;
 
   @override
   $Res call({
@@ -1355,12 +1546,12 @@ class _$ThreeDSecureSubmitButtonThemeDataCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ThreeDSecureSubmitButtonThemeDataCopyWith<$Res>
-    implements $ThreeDSecureSubmitButtonThemeDataCopyWith<$Res> {
-  factory _$ThreeDSecureSubmitButtonThemeDataCopyWith(
-          _ThreeDSecureSubmitButtonThemeData value,
-          $Res Function(_ThreeDSecureSubmitButtonThemeData) then) =
-      __$ThreeDSecureSubmitButtonThemeDataCopyWithImpl<$Res>;
+abstract class _$ThreeDSecureButtonThemeDataCopyWith<$Res>
+    implements $ThreeDSecureButtonThemeDataCopyWith<$Res> {
+  factory _$ThreeDSecureButtonThemeDataCopyWith(
+          _ThreeDSecureButtonThemeData value,
+          $Res Function(_ThreeDSecureButtonThemeData) then) =
+      __$ThreeDSecureButtonThemeDataCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? backgroundColor,
@@ -1370,17 +1561,17 @@ abstract class _$ThreeDSecureSubmitButtonThemeDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ThreeDSecureSubmitButtonThemeDataCopyWithImpl<$Res>
-    extends _$ThreeDSecureSubmitButtonThemeDataCopyWithImpl<$Res>
-    implements _$ThreeDSecureSubmitButtonThemeDataCopyWith<$Res> {
-  __$ThreeDSecureSubmitButtonThemeDataCopyWithImpl(
-      _ThreeDSecureSubmitButtonThemeData _value,
-      $Res Function(_ThreeDSecureSubmitButtonThemeData) _then)
-      : super(_value, (v) => _then(v as _ThreeDSecureSubmitButtonThemeData));
+class __$ThreeDSecureButtonThemeDataCopyWithImpl<$Res>
+    extends _$ThreeDSecureButtonThemeDataCopyWithImpl<$Res>
+    implements _$ThreeDSecureButtonThemeDataCopyWith<$Res> {
+  __$ThreeDSecureButtonThemeDataCopyWithImpl(
+      _ThreeDSecureButtonThemeData _value,
+      $Res Function(_ThreeDSecureButtonThemeData) _then)
+      : super(_value, (v) => _then(v as _ThreeDSecureButtonThemeData));
 
   @override
-  _ThreeDSecureSubmitButtonThemeData get _value =>
-      super._value as _ThreeDSecureSubmitButtonThemeData;
+  _ThreeDSecureButtonThemeData get _value =>
+      super._value as _ThreeDSecureButtonThemeData;
 
   @override
   $Res call({
@@ -1389,7 +1580,7 @@ class __$ThreeDSecureSubmitButtonThemeDataCopyWithImpl<$Res>
     Object? textColor = freezed,
     Object? textFontSize = freezed,
   }) {
-    return _then(_ThreeDSecureSubmitButtonThemeData(
+    return _then(_ThreeDSecureButtonThemeData(
       backgroundColor: backgroundColor == freezed
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
@@ -1410,20 +1601,18 @@ class __$ThreeDSecureSubmitButtonThemeDataCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
-class _$_ThreeDSecureSubmitButtonThemeData
-    implements _ThreeDSecureSubmitButtonThemeData {
-  const _$_ThreeDSecureSubmitButtonThemeData(
+
+@JsonSerializable(explicitToJson: true)
+class _$_ThreeDSecureButtonThemeData implements _ThreeDSecureButtonThemeData {
+  const _$_ThreeDSecureButtonThemeData(
       {this.backgroundColor,
       this.cornerRadius,
       this.textColor,
       this.textFontSize});
 
-  factory _$_ThreeDSecureSubmitButtonThemeData.fromJson(
-          Map<String, dynamic> json) =>
-      _$_$_ThreeDSecureSubmitButtonThemeDataFromJson(json);
+  factory _$_ThreeDSecureButtonThemeData.fromJson(Map<String, dynamic> json) =>
+      _$_$_ThreeDSecureButtonThemeDataFromJson(json);
 
   @override
 
@@ -1444,13 +1633,13 @@ class _$_ThreeDSecureSubmitButtonThemeData
 
   @override
   String toString() {
-    return 'ThreeDSecureSubmitButtonThemeData(backgroundColor: $backgroundColor, cornerRadius: $cornerRadius, textColor: $textColor, textFontSize: $textFontSize)';
+    return 'ThreeDSecureButtonThemeData(backgroundColor: $backgroundColor, cornerRadius: $cornerRadius, textColor: $textColor, textFontSize: $textFontSize)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ThreeDSecureSubmitButtonThemeData &&
+        (other is _ThreeDSecureButtonThemeData &&
             (identical(other.backgroundColor, backgroundColor) ||
                 const DeepCollectionEquality()
                     .equals(other.backgroundColor, backgroundColor)) &&
@@ -1475,28 +1664,26 @@ class _$_ThreeDSecureSubmitButtonThemeData
 
   @JsonKey(ignore: true)
   @override
-  _$ThreeDSecureSubmitButtonThemeDataCopyWith<
-          _ThreeDSecureSubmitButtonThemeData>
-      get copyWith => __$ThreeDSecureSubmitButtonThemeDataCopyWithImpl<
-          _ThreeDSecureSubmitButtonThemeData>(this, _$identity);
+  _$ThreeDSecureButtonThemeDataCopyWith<_ThreeDSecureButtonThemeData>
+      get copyWith => __$ThreeDSecureButtonThemeDataCopyWithImpl<
+          _ThreeDSecureButtonThemeData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ThreeDSecureSubmitButtonThemeDataToJson(this);
+    return _$_$_ThreeDSecureButtonThemeDataToJson(this);
   }
 }
 
-abstract class _ThreeDSecureSubmitButtonThemeData
-    implements ThreeDSecureSubmitButtonThemeData {
-  const factory _ThreeDSecureSubmitButtonThemeData(
+abstract class _ThreeDSecureButtonThemeData
+    implements ThreeDSecureButtonThemeData {
+  const factory _ThreeDSecureButtonThemeData(
       {String? backgroundColor,
       double? cornerRadius,
       String? textColor,
-      double? textFontSize}) = _$_ThreeDSecureSubmitButtonThemeData;
+      double? textFontSize}) = _$_ThreeDSecureButtonThemeData;
 
-  factory _ThreeDSecureSubmitButtonThemeData.fromJson(
-          Map<String, dynamic> json) =
-      _$_ThreeDSecureSubmitButtonThemeData.fromJson;
+  factory _ThreeDSecureButtonThemeData.fromJson(Map<String, dynamic> json) =
+      _$_ThreeDSecureButtonThemeData.fromJson;
 
   @override
 
@@ -1516,7 +1703,6 @@ abstract class _ThreeDSecureSubmitButtonThemeData
   double? get textFontSize => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ThreeDSecureSubmitButtonThemeDataCopyWith<
-          _ThreeDSecureSubmitButtonThemeData>
+  _$ThreeDSecureButtonThemeDataCopyWith<_ThreeDSecureButtonThemeData>
       get copyWith => throw _privateConstructorUsedError;
 }

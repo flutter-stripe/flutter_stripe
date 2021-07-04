@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/services.dart';
+import 'package:stripe_platform_interface/src/models/create_token_data.dart';
 
 import 'models/app_info.dart';
 import 'models/apple_pay.dart';
@@ -42,6 +43,7 @@ class MethodChannelStripe extends StripePlatform {
       'merchantIdentifier': merchantIdentifier,
       'appInfo': _appInfo.toJson(),
       'threeDSecureParams': threeDSecureParams,
+      'urlScheme': urlScheme,
     });
   }
 
@@ -55,8 +57,11 @@ class MethodChannelStripe extends StripePlatform {
       'data': data.toJson(),
       'options': options,
     });
+
+    final tmp = result?['paymentMethod'] as Map<String, dynamic>;
+
     return PaymentMethod.fromJson(
-      result.unfoldToNonNull(),
+      tmp.unfoldToNonNull(),
     );
   }
 
@@ -80,7 +85,10 @@ class MethodChannelStripe extends StripePlatform {
         'params': params.toJson(),
         'options': options,
       });
-      return PaymentIntent.fromJson(result.unfoldToNonNull());
+
+      final tmp = result?['paymentIntent'] as Map<String, dynamic>;
+
+      return PaymentIntent.fromJson(tmp.unfoldToNonNull());
     } on Exception catch (_) {
       throw const StripeError<PaymentIntentError>(
         code: PaymentIntentError.unknown,
@@ -101,8 +109,9 @@ class MethodChannelStripe extends StripePlatform {
       'params': data.toJson(),
       'options': options,
     });
+    final tmp = result.unfoldToNonNull();
 
-    return SetupIntent.fromJson(result.unfoldToNonNull());
+    return SetupIntent.fromJson(tmp['setupIntent']);
   }
 
   @override
@@ -124,7 +133,9 @@ class MethodChannelStripe extends StripePlatform {
         'paymentIntentClientSecret': paymentIntentClientSecret,
       });
 
-      return PaymentIntent.fromJson(result.unfoldToNonNull());
+      final tmp = result?['paymentIntent'] as Map<String, dynamic>;
+
+      return PaymentIntent.fromJson(tmp.unfoldToNonNull());
     } on Exception catch (_) {
       throw const StripeError<PaymentIntentError>(
         code: PaymentIntentError.unknown,
@@ -159,7 +170,9 @@ class MethodChannelStripe extends StripePlatform {
         'clientSecret': clientSecret,
       });
 
-      return PaymentIntent.fromJson(result.unfoldToNonNull());
+      final tmp = result?['paymentIntent'] as Map<String, dynamic>;
+
+      return PaymentIntent.fromJson(tmp.unfoldToNonNull());
     } on Exception catch (_) {
       throw const StripeError<PaymentIntentError>(
         code: PaymentIntentError.unknown,
@@ -170,7 +183,7 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<void> initPaymentSheet(SetupPaymentSheetParameters params) async {
-    await _methodChannel.invokeMapMethod(
+    await _methodChannel.invokeMethod(
       'initPaymentSheet',
       {'params': params.toJson()},
     );
@@ -187,6 +200,21 @@ class MethodChannelStripe extends StripePlatform {
   @override
   Future<void> confirmPaymentSheetPayment() async {
     await _methodChannel.invokeMethod('confirmPaymentSheetPayment');
+  }
+
+  @override
+  Future<TokenData> createToken(CreateTokenParams params) async {
+    try {
+      final result = await _methodChannel.invokeMapMethod<String, dynamic>(
+          'createToken', {'params': params.toJson()});
+
+      return TokenData.fromJson(result.unfoldToNonNull());
+    } on Exception catch (e) {
+      throw StripeError<CreateTokenError>(
+        code: CreateTokenError.unknown,
+        message: 'Create token failed with exception: $e',
+      );
+    }
   }
 }
 

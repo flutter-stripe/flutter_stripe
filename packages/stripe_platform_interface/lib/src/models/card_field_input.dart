@@ -38,6 +38,9 @@ class CardStyle with _$CardStyle {
     /// Font size.
     double? fontSize,
 
+    /// Font family
+    String? fontFamily,
+
     /// Color of the input in case incorrect data is entered.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
         Color? textErrorColor,
@@ -62,6 +65,7 @@ class CardStyle with _$CardStyle {
         fontSize: style?.fontSize ?? fontSize,
         textErrorColor: style?.textErrorColor ?? textErrorColor,
         placeholderColor: style?.placeholderColor ?? placeholderColor,
+        fontFamily: style?.fontFamily ?? fontFamily,
       );
 }
 
@@ -131,10 +135,10 @@ class CardFieldInputDetails with _$CardFieldInputDetails {
     String? last4,
 
     /// Month of the entered expiry date of the card.
-    String? expiryMonth,
+    int? expiryMonth,
 
     /// Year of the entered expiry date of the card.
-    String? expiryYear,
+    int? expiryYear,
 
     /// Entered postcal code.
     String? postalCode,
@@ -161,15 +165,19 @@ class CardFieldFocusName with _$CardFieldFocusName {
 /// Enum representing the different fiels on the card field.
 enum CardFieldName {
   @JsonValue('CardNumber')
+
   /// Card number field.
   cardNumber,
   @JsonValue('Cvc')
+
   /// Cvc field.
   cvc,
   @JsonValue('ExpiryDate')
+
   /// Expiry date field.
   expiryDate,
   @JsonValue('PostalCode')
+
   /// Postal code field.
   postalCode,
 }

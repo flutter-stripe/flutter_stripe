@@ -23,7 +23,7 @@ class PaymentIntent with _$PaymentIntent {
     required num amount,
 
     /// Timestamp since epoch that represents the time the intent is created.
-    required int created,
+    required String created,
 
     /// The three letter ISO 4217 code for the currency.
     required String currency,
@@ -37,14 +37,15 @@ class PaymentIntent with _$PaymentIntent {
     /// Determines whether the intent is in live mode or in test mode.
     required bool livemode,
 
-    /// Id of the payment method used in this intent.
-    required String paymentMethodId,
-
     /// How the funds will be caputure from the customer's account.
     required CaptureMethod captureMethod,
 
     /// Method of how the payment will be confirmed.
     required ConfirmationMethod confirmationMethod,
+
+    /// Id of the payment method used in this intent.
+    String? paymentMethodId,
+
     /// Localized description that provides additional context to users.
     String? description,
 
@@ -52,7 +53,7 @@ class PaymentIntent with _$PaymentIntent {
     String? receiptEmail,
 
     /// Timestamp since epoch when the intent is cancelled.
-    int? canceledAt,
+    String? canceledAt,
 
     /// Shipping information of the payment intent.
     ShippingDetails? shipping,
@@ -123,6 +124,7 @@ enum PaymentIntentsFutureUsage {
 enum PaymentIntentsStatus {
   /// Completed.
   Succeeded,
+
   /// No payment method is attached to the intent.
   RequiresPaymentMethod,
 

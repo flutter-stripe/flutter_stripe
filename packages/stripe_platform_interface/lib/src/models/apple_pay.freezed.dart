@@ -172,9 +172,9 @@ class __$ApplePayShippingMethodCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_ApplePayShippingMethod implements _ApplePayShippingMethod {
   const _$_ApplePayShippingMethod(
       {required this.label,
@@ -381,9 +381,8 @@ class __$ApplePayCartSummaryItemCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_ApplePayCartSummaryItem implements _ApplePayCartSummaryItem {
   const _$_ApplePayCartSummaryItem({required this.label, required this.amount});
 
@@ -646,9 +645,9 @@ class __$ApplePayPresentParamsCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(explicitToJson: true)
-
 /// @nodoc
+
+@JsonSerializable(explicitToJson: true)
 class _$_ApplePayPresentParams implements _ApplePayPresentParams {
   const _$_ApplePayPresentParams(
       {required this.cartItems,
