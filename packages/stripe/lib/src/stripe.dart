@@ -285,6 +285,10 @@ class Stripe {
     }
   }
 
+  /// Initializes the payment by providing a configuration
+  ///
+  /// See [SetupPaymentSheetParameters] for more info. In order to show the
+  /// payment sheet it is required to call [presentPaymentSheet].
   Future<void> initPaymentSheet({
     required SetupPaymentSheetParameters paymentSheetParameters,
   }) async {
@@ -292,15 +296,18 @@ class Stripe {
     await _platform.initPaymentSheet(paymentSheetParameters);
   }
 
-  Future<void> presentPaymentSheet({
+  /// Displays the paymentsheet
+  ///
+  /// See [PresentPaymentSheetPameters] for more details
+  Future<PaymentSheetResult> presentPaymentSheet({
     required PresentPaymentSheetParameters parameters,
   }) async {
     await _awaitForSettings();
-    await _platform.presentPaymentSheet(parameters);
+    return await _platform.presentPaymentSheet(parameters);
   }
 
-  Future<void> confirmPaymentSheetPayment() async {
-    await _platform.confirmPaymentSheetPayment();
+  Future<PaymentSheetResult> confirmPaymentSheetPayment() async {
+    return await _platform.confirmPaymentSheetPayment();
   }
 
   FutureOr<void> _awaitForSettings() {

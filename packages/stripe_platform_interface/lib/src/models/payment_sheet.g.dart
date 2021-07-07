@@ -93,3 +93,35 @@ Map<String, dynamic> _$_$_PresentParametersToJson(
       'clientSecret': instance.clientSecret,
       'confirmPayment': instance.confirmPayment,
     };
+
+_$_PaymentSheetResultSuccess _$_$_PaymentSheetResultSuccessFromJson(
+    Map<String, dynamic> json) {
+  return _$_PaymentSheetResultSuccess();
+}
+
+Map<String, dynamic> _$_$_PaymentSheetResultSuccessToJson(
+        _$_PaymentSheetResultSuccess instance) =>
+    <String, dynamic>{};
+
+_$_PaymentSheetResultfailed _$_$_PaymentSheetResultfailedFromJson(
+    Map<String, dynamic> json) {
+  return _$_PaymentSheetResultfailed(
+    code: json['code'] as String,
+    localizedMessage: json['localizedMessage'] as String?,
+    message: json['message'] as String?,
+    stripeErrorCode: json['stripeErrorCode'] as String?,
+    declineCode: json['declineCode'] as String?,
+    type: json['type'] as String?,
+  );
+}
+
+Map<String, dynamic> _$_$_PaymentSheetResultfailedToJson(
+        _$_PaymentSheetResultfailed instance) =>
+    <String, dynamic>{
+      'code': instance.code,
+      'localizedMessage': instance.localizedMessage,
+      'message': instance.message,
+      'stripeErrorCode': instance.stripeErrorCode,
+      'declineCode': instance.declineCode,
+      'type': instance.type,
+    };

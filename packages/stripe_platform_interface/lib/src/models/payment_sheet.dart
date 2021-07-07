@@ -102,3 +102,30 @@ class PresentPaymentSheetParameters with _$PresentPaymentSheetParameters {
   factory PresentPaymentSheetParameters.fromJson(Map<String, dynamic> json) =>
       _$PresentPaymentSheetParametersFromJson(json);
 }
+
+@freezed
+class PaymentSheetResult with _$PaymentSheetResult {
+  const factory PaymentSheetResult.success() = _PaymentSheetResultSuccess;
+  const factory PaymentSheetResult.failed({
+    /// The error code for example Cancelled
+    required String code,
+
+    /// Localized error message if any
+    String? localizedMessage,
+
+    /// Generic untranslated error message.
+    String? message,
+
+    /// Stripe error code
+    String? stripeErrorCode,
+
+    /// Code in case payment is declined
+    String? declineCode,
+
+    /// Error type
+    String? type,
+  }) = _PaymentSheetResultfailed;
+
+  factory PaymentSheetResult.fromJson(Map<String, dynamic> json) =>
+      _$PaymentSheetResultFromJson(json);
+}

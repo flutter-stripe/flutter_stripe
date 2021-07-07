@@ -8,6 +8,8 @@ enum PaymentIntentError { unknown }
 
 enum CreateTokenError { unknown }
 
+enum PaymentSheetError { unknown }
+
 @freezed
 
 /// Wrapper class that represents an error with the Stripe platform.
