@@ -47,7 +47,6 @@ class _LegacyTokenScreenState extends State<LegacyTokenScreen> {
 
     try {
       // 1. Gather customer billing information (ex. email)
-
       final address = Address(
         city: 'Houston',
         country: 'US',
@@ -62,7 +61,7 @@ class _LegacyTokenScreenState extends State<LegacyTokenScreen> {
           CreateTokenParams(type: TokenType.Card, address: address));
 
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Success!: The token was created successfully}!')));
+          content: Text('Success: The token was created successfully!')));
       return;
     } catch (e) {
       ScaffoldMessenger.of(context)
