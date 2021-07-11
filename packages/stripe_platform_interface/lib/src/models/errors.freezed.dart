@@ -198,3 +198,320 @@ abstract class _StripeErrorGeneric<T> implements StripeError<T> {
   _$StripeErrorGenericCopyWith<T, _StripeErrorGeneric<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+LocalizedErrorMessage _$LocalizedErrorMessageFromJson(
+    Map<String, dynamic> json) {
+  return _LocalizedErrorMessage.fromJson(json);
+}
+
+/// @nodoc
+class _$LocalizedErrorMessageTearOff {
+  const _$LocalizedErrorMessageTearOff();
+
+  _LocalizedErrorMessage call(
+      {required FailureCode code,
+      String? localizedMessage,
+      String? message,
+      String? stripeErrorCode,
+      String? declineCode,
+      String? type}) {
+    return _LocalizedErrorMessage(
+      code: code,
+      localizedMessage: localizedMessage,
+      message: message,
+      stripeErrorCode: stripeErrorCode,
+      declineCode: declineCode,
+      type: type,
+    );
+  }
+
+  LocalizedErrorMessage fromJson(Map<String, Object> json) {
+    return LocalizedErrorMessage.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $LocalizedErrorMessage = _$LocalizedErrorMessageTearOff();
+
+/// @nodoc
+mixin _$LocalizedErrorMessage {
+  /// The error code for example Cancelled
+  FailureCode get code => throw _privateConstructorUsedError;
+
+  /// Localized error message if any
+  String? get localizedMessage => throw _privateConstructorUsedError;
+
+  /// Generic untranslated error message.
+  String? get message => throw _privateConstructorUsedError;
+
+  /// Stripe error code
+  String? get stripeErrorCode => throw _privateConstructorUsedError;
+
+  /// Code in case payment is declined
+  String? get declineCode => throw _privateConstructorUsedError;
+
+  /// Error type
+  String? get type => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LocalizedErrorMessageCopyWith<LocalizedErrorMessage> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LocalizedErrorMessageCopyWith<$Res> {
+  factory $LocalizedErrorMessageCopyWith(LocalizedErrorMessage value,
+          $Res Function(LocalizedErrorMessage) then) =
+      _$LocalizedErrorMessageCopyWithImpl<$Res>;
+  $Res call(
+      {FailureCode code,
+      String? localizedMessage,
+      String? message,
+      String? stripeErrorCode,
+      String? declineCode,
+      String? type});
+}
+
+/// @nodoc
+class _$LocalizedErrorMessageCopyWithImpl<$Res>
+    implements $LocalizedErrorMessageCopyWith<$Res> {
+  _$LocalizedErrorMessageCopyWithImpl(this._value, this._then);
+
+  final LocalizedErrorMessage _value;
+  // ignore: unused_field
+  final $Res Function(LocalizedErrorMessage) _then;
+
+  @override
+  $Res call({
+    Object? code = freezed,
+    Object? localizedMessage = freezed,
+    Object? message = freezed,
+    Object? stripeErrorCode = freezed,
+    Object? declineCode = freezed,
+    Object? type = freezed,
+  }) {
+    return _then(_value.copyWith(
+      code: code == freezed
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as FailureCode,
+      localizedMessage: localizedMessage == freezed
+          ? _value.localizedMessage
+          : localizedMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stripeErrorCode: stripeErrorCode == freezed
+          ? _value.stripeErrorCode
+          : stripeErrorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      declineCode: declineCode == freezed
+          ? _value.declineCode
+          : declineCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$LocalizedErrorMessageCopyWith<$Res>
+    implements $LocalizedErrorMessageCopyWith<$Res> {
+  factory _$LocalizedErrorMessageCopyWith(_LocalizedErrorMessage value,
+          $Res Function(_LocalizedErrorMessage) then) =
+      __$LocalizedErrorMessageCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {FailureCode code,
+      String? localizedMessage,
+      String? message,
+      String? stripeErrorCode,
+      String? declineCode,
+      String? type});
+}
+
+/// @nodoc
+class __$LocalizedErrorMessageCopyWithImpl<$Res>
+    extends _$LocalizedErrorMessageCopyWithImpl<$Res>
+    implements _$LocalizedErrorMessageCopyWith<$Res> {
+  __$LocalizedErrorMessageCopyWithImpl(_LocalizedErrorMessage _value,
+      $Res Function(_LocalizedErrorMessage) _then)
+      : super(_value, (v) => _then(v as _LocalizedErrorMessage));
+
+  @override
+  _LocalizedErrorMessage get _value => super._value as _LocalizedErrorMessage;
+
+  @override
+  $Res call({
+    Object? code = freezed,
+    Object? localizedMessage = freezed,
+    Object? message = freezed,
+    Object? stripeErrorCode = freezed,
+    Object? declineCode = freezed,
+    Object? type = freezed,
+  }) {
+    return _then(_LocalizedErrorMessage(
+      code: code == freezed
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as FailureCode,
+      localizedMessage: localizedMessage == freezed
+          ? _value.localizedMessage
+          : localizedMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stripeErrorCode: stripeErrorCode == freezed
+          ? _value.stripeErrorCode
+          : stripeErrorCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      declineCode: declineCode == freezed
+          ? _value.declineCode
+          : declineCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_LocalizedErrorMessage implements _LocalizedErrorMessage {
+  const _$_LocalizedErrorMessage(
+      {required this.code,
+      this.localizedMessage,
+      this.message,
+      this.stripeErrorCode,
+      this.declineCode,
+      this.type});
+
+  factory _$_LocalizedErrorMessage.fromJson(Map<String, dynamic> json) =>
+      _$_$_LocalizedErrorMessageFromJson(json);
+
+  @override
+
+  /// The error code for example Cancelled
+  final FailureCode code;
+  @override
+
+  /// Localized error message if any
+  final String? localizedMessage;
+  @override
+
+  /// Generic untranslated error message.
+  final String? message;
+  @override
+
+  /// Stripe error code
+  final String? stripeErrorCode;
+  @override
+
+  /// Code in case payment is declined
+  final String? declineCode;
+  @override
+
+  /// Error type
+  final String? type;
+
+  @override
+  String toString() {
+    return 'LocalizedErrorMessage(code: $code, localizedMessage: $localizedMessage, message: $message, stripeErrorCode: $stripeErrorCode, declineCode: $declineCode, type: $type)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _LocalizedErrorMessage &&
+            (identical(other.code, code) ||
+                const DeepCollectionEquality().equals(other.code, code)) &&
+            (identical(other.localizedMessage, localizedMessage) ||
+                const DeepCollectionEquality()
+                    .equals(other.localizedMessage, localizedMessage)) &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality()
+                    .equals(other.message, message)) &&
+            (identical(other.stripeErrorCode, stripeErrorCode) ||
+                const DeepCollectionEquality()
+                    .equals(other.stripeErrorCode, stripeErrorCode)) &&
+            (identical(other.declineCode, declineCode) ||
+                const DeepCollectionEquality()
+                    .equals(other.declineCode, declineCode)) &&
+            (identical(other.type, type) ||
+                const DeepCollectionEquality().equals(other.type, type)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(code) ^
+      const DeepCollectionEquality().hash(localizedMessage) ^
+      const DeepCollectionEquality().hash(message) ^
+      const DeepCollectionEquality().hash(stripeErrorCode) ^
+      const DeepCollectionEquality().hash(declineCode) ^
+      const DeepCollectionEquality().hash(type);
+
+  @JsonKey(ignore: true)
+  @override
+  _$LocalizedErrorMessageCopyWith<_LocalizedErrorMessage> get copyWith =>
+      __$LocalizedErrorMessageCopyWithImpl<_LocalizedErrorMessage>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_LocalizedErrorMessageToJson(this);
+  }
+}
+
+abstract class _LocalizedErrorMessage implements LocalizedErrorMessage {
+  const factory _LocalizedErrorMessage(
+      {required FailureCode code,
+      String? localizedMessage,
+      String? message,
+      String? stripeErrorCode,
+      String? declineCode,
+      String? type}) = _$_LocalizedErrorMessage;
+
+  factory _LocalizedErrorMessage.fromJson(Map<String, dynamic> json) =
+      _$_LocalizedErrorMessage.fromJson;
+
+  @override
+
+  /// The error code for example Cancelled
+  FailureCode get code => throw _privateConstructorUsedError;
+  @override
+
+  /// Localized error message if any
+  String? get localizedMessage => throw _privateConstructorUsedError;
+  @override
+
+  /// Generic untranslated error message.
+  String? get message => throw _privateConstructorUsedError;
+  @override
+
+  /// Stripe error code
+  String? get stripeErrorCode => throw _privateConstructorUsedError;
+  @override
+
+  /// Code in case payment is declined
+  String? get declineCode => throw _privateConstructorUsedError;
+  @override
+
+  /// Error type
+  String? get type => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$LocalizedErrorMessageCopyWith<_LocalizedErrorMessage> get copyWith =>
+      throw _privateConstructorUsedError;
+}

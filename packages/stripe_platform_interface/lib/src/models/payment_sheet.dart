@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../stripe_platform_interface.dart';
+
 part 'payment_sheet.freezed.dart';
 part 'payment_sheet.g.dart';
 
@@ -101,4 +103,15 @@ class PresentPaymentSheetParameters with _$PresentPaymentSheetParameters {
 
   factory PresentPaymentSheetParameters.fromJson(Map<String, dynamic> json) =>
       _$PresentPaymentSheetParametersFromJson(json);
+}
+
+@freezed
+class PaymentSheetResult with _$PaymentSheetResult {
+  const factory PaymentSheetResult.success() = _PaymentSheetResultSuccess;
+  const factory PaymentSheetResult.failed({
+    required LocalizedErrorMessage error,
+  }) = _PaymentSheetResultfailed;
+
+  factory PaymentSheetResult.fromJson(Map<String, dynamic> json) =>
+      _$PaymentSheetResultFromJson(json);
 }

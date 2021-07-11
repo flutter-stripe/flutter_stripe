@@ -8,6 +8,8 @@ enum PaymentIntentError { unknown }
 
 enum CreateTokenError { unknown }
 
+enum PaymentSheetError { unknown }
+
 @freezed
 
 /// Wrapper class that represents an error with the Stripe platform.
@@ -26,3 +28,32 @@ class StripeError<T> with _$StripeError<T>, Exception {
 T _dataFromJson<T>(Map<String, dynamic> input) => input['code'] as T;
 
 Map<String, dynamic> _dataToJson<T>(T input) => {'code': input};
+
+@freezed
+class LocalizedErrorMessage with _$LocalizedErrorMessage {
+  @JsonSerializable(explicitToJson: true)
+  const factory LocalizedErrorMessage({
+    /// The error code for example Cancelled
+    required FailureCode code,
+
+    /// Localized error message if any
+    String? localizedMessage,
+
+    /// Generic untranslated error message.
+    String? message,
+
+    /// Stripe error code
+    String? stripeErrorCode,
+
+    /// Code in case payment is declined
+    String? declineCode,
+
+    /// Error type
+    String? type,
+  }) = _LocalizedErrorMessage;
+
+  factory LocalizedErrorMessage.fromJson(Map<String, dynamic> json) =>
+      _$LocalizedErrorMessageFromJson(json);
+}
+
+enum FailureCode { Failed, Canceled }
