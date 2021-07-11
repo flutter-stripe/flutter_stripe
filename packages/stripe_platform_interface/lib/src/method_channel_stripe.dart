@@ -190,16 +190,27 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<void> presentPaymentSheet(PresentPaymentSheetParameters params) async {
-    await _methodChannel.invokeMethod(
+  Future<PaymentSheetResult> presentPaymentSheet(
+      PresentPaymentSheetParameters params) async {
+    final result = await _methodChannel.invokeMethod<dynamic>(
       'presentPaymentSheet',
       {'params': params.toJson()},
     );
+
+    // iOS returns empty list on success
+    if (result is List) {
+      return const PaymentSheetResult.success();
+    } else {
+      return _parsePaymentSheetResult(result);
+    }
   }
 
   @override
-  Future<void> confirmPaymentSheetPayment() async {
-    await _methodChannel.invokeMethod('confirmPaymentSheetPayment');
+  Future<PaymentSheetResult> confirmPaymentSheetPayment() async {
+    final result = await _methodChannel
+        .invokeMethod<dynamic>('confirmPaymentSheetPayment');
+
+    return _parsePaymentSheetResult(result);
   }
 
   @override
@@ -213,6 +224,30 @@ class MethodChannelStripe extends StripePlatform {
       throw StripeError<CreateTokenError>(
         code: CreateTokenError.unknown,
         message: 'Create token failed with exception: $e',
+      );
+    }
+  }
+
+  PaymentSheetResult _parsePaymentSheetResult(Map<String, dynamic>? result) {
+    if (result != null) {
+      if (result.isEmpty) {
+        return const PaymentSheetResult.success();
+      } else {
+        if (result['error'] != null) {
+          //workaround for tojson in sumtypes
+          result['runtimeType'] = 'failed';
+          return PaymentSheetResult.fromJson(result);
+        } else {
+          throw StripeError<PaymentSheetError>(
+            message: 'Unknown result $result',
+            code: PaymentSheetError.unknown,
+          );
+        }
+      }
+    } else {
+      throw const StripeError<PaymentSheetError>(
+        message: 'Result should not be null',
+        code: PaymentSheetError.unknown,
       );
     }
   }
