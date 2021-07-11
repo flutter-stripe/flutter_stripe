@@ -30,9 +30,6 @@ jobs:
       
       - name: "Bootstrap Workspace"
         run: melos bootstrap
-        
-      - name: "Get dependencies"
-        run: melos run get
       
       - name: "Set env keys"
         env: 
@@ -65,9 +62,6 @@ jobs:
     - name: "Bootstrap Workspace"
       run: melos bootstrap
       
-    - name: "Get dependencies"
-      run: melos run get
-    
     - name: "Set env keys"
       env: 
         STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY }}
