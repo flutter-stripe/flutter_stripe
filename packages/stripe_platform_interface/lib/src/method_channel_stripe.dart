@@ -219,8 +219,6 @@ class MethodChannelStripe extends StripePlatform {
       final result = await _methodChannel.invokeMapMethod<String, dynamic>(
           'createToken', {'params': params.toJson()});
 
-      print('blaat $result ${result.runtimeType}');
-
       return TokenData.fromJson(result.unfoldToNonNull());
     } on Exception catch (e) {
       throw StripeError<CreateTokenError>(
