@@ -757,20 +757,9 @@ class _$PaymentSheetResultTearOff {
     return const _PaymentSheetResultSuccess();
   }
 
-  _PaymentSheetResultfailed failed(
-      {required String code,
-      String? localizedMessage,
-      String? message,
-      String? stripeErrorCode,
-      String? declineCode,
-      String? type}) {
+  _PaymentSheetResultfailed failed({required LocalizedErrorMessage error}) {
     return _PaymentSheetResultfailed(
-      code: code,
-      localizedMessage: localizedMessage,
-      message: message,
-      stripeErrorCode: stripeErrorCode,
-      declineCode: declineCode,
-      type: type,
+      error: error,
     );
   }
 
@@ -787,22 +776,13 @@ mixin _$PaymentSheetResult {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() success,
-    required TResult Function(
-            String code,
-            String? localizedMessage,
-            String? message,
-            String? stripeErrorCode,
-            String? declineCode,
-            String? type)
-        failed,
+    required TResult Function(LocalizedErrorMessage error) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? success,
-    TResult Function(String code, String? localizedMessage, String? message,
-            String? stripeErrorCode, String? declineCode, String? type)?
-        failed,
+    TResult Function(LocalizedErrorMessage error)? failed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -884,14 +864,7 @@ class _$_PaymentSheetResultSuccess implements _PaymentSheetResultSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() success,
-    required TResult Function(
-            String code,
-            String? localizedMessage,
-            String? message,
-            String? stripeErrorCode,
-            String? declineCode,
-            String? type)
-        failed,
+    required TResult Function(LocalizedErrorMessage error) failed,
   }) {
     return success();
   }
@@ -900,9 +873,7 @@ class _$_PaymentSheetResultSuccess implements _PaymentSheetResultSuccess {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? success,
-    TResult Function(String code, String? localizedMessage, String? message,
-            String? stripeErrorCode, String? declineCode, String? type)?
-        failed,
+    TResult Function(LocalizedErrorMessage error)? failed,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -952,13 +923,9 @@ abstract class _$PaymentSheetResultfailedCopyWith<$Res> {
   factory _$PaymentSheetResultfailedCopyWith(_PaymentSheetResultfailed value,
           $Res Function(_PaymentSheetResultfailed) then) =
       __$PaymentSheetResultfailedCopyWithImpl<$Res>;
-  $Res call(
-      {String code,
-      String? localizedMessage,
-      String? message,
-      String? stripeErrorCode,
-      String? declineCode,
-      String? type});
+  $Res call({LocalizedErrorMessage error});
+
+  $LocalizedErrorMessageCopyWith<$Res> get error;
 }
 
 /// @nodoc
@@ -975,117 +942,51 @@ class __$PaymentSheetResultfailedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? code = freezed,
-    Object? localizedMessage = freezed,
-    Object? message = freezed,
-    Object? stripeErrorCode = freezed,
-    Object? declineCode = freezed,
-    Object? type = freezed,
+    Object? error = freezed,
   }) {
     return _then(_PaymentSheetResultfailed(
-      code: code == freezed
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String,
-      localizedMessage: localizedMessage == freezed
-          ? _value.localizedMessage
-          : localizedMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-      message: message == freezed
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stripeErrorCode: stripeErrorCode == freezed
-          ? _value.stripeErrorCode
-          : stripeErrorCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      declineCode: declineCode == freezed
-          ? _value.declineCode
-          : declineCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+      error: error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as LocalizedErrorMessage,
     ));
+  }
+
+  @override
+  $LocalizedErrorMessageCopyWith<$Res> get error {
+    return $LocalizedErrorMessageCopyWith<$Res>(_value.error, (value) {
+      return _then(_value.copyWith(error: value));
+    });
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$_PaymentSheetResultfailed implements _PaymentSheetResultfailed {
-  const _$_PaymentSheetResultfailed(
-      {required this.code,
-      this.localizedMessage,
-      this.message,
-      this.stripeErrorCode,
-      this.declineCode,
-      this.type});
+  const _$_PaymentSheetResultfailed({required this.error});
 
   factory _$_PaymentSheetResultfailed.fromJson(Map<String, dynamic> json) =>
       _$_$_PaymentSheetResultfailedFromJson(json);
 
   @override
-
-  /// The error code for example Cancelled
-  final String code;
-  @override
-
-  /// Localized error message if any
-  final String? localizedMessage;
-  @override
-
-  /// Generic untranslated error message.
-  final String? message;
-  @override
-
-  /// Stripe error code
-  final String? stripeErrorCode;
-  @override
-
-  /// Code in case payment is declined
-  final String? declineCode;
-  @override
-
-  /// Error type
-  final String? type;
+  final LocalizedErrorMessage error;
 
   @override
   String toString() {
-    return 'PaymentSheetResult.failed(code: $code, localizedMessage: $localizedMessage, message: $message, stripeErrorCode: $stripeErrorCode, declineCode: $declineCode, type: $type)';
+    return 'PaymentSheetResult.failed(error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _PaymentSheetResultfailed &&
-            (identical(other.code, code) ||
-                const DeepCollectionEquality().equals(other.code, code)) &&
-            (identical(other.localizedMessage, localizedMessage) ||
-                const DeepCollectionEquality()
-                    .equals(other.localizedMessage, localizedMessage)) &&
-            (identical(other.message, message) ||
-                const DeepCollectionEquality()
-                    .equals(other.message, message)) &&
-            (identical(other.stripeErrorCode, stripeErrorCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.stripeErrorCode, stripeErrorCode)) &&
-            (identical(other.declineCode, declineCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.declineCode, declineCode)) &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)));
+            (identical(other.error, error) ||
+                const DeepCollectionEquality().equals(other.error, error)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(code) ^
-      const DeepCollectionEquality().hash(localizedMessage) ^
-      const DeepCollectionEquality().hash(message) ^
-      const DeepCollectionEquality().hash(stripeErrorCode) ^
-      const DeepCollectionEquality().hash(declineCode) ^
-      const DeepCollectionEquality().hash(type);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
   @JsonKey(ignore: true)
   @override
@@ -1097,31 +998,20 @@ class _$_PaymentSheetResultfailed implements _PaymentSheetResultfailed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() success,
-    required TResult Function(
-            String code,
-            String? localizedMessage,
-            String? message,
-            String? stripeErrorCode,
-            String? declineCode,
-            String? type)
-        failed,
+    required TResult Function(LocalizedErrorMessage error) failed,
   }) {
-    return failed(
-        code, localizedMessage, message, stripeErrorCode, declineCode, type);
+    return failed(error);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? success,
-    TResult Function(String code, String? localizedMessage, String? message,
-            String? stripeErrorCode, String? declineCode, String? type)?
-        failed,
+    TResult Function(LocalizedErrorMessage error)? failed,
     required TResult orElse(),
   }) {
     if (failed != null) {
-      return failed(
-          code, localizedMessage, message, stripeErrorCode, declineCode, type);
+      return failed(error);
     }
     return orElse();
   }
@@ -1157,33 +1047,12 @@ class _$_PaymentSheetResultfailed implements _PaymentSheetResultfailed {
 
 abstract class _PaymentSheetResultfailed implements PaymentSheetResult {
   const factory _PaymentSheetResultfailed(
-      {required String code,
-      String? localizedMessage,
-      String? message,
-      String? stripeErrorCode,
-      String? declineCode,
-      String? type}) = _$_PaymentSheetResultfailed;
+      {required LocalizedErrorMessage error}) = _$_PaymentSheetResultfailed;
 
   factory _PaymentSheetResultfailed.fromJson(Map<String, dynamic> json) =
       _$_PaymentSheetResultfailed.fromJson;
 
-  /// The error code for example Cancelled
-  String get code => throw _privateConstructorUsedError;
-
-  /// Localized error message if any
-  String? get localizedMessage => throw _privateConstructorUsedError;
-
-  /// Generic untranslated error message.
-  String? get message => throw _privateConstructorUsedError;
-
-  /// Stripe error code
-  String? get stripeErrorCode => throw _privateConstructorUsedError;
-
-  /// Code in case payment is declined
-  String? get declineCode => throw _privateConstructorUsedError;
-
-  /// Error type
-  String? get type => throw _privateConstructorUsedError;
+  LocalizedErrorMessage get error => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$PaymentSheetResultfailedCopyWith<_PaymentSheetResultfailed> get copyWith =>
       throw _privateConstructorUsedError;

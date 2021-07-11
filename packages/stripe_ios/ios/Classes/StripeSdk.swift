@@ -169,7 +169,7 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
                 self.paymentSheet?.present(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController()) { paymentResult in
                     switch paymentResult {
                     case .completed:
-                        resolve([String: String]())
+                        resolve([])
                     case .canceled:
                         resolve(Errors.createError(PaymentSheetErrorType.Canceled.rawValue, "The payment has been canceled"))
                     case .failed(let error):

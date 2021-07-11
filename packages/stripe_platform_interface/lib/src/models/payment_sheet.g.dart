@@ -106,22 +106,13 @@ Map<String, dynamic> _$_$_PaymentSheetResultSuccessToJson(
 _$_PaymentSheetResultfailed _$_$_PaymentSheetResultfailedFromJson(
     Map<String, dynamic> json) {
   return _$_PaymentSheetResultfailed(
-    code: json['code'] as String,
-    localizedMessage: json['localizedMessage'] as String?,
-    message: json['message'] as String?,
-    stripeErrorCode: json['stripeErrorCode'] as String?,
-    declineCode: json['declineCode'] as String?,
-    type: json['type'] as String?,
+    error:
+        LocalizedErrorMessage.fromJson(json['error'] as Map<String, dynamic>),
   );
 }
 
 Map<String, dynamic> _$_$_PaymentSheetResultfailedToJson(
         _$_PaymentSheetResultfailed instance) =>
     <String, dynamic>{
-      'code': instance.code,
-      'localizedMessage': instance.localizedMessage,
-      'message': instance.message,
-      'stripeErrorCode': instance.stripeErrorCode,
-      'declineCode': instance.declineCode,
-      'type': instance.type,
+      'error': instance.error,
     };

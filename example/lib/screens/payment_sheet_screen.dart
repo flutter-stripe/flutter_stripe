@@ -87,8 +87,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
   String _createResultMessage(PaymentSheetResult result) {
     return result.when(
         success: () => 'Payment succesfully completed',
-        failed: (failure, _, __, ___, ____, _____) =>
-            'Payment sheet failed with code ${failure}');
+        failed: (failure) => 'Payment sheet failed with code ${failure.code}');
   }
 
   Future<void> _displayPaymentSheet() async {

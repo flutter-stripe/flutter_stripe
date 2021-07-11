@@ -192,18 +192,23 @@ class MethodChannelStripe extends StripePlatform {
   @override
   Future<PaymentSheetResult> presentPaymentSheet(
       PresentPaymentSheetParameters params) async {
-    final result = await _methodChannel.invokeMapMethod<String, dynamic>(
+    final result = await _methodChannel.invokeMethod<dynamic>(
       'presentPaymentSheet',
       {'params': params.toJson()},
     );
 
-    return _parsePaymentSheetResult(result);
+    // iOS returns empty list on success
+    if (result is List) {
+      return const PaymentSheetResult.success();
+    } else {
+      return _parsePaymentSheetResult(result);
+    }
   }
 
   @override
   Future<PaymentSheetResult> confirmPaymentSheetPayment() async {
     final result = await _methodChannel
-        .invokeMapMethod<String, dynamic>('confirmPaymentSheetPayment');
+        .invokeMethod<dynamic>('confirmPaymentSheetPayment');
 
     return _parsePaymentSheetResult(result);
   }
@@ -213,6 +218,8 @@ class MethodChannelStripe extends StripePlatform {
     try {
       final result = await _methodChannel.invokeMapMethod<String, dynamic>(
           'createToken', {'params': params.toJson()});
+
+      print('blaat $result ${result.runtimeType}');
 
       return TokenData.fromJson(result.unfoldToNonNull());
     } on Exception catch (e) {
@@ -228,11 +235,10 @@ class MethodChannelStripe extends StripePlatform {
       if (result.isEmpty) {
         return const PaymentSheetResult.success();
       } else {
-        final error = result['error'];
-        if (error != null) {
+        if (result['error'] != null) {
           //workaround for tojson in sumtypes
-          error['runtimeType'] = 'failed';
-          return PaymentSheetResult.fromJson(error);
+          result['runtimeType'] = 'failed';
+          return PaymentSheetResult.fromJson(result);
         } else {
           throw StripeError<PaymentSheetError>(
             message: 'Unknown result $result',
