@@ -159,8 +159,14 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
           .showSnackBar(SnackBar(content: Text('failureReason')));
       //setPaymentError(errorCode);
     }
+
+    final paymentMethodId = paymentIntent.paymentMethodId == null
+        ? _setupIntentResult?.paymentMethodId
+        : paymentIntent.paymentMethodId;
+
     setState(() {
-      _retrievedPaymentIntent = paymentIntent;
+      _retrievedPaymentIntent =
+          paymentIntent.copyWith(paymentMethodId: paymentMethodId);
     });
   }
 
@@ -186,6 +192,8 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
             paymentMethodId: _retrievedPaymentIntent!.paymentMethodId!),
       );
     }
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Success!: The payment was confirmed successfully!')));
   }
 
   Future<String> _createSetupIntentOnBackend(String email) async {
