@@ -7,14 +7,15 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_checkout/stripe_checkout.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+
+import 'checkout.dart';
 
 Future<CheckoutResponse> redirectToCheckout({
   required BuildContext context,
   required String sessionId,
-  String? publishableKey,
+  required String publishableKey,
   String? successUrl,
   String? canceledUrl,
 }) async {
@@ -97,7 +98,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   }
 
   Future<void> _redirectToStripe(String sessionId) async {
-    final publishableKey = widget.publishableKey ?? Stripe.publishableKey;
+    final publishableKey = widget.publishableKey;
     final redirectToCheckoutJs = '''
 var stripe = Stripe(\"$publishableKey\");
 stripe.redirectToCheckout({sessionId: "$sessionId"}).then(function (result) {
