@@ -10,10 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_stripe: 
-  stripe_web:
-    path: ../stripe_web/
   webview_flutter: ^2.0.4
+  js: ^0.6.3
+  freezed_annotation: 
 
 dev_dependencies:
   flutter_test:
