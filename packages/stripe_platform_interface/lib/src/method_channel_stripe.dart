@@ -110,9 +110,20 @@ class MethodChannelStripe extends StripePlatform {
       'params': data.toJson(),
       'options': options,
     });
-    final tmp = result.unfoldToNonNull();
+    if (result == null) {
+      throw const StripeError<SetupIntentError>(
+        message:
+            "Result was not expected to be null this is probably a error in the plugin",
+        code: SetupIntentError.unknown,
+      );
+    } else {
+      
+      final tmp = ResultParser<SetupIntent>(
+        parseJson: (json) => SetupIntent.fromJson(json),
+      ).parse(result: result, succesResultKey: 'setupIntent');
 
-    return SetupIntent.fromJson(tmp['setupIntent']);
+      return tmp;
+    }
   }
 
   @override
@@ -241,7 +252,7 @@ class MethodChannelStripe extends StripePlatform {
         if (result['error'] != null) {
           //workaround for tojson in sumtypes
           result['runtimeType'] = 'failed';
-          throw const ResultParser<void>().parseError(result);
+          throw StripeException.fromJson(result);
         } else {
           throw StripeError<PaymentSheetError>(
             message:

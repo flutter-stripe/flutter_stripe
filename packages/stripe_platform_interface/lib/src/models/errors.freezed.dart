@@ -199,58 +199,57 @@ abstract class _StripeErrorGeneric<T> implements StripeError<T> {
       throw _privateConstructorUsedError;
 }
 
-StripePlatformException _$StripePlatformExceptionFromJson(
-    Map<String, dynamic> json) {
-  return _StripePlatformException.fromJson(json);
+StripeException _$StripeExceptionFromJson(Map<String, dynamic> json) {
+  return _StripeException.fromJson(json);
 }
 
 /// @nodoc
-class _$StripePlatformExceptionTearOff {
-  const _$StripePlatformExceptionTearOff();
+class _$StripeExceptionTearOff {
+  const _$StripeExceptionTearOff();
 
-  _StripePlatformException call({required LocalizedErrorMessage error}) {
-    return _StripePlatformException(
+  _StripeException call({required LocalizedErrorMessage error}) {
+    return _StripeException(
       error: error,
     );
   }
 
-  StripePlatformException fromJson(Map<String, Object> json) {
-    return StripePlatformException.fromJson(json);
+  StripeException fromJson(Map<String, Object> json) {
+    return StripeException.fromJson(json);
   }
 }
 
 /// @nodoc
-const $StripePlatformException = _$StripePlatformExceptionTearOff();
+const $StripeException = _$StripeExceptionTearOff();
 
 /// @nodoc
-mixin _$StripePlatformException {
+mixin _$StripeException {
   /// error details
   LocalizedErrorMessage get error => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $StripePlatformExceptionCopyWith<StripePlatformException> get copyWith =>
+  $StripeExceptionCopyWith<StripeException> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $StripePlatformExceptionCopyWith<$Res> {
-  factory $StripePlatformExceptionCopyWith(StripePlatformException value,
-          $Res Function(StripePlatformException) then) =
-      _$StripePlatformExceptionCopyWithImpl<$Res>;
+abstract class $StripeExceptionCopyWith<$Res> {
+  factory $StripeExceptionCopyWith(
+          StripeException value, $Res Function(StripeException) then) =
+      _$StripeExceptionCopyWithImpl<$Res>;
   $Res call({LocalizedErrorMessage error});
 
   $LocalizedErrorMessageCopyWith<$Res> get error;
 }
 
 /// @nodoc
-class _$StripePlatformExceptionCopyWithImpl<$Res>
-    implements $StripePlatformExceptionCopyWith<$Res> {
-  _$StripePlatformExceptionCopyWithImpl(this._value, this._then);
+class _$StripeExceptionCopyWithImpl<$Res>
+    implements $StripeExceptionCopyWith<$Res> {
+  _$StripeExceptionCopyWithImpl(this._value, this._then);
 
-  final StripePlatformException _value;
+  final StripeException _value;
   // ignore: unused_field
-  final $Res Function(StripePlatformException) _then;
+  final $Res Function(StripeException) _then;
 
   @override
   $Res call({
@@ -273,11 +272,11 @@ class _$StripePlatformExceptionCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$StripePlatformExceptionCopyWith<$Res>
-    implements $StripePlatformExceptionCopyWith<$Res> {
-  factory _$StripePlatformExceptionCopyWith(_StripePlatformException value,
-          $Res Function(_StripePlatformException) then) =
-      __$StripePlatformExceptionCopyWithImpl<$Res>;
+abstract class _$StripeExceptionCopyWith<$Res>
+    implements $StripeExceptionCopyWith<$Res> {
+  factory _$StripeExceptionCopyWith(
+          _StripeException value, $Res Function(_StripeException) then) =
+      __$StripeExceptionCopyWithImpl<$Res>;
   @override
   $Res call({LocalizedErrorMessage error});
 
@@ -286,22 +285,21 @@ abstract class _$StripePlatformExceptionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$StripePlatformExceptionCopyWithImpl<$Res>
-    extends _$StripePlatformExceptionCopyWithImpl<$Res>
-    implements _$StripePlatformExceptionCopyWith<$Res> {
-  __$StripePlatformExceptionCopyWithImpl(_StripePlatformException _value,
-      $Res Function(_StripePlatformException) _then)
-      : super(_value, (v) => _then(v as _StripePlatformException));
+class __$StripeExceptionCopyWithImpl<$Res>
+    extends _$StripeExceptionCopyWithImpl<$Res>
+    implements _$StripeExceptionCopyWith<$Res> {
+  __$StripeExceptionCopyWithImpl(
+      _StripeException _value, $Res Function(_StripeException) _then)
+      : super(_value, (v) => _then(v as _StripeException));
 
   @override
-  _StripePlatformException get _value =>
-      super._value as _StripePlatformException;
+  _StripeException get _value => super._value as _StripeException;
 
   @override
   $Res call({
     Object? error = freezed,
   }) {
-    return _then(_StripePlatformException(
+    return _then(_StripeException(
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -312,11 +310,11 @@ class __$StripePlatformExceptionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_StripePlatformException implements _StripePlatformException {
-  const _$_StripePlatformException({required this.error});
+class _$_StripeException implements _StripeException {
+  const _$_StripeException({required this.error});
 
-  factory _$_StripePlatformException.fromJson(Map<String, dynamic> json) =>
-      _$_$_StripePlatformExceptionFromJson(json);
+  factory _$_StripeException.fromJson(Map<String, dynamic> json) =>
+      _$_$_StripeExceptionFromJson(json);
 
   @override
 
@@ -325,13 +323,13 @@ class _$_StripePlatformException implements _StripePlatformException {
 
   @override
   String toString() {
-    return 'StripePlatformException(error: $error)';
+    return 'StripeException(error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _StripePlatformException &&
+        (other is _StripeException &&
             (identical(other.error, error) ||
                 const DeepCollectionEquality().equals(other.error, error)));
   }
@@ -342,22 +340,21 @@ class _$_StripePlatformException implements _StripePlatformException {
 
   @JsonKey(ignore: true)
   @override
-  _$StripePlatformExceptionCopyWith<_StripePlatformException> get copyWith =>
-      __$StripePlatformExceptionCopyWithImpl<_StripePlatformException>(
-          this, _$identity);
+  _$StripeExceptionCopyWith<_StripeException> get copyWith =>
+      __$StripeExceptionCopyWithImpl<_StripeException>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_StripePlatformExceptionToJson(this);
+    return _$_$_StripeExceptionToJson(this);
   }
 }
 
-abstract class _StripePlatformException implements StripePlatformException {
-  const factory _StripePlatformException(
-      {required LocalizedErrorMessage error}) = _$_StripePlatformException;
+abstract class _StripeException implements StripeException {
+  const factory _StripeException({required LocalizedErrorMessage error}) =
+      _$_StripeException;
 
-  factory _StripePlatformException.fromJson(Map<String, dynamic> json) =
-      _$_StripePlatformException.fromJson;
+  factory _StripeException.fromJson(Map<String, dynamic> json) =
+      _$_StripeException.fromJson;
 
   @override
 
@@ -365,7 +362,7 @@ abstract class _StripePlatformException implements StripePlatformException {
   LocalizedErrorMessage get error => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$StripePlatformExceptionCopyWith<_StripePlatformException> get copyWith =>
+  _$StripeExceptionCopyWith<_StripeException> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
