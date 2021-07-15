@@ -9,7 +9,6 @@ import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Parcelable
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import com.facebook.react.bridge.*
 import com.stripe.android.*
 import com.stripe.android.model.*
@@ -190,7 +189,9 @@ class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: S
           presentPaymentSheetPromise?.resolve(WritableNativeMap())
         }
       }
-      else if (intent.action == ON_CONFIGURE_FLOW_CONTROLLER) {
+      else if (intent.action == ON_INIT_PAYMENT_SHEET) {
+        initPaymentSheetPromise?.resolve(WritableNativeMap())
+      } else if (intent.action == ON_CONFIGURE_FLOW_CONTROLLER) {
         val label = intent.extras?.getString("label")
         val image = intent.extras?.getString("image")
 
@@ -235,6 +236,7 @@ class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: S
     this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_PAYMENT_OPTION_ACTION));
     this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_CONFIGURE_FLOW_CONTROLLER));
     this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_FRAGMENT_CREATED));
+    this.currentActivity?.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_INIT_PAYMENT_SHEET));
 
     promise.resolve(null)
   }
@@ -255,6 +257,7 @@ class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: S
     val merchantDisplayName = getValOr(params, "merchantDisplayName")
     val countryCode = getValOr(params, "merchantCountryCode")
     val testEnv = getBooleanOrNull(params, "testEnv") ?: false
+    val googlePay = getBooleanOrNull(params, "googlePay") ?: false
 
     this.initPaymentSheetPromise = promise
 
@@ -268,15 +271,13 @@ class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: S
       bundle.putString("countryCode", countryCode)
       bundle.putBoolean("customFlow", customFlow)
       bundle.putBoolean("testEnv", testEnv)
+      bundle.putBoolean("googlePay", googlePay)
 
       it.arguments = bundle
     }
     activity.supportFragmentManager.beginTransaction()
       .add(fragment, "payment_sheet_launch_fragment")
       .commit()
-    if (!customFlow) {
-      this.initPaymentSheetPromise?.resolve(WritableNativeMap())
-    }
   }
 
   @ReactMethod
@@ -307,7 +308,7 @@ class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: S
   private fun onFpxPaymentMethodResult(result: AddPaymentMethodActivityStarter.Result) {
     when (result) {
       is AddPaymentMethodActivityStarter.Result.Success -> {
-        stripe.confirmPayment(currentActivity!!.activity,
+        stripe.confirmPayment(currentActivity.activity,
           ConfirmPaymentIntentParams.createWithPaymentMethodId(
             result.paymentMethod.id!!,
             confirmPaymentClientSecret!!,
@@ -351,14 +352,14 @@ class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: S
   fun createToken(params: ReadableMap, promise: Promise) {
     val type = getValOr(params, "type", null)?.let {
       if (it != "Card") {
-        promise.reject(CreateTokenErrorType.Failed.toString(), "$it type is not supported yet")
+        promise.resolve(createError(CreateTokenErrorType.Failed.toString(), "$it type is not supported yet"))
         return
       }
     }
     val address = getMapOrNull(params, "address")
     val instance = cardFieldManager.getCardViewInstance()
     val cardParams = instance?.cardParams?.toParamMap() ?: run {
-      promise.reject(CreateTokenErrorType.Failed.toString(), "Card details not complete")
+      promise.resolve(createError(CreateTokenErrorType.Failed.toString(), "Card details not complete"))
       return
     }
 
@@ -371,11 +372,15 @@ class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: S
       name = getValOr(params, "name", null)
     )
     runBlocking {
-      val token = stripe.createCardToken(
-        cardParams = params,
-        stripeAccountId = stripeAccountId
-      )
-      promise.resolve(mapFromToken(token))
+      try {
+        val token = stripe.createCardToken(
+          cardParams = params,
+          stripeAccountId = stripeAccountId
+        )
+        promise.resolve(createResult("token", mapFromToken(token)))
+      } catch (e: Exception) {
+        promise.resolve(createError(CreateTokenErrorType.Failed.toString(), e.message))
+      }
     }
   }
 
@@ -400,15 +405,15 @@ class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: S
 
   @ReactMethod
   fun handleCardAction(paymentIntentClientSecret: String, promise: Promise) {
-    val activity = currentActivity
+    val activity = currentActivity.activity
     if (activity != null) {
       handleCardActionPromise = promise
-      stripe.handleNextActionForPayment(activity.activity, paymentIntentClientSecret)
+      stripe.handleNextActionForPayment(activity, paymentIntentClientSecret)
     }
   }
 
   @ReactMethod
-  fun confirmPaymentMethod(paymentIntentClientSecret: String, params: ReadableMap, options: ReadableMap, promise: Promise) {
+  fun confirmPayment(paymentIntentClientSecret: String, params: ReadableMap, options: ReadableMap, promise: Promise) {
     confirmPromise = promise
     confirmPaymentClientSecret = paymentIntentClientSecret
 
@@ -432,7 +437,7 @@ class StripeSdkModule(reactContext: ReactApplicationContext, cardFieldManager: S
     try {
       val confirmParams = factory.createConfirmParams(paymentMethodType)
       confirmParams.shipping = mapToShippingDetails(getMapOrNull(params, "shippingDetails"))
-      stripe.confirmPayment(currentActivity!!.activity, confirmParams)
+      stripe.confirmPayment(currentActivity.activity, confirmParams)
     } catch (error: PaymentMethodCreateParamsException) {
       promise.resolve(createError(ConfirmPaymentErrorType.Failed.toString(), error))
     }

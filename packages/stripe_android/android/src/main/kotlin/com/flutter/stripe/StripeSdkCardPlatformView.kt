@@ -124,6 +124,7 @@ class StripeSdkCardPlatformView(
                 cardView.clearFocus()
                 result.success(null)
             }
+            "focus", "blur", "clear" -> stripeSdkCardViewManager.receiveCommand(cardView, call.method, null)
         }
     }
 

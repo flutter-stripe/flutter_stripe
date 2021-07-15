@@ -464,7 +464,7 @@ fun getBooleanOrFalse(map: ReadableMap?, key: String): Boolean {
 }
 
 private fun convertToUnixTimestamp(timestamp: Long): String {
-  return (timestamp * 1000).toInt().toString()
+  return (timestamp * 1000).toString()
 }
 
 fun mapToUICustomization(params: ReadableMap): PaymentAuthConfig.Stripe3ds2UiCustomization {
