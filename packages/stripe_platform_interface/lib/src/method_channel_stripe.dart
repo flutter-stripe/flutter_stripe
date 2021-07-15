@@ -191,8 +191,7 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<PaymentSheetResult> presentPaymentSheet(
-      PresentPaymentSheetParameters params) async {
+  Future<void> presentPaymentSheet(PresentPaymentSheetParameters params) async {
     final result = await _methodChannel.invokeMethod<dynamic>(
       'presentPaymentSheet',
       {'params': params.toJson()},
@@ -200,18 +199,23 @@ class MethodChannelStripe extends StripePlatform {
 
     // iOS returns empty list on success
     if (result is List) {
-      return const PaymentSheetResult.success();
+      return;
     } else {
       return _parsePaymentSheetResult(result);
     }
   }
 
   @override
-  Future<PaymentSheetResult> confirmPaymentSheetPayment() async {
+  Future<void> confirmPaymentSheetPayment() async {
     final result = await _methodChannel
         .invokeMethod<dynamic>('confirmPaymentSheetPayment');
 
-    return _parsePaymentSheetResult(result);
+    // iOS returns empty list on success
+    if (result is List) {
+      return;
+    } else {
+      return _parsePaymentSheetResult(result);
+    }
   }
 
   @override
@@ -229,18 +233,19 @@ class MethodChannelStripe extends StripePlatform {
     }
   }
 
-  PaymentSheetResult _parsePaymentSheetResult(Map<String, dynamic>? result) {
+  void _parsePaymentSheetResult(Map<String, dynamic>? result) {
     if (result != null) {
       if (result.isEmpty) {
-        return const PaymentSheetResult.success();
+        return;
       } else {
         if (result['error'] != null) {
           //workaround for tojson in sumtypes
           result['runtimeType'] = 'failed';
-          return PaymentSheetResult.fromJson(result);
+          throw const ResultParser<void>().parseError(result);
         } else {
           throw StripeError<PaymentSheetError>(
-            message: 'Unknown result $result',
+            message:
+                'Unknown result this is likely a problem in the plugin $result',
             code: PaymentSheetError.unknown,
           );
         }

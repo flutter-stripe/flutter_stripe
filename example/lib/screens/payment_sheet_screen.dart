@@ -84,16 +84,10 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
     }
   }
 
-  String _createResultMessage(PaymentSheetResult result) {
-    return result.when(
-        success: () => 'Payment succesfully completed',
-        failed: (failure) => 'Payment sheet failed with code ${failure.code}');
-  }
-
   Future<void> _displayPaymentSheet() async {
     try {
       // 3. display the payment sheet.
-      final result = await Stripe.instance.presentPaymentSheet(
+       await Stripe.instance.presentPaymentSheet(
           parameters: PresentPaymentSheetParameters(
         clientSecret: _paymentSheetData!['paymentIntent'],
         confirmPayment: true,
@@ -105,16 +99,15 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(_createResultMessage(result)),
+          content: Text('Payment succesfully completed'),
         ),
       );
-    } catch (e) {
+    } on StripeException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('$e'),
+          content: Text('${e.error.localizedMessage}'),
         ),
       );
-      rethrow;
     }
   }
 }

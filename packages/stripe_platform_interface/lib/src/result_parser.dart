@@ -2,7 +2,7 @@ import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 class ResultParser<T> {
   const ResultParser({
-    required T Function(Map<String, dynamic>) parseJson,
+    T Function(Map<String, dynamic>)? parseJson,
   }) : _parseJson = parseJson;
 
   T parse(
@@ -10,14 +10,21 @@ class ResultParser<T> {
     final succesResponse = result[succesResultKey];
 
     if (succesResponse != null) {
-      return _parseJson(succesResponse);
+      if (_parseJson == null) {
+        throw AssertionError('Should not be null when using this function');
+      } else {
+        return _parseJson!(succesResponse);
+      }
     } else {
-      final error = StripePlatformException.fromJson(result);
-      throw error;
+      throw parseError(result);
     }
   }
 
-  final T Function(Map<String, dynamic>) _parseJson;
+  StripeException parseError(Map<String, dynamic> result) {
+    return StripeException.fromJson(result);
+  }
+
+  final T Function(Map<String, dynamic>)? _parseJson;
 }
 
 extension UnfoldToNonNull<T> on T? {

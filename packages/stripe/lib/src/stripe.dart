@@ -248,7 +248,7 @@ class Stripe {
   ///
   /// Use this method when the customer submits the form for SetupIntent.
   ///
-  /// Throws a [StripeError] when confirming the setupintent fails.
+  /// Throws a [StripeException] when confirming the setupintent fails.
   Future<SetupIntent> confirmSetupIntent(
     String paymentIntentClientSecret,
     PaymentMethodParams params, [
@@ -259,8 +259,7 @@ class Stripe {
       final setupIntent = await _platform.confirmSetupIntent(
           paymentIntentClientSecret, params, options);
       return setupIntent;
-    } on StripeError {
-      //throw StripeError<CardActionError>(error.code, error.message);
+    } on StripeException {
       rethrow;
     }
   }
@@ -299,14 +298,19 @@ class Stripe {
   /// Displays the paymentsheet
   ///
   /// See [PresentPaymentSheetPameters] for more details
-  Future<PaymentSheetResult> presentPaymentSheet({
+  ///
+  /// throws [StripeException] in case of a failure
+  Future<void> presentPaymentSheet({
     required PresentPaymentSheetParameters parameters,
   }) async {
     await _awaitForSettings();
     return await _platform.presentPaymentSheet(parameters);
   }
 
-  Future<PaymentSheetResult> confirmPaymentSheetPayment() async {
+  /// Confirms the paymentsheet payment
+  ///
+  /// throws [StripeException] in case of a failure
+  Future<void> confirmPaymentSheetPayment() async {
     return await _platform.confirmPaymentSheetPayment();
   }
 

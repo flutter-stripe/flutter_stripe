@@ -32,14 +32,14 @@ Map<String, dynamic> _dataToJson<T>(T input) => {'code': input};
 @freezed
 
 /// Exception retrieved from the Stripe platform.
-class StripePlatformException with _$StripePlatformException {
-  const factory StripePlatformException({
+class StripeException with _$StripeException {
+  const factory StripeException({
     /// error details
     required LocalizedErrorMessage error,
-  }) = _StripePlatformException;
+  }) = _StripeException;
 
-  factory StripePlatformException.fromJson(Map<String, dynamic> json) =>
-      _$StripePlatformExceptionFromJson(json);
+  factory StripeException.fromJson(Map<String, dynamic> json) =>
+      _$StripeExceptionFromJson(json);
 }
 
 @freezed
