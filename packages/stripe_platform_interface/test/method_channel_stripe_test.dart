@@ -37,23 +37,47 @@ void main() {
 
     group('Create payment method', () {
       late PaymentMethod result;
-      setUp(() async {
-        sut = MethodChannelStripe(
-          platformIsIos: true,
-          methodChannel: MethodChannelMock(
-            channelName: methodChannelName,
-            method: 'createPaymentMethod',
-            result: {
-              "paymentMethod": PaymentMethodTestInstance.create('id1').jsonMap()
-            },
-          ).methodChannel,
-        );
-        result =
-            await sut.createPaymentMethod(const PaymentMethodParams.card());
+
+      group('When createpayment method succeeds', () {
+        setUp(() async {
+          sut = MethodChannelStripe(
+            platformIsIos: true,
+            methodChannel: MethodChannelMock(
+              channelName: methodChannelName,
+              method: 'createPaymentMethod',
+              result: {
+                "paymentMethod":
+                    PaymentMethodTestInstance.create('id1').jsonMap()
+              },
+            ).methodChannel,
+          );
+          result =
+              await sut.createPaymentMethod(const PaymentMethodParams.card());
+        });
+
+        test('It returns payment method', () {
+          expect(result, PaymentMethodTestInstance.create('id1'));
+        });
       });
 
-      test('It returns payment method', () {
-        expect(result, PaymentMethodTestInstance.create('id1'));
+      group('When createpayment method fails', () {
+        setUp(() async {
+          sut = MethodChannelStripe(
+            platformIsIos: true,
+            methodChannel: MethodChannelMock(
+                    channelName: methodChannelName,
+                    method: 'createPaymentMethod',
+                    result: createErrorResponse('whoops'))
+                .methodChannel,
+          );
+        });
+
+        test('It returns payment method', () async {
+          expect(
+              () async => await sut
+                  .createPaymentMethod(const PaymentMethodParams.card()),
+              throwsA(isInstanceOf<StripeException>()));
+        });
       });
     });
 
@@ -204,7 +228,7 @@ void main() {
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
               method: 'handleCardAction',
-              result: Exception('whoops'),
+              result: createErrorResponse('whoops'),
             ).methodChannel,
           );
         });
@@ -212,7 +236,7 @@ void main() {
         test('It returns error', () async {
           expect(
             () async => await sut.handleCardAction('paymentIntentId'),
-            throwsA(const TypeMatcher<StripeError<PaymentIntentError>>()),
+            throwsA(const TypeMatcher<StripeException>()),
           );
         });
       });
@@ -322,13 +346,13 @@ void main() {
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
               method: 'retrievePaymentIntent',
-              result: Exception('whoops'),
+              result: createErrorResponse('whoops'),
             ).methodChannel,
           );
         });
         test('It returns paymentintent', () async {
           expect(() async => await sut.retrievePaymentIntent('clientSecret'),
-              throwsA(const TypeMatcher<StripeError<PaymentIntentError>>()));
+              throwsA(const TypeMatcher<StripeException>()));
         });
       });
     });

@@ -10,7 +10,6 @@ enum CreateTokenError { unknown }
 
 enum PaymentSheetError { unknown }
 
-enum SetupIntentError {unknown}
 
 @freezed
 

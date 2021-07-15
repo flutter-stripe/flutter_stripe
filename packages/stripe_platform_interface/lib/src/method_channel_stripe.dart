@@ -59,11 +59,9 @@ class MethodChannelStripe extends StripePlatform {
       'options': options,
     });
 
-    final tmp = result?['paymentMethod'] as Map<String, dynamic>;
-
-    return PaymentMethod.fromJson(
-      tmp.unfoldToNonNull(),
-    );
+    return ResultParser<PaymentMethod>(
+            parseJson: (json) => PaymentMethod.fromJson(json))
+        .parse(result: result!, successResultKey: 'paymentMethod');
   }
 
   @override
@@ -85,17 +83,10 @@ class MethodChannelStripe extends StripePlatform {
       'params': params.toJson(),
       'options': options,
     });
-    if (result == null) {
-      throw const StripeError<PaymentIntentError>(
-        message:
-            "Result was not expected to be null this is probably a error in the plugin",
-        code: PaymentIntentError.unknown,
-      );
-    } else {
-      return ResultParser<PaymentIntent>(
-              parseJson: (json) => PaymentIntent.fromJson(json))
-          .parse(result: result, succesResultKey: 'paymentIntent');
-    }
+
+    return ResultParser<PaymentIntent>(
+            parseJson: (json) => PaymentIntent.fromJson(json))
+        .parse(result: result!, successResultKey: 'paymentIntent');
   }
 
   @override
@@ -110,20 +101,10 @@ class MethodChannelStripe extends StripePlatform {
       'params': data.toJson(),
       'options': options,
     });
-    if (result == null) {
-      throw const StripeError<SetupIntentError>(
-        message:
-            "Result was not expected to be null this is probably a error in the plugin",
-        code: SetupIntentError.unknown,
-      );
-    } else {
-      
-      final tmp = ResultParser<SetupIntent>(
-        parseJson: (json) => SetupIntent.fromJson(json),
-      ).parse(result: result, succesResultKey: 'setupIntent');
 
-      return tmp;
-    }
+    return ResultParser<SetupIntent>(
+      parseJson: (json) => SetupIntent.fromJson(json),
+    ).parse(result: result!, successResultKey: 'setupIntent');
   }
 
   @override
@@ -139,21 +120,14 @@ class MethodChannelStripe extends StripePlatform {
   @override
   Future<PaymentIntent> handleCardAction(
       String paymentIntentClientSecret) async {
-    try {
-      final result = await _methodChannel
-          .invokeMapMethod<String, dynamic>('handleCardAction', {
-        'paymentIntentClientSecret': paymentIntentClientSecret,
-      });
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('handleCardAction', {
+      'paymentIntentClientSecret': paymentIntentClientSecret,
+    });
 
-      final tmp = result?['paymentIntent'] as Map<String, dynamic>;
-
-      return PaymentIntent.fromJson(tmp.unfoldToNonNull());
-    } on Exception catch (_) {
-      throw const StripeError<PaymentIntentError>(
-        code: PaymentIntentError.unknown,
-        message: 'Handle  payment intent for card failed',
-      );
-    }
+    return ResultParser<PaymentIntent>(
+            parseJson: (json) => PaymentIntent.fromJson(json))
+        .parse(result: result!, successResultKey: 'paymentIntent');
   }
 
   @override
@@ -176,21 +150,14 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret) async {
-    try {
-      final result = await _methodChannel
-          .invokeMapMethod<String, dynamic>('retrievePaymentIntent', {
-        'clientSecret': clientSecret,
-      });
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('retrievePaymentIntent', {
+      'clientSecret': clientSecret,
+    });
 
-      final tmp = result?['paymentIntent'] as Map<String, dynamic>;
-
-      return PaymentIntent.fromJson(tmp.unfoldToNonNull());
-    } on Exception catch (_) {
-      throw const StripeError<PaymentIntentError>(
-        code: PaymentIntentError.unknown,
-        message: 'Retrieving payment intent failed',
-      );
-    }
+    return ResultParser<PaymentIntent>(
+            parseJson: (json) => PaymentIntent.fromJson(json))
+        .parse(result: result!, successResultKey: 'paymentIntent');
   }
 
   @override

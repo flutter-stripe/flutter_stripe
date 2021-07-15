@@ -6,11 +6,11 @@ class ResultParser<T> {
   }) : _parseJson = parseJson;
 
   T parse(
-      {required Map<String, dynamic> result, required String succesResultKey}) {
-    final succesResponse = result[succesResultKey];
+      {required Map<String, dynamic> result, required String successResultKey}) {
+    final successResponse = result[successResultKey];
 
-    if (succesResponse != null) {
-      return _parseJson(succesResponse);
+    if (successResponse != null) {
+      return _parseJson(successResponse);
     } else {
       throw _parseError(result);
     }
