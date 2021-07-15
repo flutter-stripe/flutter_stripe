@@ -21,6 +21,20 @@ Map<String, dynamic> _$_$_StripeErrorGenericToJson<T>(
       'code': _dataToJson(instance.code),
     };
 
+_$_StripePlatformException _$_$_StripePlatformExceptionFromJson(
+    Map<String, dynamic> json) {
+  return _$_StripePlatformException(
+    error:
+        LocalizedErrorMessage.fromJson(json['error'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$_$_StripePlatformExceptionToJson(
+        _$_StripePlatformException instance) =>
+    <String, dynamic>{
+      'error': instance.error,
+    };
+
 _$_LocalizedErrorMessage _$_$_LocalizedErrorMessageFromJson(
     Map<String, dynamic> json) {
   return _$_LocalizedErrorMessage(

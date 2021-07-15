@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:stripe_platform_interface/src/models/create_token_data.dart';
+import 'package:stripe_platform_interface/src/result_parser.dart';
 
 import 'models/app_info.dart';
 import 'models/apple_pay.dart';
@@ -78,22 +79,22 @@ class MethodChannelStripe extends StripePlatform {
     PaymentMethodParams params, [
     Map<String, String> options = const {},
   ]) async {
-    try {
-      final result = await _methodChannel
-          .invokeMapMethod<String, dynamic>('confirmPaymentMethod', {
-        'paymentIntentClientSecret': paymentIntentClientSecret,
-        'params': params.toJson(),
-        'options': options,
-      });
-
-      final tmp = result?['paymentIntent'] as Map<String, dynamic>;
-
-      return PaymentIntent.fromJson(tmp.unfoldToNonNull());
-    } on Exception catch (_) {
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('confirmPaymentMethod', {
+      'paymentIntentClientSecret': paymentIntentClientSecret,
+      'params': params.toJson(),
+      'options': options,
+    });
+    if (result == null) {
       throw const StripeError<PaymentIntentError>(
+        message:
+            "Result was not expected to be null this is probably a error in the plugin",
         code: PaymentIntentError.unknown,
-        message: 'Confirming payment intent failed',
       );
+    } else {
+      return ResultParser<PaymentIntent>(
+              parseJson: (json) => PaymentIntent.fromJson(json))
+          .parse(result: result, succesResultKey: 'paymentIntent');
     }
   }
 
@@ -262,14 +263,4 @@ class MethodChannelStripeFactory {
         JSONMethodCodec(),
       ),
       platformIsIos: Platform.isIOS);
-}
-
-extension UnfoldToNonNull<T> on T? {
-  T unfoldToNonNull() {
-    if (this == null) {
-      throw AssertionError('Result should not be null');
-    } else {
-      return this!;
-    }
-  }
 }
