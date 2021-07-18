@@ -502,10 +502,10 @@ void main() {
           sut = MethodChannelStripe(
             platformIsIos: false,
             methodChannel: MethodChannelMock(
-                    channelName: methodChannelName,
-                    method: 'createToken',
-                    result: Exception('whoops'))
-                .methodChannel,
+              channelName: methodChannelName,
+              method: 'createToken',
+              result: createErrorResponse('whoops'),
+            ).methodChannel,
           );
         });
 
@@ -513,7 +513,7 @@ void main() {
           expect(
               () async => await sut.createToken(params),
               throwsA(
-                const TypeMatcher<StripeError<CreateTokenError>>(),
+                const TypeMatcher<StripeException>(),
               ));
         });
       });

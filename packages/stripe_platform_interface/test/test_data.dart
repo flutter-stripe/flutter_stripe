@@ -132,18 +132,20 @@ extension TokenDataTestInstance on TokenData {
       );
 
   Map<String, dynamic> jsonMap() => {
-        'id': id,
-        'livemode': livemode,
-        'type': describeEnum(type),
-        'created': createdDateTime,
-        'card': {
-          'brand': card?.brand,
-          'country': card?.country,
-          'expYear': card?.expYear,
-          'expMonth': card?.expMonth,
-          'funding': card?.funding,
-          'last4': card?.last4,
-        },
+        'token': {
+          'id': id,
+          'livemode': livemode,
+          'type': describeEnum(type),
+          'created': createdDateTime,
+          'card': {
+            'brand': card?.brand,
+            'country': card?.country,
+            'expYear': card?.expYear,
+            'expMonth': card?.expMonth,
+            'funding': card?.funding,
+            'last4': card?.last4,
+          },
+        }
       };
 }
 
