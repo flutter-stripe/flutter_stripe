@@ -72,13 +72,13 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<PaymentIntent> confirmPaymentMethod(
+  Future<PaymentIntent> confirmPayment(
     String paymentIntentClientSecret,
     PaymentMethodParams params, [
     Map<String, String> options = const {},
   ]) async {
     final result = await _methodChannel
-        .invokeMapMethod<String, dynamic>('confirmPaymentMethod', {
+        .invokeMapMethod<String, dynamic>('confirmPayment', {
       'paymentIntentClientSecret': paymentIntentClientSecret,
       'params': params.toJson(),
       'options': options,

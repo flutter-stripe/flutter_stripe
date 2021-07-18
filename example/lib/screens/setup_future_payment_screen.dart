@@ -186,7 +186,7 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
 
     // TODO lastPaymentError
     if (_retrievedPaymentIntent?.paymentMethodId != null && _card != null) {
-      await Stripe.instance.confirmPaymentMethod(
+      await Stripe.instance.confirmPayment(
         _retrievedPaymentIntent!.clientSecret,
         PaymentMethodParams.cardFromMethodId(
             paymentMethodId: _retrievedPaymentIntent!.paymentMethodId!),

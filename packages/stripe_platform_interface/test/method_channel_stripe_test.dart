@@ -111,14 +111,14 @@ void main() {
             platformIsIos: true,
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
-              method: 'confirmPaymentMethod',
+              method: 'confirmPayment',
               result: {
                 "paymentIntent":
                     PaymentIntentTestInstance.create('id1').toJsonMap()
               },
             ).methodChannel,
           );
-          result = await sut.confirmPaymentMethod(
+          result = await sut.confirmPayment(
               'secret', const PaymentMethodParams.card());
         });
 
@@ -133,7 +133,7 @@ void main() {
             platformIsIos: true,
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
-              method: 'confirmPaymentMethod',
+              method: 'confirmPayment',
               result: createErrorResponse('whoops'),
             ).methodChannel,
           );
@@ -141,7 +141,7 @@ void main() {
 
         test('It returns error', () async {
           expectLater(
-            () async => await sut.confirmPaymentMethod(
+            () async => await sut.confirmPayment(
               'secret',
               const PaymentMethodParams.card(),
             ),
