@@ -146,3 +146,16 @@ extension TokenDataTestInstance on TokenData {
         },
       };
 }
+
+Map<String, dynamic> createErrorResponse(String message) {
+  return {
+    "error": {
+      "declineCode": null,
+      "stripeErrorCode": null,
+      "code": "Failed",
+      "localizedMessage": "foo",
+      "type": null,
+      "message": message
+    },
+  };
+}

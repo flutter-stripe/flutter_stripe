@@ -123,7 +123,7 @@ class Stripe {
   /// [data] specificies the parameters associated with the specific
   /// paymentmethod. See [PaymentMethodParams] for more details.
   ///
-  /// Throws an [StripeError] in case creating the payment method fails.
+  /// Throws an [StripeException] in case creating the payment method fails.
   Future<PaymentMethod> createPaymentMethod(
     PaymentMethodParams data, [
     Map<String, String> options = const {},
@@ -141,7 +141,7 @@ class Stripe {
   ///
   /// Tokens are considered legacy, use [PaymentMethod] and [PaymentIntent]
   /// instead.
-  /// /// Throws an [StripeError] in case createToken fails.
+  /// Throws an [StripeError] in case createToken fails.
 
   Future<TokenData> createToken(CreateTokenParams params) async {
     await _awaitForSettings();
@@ -155,7 +155,7 @@ class Stripe {
 
   /// Retrieves a [PaymentIntent] using the provided [clientSecret].
   ///
-  /// Throws an [StripeError] in case retrieving the intent fails.
+   /// Throws a [StripeException] in case retrieving the intent fails.
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret) async {
     await _awaitForSettings();
     try {
@@ -207,8 +207,8 @@ class Stripe {
   /// Confirms a payment method, using the provided [paymentIntentClientSecret]
   /// and [data].
   ///
-  /// See [PaymentMethodParams] for more details. The method returns a
-  /// [PaymentIntent].
+  /// See [PaymentMethodParams] for more details.   
+  /// Throws a [StripeException] when confirming the paymentmethod fails.
   Future<PaymentIntent> confirmPaymentMethod(
     String paymentIntentClientSecret,
     PaymentMethodParams data, [
@@ -228,7 +228,7 @@ class Stripe {
   /// [PaymentIntentsStatus.RequiresAction]. Executing this action can take
   /// several seconds and it is important to not resubmit the form.
   ///
-  /// Throws [StripeError] in case handling the cardaction fails.
+  /// Throws a [StripeException] when confirming the handle card action fails.
   Future<PaymentIntent> handleCardAction(
     String paymentIntentClientSecret,
   ) async {
@@ -248,7 +248,7 @@ class Stripe {
   ///
   /// Use this method when the customer submits the form for SetupIntent.
   ///
-  /// Throws a [StripeError] when confirming the setupintent fails.
+  /// Throws a [StripeException] when confirming the setupintent fails.
   Future<SetupIntent> confirmSetupIntent(
     String paymentIntentClientSecret,
     PaymentMethodParams params, [
@@ -259,8 +259,7 @@ class Stripe {
       final setupIntent = await _platform.confirmSetupIntent(
           paymentIntentClientSecret, params, options);
       return setupIntent;
-    } on StripeError {
-      //throw StripeError<CardActionError>(error.code, error.message);
+    } on StripeException {
       rethrow;
     }
   }
@@ -299,14 +298,19 @@ class Stripe {
   /// Displays the paymentsheet
   ///
   /// See [PresentPaymentSheetPameters] for more details
-  Future<PaymentSheetResult> presentPaymentSheet({
+  ///
+  /// throws [StripeException] in case of a failure
+  Future<void> presentPaymentSheet({
     required PresentPaymentSheetParameters parameters,
   }) async {
     await _awaitForSettings();
     return await _platform.presentPaymentSheet(parameters);
   }
 
-  Future<PaymentSheetResult> confirmPaymentSheetPayment() async {
+  /// Confirms the paymentsheet payment
+  ///
+  /// throws [StripeException] in case of a failure
+  Future<void> confirmPaymentSheetPayment() async {
     return await _platform.confirmPaymentSheetPayment();
   }
 

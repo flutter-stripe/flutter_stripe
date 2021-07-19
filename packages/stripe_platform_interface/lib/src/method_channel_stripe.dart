@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:stripe_platform_interface/src/models/create_token_data.dart';
+import 'package:stripe_platform_interface/src/result_parser.dart';
 
 import 'models/app_info.dart';
 import 'models/apple_pay.dart';
@@ -58,11 +59,9 @@ class MethodChannelStripe extends StripePlatform {
       'options': options,
     });
 
-    final tmp = result?['paymentMethod'] as Map<String, dynamic>;
-
-    return PaymentMethod.fromJson(
-      tmp.unfoldToNonNull(),
-    );
+    return ResultParser<PaymentMethod>(
+            parseJson: (json) => PaymentMethod.fromJson(json))
+        .parse(result: result!, successResultKey: 'paymentMethod');
   }
 
   @override
@@ -78,23 +77,16 @@ class MethodChannelStripe extends StripePlatform {
     PaymentMethodParams params, [
     Map<String, String> options = const {},
   ]) async {
-    try {
-      final result = await _methodChannel
-          .invokeMapMethod<String, dynamic>('confirmPaymentMethod', {
-        'paymentIntentClientSecret': paymentIntentClientSecret,
-        'params': params.toJson(),
-        'options': options,
-      });
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('confirmPaymentMethod', {
+      'paymentIntentClientSecret': paymentIntentClientSecret,
+      'params': params.toJson(),
+      'options': options,
+    });
 
-      final tmp = result?['paymentIntent'] as Map<String, dynamic>;
-
-      return PaymentIntent.fromJson(tmp.unfoldToNonNull());
-    } on Exception catch (_) {
-      throw const StripeError<PaymentIntentError>(
-        code: PaymentIntentError.unknown,
-        message: 'Confirming payment intent failed',
-      );
-    }
+    return ResultParser<PaymentIntent>(
+            parseJson: (json) => PaymentIntent.fromJson(json))
+        .parse(result: result!, successResultKey: 'paymentIntent');
   }
 
   @override
@@ -109,9 +101,10 @@ class MethodChannelStripe extends StripePlatform {
       'params': data.toJson(),
       'options': options,
     });
-    final tmp = result.unfoldToNonNull();
 
-    return SetupIntent.fromJson(tmp['setupIntent']);
+    return ResultParser<SetupIntent>(
+      parseJson: (json) => SetupIntent.fromJson(json),
+    ).parse(result: result!, successResultKey: 'setupIntent');
   }
 
   @override
@@ -127,21 +120,14 @@ class MethodChannelStripe extends StripePlatform {
   @override
   Future<PaymentIntent> handleCardAction(
       String paymentIntentClientSecret) async {
-    try {
-      final result = await _methodChannel
-          .invokeMapMethod<String, dynamic>('handleCardAction', {
-        'paymentIntentClientSecret': paymentIntentClientSecret,
-      });
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('handleCardAction', {
+      'paymentIntentClientSecret': paymentIntentClientSecret,
+    });
 
-      final tmp = result?['paymentIntent'] as Map<String, dynamic>;
-
-      return PaymentIntent.fromJson(tmp.unfoldToNonNull());
-    } on Exception catch (_) {
-      throw const StripeError<PaymentIntentError>(
-        code: PaymentIntentError.unknown,
-        message: 'Handle  payment intent for card failed',
-      );
-    }
+    return ResultParser<PaymentIntent>(
+            parseJson: (json) => PaymentIntent.fromJson(json))
+        .parse(result: result!, successResultKey: 'paymentIntent');
   }
 
   @override
@@ -164,21 +150,14 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret) async {
-    try {
-      final result = await _methodChannel
-          .invokeMapMethod<String, dynamic>('retrievePaymentIntent', {
-        'clientSecret': clientSecret,
-      });
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('retrievePaymentIntent', {
+      'clientSecret': clientSecret,
+    });
 
-      final tmp = result?['paymentIntent'] as Map<String, dynamic>;
-
-      return PaymentIntent.fromJson(tmp.unfoldToNonNull());
-    } on Exception catch (_) {
-      throw const StripeError<PaymentIntentError>(
-        code: PaymentIntentError.unknown,
-        message: 'Retrieving payment intent failed',
-      );
-    }
+    return ResultParser<PaymentIntent>(
+            parseJson: (json) => PaymentIntent.fromJson(json))
+        .parse(result: result!, successResultKey: 'paymentIntent');
   }
 
   @override
@@ -190,8 +169,7 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<PaymentSheetResult> presentPaymentSheet(
-      PresentPaymentSheetParameters params) async {
+  Future<void> presentPaymentSheet(PresentPaymentSheetParameters params) async {
     final result = await _methodChannel.invokeMethod<dynamic>(
       'presentPaymentSheet',
       {'params': params.toJson()},
@@ -199,18 +177,23 @@ class MethodChannelStripe extends StripePlatform {
 
     // iOS returns empty list on success
     if (result is List) {
-      return const PaymentSheetResult.success();
+      return;
     } else {
       return _parsePaymentSheetResult(result);
     }
   }
 
   @override
-  Future<PaymentSheetResult> confirmPaymentSheetPayment() async {
+  Future<void> confirmPaymentSheetPayment() async {
     final result = await _methodChannel
         .invokeMethod<dynamic>('confirmPaymentSheetPayment');
 
-    return _parsePaymentSheetResult(result);
+    // iOS returns empty list on success
+    if (result is List) {
+      return;
+    } else {
+      return _parsePaymentSheetResult(result);
+    }
   }
 
   @override
@@ -228,18 +211,19 @@ class MethodChannelStripe extends StripePlatform {
     }
   }
 
-  PaymentSheetResult _parsePaymentSheetResult(Map<String, dynamic>? result) {
+  void _parsePaymentSheetResult(Map<String, dynamic>? result) {
     if (result != null) {
       if (result.isEmpty) {
-        return const PaymentSheetResult.success();
+        return;
       } else {
         if (result['error'] != null) {
           //workaround for tojson in sumtypes
           result['runtimeType'] = 'failed';
-          return PaymentSheetResult.fromJson(result);
+          throw StripeException.fromJson(result);
         } else {
           throw StripeError<PaymentSheetError>(
-            message: 'Unknown result $result',
+            message:
+                'Unknown result this is likely a problem in the plugin $result',
             code: PaymentSheetError.unknown,
           );
         }
@@ -262,14 +246,4 @@ class MethodChannelStripeFactory {
         JSONMethodCodec(),
       ),
       platformIsIos: Platform.isIOS);
-}
-
-extension UnfoldToNonNull<T> on T? {
-  T unfoldToNonNull() {
-    if (this == null) {
-      throw AssertionError('Result should not be null');
-    } else {
-      return this!;
-    }
-  }
 }

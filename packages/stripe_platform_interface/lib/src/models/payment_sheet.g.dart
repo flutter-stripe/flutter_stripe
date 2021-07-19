@@ -93,26 +93,3 @@ Map<String, dynamic> _$_$_PresentParametersToJson(
       'clientSecret': instance.clientSecret,
       'confirmPayment': instance.confirmPayment,
     };
-
-_$_PaymentSheetResultSuccess _$_$_PaymentSheetResultSuccessFromJson(
-    Map<String, dynamic> json) {
-  return _$_PaymentSheetResultSuccess();
-}
-
-Map<String, dynamic> _$_$_PaymentSheetResultSuccessToJson(
-        _$_PaymentSheetResultSuccess instance) =>
-    <String, dynamic>{};
-
-_$_PaymentSheetResultfailed _$_$_PaymentSheetResultfailedFromJson(
-    Map<String, dynamic> json) {
-  return _$_PaymentSheetResultfailed(
-    error:
-        LocalizedErrorMessage.fromJson(json['error'] as Map<String, dynamic>),
-  );
-}
-
-Map<String, dynamic> _$_$_PaymentSheetResultfailedToJson(
-        _$_PaymentSheetResultfailed instance) =>
-    <String, dynamic>{
-      'error': instance.error,
-    };

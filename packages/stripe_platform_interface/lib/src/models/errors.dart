@@ -10,6 +10,7 @@ enum CreateTokenError { unknown }
 
 enum PaymentSheetError { unknown }
 
+
 @freezed
 
 /// Wrapper class that represents an error with the Stripe platform.
@@ -30,6 +31,21 @@ T _dataFromJson<T>(Map<String, dynamic> input) => input['code'] as T;
 Map<String, dynamic> _dataToJson<T>(T input) => {'code': input};
 
 @freezed
+
+/// Exception retrieved from the Stripe platform.
+class StripeException with _$StripeException {
+  const factory StripeException({
+    /// error details
+    required LocalizedErrorMessage error,
+  }) = _StripeException;
+
+  factory StripeException.fromJson(Map<String, dynamic> json) =>
+      _$StripeExceptionFromJson(json);
+}
+
+@freezed
+
+/// Provides details about the error
 class LocalizedErrorMessage with _$LocalizedErrorMessage {
   @JsonSerializable(explicitToJson: true)
   const factory LocalizedErrorMessage({

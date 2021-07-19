@@ -37,23 +37,47 @@ void main() {
 
     group('Create payment method', () {
       late PaymentMethod result;
-      setUp(() async {
-        sut = MethodChannelStripe(
-          platformIsIos: true,
-          methodChannel: MethodChannelMock(
-            channelName: methodChannelName,
-            method: 'createPaymentMethod',
-            result: {
-              "paymentMethod": PaymentMethodTestInstance.create('id1').jsonMap()
-            },
-          ).methodChannel,
-        );
-        result =
-            await sut.createPaymentMethod(const PaymentMethodParams.card());
+
+      group('When createpayment method succeeds', () {
+        setUp(() async {
+          sut = MethodChannelStripe(
+            platformIsIos: true,
+            methodChannel: MethodChannelMock(
+              channelName: methodChannelName,
+              method: 'createPaymentMethod',
+              result: {
+                "paymentMethod":
+                    PaymentMethodTestInstance.create('id1').jsonMap()
+              },
+            ).methodChannel,
+          );
+          result =
+              await sut.createPaymentMethod(const PaymentMethodParams.card());
+        });
+
+        test('It returns payment method', () {
+          expect(result, PaymentMethodTestInstance.create('id1'));
+        });
       });
 
-      test('It returns payment method', () {
-        expect(result, PaymentMethodTestInstance.create('id1'));
+      group('When createpayment method fails', () {
+        setUp(() async {
+          sut = MethodChannelStripe(
+            platformIsIos: true,
+            methodChannel: MethodChannelMock(
+                    channelName: methodChannelName,
+                    method: 'createPaymentMethod',
+                    result: createErrorResponse('whoops'))
+                .methodChannel,
+          );
+        });
+
+        test('It returns payment method', () async {
+          expect(
+              () async => await sut
+                  .createPaymentMethod(const PaymentMethodParams.card()),
+              throwsA(isInstanceOf<StripeException>()));
+        });
       });
     });
 
@@ -110,18 +134,18 @@ void main() {
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
               method: 'confirmPaymentMethod',
-              result: Exception('whoops'),
+              result: createErrorResponse('whoops'),
             ).methodChannel,
           );
         });
 
         test('It returns error', () async {
-          expect(
+          expectLater(
             () async => await sut.confirmPaymentMethod(
               'secret',
               const PaymentMethodParams.card(),
             ),
-            throwsA(const TypeMatcher<StripeError<PaymentIntentError>>()),
+            throwsA(const TypeMatcher<StripeException>()),
           );
         });
       });
@@ -204,7 +228,7 @@ void main() {
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
               method: 'handleCardAction',
-              result: Exception('whoops'),
+              result: createErrorResponse('whoops'),
             ).methodChannel,
           );
         });
@@ -212,7 +236,7 @@ void main() {
         test('It returns error', () async {
           expect(
             () async => await sut.handleCardAction('paymentIntentId'),
-            throwsA(const TypeMatcher<StripeError<PaymentIntentError>>()),
+            throwsA(const TypeMatcher<StripeException>()),
           );
         });
       });
@@ -322,13 +346,13 @@ void main() {
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
               method: 'retrievePaymentIntent',
-              result: Exception('whoops'),
+              result: createErrorResponse('whoops'),
             ).methodChannel,
           );
         });
         test('It returns paymentintent', () async {
           expect(() async => await sut.retrievePaymentIntent('clientSecret'),
-              throwsA(const TypeMatcher<StripeError<PaymentIntentError>>()));
+              throwsA(const TypeMatcher<StripeException>()));
         });
       });
     });
@@ -359,7 +383,11 @@ void main() {
     });
 
     group('presentPaymentSheet', () {
-      late PaymentSheetResult result;
+      late Completer<void> completer;
+
+      setUp(() {
+        completer = Completer();
+      });
       group('When paymentsheet is succesfull', () {
         setUp(() async {
           sut = MethodChannelStripe(
@@ -370,13 +398,14 @@ void main() {
               result: {},
             ).methodChannel,
           );
-          result = await sut.presentPaymentSheet(
-              const PresentPaymentSheetParameters(
-                  clientSecret: 'clientSecret'));
+          await sut
+              .presentPaymentSheet(const PresentPaymentSheetParameters(
+                  clientSecret: 'clientSecret'))
+              .then((_) => completer.complete());
         });
 
-        test('It returns success', () {
-          expect(result, const PaymentSheetResult.success());
+        test('It completes operation', () {
+          expect(completer.isCompleted, true);
         });
       });
 
@@ -387,152 +416,57 @@ void main() {
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
               method: 'presentPaymentSheet',
-              result: {
-                "error": {
-                  "declineCode": null,
-                  "stripeErrorCode": null,
-                  "code": "Canceled",
-                  "localizedMessage": "foo",
-                  "type": null,
-                  "message": "bar"
-                },
-              },
+              result: createErrorResponse('whoops'),
             ).methodChannel,
           );
-          result = await sut.presentPaymentSheet(
-              const PresentPaymentSheetParameters(
-                  clientSecret: 'clientSecret'));
         });
 
-        test('It returns failure', () {
-          expect(
-              result,
-              const PaymentSheetResult.failed(
-                  error: LocalizedErrorMessage(
-                      code: FailureCode.Canceled,
-                      localizedMessage: 'foo',
-                      message: 'bar')));
+        test('It throws StripePlatformEsception', () async {
+          expectLater(
+              () async => await sut.presentPaymentSheet(
+                  const PresentPaymentSheetParameters(
+                      clientSecret: 'clientSecret')),
+              throwsA(isInstanceOf<StripeException>()));
         });
       });
 
-      group('When present paymentsheet fails', () {
-        setUp(() async {
-          sut = MethodChannelStripe(
-            platformIsIos: false,
-            methodChannel: MethodChannelMock(
-              channelName: methodChannelName,
-              method: 'presentPaymentSheet',
-              result: {
-                "error": {
-                  "declineCode": null,
-                  "stripeErrorCode": null,
-                  "code": "Failed",
-                  "localizedMessage": "foo",
-                  "type": null,
-                  "message": "bar"
-                },
-              },
-            ).methodChannel,
-          );
-          result = await sut.presentPaymentSheet(
-              const PresentPaymentSheetParameters(
-                  clientSecret: 'clientSecret'));
+      group('confirmPaymentSheetPayment', () {
+        group('When confirm paymentsheet is succesfull', () {
+          setUp(() async {
+            sut = MethodChannelStripe(
+              platformIsIos: false,
+              methodChannel: MethodChannelMock(
+                channelName: methodChannelName,
+                method: 'confirmPaymentSheetPayment',
+                result: {},
+              ).methodChannel,
+            );
+            await sut
+                .confirmPaymentSheetPayment()
+                .then((value) => completer.complete());
+          });
+
+          test('It completes operation', () {
+            expect(completer.isCompleted, true);
+          });
         });
 
-        test('It returns failure', () {
-          expect(
-              result,
-              const PaymentSheetResult.failed(
-                  error: LocalizedErrorMessage(
-                      code: FailureCode.Failed,
-                      localizedMessage: 'foo',
-                      message: 'bar')));
-        });
-      });
-    });
-    group('confirmPaymentSheetPayment', () {
-      late PaymentSheetResult result;
-      group('When confirm paymentsheet is succesfull', () {
-        setUp(() async {
-          sut = MethodChannelStripe(
-            platformIsIos: false,
-            methodChannel: MethodChannelMock(
-              channelName: methodChannelName,
-              method: 'confirmPaymentSheetPayment',
-              result: {},
-            ).methodChannel,
-          );
-          result = await sut.confirmPaymentSheetPayment();
-        });
+        group('When confirm paymentsheet fails', () {
+          setUp(() async {
+            sut = MethodChannelStripe(
+              platformIsIos: false,
+              methodChannel: MethodChannelMock(
+                      channelName: methodChannelName,
+                      method: 'confirmPaymentSheetPayment',
+                      result: createErrorResponse('whoops'))
+                  .methodChannel,
+            );
+          });
 
-        test('It returns success', () {
-          expect(result, const PaymentSheetResult.success());
-        });
-      });
-
-      group('When confirm paymentsheet is cancelled', () {
-        setUp(() async {
-          sut = MethodChannelStripe(
-            platformIsIos: false,
-            methodChannel: MethodChannelMock(
-              channelName: methodChannelName,
-              method: 'confirmPaymentSheetPayment',
-              result: {
-                "error": {
-                  "declineCode": null,
-                  "stripeErrorCode": null,
-                  "code": "Canceled",
-                  "localizedMessage": "foo",
-                  "type": null,
-                  "message": "bar"
-                },
-              },
-            ).methodChannel,
-          );
-          result = await sut.confirmPaymentSheetPayment();
-        });
-
-        test('It returns failure', () {
-          expect(
-              result,
-              const PaymentSheetResult.failed(
-                  error: LocalizedErrorMessage(
-                      code: FailureCode.Canceled,
-                      localizedMessage: 'foo',
-                      message: 'bar')));
-        });
-      });
-
-      group('When confirm paymentsheet fails', () {
-        setUp(() async {
-          sut = MethodChannelStripe(
-            platformIsIos: false,
-            methodChannel: MethodChannelMock(
-              channelName: methodChannelName,
-              method: 'confirmPaymentSheetPayment',
-              result: {
-                "error": {
-                  "declineCode": null,
-                  "stripeErrorCode": null,
-                  "code": "Failed",
-                  "localizedMessage": "foo",
-                  "type": null,
-                  "message": "bar"
-                },
-              },
-            ).methodChannel,
-          );
-          result = await sut.confirmPaymentSheetPayment();
-        });
-
-        test('It returns failure', () {
-          expect(
-              result,
-              const PaymentSheetResult.failed(
-                  error: LocalizedErrorMessage(
-                      code: FailureCode.Failed,
-                      localizedMessage: 'foo',
-                      message: 'bar')));
+          test('It returns failure', () async {
+            expectLater(() async => await sut.confirmPaymentSheetPayment(),
+                throwsA(isInstanceOf<StripeException>()));
+          });
         });
       });
     });
