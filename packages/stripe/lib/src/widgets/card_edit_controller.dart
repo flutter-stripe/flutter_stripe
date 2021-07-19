@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'card_edit_event.dart';
+
 class CardEditController extends ValueNotifier<CardEditEvent> {
   CardEditController() : super(CardEditEvent.none);
 
@@ -18,5 +20,3 @@ class CardEditController extends ValueNotifier<CardEditEvent> {
     notifyListeners();
   }
 }
-
-enum CardEditEvent { none, focus, blur, clear }

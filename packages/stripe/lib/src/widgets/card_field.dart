@@ -9,6 +9,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 import 'card_edit_controller.dart';
+import 'card_edit_event.dart';
 
 /// Customizable form that collects card information.
 class CardField extends StatefulWidget {
