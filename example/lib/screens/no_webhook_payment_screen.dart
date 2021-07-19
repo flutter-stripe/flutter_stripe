@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:http/http.dart' as http;
 import 'package:stripe_example/widgets/loading_button.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
@@ -15,6 +15,13 @@ class NoWebhookPaymentScreen extends StatefulWidget {
 
 class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
   CardFieldInputDetails? _card;
+  final _editController = CardEditController();
+
+  @override
+  void dispose() {
+    _editController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +32,7 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
           Padding(
             padding: EdgeInsets.all(16),
             child: CardField(
+              controller: _editController,
               onCardChanged: (card) {
                 setState(() {
                   _card = card;
@@ -39,6 +47,32 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
               text: 'Pay',
             ),
           ),
+          Divider(
+            thickness: 2,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                child: ElevatedButton(
+                  onPressed: () => _editController.blur(),
+                  child: Text('Blur'),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () => _editController.clear(),
+                child: Text('Clear'),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: ElevatedButton(
+                  onPressed: () => _editController.focus(),
+                  child: Text('Focus'),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
@@ -50,82 +84,81 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
     }
 
     try {
+      // 1. Gather customer billing information (ex. email)
 
-    // 1. Gather customer billing information (ex. email)
+      final billingDetails = BillingDetails(
+        email: 'email@stripe.com',
+        phone: '+48888000888',
+        address: Address(
+          city: 'Houston',
+          country: 'US',
+          line1: '1459  Circle Drive',
+          line2: '',
+          state: 'Texas',
+          postalCode: '77063',
+        ),
+      ); // mocked data for tests
 
-    final billingDetails = BillingDetails(
-      email: 'email@stripe.com',
-      phone: '+48888000888',
-      address: Address(
-        city: 'Houston',
-        country: 'US',
-        line1: '1459  Circle Drive',
-        line2: '',
-        state: 'Texas',
-        postalCode: '77063',
-      ),
-    ); // mocked data for tests
+      // 2. Create payment method
+      final paymentMethod =
+          await Stripe.instance.createPaymentMethod(PaymentMethodParams.card(
+        billingDetails: billingDetails,
+      ));
 
-    // 2. Create payment method
-    final paymentMethod =
-        await Stripe.instance.createPaymentMethod(PaymentMethodParams.card(
-      billingDetails: billingDetails,
-    ));
+      // 3. call API to create PaymentIntent
+      final paymentIntentResult = await callNoWebhookPayEndpointMethodId(
+        useStripeSdk: true,
+        paymentMethodId: paymentMethod.id,
+        currency: 'usd', // mocked data
+        items: [
+          {'id': 'id'}
+        ],
+      );
 
-    // 3. call API to create PaymentIntent
-    final paymentIntentResult = await callNoWebhookPayEndpointMethodId(
-      useStripeSdk: true,
-      paymentMethodId: paymentMethod.id,
-      currency: 'usd', // mocked data
-      items: [
-        {'id': 'id'}
-      ],
-    );
+      if (paymentIntentResult['error'] != null) {
+        // Error during creating or confirming Intent
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Error: ${paymentIntentResult['error']}')));
+        return;
+      }
 
-    if (paymentIntentResult['error'] != null) {
-      // Error during creating or confirming Intent
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: ${paymentIntentResult['error']}')));
-      return;
-    }
+      if (paymentIntentResult['clientSecret'] != null &&
+          paymentIntentResult['requiresAction'] == null) {
+        // Payment succedeed
 
-    if (paymentIntentResult['clientSecret'] != null &&
-        paymentIntentResult['requiresAction'] == null) {
-      // Payment succedeed
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content:
+                Text('Success!: The payment was confirmed successfully!')));
+        return;
+      }
 
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Success!: The payment was confirmed successfully!')));
-      return;
-    }
+      if (paymentIntentResult['clientSecret'] != null &&
+          paymentIntentResult['requiresAction'] == true) {
+        // 4. if payment requires action calling handleCardAction
+        final paymentIntent = await Stripe.instance
+            .handleCardAction(paymentIntentResult['clientSecret']);
 
-    if (paymentIntentResult['clientSecret'] != null &&
-        paymentIntentResult['requiresAction'] == true) {
-      // 4. if payment requires action calling handleCardAction
-      final paymentIntent = await Stripe.instance
-          .handleCardAction(paymentIntentResult['clientSecret']);
-
-      // todo handle error
-      /*if (cardActionError) {
+        // todo handle error
+        /*if (cardActionError) {
         Alert.alert(
         `Error code: ${cardActionError.code}`,
         cardActionError.message
         );
       } else*/
 
-      if (paymentIntent.status == PaymentIntentsStatus.RequiresConfirmation) {
-        // 5. Call API to confirm intent
-        await confirmIntent(paymentIntent.id);
-      } else {
-        // Payment succedeed
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Error: ${paymentIntentResult['error']}')));
+        if (paymentIntent.status == PaymentIntentsStatus.RequiresConfirmation) {
+          // 5. Call API to confirm intent
+          await confirmIntent(paymentIntent.id);
+        } else {
+          // Payment succedeed
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text('Error: ${paymentIntentResult['error']}')));
+        }
       }
-    }
-
     } catch (e) {
-       ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Error: $e')));
-            rethrow;
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Error: $e')));
+      rethrow;
     }
   }
 

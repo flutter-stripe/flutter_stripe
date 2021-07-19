@@ -8,23 +8,26 @@ import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
+import 'card_edit_controller.dart';
+
 /// Customizable form that collects card information.
 class CardField extends StatefulWidget {
-  const CardField({
-    required this.onCardChanged,
-    Key? key,
-    this.onFocus,
-    this.decoration,
-    this.enablePostalCode = false,
-    this.style,
-    this.autofocus = false,
-    this.dangerouslyGetFullCardDetails = false,
-    this.cursorColor,
-    this.numberHintText,
-    this.expirationHintText,
-    this.cvcHintText,
-    this.postalCodeHintText,
-  }) : super(key: key);
+  const CardField(
+      {required this.onCardChanged,
+      Key? key,
+      this.onFocus,
+      this.decoration,
+      this.enablePostalCode = false,
+      this.style,
+      this.autofocus = false,
+      this.dangerouslyGetFullCardDetails = false,
+      this.cursorColor,
+      this.numberHintText,
+      this.expirationHintText,
+      this.cvcHintText,
+      this.postalCodeHintText,
+      this.controller})
+      : super(key: key);
 
   /// Decoration related to the input fields.
   final InputDecoration? decoration;
@@ -61,6 +64,10 @@ class CardField extends StatefulWidget {
   /// Default is `false`.
   final bool autofocus;
 
+  /// Controller that can be use to execute several operations on the cardfield
+  /// e.g (clear).
+  final CardEditController? controller;
+
   /// When true the Full card details will be returned.
   ///
   /// WARNING!!! Only do this if you're certain that you fulfill the necessary
@@ -78,9 +85,12 @@ class _CardFieldState extends State<CardField> {
   final FocusNode _node =
       FocusNode(debugLabel: 'CardField', descendantsAreFocusable: false);
 
+  late CardEditController controller;
+
   @override
   void initState() {
     _node.addListener(updateState);
+    controller = widget.controller ?? CardEditController();
     super.initState();
   }
 
@@ -89,6 +99,8 @@ class _CardFieldState extends State<CardField> {
     _node
       ..removeListener(updateState)
       ..dispose();
+
+    controller.dispose();
     super.dispose();
   }
 
@@ -119,6 +131,7 @@ class _CardFieldState extends State<CardField> {
           child: _MethodChannelCardField(
             height: platformCardHeight,
             focusNode: _node,
+            controller: controller,
             style: style,
             placeholder: CardPlaceholder(
               number: widget.numberHintText,
@@ -192,6 +205,7 @@ class _NegativeMarginLayout extends SingleChildLayoutDelegate {
 class _MethodChannelCardField extends StatefulWidget {
   _MethodChannelCardField({
     required this.onCardChanged,
+    required this.controller,
     Key? key,
     this.onFocus,
     this.style,
@@ -217,6 +231,7 @@ class _MethodChannelCardField extends StatefulWidget {
   final bool enablePostalCode;
   final FocusNode? focusNode;
   final bool autofocus;
+  final CardEditController controller;
 
   // This is used in the platform side to register the view.
   static const _viewType = 'flutter.stripe/card_field';
@@ -267,6 +282,23 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField> {
         expiration: 'MM/YY',
         cvc: 'CVC',
       ).apply(placeholder);
+
+  @override
+  void initState() {
+    widget.controller.addListener(() {
+      _handleCardEditEvent(widget.controller.value);
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    widget.controller.removeListener(() {
+      _handleCardEditEvent(widget.controller.value);
+    });
+    _focusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -399,6 +431,29 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField> {
     }
   }
 
+  /// handle event that is emitted from the editting controller and propagate it
+  /// through native
+  ///
+  void _handleCardEditEvent(CardEditEvent event) {
+    if (_methodChannel == null) {
+      return;
+    } else {
+      switch (event) {
+        case CardEditEvent.none:
+          break;
+        case CardEditEvent.focus:
+          _methodChannel!.invokeMethod('focus');
+          break;
+        case CardEditEvent.blur:
+          _methodChannel!.invokeMethod('blur');
+          break;
+        case CardEditEvent.clear:
+          _methodChannel!.invokeMethod('clear');
+          break;
+      }
+    }
+  }
+
   /// Handler called when the focus changes in the node attached to the platform
   /// view. This updates the correspondant platform view to keep it in sync.
   void _handleFrameworkFocusChanged(bool isFocused) {
@@ -413,12 +468,6 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField> {
     }
 
     methodChannel.invokeMethod('requestFocus');
-  }
-
-  @override
-  void dispose() {
-    _focusNode.dispose();
-    super.dispose();
   }
 }
 
