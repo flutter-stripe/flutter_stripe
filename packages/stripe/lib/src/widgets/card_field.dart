@@ -464,11 +464,11 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField> {
     }
     setState(() {});
     if (!isFocused) {
-      methodChannel.invokeMethod('clearFocus');
+      methodChannel.invokeMethod('blur');
       return;
     }
 
-    methodChannel.invokeMethod('requestFocus');
+    methodChannel.invokeMethod('focus');
   }
 }
 
