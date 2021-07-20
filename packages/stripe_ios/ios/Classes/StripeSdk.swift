@@ -154,7 +154,9 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
         
         DispatchQueue.main.async {
             if (confirmPayment == false) {
-                self.paymentSheetFlowController?.presentPaymentOptions(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController()) {
+                self.paymentSheetFlowController?.presentPaymentOptions(from:
+                    findViewControllerPresenter(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController())
+                ) {
                     if let paymentOption = self.paymentSheetFlowController?.paymentOption {
                         let option: NSDictionary = [
                             "label": paymentOption.label,
@@ -166,7 +168,9 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
                     }
                 }
             } else {
-                self.paymentSheet?.present(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController()) { paymentResult in
+                self.paymentSheet?.present(from:
+                    findViewControllerPresenter(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController())
+                ) { paymentResult in
                     switch paymentResult {
                     case .completed:
                         resolve([])
@@ -509,7 +513,7 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
 
         STPAPIClient.shared.createToken(withCard: cardSourceParams) { token, error in
             if let token = token {
-                resolve(Mappers.mapFromToken(token: token))
+                resolve(Mappers.createResult("token", Mappers.mapFromToken(token: token)))
             } else {
                 resolve(Errors.createError(CreateTokenErrorType.Failed.rawValue, error?.localizedDescription))
             }
@@ -592,6 +596,7 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
                 paymentMethodOptions = try factory.createOptions(paymentMethodType: paymentMethodType)
             } catch  {
                 resolve(Errors.createError(ConfirmPaymentErrorType.Failed.rawValue, error.localizedDescription))
+                return
             }
             guard paymentMethodParams != nil else {
                 resolve(Errors.createError(ConfirmPaymentErrorType.Unknown.rawValue, "Unhandled error occured"))
@@ -600,10 +605,10 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
             paymentIntentParams.paymentMethodParams = paymentMethodParams
             paymentIntentParams.paymentMethodOptions = paymentMethodOptions
             paymentIntentParams.shipping = Mappers.mapToShippingDetails(shippingDetails: params["shippingDetails"] as? NSDictionary)
-
-            if let urlScheme = urlScheme {
-                paymentIntentParams.returnURL = Mappers.mapToReturnURL(urlScheme: urlScheme)
-            }
+        }
+      
+        if let urlScheme = urlScheme {
+            paymentIntentParams.returnURL = Mappers.mapToReturnURL(urlScheme: urlScheme)
         }
         
         let paymentHandler = STPPaymentHandler.shared()

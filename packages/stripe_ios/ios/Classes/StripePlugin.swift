@@ -63,7 +63,7 @@ public class StripePlugin: StripeSdk, FlutterPlugin {
             return configure3dSecure(call, result: result)
         case "handleCardAction":
             return handleCardAction(call, result: result)
-        case "confirmPaymentMethod":
+        case "confirmPayment":
             return confirmPayment(call, result: result)
         case "retrievePaymentIntent":
             return retrievePaymentIntent(call, result: result)
