@@ -4,6 +4,7 @@ import androidx.annotation.NonNull
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.uimanager.ThemedReactContext
 import com.reactnativestripesdk.StripeSdkCardViewManager
 import com.reactnativestripesdk.StripeSdkModule
 import io.flutter.embedding.android.FlutterFragmentActivity
@@ -42,9 +43,9 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
         if (!this::stripeSdk.isInitialized) {
             result.error(
-        "flutter_stripe initialization failed",
-        "The plugin failed to initialize. Are you using FlutterFragmentActivity? Please check the README: https://github.com/flutter-stripe/flutter_stripe#android",
-        null
+                "flutter_stripe initialization failed",
+                "The plugin failed to initialize. Are you using FlutterFragmentActivity? Please check the README: https://github.com/flutter-stripe/flutter_stripe#android",
+                null
             )
             return
         }
@@ -99,6 +100,13 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     promise = Promise(result),
                     params = call.requiredArgument("params")
             )
+            "dangerouslyUpdateCardDetails" -> {
+                stripeSdkCardViewManager.setCardDetails(
+                    value = call.requiredArgument("params"),
+                    reactContext = ThemedReactContext(stripeSdk.currentActivity.activity, channel)
+                )
+                result.success(null)
+            }
             /*"registerConfirmSetupIntentCallbacks" -> stripeSdk.registerConfirmSetupIntentCallbacks(
                     successCallback = Promise(result),
                     errorCallback = Promise(result),

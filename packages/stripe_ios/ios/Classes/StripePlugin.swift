@@ -71,6 +71,8 @@ public class StripePlugin: StripeSdk, FlutterPlugin {
             return createPaymentMethod(call, result: result)
         case "createToken":
             return createToken(call, result: result)
+        case "dangerouslyUpdateCardDetails":
+            return dangerouslyUpdateCardDetails(call, result: result)
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -297,4 +299,15 @@ extension  StripePlugin {
                     rejecter: rejecter(for: result))
     }
     
+    public func dangerouslyUpdateCardDetails(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? FlutterMap,
+        let params = arguments["params"] as? NSDictionary else {
+            result(FlutterError.invalidParams)
+            return
+        }
+        let cardFieldUIManager = bridge.module(forName: "CardFieldManager")
+        cardFieldUIManager?.setCardDetails(value: params)
+        
+        result(nil)
+    }
 }

@@ -316,6 +316,15 @@ class Stripe {
     return await _platform.confirmPaymentSheetPayment();
   }
 
+  /// Updates the internal card details
+  /// WARNING!!! Only do this if you're certain that you fulfill the necessary
+  /// PCI compliance requirements. Make sure that you're not mistakenly logging
+  /// or storing full card details! See the docs for
+  /// details: https://stripe.com/docs/security/guide#validating-pci-compliance
+  Future<void> dangerouslyUpdateCardDetails(CardDetails card) async {
+    return await _platform.dangerouslyUpdateCardDetails(card);
+  }
+
   FutureOr<void> _awaitForSettings() {
     if (_needsSettings) {
       _settingsFuture = applySettings();
