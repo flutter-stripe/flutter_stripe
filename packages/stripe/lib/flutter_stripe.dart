@@ -4,3 +4,4 @@ export 'src/model/apple_pay_button.dart';
 export 'src/stripe.dart';
 export 'src/widgets/apple_pay_button.dart';
 export 'src/widgets/card_field.dart';
+export 'src/widgets/card_edit_controller.dart';

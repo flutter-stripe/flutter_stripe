@@ -96,7 +96,7 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
     // 3. Confirm payment with card details
     // The rest will be done automatically using webhooks
     // ignore: unused_local_variable
-    final paymentIntent = await Stripe.instance.confirmPaymentMethod(
+    final paymentIntent = await Stripe.instance.confirmPayment(
       clientSecret['clientSecret'],
       PaymentMethodParams.card(
         billingDetails: billingDetails,

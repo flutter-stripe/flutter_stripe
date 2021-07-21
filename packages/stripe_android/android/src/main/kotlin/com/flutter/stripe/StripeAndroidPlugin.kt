@@ -74,7 +74,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     paymentIntentClientSecret = call.requiredArgument("paymentIntentClientSecret"),
                     promise = Promise(result)
             )
-            "confirmPaymentMethod" -> stripeSdk.confirmPaymentMethod(
+            "confirmPayment" -> stripeSdk.confirmPayment(
                     paymentIntentClientSecret = call.requiredArgument("paymentIntentClientSecret"),
                     params = call.requiredArgument("params"),
                     options = call.requiredArgument("options"),

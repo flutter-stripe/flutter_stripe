@@ -134,11 +134,14 @@ class CardFieldView: NSObject, FlutterPlatformView, STPPaymentCardTextFieldDeleg
                 updatePlaceholder(arguments)
             }
           result(nil)
-        case "requestFocus":
-            focus()
+        case "focus":
+          focus()
           result(nil)
-        case "clearFocus":
-            clearFocus()
+        case "blur":
+          blur()
+          result(nil)
+        case "clear":
+          clear()
           result(nil)
         default:
             result(FlutterMethodNotImplemented)
@@ -279,8 +282,12 @@ class CardFieldView: NSObject, FlutterPlatformView, STPPaymentCardTextFieldDeleg
         cardField.becomeFirstResponder()
     }
     
-    func clearFocus() {
+    func blur() {
         cardField.resignFirstResponder()
+    }
+    
+    func clear() {
+        cardField.clear()
     }
     
 }

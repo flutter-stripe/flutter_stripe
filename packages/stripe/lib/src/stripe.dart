@@ -155,7 +155,7 @@ class Stripe {
 
   /// Retrieves a [PaymentIntent] using the provided [clientSecret].
   ///
-   /// Throws a [StripeException] in case retrieving the intent fails.
+  /// Throws a [StripeException] in case retrieving the intent fails.
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret) async {
     await _awaitForSettings();
     try {
@@ -207,16 +207,18 @@ class Stripe {
   /// Confirms a payment method, using the provided [paymentIntentClientSecret]
   /// and [data].
   ///
-  /// See [PaymentMethodParams] for more details.   
-  /// Throws a [StripeException] when confirming the paymentmethod fails.
-  Future<PaymentIntent> confirmPaymentMethod(
+  /// See [PaymentMethodParams] for more details. The method returns a
+  /// [PaymentIntent]. Throws a [StripeException] when confirming the
+  /// paymentmethod fails.
+
+  Future<PaymentIntent> confirmPayment(
     String paymentIntentClientSecret,
     PaymentMethodParams data, [
     Map<String, String> options = const {},
   ]) async {
     await _awaitForSettings();
     try {
-      final paymentMethod = await _platform.confirmPaymentMethod(
+      final paymentMethod = await _platform.confirmPayment(
           paymentIntentClientSecret, data, options);
       return paymentMethod;
     } on StripeError {
