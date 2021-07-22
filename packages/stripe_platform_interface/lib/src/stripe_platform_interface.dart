@@ -70,7 +70,8 @@ abstract class StripePlatform extends PlatformInterface {
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret);
   Future<String> createTokenForCVCUpdate(String cvc);
 
-  /// Updates the internal card details
+  /// Updates the internal card details. This method will not validate the card
+  /// information so you should validate the information yourself.
   /// WARNING!!! Only do this if you're certain that you fulfill the necessary
   /// PCI compliance requirements. Make sure that you're not mistakenly logging
   /// or storing full card details! See the docs for

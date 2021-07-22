@@ -316,7 +316,8 @@ class Stripe {
     return await _platform.confirmPaymentSheetPayment();
   }
 
-  /// Updates the internal card details
+  /// Updates the internal card details. This method will not validate the card
+  /// information so you should validate the information yourself.
   /// WARNING!!! Only do this if you're certain that you fulfill the necessary
   /// PCI compliance requirements. Make sure that you're not mistakenly logging
   /// or storing full card details! See the docs for

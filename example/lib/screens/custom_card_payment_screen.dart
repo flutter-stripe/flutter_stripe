@@ -31,7 +31,9 @@ class _CustomCardPaymentScreenState extends State<CustomCardPaymentScreen> {
               child: Text(
                   'If you don\'t want to or can\'t rely on the CardField you'
                   ' can use the dangerouslyUpdateCardDetails in combination with '
-                  'your own card field implementation.')),
+                  'your own card field implementation. '
+                  'Please beware that this will potentially break PCI compliance: '
+                  'https://stripe.com/docs/security/guide#validating-pci-compliance')),
           Padding(
             padding: EdgeInsets.all(16),
             child: TextField(
