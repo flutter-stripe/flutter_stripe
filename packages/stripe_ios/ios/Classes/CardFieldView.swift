@@ -18,6 +18,7 @@ protocol CardFieldDelegate {
 
 protocol CardFieldManager {
     func getCardFieldReference(id: String) -> Any?
+    func setCardDetails(value: NSDictionary) -> Void
 }
 
 public class CardFieldViewFactory: NSObject, FlutterPlatformViewFactory, CardFieldDelegate, CardFieldManager {
@@ -52,17 +53,28 @@ public class CardFieldViewFactory: NSObject, FlutterPlatformViewFactory, CardFie
     
     public let cardFieldMap: NSMutableDictionary = [:]
 
-   func onDidCreateViewInstance(id: String, reference: Any?) -> Void {
-       cardFieldMap[id] = reference
-   }
+    func onDidCreateViewInstance(id: String, reference: Any?) -> Void {
+        cardFieldMap[id] = reference
+    }
        
-   func onDidDestroyViewInstance(id: String) {
+    func onDidDestroyViewInstance(id: String) {
        cardFieldMap[id] = nil
-   }
+    }
            
-   public func getCardFieldReference(id: String) -> Any? {
+    public func getCardFieldReference(id: String) -> Any? {
        return self.cardFieldMap[id]
-   }
+    }
+
+    public func setCardDetails(value: NSDictionary) {
+        let cardField: CardFieldView? = self.getCardFieldReference(id: CARD_FIELD_INSTANCE_ID) as? CardFieldView ?? self.create(withFrame: CGRect.zero, viewIdentifier: -1, arguments: nil) as? CardFieldView
+        
+        let cardParams = STPPaymentMethodCardParams()
+        cardParams.cvc = value["cvc"] as? String
+        cardParams.number = value["number"] as? String
+        cardParams.expYear = value["expirationYear"] as? NSNumber
+        cardParams.expMonth = value["expirationMonth"] as? NSNumber
+        cardField?.cardParams = cardParams
+    }
 }
 
 

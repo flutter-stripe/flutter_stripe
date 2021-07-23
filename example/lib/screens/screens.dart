@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stripe_example/screens/apple_pay_screen.dart';
+import 'package:stripe_example/screens/custom_card_payment_screen.dart';
 import 'package:stripe_example/screens/google_pay_screen.dart';
 
 import '../screens/no_webhook_payment_screen.dart';
@@ -29,6 +30,10 @@ class Example {
       builder: (c) => NoWebhookPaymentScreen(),
     ),
     Example(
+      title: 'Card payment with Flutter native card input (not PCI compliant)',
+      builder: (c) => CustomCardPaymentScreen(),
+    ),
+    Example(
       title: 'Apple Pay payment (iOS)',
       builder: (c) => ApplePayScreen(),
     ),
@@ -54,7 +59,7 @@ class Example {
     ),
     Example(
       title: 'Create token (legacy)',
-      builder: (context)=> LegacyTokenScreen(),
+      builder: (context) => LegacyTokenScreen(),
     )
   ];
 }

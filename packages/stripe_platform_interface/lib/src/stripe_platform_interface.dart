@@ -2,6 +2,7 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'method_channel_stripe.dart';
 import 'models/apple_pay.dart';
+import 'models/card_details.dart';
 import 'models/create_token_data.dart';
 import 'models/payment_intents.dart';
 import 'models/payment_methods.dart';
@@ -68,4 +69,12 @@ abstract class StripePlatform extends PlatformInterface {
       [Map<String, String> options = const {}]);
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret);
   Future<String> createTokenForCVCUpdate(String cvc);
+
+  /// Updates the internal card details. This method will not validate the card
+  /// information so you should validate the information yourself.
+  /// WARNING!!! Only do this if you're certain that you fulfill the necessary
+  /// PCI compliance requirements. Make sure that you're not mistakenly logging
+  /// or storing full card details! See the docs for
+  /// details: https://stripe.com/docs/security/guide#validating-pci-compliance
+  Future<void> dangerouslyUpdateCardDetails(CardDetails card);
 }

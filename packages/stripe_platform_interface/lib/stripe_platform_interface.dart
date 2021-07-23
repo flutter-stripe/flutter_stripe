@@ -3,6 +3,7 @@ library stripe_platform_interface;
 export 'src/models/address.dart';
 export 'src/models/app_info.dart';
 export 'src/models/apple_pay.dart';
+export 'src/models/card_details.dart';
 export 'src/models/card_field_input.dart';
 export 'src/models/create_token_data.dart';
 export 'src/models/errors.dart';

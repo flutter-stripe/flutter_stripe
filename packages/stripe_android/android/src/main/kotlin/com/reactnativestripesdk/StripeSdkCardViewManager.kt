@@ -6,6 +6,7 @@ import com.facebook.react.common.MapBuilder
 import com.facebook.react.uimanager.SimpleViewManager
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.annotations.ReactProp
+import com.stripe.android.model.PaymentMethodCreateParams
 
 const val CARD_FIELD_INSTANCE_NAME = "CardFieldInstance"
 
@@ -78,5 +79,20 @@ class StripeSdkCardViewManager : SimpleViewManager<StripeSdkCardView>() {
       return cardViewInstanceMap[CARD_FIELD_INSTANCE_NAME] as StripeSdkCardView
     }
     return null
+  }
+
+  fun setCardDetails(value: ReadableMap, reactContext: ThemedReactContext) {
+    val number = getValOr(value, "number", null)
+    val expirationYear = getIntOrNull(value, "expirationYear")
+    val expirationMonth = getIntOrNull(value, "expirationMonth")
+    val cvc = getValOr(value, "cvc", null)
+
+    val cardViewInstance = getCardViewInstance() ?: createViewInstance(reactContext)
+    cardViewInstance.cardParams = PaymentMethodCreateParams.Card.Builder()
+            .setNumber(number)
+            .setCvc(cvc)
+            .setExpiryMonth(expirationMonth)
+            .setExpiryYear(expirationYear)
+            .build()
   }
 }

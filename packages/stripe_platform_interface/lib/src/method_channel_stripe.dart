@@ -6,6 +6,7 @@ import 'package:stripe_platform_interface/src/result_parser.dart';
 
 import 'models/app_info.dart';
 import 'models/apple_pay.dart';
+import 'models/card_details.dart';
 import 'models/errors.dart';
 import 'models/payment_intents.dart';
 import 'models/payment_methods.dart';
@@ -204,6 +205,13 @@ class MethodChannelStripe extends StripePlatform {
     return ResultParser<TokenData>(
             parseJson: (json) => TokenData.fromJson(json))
         .parse(result: result!, successResultKey: 'token');
+  }
+
+  @override
+  Future<void> dangerouslyUpdateCardDetails(CardDetails card) async {
+    await _methodChannel.invokeMethod('dangerouslyUpdateCardDetails', {
+      'params': card.toJson(),
+    });
   }
 
   void _parsePaymentSheetResult(Map<String, dynamic>? result) {
