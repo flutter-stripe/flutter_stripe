@@ -30,7 +30,7 @@ class Example {
       builder: (c) => NoWebhookPaymentScreen(),
     ),
     Example(
-      title: 'Card payment with Flutter native card input',
+      title: 'Card payment with Flutter native card input (not PCI compliant)',
       builder: (c) => CustomCardPaymentScreen(),
     ),
     Example(
