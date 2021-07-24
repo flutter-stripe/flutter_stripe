@@ -25,3 +25,7 @@ flutter:
 
   assets:
     - assets/
+  fonts:
+    - family: OtomanopeeOne
+      fonts:
+        - asset: fonts/OtomanopeeOne.ttf
