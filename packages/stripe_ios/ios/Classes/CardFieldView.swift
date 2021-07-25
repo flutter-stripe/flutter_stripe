@@ -216,12 +216,38 @@ class CardFieldView: NSObject, FlutterPlatformView, STPPaymentCardTextFieldDeleg
             if let textErrorColor = cardStyle["textErrorColor"]  as? String {
                 cardField.textErrorColor = UIColor(hexString: textErrorColor)
             }
-            if let fontSize = cardStyle["fontSize"]  as? Int {
-                cardField.font = UIFont.systemFont(ofSize: CGFloat(fontSize))
-            }
+           
             if let placeholderColor = cardStyle["placeholderColor"]  as? String {
                 cardField.placeholderColor = UIColor(hexString: placeholderColor)
             }
+            
+            let fontSize = CGFloat(cardStyle["fontSize"]  as? Int  ?? 18);
+            if let fontFamily = cardStyle["fontFamily"] as? String {
+                // Register font
+                registerFont(fontFamily)
+                let font =  UIFont(name: "\(fontFamily)", size: fontSize)
+                cardField.font = font ?? UIFont.systemFont(ofSize: fontSize)
+            } else {
+                cardField.font = UIFont.systemFont(ofSize: fontSize)
+            }
+        }
+    }
+    
+    func registerFont(_ fontFamily: String) {
+        let controller = UIApplication.shared.delegate?.window??.rootViewController as? FlutterViewController;
+        let bundle = Bundle.main
+        let fontKey = controller?.lookupKey(forAsset: "fonts/\(fontFamily).ttf")
+        let path = bundle.path(forResource: fontKey, ofType: nil)
+        guard  let fontData = NSData(contentsOfFile: path ?? "") else {
+            return;
+        }
+        guard  let dataProvider = CGDataProvider(data: fontData) else {
+            return;
+        }
+        let fontRef = CGFont(dataProvider)
+        var errorRef: Unmanaged<CFError>? = nil
+        if let fr = fontRef {
+            CTFontManagerRegisterGraphicsFont(fr, &errorRef)
             
         }
     }
