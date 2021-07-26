@@ -1,3 +1,15 @@
+## 1.2.0
+
+** Breaking changes **
+- Rename `confirmPaymentMethod` to `confirmPayment` accordingly with the change in the native SDK
+
+Other changes
+- Sync with latest Stripe sdk.
+- Add `StripeException` that encapsulates finer grained and localized error messaging coming from the Stripe SDK.
+- Add `CardEditController` to handle the `clear`, `focus`, `blur` methods from the cardfield.
+- Implement `FontFamily` on iOS.
+- Add `dangerouslyUpdateCardDetails` to allow custom UIs. (Please be sure to understand the severe implications of this approach [here](https://github.com/flutter-stripe/flutter_stripe/blob/9804530572cb054de79574dc3ee8bb758be2c82a/packages/stripe/lib/src/stripe.dart#L325)).
+
 ## 1.1.0
 
 ** Breaking changes **
