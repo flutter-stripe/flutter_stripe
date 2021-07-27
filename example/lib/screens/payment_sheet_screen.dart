@@ -94,7 +94,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
       ));
 
       final postPaymentIntent = await Stripe.instance
-          .retrievePaymentIntent(paymentSheetData['data']['client_secret']);
+          .retrievePaymentIntent(_paymentSheetData!['paymentIntent']);
 
       
       setState(() {
