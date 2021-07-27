@@ -101,7 +101,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
         _paymentSheetData = null;
       });
       
-       if (paymentIntentData.status == PaymentIntentsStatus.Succeeded) {
+       if (postPaymentIntent.status == PaymentIntentsStatus.Succeeded) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Payment Succesfully Completed'),
