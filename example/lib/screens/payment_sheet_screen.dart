@@ -93,15 +93,29 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
         confirmPayment: true,
       ));
 
+      final postPaymentIntent = await Stripe.instance
+          .retrievePaymentIntent(paymentSheetData['data']['client_secret']);
+
+      
       setState(() {
         _paymentSheetData = null;
       });
+      
+       if (paymentIntentData.status == PaymentIntentsStatus.Succeeded) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Payment Succesfully Completed'),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Payment Cancelled'),
+          ),
+        );
+      }
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Payment succesfully completed'),
-        ),
-      );
+      
     } on StripeException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
