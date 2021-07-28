@@ -102,12 +102,20 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
           content: Text('Payment succesfully completed'),
         ),
       );
-    } on StripeException catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('${e.error.localizedMessage}'),
-        ),
-      );
+    } on Exception catch (e) {
+      if (e is StripeException) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error from Stripe: ${e.error.localizedMessage}'),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Unforeseen error: ${e}'),
+          ),
+        );
+      }
     }
   }
 }
