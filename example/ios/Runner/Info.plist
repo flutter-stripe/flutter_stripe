@@ -41,7 +41,22 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSCameraUsageDescription
+	<key>FlutterDeepLinkingEnabled</key>
+	<true/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+		<key>CFBundleTypeRole</key>
+		<string>Editor</string>
+		<key>CFBundleURLName</key>
+		<string>safepay</string>
+		<key>CFBundleURLSchemes</key>
+		<array>
+		<string>flutterstripe</string>
+		</array>
+		</dict>
+	</array>
+		<key>NSCameraUsageDescription
 	&lt;string&gt;To scan cards&lt;/string&gt;</key>
 	<string>To scan cards</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>

@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_example/.env.dart';
-import 'screens/screens.dart';
 
+import 'screens/screens.dart';
 import 'widgets/dismiss_focus_overlay.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Stripe.publishableKey = stripePublishableKey;
   Stripe.merchantIdentifier = 'MerchantIdentifier';
-  runApp(App());
+  Stripe.urlScheme = 'flutterstripe';
+  await Stripe.instance.applySettings();
+  runApp(const App());
 }
 
 class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return DismissFocusOverlay(
       child: MaterialApp(
-        //  theme: ThemeData.light(),
-        //  theme: ThemeData.dark(),
         home: HomePage(),
       ),
     );
@@ -46,7 +48,7 @@ class _HomePageState extends State<HomePage> {
         ...ListTile.divideTiles(
           context: context,
           tiles: [
-            for (final example in Example.values)
+            for (final example in Example.screens)
               ListTile(
                 onTap: () {
                   final route = MaterialPageRoute(builder: example.builder);

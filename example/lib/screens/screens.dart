@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:stripe_example/screens/apple_pay_screen.dart';
 import 'package:stripe_example/screens/custom_card_payment_screen.dart';
 import 'package:stripe_example/screens/google_pay_screen.dart';
+import 'package:stripe_example/screens/paymentmethod_examples/ali_pay_screen.dart';
+import 'package:stripe_example/screens/paymentmethod_examples/ideal_screen.dart';
 
 import '../screens/no_webhook_payment_screen.dart';
 import '../screens/setup_future_payment_screen.dart';
@@ -9,6 +11,7 @@ import '../screens/webhook_payment_screen.dart';
 import 'cvc_re_collection_screen.dart';
 import 'legacy_token_screen.dart';
 import 'payment_sheet_screen.dart';
+import 'paymentmethod_examples/payment_method_selection_screen.dart';
 import 'themes.dart';
 
 class Example {
@@ -20,7 +23,18 @@ class Example {
     required this.builder,
   });
 
-  static List<Example> values = [
+  static List<Example> paymentMethodScreens = [
+    Example(
+      title: 'Ali Pay',
+      builder: (context) => AliPayScreen(),
+    ),
+    Example(
+      title: 'Ideal',
+      builder: (context) => IdealScreen(),
+    )
+  ];
+
+  static List<Example> screens = [
     Example(
       title: 'Card payment using webhooks',
       builder: (c) => WebhookPaymentScreen(),
@@ -60,6 +74,10 @@ class Example {
     Example(
       title: 'Create token (legacy)',
       builder: (context) => LegacyTokenScreen(),
+    ),
+    Example(
+      title: 'Regional paymentMethods',
+      builder: (context) => PaymentMethodSelectionScreen(),
     )
   ];
 }
