@@ -12,12 +12,12 @@ import io.flutter.plugin.platform.PlatformViewFactory
 class StripeSdkCardPlatformViewFactory(
         private val flutterPluginBinding: FlutterPlugin.FlutterPluginBinding,
         private val stripeSdkCardViewManager: StripeSdkCardViewManager,
-        private val stripeSdkModule: StripeSdkModule,
+        private val sdkAccessor: () -> StripeSdkModule
 ) : PlatformViewFactory(StandardMessageCodec.INSTANCE) {
 
     override fun create(context: Context, viewId: Int, args: Any?): PlatformView {
         val channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter.stripe/card_field/${viewId}")
         val creationParams = args as? Map<String?, Any?>?
-        return StripeSdkCardPlatformView(context, channel, viewId, creationParams, stripeSdkCardViewManager, stripeSdkModule)
+        return StripeSdkCardPlatformView(context, channel, viewId, creationParams, stripeSdkCardViewManager, sdkAccessor)
     }
 }

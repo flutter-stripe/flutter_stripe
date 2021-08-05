@@ -42,10 +42,10 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         channel.setMethodCallHandler(this)
         flutterPluginBinding
                 .platformViewRegistry
-                .registerViewFactory("flutter.stripe/card_field", StripeSdkCardPlatformViewFactory(flutterPluginBinding, stripeSdkCardViewManager, stripeSdk))
+                .registerViewFactory("flutter.stripe/card_field", StripeSdkCardPlatformViewFactory(flutterPluginBinding, stripeSdkCardViewManager) { stripeSdk })
         flutterPluginBinding
                 .platformViewRegistry
-                .registerViewFactory("flutter.stripe/card_form", StripeSdkCardFormPlatformViewFactory(flutterPluginBinding, cardFormViewManager, stripeSdk))
+                .registerViewFactory("flutter.stripe/card_form", StripeSdkCardFormPlatformViewFactory(flutterPluginBinding, cardFormViewManager) { stripeSdk })
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
@@ -111,7 +111,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             "dangerouslyUpdateCardDetails" -> {
                 stripeSdkCardViewManager.setCardDetails(
                     value = call.requiredArgument("params"),
-                    reactContext = ThemedReactContext(stripeSdk.currentActivity.activity, channel, stripeSdk)
+                    reactContext = ThemedReactContext(stripeSdk.currentActivity.activity, channel) { stripeSdk }
                 )
                 result.success(null)
             }

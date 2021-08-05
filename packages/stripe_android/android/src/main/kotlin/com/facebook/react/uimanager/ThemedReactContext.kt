@@ -7,13 +7,13 @@ import io.flutter.plugin.common.MethodChannel
 
 class ThemedReactContext(context: Context,
                          private val channel: MethodChannel,
-                         private val sdkModule: StripeSdkModule): ContextWrapper(context) {
+                         private val sdkAccessor: () -> StripeSdkModule): ContextWrapper(context) {
 
     fun getNativeModule(clazz: Class<UIManagerModule>): UIManagerModule? {
         return UIManagerModule(channel)
     }
 
     fun getNativeModule(clazz: Class<StripeSdkModule>): StripeSdkModule? {
-        return sdkModule
+        return sdkAccessor()
     }
 }

@@ -23,14 +23,14 @@ class StripeSdkCardFormPlatformView(
         id: Int,
         private val creationParams: Map<String?, Any?>?,
         private val cardFormViewManager: CardFormViewManager,
-        private val stripeSdkModule: StripeSdkModule,
+        private val sdkAccessor: () -> StripeSdkModule
 ) : PlatformView, MethodChannel.MethodCallHandler {
 
     lateinit var cardView: CardFormView
 
     init {
         cardView =  cardFormViewManager.getCardViewInstance() ?: let {
-            return@let cardFormViewManager.createViewInstance(ThemedReactContext(context, channel, stripeSdkModule))
+            return@let cardFormViewManager.createViewInstance(ThemedReactContext(context, channel, sdkAccessor))
         }
         channel.setMethodCallHandler(this)
         if (creationParams?.containsKey("cardStyle") == true) {
