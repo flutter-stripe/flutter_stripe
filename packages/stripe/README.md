@@ -57,7 +57,19 @@ This is caused by the Stripe SDK requires the use of the AppCompact theme for th
 
 Compatible with apps targeting iOS 11 or above.
 
-## Usage example
+## Usage
+
+The library supports 2 ways of payment namely the `CardField` and the `Paymentsheet`. The `CardField` has the most configurable options but it has some issues on Android: https://github.com/flutter/flutter/issues/86480 .  
+
+Furthermore the `PaymentSheet` has a more easy and out of the box integration:
+- Localized labels and error messages to the users
+- Build-in animations
+- Build-in Google Pay and Apple Pay buttons
+- Handling 3D-secure 
+
+We recommend using the `PaymentSheet` for the most easy and smooth Stripe integration.
+
+### Example
 
 ```dart
 // main.dart
@@ -74,25 +86,40 @@ void main() async {
 // payment_screen.dart
 class PaymentScreen extends StatelessWidget {
 
+  Future<void> checkout()async{
+    /// retrieve data from the backend
+    final paymentSheetData = backend.fetchPaymentSheetData();
+
+    await Stripe.instance.initPaymentSheet(
+        paymentSheetParameters: SetupPaymentSheetParameters(
+          applePay: true,
+          googlePay: true,
+          style: ThemeMode.dark,
+          testEnv: true,
+          merchantCountryCode: 'DE',
+          merchantDisplayName: 'Flutter Stripe Store Demo',
+          customerId: _paymentSheetData!['customer'],
+          paymentIntentClientSecret: _paymentSheetData!['paymentIntent'],
+          customerEphemeralKeySecret: _paymentSheetData!['ephemeralKey'],
+    ));
+
+     await Stripe.instance.presentPaymentSheet(
+          parameters: PresentPaymentSheetParameters(
+        clientSecret: _paymentSheetData!['paymentIntent'],
+        confirmPayment: true,
+      ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: Column(
         children: [
-          CardField(
-            onCardChanged: (card) {
-              print(card);
-            },
-          ),
           TextButton(
-            onPressed: () async {
-              // create payment method
-              final paymentMethod =
-                  await Stripe.instance.createPaymentMethod(PaymentMethodParams.card());
-            },
-            child: Text('pay'),
-          )
+            onPressed: _checkout,
+            child: const Text('Checkout'),
+          ),
         ],
       ),
     );
