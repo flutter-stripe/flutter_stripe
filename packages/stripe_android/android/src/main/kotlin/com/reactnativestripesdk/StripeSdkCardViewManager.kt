@@ -5,15 +5,14 @@ import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.common.MapBuilder
 import com.facebook.react.uimanager.SimpleViewManager
 import com.facebook.react.uimanager.ThemedReactContext
+import com.facebook.react.uimanager.UIManagerModule
 import com.facebook.react.uimanager.annotations.ReactProp
 import com.stripe.android.model.PaymentMethodCreateParams
-
-const val CARD_FIELD_INSTANCE_NAME = "CardFieldInstance"
 
 class StripeSdkCardViewManager : SimpleViewManager<StripeSdkCardView>() {
   override fun getName() = "CardField"
 
-  private var cardViewInstanceMap: MutableMap<String, Any?> = mutableMapOf()
+  private var reactContextRef: ThemedReactContext? = null
 
   override fun getExportedCustomDirectEventTypeConstants(): MutableMap<String, Any> {
     return MapBuilder.of(
@@ -55,30 +54,27 @@ class StripeSdkCardViewManager : SimpleViewManager<StripeSdkCardView>() {
   }
 
   override fun createViewInstance(reactContext: ThemedReactContext): StripeSdkCardView {
-    // as it's reasonable we handle only one CardField component on the same screen
-    // TODO: temporary commented out due to android state persistence and improper behavior after app reload
-//    if (cardViewInstanceMap[CARD_FIELD_INSTANCE_NAME] != null) {
-//      val exceptionManager = reactContext.getNativeModule(ExceptionsManagerModule::class.java)
-//      val error: WritableMap = WritableNativeMap()
-//      error.putString("message", "Only one CardField component on the same screen allowed")
-//      exceptionManager?.reportException(error)
-//    }
+    val stripeSdkModule: StripeSdkModule? = reactContext.getNativeModule(StripeSdkModule::class.java)
+    val view = StripeSdkCardView(reactContext)
 
-    cardViewInstanceMap[CARD_FIELD_INSTANCE_NAME] = StripeSdkCardView(reactContext)
-    return cardViewInstanceMap[CARD_FIELD_INSTANCE_NAME] as StripeSdkCardView
+    reactContextRef = reactContext
+
+    stripeSdkModule?.cardFieldView = view
+    return view
   }
 
   override fun onDropViewInstance(view: StripeSdkCardView) {
     super.onDropViewInstance(view)
 
-    this.cardViewInstanceMap[CARD_FIELD_INSTANCE_NAME] = null
+    val stripeSdkModule: StripeSdkModule? = reactContextRef?.getNativeModule(StripeSdkModule::class.java)
+    stripeSdkModule?.cardFieldView = null
+    reactContextRef = null
   }
 
+
   fun getCardViewInstance(): StripeSdkCardView? {
-    if (cardViewInstanceMap[CARD_FIELD_INSTANCE_NAME] != null) {
-      return cardViewInstanceMap[CARD_FIELD_INSTANCE_NAME] as StripeSdkCardView
-    }
-    return null
+    val stripeSdkModule: StripeSdkModule? = reactContextRef?.getNativeModule(StripeSdkModule::class.java)
+    return stripeSdkModule?.cardFieldView
   }
 
   fun setCardDetails(value: ReadableMap, reactContext: ThemedReactContext) {

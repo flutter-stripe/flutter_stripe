@@ -10,6 +10,7 @@ import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
 import com.reactnativestripesdk.StripeSdkCardView
 import com.reactnativestripesdk.StripeSdkCardViewManager
+import com.reactnativestripesdk.StripeSdkModule
 import com.stripe.android.databinding.CardInputWidgetBinding
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -21,14 +22,15 @@ class StripeSdkCardPlatformView(
         private val channel: MethodChannel,
         id: Int,
         private val creationParams: Map<String?, Any?>?,
-        private val stripeSdkCardViewManager: StripeSdkCardViewManager
+        private val stripeSdkCardViewManager: StripeSdkCardViewManager,
+        private val stripeSdkModule: StripeSdkModule,
 ) : PlatformView, MethodChannel.MethodCallHandler {
 
     lateinit var cardView: StripeSdkCardView
 
     init {
         cardView =  stripeSdkCardViewManager.getCardViewInstance() ?: let {
-            return@let stripeSdkCardViewManager.createViewInstance(ThemedReactContext(context, channel))
+            return@let stripeSdkCardViewManager.createViewInstance(ThemedReactContext(context, channel, stripeSdkModule))
         }
         channel.setMethodCallHandler(this)
         if (creationParams?.containsKey("cardStyle") == true) {
@@ -119,7 +121,7 @@ class StripeSdkCardPlatformView(
             "clearFocus" -> {
                 // Hide keyboard
                 val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(cardView.getWindowToken(), 0)
+                imm.hideSoftInputFromWindow(cardView.windowToken, 0)
                 // Clear focus
                 cardView.clearFocus()
                 result.success(null)
