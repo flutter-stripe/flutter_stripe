@@ -467,3 +467,16 @@ Map<String, dynamic> _$_$_PaymentMethodParamsOxxoToJson(
     <String, dynamic>{
       'billingDetails': instance.billingDetails?.toJson(),
     };
+
+_$_PaymentMethodParamsWechat _$_$_PaymentMethodParamsWechatFromJson(
+    Map<String, dynamic> json) {
+  return _$_PaymentMethodParamsWechat(
+    appId: json['appId'] as String?,
+  );
+}
+
+Map<String, dynamic> _$_$_PaymentMethodParamsWechatToJson(
+        _$_PaymentMethodParamsWechat instance) =>
+    <String, dynamic>{
+      'appId': instance.appId,
+    };
