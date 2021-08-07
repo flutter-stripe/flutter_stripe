@@ -115,6 +115,18 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 )
                 result.success(null)
             }
+            "initGooglePay" -> stripeSdk.initGooglePay(
+                    params = call.requiredArgument("params"),
+                    promise = Promise(result)
+            )
+            "presentGooglePay" -> stripeSdk.presentGooglePay(
+                    params = call.requiredArgument("params"),
+                    promise = Promise(result)
+            )
+            "createGooglePayPaymentMethod" -> stripeSdk.createGooglePayPaymentMethod(
+                    params = call.requiredArgument("params"),
+                    promise = Promise(result)
+            )
             /*"registerConfirmSetupIntentCallbacks" -> stripeSdk.registerConfirmSetupIntentCallbacks(
                     successCallback = Promise(result),
                     errorCallback = Promise(result),
