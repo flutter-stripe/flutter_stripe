@@ -37,12 +37,18 @@ class _WeChatPayScreenState extends State<WeChatPayScreen> {
     // Precondition:
     //Make sure to have set a custom URI scheme in your app and add it to Stripe SDK
     // see file main.dart in this example app.
-    // 1. on the backend create a payment intent for payment method and save the
+    // Also read the integration details for preconditions
+    // https://stripe.com/docs/payments/wechat-pay/accept-a-payment .
+
+    // 1. Add `com.stripe:stripe-wechatpay:17.1.0` and
+    // 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:6.7.0'
+    // to build.gradle as depedency.
+    // 2. on the backend create a payment intent for payment method and save the
     // client secret.
     final result = await _createPaymentIntent();
     final clientSecret = await result['clientSecret'];
 
-    // 2. use the client secret to confirm the payment and handle the result.
+    // 3. use the client secret to confirm the payment and handle the result.
     try {
       await Stripe.instance.confirmPayment(
         clientSecret,
