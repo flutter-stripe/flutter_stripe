@@ -2530,6 +2530,8 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
       return _PaymentMethodParamsAfterpayClearpay.fromJson(json);
     case 'Oxxo':
       return _PaymentMethodParamsOxxo.fromJson(json);
+    case 'WeChatPay':
+      return _PaymentMethodParamsWechat.fromJson(json);
 
     default:
       throw FallThroughError();
@@ -2650,6 +2652,12 @@ class _$PaymentMethodParamsTearOff {
     );
   }
 
+  _PaymentMethodParamsWechat weChatPay({String? appId}) {
+    return _PaymentMethodParamsWechat(
+      appId: appId,
+    );
+  }
+
   PaymentMethodParams fromJson(Map<String, Object> json) {
     return PaymentMethodParams.fromJson(json);
   }
@@ -2693,6 +2701,7 @@ mixin _$PaymentMethodParams {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)
         afterpayClearpay,
     required TResult Function(BillingDetails? billingDetails) oxxo,
+    required TResult Function(String? appId) weChatPay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -2723,6 +2732,7 @@ mixin _$PaymentMethodParams {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)?
         afterpayClearpay,
     TResult Function(BillingDetails? billingDetails)? oxxo,
+    TResult Function(String? appId)? weChatPay,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -2746,6 +2756,7 @@ mixin _$PaymentMethodParams {
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsWechat value) weChatPay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -2767,6 +2778,7 @@ mixin _$PaymentMethodParams {
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsWechat value)? weChatPay,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -2926,6 +2938,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)
         afterpayClearpay,
     required TResult Function(BillingDetails? billingDetails) oxxo,
+    required TResult Function(String? appId) weChatPay,
   }) {
     return card(setupFutureUsage, billingDetails);
   }
@@ -2959,6 +2972,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)?
         afterpayClearpay,
     TResult Function(BillingDetails? billingDetails)? oxxo,
+    TResult Function(String? appId)? weChatPay,
     required TResult orElse(),
   }) {
     if (card != null) {
@@ -2988,6 +3002,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsWechat value) weChatPay,
   }) {
     return card(this);
   }
@@ -3012,6 +3027,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsWechat value)? weChatPay,
     required TResult orElse(),
   }) {
     if (card != null) {
@@ -3169,6 +3185,7 @@ class _$_PaymentMethodParamsCardWithToken
             ShippingDetails shippingDetails, BillingDetails? billingDetails)
         afterpayClearpay,
     required TResult Function(BillingDetails? billingDetails) oxxo,
+    required TResult Function(String? appId) weChatPay,
   }) {
     return cardFromToken(token, setupFutureUsage);
   }
@@ -3202,6 +3219,7 @@ class _$_PaymentMethodParamsCardWithToken
             ShippingDetails shippingDetails, BillingDetails? billingDetails)?
         afterpayClearpay,
     TResult Function(BillingDetails? billingDetails)? oxxo,
+    TResult Function(String? appId)? weChatPay,
     required TResult orElse(),
   }) {
     if (cardFromToken != null) {
@@ -3231,6 +3249,7 @@ class _$_PaymentMethodParamsCardWithToken
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsWechat value) weChatPay,
   }) {
     return cardFromToken(this);
   }
@@ -3255,6 +3274,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsWechat value)? weChatPay,
     required TResult orElse(),
   }) {
     if (cardFromToken != null) {
@@ -3413,6 +3433,7 @@ class _$_PaymentMethodParamsCardWithMethodId
             ShippingDetails shippingDetails, BillingDetails? billingDetails)
         afterpayClearpay,
     required TResult Function(BillingDetails? billingDetails) oxxo,
+    required TResult Function(String? appId) weChatPay,
   }) {
     return cardFromMethodId(paymentMethodId, cvc);
   }
@@ -3446,6 +3467,7 @@ class _$_PaymentMethodParamsCardWithMethodId
             ShippingDetails shippingDetails, BillingDetails? billingDetails)?
         afterpayClearpay,
     TResult Function(BillingDetails? billingDetails)? oxxo,
+    TResult Function(String? appId)? weChatPay,
     required TResult orElse(),
   }) {
     if (cardFromMethodId != null) {
@@ -3475,6 +3497,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsWechat value) weChatPay,
   }) {
     return cardFromMethodId(this);
   }
@@ -3499,6 +3522,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsWechat value)? weChatPay,
     required TResult orElse(),
   }) {
     if (cardFromMethodId != null) {
@@ -3611,6 +3635,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)
         afterpayClearpay,
     required TResult Function(BillingDetails? billingDetails) oxxo,
+    required TResult Function(String? appId) weChatPay,
   }) {
     return alipay();
   }
@@ -3644,6 +3669,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)?
         afterpayClearpay,
     TResult Function(BillingDetails? billingDetails)? oxxo,
+    TResult Function(String? appId)? weChatPay,
     required TResult orElse(),
   }) {
     if (alipay != null) {
@@ -3673,6 +3699,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsWechat value) weChatPay,
   }) {
     return alipay(this);
   }
@@ -3697,6 +3724,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsWechat value)? weChatPay,
     required TResult orElse(),
   }) {
     if (alipay != null) {
@@ -3851,6 +3879,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)
         afterpayClearpay,
     required TResult Function(BillingDetails? billingDetails) oxxo,
+    required TResult Function(String? appId) weChatPay,
   }) {
     return ideal(billingDetails, bankName);
   }
@@ -3884,6 +3913,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)?
         afterpayClearpay,
     TResult Function(BillingDetails? billingDetails)? oxxo,
+    TResult Function(String? appId)? weChatPay,
     required TResult orElse(),
   }) {
     if (ideal != null) {
@@ -3913,6 +3943,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsWechat value) weChatPay,
   }) {
     return ideal(this);
   }
@@ -3937,6 +3968,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsWechat value)? weChatPay,
     required TResult orElse(),
   }) {
     if (ideal != null) {
@@ -4093,6 +4125,7 @@ class _$_PaymentMethodParamsBankContact
             ShippingDetails shippingDetails, BillingDetails? billingDetails)
         afterpayClearpay,
     required TResult Function(BillingDetails? billingDetails) oxxo,
+    required TResult Function(String? appId) weChatPay,
   }) {
     return bancontact(billingDetails);
   }
@@ -4126,6 +4159,7 @@ class _$_PaymentMethodParamsBankContact
             ShippingDetails shippingDetails, BillingDetails? billingDetails)?
         afterpayClearpay,
     TResult Function(BillingDetails? billingDetails)? oxxo,
+    TResult Function(String? appId)? weChatPay,
     required TResult orElse(),
   }) {
     if (bancontact != null) {
@@ -4155,6 +4189,7 @@ class _$_PaymentMethodParamsBankContact
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsWechat value) weChatPay,
   }) {
     return bancontact(this);
   }
@@ -4179,6 +4214,7 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsWechat value)? weChatPay,
     required TResult orElse(),
   }) {
     if (bancontact != null) {
@@ -4329,6 +4365,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)
         afterpayClearpay,
     required TResult Function(BillingDetails? billingDetails) oxxo,
+    required TResult Function(String? appId) weChatPay,
   }) {
     return giroPay(billingDetails);
   }
@@ -4362,6 +4399,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)?
         afterpayClearpay,
     TResult Function(BillingDetails? billingDetails)? oxxo,
+    TResult Function(String? appId)? weChatPay,
     required TResult orElse(),
   }) {
     if (giroPay != null) {
@@ -4391,6 +4429,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsWechat value) weChatPay,
   }) {
     return giroPay(this);
   }
@@ -4415,6 +4454,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsWechat value)? weChatPay,
     required TResult orElse(),
   }) {
     if (giroPay != null) {
@@ -4562,6 +4602,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)
         afterpayClearpay,
     required TResult Function(BillingDetails? billingDetails) oxxo,
+    required TResult Function(String? appId) weChatPay,
   }) {
     return eps(billingDetails);
   }
@@ -4595,6 +4636,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)?
         afterpayClearpay,
     TResult Function(BillingDetails? billingDetails)? oxxo,
+    TResult Function(String? appId)? weChatPay,
     required TResult orElse(),
   }) {
     if (eps != null) {
@@ -4624,6 +4666,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsWechat value) weChatPay,
   }) {
     return eps(this);
   }
@@ -4648,6 +4691,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsWechat value)? weChatPay,
     required TResult orElse(),
   }) {
     if (eps != null) {
@@ -4795,6 +4839,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)
         afterpayClearpay,
     required TResult Function(BillingDetails? billingDetails) oxxo,
+    required TResult Function(String? appId) weChatPay,
   }) {
     return grabPay(billingDetails);
   }
@@ -4828,6 +4873,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)?
         afterpayClearpay,
     TResult Function(BillingDetails? billingDetails)? oxxo,
+    TResult Function(String? appId)? weChatPay,
     required TResult orElse(),
   }) {
     if (grabPay != null) {
@@ -4857,6 +4903,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsWechat value) weChatPay,
   }) {
     return grabPay(this);
   }
@@ -4881,6 +4928,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsWechat value)? weChatPay,
     required TResult orElse(),
   }) {
     if (grabPay != null) {
@@ -5028,6 +5076,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)
         afterpayClearpay,
     required TResult Function(BillingDetails? billingDetails) oxxo,
+    required TResult Function(String? appId) weChatPay,
   }) {
     return p24(billingDetails);
   }
@@ -5061,6 +5110,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)?
         afterpayClearpay,
     TResult Function(BillingDetails? billingDetails)? oxxo,
+    TResult Function(String? appId)? weChatPay,
     required TResult orElse(),
   }) {
     if (p24 != null) {
@@ -5090,6 +5140,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsWechat value) weChatPay,
   }) {
     return p24(this);
   }
@@ -5114,6 +5165,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsWechat value)? weChatPay,
     required TResult orElse(),
   }) {
     if (p24 != null) {
@@ -5246,6 +5298,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)
         afterpayClearpay,
     required TResult Function(BillingDetails? billingDetails) oxxo,
+    required TResult Function(String? appId) weChatPay,
   }) {
     return fpx(testOfflineBank);
   }
@@ -5279,6 +5332,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)?
         afterpayClearpay,
     TResult Function(BillingDetails? billingDetails)? oxxo,
+    TResult Function(String? appId)? weChatPay,
     required TResult orElse(),
   }) {
     if (fpx != null) {
@@ -5308,6 +5362,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsWechat value) weChatPay,
   }) {
     return fpx(this);
   }
@@ -5332,6 +5387,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsWechat value)? weChatPay,
     required TResult orElse(),
   }) {
     if (fpx != null) {
@@ -5506,6 +5562,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)
         afterpayClearpay,
     required TResult Function(BillingDetails? billingDetails) oxxo,
+    required TResult Function(String? appId) weChatPay,
   }) {
     return sepaDebit(iban, setupFutureUsage, billingDetails);
   }
@@ -5539,6 +5596,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)?
         afterpayClearpay,
     TResult Function(BillingDetails? billingDetails)? oxxo,
+    TResult Function(String? appId)? weChatPay,
     required TResult orElse(),
   }) {
     if (sepaDebit != null) {
@@ -5568,6 +5626,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsWechat value) weChatPay,
   }) {
     return sepaDebit(this);
   }
@@ -5592,6 +5651,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsWechat value)? weChatPay,
     required TResult orElse(),
   }) {
     if (sepaDebit != null) {
@@ -5774,6 +5834,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)
         afterpayClearpay,
     required TResult Function(BillingDetails? billingDetails) oxxo,
+    required TResult Function(String? appId) weChatPay,
   }) {
     return sofort(country, setupFutureUsage, billingDetails);
   }
@@ -5807,6 +5868,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)?
         afterpayClearpay,
     TResult Function(BillingDetails? billingDetails)? oxxo,
+    TResult Function(String? appId)? weChatPay,
     required TResult orElse(),
   }) {
     if (sofort != null) {
@@ -5836,6 +5898,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsWechat value) weChatPay,
   }) {
     return sofort(this);
   }
@@ -5860,6 +5923,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsWechat value)? weChatPay,
     required TResult orElse(),
   }) {
     if (sofort != null) {
@@ -6039,6 +6103,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
             ShippingDetails shippingDetails, BillingDetails? billingDetails)
         afterpayClearpay,
     required TResult Function(BillingDetails? billingDetails) oxxo,
+    required TResult Function(String? appId) weChatPay,
   }) {
     return afterpayClearpay(shippingDetails, billingDetails);
   }
@@ -6072,6 +6137,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
             ShippingDetails shippingDetails, BillingDetails? billingDetails)?
         afterpayClearpay,
     TResult Function(BillingDetails? billingDetails)? oxxo,
+    TResult Function(String? appId)? weChatPay,
     required TResult orElse(),
   }) {
     if (afterpayClearpay != null) {
@@ -6101,6 +6167,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsWechat value) weChatPay,
   }) {
     return afterpayClearpay(this);
   }
@@ -6125,6 +6192,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsWechat value)? weChatPay,
     required TResult orElse(),
   }) {
     if (afterpayClearpay != null) {
@@ -6280,6 +6348,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)
         afterpayClearpay,
     required TResult Function(BillingDetails? billingDetails) oxxo,
+    required TResult Function(String? appId) weChatPay,
   }) {
     return oxxo(billingDetails);
   }
@@ -6313,6 +6382,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
             ShippingDetails shippingDetails, BillingDetails? billingDetails)?
         afterpayClearpay,
     TResult Function(BillingDetails? billingDetails)? oxxo,
+    TResult Function(String? appId)? weChatPay,
     required TResult orElse(),
   }) {
     if (oxxo != null) {
@@ -6342,6 +6412,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsWechat value) weChatPay,
   }) {
     return oxxo(this);
   }
@@ -6366,6 +6437,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsWechat value)? weChatPay,
     required TResult orElse(),
   }) {
     if (oxxo != null) {
@@ -6392,4 +6464,225 @@ abstract class _PaymentMethodParamsOxxo implements PaymentMethodParams {
   @JsonKey(ignore: true)
   _$PaymentMethodParamsOxxoCopyWith<_PaymentMethodParamsOxxo> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$PaymentMethodParamsWechatCopyWith<$Res> {
+  factory _$PaymentMethodParamsWechatCopyWith(_PaymentMethodParamsWechat value,
+          $Res Function(_PaymentMethodParamsWechat) then) =
+      __$PaymentMethodParamsWechatCopyWithImpl<$Res>;
+  $Res call({String? appId});
+}
+
+/// @nodoc
+class __$PaymentMethodParamsWechatCopyWithImpl<$Res>
+    extends _$PaymentMethodParamsCopyWithImpl<$Res>
+    implements _$PaymentMethodParamsWechatCopyWith<$Res> {
+  __$PaymentMethodParamsWechatCopyWithImpl(_PaymentMethodParamsWechat _value,
+      $Res Function(_PaymentMethodParamsWechat) _then)
+      : super(_value, (v) => _then(v as _PaymentMethodParamsWechat));
+
+  @override
+  _PaymentMethodParamsWechat get _value =>
+      super._value as _PaymentMethodParamsWechat;
+
+  @override
+  $Res call({
+    Object? appId = freezed,
+  }) {
+    return _then(_PaymentMethodParamsWechat(
+      appId: appId == freezed
+          ? _value.appId
+          : appId // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+@FreezedUnionValue('WeChatPay')
+class _$_PaymentMethodParamsWechat implements _PaymentMethodParamsWechat {
+  const _$_PaymentMethodParamsWechat({this.appId});
+
+  factory _$_PaymentMethodParamsWechat.fromJson(Map<String, dynamic> json) =>
+      _$_$_PaymentMethodParamsWechatFromJson(json);
+
+  @override
+  final String? appId;
+
+  @override
+  String toString() {
+    return 'PaymentMethodParams.weChatPay(appId: $appId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _PaymentMethodParamsWechat &&
+            (identical(other.appId, appId) ||
+                const DeepCollectionEquality().equals(other.appId, appId)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(appId);
+
+  @JsonKey(ignore: true)
+  @override
+  _$PaymentMethodParamsWechatCopyWith<_PaymentMethodParamsWechat>
+      get copyWith =>
+          __$PaymentMethodParamsWechatCopyWithImpl<_PaymentMethodParamsWechat>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)
+        card,
+    required TResult Function(
+            String token, PaymentIntentsFutureUsage? setupFutureUsage)
+        cardFromToken,
+    required TResult Function(String paymentMethodId, String? cvc)
+        cardFromMethodId,
+    required TResult Function() alipay,
+    required TResult Function(BillingDetails? billingDetails, String? bankName)
+        ideal,
+    required TResult Function(BillingDetails? billingDetails) bancontact,
+    required TResult Function(BillingDetails? billingDetails) giroPay,
+    required TResult Function(BillingDetails? billingDetails) eps,
+    required TResult Function(BillingDetails? billingDetails) grabPay,
+    required TResult Function(BillingDetails? billingDetails) p24,
+    required TResult Function(bool testOfflineBank) fpx,
+    required TResult Function(
+            String iban,
+            PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)
+        sepaDebit,
+    required TResult Function(
+            String country,
+            PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)
+        sofort,
+    required TResult Function(
+            ShippingDetails shippingDetails, BillingDetails? billingDetails)
+        afterpayClearpay,
+    required TResult Function(BillingDetails? billingDetails) oxxo,
+    required TResult Function(String? appId) weChatPay,
+  }) {
+    return weChatPay(appId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        card,
+    TResult Function(String token, PaymentIntentsFutureUsage? setupFutureUsage)?
+        cardFromToken,
+    TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
+    TResult Function()? alipay,
+    TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(BillingDetails? billingDetails)? bancontact,
+    TResult Function(BillingDetails? billingDetails)? giroPay,
+    TResult Function(BillingDetails? billingDetails)? eps,
+    TResult Function(BillingDetails? billingDetails)? grabPay,
+    TResult Function(BillingDetails? billingDetails)? p24,
+    TResult Function(bool testOfflineBank)? fpx,
+    TResult Function(String iban, PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        sepaDebit,
+    TResult Function(
+            String country,
+            PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        sofort,
+    TResult Function(
+            ShippingDetails shippingDetails, BillingDetails? billingDetails)?
+        afterpayClearpay,
+    TResult Function(BillingDetails? billingDetails)? oxxo,
+    TResult Function(String? appId)? weChatPay,
+    required TResult orElse(),
+  }) {
+    if (weChatPay != null) {
+      return weChatPay(appId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentMethodParamsCard value) card,
+    required TResult Function(_PaymentMethodParamsCardWithToken value)
+        cardFromToken,
+    required TResult Function(_PaymentMethodParamsCardWithMethodId value)
+        cardFromMethodId,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
+    required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
+    required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPay value) grabPay,
+    required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
+    required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsSofort value) sofort,
+    required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
+        afterpayClearpay,
+    required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsWechat value) weChatPay,
+  }) {
+    return weChatPay(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
+    TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
+    TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPay value)? grabPay,
+    TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
+    TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsSofort value)? sofort,
+    TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
+        afterpayClearpay,
+    TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsWechat value)? weChatPay,
+    required TResult orElse(),
+  }) {
+    if (weChatPay != null) {
+      return weChatPay(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_PaymentMethodParamsWechatToJson(this)..['type'] = 'WeChatPay';
+  }
+}
+
+abstract class _PaymentMethodParamsWechat implements PaymentMethodParams {
+  const factory _PaymentMethodParamsWechat({String? appId}) =
+      _$_PaymentMethodParamsWechat;
+
+  factory _PaymentMethodParamsWechat.fromJson(Map<String, dynamic> json) =
+      _$_PaymentMethodParamsWechat.fromJson;
+
+  String? get appId => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$PaymentMethodParamsWechatCopyWith<_PaymentMethodParamsWechat>
+      get copyWith => throw _privateConstructorUsedError;
 }

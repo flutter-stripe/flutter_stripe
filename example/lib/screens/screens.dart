@@ -4,6 +4,7 @@ import 'package:stripe_example/screens/custom_card_payment_screen.dart';
 import 'package:stripe_example/screens/google_pay_screen.dart';
 import 'package:stripe_example/screens/paymentmethod_examples/ali_pay_screen.dart';
 import 'package:stripe_example/screens/paymentmethod_examples/ideal_screen.dart';
+import 'package:stripe_example/screens/paymentmethod_examples/wecchat_pay_screen.dart';
 
 import '../screens/no_webhook_payment_screen.dart';
 import '../screens/setup_future_payment_screen.dart';
@@ -31,7 +32,11 @@ class Example {
     Example(
       title: 'Ideal',
       builder: (context) => IdealScreen(),
-    )
+    ),
+    Example(
+      title: 'WeChat Pay',
+      builder: (context) => WeChatPayScreen(),
+    ),
   ];
 
   static List<Example> screens = [
