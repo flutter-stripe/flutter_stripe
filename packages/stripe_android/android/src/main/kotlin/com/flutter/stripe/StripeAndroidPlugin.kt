@@ -6,6 +6,7 @@ import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
 import com.reactnativestripesdk.CardFormViewManager
+import com.reactnativestripesdk.GooglePayButtonManager
 import com.reactnativestripesdk.StripeSdkCardViewManager
 import com.reactnativestripesdk.StripeSdkModule
 import io.flutter.embedding.android.FlutterFragmentActivity
@@ -37,6 +38,10 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         CardFormViewManager()
     }
 
+    private val payButtonViewManager: GooglePayButtonManager by lazy {
+        GooglePayButtonManager()
+    }
+
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter.stripe/payments", JSONMethodCodec.INSTANCE)
         channel.setMethodCallHandler(this)
@@ -46,6 +51,9 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         flutterPluginBinding
                 .platformViewRegistry
                 .registerViewFactory("flutter.stripe/card_form", StripeSdkCardFormPlatformViewFactory(flutterPluginBinding, cardFormViewManager) { stripeSdk })
+        flutterPluginBinding
+                .platformViewRegistry
+                .registerViewFactory("flutter.stripe/google_pay_button", StripeSdkGooglePayButtonPlatformViewFactory(flutterPluginBinding, payButtonViewManager) { stripeSdk })
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {

@@ -121,4 +121,8 @@ class StripeSdkCardFormPlatformView(
         }
     }
 
+
+    override fun onFlutterViewAttached(flutterView: View) {
+        cardFormViewManager.onAfterUpdateTransaction(cardView)
+    }
 }

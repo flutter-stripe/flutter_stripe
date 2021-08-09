@@ -130,4 +130,7 @@ class StripeSdkCardPlatformView(
         }
     }
 
+    override fun onFlutterViewAttached(flutterView: View) {
+        stripeSdkCardViewManager.onAfterUpdateTransaction(cardView)
+    }
 }
