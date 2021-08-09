@@ -64,6 +64,9 @@ class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSelectionVi
     @objc(initPaymentSheet:resolver:rejecter:)
     func initPaymentSheet(params: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock,
                           rejecter reject: @escaping RCTPromiseRejectBlock) -> Void  {
+        
+        self.paymentSheet = nil
+        self.paymentSheetFlowController = nil
         var configuration = PaymentSheet.Configuration()
         
         if  params["applePay"] as? Bool == true {
@@ -140,15 +143,21 @@ class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSelectionVi
     func confirmPaymentSheetPayment(resolver resolve: @escaping RCTPromiseResolveBlock,
                                     rejecter reject: @escaping RCTPromiseRejectBlock) -> Void  {
         DispatchQueue.main.async {
-            self.paymentSheetFlowController?.confirm(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController()) { paymentResult in
-                switch paymentResult {
-                case .completed:
-                    resolve([])
-                case .canceled:
-                    resolve(Errors.createError(PaymentSheetErrorType.Canceled.rawValue, "The payment has been canceled"))
-                case .failed(let error):
-                    resolve(Errors.createError(PaymentSheetErrorType.Failed.rawValue, error.localizedDescription))
+            if let paymentSheetFlowController = self.paymentSheetFlowController {
+                self.paymentSheetFlowController?.confirm(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController()) { paymentResult in
+                    switch paymentResult {
+                    case .completed:
+                        resolve([])
+                        self.paymentSheetFlowController = nil
+                    case .canceled:
+                        resolve(Errors.createError(PaymentSheetErrorType.Canceled.rawValue, "The payment has been canceled"))
+                    case .failed(let error):
+                        resolve(Errors.createError(PaymentSheetErrorType.Failed.rawValue, error.localizedDescription))
+                    }
+                   
                 }
+            } else {
+                resolve(Errors.createError(PaymentSheetErrorType.Failed.rawValue, "No payment sheet has been initialized yet"))
             }
         }
     }
@@ -156,11 +165,11 @@ class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSelectionVi
     @objc(presentPaymentSheet:resolver:rejecter:)
     func presentPaymentSheet(params: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock,
                              rejecter reject: @escaping RCTPromiseRejectBlock) -> Void  {
-        let confirmPayment = params["confirmPayment"] as? Bool
+       
         
         DispatchQueue.main.async {
-            if (confirmPayment == false) {
-                self.paymentSheetFlowController?.presentPaymentOptions(from: 
+            if let paymentSheetFlowController = self.paymentSheetFlowController {
+                paymentSheetFlowController.presentPaymentOptions(from:
                     findViewControllerPresenter(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController())
                 ) {
                     if let paymentOption = self.paymentSheetFlowController?.paymentOption {
@@ -173,19 +182,22 @@ class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSelectionVi
                         resolve(Mappers.createResult("paymentOption", nil))
                     }
                 }
-            } else {
-                self.paymentSheet?.present(from: 
+            } else if let paymentSheet = self.paymentSheet {
+                paymentSheet.present(from:
                     findViewControllerPresenter(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController())
                 ) { paymentResult in
                     switch paymentResult {
                     case .completed:
                         resolve([])
+                        self.paymentSheet = nil
                     case .canceled:
                         resolve(Errors.createError(PaymentSheetErrorType.Canceled.rawValue, "The payment has been canceled"))
                     case .failed(let error):
                         resolve(Errors.createError(PaymentSheetErrorType.Failed.rawValue, error.localizedDescription))
                     }
                 }
+            } else {
+                resolve(Errors.createError(PaymentSheetErrorType.Failed.rawValue, "No payment sheet has been initialized yet"))
             }
         }
     }
