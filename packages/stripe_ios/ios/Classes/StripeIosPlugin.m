@@ -8,6 +8,12 @@
 #import "stripe_ios-Swift.h"
 #endif
 
+SWIFT_CLASS("StripePlugin")
+@interface StripePlugin : NSObject
++ (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar ;
+@end
+
+
 @implementation StripeIosPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
   [StripePlugin registerWithRegistrar:registrar];

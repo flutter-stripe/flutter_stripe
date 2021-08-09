@@ -3,6 +3,9 @@ import Stripe
 
 @objc(StripeSdk)
 public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSelectionViewControllerDelegate, UIAdaptivePresentationControllerDelegate {
+    public var cardFieldView: CardFieldView? = nil
+    public var cardFormView: CardFormView? = nil
+
     var merchantIdentifier: String? = nil
     
     private var paymentSheet: PaymentSheet?
@@ -22,11 +25,6 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
     var shippingMethodUpdateHandler: ((PKPaymentRequestShippingMethodUpdate) -> Void)? = nil
     var shippingContactUpdateHandler: ((PKPaymentRequestShippingContactUpdate) -> Void)? = nil
     
-    override func supportedEvents() -> [String]! {
-        return ["onDidSetShippingMethod", "onDidSetShippingContact"]
-    }
-    
-
     @objc(initialise:resolver:rejecter:)
     func initialise(params: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
         let publishableKey = params["publishableKey"] as! String
@@ -210,12 +208,8 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
             resolve(Errors.createError(ConfirmPaymentErrorType.Failed.rawValue, "You must provide paymentMethodType"))
             return
         }
-        
-        let cardFieldUIManager = bridge.module(forName: "CardFieldManager") as? CardFieldManager
-        let cardFieldView = cardFieldUIManager?.getCardFieldReference(id: CARD_FIELD_INSTANCE_ID) as? CardFieldView
-
         var paymentMethodParams: STPPaymentMethodParams?
-        let factory = PaymentMethodFactory.init(params: params, cardFieldView: cardFieldView)
+        let factory = PaymentMethodFactory.init(params: params, cardFieldView: cardFieldView, cardFormView: cardFormView)
         
         do {
             paymentMethodParams = try factory.createParams(paymentMethodType: paymentMethodType)
@@ -376,6 +370,10 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
             return
         }
         
+        if (params["jcbEnabled"] as? Bool == true) {
+            StripeAPI.additionalEnabledApplePayNetworks = [.JCB]
+        }
+        
         guard let summaryItems = params["cartItems"] as? NSArray else {
             reject(ApplePayErrorType.Failed.rawValue, "You must provide the items for purchase", nil)
             return
@@ -450,11 +448,8 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
             return
         }
         
-        let cardFieldUIManager = bridge.module(forName: "CardFieldManager") as? CardFieldManager
-        let cardFieldView = cardFieldUIManager?.getCardFieldReference(id: CARD_FIELD_INSTANCE_ID) as? CardFieldView
-        
         var paymentMethodParams: STPPaymentMethodParams?
-        let factory = PaymentMethodFactory.init(params: params, cardFieldView: cardFieldView)
+        let factory = PaymentMethodFactory.init(params: params, cardFieldView: cardFieldView, cardFormView: cardFormView)
         
         do {
             paymentMethodParams = try factory.createParams(paymentMethodType: paymentMethodType)
@@ -494,9 +489,6 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
                 resolve(Errors.createError(CreateTokenErrorType.Failed.rawValue, type + " type is not supported yet"))
             }
         }
-        
-        let cardFieldUIManager = bridge.module(forName: "CardFieldManager") as? CardFieldManager
-        let cardFieldView = cardFieldUIManager?.getCardFieldReference(id: CARD_FIELD_INSTANCE_ID) as? CardFieldView
         
         guard let cardParams = cardFieldView?.cardParams else {
             resolve(Errors.createError(CreateTokenErrorType.Failed.rawValue, "Card details not complete"))
@@ -550,7 +542,7 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
             }
         }
     }
-    
+
     @objc(confirmPayment:data:options:resolver:rejecter:)
     func confirmPayment(
         paymentIntentClientSecret: String,
@@ -561,9 +553,6 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
     ) -> Void {
         self.confirmPaymentResolver = resolve
         self.confirmPaymentClientSecret = paymentIntentClientSecret
-        
-        let cardFieldUIManager = bridge.module(forName: "CardFieldManager") as? CardFieldManager
-        let cardFieldView = cardFieldUIManager?.getCardFieldReference(id: CARD_FIELD_INSTANCE_ID) as? CardFieldView
                 
         let paymentMethodId = params["paymentMethodId"] as? String
         let paymentIntentParams = STPPaymentIntentParams(clientSecret: paymentIntentClientSecret)
@@ -589,7 +578,7 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
         } else {
             var paymentMethodParams: STPPaymentMethodParams?
             var paymentMethodOptions: STPConfirmPaymentMethodOptions?
-            let factory = PaymentMethodFactory.init(params: params, cardFieldView: cardFieldView)
+            let factory = PaymentMethodFactory.init(params: params, cardFieldView: cardFieldView, cardFormView: cardFormView)
             
             do {
                 paymentMethodParams = try factory.createParams(paymentMethodType: paymentMethodType)
@@ -606,8 +595,8 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
             paymentIntentParams.paymentMethodOptions = paymentMethodOptions
             paymentIntentParams.shipping = Mappers.mapToShippingDetails(shippingDetails: params["shippingDetails"] as? NSDictionary)
         }
-      
-        if let urlScheme = urlScheme {
+
+         if let urlScheme = urlScheme {
             paymentIntentParams.returnURL = Mappers.mapToReturnURL(urlScheme: urlScheme)
         }
         
