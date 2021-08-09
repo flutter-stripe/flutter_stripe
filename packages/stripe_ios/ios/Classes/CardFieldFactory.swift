@@ -117,8 +117,9 @@ class CardFieldPlatformView: NSObject, FlutterPlatformView, STPPaymentCardTextFi
             cardField.cardStyle = cardStyle
        }
         if let dangerouslyGetFullCardDetails = arguments["dangerouslyGetFullCardDetails"] as? Bool {
-         cardField.dangerouslyGetFullCardDetails = dangerouslyGetFullCardDetails
+          cardField.dangerouslyGetFullCardDetails = dangerouslyGetFullCardDetails
         }
+        
         if let autofocus = arguments["autofocus"] as? Bool {
          cardField.autofocus = autofocus
         }
@@ -126,7 +127,28 @@ class CardFieldPlatformView: NSObject, FlutterPlatformView, STPPaymentCardTextFi
        if let postalCodeEnabled = arguments["postalCodeEnabled"] as? Bool{
          cardField.postalCodeEnabled = postalCodeEnabled
        }
+        
+       if let cardDetails = arguments["cardDetails"] as? NSDictionary {
+         cardField.dangerouslyUpdateCardDetails(params: cardDetails)
+       }
+      
        cardField.didSetProps([])
     }
     
 }
+
+
+extension CardFieldView {
+    func dangerouslyUpdateCardDetails(params: NSDictionary ) {
+        let cardParams = STPPaymentMethodCardParams()
+        cardParams.cvc = params["cvc"] as? String
+        cardParams.number = params["number"] as? String
+        cardParams.expYear = params["expirationYear"] as? NSNumber ??  params["expiryYear"] as? NSNumber
+        cardParams.expMonth = params["expirationMonth"] as? NSNumber ?? params["expiryMonth"] as? NSNumber
+        self.cardField.cardParams = cardParams
+        self.cardField.postalCode = params["postalCode"] as? String
+        self.cardParams = cardParams
+        self.cardPostalCode = params["postalCode"] as? String
+    }
+}
+

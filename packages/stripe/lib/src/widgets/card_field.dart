@@ -7,14 +7,12 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
-
-import 'card_edit_controller.dart';
-import 'card_edit_event.dart';
+import 'dart:developer' as dev;
 
 /// Customizable form that collects card information.
 class CardField extends StatefulWidget {
   const CardField(
-      {required this.onCardChanged,
+      {this.onCardChanged,
       Key? key,
       this.onFocus,
       this.decoration,
@@ -22,6 +20,7 @@ class CardField extends StatefulWidget {
       this.style,
       this.autofocus = false,
       this.dangerouslyGetFullCardDetails = false,
+      this.dangerouslyUpdateFullCardDetails = false,
       this.cursorColor,
       this.numberHintText,
       this.expirationHintText,
@@ -37,7 +36,7 @@ class CardField extends StatefulWidget {
   final CardFocusCallback? onFocus;
 
   /// Callback that will be executed when the card information changes.
-  final CardChangedCallback onCardChanged;
+  final CardChangedCallback? onCardChanged;
 
   /// Textstyle of the card input fields.
   final TextStyle? style;
@@ -78,20 +77,88 @@ class CardField extends StatefulWidget {
   /// Default is `false`.
   final bool dangerouslyGetFullCardDetails;
 
+  /// When true, card data can be edited programatically.
+  ///
+  /// WARNING!!! Handling card data manually will break PCI compliance provided by Stripe.
+  /// 'Please make sure you understand the severe consecuences of it.'
+  //  'https://stripe.com/docs/security/guide#validating-pci-compliance'
+  /// Default is `false`.
+  final bool dangerouslyUpdateFullCardDetails;
+
   @override
   _CardFieldState createState() => _CardFieldState();
+}
+
+abstract class CardFieldContext {
+  void focus();
+  void blur();
+  void clear();
+
+  void dangerouslyUpdateCardDetails(CardFieldInputDetails details);
+}
+
+class CardEditController extends ChangeNotifier {
+  CardEditController({CardFieldInputDetails? initialDetails})
+      : _initalDetails = initialDetails,
+        _details =
+            initialDetails ?? const CardFieldInputDetails(complete: false);
+
+  final CardFieldInputDetails? _initalDetails;
+  CardFieldInputDetails _details;
+
+  CardFieldInputDetails get details {
+    return _details;
+  }
+
+  set details(CardFieldInputDetails value) {
+    if (_details == value) return;
+    context.dangerouslyUpdateCardDetails(details);
+    _details = value;
+    notifyListeners();
+  }
+
+  void _updateDetails(CardFieldInputDetails value) {
+    if (_details == value) return;
+    _details = value;
+    notifyListeners();
+  }
+
+  void focus() {
+    context.focus();
+  }
+
+  void blur() {
+    context.blur();
+  }
+
+  void clear() {
+    context.clear();
+  }
+
+  bool get hasCardField => _context != null;
+
+  CardFieldContext? _context;
+  CardFieldContext get context {
+    assert(
+        _context != null, 'CardEditController is not attached to any CardView');
+    return _context!;
+  }
 }
 
 class _CardFieldState extends State<CardField> {
   final FocusNode _node =
       FocusNode(debugLabel: 'CardField', descendantsAreFocusable: false);
 
-  late CardEditController controller;
+  CardEditController? _fallbackContoller;
+  CardEditController get controller {
+    if (widget.controller != null) return widget.controller!;
+    _fallbackContoller ??= CardEditController();
+    return _fallbackContoller!;
+  }
 
   @override
   void initState() {
     _node.addListener(updateState);
-    controller = widget.controller ?? CardEditController();
     super.initState();
   }
 
@@ -101,7 +168,7 @@ class _CardFieldState extends State<CardField> {
       ..removeListener(updateState)
       ..dispose();
 
-    controller.dispose();
+    _fallbackContoller?.dispose();
     super.dispose();
   }
 
@@ -140,6 +207,9 @@ class _CardFieldState extends State<CardField> {
               cvc: widget.cvcHintText,
               postalCode: widget.postalCodeHintText,
             ),
+            dangerouslyGetFullCardDetails: widget.dangerouslyGetFullCardDetails,
+            dangerouslyUpdateFullCardDetails:
+                widget.dangerouslyUpdateFullCardDetails,
             enablePostalCode: widget.enablePostalCode,
             onCardChanged: widget.onCardChanged,
             autofocus: widget.autofocus,
@@ -205,7 +275,7 @@ class _NegativeMarginLayout extends SingleChildLayoutDelegate {
 
 class _MethodChannelCardField extends StatefulWidget {
   _MethodChannelCardField({
-    required this.onCardChanged,
+    this.onCardChanged,
     required this.controller,
     Key? key,
     this.onFocus,
@@ -216,6 +286,8 @@ class _MethodChannelCardField extends StatefulWidget {
     double? height = kCardFieldDefaultHeight,
     BoxConstraints? constraints,
     this.focusNode,
+    this.dangerouslyGetFullCardDetails = false,
+    this.dangerouslyUpdateFullCardDetails = false,
     this.autofocus = false,
   })  : assert(constraints == null || constraints.debugAssertIsValid()),
         constraints = (width != null || height != null)
@@ -226,13 +298,15 @@ class _MethodChannelCardField extends StatefulWidget {
 
   final BoxConstraints? constraints;
   final CardFocusCallback? onFocus;
-  final CardChangedCallback onCardChanged;
+  final CardChangedCallback? onCardChanged;
   final CardStyle? style;
   final CardPlaceholder? placeholder;
   final bool enablePostalCode;
   final FocusNode? focusNode;
   final bool autofocus;
   final CardEditController controller;
+  final bool dangerouslyGetFullCardDetails;
+  final bool dangerouslyUpdateFullCardDetails;
 
   // This is used in the platform side to register the view.
   static const _viewType = 'flutter.stripe/card_field';
@@ -247,7 +321,8 @@ class _MethodChannelCardField extends StatefulWidget {
   _MethodChannelCardFieldState createState() => _MethodChannelCardFieldState();
 }
 
-class _MethodChannelCardFieldState extends State<_MethodChannelCardField> {
+class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
+    with CardFieldContext {
   MethodChannel? _methodChannel;
 
   final _focusNode =
@@ -284,19 +359,37 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField> {
         cvc: 'CVC',
       ).apply(placeholder);
 
+  CardEditController get controller => widget.controller;
+
   @override
   void initState() {
-    widget.controller.addListener(() {
-      _handleCardEditEvent(widget.controller.value);
-    });
+    controller._context = this;
+    // Reset card fields if dangerouslyUpdateFullCardDetails is false
+    if (!widget.dangerouslyUpdateFullCardDetails) {
+      if (kDebugMode &&
+          controller.details != const CardFieldInputDetails(complete: false)) {
+        dev.log(
+          'WARNING! Initial card data value has been ignored. \n'
+          'Handling card data manually will break PCI compliance provided by Stripe. '
+          'Please make sure you understand the severe consecuences of it. '
+          'https://stripe.com/docs/security/guide#validating-pci-compliance. \n'
+          'To handle PCI compliance yourself and allow to edit card data programatically,'
+          'set `dangerouslyGetFullCardDetails: true`',
+        );
+      }
+      WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+        controller._updateDetails(const CardFieldInputDetails(complete: false));
+      });
+    }
+
     super.initState();
   }
 
   @override
   void dispose() {
-    widget.controller.removeListener(() {
-      _handleCardEditEvent(widget.controller.value);
-    });
+    if (controller._context == this) {
+      controller._context = null;
+    }
     _focusNode.dispose();
     super.dispose();
   }
@@ -310,6 +403,11 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField> {
       'cardStyle': style.toJson(),
       'placeholder': placeholder.toJson(),
       'postalCodeEnabled': widget.enablePostalCode,
+      'dangerouslyGetFullCardDetails': widget.dangerouslyGetFullCardDetails,
+      if (widget.dangerouslyUpdateFullCardDetails &&
+          controller._initalDetails != null)
+        'cardDetails': controller._initalDetails?.toJson(),
+      'autofocus': widget.autofocus,
     };
 
     Widget platform;
@@ -367,9 +465,21 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField> {
 
   @override
   void didUpdateWidget(covariant _MethodChannelCardField oldWidget) {
+    if (widget.controller != oldWidget.controller) {
+      assert(controller._context == null,
+          'CardEditController is already attached to a CardView');
+      oldWidget.controller._context = this;
+      controller._context = this;
+    }
     if (widget.enablePostalCode != oldWidget.enablePostalCode) {
       _methodChannel?.invokeMethod('onPostalCodeEnabledChanged', {
         'postalCodeEnabled': widget.enablePostalCode,
+      });
+    }
+    if (widget.dangerouslyGetFullCardDetails !=
+        oldWidget.dangerouslyGetFullCardDetails) {
+      _methodChannel?.invokeMethod('dangerouslyGetFullCardDetails', {
+        'dangerouslyGetFullCardDetails': widget.dangerouslyGetFullCardDetails,
       });
     }
     _lastStyle ??= resolveStyle(oldWidget.style);
@@ -406,7 +516,8 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField> {
     try {
       final map = Map<String, dynamic>.from(arguments);
       final details = CardFieldInputDetails.fromJson(map);
-      widget.onCardChanged.call(details);
+      controller._updateDetails(details);
+      widget.onCardChanged?.call(details);
       // ignore: avoid_catches_without_on_clauses
     } catch (e) {
       log('An error ocurred while while parsing card arguments, this should not happen, please consider creating an issue at https://github.com/flutter-stripe/flutter_stripe/issues/new');
@@ -432,29 +543,6 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField> {
     }
   }
 
-  /// handle event that is emitted from the editting controller and propagate it
-  /// through native
-  ///
-  void _handleCardEditEvent(CardEditEvent event) {
-    if (_methodChannel == null) {
-      return;
-    } else {
-      switch (event) {
-        case CardEditEvent.none:
-          break;
-        case CardEditEvent.focus:
-          _methodChannel!.invokeMethod('focus');
-          break;
-        case CardEditEvent.blur:
-          _methodChannel!.invokeMethod('blur');
-          break;
-        case CardEditEvent.clear:
-          _methodChannel!.invokeMethod('clear');
-          break;
-      }
-    }
-  }
-
   /// Handler called when the focus changes in the node attached to the platform
   /// view. This updates the correspondant platform view to keep it in sync.
   void _handleFrameworkFocusChanged(bool isFocused) {
@@ -464,11 +552,40 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField> {
     }
     setState(() {});
     if (!isFocused) {
-      methodChannel.invokeMethod('blur');
+      blur();
       return;
     }
 
-    methodChannel.invokeMethod('focus');
+    focus();
+  }
+
+  @override
+  void blur() {
+    _methodChannel?.invokeMethod('blur');
+  }
+
+  @override
+  void clear() {
+    _methodChannel?.invokeMethod('clear');
+  }
+
+  @override
+  void focus() {
+    _methodChannel?.invokeMethod('focus');
+  }
+
+  @override
+  void dangerouslyUpdateCardDetails(CardFieldInputDetails details) {
+    assert(
+        widget.dangerouslyUpdateFullCardDetails,
+        'Handling card data manually will break PCI compliance provided by Stripe. \n'
+        'Please make sure you understand the severe consecuences of it. '
+        'https://stripe.com/docs/security/guide#validating-pci-compliance. \n'
+        'To handle PCI compliance yourself and allow to edit card data programatically,'
+        'set `dangerouslyGetFullCardDetails: true`');
+    _methodChannel?.invokeMethod('dangerouslyUpdateCardDetails', {
+      'cardDetails': details.toJson(),
+    });
   }
 }
 

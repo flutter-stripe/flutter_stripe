@@ -327,12 +327,10 @@ extension  StripePlugin {
             result(FlutterError.invalidParams)
             return
         }
-        let cardParams = STPPaymentMethodCardParams()
-        cardParams.cvc = params["cvc"] as? String
-        cardParams.number = params["number"] as? String
-        cardParams.expYear = params["expirationYear"] as? NSNumber
-        cardParams.expMonth = params["expirationMonth"] as? NSNumber
-        cardFieldView?.cardParams = cardParams
+        cardFieldView = cardFieldView ?? CardFieldView()
+        cardFieldView?.dangerouslyGetFullCardDetails = true
+        cardFieldView?.dangerouslyUpdateCardDetails(params: params)
         result(nil)
     }
 }
+
