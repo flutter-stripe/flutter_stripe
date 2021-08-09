@@ -1,7 +1,3 @@
-//@dart= 2.12
-
-
-
 import 'package:flutter/widgets.dart';
 
 import 'src/platforms/checkout.dart';
