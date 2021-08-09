@@ -84,6 +84,7 @@ class UserInterfaceStyleKey {
 
 /// Parameters used to display the payment sheet.
 @freezed
+@Deprecated('Parameters are now inherited from initPaymentSheet')
 class PresentPaymentSheetParameters with _$PresentPaymentSheetParameters {
   const factory PresentPaymentSheetParameters({
     /// Key used for client-side retrieval using a publishable key.

@@ -90,7 +90,6 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     promise = Promise(result)
             )
             "presentPaymentSheet" -> stripeSdk.presentPaymentSheet(
-                    params = call.requiredArgument("params"),
                     promise = Promise(result)
             )
             "confirmPaymentSheetPayment" -> stripeSdk.confirmPaymentSheetPayment(
