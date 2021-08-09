@@ -21,7 +21,6 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return DismissFocusOverlay(
       child: MaterialApp(
-        theme: exampleAppTheme,
         home: HomePage(),
       ),
     );
@@ -43,7 +42,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Stripe Examples'),
+        title: const Text('Plugin example app'),
       ),
       body: ListView(children: [
         ...ListTile.divideTiles(
@@ -66,8 +65,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-final exampleAppTheme = ThemeData(
-    colorScheme: ColorScheme.light(primary: Color(0xff6058F7)),
-    primaryColor: Colors.white,
-    appBarTheme: AppBarTheme(elevation: 1));

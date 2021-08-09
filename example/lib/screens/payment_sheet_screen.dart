@@ -3,8 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
-import 'package:stripe_example/screens/payment_sheet_screen_custom_flow.dart';
-import 'package:stripe_example/widgets/loading_button.dart';
 
 import '../config.dart';
 
@@ -14,50 +12,27 @@ class PaymentSheetScreen extends StatefulWidget {
 }
 
 class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
-  int step = 0;
+  Map<String, dynamic>? _paymentSheetData;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(height: 60),
-          Padding(
-            child: Text('Payment Sheet',
-                style: Theme.of(context).textTheme.headline5),
-            padding: EdgeInsets.symmetric(horizontal: 20),
+          TextButton(
+            onPressed: _paymentSheetData != null ? null : _initPaymentSheet,
+            child: const Text('Init payment sheet'),
           ),
-          SizedBox(height: 4),
-          Padding(
-            child: Chip(label: Text('Single-Step')),
-            padding: EdgeInsets.symmetric(horizontal: 20),
-          ),
-          SizedBox(height: 20),
-          Stepper(
-            controlsBuilder: emptyControlBuilder,
-            currentStep: step,
-            steps: [
-              Step(
-                title: Text('Init payment'),
-                content: LoadingButton(
-                  onPressed: initPaymentSheet,
-                  text: 'Init payment sheet',
-                ),
-              ),
-              Step(
-                title: Text('Confirm payment'),
-                content: LoadingButton(
-                  onPressed: confirmPayment,
-                  text: 'Pay now',
-                ),
-              ),
-            ],
+          const SizedBox(height: 24),
+          TextButton(
+            onPressed: _paymentSheetData != null ? _displayPaymentSheet : null,
+            child: const Text('Show payment sheet'),
           ),
         ],
-      ),
+      )),
     );
   }
 
@@ -72,38 +47,35 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
         'a': 'a',
       }),
     );
-    final body = json.decode(response.body);
-    if (body['error'] != null) {
-      throw Exception(body['error']);
-    }
-    return body;
+    return json.decode(response.body);
   }
 
-  Future<void> initPaymentSheet() async {
+  Future<void> _initPaymentSheet() async {
     try {
       // 1. create payment intent on the server
-      final data = await _createTestPaymentSheet();
+      _paymentSheetData = await _createTestPaymentSheet();
+
+      if (_paymentSheetData!['error'] != null) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text('Error code: ${_paymentSheetData!['error']}')));
+        return;
+      }
 
       // 2. initialize the payment sheet
       await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
-          // Main params
-          paymentIntentClientSecret: data['paymentIntent'],
-          merchantDisplayName: 'Flutter Stripe Store Demo',
-          // Customer params
-          customerId: data['customer'],
-          customerEphemeralKeySecret: data['ephemeralKey'],
-          // Extra params
           applePay: true,
           googlePay: true,
           style: ThemeMode.dark,
           testEnv: true,
           merchantCountryCode: 'DE',
+          merchantDisplayName: 'Flutter Stripe Store Demo',
+          customerId: _paymentSheetData!['customer'],
+          paymentIntentClientSecret: _paymentSheetData!['paymentIntent'],
+          customerEphemeralKeySecret: _paymentSheetData!['ephemeralKey'],
         ),
       );
-      setState(() {
-        step = 1;
-      });
+      setState(() {});
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error: $e')),
@@ -112,13 +84,17 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
     }
   }
 
-  Future<void> confirmPayment() async {
+  Future<void> _displayPaymentSheet() async {
     try {
       // 3. display the payment sheet.
-      await Stripe.instance.presentPaymentSheet();
+       await Stripe.instance.presentPaymentSheet(
+          parameters: PresentPaymentSheetParameters(
+        clientSecret: _paymentSheetData!['paymentIntent'],
+        confirmPayment: true,
+      ));
 
       setState(() {
-        step = 0;
+        _paymentSheetData = null;
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
