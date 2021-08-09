@@ -1,5 +1,3 @@
-//@dart= 2.12
-
 library stripe_checkout;
 
 import 'dart:convert';

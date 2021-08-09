@@ -1,4 +1,3 @@
-//@dart=2.12
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'checkout.dart';
