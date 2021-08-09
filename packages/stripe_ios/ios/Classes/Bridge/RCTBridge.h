@@ -40,3 +40,13 @@ typedef void (^RCTBubblingEventBlock)(NSDictionary *body);
  */
 - (void)didSetProps:(NSArray<NSString *> *)changedProps;
 @end
+
+
+
+@interface NSObject (React)
+
+/**
+ * Returns YES if module instance must be created on the main thread.
+ */
+@property (nonatomic, assign, readonly) BOOL requiresMainQueueSetup;
+@end

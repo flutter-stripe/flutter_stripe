@@ -72,10 +72,6 @@ public class RCTEventEmitter : NSObject {
     func supportedEvents() -> [String]! {
         return []
     }
-    
-    static func requiresMainQueueSetup() -> Bool {
-        return false
-    }
 }
 
 

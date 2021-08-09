@@ -2,7 +2,7 @@ import PassKit
 import Stripe
 
 @objc(StripeSdk)
-public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSelectionViewControllerDelegate, UIAdaptivePresentationControllerDelegate {
+class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSelectionViewControllerDelegate, UIAdaptivePresentationControllerDelegate {
     public var cardFieldView: CardFieldView? = nil
     public var cardFormView: CardFormView? = nil
 
@@ -24,6 +24,14 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
     
     var shippingMethodUpdateHandler: ((PKPaymentRequestShippingMethodUpdate) -> Void)? = nil
     var shippingContactUpdateHandler: ((PKPaymentRequestShippingContactUpdate) -> Void)? = nil
+    
+    override func supportedEvents() -> [String]! {
+        return ["onDidSetShippingMethod", "onDidSetShippingContact"]
+    }
+    
+    @objc override static func requiresMainQueueSetup() -> Bool {
+        return false
+    }
     
     @objc(initialise:resolver:rejecter:)
     func initialise(params: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
@@ -152,7 +160,7 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
         
         DispatchQueue.main.async {
             if (confirmPayment == false) {
-                self.paymentSheetFlowController?.presentPaymentOptions(from:
+                self.paymentSheetFlowController?.presentPaymentOptions(from: 
                     findViewControllerPresenter(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController())
                 ) {
                     if let paymentOption = self.paymentSheetFlowController?.paymentOption {
@@ -166,7 +174,7 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
                     }
                 }
             } else {
-                self.paymentSheet?.present(from:
+                self.paymentSheet?.present(from: 
                     findViewControllerPresenter(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController())
                 ) { paymentResult in
                     switch paymentResult {
@@ -283,17 +291,17 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
     }
     
     
-    public func applePayContext(_ context: STPApplePayContext, didSelect shippingMethod: PKShippingMethod, handler: @escaping (PKPaymentRequestShippingMethodUpdate) -> Void) {
+    func applePayContext(_ context: STPApplePayContext, didSelect shippingMethod: PKShippingMethod, handler: @escaping (PKPaymentRequestShippingMethodUpdate) -> Void) {
         self.shippingMethodUpdateHandler = handler
         sendEvent(withName: "onDidSetShippingMethod", body: ["shippingMethod": Mappers.mapFromShippingMethod(shippingMethod: shippingMethod)])
     }
     
-    public func applePayContext(_ context: STPApplePayContext, didSelectShippingContact contact: PKContact, handler: @escaping (PKPaymentRequestShippingContactUpdate) -> Void) {
+    func applePayContext(_ context: STPApplePayContext, didSelectShippingContact contact: PKContact, handler: @escaping (PKPaymentRequestShippingContactUpdate) -> Void) {
         self.shippingContactUpdateHandler = handler
         sendEvent(withName: "onDidSetShippingContact", body: ["shippingContact": Mappers.mapFromShippingContact(shippingContact: contact)])
     }
     
-    public func applePayContext(_ context: STPApplePayContext, didCreatePaymentMethod paymentMethod: STPPaymentMethod, paymentInformation: PKPayment, completion: @escaping STPIntentClientSecretCompletionBlock) {
+    func applePayContext(_ context: STPApplePayContext, didCreatePaymentMethod paymentMethod: STPPaymentMethod, paymentInformation: PKPayment, completion: @escaping STPIntentClientSecretCompletionBlock) {
         self.applePayCompletionCallback = completion
         let method = Mappers.mapFromPaymentMethod(paymentMethod)
         self.applePayRequestResolver?(Mappers.createResult("paymentMethod", method))
@@ -307,7 +315,7 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
         self.applePayCompletionCallback?(clientSecret, nil)
     }
     
-    public func applePayContext(_ context: STPApplePayContext, didCompleteWith status: STPPaymentStatus, error: Error?) {
+    func applePayContext(_ context: STPApplePayContext, didCompleteWith status: STPPaymentStatus, error: Error?) {
         switch status {
         case .success:
             applePayCompletionRejecter = nil
@@ -654,7 +662,7 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
         }
     }
     
-    public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         confirmPaymentResolver?(Errors.createError(ConfirmPaymentErrorType.Canceled.rawValue, "FPX Payment has been canceled"))
     }
             
@@ -671,7 +679,7 @@ public class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSele
         }
     }
     
-    public func bankSelectionViewController(_ bankViewController: STPBankSelectionViewController, didCreatePaymentMethodParams paymentMethodParams: STPPaymentMethodParams) {
+    func bankSelectionViewController(_ bankViewController: STPBankSelectionViewController, didCreatePaymentMethodParams paymentMethodParams: STPPaymentMethodParams) {
         guard let clientSecret = confirmPaymentClientSecret else {
             confirmPaymentResolver?(Errors.createError(ConfirmPaymentErrorType.Failed.rawValue, "Missing paymentIntentClientSecret"))
             return
@@ -735,7 +743,7 @@ func findViewControllerPresenter(from uiViewController: UIViewController) -> UIV
 }
 
 extension StripeSdk: STPAuthenticationContext {
-    public func authenticationPresentingViewController() -> UIViewController {
+    func authenticationPresentingViewController() -> UIViewController {
         return findViewControllerPresenter(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController())
     }
 }

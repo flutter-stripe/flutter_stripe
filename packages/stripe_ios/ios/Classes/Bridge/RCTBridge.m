@@ -9,3 +9,13 @@
 }
 
 @end
+
+
+@implementation NSObject (React)
+
++ (BOOL)requiresMainQueueSetup
+{
+  return NO;
+}
+
+@end
