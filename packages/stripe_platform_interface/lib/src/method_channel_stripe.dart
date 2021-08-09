@@ -170,10 +170,10 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<void> presentPaymentSheet() async {
+  Future<void> presentPaymentSheet(PresentPaymentSheetParameters params) async {
     final result = await _methodChannel.invokeMethod<dynamic>(
       'presentPaymentSheet',
-      {'params': {}},
+      {'params': params.toJson()},
     );
 
     // iOS returns empty list on success
@@ -216,7 +216,7 @@ class MethodChannelStripe extends StripePlatform {
 
   void _parsePaymentSheetResult(Map<String, dynamic>? result) {
     if (result != null) {
-      if (result.isEmpty || result['paymentOption'] != null) {
+      if (result.isEmpty) {
         return;
       } else {
         if (result['error'] != null) {

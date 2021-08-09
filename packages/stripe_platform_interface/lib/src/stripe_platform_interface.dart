@@ -52,7 +52,7 @@ abstract class StripePlatform extends PlatformInterface {
   Future<void> initPaymentSheet(SetupPaymentSheetParameters params);
 
   /// Display the payment sheet.
-  Future<void> presentPaymentSheet();
+  Future<void> presentPaymentSheet(PresentPaymentSheetParameters params);
 
   /// Confirm the payment on a payment sheet.
   Future<void> confirmPaymentSheetPayment();

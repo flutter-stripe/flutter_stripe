@@ -10,7 +10,7 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.util.Log
 import androidx.activity.ComponentActivity
-import androidx.fragment.app.FragmentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.facebook.react.bridge.*
 import com.stripe.android.*
@@ -244,7 +244,6 @@ class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
         } else {
           presentPaymentSheetPromise?.resolve(WritableNativeMap())
         }
-        presentPaymentSheetPromise = null
       }
       else if (intent.action == ON_INIT_PAYMENT_SHEET) {
         initPaymentSheetPromise?.resolve(WritableNativeMap())
@@ -305,7 +304,7 @@ class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
 
   @ReactMethod
   fun initPaymentSheet(params: ReadableMap, promise: Promise) {
-    val activity = currentActivity.activity as FragmentActivity?
+    val activity = currentActivity.activity as AppCompatActivity?
 
     if (activity == null) {
       promise.resolve(createError("Failed", "Activity doesn't exist"))
@@ -324,9 +323,14 @@ class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
   }
 
   @ReactMethod
-  fun presentPaymentSheet(promise: Promise) {
+  fun presentPaymentSheet(params: ReadableMap?, promise: Promise) {
+    val confirmPayment = getBooleanOrNull(params, "confirmPayment")
     this.presentPaymentSheetPromise = promise
-    paymentSheetFragment?.present()
+    if (confirmPayment == false) {
+      paymentSheetFragment?.presentPaymentOptions()
+    } else {
+      paymentSheetFragment?.present()
+    }
   }
 
   @ReactMethod

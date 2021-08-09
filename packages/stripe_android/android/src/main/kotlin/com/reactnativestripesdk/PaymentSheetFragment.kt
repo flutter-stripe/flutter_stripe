@@ -97,15 +97,15 @@ class PaymentSheetFragment : Fragment() {
   }
 
   fun present() {
-    if(paymentSheet != null) {
-      if (!paymentIntentClientSecret.isNullOrEmpty()) {
-        paymentSheet?.presentWithPaymentIntent(paymentIntentClientSecret!!, paymentSheetConfiguration)
-      } else if (!setupIntentClientSecret.isNullOrEmpty()) {
-        paymentSheet?.presentWithSetupIntent(setupIntentClientSecret!!, paymentSheetConfiguration)
-      }
-    } else if(flowController != null) {
-      flowController?.presentPaymentOptions()
+    if (!paymentIntentClientSecret.isNullOrEmpty()) {
+      paymentSheet?.presentWithPaymentIntent(paymentIntentClientSecret!!, paymentSheetConfiguration)
+    } else if (!setupIntentClientSecret.isNullOrEmpty()) {
+      paymentSheet?.presentWithSetupIntent(setupIntentClientSecret!!, paymentSheetConfiguration)
     }
+  }
+
+  fun presentPaymentOptions() {
+    flowController?.presentPaymentOptions()
   }
 
   fun confirmPayment() {

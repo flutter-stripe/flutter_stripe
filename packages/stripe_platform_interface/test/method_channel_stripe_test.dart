@@ -399,7 +399,8 @@ void main() {
             ).methodChannel,
           );
           await sut
-              .presentPaymentSheet()
+              .presentPaymentSheet(const PresentPaymentSheetParameters(
+                  clientSecret: 'clientSecret'))
               .then((_) => completer.complete());
         });
 
@@ -422,7 +423,9 @@ void main() {
 
         test('It throws StripePlatformEsception', () async {
           expectLater(
-              () async => await sut.presentPaymentSheet(),
+              () async => await sut.presentPaymentSheet(
+                  const PresentPaymentSheetParameters(
+                      clientSecret: 'clientSecret')),
               throwsA(isInstanceOf<StripeException>()));
         });
       });
