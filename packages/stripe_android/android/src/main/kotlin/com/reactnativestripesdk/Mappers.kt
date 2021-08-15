@@ -386,7 +386,8 @@ internal fun mapFromSetupIntentLastErrorType(errorType: SetupIntent.Error.Type?)
   }
 }
 
-fun getValOr(map: ReadableMap, key: String, default: String? = ""): String? {
+fun getValOr(map: ReadableMap?, key: String, default: String? = ""): String? {
+  if (map == null) return default
   return if (map.hasKey(key)) map.getString(key) else default
 }
 
@@ -408,13 +409,15 @@ internal fun mapToBillingDetails(billingDetails: ReadableMap?): PaymentMethod.Bi
   if (billingDetails == null) {
     return null
   }
+
+  val addressDetails = getMapOrNull(billingDetails, "address")
   val address = Address.Builder()
-    .setPostalCode(getValOr(billingDetails, "addressPostalCode"))
-    .setCity(getValOr(billingDetails, "addressCity"))
-    .setCountry(getValOr(billingDetails, "addressCountry"))
-    .setLine1(getValOr(billingDetails, "addressLine1"))
-    .setLine2(getValOr(billingDetails, "addressLine2"))
-    .setState(getValOr(billingDetails, "addressState"))
+    .setPostalCode(getValOr(addressDetails, "postalCode"))
+    .setCity(getValOr(addressDetails, "city"))
+    .setCountry(getValOr(addressDetails, "country"))
+    .setLine1(getValOr(addressDetails, "line1"))
+    .setLine2(getValOr(addressDetails, "line2"))
+    .setState(getValOr(addressDetails, "state"))
     .build()
 
   return PaymentMethod.BillingDetails.Builder()
