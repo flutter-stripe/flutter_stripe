@@ -22,9 +22,8 @@ class StripeSdkGooglePayButtonPlatformView(
     private val payButton: GooglePayButtonView = googlePayButtonManager.createViewInstance(ThemedReactContext(context, channel, sdkAccessor))
 
     init {
-
         if (creationParams?.containsKey("buttonType") == true) {
-            googlePayButtonManager.buttonType(payButton, creationParams["cardStyle"] as String)
+            googlePayButtonManager.buttonType(payButton, creationParams["buttonType"] as String)
         }
     }
 
