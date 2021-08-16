@@ -25,6 +25,7 @@ class StripeSdkGooglePayButtonPlatformView(
         if (creationParams?.containsKey("buttonType") == true) {
             googlePayButtonManager.buttonType(payButton, creationParams["buttonType"] as String)
         }
+        payButton.initialize()
     }
 
     override fun getView(): View {

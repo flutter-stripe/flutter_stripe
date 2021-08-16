@@ -20,7 +20,7 @@ class _GooglePayButtonState extends State<GooglePayButton> {
   MethodChannel? _methodChannel;
 
   void onPlatformViewCreated(int viewId) {
-    _methodChannel = MethodChannel('flutter.stripe/card_field/$viewId');
+    _methodChannel = MethodChannel('flutter.stripe/google_pay_button/$viewId');
   }
 
   @override
