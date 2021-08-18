@@ -12,7 +12,7 @@ import io.flutter.plugin.platform.PlatformView
 
 class StripeSdkGooglePayButtonPlatformView(
         context: Context,
-        channel: MethodChannel,
+        private val channel: MethodChannel,
         id: Int,
         creationParams: Map<String?, Any?>?,
         private val googlePayButtonManager: GooglePayButtonManager,
@@ -38,5 +38,8 @@ class StripeSdkGooglePayButtonPlatformView(
 
     override fun onFlutterViewAttached(flutterView: View) {
         googlePayButtonManager.onAfterUpdateTransaction(payButton)
+        view.setOnClickListener {
+            channel.invokeMethod("onPressed", null)
+        }
     }
 }

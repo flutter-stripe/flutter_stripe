@@ -5,22 +5,40 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
 class GooglePayButton extends StatefulWidget {
-  const GooglePayButton({Key? key}) : super(key: key);
+  const GooglePayButton({
+    required this.onTap,
+    this.type = GooglePayButtonType.pay,
+    Key? key,
+  }) : super(key: key);
 
   static const _viewType = 'flutter.stripe/google_pay_button';
 
   @override
   _GooglePayButtonState createState() => _GooglePayButtonState();
+
+  final GooglePayButtonType type;
+  final VoidCallback onTap;
 }
 
 class _GooglePayButtonState extends State<GooglePayButton> {
-  final Map<String, dynamic> creationParams = {
-    'buttonType': 'standard',
-  };
+  final Map<String, dynamic> _creationParams = {};
   MethodChannel? _methodChannel;
+
+  @override
+  void initState() {
+    _creationParams['buttonType'] = describeEnum(widget.type);
+
+    super.initState();
+  }
 
   void onPlatformViewCreated(int viewId) {
     _methodChannel = MethodChannel('flutter.stripe/google_pay_button/$viewId');
+    _methodChannel?.setMethodCallHandler((call) async {
+      if (call.method == 'onPressed') {
+        widget.onTap.call();
+      }
+      return;
+    });
   }
 
   @override
@@ -38,7 +56,7 @@ class _GooglePayButtonState extends State<GooglePayButton> {
           id: params.id,
           viewType: GooglePayButton._viewType,
           layoutDirection: TextDirection.ltr,
-          creationParams: creationParams,
+          creationParams: _creationParams,
           creationParamsCodec: const StandardMessageCodec(),
         )
           ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
@@ -48,3 +66,6 @@ class _GooglePayButtonState extends State<GooglePayButton> {
     );
   }
 }
+
+// ignore: constant_identifier_names
+enum GooglePayButtonType { standard, standard_shadow, pay, pay_shadow }

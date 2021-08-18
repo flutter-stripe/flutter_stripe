@@ -9,7 +9,9 @@ class GooglePayStripeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: GooglePayButton(),
+        child: SizedBox(width: 300, height: 75, child: GooglePayButton(
+          onTap: ()=> print('tapped!!'),
+        )),
       ),
     );
   }
