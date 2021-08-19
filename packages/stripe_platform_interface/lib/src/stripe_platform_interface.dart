@@ -60,6 +60,10 @@ abstract class StripePlatform extends PlatformInterface {
   Future<void> presentApplePay(ApplePayPresentParams params);
   Future<void> confirmApplePayPayment(String clientSecret);
 
+  Future<void> initGooglePay();
+  Future<void> presentGooglePay();
+  Future<PaymentMethod> createGooglePayPaymentMethod();
+
   /// Creates a token for card details.
   ///
   /// Note this method is legacy and it is advised to use [PaymentIntent].

@@ -15,10 +15,7 @@ import android.widget.FrameLayout
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
-import com.stripe.android.paymentsheet.PaymentOptionCallback
-import com.stripe.android.paymentsheet.PaymentSheet
-import com.stripe.android.paymentsheet.PaymentSheetResult
-import com.stripe.android.paymentsheet.PaymentSheetResultCallback
+import com.stripe.android.paymentsheet.*
 import com.stripe.android.paymentsheet.model.PaymentOption
 import java.io.ByteArrayOutputStream
 
@@ -44,7 +41,7 @@ class PaymentSheetFragment : Fragment() {
     val merchantDisplayName = arguments?.getString("merchantDisplayName").orEmpty()
     val customerId = arguments?.getString("customerId").orEmpty()
     val customerEphemeralKeySecret = arguments?.getString("customerEphemeralKeySecret").orEmpty()
-    val countryCode = arguments?.getString("countryCode").orEmpty()
+    val countryCode = arguments?.getString("merchantCountryCode").orEmpty()
     val googlePayEnabled = arguments?.getBoolean("googlePay")
     val testEnv = arguments?.getBoolean("testEnv")
     paymentIntentClientSecret = arguments?.getString("paymentIntentClientSecret").orEmpty()

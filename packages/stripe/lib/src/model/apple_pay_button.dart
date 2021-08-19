@@ -15,7 +15,7 @@ enum ApplePayButtonType {
   rent,
   support,
   contribute,
-  tip
+  tip,
 }
 
 /// Predefined styles for the Apple pay button.

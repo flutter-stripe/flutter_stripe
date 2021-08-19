@@ -238,6 +238,24 @@ class MethodChannelStripe extends StripePlatform {
       );
     }
   }
+
+  @override
+  Future<PaymentMethod> createGooglePayPaymentMethod() {
+    // TODO: implement createGooglePayPaymentMethod
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> initGooglePay() {
+    // TODO: implement initGooglePay
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> presentGooglePay() {
+    // TODO: implement presentGooglePay
+    throw UnimplementedError();
+  }
 }
 
 class MethodChannelStripeFactory {
