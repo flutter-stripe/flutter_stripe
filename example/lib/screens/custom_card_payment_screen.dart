@@ -184,14 +184,6 @@ class _CustomCardPaymentScreenState extends State<CustomCardPaymentScreen> {
         final paymentIntent = await Stripe.instance
             .handleCardAction(paymentIntentResult['clientSecret']);
 
-        // todo handle error
-        /*if (cardActionError) {
-        Alert.alert(
-        `Error code: ${cardActionError.code}`,
-        cardActionError.message
-        );
-      } else*/
-
         if (paymentIntent.status == PaymentIntentsStatus.RequiresConfirmation) {
           // 5. Call API to confirm intent
           await confirmIntent(paymentIntent.id);
