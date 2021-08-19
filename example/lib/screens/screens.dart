@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:stripe_example/screens/apple_pay_screen.dart';
 import 'package:stripe_example/screens/custom_card_payment_screen.dart';
 import 'package:stripe_example/screens/google_pay_screen.dart';
+import 'package:stripe_example/screens/payment_sheet_screen_custom_flow.dart';
+import 'package:stripe_example/screens/google_pay_stripe_screen.dart';
 import 'package:stripe_example/screens/paymentmethod_examples/ali_pay_screen.dart';
 import 'package:stripe_example/screens/paymentmethod_examples/ideal_screen.dart';
 import 'package:stripe_example/screens/paymentmethod_examples/wecchat_pay_screen.dart';
@@ -41,6 +43,14 @@ class Example {
 
   static List<Example> screens = [
     Example(
+      title: 'Payment sheet',
+      builder: (context) => PaymentSheetScreen(),
+    ),
+    Example(
+      title: 'Payment sheet - Custom Flow',
+      builder: (context) => PaymentSheetScreenWithCustomFlow(),
+    ),
+    Example(
       title: 'Card payment using webhooks',
       builder: (c) => WebhookPaymentScreen(),
     ),
@@ -61,6 +71,10 @@ class Example {
       builder: (c) => GooglePayScreen(),
     ),
     Example(
+      title: 'Google Pay payment Stripe (Android)',
+      builder: (c) => GooglePayStripeScreen(),
+    ),
+    Example(
       title: 'Setup Future Payment',
       builder: (c) => SetupFuturePaymentScreen(),
     ),
@@ -71,10 +85,6 @@ class Example {
     Example(
       title: 'Card themes',
       builder: (c) => ThemeCardExample(),
-    ),
-    Example(
-      title: 'Payment sheet',
-      builder: (context) => PaymentSheetScreen(),
     ),
     Example(
       title: 'Create token (legacy)',

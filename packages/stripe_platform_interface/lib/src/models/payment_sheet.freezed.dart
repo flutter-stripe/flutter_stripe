@@ -58,11 +58,11 @@ const $SetupPaymentSheetParameters = _$SetupPaymentSheetParametersTearOff();
 
 /// @nodoc
 mixin _$SetupPaymentSheetParameters {
-  ///Whether or not to display a custom flow
+  /// Whether or not to use a custom flow.
   ///
-  /// When value is `false` make sure [PresentPaymentSheetParameters.confirmPayment]
-  /// is set to `true`. If value is set to `true` [PresentPaymentSheetParameters.confirmPayment]
-  /// has to be set to `false`.
+  /// If this value is true, the payment sheet will allow to select a payment method
+  /// and a later confirmation will be needed by calling [confirmPaymentSheetPayment]
+  /// By default, false.
   bool get customFlow => throw _privateConstructorUsedError;
 
   /// The identifier of the Stripe Customer object.
@@ -320,11 +320,11 @@ class _$_SetupParameters implements _SetupParameters {
   @JsonKey(defaultValue: false)
   @override
 
-  ///Whether or not to display a custom flow
+  /// Whether or not to use a custom flow.
   ///
-  /// When value is `false` make sure [PresentPaymentSheetParameters.confirmPayment]
-  /// is set to `true`. If value is set to `true` [PresentPaymentSheetParameters.confirmPayment]
-  /// has to be set to `false`.
+  /// If this value is true, the payment sheet will allow to select a payment method
+  /// and a later confirmation will be needed by calling [confirmPaymentSheetPayment]
+  /// By default, false.
   final bool customFlow;
   @override
 
@@ -468,11 +468,11 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
 
   @override
 
-  ///Whether or not to display a custom flow
+  /// Whether or not to use a custom flow.
   ///
-  /// When value is `false` make sure [PresentPaymentSheetParameters.confirmPayment]
-  /// is set to `true`. If value is set to `true` [PresentPaymentSheetParameters.confirmPayment]
-  /// has to be set to `false`.
+  /// If this value is true, the payment sheet will allow to select a payment method
+  /// and a later confirmation will be needed by calling [confirmPaymentSheetPayment]
+  /// By default, false.
   bool get customFlow => throw _privateConstructorUsedError;
   @override
 

@@ -303,10 +303,10 @@ class Stripe {
   ///
   /// throws [StripeException] in case of a failure
   Future<void> presentPaymentSheet({
-    required PresentPaymentSheetParameters parameters,
+    @Deprecated('Params are now inherited from initPaymentSheet so this `parameters` can be removed') dynamic parameters,
   }) async {
     await _awaitForSettings();
-    return await _platform.presentPaymentSheet(parameters);
+    return await _platform.presentPaymentSheet();
   }
 
   /// Confirms the paymentsheet payment

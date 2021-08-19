@@ -103,11 +103,7 @@ class PaymentScreen extends StatelessWidget {
           customerEphemeralKeySecret: _paymentSheetData!['ephemeralKey'],
     ));
 
-     await Stripe.instance.presentPaymentSheet(
-          parameters: PresentPaymentSheetParameters(
-        clientSecret: _paymentSheetData!['paymentIntent'],
-        confirmPayment: true,
-      ));
+     await Stripe.instance.presentPaymentSheet();
   }
 
   @override

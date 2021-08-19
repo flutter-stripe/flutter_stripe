@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -17,11 +19,26 @@ class _LoadingButtonState extends State<LoadingButton> {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: (_isLoading || widget.onPressed == null) ? null : _loadFuture,
-      child: _isLoading
-          ? SizedBox(height: 16, width: 16, child: CircularProgressIndicator())
-          : Text(widget.text),
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Expanded(
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(vertical: 12)),
+            onPressed:
+                (_isLoading || widget.onPressed == null) ? null : _loadFuture,
+            child: _isLoading
+                ? SizedBox(
+                    height: 22,
+                    width: 22,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                    ))
+                : Text(widget.text),
+          ),
+        ),
+      ],
     );
   }
 
@@ -32,7 +49,8 @@ class _LoadingButtonState extends State<LoadingButton> {
 
     try {
       await widget.onPressed!();
-    } catch (e) {
+    } catch (e, s) {
+      log(e.toString(), error: e, stackTrace: s);
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text('Error $e')));
       rethrow;
