@@ -9,6 +9,13 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 import 'dart:developer' as dev;
 
+const String _kDebugPCIMessage =
+    'Handling card data manually will break PCI compliance provided by Stripe. '
+    'Please make sure you understand the severe consecuences of it. '
+    'https://stripe.com/docs/security/guide#validating-pci-compliance. \n'
+    'To handle PCI compliance yourself and allow to edit card data programatically,'
+    'set `dangerouslyGetFullCardDetails: true`';
+
 /// Customizable form that collects card information.
 class CardField extends StatefulWidget {
   const CardField(
@@ -368,14 +375,8 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
     if (!widget.dangerouslyUpdateFullCardDetails) {
       if (kDebugMode &&
           controller.details != const CardFieldInputDetails(complete: false)) {
-        dev.log(
-          'WARNING! Initial card data value has been ignored. \n'
-          'Handling card data manually will break PCI compliance provided by Stripe. '
-          'Please make sure you understand the severe consecuences of it. '
-          'https://stripe.com/docs/security/guide#validating-pci-compliance. \n'
-          'To handle PCI compliance yourself and allow to edit card data programatically,'
-          'set `dangerouslyGetFullCardDetails: true`',
-        );
+        dev.log('WARNING! Initial card data value has been ignored. \n'
+            '$_kDebugPCIMessage');
       }
       WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
         controller._updateDetails(const CardFieldInputDetails(complete: false));
@@ -576,13 +577,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
 
   @override
   void dangerouslyUpdateCardDetails(CardFieldInputDetails details) {
-    assert(
-        widget.dangerouslyUpdateFullCardDetails,
-        'Handling card data manually will break PCI compliance provided by Stripe. \n'
-        'Please make sure you understand the severe consecuences of it. '
-        'https://stripe.com/docs/security/guide#validating-pci-compliance. \n'
-        'To handle PCI compliance yourself and allow to edit card data programatically,'
-        'set `dangerouslyGetFullCardDetails: true`');
+    assert(widget.dangerouslyUpdateFullCardDetails, _kDebugPCIMessage);
     _methodChannel?.invokeMethod('dangerouslyUpdateCardDetails', {
       'cardDetails': details.toJson(),
     });
