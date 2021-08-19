@@ -126,6 +126,8 @@ class ColorKey {
 
 /// User input details.
 class CardFieldInputDetails with _$CardFieldInputDetails {
+  const CardFieldInputDetails._();
+
   @JsonSerializable(explicitToJson: true)
   const factory CardFieldInputDetails({
     /// Indicates whether the card field input is complete.
@@ -145,6 +147,14 @@ class CardFieldInputDetails with _$CardFieldInputDetails {
 
     /// Brand of the card.
     String? brand,
+
+    /// Card number.
+    /// This information is not available by default to comply with the PCI compliance
+    String? number,
+
+    /// CVC code.
+    /// This information is not available by default to comply with the PCI compliance
+    String? cvc,
   }) = _CardFieldInputDetails;
 
   factory CardFieldInputDetails.fromJson(Map<String, dynamic> json) =>

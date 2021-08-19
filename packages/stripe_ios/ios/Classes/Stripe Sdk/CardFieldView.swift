@@ -7,7 +7,7 @@ public class CardFieldView: UIView, STPPaymentCardTextFieldDelegate {
     @objc var onFocusChange: RCTDirectEventBlock?
     @objc var dangerouslyGetFullCardDetails: Bool = false
     
-    private var cardField = STPPaymentCardTextField()
+    internal var cardField = STPPaymentCardTextField()
     
     public var cardParams: STPPaymentMethodCardParams? = nil
     public var cardPostalCode: String? = nil
@@ -141,6 +141,7 @@ public class CardFieldView: UIView, STPPaymentCardTextFieldDelegate {
             }
             if (dangerouslyGetFullCardDetails) {
                 cardData["number"] = textField.cardParams.number ?? ""
+                cardData["cvc"] = textField.cardParams.cvc ?? ""
             }
             onCardChange!(cardData as [AnyHashable : Any])
         }

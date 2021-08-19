@@ -14,12 +14,19 @@ class NoWebhookPaymentScreen extends StatefulWidget {
 }
 
 class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
-  CardFieldInputDetails? _card;
-  final _editController = CardEditController();
+  final controller = CardEditController();
 
   @override
+  void initState() {
+    controller.addListener(update);
+    super.initState();
+  }
+
+  void update() => setState(() {});
+  @override
   void dispose() {
-    _editController.dispose();
+    controller.removeListener(update);
+    controller.dispose();
     super.dispose();
   }
 
@@ -32,18 +39,14 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
           Padding(
             padding: EdgeInsets.all(16),
             child: CardField(
-              controller: _editController,
-              onCardChanged: (card) {
-                setState(() {
-                  _card = card;
-                });
-              },
+              controller: controller,
             ),
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: LoadingButton(
-              onPressed: _card?.complete == true ? _handlePayPress : null,
+              onPressed:
+                  controller.details.complete == true ? _handlePayPress : null,
               text: 'Pay',
             ),
           ),
@@ -56,30 +59,31 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 child: ElevatedButton(
-                  onPressed: () => _editController.blur(),
+                  onPressed: () => controller.blur(),
                   child: Text('Blur'),
                 ),
               ),
               ElevatedButton(
-                onPressed: () => _editController.clear(),
+                onPressed: () => controller.clear(),
                 child: Text('Clear'),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 16.0),
                 child: ElevatedButton(
-                  onPressed: () => _editController.focus(),
+                  onPressed: () => controller.focus(),
                   child: Text('Focus'),
                 ),
               ),
             ],
           ),
+          ListTile(title: Text(controller.details.toJson().toString()))
         ],
       ),
     );
   }
 
   Future<void> _handlePayPress() async {
-    if (_card == null) {
+    if (!controller.details.complete) {
       return;
     }
 
