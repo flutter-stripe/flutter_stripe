@@ -26,6 +26,9 @@ class StripeSdkGooglePayButtonPlatformView(
             googlePayButtonManager.buttonType(payButton, creationParams["buttonType"] as String)
         }
         payButton.initialize()
+        payButton.getChildAt(0).setOnClickListener {
+            channel.invokeMethod("onPressed", null)
+        }
     }
 
     override fun getView(): View {
@@ -38,8 +41,5 @@ class StripeSdkGooglePayButtonPlatformView(
 
     override fun onFlutterViewAttached(flutterView: View) {
         googlePayButtonManager.onAfterUpdateTransaction(payButton)
-        view.setOnClickListener {
-            channel.invokeMethod("onPressed", null)
-        }
     }
 }
