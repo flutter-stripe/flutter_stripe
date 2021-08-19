@@ -13,19 +13,8 @@ class NoWebhookPaymentScreen extends StatefulWidget {
   _NoWebhookPaymentScreenState createState() => _NoWebhookPaymentScreenState();
 }
 
- final _kInitialData = CardFieldInputDetails(
-    complete: true,
-    number: '4242424242424242',
-    postalCode: '28024',
-    expiryMonth: 12,
-    expiryYear: 2030,
-    cvc: '222',
-  );
-
 class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
- 
-  final controller = CardEditController(initialDetails: _kInitialData);
-  bool forceInitialData = false;
+  final controller = CardEditController();
 
   @override
   void initState() {
@@ -50,9 +39,6 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
           Padding(
             padding: EdgeInsets.all(16),
             child: CardField(
-              key: ValueKey('Card_ForceInitialData:$forceInitialData'),
-              dangerouslyUpdateFullCardDetails: forceInitialData,
-              dangerouslyGetFullCardDetails: forceInitialData,
               controller: controller,
             ),
           ),
@@ -89,14 +75,6 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
                 ),
               ),
             ],
-          ),
-          SwitchListTile.adaptive(
-            title: Text('Force Initial Data'),
-            value: forceInitialData,
-            onChanged: (value) {
-              
-              setState(() =>  forceInitialData = value);
-            },
           ),
           ListTile(title: Text(controller.details.toJson().toString()))
         ],
