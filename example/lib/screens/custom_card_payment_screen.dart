@@ -16,7 +16,6 @@ class CustomCardPaymentScreen extends StatefulWidget {
 
 class _CustomCardPaymentScreenState extends State<CustomCardPaymentScreen> {
   CardDetails _card = CardDetails();
-  String _email = '';
   bool? _saveCard = false;
 
   @override
@@ -34,17 +33,6 @@ class _CustomCardPaymentScreenState extends State<CustomCardPaymentScreen> {
                   'your own card field implementation. '
                   'Please beware that this will potentially break PCI compliance: '
                   'https://stripe.com/docs/security/guide#validating-pci-compliance')),
-          Padding(
-            padding: EdgeInsets.all(16),
-            child: TextField(
-              decoration: InputDecoration(hintText: 'Email'),
-              onChanged: (value) {
-                setState(() {
-                  _email = value;
-                });
-              },
-            ),
-          ),
           Padding(
             padding: EdgeInsets.all(16),
             child: Row(
