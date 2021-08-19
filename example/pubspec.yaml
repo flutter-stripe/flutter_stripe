@@ -18,16 +18,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  
-dependency_overrides:
-  flutter_stripe:
-    path: ../packages/stripe
-  stripe_platform_interface:
-    path: ../packages/stripe_platform_interface
-  stripe_android:
-    path: ../packages/stripe_android
-  stripe_ios:
-    path: ../packages/stripe_ios
 
 flutter:
   uses-material-design: true
