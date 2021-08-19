@@ -52,6 +52,7 @@ class _GooglePayButtonState extends State<GooglePayButton> {
         );
       },
       onCreatePlatformView: (params) {
+        onPlatformViewCreated(params.id);
         return PlatformViewsService.initSurfaceAndroidView(
           id: params.id,
           viewType: GooglePayButton._viewType,

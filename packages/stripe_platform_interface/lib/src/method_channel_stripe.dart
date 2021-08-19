@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:stripe_platform_interface/src/models/create_token_data.dart';
+import 'package:stripe_platform_interface/src/models/google_pay.dart';
 import 'package:stripe_platform_interface/src/result_parser.dart';
 
 import 'models/app_info.dart';
@@ -240,21 +241,26 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<PaymentMethod> createGooglePayPaymentMethod() {
+  Future<PaymentMethod> createGooglePayPaymentMethod(CreateGooglePayPaymentParams params) {
     // TODO: implement createGooglePayPaymentMethod
     throw UnimplementedError();
   }
 
   @override
-  Future<void> initGooglePay() {
-    // TODO: implement initGooglePay
-    throw UnimplementedError();
+  Future<void> initGooglePay(GooglePayInitParams params) async {
+    return await _methodChannel
+        .invokeMethod('initGooglePay', {'params': params.toJson()});
   }
 
   @override
-  Future<void> presentGooglePay() {
-    // TODO: implement presentGooglePay
-    throw UnimplementedError();
+  Future<void> presentGooglePay(PresentGooglePayParams params) async {
+    final result = await _methodChannel
+            .invokeMapMethod('presentGooglePay', {'params': params.toJson()})
+        as Map<String, dynamic>;
+
+    if (result.containsKey('error')) {
+      throw ResultParser<void>(parseJson: (json) => {}).parseError(result);
+    }
   }
 }
 

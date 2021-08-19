@@ -303,7 +303,8 @@ class Stripe {
   ///
   /// throws [StripeException] in case of a failure
   Future<void> presentPaymentSheet({
-    @Deprecated('Params are now inherited from initPaymentSheet so this `parameters` can be removed') dynamic parameters,
+    @Deprecated('Params are now inherited from initPaymentSheet so this `parameters` can be removed')
+        dynamic parameters,
   }) async {
     await _awaitForSettings();
     return await _platform.presentPaymentSheet();
@@ -324,6 +325,16 @@ class Stripe {
   /// details: https://stripe.com/docs/security/guide#validating-pci-compliance
   Future<void> dangerouslyUpdateCardDetails(CardDetails card) async {
     return await _platform.dangerouslyUpdateCardDetails(card);
+  }
+
+  /// Inititialise google pay
+  Future<void> initGooglePay(GooglePayInitParams params) async {
+    return await _platform.initGooglePay(params);
+  }
+
+  /// Setup google pay
+  Future<void> presentGooglePay(PresentGooglePayParams params) async {
+    return await _platform.presentGooglePay(params);
   }
 
   FutureOr<void> _awaitForSettings() {
