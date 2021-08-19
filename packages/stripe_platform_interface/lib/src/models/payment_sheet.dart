@@ -10,11 +10,11 @@ part 'payment_sheet.g.dart';
 @freezed
 class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
   const factory SetupPaymentSheetParameters({
-    ///Whether or not to display a custom flow
+    /// Whether or not to use a custom flow. 
     ///
-    /// When value is `false` make sure [PresentPaymentSheetParameters.confirmPayment]
-    /// is set to `true`. If value is set to `true` [PresentPaymentSheetParameters.confirmPayment]
-    /// has to be set to `false`.
+    /// If this value is true, the payment sheet will allow to select a payment method
+    /// and a later confirmation will be needed by calling [confirmPaymentSheetPayment]
+    /// By default, false.
     @Default(false) bool customFlow,
 
     /// The identifier of the Stripe Customer object.
@@ -84,6 +84,7 @@ class UserInterfaceStyleKey {
 
 /// Parameters used to display the payment sheet.
 @freezed
+@Deprecated('Parameters are now inherited from initPaymentSheet')
 class PresentPaymentSheetParameters with _$PresentPaymentSheetParameters {
   const factory PresentPaymentSheetParameters({
     /// Key used for client-side retrieval using a publishable key.
