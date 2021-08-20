@@ -22,7 +22,9 @@ class _GooglePayStripeScreenState extends State<GooglePayStripeScreen> {
 
       // 2.present google pay sheet
       await Stripe.instance.initGooglePay(GooglePayInitParams(
-          merchantName: "Example Merchant Name", countryCode: 'us'));
+          testEnv: true,
+          merchantName: "Example Merchant Name",
+          countryCode: 'us'));
 
       await Stripe.instance.presentGooglePay(
         PresentGooglePayParams(clientSecret: clientSecret),

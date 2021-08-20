@@ -22,7 +22,13 @@ public class Promise {
         mainHandler.post(new Runnable() {
             @Override
             public void run() {
-                methodResult.success(result);
+                try {
+                    methodResult.success(result);
+                } catch (IllegalStateException e) {
+                    // no-op - implementation issues on Stripe React Native
+                    // https://github.com/stripe/stripe-react-native/issues/528
+                    e.printStackTrace();
+                }
             }
         });
     }
