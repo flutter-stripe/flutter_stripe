@@ -241,9 +241,16 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<PaymentMethod> createGooglePayPaymentMethod(CreateGooglePayPaymentParams params) {
-    // TODO: implement createGooglePayPaymentMethod
-    throw UnimplementedError();
+  Future<PaymentMethod> createGooglePayPaymentMethod(
+      CreateGooglePayPaymentParams params) async {
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('createGooglePayPaymentMethod', {
+      'params': params.toJson(),
+    });
+
+    return ResultParser<PaymentMethod>(
+            parseJson: (json) => PaymentMethod.fromJson(json))
+        .parse(result: result!, successResultKey: 'paymentMethod');
   }
 
   @override
@@ -254,11 +261,10 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<void> presentGooglePay(PresentGooglePayParams params) async {
-    final result = await _methodChannel
-            .invokeMapMethod('presentGooglePay', {'params': params.toJson()})
-        as Map<String, dynamic>;
+    final result = await _methodChannel.invokeMapMethod<String, dynamic>(
+        'presentGooglePay', {'params': params.toJson()});
 
-    if (result.containsKey('error')) {
+    if (result!.containsKey('error')) {
       throw ResultParser<void>(parseJson: (json) => {}).parseError(result);
     }
   }

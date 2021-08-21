@@ -332,9 +332,19 @@ class Stripe {
     return await _platform.initGooglePay(params);
   }
 
-  /// Setup google pay
+  /// Setup google pay.
+  ///
+  /// Throws a [StripeException] in case it is failing
   Future<void> presentGooglePay(PresentGooglePayParams params) async {
     return await _platform.presentGooglePay(params);
+  }
+
+  /// Create a payment method for google pay.
+  ///
+  /// Throws a [StripeException] in case it is failing
+  Future<PaymentMethod> createGooglePayPaymentMethod(
+      CreateGooglePayPaymentParams params) async {
+    return await _platform.createGooglePayPaymentMethod(params);
   }
 
   FutureOr<void> _awaitForSettings() {
