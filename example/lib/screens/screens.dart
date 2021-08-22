@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:stripe_example/screens/apple_pay_screen.dart';
 import 'package:stripe_example/screens/custom_card_payment_screen.dart';
 import 'package:stripe_example/screens/google_pay_screen.dart';
-import 'package:stripe_example/screens/payment_sheet_screen_custom_flow.dart';
 import 'package:stripe_example/screens/google_pay_stripe_screen.dart';
+import 'package:stripe_example/screens/payment_sheet_screen_custom_flow.dart';
 import 'package:stripe_example/screens/paymentmethod_examples/ali_pay_screen.dart';
 import 'package:stripe_example/screens/paymentmethod_examples/ideal_screen.dart';
 import 'package:stripe_example/screens/paymentmethod_examples/wecchat_pay_screen.dart';
@@ -13,6 +13,7 @@ import '../screens/setup_future_payment_screen.dart';
 import '../screens/webhook_payment_screen.dart';
 import 'cvc_re_collection_screen.dart';
 import 'legacy_token_screen.dart';
+import 'no_webhook_payment_cardform_screen.dart';
 import 'payment_sheet_screen.dart';
 import 'paymentmethod_examples/payment_method_selection_screen.dart';
 import 'themes.dart';
@@ -57,6 +58,10 @@ class Example {
     Example(
       title: 'Card payment without webhooks',
       builder: (c) => NoWebhookPaymentScreen(),
+    ),
+    Example(
+      title: 'Card payment without webhooks using Card Form',
+      builder: (c) => NoWebhookPaymentCardFormScreen(),
     ),
     Example(
       title: 'Card payment with Flutter native card input (not PCI compliant)',

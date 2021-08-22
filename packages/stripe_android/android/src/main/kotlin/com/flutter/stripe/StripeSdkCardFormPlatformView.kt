@@ -36,6 +36,9 @@ class StripeSdkCardFormPlatformView(
         if (creationParams?.containsKey("cardStyle") == true) {
             cardFormViewManager.setCardStyle(cardView, ReadableMap(creationParams["cardStyle"] as Map<String, Any>))
         }
+        if (creationParams?.containsKey("placeholder") == true) {
+            cardFormViewManager.setPlaceHolders(cardView, ReadableMap(creationParams["placeholder"] as Map<String, Any>))
+        }
         if (creationParams?.containsKey("postalCodeEnabled") == true) {
             cardFormViewManager.setPostalCodeEnabled(cardView, creationParams["postalCodeEnabled"] as Boolean)
         }
@@ -85,6 +88,11 @@ class StripeSdkCardFormPlatformView(
             "onStyleChanged" -> {
                 val arguments = ReadableMap(call.arguments as Map<String, Any>)
                 cardFormViewManager.setCardStyle(cardView, arguments.getMap("cardStyle") as  ReadableMap)
+                result.success(null)
+            }
+            "onPlaceholderChanged" -> {
+                val arguments = ReadableMap(call.arguments as Map<String, Any>)
+                cardFormViewManager.setPlaceHolders(cardView, arguments.getMap("placeholder") as ReadableMap)
                 result.success(null)
             }
             "onPostalCodeEnabledChanged" -> {
