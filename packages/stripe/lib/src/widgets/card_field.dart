@@ -113,9 +113,8 @@ class CardEditController extends ChangeNotifier {
   final CardFieldInputDetails? _initalDetails;
   CardFieldInputDetails _details;
 
-  CardFieldInputDetails get details {
-    return _details;
-  }
+  CardFieldInputDetails get details => _details;
+  bool get complete => _details.complete;
 
   set details(CardFieldInputDetails value) {
     if (_details == value) return;
@@ -350,7 +349,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
           baseTextStyle?.color ??
           kCardFieldDefaultTextColor,
       fontSize: baseTextStyle?.fontSize ?? kCardFieldDefaultFontSize,
-      fontFamily: baseTextStyle?.fontFamily ?? kCardFieldDefaultFontFamily,
+      // fontFamily: baseTextStyle?.fontFamily ?? kCardFieldDefaultFontFamily,
       textErrorColor:
           theme.inputDecorationTheme.errorStyle?.color ?? theme.errorColor,
       placeholderColor:
