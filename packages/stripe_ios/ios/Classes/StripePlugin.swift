@@ -82,6 +82,8 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
             return createToken(call, result: result)
         case "dangerouslyUpdateCardDetails":
             return dangerouslyUpdateCardDetails(call, result: result)
+        case "createApplePayToken":
+            return createApplePayToken(call, result: result)
         default:
             result(FlutterMethodNotImplemented)
         }

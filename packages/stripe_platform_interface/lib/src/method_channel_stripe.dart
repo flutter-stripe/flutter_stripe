@@ -268,6 +268,16 @@ class MethodChannelStripe extends StripePlatform {
       throw ResultParser<void>(parseJson: (json) => {}).parseError(result);
     }
   }
+
+  @override
+  Future<TokenData> createApplePayToken(Map<String, dynamic> payment) async {
+      final result = await _methodChannel.invokeMapMethod<String, dynamic>(
+        'createApplePayToken', {'payment': payment});
+
+    return ResultParser<TokenData>(
+            parseJson: (json) => TokenData.fromJson(json))
+        .parse(result: result!, successResultKey: 'token');
+  }
 }
 
 class MethodChannelStripeFactory {

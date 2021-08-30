@@ -117,6 +117,21 @@ class Stripe {
     return isSupported;
   }
 
+  /// Creates a single-use token that represents an Apple Pay credit card’s details.
+  ///
+  /// Tokens are considered legacy, use [PaymentMethod] and [PaymentIntent]
+  /// instead.
+  /// Throws an [StripeError] in case createToken fails.
+  Future<TokenData> createApplePayToken(Map<String, dynamic> payment) async {
+    await _awaitForSettings();
+    try {
+      final tokenData = await _platform.createApplePayToken(payment);
+      return tokenData;
+    } on StripeError catch (error) {
+      throw StripeError(message: error.message, code: error.message);
+    }
+  }
+
   ///Converts payment information defined in [data] into a [PaymentMethod]
   ///object that can be passed to your server.
   ///

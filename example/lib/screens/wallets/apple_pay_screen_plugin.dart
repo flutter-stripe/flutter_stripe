@@ -1,8 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_example/config.dart';
@@ -13,17 +11,19 @@ import 'package:pay/pay.dart' as pay;
 const _paymentItems = [
   pay.PaymentItem(
     label: 'Total',
-    amount: '99.99',
+    amount: '0.01',
     status: pay.PaymentItemStatus.final_price,
   )
 ];
 
-class GooglePayScreen extends StatefulWidget {
+class ApplePayExternalPluginScreen extends StatefulWidget {
   @override
-  _GooglePayScreenState createState() => _GooglePayScreenState();
+  _ApplePayExternalPluginScreenState createState() =>
+      _ApplePayExternalPluginScreenState();
 }
 
-class _GooglePayScreenState extends State<GooglePayScreen> {
+class _ApplePayExternalPluginScreenState
+    extends State<ApplePayExternalPluginScreen> {
   @override
   void initState() {
     super.initState();
@@ -41,23 +41,19 @@ class _GooglePayScreenState extends State<GooglePayScreen> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      title: 'Google Pay',
+      title: 'Apple Pay',
       padding: EdgeInsets.all(16),
-      tags: ['Android', 'Pay plugin'],
+      tags: ['Apple', 'Pay plugin'],
       children: [
-        pay.GooglePayButton(
-          paymentConfigurationAsset: 'google_pay_payment_profile.json',
+        pay.ApplePayButton(
+          paymentConfigurationAsset: 'apple_pay_payment_profile.json',
           paymentItems: _paymentItems,
           margin: const EdgeInsets.only(top: 15),
-          onPaymentResult: onGooglePayResult,
+          onPaymentResult: onApplePayResult,
           loadingIndicator: const Center(
             child: CircularProgressIndicator(),
           ),
-          onPressed: () async {
-            // 1. Add your stripe publishable key to assets/google_pay_payment_profile.json
-            await debugChangedStripePublishableKey();
-          },
-          childOnError: Text('Google Pay is not available in this device'),
+          childOnError: Text('Apple Pay is not available in this device'),
           onError: (e) {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
@@ -71,32 +67,25 @@ class _GooglePayScreenState extends State<GooglePayScreen> {
     );
   }
 
-  Future<void> onGooglePayResult(paymentResult) async {
+  Future<void> onApplePayResult(paymentResult) async {
     try {
-      // 1. Add your stripe publishable key to assets/google_pay_payment_profile.json
-
-      debugPrint(paymentResult.toString());
+      //debugPrint(paymentResult.toString());
+      // 1. Get Stripe token from payment result
+      final token = await Stripe.instance.createApplePayToken(paymentResult);
+      print(token.id);
+      
       // 2. fetch Intent Client Secret from backend
       final response = await fetchPaymentIntentClientSecret();
       final clientSecret = response['clientSecret'];
-      final token =
-          paymentResult['paymentMethodData']['tokenizationData']['token'];
-      final tokenJson = Map.castFrom(json.decode(token));
-      print(tokenJson);
 
-      final params = PaymentMethodParams.cardFromToken(
-        token: tokenJson['id'], // TODO extract the actual token
-      );
+      final params = PaymentMethodParams.cardFromToken(token: token.id);
 
       // 3. Confirm Google pay payment method
-      await Stripe.instance.confirmPayment(
-        clientSecret,
-        params,
-      );
+      await Stripe.instance.confirmPayment(clientSecret, params);
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-            content: Text('Google Pay payment succesfully completed')),
+            content: Text('Apple Pay payment succesfully completed')),
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -123,16 +112,6 @@ class _GooglePayScreenState extends State<GooglePayScreen> {
     );
     return json.decode(response.body);
   }
-
-  Future<void> debugChangedStripePublishableKey() async {
-    if (kDebugMode) {
-      final profile =
-          await rootBundle.loadString('assets/google_pay_payment_profile.json');
-      final isValidKey = !profile.contains('<ADD_YOUR_KEY_HERE>');
-      assert(
-        isValidKey,
-        'No stripe publishable key added to assets/google_pay_payment_profile.json',
-      );
-    }
-  }
 }
+
+
