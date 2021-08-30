@@ -43,7 +43,7 @@ class _ApplePayExternalPluginScreenState
     return ExampleScaffold(
       title: 'Apple Pay',
       padding: EdgeInsets.all(16),
-      tags: ['Apple', 'Pay plugin'],
+      tags: ['iOS', 'Pay plugin'],
       children: [
         pay.ApplePayButton(
           paymentConfigurationAsset: 'apple_pay_payment_profile.json',
@@ -73,7 +73,7 @@ class _ApplePayExternalPluginScreenState
       // 1. Get Stripe token from payment result
       final token = await Stripe.instance.createApplePayToken(paymentResult);
       print(token.id);
-      
+
       // 2. fetch Intent Client Secret from backend
       final response = await fetchPaymentIntentClientSecret();
       final clientSecret = response['clientSecret'];
