@@ -237,9 +237,11 @@ class _CardFieldState extends State<CardField> {
         Theme.of(context).textTheme.subtitle1?.fontSize ??
         kCardFieldDefaultFontSize;
 
-    final fontFamily = widget.style?.fontFamily ??
-        Theme.of(context).textTheme.subtitle1?.fontFamily ??
-        kCardFieldDefaultFontFamily;
+    // Flutter fonts need to be loaded in the native framework to work
+    // As this is not automatic, default fonts are omitted
+    final fontFamily = widget.style?.fontFamily;
+      //  Theme.of(context).textTheme.subtitle1?.fontFamily ??
+      //  kCardFieldDefaultFontFamily;
 
     return CardStyle(
       textColor: widget.style?.color,
