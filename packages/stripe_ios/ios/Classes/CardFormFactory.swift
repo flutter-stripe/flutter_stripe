@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import Stripe
 
 public class CardFormFactory: NSObject, FlutterPlatformViewFactory {
  
@@ -54,7 +54,7 @@ class CardFormPlatformView : NSObject, FlutterPlatformView  {
         arguments args: Any?,
         binaryMessenger messenger: FlutterBinaryMessenger) {
      
-        channel = FlutterMethodChannel(name: "flutter.stripe/card_form/\(viewId)",
+        channel = FlutterMethodChannel(name: "flutter.stripe/card_form_field/\(viewId)",
                                            binaryMessenger: messenger)
         cardForm = CardFormView()
         super.init()
@@ -71,6 +71,7 @@ class CardFormPlatformView : NSObject, FlutterPlatformView  {
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
         case "onStyleChanged",
+             "onPlaceholderChanged",
              "onPostalCodeEnabledChanged",
              "dangerouslyGetFullCardDetails",
              "isUserInteractionEnabledValue",
@@ -82,7 +83,7 @@ class CardFormPlatformView : NSObject, FlutterPlatformView  {
           result(nil)
         case "blur":
             cardForm.blur()
-          result(nil)
+            result(nil)
         default:
             result(FlutterMethodNotImplemented)
         }

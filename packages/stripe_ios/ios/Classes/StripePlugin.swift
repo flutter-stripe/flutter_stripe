@@ -28,7 +28,7 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
         
         // Card Form
         let cardFormFactory = CardFormFactory(messenger: registrar.messenger(), delegate: instance)
-        registrar.register(cardFormFactory, withId: "flutter.stripe/card_form")
+        registrar.register(cardFormFactory, withId: "flutter.stripe/card_form_field")
         
         // Apple Pay Button
         let applePayFactory = ApplePayButtonViewFactory(messenger: registrar.messenger())

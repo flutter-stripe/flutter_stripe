@@ -17,6 +17,10 @@ const String _kDebugPCIMessage =
     'set `dangerouslyGetFullCardDetails: true`';
 
 /// Customizable form that collects card information.
+/// 
+/// Notice implementation differs for iOS and Android platforms:
+/// ![Sripe Card Form]
+/// (https://github.com/flutter-stripe/flutter_stripe/tree/main/docs/assets/card_form.png)
 class CardFormField extends StatefulWidget {
   const CardFormField(
       {this.onCardChanged,
@@ -188,43 +192,24 @@ class _CardFormFieldState extends State<CardFormField> {
     final inputDecoration = effectiveDecoration(widget.decoration);
     final style = effectiveCardStyle(inputDecoration);
 
-    // Arbitrary values compared for both Android and iOS platform
-    // For adding a framework input decorator, the platform one is removed
-    // together with the extra padding
-    final platformCardHeight =
-        kCardFormFieldDefaultHeight + (widget.enablePostalCode ? 60 : 0);
-    const platformMargin = EdgeInsets.fromLTRB(12, 10, 10, 12);
-
-    final cardHeight = platformCardHeight - platformMargin.vertical;
-    return InputDecorator(
-      isFocused: _node.hasFocus,
-      decoration: inputDecoration,
-      baseStyle: widget.style,
-      child: SizedBox(
-        height: cardHeight,
-        child: CustomSingleChildLayout(
-          delegate: const _NegativeMarginLayout(margin: platformMargin),
-          child: _MethodChannelCardFormField(
-            height: platformCardHeight,
-            focusNode: _node,
-            controller: controller,
-            style: style,
-            placeholder: CardPlaceholder(
-              number: widget.numberHintText,
-              expiration: widget.expirationHintText,
-              cvc: widget.cvcHintText,
-              postalCode: widget.postalCodeHintText,
-            ),
-            dangerouslyGetFullCardDetails: widget.dangerouslyGetFullCardDetails,
-            dangerouslyUpdateFullCardDetails:
-                widget.dangerouslyUpdateFullCardDetails,
-            enablePostalCode: widget.enablePostalCode,
-            onCardChanged: widget.onCardChanged,
-            autofocus: widget.autofocus,
-            onFocus: widget.onFocus,
-          ),
+    return  _MethodChannelCardFormField(
+        focusNode: _node,
+        controller: controller,
+        style: style,
+        placeholder: CardPlaceholder(
+          number: widget.numberHintText,
+          expiration: widget.expirationHintText,
+          cvc: widget.cvcHintText,
+          postalCode: widget.postalCodeHintText,
         ),
-      ),
+        dangerouslyGetFullCardDetails: widget.dangerouslyGetFullCardDetails,
+        dangerouslyUpdateFullCardDetails:
+            widget.dangerouslyUpdateFullCardDetails,
+        enablePostalCode: widget.enablePostalCode,
+        onCardChanged: widget.onCardChanged,
+        autofocus: widget.autofocus,
+        onFocus: widget.onFocus,
+      
     );
   }
 
@@ -254,33 +239,6 @@ class _CardFormFieldState extends State<CardFormField> {
   }
 }
 
-// Crops a view by a given negative margin values.
-// http://ln.hixie.ch/?start=1515099369&count=1
-class _NegativeMarginLayout extends SingleChildLayoutDelegate {
-  const _NegativeMarginLayout({required this.margin});
-
-  final EdgeInsets margin;
-
-  @override
-  BoxConstraints getConstraintsForChild(BoxConstraints constraints) {
-    final biggest = super.getConstraintsForChild(constraints).biggest;
-    return BoxConstraints.expand(
-      width: biggest.width + margin.horizontal,
-      height: biggest.height + margin.vertical,
-    );
-  }
-
-  @override
-  Offset getPositionForChild(Size size, Size childSize) {
-    return super.getPositionForChild(size, childSize) - margin.topLeft;
-  }
-
-  @override
-  bool shouldRelayout(covariant _NegativeMarginLayout oldDelegate) {
-    return margin != oldDelegate.margin;
-  }
-}
-
 class _MethodChannelCardFormField extends StatefulWidget {
   _MethodChannelCardFormField({
     this.onCardChanged,
@@ -291,7 +249,7 @@ class _MethodChannelCardFormField extends StatefulWidget {
     this.placeholder,
     this.enablePostalCode = false,
     double? width,
-    double? height = kCardFormFieldDefaultHeight,
+    double? height,
     BoxConstraints? constraints,
     this.focusNode,
     this.dangerouslyGetFullCardDetails = false,
@@ -432,7 +390,10 @@ class _MethodChannelCardFormFieldState
       throw UnsupportedError('Unsupported platform view');
     }
     final constraints = widget.constraints ??
-        const BoxConstraints.expand(height: kCardFormFieldDefaultHeight);
+        BoxConstraints.expand(
+            height: defaultTargetPlatform == TargetPlatform.iOS
+                ? kCardFormFieldDefaultIOSHeight
+                : kCardFormFieldDefaultAndroidHeight);
 
     return Listener(
       onPointerDown: (_) {
@@ -654,7 +615,8 @@ class _UiKitCardFormField extends StatelessWidget {
   }
 }
 
-const kCardFormFieldDefaultHeight = 240.0;
+const kCardFormFieldDefaultAndroidHeight = 270.0;
+const kCardFormFieldDefaultIOSHeight = 170.0;
 const kCardFormFieldDefaultFontSize = 17.0;
 const kCardFormFieldDefaultTextColor = Colors.black;
 const kCardFormFieldDefaultFontFamily = 'Roboto';
