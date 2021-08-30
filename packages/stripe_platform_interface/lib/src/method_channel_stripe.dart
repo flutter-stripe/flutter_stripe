@@ -111,12 +111,12 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<String> createTokenForCVCUpdate(String cvc) async {
-    final result = await _methodChannel.invokeMethod<String>(
+    final result = await _methodChannel.invokeMapMethod(
       'createTokenForCVCUpdate',
       {'cvc': cvc},
     );
 
-    return result.unfoldToNonNull();
+    return result.unfoldToNonNull()['tokenId'];
   }
 
   @override
