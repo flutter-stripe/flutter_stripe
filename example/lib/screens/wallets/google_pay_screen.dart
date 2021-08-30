@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_example/config.dart';
+import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 import 'package:pay/pay.dart' as pay;
 
@@ -39,37 +40,34 @@ class _GooglePayScreenState extends State<GooglePayScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: pay.GooglePayButton(
-              paymentConfigurationAsset: 'google_pay_payment_profile.json',
-              paymentItems: _paymentItems,
-              margin: const EdgeInsets.only(top: 15),
-              onPaymentResult: onGooglePayResult,
-              loadingIndicator: const Center(
-                child: CircularProgressIndicator(),
+    return ExampleScaffold(
+      title: 'Google Pay',
+      padding: EdgeInsets.all(16),
+      tags: ['Android'],
+      children: [
+        pay.GooglePayButton(
+          paymentConfigurationAsset: 'google_pay_payment_profile.json',
+          paymentItems: _paymentItems,
+          margin: const EdgeInsets.only(top: 15),
+          onPaymentResult: onGooglePayResult,
+          loadingIndicator: const Center(
+            child: CircularProgressIndicator(),
+          ),
+          onPressed: () async {
+            // 1. Add your stripe publishable key to assets/google_pay_payment_profile.json
+            await debugChangedStripePublishableKey();
+          },
+          childOnError: Text('Google Pay is not available in this device'),
+          onError: (e) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text(
+                    'There was an error while trying to perform the payment'),
               ),
-              onPressed: () async {
-                // 1. Add your stripe publishable key to assets/google_pay_payment_profile.json
-                await debugChangedStripePublishableKey();
-              },
-              onError: (e) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text(
-                        'There was an error while trying to perform the payment'),
-                  ),
-                );
-              },
-            ),
-          )
-        ],
-      ),
+            );
+          },
+        ),
+      ],
     );
   }
 

@@ -3,7 +3,7 @@ import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen_custom_flow.dart';
 import 'package:stripe_example/screens/regional_payment_methods/ali_pay_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/ideal_screen.dart';
-import 'package:stripe_example/screens/regional_payment_methods/wecchat_pay_screen.dart';
+import 'package:stripe_example/screens/regional_payment_methods/wechat_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/google_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/google_pay_stripe_screen.dart';

@@ -1,11 +1,11 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
 import 'package:stripe_example/config.dart';
-
-
+import 'package:stripe_example/widgets/example_scaffold.dart';
 
 class GooglePayStripeScreen extends StatefulWidget {
   const GooglePayStripeScreen({Key? key}) : super(key: key);
@@ -63,18 +63,23 @@ class _GooglePayStripeScreenState extends State<GooglePayStripeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: SizedBox(
-            width: 300,
+    return ExampleScaffold(
+      title: 'Google Pay',
+      tags: ['Android'],
+      padding: EdgeInsets.all(16),
+      children: [
+        if (defaultTargetPlatform == TargetPlatform.android)
+          SizedBox(
             height: 75,
             child: GooglePayButton(
               onTap: () {
                 startGooglePay();
               },
-            )),
-      ),
+            ),
+          )
+        else
+          Text('Google Pay is not available in this device'),
+      ],
     );
   }
 }

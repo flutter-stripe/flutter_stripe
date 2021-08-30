@@ -3,7 +3,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
+import 'package:stripe_example/utils.dart';
+import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
+import 'package:stripe_example/widgets/response_card.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 import 'package:stripe_example/config.dart';
@@ -32,64 +35,59 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(16),
-            child: CardField(
-              controller: controller,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: LoadingButton(
-              onPressed:
-                  controller.details.complete == true ? _handlePayPress : null,
-              text: 'Pay',
-            ),
-          ),
-          Divider(
-            thickness: 2,
-          ),
-          Row(
+    return ExampleScaffold(
+      title: 'Card Field',
+      tags: ['No Webhook'],
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      children: [
+        CardField(
+          controller: controller,
+        ),
+        SizedBox(height: 20),
+        LoadingButton(
+          text: 'Pay',
+          onPressed: controller.complete ? _handlePayPress : null,
+        ),
+        SizedBox(height: 20),
+        Divider(),
+        Container(
+          padding: EdgeInsets.all(8),
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                child: ElevatedButton(
-                  onPressed: () => controller.blur(),
-                  child: Text('Blur'),
-                ),
+              OutlinedButton(
+                onPressed: () => controller.focus(),
+                child: Text('Focus'),
               ),
-              ElevatedButton(
+              SizedBox(width: 12),
+              OutlinedButton(
+                onPressed: () => controller.blur(),
+                child: Text('Blur'),
+              ),
+              SizedBox(width: 12),
+              OutlinedButton(
                 onPressed: () => controller.clear(),
                 child: Text('Clear'),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 16.0),
-                child: ElevatedButton(
-                  onPressed: () => controller.focus(),
-                  child: Text('Focus'),
-                ),
-              ),
             ],
           ),
-          ListTile(title: Text(controller.details.toJson().toString()))
-        ],
-      ),
+        ),
+        Divider(),
+        SizedBox(height: 20),
+        ResponseCard(
+          response: controller.details.toJson().toPrettyString(),
+        )
+      ],
     );
   }
 
   Future<void> _handlePayPress() async {
-    if (!controller.details.complete) {
+    if (!controller.complete) {
       return;
     }
 
     try {
       // 1. Gather customer billing information (ex. email)
-
       final billingDetails = BillingDetails(
         email: 'email@stripe.com',
         phone: '+48888000888',

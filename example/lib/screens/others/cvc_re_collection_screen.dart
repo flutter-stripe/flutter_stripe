@@ -4,10 +4,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 
 import '../../config.dart';
-
 
 class CVCReCollectionScreen extends StatefulWidget {
   @override
@@ -15,53 +15,45 @@ class CVCReCollectionScreen extends StatefulWidget {
 }
 
 class _CVCReCollectionScreenState extends State<CVCReCollectionScreen> {
-  String _email = '';
+  String _email = 'email@stripe.com';
   String _cvc = '';
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(16),
-            child: TextField(
-              decoration: InputDecoration(hintText: 'Email'),
-              onChanged: (value) {
-                setState(() {
-                  _email = value;
-                });
-              },
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(16),
-            child: TextField(
-              decoration: InputDecoration(hintText: 'CVC'),
-              onChanged: (value) {
-                setState(() {
-                  _cvc = value;
-                });
-              },
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: LoadingButton(
-              onPressed: _payAsynchronously,
-              text: 'Pay with Webhook',
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: LoadingButton(
-              onPressed: _paySynchronously,
-              text: 'Pay Synchronously',
-            ),
-          ),
-        ],
-      ),
+    return ExampleScaffold(
+      title: 'Re-collect CVC',
+      tags: ['Card Payment'],
+      padding: EdgeInsets.all(16),
+      children: [
+        TextFormField(
+          initialValue: _email,
+          decoration: InputDecoration(hintText: 'Email', labelText: 'Email'),
+          onChanged: (value) {
+            setState(() {
+              _email = value;
+            });
+          },
+        ),
+        SizedBox(height: 20),
+        TextField(
+          decoration: InputDecoration(hintText: 'CVC', labelText: 'CVC'),
+          onChanged: (value) {
+            setState(() {
+              _cvc = value;
+            });
+          },
+        ),
+        SizedBox(height: 42),
+        LoadingButton(
+          onPressed: _payAsynchronously,
+          text: 'Pay with Webhook',
+        ),
+        SizedBox(height: 8),
+        LoadingButton(
+          onPressed: _paySynchronously,
+          text: 'Pay Synchronously',
+        ),
+      ],
     );
   }
 
@@ -78,14 +70,6 @@ class _CVCReCollectionScreenState extends State<CVCReCollectionScreen> {
           SnackBar(content: Text('Error code: ${paymentMethod['error']}')));
       return;
     }
-
-    // 2. Confirm payment with CVC
-    // The rest will be done automatically using webhooks
-
-    /*if (paymentIntent.paymentIntentError) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Error code: ${error}')));
-    } else */
 
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text('Success!: The payment was confirmed successfully!')));
@@ -107,14 +91,15 @@ class _CVCReCollectionScreenState extends State<CVCReCollectionScreen> {
       email: _email,
     );
     log('paymentIntent $paymentIntent');
-    if (paymentIntent['error']) {
+    if (paymentIntent['error'] != null) {
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Error code: ${paymentIntent['error']}')));
-    } else if (paymentIntent['status'] == 'succeeded') {
+    } else if (paymentIntent['succeeded'] == true) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('Success!: The payment was confirmed successfully!')));
     } else {
       // Handle other statuses accordingly
+      throw UnimplementedError();
     }
   }
 
