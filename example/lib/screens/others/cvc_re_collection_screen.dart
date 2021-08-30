@@ -6,7 +6,8 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 
-import '../config.dart';
+import '../../config.dart';
+
 
 class CVCReCollectionScreen extends StatefulWidget {
   @override

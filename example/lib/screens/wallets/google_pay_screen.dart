@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:stripe_example/config.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 import 'package:pay/pay.dart' as pay;
-import '../config.dart';
 
 const _paymentItems = [
   pay.PaymentItem(

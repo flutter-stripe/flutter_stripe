@@ -3,8 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
+import 'package:stripe_example/config.dart';
 
-import '../config.dart';
+
 
 class GooglePayStripeScreen extends StatefulWidget {
   const GooglePayStripeScreen({Key? key}) : super(key: key);

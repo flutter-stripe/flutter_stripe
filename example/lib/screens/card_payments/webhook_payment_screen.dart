@@ -6,7 +6,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
-import '../config.dart';
+import 'package:stripe_example/config.dart';
 
 class WebhookPaymentScreen extends StatefulWidget {
   @override

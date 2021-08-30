@@ -48,19 +48,7 @@ class _HomePageState extends State<HomePage> {
       body: ListView(children: [
         ...ListTile.divideTiles(
           context: context,
-          tiles: [
-            for (final example in Example.screens)
-              ListTile(
-                onTap: () {
-                  final route = MaterialPageRoute(builder: example.builder);
-                  Navigator.push(context, route);
-                },
-                title: Text(example.title),
-                trailing: Icon(
-                  Icons.chevron_right_rounded,
-                ),
-              ),
-          ],
+          tiles: [for (final example in Example.screens) example],
         ),
       ]),
     );
@@ -68,6 +56,8 @@ class _HomePageState extends State<HomePage> {
 }
 
 final exampleAppTheme = ThemeData(
-    colorScheme: ColorScheme.light(primary: Color(0xff6058F7)),
-    primaryColor: Colors.white,
-    appBarTheme: AppBarTheme(elevation: 1));
+  colorScheme: ColorScheme.light(
+      primary: Color(0xff6058F7), secondary: Color(0xff6058F7)),
+  primaryColor: Colors.white,
+  appBarTheme: AppBarTheme(elevation: 1),
+);

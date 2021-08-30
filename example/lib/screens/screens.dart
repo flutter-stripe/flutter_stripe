@@ -1,103 +1,165 @@
 import 'package:flutter/material.dart';
-import 'package:stripe_example/screens/apple_pay_screen.dart';
-import 'package:stripe_example/screens/custom_card_payment_screen.dart';
-import 'package:stripe_example/screens/google_pay_screen.dart';
-import 'package:stripe_example/screens/google_pay_stripe_screen.dart';
-import 'package:stripe_example/screens/payment_sheet_screen_custom_flow.dart';
-import 'package:stripe_example/screens/paymentmethod_examples/ali_pay_screen.dart';
-import 'package:stripe_example/screens/paymentmethod_examples/ideal_screen.dart';
-import 'package:stripe_example/screens/paymentmethod_examples/wecchat_pay_screen.dart';
+import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen.dart';
+import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen_custom_flow.dart';
+import 'package:stripe_example/screens/regional_payment_methods/ali_pay_screen.dart';
+import 'package:stripe_example/screens/regional_payment_methods/ideal_screen.dart';
+import 'package:stripe_example/screens/regional_payment_methods/wecchat_pay_screen.dart';
+import 'package:stripe_example/screens/wallets/apple_pay_screen.dart';
+import 'package:stripe_example/screens/wallets/google_pay_screen.dart';
+import 'package:stripe_example/screens/wallets/google_pay_stripe_screen.dart';
 
-import '../screens/no_webhook_payment_screen.dart';
-import '../screens/setup_future_payment_screen.dart';
-import '../screens/webhook_payment_screen.dart';
-import 'cvc_re_collection_screen.dart';
-import 'legacy_token_screen.dart';
-import 'no_webhook_payment_cardform_screen.dart';
-import 'payment_sheet_screen.dart';
-import 'paymentmethod_examples/payment_method_selection_screen.dart';
+import 'card_payments/custom_card_payment_screen.dart';
+import 'card_payments/no_webhook_payment_cardform_screen.dart';
+import 'card_payments/no_webhook_payment_screen.dart';
+import 'card_payments/webhook_payment_screen.dart';
+import 'others/cvc_re_collection_screen.dart';
+import 'others/legacy_token_screen.dart';
+import 'others/setup_future_payment_screen.dart';
 import 'themes.dart';
 
-class Example {
+class ExampleSection extends StatelessWidget {
   final String title;
+  final List<Widget> children;
+  final bool expanded;
+
+  const ExampleSection({
+    Key? key,
+    required this.title,
+    required this.children,
+    this.expanded = false,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ExpansionTile(
+      backgroundColor: Theme.of(context).primaryColor.withOpacity(0.2),
+      initiallyExpanded: expanded,
+      childrenPadding: EdgeInsets.only(left: 20),
+      title: Text(title),
+      children:
+          ListTile.divideTiles(tiles: children, context: context).toList(),
+    );
+  }
+}
+
+class Example extends StatelessWidget {
+  final String title;
+  final TextStyle? style;
+  final Widget? leading;
+
   final WidgetBuilder builder;
 
   Example({
     required this.title,
     required this.builder,
+    this.style,
+    this.leading,
   });
 
-  static List<Example> paymentMethodScreens = [
-    Example(
-      title: 'Ali Pay',
-      builder: (context) => AliPayScreen(),
-    ),
-    Example(
-      title: 'Ideal',
-      builder: (context) => IdealScreen(),
-    ),
-    Example(
-      title: 'WeChat Pay',
-      builder: (context) => WeChatPayScreen(),
-    ),
-  ];
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      onTap: () {
+        final route = MaterialPageRoute(builder: builder);
+        Navigator.push(context, route);
+      },
+      title: Text(title, style: style),
+      leading: this.leading,
+      trailing: Icon(Icons.chevron_right_rounded),
+    );
+  }
 
-  static List<Example> screens = [
-    Example(
-      title: 'Payment sheet',
-      builder: (context) => PaymentSheetScreen(),
+  static List<Example> paymentMethodScreens = [];
+
+  static List<Widget> screens = [
+    ExampleSection(
+      title: 'Payment Sheet',
+      children: [
+        Example(
+          title: 'Single Step',
+          builder: (context) => PaymentSheetScreen(),
+        ),
+        Example(
+          title: 'Custom Flow',
+          builder: (context) => PaymentSheetScreenWithCustomFlow(),
+        ),
+      ],
+      expanded: true,
     ),
-    Example(
-      title: 'Payment sheet - Custom Flow',
-      builder: (context) => PaymentSheetScreenWithCustomFlow(),
+    ExampleSection(
+      title: 'Card Payments',
+      children: [
+        Example(
+          title: 'Simple - Using webhooks',
+          style: TextStyle(fontWeight: FontWeight.w600),
+          builder: (c) => WebhookPaymentScreen(),
+        ),
+        Example(
+          title: 'Without webhooks',
+          builder: (c) => NoWebhookPaymentScreen(),
+        ),
+        Example(
+          title: 'Card Form',
+          builder: (c) => NoWebhookPaymentCardFormScreen(),
+        ),
+        Example(
+          title: 'Card Field themes',
+          builder: (c) => ThemeCardExample(),
+        ),
+        Example(
+          title: 'Flutter UI (not PCI compliant)',
+          builder: (c) => CustomCardPaymentScreen(),
+        ),
+      ],
     ),
-    Example(
-      title: 'Card payment using webhooks',
-      builder: (c) => WebhookPaymentScreen(),
-    ),
-    Example(
-      title: 'Card payment without webhooks',
-      builder: (c) => NoWebhookPaymentScreen(),
-    ),
-    Example(
-      title: 'Card payment without webhooks using Card Form',
-      builder: (c) => NoWebhookPaymentCardFormScreen(),
-    ),
-    Example(
-      title: 'Card payment with Flutter native card input (not PCI compliant)',
-      builder: (c) => CustomCardPaymentScreen(),
-    ),
-    Example(
-      title: 'Apple Pay payment (iOS)',
-      builder: (c) => ApplePayScreen(),
-    ),
-    Example(
-      title: 'Google Pay payment (Android)',
-      builder: (c) => GooglePayScreen(),
-    ),
-    Example(
-      title: 'Google Pay payment Stripe (Android)',
-      builder: (c) => GooglePayStripeScreen(),
-    ),
-    Example(
-      title: 'Setup Future Payment',
-      builder: (c) => SetupFuturePaymentScreen(),
-    ),
-    Example(
-      title: 'Re-collect CVC',
-      builder: (c) => CVCReCollectionScreen(),
-    ),
-    Example(
-      title: 'Card themes',
-      builder: (c) => ThemeCardExample(),
-    ),
-    Example(
-      title: 'Create token (legacy)',
-      builder: (context) => LegacyTokenScreen(),
-    ),
-    Example(
-      title: 'Regional paymentMethods',
-      builder: (context) => PaymentMethodSelectionScreen(),
-    )
+    ExampleSection(title: 'Wallets', children: [
+      Example(
+        title: 'Apple Pay (iOS)',
+        leading: Image.asset('assets/apple_pay.png', width: 48,),
+        builder: (c) => ApplePayScreen(),
+      ),
+      Example(
+        leading: Image.asset('assets/google_play.png', width: 48,),
+        title: 'Google Pay (Android)',
+        builder: (c) => GooglePayStripeScreen(),
+      ),
+      Example(
+        leading: Image.asset('assets/google_play.png', width: 48,),
+        title: 'Google Pay - pay plugin (Android)',
+        builder: (c) => GooglePayScreen(),
+      ),
+      
+    ]),
+    ExampleSection(title: 'Regional Payment Methods', children: [
+      Example(
+        title: 'Ali Pay',
+        leading: Image.asset('assets/alipay.png', width: 48,),
+        builder: (context) => AliPayScreen(),
+      ),
+      Example(
+        title: 'Ideal',
+        leading: Image.asset('assets/ideal_pay.png', width: 48,),
+        builder: (context) => IdealScreen(),
+      ),
+      Example(
+        title: 'WeChat Pay',
+        leading: Image.asset('assets/wechat_pay.png', width: 48,),
+        builder: (context) => WeChatPayScreen(),
+      ),
+    ]),
+    ExampleSection(title: 'Others', children: [
+      Example(
+        title: 'Setup Future Payment',
+        builder: (c) => SetupFuturePaymentScreen(),
+      ),
+      Example(
+        title: 'Re-collect CVC',
+        builder: (c) => CVCReCollectionScreen(),
+      ),
+      Example(
+        title: 'Create token (legacy)',
+        builder: (context) => LegacyTokenScreen(),
+      ),
+    ]),
   ];
 }
