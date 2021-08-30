@@ -73,7 +73,6 @@ class _ApplePayExternalPluginScreenState
       // 1. Get Stripe token from payment result
       final token = await Stripe.instance.createApplePayToken(paymentResult);
       print(token.id);
-
       // 2. fetch Intent Client Secret from backend
       final response = await fetchPaymentIntentClientSecret();
       final clientSecret = response['clientSecret'];

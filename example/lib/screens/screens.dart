@@ -121,6 +121,10 @@ class Example extends StatelessWidget {
           width: 48,
         ),
         builder: (c) => ApplePayScreen(),
+      ), Example(
+        title: 'Apple Pay (iOS) - Pay Plugin',
+        leading: Image.asset('assets/apple_pay.png', width: 48,),
+        builder: (c) => ApplePayExternalPluginScreen(),
       ),
       Example(
         leading: Image.asset(
