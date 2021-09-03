@@ -3,18 +3,13 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
+import 'package:stripe_example/widgets/example_scaffold.dart';
+import 'package:stripe_example/widgets/loading_button.dart';
 
 import '../../config.dart';
 
-class WeChatPayScreen extends StatefulWidget {
+class WeChatPayScreen extends StatelessWidget {
   const WeChatPayScreen({Key? key}) : super(key: key);
-
-  @override
-  _WeChatPayScreenState createState() => _WeChatPayScreenState();
-}
-
-class _WeChatPayScreenState extends State<WeChatPayScreen> {
-  var inProgress = false;
 
   Future<Map<String, dynamic>> _createPaymentIntent() async {
     final url = Uri.parse('$kApiUrl/create-payment-intent');
@@ -33,7 +28,7 @@ class _WeChatPayScreenState extends State<WeChatPayScreen> {
     return json.decode(response.body);
   }
 
-  Future<void> _pay() async {
+  Future<void> _pay(BuildContext context) async {
     // Precondition:
     //Make sure to have set a custom URI scheme in your app and add it to Stripe SDK
     // see file main.dart in this example app.
@@ -45,67 +40,53 @@ class _WeChatPayScreenState extends State<WeChatPayScreen> {
     // to build.gradle as depedency.
     // 2. on the backend create a payment intent for payment method and save the
     // client secret.
-    final result = await _createPaymentIntent();
-    final clientSecret = await result['clientSecret'];
-
-    // 3. use the client secret to confirm the payment and handle the result.
     try {
+      final result = await _createPaymentIntent();
+      final clientSecret = await result['clientSecret'];
+
+      // 3. use the client secret to confirm the payment and handle the result.
+
       await Stripe.instance.confirmPayment(
         clientSecret,
         PaymentMethodParams.weChatPay(appId: 'com.flutter.stripe.example'),
       );
 
-      setState(() {
-        inProgress = false;
-
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Payment succesfully completed'),
-          ),
-        );
-      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Payment succesfully completed'),
+        ),
+      );
     } on Exception catch (e) {
       if (e is StripeException) {
-        setState(() {
-          inProgress = false;
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Error from Stripe: ${e.error.localizedMessage}'),
-            ),
-          );
-        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error from Stripe: ${e.error.localizedMessage}'),
+          ),
+        );
       } else {
-        setState(() {
-          inProgress = true;
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Unforeseen error: ${e}'),
-            ),
-          );
-        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Unforeseen error: ${e}'),
+          ),
+        );
       }
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('WeChat Pay'),
-      ),
-      body: Center(
-        child: inProgress
-            ? CircularProgressIndicator()
-            : TextButton(
-                onPressed: () {
-                  _pay();
-                  setState(() {
-                    inProgress = true;
-                  });
-                },
-                child: Text('Pay'),
-              ),
-      ),
+    return ExampleScaffold(
+      title: 'WeChat Pay',
+      tags: ['Payment method'],
+      padding: EdgeInsets.all(16),
+      children: [
+        LoadingButton(
+          onPressed: () async {
+            await _pay(context);
+          },
+          text: 'Pay',
+        ),
+      ],
     );
   }
 }

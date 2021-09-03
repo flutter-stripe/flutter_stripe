@@ -7,8 +7,6 @@ import 'package:stripe_example/config.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
-
-
 class CustomCardPaymentScreen extends StatefulWidget {
   @override
   _CustomCardPaymentScreenState createState() =>
@@ -23,94 +21,101 @@ class _CustomCardPaymentScreenState extends State<CustomCardPaymentScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Padding(
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+                margin: EdgeInsets.all(16),
+                padding: EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Text(
+                    'If you don\'t want to or can\'t rely on the CardField you'
+                    ' can use the dangerouslyUpdateCardDetails in combination with '
+                    'your own card field implementation. \n\n'
+                    'Please beware that this will potentially break PCI compliance: '
+                    'https://stripe.com/docs/security/guide#validating-pci-compliance')),
+            Padding(
               padding: EdgeInsets.all(16),
-              child: Text(
-                  'If you don\'t want to or can\'t rely on the CardField you'
-                  ' can use the dangerouslyUpdateCardDetails in combination with '
-                  'your own card field implementation. '
-                  'Please beware that this will potentially break PCI compliance: '
-                  'https://stripe.com/docs/security/guide#validating-pci-compliance')),
-          Padding(
-            padding: EdgeInsets.all(16),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: TextField(
-                    decoration: InputDecoration(hintText: 'Number'),
-                    onChanged: (number) {
-                      setState(() {
-                        _card = _card.copyWith(number: number);
-                      });
-                    },
-                    keyboardType: TextInputType.number,
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: TextField(
+                      decoration: InputDecoration(hintText: 'Number'),
+                      onChanged: (number) {
+                        setState(() {
+                          _card = _card.copyWith(number: number);
+                        });
+                      },
+                      keyboardType: TextInputType.number,
+                    ),
                   ),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 4),
-                  width: 80,
-                  child: TextField(
-                    decoration: InputDecoration(hintText: 'Exp. Year'),
-                    onChanged: (number) {
-                      setState(() {
-                        _card = _card.copyWith(
-                            expirationYear: int.tryParse(number));
-                      });
-                    },
-                    keyboardType: TextInputType.number,
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    width: 80,
+                    child: TextField(
+                      decoration: InputDecoration(hintText: 'Exp. Year'),
+                      onChanged: (number) {
+                        setState(() {
+                          _card = _card.copyWith(
+                              expirationYear: int.tryParse(number));
+                        });
+                      },
+                      keyboardType: TextInputType.number,
+                    ),
                   ),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 4),
-                  width: 80,
-                  child: TextField(
-                    decoration: InputDecoration(hintText: 'Exp. Month'),
-                    onChanged: (number) {
-                      setState(() {
-                        _card = _card.copyWith(
-                            expirationMonth: int.tryParse(number));
-                      });
-                    },
-                    keyboardType: TextInputType.number,
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    width: 80,
+                    child: TextField(
+                      decoration: InputDecoration(hintText: 'Exp. Month'),
+                      onChanged: (number) {
+                        setState(() {
+                          _card = _card.copyWith(
+                              expirationMonth: int.tryParse(number));
+                        });
+                      },
+                      keyboardType: TextInputType.number,
+                    ),
                   ),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 4),
-                  width: 80,
-                  child: TextField(
-                    decoration: InputDecoration(hintText: 'CVC'),
-                    onChanged: (number) {
-                      setState(() {
-                        _card = _card.copyWith(cvc: number);
-                      });
-                    },
-                    keyboardType: TextInputType.number,
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    width: 80,
+                    child: TextField(
+                      decoration: InputDecoration(hintText: 'CVC'),
+                      onChanged: (number) {
+                        setState(() {
+                          _card = _card.copyWith(cvc: number);
+                        });
+                      },
+                      keyboardType: TextInputType.number,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          CheckboxListTile(
-            value: _saveCard,
-            onChanged: (value) {
-              setState(() {
-                _saveCard = value;
-              });
-            },
-            title: Text('Save card during payment'),
-          ),
-          Padding(
-            padding: EdgeInsets.all(16),
-            child: LoadingButton(
-              onPressed: _handlePayPress,
-              text: 'Pay',
+            CheckboxListTile(
+              value: _saveCard,
+              onChanged: (value) {
+                setState(() {
+                  _saveCard = value;
+                });
+              },
+              title: Text('Save card during payment'),
             ),
-          ),
-        ],
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: LoadingButton(
+                onPressed: _handlePayPress,
+                text: 'Pay',
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

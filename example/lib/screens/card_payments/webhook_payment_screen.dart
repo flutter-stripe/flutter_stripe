@@ -3,7 +3,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:stripe_example/utils.dart';
+import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
+import 'package:stripe_example/widgets/response_card.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 import 'package:stripe_example/config.dart';
@@ -15,59 +18,53 @@ class WebhookPaymentScreen extends StatefulWidget {
 
 class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
   CardFieldInputDetails? _card;
-  String _email = '';
+  String _email = 'email@stripe.com';
   bool? _saveCard = false;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Padding(
-            padding: EdgeInsets.all(16),
-            child: TextField(
-              decoration: InputDecoration(hintText: 'Email'),
-              onChanged: (value) {
-                setState(() {
-                  _email = value;
-                });
-              },
-            ),
+    return ExampleScaffold(
+      title: 'Card Field',
+      tags: ['With Webhook'],
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      children: [
+        TextFormField(
+          initialValue: _email,
+          decoration: InputDecoration(hintText: 'Email', labelText: 'Email'),
+          onChanged: (value) {
+            setState(() {
+              _email = value;
+            });
+          },
+        ),
+        SizedBox(height: 20),
+        CardField(
+          onCardChanged: (card) {
+            setState(() {
+              _card = card;
+            });
+          },
+        ),
+        SizedBox(height: 20),
+        CheckboxListTile(
+          value: _saveCard,
+          onChanged: (value) {
+            setState(() {
+              _saveCard = value;
+            });
+          },
+          title: Text('Save card during payment'),
+        ),
+        LoadingButton(
+          onPressed: _card?.complete == true ? _handlePayPress : null,
+          text: 'Pay',
+        ),
+        SizedBox(height: 20),
+        if (_card != null)
+          ResponseCard(
+            response: _card!.toJson().toPrettyString(),
           ),
-          Padding(
-            padding: EdgeInsets.all(16),
-            child: CardField(
-              onCardChanged: (card) {
-                setState(() {
-                  _card = card;
-                });
-              },
-            ),
-          ),
-          CheckboxListTile(
-            value: _saveCard,
-            onChanged: (value) {
-              setState(() {
-                _saveCard = value;
-              });
-            },
-            title: Text('Save card during payment'),
-          ),
-          Padding(
-            padding: EdgeInsets.all(16),
-            child: LoadingButton(
-              onPressed: _card?.complete == true ? _handlePayPress : null,
-              text: 'Pay',
-            ),
-          ),
-          if (_card != null)
-            Padding(
-                padding: EdgeInsets.all(16),
-                child: Text(_card!.toJson().toString())),
-        ],
-      ),
+      ],
     );
   }
 
@@ -81,7 +78,7 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
 
     // 2. Gather customer billing information (ex. email)
     final billingDetails = BillingDetails(
-      email: 'email@stripe.com',
+      email: _email,
       phone: '+48888000888',
       address: Address(
         city: 'Houston',
