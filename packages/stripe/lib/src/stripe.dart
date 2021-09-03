@@ -117,6 +117,23 @@ class Stripe {
     return isSupported;
   }
 
+  /// Creates a single-use token that represents an Apple Pay credit card’s details.
+  /// 
+  /// The [payment] param should be the data response from the `pay` plugin. It can 
+  /// be used both with the callback `onPaymentResult` from `pay.ApplePayButton` or 
+  /// directly with `Pay.showPaymentSelector`
+  ///
+  /// Throws an [StripeError] in case createApplePayToken fails.
+  Future<TokenData> createApplePayToken(Map<String, dynamic> payment) async {
+    await _awaitForSettings();
+    try {
+      final tokenData = await _platform.createApplePayToken(payment);
+      return tokenData;
+    } on StripeError catch (error) {
+      throw StripeError(message: error.message, code: error.message);
+    }
+  }
+
   ///Converts payment information defined in [data] into a [PaymentMethod]
   ///object that can be passed to your server.
   ///

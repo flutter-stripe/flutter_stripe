@@ -55,7 +55,7 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
           cartItems: [
             ApplePayCartSummaryItem(
               label: 'Product Test',
-              amount: '20',
+              amount: '0.01',
             ),
           ],
           country: 'Es',

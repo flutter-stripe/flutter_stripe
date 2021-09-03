@@ -5,6 +5,7 @@ import 'package:stripe_example/screens/regional_payment_methods/ali_pay_screen.d
 import 'package:stripe_example/screens/regional_payment_methods/ideal_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/wechat_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen.dart';
+import 'package:stripe_example/screens/wallets/apple_pay_screen_plugin.dart';
 import 'package:stripe_example/screens/wallets/google_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/google_pay_stripe_screen.dart';
 
@@ -115,35 +116,60 @@ class Example extends StatelessWidget {
     ExampleSection(title: 'Wallets', children: [
       Example(
         title: 'Apple Pay (iOS)',
-        leading: Image.asset('assets/apple_pay.png', width: 48,),
+        leading: Image.asset(
+          'assets/apple_pay.png',
+          width: 48,
+        ),
         builder: (c) => ApplePayScreen(),
       ),
       Example(
-        leading: Image.asset('assets/google_play.png', width: 48,),
+        leading: Image.asset(
+          'assets/google_play.png',
+          width: 48,
+        ),
         title: 'Google Pay (Android)',
         builder: (c) => GooglePayStripeScreen(),
       ),
       Example(
-        leading: Image.asset('assets/google_play.png', width: 48,),
-        title: 'Google Pay - pay plugin (Android)',
+        title: 'Apple Pay (iOS) - Pay Plugin',
+        leading: Image.asset(
+          'assets/apple_pay.png',
+          width: 48,
+        ),
+        builder: (c) => ApplePayExternalPluginScreen(),
+      ),
+      Example(
+        leading: Image.asset(
+          'assets/google_play.png',
+          width: 48,
+        ),
+        title: 'Google Pay (Android) - Pay Plugin',
         builder: (c) => GooglePayScreen(),
       ),
-      
     ]),
     ExampleSection(title: 'Regional Payment Methods', children: [
       Example(
         title: 'Ali Pay',
-        leading: Image.asset('assets/alipay.png', width: 48,),
+        leading: Image.asset(
+          'assets/alipay.png',
+          width: 48,
+        ),
         builder: (context) => AliPayScreen(),
       ),
       Example(
         title: 'Ideal',
-        leading: Image.asset('assets/ideal_pay.png', width: 48,),
+        leading: Image.asset(
+          'assets/ideal_pay.png',
+          width: 48,
+        ),
         builder: (context) => IdealScreen(),
       ),
       Example(
         title: 'WeChat Pay',
-        leading: Image.asset('assets/wechat_pay.png', width: 48,),
+        leading: Image.asset(
+          'assets/wechat_pay.png',
+          width: 48,
+        ),
         builder: (context) => WeChatPayScreen(),
       ),
     ]),
