@@ -1,10 +1,21 @@
+## 1.3.0
+
+** BREAKING CHANGES **
+- Deprecate redundant parameters for payment sheet.
+
+Other changes 
+- Add new multiline card form.
+- Add Stripe Google pay integration.
+- Add WeChat payment method.
+- Improved example app.
+
 ## 1.2.0
 
 ** Breaking changes **
 - Rename `confirmPaymentMethod` to `confirmPayment` accordingly with the change in the native SDK
 
 Other changes
-- Sync with latest Stripe sdk.
+- Sync with l atest Stripe sdk.
 - Add `StripeException` that encapsulates finer grained and localized error messaging coming from the Stripe SDK.
 - Add `CardEditController` to handle the `clear`, `focus`, `blur` methods from the cardfield.
 - Implement `FontFamily` on iOS.
