@@ -4,6 +4,7 @@ import 'method_channel_stripe.dart';
 import 'models/apple_pay.dart';
 import 'models/card_details.dart';
 import 'models/create_token_data.dart';
+import 'models/google_pay.dart';
 import 'models/payment_intents.dart';
 import 'models/payment_methods.dart';
 import 'models/payment_sheet.dart';
@@ -52,13 +53,19 @@ abstract class StripePlatform extends PlatformInterface {
   Future<void> initPaymentSheet(SetupPaymentSheetParameters params);
 
   /// Display the payment sheet.
-  Future<void> presentPaymentSheet(PresentPaymentSheetParameters params);
+  Future<void> presentPaymentSheet();
 
   /// Confirm the payment on a payment sheet.
   Future<void> confirmPaymentSheetPayment();
 
   Future<void> presentApplePay(ApplePayPresentParams params);
   Future<void> confirmApplePayPayment(String clientSecret);
+  Future<TokenData> createApplePayToken(Map<String, dynamic> payment);
+
+  Future<void> initGooglePay(GooglePayInitParams params);
+  Future<void> presentGooglePay(PresentGooglePayParams params);
+  Future<PaymentMethod> createGooglePayPaymentMethod(
+      CreateGooglePayPaymentParams params);
 
   /// Creates a token for card details.
   ///

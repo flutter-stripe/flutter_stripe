@@ -117,6 +117,23 @@ class Stripe {
     return isSupported;
   }
 
+  /// Creates a single-use token that represents an Apple Pay credit card’s details.
+  /// 
+  /// The [payment] param should be the data response from the `pay` plugin. It can 
+  /// be used both with the callback `onPaymentResult` from `pay.ApplePayButton` or 
+  /// directly with `Pay.showPaymentSelector`
+  ///
+  /// Throws an [StripeError] in case createApplePayToken fails.
+  Future<TokenData> createApplePayToken(Map<String, dynamic> payment) async {
+    await _awaitForSettings();
+    try {
+      final tokenData = await _platform.createApplePayToken(payment);
+      return tokenData;
+    } on StripeError catch (error) {
+      throw StripeError(message: error.message, code: error.message);
+    }
+  }
+
   ///Converts payment information defined in [data] into a [PaymentMethod]
   ///object that can be passed to your server.
   ///
@@ -303,10 +320,11 @@ class Stripe {
   ///
   /// throws [StripeException] in case of a failure
   Future<void> presentPaymentSheet({
-    required PresentPaymentSheetParameters parameters,
+    @Deprecated('Params are now inherited from initPaymentSheet so this `parameters` can be removed')
+        dynamic parameters,
   }) async {
     await _awaitForSettings();
-    return await _platform.presentPaymentSheet(parameters);
+    return await _platform.presentPaymentSheet();
   }
 
   /// Confirms the paymentsheet payment
@@ -324,6 +342,26 @@ class Stripe {
   /// details: https://stripe.com/docs/security/guide#validating-pci-compliance
   Future<void> dangerouslyUpdateCardDetails(CardDetails card) async {
     return await _platform.dangerouslyUpdateCardDetails(card);
+  }
+
+  /// Inititialise google pay
+  Future<void> initGooglePay(GooglePayInitParams params) async {
+    return await _platform.initGooglePay(params);
+  }
+
+  /// Setup google pay.
+  ///
+  /// Throws a [StripeException] in case it is failing
+  Future<void> presentGooglePay(PresentGooglePayParams params) async {
+    return await _platform.presentGooglePay(params);
+  }
+
+  /// Create a payment method for google pay.
+  ///
+  /// Throws a [StripeException] in case it is failing
+  Future<PaymentMethod> createGooglePayPaymentMethod(
+      CreateGooglePayPaymentParams params) async {
+    return await _platform.createGooglePayPaymentMethod(params);
   }
 
   FutureOr<void> _awaitForSettings() {

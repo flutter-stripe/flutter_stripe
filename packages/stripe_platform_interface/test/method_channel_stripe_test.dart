@@ -102,6 +102,33 @@ void main() {
       });
     });
 
+    group('createApplePayToken', () {
+      late TokenData result;
+
+      setUp(() async {
+        sut = MethodChannelStripe(
+          platformIsIos: true,
+          methodChannel: MethodChannelMock(
+            channelName: methodChannelName,
+            method: 'createApplePayToken',
+            result: {
+              'token': {
+                'id': 'cvcResultToken',
+                'type': 'Card',
+                'livemode': true,
+                'created': "1630670419"
+              }
+            },
+          ).methodChannel,
+        );
+        result = await sut.createApplePayToken({});
+      });
+
+      test('It returns a valid token', () {
+        expect(result.id, 'cvcResultToken');
+      });
+    });
+
     group('Confirm payment method', () {
       late PaymentIntent result;
 
@@ -186,7 +213,7 @@ void main() {
           methodChannel: MethodChannelMock(
             channelName: methodChannelName,
             method: 'createTokenForCVCUpdate',
-            result: 'cvcResultToken',
+            result: {'tokenId': 'cvcResultToken'},
           ).methodChannel,
         );
         result = await sut.createTokenForCVCUpdate('cvc');
@@ -398,10 +425,7 @@ void main() {
               result: {},
             ).methodChannel,
           );
-          await sut
-              .presentPaymentSheet(const PresentPaymentSheetParameters(
-                  clientSecret: 'clientSecret'))
-              .then((_) => completer.complete());
+          await sut.presentPaymentSheet().then((_) => completer.complete());
         });
 
         test('It completes operation', () {
@@ -422,10 +446,7 @@ void main() {
         });
 
         test('It throws StripePlatformEsception', () async {
-          expectLater(
-              () async => await sut.presentPaymentSheet(
-                  const PresentPaymentSheetParameters(
-                      clientSecret: 'clientSecret')),
+          expectLater(() async => await sut.presentPaymentSheet(),
               throwsA(isInstanceOf<StripeException>()));
         });
       });

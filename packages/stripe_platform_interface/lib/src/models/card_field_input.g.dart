@@ -65,6 +65,8 @@ _$_CardFieldInputDetails _$_$_CardFieldInputDetailsFromJson(
     expiryYear: json['expiryYear'] as int?,
     postalCode: json['postalCode'] as String?,
     brand: json['brand'] as String?,
+    number: json['number'] as String?,
+    cvc: json['cvc'] as String?,
   );
 }
 
@@ -77,6 +79,8 @@ Map<String, dynamic> _$_$_CardFieldInputDetailsToJson(
       'expiryYear': instance.expiryYear,
       'postalCode': instance.postalCode,
       'brand': instance.brand,
+      'number': instance.number,
+      'cvc': instance.cvc,
     };
 
 _$_CardFieldFocusName _$_$_CardFieldFocusNameFromJson(

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:stripe_platform_interface/src/models/create_token_data.dart';
+import 'package:stripe_platform_interface/src/models/google_pay.dart';
 import 'package:stripe_platform_interface/src/result_parser.dart';
 
 import 'models/app_info.dart';
@@ -110,12 +111,12 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<String> createTokenForCVCUpdate(String cvc) async {
-    final result = await _methodChannel.invokeMethod<String>(
+    final result = await _methodChannel.invokeMapMethod(
       'createTokenForCVCUpdate',
       {'cvc': cvc},
     );
 
-    return result.unfoldToNonNull();
+    return result.unfoldToNonNull()['tokenId'];
   }
 
   @override
@@ -170,10 +171,10 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<void> presentPaymentSheet(PresentPaymentSheetParameters params) async {
+  Future<void> presentPaymentSheet() async {
     final result = await _methodChannel.invokeMethod<dynamic>(
       'presentPaymentSheet',
-      {'params': params.toJson()},
+      {'params': {}},
     );
 
     // iOS returns empty list on success
@@ -216,7 +217,7 @@ class MethodChannelStripe extends StripePlatform {
 
   void _parsePaymentSheetResult(Map<String, dynamic>? result) {
     if (result != null) {
-      if (result.isEmpty) {
+      if (result.isEmpty || result['paymentOption'] != null) {
         return;
       } else {
         if (result['error'] != null) {
@@ -237,6 +238,45 @@ class MethodChannelStripe extends StripePlatform {
         code: PaymentSheetError.unknown,
       );
     }
+  }
+
+  @override
+  Future<PaymentMethod> createGooglePayPaymentMethod(
+      CreateGooglePayPaymentParams params) async {
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('createGooglePayPaymentMethod', {
+      'params': params.toJson(),
+    });
+
+    return ResultParser<PaymentMethod>(
+            parseJson: (json) => PaymentMethod.fromJson(json))
+        .parse(result: result!, successResultKey: 'paymentMethod');
+  }
+
+  @override
+  Future<void> initGooglePay(GooglePayInitParams params) async {
+    return await _methodChannel
+        .invokeMethod('initGooglePay', {'params': params.toJson()});
+  }
+
+  @override
+  Future<void> presentGooglePay(PresentGooglePayParams params) async {
+    final result = await _methodChannel.invokeMapMethod<String, dynamic>(
+        'presentGooglePay', {'params': params.toJson()});
+
+    if (result!.containsKey('error')) {
+      throw ResultParser<void>(parseJson: (json) => {}).parseError(result);
+    }
+  }
+
+  @override
+  Future<TokenData> createApplePayToken(Map<String, dynamic> payment) async {
+      final result = await _methodChannel.invokeMapMethod<String, dynamic>(
+        'createApplePayToken', {'payment': payment});
+
+    return ResultParser<TokenData>(
+            parseJson: (json) => TokenData.fromJson(json))
+        .parse(result: result!, successResultKey: 'token');
   }
 }
 

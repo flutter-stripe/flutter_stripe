@@ -7,11 +7,13 @@ abstract class SimpleViewManager<T: View> {
 
     abstract fun getName(): String
 
-    abstract fun getExportedCustomDirectEventTypeConstants(): MutableMap<String, Any>
+    open fun getExportedCustomDirectEventTypeConstants(): MutableMap<String, Any> = mutableMapOf()
 
     abstract fun createViewInstance(reactContext: ThemedReactContext): T
 
     open fun onDropViewInstance(view: T) {}
 
     open fun receiveCommand(root: T, commandId: String?, args: ReadableArray?) {}
+
+    open fun onAfterUpdateTransaction(view: T) {}
 }

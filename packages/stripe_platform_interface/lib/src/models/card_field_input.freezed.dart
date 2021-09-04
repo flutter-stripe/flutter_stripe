@@ -733,7 +733,9 @@ class _$CardFieldInputDetailsTearOff {
       int? expiryMonth,
       int? expiryYear,
       String? postalCode,
-      String? brand}) {
+      String? brand,
+      String? number,
+      String? cvc}) {
     return _CardFieldInputDetails(
       complete: complete,
       last4: last4,
@@ -741,6 +743,8 @@ class _$CardFieldInputDetailsTearOff {
       expiryYear: expiryYear,
       postalCode: postalCode,
       brand: brand,
+      number: number,
+      cvc: cvc,
     );
   }
 
@@ -772,6 +776,14 @@ mixin _$CardFieldInputDetails {
   /// Brand of the card.
   String? get brand => throw _privateConstructorUsedError;
 
+  /// Card number.
+  /// This information is not available by default to comply with the PCI compliance
+  String? get number => throw _privateConstructorUsedError;
+
+  /// CVC code.
+  /// This information is not available by default to comply with the PCI compliance
+  String? get cvc => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CardFieldInputDetailsCopyWith<CardFieldInputDetails> get copyWith =>
@@ -789,7 +801,9 @@ abstract class $CardFieldInputDetailsCopyWith<$Res> {
       int? expiryMonth,
       int? expiryYear,
       String? postalCode,
-      String? brand});
+      String? brand,
+      String? number,
+      String? cvc});
 }
 
 /// @nodoc
@@ -809,6 +823,8 @@ class _$CardFieldInputDetailsCopyWithImpl<$Res>
     Object? expiryYear = freezed,
     Object? postalCode = freezed,
     Object? brand = freezed,
+    Object? number = freezed,
+    Object? cvc = freezed,
   }) {
     return _then(_value.copyWith(
       complete: complete == freezed
@@ -835,6 +851,14 @@ class _$CardFieldInputDetailsCopyWithImpl<$Res>
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
               as String?,
+      number: number == freezed
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cvc: cvc == freezed
+          ? _value.cvc
+          : cvc // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -852,7 +876,9 @@ abstract class _$CardFieldInputDetailsCopyWith<$Res>
       int? expiryMonth,
       int? expiryYear,
       String? postalCode,
-      String? brand});
+      String? brand,
+      String? number,
+      String? cvc});
 }
 
 /// @nodoc
@@ -874,6 +900,8 @@ class __$CardFieldInputDetailsCopyWithImpl<$Res>
     Object? expiryYear = freezed,
     Object? postalCode = freezed,
     Object? brand = freezed,
+    Object? number = freezed,
+    Object? cvc = freezed,
   }) {
     return _then(_CardFieldInputDetails(
       complete: complete == freezed
@@ -900,6 +928,14 @@ class __$CardFieldInputDetailsCopyWithImpl<$Res>
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
               as String?,
+      number: number == freezed
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cvc: cvc == freezed
+          ? _value.cvc
+          : cvc // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -907,14 +943,17 @@ class __$CardFieldInputDetailsCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_CardFieldInputDetails implements _CardFieldInputDetails {
+class _$_CardFieldInputDetails extends _CardFieldInputDetails {
   const _$_CardFieldInputDetails(
       {required this.complete,
       this.last4,
       this.expiryMonth,
       this.expiryYear,
       this.postalCode,
-      this.brand});
+      this.brand,
+      this.number,
+      this.cvc})
+      : super._();
 
   factory _$_CardFieldInputDetails.fromJson(Map<String, dynamic> json) =>
       _$_$_CardFieldInputDetailsFromJson(json);
@@ -943,10 +982,20 @@ class _$_CardFieldInputDetails implements _CardFieldInputDetails {
 
   /// Brand of the card.
   final String? brand;
+  @override
+
+  /// Card number.
+  /// This information is not available by default to comply with the PCI compliance
+  final String? number;
+  @override
+
+  /// CVC code.
+  /// This information is not available by default to comply with the PCI compliance
+  final String? cvc;
 
   @override
   String toString() {
-    return 'CardFieldInputDetails(complete: $complete, last4: $last4, expiryMonth: $expiryMonth, expiryYear: $expiryYear, postalCode: $postalCode, brand: $brand)';
+    return 'CardFieldInputDetails(complete: $complete, last4: $last4, expiryMonth: $expiryMonth, expiryYear: $expiryYear, postalCode: $postalCode, brand: $brand, number: $number, cvc: $cvc)';
   }
 
   @override
@@ -968,7 +1017,11 @@ class _$_CardFieldInputDetails implements _CardFieldInputDetails {
                 const DeepCollectionEquality()
                     .equals(other.postalCode, postalCode)) &&
             (identical(other.brand, brand) ||
-                const DeepCollectionEquality().equals(other.brand, brand)));
+                const DeepCollectionEquality().equals(other.brand, brand)) &&
+            (identical(other.number, number) ||
+                const DeepCollectionEquality().equals(other.number, number)) &&
+            (identical(other.cvc, cvc) ||
+                const DeepCollectionEquality().equals(other.cvc, cvc)));
   }
 
   @override
@@ -979,7 +1032,9 @@ class _$_CardFieldInputDetails implements _CardFieldInputDetails {
       const DeepCollectionEquality().hash(expiryMonth) ^
       const DeepCollectionEquality().hash(expiryYear) ^
       const DeepCollectionEquality().hash(postalCode) ^
-      const DeepCollectionEquality().hash(brand);
+      const DeepCollectionEquality().hash(brand) ^
+      const DeepCollectionEquality().hash(number) ^
+      const DeepCollectionEquality().hash(cvc);
 
   @JsonKey(ignore: true)
   @override
@@ -993,14 +1048,17 @@ class _$_CardFieldInputDetails implements _CardFieldInputDetails {
   }
 }
 
-abstract class _CardFieldInputDetails implements CardFieldInputDetails {
+abstract class _CardFieldInputDetails extends CardFieldInputDetails {
   const factory _CardFieldInputDetails(
       {required bool complete,
       String? last4,
       int? expiryMonth,
       int? expiryYear,
       String? postalCode,
-      String? brand}) = _$_CardFieldInputDetails;
+      String? brand,
+      String? number,
+      String? cvc}) = _$_CardFieldInputDetails;
+  const _CardFieldInputDetails._() : super._();
 
   factory _CardFieldInputDetails.fromJson(Map<String, dynamic> json) =
       _$_CardFieldInputDetails.fromJson;
@@ -1029,6 +1087,16 @@ abstract class _CardFieldInputDetails implements CardFieldInputDetails {
 
   /// Brand of the card.
   String? get brand => throw _privateConstructorUsedError;
+  @override
+
+  /// Card number.
+  /// This information is not available by default to comply with the PCI compliance
+  String? get number => throw _privateConstructorUsedError;
+  @override
+
+  /// CVC code.
+  /// This information is not available by default to comply with the PCI compliance
+  String? get cvc => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$CardFieldInputDetailsCopyWith<_CardFieldInputDetails> get copyWith =>
