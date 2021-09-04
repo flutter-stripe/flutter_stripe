@@ -22,7 +22,7 @@ The Stripe Flutter SDK allows you to build delightful payment experiences in you
 
 **Apple Pay**: We provide a [seamless integration with Apple Pay](https://stripe.com/docs/apple-pay).
 
-**Google Pay**: The plugin can easily act as payment provider for the [Pay plugin](#Pay-Plugin-support) that enables you to seamlessly integrate Google Pay or Apple Pay. All you need to do is add your stripe publishable key to the payment profile.
+**Google Pay**: We provide a [seamless integration with Google Pay](https://stripe.com/docs/google-pay).
 
 **Payment methods**: Accepting more [payment methods](https://stripe.com/docs/payments/payment-methods/overview) helps your business expand its global reach and improve checkout conversion.
 
