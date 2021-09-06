@@ -15,7 +15,7 @@ Other changes
 - Rename `confirmPaymentMethod` to `confirmPayment` accordingly with the change in the native SDK
 
 Other changes
-- Sync with l atest Stripe sdk.
+- Sync with latest Stripe sdk.
 - Add `StripeException` that encapsulates finer grained and localized error messaging coming from the Stripe SDK.
 - Add `CardEditController` to handle the `clear`, `focus`, `blur` methods from the cardfield.
 - Implement `FontFamily` on iOS.
