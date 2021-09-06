@@ -1,3 +1,14 @@
+## 1.3.0
+
+** BREAKING CHANGES **
+- Deprecate redundant parameters for payment sheet.
+
+Other changes 
+- Add new multiline card form.
+- Add Stripe Google pay integration.
+- Add WeChat payment method.
+- Improved example app.
+
 ## 1.2.0
 
 ** Breaking changes **
