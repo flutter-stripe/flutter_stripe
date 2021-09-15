@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'google_pay.dart';
 
@@ -154,7 +155,7 @@ class _$_PresentGooglePayParams implements _PresentGooglePayParams {
       this.currencyCode});
 
   factory _$_PresentGooglePayParams.fromJson(Map<String, dynamic> json) =>
-      _$_$_PresentGooglePayParamsFromJson(json);
+      _$$_PresentGooglePayParamsFromJson(json);
 
   @override
 
@@ -208,7 +209,7 @@ class _$_PresentGooglePayParams implements _PresentGooglePayParams {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_PresentGooglePayParamsToJson(this);
+    return _$$_PresentGooglePayParamsToJson(this);
   }
 }
 
@@ -459,7 +460,7 @@ class _$_GooglePayInitParams implements _GooglePayInitParams {
       this.existingPaymentMethodRequired = true});
 
   factory _$_GooglePayInitParams.fromJson(Map<String, dynamic> json) =>
-      _$_$_GooglePayInitParamsFromJson(json);
+      _$$_GooglePayInitParamsFromJson(json);
 
   @override
 
@@ -539,7 +540,7 @@ class _$_GooglePayInitParams implements _GooglePayInitParams {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_GooglePayInitParamsToJson(this);
+    return _$$_GooglePayInitParamsToJson(this);
   }
 }
 
@@ -731,7 +732,7 @@ class _$_BillingAddressConfig implements _BillingAddressConfig {
       {this.isRequired, this.format, this.isPhoneNumberRequired});
 
   factory _$_BillingAddressConfig.fromJson(Map<String, dynamic> json) =>
-      _$_$_BillingAddressConfigFromJson(json);
+      _$$_BillingAddressConfigFromJson(json);
 
   @override
 
@@ -782,7 +783,7 @@ class _$_BillingAddressConfig implements _BillingAddressConfig {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_BillingAddressConfigToJson(this);
+    return _$$_BillingAddressConfigToJson(this);
   }
 }
 
@@ -945,7 +946,7 @@ class _$_CreateGooglePayPaymentParams implements _CreateGooglePayPaymentParams {
       {required this.currencyCode, required this.amount});
 
   factory _$_CreateGooglePayPaymentParams.fromJson(Map<String, dynamic> json) =>
-      _$_$_CreateGooglePayPaymentParamsFromJson(json);
+      _$$_CreateGooglePayPaymentParamsFromJson(json);
 
   @override
 
@@ -991,7 +992,7 @@ class _$_CreateGooglePayPaymentParams implements _CreateGooglePayPaymentParams {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_CreateGooglePayPaymentParamsToJson(this);
+    return _$$_CreateGooglePayPaymentParamsToJson(this);
   }
 }
 

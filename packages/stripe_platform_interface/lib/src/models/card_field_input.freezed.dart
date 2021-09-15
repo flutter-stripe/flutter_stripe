@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'card_field_input.dart';
 
@@ -301,7 +302,7 @@ class _$_CardStyleConstructor extends _CardStyleConstructor {
       : super._();
 
   factory _$_CardStyleConstructor.fromJson(Map<String, dynamic> json) =>
-      _$_$_CardStyleConstructorFromJson(json);
+      _$$_CardStyleConstructorFromJson(json);
 
   @override
 
@@ -403,7 +404,7 @@ class _$_CardStyleConstructor extends _CardStyleConstructor {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_CardStyleConstructorToJson(this);
+    return _$$_CardStyleConstructorToJson(this);
   }
 }
 
@@ -625,7 +626,7 @@ class _$_CardPlaceholderConstructor extends _CardPlaceholderConstructor {
       : super._();
 
   factory _$_CardPlaceholderConstructor.fromJson(Map<String, dynamic> json) =>
-      _$_$_CardPlaceholderConstructorFromJson(json);
+      _$$_CardPlaceholderConstructorFromJson(json);
 
   @override
 
@@ -681,7 +682,7 @@ class _$_CardPlaceholderConstructor extends _CardPlaceholderConstructor {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_CardPlaceholderConstructorToJson(this);
+    return _$$_CardPlaceholderConstructorToJson(this);
   }
 }
 
@@ -956,7 +957,7 @@ class _$_CardFieldInputDetails extends _CardFieldInputDetails {
       : super._();
 
   factory _$_CardFieldInputDetails.fromJson(Map<String, dynamic> json) =>
-      _$_$_CardFieldInputDetailsFromJson(json);
+      _$$_CardFieldInputDetailsFromJson(json);
 
   @override
 
@@ -1044,7 +1045,7 @@ class _$_CardFieldInputDetails extends _CardFieldInputDetails {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_CardFieldInputDetailsToJson(this);
+    return _$$_CardFieldInputDetailsToJson(this);
   }
 }
 
@@ -1206,7 +1207,7 @@ class _$_CardFieldFocusName implements _CardFieldFocusName {
   _$_CardFieldFocusName({this.focusedField});
 
   factory _$_CardFieldFocusName.fromJson(Map<String, dynamic> json) =>
-      _$_$_CardFieldFocusNameFromJson(json);
+      _$$_CardFieldFocusNameFromJson(json);
 
   @override
   final CardFieldName? focusedField;
@@ -1236,7 +1237,7 @@ class _$_CardFieldFocusName implements _CardFieldFocusName {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_CardFieldFocusNameToJson(this);
+    return _$$_CardFieldFocusNameToJson(this);
   }
 }
 

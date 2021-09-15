@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'setup_intent.dart';
 
@@ -299,7 +300,7 @@ class _$_SetupIntent implements _SetupIntent {
       this.lastSetupError});
 
   factory _$_SetupIntent.fromJson(Map<String, dynamic> json) =>
-      _$_$_SetupIntentFromJson(json);
+      _$$_SetupIntentFromJson(json);
 
   @override
 
@@ -403,7 +404,7 @@ class _$_SetupIntent implements _SetupIntent {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_SetupIntentToJson(this);
+    return _$$_SetupIntentToJson(this);
   }
 }
 
@@ -590,7 +591,7 @@ class _$_LastSetupError implements _LastSetupError {
   const _$_LastSetupError({required this.code, required this.message});
 
   factory _$_LastSetupError.fromJson(Map<String, dynamic> json) =>
-      _$_$_LastSetupErrorFromJson(json);
+      _$$_LastSetupErrorFromJson(json);
 
   @override
 
@@ -629,7 +630,7 @@ class _$_LastSetupError implements _LastSetupError {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_LastSetupErrorToJson(this);
+    return _$$_LastSetupErrorToJson(this);
   }
 }
 

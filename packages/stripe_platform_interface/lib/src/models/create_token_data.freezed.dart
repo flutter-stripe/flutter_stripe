@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'create_token_data.dart';
 
@@ -145,7 +146,7 @@ class _$_CreateTokenParams implements _CreateTokenParams {
   const _$_CreateTokenParams({this.type = TokenType.Card, this.address});
 
   factory _$_CreateTokenParams.fromJson(Map<String, dynamic> json) =>
-      _$_$_CreateTokenParamsFromJson(json);
+      _$$_CreateTokenParamsFromJson(json);
 
   @JsonKey(defaultValue: TokenType.Card)
   @override
@@ -185,7 +186,7 @@ class _$_CreateTokenParams implements _CreateTokenParams {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_CreateTokenParamsToJson(this);
+    return _$$_CreateTokenParamsToJson(this);
   }
 }
 
@@ -433,7 +434,7 @@ class _$_TokenData implements _TokenData {
       this.card});
 
   factory _$_TokenData.fromJson(Map<String, dynamic> json) =>
-      _$_$_TokenDataFromJson(json);
+      _$$_TokenDataFromJson(json);
 
   @override
 
@@ -504,7 +505,7 @@ class _$_TokenData implements _TokenData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_TokenDataToJson(this);
+    return _$$_TokenDataToJson(this);
   }
 }
 
@@ -813,7 +814,7 @@ class _$_CardData implements _CardData {
       this.address});
 
   factory _$_CardData.fromJson(Map<String, dynamic> json) =>
-      _$_$_CardDataFromJson(json);
+      _$$_CardDataFromJson(json);
 
   @override
 
@@ -906,7 +907,7 @@ class _$_CardData implements _CardData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_CardDataToJson(this);
+    return _$$_CardDataToJson(this);
   }
 }
 
@@ -1180,7 +1181,7 @@ class _$_BankAccount implements _BankAccount {
       this.routingNumber});
 
   factory _$_BankAccount.fromJson(Map<String, dynamic> json) =>
-      _$_$_BankAccountFromJson(json);
+      _$$_BankAccountFromJson(json);
 
   @override
 
@@ -1260,7 +1261,7 @@ class _$_BankAccount implements _BankAccount {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_BankAccountToJson(this);
+    return _$$_BankAccountToJson(this);
   }
 }
 
