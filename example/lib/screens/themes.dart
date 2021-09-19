@@ -15,7 +15,11 @@ class _ThemeCardExampleState extends State<ThemeCardExample> {
         'Default': ThemeData.light().copyWith(),
         'Filled Green': ThemeData(
           primaryColor: Colors.green,
-          accentColor: Colors.green,
+          colorScheme: ColorScheme.light(
+            primary: Colors.green,
+            secondary: Colors.green,
+            error: Colors.red,
+          ),
           errorColor: Colors.red,
           inputDecorationTheme: InputDecorationTheme(
             filled: true,
@@ -36,11 +40,11 @@ class _ThemeCardExampleState extends State<ThemeCardExample> {
         ),
         'Dark': ThemeData(
           brightness: Brightness.dark,
-          accentColor: Colors.purpleAccent,
+          colorScheme: ColorScheme.dark(secondary: Colors.purpleAccent),
         ),
         'Dark filled': ThemeData(
           brightness: Brightness.dark,
-          accentColor: Colors.blue[200],
+          colorScheme: ColorScheme.dark(secondary: Colors.blue[200]!),
           inputDecorationTheme: InputDecorationTheme(
             focusColor: Colors.red,
             filled: true,
@@ -106,10 +110,11 @@ class _ThemeCardExampleState extends State<ThemeCardExample> {
                                 theme.key == _index
                                     ? Icons.check_circle
                                     : Icons.circle,
-                                color: theme.value.accentColor),
+                                color: theme.value.colorScheme.secondary),
                             title: Text(
                               theme.key,
-                              style: TextStyle(color: theme.value.accentColor),
+                              style: TextStyle(
+                                  color: theme.value.colorScheme.secondary),
                             ),
                             onTap: () {
                               setState(() {
