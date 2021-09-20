@@ -18,6 +18,7 @@ analyzer:
     todo: ignore
     # TODO (albertus-stripe): Remove this once the melos PR is merged since this won't be an issue anymore
     invalid_dependency: ignore
+    invalid_annotation_target: ignore #https://github.com/rrousselGit/freezed#disabling-invalid_annotation_target-warning-and-warning-in-generates-files
   exclude:
     - "bin/cache/**"
     - "**/*.freezed.dart"

@@ -6,19 +6,18 @@ part of 'apple_pay.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ApplePayShippingMethod _$_$_ApplePayShippingMethodFromJson(
-    Map<String, dynamic> json) {
-  return _$_ApplePayShippingMethod(
-    label: json['label'] as String,
-    amount: json['amount'] as String,
-    identifier: json['identifier'] as String,
-    type:
-        _$enumDecodeNullable(_$ApplePayShippingMethodTypeEnumMap, json['type']),
-    detail: json['detail'] as String?,
-  );
-}
+_$_ApplePayShippingMethod _$$_ApplePayShippingMethodFromJson(
+        Map<String, dynamic> json) =>
+    _$_ApplePayShippingMethod(
+      label: json['label'] as String,
+      amount: json['amount'] as String,
+      identifier: json['identifier'] as String,
+      type: _$enumDecodeNullable(
+          _$ApplePayShippingMethodTypeEnumMap, json['type']),
+      detail: json['detail'] as String?,
+    );
 
-Map<String, dynamic> _$_$_ApplePayShippingMethodToJson(
+Map<String, dynamic> _$$_ApplePayShippingMethodToJson(
         _$_ApplePayShippingMethod instance) =>
     <String, dynamic>{
       'label': instance.label,
@@ -70,44 +69,44 @@ const _$ApplePayShippingMethodTypeEnumMap = {
   ApplePayShippingMethodType.pending: 'pending',
 };
 
-_$_ApplePayCartSummaryItem _$_$_ApplePayCartSummaryItemFromJson(
-    Map<String, dynamic> json) {
-  return _$_ApplePayCartSummaryItem(
-    label: json['label'] as String,
-    amount: json['amount'] as String,
-  );
-}
+_$_ApplePayCartSummaryItem _$$_ApplePayCartSummaryItemFromJson(
+        Map<String, dynamic> json) =>
+    _$_ApplePayCartSummaryItem(
+      label: json['label'] as String,
+      amount: json['amount'] as String,
+    );
 
-Map<String, dynamic> _$_$_ApplePayCartSummaryItemToJson(
+Map<String, dynamic> _$$_ApplePayCartSummaryItemToJson(
         _$_ApplePayCartSummaryItem instance) =>
     <String, dynamic>{
       'label': instance.label,
       'amount': instance.amount,
     };
 
-_$_ApplePayPresentParams _$_$_ApplePayPresentParamsFromJson(
-    Map<String, dynamic> json) {
-  return _$_ApplePayPresentParams(
-    cartItems: (json['cartItems'] as List<dynamic>)
-        .map((e) => ApplePayCartSummaryItem.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    country: json['country'] as String,
-    currency: json['currency'] as String,
-    requiredShippingAddressFields:
-        (json['requiredShippingAddressFields'] as List<dynamic>?)
-            ?.map((e) => _$enumDecode(_$ApplePayContactFieldsTypeEnumMap, e))
-            .toList(),
-    requiredBillingContactFields:
-        (json['requiredBillingContactFields'] as List<dynamic>?)
-            ?.map((e) => _$enumDecode(_$ApplePayContactFieldsTypeEnumMap, e))
-            .toList(),
-    shippingMethods: (json['shippingMethods'] as List<dynamic>?)
-        ?.map((e) => ApplePayShippingMethod.fromJson(e as Map<String, dynamic>))
-        .toList(),
-  );
-}
+_$_ApplePayPresentParams _$$_ApplePayPresentParamsFromJson(
+        Map<String, dynamic> json) =>
+    _$_ApplePayPresentParams(
+      cartItems: (json['cartItems'] as List<dynamic>)
+          .map((e) =>
+              ApplePayCartSummaryItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      country: json['country'] as String,
+      currency: json['currency'] as String,
+      requiredShippingAddressFields:
+          (json['requiredShippingAddressFields'] as List<dynamic>?)
+              ?.map((e) => _$enumDecode(_$ApplePayContactFieldsTypeEnumMap, e))
+              .toList(),
+      requiredBillingContactFields:
+          (json['requiredBillingContactFields'] as List<dynamic>?)
+              ?.map((e) => _$enumDecode(_$ApplePayContactFieldsTypeEnumMap, e))
+              .toList(),
+      shippingMethods: (json['shippingMethods'] as List<dynamic>?)
+          ?.map(
+              (e) => ApplePayShippingMethod.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
 
-Map<String, dynamic> _$_$_ApplePayPresentParamsToJson(
+Map<String, dynamic> _$$_ApplePayPresentParamsToJson(
         _$_ApplePayPresentParams instance) =>
     <String, dynamic>{
       'cartItems': instance.cartItems.map((e) => e.toJson()).toList(),

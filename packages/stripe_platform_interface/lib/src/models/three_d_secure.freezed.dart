@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'three_d_secure.dart';
 
@@ -396,7 +397,7 @@ class _$_ThreeDSecureConfigurationParams
 
   factory _$_ThreeDSecureConfigurationParams.fromJson(
           Map<String, dynamic> json) =>
-      _$_$_ThreeDSecureConfigurationParamsFromJson(json);
+      _$$_ThreeDSecureConfigurationParamsFromJson(json);
 
   @override
 
@@ -493,7 +494,7 @@ class _$_ThreeDSecureConfigurationParams
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ThreeDSecureConfigurationParamsToJson(this);
+    return _$$_ThreeDSecureConfigurationParamsToJson(this);
   }
 }
 
@@ -770,7 +771,7 @@ class _$_ThreeDSecureNavigationBarThemeData
 
   factory _$_ThreeDSecureNavigationBarThemeData.fromJson(
           Map<String, dynamic> json) =>
-      _$_$_ThreeDSecureNavigationBarThemeDataFromJson(json);
+      _$$_ThreeDSecureNavigationBarThemeDataFromJson(json);
 
   @override
 
@@ -845,7 +846,7 @@ class _$_ThreeDSecureNavigationBarThemeData
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ThreeDSecureNavigationBarThemeDataToJson(this);
+    return _$$_ThreeDSecureNavigationBarThemeDataToJson(this);
   }
 }
 
@@ -1058,7 +1059,7 @@ class _$_ThreeDSecureLabelThemeData implements _ThreeDSecureLabelThemeData {
       this.headingFontSize});
 
   factory _$_ThreeDSecureLabelThemeData.fromJson(Map<String, dynamic> json) =>
-      _$_$_ThreeDSecureLabelThemeDataFromJson(json);
+      _$$_ThreeDSecureLabelThemeDataFromJson(json);
 
   @override
 
@@ -1114,7 +1115,7 @@ class _$_ThreeDSecureLabelThemeData implements _ThreeDSecureLabelThemeData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ThreeDSecureLabelThemeDataToJson(this);
+    return _$$_ThreeDSecureLabelThemeDataToJson(this);
   }
 }
 
@@ -1337,7 +1338,7 @@ class _$_ThreeDSecureTextFieldThemeData
 
   factory _$_ThreeDSecureTextFieldThemeData.fromJson(
           Map<String, dynamic> json) =>
-      _$_$_ThreeDSecureTextFieldThemeDataFromJson(json);
+      _$$_ThreeDSecureTextFieldThemeDataFromJson(json);
 
   @override
 
@@ -1403,7 +1404,7 @@ class _$_ThreeDSecureTextFieldThemeData
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ThreeDSecureTextFieldThemeDataToJson(this);
+    return _$$_ThreeDSecureTextFieldThemeDataToJson(this);
   }
 }
 
@@ -1612,7 +1613,7 @@ class _$_ThreeDSecureButtonThemeData implements _ThreeDSecureButtonThemeData {
       this.textFontSize});
 
   factory _$_ThreeDSecureButtonThemeData.fromJson(Map<String, dynamic> json) =>
-      _$_$_ThreeDSecureButtonThemeDataFromJson(json);
+      _$$_ThreeDSecureButtonThemeDataFromJson(json);
 
   @override
 
@@ -1670,7 +1671,7 @@ class _$_ThreeDSecureButtonThemeData implements _ThreeDSecureButtonThemeData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ThreeDSecureButtonThemeDataToJson(this);
+    return _$$_ThreeDSecureButtonThemeDataToJson(this);
   }
 }
 

@@ -11,9 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  stripe_android: 1.3.0
-  stripe_ios: 1.3.0
-  stripe_platform_interface: 1.3.0
+  stripe_android: ^1.3.0
+  stripe_ios: ^1.3.0
+  stripe_platform_interface: ^1.3.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

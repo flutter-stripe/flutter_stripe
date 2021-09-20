@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 /*
 Shameless copy of https://github.com/Baseflow/flutter-geolocator/blob/master/geolocator_platform_interface/test/src/implementations/method_channel_mock.dart
@@ -11,7 +12,8 @@ class MethodChannelMock {
     this.delay = Duration.zero,
     this.result,
   }) : methodChannel = MethodChannel(channelName, const JSONMethodCodec()) {
-    methodChannel.setMockMethodCallHandler(_handler);
+    TestDefaultBinaryMessengerBinding.instance!.defaultBinaryMessenger
+        .setMockMethodCallHandler(methodChannel, _handler);
   }
 
   final Duration delay;

@@ -6,23 +6,22 @@ part of 'payment_sheet.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SetupParameters _$_$_SetupParametersFromJson(Map<String, dynamic> json) {
-  return _$_SetupParameters(
-    customFlow: json['customFlow'] as bool? ?? false,
-    customerId: json['customerId'] as String?,
-    customerEphemeralKeySecret: json['customerEphemeralKeySecret'] as String?,
-    paymentIntentClientSecret: json['paymentIntentClientSecret'] as String?,
-    setupIntentClientSecret: json['setupIntentClientSecret'] as String?,
-    merchantDisplayName: json['merchantDisplayName'] as String?,
-    merchantCountryCode: json['merchantCountryCode'] as String?,
-    applePay: json['applePay'] as bool?,
-    style: _$enumDecodeNullable(_$ThemeModeEnumMap, json['style']),
-    googlePay: json['googlePay'] as bool?,
-    testEnv: json['testEnv'] as bool? ?? false,
-  );
-}
+_$_SetupParameters _$$_SetupParametersFromJson(Map<String, dynamic> json) =>
+    _$_SetupParameters(
+      customFlow: json['customFlow'] as bool? ?? false,
+      customerId: json['customerId'] as String?,
+      customerEphemeralKeySecret: json['customerEphemeralKeySecret'] as String?,
+      paymentIntentClientSecret: json['paymentIntentClientSecret'] as String?,
+      setupIntentClientSecret: json['setupIntentClientSecret'] as String?,
+      merchantDisplayName: json['merchantDisplayName'] as String?,
+      merchantCountryCode: json['merchantCountryCode'] as String?,
+      applePay: json['applePay'] as bool?,
+      style: _$enumDecodeNullable(_$ThemeModeEnumMap, json['style']),
+      googlePay: json['googlePay'] as bool?,
+      testEnv: json['testEnv'] as bool? ?? false,
+    );
 
-Map<String, dynamic> _$_$_SetupParametersToJson(_$_SetupParameters instance) =>
+Map<String, dynamic> _$$_SetupParametersToJson(_$_SetupParameters instance) =>
     <String, dynamic>{
       'customFlow': instance.customFlow,
       'customerId': instance.customerId,
@@ -80,14 +79,13 @@ const _$ThemeModeEnumMap = {
   ThemeMode.dark: 'dark',
 };
 
-_$_PresentParameters _$_$_PresentParametersFromJson(Map<String, dynamic> json) {
-  return _$_PresentParameters(
-    clientSecret: json['clientSecret'] as String,
-    confirmPayment: json['confirmPayment'] as bool? ?? false,
-  );
-}
+_$_PresentParameters _$$_PresentParametersFromJson(Map<String, dynamic> json) =>
+    _$_PresentParameters(
+      clientSecret: json['clientSecret'] as String,
+      confirmPayment: json['confirmPayment'] as bool? ?? false,
+    );
 
-Map<String, dynamic> _$_$_PresentParametersToJson(
+Map<String, dynamic> _$$_PresentParametersToJson(
         _$_PresentParameters instance) =>
     <String, dynamic>{
       'clientSecret': instance.clientSecret,

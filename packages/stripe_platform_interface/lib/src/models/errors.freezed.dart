@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'errors.dart';
 
@@ -137,7 +138,7 @@ class _$_StripeErrorGeneric<T> implements _StripeErrorGeneric<T> {
           required this.code});
 
   factory _$_StripeErrorGeneric.fromJson(Map<String, dynamic> json) =>
-      _$_$_StripeErrorGenericFromJson(json);
+      _$$_StripeErrorGenericFromJson(json);
 
   @override
   final String message;
@@ -175,7 +176,7 @@ class _$_StripeErrorGeneric<T> implements _StripeErrorGeneric<T> {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_StripeErrorGenericToJson(this);
+    return _$$_StripeErrorGenericToJson(this);
   }
 }
 
@@ -314,7 +315,7 @@ class _$_StripeException implements _StripeException {
   const _$_StripeException({required this.error});
 
   factory _$_StripeException.fromJson(Map<String, dynamic> json) =>
-      _$_$_StripeExceptionFromJson(json);
+      _$$_StripeExceptionFromJson(json);
 
   @override
 
@@ -345,7 +346,7 @@ class _$_StripeException implements _StripeException {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_StripeExceptionToJson(this);
+    return _$$_StripeExceptionToJson(this);
   }
 }
 
@@ -565,7 +566,7 @@ class _$_LocalizedErrorMessage implements _LocalizedErrorMessage {
       this.type});
 
   factory _$_LocalizedErrorMessage.fromJson(Map<String, dynamic> json) =>
-      _$_$_LocalizedErrorMessageFromJson(json);
+      _$$_LocalizedErrorMessageFromJson(json);
 
   @override
 
@@ -637,7 +638,7 @@ class _$_LocalizedErrorMessage implements _LocalizedErrorMessage {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_LocalizedErrorMessageToJson(this);
+    return _$$_LocalizedErrorMessageToJson(this);
   }
 }
 

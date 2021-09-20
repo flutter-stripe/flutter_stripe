@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'apple_pay.dart';
 
@@ -184,7 +185,7 @@ class _$_ApplePayShippingMethod implements _ApplePayShippingMethod {
       this.detail});
 
   factory _$_ApplePayShippingMethod.fromJson(Map<String, dynamic> json) =>
-      _$_$_ApplePayShippingMethodFromJson(json);
+      _$$_ApplePayShippingMethodFromJson(json);
 
   @override
   final String label;
@@ -236,7 +237,7 @@ class _$_ApplePayShippingMethod implements _ApplePayShippingMethod {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ApplePayShippingMethodToJson(this);
+    return _$$_ApplePayShippingMethodToJson(this);
   }
 }
 
@@ -387,7 +388,7 @@ class _$_ApplePayCartSummaryItem implements _ApplePayCartSummaryItem {
   const _$_ApplePayCartSummaryItem({required this.label, required this.amount});
 
   factory _$_ApplePayCartSummaryItem.fromJson(Map<String, dynamic> json) =>
-      _$_$_ApplePayCartSummaryItemFromJson(json);
+      _$$_ApplePayCartSummaryItemFromJson(json);
 
   @override
 
@@ -427,7 +428,7 @@ class _$_ApplePayCartSummaryItem implements _ApplePayCartSummaryItem {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ApplePayCartSummaryItemToJson(this);
+    return _$$_ApplePayCartSummaryItemToJson(this);
   }
 }
 
@@ -658,7 +659,7 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
       this.shippingMethods});
 
   factory _$_ApplePayPresentParams.fromJson(Map<String, dynamic> json) =>
-      _$_$_ApplePayPresentParamsFromJson(json);
+      _$$_ApplePayPresentParamsFromJson(json);
 
   @override
 
@@ -738,7 +739,7 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ApplePayPresentParamsToJson(this);
+    return _$$_ApplePayPresentParamsToJson(this);
   }
 }
 

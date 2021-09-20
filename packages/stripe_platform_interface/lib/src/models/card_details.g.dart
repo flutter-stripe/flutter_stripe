@@ -6,17 +6,16 @@ part of 'card_details.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CardDetailsConstructor _$_$_CardDetailsConstructorFromJson(
-    Map<String, dynamic> json) {
-  return _$_CardDetailsConstructor(
-    number: json['number'] as String?,
-    expirationYear: json['expirationYear'] as int?,
-    expirationMonth: json['expirationMonth'] as int?,
-    cvc: json['cvc'] as String?,
-  );
-}
+_$_CardDetailsConstructor _$$_CardDetailsConstructorFromJson(
+        Map<String, dynamic> json) =>
+    _$_CardDetailsConstructor(
+      number: json['number'] as String?,
+      expirationYear: json['expirationYear'] as int?,
+      expirationMonth: json['expirationMonth'] as int?,
+      cvc: json['cvc'] as String?,
+    );
 
-Map<String, dynamic> _$_$_CardDetailsConstructorToJson(
+Map<String, dynamic> _$$_CardDetailsConstructorToJson(
         _$_CardDetailsConstructor instance) =>
     <String, dynamic>{
       'number': instance.number,
