@@ -1,5 +1,5 @@
 
-//@dart=2.12
+
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 

@@ -1,20 +1,21 @@
-//@dart=2.12
 import 'dart:developer';
 import 'dart:html';
 import 'dart:js';
 import 'dart:ui' as ui;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 import 'package:stripe_web/src/web_stripe.dart';
-import '../stripe_web.dart';
-import 'generated/types.dart' as s;
-import 'models/card.dart';
-
+import '../../stripe_web.dart';
+import '../generated/types.dart' as s;
+import 'dart:developer' as dev;
+import '../models/card.dart';
 
 class WebCardField extends StatefulWidget {
   WebCardField({
-    required this.onCardChanged,
+    required this.controller,
+    this.onCardChanged,
     Key? key,
     this.onFocus,
     this.style,
@@ -25,6 +26,7 @@ class WebCardField extends StatefulWidget {
     BoxConstraints? constraints,
     this.focusNode,
     this.autofocus = false,
+    this.dangerouslyUpdateFullCardDetails = false,
   })  : assert(constraints == null || constraints.debugAssertIsValid()),
         constraints = (width != null || height != null)
             ? constraints?.tighten(width: width, height: height) ??
@@ -34,17 +36,21 @@ class WebCardField extends StatefulWidget {
 
   final BoxConstraints? constraints;
   final CardFocusCallback? onFocus;
-  final CardChangedCallback onCardChanged;
+  final CardChangedCallback? onCardChanged;
   final CardStyle? style;
   final CardPlaceholder? placeholder;
   final bool enablePostalCode;
   final FocusNode? focusNode;
   final bool autofocus;
+  final CardEditController controller;
+  final bool dangerouslyUpdateFullCardDetails;
   @override
   _WebStripeCardState createState() => _WebStripeCardState();
 }
 
-class _WebStripeCardState extends State<WebCardField> {
+class _WebStripeCardState extends State<WebCardField> with CardFieldContext {
+  CardEditController get controller => widget.controller;
+
   @override
   void initState() {
     // ignore: undefined_prefixed_name
@@ -62,7 +68,20 @@ class _WebStripeCardState extends State<WebCardField> {
   set element(s.Element? value) => WebStripe.element = value;
 
   void initStripe() {
+    attachController(controller);
     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+      if (!widget.dangerouslyUpdateFullCardDetails) {
+        if (kDebugMode &&
+            controller.details !=
+                const CardFieldInputDetails(complete: false)) {
+          dev.log('WARNING! Initial card data value has been ignored. \n'
+              '$kDebugPCIMessage');
+        }
+        WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+          updateCardDetails(
+              const CardFieldInputDetails(complete: false), controller);
+        });
+      }
       Future.delayed(Duration(milliseconds: 1), () {
         element = WebStripe.js.elements().create('card', createOptions())
           ..mount('#card-element')
@@ -93,8 +112,8 @@ class _WebStripeCardState extends State<WebCardField> {
         brand: response.brand,
         postalCode: postalCode,
       );
-      widget.onCardChanged(details);
-      print(details);
+      widget.onCardChanged?.call(details);
+      updateCardDetails(details, controller);
       return;
     }
     throw 'On Card Element should be type ElementChangeResponse';
@@ -112,12 +131,6 @@ class _WebStripeCardState extends State<WebCardField> {
       padding: EdgeInsets.symmetric(vertical: 4),
       child: Focus(
         focusNode: _effectiveNode,
-        onFocusChange: (focus) {
-          /*  if (focus)
-            element?.focus();
-          else
-            element?.blur(); */
-        },
         child: ConstrainedBox(
           constraints: constraints,
           child: HtmlElementView(viewType: 'stripe_card'),
@@ -134,17 +147,45 @@ class _WebStripeCardState extends State<WebCardField> {
 
   @override
   void didUpdateWidget(covariant WebCardField oldWidget) {
+    if (widget.controller != oldWidget.controller) {
+      assert(!controller.hasCardField,
+          'CardEditController is already attached to a CardView');
+      detachController(oldWidget.controller);
+      attachController(oldWidget.controller);
+    }
     if (widget.enablePostalCode != oldWidget.enablePostalCode ||
         widget.placeholder != oldWidget.placeholder ||
         widget.style != oldWidget.style) {
       element?.update(createOptions());
     }
+
     super.didUpdateWidget(oldWidget);
   }
 
   @override
   void dispose() {
+    detachController(controller);
     element?.unmount();
     super.dispose();
+  }
+
+  @override
+  void blur() {
+    element?.blur();
+  }
+
+  @override
+  void clear() {
+    element?.clear();
+  }
+
+  @override
+  void focus() {
+    element?.focus();
+  }
+
+  @override
+  void dangerouslyUpdateCardDetails(CardFieldInputDetails details) {
+    throw UnimplementedError();
   }
 }

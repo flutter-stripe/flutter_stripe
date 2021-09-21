@@ -1,4 +1,3 @@
-//@dart=2.12
 import 'dart:developer';
 import 'dart:html';
 import 'dart:js';
@@ -8,8 +7,8 @@ import 'package:flutter/widgets.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 import 'package:stripe_web/src/models/card.dart';
 import 'package:stripe_web/src/web_stripe.dart';
-import '../stripe_web.dart';
-import 'generated/types.dart' as s;
+import '../../stripe_web.dart';
+import '../generated/types.dart' as s;
 
 class PaymentElement extends StatefulWidget {
   PaymentElement({

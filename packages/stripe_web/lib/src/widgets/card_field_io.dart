@@ -1,5 +1,3 @@
-//@dart=2.12
-
 import 'package:flutter/material.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 import 'package:stripe_web/src/models/card.dart';
@@ -28,7 +26,6 @@ class WebCardField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     throw UnimplementedError();
   }
 }

@@ -1,343 +1,24 @@
-//@dart=2.9
+
 @JS()
 library types;
 
 export 'extended.dart';
 import 'dart:js';
+export 'interface.dart';
+export 'interface.dart';
+export 'checkout.dart';
+import 'checkout.dart';
 
-import "package:js/js.dart" ;
+import "package:js/js.dart";
 import "package:js/js_util.dart" show promiseToFuture;
 import 'package:stripe_web/src/generated/extended.dart';
 
-/// Type definitions for stripe-v3 3.1
-/// Project: https://stripe.com/
-/// Definitions by: Andy Hawkins <https://github.com/a904guy/,http://a904guy.com>
-/// Eric J. Smith <https://github.com/ejsmith>
-/// Amrit Kahlon <https://github.com/amritk>
-/// Adam Cmiel <https://github.com/adamcmiel>
-/// Justin Leider <https://github.com/jleider>
-/// Kamil Gałuszka <https://github.com/galuszkak>
-/// Stefan Langeder <https://github.com/slangeder>
-/// Marlos Borges <https://github.com/marlosin>
-/// Thomas Marek <https://github.com/ttmarek>
-/// Kim Ehrenpohl <https://github.com/kimehrenpohl>
-/// Krishna Pravin <https://github.com/KrishnaPravin>
-/// Hiroshi Ioka <https://github.com/hirochachacha>
-/// Austin Turner <https://github.com/paustint>
-/// Kevin Soltysiak <https://github.com/ksol>
-/// Kohei Matsubara <https://github.com/matsuby>
-/// Marko Kaznovac <https://github.com/kaznovac>
-/// Hartley Robertson <https://github.com/hartleyrobertson>
-/// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
-@JS()
-external StripeStatic get Stripe;
-@JS()
-external set Stripe(StripeStatic v);
-
-// Module stripe
-@anonymous
-@JS()
-abstract class StripeStatic {
-  external stripe_Stripe call(String publicKey, [StripeOptions options]);
-  external num get version;
-  external set version(num v);
-}
-
-@anonymous
-@JS()
-abstract class _stripe_Stripe {
-  /*external Promise<TokenResponse> createToken(Element element, [TokenOptions|BankAccountTokenOptions options]);*/
-  /*external Promise<TokenResponse> createToken('bank_account' name, BankAccountTokenOptions options);*/
-  /*external Promise<TokenResponse> createToken('pii' name, PiiTokenOptions options);*/
-  external Promise<TokenResponse> createToken(
-      dynamic /*Element|'bank_account'|'pii'*/ element_name,
-      [dynamic /*TokenOptions|BankAccountTokenOptions|PiiTokenOptions*/ options]);
-  /*external Promise<SourceResponse> createSource(Element element, [{ owner?: OwnerInfo } options]);*/
-  /*external Promise<SourceResponse> createSource(SourceOptions options);*/
-  external Promise<SourceResponse> createSource(
-      dynamic /*Element|SourceOptions*/ element_options,
-      [dynamic /*{ owner?: OwnerInfo }*/ options]);
-  external Promise<SourceResponse> retrieveSource(
-      RetrieveSourceOptions options);
-
-  /// We use function overloading instead of a union here to ensure that redirectToCheckout can only be
-  /// called with either the server options or the client options - not a mix of both.
-  /*external Promise<void|{
-        error: Error;
-    }> redirectToCheckout(StripeClientCheckoutOptions options);*/
-  /// tslint:disable-next-line unified-signatures
-  /*external Promise<void|{
-        error: Error;
-    }> redirectToCheckout(StripeServerCheckoutOptions options);*/
-  external Promise<
-          dynamic /*void|{
-        error: Error;
-    }*/
-          >
-      redirectToCheckout(
-          dynamic /*StripeClientCheckoutOptions|StripeServerCheckoutOptions*/ options);
-  /*external Promise<PaymentMethodResponse> createPaymentMethod('card'|'card_present' type, Element element, [CreatePaymentMethodOptions options]);*/
-  /*external Promise<PaymentMethodResponse> createPaymentMethod(
-    PaymentMethodData data);
-*/
-  external Promise<PaymentMethodResponse> createPaymentMethod(
-    dynamic /*'card'|'card_present'|PaymentMethodData*/ paymentMethodData,
-  );
-  external Promise<PaymentIntentResponse> retrievePaymentIntent(
-      String clientSecret);
-  /*external Promise<PaymentIntentResponse> handleCardPayment(
-    String clientSecret, Element element,
-    [HandleCardPaymentOptions options]);
-*/
-  /*external Promise<PaymentIntentResponse> handleCardPayment(String clientSecret,
-    [HandleCardPaymentWithoutElementsOptions options]);
-*/
-  external Promise<PaymentIntentResponse> handleCardPayment(String clientSecret,
-      [dynamic /*Element|HandleCardPaymentWithoutElementsOptions*/ element_options,
-      HandleCardPaymentOptions options]);
-
-  /// Use stripe.confirmCardPayment when the customer submits your payment form.
-  /// When called, it will confirm the PaymentIntent with data you provide and
-  /// carry out 3DS or other next actions if they are required.
-  external Promise<PaymentIntentResponse> confirmCardPayment(
-      String clientSecret,
-      [ConfirmCardPaymentData data,
-      ConfirmCardPaymentOptions options]);
-  external Promise<PaymentIntentResponse> handleCardAction(String clientSecret);
-  external Promise<PaymentIntentResponse> confirmSepaDebitPayment(
-      String clientSecret,
-      [ConfirmSepaDebitPaymentData data]);
-  /*external Promise<SetupIntentResponse> handleCardSetup(
-    String clientSecret, Element element,
-    [HandleCardSetupOptions data]);
-*/
-  /*external Promise<SetupIntentResponse> handleCardSetup(String clientSecret,
-    [HandleCardSetupOptionsWithoutElementsOptions data]);
-*/
-  external Promise<SetupIntentResponse> handleCardSetup(String clientSecret,
-      [dynamic /*Element|HandleCardSetupOptionsWithoutElementsOptions*/ element_data,
-      HandleCardSetupOptions data]);
-  external Promise<SetupIntentResponse> confirmCardSetup(String clientSecret,
-      [ConfirmCardSetupData data, ConfirmCardSetupOptions options]);
-  external Promise<SetupIntentResponse> retrieveSetupIntent(
-      String clientSecret);
-  external Promise<SetupIntentResponse> confirmSepaDebitSetup(
-      String clientSecret,
-      [ConfirmSepaDebitSetupData data]);
-  /*external Promise<PaymentIntentResponse> confirmPaymentIntent(
-    String clientSecret, Element element,
-    [ConfirmPaymentIntentOptions options]);
-*/
-  /*external Promise<PaymentIntentResponse> confirmPaymentIntent(
-    String clientSecret,
-    [ConfirmPaymentIntentWithoutElementsOptions options]);
-*/
-  external Promise<PaymentIntentResponse> confirmPaymentIntent(
-      String clientSecret,
-      [dynamic /*Element|ConfirmPaymentIntentWithoutElementsOptions*/ element_options,
-      ConfirmPaymentIntentOptions options]);
-}
-
-@anonymous
-@JS()
-abstract class stripe_Stripe {
-  external Elements elements([ElementsCreateOptions options]);
-  external StripePaymentRequest paymentRequest(
-      StripePaymentRequestOptions options);
-}
-
-extension StripeJSExtension on stripe_Stripe {
-  Future<TokenResponse> createToken(
-      dynamic /*Element|'bank_account'|'pii'*/ element_name,
-      [dynamic /*TokenOptions|BankAccountTokenOptions|PiiTokenOptions*/ options]) {
-    final Object t = this;
-    final _stripe_Stripe tt = t;
-    return promiseToFuture(tt.createToken(element_name, options));
-  }
-
-  Future<SourceResponse> createSource(
-      dynamic /*Element|SourceOptions*/ element_options,
-      [dynamic /*{ owner?: OwnerInfo }*/ options]) {
-    final Object t = this;
-    final _stripe_Stripe tt = t;
-    if (options == null) {
-      return promiseToFuture(tt.createSource(element_options));
-    }
-    return promiseToFuture(tt.createSource(element_options, options));
-  }
-
-  Future<SourceResponse> retrieveSource(RetrieveSourceOptions options) {
-    final Object t = this;
-    final _stripe_Stripe tt = t;
-    return promiseToFuture(tt.retrieveSource(options));
-  }
-
-  Future<CheckoutResponse> redirectToCheckout(
-      dynamic /*StripeClientCheckoutOptions|StripeServerCheckoutOptions*/ options) {
-    final Object t = this;
-    final _stripe_Stripe tt = t;
-    return promiseToFuture(tt.redirectToCheckout(options));
-  }
-
-  Future<PaymentMethodResponse> createPaymentMethod(
-    dynamic /*'card'|'card_present'|PaymentMethodData*/ paymentMethodData,
-  ) {
-    final Object t = this;
-    final _stripe_Stripe tt = t;
-
-    return promiseToFuture(tt.createPaymentMethod(paymentMethodData));
-  }
-
-  Future<PaymentIntentResponse> retrievePaymentIntent(String clientSecret) {
-    final Object t = this;
-    final _stripe_Stripe tt = t;
-    return promiseToFuture(tt.retrievePaymentIntent(clientSecret));
-  }
-
-  Future<PaymentIntentResponse> handleCardPayment(String clientSecret,
-      [dynamic /*Element|HandleCardPaymentWithoutElementsOptions*/ element_options,
-      HandleCardPaymentOptions options]) {
-    final Object t = this;
-    final _stripe_Stripe tt = t;
-    if (options == null) {
-      return promiseToFuture(
-          tt.handleCardPayment(clientSecret, element_options));
-    }
-    return promiseToFuture(
-        tt.handleCardPayment(clientSecret, element_options, options));
-  }
-
-  Future<PaymentIntentResponse> confirmCardPayment(String clientSecret,
-      [ConfirmCardPaymentData data, ConfirmCardPaymentOptions options]) {
-    final Object t = this;
-    final _stripe_Stripe tt = t;
-    return promiseToFuture(tt.confirmCardPayment(clientSecret, data, options));
-  }
-
-  Future<PaymentIntentResponse> handleCardAction(String clientSecret) {
-    final Object t = this;
-    final _stripe_Stripe tt = t;
-    return promiseToFuture(tt.handleCardAction(clientSecret));
-  }
-
-  Future<PaymentIntentResponse> confirmSepaDebitPayment(String clientSecret,
-      [ConfirmSepaDebitPaymentData data]) {
-    final Object t = this;
-    final _stripe_Stripe tt = t;
-    return promiseToFuture(tt.confirmSepaDebitPayment(clientSecret, data));
-  }
-
-  Future<SetupIntentResponse> handleCardSetup(String clientSecret,
-      [dynamic /*Element|HandleCardSetupOptionsWithoutElementsOptions*/ element_data,
-      HandleCardSetupOptions data]) {
-    final Object t = this;
-    final _stripe_Stripe tt = t;
-    if (data == null) {
-      return promiseToFuture(tt.handleCardSetup(clientSecret, element_data));
-    }
-    return promiseToFuture(
-        tt.handleCardSetup(clientSecret, element_data, data));
-  }
-
-  Future<SetupIntentResponse> confirmCardSetup(String clientSecret,
-      [ConfirmCardSetupData data, ConfirmCardSetupOptions options]) {
-    final Object t = this;
-    final _stripe_Stripe tt = t;
-    return promiseToFuture(tt.confirmCardSetup(clientSecret, data, options));
-  }
-
-  Future<SetupIntentResponse> retrieveSetupIntent(String clientSecret) {
-    final Object t = this;
-    final _stripe_Stripe tt = t;
-    return promiseToFuture(tt.retrieveSetupIntent(clientSecret));
-  }
-
-  Future<SetupIntentResponse> confirmSepaDebitSetup(String clientSecret,
-      [ConfirmSepaDebitSetupData data]) {
-    final Object t = this;
-    final _stripe_Stripe tt = t;
-    return promiseToFuture(tt.confirmSepaDebitSetup(clientSecret, data));
-  }
-
-  Future<PaymentIntentResponse> confirmPaymentIntent(String clientSecret,
-      [dynamic /*Element|ConfirmPaymentIntentWithoutElementsOptions*/ element_options,
-      ConfirmPaymentIntentOptions options]) {
-    final Object t = this;
-    final _stripe_Stripe tt = t;
-    if (options == null) {
-      return promiseToFuture(
-          tt.confirmPaymentIntent(clientSecret, element_options));
-    }
-    return promiseToFuture(
-        tt.confirmPaymentIntent(clientSecret, element_options, options));
-  }
-}
 
 /*type StripeRedirectResponse = never | {
         error: Error;
     };
 */
 /*type billingAddressCollectionType = 'required' | 'auto' | '';*/
-@anonymous
-@JS()
-abstract class StripeClientCheckoutOptions {
-  external JsArray<StripeCheckoutItem> get items;
-  external set items(JsArray<StripeCheckoutItem> v);
-  external JsArray<JsObject> get lineItems;
-  external set lineItems(JsArray<JsObject> v);
-  external String get successUrl;
-  external set successUrl(String v);
-  external String get cancelUrl;
-  external set cancelUrl(String v);
-  external String get clientReferenceId;
-  external set clientReferenceId(String v);
-  external String get customerEmail;
-  external set customerEmail(String v);
-  external String /*'required'|'auto'|''*/ get billingAddressCollection;
-  external set billingAddressCollection(String /*'required'|'auto'|''*/ v);
-  external String get locale;
-  external set locale(String v);
-  external factory StripeClientCheckoutOptions({
-    JsArray<JsObject> items,
-    JsArray<JsObject> lineItems,
-    String successUrl,
-    String cancelUrl,
-    String clientReferenceId,
-    String customerEmail,
-    String /*'required'|'auto'|''*/ billingAddressCollection,
-    String locale,
-  });
-}
-
-@anonymous
-@JS()
-abstract class StripeServerCheckoutOptions {
-  external String get sessionId;
-  external set sessionId(String v);
-  external factory StripeServerCheckoutOptions({String sessionId});
-}
-
-@anonymous
-@JS()
-abstract class StripeCheckoutItem {
-  external String get sku;
-  external set sku(String v);
-  external String get plan;
-  external set plan(String v);
-  external num get quantity;
-  external set quantity(num v);
-  external factory StripeCheckoutItem({String sku, String plan, num quantity});
-}
-
-@anonymous
-@JS()
-abstract class StripeCheckoutLineItem {
-  external String get price;
-  external set price(String v);
-  external num get quantity;
-  external set quantity(num v);
-  external factory StripeCheckoutLineItem({String price, num quantity});
-}
 
 @anonymous
 @JS()
@@ -347,7 +28,7 @@ abstract class StripeOptions {
   external String get apiVersion;
   external set apiVersion(String v);
   external List get betas;
-  external set betas(List<String> v);
+  external set betas(List v);
   external String get locale;
   external set locale(String v);
   external factory StripeOptions(
@@ -1068,19 +749,19 @@ abstract class BillingDetailsAddress {
 @anonymous
 @JS()
 abstract class BillingDetails {
-  external BillingDetailsAddress /*BillingDetailsAddress|Null*/ get address;
-  external set address(BillingDetailsAddress /*BillingDetailsAddress|Null*/ v);
-  external String /*String|Null*/ get email;
-  external set email(String /*String|Null*/ v);
-  external String /*String|Null*/ get name;
-  external set name(String /*String|Null*/ v);
-  external String /*String|Null*/ get phone;
-  external set phone(String /*String|Null*/ v);
+  external BillingDetailsAddress? /*BillingDetailsAddress|Null*/ get address;
+  external set address(BillingDetailsAddress? /*BillingDetailsAddress|Null*/ v);
+  external String? /*String|Null*/ get email;
+  external set email(String? /*String|Null*/ v);
+  external String? /*String|Null*/ get name;
+  external set name(String? /*String|Null*/ v);
+  external String? /*String|Null*/ get phone;
+  external set phone(String? /*String|Null*/ v);
   external factory BillingDetails(
-      {BillingDetailsAddress /*BillingDetailsAddress|Null*/ address,
-      String /*String|Null*/ email,
-      String /*String|Null*/ name,
-      String /*String|Null*/ phone});
+      {BillingDetailsAddress? /*BillingDetailsAddress|Null*/ address,
+      String? /*String|Null*/ email,
+      String? /*String|Null*/ name,
+      String? /*String|Null*/ phone});
 }
 
 @anonymous
@@ -2082,8 +1763,7 @@ abstract class _StripePaymentRequest {
 
 extension StripePaymentRequestExtensions on StripePaymentRequest {
   Future<dynamic /*{ applePay?: boolean }|Null*/ > canMakePayment() {
-    final Object t = this;
-    final _StripePaymentRequest tt = t;
+    final _StripePaymentRequest tt = this as _StripePaymentRequest;
     return promiseToFuture(tt.canMakePayment());
   }
 }
@@ -2541,17 +2221,17 @@ abstract class PaymentIntent {
   external set amount_received(num v);
 
   /// ID of the Connect application that created the PaymentIntent.
-  external String /*String|Null*/ get application;
-  external set application(String /*String|Null*/ v);
+  external String? /*String|Null*/ get application;
+  external set application(String? /*String|Null*/ v);
 
   /// A fee in cents that will be applied to the invoice and transferred to the application owner's Stripe account.
-  external num /*num|Null*/ get application_fee_amount;
-  external set application_fee_amount(num /*num|Null*/ v);
+  external num? /*num|Null*/ get application_fee_amount;
+  external set application_fee_amount(num? /*num|Null*/ v);
 
   /// Populated when `status` is `canceled`, this is the time at which the PaymentIntent was canceled.
   /// Measured in seconds since the Unix epoch.
-  external num /*num|Null*/ get canceled_at;
-  external set canceled_at(num /*num|Null*/ v);
+  external num? /*num|Null*/ get canceled_at;
+  external set canceled_at(num? /*num|Null*/ v);
 
   /// User-given reason for cancellation of this PaymentIntent.
   external String /*'duplicate'|'fraudulent'|'requested_by_customer'|'abandoned'|'failed_invoice'|'void_invoice'|'automatic'|Null*/ get cancelation_reason;
@@ -2571,8 +2251,8 @@ abstract class PaymentIntent {
   external set client_secret(String v);
 
   /// Confirmation method of this PaymentIntent.
-  external String /*'automatic'|'manual'*/ get confirmation_method;
-  external set confirmation_method(String /*'automatic'|'manual'*/ v);
+  external String? /*'automatic'|'manual'*/ get confirmation_method;
+  external set confirmation_method(String? /*'automatic'|'manual'*/ v);
 
   /// Time at which the object was created. Measured in seconds since the Unix epoch.
   external num get created;
@@ -2583,16 +2263,16 @@ abstract class PaymentIntent {
   external set currency(String v);
 
   /// ID of the Customer this PaymentIntent is for if one exists.
-  external String /*String|Null*/ get customer;
-  external set customer(String /*String|Null*/ v);
+  external String? /*String|Null*/ get customer;
+  external set customer(String? /*String|Null*/ v);
 
   /// An arbitrary string attached to the object. Often useful for displaying to users.
   external String get description;
   external set description(String v);
 
   /// The payment error encountered in the previous PaymentIntent confirmation.
-  external Error /*Error|Null*/ get last_payment_error;
-  external set last_payment_error(Error /*Error|Null*/ v);
+  external Error? /*Error|Null*/ get last_payment_error;
+  external set last_payment_error(Error? /*Error|Null*/ v);
 
   /// Has the value true if the object exists in live mode or the value false
   /// if the object exists in test mode.
@@ -2629,14 +2309,14 @@ abstract class PaymentIntent {
   external set review(String /*String|Null*/ v);
 
   /// Shipping information for this PaymentIntent.
-  external ShippingDetails /*ShippingDetails|Null*/ get shipping;
-  external set shipping(ShippingDetails /*ShippingDetails|Null*/ v);
+  external ShippingDetails? /*ShippingDetails|Null*/ get shipping;
+  external set shipping(ShippingDetails? /*ShippingDetails|Null*/ v);
 
   /// The ID of a Source (e.g. 'src_abc123' or 'card_abc123').
   /// Will be null unless this PaymentIntent was created with a source
   /// instead of a payment_method. (Undocumented as of August 2019)
-  external String /*String|Null*/ get source;
-  external set source(String /*String|Null*/ v);
+  external String? /*String|Null*/ get source;
+  external set source(String? /*String|Null*/ v);
 
   /// Extra information about a PaymentIntent. This will appear on your
   /// customer’s statement when this PaymentIntent succeeds in creating a charge.

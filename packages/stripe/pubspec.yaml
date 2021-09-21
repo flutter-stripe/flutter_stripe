@@ -16,6 +16,9 @@ dependencies:
   stripe_platform_interface: 1.3.0
   stripe_web:
     path: ../stripe_web/
+dependency_overrides:
+  stripe_platform_interface:
+    path: ../stripe_platform_interface
 
 dev_dependencies:
   flutter_test:

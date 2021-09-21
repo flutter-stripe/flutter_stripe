@@ -7,15 +7,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
-import 'dart:developer' as dev;
-
-const String _kDebugPCIMessage =
-    'Handling card data manually will break PCI compliance provided by Stripe. '
-    'Please make sure you understand the severe consecuences of it. '
-    'https://stripe.com/docs/security/guide#validating-pci-compliance. \n'
-    'To handle PCI compliance yourself and allow to edit card data programatically,'
-    'set `dangerouslyGetFullCardDetails: true`';
 import 'package:stripe_web/stripe_web.dart';
+import 'dart:developer' as dev;
 
 /// Customizable form that collects card information.
 class CardField extends StatefulWidget {
@@ -97,61 +90,6 @@ class CardField extends StatefulWidget {
   _CardFieldState createState() => _CardFieldState();
 }
 
-abstract class CardFieldContext {
-  void focus();
-  void blur();
-  void clear();
-
-  void dangerouslyUpdateCardDetails(CardFieldInputDetails details);
-}
-
-class CardEditController extends ChangeNotifier {
-  CardEditController({CardFieldInputDetails? initialDetails})
-      : _initalDetails = initialDetails,
-        _details =
-            initialDetails ?? const CardFieldInputDetails(complete: false);
-
-  final CardFieldInputDetails? _initalDetails;
-  CardFieldInputDetails _details;
-
-  CardFieldInputDetails get details => _details;
-  bool get complete => _details.complete;
-
-  set details(CardFieldInputDetails value) {
-    if (_details == value) return;
-    context.dangerouslyUpdateCardDetails(details);
-    _details = value;
-    notifyListeners();
-  }
-
-  void _updateDetails(CardFieldInputDetails value) {
-    if (_details == value) return;
-    _details = value;
-    notifyListeners();
-  }
-
-  void focus() {
-    context.focus();
-  }
-
-  void blur() {
-    context.blur();
-  }
-
-  void clear() {
-    context.clear();
-  }
-
-  bool get hasCardField => _context != null;
-
-  CardFieldContext? _context;
-  CardFieldContext get context {
-    assert(
-        _context != null, 'CardEditController is not attached to any CardView');
-    return _context!;
-  }
-}
-
 class _CardFieldState extends State<CardField> {
   final FocusNode _node =
       FocusNode(debugLabel: 'CardField', descendantsAreFocusable: false);
@@ -205,6 +143,7 @@ class _CardFieldState extends State<CardField> {
 
     final _platform = kIsWeb
         ? WebCardField(
+            controller: controller,
             height: platformCardHeight,
             focusNode: _node,
             onCardChanged: widget.onCardChanged,
@@ -217,6 +156,7 @@ class _CardFieldState extends State<CardField> {
         : CustomSingleChildLayout(
             delegate: const _NegativeMarginLayout(margin: platformMargin),
             child: _MethodChannelCardField(
+              controller: controller,
               height: platformCardHeight,
               focusNode: _node,
               style: style,
@@ -252,8 +192,8 @@ class _CardFieldState extends State<CardField> {
     // Flutter fonts need to be loaded in the native framework to work
     // As this is not automatic, default fonts are omitted
     final fontFamily = widget.style?.fontFamily;
-      //  Theme.of(context).textTheme.subtitle1?.fontFamily ??
-      //  kCardFieldDefaultFontFamily;
+    //  Theme.of(context).textTheme.subtitle1?.fontFamily ??
+    //  kCardFieldDefaultFontFamily;
 
     return CardStyle(
       textColor: widget.style?.color,
@@ -383,16 +323,19 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
 
   @override
   void initState() {
-    controller._context = this;
+    attachController(controller);
     // Reset card fields if dangerouslyUpdateFullCardDetails is false
     if (!widget.dangerouslyUpdateFullCardDetails) {
       if (kDebugMode &&
           controller.details != const CardFieldInputDetails(complete: false)) {
         dev.log('WARNING! Initial card data value has been ignored. \n'
-            '$_kDebugPCIMessage');
+            '$kDebugPCIMessage');
       }
       WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-        controller._updateDetails(const CardFieldInputDetails(complete: false));
+        updateCardDetails(
+          const CardFieldInputDetails(complete: false),
+          controller,
+        );
       });
     }
 
@@ -401,9 +344,8 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
 
   @override
   void dispose() {
-    if (controller._context == this) {
-      controller._context = null;
-    }
+    detachController(controller);
+
     _focusNode.dispose();
     super.dispose();
   }
@@ -419,8 +361,8 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
       'postalCodeEnabled': widget.enablePostalCode,
       'dangerouslyGetFullCardDetails': widget.dangerouslyGetFullCardDetails,
       if (widget.dangerouslyUpdateFullCardDetails &&
-          controller._initalDetails != null)
-        'cardDetails': controller._initalDetails?.toJson(),
+          controller.initalDetails != null)
+        'cardDetails': controller.initalDetails?.toJson(),
       'autofocus': widget.autofocus,
     };
 
@@ -480,10 +422,10 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
   @override
   void didUpdateWidget(covariant _MethodChannelCardField oldWidget) {
     if (widget.controller != oldWidget.controller) {
-      assert(controller._context == null,
+      assert(!controller.hasCardField,
           'CardEditController is already attached to a CardView');
-      oldWidget.controller._context = this;
-      controller._context = this;
+      detachController(oldWidget.controller);
+      attachController(oldWidget.controller);
     }
     if (widget.enablePostalCode != oldWidget.enablePostalCode) {
       _methodChannel?.invokeMethod('onPostalCodeEnabledChanged', {
@@ -530,7 +472,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
     try {
       final map = Map<String, dynamic>.from(arguments);
       final details = CardFieldInputDetails.fromJson(map);
-      controller._updateDetails(details);
+      updateCardDetails(details, controller);
       widget.onCardChanged?.call(details);
       // ignore: avoid_catches_without_on_clauses
     } catch (e) {
@@ -590,7 +532,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
 
   @override
   void dangerouslyUpdateCardDetails(CardFieldInputDetails details) {
-    assert(widget.dangerouslyUpdateFullCardDetails, _kDebugPCIMessage);
+    assert(widget.dangerouslyUpdateFullCardDetails, kDebugPCIMessage);
     _methodChannel?.invokeMethod('dangerouslyUpdateCardDetails', {
       'cardDetails': details.toJson(),
     });

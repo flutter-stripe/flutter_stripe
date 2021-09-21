@@ -1,4 +1,3 @@
-//@dart=2.12
 import 'dart:js';
 
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
@@ -6,6 +5,7 @@ import 'package:stripe_web/stripe_web.dart';
 
 import 'generated/types.dart' as s;
 import 'parser/payment_methods.dart';
+import 'parser/payment_intent.dart';
 import 'package:flutter/services.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 import 'package:js/js_util.dart' as js_util;
@@ -18,9 +18,9 @@ const _appInfo = AppInfo(
 
 /// An implementation of [StripePlatform] that uses method channels.
 class WebStripe extends StripePlatform {
- 
-  static s.stripe_Stripe? __stripe;
-  s.stripe_Stripe get _stripe {
+  static s.StripeJS get js => __stripe!;
+  static s.StripeJS? __stripe;
+  s.StripeJS get _stripe {
     assert(__stripe != null);
     return _stripe;
   }
@@ -28,8 +28,6 @@ class WebStripe extends StripePlatform {
   static void registerWith(Registrar registrar) {
     StripePlatform.instance = WebStripe();
   }
-
-  static s.stripe_Stripe get js => __stripe!;
 
   WebStripe();
 
@@ -61,35 +59,24 @@ class WebStripe extends StripePlatform {
     Map<String, String> options = const {},
   ]) async {
     final type = data.toJson()['type'];
-    final params = s.CreatePaymentMethodCardData(type: 'card', card: element!);
-    print(type);
-    try {
-      final response = await js.createPaymentMethod(
-        params,
-      );
-      return response.paymentMethod.parse();
-    } catch (e) {
-      print('Error $e');
-      rethrow;
+    if (type == 'Card') {
+      final params =
+          s.CreatePaymentMethodCardData(type: 'card', card: element!);
+      try {
+        final response = await js.createPaymentMethod(
+          params,
+        );
+        return response.paymentMethod.parse();
+      } catch (e) {
+        print('Error $e');
+        rethrow;
+      }
     }
-  }
-
-  @override
-  Future<void> configure3dSecure(ThreeDSecureConfigurationParams params) {
     throw UnimplementedError();
   }
 
   @override
   Future<void> confirmApplePayPayment(String clientSecret) async {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<PaymentIntent> confirmPaymentMethod(
-    String paymentIntentClientSecret,
-    PaymentMethodParams params, [
-    Map<String, String> options = const {},
-  ]) async {
     throw UnimplementedError();
   }
 
@@ -140,27 +127,31 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<void> confirmPaymentSheetPayment() {
-    // TODO: implement confirmPaymentSheetPayment
-    throw UnimplementedError();
-  }
+  Future<PaymentIntent> confirmPayment(
+      String paymentIntentClientSecret, PaymentMethodParams params,
+      [Map<String, String> options = const {}]) async {
+    final response = await params.maybeWhen<Future<s.PaymentIntentResponse>>(
+        card: (usage, billing) {
+      return js.confirmCardPayment(
+        paymentIntentClientSecret,
+        data: s.ConfirmCardPaymentData(
+          payment_method: s.CardPaymentMethod(card: element),
+          setup_future_usage:
+              (usage ?? PaymentIntentsFutureUsage.OnSession).toJs(),
+          save_payment_method: usage != null,
+          // shipping: billing?.toJs()
+          // TODO: Implement return_url for web
+          // return_url: '',
+        ),
+      );
+    }, orElse: () {
+      throw UnimplementedError();
+    });
+    if (Error.safeToString(response.error) != 'null') {
+      throw response.error;
+    }
 
-  @override
-  Future<void> initPaymentSheet(SetupPaymentSheetParameters params) {
-    // TODO: implement initPaymentSheet
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> presentPaymentSheet() {
-    // TODO: implement presentPaymentSheet
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<PaymentIntent> confirmPayment(String paymentIntentClientSecret, PaymentMethodParams params, [Map<String, String> options = const {}]) {
-    // TODO: implement confirmPayment
-    throw UnimplementedError();
+    return response.paymentIntent.parse();
   }
 
   @override
@@ -170,32 +161,44 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<PaymentMethod> createGooglePayPaymentMethod(CreateGooglePayPaymentParams params) {
+  Future<PaymentMethod> createGooglePayPaymentMethod(
+      CreateGooglePayPaymentParams params) {
     // TODO: implement createGooglePayPaymentMethod
     throw UnimplementedError();
   }
 
   @override
+  Future<void> confirmPaymentSheetPayment() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> initPaymentSheet(SetupPaymentSheetParameters params) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> presentPaymentSheet() {
+    throw UnimplementedError();
+  }
+
+  @override
   Future<TokenData> createToken(CreateTokenParams params) {
-    // TODO: implement createToken
     throw UnimplementedError();
   }
 
   @override
   Future<void> dangerouslyUpdateCardDetails(CardDetails card) {
-    // TODO: implement dangerouslyUpdateCardDetails
     throw UnimplementedError();
   }
 
   @override
   Future<void> initGooglePay(GooglePayInitParams params) {
-    // TODO: implement initGooglePay
     throw UnimplementedError();
   }
 
   @override
   Future<void> presentGooglePay(PresentGooglePayParams params) {
-    // TODO: implement presentGooglePay
     throw UnimplementedError();
   }
 }

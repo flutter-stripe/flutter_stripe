@@ -9,12 +9,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
-const String _kDebugPCIMessage =
-    'Handling card data manually will break PCI compliance provided by Stripe. '
-    'Please make sure you understand the severe consecuences of it. '
-    'https://stripe.com/docs/security/guide#validating-pci-compliance. \n'
-    'To handle PCI compliance yourself and allow to edit card data programatically,'
-    'set `dangerouslyGetFullCardDetails: true`';
 
 /// Customizable form that collects card information.
 /// 
@@ -336,7 +330,7 @@ class _MethodChannelCardFormFieldState
       if (kDebugMode &&
           controller.details != const CardFieldInputDetails(complete: false)) {
         dev.log('WARNING! Initial card data value has been ignored. \n'
-            '$_kDebugPCIMessage');
+            '$kDebugPCIMessage');
       }
       WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
         controller._updateDetails(const CardFieldInputDetails(complete: false));
@@ -546,7 +540,7 @@ class _MethodChannelCardFormFieldState
 
   @override
   void dangerouslyUpdateCardDetails(CardFieldInputDetails details) {
-    assert(widget.dangerouslyUpdateFullCardDetails, _kDebugPCIMessage);
+    assert(widget.dangerouslyUpdateFullCardDetails, kDebugPCIMessage);
     _methodChannel?.invokeMethod('dangerouslyUpdateCardDetails', {
       'cardDetails': details.toJson(),
     });

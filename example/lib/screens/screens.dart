@@ -17,16 +17,9 @@ import 'card_payments/webhook_payment_screen.dart';
 import 'others/cvc_re_collection_screen.dart';
 import 'others/legacy_token_screen.dart';
 import 'others/setup_future_payment_screen.dart';
-import 'package:stripe_example/screens/apple_pay_screen.dart';
-import 'package:stripe_example/screens/google_pay_screen.dart';
 import 'package:stripe_example/screens/web/screens.dart';
 
-import '../screens/no_webhook_payment_screen.dart';
-import '../screens/setup_future_payment_screen.dart';
-import '../screens/webhook_payment_screen.dart';
 import 'checkout/checkout_screen.dart';
-import 'cvc_re_collection_screen.dart';
-import 'payment_sheet_screen.dart';
 import 'themes.dart';
 
 

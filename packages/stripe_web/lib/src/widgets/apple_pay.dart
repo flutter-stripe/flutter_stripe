@@ -1,12 +1,11 @@
-//@dart=2.12
 import 'dart:developer';
 import 'dart:html';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stripe_web/src/web_stripe.dart';
-import '../stripe_web.dart';
-import 'generated/types.dart' as s;
+import '../../stripe_web.dart';
+import '../generated/types.dart' as s;
 
 class ApplePayButton extends StatefulWidget {
   final FocusNode? focusNode;

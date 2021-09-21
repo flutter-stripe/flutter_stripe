@@ -1,4 +1,3 @@
-//@dart=2.9
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_example/.env.dart';

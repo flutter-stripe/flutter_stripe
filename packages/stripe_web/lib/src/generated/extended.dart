@@ -11,12 +11,19 @@ class ElementChangeValueOptionsResponse {
   external factory ElementChangeValueOptionsResponse({bool postalCode});
 }
 
+@JS()
+@anonymous
+class CardPaymentMethod {
+  external dynamic get card;
+  // Must have an unnamed factory constructor with named arguments.
+  external factory CardPaymentMethod({dynamic card});
+}
+
 
 @JS()
 @anonymous
 class CheckoutResponse {
   external Error get error;
- 
   external factory CheckoutResponse({Error error});
 }
 

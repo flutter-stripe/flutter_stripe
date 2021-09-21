@@ -1,4 +1,4 @@
-//@dart=2.12
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -7,7 +7,6 @@ import 'package:stripe_example/config.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 import 'package:http/http.dart' as http;
-import 'package:stripe_web/stripe_web.dart';
 
 class WebCardPaymentScreen extends StatefulWidget {
   @override

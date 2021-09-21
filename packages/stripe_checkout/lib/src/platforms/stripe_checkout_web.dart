@@ -1,4 +1,4 @@
-//@dart=2.12
+
 import 'package:flutter/widgets.dart';
 import 'checkout.dart';
 import 'stripe_js.dart' as s;
