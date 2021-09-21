@@ -473,6 +473,175 @@ abstract class _CardStyleConstructor extends CardStyle {
       throw _privateConstructorUsedError;
 }
 
+CardFormStyle _$CardFormStyleFromJson(Map<String, dynamic> json) {
+  return _CardFormStyleConstructor.fromJson(json);
+}
+
+/// @nodoc
+class _$CardFormStyleTearOff {
+  const _$CardFormStyleTearOff();
+
+  _CardFormStyleConstructor call(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? backgroundColor}) {
+    return _CardFormStyleConstructor(
+      backgroundColor: backgroundColor,
+    );
+  }
+
+  CardFormStyle fromJson(Map<String, Object> json) {
+    return CardFormStyle.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $CardFormStyle = _$CardFormStyleTearOff();
+
+/// @nodoc
+mixin _$CardFormStyle {
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get backgroundColor => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CardFormStyleCopyWith<CardFormStyle> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CardFormStyleCopyWith<$Res> {
+  factory $CardFormStyleCopyWith(
+          CardFormStyle value, $Res Function(CardFormStyle) then) =
+      _$CardFormStyleCopyWithImpl<$Res>;
+  $Res call(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? backgroundColor});
+}
+
+/// @nodoc
+class _$CardFormStyleCopyWithImpl<$Res>
+    implements $CardFormStyleCopyWith<$Res> {
+  _$CardFormStyleCopyWithImpl(this._value, this._then);
+
+  final CardFormStyle _value;
+  // ignore: unused_field
+  final $Res Function(CardFormStyle) _then;
+
+  @override
+  $Res call({
+    Object? backgroundColor = freezed,
+  }) {
+    return _then(_value.copyWith(
+      backgroundColor: backgroundColor == freezed
+          ? _value.backgroundColor
+          : backgroundColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$CardFormStyleConstructorCopyWith<$Res>
+    implements $CardFormStyleCopyWith<$Res> {
+  factory _$CardFormStyleConstructorCopyWith(_CardFormStyleConstructor value,
+          $Res Function(_CardFormStyleConstructor) then) =
+      __$CardFormStyleConstructorCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? backgroundColor});
+}
+
+/// @nodoc
+class __$CardFormStyleConstructorCopyWithImpl<$Res>
+    extends _$CardFormStyleCopyWithImpl<$Res>
+    implements _$CardFormStyleConstructorCopyWith<$Res> {
+  __$CardFormStyleConstructorCopyWithImpl(_CardFormStyleConstructor _value,
+      $Res Function(_CardFormStyleConstructor) _then)
+      : super(_value, (v) => _then(v as _CardFormStyleConstructor));
+
+  @override
+  _CardFormStyleConstructor get _value =>
+      super._value as _CardFormStyleConstructor;
+
+  @override
+  $Res call({
+    Object? backgroundColor = freezed,
+  }) {
+    return _then(_CardFormStyleConstructor(
+      backgroundColor: backgroundColor == freezed
+          ? _value.backgroundColor
+          : backgroundColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_CardFormStyleConstructor extends _CardFormStyleConstructor {
+  _$_CardFormStyleConstructor(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.backgroundColor})
+      : super._();
+
+  factory _$_CardFormStyleConstructor.fromJson(Map<String, dynamic> json) =>
+      _$$_CardFormStyleConstructorFromJson(json);
+
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? backgroundColor;
+
+  @override
+  String toString() {
+    return 'CardFormStyle(backgroundColor: $backgroundColor)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _CardFormStyleConstructor &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                const DeepCollectionEquality()
+                    .equals(other.backgroundColor, backgroundColor)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(backgroundColor);
+
+  @JsonKey(ignore: true)
+  @override
+  _$CardFormStyleConstructorCopyWith<_CardFormStyleConstructor> get copyWith =>
+      __$CardFormStyleConstructorCopyWithImpl<_CardFormStyleConstructor>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CardFormStyleConstructorToJson(this);
+  }
+}
+
+abstract class _CardFormStyleConstructor extends CardFormStyle {
+  factory _CardFormStyleConstructor(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? backgroundColor}) = _$_CardFormStyleConstructor;
+  _CardFormStyleConstructor._() : super._();
+
+  factory _CardFormStyleConstructor.fromJson(Map<String, dynamic> json) =
+      _$_CardFormStyleConstructor.fromJson;
+
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get backgroundColor => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$CardFormStyleConstructorCopyWith<_CardFormStyleConstructor> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 CardPlaceholder _$CardPlaceholderFromJson(Map<String, dynamic> json) {
   return _CardPlaceholderConstructor.fromJson(json);
 }
