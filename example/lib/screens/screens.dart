@@ -1,19 +1,54 @@
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
-import 'package:stripe_example/screens/apple_pay_screen.dart';
-import 'package:stripe_example/screens/google_pay_screen.dart';
-import 'package:stripe_example/screens/web/screens.dart';
+import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen.dart';
+import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen_custom_flow.dart';
+import 'package:stripe_example/screens/regional_payment_methods/ali_pay_screen.dart';
+import 'package:stripe_example/screens/regional_payment_methods/ideal_screen.dart';
+import 'package:stripe_example/screens/regional_payment_methods/wechat_pay_screen.dart';
+import 'package:stripe_example/screens/wallets/apple_pay_screen.dart';
+import 'package:stripe_example/screens/wallets/apple_pay_screen_plugin.dart';
+import 'package:stripe_example/screens/wallets/google_pay_screen.dart';
+import 'package:stripe_example/screens/wallets/google_pay_stripe_screen.dart';
 
-import '../screens/no_webhook_payment_screen.dart';
-import '../screens/setup_future_payment_screen.dart';
-import '../screens/webhook_payment_screen.dart';
+import 'card_payments/custom_card_payment_screen.dart';
+import 'card_payments/no_webhook_payment_cardform_screen.dart';
+import 'card_payments/no_webhook_payment_screen.dart';
+import 'card_payments/webhook_payment_screen.dart';
 import 'checkout/checkout_screen.dart';
-import 'cvc_re_collection_screen.dart';
-import 'payment_sheet_screen.dart';
+import 'others/cvc_re_collection_screen.dart';
+import 'others/legacy_token_screen.dart';
+import 'others/setup_future_payment_screen.dart';
 import 'themes.dart';
+import 'web/screens.dart';
+
+class ExampleSection extends StatelessWidget {
+  final String title;
+  final List<Widget> children;
+  final bool expanded;
+
+  const ExampleSection({
+    Key? key,
+    required this.title,
+    required this.children,
+    this.expanded = false,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ExpansionTile(
+      backgroundColor: Theme.of(context).primaryColor.withOpacity(0.2),
+      initiallyExpanded: expanded,
+      childrenPadding: EdgeInsets.only(left: 20),
+      title: Text(title),
+      children:
+          ListTile.divideTiles(tiles: children, context: context).toList(),
+    );
+  }
+}
 
 
-class Example {
+
+class Example extends StatelessWidget {
   final String title;
   final TextStyle? style;
   final Widget? leading;
@@ -39,6 +74,7 @@ class Example {
       trailing: Icon(Icons.chevron_right_rounded),
     );
   }
+
 
   static List<Example> paymentMethodScreens = [];
 

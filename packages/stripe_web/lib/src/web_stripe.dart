@@ -6,7 +6,8 @@ import 'package:stripe_web/stripe_web.dart';
 
 import 'generated/types.dart' as s;
 import 'parser/payment_methods.dart';
-import 'package:flutter/services.dart';
+import 'parser/payment_intent.dart';
+
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 import 'package:js/js_util.dart' as js_util;
 
