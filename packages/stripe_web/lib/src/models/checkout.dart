@@ -1,4 +1,3 @@
-
 //@dart=2.12
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'checkout.freezed.dart';

@@ -22,7 +22,6 @@ extension PaymentMethodParser on s.PaymentMethod {
   }
 }
 
-
 extension StripeParser on s.PaymentMethodCard {
   Card parse() {
     return Card(

@@ -1,23 +1,61 @@
-@JS()
-library types;
-
-export 'extended.dart';
-import 'dart:js';
-export 'interface.dart';
-export 'interface.dart';
-export 'checkout.dart';
-import 'checkout.dart';
-
+/* export '../js/stripe.dart';
 import "package:js/js.dart";
 import "package:js/js_util.dart" show promiseToFuture;
-import 'package:stripe_web/src/generated/extended.dart';
 
+import 'package:stripe_web/src/js/stripe.dart';
 
+import 'general.dart';
 /*type StripeRedirectResponse = never | {
         error: Error;
     };
 */
 /*type billingAddressCollectionType = 'required' | 'auto' | '';*/
+@anonymous
+@JS()
+abstract class StripeClientCheckoutOptions {
+  external List<StripeCheckoutItem> get items;
+  external set items(List<StripeCheckoutItem> v);
+  external String get successUrl;
+  external set successUrl(String v);
+  external String get cancelUrl;
+  external set cancelUrl(String v);
+  external String get clientReferenceId;
+  external set clientReferenceId(String v);
+  external String get customerEmail;
+  external set customerEmail(String v);
+  external String /*'required'|'auto'|''*/ get billingAddressCollection;
+  external set billingAddressCollection(String /*'required'|'auto'|''*/ v);
+  external String get locale;
+  external set locale(String v);
+  external factory StripeClientCheckoutOptions(
+      {List<StripeCheckoutItem> items,
+      String successUrl,
+      String cancelUrl,
+      String clientReferenceId,
+      String customerEmail,
+      String /*'required'|'auto'|''*/ billingAddressCollection,
+      String locale});
+}
+
+@anonymous
+@JS()
+abstract class StripeServerCheckoutOptions {
+  external String get sessionId;
+  external set sessionId(String v);
+  external factory StripeServerCheckoutOptions({String sessionId});
+}
+
+@anonymous
+@JS()
+abstract class StripeCheckoutItem {
+  external String get sku;
+  external set sku(String v);
+  external String get plan;
+  external set plan(String v);
+  external num get quantity;
+  external set quantity(num v);
+  external factory StripeCheckoutItem({String sku, String plan, num quantity});
+}
 
 @anonymous
 @JS()
@@ -26,12 +64,15 @@ abstract class StripeOptions {
   external set stripeAccount(String v);
   external String get apiVersion;
   external set apiVersion(String v);
-  external List get betas;
-  external set betas(List v);
+  external List<String> get betas;
+  external set betas(List<String> v);
   external String get locale;
   external set locale(String v);
   external factory StripeOptions(
-      {String stripeAccount, String apiVersion, List betas, String locale});
+      {String stripeAccount,
+      String apiVersion,
+      List<String> betas,
+      String locale});
 }
 
 @anonymous
@@ -723,6 +764,28 @@ abstract class Metadata {
 
 @anonymous
 @JS()
+abstract class List<T> {
+  /// Value is 'list'
+  external String /*'list'*/ get object;
+  external set object(String /*'list'*/ v);
+
+  /// An array containing the actual response elements, paginated by any request parameters.
+  external List<T> get data;
+  external set data(List<T> v);
+
+  /// Whether or not there are more elements available after this set. If false, this set comprises the end of the list.
+  external bool get has_more;
+  external set has_more(bool v);
+
+  /// The URL for accessing this list.
+  external String get url;
+  external set url(String v);
+  external factory List(
+      {String /*'list'*/ object, List<T> data, bool has_more, String url});
+}
+
+@anonymous
+@JS()
 abstract class BillingDetailsAddress {
   external String get city;
   external set city(String v);
@@ -748,19 +811,19 @@ abstract class BillingDetailsAddress {
 @anonymous
 @JS()
 abstract class BillingDetails {
-  external BillingDetailsAddress? /*BillingDetailsAddress|Null*/ get address;
-  external set address(BillingDetailsAddress? /*BillingDetailsAddress|Null*/ v);
-  external String? /*String|Null*/ get email;
-  external set email(String? /*String|Null*/ v);
-  external String? /*String|Null*/ get name;
-  external set name(String? /*String|Null*/ v);
-  external String? /*String|Null*/ get phone;
-  external set phone(String? /*String|Null*/ v);
+  external BillingDetailsAddress /*BillingDetailsAddress|Null*/ get address;
+  external set address(BillingDetailsAddress /*BillingDetailsAddress|Null*/ v);
+  external String /*String|Null*/ get email;
+  external set email(String /*String|Null*/ v);
+  external String /*String|Null*/ get name;
+  external set name(String /*String|Null*/ v);
+  external String /*String|Null*/ get phone;
+  external set phone(String /*String|Null*/ v);
   external factory BillingDetails(
-      {BillingDetailsAddress? /*BillingDetailsAddress|Null*/ address,
-      String? /*String|Null*/ email,
-      String? /*String|Null*/ name,
-      String? /*String|Null*/ phone});
+      {BillingDetailsAddress /*BillingDetailsAddress|Null*/ address,
+      String /*String|Null*/ email,
+      String /*String|Null*/ name,
+      String /*String|Null*/ phone});
 }
 
 @anonymous
@@ -830,19 +893,6 @@ abstract class CreatePaymentMethodOptions {
   external set metadata(Metadata v);
   external factory CreatePaymentMethodOptions(
       {BillingDetails billing_details, Metadata metadata});
-}
-
-@anonymous
-@JS()
-abstract class CreatePaymentMethodCardData {
-  external String get type;
-  external set type(String v);
-
-  external Element get card;
-  external set card(Element v);
-
-  external factory CreatePaymentMethodCardData(
-      {String type = 'card', Element card});
 }
 
 @anonymous
@@ -991,7 +1041,7 @@ abstract class HandleCardPaymentWithoutElementsOptions
 }
 
 /// Data to be sent with the request.
-/// Refer to the Payment Intents API for a full JsArray of parameters.
+/// Refer to the Payment Intents API for a full list of parameters.
 @anonymous
 @JS()
 abstract class ConfirmCardPaymentData {
@@ -1559,15 +1609,15 @@ abstract class StripePaymentRequestUpdateOptions {
   external set currency(String v);
   external DisplayItem get total;
   external set total(DisplayItem v);
-  external JsArray<DisplayItem> get displayItems;
-  external set displayItems(JsArray<DisplayItem> v);
-  external JsArray<ShippingOption> get shippingOptions;
-  external set shippingOptions(JsArray<ShippingOption> v);
+  external List<DisplayItem> get displayItems;
+  external set displayItems(List<DisplayItem> v);
+  external List<ShippingOption> get shippingOptions;
+  external set shippingOptions(List<ShippingOption> v);
   external factory StripePaymentRequestUpdateOptions(
       {String currency,
       DisplayItem total,
-      JsArray<DisplayItem> displayItems,
-      JsArray<ShippingOption> shippingOptions});
+      List<DisplayItem> displayItems,
+      List<ShippingOption> shippingOptions});
 }
 
 @anonymous
@@ -1592,8 +1642,8 @@ abstract class StripePaymentRequestOptions
       bool requestShipping,
       String currency,
       DisplayItem total,
-      JsArray<DisplayItem> displayItems,
-      JsArray<ShippingOption> shippingOptions});
+      List<DisplayItem> displayItems,
+      List<ShippingOption> shippingOptions});
 }
 
 @anonymous
@@ -1603,15 +1653,15 @@ abstract class UpdateDetails {
   external set status(String /*'success'|'fail'|'invalid_shipping_address'*/ v);
   external DisplayItem get total;
   external set total(DisplayItem v);
-  external JsArray<DisplayItem> get displayItems;
-  external set displayItems(JsArray<DisplayItem> v);
-  external JsArray<ShippingOption> get shippingOptions;
-  external set shippingOptions(JsArray<ShippingOption> v);
+  external List<DisplayItem> get displayItems;
+  external set displayItems(List<DisplayItem> v);
+  external List<ShippingOption> get shippingOptions;
+  external set shippingOptions(List<ShippingOption> v);
   external factory UpdateDetails(
       {String /*'success'|'fail'|'invalid_shipping_address'*/ status,
       DisplayItem total,
-      JsArray<DisplayItem> displayItems,
-      JsArray<ShippingOption> shippingOptions});
+      List<DisplayItem> displayItems,
+      List<ShippingOption> shippingOptions});
 }
 
 @anonymous
@@ -1634,8 +1684,8 @@ abstract class ShippingOption {
 abstract class ShippingAddress {
   external String get country;
   external set country(String v);
-  external JsArray<String> get addressLine;
-  external set addressLine(JsArray<String> v);
+  external List<String> get addressLine;
+  external set addressLine(List<String> v);
   external String get region;
   external set region(String v);
   external String get city;
@@ -1652,7 +1702,7 @@ abstract class ShippingAddress {
   external set dependentLocality(String v);
   external factory ShippingAddress(
       {String country,
-      JsArray<String> addressLine,
+      List<String> addressLine,
       String region,
       String city,
       String postalCode,
@@ -1761,8 +1811,9 @@ abstract class _StripePaymentRequest {
 }
 
 extension StripePaymentRequestExtensions on StripePaymentRequest {
-  Future<dynamic /*{ applePay?: boolean }|Null*/ > canMakePayment() {
-    final _StripePaymentRequest tt = this as _StripePaymentRequest;
+  Future<bool? /*{ applePay?: boolean }|Null*/ > canMakePayment() {
+    final Object t = this;
+    final _StripePaymentRequest tt = t as _StripePaymentRequest;
     return promiseToFuture(tt.canMakePayment());
   }
 }
@@ -1774,11 +1825,11 @@ extension StripePaymentRequestExtensions on StripePaymentRequest {
 @anonymous
 @JS()
 abstract class ElementsCreateOptions {
-  external JsArray<Font> get fonts;
-  external set fonts(JsArray<Font> v);
+  external List<Font> get fonts;
+  external set fonts(List<Font> v);
   external String get locale;
   external set locale(String v);
-  external factory ElementsCreateOptions({JsArray<Font> fonts, String locale});
+  external factory ElementsCreateOptions({List<Font> fonts, String locale});
 }
 
 typedef void handler(
@@ -1795,9 +1846,9 @@ abstract class Element {
   /*external void on('click' event, void handler({ preventDefault: () => void } response));*/
   external void on(String /*'blur'|'change'|'focus'|'ready'|'click'*/ event,
       void handler(dynamic /*{ preventDefault: () => void }*/ response));
-  /*external void addEventJsArrayener('blur'|'change'|'focus'|'ready' event, handler handler);*/
-  /*external void addEventJsArrayener('click' event, void handler({ preventDefault: () => void } response));*/
-  external void addEventJsArrayener(
+  /*external void addEventListener('blur'|'change'|'focus'|'ready' event, handler handler);*/
+  /*external void addEventListener('click' event, void handler({ preventDefault: () => void } response));*/
+  external void addEventListener(
       String /*'blur'|'change'|'focus'|'ready'|'click'*/ event,
       void handler(dynamic /*{ preventDefault: () => void }*/ response));
   external void focus();
@@ -1806,6 +1857,14 @@ abstract class Element {
   external void unmount();
   external void destroy();
   external void update(ElementsOptions options);
+}
+
+@JS()
+@anonymous
+class ElementChangeValueOptionsResponse {
+  external dynamic get postalCode;
+  // Must have an unnamed factory constructor with named arguments.
+  external factory ElementChangeValueOptionsResponse({bool postalCode});
 }
 
 @anonymous
@@ -1819,7 +1878,7 @@ abstract class ElementChangeResponse {
   external set complete(bool v);
   external bool get empty;
   external set empty(bool v);
-  external dynamic /*{ postalCode: string | number }|String*/ get value;
+  external dynamic get value;
   external set value(dynamic /*{ postalCode: string | number }|String*/ v);
   external String get country;
   external set country(String v);
@@ -1841,11 +1900,11 @@ abstract class ElementChangeResponse {
 @anonymous
 @JS()
 abstract class ElementOptions {
-  external JsArray<Font> get fonts;
-  external set fonts(JsArray<Font> v);
+  external List<Font> get fonts;
+  external set fonts(List<Font> v);
   external String get locale;
   external set locale(String v);
-  external factory ElementOptions({JsArray<Font> fonts, String locale});
+  external factory ElementOptions({List<Font> fonts, String locale});
 }
 
 /*type elementsType = 'card' |
@@ -1895,8 +1954,6 @@ abstract class ElementsOptions {
   external set hidePostalCode(bool v);
   external bool get hideIcon;
   external set hideIcon(bool v);
-  external String get clientSecret;
-  external set clientSecret(String v);
   external bool get showIcon;
   external set showIcon(bool v);
   external String /*'solid'|'default'*/ get iconStyle;
@@ -1928,8 +1985,8 @@ abstract class ElementsOptions {
   external set value(dynamic /*String|JSMap of <String,String>*/ v);
   external StripePaymentRequest get paymentRequest;
   external set paymentRequest(StripePaymentRequest v);
-  external JsArray<String> get supportedCountries;
-  external set supportedCountries(JsArray<String> v);
+  external List<String> get supportedCountries;
+  external set supportedCountries(List<String> v);
   external bool get disabled;
   external set disabled(bool v);
   external factory ElementsOptions(
@@ -1949,7 +2006,6 @@ abstract class ElementsOptions {
       String /*'solid'|'default'*/ iconStyle,
       String placeholder,
       String placeholderCountry,
-      String clientSecret,
       dynamic
           /*{
                 base?: Style;
@@ -1961,7 +2017,7 @@ abstract class ElementsOptions {
           style,
       dynamic /*String|JSMap of <String,String>*/ value,
       StripePaymentRequest paymentRequest,
-      JsArray<String> supportedCountries,
+      List<String> supportedCountries,
       bool disabled});
 }
 
@@ -2220,17 +2276,17 @@ abstract class PaymentIntent {
   external set amount_received(num v);
 
   /// ID of the Connect application that created the PaymentIntent.
-  external String? /*String|Null*/ get application;
-  external set application(String? /*String|Null*/ v);
+  external String /*String|Null*/ get application;
+  external set application(String /*String|Null*/ v);
 
   /// A fee in cents that will be applied to the invoice and transferred to the application owner's Stripe account.
-  external num? /*num|Null*/ get application_fee_amount;
-  external set application_fee_amount(num? /*num|Null*/ v);
+  external num /*num|Null*/ get application_fee_amount;
+  external set application_fee_amount(num /*num|Null*/ v);
 
   /// Populated when `status` is `canceled`, this is the time at which the PaymentIntent was canceled.
   /// Measured in seconds since the Unix epoch.
-  external num? /*num|Null*/ get canceled_at;
-  external set canceled_at(num? /*num|Null*/ v);
+  external num /*num|Null*/ get canceled_at;
+  external set canceled_at(num /*num|Null*/ v);
 
   /// User-given reason for cancellation of this PaymentIntent.
   external String /*'duplicate'|'fraudulent'|'requested_by_customer'|'abandoned'|'failed_invoice'|'void_invoice'|'automatic'|Null*/ get cancelation_reason;
@@ -2242,16 +2298,16 @@ abstract class PaymentIntent {
   external set capture_method(String /*'automatic'|'manual'*/ v);
 
   /// Charges that were created by this PaymentIntent, if any.
-  external JsArray<Charge> get charges;
-  external set charges(JsArray<Charge> v);
+  external List<Charge> get charges;
+  external set charges(List<Charge> v);
 
   /// The client secret of this PaymentIntent. Used for client-side retrieval using a publishable key. Please refer to dynamic authentication guide on how client_secret should be handled.
   external String get client_secret;
   external set client_secret(String v);
 
   /// Confirmation method of this PaymentIntent.
-  external String? /*'automatic'|'manual'*/ get confirmation_method;
-  external set confirmation_method(String? /*'automatic'|'manual'*/ v);
+  external String /*'automatic'|'manual'*/ get confirmation_method;
+  external set confirmation_method(String /*'automatic'|'manual'*/ v);
 
   /// Time at which the object was created. Measured in seconds since the Unix epoch.
   external num get created;
@@ -2262,16 +2318,16 @@ abstract class PaymentIntent {
   external set currency(String v);
 
   /// ID of the Customer this PaymentIntent is for if one exists.
-  external String? /*String|Null*/ get customer;
-  external set customer(String? /*String|Null*/ v);
+  external String /*String|Null*/ get customer;
+  external set customer(String /*String|Null*/ v);
 
   /// An arbitrary string attached to the object. Often useful for displaying to users.
   external String get description;
   external set description(String v);
 
   /// The payment error encountered in the previous PaymentIntent confirmation.
-  external Error? /*Error|Null*/ get last_payment_error;
-  external set last_payment_error(Error? /*Error|Null*/ v);
+  external Error /*Error|Null*/ get last_payment_error;
+  external set last_payment_error(Error /*Error|Null*/ v);
 
   /// Has the value true if the object exists in live mode or the value false
   /// if the object exists in test mode.
@@ -2295,9 +2351,9 @@ abstract class PaymentIntent {
   external String /*String|Null*/ get payment_method;
   external set payment_method(String /*String|Null*/ v);
 
-  /// The JsArray of payment method types (e.g. card) that this PaymentIntent is allowed to use.
-  external JsArray<String> get payment_method_types;
-  external set payment_method_types(JsArray<String> v);
+  /// The list of payment method types (e.g. card) that this PaymentIntent is allowed to use.
+  external List<String> get payment_method_types;
+  external set payment_method_types(List<String> v);
 
   /// Email address that the receipt for the resulting payment will be sent to.
   external String /*String|Null*/ get receipt_email;
@@ -2308,14 +2364,14 @@ abstract class PaymentIntent {
   external set review(String /*String|Null*/ v);
 
   /// Shipping information for this PaymentIntent.
-  external ShippingDetails? /*ShippingDetails|Null*/ get shipping;
-  external set shipping(ShippingDetails? /*ShippingDetails|Null*/ v);
+  external ShippingDetails /*ShippingDetails|Null*/ get shipping;
+  external set shipping(ShippingDetails /*ShippingDetails|Null*/ v);
 
   /// The ID of a Source (e.g. 'src_abc123' or 'card_abc123').
   /// Will be null unless this PaymentIntent was created with a source
   /// instead of a payment_method. (Undocumented as of August 2019)
-  external String? /*String|Null*/ get source;
-  external set source(String? /*String|Null*/ v);
+  external String /*String|Null*/ get source;
+  external set source(String /*String|Null*/ v);
 
   /// Extra information about a PaymentIntent. This will appear on your
   /// customer’s statement when this PaymentIntent succeeds in creating a charge.
@@ -2362,7 +2418,7 @@ abstract class PaymentIntent {
       num /*num|Null*/ canceled_at,
       String /*'duplicate'|'fraudulent'|'requested_by_customer'|'abandoned'|'failed_invoice'|'void_invoice'|'automatic'|Null*/ cancelation_reason,
       String /*'automatic'|'manual'*/ capture_method,
-      JsArray<Charge> charges,
+      List<Charge> charges,
       String client_secret,
       String /*'automatic'|'manual'*/ confirmation_method,
       num created,
@@ -2375,7 +2431,7 @@ abstract class PaymentIntent {
       dynamic /*PaymentIntentNextActionUseStripeSdk|PaymentIntentNextActionRedirectToUrl*/ next_action,
       String /*String|Null*/ on_behalf_of,
       String /*String|Null*/ payment_method,
-      JsArray<String> payment_method_types,
+      List<String> payment_method_types,
       String /*String|Null*/ receipt_email,
       String /*String|Null*/ review,
       ShippingDetails /*ShippingDetails|Null*/ shipping,
@@ -2463,7 +2519,7 @@ abstract class Charge {
   external String /*String|Null*/ get dispute;
   external set dispute(String /*String|Null*/ v);
 
-  /// Error code explaining reason for charge failure if available (see the errors section for a JsArray of
+  /// Error code explaining reason for charge failure if available (see the errors section for a list of
   /// codes: https://stripe.com/docs/api#errors).
   external String /*String|Null*/ get failure_code;
   external set failure_code(String /*String|Null*/ v);
@@ -2582,9 +2638,9 @@ abstract class Charge {
   external bool get refunded;
   external set refunded(bool v);
 
-  /// A JsArray of refunds that have been applied to the charge.
-  external JsArray<Refund> get refunds;
-  external set refunds(JsArray<Refund> v);
+  /// A list of refunds that have been applied to the charge.
+  external List<Refund> get refunds;
+  external set refunds(List<Refund> v);
 
   /// ID of the review associated with this charge if one exists.
   external String /*String|Null*/ get review;
@@ -2677,7 +2733,7 @@ abstract class Charge {
       String /*String|Null*/ receipt_number,
       String receipt_url,
       bool refunded,
-      JsArray<Refund> refunds,
+      List<Refund> refunds,
       String /*String|Null*/ review,
       ShippingDetails /*ShippingDetails|Null*/ shipping,
       Source source,
@@ -3408,9 +3464,9 @@ abstract class SetupIntent {
   external String /*String|Null*/ get payment_method;
   external set payment_method(String /*String|Null*/ v);
 
-  /// The JsArray of payment method types (e.g. card) that this SetupIntent is allowed to set up.
-  external JsArray<String> get payment_method_types;
-  external set payment_method_types(JsArray<String> v);
+  /// The list of payment method types (e.g. card) that this SetupIntent is allowed to set up.
+  external List<String> get payment_method_types;
+  external set payment_method_types(List<String> v);
 
   /// Status of this SetupIntent
   external String /*'requires_payment_method'|'requires_confirmation'|'requires_action'|'processing'|'canceled'|'succeeded'*/ get status;
@@ -3439,17 +3495,10 @@ abstract class SetupIntent {
       dynamic /*SetupIntentNextActionUseStripeSdk|SetupIntentNextActionRedirectToUrl*/ next_action,
       String /*String|Null*/ on_behalf_of,
       String /*String|Null*/ payment_method,
-      JsArray<String> payment_method_types,
+      List<String> payment_method_types,
       String /*'requires_payment_method'|'requires_confirmation'|'requires_action'|'processing'|'canceled'|'succeeded'*/ status,
       String /*'on_session'|'off_session'*/ usage});
 }
 
 // End module setupIntents
-
-// End module stripe
-@JS()
-abstract class Promise<T> {
-  external factory Promise(
-      void executor(void resolve(T result), Function reject));
-  external Promise then(void onFulfilled(T result), [Function onRejected]);
-}
+ */
