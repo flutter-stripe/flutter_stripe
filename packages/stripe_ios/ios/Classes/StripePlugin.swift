@@ -141,12 +141,7 @@ extension  StripePlugin {
     }
     
     func presentPaymentSheet(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        guard let arguments = call.arguments as? FlutterMap,
-              let params = arguments["params"] as? NSDictionary else {
-            result(FlutterError.invalidParams)
-            return
-        }
-        presentPaymentSheet(params: params, resolver: resolver(for: result), rejecter: rejecter(for: result))
+        presentPaymentSheet(resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
     
     func createTokenForCVCUpdate(_ call: FlutterMethodCall, result: @escaping FlutterResult) {

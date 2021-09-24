@@ -39,6 +39,12 @@ typedef void (^RCTBubblingEventBlock)(NSDictionary *body);
  * The default implementation does nothing.
  */
 - (void)didSetProps:(NSArray<NSString *> *)changedProps;
+
+/**
+ * Focus manipulation.
+ */
+- (void)reactFocus;
+- (void)reactBlur;
 @end
 
 
@@ -50,3 +56,5 @@ typedef void (^RCTBubblingEventBlock)(NSDictionary *body);
  */
 @property (nonatomic, assign, readonly) BOOL requiresMainQueueSetup;
 @end
+
+

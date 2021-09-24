@@ -2,15 +2,15 @@ PODS:
   - Flutter (1.0.0)
   - pay_ios (0.0.1):
     - Flutter
-  - Stripe (21.7.0):
-    - Stripe/Stripe3DS2 (= 21.7.0)
-    - StripeCore (= 21.7.0)
-  - Stripe/Stripe3DS2 (21.7.0):
-    - StripeCore (= 21.7.0)
+  - Stripe (21.8.1):
+    - Stripe/Stripe3DS2 (= 21.8.1)
+    - StripeCore (= 21.8.1)
+  - Stripe/Stripe3DS2 (21.8.1):
+    - StripeCore (= 21.8.1)
   - stripe_ios (0.0.1):
     - Flutter
-    - Stripe (~> 21.7.0)
-  - StripeCore (21.7.0)
+    - Stripe (~> 21.8.1)
+  - StripeCore (21.8.1)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
@@ -31,11 +31,11 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/stripe_ios/ios"
 
 SPEC CHECKSUMS:
-  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
   pay_ios: 8c7beb9c61d885f3f51b61f75f8793023fc8843a
-  Stripe: 90596971ef49bade169f68bc59369a796b30a045
-  stripe_ios: 669a91fd06d17954dedeaebec35c56bf1c72a602
-  StripeCore: c09b492efc3b269a6ff875ad738ca366db97e03b
+  Stripe: 57c6997c64042a3f5aedae9b76e331942f8b75d2
+  stripe_ios: a47cfc31126ca3f0c47a9c60c0bd4be110d14aea
+  StripeCore: a6e50d58119a0c7601773b56f274db2d394dcdac
 
 PODFILE CHECKSUM: 4e8f8b2be68aeea4c0d5beb6ff1e79fface1d048
 

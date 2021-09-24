@@ -8,6 +8,18 @@
   // The default implementation does nothing.
 }
 
+- (void)reactFocus
+{
+    [self becomeFirstResponder];
+}
+
+- (void)reactBlur
+{
+  [self resignFirstResponder];
+}
+
+
+
 @end
 
 
