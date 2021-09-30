@@ -59,6 +59,9 @@ class _GooglePayButtonState extends State<GooglePayButton> {
           layoutDirection: TextDirection.ltr,
           creationParams: _creationParams,
           creationParamsCodec: const StandardMessageCodec(),
+          onFocus: () {
+            params.onFocusChanged(true);
+          },
         )
           ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
           ..create();

@@ -17,7 +17,7 @@ const String _kDebugPCIMessage =
     'set `dangerouslyGetFullCardDetails: true`';
 
 /// Customizable form that collects card information.
-/// 
+///
 /// Notice implementation differs for iOS and Android platforms:
 /// ![Sripe Card Form]
 /// (https://github.com/flutter-stripe/flutter_stripe/tree/main/docs/assets/card_form.png)
@@ -192,24 +192,22 @@ class _CardFormFieldState extends State<CardFormField> {
     final inputDecoration = effectiveDecoration(widget.decoration);
     final style = effectiveCardStyle(inputDecoration);
 
-    return  _MethodChannelCardFormField(
-        focusNode: _node,
-        controller: controller,
-        style: style,
-        placeholder: CardPlaceholder(
-          number: widget.numberHintText,
-          expiration: widget.expirationHintText,
-          cvc: widget.cvcHintText,
-          postalCode: widget.postalCodeHintText,
-        ),
-        dangerouslyGetFullCardDetails: widget.dangerouslyGetFullCardDetails,
-        dangerouslyUpdateFullCardDetails:
-            widget.dangerouslyUpdateFullCardDetails,
-        enablePostalCode: widget.enablePostalCode,
-        onCardChanged: widget.onCardChanged,
-        autofocus: widget.autofocus,
-        onFocus: widget.onFocus,
-      
+    return _MethodChannelCardFormField(
+      focusNode: _node,
+      controller: controller,
+      style: style,
+      placeholder: CardPlaceholder(
+        number: widget.numberHintText,
+        expiration: widget.expirationHintText,
+        cvc: widget.cvcHintText,
+        postalCode: widget.postalCodeHintText,
+      ),
+      dangerouslyGetFullCardDetails: widget.dangerouslyGetFullCardDetails,
+      dangerouslyUpdateFullCardDetails: widget.dangerouslyUpdateFullCardDetails,
+      enablePostalCode: widget.enablePostalCode,
+      onCardChanged: widget.onCardChanged,
+      autofocus: widget.autofocus,
+      onFocus: widget.onFocus,
     );
   }
 
@@ -584,6 +582,9 @@ class _AndroidCardFormField extends StatelessWidget {
           layoutDirection: Directionality.of(context),
           creationParams: creationParams,
           creationParamsCodec: const StandardMessageCodec(),
+          onFocus: () {
+            params.onFocusChanged(true);
+          },
         )
           ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
           ..create();

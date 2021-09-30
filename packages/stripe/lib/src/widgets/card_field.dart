@@ -240,8 +240,8 @@ class _CardFieldState extends State<CardField> {
     // Flutter fonts need to be loaded in the native framework to work
     // As this is not automatic, default fonts are omitted
     final fontFamily = widget.style?.fontFamily;
-      //  Theme.of(context).textTheme.subtitle1?.fontFamily ??
-      //  kCardFieldDefaultFontFamily;
+    //  Theme.of(context).textTheme.subtitle1?.fontFamily ??
+    //  kCardFieldDefaultFontFamily;
 
     return CardStyle(
       textColor: widget.style?.color,
@@ -616,6 +616,9 @@ class _AndroidCardField extends StatelessWidget {
           layoutDirection: Directionality.of(context),
           creationParams: creationParams,
           creationParamsCodec: const StandardMessageCodec(),
+          onFocus: () {
+            params.onFocusChanged(true);
+          },
         )
           ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
           ..create();
