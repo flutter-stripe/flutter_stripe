@@ -496,6 +496,9 @@ class _AndroidCardFormField extends StatelessWidget {
           layoutDirection: Directionality.of(context),
           creationParams: creationParams,
           creationParamsCodec: const StandardMessageCodec(),
+          onFocus: () {
+            params.onFocusChanged(true);
+          },
         )
           ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
           ..create();
