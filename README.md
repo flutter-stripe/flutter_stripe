@@ -171,11 +171,6 @@ Future<void> onGooglePayResult(paymentResult) async {
 - [Install the `stripe-cli`](https://stripe.com/docs/stripe-cli)
 - Run `stripe listen --forward-to localhost:4242/webhook`
 
-## Known issues
-
-- The Card field on Android has focus issues on older Flutter versions - it has been fixed by the Flutter framework in
-  the master branch. The issue is being tracked in [#14](https://github.com/flutter-stripe/flutter_stripe/issues/14).
-
 ## Contributing
 
 You can help us make this project better, feel free to open an new issue or a pull request.
