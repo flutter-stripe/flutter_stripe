@@ -240,8 +240,8 @@ class _CardFieldState extends State<CardField> {
     // Flutter fonts need to be loaded in the native framework to work
     // As this is not automatic, default fonts are omitted
     final fontFamily = widget.style?.fontFamily;
-      //  Theme.of(context).textTheme.subtitle1?.fontFamily ??
-      //  kCardFieldDefaultFontFamily;
+    //  Theme.of(context).textTheme.subtitle1?.fontFamily ??
+    //  kCardFieldDefaultFontFamily;
 
     return CardStyle(
       textColor: widget.style?.color,
@@ -433,22 +433,9 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
     final constraints = widget.constraints ??
         const BoxConstraints.expand(height: kCardFieldDefaultHeight);
 
-    return Listener(
-      onPointerDown: (_) {
-        if (!_effectiveNode.hasFocus) {
-          _effectiveNode.requestFocus();
-        }
-      },
-      child: Focus(
-        autofocus: true,
-        descendantsAreFocusable: false,
-        focusNode: _effectiveNode,
-        onFocusChange: _handleFrameworkFocusChanged,
-        child: ConstrainedBox(
-          constraints: constraints,
-          child: platform,
-        ),
-      ),
+    return ConstrainedBox(
+      constraints: constraints,
+      child: platform,
     );
   }
 
@@ -543,22 +530,6 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
       log('An error ocurred while while parsing card arguments, this should not happen, please consider creating an issue at https://github.com/flutter-stripe/flutter_stripe/issues/new');
       rethrow;
     }
-  }
-
-  /// Handler called when the focus changes in the node attached to the platform
-  /// view. This updates the correspondant platform view to keep it in sync.
-  void _handleFrameworkFocusChanged(bool isFocused) {
-    final methodChannel = _methodChannel;
-    if (methodChannel == null) {
-      return;
-    }
-    setState(() {});
-    if (!isFocused) {
-      blur();
-      return;
-    }
-
-    focus();
   }
 
   @override
