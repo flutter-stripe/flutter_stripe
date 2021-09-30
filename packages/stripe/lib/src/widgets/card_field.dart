@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:developer' as dev;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
@@ -7,7 +8,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
-import 'dart:developer' as dev;
 
 const String _kDebugPCIMessage =
     'Handling card data manually will break PCI compliance provided by Stripe. '
@@ -616,6 +616,9 @@ class _AndroidCardField extends StatelessWidget {
           layoutDirection: Directionality.of(context),
           creationParams: creationParams,
           creationParamsCodec: const StandardMessageCodec(),
+          onFocus: () {
+            params.onFocusChanged(true);
+          },
         )
           ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
           ..create();
