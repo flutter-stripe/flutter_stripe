@@ -14,8 +14,9 @@ void main() {
 
   Stripe.publishableKey = stripePublishableKey;
   Stripe.merchantIdentifier = 'MerchantIdentifier';
+  Stripe.urlScheme = 'flutterstripe';
 
-  group('Payment', () {
+  group('Payment sheet', () {
     testWidgets('init payment sheet', (_) async {
       // 1. create payment intent on the server
       final _paymentSheetData = await _createTestPaymentSheet();
@@ -34,7 +35,46 @@ void main() {
           customerEphemeralKeySecret: _paymentSheetData['ephemeralKey'],
         ),
       );
+
       expect(true, _paymentSheetData['paymentIntent'] != null);
+    });
+  });
+
+  group('Create payment method', () {
+    testWidgets('create payment method', (tester) async {
+      // 1. create some billing details
+      final billingDetails = BillingDetails(
+        email: 'email@flutterstripe.com',
+        phone: '+48888000888',
+        address: Address(
+          city: 'Houston',
+          country: 'US',
+          line1: '1459  Circle Drive',
+          line2: '',
+          state: 'Texas',
+          postalCode: '77063',
+        ),
+      );
+
+      // 2. update card details
+      // because of https://github.com/flutter/flutter/issues/34345
+      // we cannot use cardfield
+      final cardDetails = CardDetails(
+        number: '4242424242424242',
+        cvc: '424',
+        expirationMonth: 04,
+        expirationYear: 2025,
+      );
+      await Stripe.instance.dangerouslyUpdateCardDetails(cardDetails);
+
+      final paymentMethod = await Stripe.instance.createPaymentMethod(
+        PaymentMethodParams.card(billingDetails: billingDetails),
+      );
+
+      // 3. create intent on the server
+      final paymentIntentResult =
+          await _createNoWebhookPayEndpointMethod(paymentMethod.id);
+      expect(paymentIntentResult['status'], 'succeeded');
     });
   });
 }
@@ -51,6 +91,27 @@ Future<Map<String, dynamic>> _createTestPaymentSheet() async {
     },
     body: json.encode({
       'a': 'a',
+    }),
+  );
+  return json.decode(response.body);
+}
+
+Future<Map<String, dynamic>> _createNoWebhookPayEndpointMethod(
+    String paymentMethodId) async {
+  final ipAddress = kApiUrl.split('\n').last.trim();
+  final url = Uri.parse('http://$ipAddress:4242/pay-without-webhooks');
+  final response = await http.post(
+    url,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: json.encode({
+      'useStripeSdk': true,
+      'paymentMethodId': paymentMethodId,
+      'currency': 'usd',
+      'items': [
+        {'id': 'id'}
+      ]
     }),
   );
   return json.decode(response.body);
