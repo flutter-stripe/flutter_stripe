@@ -84,6 +84,8 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
             return dangerouslyUpdateCardDetails(call, result: result)
         case "createApplePayToken":
             return createApplePayToken(call, result: result)
+        case "openApplePaySetup":
+            return openApplePaySetup(call, result: result)
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -194,6 +196,14 @@ extension  StripePlugin {
     
     func isApplePaySupported(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         isApplePaySupported(
+            resolver: resolver(for: result),
+            rejecter: rejecter(for: result)
+        )
+    }
+    
+    
+    func openApplePaySetup(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        openApplePaySetup(
             resolver: resolver(for: result),
             rejecter: rejecter(for: result)
         )

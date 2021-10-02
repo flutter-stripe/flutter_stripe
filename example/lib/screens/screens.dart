@@ -7,6 +7,7 @@ import 'package:stripe_example/screens/wallets/apple_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen_plugin.dart';
 import 'package:stripe_example/screens/wallets/google_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/google_pay_stripe_screen.dart';
+import 'package:stripe_example/screens/wallets/open_apple_pay_setup_screen.dart';
 
 import 'card_payments/custom_card_payment_screen.dart';
 import 'card_payments/no_webhook_payment_cardform_screen.dart';
@@ -112,40 +113,51 @@ class Example extends StatelessWidget {
         ),
       ],
     ),
-    ExampleSection(title: 'Wallets', children: [
-      Example(
-        title: 'Apple Pay (iOS)',
-        leading: Image.asset(
-          'assets/apple_pay.png',
-          width: 48,
+    ExampleSection(
+      title: 'Wallets',
+      children: [
+        Example(
+          title: 'Apple Pay (iOS)',
+          leading: Image.asset(
+            'assets/apple_pay.png',
+            width: 48,
+          ),
+          builder: (c) => ApplePayScreen(),
         ),
-        builder: (c) => ApplePayScreen(),
-      ),
-      Example(
-        leading: Image.asset(
-          'assets/google_play.png',
-          width: 48,
+        Example(
+          leading: Image.asset(
+            'assets/google_play.png',
+            width: 48,
+          ),
+          title: 'Google Pay (Android)',
+          builder: (c) => GooglePayStripeScreen(),
         ),
-        title: 'Google Pay (Android)',
-        builder: (c) => GooglePayStripeScreen(),
-      ),
-      Example(
-        title: 'Apple Pay (iOS) - Pay Plugin',
-        leading: Image.asset(
-          'assets/apple_pay.png',
-          width: 48,
+        Example(
+          title: 'Apple Pay (iOS) - Pay Plugin',
+          leading: Image.asset(
+            'assets/apple_pay.png',
+            width: 48,
+          ),
+          builder: (c) => ApplePayExternalPluginScreen(),
         ),
-        builder: (c) => ApplePayExternalPluginScreen(),
-      ),
-      Example(
-        leading: Image.asset(
-          'assets/google_play.png',
-          width: 48,
+        Example(
+          leading: Image.asset(
+            'assets/google_play.png',
+            width: 48,
+          ),
+          title: 'Google Pay (Android) - Pay Plugin',
+          builder: (c) => GooglePayScreen(),
         ),
-        title: 'Google Pay (Android) - Pay Plugin',
-        builder: (c) => GooglePayScreen(),
-      ),
-    ]),
+        Example(
+          title: 'Open Apple Pay setup (iOS)',
+          leading: Image.asset(
+            'assets/apple_pay.png',
+            width: 48,
+          ),
+          builder: (c) => OpenApplePaySetup(),
+        ),
+      ],
+    ),
     ExampleSection(title: 'Regional Payment Methods', children: [
       Example(
         title: 'Ali Pay',
