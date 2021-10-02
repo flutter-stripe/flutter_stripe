@@ -85,7 +85,6 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.Oxxo: 'Oxxo',
   PaymentMethodType.Sofort: 'Sofort',
   PaymentMethodType.Upi: 'Upi',
-  PaymentMethodType.WeChatPay: 'WeChatPay',
   PaymentMethodType.Unknown: 'Unknown',
 };
 

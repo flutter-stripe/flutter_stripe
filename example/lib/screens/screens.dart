@@ -3,7 +3,6 @@ import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen_custom_flow.dart';
 import 'package:stripe_example/screens/regional_payment_methods/ali_pay_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/ideal_screen.dart';
-import 'package:stripe_example/screens/regional_payment_methods/wechat_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen_plugin.dart';
 import 'package:stripe_example/screens/wallets/google_pay_screen.dart';
@@ -164,14 +163,15 @@ class Example extends StatelessWidget {
         ),
         builder: (context) => IdealScreen(),
       ),
-      Example(
-        title: 'WeChat Pay',
-        leading: Image.asset(
-          'assets/wechat_pay.png',
-          width: 48,
-        ),
-        builder: (context) => WeChatPayScreen(),
-      ),
+      // TODO: uncomment when we can re-enable wechat pay
+      // Example(
+      //   title: 'WeChat Pay',
+      //   leading: Image.asset(
+      //     'assets/wechat_pay.png',
+      //     width: 48,
+      //   ),
+      //   builder: (context) => WeChatPayScreen(),
+      // ),
     ]),
     ExampleSection(title: 'Others', children: [
       Example(

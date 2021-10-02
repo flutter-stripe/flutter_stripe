@@ -258,7 +258,7 @@ enum PaymentMethodType {
   Oxxo,
   Sofort,
   Upi,
-  WeChatPay,
+  // WeChatPay,
   Unknown
 }
 
@@ -420,11 +420,12 @@ class PaymentMethodParams with _$PaymentMethodParams {
     BillingDetails? billingDetails,
   }) = _PaymentMethodParamsOxxo;
 
-  @JsonSerializable(explicitToJson: true)
-  @FreezedUnionValue('WeChatPay')
-   const factory PaymentMethodParams.weChatPay({
-    String? appId,
-  }) = _PaymentMethodParamsWechat;
+  // TODO uncomment and regenerate when we can re-enable wechat pay
+  // @JsonSerializable(explicitToJson: true)
+  // @FreezedUnionValue('WeChatPay')
+  //  const factory PaymentMethodParams.weChatPay({
+  //   String? appId,
+  // }) = _PaymentMethodParamsWechat;
 
   factory PaymentMethodParams.fromJson(Map<String, dynamic> json) =>
       _$PaymentMethodParamsFromJson(json);
