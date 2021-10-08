@@ -71,6 +71,30 @@ class CardStyle with _$CardStyle {
 
 @freezed
 
+/// Styiling information for the cardfield.
+class CardFormStyle with _$CardFormStyle {
+  @JsonSerializable(explicitToJson: true)
+  factory CardFormStyle({
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+
+        /// Background color of the cardformfield
+        ///
+        /// Make sure that there is enough contrast with the text color.
+        Color? backgroundColor,
+  }) = _CardFormStyleConstructor;
+
+  factory CardFormStyle.fromJson(Map<String, dynamic> json) =>
+      _$CardFormStyleFromJson(json);
+
+  CardFormStyle._();
+
+  CardFormStyle apply(CardFormStyle? style) => copyWith(
+        backgroundColor: style?.backgroundColor ?? backgroundColor,
+      );
+}
+
+@freezed
+
 /// Localized text for the placeholders of the card fields.
 class CardPlaceholder with _$CardPlaceholder {
   @JsonSerializable(explicitToJson: true)

@@ -84,6 +84,8 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
             return dangerouslyUpdateCardDetails(call, result: result)
         case "createApplePayToken":
             return createApplePayToken(call, result: result)
+        case "openApplePaySetup":
+            return openApplePaySetup(call, result: result)
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -141,12 +143,7 @@ extension  StripePlugin {
     }
     
     func presentPaymentSheet(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        guard let arguments = call.arguments as? FlutterMap,
-              let params = arguments["params"] as? NSDictionary else {
-            result(FlutterError.invalidParams)
-            return
-        }
-        presentPaymentSheet(params: params, resolver: resolver(for: result), rejecter: rejecter(for: result))
+        presentPaymentSheet(resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
     
     func createTokenForCVCUpdate(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -199,6 +196,14 @@ extension  StripePlugin {
     
     func isApplePaySupported(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         isApplePaySupported(
+            resolver: resolver(for: result),
+            rejecter: rejecter(for: result)
+        )
+    }
+    
+    
+    func openApplePaySetup(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        openApplePaySetup(
             resolver: resolver(for: result),
             rejecter: rejecter(for: result)
         )

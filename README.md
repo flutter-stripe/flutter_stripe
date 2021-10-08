@@ -6,9 +6,6 @@
 
 [![pub package](https://img.shields.io/pub/v/flutter_stripe.svg)](https://pub.dev/packages/flutter_stripe) ![build](https://img.shields.io/github/workflow/status/flutter-stripe/flutter_stripe/all_plugins?logo=github)
 
-> 🚨 flutter_stripe is in beta - please provide feedback (and/or contribute) if you find issues 💙️
-
-
 The Stripe Flutter SDK allows you to build delightful payment experiences in your native Android and iOS apps using Flutter. We provide powerful and customizable UI screens and elements that can be used out-of-the-box to collect your users' payment details.
 
 
@@ -170,11 +167,6 @@ Future<void> onGooglePayResult(paymentResult) async {
 
 - [Install the `stripe-cli`](https://stripe.com/docs/stripe-cli)
 - Run `stripe listen --forward-to localhost:4242/webhook`
-
-## Known issues
-
-- The Card field on Android has focus issues on older Flutter versions - it has been fixed by the Flutter framework in
-  the master branch. The issue is being tracked in [#14](https://github.com/flutter-stripe/flutter_stripe/issues/14).
 
 ## Contributing
 

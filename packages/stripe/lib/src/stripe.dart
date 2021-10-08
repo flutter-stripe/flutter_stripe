@@ -118,9 +118,9 @@ class Stripe {
   }
 
   /// Creates a single-use token that represents an Apple Pay credit card’s details.
-  /// 
-  /// The [payment] param should be the data response from the `pay` plugin. It can 
-  /// be used both with the callback `onPaymentResult` from `pay.ApplePayButton` or 
+  ///
+  /// The [payment] param should be the data response from the `pay` plugin. It can
+  /// be used both with the callback `onPaymentResult` from `pay.ApplePayButton` or
   /// directly with `Pay.showPaymentSelector`
   ///
   /// Throws an [StripeError] in case createApplePayToken fails.
@@ -181,6 +181,11 @@ class Stripe {
     } on StripeError catch (error) {
       throw StripeError(message: error.message, code: error.message);
     }
+  }
+
+  /// Opens the UI to set up credit cards for Apple Pay.
+  Future<void> openApplePaySetup() async {
+    await _platform.openApplePaySetup();
   }
 
   /// Presents an Apple payment sheet using [params] for additional

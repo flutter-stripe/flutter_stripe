@@ -1,3 +1,14 @@
+## 2.0.0
+** First stable release **
+
+** Breaking changes ** 
+- Temporarily disable Wechat
+
+Other changes
+- add openApplePaySetup method
+- several fixes by Stripe SDK ([v0.2.1](https://github.com/stripe/stripe-react-native/releases/tag/v0.2.1), [v0.2.2](https://github.com/stripe/stripe-react-native/releases/tag/v0.2.2))
+- Focus issues on Android #14 are fixed
+
 ## 1.3.0
 
 ** BREAKING CHANGES **

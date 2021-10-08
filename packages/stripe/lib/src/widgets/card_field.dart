@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:developer' as dev;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
@@ -7,7 +8,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
-import 'dart:developer' as dev;
 
 const String _kDebugPCIMessage =
     'Handling card data manually will break PCI compliance provided by Stripe. '
@@ -240,8 +240,8 @@ class _CardFieldState extends State<CardField> {
     // Flutter fonts need to be loaded in the native framework to work
     // As this is not automatic, default fonts are omitted
     final fontFamily = widget.style?.fontFamily;
-      //  Theme.of(context).textTheme.subtitle1?.fontFamily ??
-      //  kCardFieldDefaultFontFamily;
+    //  Theme.of(context).textTheme.subtitle1?.fontFamily ??
+    //  kCardFieldDefaultFontFamily;
 
     return CardStyle(
       textColor: widget.style?.color,
@@ -433,22 +433,9 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
     final constraints = widget.constraints ??
         const BoxConstraints.expand(height: kCardFieldDefaultHeight);
 
-    return Listener(
-      onPointerDown: (_) {
-        if (!_effectiveNode.hasFocus) {
-          _effectiveNode.requestFocus();
-        }
-      },
-      child: Focus(
-        autofocus: true,
-        descendantsAreFocusable: false,
-        focusNode: _effectiveNode,
-        onFocusChange: _handleFrameworkFocusChanged,
-        child: ConstrainedBox(
-          constraints: constraints,
-          child: platform,
-        ),
-      ),
+    return ConstrainedBox(
+      constraints: constraints,
+      child: platform,
     );
   }
 
@@ -545,22 +532,6 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
     }
   }
 
-  /// Handler called when the focus changes in the node attached to the platform
-  /// view. This updates the correspondant platform view to keep it in sync.
-  void _handleFrameworkFocusChanged(bool isFocused) {
-    final methodChannel = _methodChannel;
-    if (methodChannel == null) {
-      return;
-    }
-    setState(() {});
-    if (!isFocused) {
-      blur();
-      return;
-    }
-
-    focus();
-  }
-
   @override
   void blur() {
     _methodChannel?.invokeMethod('blur');
@@ -616,6 +587,9 @@ class _AndroidCardField extends StatelessWidget {
           layoutDirection: Directionality.of(context),
           creationParams: creationParams,
           creationParamsCodec: const StandardMessageCodec(),
+          onFocus: () {
+            params.onFocusChanged(true);
+          },
         )
           ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
           ..create();

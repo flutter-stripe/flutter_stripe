@@ -3,11 +3,11 @@ import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen_custom_flow.dart';
 import 'package:stripe_example/screens/regional_payment_methods/ali_pay_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/ideal_screen.dart';
-import 'package:stripe_example/screens/regional_payment_methods/wechat_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen_plugin.dart';
 import 'package:stripe_example/screens/wallets/google_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/google_pay_stripe_screen.dart';
+import 'package:stripe_example/screens/wallets/open_apple_pay_setup_screen.dart';
 
 import 'card_payments/custom_card_payment_screen.dart';
 import 'card_payments/no_webhook_payment_cardform_screen.dart';
@@ -113,40 +113,51 @@ class Example extends StatelessWidget {
         ),
       ],
     ),
-    ExampleSection(title: 'Wallets', children: [
-      Example(
-        title: 'Apple Pay (iOS)',
-        leading: Image.asset(
-          'assets/apple_pay.png',
-          width: 48,
+    ExampleSection(
+      title: 'Wallets',
+      children: [
+        Example(
+          title: 'Apple Pay (iOS)',
+          leading: Image.asset(
+            'assets/apple_pay.png',
+            width: 48,
+          ),
+          builder: (c) => ApplePayScreen(),
         ),
-        builder: (c) => ApplePayScreen(),
-      ),
-      Example(
-        leading: Image.asset(
-          'assets/google_play.png',
-          width: 48,
+        Example(
+          leading: Image.asset(
+            'assets/google_play.png',
+            width: 48,
+          ),
+          title: 'Google Pay (Android)',
+          builder: (c) => GooglePayStripeScreen(),
         ),
-        title: 'Google Pay (Android)',
-        builder: (c) => GooglePayStripeScreen(),
-      ),
-      Example(
-        title: 'Apple Pay (iOS) - Pay Plugin',
-        leading: Image.asset(
-          'assets/apple_pay.png',
-          width: 48,
+        Example(
+          title: 'Apple Pay (iOS) - Pay Plugin',
+          leading: Image.asset(
+            'assets/apple_pay.png',
+            width: 48,
+          ),
+          builder: (c) => ApplePayExternalPluginScreen(),
         ),
-        builder: (c) => ApplePayExternalPluginScreen(),
-      ),
-      Example(
-        leading: Image.asset(
-          'assets/google_play.png',
-          width: 48,
+        Example(
+          leading: Image.asset(
+            'assets/google_play.png',
+            width: 48,
+          ),
+          title: 'Google Pay (Android) - Pay Plugin',
+          builder: (c) => GooglePayScreen(),
         ),
-        title: 'Google Pay (Android) - Pay Plugin',
-        builder: (c) => GooglePayScreen(),
-      ),
-    ]),
+        Example(
+          title: 'Open Apple Pay setup (iOS)',
+          leading: Image.asset(
+            'assets/apple_pay.png',
+            width: 48,
+          ),
+          builder: (c) => OpenApplePaySetup(),
+        ),
+      ],
+    ),
     ExampleSection(title: 'Regional Payment Methods', children: [
       Example(
         title: 'Ali Pay',
@@ -164,14 +175,15 @@ class Example extends StatelessWidget {
         ),
         builder: (context) => IdealScreen(),
       ),
-      Example(
-        title: 'WeChat Pay',
-        leading: Image.asset(
-          'assets/wechat_pay.png',
-          width: 48,
-        ),
-        builder: (context) => WeChatPayScreen(),
-      ),
+      // TODO: uncomment when we can re-enable wechat pay
+      // Example(
+      //   title: 'WeChat Pay',
+      //   leading: Image.asset(
+      //     'assets/wechat_pay.png',
+      //     width: 48,
+      //   ),
+      //   builder: (context) => WeChatPayScreen(),
+      // ),
     ]),
     ExampleSection(title: 'Others', children: [
       Example(

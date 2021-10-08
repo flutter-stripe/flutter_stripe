@@ -143,6 +143,14 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
+  Future<void> openApplePaySetup() async {
+    if (!_platformIsIos) {
+      throw UnsupportedError('Apple Pay is only available for iOS devices');
+    }
+    await _methodChannel.invokeMethod('openApplePaySetup');
+  }
+
+  @override
   Future<void> presentApplePay(ApplePayPresentParams params) async {
     if (!_platformIsIos) {
       throw UnsupportedError('Apple Pay is only available for iOS devices');
@@ -271,7 +279,7 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<TokenData> createApplePayToken(Map<String, dynamic> payment) async {
-      final result = await _methodChannel.invokeMapMethod<String, dynamic>(
+    final result = await _methodChannel.invokeMapMethod<String, dynamic>(
         'createApplePayToken', {'payment': payment});
 
     return ResultParser<TokenData>(
