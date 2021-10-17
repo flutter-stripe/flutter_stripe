@@ -1,3 +1,8 @@
+## 2.0.1
+
+ - **FIX**: focus issue on CardFormField on Android.
+ - **DOCS**: correct AppCompat mention in README.md.
+
 ## 2.0.0
 ** First stable release **
 
