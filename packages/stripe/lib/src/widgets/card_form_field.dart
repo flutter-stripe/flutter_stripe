@@ -314,22 +314,9 @@ class _MethodChannelCardFormFieldState
                 ? kCardFormFieldDefaultIOSHeight
                 : kCardFormFieldDefaultAndroidHeight);
 
-    return Listener(
-      onPointerDown: (_) {
-        if (!_effectiveNode.hasFocus) {
-          _effectiveNode.requestFocus();
-        }
-      },
-      child: Focus(
-        autofocus: true,
-        descendantsAreFocusable: false,
-        focusNode: _effectiveNode,
-        onFocusChange: _handleFrameworkFocusChanged,
-        child: ConstrainedBox(
-          constraints: constraints,
-          child: platform,
-        ),
-      ),
+    return ConstrainedBox(
+      constraints: constraints,
+      child: platform,
     );
   }
 
@@ -423,22 +410,6 @@ class _MethodChannelCardFormFieldState
       log('An error ocurred while while parsing card arguments, this should not happen, please consider creating an issue at https://github.com/flutter-stripe/flutter_stripe/issues/new');
       rethrow;
     }
-  }
-
-  /// Handler called when the focus changes in the node attached to the platform
-  /// view. This updates the correspondant platform view to keep it in sync.
-  void _handleFrameworkFocusChanged(bool isFocused) {
-    final methodChannel = _methodChannel;
-    if (methodChannel == null) {
-      return;
-    }
-    setState(() {});
-    if (!isFocused) {
-      blur();
-      return;
-    }
-
-    focus();
   }
 
   @override
