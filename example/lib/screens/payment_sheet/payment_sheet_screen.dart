@@ -3,11 +3,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
+import 'package:stripe_example/config.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen_custom_flow.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
-
-import 'package:stripe_example/config.dart';
 
 class PaymentSheetScreen extends StatefulWidget {
   @override
@@ -70,6 +69,20 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
       // 1. create payment intent on the server
       final data = await _createTestPaymentSheet();
 
+      // create some billingdetails
+      final billingDetails = BillingDetails(
+        email: 'email@stripe.com',
+        phone: '+48888000888',
+        address: Address(
+          city: 'Houston',
+          country: 'US',
+          line1: '1459  Circle Drive',
+          line2: '',
+          state: 'Texas',
+          postalCode: '77063',
+        ),
+      ); // mocked data for tests
+
       // 2. initialize the payment sheet
       await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
@@ -83,6 +96,8 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
           applePay: true,
           googlePay: true,
           style: ThemeMode.dark,
+          primaryButtonColor: Colors.redAccent,
+          billingDetails: billingDetails,
           testEnv: true,
           merchantCountryCode: 'DE',
         ),
