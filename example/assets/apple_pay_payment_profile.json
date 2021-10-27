@@ -3,12 +3,15 @@
   "data": {
     "merchantIdentifier": "merchant.flutter.stripe.test",
     "displayName": "Sam's Fish",
-    "merchantCapabilities": ["3DS", "debit", "credit"],
-    "supportedNetworks": ["amex", "visa", "discover", "masterCard"],
+    "merchantCapabilities": ["3DS"],
+    "supportedNetworks": [
+      "amex",
+      "visa",
+      "discover",
+      "mastercard"
+    ],
     "countryCode": "US",
     "currencyCode": "USD",
-    "requiredBillingContactFields": ["emailAddress", "name", "phoneNumber", "postalAddress"],
-    "requiredShippingContactFields": [],
     "shippingMethods": [
       {
         "amount": "0.00",
