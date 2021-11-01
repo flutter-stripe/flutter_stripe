@@ -299,11 +299,24 @@ class _MethodChannelCardFormFieldState
         onPlatformViewCreated: onPlatformViewCreated,
       );
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
-      platform = _UiKitCardFormField(
-        key: _MethodChannelCardFormField._key,
-        viewType: _MethodChannelCardFormField._viewType,
-        creationParams: creationParams,
-        onPlatformViewCreated: onPlatformViewCreated,
+      platform = Listener(
+        onPointerDown: (_) {
+          if (!_effectiveNode.hasFocus) {
+            _effectiveNode.requestFocus();
+          }
+        },
+        child: Focus(
+          autofocus: widget.autofocus,
+          descendantsAreFocusable: true,
+          focusNode: _effectiveNode,
+          onFocusChange: _handleFrameworkFocusChanged,
+          child: _UiKitCardFormField(
+            key: _MethodChannelCardFormField._key,
+            viewType: _MethodChannelCardFormField._viewType,
+            creationParams: creationParams,
+            onPlatformViewCreated: onPlatformViewCreated,
+          ),
+        ),
       );
     } else {
       throw UnsupportedError('Unsupported platform view');
@@ -410,6 +423,22 @@ class _MethodChannelCardFormFieldState
       log('An error ocurred while while parsing card arguments, this should not happen, please consider creating an issue at https://github.com/flutter-stripe/flutter_stripe/issues/new');
       rethrow;
     }
+  }
+
+  /// Handler called when the focus changes in the node attached to the platform
+  /// view. This updates the correspondant platform view to keep it in sync.
+  void _handleFrameworkFocusChanged(bool isFocused) {
+    final methodChannel = _methodChannel;
+    if (methodChannel == null) {
+      return;
+    }
+    setState(() {});
+    if (!isFocused) {
+      blur();
+      return;
+    }
+
+    focus();
   }
 
   @override
