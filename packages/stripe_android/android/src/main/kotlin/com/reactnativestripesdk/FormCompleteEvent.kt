@@ -11,7 +11,7 @@ internal class FormCompleteEvent constructor(viewTag: Int, private val formDetai
   }
 
   override fun dispatch(rctEventEmitter: RCTEventEmitter) {
-    rctEventEmitter.receiveEvent(viewTag, getEventName(), serializeEventData())
+    rctEventEmitter.receiveEvent(viewTag, eventName, serializeEventData())
   }
 
   private fun serializeEventData(): WritableMap {

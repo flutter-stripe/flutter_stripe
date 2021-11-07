@@ -421,11 +421,24 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
         onPlatformViewCreated: onPlatformViewCreated,
       );
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
-      platform = _UiKitCardField(
-        key: _MethodChannelCardField._key,
-        viewType: _MethodChannelCardField._viewType,
-        creationParams: creationParams,
-        onPlatformViewCreated: onPlatformViewCreated,
+      platform = Listener(
+        onPointerDown: (_) {
+          if (!_effectiveNode.hasFocus) {
+            _effectiveNode.requestFocus();
+          }
+        },
+        child: Focus(
+          autofocus: widget.autofocus,
+          descendantsAreFocusable: true,
+          focusNode: _effectiveNode,
+          onFocusChange: _handleFrameworkFocusChanged,
+          child: _UiKitCardField(
+            key: _MethodChannelCardField._key,
+            viewType: _MethodChannelCardField._viewType,
+            creationParams: creationParams,
+            onPlatformViewCreated: onPlatformViewCreated,
+          ),
+        ),
       );
     } else {
       throw UnsupportedError('Unsupported platform view');
@@ -437,6 +450,22 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
       constraints: constraints,
       child: platform,
     );
+  }
+
+  /// Handler called when the focus changes in the node attached to the platform
+  /// view. This updates the correspondant platform view to keep it in sync.
+  void _handleFrameworkFocusChanged(bool isFocused) {
+    final methodChannel = _methodChannel;
+    if (methodChannel == null) {
+      return;
+    }
+    setState(() {});
+    if (!isFocused) {
+      blur();
+      return;
+    }
+
+    focus();
   }
 
   @override

@@ -10,7 +10,7 @@ internal class CardFocusEvent constructor(viewTag: Int, private val focusField: 
   }
 
   override fun dispatch(rctEventEmitter: RCTEventEmitter) {
-    rctEventEmitter.receiveEvent(viewTag, getEventName(), serializeEventData())
+    rctEventEmitter.receiveEvent(viewTag, eventName, serializeEventData())
   }
 
   private fun serializeEventData(): WritableMap {

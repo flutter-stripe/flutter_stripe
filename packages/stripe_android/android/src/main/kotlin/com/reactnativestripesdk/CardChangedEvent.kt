@@ -11,7 +11,7 @@ internal class CardChangedEvent constructor(viewTag: Int, private val cardDetail
   }
 
   override fun dispatch(rctEventEmitter: RCTEventEmitter) {
-    rctEventEmitter.receiveEvent(viewTag, getEventName(), serializeEventData())
+    rctEventEmitter.receiveEvent(viewTag, eventName, serializeEventData())
   }
 
   private fun getValOr(map: MutableMap<String, Any>, key: String, default: String? = null): String? {

@@ -18,7 +18,14 @@ _$_SetupParameters _$$_SetupParametersFromJson(Map<String, dynamic> json) =>
       applePay: json['applePay'] as bool?,
       style: _$enumDecodeNullable(_$ThemeModeEnumMap, json['style']),
       googlePay: json['googlePay'] as bool?,
+      allowsDelayedPaymentMethods:
+          json['allowsDelayedPaymentMethods'] as bool? ?? false,
+      primaryButtonColor: ColorKey.fromJson(json['primaryButtonColor']),
       testEnv: json['testEnv'] as bool? ?? false,
+      billingDetails: json['billingDetails'] == null
+          ? null
+          : BillingDetails.fromJson(
+              json['billingDetails'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_SetupParametersToJson(_$_SetupParameters instance) =>
@@ -33,7 +40,10 @@ Map<String, dynamic> _$$_SetupParametersToJson(_$_SetupParameters instance) =>
       'applePay': instance.applePay,
       'style': UserInterfaceStyleKey.toJson(instance.style),
       'googlePay': instance.googlePay,
+      'allowsDelayedPaymentMethods': instance.allowsDelayedPaymentMethods,
+      'primaryButtonColor': ColorKey.toJson(instance.primaryButtonColor),
       'testEnv': instance.testEnv,
+      'billingDetails': instance.billingDetails,
     };
 
 K _$enumDecode<K, V>(

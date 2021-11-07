@@ -1,3 +1,13 @@
+## 2.0.2
+
+- New params `primaryButtonColor`, `billingDetails` and `allowsDelayedPaymentMethods` for `initPaymentSheet`
+- Fixed iOS focus issues #408
+
+## 2.0.1
+
+ - **FIX**: focus issue on CardFormField on Android. #397
+ - **DOCS**: correct AppCompat mention in README.md. #392
+
 ## 2.0.0
 ** First stable release **
 

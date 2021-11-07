@@ -31,9 +31,14 @@ class _$SetupPaymentSheetParametersTearOff {
       String? merchantDisplayName,
       String? merchantCountryCode,
       bool? applePay,
-      @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style,
+      @JsonKey(toJson: UserInterfaceStyleKey.toJson)
+          ThemeMode? style,
       bool? googlePay,
-      bool testEnv = false}) {
+      bool allowsDelayedPaymentMethods = false,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? primaryButtonColor,
+      bool testEnv = false,
+      BillingDetails? billingDetails}) {
     return _SetupParameters(
       customFlow: customFlow,
       customerId: customerId,
@@ -45,7 +50,10 @@ class _$SetupPaymentSheetParametersTearOff {
       applePay: applePay,
       style: style,
       googlePay: googlePay,
+      allowsDelayedPaymentMethods: allowsDelayedPaymentMethods,
+      primaryButtonColor: primaryButtonColor,
       testEnv: testEnv,
+      billingDetails: billingDetails,
     );
   }
 
@@ -103,8 +111,22 @@ mixin _$SetupPaymentSheetParameters {
   /// A merchantCountryCode would then be required
   bool? get googlePay => throw _privateConstructorUsedError;
 
+  /// Flag that allows payment methods that do not move money at the send of the checkout.
+  ///
+  /// Defaul value is false.
+  bool get allowsDelayedPaymentMethods => throw _privateConstructorUsedError;
+
+  /// Button color of the checkoutButton
+  ///
+  /// Make sure that there is enough contrast with the rest of the paymentsheet.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get primaryButtonColor => throw _privateConstructorUsedError;
+
   /// Flag for using the test environment
   bool get testEnv => throw _privateConstructorUsedError;
+
+  /// Billing information of the customer.
+  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -127,9 +149,16 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
       String? merchantDisplayName,
       String? merchantCountryCode,
       bool? applePay,
-      @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style,
+      @JsonKey(toJson: UserInterfaceStyleKey.toJson)
+          ThemeMode? style,
       bool? googlePay,
-      bool testEnv});
+      bool allowsDelayedPaymentMethods,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? primaryButtonColor,
+      bool testEnv,
+      BillingDetails? billingDetails});
+
+  $BillingDetailsCopyWith<$Res>? get billingDetails;
 }
 
 /// @nodoc
@@ -153,7 +182,10 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res>
     Object? applePay = freezed,
     Object? style = freezed,
     Object? googlePay = freezed,
+    Object? allowsDelayedPaymentMethods = freezed,
+    Object? primaryButtonColor = freezed,
     Object? testEnv = freezed,
+    Object? billingDetails = freezed,
   }) {
     return _then(_value.copyWith(
       customFlow: customFlow == freezed
@@ -196,11 +228,34 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res>
           ? _value.googlePay
           : googlePay // ignore: cast_nullable_to_non_nullable
               as bool?,
+      allowsDelayedPaymentMethods: allowsDelayedPaymentMethods == freezed
+          ? _value.allowsDelayedPaymentMethods
+          : allowsDelayedPaymentMethods // ignore: cast_nullable_to_non_nullable
+              as bool,
+      primaryButtonColor: primaryButtonColor == freezed
+          ? _value.primaryButtonColor
+          : primaryButtonColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
       testEnv: testEnv == freezed
           ? _value.testEnv
           : testEnv // ignore: cast_nullable_to_non_nullable
               as bool,
+      billingDetails: billingDetails == freezed
+          ? _value.billingDetails
+          : billingDetails // ignore: cast_nullable_to_non_nullable
+              as BillingDetails?,
     ));
+  }
+
+  @override
+  $BillingDetailsCopyWith<$Res>? get billingDetails {
+    if (_value.billingDetails == null) {
+      return null;
+    }
+
+    return $BillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
+      return _then(_value.copyWith(billingDetails: value));
+    });
   }
 }
 
@@ -220,9 +275,17 @@ abstract class _$SetupParametersCopyWith<$Res>
       String? merchantDisplayName,
       String? merchantCountryCode,
       bool? applePay,
-      @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style,
+      @JsonKey(toJson: UserInterfaceStyleKey.toJson)
+          ThemeMode? style,
       bool? googlePay,
-      bool testEnv});
+      bool allowsDelayedPaymentMethods,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? primaryButtonColor,
+      bool testEnv,
+      BillingDetails? billingDetails});
+
+  @override
+  $BillingDetailsCopyWith<$Res>? get billingDetails;
 }
 
 /// @nodoc
@@ -248,7 +311,10 @@ class __$SetupParametersCopyWithImpl<$Res>
     Object? applePay = freezed,
     Object? style = freezed,
     Object? googlePay = freezed,
+    Object? allowsDelayedPaymentMethods = freezed,
+    Object? primaryButtonColor = freezed,
     Object? testEnv = freezed,
+    Object? billingDetails = freezed,
   }) {
     return _then(_SetupParameters(
       customFlow: customFlow == freezed
@@ -291,10 +357,22 @@ class __$SetupParametersCopyWithImpl<$Res>
           ? _value.googlePay
           : googlePay // ignore: cast_nullable_to_non_nullable
               as bool?,
+      allowsDelayedPaymentMethods: allowsDelayedPaymentMethods == freezed
+          ? _value.allowsDelayedPaymentMethods
+          : allowsDelayedPaymentMethods // ignore: cast_nullable_to_non_nullable
+              as bool,
+      primaryButtonColor: primaryButtonColor == freezed
+          ? _value.primaryButtonColor
+          : primaryButtonColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
       testEnv: testEnv == freezed
           ? _value.testEnv
           : testEnv // ignore: cast_nullable_to_non_nullable
               as bool,
+      billingDetails: billingDetails == freezed
+          ? _value.billingDetails
+          : billingDetails // ignore: cast_nullable_to_non_nullable
+              as BillingDetails?,
     ));
   }
 }
@@ -311,9 +389,14 @@ class _$_SetupParameters implements _SetupParameters {
       this.merchantDisplayName,
       this.merchantCountryCode,
       this.applePay,
-      @JsonKey(toJson: UserInterfaceStyleKey.toJson) this.style,
+      @JsonKey(toJson: UserInterfaceStyleKey.toJson)
+          this.style,
       this.googlePay,
-      this.testEnv = false});
+      this.allowsDelayedPaymentMethods = false,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.primaryButtonColor,
+      this.testEnv = false,
+      this.billingDetails});
 
   factory _$_SetupParameters.fromJson(Map<String, dynamic> json) =>
       _$$_SetupParametersFromJson(json);
@@ -376,12 +459,30 @@ class _$_SetupParameters implements _SetupParameters {
   @JsonKey(defaultValue: false)
   @override
 
+  /// Flag that allows payment methods that do not move money at the send of the checkout.
+  ///
+  /// Defaul value is false.
+  final bool allowsDelayedPaymentMethods;
+  @override
+
+  /// Button color of the checkoutButton
+  ///
+  /// Make sure that there is enough contrast with the rest of the paymentsheet.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? primaryButtonColor;
+  @JsonKey(defaultValue: false)
+  @override
+
   /// Flag for using the test environment
   final bool testEnv;
+  @override
+
+  /// Billing information of the customer.
+  final BillingDetails? billingDetails;
 
   @override
   String toString() {
-    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, merchantDisplayName: $merchantDisplayName, merchantCountryCode: $merchantCountryCode, applePay: $applePay, style: $style, googlePay: $googlePay, testEnv: $testEnv)';
+    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, merchantDisplayName: $merchantDisplayName, merchantCountryCode: $merchantCountryCode, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, primaryButtonColor: $primaryButtonColor, testEnv: $testEnv, billingDetails: $billingDetails)';
   }
 
   @override
@@ -394,8 +495,7 @@ class _$_SetupParameters implements _SetupParameters {
             (identical(other.customerId, customerId) ||
                 const DeepCollectionEquality()
                     .equals(other.customerId, customerId)) &&
-            (identical(other.customerEphemeralKeySecret,
-                    customerEphemeralKeySecret) ||
+            (identical(other.customerEphemeralKeySecret, customerEphemeralKeySecret) ||
                 const DeepCollectionEquality().equals(
                     other.customerEphemeralKeySecret,
                     customerEphemeralKeySecret)) &&
@@ -420,8 +520,13 @@ class _$_SetupParameters implements _SetupParameters {
             (identical(other.googlePay, googlePay) ||
                 const DeepCollectionEquality()
                     .equals(other.googlePay, googlePay)) &&
-            (identical(other.testEnv, testEnv) ||
-                const DeepCollectionEquality().equals(other.testEnv, testEnv)));
+            (identical(other.allowsDelayedPaymentMethods, allowsDelayedPaymentMethods) ||
+                const DeepCollectionEquality().equals(
+                    other.allowsDelayedPaymentMethods,
+                    allowsDelayedPaymentMethods)) &&
+            (identical(other.primaryButtonColor, primaryButtonColor) || const DeepCollectionEquality().equals(other.primaryButtonColor, primaryButtonColor)) &&
+            (identical(other.testEnv, testEnv) || const DeepCollectionEquality().equals(other.testEnv, testEnv)) &&
+            (identical(other.billingDetails, billingDetails) || const DeepCollectionEquality().equals(other.billingDetails, billingDetails)));
   }
 
   @override
@@ -437,7 +542,10 @@ class _$_SetupParameters implements _SetupParameters {
       const DeepCollectionEquality().hash(applePay) ^
       const DeepCollectionEquality().hash(style) ^
       const DeepCollectionEquality().hash(googlePay) ^
-      const DeepCollectionEquality().hash(testEnv);
+      const DeepCollectionEquality().hash(allowsDelayedPaymentMethods) ^
+      const DeepCollectionEquality().hash(primaryButtonColor) ^
+      const DeepCollectionEquality().hash(testEnv) ^
+      const DeepCollectionEquality().hash(billingDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -460,9 +568,14 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
       String? merchantDisplayName,
       String? merchantCountryCode,
       bool? applePay,
-      @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style,
+      @JsonKey(toJson: UserInterfaceStyleKey.toJson)
+          ThemeMode? style,
       bool? googlePay,
-      bool testEnv}) = _$_SetupParameters;
+      bool allowsDelayedPaymentMethods,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? primaryButtonColor,
+      bool testEnv,
+      BillingDetails? billingDetails}) = _$_SetupParameters;
 
   factory _SetupParameters.fromJson(Map<String, dynamic> json) =
       _$_SetupParameters.fromJson;
@@ -523,8 +636,25 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   bool? get googlePay => throw _privateConstructorUsedError;
   @override
 
+  /// Flag that allows payment methods that do not move money at the send of the checkout.
+  ///
+  /// Defaul value is false.
+  bool get allowsDelayedPaymentMethods => throw _privateConstructorUsedError;
+  @override
+
+  /// Button color of the checkoutButton
+  ///
+  /// Make sure that there is enough contrast with the rest of the paymentsheet.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get primaryButtonColor => throw _privateConstructorUsedError;
+  @override
+
   /// Flag for using the test environment
   bool get testEnv => throw _privateConstructorUsedError;
+  @override
+
+  /// Billing information of the customer.
+  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SetupParametersCopyWith<_SetupParameters> get copyWith =>
