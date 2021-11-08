@@ -79,7 +79,7 @@ class _ApplePayExternalPluginScreenState
 
       final params = PaymentMethodParams.cardFromToken(token: token.id);
 
-      // 3. Confirm Google pay payment method
+      // 3. Confirm Apple pay payment method
       await Stripe.instance.confirmPayment(clientSecret, params);
 
       ScaffoldMessenger.of(context).showSnackBar(
