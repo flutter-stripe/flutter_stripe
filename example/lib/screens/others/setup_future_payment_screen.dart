@@ -112,6 +112,7 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
 
       // 2. Gather customer billing information (ex. email)
       final billingDetails = BillingDetails(
+        name: "Test User",
         email: 'email@stripe.com',
         phone: '+48888000888',
         address: Address(
