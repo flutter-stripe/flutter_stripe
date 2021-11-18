@@ -121,7 +121,7 @@ app.post(
       res.send({
         clientSecret: paymentIntent.client_secret,
       });
-    } catch (error: any) {
+    } catch (error) {
       res.send({
         error: error.raw.message,
       });
@@ -291,7 +291,7 @@ app.post(
         // After confirm, if the PaymentIntent's status is succeeded, fulfill the order.
         res.send(generateResponse(intent));
       }
-    } catch (e : any) {
+    } catch (e) {
       // Handle "hard declines" e.g. insufficient funds, expired card, etc
       // See https://stripe.com/docs/declines/codes for more.
       res.send({ error: e.message });
@@ -346,7 +346,7 @@ app.post(
         req.headers['stripe-signature'] || [],
         stripeWebhookSecret
       );
-    } catch (err : any) {
+    } catch (err) {
       console.log(`⚠️  Webhook signature verification failed.`);
       res.sendStatus(400);
       return;
@@ -434,7 +434,7 @@ app.post('/charge-card-off-session', async (req, res) => {
       clientSecret: paymentIntent.client_secret,
       publicKey: stripePublishableKey,
     });
-  } catch (err : any) {
+  } catch (err) {
     if (err.code === 'authentication_required') {
       // Bring the customer back on-session to authenticate the purchase
       // You can do this by sending an email or app notification to let them know
