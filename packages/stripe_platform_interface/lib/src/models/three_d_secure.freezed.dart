@@ -45,7 +45,7 @@ class _$ThreeDSecureConfigurationParamsTearOff {
     );
   }
 
-  ThreeDSecureConfigurationParams fromJson(Map<String, Object> json) {
+  ThreeDSecureConfigurationParams fromJson(Map<String, Object?> json) {
     return ThreeDSecureConfigurationParams.fromJson(json);
   }
 }
@@ -444,47 +444,38 @@ class _$_ThreeDSecureConfigurationParams
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ThreeDSecureConfigurationParams &&
+        (other.runtimeType == runtimeType &&
+            other is _ThreeDSecureConfigurationParams &&
             (identical(other.navigationBar, navigationBar) ||
-                const DeepCollectionEquality()
-                    .equals(other.navigationBar, navigationBar)) &&
-            (identical(other.timeout, timeout) ||
-                const DeepCollectionEquality()
-                    .equals(other.timeout, timeout)) &&
-            (identical(other.label, label) ||
-                const DeepCollectionEquality().equals(other.label, label)) &&
+                other.navigationBar == navigationBar) &&
+            (identical(other.timeout, timeout) || other.timeout == timeout) &&
+            (identical(other.label, label) || other.label == label) &&
             (identical(other.textField, textField) ||
-                const DeepCollectionEquality()
-                    .equals(other.textField, textField)) &&
+                other.textField == textField) &&
             (identical(other.submitButton, submitButton) ||
-                const DeepCollectionEquality()
-                    .equals(other.submitButton, submitButton)) &&
+                other.submitButton == submitButton) &&
             (identical(other.cancelButton, cancelButton) ||
-                const DeepCollectionEquality()
-                    .equals(other.cancelButton, cancelButton)) &&
+                other.cancelButton == cancelButton) &&
             (identical(other.nextButton, nextButton) ||
-                const DeepCollectionEquality()
-                    .equals(other.nextButton, nextButton)) &&
+                other.nextButton == nextButton) &&
             (identical(other.continueButton, continueButton) ||
-                const DeepCollectionEquality()
-                    .equals(other.continueButton, continueButton)) &&
+                other.continueButton == continueButton) &&
             (identical(other.resendButton, resendButton) ||
-                const DeepCollectionEquality()
-                    .equals(other.resendButton, resendButton)));
+                other.resendButton == resendButton));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(navigationBar) ^
-      const DeepCollectionEquality().hash(timeout) ^
-      const DeepCollectionEquality().hash(label) ^
-      const DeepCollectionEquality().hash(textField) ^
-      const DeepCollectionEquality().hash(submitButton) ^
-      const DeepCollectionEquality().hash(cancelButton) ^
-      const DeepCollectionEquality().hash(nextButton) ^
-      const DeepCollectionEquality().hash(continueButton) ^
-      const DeepCollectionEquality().hash(resendButton);
+  int get hashCode => Object.hash(
+      runtimeType,
+      navigationBar,
+      timeout,
+      label,
+      textField,
+      submitButton,
+      cancelButton,
+      nextButton,
+      continueButton,
+      resendButton);
 
   @JsonKey(ignore: true)
   @override
@@ -518,46 +509,39 @@ abstract class _ThreeDSecureConfigurationParams
   @override
 
   /// Styling for the 3d secure navigation bar.
-  ThreeDSecureNavigationBarThemeData get navigationBar =>
-      throw _privateConstructorUsedError;
+  ThreeDSecureNavigationBarThemeData get navigationBar;
   @override
 
   /// Desired timeout in milliseconds.
-  int? get timeout => throw _privateConstructorUsedError;
+  int? get timeout;
   @override
 
   /// Styling for the 3d secure label.
-  ThreeDSecureLabelThemeData? get label => throw _privateConstructorUsedError;
+  ThreeDSecureLabelThemeData? get label;
   @override
 
   /// Styling for the 3d secure textfield.
-  ThreeDSecureTextFieldThemeData? get textField =>
-      throw _privateConstructorUsedError;
+  ThreeDSecureTextFieldThemeData? get textField;
   @override
 
   /// Styling for the 3d secure confirmation button.
-  ThreeDSecureButtonThemeData? get submitButton =>
-      throw _privateConstructorUsedError;
+  ThreeDSecureButtonThemeData? get submitButton;
   @override
 
   /// Styling for the 3d secure cancel button.
-  ThreeDSecureButtonThemeData? get cancelButton =>
-      throw _privateConstructorUsedError;
+  ThreeDSecureButtonThemeData? get cancelButton;
   @override
 
   /// Styling for the 3d secure next button.
-  ThreeDSecureButtonThemeData? get nextButton =>
-      throw _privateConstructorUsedError;
+  ThreeDSecureButtonThemeData? get nextButton;
   @override
 
   /// Styling for the 3d secure continue button.
-  ThreeDSecureButtonThemeData? get continueButton =>
-      throw _privateConstructorUsedError;
+  ThreeDSecureButtonThemeData? get continueButton;
   @override
 
   /// Styling for the 3d secure resend button.
-  ThreeDSecureButtonThemeData? get resendButton =>
-      throw _privateConstructorUsedError;
+  ThreeDSecureButtonThemeData? get resendButton;
   @override
   @JsonKey(ignore: true)
   _$ThreeDSecureConfigurationParamsCopyWith<_ThreeDSecureConfigurationParams>
@@ -590,7 +574,7 @@ class _$ThreeDSecureNavigationBarThemeDataTearOff {
     );
   }
 
-  ThreeDSecureNavigationBarThemeData fromJson(Map<String, Object> json) {
+  ThreeDSecureNavigationBarThemeData fromJson(Map<String, Object?> json) {
     return ThreeDSecureNavigationBarThemeData.fromJson(json);
   }
 }
@@ -806,36 +790,25 @@ class _$_ThreeDSecureNavigationBarThemeData
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ThreeDSecureNavigationBarThemeData &&
+        (other.runtimeType == runtimeType &&
+            other is _ThreeDSecureNavigationBarThemeData &&
             (identical(other.headerText, headerText) ||
-                const DeepCollectionEquality()
-                    .equals(other.headerText, headerText)) &&
+                other.headerText == headerText) &&
             (identical(other.buttonText, buttonText) ||
-                const DeepCollectionEquality()
-                    .equals(other.buttonText, buttonText)) &&
+                other.buttonText == buttonText) &&
             (identical(other.textColor, textColor) ||
-                const DeepCollectionEquality()
-                    .equals(other.textColor, textColor)) &&
+                other.textColor == textColor) &&
             (identical(other.statusBarColor, statusBarColor) ||
-                const DeepCollectionEquality()
-                    .equals(other.statusBarColor, statusBarColor)) &&
+                other.statusBarColor == statusBarColor) &&
             (identical(other.backgroundColor, backgroundColor) ||
-                const DeepCollectionEquality()
-                    .equals(other.backgroundColor, backgroundColor)) &&
+                other.backgroundColor == backgroundColor) &&
             (identical(other.textFontSize, textFontSize) ||
-                const DeepCollectionEquality()
-                    .equals(other.textFontSize, textFontSize)));
+                other.textFontSize == textFontSize));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(headerText) ^
-      const DeepCollectionEquality().hash(buttonText) ^
-      const DeepCollectionEquality().hash(textColor) ^
-      const DeepCollectionEquality().hash(statusBarColor) ^
-      const DeepCollectionEquality().hash(backgroundColor) ^
-      const DeepCollectionEquality().hash(textFontSize);
+  int get hashCode => Object.hash(runtimeType, headerText, buttonText,
+      textColor, statusBarColor, backgroundColor, textFontSize);
 
   @JsonKey(ignore: true)
   @override
@@ -867,27 +840,27 @@ abstract class _ThreeDSecureNavigationBarThemeData
   @override
 
   /// Localised text of the header.
-  String? get headerText => throw _privateConstructorUsedError;
+  String? get headerText;
   @override
 
   /// localised text of the button
-  String? get buttonText => throw _privateConstructorUsedError;
+  String? get buttonText;
   @override
 
   /// Color in hex to display navigation bar header text.
-  String? get textColor => throw _privateConstructorUsedError;
+  String? get textColor;
   @override
 
   /// Color in hex for the status bar.
-  String? get statusBarColor => throw _privateConstructorUsedError;
+  String? get statusBarColor;
   @override
 
   /// Color in hex to display navigation bar background.
-  String? get backgroundColor => throw _privateConstructorUsedError;
+  String? get backgroundColor;
   @override
 
   /// Font size of header text.
-  double? get textFontSize => throw _privateConstructorUsedError;
+  double? get textFontSize;
   @override
   @JsonKey(ignore: true)
   _$ThreeDSecureNavigationBarThemeDataCopyWith<
@@ -917,7 +890,7 @@ class _$ThreeDSecureLabelThemeDataTearOff {
     );
   }
 
-  ThreeDSecureLabelThemeData fromJson(Map<String, Object> json) {
+  ThreeDSecureLabelThemeData fromJson(Map<String, Object?> json) {
     return ThreeDSecureLabelThemeData.fromJson(json);
   }
 }
@@ -1084,28 +1057,21 @@ class _$_ThreeDSecureLabelThemeData implements _ThreeDSecureLabelThemeData {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ThreeDSecureLabelThemeData &&
+        (other.runtimeType == runtimeType &&
+            other is _ThreeDSecureLabelThemeData &&
             (identical(other.headingTextColor, headingTextColor) ||
-                const DeepCollectionEquality()
-                    .equals(other.headingTextColor, headingTextColor)) &&
+                other.headingTextColor == headingTextColor) &&
             (identical(other.textColor, textColor) ||
-                const DeepCollectionEquality()
-                    .equals(other.textColor, textColor)) &&
+                other.textColor == textColor) &&
             (identical(other.textFontSize, textFontSize) ||
-                const DeepCollectionEquality()
-                    .equals(other.textFontSize, textFontSize)) &&
+                other.textFontSize == textFontSize) &&
             (identical(other.headingFontSize, headingFontSize) ||
-                const DeepCollectionEquality()
-                    .equals(other.headingFontSize, headingFontSize)));
+                other.headingFontSize == headingFontSize));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(headingTextColor) ^
-      const DeepCollectionEquality().hash(textColor) ^
-      const DeepCollectionEquality().hash(textFontSize) ^
-      const DeepCollectionEquality().hash(headingFontSize);
+  int get hashCode => Object.hash(
+      runtimeType, headingTextColor, textColor, textFontSize, headingFontSize);
 
   @JsonKey(ignore: true)
   @override
@@ -1133,17 +1099,17 @@ abstract class _ThreeDSecureLabelThemeData
   @override
 
   /// Color in hex for header text.
-  String? get headingTextColor => throw _privateConstructorUsedError;
+  String? get headingTextColor;
   @override
 
   /// Color in hex for label text.
-  String? get textColor => throw _privateConstructorUsedError;
+  String? get textColor;
   @override
 
   /// Font size for label text.
-  double? get textFontSize => throw _privateConstructorUsedError;
+  double? get textFontSize;
   @override // Font size for header.
-  double? get headingFontSize => throw _privateConstructorUsedError;
+  double? get headingFontSize;
   @override
   @JsonKey(ignore: true)
   _$ThreeDSecureLabelThemeDataCopyWith<_ThreeDSecureLabelThemeData>
@@ -1174,7 +1140,7 @@ class _$ThreeDSecureTextFieldThemeDataTearOff {
     );
   }
 
-  ThreeDSecureTextFieldThemeData fromJson(Map<String, Object> json) {
+  ThreeDSecureTextFieldThemeData fromJson(Map<String, Object?> json) {
     return ThreeDSecureTextFieldThemeData.fromJson(json);
   }
 }
@@ -1369,32 +1335,23 @@ class _$_ThreeDSecureTextFieldThemeData
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ThreeDSecureTextFieldThemeData &&
+        (other.runtimeType == runtimeType &&
+            other is _ThreeDSecureTextFieldThemeData &&
             (identical(other.borderColor, borderColor) ||
-                const DeepCollectionEquality()
-                    .equals(other.borderColor, borderColor)) &&
+                other.borderColor == borderColor) &&
             (identical(other.borderWidth, borderWidth) ||
-                const DeepCollectionEquality()
-                    .equals(other.borderWidth, borderWidth)) &&
+                other.borderWidth == borderWidth) &&
             (identical(other.cornerRadius, cornerRadius) ||
-                const DeepCollectionEquality()
-                    .equals(other.cornerRadius, cornerRadius)) &&
+                other.cornerRadius == cornerRadius) &&
             (identical(other.textColor, textColor) ||
-                const DeepCollectionEquality()
-                    .equals(other.textColor, textColor)) &&
+                other.textColor == textColor) &&
             (identical(other.textFontSize, textFontSize) ||
-                const DeepCollectionEquality()
-                    .equals(other.textFontSize, textFontSize)));
+                other.textFontSize == textFontSize));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(borderColor) ^
-      const DeepCollectionEquality().hash(borderWidth) ^
-      const DeepCollectionEquality().hash(cornerRadius) ^
-      const DeepCollectionEquality().hash(textColor) ^
-      const DeepCollectionEquality().hash(textFontSize);
+  int get hashCode => Object.hash(runtimeType, borderColor, borderWidth,
+      cornerRadius, textColor, textFontSize);
 
   @JsonKey(ignore: true)
   @override
@@ -1423,23 +1380,23 @@ abstract class _ThreeDSecureTextFieldThemeData
   @override
 
   /// Color in hex for the border
-  String? get borderColor => throw _privateConstructorUsedError;
+  String? get borderColor;
   @override
 
   /// Thickness of the textfield border.
-  double? get borderWidth => throw _privateConstructorUsedError;
+  double? get borderWidth;
   @override
 
   /// Radius for the textfield corners.
-  double? get cornerRadius => throw _privateConstructorUsedError;
+  double? get cornerRadius;
   @override
 
   /// Color in hex for the textfield value.
-  String? get textColor => throw _privateConstructorUsedError;
+  String? get textColor;
   @override
 
   /// Font size for the textfield text.
-  double? get textFontSize => throw _privateConstructorUsedError;
+  double? get textFontSize;
   @override
   @JsonKey(ignore: true)
   _$ThreeDSecureTextFieldThemeDataCopyWith<_ThreeDSecureTextFieldThemeData>
@@ -1468,7 +1425,7 @@ class _$ThreeDSecureButtonThemeDataTearOff {
     );
   }
 
-  ThreeDSecureButtonThemeData fromJson(Map<String, Object> json) {
+  ThreeDSecureButtonThemeData fromJson(Map<String, Object?> json) {
     return ThreeDSecureButtonThemeData.fromJson(json);
   }
 }
@@ -1640,28 +1597,21 @@ class _$_ThreeDSecureButtonThemeData implements _ThreeDSecureButtonThemeData {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ThreeDSecureButtonThemeData &&
+        (other.runtimeType == runtimeType &&
+            other is _ThreeDSecureButtonThemeData &&
             (identical(other.backgroundColor, backgroundColor) ||
-                const DeepCollectionEquality()
-                    .equals(other.backgroundColor, backgroundColor)) &&
+                other.backgroundColor == backgroundColor) &&
             (identical(other.cornerRadius, cornerRadius) ||
-                const DeepCollectionEquality()
-                    .equals(other.cornerRadius, cornerRadius)) &&
+                other.cornerRadius == cornerRadius) &&
             (identical(other.textColor, textColor) ||
-                const DeepCollectionEquality()
-                    .equals(other.textColor, textColor)) &&
+                other.textColor == textColor) &&
             (identical(other.textFontSize, textFontSize) ||
-                const DeepCollectionEquality()
-                    .equals(other.textFontSize, textFontSize)));
+                other.textFontSize == textFontSize));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(backgroundColor) ^
-      const DeepCollectionEquality().hash(cornerRadius) ^
-      const DeepCollectionEquality().hash(textColor) ^
-      const DeepCollectionEquality().hash(textFontSize);
+  int get hashCode => Object.hash(
+      runtimeType, backgroundColor, cornerRadius, textColor, textFontSize);
 
   @JsonKey(ignore: true)
   @override
@@ -1689,19 +1639,19 @@ abstract class _ThreeDSecureButtonThemeData
   @override
 
   /// Color in hex for button background
-  String? get backgroundColor => throw _privateConstructorUsedError;
+  String? get backgroundColor;
   @override
 
   /// Button corner radius.
-  double? get cornerRadius => throw _privateConstructorUsedError;
+  double? get cornerRadius;
   @override
 
   /// Color in hex for button text.
-  String? get textColor => throw _privateConstructorUsedError;
+  String? get textColor;
   @override
 
   /// Font size for the button text.
-  double? get textFontSize => throw _privateConstructorUsedError;
+  double? get textFontSize;
   @override
   @JsonKey(ignore: true)
   _$ThreeDSecureButtonThemeDataCopyWith<_ThreeDSecureButtonThemeData>

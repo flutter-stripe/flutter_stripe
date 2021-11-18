@@ -34,7 +34,7 @@ class _$CardDetailsTearOff {
     );
   }
 
-  CardDetails fromJson(Map<String, Object> json) {
+  CardDetails fromJson(Map<String, Object?> json) {
     return CardDetails.fromJson(json);
   }
 }
@@ -178,26 +178,19 @@ class _$_CardDetailsConstructor extends _CardDetailsConstructor {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _CardDetailsConstructor &&
-            (identical(other.number, number) ||
-                const DeepCollectionEquality().equals(other.number, number)) &&
+        (other.runtimeType == runtimeType &&
+            other is _CardDetailsConstructor &&
+            (identical(other.number, number) || other.number == number) &&
             (identical(other.expirationYear, expirationYear) ||
-                const DeepCollectionEquality()
-                    .equals(other.expirationYear, expirationYear)) &&
+                other.expirationYear == expirationYear) &&
             (identical(other.expirationMonth, expirationMonth) ||
-                const DeepCollectionEquality()
-                    .equals(other.expirationMonth, expirationMonth)) &&
-            (identical(other.cvc, cvc) ||
-                const DeepCollectionEquality().equals(other.cvc, cvc)));
+                other.expirationMonth == expirationMonth) &&
+            (identical(other.cvc, cvc) || other.cvc == cvc));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(number) ^
-      const DeepCollectionEquality().hash(expirationYear) ^
-      const DeepCollectionEquality().hash(expirationMonth) ^
-      const DeepCollectionEquality().hash(cvc);
+      Object.hash(runtimeType, number, expirationYear, expirationMonth, cvc);
 
   @JsonKey(ignore: true)
   @override
@@ -223,13 +216,13 @@ abstract class _CardDetailsConstructor extends CardDetails {
       _$_CardDetailsConstructor.fromJson;
 
   @override
-  String? get number => throw _privateConstructorUsedError;
+  String? get number;
   @override
-  int? get expirationYear => throw _privateConstructorUsedError;
+  int? get expirationYear;
   @override
-  int? get expirationMonth => throw _privateConstructorUsedError;
+  int? get expirationMonth;
   @override
-  String? get cvc => throw _privateConstructorUsedError;
+  String? get cvc;
   @override
   @JsonKey(ignore: true)
   _$CardDetailsConstructorCopyWith<_CardDetailsConstructor> get copyWith =>

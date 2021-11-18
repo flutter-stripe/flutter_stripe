@@ -16,7 +16,7 @@ _$_SetupParameters _$$_SetupParametersFromJson(Map<String, dynamic> json) =>
       merchantDisplayName: json['merchantDisplayName'] as String?,
       merchantCountryCode: json['merchantCountryCode'] as String?,
       applePay: json['applePay'] as bool?,
-      style: _$enumDecodeNullable(_$ThemeModeEnumMap, json['style']),
+      style: $enumDecodeNullable(_$ThemeModeEnumMap, json['style']),
       googlePay: json['googlePay'] as bool?,
       allowsDelayedPaymentMethods:
           json['allowsDelayedPaymentMethods'] as bool? ?? false,
@@ -45,43 +45,6 @@ Map<String, dynamic> _$$_SetupParametersToJson(_$_SetupParameters instance) =>
       'testEnv': instance.testEnv,
       'billingDetails': instance.billingDetails,
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
-K? _$enumDecodeNullable<K, V>(
-  Map<K, V> enumValues,
-  dynamic source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    return null;
-  }
-  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
-}
 
 const _$ThemeModeEnumMap = {
   ThemeMode.system: 'system',

@@ -33,7 +33,7 @@ class _$PresentGooglePayParamsTearOff {
     );
   }
 
-  PresentGooglePayParams fromJson(Map<String, Object> json) {
+  PresentGooglePayParams fromJson(Map<String, Object?> json) {
     return PresentGooglePayParams.fromJson(json);
   }
 }
@@ -182,24 +182,19 @@ class _$_PresentGooglePayParams implements _PresentGooglePayParams {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PresentGooglePayParams &&
+        (other.runtimeType == runtimeType &&
+            other is _PresentGooglePayParams &&
             (identical(other.clientSecret, clientSecret) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientSecret, clientSecret)) &&
+                other.clientSecret == clientSecret) &&
             (identical(other.forSetupIntent, forSetupIntent) ||
-                const DeepCollectionEquality()
-                    .equals(other.forSetupIntent, forSetupIntent)) &&
+                other.forSetupIntent == forSetupIntent) &&
             (identical(other.currencyCode, currencyCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.currencyCode, currencyCode)));
+                other.currencyCode == currencyCode));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(clientSecret) ^
-      const DeepCollectionEquality().hash(forSetupIntent) ^
-      const DeepCollectionEquality().hash(currencyCode);
+      Object.hash(runtimeType, clientSecret, forSetupIntent, currencyCode);
 
   @JsonKey(ignore: true)
   @override
@@ -225,18 +220,18 @@ abstract class _PresentGooglePayParams implements PresentGooglePayParams {
   @override
 
   /// The client is secret is used for handling the payment from the Client side.
-  String get clientSecret => throw _privateConstructorUsedError;
+  String get clientSecret;
   @override
 
   /// Determines whether to present Google Pay in order to confirm a [SetupIntent]
   /// or a [PaymentIntent].
-  bool get forSetupIntent => throw _privateConstructorUsedError;
+  bool get forSetupIntent;
   @override
 
   /// When forSetupIntent is `true` it is required to provide a currencyCode.
   ///
   /// For more details see: https://developers.google.com/pay/api/android/reference/request-objects#TransactionInfo .
-  String? get currencyCode => throw _privateConstructorUsedError;
+  String? get currencyCode;
   @override
   @JsonKey(ignore: true)
   _$PresentGooglePayParamsCopyWith<_PresentGooglePayParams> get copyWith =>
@@ -268,7 +263,7 @@ class _$GooglePayInitParamsTearOff {
     );
   }
 
-  GooglePayInitParams fromJson(Map<String, Object> json) {
+  GooglePayInitParams fromJson(Map<String, Object?> json) {
     return GooglePayInitParams.fromJson(json);
   }
 }
@@ -499,38 +494,32 @@ class _$_GooglePayInitParams implements _GooglePayInitParams {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _GooglePayInitParams &&
+        (other.runtimeType == runtimeType &&
+            other is _GooglePayInitParams &&
             (identical(other.merchantName, merchantName) ||
-                const DeepCollectionEquality()
-                    .equals(other.merchantName, merchantName)) &&
+                other.merchantName == merchantName) &&
             (identical(other.countryCode, countryCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.countryCode, countryCode)) &&
-            (identical(other.testEnv, testEnv) ||
-                const DeepCollectionEquality()
-                    .equals(other.testEnv, testEnv)) &&
+                other.countryCode == countryCode) &&
+            (identical(other.testEnv, testEnv) || other.testEnv == testEnv) &&
             (identical(other.billingAddressConfig, billingAddressConfig) ||
-                const DeepCollectionEquality().equals(
-                    other.billingAddressConfig, billingAddressConfig)) &&
+                other.billingAddressConfig == billingAddressConfig) &&
             (identical(other.isEmailRequired, isEmailRequired) ||
-                const DeepCollectionEquality()
-                    .equals(other.isEmailRequired, isEmailRequired)) &&
+                other.isEmailRequired == isEmailRequired) &&
             (identical(other.existingPaymentMethodRequired,
                     existingPaymentMethodRequired) ||
-                const DeepCollectionEquality().equals(
-                    other.existingPaymentMethodRequired,
-                    existingPaymentMethodRequired)));
+                other.existingPaymentMethodRequired ==
+                    existingPaymentMethodRequired));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(merchantName) ^
-      const DeepCollectionEquality().hash(countryCode) ^
-      const DeepCollectionEquality().hash(testEnv) ^
-      const DeepCollectionEquality().hash(billingAddressConfig) ^
-      const DeepCollectionEquality().hash(isEmailRequired) ^
-      const DeepCollectionEquality().hash(existingPaymentMethodRequired);
+  int get hashCode => Object.hash(
+      runtimeType,
+      merchantName,
+      countryCode,
+      testEnv,
+      billingAddressConfig,
+      isEmailRequired,
+      existingPaymentMethodRequired);
 
   @JsonKey(ignore: true)
   @override
@@ -559,29 +548,28 @@ abstract class _GooglePayInitParams implements GooglePayInitParams {
   @override
 
   /// Merchant name
-  String get merchantName => throw _privateConstructorUsedError;
+  String get merchantName;
   @override
 
   /// ISO country code of the merchant
-  String get countryCode => throw _privateConstructorUsedError;
+  String get countryCode;
   @override
 
   /// Flag to use test environment or live environment.
-  bool get testEnv => throw _privateConstructorUsedError;
+  bool get testEnv;
   @override
 
   /// Configuration regarding collection of billing address,
-  BillingAddressConfig? get billingAddressConfig =>
-      throw _privateConstructorUsedError;
+  BillingAddressConfig? get billingAddressConfig;
   @override
 
   /// Flag to indicate wheter Google Pay should collect email of the customer.
-  bool get isEmailRequired => throw _privateConstructorUsedError;
+  bool get isEmailRequired;
   @override
 
   /// When `true` Google Pay is considered ready if the customers's Google Pay
   /// wallet has existing payment methods.
-  bool get existingPaymentMethodRequired => throw _privateConstructorUsedError;
+  bool get existingPaymentMethodRequired;
   @override
   @JsonKey(ignore: true)
   _$GooglePayInitParamsCopyWith<_GooglePayInitParams> get copyWith =>
@@ -607,7 +595,7 @@ class _$BillingAddressConfigTearOff {
     );
   }
 
-  BillingAddressConfig fromJson(Map<String, Object> json) {
+  BillingAddressConfig fromJson(Map<String, Object?> json) {
     return BillingAddressConfig.fromJson(json);
   }
 }
@@ -757,23 +745,18 @@ class _$_BillingAddressConfig implements _BillingAddressConfig {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _BillingAddressConfig &&
+        (other.runtimeType == runtimeType &&
+            other is _BillingAddressConfig &&
             (identical(other.isRequired, isRequired) ||
-                const DeepCollectionEquality()
-                    .equals(other.isRequired, isRequired)) &&
-            (identical(other.format, format) ||
-                const DeepCollectionEquality().equals(other.format, format)) &&
+                other.isRequired == isRequired) &&
+            (identical(other.format, format) || other.format == format) &&
             (identical(other.isPhoneNumberRequired, isPhoneNumberRequired) ||
-                const DeepCollectionEquality().equals(
-                    other.isPhoneNumberRequired, isPhoneNumberRequired)));
+                other.isPhoneNumberRequired == isPhoneNumberRequired));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(isRequired) ^
-      const DeepCollectionEquality().hash(format) ^
-      const DeepCollectionEquality().hash(isPhoneNumberRequired);
+      Object.hash(runtimeType, isRequired, format, isPhoneNumberRequired);
 
   @JsonKey(ignore: true)
   @override
@@ -800,16 +783,16 @@ abstract class _BillingAddressConfig implements BillingAddressConfig {
 
   /// If `true` Google pay requires a Billing address in order to process the
   /// payment.
-  bool? get isRequired => throw _privateConstructorUsedError;
+  bool? get isRequired;
   @override
 
   /// Desired format
-  BillingAddressFormat? get format => throw _privateConstructorUsedError;
+  BillingAddressFormat? get format;
   @override
 
   /// If `true` customer needs to provide a phonenummer in order to process
   /// the transaction.
-  bool? get isPhoneNumberRequired => throw _privateConstructorUsedError;
+  bool? get isPhoneNumberRequired;
   @override
   @JsonKey(ignore: true)
   _$BillingAddressConfigCopyWith<_BillingAddressConfig> get copyWith =>
@@ -833,7 +816,7 @@ class _$CreateGooglePayPaymentParamsTearOff {
     );
   }
 
-  CreateGooglePayPaymentParams fromJson(Map<String, Object> json) {
+  CreateGooglePayPaymentParams fromJson(Map<String, Object?> json) {
     return CreateGooglePayPaymentParams.fromJson(json);
   }
 }
@@ -970,19 +953,15 @@ class _$_CreateGooglePayPaymentParams implements _CreateGooglePayPaymentParams {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _CreateGooglePayPaymentParams &&
+        (other.runtimeType == runtimeType &&
+            other is _CreateGooglePayPaymentParams &&
             (identical(other.currencyCode, currencyCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.currencyCode, currencyCode)) &&
-            (identical(other.amount, amount) ||
-                const DeepCollectionEquality().equals(other.amount, amount)));
+                other.currencyCode == currencyCode) &&
+            (identical(other.amount, amount) || other.amount == amount));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(currencyCode) ^
-      const DeepCollectionEquality().hash(amount);
+  int get hashCode => Object.hash(runtimeType, currencyCode, amount);
 
   @JsonKey(ignore: true)
   @override
@@ -1010,14 +989,14 @@ abstract class _CreateGooglePayPaymentParams
   /// ISO 4217 alphabetic currency code.
   ///
   /// For example: `USD`
-  String get currencyCode => throw _privateConstructorUsedError;
+  String get currencyCode;
   @override
 
   /// Amount intended to be collected.
   ///
   /// The amount has to be a positive zero-digit integer representing the charge
   /// in the smallest currency unit (e.g. cents for US dollar).
-  int get amount => throw _privateConstructorUsedError;
+  int get amount;
   @override
   @JsonKey(ignore: true)
   _$CreateGooglePayPaymentParamsCopyWith<_CreateGooglePayPaymentParams>

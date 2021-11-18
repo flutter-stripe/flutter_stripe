@@ -34,7 +34,7 @@ Map<String, dynamic> _$$_StripeExceptionToJson(_$_StripeException instance) =>
 _$_LocalizedErrorMessage _$$_LocalizedErrorMessageFromJson(
         Map<String, dynamic> json) =>
     _$_LocalizedErrorMessage(
-      code: _$enumDecode(_$FailureCodeEnumMap, json['code']),
+      code: $enumDecode(_$FailureCodeEnumMap, json['code']),
       localizedMessage: json['localizedMessage'] as String?,
       message: json['message'] as String?,
       stripeErrorCode: json['stripeErrorCode'] as String?,
@@ -52,32 +52,6 @@ Map<String, dynamic> _$$_LocalizedErrorMessageToJson(
       'declineCode': instance.declineCode,
       'type': instance.type,
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
 
 const _$FailureCodeEnumMap = {
   FailureCode.Failed: 'Failed',

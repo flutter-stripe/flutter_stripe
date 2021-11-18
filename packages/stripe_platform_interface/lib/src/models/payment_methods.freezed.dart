@@ -52,7 +52,7 @@ class _$PaymentMethodTearOff {
     );
   }
 
-  PaymentMethod fromJson(Map<String, Object> json) {
+  PaymentMethod fromJson(Map<String, Object?> json) {
     return PaymentMethod.fromJson(json);
   }
 }
@@ -508,57 +508,45 @@ class _$_PaymentMethod implements _PaymentMethod {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PaymentMethod &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
+        (other.runtimeType == runtimeType &&
+            other is _PaymentMethod &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.livemode, livemode) ||
-                const DeepCollectionEquality()
-                    .equals(other.livemode, livemode)) &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
+                other.livemode == livemode) &&
+            (identical(other.type, type) || other.type == type) &&
             (identical(other.billingDetails, billingDetails) ||
-                const DeepCollectionEquality()
-                    .equals(other.billingDetails, billingDetails)) &&
-            (identical(other.card, card) ||
-                const DeepCollectionEquality().equals(other.card, card)) &&
+                other.billingDetails == billingDetails) &&
+            (identical(other.card, card) || other.card == card) &&
             (identical(other.sepaDebit, sepaDebit) ||
-                const DeepCollectionEquality()
-                    .equals(other.sepaDebit, sepaDebit)) &&
+                other.sepaDebit == sepaDebit) &&
             (identical(other.bacsDebit, bacsDebit) ||
-                const DeepCollectionEquality()
-                    .equals(other.bacsDebit, bacsDebit)) &&
+                other.bacsDebit == bacsDebit) &&
             (identical(other.auBecsDebit, auBecsDebit) ||
-                const DeepCollectionEquality()
-                    .equals(other.auBecsDebit, auBecsDebit)) &&
-            (identical(other.sofort, sofort) ||
-                const DeepCollectionEquality().equals(other.sofort, sofort)) &&
-            (identical(other.ideal, ideal) ||
-                const DeepCollectionEquality().equals(other.ideal, ideal)) &&
-            (identical(other.fpx, fpx) ||
-                const DeepCollectionEquality().equals(other.fpx, fpx)) &&
-            (identical(other.upi, upi) ||
-                const DeepCollectionEquality().equals(other.upi, upi)) &&
+                other.auBecsDebit == auBecsDebit) &&
+            (identical(other.sofort, sofort) || other.sofort == sofort) &&
+            (identical(other.ideal, ideal) || other.ideal == ideal) &&
+            (identical(other.fpx, fpx) || other.fpx == fpx) &&
+            (identical(other.upi, upi) || other.upi == upi) &&
             (identical(other.customerId, customerId) ||
-                const DeepCollectionEquality()
-                    .equals(other.customerId, customerId)));
+                other.customerId == customerId));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(livemode) ^
-      const DeepCollectionEquality().hash(type) ^
-      const DeepCollectionEquality().hash(billingDetails) ^
-      const DeepCollectionEquality().hash(card) ^
-      const DeepCollectionEquality().hash(sepaDebit) ^
-      const DeepCollectionEquality().hash(bacsDebit) ^
-      const DeepCollectionEquality().hash(auBecsDebit) ^
-      const DeepCollectionEquality().hash(sofort) ^
-      const DeepCollectionEquality().hash(ideal) ^
-      const DeepCollectionEquality().hash(fpx) ^
-      const DeepCollectionEquality().hash(upi) ^
-      const DeepCollectionEquality().hash(customerId);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      livemode,
+      type,
+      billingDetails,
+      card,
+      sepaDebit,
+      bacsDebit,
+      auBecsDebit,
+      sofort,
+      ideal,
+      fpx,
+      upi,
+      customerId);
 
   @JsonKey(ignore: true)
   @override
@@ -593,63 +581,63 @@ abstract class _PaymentMethod implements PaymentMethod {
   @override
 
   /// Unique identifier.
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
 
   /// Whether or not the object exists in livemode.
-  bool get livemode => throw _privateConstructorUsedError;
+  bool get livemode;
   @override
 
   /// The type of the paymentmethod.
-  String get type => throw _privateConstructorUsedError;
+  String get type;
   @override
 
   /// Billing information related to the payment method.
-  BillingDetails get billingDetails => throw _privateConstructorUsedError;
+  BillingDetails get billingDetails;
   @override
 
   /// Containing additional data in case paymentmethod type is card.
   @JsonKey(name: 'Card')
-  Card get card => throw _privateConstructorUsedError;
+  Card get card;
   @override
 
   /// Containing additional data in case paymentmethod type is sepa.
   @JsonKey(name: 'SepaDebit')
-  SepaDebit get sepaDebit => throw _privateConstructorUsedError;
+  SepaDebit get sepaDebit;
   @override
 
   /// Containing additional data in case paymentmethod type is Bacs debit.
   @JsonKey(name: 'BacsDebit')
-  BacsDebit get bacsDebit => throw _privateConstructorUsedError;
+  BacsDebit get bacsDebit;
   @override
 
   /// Containing additional data in case paymentmethod type is Aubecs debit.
   @JsonKey(name: 'AuBecsDebit')
-  AuBecsDebit get auBecsDebit => throw _privateConstructorUsedError;
+  AuBecsDebit get auBecsDebit;
   @override
 
   /// Containing additional data in case paymentmethod type is sofort.
   @JsonKey(name: 'Sofort')
-  Sofort get sofort => throw _privateConstructorUsedError;
+  Sofort get sofort;
   @override
 
   /// Containing additional data in case paymentmethod type is Ideal.
   @JsonKey(name: 'Ideal')
-  Ideal get ideal => throw _privateConstructorUsedError;
+  Ideal get ideal;
   @override
 
   /// Containing additional data in case paymentmethod type is FPX.
   @JsonKey(name: 'Fpx')
-  Fpx get fpx => throw _privateConstructorUsedError;
+  Fpx get fpx;
   @override
 
   /// Containing additional data in case paymentmethod type is UPI.
   @JsonKey(name: 'Upi')
-  Upi get upi => throw _privateConstructorUsedError;
+  Upi get upi;
   @override
 
   /// Id related to the customer to which this paymentmethod has been saved.
-  String? get customerId => throw _privateConstructorUsedError;
+  String? get customerId;
   @override
   @JsonKey(ignore: true)
   _$PaymentMethodCopyWith<_PaymentMethod> get copyWith =>
@@ -674,7 +662,7 @@ class _$BillingDetailsTearOff {
     );
   }
 
-  BillingDetails fromJson(Map<String, Object> json) {
+  BillingDetails fromJson(Map<String, Object?> json) {
     return BillingDetails.fromJson(json);
   }
 }
@@ -846,25 +834,16 @@ class _$_BillingDetails implements _BillingDetails {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _BillingDetails &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.address, address) ||
-                const DeepCollectionEquality()
-                    .equals(other.address, address)) &&
-            (identical(other.phone, phone) ||
-                const DeepCollectionEquality().equals(other.phone, phone)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+        (other.runtimeType == runtimeType &&
+            other is _BillingDetails &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(address) ^
-      const DeepCollectionEquality().hash(phone) ^
-      const DeepCollectionEquality().hash(name);
+  int get hashCode => Object.hash(runtimeType, email, address, phone, name);
 
   @JsonKey(ignore: true)
   @override
@@ -890,19 +869,19 @@ abstract class _BillingDetails implements BillingDetails {
   @override
 
   /// Email address.
-  String? get email => throw _privateConstructorUsedError;
+  String? get email;
   @override
 
   /// Billing address.
-  Address? get address => throw _privateConstructorUsedError;
+  Address? get address;
   @override
 
   /// Billing phone number.
-  String? get phone => throw _privateConstructorUsedError;
+  String? get phone;
   @override
 
   /// Full name.
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
   @JsonKey(ignore: true)
   _$BillingDetailsCopyWith<_BillingDetails> get copyWith =>
@@ -925,7 +904,7 @@ class _$AuBecsDebitTearOff {
     );
   }
 
-  AuBecsDebit fromJson(Map<String, Object> json) {
+  AuBecsDebit fromJson(Map<String, Object?> json) {
     return AuBecsDebit.fromJson(json);
   }
 }
@@ -1062,23 +1041,17 @@ class _$_AuBecsDebit implements _AuBecsDebit {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AuBecsDebit &&
+        (other.runtimeType == runtimeType &&
+            other is _AuBecsDebit &&
             (identical(other.fingerprint, fingerprint) ||
-                const DeepCollectionEquality()
-                    .equals(other.fingerprint, fingerprint)) &&
-            (identical(other.last4, last4) ||
-                const DeepCollectionEquality().equals(other.last4, last4)) &&
+                other.fingerprint == fingerprint) &&
+            (identical(other.last4, last4) || other.last4 == last4) &&
             (identical(other.bsbNumber, bsbNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.bsbNumber, bsbNumber)));
+                other.bsbNumber == bsbNumber));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(fingerprint) ^
-      const DeepCollectionEquality().hash(last4) ^
-      const DeepCollectionEquality().hash(bsbNumber);
+  int get hashCode => Object.hash(runtimeType, fingerprint, last4, bsbNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -1101,15 +1074,15 @@ abstract class _AuBecsDebit implements AuBecsDebit {
   @override
 
   /// Unique identifier for the bankaccount.
-  String? get fingerprint => throw _privateConstructorUsedError;
+  String? get fingerprint;
   @override
 
   /// Last 4 digits of the bankaccount number.
-  String? get last4 => throw _privateConstructorUsedError;
+  String? get last4;
   @override
 
   /// Siz digit number identifying the bank or branch for this account.
-  String? get bsbNumber => throw _privateConstructorUsedError;
+  String? get bsbNumber;
   @override
   @JsonKey(ignore: true)
   _$AuBecsDebitCopyWith<_AuBecsDebit> get copyWith =>
@@ -1132,7 +1105,7 @@ class _$BacsDebitTearOff {
     );
   }
 
-  BacsDebit fromJson(Map<String, Object> json) {
+  BacsDebit fromJson(Map<String, Object?> json) {
     return BacsDebit.fromJson(json);
   }
 }
@@ -1266,23 +1239,17 @@ class _$_BacsDebit implements _BacsDebit {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _BacsDebit &&
+        (other.runtimeType == runtimeType &&
+            other is _BacsDebit &&
             (identical(other.sortCode, sortCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.sortCode, sortCode)) &&
+                other.sortCode == sortCode) &&
             (identical(other.fingerprint, fingerprint) ||
-                const DeepCollectionEquality()
-                    .equals(other.fingerprint, fingerprint)) &&
-            (identical(other.last4, last4) ||
-                const DeepCollectionEquality().equals(other.last4, last4)));
+                other.fingerprint == fingerprint) &&
+            (identical(other.last4, last4) || other.last4 == last4));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(sortCode) ^
-      const DeepCollectionEquality().hash(fingerprint) ^
-      const DeepCollectionEquality().hash(last4);
+  int get hashCode => Object.hash(runtimeType, sortCode, fingerprint, last4);
 
   @JsonKey(ignore: true)
   @override
@@ -1305,15 +1272,15 @@ abstract class _BacsDebit implements BacsDebit {
   @override
 
   /// Sort code of the bankaccount.
-  String? get sortCode => throw _privateConstructorUsedError;
+  String? get sortCode;
   @override
 
   /// Unique identifier for the bankaccount.
-  String? get fingerprint => throw _privateConstructorUsedError;
+  String? get fingerprint;
   @override
 
   /// Last 4 digits of the bank account.
-  String? get last4 => throw _privateConstructorUsedError;
+  String? get last4;
   @override
   @JsonKey(ignore: true)
   _$BacsDebitCopyWith<_BacsDebit> get copyWith =>
@@ -1345,7 +1312,7 @@ class _$CardTearOff {
     );
   }
 
-  Card fromJson(Map<String, Object> json) {
+  Card fromJson(Map<String, Object?> json) {
     return Card.fromJson(json);
   }
 }
@@ -1545,34 +1512,20 @@ class _$_Card implements _Card {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Card &&
-            (identical(other.brand, brand) ||
-                const DeepCollectionEquality().equals(other.brand, brand)) &&
-            (identical(other.country, country) ||
-                const DeepCollectionEquality()
-                    .equals(other.country, country)) &&
-            (identical(other.expYear, expYear) ||
-                const DeepCollectionEquality()
-                    .equals(other.expYear, expYear)) &&
+        (other.runtimeType == runtimeType &&
+            other is _Card &&
+            (identical(other.brand, brand) || other.brand == brand) &&
+            (identical(other.country, country) || other.country == country) &&
+            (identical(other.expYear, expYear) || other.expYear == expYear) &&
             (identical(other.expMonth, expMonth) ||
-                const DeepCollectionEquality()
-                    .equals(other.expMonth, expMonth)) &&
-            (identical(other.funding, funding) ||
-                const DeepCollectionEquality()
-                    .equals(other.funding, funding)) &&
-            (identical(other.last4, last4) ||
-                const DeepCollectionEquality().equals(other.last4, last4)));
+                other.expMonth == expMonth) &&
+            (identical(other.funding, funding) || other.funding == funding) &&
+            (identical(other.last4, last4) || other.last4 == last4));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(brand) ^
-      const DeepCollectionEquality().hash(country) ^
-      const DeepCollectionEquality().hash(expYear) ^
-      const DeepCollectionEquality().hash(expMonth) ^
-      const DeepCollectionEquality().hash(funding) ^
-      const DeepCollectionEquality().hash(last4);
+  int get hashCode => Object.hash(
+      runtimeType, brand, country, expYear, expMonth, funding, last4);
 
   @JsonKey(ignore: true)
   @override
@@ -1599,27 +1552,27 @@ abstract class _Card implements Card {
   @override
 
   /// The brand associated to the card e.g. (visa, amex).
-  String? get brand => throw _privateConstructorUsedError;
+  String? get brand;
   @override
 
   /// Two letter iso code.
-  String? get country => throw _privateConstructorUsedError;
+  String? get country;
   @override
 
   /// four digit number representing the year of expiry of the card.
-  int? get expYear => throw _privateConstructorUsedError;
+  int? get expYear;
   @override
 
   /// two digit number representing the month of expire of the card.
-  int? get expMonth => throw _privateConstructorUsedError;
+  int? get expMonth;
   @override
 
   /// card funding type e.g. (credit, debit).
-  String? get funding => throw _privateConstructorUsedError;
+  String? get funding;
   @override
 
   /// last four digits of the card.
-  String? get last4 => throw _privateConstructorUsedError;
+  String? get last4;
   @override
   @JsonKey(ignore: true)
   _$CardCopyWith<_Card> get copyWith => throw _privateConstructorUsedError;
@@ -1640,7 +1593,7 @@ class _$FpxTearOff {
     );
   }
 
-  Fpx fromJson(Map<String, Object> json) {
+  Fpx fromJson(Map<String, Object?> json) {
     return Fpx.fromJson(json);
   }
 }
@@ -1754,19 +1707,15 @@ class _$_Fpx implements _Fpx {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Fpx &&
-            (identical(other.bank, bank) ||
-                const DeepCollectionEquality().equals(other.bank, bank)) &&
+        (other.runtimeType == runtimeType &&
+            other is _Fpx &&
+            (identical(other.bank, bank) || other.bank == bank) &&
             (identical(other.accountHolderType, accountHolderType) ||
-                const DeepCollectionEquality()
-                    .equals(other.accountHolderType, accountHolderType)));
+                other.accountHolderType == accountHolderType));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(bank) ^
-      const DeepCollectionEquality().hash(accountHolderType);
+  int get hashCode => Object.hash(runtimeType, bank, accountHolderType);
 
   @JsonKey(ignore: true)
   @override
@@ -1787,11 +1736,11 @@ abstract class _Fpx implements Fpx {
   @override
 
   /// the customer bank
-  String? get bank => throw _privateConstructorUsedError;
+  String? get bank;
   @override
 
   /// accountholder type
-  String? get accountHolderType => throw _privateConstructorUsedError;
+  String? get accountHolderType;
   @override
   @JsonKey(ignore: true)
   _$FpxCopyWith<_Fpx> get copyWith => throw _privateConstructorUsedError;
@@ -1812,7 +1761,7 @@ class _$IdealTearOff {
     );
   }
 
-  Ideal fromJson(Map<String, Object> json) {
+  Ideal fromJson(Map<String, Object?> json) {
     return Ideal.fromJson(json);
   }
 }
@@ -1927,19 +1876,15 @@ class _$_Ideal implements _Ideal {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Ideal &&
+        (other.runtimeType == runtimeType &&
+            other is _Ideal &&
             (identical(other.bankIdentifierCode, bankIdentifierCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.bankIdentifierCode, bankIdentifierCode)) &&
-            (identical(other.bank, bank) ||
-                const DeepCollectionEquality().equals(other.bank, bank)));
+                other.bankIdentifierCode == bankIdentifierCode) &&
+            (identical(other.bank, bank) || other.bank == bank));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(bankIdentifierCode) ^
-      const DeepCollectionEquality().hash(bank);
+  int get hashCode => Object.hash(runtimeType, bankIdentifierCode, bank);
 
   @JsonKey(ignore: true)
   @override
@@ -1960,11 +1905,11 @@ abstract class _Ideal implements Ideal {
   @override
 
   /// The BIC code of the bank
-  String? get bankIdentifierCode => throw _privateConstructorUsedError;
+  String? get bankIdentifierCode;
   @override
 
   /// The bank of the customer
-  String? get bank => throw _privateConstructorUsedError;
+  String? get bank;
   @override
   @JsonKey(ignore: true)
   _$IdealCopyWith<_Ideal> get copyWith => throw _privateConstructorUsedError;
@@ -1988,7 +1933,7 @@ class _$SepaDebitTearOff {
     );
   }
 
-  SepaDebit fromJson(Map<String, Object> json) {
+  SepaDebit fromJson(Map<String, Object?> json) {
     return SepaDebit.fromJson(json);
   }
 }
@@ -2142,27 +2087,19 @@ class _$_SepaDebit implements _SepaDebit {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _SepaDebit &&
-            (identical(other.country, country) ||
-                const DeepCollectionEquality()
-                    .equals(other.country, country)) &&
+        (other.runtimeType == runtimeType &&
+            other is _SepaDebit &&
+            (identical(other.country, country) || other.country == country) &&
             (identical(other.bankCode, bankCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.bankCode, bankCode)) &&
+                other.bankCode == bankCode) &&
             (identical(other.fingerprint, fingerprint) ||
-                const DeepCollectionEquality()
-                    .equals(other.fingerprint, fingerprint)) &&
-            (identical(other.last4, last4) ||
-                const DeepCollectionEquality().equals(other.last4, last4)));
+                other.fingerprint == fingerprint) &&
+            (identical(other.last4, last4) || other.last4 == last4));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(country) ^
-      const DeepCollectionEquality().hash(bankCode) ^
-      const DeepCollectionEquality().hash(fingerprint) ^
-      const DeepCollectionEquality().hash(last4);
+      Object.hash(runtimeType, country, bankCode, fingerprint, last4);
 
   @JsonKey(ignore: true)
   @override
@@ -2188,19 +2125,19 @@ abstract class _SepaDebit implements SepaDebit {
   @override
 
   /// Two letter ISO code representing the country of the bank account.
-  String? get country => throw _privateConstructorUsedError;
+  String? get country;
   @override
 
   /// Bank code associated with the bankaccount.
-  String? get bankCode => throw _privateConstructorUsedError;
+  String? get bankCode;
   @override
 
   /// Unique ID for the bank account.
-  String? get fingerprint => throw _privateConstructorUsedError;
+  String? get fingerprint;
   @override
 
   /// Last four characters of IBAN.
-  String? get last4 => throw _privateConstructorUsedError;
+  String? get last4;
   @override
   @JsonKey(ignore: true)
   _$SepaDebitCopyWith<_SepaDebit> get copyWith =>
@@ -2221,7 +2158,7 @@ class _$SofortTearOff {
     );
   }
 
-  Sofort fromJson(Map<String, Object> json) {
+  Sofort fromJson(Map<String, Object?> json) {
     return Sofort.fromJson(json);
   }
 }
@@ -2319,14 +2256,13 @@ class _$_Sofort implements _Sofort {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Sofort &&
-            (identical(other.country, country) ||
-                const DeepCollectionEquality().equals(other.country, country)));
+        (other.runtimeType == runtimeType &&
+            other is _Sofort &&
+            (identical(other.country, country) || other.country == country));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(country);
+  int get hashCode => Object.hash(runtimeType, country);
 
   @JsonKey(ignore: true)
   @override
@@ -2347,7 +2283,7 @@ abstract class _Sofort implements Sofort {
   @override
 
   /// Two letter ISO code representing the country of the bank account.
-  String? get country => throw _privateConstructorUsedError;
+  String? get country;
   @override
   @JsonKey(ignore: true)
   _$SofortCopyWith<_Sofort> get copyWith => throw _privateConstructorUsedError;
@@ -2367,7 +2303,7 @@ class _$UpiTearOff {
     );
   }
 
-  Upi fromJson(Map<String, Object> json) {
+  Upi fromJson(Map<String, Object?> json) {
     return Upi.fromJson(json);
   }
 }
@@ -2464,14 +2400,13 @@ class _$_Upi implements _Upi {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Upi &&
-            (identical(other.vpa, vpa) ||
-                const DeepCollectionEquality().equals(other.vpa, vpa)));
+        (other.runtimeType == runtimeType &&
+            other is _Upi &&
+            (identical(other.vpa, vpa) || other.vpa == vpa));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(vpa);
+  int get hashCode => Object.hash(runtimeType, vpa);
 
   @JsonKey(ignore: true)
   @override
@@ -2492,14 +2427,14 @@ abstract class _Upi implements Upi {
   @override
 
   /// The customer's vpa.
-  String? get vpa => throw _privateConstructorUsedError;
+  String? get vpa;
   @override
   @JsonKey(ignore: true)
   _$UpiCopyWith<_Upi> get copyWith => throw _privateConstructorUsedError;
 }
 
 PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
-  switch (json['type'] as String?) {
+  switch (json['type']) {
     case 'Card':
       return _PaymentMethodParamsCard.fromJson(json);
     case 'Card':
@@ -2651,7 +2586,7 @@ class _$PaymentMethodParamsTearOff {
     );
   }
 
-  PaymentMethodParams fromJson(Map<String, Object> json) {
+  PaymentMethodParams fromJson(Map<String, Object?> json) {
     return PaymentMethodParams.fromJson(json);
   }
 }
@@ -2901,7 +2836,8 @@ class __$PaymentMethodParamsCardCopyWithImpl<$Res>
 @FreezedUnionValue('Card')
 class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
   const _$_PaymentMethodParamsCard(
-      {this.setupFutureUsage, this.billingDetails});
+      {this.setupFutureUsage, this.billingDetails, String? $type})
+      : $type = $type ?? 'Card';
 
   factory _$_PaymentMethodParamsCard.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodParamsCardFromJson(json);
@@ -2915,6 +2851,9 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
   /// Billing information.
   final BillingDetails? billingDetails;
 
+  @JsonKey(name: 'type')
+  final String $type;
+
   @override
   String toString() {
     return 'PaymentMethodParams.card(setupFutureUsage: $setupFutureUsage, billingDetails: $billingDetails)';
@@ -2923,20 +2862,17 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PaymentMethodParamsCard &&
+        (other.runtimeType == runtimeType &&
+            other is _PaymentMethodParamsCard &&
             (identical(other.setupFutureUsage, setupFutureUsage) ||
-                const DeepCollectionEquality()
-                    .equals(other.setupFutureUsage, setupFutureUsage)) &&
+                other.setupFutureUsage == setupFutureUsage) &&
             (identical(other.billingDetails, billingDetails) ||
-                const DeepCollectionEquality()
-                    .equals(other.billingDetails, billingDetails)));
+                other.billingDetails == billingDetails));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(setupFutureUsage) ^
-      const DeepCollectionEquality().hash(billingDetails);
+      Object.hash(runtimeType, setupFutureUsage, billingDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -3131,7 +3067,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentMethodParamsCardToJson(this)..['type'] = 'Card';
+    return _$$_PaymentMethodParamsCardToJson(this);
   }
 }
 
@@ -3144,11 +3080,10 @@ abstract class _PaymentMethodParamsCard implements PaymentMethodParams {
       _$_PaymentMethodParamsCard.fromJson;
 
   /// Indicates whether or not you want to reuse this method for future payments.
-  PaymentIntentsFutureUsage? get setupFutureUsage =>
-      throw _privateConstructorUsedError;
+  PaymentIntentsFutureUsage? get setupFutureUsage;
 
   /// Billing information.
-  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
+  BillingDetails? get billingDetails;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsCardCopyWith<_PaymentMethodParamsCard> get copyWith =>
       throw _privateConstructorUsedError;
@@ -3201,7 +3136,8 @@ class __$PaymentMethodParamsCardWithTokenCopyWithImpl<$Res>
 class _$_PaymentMethodParamsCardWithToken
     implements _PaymentMethodParamsCardWithToken {
   const _$_PaymentMethodParamsCardWithToken(
-      {required this.token, this.setupFutureUsage});
+      {required this.token, this.setupFutureUsage, String? $type})
+      : $type = $type ?? 'Card';
 
   factory _$_PaymentMethodParamsCardWithToken.fromJson(
           Map<String, dynamic> json) =>
@@ -3216,6 +3152,9 @@ class _$_PaymentMethodParamsCardWithToken
   /// Indicates whether or not you want to reuse this method for future payments.
   final PaymentIntentsFutureUsage? setupFutureUsage;
 
+  @JsonKey(name: 'type')
+  final String $type;
+
   @override
   String toString() {
     return 'PaymentMethodParams.cardFromToken(token: $token, setupFutureUsage: $setupFutureUsage)';
@@ -3224,19 +3163,15 @@ class _$_PaymentMethodParamsCardWithToken
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PaymentMethodParamsCardWithToken &&
-            (identical(other.token, token) ||
-                const DeepCollectionEquality().equals(other.token, token)) &&
+        (other.runtimeType == runtimeType &&
+            other is _PaymentMethodParamsCardWithToken &&
+            (identical(other.token, token) || other.token == token) &&
             (identical(other.setupFutureUsage, setupFutureUsage) ||
-                const DeepCollectionEquality()
-                    .equals(other.setupFutureUsage, setupFutureUsage)));
+                other.setupFutureUsage == setupFutureUsage));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(token) ^
-      const DeepCollectionEquality().hash(setupFutureUsage);
+  int get hashCode => Object.hash(runtimeType, token, setupFutureUsage);
 
   @JsonKey(ignore: true)
   @override
@@ -3431,7 +3366,7 @@ class _$_PaymentMethodParamsCardWithToken
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentMethodParamsCardWithTokenToJson(this)..['type'] = 'Card';
+    return _$$_PaymentMethodParamsCardWithTokenToJson(this);
   }
 }
 
@@ -3446,11 +3381,10 @@ abstract class _PaymentMethodParamsCardWithToken
       Map<String, dynamic> json) = _$_PaymentMethodParamsCardWithToken.fromJson;
 
   /// Token.
-  String get token => throw _privateConstructorUsedError;
+  String get token;
 
   /// Indicates whether or not you want to reuse this method for future payments.
-  PaymentIntentsFutureUsage? get setupFutureUsage =>
-      throw _privateConstructorUsedError;
+  PaymentIntentsFutureUsage? get setupFutureUsage;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsCardWithTokenCopyWith<_PaymentMethodParamsCardWithToken>
       get copyWith => throw _privateConstructorUsedError;
@@ -3503,7 +3437,8 @@ class __$PaymentMethodParamsCardWithMethodIdCopyWithImpl<$Res>
 class _$_PaymentMethodParamsCardWithMethodId
     implements _PaymentMethodParamsCardWithMethodId {
   const _$_PaymentMethodParamsCardWithMethodId(
-      {required this.paymentMethodId, this.cvc});
+      {required this.paymentMethodId, this.cvc, String? $type})
+      : $type = $type ?? 'Card';
 
   factory _$_PaymentMethodParamsCardWithMethodId.fromJson(
           Map<String, dynamic> json) =>
@@ -3516,6 +3451,9 @@ class _$_PaymentMethodParamsCardWithMethodId
   /// cvc of the cart
   final String? cvc;
 
+  @JsonKey(name: 'type')
+  final String $type;
+
   @override
   String toString() {
     return 'PaymentMethodParams.cardFromMethodId(paymentMethodId: $paymentMethodId, cvc: $cvc)';
@@ -3524,19 +3462,15 @@ class _$_PaymentMethodParamsCardWithMethodId
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PaymentMethodParamsCardWithMethodId &&
+        (other.runtimeType == runtimeType &&
+            other is _PaymentMethodParamsCardWithMethodId &&
             (identical(other.paymentMethodId, paymentMethodId) ||
-                const DeepCollectionEquality()
-                    .equals(other.paymentMethodId, paymentMethodId)) &&
-            (identical(other.cvc, cvc) ||
-                const DeepCollectionEquality().equals(other.cvc, cvc)));
+                other.paymentMethodId == paymentMethodId) &&
+            (identical(other.cvc, cvc) || other.cvc == cvc));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(paymentMethodId) ^
-      const DeepCollectionEquality().hash(cvc);
+  int get hashCode => Object.hash(runtimeType, paymentMethodId, cvc);
 
   @JsonKey(ignore: true)
   @override
@@ -3732,8 +3666,7 @@ class _$_PaymentMethodParamsCardWithMethodId
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentMethodParamsCardWithMethodIdToJson(this)
-      ..['type'] = 'Card';
+    return _$$_PaymentMethodParamsCardWithMethodIdToJson(this);
   }
 }
 
@@ -3747,10 +3680,10 @@ abstract class _PaymentMethodParamsCardWithMethodId
           Map<String, dynamic> json) =
       _$_PaymentMethodParamsCardWithMethodId.fromJson;
 
-  String get paymentMethodId => throw _privateConstructorUsedError;
+  String get paymentMethodId;
 
   /// cvc of the cart
-  String? get cvc => throw _privateConstructorUsedError;
+  String? get cvc;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsCardWithMethodIdCopyWith<
           _PaymentMethodParamsCardWithMethodId>
@@ -3782,10 +3715,14 @@ class __$PaymentMethodParamsAlipayCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('Alipay')
 class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
-  const _$_PaymentMethodParamsAlipay();
+  const _$_PaymentMethodParamsAlipay({String? $type})
+      : $type = $type ?? 'Alipay';
 
   factory _$_PaymentMethodParamsAlipay.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodParamsAlipayFromJson(json);
+
+  @JsonKey(name: 'type')
+  final String $type;
 
   @override
   String toString() {
@@ -3794,7 +3731,9 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _PaymentMethodParamsAlipay);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _PaymentMethodParamsAlipay);
   }
 
   @override
@@ -3987,7 +3926,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentMethodParamsAlipayToJson(this)..['type'] = 'Alipay';
+    return _$$_PaymentMethodParamsAlipayToJson(this);
   }
 }
 
@@ -4054,7 +3993,9 @@ class __$PaymentMethodParamsIdealCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('Ideal')
 class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
-  const _$_PaymentMethodParamsIdeal({this.billingDetails, this.bankName});
+  const _$_PaymentMethodParamsIdeal(
+      {this.billingDetails, this.bankName, String? $type})
+      : $type = $type ?? 'Ideal';
 
   factory _$_PaymentMethodParamsIdeal.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodParamsIdealFromJson(json);
@@ -4068,6 +4009,9 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
   /// The name of bank.
   final String? bankName;
 
+  @JsonKey(name: 'type')
+  final String $type;
+
   @override
   String toString() {
     return 'PaymentMethodParams.ideal(billingDetails: $billingDetails, bankName: $bankName)';
@@ -4076,20 +4020,16 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PaymentMethodParamsIdeal &&
+        (other.runtimeType == runtimeType &&
+            other is _PaymentMethodParamsIdeal &&
             (identical(other.billingDetails, billingDetails) ||
-                const DeepCollectionEquality()
-                    .equals(other.billingDetails, billingDetails)) &&
+                other.billingDetails == billingDetails) &&
             (identical(other.bankName, bankName) ||
-                const DeepCollectionEquality()
-                    .equals(other.bankName, bankName)));
+                other.bankName == bankName));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(billingDetails) ^
-      const DeepCollectionEquality().hash(bankName);
+  int get hashCode => Object.hash(runtimeType, billingDetails, bankName);
 
   @JsonKey(ignore: true)
   @override
@@ -4284,7 +4224,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentMethodParamsIdealToJson(this)..['type'] = 'Ideal';
+    return _$$_PaymentMethodParamsIdealToJson(this);
   }
 }
 
@@ -4297,10 +4237,10 @@ abstract class _PaymentMethodParamsIdeal implements PaymentMethodParams {
       _$_PaymentMethodParamsIdeal.fromJson;
 
   /// Billing information.
-  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
+  BillingDetails? get billingDetails;
 
   /// The name of bank.
-  String? get bankName => throw _privateConstructorUsedError;
+  String? get bankName;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsIdealCopyWith<_PaymentMethodParamsIdeal> get copyWith =>
       throw _privateConstructorUsedError;
@@ -4360,7 +4300,8 @@ class __$PaymentMethodParamsBankContactCopyWithImpl<$Res>
 @FreezedUnionValue('Bancontact')
 class _$_PaymentMethodParamsBankContact
     implements _PaymentMethodParamsBankContact {
-  const _$_PaymentMethodParamsBankContact({this.billingDetails});
+  const _$_PaymentMethodParamsBankContact({this.billingDetails, String? $type})
+      : $type = $type ?? 'Bancontact';
 
   factory _$_PaymentMethodParamsBankContact.fromJson(
           Map<String, dynamic> json) =>
@@ -4371,6 +4312,9 @@ class _$_PaymentMethodParamsBankContact
   /// Billing information.
   final BillingDetails? billingDetails;
 
+  @JsonKey(name: 'type')
+  final String $type;
+
   @override
   String toString() {
     return 'PaymentMethodParams.bancontact(billingDetails: $billingDetails)';
@@ -4379,16 +4323,14 @@ class _$_PaymentMethodParamsBankContact
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PaymentMethodParamsBankContact &&
+        (other.runtimeType == runtimeType &&
+            other is _PaymentMethodParamsBankContact &&
             (identical(other.billingDetails, billingDetails) ||
-                const DeepCollectionEquality()
-                    .equals(other.billingDetails, billingDetails)));
+                other.billingDetails == billingDetails));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(billingDetails);
+  int get hashCode => Object.hash(runtimeType, billingDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -4583,8 +4525,7 @@ class _$_PaymentMethodParamsBankContact
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentMethodParamsBankContactToJson(this)
-      ..['type'] = 'Bancontact';
+    return _$$_PaymentMethodParamsBankContactToJson(this);
   }
 }
 
@@ -4596,7 +4537,7 @@ abstract class _PaymentMethodParamsBankContact implements PaymentMethodParams {
       _$_PaymentMethodParamsBankContact.fromJson;
 
   /// Billing information.
-  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
+  BillingDetails? get billingDetails;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsBankContactCopyWith<_PaymentMethodParamsBankContact>
       get copyWith => throw _privateConstructorUsedError;
@@ -4654,7 +4595,8 @@ class __$PaymentMethodParamsGiroPayCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('Giropay')
 class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
-  const _$_PaymentMethodParamsGiroPay({this.billingDetails});
+  const _$_PaymentMethodParamsGiroPay({this.billingDetails, String? $type})
+      : $type = $type ?? 'Giropay';
 
   factory _$_PaymentMethodParamsGiroPay.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodParamsGiroPayFromJson(json);
@@ -4664,6 +4606,9 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
   /// Billing information.
   final BillingDetails? billingDetails;
 
+  @JsonKey(name: 'type')
+  final String $type;
+
   @override
   String toString() {
     return 'PaymentMethodParams.giroPay(billingDetails: $billingDetails)';
@@ -4672,16 +4617,14 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PaymentMethodParamsGiroPay &&
+        (other.runtimeType == runtimeType &&
+            other is _PaymentMethodParamsGiroPay &&
             (identical(other.billingDetails, billingDetails) ||
-                const DeepCollectionEquality()
-                    .equals(other.billingDetails, billingDetails)));
+                other.billingDetails == billingDetails));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(billingDetails);
+  int get hashCode => Object.hash(runtimeType, billingDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -4876,7 +4819,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentMethodParamsGiroPayToJson(this)..['type'] = 'Giropay';
+    return _$$_PaymentMethodParamsGiroPayToJson(this);
   }
 }
 
@@ -4888,7 +4831,7 @@ abstract class _PaymentMethodParamsGiroPay implements PaymentMethodParams {
       _$_PaymentMethodParamsGiroPay.fromJson;
 
   /// Billing information.
-  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
+  BillingDetails? get billingDetails;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsGiroPayCopyWith<_PaymentMethodParamsGiroPay>
       get copyWith => throw _privateConstructorUsedError;
@@ -4944,7 +4887,8 @@ class __$PaymentMethodParamsEpsCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('Eps')
 class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
-  const _$_PaymentMethodParamsEps({this.billingDetails});
+  const _$_PaymentMethodParamsEps({this.billingDetails, String? $type})
+      : $type = $type ?? 'Eps';
 
   factory _$_PaymentMethodParamsEps.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodParamsEpsFromJson(json);
@@ -4954,6 +4898,9 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
   /// Billing information.
   final BillingDetails? billingDetails;
 
+  @JsonKey(name: 'type')
+  final String $type;
+
   @override
   String toString() {
     return 'PaymentMethodParams.eps(billingDetails: $billingDetails)';
@@ -4962,16 +4909,14 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PaymentMethodParamsEps &&
+        (other.runtimeType == runtimeType &&
+            other is _PaymentMethodParamsEps &&
             (identical(other.billingDetails, billingDetails) ||
-                const DeepCollectionEquality()
-                    .equals(other.billingDetails, billingDetails)));
+                other.billingDetails == billingDetails));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(billingDetails);
+  int get hashCode => Object.hash(runtimeType, billingDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -5166,7 +5111,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentMethodParamsEpsToJson(this)..['type'] = 'Eps';
+    return _$$_PaymentMethodParamsEpsToJson(this);
   }
 }
 
@@ -5178,7 +5123,7 @@ abstract class _PaymentMethodParamsEps implements PaymentMethodParams {
       _$_PaymentMethodParamsEps.fromJson;
 
   /// Billing information.
-  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
+  BillingDetails? get billingDetails;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsEpsCopyWith<_PaymentMethodParamsEps> get copyWith =>
       throw _privateConstructorUsedError;
@@ -5234,7 +5179,8 @@ class __$PaymentMethodParamsPayCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('GrabPay')
 class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
-  const _$_PaymentMethodParamsPay({this.billingDetails});
+  const _$_PaymentMethodParamsPay({this.billingDetails, String? $type})
+      : $type = $type ?? 'GrabPay';
 
   factory _$_PaymentMethodParamsPay.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodParamsPayFromJson(json);
@@ -5244,6 +5190,9 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
   /// Billing information.
   final BillingDetails? billingDetails;
 
+  @JsonKey(name: 'type')
+  final String $type;
+
   @override
   String toString() {
     return 'PaymentMethodParams.grabPay(billingDetails: $billingDetails)';
@@ -5252,16 +5201,14 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PaymentMethodParamsPay &&
+        (other.runtimeType == runtimeType &&
+            other is _PaymentMethodParamsPay &&
             (identical(other.billingDetails, billingDetails) ||
-                const DeepCollectionEquality()
-                    .equals(other.billingDetails, billingDetails)));
+                other.billingDetails == billingDetails));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(billingDetails);
+  int get hashCode => Object.hash(runtimeType, billingDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -5456,7 +5403,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentMethodParamsPayToJson(this)..['type'] = 'GrabPay';
+    return _$$_PaymentMethodParamsPayToJson(this);
   }
 }
 
@@ -5468,7 +5415,7 @@ abstract class _PaymentMethodParamsPay implements PaymentMethodParams {
       _$_PaymentMethodParamsPay.fromJson;
 
   /// Billing information.
-  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
+  BillingDetails? get billingDetails;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsPayCopyWith<_PaymentMethodParamsPay> get copyWith =>
       throw _privateConstructorUsedError;
@@ -5524,7 +5471,8 @@ class __$PaymentMethodParamsP24CopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('P24')
 class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
-  const _$_PaymentMethodParamsP24({this.billingDetails});
+  const _$_PaymentMethodParamsP24({this.billingDetails, String? $type})
+      : $type = $type ?? 'P24';
 
   factory _$_PaymentMethodParamsP24.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodParamsP24FromJson(json);
@@ -5534,6 +5482,9 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
   /// Billing information.
   final BillingDetails? billingDetails;
 
+  @JsonKey(name: 'type')
+  final String $type;
+
   @override
   String toString() {
     return 'PaymentMethodParams.p24(billingDetails: $billingDetails)';
@@ -5542,16 +5493,14 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PaymentMethodParamsP24 &&
+        (other.runtimeType == runtimeType &&
+            other is _PaymentMethodParamsP24 &&
             (identical(other.billingDetails, billingDetails) ||
-                const DeepCollectionEquality()
-                    .equals(other.billingDetails, billingDetails)));
+                other.billingDetails == billingDetails));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(billingDetails);
+  int get hashCode => Object.hash(runtimeType, billingDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -5746,7 +5695,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentMethodParamsP24ToJson(this)..['type'] = 'P24';
+    return _$$_PaymentMethodParamsP24ToJson(this);
   }
 }
 
@@ -5758,7 +5707,7 @@ abstract class _PaymentMethodParamsP24 implements PaymentMethodParams {
       _$_PaymentMethodParamsP24.fromJson;
 
   /// Billing information.
-  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
+  BillingDetails? get billingDetails;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsP24CopyWith<_PaymentMethodParamsP24> get copyWith =>
       throw _privateConstructorUsedError;
@@ -5801,13 +5750,18 @@ class __$PaymentMethodParamsFpxCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('Fpx')
 class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
-  const _$_PaymentMethodParamsFpx({required this.testOfflineBank});
+  const _$_PaymentMethodParamsFpx(
+      {required this.testOfflineBank, String? $type})
+      : $type = $type ?? 'Fpx';
 
   factory _$_PaymentMethodParamsFpx.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodParamsFpxFromJson(json);
 
   @override
   final bool testOfflineBank;
+
+  @JsonKey(name: 'type')
+  final String $type;
 
   @override
   String toString() {
@@ -5817,16 +5771,14 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PaymentMethodParamsFpx &&
+        (other.runtimeType == runtimeType &&
+            other is _PaymentMethodParamsFpx &&
             (identical(other.testOfflineBank, testOfflineBank) ||
-                const DeepCollectionEquality()
-                    .equals(other.testOfflineBank, testOfflineBank)));
+                other.testOfflineBank == testOfflineBank));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(testOfflineBank);
+  int get hashCode => Object.hash(runtimeType, testOfflineBank);
 
   @JsonKey(ignore: true)
   @override
@@ -6021,7 +5973,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentMethodParamsFpxToJson(this)..['type'] = 'Fpx';
+    return _$$_PaymentMethodParamsFpxToJson(this);
   }
 }
 
@@ -6032,7 +5984,7 @@ abstract class _PaymentMethodParamsFpx implements PaymentMethodParams {
   factory _PaymentMethodParamsFpx.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsFpx.fromJson;
 
-  bool get testOfflineBank => throw _privateConstructorUsedError;
+  bool get testOfflineBank;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsFpxCopyWith<_PaymentMethodParamsFpx> get copyWith =>
       throw _privateConstructorUsedError;
@@ -6105,7 +6057,11 @@ class __$PaymentMethodParamsSepaDebitCopyWithImpl<$Res>
 @FreezedUnionValue('SepaDebit')
 class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
   const _$_PaymentMethodParamsSepaDebit(
-      {required this.iban, this.setupFutureUsage, this.billingDetails});
+      {required this.iban,
+      this.setupFutureUsage,
+      this.billingDetails,
+      String? $type})
+      : $type = $type ?? 'SepaDebit';
 
   factory _$_PaymentMethodParamsSepaDebit.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodParamsSepaDebitFromJson(json);
@@ -6119,6 +6075,9 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
   /// Billing information.
   final BillingDetails? billingDetails;
 
+  @JsonKey(name: 'type')
+  final String $type;
+
   @override
   String toString() {
     return 'PaymentMethodParams.sepaDebit(iban: $iban, setupFutureUsage: $setupFutureUsage, billingDetails: $billingDetails)';
@@ -6127,23 +6086,18 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PaymentMethodParamsSepaDebit &&
-            (identical(other.iban, iban) ||
-                const DeepCollectionEquality().equals(other.iban, iban)) &&
+        (other.runtimeType == runtimeType &&
+            other is _PaymentMethodParamsSepaDebit &&
+            (identical(other.iban, iban) || other.iban == iban) &&
             (identical(other.setupFutureUsage, setupFutureUsage) ||
-                const DeepCollectionEquality()
-                    .equals(other.setupFutureUsage, setupFutureUsage)) &&
+                other.setupFutureUsage == setupFutureUsage) &&
             (identical(other.billingDetails, billingDetails) ||
-                const DeepCollectionEquality()
-                    .equals(other.billingDetails, billingDetails)));
+                other.billingDetails == billingDetails));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(iban) ^
-      const DeepCollectionEquality().hash(setupFutureUsage) ^
-      const DeepCollectionEquality().hash(billingDetails);
+      Object.hash(runtimeType, iban, setupFutureUsage, billingDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -6338,7 +6292,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentMethodParamsSepaDebitToJson(this)..['type'] = 'SepaDebit';
+    return _$$_PaymentMethodParamsSepaDebitToJson(this);
   }
 }
 
@@ -6351,12 +6305,11 @@ abstract class _PaymentMethodParamsSepaDebit implements PaymentMethodParams {
   factory _PaymentMethodParamsSepaDebit.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsSepaDebit.fromJson;
 
-  String get iban => throw _privateConstructorUsedError;
-  PaymentIntentsFutureUsage? get setupFutureUsage =>
-      throw _privateConstructorUsedError;
+  String get iban;
+  PaymentIntentsFutureUsage? get setupFutureUsage;
 
   /// Billing information.
-  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
+  BillingDetails? get billingDetails;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsSepaDebitCopyWith<_PaymentMethodParamsSepaDebit>
       get copyWith => throw _privateConstructorUsedError;
@@ -6427,7 +6380,11 @@ class __$PaymentMethodParamsSofortCopyWithImpl<$Res>
 @FreezedUnionValue('Sofort')
 class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
   const _$_PaymentMethodParamsSofort(
-      {required this.country, this.setupFutureUsage, this.billingDetails});
+      {required this.country,
+      this.setupFutureUsage,
+      this.billingDetails,
+      String? $type})
+      : $type = $type ?? 'Sofort';
 
   factory _$_PaymentMethodParamsSofort.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodParamsSofortFromJson(json);
@@ -6441,6 +6398,9 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
   /// Billing information.
   final BillingDetails? billingDetails;
 
+  @JsonKey(name: 'type')
+  final String $type;
+
   @override
   String toString() {
     return 'PaymentMethodParams.sofort(country: $country, setupFutureUsage: $setupFutureUsage, billingDetails: $billingDetails)';
@@ -6449,24 +6409,18 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PaymentMethodParamsSofort &&
-            (identical(other.country, country) ||
-                const DeepCollectionEquality()
-                    .equals(other.country, country)) &&
+        (other.runtimeType == runtimeType &&
+            other is _PaymentMethodParamsSofort &&
+            (identical(other.country, country) || other.country == country) &&
             (identical(other.setupFutureUsage, setupFutureUsage) ||
-                const DeepCollectionEquality()
-                    .equals(other.setupFutureUsage, setupFutureUsage)) &&
+                other.setupFutureUsage == setupFutureUsage) &&
             (identical(other.billingDetails, billingDetails) ||
-                const DeepCollectionEquality()
-                    .equals(other.billingDetails, billingDetails)));
+                other.billingDetails == billingDetails));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(country) ^
-      const DeepCollectionEquality().hash(setupFutureUsage) ^
-      const DeepCollectionEquality().hash(billingDetails);
+      Object.hash(runtimeType, country, setupFutureUsage, billingDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -6662,7 +6616,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentMethodParamsSofortToJson(this)..['type'] = 'Sofort';
+    return _$$_PaymentMethodParamsSofortToJson(this);
   }
 }
 
@@ -6675,12 +6629,11 @@ abstract class _PaymentMethodParamsSofort implements PaymentMethodParams {
   factory _PaymentMethodParamsSofort.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsSofort.fromJson;
 
-  String get country => throw _privateConstructorUsedError;
-  PaymentIntentsFutureUsage? get setupFutureUsage =>
-      throw _privateConstructorUsedError;
+  String get country;
+  PaymentIntentsFutureUsage? get setupFutureUsage;
 
   /// Billing information.
-  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
+  BillingDetails? get billingDetails;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsSofortCopyWith<_PaymentMethodParamsSofort>
       get copyWith => throw _privateConstructorUsedError;
@@ -6754,7 +6707,8 @@ class __$PaymentMethodParamsAfterpayClearpayCopyWithImpl<$Res>
 class _$_PaymentMethodParamsAfterpayClearpay
     implements _PaymentMethodParamsAfterpayClearpay {
   const _$_PaymentMethodParamsAfterpayClearpay(
-      {required this.shippingDetails, this.billingDetails});
+      {required this.shippingDetails, this.billingDetails, String? $type})
+      : $type = $type ?? 'AfterpayClearpay';
 
   factory _$_PaymentMethodParamsAfterpayClearpay.fromJson(
           Map<String, dynamic> json) =>
@@ -6767,6 +6721,9 @@ class _$_PaymentMethodParamsAfterpayClearpay
   /// Billing information.
   final BillingDetails? billingDetails;
 
+  @JsonKey(name: 'type')
+  final String $type;
+
   @override
   String toString() {
     return 'PaymentMethodParams.afterpayClearpay(shippingDetails: $shippingDetails, billingDetails: $billingDetails)';
@@ -6775,20 +6732,16 @@ class _$_PaymentMethodParamsAfterpayClearpay
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PaymentMethodParamsAfterpayClearpay &&
+        (other.runtimeType == runtimeType &&
+            other is _PaymentMethodParamsAfterpayClearpay &&
             (identical(other.shippingDetails, shippingDetails) ||
-                const DeepCollectionEquality()
-                    .equals(other.shippingDetails, shippingDetails)) &&
+                other.shippingDetails == shippingDetails) &&
             (identical(other.billingDetails, billingDetails) ||
-                const DeepCollectionEquality()
-                    .equals(other.billingDetails, billingDetails)));
+                other.billingDetails == billingDetails));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(shippingDetails) ^
-      const DeepCollectionEquality().hash(billingDetails);
+  int get hashCode => Object.hash(runtimeType, shippingDetails, billingDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -6984,8 +6937,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentMethodParamsAfterpayClearpayToJson(this)
-      ..['type'] = 'AfterpayClearpay';
+    return _$$_PaymentMethodParamsAfterpayClearpayToJson(this);
   }
 }
 
@@ -6999,10 +6951,10 @@ abstract class _PaymentMethodParamsAfterpayClearpay
           Map<String, dynamic> json) =
       _$_PaymentMethodParamsAfterpayClearpay.fromJson;
 
-  ShippingDetails get shippingDetails => throw _privateConstructorUsedError;
+  ShippingDetails get shippingDetails;
 
   /// Billing information.
-  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
+  BillingDetails? get billingDetails;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsAfterpayClearpayCopyWith<
           _PaymentMethodParamsAfterpayClearpay>
@@ -7060,7 +7012,8 @@ class __$PaymentMethodParamsOxxoCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 @FreezedUnionValue('Oxxo')
 class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
-  const _$_PaymentMethodParamsOxxo({this.billingDetails});
+  const _$_PaymentMethodParamsOxxo({this.billingDetails, String? $type})
+      : $type = $type ?? 'Oxxo';
 
   factory _$_PaymentMethodParamsOxxo.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodParamsOxxoFromJson(json);
@@ -7070,6 +7023,9 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
   /// Billing information.
   final BillingDetails? billingDetails;
 
+  @JsonKey(name: 'type')
+  final String $type;
+
   @override
   String toString() {
     return 'PaymentMethodParams.oxxo(billingDetails: $billingDetails)';
@@ -7078,16 +7034,14 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PaymentMethodParamsOxxo &&
+        (other.runtimeType == runtimeType &&
+            other is _PaymentMethodParamsOxxo &&
             (identical(other.billingDetails, billingDetails) ||
-                const DeepCollectionEquality()
-                    .equals(other.billingDetails, billingDetails)));
+                other.billingDetails == billingDetails));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(billingDetails);
+  int get hashCode => Object.hash(runtimeType, billingDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -7282,7 +7236,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentMethodParamsOxxoToJson(this)..['type'] = 'Oxxo';
+    return _$$_PaymentMethodParamsOxxoToJson(this);
   }
 }
 
@@ -7294,7 +7248,7 @@ abstract class _PaymentMethodParamsOxxo implements PaymentMethodParams {
       _$_PaymentMethodParamsOxxo.fromJson;
 
   /// Billing information.
-  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
+  BillingDetails? get billingDetails;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsOxxoCopyWith<_PaymentMethodParamsOxxo> get copyWith =>
       throw _privateConstructorUsedError;
