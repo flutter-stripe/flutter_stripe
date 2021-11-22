@@ -37,6 +37,7 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
     private var _view: UIView
     var type: NSNumber?
     var style: NSNumber?
+    var cornerRadius: CGFloat = 4.0
     
     
     private var applePayButton: PKPaymentButton?
@@ -60,6 +61,7 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
         if  let arguments = args as? Dictionary<String, AnyObject> {
             type = arguments["type"] as? NSNumber
             style = arguments["style"] as? NSNumber
+            cornerRadius = arguments["cornerRadius"] as! CGFloat
         }
         // iOS views can be created here
         createApplePayView()
@@ -74,6 +76,7 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
             if  let arguments = call.arguments as? Dictionary<String, AnyObject> {
                 self.type = arguments["type"] as? NSNumber
                 self.style = arguments["style"] as? NSNumber
+                self.cornerRadius = arguments["cornerRadius"] as! CGFloat
             }
             
             self.createApplePayView()
@@ -107,6 +110,9 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
            applePayButton.leftAnchor.constraint(equalTo: _view.leftAnchor).isActive = true
            applePayButton.rightAnchor.constraint(equalTo: _view.rightAnchor).isActive = true
 
+           if #available(iOS 12.0, *) {
+               applePayButton.cornerRadius = cornerRadius
+           }
         }
     }
 
