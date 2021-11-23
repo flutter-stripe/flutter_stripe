@@ -12,13 +12,12 @@ _$_PaymentIntent _$$_PaymentIntentFromJson(Map<String, dynamic> json) =>
       amount: json['amount'] as num,
       created: json['created'] as String,
       currency: json['currency'] as String,
-      status: _$enumDecode(_$PaymentIntentsStatusEnumMap, json['status']),
+      status: $enumDecode(_$PaymentIntentsStatusEnumMap, json['status']),
       clientSecret: json['clientSecret'] as String,
       livemode: json['livemode'] as bool,
-      captureMethod:
-          _$enumDecode(_$CaptureMethodEnumMap, json['captureMethod']),
+      captureMethod: $enumDecode(_$CaptureMethodEnumMap, json['captureMethod']),
       confirmationMethod:
-          _$enumDecode(_$ConfirmationMethodEnumMap, json['confirmationMethod']),
+          $enumDecode(_$ConfirmationMethodEnumMap, json['confirmationMethod']),
       paymentMethodId: json['paymentMethodId'] as String?,
       description: json['description'] as String?,
       receiptEmail: json['receiptEmail'] as String?,
@@ -46,32 +45,6 @@ Map<String, dynamic> _$$_PaymentIntentToJson(_$_PaymentIntent instance) =>
       'canceledAt': instance.canceledAt,
       'shipping': instance.shipping?.toJson(),
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
 
 const _$PaymentIntentsStatusEnumMap = {
   PaymentIntentsStatus.Succeeded: 'Succeeded',

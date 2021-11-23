@@ -12,7 +12,7 @@ _$_ApplePayShippingMethod _$$_ApplePayShippingMethodFromJson(
       label: json['label'] as String,
       amount: json['amount'] as String,
       identifier: json['identifier'] as String,
-      type: _$enumDecodeNullable(
+      type: $enumDecodeNullable(
           _$ApplePayShippingMethodTypeEnumMap, json['type']),
       detail: json['detail'] as String?,
     );
@@ -26,43 +26,6 @@ Map<String, dynamic> _$$_ApplePayShippingMethodToJson(
       'type': _$ApplePayShippingMethodTypeEnumMap[instance.type],
       'detail': instance.detail,
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
-K? _$enumDecodeNullable<K, V>(
-  Map<K, V> enumValues,
-  dynamic source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    return null;
-  }
-  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
-}
 
 const _$ApplePayShippingMethodTypeEnumMap = {
   ApplePayShippingMethodType.ready: 'ready',
@@ -94,11 +57,11 @@ _$_ApplePayPresentParams _$$_ApplePayPresentParamsFromJson(
       currency: json['currency'] as String,
       requiredShippingAddressFields:
           (json['requiredShippingAddressFields'] as List<dynamic>?)
-              ?.map((e) => _$enumDecode(_$ApplePayContactFieldsTypeEnumMap, e))
+              ?.map((e) => $enumDecode(_$ApplePayContactFieldsTypeEnumMap, e))
               .toList(),
       requiredBillingContactFields:
           (json['requiredBillingContactFields'] as List<dynamic>?)
-              ?.map((e) => _$enumDecode(_$ApplePayContactFieldsTypeEnumMap, e))
+              ?.map((e) => $enumDecode(_$ApplePayContactFieldsTypeEnumMap, e))
               .toList(),
       shippingMethods: (json['shippingMethods'] as List<dynamic>?)
           ?.map(

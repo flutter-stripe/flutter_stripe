@@ -28,7 +28,7 @@ class _$CreateTokenParamsTearOff {
     );
   }
 
-  CreateTokenParams fromJson(Map<String, Object> json) {
+  CreateTokenParams fromJson(Map<String, Object?> json) {
     return CreateTokenParams.fromJson(json);
   }
 }
@@ -166,18 +166,14 @@ class _$_CreateTokenParams implements _CreateTokenParams {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _CreateTokenParams &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
-            (identical(other.address, address) ||
-                const DeepCollectionEquality().equals(other.address, address)));
+        (other.runtimeType == runtimeType &&
+            other is _CreateTokenParams &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.address, address) || other.address == address));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(type) ^
-      const DeepCollectionEquality().hash(address);
+  int get hashCode => Object.hash(runtimeType, type, address);
 
   @JsonKey(ignore: true)
   @override
@@ -200,11 +196,11 @@ abstract class _CreateTokenParams implements CreateTokenParams {
   @override
 
   /// Type of token.
-  TokenType get type => throw _privateConstructorUsedError;
+  TokenType get type;
   @override
 
   /// Additional address details
-  Address? get address => throw _privateConstructorUsedError;
+  Address? get address;
   @override
   @JsonKey(ignore: true)
   _$CreateTokenParamsCopyWith<_CreateTokenParams> get copyWith =>
@@ -236,7 +232,7 @@ class _$TokenDataTearOff {
     );
   }
 
-  TokenData fromJson(Map<String, Object> json) {
+  TokenData fromJson(Map<String, Object?> json) {
     return TokenData.fromJson(json);
   }
 }
@@ -470,33 +466,22 @@ class _$_TokenData implements _TokenData {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _TokenData &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
+        (other.runtimeType == runtimeType &&
+            other is _TokenData &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.createdDateTime, createdDateTime) ||
-                const DeepCollectionEquality()
-                    .equals(other.createdDateTime, createdDateTime)) &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
+                other.createdDateTime == createdDateTime) &&
+            (identical(other.type, type) || other.type == type) &&
             (identical(other.livemode, livemode) ||
-                const DeepCollectionEquality()
-                    .equals(other.livemode, livemode)) &&
+                other.livemode == livemode) &&
             (identical(other.bankAccount, bankAccount) ||
-                const DeepCollectionEquality()
-                    .equals(other.bankAccount, bankAccount)) &&
-            (identical(other.card, card) ||
-                const DeepCollectionEquality().equals(other.card, card)));
+                other.bankAccount == bankAccount) &&
+            (identical(other.card, card) || other.card == card));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(createdDateTime) ^
-      const DeepCollectionEquality().hash(type) ^
-      const DeepCollectionEquality().hash(livemode) ^
-      const DeepCollectionEquality().hash(bankAccount) ^
-      const DeepCollectionEquality().hash(card);
+  int get hashCode => Object.hash(
+      runtimeType, id, createdDateTime, type, livemode, bankAccount, card);
 
   @JsonKey(ignore: true)
   @override
@@ -524,28 +509,28 @@ abstract class _TokenData implements TokenData {
   @override
 
   /// Unique identifier of the token
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
 
   /// Timestamp when token was created
   @JsonKey(name: 'created')
-  String get createdDateTime => throw _privateConstructorUsedError;
+  String get createdDateTime;
   @override
 
   /// Type of the token
-  TokenType get type => throw _privateConstructorUsedError;
+  TokenType get type;
   @override
 
   /// Whether or not the object exists in livemode
-  bool get livemode => throw _privateConstructorUsedError;
+  bool get livemode;
   @override
 
   /// Bank account data
-  BankAccount? get bankAccount => throw _privateConstructorUsedError;
+  BankAccount? get bankAccount;
   @override
 
   /// Card data
-  CardData? get card => throw _privateConstructorUsedError;
+  CardData? get card;
   @override
   @JsonKey(ignore: true)
   _$TokenDataCopyWith<_TokenData> get copyWith =>
@@ -583,7 +568,7 @@ class _$CardDataTearOff {
     );
   }
 
-  CardData fromJson(Map<String, Object> json) {
+  CardData fromJson(Map<String, Object?> json) {
     return CardData.fromJson(json);
   }
 }
@@ -861,44 +846,24 @@ class _$_CardData implements _CardData {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _CardData &&
-            (identical(other.brand, brand) ||
-                const DeepCollectionEquality().equals(other.brand, brand)) &&
-            (identical(other.country, country) ||
-                const DeepCollectionEquality()
-                    .equals(other.country, country)) &&
+        (other.runtimeType == runtimeType &&
+            other is _CardData &&
+            (identical(other.brand, brand) || other.brand == brand) &&
+            (identical(other.country, country) || other.country == country) &&
             (identical(other.currency, currency) ||
-                const DeepCollectionEquality()
-                    .equals(other.currency, currency)) &&
-            (identical(other.expYear, expYear) ||
-                const DeepCollectionEquality()
-                    .equals(other.expYear, expYear)) &&
+                other.currency == currency) &&
+            (identical(other.expYear, expYear) || other.expYear == expYear) &&
             (identical(other.expMonth, expMonth) ||
-                const DeepCollectionEquality()
-                    .equals(other.expMonth, expMonth)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.funding, funding) ||
-                const DeepCollectionEquality()
-                    .equals(other.funding, funding)) &&
-            (identical(other.last4, last4) ||
-                const DeepCollectionEquality().equals(other.last4, last4)) &&
-            (identical(other.address, address) ||
-                const DeepCollectionEquality().equals(other.address, address)));
+                other.expMonth == expMonth) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.funding, funding) || other.funding == funding) &&
+            (identical(other.last4, last4) || other.last4 == last4) &&
+            (identical(other.address, address) || other.address == address));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(brand) ^
-      const DeepCollectionEquality().hash(country) ^
-      const DeepCollectionEquality().hash(currency) ^
-      const DeepCollectionEquality().hash(expYear) ^
-      const DeepCollectionEquality().hash(expMonth) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(funding) ^
-      const DeepCollectionEquality().hash(last4) ^
-      const DeepCollectionEquality().hash(address);
+  int get hashCode => Object.hash(runtimeType, brand, country, currency,
+      expYear, expMonth, name, funding, last4, address);
 
   @JsonKey(ignore: true)
   @override
@@ -928,39 +893,39 @@ abstract class _CardData implements CardData {
   @override
 
   /// The brand associated to the card e.g. (visa, amex).
-  String get brand => throw _privateConstructorUsedError;
+  String get brand;
   @override
 
   /// Two letter iso code.
-  String? get country => throw _privateConstructorUsedError;
+  String? get country;
   @override
 
   /// The three letter ISO 4217 code for the currency.
-  String? get currency => throw _privateConstructorUsedError;
+  String? get currency;
   @override
 
   /// four digit number representing the year of expiry of the card.
-  int? get expYear => throw _privateConstructorUsedError;
+  int? get expYear;
   @override
 
   /// two digit number representing the month of expire of the card.
-  int? get expMonth => throw _privateConstructorUsedError;
+  int? get expMonth;
   @override
 
   /// Fullname of the cardholder
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
 
   /// card funding type e.g. (credit, debit).
-  String? get funding => throw _privateConstructorUsedError;
+  String? get funding;
   @override
 
   /// last four digits of the card.
-  String? get last4 => throw _privateConstructorUsedError;
+  String? get last4;
   @override
 
   /// Address of the cardholder
-  Address? get address => throw _privateConstructorUsedError;
+  Address? get address;
   @override
   @JsonKey(ignore: true)
   _$CardDataCopyWith<_CardData> get copyWith =>
@@ -994,7 +959,7 @@ class _$BankAccountTearOff {
     );
   }
 
-  BankAccount fromJson(Map<String, Object> json) {
+  BankAccount fromJson(Map<String, Object?> json) {
     return BankAccount.fromJson(json);
   }
 }
@@ -1220,39 +1185,25 @@ class _$_BankAccount implements _BankAccount {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _BankAccount &&
+        (other.runtimeType == runtimeType &&
+            other is _BankAccount &&
             (identical(other.accountHolderType, accountHolderType) ||
-                const DeepCollectionEquality()
-                    .equals(other.accountHolderType, accountHolderType)) &&
-            (identical(other.status, status) ||
-                const DeepCollectionEquality().equals(other.status, status)) &&
+                other.accountHolderType == accountHolderType) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.bankName, bankName) ||
-                const DeepCollectionEquality()
-                    .equals(other.bankName, bankName)) &&
+                other.bankName == bankName) &&
             (identical(other.accountHolderName, accountHolderName) ||
-                const DeepCollectionEquality()
-                    .equals(other.accountHolderName, accountHolderName)) &&
-            (identical(other.country, country) ||
-                const DeepCollectionEquality()
-                    .equals(other.country, country)) &&
+                other.accountHolderName == accountHolderName) &&
+            (identical(other.country, country) || other.country == country) &&
             (identical(other.currency, currency) ||
-                const DeepCollectionEquality()
-                    .equals(other.currency, currency)) &&
+                other.currency == currency) &&
             (identical(other.routingNumber, routingNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.routingNumber, routingNumber)));
+                other.routingNumber == routingNumber));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(accountHolderType) ^
-      const DeepCollectionEquality().hash(status) ^
-      const DeepCollectionEquality().hash(bankName) ^
-      const DeepCollectionEquality().hash(accountHolderName) ^
-      const DeepCollectionEquality().hash(country) ^
-      const DeepCollectionEquality().hash(currency) ^
-      const DeepCollectionEquality().hash(routingNumber);
+  int get hashCode => Object.hash(runtimeType, accountHolderType, status,
+      bankName, accountHolderName, country, currency, routingNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -1281,32 +1232,31 @@ abstract class _BankAccount implements BankAccount {
   @override
 
   /// Entity that is holder of the account.
-  BankAccountHolderType get accountHolderType =>
-      throw _privateConstructorUsedError;
+  BankAccountHolderType get accountHolderType;
   @override
 
   /// Status of the bank account.
-  BankAccountStatus get status => throw _privateConstructorUsedError;
+  BankAccountStatus get status;
   @override
 
   /// Name of the bank where the account is registered.
-  String? get bankName => throw _privateConstructorUsedError;
+  String? get bankName;
   @override
 
   /// Full name of the account holder
-  String? get accountHolderName => throw _privateConstructorUsedError;
+  String? get accountHolderName;
   @override
 
   /// 2 letter code of the country where the account is located
-  String? get country => throw _privateConstructorUsedError;
+  String? get country;
   @override
 
   /// The three letter ISO 4217 code for the currency.
-  String? get currency => throw _privateConstructorUsedError;
+  String? get currency;
   @override
 
   /// The routing number of the bank account (e.g. needer for US accounts).
-  String? get routingNumber => throw _privateConstructorUsedError;
+  String? get routingNumber;
   @override
   @JsonKey(ignore: true)
   _$BankAccountCopyWith<_BankAccount> get copyWith =>

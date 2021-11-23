@@ -8,7 +8,7 @@ part of 'create_token_data.dart';
 
 _$_CreateTokenParams _$$_CreateTokenParamsFromJson(Map<String, dynamic> json) =>
     _$_CreateTokenParams(
-      type: _$enumDecodeNullable(_$TokenTypeEnumMap, json['type']) ??
+      type: $enumDecodeNullable(_$TokenTypeEnumMap, json['type']) ??
           TokenType.Card,
       address: json['address'] == null
           ? null
@@ -22,43 +22,6 @@ Map<String, dynamic> _$$_CreateTokenParamsToJson(
       'address': instance.address,
     };
 
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
-
-K? _$enumDecodeNullable<K, V>(
-  Map<K, V> enumValues,
-  dynamic source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    return null;
-  }
-  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
-}
-
 const _$TokenTypeEnumMap = {
   TokenType.Card: 'Card',
 };
@@ -66,7 +29,7 @@ const _$TokenTypeEnumMap = {
 _$_TokenData _$$_TokenDataFromJson(Map<String, dynamic> json) => _$_TokenData(
       id: json['id'] as String,
       createdDateTime: json['created'] as String,
-      type: _$enumDecode(_$TokenTypeEnumMap, json['type']),
+      type: $enumDecode(_$TokenTypeEnumMap, json['type']),
       livemode: json['livemode'] as bool,
       bankAccount: json['bankAccount'] == null
           ? null
@@ -115,9 +78,9 @@ Map<String, dynamic> _$$_CardDataToJson(_$_CardData instance) =>
 
 _$_BankAccount _$$_BankAccountFromJson(Map<String, dynamic> json) =>
     _$_BankAccount(
-      accountHolderType: _$enumDecode(
+      accountHolderType: $enumDecode(
           _$BankAccountHolderTypeEnumMap, json['accountHolderType']),
-      status: _$enumDecode(_$BankAccountStatusEnumMap, json['status']),
+      status: $enumDecode(_$BankAccountStatusEnumMap, json['status']),
       bankName: json['bankName'] as String?,
       accountHolderName: json['accountHolderName'] as String?,
       country: json['country'] as String?,

@@ -57,7 +57,7 @@ class _$SetupPaymentSheetParametersTearOff {
     );
   }
 
-  SetupPaymentSheetParameters fromJson(Map<String, Object> json) {
+  SetupPaymentSheetParameters fromJson(Map<String, Object?> json) {
     return SetupPaymentSheetParameters.fromJson(json);
   }
 }
@@ -488,64 +488,59 @@ class _$_SetupParameters implements _SetupParameters {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _SetupParameters &&
+        (other.runtimeType == runtimeType &&
+            other is _SetupParameters &&
             (identical(other.customFlow, customFlow) ||
-                const DeepCollectionEquality()
-                    .equals(other.customFlow, customFlow)) &&
+                other.customFlow == customFlow) &&
             (identical(other.customerId, customerId) ||
-                const DeepCollectionEquality()
-                    .equals(other.customerId, customerId)) &&
-            (identical(other.customerEphemeralKeySecret, customerEphemeralKeySecret) ||
-                const DeepCollectionEquality().equals(
-                    other.customerEphemeralKeySecret,
-                    customerEphemeralKeySecret)) &&
-            (identical(other.paymentIntentClientSecret, paymentIntentClientSecret) ||
-                const DeepCollectionEquality().equals(
-                    other.paymentIntentClientSecret,
-                    paymentIntentClientSecret)) &&
-            (identical(other.setupIntentClientSecret, setupIntentClientSecret) ||
-                const DeepCollectionEquality().equals(
-                    other.setupIntentClientSecret, setupIntentClientSecret)) &&
+                other.customerId == customerId) &&
+            (identical(other.customerEphemeralKeySecret,
+                    customerEphemeralKeySecret) ||
+                other.customerEphemeralKeySecret ==
+                    customerEphemeralKeySecret) &&
+            (identical(other.paymentIntentClientSecret,
+                    paymentIntentClientSecret) ||
+                other.paymentIntentClientSecret == paymentIntentClientSecret) &&
+            (identical(
+                    other.setupIntentClientSecret, setupIntentClientSecret) ||
+                other.setupIntentClientSecret == setupIntentClientSecret) &&
             (identical(other.merchantDisplayName, merchantDisplayName) ||
-                const DeepCollectionEquality()
-                    .equals(other.merchantDisplayName, merchantDisplayName)) &&
+                other.merchantDisplayName == merchantDisplayName) &&
             (identical(other.merchantCountryCode, merchantCountryCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.merchantCountryCode, merchantCountryCode)) &&
+                other.merchantCountryCode == merchantCountryCode) &&
             (identical(other.applePay, applePay) ||
-                const DeepCollectionEquality()
-                    .equals(other.applePay, applePay)) &&
-            (identical(other.style, style) ||
-                const DeepCollectionEquality().equals(other.style, style)) &&
+                other.applePay == applePay) &&
+            (identical(other.style, style) || other.style == style) &&
             (identical(other.googlePay, googlePay) ||
-                const DeepCollectionEquality()
-                    .equals(other.googlePay, googlePay)) &&
-            (identical(other.allowsDelayedPaymentMethods, allowsDelayedPaymentMethods) ||
-                const DeepCollectionEquality().equals(
-                    other.allowsDelayedPaymentMethods,
-                    allowsDelayedPaymentMethods)) &&
-            (identical(other.primaryButtonColor, primaryButtonColor) || const DeepCollectionEquality().equals(other.primaryButtonColor, primaryButtonColor)) &&
-            (identical(other.testEnv, testEnv) || const DeepCollectionEquality().equals(other.testEnv, testEnv)) &&
-            (identical(other.billingDetails, billingDetails) || const DeepCollectionEquality().equals(other.billingDetails, billingDetails)));
+                other.googlePay == googlePay) &&
+            (identical(other.allowsDelayedPaymentMethods,
+                    allowsDelayedPaymentMethods) ||
+                other.allowsDelayedPaymentMethods ==
+                    allowsDelayedPaymentMethods) &&
+            (identical(other.primaryButtonColor, primaryButtonColor) ||
+                other.primaryButtonColor == primaryButtonColor) &&
+            (identical(other.testEnv, testEnv) || other.testEnv == testEnv) &&
+            (identical(other.billingDetails, billingDetails) ||
+                other.billingDetails == billingDetails));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(customFlow) ^
-      const DeepCollectionEquality().hash(customerId) ^
-      const DeepCollectionEquality().hash(customerEphemeralKeySecret) ^
-      const DeepCollectionEquality().hash(paymentIntentClientSecret) ^
-      const DeepCollectionEquality().hash(setupIntentClientSecret) ^
-      const DeepCollectionEquality().hash(merchantDisplayName) ^
-      const DeepCollectionEquality().hash(merchantCountryCode) ^
-      const DeepCollectionEquality().hash(applePay) ^
-      const DeepCollectionEquality().hash(style) ^
-      const DeepCollectionEquality().hash(googlePay) ^
-      const DeepCollectionEquality().hash(allowsDelayedPaymentMethods) ^
-      const DeepCollectionEquality().hash(primaryButtonColor) ^
-      const DeepCollectionEquality().hash(testEnv) ^
-      const DeepCollectionEquality().hash(billingDetails);
+  int get hashCode => Object.hash(
+      runtimeType,
+      customFlow,
+      customerId,
+      customerEphemeralKeySecret,
+      paymentIntentClientSecret,
+      setupIntentClientSecret,
+      merchantDisplayName,
+      merchantCountryCode,
+      applePay,
+      style,
+      googlePay,
+      allowsDelayedPaymentMethods,
+      primaryButtonColor,
+      testEnv,
+      billingDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -587,74 +582,74 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   /// If this value is true, the payment sheet will allow to select a payment method
   /// and a later confirmation will be needed by calling [confirmPaymentSheetPayment]
   /// By default, false.
-  bool get customFlow => throw _privateConstructorUsedError;
+  bool get customFlow;
   @override
 
   /// The identifier of the Stripe Customer object.
   /// See https://stripe.com/docs/api/customers/object#customer_object-id
-  String? get customerId => throw _privateConstructorUsedError;
+  String? get customerId;
   @override
 
   ///A temp key can be used for API operations that require a secret key.
-  String? get customerEphemeralKeySecret => throw _privateConstructorUsedError;
+  String? get customerEphemeralKeySecret;
   @override
 
   /// Secret used for client-side retrieval using a publishable key.
   ///
   /// If this value is null make sure to add a [setupIntentClientSecret]
-  String? get paymentIntentClientSecret => throw _privateConstructorUsedError;
+  String? get paymentIntentClientSecret;
   @override
 
   /// The client secret of this SetupIntent
   ///
   /// If this value is null make sure to add a [paymentIntentClientSecret]
-  String? get setupIntentClientSecret => throw _privateConstructorUsedError;
+  String? get setupIntentClientSecret;
   @override
 
   /// Display name of the merchant
-  String? get merchantDisplayName => throw _privateConstructorUsedError;
+  String? get merchantDisplayName;
   @override
 
   /// ISO country code of the country where the merchant is located
-  String? get merchantCountryCode => throw _privateConstructorUsedError;
+  String? get merchantCountryCode;
   @override
 
   /// Configuration related to Apple Pay
   /// If set, PaymentSheet displays Apple Pay as a payment option
   /// A merchantCountryCode would then be required
-  bool? get applePay => throw _privateConstructorUsedError;
+  bool? get applePay;
   @override
 
   /// Style options for colors in PaymentSheet
   @JsonKey(toJson: UserInterfaceStyleKey.toJson)
-  ThemeMode? get style => throw _privateConstructorUsedError;
+  ThemeMode? get style;
   @override
 
   /// Configuration related to Google Pay
   /// If set, PaymentSheet displays Google Pay as a payment option
   /// A merchantCountryCode would then be required
-  bool? get googlePay => throw _privateConstructorUsedError;
+  bool? get googlePay;
   @override
 
   /// Flag that allows payment methods that do not move money at the send of the checkout.
   ///
   /// Defaul value is false.
-  bool get allowsDelayedPaymentMethods => throw _privateConstructorUsedError;
+  bool get allowsDelayedPaymentMethods;
   @override
 
   /// Button color of the checkoutButton
   ///
   /// Make sure that there is enough contrast with the rest of the paymentsheet.
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get primaryButtonColor => throw _privateConstructorUsedError;
+  Color? get primaryButtonColor;
   @override
 
   /// Flag for using the test environment
-  bool get testEnv => throw _privateConstructorUsedError;
+  bool get testEnv;
   @override
 
   /// Billing information of the customer.
-  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
+  BillingDetails? get billingDetails;
   @override
   @JsonKey(ignore: true)
   _$SetupParametersCopyWith<_SetupParameters> get copyWith =>
@@ -678,7 +673,7 @@ class _$PresentPaymentSheetParametersTearOff {
     );
   }
 
-  PresentPaymentSheetParameters fromJson(Map<String, Object> json) {
+  PresentPaymentSheetParameters fromJson(Map<String, Object?> json) {
     return PresentPaymentSheetParameters.fromJson(json);
   }
 }
@@ -814,20 +809,16 @@ class _$_PresentParameters implements _PresentParameters {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PresentParameters &&
+        (other.runtimeType == runtimeType &&
+            other is _PresentParameters &&
             (identical(other.clientSecret, clientSecret) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientSecret, clientSecret)) &&
+                other.clientSecret == clientSecret) &&
             (identical(other.confirmPayment, confirmPayment) ||
-                const DeepCollectionEquality()
-                    .equals(other.confirmPayment, confirmPayment)));
+                other.confirmPayment == confirmPayment));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(clientSecret) ^
-      const DeepCollectionEquality().hash(confirmPayment);
+  int get hashCode => Object.hash(runtimeType, clientSecret, confirmPayment);
 
   @JsonKey(ignore: true)
   @override
@@ -851,7 +842,7 @@ abstract class _PresentParameters implements PresentPaymentSheetParameters {
   @override
 
   /// Key used for client-side retrieval using a publishable key.
-  String get clientSecret => throw _privateConstructorUsedError;
+  String get clientSecret;
   @override
 
   /// Flag that determines whether or not to present payment options or
@@ -861,7 +852,7 @@ abstract class _PresentParameters implements PresentPaymentSheetParameters {
   /// is set to `true` when initializing the payment sheet.
   /// If value is set to `true` [SetupPaymentSheetParameters.customFlow]
   /// has to be set to `false` when initializing the payment sheet.
-  bool get confirmPayment => throw _privateConstructorUsedError;
+  bool get confirmPayment;
   @override
   @JsonKey(ignore: true)
   _$PresentParametersCopyWith<_PresentParameters> get copyWith =>

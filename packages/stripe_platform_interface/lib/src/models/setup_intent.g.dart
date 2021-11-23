@@ -15,7 +15,7 @@ _$_SetupIntent _$$_SetupIntentFromJson(Map<String, dynamic> json) =>
       paymentMethodId: json['paymentMethodId'] as String,
       usage: json['usage'] as String,
       paymentMethodTypes: (json['paymentMethodTypes'] as List<dynamic>)
-          .map((e) => _$enumDecode(_$PaymentMethodTypeEnumMap, e))
+          .map((e) => $enumDecode(_$PaymentMethodTypeEnumMap, e))
           .toList(),
       description: json['description'] as String?,
       created: json['created'] as String?,
@@ -40,32 +40,6 @@ Map<String, dynamic> _$$_SetupIntentToJson(_$_SetupIntent instance) =>
       'created': instance.created,
       'lastSetupError': instance.lastSetupError?.toJson(),
     };
-
-K _$enumDecode<K, V>(
-  Map<K, V> enumValues,
-  Object? source, {
-  K? unknownValue,
-}) {
-  if (source == null) {
-    throw ArgumentError(
-      'A value must be provided. Supported values: '
-      '${enumValues.values.join(', ')}',
-    );
-  }
-
-  return enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () {
-      if (unknownValue == null) {
-        throw ArgumentError(
-          '`$source` is not one of the supported values: '
-          '${enumValues.values.join(', ')}',
-        );
-      }
-      return MapEntry(unknownValue, enumValues.values.first);
-    },
-  ).key;
-}
 
 const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.AfterpayClearpay: 'AfterpayClearpay',

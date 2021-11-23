@@ -54,7 +54,7 @@ class _$PaymentIntentTearOff {
     );
   }
 
-  PaymentIntent fromJson(Map<String, Object> json) {
+  PaymentIntent fromJson(Map<String, Object?> json) {
     return PaymentIntent.fromJson(json);
   }
 }
@@ -439,65 +439,51 @@ class _$_PaymentIntent implements _PaymentIntent {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PaymentIntent &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.amount, amount) ||
-                const DeepCollectionEquality().equals(other.amount, amount)) &&
-            (identical(other.created, created) ||
-                const DeepCollectionEquality()
-                    .equals(other.created, created)) &&
+        (other.runtimeType == runtimeType &&
+            other is _PaymentIntent &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.created, created) || other.created == created) &&
             (identical(other.currency, currency) ||
-                const DeepCollectionEquality()
-                    .equals(other.currency, currency)) &&
-            (identical(other.status, status) ||
-                const DeepCollectionEquality().equals(other.status, status)) &&
+                other.currency == currency) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.clientSecret, clientSecret) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientSecret, clientSecret)) &&
+                other.clientSecret == clientSecret) &&
             (identical(other.livemode, livemode) ||
-                const DeepCollectionEquality()
-                    .equals(other.livemode, livemode)) &&
+                other.livemode == livemode) &&
             (identical(other.captureMethod, captureMethod) ||
-                const DeepCollectionEquality()
-                    .equals(other.captureMethod, captureMethod)) &&
+                other.captureMethod == captureMethod) &&
             (identical(other.confirmationMethod, confirmationMethod) ||
-                const DeepCollectionEquality()
-                    .equals(other.confirmationMethod, confirmationMethod)) &&
+                other.confirmationMethod == confirmationMethod) &&
             (identical(other.paymentMethodId, paymentMethodId) ||
-                const DeepCollectionEquality()
-                    .equals(other.paymentMethodId, paymentMethodId)) &&
+                other.paymentMethodId == paymentMethodId) &&
             (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
+                other.description == description) &&
             (identical(other.receiptEmail, receiptEmail) ||
-                const DeepCollectionEquality()
-                    .equals(other.receiptEmail, receiptEmail)) &&
+                other.receiptEmail == receiptEmail) &&
             (identical(other.canceledAt, canceledAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.canceledAt, canceledAt)) &&
+                other.canceledAt == canceledAt) &&
             (identical(other.shipping, shipping) ||
-                const DeepCollectionEquality()
-                    .equals(other.shipping, shipping)));
+                other.shipping == shipping));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(amount) ^
-      const DeepCollectionEquality().hash(created) ^
-      const DeepCollectionEquality().hash(currency) ^
-      const DeepCollectionEquality().hash(status) ^
-      const DeepCollectionEquality().hash(clientSecret) ^
-      const DeepCollectionEquality().hash(livemode) ^
-      const DeepCollectionEquality().hash(captureMethod) ^
-      const DeepCollectionEquality().hash(confirmationMethod) ^
-      const DeepCollectionEquality().hash(paymentMethodId) ^
-      const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(receiptEmail) ^
-      const DeepCollectionEquality().hash(canceledAt) ^
-      const DeepCollectionEquality().hash(shipping);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      amount,
+      created,
+      currency,
+      status,
+      clientSecret,
+      livemode,
+      captureMethod,
+      confirmationMethod,
+      paymentMethodId,
+      description,
+      receiptEmail,
+      canceledAt,
+      shipping);
 
   @JsonKey(ignore: true)
   @override
@@ -533,60 +519,59 @@ abstract class _PaymentIntent implements PaymentIntent {
   @override
 
   /// Unique identifier.
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
 
   /// Amount that will be collected in the payment intent.
-  num get amount => throw _privateConstructorUsedError;
+  num get amount;
   @override
 
   /// Timestamp since epoch that represents the time the intent is created.
-  String get created => throw _privateConstructorUsedError;
+  String get created;
   @override
 
   /// The three letter ISO 4217 code for the currency.
-  String get currency => throw _privateConstructorUsedError;
+  String get currency;
   @override
 
   /// Current status of the intent.
-  PaymentIntentsStatus get status => throw _privateConstructorUsedError;
+  PaymentIntentsStatus get status;
   @override
 
   /// The client is secret is used for handling the payment from the Client side.
-  String get clientSecret => throw _privateConstructorUsedError;
+  String get clientSecret;
   @override
 
   /// Determines whether the intent is in live mode or in test mode.
-  bool get livemode => throw _privateConstructorUsedError;
+  bool get livemode;
   @override
 
   /// How the funds will be caputure from the customer's account.
-  CaptureMethod get captureMethod => throw _privateConstructorUsedError;
+  CaptureMethod get captureMethod;
   @override
 
   /// Method of how the payment will be confirmed.
-  ConfirmationMethod get confirmationMethod =>
-      throw _privateConstructorUsedError;
+  ConfirmationMethod get confirmationMethod;
   @override
 
   /// Id of the payment method used in this intent.
-  String? get paymentMethodId => throw _privateConstructorUsedError;
+  String? get paymentMethodId;
   @override
 
   /// Localized description that provides additional context to users.
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
 
   /// Email address where the receipt will be send to.
-  String? get receiptEmail => throw _privateConstructorUsedError;
+  String? get receiptEmail;
   @override
 
   /// Timestamp since epoch when the intent is cancelled.
-  String? get canceledAt => throw _privateConstructorUsedError;
+  String? get canceledAt;
   @override
 
   /// Shipping information of the payment intent.
-  ShippingDetails? get shipping => throw _privateConstructorUsedError;
+  ShippingDetails? get shipping;
   @override
   @JsonKey(ignore: true)
   _$PaymentIntentCopyWith<_PaymentIntent> get copyWith =>
@@ -616,7 +601,7 @@ class _$ShippingDetailsTearOff {
     );
   }
 
-  ShippingDetails fromJson(Map<String, Object> json) {
+  ShippingDetails fromJson(Map<String, Object?> json) {
     return ShippingDetails.fromJson(json);
   }
 }
@@ -818,30 +803,19 @@ class _$_ShippingDetails implements _ShippingDetails {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ShippingDetails &&
-            (identical(other.address, address) ||
-                const DeepCollectionEquality()
-                    .equals(other.address, address)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.carrier, carrier) ||
-                const DeepCollectionEquality()
-                    .equals(other.carrier, carrier)) &&
-            (identical(other.phone, phone) ||
-                const DeepCollectionEquality().equals(other.phone, phone)) &&
+        (other.runtimeType == runtimeType &&
+            other is _ShippingDetails &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.carrier, carrier) || other.carrier == carrier) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.trackingNumber, trackingNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.trackingNumber, trackingNumber)));
+                other.trackingNumber == trackingNumber));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(address) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(carrier) ^
-      const DeepCollectionEquality().hash(phone) ^
-      const DeepCollectionEquality().hash(trackingNumber);
+      Object.hash(runtimeType, address, name, carrier, phone, trackingNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -868,24 +842,24 @@ abstract class _ShippingDetails implements ShippingDetails {
   @override
 
   /// Recipient address.
-  Address get address => throw _privateConstructorUsedError;
+  Address get address;
   @override
 
   /// Recipient name.
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
 
   /// Deliver service that will ship the product
-  String get carrier => throw _privateConstructorUsedError;
+  String get carrier;
   @override
 
   /// Recipient phone number.
-  String get phone => throw _privateConstructorUsedError;
+  String get phone;
   @override
 
   /// Tracking number of the shipment. If multiple tracking numbers separate them
   /// with commas.
-  String get trackingNumber => throw _privateConstructorUsedError;
+  String get trackingNumber;
   @override
   @JsonKey(ignore: true)
   _$ShippingDetailsCopyWith<_ShippingDetails> get copyWith =>
