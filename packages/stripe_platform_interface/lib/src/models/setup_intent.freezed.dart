@@ -46,7 +46,7 @@ class _$SetupIntentTearOff {
     );
   }
 
-  SetupIntent fromJson(Map<String, Object> json) {
+  SetupIntent fromJson(Map<String, Object?> json) {
     return SetupIntent.fromJson(json);
   }
 }
@@ -353,49 +353,39 @@ class _$_SetupIntent implements _SetupIntent {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _SetupIntent &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.status, status) ||
-                const DeepCollectionEquality().equals(other.status, status)) &&
+        (other.runtimeType == runtimeType &&
+            other is _SetupIntent &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.livemode, livemode) ||
-                const DeepCollectionEquality()
-                    .equals(other.livemode, livemode)) &&
+                other.livemode == livemode) &&
             (identical(other.clientSecret, clientSecret) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientSecret, clientSecret)) &&
+                other.clientSecret == clientSecret) &&
             (identical(other.paymentMethodId, paymentMethodId) ||
-                const DeepCollectionEquality()
-                    .equals(other.paymentMethodId, paymentMethodId)) &&
-            (identical(other.usage, usage) ||
-                const DeepCollectionEquality().equals(other.usage, usage)) &&
-            (identical(other.paymentMethodTypes, paymentMethodTypes) ||
-                const DeepCollectionEquality()
-                    .equals(other.paymentMethodTypes, paymentMethodTypes)) &&
+                other.paymentMethodId == paymentMethodId) &&
+            (identical(other.usage, usage) || other.usage == usage) &&
+            const DeepCollectionEquality()
+                .equals(other.paymentMethodTypes, paymentMethodTypes) &&
             (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
-            (identical(other.created, created) ||
-                const DeepCollectionEquality()
-                    .equals(other.created, created)) &&
+                other.description == description) &&
+            (identical(other.created, created) || other.created == created) &&
             (identical(other.lastSetupError, lastSetupError) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastSetupError, lastSetupError)));
+                other.lastSetupError == lastSetupError));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(status) ^
-      const DeepCollectionEquality().hash(livemode) ^
-      const DeepCollectionEquality().hash(clientSecret) ^
-      const DeepCollectionEquality().hash(paymentMethodId) ^
-      const DeepCollectionEquality().hash(usage) ^
-      const DeepCollectionEquality().hash(paymentMethodTypes) ^
-      const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(created) ^
-      const DeepCollectionEquality().hash(lastSetupError);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      status,
+      livemode,
+      clientSecret,
+      paymentMethodId,
+      usage,
+      const DeepCollectionEquality().hash(paymentMethodTypes),
+      description,
+      created,
+      lastSetupError);
 
   @JsonKey(ignore: true)
   @override
@@ -427,46 +417,45 @@ abstract class _SetupIntent implements SetupIntent {
   @override
 
   /// Unique identifier.
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
 
   /// Status of the intent.
   ///
   /// See https://stripe.com/docs/payments/intents#intent-statuses.
-  String get status => throw _privateConstructorUsedError;
+  String get status;
   @override
 
   /// Determines whether the intent is in live mode or in test mode.
-  bool get livemode => throw _privateConstructorUsedError;
+  bool get livemode;
   @override
 
   /// The client is secret is used for handling the payment from the Client side.
-  String get clientSecret => throw _privateConstructorUsedError;
+  String get clientSecret;
   @override
 
   /// Id of the payment method used in this intent.
-  String get paymentMethodId => throw _privateConstructorUsedError;
+  String get paymentMethodId;
   @override
 
   /// Indicates how the intent is used in the future.
-  String get usage => throw _privateConstructorUsedError;
+  String get usage;
   @override
 
   /// List of payment method types associated with this intent.
-  List<PaymentMethodType> get paymentMethodTypes =>
-      throw _privateConstructorUsedError;
+  List<PaymentMethodType> get paymentMethodTypes;
   @override
 
   /// Localized description that provides additional context to users.
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
 
   /// Timestamp since epoch that represents the time the intent is created.
-  String? get created => throw _privateConstructorUsedError;
+  String? get created;
   @override
 
   /// Error encountered since last configmration.
-  LastSetupError? get lastSetupError => throw _privateConstructorUsedError;
+  LastSetupError? get lastSetupError;
   @override
   @JsonKey(ignore: true)
   _$SetupIntentCopyWith<_SetupIntent> get copyWith =>
@@ -488,7 +477,7 @@ class _$LastSetupErrorTearOff {
     );
   }
 
-  LastSetupError fromJson(Map<String, Object> json) {
+  LastSetupError fromJson(Map<String, Object?> json) {
     return LastSetupError.fromJson(json);
   }
 }
@@ -610,18 +599,14 @@ class _$_LastSetupError implements _LastSetupError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _LastSetupError &&
-            (identical(other.code, code) ||
-                const DeepCollectionEquality().equals(other.code, code)) &&
-            (identical(other.message, message) ||
-                const DeepCollectionEquality().equals(other.message, message)));
+        (other.runtimeType == runtimeType &&
+            other is _LastSetupError &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(code) ^
-      const DeepCollectionEquality().hash(message);
+  int get hashCode => Object.hash(runtimeType, code, message);
 
   @JsonKey(ignore: true)
   @override
@@ -644,11 +629,11 @@ abstract class _LastSetupError implements LastSetupError {
   @override
 
   /// Code.
-  String get code => throw _privateConstructorUsedError;
+  String get code;
   @override
 
   /// Message.
-  String get message => throw _privateConstructorUsedError;
+  String get message;
   @override
   @JsonKey(ignore: true)
   _$LastSetupErrorCopyWith<_LastSetupError> get copyWith =>

@@ -31,7 +31,7 @@ class _$AppInfoTearOff {
     );
   }
 
-  AppInfo fromJson(Map<String, Object> json) {
+  AppInfo fromJson(Map<String, Object?> json) {
     return AppInfo.fromJson(json);
   }
 }
@@ -165,25 +165,17 @@ class _$_AppInfo implements _AppInfo {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AppInfo &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
+        (other.runtimeType == runtimeType &&
+            other is _AppInfo &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.partnerId, partnerId) ||
-                const DeepCollectionEquality()
-                    .equals(other.partnerId, partnerId)) &&
-            (identical(other.url, url) ||
-                const DeepCollectionEquality().equals(other.url, url)) &&
-            (identical(other.version, version) ||
-                const DeepCollectionEquality().equals(other.version, version)));
+                other.partnerId == partnerId) &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.version, version) || other.version == version));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(partnerId) ^
-      const DeepCollectionEquality().hash(url) ^
-      const DeepCollectionEquality().hash(version);
+  int get hashCode => Object.hash(runtimeType, name, partnerId, url, version);
 
   @JsonKey(ignore: true)
   @override
@@ -206,13 +198,13 @@ abstract class _AppInfo implements AppInfo {
   factory _AppInfo.fromJson(Map<String, dynamic> json) = _$_AppInfo.fromJson;
 
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  String? get partnerId => throw _privateConstructorUsedError;
+  String? get partnerId;
   @override
-  String? get url => throw _privateConstructorUsedError;
+  String? get url;
   @override
-  String? get version => throw _privateConstructorUsedError;
+  String? get version;
   @override
   @JsonKey(ignore: true)
   _$AppInfoCopyWith<_AppInfo> get copyWith =>

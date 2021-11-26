@@ -17,6 +17,7 @@ class ApplePayButton extends StatelessWidget {
     Key? key,
     this.style = ApplePayButtonStyle.black,
     this.type = ApplePayButtonType.plain,
+    this.cornerRadius = 4.0,
     this.onPressed,
     double? width,
     double? height = _kApplePayButtonDefaultHeight,
@@ -42,6 +43,11 @@ class ApplePayButton extends StatelessWidget {
   /// Default is [ApplePayButtonType.plain].
   final ApplePayButtonType type;
 
+  /// Modifies the **corner radius** of the payment button.
+  /// To remove the rounded courners, set this value to 0.0.
+  /// The default value is set to 4.0
+  final double cornerRadius;
+
   /// Callback that is executed when the button is pressed.
   final VoidCallback? onPressed;
 
@@ -62,6 +68,7 @@ class ApplePayButton extends StatelessWidget {
         return _UiKitApplePayButton(
           type: type,
           style: style,
+          cornerRadius: cornerRadius,
           onPressed: onPressed,
         );
       default:
@@ -76,11 +83,13 @@ class _UiKitApplePayButton extends StatefulWidget {
     Key? key,
     this.style = ApplePayButtonStyle.black,
     this.type = ApplePayButtonType.plain,
+    this.cornerRadius = 4.0,
     this.onPressed,
   }) : super(key: key);
 
   final ApplePayButtonStyle style;
   final ApplePayButtonType type;
+  final double cornerRadius;
   final VoidCallback? onPressed;
   @override
   _UiKitApplePayButtonState createState() => _UiKitApplePayButtonState();
@@ -97,7 +106,11 @@ class _UiKitApplePayButtonState extends State<_UiKitApplePayButton> {
     return UiKitView(
       viewType: 'flutter.stripe/apple_pay',
       creationParamsCodec: const StandardMessageCodec(),
-      creationParams: {'type': type, 'style': style},
+      creationParams: {
+        'type': type,
+        'style': style,
+        'cornerRadius': widget.cornerRadius
+      },
       onPlatformViewCreated: (viewId) {
         methodChannel = MethodChannel('flutter.stripe/apple_pay/$viewId');
         methodChannel?.setMethodCallHandler((call) async {
