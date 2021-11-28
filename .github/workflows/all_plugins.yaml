@@ -73,7 +73,7 @@ jobs:
       run: melos run unittest
       
 
-test:
+integration_test:
   name: Integration test
   timeout-minutes: 30
   runs-on: macos-latest
