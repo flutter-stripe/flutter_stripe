@@ -30,4 +30,14 @@ class Address with _$Address {
 
   factory Address.fromJson(Map<String, dynamic> json) =>
       _$AddressFromJson(json);
+
+  bool get isEmpty => !isNotEmpty;
+  bool get isNotEmpty => [
+        city != null,
+        country != null,
+        line1 != null,
+        line2 != null,
+        postalCode != null,
+        state != null,
+      ].any((v) => v);
 }

@@ -72,20 +72,45 @@ jobs:
     - name: "Run unittest"
       run: melos run unittest
       
-    - name: "Start dev server"
-      working-directory: example/server
-      run: npm install && (npm run start:dev &)
 
-    - name: "Set IP address"
-      working-directory: example
-      run: echo "const kApiUrl='''$(ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}')''';" > integration_test/ip.dart
+test:
+  name: Integration test
+  timeout-minutes: 30
+  runs-on: macos-latest
+  steps:
+  - uses: actions/checkout@v2
+  - uses: subosito/flutter-action@v1
+    with:
+      channel: 'stable'
 
-    - name: "Print ip.dart"
-      working-directory: example
-      run: cat integration_test/ip.dart
+  - name: "Install Tools"
+    run: |
+      ./.github/workflows/scripts/install-tools.sh
+  
+  - name: "Bootstrap Workspace"
+    run: melos bootstrap
+    
+  - name: "Set env keys"
+    env: 
+      STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY }}
+      STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+    run: |
+      ./.github/workflows/scripts/env-files.sh
 
-    - name: "Run test"
-      uses: reactivecircus/android-emulator-runner@v2
-      with:
-        api-level: 29
-        script: cd example && sleep 15 && flutter drive --driver test_driver/integration_test.dart --target=integration_test/app_test.dart
+  - name: "Start dev server"
+    working-directory: example/server
+    run: npm install && (npm run start:dev &)
+
+  - name: "Set IP address"
+    working-directory: example
+    run: echo "const kApiUrl='''$(ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}')''';" > integration_test/ip.dart
+
+  - name: "Print ip.dart"
+    working-directory: example
+    run: cat integration_test/ip.dart
+
+  - name: "Run integration test Android"
+    uses: reactivecircus/android-emulator-runner@v2
+    with:
+      api-level: 29
+      script: cd example && sleep 15 && flutter drive --driver test_driver/integration_test.dart --target=integration_test/app_test.dart  && flutter drive --driver test_driver/integration_test.dart --target=integration_test/payment_method_test.dart

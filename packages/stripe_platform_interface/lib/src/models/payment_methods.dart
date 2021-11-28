@@ -85,6 +85,14 @@ class BillingDetails with _$BillingDetails {
   }) = _BillingDetails;
   factory BillingDetails.fromJson(Map<String, dynamic> json) =>
       _$BillingDetailsFromJson(json);
+
+  bool get isEmpty => !isNotEmpty;
+  bool get isNotEmpty => [
+        email != null,
+        address != null && address!.isNotEmpty,
+        phone != null,
+        name != null,
+      ].any((v) => v);
 }
 
 @freezed
