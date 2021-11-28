@@ -1,0 +1,31 @@
+name: stripe_web
+description: A new Flutter package project.
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+  flutter: ">=2.0.0"
+  
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  stripe_platform_interface: 
+    path: '../stripe_platform_interface'
+  js: ^0.6.3
+    
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      web:
+        pluginClass: WebStripe
+        fileName: stripe_web.dart
+

@@ -30,6 +30,8 @@ abstract class StripePlatform extends PlatformInterface {
     _instance = instance;
   }
 
+  bool get updateSettingsLazily => true;
+
   Future<void> initialise({
     required String publishableKey,
     String? stripeAccountId,
@@ -57,7 +59,7 @@ abstract class StripePlatform extends PlatformInterface {
 
   /// Confirm the payment on a payment sheet.
   Future<void> confirmPaymentSheetPayment();
-
+  
   Future<void> openApplePaySetup();
   Future<void> presentApplePay(ApplePayPresentParams params);
   Future<void> confirmApplePayPayment(String clientSecret);

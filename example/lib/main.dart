@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_example/.env.dart';
-
+import 'screens/checkout/checkout_screen.dart';
 import 'screens/screens.dart';
 import 'widgets/dismiss_focus_overlay.dart';
 
@@ -22,7 +22,16 @@ class App extends StatelessWidget {
     return DismissFocusOverlay(
       child: MaterialApp(
         theme: exampleAppTheme,
-        home: HomePage(),
+        routes: {...CheckoutScreenExample.routes},
+        onGenerateInitialRoutes: (settings) {
+          print(settings);
+          return [
+            MaterialPageRoute(builder: (context) {
+              return HomePage();
+            })
+          ];
+        },
+        navigatorObservers: [],
       ),
     );
   }
@@ -57,7 +66,9 @@ class _HomePageState extends State<HomePage> {
 
 final exampleAppTheme = ThemeData(
   colorScheme: ColorScheme.light(
-      primary: Color(0xff6058F7), secondary: Color(0xff6058F7)),
+    primary: Color(0xff6058F7),
+    secondary: Color(0xff6058F7),
+  ),
   primaryColor: Colors.white,
   appBarTheme: AppBarTheme(elevation: 1),
 );

@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:developer' as dev;
 
 import 'package:flutter/foundation.dart';
@@ -8,13 +7,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
-
-const String _kDebugPCIMessage =
-    'Handling card data manually will break PCI compliance provided by Stripe. '
-    'Please make sure you understand the severe consecuences of it. '
-    'https://stripe.com/docs/security/guide#validating-pci-compliance. \n'
-    'To handle PCI compliance yourself and allow to edit card data programatically,'
-    'set `dangerouslyGetFullCardDetails: true`';
+import 'package:stripe_web/card_field.dart';
 
 /// Customizable form that collects card information.
 class CardField extends StatefulWidget {
@@ -96,61 +89,6 @@ class CardField extends StatefulWidget {
   _CardFieldState createState() => _CardFieldState();
 }
 
-abstract class CardFieldContext {
-  void focus();
-  void blur();
-  void clear();
-
-  void dangerouslyUpdateCardDetails(CardFieldInputDetails details);
-}
-
-class CardEditController extends ChangeNotifier {
-  CardEditController({CardFieldInputDetails? initialDetails})
-      : _initalDetails = initialDetails,
-        _details =
-            initialDetails ?? const CardFieldInputDetails(complete: false);
-
-  final CardFieldInputDetails? _initalDetails;
-  CardFieldInputDetails _details;
-
-  CardFieldInputDetails get details => _details;
-  bool get complete => _details.complete;
-
-  set details(CardFieldInputDetails value) {
-    if (_details == value) return;
-    context.dangerouslyUpdateCardDetails(details);
-    _details = value;
-    notifyListeners();
-  }
-
-  void _updateDetails(CardFieldInputDetails value) {
-    if (_details == value) return;
-    _details = value;
-    notifyListeners();
-  }
-
-  void focus() {
-    context.focus();
-  }
-
-  void blur() {
-    context.blur();
-  }
-
-  void clear() {
-    context.clear();
-  }
-
-  bool get hasCardField => _context != null;
-
-  CardFieldContext? _context;
-  CardFieldContext get context {
-    assert(
-        _context != null, 'CardEditController is not attached to any CardView');
-    return _context!;
-  }
-}
-
 class _CardFieldState extends State<CardField> {
   final FocusNode _node =
       FocusNode(debugLabel: 'CardField', descendantsAreFocusable: false);
@@ -194,34 +132,47 @@ class _CardFieldState extends State<CardField> {
     const platformMargin = EdgeInsets.fromLTRB(12, 10, 10, 12);
 
     final cardHeight = platformCardHeight - platformMargin.vertical;
+
+    final placeholder = CardPlaceholder(
+      number: widget.numberHintText,
+      expiration: widget.expirationHintText,
+      cvc: widget.cvcHintText,
+      postalCode: widget.postalCodeHintText,
+    );
+
+    final _platform = kIsWeb
+        ? WebCardField(
+            controller: controller,
+            height: platformCardHeight,
+            focusNode: _node,
+            onCardChanged: widget.onCardChanged,
+            enablePostalCode: widget.enablePostalCode,
+            autofocus: widget.autofocus,
+            onFocus: widget.onFocus,
+            placeholder: placeholder,
+            style: style,
+          )
+        : CustomSingleChildLayout(
+            delegate: const _NegativeMarginLayout(margin: platformMargin),
+            child: _MethodChannelCardField(
+              controller: controller,
+              height: platformCardHeight,
+              focusNode: _node,
+              style: style,
+              placeholder: placeholder,
+              enablePostalCode: widget.enablePostalCode,
+              onCardChanged: widget.onCardChanged,
+              autofocus: widget.autofocus,
+              onFocus: widget.onFocus,
+            ),
+          );
     return InputDecorator(
       isFocused: _node.hasFocus,
       decoration: inputDecoration,
       baseStyle: widget.style,
       child: SizedBox(
         height: cardHeight,
-        child: CustomSingleChildLayout(
-          delegate: const _NegativeMarginLayout(margin: platformMargin),
-          child: _MethodChannelCardField(
-            height: platformCardHeight,
-            focusNode: _node,
-            controller: controller,
-            style: style,
-            placeholder: CardPlaceholder(
-              number: widget.numberHintText,
-              expiration: widget.expirationHintText,
-              cvc: widget.cvcHintText,
-              postalCode: widget.postalCodeHintText,
-            ),
-            dangerouslyGetFullCardDetails: widget.dangerouslyGetFullCardDetails,
-            dangerouslyUpdateFullCardDetails:
-                widget.dangerouslyUpdateFullCardDetails,
-            enablePostalCode: widget.enablePostalCode,
-            onCardChanged: widget.onCardChanged,
-            autofocus: widget.autofocus,
-            onFocus: widget.onFocus,
-          ),
-        ),
+        child: _platform,
       ),
     );
   }
@@ -371,16 +322,19 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
 
   @override
   void initState() {
-    controller._context = this;
+    attachController(controller);
     // Reset card fields if dangerouslyUpdateFullCardDetails is false
     if (!widget.dangerouslyUpdateFullCardDetails) {
       if (kDebugMode &&
           controller.details != const CardFieldInputDetails(complete: false)) {
         dev.log('WARNING! Initial card data value has been ignored. \n'
-            '$_kDebugPCIMessage');
+            '$kDebugPCIMessage');
       }
       WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-        controller._updateDetails(const CardFieldInputDetails(complete: false));
+        updateCardDetails(
+          const CardFieldInputDetails(complete: false),
+          controller,
+        );
       });
     }
 
@@ -389,9 +343,8 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
 
   @override
   void dispose() {
-    if (controller._context == this) {
-      controller._context = null;
-    }
+    detachController(controller);
+
     _focusNode.dispose();
     super.dispose();
   }
@@ -407,8 +360,8 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
       'postalCodeEnabled': widget.enablePostalCode,
       'dangerouslyGetFullCardDetails': widget.dangerouslyGetFullCardDetails,
       if (widget.dangerouslyUpdateFullCardDetails &&
-          controller._initalDetails != null)
-        'cardDetails': controller._initalDetails?.toJson(),
+          controller.initalDetails != null)
+        'cardDetails': controller.initalDetails?.toJson(),
       'autofocus': widget.autofocus,
     };
 
@@ -421,7 +374,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
         onPlatformViewCreated: onPlatformViewCreated,
       );
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
-      platform = Listener(
+       platform = Listener(
         onPointerDown: (_) {
           if (!_effectiveNode.hasFocus) {
             _effectiveNode.requestFocus();
@@ -452,22 +405,6 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
     );
   }
 
-  /// Handler called when the focus changes in the node attached to the platform
-  /// view. This updates the correspondant platform view to keep it in sync.
-  void _handleFrameworkFocusChanged(bool isFocused) {
-    final methodChannel = _methodChannel;
-    if (methodChannel == null) {
-      return;
-    }
-    setState(() {});
-    if (!isFocused) {
-      blur();
-      return;
-    }
-
-    focus();
-  }
-
   @override
   void didChangeDependencies() {
     _lastStyle ??= resolveStyle(widget.style);
@@ -484,10 +421,10 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
   @override
   void didUpdateWidget(covariant _MethodChannelCardField oldWidget) {
     if (widget.controller != oldWidget.controller) {
-      assert(controller._context == null,
+      assert(!controller.hasCardField,
           'CardEditController is already attached to a CardView');
-      oldWidget.controller._context = this;
-      controller._context = this;
+      detachController(oldWidget.controller);
+      attachController(oldWidget.controller);
     }
     if (widget.enablePostalCode != oldWidget.enablePostalCode) {
       _methodChannel?.invokeMethod('onPostalCodeEnabledChanged', {
@@ -534,11 +471,12 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
     try {
       final map = Map<String, dynamic>.from(arguments);
       final details = CardFieldInputDetails.fromJson(map);
-      controller._updateDetails(details);
+      updateCardDetails(details, controller);
       widget.onCardChanged?.call(details);
       // ignore: avoid_catches_without_on_clauses
     } catch (e) {
-      log('An error ocurred while while parsing card arguments, this should not happen, please consider creating an issue at https://github.com/flutter-stripe/flutter_stripe/issues/new');
+      dev.log(
+          'An error ocurred while while parsing card arguments, this should not happen, please consider creating an issue at https://github.com/flutter-stripe/flutter_stripe/issues/new');
       rethrow;
     }
   }
@@ -556,9 +494,26 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
       widget.onFocus?.call(field.focusedField);
       // ignore: avoid_catches_without_on_clauses
     } catch (e) {
-      log('An error ocurred while while parsing card arguments, this should not happen, please consider creating an issue at https://github.com/flutter-stripe/flutter_stripe/issues/new');
+      dev.log(
+          'An error ocurred while while parsing card arguments, this should not happen, please consider creating an issue at https://github.com/flutter-stripe/flutter_stripe/issues/new');
       rethrow;
     }
+  }
+
+  /// Handler called when the focus changes in the node attached to the platform
+  /// view. This updates the correspondant platform view to keep it in sync.
+  void _handleFrameworkFocusChanged(bool isFocused) {
+    final methodChannel = _methodChannel;
+    if (methodChannel == null) {
+      return;
+    }
+    setState(() {});
+    if (!isFocused) {
+      blur();
+      return;
+    }
+
+    focus();
   }
 
   @override
@@ -578,7 +533,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
 
   @override
   void dangerouslyUpdateCardDetails(CardFieldInputDetails details) {
-    assert(widget.dangerouslyUpdateFullCardDetails, _kDebugPCIMessage);
+    assert(widget.dangerouslyUpdateFullCardDetails, kDebugPCIMessage);
     _methodChannel?.invokeMethod('dangerouslyUpdateCardDetails', {
       'cardDetails': details.toJson(),
     });
