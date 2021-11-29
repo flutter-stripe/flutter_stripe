@@ -115,6 +115,6 @@ jobs:
       with:
         api-level: 29
         script: | 
-          sleep 15 &&  | 
-#          flutter drive --driver test_driver/integration_test.dart --target=integration_test/app_test.dart && |
+          sleep 15 && \
+          flutter drive --driver test_driver/integration_test.dart --target=integration_test/app_test.dart && \
           flutter drive --driver test_driver/integration_test.dart --target=integration_test/payment_method_test.dart

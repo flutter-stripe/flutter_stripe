@@ -44,6 +44,7 @@ void main() {
     testWidgets('create payment method', (tester) async {
       // 1. create some billing details
       final billingDetails = BillingDetails(
+        name: 'Name',
         email: 'email@flutterstripe.com',
         phone: '+48888000888',
         address: Address(
