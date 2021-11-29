@@ -803,8 +803,9 @@ class __$BillingDetailsCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_BillingDetails implements _BillingDetails {
-  const _$_BillingDetails({this.email, this.address, this.phone, this.name});
+class _$_BillingDetails extends _BillingDetails {
+  const _$_BillingDetails({this.email, this.address, this.phone, this.name})
+      : super._();
 
   factory _$_BillingDetails.fromJson(Map<String, dynamic> json) =>
       _$$_BillingDetailsFromJson(json);
@@ -856,12 +857,13 @@ class _$_BillingDetails implements _BillingDetails {
   }
 }
 
-abstract class _BillingDetails implements BillingDetails {
+abstract class _BillingDetails extends BillingDetails {
   const factory _BillingDetails(
       {String? email,
       Address? address,
       String? phone,
       String? name}) = _$_BillingDetails;
+  const _BillingDetails._() : super._();
 
   factory _BillingDetails.fromJson(Map<String, dynamic> json) =
       _$_BillingDetails.fromJson;

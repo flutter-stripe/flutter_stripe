@@ -7,6 +7,7 @@ part 'address.g.dart';
 
 /// Address information
 class Address with _$Address {
+  const Address._();
   @JsonSerializable(explicitToJson: true)
   const factory Address({
     /// City, town or district.

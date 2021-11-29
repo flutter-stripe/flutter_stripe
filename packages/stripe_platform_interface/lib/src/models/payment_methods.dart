@@ -69,6 +69,8 @@ class PaymentMethod with _$PaymentMethod {
 /// Billing information associated with the payment method.
 @freezed
 class BillingDetails with _$BillingDetails {
+
+  const BillingDetails._();
   @JsonSerializable(explicitToJson: true)
   const factory BillingDetails({
     /// Email address.
