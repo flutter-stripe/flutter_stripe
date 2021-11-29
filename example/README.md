@@ -15,7 +15,13 @@ Demonstrates how to use the stripe plugin.
   - Terminal 1: `yarn --cwd "server" start`
   - Terminal 2: `flutter run`
 
+##### Additional steps when using a real device
+The example app uses a local server in your laptop and the endpoints are expected to work in local emulators. 
+If you want to test this project in a real device you should update the `config.dart` file with your computer ip address
+
 ##### Additional steps for webhook forwarding
 
 - [Install the `stripe-cli`](https://stripe.com/docs/stripe-cli)
 - Run `stripe listen --forward-to localhost:4242/webhook`
+
+
