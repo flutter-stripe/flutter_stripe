@@ -5,10 +5,7 @@ import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
-import com.reactnativestripesdk.CardFormViewManager
-import com.reactnativestripesdk.GooglePayButtonManager
-import com.reactnativestripesdk.StripeSdkCardViewManager
-import com.reactnativestripesdk.StripeSdkModule
+import com.reactnativestripesdk.*
 import io.flutter.embedding.android.FlutterFragmentActivity
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
@@ -42,6 +39,10 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         GooglePayButtonManager()
     }
 
+    private val aubecsDebitManager: AuBECSDebitFormViewManager by lazy {
+        AuBECSDebitFormViewManager()
+    }
+
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter.stripe/payments", JSONMethodCodec.INSTANCE)
         channel.setMethodCallHandler(this)
@@ -54,6 +55,9 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         flutterPluginBinding
                 .platformViewRegistry
                 .registerViewFactory("flutter.stripe/google_pay_button", StripeSdkGooglePayButtonPlatformViewFactory(flutterPluginBinding, payButtonViewManager) { stripeSdk })
+        flutterPluginBinding
+            .platformViewRegistry
+            .registerViewFactory("flutter.stripe/aubecs_form_field",StripeAubecsDebitPlatformViewFactory(flutterPluginBinding, aubecsDebitManager){stripeSdk})
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
