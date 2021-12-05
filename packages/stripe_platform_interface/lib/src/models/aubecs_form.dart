@@ -2,8 +2,8 @@ import 'package:flutter/painting.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:stripe_platform_interface/src/models/color.dart';
 
-part 'aubecs_form_style.freezed.dart';
-part 'aubecs_form_style.g.dart';
+part 'aubecs_form.freezed.dart';
+part 'aubecs_form.g.dart';
 
 @freezed
 
@@ -48,4 +48,27 @@ class AubecsFormStyle with _$AubecsFormStyle {
 
   factory AubecsFormStyle.fromJson(Map<String, dynamic> json) =>
       _$AubecsFormStyleFromJson(json);
+}
+
+@freezed
+
+/// Input details that will be returned from the form.
+class AubecsFormInputDetails with _$AubecsFormInputDetails {
+  @JsonSerializable(explicitToJson: true)
+  const factory AubecsFormInputDetails({
+    /// Six digit identifier to identify the branch of an financial institution.
+    String? bsbNumber,
+
+    /// The name of the accountholder.
+    String? name,
+
+    /// The account number.
+    String? accountNumber,
+
+    /// Email of the accountholder.
+    String? email,
+  }) = _AubecsFormInputDetails;
+
+  factory AubecsFormInputDetails.fromJson(Map<String, dynamic> json) =>
+      _$AubecsFormInputDetailsFromJson(json);
 }

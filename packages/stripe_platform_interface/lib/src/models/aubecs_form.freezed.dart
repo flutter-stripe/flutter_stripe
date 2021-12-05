@@ -2,7 +2,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'aubecs_form_style.dart';
+part of 'aubecs_form.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -393,5 +393,241 @@ abstract class _AubecsFormStyle implements AubecsFormStyle {
   @override
   @JsonKey(ignore: true)
   _$AubecsFormStyleCopyWith<_AubecsFormStyle> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+AubecsFormInputDetails _$AubecsFormInputDetailsFromJson(
+    Map<String, dynamic> json) {
+  return _AubecsFormInputDetails.fromJson(json);
+}
+
+/// @nodoc
+class _$AubecsFormInputDetailsTearOff {
+  const _$AubecsFormInputDetailsTearOff();
+
+  _AubecsFormInputDetails call(
+      {String? bsbNumber, String? name, String? accountNumber, String? email}) {
+    return _AubecsFormInputDetails(
+      bsbNumber: bsbNumber,
+      name: name,
+      accountNumber: accountNumber,
+      email: email,
+    );
+  }
+
+  AubecsFormInputDetails fromJson(Map<String, Object?> json) {
+    return AubecsFormInputDetails.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $AubecsFormInputDetails = _$AubecsFormInputDetailsTearOff();
+
+/// @nodoc
+mixin _$AubecsFormInputDetails {
+  /// Six digit identifier to identify the branch of an financial institution.
+  String? get bsbNumber => throw _privateConstructorUsedError;
+
+  /// The name of the accountholder.
+  String? get name => throw _privateConstructorUsedError;
+
+  /// The account number.
+  String? get accountNumber => throw _privateConstructorUsedError;
+
+  /// Email of the accountholder.
+  String? get email => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $AubecsFormInputDetailsCopyWith<AubecsFormInputDetails> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AubecsFormInputDetailsCopyWith<$Res> {
+  factory $AubecsFormInputDetailsCopyWith(AubecsFormInputDetails value,
+          $Res Function(AubecsFormInputDetails) then) =
+      _$AubecsFormInputDetailsCopyWithImpl<$Res>;
+  $Res call(
+      {String? bsbNumber, String? name, String? accountNumber, String? email});
+}
+
+/// @nodoc
+class _$AubecsFormInputDetailsCopyWithImpl<$Res>
+    implements $AubecsFormInputDetailsCopyWith<$Res> {
+  _$AubecsFormInputDetailsCopyWithImpl(this._value, this._then);
+
+  final AubecsFormInputDetails _value;
+  // ignore: unused_field
+  final $Res Function(AubecsFormInputDetails) _then;
+
+  @override
+  $Res call({
+    Object? bsbNumber = freezed,
+    Object? name = freezed,
+    Object? accountNumber = freezed,
+    Object? email = freezed,
+  }) {
+    return _then(_value.copyWith(
+      bsbNumber: bsbNumber == freezed
+          ? _value.bsbNumber
+          : bsbNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      accountNumber: accountNumber == freezed
+          ? _value.accountNumber
+          : accountNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$AubecsFormInputDetailsCopyWith<$Res>
+    implements $AubecsFormInputDetailsCopyWith<$Res> {
+  factory _$AubecsFormInputDetailsCopyWith(_AubecsFormInputDetails value,
+          $Res Function(_AubecsFormInputDetails) then) =
+      __$AubecsFormInputDetailsCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String? bsbNumber, String? name, String? accountNumber, String? email});
+}
+
+/// @nodoc
+class __$AubecsFormInputDetailsCopyWithImpl<$Res>
+    extends _$AubecsFormInputDetailsCopyWithImpl<$Res>
+    implements _$AubecsFormInputDetailsCopyWith<$Res> {
+  __$AubecsFormInputDetailsCopyWithImpl(_AubecsFormInputDetails _value,
+      $Res Function(_AubecsFormInputDetails) _then)
+      : super(_value, (v) => _then(v as _AubecsFormInputDetails));
+
+  @override
+  _AubecsFormInputDetails get _value => super._value as _AubecsFormInputDetails;
+
+  @override
+  $Res call({
+    Object? bsbNumber = freezed,
+    Object? name = freezed,
+    Object? accountNumber = freezed,
+    Object? email = freezed,
+  }) {
+    return _then(_AubecsFormInputDetails(
+      bsbNumber: bsbNumber == freezed
+          ? _value.bsbNumber
+          : bsbNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      accountNumber: accountNumber == freezed
+          ? _value.accountNumber
+          : accountNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_AubecsFormInputDetails implements _AubecsFormInputDetails {
+  const _$_AubecsFormInputDetails(
+      {this.bsbNumber, this.name, this.accountNumber, this.email});
+
+  factory _$_AubecsFormInputDetails.fromJson(Map<String, dynamic> json) =>
+      _$$_AubecsFormInputDetailsFromJson(json);
+
+  @override
+
+  /// Six digit identifier to identify the branch of an financial institution.
+  final String? bsbNumber;
+  @override
+
+  /// The name of the accountholder.
+  final String? name;
+  @override
+
+  /// The account number.
+  final String? accountNumber;
+  @override
+
+  /// Email of the accountholder.
+  final String? email;
+
+  @override
+  String toString() {
+    return 'AubecsFormInputDetails(bsbNumber: $bsbNumber, name: $name, accountNumber: $accountNumber, email: $email)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AubecsFormInputDetails &&
+            (identical(other.bsbNumber, bsbNumber) ||
+                other.bsbNumber == bsbNumber) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.accountNumber, accountNumber) ||
+                other.accountNumber == accountNumber) &&
+            (identical(other.email, email) || other.email == email));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, bsbNumber, name, accountNumber, email);
+
+  @JsonKey(ignore: true)
+  @override
+  _$AubecsFormInputDetailsCopyWith<_AubecsFormInputDetails> get copyWith =>
+      __$AubecsFormInputDetailsCopyWithImpl<_AubecsFormInputDetails>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_AubecsFormInputDetailsToJson(this);
+  }
+}
+
+abstract class _AubecsFormInputDetails implements AubecsFormInputDetails {
+  const factory _AubecsFormInputDetails(
+      {String? bsbNumber,
+      String? name,
+      String? accountNumber,
+      String? email}) = _$_AubecsFormInputDetails;
+
+  factory _AubecsFormInputDetails.fromJson(Map<String, dynamic> json) =
+      _$_AubecsFormInputDetails.fromJson;
+
+  @override
+
+  /// Six digit identifier to identify the branch of an financial institution.
+  String? get bsbNumber;
+  @override
+
+  /// The name of the accountholder.
+  String? get name;
+  @override
+
+  /// The account number.
+  String? get accountNumber;
+  @override
+
+  /// Email of the accountholder.
+  String? get email;
+  @override
+  @JsonKey(ignore: true)
+  _$AubecsFormInputDetailsCopyWith<_AubecsFormInputDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'aubecs_form_style.dart';
+part of 'aubecs_form.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -28,4 +28,22 @@ Map<String, dynamic> _$$_AubecsFormStyleToJson(_$_AubecsFormStyle instance) =>
       'backgroundColor': ColorKey.toJson(instance.backgroundColor),
       'borderColor': ColorKey.toJson(instance.borderColor),
       'borderRadius': instance.borderRadius,
+    };
+
+_$_AubecsFormInputDetails _$$_AubecsFormInputDetailsFromJson(
+        Map<String, dynamic> json) =>
+    _$_AubecsFormInputDetails(
+      bsbNumber: json['bsbNumber'] as String?,
+      name: json['name'] as String?,
+      accountNumber: json['accountNumber'] as String?,
+      email: json['email'] as String?,
+    );
+
+Map<String, dynamic> _$$_AubecsFormInputDetailsToJson(
+        _$_AubecsFormInputDetails instance) =>
+    <String, dynamic>{
+      'bsbNumber': instance.bsbNumber,
+      'name': instance.name,
+      'accountNumber': instance.accountNumber,
+      'email': instance.email,
     };
