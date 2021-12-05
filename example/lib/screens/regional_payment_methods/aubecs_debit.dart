@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
 
@@ -12,11 +12,17 @@ class AubecsExample extends StatelessWidget {
       tags: ['Aubecs'],
       padding: EdgeInsets.symmetric(horizontal: 16),
       children: [
-        SizedBox(
-          height: 270,
-          child: AubecsFormField(
-            onTap: () {},
+        AubecsFormField(
+          style: AubecsFormStyle(
+            textColor: Colors.blue,
+            placeholderColor: Colors.blueAccent,
+            backgroundColor: Colors.black54,
+            borderColor: Colors.green,
+            textErrorColor: Colors.red,
+            borderWidth: 3,
+            borderRadius: 8,
           ),
+          companyName: 'Flutter stripe',
         ),
       ],
     );
