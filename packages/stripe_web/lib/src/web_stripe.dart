@@ -13,12 +13,6 @@ import 'parser/setup_intent.dart';
 
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
-const _appInfo = AppInfo(
-  name: "flutter_stripe",
-  version: "0.0.0",
-  url: "https://github.com/fluttercommunity/flutter_stripe/",
-);
-
 /// An implementation of [StripePlatform] that uses method channels.
 class WebStripe extends StripePlatform {
   static s.StripeJS get js => __stripe!;

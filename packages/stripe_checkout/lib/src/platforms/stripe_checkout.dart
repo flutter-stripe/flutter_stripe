@@ -5,7 +5,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:stripe_checkout/stripe_checkout.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import 'checkout.dart';
@@ -106,7 +105,7 @@ stripe.redirectToCheckout({sessionId: "$sessionId"}).then(function (result) {
 ''';
 
     try {
-      await _webViewController?.evaluateJavascript(redirectToCheckoutJs);
+      await _webViewController?.runJavascript(redirectToCheckoutJs);
     } on PlatformException catch (e) {
       if (!e.details.contains(
           'JavaScript execution returned a result of an unsupported type')) {

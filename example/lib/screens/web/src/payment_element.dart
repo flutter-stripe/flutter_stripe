@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stripe_example/config.dart';
-import 'package:stripe_example/.env.dart';
+
 import 'package:http/http.dart' as http;
 
 class PaymentElementExample extends StatefulWidget {
@@ -12,7 +12,7 @@ class PaymentElementExample extends StatefulWidget {
 }
 
 class _ThemeCardExampleState extends State<PaymentElementExample> {
-  late String _index = 'Filled Green';
+ 
 
   String? clientSecret;
 

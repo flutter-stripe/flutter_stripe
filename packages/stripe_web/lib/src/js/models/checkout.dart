@@ -3,7 +3,7 @@ part of '../js.dart';
 extension StripeCheckoutExtension on StripeJS {
   _StripeCheckoutExtension get js => this as _StripeCheckoutExtension;
 
-  Future<CheckoutResponse> redirectToCheckout(
+  Future<CheckoutResponse?> redirectToCheckout(
     StripeCheckoutOptions options,
   ) {
     return promiseToFuture(js.redirectToCheckout(options));
