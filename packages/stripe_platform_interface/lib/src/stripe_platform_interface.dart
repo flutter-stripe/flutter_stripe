@@ -1,4 +1,6 @@
+import 'package:flutter/widgets.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 import 'method_channel_stripe.dart';
 import 'models/apple_pay.dart';
@@ -59,7 +61,7 @@ abstract class StripePlatform extends PlatformInterface {
 
   /// Confirm the payment on a payment sheet.
   Future<void> confirmPaymentSheetPayment();
-  
+
   Future<void> openApplePaySetup();
   Future<void> presentApplePay(ApplePayPresentParams params);
   Future<void> confirmApplePayPayment(String clientSecret);
@@ -87,4 +89,22 @@ abstract class StripePlatform extends PlatformInterface {
   /// or storing full card details! See the docs for
   /// details: https://stripe.com/docs/security/guide#validating-pci-compliance
   Future<void> dangerouslyUpdateCardDetails(CardDetails card);
+
+  Widget buildCard({
+    Key? key,
+    required CardEditController controller,
+    CardChangedCallback? onCardChanged,
+    CardFocusCallback? onFocus,
+    CardStyle? style,
+    CardPlaceholder? placeholder,
+    bool enablePostalCode = false,
+    double? width,
+    double? height,
+    BoxConstraints? constraints,
+    FocusNode? focusNode,
+    bool autofocus = false,
+    bool dangerouslyUpdateFullCardDetails = false,
+  }) {
+    throw UnimplementedError();
+  }
 }

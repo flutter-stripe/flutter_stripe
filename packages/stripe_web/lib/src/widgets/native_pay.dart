@@ -3,8 +3,8 @@ import 'dart:html';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:stripe_web/src/web_stripe.dart';
-import '../../stripe_web.dart';
+import 'package:flutter_stripe_web/src/web_stripe.dart';
+import '../../flutter_stripe_web.dart';
 import '../js/js.dart' as s;
 
 final _kDomElementId = 'native-pay-element';

@@ -1,5 +1,5 @@
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
-import 'package:stripe_web/stripe_web.dart';
+import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 
 import '../js/js.dart' as s;
 

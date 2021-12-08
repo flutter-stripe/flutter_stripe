@@ -421,4 +421,7 @@ class Stripe {
   }
 
   ValueNotifier<bool>? _isApplePaySupported;
+
+  // Internal use only
+  static late final buildWebCard = _platform.buildCard;
 }

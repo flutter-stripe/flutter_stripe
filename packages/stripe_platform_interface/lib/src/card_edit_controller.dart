@@ -7,7 +7,10 @@ const String kDebugPCIMessage =
     'https://stripe.com/docs/security/guide#validating-pci-compliance. \n'
     'To handle PCI compliance yourself and allow to edit card data programatically,'
     'set `dangerouslyGetFullCardDetails: true`';
+  
 
+typedef CardChangedCallback = void Function(CardFieldInputDetails? details);
+typedef CardFocusCallback = void Function(CardFieldName? focusedField);
 abstract class CardFieldContext {
   void focus();
   void blur();

@@ -4,9 +4,8 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
-import 'package:stripe_web/src/widgets/card_common.dart';
-import 'package:stripe_web/src/web_stripe.dart';
-import '../../stripe_web.dart';
+import 'package:flutter_stripe_web/src/web_stripe.dart';
+import '../../flutter_stripe_web.dart';
 import '../js/js.dart' as s;
 
 class PaymentElement extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'dart:developer';
+
 import 'dart:html';
 import 'dart:js';
 import 'dart:ui' as ui;
@@ -6,11 +6,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
-import 'package:stripe_web/src/web_stripe.dart';
-import '../../stripe_web.dart';
+import 'package:flutter_stripe_web/src/web_stripe.dart';
+import '../../flutter_stripe_web.dart';
 import '../js/js.dart' as s;
 import 'dart:developer' as dev;
-import 'card_common.dart';
+
+
+const kCardFieldDefaultHeight = 10.0;
+const kCardFieldDefaultFontSize = 17.0;
 
 class WebCardField extends StatefulWidget {
   WebCardField({

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
-import 'package:stripe_web/src/widgets/card_common.dart';
 
 class WebCardField extends StatelessWidget {
   const WebCardField({

@@ -7,7 +7,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
-import 'package:stripe_web/card_field.dart';
 
 /// Customizable form that collects card information.
 class CardField extends StatefulWidget {
@@ -141,7 +140,7 @@ class _CardFieldState extends State<CardField> {
     );
 
     final _platform = kIsWeb
-        ? WebCardField(
+        ? Stripe.buildWebCard(
             controller: controller,
             height: platformCardHeight,
             focusNode: _node,
@@ -610,5 +609,3 @@ const kCardFieldDefaultFontSize = 17.0;
 const kCardFieldDefaultTextColor = Colors.black;
 const kCardFieldDefaultFontFamily = 'Roboto';
 
-typedef CardChangedCallback = void Function(CardFieldInputDetails? details);
-typedef CardFocusCallback = void Function(CardFieldName? focusedField);

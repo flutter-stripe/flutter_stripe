@@ -17,7 +17,7 @@ dependencies:
   platform: ^3.0.0
   stripe_checkout:
     path: ../packages/stripe_checkout/
-  stripe_web:
+  flutter_stripe_web:
     path: ../packages/stripe_web/
  
 
@@ -34,7 +34,7 @@ dependency_overrides:
     path: ../packages/stripe_android
   stripe_ios:
     path: ../packages/stripe_ios
-  stripe_web:
+  flutter_stripe_web:
     path: ../packages/stripe_web
 
 flutter:

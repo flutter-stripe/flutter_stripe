@@ -2,8 +2,9 @@
 import 'dart:developer' as dev;
 import 'dart:html';
 
+import 'package:flutter/widgets.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-import 'package:stripe_web/stripe_web.dart';
+import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 
 import 'js/js.dart' as s;
 import 'parser/payment_methods.dart';
@@ -294,6 +295,38 @@ class WebStripe extends StripePlatform {
   @override
   Future<void> openApplePaySetup() {
     throw WebUnsupportedError.method('openApplePaySetup');
+  }
+
+  @override
+  Widget buildCard({
+    Key? key,
+    required CardEditController controller,
+    CardChangedCallback? onCardChanged,
+    CardFocusCallback? onFocus,
+    CardStyle? style,
+    CardPlaceholder? placeholder,
+    bool enablePostalCode = false,
+    double? width,
+    double? height,
+    BoxConstraints? constraints,
+    FocusNode? focusNode,
+    bool autofocus = false,
+    bool dangerouslyUpdateFullCardDetails = false,
+  }) {
+    return WebCardField(
+      controller: controller,
+      onCardChanged: onCardChanged,
+      onFocus: onFocus,
+      style: style,
+      placeholder: placeholder,
+      enablePostalCode: enablePostalCode,
+      width: width,
+      height: height,
+      constraints: constraints,
+      focusNode: focusNode,
+      autofocus: autofocus,
+      dangerouslyUpdateFullCardDetails: dangerouslyUpdateFullCardDetails,
+    );
   }
 }
 
