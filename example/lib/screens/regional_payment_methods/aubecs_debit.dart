@@ -50,11 +50,12 @@ class _AubecsExampleState extends State<AubecsExample> {
           style: AubecsFormStyle(
             textColor: Colors.blue,
             placeholderColor: Colors.blueAccent,
-            backgroundColor: Colors.black54,
+            backgroundColor: Colors.grey[200],
             borderColor: Colors.green,
             textErrorColor: Colors.red,
             borderWidth: 3,
             borderRadius: 8,
+            fontSize: 16
           ),
           companyName: 'Flutter stripe',
         ),

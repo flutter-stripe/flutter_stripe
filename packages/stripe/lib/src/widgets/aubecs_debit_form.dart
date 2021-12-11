@@ -88,6 +88,11 @@ class _AubecsFormFieldState extends State<_AubecsFormField> {
         'formStyle': widget.style!.toJson(),
       });
     }
+    if (widget.companyName != oldWidget.companyName) {
+      _methodChannel?.invokeMethod('onCompanyNameChanged', {
+        'companyName': widget.companyName ?? '',
+      });
+    }
 
     _lastStyle = widget.style;
     super.didUpdateWidget(oldWidget);
@@ -95,7 +100,7 @@ class _AubecsFormFieldState extends State<_AubecsFormField> {
 
   void onPlatformViewCreated(int viewId) {
     _methodChannel = MethodChannel('flutter.stripe/aubecs_form_field/$viewId');
-    _methodChannel?.setMethodCallHandler((call) async {
+    _methodChannel!.setMethodCallHandler((call) async {
       if (call.method == 'onCompleteAction') {
         final tmp = _createData(call.arguments);
         controller.data = tmp;
@@ -117,28 +122,37 @@ class _AubecsFormFieldState extends State<_AubecsFormField> {
 
     return SizedBox(
       height: widget.height,
-      child: PlatformViewLink(
-        surfaceFactory: (context, controller) {
-          return AndroidViewSurface(
-            controller: controller as AndroidViewController,
-            hitTestBehavior: PlatformViewHitTestBehavior.opaque,
-            gestureRecognizers: const <Factory<OneSequenceGestureRecognizer>>{},
-          );
-        },
-        onCreatePlatformView: (params) {
-          onPlatformViewCreated(params.id);
-          return PlatformViewsService.initSurfaceAndroidView(
-            id: params.id,
-            viewType: _viewType,
-            layoutDirection: TextDirection.ltr,
-            creationParams: creationParams,
-            creationParamsCodec: const StandardMessageCodec(),
-          )
-            ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
-            ..create();
-        },
-        viewType: _viewType,
-      ),
+      child: defaultTargetPlatform == TargetPlatform.iOS
+          ? UiKitView(
+              viewType: _viewType,
+              creationParamsCodec: const StandardMessageCodec(),
+              creationParams: creationParams,
+              onPlatformViewCreated: onPlatformViewCreated,
+            )
+          : PlatformViewLink(
+              surfaceFactory: (context, controller) {
+                return AndroidViewSurface(
+                  controller: controller as AndroidViewController,
+                  hitTestBehavior: PlatformViewHitTestBehavior.opaque,
+                  gestureRecognizers: const <
+                      Factory<OneSequenceGestureRecognizer>>{},
+                );
+              },
+              onCreatePlatformView: (params) {
+                onPlatformViewCreated(params.id);
+                return PlatformViewsService.initSurfaceAndroidView(
+                  id: params.id,
+                  viewType: _viewType,
+                  layoutDirection: TextDirection.ltr,
+                  creationParams: creationParams,
+                  creationParamsCodec: const StandardMessageCodec(),
+                )
+                  ..addOnPlatformViewCreatedListener(
+                      params.onPlatformViewCreated)
+                  ..create();
+              },
+              viewType: _viewType,
+            ),
     );
   }
 }
