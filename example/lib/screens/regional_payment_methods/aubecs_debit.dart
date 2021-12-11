@@ -48,9 +48,9 @@ class _AubecsExampleState extends State<AubecsExample> {
         AubecsFormField(
           controller: _controller,
           style: AubecsFormStyle(
-            textColor: Colors.blue,
+            textColor: Colors.black,
             placeholderColor: Colors.blueAccent,
-            backgroundColor: Colors.grey[200],
+            backgroundColor: Colors.grey[400],
             borderColor: Colors.green,
             textErrorColor: Colors.red,
             borderWidth: 3,
