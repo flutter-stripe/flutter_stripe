@@ -55,7 +55,7 @@ class _AubecsExampleState extends State<AubecsExample> {
             textErrorColor: Colors.red,
             borderWidth: 3,
             borderRadius: 8,
-            fontSize: 16
+            fontSize: 16,
           ),
           companyName: 'Flutter stripe',
         ),

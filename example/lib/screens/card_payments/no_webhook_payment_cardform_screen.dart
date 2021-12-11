@@ -65,7 +65,6 @@ class _NoWebhookPaymentCardFormScreenState
                 onPressed: () => controller.blur(),
                 child: Text('Blur'),
               ),
-              
             ],
           ),
         ),

@@ -112,5 +112,3 @@ class _ApplePayExternalPluginScreenState
     return json.decode(response.body);
   }
 }
-
-
