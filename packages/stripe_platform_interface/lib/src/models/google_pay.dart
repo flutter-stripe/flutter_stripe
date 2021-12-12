@@ -97,7 +97,7 @@ class CreateGooglePayPaymentParams with _$CreateGooglePayPaymentParams {
     required int amount,
   }) = _CreateGooglePayPaymentParams;
 
-    factory CreateGooglePayPaymentParams.fromJson(Map<String, dynamic> json) =>
+  factory CreateGooglePayPaymentParams.fromJson(Map<String, dynamic> json) =>
       _$CreateGooglePayPaymentParamsFromJson(json);
 }
 

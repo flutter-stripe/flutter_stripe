@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
-
 
 class WeChatPayScreen extends StatelessWidget {
   const WeChatPayScreen({Key? key}) : super(key: key);
@@ -42,8 +40,8 @@ class WeChatPayScreen extends StatelessWidget {
       // final clientSecret = await result['clientSecret'];
 
       // 3. use the client secret to confirm the payment and handle the result.
-      
-      // TODO: uncomment when wechat is enabled again 
+
+      // TODO: uncomment when wechat is enabled again
 
       // await Stripe.instance.confirmPayment(
       //   clientSecret,

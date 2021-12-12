@@ -52,7 +52,7 @@ class AuBECSDebitFormPlatformView : NSObject, FlutterPlatformView  {
         arguments args: Any?,
         binaryMessenger messenger: FlutterBinaryMessenger) {
      
-        channel = FlutterMethodChannel(name: "flutter.stripe/debit_form/\(viewId)",
+        channel = FlutterMethodChannel(name: "flutter.stripe/aubecs_form_field/\(viewId)",
                                            binaryMessenger: messenger)
         formView = AuBECSDebitFormView()
         super.init()
@@ -63,13 +63,13 @@ class AuBECSDebitFormPlatformView : NSObject, FlutterPlatformView  {
     }
     
     public func onCompleteAction(cardData: Dictionary<AnyHashable, Any>?) {
-        channel.invokeMethod("onCompleteAction", arguments: cardData!)
+        channel.invokeMethod("onCompleteAction", arguments: cardData)
     }
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
-        case "companyName",
-             "formStyle":
+        case "onStyleChanged",
+             "onCompanyNameChanged":
           updateProps(call.arguments)
           result(nil)
         default:
