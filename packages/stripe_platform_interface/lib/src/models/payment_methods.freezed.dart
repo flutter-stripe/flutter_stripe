@@ -920,7 +920,7 @@ mixin _$AuBecsDebit {
   /// Last 4 digits of the bankaccount number.
   String? get last4 => throw _privateConstructorUsedError;
 
-  /// Siz digit number identifying the bank or branch for this account.
+  /// Six digit number identifying the bank or branch for this account.
   String? get bsbNumber => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1030,7 +1030,7 @@ class _$_AuBecsDebit implements _AuBecsDebit {
   final String? last4;
   @override
 
-  /// Siz digit number identifying the bank or branch for this account.
+  /// Six digit number identifying the bank or branch for this account.
   final String? bsbNumber;
 
   @override
@@ -1081,7 +1081,7 @@ abstract class _AuBecsDebit implements AuBecsDebit {
   String? get last4;
   @override
 
-  /// Siz digit number identifying the bank or branch for this account.
+  /// Six digit number identifying the bank or branch for this account.
   String? get bsbNumber;
   @override
   @JsonKey(ignore: true)
@@ -2445,6 +2445,8 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
       return _PaymentMethodParamsAlipay.fromJson(json);
     case 'Ideal':
       return _PaymentMethodParamsIdeal.fromJson(json);
+    case 'AuBecsDebit':
+      return _PaymentMethodParamsAubecs.fromJson(json);
     case 'Bancontact':
       return _PaymentMethodParamsBankContact.fromJson(json);
     case 'Giropay':
@@ -2510,6 +2512,15 @@ class _$PaymentMethodParamsTearOff {
     return _PaymentMethodParamsIdeal(
       billingDetails: billingDetails,
       bankName: bankName,
+    );
+  }
+
+  _PaymentMethodParamsAubecs aubecs(
+      {required AubecsFormInputDetails formDetails,
+      BillingDetails? billingDetails}) {
+    return _PaymentMethodParamsAubecs(
+      formDetails: formDetails,
+      billingDetails: billingDetails,
     );
   }
 
@@ -2609,6 +2620,9 @@ mixin _$PaymentMethodParams {
     required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
+    required TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)
+        aubecs,
     required TResult Function(BillingDetails? billingDetails) bancontact,
     required TResult Function(BillingDetails? billingDetails) giroPay,
     required TResult Function(BillingDetails? billingDetails) eps,
@@ -2641,6 +2655,9 @@ mixin _$PaymentMethodParams {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -2671,6 +2688,9 @@ mixin _$PaymentMethodParams {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -2701,6 +2721,7 @@ mixin _$PaymentMethodParams {
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
@@ -2722,6 +2743,7 @@ mixin _$PaymentMethodParams {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -2743,6 +2765,7 @@ mixin _$PaymentMethodParams {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -2894,6 +2917,9 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
+    required TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)
+        aubecs,
     required TResult Function(BillingDetails? billingDetails) bancontact,
     required TResult Function(BillingDetails? billingDetails) giroPay,
     required TResult Function(BillingDetails? billingDetails) eps,
@@ -2929,6 +2955,9 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -2962,6 +2991,9 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -2998,6 +3030,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
@@ -3022,6 +3055,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -3046,6 +3080,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -3193,6 +3228,9 @@ class _$_PaymentMethodParamsCardWithToken
     required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
+    required TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)
+        aubecs,
     required TResult Function(BillingDetails? billingDetails) bancontact,
     required TResult Function(BillingDetails? billingDetails) giroPay,
     required TResult Function(BillingDetails? billingDetails) eps,
@@ -3228,6 +3266,9 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -3261,6 +3302,9 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -3297,6 +3341,7 @@ class _$_PaymentMethodParamsCardWithToken
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
@@ -3321,6 +3366,7 @@ class _$_PaymentMethodParamsCardWithToken
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -3345,6 +3391,7 @@ class _$_PaymentMethodParamsCardWithToken
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -3493,6 +3540,9 @@ class _$_PaymentMethodParamsCardWithMethodId
     required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
+    required TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)
+        aubecs,
     required TResult Function(BillingDetails? billingDetails) bancontact,
     required TResult Function(BillingDetails? billingDetails) giroPay,
     required TResult Function(BillingDetails? billingDetails) eps,
@@ -3528,6 +3578,9 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -3561,6 +3614,9 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -3597,6 +3653,7 @@ class _$_PaymentMethodParamsCardWithMethodId
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
@@ -3621,6 +3678,7 @@ class _$_PaymentMethodParamsCardWithMethodId
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -3645,6 +3703,7 @@ class _$_PaymentMethodParamsCardWithMethodId
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -3753,6 +3812,9 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
+    required TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)
+        aubecs,
     required TResult Function(BillingDetails? billingDetails) bancontact,
     required TResult Function(BillingDetails? billingDetails) giroPay,
     required TResult Function(BillingDetails? billingDetails) eps,
@@ -3788,6 +3850,9 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -3821,6 +3886,9 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -3857,6 +3925,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
@@ -3881,6 +3950,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -3905,6 +3975,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -4051,6 +4122,9 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
+    required TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)
+        aubecs,
     required TResult Function(BillingDetails? billingDetails) bancontact,
     required TResult Function(BillingDetails? billingDetails) giroPay,
     required TResult Function(BillingDetails? billingDetails) eps,
@@ -4086,6 +4160,9 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -4119,6 +4196,9 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -4155,6 +4235,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
@@ -4179,6 +4260,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -4203,6 +4285,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -4244,6 +4327,337 @@ abstract class _PaymentMethodParamsIdeal implements PaymentMethodParams {
   @JsonKey(ignore: true)
   _$PaymentMethodParamsIdealCopyWith<_PaymentMethodParamsIdeal> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$PaymentMethodParamsAubecsCopyWith<$Res> {
+  factory _$PaymentMethodParamsAubecsCopyWith(_PaymentMethodParamsAubecs value,
+          $Res Function(_PaymentMethodParamsAubecs) then) =
+      __$PaymentMethodParamsAubecsCopyWithImpl<$Res>;
+  $Res call(
+      {AubecsFormInputDetails formDetails, BillingDetails? billingDetails});
+
+  $AubecsFormInputDetailsCopyWith<$Res> get formDetails;
+  $BillingDetailsCopyWith<$Res>? get billingDetails;
+}
+
+/// @nodoc
+class __$PaymentMethodParamsAubecsCopyWithImpl<$Res>
+    extends _$PaymentMethodParamsCopyWithImpl<$Res>
+    implements _$PaymentMethodParamsAubecsCopyWith<$Res> {
+  __$PaymentMethodParamsAubecsCopyWithImpl(_PaymentMethodParamsAubecs _value,
+      $Res Function(_PaymentMethodParamsAubecs) _then)
+      : super(_value, (v) => _then(v as _PaymentMethodParamsAubecs));
+
+  @override
+  _PaymentMethodParamsAubecs get _value =>
+      super._value as _PaymentMethodParamsAubecs;
+
+  @override
+  $Res call({
+    Object? formDetails = freezed,
+    Object? billingDetails = freezed,
+  }) {
+    return _then(_PaymentMethodParamsAubecs(
+      formDetails: formDetails == freezed
+          ? _value.formDetails
+          : formDetails // ignore: cast_nullable_to_non_nullable
+              as AubecsFormInputDetails,
+      billingDetails: billingDetails == freezed
+          ? _value.billingDetails
+          : billingDetails // ignore: cast_nullable_to_non_nullable
+              as BillingDetails?,
+    ));
+  }
+
+  @override
+  $AubecsFormInputDetailsCopyWith<$Res> get formDetails {
+    return $AubecsFormInputDetailsCopyWith<$Res>(_value.formDetails, (value) {
+      return _then(_value.copyWith(formDetails: value));
+    });
+  }
+
+  @override
+  $BillingDetailsCopyWith<$Res>? get billingDetails {
+    if (_value.billingDetails == null) {
+      return null;
+    }
+
+    return $BillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
+      return _then(_value.copyWith(billingDetails: value));
+    });
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+@FreezedUnionValue('AuBecsDebit')
+class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
+  const _$_PaymentMethodParamsAubecs(
+      {required this.formDetails, this.billingDetails, String? $type})
+      : $type = $type ?? 'AuBecsDebit';
+
+  factory _$_PaymentMethodParamsAubecs.fromJson(Map<String, dynamic> json) =>
+      _$$_PaymentMethodParamsAubecsFromJson(json);
+
+  @override
+
+  /// form input details
+  final AubecsFormInputDetails formDetails;
+  @override
+
+  /// Billing information.
+  final BillingDetails? billingDetails;
+
+  @JsonKey(name: 'type')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'PaymentMethodParams.aubecs(formDetails: $formDetails, billingDetails: $billingDetails)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _PaymentMethodParamsAubecs &&
+            (identical(other.formDetails, formDetails) ||
+                other.formDetails == formDetails) &&
+            (identical(other.billingDetails, billingDetails) ||
+                other.billingDetails == billingDetails));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, formDetails, billingDetails);
+
+  @JsonKey(ignore: true)
+  @override
+  _$PaymentMethodParamsAubecsCopyWith<_PaymentMethodParamsAubecs>
+      get copyWith =>
+          __$PaymentMethodParamsAubecsCopyWithImpl<_PaymentMethodParamsAubecs>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)
+        card,
+    required TResult Function(
+            String token, PaymentIntentsFutureUsage? setupFutureUsage)
+        cardFromToken,
+    required TResult Function(String paymentMethodId, String? cvc)
+        cardFromMethodId,
+    required TResult Function() alipay,
+    required TResult Function(BillingDetails? billingDetails, String? bankName)
+        ideal,
+    required TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)
+        aubecs,
+    required TResult Function(BillingDetails? billingDetails) bancontact,
+    required TResult Function(BillingDetails? billingDetails) giroPay,
+    required TResult Function(BillingDetails? billingDetails) eps,
+    required TResult Function(BillingDetails? billingDetails) grabPay,
+    required TResult Function(BillingDetails? billingDetails) p24,
+    required TResult Function(bool testOfflineBank) fpx,
+    required TResult Function(
+            String iban,
+            PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)
+        sepaDebit,
+    required TResult Function(
+            String country,
+            PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)
+        sofort,
+    required TResult Function(
+            ShippingDetails shippingDetails, BillingDetails? billingDetails)
+        afterpayClearpay,
+    required TResult Function(BillingDetails? billingDetails) oxxo,
+  }) {
+    return aubecs(formDetails, billingDetails);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        card,
+    TResult Function(String token, PaymentIntentsFutureUsage? setupFutureUsage)?
+        cardFromToken,
+    TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
+    TResult Function()? alipay,
+    TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
+    TResult Function(BillingDetails? billingDetails)? bancontact,
+    TResult Function(BillingDetails? billingDetails)? giroPay,
+    TResult Function(BillingDetails? billingDetails)? eps,
+    TResult Function(BillingDetails? billingDetails)? grabPay,
+    TResult Function(BillingDetails? billingDetails)? p24,
+    TResult Function(bool testOfflineBank)? fpx,
+    TResult Function(String iban, PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        sepaDebit,
+    TResult Function(
+            String country,
+            PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        sofort,
+    TResult Function(
+            ShippingDetails shippingDetails, BillingDetails? billingDetails)?
+        afterpayClearpay,
+    TResult Function(BillingDetails? billingDetails)? oxxo,
+  }) {
+    return aubecs?.call(formDetails, billingDetails);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        card,
+    TResult Function(String token, PaymentIntentsFutureUsage? setupFutureUsage)?
+        cardFromToken,
+    TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
+    TResult Function()? alipay,
+    TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
+    TResult Function(BillingDetails? billingDetails)? bancontact,
+    TResult Function(BillingDetails? billingDetails)? giroPay,
+    TResult Function(BillingDetails? billingDetails)? eps,
+    TResult Function(BillingDetails? billingDetails)? grabPay,
+    TResult Function(BillingDetails? billingDetails)? p24,
+    TResult Function(bool testOfflineBank)? fpx,
+    TResult Function(String iban, PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        sepaDebit,
+    TResult Function(
+            String country,
+            PaymentIntentsFutureUsage? setupFutureUsage,
+            BillingDetails? billingDetails)?
+        sofort,
+    TResult Function(
+            ShippingDetails shippingDetails, BillingDetails? billingDetails)?
+        afterpayClearpay,
+    TResult Function(BillingDetails? billingDetails)? oxxo,
+    required TResult orElse(),
+  }) {
+    if (aubecs != null) {
+      return aubecs(formDetails, billingDetails);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentMethodParamsCard value) card,
+    required TResult Function(_PaymentMethodParamsCardWithToken value)
+        cardFromToken,
+    required TResult Function(_PaymentMethodParamsCardWithMethodId value)
+        cardFromMethodId,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
+    required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
+    required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
+    required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPay value) grabPay,
+    required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
+    required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsSofort value) sofort,
+    required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
+        afterpayClearpay,
+    required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+  }) {
+    return aubecs(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
+    TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
+    TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
+    TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPay value)? grabPay,
+    TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
+    TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsSofort value)? sofort,
+    TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
+        afterpayClearpay,
+    TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+  }) {
+    return aubecs?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
+    TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
+    TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
+    TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPay value)? grabPay,
+    TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
+    TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsSofort value)? sofort,
+    TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
+        afterpayClearpay,
+    TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    required TResult orElse(),
+  }) {
+    if (aubecs != null) {
+      return aubecs(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentMethodParamsAubecsToJson(this);
+  }
+}
+
+abstract class _PaymentMethodParamsAubecs implements PaymentMethodParams {
+  const factory _PaymentMethodParamsAubecs(
+      {required AubecsFormInputDetails formDetails,
+      BillingDetails? billingDetails}) = _$_PaymentMethodParamsAubecs;
+
+  factory _PaymentMethodParamsAubecs.fromJson(Map<String, dynamic> json) =
+      _$_PaymentMethodParamsAubecs.fromJson;
+
+  /// form input details
+  AubecsFormInputDetails get formDetails;
+
+  /// Billing information.
+  BillingDetails? get billingDetails;
+  @JsonKey(ignore: true)
+  _$PaymentMethodParamsAubecsCopyWith<_PaymentMethodParamsAubecs>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -4352,6 +4766,9 @@ class _$_PaymentMethodParamsBankContact
     required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
+    required TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)
+        aubecs,
     required TResult Function(BillingDetails? billingDetails) bancontact,
     required TResult Function(BillingDetails? billingDetails) giroPay,
     required TResult Function(BillingDetails? billingDetails) eps,
@@ -4387,6 +4804,9 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -4420,6 +4840,9 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -4456,6 +4879,7 @@ class _$_PaymentMethodParamsBankContact
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
@@ -4480,6 +4904,7 @@ class _$_PaymentMethodParamsBankContact
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -4504,6 +4929,7 @@ class _$_PaymentMethodParamsBankContact
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -4646,6 +5072,9 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
+    required TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)
+        aubecs,
     required TResult Function(BillingDetails? billingDetails) bancontact,
     required TResult Function(BillingDetails? billingDetails) giroPay,
     required TResult Function(BillingDetails? billingDetails) eps,
@@ -4681,6 +5110,9 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -4714,6 +5146,9 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -4750,6 +5185,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
@@ -4774,6 +5210,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -4798,6 +5235,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -4938,6 +5376,9 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
+    required TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)
+        aubecs,
     required TResult Function(BillingDetails? billingDetails) bancontact,
     required TResult Function(BillingDetails? billingDetails) giroPay,
     required TResult Function(BillingDetails? billingDetails) eps,
@@ -4973,6 +5414,9 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -5006,6 +5450,9 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -5042,6 +5489,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
@@ -5066,6 +5514,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -5090,6 +5539,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -5230,6 +5680,9 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
+    required TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)
+        aubecs,
     required TResult Function(BillingDetails? billingDetails) bancontact,
     required TResult Function(BillingDetails? billingDetails) giroPay,
     required TResult Function(BillingDetails? billingDetails) eps,
@@ -5265,6 +5718,9 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -5298,6 +5754,9 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -5334,6 +5793,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
@@ -5358,6 +5818,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -5382,6 +5843,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -5522,6 +5984,9 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
+    required TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)
+        aubecs,
     required TResult Function(BillingDetails? billingDetails) bancontact,
     required TResult Function(BillingDetails? billingDetails) giroPay,
     required TResult Function(BillingDetails? billingDetails) eps,
@@ -5557,6 +6022,9 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -5590,6 +6058,9 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -5626,6 +6097,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
@@ -5650,6 +6122,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -5674,6 +6147,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -5800,6 +6274,9 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
+    required TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)
+        aubecs,
     required TResult Function(BillingDetails? billingDetails) bancontact,
     required TResult Function(BillingDetails? billingDetails) giroPay,
     required TResult Function(BillingDetails? billingDetails) eps,
@@ -5835,6 +6312,9 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -5868,6 +6348,9 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -5904,6 +6387,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
@@ -5928,6 +6412,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -5952,6 +6437,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -6119,6 +6605,9 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
+    required TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)
+        aubecs,
     required TResult Function(BillingDetails? billingDetails) bancontact,
     required TResult Function(BillingDetails? billingDetails) giroPay,
     required TResult Function(BillingDetails? billingDetails) eps,
@@ -6154,6 +6643,9 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -6187,6 +6679,9 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -6223,6 +6718,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
@@ -6247,6 +6743,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -6271,6 +6768,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -6443,6 +6941,9 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
+    required TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)
+        aubecs,
     required TResult Function(BillingDetails? billingDetails) bancontact,
     required TResult Function(BillingDetails? billingDetails) giroPay,
     required TResult Function(BillingDetails? billingDetails) eps,
@@ -6478,6 +6979,9 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -6511,6 +7015,9 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -6547,6 +7054,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
@@ -6571,6 +7079,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -6595,6 +7104,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -6764,6 +7274,9 @@ class _$_PaymentMethodParamsAfterpayClearpay
     required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
+    required TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)
+        aubecs,
     required TResult Function(BillingDetails? billingDetails) bancontact,
     required TResult Function(BillingDetails? billingDetails) giroPay,
     required TResult Function(BillingDetails? billingDetails) eps,
@@ -6799,6 +7312,9 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -6832,6 +7348,9 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -6868,6 +7387,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
@@ -6892,6 +7412,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -6916,6 +7437,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -7063,6 +7585,9 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     required TResult Function() alipay,
     required TResult Function(BillingDetails? billingDetails, String? bankName)
         ideal,
+    required TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)
+        aubecs,
     required TResult Function(BillingDetails? billingDetails) bancontact,
     required TResult Function(BillingDetails? billingDetails) giroPay,
     required TResult Function(BillingDetails? billingDetails) eps,
@@ -7098,6 +7623,9 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -7131,6 +7659,9 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
     TResult Function()? alipay,
     TResult Function(BillingDetails? billingDetails, String? bankName)? ideal,
+    TResult Function(
+            AubecsFormInputDetails formDetails, BillingDetails? billingDetails)?
+        aubecs,
     TResult Function(BillingDetails? billingDetails)? bancontact,
     TResult Function(BillingDetails? billingDetails)? giroPay,
     TResult Function(BillingDetails? billingDetails)? eps,
@@ -7167,6 +7698,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
@@ -7191,6 +7723,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
@@ -7215,6 +7748,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,

@@ -248,6 +248,26 @@ Map<String, dynamic> _$$_PaymentMethodParamsIdealToJson(
       'type': instance.$type,
     };
 
+_$_PaymentMethodParamsAubecs _$$_PaymentMethodParamsAubecsFromJson(
+        Map<String, dynamic> json) =>
+    _$_PaymentMethodParamsAubecs(
+      formDetails: AubecsFormInputDetails.fromJson(
+          json['formDetails'] as Map<String, dynamic>),
+      billingDetails: json['billingDetails'] == null
+          ? null
+          : BillingDetails.fromJson(
+              json['billingDetails'] as Map<String, dynamic>),
+      $type: json['type'] as String?,
+    );
+
+Map<String, dynamic> _$$_PaymentMethodParamsAubecsToJson(
+        _$_PaymentMethodParamsAubecs instance) =>
+    <String, dynamic>{
+      'formDetails': instance.formDetails.toJson(),
+      'billingDetails': instance.billingDetails?.toJson(),
+      'type': instance.$type,
+    };
+
 _$_PaymentMethodParamsBankContact _$$_PaymentMethodParamsBankContactFromJson(
         Map<String, dynamic> json) =>
     _$_PaymentMethodParamsBankContact(
