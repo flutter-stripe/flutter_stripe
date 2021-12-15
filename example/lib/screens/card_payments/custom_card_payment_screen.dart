@@ -5,7 +5,6 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
 import 'package:stripe_example/config.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
-import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 class CustomCardPaymentScreen extends StatefulWidget {
   @override

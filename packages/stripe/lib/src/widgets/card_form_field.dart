@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 const String _kDebugPCIMessage =
     'Handling card data manually will break PCI compliance provided by Stripe. '

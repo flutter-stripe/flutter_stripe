@@ -1,6 +1,5 @@
 import 'package:flutter/painting.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 import 'color.dart';
 

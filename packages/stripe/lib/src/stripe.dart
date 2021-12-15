@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 /// [Stripe] is the facade of the library and exposes the operations that can be
