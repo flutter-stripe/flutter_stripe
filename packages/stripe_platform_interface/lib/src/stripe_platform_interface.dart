@@ -3,15 +3,6 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 import 'method_channel_stripe.dart';
-import 'models/apple_pay.dart';
-import 'models/card_details.dart';
-import 'models/create_token_data.dart';
-import 'models/google_pay.dart';
-import 'models/payment_intents.dart';
-import 'models/payment_methods.dart';
-import 'models/payment_sheet.dart';
-import 'models/setup_intent.dart';
-import 'models/three_d_secure.dart';
 
 abstract class StripePlatform extends PlatformInterface {
   StripePlatform() : super(token: _token);

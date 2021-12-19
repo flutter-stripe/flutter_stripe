@@ -32,7 +32,7 @@ Future<CheckoutResponse> redirectToCheckout({
       ),
     ),
   );
-  return response ?? CheckoutResponse.canceled();
+  return response ?? const CheckoutResponse.canceled();
 }
 
 /// Prebuilt payment web page hosted on Stripe loaded
@@ -98,10 +98,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 widget.canceledUrl ?? 'http://localhost:8080/#/canceled';
 
             if (request.url.startsWith(successUrl)) {
-              widget.onCompleted?.call(CheckoutResponse.success());
+              widget.onCompleted?.call(const CheckoutResponse.success());
               return NavigationDecision.prevent;
             } else if (request.url.startsWith(canceledUrl)) {
-              widget.onCompleted?.call(CheckoutResponse.canceled());
+              widget.onCompleted?.call(const CheckoutResponse.canceled());
               return NavigationDecision.prevent;
             }
             return NavigationDecision.navigate;
@@ -113,13 +113,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
   String get initialUrl {
     return 'data:text/html;base64,'
-        '${base64Encode(Utf8Encoder().convert(_htmlPage))}';
+        '${base64Encode(const Utf8Encoder().convert(_htmlPage))}';
   }
 
   Future<void> _redirectToStripe(String sessionId) async {
     final publishableKey = widget.publishableKey;
     final redirectToCheckoutJs = '''
-var stripe = Stripe(\"$publishableKey\");
+var stripe = Stripe("$publishableKey");
 stripe.redirectToCheckout({sessionId: "$sessionId"}).then(function (result) {
   result.error.message = 'Error'
 });

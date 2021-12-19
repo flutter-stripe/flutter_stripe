@@ -4,10 +4,8 @@ import 'dart:ui' as ui;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:stripe_platform_interface/stripe_platform_interface.dart';
-import 'package:flutter_stripe_web/src/web_stripe.dart';
 import '../../flutter_stripe_web.dart';
-import '../js/js.dart' as stripeJs;
+import '../js/js.dart' as stripe_js;
 import 'dart:developer' as dev;
 
 const kCardFieldDefaultHeight = 10.0;
@@ -65,8 +63,8 @@ class _WebStripeCardState extends State<WebCardField> with CardFieldContext {
     super.initState();
   }
 
-  stripeJs.Element? get element => WebStripe.element;
-  set element(stripeJs.Element? value) => WebStripe.element = value;
+  stripe_js.Element? get element => WebStripe.element;
+  set element(stripe_js.Element? value) => WebStripe.element = value;
 
   void initStripe() {
     attachController(controller);
@@ -102,10 +100,10 @@ class _WebStripeCardState extends State<WebCardField> with CardFieldContext {
   }
 
   void onCardChanged(response) {
-    if (response is stripeJs.ElementChangeResponse) {
+    if (response is stripe_js.ElementChangeResponse) {
       String? postalCode;
       final value = response.value;
-      if (value is stripeJs.ElementChangeValueOptionsResponse) {
+      if (value is stripe_js.ElementChangeValueOptionsResponse) {
         postalCode = value.postalCode;
       }
       final details = CardFieldInputDetails(
@@ -120,7 +118,7 @@ class _WebStripeCardState extends State<WebCardField> with CardFieldContext {
     throw 'On Card Element should be type ElementChangeResponse';
   }
 
-  FocusNode _focusNode = FocusNode(debugLabel: 'CardField');
+  final FocusNode _focusNode = FocusNode(debugLabel: 'CardField');
   FocusNode get _effectiveNode => widget.focusNode ?? _focusNode;
 
   @override
@@ -129,19 +127,19 @@ class _WebStripeCardState extends State<WebCardField> with CardFieldContext {
         const BoxConstraints.expand(height: kCardFieldDefaultHeight);
 
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 4),
+      padding: const EdgeInsets.symmetric(vertical: 4),
       child: Focus(
         focusNode: _effectiveNode,
         child: ConstrainedBox(
           constraints: constraints,
-          child: HtmlElementView(viewType: 'stripe_card'),
+          child: const HtmlElementView(viewType: 'stripe_card'),
         ),
       ),
     );
   }
 
-  stripeJs.ElementsOptions createOptions() {
-    return stripeJs.ElementsOptions(
+  stripe_js.ElementsOptions createOptions() {
+    return stripe_js.ElementsOptions(
       hidePostalCode: !widget.enablePostalCode,
     );
   }

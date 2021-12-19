@@ -3,8 +3,6 @@ import 'dart:js';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:stripe_platform_interface/stripe_platform_interface.dart';
-import 'package:flutter_stripe_web/src/web_stripe.dart';
 import '../../flutter_stripe_web.dart';
 import '../js/js.dart' as s;
 
@@ -61,7 +59,7 @@ class _PaymentElementState extends State<PaymentElement> {
 
   void initStripe() {
     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-      Future.delayed(Duration(milliseconds: 100), () {
+      Future.delayed(const Duration(milliseconds: 100), () {
         element = WebStripe.js.elements().create('payment', createOptions())
           ..mount('#payment-element')
           ..on('blur', allowInterop(requestBlur))
@@ -92,13 +90,13 @@ class _PaymentElementState extends State<PaymentElement> {
         postalCode: postalCode,
       );
       widget.onCardChanged(details);
-      print(details);
+
       return;
     }
     throw 'On Card Element should be type ElementChangeResponse';
   }
 
-  FocusNode _focusNode = FocusNode(debugLabel: 'CardField');
+  final FocusNode _focusNode = FocusNode(debugLabel: 'CardField');
   FocusNode get _effectiveNode => widget.focusNode ?? _focusNode;
 
   @override
@@ -107,7 +105,7 @@ class _PaymentElementState extends State<PaymentElement> {
         const BoxConstraints.expand(height: kCardFieldDefaultHeight);
 
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: Focus(
         focusNode: _effectiveNode,
         onFocusChange: (focus) {
@@ -118,7 +116,7 @@ class _PaymentElementState extends State<PaymentElement> {
         },
         child: ConstrainedBox(
           constraints: constraints,
-          child: HtmlElementView(viewType: 'stripe_payment_element'),
+          child: const HtmlElementView(viewType: 'stripe_payment_element'),
         ),
       ),
     );

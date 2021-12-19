@@ -10,14 +10,14 @@ extension PaymentMethodParser on s.PaymentMethod {
       livemode: livemode,
       type: type,
       card: card.parse(),
-      auBecsDebit: AuBecsDebit(),
-      bacsDebit: BacsDebit(),
+      auBecsDebit: const AuBecsDebit(),
+      bacsDebit: const BacsDebit(),
       billingDetails: billing_details.parse(),
-      fpx: Fpx(),
-      ideal: Ideal(),
-      sepaDebit: SepaDebit(),
-      sofort: Sofort(),
-      upi: Upi(),
+      fpx: const Fpx(),
+      ideal: const Ideal(),
+      sepaDebit: const SepaDebit(),
+      sofort: const Sofort(),
+      upi: const Upi(),
     );
   }
 }

@@ -11,15 +11,13 @@ import 'parser/payment_methods.dart';
 import 'parser/payment_intent.dart';
 import 'parser/setup_intent.dart';
 
-import 'package:stripe_platform_interface/stripe_platform_interface.dart';
-
 /// An implementation of [StripePlatform] that uses method channels.
 class WebStripe extends StripePlatform {
   static s.StripeJS get js => __stripe!;
   static s.StripeJS? __stripe;
   s.StripeJS get _stripe {
     assert(__stripe != null);
-    return _stripe;
+    return __stripe!;
   }
 
   static void registerWith(Registrar registrar) {
@@ -217,7 +215,7 @@ class WebStripe extends StripePlatform {
     final options = s.StripeServerCheckoutOptions(sessionId: sessionId);
     final response = await js.redirectToCheckout(options);
     if (response != null) return CheckoutResponse.error(error: response.error);
-    return CheckoutResponse.canceled();
+    return const CheckoutResponse.canceled();
   }
 
   @override
@@ -325,6 +323,7 @@ class WebStripe extends StripePlatform {
 }
 
 class WebUnsupportedError extends Error implements UnsupportedError {
+  @override
   final String? message;
 
   WebUnsupportedError([this.message]);
@@ -333,6 +332,7 @@ class WebUnsupportedError extends Error implements UnsupportedError {
       : message = (method != null)
             ? "$method is not supported for Web"
             : "not supported for Web";
+  @override
   String toString() => (message != null)
       ? "WebUnsupportedError: $message"
       : "WebUnsupportedError";

@@ -7,7 +7,7 @@ import 'package:flutter_stripe_web/src/web_stripe.dart';
 import '../../flutter_stripe_web.dart';
 import '../js/js.dart' as s;
 
-final _kDomElementId = 'native-pay-element';
+const _kDomElementId = 'native-pay-element';
 
 class NativePayButton extends StatefulWidget {
   final FocusNode? focusNode;
@@ -69,23 +69,24 @@ class _WebStripeCardState extends State<NativePayButton> {
     });
   }
 
-  FocusNode _focusNode = FocusNode(debugLabel: 'CardField');
+  final FocusNode _focusNode = FocusNode(debugLabel: 'CardField');
 
   @override
   Widget build(BuildContext context) {
     return Focus(
       focusNode: _focusNode,
       onFocusChange: (focus) {
-        if (focus)
+        if (focus) {
           element?.focus();
-        else
+        } else {
           element?.blur();
+        }
       },
       child: Container(
         alignment: Alignment.center,
         height: 42,
         width: 500,
-        child: HtmlElementView(viewType: _kDomElementId),
+        child: const HtmlElementView(viewType: _kDomElementId),
       ),
     );
   }

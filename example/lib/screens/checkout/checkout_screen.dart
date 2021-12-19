@@ -13,25 +13,25 @@ final kApiUrl = defaultTargetPlatform == TargetPlatform.android
     ? 'http://10.0.2.2:4242'
     : 'http://localhost:4242';
 
-
 class CheckoutScreenExample extends StatefulWidget {
-  CheckoutScreenExample({Key? key, this.title, this.snackBarText}) : super(key: key);
+  CheckoutScreenExample({Key? key, this.title, this.snackBarText})
+      : super(key: key);
 
   final String? title;
 
   final String? snackBarText;
 
   static final routes = {
-        // For Flutter web
-        '/success': (c) => CheckoutScreenExample(
-              title: 'Checkout -  Done',
-              snackBarText: 'Paid succesfully',
-            ),
-        '/canceled': (c) => CheckoutScreenExample(
-              title: 'Checkout -  Canceled',
-              snackBarText: 'Checkout canceled',
-            ),
-      };
+    // For Flutter web
+    '/success': (c) => CheckoutScreenExample(
+          title: 'Checkout -  Done',
+          snackBarText: 'Paid succesfully',
+        ),
+    '/canceled': (c) => CheckoutScreenExample(
+          title: 'Checkout -  Canceled',
+          snackBarText: 'Checkout canceled',
+        ),
+  };
 
   @override
   _CheckoutScreenExample createState() => _CheckoutScreenExample();

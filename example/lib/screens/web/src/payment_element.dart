@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:stripe_example/config.dart';
 
 import 'package:http/http.dart' as http;
@@ -12,8 +11,6 @@ class PaymentElementExample extends StatefulWidget {
 }
 
 class _ThemeCardExampleState extends State<PaymentElementExample> {
- 
-
   String? clientSecret;
 
   @override
@@ -42,23 +39,24 @@ class _ThemeCardExampleState extends State<PaymentElementExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Flutter App'),),
+      appBar: AppBar(
+        title: Text('Flutter App'),
+      ),
       body: Column(
         children: [
-         
-         // Container(
-         //   height: 150,
-         //   alignment: Alignment.center,
-         //   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-         //   child:  clientSecret != null ? PaymentElement(
-         //     autofocus: true,
-         //     enablePostalCode: true,
-         //     onCardChanged: (_) {},
-         //     clientSecret: clientSecret ?? '',
-         //   ) : Center(
-         //     child: CircularProgressIndicator(),
-         //   ) 
-         // )
+          // Container(
+          //   height: 150,
+          //   alignment: Alignment.center,
+          //   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+          //   child:  clientSecret != null ? PaymentElement(
+          //     autofocus: true,
+          //     enablePostalCode: true,
+          //     onCardChanged: (_) {},
+          //     clientSecret: clientSecret ?? '',
+          //   ) : Center(
+          //     child: CircularProgressIndicator(),
+          //   )
+          // )
         ],
       ),
     );

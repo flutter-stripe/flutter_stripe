@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, annotate_overrides, use_function_type_syntax_for_parameters
+
 part of 'js.dart';
 
 /*type StripeRedirectResponse = never | {
