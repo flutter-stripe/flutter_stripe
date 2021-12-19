@@ -4,11 +4,16 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import 'checkout.dart';
 
+/// Redirects to a prebuilt payment web page hosted on Stripe
+///
+/// The view is rendered directly for web and inside a webview for
+/// mobile platforms
+///
+/// To have a custom route transition use [CheckoutPage] directly
 Future<CheckoutResponse> redirectToCheckout({
   required BuildContext context,
   required String sessionId,
@@ -30,13 +35,9 @@ Future<CheckoutResponse> redirectToCheckout({
   return response ?? CheckoutResponse.canceled();
 }
 
+/// Prebuilt payment web page hosted on Stripe loaded
+/// in app via a webview
 class CheckoutPage extends StatefulWidget {
-  final Function(CheckoutResponse)? onCompleted;
-  final String sessionId;
-  final String? successUrl;
-  final String? canceledUrl;
-  final String? publishableKey;
-
   const CheckoutPage({
     Key? key,
     required this.sessionId,
@@ -48,6 +49,27 @@ class CheckoutPage extends StatefulWidget {
 
   @override
   _CheckoutPageState createState() => _CheckoutPageState();
+
+  /// The ID of the Checkout Session that is used in
+  /// Checkout's client and server integration.
+  final String sessionId;
+
+  /// The URL to which Stripe should send customers when payment is complete.
+  ///
+  /// Only needed when using on a non web app. If the webview url matches
+  /// this one, [onCompleted] will return as succesfull
+  final String? successUrl;
+
+  /// The URL to which Stripe should send customers when payment is canceled.
+  ///
+  /// Only needed when using on a non web app. If the webview url matches
+  /// this one, [onCompleted] will return as canceled
+  final String? canceledUrl;
+
+  /// Stripe publishable key
+  final String? publishableKey;
+
+  final Function(CheckoutResponse)? onCompleted;
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
@@ -105,7 +127,8 @@ stripe.redirectToCheckout({sessionId: "$sessionId"}).then(function (result) {
 ''';
 
     try {
-      await _webViewController?.runJavascript(redirectToCheckoutJs);
+      assert(_webViewController != null, 'WebView has not been created');
+      await _webViewController!.runJavascript(redirectToCheckoutJs);
     } on PlatformException catch (e) {
       if (!e.details.contains(
           'JavaScript execution returned a result of an unsupported type')) {

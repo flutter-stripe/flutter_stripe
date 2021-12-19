@@ -49,7 +49,6 @@ abstract class Element {
   external void update(ElementsOptions options);
 }
 
-
 @anonymous
 @JS()
 abstract class ElementChangeResponse {
@@ -225,7 +224,6 @@ abstract class ElementsOptions {
       JsArray<String> supportedCountries,
       bool disabled});
 }
-
 
 @JS()
 @anonymous

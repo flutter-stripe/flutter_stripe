@@ -373,7 +373,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
         onPlatformViewCreated: onPlatformViewCreated,
       );
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
-       platform = Listener(
+      platform = Listener(
         onPointerDown: (_) {
           if (!_effectiveNode.hasFocus) {
             _effectiveNode.requestFocus();
@@ -608,4 +608,3 @@ const kCardFieldDefaultHeight = 48.0;
 const kCardFieldDefaultFontSize = 17.0;
 const kCardFieldDefaultTextColor = Colors.black;
 const kCardFieldDefaultFontFamily = 'Roboto';
-

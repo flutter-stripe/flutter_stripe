@@ -1,6 +1,5 @@
 part of 'js.dart';
 
-
 extension StripeJSExtension on StripeJS {
   _StripeJS get js => this as _StripeJS;
 
@@ -35,8 +34,6 @@ extension StripeJSExtension on StripeJS {
     return promiseToFuture(js.createPaymentMethod(paymentMethodData));
   }
 
- 
-
   Future<SetupIntentResponse> handleCardSetup(
     String clientSecret, [
     dynamic /*Element|HandleCardSetupOptionsWithoutElementsOptions*/ element_data,
@@ -66,14 +63,11 @@ extension StripeJSExtension on StripeJS {
       {required ConfirmSepaDebitSetupData data}) {
     return promiseToFuture(js.confirmSepaDebitSetup(clientSecret, data));
   }
-
-  
 }
 
 @anonymous
 @JS()
 abstract class _StripeJS {
-
   external StripePaymentRequest paymentRequest(
       StripePaymentRequestOptions options);
 
@@ -99,7 +93,7 @@ abstract class _StripeJS {
   external Promise<PaymentMethodResponse> createPaymentMethod(
     dynamic /*'card'|'card_present'|PaymentMethodData*/ paymentMethodData,
   );
-  
+
   /*external Promise<SetupIntentResponse> handleCardSetup(
     String clientSecret, Element element,
     [HandleCardSetupOptions data]);
@@ -117,5 +111,4 @@ abstract class _StripeJS {
   external Promise<SetupIntentResponse> confirmSepaDebitSetup(
       String clientSecret,
       [ConfirmSepaDebitSetupData data]);
- 
 }

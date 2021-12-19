@@ -1,7 +1,5 @@
-
 @JS()
 library stripe;
-
 
 import 'package:js/js.dart';
 
@@ -11,7 +9,6 @@ class Stripe {
   external String get publicKey;
   external redirectToCheckout(StripeServerCheckoutOptions checkoutOptions);
 }
-
 
 @anonymous
 @JS()

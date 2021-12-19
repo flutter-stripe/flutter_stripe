@@ -229,6 +229,3 @@ extension StripePaymentRequestExtensions on StripePaymentRequest {
     return promiseToFuture(tt.canMakePayment());
   }
 }
-
-
-

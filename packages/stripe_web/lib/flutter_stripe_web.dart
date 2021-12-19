@@ -1,4 +1,3 @@
-
 library stripe_web;
 
 export 'src/widgets/native_pay.dart';

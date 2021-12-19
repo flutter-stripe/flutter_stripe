@@ -1,4 +1,3 @@
-
 import 'dart:html';
 import 'dart:js';
 import 'dart:ui' as ui;
@@ -8,9 +7,8 @@ import 'package:flutter/widgets.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 import 'package:flutter_stripe_web/src/web_stripe.dart';
 import '../../flutter_stripe_web.dart';
-import '../js/js.dart' as s;
+import '../js/js.dart' as stripeJs;
 import 'dart:developer' as dev;
-
 
 const kCardFieldDefaultHeight = 10.0;
 const kCardFieldDefaultFontSize = 17.0;
@@ -67,8 +65,8 @@ class _WebStripeCardState extends State<WebCardField> with CardFieldContext {
     super.initState();
   }
 
-  s.Element? get element => WebStripe.element;
-  set element(s.Element? value) => WebStripe.element = value;
+  stripeJs.Element? get element => WebStripe.element;
+  set element(stripeJs.Element? value) => WebStripe.element = value;
 
   void initStripe() {
     attachController(controller);
@@ -104,10 +102,10 @@ class _WebStripeCardState extends State<WebCardField> with CardFieldContext {
   }
 
   void onCardChanged(response) {
-    if (response is s.ElementChangeResponse) {
+    if (response is stripeJs.ElementChangeResponse) {
       String? postalCode;
       final value = response.value;
-      if (value is s.ElementChangeValueOptionsResponse) {
+      if (value is stripeJs.ElementChangeValueOptionsResponse) {
         postalCode = value.postalCode;
       }
       final details = CardFieldInputDetails(
@@ -142,8 +140,8 @@ class _WebStripeCardState extends State<WebCardField> with CardFieldContext {
     );
   }
 
-  s.ElementsOptions createOptions() {
-    return s.ElementsOptions(
+  stripeJs.ElementsOptions createOptions() {
+    return stripeJs.ElementsOptions(
       hidePostalCode: !widget.enablePostalCode,
     );
   }
