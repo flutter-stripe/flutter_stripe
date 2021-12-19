@@ -55,6 +55,13 @@ This is caused by the Stripe SDK requires the use of the AppCompat theme for the
 
 Compatible with apps targeting iOS 11 or above.
 
+#### Web (Experimental)
+
+Now you can use Stripe with Flutter web! Notice right now it is highly experimental and only a subset of features is implemented.
+
+Check the steps needed [here](https://github.com/flutter-stripe/flutter_stripe/tree/main/packages/stripe_web)
+
+
 ## Usage example
 
 ```dart

@@ -20,6 +20,10 @@ app.use(
     res: express.Response,
     next: express.NextFunction
   ): void => {
+    // Only for local dev purposes
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     if (req.originalUrl === '/webhook') {
       next();
     } else {
@@ -504,6 +508,108 @@ app.post('/payment-sheet', async (_, res) => {
   });
 });
 
+
+app.post('/create-checkout-session', async (req, res) => {
+  const {
+    port,
+  }: { port?: string; } = req.body;
+  var effectivePort = port ?? 8080;
+  const { secret_key } = getKeys();
+
+  const stripe = new Stripe(secret_key as string, {
+    apiVersion: '2020-08-27',
+    typescript: true,
+  });
+
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: [
+      {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: 'Stubborn Attachments',
+            images: ['https://i.imgur.com/EHyR2nP.png'],
+          },
+          unit_amount: 2000,
+        },
+        quantity: 1,
+      },
+    ],
+    mode: 'payment',
+    success_url: `http://localhost:${effectivePort}/#/success`,
+    cancel_url: `http://localhost:${effectivePort}/#/canceled`,
+  });
+  res.json({ id: session.id });
+});
+
+
+// An endpoint to charge a saved card
+// In your application you may want a cron job / other internal process
+app.post('/universal-payment', async (req, res) => {
+  let paymentIntent, customer;
+  try {
+    const { secret_key } = getKeys();
+
+    const stripe = new Stripe(secret_key as string, {
+      apiVersion: '2020-08-27',
+      typescript: true,
+    });
+    // You need to attach the PaymentMethod to a Customer in order to reuse
+    // Since we are using test cards, create a new Customer here
+    // You would do this in your payment flow that saves cards
+    //  customer = await stripe.customers.list({
+    //    email: req.body.email,
+    //  });
+
+    // Create and confirm a PaymentIntent with the order amount, currency,
+    // Customer and PaymentMethod ID
+    paymentIntent = await stripe.paymentIntents.create({
+      amount: calculateOrderAmount(),
+      currency: 'eur',
+      payment_method_types: ['bancontact', 'card', 'ideal'],
+      //customer: customer.data[0].id,
+    });
+
+    res.send({
+      clientSecret: paymentIntent.client_secret,
+    });
+  } catch (err) {
+    if (err.code === 'authentication_required') {
+      // Bring the customer back on-session to authenticate the purchase
+      // You can do this by sending an email or app notification to let them know
+      // the off-session purchase failed
+      // Use the PM ID and client_secret to authenticate the purchase
+      // without asking your customers to re-enter their details
+      res.send({
+        error: 'authentication_required',
+        paymentMethod: err.raw.payment_method.id,
+        clientSecret: err.raw.payment_intent.client_secret,
+        publicKey: stripePublishableKey,
+        amount: calculateOrderAmount(),
+        card: {
+          brand: err.raw.payment_method.card.brand,
+          last4: err.raw.payment_method.card.last4,
+        },
+      });
+    } else if (err.code) {
+      // The card was declined for other reasons (e.g. insufficient funds)
+      // Bring the customer back on-session to ask them for a new payment method
+      res.send({
+        error: err.code,
+        clientSecret: err.raw.payment_intent.client_secret,
+        publicKey: stripePublishableKey,
+      });
+    } else {
+      console.log('Unknown error occurred', err);
+    }
+  }
+});
+
+
+
 app.listen(4242, (): void =>
   console.log(`Node server listening on port ${4242}!`)
 );
+
+

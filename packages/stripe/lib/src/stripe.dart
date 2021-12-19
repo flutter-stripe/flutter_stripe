@@ -401,6 +401,9 @@ class Stripe {
   bool _needsSettings = true;
   void markNeedsSettings() {
     _needsSettings = true;
+    if (!_platform.updateSettingsLazily) {
+      _awaitForSettings();
+    }
   }
 
   Future<void> _initialise({
@@ -421,4 +424,7 @@ class Stripe {
   }
 
   ValueNotifier<bool>? _isApplePaySupported;
+
+  // Internal use only
+  static late final buildWebCard = _platform.buildCard;
 }
