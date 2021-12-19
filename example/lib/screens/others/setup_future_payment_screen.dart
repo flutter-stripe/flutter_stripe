@@ -10,7 +10,6 @@ import 'package:stripe_example/utils.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 import 'package:stripe_example/widgets/response_card.dart';
-import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 class SetupFuturePaymentScreen extends StatefulWidget {
   @override

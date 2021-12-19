@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:stripe_platform_interface/src/method_channel_stripe.dart';
-import 'package:stripe_platform_interface/src/models/payment_methods.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 import 'method_channel_mock.dart';
