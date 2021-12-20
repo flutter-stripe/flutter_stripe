@@ -1,3 +1,13 @@
+## 2.1.0
+
+** Enabled web support (Beta) **
+
+Other changes
+- Integrated native form to collect Aubecs payment data
+- Add Button Border-Radius for Apple Pay Button #448
+- Update dependencies to comply to new Flutter and dart release
+- Add billing name for future payments #441
+
 ## 2.0.2
 
 - New params `primaryButtonColor`, `billingDetails` and `allowsDelayedPaymentMethods` for `initPaymentSheet`

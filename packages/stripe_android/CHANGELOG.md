@@ -1,3 +1,9 @@
+## 2.1.0
+
+- Integrated native form to collect Aubecs payment data
+- Update dependencies to comply to new Flutter and dart release
+- Add billing name for future payments #441
+
 ## 2.0.2
 
 - New params `primaryButtonColor`, `billingDetails` and `allowsDelayedPaymentMethods` for `initPaymentSheet`
