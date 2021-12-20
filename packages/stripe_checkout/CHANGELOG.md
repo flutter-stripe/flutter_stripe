@@ -1,3 +1,3 @@
-## [0.0.1-dev2] - First release
+## 0.1.0
 
-* Beta release for Stripe checkout
+- Beta release for Stripe checkout.
