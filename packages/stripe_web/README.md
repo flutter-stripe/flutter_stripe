@@ -4,7 +4,7 @@ This package is in a very early stage so be cautious to use it in production.
 
 ## Getting Started
 
-1. Add flutter_stripe and flutter_stripe_web in your pubspec file
+1. Add `flutter_stripe` and `flutter_stripe_web` in your pubspec file
 2. Add the js library inside `web/index.html`
 
 ```html
