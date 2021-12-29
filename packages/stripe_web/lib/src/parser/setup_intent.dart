@@ -46,7 +46,6 @@ extension SetupStatusExtension on PaymentIntentsStatus {
       case 'requires_capture':
         return PaymentIntentsStatus.RequiresCapture;
       case 'Unknown':
-      case 'unknown':
         return PaymentIntentsStatus.Unknown;
     }
     throw '$value is not a payment intent status';
