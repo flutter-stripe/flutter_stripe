@@ -786,10 +786,10 @@ abstract class ShippingDetails {
   external set tracking_number(String v);
   external factory ShippingDetails(
       {ShippingDetailsAddress address,
-      String name,
-      String carrier,
-      String phone,
-      String tracking_number});
+      String? name,
+      String? carrier,
+      String? phone,
+      String? tracking_number});
 }
 
 @anonymous
