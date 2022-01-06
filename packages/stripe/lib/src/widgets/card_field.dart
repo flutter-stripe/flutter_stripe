@@ -159,6 +159,8 @@ class _CardFieldState extends State<CardField> {
               style: style,
               placeholder: placeholder,
               enablePostalCode: widget.enablePostalCode,
+              dangerouslyGetFullCardDetails: widget.dangerouslyGetFullCardDetails,
+              dangerouslyUpdateFullCardDetails: widget.dangerouslyUpdateFullCardDetails,
               onCardChanged: widget.onCardChanged,
               autofocus: widget.autofocus,
               onFocus: widget.onFocus,
