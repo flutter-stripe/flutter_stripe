@@ -115,7 +115,9 @@ class _CardFieldState extends State<CardField> {
   }
 
   void updateState() {
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   @override
@@ -159,8 +161,10 @@ class _CardFieldState extends State<CardField> {
               style: style,
               placeholder: placeholder,
               enablePostalCode: widget.enablePostalCode,
-              dangerouslyGetFullCardDetails: widget.dangerouslyGetFullCardDetails,
-              dangerouslyUpdateFullCardDetails: widget.dangerouslyUpdateFullCardDetails,
+              dangerouslyGetFullCardDetails:
+                  widget.dangerouslyGetFullCardDetails,
+              dangerouslyUpdateFullCardDetails:
+                  widget.dangerouslyUpdateFullCardDetails,
               onCardChanged: widget.onCardChanged,
               autofocus: widget.autofocus,
               onFocus: widget.onFocus,
@@ -507,7 +511,9 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
     if (methodChannel == null) {
       return;
     }
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
     if (!isFocused) {
       blur();
       return;
