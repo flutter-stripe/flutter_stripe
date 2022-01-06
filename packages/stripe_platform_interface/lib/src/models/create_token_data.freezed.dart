@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'create_token_data.dart';
@@ -148,7 +149,7 @@ class _$_CreateTokenParams implements _CreateTokenParams {
   factory _$_CreateTokenParams.fromJson(Map<String, dynamic> json) =>
       _$$_CreateTokenParamsFromJson(json);
 
-  @JsonKey(defaultValue: TokenType.Card)
+  @JsonKey()
   @override
 
   /// Type of token.
@@ -168,12 +169,15 @@ class _$_CreateTokenParams implements _CreateTokenParams {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _CreateTokenParams &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.address, address) || other.address == address));
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.address, address));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, type, address);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(address));
 
   @JsonKey(ignore: true)
   @override
@@ -468,20 +472,25 @@ class _$_TokenData implements _TokenData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _TokenData &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.createdDateTime, createdDateTime) ||
-                other.createdDateTime == createdDateTime) &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.livemode, livemode) ||
-                other.livemode == livemode) &&
-            (identical(other.bankAccount, bankAccount) ||
-                other.bankAccount == bankAccount) &&
-            (identical(other.card, card) || other.card == card));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.createdDateTime, createdDateTime) &&
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.livemode, livemode) &&
+            const DeepCollectionEquality()
+                .equals(other.bankAccount, bankAccount) &&
+            const DeepCollectionEquality().equals(other.card, card));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, createdDateTime, type, livemode, bankAccount, card);
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(createdDateTime),
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(livemode),
+      const DeepCollectionEquality().hash(bankAccount),
+      const DeepCollectionEquality().hash(card));
 
   @JsonKey(ignore: true)
   @override
@@ -848,22 +857,29 @@ class _$_CardData implements _CardData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _CardData &&
-            (identical(other.brand, brand) || other.brand == brand) &&
-            (identical(other.country, country) || other.country == country) &&
-            (identical(other.currency, currency) ||
-                other.currency == currency) &&
-            (identical(other.expYear, expYear) || other.expYear == expYear) &&
-            (identical(other.expMonth, expMonth) ||
-                other.expMonth == expMonth) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.funding, funding) || other.funding == funding) &&
-            (identical(other.last4, last4) || other.last4 == last4) &&
-            (identical(other.address, address) || other.address == address));
+            const DeepCollectionEquality().equals(other.brand, brand) &&
+            const DeepCollectionEquality().equals(other.country, country) &&
+            const DeepCollectionEquality().equals(other.currency, currency) &&
+            const DeepCollectionEquality().equals(other.expYear, expYear) &&
+            const DeepCollectionEquality().equals(other.expMonth, expMonth) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.funding, funding) &&
+            const DeepCollectionEquality().equals(other.last4, last4) &&
+            const DeepCollectionEquality().equals(other.address, address));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, brand, country, currency,
-      expYear, expMonth, name, funding, last4, address);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(brand),
+      const DeepCollectionEquality().hash(country),
+      const DeepCollectionEquality().hash(currency),
+      const DeepCollectionEquality().hash(expYear),
+      const DeepCollectionEquality().hash(expMonth),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(funding),
+      const DeepCollectionEquality().hash(last4),
+      const DeepCollectionEquality().hash(address));
 
   @JsonKey(ignore: true)
   @override
@@ -1187,23 +1203,28 @@ class _$_BankAccount implements _BankAccount {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _BankAccount &&
-            (identical(other.accountHolderType, accountHolderType) ||
-                other.accountHolderType == accountHolderType) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.bankName, bankName) ||
-                other.bankName == bankName) &&
-            (identical(other.accountHolderName, accountHolderName) ||
-                other.accountHolderName == accountHolderName) &&
-            (identical(other.country, country) || other.country == country) &&
-            (identical(other.currency, currency) ||
-                other.currency == currency) &&
-            (identical(other.routingNumber, routingNumber) ||
-                other.routingNumber == routingNumber));
+            const DeepCollectionEquality()
+                .equals(other.accountHolderType, accountHolderType) &&
+            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality().equals(other.bankName, bankName) &&
+            const DeepCollectionEquality()
+                .equals(other.accountHolderName, accountHolderName) &&
+            const DeepCollectionEquality().equals(other.country, country) &&
+            const DeepCollectionEquality().equals(other.currency, currency) &&
+            const DeepCollectionEquality()
+                .equals(other.routingNumber, routingNumber));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, accountHolderType, status,
-      bankName, accountHolderName, country, currency, routingNumber);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(accountHolderType),
+      const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(bankName),
+      const DeepCollectionEquality().hash(accountHolderName),
+      const DeepCollectionEquality().hash(country),
+      const DeepCollectionEquality().hash(currency),
+      const DeepCollectionEquality().hash(routingNumber));
 
   @JsonKey(ignore: true)
   @override

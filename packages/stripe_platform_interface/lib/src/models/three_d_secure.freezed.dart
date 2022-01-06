@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'three_d_secure.dart';
@@ -446,36 +447,35 @@ class _$_ThreeDSecureConfigurationParams
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ThreeDSecureConfigurationParams &&
-            (identical(other.navigationBar, navigationBar) ||
-                other.navigationBar == navigationBar) &&
-            (identical(other.timeout, timeout) || other.timeout == timeout) &&
-            (identical(other.label, label) || other.label == label) &&
-            (identical(other.textField, textField) ||
-                other.textField == textField) &&
-            (identical(other.submitButton, submitButton) ||
-                other.submitButton == submitButton) &&
-            (identical(other.cancelButton, cancelButton) ||
-                other.cancelButton == cancelButton) &&
-            (identical(other.nextButton, nextButton) ||
-                other.nextButton == nextButton) &&
-            (identical(other.continueButton, continueButton) ||
-                other.continueButton == continueButton) &&
-            (identical(other.resendButton, resendButton) ||
-                other.resendButton == resendButton));
+            const DeepCollectionEquality()
+                .equals(other.navigationBar, navigationBar) &&
+            const DeepCollectionEquality().equals(other.timeout, timeout) &&
+            const DeepCollectionEquality().equals(other.label, label) &&
+            const DeepCollectionEquality().equals(other.textField, textField) &&
+            const DeepCollectionEquality()
+                .equals(other.submitButton, submitButton) &&
+            const DeepCollectionEquality()
+                .equals(other.cancelButton, cancelButton) &&
+            const DeepCollectionEquality()
+                .equals(other.nextButton, nextButton) &&
+            const DeepCollectionEquality()
+                .equals(other.continueButton, continueButton) &&
+            const DeepCollectionEquality()
+                .equals(other.resendButton, resendButton));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      navigationBar,
-      timeout,
-      label,
-      textField,
-      submitButton,
-      cancelButton,
-      nextButton,
-      continueButton,
-      resendButton);
+      const DeepCollectionEquality().hash(navigationBar),
+      const DeepCollectionEquality().hash(timeout),
+      const DeepCollectionEquality().hash(label),
+      const DeepCollectionEquality().hash(textField),
+      const DeepCollectionEquality().hash(submitButton),
+      const DeepCollectionEquality().hash(cancelButton),
+      const DeepCollectionEquality().hash(nextButton),
+      const DeepCollectionEquality().hash(continueButton),
+      const DeepCollectionEquality().hash(resendButton));
 
   @JsonKey(ignore: true)
   @override
@@ -792,23 +792,28 @@ class _$_ThreeDSecureNavigationBarThemeData
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ThreeDSecureNavigationBarThemeData &&
-            (identical(other.headerText, headerText) ||
-                other.headerText == headerText) &&
-            (identical(other.buttonText, buttonText) ||
-                other.buttonText == buttonText) &&
-            (identical(other.textColor, textColor) ||
-                other.textColor == textColor) &&
-            (identical(other.statusBarColor, statusBarColor) ||
-                other.statusBarColor == statusBarColor) &&
-            (identical(other.backgroundColor, backgroundColor) ||
-                other.backgroundColor == backgroundColor) &&
-            (identical(other.textFontSize, textFontSize) ||
-                other.textFontSize == textFontSize));
+            const DeepCollectionEquality()
+                .equals(other.headerText, headerText) &&
+            const DeepCollectionEquality()
+                .equals(other.buttonText, buttonText) &&
+            const DeepCollectionEquality().equals(other.textColor, textColor) &&
+            const DeepCollectionEquality()
+                .equals(other.statusBarColor, statusBarColor) &&
+            const DeepCollectionEquality()
+                .equals(other.backgroundColor, backgroundColor) &&
+            const DeepCollectionEquality()
+                .equals(other.textFontSize, textFontSize));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, headerText, buttonText,
-      textColor, statusBarColor, backgroundColor, textFontSize);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(headerText),
+      const DeepCollectionEquality().hash(buttonText),
+      const DeepCollectionEquality().hash(textColor),
+      const DeepCollectionEquality().hash(statusBarColor),
+      const DeepCollectionEquality().hash(backgroundColor),
+      const DeepCollectionEquality().hash(textFontSize));
 
   @JsonKey(ignore: true)
   @override
@@ -1059,19 +1064,22 @@ class _$_ThreeDSecureLabelThemeData implements _ThreeDSecureLabelThemeData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ThreeDSecureLabelThemeData &&
-            (identical(other.headingTextColor, headingTextColor) ||
-                other.headingTextColor == headingTextColor) &&
-            (identical(other.textColor, textColor) ||
-                other.textColor == textColor) &&
-            (identical(other.textFontSize, textFontSize) ||
-                other.textFontSize == textFontSize) &&
-            (identical(other.headingFontSize, headingFontSize) ||
-                other.headingFontSize == headingFontSize));
+            const DeepCollectionEquality()
+                .equals(other.headingTextColor, headingTextColor) &&
+            const DeepCollectionEquality().equals(other.textColor, textColor) &&
+            const DeepCollectionEquality()
+                .equals(other.textFontSize, textFontSize) &&
+            const DeepCollectionEquality()
+                .equals(other.headingFontSize, headingFontSize));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, headingTextColor, textColor, textFontSize, headingFontSize);
+      runtimeType,
+      const DeepCollectionEquality().hash(headingTextColor),
+      const DeepCollectionEquality().hash(textColor),
+      const DeepCollectionEquality().hash(textFontSize),
+      const DeepCollectionEquality().hash(headingFontSize));
 
   @JsonKey(ignore: true)
   @override
@@ -1337,21 +1345,25 @@ class _$_ThreeDSecureTextFieldThemeData
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ThreeDSecureTextFieldThemeData &&
-            (identical(other.borderColor, borderColor) ||
-                other.borderColor == borderColor) &&
-            (identical(other.borderWidth, borderWidth) ||
-                other.borderWidth == borderWidth) &&
-            (identical(other.cornerRadius, cornerRadius) ||
-                other.cornerRadius == cornerRadius) &&
-            (identical(other.textColor, textColor) ||
-                other.textColor == textColor) &&
-            (identical(other.textFontSize, textFontSize) ||
-                other.textFontSize == textFontSize));
+            const DeepCollectionEquality()
+                .equals(other.borderColor, borderColor) &&
+            const DeepCollectionEquality()
+                .equals(other.borderWidth, borderWidth) &&
+            const DeepCollectionEquality()
+                .equals(other.cornerRadius, cornerRadius) &&
+            const DeepCollectionEquality().equals(other.textColor, textColor) &&
+            const DeepCollectionEquality()
+                .equals(other.textFontSize, textFontSize));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, borderColor, borderWidth,
-      cornerRadius, textColor, textFontSize);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(borderColor),
+      const DeepCollectionEquality().hash(borderWidth),
+      const DeepCollectionEquality().hash(cornerRadius),
+      const DeepCollectionEquality().hash(textColor),
+      const DeepCollectionEquality().hash(textFontSize));
 
   @JsonKey(ignore: true)
   @override
@@ -1599,19 +1611,22 @@ class _$_ThreeDSecureButtonThemeData implements _ThreeDSecureButtonThemeData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ThreeDSecureButtonThemeData &&
-            (identical(other.backgroundColor, backgroundColor) ||
-                other.backgroundColor == backgroundColor) &&
-            (identical(other.cornerRadius, cornerRadius) ||
-                other.cornerRadius == cornerRadius) &&
-            (identical(other.textColor, textColor) ||
-                other.textColor == textColor) &&
-            (identical(other.textFontSize, textFontSize) ||
-                other.textFontSize == textFontSize));
+            const DeepCollectionEquality()
+                .equals(other.backgroundColor, backgroundColor) &&
+            const DeepCollectionEquality()
+                .equals(other.cornerRadius, cornerRadius) &&
+            const DeepCollectionEquality().equals(other.textColor, textColor) &&
+            const DeepCollectionEquality()
+                .equals(other.textFontSize, textFontSize));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, backgroundColor, cornerRadius, textColor, textFontSize);
+      runtimeType,
+      const DeepCollectionEquality().hash(backgroundColor),
+      const DeepCollectionEquality().hash(cornerRadius),
+      const DeepCollectionEquality().hash(textColor),
+      const DeepCollectionEquality().hash(textFontSize));
 
   @JsonKey(ignore: true)
   @override

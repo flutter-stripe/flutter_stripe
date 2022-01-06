@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'errors.dart';
@@ -156,13 +157,15 @@ class _$_StripeErrorGeneric<T> implements _StripeErrorGeneric<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _StripeErrorGeneric<T> &&
-            (identical(other.message, message) || other.message == message) &&
+            const DeepCollectionEquality().equals(other.message, message) &&
             const DeepCollectionEquality().equals(other.code, code));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, message, const DeepCollectionEquality().hash(code));
+      runtimeType,
+      const DeepCollectionEquality().hash(message),
+      const DeepCollectionEquality().hash(code));
 
   @JsonKey(ignore: true)
   @override
@@ -328,11 +331,12 @@ class _$_StripeException implements _StripeException {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _StripeException &&
-            (identical(other.error, error) || other.error == error));
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, error);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -598,20 +602,26 @@ class _$_LocalizedErrorMessage implements _LocalizedErrorMessage {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _LocalizedErrorMessage &&
-            (identical(other.code, code) || other.code == code) &&
-            (identical(other.localizedMessage, localizedMessage) ||
-                other.localizedMessage == localizedMessage) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.stripeErrorCode, stripeErrorCode) ||
-                other.stripeErrorCode == stripeErrorCode) &&
-            (identical(other.declineCode, declineCode) ||
-                other.declineCode == declineCode) &&
-            (identical(other.type, type) || other.type == type));
+            const DeepCollectionEquality().equals(other.code, code) &&
+            const DeepCollectionEquality()
+                .equals(other.localizedMessage, localizedMessage) &&
+            const DeepCollectionEquality().equals(other.message, message) &&
+            const DeepCollectionEquality()
+                .equals(other.stripeErrorCode, stripeErrorCode) &&
+            const DeepCollectionEquality()
+                .equals(other.declineCode, declineCode) &&
+            const DeepCollectionEquality().equals(other.type, type));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, localizedMessage, message,
-      stripeErrorCode, declineCode, type);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(code),
+      const DeepCollectionEquality().hash(localizedMessage),
+      const DeepCollectionEquality().hash(message),
+      const DeepCollectionEquality().hash(stripeErrorCode),
+      const DeepCollectionEquality().hash(declineCode),
+      const DeepCollectionEquality().hash(type));
 
   @JsonKey(ignore: true)
   @override
