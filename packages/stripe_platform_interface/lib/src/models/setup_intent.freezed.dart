@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'setup_intent.dart';
@@ -355,37 +356,36 @@ class _$_SetupIntent implements _SetupIntent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _SetupIntent &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.livemode, livemode) ||
-                other.livemode == livemode) &&
-            (identical(other.clientSecret, clientSecret) ||
-                other.clientSecret == clientSecret) &&
-            (identical(other.paymentMethodId, paymentMethodId) ||
-                other.paymentMethodId == paymentMethodId) &&
-            (identical(other.usage, usage) || other.usage == usage) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality().equals(other.livemode, livemode) &&
+            const DeepCollectionEquality()
+                .equals(other.clientSecret, clientSecret) &&
+            const DeepCollectionEquality()
+                .equals(other.paymentMethodId, paymentMethodId) &&
+            const DeepCollectionEquality().equals(other.usage, usage) &&
             const DeepCollectionEquality()
                 .equals(other.paymentMethodTypes, paymentMethodTypes) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.created, created) || other.created == created) &&
-            (identical(other.lastSetupError, lastSetupError) ||
-                other.lastSetupError == lastSetupError));
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.created, created) &&
+            const DeepCollectionEquality()
+                .equals(other.lastSetupError, lastSetupError));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      id,
-      status,
-      livemode,
-      clientSecret,
-      paymentMethodId,
-      usage,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(livemode),
+      const DeepCollectionEquality().hash(clientSecret),
+      const DeepCollectionEquality().hash(paymentMethodId),
+      const DeepCollectionEquality().hash(usage),
       const DeepCollectionEquality().hash(paymentMethodTypes),
-      description,
-      created,
-      lastSetupError);
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(created),
+      const DeepCollectionEquality().hash(lastSetupError));
 
   @JsonKey(ignore: true)
   @override
@@ -601,12 +601,15 @@ class _$_LastSetupError implements _LastSetupError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _LastSetupError &&
-            (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message));
+            const DeepCollectionEquality().equals(other.code, code) &&
+            const DeepCollectionEquality().equals(other.message, message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, message);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(code),
+      const DeepCollectionEquality().hash(message));
 
   @JsonKey(ignore: true)
   @override
