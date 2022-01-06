@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'payment_intents.dart';
@@ -441,49 +442,46 @@ class _$_PaymentIntent implements _PaymentIntent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PaymentIntent &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.created, created) || other.created == created) &&
-            (identical(other.currency, currency) ||
-                other.currency == currency) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.clientSecret, clientSecret) ||
-                other.clientSecret == clientSecret) &&
-            (identical(other.livemode, livemode) ||
-                other.livemode == livemode) &&
-            (identical(other.captureMethod, captureMethod) ||
-                other.captureMethod == captureMethod) &&
-            (identical(other.confirmationMethod, confirmationMethod) ||
-                other.confirmationMethod == confirmationMethod) &&
-            (identical(other.paymentMethodId, paymentMethodId) ||
-                other.paymentMethodId == paymentMethodId) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.receiptEmail, receiptEmail) ||
-                other.receiptEmail == receiptEmail) &&
-            (identical(other.canceledAt, canceledAt) ||
-                other.canceledAt == canceledAt) &&
-            (identical(other.shipping, shipping) ||
-                other.shipping == shipping));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.amount, amount) &&
+            const DeepCollectionEquality().equals(other.created, created) &&
+            const DeepCollectionEquality().equals(other.currency, currency) &&
+            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality()
+                .equals(other.clientSecret, clientSecret) &&
+            const DeepCollectionEquality().equals(other.livemode, livemode) &&
+            const DeepCollectionEquality()
+                .equals(other.captureMethod, captureMethod) &&
+            const DeepCollectionEquality()
+                .equals(other.confirmationMethod, confirmationMethod) &&
+            const DeepCollectionEquality()
+                .equals(other.paymentMethodId, paymentMethodId) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality()
+                .equals(other.receiptEmail, receiptEmail) &&
+            const DeepCollectionEquality()
+                .equals(other.canceledAt, canceledAt) &&
+            const DeepCollectionEquality().equals(other.shipping, shipping));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      id,
-      amount,
-      created,
-      currency,
-      status,
-      clientSecret,
-      livemode,
-      captureMethod,
-      confirmationMethod,
-      paymentMethodId,
-      description,
-      receiptEmail,
-      canceledAt,
-      shipping);
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(amount),
+      const DeepCollectionEquality().hash(created),
+      const DeepCollectionEquality().hash(currency),
+      const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(clientSecret),
+      const DeepCollectionEquality().hash(livemode),
+      const DeepCollectionEquality().hash(captureMethod),
+      const DeepCollectionEquality().hash(confirmationMethod),
+      const DeepCollectionEquality().hash(paymentMethodId),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(receiptEmail),
+      const DeepCollectionEquality().hash(canceledAt),
+      const DeepCollectionEquality().hash(shipping));
 
   @JsonKey(ignore: true)
   @override
@@ -588,10 +586,10 @@ class _$ShippingDetailsTearOff {
 
   _ShippingDetails call(
       {required Address address,
-      required String name,
-      required String carrier,
-      required String phone,
-      required String trackingNumber}) {
+      String? name,
+      String? carrier,
+      String? phone,
+      String? trackingNumber}) {
     return _ShippingDetails(
       address: address,
       name: name,
@@ -615,17 +613,17 @@ mixin _$ShippingDetails {
   Address get address => throw _privateConstructorUsedError;
 
   /// Recipient name.
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
 
   /// Deliver service that will ship the product
-  String get carrier => throw _privateConstructorUsedError;
+  String? get carrier => throw _privateConstructorUsedError;
 
   /// Recipient phone number.
-  String get phone => throw _privateConstructorUsedError;
+  String? get phone => throw _privateConstructorUsedError;
 
   /// Tracking number of the shipment. If multiple tracking numbers separate them
   /// with commas.
-  String get trackingNumber => throw _privateConstructorUsedError;
+  String? get trackingNumber => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -640,10 +638,10 @@ abstract class $ShippingDetailsCopyWith<$Res> {
       _$ShippingDetailsCopyWithImpl<$Res>;
   $Res call(
       {Address address,
-      String name,
-      String carrier,
-      String phone,
-      String trackingNumber});
+      String? name,
+      String? carrier,
+      String? phone,
+      String? trackingNumber});
 
   $AddressCopyWith<$Res> get address;
 }
@@ -673,19 +671,19 @@ class _$ShippingDetailsCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       carrier: carrier == freezed
           ? _value.carrier
           : carrier // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       phone: phone == freezed
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       trackingNumber: trackingNumber == freezed
           ? _value.trackingNumber
           : trackingNumber // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 
@@ -706,10 +704,10 @@ abstract class _$ShippingDetailsCopyWith<$Res>
   @override
   $Res call(
       {Address address,
-      String name,
-      String carrier,
-      String phone,
-      String trackingNumber});
+      String? name,
+      String? carrier,
+      String? phone,
+      String? trackingNumber});
 
   @override
   $AddressCopyWith<$Res> get address;
@@ -742,19 +740,19 @@ class __$ShippingDetailsCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       carrier: carrier == freezed
           ? _value.carrier
           : carrier // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       phone: phone == freezed
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       trackingNumber: trackingNumber == freezed
           ? _value.trackingNumber
           : trackingNumber // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -765,10 +763,10 @@ class __$ShippingDetailsCopyWithImpl<$Res>
 class _$_ShippingDetails implements _ShippingDetails {
   const _$_ShippingDetails(
       {required this.address,
-      required this.name,
-      required this.carrier,
-      required this.phone,
-      required this.trackingNumber});
+      this.name,
+      this.carrier,
+      this.phone,
+      this.trackingNumber});
 
   factory _$_ShippingDetails.fromJson(Map<String, dynamic> json) =>
       _$$_ShippingDetailsFromJson(json);
@@ -780,20 +778,20 @@ class _$_ShippingDetails implements _ShippingDetails {
   @override
 
   /// Recipient name.
-  final String name;
+  final String? name;
   @override
 
   /// Deliver service that will ship the product
-  final String carrier;
+  final String? carrier;
   @override
 
   /// Recipient phone number.
-  final String phone;
+  final String? phone;
   @override
 
   /// Tracking number of the shipment. If multiple tracking numbers separate them
   /// with commas.
-  final String trackingNumber;
+  final String? trackingNumber;
 
   @override
   String toString() {
@@ -805,17 +803,22 @@ class _$_ShippingDetails implements _ShippingDetails {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ShippingDetails &&
-            (identical(other.address, address) || other.address == address) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.carrier, carrier) || other.carrier == carrier) &&
-            (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.trackingNumber, trackingNumber) ||
-                other.trackingNumber == trackingNumber));
+            const DeepCollectionEquality().equals(other.address, address) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.carrier, carrier) &&
+            const DeepCollectionEquality().equals(other.phone, phone) &&
+            const DeepCollectionEquality()
+                .equals(other.trackingNumber, trackingNumber));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, address, name, carrier, phone, trackingNumber);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(address),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(carrier),
+      const DeepCollectionEquality().hash(phone),
+      const DeepCollectionEquality().hash(trackingNumber));
 
   @JsonKey(ignore: true)
   @override
@@ -831,10 +834,10 @@ class _$_ShippingDetails implements _ShippingDetails {
 abstract class _ShippingDetails implements ShippingDetails {
   const factory _ShippingDetails(
       {required Address address,
-      required String name,
-      required String carrier,
-      required String phone,
-      required String trackingNumber}) = _$_ShippingDetails;
+      String? name,
+      String? carrier,
+      String? phone,
+      String? trackingNumber}) = _$_ShippingDetails;
 
   factory _ShippingDetails.fromJson(Map<String, dynamic> json) =
       _$_ShippingDetails.fromJson;
@@ -846,20 +849,20 @@ abstract class _ShippingDetails implements ShippingDetails {
   @override
 
   /// Recipient name.
-  String get name;
+  String? get name;
   @override
 
   /// Deliver service that will ship the product
-  String get carrier;
+  String? get carrier;
   @override
 
   /// Recipient phone number.
-  String get phone;
+  String? get phone;
   @override
 
   /// Tracking number of the shipment. If multiple tracking numbers separate them
   /// with commas.
-  String get trackingNumber;
+  String? get trackingNumber;
   @override
   @JsonKey(ignore: true)
   _$ShippingDetailsCopyWith<_ShippingDetails> get copyWith =>
