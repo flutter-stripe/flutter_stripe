@@ -106,7 +106,7 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
   }
 
   Future<Map<String, dynamic>> fetchPaymentIntentClientSecret() async {
-    final url = Uri.parse('$kApiUrl/create-payment-intent');
+    final url = Uri.parse('$kApiUrl/payment_intents');
     final response = await http.post(
       url,
       headers: {
