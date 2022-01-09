@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'aubecs_form.dart';
@@ -68,6 +69,7 @@ mixin _$AubecsFormStyle {
   int? get fontSize => throw _privateConstructorUsedError;
 
   /// Borderwith of the form
+  /// Only available for Android
   int? get borderWidth => throw _privateConstructorUsedError;
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get backgroundColor => throw _privateConstructorUsedError;
@@ -75,6 +77,7 @@ mixin _$AubecsFormStyle {
   Color? get borderColor => throw _privateConstructorUsedError;
 
   /// Borderadius of the form
+  /// Only available for Android
   int? get borderRadius => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -281,6 +284,7 @@ class _$_AubecsFormStyle implements _AubecsFormStyle {
   @override
 
   /// Borderwith of the form
+  /// Only available for Android
   final int? borderWidth;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -291,6 +295,7 @@ class _$_AubecsFormStyle implements _AubecsFormStyle {
   @override
 
   /// Borderadius of the form
+  /// Only available for Android
   final int? borderRadius;
 
   @override
@@ -303,35 +308,33 @@ class _$_AubecsFormStyle implements _AubecsFormStyle {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _AubecsFormStyle &&
-            (identical(other.textColor, textColor) ||
-                other.textColor == textColor) &&
-            (identical(other.textErrorColor, textErrorColor) ||
-                other.textErrorColor == textErrorColor) &&
-            (identical(other.placeholderColor, placeholderColor) ||
-                other.placeholderColor == placeholderColor) &&
-            (identical(other.fontSize, fontSize) ||
-                other.fontSize == fontSize) &&
-            (identical(other.borderWidth, borderWidth) ||
-                other.borderWidth == borderWidth) &&
-            (identical(other.backgroundColor, backgroundColor) ||
-                other.backgroundColor == backgroundColor) &&
-            (identical(other.borderColor, borderColor) ||
-                other.borderColor == borderColor) &&
-            (identical(other.borderRadius, borderRadius) ||
-                other.borderRadius == borderRadius));
+            const DeepCollectionEquality().equals(other.textColor, textColor) &&
+            const DeepCollectionEquality()
+                .equals(other.textErrorColor, textErrorColor) &&
+            const DeepCollectionEquality()
+                .equals(other.placeholderColor, placeholderColor) &&
+            const DeepCollectionEquality().equals(other.fontSize, fontSize) &&
+            const DeepCollectionEquality()
+                .equals(other.borderWidth, borderWidth) &&
+            const DeepCollectionEquality()
+                .equals(other.backgroundColor, backgroundColor) &&
+            const DeepCollectionEquality()
+                .equals(other.borderColor, borderColor) &&
+            const DeepCollectionEquality()
+                .equals(other.borderRadius, borderRadius));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      textColor,
-      textErrorColor,
-      placeholderColor,
-      fontSize,
-      borderWidth,
-      backgroundColor,
-      borderColor,
-      borderRadius);
+      const DeepCollectionEquality().hash(textColor),
+      const DeepCollectionEquality().hash(textErrorColor),
+      const DeepCollectionEquality().hash(placeholderColor),
+      const DeepCollectionEquality().hash(fontSize),
+      const DeepCollectionEquality().hash(borderWidth),
+      const DeepCollectionEquality().hash(backgroundColor),
+      const DeepCollectionEquality().hash(borderColor),
+      const DeepCollectionEquality().hash(borderRadius));
 
   @JsonKey(ignore: true)
   @override
@@ -379,6 +382,7 @@ abstract class _AubecsFormStyle implements AubecsFormStyle {
   @override
 
   /// Borderwith of the form
+  /// Only available for Android
   int? get borderWidth;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -389,6 +393,7 @@ abstract class _AubecsFormStyle implements AubecsFormStyle {
   @override
 
   /// Borderadius of the form
+  /// Only available for Android
   int? get borderRadius;
   @override
   @JsonKey(ignore: true)
@@ -576,17 +581,20 @@ class _$_AubecsFormInputDetails implements _AubecsFormInputDetails {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _AubecsFormInputDetails &&
-            (identical(other.bsbNumber, bsbNumber) ||
-                other.bsbNumber == bsbNumber) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.accountNumber, accountNumber) ||
-                other.accountNumber == accountNumber) &&
-            (identical(other.email, email) || other.email == email));
+            const DeepCollectionEquality().equals(other.bsbNumber, bsbNumber) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.accountNumber, accountNumber) &&
+            const DeepCollectionEquality().equals(other.email, email));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, bsbNumber, name, accountNumber, email);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(bsbNumber),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(accountNumber),
+      const DeepCollectionEquality().hash(email));
 
   @JsonKey(ignore: true)
   @override

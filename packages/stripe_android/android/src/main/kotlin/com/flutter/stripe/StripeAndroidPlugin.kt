@@ -1,10 +1,14 @@
 package com.flutter.stripe
 
+import android.annotation.SuppressLint
+import android.content.res.Configuration
+import android.content.res.Resources
 import androidx.annotation.NonNull
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
+import com.google.android.material.internal.ThemeEnforcement
 import com.reactnativestripesdk.*
 import io.flutter.embedding.android.FlutterFragmentActivity
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -25,6 +29,8 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     /// This local reference serves to register the plugin with the Flutter Engine and unregister it
     /// when the Flutter Engine is detached from the Activity
     private lateinit var channel: MethodChannel
+    private var initializationError: String? = null
+
     lateinit var stripeSdk: StripeSdkModule
 
     private val stripeSdkCardViewManager: StripeSdkCardViewManager by lazy {
@@ -61,10 +67,12 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-        if (!this::stripeSdk.isInitialized) {
+        if (initializationError != null) {
             result.error(
                 "flutter_stripe initialization failed",
-                "The plugin failed to initialize. Are you using FlutterFragmentActivity? Please check the README: https://github.com/flutter-stripe/flutter_stripe#android",
+                """The plugin failed to initialize:
+${initializationError}
+Please check the README: https://github.com/flutter-stripe/flutter_stripe#android""",
                 null
             )
             return
@@ -150,15 +158,23 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         }
     }
 
+
     override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
         channel.setMethodCallHandler(null)
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-        if (binding.activity is FlutterFragmentActivity) {
-            stripeSdk = StripeSdkModule(ReactApplicationContext(binding))
-        } else {
-            // no-op - will throw errors when method channel is called
+        when {
+            binding.activity !is FlutterFragmentActivity -> {
+                initializationError =
+                    "Your Main Activity ${binding.activity.javaClass} is not a subclass FlutterFragmentActivity."
+            }
+            !ThemeEnforcement.isAppCompatTheme(binding.activity) -> {
+                initializationError =
+                    "Your theme isn't set to use Theme.AppCompat or Theme.MaterialComponents."
+            }
+            else -> stripeSdk = StripeSdkModule(ReactApplicationContext(binding))
         }
     }
 

@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'address.dart';
@@ -241,18 +242,24 @@ class _$_Address implements _Address {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Address &&
-            (identical(other.city, city) || other.city == city) &&
-            (identical(other.country, country) || other.country == country) &&
-            (identical(other.line1, line1) || other.line1 == line1) &&
-            (identical(other.line2, line2) || other.line2 == line2) &&
-            (identical(other.postalCode, postalCode) ||
-                other.postalCode == postalCode) &&
-            (identical(other.state, state) || other.state == state));
+            const DeepCollectionEquality().equals(other.city, city) &&
+            const DeepCollectionEquality().equals(other.country, country) &&
+            const DeepCollectionEquality().equals(other.line1, line1) &&
+            const DeepCollectionEquality().equals(other.line2, line2) &&
+            const DeepCollectionEquality()
+                .equals(other.postalCode, postalCode) &&
+            const DeepCollectionEquality().equals(other.state, state));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, city, country, line1, line2, postalCode, state);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(city),
+      const DeepCollectionEquality().hash(country),
+      const DeepCollectionEquality().hash(line1),
+      const DeepCollectionEquality().hash(line2),
+      const DeepCollectionEquality().hash(postalCode),
+      const DeepCollectionEquality().hash(state));
 
   @JsonKey(ignore: true)
   @override

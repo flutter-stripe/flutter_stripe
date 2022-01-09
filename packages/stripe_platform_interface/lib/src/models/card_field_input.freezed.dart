@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'card_field_input.dart';
@@ -351,41 +352,39 @@ class _$_CardStyleConstructor extends _CardStyleConstructor {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _CardStyleConstructor &&
-            (identical(other.borderWidth, borderWidth) ||
-                other.borderWidth == borderWidth) &&
-            (identical(other.backgroundColor, backgroundColor) ||
-                other.backgroundColor == backgroundColor) &&
-            (identical(other.borderColor, borderColor) ||
-                other.borderColor == borderColor) &&
-            (identical(other.borderRadius, borderRadius) ||
-                other.borderRadius == borderRadius) &&
-            (identical(other.cursorColor, cursorColor) ||
-                other.cursorColor == cursorColor) &&
-            (identical(other.textColor, textColor) ||
-                other.textColor == textColor) &&
-            (identical(other.fontSize, fontSize) ||
-                other.fontSize == fontSize) &&
-            (identical(other.fontFamily, fontFamily) ||
-                other.fontFamily == fontFamily) &&
-            (identical(other.textErrorColor, textErrorColor) ||
-                other.textErrorColor == textErrorColor) &&
-            (identical(other.placeholderColor, placeholderColor) ||
-                other.placeholderColor == placeholderColor));
+            const DeepCollectionEquality()
+                .equals(other.borderWidth, borderWidth) &&
+            const DeepCollectionEquality()
+                .equals(other.backgroundColor, backgroundColor) &&
+            const DeepCollectionEquality()
+                .equals(other.borderColor, borderColor) &&
+            const DeepCollectionEquality()
+                .equals(other.borderRadius, borderRadius) &&
+            const DeepCollectionEquality()
+                .equals(other.cursorColor, cursorColor) &&
+            const DeepCollectionEquality().equals(other.textColor, textColor) &&
+            const DeepCollectionEquality().equals(other.fontSize, fontSize) &&
+            const DeepCollectionEquality()
+                .equals(other.fontFamily, fontFamily) &&
+            const DeepCollectionEquality()
+                .equals(other.textErrorColor, textErrorColor) &&
+            const DeepCollectionEquality()
+                .equals(other.placeholderColor, placeholderColor));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      borderWidth,
-      backgroundColor,
-      borderColor,
-      borderRadius,
-      cursorColor,
-      textColor,
-      fontSize,
-      fontFamily,
-      textErrorColor,
-      placeholderColor);
+      const DeepCollectionEquality().hash(borderWidth),
+      const DeepCollectionEquality().hash(backgroundColor),
+      const DeepCollectionEquality().hash(borderColor),
+      const DeepCollectionEquality().hash(borderRadius),
+      const DeepCollectionEquality().hash(cursorColor),
+      const DeepCollectionEquality().hash(textColor),
+      const DeepCollectionEquality().hash(fontSize),
+      const DeepCollectionEquality().hash(fontFamily),
+      const DeepCollectionEquality().hash(textErrorColor),
+      const DeepCollectionEquality().hash(placeholderColor));
 
   @JsonKey(ignore: true)
   @override
@@ -594,12 +593,13 @@ class _$_CardFormStyleConstructor extends _CardFormStyleConstructor {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _CardFormStyleConstructor &&
-            (identical(other.backgroundColor, backgroundColor) ||
-                other.backgroundColor == backgroundColor));
+            const DeepCollectionEquality()
+                .equals(other.backgroundColor, backgroundColor));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, backgroundColor);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(backgroundColor));
 
   @JsonKey(ignore: true)
   @override
@@ -813,17 +813,21 @@ class _$_CardPlaceholderConstructor extends _CardPlaceholderConstructor {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _CardPlaceholderConstructor &&
-            (identical(other.number, number) || other.number == number) &&
-            (identical(other.expiration, expiration) ||
-                other.expiration == expiration) &&
-            (identical(other.cvc, cvc) || other.cvc == cvc) &&
-            (identical(other.postalCode, postalCode) ||
-                other.postalCode == postalCode));
+            const DeepCollectionEquality().equals(other.number, number) &&
+            const DeepCollectionEquality()
+                .equals(other.expiration, expiration) &&
+            const DeepCollectionEquality().equals(other.cvc, cvc) &&
+            const DeepCollectionEquality()
+                .equals(other.postalCode, postalCode));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, number, expiration, cvc, postalCode);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(number),
+      const DeepCollectionEquality().hash(expiration),
+      const DeepCollectionEquality().hash(cvc),
+      const DeepCollectionEquality().hash(postalCode));
 
   @JsonKey(ignore: true)
   @override
@@ -1155,23 +1159,30 @@ class _$_CardFieldInputDetails extends _CardFieldInputDetails {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _CardFieldInputDetails &&
-            (identical(other.complete, complete) ||
-                other.complete == complete) &&
-            (identical(other.last4, last4) || other.last4 == last4) &&
-            (identical(other.expiryMonth, expiryMonth) ||
-                other.expiryMonth == expiryMonth) &&
-            (identical(other.expiryYear, expiryYear) ||
-                other.expiryYear == expiryYear) &&
-            (identical(other.postalCode, postalCode) ||
-                other.postalCode == postalCode) &&
-            (identical(other.brand, brand) || other.brand == brand) &&
-            (identical(other.number, number) || other.number == number) &&
-            (identical(other.cvc, cvc) || other.cvc == cvc));
+            const DeepCollectionEquality().equals(other.complete, complete) &&
+            const DeepCollectionEquality().equals(other.last4, last4) &&
+            const DeepCollectionEquality()
+                .equals(other.expiryMonth, expiryMonth) &&
+            const DeepCollectionEquality()
+                .equals(other.expiryYear, expiryYear) &&
+            const DeepCollectionEquality()
+                .equals(other.postalCode, postalCode) &&
+            const DeepCollectionEquality().equals(other.brand, brand) &&
+            const DeepCollectionEquality().equals(other.number, number) &&
+            const DeepCollectionEquality().equals(other.cvc, cvc));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, complete, last4, expiryMonth,
-      expiryYear, postalCode, brand, number, cvc);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(complete),
+      const DeepCollectionEquality().hash(last4),
+      const DeepCollectionEquality().hash(expiryMonth),
+      const DeepCollectionEquality().hash(expiryYear),
+      const DeepCollectionEquality().hash(postalCode),
+      const DeepCollectionEquality().hash(brand),
+      const DeepCollectionEquality().hash(number),
+      const DeepCollectionEquality().hash(cvc));
 
   @JsonKey(ignore: true)
   @override
@@ -1358,12 +1369,13 @@ class _$_CardFieldFocusName implements _CardFieldFocusName {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _CardFieldFocusName &&
-            (identical(other.focusedField, focusedField) ||
-                other.focusedField == focusedField));
+            const DeepCollectionEquality()
+                .equals(other.focusedField, focusedField));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, focusedField);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(focusedField));
 
   @JsonKey(ignore: true)
   @override

@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'payment_methods.dart';
@@ -510,43 +511,40 @@ class _$_PaymentMethod implements _PaymentMethod {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PaymentMethod &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.livemode, livemode) ||
-                other.livemode == livemode) &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.billingDetails, billingDetails) ||
-                other.billingDetails == billingDetails) &&
-            (identical(other.card, card) || other.card == card) &&
-            (identical(other.sepaDebit, sepaDebit) ||
-                other.sepaDebit == sepaDebit) &&
-            (identical(other.bacsDebit, bacsDebit) ||
-                other.bacsDebit == bacsDebit) &&
-            (identical(other.auBecsDebit, auBecsDebit) ||
-                other.auBecsDebit == auBecsDebit) &&
-            (identical(other.sofort, sofort) || other.sofort == sofort) &&
-            (identical(other.ideal, ideal) || other.ideal == ideal) &&
-            (identical(other.fpx, fpx) || other.fpx == fpx) &&
-            (identical(other.upi, upi) || other.upi == upi) &&
-            (identical(other.customerId, customerId) ||
-                other.customerId == customerId));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.livemode, livemode) &&
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality()
+                .equals(other.billingDetails, billingDetails) &&
+            const DeepCollectionEquality().equals(other.card, card) &&
+            const DeepCollectionEquality().equals(other.sepaDebit, sepaDebit) &&
+            const DeepCollectionEquality().equals(other.bacsDebit, bacsDebit) &&
+            const DeepCollectionEquality()
+                .equals(other.auBecsDebit, auBecsDebit) &&
+            const DeepCollectionEquality().equals(other.sofort, sofort) &&
+            const DeepCollectionEquality().equals(other.ideal, ideal) &&
+            const DeepCollectionEquality().equals(other.fpx, fpx) &&
+            const DeepCollectionEquality().equals(other.upi, upi) &&
+            const DeepCollectionEquality()
+                .equals(other.customerId, customerId));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      id,
-      livemode,
-      type,
-      billingDetails,
-      card,
-      sepaDebit,
-      bacsDebit,
-      auBecsDebit,
-      sofort,
-      ideal,
-      fpx,
-      upi,
-      customerId);
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(livemode),
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(billingDetails),
+      const DeepCollectionEquality().hash(card),
+      const DeepCollectionEquality().hash(sepaDebit),
+      const DeepCollectionEquality().hash(bacsDebit),
+      const DeepCollectionEquality().hash(auBecsDebit),
+      const DeepCollectionEquality().hash(sofort),
+      const DeepCollectionEquality().hash(ideal),
+      const DeepCollectionEquality().hash(fpx),
+      const DeepCollectionEquality().hash(upi),
+      const DeepCollectionEquality().hash(customerId));
 
   @JsonKey(ignore: true)
   @override
@@ -836,14 +834,19 @@ class _$_BillingDetails implements _BillingDetails {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _BillingDetails &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.address, address) || other.address == address) &&
-            (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.name, name) || other.name == name));
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.address, address) &&
+            const DeepCollectionEquality().equals(other.phone, phone) &&
+            const DeepCollectionEquality().equals(other.name, name));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, address, phone, name);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(address),
+      const DeepCollectionEquality().hash(phone),
+      const DeepCollectionEquality().hash(name));
 
   @JsonKey(ignore: true)
   @override
@@ -1043,15 +1046,18 @@ class _$_AuBecsDebit implements _AuBecsDebit {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _AuBecsDebit &&
-            (identical(other.fingerprint, fingerprint) ||
-                other.fingerprint == fingerprint) &&
-            (identical(other.last4, last4) || other.last4 == last4) &&
-            (identical(other.bsbNumber, bsbNumber) ||
-                other.bsbNumber == bsbNumber));
+            const DeepCollectionEquality()
+                .equals(other.fingerprint, fingerprint) &&
+            const DeepCollectionEquality().equals(other.last4, last4) &&
+            const DeepCollectionEquality().equals(other.bsbNumber, bsbNumber));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, fingerprint, last4, bsbNumber);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(fingerprint),
+      const DeepCollectionEquality().hash(last4),
+      const DeepCollectionEquality().hash(bsbNumber));
 
   @JsonKey(ignore: true)
   @override
@@ -1241,15 +1247,18 @@ class _$_BacsDebit implements _BacsDebit {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _BacsDebit &&
-            (identical(other.sortCode, sortCode) ||
-                other.sortCode == sortCode) &&
-            (identical(other.fingerprint, fingerprint) ||
-                other.fingerprint == fingerprint) &&
-            (identical(other.last4, last4) || other.last4 == last4));
+            const DeepCollectionEquality().equals(other.sortCode, sortCode) &&
+            const DeepCollectionEquality()
+                .equals(other.fingerprint, fingerprint) &&
+            const DeepCollectionEquality().equals(other.last4, last4));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, sortCode, fingerprint, last4);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(sortCode),
+      const DeepCollectionEquality().hash(fingerprint),
+      const DeepCollectionEquality().hash(last4));
 
   @JsonKey(ignore: true)
   @override
@@ -1514,18 +1523,23 @@ class _$_Card implements _Card {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Card &&
-            (identical(other.brand, brand) || other.brand == brand) &&
-            (identical(other.country, country) || other.country == country) &&
-            (identical(other.expYear, expYear) || other.expYear == expYear) &&
-            (identical(other.expMonth, expMonth) ||
-                other.expMonth == expMonth) &&
-            (identical(other.funding, funding) || other.funding == funding) &&
-            (identical(other.last4, last4) || other.last4 == last4));
+            const DeepCollectionEquality().equals(other.brand, brand) &&
+            const DeepCollectionEquality().equals(other.country, country) &&
+            const DeepCollectionEquality().equals(other.expYear, expYear) &&
+            const DeepCollectionEquality().equals(other.expMonth, expMonth) &&
+            const DeepCollectionEquality().equals(other.funding, funding) &&
+            const DeepCollectionEquality().equals(other.last4, last4));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, brand, country, expYear, expMonth, funding, last4);
+      runtimeType,
+      const DeepCollectionEquality().hash(brand),
+      const DeepCollectionEquality().hash(country),
+      const DeepCollectionEquality().hash(expYear),
+      const DeepCollectionEquality().hash(expMonth),
+      const DeepCollectionEquality().hash(funding),
+      const DeepCollectionEquality().hash(last4));
 
   @JsonKey(ignore: true)
   @override
@@ -1709,13 +1723,16 @@ class _$_Fpx implements _Fpx {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Fpx &&
-            (identical(other.bank, bank) || other.bank == bank) &&
-            (identical(other.accountHolderType, accountHolderType) ||
-                other.accountHolderType == accountHolderType));
+            const DeepCollectionEquality().equals(other.bank, bank) &&
+            const DeepCollectionEquality()
+                .equals(other.accountHolderType, accountHolderType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, bank, accountHolderType);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(bank),
+      const DeepCollectionEquality().hash(accountHolderType));
 
   @JsonKey(ignore: true)
   @override
@@ -1878,13 +1895,16 @@ class _$_Ideal implements _Ideal {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Ideal &&
-            (identical(other.bankIdentifierCode, bankIdentifierCode) ||
-                other.bankIdentifierCode == bankIdentifierCode) &&
-            (identical(other.bank, bank) || other.bank == bank));
+            const DeepCollectionEquality()
+                .equals(other.bankIdentifierCode, bankIdentifierCode) &&
+            const DeepCollectionEquality().equals(other.bank, bank));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, bankIdentifierCode, bank);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(bankIdentifierCode),
+      const DeepCollectionEquality().hash(bank));
 
   @JsonKey(ignore: true)
   @override
@@ -2089,17 +2109,20 @@ class _$_SepaDebit implements _SepaDebit {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _SepaDebit &&
-            (identical(other.country, country) || other.country == country) &&
-            (identical(other.bankCode, bankCode) ||
-                other.bankCode == bankCode) &&
-            (identical(other.fingerprint, fingerprint) ||
-                other.fingerprint == fingerprint) &&
-            (identical(other.last4, last4) || other.last4 == last4));
+            const DeepCollectionEquality().equals(other.country, country) &&
+            const DeepCollectionEquality().equals(other.bankCode, bankCode) &&
+            const DeepCollectionEquality()
+                .equals(other.fingerprint, fingerprint) &&
+            const DeepCollectionEquality().equals(other.last4, last4));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, country, bankCode, fingerprint, last4);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(country),
+      const DeepCollectionEquality().hash(bankCode),
+      const DeepCollectionEquality().hash(fingerprint),
+      const DeepCollectionEquality().hash(last4));
 
   @JsonKey(ignore: true)
   @override
@@ -2258,11 +2281,12 @@ class _$_Sofort implements _Sofort {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Sofort &&
-            (identical(other.country, country) || other.country == country));
+            const DeepCollectionEquality().equals(other.country, country));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, country);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(country));
 
   @JsonKey(ignore: true)
   @override
@@ -2402,11 +2426,12 @@ class _$_Upi implements _Upi {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Upi &&
-            (identical(other.vpa, vpa) || other.vpa == vpa));
+            const DeepCollectionEquality().equals(other.vpa, vpa));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, vpa);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(vpa));
 
   @JsonKey(ignore: true)
   @override
@@ -2887,15 +2912,17 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PaymentMethodParamsCard &&
-            (identical(other.setupFutureUsage, setupFutureUsage) ||
-                other.setupFutureUsage == setupFutureUsage) &&
-            (identical(other.billingDetails, billingDetails) ||
-                other.billingDetails == billingDetails));
+            const DeepCollectionEquality()
+                .equals(other.setupFutureUsage, setupFutureUsage) &&
+            const DeepCollectionEquality()
+                .equals(other.billingDetails, billingDetails));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, setupFutureUsage, billingDetails);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(setupFutureUsage),
+      const DeepCollectionEquality().hash(billingDetails));
 
   @JsonKey(ignore: true)
   @override
@@ -3200,13 +3227,16 @@ class _$_PaymentMethodParamsCardWithToken
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PaymentMethodParamsCardWithToken &&
-            (identical(other.token, token) || other.token == token) &&
-            (identical(other.setupFutureUsage, setupFutureUsage) ||
-                other.setupFutureUsage == setupFutureUsage));
+            const DeepCollectionEquality().equals(other.token, token) &&
+            const DeepCollectionEquality()
+                .equals(other.setupFutureUsage, setupFutureUsage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, token, setupFutureUsage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(token),
+      const DeepCollectionEquality().hash(setupFutureUsage));
 
   @JsonKey(ignore: true)
   @override
@@ -3511,13 +3541,16 @@ class _$_PaymentMethodParamsCardWithMethodId
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PaymentMethodParamsCardWithMethodId &&
-            (identical(other.paymentMethodId, paymentMethodId) ||
-                other.paymentMethodId == paymentMethodId) &&
-            (identical(other.cvc, cvc) || other.cvc == cvc));
+            const DeepCollectionEquality()
+                .equals(other.paymentMethodId, paymentMethodId) &&
+            const DeepCollectionEquality().equals(other.cvc, cvc));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, paymentMethodId, cvc);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(paymentMethodId),
+      const DeepCollectionEquality().hash(cvc));
 
   @JsonKey(ignore: true)
   @override
@@ -4093,14 +4126,16 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PaymentMethodParamsIdeal &&
-            (identical(other.billingDetails, billingDetails) ||
-                other.billingDetails == billingDetails) &&
-            (identical(other.bankName, bankName) ||
-                other.bankName == bankName));
+            const DeepCollectionEquality()
+                .equals(other.billingDetails, billingDetails) &&
+            const DeepCollectionEquality().equals(other.bankName, bankName));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, billingDetails, bankName);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(billingDetails),
+      const DeepCollectionEquality().hash(bankName));
 
   @JsonKey(ignore: true)
   @override
@@ -4423,14 +4458,17 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PaymentMethodParamsAubecs &&
-            (identical(other.formDetails, formDetails) ||
-                other.formDetails == formDetails) &&
-            (identical(other.billingDetails, billingDetails) ||
-                other.billingDetails == billingDetails));
+            const DeepCollectionEquality()
+                .equals(other.formDetails, formDetails) &&
+            const DeepCollectionEquality()
+                .equals(other.billingDetails, billingDetails));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, formDetails, billingDetails);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(formDetails),
+      const DeepCollectionEquality().hash(billingDetails));
 
   @JsonKey(ignore: true)
   @override
@@ -4739,12 +4777,13 @@ class _$_PaymentMethodParamsBankContact
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PaymentMethodParamsBankContact &&
-            (identical(other.billingDetails, billingDetails) ||
-                other.billingDetails == billingDetails));
+            const DeepCollectionEquality()
+                .equals(other.billingDetails, billingDetails));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, billingDetails);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(billingDetails));
 
   @JsonKey(ignore: true)
   @override
@@ -5045,12 +5084,13 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PaymentMethodParamsGiroPay &&
-            (identical(other.billingDetails, billingDetails) ||
-                other.billingDetails == billingDetails));
+            const DeepCollectionEquality()
+                .equals(other.billingDetails, billingDetails));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, billingDetails);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(billingDetails));
 
   @JsonKey(ignore: true)
   @override
@@ -5349,12 +5389,13 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PaymentMethodParamsEps &&
-            (identical(other.billingDetails, billingDetails) ||
-                other.billingDetails == billingDetails));
+            const DeepCollectionEquality()
+                .equals(other.billingDetails, billingDetails));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, billingDetails);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(billingDetails));
 
   @JsonKey(ignore: true)
   @override
@@ -5653,12 +5694,13 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PaymentMethodParamsPay &&
-            (identical(other.billingDetails, billingDetails) ||
-                other.billingDetails == billingDetails));
+            const DeepCollectionEquality()
+                .equals(other.billingDetails, billingDetails));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, billingDetails);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(billingDetails));
 
   @JsonKey(ignore: true)
   @override
@@ -5957,12 +5999,13 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PaymentMethodParamsP24 &&
-            (identical(other.billingDetails, billingDetails) ||
-                other.billingDetails == billingDetails));
+            const DeepCollectionEquality()
+                .equals(other.billingDetails, billingDetails));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, billingDetails);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(billingDetails));
 
   @JsonKey(ignore: true)
   @override
@@ -6247,12 +6290,13 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PaymentMethodParamsFpx &&
-            (identical(other.testOfflineBank, testOfflineBank) ||
-                other.testOfflineBank == testOfflineBank));
+            const DeepCollectionEquality()
+                .equals(other.testOfflineBank, testOfflineBank));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, testOfflineBank);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(testOfflineBank));
 
   @JsonKey(ignore: true)
   @override
@@ -6574,16 +6618,19 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PaymentMethodParamsSepaDebit &&
-            (identical(other.iban, iban) || other.iban == iban) &&
-            (identical(other.setupFutureUsage, setupFutureUsage) ||
-                other.setupFutureUsage == setupFutureUsage) &&
-            (identical(other.billingDetails, billingDetails) ||
-                other.billingDetails == billingDetails));
+            const DeepCollectionEquality().equals(other.iban, iban) &&
+            const DeepCollectionEquality()
+                .equals(other.setupFutureUsage, setupFutureUsage) &&
+            const DeepCollectionEquality()
+                .equals(other.billingDetails, billingDetails));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, iban, setupFutureUsage, billingDetails);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(iban),
+      const DeepCollectionEquality().hash(setupFutureUsage),
+      const DeepCollectionEquality().hash(billingDetails));
 
   @JsonKey(ignore: true)
   @override
@@ -6909,16 +6956,19 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PaymentMethodParamsSofort &&
-            (identical(other.country, country) || other.country == country) &&
-            (identical(other.setupFutureUsage, setupFutureUsage) ||
-                other.setupFutureUsage == setupFutureUsage) &&
-            (identical(other.billingDetails, billingDetails) ||
-                other.billingDetails == billingDetails));
+            const DeepCollectionEquality().equals(other.country, country) &&
+            const DeepCollectionEquality()
+                .equals(other.setupFutureUsage, setupFutureUsage) &&
+            const DeepCollectionEquality()
+                .equals(other.billingDetails, billingDetails));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, country, setupFutureUsage, billingDetails);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(country),
+      const DeepCollectionEquality().hash(setupFutureUsage),
+      const DeepCollectionEquality().hash(billingDetails));
 
   @JsonKey(ignore: true)
   @override
@@ -7244,14 +7294,17 @@ class _$_PaymentMethodParamsAfterpayClearpay
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PaymentMethodParamsAfterpayClearpay &&
-            (identical(other.shippingDetails, shippingDetails) ||
-                other.shippingDetails == shippingDetails) &&
-            (identical(other.billingDetails, billingDetails) ||
-                other.billingDetails == billingDetails));
+            const DeepCollectionEquality()
+                .equals(other.shippingDetails, shippingDetails) &&
+            const DeepCollectionEquality()
+                .equals(other.billingDetails, billingDetails));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, shippingDetails, billingDetails);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(shippingDetails),
+      const DeepCollectionEquality().hash(billingDetails));
 
   @JsonKey(ignore: true)
   @override
@@ -7558,12 +7611,13 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PaymentMethodParamsOxxo &&
-            (identical(other.billingDetails, billingDetails) ||
-                other.billingDetails == billingDetails));
+            const DeepCollectionEquality()
+                .equals(other.billingDetails, billingDetails));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, billingDetails);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(billingDetails));
 
   @JsonKey(ignore: true)
   @override
