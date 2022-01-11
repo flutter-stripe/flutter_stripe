@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'payment_sheet.dart';
@@ -401,7 +402,7 @@ class _$_SetupParameters implements _SetupParameters {
   factory _$_SetupParameters.fromJson(Map<String, dynamic> json) =>
       _$$_SetupParametersFromJson(json);
 
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   @override
 
   /// Whether or not to use a custom flow.
@@ -456,7 +457,7 @@ class _$_SetupParameters implements _SetupParameters {
   /// If set, PaymentSheet displays Google Pay as a payment option
   /// A merchantCountryCode would then be required
   final bool? googlePay;
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   @override
 
   /// Flag that allows payment methods that do not move money at the send of the checkout.
@@ -470,7 +471,7 @@ class _$_SetupParameters implements _SetupParameters {
   /// Make sure that there is enough contrast with the rest of the paymentsheet.
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   final Color? primaryButtonColor;
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   @override
 
   /// Flag for using the test environment
@@ -490,57 +491,50 @@ class _$_SetupParameters implements _SetupParameters {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _SetupParameters &&
-            (identical(other.customFlow, customFlow) ||
-                other.customFlow == customFlow) &&
-            (identical(other.customerId, customerId) ||
-                other.customerId == customerId) &&
-            (identical(other.customerEphemeralKeySecret,
-                    customerEphemeralKeySecret) ||
-                other.customerEphemeralKeySecret ==
-                    customerEphemeralKeySecret) &&
-            (identical(other.paymentIntentClientSecret,
-                    paymentIntentClientSecret) ||
-                other.paymentIntentClientSecret == paymentIntentClientSecret) &&
-            (identical(
-                    other.setupIntentClientSecret, setupIntentClientSecret) ||
-                other.setupIntentClientSecret == setupIntentClientSecret) &&
-            (identical(other.merchantDisplayName, merchantDisplayName) ||
-                other.merchantDisplayName == merchantDisplayName) &&
-            (identical(other.merchantCountryCode, merchantCountryCode) ||
-                other.merchantCountryCode == merchantCountryCode) &&
-            (identical(other.applePay, applePay) ||
-                other.applePay == applePay) &&
-            (identical(other.style, style) || other.style == style) &&
-            (identical(other.googlePay, googlePay) ||
-                other.googlePay == googlePay) &&
-            (identical(other.allowsDelayedPaymentMethods,
-                    allowsDelayedPaymentMethods) ||
-                other.allowsDelayedPaymentMethods ==
-                    allowsDelayedPaymentMethods) &&
-            (identical(other.primaryButtonColor, primaryButtonColor) ||
-                other.primaryButtonColor == primaryButtonColor) &&
-            (identical(other.testEnv, testEnv) || other.testEnv == testEnv) &&
-            (identical(other.billingDetails, billingDetails) ||
-                other.billingDetails == billingDetails));
+            const DeepCollectionEquality()
+                .equals(other.customFlow, customFlow) &&
+            const DeepCollectionEquality()
+                .equals(other.customerId, customerId) &&
+            const DeepCollectionEquality().equals(
+                other.customerEphemeralKeySecret, customerEphemeralKeySecret) &&
+            const DeepCollectionEquality().equals(
+                other.paymentIntentClientSecret, paymentIntentClientSecret) &&
+            const DeepCollectionEquality().equals(
+                other.setupIntentClientSecret, setupIntentClientSecret) &&
+            const DeepCollectionEquality()
+                .equals(other.merchantDisplayName, merchantDisplayName) &&
+            const DeepCollectionEquality()
+                .equals(other.merchantCountryCode, merchantCountryCode) &&
+            const DeepCollectionEquality().equals(other.applePay, applePay) &&
+            const DeepCollectionEquality().equals(other.style, style) &&
+            const DeepCollectionEquality().equals(other.googlePay, googlePay) &&
+            const DeepCollectionEquality().equals(
+                other.allowsDelayedPaymentMethods,
+                allowsDelayedPaymentMethods) &&
+            const DeepCollectionEquality()
+                .equals(other.primaryButtonColor, primaryButtonColor) &&
+            const DeepCollectionEquality().equals(other.testEnv, testEnv) &&
+            const DeepCollectionEquality()
+                .equals(other.billingDetails, billingDetails));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      customFlow,
-      customerId,
-      customerEphemeralKeySecret,
-      paymentIntentClientSecret,
-      setupIntentClientSecret,
-      merchantDisplayName,
-      merchantCountryCode,
-      applePay,
-      style,
-      googlePay,
-      allowsDelayedPaymentMethods,
-      primaryButtonColor,
-      testEnv,
-      billingDetails);
+      const DeepCollectionEquality().hash(customFlow),
+      const DeepCollectionEquality().hash(customerId),
+      const DeepCollectionEquality().hash(customerEphemeralKeySecret),
+      const DeepCollectionEquality().hash(paymentIntentClientSecret),
+      const DeepCollectionEquality().hash(setupIntentClientSecret),
+      const DeepCollectionEquality().hash(merchantDisplayName),
+      const DeepCollectionEquality().hash(merchantCountryCode),
+      const DeepCollectionEquality().hash(applePay),
+      const DeepCollectionEquality().hash(style),
+      const DeepCollectionEquality().hash(googlePay),
+      const DeepCollectionEquality().hash(allowsDelayedPaymentMethods),
+      const DeepCollectionEquality().hash(primaryButtonColor),
+      const DeepCollectionEquality().hash(testEnv),
+      const DeepCollectionEquality().hash(billingDetails));
 
   @JsonKey(ignore: true)
   @override
@@ -789,7 +783,7 @@ class _$_PresentParameters implements _PresentParameters {
 
   /// Key used for client-side retrieval using a publishable key.
   final String clientSecret;
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   @override
 
   /// Flag that determines whether or not to present payment options or
@@ -811,14 +805,17 @@ class _$_PresentParameters implements _PresentParameters {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PresentParameters &&
-            (identical(other.clientSecret, clientSecret) ||
-                other.clientSecret == clientSecret) &&
-            (identical(other.confirmPayment, confirmPayment) ||
-                other.confirmPayment == confirmPayment));
+            const DeepCollectionEquality()
+                .equals(other.clientSecret, clientSecret) &&
+            const DeepCollectionEquality()
+                .equals(other.confirmPayment, confirmPayment));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, clientSecret, confirmPayment);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(clientSecret),
+      const DeepCollectionEquality().hash(confirmPayment));
 
   @JsonKey(ignore: true)
   @override

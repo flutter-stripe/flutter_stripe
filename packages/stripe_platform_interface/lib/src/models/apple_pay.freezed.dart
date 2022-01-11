@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'apple_pay.dart';
@@ -208,17 +209,22 @@ class _$_ApplePayShippingMethod implements _ApplePayShippingMethod {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ApplePayShippingMethod &&
-            (identical(other.label, label) || other.label == label) &&
-            (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.identifier, identifier) ||
-                other.identifier == identifier) &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.detail, detail) || other.detail == detail));
+            const DeepCollectionEquality().equals(other.label, label) &&
+            const DeepCollectionEquality().equals(other.amount, amount) &&
+            const DeepCollectionEquality()
+                .equals(other.identifier, identifier) &&
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.detail, detail));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, label, amount, identifier, type, detail);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(label),
+      const DeepCollectionEquality().hash(amount),
+      const DeepCollectionEquality().hash(identifier),
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(detail));
 
   @JsonKey(ignore: true)
   @override
@@ -400,12 +406,15 @@ class _$_ApplePayCartSummaryItem implements _ApplePayCartSummaryItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ApplePayCartSummaryItem &&
-            (identical(other.label, label) || other.label == label) &&
-            (identical(other.amount, amount) || other.amount == amount));
+            const DeepCollectionEquality().equals(other.label, label) &&
+            const DeepCollectionEquality().equals(other.amount, amount));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, label, amount);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(label),
+      const DeepCollectionEquality().hash(amount));
 
   @JsonKey(ignore: true)
   @override
@@ -686,9 +695,8 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
         (other.runtimeType == runtimeType &&
             other is _ApplePayPresentParams &&
             const DeepCollectionEquality().equals(other.cartItems, cartItems) &&
-            (identical(other.country, country) || other.country == country) &&
-            (identical(other.currency, currency) ||
-                other.currency == currency) &&
+            const DeepCollectionEquality().equals(other.country, country) &&
+            const DeepCollectionEquality().equals(other.currency, currency) &&
             const DeepCollectionEquality().equals(
                 other.requiredShippingAddressFields,
                 requiredShippingAddressFields) &&
@@ -703,8 +711,8 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(cartItems),
-      country,
-      currency,
+      const DeepCollectionEquality().hash(country),
+      const DeepCollectionEquality().hash(currency),
       const DeepCollectionEquality().hash(requiredShippingAddressFields),
       const DeepCollectionEquality().hash(requiredBillingContactFields),
       const DeepCollectionEquality().hash(shippingMethods));

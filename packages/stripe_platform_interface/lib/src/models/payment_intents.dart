@@ -90,17 +90,17 @@ class ShippingDetails with _$ShippingDetails {
     required Address address,
 
     /// Recipient name.
-    required String name,
+    String? name,
 
     /// Deliver service that will ship the product
-    required String carrier,
+    String? carrier,
 
     /// Recipient phone number.
-    required String phone,
+    String? phone,
 
     /// Tracking number of the shipment. If multiple tracking numbers separate them
     /// with commas.
-    required String trackingNumber,
+    String? trackingNumber,
   }) = _ShippingDetails;
 
   factory ShippingDetails.fromJson(Map<String, dynamic> json) =>

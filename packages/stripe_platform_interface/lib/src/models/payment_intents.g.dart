@@ -70,10 +70,10 @@ const _$ConfirmationMethodEnumMap = {
 _$_ShippingDetails _$$_ShippingDetailsFromJson(Map<String, dynamic> json) =>
     _$_ShippingDetails(
       address: Address.fromJson(json['address'] as Map<String, dynamic>),
-      name: json['name'] as String,
-      carrier: json['carrier'] as String,
-      phone: json['phone'] as String,
-      trackingNumber: json['trackingNumber'] as String,
+      name: json['name'] as String?,
+      carrier: json['carrier'] as String?,
+      phone: json['phone'] as String?,
+      trackingNumber: json['trackingNumber'] as String?,
     );
 
 Map<String, dynamic> _$$_ShippingDetailsToJson(_$_ShippingDetails instance) =>
