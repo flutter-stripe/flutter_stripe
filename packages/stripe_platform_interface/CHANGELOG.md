@@ -1,3 +1,9 @@
+## 2.1.1
+
+- Improved logging for Android initialization
+- Fix [#494] Make `ShippingDetails` parameters nullable
+- Fix [#499] Update cardnumber when using `dangerouslyGetFullCardDetails`
+
 ## 2.1.0
 
 ** Enabled web support (Beta) **
