@@ -190,7 +190,7 @@ This project uses [melos](https://github.com/invertase/melos) to manage all the 
 
 - Format `melos run format`
 - Analyze `melos run analyze`
-- Test `melos run test`
+- Test `melos run unittest`
 - Pub get `melos run get`
 
 ##### Publishing
