@@ -27,18 +27,23 @@ extension SetupStatusExtension on PaymentIntentsStatus {
       case 'succeeded':
         return PaymentIntentsStatus.Succeeded;
       case 'RequiresPaymentMethod':
+      case 'requires_payment_method':
         return PaymentIntentsStatus.RequiresPaymentMethod;
       case 'RequiresConfirmation':
+      case 'requires_confirmation':
         return PaymentIntentsStatus.RequiresConfirmation;
 
       case 'Canceled':
+      case 'canceled':
         return PaymentIntentsStatus.Canceled;
       case 'Processing':
       case 'processing':
         return PaymentIntentsStatus.Processing;
       case 'RequiresAction':
+      case 'requires_action':
         return PaymentIntentsStatus.RequiresAction;
       case 'RequiresCapture':
+      case 'requires_capture':
         return PaymentIntentsStatus.RequiresCapture;
       case 'Unknown':
         return PaymentIntentsStatus.Unknown;
