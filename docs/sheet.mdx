@@ -7,7 +7,7 @@ description: Accept a payment with Payment Sheet.
 
 ### Securely accept payments online.
 
-<img src="https://b.stripecdn.com/docs/assets/overview-complete.f08cdac19b6948ac6035828dd35c59aa.png" height="36" />
+<img src="https://b.stripecdn.com/docs-statics-srv/assets/bd5ffc39f955d37bb53ef7d854ae4474.png" height="36" />
 
 Integrate Stripe’s prebuilt payment UI into the checkout of your app with the PaymentSheet class.
 
@@ -80,6 +80,8 @@ Before displaying the payment sheet, your checkout page should:
 
 Next, integrate Stripe’s prebuilt payment UI into your app’s checkout.
 
+First you need to inititalize the payment sheet
+
 ```dart
 Future<void> initPaymentSheet() async {
     try {
@@ -87,12 +89,22 @@ Future<void> initPaymentSheet() async {
       final data = await _createTestPaymentSheet();
 
       // 2. initialize the payment sheet
-      await Stripe.instance.initPaymentSheet(
+     await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
+          // Enable custom flow
+          customFlow: true,
+          // Main params
           merchantDisplayName: 'Flutter Stripe Store Demo',
           paymentIntentClientSecret: data['paymentIntent'],
-          customerId: data['customer'],
+          // Customer keys
           customerEphemeralKeySecret: data['ephemeralKey'],
+          customerId: data['customer'],
+          // Extra options
+          testEnv: true,
+          applePay: true,
+          googlePay: true,
+          style: ThemeMode.dark,
+          merchantCountryCode: 'DE',
         ),
       );
       setState(() {
@@ -108,17 +120,9 @@ Future<void> initPaymentSheet() async {
 ```
 
 When the customer taps a **Checkout** button, call present to present the payment sheet. After the customer completes the payment, the sheet is dismissed.
-
-
 ```dart
-await Stripe.instance.presentPaymentSheet(
-  parameters: PresentPaymentSheetParameters(
-    clientSecret: _paymentSheetData!['paymentIntent'],
-    confirmPayment: true,
-  ),
-)
+await Stripe.instance.presentPaymentSheet();
 ```
-
 
 Unless your business model requires immediate payment (e.g., an on-demand service), don’t assume you have received payment at this point. Instead, inform the customer that you confirmed their order and notify them by email when you fulfill their order in the next step.
 
