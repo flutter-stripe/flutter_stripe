@@ -207,16 +207,17 @@ class WebStripe extends StripePlatform {
     throw UnimplementedError();
   }
 
-  // NOT SUPPORTED BY WEB
-
   static Future<CheckoutResponse> redirectToCheckout({
     required String sessionId,
   }) async {
     final options = s.StripeServerCheckoutOptions(sessionId: sessionId);
     final response = await js.redirectToCheckout(options);
-    if (response != null) return CheckoutResponse.error(error: response.error);
+    if (response != null) return CheckoutResponse.error(error: response);
     return const CheckoutResponse.canceled();
   }
+  // NOT SUPPORTED BY WEB
+
+
 
   @override
   Future<String> createTokenForCVCUpdate(String cvc) async {
