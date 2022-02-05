@@ -20,7 +20,7 @@ defaultConfig {
         targetSdkVersion 31
 ```
 
-#### Kotlin version must be 1.5.0 
+#### Kotlin version must be at least 1.5.0 
 
 Our plugin consists of Kotlin code and if you run an outdated version of Kotlin  make sure you upgrade the version in your application's build.gradle file:
 
@@ -48,7 +48,7 @@ Out of date Gradle dependencies can yield to weird build results and the App not
 
 The Stripe sdk requires a `FlutterFragmentActivity` instead of the `FlutterActivity` that is standard specifified when creating a new Flutter project. Follow the following steps to change it:
 
-1. Create a MainActivity kotlin file in the `Android` folder of your Flutter app. See the snippet below and our[example app](https://github.com/flutter-stripe/flutter_stripe/blob/79b201a2e9b827196d6a97bb41e1d0e526632a5a/example/android/app/src/main/kotlin/com/flutter/stripe/example/MainActivity.kt#L6).
+1. Create a MainActivity kotlin file (if it doesn’t exist) in the `Android` folder of your Flutter app. See the snippet below and our [example app](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/app/src/main/kotlin/com/flutter/stripe/example/MainActivity.kt).
 
 ```kotlin
 package com.flutter.stripe.example

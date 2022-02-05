@@ -8,6 +8,11 @@
           ["Payment Sheet", "/sheet"]
           ]      
         ],
+        ["Regional payments", [
+            ["Ideal", "/ideal"]
+          ]
+        ],
+        ["Troubleshooting", "/troubleshooting"],
         ["Api Reference", "https://pub.dev/documentation/flutter_stripe/latest/flutter_stripe/flutter_stripe-library.html"]
       ]
 }
