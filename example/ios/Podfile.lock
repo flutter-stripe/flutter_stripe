@@ -1,7 +1,5 @@
 PODS:
   - Flutter (1.0.0)
-  - integration_test (0.0.1):
-    - Flutter
   - pay_ios (0.0.1):
     - Flutter
   - Stripe (21.9.0):
@@ -22,7 +20,6 @@ PODS:
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
-  - integration_test (from `.symlinks/plugins/integration_test/ios`)
   - pay_ios (from `.symlinks/plugins/pay_ios/ios`)
   - stripe_ios (from `.symlinks/plugins/stripe_ios/ios`)
   - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
@@ -36,8 +33,6 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
-  integration_test:
-    :path: ".symlinks/plugins/integration_test/ios"
   pay_ios:
     :path: ".symlinks/plugins/pay_ios/ios"
   stripe_ios:
@@ -47,7 +42,6 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
-  integration_test: 7db6d89f336f671dcbc7563ee27a5b08f6f8aee1
   pay_ios: 8c7beb9c61d885f3f51b61f75f8793023fc8843a
   Stripe: 41c3d261501e1dc84755b1bdabdaae50ebf92b53
   stripe_ios: fce03ba840e641cc31ff5bdb67f5d5b9c938b897
@@ -57,4 +51,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 4e8f8b2be68aeea4c0d5beb6ff1e79fface1d048
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.10.1
