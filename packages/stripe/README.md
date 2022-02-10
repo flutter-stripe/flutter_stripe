@@ -68,7 +68,7 @@ Check the steps needed [here](https://github.com/flutter-stripe/flutter_stripe/t
 
 ## Usage
 
-The library provides two UI componets for accepting card payments: the `CardField` and the `Paymentsheet`. 
+The library provides three UI componets for accepting card payments: the `CardField`, `CardForm`, and the `Paymentsheet`. 
 
 We recommend using the `PaymentSheet` for the most easy and smooth Stripe integration. It provides out of the box support for:
 - Localized labels and error messages to the users
