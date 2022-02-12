@@ -10,29 +10,12 @@ _$_CreateTokenParamsCard _$$_CreateTokenParamsCardFromJson(
         Map<String, dynamic> json) =>
     _$_CreateTokenParamsCard(
       params: CardTokenParams.fromJson(json['params'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$_CreateTokenParamsCardToJson(
         _$_CreateTokenParamsCard instance) =>
     <String, dynamic>{
       'params': instance.params.toJson(),
-      'runtimeType': instance.$type,
-    };
-
-_$_CreateTokenParamsBankAccount _$$_CreateTokenParamsBankAccountFromJson(
-        Map<String, dynamic> json) =>
-    _$_CreateTokenParamsBankAccount(
-      params: BankAccountTokenParams.fromJson(
-          json['params'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
-    );
-
-Map<String, dynamic> _$$_CreateTokenParamsBankAccountToJson(
-        _$_CreateTokenParamsBankAccount instance) =>
-    <String, dynamic>{
-      'params': instance.params.toJson(),
-      'runtimeType': instance.$type,
     };
 
 _$_CardTokenParams _$$_CardTokenParamsFromJson(Map<String, dynamic> json) =>

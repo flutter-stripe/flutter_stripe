@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:stripe_example/screens/others/legacy_token_bank_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen_custom_flow.dart';
 import 'package:stripe_example/screens/regional_payment_methods/ali_pay_screen.dart';
@@ -242,11 +241,11 @@ class Example extends StatelessWidget {
         builder: (context) => LegacyTokenCardScreen(),
         platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
-      Example(
-        title: 'Create token for bank (legacy)',
-        builder: (context) => LegacyTokenBankScreen(),
-        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
-      ),
+      // Example(
+      //   title: 'Create token for bank (legacy)',
+      //   builder: (context) => LegacyTokenBankScreen(),
+      //   platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+      // ),
     ]),
   ];
 }
