@@ -13,6 +13,19 @@ part 'create_token_data.g.dart';
 /// At this moment only card tokens are supported.
 class CreateTokenParams with _$CreateTokenParams {
   @JsonSerializable(explicitToJson: true)
+  @Deprecated('Use [CreateTokenParams.card] instead')
+  const factory CreateTokenParams({
+    /// Type of token.
+    @Default(TokenType.Card) TokenType type,
+
+    /// Name of the card holder
+    String? name,
+
+    /// Additional address details
+    Address? address,
+  }) = _CreateTokenParamsLegacy;
+
+  @JsonSerializable(explicitToJson: true)
   const factory CreateTokenParams.card({
     required CardTokenParams params,
   }) = _CreateTokenParamsCard;

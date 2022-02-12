@@ -6,16 +6,44 @@ part of 'create_token_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$_CreateTokenParamsLegacy _$$_CreateTokenParamsLegacyFromJson(
+        Map<String, dynamic> json) =>
+    _$_CreateTokenParamsLegacy(
+      type: $enumDecodeNullable(_$TokenTypeEnumMap, json['type']) ??
+          TokenType.Card,
+      name: json['name'] as String?,
+      address: json['address'] == null
+          ? null
+          : Address.fromJson(json['address'] as Map<String, dynamic>),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$_CreateTokenParamsLegacyToJson(
+        _$_CreateTokenParamsLegacy instance) =>
+    <String, dynamic>{
+      'type': _$TokenTypeEnumMap[instance.type],
+      'name': instance.name,
+      'address': instance.address?.toJson(),
+      'runtimeType': instance.$type,
+    };
+
+const _$TokenTypeEnumMap = {
+  TokenType.Card: 'Card',
+  TokenType.BankAccount: 'BankAccount',
+};
+
 _$_CreateTokenParamsCard _$$_CreateTokenParamsCardFromJson(
         Map<String, dynamic> json) =>
     _$_CreateTokenParamsCard(
       params: CardTokenParams.fromJson(json['params'] as Map<String, dynamic>),
+      $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$_CreateTokenParamsCardToJson(
         _$_CreateTokenParamsCard instance) =>
     <String, dynamic>{
       'params': instance.params.toJson(),
+      'runtimeType': instance.$type,
     };
 
 _$_CardTokenParams _$$_CardTokenParamsFromJson(Map<String, dynamic> json) =>
@@ -34,11 +62,6 @@ Map<String, dynamic> _$$_CardTokenParamsToJson(_$_CardTokenParams instance) =>
       'name': instance.name,
       'address': instance.address,
     };
-
-const _$TokenTypeEnumMap = {
-  TokenType.Card: 'Card',
-  TokenType.BankAccount: 'BankAccount',
-};
 
 _$_BankAccountTokenParams _$$_BankAccountTokenParamsFromJson(
         Map<String, dynamic> json) =>

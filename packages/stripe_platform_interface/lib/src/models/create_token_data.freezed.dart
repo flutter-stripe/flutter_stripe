@@ -15,12 +15,30 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CreateTokenParams _$CreateTokenParamsFromJson(Map<String, dynamic> json) {
-  return _CreateTokenParamsCard.fromJson(json);
+  switch (json['runtimeType']) {
+    case 'default':
+      return _CreateTokenParamsLegacy.fromJson(json);
+    case 'card':
+      return _CreateTokenParamsCard.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'CreateTokenParams',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
 }
 
 /// @nodoc
 class _$CreateTokenParamsTearOff {
   const _$CreateTokenParamsTearOff();
+
+  _CreateTokenParamsLegacy call(
+      {TokenType type = TokenType.Card, String? name, Address? address}) {
+    return _CreateTokenParamsLegacy(
+      type: type,
+      name: name,
+      address: address,
+    );
+  }
 
   _CreateTokenParamsCard card({required CardTokenParams params}) {
     return _CreateTokenParamsCard(
@@ -38,44 +56,47 @@ const $CreateTokenParams = _$CreateTokenParamsTearOff();
 
 /// @nodoc
 mixin _$CreateTokenParams {
-  CardTokenParams get params => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
+  TResult when<TResult extends Object?>(
+    TResult Function(TokenType type, String? name, Address? address) $default, {
     required TResult Function(CardTokenParams params) card,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult Function(TokenType type, String? name, Address? address)?
+        $default, {
     TResult Function(CardTokenParams params)? card,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TokenType type, String? name, Address? address)?
+        $default, {
     TResult Function(CardTokenParams params)? card,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
+  TResult map<TResult extends Object?>(
+    TResult Function(_CreateTokenParamsLegacy value) $default, {
     required TResult Function(_CreateTokenParamsCard value) card,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult Function(_CreateTokenParamsLegacy value)? $default, {
     TResult Function(_CreateTokenParamsCard value)? card,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_CreateTokenParamsLegacy value)? $default, {
     TResult Function(_CreateTokenParamsCard value)? card,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $CreateTokenParamsCopyWith<CreateTokenParams> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -83,9 +104,6 @@ abstract class $CreateTokenParamsCopyWith<$Res> {
   factory $CreateTokenParamsCopyWith(
           CreateTokenParams value, $Res Function(CreateTokenParams) then) =
       _$CreateTokenParamsCopyWithImpl<$Res>;
-  $Res call({CardTokenParams params});
-
-  $CardTokenParamsCopyWith<$Res> get params;
 }
 
 /// @nodoc
@@ -96,37 +114,220 @@ class _$CreateTokenParamsCopyWithImpl<$Res>
   final CreateTokenParams _value;
   // ignore: unused_field
   final $Res Function(CreateTokenParams) _then;
+}
+
+/// @nodoc
+abstract class _$CreateTokenParamsLegacyCopyWith<$Res> {
+  factory _$CreateTokenParamsLegacyCopyWith(_CreateTokenParamsLegacy value,
+          $Res Function(_CreateTokenParamsLegacy) then) =
+      __$CreateTokenParamsLegacyCopyWithImpl<$Res>;
+  $Res call({TokenType type, String? name, Address? address});
+
+  $AddressCopyWith<$Res>? get address;
+}
+
+/// @nodoc
+class __$CreateTokenParamsLegacyCopyWithImpl<$Res>
+    extends _$CreateTokenParamsCopyWithImpl<$Res>
+    implements _$CreateTokenParamsLegacyCopyWith<$Res> {
+  __$CreateTokenParamsLegacyCopyWithImpl(_CreateTokenParamsLegacy _value,
+      $Res Function(_CreateTokenParamsLegacy) _then)
+      : super(_value, (v) => _then(v as _CreateTokenParamsLegacy));
+
+  @override
+  _CreateTokenParamsLegacy get _value =>
+      super._value as _CreateTokenParamsLegacy;
 
   @override
   $Res call({
-    Object? params = freezed,
+    Object? type = freezed,
+    Object? name = freezed,
+    Object? address = freezed,
   }) {
-    return _then(_value.copyWith(
-      params: params == freezed
-          ? _value.params
-          : params // ignore: cast_nullable_to_non_nullable
-              as CardTokenParams,
+    return _then(_CreateTokenParamsLegacy(
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as TokenType,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as Address?,
     ));
   }
 
   @override
-  $CardTokenParamsCopyWith<$Res> get params {
-    return $CardTokenParamsCopyWith<$Res>(_value.params, (value) {
-      return _then(_value.copyWith(params: value));
+  $AddressCopyWith<$Res>? get address {
+    if (_value.address == null) {
+      return null;
+    }
+
+    return $AddressCopyWith<$Res>(_value.address!, (value) {
+      return _then(_value.copyWith(address: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$CreateTokenParamsCardCopyWith<$Res>
-    implements $CreateTokenParamsCopyWith<$Res> {
+
+@JsonSerializable(explicitToJson: true)
+@Deprecated('Use [CreateTokenParams.card] instead')
+class _$_CreateTokenParamsLegacy implements _CreateTokenParamsLegacy {
+  const _$_CreateTokenParamsLegacy(
+      {this.type = TokenType.Card, this.name, this.address, String? $type})
+      : $type = $type ?? 'default';
+
+  factory _$_CreateTokenParamsLegacy.fromJson(Map<String, dynamic> json) =>
+      _$$_CreateTokenParamsLegacyFromJson(json);
+
+  @JsonKey()
+  @override
+
+  /// Type of token.
+  final TokenType type;
+  @override
+
+  /// Name of the card holder
+  final String? name;
+  @override
+
+  /// Additional address details
+  final Address? address;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'CreateTokenParams(type: $type, name: $name, address: $address)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _CreateTokenParamsLegacy &&
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.address, address));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(address));
+
+  @JsonKey(ignore: true)
+  @override
+  _$CreateTokenParamsLegacyCopyWith<_CreateTokenParamsLegacy> get copyWith =>
+      __$CreateTokenParamsLegacyCopyWithImpl<_CreateTokenParamsLegacy>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(TokenType type, String? name, Address? address) $default, {
+    required TResult Function(CardTokenParams params) card,
+  }) {
+    return $default(type, name, address);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult Function(TokenType type, String? name, Address? address)?
+        $default, {
+    TResult Function(CardTokenParams params)? card,
+  }) {
+    return $default?.call(type, name, address);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TokenType type, String? name, Address? address)?
+        $default, {
+    TResult Function(CardTokenParams params)? card,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(type, name, address);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_CreateTokenParamsLegacy value) $default, {
+    required TResult Function(_CreateTokenParamsCard value) card,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult Function(_CreateTokenParamsLegacy value)? $default, {
+    TResult Function(_CreateTokenParamsCard value)? card,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_CreateTokenParamsLegacy value)? $default, {
+    TResult Function(_CreateTokenParamsCard value)? card,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CreateTokenParamsLegacyToJson(this);
+  }
+}
+
+abstract class _CreateTokenParamsLegacy implements CreateTokenParams {
+  const factory _CreateTokenParamsLegacy(
+      {TokenType type,
+      String? name,
+      Address? address}) = _$_CreateTokenParamsLegacy;
+
+  factory _CreateTokenParamsLegacy.fromJson(Map<String, dynamic> json) =
+      _$_CreateTokenParamsLegacy.fromJson;
+
+  /// Type of token.
+  TokenType get type;
+
+  /// Name of the card holder
+  String? get name;
+
+  /// Additional address details
+  Address? get address;
+  @JsonKey(ignore: true)
+  _$CreateTokenParamsLegacyCopyWith<_CreateTokenParamsLegacy> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$CreateTokenParamsCardCopyWith<$Res> {
   factory _$CreateTokenParamsCardCopyWith(_CreateTokenParamsCard value,
           $Res Function(_CreateTokenParamsCard) then) =
       __$CreateTokenParamsCardCopyWithImpl<$Res>;
-  @override
   $Res call({CardTokenParams params});
 
-  @override
   $CardTokenParamsCopyWith<$Res> get params;
 }
 
@@ -152,19 +353,30 @@ class __$CreateTokenParamsCardCopyWithImpl<$Res>
               as CardTokenParams,
     ));
   }
+
+  @override
+  $CardTokenParamsCopyWith<$Res> get params {
+    return $CardTokenParamsCopyWith<$Res>(_value.params, (value) {
+      return _then(_value.copyWith(params: value));
+    });
+  }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
 class _$_CreateTokenParamsCard implements _CreateTokenParamsCard {
-  const _$_CreateTokenParamsCard({required this.params});
+  const _$_CreateTokenParamsCard({required this.params, String? $type})
+      : $type = $type ?? 'card';
 
   factory _$_CreateTokenParamsCard.fromJson(Map<String, dynamic> json) =>
       _$$_CreateTokenParamsCardFromJson(json);
 
   @override
   final CardTokenParams params;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -191,7 +403,8 @@ class _$_CreateTokenParamsCard implements _CreateTokenParamsCard {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
+  TResult when<TResult extends Object?>(
+    TResult Function(TokenType type, String? name, Address? address) $default, {
     required TResult Function(CardTokenParams params) card,
   }) {
     return card(params);
@@ -199,7 +412,9 @@ class _$_CreateTokenParamsCard implements _CreateTokenParamsCard {
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult Function(TokenType type, String? name, Address? address)?
+        $default, {
     TResult Function(CardTokenParams params)? card,
   }) {
     return card?.call(params);
@@ -207,7 +422,9 @@ class _$_CreateTokenParamsCard implements _CreateTokenParamsCard {
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TokenType type, String? name, Address? address)?
+        $default, {
     TResult Function(CardTokenParams params)? card,
     required TResult orElse(),
   }) {
@@ -219,7 +436,8 @@ class _$_CreateTokenParamsCard implements _CreateTokenParamsCard {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
+  TResult map<TResult extends Object?>(
+    TResult Function(_CreateTokenParamsLegacy value) $default, {
     required TResult Function(_CreateTokenParamsCard value) card,
   }) {
     return card(this);
@@ -227,7 +445,8 @@ class _$_CreateTokenParamsCard implements _CreateTokenParamsCard {
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult Function(_CreateTokenParamsLegacy value)? $default, {
     TResult Function(_CreateTokenParamsCard value)? card,
   }) {
     return card?.call(this);
@@ -235,7 +454,8 @@ class _$_CreateTokenParamsCard implements _CreateTokenParamsCard {
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_CreateTokenParamsLegacy value)? $default, {
     TResult Function(_CreateTokenParamsCard value)? card,
     required TResult orElse(),
   }) {
@@ -258,9 +478,7 @@ abstract class _CreateTokenParamsCard implements CreateTokenParams {
   factory _CreateTokenParamsCard.fromJson(Map<String, dynamic> json) =
       _$_CreateTokenParamsCard.fromJson;
 
-  @override
   CardTokenParams get params;
-  @override
   @JsonKey(ignore: true)
   _$CreateTokenParamsCardCopyWith<_CreateTokenParamsCard> get copyWith =>
       throw _privateConstructorUsedError;
