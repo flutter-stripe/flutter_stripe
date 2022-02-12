@@ -13,7 +13,6 @@ part 'elements/elements.dart';
 
 part 'elements/styles.dart';
 part 'interface.dart';
-part 'models/checkout.dart';
 part 'models/setup_intent.dart';
 part 'models/payment_method.dart';
 part 'payment_intent/payment_intent.dart';
