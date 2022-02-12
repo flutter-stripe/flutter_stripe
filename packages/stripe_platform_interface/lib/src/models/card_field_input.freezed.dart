@@ -891,7 +891,10 @@ class _$CardFieldInputDetailsTearOff {
       String? postalCode,
       String? brand,
       String? number,
-      String? cvc}) {
+      String? cvc,
+      CardValidationState validExpiryDate = CardValidationState.Unknown,
+      CardValidationState validCVC = CardValidationState.Unknown,
+      CardValidationState validNumber = CardValidationState.Unknown}) {
     return _CardFieldInputDetails(
       complete: complete,
       last4: last4,
@@ -901,6 +904,9 @@ class _$CardFieldInputDetailsTearOff {
       brand: brand,
       number: number,
       cvc: cvc,
+      validExpiryDate: validExpiryDate,
+      validCVC: validCVC,
+      validNumber: validNumber,
     );
   }
 
@@ -940,6 +946,15 @@ mixin _$CardFieldInputDetails {
   /// This information is not available by default to comply with the PCI compliance
   String? get cvc => throw _privateConstructorUsedError;
 
+  /// The [CardValidationState] of the entered expiry date.
+  CardValidationState get validExpiryDate => throw _privateConstructorUsedError;
+
+  /// The [CardValidationState] of the entered cvc.
+  CardValidationState get validCVC => throw _privateConstructorUsedError;
+
+  /// The [CardValidationState] of the entered card number.
+  CardValidationState get validNumber => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CardFieldInputDetailsCopyWith<CardFieldInputDetails> get copyWith =>
@@ -959,7 +974,10 @@ abstract class $CardFieldInputDetailsCopyWith<$Res> {
       String? postalCode,
       String? brand,
       String? number,
-      String? cvc});
+      String? cvc,
+      CardValidationState validExpiryDate,
+      CardValidationState validCVC,
+      CardValidationState validNumber});
 }
 
 /// @nodoc
@@ -981,6 +999,9 @@ class _$CardFieldInputDetailsCopyWithImpl<$Res>
     Object? brand = freezed,
     Object? number = freezed,
     Object? cvc = freezed,
+    Object? validExpiryDate = freezed,
+    Object? validCVC = freezed,
+    Object? validNumber = freezed,
   }) {
     return _then(_value.copyWith(
       complete: complete == freezed
@@ -1015,6 +1036,18 @@ class _$CardFieldInputDetailsCopyWithImpl<$Res>
           ? _value.cvc
           : cvc // ignore: cast_nullable_to_non_nullable
               as String?,
+      validExpiryDate: validExpiryDate == freezed
+          ? _value.validExpiryDate
+          : validExpiryDate // ignore: cast_nullable_to_non_nullable
+              as CardValidationState,
+      validCVC: validCVC == freezed
+          ? _value.validCVC
+          : validCVC // ignore: cast_nullable_to_non_nullable
+              as CardValidationState,
+      validNumber: validNumber == freezed
+          ? _value.validNumber
+          : validNumber // ignore: cast_nullable_to_non_nullable
+              as CardValidationState,
     ));
   }
 }
@@ -1034,7 +1067,10 @@ abstract class _$CardFieldInputDetailsCopyWith<$Res>
       String? postalCode,
       String? brand,
       String? number,
-      String? cvc});
+      String? cvc,
+      CardValidationState validExpiryDate,
+      CardValidationState validCVC,
+      CardValidationState validNumber});
 }
 
 /// @nodoc
@@ -1058,6 +1094,9 @@ class __$CardFieldInputDetailsCopyWithImpl<$Res>
     Object? brand = freezed,
     Object? number = freezed,
     Object? cvc = freezed,
+    Object? validExpiryDate = freezed,
+    Object? validCVC = freezed,
+    Object? validNumber = freezed,
   }) {
     return _then(_CardFieldInputDetails(
       complete: complete == freezed
@@ -1092,6 +1131,18 @@ class __$CardFieldInputDetailsCopyWithImpl<$Res>
           ? _value.cvc
           : cvc // ignore: cast_nullable_to_non_nullable
               as String?,
+      validExpiryDate: validExpiryDate == freezed
+          ? _value.validExpiryDate
+          : validExpiryDate // ignore: cast_nullable_to_non_nullable
+              as CardValidationState,
+      validCVC: validCVC == freezed
+          ? _value.validCVC
+          : validCVC // ignore: cast_nullable_to_non_nullable
+              as CardValidationState,
+      validNumber: validNumber == freezed
+          ? _value.validNumber
+          : validNumber // ignore: cast_nullable_to_non_nullable
+              as CardValidationState,
     ));
   }
 }
@@ -1108,7 +1159,10 @@ class _$_CardFieldInputDetails extends _CardFieldInputDetails {
       this.postalCode,
       this.brand,
       this.number,
-      this.cvc})
+      this.cvc,
+      this.validExpiryDate = CardValidationState.Unknown,
+      this.validCVC = CardValidationState.Unknown,
+      this.validNumber = CardValidationState.Unknown})
       : super._();
 
   factory _$_CardFieldInputDetails.fromJson(Map<String, dynamic> json) =>
@@ -1148,10 +1202,25 @@ class _$_CardFieldInputDetails extends _CardFieldInputDetails {
   /// CVC code.
   /// This information is not available by default to comply with the PCI compliance
   final String? cvc;
+  @JsonKey()
+  @override
+
+  /// The [CardValidationState] of the entered expiry date.
+  final CardValidationState validExpiryDate;
+  @JsonKey()
+  @override
+
+  /// The [CardValidationState] of the entered cvc.
+  final CardValidationState validCVC;
+  @JsonKey()
+  @override
+
+  /// The [CardValidationState] of the entered card number.
+  final CardValidationState validNumber;
 
   @override
   String toString() {
-    return 'CardFieldInputDetails(complete: $complete, last4: $last4, expiryMonth: $expiryMonth, expiryYear: $expiryYear, postalCode: $postalCode, brand: $brand, number: $number, cvc: $cvc)';
+    return 'CardFieldInputDetails(complete: $complete, last4: $last4, expiryMonth: $expiryMonth, expiryYear: $expiryYear, postalCode: $postalCode, brand: $brand, number: $number, cvc: $cvc, validExpiryDate: $validExpiryDate, validCVC: $validCVC, validNumber: $validNumber)';
   }
 
   @override
@@ -1169,7 +1238,12 @@ class _$_CardFieldInputDetails extends _CardFieldInputDetails {
                 .equals(other.postalCode, postalCode) &&
             const DeepCollectionEquality().equals(other.brand, brand) &&
             const DeepCollectionEquality().equals(other.number, number) &&
-            const DeepCollectionEquality().equals(other.cvc, cvc));
+            const DeepCollectionEquality().equals(other.cvc, cvc) &&
+            const DeepCollectionEquality()
+                .equals(other.validExpiryDate, validExpiryDate) &&
+            const DeepCollectionEquality().equals(other.validCVC, validCVC) &&
+            const DeepCollectionEquality()
+                .equals(other.validNumber, validNumber));
   }
 
   @override
@@ -1182,7 +1256,10 @@ class _$_CardFieldInputDetails extends _CardFieldInputDetails {
       const DeepCollectionEquality().hash(postalCode),
       const DeepCollectionEquality().hash(brand),
       const DeepCollectionEquality().hash(number),
-      const DeepCollectionEquality().hash(cvc));
+      const DeepCollectionEquality().hash(cvc),
+      const DeepCollectionEquality().hash(validExpiryDate),
+      const DeepCollectionEquality().hash(validCVC),
+      const DeepCollectionEquality().hash(validNumber));
 
   @JsonKey(ignore: true)
   @override
@@ -1205,7 +1282,10 @@ abstract class _CardFieldInputDetails extends CardFieldInputDetails {
       String? postalCode,
       String? brand,
       String? number,
-      String? cvc}) = _$_CardFieldInputDetails;
+      String? cvc,
+      CardValidationState validExpiryDate,
+      CardValidationState validCVC,
+      CardValidationState validNumber}) = _$_CardFieldInputDetails;
   const _CardFieldInputDetails._() : super._();
 
   factory _CardFieldInputDetails.fromJson(Map<String, dynamic> json) =
@@ -1245,6 +1325,18 @@ abstract class _CardFieldInputDetails extends CardFieldInputDetails {
   /// CVC code.
   /// This information is not available by default to comply with the PCI compliance
   String? get cvc;
+  @override
+
+  /// The [CardValidationState] of the entered expiry date.
+  CardValidationState get validExpiryDate;
+  @override
+
+  /// The [CardValidationState] of the entered cvc.
+  CardValidationState get validCVC;
+  @override
+
+  /// The [CardValidationState] of the entered card number.
+  CardValidationState get validNumber;
   @override
   @JsonKey(ignore: true)
   _$CardFieldInputDetailsCopyWith<_CardFieldInputDetails> get copyWith =>
