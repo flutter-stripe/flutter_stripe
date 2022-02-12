@@ -22,15 +22,7 @@ class App extends StatelessWidget {
     return DismissFocusOverlay(
       child: MaterialApp(
         theme: exampleAppTheme,
-        routes: {...CheckoutScreenExample.routes},
-        onGenerateInitialRoutes: (settings) {
-          print(settings);
-          return [
-            MaterialPageRoute(builder: (context) {
-              return HomePage();
-            })
-          ];
-        },
+        home: HomePage(),
         navigatorObservers: [],
       ),
     );

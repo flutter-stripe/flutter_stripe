@@ -12,14 +12,12 @@ dependencies:
     sdk: flutter
   flutter_stripe: ^2.1.1
   flutter_stripe_web: ^0.1.1
+  stripe_checkout: ^0.1.1
   pay: ^1.0.1
   http: ^0.13.1
   font_awesome_flutter: ^9.2.0
   platform: ^3.0.0
-  stripe_checkout:
-    path: ../packages/stripe_checkout/
- 
- 
+
 
 dev_dependencies:
   flutter_test:
@@ -34,6 +32,8 @@ dependency_overrides:
     path: ../packages/stripe_android
   stripe_ios:
     path: ../packages/stripe_ios
+  stripe_checkout:
+    path: ../packages/stripe_checkout/
   flutter_stripe_web:
     path: ../packages/stripe_web
 

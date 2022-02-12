@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:stripe_example/.env.dart';
+import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'platforms/stripe_checkout.dart'
     if (dart.library.js) 'platforms/stripe_checkout_web.dart';
 import 'package:flutter/foundation.dart';
@@ -14,24 +15,9 @@ final kApiUrl = defaultTargetPlatform == TargetPlatform.android
     : 'http://localhost:4242';
 
 class CheckoutScreenExample extends StatefulWidget {
-  CheckoutScreenExample({Key? key, this.title, this.snackBarText})
-      : super(key: key);
-
-  final String? title;
-
-  final String? snackBarText;
-
-  static final routes = {
-    // For Flutter web
-    '/success': (c) => CheckoutScreenExample(
-          title: 'Checkout -  Done',
-          snackBarText: 'Paid succesfully',
-        ),
-    '/canceled': (c) => CheckoutScreenExample(
-          title: 'Checkout -  Canceled',
-          snackBarText: 'Checkout canceled',
-        ),
-  };
+  CheckoutScreenExample({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _CheckoutScreenExample createState() => _CheckoutScreenExample();
@@ -39,34 +25,19 @@ class CheckoutScreenExample extends StatefulWidget {
 
 class _CheckoutScreenExample extends State<CheckoutScreenExample> {
   @override
-  void initState() {
-    if (widget.snackBarText != null) {
-      WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(widget.snackBarText!)),
-        );
-      });
-    }
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title ?? 'Checkout Example'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              onPressed: getCheckout,
-              child: Text('Open Checkout'),
-            )
-          ],
-        ),
-      ),
+    return ExampleScaffold(
+      title: 'Checkout Page',
+      padding: EdgeInsets.all(16),
+      children: [
+        SizedBox(height: 120),
+        Center(
+          child: ElevatedButton(
+            onPressed: getCheckout,
+            child: Text('Open Checkout'),
+          ),
+        )
+      ],
     );
   }
 
@@ -76,13 +47,17 @@ class _CheckoutScreenExample extends State<CheckoutScreenExample> {
       context: context,
       sessionId: sessionId,
       publishableKey: stripePublishableKey,
+      successUrl: 'https://checkout.stripe.dev/success',
+      canceledUrl: 'https://checkout.stripe.dev/cancel',
     );
 
     if (mounted) {
       final text = result.when(
-          success: () => 'Paid succesfully',
-          canceled: () => 'Checkout canceled',
-          error: (e) => 'Error $e');
+        success: () => 'Paid succesfully',
+        canceled: () => 'Checkout canceled',
+        error: (e) => 'Error $e',
+        redirected: () => 'Redirected succesfully',
+      );
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(text)),
       );
