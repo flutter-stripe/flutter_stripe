@@ -9,6 +9,7 @@ DevicePlatform? get selectedPlatform {
   if (defaultTargetPlatform == TargetPlatform.android)
     return DevicePlatform.android;
   if (defaultTargetPlatform == TargetPlatform.iOS) return DevicePlatform.ios;
+  return null;
 }
 
 class PlatformIcons extends StatelessWidget {

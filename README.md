@@ -43,6 +43,7 @@ dart pub add flutter_stripe
 
 #### Android
 
+
 This plugin requires several changes to be able to work on Android devices. Please make sure you follow all these steps:
 
 1. Use Android 5.0 (API level 21) and above
@@ -183,9 +184,9 @@ Future<void> onGooglePayResult(paymentResult) async {
   - [Get your test Stripe API keys](https://stripe.com/docs/keys)
   - `cp lib/.env.example.dart lib/.env.dart` and set your Stripe publishable key.
   - `cp server/.env.example server/.env` and set the variable values in your newly created `.env` file.
-- Install the server dependencies: `yarn --cwd "server"`
+- Install the server dependencies: `npm install` or `yarn --cwd "server"`
 - Start the example
-  - Terminal 1: `yarn --cwd "server" start`
+  - Terminal 1: `npm start` or `yarn --cwd "server" start`
   - Terminal 2: `flutter run`
 
 ##### Additional steps for webhook forwarding
@@ -208,7 +209,7 @@ This project uses [melos](https://github.com/invertase/melos) to manage all the 
 
 - Format `melos run format`
 - Analyze `melos run analyze`
-- Test `melos run test`
+- Test `melos run unittest`
 - Pub get `melos run get`
 
 ##### Publishing
