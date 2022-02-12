@@ -6,7 +6,7 @@ The quickest way to build conversion-optimized payment forms, hosted on Stripe.
 
 ```dart
 final sessionId = await getSessionIdFromMyServer();
-final response = await redirectCheckout(context: context, sessionId: sessionId, publishableKey: publishableKey);
+final response = await redirectToCheckout(context: context, sessionId: sessionId, publishableKey: publishableKey);
 ```
 
 Learn more about checkout in [Stripe docs](https://stripe.com/docs/payments/checkout)
@@ -18,20 +18,10 @@ In web, the website is redirected automatically to the checkout stripe url. And 
 https://user-images.githubusercontent.com/19904063/116256859-d87bc600-a773-11eb-9288-c53da161f20d.mov
 
 
-
 # Android and iOS
 
 
-
 Stripe checkouts is implemented using a webview. To keep it in sync with your app navigation you have to define the same successUrl and canceledUrl on your backend and your app. 
-
-By default, you can set the following urls in your server: 
-```json
-{  
-   "success_url": "http://localhost:8080/#/success",
-   "cancel_url": "http://localhost:8080/#/canceled"
-}
-```
 
 https://user-images.githubusercontent.com/19904063/116256916-e6314b80-a773-11eb-90cd-6609a34f1a3d.mov
 
