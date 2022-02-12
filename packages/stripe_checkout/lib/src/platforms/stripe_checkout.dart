@@ -12,9 +12,9 @@ import 'checkout.dart';
 ///
 /// The view is rendered directly for web and inside a webview for
 /// mobile platforms
-/// 
+///
 /// [successUrl] and [canceledUrl] are required on mobile platforms,
-/// they should be https and match the ones used to create the checkout 
+/// they should be https and match the ones used to create the checkout
 /// session in your server
 ///
 /// To have a custom route transition use [CheckoutPage] directly
@@ -101,6 +101,8 @@ class CheckoutPage extends StatefulWidget {
 class _CheckoutPageState extends State<CheckoutPage> {
   WebViewController? _webViewController;
 
+  static const String _baseUrl = 'https://stripe.com/base_url/';
+
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
@@ -109,12 +111,14 @@ class _CheckoutPageState extends State<CheckoutPage> {
         resizeToAvoidBottomInset: false,
         body: SafeArea(
           child: WebView(
-            initialUrl: initialUrl,
+            initialUrl: '',
             javascriptMode: JavascriptMode.unrestricted,
-            onWebViewCreated: (webViewController) =>
-                _webViewController = webViewController,
+            onWebViewCreated: (webViewController) {
+              _webViewController = webViewController;
+              _webViewController!.loadHtmlString(_htmlPage, baseUrl: _baseUrl);
+            },
             onPageFinished: (String url) {
-              if (url == initialUrl) {
+              if (url == _baseUrl) {
                 _redirectToStripe(widget.sessionId);
               }
             },
