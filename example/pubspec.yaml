@@ -12,7 +12,7 @@ dependencies:
     sdk: flutter
   flutter_stripe: ^2.1.1
   flutter_stripe_web: ^0.1.1
-  stripe_checkout: ^0.1.1
+  stripe_checkout: ^0.1.2
   pay: ^1.0.1
   http: ^0.13.1
   font_awesome_flutter: ^9.2.0
