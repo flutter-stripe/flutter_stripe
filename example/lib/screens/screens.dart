@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stripe_example/screens/others/legacy_token_bank_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen_custom_flow.dart';
 import 'package:stripe_example/screens/regional_payment_methods/ali_pay_screen.dart';
@@ -17,7 +18,7 @@ import 'card_payments/no_webhook_payment_cardform_screen.dart';
 import 'card_payments/no_webhook_payment_screen.dart';
 import 'card_payments/webhook_payment_screen.dart';
 import 'others/cvc_re_collection_screen.dart';
-import 'others/legacy_token_screen.dart';
+import 'others/legacy_token_card_screen.dart';
 import 'others/setup_future_payment_screen.dart';
 import 'regional_payment_methods/grab_pay_screen.dart';
 import 'themes.dart';
@@ -237,8 +238,13 @@ class Example extends StatelessWidget {
         platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
       Example(
-        title: 'Create token (legacy)',
-        builder: (context) => LegacyTokenScreen(),
+        title: 'Create token for card (legacy)',
+        builder: (context) => LegacyTokenCardScreen(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+      ),
+      Example(
+        title: 'Create token for bank (legacy)',
+        builder: (context) => LegacyTokenBankScreen(),
         platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
     ]),

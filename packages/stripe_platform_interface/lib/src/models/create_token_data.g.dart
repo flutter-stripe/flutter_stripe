@@ -6,24 +6,88 @@ part of 'create_token_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CreateTokenParams _$$_CreateTokenParamsFromJson(Map<String, dynamic> json) =>
-    _$_CreateTokenParams(
+_$_CreateTokenParamsCard _$$_CreateTokenParamsCardFromJson(
+        Map<String, dynamic> json) =>
+    _$_CreateTokenParamsCard(
+      params: CardTokenParams.fromJson(json['params'] as Map<String, dynamic>),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$_CreateTokenParamsCardToJson(
+        _$_CreateTokenParamsCard instance) =>
+    <String, dynamic>{
+      'params': instance.params.toJson(),
+      'runtimeType': instance.$type,
+    };
+
+_$_CreateTokenParamsBankAccount _$$_CreateTokenParamsBankAccountFromJson(
+        Map<String, dynamic> json) =>
+    _$_CreateTokenParamsBankAccount(
+      params: BankAccountTokenParams.fromJson(
+          json['params'] as Map<String, dynamic>),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$_CreateTokenParamsBankAccountToJson(
+        _$_CreateTokenParamsBankAccount instance) =>
+    <String, dynamic>{
+      'params': instance.params.toJson(),
+      'runtimeType': instance.$type,
+    };
+
+_$_CardTokenParams _$$_CardTokenParamsFromJson(Map<String, dynamic> json) =>
+    _$_CardTokenParams(
       type: $enumDecodeNullable(_$TokenTypeEnumMap, json['type']) ??
           TokenType.Card,
+      name: json['name'] as String?,
       address: json['address'] == null
           ? null
           : Address.fromJson(json['address'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_CreateTokenParamsToJson(
-        _$_CreateTokenParams instance) =>
+Map<String, dynamic> _$$_CardTokenParamsToJson(_$_CardTokenParams instance) =>
     <String, dynamic>{
       'type': _$TokenTypeEnumMap[instance.type],
+      'name': instance.name,
       'address': instance.address,
     };
 
 const _$TokenTypeEnumMap = {
   TokenType.Card: 'Card',
+  TokenType.BankAccount: 'BankAccount',
+};
+
+_$_BankAccountTokenParams _$$_BankAccountTokenParamsFromJson(
+        Map<String, dynamic> json) =>
+    _$_BankAccountTokenParams(
+      type: $enumDecodeNullable(_$TokenTypeEnumMap, json['type']) ??
+          TokenType.BankAccount,
+      accountNumber: json['accountNumber'] as String,
+      country: json['country'] as String,
+      currency: json['currency'] as String,
+      accountHolderName: json['accountHolderName'] as String?,
+      accountHolderType: $enumDecodeNullable(
+          _$BankAccountHolderTypeEnumMap, json['accountHolderType']),
+      routingNumber: json['routingNumber'] as String?,
+    );
+
+Map<String, dynamic> _$$_BankAccountTokenParamsToJson(
+        _$_BankAccountTokenParams instance) =>
+    <String, dynamic>{
+      'type': _$TokenTypeEnumMap[instance.type],
+      'accountNumber': instance.accountNumber,
+      'country': instance.country,
+      'currency': instance.currency,
+      'accountHolderName': instance.accountHolderName,
+      'accountHolderType':
+          _$BankAccountHolderTypeEnumMap[instance.accountHolderType],
+      'routingNumber': instance.routingNumber,
+    };
+
+const _$BankAccountHolderTypeEnumMap = {
+  BankAccountHolderType.Company: 'Company',
+  BankAccountHolderType.Individual: 'Individual',
+  BankAccountHolderType.Unknown: 'Unknown',
 };
 
 _$_TokenData _$$_TokenDataFromJson(Map<String, dynamic> json) => _$_TokenData(
@@ -99,12 +163,6 @@ Map<String, dynamic> _$$_BankAccountToJson(_$_BankAccount instance) =>
       'currency': instance.currency,
       'routingNumber': instance.routingNumber,
     };
-
-const _$BankAccountHolderTypeEnumMap = {
-  BankAccountHolderType.Company: 'Company',
-  BankAccountHolderType.Individual: 'Individual',
-  BankAccountHolderType.Unknown: 'Unknown',
-};
 
 const _$BankAccountStatusEnumMap = {
   BankAccountStatus.Errored: 'Errored',
