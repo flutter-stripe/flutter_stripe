@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   webview_flutter: ^3.0.0
-  js: ^0.6.4
+  js: ^0.6.3
   freezed_annotation: ^1.0.0
 
 dev_dependencies:
