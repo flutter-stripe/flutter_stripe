@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'checkout.dart';
 
@@ -13,7 +15,9 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CheckoutResponse _$CheckoutResponseFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType'] as String) {
+  switch (json['runtimeType']) {
+    case 'redirected':
+      return _Redirect.fromJson(json);
     case 'success':
       return _Success.fromJson(json);
     case 'canceled':
@@ -22,13 +26,18 @@ CheckoutResponse _$CheckoutResponseFromJson(Map<String, dynamic> json) {
       return _Error.fromJson(json);
 
     default:
-      throw FallThroughError();
+      throw CheckedFromJsonException(json, 'runtimeType', 'CheckoutResponse',
+          'Invalid union type "${json['runtimeType']}"!');
   }
 }
 
 /// @nodoc
 class _$CheckoutResponseTearOff {
   const _$CheckoutResponseTearOff();
+
+  _Redirect redirected() {
+    return const _Redirect();
+  }
 
   _Success success() {
     return const _Success();
@@ -44,7 +53,7 @@ class _$CheckoutResponseTearOff {
     );
   }
 
-  CheckoutResponse fromJson(Map<String, Object> json) {
+  CheckoutResponse fromJson(Map<String, Object?> json) {
     return CheckoutResponse.fromJson(json);
   }
 }
@@ -56,13 +65,23 @@ const $CheckoutResponse = _$CheckoutResponseTearOff();
 mixin _$CheckoutResponse {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() redirected,
     required TResult Function() success,
     required TResult Function() canceled,
     required TResult Function(Object error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? redirected,
+    TResult Function()? success,
+    TResult Function()? canceled,
+    TResult Function(Object error)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? redirected,
     TResult Function()? success,
     TResult Function()? canceled,
     TResult Function(Object error)? error,
@@ -71,13 +90,23 @@ mixin _$CheckoutResponse {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Redirect value) redirected,
     required TResult Function(_Success value) success,
     required TResult Function(_Canceled value) canceled,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Redirect value)? redirected,
+    TResult Function(_Success value)? success,
+    TResult Function(_Canceled value)? canceled,
+    TResult Function(_Error value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Redirect value)? redirected,
     TResult Function(_Success value)? success,
     TResult Function(_Canceled value)? canceled,
     TResult Function(_Error value)? error,
@@ -105,6 +134,133 @@ class _$CheckoutResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
+abstract class _$RedirectCopyWith<$Res> {
+  factory _$RedirectCopyWith(_Redirect value, $Res Function(_Redirect) then) =
+      __$RedirectCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$RedirectCopyWithImpl<$Res> extends _$CheckoutResponseCopyWithImpl<$Res>
+    implements _$RedirectCopyWith<$Res> {
+  __$RedirectCopyWithImpl(_Redirect _value, $Res Function(_Redirect) _then)
+      : super(_value, (v) => _then(v as _Redirect));
+
+  @override
+  _Redirect get _value => super._value as _Redirect;
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Redirect implements _Redirect {
+  const _$_Redirect({String? $type}) : $type = $type ?? 'redirected';
+
+  factory _$_Redirect.fromJson(Map<String, dynamic> json) =>
+      _$$_RedirectFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'CheckoutResponse.redirected()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Redirect);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() redirected,
+    required TResult Function() success,
+    required TResult Function() canceled,
+    required TResult Function(Object error) error,
+  }) {
+    return redirected();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? redirected,
+    TResult Function()? success,
+    TResult Function()? canceled,
+    TResult Function(Object error)? error,
+  }) {
+    return redirected?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? redirected,
+    TResult Function()? success,
+    TResult Function()? canceled,
+    TResult Function(Object error)? error,
+    required TResult orElse(),
+  }) {
+    if (redirected != null) {
+      return redirected();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Redirect value) redirected,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Canceled value) canceled,
+    required TResult Function(_Error value) error,
+  }) {
+    return redirected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Redirect value)? redirected,
+    TResult Function(_Success value)? success,
+    TResult Function(_Canceled value)? canceled,
+    TResult Function(_Error value)? error,
+  }) {
+    return redirected?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Redirect value)? redirected,
+    TResult Function(_Success value)? success,
+    TResult Function(_Canceled value)? canceled,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (redirected != null) {
+      return redirected(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_RedirectToJson(this);
+  }
+}
+
+abstract class _Redirect implements CheckoutResponse {
+  const factory _Redirect() = _$_Redirect;
+
+  factory _Redirect.fromJson(Map<String, dynamic> json) = _$_Redirect.fromJson;
+}
+
+/// @nodoc
 abstract class _$SuccessCopyWith<$Res> {
   factory _$SuccessCopyWith(_Success value, $Res Function(_Success) then) =
       __$SuccessCopyWithImpl<$Res>;
@@ -120,14 +276,16 @@ class __$SuccessCopyWithImpl<$Res> extends _$CheckoutResponseCopyWithImpl<$Res>
   _Success get _value => super._value as _Success;
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Success implements _Success {
-  const _$_Success();
+  const _$_Success({String? $type}) : $type = $type ?? 'success';
 
   factory _$_Success.fromJson(Map<String, dynamic> json) =>
-      _$_$_SuccessFromJson(json);
+      _$$_SuccessFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -136,7 +294,8 @@ class _$_Success implements _Success {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Success);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Success);
   }
 
   @override
@@ -145,6 +304,7 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() redirected,
     required TResult Function() success,
     required TResult Function() canceled,
     required TResult Function(Object error) error,
@@ -154,7 +314,19 @@ class _$_Success implements _Success {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? redirected,
+    TResult Function()? success,
+    TResult Function()? canceled,
+    TResult Function(Object error)? error,
+  }) {
+    return success?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? redirected,
     TResult Function()? success,
     TResult Function()? canceled,
     TResult Function(Object error)? error,
@@ -169,6 +341,7 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Redirect value) redirected,
     required TResult Function(_Success value) success,
     required TResult Function(_Canceled value) canceled,
     required TResult Function(_Error value) error,
@@ -178,7 +351,19 @@ class _$_Success implements _Success {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Redirect value)? redirected,
+    TResult Function(_Success value)? success,
+    TResult Function(_Canceled value)? canceled,
+    TResult Function(_Error value)? error,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Redirect value)? redirected,
     TResult Function(_Success value)? success,
     TResult Function(_Canceled value)? canceled,
     TResult Function(_Error value)? error,
@@ -192,7 +377,7 @@ class _$_Success implements _Success {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_SuccessToJson(this)..['runtimeType'] = 'success';
+    return _$$_SuccessToJson(this);
   }
 }
 
@@ -218,14 +403,16 @@ class __$CanceledCopyWithImpl<$Res> extends _$CheckoutResponseCopyWithImpl<$Res>
   _Canceled get _value => super._value as _Canceled;
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Canceled implements _Canceled {
-  const _$_Canceled();
+  const _$_Canceled({String? $type}) : $type = $type ?? 'canceled';
 
   factory _$_Canceled.fromJson(Map<String, dynamic> json) =>
-      _$_$_CanceledFromJson(json);
+      _$$_CanceledFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -234,7 +421,8 @@ class _$_Canceled implements _Canceled {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Canceled);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Canceled);
   }
 
   @override
@@ -243,6 +431,7 @@ class _$_Canceled implements _Canceled {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() redirected,
     required TResult Function() success,
     required TResult Function() canceled,
     required TResult Function(Object error) error,
@@ -252,7 +441,19 @@ class _$_Canceled implements _Canceled {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? redirected,
+    TResult Function()? success,
+    TResult Function()? canceled,
+    TResult Function(Object error)? error,
+  }) {
+    return canceled?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? redirected,
     TResult Function()? success,
     TResult Function()? canceled,
     TResult Function(Object error)? error,
@@ -267,6 +468,7 @@ class _$_Canceled implements _Canceled {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Redirect value) redirected,
     required TResult Function(_Success value) success,
     required TResult Function(_Canceled value) canceled,
     required TResult Function(_Error value) error,
@@ -276,7 +478,19 @@ class _$_Canceled implements _Canceled {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Redirect value)? redirected,
+    TResult Function(_Success value)? success,
+    TResult Function(_Canceled value)? canceled,
+    TResult Function(_Error value)? error,
+  }) {
+    return canceled?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Redirect value)? redirected,
     TResult Function(_Success value)? success,
     TResult Function(_Canceled value)? canceled,
     TResult Function(_Error value)? error,
@@ -290,7 +504,7 @@ class _$_Canceled implements _Canceled {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_CanceledToJson(this)..['runtimeType'] = 'canceled';
+    return _$$_CanceledToJson(this);
   }
 }
 
@@ -329,17 +543,20 @@ class __$ErrorCopyWithImpl<$Res> extends _$CheckoutResponseCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Error implements _Error {
-  const _$_Error({required this.error});
+  const _$_Error({required this.error, String? $type})
+      : $type = $type ?? 'error';
 
   factory _$_Error.fromJson(Map<String, dynamic> json) =>
-      _$_$_ErrorFromJson(json);
+      _$$_ErrorFromJson(json);
 
   @override
   final Object error;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -349,14 +566,14 @@ class _$_Error implements _Error {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Error &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is _Error &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -366,6 +583,7 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() redirected,
     required TResult Function() success,
     required TResult Function() canceled,
     required TResult Function(Object error) error,
@@ -375,7 +593,19 @@ class _$_Error implements _Error {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? redirected,
+    TResult Function()? success,
+    TResult Function()? canceled,
+    TResult Function(Object error)? error,
+  }) {
+    return error?.call(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? redirected,
     TResult Function()? success,
     TResult Function()? canceled,
     TResult Function(Object error)? error,
@@ -390,6 +620,7 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Redirect value) redirected,
     required TResult Function(_Success value) success,
     required TResult Function(_Canceled value) canceled,
     required TResult Function(_Error value) error,
@@ -399,7 +630,19 @@ class _$_Error implements _Error {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Redirect value)? redirected,
+    TResult Function(_Success value)? success,
+    TResult Function(_Canceled value)? canceled,
+    TResult Function(_Error value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Redirect value)? redirected,
     TResult Function(_Success value)? success,
     TResult Function(_Canceled value)? canceled,
     TResult Function(_Error value)? error,
@@ -413,7 +656,7 @@ class _$_Error implements _Error {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ErrorToJson(this)..['runtimeType'] = 'error';
+    return _$$_ErrorToJson(this);
   }
 }
 
@@ -422,7 +665,7 @@ abstract class _Error implements CheckoutResponse {
 
   factory _Error.fromJson(Map<String, dynamic> json) = _$_Error.fromJson;
 
-  Object get error => throw _privateConstructorUsedError;
+  Object get error;
   @JsonKey(ignore: true)
   _$ErrorCopyWith<_Error> get copyWith => throw _privateConstructorUsedError;
 }

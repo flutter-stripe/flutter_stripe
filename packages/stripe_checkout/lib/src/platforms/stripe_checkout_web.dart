@@ -10,8 +10,15 @@ Future<CheckoutResponse> redirectToCheckout({
   String? canceledUrl,
 }) async {
   final options = stripe_js.StripeServerCheckoutOptions(sessionId: sessionId);
-  final response =
-      await stripe_js.Stripe(publishableKey).redirectToCheckout(options);
-  if (response != null) return CheckoutResponse.error(error: response.error);
-  return const CheckoutResponse.canceled();
+  try {
+    final response =
+        await stripe_js.Stripe(publishableKey).redirectToCheckout(options);
+    if (response != null && response.error != null) {
+      return CheckoutResponse.error(error: response.error);
+    } else {
+      return const CheckoutResponse.redirected();
+    }
+  } catch (e) {
+    return CheckoutResponse.error(error: e);
+  }
 }
