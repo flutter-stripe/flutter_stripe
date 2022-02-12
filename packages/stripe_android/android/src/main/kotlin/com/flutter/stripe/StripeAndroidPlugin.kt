@@ -72,7 +72,8 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 "flutter_stripe initialization failed",
                 """The plugin failed to initialize:
 ${initializationError}
-Please check the README: https://github.com/flutter-stripe/flutter_stripe#android""",
+Please make sure you follow all the steps detailed inside the README: https://github.com/flutter-stripe/flutter_stripe#android
+If you continue to have trouble, follow this discussion to get some support https://github.com/flutter-stripe/flutter_stripe/discussions/538""",
                 null
             )
             return
