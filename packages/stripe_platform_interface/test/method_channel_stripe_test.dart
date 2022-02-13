@@ -496,7 +496,7 @@ void main() {
       late TokenData result;
 
       setUp(() {
-        params = const CreateTokenParams();
+        params = const CreateTokenParams.card(params: CardTokenParams());
       });
       group('When create token succeeds', () {
         setUp(() async {

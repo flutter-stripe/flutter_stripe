@@ -77,6 +77,15 @@ _$_CardFieldInputDetails _$$_CardFieldInputDetailsFromJson(
       brand: json['brand'] as String?,
       number: json['number'] as String?,
       cvc: json['cvc'] as String?,
+      validExpiryDate: $enumDecodeNullable(
+              _$CardValidationStateEnumMap, json['validExpiryDate']) ??
+          CardValidationState.Unknown,
+      validCVC:
+          $enumDecodeNullable(_$CardValidationStateEnumMap, json['validCVC']) ??
+              CardValidationState.Unknown,
+      validNumber: $enumDecodeNullable(
+              _$CardValidationStateEnumMap, json['validNumber']) ??
+          CardValidationState.Unknown,
     );
 
 Map<String, dynamic> _$$_CardFieldInputDetailsToJson(
@@ -90,7 +99,17 @@ Map<String, dynamic> _$$_CardFieldInputDetailsToJson(
       'brand': instance.brand,
       'number': instance.number,
       'cvc': instance.cvc,
+      'validExpiryDate': _$CardValidationStateEnumMap[instance.validExpiryDate],
+      'validCVC': _$CardValidationStateEnumMap[instance.validCVC],
+      'validNumber': _$CardValidationStateEnumMap[instance.validNumber],
     };
+
+const _$CardValidationStateEnumMap = {
+  CardValidationState.Unknown: 'Unknown',
+  CardValidationState.Valid: 'Valid',
+  CardValidationState.Invalid: 'Invalid',
+  CardValidationState.Incomplete: 'Incomplete',
+};
 
 _$_CardFieldFocusName _$$_CardFieldFocusNameFromJson(
         Map<String, dynamic> json) =>

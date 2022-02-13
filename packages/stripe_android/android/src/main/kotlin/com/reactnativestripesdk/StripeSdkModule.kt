@@ -13,7 +13,6 @@ import android.os.Parcelable
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.facebook.react.bridge.*
@@ -23,8 +22,7 @@ import com.stripe.android.googlepaylauncher.GooglePayPaymentMethodLauncher
 import com.stripe.android.model.*
 import com.stripe.android.paymentsheet.PaymentSheetResult
 import com.stripe.android.view.AddPaymentMethodActivityStarter
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
   var cardFieldView: StripeSdkCardView? = null
@@ -224,9 +222,6 @@ class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
 
   private val mPaymentSheetReceiver: BroadcastReceiver = object : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent) {
-      if (intent.action == ON_FRAGMENT_CREATED) {
-        paymentSheetFragment = currentActivity.activity.supportFragmentManager.findFragmentByTag("payment_sheet_launch_fragment") as PaymentSheetFragment
-      }
       if (intent.action == ON_PAYMENT_RESULT_ACTION) {
         when (val result = intent.extras?.getParcelable<PaymentSheetResult>("paymentResult")) {
           is PaymentSheetResult.Canceled -> {
@@ -304,7 +299,6 @@ class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
     localBroadcastManager.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_PAYMENT_RESULT_ACTION));
     localBroadcastManager.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_PAYMENT_OPTION_ACTION));
     localBroadcastManager.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_CONFIGURE_FLOW_CONTROLLER));
-    localBroadcastManager.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_FRAGMENT_CREATED));
     localBroadcastManager.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_INIT_PAYMENT_SHEET));
 
     localBroadcastManager.registerReceiver(googlePayReceiver, IntentFilter(ON_GOOGLE_PAY_FRAGMENT_CREATED))
@@ -317,7 +311,7 @@ class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
 
   @ReactMethod
   fun initPaymentSheet(params: ReadableMap, promise: Promise) {
-    val activity = currentActivity.activity as FragmentActivity?
+    val activity = currentActivity.activity
 
     if (activity == null) {
       promise.resolve(createError("Failed", "Activity doesn't exist"))
@@ -326,12 +320,12 @@ class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
 
     this.initPaymentSheetPromise = promise
 
-    val fragment = PaymentSheetFragment().also {
+    paymentSheetFragment = PaymentSheetFragment().also {
       val bundle = toBundleObject(params)
       it.arguments = bundle
     }
     activity.supportFragmentManager.beginTransaction()
-      .add(fragment, "payment_sheet_launch_fragment")
+      .add(paymentSheetFragment!!, "payment_sheet_launch_fragment")
       .commit()
   }
 
@@ -403,21 +397,60 @@ class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
 
   @ReactMethod
   fun createToken(params: ReadableMap, promise: Promise) {
-    val type = getValOr(params, "type", null)?.let {
-      if (it != "Card") {
-        promise.resolve(createError(CreateTokenErrorType.Failed.toString(), "$it type is not supported yet"))
-        return
-      }
-    }
-    val address = getMapOrNull(params, "address")
-
-    val cardParamsMap = (cardFieldView?.cardParams ?: cardFormView?.cardParams)?.toParamMap() ?: run {
-      promise.resolve(createError(CreateTokenErrorType.Failed.toString(), "Card details not complete"))
+    val type = getValOr(params, "type", null)
+    if (type == null) {
+      promise.resolve(createError(CreateTokenErrorType.Failed.toString(), "type parameter is required"))
       return
     }
 
-    val cardAddress = cardFieldView?.cardAddress ?: cardFormView?.cardAddress
+    when (type) {
+      "BankAccount" -> {
+        createTokenFromBankAccount(params, promise)
+      }
+      "Card" -> {
+        createTokenFromCard(params, promise)
+      }
+      else -> {
+        promise.resolve(createError(CreateTokenErrorType.Failed.toString(), "$type type is not supported yet"))
+      }
+    }
+  }
 
+  private fun createTokenFromBankAccount(params: ReadableMap, promise: Promise) {
+    val accountHolderName = getValOr(params, "accountHolderName")
+    val accountHolderType = getValOr(params, "accountHolderType")
+    val accountNumber = getValOr(params, "accountNumber", null)
+    val country = getValOr(params, "country", null)
+    val currency = getValOr(params, "currency", null)
+    val routingNumber = getValOr(params, "routingNumber")
+
+    runCatching {
+      val bankAccountParams = BankAccountTokenParams(
+        country = country!!,
+        currency = currency!!,
+        accountNumber = accountNumber!!,
+        accountHolderName = accountHolderName,
+        routingNumber = routingNumber,
+        accountHolderType = mapToBankAccountType(accountHolderType)
+      )
+      CoroutineScope(Dispatchers.IO).launch {
+        val token = stripe.createBankAccountToken(bankAccountParams, null, stripeAccountId)
+        promise.resolve(createResult("token", mapFromToken(token)))
+      }
+    }.onFailure {
+      promise.resolve(createError(CreateTokenErrorType.Failed.toString(), it.message))
+    }
+  }
+
+  private fun createTokenFromCard(params: ReadableMap, promise: Promise) {
+    val cardParamsMap = (cardFieldView?.cardParams ?: cardFormView?.cardParams)?.toParamMap()
+      ?: run {
+        promise.resolve(createError(CreateTokenErrorType.Failed.toString(), "Card details not complete"))
+        return
+      }
+
+    val cardAddress = cardFieldView?.cardAddress ?: cardFormView?.cardAddress
+    val address = getMapOrNull(params, "address")
     val cardParams = CardParams(
       number = cardParamsMap["number"] as String,
       expMonth = cardParamsMap["exp_month"] as Int,
@@ -426,7 +459,8 @@ class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
       address = mapToAddress(address, cardAddress),
       name = getValOr(params, "name", null)
     )
-    runBlocking {
+
+    CoroutineScope(Dispatchers.IO).launch {
       try {
         val token = stripe.createCardToken(
           cardParams = cardParams,
