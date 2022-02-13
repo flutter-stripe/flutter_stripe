@@ -13,6 +13,10 @@ import 'checkout.dart';
 /// The view is rendered directly for web and inside a webview for
 /// mobile platforms
 ///
+/// [successUrl] and [canceledUrl] are required on mobile platforms,
+/// they should be https and match the ones used to create the checkout
+/// session in your server
+///
 /// To have a custom route transition use [CheckoutPage] directly
 Future<CheckoutResponse> redirectToCheckout({
   required BuildContext context,
@@ -21,14 +25,25 @@ Future<CheckoutResponse> redirectToCheckout({
   String? successUrl,
   String? canceledUrl,
 }) async {
+  assert(() {
+    assert(
+      successUrl != null,
+      'successUrl can not be null when using checkout inside a webview',
+    );
+    assert(
+      canceledUrl != null,
+      'canceledUrl can not be null when using checkout inside a webview',
+    );
+    return true;
+  }());
   final response = await Navigator.of(context).push(
     MaterialPageRoute(
       builder: (context) => CheckoutPage(
         sessionId: sessionId,
         publishableKey: publishableKey,
         onCompleted: (response) => Navigator.of(context).pop(response),
-        successUrl: successUrl,
-        canceledUrl: canceledUrl,
+        successUrl: successUrl!,
+        canceledUrl: canceledUrl!,
       ),
     ),
   );
@@ -38,14 +53,25 @@ Future<CheckoutResponse> redirectToCheckout({
 /// Prebuilt payment web page hosted on Stripe loaded
 /// in app via a webview
 class CheckoutPage extends StatefulWidget {
-  const CheckoutPage({
+  CheckoutPage({
     Key? key,
     required this.sessionId,
     this.onCompleted,
-    this.successUrl,
-    this.canceledUrl,
+    required this.successUrl,
+    required this.canceledUrl,
     this.publishableKey,
-  }) : super(key: key);
+  })  : assert(() {
+          assert(
+            successUrl.startsWith('https'),
+            'successUrl should use https',
+          );
+          assert(
+            canceledUrl.startsWith('https'),
+            'canceledUrl should use https',
+          );
+          return true;
+        }()),
+        super(key: key);
 
   @override
   _CheckoutPageState createState() => _CheckoutPageState();
@@ -58,13 +84,13 @@ class CheckoutPage extends StatefulWidget {
   ///
   /// Only needed when using on a non web app. If the webview url matches
   /// this one, [onCompleted] will return as succesfull
-  final String? successUrl;
+  final String successUrl;
 
   /// The URL to which Stripe should send customers when payment is canceled.
   ///
   /// Only needed when using on a non web app. If the webview url matches
   /// this one, [onCompleted] will return as canceled
-  final String? canceledUrl;
+  final String canceledUrl;
 
   /// Stripe publishable key
   final String? publishableKey;
@@ -75,37 +101,41 @@ class CheckoutPage extends StatefulWidget {
 class _CheckoutPageState extends State<CheckoutPage> {
   WebViewController? _webViewController;
 
+  static const String _baseUrl = 'https://stripe.com/base_url/';
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        child: WebView(
-          initialUrl: initialUrl,
-          javascriptMode: JavascriptMode.unrestricted,
-          onWebViewCreated: (webViewController) =>
-              _webViewController = webViewController,
-          onPageFinished: (String url) {
-            if (url == initialUrl) {
-              _redirectToStripe(widget.sessionId);
-            }
-          },
-          navigationDelegate: (NavigationRequest request) {
-            final successUrl =
-                widget.successUrl ?? 'http://localhost:8080/#/success';
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.dark,
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: SafeArea(
+          child: WebView(
+            initialUrl: '',
+            javascriptMode: JavascriptMode.unrestricted,
+            onWebViewCreated: (webViewController) {
+              _webViewController = webViewController;
+              _webViewController!.loadHtmlString(_htmlPage, baseUrl: _baseUrl);
+            },
+            onPageFinished: (String url) {
+              if (url == _baseUrl) {
+                _redirectToStripe(widget.sessionId);
+              }
+            },
+            navigationDelegate: (NavigationRequest request) {
+              final successUrl = widget.successUrl;
+              final canceledUrl = widget.canceledUrl;
 
-            final canceledUrl =
-                widget.canceledUrl ?? 'http://localhost:8080/#/canceled';
-
-            if (request.url.startsWith(successUrl)) {
-              widget.onCompleted?.call(const CheckoutResponse.success());
-              return NavigationDecision.prevent;
-            } else if (request.url.startsWith(canceledUrl)) {
-              widget.onCompleted?.call(const CheckoutResponse.canceled());
-              return NavigationDecision.prevent;
-            }
-            return NavigationDecision.navigate;
-          },
+              if (request.url.startsWith(successUrl)) {
+                widget.onCompleted?.call(const CheckoutResponse.success());
+                return NavigationDecision.prevent;
+              } else if (request.url.startsWith(canceledUrl)) {
+                widget.onCompleted?.call(const CheckoutResponse.canceled());
+                return NavigationDecision.prevent;
+              }
+              return NavigationDecision.navigate;
+            },
+          ),
         ),
       ),
     );
@@ -120,10 +150,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     final publishableKey = widget.publishableKey;
     final redirectToCheckoutJs = '''
 var stripe = Stripe("$publishableKey");
-stripe.redirectToCheckout({sessionId: "$sessionId"}).then(function (result) {
-  result.error.message = 'Error'
-});
-123;
+stripe.redirectToCheckout({sessionId: "$sessionId"});
 ''';
 
     try {
@@ -134,6 +161,8 @@ stripe.redirectToCheckout({sessionId: "$sessionId"}).then(function (result) {
           'JavaScript execution returned a result of an unsupported type')) {
         rethrow;
       }
+    } catch (e) {
+      widget.onCompleted?.call(CheckoutResponse.error(error: e));
     }
   }
 }

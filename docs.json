@@ -4,6 +4,15 @@
     "logo" : "https://user-images.githubusercontent.com/19904063/116995247-20519e80-acda-11eb-8e1b-7d0efbd193ad.png",
     "sidebar": [
         ["Overview", "/"],
+        ["Accept a Payment", [
+          ["Payment Sheet", "/sheet"]
+          ]      
+        ],
+        ["Regional payments", [
+            ["Ideal", "/ideal"]
+          ]
+        ],
+        ["Troubleshooting", "/troubleshooting"],
         ["Api Reference", "https://pub.dev/documentation/flutter_stripe/latest/flutter_stripe/flutter_stripe-library.html"]
       ]
 }

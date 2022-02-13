@@ -554,8 +554,8 @@ app.post('/create-checkout-session', async (req, res) => {
       },
     ],
     mode: 'payment',
-    success_url: `http://localhost:${effectivePort}/#/success`,
-    cancel_url: `http://localhost:${effectivePort}/#/canceled`,
+    success_url: `https://checkout.stripe.dev/success`,
+    cancel_url: `https://checkout.stripe.dev/cancel`,
   });
   res.json({ id: session.id });
 });
