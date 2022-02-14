@@ -1,3 +1,7 @@
+## 2.2.0
+
+ - Bump "stripe_ios" to `2.2.0`.
+
 ## 2.1.1
 
 - Fix [#494] Make `ShippingDetails` parameters nullable
