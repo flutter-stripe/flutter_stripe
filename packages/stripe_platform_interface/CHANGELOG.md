@@ -1,3 +1,7 @@
+## 2.2.0
+
+ - Bump "stripe_platform_interface" to `2.2.0`.
+
 ## 2.1.1
 
 - Improved logging for Android initialization
