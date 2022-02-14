@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  stripe_android: ^2.1.1
+  stripe_android: ^2.2.0
   stripe_ios: ^2.1.1
   stripe_platform_interface: ^2.2.0
 dev_dependencies:
