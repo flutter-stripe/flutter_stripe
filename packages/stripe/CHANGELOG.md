@@ -1,3 +1,7 @@
+## 2.2.0
+
+ - **DOCS**: improve readme (#539).
+
 ## 2.1.1
 
 - Improved logging for Android initialization
