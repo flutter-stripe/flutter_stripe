@@ -1,8 +1,16 @@
+## 2.2.0
+
+- Add currency code to the Paymentsheet
+- Add validation state to cardfield
+- Deprecated `CreatetokenParams` use `CreateTokenParams.card` instead
+- Several fixes by the Stripe sdk [v0.2.4](https://github.com/stripe/stripe-react-native/releases/tag/v0.2.4)
+- Fix [#416](https://github.com/flutter-stripe/flutter_stripe/issues/416) ocassional crash on Android on the Paymentsheetfragment
+
 ## 2.1.1
 
 - Improved logging for Android initialization
-- Fix [#494] Make `ShippingDetails` parameters nullable
-- Fix [#499] Update cardnumber when using `dangerouslyGetFullCardDetails`
+- Fix [#494](https://github.com/flutter-stripe/flutter_stripe/issues/494) Make `ShippingDetails` parameters nullable
+- Fix [#499](https://github.com/flutter-stripe/flutter_stripe/issues/499) Update cardnumber when using `dangerouslyGetFullCardDetails`
 
 ## 2.1.0
 
@@ -62,7 +70,7 @@ Other changes
 
 Other changes
 - Sync with latest Stripe sdk.
-- Fix #147 add `urlscheme to initialise method`. Thanks to @dariuspo.
+- Fix [#147](https://github.com/flutter-stripe/flutter_stripe/issues/147) add `urlscheme to initialise method`. Thanks to @dariuspo.
 - Improved focus behavior on Cardfield.
 - Add `dangerouslyGetFullCardDetails` and `FontFamily` to cardfield.
 - Better debug logging in case something goes wrong. 
