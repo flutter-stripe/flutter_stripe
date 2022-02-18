@@ -137,7 +137,7 @@ The library offers several methods to handle stripe related actions:
 ```dart
 Future<PaymentMethod> createPaymentMethod(...);
 Future<PaymentIntent> handleCardAction(...);
-Future<PaymentIntent> confirmPaymentMethod(...);
+Future<PaymentIntent> confirmPayment(...);
 Future<void> configure3dSecure(...);
 Future<bool> isApplePaySupported();
 Future<void> presentApplePay(...);
@@ -168,7 +168,7 @@ Future<void> onGooglePayResult(paymentResult) async {
       token: tokenJson['id'],
     );
     // Confirm Google pay payment method
-    await Stripe.instance.confirmPaymentMethod(
+    await Stripe.instance.confirmPayment(
       clientSecret,
       params,
     );
