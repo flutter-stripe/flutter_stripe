@@ -5,12 +5,12 @@ import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 import 'package:stripe_example/widgets/response_card.dart';
 
-class LegacyTokenScreen extends StatefulWidget {
+class LegacyTokenCardScreen extends StatefulWidget {
   @override
-  _LegacyTokenScreenState createState() => _LegacyTokenScreenState();
+  _LegacyTokenCardScreenState createState() => _LegacyTokenCardScreenState();
 }
 
-class _LegacyTokenScreenState extends State<LegacyTokenScreen> {
+class _LegacyTokenCardScreenState extends State<LegacyTokenCardScreen> {
   CardFieldInputDetails? _card;
 
   TokenData? tokenData;
@@ -18,7 +18,7 @@ class _LegacyTokenScreenState extends State<LegacyTokenScreen> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      title: 'Create token',
+      title: 'Create token for card',
       tags: ['Legacy'],
       padding: EdgeInsets.all(16),
       children: [
@@ -62,8 +62,7 @@ class _LegacyTokenScreenState extends State<LegacyTokenScreen> {
 
       // 2. Create payment method
       final tokenData = await Stripe.instance.createToken(
-        CreateTokenParams(type: TokenType.Card, address: address),
-      );
+          CreateTokenParams.card(params: CardTokenParams(address: address)));
       setState(() {
         this.tokenData = tokenData;
       });

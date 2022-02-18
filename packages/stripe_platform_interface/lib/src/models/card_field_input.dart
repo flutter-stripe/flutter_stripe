@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/painting.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -162,6 +164,15 @@ class CardFieldInputDetails with _$CardFieldInputDetails {
     /// CVC code.
     /// This information is not available by default to comply with the PCI compliance
     String? cvc,
+
+    /// The [CardValidationState] of the entered expiry date.
+    @Default(CardValidationState.Unknown) CardValidationState validExpiryDate,
+
+    /// The [CardValidationState] of the entered cvc.
+    @Default(CardValidationState.Unknown) CardValidationState validCVC,
+
+    /// The [CardValidationState] of the entered card number.
+    @Default(CardValidationState.Unknown) CardValidationState validNumber,
   }) = _CardFieldInputDetails;
 
   factory CardFieldInputDetails.fromJson(Map<String, dynamic> json) =>
@@ -197,4 +208,11 @@ enum CardFieldName {
 
   /// Postal code field.
   postalCode,
+}
+
+enum CardValidationState {
+  Unknown,
+  Valid,
+  Invalid,
+  Incomplete,
 }

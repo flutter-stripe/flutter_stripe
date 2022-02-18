@@ -43,6 +43,13 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// ISO country code of the country where the merchant is located
     String? merchantCountryCode,
 
+    /// Three letter ISO currency code 
+    /// 
+    /// Must be a supported currency code. See https://stripe.com/docs/currencies for supported currencies.
+    /// 
+    /// When [setupIntentClientSecret] is not empty it is required to provide a currencyCode.
+    String? currencyCode,
+
     /// Configuration related to Apple Pay
     /// If set, PaymentSheet displays Apple Pay as a payment option
     /// A merchantCountryCode would then be required

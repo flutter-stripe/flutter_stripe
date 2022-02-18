@@ -31,6 +31,7 @@ class _$SetupPaymentSheetParametersTearOff {
       String? setupIntentClientSecret,
       String? merchantDisplayName,
       String? merchantCountryCode,
+      String? currencyCode,
       bool? applePay,
       @JsonKey(toJson: UserInterfaceStyleKey.toJson)
           ThemeMode? style,
@@ -48,6 +49,7 @@ class _$SetupPaymentSheetParametersTearOff {
       setupIntentClientSecret: setupIntentClientSecret,
       merchantDisplayName: merchantDisplayName,
       merchantCountryCode: merchantCountryCode,
+      currencyCode: currencyCode,
       applePay: applePay,
       style: style,
       googlePay: googlePay,
@@ -97,6 +99,13 @@ mixin _$SetupPaymentSheetParameters {
 
   /// ISO country code of the country where the merchant is located
   String? get merchantCountryCode => throw _privateConstructorUsedError;
+
+  /// Three letter ISO currency code
+  ///
+  /// Must be a supported currency code. See https://stripe.com/docs/currencies for supported currencies.
+  ///
+  /// When [setupIntentClientSecret] is not empty it is required to provide a currencyCode.
+  String? get currencyCode => throw _privateConstructorUsedError;
 
   /// Configuration related to Apple Pay
   /// If set, PaymentSheet displays Apple Pay as a payment option
@@ -149,6 +158,7 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
       String? setupIntentClientSecret,
       String? merchantDisplayName,
       String? merchantCountryCode,
+      String? currencyCode,
       bool? applePay,
       @JsonKey(toJson: UserInterfaceStyleKey.toJson)
           ThemeMode? style,
@@ -180,6 +190,7 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res>
     Object? setupIntentClientSecret = freezed,
     Object? merchantDisplayName = freezed,
     Object? merchantCountryCode = freezed,
+    Object? currencyCode = freezed,
     Object? applePay = freezed,
     Object? style = freezed,
     Object? googlePay = freezed,
@@ -216,6 +227,10 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res>
       merchantCountryCode: merchantCountryCode == freezed
           ? _value.merchantCountryCode
           : merchantCountryCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      currencyCode: currencyCode == freezed
+          ? _value.currencyCode
+          : currencyCode // ignore: cast_nullable_to_non_nullable
               as String?,
       applePay: applePay == freezed
           ? _value.applePay
@@ -275,6 +290,7 @@ abstract class _$SetupParametersCopyWith<$Res>
       String? setupIntentClientSecret,
       String? merchantDisplayName,
       String? merchantCountryCode,
+      String? currencyCode,
       bool? applePay,
       @JsonKey(toJson: UserInterfaceStyleKey.toJson)
           ThemeMode? style,
@@ -309,6 +325,7 @@ class __$SetupParametersCopyWithImpl<$Res>
     Object? setupIntentClientSecret = freezed,
     Object? merchantDisplayName = freezed,
     Object? merchantCountryCode = freezed,
+    Object? currencyCode = freezed,
     Object? applePay = freezed,
     Object? style = freezed,
     Object? googlePay = freezed,
@@ -345,6 +362,10 @@ class __$SetupParametersCopyWithImpl<$Res>
       merchantCountryCode: merchantCountryCode == freezed
           ? _value.merchantCountryCode
           : merchantCountryCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      currencyCode: currencyCode == freezed
+          ? _value.currencyCode
+          : currencyCode // ignore: cast_nullable_to_non_nullable
               as String?,
       applePay: applePay == freezed
           ? _value.applePay
@@ -389,6 +410,7 @@ class _$_SetupParameters implements _SetupParameters {
       this.setupIntentClientSecret,
       this.merchantDisplayName,
       this.merchantCountryCode,
+      this.currencyCode,
       this.applePay,
       @JsonKey(toJson: UserInterfaceStyleKey.toJson)
           this.style,
@@ -442,6 +464,14 @@ class _$_SetupParameters implements _SetupParameters {
   final String? merchantCountryCode;
   @override
 
+  /// Three letter ISO currency code
+  ///
+  /// Must be a supported currency code. See https://stripe.com/docs/currencies for supported currencies.
+  ///
+  /// When [setupIntentClientSecret] is not empty it is required to provide a currencyCode.
+  final String? currencyCode;
+  @override
+
   /// Configuration related to Apple Pay
   /// If set, PaymentSheet displays Apple Pay as a payment option
   /// A merchantCountryCode would then be required
@@ -483,7 +513,7 @@ class _$_SetupParameters implements _SetupParameters {
 
   @override
   String toString() {
-    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, merchantDisplayName: $merchantDisplayName, merchantCountryCode: $merchantCountryCode, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, primaryButtonColor: $primaryButtonColor, testEnv: $testEnv, billingDetails: $billingDetails)';
+    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, merchantDisplayName: $merchantDisplayName, merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, primaryButtonColor: $primaryButtonColor, testEnv: $testEnv, billingDetails: $billingDetails)';
   }
 
   @override
@@ -505,6 +535,8 @@ class _$_SetupParameters implements _SetupParameters {
                 .equals(other.merchantDisplayName, merchantDisplayName) &&
             const DeepCollectionEquality()
                 .equals(other.merchantCountryCode, merchantCountryCode) &&
+            const DeepCollectionEquality()
+                .equals(other.currencyCode, currencyCode) &&
             const DeepCollectionEquality().equals(other.applePay, applePay) &&
             const DeepCollectionEquality().equals(other.style, style) &&
             const DeepCollectionEquality().equals(other.googlePay, googlePay) &&
@@ -528,6 +560,7 @@ class _$_SetupParameters implements _SetupParameters {
       const DeepCollectionEquality().hash(setupIntentClientSecret),
       const DeepCollectionEquality().hash(merchantDisplayName),
       const DeepCollectionEquality().hash(merchantCountryCode),
+      const DeepCollectionEquality().hash(currencyCode),
       const DeepCollectionEquality().hash(applePay),
       const DeepCollectionEquality().hash(style),
       const DeepCollectionEquality().hash(googlePay),
@@ -556,6 +589,7 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
       String? setupIntentClientSecret,
       String? merchantDisplayName,
       String? merchantCountryCode,
+      String? currencyCode,
       bool? applePay,
       @JsonKey(toJson: UserInterfaceStyleKey.toJson)
           ThemeMode? style,
@@ -606,6 +640,14 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
 
   /// ISO country code of the country where the merchant is located
   String? get merchantCountryCode;
+  @override
+
+  /// Three letter ISO currency code
+  ///
+  /// Must be a supported currency code. See https://stripe.com/docs/currencies for supported currencies.
+  ///
+  /// When [setupIntentClientSecret] is not empty it is required to provide a currencyCode.
+  String? get currencyCode;
   @override
 
   /// Configuration related to Apple Pay
