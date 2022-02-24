@@ -1,14 +1,11 @@
 package com.reactnativestripesdk
 
 import android.app.Activity
-import android.app.Application
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.AsyncTask
-import android.os.Build
-import android.os.Bundle
 import android.os.Parcelable
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -193,7 +190,7 @@ class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
             presentGooglePayPromise?.resolve(createResult("paymentMethod", mapFromPaymentMethod(result.paymentMethod)))
           }
           GooglePayPaymentMethodLauncher.Result.Canceled -> {
-            presentGooglePayPromise?.resolve(createError(GooglePayErrorType.Failed.toString(), "Google Pay has been canceled"))
+            presentGooglePayPromise?.resolve(createError(GooglePayErrorType.Canceled.toString(), "Google Pay has been canceled"))
           }
           is GooglePayPaymentMethodLauncher.Result.Failed -> {
             presentGooglePayPromise?.resolve(createError(GooglePayErrorType.Failed.toString(), result.error))
@@ -210,7 +207,7 @@ class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
             presentGooglePayPromise?.resolve(WritableNativeMap())
           }
           GooglePayLauncher.Result.Canceled -> {
-            presentGooglePayPromise?.resolve(createError(GooglePayErrorType.Failed.toString(), "Google Pay has been canceled"))
+            presentGooglePayPromise?.resolve(createError(GooglePayErrorType.Canceled.toString(), "Google Pay has been canceled"))
           }
           is GooglePayLauncher.Result.Failed -> {
             presentGooglePayPromise?.resolve(createError(GooglePayErrorType.Failed.toString(), result.error))
@@ -417,29 +414,30 @@ class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
   }
 
   private fun createTokenFromBankAccount(params: ReadableMap, promise: Promise) {
-    val accountHolderName = getValOr(params, "accountHolderName")
-    val accountHolderType = getValOr(params, "accountHolderType")
+    val accountHolderName = getValOr(params, "accountHolderName", null)
+    val accountHolderType = getValOr(params, "accountHolderType", null)
     val accountNumber = getValOr(params, "accountNumber", null)
     val country = getValOr(params, "country", null)
     val currency = getValOr(params, "currency", null)
-    val routingNumber = getValOr(params, "routingNumber")
+    val routingNumber = getValOr(params, "routingNumber", null)
 
-    runCatching {
-      val bankAccountParams = BankAccountTokenParams(
-        country = country!!,
-        currency = currency!!,
-        accountNumber = accountNumber!!,
-        accountHolderName = accountHolderName,
-        routingNumber = routingNumber,
-        accountHolderType = mapToBankAccountType(accountHolderType)
-      )
-      CoroutineScope(Dispatchers.IO).launch {
+    val bankAccountParams = BankAccountTokenParams(
+      country = country!!,
+      currency = currency!!,
+      accountNumber = accountNumber!!,
+      accountHolderName = accountHolderName,
+      routingNumber = routingNumber,
+      accountHolderType = mapToBankAccountType(accountHolderType)
+    )
+    CoroutineScope(Dispatchers.IO).launch {
+      runCatching {
         val token = stripe.createBankAccountToken(bankAccountParams, null, stripeAccountId)
         promise.resolve(createResult("token", mapFromToken(token)))
+      }.onFailure {
+        promise.resolve(createError(CreateTokenErrorType.Failed.toString(), it.message))
       }
-    }.onFailure {
-      promise.resolve(createError(CreateTokenErrorType.Failed.toString(), it.message))
     }
+
   }
 
   private fun createTokenFromCard(params: ReadableMap, promise: Promise) {
@@ -600,6 +598,20 @@ class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
     } catch (error: PaymentMethodCreateParamsException) {
       promise.resolve(createError(ConfirmPaymentErrorType.Failed.toString(), error))
     }
+  }
+
+  @ReactMethod
+  fun isGooglePaySupported(params: ReadableMap?, promise: Promise) {
+    val fragment = GooglePayPaymentMethodLauncherFragment(
+      currentActivity as AppCompatActivity,
+      getBooleanOrFalse(params, "testEnv"),
+      getBooleanOrFalse(params, "existingPaymentMethodRequired"),
+      promise
+    )
+
+    (currentActivity as AppCompatActivity).supportFragmentManager.beginTransaction()
+      .add(fragment, "google_pay_support_fragment")
+      .commit()
   }
 
   @ReactMethod
