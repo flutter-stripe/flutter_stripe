@@ -1011,3 +1011,211 @@ abstract class _CreateGooglePayPaymentParams
   _$CreateGooglePayPaymentParamsCopyWith<_CreateGooglePayPaymentParams>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+IsGooglePaySupportedParams _$IsGooglePaySupportedParamsFromJson(
+    Map<String, dynamic> json) {
+  return _IsGooglePaySupportedParams.fromJson(json);
+}
+
+/// @nodoc
+class _$IsGooglePaySupportedParamsTearOff {
+  const _$IsGooglePaySupportedParamsTearOff();
+
+  _IsGooglePaySupportedParams call(
+      {bool testEnv = false, bool existingPaymentMethodRequired = false}) {
+    return _IsGooglePaySupportedParams(
+      testEnv: testEnv,
+      existingPaymentMethodRequired: existingPaymentMethodRequired,
+    );
+  }
+
+  IsGooglePaySupportedParams fromJson(Map<String, Object?> json) {
+    return IsGooglePaySupportedParams.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $IsGooglePaySupportedParams = _$IsGooglePaySupportedParamsTearOff();
+
+/// @nodoc
+mixin _$IsGooglePaySupportedParams {
+  /// Flag to use test environment or live environment.
+  ///
+  /// Defaults to `false`.
+  bool get testEnv => throw _privateConstructorUsedError;
+
+  /// When set to true Google pay is only considered ready in case the
+  /// customers google Pay wallet has an existing payment method configured.
+  ///
+  /// Defaults to `false`.
+  bool get existingPaymentMethodRequired => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $IsGooglePaySupportedParamsCopyWith<IsGooglePaySupportedParams>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $IsGooglePaySupportedParamsCopyWith<$Res> {
+  factory $IsGooglePaySupportedParamsCopyWith(IsGooglePaySupportedParams value,
+          $Res Function(IsGooglePaySupportedParams) then) =
+      _$IsGooglePaySupportedParamsCopyWithImpl<$Res>;
+  $Res call({bool testEnv, bool existingPaymentMethodRequired});
+}
+
+/// @nodoc
+class _$IsGooglePaySupportedParamsCopyWithImpl<$Res>
+    implements $IsGooglePaySupportedParamsCopyWith<$Res> {
+  _$IsGooglePaySupportedParamsCopyWithImpl(this._value, this._then);
+
+  final IsGooglePaySupportedParams _value;
+  // ignore: unused_field
+  final $Res Function(IsGooglePaySupportedParams) _then;
+
+  @override
+  $Res call({
+    Object? testEnv = freezed,
+    Object? existingPaymentMethodRequired = freezed,
+  }) {
+    return _then(_value.copyWith(
+      testEnv: testEnv == freezed
+          ? _value.testEnv
+          : testEnv // ignore: cast_nullable_to_non_nullable
+              as bool,
+      existingPaymentMethodRequired: existingPaymentMethodRequired == freezed
+          ? _value.existingPaymentMethodRequired
+          : existingPaymentMethodRequired // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$IsGooglePaySupportedParamsCopyWith<$Res>
+    implements $IsGooglePaySupportedParamsCopyWith<$Res> {
+  factory _$IsGooglePaySupportedParamsCopyWith(
+          _IsGooglePaySupportedParams value,
+          $Res Function(_IsGooglePaySupportedParams) then) =
+      __$IsGooglePaySupportedParamsCopyWithImpl<$Res>;
+  @override
+  $Res call({bool testEnv, bool existingPaymentMethodRequired});
+}
+
+/// @nodoc
+class __$IsGooglePaySupportedParamsCopyWithImpl<$Res>
+    extends _$IsGooglePaySupportedParamsCopyWithImpl<$Res>
+    implements _$IsGooglePaySupportedParamsCopyWith<$Res> {
+  __$IsGooglePaySupportedParamsCopyWithImpl(_IsGooglePaySupportedParams _value,
+      $Res Function(_IsGooglePaySupportedParams) _then)
+      : super(_value, (v) => _then(v as _IsGooglePaySupportedParams));
+
+  @override
+  _IsGooglePaySupportedParams get _value =>
+      super._value as _IsGooglePaySupportedParams;
+
+  @override
+  $Res call({
+    Object? testEnv = freezed,
+    Object? existingPaymentMethodRequired = freezed,
+  }) {
+    return _then(_IsGooglePaySupportedParams(
+      testEnv: testEnv == freezed
+          ? _value.testEnv
+          : testEnv // ignore: cast_nullable_to_non_nullable
+              as bool,
+      existingPaymentMethodRequired: existingPaymentMethodRequired == freezed
+          ? _value.existingPaymentMethodRequired
+          : existingPaymentMethodRequired // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_IsGooglePaySupportedParams implements _IsGooglePaySupportedParams {
+  const _$_IsGooglePaySupportedParams(
+      {this.testEnv = false, this.existingPaymentMethodRequired = false});
+
+  factory _$_IsGooglePaySupportedParams.fromJson(Map<String, dynamic> json) =>
+      _$$_IsGooglePaySupportedParamsFromJson(json);
+
+  @JsonKey()
+  @override
+
+  /// Flag to use test environment or live environment.
+  ///
+  /// Defaults to `false`.
+  final bool testEnv;
+  @JsonKey()
+  @override
+
+  /// When set to true Google pay is only considered ready in case the
+  /// customers google Pay wallet has an existing payment method configured.
+  ///
+  /// Defaults to `false`.
+  final bool existingPaymentMethodRequired;
+
+  @override
+  String toString() {
+    return 'IsGooglePaySupportedParams(testEnv: $testEnv, existingPaymentMethodRequired: $existingPaymentMethodRequired)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _IsGooglePaySupportedParams &&
+            const DeepCollectionEquality().equals(other.testEnv, testEnv) &&
+            const DeepCollectionEquality().equals(
+                other.existingPaymentMethodRequired,
+                existingPaymentMethodRequired));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(testEnv),
+      const DeepCollectionEquality().hash(existingPaymentMethodRequired));
+
+  @JsonKey(ignore: true)
+  @override
+  _$IsGooglePaySupportedParamsCopyWith<_IsGooglePaySupportedParams>
+      get copyWith => __$IsGooglePaySupportedParamsCopyWithImpl<
+          _IsGooglePaySupportedParams>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_IsGooglePaySupportedParamsToJson(this);
+  }
+}
+
+abstract class _IsGooglePaySupportedParams
+    implements IsGooglePaySupportedParams {
+  const factory _IsGooglePaySupportedParams(
+      {bool testEnv,
+      bool existingPaymentMethodRequired}) = _$_IsGooglePaySupportedParams;
+
+  factory _IsGooglePaySupportedParams.fromJson(Map<String, dynamic> json) =
+      _$_IsGooglePaySupportedParams.fromJson;
+
+  @override
+
+  /// Flag to use test environment or live environment.
+  ///
+  /// Defaults to `false`.
+  bool get testEnv;
+  @override
+
+  /// When set to true Google pay is only considered ready in case the
+  /// customers google Pay wallet has an existing payment method configured.
+  ///
+  /// Defaults to `false`.
+  bool get existingPaymentMethodRequired;
+  @override
+  @JsonKey(ignore: true)
+  _$IsGooglePaySupportedParamsCopyWith<_IsGooglePaySupportedParams>
+      get copyWith => throw _privateConstructorUsedError;
+}

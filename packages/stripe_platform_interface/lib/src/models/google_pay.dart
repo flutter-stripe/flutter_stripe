@@ -101,5 +101,25 @@ class CreateGooglePayPaymentParams with _$CreateGooglePayPaymentParams {
       _$CreateGooglePayPaymentParamsFromJson(json);
 }
 
+@freezed
+class IsGooglePaySupportedParams with _$IsGooglePaySupportedParams {
+  @JsonSerializable(explicitToJson: true)
+  const factory IsGooglePaySupportedParams({
+    /// Flag to use test environment or live environment.
+    /// 
+    /// Defaults to `false`.
+    @Default(false) bool testEnv,
+
+    /// When set to true Google pay is only considered ready in case the 
+    /// customers google Pay wallet has an existing payment method configured.
+    /// 
+    /// Defaults to `false`.
+    @Default(false) bool existingPaymentMethodRequired,
+  }) = _IsGooglePaySupportedParams;
+
+   factory IsGooglePaySupportedParams.fromJson(Map<String, dynamic> json) =>
+      _$IsGooglePaySupportedParamsFromJson(json);
+}
+
 // ignore: constant_identifier_names
 enum BillingAddressFormat { FULL, MIN }

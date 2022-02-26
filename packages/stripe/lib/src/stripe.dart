@@ -368,6 +368,13 @@ class Stripe {
     return await _platform.createGooglePayPaymentMethod(params);
   }
 
+  /// Determines if Google Pay is supported on the device
+  ///
+  /// On iOS this defaults to false
+  Future<bool> isGooglePaySupported(IsGooglePaySupportedParams params) async {
+    return await _platform.googlePayIsSupported(params);
+  }
+
   FutureOr<void> _awaitForSettings() {
     if (_needsSettings) {
       _settingsFuture = applySettings();

@@ -3,12 +3,12 @@ import 'dart:developer' as dev;
 import 'dart:html';
 
 import 'package:flutter/widgets.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 import 'js/js.dart' as s;
-import 'parser/payment_methods.dart';
 import 'parser/payment_intent.dart';
+import 'parser/payment_methods.dart';
 import 'parser/setup_intent.dart';
 
 /// An implementation of [StripePlatform] that uses method channels.
@@ -234,12 +234,17 @@ class WebStripe extends StripePlatform {
 
   @override
   Future<void> initGooglePay(GooglePayInitParams params) {
-    throw WebUnsupportedError.method('presentApplePay');
+    throw WebUnsupportedError.method('initGooglePay');
   }
 
   @override
   Future<void> presentGooglePay(PresentGooglePayParams params) {
-    throw WebUnsupportedError.method('initGooglePay');
+    throw WebUnsupportedError.method('presentGooglePay');
+  }
+
+  @override
+  Future<bool> googlePayIsSupported(IsGooglePaySupportedParams params) {
+    throw WebUnsupportedError.method('googlePayIsSupported');
   }
 
   @override

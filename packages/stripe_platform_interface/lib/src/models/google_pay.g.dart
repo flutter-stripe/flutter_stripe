@@ -83,3 +83,18 @@ Map<String, dynamic> _$$_CreateGooglePayPaymentParamsToJson(
       'currencyCode': instance.currencyCode,
       'amount': instance.amount,
     };
+
+_$_IsGooglePaySupportedParams _$$_IsGooglePaySupportedParamsFromJson(
+        Map<String, dynamic> json) =>
+    _$_IsGooglePaySupportedParams(
+      testEnv: json['testEnv'] as bool? ?? false,
+      existingPaymentMethodRequired:
+          json['existingPaymentMethodRequired'] as bool? ?? false,
+    );
+
+Map<String, dynamic> _$$_IsGooglePaySupportedParamsToJson(
+        _$_IsGooglePaySupportedParams instance) =>
+    <String, dynamic>{
+      'testEnv': instance.testEnv,
+      'existingPaymentMethodRequired': instance.existingPaymentMethodRequired,
+    };
