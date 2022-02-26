@@ -603,13 +603,12 @@ class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
   @ReactMethod
   fun isGooglePaySupported(params: ReadableMap?, promise: Promise) {
     val fragment = GooglePayPaymentMethodLauncherFragment(
-      currentActivity as AppCompatActivity,
       getBooleanOrFalse(params, "testEnv"),
       getBooleanOrFalse(params, "existingPaymentMethodRequired"),
       promise
     )
 
-    (currentActivity as AppCompatActivity).supportFragmentManager.beginTransaction()
+    currentActivity.activity.supportFragmentManager.beginTransaction()
       .add(fragment, "google_pay_support_fragment")
       .commit()
   }

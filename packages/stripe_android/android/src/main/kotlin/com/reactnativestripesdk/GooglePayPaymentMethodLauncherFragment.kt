@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.facebook.react.bridge.Promise
 import com.stripe.android.googlepaylauncher.GooglePayEnvironment
 import com.stripe.android.googlepaylauncher.GooglePayPaymentMethodLauncher
 
 class GooglePayPaymentMethodLauncherFragment(
-  private val activity: AppCompatActivity,
   private val isTestEnv: Boolean,
   private val paymentMethodRequired: Boolean,
   private val promise: Promise
@@ -36,7 +36,7 @@ class GooglePayPaymentMethodLauncherFragment(
       ),
       readyCallback = {
         promise.resolve(it)
-        activity.supportFragmentManager.beginTransaction().remove(this).commit()
+        requireActivity().supportFragmentManager.beginTransaction().remove(this).commit()
       },
       resultCallback = {}
     )
