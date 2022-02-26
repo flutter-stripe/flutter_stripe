@@ -30,10 +30,10 @@ class CreateTokenParams with _$CreateTokenParams {
     required CardTokenParams params,
   }) = _CreateTokenParamsCard;
 
-  // @JsonSerializable(explicitToJson: true)
-  // const factory CreateTokenParams.bankAccount({
-  //   required BankAccountTokenParams params,
-  // }) = _CreateTokenParamsBankAccount;
+  @JsonSerializable(explicitToJson: true)
+  const factory CreateTokenParams.bankAccount({
+    required BankAccountTokenParams params,
+  }) = _CreateTokenParamsBankAccount;
 
   factory CreateTokenParams.fromJson(Map<String, dynamic> json) =>
       _$CreateTokenParamsFromJson(json);

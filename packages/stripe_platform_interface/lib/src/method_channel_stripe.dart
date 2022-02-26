@@ -214,6 +214,7 @@ class MethodChannelStripe extends StripePlatform {
     final invokeParams = params.map(
       (value) => value.toJson(),
       card: (data) => data.toJson()['params'],
+      bankAccount: (data) => data.toJson()['params'],
     );
 
     final result = await _methodChannel.invokeMapMethod<String, dynamic>(
