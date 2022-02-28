@@ -18,6 +18,7 @@ import 'card_payments/no_webhook_payment_cardform_screen.dart';
 import 'card_payments/no_webhook_payment_screen.dart';
 import 'card_payments/webhook_payment_screen.dart';
 import 'others/cvc_re_collection_screen.dart';
+import 'others/legacy_token_bank_screen.dart';
 import 'others/legacy_token_card_screen.dart';
 import 'others/setup_future_payment_screen.dart';
 import 'regional_payment_methods/grab_pay_screen.dart';
@@ -242,11 +243,11 @@ class Example extends StatelessWidget {
         builder: (context) => LegacyTokenCardScreen(),
         platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
-      // Example(
-      //   title: 'Create token for bank (legacy)',
-      //   builder: (context) => LegacyTokenBankScreen(),
-      //   platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
-      // ),
+      Example(
+        title: 'Create token for bank (legacy)',
+        builder: (context) => LegacyTokenBankScreen(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+      ),
     ]),
     Example(
       title: 'Checkout',

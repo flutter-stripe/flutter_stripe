@@ -60,6 +60,7 @@ abstract class StripePlatform extends PlatformInterface {
 
   Future<void> initGooglePay(GooglePayInitParams params);
   Future<void> presentGooglePay(PresentGooglePayParams params);
+  Future<bool> googlePayIsSupported(IsGooglePaySupportedParams params);
   Future<PaymentMethod> createGooglePayPaymentMethod(
       CreateGooglePayPaymentParams params);
 

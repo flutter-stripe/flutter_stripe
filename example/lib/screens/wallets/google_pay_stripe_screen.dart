@@ -16,28 +16,36 @@ class GooglePayStripeScreen extends StatefulWidget {
 
 class _GooglePayStripeScreenState extends State<GooglePayStripeScreen> {
   Future<void> startGooglePay() async {
-    try {
-      // 1. fetch Intent Client Secret from backend
-      final response = await fetchPaymentIntentClientSecret();
-      final clientSecret = response['clientSecret'];
+    final googlePaySupported = await Stripe.instance
+        .isGooglePaySupported(IsGooglePaySupportedParams());
+    if (googlePaySupported) {
+      try {
+        // 1. fetch Intent Client Secret from backend
+        final response = await fetchPaymentIntentClientSecret();
+        final clientSecret = response['clientSecret'];
 
-      // 2.present google pay sheet
-      await Stripe.instance.initGooglePay(GooglePayInitParams(
-          testEnv: true,
-          merchantName: "Example Merchant Name",
-          countryCode: 'us'));
+        // 2.present google pay sheet
+        await Stripe.instance.initGooglePay(GooglePayInitParams(
+            testEnv: true,
+            merchantName: "Example Merchant Name",
+            countryCode: 'us'));
 
-      await Stripe.instance.presentGooglePay(
-        PresentGooglePayParams(clientSecret: clientSecret),
-      );
+        await Stripe.instance.presentGooglePay(
+          PresentGooglePayParams(clientSecret: clientSecret),
+        );
 
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text('Google Pay payment succesfully completed')),
+        );
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: $e')),
+        );
+      }
+    } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text('Google Pay payment succesfully completed')),
-      );
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e')),
+        SnackBar(content: Text('Google pay is not supported on this device')),
       );
     }
   }

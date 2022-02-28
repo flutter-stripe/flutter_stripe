@@ -20,6 +20,8 @@ CreateTokenParams _$CreateTokenParamsFromJson(Map<String, dynamic> json) {
       return _CreateTokenParamsLegacy.fromJson(json);
     case 'card':
       return _CreateTokenParamsCard.fromJson(json);
+    case 'bankAccount':
+      return _CreateTokenParamsBankAccount.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'runtimeType', 'CreateTokenParams',
@@ -46,6 +48,13 @@ class _$CreateTokenParamsTearOff {
     );
   }
 
+  _CreateTokenParamsBankAccount bankAccount(
+      {required BankAccountTokenParams params}) {
+    return _CreateTokenParamsBankAccount(
+      params: params,
+    );
+  }
+
   CreateTokenParams fromJson(Map<String, Object?> json) {
     return CreateTokenParams.fromJson(json);
   }
@@ -60,6 +69,7 @@ mixin _$CreateTokenParams {
   TResult when<TResult extends Object?>(
     TResult Function(TokenType type, String? name, Address? address) $default, {
     required TResult Function(CardTokenParams params) card,
+    required TResult Function(BankAccountTokenParams params) bankAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +77,7 @@ mixin _$CreateTokenParams {
     TResult Function(TokenType type, String? name, Address? address)?
         $default, {
     TResult Function(CardTokenParams params)? card,
+    TResult Function(BankAccountTokenParams params)? bankAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,6 +85,7 @@ mixin _$CreateTokenParams {
     TResult Function(TokenType type, String? name, Address? address)?
         $default, {
     TResult Function(CardTokenParams params)? card,
+    TResult Function(BankAccountTokenParams params)? bankAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -81,18 +93,21 @@ mixin _$CreateTokenParams {
   TResult map<TResult extends Object?>(
     TResult Function(_CreateTokenParamsLegacy value) $default, {
     required TResult Function(_CreateTokenParamsCard value) card,
+    required TResult Function(_CreateTokenParamsBankAccount value) bankAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult Function(_CreateTokenParamsLegacy value)? $default, {
     TResult Function(_CreateTokenParamsCard value)? card,
+    TResult Function(_CreateTokenParamsBankAccount value)? bankAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_CreateTokenParamsLegacy value)? $default, {
     TResult Function(_CreateTokenParamsCard value)? card,
+    TResult Function(_CreateTokenParamsBankAccount value)? bankAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -234,6 +249,7 @@ class _$_CreateTokenParamsLegacy implements _CreateTokenParamsLegacy {
   TResult when<TResult extends Object?>(
     TResult Function(TokenType type, String? name, Address? address) $default, {
     required TResult Function(CardTokenParams params) card,
+    required TResult Function(BankAccountTokenParams params) bankAccount,
   }) {
     return $default(type, name, address);
   }
@@ -244,6 +260,7 @@ class _$_CreateTokenParamsLegacy implements _CreateTokenParamsLegacy {
     TResult Function(TokenType type, String? name, Address? address)?
         $default, {
     TResult Function(CardTokenParams params)? card,
+    TResult Function(BankAccountTokenParams params)? bankAccount,
   }) {
     return $default?.call(type, name, address);
   }
@@ -254,6 +271,7 @@ class _$_CreateTokenParamsLegacy implements _CreateTokenParamsLegacy {
     TResult Function(TokenType type, String? name, Address? address)?
         $default, {
     TResult Function(CardTokenParams params)? card,
+    TResult Function(BankAccountTokenParams params)? bankAccount,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -267,6 +285,7 @@ class _$_CreateTokenParamsLegacy implements _CreateTokenParamsLegacy {
   TResult map<TResult extends Object?>(
     TResult Function(_CreateTokenParamsLegacy value) $default, {
     required TResult Function(_CreateTokenParamsCard value) card,
+    required TResult Function(_CreateTokenParamsBankAccount value) bankAccount,
   }) {
     return $default(this);
   }
@@ -276,6 +295,7 @@ class _$_CreateTokenParamsLegacy implements _CreateTokenParamsLegacy {
   TResult? mapOrNull<TResult extends Object?>(
     TResult Function(_CreateTokenParamsLegacy value)? $default, {
     TResult Function(_CreateTokenParamsCard value)? card,
+    TResult Function(_CreateTokenParamsBankAccount value)? bankAccount,
   }) {
     return $default?.call(this);
   }
@@ -285,6 +305,7 @@ class _$_CreateTokenParamsLegacy implements _CreateTokenParamsLegacy {
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_CreateTokenParamsLegacy value)? $default, {
     TResult Function(_CreateTokenParamsCard value)? card,
+    TResult Function(_CreateTokenParamsBankAccount value)? bankAccount,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -406,6 +427,7 @@ class _$_CreateTokenParamsCard implements _CreateTokenParamsCard {
   TResult when<TResult extends Object?>(
     TResult Function(TokenType type, String? name, Address? address) $default, {
     required TResult Function(CardTokenParams params) card,
+    required TResult Function(BankAccountTokenParams params) bankAccount,
   }) {
     return card(params);
   }
@@ -416,6 +438,7 @@ class _$_CreateTokenParamsCard implements _CreateTokenParamsCard {
     TResult Function(TokenType type, String? name, Address? address)?
         $default, {
     TResult Function(CardTokenParams params)? card,
+    TResult Function(BankAccountTokenParams params)? bankAccount,
   }) {
     return card?.call(params);
   }
@@ -426,6 +449,7 @@ class _$_CreateTokenParamsCard implements _CreateTokenParamsCard {
     TResult Function(TokenType type, String? name, Address? address)?
         $default, {
     TResult Function(CardTokenParams params)? card,
+    TResult Function(BankAccountTokenParams params)? bankAccount,
     required TResult orElse(),
   }) {
     if (card != null) {
@@ -439,6 +463,7 @@ class _$_CreateTokenParamsCard implements _CreateTokenParamsCard {
   TResult map<TResult extends Object?>(
     TResult Function(_CreateTokenParamsLegacy value) $default, {
     required TResult Function(_CreateTokenParamsCard value) card,
+    required TResult Function(_CreateTokenParamsBankAccount value) bankAccount,
   }) {
     return card(this);
   }
@@ -448,6 +473,7 @@ class _$_CreateTokenParamsCard implements _CreateTokenParamsCard {
   TResult? mapOrNull<TResult extends Object?>(
     TResult Function(_CreateTokenParamsLegacy value)? $default, {
     TResult Function(_CreateTokenParamsCard value)? card,
+    TResult Function(_CreateTokenParamsBankAccount value)? bankAccount,
   }) {
     return card?.call(this);
   }
@@ -457,6 +483,7 @@ class _$_CreateTokenParamsCard implements _CreateTokenParamsCard {
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_CreateTokenParamsLegacy value)? $default, {
     TResult Function(_CreateTokenParamsCard value)? card,
+    TResult Function(_CreateTokenParamsBankAccount value)? bankAccount,
     required TResult orElse(),
   }) {
     if (card != null) {
@@ -482,6 +509,179 @@ abstract class _CreateTokenParamsCard implements CreateTokenParams {
   @JsonKey(ignore: true)
   _$CreateTokenParamsCardCopyWith<_CreateTokenParamsCard> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$CreateTokenParamsBankAccountCopyWith<$Res> {
+  factory _$CreateTokenParamsBankAccountCopyWith(
+          _CreateTokenParamsBankAccount value,
+          $Res Function(_CreateTokenParamsBankAccount) then) =
+      __$CreateTokenParamsBankAccountCopyWithImpl<$Res>;
+  $Res call({BankAccountTokenParams params});
+
+  $BankAccountTokenParamsCopyWith<$Res> get params;
+}
+
+/// @nodoc
+class __$CreateTokenParamsBankAccountCopyWithImpl<$Res>
+    extends _$CreateTokenParamsCopyWithImpl<$Res>
+    implements _$CreateTokenParamsBankAccountCopyWith<$Res> {
+  __$CreateTokenParamsBankAccountCopyWithImpl(
+      _CreateTokenParamsBankAccount _value,
+      $Res Function(_CreateTokenParamsBankAccount) _then)
+      : super(_value, (v) => _then(v as _CreateTokenParamsBankAccount));
+
+  @override
+  _CreateTokenParamsBankAccount get _value =>
+      super._value as _CreateTokenParamsBankAccount;
+
+  @override
+  $Res call({
+    Object? params = freezed,
+  }) {
+    return _then(_CreateTokenParamsBankAccount(
+      params: params == freezed
+          ? _value.params
+          : params // ignore: cast_nullable_to_non_nullable
+              as BankAccountTokenParams,
+    ));
+  }
+
+  @override
+  $BankAccountTokenParamsCopyWith<$Res> get params {
+    return $BankAccountTokenParamsCopyWith<$Res>(_value.params, (value) {
+      return _then(_value.copyWith(params: value));
+    });
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_CreateTokenParamsBankAccount implements _CreateTokenParamsBankAccount {
+  const _$_CreateTokenParamsBankAccount({required this.params, String? $type})
+      : $type = $type ?? 'bankAccount';
+
+  factory _$_CreateTokenParamsBankAccount.fromJson(Map<String, dynamic> json) =>
+      _$$_CreateTokenParamsBankAccountFromJson(json);
+
+  @override
+  final BankAccountTokenParams params;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'CreateTokenParams.bankAccount(params: $params)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _CreateTokenParamsBankAccount &&
+            const DeepCollectionEquality().equals(other.params, params));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(params));
+
+  @JsonKey(ignore: true)
+  @override
+  _$CreateTokenParamsBankAccountCopyWith<_CreateTokenParamsBankAccount>
+      get copyWith => __$CreateTokenParamsBankAccountCopyWithImpl<
+          _CreateTokenParamsBankAccount>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(TokenType type, String? name, Address? address) $default, {
+    required TResult Function(CardTokenParams params) card,
+    required TResult Function(BankAccountTokenParams params) bankAccount,
+  }) {
+    return bankAccount(params);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult Function(TokenType type, String? name, Address? address)?
+        $default, {
+    TResult Function(CardTokenParams params)? card,
+    TResult Function(BankAccountTokenParams params)? bankAccount,
+  }) {
+    return bankAccount?.call(params);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TokenType type, String? name, Address? address)?
+        $default, {
+    TResult Function(CardTokenParams params)? card,
+    TResult Function(BankAccountTokenParams params)? bankAccount,
+    required TResult orElse(),
+  }) {
+    if (bankAccount != null) {
+      return bankAccount(params);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_CreateTokenParamsLegacy value) $default, {
+    required TResult Function(_CreateTokenParamsCard value) card,
+    required TResult Function(_CreateTokenParamsBankAccount value) bankAccount,
+  }) {
+    return bankAccount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult Function(_CreateTokenParamsLegacy value)? $default, {
+    TResult Function(_CreateTokenParamsCard value)? card,
+    TResult Function(_CreateTokenParamsBankAccount value)? bankAccount,
+  }) {
+    return bankAccount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_CreateTokenParamsLegacy value)? $default, {
+    TResult Function(_CreateTokenParamsCard value)? card,
+    TResult Function(_CreateTokenParamsBankAccount value)? bankAccount,
+    required TResult orElse(),
+  }) {
+    if (bankAccount != null) {
+      return bankAccount(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CreateTokenParamsBankAccountToJson(this);
+  }
+}
+
+abstract class _CreateTokenParamsBankAccount implements CreateTokenParams {
+  const factory _CreateTokenParamsBankAccount(
+          {required BankAccountTokenParams params}) =
+      _$_CreateTokenParamsBankAccount;
+
+  factory _CreateTokenParamsBankAccount.fromJson(Map<String, dynamic> json) =
+      _$_CreateTokenParamsBankAccount.fromJson;
+
+  BankAccountTokenParams get params;
+  @JsonKey(ignore: true)
+  _$CreateTokenParamsBankAccountCopyWith<_CreateTokenParamsBankAccount>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 CardTokenParams _$CardTokenParamsFromJson(Map<String, dynamic> json) {

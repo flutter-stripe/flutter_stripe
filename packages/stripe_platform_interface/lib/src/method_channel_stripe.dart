@@ -26,11 +26,14 @@ class MethodChannelStripe extends StripePlatform {
   MethodChannelStripe({
     required MethodChannel methodChannel,
     required bool platformIsIos,
+    required bool platformIsAndroid,
   })  : _methodChannel = methodChannel,
+        _platformIsAndroid = platformIsAndroid,
         _platformIsIos = platformIsIos;
 
   final MethodChannel _methodChannel;
   final bool _platformIsIos;
+  final bool _platformIsAndroid;
 
   @override
   Future<void> initialise({
@@ -211,6 +214,7 @@ class MethodChannelStripe extends StripePlatform {
     final invokeParams = params.map(
       (value) => value.toJson(),
       card: (data) => data.toJson()['params'],
+      bankAccount: (data) => data.toJson()['params'],
     );
 
     final result = await _methodChannel.invokeMapMethod<String, dynamic>(
@@ -283,6 +287,17 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
+  Future<bool> googlePayIsSupported(IsGooglePaySupportedParams params) async {
+    if (!_platformIsAndroid) {
+      return false;
+    }
+    final isSupported = await _methodChannel
+        .invokeMethod('isGooglePaySupported', {'params': params.toJson()});
+
+    return isSupported ?? false;
+  }
+
+  @override
   Future<TokenData> createApplePayToken(Map<String, dynamic> payment) async {
     final result = await _methodChannel.invokeMapMethod<String, dynamic>(
         'createApplePayToken', {'payment': payment});
@@ -297,9 +312,11 @@ class MethodChannelStripeFactory {
   const MethodChannelStripeFactory();
 
   StripePlatform create() => MethodChannelStripe(
-      methodChannel: const MethodChannel(
-        'flutter.stripe/payments',
-        JSONMethodCodec(),
-      ),
-      platformIsIos: Platform.isIOS);
+        methodChannel: const MethodChannel(
+          'flutter.stripe/payments',
+          JSONMethodCodec(),
+        ),
+        platformIsIos: Platform.isIOS,
+        platformIsAndroid: Platform.isAndroid,
+      );
 }
