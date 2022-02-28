@@ -43,7 +43,10 @@ class CardField extends StatefulWidget {
   final Color? cursorColor;
 
   /// Whether or not to show the postalcode field in the form.
-  /// Defaults is `false`.
+  ///
+  /// Defaults is `false`. If your configuration in Stripe requires a postalcode
+  /// check as defined in https://stripe.com/docs/radar/rules#traditional-bank-checks
+  /// make sure this one is set to `true`.
   final bool enablePostalCode;
 
   /// Hint text for the card number field.
