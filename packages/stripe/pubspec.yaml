@@ -17,10 +17,7 @@ dependencies:
       ref: 26556a1bed0f215a978c24b7c91795c30e42efd9
       path: packages/stripe_android
   stripe_ios:
-    git:
-      url: git@github.com:Te-Z/flutter_stripe.git
-      ref: ios_create_token_from_bank 
-      path: packages/stripe_ios
+    path: ../stripe_ios
   stripe_platform_interface:
     git:
       url: git@github.com:flutter-stripe/flutter_stripe.git
