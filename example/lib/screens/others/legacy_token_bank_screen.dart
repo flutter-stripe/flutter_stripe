@@ -58,11 +58,11 @@ class _LegacyTokenBankScreenState extends State<LegacyTokenBankScreen> {
     try {
       // 1. Gather customer billing information (ex. email)
       final params = BankAccountTokenParams(
-        currency: 'EUR',
-        country: 'DE',
-        accountNumber: _controller.text,
-        accountHolderName: 'Dash Flutter',
-        accountHolderType: BankAccountHolderType.Individual,
+          currency: 'EUR',
+          country: 'DE',
+          accountNumber: _controller.text,
+          accountHolderName: 'Dash Flutter',
+          accountHolderType: BankAccountHolderType.Individual,
       ); // mocked data for tests
 
       // 2. Create payment method
