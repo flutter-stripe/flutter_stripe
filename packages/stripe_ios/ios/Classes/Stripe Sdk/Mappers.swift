@@ -841,4 +841,12 @@ class Mappers {
         }
         return "Unknown"
     }
+
+    class func mapToBankAccountHolderType(_ type: String?) -> STPBankAccountHolderType {
+        switch type {
+        case "Company": return STPBankAccountHolderType.company
+        case "Individual": return STPBankAccountHolderType.individual
+        default: return STPBankAccountHolderType.individual
+        }
+    }
 }
