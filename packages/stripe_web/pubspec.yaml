@@ -15,7 +15,10 @@ dependencies:
     sdk: flutter
   freezed_annotation: ^1.0.0
   stripe_platform_interface:
-    path: ../stripe_platform_interface
+    git:
+      url: git@github.com:Te-Z/flutter_stripe.git
+      ref: ios_create_token_from_bank 
+      path: packages/stripe_platform_interface
   js: ^0.6.3
     
 
