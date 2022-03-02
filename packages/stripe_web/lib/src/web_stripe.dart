@@ -149,7 +149,7 @@ class WebStripe extends StripePlatform {
             payment_method: s.PaymentMethodDetails(
               ideal: s.IdealDetails(bank: bankName),
             ),
-            return_url: params['returnUrl'] ?? window.location.href,
+            return_url: options['returnUrl'] ?? window.location.href,
             // recommended
             // setup_future_usage:
           ),
