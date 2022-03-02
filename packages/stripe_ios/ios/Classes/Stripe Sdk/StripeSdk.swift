@@ -288,7 +288,7 @@ class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSelectionVi
         if let urlScheme = urlScheme {
             setupIntentParams.returnURL = Mappers.mapToReturnURL(urlScheme: urlScheme)
         }
-        
+
         let paymentHandler = STPPaymentHandler.shared()
         paymentHandler.confirmSetupIntent(setupIntentParams, with: self) { status, setupIntent, error in
             switch (status) {
@@ -676,10 +676,13 @@ class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSelectionVi
             paymentIntentParams.shipping = Mappers.mapToShippingDetails(shippingDetails: params["shippingDetails"] as? NSDictionary)
         }
 
-         if let urlScheme = urlScheme {
+        if let urlScheme = urlScheme {
             paymentIntentParams.returnURL = Mappers.mapToReturnURL(urlScheme: urlScheme)
         }
-        
+        if let returnURL = options["returnUrl"] as? String {
+                paymentIntentParams.returnURL = returnURL
+        }
+
         let paymentHandler = STPPaymentHandler.shared()
         paymentHandler.confirmPayment(paymentIntentParams, with: self, completion: onCompleteConfirmPayment)
     }
