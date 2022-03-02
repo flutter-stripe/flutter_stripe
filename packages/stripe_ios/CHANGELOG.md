@@ -1,26 +1,36 @@
+## 2.3.0
+- add isGooglePaySupported method
+- reenable support for legacy bank account token creation
+- Several fixes by the Stripe sdk [v0.3.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.3.0)
+
 ## 2.2.0
 
 - Add currency code to the Paymentsheet
 - Add validation state to cardfield
 - Deprecated `CreatetokenParams` use `CreateTokenParams.card` instead
 - Several fixes by the Stripe sdk [v0.2.4](https://github.com/stripe/stripe-react-native/releases/tag/v0.2.4)
+- Fix [#416](https://github.com/flutter-stripe/flutter_stripe/issues/416) ocassional crash on Android on the Paymentsheetfragment
 
 ## 2.1.1
 
+- Improved logging for Android initialization
 - Fix [#494](https://github.com/flutter-stripe/flutter_stripe/issues/494) Make `ShippingDetails` parameters nullable
 - Fix [#499](https://github.com/flutter-stripe/flutter_stripe/issues/499) Update cardnumber when using `dangerouslyGetFullCardDetails`
 
 ## 2.1.0
 
+** Enabled web support (Beta) **
+
+Other changes
 - Integrated native form to collect Aubecs payment data
 - Add Button Border-Radius for Apple Pay Button #448
 - Update dependencies to comply to new Flutter and dart release
-- Add billing name for future payments [#441](https://github.com/flutter-stripe/flutter_stripe/issues/441)
+- Add billing name for future payments #441
 
 ## 2.0.2
 
 - New params `primaryButtonColor`, `billingDetails` and `allowsDelayedPaymentMethods` for `initPaymentSheet`
-- Fixed iOS focus issues [#408](https://github.com/flutter-stripe/flutter_stripe/issues/408)
+- Fixed iOS focus issues #408
 
 ## 2.0.1
 

@@ -1,3 +1,8 @@
+## 2.3.0
+- add isGooglePaySupported method
+- reenable support for legacy bank account token creation
+- Several fixes by the Stripe sdk [v0.3.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.3.0)
+
 ## 2.2.0
 
 - Add currency code to the Paymentsheet

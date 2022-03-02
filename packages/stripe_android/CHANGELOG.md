@@ -1,3 +1,8 @@
+## 2.3.0
+- add isGooglePaySupported method
+- reenable support for legacy bank account token creation
+- Several fixes by the Stripe sdk [v0.3.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.3.0)
+
 ## 2.2.0
 
 - Add currency code to the Paymentsheet
@@ -14,7 +19,11 @@
 
 ## 2.1.0
 
+** Enabled web support (Beta) **
+
+Other changes
 - Integrated native form to collect Aubecs payment data
+- Add Button Border-Radius for Apple Pay Button #448
 - Update dependencies to comply to new Flutter and dart release
 - Add billing name for future payments #441
 
@@ -70,7 +79,7 @@ Other changes
 
 Other changes
 - Sync with latest Stripe sdk.
-- Fix [#147](https://github.com/flutter-stripe/flutter_stripe/issues/147) add `urlscheme to initialise method`. Thanks to @dariuspo.
+- Fix #147 add `urlscheme to initialise method`. Thanks to @dariuspo.
 - Improved focus behavior on Cardfield.
 - Add `dangerouslyGetFullCardDetails` and `FontFamily` to cardfield.
 - Better debug logging in case something goes wrong. 
