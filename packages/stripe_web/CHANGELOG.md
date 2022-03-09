@@ -1,3 +1,7 @@
+## 0.1.2
+
+ - Small bugfixes
+
 ## 0.1.1
 
 - Fix [#494] Make `ShippingDetails` parameters nullable
