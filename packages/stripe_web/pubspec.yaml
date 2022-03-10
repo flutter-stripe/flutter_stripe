@@ -1,6 +1,6 @@
 name: flutter_stripe_web
-description: Stripe sdk for Flutter web
-version: 0.1.1
+description: Stripe sdk for Flutter web platform.
+version: 0.1.2
 homepage: https://github.com/flutter-stripe/flutter_stripe
 
 environment:
