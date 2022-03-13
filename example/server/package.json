@@ -33,6 +33,7 @@
     "husky": "^4.2.3",
     "nodemon": "^1.19.1",
     "onchange": "^6.1.0",
+    "cors": "^2.8.5",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
     "run-script-os": "^1.1.1",
@@ -50,6 +51,7 @@
     "stripe": "^8.0.1"
   },
   "dependencies": {
+    "@types/cors": "^2.8.12",
     "eslint-plugin-jest": "^24.1.0",
     "jest": "^26.5.3",
     "ts-jest": "^26.4.1"
