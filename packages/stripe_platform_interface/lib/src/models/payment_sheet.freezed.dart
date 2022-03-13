@@ -40,7 +40,8 @@ class _$SetupPaymentSheetParametersTearOff {
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? primaryButtonColor,
       bool testEnv = false,
-      BillingDetails? billingDetails}) {
+      BillingDetails? billingDetails,
+      String? returnURL}) {
     return _SetupParameters(
       customFlow: customFlow,
       customerId: customerId,
@@ -57,6 +58,7 @@ class _$SetupPaymentSheetParametersTearOff {
       primaryButtonColor: primaryButtonColor,
       testEnv: testEnv,
       billingDetails: billingDetails,
+      returnURL: returnURL,
     );
   }
 
@@ -137,6 +139,7 @@ mixin _$SetupPaymentSheetParameters {
 
   /// Billing information of the customer.
   BillingDetails? get billingDetails => throw _privateConstructorUsedError;
+  String? get returnURL => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -167,7 +170,8 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? primaryButtonColor,
       bool testEnv,
-      BillingDetails? billingDetails});
+      BillingDetails? billingDetails,
+      String? returnURL});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
 }
@@ -198,6 +202,7 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res>
     Object? primaryButtonColor = freezed,
     Object? testEnv = freezed,
     Object? billingDetails = freezed,
+    Object? returnURL = freezed,
   }) {
     return _then(_value.copyWith(
       customFlow: customFlow == freezed
@@ -260,6 +265,10 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res>
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
               as BillingDetails?,
+      returnURL: returnURL == freezed
+          ? _value.returnURL
+          : returnURL // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -299,7 +308,8 @@ abstract class _$SetupParametersCopyWith<$Res>
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? primaryButtonColor,
       bool testEnv,
-      BillingDetails? billingDetails});
+      BillingDetails? billingDetails,
+      String? returnURL});
 
   @override
   $BillingDetailsCopyWith<$Res>? get billingDetails;
@@ -333,6 +343,7 @@ class __$SetupParametersCopyWithImpl<$Res>
     Object? primaryButtonColor = freezed,
     Object? testEnv = freezed,
     Object? billingDetails = freezed,
+    Object? returnURL = freezed,
   }) {
     return _then(_SetupParameters(
       customFlow: customFlow == freezed
@@ -395,6 +406,10 @@ class __$SetupParametersCopyWithImpl<$Res>
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
               as BillingDetails?,
+      returnURL: returnURL == freezed
+          ? _value.returnURL
+          : returnURL // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -419,7 +434,8 @@ class _$_SetupParameters implements _SetupParameters {
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           this.primaryButtonColor,
       this.testEnv = false,
-      this.billingDetails});
+      this.billingDetails,
+      this.returnURL});
 
   factory _$_SetupParameters.fromJson(Map<String, dynamic> json) =>
       _$$_SetupParametersFromJson(json);
@@ -510,10 +526,12 @@ class _$_SetupParameters implements _SetupParameters {
 
   /// Billing information of the customer.
   final BillingDetails? billingDetails;
+  @override
+  final String? returnURL;
 
   @override
   String toString() {
-    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, merchantDisplayName: $merchantDisplayName, merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, primaryButtonColor: $primaryButtonColor, testEnv: $testEnv, billingDetails: $billingDetails)';
+    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, merchantDisplayName: $merchantDisplayName, merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, primaryButtonColor: $primaryButtonColor, testEnv: $testEnv, billingDetails: $billingDetails, returnURL: $returnURL)';
   }
 
   @override
@@ -547,7 +565,8 @@ class _$_SetupParameters implements _SetupParameters {
                 .equals(other.primaryButtonColor, primaryButtonColor) &&
             const DeepCollectionEquality().equals(other.testEnv, testEnv) &&
             const DeepCollectionEquality()
-                .equals(other.billingDetails, billingDetails));
+                .equals(other.billingDetails, billingDetails) &&
+            const DeepCollectionEquality().equals(other.returnURL, returnURL));
   }
 
   @override
@@ -567,7 +586,8 @@ class _$_SetupParameters implements _SetupParameters {
       const DeepCollectionEquality().hash(allowsDelayedPaymentMethods),
       const DeepCollectionEquality().hash(primaryButtonColor),
       const DeepCollectionEquality().hash(testEnv),
-      const DeepCollectionEquality().hash(billingDetails));
+      const DeepCollectionEquality().hash(billingDetails),
+      const DeepCollectionEquality().hash(returnURL));
 
   @JsonKey(ignore: true)
   @override
@@ -598,7 +618,8 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? primaryButtonColor,
       bool testEnv,
-      BillingDetails? billingDetails}) = _$_SetupParameters;
+      BillingDetails? billingDetails,
+      String? returnURL}) = _$_SetupParameters;
 
   factory _SetupParameters.fromJson(Map<String, dynamic> json) =
       _$_SetupParameters.fromJson;
@@ -686,6 +707,8 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
 
   /// Billing information of the customer.
   BillingDetails? get billingDetails;
+  @override
+  String? get returnURL;
   @override
   @JsonKey(ignore: true)
   _$SetupParametersCopyWith<_SetupParameters> get copyWith =>
