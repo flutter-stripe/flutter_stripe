@@ -4,7 +4,7 @@ class Mappers {
     class func createResult(_ key: String, _ value: NSDictionary?) -> NSDictionary {
         return [key: value ?? NSNull()]
     }
-    
+
     class func mapToPKContactField(field: String) -> PKContactField {
         switch field {
         case "emailAddress": return PKContactField.emailAddress
@@ -15,7 +15,7 @@ class Mappers {
         default: return PKContactField.name
         }
     }
-    
+
     class func mapToPaymentSummaryItemType(type: String?) -> PKPaymentSummaryItemType {
         if let type = type {
             switch type {
@@ -26,7 +26,7 @@ class Mappers {
         }
         return PKPaymentSummaryItemType.final
     }
-    
+
     class func mapFromBankAccountHolderType(_ type: STPBankAccountHolderType?) -> String? {
         if let type = type {
             switch type {
@@ -37,7 +37,15 @@ class Mappers {
         }
         return nil
     }
-    
+
+    class func mapToBankAccountHolderType(_ type: String?) -> STPBankAccountHolderType {
+        switch type {
+        case "Company": return STPBankAccountHolderType.company
+        case "Individual": return STPBankAccountHolderType.individual
+        default: return STPBankAccountHolderType.individual
+        }
+    }
+
     class func mapFromBankAccountStatus(_ status: STPBankAccountStatus?) -> String? {
         if let status = status {
             switch status {
@@ -51,7 +59,7 @@ class Mappers {
         }
         return nil
     }
-    
+
     class func mapFromBankAccount(_ bankAccount: STPBankAccount?) -> NSDictionary? {
         if (bankAccount == nil) {
             return nil
@@ -68,7 +76,7 @@ class Mappers {
         ]
         return result
     }
-    
+
     class func mapFromCard(_ card: STPCard?) -> NSDictionary? {
         if (card == nil) {
             return nil
@@ -86,7 +94,7 @@ class Mappers {
         ]
         return cardMap
     }
-    
+
     class func mapFromAddress(address: STPAddress?) -> NSDictionary {
         let result: NSDictionary = [
             "city": address?.city ?? NSNull(),
@@ -96,10 +104,10 @@ class Mappers {
             "line2": address?.line2 ?? NSNull(),
             "state": address?.state ?? NSNull(),
         ]
-        
+
         return result
     }
-    
+
     class func mapToAddress(address: NSDictionary?) -> STPAddress {
         let result = STPAddress()
         result.city = address?["city"] as? String
@@ -108,10 +116,10 @@ class Mappers {
         result.line2 = address?["line2"] as? String
         result.postalCode = address?["postalCode"] as? String
         result.state = address?["state"] as? String
-        
+
         return result
     }
-    
+
     class func mapFromFunding(_ funding: STPCardFundingType?) -> String? {
         if let funding = funding {
             switch funding {
@@ -125,7 +133,7 @@ class Mappers {
         }
         return nil
     }
-    
+
     class func mapFromTokenType(_ type: STPTokenType?) -> String? {
         if let type = type {
             switch type {
@@ -139,7 +147,7 @@ class Mappers {
         }
         return nil
     }
-    
+
     class func mapFromToken(token: STPToken) -> NSDictionary {
         let tokenMap: NSDictionary = [
             "id": token.tokenId,
@@ -149,13 +157,13 @@ class Mappers {
             "livemode": token.livemode,
             "type": mapFromTokenType(token.type) ?? NSNull(),
         ]
-        
+
         return tokenMap
     }
-    
+
     class func mapToShippingMethods(shippingMethods: NSArray?) -> [PKShippingMethod] {
         var shippingMethodsList: [PKShippingMethod] = []
-        
+
         if let methods = shippingMethods as? [[String : Any]] {
             for method in methods {
                 let label = method["label"] as? String ?? ""
@@ -169,10 +177,10 @@ class Mappers {
                 shippingMethodsList.append(pm)
             }
         }
-        
+
         return shippingMethodsList
     }
-    
+
     class func mapFromShippingMethod(shippingMethod: PKShippingMethod) -> NSDictionary {
         let method: NSDictionary = [
             "detail": shippingMethod.detail ?? "",
@@ -181,10 +189,10 @@ class Mappers {
             "type": shippingMethod.type,
             "label": shippingMethod.label
         ]
-        
+
         return method
     }
-    
+
     class func mapFromShippingContact(shippingContact: PKContact) -> NSDictionary {
         let name: NSDictionary = [
             "familyName": shippingContact.name?.familyName ?? "",
@@ -209,10 +217,10 @@ class Mappers {
                 "subLocality": shippingContact.postalAddress?.subLocality,
             ],
         ]
-        
+
         return contact
     }
-    
+
     class func mapAddressFields(_ addressFields: [String]) -> [String] {
         return addressFields.map {
             if ($0 == "street") {
@@ -235,7 +243,7 @@ class Mappers {
             return ""
         }
     }
-    
+
     class func mapIntentStatus(status: STPPaymentIntentStatus?) -> String {
         if let status = status {
             switch status {
@@ -251,7 +259,7 @@ class Mappers {
         }
         return "Unknown"
     }
-    
+
     class func mapPaymentMethodType(type: STPPaymentMethodType) -> String {
         switch type {
         case STPPaymentMethodType.card: return "Card"
@@ -271,11 +279,12 @@ class Mappers {
         case STPPaymentMethodType.sofort: return "Sofort"
         case STPPaymentMethodType.UPI: return "Upi"
         case STPPaymentMethodType.afterpayClearpay: return "AfterpayClearpay"
+        case STPPaymentMethodType.klarna: return "Klarna"
         case STPPaymentMethodType.unknown: return "Unknown"
         default: return "Unknown"
         }
     }
-    
+
     class func mapToPaymentMethodType(type: String?) -> STPPaymentMethodType? {
         if let type = type {
             switch type {
@@ -296,13 +305,14 @@ class Mappers {
             case "Sofort": return STPPaymentMethodType.sofort
             case "Upi": return STPPaymentMethodType.UPI
             case "AfterpayClearpay": return STPPaymentMethodType.afterpayClearpay
+            case "Klarna": return STPPaymentMethodType.klarna
             case "WeChatPay": return STPPaymentMethodType.weChatPay
             default: return STPPaymentMethodType.unknown
             }
         }
         return nil
     }
-    
+
     class func mapCaptureMethod(_ captureMethod: STPPaymentIntentCaptureMethod?) -> String {
         if let captureMethod = captureMethod {
             switch captureMethod {
@@ -313,7 +323,7 @@ class Mappers {
         }
         return "Unknown"
     }
-    
+
     class func mapConfirmationMethod(_ confirmationMethod: STPPaymentIntentConfirmationMethod?) -> String {
         if let confirmationMethod = confirmationMethod {
             switch confirmationMethod {
@@ -324,7 +334,7 @@ class Mappers {
         }
         return "Unknown"
     }
-    
+
     class func mapIntentShipping(_ shipping: STPPaymentIntentShippingDetails) -> NSDictionary {
         var addressDetails = NSDictionary()
         if let address = shipping.address {
@@ -345,7 +355,7 @@ class Mappers {
         ]
         return shippingDetails
     }
-    
+
     class func mapFromPaymentIntent (paymentIntent: STPPaymentIntent) -> NSDictionary {
         let intent: NSMutableDictionary = [
             "id": paymentIntent.stripeId,
@@ -364,30 +374,30 @@ class Mappers {
             "shipping": NSNull(),
             "canceledAt": NSNull()
         ]
-        
+
         if let lastPaymentError = paymentIntent.lastPaymentError {
             let paymentError: NSMutableDictionary = [
                 "code": lastPaymentError.code ?? NSNull(),
                 "message": lastPaymentError.message ?? NSNull(),
-                "type": mapFromPaymentIntentLastPaymentErrorType(lastPaymentError.type),
+                "type": mapFromPaymentIntentLastPaymentErrorType(lastPaymentError.type) ?? NSNull(),
                 "declineCode": lastPaymentError.declineCode ?? NSNull(),
                 "paymentMethod": mapFromPaymentMethod(lastPaymentError.paymentMethod) ?? NSNull()
             ]
-            
+
             intent.setValue(paymentError, forKey: "lastPaymentError")
         }
-        
+
         if let shipping = paymentIntent.shipping {
             intent.setValue(mapIntentShipping(shipping), forKey: "shipping")
         }
-        
+
         if let canceledAt = paymentIntent.canceledAt {
             intent.setValue(convertDateToUnixTimestamp(date: canceledAt), forKey: "canceledAt")
         }
-        
+
         return intent;
     }
-    
+
     class func mapFromPaymentIntentLastPaymentErrorType(_ errorType: STPPaymentIntentLastPaymentErrorType?) -> String? {
         if let errorType = errorType {
             switch errorType {
@@ -404,7 +414,7 @@ class Mappers {
         }
         return nil
     }
-    
+
     class func mapFromSetupIntentLastPaymentErrorType(_ errorType: STPSetupIntentLastSetupErrorType?) -> String? {
         if let errorType = errorType {
             switch errorType {
@@ -421,7 +431,7 @@ class Mappers {
         }
         return nil
     }
-    
+
     class func mapToBillingDetails(billingDetails: NSDictionary?) -> STPPaymentMethodBillingDetails? {
         guard let billingDetails = billingDetails else {
             return nil
@@ -430,39 +440,39 @@ class Mappers {
         billing.email = RCTConvert.nsString(billingDetails["email"])
         billing.phone = RCTConvert.nsString(billingDetails["phone"])
         billing.name = RCTConvert.nsString(billingDetails["name"])
-        
+
         let billingAddres = STPPaymentMethodAddress()
-        
+
         billingAddres.city = RCTConvert.nsString(billingDetails["addressCity"])
         billingAddres.postalCode = RCTConvert.nsString(billingDetails["addressPostalCode"])
         billingAddres.country = RCTConvert.nsString(billingDetails["addressCountry"])
         billingAddres.line1 = RCTConvert.nsString(billingDetails["addressLine1"])
         billingAddres.line2 = RCTConvert.nsString(billingDetails["addressLine2"])
         billingAddres.state = RCTConvert.nsString(billingDetails["addressState"])
-        
+
         billing.address = billingAddres
-        
+
         return billing
     }
-    
+
     class func mapToShippingDetails(shippingDetails: NSDictionary?) -> STPPaymentIntentShippingDetailsParams? {
         guard let shippingDetails = shippingDetails else {
             return nil
         }
         let shippingAddress = STPPaymentIntentShippingDetailsAddressParams(line1: shippingDetails["addressLine1"] as? String ?? "")
-        
+
         shippingAddress.city = shippingDetails["addressCity"] as? String
         shippingAddress.postalCode = shippingDetails["addressPostalCode"] as? String
         shippingAddress.country = shippingDetails["addressCountry"] as? String
         shippingAddress.line1 = shippingDetails["addressLine1"] as? String ?? ""
         shippingAddress.line2 = shippingDetails["addressLine2"] as? String
         shippingAddress.state = shippingDetails["addressState"] as? String
-        
+
         let shipping = STPPaymentIntentShippingDetailsParams(address: shippingAddress, name: shippingDetails["name"] as? String ?? "")
-        
+
         return shipping
     }
-    
+
     class func mapFromBillingDetails(billingDetails: STPPaymentMethodBillingDetails?) -> NSDictionary {
         let billing: NSDictionary = [
             "email": billingDetails?.email ?? NSNull(),
@@ -477,10 +487,10 @@ class Mappers {
                 "state": billingDetails?.address?.state,
             ],
         ]
-        
+
         return billing
     }
-    
+
     class func mapCardBrand(_ brand: STPCardBrand?) -> String? {
         if let brand = brand {
             switch brand {
@@ -497,7 +507,7 @@ class Mappers {
         }
         return nil
     }
-    
+
     class func mapFromPaymentMethod(_ paymentMethod: STPPaymentMethod?) -> NSDictionary? {
         guard let paymentMethod = paymentMethod else {
             return nil
@@ -553,7 +563,7 @@ class Mappers {
         ]
         return method
     }
-    
+
     class func mapIntentStatus(status: STPSetupIntentStatus?) -> String {
         if let status = status {
             switch status {
@@ -569,7 +579,7 @@ class Mappers {
         }
         return "Unknown"
     }
-    
+
     class func mapFromSetupIntentUsage(usage: STPSetupIntentUsage?) -> String {
         if let usage = usage {
             switch usage {
@@ -582,7 +592,7 @@ class Mappers {
         }
         return "Unknown"
     }
-    
+
     class func mapToPaymentIntentFutureUsage(usage: String?) -> STPPaymentIntentSetupFutureUsage {
         if let usage = usage {
             switch usage {
@@ -595,7 +605,7 @@ class Mappers {
         }
         return STPPaymentIntentSetupFutureUsage.unknown
     }
-    
+
     class func mapFromSetupIntent(setupIntent: STPSetupIntent) -> NSDictionary {
         let intent: NSMutableDictionary = [
             "id": setupIntent.stripeID,
@@ -609,15 +619,15 @@ class Mappers {
             "created": NSNull(),
             "lastSetupError": NSNull()
         ]
-        
-        
+
+
         let types = setupIntent.paymentMethodTypes.map {
             mapPaymentMethodType(type: STPPaymentMethodType.init(rawValue: Int(truncating: $0))!)
         }
-        
+
         intent.setValue(types, forKey: "paymentMethodTypes")
         intent.setValue(convertDateToUnixTimestamp(date: setupIntent.created), forKey: "created")
-        
+
         if let lastSetupError = setupIntent.lastSetupError {
             let setupError: NSMutableDictionary = [
                 "code": lastSetupError.code ?? NSNull(),
@@ -628,10 +638,10 @@ class Mappers {
             ]
             intent.setValue(setupError, forKey: "lastSetupError")
         }
-        
+
         return intent
     }
-    
+
     @available(iOS 13.0, *)
     class func mapToUserInterfaceStyle(_ style: String) -> PaymentSheet.UserInterfaceStyle {
         switch style {
@@ -640,11 +650,11 @@ class Mappers {
         default: return PaymentSheet.UserInterfaceStyle.automatic
         }
     }
-    
+
     class func mapToReturnURL(urlScheme: String) -> String {
         return urlScheme + "://safepay"
     }
-    
+
     class func mapUICustomization(_ params: NSDictionary) -> STPThreeDSUICustomization {
         let uiCustomization = STPThreeDSUICustomization()
         if let labelSettings = params["label"] as? Dictionary<String, Any?> {
@@ -661,7 +671,7 @@ class Mappers {
                 uiCustomization.labelCustomization.font = UIFont.systemFont(ofSize: CGFloat(textFontSize))
             }
         }
-        
+
         if let navigationBarSettings = params["navigationBar"] as? Dictionary<String, Any?> {
             if let barTintColor = navigationBarSettings["barTintColor"] as? String {
                 uiCustomization.navigationBarCustomization.barTintColor = UIColor(hexString: barTintColor)
@@ -685,7 +695,7 @@ class Mappers {
                 uiCustomization.navigationBarCustomization.translucent = translucent
             }
         }
-        
+
         if let textFieldSettings = params["textField"] as? Dictionary<String, Any?> {
             if let borderColor = textFieldSettings["borderColor"] as? String {
                 uiCustomization.textFieldCustomization.borderColor = UIColor(hexString: borderColor)
@@ -703,7 +713,7 @@ class Mappers {
                 uiCustomization.textFieldCustomization.font = UIFont.systemFont(ofSize: CGFloat(textFontSize))
             }
         }
-        
+
         if let footerSettings = params["footer"] as? Dictionary<String, Any?> {
             if let backgroundColor = footerSettings["backgroundColor"] as? String {
                 uiCustomization.footerCustomization.backgroundColor = UIColor(hexString: backgroundColor)
@@ -718,10 +728,10 @@ class Mappers {
                 uiCustomization.footerCustomization.textColor = UIColor(hexString: textColor)
             }
         }
-        
+
         if let submitButtonSettings = params["submitButton"] as? Dictionary<String, Any?> {
             let buttonCustomization = uiCustomization.buttonCustomization(for: STPThreeDSCustomizationButtonType.submit)
-            
+
             if let backgroundColor = submitButtonSettings["backgroundColor"] as? String {
                 buttonCustomization.backgroundColor = UIColor(hexString: backgroundColor)
             }
@@ -734,13 +744,13 @@ class Mappers {
             if let textColor = submitButtonSettings["textColor"] as? String {
                 buttonCustomization.textColor = UIColor(hexString: textColor)
             }
-            
+
             uiCustomization.setButtonCustomization(buttonCustomization, for: STPThreeDSCustomizationButtonType.submit)
         }
-        
+
         if let submitButtonSettings = params["cancelButton"] as? Dictionary<String, Any?> {
             let buttonCustomization = uiCustomization.buttonCustomization(for: STPThreeDSCustomizationButtonType.cancel)
-            
+
             if let backgroundColor = submitButtonSettings["backgroundColor"] as? String {
                 buttonCustomization.backgroundColor = UIColor(hexString: backgroundColor)
             }
@@ -753,13 +763,13 @@ class Mappers {
             if let textColor = submitButtonSettings["textColor"] as? String {
                 buttonCustomization.textColor = UIColor(hexString: textColor)
             }
-            
+
             uiCustomization.setButtonCustomization(buttonCustomization, for: STPThreeDSCustomizationButtonType.cancel)
         }
-        
+
         if let submitButtonSettings = params["continueButton"] as? Dictionary<String, Any?> {
             let buttonCustomization = uiCustomization.buttonCustomization(for: STPThreeDSCustomizationButtonType.continue)
-            
+
             if let backgroundColor = submitButtonSettings["backgroundColor"] as? String {
                 buttonCustomization.backgroundColor = UIColor(hexString: backgroundColor)
             }
@@ -772,13 +782,13 @@ class Mappers {
             if let textColor = submitButtonSettings["textColor"] as? String {
                 buttonCustomization.textColor = UIColor(hexString: textColor)
             }
-            
+
             uiCustomization.setButtonCustomization(buttonCustomization, for: STPThreeDSCustomizationButtonType.continue)
         }
-        
+
         if let submitButtonSettings = params["nextButton"] as? Dictionary<String, Any?> {
             let buttonCustomization = uiCustomization.buttonCustomization(for: STPThreeDSCustomizationButtonType.next)
-            
+
             if let backgroundColor = submitButtonSettings["backgroundColor"] as? String {
                 buttonCustomization.backgroundColor = UIColor(hexString: backgroundColor)
             }
@@ -791,13 +801,13 @@ class Mappers {
             if let textColor = submitButtonSettings["textColor"] as? String {
                 buttonCustomization.textColor = UIColor(hexString: textColor)
             }
-            
+
             uiCustomization.setButtonCustomization(buttonCustomization, for: STPThreeDSCustomizationButtonType.next)
         }
-        
+
         if let submitButtonSettings = params["resendButton"] as? Dictionary<String, Any?> {
             let buttonCustomization = uiCustomization.buttonCustomization(for: STPThreeDSCustomizationButtonType.resend)
-            
+
             if let backgroundColor = submitButtonSettings["backgroundColor"] as? String {
                 buttonCustomization.backgroundColor = UIColor(hexString: backgroundColor)
             }
@@ -810,18 +820,18 @@ class Mappers {
             if let textColor = submitButtonSettings["textColor"] as? String {
                 buttonCustomization.textColor = UIColor(hexString: textColor)
             }
-            
+
             uiCustomization.setButtonCustomization(buttonCustomization, for: STPThreeDSCustomizationButtonType.resend)
         }
-        
+
         if let backgroundColor = params["backgroundColor"] as? String {
             uiCustomization.backgroundColor = UIColor(hexString: backgroundColor)
         }
-        
-        
+
+
         return uiCustomization
     }
-    
+
     class func convertDateToUnixTimestamp(date: Date?) -> String? {
         if let date = date {
             let value = date.timeIntervalSince1970 * 1000.0
