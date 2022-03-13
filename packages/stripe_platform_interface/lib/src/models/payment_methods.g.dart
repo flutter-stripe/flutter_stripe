@@ -55,7 +55,7 @@ _$_BillingDetails _$$_BillingDetailsFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_BillingDetailsToJson(_$_BillingDetails instance) =>
     <String, dynamic>{
       'email': instance.email,
-      'address': instance.address?.toJson(),
+      'address': instance.address,
       'phone': instance.phone,
       'name': instance.name,
     };
@@ -161,10 +161,8 @@ _$_PaymentMethodParamsCard _$$_PaymentMethodParamsCardFromJson(
     _$_PaymentMethodParamsCard(
       setupFutureUsage: $enumDecodeNullable(
           _$PaymentIntentsFutureUsageEnumMap, json['setupFutureUsage']),
-      billingDetails: json['billingDetails'] == null
-          ? null
-          : BillingDetails.fromJson(
-              json['billingDetails'] as Map<String, dynamic>),
+      billingDetails: const BillingDetailsConverter()
+          .fromJson(json['billingDetails'] as Map<String, dynamic>?),
       $type: json['type'] as String?,
     );
 
@@ -173,7 +171,8 @@ Map<String, dynamic> _$$_PaymentMethodParamsCardToJson(
     <String, dynamic>{
       'setupFutureUsage':
           _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
-      'billingDetails': instance.billingDetails?.toJson(),
+      'billingDetails':
+          const BillingDetailsConverter().toJson(instance.billingDetails),
       'type': instance.$type,
     };
 
@@ -232,10 +231,8 @@ Map<String, dynamic> _$$_PaymentMethodParamsAlipayToJson(
 _$_PaymentMethodParamsIdeal _$$_PaymentMethodParamsIdealFromJson(
         Map<String, dynamic> json) =>
     _$_PaymentMethodParamsIdeal(
-      billingDetails: json['billingDetails'] == null
-          ? null
-          : BillingDetails.fromJson(
-              json['billingDetails'] as Map<String, dynamic>),
+      billingDetails: const BillingDetailsConverter()
+          .fromJson(json['billingDetails'] as Map<String, dynamic>?),
       bankName: json['bankName'] as String?,
       $type: json['type'] as String?,
     );
@@ -243,7 +240,8 @@ _$_PaymentMethodParamsIdeal _$$_PaymentMethodParamsIdealFromJson(
 Map<String, dynamic> _$$_PaymentMethodParamsIdealToJson(
         _$_PaymentMethodParamsIdeal instance) =>
     <String, dynamic>{
-      'billingDetails': instance.billingDetails?.toJson(),
+      'billingDetails':
+          const BillingDetailsConverter().toJson(instance.billingDetails),
       'bankName': instance.bankName,
       'type': instance.$type,
     };
@@ -253,10 +251,8 @@ _$_PaymentMethodParamsAubecs _$$_PaymentMethodParamsAubecsFromJson(
     _$_PaymentMethodParamsAubecs(
       formDetails: AubecsFormInputDetails.fromJson(
           json['formDetails'] as Map<String, dynamic>),
-      billingDetails: json['billingDetails'] == null
-          ? null
-          : BillingDetails.fromJson(
-              json['billingDetails'] as Map<String, dynamic>),
+      billingDetails: const BillingDetailsConverter()
+          .fromJson(json['billingDetails'] as Map<String, dynamic>?),
       $type: json['type'] as String?,
     );
 
@@ -264,41 +260,40 @@ Map<String, dynamic> _$$_PaymentMethodParamsAubecsToJson(
         _$_PaymentMethodParamsAubecs instance) =>
     <String, dynamic>{
       'formDetails': instance.formDetails.toJson(),
-      'billingDetails': instance.billingDetails?.toJson(),
+      'billingDetails':
+          const BillingDetailsConverter().toJson(instance.billingDetails),
       'type': instance.$type,
     };
 
 _$_PaymentMethodParamsBankContact _$$_PaymentMethodParamsBankContactFromJson(
         Map<String, dynamic> json) =>
     _$_PaymentMethodParamsBankContact(
-      billingDetails: json['billingDetails'] == null
-          ? null
-          : BillingDetails.fromJson(
-              json['billingDetails'] as Map<String, dynamic>),
+      billingDetails: const BillingDetailsConverter()
+          .fromJson(json['billingDetails'] as Map<String, dynamic>?),
       $type: json['type'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentMethodParamsBankContactToJson(
         _$_PaymentMethodParamsBankContact instance) =>
     <String, dynamic>{
-      'billingDetails': instance.billingDetails?.toJson(),
+      'billingDetails':
+          const BillingDetailsConverter().toJson(instance.billingDetails),
       'type': instance.$type,
     };
 
 _$_PaymentMethodParamsGiroPay _$$_PaymentMethodParamsGiroPayFromJson(
         Map<String, dynamic> json) =>
     _$_PaymentMethodParamsGiroPay(
-      billingDetails: json['billingDetails'] == null
-          ? null
-          : BillingDetails.fromJson(
-              json['billingDetails'] as Map<String, dynamic>),
+      billingDetails: const BillingDetailsConverter()
+          .fromJson(json['billingDetails'] as Map<String, dynamic>?),
       $type: json['type'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentMethodParamsGiroPayToJson(
         _$_PaymentMethodParamsGiroPay instance) =>
     <String, dynamic>{
-      'billingDetails': instance.billingDetails?.toJson(),
+      'billingDetails':
+          const BillingDetailsConverter().toJson(instance.billingDetails),
       'type': instance.$type,
     };
 
@@ -419,10 +414,8 @@ _$_PaymentMethodParamsAfterpayClearpay
         _$_PaymentMethodParamsAfterpayClearpay(
           shippingDetails: ShippingDetails.fromJson(
               json['shippingDetails'] as Map<String, dynamic>),
-          billingDetails: json['billingDetails'] == null
-              ? null
-              : BillingDetails.fromJson(
-                  json['billingDetails'] as Map<String, dynamic>),
+          billingDetails: const BillingDetailsConverter()
+              .fromJson(json['billingDetails'] as Map<String, dynamic>?),
           $type: json['type'] as String?,
         );
 
@@ -430,23 +423,23 @@ Map<String, dynamic> _$$_PaymentMethodParamsAfterpayClearpayToJson(
         _$_PaymentMethodParamsAfterpayClearpay instance) =>
     <String, dynamic>{
       'shippingDetails': instance.shippingDetails.toJson(),
-      'billingDetails': instance.billingDetails?.toJson(),
+      'billingDetails':
+          const BillingDetailsConverter().toJson(instance.billingDetails),
       'type': instance.$type,
     };
 
 _$_PaymentMethodParamsOxxo _$$_PaymentMethodParamsOxxoFromJson(
         Map<String, dynamic> json) =>
     _$_PaymentMethodParamsOxxo(
-      billingDetails: json['billingDetails'] == null
-          ? null
-          : BillingDetails.fromJson(
-              json['billingDetails'] as Map<String, dynamic>),
+      billingDetails: const BillingDetailsConverter()
+          .fromJson(json['billingDetails'] as Map<String, dynamic>?),
       $type: json['type'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentMethodParamsOxxoToJson(
         _$_PaymentMethodParamsOxxo instance) =>
     <String, dynamic>{
-      'billingDetails': instance.billingDetails?.toJson(),
+      'billingDetails':
+          const BillingDetailsConverter().toJson(instance.billingDetails),
       'type': instance.$type,
     };
