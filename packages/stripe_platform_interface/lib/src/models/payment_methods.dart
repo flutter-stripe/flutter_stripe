@@ -22,7 +22,7 @@ class PaymentMethod with _$PaymentMethod {
     required String type,
 
     /// Billing information related to the payment method.
-   @BillingDetailsConverter() required BillingDetails billingDetails,
+    @BillingDetailsConverter() required BillingDetails billingDetails,
 
     /// Containing additional data in case paymentmethod type is card.
     @JsonKey(name: 'Card') required Card card,
@@ -391,7 +391,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.eps({
     /// Billing information.
 
-    BillingDetails? billingDetails,
+    @BillingDetailsConverter() BillingDetails? billingDetails,
   }) = _PaymentMethodParamsEps;
 
   @JsonSerializable(explicitToJson: true)
@@ -402,7 +402,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.grabPay({
     /// Billing information.
 
-    BillingDetails? billingDetails,
+    @BillingDetailsConverter() BillingDetails? billingDetails,
   }) = _PaymentMethodParamsPay;
 
   @JsonSerializable(explicitToJson: true)
@@ -413,7 +413,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.p24({
     /// Billing information.
 
-    BillingDetails? billingDetails,
+    @BillingDetailsConverter() BillingDetails? billingDetails,
   }) = _PaymentMethodParamsP24;
 
   @JsonSerializable(explicitToJson: true)
@@ -429,7 +429,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
     PaymentIntentsFutureUsage? setupFutureUsage,
 
     /// Billing information.
-    BillingDetails? billingDetails,
+    @BillingDetailsConverter() BillingDetails? billingDetails,
   }) = _PaymentMethodParamsSepaDebit;
 
   @JsonSerializable(explicitToJson: true)
@@ -439,7 +439,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
     PaymentIntentsFutureUsage? setupFutureUsage,
 
     /// Billing information.
-    BillingDetails? billingDetails,
+    @BillingDetailsConverter() BillingDetails? billingDetails,
   }) = _PaymentMethodParamsSofort;
 
   @JsonSerializable(explicitToJson: true)
@@ -457,6 +457,16 @@ class PaymentMethodParams with _$PaymentMethodParams {
     /// Billing information.
     @BillingDetailsConverter() BillingDetails? billingDetails,
   }) = _PaymentMethodParamsOxxo;
+
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('Klarna')
+  const factory PaymentMethodParams.klarna({
+    /// Billing information.
+    ///
+    /// Make sure to add an email and country (part of the address)
+    /// which is required for using Klarna.
+    @BillingDetailsConverter() BillingDetails? billingDetails,
+  }) = _PaymentMethodParamsKlarna;
 
   // TODO uncomment and regenerate when we can re-enable wechat pay
   // @JsonSerializable(explicitToJson: true)
