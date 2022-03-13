@@ -27,6 +27,7 @@ _$_SetupParameters _$$_SetupParametersFromJson(Map<String, dynamic> json) =>
           ? null
           : BillingDetails.fromJson(
               json['billingDetails'] as Map<String, dynamic>),
+      returnURL: json['returnURL'] as String?,
     );
 
 Map<String, dynamic> _$$_SetupParametersToJson(_$_SetupParameters instance) =>
@@ -46,6 +47,7 @@ Map<String, dynamic> _$$_SetupParametersToJson(_$_SetupParameters instance) =>
       'primaryButtonColor': ColorKey.toJson(instance.primaryButtonColor),
       'testEnv': instance.testEnv,
       'billingDetails': instance.billingDetails,
+      'returnURL': instance.returnURL,
     };
 
 const _$ThemeModeEnumMap = {

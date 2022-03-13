@@ -79,6 +79,9 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
 
     /// Billing information of the customer.
     BillingDetails? billingDetails,
+
+    /// Return URL is required for IDEAL and few other payment methods
+    String? returnURL,
   }) = _SetupParameters;
 
   factory SetupPaymentSheetParameters.fromJson(Map<String, dynamic> json) =>
