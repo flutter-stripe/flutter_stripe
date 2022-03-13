@@ -40,7 +40,8 @@ class _$SetupPaymentSheetParametersTearOff {
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? primaryButtonColor,
       bool testEnv = false,
-      BillingDetails? billingDetails,
+      @BillingDetailsConverter()
+          BillingDetails? billingDetails,
       String? returnURL}) {
     return _SetupParameters(
       customFlow: customFlow,
@@ -138,7 +139,10 @@ mixin _$SetupPaymentSheetParameters {
   bool get testEnv => throw _privateConstructorUsedError;
 
   /// Billing information of the customer.
+  @BillingDetailsConverter()
   BillingDetails? get billingDetails => throw _privateConstructorUsedError;
+
+  /// Return URL is required for IDEAL and few other payment methods
   String? get returnURL => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -170,7 +174,8 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? primaryButtonColor,
       bool testEnv,
-      BillingDetails? billingDetails,
+      @BillingDetailsConverter()
+          BillingDetails? billingDetails,
       String? returnURL});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
@@ -308,7 +313,8 @@ abstract class _$SetupParametersCopyWith<$Res>
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? primaryButtonColor,
       bool testEnv,
-      BillingDetails? billingDetails,
+      @BillingDetailsConverter()
+          BillingDetails? billingDetails,
       String? returnURL});
 
   @override
@@ -434,7 +440,8 @@ class _$_SetupParameters implements _SetupParameters {
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           this.primaryButtonColor,
       this.testEnv = false,
-      this.billingDetails,
+      @BillingDetailsConverter()
+          this.billingDetails,
       this.returnURL});
 
   factory _$_SetupParameters.fromJson(Map<String, dynamic> json) =>
@@ -525,8 +532,11 @@ class _$_SetupParameters implements _SetupParameters {
   @override
 
   /// Billing information of the customer.
+  @BillingDetailsConverter()
   final BillingDetails? billingDetails;
   @override
+
+  /// Return URL is required for IDEAL and few other payment methods
   final String? returnURL;
 
   @override
@@ -618,7 +628,8 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? primaryButtonColor,
       bool testEnv,
-      BillingDetails? billingDetails,
+      @BillingDetailsConverter()
+          BillingDetails? billingDetails,
       String? returnURL}) = _$_SetupParameters;
 
   factory _SetupParameters.fromJson(Map<String, dynamic> json) =
@@ -706,8 +717,11 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   @override
 
   /// Billing information of the customer.
+  @BillingDetailsConverter()
   BillingDetails? get billingDetails;
   @override
+
+  /// Return URL is required for IDEAL and few other payment methods
   String? get returnURL;
   @override
   @JsonKey(ignore: true)

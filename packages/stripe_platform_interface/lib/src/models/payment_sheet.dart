@@ -78,7 +78,7 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     @Default(false) bool testEnv,
 
     /// Billing information of the customer.
-    BillingDetails? billingDetails,
+    @BillingDetailsConverter() BillingDetails? billingDetails,
 
     /// Return URL is required for IDEAL and few other payment methods
     String? returnURL,
