@@ -1,3 +1,7 @@
+## 2.4.0
+
+ - d
+
 ## 2.3.0
 - add isGooglePaySupported method
 - reenable support for legacy bank account token creation
