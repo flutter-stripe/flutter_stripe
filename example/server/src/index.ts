@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import env from 'dotenv';
 import express from 'express';
 import Stripe from 'stripe';
+import cors from 'cors';
 import { generateResponse } from './utils';
 // Replace if using a different env file or config.
 env.config({ path: './.env' });
@@ -16,6 +17,7 @@ const stripeWebhookSecret = process.env.STRIPE_WEBHOOK_SECRET || '';
 
 const app = express();
 
+app.use(cors())
 app.use(
   (
     req: express.Request,
@@ -123,6 +125,10 @@ app.post(
         },
         sofort: {
           preferred_language: 'en',
+        },
+        wechat_pay: {
+          app_id: 'wx65907d6307c3827d',
+          client: client,
         },
       },
       payment_method_types: payment_method_types,
@@ -515,9 +521,33 @@ app.post('/payment-sheet', async (_, res) => {
     { apiVersion: '2020-08-27' }
   );
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: 1099,
+    amount: 5099,
     currency: 'usd',
     customer: customer.id,
+    shipping: {
+      name: 'Jane Doe',
+      address: {
+        state: 'Texas',
+        city: 'Houston',
+        line1: '1459  Circle Drive',
+        postal_code: '77063',
+        country: 'US',
+      },
+    },
+    // Edit the following to support different payment methods in your PaymentSheet
+    // Note: some payment methods have different requirements: https://stripe.com/docs/payments/payment-methods/integration-options
+    payment_method_types: [
+      'card',
+      // 'ideal',
+      // 'sepa_debit',
+      // 'sofort',
+      // 'bancontact',
+      // 'p24',
+      // 'giropay',
+      // 'eps',
+      // 'afterpay_clearpay',
+      // 'klarna',
+    ],
   });
   return res.json({
     paymentIntent: paymentIntent.client_secret,
