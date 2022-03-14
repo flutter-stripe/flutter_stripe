@@ -1,6 +1,8 @@
 ## 2.4.0
-
- - d
+- Add support for paying with Klarna.
+- Several fixes by the Stripe sdk [v0.4.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.4.0)
+- Fix [#632](https://github.com/flutter-stripe/flutter_stripe/issues/632) added return_url to payment sheet. Needed for Ideal payments
+- Fix [#185](https://github.com/flutter-stripe/flutter_stripe/issues/185) make sure that address will be added to the payment intent. 
 
 ## 2.3.0
 - add isGooglePaySupported method
