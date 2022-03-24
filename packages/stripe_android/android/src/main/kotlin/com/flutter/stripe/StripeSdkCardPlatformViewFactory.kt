@@ -15,9 +15,9 @@ class StripeSdkCardPlatformViewFactory(
         private val sdkAccessor: () -> StripeSdkModule
 ) : PlatformViewFactory(StandardMessageCodec.INSTANCE) {
 
-    override fun create(context: Context, viewId: Int, args: Any?): PlatformView {
+    override fun create(context: Context?, viewId: Int, args: Any?): PlatformView {
         val channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter.stripe/card_field/${viewId}")
         val creationParams = args as? Map<String?, Any?>?
-        return StripeSdkCardPlatformView(context, channel, viewId, creationParams, stripeSdkCardViewManager, sdkAccessor)
+        return StripeSdkCardPlatformView(context!!, channel, viewId, creationParams, stripeSdkCardViewManager, sdkAccessor)
     }
 }
