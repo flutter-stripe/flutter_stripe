@@ -9,7 +9,6 @@ import androidx.annotation.NonNull
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
 import com.reactnativestripesdk.*
-import com.stripe.android.databinding.CardInputWidgetBinding
 import com.stripe.android.databinding.CardMultilineWidgetBinding
 import com.stripe.android.databinding.StripeCardFormViewBinding
 import io.flutter.plugin.common.MethodCall
@@ -21,17 +20,16 @@ class StripeSdkCardFormPlatformView(
         private val context: Context,
         private val channel: MethodChannel,
         id: Int,
-        private val creationParams: Map<String?, Any?>?,
+        creationParams: Map<String?, Any?>?,
         private val cardFormViewManager: CardFormViewManager,
         private val sdkAccessor: () -> StripeSdkModule
 ) : PlatformView, MethodChannel.MethodCallHandler {
 
-    lateinit var cardView: CardFormView
+    private val cardView: CardFormView = cardFormViewManager.getCardViewInstance() ?: let {
+        return@let cardFormViewManager.createViewInstance(ThemedReactContext(context, channel, sdkAccessor))
+    }
 
     init {
-        cardView =  cardFormViewManager.getCardViewInstance() ?: let {
-            return@let cardFormViewManager.createViewInstance(ThemedReactContext(context, channel, sdkAccessor))
-        }
         channel.setMethodCallHandler(this)
         if (creationParams?.containsKey("cardStyle") == true) {
             cardFormViewManager.setCardStyle(cardView, ReadableMap(creationParams["cardStyle"] as Map<String, Any>))
@@ -44,6 +42,24 @@ class StripeSdkCardFormPlatformView(
         }
         if (creationParams?.containsKey("autofocus") == true) {
             cardFormViewManager.setAutofocus(cardView, creationParams["autofocus"] as Boolean)
+        }
+        if (creationParams?.containsKey("cardDetails") == true) {
+            val value = ReadableMap(creationParams["cardDetails"] as Map<String, Any>)
+
+            val binding = StripeCardFormViewBinding.bind(cardView.cardForm)
+            val number = getValOr(value, "number", null)
+            val expirationYear = getIntOrNull(value, "expiryYear")
+            val expirationMonth = getIntOrNull(value, "expiryMonth")
+            val cvc = getValOr(value, "cvc", null)
+            number?.let {
+                binding.cardMultilineWidget.cardNumberEditText.setText(it)
+            }
+            if (expirationYear != null && expirationMonth != null) {
+                binding.cardMultilineWidget.setExpiryDate(expirationMonth, expirationYear)
+            }
+            cvc?.let {
+                binding.cardMultilineWidget.cvcEditText.setText(it)
+            }
         }
         applyFocusFix()
     }
