@@ -2,7 +2,6 @@ package com.flutter.stripe
 
 import android.content.Context
 import com.reactnativestripesdk.GooglePayButtonManager
-import com.reactnativestripesdk.StripeSdkCardViewManager
 import com.reactnativestripesdk.StripeSdkModule
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodChannel

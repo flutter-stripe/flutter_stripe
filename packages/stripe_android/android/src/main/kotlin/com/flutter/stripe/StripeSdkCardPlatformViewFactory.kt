@@ -1,7 +1,7 @@
 package com.flutter.stripe
 
 import android.content.Context
-import com.reactnativestripesdk.StripeSdkCardViewManager
+import com.reactnativestripesdk.CardFieldViewManager
 import com.reactnativestripesdk.StripeSdkModule
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodChannel
@@ -11,7 +11,7 @@ import io.flutter.plugin.platform.PlatformViewFactory
 
 class StripeSdkCardPlatformViewFactory(
         private val flutterPluginBinding: FlutterPlugin.FlutterPluginBinding,
-        private val stripeSdkCardViewManager: StripeSdkCardViewManager,
+        private val stripeSdkCardViewManager: CardFieldViewManager,
         private val sdkAccessor: () -> StripeSdkModule
 ) : PlatformViewFactory(StandardMessageCodec.INSTANCE) {
 

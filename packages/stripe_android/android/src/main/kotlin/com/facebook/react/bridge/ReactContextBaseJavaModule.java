@@ -11,7 +11,6 @@ import io.flutter.plugin.common.PluginRegistry;
 
 public class ReactContextBaseJavaModule implements PluginRegistry.ActivityResultListener {
     protected final Activity activity;
-    private final ReactComponentActivityWrapper activityWrapper;
 
     private final ArrayList<ActivityEventListener> eventListeners = new ArrayList<>();
 
@@ -20,15 +19,14 @@ public class ReactContextBaseJavaModule implements PluginRegistry.ActivityResult
         if (!(activity instanceof FlutterFragmentActivity)) {
             throw new IllegalStateException("Ensure that your Main Activity is subclassed by FlutterFragmentActivity");
         }
-        this.activityWrapper = new ReactComponentActivityWrapper((FlutterFragmentActivity) activity);
     }
 
     protected Context getReactApplicationContext() {
         return activity;
     }
 
-    public ReactComponentActivityWrapper getCurrentActivity() {
-        return activityWrapper;
+    public FlutterFragmentActivity getCurrentActivity() {
+        return (FlutterFragmentActivity) activity;
     }
 
     public String getName() {

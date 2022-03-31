@@ -1,8 +1,6 @@
 package com.flutter.stripe
 
 import android.annotation.SuppressLint
-import android.content.res.Configuration
-import android.content.res.Resources
 import androidx.annotation.NonNull
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
@@ -33,8 +31,8 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
     lateinit var stripeSdk: StripeSdkModule
 
-    private val stripeSdkCardViewManager: StripeSdkCardViewManager by lazy {
-        StripeSdkCardViewManager()
+    private val stripeSdkCardViewManager: CardFieldViewManager by lazy {
+        CardFieldViewManager()
     }
 
     private val cardFormViewManager: CardFormViewManager by lazy {
@@ -100,7 +98,7 @@ If you continue to have trouble, follow this discussion to get some support http
                     options = call.requiredArgument("options"),
                     promise = Promise(result)
             )
-            "handleCardAction" -> stripeSdk.handleCardAction(
+            "handleNextAction" -> stripeSdk.handleNextAction(
                     paymentIntentClientSecret = call.requiredArgument("paymentIntentClientSecret"),
                     promise = Promise(result)
             )
@@ -131,7 +129,7 @@ If you continue to have trouble, follow this discussion to get some support http
             "dangerouslyUpdateCardDetails" -> {
                 stripeSdkCardViewManager.setCardDetails(
                     value = call.requiredArgument("params"),
-                    reactContext = ThemedReactContext(stripeSdk.currentActivity.activity, channel) { stripeSdk }
+                    reactContext = ThemedReactContext(stripeSdk.currentActivity, channel) { stripeSdk }
                 )
                 result.success(null)
             }
@@ -151,14 +149,6 @@ If you continue to have trouble, follow this discussion to get some support http
                 params = call.requiredArgument("params"),
                 promise = Promise(result)
             )
-            /*"registerConfirmSetupIntentCallbacks" -> stripeSdk.registerConfirmSetupIntentCallbacks(
-                    successCallback = Promise(result),
-                    errorCallback = Promise(result),
-            )
-            "unregisterConfirmSetupIntentCallbacks" -> {
-                stripeSdk.unregisterConfirmSetupIntentCallbacks()
-                result.success(null)
-            }*/
             else -> result.notImplemented()
         }
     }
@@ -190,9 +180,6 @@ If you continue to have trouble, follow this discussion to get some support http
     }
 
     override fun onDetachedFromActivity() {
-        if (this::stripeSdk.isInitialized) {
-            stripeSdk.currentActivity.unregisterReceivers()
-        }
     }
 }
 
