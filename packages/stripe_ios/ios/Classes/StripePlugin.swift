@@ -72,8 +72,8 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
             return presentApplePay(call, result: result)
         case "configure3dSecure":
             return configure3dSecure(call, result: result)
-        case "handleCardAction":
-            return handleCardAction(call, result: result)
+        case "handleNextAction":
+            return handleNextAction(call, result: result)
         case "confirmPayment":
             return confirmPayment(call, result: result)
         case "retrievePaymentIntent":
@@ -254,13 +254,13 @@ extension  StripePlugin {
         )
     }
     
-    func handleCardAction(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+    func handleNextAction(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let paymentIntentClientSecret = arguments["paymentIntentClientSecret"] as? String else {
             result(FlutterError.invalidParams)
             return
         }
-        handleCardAction(
+        handleNextAction(
             paymentIntentClientSecret: paymentIntentClientSecret,
             resolver: resolver(for: result),
             rejecter: rejecter(for: result)
