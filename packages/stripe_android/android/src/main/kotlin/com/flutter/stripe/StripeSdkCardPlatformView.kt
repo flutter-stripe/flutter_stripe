@@ -20,12 +20,12 @@ class StripeSdkCardPlatformView(
         channel: MethodChannel,
         id: Int,
         creationParams: Map<String?, Any?>?,
-        private val stripeSdkCardViewManager: StripeSdkCardViewManager,
+        private val stripeSdkCardViewManager: CardFieldViewManager,
         sdkAccessor: () -> StripeSdkModule
 ) : PlatformView, MethodChannel.MethodCallHandler {
 
     private val themedContext = ThemedReactContext(context, channel, sdkAccessor)
-    private val cardView: StripeSdkCardView = stripeSdkCardViewManager.getCardViewInstance() ?: let {
+    private val cardView: CardFieldView = stripeSdkCardViewManager.getCardViewInstance() ?: let {
         return@let stripeSdkCardViewManager.createViewInstance(themedContext)
     }
 
