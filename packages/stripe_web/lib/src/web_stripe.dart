@@ -38,6 +38,7 @@ class WebStripe extends StripePlatform {
     ThreeDSecureConfigurationParams? threeDSecureParams,
     String? merchantIdentifier,
     String? urlScheme,
+    bool? setReturnUrlSchemeOnAndroid,
   }) async {
     if (__stripe != null) return;
     __stripe = s.Stripe(

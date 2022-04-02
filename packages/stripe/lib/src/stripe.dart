@@ -31,6 +31,15 @@ class Stripe {
     return instance._publishableKey!;
   }
 
+  /// Whether or not to set the return url for Androdi as well
+  static set setReturnUrlSchemeOnAndroid(bool? value) {
+    if (value == instance._setReturnUrlSchemeOnAndroid) {
+      return;
+    }
+    instance._setReturnUrlSchemeOnAndroid = value;
+    instance.markNeedsSettings();
+  }
+
   /// Retrieves the id associate with the Stripe account.
   static String? get stripeAccountId => instance._stripeAccountId;
 
@@ -70,6 +79,11 @@ class Stripe {
     return instance._urlScheme;
   }
 
+  /// Retrieves the setReturnUrlSchemeOnAndroid parameter
+  static bool? get setReturnUrlSchemeOnAndroid {
+    return instance._setReturnUrlSchemeOnAndroid;
+  }
+
   /// Retrieves the merchant identifier.
   static String? get merchantIdentifier => instance._merchantIdentifier;
 
@@ -91,6 +105,7 @@ class Stripe {
         stripeAccountId: stripeAccountId,
         threeDSecureParams: threeDSecureParams,
         urlScheme: urlScheme,
+        setReturnUrlSchemeOnAndroid: setReturnUrlSchemeOnAndroid,
       );
 
   /// Exposes a [ValueListenable] whether or not Apple pay is supported for this
@@ -394,6 +409,7 @@ class Stripe {
   ThreeDSecureConfigurationParams? _threeDSecureParams;
   String? _merchantIdentifier;
   String? _urlScheme;
+  bool? _setReturnUrlSchemeOnAndroid;
 
   static StripePlatform? __platform;
 
@@ -419,6 +435,7 @@ class Stripe {
     ThreeDSecureConfigurationParams? threeDSecureParams,
     String? merchantIdentifier,
     String? urlScheme,
+    bool? setReturnUrlSchemeOnAndroid
   }) async {
     _needsSettings = false;
     await _platform.initialise(
