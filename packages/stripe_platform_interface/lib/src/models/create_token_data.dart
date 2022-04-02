@@ -52,6 +52,9 @@ class CardTokenParams with _$CardTokenParams {
 
     /// Additional address details
     Address? address,
+
+    /// The three letter ISO 4217 code for the currency.
+    String? currency,
   }) = _CardTokenParams;
 
   factory CardTokenParams.fromJson(Map<String, dynamic> json) =>
@@ -123,6 +126,10 @@ class TokenData with _$TokenData {
 class CardData with _$CardData {
   @JsonSerializable(explicitToJson: true)
   const factory CardData({
+
+    /// Unique identifier
+    String? id,
+
     /// The brand associated to the card e.g. (visa, amex).
     required String brand,
 

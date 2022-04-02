@@ -693,11 +693,15 @@ class _$CardTokenParamsTearOff {
   const _$CardTokenParamsTearOff();
 
   _CardTokenParams call(
-      {TokenType type = TokenType.Card, String? name, Address? address}) {
+      {TokenType type = TokenType.Card,
+      String? name,
+      Address? address,
+      String? currency}) {
     return _CardTokenParams(
       type: type,
       name: name,
       address: address,
+      currency: currency,
     );
   }
 
@@ -720,6 +724,9 @@ mixin _$CardTokenParams {
   /// Additional address details
   Address? get address => throw _privateConstructorUsedError;
 
+  /// The three letter ISO 4217 code for the currency.
+  String? get currency => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CardTokenParamsCopyWith<CardTokenParams> get copyWith =>
@@ -731,7 +738,7 @@ abstract class $CardTokenParamsCopyWith<$Res> {
   factory $CardTokenParamsCopyWith(
           CardTokenParams value, $Res Function(CardTokenParams) then) =
       _$CardTokenParamsCopyWithImpl<$Res>;
-  $Res call({TokenType type, String? name, Address? address});
+  $Res call({TokenType type, String? name, Address? address, String? currency});
 
   $AddressCopyWith<$Res>? get address;
 }
@@ -750,6 +757,7 @@ class _$CardTokenParamsCopyWithImpl<$Res>
     Object? type = freezed,
     Object? name = freezed,
     Object? address = freezed,
+    Object? currency = freezed,
   }) {
     return _then(_value.copyWith(
       type: type == freezed
@@ -764,6 +772,10 @@ class _$CardTokenParamsCopyWithImpl<$Res>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as Address?,
+      currency: currency == freezed
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -786,7 +798,7 @@ abstract class _$CardTokenParamsCopyWith<$Res>
           _CardTokenParams value, $Res Function(_CardTokenParams) then) =
       __$CardTokenParamsCopyWithImpl<$Res>;
   @override
-  $Res call({TokenType type, String? name, Address? address});
+  $Res call({TokenType type, String? name, Address? address, String? currency});
 
   @override
   $AddressCopyWith<$Res>? get address;
@@ -808,6 +820,7 @@ class __$CardTokenParamsCopyWithImpl<$Res>
     Object? type = freezed,
     Object? name = freezed,
     Object? address = freezed,
+    Object? currency = freezed,
   }) {
     return _then(_CardTokenParams(
       type: type == freezed
@@ -822,6 +835,10 @@ class __$CardTokenParamsCopyWithImpl<$Res>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as Address?,
+      currency: currency == freezed
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -830,7 +847,7 @@ class __$CardTokenParamsCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CardTokenParams implements _CardTokenParams {
   const _$_CardTokenParams(
-      {this.type = TokenType.Card, this.name, this.address});
+      {this.type = TokenType.Card, this.name, this.address, this.currency});
 
   factory _$_CardTokenParams.fromJson(Map<String, dynamic> json) =>
       _$$_CardTokenParamsFromJson(json);
@@ -848,10 +865,14 @@ class _$_CardTokenParams implements _CardTokenParams {
 
   /// Additional address details
   final Address? address;
+  @override
+
+  /// The three letter ISO 4217 code for the currency.
+  final String? currency;
 
   @override
   String toString() {
-    return 'CardTokenParams(type: $type, name: $name, address: $address)';
+    return 'CardTokenParams(type: $type, name: $name, address: $address, currency: $currency)';
   }
 
   @override
@@ -861,7 +882,8 @@ class _$_CardTokenParams implements _CardTokenParams {
             other is _CardTokenParams &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.address, address));
+            const DeepCollectionEquality().equals(other.address, address) &&
+            const DeepCollectionEquality().equals(other.currency, currency));
   }
 
   @override
@@ -869,7 +891,8 @@ class _$_CardTokenParams implements _CardTokenParams {
       runtimeType,
       const DeepCollectionEquality().hash(type),
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(address));
+      const DeepCollectionEquality().hash(address),
+      const DeepCollectionEquality().hash(currency));
 
   @JsonKey(ignore: true)
   @override
@@ -884,7 +907,10 @@ class _$_CardTokenParams implements _CardTokenParams {
 
 abstract class _CardTokenParams implements CardTokenParams {
   const factory _CardTokenParams(
-      {TokenType type, String? name, Address? address}) = _$_CardTokenParams;
+      {TokenType type,
+      String? name,
+      Address? address,
+      String? currency}) = _$_CardTokenParams;
 
   factory _CardTokenParams.fromJson(Map<String, dynamic> json) =
       _$_CardTokenParams.fromJson;
@@ -901,6 +927,10 @@ abstract class _CardTokenParams implements CardTokenParams {
 
   /// Additional address details
   Address? get address;
+  @override
+
+  /// The three letter ISO 4217 code for the currency.
+  String? get currency;
   @override
   @JsonKey(ignore: true)
   _$CardTokenParamsCopyWith<_CardTokenParams> get copyWith =>
@@ -1593,7 +1623,8 @@ class _$CardDataTearOff {
   const _$CardDataTearOff();
 
   _CardData call(
-      {required String brand,
+      {String? id,
+      required String brand,
       String? country,
       String? currency,
       int? expYear,
@@ -1603,6 +1634,7 @@ class _$CardDataTearOff {
       String? last4,
       Address? address}) {
     return _CardData(
+      id: id,
       brand: brand,
       country: country,
       currency: currency,
@@ -1625,6 +1657,9 @@ const $CardData = _$CardDataTearOff();
 
 /// @nodoc
 mixin _$CardData {
+  /// Unique identifier
+  String? get id => throw _privateConstructorUsedError;
+
   /// The brand associated to the card e.g. (visa, amex).
   String get brand => throw _privateConstructorUsedError;
 
@@ -1663,7 +1698,8 @@ abstract class $CardDataCopyWith<$Res> {
   factory $CardDataCopyWith(CardData value, $Res Function(CardData) then) =
       _$CardDataCopyWithImpl<$Res>;
   $Res call(
-      {String brand,
+      {String? id,
+      String brand,
       String? country,
       String? currency,
       int? expYear,
@@ -1686,6 +1722,7 @@ class _$CardDataCopyWithImpl<$Res> implements $CardDataCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? brand = freezed,
     Object? country = freezed,
     Object? currency = freezed,
@@ -1697,6 +1734,10 @@ class _$CardDataCopyWithImpl<$Res> implements $CardDataCopyWith<$Res> {
     Object? address = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       brand: brand == freezed
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
@@ -1754,7 +1795,8 @@ abstract class _$CardDataCopyWith<$Res> implements $CardDataCopyWith<$Res> {
       __$CardDataCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String brand,
+      {String? id,
+      String brand,
       String? country,
       String? currency,
       int? expYear,
@@ -1779,6 +1821,7 @@ class __$CardDataCopyWithImpl<$Res> extends _$CardDataCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? brand = freezed,
     Object? country = freezed,
     Object? currency = freezed,
@@ -1790,6 +1833,10 @@ class __$CardDataCopyWithImpl<$Res> extends _$CardDataCopyWithImpl<$Res>
     Object? address = freezed,
   }) {
     return _then(_CardData(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       brand: brand == freezed
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
@@ -1835,7 +1882,8 @@ class __$CardDataCopyWithImpl<$Res> extends _$CardDataCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_CardData implements _CardData {
   const _$_CardData(
-      {required this.brand,
+      {this.id,
+      required this.brand,
       this.country,
       this.currency,
       this.expYear,
@@ -1848,6 +1896,10 @@ class _$_CardData implements _CardData {
   factory _$_CardData.fromJson(Map<String, dynamic> json) =>
       _$$_CardDataFromJson(json);
 
+  @override
+
+  /// Unique identifier
+  final String? id;
   @override
 
   /// The brand associated to the card e.g. (visa, amex).
@@ -1887,7 +1939,7 @@ class _$_CardData implements _CardData {
 
   @override
   String toString() {
-    return 'CardData(brand: $brand, country: $country, currency: $currency, expYear: $expYear, expMonth: $expMonth, name: $name, funding: $funding, last4: $last4, address: $address)';
+    return 'CardData(id: $id, brand: $brand, country: $country, currency: $currency, expYear: $expYear, expMonth: $expMonth, name: $name, funding: $funding, last4: $last4, address: $address)';
   }
 
   @override
@@ -1895,6 +1947,7 @@ class _$_CardData implements _CardData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _CardData &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.brand, brand) &&
             const DeepCollectionEquality().equals(other.country, country) &&
             const DeepCollectionEquality().equals(other.currency, currency) &&
@@ -1909,6 +1962,7 @@ class _$_CardData implements _CardData {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(brand),
       const DeepCollectionEquality().hash(country),
       const DeepCollectionEquality().hash(currency),
@@ -1932,7 +1986,8 @@ class _$_CardData implements _CardData {
 
 abstract class _CardData implements CardData {
   const factory _CardData(
-      {required String brand,
+      {String? id,
+      required String brand,
       String? country,
       String? currency,
       int? expYear,
@@ -1944,6 +1999,10 @@ abstract class _CardData implements CardData {
 
   factory _CardData.fromJson(Map<String, dynamic> json) = _$_CardData.fromJson;
 
+  @override
+
+  /// Unique identifier
+  String? get id;
   @override
 
   /// The brand associated to the card e.g. (visa, amex).
