@@ -42,6 +42,7 @@ class MethodChannelStripe extends StripePlatform {
     ThreeDSecureConfigurationParams? threeDSecureParams,
     String? merchantIdentifier,
     String? urlScheme,
+    bool? setReturnUrlSchemeOnAndroid,
   }) async {
     await _methodChannel.invokeMethod('initialise', {
       'publishableKey': publishableKey,
@@ -50,6 +51,7 @@ class MethodChannelStripe extends StripePlatform {
       'appInfo': _appInfo.toJson(),
       'threeDSecureParams': threeDSecureParams,
       'urlScheme': urlScheme,
+      'setReturnUrlSchemeOnAndroid': setReturnUrlSchemeOnAndroid,
     });
   }
 

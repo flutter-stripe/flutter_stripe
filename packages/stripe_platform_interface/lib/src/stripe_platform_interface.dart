@@ -31,6 +31,7 @@ abstract class StripePlatform extends PlatformInterface {
     ThreeDSecureConfigurationParams? threeDSecureParams,
     String? merchantIdentifier,
     String? urlScheme,
+    bool? setReturnUrlSchemeOnAndroid,
   });
 
   Future<PaymentMethod> createPaymentMethod(
