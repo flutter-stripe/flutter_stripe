@@ -55,6 +55,9 @@ class PaymentMethod with _$PaymentMethod {
 
     @JsonKey(name: 'Upi') required Upi upi,
 
+    /// Containing additional data in case paymentmethod type is UPI.
+    @JsonKey(name: 'USBankAccount') required UsBankAccount usBankAccount,
+
     /// Id related to the customer to which this paymentmethod has been saved.
     String? customerId,
   }) = _PaymentMethod;
@@ -266,6 +269,49 @@ class Upi with _$Upi {
   factory Upi.fromJson(Map<String, dynamic> json) => _$UpiFromJson(json);
 }
 
+/// Data associated with the payment method Us bank account.
+@freezed
+class UsBankAccount with _$UsBankAccount {
+  @JsonSerializable(explicitToJson: true)
+  const factory UsBankAccount({
+    /// Routing number of the bank account
+    String? routingNumber,
+
+    /// Last 4  digits of the account
+    String? last4,
+
+    /// The bank account type of the holder
+    required BankAccountHolderType accountHolderType,
+
+    /// The account type
+    required UsBankAccountType accountType,
+
+    /// The name of the bank of the account
+    String? bankName,
+
+    /// Unique identifier for the bankaccount.
+    String? fingerprint,
+
+    /// Number of linkedaccount
+    String? linkedAccount,
+
+    /// list of preferred network names
+    List<String>? preferredNetworks,
+
+    /// list of preferred network names
+    List<String>? supportedNetworks,
+  }) = _UsBankAccount;
+
+  factory UsBankAccount.fromJson(Map<String, dynamic> json) =>
+      _$UsBankAccountFromJson(json);
+}
+
+enum UsBankAccountType {
+  Savings,
+  Checking,
+  Unknown,
+}
+
 /// Enum that specifies the payment type.
 enum PaymentMethodType {
   AfterpayClearpay,
@@ -285,6 +331,7 @@ enum PaymentMethodType {
   Oxxo,
   Sofort,
   Upi,
+  UsBankAccount,
   // WeChatPay,
   Unknown
 }
@@ -467,6 +514,26 @@ class PaymentMethodParams with _$PaymentMethodParams {
     /// which is required for using Klarna.
     @BillingDetailsConverter() BillingDetails? billingDetails,
   }) = _PaymentMethodParamsKlarna;
+
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('USBankAccount')
+  const factory PaymentMethodParams.usBankAccount({
+    /// The account number of the bank account.
+    required String accountNumber,
+
+    ///The routing number, sort code, or other country-appropriate institution
+    ///number for the bank account.
+    required String routingNumber,
+
+    /// The bank account type of the holder
+    BankAccountHolderType? accountHolderType,
+
+    /// The account type
+    UsBankAccountType? accountType,
+
+    /// Billing information.
+    @BillingDetailsConverter() BillingDetails? billingDetails,
+  }) = _PaymentMethodParamsUsBankAccount;
 
   // TODO uncomment and regenerate when we can re-enable wechat pay
   // @JsonSerializable(explicitToJson: true)

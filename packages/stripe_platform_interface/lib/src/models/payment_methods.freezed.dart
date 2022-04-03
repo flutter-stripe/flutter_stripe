@@ -35,6 +35,7 @@ class _$PaymentMethodTearOff {
       @JsonKey(name: 'Ideal') required Ideal ideal,
       @JsonKey(name: 'Fpx') required Fpx fpx,
       @JsonKey(name: 'Upi') required Upi upi,
+      @JsonKey(name: 'USBankAccount') required UsBankAccount usBankAccount,
       String? customerId}) {
     return _PaymentMethod(
       id: id,
@@ -49,6 +50,7 @@ class _$PaymentMethodTearOff {
       ideal: ideal,
       fpx: fpx,
       upi: upi,
+      usBankAccount: usBankAccount,
       customerId: customerId,
     );
   }
@@ -108,6 +110,10 @@ mixin _$PaymentMethod {
   @JsonKey(name: 'Upi')
   Upi get upi => throw _privateConstructorUsedError;
 
+  /// Containing additional data in case paymentmethod type is UPI.
+  @JsonKey(name: 'USBankAccount')
+  UsBankAccount get usBankAccount => throw _privateConstructorUsedError;
+
   /// Id related to the customer to which this paymentmethod has been saved.
   String? get customerId => throw _privateConstructorUsedError;
 
@@ -135,6 +141,7 @@ abstract class $PaymentMethodCopyWith<$Res> {
       @JsonKey(name: 'Ideal') Ideal ideal,
       @JsonKey(name: 'Fpx') Fpx fpx,
       @JsonKey(name: 'Upi') Upi upi,
+      @JsonKey(name: 'USBankAccount') UsBankAccount usBankAccount,
       String? customerId});
 
   $BillingDetailsCopyWith<$Res> get billingDetails;
@@ -146,6 +153,7 @@ abstract class $PaymentMethodCopyWith<$Res> {
   $IdealCopyWith<$Res> get ideal;
   $FpxCopyWith<$Res> get fpx;
   $UpiCopyWith<$Res> get upi;
+  $UsBankAccountCopyWith<$Res> get usBankAccount;
 }
 
 /// @nodoc
@@ -171,6 +179,7 @@ class _$PaymentMethodCopyWithImpl<$Res>
     Object? ideal = freezed,
     Object? fpx = freezed,
     Object? upi = freezed,
+    Object? usBankAccount = freezed,
     Object? customerId = freezed,
   }) {
     return _then(_value.copyWith(
@@ -222,6 +231,10 @@ class _$PaymentMethodCopyWithImpl<$Res>
           ? _value.upi
           : upi // ignore: cast_nullable_to_non_nullable
               as Upi,
+      usBankAccount: usBankAccount == freezed
+          ? _value.usBankAccount
+          : usBankAccount // ignore: cast_nullable_to_non_nullable
+              as UsBankAccount,
       customerId: customerId == freezed
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
@@ -291,6 +304,13 @@ class _$PaymentMethodCopyWithImpl<$Res>
       return _then(_value.copyWith(upi: value));
     });
   }
+
+  @override
+  $UsBankAccountCopyWith<$Res> get usBankAccount {
+    return $UsBankAccountCopyWith<$Res>(_value.usBankAccount, (value) {
+      return _then(_value.copyWith(usBankAccount: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -313,6 +333,7 @@ abstract class _$PaymentMethodCopyWith<$Res>
       @JsonKey(name: 'Ideal') Ideal ideal,
       @JsonKey(name: 'Fpx') Fpx fpx,
       @JsonKey(name: 'Upi') Upi upi,
+      @JsonKey(name: 'USBankAccount') UsBankAccount usBankAccount,
       String? customerId});
 
   @override
@@ -333,6 +354,8 @@ abstract class _$PaymentMethodCopyWith<$Res>
   $FpxCopyWith<$Res> get fpx;
   @override
   $UpiCopyWith<$Res> get upi;
+  @override
+  $UsBankAccountCopyWith<$Res> get usBankAccount;
 }
 
 /// @nodoc
@@ -360,6 +383,7 @@ class __$PaymentMethodCopyWithImpl<$Res>
     Object? ideal = freezed,
     Object? fpx = freezed,
     Object? upi = freezed,
+    Object? usBankAccount = freezed,
     Object? customerId = freezed,
   }) {
     return _then(_PaymentMethod(
@@ -411,6 +435,10 @@ class __$PaymentMethodCopyWithImpl<$Res>
           ? _value.upi
           : upi // ignore: cast_nullable_to_non_nullable
               as Upi,
+      usBankAccount: usBankAccount == freezed
+          ? _value.usBankAccount
+          : usBankAccount // ignore: cast_nullable_to_non_nullable
+              as UsBankAccount,
       customerId: customerId == freezed
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
@@ -436,6 +464,7 @@ class _$_PaymentMethod implements _PaymentMethod {
       @JsonKey(name: 'Ideal') required this.ideal,
       @JsonKey(name: 'Fpx') required this.fpx,
       @JsonKey(name: 'Upi') required this.upi,
+      @JsonKey(name: 'USBankAccount') required this.usBankAccount,
       this.customerId});
 
   factory _$_PaymentMethod.fromJson(Map<String, dynamic> json) =>
@@ -500,12 +529,17 @@ class _$_PaymentMethod implements _PaymentMethod {
   final Upi upi;
   @override
 
+  /// Containing additional data in case paymentmethod type is UPI.
+  @JsonKey(name: 'USBankAccount')
+  final UsBankAccount usBankAccount;
+  @override
+
   /// Id related to the customer to which this paymentmethod has been saved.
   final String? customerId;
 
   @override
   String toString() {
-    return 'PaymentMethod(id: $id, livemode: $livemode, type: $type, billingDetails: $billingDetails, card: $card, sepaDebit: $sepaDebit, bacsDebit: $bacsDebit, auBecsDebit: $auBecsDebit, sofort: $sofort, ideal: $ideal, fpx: $fpx, upi: $upi, customerId: $customerId)';
+    return 'PaymentMethod(id: $id, livemode: $livemode, type: $type, billingDetails: $billingDetails, card: $card, sepaDebit: $sepaDebit, bacsDebit: $bacsDebit, auBecsDebit: $auBecsDebit, sofort: $sofort, ideal: $ideal, fpx: $fpx, upi: $upi, usBankAccount: $usBankAccount, customerId: $customerId)';
   }
 
   @override
@@ -528,6 +562,8 @@ class _$_PaymentMethod implements _PaymentMethod {
             const DeepCollectionEquality().equals(other.fpx, fpx) &&
             const DeepCollectionEquality().equals(other.upi, upi) &&
             const DeepCollectionEquality()
+                .equals(other.usBankAccount, usBankAccount) &&
+            const DeepCollectionEquality()
                 .equals(other.customerId, customerId));
   }
 
@@ -546,6 +582,7 @@ class _$_PaymentMethod implements _PaymentMethod {
       const DeepCollectionEquality().hash(ideal),
       const DeepCollectionEquality().hash(fpx),
       const DeepCollectionEquality().hash(upi),
+      const DeepCollectionEquality().hash(usBankAccount),
       const DeepCollectionEquality().hash(customerId));
 
   @JsonKey(ignore: true)
@@ -573,6 +610,7 @@ abstract class _PaymentMethod implements PaymentMethod {
       @JsonKey(name: 'Ideal') required Ideal ideal,
       @JsonKey(name: 'Fpx') required Fpx fpx,
       @JsonKey(name: 'Upi') required Upi upi,
+      @JsonKey(name: 'USBankAccount') required UsBankAccount usBankAccount,
       String? customerId}) = _$_PaymentMethod;
 
   factory _PaymentMethod.fromJson(Map<String, dynamic> json) =
@@ -635,6 +673,11 @@ abstract class _PaymentMethod implements PaymentMethod {
   /// Containing additional data in case paymentmethod type is UPI.
   @JsonKey(name: 'Upi')
   Upi get upi;
+  @override
+
+  /// Containing additional data in case paymentmethod type is UPI.
+  @JsonKey(name: 'USBankAccount')
+  UsBankAccount get usBankAccount;
   @override
 
   /// Id related to the customer to which this paymentmethod has been saved.
@@ -2461,6 +2504,407 @@ abstract class _Upi implements Upi {
   _$UpiCopyWith<_Upi> get copyWith => throw _privateConstructorUsedError;
 }
 
+UsBankAccount _$UsBankAccountFromJson(Map<String, dynamic> json) {
+  return _UsBankAccount.fromJson(json);
+}
+
+/// @nodoc
+class _$UsBankAccountTearOff {
+  const _$UsBankAccountTearOff();
+
+  _UsBankAccount call(
+      {String? routingNumber,
+      String? last4,
+      required BankAccountHolderType accountHolderType,
+      required UsBankAccountType accountType,
+      String? bankName,
+      String? fingerprint,
+      String? linkedAccount,
+      List<String>? preferredNetworks,
+      List<String>? supportedNetworks}) {
+    return _UsBankAccount(
+      routingNumber: routingNumber,
+      last4: last4,
+      accountHolderType: accountHolderType,
+      accountType: accountType,
+      bankName: bankName,
+      fingerprint: fingerprint,
+      linkedAccount: linkedAccount,
+      preferredNetworks: preferredNetworks,
+      supportedNetworks: supportedNetworks,
+    );
+  }
+
+  UsBankAccount fromJson(Map<String, Object?> json) {
+    return UsBankAccount.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $UsBankAccount = _$UsBankAccountTearOff();
+
+/// @nodoc
+mixin _$UsBankAccount {
+  /// Routing number of the bank account
+  String? get routingNumber => throw _privateConstructorUsedError;
+
+  /// Last 4  digits of the account
+  String? get last4 => throw _privateConstructorUsedError;
+
+  /// The bank account type of the holder
+  BankAccountHolderType get accountHolderType =>
+      throw _privateConstructorUsedError;
+
+  /// The account type
+  UsBankAccountType get accountType => throw _privateConstructorUsedError;
+
+  /// The name of the bank of the account
+  String? get bankName => throw _privateConstructorUsedError;
+
+  /// Unique identifier for the bankaccount.
+  String? get fingerprint => throw _privateConstructorUsedError;
+
+  /// Number of linkedaccount
+  String? get linkedAccount => throw _privateConstructorUsedError;
+
+  /// list of preferred network names
+  List<String>? get preferredNetworks => throw _privateConstructorUsedError;
+
+  /// list of preferred network names
+  List<String>? get supportedNetworks => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $UsBankAccountCopyWith<UsBankAccount> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UsBankAccountCopyWith<$Res> {
+  factory $UsBankAccountCopyWith(
+          UsBankAccount value, $Res Function(UsBankAccount) then) =
+      _$UsBankAccountCopyWithImpl<$Res>;
+  $Res call(
+      {String? routingNumber,
+      String? last4,
+      BankAccountHolderType accountHolderType,
+      UsBankAccountType accountType,
+      String? bankName,
+      String? fingerprint,
+      String? linkedAccount,
+      List<String>? preferredNetworks,
+      List<String>? supportedNetworks});
+}
+
+/// @nodoc
+class _$UsBankAccountCopyWithImpl<$Res>
+    implements $UsBankAccountCopyWith<$Res> {
+  _$UsBankAccountCopyWithImpl(this._value, this._then);
+
+  final UsBankAccount _value;
+  // ignore: unused_field
+  final $Res Function(UsBankAccount) _then;
+
+  @override
+  $Res call({
+    Object? routingNumber = freezed,
+    Object? last4 = freezed,
+    Object? accountHolderType = freezed,
+    Object? accountType = freezed,
+    Object? bankName = freezed,
+    Object? fingerprint = freezed,
+    Object? linkedAccount = freezed,
+    Object? preferredNetworks = freezed,
+    Object? supportedNetworks = freezed,
+  }) {
+    return _then(_value.copyWith(
+      routingNumber: routingNumber == freezed
+          ? _value.routingNumber
+          : routingNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      last4: last4 == freezed
+          ? _value.last4
+          : last4 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      accountHolderType: accountHolderType == freezed
+          ? _value.accountHolderType
+          : accountHolderType // ignore: cast_nullable_to_non_nullable
+              as BankAccountHolderType,
+      accountType: accountType == freezed
+          ? _value.accountType
+          : accountType // ignore: cast_nullable_to_non_nullable
+              as UsBankAccountType,
+      bankName: bankName == freezed
+          ? _value.bankName
+          : bankName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fingerprint: fingerprint == freezed
+          ? _value.fingerprint
+          : fingerprint // ignore: cast_nullable_to_non_nullable
+              as String?,
+      linkedAccount: linkedAccount == freezed
+          ? _value.linkedAccount
+          : linkedAccount // ignore: cast_nullable_to_non_nullable
+              as String?,
+      preferredNetworks: preferredNetworks == freezed
+          ? _value.preferredNetworks
+          : preferredNetworks // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      supportedNetworks: supportedNetworks == freezed
+          ? _value.supportedNetworks
+          : supportedNetworks // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$UsBankAccountCopyWith<$Res>
+    implements $UsBankAccountCopyWith<$Res> {
+  factory _$UsBankAccountCopyWith(
+          _UsBankAccount value, $Res Function(_UsBankAccount) then) =
+      __$UsBankAccountCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String? routingNumber,
+      String? last4,
+      BankAccountHolderType accountHolderType,
+      UsBankAccountType accountType,
+      String? bankName,
+      String? fingerprint,
+      String? linkedAccount,
+      List<String>? preferredNetworks,
+      List<String>? supportedNetworks});
+}
+
+/// @nodoc
+class __$UsBankAccountCopyWithImpl<$Res>
+    extends _$UsBankAccountCopyWithImpl<$Res>
+    implements _$UsBankAccountCopyWith<$Res> {
+  __$UsBankAccountCopyWithImpl(
+      _UsBankAccount _value, $Res Function(_UsBankAccount) _then)
+      : super(_value, (v) => _then(v as _UsBankAccount));
+
+  @override
+  _UsBankAccount get _value => super._value as _UsBankAccount;
+
+  @override
+  $Res call({
+    Object? routingNumber = freezed,
+    Object? last4 = freezed,
+    Object? accountHolderType = freezed,
+    Object? accountType = freezed,
+    Object? bankName = freezed,
+    Object? fingerprint = freezed,
+    Object? linkedAccount = freezed,
+    Object? preferredNetworks = freezed,
+    Object? supportedNetworks = freezed,
+  }) {
+    return _then(_UsBankAccount(
+      routingNumber: routingNumber == freezed
+          ? _value.routingNumber
+          : routingNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      last4: last4 == freezed
+          ? _value.last4
+          : last4 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      accountHolderType: accountHolderType == freezed
+          ? _value.accountHolderType
+          : accountHolderType // ignore: cast_nullable_to_non_nullable
+              as BankAccountHolderType,
+      accountType: accountType == freezed
+          ? _value.accountType
+          : accountType // ignore: cast_nullable_to_non_nullable
+              as UsBankAccountType,
+      bankName: bankName == freezed
+          ? _value.bankName
+          : bankName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fingerprint: fingerprint == freezed
+          ? _value.fingerprint
+          : fingerprint // ignore: cast_nullable_to_non_nullable
+              as String?,
+      linkedAccount: linkedAccount == freezed
+          ? _value.linkedAccount
+          : linkedAccount // ignore: cast_nullable_to_non_nullable
+              as String?,
+      preferredNetworks: preferredNetworks == freezed
+          ? _value.preferredNetworks
+          : preferredNetworks // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      supportedNetworks: supportedNetworks == freezed
+          ? _value.supportedNetworks
+          : supportedNetworks // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_UsBankAccount implements _UsBankAccount {
+  const _$_UsBankAccount(
+      {this.routingNumber,
+      this.last4,
+      required this.accountHolderType,
+      required this.accountType,
+      this.bankName,
+      this.fingerprint,
+      this.linkedAccount,
+      this.preferredNetworks,
+      this.supportedNetworks});
+
+  factory _$_UsBankAccount.fromJson(Map<String, dynamic> json) =>
+      _$$_UsBankAccountFromJson(json);
+
+  @override
+
+  /// Routing number of the bank account
+  final String? routingNumber;
+  @override
+
+  /// Last 4  digits of the account
+  final String? last4;
+  @override
+
+  /// The bank account type of the holder
+  final BankAccountHolderType accountHolderType;
+  @override
+
+  /// The account type
+  final UsBankAccountType accountType;
+  @override
+
+  /// The name of the bank of the account
+  final String? bankName;
+  @override
+
+  /// Unique identifier for the bankaccount.
+  final String? fingerprint;
+  @override
+
+  /// Number of linkedaccount
+  final String? linkedAccount;
+  @override
+
+  /// list of preferred network names
+  final List<String>? preferredNetworks;
+  @override
+
+  /// list of preferred network names
+  final List<String>? supportedNetworks;
+
+  @override
+  String toString() {
+    return 'UsBankAccount(routingNumber: $routingNumber, last4: $last4, accountHolderType: $accountHolderType, accountType: $accountType, bankName: $bankName, fingerprint: $fingerprint, linkedAccount: $linkedAccount, preferredNetworks: $preferredNetworks, supportedNetworks: $supportedNetworks)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _UsBankAccount &&
+            const DeepCollectionEquality()
+                .equals(other.routingNumber, routingNumber) &&
+            const DeepCollectionEquality().equals(other.last4, last4) &&
+            const DeepCollectionEquality()
+                .equals(other.accountHolderType, accountHolderType) &&
+            const DeepCollectionEquality()
+                .equals(other.accountType, accountType) &&
+            const DeepCollectionEquality().equals(other.bankName, bankName) &&
+            const DeepCollectionEquality()
+                .equals(other.fingerprint, fingerprint) &&
+            const DeepCollectionEquality()
+                .equals(other.linkedAccount, linkedAccount) &&
+            const DeepCollectionEquality()
+                .equals(other.preferredNetworks, preferredNetworks) &&
+            const DeepCollectionEquality()
+                .equals(other.supportedNetworks, supportedNetworks));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(routingNumber),
+      const DeepCollectionEquality().hash(last4),
+      const DeepCollectionEquality().hash(accountHolderType),
+      const DeepCollectionEquality().hash(accountType),
+      const DeepCollectionEquality().hash(bankName),
+      const DeepCollectionEquality().hash(fingerprint),
+      const DeepCollectionEquality().hash(linkedAccount),
+      const DeepCollectionEquality().hash(preferredNetworks),
+      const DeepCollectionEquality().hash(supportedNetworks));
+
+  @JsonKey(ignore: true)
+  @override
+  _$UsBankAccountCopyWith<_UsBankAccount> get copyWith =>
+      __$UsBankAccountCopyWithImpl<_UsBankAccount>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_UsBankAccountToJson(this);
+  }
+}
+
+abstract class _UsBankAccount implements UsBankAccount {
+  const factory _UsBankAccount(
+      {String? routingNumber,
+      String? last4,
+      required BankAccountHolderType accountHolderType,
+      required UsBankAccountType accountType,
+      String? bankName,
+      String? fingerprint,
+      String? linkedAccount,
+      List<String>? preferredNetworks,
+      List<String>? supportedNetworks}) = _$_UsBankAccount;
+
+  factory _UsBankAccount.fromJson(Map<String, dynamic> json) =
+      _$_UsBankAccount.fromJson;
+
+  @override
+
+  /// Routing number of the bank account
+  String? get routingNumber;
+  @override
+
+  /// Last 4  digits of the account
+  String? get last4;
+  @override
+
+  /// The bank account type of the holder
+  BankAccountHolderType get accountHolderType;
+  @override
+
+  /// The account type
+  UsBankAccountType get accountType;
+  @override
+
+  /// The name of the bank of the account
+  String? get bankName;
+  @override
+
+  /// Unique identifier for the bankaccount.
+  String? get fingerprint;
+  @override
+
+  /// Number of linkedaccount
+  String? get linkedAccount;
+  @override
+
+  /// list of preferred network names
+  List<String>? get preferredNetworks;
+  @override
+
+  /// list of preferred network names
+  List<String>? get supportedNetworks;
+  @override
+  @JsonKey(ignore: true)
+  _$UsBankAccountCopyWith<_UsBankAccount> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
   switch (json['type']) {
     case 'Card':
@@ -2497,6 +2941,8 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
       return _PaymentMethodParamsOxxo.fromJson(json);
     case 'Klarna':
       return _PaymentMethodParamsKlarna.fromJson(json);
+    case 'USBankAccount':
+      return _PaymentMethodParamsUsBankAccount.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'type', 'PaymentMethodParams',
@@ -2641,6 +3087,21 @@ class _$PaymentMethodParamsTearOff {
     );
   }
 
+  _PaymentMethodParamsUsBankAccount usBankAccount(
+      {required String accountNumber,
+      required String routingNumber,
+      BankAccountHolderType? accountHolderType,
+      UsBankAccountType? accountType,
+      @BillingDetailsConverter() BillingDetails? billingDetails}) {
+    return _PaymentMethodParamsUsBankAccount(
+      accountNumber: accountNumber,
+      routingNumber: routingNumber,
+      accountHolderType: accountHolderType,
+      accountType: accountType,
+      billingDetails: billingDetails,
+    );
+  }
+
   PaymentMethodParams fromJson(Map<String, Object?> json) {
     return PaymentMethodParams.fromJson(json);
   }
@@ -2704,6 +3165,13 @@ mixin _$PaymentMethodParams {
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
+    required TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        usBankAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -2747,6 +3215,13 @@ mixin _$PaymentMethodParams {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -2790,6 +3265,13 @@ mixin _$PaymentMethodParams {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -2815,6 +3297,8 @@ mixin _$PaymentMethodParams {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -2838,6 +3322,7 @@ mixin _$PaymentMethodParams {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -2861,6 +3346,7 @@ mixin _$PaymentMethodParams {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -3046,6 +3532,13 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
+    required TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        usBankAccount,
   }) {
     return card(setupFutureUsage, billingDetails);
   }
@@ -3092,6 +3585,13 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
   }) {
     return card?.call(setupFutureUsage, billingDetails);
   }
@@ -3138,6 +3638,13 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (card != null) {
@@ -3169,6 +3676,8 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
   }) {
     return card(this);
   }
@@ -3195,6 +3704,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return card?.call(this);
   }
@@ -3221,6 +3731,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
     if (card != null) {
@@ -3402,6 +3913,13 @@ class _$_PaymentMethodParamsCardWithToken
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
+    required TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        usBankAccount,
   }) {
     return cardFromToken(token, setupFutureUsage);
   }
@@ -3448,6 +3966,13 @@ class _$_PaymentMethodParamsCardWithToken
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
   }) {
     return cardFromToken?.call(token, setupFutureUsage);
   }
@@ -3494,6 +4019,13 @@ class _$_PaymentMethodParamsCardWithToken
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (cardFromToken != null) {
@@ -3525,6 +4057,8 @@ class _$_PaymentMethodParamsCardWithToken
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
   }) {
     return cardFromToken(this);
   }
@@ -3551,6 +4085,7 @@ class _$_PaymentMethodParamsCardWithToken
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return cardFromToken?.call(this);
   }
@@ -3577,6 +4112,7 @@ class _$_PaymentMethodParamsCardWithToken
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
     if (cardFromToken != null) {
@@ -3757,6 +4293,13 @@ class _$_PaymentMethodParamsCardWithMethodId
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
+    required TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        usBankAccount,
   }) {
     return cardFromMethodId(paymentMethodId, cvc);
   }
@@ -3803,6 +4346,13 @@ class _$_PaymentMethodParamsCardWithMethodId
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
   }) {
     return cardFromMethodId?.call(paymentMethodId, cvc);
   }
@@ -3849,6 +4399,13 @@ class _$_PaymentMethodParamsCardWithMethodId
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (cardFromMethodId != null) {
@@ -3880,6 +4437,8 @@ class _$_PaymentMethodParamsCardWithMethodId
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
   }) {
     return cardFromMethodId(this);
   }
@@ -3906,6 +4465,7 @@ class _$_PaymentMethodParamsCardWithMethodId
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return cardFromMethodId?.call(this);
   }
@@ -3932,6 +4492,7 @@ class _$_PaymentMethodParamsCardWithMethodId
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
     if (cardFromMethodId != null) {
@@ -4069,6 +4630,13 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
+    required TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        usBankAccount,
   }) {
     return alipay();
   }
@@ -4115,6 +4683,13 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
   }) {
     return alipay?.call();
   }
@@ -4161,6 +4736,13 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (alipay != null) {
@@ -4192,6 +4774,8 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
   }) {
     return alipay(this);
   }
@@ -4218,6 +4802,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return alipay?.call(this);
   }
@@ -4244,6 +4829,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
     if (alipay != null) {
@@ -4426,6 +5012,13 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
+    required TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        usBankAccount,
   }) {
     return ideal(billingDetails, bankName);
   }
@@ -4472,6 +5065,13 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
   }) {
     return ideal?.call(billingDetails, bankName);
   }
@@ -4518,6 +5118,13 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (ideal != null) {
@@ -4549,6 +5156,8 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
   }) {
     return ideal(this);
   }
@@ -4575,6 +5184,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return ideal?.call(this);
   }
@@ -4601,6 +5211,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
     if (ideal != null) {
@@ -4805,6 +5416,13 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
+    required TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        usBankAccount,
   }) {
     return aubecs(formDetails, billingDetails);
   }
@@ -4851,6 +5469,13 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
   }) {
     return aubecs?.call(formDetails, billingDetails);
   }
@@ -4897,6 +5522,13 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (aubecs != null) {
@@ -4928,6 +5560,8 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
   }) {
     return aubecs(this);
   }
@@ -4954,6 +5588,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return aubecs?.call(this);
   }
@@ -4980,6 +5615,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
     if (aubecs != null) {
@@ -5163,6 +5799,13 @@ class _$_PaymentMethodParamsBankContact
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
+    required TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        usBankAccount,
   }) {
     return bancontact(billingDetails);
   }
@@ -5209,6 +5852,13 @@ class _$_PaymentMethodParamsBankContact
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
   }) {
     return bancontact?.call(billingDetails);
   }
@@ -5255,6 +5905,13 @@ class _$_PaymentMethodParamsBankContact
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (bancontact != null) {
@@ -5286,6 +5943,8 @@ class _$_PaymentMethodParamsBankContact
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
   }) {
     return bancontact(this);
   }
@@ -5312,6 +5971,7 @@ class _$_PaymentMethodParamsBankContact
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return bancontact?.call(this);
   }
@@ -5338,6 +5998,7 @@ class _$_PaymentMethodParamsBankContact
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
     if (bancontact != null) {
@@ -5514,6 +6175,13 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
+    required TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        usBankAccount,
   }) {
     return giroPay(billingDetails);
   }
@@ -5560,6 +6228,13 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
   }) {
     return giroPay?.call(billingDetails);
   }
@@ -5606,6 +6281,13 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (giroPay != null) {
@@ -5637,6 +6319,8 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
   }) {
     return giroPay(this);
   }
@@ -5663,6 +6347,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return giroPay?.call(this);
   }
@@ -5689,6 +6374,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
     if (giroPay != null) {
@@ -5863,6 +6549,13 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
+    required TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        usBankAccount,
   }) {
     return eps(billingDetails);
   }
@@ -5909,6 +6602,13 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
   }) {
     return eps?.call(billingDetails);
   }
@@ -5955,6 +6655,13 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (eps != null) {
@@ -5986,6 +6693,8 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
   }) {
     return eps(this);
   }
@@ -6012,6 +6721,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return eps?.call(this);
   }
@@ -6038,6 +6748,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
     if (eps != null) {
@@ -6212,6 +6923,13 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
+    required TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        usBankAccount,
   }) {
     return grabPay(billingDetails);
   }
@@ -6258,6 +6976,13 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
   }) {
     return grabPay?.call(billingDetails);
   }
@@ -6304,6 +7029,13 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (grabPay != null) {
@@ -6335,6 +7067,8 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
   }) {
     return grabPay(this);
   }
@@ -6361,6 +7095,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return grabPay?.call(this);
   }
@@ -6387,6 +7122,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
     if (grabPay != null) {
@@ -6561,6 +7297,13 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
+    required TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        usBankAccount,
   }) {
     return p24(billingDetails);
   }
@@ -6607,6 +7350,13 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
   }) {
     return p24?.call(billingDetails);
   }
@@ -6653,6 +7403,13 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (p24 != null) {
@@ -6684,6 +7441,8 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
   }) {
     return p24(this);
   }
@@ -6710,6 +7469,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return p24?.call(this);
   }
@@ -6736,6 +7496,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
     if (p24 != null) {
@@ -6894,6 +7655,13 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
+    required TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        usBankAccount,
   }) {
     return fpx(testOfflineBank);
   }
@@ -6940,6 +7708,13 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
   }) {
     return fpx?.call(testOfflineBank);
   }
@@ -6986,6 +7761,13 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (fpx != null) {
@@ -7017,6 +7799,8 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
   }) {
     return fpx(this);
   }
@@ -7043,6 +7827,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return fpx?.call(this);
   }
@@ -7069,6 +7854,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
     if (fpx != null) {
@@ -7269,6 +8055,13 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
+    required TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        usBankAccount,
   }) {
     return sepaDebit(iban, setupFutureUsage, billingDetails);
   }
@@ -7315,6 +8108,13 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
   }) {
     return sepaDebit?.call(iban, setupFutureUsage, billingDetails);
   }
@@ -7361,6 +8161,13 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (sepaDebit != null) {
@@ -7392,6 +8199,8 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
   }) {
     return sepaDebit(this);
   }
@@ -7418,6 +8227,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return sepaDebit?.call(this);
   }
@@ -7444,6 +8254,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
     if (sepaDebit != null) {
@@ -7651,6 +8462,13 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
+    required TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        usBankAccount,
   }) {
     return sofort(country, setupFutureUsage, billingDetails);
   }
@@ -7697,6 +8515,13 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
   }) {
     return sofort?.call(country, setupFutureUsage, billingDetails);
   }
@@ -7743,6 +8568,13 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (sofort != null) {
@@ -7774,6 +8606,8 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
   }) {
     return sofort(this);
   }
@@ -7800,6 +8634,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return sofort?.call(this);
   }
@@ -7826,6 +8661,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
     if (sofort != null) {
@@ -8034,6 +8870,13 @@ class _$_PaymentMethodParamsAfterpayClearpay
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
+    required TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        usBankAccount,
   }) {
     return afterpayClearpay(shippingDetails, billingDetails);
   }
@@ -8080,6 +8923,13 @@ class _$_PaymentMethodParamsAfterpayClearpay
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
   }) {
     return afterpayClearpay?.call(shippingDetails, billingDetails);
   }
@@ -8126,6 +8976,13 @@ class _$_PaymentMethodParamsAfterpayClearpay
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (afterpayClearpay != null) {
@@ -8157,6 +9014,8 @@ class _$_PaymentMethodParamsAfterpayClearpay
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
   }) {
     return afterpayClearpay(this);
   }
@@ -8183,6 +9042,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return afterpayClearpay?.call(this);
   }
@@ -8209,6 +9069,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
     if (afterpayClearpay != null) {
@@ -8390,6 +9251,13 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
+    required TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        usBankAccount,
   }) {
     return oxxo(billingDetails);
   }
@@ -8436,6 +9304,13 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
   }) {
     return oxxo?.call(billingDetails);
   }
@@ -8482,6 +9357,13 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (oxxo != null) {
@@ -8513,6 +9395,8 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
   }) {
     return oxxo(this);
   }
@@ -8539,6 +9423,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return oxxo?.call(this);
   }
@@ -8565,6 +9450,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
     if (oxxo != null) {
@@ -8744,6 +9630,13 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
+    required TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        usBankAccount,
   }) {
     return klarna(billingDetails);
   }
@@ -8790,6 +9683,13 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
   }) {
     return klarna?.call(billingDetails);
   }
@@ -8836,6 +9736,13 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
         oxxo,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (klarna != null) {
@@ -8867,6 +9774,8 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
   }) {
     return klarna(this);
   }
@@ -8893,6 +9802,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return klarna?.call(this);
   }
@@ -8919,6 +9829,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
     if (klarna != null) {
@@ -8949,5 +9860,465 @@ abstract class _PaymentMethodParamsKlarna implements PaymentMethodParams {
   BillingDetails? get billingDetails;
   @JsonKey(ignore: true)
   _$PaymentMethodParamsKlarnaCopyWith<_PaymentMethodParamsKlarna>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$PaymentMethodParamsUsBankAccountCopyWith<$Res> {
+  factory _$PaymentMethodParamsUsBankAccountCopyWith(
+          _PaymentMethodParamsUsBankAccount value,
+          $Res Function(_PaymentMethodParamsUsBankAccount) then) =
+      __$PaymentMethodParamsUsBankAccountCopyWithImpl<$Res>;
+  $Res call(
+      {String accountNumber,
+      String routingNumber,
+      BankAccountHolderType? accountHolderType,
+      UsBankAccountType? accountType,
+      @BillingDetailsConverter() BillingDetails? billingDetails});
+
+  $BillingDetailsCopyWith<$Res>? get billingDetails;
+}
+
+/// @nodoc
+class __$PaymentMethodParamsUsBankAccountCopyWithImpl<$Res>
+    extends _$PaymentMethodParamsCopyWithImpl<$Res>
+    implements _$PaymentMethodParamsUsBankAccountCopyWith<$Res> {
+  __$PaymentMethodParamsUsBankAccountCopyWithImpl(
+      _PaymentMethodParamsUsBankAccount _value,
+      $Res Function(_PaymentMethodParamsUsBankAccount) _then)
+      : super(_value, (v) => _then(v as _PaymentMethodParamsUsBankAccount));
+
+  @override
+  _PaymentMethodParamsUsBankAccount get _value =>
+      super._value as _PaymentMethodParamsUsBankAccount;
+
+  @override
+  $Res call({
+    Object? accountNumber = freezed,
+    Object? routingNumber = freezed,
+    Object? accountHolderType = freezed,
+    Object? accountType = freezed,
+    Object? billingDetails = freezed,
+  }) {
+    return _then(_PaymentMethodParamsUsBankAccount(
+      accountNumber: accountNumber == freezed
+          ? _value.accountNumber
+          : accountNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      routingNumber: routingNumber == freezed
+          ? _value.routingNumber
+          : routingNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      accountHolderType: accountHolderType == freezed
+          ? _value.accountHolderType
+          : accountHolderType // ignore: cast_nullable_to_non_nullable
+              as BankAccountHolderType?,
+      accountType: accountType == freezed
+          ? _value.accountType
+          : accountType // ignore: cast_nullable_to_non_nullable
+              as UsBankAccountType?,
+      billingDetails: billingDetails == freezed
+          ? _value.billingDetails
+          : billingDetails // ignore: cast_nullable_to_non_nullable
+              as BillingDetails?,
+    ));
+  }
+
+  @override
+  $BillingDetailsCopyWith<$Res>? get billingDetails {
+    if (_value.billingDetails == null) {
+      return null;
+    }
+
+    return $BillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
+      return _then(_value.copyWith(billingDetails: value));
+    });
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+@FreezedUnionValue('USBankAccount')
+class _$_PaymentMethodParamsUsBankAccount
+    implements _PaymentMethodParamsUsBankAccount {
+  const _$_PaymentMethodParamsUsBankAccount(
+      {required this.accountNumber,
+      required this.routingNumber,
+      this.accountHolderType,
+      this.accountType,
+      @BillingDetailsConverter() this.billingDetails,
+      String? $type})
+      : $type = $type ?? 'USBankAccount';
+
+  factory _$_PaymentMethodParamsUsBankAccount.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_PaymentMethodParamsUsBankAccountFromJson(json);
+
+  @override
+
+  /// The account number of the bank account.
+  final String accountNumber;
+  @override
+
+  ///The routing number, sort code, or other country-appropriate institution
+  ///number for the bank account.
+  final String routingNumber;
+  @override
+
+  /// The bank account type of the holder
+  final BankAccountHolderType? accountHolderType;
+  @override
+
+  /// The account type
+  final UsBankAccountType? accountType;
+  @override
+
+  /// Billing information.
+  @BillingDetailsConverter()
+  final BillingDetails? billingDetails;
+
+  @JsonKey(name: 'type')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'PaymentMethodParams.usBankAccount(accountNumber: $accountNumber, routingNumber: $routingNumber, accountHolderType: $accountHolderType, accountType: $accountType, billingDetails: $billingDetails)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _PaymentMethodParamsUsBankAccount &&
+            const DeepCollectionEquality()
+                .equals(other.accountNumber, accountNumber) &&
+            const DeepCollectionEquality()
+                .equals(other.routingNumber, routingNumber) &&
+            const DeepCollectionEquality()
+                .equals(other.accountHolderType, accountHolderType) &&
+            const DeepCollectionEquality()
+                .equals(other.accountType, accountType) &&
+            const DeepCollectionEquality()
+                .equals(other.billingDetails, billingDetails));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(accountNumber),
+      const DeepCollectionEquality().hash(routingNumber),
+      const DeepCollectionEquality().hash(accountHolderType),
+      const DeepCollectionEquality().hash(accountType),
+      const DeepCollectionEquality().hash(billingDetails));
+
+  @JsonKey(ignore: true)
+  @override
+  _$PaymentMethodParamsUsBankAccountCopyWith<_PaymentMethodParamsUsBankAccount>
+      get copyWith => __$PaymentMethodParamsUsBankAccountCopyWithImpl<
+          _PaymentMethodParamsUsBankAccount>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        card,
+    required TResult Function(
+            String token, PaymentIntentsFutureUsage? setupFutureUsage)
+        cardFromToken,
+    required TResult Function(String paymentMethodId, String? cvc)
+        cardFromMethodId,
+    required TResult Function() alipay,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails,
+            String? bankName)
+        ideal,
+    required TResult Function(AubecsFormInputDetails formDetails,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        aubecs,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        bancontact,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        giroPay,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        eps,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        grabPay,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        p24,
+    required TResult Function(bool testOfflineBank) fpx,
+    required TResult Function(
+            String iban,
+            PaymentIntentsFutureUsage? setupFutureUsage,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        sepaDebit,
+    required TResult Function(
+            String country,
+            PaymentIntentsFutureUsage? setupFutureUsage,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        sofort,
+    required TResult Function(ShippingDetails shippingDetails,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        afterpayClearpay,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        oxxo,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        klarna,
+    required TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        usBankAccount,
+  }) {
+    return usBankAccount(accountNumber, routingNumber, accountHolderType,
+        accountType, billingDetails);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        card,
+    TResult Function(String token, PaymentIntentsFutureUsage? setupFutureUsage)?
+        cardFromToken,
+    TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
+    TResult Function()? alipay,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails,
+            String? bankName)?
+        ideal,
+    TResult Function(AubecsFormInputDetails formDetails,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        aubecs,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        bancontact,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        giroPay,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        eps,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        grabPay,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        p24,
+    TResult Function(bool testOfflineBank)? fpx,
+    TResult Function(String iban, PaymentIntentsFutureUsage? setupFutureUsage,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        sepaDebit,
+    TResult Function(
+            String country,
+            PaymentIntentsFutureUsage? setupFutureUsage,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        sofort,
+    TResult Function(ShippingDetails shippingDetails,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        afterpayClearpay,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        oxxo,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
+  }) {
+    return usBankAccount?.call(accountNumber, routingNumber, accountHolderType,
+        accountType, billingDetails);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        card,
+    TResult Function(String token, PaymentIntentsFutureUsage? setupFutureUsage)?
+        cardFromToken,
+    TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
+    TResult Function()? alipay,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails,
+            String? bankName)?
+        ideal,
+    TResult Function(AubecsFormInputDetails formDetails,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        aubecs,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        bancontact,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        giroPay,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        eps,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        grabPay,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        p24,
+    TResult Function(bool testOfflineBank)? fpx,
+    TResult Function(String iban, PaymentIntentsFutureUsage? setupFutureUsage,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        sepaDebit,
+    TResult Function(
+            String country,
+            PaymentIntentsFutureUsage? setupFutureUsage,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        sofort,
+    TResult Function(ShippingDetails shippingDetails,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        afterpayClearpay,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        oxxo,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
+    required TResult orElse(),
+  }) {
+    if (usBankAccount != null) {
+      return usBankAccount(accountNumber, routingNumber, accountHolderType,
+          accountType, billingDetails);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentMethodParamsCard value) card,
+    required TResult Function(_PaymentMethodParamsCardWithToken value)
+        cardFromToken,
+    required TResult Function(_PaymentMethodParamsCardWithMethodId value)
+        cardFromMethodId,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
+    required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
+    required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
+    required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPay value) grabPay,
+    required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
+    required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsSofort value) sofort,
+    required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
+        afterpayClearpay,
+    required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
+  }) {
+    return usBankAccount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
+    TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
+    TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
+    TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPay value)? grabPay,
+    TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
+    TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsSofort value)? sofort,
+    TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
+        afterpayClearpay,
+    TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+  }) {
+    return usBankAccount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
+    TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
+    TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
+    TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPay value)? grabPay,
+    TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
+    TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsSofort value)? sofort,
+    TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
+        afterpayClearpay,
+    TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    required TResult orElse(),
+  }) {
+    if (usBankAccount != null) {
+      return usBankAccount(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentMethodParamsUsBankAccountToJson(this);
+  }
+}
+
+abstract class _PaymentMethodParamsUsBankAccount
+    implements PaymentMethodParams {
+  const factory _PaymentMethodParamsUsBankAccount(
+          {required String accountNumber,
+          required String routingNumber,
+          BankAccountHolderType? accountHolderType,
+          UsBankAccountType? accountType,
+          @BillingDetailsConverter() BillingDetails? billingDetails}) =
+      _$_PaymentMethodParamsUsBankAccount;
+
+  factory _PaymentMethodParamsUsBankAccount.fromJson(
+      Map<String, dynamic> json) = _$_PaymentMethodParamsUsBankAccount.fromJson;
+
+  /// The account number of the bank account.
+  String get accountNumber;
+
+  ///The routing number, sort code, or other country-appropriate institution
+  ///number for the bank account.
+  String get routingNumber;
+
+  /// The bank account type of the holder
+  BankAccountHolderType? get accountHolderType;
+
+  /// The account type
+  UsBankAccountType? get accountType;
+
+  /// Billing information.
+  @BillingDetailsConverter()
+  BillingDetails? get billingDetails;
+  @JsonKey(ignore: true)
+  _$PaymentMethodParamsUsBankAccountCopyWith<_PaymentMethodParamsUsBankAccount>
       get copyWith => throw _privateConstructorUsedError;
 }

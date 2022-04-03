@@ -22,6 +22,8 @@ _$_PaymentMethod _$$_PaymentMethodFromJson(Map<String, dynamic> json) =>
       ideal: Ideal.fromJson(json['Ideal'] as Map<String, dynamic>),
       fpx: Fpx.fromJson(json['Fpx'] as Map<String, dynamic>),
       upi: Upi.fromJson(json['Upi'] as Map<String, dynamic>),
+      usBankAccount:
+          UsBankAccount.fromJson(json['USBankAccount'] as Map<String, dynamic>),
       customerId: json['customerId'] as String?,
     );
 
@@ -39,6 +41,7 @@ Map<String, dynamic> _$$_PaymentMethodToJson(_$_PaymentMethod instance) =>
       'Ideal': instance.ideal.toJson(),
       'Fpx': instance.fpx.toJson(),
       'Upi': instance.upi.toJson(),
+      'USBankAccount': instance.usBankAccount.toJson(),
       'customerId': instance.customerId,
     };
 
@@ -155,6 +158,50 @@ _$_Upi _$$_UpiFromJson(Map<String, dynamic> json) => _$_Upi(
 Map<String, dynamic> _$$_UpiToJson(_$_Upi instance) => <String, dynamic>{
       'vpa': instance.vpa,
     };
+
+_$_UsBankAccount _$$_UsBankAccountFromJson(Map<String, dynamic> json) =>
+    _$_UsBankAccount(
+      routingNumber: json['routingNumber'] as String?,
+      last4: json['last4'] as String?,
+      accountHolderType: $enumDecode(
+          _$BankAccountHolderTypeEnumMap, json['accountHolderType']),
+      accountType: $enumDecode(_$UsBankAccountTypeEnumMap, json['accountType']),
+      bankName: json['bankName'] as String?,
+      fingerprint: json['fingerprint'] as String?,
+      linkedAccount: json['linkedAccount'] as String?,
+      preferredNetworks: (json['preferredNetworks'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      supportedNetworks: (json['supportedNetworks'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+    );
+
+Map<String, dynamic> _$$_UsBankAccountToJson(_$_UsBankAccount instance) =>
+    <String, dynamic>{
+      'routingNumber': instance.routingNumber,
+      'last4': instance.last4,
+      'accountHolderType':
+          _$BankAccountHolderTypeEnumMap[instance.accountHolderType],
+      'accountType': _$UsBankAccountTypeEnumMap[instance.accountType],
+      'bankName': instance.bankName,
+      'fingerprint': instance.fingerprint,
+      'linkedAccount': instance.linkedAccount,
+      'preferredNetworks': instance.preferredNetworks,
+      'supportedNetworks': instance.supportedNetworks,
+    };
+
+const _$BankAccountHolderTypeEnumMap = {
+  BankAccountHolderType.Company: 'Company',
+  BankAccountHolderType.Individual: 'Individual',
+  BankAccountHolderType.Unknown: 'Unknown',
+};
+
+const _$UsBankAccountTypeEnumMap = {
+  UsBankAccountType.Savings: 'Savings',
+  UsBankAccountType.Checking: 'Checking',
+  UsBankAccountType.Unknown: 'Unknown',
+};
 
 _$_PaymentMethodParamsCard _$$_PaymentMethodParamsCardFromJson(
         Map<String, dynamic> json) =>
@@ -450,6 +497,33 @@ _$_PaymentMethodParamsKlarna _$$_PaymentMethodParamsKlarnaFromJson(
 Map<String, dynamic> _$$_PaymentMethodParamsKlarnaToJson(
         _$_PaymentMethodParamsKlarna instance) =>
     <String, dynamic>{
+      'billingDetails':
+          const BillingDetailsConverter().toJson(instance.billingDetails),
+      'type': instance.$type,
+    };
+
+_$_PaymentMethodParamsUsBankAccount
+    _$$_PaymentMethodParamsUsBankAccountFromJson(Map<String, dynamic> json) =>
+        _$_PaymentMethodParamsUsBankAccount(
+          accountNumber: json['accountNumber'] as String,
+          routingNumber: json['routingNumber'] as String,
+          accountHolderType: $enumDecodeNullable(
+              _$BankAccountHolderTypeEnumMap, json['accountHolderType']),
+          accountType: $enumDecodeNullable(
+              _$UsBankAccountTypeEnumMap, json['accountType']),
+          billingDetails: const BillingDetailsConverter()
+              .fromJson(json['billingDetails'] as Map<String, dynamic>?),
+          $type: json['type'] as String?,
+        );
+
+Map<String, dynamic> _$$_PaymentMethodParamsUsBankAccountToJson(
+        _$_PaymentMethodParamsUsBankAccount instance) =>
+    <String, dynamic>{
+      'accountNumber': instance.accountNumber,
+      'routingNumber': instance.routingNumber,
+      'accountHolderType':
+          _$BankAccountHolderTypeEnumMap[instance.accountHolderType],
+      'accountType': _$UsBankAccountTypeEnumMap[instance.accountType],
       'billingDetails':
           const BillingDetailsConverter().toJson(instance.billingDetails),
       'type': instance.$type,
