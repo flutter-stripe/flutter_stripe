@@ -32,7 +32,8 @@ class _$SetupIntentTearOff {
       required List<PaymentMethodType> paymentMethodTypes,
       String? description,
       String? created,
-      LastSetupError? lastSetupError}) {
+      LastSetupError? lastSetupError,
+      NextAction? nextAction}) {
     return _SetupIntent(
       id: id,
       status: status,
@@ -44,6 +45,7 @@ class _$SetupIntentTearOff {
       description: description,
       created: created,
       lastSetupError: lastSetupError,
+      nextAction: nextAction,
     );
   }
 
@@ -90,6 +92,10 @@ mixin _$SetupIntent {
   /// Error encountered since last configmration.
   LastSetupError? get lastSetupError => throw _privateConstructorUsedError;
 
+  /// Additional action that needs to be taken in order to complete a payment
+  /// using the provided resource.
+  NextAction? get nextAction => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SetupIntentCopyWith<SetupIntent> get copyWith =>
@@ -111,9 +117,11 @@ abstract class $SetupIntentCopyWith<$Res> {
       List<PaymentMethodType> paymentMethodTypes,
       String? description,
       String? created,
-      LastSetupError? lastSetupError});
+      LastSetupError? lastSetupError,
+      NextAction? nextAction});
 
   $LastSetupErrorCopyWith<$Res>? get lastSetupError;
+  $NextActionCopyWith<$Res>? get nextAction;
 }
 
 /// @nodoc
@@ -136,6 +144,7 @@ class _$SetupIntentCopyWithImpl<$Res> implements $SetupIntentCopyWith<$Res> {
     Object? description = freezed,
     Object? created = freezed,
     Object? lastSetupError = freezed,
+    Object? nextAction = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -178,6 +187,10 @@ class _$SetupIntentCopyWithImpl<$Res> implements $SetupIntentCopyWith<$Res> {
           ? _value.lastSetupError
           : lastSetupError // ignore: cast_nullable_to_non_nullable
               as LastSetupError?,
+      nextAction: nextAction == freezed
+          ? _value.nextAction
+          : nextAction // ignore: cast_nullable_to_non_nullable
+              as NextAction?,
     ));
   }
 
@@ -189,6 +202,17 @@ class _$SetupIntentCopyWithImpl<$Res> implements $SetupIntentCopyWith<$Res> {
 
     return $LastSetupErrorCopyWith<$Res>(_value.lastSetupError!, (value) {
       return _then(_value.copyWith(lastSetupError: value));
+    });
+  }
+
+  @override
+  $NextActionCopyWith<$Res>? get nextAction {
+    if (_value.nextAction == null) {
+      return null;
+    }
+
+    return $NextActionCopyWith<$Res>(_value.nextAction!, (value) {
+      return _then(_value.copyWith(nextAction: value));
     });
   }
 }
@@ -210,10 +234,13 @@ abstract class _$SetupIntentCopyWith<$Res>
       List<PaymentMethodType> paymentMethodTypes,
       String? description,
       String? created,
-      LastSetupError? lastSetupError});
+      LastSetupError? lastSetupError,
+      NextAction? nextAction});
 
   @override
   $LastSetupErrorCopyWith<$Res>? get lastSetupError;
+  @override
+  $NextActionCopyWith<$Res>? get nextAction;
 }
 
 /// @nodoc
@@ -238,6 +265,7 @@ class __$SetupIntentCopyWithImpl<$Res> extends _$SetupIntentCopyWithImpl<$Res>
     Object? description = freezed,
     Object? created = freezed,
     Object? lastSetupError = freezed,
+    Object? nextAction = freezed,
   }) {
     return _then(_SetupIntent(
       id: id == freezed
@@ -280,6 +308,10 @@ class __$SetupIntentCopyWithImpl<$Res> extends _$SetupIntentCopyWithImpl<$Res>
           ? _value.lastSetupError
           : lastSetupError // ignore: cast_nullable_to_non_nullable
               as LastSetupError?,
+      nextAction: nextAction == freezed
+          ? _value.nextAction
+          : nextAction // ignore: cast_nullable_to_non_nullable
+              as NextAction?,
     ));
   }
 }
@@ -298,7 +330,8 @@ class _$_SetupIntent implements _SetupIntent {
       required this.paymentMethodTypes,
       this.description,
       this.created,
-      this.lastSetupError});
+      this.lastSetupError,
+      this.nextAction});
 
   factory _$_SetupIntent.fromJson(Map<String, dynamic> json) =>
       _$$_SetupIntentFromJson(json);
@@ -345,10 +378,15 @@ class _$_SetupIntent implements _SetupIntent {
 
   /// Error encountered since last configmration.
   final LastSetupError? lastSetupError;
+  @override
+
+  /// Additional action that needs to be taken in order to complete a payment
+  /// using the provided resource.
+  final NextAction? nextAction;
 
   @override
   String toString() {
-    return 'SetupIntent(id: $id, status: $status, livemode: $livemode, clientSecret: $clientSecret, paymentMethodId: $paymentMethodId, usage: $usage, paymentMethodTypes: $paymentMethodTypes, description: $description, created: $created, lastSetupError: $lastSetupError)';
+    return 'SetupIntent(id: $id, status: $status, livemode: $livemode, clientSecret: $clientSecret, paymentMethodId: $paymentMethodId, usage: $usage, paymentMethodTypes: $paymentMethodTypes, description: $description, created: $created, lastSetupError: $lastSetupError, nextAction: $nextAction)';
   }
 
   @override
@@ -370,7 +408,9 @@ class _$_SetupIntent implements _SetupIntent {
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.created, created) &&
             const DeepCollectionEquality()
-                .equals(other.lastSetupError, lastSetupError));
+                .equals(other.lastSetupError, lastSetupError) &&
+            const DeepCollectionEquality()
+                .equals(other.nextAction, nextAction));
   }
 
   @override
@@ -385,7 +425,8 @@ class _$_SetupIntent implements _SetupIntent {
       const DeepCollectionEquality().hash(paymentMethodTypes),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(created),
-      const DeepCollectionEquality().hash(lastSetupError));
+      const DeepCollectionEquality().hash(lastSetupError),
+      const DeepCollectionEquality().hash(nextAction));
 
   @JsonKey(ignore: true)
   @override
@@ -409,7 +450,8 @@ abstract class _SetupIntent implements SetupIntent {
       required List<PaymentMethodType> paymentMethodTypes,
       String? description,
       String? created,
-      LastSetupError? lastSetupError}) = _$_SetupIntent;
+      LastSetupError? lastSetupError,
+      NextAction? nextAction}) = _$_SetupIntent;
 
   factory _SetupIntent.fromJson(Map<String, dynamic> json) =
       _$_SetupIntent.fromJson;
@@ -456,6 +498,11 @@ abstract class _SetupIntent implements SetupIntent {
 
   /// Error encountered since last configmration.
   LastSetupError? get lastSetupError;
+  @override
+
+  /// Additional action that needs to be taken in order to complete a payment
+  /// using the provided resource.
+  NextAction? get nextAction;
   @override
   @JsonKey(ignore: true)
   _$SetupIntentCopyWith<_SetupIntent> get copyWith =>

@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'next_action.dart';
 import 'payment_methods.dart';
 
 part 'setup_intent.freezed.dart';
@@ -51,6 +52,10 @@ class SetupIntent with _$SetupIntent {
 
     /// Error encountered since last configmration.
     LastSetupError? lastSetupError,
+
+    /// Additional action that needs to be taken in order to complete a payment
+    /// using the provided resource.
+    NextAction? nextAction,
   }) = _SetupIntent;
 
   factory SetupIntent.fromJson(Map<String, dynamic> json) =>
