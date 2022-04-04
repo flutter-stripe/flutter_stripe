@@ -1,5 +1,5 @@
-import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
+import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 import '../js/js.dart' as s;
 
@@ -18,6 +18,10 @@ extension PaymentMethodParser on s.PaymentMethod {
       sepaDebit: const SepaDebit(),
       sofort: const Sofort(),
       upi: const Upi(),
+      usBankAccount: const UsBankAccount(
+        accountHolderType: BankAccountHolderType.Unknown,
+        accountType: UsBankAccountType.Unknown,
+      ),
     );
   }
 }

@@ -315,6 +315,22 @@ class WebStripe extends StripePlatform {
       dangerouslyUpdateFullCardDetails: dangerouslyUpdateFullCardDetails,
     );
   }
+
+  @override
+  Future<PaymentIntent> collectBankAccount(
+      {required IntentType intentType,
+      required String clientSecret,
+      required CollectBankAccountParams params}) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<PaymentIntent> verifyPaymentIntentWithMicrodeposits(
+      {required IntentType intentType,
+      required String clientSecret,
+      required VerifyMicroDepositsParams params}) {
+    throw UnimplementedError();
+  }
 }
 
 class WebUnsupportedError extends Error implements UnsupportedError {

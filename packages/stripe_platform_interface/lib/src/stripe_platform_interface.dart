@@ -75,6 +75,19 @@ abstract class StripePlatform extends PlatformInterface {
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret);
   Future<String> createTokenForCVCUpdate(String cvc);
 
+  /// Methods related to ACH payments
+  Future<PaymentIntent> collectBankAccount({
+    required IntentType intentType,
+    required String clientSecret,
+    required CollectBankAccountParams params,
+  });
+
+  Future<PaymentIntent> verifyPaymentIntentWithMicrodeposits({
+    required IntentType intentType,
+    required String clientSecret,
+    required VerifyMicroDepositsParams params,
+  });
+
   /// Updates the internal card details. This method will not validate the card
   /// information so you should validate the information yourself.
   /// WARNING!!! Only do this if you're certain that you fulfill the necessary

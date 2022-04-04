@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/services.dart';
+import 'package:stripe_platform_interface/src/models/ach_params.dart';
 import 'package:stripe_platform_interface/src/models/create_token_data.dart';
 import 'package:stripe_platform_interface/src/models/google_pay.dart';
 import 'package:stripe_platform_interface/src/result_parser.dart';
@@ -307,6 +308,54 @@ class MethodChannelStripe extends StripePlatform {
     return ResultParser<TokenData>(
             parseJson: (json) => TokenData.fromJson(json))
         .parse(result: result!, successResultKey: 'token');
+  }
+
+  @override
+  Future<PaymentIntent> collectBankAccount({
+    required IntentType intentType,
+    required String clientSecret,
+    required CollectBankAccountParams params,
+  }) async {
+    if (_platformIsAndroid) {
+      throw UnimplementedError('''
+ACH payments are not yet implemented in the Stripe Android SDK.
+''');
+    }
+
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('collectBankAccount', {
+      'intentType': intentType.name,
+      'params': params.toJson(),
+      'clientSecret': clientSecret,
+    });
+
+    return ResultParser<PaymentIntent>(
+            parseJson: (json) => PaymentIntent.fromJson(json))
+        .parse(result: result!, successResultKey: 'paymentIntent');
+  }
+
+  @override
+  Future<PaymentIntent> verifyPaymentIntentWithMicrodeposits({
+    required IntentType intentType,
+    required String clientSecret,
+    required VerifyMicroDepositsParams params,
+  }) async {
+    if (_platformIsAndroid) {
+      throw UnimplementedError('''
+ACH payments are not yet implemented in the Stripe Android SDK.
+''');
+    }
+
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('verifyMicrodeposits', {
+      'intentType': intentType.name,
+      'params': params.toJson(),
+      'clientSecret': clientSecret,
+    });
+
+    return ResultParser<PaymentIntent>(
+            parseJson: (json) => PaymentIntent.fromJson(json))
+        .parse(result: result!, successResultKey: 'paymentIntent');
   }
 }
 
