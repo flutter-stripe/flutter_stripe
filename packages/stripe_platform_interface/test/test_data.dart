@@ -18,6 +18,10 @@ extension PaymentMethodTestInstance on PaymentMethod {
         ideal: const Ideal(),
         fpx: const Fpx(),
         upi: const Upi(),
+        usBankAccount: const UsBankAccount(
+          accountHolderType: BankAccountHolderType.Individual,
+          accountType: UsBankAccountType.Checking,
+        ),
       );
 
   Map<String, dynamic> jsonMap() => {
