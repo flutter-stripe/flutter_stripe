@@ -1,10 +1,9 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'next_action.freezed.dart';
 part 'next_action.g.dart';
 
-@freezed
+@Freezed(unionKey: 'type')
 
 /// Description of the possible next action that must be handled to complete
 /// the [PaymentIntent].
@@ -15,20 +14,16 @@ class NextAction with _$NextAction {
   /// Contains instructions for redirecting the customer to a certain url
   /// in order to authorise the payment.
   @JsonSerializable(explicitToJson: true)
-  @FreezedUnionValue('RedirectToUrl')
+  @FreezedUnionValue('urlRedirect')
   const factory NextAction.redirectToUrl({
-    required NextActionType type,
-
     /// Url to redirect to
     String? redirectUrl,
   }) = _NextActionRedirect;
 
   /// Contains details necessary for the customer to complete the payment.
   @JsonSerializable(explicitToJson: true)
-  @FreezedUnionValue('DisplayOxxoDetails')
+  @FreezedUnionValue('oxxoVoucher')
   const factory NextAction.displayOxxoDetails({
-    required NextActionType type,
-
     /// expiration date of the voucher in UTC
     int? expiration,
 
@@ -41,20 +36,16 @@ class NextAction with _$NextAction {
 
   /// Contains the url for the wechat redirect QR code
   @JsonSerializable(explicitToJson: true)
-  @FreezedUnionValue('WeChatPayRedirect')
+  @FreezedUnionValue('weChatRedirect')
   const factory NextAction.wechatPayRedirect({
-    NextActionType? type,
-
     /// Url to the Qr code.
     String? redirectUrl,
   }) = _NextActionWeChatRedirect;
 
   /// Contains details describing microdeposits verification flow.
   @JsonSerializable(explicitToJson: true)
-  @FreezedUnionValue('VerifyWithMicrodeposits')
+  @FreezedUnionValue('verifyWithMicrodeposits')
   const factory NextAction.verifyWithMicroDeposits({
-    required NextActionType type,
-
     /// The timestamp of when the microdeposits are expended to land
     String? arrivalDate,
 

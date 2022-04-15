@@ -390,37 +390,37 @@ class Stripe {
     return await _platform.googlePayIsSupported(params);
   }
 
-  // /// Collect the bankaccount details for the payment intent.
-  // ///
-  // /// Only US bank accounts are supported. This method is only implemented for
-  // /// iOS at the moment.
-  // Future<PaymentIntent> collectBankAccount({
-  //   required IntentType intentType,
-  //   required String clientSecret,
-  //   required CollectBankAccountParams params,
-  // }) async {
-  //   return await _platform.collectBankAccount(
-  //     intentType: intentType,
-  //     clientSecret: clientSecret,
-  //     params: params,
-  //   );
-  // }
+  /// Collect the bankaccount details for the payment intent.
+  ///
+  /// Only US bank accounts are supported. This method is only implemented for
+  /// iOS at the moment.
+  Future<PaymentIntent> collectBankAccount({
+    required IntentType intentType,
+    required String clientSecret,
+    required CollectBankAccountParams params,
+  }) async {
+    return await _platform.collectBankAccount(
+      intentType: intentType,
+      clientSecret: clientSecret,
+      params: params,
+    );
+  }
 
-  // /// Verify the bank account with microtransactions
-  // ///
-  // /// Only US bank accounts are supported.This method is only implemented for
-  // /// iOS at the moment.
-  // Future<PaymentIntent> verifyPaymentIntentWithMicrodeposits({
-  //   required IntentType intentType,
-  //   required String clientSecret,
-  //   required VerifyMicroDepositsParams params,
-  // }) async {
-  //   return await _platform.verifyPaymentIntentWithMicrodeposits(
-  //     intentType: intentType,
-  //     clientSecret: clientSecret,
-  //     params: params,
-  //   );
-  // }
+  /// Verify the bank account with microtransactions
+  ///
+  /// Only US bank accounts are supported.This method is only implemented for
+  /// iOS at the moment.
+  Future<PaymentIntent> verifyPaymentIntentWithMicrodeposits({
+    required IntentType intentType,
+    required String clientSecret,
+    required VerifyMicroDepositsParams params,
+  }) async {
+    return await _platform.verifyPaymentIntentWithMicrodeposits(
+      intentType: intentType,
+      clientSecret: clientSecret,
+      params: params,
+    );
+  }
 
   FutureOr<void> _awaitForSettings() {
     if (_needsSettings) {
