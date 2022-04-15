@@ -7,6 +7,7 @@ import 'package:stripe_example/screens/regional_payment_methods/aubecs_debit.dar
 import 'package:stripe_example/screens/regional_payment_methods/fpx_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/ideal_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/klarna_screen.dart';
+import 'package:stripe_example/screens/regional_payment_methods/us_bank_account.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen_plugin.dart';
 import 'package:stripe_example/screens/wallets/google_pay_screen.dart';
@@ -225,6 +226,10 @@ class Example extends StatelessWidget {
           width: 48,
         ),
         builder: (contex) => KlarnaScreen(),
+      ),
+      Example(
+        title: 'Us bank accounts (ACH)',
+        builder: (contex) => UsBankAccountScreen(),
       ),
       // TODO: uncomment when we can re-enable wechat pay
       // Example(
