@@ -331,7 +331,7 @@ enum PaymentMethodType {
   Oxxo,
   Sofort,
   Upi,
-  UsBankAccount,
+  USBankAccount,
   // WeChatPay,
   Unknown
 }
@@ -519,11 +519,11 @@ class PaymentMethodParams with _$PaymentMethodParams {
   @FreezedUnionValue('USBankAccount')
   const factory PaymentMethodParams.usBankAccount({
     /// The account number of the bank account.
-    required String accountNumber,
+    String? accountNumber,
 
     ///The routing number, sort code, or other country-appropriate institution
     ///number for the bank account.
-    required String routingNumber,
+    String? routingNumber,
 
     /// The bank account type of the holder
     BankAccountHolderType? accountHolderType,

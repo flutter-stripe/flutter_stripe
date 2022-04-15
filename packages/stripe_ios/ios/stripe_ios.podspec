@@ -16,6 +16,7 @@ A new flutter plugin project.
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
   s.dependency 'Stripe', '~> 22.0.0'
+  s.dependency 'StripeConnections', '~> 22.0.0'
   s.platform = :ios, '12.0'
 
   # Flutter.framework does not contain a i386 slice.

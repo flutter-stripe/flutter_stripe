@@ -505,8 +505,8 @@ Map<String, dynamic> _$$_PaymentMethodParamsKlarnaToJson(
 _$_PaymentMethodParamsUsBankAccount
     _$$_PaymentMethodParamsUsBankAccountFromJson(Map<String, dynamic> json) =>
         _$_PaymentMethodParamsUsBankAccount(
-          accountNumber: json['accountNumber'] as String,
-          routingNumber: json['routingNumber'] as String,
+          accountNumber: json['accountNumber'] as String?,
+          routingNumber: json['routingNumber'] as String?,
           accountHolderType: $enumDecodeNullable(
               _$BankAccountHolderTypeEnumMap, json['accountHolderType']),
           accountType: $enumDecodeNullable(

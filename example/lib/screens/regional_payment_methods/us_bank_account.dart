@@ -38,25 +38,10 @@ class _UsBankAccountScreenState extends State<UsBankAccountScreen> {
       tags: ['Payments'],
       padding: EdgeInsets.all(16),
       children: [
-        TextField(
-          controller: _routingNumberController,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            labelText: 'Routing number',
-          ),
-        ),
-        SizedBox(height: 10),
-        TextField(
-          controller: _accountController,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            labelText: 'Accountnumber',
-          ),
-        ),
         SizedBox(height: 20),
         LoadingButton(
           onPressed: _handlePayPress,
-          text: 'Pay',
+          text: 'Retrieve bank account',
         ),
       ],
     );
@@ -90,24 +75,18 @@ class _UsBankAccountScreenState extends State<UsBankAccountScreen> {
       }
 
       if (paymentIntentResult['clientSecret'] != null) {
+        final confirmIntent = await Stripe.instance.collectBankAccount(
+          intentType: IntentType.payment,
+          clientSecret: paymentIntentResult['clientSecret'],
+          params: CollectBankAccountParams(billingDetails: billingDetails),
+        );
+
         final intent = await Stripe.instance.confirmPayment(
           paymentIntentResult['clientSecret'],
-          PaymentMethodParams.usBankAccount(
-              accountNumber: _accountController.text,
-              routingNumber: _routingNumberController.text,
-              billingDetails: billingDetails),
+          PaymentMethodParams.usBankAccount(),
         );
 
         handleNexAction(intent.nextAction, intent.clientSecret);
-
-        // Payment succedeed
-        // await Stripe.instance.collectBankAccount(
-        //   intentType: IntentType.payment,
-        //   clientSecret: paymentIntentResult['clientSecret'],
-        //   params: CollectBankAccountParams(
-        //     billingDetails: billingDetails,
-        //   ),
-        // );
       }
     } catch (e) {
       ScaffoldMessenger.of(context)
@@ -198,7 +177,7 @@ class _VerifyMicroDepositsDialogState
           intentType: IntentType.payment,
           clientSecret: widget.clientSecret,
           params: VerifyMicroDepositsParams(
-            descriptorCode: _descriptorController.text.isNotEmpty
+            descriptorCode: _amount1Controller.text.isNotEmpty
                 ? _descriptorController.text
                 : null,
             amounts: _amount1Controller.text.isNotEmpty &&
@@ -252,7 +231,7 @@ class _VerifyMicroDepositsDialogState
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Microdeposit 2 value',
+                labelText: 'Microdeposit 1 value',
               ),
             ),
             SizedBox(height: 10),

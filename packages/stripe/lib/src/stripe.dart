@@ -395,9 +395,17 @@ class Stripe {
   /// Only US bank accounts are supported. This method is only implemented for
   /// iOS at the moment.
   Future<PaymentIntent> collectBankAccount({
+    /// Whether the clientsecret is associated with setup or paymentintent
     required IntentType intentType,
+
+    /// The clientSecret of the payment and setup intent
     required String clientSecret,
+
+    /// Parameters associated with the account holder.
+    ///
+    /// The name and email is required.
     required CollectBankAccountParams params,
+
   }) async {
     return await _platform.collectBankAccount(
       intentType: intentType,
@@ -411,8 +419,15 @@ class Stripe {
   /// Only US bank accounts are supported.This method is only implemented for
   /// iOS at the moment.
   Future<PaymentIntent> verifyPaymentIntentWithMicrodeposits({
+    /// Whether the clientsecret is associated with setup or paymentintent
+
     required IntentType intentType,
+
+    /// The clientSecret of the payment and setup intent
+
     required String clientSecret,
+
+    /// Parameters to verify the microdeposits.
     required VerifyMicroDepositsParams params,
   }) async {
     return await _platform.verifyPaymentIntentWithMicrodeposits(

@@ -3088,8 +3088,8 @@ class _$PaymentMethodParamsTearOff {
   }
 
   _PaymentMethodParamsUsBankAccount usBankAccount(
-      {required String accountNumber,
-      required String routingNumber,
+      {String? accountNumber,
+      String? routingNumber,
       BankAccountHolderType? accountHolderType,
       UsBankAccountType? accountType,
       @BillingDetailsConverter() BillingDetails? billingDetails}) {
@@ -3166,8 +3166,8 @@ mixin _$PaymentMethodParams {
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
     required TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -3216,8 +3216,8 @@ mixin _$PaymentMethodParams {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -3266,8 +3266,8 @@ mixin _$PaymentMethodParams {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -3533,8 +3533,8 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
     required TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -3586,8 +3586,8 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -3639,8 +3639,8 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -3914,8 +3914,8 @@ class _$_PaymentMethodParamsCardWithToken
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
     required TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -3967,8 +3967,8 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -4020,8 +4020,8 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -4294,8 +4294,8 @@ class _$_PaymentMethodParamsCardWithMethodId
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
     required TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -4347,8 +4347,8 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -4400,8 +4400,8 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -4631,8 +4631,8 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
     required TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -4684,8 +4684,8 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -4737,8 +4737,8 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -5013,8 +5013,8 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
     required TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -5066,8 +5066,8 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -5119,8 +5119,8 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -5417,8 +5417,8 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
     required TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -5470,8 +5470,8 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -5523,8 +5523,8 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -5800,8 +5800,8 @@ class _$_PaymentMethodParamsBankContact
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
     required TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -5853,8 +5853,8 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -5906,8 +5906,8 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -6176,8 +6176,8 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
     required TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -6229,8 +6229,8 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -6282,8 +6282,8 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -6550,8 +6550,8 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
     required TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -6603,8 +6603,8 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -6656,8 +6656,8 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -6924,8 +6924,8 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
     required TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -6977,8 +6977,8 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -7030,8 +7030,8 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -7298,8 +7298,8 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
     required TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -7351,8 +7351,8 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -7404,8 +7404,8 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -7656,8 +7656,8 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
     required TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -7709,8 +7709,8 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -7762,8 +7762,8 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -8056,8 +8056,8 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
     required TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -8109,8 +8109,8 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -8162,8 +8162,8 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -8463,8 +8463,8 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
     required TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -8516,8 +8516,8 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -8569,8 +8569,8 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -8871,8 +8871,8 @@ class _$_PaymentMethodParamsAfterpayClearpay
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
     required TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -8924,8 +8924,8 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -8977,8 +8977,8 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -9252,8 +9252,8 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
     required TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -9305,8 +9305,8 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -9358,8 +9358,8 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -9631,8 +9631,8 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
     required TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -9684,8 +9684,8 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -9737,8 +9737,8 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -9870,8 +9870,8 @@ abstract class _$PaymentMethodParamsUsBankAccountCopyWith<$Res> {
           $Res Function(_PaymentMethodParamsUsBankAccount) then) =
       __$PaymentMethodParamsUsBankAccountCopyWithImpl<$Res>;
   $Res call(
-      {String accountNumber,
-      String routingNumber,
+      {String? accountNumber,
+      String? routingNumber,
       BankAccountHolderType? accountHolderType,
       UsBankAccountType? accountType,
       @BillingDetailsConverter() BillingDetails? billingDetails});
@@ -9904,11 +9904,11 @@ class __$PaymentMethodParamsUsBankAccountCopyWithImpl<$Res>
       accountNumber: accountNumber == freezed
           ? _value.accountNumber
           : accountNumber // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       routingNumber: routingNumber == freezed
           ? _value.routingNumber
           : routingNumber // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       accountHolderType: accountHolderType == freezed
           ? _value.accountHolderType
           : accountHolderType // ignore: cast_nullable_to_non_nullable
@@ -9943,8 +9943,8 @@ class __$PaymentMethodParamsUsBankAccountCopyWithImpl<$Res>
 class _$_PaymentMethodParamsUsBankAccount
     implements _PaymentMethodParamsUsBankAccount {
   const _$_PaymentMethodParamsUsBankAccount(
-      {required this.accountNumber,
-      required this.routingNumber,
+      {this.accountNumber,
+      this.routingNumber,
       this.accountHolderType,
       this.accountType,
       @BillingDetailsConverter() this.billingDetails,
@@ -9958,12 +9958,12 @@ class _$_PaymentMethodParamsUsBankAccount
   @override
 
   /// The account number of the bank account.
-  final String accountNumber;
+  final String? accountNumber;
   @override
 
   ///The routing number, sort code, or other country-appropriate institution
   ///number for the bank account.
-  final String routingNumber;
+  final String? routingNumber;
   @override
 
   /// The bank account type of the holder
@@ -10073,8 +10073,8 @@ class _$_PaymentMethodParamsUsBankAccount
             @BillingDetailsConverter() BillingDetails? billingDetails)
         klarna,
     required TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -10127,8 +10127,8 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -10181,8 +10181,8 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         klarna,
     TResult Function(
-            String accountNumber,
-            String routingNumber,
+            String? accountNumber,
+            String? routingNumber,
             BankAccountHolderType? accountHolderType,
             UsBankAccountType? accountType,
             @BillingDetailsConverter() BillingDetails? billingDetails)?
@@ -10292,8 +10292,8 @@ class _$_PaymentMethodParamsUsBankAccount
 abstract class _PaymentMethodParamsUsBankAccount
     implements PaymentMethodParams {
   const factory _PaymentMethodParamsUsBankAccount(
-          {required String accountNumber,
-          required String routingNumber,
+          {String? accountNumber,
+          String? routingNumber,
           BankAccountHolderType? accountHolderType,
           UsBankAccountType? accountType,
           @BillingDetailsConverter() BillingDetails? billingDetails}) =
@@ -10303,11 +10303,11 @@ abstract class _PaymentMethodParamsUsBankAccount
       Map<String, dynamic> json) = _$_PaymentMethodParamsUsBankAccount.fromJson;
 
   /// The account number of the bank account.
-  String get accountNumber;
+  String? get accountNumber;
 
   ///The routing number, sort code, or other country-appropriate institution
   ///number for the bank account.
-  String get routingNumber;
+  String? get routingNumber;
 
   /// The bank account type of the holder
   BankAccountHolderType? get accountHolderType;

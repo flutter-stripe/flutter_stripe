@@ -63,7 +63,7 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.Oxxo: 'Oxxo',
   PaymentMethodType.Sofort: 'Sofort',
   PaymentMethodType.Upi: 'Upi',
-  PaymentMethodType.UsBankAccount: 'UsBankAccount',
+  PaymentMethodType.USBankAccount: 'USBankAccount',
   PaymentMethodType.Unknown: 'Unknown',
 };
 

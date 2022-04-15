@@ -15,6 +15,10 @@ class CollectBankAccountParams with _$CollectBankAccountParams {
     ///
     /// It is required to fill in the name in the billing details
     required BillingDetails billingDetails,
+
+    /// The paymentmethod type. At this point only method [PaymentMethodType.USBankAccount]
+    /// is supported.
+    @Default(PaymentMethodType.USBankAccount) PaymentMethodType type,
   }) = _CollectBankAccountParams;
 
   factory CollectBankAccountParams.fromJson(Map<String, dynamic> json) =>
