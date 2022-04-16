@@ -2925,6 +2925,8 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
       return _PaymentMethodParamsGiroPay.fromJson(json);
     case 'Eps':
       return _PaymentMethodParamsEps.fromJson(json);
+    case 'PayPal':
+      return _PaymentMethodParamsPayPal.fromJson(json);
     case 'GrabPay':
       return _PaymentMethodParamsPay.fromJson(json);
     case 'P24':
@@ -3018,6 +3020,13 @@ class _$PaymentMethodParamsTearOff {
   _PaymentMethodParamsEps eps(
       {@BillingDetailsConverter() BillingDetails? billingDetails}) {
     return _PaymentMethodParamsEps(
+      billingDetails: billingDetails,
+    );
+  }
+
+  _PaymentMethodParamsPayPal payPal(
+      {@BillingDetailsConverter() BillingDetails? billingDetails}) {
+    return _PaymentMethodParamsPayPal(
       billingDetails: billingDetails,
     );
   }
@@ -3141,6 +3150,9 @@ mixin _$PaymentMethodParams {
         eps,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
+        payPal,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
         grabPay,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -3196,6 +3208,8 @@ mixin _$PaymentMethodParams {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -3246,6 +3260,8 @@ mixin _$PaymentMethodParams {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -3288,6 +3304,7 @@ mixin _$PaymentMethodParams {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -3313,6 +3330,7 @@ mixin _$PaymentMethodParams {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -3337,6 +3355,7 @@ mixin _$PaymentMethodParams {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -3508,6 +3527,9 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
         eps,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
+        payPal,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
         grabPay,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -3566,6 +3588,8 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -3619,6 +3643,8 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -3667,6 +3693,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -3695,6 +3722,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -3722,6 +3750,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -3889,6 +3918,9 @@ class _$_PaymentMethodParamsCardWithToken
         eps,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
+        payPal,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
         grabPay,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -3947,6 +3979,8 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -4000,6 +4034,8 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -4048,6 +4084,7 @@ class _$_PaymentMethodParamsCardWithToken
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -4076,6 +4113,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -4103,6 +4141,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -4269,6 +4308,9 @@ class _$_PaymentMethodParamsCardWithMethodId
         eps,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
+        payPal,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
         grabPay,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -4327,6 +4369,8 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -4380,6 +4424,8 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -4428,6 +4474,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -4456,6 +4503,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -4483,6 +4531,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -4606,6 +4655,9 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
         eps,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
+        payPal,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
         grabPay,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -4664,6 +4716,8 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -4717,6 +4771,8 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -4765,6 +4821,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -4793,6 +4850,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -4820,6 +4878,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -4988,6 +5047,9 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
         eps,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
+        payPal,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
         grabPay,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -5046,6 +5108,8 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -5099,6 +5163,8 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -5147,6 +5213,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -5175,6 +5242,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -5202,6 +5270,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -5392,6 +5461,9 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
         eps,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
+        payPal,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
         grabPay,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -5450,6 +5522,8 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -5503,6 +5577,8 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -5551,6 +5627,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -5579,6 +5656,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -5606,6 +5684,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -5775,6 +5854,9 @@ class _$_PaymentMethodParamsBankContact
         eps,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
+        payPal,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
         grabPay,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -5833,6 +5915,8 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -5886,6 +5970,8 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -5934,6 +6020,7 @@ class _$_PaymentMethodParamsBankContact
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -5962,6 +6049,7 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -5989,6 +6077,7 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -6151,6 +6240,9 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
         eps,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
+        payPal,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
         grabPay,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -6209,6 +6301,8 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -6262,6 +6356,8 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -6310,6 +6406,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -6338,6 +6435,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -6365,6 +6463,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -6525,6 +6624,9 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
         eps,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
+        payPal,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
         grabPay,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -6583,6 +6685,8 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -6636,6 +6740,8 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -6684,6 +6790,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -6712,6 +6819,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -6739,6 +6847,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -6777,6 +6886,392 @@ abstract class _PaymentMethodParamsEps implements PaymentMethodParams {
   @JsonKey(ignore: true)
   _$PaymentMethodParamsEpsCopyWith<_PaymentMethodParamsEps> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$PaymentMethodParamsPayPalCopyWith<$Res> {
+  factory _$PaymentMethodParamsPayPalCopyWith(_PaymentMethodParamsPayPal value,
+          $Res Function(_PaymentMethodParamsPayPal) then) =
+      __$PaymentMethodParamsPayPalCopyWithImpl<$Res>;
+  $Res call({@BillingDetailsConverter() BillingDetails? billingDetails});
+
+  $BillingDetailsCopyWith<$Res>? get billingDetails;
+}
+
+/// @nodoc
+class __$PaymentMethodParamsPayPalCopyWithImpl<$Res>
+    extends _$PaymentMethodParamsCopyWithImpl<$Res>
+    implements _$PaymentMethodParamsPayPalCopyWith<$Res> {
+  __$PaymentMethodParamsPayPalCopyWithImpl(_PaymentMethodParamsPayPal _value,
+      $Res Function(_PaymentMethodParamsPayPal) _then)
+      : super(_value, (v) => _then(v as _PaymentMethodParamsPayPal));
+
+  @override
+  _PaymentMethodParamsPayPal get _value =>
+      super._value as _PaymentMethodParamsPayPal;
+
+  @override
+  $Res call({
+    Object? billingDetails = freezed,
+  }) {
+    return _then(_PaymentMethodParamsPayPal(
+      billingDetails: billingDetails == freezed
+          ? _value.billingDetails
+          : billingDetails // ignore: cast_nullable_to_non_nullable
+              as BillingDetails?,
+    ));
+  }
+
+  @override
+  $BillingDetailsCopyWith<$Res>? get billingDetails {
+    if (_value.billingDetails == null) {
+      return null;
+    }
+
+    return $BillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
+      return _then(_value.copyWith(billingDetails: value));
+    });
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+@FreezedUnionValue('PayPal')
+class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
+  const _$_PaymentMethodParamsPayPal(
+      {@BillingDetailsConverter() this.billingDetails, String? $type})
+      : $type = $type ?? 'PayPal';
+
+  factory _$_PaymentMethodParamsPayPal.fromJson(Map<String, dynamic> json) =>
+      _$$_PaymentMethodParamsPayPalFromJson(json);
+
+  @override
+
+  /// Billing information.
+  @BillingDetailsConverter()
+  final BillingDetails? billingDetails;
+
+  @JsonKey(name: 'type')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'PaymentMethodParams.payPal(billingDetails: $billingDetails)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _PaymentMethodParamsPayPal &&
+            const DeepCollectionEquality()
+                .equals(other.billingDetails, billingDetails));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(billingDetails));
+
+  @JsonKey(ignore: true)
+  @override
+  _$PaymentMethodParamsPayPalCopyWith<_PaymentMethodParamsPayPal>
+      get copyWith =>
+          __$PaymentMethodParamsPayPalCopyWithImpl<_PaymentMethodParamsPayPal>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        card,
+    required TResult Function(
+            String token, PaymentIntentsFutureUsage? setupFutureUsage)
+        cardFromToken,
+    required TResult Function(String paymentMethodId, String? cvc)
+        cardFromMethodId,
+    required TResult Function() alipay,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails,
+            String? bankName)
+        ideal,
+    required TResult Function(AubecsFormInputDetails formDetails,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        aubecs,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        bancontact,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        giroPay,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        eps,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        payPal,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        grabPay,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        p24,
+    required TResult Function(bool testOfflineBank) fpx,
+    required TResult Function(
+            String iban,
+            PaymentIntentsFutureUsage? setupFutureUsage,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        sepaDebit,
+    required TResult Function(
+            String country,
+            PaymentIntentsFutureUsage? setupFutureUsage,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        sofort,
+    required TResult Function(ShippingDetails shippingDetails,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        afterpayClearpay,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        oxxo,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        klarna,
+    required TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)
+        usBankAccount,
+  }) {
+    return payPal(billingDetails);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        card,
+    TResult Function(String token, PaymentIntentsFutureUsage? setupFutureUsage)?
+        cardFromToken,
+    TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
+    TResult Function()? alipay,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails,
+            String? bankName)?
+        ideal,
+    TResult Function(AubecsFormInputDetails formDetails,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        aubecs,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        bancontact,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        giroPay,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        eps,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        grabPay,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        p24,
+    TResult Function(bool testOfflineBank)? fpx,
+    TResult Function(String iban, PaymentIntentsFutureUsage? setupFutureUsage,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        sepaDebit,
+    TResult Function(
+            String country,
+            PaymentIntentsFutureUsage? setupFutureUsage,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        sofort,
+    TResult Function(ShippingDetails shippingDetails,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        afterpayClearpay,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        oxxo,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
+  }) {
+    return payPal?.call(billingDetails);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        card,
+    TResult Function(String token, PaymentIntentsFutureUsage? setupFutureUsage)?
+        cardFromToken,
+    TResult Function(String paymentMethodId, String? cvc)? cardFromMethodId,
+    TResult Function()? alipay,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails,
+            String? bankName)?
+        ideal,
+    TResult Function(AubecsFormInputDetails formDetails,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        aubecs,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        bancontact,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        giroPay,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        eps,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        grabPay,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        p24,
+    TResult Function(bool testOfflineBank)? fpx,
+    TResult Function(String iban, PaymentIntentsFutureUsage? setupFutureUsage,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        sepaDebit,
+    TResult Function(
+            String country,
+            PaymentIntentsFutureUsage? setupFutureUsage,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        sofort,
+    TResult Function(ShippingDetails shippingDetails,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        afterpayClearpay,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        oxxo,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        klarna,
+    TResult Function(
+            String accountNumber,
+            String routingNumber,
+            BankAccountHolderType? accountHolderType,
+            UsBankAccountType? accountType,
+            @BillingDetailsConverter() BillingDetails? billingDetails)?
+        usBankAccount,
+    required TResult orElse(),
+  }) {
+    if (payPal != null) {
+      return payPal(billingDetails);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentMethodParamsCard value) card,
+    required TResult Function(_PaymentMethodParamsCardWithToken value)
+        cardFromToken,
+    required TResult Function(_PaymentMethodParamsCardWithMethodId value)
+        cardFromMethodId,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
+    required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
+    required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
+    required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
+    required TResult Function(_PaymentMethodParamsPay value) grabPay,
+    required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
+    required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsSofort value) sofort,
+    required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
+        afterpayClearpay,
+    required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
+  }) {
+    return payPal(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
+    TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
+    TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
+    TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
+    TResult Function(_PaymentMethodParamsPay value)? grabPay,
+    TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
+    TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsSofort value)? sofort,
+    TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
+        afterpayClearpay,
+    TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+  }) {
+    return payPal?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
+    TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
+    TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
+    TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
+    TResult Function(_PaymentMethodParamsPay value)? grabPay,
+    TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
+    TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsSofort value)? sofort,
+    TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
+        afterpayClearpay,
+    TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    required TResult orElse(),
+  }) {
+    if (payPal != null) {
+      return payPal(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentMethodParamsPayPalToJson(this);
+  }
+}
+
+abstract class _PaymentMethodParamsPayPal implements PaymentMethodParams {
+  const factory _PaymentMethodParamsPayPal(
+          {@BillingDetailsConverter() BillingDetails? billingDetails}) =
+      _$_PaymentMethodParamsPayPal;
+
+  factory _PaymentMethodParamsPayPal.fromJson(Map<String, dynamic> json) =
+      _$_PaymentMethodParamsPayPal.fromJson;
+
+  /// Billing information.
+  @BillingDetailsConverter()
+  BillingDetails? get billingDetails;
+  @JsonKey(ignore: true)
+  _$PaymentMethodParamsPayPalCopyWith<_PaymentMethodParamsPayPal>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -6899,6 +7394,9 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
         eps,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
+        payPal,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
         grabPay,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -6957,6 +7455,8 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -7010,6 +7510,8 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -7058,6 +7560,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -7086,6 +7589,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -7113,6 +7617,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -7273,6 +7778,9 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
         eps,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
+        payPal,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
         grabPay,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -7331,6 +7839,8 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -7384,6 +7894,8 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -7432,6 +7944,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -7460,6 +7973,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -7487,6 +8001,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -7631,6 +8146,9 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
         eps,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
+        payPal,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
         grabPay,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -7689,6 +8207,8 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -7742,6 +8262,8 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -7790,6 +8312,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -7818,6 +8341,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -7845,6 +8369,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -8031,6 +8556,9 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
         eps,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
+        payPal,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
         grabPay,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -8089,6 +8617,8 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -8142,6 +8672,8 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -8190,6 +8722,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -8218,6 +8751,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -8245,6 +8779,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -8438,6 +8973,9 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
         eps,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
+        payPal,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
         grabPay,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -8496,6 +9034,8 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -8549,6 +9089,8 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -8597,6 +9139,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -8625,6 +9168,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -8652,6 +9196,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -8846,6 +9391,9 @@ class _$_PaymentMethodParamsAfterpayClearpay
         eps,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
+        payPal,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
         grabPay,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -8904,6 +9452,8 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -8957,6 +9507,8 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -9005,6 +9557,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -9033,6 +9586,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -9060,6 +9614,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -9227,6 +9782,9 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
         eps,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
+        payPal,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
         grabPay,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -9285,6 +9843,8 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -9338,6 +9898,8 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -9386,6 +9948,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -9414,6 +9977,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -9441,6 +10005,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -9606,6 +10171,9 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
         eps,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
+        payPal,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
         grabPay,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -9664,6 +10232,8 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -9717,6 +10287,8 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -9765,6 +10337,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -9793,6 +10366,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -9820,6 +10394,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -10048,6 +10623,9 @@ class _$_PaymentMethodParamsUsBankAccount
         eps,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
+        payPal,
+    required TResult Function(
+            @BillingDetailsConverter() BillingDetails? billingDetails)
         grabPay,
     required TResult Function(
             @BillingDetailsConverter() BillingDetails? billingDetails)
@@ -10107,6 +10685,8 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -10161,6 +10741,8 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         eps,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
+        payPal,
+    TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         grabPay,
     TResult Function(@BillingDetailsConverter() BillingDetails? billingDetails)?
         p24,
@@ -10210,6 +10792,7 @@ class _$_PaymentMethodParamsUsBankAccount
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -10238,6 +10821,7 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -10265,6 +10849,7 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,

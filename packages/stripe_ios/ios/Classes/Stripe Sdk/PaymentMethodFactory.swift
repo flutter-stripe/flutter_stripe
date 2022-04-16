@@ -49,6 +49,8 @@ class PaymentMethodFactory {
                 return try createKlarnaPaymentMethodParams()
             case STPPaymentMethodType.USBankAccount:
                 return try createUSBankAccountPaymentMethodParams()
+            case STPPaymentMethodType.payPal:
+                return try createPayPalPaymentMethodParams()
 //            case STPPaymentMethodType.weChatPay:
 //                return try createWeChatPayPaymentMethodParams()
             default:
@@ -91,6 +93,8 @@ class PaymentMethodFactory {
             case STPPaymentMethodType.afterpayClearpay:
                 return nil
             case STPPaymentMethodType.klarna:
+                return nil
+            case STPPaymentMethodType.payPal:
                 return nil
             case STPPaymentMethodType.weChatPay:
                 return try createWeChatPayPaymentMethodOptions()
@@ -349,6 +353,11 @@ class PaymentMethodFactory {
         } else {
             throw PaymentMethodError.usBankAccountPaymentMissingParams
         }
+    }
+    
+    private func createPayPalPaymentMethodParams() throws -> STPPaymentMethodParams {
+        let params = STPPaymentMethodPayPalParams()
+        return STPPaymentMethodParams(payPal: params, billingDetails: billingDetailsParams, metadata: nil)
     }
 }
 

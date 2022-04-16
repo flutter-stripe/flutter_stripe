@@ -30,6 +30,7 @@ class PaymentMethodCreateParamsFactory(
         PaymentMethod.Type.AfterpayClearpay -> createAfterpayClearpayPaymentConfirmParams()
         PaymentMethod.Type.AuBecsDebit -> createAuBecsDebitPaymentConfirmParams()
         PaymentMethod.Type.Klarna -> createKlarnaPaymentConfirmParams()
+        PaymentMethod.Type.PayPal -> createPayPalPaymentConfirmParams()
         else -> {
           throw Exception("This paymentMethodType is not supported yet")
         }
@@ -49,6 +50,7 @@ class PaymentMethodCreateParamsFactory(
         PaymentMethod.Type.Bancontact -> createBancontactPaymentSetupParams()
         PaymentMethod.Type.SepaDebit -> createSepaPaymentSetupParams()
         PaymentMethod.Type.AuBecsDebit -> createAuBecsDebitPaymentSetupParams()
+        PaymentMethod.Type.PayPal -> createPayPalPaymentSetupParams()
         else -> {
           throw Exception("This paymentMethodType is not supported yet")
         }
@@ -423,6 +425,21 @@ class PaymentMethodCreateParamsFactory(
   }
 
   @Throws(PaymentMethodCreateParamsException::class)
+  private fun createPayPalPaymentSetupParams(): ConfirmSetupIntentParams {
+
+    val params = PaymentMethodCreateParams.createPayPal()
+
+    return ConfirmSetupIntentParams
+      .create(
+        paymentMethodCreateParams = params,
+        clientSecret = clientSecret,
+        mandateData = MandateDataParams(
+          MandateDataParams.Type.Online.DEFAULT
+        )
+      )
+  }
+
+  @Throws(PaymentMethodCreateParamsException::class)
   private fun createKlarnaPaymentConfirmParams(): ConfirmPaymentIntentParams {
     if (billingDetailsParams == null ||
         billingDetailsParams.address?.country.isNullOrBlank() ||
@@ -432,6 +449,17 @@ class PaymentMethodCreateParamsFactory(
     }
 
     val params = PaymentMethodCreateParams.createKlarna(billingDetailsParams)
+
+    return ConfirmPaymentIntentParams
+      .createWithPaymentMethodCreateParams(
+        paymentMethodCreateParams = params,
+        clientSecret = clientSecret,
+      )
+  }
+
+  @Throws(PaymentMethodCreateParamsException::class)
+  private fun createPayPalPaymentConfirmParams(): ConfirmPaymentIntentParams {
+    val params = PaymentMethodCreateParams.createPayPal()
 
     return ConfirmPaymentIntentParams
       .createWithPaymentMethodCreateParams(

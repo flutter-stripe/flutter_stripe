@@ -62,8 +62,7 @@ class PaymentMethod with _$PaymentMethod {
     String? customerId,
   }) = _PaymentMethod;
 
-  factory PaymentMethod.fromJson(Map<String, dynamic> json) =>
-      _$PaymentMethodFromJson(json);
+  factory PaymentMethod.fromJson(Map<String, dynamic> json) => _$PaymentMethodFromJson(json);
 }
 
 /// Billing information associated with the payment method.
@@ -84,12 +83,10 @@ class BillingDetails with _$BillingDetails {
     String? name,
   }) = _BillingDetails;
 
-  factory BillingDetails.fromJson(Map<String, dynamic> json) =>
-      _$BillingDetailsFromJson(json);
+  factory BillingDetails.fromJson(Map<String, dynamic> json) => _$BillingDetailsFromJson(json);
 }
 
-class BillingDetailsConverter
-    implements JsonConverter<BillingDetails?, Map<String, dynamic>?> {
+class BillingDetailsConverter implements JsonConverter<BillingDetails?, Map<String, dynamic>?> {
   const BillingDetailsConverter();
 
   @override
@@ -98,9 +95,7 @@ class BillingDetailsConverter
     if (json != null) {
       return BillingDetails(
         email: json['email'] as String?,
-        address: json['address'] == null
-            ? null
-            : Address.fromJson(json['address'] as Map<String, dynamic>),
+        address: json['address'] == null ? null : Address.fromJson(json['address'] as Map<String, dynamic>),
         phone: json['phone'] as String?,
         name: json['name'] as String?,
       );
@@ -134,8 +129,7 @@ class AuBecsDebit with _$AuBecsDebit {
     String? bsbNumber,
   }) = _AuBecsDebit;
 
-  factory AuBecsDebit.fromJson(Map<String, dynamic> json) =>
-      _$AuBecsDebitFromJson(json);
+  factory AuBecsDebit.fromJson(Map<String, dynamic> json) => _$AuBecsDebitFromJson(json);
 }
 
 @freezed
@@ -154,8 +148,7 @@ class BacsDebit with _$BacsDebit {
     /// Last 4 digits of the bank account.
     String? last4,
   }) = _BacsDebit;
-  factory BacsDebit.fromJson(Map<String, dynamic> json) =>
-      _$BacsDebitFromJson(json);
+  factory BacsDebit.fromJson(Map<String, dynamic> json) => _$BacsDebitFromJson(json);
 }
 
 @freezed
@@ -237,8 +230,7 @@ class SepaDebit with _$SepaDebit {
     String? last4,
   }) = _SepaDebit;
 
-  factory SepaDebit.fromJson(Map<String, dynamic> json) =>
-      _$SepaDebitFromJson(json);
+  factory SepaDebit.fromJson(Map<String, dynamic> json) => _$SepaDebitFromJson(json);
 }
 
 @freezed
@@ -302,8 +294,7 @@ class UsBankAccount with _$UsBankAccount {
     List<String>? supportedNetworks,
   }) = _UsBankAccount;
 
-  factory UsBankAccount.fromJson(Map<String, dynamic> json) =>
-      _$UsBankAccountFromJson(json);
+  factory UsBankAccount.fromJson(Map<String, dynamic> json) => _$UsBankAccountFromJson(json);
 }
 
 enum UsBankAccountType {
@@ -442,6 +433,17 @@ class PaymentMethodParams with _$PaymentMethodParams {
   }) = _PaymentMethodParamsEps;
 
   @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('PayPal')
+
+  /// Config parameters for eps payment method.
+
+  const factory PaymentMethodParams.payPal({
+    /// Billing information.
+
+    @BillingDetailsConverter() BillingDetails? billingDetails,
+  }) = _PaymentMethodParamsPayPal;
+
+  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('GrabPay')
 
   /// Config parameters for GrabPay payment method.
@@ -542,8 +544,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
   //   String? appId,
   // }) = _PaymentMethodParamsWechat;
 
-  factory PaymentMethodParams.fromJson(Map<String, dynamic> json) =>
-      _$PaymentMethodParamsFromJson(json);
+  factory PaymentMethodParams.fromJson(Map<String, dynamic> json) => _$PaymentMethodParamsFromJson(json);
 }
 
 extension _BillingDetailsExtension on BillingDetails {

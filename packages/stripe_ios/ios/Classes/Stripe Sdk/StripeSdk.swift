@@ -279,6 +279,11 @@ class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSelectionVi
                 do {
                     let paymentMethodParams = try factory.createParams(paymentMethodType: paymentMethodType)
                     parameters.paymentMethodParams = paymentMethodParams
+                    if (paymentMethodType == .payPal) {
+                        let acceptance = STPMandateCustomerAcceptanceParams()
+                        acceptance.type = STPMandateCustomerAcceptanceType.online
+                        parameters.mandateData = STPMandateDataParams(customerAcceptance: acceptance)
+                    }
                 } catch  {
                     err = Errors.createError(ErrorType.Failed, error as NSError?)
                 }

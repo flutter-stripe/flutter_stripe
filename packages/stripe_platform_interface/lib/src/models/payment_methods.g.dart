@@ -360,6 +360,22 @@ Map<String, dynamic> _$$_PaymentMethodParamsEpsToJson(
       'type': instance.$type,
     };
 
+_$_PaymentMethodParamsPayPal _$$_PaymentMethodParamsPayPalFromJson(
+        Map<String, dynamic> json) =>
+    _$_PaymentMethodParamsPayPal(
+      billingDetails: const BillingDetailsConverter()
+          .fromJson(json['billingDetails'] as Map<String, dynamic>?),
+      $type: json['type'] as String?,
+    );
+
+Map<String, dynamic> _$$_PaymentMethodParamsPayPalToJson(
+        _$_PaymentMethodParamsPayPal instance) =>
+    <String, dynamic>{
+      'billingDetails':
+          const BillingDetailsConverter().toJson(instance.billingDetails),
+      'type': instance.$type,
+    };
+
 _$_PaymentMethodParamsPay _$$_PaymentMethodParamsPayFromJson(
         Map<String, dynamic> json) =>
     _$_PaymentMethodParamsPay(
