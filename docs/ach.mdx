@@ -1,0 +1,96 @@
+---
+title: ACH payment
+description: Handle ACH Direct Debit payments
+---
+
+# Accept a payment - ACH Direct Debit (US and Canada only)
+
+### Securely handling ideal payments
+
+ACH Direct Debit is a delayed notification payment method, which means that it takes some time before the funds are transfered (around 4 days). At the moment Stripe only supports bank accounts for the US and Canada.
+
+
+## 1. Create 
+
+First, you need a Stripe account. [Register now](https://dashboard.stripe.com/register).
+
+#### Server-side
+
+This integration requires endpoints on your server that talk to the Stripe API. Use one official libraries for access to the Stripe API from your server. [Follow the steps to create an Ideal payment here](https://stripe.com/docs/payments/ideal/accept-a-payment?platform=react-native#react-native-setup-server-side). For a full list of supported banks check [here](https://stripe.com/docs/payments/ideal/accept-a-payment?platform=ios#bank-reference).
+
+#### Client-side
+
+The Flutter SDK is open source, fully documented.
+
+To install the SDK, follow these steps:
+ - Run the commmand `flutter pub add flutter_stripe`
+ - This will add a line like this to your project's pubspec.yaml with the latest package version
+
+
+For details on the latest SDK release and past versions, see the [Releases](https://github.com/flutter-stripe/flutter_stripe/releases) page on GitHub. To receive notifications when a new release is published, [watch releases for the repository](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/managing-subscriptions-for-activity-on-github/viewing-your-subscriptions#watching-releases-for-a-repository).
+
+
+When your app starts, configure the SDK with your Stripe [publishable key](https://dashboard.stripe.com/) so that it can make requests to the Stripe API. 
+
+```dart
+void main() async {
+  Stripe.publishableKey = stripePublishableKey;
+  runApp(const App());
+}
+```
+
+Use your [test mode](https://stripe.com/docs/keys#obtain-api-keys) keys while you test and develop, and your [live mode](https://stripe.com/docs/keys#test-live-modes) keys when you publish your app.
+
+Also make sure your account is registered in the US and you have enabled the ACH payment method in [Stripe dashboard](https://dashboard.stripe.com/test/settings/payment_methods).
+
+## 2. Add an endpoint [Server Side]
+
+First you need to create a `PaymentIntent` on your backend server. A paymentintent is an object that represents your intent to collect a payment from a customer and tracks the lifecycle of the payment process through each stage. 
+
+Checkout the example implementation for your server in the [official stripe docs](https://stripe.com/docs/payments/ach-debit/accept-a-payment?platform=react-native#react-native-create-payment-intent)
+
+Returns the Payment Intent’s [client secret](https://stripe.com/docs/api/payment_intents/object#payment_intent_object-client_secret), to your app.
+
+## 3. Collect the payment details [Client Side]
+
+### Step 1: Confirm the payment.
+
+When you received the payment intents client secret you can use the FlutterStripe sdk to configm the payment. For this paymentmethod it is required to provide the name + email in the billingdetails.
+
+``` dart
+
+ final billingDetails = BillingDetails(
+        name: 'Flutter Stipe',
+        email: 'email@stripe.com',
+        phone: '+48888000888',
+        address: Address(
+          city: 'Houston',
+          country: 'US',
+          line1: '1459  Circle Drive',
+          line2: '',
+          state: 'Texas',
+          postalCode: '77063',
+        ),
+      );
+
+final intent = await Stripe.instance.confirmPayment(
+          paymentIntentResult['clientSecret'],
+          PaymentMethodParams.usBankAccount(
+              accountNumber: _accountController.text,
+              routingNumber: _routingNumberController.text,
+              billingDetails: billingDetails,
+              ),
+);
+```
+
+
+## 4.  Handle post-payment events
+
+Stripe sends a [`payment_intent.succeeded`](https://stripe.com/docs/api/events/types#event_types-payment_intent.succeeded) event when the payment completes. Use the Dashboard, a custom webhook, or a partner solution to receive these events and run actions, like sending an order confirmation email to your customer, logging the sale in a database, or starting a shipping workflow.
+
+Listen for these events rather than waiting on a callback from the client. On the client, the customer could close the browser window or quit the app before the callback executes. Setting up your integration to listen for asynchronous events also makes it easier to accept more payment methods in the future. Check out our [guide to payment methods](https://stripe.com/payments/payment-methods-guide) to see the differences between all supported payment methods.
+
+## 5. Test the integration
+
+If you are using your test Api key stripe will show a test page after confirming the intent. You can choose yourself whether or not to authorize or fail the payment. For more info about testing check the [Stripe docs](https://stripe.com/docs/payments/ideal/accept-a-payment?platform=ios#test-your-integration).
+
