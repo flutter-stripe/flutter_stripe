@@ -43,10 +43,10 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// ISO country code of the country where the merchant is located
     String? merchantCountryCode,
 
-    /// Three letter ISO currency code 
-    /// 
+    /// Three letter ISO currency code
+    ///
     /// Must be a supported currency code. See https://stripe.com/docs/currencies for supported currencies.
-    /// 
+    ///
     /// When [setupIntentClientSecret] is not empty it is required to provide a currencyCode.
     String? currencyCode,
 
@@ -77,7 +77,12 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// Flag for using the test environment
     @Default(false) bool testEnv,
 
-    /// Billing information of the customer.
+    /// Default billing information of the customer.
+    ///
+    /// Use this field to already prefill the customers billingDetails in the payment sheet.
+    /// For example when you supply a country the country will be set on the payment sheet +
+    /// alternative localization options. This does not set the billingDetails on the
+    /// paymentIntent since the customer can change those.
     @JsonKey(name: 'defaultBillingDetails') BillingDetails? billingDetails,
 
     /// Return URL is required for IDEAL and few other payment methods

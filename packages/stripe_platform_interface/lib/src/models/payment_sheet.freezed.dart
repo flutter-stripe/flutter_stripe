@@ -138,7 +138,12 @@ mixin _$SetupPaymentSheetParameters {
   /// Flag for using the test environment
   bool get testEnv => throw _privateConstructorUsedError;
 
-  /// Billing information of the customer.
+  /// Default billing information of the customer.
+  ///
+  /// Use this field to already prefill the customers billingDetails in the payment sheet.
+  /// For example when you supply a country the country will be set on the payment sheet +
+  /// alternative localization options. This does not set the billingDetails on the
+  /// paymentIntent since the customer can change those.
   @JsonKey(name: 'defaultBillingDetails')
   BillingDetails? get billingDetails => throw _privateConstructorUsedError;
 
@@ -531,7 +536,12 @@ class _$_SetupParameters implements _SetupParameters {
   final bool testEnv;
   @override
 
-  /// Billing information of the customer.
+  /// Default billing information of the customer.
+  ///
+  /// Use this field to already prefill the customers billingDetails in the payment sheet.
+  /// For example when you supply a country the country will be set on the payment sheet +
+  /// alternative localization options. This does not set the billingDetails on the
+  /// paymentIntent since the customer can change those.
   @JsonKey(name: 'defaultBillingDetails')
   final BillingDetails? billingDetails;
   @override
@@ -716,7 +726,12 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   bool get testEnv;
   @override
 
-  /// Billing information of the customer.
+  /// Default billing information of the customer.
+  ///
+  /// Use this field to already prefill the customers billingDetails in the payment sheet.
+  /// For example when you supply a country the country will be set on the payment sheet +
+  /// alternative localization options. This does not set the billingDetails on the
+  /// paymentIntent since the customer can change those.
   @JsonKey(name: 'defaultBillingDetails')
   BillingDetails? get billingDetails;
   @override
