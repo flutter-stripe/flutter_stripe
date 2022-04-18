@@ -71,6 +71,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
 
       // create some billingdetails
       final billingDetails = BillingDetails(
+        name: 'Flutter Stripe',
         email: 'email@stripe.com',
         phone: '+48888000888',
         address: Address(
