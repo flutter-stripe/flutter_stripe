@@ -81,7 +81,7 @@ public class ReadableMap {
                 return ReadableType.Array;
             } else if (value instanceof Number) {
                 return ReadableType.Number;
-            } else if (value instanceof Map) {
+            } else if (value instanceof Map || (value instanceof  JSONObject)) {
                 return ReadableType.Map;
             } else if (value instanceof String) {
                 return ReadableType.String;

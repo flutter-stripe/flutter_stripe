@@ -40,7 +40,7 @@ class _$SetupPaymentSheetParametersTearOff {
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? primaryButtonColor,
       bool testEnv = false,
-      @BillingDetailsConverter()
+      @JsonKey(name: 'defaultBillingDetails')
           BillingDetails? billingDetails,
       String? returnURL}) {
     return _SetupParameters(
@@ -138,8 +138,13 @@ mixin _$SetupPaymentSheetParameters {
   /// Flag for using the test environment
   bool get testEnv => throw _privateConstructorUsedError;
 
-  /// Billing information of the customer.
-  @BillingDetailsConverter()
+  /// Default billing information of the customer.
+  ///
+  /// Use this field to already prefill the customers billingDetails in the payment sheet.
+  /// For example when you supply a country the country will be set on the payment sheet +
+  /// alternative localization options. This does not set the billingDetails on the
+  /// paymentIntent since the customer can change those.
+  @JsonKey(name: 'defaultBillingDetails')
   BillingDetails? get billingDetails => throw _privateConstructorUsedError;
 
   /// Return URL is required for IDEAL and few other payment methods
@@ -174,7 +179,7 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? primaryButtonColor,
       bool testEnv,
-      @BillingDetailsConverter()
+      @JsonKey(name: 'defaultBillingDetails')
           BillingDetails? billingDetails,
       String? returnURL});
 
@@ -313,7 +318,7 @@ abstract class _$SetupParametersCopyWith<$Res>
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? primaryButtonColor,
       bool testEnv,
-      @BillingDetailsConverter()
+      @JsonKey(name: 'defaultBillingDetails')
           BillingDetails? billingDetails,
       String? returnURL});
 
@@ -440,7 +445,7 @@ class _$_SetupParameters implements _SetupParameters {
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           this.primaryButtonColor,
       this.testEnv = false,
-      @BillingDetailsConverter()
+      @JsonKey(name: 'defaultBillingDetails')
           this.billingDetails,
       this.returnURL});
 
@@ -531,8 +536,13 @@ class _$_SetupParameters implements _SetupParameters {
   final bool testEnv;
   @override
 
-  /// Billing information of the customer.
-  @BillingDetailsConverter()
+  /// Default billing information of the customer.
+  ///
+  /// Use this field to already prefill the customers billingDetails in the payment sheet.
+  /// For example when you supply a country the country will be set on the payment sheet +
+  /// alternative localization options. This does not set the billingDetails on the
+  /// paymentIntent since the customer can change those.
+  @JsonKey(name: 'defaultBillingDetails')
   final BillingDetails? billingDetails;
   @override
 
@@ -628,7 +638,7 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? primaryButtonColor,
       bool testEnv,
-      @BillingDetailsConverter()
+      @JsonKey(name: 'defaultBillingDetails')
           BillingDetails? billingDetails,
       String? returnURL}) = _$_SetupParameters;
 
@@ -716,8 +726,13 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   bool get testEnv;
   @override
 
-  /// Billing information of the customer.
-  @BillingDetailsConverter()
+  /// Default billing information of the customer.
+  ///
+  /// Use this field to already prefill the customers billingDetails in the payment sheet.
+  /// For example when you supply a country the country will be set on the payment sheet +
+  /// alternative localization options. This does not set the billingDetails on the
+  /// paymentIntent since the customer can change those.
+  @JsonKey(name: 'defaultBillingDetails')
   BillingDetails? get billingDetails;
   @override
 

@@ -23,8 +23,10 @@ _$_SetupParameters _$$_SetupParametersFromJson(Map<String, dynamic> json) =>
           json['allowsDelayedPaymentMethods'] as bool? ?? false,
       primaryButtonColor: ColorKey.fromJson(json['primaryButtonColor']),
       testEnv: json['testEnv'] as bool? ?? false,
-      billingDetails: const BillingDetailsConverter()
-          .fromJson(json['billingDetails'] as Map<String, dynamic>?),
+      billingDetails: json['defaultBillingDetails'] == null
+          ? null
+          : BillingDetails.fromJson(
+              json['defaultBillingDetails'] as Map<String, dynamic>),
       returnURL: json['returnURL'] as String?,
     );
 
@@ -44,8 +46,7 @@ Map<String, dynamic> _$$_SetupParametersToJson(_$_SetupParameters instance) =>
       'allowsDelayedPaymentMethods': instance.allowsDelayedPaymentMethods,
       'primaryButtonColor': ColorKey.toJson(instance.primaryButtonColor),
       'testEnv': instance.testEnv,
-      'billingDetails':
-          const BillingDetailsConverter().toJson(instance.billingDetails),
+      'defaultBillingDetails': instance.billingDetails,
       'returnURL': instance.returnURL,
     };
 
