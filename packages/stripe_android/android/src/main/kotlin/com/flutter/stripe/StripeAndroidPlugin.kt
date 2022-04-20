@@ -149,6 +149,18 @@ If you continue to have trouble, follow this discussion to get some support http
                 params = call.requiredArgument("params"),
                 promise = Promise(result)
             )
+            "collectBankAccount" -> stripeSdk.collectBankAccount(
+                isPaymentIntent = call.requiredArgument("isPaymentIntent"),
+                clientSecret = call.requiredArgument("clientSecret"),
+                params = call.requiredArgument("params"),
+                promise = Promise(result)
+            )
+            "verifyMicrodeposits" -> stripeSdk.verifyMicrodeposits(
+                isPaymentIntent = call.requiredArgument("isPaymentIntent"),
+                clientSecret = call.requiredArgument("clientSecret"),
+                params = call.requiredArgument("params"),
+                promise = Promise(result)
+            )
             else -> result.notImplemented()
         }
     }

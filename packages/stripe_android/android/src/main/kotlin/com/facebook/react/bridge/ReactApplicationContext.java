@@ -28,4 +28,8 @@ public class ReactApplicationContext extends ContextWrapper {
     public Activity getActivity() {
         return binding.getActivity();
     }
+
+    public Activity getCurrentActivity() {
+        return binding.getActivity();
+    }
 }
