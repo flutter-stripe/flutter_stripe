@@ -318,7 +318,7 @@ class WebStripe extends StripePlatform {
 
   @override
   Future<PaymentIntent> collectBankAccount(
-      {required IntentType intentType,
+      {required bool isPaymentIntent,
       required String clientSecret,
       required CollectBankAccountParams params}) {
     throw UnimplementedError();
@@ -326,7 +326,7 @@ class WebStripe extends StripePlatform {
 
   @override
   Future<PaymentIntent> verifyPaymentIntentWithMicrodeposits(
-      {required IntentType intentType,
+      {required bool isPaymentIntent,
       required String clientSecret,
       required VerifyMicroDepositsParams params}) {
     throw UnimplementedError();

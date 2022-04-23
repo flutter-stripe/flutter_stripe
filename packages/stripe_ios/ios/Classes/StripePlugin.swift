@@ -219,14 +219,14 @@ extension  StripePlugin {
     
     func verifyMicrodeposits(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
-        let intentType = arguments["intentType"] as? String,
-        let clientSecret = arguments["clientSecret"] as? String,
+        let isPaymentIntent = arguments["isPaymentIntent"] as? Bool,
+        let clientSecret = arguments["clientSecret"] as? NSString,
         let params = arguments["params"] as? NSDictionary else {
             result(FlutterError.invalidParams)
             return
         }
         verifyMicrodeposits(
-            intentType: intentType,
+            isPaymentIntent: isPaymentIntent,
             clientSecret: clientSecret,
             params: params,
             resolver: resolver(for: result),
@@ -236,14 +236,14 @@ extension  StripePlugin {
     
     func collectBankAccount(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
-        let intentType = arguments["intentType"] as? String,
+        let isPaymentIntent = arguments["intentType"] as? Bool,
         let clientSecret = arguments["clientSecret"] as? NSString,
         let params = arguments["params"] as? NSDictionary else {
             result(FlutterError.invalidParams)
             return
         }
         collectBankAccount(
-            intentType: intentType,
+            isPaymentIntent: isPaymentIntent,
             clientSecret: clientSecret,
             params: params,
             resolver: resolver(for: result),

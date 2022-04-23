@@ -396,7 +396,7 @@ class Stripe {
   /// iOS at the moment.
   Future<PaymentIntent> collectBankAccount({
     /// Whether the clientsecret is associated with setup or paymentintent
-    required IntentType intentType,
+    required bool isPaymentIntent,
 
     /// The clientSecret of the payment and setup intent
     required String clientSecret,
@@ -408,7 +408,7 @@ class Stripe {
 
   }) async {
     return await _platform.collectBankAccount(
-      intentType: intentType,
+      isPaymentIntent: isPaymentIntent,
       clientSecret: clientSecret,
       params: params,
     );
@@ -421,7 +421,7 @@ class Stripe {
   Future<PaymentIntent> verifyPaymentIntentWithMicrodeposits({
     /// Whether the clientsecret is associated with setup or paymentintent
 
-    required IntentType intentType,
+    required bool isPaymentIntent,
 
     /// The clientSecret of the payment and setup intent
 
@@ -431,7 +431,7 @@ class Stripe {
     required VerifyMicroDepositsParams params,
   }) async {
     return await _platform.verifyPaymentIntentWithMicrodeposits(
-      intentType: intentType,
+      isPaymentIntent: isPaymentIntent,
       clientSecret: clientSecret,
       params: params,
     );

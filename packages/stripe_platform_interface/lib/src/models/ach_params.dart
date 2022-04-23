@@ -26,13 +26,7 @@ class CollectBankAccountParams with _$CollectBankAccountParams {
 }
 
 /// The type of payment intent used for collecting bank accoutn
-enum IntentType {
-  /// Use this in case you created a paymentintent
-  payment,
 
-  /// Use this in case you created a setupintent.
-  setup,
-}
 
 @freezed
 

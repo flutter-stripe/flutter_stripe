@@ -312,19 +312,13 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<PaymentIntent> collectBankAccount({
-    required IntentType intentType,
+    required bool isPaymentIntent,
     required String clientSecret,
     required CollectBankAccountParams params,
   }) async {
-    if (_platformIsAndroid) {
-      throw UnimplementedError('''
-ACH payments are not yet implemented in the Stripe Android SDK.
-''');
-    }
-
     final result = await _methodChannel
         .invokeMapMethod<String, dynamic>('collectBankAccount', {
-      'intentType': intentType.name,
+      'isPaymentIntent': isPaymentIntent,
       'params': params.toJson(),
       'clientSecret': clientSecret,
     });
@@ -336,19 +330,13 @@ ACH payments are not yet implemented in the Stripe Android SDK.
 
   @override
   Future<PaymentIntent> verifyPaymentIntentWithMicrodeposits({
-    required IntentType intentType,
+    required bool isPaymentIntent,
     required String clientSecret,
     required VerifyMicroDepositsParams params,
   }) async {
-    if (_platformIsAndroid) {
-      throw UnimplementedError('''
-ACH payments are not yet implemented in the Stripe Android SDK.
-''');
-    }
-
     final result = await _methodChannel
         .invokeMapMethod<String, dynamic>('verifyMicrodeposits', {
-      'intentType': intentType.name,
+      'isPaymentIntent': isPaymentIntent,
       'params': params.toJson(),
       'clientSecret': clientSecret,
     });

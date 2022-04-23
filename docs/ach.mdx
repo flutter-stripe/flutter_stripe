@@ -5,10 +5,9 @@ description: Handle ACH Direct Debit payments
 
 # Accept a payment - ACH Direct Debit (US and Canada only)
 
-### Securely handling ideal payments
+### Handling ACH direct debit payments
 
 ACH Direct Debit is a delayed notification payment method, which means that it takes some time before the funds are transfered (around 4 days). At the moment Stripe only supports bank accounts for the US and Canada.
-
 
 ## 1. Create 
 
@@ -16,7 +15,7 @@ First, you need a Stripe account. [Register now](https://dashboard.stripe.com/re
 
 #### Server-side
 
-This integration requires endpoints on your server that talk to the Stripe API. Use one official libraries for access to the Stripe API from your server. [Follow the steps to create an Ideal payment here](https://stripe.com/docs/payments/ideal/accept-a-payment?platform=react-native#react-native-setup-server-side). For a full list of supported banks check [here](https://stripe.com/docs/payments/ideal/accept-a-payment?platform=ios#bank-reference).
+This integration requires endpoints on your server that talk to the Stripe API. Use one official libraries for access to the Stripe API from your server. [Follow the steps to create an ACH payment here](https://stripe.com/docs/payments/ach-debit/accept-a-payment?platform=react-native#react-native-create-payment-intent).
 
 #### Client-side
 
@@ -73,7 +72,7 @@ When you received the payment intents client secret you can use the FlutterStrip
         ),
       );
 
-final intent = await Stripe.instance.confirmPayment(
+final confirmIntent = await Stripe.instance.confirmPayment(
           paymentIntentResult['clientSecret'],
           PaymentMethodParams.usBankAccount(
               accountNumber: _accountController.text,
@@ -81,6 +80,34 @@ final intent = await Stripe.instance.confirmPayment(
               billingDetails: billingDetails,
               ),
 );
+```
+
+### Step 2: Verify bank with microdeposits.
+
+Not all customers can verify the bank instantly and in that cases Stripe sends a microdeposit to the bank account which takes 1-2 days to appear.
+
+The deposit can come into 2 shapes:
+* Descriptor code: Stripe will send a microdeposit of 0.01 USD to the customer's account with a 6 digit descriptor code that starts with `SM`. The customer will use this string to verify their bank account.
+* Amount: Stripe will send two non-unique microdeposits to the customers bank account with a statement that looks like: `AMTS: <amount1>,<amount2>`. The customer needs to enter the 2 deposit amounts to verify their bank account.
+
+In the Flutter Sdk use the `action` parameter of the intent that is retrieved from the `confirmIntent` method in step 1.
+
+```dart
+
+  confirmIntent.action?.maybeWhen(
+      verifyWithMicroDeposits: (_, __, ___) {
+        /// show some widget where user can enter the microdeposit info
+      },
+```
+
+After that collect the microdeposits. You must provide either a descriptor code or the two amounts not both. The example below shows how to invoke the Stripe sdk with the descriptorcode.
+```dart
+ await Stripe.instance.verifyPaymentIntentWithMicrodeposits(
+          isPaymentIntent: true,
+          clientSecret: widget.clientSecret,
+          params: VerifyMicroDepositsParams(
+            descriptorCode: _descriptorController.text
+          ));
 ```
 
 
@@ -92,5 +119,5 @@ Listen for these events rather than waiting on a callback from the client. On th
 
 ## 5. Test the integration
 
-If you are using your test Api key stripe will show a test page after confirming the intent. You can choose yourself whether or not to authorize or fail the payment. For more info about testing check the [Stripe docs](https://stripe.com/docs/payments/ideal/accept-a-payment?platform=ios#test-your-integration).
+If you are using your test Api key stripe will show a test page after confirming the intent. You can choose yourself whether or not to authorize or fail the payment. For more info about testing check the [Stripe docs](https://stripe.com/docs/payments/ach-debit/accept-a-payment?platform=react-native#test-integration).
 

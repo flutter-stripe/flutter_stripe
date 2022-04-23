@@ -9,6 +9,7 @@
           ]      
         ],
         ["Regional payments", [
+            ["ACH direct debit", "/ach"],
             ["Ideal", "/ideal"]
           ]
         ],

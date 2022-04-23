@@ -39,9 +39,25 @@ class _UsBankAccountScreenState extends State<UsBankAccountScreen> {
       padding: EdgeInsets.all(16),
       children: [
         SizedBox(height: 20),
+        TextField(
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: 'Routing number',
+          ),
+          controller: _routingNumberController,
+        ),
+        SizedBox(height: 10),
+        TextField(
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: 'Account number',
+          ),
+          controller: _accountController,
+        ),
+        SizedBox(height: 10),
         LoadingButton(
           onPressed: _handlePayPress,
-          text: 'Retrieve bank account',
+          text: 'Pay',
         ),
       ],
     );
@@ -75,15 +91,13 @@ class _UsBankAccountScreenState extends State<UsBankAccountScreen> {
       }
 
       if (paymentIntentResult['clientSecret'] != null) {
-        final confirmIntent = await Stripe.instance.collectBankAccount(
-          intentType: IntentType.payment,
-          clientSecret: paymentIntentResult['clientSecret'],
-          params: CollectBankAccountParams(billingDetails: billingDetails),
-        );
-
         final intent = await Stripe.instance.confirmPayment(
           paymentIntentResult['clientSecret'],
-          PaymentMethodParams.usBankAccount(),
+          PaymentMethodParams.usBankAccount(
+            routingNumber: _routingNumberController.text,
+            accountNumber: _accountController.text,
+            billingDetails: billingDetails,
+          ),
         );
 
         handleNexAction(intent.nextAction, intent.clientSecret);
@@ -174,13 +188,14 @@ class _VerifyMicroDepositsDialogState
   Future<void> verifyIntentWithMicroDeposit() async {
     try {
       await Stripe.instance.verifyPaymentIntentWithMicrodeposits(
-          intentType: IntentType.payment,
+          isPaymentIntent: true,
           clientSecret: widget.clientSecret,
           params: VerifyMicroDepositsParams(
-            descriptorCode: _amount1Controller.text.isNotEmpty
+            descriptorCode: _descriptorController.text.isNotEmpty
                 ? _descriptorController.text
                 : null,
-            amounts: _amount1Controller.text.isNotEmpty &&
+            amounts: _descriptorController.text.isEmpty &&
+                    _amount1Controller.text.isNotEmpty &&
                     _amount2Controller.text.isNotEmpty
                 ? [
                     int.parse(_amount1Controller.text),
