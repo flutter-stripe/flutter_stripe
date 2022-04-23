@@ -11,7 +11,7 @@ export 'src/models/errors.dart';
 export 'src/models/google_pay.dart';
 export 'src/models/next_action.dart';
 export 'src/models/payment_intents.dart';
-export 'src/models/payment_methods.dart' hide BillingDetailsConverter;
+export 'src/models/payment_methods.dart';
 export 'src/models/payment_sheet.dart';
 export 'src/models/setup_intent.dart';
 export 'src/models/three_d_secure.dart';
