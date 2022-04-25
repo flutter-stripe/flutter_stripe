@@ -1,3 +1,6 @@
+## 2.4.1
+- Updated freezed dependency to allow 2.x
+
 ## 2.4.0
 - Add support for paying with Klarna.
 - Several fixes by the Stripe sdk [v0.4.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.4.0)
