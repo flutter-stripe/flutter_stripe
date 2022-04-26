@@ -8,6 +8,16 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
   flutter: ">=2.0.0"
 
+flutter:
+  plugin:
+    platforms:
+      android:
+        default_package: stripe_android
+      ios:
+        default_package: stripe_ios
+      web:
+        default_package: stripe_web
+
 dependencies:
   flutter:
     sdk: flutter
