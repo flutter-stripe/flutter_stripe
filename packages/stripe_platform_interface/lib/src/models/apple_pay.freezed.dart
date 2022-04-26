@@ -805,3 +805,196 @@ abstract class _ApplePayPresentParams implements ApplePayPresentParams {
   _$ApplePayPresentParamsCopyWith<_ApplePayPresentParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+ApplePayErrorAddressField _$ApplePayErrorAddressFieldFromJson(
+    Map<String, dynamic> json) {
+  return _ApplePayErrorAddressField.fromJson(json);
+}
+
+/// @nodoc
+class _$ApplePayErrorAddressFieldTearOff {
+  const _$ApplePayErrorAddressFieldTearOff();
+
+  _ApplePayErrorAddressField call(
+      {required ApplePayContactFieldsType field, String? message}) {
+    return _ApplePayErrorAddressField(
+      field: field,
+      message: message,
+    );
+  }
+
+  ApplePayErrorAddressField fromJson(Map<String, Object?> json) {
+    return ApplePayErrorAddressField.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $ApplePayErrorAddressField = _$ApplePayErrorAddressFieldTearOff();
+
+/// @nodoc
+mixin _$ApplePayErrorAddressField {
+  /// Address field that is affected by the error
+  ApplePayContactFieldsType get field => throw _privateConstructorUsedError;
+
+  /// The error message that will be shown when it is invalid
+  ///
+  /// Defaults to error in the stripe sdk.
+  String? get message => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ApplePayErrorAddressFieldCopyWith<ApplePayErrorAddressField> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ApplePayErrorAddressFieldCopyWith<$Res> {
+  factory $ApplePayErrorAddressFieldCopyWith(ApplePayErrorAddressField value,
+          $Res Function(ApplePayErrorAddressField) then) =
+      _$ApplePayErrorAddressFieldCopyWithImpl<$Res>;
+  $Res call({ApplePayContactFieldsType field, String? message});
+}
+
+/// @nodoc
+class _$ApplePayErrorAddressFieldCopyWithImpl<$Res>
+    implements $ApplePayErrorAddressFieldCopyWith<$Res> {
+  _$ApplePayErrorAddressFieldCopyWithImpl(this._value, this._then);
+
+  final ApplePayErrorAddressField _value;
+  // ignore: unused_field
+  final $Res Function(ApplePayErrorAddressField) _then;
+
+  @override
+  $Res call({
+    Object? field = freezed,
+    Object? message = freezed,
+  }) {
+    return _then(_value.copyWith(
+      field: field == freezed
+          ? _value.field
+          : field // ignore: cast_nullable_to_non_nullable
+              as ApplePayContactFieldsType,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$ApplePayErrorAddressFieldCopyWith<$Res>
+    implements $ApplePayErrorAddressFieldCopyWith<$Res> {
+  factory _$ApplePayErrorAddressFieldCopyWith(_ApplePayErrorAddressField value,
+          $Res Function(_ApplePayErrorAddressField) then) =
+      __$ApplePayErrorAddressFieldCopyWithImpl<$Res>;
+  @override
+  $Res call({ApplePayContactFieldsType field, String? message});
+}
+
+/// @nodoc
+class __$ApplePayErrorAddressFieldCopyWithImpl<$Res>
+    extends _$ApplePayErrorAddressFieldCopyWithImpl<$Res>
+    implements _$ApplePayErrorAddressFieldCopyWith<$Res> {
+  __$ApplePayErrorAddressFieldCopyWithImpl(_ApplePayErrorAddressField _value,
+      $Res Function(_ApplePayErrorAddressField) _then)
+      : super(_value, (v) => _then(v as _ApplePayErrorAddressField));
+
+  @override
+  _ApplePayErrorAddressField get _value =>
+      super._value as _ApplePayErrorAddressField;
+
+  @override
+  $Res call({
+    Object? field = freezed,
+    Object? message = freezed,
+  }) {
+    return _then(_ApplePayErrorAddressField(
+      field: field == freezed
+          ? _value.field
+          : field // ignore: cast_nullable_to_non_nullable
+              as ApplePayContactFieldsType,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_ApplePayErrorAddressField implements _ApplePayErrorAddressField {
+  const _$_ApplePayErrorAddressField({required this.field, this.message});
+
+  factory _$_ApplePayErrorAddressField.fromJson(Map<String, dynamic> json) =>
+      _$$_ApplePayErrorAddressFieldFromJson(json);
+
+  @override
+
+  /// Address field that is affected by the error
+  final ApplePayContactFieldsType field;
+  @override
+
+  /// The error message that will be shown when it is invalid
+  ///
+  /// Defaults to error in the stripe sdk.
+  final String? message;
+
+  @override
+  String toString() {
+    return 'ApplePayErrorAddressField(field: $field, message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ApplePayErrorAddressField &&
+            const DeepCollectionEquality().equals(other.field, field) &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(field),
+      const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$ApplePayErrorAddressFieldCopyWith<_ApplePayErrorAddressField>
+      get copyWith =>
+          __$ApplePayErrorAddressFieldCopyWithImpl<_ApplePayErrorAddressField>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ApplePayErrorAddressFieldToJson(this);
+  }
+}
+
+abstract class _ApplePayErrorAddressField implements ApplePayErrorAddressField {
+  const factory _ApplePayErrorAddressField(
+      {required ApplePayContactFieldsType field,
+      String? message}) = _$_ApplePayErrorAddressField;
+
+  factory _ApplePayErrorAddressField.fromJson(Map<String, dynamic> json) =
+      _$_ApplePayErrorAddressField.fromJson;
+
+  @override
+
+  /// Address field that is affected by the error
+  ApplePayContactFieldsType get field;
+  @override
+
+  /// The error message that will be shown when it is invalid
+  ///
+  /// Defaults to error in the stripe sdk.
+  String? get message;
+  @override
+  @JsonKey(ignore: true)
+  _$ApplePayErrorAddressFieldCopyWith<_ApplePayErrorAddressField>
+      get copyWith => throw _privateConstructorUsedError;
+}

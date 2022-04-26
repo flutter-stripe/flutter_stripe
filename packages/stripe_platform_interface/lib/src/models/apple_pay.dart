@@ -108,3 +108,21 @@ class ApplePayPresentParams with _$ApplePayPresentParams {
   factory ApplePayPresentParams.fromJson(Map<String, dynamic> json) =>
       _$ApplePayPresentParamsFromJson(json);
 }
+
+
+@freezed
+class ApplePayErrorAddressField with _$ApplePayErrorAddressField {
+  @JsonSerializable(explicitToJson: true)
+  const factory ApplePayErrorAddressField({
+    /// Address field that is affected by the error
+    required ApplePayContactFieldsType field,
+
+    /// The error message that will be shown when it is invalid
+    ///
+    /// Defaults to error in the stripe sdk.
+    String? message,
+  }) = _ApplePayErrorAddressField;
+
+  factory ApplePayErrorAddressField.fromJson(Map<String, dynamic> json) =>
+      _$ApplePayErrorAddressFieldFromJson(json);
+}

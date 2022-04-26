@@ -101,3 +101,17 @@ const _$ApplePayContactFieldsTypeEnumMap = {
   ApplePayContactFieldsType.phoneticName: 'phoneticName',
   ApplePayContactFieldsType.postalAddress: 'postalAddress',
 };
+
+_$_ApplePayErrorAddressField _$$_ApplePayErrorAddressFieldFromJson(
+        Map<String, dynamic> json) =>
+    _$_ApplePayErrorAddressField(
+      field: $enumDecode(_$ApplePayContactFieldsTypeEnumMap, json['field']),
+      message: json['message'] as String?,
+    );
+
+Map<String, dynamic> _$$_ApplePayErrorAddressFieldToJson(
+        _$_ApplePayErrorAddressField instance) =>
+    <String, dynamic>{
+      'field': _$ApplePayContactFieldsTypeEnumMap[instance.field],
+      'message': instance.message,
+    };
