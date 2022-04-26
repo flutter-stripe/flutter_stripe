@@ -1,3 +1,15 @@
+## 2.5.0
+- BREAKING CHANGE: Mostly fixes and changes to types, but some method's now accept slightly different parameters:
+  - Removed setUrlSchemeOnAndroid in favor of setReturnUrlSchemeOnAndroid. setReturnUrlSchemeOnAndroid functions exactly the same, this is just a rename.
+  - Removed handleCardAction in favor of handleNextAction. handleNextAction functions exactly the same, this is just a rename.
+- BREAKING: This library now supports iOS 12 and up, due to `stripe-ios` increasing the deployment target.
+  - To upgrade your iOS deployment target to 12.0, you can either do so in Xcode under your Build Settings, or by modifying IPHONEOS_DEPLOYMENT_TARGET in your project.pbxproj directly. You will also need to update your Podfile to target :ios, '12.0'.
+- Feat: add card ID and bankAccount ID to token response
+- Feat: Add support for ACHv2
+- Feat: Add support for setting a card's currency when creating a Token
+- Feat: Added support for placeholderColor, textErrorColor , borderColor, borderRadius, and borderWidth for AuBECSDebitForm on iOS
+- Several fixes by the Stripe sdk [v0.7.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.4.0)
+
 ## 2.4.0
 - Add support for paying with Klarna.
 - Several fixes by the Stripe sdk [v0.4.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.4.0)
