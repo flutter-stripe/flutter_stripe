@@ -31,6 +31,15 @@ class Stripe {
     return instance._publishableKey!;
   }
 
+  /// Whether or not to set the return url for Androdi as well
+  static set setReturnUrlSchemeOnAndroid(bool? value) {
+    if (value == instance._setReturnUrlSchemeOnAndroid) {
+      return;
+    }
+    instance._setReturnUrlSchemeOnAndroid = value;
+    instance.markNeedsSettings();
+  }
+
   /// Retrieves the id associate with the Stripe account.
   static String? get stripeAccountId => instance._stripeAccountId;
 
@@ -70,6 +79,11 @@ class Stripe {
     return instance._urlScheme;
   }
 
+  /// Retrieves the setReturnUrlSchemeOnAndroid parameter
+  static bool? get setReturnUrlSchemeOnAndroid {
+    return instance._setReturnUrlSchemeOnAndroid;
+  }
+
   /// Retrieves the merchant identifier.
   static String? get merchantIdentifier => instance._merchantIdentifier;
 
@@ -91,6 +105,7 @@ class Stripe {
         stripeAccountId: stripeAccountId,
         threeDSecureParams: threeDSecureParams,
         urlScheme: urlScheme,
+        setReturnUrlSchemeOnAndroid: setReturnUrlSchemeOnAndroid,
       );
 
   /// Exposes a [ValueListenable] whether or not Apple pay is supported for this
@@ -375,6 +390,53 @@ class Stripe {
     return await _platform.googlePayIsSupported(params);
   }
 
+  /// Collect the bankaccount details for the payment intent.
+  ///
+  /// Only US bank accounts are supported. This method is only implemented for
+  /// iOS at the moment.
+  Future<PaymentIntent> collectBankAccount({
+    /// Whether the clientsecret is associated with setup or paymentintent
+    required bool isPaymentIntent,
+
+    /// The clientSecret of the payment and setup intent
+    required String clientSecret,
+
+    /// Parameters associated with the account holder.
+    ///
+    /// The name and email is required.
+    required CollectBankAccountParams params,
+
+  }) async {
+    return await _platform.collectBankAccount(
+      isPaymentIntent: isPaymentIntent,
+      clientSecret: clientSecret,
+      params: params,
+    );
+  }
+
+  /// Verify the bank account with microtransactions
+  ///
+  /// Only US bank accounts are supported.This method is only implemented for
+  /// iOS at the moment.
+  Future<PaymentIntent> verifyPaymentIntentWithMicrodeposits({
+    /// Whether the clientsecret is associated with setup or paymentintent
+
+    required bool isPaymentIntent,
+
+    /// The clientSecret of the payment and setup intent
+
+    required String clientSecret,
+
+    /// Parameters to verify the microdeposits.
+    required VerifyMicroDepositsParams params,
+  }) async {
+    return await _platform.verifyPaymentIntentWithMicrodeposits(
+      isPaymentIntent: isPaymentIntent,
+      clientSecret: clientSecret,
+      params: params,
+    );
+  }
+
   FutureOr<void> _awaitForSettings() {
     if (_needsSettings) {
       _settingsFuture = applySettings();
@@ -394,6 +456,7 @@ class Stripe {
   ThreeDSecureConfigurationParams? _threeDSecureParams;
   String? _merchantIdentifier;
   String? _urlScheme;
+  bool? _setReturnUrlSchemeOnAndroid;
 
   static StripePlatform? __platform;
 
@@ -413,13 +476,13 @@ class Stripe {
     }
   }
 
-  Future<void> _initialise({
-    required String publishableKey,
-    String? stripeAccountId,
-    ThreeDSecureConfigurationParams? threeDSecureParams,
-    String? merchantIdentifier,
-    String? urlScheme,
-  }) async {
+  Future<void> _initialise(
+      {required String publishableKey,
+      String? stripeAccountId,
+      ThreeDSecureConfigurationParams? threeDSecureParams,
+      String? merchantIdentifier,
+      String? urlScheme,
+      bool? setReturnUrlSchemeOnAndroid}) async {
     _needsSettings = false;
     await _platform.initialise(
       publishableKey: publishableKey,

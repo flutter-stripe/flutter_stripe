@@ -96,5 +96,14 @@ public class ReadableMap {
     public double getDouble(String key) {
         return map.optDouble(key);
     }
+
+    @Nullable
+    public ReadableArray getArray(@NotNull String key) {
+        if (map.optJSONArray(key) != null && map.optJSONArray(key) != JSONObject.NULL) {
+            return new ReadableArray(map.optJSONArray(key));
+        } else {
+            return null;
+        }
+    }
 }
 

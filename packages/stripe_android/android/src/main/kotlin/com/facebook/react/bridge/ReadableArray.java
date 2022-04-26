@@ -1,5 +1,9 @@
 package com.facebook.react.bridge;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 /**
@@ -7,7 +11,19 @@ import java.util.ArrayList;
  */
 public class ReadableArray extends ArrayList<Object> {
 
-    public String getString(int index) {
-        return (String) get(index);
+
+    private JSONArray array;
+
+    public ReadableArray(JSONArray array) {
+        this.array = array;
     }
+
+    public String getString(int index) throws JSONException {
+        return array.getString(index);
+    }
+
+    public int getInt(int index) throws JSONException {
+        return array.getInt(index);
+    }
+
 }

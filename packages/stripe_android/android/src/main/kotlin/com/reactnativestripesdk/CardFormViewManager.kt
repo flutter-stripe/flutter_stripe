@@ -28,27 +28,27 @@ class CardFormViewManager : SimpleViewManager<CardFormView>() {
 
   @ReactProp(name = "dangerouslyGetFullCardDetails")
   fun setDangerouslyGetFullCardDetails(view: CardFormView, dangerouslyGetFullCardDetails: Boolean = false) {
-    view.setDangerouslyGetFullCardDetails(dangerouslyGetFullCardDetails);
+    view.setDangerouslyGetFullCardDetails(dangerouslyGetFullCardDetails)
   }
 
   @ReactProp(name = "postalCodeEnabled")
   fun setPostalCodeEnabled(view: CardFormView, postalCodeEnabled: Boolean = false) {
-    view.setPostalCodeEnabled(postalCodeEnabled);
+    view.setPostalCodeEnabled(postalCodeEnabled)
   }
 
   // @ReactProp(name = "placeholder")
   // fun setPlaceHolders(view: CardFormView, placeholder: ReadableMap) {
-  //   view.setPlaceHolders(placeholder);
+  //   view.setPlaceHolders(placeholder)
   // }
 
   @ReactProp(name = "autofocus")
   fun setAutofocus(view: CardFormView, autofocus: Boolean = false) {
-    view.setAutofocus(autofocus);
+    view.setAutofocus(autofocus)
   }
 
   @ReactProp(name = "cardStyle")
   fun setCardStyle(view: CardFormView, cardStyle: ReadableMap) {
-    view.setCardStyle(cardStyle);
+    view.setCardStyle(cardStyle)
   }
 
   override fun createViewInstance(reactContext: ThemedReactContext): CardFormView {
@@ -68,7 +68,6 @@ class CardFormViewManager : SimpleViewManager<CardFormView>() {
     stripeSdkModule?.cardFormView = null
     reactContextRef = null
   }
-
 
   fun getCardViewInstance(): CardFormView? {
     val stripeSdkModule: StripeSdkModule? = reactContextRef?.getNativeModule(StripeSdkModule::class.java)

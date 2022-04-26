@@ -4,12 +4,9 @@ import bodyParser from 'body-parser';
 import env from 'dotenv';
 import express from 'express';
 import Stripe from 'stripe';
-import cors from 'cors';
 import { generateResponse } from './utils';
 // Replace if using a different env file or config.
 env.config({ path: './.env' });
-
-
 
 const stripePublishableKey = process.env.STRIPE_PUBLISHABLE_KEY || '';
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY || '';
@@ -17,7 +14,6 @@ const stripeWebhookSecret = process.env.STRIPE_WEBHOOK_SECRET || '';
 
 const app = express();
 
-app.use(cors())
 app.use(
   (
     req: express.Request,
@@ -141,7 +137,7 @@ app.post(
       return res.send({
         clientSecret: paymentIntent.client_secret,
       });
-    } catch (error) {
+    } catch (error: any) {
       return res.send({
         error: error.raw.message,
       });
@@ -318,7 +314,7 @@ app.post(
       }
 
       return res.sendStatus(400);
-    } catch (e) {
+    } catch (e: any) {
       // Handle "hard declines" e.g. insufficient funds, expired card, etc
       // See https://stripe.com/docs/declines/codes for more.
       return res.send({ error: e.message });
@@ -461,7 +457,7 @@ app.post('/charge-card-off-session', async (req, res) => {
       clientSecret: paymentIntent.client_secret,
       publicKey: stripePublishableKey,
     });
-  } catch (err) {
+  } catch (err: any) {
     if (err.code === 'authentication_required') {
       // Bring the customer back on-session to authenticate the purchase
       // You can do this by sending an email or app notification to let them know
@@ -621,7 +617,7 @@ app.post('/universal-payment', async (req, res) => {
     res.send({
       clientSecret: paymentIntent.client_secret,
     });
-  } catch (err) {
+  } catch (err: any) {
     if (err.code === 'authentication_required') {
       // Bring the customer back on-session to authenticate the purchase
       // You can do this by sending an email or app notification to let them know

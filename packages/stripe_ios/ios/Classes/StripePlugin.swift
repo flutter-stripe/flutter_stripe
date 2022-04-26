@@ -72,8 +72,8 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
             return presentApplePay(call, result: result)
         case "configure3dSecure":
             return configure3dSecure(call, result: result)
-        case "handleCardAction":
-            return handleCardAction(call, result: result)
+        case "handleNextAction":
+            return handleNextAction(call, result: result)
         case "confirmPayment":
             return confirmPayment(call, result: result)
         case "retrievePaymentIntent":
@@ -90,6 +90,10 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
             return createApplePayToken(call, result: result)
         case "openApplePaySetup":
             return openApplePaySetup(call, result: result)
+        case "verifyMicrodeposits":
+            return verifyMicrodeposits(call, result: result)
+        case "collectBankAccount":
+            return collectBankAccount(call, result: result)
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -213,10 +217,44 @@ extension  StripePlugin {
         )
     }
     
+    func verifyMicrodeposits(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? FlutterMap,
+        let isPaymentIntent = arguments["isPaymentIntent"] as? Bool,
+        let clientSecret = arguments["clientSecret"] as? NSString,
+        let params = arguments["params"] as? NSDictionary else {
+            result(FlutterError.invalidParams)
+            return
+        }
+        verifyMicrodeposits(
+            isPaymentIntent: isPaymentIntent,
+            clientSecret: clientSecret,
+            params: params,
+            resolver: resolver(for: result),
+            rejecter: rejecter(for: result)
+        )
+    }
+    
+    func collectBankAccount(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? FlutterMap,
+        let isPaymentIntent = arguments["intentType"] as? Bool,
+        let clientSecret = arguments["clientSecret"] as? NSString,
+        let params = arguments["params"] as? NSDictionary else {
+            result(FlutterError.invalidParams)
+            return
+        }
+        collectBankAccount(
+            isPaymentIntent: isPaymentIntent,
+            clientSecret: clientSecret,
+            params: params,
+            resolver: resolver(for: result),
+            rejecter: rejecter(for: result)
+        )
+    }
+    
     func handleURLCallback(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? NSDictionary,
               let url = arguments["url"] as? String else {
-            result(FlutterError.init(code: ApplePayErrorType.Failed.rawValue, message: "Invalid parametes", details: nil))
+            result(FlutterError.init(code: ErrorType.Failed, message: "Invalid parametes", details: nil))
             return
         }
         handleURLCallback(
@@ -228,7 +266,7 @@ extension  StripePlugin {
     
     func presentApplePay(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let params = call.arguments as? NSDictionary else {
-            result(FlutterError.init(code: ApplePayErrorType.Failed.rawValue, message: "Invalid parametes", details: nil))
+            result(FlutterError.init(code: ErrorType.Failed, message: "Invalid parametes", details: nil))
             return
         }
         presentApplePay(
@@ -254,13 +292,13 @@ extension  StripePlugin {
         )
     }
     
-    func handleCardAction(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+    func handleNextAction(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let paymentIntentClientSecret = arguments["paymentIntentClientSecret"] as? String else {
             result(FlutterError.invalidParams)
             return
         }
-        handleCardAction(
+        handleNextAction(
             paymentIntentClientSecret: paymentIntentClientSecret,
             resolver: resolver(for: result),
             rejecter: rejecter(for: result)

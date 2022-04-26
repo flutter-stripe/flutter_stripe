@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'address.dart';
+import 'next_action.dart';
 
 part 'payment_intents.freezed.dart';
 part 'payment_intents.g.dart';
@@ -54,6 +55,10 @@ class PaymentIntent with _$PaymentIntent {
     /// Timestamp since epoch when the intent is cancelled.
     String? canceledAt,
 
+    /// Additional action that needs to be taken in order to complete a payment
+    /// using the provided resource.
+    NextAction? nextAction,
+
     /// Shipping information of the payment intent.
     ShippingDetails? shipping,
   }) = _PaymentIntent;
@@ -80,6 +85,8 @@ enum ConfirmationMethod {
   Automatic,
 }
 
+//nextActionMap.putString("type", "urlRedirect")
+//     nextActionMap.putString("redirectUrl", it.url.toString())
 @freezed
 
 /// Shipping information

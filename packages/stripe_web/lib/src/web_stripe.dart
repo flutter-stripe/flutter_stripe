@@ -38,6 +38,7 @@ class WebStripe extends StripePlatform {
     ThreeDSecureConfigurationParams? threeDSecureParams,
     String? merchantIdentifier,
     String? urlScheme,
+    bool? setReturnUrlSchemeOnAndroid,
   }) async {
     if (__stripe != null) return;
     __stripe = s.Stripe(
@@ -313,6 +314,22 @@ class WebStripe extends StripePlatform {
       autofocus: autofocus,
       dangerouslyUpdateFullCardDetails: dangerouslyUpdateFullCardDetails,
     );
+  }
+
+  @override
+  Future<PaymentIntent> collectBankAccount(
+      {required bool isPaymentIntent,
+      required String clientSecret,
+      required CollectBankAccountParams params}) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<PaymentIntent> verifyPaymentIntentWithMicrodeposits(
+      {required bool isPaymentIntent,
+      required String clientSecret,
+      required VerifyMicroDepositsParams params}) {
+    throw UnimplementedError();
   }
 }
 

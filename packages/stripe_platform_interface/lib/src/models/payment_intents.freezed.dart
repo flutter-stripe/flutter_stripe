@@ -36,6 +36,7 @@ class _$PaymentIntentTearOff {
       String? description,
       String? receiptEmail,
       String? canceledAt,
+      NextAction? nextAction,
       ShippingDetails? shipping}) {
     return _PaymentIntent(
       id: id,
@@ -51,6 +52,7 @@ class _$PaymentIntentTearOff {
       description: description,
       receiptEmail: receiptEmail,
       canceledAt: canceledAt,
+      nextAction: nextAction,
       shipping: shipping,
     );
   }
@@ -105,6 +107,10 @@ mixin _$PaymentIntent {
   /// Timestamp since epoch when the intent is cancelled.
   String? get canceledAt => throw _privateConstructorUsedError;
 
+  /// Additional action that needs to be taken in order to complete a payment
+  /// using the provided resource.
+  NextAction? get nextAction => throw _privateConstructorUsedError;
+
   /// Shipping information of the payment intent.
   ShippingDetails? get shipping => throw _privateConstructorUsedError;
 
@@ -133,8 +139,10 @@ abstract class $PaymentIntentCopyWith<$Res> {
       String? description,
       String? receiptEmail,
       String? canceledAt,
+      NextAction? nextAction,
       ShippingDetails? shipping});
 
+  $NextActionCopyWith<$Res>? get nextAction;
   $ShippingDetailsCopyWith<$Res>? get shipping;
 }
 
@@ -162,6 +170,7 @@ class _$PaymentIntentCopyWithImpl<$Res>
     Object? description = freezed,
     Object? receiptEmail = freezed,
     Object? canceledAt = freezed,
+    Object? nextAction = freezed,
     Object? shipping = freezed,
   }) {
     return _then(_value.copyWith(
@@ -217,11 +226,26 @@ class _$PaymentIntentCopyWithImpl<$Res>
           ? _value.canceledAt
           : canceledAt // ignore: cast_nullable_to_non_nullable
               as String?,
+      nextAction: nextAction == freezed
+          ? _value.nextAction
+          : nextAction // ignore: cast_nullable_to_non_nullable
+              as NextAction?,
       shipping: shipping == freezed
           ? _value.shipping
           : shipping // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
     ));
+  }
+
+  @override
+  $NextActionCopyWith<$Res>? get nextAction {
+    if (_value.nextAction == null) {
+      return null;
+    }
+
+    return $NextActionCopyWith<$Res>(_value.nextAction!, (value) {
+      return _then(_value.copyWith(nextAction: value));
+    });
   }
 
   @override
@@ -257,8 +281,11 @@ abstract class _$PaymentIntentCopyWith<$Res>
       String? description,
       String? receiptEmail,
       String? canceledAt,
+      NextAction? nextAction,
       ShippingDetails? shipping});
 
+  @override
+  $NextActionCopyWith<$Res>? get nextAction;
   @override
   $ShippingDetailsCopyWith<$Res>? get shipping;
 }
@@ -289,6 +316,7 @@ class __$PaymentIntentCopyWithImpl<$Res>
     Object? description = freezed,
     Object? receiptEmail = freezed,
     Object? canceledAt = freezed,
+    Object? nextAction = freezed,
     Object? shipping = freezed,
   }) {
     return _then(_PaymentIntent(
@@ -344,6 +372,10 @@ class __$PaymentIntentCopyWithImpl<$Res>
           ? _value.canceledAt
           : canceledAt // ignore: cast_nullable_to_non_nullable
               as String?,
+      nextAction: nextAction == freezed
+          ? _value.nextAction
+          : nextAction // ignore: cast_nullable_to_non_nullable
+              as NextAction?,
       shipping: shipping == freezed
           ? _value.shipping
           : shipping // ignore: cast_nullable_to_non_nullable
@@ -370,6 +402,7 @@ class _$_PaymentIntent implements _PaymentIntent {
       this.description,
       this.receiptEmail,
       this.canceledAt,
+      this.nextAction,
       this.shipping});
 
   factory _$_PaymentIntent.fromJson(Map<String, dynamic> json) =>
@@ -429,12 +462,17 @@ class _$_PaymentIntent implements _PaymentIntent {
   final String? canceledAt;
   @override
 
+  /// Additional action that needs to be taken in order to complete a payment
+  /// using the provided resource.
+  final NextAction? nextAction;
+  @override
+
   /// Shipping information of the payment intent.
   final ShippingDetails? shipping;
 
   @override
   String toString() {
-    return 'PaymentIntent(id: $id, amount: $amount, created: $created, currency: $currency, status: $status, clientSecret: $clientSecret, livemode: $livemode, captureMethod: $captureMethod, confirmationMethod: $confirmationMethod, paymentMethodId: $paymentMethodId, description: $description, receiptEmail: $receiptEmail, canceledAt: $canceledAt, shipping: $shipping)';
+    return 'PaymentIntent(id: $id, amount: $amount, created: $created, currency: $currency, status: $status, clientSecret: $clientSecret, livemode: $livemode, captureMethod: $captureMethod, confirmationMethod: $confirmationMethod, paymentMethodId: $paymentMethodId, description: $description, receiptEmail: $receiptEmail, canceledAt: $canceledAt, nextAction: $nextAction, shipping: $shipping)';
   }
 
   @override
@@ -462,6 +500,8 @@ class _$_PaymentIntent implements _PaymentIntent {
                 .equals(other.receiptEmail, receiptEmail) &&
             const DeepCollectionEquality()
                 .equals(other.canceledAt, canceledAt) &&
+            const DeepCollectionEquality()
+                .equals(other.nextAction, nextAction) &&
             const DeepCollectionEquality().equals(other.shipping, shipping));
   }
 
@@ -481,6 +521,7 @@ class _$_PaymentIntent implements _PaymentIntent {
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(receiptEmail),
       const DeepCollectionEquality().hash(canceledAt),
+      const DeepCollectionEquality().hash(nextAction),
       const DeepCollectionEquality().hash(shipping));
 
   @JsonKey(ignore: true)
@@ -509,6 +550,7 @@ abstract class _PaymentIntent implements PaymentIntent {
       String? description,
       String? receiptEmail,
       String? canceledAt,
+      NextAction? nextAction,
       ShippingDetails? shipping}) = _$_PaymentIntent;
 
   factory _PaymentIntent.fromJson(Map<String, dynamic> json) =
@@ -566,6 +608,11 @@ abstract class _PaymentIntent implements PaymentIntent {
 
   /// Timestamp since epoch when the intent is cancelled.
   String? get canceledAt;
+  @override
+
+  /// Additional action that needs to be taken in order to complete a payment
+  /// using the provided resource.
+  NextAction? get nextAction;
   @override
 
   /// Shipping information of the payment intent.

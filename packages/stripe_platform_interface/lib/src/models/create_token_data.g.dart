@@ -69,6 +69,7 @@ _$_CardTokenParams _$$_CardTokenParamsFromJson(Map<String, dynamic> json) =>
       address: json['address'] == null
           ? null
           : Address.fromJson(json['address'] as Map<String, dynamic>),
+      currency: json['currency'] as String?,
     );
 
 Map<String, dynamic> _$$_CardTokenParamsToJson(_$_CardTokenParams instance) =>
@@ -76,6 +77,7 @@ Map<String, dynamic> _$$_CardTokenParamsToJson(_$_CardTokenParams instance) =>
       'type': _$TokenTypeEnumMap[instance.type],
       'name': instance.name,
       'address': instance.address,
+      'currency': instance.currency,
     };
 
 _$_BankAccountTokenParams _$$_BankAccountTokenParamsFromJson(
@@ -135,6 +137,7 @@ Map<String, dynamic> _$$_TokenDataToJson(_$_TokenData instance) =>
     };
 
 _$_CardData _$$_CardDataFromJson(Map<String, dynamic> json) => _$_CardData(
+      id: json['id'] as String?,
       brand: json['brand'] as String,
       country: json['country'] as String?,
       currency: json['currency'] as String?,
@@ -150,6 +153,7 @@ _$_CardData _$$_CardDataFromJson(Map<String, dynamic> json) => _$_CardData(
 
 Map<String, dynamic> _$$_CardDataToJson(_$_CardData instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'brand': instance.brand,
       'country': instance.country,
       'currency': instance.currency,

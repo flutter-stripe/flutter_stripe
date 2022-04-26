@@ -1,8 +1,21 @@
+## 2.5.0
+- BREAKING CHANGE: Mostly fixes and changes to types, but some method's now accept slightly different parameters:
+  - Removed setUrlSchemeOnAndroid in favor of setReturnUrlSchemeOnAndroid. setReturnUrlSchemeOnAndroid functions exactly the same, this is just a rename.
+  - Removed handleCardAction in favor of handleNextAction. handleNextAction functions exactly the same, this is just a rename.
+- BREAKING: This library now supports iOS 12 and up, due to `stripe-ios` increasing the deployment target.
+  - To upgrade your iOS deployment target to 12.0, you can either do so in Xcode under your Build Settings, or by modifying IPHONEOS_DEPLOYMENT_TARGET in your project.pbxproj directly. You will also need to update your Podfile to target :ios, '12.0'.
+- Feat: add card ID and bankAccount ID to token response
+- Feat: Add support for ACHv2
+- Feat: Add support for setting a card's currency when creating a Token
+- Feat: Added support for placeholderColor, textErrorColor , borderColor, borderRadius, and borderWidth for AuBECSDebitForm on iOS
+- Several fixes by the Stripe sdk [v0.7.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.4.0)
+- Updated freezed dependency to allow 2.x
+
 ## 2.4.0
 - Add support for paying with Klarna.
 - Several fixes by the Stripe sdk [v0.4.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.4.0)
 - Fix [#632](https://github.com/flutter-stripe/flutter_stripe/issues/632) added return_url to payment sheet. Needed for Ideal payments
-- Fix [#185](https://github.com/flutter-stripe/flutter_stripe/issues/185) make sure that address will be added to the payment intent. 
+- Fix [#185](https://github.com/flutter-stripe/flutter_stripe/issues/185) make sure that address will be added to the payment intent.
 
 ## 2.3.0
 - add isGooglePaySupported method
@@ -40,13 +53,13 @@ Other changes
 
 ## 2.0.1
 
- - **FIX**: focus issue on CardFormField on Android. #397
- - **DOCS**: correct AppCompat mention in README.md. #392
+- **FIX**: focus issue on CardFormField on Android. #397
+- **DOCS**: correct AppCompat mention in README.md. #392
 
 ## 2.0.0
 ** First stable release **
 
-** Breaking changes ** 
+** Breaking changes **
 - Temporarily disable Wechat
 
 Other changes
@@ -59,7 +72,7 @@ Other changes
 ** BREAKING CHANGES **
 - Deprecate redundant parameters for payment sheet.
 
-Other changes 
+Other changes
 - Add new multiline card form.
 - Add Stripe Google pay integration.
 - Add WeChat payment method.
@@ -88,7 +101,7 @@ Other changes
 - Fix #147 add `urlscheme to initialise method`. Thanks to @dariuspo.
 - Improved focus behavior on Cardfield.
 - Add `dangerouslyGetFullCardDetails` and `FontFamily` to cardfield.
-- Better debug logging in case something goes wrong. 
+- Better debug logging in case something goes wrong.
 
 ## 1.0.2
 
@@ -99,15 +112,15 @@ Other changes
 
 ## 1.0.1+3
 
- - Fix: CardField textColor and enablePostalCode params
+- Fix: CardField textColor and enablePostalCode params
 
 ## 1.0.1+2
 
- - Fix Colors in CardField [#64](https://github.com/flutter-stripe/flutter_stripe/pull/64)
+- Fix Colors in CardField [#64](https://github.com/flutter-stripe/flutter_stripe/pull/64)
 
 ## 1.0.1+1
 
- - Minor fix [#57](https://github.com/flutter-stripe/flutter_stripe/issues/57)
+- Minor fix [#57](https://github.com/flutter-stripe/flutter_stripe/issues/57)
 
 ## 1.0.1
 

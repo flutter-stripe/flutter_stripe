@@ -22,6 +22,9 @@ _$_PaymentIntent _$$_PaymentIntentFromJson(Map<String, dynamic> json) =>
       description: json['description'] as String?,
       receiptEmail: json['receiptEmail'] as String?,
       canceledAt: json['canceledAt'] as String?,
+      nextAction: json['nextAction'] == null
+          ? null
+          : NextAction.fromJson(json['nextAction'] as Map<String, dynamic>),
       shipping: json['shipping'] == null
           ? null
           : ShippingDetails.fromJson(json['shipping'] as Map<String, dynamic>),
@@ -43,6 +46,7 @@ Map<String, dynamic> _$$_PaymentIntentToJson(_$_PaymentIntent instance) =>
       'description': instance.description,
       'receiptEmail': instance.receiptEmail,
       'canceledAt': instance.canceledAt,
+      'nextAction': instance.nextAction?.toJson(),
       'shipping': instance.shipping?.toJson(),
     };
 

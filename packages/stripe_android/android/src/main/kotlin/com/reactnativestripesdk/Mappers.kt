@@ -5,6 +5,8 @@ import android.util.Log
 import com.facebook.react.bridge.*
 import com.stripe.android.PaymentAuthConfig
 import com.stripe.android.model.*
+import com.stripe.android.model.StripeIntent.NextActionType
+import com.stripe.android.model.StripeIntent.NextActionData
 
 internal fun createResult(key: String, value: WritableMap): WritableMap {
   val map = WritableNativeMap()
@@ -104,6 +106,7 @@ internal fun mapPaymentMethodType(type: PaymentMethod.Type?): String {
     PaymentMethod.Type.Upi -> "Upi"
     PaymentMethod.Type.WeChatPay -> "WeChatPay"
     PaymentMethod.Type.Klarna -> "Klarna"
+    PaymentMethod.Type.USBankAccount -> "USBankAccount"
     else -> "Unknown"
   }
 }
@@ -130,6 +133,7 @@ internal fun mapToPaymentMethodType(type: String?): PaymentMethod.Type? {
     "Upi" -> PaymentMethod.Type.Upi
     "WeChatPay" -> PaymentMethod.Type.WeChatPay
     "Klarna" -> PaymentMethod.Type.Klarna
+    "USBankAccount" -> PaymentMethod.Type.USBankAccount
     else -> null
   }
 }
@@ -199,6 +203,7 @@ internal fun mapFromBankAccount(bankAccount: BankAccount?): WritableMap? {
     return null
   }
 
+  bankAccountMap.putString("id", bankAccount.id)
   bankAccountMap.putString("bankName", bankAccount.bankName)
   bankAccountMap.putString("accountHolderName", bankAccount.accountHolderName)
   bankAccountMap.putString("accountHolderType", mapFromBankAccountType(bankAccount.accountHolderType))
@@ -208,6 +213,38 @@ internal fun mapFromBankAccount(bankAccount: BankAccount?): WritableMap? {
   bankAccountMap.putString("status", mapFromBankAccountStatus(bankAccount.status))
 
   return bankAccountMap
+}
+
+internal fun mapToUSBankAccountHolderType(type: String?): PaymentMethod.USBankAccount.USBankAccountHolderType {
+  return when (type) {
+    "Company" -> PaymentMethod.USBankAccount.USBankAccountHolderType.COMPANY
+    "Individual" -> PaymentMethod.USBankAccount.USBankAccountHolderType.INDIVIDUAL
+    else -> PaymentMethod.USBankAccount.USBankAccountHolderType.INDIVIDUAL
+  }
+}
+
+internal fun mapFromUSBankAccountHolderType(type: PaymentMethod.USBankAccount.USBankAccountHolderType?): String {
+  return when (type) {
+    PaymentMethod.USBankAccount.USBankAccountHolderType.COMPANY -> "Company"
+    PaymentMethod.USBankAccount.USBankAccountHolderType.INDIVIDUAL -> "Individual"
+    else -> "Unknown"
+  }
+}
+
+internal fun mapToUSBankAccountType(type: String?): PaymentMethod.USBankAccount.USBankAccountType {
+  return when (type) {
+    "Savings" -> PaymentMethod.USBankAccount.USBankAccountType.SAVINGS
+    "Checking" -> PaymentMethod.USBankAccount.USBankAccountType.CHECKING
+    else -> PaymentMethod.USBankAccount.USBankAccountType.CHECKING
+  }
+}
+
+internal fun mapFromUSBankAccountType(type: PaymentMethod.USBankAccount.USBankAccountType?): String {
+  return when (type) {
+    PaymentMethod.USBankAccount.USBankAccountType.CHECKING -> "Checking"
+    PaymentMethod.USBankAccount.USBankAccountType.SAVINGS -> "Savings"
+    else -> "Unknown"
+  }
 }
 
 internal fun mapFromCard(card: Card?): WritableMap? {
@@ -235,6 +272,7 @@ internal fun mapFromCard(card: Card?): WritableMap? {
     cardMap.putNull("expYear")
   }
 
+  cardMap.putString("id", card.id)
   cardMap.putString("last4", card.last4)
   cardMap.putString("funding", card.funding?.name)
   cardMap.putString("name", card.name)
@@ -275,6 +313,7 @@ internal fun mapFromPaymentMethod(paymentMethod: PaymentMethod): WritableMap {
   val ideal: WritableMap = WritableNativeMap()
   val fpx: WritableMap = WritableNativeMap()
   val upi: WritableMap = WritableNativeMap()
+  val usBankAccount: WritableMap = WritableNativeMap()
 
   card.putString("brand", mapCardBrand(paymentMethod.card?.brand))
   card.putString("country", paymentMethod.card?.country)
@@ -311,6 +350,16 @@ internal fun mapFromPaymentMethod(paymentMethod: PaymentMethod): WritableMap {
 
   upi.putString("vpa", paymentMethod.upi?.vpa)
 
+  usBankAccount.putString("routingNumber", paymentMethod.usBankAccount?.routingNumber)
+  usBankAccount.putString("accountType", mapFromUSBankAccountType(paymentMethod.usBankAccount?.accountType))
+  usBankAccount.putString("accountHolderType", mapFromUSBankAccountHolderType(paymentMethod.usBankAccount?.accountHolderType))
+  usBankAccount.putString("last4", paymentMethod.usBankAccount?.last4)
+  usBankAccount.putString("bankName", paymentMethod.usBankAccount?.bankName)
+  usBankAccount.putString("linkedAccount", paymentMethod.usBankAccount?.linkedAccount)
+  usBankAccount.putString("fingerprint", paymentMethod.usBankAccount?.fingerprint)
+  usBankAccount.putString("preferredNetworks", paymentMethod.usBankAccount?.networks?.preferred)
+  usBankAccount.putArray("supportedNetworks", paymentMethod.usBankAccount?.networks?.supported)
+
   pm.putString("id", paymentMethod.id)
   pm.putString("type", mapPaymentMethodType(paymentMethod.type))
   pm.putBoolean("livemode", paymentMethod.liveMode)
@@ -324,6 +373,7 @@ internal fun mapFromPaymentMethod(paymentMethod: PaymentMethod): WritableMap {
   pm.putMap("Ideal", ideal)
   pm.putMap("Fpx", fpx)
   pm.putMap("Upi", upi)
+  pm.putMap("USBankAccount", usBankAccount)
 
   return pm
 }
@@ -342,6 +392,7 @@ internal fun mapFromPaymentIntentResult(paymentIntent: PaymentIntent): WritableM
   map.putString("created", convertToUnixTimestamp(paymentIntent.created))
   map.putString("captureMethod", mapCaptureMethod(paymentIntent.captureMethod))
   map.putString("confirmationMethod", mapConfirmationMethod(paymentIntent.confirmationMethod))
+  map.putMap("nextAction", mapNextAction(paymentIntent.nextActionType, paymentIntent.nextActionData))
   map.putNull("lastPaymentError")
   map.putNull("shipping")
   map.putNull("amount")
@@ -368,10 +419,57 @@ internal fun mapFromPaymentIntentResult(paymentIntent: PaymentIntent): WritableM
   paymentIntent.amount?.let {
     map.putDouble("amount", it.toDouble())
   }
-  paymentIntent.canceledAt?.let {
-    map.putString("canceledAt", convertToUnixTimestamp(it))
-  }
+  map.putString("canceledAt", convertToUnixTimestamp(paymentIntent.canceledAt))
   return map
+}
+
+internal fun mapFromMicrodepositType(type: MicrodepositType): String {
+  return when (type) {
+    MicrodepositType.AMOUNTS -> "amounts"
+    MicrodepositType.DESCRIPTOR_CODE -> "descriptorCode"
+    else -> "unknown"
+  }
+}
+
+internal fun mapNextAction(type: NextActionType?, data: NextActionData?): WritableNativeMap? {
+  val nextActionMap = WritableNativeMap()
+  when (type) {
+    NextActionType.RedirectToUrl -> {
+      (data as? NextActionData.RedirectToUrl)?.let {
+        nextActionMap.putString("type", "urlRedirect")
+        nextActionMap.putString("redirectUrl", it.url.toString())
+      }
+    }
+    NextActionType.VerifyWithMicrodeposits -> {
+      (data as? NextActionData.VerifyWithMicrodeposits)?.let {
+        nextActionMap.putString("type", "verifyWithMicrodeposits")
+        nextActionMap.putString("arrivalDate", it.arrivalDate.toString())
+        nextActionMap.putString("redirectUrl", it.hostedVerificationUrl)
+        nextActionMap.putString("microdepositType", mapFromMicrodepositType(it.microdepositType))
+      }
+    }
+    NextActionType.DisplayOxxoDetails -> {
+      (data as? NextActionData.DisplayOxxoDetails)?.let {
+        nextActionMap.putString("type", "oxxoVoucher")
+        nextActionMap.putInt("expiration", it.expiresAfter)
+        nextActionMap.putString("voucherURL", it.hostedVoucherUrl)
+        nextActionMap.putString("voucherNumber", it.number)
+      }
+    }
+    NextActionType.WeChatPayRedirect -> {
+      (data as? NextActionData.WeChatPayRedirect)?.let {
+        nextActionMap.putString("type", "weChatRedirect")
+        nextActionMap.putString("redirectUrl", it.weChat.qrCodeUrl)
+      }
+    }
+    NextActionType.AlipayRedirect -> { // TODO: Can't access, private
+      return null
+    }
+    NextActionType.BlikAuthorize, NextActionType.UseStripeSdk, null -> {
+      return null
+    }
+  }
+  return nextActionMap
 }
 
 internal fun mapFromPaymentIntentLastErrorType(errorType: PaymentIntent.Error.Type?): String? {
@@ -416,14 +514,14 @@ internal fun mapToAddress(addressMap: ReadableMap?, cardAddress: Address?): Addr
     .setLine2(getValOr(addressMap, "line2"))
     .setState(getValOr(addressMap, "state"))
 
-    cardAddress?.let { ca ->
-      ca.postalCode?.let {
-        address.setPostalCode(it)
-      }
-      ca.country?.let {
-        address.setCountry(it)
-      }
+  cardAddress?.let { ca ->
+    ca.postalCode?.let {
+      address.setPostalCode(it)
     }
+    ca.country?.let {
+      address.setCountry(it)
+    }
+  }
 
   return address.build()
 }
@@ -432,31 +530,19 @@ internal fun mapToBillingDetails(billingDetails: ReadableMap?, cardAddress: Addr
   if (billingDetails == null && cardAddress == null) {
     return null
   }
-  val addressBuilder = Address.Builder()
+  var address: Address? = null
   val paymentMethodBillingDetailsBuilder =  PaymentMethod.BillingDetails.Builder()
 
   if (billingDetails != null) {
-    addressBuilder
-      .setPostalCode(getValOr(billingDetails, "addressPostalCode"))
-      .setCity(getValOr(billingDetails, "addressCity"))
-      .setCountry(getValOr(billingDetails, "addressCountry"))
-      .setLine1(getValOr(billingDetails, "addressLine1"))
-      .setLine2(getValOr(billingDetails, "addressLine2"))
-      .setState(getValOr(billingDetails, "addressState"))
+    address = mapToAddress(getMapOrNull(billingDetails, "address"), cardAddress)
+
     paymentMethodBillingDetailsBuilder
       .setName(getValOr(billingDetails, "name"))
       .setPhone(getValOr(billingDetails, "phone"))
       .setEmail(getValOr(billingDetails, "email"))
   }
 
-  if (cardAddress?.postalCode?.isNotEmpty() == true) {
-    addressBuilder.setPostalCode(cardAddress.postalCode)
-  }
-  if (cardAddress?.country?.isNotEmpty() == true) {
-    addressBuilder.setCountry(cardAddress.country)
-  }
-
-  paymentMethodBillingDetailsBuilder.setAddress(addressBuilder.build())
+  paymentMethodBillingDetailsBuilder.setAddress(address ?: Address.Builder().build())
   return paymentMethodBillingDetailsBuilder.build()
 }
 
@@ -465,16 +551,12 @@ internal fun mapToShippingDetails(shippingDetails: ReadableMap?): ConfirmPayment
     return null
   }
 
+  val address = mapToAddress(getMapOrNull(shippingDetails, "address"), null)
+    ?: Address.Builder().build()
+
   return ConfirmPaymentIntentParams.Shipping(
     name = getValOr(shippingDetails, "name") ?: "",
-    address = Address.Builder()
-      .setLine1(getValOr(shippingDetails, "addressLine1"))
-      .setLine2(getValOr(shippingDetails, "addressLine2"))
-      .setCity(getValOr(shippingDetails, "addressCity"))
-      .setState(getValOr(shippingDetails, "addressState"))
-      .setCountry(getValOr(shippingDetails, "addressCountry"))
-      .setPostalCode(getValOr(shippingDetails, "addressPostalCode"))
-      .build()
+    address = address
   )
 }
 
@@ -484,10 +566,6 @@ private fun getStringOrNull(map: ReadableMap?, key: String): String? {
 
 fun getIntOrNull(map: ReadableMap?, key: String): Int? {
   return if (map?.hasKey(key) == true) map.getInt(key) else null
-}
-
-public fun getBooleanOrNull(map: ReadableMap?, key: String): Boolean? {
-  return if (map?.hasKey(key) == true) map.getBoolean(key) else null
 }
 
 fun getMapOrNull(map: ReadableMap?, key: String): ReadableMap? {
@@ -687,10 +765,8 @@ internal fun mapFromSetupIntentResult(setupIntent: SetupIntent): WritableMap {
   map.putString("clientSecret", setupIntent.clientSecret)
   map.putString("paymentMethodId", setupIntent.paymentMethodId)
   map.putString("usage", mapSetupIntentUsage(setupIntent.usage))
-
-  if(setupIntent.created != null) {
-    map.putString("created", convertToUnixTimestamp(setupIntent.created))
-  }
+  map.putString("created", convertToUnixTimestamp(setupIntent.created))
+  map.putMap("nextAction", mapNextAction(setupIntent.nextActionType, setupIntent.nextActionData))
 
   setupIntent.lastSetupError?.let {
     val setupError: WritableMap = WritableNativeMap()
@@ -736,7 +812,7 @@ fun mapToPaymentIntentFutureUsage(type: String?): ConfirmPaymentIntentParams.Set
   }
 }
 
-fun toBundleObject(readableMap: ReadableMap?): Bundle? {
+fun toBundleObject(readableMap: ReadableMap?): Bundle {
   val result = Bundle()
   if (readableMap == null) {
     return result
