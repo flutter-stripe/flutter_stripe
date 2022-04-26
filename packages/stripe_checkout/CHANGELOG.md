@@ -1,3 +1,6 @@
+## 0.1.3
+- Updated freezed dependency to allow 2.x
+
 ## 0.1.2
 
 - `successUrl` and `canceledUrl` are now required when using checkout with a webview and they should use https
