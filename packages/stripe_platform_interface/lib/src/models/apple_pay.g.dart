@@ -37,6 +37,9 @@ _$_ApplePayCartSummaryItem _$$_ApplePayCartSummaryItemFromJson(
     _$_ApplePayCartSummaryItem(
       label: json['label'] as String,
       amount: json['amount'] as String,
+      type:
+          $enumDecodeNullable(_$ApplePaySummaryItemTypeEnumMap, json['type']) ??
+              ApplePaySummaryItemType.fixed,
     );
 
 Map<String, dynamic> _$$_ApplePayCartSummaryItemToJson(
@@ -44,7 +47,13 @@ Map<String, dynamic> _$$_ApplePayCartSummaryItemToJson(
     <String, dynamic>{
       'label': instance.label,
       'amount': instance.amount,
+      'type': _$ApplePaySummaryItemTypeEnumMap[instance.type],
     };
+
+const _$ApplePaySummaryItemTypeEnumMap = {
+  ApplePaySummaryItemType.fixed: 'fixed',
+  ApplePaySummaryItemType.pending: 'pending',
+};
 
 _$_ApplePayPresentParams _$$_ApplePayPresentParamsFromJson(
         Map<String, dynamic> json) =>

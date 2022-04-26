@@ -275,10 +275,13 @@ class _$ApplePayCartSummaryItemTearOff {
   const _$ApplePayCartSummaryItemTearOff();
 
   _ApplePayCartSummaryItem call(
-      {required String label, required String amount}) {
+      {required String label,
+      required String amount,
+      ApplePaySummaryItemType type = ApplePaySummaryItemType.fixed}) {
     return _ApplePayCartSummaryItem(
       label: label,
       amount: amount,
+      type: type,
     );
   }
 
@@ -298,6 +301,9 @@ mixin _$ApplePayCartSummaryItem {
   /// The monetary amount.
   String get amount => throw _privateConstructorUsedError;
 
+  /// The type of summary item
+  ApplePaySummaryItemType get type => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ApplePayCartSummaryItemCopyWith<ApplePayCartSummaryItem> get copyWith =>
@@ -309,7 +315,7 @@ abstract class $ApplePayCartSummaryItemCopyWith<$Res> {
   factory $ApplePayCartSummaryItemCopyWith(ApplePayCartSummaryItem value,
           $Res Function(ApplePayCartSummaryItem) then) =
       _$ApplePayCartSummaryItemCopyWithImpl<$Res>;
-  $Res call({String label, String amount});
+  $Res call({String label, String amount, ApplePaySummaryItemType type});
 }
 
 /// @nodoc
@@ -325,6 +331,7 @@ class _$ApplePayCartSummaryItemCopyWithImpl<$Res>
   $Res call({
     Object? label = freezed,
     Object? amount = freezed,
+    Object? type = freezed,
   }) {
     return _then(_value.copyWith(
       label: label == freezed
@@ -335,6 +342,10 @@ class _$ApplePayCartSummaryItemCopyWithImpl<$Res>
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as String,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as ApplePaySummaryItemType,
     ));
   }
 }
@@ -346,7 +357,7 @@ abstract class _$ApplePayCartSummaryItemCopyWith<$Res>
           $Res Function(_ApplePayCartSummaryItem) then) =
       __$ApplePayCartSummaryItemCopyWithImpl<$Res>;
   @override
-  $Res call({String label, String amount});
+  $Res call({String label, String amount, ApplePaySummaryItemType type});
 }
 
 /// @nodoc
@@ -365,6 +376,7 @@ class __$ApplePayCartSummaryItemCopyWithImpl<$Res>
   $Res call({
     Object? label = freezed,
     Object? amount = freezed,
+    Object? type = freezed,
   }) {
     return _then(_ApplePayCartSummaryItem(
       label: label == freezed
@@ -375,14 +387,22 @@ class __$ApplePayCartSummaryItemCopyWithImpl<$Res>
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as String,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as ApplePaySummaryItemType,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_ApplePayCartSummaryItem implements _ApplePayCartSummaryItem {
-  const _$_ApplePayCartSummaryItem({required this.label, required this.amount});
+  const _$_ApplePayCartSummaryItem(
+      {required this.label,
+      required this.amount,
+      this.type = ApplePaySummaryItemType.fixed});
 
   factory _$_ApplePayCartSummaryItem.fromJson(Map<String, dynamic> json) =>
       _$$_ApplePayCartSummaryItemFromJson(json);
@@ -395,10 +415,15 @@ class _$_ApplePayCartSummaryItem implements _ApplePayCartSummaryItem {
 
   /// The monetary amount.
   final String amount;
+  @JsonKey()
+  @override
+
+  /// The type of summary item
+  final ApplePaySummaryItemType type;
 
   @override
   String toString() {
-    return 'ApplePayCartSummaryItem(label: $label, amount: $amount)';
+    return 'ApplePayCartSummaryItem(label: $label, amount: $amount, type: $type)';
   }
 
   @override
@@ -407,14 +432,16 @@ class _$_ApplePayCartSummaryItem implements _ApplePayCartSummaryItem {
         (other.runtimeType == runtimeType &&
             other is _ApplePayCartSummaryItem &&
             const DeepCollectionEquality().equals(other.label, label) &&
-            const DeepCollectionEquality().equals(other.amount, amount));
+            const DeepCollectionEquality().equals(other.amount, amount) &&
+            const DeepCollectionEquality().equals(other.type, type));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(label),
-      const DeepCollectionEquality().hash(amount));
+      const DeepCollectionEquality().hash(amount),
+      const DeepCollectionEquality().hash(type));
 
   @JsonKey(ignore: true)
   @override
@@ -431,7 +458,8 @@ class _$_ApplePayCartSummaryItem implements _ApplePayCartSummaryItem {
 abstract class _ApplePayCartSummaryItem implements ApplePayCartSummaryItem {
   const factory _ApplePayCartSummaryItem(
       {required String label,
-      required String amount}) = _$_ApplePayCartSummaryItem;
+      required String amount,
+      ApplePaySummaryItemType type}) = _$_ApplePayCartSummaryItem;
 
   factory _ApplePayCartSummaryItem.fromJson(Map<String, dynamic> json) =
       _$_ApplePayCartSummaryItem.fromJson;
@@ -444,6 +472,10 @@ abstract class _ApplePayCartSummaryItem implements ApplePayCartSummaryItem {
 
   /// The monetary amount.
   String get amount;
+  @override
+
+  /// The type of summary item
+  ApplePaySummaryItemType get type;
   @override
   @JsonKey(ignore: true)
   _$ApplePayCartSummaryItemCopyWith<_ApplePayCartSummaryItem> get copyWith =>
