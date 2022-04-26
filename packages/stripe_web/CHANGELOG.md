@@ -1,3 +1,6 @@
+## 0.1.4
+- Keep stripe web in sync with platform interface `2.5.0`.
+
 ## 0.1.3
 - Add support for paying with Klarna.
 
