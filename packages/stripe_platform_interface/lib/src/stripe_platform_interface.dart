@@ -58,6 +58,10 @@ abstract class StripePlatform extends PlatformInterface {
   Future<void> presentApplePay(ApplePayPresentParams params);
   Future<void> confirmApplePayPayment(String clientSecret);
   Future<TokenData> createApplePayToken(Map<String, dynamic> payment);
+  Future<void> updateApplePaySummaryItems({
+    required List<ApplePayCartSummaryItem> summaryItems,
+    List<ApplePayErrorAddressField>? errorAddressFields,
+});
 
   Future<void> initGooglePay(GooglePayInitParams params);
   Future<void> presentGooglePay(PresentGooglePayParams params);

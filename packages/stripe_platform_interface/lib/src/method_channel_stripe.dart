@@ -165,6 +165,21 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
+  Future<void> updateApplePaySummaryItems({
+    required List<ApplePayCartSummaryItem> summaryItems,
+    List<ApplePayErrorAddressField>? errorAddressFields,
+  }) async {
+    if (!_platformIsIos) {
+      throw UnsupportedError('Apple Pay is only available for iOS devices');
+    }
+    await _methodChannel
+        .invokeMapMethod<String, dynamic>('updateApplePaySummaryItems', {
+      'summaryItems': summaryItems.map((e) => e.toJson()).toList(),
+      'errorAddressFields': errorAddressFields?.map((e) => e.toJson()).toList(),
+    });
+  }
+
+  @override
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret) async {
     final result = await _methodChannel
         .invokeMapMethod<String, dynamic>('retrievePaymentIntent', {
