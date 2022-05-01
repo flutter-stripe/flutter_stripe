@@ -299,6 +299,64 @@ void main() {
       });
     });
 
+    group('updateApple pay summary items', () {
+      group('When platform is ios', () {
+        late Completer<void> completer;
+        setUp(() async {
+          completer = Completer();
+          sut = MethodChannelStripe(
+            platformIsIos: true,
+            platformIsAndroid: false,
+            methodChannel: MethodChannelMock(
+              channelName: methodChannelName,
+              method: 'updateApplePaySummaryItems',
+              result: {},
+            ).methodChannel,
+          );
+          await sut.updateApplePaySummaryItems(summaryItems: const [
+            ApplePayCartSummaryItem(label: '1', amount: '100'),
+          ], errorAddressFields: const [
+            ApplePayErrorAddressField(
+              field: ApplePayContactFieldsType.name,
+              message: 'whoops',
+            ),
+          ]).then((_) => completer.complete());
+        });
+
+        test('It completes operation', () {
+          expect(completer.isCompleted, true);
+        });
+      });
+
+      group('When platform is not ios', () {
+        setUp(() async {
+          sut = MethodChannelStripe(
+            platformIsIos: false,
+            platformIsAndroid: true,
+            methodChannel: MethodChannelMock(
+              channelName: methodChannelName,
+              method: 'updateApplePaySummaryItems',
+              result: true,
+            ).methodChannel,
+          );
+        });
+
+        test('It completes operation', () {
+          expect(
+            () => sut.updateApplePaySummaryItems(summaryItems: const [
+              ApplePayCartSummaryItem(label: '1', amount: '100'),
+            ], errorAddressFields: const [
+              ApplePayErrorAddressField(
+                field: ApplePayContactFieldsType.name,
+                message: 'whoops',
+              ),
+            ]),
+            throwsA(const TypeMatcher<UnsupportedError>()),
+          );
+        });
+      });
+    });
+
     group('presentApplePay', () {
       group('When platform is ios', () {
         late Completer<void> completer;

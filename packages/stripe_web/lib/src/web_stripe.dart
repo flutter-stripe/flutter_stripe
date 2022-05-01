@@ -331,6 +331,13 @@ class WebStripe extends StripePlatform {
       required VerifyMicroDepositsParams params}) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<void> updateApplePaySummaryItems(
+      {required List<ApplePayCartSummaryItem> summaryItems,
+      List<ApplePayErrorAddressField>? errorAddressFields}) {
+    throw WebUnsupportedError.method('updateApplePaySummaryItems');
+  }
 }
 
 class WebUnsupportedError extends Error implements UnsupportedError {

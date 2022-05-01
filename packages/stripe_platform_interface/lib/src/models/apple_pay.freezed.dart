@@ -275,10 +275,13 @@ class _$ApplePayCartSummaryItemTearOff {
   const _$ApplePayCartSummaryItemTearOff();
 
   _ApplePayCartSummaryItem call(
-      {required String label, required String amount}) {
+      {required String label,
+      required String amount,
+      ApplePaySummaryItemType type = ApplePaySummaryItemType.fixed}) {
     return _ApplePayCartSummaryItem(
       label: label,
       amount: amount,
+      type: type,
     );
   }
 
@@ -298,6 +301,9 @@ mixin _$ApplePayCartSummaryItem {
   /// The monetary amount.
   String get amount => throw _privateConstructorUsedError;
 
+  /// The type of summary item
+  ApplePaySummaryItemType get type => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ApplePayCartSummaryItemCopyWith<ApplePayCartSummaryItem> get copyWith =>
@@ -309,7 +315,7 @@ abstract class $ApplePayCartSummaryItemCopyWith<$Res> {
   factory $ApplePayCartSummaryItemCopyWith(ApplePayCartSummaryItem value,
           $Res Function(ApplePayCartSummaryItem) then) =
       _$ApplePayCartSummaryItemCopyWithImpl<$Res>;
-  $Res call({String label, String amount});
+  $Res call({String label, String amount, ApplePaySummaryItemType type});
 }
 
 /// @nodoc
@@ -325,6 +331,7 @@ class _$ApplePayCartSummaryItemCopyWithImpl<$Res>
   $Res call({
     Object? label = freezed,
     Object? amount = freezed,
+    Object? type = freezed,
   }) {
     return _then(_value.copyWith(
       label: label == freezed
@@ -335,6 +342,10 @@ class _$ApplePayCartSummaryItemCopyWithImpl<$Res>
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as String,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as ApplePaySummaryItemType,
     ));
   }
 }
@@ -346,7 +357,7 @@ abstract class _$ApplePayCartSummaryItemCopyWith<$Res>
           $Res Function(_ApplePayCartSummaryItem) then) =
       __$ApplePayCartSummaryItemCopyWithImpl<$Res>;
   @override
-  $Res call({String label, String amount});
+  $Res call({String label, String amount, ApplePaySummaryItemType type});
 }
 
 /// @nodoc
@@ -365,6 +376,7 @@ class __$ApplePayCartSummaryItemCopyWithImpl<$Res>
   $Res call({
     Object? label = freezed,
     Object? amount = freezed,
+    Object? type = freezed,
   }) {
     return _then(_ApplePayCartSummaryItem(
       label: label == freezed
@@ -375,14 +387,22 @@ class __$ApplePayCartSummaryItemCopyWithImpl<$Res>
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as String,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as ApplePaySummaryItemType,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_ApplePayCartSummaryItem implements _ApplePayCartSummaryItem {
-  const _$_ApplePayCartSummaryItem({required this.label, required this.amount});
+  const _$_ApplePayCartSummaryItem(
+      {required this.label,
+      required this.amount,
+      this.type = ApplePaySummaryItemType.fixed});
 
   factory _$_ApplePayCartSummaryItem.fromJson(Map<String, dynamic> json) =>
       _$$_ApplePayCartSummaryItemFromJson(json);
@@ -395,10 +415,15 @@ class _$_ApplePayCartSummaryItem implements _ApplePayCartSummaryItem {
 
   /// The monetary amount.
   final String amount;
+  @JsonKey()
+  @override
+
+  /// The type of summary item
+  final ApplePaySummaryItemType type;
 
   @override
   String toString() {
-    return 'ApplePayCartSummaryItem(label: $label, amount: $amount)';
+    return 'ApplePayCartSummaryItem(label: $label, amount: $amount, type: $type)';
   }
 
   @override
@@ -407,14 +432,16 @@ class _$_ApplePayCartSummaryItem implements _ApplePayCartSummaryItem {
         (other.runtimeType == runtimeType &&
             other is _ApplePayCartSummaryItem &&
             const DeepCollectionEquality().equals(other.label, label) &&
-            const DeepCollectionEquality().equals(other.amount, amount));
+            const DeepCollectionEquality().equals(other.amount, amount) &&
+            const DeepCollectionEquality().equals(other.type, type));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(label),
-      const DeepCollectionEquality().hash(amount));
+      const DeepCollectionEquality().hash(amount),
+      const DeepCollectionEquality().hash(type));
 
   @JsonKey(ignore: true)
   @override
@@ -431,7 +458,8 @@ class _$_ApplePayCartSummaryItem implements _ApplePayCartSummaryItem {
 abstract class _ApplePayCartSummaryItem implements ApplePayCartSummaryItem {
   const factory _ApplePayCartSummaryItem(
       {required String label,
-      required String amount}) = _$_ApplePayCartSummaryItem;
+      required String amount,
+      ApplePaySummaryItemType type}) = _$_ApplePayCartSummaryItem;
 
   factory _ApplePayCartSummaryItem.fromJson(Map<String, dynamic> json) =
       _$_ApplePayCartSummaryItem.fromJson;
@@ -444,6 +472,10 @@ abstract class _ApplePayCartSummaryItem implements ApplePayCartSummaryItem {
 
   /// The monetary amount.
   String get amount;
+  @override
+
+  /// The type of summary item
+  ApplePaySummaryItemType get type;
   @override
   @JsonKey(ignore: true)
   _$ApplePayCartSummaryItemCopyWith<_ApplePayCartSummaryItem> get copyWith =>
@@ -772,4 +804,197 @@ abstract class _ApplePayPresentParams implements ApplePayPresentParams {
   @JsonKey(ignore: true)
   _$ApplePayPresentParamsCopyWith<_ApplePayPresentParams> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+ApplePayErrorAddressField _$ApplePayErrorAddressFieldFromJson(
+    Map<String, dynamic> json) {
+  return _ApplePayErrorAddressField.fromJson(json);
+}
+
+/// @nodoc
+class _$ApplePayErrorAddressFieldTearOff {
+  const _$ApplePayErrorAddressFieldTearOff();
+
+  _ApplePayErrorAddressField call(
+      {required ApplePayContactFieldsType field, String? message}) {
+    return _ApplePayErrorAddressField(
+      field: field,
+      message: message,
+    );
+  }
+
+  ApplePayErrorAddressField fromJson(Map<String, Object?> json) {
+    return ApplePayErrorAddressField.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $ApplePayErrorAddressField = _$ApplePayErrorAddressFieldTearOff();
+
+/// @nodoc
+mixin _$ApplePayErrorAddressField {
+  /// Address field that is affected by the error
+  ApplePayContactFieldsType get field => throw _privateConstructorUsedError;
+
+  /// The error message that will be shown when it is invalid
+  ///
+  /// Defaults to error in the stripe sdk.
+  String? get message => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ApplePayErrorAddressFieldCopyWith<ApplePayErrorAddressField> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ApplePayErrorAddressFieldCopyWith<$Res> {
+  factory $ApplePayErrorAddressFieldCopyWith(ApplePayErrorAddressField value,
+          $Res Function(ApplePayErrorAddressField) then) =
+      _$ApplePayErrorAddressFieldCopyWithImpl<$Res>;
+  $Res call({ApplePayContactFieldsType field, String? message});
+}
+
+/// @nodoc
+class _$ApplePayErrorAddressFieldCopyWithImpl<$Res>
+    implements $ApplePayErrorAddressFieldCopyWith<$Res> {
+  _$ApplePayErrorAddressFieldCopyWithImpl(this._value, this._then);
+
+  final ApplePayErrorAddressField _value;
+  // ignore: unused_field
+  final $Res Function(ApplePayErrorAddressField) _then;
+
+  @override
+  $Res call({
+    Object? field = freezed,
+    Object? message = freezed,
+  }) {
+    return _then(_value.copyWith(
+      field: field == freezed
+          ? _value.field
+          : field // ignore: cast_nullable_to_non_nullable
+              as ApplePayContactFieldsType,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$ApplePayErrorAddressFieldCopyWith<$Res>
+    implements $ApplePayErrorAddressFieldCopyWith<$Res> {
+  factory _$ApplePayErrorAddressFieldCopyWith(_ApplePayErrorAddressField value,
+          $Res Function(_ApplePayErrorAddressField) then) =
+      __$ApplePayErrorAddressFieldCopyWithImpl<$Res>;
+  @override
+  $Res call({ApplePayContactFieldsType field, String? message});
+}
+
+/// @nodoc
+class __$ApplePayErrorAddressFieldCopyWithImpl<$Res>
+    extends _$ApplePayErrorAddressFieldCopyWithImpl<$Res>
+    implements _$ApplePayErrorAddressFieldCopyWith<$Res> {
+  __$ApplePayErrorAddressFieldCopyWithImpl(_ApplePayErrorAddressField _value,
+      $Res Function(_ApplePayErrorAddressField) _then)
+      : super(_value, (v) => _then(v as _ApplePayErrorAddressField));
+
+  @override
+  _ApplePayErrorAddressField get _value =>
+      super._value as _ApplePayErrorAddressField;
+
+  @override
+  $Res call({
+    Object? field = freezed,
+    Object? message = freezed,
+  }) {
+    return _then(_ApplePayErrorAddressField(
+      field: field == freezed
+          ? _value.field
+          : field // ignore: cast_nullable_to_non_nullable
+              as ApplePayContactFieldsType,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_ApplePayErrorAddressField implements _ApplePayErrorAddressField {
+  const _$_ApplePayErrorAddressField({required this.field, this.message});
+
+  factory _$_ApplePayErrorAddressField.fromJson(Map<String, dynamic> json) =>
+      _$$_ApplePayErrorAddressFieldFromJson(json);
+
+  @override
+
+  /// Address field that is affected by the error
+  final ApplePayContactFieldsType field;
+  @override
+
+  /// The error message that will be shown when it is invalid
+  ///
+  /// Defaults to error in the stripe sdk.
+  final String? message;
+
+  @override
+  String toString() {
+    return 'ApplePayErrorAddressField(field: $field, message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ApplePayErrorAddressField &&
+            const DeepCollectionEquality().equals(other.field, field) &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(field),
+      const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$ApplePayErrorAddressFieldCopyWith<_ApplePayErrorAddressField>
+      get copyWith =>
+          __$ApplePayErrorAddressFieldCopyWithImpl<_ApplePayErrorAddressField>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ApplePayErrorAddressFieldToJson(this);
+  }
+}
+
+abstract class _ApplePayErrorAddressField implements ApplePayErrorAddressField {
+  const factory _ApplePayErrorAddressField(
+      {required ApplePayContactFieldsType field,
+      String? message}) = _$_ApplePayErrorAddressField;
+
+  factory _ApplePayErrorAddressField.fromJson(Map<String, dynamic> json) =
+      _$_ApplePayErrorAddressField.fromJson;
+
+  @override
+
+  /// Address field that is affected by the error
+  ApplePayContactFieldsType get field;
+  @override
+
+  /// The error message that will be shown when it is invalid
+  ///
+  /// Defaults to error in the stripe sdk.
+  String? get message;
+  @override
+  @JsonKey(ignore: true)
+  _$ApplePayErrorAddressFieldCopyWith<_ApplePayErrorAddressField>
+      get copyWith => throw _privateConstructorUsedError;
 }

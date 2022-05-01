@@ -34,6 +34,15 @@ extension PaymentMethodTestInstance on PaymentMethod {
           'phone': billingDetails.phone,
           'name': billingDetails.name
         },
+        'USBankAccount': {
+          'routingNumber': usBankAccount.routingNumber,
+          'last4': usBankAccount.last4,
+          'accountHolderType': usBankAccount.accountHolderType.name,
+          'accountType': usBankAccount.accountType.name,
+          'bankName': usBankAccount.bankName,
+          'fingerprint': usBankAccount.fingerprint,
+          'linkedAccount': usBankAccount.linkedAccount,
+        },
         'Card': {
           'brand': card.brand,
           'country': card.country,
