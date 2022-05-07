@@ -12,54 +12,11 @@ part of 'card_field_input.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CardStyle _$CardStyleFromJson(Map<String, dynamic> json) {
   return _CardStyleConstructor.fromJson(json);
 }
-
-/// @nodoc
-class _$CardStyleTearOff {
-  const _$CardStyleTearOff();
-
-  _CardStyleConstructor call(
-      {double? borderWidth,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? backgroundColor,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? borderColor,
-      double? borderRadius,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? cursorColor,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textColor,
-      double? fontSize,
-      String? fontFamily,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textErrorColor,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? placeholderColor}) {
-    return _CardStyleConstructor(
-      borderWidth: borderWidth,
-      backgroundColor: backgroundColor,
-      borderColor: borderColor,
-      borderRadius: borderRadius,
-      cursorColor: cursorColor,
-      textColor: textColor,
-      fontSize: fontSize,
-      fontFamily: fontFamily,
-      textErrorColor: textErrorColor,
-      placeholderColor: placeholderColor,
-    );
-  }
-
-  CardStyle fromJson(Map<String, Object?> json) {
-    return CardStyle.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CardStyle = _$CardStyleTearOff();
 
 /// @nodoc
 mixin _$CardStyle {
@@ -185,11 +142,11 @@ class _$CardStyleCopyWithImpl<$Res> implements $CardStyleCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$CardStyleConstructorCopyWith<$Res>
+abstract class _$$_CardStyleConstructorCopyWith<$Res>
     implements $CardStyleCopyWith<$Res> {
-  factory _$CardStyleConstructorCopyWith(_CardStyleConstructor value,
-          $Res Function(_CardStyleConstructor) then) =
-      __$CardStyleConstructorCopyWithImpl<$Res>;
+  factory _$$_CardStyleConstructorCopyWith(_$_CardStyleConstructor value,
+          $Res Function(_$_CardStyleConstructor) then) =
+      __$$_CardStyleConstructorCopyWithImpl<$Res>;
   @override
   $Res call(
       {double? borderWidth,
@@ -211,15 +168,15 @@ abstract class _$CardStyleConstructorCopyWith<$Res>
 }
 
 /// @nodoc
-class __$CardStyleConstructorCopyWithImpl<$Res>
+class __$$_CardStyleConstructorCopyWithImpl<$Res>
     extends _$CardStyleCopyWithImpl<$Res>
-    implements _$CardStyleConstructorCopyWith<$Res> {
-  __$CardStyleConstructorCopyWithImpl(
-      _CardStyleConstructor _value, $Res Function(_CardStyleConstructor) _then)
-      : super(_value, (v) => _then(v as _CardStyleConstructor));
+    implements _$$_CardStyleConstructorCopyWith<$Res> {
+  __$$_CardStyleConstructorCopyWithImpl(_$_CardStyleConstructor _value,
+      $Res Function(_$_CardStyleConstructor) _then)
+      : super(_value, (v) => _then(v as _$_CardStyleConstructor));
 
   @override
-  _CardStyleConstructor get _value => super._value as _CardStyleConstructor;
+  _$_CardStyleConstructor get _value => super._value as _$_CardStyleConstructor;
 
   @override
   $Res call({
@@ -234,7 +191,7 @@ class __$CardStyleConstructorCopyWithImpl<$Res>
     Object? textErrorColor = freezed,
     Object? placeholderColor = freezed,
   }) {
-    return _then(_CardStyleConstructor(
+    return _then(_$_CardStyleConstructor(
       borderWidth: borderWidth == freezed
           ? _value.borderWidth
           : borderWidth // ignore: cast_nullable_to_non_nullable
@@ -305,9 +262,8 @@ class _$_CardStyleConstructor extends _CardStyleConstructor {
   factory _$_CardStyleConstructor.fromJson(Map<String, dynamic> json) =>
       _$$_CardStyleConstructorFromJson(json);
 
-  @override
-
   /// Width for the border.
+  @override
   final double? borderWidth;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -315,9 +271,9 @@ class _$_CardStyleConstructor extends _CardStyleConstructor {
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   final Color? borderColor;
-  @override
 
   /// Borderradius that can give the Cardfield rounded corners.
+  @override
   final double? borderRadius;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -325,17 +281,17 @@ class _$_CardStyleConstructor extends _CardStyleConstructor {
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   final Color? textColor;
-  @override
 
   /// Font size.
-  final double? fontSize;
   @override
+  final double? fontSize;
 
   /// Font family
-  final String? fontFamily;
   @override
+  final String? fontFamily;
 
   /// Color of the input in case incorrect data is entered.
+  @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   final Color? textErrorColor;
   @override
@@ -351,7 +307,7 @@ class _$_CardStyleConstructor extends _CardStyleConstructor {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CardStyleConstructor &&
+            other is _$_CardStyleConstructor &&
             const DeepCollectionEquality()
                 .equals(other.borderWidth, borderWidth) &&
             const DeepCollectionEquality()
@@ -372,6 +328,7 @@ class _$_CardStyleConstructor extends _CardStyleConstructor {
                 .equals(other.placeholderColor, placeholderColor));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -388,8 +345,8 @@ class _$_CardStyleConstructor extends _CardStyleConstructor {
 
   @JsonKey(ignore: true)
   @override
-  _$CardStyleConstructorCopyWith<_CardStyleConstructor> get copyWith =>
-      __$CardStyleConstructorCopyWithImpl<_CardStyleConstructor>(
+  _$$_CardStyleConstructorCopyWith<_$_CardStyleConstructor> get copyWith =>
+      __$$_CardStyleConstructorCopyWithImpl<_$_CardStyleConstructor>(
           this, _$identity);
 
   @override
@@ -400,22 +357,22 @@ class _$_CardStyleConstructor extends _CardStyleConstructor {
 
 abstract class _CardStyleConstructor extends CardStyle {
   factory _CardStyleConstructor(
-      {double? borderWidth,
+      {final double? borderWidth,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? backgroundColor,
+          final Color? backgroundColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? borderColor,
-      double? borderRadius,
+          final Color? borderColor,
+      final double? borderRadius,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? cursorColor,
+          final Color? cursorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textColor,
-      double? fontSize,
-      String? fontFamily,
+          final Color? textColor,
+      final double? fontSize,
+      final String? fontFamily,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textErrorColor,
+          final Color? textErrorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? placeholderColor}) = _$_CardStyleConstructor;
+          final Color? placeholderColor}) = _$_CardStyleConstructor;
   _CardStyleConstructor._() : super._();
 
   factory _CardStyleConstructor.fromJson(Map<String, dynamic> json) =
@@ -424,68 +381,48 @@ abstract class _CardStyleConstructor extends CardStyle {
   @override
 
   /// Width for the border.
-  double? get borderWidth;
+  double? get borderWidth => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get backgroundColor;
+  Color? get backgroundColor => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get borderColor;
+  Color? get borderColor => throw _privateConstructorUsedError;
   @override
 
   /// Borderradius that can give the Cardfield rounded corners.
-  double? get borderRadius;
+  double? get borderRadius => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get cursorColor;
+  Color? get cursorColor => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get textColor;
+  Color? get textColor => throw _privateConstructorUsedError;
   @override
 
   /// Font size.
-  double? get fontSize;
+  double? get fontSize => throw _privateConstructorUsedError;
   @override
 
   /// Font family
-  String? get fontFamily;
+  String? get fontFamily => throw _privateConstructorUsedError;
   @override
 
   /// Color of the input in case incorrect data is entered.
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get textErrorColor;
+  Color? get textErrorColor => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get placeholderColor;
+  Color? get placeholderColor => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CardStyleConstructorCopyWith<_CardStyleConstructor> get copyWith =>
+  _$$_CardStyleConstructorCopyWith<_$_CardStyleConstructor> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 CardFormStyle _$CardFormStyleFromJson(Map<String, dynamic> json) {
   return _CardFormStyleConstructor.fromJson(json);
 }
-
-/// @nodoc
-class _$CardFormStyleTearOff {
-  const _$CardFormStyleTearOff();
-
-  _CardFormStyleConstructor call(
-      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? backgroundColor}) {
-    return _CardFormStyleConstructor(
-      backgroundColor: backgroundColor,
-    );
-  }
-
-  CardFormStyle fromJson(Map<String, Object?> json) {
-    return CardFormStyle.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CardFormStyle = _$CardFormStyleTearOff();
 
 /// @nodoc
 mixin _$CardFormStyle {
@@ -531,11 +468,12 @@ class _$CardFormStyleCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$CardFormStyleConstructorCopyWith<$Res>
+abstract class _$$_CardFormStyleConstructorCopyWith<$Res>
     implements $CardFormStyleCopyWith<$Res> {
-  factory _$CardFormStyleConstructorCopyWith(_CardFormStyleConstructor value,
-          $Res Function(_CardFormStyleConstructor) then) =
-      __$CardFormStyleConstructorCopyWithImpl<$Res>;
+  factory _$$_CardFormStyleConstructorCopyWith(
+          _$_CardFormStyleConstructor value,
+          $Res Function(_$_CardFormStyleConstructor) then) =
+      __$$_CardFormStyleConstructorCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -543,22 +481,22 @@ abstract class _$CardFormStyleConstructorCopyWith<$Res>
 }
 
 /// @nodoc
-class __$CardFormStyleConstructorCopyWithImpl<$Res>
+class __$$_CardFormStyleConstructorCopyWithImpl<$Res>
     extends _$CardFormStyleCopyWithImpl<$Res>
-    implements _$CardFormStyleConstructorCopyWith<$Res> {
-  __$CardFormStyleConstructorCopyWithImpl(_CardFormStyleConstructor _value,
-      $Res Function(_CardFormStyleConstructor) _then)
-      : super(_value, (v) => _then(v as _CardFormStyleConstructor));
+    implements _$$_CardFormStyleConstructorCopyWith<$Res> {
+  __$$_CardFormStyleConstructorCopyWithImpl(_$_CardFormStyleConstructor _value,
+      $Res Function(_$_CardFormStyleConstructor) _then)
+      : super(_value, (v) => _then(v as _$_CardFormStyleConstructor));
 
   @override
-  _CardFormStyleConstructor get _value =>
-      super._value as _CardFormStyleConstructor;
+  _$_CardFormStyleConstructor get _value =>
+      super._value as _$_CardFormStyleConstructor;
 
   @override
   $Res call({
     Object? backgroundColor = freezed,
   }) {
-    return _then(_CardFormStyleConstructor(
+    return _then(_$_CardFormStyleConstructor(
       backgroundColor: backgroundColor == freezed
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
@@ -592,20 +530,21 @@ class _$_CardFormStyleConstructor extends _CardFormStyleConstructor {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CardFormStyleConstructor &&
+            other is _$_CardFormStyleConstructor &&
             const DeepCollectionEquality()
                 .equals(other.backgroundColor, backgroundColor));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(backgroundColor));
 
   @JsonKey(ignore: true)
   @override
-  _$CardFormStyleConstructorCopyWith<_CardFormStyleConstructor> get copyWith =>
-      __$CardFormStyleConstructorCopyWithImpl<_CardFormStyleConstructor>(
-          this, _$identity);
+  _$$_CardFormStyleConstructorCopyWith<_$_CardFormStyleConstructor>
+      get copyWith => __$$_CardFormStyleConstructorCopyWithImpl<
+          _$_CardFormStyleConstructor>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -616,7 +555,7 @@ class _$_CardFormStyleConstructor extends _CardFormStyleConstructor {
 abstract class _CardFormStyleConstructor extends CardFormStyle {
   factory _CardFormStyleConstructor(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? backgroundColor}) = _$_CardFormStyleConstructor;
+          final Color? backgroundColor}) = _$_CardFormStyleConstructor;
   _CardFormStyleConstructor._() : super._();
 
   factory _CardFormStyleConstructor.fromJson(Map<String, dynamic> json) =
@@ -624,38 +563,16 @@ abstract class _CardFormStyleConstructor extends CardFormStyle {
 
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get backgroundColor;
+  Color? get backgroundColor => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CardFormStyleConstructorCopyWith<_CardFormStyleConstructor> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_CardFormStyleConstructorCopyWith<_$_CardFormStyleConstructor>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 CardPlaceholder _$CardPlaceholderFromJson(Map<String, dynamic> json) {
   return _CardPlaceholderConstructor.fromJson(json);
 }
-
-/// @nodoc
-class _$CardPlaceholderTearOff {
-  const _$CardPlaceholderTearOff();
-
-  _CardPlaceholderConstructor call(
-      {String? number, String? expiration, String? cvc, String? postalCode}) {
-    return _CardPlaceholderConstructor(
-      number: number,
-      expiration: expiration,
-      cvc: cvc,
-      postalCode: postalCode,
-    );
-  }
-
-  CardPlaceholder fromJson(Map<String, Object?> json) {
-    return CardPlaceholder.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CardPlaceholder = _$CardPlaceholderTearOff();
 
 /// @nodoc
 mixin _$CardPlaceholder {
@@ -724,28 +641,29 @@ class _$CardPlaceholderCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$CardPlaceholderConstructorCopyWith<$Res>
+abstract class _$$_CardPlaceholderConstructorCopyWith<$Res>
     implements $CardPlaceholderCopyWith<$Res> {
-  factory _$CardPlaceholderConstructorCopyWith(
-          _CardPlaceholderConstructor value,
-          $Res Function(_CardPlaceholderConstructor) then) =
-      __$CardPlaceholderConstructorCopyWithImpl<$Res>;
+  factory _$$_CardPlaceholderConstructorCopyWith(
+          _$_CardPlaceholderConstructor value,
+          $Res Function(_$_CardPlaceholderConstructor) then) =
+      __$$_CardPlaceholderConstructorCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? number, String? expiration, String? cvc, String? postalCode});
 }
 
 /// @nodoc
-class __$CardPlaceholderConstructorCopyWithImpl<$Res>
+class __$$_CardPlaceholderConstructorCopyWithImpl<$Res>
     extends _$CardPlaceholderCopyWithImpl<$Res>
-    implements _$CardPlaceholderConstructorCopyWith<$Res> {
-  __$CardPlaceholderConstructorCopyWithImpl(_CardPlaceholderConstructor _value,
-      $Res Function(_CardPlaceholderConstructor) _then)
-      : super(_value, (v) => _then(v as _CardPlaceholderConstructor));
+    implements _$$_CardPlaceholderConstructorCopyWith<$Res> {
+  __$$_CardPlaceholderConstructorCopyWithImpl(
+      _$_CardPlaceholderConstructor _value,
+      $Res Function(_$_CardPlaceholderConstructor) _then)
+      : super(_value, (v) => _then(v as _$_CardPlaceholderConstructor));
 
   @override
-  _CardPlaceholderConstructor get _value =>
-      super._value as _CardPlaceholderConstructor;
+  _$_CardPlaceholderConstructor get _value =>
+      super._value as _$_CardPlaceholderConstructor;
 
   @override
   $Res call({
@@ -754,7 +672,7 @@ class __$CardPlaceholderConstructorCopyWithImpl<$Res>
     Object? cvc = freezed,
     Object? postalCode = freezed,
   }) {
-    return _then(_CardPlaceholderConstructor(
+    return _then(_$_CardPlaceholderConstructor(
       number: number == freezed
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
@@ -786,21 +704,20 @@ class _$_CardPlaceholderConstructor extends _CardPlaceholderConstructor {
   factory _$_CardPlaceholderConstructor.fromJson(Map<String, dynamic> json) =>
       _$$_CardPlaceholderConstructorFromJson(json);
 
-  @override
-
   /// Localized placeholder for card number field.
-  final String? number;
   @override
+  final String? number;
 
   /// Localized placeholder for expiration field.
-  final String? expiration;
   @override
+  final String? expiration;
 
   /// Localized placeholder for cvc field.
-  final String? cvc;
   @override
+  final String? cvc;
 
   /// Localized placeholder for postal code field.
+  @override
   final String? postalCode;
 
   @override
@@ -812,7 +729,7 @@ class _$_CardPlaceholderConstructor extends _CardPlaceholderConstructor {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CardPlaceholderConstructor &&
+            other is _$_CardPlaceholderConstructor &&
             const DeepCollectionEquality().equals(other.number, number) &&
             const DeepCollectionEquality()
                 .equals(other.expiration, expiration) &&
@@ -821,6 +738,7 @@ class _$_CardPlaceholderConstructor extends _CardPlaceholderConstructor {
                 .equals(other.postalCode, postalCode));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -831,9 +749,9 @@ class _$_CardPlaceholderConstructor extends _CardPlaceholderConstructor {
 
   @JsonKey(ignore: true)
   @override
-  _$CardPlaceholderConstructorCopyWith<_CardPlaceholderConstructor>
-      get copyWith => __$CardPlaceholderConstructorCopyWithImpl<
-          _CardPlaceholderConstructor>(this, _$identity);
+  _$$_CardPlaceholderConstructorCopyWith<_$_CardPlaceholderConstructor>
+      get copyWith => __$$_CardPlaceholderConstructorCopyWithImpl<
+          _$_CardPlaceholderConstructor>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -843,10 +761,10 @@ class _$_CardPlaceholderConstructor extends _CardPlaceholderConstructor {
 
 abstract class _CardPlaceholderConstructor extends CardPlaceholder {
   factory _CardPlaceholderConstructor(
-      {String? number,
-      String? expiration,
-      String? cvc,
-      String? postalCode}) = _$_CardPlaceholderConstructor;
+      {final String? number,
+      final String? expiration,
+      final String? cvc,
+      final String? postalCode}) = _$_CardPlaceholderConstructor;
   _CardPlaceholderConstructor._() : super._();
 
   factory _CardPlaceholderConstructor.fromJson(Map<String, dynamic> json) =
@@ -855,22 +773,22 @@ abstract class _CardPlaceholderConstructor extends CardPlaceholder {
   @override
 
   /// Localized placeholder for card number field.
-  String? get number;
+  String? get number => throw _privateConstructorUsedError;
   @override
 
   /// Localized placeholder for expiration field.
-  String? get expiration;
+  String? get expiration => throw _privateConstructorUsedError;
   @override
 
   /// Localized placeholder for cvc field.
-  String? get cvc;
+  String? get cvc => throw _privateConstructorUsedError;
   @override
 
   /// Localized placeholder for postal code field.
-  String? get postalCode;
+  String? get postalCode => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CardPlaceholderConstructorCopyWith<_CardPlaceholderConstructor>
+  _$$_CardPlaceholderConstructorCopyWith<_$_CardPlaceholderConstructor>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -878,45 +796,6 @@ CardFieldInputDetails _$CardFieldInputDetailsFromJson(
     Map<String, dynamic> json) {
   return _CardFieldInputDetails.fromJson(json);
 }
-
-/// @nodoc
-class _$CardFieldInputDetailsTearOff {
-  const _$CardFieldInputDetailsTearOff();
-
-  _CardFieldInputDetails call(
-      {required bool complete,
-      String? last4,
-      int? expiryMonth,
-      int? expiryYear,
-      String? postalCode,
-      String? brand,
-      String? number,
-      String? cvc,
-      CardValidationState validExpiryDate = CardValidationState.Unknown,
-      CardValidationState validCVC = CardValidationState.Unknown,
-      CardValidationState validNumber = CardValidationState.Unknown}) {
-    return _CardFieldInputDetails(
-      complete: complete,
-      last4: last4,
-      expiryMonth: expiryMonth,
-      expiryYear: expiryYear,
-      postalCode: postalCode,
-      brand: brand,
-      number: number,
-      cvc: cvc,
-      validExpiryDate: validExpiryDate,
-      validCVC: validCVC,
-      validNumber: validNumber,
-    );
-  }
-
-  CardFieldInputDetails fromJson(Map<String, Object?> json) {
-    return CardFieldInputDetails.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CardFieldInputDetails = _$CardFieldInputDetailsTearOff();
 
 /// @nodoc
 mixin _$CardFieldInputDetails {
@@ -1053,11 +932,11 @@ class _$CardFieldInputDetailsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$CardFieldInputDetailsCopyWith<$Res>
+abstract class _$$_CardFieldInputDetailsCopyWith<$Res>
     implements $CardFieldInputDetailsCopyWith<$Res> {
-  factory _$CardFieldInputDetailsCopyWith(_CardFieldInputDetails value,
-          $Res Function(_CardFieldInputDetails) then) =
-      __$CardFieldInputDetailsCopyWithImpl<$Res>;
+  factory _$$_CardFieldInputDetailsCopyWith(_$_CardFieldInputDetails value,
+          $Res Function(_$_CardFieldInputDetails) then) =
+      __$$_CardFieldInputDetailsCopyWithImpl<$Res>;
   @override
   $Res call(
       {bool complete,
@@ -1074,15 +953,16 @@ abstract class _$CardFieldInputDetailsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$CardFieldInputDetailsCopyWithImpl<$Res>
+class __$$_CardFieldInputDetailsCopyWithImpl<$Res>
     extends _$CardFieldInputDetailsCopyWithImpl<$Res>
-    implements _$CardFieldInputDetailsCopyWith<$Res> {
-  __$CardFieldInputDetailsCopyWithImpl(_CardFieldInputDetails _value,
-      $Res Function(_CardFieldInputDetails) _then)
-      : super(_value, (v) => _then(v as _CardFieldInputDetails));
+    implements _$$_CardFieldInputDetailsCopyWith<$Res> {
+  __$$_CardFieldInputDetailsCopyWithImpl(_$_CardFieldInputDetails _value,
+      $Res Function(_$_CardFieldInputDetails) _then)
+      : super(_value, (v) => _then(v as _$_CardFieldInputDetails));
 
   @override
-  _CardFieldInputDetails get _value => super._value as _CardFieldInputDetails;
+  _$_CardFieldInputDetails get _value =>
+      super._value as _$_CardFieldInputDetails;
 
   @override
   $Res call({
@@ -1098,7 +978,7 @@ class __$CardFieldInputDetailsCopyWithImpl<$Res>
     Object? validCVC = freezed,
     Object? validNumber = freezed,
   }) {
-    return _then(_CardFieldInputDetails(
+    return _then(_$_CardFieldInputDetails(
       complete: complete == freezed
           ? _value.complete
           : complete // ignore: cast_nullable_to_non_nullable
@@ -1168,54 +1048,53 @@ class _$_CardFieldInputDetails extends _CardFieldInputDetails {
   factory _$_CardFieldInputDetails.fromJson(Map<String, dynamic> json) =>
       _$$_CardFieldInputDetailsFromJson(json);
 
-  @override
-
   /// Indicates whether the card field input is complete.
-  final bool complete;
   @override
+  final bool complete;
 
   /// Last 4 digits of the entered card number.
-  final String? last4;
   @override
+  final String? last4;
 
   /// Month of the entered expiry date of the card.
-  final int? expiryMonth;
   @override
+  final int? expiryMonth;
 
   /// Year of the entered expiry date of the card.
-  final int? expiryYear;
   @override
+  final int? expiryYear;
 
   /// Entered postcal code.
-  final String? postalCode;
   @override
+  final String? postalCode;
 
   /// Brand of the card.
-  final String? brand;
   @override
+  final String? brand;
 
   /// Card number.
   /// This information is not available by default to comply with the PCI compliance
-  final String? number;
   @override
+  final String? number;
 
   /// CVC code.
   /// This information is not available by default to comply with the PCI compliance
-  final String? cvc;
-  @JsonKey()
   @override
+  final String? cvc;
 
   /// The [CardValidationState] of the entered expiry date.
-  final CardValidationState validExpiryDate;
-  @JsonKey()
   @override
+  @JsonKey()
+  final CardValidationState validExpiryDate;
 
   /// The [CardValidationState] of the entered cvc.
-  final CardValidationState validCVC;
-  @JsonKey()
   @override
+  @JsonKey()
+  final CardValidationState validCVC;
 
   /// The [CardValidationState] of the entered card number.
+  @override
+  @JsonKey()
   final CardValidationState validNumber;
 
   @override
@@ -1227,7 +1106,7 @@ class _$_CardFieldInputDetails extends _CardFieldInputDetails {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CardFieldInputDetails &&
+            other is _$_CardFieldInputDetails &&
             const DeepCollectionEquality().equals(other.complete, complete) &&
             const DeepCollectionEquality().equals(other.last4, last4) &&
             const DeepCollectionEquality()
@@ -1246,6 +1125,7 @@ class _$_CardFieldInputDetails extends _CardFieldInputDetails {
                 .equals(other.validNumber, validNumber));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1263,8 +1143,8 @@ class _$_CardFieldInputDetails extends _CardFieldInputDetails {
 
   @JsonKey(ignore: true)
   @override
-  _$CardFieldInputDetailsCopyWith<_CardFieldInputDetails> get copyWith =>
-      __$CardFieldInputDetailsCopyWithImpl<_CardFieldInputDetails>(
+  _$$_CardFieldInputDetailsCopyWith<_$_CardFieldInputDetails> get copyWith =>
+      __$$_CardFieldInputDetailsCopyWithImpl<_$_CardFieldInputDetails>(
           this, _$identity);
 
   @override
@@ -1275,17 +1155,17 @@ class _$_CardFieldInputDetails extends _CardFieldInputDetails {
 
 abstract class _CardFieldInputDetails extends CardFieldInputDetails {
   const factory _CardFieldInputDetails(
-      {required bool complete,
-      String? last4,
-      int? expiryMonth,
-      int? expiryYear,
-      String? postalCode,
-      String? brand,
-      String? number,
-      String? cvc,
-      CardValidationState validExpiryDate,
-      CardValidationState validCVC,
-      CardValidationState validNumber}) = _$_CardFieldInputDetails;
+      {required final bool complete,
+      final String? last4,
+      final int? expiryMonth,
+      final int? expiryYear,
+      final String? postalCode,
+      final String? brand,
+      final String? number,
+      final String? cvc,
+      final CardValidationState validExpiryDate,
+      final CardValidationState validCVC,
+      final CardValidationState validNumber}) = _$_CardFieldInputDetails;
   const _CardFieldInputDetails._() : super._();
 
   factory _CardFieldInputDetails.fromJson(Map<String, dynamic> json) =
@@ -1294,76 +1174,58 @@ abstract class _CardFieldInputDetails extends CardFieldInputDetails {
   @override
 
   /// Indicates whether the card field input is complete.
-  bool get complete;
+  bool get complete => throw _privateConstructorUsedError;
   @override
 
   /// Last 4 digits of the entered card number.
-  String? get last4;
+  String? get last4 => throw _privateConstructorUsedError;
   @override
 
   /// Month of the entered expiry date of the card.
-  int? get expiryMonth;
+  int? get expiryMonth => throw _privateConstructorUsedError;
   @override
 
   /// Year of the entered expiry date of the card.
-  int? get expiryYear;
+  int? get expiryYear => throw _privateConstructorUsedError;
   @override
 
   /// Entered postcal code.
-  String? get postalCode;
+  String? get postalCode => throw _privateConstructorUsedError;
   @override
 
   /// Brand of the card.
-  String? get brand;
+  String? get brand => throw _privateConstructorUsedError;
   @override
 
   /// Card number.
   /// This information is not available by default to comply with the PCI compliance
-  String? get number;
+  String? get number => throw _privateConstructorUsedError;
   @override
 
   /// CVC code.
   /// This information is not available by default to comply with the PCI compliance
-  String? get cvc;
+  String? get cvc => throw _privateConstructorUsedError;
   @override
 
   /// The [CardValidationState] of the entered expiry date.
-  CardValidationState get validExpiryDate;
+  CardValidationState get validExpiryDate => throw _privateConstructorUsedError;
   @override
 
   /// The [CardValidationState] of the entered cvc.
-  CardValidationState get validCVC;
+  CardValidationState get validCVC => throw _privateConstructorUsedError;
   @override
 
   /// The [CardValidationState] of the entered card number.
-  CardValidationState get validNumber;
+  CardValidationState get validNumber => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CardFieldInputDetailsCopyWith<_CardFieldInputDetails> get copyWith =>
+  _$$_CardFieldInputDetailsCopyWith<_$_CardFieldInputDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 CardFieldFocusName _$CardFieldFocusNameFromJson(Map<String, dynamic> json) {
   return _CardFieldFocusName.fromJson(json);
 }
-
-/// @nodoc
-class _$CardFieldFocusNameTearOff {
-  const _$CardFieldFocusNameTearOff();
-
-  _CardFieldFocusName call({CardFieldName? focusedField}) {
-    return _CardFieldFocusName(
-      focusedField: focusedField,
-    );
-  }
-
-  CardFieldFocusName fromJson(Map<String, Object?> json) {
-    return CardFieldFocusName.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CardFieldFocusName = _$CardFieldFocusNameTearOff();
 
 /// @nodoc
 mixin _$CardFieldFocusName {
@@ -1406,31 +1268,31 @@ class _$CardFieldFocusNameCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$CardFieldFocusNameCopyWith<$Res>
+abstract class _$$_CardFieldFocusNameCopyWith<$Res>
     implements $CardFieldFocusNameCopyWith<$Res> {
-  factory _$CardFieldFocusNameCopyWith(
-          _CardFieldFocusName value, $Res Function(_CardFieldFocusName) then) =
-      __$CardFieldFocusNameCopyWithImpl<$Res>;
+  factory _$$_CardFieldFocusNameCopyWith(_$_CardFieldFocusName value,
+          $Res Function(_$_CardFieldFocusName) then) =
+      __$$_CardFieldFocusNameCopyWithImpl<$Res>;
   @override
   $Res call({CardFieldName? focusedField});
 }
 
 /// @nodoc
-class __$CardFieldFocusNameCopyWithImpl<$Res>
+class __$$_CardFieldFocusNameCopyWithImpl<$Res>
     extends _$CardFieldFocusNameCopyWithImpl<$Res>
-    implements _$CardFieldFocusNameCopyWith<$Res> {
-  __$CardFieldFocusNameCopyWithImpl(
-      _CardFieldFocusName _value, $Res Function(_CardFieldFocusName) _then)
-      : super(_value, (v) => _then(v as _CardFieldFocusName));
+    implements _$$_CardFieldFocusNameCopyWith<$Res> {
+  __$$_CardFieldFocusNameCopyWithImpl(
+      _$_CardFieldFocusName _value, $Res Function(_$_CardFieldFocusName) _then)
+      : super(_value, (v) => _then(v as _$_CardFieldFocusName));
 
   @override
-  _CardFieldFocusName get _value => super._value as _CardFieldFocusName;
+  _$_CardFieldFocusName get _value => super._value as _$_CardFieldFocusName;
 
   @override
   $Res call({
     Object? focusedField = freezed,
   }) {
-    return _then(_CardFieldFocusName(
+    return _then(_$_CardFieldFocusName(
       focusedField: focusedField == freezed
           ? _value.focusedField
           : focusedField // ignore: cast_nullable_to_non_nullable
@@ -1460,19 +1322,21 @@ class _$_CardFieldFocusName implements _CardFieldFocusName {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CardFieldFocusName &&
+            other is _$_CardFieldFocusName &&
             const DeepCollectionEquality()
                 .equals(other.focusedField, focusedField));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(focusedField));
 
   @JsonKey(ignore: true)
   @override
-  _$CardFieldFocusNameCopyWith<_CardFieldFocusName> get copyWith =>
-      __$CardFieldFocusNameCopyWithImpl<_CardFieldFocusName>(this, _$identity);
+  _$$_CardFieldFocusNameCopyWith<_$_CardFieldFocusName> get copyWith =>
+      __$$_CardFieldFocusNameCopyWithImpl<_$_CardFieldFocusName>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -1481,16 +1345,16 @@ class _$_CardFieldFocusName implements _CardFieldFocusName {
 }
 
 abstract class _CardFieldFocusName implements CardFieldFocusName {
-  factory _CardFieldFocusName({CardFieldName? focusedField}) =
+  factory _CardFieldFocusName({final CardFieldName? focusedField}) =
       _$_CardFieldFocusName;
 
   factory _CardFieldFocusName.fromJson(Map<String, dynamic> json) =
       _$_CardFieldFocusName.fromJson;
 
   @override
-  CardFieldName? get focusedField;
+  CardFieldName? get focusedField => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CardFieldFocusNameCopyWith<_CardFieldFocusName> get copyWith =>
+  _$$_CardFieldFocusNameCopyWith<_$_CardFieldFocusName> get copyWith =>
       throw _privateConstructorUsedError;
 }

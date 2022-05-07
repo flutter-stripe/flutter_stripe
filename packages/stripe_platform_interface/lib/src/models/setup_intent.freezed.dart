@@ -12,50 +12,11 @@ part of 'setup_intent.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 SetupIntent _$SetupIntentFromJson(Map<String, dynamic> json) {
   return _SetupIntent.fromJson(json);
 }
-
-/// @nodoc
-class _$SetupIntentTearOff {
-  const _$SetupIntentTearOff();
-
-  _SetupIntent call(
-      {required String id,
-      required String status,
-      required bool livemode,
-      required String clientSecret,
-      required String paymentMethodId,
-      required String usage,
-      required List<PaymentMethodType> paymentMethodTypes,
-      String? description,
-      String? created,
-      LastSetupError? lastSetupError,
-      NextAction? nextAction}) {
-    return _SetupIntent(
-      id: id,
-      status: status,
-      livemode: livemode,
-      clientSecret: clientSecret,
-      paymentMethodId: paymentMethodId,
-      usage: usage,
-      paymentMethodTypes: paymentMethodTypes,
-      description: description,
-      created: created,
-      lastSetupError: lastSetupError,
-      nextAction: nextAction,
-    );
-  }
-
-  SetupIntent fromJson(Map<String, Object?> json) {
-    return SetupIntent.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $SetupIntent = _$SetupIntentTearOff();
 
 /// @nodoc
 mixin _$SetupIntent {
@@ -218,11 +179,11 @@ class _$SetupIntentCopyWithImpl<$Res> implements $SetupIntentCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$SetupIntentCopyWith<$Res>
+abstract class _$$_SetupIntentCopyWith<$Res>
     implements $SetupIntentCopyWith<$Res> {
-  factory _$SetupIntentCopyWith(
-          _SetupIntent value, $Res Function(_SetupIntent) then) =
-      __$SetupIntentCopyWithImpl<$Res>;
+  factory _$$_SetupIntentCopyWith(
+          _$_SetupIntent value, $Res Function(_$_SetupIntent) then) =
+      __$$_SetupIntentCopyWithImpl<$Res>;
   @override
   $Res call(
       {String id,
@@ -244,14 +205,14 @@ abstract class _$SetupIntentCopyWith<$Res>
 }
 
 /// @nodoc
-class __$SetupIntentCopyWithImpl<$Res> extends _$SetupIntentCopyWithImpl<$Res>
-    implements _$SetupIntentCopyWith<$Res> {
-  __$SetupIntentCopyWithImpl(
-      _SetupIntent _value, $Res Function(_SetupIntent) _then)
-      : super(_value, (v) => _then(v as _SetupIntent));
+class __$$_SetupIntentCopyWithImpl<$Res> extends _$SetupIntentCopyWithImpl<$Res>
+    implements _$$_SetupIntentCopyWith<$Res> {
+  __$$_SetupIntentCopyWithImpl(
+      _$_SetupIntent _value, $Res Function(_$_SetupIntent) _then)
+      : super(_value, (v) => _then(v as _$_SetupIntent));
 
   @override
-  _SetupIntent get _value => super._value as _SetupIntent;
+  _$_SetupIntent get _value => super._value as _$_SetupIntent;
 
   @override
   $Res call({
@@ -267,7 +228,7 @@ class __$SetupIntentCopyWithImpl<$Res> extends _$SetupIntentCopyWithImpl<$Res>
     Object? lastSetupError = freezed,
     Object? nextAction = freezed,
   }) {
-    return _then(_SetupIntent(
+    return _then(_$_SetupIntent(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -293,7 +254,7 @@ class __$SetupIntentCopyWithImpl<$Res> extends _$SetupIntentCopyWithImpl<$Res>
           : usage // ignore: cast_nullable_to_non_nullable
               as String,
       paymentMethodTypes: paymentMethodTypes == freezed
-          ? _value.paymentMethodTypes
+          ? _value._paymentMethodTypes
           : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
               as List<PaymentMethodType>,
       description: description == freezed
@@ -327,61 +288,67 @@ class _$_SetupIntent implements _SetupIntent {
       required this.clientSecret,
       required this.paymentMethodId,
       required this.usage,
-      required this.paymentMethodTypes,
+      required final List<PaymentMethodType> paymentMethodTypes,
       this.description,
       this.created,
       this.lastSetupError,
-      this.nextAction});
+      this.nextAction})
+      : _paymentMethodTypes = paymentMethodTypes;
 
   factory _$_SetupIntent.fromJson(Map<String, dynamic> json) =>
       _$$_SetupIntentFromJson(json);
 
-  @override
-
   /// Unique identifier.
-  final String id;
   @override
+  final String id;
 
   /// Status of the intent.
   ///
   /// See https://stripe.com/docs/payments/intents#intent-statuses.
-  final String status;
   @override
+  final String status;
 
   /// Determines whether the intent is in live mode or in test mode.
-  final bool livemode;
   @override
+  final bool livemode;
 
   /// The client is secret is used for handling the payment from the Client side.
-  final String clientSecret;
   @override
+  final String clientSecret;
 
   /// Id of the payment method used in this intent.
-  final String paymentMethodId;
   @override
+  final String paymentMethodId;
 
   /// Indicates how the intent is used in the future.
-  final String usage;
   @override
+  final String usage;
 
   /// List of payment method types associated with this intent.
-  final List<PaymentMethodType> paymentMethodTypes;
+  final List<PaymentMethodType> _paymentMethodTypes;
+
+  /// List of payment method types associated with this intent.
   @override
+  List<PaymentMethodType> get paymentMethodTypes {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_paymentMethodTypes);
+  }
 
   /// Localized description that provides additional context to users.
-  final String? description;
   @override
+  final String? description;
 
   /// Timestamp since epoch that represents the time the intent is created.
-  final String? created;
   @override
+  final String? created;
 
   /// Error encountered since last configmration.
-  final LastSetupError? lastSetupError;
   @override
+  final LastSetupError? lastSetupError;
 
   /// Additional action that needs to be taken in order to complete a payment
   /// using the provided resource.
+  @override
   final NextAction? nextAction;
 
   @override
@@ -393,7 +360,7 @@ class _$_SetupIntent implements _SetupIntent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _SetupIntent &&
+            other is _$_SetupIntent &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.livemode, livemode) &&
@@ -403,7 +370,7 @@ class _$_SetupIntent implements _SetupIntent {
                 .equals(other.paymentMethodId, paymentMethodId) &&
             const DeepCollectionEquality().equals(other.usage, usage) &&
             const DeepCollectionEquality()
-                .equals(other.paymentMethodTypes, paymentMethodTypes) &&
+                .equals(other._paymentMethodTypes, _paymentMethodTypes) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.created, created) &&
@@ -413,6 +380,7 @@ class _$_SetupIntent implements _SetupIntent {
                 .equals(other.nextAction, nextAction));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -422,7 +390,7 @@ class _$_SetupIntent implements _SetupIntent {
       const DeepCollectionEquality().hash(clientSecret),
       const DeepCollectionEquality().hash(paymentMethodId),
       const DeepCollectionEquality().hash(usage),
-      const DeepCollectionEquality().hash(paymentMethodTypes),
+      const DeepCollectionEquality().hash(_paymentMethodTypes),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(created),
       const DeepCollectionEquality().hash(lastSetupError),
@@ -430,8 +398,8 @@ class _$_SetupIntent implements _SetupIntent {
 
   @JsonKey(ignore: true)
   @override
-  _$SetupIntentCopyWith<_SetupIntent> get copyWith =>
-      __$SetupIntentCopyWithImpl<_SetupIntent>(this, _$identity);
+  _$$_SetupIntentCopyWith<_$_SetupIntent> get copyWith =>
+      __$$_SetupIntentCopyWithImpl<_$_SetupIntent>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -441,17 +409,17 @@ class _$_SetupIntent implements _SetupIntent {
 
 abstract class _SetupIntent implements SetupIntent {
   const factory _SetupIntent(
-      {required String id,
-      required String status,
-      required bool livemode,
-      required String clientSecret,
-      required String paymentMethodId,
-      required String usage,
-      required List<PaymentMethodType> paymentMethodTypes,
-      String? description,
-      String? created,
-      LastSetupError? lastSetupError,
-      NextAction? nextAction}) = _$_SetupIntent;
+      {required final String id,
+      required final String status,
+      required final bool livemode,
+      required final String clientSecret,
+      required final String paymentMethodId,
+      required final String usage,
+      required final List<PaymentMethodType> paymentMethodTypes,
+      final String? description,
+      final String? created,
+      final LastSetupError? lastSetupError,
+      final NextAction? nextAction}) = _$_SetupIntent;
 
   factory _SetupIntent.fromJson(Map<String, dynamic> json) =
       _$_SetupIntent.fromJson;
@@ -459,78 +427,60 @@ abstract class _SetupIntent implements SetupIntent {
   @override
 
   /// Unique identifier.
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
 
   /// Status of the intent.
   ///
   /// See https://stripe.com/docs/payments/intents#intent-statuses.
-  String get status;
+  String get status => throw _privateConstructorUsedError;
   @override
 
   /// Determines whether the intent is in live mode or in test mode.
-  bool get livemode;
+  bool get livemode => throw _privateConstructorUsedError;
   @override
 
   /// The client is secret is used for handling the payment from the Client side.
-  String get clientSecret;
+  String get clientSecret => throw _privateConstructorUsedError;
   @override
 
   /// Id of the payment method used in this intent.
-  String get paymentMethodId;
+  String get paymentMethodId => throw _privateConstructorUsedError;
   @override
 
   /// Indicates how the intent is used in the future.
-  String get usage;
+  String get usage => throw _privateConstructorUsedError;
   @override
 
   /// List of payment method types associated with this intent.
-  List<PaymentMethodType> get paymentMethodTypes;
+  List<PaymentMethodType> get paymentMethodTypes =>
+      throw _privateConstructorUsedError;
   @override
 
   /// Localized description that provides additional context to users.
-  String? get description;
+  String? get description => throw _privateConstructorUsedError;
   @override
 
   /// Timestamp since epoch that represents the time the intent is created.
-  String? get created;
+  String? get created => throw _privateConstructorUsedError;
   @override
 
   /// Error encountered since last configmration.
-  LastSetupError? get lastSetupError;
+  LastSetupError? get lastSetupError => throw _privateConstructorUsedError;
   @override
 
   /// Additional action that needs to be taken in order to complete a payment
   /// using the provided resource.
-  NextAction? get nextAction;
+  NextAction? get nextAction => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SetupIntentCopyWith<_SetupIntent> get copyWith =>
+  _$$_SetupIntentCopyWith<_$_SetupIntent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 LastSetupError _$LastSetupErrorFromJson(Map<String, dynamic> json) {
   return _LastSetupError.fromJson(json);
 }
-
-/// @nodoc
-class _$LastSetupErrorTearOff {
-  const _$LastSetupErrorTearOff();
-
-  _LastSetupError call({required String code, required String message}) {
-    return _LastSetupError(
-      code: code,
-      message: message,
-    );
-  }
-
-  LastSetupError fromJson(Map<String, Object?> json) {
-    return LastSetupError.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $LastSetupError = _$LastSetupErrorTearOff();
 
 /// @nodoc
 mixin _$LastSetupError {
@@ -582,32 +532,32 @@ class _$LastSetupErrorCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$LastSetupErrorCopyWith<$Res>
+abstract class _$$_LastSetupErrorCopyWith<$Res>
     implements $LastSetupErrorCopyWith<$Res> {
-  factory _$LastSetupErrorCopyWith(
-          _LastSetupError value, $Res Function(_LastSetupError) then) =
-      __$LastSetupErrorCopyWithImpl<$Res>;
+  factory _$$_LastSetupErrorCopyWith(
+          _$_LastSetupError value, $Res Function(_$_LastSetupError) then) =
+      __$$_LastSetupErrorCopyWithImpl<$Res>;
   @override
   $Res call({String code, String message});
 }
 
 /// @nodoc
-class __$LastSetupErrorCopyWithImpl<$Res>
+class __$$_LastSetupErrorCopyWithImpl<$Res>
     extends _$LastSetupErrorCopyWithImpl<$Res>
-    implements _$LastSetupErrorCopyWith<$Res> {
-  __$LastSetupErrorCopyWithImpl(
-      _LastSetupError _value, $Res Function(_LastSetupError) _then)
-      : super(_value, (v) => _then(v as _LastSetupError));
+    implements _$$_LastSetupErrorCopyWith<$Res> {
+  __$$_LastSetupErrorCopyWithImpl(
+      _$_LastSetupError _value, $Res Function(_$_LastSetupError) _then)
+      : super(_value, (v) => _then(v as _$_LastSetupError));
 
   @override
-  _LastSetupError get _value => super._value as _LastSetupError;
+  _$_LastSetupError get _value => super._value as _$_LastSetupError;
 
   @override
   $Res call({
     Object? code = freezed,
     Object? message = freezed,
   }) {
-    return _then(_LastSetupError(
+    return _then(_$_LastSetupError(
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -629,13 +579,12 @@ class _$_LastSetupError implements _LastSetupError {
   factory _$_LastSetupError.fromJson(Map<String, dynamic> json) =>
       _$$_LastSetupErrorFromJson(json);
 
-  @override
-
   /// Code.
-  final String code;
   @override
+  final String code;
 
   /// Message.
+  @override
   final String message;
 
   @override
@@ -647,11 +596,12 @@ class _$_LastSetupError implements _LastSetupError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LastSetupError &&
+            other is _$_LastSetupError &&
             const DeepCollectionEquality().equals(other.code, code) &&
             const DeepCollectionEquality().equals(other.message, message));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -660,8 +610,8 @@ class _$_LastSetupError implements _LastSetupError {
 
   @JsonKey(ignore: true)
   @override
-  _$LastSetupErrorCopyWith<_LastSetupError> get copyWith =>
-      __$LastSetupErrorCopyWithImpl<_LastSetupError>(this, _$identity);
+  _$$_LastSetupErrorCopyWith<_$_LastSetupError> get copyWith =>
+      __$$_LastSetupErrorCopyWithImpl<_$_LastSetupError>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -671,7 +621,8 @@ class _$_LastSetupError implements _LastSetupError {
 
 abstract class _LastSetupError implements LastSetupError {
   const factory _LastSetupError(
-      {required String code, required String message}) = _$_LastSetupError;
+      {required final String code,
+      required final String message}) = _$_LastSetupError;
 
   factory _LastSetupError.fromJson(Map<String, dynamic> json) =
       _$_LastSetupError.fromJson;
@@ -679,13 +630,13 @@ abstract class _LastSetupError implements LastSetupError {
   @override
 
   /// Code.
-  String get code;
+  String get code => throw _privateConstructorUsedError;
   @override
 
   /// Message.
-  String get message;
+  String get message => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LastSetupErrorCopyWith<_LastSetupError> get copyWith =>
+  _$$_LastSetupErrorCopyWith<_$_LastSetupError> get copyWith =>
       throw _privateConstructorUsedError;
 }

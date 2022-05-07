@@ -12,58 +12,11 @@ part of 'payment_intents.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 PaymentIntent _$PaymentIntentFromJson(Map<String, dynamic> json) {
   return _PaymentIntent.fromJson(json);
 }
-
-/// @nodoc
-class _$PaymentIntentTearOff {
-  const _$PaymentIntentTearOff();
-
-  _PaymentIntent call(
-      {required String id,
-      required num amount,
-      required String created,
-      required String currency,
-      required PaymentIntentsStatus status,
-      required String clientSecret,
-      required bool livemode,
-      required CaptureMethod captureMethod,
-      required ConfirmationMethod confirmationMethod,
-      String? paymentMethodId,
-      String? description,
-      String? receiptEmail,
-      String? canceledAt,
-      NextAction? nextAction,
-      ShippingDetails? shipping}) {
-    return _PaymentIntent(
-      id: id,
-      amount: amount,
-      created: created,
-      currency: currency,
-      status: status,
-      clientSecret: clientSecret,
-      livemode: livemode,
-      captureMethod: captureMethod,
-      confirmationMethod: confirmationMethod,
-      paymentMethodId: paymentMethodId,
-      description: description,
-      receiptEmail: receiptEmail,
-      canceledAt: canceledAt,
-      nextAction: nextAction,
-      shipping: shipping,
-    );
-  }
-
-  PaymentIntent fromJson(Map<String, Object?> json) {
-    return PaymentIntent.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $PaymentIntent = _$PaymentIntentTearOff();
 
 /// @nodoc
 mixin _$PaymentIntent {
@@ -261,11 +214,11 @@ class _$PaymentIntentCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PaymentIntentCopyWith<$Res>
+abstract class _$$_PaymentIntentCopyWith<$Res>
     implements $PaymentIntentCopyWith<$Res> {
-  factory _$PaymentIntentCopyWith(
-          _PaymentIntent value, $Res Function(_PaymentIntent) then) =
-      __$PaymentIntentCopyWithImpl<$Res>;
+  factory _$$_PaymentIntentCopyWith(
+          _$_PaymentIntent value, $Res Function(_$_PaymentIntent) then) =
+      __$$_PaymentIntentCopyWithImpl<$Res>;
   @override
   $Res call(
       {String id,
@@ -291,15 +244,15 @@ abstract class _$PaymentIntentCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PaymentIntentCopyWithImpl<$Res>
+class __$$_PaymentIntentCopyWithImpl<$Res>
     extends _$PaymentIntentCopyWithImpl<$Res>
-    implements _$PaymentIntentCopyWith<$Res> {
-  __$PaymentIntentCopyWithImpl(
-      _PaymentIntent _value, $Res Function(_PaymentIntent) _then)
-      : super(_value, (v) => _then(v as _PaymentIntent));
+    implements _$$_PaymentIntentCopyWith<$Res> {
+  __$$_PaymentIntentCopyWithImpl(
+      _$_PaymentIntent _value, $Res Function(_$_PaymentIntent) _then)
+      : super(_value, (v) => _then(v as _$_PaymentIntent));
 
   @override
-  _PaymentIntent get _value => super._value as _PaymentIntent;
+  _$_PaymentIntent get _value => super._value as _$_PaymentIntent;
 
   @override
   $Res call({
@@ -319,7 +272,7 @@ class __$PaymentIntentCopyWithImpl<$Res>
     Object? nextAction = freezed,
     Object? shipping = freezed,
   }) {
-    return _then(_PaymentIntent(
+    return _then(_$_PaymentIntent(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -408,66 +361,65 @@ class _$_PaymentIntent implements _PaymentIntent {
   factory _$_PaymentIntent.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentIntentFromJson(json);
 
-  @override
-
   /// Unique identifier.
-  final String id;
   @override
+  final String id;
 
   /// Amount that will be collected in the payment intent.
-  final num amount;
   @override
+  final num amount;
 
   /// Timestamp since epoch that represents the time the intent is created.
-  final String created;
   @override
+  final String created;
 
   /// The three letter ISO 4217 code for the currency.
-  final String currency;
   @override
+  final String currency;
 
   /// Current status of the intent.
-  final PaymentIntentsStatus status;
   @override
+  final PaymentIntentsStatus status;
 
   /// The client is secret is used for handling the payment from the Client side.
-  final String clientSecret;
   @override
+  final String clientSecret;
 
   /// Determines whether the intent is in live mode or in test mode.
-  final bool livemode;
   @override
+  final bool livemode;
 
   /// How the funds will be caputure from the customer's account.
-  final CaptureMethod captureMethod;
   @override
+  final CaptureMethod captureMethod;
 
   /// Method of how the payment will be confirmed.
-  final ConfirmationMethod confirmationMethod;
   @override
+  final ConfirmationMethod confirmationMethod;
 
   /// Id of the payment method used in this intent.
-  final String? paymentMethodId;
   @override
+  final String? paymentMethodId;
 
   /// Localized description that provides additional context to users.
-  final String? description;
   @override
+  final String? description;
 
   /// Email address where the receipt will be send to.
-  final String? receiptEmail;
   @override
+  final String? receiptEmail;
 
   /// Timestamp since epoch when the intent is cancelled.
-  final String? canceledAt;
   @override
+  final String? canceledAt;
 
   /// Additional action that needs to be taken in order to complete a payment
   /// using the provided resource.
-  final NextAction? nextAction;
   @override
+  final NextAction? nextAction;
 
   /// Shipping information of the payment intent.
+  @override
   final ShippingDetails? shipping;
 
   @override
@@ -479,7 +431,7 @@ class _$_PaymentIntent implements _PaymentIntent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PaymentIntent &&
+            other is _$_PaymentIntent &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.amount, amount) &&
             const DeepCollectionEquality().equals(other.created, created) &&
@@ -505,6 +457,7 @@ class _$_PaymentIntent implements _PaymentIntent {
             const DeepCollectionEquality().equals(other.shipping, shipping));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -526,8 +479,8 @@ class _$_PaymentIntent implements _PaymentIntent {
 
   @JsonKey(ignore: true)
   @override
-  _$PaymentIntentCopyWith<_PaymentIntent> get copyWith =>
-      __$PaymentIntentCopyWithImpl<_PaymentIntent>(this, _$identity);
+  _$$_PaymentIntentCopyWith<_$_PaymentIntent> get copyWith =>
+      __$$_PaymentIntentCopyWithImpl<_$_PaymentIntent>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -537,21 +490,21 @@ class _$_PaymentIntent implements _PaymentIntent {
 
 abstract class _PaymentIntent implements PaymentIntent {
   const factory _PaymentIntent(
-      {required String id,
-      required num amount,
-      required String created,
-      required String currency,
-      required PaymentIntentsStatus status,
-      required String clientSecret,
-      required bool livemode,
-      required CaptureMethod captureMethod,
-      required ConfirmationMethod confirmationMethod,
-      String? paymentMethodId,
-      String? description,
-      String? receiptEmail,
-      String? canceledAt,
-      NextAction? nextAction,
-      ShippingDetails? shipping}) = _$_PaymentIntent;
+      {required final String id,
+      required final num amount,
+      required final String created,
+      required final String currency,
+      required final PaymentIntentsStatus status,
+      required final String clientSecret,
+      required final bool livemode,
+      required final CaptureMethod captureMethod,
+      required final ConfirmationMethod confirmationMethod,
+      final String? paymentMethodId,
+      final String? description,
+      final String? receiptEmail,
+      final String? canceledAt,
+      final NextAction? nextAction,
+      final ShippingDetails? shipping}) = _$_PaymentIntent;
 
   factory _PaymentIntent.fromJson(Map<String, dynamic> json) =
       _$_PaymentIntent.fromJson;
@@ -559,100 +512,74 @@ abstract class _PaymentIntent implements PaymentIntent {
   @override
 
   /// Unique identifier.
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
 
   /// Amount that will be collected in the payment intent.
-  num get amount;
+  num get amount => throw _privateConstructorUsedError;
   @override
 
   /// Timestamp since epoch that represents the time the intent is created.
-  String get created;
+  String get created => throw _privateConstructorUsedError;
   @override
 
   /// The three letter ISO 4217 code for the currency.
-  String get currency;
+  String get currency => throw _privateConstructorUsedError;
   @override
 
   /// Current status of the intent.
-  PaymentIntentsStatus get status;
+  PaymentIntentsStatus get status => throw _privateConstructorUsedError;
   @override
 
   /// The client is secret is used for handling the payment from the Client side.
-  String get clientSecret;
+  String get clientSecret => throw _privateConstructorUsedError;
   @override
 
   /// Determines whether the intent is in live mode or in test mode.
-  bool get livemode;
+  bool get livemode => throw _privateConstructorUsedError;
   @override
 
   /// How the funds will be caputure from the customer's account.
-  CaptureMethod get captureMethod;
+  CaptureMethod get captureMethod => throw _privateConstructorUsedError;
   @override
 
   /// Method of how the payment will be confirmed.
-  ConfirmationMethod get confirmationMethod;
+  ConfirmationMethod get confirmationMethod =>
+      throw _privateConstructorUsedError;
   @override
 
   /// Id of the payment method used in this intent.
-  String? get paymentMethodId;
+  String? get paymentMethodId => throw _privateConstructorUsedError;
   @override
 
   /// Localized description that provides additional context to users.
-  String? get description;
+  String? get description => throw _privateConstructorUsedError;
   @override
 
   /// Email address where the receipt will be send to.
-  String? get receiptEmail;
+  String? get receiptEmail => throw _privateConstructorUsedError;
   @override
 
   /// Timestamp since epoch when the intent is cancelled.
-  String? get canceledAt;
+  String? get canceledAt => throw _privateConstructorUsedError;
   @override
 
   /// Additional action that needs to be taken in order to complete a payment
   /// using the provided resource.
-  NextAction? get nextAction;
+  NextAction? get nextAction => throw _privateConstructorUsedError;
   @override
 
   /// Shipping information of the payment intent.
-  ShippingDetails? get shipping;
+  ShippingDetails? get shipping => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PaymentIntentCopyWith<_PaymentIntent> get copyWith =>
+  _$$_PaymentIntentCopyWith<_$_PaymentIntent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 ShippingDetails _$ShippingDetailsFromJson(Map<String, dynamic> json) {
   return _ShippingDetails.fromJson(json);
 }
-
-/// @nodoc
-class _$ShippingDetailsTearOff {
-  const _$ShippingDetailsTearOff();
-
-  _ShippingDetails call(
-      {required Address address,
-      String? name,
-      String? carrier,
-      String? phone,
-      String? trackingNumber}) {
-    return _ShippingDetails(
-      address: address,
-      name: name,
-      carrier: carrier,
-      phone: phone,
-      trackingNumber: trackingNumber,
-    );
-  }
-
-  ShippingDetails fromJson(Map<String, Object?> json) {
-    return ShippingDetails.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ShippingDetails = _$ShippingDetailsTearOff();
 
 /// @nodoc
 mixin _$ShippingDetails {
@@ -743,11 +670,11 @@ class _$ShippingDetailsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ShippingDetailsCopyWith<$Res>
+abstract class _$$_ShippingDetailsCopyWith<$Res>
     implements $ShippingDetailsCopyWith<$Res> {
-  factory _$ShippingDetailsCopyWith(
-          _ShippingDetails value, $Res Function(_ShippingDetails) then) =
-      __$ShippingDetailsCopyWithImpl<$Res>;
+  factory _$$_ShippingDetailsCopyWith(
+          _$_ShippingDetails value, $Res Function(_$_ShippingDetails) then) =
+      __$$_ShippingDetailsCopyWithImpl<$Res>;
   @override
   $Res call(
       {Address address,
@@ -761,15 +688,15 @@ abstract class _$ShippingDetailsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ShippingDetailsCopyWithImpl<$Res>
+class __$$_ShippingDetailsCopyWithImpl<$Res>
     extends _$ShippingDetailsCopyWithImpl<$Res>
-    implements _$ShippingDetailsCopyWith<$Res> {
-  __$ShippingDetailsCopyWithImpl(
-      _ShippingDetails _value, $Res Function(_ShippingDetails) _then)
-      : super(_value, (v) => _then(v as _ShippingDetails));
+    implements _$$_ShippingDetailsCopyWith<$Res> {
+  __$$_ShippingDetailsCopyWithImpl(
+      _$_ShippingDetails _value, $Res Function(_$_ShippingDetails) _then)
+      : super(_value, (v) => _then(v as _$_ShippingDetails));
 
   @override
-  _ShippingDetails get _value => super._value as _ShippingDetails;
+  _$_ShippingDetails get _value => super._value as _$_ShippingDetails;
 
   @override
   $Res call({
@@ -779,7 +706,7 @@ class __$ShippingDetailsCopyWithImpl<$Res>
     Object? phone = freezed,
     Object? trackingNumber = freezed,
   }) {
-    return _then(_ShippingDetails(
+    return _then(_$_ShippingDetails(
       address: address == freezed
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -818,26 +745,25 @@ class _$_ShippingDetails implements _ShippingDetails {
   factory _$_ShippingDetails.fromJson(Map<String, dynamic> json) =>
       _$$_ShippingDetailsFromJson(json);
 
-  @override
-
   /// Recipient address.
-  final Address address;
   @override
+  final Address address;
 
   /// Recipient name.
-  final String? name;
   @override
+  final String? name;
 
   /// Deliver service that will ship the product
-  final String? carrier;
   @override
+  final String? carrier;
 
   /// Recipient phone number.
-  final String? phone;
   @override
+  final String? phone;
 
   /// Tracking number of the shipment. If multiple tracking numbers separate them
   /// with commas.
+  @override
   final String? trackingNumber;
 
   @override
@@ -849,7 +775,7 @@ class _$_ShippingDetails implements _ShippingDetails {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ShippingDetails &&
+            other is _$_ShippingDetails &&
             const DeepCollectionEquality().equals(other.address, address) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.carrier, carrier) &&
@@ -858,6 +784,7 @@ class _$_ShippingDetails implements _ShippingDetails {
                 .equals(other.trackingNumber, trackingNumber));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -869,8 +796,8 @@ class _$_ShippingDetails implements _ShippingDetails {
 
   @JsonKey(ignore: true)
   @override
-  _$ShippingDetailsCopyWith<_ShippingDetails> get copyWith =>
-      __$ShippingDetailsCopyWithImpl<_ShippingDetails>(this, _$identity);
+  _$$_ShippingDetailsCopyWith<_$_ShippingDetails> get copyWith =>
+      __$$_ShippingDetailsCopyWithImpl<_$_ShippingDetails>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -880,11 +807,11 @@ class _$_ShippingDetails implements _ShippingDetails {
 
 abstract class _ShippingDetails implements ShippingDetails {
   const factory _ShippingDetails(
-      {required Address address,
-      String? name,
-      String? carrier,
-      String? phone,
-      String? trackingNumber}) = _$_ShippingDetails;
+      {required final Address address,
+      final String? name,
+      final String? carrier,
+      final String? phone,
+      final String? trackingNumber}) = _$_ShippingDetails;
 
   factory _ShippingDetails.fromJson(Map<String, dynamic> json) =
       _$_ShippingDetails.fromJson;
@@ -892,26 +819,26 @@ abstract class _ShippingDetails implements ShippingDetails {
   @override
 
   /// Recipient address.
-  Address get address;
+  Address get address => throw _privateConstructorUsedError;
   @override
 
   /// Recipient name.
-  String? get name;
+  String? get name => throw _privateConstructorUsedError;
   @override
 
   /// Deliver service that will ship the product
-  String? get carrier;
+  String? get carrier => throw _privateConstructorUsedError;
   @override
 
   /// Recipient phone number.
-  String? get phone;
+  String? get phone => throw _privateConstructorUsedError;
   @override
 
   /// Tracking number of the shipment. If multiple tracking numbers separate them
   /// with commas.
-  String? get trackingNumber;
+  String? get trackingNumber => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ShippingDetailsCopyWith<_ShippingDetails> get copyWith =>
+  _$$_ShippingDetailsCopyWith<_$_ShippingDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }

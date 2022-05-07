@@ -12,33 +12,12 @@ part of 'ach_params.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CollectBankAccountParams _$CollectBankAccountParamsFromJson(
     Map<String, dynamic> json) {
   return _CollectBankAccountParams.fromJson(json);
 }
-
-/// @nodoc
-class _$CollectBankAccountParamsTearOff {
-  const _$CollectBankAccountParamsTearOff();
-
-  _CollectBankAccountParams call(
-      {required BillingDetails billingDetails,
-      PaymentMethodType type = PaymentMethodType.USBankAccount}) {
-    return _CollectBankAccountParams(
-      billingDetails: billingDetails,
-      type: type,
-    );
-  }
-
-  CollectBankAccountParams fromJson(Map<String, Object?> json) {
-    return CollectBankAccountParams.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CollectBankAccountParams = _$CollectBankAccountParamsTearOff();
 
 /// @nodoc
 mixin _$CollectBankAccountParams {
@@ -102,11 +81,12 @@ class _$CollectBankAccountParamsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$CollectBankAccountParamsCopyWith<$Res>
+abstract class _$$_CollectBankAccountParamsCopyWith<$Res>
     implements $CollectBankAccountParamsCopyWith<$Res> {
-  factory _$CollectBankAccountParamsCopyWith(_CollectBankAccountParams value,
-          $Res Function(_CollectBankAccountParams) then) =
-      __$CollectBankAccountParamsCopyWithImpl<$Res>;
+  factory _$$_CollectBankAccountParamsCopyWith(
+          _$_CollectBankAccountParams value,
+          $Res Function(_$_CollectBankAccountParams) then) =
+      __$$_CollectBankAccountParamsCopyWithImpl<$Res>;
   @override
   $Res call({BillingDetails billingDetails, PaymentMethodType type});
 
@@ -115,23 +95,23 @@ abstract class _$CollectBankAccountParamsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$CollectBankAccountParamsCopyWithImpl<$Res>
+class __$$_CollectBankAccountParamsCopyWithImpl<$Res>
     extends _$CollectBankAccountParamsCopyWithImpl<$Res>
-    implements _$CollectBankAccountParamsCopyWith<$Res> {
-  __$CollectBankAccountParamsCopyWithImpl(_CollectBankAccountParams _value,
-      $Res Function(_CollectBankAccountParams) _then)
-      : super(_value, (v) => _then(v as _CollectBankAccountParams));
+    implements _$$_CollectBankAccountParamsCopyWith<$Res> {
+  __$$_CollectBankAccountParamsCopyWithImpl(_$_CollectBankAccountParams _value,
+      $Res Function(_$_CollectBankAccountParams) _then)
+      : super(_value, (v) => _then(v as _$_CollectBankAccountParams));
 
   @override
-  _CollectBankAccountParams get _value =>
-      super._value as _CollectBankAccountParams;
+  _$_CollectBankAccountParams get _value =>
+      super._value as _$_CollectBankAccountParams;
 
   @override
   $Res call({
     Object? billingDetails = freezed,
     Object? type = freezed,
   }) {
-    return _then(_CollectBankAccountParams(
+    return _then(_$_CollectBankAccountParams(
       billingDetails: billingDetails == freezed
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
@@ -155,17 +135,16 @@ class _$_CollectBankAccountParams implements _CollectBankAccountParams {
   factory _$_CollectBankAccountParams.fromJson(Map<String, dynamic> json) =>
       _$$_CollectBankAccountParamsFromJson(json);
 
-  @override
-
   /// Billingdetails of the account holder
   ///
   /// It is required to fill in the name in the billing details
-  final BillingDetails billingDetails;
-  @JsonKey()
   @override
+  final BillingDetails billingDetails;
 
   /// The paymentmethod type. At this point only method [PaymentMethodType.USBankAccount]
   /// is supported.
+  @override
+  @JsonKey()
   final PaymentMethodType type;
 
   @override
@@ -177,12 +156,13 @@ class _$_CollectBankAccountParams implements _CollectBankAccountParams {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CollectBankAccountParams &&
+            other is _$_CollectBankAccountParams &&
             const DeepCollectionEquality()
                 .equals(other.billingDetails, billingDetails) &&
             const DeepCollectionEquality().equals(other.type, type));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -191,9 +171,9 @@ class _$_CollectBankAccountParams implements _CollectBankAccountParams {
 
   @JsonKey(ignore: true)
   @override
-  _$CollectBankAccountParamsCopyWith<_CollectBankAccountParams> get copyWith =>
-      __$CollectBankAccountParamsCopyWithImpl<_CollectBankAccountParams>(
-          this, _$identity);
+  _$$_CollectBankAccountParamsCopyWith<_$_CollectBankAccountParams>
+      get copyWith => __$$_CollectBankAccountParamsCopyWithImpl<
+          _$_CollectBankAccountParams>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -203,8 +183,8 @@ class _$_CollectBankAccountParams implements _CollectBankAccountParams {
 
 abstract class _CollectBankAccountParams implements CollectBankAccountParams {
   const factory _CollectBankAccountParams(
-      {required BillingDetails billingDetails,
-      PaymentMethodType type}) = _$_CollectBankAccountParams;
+      {required final BillingDetails billingDetails,
+      final PaymentMethodType type}) = _$_CollectBankAccountParams;
 
   factory _CollectBankAccountParams.fromJson(Map<String, dynamic> json) =
       _$_CollectBankAccountParams.fromJson;
@@ -214,42 +194,22 @@ abstract class _CollectBankAccountParams implements CollectBankAccountParams {
   /// Billingdetails of the account holder
   ///
   /// It is required to fill in the name in the billing details
-  BillingDetails get billingDetails;
+  BillingDetails get billingDetails => throw _privateConstructorUsedError;
   @override
 
   /// The paymentmethod type. At this point only method [PaymentMethodType.USBankAccount]
   /// is supported.
-  PaymentMethodType get type;
+  PaymentMethodType get type => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CollectBankAccountParamsCopyWith<_CollectBankAccountParams> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_CollectBankAccountParamsCopyWith<_$_CollectBankAccountParams>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 VerifyMicroDepositsParams _$VerifyMicroDepositsParamsFromJson(
     Map<String, dynamic> json) {
   return _VerifyMicroDepositsParams.fromJson(json);
 }
-
-/// @nodoc
-class _$VerifyMicroDepositsParamsTearOff {
-  const _$VerifyMicroDepositsParamsTearOff();
-
-  _VerifyMicroDepositsParams call(
-      {List<int>? amounts, String? descriptorCode}) {
-    return _VerifyMicroDepositsParams(
-      amounts: amounts,
-      descriptorCode: descriptorCode,
-    );
-  }
-
-  VerifyMicroDepositsParams fromJson(Map<String, Object?> json) {
-    return VerifyMicroDepositsParams.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $VerifyMicroDepositsParams = _$VerifyMicroDepositsParamsTearOff();
 
 /// @nodoc
 mixin _$VerifyMicroDepositsParams {
@@ -306,35 +266,37 @@ class _$VerifyMicroDepositsParamsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$VerifyMicroDepositsParamsCopyWith<$Res>
+abstract class _$$_VerifyMicroDepositsParamsCopyWith<$Res>
     implements $VerifyMicroDepositsParamsCopyWith<$Res> {
-  factory _$VerifyMicroDepositsParamsCopyWith(_VerifyMicroDepositsParams value,
-          $Res Function(_VerifyMicroDepositsParams) then) =
-      __$VerifyMicroDepositsParamsCopyWithImpl<$Res>;
+  factory _$$_VerifyMicroDepositsParamsCopyWith(
+          _$_VerifyMicroDepositsParams value,
+          $Res Function(_$_VerifyMicroDepositsParams) then) =
+      __$$_VerifyMicroDepositsParamsCopyWithImpl<$Res>;
   @override
   $Res call({List<int>? amounts, String? descriptorCode});
 }
 
 /// @nodoc
-class __$VerifyMicroDepositsParamsCopyWithImpl<$Res>
+class __$$_VerifyMicroDepositsParamsCopyWithImpl<$Res>
     extends _$VerifyMicroDepositsParamsCopyWithImpl<$Res>
-    implements _$VerifyMicroDepositsParamsCopyWith<$Res> {
-  __$VerifyMicroDepositsParamsCopyWithImpl(_VerifyMicroDepositsParams _value,
-      $Res Function(_VerifyMicroDepositsParams) _then)
-      : super(_value, (v) => _then(v as _VerifyMicroDepositsParams));
+    implements _$$_VerifyMicroDepositsParamsCopyWith<$Res> {
+  __$$_VerifyMicroDepositsParamsCopyWithImpl(
+      _$_VerifyMicroDepositsParams _value,
+      $Res Function(_$_VerifyMicroDepositsParams) _then)
+      : super(_value, (v) => _then(v as _$_VerifyMicroDepositsParams));
 
   @override
-  _VerifyMicroDepositsParams get _value =>
-      super._value as _VerifyMicroDepositsParams;
+  _$_VerifyMicroDepositsParams get _value =>
+      super._value as _$_VerifyMicroDepositsParams;
 
   @override
   $Res call({
     Object? amounts = freezed,
     Object? descriptorCode = freezed,
   }) {
-    return _then(_VerifyMicroDepositsParams(
+    return _then(_$_VerifyMicroDepositsParams(
       amounts: amounts == freezed
-          ? _value.amounts
+          ? _value._amounts
           : amounts // ignore: cast_nullable_to_non_nullable
               as List<int>?,
       descriptorCode: descriptorCode == freezed
@@ -349,23 +311,35 @@ class __$VerifyMicroDepositsParamsCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$_VerifyMicroDepositsParams implements _VerifyMicroDepositsParams {
-  const _$_VerifyMicroDepositsParams({this.amounts, this.descriptorCode});
+  const _$_VerifyMicroDepositsParams(
+      {final List<int>? amounts, this.descriptorCode})
+      : _amounts = amounts;
 
   factory _$_VerifyMicroDepositsParams.fromJson(Map<String, dynamic> json) =>
       _$$_VerifyMicroDepositsParamsFromJson(json);
-
-  @override
 
   /// The amounts of the microdeposits that are deposited on the account.
   ///
   /// Make sure that the amount is exactly 2. When using this field make sure
   /// [descriptorCode] is `null`.
-  final List<int>? amounts;
+  final List<int>? _amounts;
+
+  /// The amounts of the microdeposits that are deposited on the account.
+  ///
+  /// Make sure that the amount is exactly 2. When using this field make sure
+  /// [descriptorCode] is `null`.
   @override
+  List<int>? get amounts {
+    final value = _amounts;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   /// The descriptor code that is part of the microdepot to the customer bank account.
   ///
   /// When Using this field make sure [amounts] is `null`.
+  @override
   final String? descriptorCode;
 
   @override
@@ -377,24 +351,24 @@ class _$_VerifyMicroDepositsParams implements _VerifyMicroDepositsParams {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _VerifyMicroDepositsParams &&
-            const DeepCollectionEquality().equals(other.amounts, amounts) &&
+            other is _$_VerifyMicroDepositsParams &&
+            const DeepCollectionEquality().equals(other._amounts, _amounts) &&
             const DeepCollectionEquality()
                 .equals(other.descriptorCode, descriptorCode));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(amounts),
+      const DeepCollectionEquality().hash(_amounts),
       const DeepCollectionEquality().hash(descriptorCode));
 
   @JsonKey(ignore: true)
   @override
-  _$VerifyMicroDepositsParamsCopyWith<_VerifyMicroDepositsParams>
-      get copyWith =>
-          __$VerifyMicroDepositsParamsCopyWithImpl<_VerifyMicroDepositsParams>(
-              this, _$identity);
+  _$$_VerifyMicroDepositsParamsCopyWith<_$_VerifyMicroDepositsParams>
+      get copyWith => __$$_VerifyMicroDepositsParamsCopyWithImpl<
+          _$_VerifyMicroDepositsParams>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -404,8 +378,8 @@ class _$_VerifyMicroDepositsParams implements _VerifyMicroDepositsParams {
 
 abstract class _VerifyMicroDepositsParams implements VerifyMicroDepositsParams {
   const factory _VerifyMicroDepositsParams(
-      {List<int>? amounts,
-      String? descriptorCode}) = _$_VerifyMicroDepositsParams;
+      {final List<int>? amounts,
+      final String? descriptorCode}) = _$_VerifyMicroDepositsParams;
 
   factory _VerifyMicroDepositsParams.fromJson(Map<String, dynamic> json) =
       _$_VerifyMicroDepositsParams.fromJson;
@@ -416,15 +390,15 @@ abstract class _VerifyMicroDepositsParams implements VerifyMicroDepositsParams {
   ///
   /// Make sure that the amount is exactly 2. When using this field make sure
   /// [descriptorCode] is `null`.
-  List<int>? get amounts;
+  List<int>? get amounts => throw _privateConstructorUsedError;
   @override
 
   /// The descriptor code that is part of the microdepot to the customer bank account.
   ///
   /// When Using this field make sure [amounts] is `null`.
-  String? get descriptorCode;
+  String? get descriptorCode => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$VerifyMicroDepositsParamsCopyWith<_VerifyMicroDepositsParams>
+  _$$_VerifyMicroDepositsParamsCopyWith<_$_VerifyMicroDepositsParams>
       get copyWith => throw _privateConstructorUsedError;
 }

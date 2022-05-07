@@ -12,64 +12,12 @@ part of 'payment_sheet.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 SetupPaymentSheetParameters _$SetupPaymentSheetParametersFromJson(
     Map<String, dynamic> json) {
   return _SetupParameters.fromJson(json);
 }
-
-/// @nodoc
-class _$SetupPaymentSheetParametersTearOff {
-  const _$SetupPaymentSheetParametersTearOff();
-
-  _SetupParameters call(
-      {bool customFlow = false,
-      String? customerId,
-      String? customerEphemeralKeySecret,
-      String? paymentIntentClientSecret,
-      String? setupIntentClientSecret,
-      String? merchantDisplayName,
-      String? merchantCountryCode,
-      String? currencyCode,
-      bool? applePay,
-      @JsonKey(toJson: UserInterfaceStyleKey.toJson)
-          ThemeMode? style,
-      bool? googlePay,
-      bool allowsDelayedPaymentMethods = false,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? primaryButtonColor,
-      bool testEnv = false,
-      @JsonKey(name: 'defaultBillingDetails')
-          BillingDetails? billingDetails,
-      String? returnURL}) {
-    return _SetupParameters(
-      customFlow: customFlow,
-      customerId: customerId,
-      customerEphemeralKeySecret: customerEphemeralKeySecret,
-      paymentIntentClientSecret: paymentIntentClientSecret,
-      setupIntentClientSecret: setupIntentClientSecret,
-      merchantDisplayName: merchantDisplayName,
-      merchantCountryCode: merchantCountryCode,
-      currencyCode: currencyCode,
-      applePay: applePay,
-      style: style,
-      googlePay: googlePay,
-      allowsDelayedPaymentMethods: allowsDelayedPaymentMethods,
-      primaryButtonColor: primaryButtonColor,
-      testEnv: testEnv,
-      billingDetails: billingDetails,
-      returnURL: returnURL,
-    );
-  }
-
-  SetupPaymentSheetParameters fromJson(Map<String, Object?> json) {
-    return SetupPaymentSheetParameters.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $SetupPaymentSheetParameters = _$SetupPaymentSheetParametersTearOff();
 
 /// @nodoc
 mixin _$SetupPaymentSheetParameters {
@@ -295,11 +243,11 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$SetupParametersCopyWith<$Res>
+abstract class _$$_SetupParametersCopyWith<$Res>
     implements $SetupPaymentSheetParametersCopyWith<$Res> {
-  factory _$SetupParametersCopyWith(
-          _SetupParameters value, $Res Function(_SetupParameters) then) =
-      __$SetupParametersCopyWithImpl<$Res>;
+  factory _$$_SetupParametersCopyWith(
+          _$_SetupParameters value, $Res Function(_$_SetupParameters) then) =
+      __$$_SetupParametersCopyWithImpl<$Res>;
   @override
   $Res call(
       {bool customFlow,
@@ -327,15 +275,15 @@ abstract class _$SetupParametersCopyWith<$Res>
 }
 
 /// @nodoc
-class __$SetupParametersCopyWithImpl<$Res>
+class __$$_SetupParametersCopyWithImpl<$Res>
     extends _$SetupPaymentSheetParametersCopyWithImpl<$Res>
-    implements _$SetupParametersCopyWith<$Res> {
-  __$SetupParametersCopyWithImpl(
-      _SetupParameters _value, $Res Function(_SetupParameters) _then)
-      : super(_value, (v) => _then(v as _SetupParameters));
+    implements _$$_SetupParametersCopyWith<$Res> {
+  __$$_SetupParametersCopyWithImpl(
+      _$_SetupParameters _value, $Res Function(_$_SetupParameters) _then)
+      : super(_value, (v) => _then(v as _$_SetupParameters));
 
   @override
-  _SetupParameters get _value => super._value as _SetupParameters;
+  _$_SetupParameters get _value => super._value as _$_SetupParameters;
 
   @override
   $Res call({
@@ -356,7 +304,7 @@ class __$SetupParametersCopyWithImpl<$Res>
     Object? billingDetails = freezed,
     Object? returnURL = freezed,
   }) {
-    return _then(_SetupParameters(
+    return _then(_$_SetupParameters(
       customFlow: customFlow == freezed
           ? _value.customFlow
           : customFlow // ignore: cast_nullable_to_non_nullable
@@ -452,89 +400,87 @@ class _$_SetupParameters implements _SetupParameters {
   factory _$_SetupParameters.fromJson(Map<String, dynamic> json) =>
       _$$_SetupParametersFromJson(json);
 
-  @JsonKey()
-  @override
-
   /// Whether or not to use a custom flow.
   ///
   /// If this value is true, the payment sheet will allow to select a payment method
   /// and a later confirmation will be needed by calling [confirmPaymentSheetPayment]
   /// By default, false.
-  final bool customFlow;
   @override
+  @JsonKey()
+  final bool customFlow;
 
   /// The identifier of the Stripe Customer object.
   /// See https://stripe.com/docs/api/customers/object#customer_object-id
-  final String? customerId;
   @override
+  final String? customerId;
 
   ///A temp key can be used for API operations that require a secret key.
-  final String? customerEphemeralKeySecret;
   @override
+  final String? customerEphemeralKeySecret;
 
   /// Secret used for client-side retrieval using a publishable key.
   ///
   /// If this value is null make sure to add a [setupIntentClientSecret]
-  final String? paymentIntentClientSecret;
   @override
+  final String? paymentIntentClientSecret;
 
   /// The client secret of this SetupIntent
   ///
   /// If this value is null make sure to add a [paymentIntentClientSecret]
-  final String? setupIntentClientSecret;
   @override
+  final String? setupIntentClientSecret;
 
   /// Display name of the merchant
-  final String? merchantDisplayName;
   @override
+  final String? merchantDisplayName;
 
   /// ISO country code of the country where the merchant is located
-  final String? merchantCountryCode;
   @override
+  final String? merchantCountryCode;
 
   /// Three letter ISO currency code
   ///
   /// Must be a supported currency code. See https://stripe.com/docs/currencies for supported currencies.
   ///
   /// When [setupIntentClientSecret] is not empty it is required to provide a currencyCode.
-  final String? currencyCode;
   @override
+  final String? currencyCode;
 
   /// Configuration related to Apple Pay
   /// If set, PaymentSheet displays Apple Pay as a payment option
   /// A merchantCountryCode would then be required
-  final bool? applePay;
   @override
+  final bool? applePay;
 
   /// Style options for colors in PaymentSheet
+  @override
   @JsonKey(toJson: UserInterfaceStyleKey.toJson)
   final ThemeMode? style;
-  @override
 
   /// Configuration related to Google Pay
   /// If set, PaymentSheet displays Google Pay as a payment option
   /// A merchantCountryCode would then be required
-  final bool? googlePay;
-  @JsonKey()
   @override
+  final bool? googlePay;
 
   /// Flag that allows payment methods that do not move money at the send of the checkout.
   ///
   /// Defaul value is false.
-  final bool allowsDelayedPaymentMethods;
   @override
+  @JsonKey()
+  final bool allowsDelayedPaymentMethods;
 
   /// Button color of the checkoutButton
   ///
   /// Make sure that there is enough contrast with the rest of the paymentsheet.
+  @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   final Color? primaryButtonColor;
-  @JsonKey()
-  @override
 
   /// Flag for using the test environment
-  final bool testEnv;
   @override
+  @JsonKey()
+  final bool testEnv;
 
   /// Default billing information of the customer.
   ///
@@ -542,11 +488,12 @@ class _$_SetupParameters implements _SetupParameters {
   /// For example when you supply a country the country will be set on the payment sheet +
   /// alternative localization options. This does not set the billingDetails on the
   /// paymentIntent since the customer can change those.
+  @override
   @JsonKey(name: 'defaultBillingDetails')
   final BillingDetails? billingDetails;
-  @override
 
   /// Return URL is required for IDEAL and few other payment methods
+  @override
   final String? returnURL;
 
   @override
@@ -558,7 +505,7 @@ class _$_SetupParameters implements _SetupParameters {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _SetupParameters &&
+            other is _$_SetupParameters &&
             const DeepCollectionEquality()
                 .equals(other.customFlow, customFlow) &&
             const DeepCollectionEquality()
@@ -589,6 +536,7 @@ class _$_SetupParameters implements _SetupParameters {
             const DeepCollectionEquality().equals(other.returnURL, returnURL));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -611,8 +559,8 @@ class _$_SetupParameters implements _SetupParameters {
 
   @JsonKey(ignore: true)
   @override
-  _$SetupParametersCopyWith<_SetupParameters> get copyWith =>
-      __$SetupParametersCopyWithImpl<_SetupParameters>(this, _$identity);
+  _$$_SetupParametersCopyWith<_$_SetupParameters> get copyWith =>
+      __$$_SetupParametersCopyWithImpl<_$_SetupParameters>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -622,25 +570,25 @@ class _$_SetupParameters implements _SetupParameters {
 
 abstract class _SetupParameters implements SetupPaymentSheetParameters {
   const factory _SetupParameters(
-      {bool customFlow,
-      String? customerId,
-      String? customerEphemeralKeySecret,
-      String? paymentIntentClientSecret,
-      String? setupIntentClientSecret,
-      String? merchantDisplayName,
-      String? merchantCountryCode,
-      String? currencyCode,
-      bool? applePay,
+      {final bool customFlow,
+      final String? customerId,
+      final String? customerEphemeralKeySecret,
+      final String? paymentIntentClientSecret,
+      final String? setupIntentClientSecret,
+      final String? merchantDisplayName,
+      final String? merchantCountryCode,
+      final String? currencyCode,
+      final bool? applePay,
       @JsonKey(toJson: UserInterfaceStyleKey.toJson)
-          ThemeMode? style,
-      bool? googlePay,
-      bool allowsDelayedPaymentMethods,
+          final ThemeMode? style,
+      final bool? googlePay,
+      final bool allowsDelayedPaymentMethods,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? primaryButtonColor,
-      bool testEnv,
+          final Color? primaryButtonColor,
+      final bool testEnv,
       @JsonKey(name: 'defaultBillingDetails')
-          BillingDetails? billingDetails,
-      String? returnURL}) = _$_SetupParameters;
+          final BillingDetails? billingDetails,
+      final String? returnURL}) = _$_SetupParameters;
 
   factory _SetupParameters.fromJson(Map<String, dynamic> json) =
       _$_SetupParameters.fromJson;
@@ -652,36 +600,36 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   /// If this value is true, the payment sheet will allow to select a payment method
   /// and a later confirmation will be needed by calling [confirmPaymentSheetPayment]
   /// By default, false.
-  bool get customFlow;
+  bool get customFlow => throw _privateConstructorUsedError;
   @override
 
   /// The identifier of the Stripe Customer object.
   /// See https://stripe.com/docs/api/customers/object#customer_object-id
-  String? get customerId;
+  String? get customerId => throw _privateConstructorUsedError;
   @override
 
   ///A temp key can be used for API operations that require a secret key.
-  String? get customerEphemeralKeySecret;
+  String? get customerEphemeralKeySecret => throw _privateConstructorUsedError;
   @override
 
   /// Secret used for client-side retrieval using a publishable key.
   ///
   /// If this value is null make sure to add a [setupIntentClientSecret]
-  String? get paymentIntentClientSecret;
+  String? get paymentIntentClientSecret => throw _privateConstructorUsedError;
   @override
 
   /// The client secret of this SetupIntent
   ///
   /// If this value is null make sure to add a [paymentIntentClientSecret]
-  String? get setupIntentClientSecret;
+  String? get setupIntentClientSecret => throw _privateConstructorUsedError;
   @override
 
   /// Display name of the merchant
-  String? get merchantDisplayName;
+  String? get merchantDisplayName => throw _privateConstructorUsedError;
   @override
 
   /// ISO country code of the country where the merchant is located
-  String? get merchantCountryCode;
+  String? get merchantCountryCode => throw _privateConstructorUsedError;
   @override
 
   /// Three letter ISO currency code
@@ -689,41 +637,41 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   /// Must be a supported currency code. See https://stripe.com/docs/currencies for supported currencies.
   ///
   /// When [setupIntentClientSecret] is not empty it is required to provide a currencyCode.
-  String? get currencyCode;
+  String? get currencyCode => throw _privateConstructorUsedError;
   @override
 
   /// Configuration related to Apple Pay
   /// If set, PaymentSheet displays Apple Pay as a payment option
   /// A merchantCountryCode would then be required
-  bool? get applePay;
+  bool? get applePay => throw _privateConstructorUsedError;
   @override
 
   /// Style options for colors in PaymentSheet
   @JsonKey(toJson: UserInterfaceStyleKey.toJson)
-  ThemeMode? get style;
+  ThemeMode? get style => throw _privateConstructorUsedError;
   @override
 
   /// Configuration related to Google Pay
   /// If set, PaymentSheet displays Google Pay as a payment option
   /// A merchantCountryCode would then be required
-  bool? get googlePay;
+  bool? get googlePay => throw _privateConstructorUsedError;
   @override
 
   /// Flag that allows payment methods that do not move money at the send of the checkout.
   ///
   /// Defaul value is false.
-  bool get allowsDelayedPaymentMethods;
+  bool get allowsDelayedPaymentMethods => throw _privateConstructorUsedError;
   @override
 
   /// Button color of the checkoutButton
   ///
   /// Make sure that there is enough contrast with the rest of the paymentsheet.
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get primaryButtonColor;
+  Color? get primaryButtonColor => throw _privateConstructorUsedError;
   @override
 
   /// Flag for using the test environment
-  bool get testEnv;
+  bool get testEnv => throw _privateConstructorUsedError;
   @override
 
   /// Default billing information of the customer.
@@ -733,14 +681,14 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   /// alternative localization options. This does not set the billingDetails on the
   /// paymentIntent since the customer can change those.
   @JsonKey(name: 'defaultBillingDetails')
-  BillingDetails? get billingDetails;
+  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
   @override
 
   /// Return URL is required for IDEAL and few other payment methods
-  String? get returnURL;
+  String? get returnURL => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SetupParametersCopyWith<_SetupParameters> get copyWith =>
+  _$$_SetupParametersCopyWith<_$_SetupParameters> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -748,26 +696,6 @@ PresentPaymentSheetParameters _$PresentPaymentSheetParametersFromJson(
     Map<String, dynamic> json) {
   return _PresentParameters.fromJson(json);
 }
-
-/// @nodoc
-class _$PresentPaymentSheetParametersTearOff {
-  const _$PresentPaymentSheetParametersTearOff();
-
-  _PresentParameters call(
-      {required String clientSecret, bool confirmPayment = false}) {
-    return _PresentParameters(
-      clientSecret: clientSecret,
-      confirmPayment: confirmPayment,
-    );
-  }
-
-  PresentPaymentSheetParameters fromJson(Map<String, Object?> json) {
-    return PresentPaymentSheetParameters.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $PresentPaymentSheetParameters = _$PresentPaymentSheetParametersTearOff();
 
 /// @nodoc
 mixin _$PresentPaymentSheetParameters {
@@ -826,32 +754,32 @@ class _$PresentPaymentSheetParametersCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PresentParametersCopyWith<$Res>
+abstract class _$$_PresentParametersCopyWith<$Res>
     implements $PresentPaymentSheetParametersCopyWith<$Res> {
-  factory _$PresentParametersCopyWith(
-          _PresentParameters value, $Res Function(_PresentParameters) then) =
-      __$PresentParametersCopyWithImpl<$Res>;
+  factory _$$_PresentParametersCopyWith(_$_PresentParameters value,
+          $Res Function(_$_PresentParameters) then) =
+      __$$_PresentParametersCopyWithImpl<$Res>;
   @override
   $Res call({String clientSecret, bool confirmPayment});
 }
 
 /// @nodoc
-class __$PresentParametersCopyWithImpl<$Res>
+class __$$_PresentParametersCopyWithImpl<$Res>
     extends _$PresentPaymentSheetParametersCopyWithImpl<$Res>
-    implements _$PresentParametersCopyWith<$Res> {
-  __$PresentParametersCopyWithImpl(
-      _PresentParameters _value, $Res Function(_PresentParameters) _then)
-      : super(_value, (v) => _then(v as _PresentParameters));
+    implements _$$_PresentParametersCopyWith<$Res> {
+  __$$_PresentParametersCopyWithImpl(
+      _$_PresentParameters _value, $Res Function(_$_PresentParameters) _then)
+      : super(_value, (v) => _then(v as _$_PresentParameters));
 
   @override
-  _PresentParameters get _value => super._value as _PresentParameters;
+  _$_PresentParameters get _value => super._value as _$_PresentParameters;
 
   @override
   $Res call({
     Object? clientSecret = freezed,
     Object? confirmPayment = freezed,
   }) {
-    return _then(_PresentParameters(
+    return _then(_$_PresentParameters(
       clientSecret: clientSecret == freezed
           ? _value.clientSecret
           : clientSecret // ignore: cast_nullable_to_non_nullable
@@ -873,12 +801,9 @@ class _$_PresentParameters implements _PresentParameters {
   factory _$_PresentParameters.fromJson(Map<String, dynamic> json) =>
       _$$_PresentParametersFromJson(json);
 
-  @override
-
   /// Key used for client-side retrieval using a publishable key.
-  final String clientSecret;
-  @JsonKey()
   @override
+  final String clientSecret;
 
   /// Flag that determines whether or not to present payment options or
   /// directly goes to confirm payment.
@@ -887,6 +812,8 @@ class _$_PresentParameters implements _PresentParameters {
   /// is set to `true` when initializing the payment sheet.
   /// If value is set to `true` [SetupPaymentSheetParameters.customFlow]
   /// has to be set to `false` when initializing the payment sheet.
+  @override
+  @JsonKey()
   final bool confirmPayment;
 
   @override
@@ -898,13 +825,14 @@ class _$_PresentParameters implements _PresentParameters {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PresentParameters &&
+            other is _$_PresentParameters &&
             const DeepCollectionEquality()
                 .equals(other.clientSecret, clientSecret) &&
             const DeepCollectionEquality()
                 .equals(other.confirmPayment, confirmPayment));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -913,8 +841,9 @@ class _$_PresentParameters implements _PresentParameters {
 
   @JsonKey(ignore: true)
   @override
-  _$PresentParametersCopyWith<_PresentParameters> get copyWith =>
-      __$PresentParametersCopyWithImpl<_PresentParameters>(this, _$identity);
+  _$$_PresentParametersCopyWith<_$_PresentParameters> get copyWith =>
+      __$$_PresentParametersCopyWithImpl<_$_PresentParameters>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -924,8 +853,8 @@ class _$_PresentParameters implements _PresentParameters {
 
 abstract class _PresentParameters implements PresentPaymentSheetParameters {
   const factory _PresentParameters(
-      {required String clientSecret,
-      bool confirmPayment}) = _$_PresentParameters;
+      {required final String clientSecret,
+      final bool confirmPayment}) = _$_PresentParameters;
 
   factory _PresentParameters.fromJson(Map<String, dynamic> json) =
       _$_PresentParameters.fromJson;
@@ -933,7 +862,7 @@ abstract class _PresentParameters implements PresentPaymentSheetParameters {
   @override
 
   /// Key used for client-side retrieval using a publishable key.
-  String get clientSecret;
+  String get clientSecret => throw _privateConstructorUsedError;
   @override
 
   /// Flag that determines whether or not to present payment options or
@@ -943,9 +872,9 @@ abstract class _PresentParameters implements PresentPaymentSheetParameters {
   /// is set to `true` when initializing the payment sheet.
   /// If value is set to `true` [SetupPaymentSheetParameters.customFlow]
   /// has to be set to `false` when initializing the payment sheet.
-  bool get confirmPayment;
+  bool get confirmPayment => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PresentParametersCopyWith<_PresentParameters> get copyWith =>
+  _$$_PresentParametersCopyWith<_$_PresentParameters> get copyWith =>
       throw _privateConstructorUsedError;
 }
