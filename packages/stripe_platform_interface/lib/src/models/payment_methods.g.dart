@@ -212,7 +212,7 @@ _$_PaymentMethodParamsCard _$$_PaymentMethodParamsCardFromJson(
           ? null
           : BillingDetails.fromJson(
               json['billingDetails'] as Map<String, dynamic>),
-      $type: json['type'] as String?,
+      $type: json['paymentMethodType'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentMethodParamsCardToJson(
@@ -221,7 +221,7 @@ Map<String, dynamic> _$$_PaymentMethodParamsCardToJson(
       'setupFutureUsage':
           _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
       'billingDetails': instance.billingDetails?.toJson(),
-      'type': instance.$type,
+      'paymentMethodType': instance.$type,
     };
 
 const _$PaymentIntentsFutureUsageEnumMap = {
@@ -235,7 +235,7 @@ _$_PaymentMethodParamsCardWithToken
           token: json['token'] as String,
           setupFutureUsage: $enumDecodeNullable(
               _$PaymentIntentsFutureUsageEnumMap, json['setupFutureUsage']),
-          $type: json['type'] as String?,
+          $type: json['paymentMethodType'] as String?,
         );
 
 Map<String, dynamic> _$$_PaymentMethodParamsCardWithTokenToJson(
@@ -244,7 +244,7 @@ Map<String, dynamic> _$$_PaymentMethodParamsCardWithTokenToJson(
       'token': instance.token,
       'setupFutureUsage':
           _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
-      'type': instance.$type,
+      'paymentMethodType': instance.$type,
     };
 
 _$_PaymentMethodParamsCardWithMethodId
@@ -253,7 +253,7 @@ _$_PaymentMethodParamsCardWithMethodId
         _$_PaymentMethodParamsCardWithMethodId(
           paymentMethodId: json['paymentMethodId'] as String,
           cvc: json['cvc'] as String?,
-          $type: json['type'] as String?,
+          $type: json['paymentMethodType'] as String?,
         );
 
 Map<String, dynamic> _$$_PaymentMethodParamsCardWithMethodIdToJson(
@@ -261,19 +261,19 @@ Map<String, dynamic> _$$_PaymentMethodParamsCardWithMethodIdToJson(
     <String, dynamic>{
       'paymentMethodId': instance.paymentMethodId,
       'cvc': instance.cvc,
-      'type': instance.$type,
+      'paymentMethodType': instance.$type,
     };
 
 _$_PaymentMethodParamsAlipay _$$_PaymentMethodParamsAlipayFromJson(
         Map<String, dynamic> json) =>
     _$_PaymentMethodParamsAlipay(
-      $type: json['type'] as String?,
+      $type: json['paymentMethodType'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentMethodParamsAlipayToJson(
         _$_PaymentMethodParamsAlipay instance) =>
     <String, dynamic>{
-      'type': instance.$type,
+      'paymentMethodType': instance.$type,
     };
 
 _$_PaymentMethodParamsIdeal _$$_PaymentMethodParamsIdealFromJson(
@@ -284,7 +284,7 @@ _$_PaymentMethodParamsIdeal _$$_PaymentMethodParamsIdealFromJson(
           : BillingDetails.fromJson(
               json['billingDetails'] as Map<String, dynamic>),
       bankName: json['bankName'] as String?,
-      $type: json['type'] as String?,
+      $type: json['paymentMethodType'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentMethodParamsIdealToJson(
@@ -292,7 +292,7 @@ Map<String, dynamic> _$$_PaymentMethodParamsIdealToJson(
     <String, dynamic>{
       'billingDetails': instance.billingDetails?.toJson(),
       'bankName': instance.bankName,
-      'type': instance.$type,
+      'paymentMethodType': instance.$type,
     };
 
 _$_PaymentMethodParamsAubecs _$$_PaymentMethodParamsAubecsFromJson(
@@ -304,7 +304,7 @@ _$_PaymentMethodParamsAubecs _$$_PaymentMethodParamsAubecsFromJson(
           ? null
           : BillingDetails.fromJson(
               json['billingDetails'] as Map<String, dynamic>),
-      $type: json['type'] as String?,
+      $type: json['paymentMethodType'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentMethodParamsAubecsToJson(
@@ -312,7 +312,7 @@ Map<String, dynamic> _$$_PaymentMethodParamsAubecsToJson(
     <String, dynamic>{
       'formDetails': instance.formDetails.toJson(),
       'billingDetails': instance.billingDetails?.toJson(),
-      'type': instance.$type,
+      'paymentMethodType': instance.$type,
     };
 
 _$_PaymentMethodParamsBankContact _$$_PaymentMethodParamsBankContactFromJson(
@@ -322,14 +322,14 @@ _$_PaymentMethodParamsBankContact _$$_PaymentMethodParamsBankContactFromJson(
           ? null
           : BillingDetails.fromJson(
               json['billingDetails'] as Map<String, dynamic>),
-      $type: json['type'] as String?,
+      $type: json['paymentMethodType'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentMethodParamsBankContactToJson(
         _$_PaymentMethodParamsBankContact instance) =>
     <String, dynamic>{
       'billingDetails': instance.billingDetails?.toJson(),
-      'type': instance.$type,
+      'paymentMethodType': instance.$type,
     };
 
 _$_PaymentMethodParamsGiroPay _$$_PaymentMethodParamsGiroPayFromJson(
@@ -339,14 +339,14 @@ _$_PaymentMethodParamsGiroPay _$$_PaymentMethodParamsGiroPayFromJson(
           ? null
           : BillingDetails.fromJson(
               json['billingDetails'] as Map<String, dynamic>),
-      $type: json['type'] as String?,
+      $type: json['paymentMethodType'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentMethodParamsGiroPayToJson(
         _$_PaymentMethodParamsGiroPay instance) =>
     <String, dynamic>{
       'billingDetails': instance.billingDetails?.toJson(),
-      'type': instance.$type,
+      'paymentMethodType': instance.$type,
     };
 
 _$_PaymentMethodParamsEps _$$_PaymentMethodParamsEpsFromJson(
@@ -356,14 +356,14 @@ _$_PaymentMethodParamsEps _$$_PaymentMethodParamsEpsFromJson(
           ? null
           : BillingDetails.fromJson(
               json['billingDetails'] as Map<String, dynamic>),
-      $type: json['type'] as String?,
+      $type: json['paymentMethodType'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentMethodParamsEpsToJson(
         _$_PaymentMethodParamsEps instance) =>
     <String, dynamic>{
       'billingDetails': instance.billingDetails?.toJson(),
-      'type': instance.$type,
+      'paymentMethodType': instance.$type,
     };
 
 _$_PaymentMethodParamsPay _$$_PaymentMethodParamsPayFromJson(
@@ -373,14 +373,14 @@ _$_PaymentMethodParamsPay _$$_PaymentMethodParamsPayFromJson(
           ? null
           : BillingDetails.fromJson(
               json['billingDetails'] as Map<String, dynamic>),
-      $type: json['type'] as String?,
+      $type: json['paymentMethodType'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentMethodParamsPayToJson(
         _$_PaymentMethodParamsPay instance) =>
     <String, dynamic>{
       'billingDetails': instance.billingDetails?.toJson(),
-      'type': instance.$type,
+      'paymentMethodType': instance.$type,
     };
 
 _$_PaymentMethodParamsP24 _$$_PaymentMethodParamsP24FromJson(
@@ -390,28 +390,28 @@ _$_PaymentMethodParamsP24 _$$_PaymentMethodParamsP24FromJson(
           ? null
           : BillingDetails.fromJson(
               json['billingDetails'] as Map<String, dynamic>),
-      $type: json['type'] as String?,
+      $type: json['paymentMethodType'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentMethodParamsP24ToJson(
         _$_PaymentMethodParamsP24 instance) =>
     <String, dynamic>{
       'billingDetails': instance.billingDetails?.toJson(),
-      'type': instance.$type,
+      'paymentMethodType': instance.$type,
     };
 
 _$_PaymentMethodParamsFpx _$$_PaymentMethodParamsFpxFromJson(
         Map<String, dynamic> json) =>
     _$_PaymentMethodParamsFpx(
       testOfflineBank: json['testOfflineBank'] as bool,
-      $type: json['type'] as String?,
+      $type: json['paymentMethodType'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentMethodParamsFpxToJson(
         _$_PaymentMethodParamsFpx instance) =>
     <String, dynamic>{
       'testOfflineBank': instance.testOfflineBank,
-      'type': instance.$type,
+      'paymentMethodType': instance.$type,
     };
 
 _$_PaymentMethodParamsSepaDebit _$$_PaymentMethodParamsSepaDebitFromJson(
@@ -424,7 +424,7 @@ _$_PaymentMethodParamsSepaDebit _$$_PaymentMethodParamsSepaDebitFromJson(
           ? null
           : BillingDetails.fromJson(
               json['billingDetails'] as Map<String, dynamic>),
-      $type: json['type'] as String?,
+      $type: json['paymentMethodType'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentMethodParamsSepaDebitToJson(
@@ -434,7 +434,7 @@ Map<String, dynamic> _$$_PaymentMethodParamsSepaDebitToJson(
       'setupFutureUsage':
           _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
       'billingDetails': instance.billingDetails?.toJson(),
-      'type': instance.$type,
+      'paymentMethodType': instance.$type,
     };
 
 _$_PaymentMethodParamsSofort _$$_PaymentMethodParamsSofortFromJson(
@@ -447,7 +447,7 @@ _$_PaymentMethodParamsSofort _$$_PaymentMethodParamsSofortFromJson(
           ? null
           : BillingDetails.fromJson(
               json['billingDetails'] as Map<String, dynamic>),
-      $type: json['type'] as String?,
+      $type: json['paymentMethodType'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentMethodParamsSofortToJson(
@@ -457,7 +457,7 @@ Map<String, dynamic> _$$_PaymentMethodParamsSofortToJson(
       'setupFutureUsage':
           _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
       'billingDetails': instance.billingDetails?.toJson(),
-      'type': instance.$type,
+      'paymentMethodType': instance.$type,
     };
 
 _$_PaymentMethodParamsAfterpayClearpay
@@ -470,7 +470,7 @@ _$_PaymentMethodParamsAfterpayClearpay
               ? null
               : BillingDetails.fromJson(
                   json['billingDetails'] as Map<String, dynamic>),
-          $type: json['type'] as String?,
+          $type: json['paymentMethodType'] as String?,
         );
 
 Map<String, dynamic> _$$_PaymentMethodParamsAfterpayClearpayToJson(
@@ -478,7 +478,7 @@ Map<String, dynamic> _$$_PaymentMethodParamsAfterpayClearpayToJson(
     <String, dynamic>{
       'shippingDetails': instance.shippingDetails.toJson(),
       'billingDetails': instance.billingDetails?.toJson(),
-      'type': instance.$type,
+      'paymentMethodType': instance.$type,
     };
 
 _$_PaymentMethodParamsOxxo _$$_PaymentMethodParamsOxxoFromJson(
@@ -488,14 +488,14 @@ _$_PaymentMethodParamsOxxo _$$_PaymentMethodParamsOxxoFromJson(
           ? null
           : BillingDetails.fromJson(
               json['billingDetails'] as Map<String, dynamic>),
-      $type: json['type'] as String?,
+      $type: json['paymentMethodType'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentMethodParamsOxxoToJson(
         _$_PaymentMethodParamsOxxo instance) =>
     <String, dynamic>{
       'billingDetails': instance.billingDetails?.toJson(),
-      'type': instance.$type,
+      'paymentMethodType': instance.$type,
     };
 
 _$_PaymentMethodParamsKlarna _$$_PaymentMethodParamsKlarnaFromJson(
@@ -505,14 +505,14 @@ _$_PaymentMethodParamsKlarna _$$_PaymentMethodParamsKlarnaFromJson(
           ? null
           : BillingDetails.fromJson(
               json['billingDetails'] as Map<String, dynamic>),
-      $type: json['type'] as String?,
+      $type: json['paymentMethodType'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentMethodParamsKlarnaToJson(
         _$_PaymentMethodParamsKlarna instance) =>
     <String, dynamic>{
       'billingDetails': instance.billingDetails?.toJson(),
-      'type': instance.$type,
+      'paymentMethodType': instance.$type,
     };
 
 _$_PaymentMethodParamsUsBankAccount
@@ -528,7 +528,7 @@ _$_PaymentMethodParamsUsBankAccount
               ? null
               : BillingDetails.fromJson(
                   json['billingDetails'] as Map<String, dynamic>),
-          $type: json['type'] as String?,
+          $type: json['paymentMethodType'] as String?,
         );
 
 Map<String, dynamic> _$$_PaymentMethodParamsUsBankAccountToJson(
@@ -540,5 +540,5 @@ Map<String, dynamic> _$$_PaymentMethodParamsUsBankAccountToJson(
           _$BankAccountHolderTypeEnumMap[instance.accountHolderType],
       'accountType': _$UsBankAccountTypeEnumMap[instance.accountType],
       'billingDetails': instance.billingDetails?.toJson(),
-      'type': instance.$type,
+      'paymentMethodType': instance.$type,
     };

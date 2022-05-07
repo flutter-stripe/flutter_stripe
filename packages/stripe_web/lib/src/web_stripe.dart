@@ -333,9 +333,10 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<void> updateApplePaySummaryItems(
-      {required List<ApplePayCartSummaryItem> summaryItems,
-      List<ApplePayErrorAddressField>? errorAddressFields}) {
+  Future<void> updateApplePaySummaryItems({
+    required List<ApplePayCartSummaryItem> summaryItems,
+    List<ApplePayErrorAddressField>? errorAddressFields,
+  }) {
     throw WebUnsupportedError.method('updateApplePaySummaryItems');
   }
 }

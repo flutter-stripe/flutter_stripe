@@ -307,7 +307,7 @@ enum PaymentMethodType {
   Unknown
 }
 
-@Freezed(unionKey: 'type')
+@Freezed(unionKey: 'paymentMethodType')
 
 /// Parameters that specify the desired configuration of a specific payment method.
 class PaymentMethodParams with _$PaymentMethodParams {

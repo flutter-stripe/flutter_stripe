@@ -2674,7 +2674,7 @@ abstract class _UsBankAccount implements UsBankAccount {
 }
 
 PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
-  switch (json['type']) {
+  switch (json['paymentMethodType']) {
     case 'Card':
       return _PaymentMethodParamsCard.fromJson(json);
     case 'Card':
@@ -2713,8 +2713,11 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
       return _PaymentMethodParamsUsBankAccount.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'type', 'PaymentMethodParams',
-          'Invalid union type "${json['type']}"!');
+      throw CheckedFromJsonException(
+          json,
+          'paymentMethodType',
+          'PaymentMethodParams',
+          'Invalid union type "${json['paymentMethodType']}"!');
   }
 }
 
@@ -3014,7 +3017,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
   @override
   final BillingDetails? billingDetails;
 
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
@@ -3359,7 +3362,7 @@ class _$_PaymentMethodParamsCardWithToken
   @override
   final PaymentIntentsFutureUsage? setupFutureUsage;
 
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
@@ -3708,7 +3711,7 @@ class _$_PaymentMethodParamsCardWithMethodId
   @override
   final String? cvc;
 
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
@@ -4026,7 +4029,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
   factory _$_PaymentMethodParamsAlipay.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodParamsAlipayFromJson(json);
 
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
@@ -4357,7 +4360,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
   @override
   final String? bankName;
 
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
@@ -4721,7 +4724,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
   @override
   final BillingDetails? billingDetails;
 
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
@@ -5070,7 +5073,7 @@ class _$_PaymentMethodParamsBankContact
   @override
   final BillingDetails? billingDetails;
 
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
@@ -5410,7 +5413,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
   @override
   final BillingDetails? billingDetails;
 
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
@@ -5746,7 +5749,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
   @override
   final BillingDetails? billingDetails;
 
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
@@ -6082,7 +6085,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
   @override
   final BillingDetails? billingDetails;
 
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
@@ -6418,7 +6421,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
   @override
   final BillingDetails? billingDetails;
 
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
@@ -6741,7 +6744,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
   @override
   final bool testOfflineBank;
 
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
@@ -7100,7 +7103,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
   @override
   final BillingDetails? billingDetails;
 
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
@@ -7472,7 +7475,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
   @override
   final BillingDetails? billingDetails;
 
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
@@ -7842,7 +7845,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
   @override
   final BillingDetails? billingDetails;
 
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
@@ -8190,7 +8193,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
   @override
   final BillingDetails? billingDetails;
 
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
@@ -8532,7 +8535,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
   @override
   final BillingDetails? billingDetails;
 
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
@@ -8923,7 +8926,7 @@ class _$_PaymentMethodParamsUsBankAccount
   @override
   final BillingDetails? billingDetails;
 
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override

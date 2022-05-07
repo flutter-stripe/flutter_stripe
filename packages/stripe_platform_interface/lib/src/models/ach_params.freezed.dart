@@ -28,7 +28,7 @@ mixin _$CollectBankAccountParams {
 
   /// The paymentmethod type. At this point only method [PaymentMethodType.USBankAccount]
   /// is supported.
-  PaymentMethodType get type => throw _privateConstructorUsedError;
+  PaymentMethodType get paymentMethodType => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +41,8 @@ abstract class $CollectBankAccountParamsCopyWith<$Res> {
   factory $CollectBankAccountParamsCopyWith(CollectBankAccountParams value,
           $Res Function(CollectBankAccountParams) then) =
       _$CollectBankAccountParamsCopyWithImpl<$Res>;
-  $Res call({BillingDetails billingDetails, PaymentMethodType type});
+  $Res call(
+      {BillingDetails billingDetails, PaymentMethodType paymentMethodType});
 
   $BillingDetailsCopyWith<$Res> get billingDetails;
 }
@@ -58,16 +59,16 @@ class _$CollectBankAccountParamsCopyWithImpl<$Res>
   @override
   $Res call({
     Object? billingDetails = freezed,
-    Object? type = freezed,
+    Object? paymentMethodType = freezed,
   }) {
     return _then(_value.copyWith(
       billingDetails: billingDetails == freezed
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
               as BillingDetails,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
+      paymentMethodType: paymentMethodType == freezed
+          ? _value.paymentMethodType
+          : paymentMethodType // ignore: cast_nullable_to_non_nullable
               as PaymentMethodType,
     ));
   }
@@ -88,7 +89,8 @@ abstract class _$$_CollectBankAccountParamsCopyWith<$Res>
           $Res Function(_$_CollectBankAccountParams) then) =
       __$$_CollectBankAccountParamsCopyWithImpl<$Res>;
   @override
-  $Res call({BillingDetails billingDetails, PaymentMethodType type});
+  $Res call(
+      {BillingDetails billingDetails, PaymentMethodType paymentMethodType});
 
   @override
   $BillingDetailsCopyWith<$Res> get billingDetails;
@@ -109,16 +111,16 @@ class __$$_CollectBankAccountParamsCopyWithImpl<$Res>
   @override
   $Res call({
     Object? billingDetails = freezed,
-    Object? type = freezed,
+    Object? paymentMethodType = freezed,
   }) {
     return _then(_$_CollectBankAccountParams(
       billingDetails: billingDetails == freezed
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
               as BillingDetails,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
+      paymentMethodType: paymentMethodType == freezed
+          ? _value.paymentMethodType
+          : paymentMethodType // ignore: cast_nullable_to_non_nullable
               as PaymentMethodType,
     ));
   }
@@ -130,7 +132,7 @@ class __$$_CollectBankAccountParamsCopyWithImpl<$Res>
 class _$_CollectBankAccountParams implements _CollectBankAccountParams {
   const _$_CollectBankAccountParams(
       {required this.billingDetails,
-      this.type = PaymentMethodType.USBankAccount});
+      this.paymentMethodType = PaymentMethodType.USBankAccount});
 
   factory _$_CollectBankAccountParams.fromJson(Map<String, dynamic> json) =>
       _$$_CollectBankAccountParamsFromJson(json);
@@ -145,11 +147,11 @@ class _$_CollectBankAccountParams implements _CollectBankAccountParams {
   /// is supported.
   @override
   @JsonKey()
-  final PaymentMethodType type;
+  final PaymentMethodType paymentMethodType;
 
   @override
   String toString() {
-    return 'CollectBankAccountParams(billingDetails: $billingDetails, type: $type)';
+    return 'CollectBankAccountParams(billingDetails: $billingDetails, paymentMethodType: $paymentMethodType)';
   }
 
   @override
@@ -159,7 +161,8 @@ class _$_CollectBankAccountParams implements _CollectBankAccountParams {
             other is _$_CollectBankAccountParams &&
             const DeepCollectionEquality()
                 .equals(other.billingDetails, billingDetails) &&
-            const DeepCollectionEquality().equals(other.type, type));
+            const DeepCollectionEquality()
+                .equals(other.paymentMethodType, paymentMethodType));
   }
 
   @JsonKey(ignore: true)
@@ -167,7 +170,7 @@ class _$_CollectBankAccountParams implements _CollectBankAccountParams {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(billingDetails),
-      const DeepCollectionEquality().hash(type));
+      const DeepCollectionEquality().hash(paymentMethodType));
 
   @JsonKey(ignore: true)
   @override
@@ -184,7 +187,7 @@ class _$_CollectBankAccountParams implements _CollectBankAccountParams {
 abstract class _CollectBankAccountParams implements CollectBankAccountParams {
   const factory _CollectBankAccountParams(
       {required final BillingDetails billingDetails,
-      final PaymentMethodType type}) = _$_CollectBankAccountParams;
+      final PaymentMethodType paymentMethodType}) = _$_CollectBankAccountParams;
 
   factory _CollectBankAccountParams.fromJson(Map<String, dynamic> json) =
       _$_CollectBankAccountParams.fromJson;
@@ -199,7 +202,7 @@ abstract class _CollectBankAccountParams implements CollectBankAccountParams {
 
   /// The paymentmethod type. At this point only method [PaymentMethodType.USBankAccount]
   /// is supported.
-  PaymentMethodType get type => throw _privateConstructorUsedError;
+  PaymentMethodType get paymentMethodType => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_CollectBankAccountParamsCopyWith<_$_CollectBankAccountParams>
