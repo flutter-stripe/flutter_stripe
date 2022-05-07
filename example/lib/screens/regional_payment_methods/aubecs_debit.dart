@@ -101,7 +101,9 @@ class _AubecsExampleState extends State<AubecsExample> {
     try {
       await Stripe.instance.confirmPayment(
         clientSecret,
-        PaymentMethodParams.aubecs(formDetails: _details!),
+        PaymentMethodParams.aubecs(
+          paymentMethodData: PaymentMethodDataAubecs(formDetails: _details!),
+        ),
       );
 
       ScaffoldMessenger.of(context).showSnackBar(

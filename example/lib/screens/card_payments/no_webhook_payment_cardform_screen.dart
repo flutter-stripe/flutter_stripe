@@ -100,7 +100,9 @@ class _NoWebhookPaymentCardFormScreenState
       // 2. Create payment method
       final paymentMethod =
           await Stripe.instance.createPaymentMethod(PaymentMethodParams.card(
-        billingDetails: billingDetails,
+        paymentMethodData: PaymentMethodData(
+          billingDetails: billingDetails,
+        ),
       ));
 
       // 3. call API to create PaymentIntent

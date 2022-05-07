@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:http/http.dart' as http;
 import 'package:stripe_example/config.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
 // import 'package:pay/pay.dart' as pay;
@@ -44,7 +44,10 @@ class _ApplePayExternalPluginScreenState
       padding: EdgeInsets.all(16),
       tags: ['iOS', 'Pay plugin'],
       children: [
-        SizedBox(child: Text('Pay is temporaliy disabled because of https://github.com/google-pay/flutter-plugin/issues/126'),)
+        SizedBox(
+          child: Text(
+              'Pay is temporaliy disabled because of https://github.com/google-pay/flutter-plugin/issues/126'),
+        )
         // pay.ApplePayButton(
         //   paymentConfigurationAsset: 'apple_pay_payment_profile.json',
         //   paymentItems: _paymentItems,
@@ -72,12 +75,16 @@ class _ApplePayExternalPluginScreenState
       //debugPrint(paymentResult.toString());
       // 1. Get Stripe token from payment result
       final token = await Stripe.instance.createApplePayToken(paymentResult);
-      
+
       // 2. fetch Intent Client Secret from backend
       final response = await fetchPaymentIntentClientSecret();
       final clientSecret = response['clientSecret'];
 
-      final params = PaymentMethodParams.cardFromToken(token: token.id);
+      final params = PaymentMethodParams.cardFromToken(
+        paymentMethodData: PaymentMethodDataCardFromToken(
+          token: token.id,
+        ),
+      );
 
       // 3. Confirm Apple pay payment method
       await Stripe.instance.confirmPayment(clientSecret, params);

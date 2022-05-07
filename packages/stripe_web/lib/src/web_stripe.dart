@@ -105,23 +105,23 @@ class WebStripe extends StripePlatform {
           ),
         );
       },
-      cardFromMethodId: (String paymentMethodId, String? cvc) {
+      cardFromMethodId: (paymentMethodData) {
         // https://stripe.com/docs/js/payment_intents/confirm_card_payment#stripe_confirm_card_payment-existing
         return js.confirmCardPayment(
           paymentIntentClientSecret,
           data: s.ConfirmCardPaymentData(
-            payment_method: paymentMethodId,
+            payment_method: paymentMethodData.paymentMethodId,
           ),
         );
       },
       cardFromToken:
-          (String token, PaymentIntentsFutureUsage? setupFutureUsage) {
+          (PaymentMethodDataCardFromToken data, PaymentIntentsFutureUsage? setupFutureUsage) {
         // https: //stripe.com/docs/js/payment_intents/confirm_card_payment#stripe_confirm_card_payment-token
         return js.confirmCardPayment(
           paymentIntentClientSecret,
           data: s.ConfirmCardPaymentData(
             payment_method: s.CardPaymentMethod(
-              card: s.CardTokenPaymentMethod(token: token),
+              card: s.CardTokenPaymentMethod(token: data.token),
             ),
             setup_future_usage:
                 (setupFutureUsage ?? PaymentIntentsFutureUsage.OnSession)
@@ -129,7 +129,7 @@ class WebStripe extends StripePlatform {
           ),
         );
       },
-      alipay: () {
+      alipay: (_) {
         // https://stripe.com/docs/js/payment_intents/confirm_alipay_payment#stripe_confirm_alipay_payment-options
         return js.confirmAlipayPayment(
           paymentIntentClientSecret,
@@ -141,14 +141,14 @@ class WebStripe extends StripePlatform {
           ),
         );
       },
-      ideal: (billingDetails, bankName) {
-        if (bankName == null) throw 'bankName is required for web';
+      ideal: (paymentData) {
+        if (paymentData.bankName == null) throw 'bankName is required for web';
         // https://stripe.com/docs/js/payment_intents/confirm_alipay_payment#stripe_confirm_alipay_payment-options
         return js.confirmIdealPayment(
           paymentIntentClientSecret,
           data: s.ConfirmCardPaymentData(
             payment_method: s.PaymentMethodDetails(
-              ideal: s.IdealDetails(bank: bankName),
+              ideal: s.IdealDetails(bank: paymentData.bankName!),
             ),
             return_url: window.location.href,
             // recommended
