@@ -6,6 +6,7 @@ import com.facebook.react.common.MapBuilder
 import com.facebook.react.uimanager.SimpleViewManager
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.annotations.ReactProp
+import com.stripe.android.model.PaymentMethodCreateParams
 
 class CardFieldViewManager : SimpleViewManager<CardFieldView>() {
   override fun getName() = "CardField"
