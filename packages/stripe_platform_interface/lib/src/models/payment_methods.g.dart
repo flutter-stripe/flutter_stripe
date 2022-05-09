@@ -10,7 +10,7 @@ _$_PaymentMethod _$$_PaymentMethodFromJson(Map<String, dynamic> json) =>
     _$_PaymentMethod(
       id: json['id'] as String,
       livemode: json['livemode'] as bool,
-      type: json['type'] as String,
+      paymentMethodType: json['paymentMethodType'] as String,
       billingDetails: BillingDetails.fromJson(
           json['billingDetails'] as Map<String, dynamic>),
       card: Card.fromJson(json['Card'] as Map<String, dynamic>),
@@ -31,7 +31,7 @@ Map<String, dynamic> _$$_PaymentMethodToJson(_$_PaymentMethod instance) =>
     <String, dynamic>{
       'id': instance.id,
       'livemode': instance.livemode,
-      'type': instance.type,
+      'paymentMethodType': instance.paymentMethodType,
       'billingDetails': instance.billingDetails.toJson(),
       'Card': instance.card.toJson(),
       'SepaDebit': instance.sepaDebit.toJson(),
@@ -206,34 +206,32 @@ const _$UsBankAccountTypeEnumMap = {
 _$_PaymentMethodParamsCard _$$_PaymentMethodParamsCardFromJson(
         Map<String, dynamic> json) =>
     _$_PaymentMethodParamsCard(
-      setupFutureUsage: $enumDecodeNullable(
-          _$PaymentIntentsFutureUsageEnumMap, json['setupFutureUsage']),
       paymentMethodData: PaymentMethodData.fromJson(
           json['paymentMethodData'] as Map<String, dynamic>),
+      options: json['options'] == null
+          ? null
+          : PaymentMethodOptions.fromJson(
+              json['options'] as Map<String, dynamic>),
       $type: json['paymentMethodType'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentMethodParamsCardToJson(
         _$_PaymentMethodParamsCard instance) =>
     <String, dynamic>{
-      'setupFutureUsage':
-          _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
       'paymentMethodData': instance.paymentMethodData.toJson(),
+      'options': instance.options?.toJson(),
       'paymentMethodType': instance.$type,
     };
-
-const _$PaymentIntentsFutureUsageEnumMap = {
-  PaymentIntentsFutureUsage.OffSession: 'OffSession',
-  PaymentIntentsFutureUsage.OnSession: 'OnSession',
-};
 
 _$_PaymentMethodParamsCardWithToken
     _$$_PaymentMethodParamsCardWithTokenFromJson(Map<String, dynamic> json) =>
         _$_PaymentMethodParamsCardWithToken(
           paymentMethodData: PaymentMethodDataCardFromToken.fromJson(
               json['paymentMethodData'] as Map<String, dynamic>),
-          setupFutureUsage: $enumDecodeNullable(
-              _$PaymentIntentsFutureUsageEnumMap, json['setupFutureUsage']),
+          options: json['options'] == null
+              ? null
+              : PaymentMethodOptions.fromJson(
+                  json['options'] as Map<String, dynamic>),
           $type: json['paymentMethodType'] as String?,
         );
 
@@ -241,8 +239,7 @@ Map<String, dynamic> _$$_PaymentMethodParamsCardWithTokenToJson(
         _$_PaymentMethodParamsCardWithToken instance) =>
     <String, dynamic>{
       'paymentMethodData': instance.paymentMethodData.toJson(),
-      'setupFutureUsage':
-          _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
+      'options': instance.options?.toJson(),
       'paymentMethodType': instance.$type,
     };
 
@@ -252,6 +249,10 @@ _$_PaymentMethodParamsCardWithMethodId
         _$_PaymentMethodParamsCardWithMethodId(
           paymentMethodData: PaymentMethodDataCardFromMethod.fromJson(
               json['paymentMethodData'] as Map<String, dynamic>),
+          options: json['options'] == null
+              ? null
+              : PaymentMethodOptions.fromJson(
+                  json['options'] as Map<String, dynamic>),
           $type: json['paymentMethodType'] as String?,
         );
 
@@ -259,6 +260,7 @@ Map<String, dynamic> _$$_PaymentMethodParamsCardWithMethodIdToJson(
         _$_PaymentMethodParamsCardWithMethodId instance) =>
     <String, dynamic>{
       'paymentMethodData': instance.paymentMethodData.toJson(),
+      'options': instance.options?.toJson(),
       'paymentMethodType': instance.$type,
     };
 
@@ -402,8 +404,6 @@ _$_PaymentMethodParamsSepaDebit _$$_PaymentMethodParamsSepaDebitFromJson(
     _$_PaymentMethodParamsSepaDebit(
       paymentMethodData: PaymentMethodDataSepa.fromJson(
           json['paymentMethodData'] as Map<String, dynamic>),
-      setupFutureUsage: $enumDecodeNullable(
-          _$PaymentIntentsFutureUsageEnumMap, json['setupFutureUsage']),
       $type: json['paymentMethodType'] as String?,
     );
 
@@ -411,8 +411,6 @@ Map<String, dynamic> _$$_PaymentMethodParamsSepaDebitToJson(
         _$_PaymentMethodParamsSepaDebit instance) =>
     <String, dynamic>{
       'paymentMethodData': instance.paymentMethodData.toJson(),
-      'setupFutureUsage':
-          _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
       'paymentMethodType': instance.$type,
     };
 
@@ -421,8 +419,6 @@ _$_PaymentMethodParamsSofort _$$_PaymentMethodParamsSofortFromJson(
     _$_PaymentMethodParamsSofort(
       paymentMethodData: PaymentMethodDataSofort.fromJson(
           json['paymentMethodData'] as Map<String, dynamic>),
-      setupFutureUsage: $enumDecodeNullable(
-          _$PaymentIntentsFutureUsageEnumMap, json['setupFutureUsage']),
       $type: json['paymentMethodType'] as String?,
     );
 
@@ -430,8 +426,6 @@ Map<String, dynamic> _$$_PaymentMethodParamsSofortToJson(
         _$_PaymentMethodParamsSofort instance) =>
     <String, dynamic>{
       'paymentMethodData': instance.paymentMethodData.toJson(),
-      'setupFutureUsage':
-          _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
       'paymentMethodType': instance.$type,
     };
 
@@ -486,6 +480,10 @@ _$_PaymentMethodParamsUsBankAccount
         _$_PaymentMethodParamsUsBankAccount(
           paymentMethodData: PaymentMethodDataUsBank.fromJson(
               json['paymentMethodData'] as Map<String, dynamic>),
+          options: json['options'] == null
+              ? null
+              : PaymentMethodOptions.fromJson(
+                  json['options'] as Map<String, dynamic>),
           $type: json['paymentMethodType'] as String?,
         );
 
@@ -493,6 +491,7 @@ Map<String, dynamic> _$$_PaymentMethodParamsUsBankAccountToJson(
         _$_PaymentMethodParamsUsBankAccount instance) =>
     <String, dynamic>{
       'paymentMethodData': instance.paymentMethodData.toJson(),
+      'options': instance.options?.toJson(),
       'paymentMethodType': instance.$type,
     };
 
@@ -720,3 +719,22 @@ Map<String, dynamic> _$$_PaymentMethodDataUsBankToJson(
       'billingDetails': instance.billingDetails?.toJson(),
       'shippingDetails': instance.shippingDetails?.toJson(),
     };
+
+_$_PaymentMethodOptions _$$_PaymentMethodOptionsFromJson(
+        Map<String, dynamic> json) =>
+    _$_PaymentMethodOptions(
+      setupFutureUsage: $enumDecodeNullable(
+          _$PaymentIntentsFutureUsageEnumMap, json['setupFutureUsage']),
+    );
+
+Map<String, dynamic> _$$_PaymentMethodOptionsToJson(
+        _$_PaymentMethodOptions instance) =>
+    <String, dynamic>{
+      'setupFutureUsage':
+          _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
+    };
+
+const _$PaymentIntentsFutureUsageEnumMap = {
+  PaymentIntentsFutureUsage.OffSession: 'OffSession',
+  PaymentIntentsFutureUsage.OnSession: 'OnSession',
+};

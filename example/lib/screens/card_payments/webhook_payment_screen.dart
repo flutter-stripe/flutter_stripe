@@ -97,8 +97,10 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
         paymentMethodData: PaymentMethodData(
           billingDetails: billingDetails,
         ),
-        setupFutureUsage:
-            _saveCard == true ? PaymentIntentsFutureUsage.OffSession : null,
+        options: PaymentMethodOptions(
+          setupFutureUsage:
+              _saveCard == true ? PaymentIntentsFutureUsage.OffSession : null,
+        ),
       ),
     );
 

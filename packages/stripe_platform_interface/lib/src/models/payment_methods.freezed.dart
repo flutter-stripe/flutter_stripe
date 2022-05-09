@@ -27,7 +27,7 @@ mixin _$PaymentMethod {
   bool get livemode => throw _privateConstructorUsedError;
 
   /// The type of the paymentmethod.
-  String get type => throw _privateConstructorUsedError;
+  String get paymentMethodType => throw _privateConstructorUsedError;
 
   /// Billing information related to the payment method.
   BillingDetails get billingDetails => throw _privateConstructorUsedError;
@@ -85,7 +85,7 @@ abstract class $PaymentMethodCopyWith<$Res> {
   $Res call(
       {String id,
       bool livemode,
-      String type,
+      String paymentMethodType,
       BillingDetails billingDetails,
       @JsonKey(name: 'Card') Card card,
       @JsonKey(name: 'SepaDebit') SepaDebit sepaDebit,
@@ -123,7 +123,7 @@ class _$PaymentMethodCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? livemode = freezed,
-    Object? type = freezed,
+    Object? paymentMethodType = freezed,
     Object? billingDetails = freezed,
     Object? card = freezed,
     Object? sepaDebit = freezed,
@@ -145,9 +145,9 @@ class _$PaymentMethodCopyWithImpl<$Res>
           ? _value.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
+      paymentMethodType: paymentMethodType == freezed
+          ? _value.paymentMethodType
+          : paymentMethodType // ignore: cast_nullable_to_non_nullable
               as String,
       billingDetails: billingDetails == freezed
           ? _value.billingDetails
@@ -277,7 +277,7 @@ abstract class _$$_PaymentMethodCopyWith<$Res>
   $Res call(
       {String id,
       bool livemode,
-      String type,
+      String paymentMethodType,
       BillingDetails billingDetails,
       @JsonKey(name: 'Card') Card card,
       @JsonKey(name: 'SepaDebit') SepaDebit sepaDebit,
@@ -327,7 +327,7 @@ class __$$_PaymentMethodCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? livemode = freezed,
-    Object? type = freezed,
+    Object? paymentMethodType = freezed,
     Object? billingDetails = freezed,
     Object? card = freezed,
     Object? sepaDebit = freezed,
@@ -349,9 +349,9 @@ class __$$_PaymentMethodCopyWithImpl<$Res>
           ? _value.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
+      paymentMethodType: paymentMethodType == freezed
+          ? _value.paymentMethodType
+          : paymentMethodType // ignore: cast_nullable_to_non_nullable
               as String,
       billingDetails: billingDetails == freezed
           ? _value.billingDetails
@@ -408,7 +408,7 @@ class _$_PaymentMethod implements _PaymentMethod {
   const _$_PaymentMethod(
       {required this.id,
       required this.livemode,
-      required this.type,
+      required this.paymentMethodType,
       required this.billingDetails,
       @JsonKey(name: 'Card') required this.card,
       @JsonKey(name: 'SepaDebit') required this.sepaDebit,
@@ -434,7 +434,7 @@ class _$_PaymentMethod implements _PaymentMethod {
 
   /// The type of the paymentmethod.
   @override
-  final String type;
+  final String paymentMethodType;
 
   /// Billing information related to the payment method.
   @override
@@ -491,7 +491,7 @@ class _$_PaymentMethod implements _PaymentMethod {
 
   @override
   String toString() {
-    return 'PaymentMethod(id: $id, livemode: $livemode, type: $type, billingDetails: $billingDetails, card: $card, sepaDebit: $sepaDebit, bacsDebit: $bacsDebit, auBecsDebit: $auBecsDebit, sofort: $sofort, ideal: $ideal, fpx: $fpx, upi: $upi, usBankAccount: $usBankAccount, customerId: $customerId)';
+    return 'PaymentMethod(id: $id, livemode: $livemode, paymentMethodType: $paymentMethodType, billingDetails: $billingDetails, card: $card, sepaDebit: $sepaDebit, bacsDebit: $bacsDebit, auBecsDebit: $auBecsDebit, sofort: $sofort, ideal: $ideal, fpx: $fpx, upi: $upi, usBankAccount: $usBankAccount, customerId: $customerId)';
   }
 
   @override
@@ -501,7 +501,8 @@ class _$_PaymentMethod implements _PaymentMethod {
             other is _$_PaymentMethod &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.livemode, livemode) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality()
+                .equals(other.paymentMethodType, paymentMethodType) &&
             const DeepCollectionEquality()
                 .equals(other.billingDetails, billingDetails) &&
             const DeepCollectionEquality().equals(other.card, card) &&
@@ -525,7 +526,7 @@ class _$_PaymentMethod implements _PaymentMethod {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(livemode),
-      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(paymentMethodType),
       const DeepCollectionEquality().hash(billingDetails),
       const DeepCollectionEquality().hash(card),
       const DeepCollectionEquality().hash(sepaDebit),
@@ -553,7 +554,7 @@ abstract class _PaymentMethod implements PaymentMethod {
   const factory _PaymentMethod(
       {required final String id,
       required final bool livemode,
-      required final String type,
+      required final String paymentMethodType,
       required final BillingDetails billingDetails,
       @JsonKey(name: 'Card')
           required final Card card,
@@ -589,7 +590,7 @@ abstract class _PaymentMethod implements PaymentMethod {
   @override
 
   /// The type of the paymentmethod.
-  String get type => throw _privateConstructorUsedError;
+  String get paymentMethodType => throw _privateConstructorUsedError;
   @override
 
   /// Billing information related to the payment method.
@@ -2725,13 +2726,14 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
 mixin _$PaymentMethodParams {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
         card,
     required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+            PaymentMethodOptions? options)
         cardFromToken,
-    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
@@ -2742,29 +2744,28 @@ mixin _$PaymentMethodParams {
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
-    required TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
-    required TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
-        sofort,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
-    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
         usBankAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -2775,28 +2776,27 @@ mixin _$PaymentMethodParams {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -2807,17 +2807,15 @@ mixin _$PaymentMethodParams {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -2922,10 +2920,10 @@ abstract class _$$_PaymentMethodParamsCardCopyWith<$Res> {
           $Res Function(_$_PaymentMethodParamsCard) then) =
       __$$_PaymentMethodParamsCardCopyWithImpl<$Res>;
   $Res call(
-      {PaymentIntentsFutureUsage? setupFutureUsage,
-      PaymentMethodData paymentMethodData});
+      {PaymentMethodData paymentMethodData, PaymentMethodOptions? options});
 
   $PaymentMethodDataCopyWith<$Res> get paymentMethodData;
+  $PaymentMethodOptionsCopyWith<$Res>? get options;
 }
 
 /// @nodoc
@@ -2942,18 +2940,18 @@ class __$$_PaymentMethodParamsCardCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? setupFutureUsage = freezed,
     Object? paymentMethodData = freezed,
+    Object? options = freezed,
   }) {
     return _then(_$_PaymentMethodParamsCard(
-      setupFutureUsage: setupFutureUsage == freezed
-          ? _value.setupFutureUsage
-          : setupFutureUsage // ignore: cast_nullable_to_non_nullable
-              as PaymentIntentsFutureUsage?,
       paymentMethodData: paymentMethodData == freezed
           ? _value.paymentMethodData
           : paymentMethodData // ignore: cast_nullable_to_non_nullable
               as PaymentMethodData,
+      options: options == freezed
+          ? _value.options
+          : options // ignore: cast_nullable_to_non_nullable
+              as PaymentMethodOptions?,
     ));
   }
 
@@ -2963,6 +2961,17 @@ class __$$_PaymentMethodParamsCardCopyWithImpl<$Res>
       return _then(_value.copyWith(paymentMethodData: value));
     });
   }
+
+  @override
+  $PaymentMethodOptionsCopyWith<$Res>? get options {
+    if (_value.options == null) {
+      return null;
+    }
+
+    return $PaymentMethodOptionsCopyWith<$Res>(_value.options!, (value) {
+      return _then(_value.copyWith(options: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -2970,28 +2979,26 @@ class __$$_PaymentMethodParamsCardCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
   const _$_PaymentMethodParamsCard(
-      {this.setupFutureUsage,
-      required this.paymentMethodData,
-      final String? $type})
+      {required this.paymentMethodData, this.options, final String? $type})
       : $type = $type ?? 'Card';
 
   factory _$_PaymentMethodParamsCard.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodParamsCardFromJson(json);
 
-  /// Indicates whether or not you want to reuse this method for future payments.
-  @override
-  final PaymentIntentsFutureUsage? setupFutureUsage;
-
   /// Paymentmethod data for this paymentmethod.
   @override
   final PaymentMethodData paymentMethodData;
+
+  /// Paymentmethod options
+  @override
+  final PaymentMethodOptions? options;
 
   @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
   String toString() {
-    return 'PaymentMethodParams.card(setupFutureUsage: $setupFutureUsage, paymentMethodData: $paymentMethodData)';
+    return 'PaymentMethodParams.card(paymentMethodData: $paymentMethodData, options: $options)';
   }
 
   @override
@@ -3000,17 +3007,16 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
         (other.runtimeType == runtimeType &&
             other is _$_PaymentMethodParamsCard &&
             const DeepCollectionEquality()
-                .equals(other.setupFutureUsage, setupFutureUsage) &&
-            const DeepCollectionEquality()
-                .equals(other.paymentMethodData, paymentMethodData));
+                .equals(other.paymentMethodData, paymentMethodData) &&
+            const DeepCollectionEquality().equals(other.options, options));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(setupFutureUsage),
-      const DeepCollectionEquality().hash(paymentMethodData));
+      const DeepCollectionEquality().hash(paymentMethodData),
+      const DeepCollectionEquality().hash(options));
 
   @JsonKey(ignore: true)
   @override
@@ -3022,13 +3028,14 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
         card,
     required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+            PaymentMethodOptions? options)
         cardFromToken,
-    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
@@ -3039,32 +3046,31 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
-    required TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
-    required TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
-        sofort,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
-    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
         usBankAccount,
   }) {
-    return card(setupFutureUsage, paymentMethodData);
+    return card(paymentMethodData, options);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -3075,31 +3081,30 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
   }) {
-    return card?.call(setupFutureUsage, paymentMethodData);
+    return card?.call(paymentMethodData, options);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -3110,21 +3115,19 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (card != null) {
-      return card(setupFutureUsage, paymentMethodData);
+      return card(paymentMethodData, options);
     }
     return orElse();
   }
@@ -3224,19 +3227,17 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
 
 abstract class _PaymentMethodParamsCard implements PaymentMethodParams {
   const factory _PaymentMethodParamsCard(
-          {final PaymentIntentsFutureUsage? setupFutureUsage,
-          required final PaymentMethodData paymentMethodData}) =
-      _$_PaymentMethodParamsCard;
+      {required final PaymentMethodData paymentMethodData,
+      final PaymentMethodOptions? options}) = _$_PaymentMethodParamsCard;
 
   factory _PaymentMethodParamsCard.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsCard.fromJson;
 
-  /// Indicates whether or not you want to reuse this method for future payments.
-  PaymentIntentsFutureUsage? get setupFutureUsage =>
-      throw _privateConstructorUsedError;
-
   /// Paymentmethod data for this paymentmethod.
   PaymentMethodData get paymentMethodData => throw _privateConstructorUsedError;
+
+  /// Paymentmethod options
+  PaymentMethodOptions? get options => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_PaymentMethodParamsCardCopyWith<_$_PaymentMethodParamsCard>
       get copyWith => throw _privateConstructorUsedError;
@@ -3250,9 +3251,10 @@ abstract class _$$_PaymentMethodParamsCardWithTokenCopyWith<$Res> {
       __$$_PaymentMethodParamsCardWithTokenCopyWithImpl<$Res>;
   $Res call(
       {PaymentMethodDataCardFromToken paymentMethodData,
-      PaymentIntentsFutureUsage? setupFutureUsage});
+      PaymentMethodOptions? options});
 
   $PaymentMethodDataCardFromTokenCopyWith<$Res> get paymentMethodData;
+  $PaymentMethodOptionsCopyWith<$Res>? get options;
 }
 
 /// @nodoc
@@ -3271,17 +3273,17 @@ class __$$_PaymentMethodParamsCardWithTokenCopyWithImpl<$Res>
   @override
   $Res call({
     Object? paymentMethodData = freezed,
-    Object? setupFutureUsage = freezed,
+    Object? options = freezed,
   }) {
     return _then(_$_PaymentMethodParamsCardWithToken(
       paymentMethodData: paymentMethodData == freezed
           ? _value.paymentMethodData
           : paymentMethodData // ignore: cast_nullable_to_non_nullable
               as PaymentMethodDataCardFromToken,
-      setupFutureUsage: setupFutureUsage == freezed
-          ? _value.setupFutureUsage
-          : setupFutureUsage // ignore: cast_nullable_to_non_nullable
-              as PaymentIntentsFutureUsage?,
+      options: options == freezed
+          ? _value.options
+          : options // ignore: cast_nullable_to_non_nullable
+              as PaymentMethodOptions?,
     ));
   }
 
@@ -3292,6 +3294,17 @@ class __$$_PaymentMethodParamsCardWithTokenCopyWithImpl<$Res>
       return _then(_value.copyWith(paymentMethodData: value));
     });
   }
+
+  @override
+  $PaymentMethodOptionsCopyWith<$Res>? get options {
+    if (_value.options == null) {
+      return null;
+    }
+
+    return $PaymentMethodOptionsCopyWith<$Res>(_value.options!, (value) {
+      return _then(_value.copyWith(options: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -3300,9 +3313,7 @@ class __$$_PaymentMethodParamsCardWithTokenCopyWithImpl<$Res>
 class _$_PaymentMethodParamsCardWithToken
     implements _PaymentMethodParamsCardWithToken {
   const _$_PaymentMethodParamsCardWithToken(
-      {required this.paymentMethodData,
-      this.setupFutureUsage,
-      final String? $type})
+      {required this.paymentMethodData, this.options, final String? $type})
       : $type = $type ?? 'Card';
 
   factory _$_PaymentMethodParamsCardWithToken.fromJson(
@@ -3313,16 +3324,16 @@ class _$_PaymentMethodParamsCardWithToken
   @override
   final PaymentMethodDataCardFromToken paymentMethodData;
 
-  /// Indicates whether or not you want to reuse this method for future payments.
+  /// Paymentmethod options
   @override
-  final PaymentIntentsFutureUsage? setupFutureUsage;
+  final PaymentMethodOptions? options;
 
   @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
   String toString() {
-    return 'PaymentMethodParams.cardFromToken(paymentMethodData: $paymentMethodData, setupFutureUsage: $setupFutureUsage)';
+    return 'PaymentMethodParams.cardFromToken(paymentMethodData: $paymentMethodData, options: $options)';
   }
 
   @override
@@ -3332,8 +3343,7 @@ class _$_PaymentMethodParamsCardWithToken
             other is _$_PaymentMethodParamsCardWithToken &&
             const DeepCollectionEquality()
                 .equals(other.paymentMethodData, paymentMethodData) &&
-            const DeepCollectionEquality()
-                .equals(other.setupFutureUsage, setupFutureUsage));
+            const DeepCollectionEquality().equals(other.options, options));
   }
 
   @JsonKey(ignore: true)
@@ -3341,7 +3351,7 @@ class _$_PaymentMethodParamsCardWithToken
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(paymentMethodData),
-      const DeepCollectionEquality().hash(setupFutureUsage));
+      const DeepCollectionEquality().hash(options));
 
   @JsonKey(ignore: true)
   @override
@@ -3353,13 +3363,14 @@ class _$_PaymentMethodParamsCardWithToken
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
         card,
     required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+            PaymentMethodOptions? options)
         cardFromToken,
-    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
@@ -3370,32 +3381,31 @@ class _$_PaymentMethodParamsCardWithToken
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
-    required TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
-    required TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
-        sofort,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
-    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
         usBankAccount,
   }) {
-    return cardFromToken(paymentMethodData, setupFutureUsage);
+    return cardFromToken(paymentMethodData, options);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -3406,31 +3416,30 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
   }) {
-    return cardFromToken?.call(paymentMethodData, setupFutureUsage);
+    return cardFromToken?.call(paymentMethodData, options);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -3441,21 +3450,19 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (cardFromToken != null) {
-      return cardFromToken(paymentMethodData, setupFutureUsage);
+      return cardFromToken(paymentMethodData, options);
     }
     return orElse();
   }
@@ -3557,7 +3564,7 @@ abstract class _PaymentMethodParamsCardWithToken
     implements PaymentMethodParams {
   const factory _PaymentMethodParamsCardWithToken(
           {required final PaymentMethodDataCardFromToken paymentMethodData,
-          final PaymentIntentsFutureUsage? setupFutureUsage}) =
+          final PaymentMethodOptions? options}) =
       _$_PaymentMethodParamsCardWithToken;
 
   factory _PaymentMethodParamsCardWithToken.fromJson(
@@ -3567,9 +3574,8 @@ abstract class _PaymentMethodParamsCardWithToken
   PaymentMethodDataCardFromToken get paymentMethodData =>
       throw _privateConstructorUsedError;
 
-  /// Indicates whether or not you want to reuse this method for future payments.
-  PaymentIntentsFutureUsage? get setupFutureUsage =>
-      throw _privateConstructorUsedError;
+  /// Paymentmethod options
+  PaymentMethodOptions? get options => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_PaymentMethodParamsCardWithTokenCopyWith<
           _$_PaymentMethodParamsCardWithToken>
@@ -3582,9 +3588,12 @@ abstract class _$$_PaymentMethodParamsCardWithMethodIdCopyWith<$Res> {
           _$_PaymentMethodParamsCardWithMethodId value,
           $Res Function(_$_PaymentMethodParamsCardWithMethodId) then) =
       __$$_PaymentMethodParamsCardWithMethodIdCopyWithImpl<$Res>;
-  $Res call({PaymentMethodDataCardFromMethod paymentMethodData});
+  $Res call(
+      {PaymentMethodDataCardFromMethod paymentMethodData,
+      PaymentMethodOptions? options});
 
   $PaymentMethodDataCardFromMethodCopyWith<$Res> get paymentMethodData;
+  $PaymentMethodOptionsCopyWith<$Res>? get options;
 }
 
 /// @nodoc
@@ -3604,12 +3613,17 @@ class __$$_PaymentMethodParamsCardWithMethodIdCopyWithImpl<$Res>
   @override
   $Res call({
     Object? paymentMethodData = freezed,
+    Object? options = freezed,
   }) {
     return _then(_$_PaymentMethodParamsCardWithMethodId(
       paymentMethodData: paymentMethodData == freezed
           ? _value.paymentMethodData
           : paymentMethodData // ignore: cast_nullable_to_non_nullable
               as PaymentMethodDataCardFromMethod,
+      options: options == freezed
+          ? _value.options
+          : options // ignore: cast_nullable_to_non_nullable
+              as PaymentMethodOptions?,
     ));
   }
 
@@ -3620,6 +3634,17 @@ class __$$_PaymentMethodParamsCardWithMethodIdCopyWithImpl<$Res>
       return _then(_value.copyWith(paymentMethodData: value));
     });
   }
+
+  @override
+  $PaymentMethodOptionsCopyWith<$Res>? get options {
+    if (_value.options == null) {
+      return null;
+    }
+
+    return $PaymentMethodOptionsCopyWith<$Res>(_value.options!, (value) {
+      return _then(_value.copyWith(options: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -3628,7 +3653,7 @@ class __$$_PaymentMethodParamsCardWithMethodIdCopyWithImpl<$Res>
 class _$_PaymentMethodParamsCardWithMethodId
     implements _PaymentMethodParamsCardWithMethodId {
   const _$_PaymentMethodParamsCardWithMethodId(
-      {required this.paymentMethodData, final String? $type})
+      {required this.paymentMethodData, this.options, final String? $type})
       : $type = $type ?? 'Card';
 
   factory _$_PaymentMethodParamsCardWithMethodId.fromJson(
@@ -3639,12 +3664,16 @@ class _$_PaymentMethodParamsCardWithMethodId
   @override
   final PaymentMethodDataCardFromMethod paymentMethodData;
 
+  /// Paymentmethod options
+  @override
+  final PaymentMethodOptions? options;
+
   @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
   String toString() {
-    return 'PaymentMethodParams.cardFromMethodId(paymentMethodData: $paymentMethodData)';
+    return 'PaymentMethodParams.cardFromMethodId(paymentMethodData: $paymentMethodData, options: $options)';
   }
 
   @override
@@ -3653,13 +3682,16 @@ class _$_PaymentMethodParamsCardWithMethodId
         (other.runtimeType == runtimeType &&
             other is _$_PaymentMethodParamsCardWithMethodId &&
             const DeepCollectionEquality()
-                .equals(other.paymentMethodData, paymentMethodData));
+                .equals(other.paymentMethodData, paymentMethodData) &&
+            const DeepCollectionEquality().equals(other.options, options));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(paymentMethodData));
+      runtimeType,
+      const DeepCollectionEquality().hash(paymentMethodData),
+      const DeepCollectionEquality().hash(options));
 
   @JsonKey(ignore: true)
   @override
@@ -3671,13 +3703,14 @@ class _$_PaymentMethodParamsCardWithMethodId
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
         card,
     required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+            PaymentMethodOptions? options)
         cardFromToken,
-    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
@@ -3688,32 +3721,31 @@ class _$_PaymentMethodParamsCardWithMethodId
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
-    required TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
-    required TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
-        sofort,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
-    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
         usBankAccount,
   }) {
-    return cardFromMethodId(paymentMethodData);
+    return cardFromMethodId(paymentMethodData, options);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -3724,31 +3756,30 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
   }) {
-    return cardFromMethodId?.call(paymentMethodData);
+    return cardFromMethodId?.call(paymentMethodData, options);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -3759,21 +3790,19 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (cardFromMethodId != null) {
-      return cardFromMethodId(paymentMethodData);
+      return cardFromMethodId(paymentMethodData, options);
     }
     return orElse();
   }
@@ -3874,7 +3903,8 @@ class _$_PaymentMethodParamsCardWithMethodId
 abstract class _PaymentMethodParamsCardWithMethodId
     implements PaymentMethodParams {
   const factory _PaymentMethodParamsCardWithMethodId(
-          {required final PaymentMethodDataCardFromMethod paymentMethodData}) =
+          {required final PaymentMethodDataCardFromMethod paymentMethodData,
+          final PaymentMethodOptions? options}) =
       _$_PaymentMethodParamsCardWithMethodId;
 
   factory _PaymentMethodParamsCardWithMethodId.fromJson(
@@ -3884,6 +3914,9 @@ abstract class _PaymentMethodParamsCardWithMethodId
   /// Payment method data object for card from payment method.
   PaymentMethodDataCardFromMethod get paymentMethodData =>
       throw _privateConstructorUsedError;
+
+  /// Paymentmethod options
+  PaymentMethodOptions? get options => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_PaymentMethodParamsCardWithMethodIdCopyWith<
           _$_PaymentMethodParamsCardWithMethodId>
@@ -3980,13 +4013,14 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
         card,
     required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+            PaymentMethodOptions? options)
         cardFromToken,
-    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
@@ -3997,17 +4031,15 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
-    required TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
-    required TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
-        sofort,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
-    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
         usBankAccount,
   }) {
     return alipay(paymentMethodData);
@@ -4016,13 +4048,14 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -4033,17 +4066,15 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
   }) {
     return alipay?.call(paymentMethodData);
   }
@@ -4051,13 +4082,14 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -4068,17 +4100,15 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (alipay != null) {
@@ -4285,13 +4315,14 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
         card,
     required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+            PaymentMethodOptions? options)
         cardFromToken,
-    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
@@ -4302,17 +4333,15 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
-    required TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
-    required TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
-        sofort,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
-    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
         usBankAccount,
   }) {
     return ideal(paymentMethodData);
@@ -4321,13 +4350,14 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -4338,17 +4368,15 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
   }) {
     return ideal?.call(paymentMethodData);
   }
@@ -4356,13 +4384,14 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -4373,17 +4402,15 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (ideal != null) {
@@ -4592,13 +4619,14 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
         card,
     required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+            PaymentMethodOptions? options)
         cardFromToken,
-    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
@@ -4609,17 +4637,15 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
-    required TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
-    required TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
-        sofort,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
-    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
         usBankAccount,
   }) {
     return aubecs(paymentMethodData);
@@ -4628,13 +4654,14 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -4645,17 +4672,15 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
   }) {
     return aubecs?.call(paymentMethodData);
   }
@@ -4663,13 +4688,14 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -4680,17 +4706,15 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (aubecs != null) {
@@ -4900,13 +4924,14 @@ class _$_PaymentMethodParamsBankContact
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
         card,
     required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+            PaymentMethodOptions? options)
         cardFromToken,
-    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
@@ -4917,17 +4942,15 @@ class _$_PaymentMethodParamsBankContact
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
-    required TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
-    required TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
-        sofort,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
-    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
         usBankAccount,
   }) {
     return bancontact(paymentMethodData);
@@ -4936,13 +4959,14 @@ class _$_PaymentMethodParamsBankContact
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -4953,17 +4977,15 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
   }) {
     return bancontact?.call(paymentMethodData);
   }
@@ -4971,13 +4993,14 @@ class _$_PaymentMethodParamsBankContact
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -4988,17 +5011,15 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (bancontact != null) {
@@ -5205,13 +5226,14 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
         card,
     required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+            PaymentMethodOptions? options)
         cardFromToken,
-    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
@@ -5222,17 +5244,15 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
-    required TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
-    required TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
-        sofort,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
-    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
         usBankAccount,
   }) {
     return giroPay(paymentMethodData);
@@ -5241,13 +5261,14 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -5258,17 +5279,15 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
   }) {
     return giroPay?.call(paymentMethodData);
   }
@@ -5276,13 +5295,14 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -5293,17 +5313,15 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (giroPay != null) {
@@ -5508,13 +5526,14 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
         card,
     required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+            PaymentMethodOptions? options)
         cardFromToken,
-    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
@@ -5525,17 +5544,15 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
-    required TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
-    required TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
-        sofort,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
-    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
         usBankAccount,
   }) {
     return eps(paymentMethodData);
@@ -5544,13 +5561,14 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -5561,17 +5579,15 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
   }) {
     return eps?.call(paymentMethodData);
   }
@@ -5579,13 +5595,14 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -5596,17 +5613,15 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (eps != null) {
@@ -5811,13 +5826,14 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
         card,
     required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+            PaymentMethodOptions? options)
         cardFromToken,
-    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
@@ -5828,17 +5844,15 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
-    required TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
-    required TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
-        sofort,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
-    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
         usBankAccount,
   }) {
     return grabPay(paymentMethodData);
@@ -5847,13 +5861,14 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -5864,17 +5879,15 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
   }) {
     return grabPay?.call(paymentMethodData);
   }
@@ -5882,13 +5895,14 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -5899,17 +5913,15 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (grabPay != null) {
@@ -6114,13 +6126,14 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
         card,
     required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+            PaymentMethodOptions? options)
         cardFromToken,
-    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
@@ -6131,17 +6144,15 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
-    required TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
-    required TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
-        sofort,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
-    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
         usBankAccount,
   }) {
     return p24(paymentMethodData);
@@ -6150,13 +6161,14 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -6167,17 +6179,15 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
   }) {
     return p24?.call(paymentMethodData);
   }
@@ -6185,13 +6195,14 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -6202,17 +6213,15 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (p24 != null) {
@@ -6418,13 +6427,14 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
         card,
     required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+            PaymentMethodOptions? options)
         cardFromToken,
-    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
@@ -6435,17 +6445,15 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
-    required TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
-    required TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
-        sofort,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
-    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
         usBankAccount,
   }) {
     return fpx(paymentMethodData);
@@ -6454,13 +6462,14 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -6471,17 +6480,15 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
   }) {
     return fpx?.call(paymentMethodData);
   }
@@ -6489,13 +6496,14 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -6506,17 +6514,15 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (fpx != null) {
@@ -6640,9 +6646,7 @@ abstract class _$$_PaymentMethodParamsSepaDebitCopyWith<$Res> {
           _$_PaymentMethodParamsSepaDebit value,
           $Res Function(_$_PaymentMethodParamsSepaDebit) then) =
       __$$_PaymentMethodParamsSepaDebitCopyWithImpl<$Res>;
-  $Res call(
-      {PaymentMethodDataSepa paymentMethodData,
-      PaymentIntentsFutureUsage? setupFutureUsage});
+  $Res call({PaymentMethodDataSepa paymentMethodData});
 
   $PaymentMethodDataSepaCopyWith<$Res> get paymentMethodData;
 }
@@ -6663,17 +6667,12 @@ class __$$_PaymentMethodParamsSepaDebitCopyWithImpl<$Res>
   @override
   $Res call({
     Object? paymentMethodData = freezed,
-    Object? setupFutureUsage = freezed,
   }) {
     return _then(_$_PaymentMethodParamsSepaDebit(
       paymentMethodData: paymentMethodData == freezed
           ? _value.paymentMethodData
           : paymentMethodData // ignore: cast_nullable_to_non_nullable
               as PaymentMethodDataSepa,
-      setupFutureUsage: setupFutureUsage == freezed
-          ? _value.setupFutureUsage
-          : setupFutureUsage // ignore: cast_nullable_to_non_nullable
-              as PaymentIntentsFutureUsage?,
     ));
   }
 
@@ -6691,9 +6690,7 @@ class __$$_PaymentMethodParamsSepaDebitCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
   const _$_PaymentMethodParamsSepaDebit(
-      {required this.paymentMethodData,
-      this.setupFutureUsage,
-      final String? $type})
+      {required this.paymentMethodData, final String? $type})
       : $type = $type ?? 'SepaDebit';
 
   factory _$_PaymentMethodParamsSepaDebit.fromJson(Map<String, dynamic> json) =>
@@ -6702,15 +6699,13 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
   /// Paymentmethod data for this paymentmethod.
   @override
   final PaymentMethodDataSepa paymentMethodData;
-  @override
-  final PaymentIntentsFutureUsage? setupFutureUsage;
 
   @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
   String toString() {
-    return 'PaymentMethodParams.sepaDebit(paymentMethodData: $paymentMethodData, setupFutureUsage: $setupFutureUsage)';
+    return 'PaymentMethodParams.sepaDebit(paymentMethodData: $paymentMethodData)';
   }
 
   @override
@@ -6719,17 +6714,13 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
         (other.runtimeType == runtimeType &&
             other is _$_PaymentMethodParamsSepaDebit &&
             const DeepCollectionEquality()
-                .equals(other.paymentMethodData, paymentMethodData) &&
-            const DeepCollectionEquality()
-                .equals(other.setupFutureUsage, setupFutureUsage));
+                .equals(other.paymentMethodData, paymentMethodData));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(paymentMethodData),
-      const DeepCollectionEquality().hash(setupFutureUsage));
+      runtimeType, const DeepCollectionEquality().hash(paymentMethodData));
 
   @JsonKey(ignore: true)
   @override
@@ -6740,13 +6731,14 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
         card,
     required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+            PaymentMethodOptions? options)
         cardFromToken,
-    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
@@ -6757,32 +6749,31 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
-    required TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
-    required TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
-        sofort,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
-    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
         usBankAccount,
   }) {
-    return sepaDebit(paymentMethodData, setupFutureUsage);
+    return sepaDebit(paymentMethodData);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -6793,31 +6784,30 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
   }) {
-    return sepaDebit?.call(paymentMethodData, setupFutureUsage);
+    return sepaDebit?.call(paymentMethodData);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -6828,21 +6818,19 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (sepaDebit != null) {
-      return sepaDebit(paymentMethodData, setupFutureUsage);
+      return sepaDebit(paymentMethodData);
     }
     return orElse();
   }
@@ -6942,8 +6930,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
 
 abstract class _PaymentMethodParamsSepaDebit implements PaymentMethodParams {
   const factory _PaymentMethodParamsSepaDebit(
-          {required final PaymentMethodDataSepa paymentMethodData,
-          final PaymentIntentsFutureUsage? setupFutureUsage}) =
+          {required final PaymentMethodDataSepa paymentMethodData}) =
       _$_PaymentMethodParamsSepaDebit;
 
   factory _PaymentMethodParamsSepaDebit.fromJson(Map<String, dynamic> json) =
@@ -6951,8 +6938,6 @@ abstract class _PaymentMethodParamsSepaDebit implements PaymentMethodParams {
 
   /// Paymentmethod data for this paymentmethod.
   PaymentMethodDataSepa get paymentMethodData =>
-      throw _privateConstructorUsedError;
-  PaymentIntentsFutureUsage? get setupFutureUsage =>
       throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_PaymentMethodParamsSepaDebitCopyWith<_$_PaymentMethodParamsSepaDebit>
@@ -6965,9 +6950,7 @@ abstract class _$$_PaymentMethodParamsSofortCopyWith<$Res> {
           _$_PaymentMethodParamsSofort value,
           $Res Function(_$_PaymentMethodParamsSofort) then) =
       __$$_PaymentMethodParamsSofortCopyWithImpl<$Res>;
-  $Res call(
-      {PaymentMethodDataSofort paymentMethodData,
-      PaymentIntentsFutureUsage? setupFutureUsage});
+  $Res call({PaymentMethodDataSofort paymentMethodData});
 
   $PaymentMethodDataSofortCopyWith<$Res> get paymentMethodData;
 }
@@ -6988,17 +6971,12 @@ class __$$_PaymentMethodParamsSofortCopyWithImpl<$Res>
   @override
   $Res call({
     Object? paymentMethodData = freezed,
-    Object? setupFutureUsage = freezed,
   }) {
     return _then(_$_PaymentMethodParamsSofort(
       paymentMethodData: paymentMethodData == freezed
           ? _value.paymentMethodData
           : paymentMethodData // ignore: cast_nullable_to_non_nullable
               as PaymentMethodDataSofort,
-      setupFutureUsage: setupFutureUsage == freezed
-          ? _value.setupFutureUsage
-          : setupFutureUsage // ignore: cast_nullable_to_non_nullable
-              as PaymentIntentsFutureUsage?,
     ));
   }
 
@@ -7016,9 +6994,7 @@ class __$$_PaymentMethodParamsSofortCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
   const _$_PaymentMethodParamsSofort(
-      {required this.paymentMethodData,
-      this.setupFutureUsage,
-      final String? $type})
+      {required this.paymentMethodData, final String? $type})
       : $type = $type ?? 'Sofort';
 
   factory _$_PaymentMethodParamsSofort.fromJson(Map<String, dynamic> json) =>
@@ -7026,15 +7002,13 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
 
   @override
   final PaymentMethodDataSofort paymentMethodData;
-  @override
-  final PaymentIntentsFutureUsage? setupFutureUsage;
 
   @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
   String toString() {
-    return 'PaymentMethodParams.sofort(paymentMethodData: $paymentMethodData, setupFutureUsage: $setupFutureUsage)';
+    return 'PaymentMethodParams.sofort(paymentMethodData: $paymentMethodData)';
   }
 
   @override
@@ -7043,17 +7017,13 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
         (other.runtimeType == runtimeType &&
             other is _$_PaymentMethodParamsSofort &&
             const DeepCollectionEquality()
-                .equals(other.paymentMethodData, paymentMethodData) &&
-            const DeepCollectionEquality()
-                .equals(other.setupFutureUsage, setupFutureUsage));
+                .equals(other.paymentMethodData, paymentMethodData));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(paymentMethodData),
-      const DeepCollectionEquality().hash(setupFutureUsage));
+      runtimeType, const DeepCollectionEquality().hash(paymentMethodData));
 
   @JsonKey(ignore: true)
   @override
@@ -7064,13 +7034,14 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
         card,
     required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+            PaymentMethodOptions? options)
         cardFromToken,
-    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
@@ -7081,32 +7052,31 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
-    required TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
-    required TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
-        sofort,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
-    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
         usBankAccount,
   }) {
-    return sofort(paymentMethodData, setupFutureUsage);
+    return sofort(paymentMethodData);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -7117,31 +7087,30 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
   }) {
-    return sofort?.call(paymentMethodData, setupFutureUsage);
+    return sofort?.call(paymentMethodData);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -7152,21 +7121,19 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (sofort != null) {
-      return sofort(paymentMethodData, setupFutureUsage);
+      return sofort(paymentMethodData);
     }
     return orElse();
   }
@@ -7266,16 +7233,13 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
 
 abstract class _PaymentMethodParamsSofort implements PaymentMethodParams {
   const factory _PaymentMethodParamsSofort(
-          {required final PaymentMethodDataSofort paymentMethodData,
-          final PaymentIntentsFutureUsage? setupFutureUsage}) =
+          {required final PaymentMethodDataSofort paymentMethodData}) =
       _$_PaymentMethodParamsSofort;
 
   factory _PaymentMethodParamsSofort.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsSofort.fromJson;
 
   PaymentMethodDataSofort get paymentMethodData =>
-      throw _privateConstructorUsedError;
-  PaymentIntentsFutureUsage? get setupFutureUsage =>
       throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_PaymentMethodParamsSofortCopyWith<_$_PaymentMethodParamsSofort>
@@ -7376,13 +7340,14 @@ class _$_PaymentMethodParamsAfterpayClearpay
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
         card,
     required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+            PaymentMethodOptions? options)
         cardFromToken,
-    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
@@ -7393,17 +7358,15 @@ class _$_PaymentMethodParamsAfterpayClearpay
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
-    required TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
-    required TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
-        sofort,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
-    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
         usBankAccount,
   }) {
     return afterpayClearpay(paymentMethodData);
@@ -7412,13 +7375,14 @@ class _$_PaymentMethodParamsAfterpayClearpay
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -7429,17 +7393,15 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
   }) {
     return afterpayClearpay?.call(paymentMethodData);
   }
@@ -7447,13 +7409,14 @@ class _$_PaymentMethodParamsAfterpayClearpay
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -7464,17 +7427,15 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (afterpayClearpay != null) {
@@ -7683,13 +7644,14 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
         card,
     required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+            PaymentMethodOptions? options)
         cardFromToken,
-    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
@@ -7700,17 +7662,15 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
-    required TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
-    required TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
-        sofort,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
-    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
         usBankAccount,
   }) {
     return oxxo(paymentMethodData);
@@ -7719,13 +7679,14 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -7736,17 +7697,15 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
   }) {
     return oxxo?.call(paymentMethodData);
   }
@@ -7754,13 +7713,14 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -7771,17 +7731,15 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (oxxo != null) {
@@ -7991,13 +7949,14 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
         card,
     required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+            PaymentMethodOptions? options)
         cardFromToken,
-    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
@@ -8008,17 +7967,15 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
-    required TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
-    required TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
-        sofort,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
-    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
         usBankAccount,
   }) {
     return klarna(paymentMethodData);
@@ -8027,13 +7984,14 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -8044,17 +8002,15 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
   }) {
     return klarna?.call(paymentMethodData);
   }
@@ -8062,13 +8018,14 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -8079,17 +8036,15 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (klarna != null) {
@@ -8215,9 +8170,12 @@ abstract class _$$_PaymentMethodParamsUsBankAccountCopyWith<$Res> {
           _$_PaymentMethodParamsUsBankAccount value,
           $Res Function(_$_PaymentMethodParamsUsBankAccount) then) =
       __$$_PaymentMethodParamsUsBankAccountCopyWithImpl<$Res>;
-  $Res call({PaymentMethodDataUsBank paymentMethodData});
+  $Res call(
+      {PaymentMethodDataUsBank paymentMethodData,
+      PaymentMethodOptions? options});
 
   $PaymentMethodDataUsBankCopyWith<$Res> get paymentMethodData;
+  $PaymentMethodOptionsCopyWith<$Res>? get options;
 }
 
 /// @nodoc
@@ -8236,12 +8194,17 @@ class __$$_PaymentMethodParamsUsBankAccountCopyWithImpl<$Res>
   @override
   $Res call({
     Object? paymentMethodData = freezed,
+    Object? options = freezed,
   }) {
     return _then(_$_PaymentMethodParamsUsBankAccount(
       paymentMethodData: paymentMethodData == freezed
           ? _value.paymentMethodData
           : paymentMethodData // ignore: cast_nullable_to_non_nullable
               as PaymentMethodDataUsBank,
+      options: options == freezed
+          ? _value.options
+          : options // ignore: cast_nullable_to_non_nullable
+              as PaymentMethodOptions?,
     ));
   }
 
@@ -8252,6 +8215,17 @@ class __$$_PaymentMethodParamsUsBankAccountCopyWithImpl<$Res>
       return _then(_value.copyWith(paymentMethodData: value));
     });
   }
+
+  @override
+  $PaymentMethodOptionsCopyWith<$Res>? get options {
+    if (_value.options == null) {
+      return null;
+    }
+
+    return $PaymentMethodOptionsCopyWith<$Res>(_value.options!, (value) {
+      return _then(_value.copyWith(options: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -8260,7 +8234,7 @@ class __$$_PaymentMethodParamsUsBankAccountCopyWithImpl<$Res>
 class _$_PaymentMethodParamsUsBankAccount
     implements _PaymentMethodParamsUsBankAccount {
   const _$_PaymentMethodParamsUsBankAccount(
-      {required this.paymentMethodData, final String? $type})
+      {required this.paymentMethodData, this.options, final String? $type})
       : $type = $type ?? 'USBankAccount';
 
   factory _$_PaymentMethodParamsUsBankAccount.fromJson(
@@ -8271,12 +8245,16 @@ class _$_PaymentMethodParamsUsBankAccount
   @override
   final PaymentMethodDataUsBank paymentMethodData;
 
+  /// Payment options.
+  @override
+  final PaymentMethodOptions? options;
+
   @JsonKey(name: 'paymentMethodType')
   final String $type;
 
   @override
   String toString() {
-    return 'PaymentMethodParams.usBankAccount(paymentMethodData: $paymentMethodData)';
+    return 'PaymentMethodParams.usBankAccount(paymentMethodData: $paymentMethodData, options: $options)';
   }
 
   @override
@@ -8285,13 +8263,16 @@ class _$_PaymentMethodParamsUsBankAccount
         (other.runtimeType == runtimeType &&
             other is _$_PaymentMethodParamsUsBankAccount &&
             const DeepCollectionEquality()
-                .equals(other.paymentMethodData, paymentMethodData));
+                .equals(other.paymentMethodData, paymentMethodData) &&
+            const DeepCollectionEquality().equals(other.options, options));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(paymentMethodData));
+      runtimeType,
+      const DeepCollectionEquality().hash(paymentMethodData),
+      const DeepCollectionEquality().hash(options));
 
   @JsonKey(ignore: true)
   @override
@@ -8303,13 +8284,14 @@ class _$_PaymentMethodParamsUsBankAccount
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
         card,
     required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+            PaymentMethodOptions? options)
         cardFromToken,
-    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
@@ -8320,32 +8302,31 @@ class _$_PaymentMethodParamsUsBankAccount
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
-    required TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
-    required TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)
-        sofort,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
-    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
         usBankAccount,
   }) {
-    return usBankAccount(paymentMethodData);
+    return usBankAccount(paymentMethodData, options);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -8356,31 +8337,30 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
   }) {
-    return usBankAccount?.call(paymentMethodData);
+    return usBankAccount?.call(paymentMethodData, options);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentIntentsFutureUsage? setupFutureUsage,
-            PaymentMethodData paymentMethodData)?
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
         card,
     TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
+            PaymentMethodOptions? options)?
         cardFromToken,
-    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
@@ -8391,21 +8371,19 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
-    TResult Function(PaymentMethodDataSepa paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sepaDebit,
-    TResult Function(PaymentMethodDataSofort paymentMethodData,
-            PaymentIntentsFutureUsage? setupFutureUsage)?
-        sofort,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
-    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
     required TResult orElse(),
   }) {
     if (usBankAccount != null) {
-      return usBankAccount(paymentMethodData);
+      return usBankAccount(paymentMethodData, options);
     }
     return orElse();
   }
@@ -8506,7 +8484,8 @@ class _$_PaymentMethodParamsUsBankAccount
 abstract class _PaymentMethodParamsUsBankAccount
     implements PaymentMethodParams {
   const factory _PaymentMethodParamsUsBankAccount(
-          {required final PaymentMethodDataUsBank paymentMethodData}) =
+          {required final PaymentMethodDataUsBank paymentMethodData,
+          final PaymentMethodOptions? options}) =
       _$_PaymentMethodParamsUsBankAccount;
 
   factory _PaymentMethodParamsUsBankAccount.fromJson(
@@ -8515,6 +8494,9 @@ abstract class _PaymentMethodParamsUsBankAccount
   /// Paymentmethod data for this paymentmethod.
   PaymentMethodDataUsBank get paymentMethodData =>
       throw _privateConstructorUsedError;
+
+  /// Payment options.
+  PaymentMethodOptions? get options => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_PaymentMethodParamsUsBankAccountCopyWith<
           _$_PaymentMethodParamsUsBankAccount>
@@ -10898,4 +10880,147 @@ abstract class _PaymentMethodDataUsBank implements PaymentMethodDataUsBank {
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataUsBankCopyWith<_$_PaymentMethodDataUsBank>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+PaymentMethodOptions _$PaymentMethodOptionsFromJson(Map<String, dynamic> json) {
+  return _PaymentMethodOptions.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentMethodOptions {
+  /// Indicates whether or not you want to reuse this method for future payments.
+  PaymentIntentsFutureUsage? get setupFutureUsage =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentMethodOptionsCopyWith<PaymentMethodOptions> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentMethodOptionsCopyWith<$Res> {
+  factory $PaymentMethodOptionsCopyWith(PaymentMethodOptions value,
+          $Res Function(PaymentMethodOptions) then) =
+      _$PaymentMethodOptionsCopyWithImpl<$Res>;
+  $Res call({PaymentIntentsFutureUsage? setupFutureUsage});
+}
+
+/// @nodoc
+class _$PaymentMethodOptionsCopyWithImpl<$Res>
+    implements $PaymentMethodOptionsCopyWith<$Res> {
+  _$PaymentMethodOptionsCopyWithImpl(this._value, this._then);
+
+  final PaymentMethodOptions _value;
+  // ignore: unused_field
+  final $Res Function(PaymentMethodOptions) _then;
+
+  @override
+  $Res call({
+    Object? setupFutureUsage = freezed,
+  }) {
+    return _then(_value.copyWith(
+      setupFutureUsage: setupFutureUsage == freezed
+          ? _value.setupFutureUsage
+          : setupFutureUsage // ignore: cast_nullable_to_non_nullable
+              as PaymentIntentsFutureUsage?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_PaymentMethodOptionsCopyWith<$Res>
+    implements $PaymentMethodOptionsCopyWith<$Res> {
+  factory _$$_PaymentMethodOptionsCopyWith(_$_PaymentMethodOptions value,
+          $Res Function(_$_PaymentMethodOptions) then) =
+      __$$_PaymentMethodOptionsCopyWithImpl<$Res>;
+  @override
+  $Res call({PaymentIntentsFutureUsage? setupFutureUsage});
+}
+
+/// @nodoc
+class __$$_PaymentMethodOptionsCopyWithImpl<$Res>
+    extends _$PaymentMethodOptionsCopyWithImpl<$Res>
+    implements _$$_PaymentMethodOptionsCopyWith<$Res> {
+  __$$_PaymentMethodOptionsCopyWithImpl(_$_PaymentMethodOptions _value,
+      $Res Function(_$_PaymentMethodOptions) _then)
+      : super(_value, (v) => _then(v as _$_PaymentMethodOptions));
+
+  @override
+  _$_PaymentMethodOptions get _value => super._value as _$_PaymentMethodOptions;
+
+  @override
+  $Res call({
+    Object? setupFutureUsage = freezed,
+  }) {
+    return _then(_$_PaymentMethodOptions(
+      setupFutureUsage: setupFutureUsage == freezed
+          ? _value.setupFutureUsage
+          : setupFutureUsage // ignore: cast_nullable_to_non_nullable
+              as PaymentIntentsFutureUsage?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_PaymentMethodOptions implements _PaymentMethodOptions {
+  const _$_PaymentMethodOptions({this.setupFutureUsage});
+
+  factory _$_PaymentMethodOptions.fromJson(Map<String, dynamic> json) =>
+      _$$_PaymentMethodOptionsFromJson(json);
+
+  /// Indicates whether or not you want to reuse this method for future payments.
+  @override
+  final PaymentIntentsFutureUsage? setupFutureUsage;
+
+  @override
+  String toString() {
+    return 'PaymentMethodOptions(setupFutureUsage: $setupFutureUsage)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentMethodOptions &&
+            const DeepCollectionEquality()
+                .equals(other.setupFutureUsage, setupFutureUsage));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(setupFutureUsage));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_PaymentMethodOptionsCopyWith<_$_PaymentMethodOptions> get copyWith =>
+      __$$_PaymentMethodOptionsCopyWithImpl<_$_PaymentMethodOptions>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentMethodOptionsToJson(this);
+  }
+}
+
+abstract class _PaymentMethodOptions implements PaymentMethodOptions {
+  const factory _PaymentMethodOptions(
+          {final PaymentIntentsFutureUsage? setupFutureUsage}) =
+      _$_PaymentMethodOptions;
+
+  factory _PaymentMethodOptions.fromJson(Map<String, dynamic> json) =
+      _$_PaymentMethodOptions.fromJson;
+
+  @override
+
+  /// Indicates whether or not you want to reuse this method for future payments.
+  PaymentIntentsFutureUsage? get setupFutureUsage =>
+      throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PaymentMethodOptionsCopyWith<_$_PaymentMethodOptions> get copyWith =>
+      throw _privateConstructorUsedError;
 }

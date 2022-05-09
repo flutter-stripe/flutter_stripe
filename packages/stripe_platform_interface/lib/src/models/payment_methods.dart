@@ -19,7 +19,7 @@ class PaymentMethod with _$PaymentMethod {
     required bool livemode,
 
     /// The type of the paymentmethod.
-    required String type,
+    required String paymentMethodType,
 
     /// Billing information related to the payment method.
     required BillingDetails billingDetails,
@@ -316,12 +316,11 @@ class PaymentMethodParams with _$PaymentMethodParams {
 
   /// Config parameters for card payment method.
   const factory PaymentMethodParams.card({
-    /// Indicates whether or not you want to reuse this method for future payments.
-
-    PaymentIntentsFutureUsage? setupFutureUsage,
-
     /// Paymentmethod data for this paymentmethod.
     required PaymentMethodData paymentMethodData,
+
+    /// Paymentmethod options
+    PaymentMethodOptions? options,
   }) = _PaymentMethodParamsCard;
 
   @JsonSerializable(explicitToJson: true)
@@ -332,8 +331,8 @@ class PaymentMethodParams with _$PaymentMethodParams {
     /// Paymentmethod data for this paymentmethod.
     required PaymentMethodDataCardFromToken paymentMethodData,
 
-    /// Indicates whether or not you want to reuse this method for future payments.
-    PaymentIntentsFutureUsage? setupFutureUsage,
+    /// Paymentmethod options
+    PaymentMethodOptions? options,
   }) = _PaymentMethodParamsCardWithToken;
 
   @JsonSerializable(explicitToJson: true)
@@ -343,6 +342,9 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.cardFromMethodId({
     /// Payment method data object for card from payment method.
     required PaymentMethodDataCardFromMethod paymentMethodData,
+
+    /// Paymentmethod options
+    PaymentMethodOptions? options,
   }) = _PaymentMethodParamsCardWithMethodId;
 
   @JsonSerializable(explicitToJson: true)
@@ -435,14 +437,12 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.sepaDebit({
     /// Paymentmethod data for this paymentmethod.
     required PaymentMethodDataSepa paymentMethodData,
-    PaymentIntentsFutureUsage? setupFutureUsage,
   }) = _PaymentMethodParamsSepaDebit;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Sofort')
   const factory PaymentMethodParams.sofort({
     required PaymentMethodDataSofort paymentMethodData,
-    PaymentIntentsFutureUsage? setupFutureUsage,
   }) = _PaymentMethodParamsSofort;
 
   @JsonSerializable(explicitToJson: true)
@@ -473,6 +473,9 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.usBankAccount({
     /// Paymentmethod data for this paymentmethod.
     required PaymentMethodDataUsBank paymentMethodData,
+
+    /// Payment options.
+    PaymentMethodOptions? options,
   }) = _PaymentMethodParamsUsBankAccount;
 
   // TODO uncomment and regenerate when we can re-enable wechat pay
@@ -690,4 +693,18 @@ class PaymentMethodDataUsBank with _$PaymentMethodDataUsBank {
 
   factory PaymentMethodDataUsBank.fromJson(Map<String, dynamic> json) =>
       _$PaymentMethodDataUsBankFromJson(json);
+}
+
+@freezed
+
+/// Data object that holds the payment options for a payment method.
+class PaymentMethodOptions with _$PaymentMethodOptions {
+  @JsonSerializable(explicitToJson: true)
+  const factory PaymentMethodOptions({
+    /// Indicates whether or not you want to reuse this method for future payments.
+    PaymentIntentsFutureUsage? setupFutureUsage,
+  }) = _PaymentMethodOptions;
+
+  factory PaymentMethodOptions.fromJson(Map<String, dynamic> json) =>
+      _$PaymentMethodOptionsFromJson(json);
 }

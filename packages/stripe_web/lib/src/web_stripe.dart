@@ -91,21 +91,22 @@ class WebStripe extends StripePlatform {
     Map<String, String> options = const {},
   ]) async {
     final response = await params.maybeWhen<Future<s.PaymentIntentResponse>>(
-      card: (usage, billing) {
+      card: (usage, options) {
         return js.confirmCardPayment(
           paymentIntentClientSecret,
           data: s.ConfirmCardPaymentData(
             payment_method: s.CardPaymentMethod(card: element),
-            setup_future_usage:
-                (usage ?? PaymentIntentsFutureUsage.OnSession).toJs(),
-            save_payment_method: usage != null,
+            setup_future_usage: (options?.setupFutureUsage ??
+                    PaymentIntentsFutureUsage.OnSession)
+                .toJs(),
+            save_payment_method: options != null,
             // shipping: billing?.toJs()
             // TODO: Implement return_url for web
             // return_url: '',
           ),
         );
       },
-      cardFromMethodId: (paymentMethodData) {
+      cardFromMethodId: (paymentMethodData, _) {
         // https://stripe.com/docs/js/payment_intents/confirm_card_payment#stripe_confirm_card_payment-existing
         return js.confirmCardPayment(
           paymentIntentClientSecret,
@@ -115,7 +116,7 @@ class WebStripe extends StripePlatform {
         );
       },
       cardFromToken:
-          (PaymentMethodDataCardFromToken data, PaymentIntentsFutureUsage? setupFutureUsage) {
+          (PaymentMethodDataCardFromToken data, PaymentMethodOptions? options) {
         // https: //stripe.com/docs/js/payment_intents/confirm_card_payment#stripe_confirm_card_payment-token
         return js.confirmCardPayment(
           paymentIntentClientSecret,
@@ -123,9 +124,9 @@ class WebStripe extends StripePlatform {
             payment_method: s.CardPaymentMethod(
               card: s.CardTokenPaymentMethod(token: data.token),
             ),
-            setup_future_usage:
-                (setupFutureUsage ?? PaymentIntentsFutureUsage.OnSession)
-                    .toJs(),
+            setup_future_usage: (options?.setupFutureUsage ??
+                    PaymentIntentsFutureUsage.OnSession)
+                .toJs(),
           ),
         );
       },
