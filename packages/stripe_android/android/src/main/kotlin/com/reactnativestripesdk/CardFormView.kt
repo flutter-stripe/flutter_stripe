@@ -204,6 +204,7 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
 
           if (dangerouslyGetFullCardDetails) {
             cardDetails["number"] = cardParamsMap["number"] as String
+            cardDetails["cvc"] = cardParamsMap["cvc"] as String
           }
 
           mEventDispatcher?.dispatchEvent(
