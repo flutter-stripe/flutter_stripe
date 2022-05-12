@@ -178,19 +178,6 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
   Future<void> _handleRetrievePaymentIntent(String clientSecret) async {
     final paymentIntent =
         await Stripe.instance.retrievePaymentIntent(clientSecret);
-    /*final errorCode = paymentIntent.lastPaymentError?.code;
-
-    var failureReason = 'Payment failed, try again.'; // Default to a generic error message
-    if (paymentIntent?.lastPaymentError?.type == 'Card') {
-      failureReason = paymentIntent.lastPaymentError.message;
-    }*/
-    final errorCode = false;
-
-    if (errorCode) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('failureReason')));
-      //setPaymentError(errorCode);
-    }
 
     final paymentMethodId = paymentIntent.paymentMethodId == null
         ? _setupIntentResult?.paymentMethodId

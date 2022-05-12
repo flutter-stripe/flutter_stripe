@@ -4,7 +4,7 @@ version: 1.0.0
 publish_to: 'none'
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: ">=2.16.0 <3.0.0"
   flutter: ">=2.0.0"
 
 dependencies:
@@ -13,7 +13,7 @@ dependencies:
   flutter_stripe: ^2.5.0
   flutter_stripe_web: ^0.1.4
   stripe_checkout: ^0.1.2
-  pay: ^1.0.1
+  pay: ^1.0.8
   http: ^0.13.1
   font_awesome_flutter: ^9.2.0
   platform: ^3.0.0

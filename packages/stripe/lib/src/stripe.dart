@@ -405,7 +405,6 @@ class Stripe {
     ///
     /// The name and email is required.
     required CollectBankAccountParams params,
-
   }) async {
     return await _platform.collectBankAccount(
       isPaymentIntent: isPaymentIntent,
@@ -449,7 +448,7 @@ class Stripe {
 
   Future<void>? _settingsFuture;
 
-  static late final Stripe instance = Stripe._();
+  static final Stripe instance = Stripe._();
 
   String? _publishableKey;
   String? _stripeAccountId;
@@ -496,5 +495,5 @@ class Stripe {
   ValueNotifier<bool>? _isApplePaySupported;
 
   // Internal use only
-  static late final buildWebCard = _platform.buildCard;
+  static final buildWebCard = _platform.buildCard;
 }

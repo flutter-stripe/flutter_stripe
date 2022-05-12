@@ -67,6 +67,7 @@ class CardFormField extends StatefulWidget {
   final bool dangerouslyUpdateFullCardDetails;
 
   @override
+  // ignore: library_private_types_in_public_api
   _CardFormFieldState createState() => _CardFormFieldState();
 }
 
@@ -219,7 +220,7 @@ class _MethodChannelCardFormField extends StatefulWidget {
   // time.
   // A unique key is used to throw an expection before multiple platform
   // views are created
-  static late final _key = UniqueKey();
+  static final _key = UniqueKey();
 
   @override
   _MethodChannelCardFormFieldState createState() =>
