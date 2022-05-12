@@ -3,6 +3,7 @@
 part of '../js.dart';
 
 extension StripePaymentIntentExtension on StripeJS {
+  // ignore: library_private_types_in_public_api
   _StripePaymentIntentExtension get js => this as _StripePaymentIntentExtension;
 
   Future<PaymentIntentResponse> retrievePaymentIntent(String clientSecret) {

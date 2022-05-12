@@ -37,10 +37,10 @@ class PaymentElement extends StatefulWidget {
   final FocusNode? focusNode;
   final bool autofocus;
   @override
-  _PaymentElementState createState() => _PaymentElementState();
+  PaymentElementState createState() => PaymentElementState();
 }
 
-class _PaymentElementState extends State<PaymentElement> {
+class PaymentElementState extends State<PaymentElement> {
   @override
   void initState() {
     // ignore: undefined_prefixed_name
@@ -58,7 +58,7 @@ class _PaymentElementState extends State<PaymentElement> {
   set element(s.Element? value) => WebStripe.element = value;
 
   void initStripe() {
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Future.delayed(const Duration(milliseconds: 100), () {
         element = WebStripe.js.elements().create('payment', createOptions())
           ..mount('#payment-element')

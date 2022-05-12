@@ -337,7 +337,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
         dev.log('WARNING! Initial card data value has been ignored. \n'
             '$kDebugPCIMessage');
       }
-      WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         updateCardDetails(
           const CardFieldInputDetails(complete: false),
           controller,
@@ -494,8 +494,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
       final map = Map<String, dynamic>.from(arguments);
       final field = CardFieldFocusName.fromJson(map);
       if (field.focusedField != null &&
-          WidgetsBinding.instance!.focusManager.primaryFocus !=
-              _effectiveNode) {
+          WidgetsBinding.instance.focusManager.primaryFocus != _effectiveNode) {
         _effectiveNode.requestFocus();
       }
       widget.onFocus?.call(field.focusedField);
