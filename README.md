@@ -162,6 +162,8 @@ The example app offers examples on how to use these methods.
 
 ## Pay Plugin support
 
+IMPORTANT the Pay plugin for Flutter 3.0 is not integrated in the example app at the moment until issue [github](https://github.com/google-pay/flutter-plugin/issues/126) is resolved.
+
 flutter_stripe fully supports the [Pay plugin](https://pub.dev/packages/pay) from the Google Pay team. By including a few lines you can integrate Stripe as a payment processor for Google / Apple Pay:
 
 ```dart
