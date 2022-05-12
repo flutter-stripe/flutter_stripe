@@ -16,9 +16,11 @@ class StripeAubecsDebitPlatformViewFactory(
     private val sdkAccessor: () -> StripeSdkModule
 ) : PlatformViewFactory(StandardMessageCodec.INSTANCE) {
 
-    override fun create(context: Context, viewId: Int, args: Any?): PlatformView {
+    override fun create(context: Context?, viewId: Int, args: Any?): PlatformView {
         val channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter.stripe/aubecs_form_field/${viewId}")
         val creationParams = args as? Map<String?, Any?>?
-        return StripeAubecsDebitPlatformView(context, channel, viewId, creationParams, auBECSDebitFormViewManager, sdkAccessor)
-    }
+        if(context == null){
+            throw AssertionError("Context is not allowed to be null when launching aubecs view.")
+        }
+        return StripeAubecsDebitPlatformView(context, channel, viewId, creationParams, auBECSDebitFormViewManager, sdkAccessor)    }
 }
