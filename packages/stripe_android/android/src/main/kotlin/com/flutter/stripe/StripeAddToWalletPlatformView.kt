@@ -41,31 +41,10 @@ class StripeAddToWalletPlatformView(
             )
         }
 
-        if (creationParams?.containsKey("cardDescription") == true) {
-            viewManager.cardDescription(
+        if (creationParams?.containsKey("cardDetails") == true) {
+            viewManager.cardDetails(
                 nativeView,
-                creationParams["cardDescription"] as String
-            )
-        }
-
-        if (creationParams?.containsKey("cardLastFour") == true) {
-            viewManager.cardLastFour(
-                nativeView,
-                creationParams["cardLastFour"] as String
-            )
-        }
-
-        if (creationParams?.containsKey("ephemeralKey") == true) {
-            viewManager.ephemeralKey(
-                nativeView,
-                creationParams["ephemeralKey"] as ReadableMap
-            )
-        }
-
-        if (creationParams?.containsKey("token") == true) {
-            viewManager.token(
-                nativeView,
-                creationParams["token"] as ReadableMap
+                ReadableMap(creationParams["cardDetails"] as Map<String, Any>)
             )
         }
 

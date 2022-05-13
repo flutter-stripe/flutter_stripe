@@ -107,8 +107,8 @@ class CardFieldPlatformView: NSObject, FlutterPlatformView, STPPaymentCardTextFi
         guard let arguments = args  as?  [String: Any]  else{
             return;
         }
-       if let placeholder = arguments["placeholder"] as? NSDictionary {
-        cardField.placeholder = placeholder
+       if let placeholders = arguments["placeholder"] as? NSDictionary {
+        cardField.placeholders = placeholders
        }
        if  let cardStyle = arguments["cardStyle"] as? NSDictionary{
             if let fontFamily = cardStyle["fontFamily"] as? String {

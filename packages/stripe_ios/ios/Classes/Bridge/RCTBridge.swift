@@ -74,7 +74,7 @@ public class RCTEventEmitter : NSObject {
     }
     
     func constantsToExport() -> [AnyHashable : Any] {
-        return []
+        return [:]
     }
 }
 
