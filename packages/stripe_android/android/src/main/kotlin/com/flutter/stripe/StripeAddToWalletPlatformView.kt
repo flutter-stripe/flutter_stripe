@@ -26,7 +26,7 @@ class StripeAddToWalletPlatformView(
 
         nativeView = viewManager.createViewInstance(
             ThemedReactContext(
-                context,
+                sdkAccessor().reactContext,
                 channel,
                 sdkAccessor
             )

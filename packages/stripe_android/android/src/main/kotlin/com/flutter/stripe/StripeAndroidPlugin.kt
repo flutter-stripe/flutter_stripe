@@ -133,7 +133,7 @@ If you continue to have trouble, follow this discussion to get some support http
             "dangerouslyUpdateCardDetails" -> {
                 stripeSdkCardViewManager.setCardDetails(
                     value = call.requiredArgument("params"),
-                    reactContext = ThemedReactContext(stripeSdk.currentActivity, channel) { stripeSdk }
+                    reactContext = ThemedReactContext(stripeSdk.reactContext, channel) { stripeSdk }
                 )
                 result.success(null)
             }

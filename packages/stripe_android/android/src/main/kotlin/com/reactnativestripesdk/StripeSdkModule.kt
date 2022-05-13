@@ -25,7 +25,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @ReactModule(name = StripeSdkModule.NAME)
-class StripeSdkModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+class StripeSdkModule(internal val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
   var cardFieldView: CardFieldView? = null
   var cardFormView: CardFormView? = null
 

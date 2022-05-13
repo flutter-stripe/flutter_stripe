@@ -26,7 +26,7 @@ class StripeSdkCardFormPlatformView(
 ) : PlatformView, MethodChannel.MethodCallHandler {
 
     private val cardView: CardFormView = cardFormViewManager.getCardViewInstance() ?: let {
-        return@let cardFormViewManager.createViewInstance(ThemedReactContext(context, channel, sdkAccessor))
+        return@let cardFormViewManager.createViewInstance(ThemedReactContext(sdkAccessor().reactContext, channel, sdkAccessor))
     }
 
     init {

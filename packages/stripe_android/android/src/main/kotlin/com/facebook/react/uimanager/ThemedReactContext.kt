@@ -6,11 +6,11 @@ import com.facebook.react.bridge.ReactApplicationContext
 import com.reactnativestripesdk.StripeSdkModule
 import io.flutter.plugin.common.MethodChannel
 
-class ThemedReactContext(context: Context,
+class ThemedReactContext(context: ReactApplicationContext,
                          private val channel: MethodChannel,
                          private val sdkAccessor: () -> StripeSdkModule): ContextWrapper(context) {
 
-    val reactApplicationContext: ReactApplicationContext = context as ReactApplicationContext
+    val reactApplicationContext: ReactApplicationContext = context
 
     fun getNativeModule(clazz: Class<UIManagerModule>): UIManagerModule? {
         return UIManagerModule(channel)
