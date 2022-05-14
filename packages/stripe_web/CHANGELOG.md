@@ -1,3 +1,7 @@
+## 1.0.0
+
+ - a
+
 ## 0.1.4
 - Keep stripe web in sync with platform interface `2.5.0`.
 
