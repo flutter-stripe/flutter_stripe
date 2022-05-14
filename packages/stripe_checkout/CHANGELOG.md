@@ -1,3 +1,8 @@
+## 1.0.0
+** Breaking changes **
+- Support for Flutter 3 and support Dart sdk 2.16 and higher. 
+- Only supports application running on Freezed v2.0.0 and higher
+
 ## 0.1.3
 - Updated freezed dependency to allow 2.x
 
