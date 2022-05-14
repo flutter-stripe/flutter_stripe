@@ -3,6 +3,7 @@
 part of 'js.dart';
 
 extension StripeJSExtension on StripeJS {
+  // ignore: library_private_types_in_public_api
   _StripeJS get js => this as _StripeJS;
 
   StripePaymentRequest paymentRequest(StripePaymentRequestOptions options) {

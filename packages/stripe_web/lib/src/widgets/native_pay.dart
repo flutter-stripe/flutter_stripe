@@ -1,9 +1,11 @@
 import 'dart:developer' as dev;
 import 'dart:html';
 import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_stripe_web/src/web_stripe.dart';
+
 import '../../flutter_stripe_web.dart';
 import '../js/js.dart' as s;
 
@@ -14,10 +16,10 @@ class NativePayButton extends StatefulWidget {
 
   const NativePayButton({Key? key, this.focusNode}) : super(key: key);
   @override
-  _WebStripeCardState createState() => _WebStripeCardState();
+  WebStripeCardState createState() => WebStripeCardState();
 }
 
-class _WebStripeCardState extends State<NativePayButton> {
+class WebStripeCardState extends State<NativePayButton> {
   @override
   void initState() {
     // ignore: undefined_prefixed_name
@@ -39,7 +41,7 @@ class _WebStripeCardState extends State<NativePayButton> {
   s.Element? element;
 
   void initStripe() {
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       var paymentRequest = WebStripe.js.paymentRequest(
         s.StripePaymentRequestOptions(
           country: 'ES',

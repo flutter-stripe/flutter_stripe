@@ -14,6 +14,7 @@ class GooglePayButton extends StatefulWidget {
   static const _viewType = 'flutter.stripe/google_pay_button';
 
   @override
+  // ignore: library_private_types_in_public_api
   _GooglePayButtonState createState() => _GooglePayButtonState();
 
   final GooglePayButtonType type;

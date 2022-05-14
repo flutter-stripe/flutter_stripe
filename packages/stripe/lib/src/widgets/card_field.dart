@@ -87,6 +87,7 @@ class CardField extends StatefulWidget {
   final bool dangerouslyUpdateFullCardDetails;
 
   @override
+  // ignore: library_private_types_in_public_api
   _CardFieldState createState() => _CardFieldState();
 }
 
@@ -143,7 +144,7 @@ class _CardFieldState extends State<CardField> {
       postalCode: widget.postalCodeHintText,
     );
 
-    final _platform = kIsWeb
+    final platform = kIsWeb
         ? Stripe.buildWebCard(
             controller: controller,
             height: platformCardHeight,
@@ -179,7 +180,7 @@ class _CardFieldState extends State<CardField> {
       baseStyle: widget.style,
       child: SizedBox(
         height: cardHeight,
-        child: _platform,
+        child: platform,
       ),
     );
   }
@@ -281,7 +282,7 @@ class _MethodChannelCardField extends StatefulWidget {
   // time.
   // A unique key is used to throw an expection before multiple platform
   // views are created
-  static late final _key = UniqueKey();
+  static final _key = UniqueKey();
 
   @override
   _MethodChannelCardFieldState createState() => _MethodChannelCardFieldState();
@@ -337,7 +338,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
         dev.log('WARNING! Initial card data value has been ignored. \n'
             '$kDebugPCIMessage');
       }
-      WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         updateCardDetails(
           const CardFieldInputDetails(complete: false),
           controller,
@@ -494,8 +495,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
       final map = Map<String, dynamic>.from(arguments);
       final field = CardFieldFocusName.fromJson(map);
       if (field.focusedField != null &&
-          WidgetsBinding.instance!.focusManager.primaryFocus !=
-              _effectiveNode) {
+          WidgetsBinding.instance.focusManager.primaryFocus != _effectiveNode) {
         _effectiveNode.requestFocus();
       }
       widget.onFocus?.call(field.focusedField);

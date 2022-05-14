@@ -72,7 +72,7 @@ class StripeSdkCardFormPlatformView(
     private fun applyFocusFix() {
         try {
             val enumConstants = Class.forName("io.flutter.plugin.editing.TextInputPlugin\$InputTarget\$Type").enumConstants as Array<Enum<*>>
-            val shouldApplyFix = enumConstants.none { it.name == "HC_PLATFORM_VIEW" }
+            val shouldApplyFix = enumConstants.none { it.name == "HC_PLATFORM_VIEW" || it.name == "FRAMEWORK_CLIENT" }
             if (shouldApplyFix) {
                 // Temporal fix to https://github.com/flutter/flutter/issues/81029
                 val binding = CardMultilineWidgetBinding.bind(cardView.cardForm)

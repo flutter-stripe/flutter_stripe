@@ -15,9 +15,12 @@ class StripeSdkGooglePayButtonPlatformViewFactory(
         private val sdkAccessor: () -> StripeSdkModule
 ) : PlatformViewFactory(StandardMessageCodec.INSTANCE) {
 
-    override fun create(context: Context, viewId: Int, args: Any?): PlatformView {
+    override fun create(context: Context?, viewId: Int, args: Any?): PlatformView {
         val channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter.stripe/google_pay_button/${viewId}")
         val creationParams = args as? Map<String?, Any?>?
+        if(context == null){
+            throw AssertionError("Context is not allowed to be null when launching google pay button view.")
+        }
         return StripeSdkGooglePayButtonPlatformView(context, channel, viewId, creationParams, payButtonManager, sdkAccessor)
     }
 

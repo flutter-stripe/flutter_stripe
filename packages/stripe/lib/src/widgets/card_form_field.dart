@@ -67,6 +67,7 @@ class CardFormField extends StatefulWidget {
   final bool dangerouslyUpdateFullCardDetails;
 
   @override
+  // ignore: library_private_types_in_public_api
   _CardFormFieldState createState() => _CardFormFieldState();
 }
 
@@ -219,7 +220,7 @@ class _MethodChannelCardFormField extends StatefulWidget {
   // time.
   // A unique key is used to throw an expection before multiple platform
   // views are created
-  static late final _key = UniqueKey();
+  static final _key = UniqueKey();
 
   @override
   _MethodChannelCardFormFieldState createState() =>
@@ -253,7 +254,7 @@ class _MethodChannelCardFormFieldState
         dev.log('WARNING! Initial card data value has been ignored. \n'
             '$kDebugPCIMessage');
       }
-      WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         controller._updateDetails(const CardFieldInputDetails(complete: false));
       });
     }
@@ -407,8 +408,7 @@ class _MethodChannelCardFormFieldState
       final map = Map<String, dynamic>.from(arguments);
       final field = CardFieldFocusName.fromJson(map);
       if (field.focusedField != null &&
-          WidgetsBinding.instance!.focusManager.primaryFocus !=
-              _effectiveNode) {
+          WidgetsBinding.instance.focusManager.primaryFocus != _effectiveNode) {
         _effectiveNode.requestFocus();
       }
       widget.onFocus?.call(field.focusedField);

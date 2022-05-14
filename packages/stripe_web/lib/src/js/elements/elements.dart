@@ -1,6 +1,7 @@
 part of '../js.dart';
 
 extension StripeElementsExtension on StripeJS {
+  // ignore: library_private_types_in_public_api
   _StripeElementsExtension get js => this as _StripeElementsExtension;
 
   Elements elements([ElementsCreateOptions? options]) {

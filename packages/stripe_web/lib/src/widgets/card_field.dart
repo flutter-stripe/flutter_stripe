@@ -44,10 +44,10 @@ class WebCardField extends StatefulWidget {
   final CardEditController controller;
   final bool dangerouslyUpdateFullCardDetails;
   @override
-  _WebStripeCardState createState() => _WebStripeCardState();
+  WebStripeCardState createState() => WebStripeCardState();
 }
 
-class _WebStripeCardState extends State<WebCardField> with CardFieldContext {
+class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   CardEditController get controller => widget.controller;
 
   @override
@@ -68,7 +68,7 @@ class _WebStripeCardState extends State<WebCardField> with CardFieldContext {
 
   void initStripe() {
     attachController(controller);
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       if (!widget.dangerouslyUpdateFullCardDetails) {
         if (kDebugMode &&
             controller.details !=
@@ -76,7 +76,7 @@ class _WebStripeCardState extends State<WebCardField> with CardFieldContext {
           dev.log('WARNING! Initial card data value has been ignored. \n'
               '$kDebugPCIMessage');
         }
-        WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           updateCardDetails(
             const CardFieldInputDetails(complete: false),
             controller,
