@@ -6,12 +6,11 @@ import com.facebook.react.common.MapBuilder
 import com.facebook.react.uimanager.SimpleViewManager
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.annotations.ReactProp
-import com.stripe.android.model.PaymentMethodCreateParams
 
 class CardFieldViewManager : SimpleViewManager<CardFieldView>() {
   override fun getName() = "CardField"
 
-  internal var reactContextRef: ThemedReactContext? = null
+  private var reactContextRef: ThemedReactContext? = null
 
   override fun getExportedCustomDirectEventTypeConstants(): MutableMap<String, Any> {
     return MapBuilder.of(
@@ -47,9 +46,9 @@ class CardFieldViewManager : SimpleViewManager<CardFieldView>() {
     view.setCardStyle(cardStyle)
   }
 
-  @ReactProp(name = "placeholder")
-  fun setPlaceHolders(view: CardFieldView, placeholder: ReadableMap) {
-    view.setPlaceHolders(placeholder)
+  @ReactProp(name = "placeholders")
+  fun setPlaceHolders(view: CardFieldView, placeholders: ReadableMap) {
+    view.setPlaceHolders(placeholders)
   }
 
   override fun createViewInstance(reactContext: ThemedReactContext): CardFieldView {
