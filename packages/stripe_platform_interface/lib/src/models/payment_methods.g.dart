@@ -475,6 +475,21 @@ Map<String, dynamic> _$$_PaymentMethodParamsKlarnaToJson(
       'paymentMethodType': instance.$type,
     };
 
+_$_PaymentMethodParamsPayPal _$$_PaymentMethodParamsPayPalFromJson(
+        Map<String, dynamic> json) =>
+    _$_PaymentMethodParamsPayPal(
+      paymentMethodData: PaymentMethodData.fromJson(
+          json['paymentMethodData'] as Map<String, dynamic>),
+      $type: json['paymentMethodType'] as String?,
+    );
+
+Map<String, dynamic> _$$_PaymentMethodParamsPayPalToJson(
+        _$_PaymentMethodParamsPayPal instance) =>
+    <String, dynamic>{
+      'paymentMethodData': instance.paymentMethodData.toJson(),
+      'paymentMethodType': instance.$type,
+    };
+
 _$_PaymentMethodParamsUsBankAccount
     _$$_PaymentMethodParamsUsBankAccountFromJson(Map<String, dynamic> json) =>
         _$_PaymentMethodParamsUsBankAccount(

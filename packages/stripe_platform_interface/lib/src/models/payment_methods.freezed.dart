@@ -2710,6 +2710,8 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
       return _PaymentMethodParamsOxxo.fromJson(json);
     case 'Klarna':
       return _PaymentMethodParamsKlarna.fromJson(json);
+    case 'PayPal':
+      return _PaymentMethodParamsPayPal.fromJson(json);
     case 'USBankAccount':
       return _PaymentMethodParamsUsBankAccount.fromJson(json);
 
@@ -2751,6 +2753,7 @@ mixin _$PaymentMethodParams {
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)
         usBankAccount,
@@ -2782,6 +2785,7 @@ mixin _$PaymentMethodParams {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -2813,6 +2817,7 @@ mixin _$PaymentMethodParams {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -2841,6 +2846,7 @@ mixin _$PaymentMethodParams {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
   }) =>
@@ -2866,6 +2872,7 @@ mixin _$PaymentMethodParams {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) =>
       throw _privateConstructorUsedError;
@@ -2890,6 +2897,7 @@ mixin _$PaymentMethodParams {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) =>
@@ -3053,6 +3061,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)
         usBankAccount,
@@ -3087,6 +3096,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -3121,6 +3131,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -3155,6 +3166,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
   }) {
@@ -3183,6 +3195,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return card?.call(this);
@@ -3210,6 +3223,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
@@ -3388,6 +3402,7 @@ class _$_PaymentMethodParamsCardWithToken
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)
         usBankAccount,
@@ -3422,6 +3437,7 @@ class _$_PaymentMethodParamsCardWithToken
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -3456,6 +3472,7 @@ class _$_PaymentMethodParamsCardWithToken
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -3490,6 +3507,7 @@ class _$_PaymentMethodParamsCardWithToken
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
   }) {
@@ -3518,6 +3536,7 @@ class _$_PaymentMethodParamsCardWithToken
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return cardFromToken?.call(this);
@@ -3545,6 +3564,7 @@ class _$_PaymentMethodParamsCardWithToken
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
@@ -3728,6 +3748,7 @@ class _$_PaymentMethodParamsCardWithMethodId
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)
         usBankAccount,
@@ -3762,6 +3783,7 @@ class _$_PaymentMethodParamsCardWithMethodId
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -3796,6 +3818,7 @@ class _$_PaymentMethodParamsCardWithMethodId
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -3830,6 +3853,7 @@ class _$_PaymentMethodParamsCardWithMethodId
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
   }) {
@@ -3858,6 +3882,7 @@ class _$_PaymentMethodParamsCardWithMethodId
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return cardFromMethodId?.call(this);
@@ -3885,6 +3910,7 @@ class _$_PaymentMethodParamsCardWithMethodId
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
@@ -4038,6 +4064,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)
         usBankAccount,
@@ -4072,6 +4099,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -4106,6 +4134,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -4140,6 +4169,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
   }) {
@@ -4168,6 +4198,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return alipay?.call(this);
@@ -4195,6 +4226,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
@@ -4340,6 +4372,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)
         usBankAccount,
@@ -4374,6 +4407,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -4408,6 +4442,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -4442,6 +4477,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
   }) {
@@ -4470,6 +4506,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return ideal?.call(this);
@@ -4497,6 +4534,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
@@ -4644,6 +4682,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)
         usBankAccount,
@@ -4678,6 +4717,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -4712,6 +4752,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -4746,6 +4787,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
   }) {
@@ -4774,6 +4816,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return aubecs?.call(this);
@@ -4801,6 +4844,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
@@ -4949,6 +4993,7 @@ class _$_PaymentMethodParamsBankContact
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)
         usBankAccount,
@@ -4983,6 +5028,7 @@ class _$_PaymentMethodParamsBankContact
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -5017,6 +5063,7 @@ class _$_PaymentMethodParamsBankContact
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -5051,6 +5098,7 @@ class _$_PaymentMethodParamsBankContact
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
   }) {
@@ -5079,6 +5127,7 @@ class _$_PaymentMethodParamsBankContact
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return bancontact?.call(this);
@@ -5106,6 +5155,7 @@ class _$_PaymentMethodParamsBankContact
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
@@ -5251,6 +5301,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)
         usBankAccount,
@@ -5285,6 +5336,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -5319,6 +5371,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -5353,6 +5406,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
   }) {
@@ -5381,6 +5435,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return giroPay?.call(this);
@@ -5408,6 +5463,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
@@ -5551,6 +5607,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)
         usBankAccount,
@@ -5585,6 +5642,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -5619,6 +5677,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -5653,6 +5712,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
   }) {
@@ -5681,6 +5741,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return eps?.call(this);
@@ -5708,6 +5769,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
@@ -5851,6 +5913,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)
         usBankAccount,
@@ -5885,6 +5948,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -5919,6 +5983,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -5953,6 +6018,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
   }) {
@@ -5981,6 +6047,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return grabPay?.call(this);
@@ -6008,6 +6075,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
@@ -6151,6 +6219,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)
         usBankAccount,
@@ -6185,6 +6254,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -6219,6 +6289,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -6253,6 +6324,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
   }) {
@@ -6281,6 +6353,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return p24?.call(this);
@@ -6308,6 +6381,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
@@ -6452,6 +6526,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)
         usBankAccount,
@@ -6486,6 +6561,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -6520,6 +6596,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -6554,6 +6631,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
   }) {
@@ -6582,6 +6660,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return fpx?.call(this);
@@ -6609,6 +6688,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
@@ -6756,6 +6836,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)
         usBankAccount,
@@ -6790,6 +6871,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -6824,6 +6906,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -6858,6 +6941,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
   }) {
@@ -6886,6 +6970,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return sepaDebit?.call(this);
@@ -6913,6 +6998,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
@@ -7059,6 +7145,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)
         usBankAccount,
@@ -7093,6 +7180,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -7127,6 +7215,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -7161,6 +7250,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
   }) {
@@ -7189,6 +7279,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return sofort?.call(this);
@@ -7216,6 +7307,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
@@ -7365,6 +7457,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)
         usBankAccount,
@@ -7399,6 +7492,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -7433,6 +7527,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -7467,6 +7562,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
   }) {
@@ -7495,6 +7591,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return afterpayClearpay?.call(this);
@@ -7522,6 +7619,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
@@ -7669,6 +7767,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)
         usBankAccount,
@@ -7703,6 +7802,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -7737,6 +7837,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -7771,6 +7872,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
   }) {
@@ -7799,6 +7901,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return oxxo?.call(this);
@@ -7826,6 +7929,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
@@ -7974,6 +8078,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)
         usBankAccount,
@@ -8008,6 +8113,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -8042,6 +8148,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -8076,6 +8183,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
   }) {
@@ -8104,6 +8212,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return klarna?.call(this);
@@ -8131,6 +8240,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {
@@ -8161,6 +8271,320 @@ abstract class _PaymentMethodParamsKlarna implements PaymentMethodParams {
   PaymentMethodData get paymentMethodData => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_PaymentMethodParamsKlarnaCopyWith<_$_PaymentMethodParamsKlarna>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_PaymentMethodParamsPayPalCopyWith<$Res> {
+  factory _$$_PaymentMethodParamsPayPalCopyWith(
+          _$_PaymentMethodParamsPayPal value,
+          $Res Function(_$_PaymentMethodParamsPayPal) then) =
+      __$$_PaymentMethodParamsPayPalCopyWithImpl<$Res>;
+  $Res call({PaymentMethodData paymentMethodData});
+
+  $PaymentMethodDataCopyWith<$Res> get paymentMethodData;
+}
+
+/// @nodoc
+class __$$_PaymentMethodParamsPayPalCopyWithImpl<$Res>
+    extends _$PaymentMethodParamsCopyWithImpl<$Res>
+    implements _$$_PaymentMethodParamsPayPalCopyWith<$Res> {
+  __$$_PaymentMethodParamsPayPalCopyWithImpl(
+      _$_PaymentMethodParamsPayPal _value,
+      $Res Function(_$_PaymentMethodParamsPayPal) _then)
+      : super(_value, (v) => _then(v as _$_PaymentMethodParamsPayPal));
+
+  @override
+  _$_PaymentMethodParamsPayPal get _value =>
+      super._value as _$_PaymentMethodParamsPayPal;
+
+  @override
+  $Res call({
+    Object? paymentMethodData = freezed,
+  }) {
+    return _then(_$_PaymentMethodParamsPayPal(
+      paymentMethodData: paymentMethodData == freezed
+          ? _value.paymentMethodData
+          : paymentMethodData // ignore: cast_nullable_to_non_nullable
+              as PaymentMethodData,
+    ));
+  }
+
+  @override
+  $PaymentMethodDataCopyWith<$Res> get paymentMethodData {
+    return $PaymentMethodDataCopyWith<$Res>(_value.paymentMethodData, (value) {
+      return _then(_value.copyWith(paymentMethodData: value));
+    });
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
+  const _$_PaymentMethodParamsPayPal(
+      {required this.paymentMethodData, final String? $type})
+      : $type = $type ?? 'PayPal';
+
+  factory _$_PaymentMethodParamsPayPal.fromJson(Map<String, dynamic> json) =>
+      _$$_PaymentMethodParamsPayPalFromJson(json);
+
+  /// Paymentmethod data for this paymentmethod.
+  ///
+  /// Make sure to add an email and country (part of the address) in the
+  /// billingdetails which is required for using Klarna.
+  @override
+  final PaymentMethodData paymentMethodData;
+
+  @JsonKey(name: 'paymentMethodType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'PaymentMethodParams.payPal(paymentMethodData: $paymentMethodData)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentMethodParamsPayPal &&
+            const DeepCollectionEquality()
+                .equals(other.paymentMethodData, paymentMethodData));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(paymentMethodData));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_PaymentMethodParamsPayPalCopyWith<_$_PaymentMethodParamsPayPal>
+      get copyWith => __$$_PaymentMethodParamsPayPalCopyWithImpl<
+          _$_PaymentMethodParamsPayPal>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
+        card,
+    required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
+            PaymentMethodOptions? options)
+        cardFromToken,
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
+        cardFromMethodId,
+    required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
+    required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
+    required TResult Function(PaymentMethodData paymentMethodData) bancontact,
+    required TResult Function(PaymentMethodData paymentMethodData) giroPay,
+    required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) grabPay,
+    required TResult Function(PaymentMethodData paymentMethodData) p24,
+    required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
+        sepaDebit,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
+    required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
+        afterpayClearpay,
+    required TResult Function(PaymentMethodData paymentMethodData) oxxo,
+    required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
+        usBankAccount,
+  }) {
+    return payPal(paymentMethodData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
+        card,
+    TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
+            PaymentMethodOptions? options)?
+        cardFromToken,
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
+        cardFromMethodId,
+    TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
+    TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
+    TResult Function(PaymentMethodData paymentMethodData)? bancontact,
+    TResult Function(PaymentMethodData paymentMethodData)? giroPay,
+    TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? grabPay,
+    TResult Function(PaymentMethodData paymentMethodData)? p24,
+    TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
+    TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
+        afterpayClearpay,
+    TResult Function(PaymentMethodData paymentMethodData)? oxxo,
+    TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
+  }) {
+    return payPal?.call(paymentMethodData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
+        card,
+    TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
+            PaymentMethodOptions? options)?
+        cardFromToken,
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
+        cardFromMethodId,
+    TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
+    TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
+    TResult Function(PaymentMethodData paymentMethodData)? bancontact,
+    TResult Function(PaymentMethodData paymentMethodData)? giroPay,
+    TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? grabPay,
+    TResult Function(PaymentMethodData paymentMethodData)? p24,
+    TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
+    TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
+        afterpayClearpay,
+    TResult Function(PaymentMethodData paymentMethodData)? oxxo,
+    TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
+    required TResult orElse(),
+  }) {
+    if (payPal != null) {
+      return payPal(paymentMethodData);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentMethodParamsCard value) card,
+    required TResult Function(_PaymentMethodParamsCardWithToken value)
+        cardFromToken,
+    required TResult Function(_PaymentMethodParamsCardWithMethodId value)
+        cardFromMethodId,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
+    required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
+    required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
+    required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsPay value) grabPay,
+    required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
+    required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsSofort value) sofort,
+    required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
+        afterpayClearpay,
+    required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
+  }) {
+    return payPal(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
+    TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
+    TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
+    TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPay value)? grabPay,
+    TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
+    TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsSofort value)? sofort,
+    TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
+        afterpayClearpay,
+    TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+  }) {
+    return payPal?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
+    TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
+    TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
+    TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsPay value)? grabPay,
+    TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
+    TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsSofort value)? sofort,
+    TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
+        afterpayClearpay,
+    TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    required TResult orElse(),
+  }) {
+    if (payPal != null) {
+      return payPal(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentMethodParamsPayPalToJson(this);
+  }
+}
+
+abstract class _PaymentMethodParamsPayPal implements PaymentMethodParams {
+  const factory _PaymentMethodParamsPayPal(
+          {required final PaymentMethodData paymentMethodData}) =
+      _$_PaymentMethodParamsPayPal;
+
+  factory _PaymentMethodParamsPayPal.fromJson(Map<String, dynamic> json) =
+      _$_PaymentMethodParamsPayPal.fromJson;
+
+  /// Paymentmethod data for this paymentmethod.
+  ///
+  /// Make sure to add an email and country (part of the address) in the
+  /// billingdetails which is required for using Klarna.
+  PaymentMethodData get paymentMethodData => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$_PaymentMethodParamsPayPalCopyWith<_$_PaymentMethodParamsPayPal>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -8309,6 +8733,7 @@ class _$_PaymentMethodParamsUsBankAccount
         afterpayClearpay,
     required TResult Function(PaymentMethodData paymentMethodData) oxxo,
     required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)
         usBankAccount,
@@ -8343,6 +8768,7 @@ class _$_PaymentMethodParamsUsBankAccount
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -8377,6 +8803,7 @@ class _$_PaymentMethodParamsUsBankAccount
         afterpayClearpay,
     TResult Function(PaymentMethodData paymentMethodData)? oxxo,
     TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodDataUsBank paymentMethodData,
             PaymentMethodOptions? options)?
         usBankAccount,
@@ -8411,6 +8838,7 @@ class _$_PaymentMethodParamsUsBankAccount
         afterpayClearpay,
     required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
     required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
   }) {
@@ -8439,6 +8867,7 @@ class _$_PaymentMethodParamsUsBankAccount
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
   }) {
     return usBankAccount?.call(this);
@@ -8466,6 +8895,7 @@ class _$_PaymentMethodParamsUsBankAccount
         afterpayClearpay,
     TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
     TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
     required TResult orElse(),
   }) {

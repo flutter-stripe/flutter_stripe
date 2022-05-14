@@ -7,6 +7,7 @@ import 'package:stripe_example/screens/regional_payment_methods/aubecs_debit.dar
 import 'package:stripe_example/screens/regional_payment_methods/fpx_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/ideal_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/klarna_screen.dart';
+import 'package:stripe_example/screens/regional_payment_methods/paypal_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/us_bank_account.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen_plugin.dart';
@@ -226,6 +227,15 @@ class Example extends StatelessWidget {
           width: 48,
         ),
         builder: (contex) => KlarnaScreen(),
+      ),
+      Example(
+        title: 'PayPal',
+        leading: Image.asset(
+          'assets/paypal.png',
+          width: 48,
+        ),
+        builder: (contex) => PayPalScreen(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
       Example(
         title: 'Us bank accounts (ACH)',

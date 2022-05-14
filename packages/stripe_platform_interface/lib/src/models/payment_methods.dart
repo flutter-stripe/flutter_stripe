@@ -469,6 +469,18 @@ class PaymentMethodParams with _$PaymentMethodParams {
   }) = _PaymentMethodParamsKlarna;
 
   @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('PayPal')
+
+  /// Paypal is in private beta make sure to request access at Stripe to try it out.
+  const factory PaymentMethodParams.payPal({
+    /// Paymentmethod data for this paymentmethod.
+    ///
+    /// Make sure to add an email and country (part of the address) in the
+    /// billingdetails which is required for using Klarna.
+    required PaymentMethodData paymentMethodData,
+  }) = _PaymentMethodParamsPayPal;
+
+  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('USBankAccount')
   const factory PaymentMethodParams.usBankAccount({
     /// Paymentmethod data for this paymentmethod.
