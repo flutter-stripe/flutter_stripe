@@ -72,6 +72,10 @@ public class RCTEventEmitter : NSObject {
     func supportedEvents() -> [String]! {
         return []
     }
+    
+    func constantsToExport() -> [AnyHashable : Any] {
+        return [:]
+    }
 }
 
 

@@ -41,7 +41,11 @@ class FpxScreen extends StatelessWidget {
     try {
       await Stripe.instance.confirmPayment(
         clientSecret,
-        PaymentMethodParams.fpx(testOfflineBank: false),
+        PaymentMethodParams.fpx(
+          paymentMethodData: PaymentMethodDataFpx(
+            testOfflineBank: false,
+          ),
+        ),
       );
 
       ScaffoldMessenger.of(context).showSnackBar(

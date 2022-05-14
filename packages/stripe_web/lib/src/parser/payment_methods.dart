@@ -8,7 +8,7 @@ extension PaymentMethodParser on s.PaymentMethod {
     return PaymentMethod(
       id: id,
       livemode: livemode,
-      type: type,
+      paymentMethodType: type,
       card: card.parse(),
       auBecsDebit: const AuBecsDebit(),
       bacsDebit: const BacsDebit(),

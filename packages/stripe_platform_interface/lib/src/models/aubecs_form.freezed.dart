@@ -12,49 +12,11 @@ part of 'aubecs_form.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 AubecsFormStyle _$AubecsFormStyleFromJson(Map<String, dynamic> json) {
   return _AubecsFormStyle.fromJson(json);
 }
-
-/// @nodoc
-class _$AubecsFormStyleTearOff {
-  const _$AubecsFormStyleTearOff();
-
-  _AubecsFormStyle call(
-      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textColor,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textErrorColor,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? placeholderColor,
-      int? fontSize,
-      int? borderWidth,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? backgroundColor,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? borderColor,
-      int? borderRadius}) {
-    return _AubecsFormStyle(
-      textColor: textColor,
-      textErrorColor: textErrorColor,
-      placeholderColor: placeholderColor,
-      fontSize: fontSize,
-      borderWidth: borderWidth,
-      backgroundColor: backgroundColor,
-      borderColor: borderColor,
-      borderRadius: borderRadius,
-    );
-  }
-
-  AubecsFormStyle fromJson(Map<String, Object?> json) {
-    return AubecsFormStyle.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AubecsFormStyle = _$AubecsFormStyleTearOff();
 
 /// @nodoc
 mixin _$AubecsFormStyle {
@@ -165,11 +127,11 @@ class _$AubecsFormStyleCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AubecsFormStyleCopyWith<$Res>
+abstract class _$$_AubecsFormStyleCopyWith<$Res>
     implements $AubecsFormStyleCopyWith<$Res> {
-  factory _$AubecsFormStyleCopyWith(
-          _AubecsFormStyle value, $Res Function(_AubecsFormStyle) then) =
-      __$AubecsFormStyleCopyWithImpl<$Res>;
+  factory _$$_AubecsFormStyleCopyWith(
+          _$_AubecsFormStyle value, $Res Function(_$_AubecsFormStyle) then) =
+      __$$_AubecsFormStyleCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -188,15 +150,15 @@ abstract class _$AubecsFormStyleCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AubecsFormStyleCopyWithImpl<$Res>
+class __$$_AubecsFormStyleCopyWithImpl<$Res>
     extends _$AubecsFormStyleCopyWithImpl<$Res>
-    implements _$AubecsFormStyleCopyWith<$Res> {
-  __$AubecsFormStyleCopyWithImpl(
-      _AubecsFormStyle _value, $Res Function(_AubecsFormStyle) _then)
-      : super(_value, (v) => _then(v as _AubecsFormStyle));
+    implements _$$_AubecsFormStyleCopyWith<$Res> {
+  __$$_AubecsFormStyleCopyWithImpl(
+      _$_AubecsFormStyle _value, $Res Function(_$_AubecsFormStyle) _then)
+      : super(_value, (v) => _then(v as _$_AubecsFormStyle));
 
   @override
-  _AubecsFormStyle get _value => super._value as _AubecsFormStyle;
+  _$_AubecsFormStyle get _value => super._value as _$_AubecsFormStyle;
 
   @override
   $Res call({
@@ -209,7 +171,7 @@ class __$AubecsFormStyleCopyWithImpl<$Res>
     Object? borderColor = freezed,
     Object? borderRadius = freezed,
   }) {
-    return _then(_AubecsFormStyle(
+    return _then(_$_AubecsFormStyle(
       textColor: textColor == freezed
           ? _value.textColor
           : textColor // ignore: cast_nullable_to_non_nullable
@@ -277,14 +239,14 @@ class _$_AubecsFormStyle implements _AubecsFormStyle {
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   final Color? placeholderColor;
-  @override
 
   /// Size of the font in the input form.
-  final int? fontSize;
   @override
+  final int? fontSize;
 
   /// Borderwith of the form
   /// Only available for Android
+  @override
   final int? borderWidth;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -292,10 +254,10 @@ class _$_AubecsFormStyle implements _AubecsFormStyle {
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   final Color? borderColor;
-  @override
 
   /// Borderadius of the form
   /// Only available for Android
+  @override
   final int? borderRadius;
 
   @override
@@ -307,7 +269,7 @@ class _$_AubecsFormStyle implements _AubecsFormStyle {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AubecsFormStyle &&
+            other is _$_AubecsFormStyle &&
             const DeepCollectionEquality().equals(other.textColor, textColor) &&
             const DeepCollectionEquality()
                 .equals(other.textErrorColor, textErrorColor) &&
@@ -324,6 +286,7 @@ class _$_AubecsFormStyle implements _AubecsFormStyle {
                 .equals(other.borderRadius, borderRadius));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -338,8 +301,8 @@ class _$_AubecsFormStyle implements _AubecsFormStyle {
 
   @JsonKey(ignore: true)
   @override
-  _$AubecsFormStyleCopyWith<_AubecsFormStyle> get copyWith =>
-      __$AubecsFormStyleCopyWithImpl<_AubecsFormStyle>(this, _$identity);
+  _$$_AubecsFormStyleCopyWith<_$_AubecsFormStyle> get copyWith =>
+      __$$_AubecsFormStyleCopyWithImpl<_$_AubecsFormStyle>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -350,54 +313,54 @@ class _$_AubecsFormStyle implements _AubecsFormStyle {
 abstract class _AubecsFormStyle implements AubecsFormStyle {
   const factory _AubecsFormStyle(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textColor,
+          final Color? textColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textErrorColor,
+          final Color? textErrorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? placeholderColor,
-      int? fontSize,
-      int? borderWidth,
+          final Color? placeholderColor,
+      final int? fontSize,
+      final int? borderWidth,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? backgroundColor,
+          final Color? backgroundColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? borderColor,
-      int? borderRadius}) = _$_AubecsFormStyle;
+          final Color? borderColor,
+      final int? borderRadius}) = _$_AubecsFormStyle;
 
   factory _AubecsFormStyle.fromJson(Map<String, dynamic> json) =
       _$_AubecsFormStyle.fromJson;
 
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get textColor;
+  Color? get textColor => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get textErrorColor;
+  Color? get textErrorColor => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get placeholderColor;
+  Color? get placeholderColor => throw _privateConstructorUsedError;
   @override
 
   /// Size of the font in the input form.
-  int? get fontSize;
+  int? get fontSize => throw _privateConstructorUsedError;
   @override
 
   /// Borderwith of the form
   /// Only available for Android
-  int? get borderWidth;
+  int? get borderWidth => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get backgroundColor;
+  Color? get backgroundColor => throw _privateConstructorUsedError;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get borderColor;
+  Color? get borderColor => throw _privateConstructorUsedError;
   @override
 
   /// Borderadius of the form
   /// Only available for Android
-  int? get borderRadius;
+  int? get borderRadius => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AubecsFormStyleCopyWith<_AubecsFormStyle> get copyWith =>
+  _$$_AubecsFormStyleCopyWith<_$_AubecsFormStyle> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -405,28 +368,6 @@ AubecsFormInputDetails _$AubecsFormInputDetailsFromJson(
     Map<String, dynamic> json) {
   return _AubecsFormInputDetails.fromJson(json);
 }
-
-/// @nodoc
-class _$AubecsFormInputDetailsTearOff {
-  const _$AubecsFormInputDetailsTearOff();
-
-  _AubecsFormInputDetails call(
-      {String? bsbNumber, String? name, String? accountNumber, String? email}) {
-    return _AubecsFormInputDetails(
-      bsbNumber: bsbNumber,
-      name: name,
-      accountNumber: accountNumber,
-      email: email,
-    );
-  }
-
-  AubecsFormInputDetails fromJson(Map<String, Object?> json) {
-    return AubecsFormInputDetails.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AubecsFormInputDetails = _$AubecsFormInputDetailsTearOff();
 
 /// @nodoc
 mixin _$AubecsFormInputDetails {
@@ -495,26 +436,27 @@ class _$AubecsFormInputDetailsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AubecsFormInputDetailsCopyWith<$Res>
+abstract class _$$_AubecsFormInputDetailsCopyWith<$Res>
     implements $AubecsFormInputDetailsCopyWith<$Res> {
-  factory _$AubecsFormInputDetailsCopyWith(_AubecsFormInputDetails value,
-          $Res Function(_AubecsFormInputDetails) then) =
-      __$AubecsFormInputDetailsCopyWithImpl<$Res>;
+  factory _$$_AubecsFormInputDetailsCopyWith(_$_AubecsFormInputDetails value,
+          $Res Function(_$_AubecsFormInputDetails) then) =
+      __$$_AubecsFormInputDetailsCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? bsbNumber, String? name, String? accountNumber, String? email});
 }
 
 /// @nodoc
-class __$AubecsFormInputDetailsCopyWithImpl<$Res>
+class __$$_AubecsFormInputDetailsCopyWithImpl<$Res>
     extends _$AubecsFormInputDetailsCopyWithImpl<$Res>
-    implements _$AubecsFormInputDetailsCopyWith<$Res> {
-  __$AubecsFormInputDetailsCopyWithImpl(_AubecsFormInputDetails _value,
-      $Res Function(_AubecsFormInputDetails) _then)
-      : super(_value, (v) => _then(v as _AubecsFormInputDetails));
+    implements _$$_AubecsFormInputDetailsCopyWith<$Res> {
+  __$$_AubecsFormInputDetailsCopyWithImpl(_$_AubecsFormInputDetails _value,
+      $Res Function(_$_AubecsFormInputDetails) _then)
+      : super(_value, (v) => _then(v as _$_AubecsFormInputDetails));
 
   @override
-  _AubecsFormInputDetails get _value => super._value as _AubecsFormInputDetails;
+  _$_AubecsFormInputDetails get _value =>
+      super._value as _$_AubecsFormInputDetails;
 
   @override
   $Res call({
@@ -523,7 +465,7 @@ class __$AubecsFormInputDetailsCopyWithImpl<$Res>
     Object? accountNumber = freezed,
     Object? email = freezed,
   }) {
-    return _then(_AubecsFormInputDetails(
+    return _then(_$_AubecsFormInputDetails(
       bsbNumber: bsbNumber == freezed
           ? _value.bsbNumber
           : bsbNumber // ignore: cast_nullable_to_non_nullable
@@ -554,21 +496,20 @@ class _$_AubecsFormInputDetails implements _AubecsFormInputDetails {
   factory _$_AubecsFormInputDetails.fromJson(Map<String, dynamic> json) =>
       _$$_AubecsFormInputDetailsFromJson(json);
 
-  @override
-
   /// Six digit identifier to identify the branch of an financial institution.
-  final String? bsbNumber;
   @override
+  final String? bsbNumber;
 
   /// The name of the accountholder.
-  final String? name;
   @override
+  final String? name;
 
   /// The account number.
-  final String? accountNumber;
   @override
+  final String? accountNumber;
 
   /// Email of the accountholder.
+  @override
   final String? email;
 
   @override
@@ -580,7 +521,7 @@ class _$_AubecsFormInputDetails implements _AubecsFormInputDetails {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AubecsFormInputDetails &&
+            other is _$_AubecsFormInputDetails &&
             const DeepCollectionEquality().equals(other.bsbNumber, bsbNumber) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
@@ -588,6 +529,7 @@ class _$_AubecsFormInputDetails implements _AubecsFormInputDetails {
             const DeepCollectionEquality().equals(other.email, email));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -598,8 +540,8 @@ class _$_AubecsFormInputDetails implements _AubecsFormInputDetails {
 
   @JsonKey(ignore: true)
   @override
-  _$AubecsFormInputDetailsCopyWith<_AubecsFormInputDetails> get copyWith =>
-      __$AubecsFormInputDetailsCopyWithImpl<_AubecsFormInputDetails>(
+  _$$_AubecsFormInputDetailsCopyWith<_$_AubecsFormInputDetails> get copyWith =>
+      __$$_AubecsFormInputDetailsCopyWithImpl<_$_AubecsFormInputDetails>(
           this, _$identity);
 
   @override
@@ -610,10 +552,10 @@ class _$_AubecsFormInputDetails implements _AubecsFormInputDetails {
 
 abstract class _AubecsFormInputDetails implements AubecsFormInputDetails {
   const factory _AubecsFormInputDetails(
-      {String? bsbNumber,
-      String? name,
-      String? accountNumber,
-      String? email}) = _$_AubecsFormInputDetails;
+      {final String? bsbNumber,
+      final String? name,
+      final String? accountNumber,
+      final String? email}) = _$_AubecsFormInputDetails;
 
   factory _AubecsFormInputDetails.fromJson(Map<String, dynamic> json) =
       _$_AubecsFormInputDetails.fromJson;
@@ -621,21 +563,21 @@ abstract class _AubecsFormInputDetails implements AubecsFormInputDetails {
   @override
 
   /// Six digit identifier to identify the branch of an financial institution.
-  String? get bsbNumber;
+  String? get bsbNumber => throw _privateConstructorUsedError;
   @override
 
   /// The name of the accountholder.
-  String? get name;
+  String? get name => throw _privateConstructorUsedError;
   @override
 
   /// The account number.
-  String? get accountNumber;
+  String? get accountNumber => throw _privateConstructorUsedError;
   @override
 
   /// Email of the accountholder.
-  String? get email;
+  String? get email => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AubecsFormInputDetailsCopyWith<_AubecsFormInputDetails> get copyWith =>
+  _$$_AubecsFormInputDetailsCopyWith<_$_AubecsFormInputDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }

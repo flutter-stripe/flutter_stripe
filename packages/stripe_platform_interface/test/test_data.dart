@@ -8,7 +8,7 @@ extension PaymentMethodTestInstance on PaymentMethod {
   static PaymentMethod create(String id) => PaymentMethod(
         id: id,
         livemode: false,
-        type: 'paymentType',
+        paymentMethodType: 'paymentType',
         billingDetails: const BillingDetails(),
         card: const Card(),
         sepaDebit: const SepaDebit(),
@@ -27,7 +27,7 @@ extension PaymentMethodTestInstance on PaymentMethod {
   Map<String, dynamic> jsonMap() => {
         'id': id,
         'livemode': livemode,
-        'type': type,
+        'paymentMethodType': paymentMethodType,
         'billingDetails': {
           'email': billingDetails.email,
           'address': billingDetails.address,

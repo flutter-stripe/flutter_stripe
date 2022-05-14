@@ -26,7 +26,7 @@ class StripeAubecsDebitPlatformView(
 
         aubecsView = aubecsFormViewManager.createViewInstance(
             ThemedReactContext(
-                context,
+                sdkAccessor().reactContext,
                 channel,
                 sdkAccessor
             )

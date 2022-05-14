@@ -12,7 +12,7 @@ part of 'checkout.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CheckoutResponse _$CheckoutResponseFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
@@ -30,36 +30,6 @@ CheckoutResponse _$CheckoutResponseFromJson(Map<String, dynamic> json) {
           'Invalid union type "${json['runtimeType']}"!');
   }
 }
-
-/// @nodoc
-class _$CheckoutResponseTearOff {
-  const _$CheckoutResponseTearOff();
-
-  _Redirect redirected() {
-    return const _Redirect();
-  }
-
-  _Success success() {
-    return const _Success();
-  }
-
-  _Canceled canceled() {
-    return const _Canceled();
-  }
-
-  _Error error({required Object error}) {
-    return _Error(
-      error: error,
-    );
-  }
-
-  CheckoutResponse fromJson(Map<String, Object?> json) {
-    return CheckoutResponse.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CheckoutResponse = _$CheckoutResponseTearOff();
 
 /// @nodoc
 mixin _$CheckoutResponse {
@@ -134,25 +104,28 @@ class _$CheckoutResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$RedirectCopyWith<$Res> {
-  factory _$RedirectCopyWith(_Redirect value, $Res Function(_Redirect) then) =
-      __$RedirectCopyWithImpl<$Res>;
+abstract class _$$_RedirectCopyWith<$Res> {
+  factory _$$_RedirectCopyWith(
+          _$_Redirect value, $Res Function(_$_Redirect) then) =
+      __$$_RedirectCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$RedirectCopyWithImpl<$Res> extends _$CheckoutResponseCopyWithImpl<$Res>
-    implements _$RedirectCopyWith<$Res> {
-  __$RedirectCopyWithImpl(_Redirect _value, $Res Function(_Redirect) _then)
-      : super(_value, (v) => _then(v as _Redirect));
+class __$$_RedirectCopyWithImpl<$Res>
+    extends _$CheckoutResponseCopyWithImpl<$Res>
+    implements _$$_RedirectCopyWith<$Res> {
+  __$$_RedirectCopyWithImpl(
+      _$_Redirect _value, $Res Function(_$_Redirect) _then)
+      : super(_value, (v) => _then(v as _$_Redirect));
 
   @override
-  _Redirect get _value => super._value as _Redirect;
+  _$_Redirect get _value => super._value as _$_Redirect;
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$_Redirect implements _Redirect {
-  const _$_Redirect({String? $type}) : $type = $type ?? 'redirected';
+  const _$_Redirect({final String? $type}) : $type = $type ?? 'redirected';
 
   factory _$_Redirect.fromJson(Map<String, dynamic> json) =>
       _$$_RedirectFromJson(json);
@@ -168,9 +141,10 @@ class _$_Redirect implements _Redirect {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Redirect);
+        (other.runtimeType == runtimeType && other is _$_Redirect);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -261,25 +235,27 @@ abstract class _Redirect implements CheckoutResponse {
 }
 
 /// @nodoc
-abstract class _$SuccessCopyWith<$Res> {
-  factory _$SuccessCopyWith(_Success value, $Res Function(_Success) then) =
-      __$SuccessCopyWithImpl<$Res>;
+abstract class _$$_SuccessCopyWith<$Res> {
+  factory _$$_SuccessCopyWith(
+          _$_Success value, $Res Function(_$_Success) then) =
+      __$$_SuccessCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$SuccessCopyWithImpl<$Res> extends _$CheckoutResponseCopyWithImpl<$Res>
-    implements _$SuccessCopyWith<$Res> {
-  __$SuccessCopyWithImpl(_Success _value, $Res Function(_Success) _then)
-      : super(_value, (v) => _then(v as _Success));
+class __$$_SuccessCopyWithImpl<$Res>
+    extends _$CheckoutResponseCopyWithImpl<$Res>
+    implements _$$_SuccessCopyWith<$Res> {
+  __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
+      : super(_value, (v) => _then(v as _$_Success));
 
   @override
-  _Success get _value => super._value as _Success;
+  _$_Success get _value => super._value as _$_Success;
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$_Success implements _Success {
-  const _$_Success({String? $type}) : $type = $type ?? 'success';
+  const _$_Success({final String? $type}) : $type = $type ?? 'success';
 
   factory _$_Success.fromJson(Map<String, dynamic> json) =>
       _$$_SuccessFromJson(json);
@@ -295,9 +271,10 @@ class _$_Success implements _Success {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Success);
+        (other.runtimeType == runtimeType && other is _$_Success);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -388,25 +365,28 @@ abstract class _Success implements CheckoutResponse {
 }
 
 /// @nodoc
-abstract class _$CanceledCopyWith<$Res> {
-  factory _$CanceledCopyWith(_Canceled value, $Res Function(_Canceled) then) =
-      __$CanceledCopyWithImpl<$Res>;
+abstract class _$$_CanceledCopyWith<$Res> {
+  factory _$$_CanceledCopyWith(
+          _$_Canceled value, $Res Function(_$_Canceled) then) =
+      __$$_CanceledCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$CanceledCopyWithImpl<$Res> extends _$CheckoutResponseCopyWithImpl<$Res>
-    implements _$CanceledCopyWith<$Res> {
-  __$CanceledCopyWithImpl(_Canceled _value, $Res Function(_Canceled) _then)
-      : super(_value, (v) => _then(v as _Canceled));
+class __$$_CanceledCopyWithImpl<$Res>
+    extends _$CheckoutResponseCopyWithImpl<$Res>
+    implements _$$_CanceledCopyWith<$Res> {
+  __$$_CanceledCopyWithImpl(
+      _$_Canceled _value, $Res Function(_$_Canceled) _then)
+      : super(_value, (v) => _then(v as _$_Canceled));
 
   @override
-  _Canceled get _value => super._value as _Canceled;
+  _$_Canceled get _value => super._value as _$_Canceled;
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$_Canceled implements _Canceled {
-  const _$_Canceled({String? $type}) : $type = $type ?? 'canceled';
+  const _$_Canceled({final String? $type}) : $type = $type ?? 'canceled';
 
   factory _$_Canceled.fromJson(Map<String, dynamic> json) =>
       _$$_CanceledFromJson(json);
@@ -422,9 +402,10 @@ class _$_Canceled implements _Canceled {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Canceled);
+        (other.runtimeType == runtimeType && other is _$_Canceled);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -515,26 +496,26 @@ abstract class _Canceled implements CheckoutResponse {
 }
 
 /// @nodoc
-abstract class _$ErrorCopyWith<$Res> {
-  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) then) =
-      __$ErrorCopyWithImpl<$Res>;
+abstract class _$$_ErrorCopyWith<$Res> {
+  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
+      __$$_ErrorCopyWithImpl<$Res>;
   $Res call({Object error});
 }
 
 /// @nodoc
-class __$ErrorCopyWithImpl<$Res> extends _$CheckoutResponseCopyWithImpl<$Res>
-    implements _$ErrorCopyWith<$Res> {
-  __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
-      : super(_value, (v) => _then(v as _Error));
+class __$$_ErrorCopyWithImpl<$Res> extends _$CheckoutResponseCopyWithImpl<$Res>
+    implements _$$_ErrorCopyWith<$Res> {
+  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+      : super(_value, (v) => _then(v as _$_Error));
 
   @override
-  _Error get _value => super._value as _Error;
+  _$_Error get _value => super._value as _$_Error;
 
   @override
   $Res call({
     Object? error = freezed,
   }) {
-    return _then(_Error(
+    return _then(_$_Error(
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -546,7 +527,7 @@ class __$ErrorCopyWithImpl<$Res> extends _$CheckoutResponseCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Error implements _Error {
-  const _$_Error({required this.error, String? $type})
+  const _$_Error({required this.error, final String? $type})
       : $type = $type ?? 'error';
 
   factory _$_Error.fromJson(Map<String, dynamic> json) =>
@@ -567,18 +548,19 @@ class _$_Error implements _Error {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Error &&
+            other is _$_Error &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
-  _$ErrorCopyWith<_Error> get copyWith =>
-      __$ErrorCopyWithImpl<_Error>(this, _$identity);
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -661,11 +643,12 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements CheckoutResponse {
-  const factory _Error({required Object error}) = _$_Error;
+  const factory _Error({required final Object error}) = _$_Error;
 
   factory _Error.fromJson(Map<String, dynamic> json) = _$_Error.fromJson;
 
-  Object get error;
+  Object get error => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$ErrorCopyWith<_Error> get copyWith => throw _privateConstructorUsedError;
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      throw _privateConstructorUsedError;
 }

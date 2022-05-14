@@ -8,6 +8,7 @@ import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
 import com.google.android.material.internal.ThemeEnforcement
 import com.reactnativestripesdk.*
+import com.reactnativestripesdk.pushprovisioning.AddToWalletButtonManager
 import io.flutter.embedding.android.FlutterFragmentActivity
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
@@ -61,7 +62,10 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 .registerViewFactory("flutter.stripe/google_pay_button", StripeSdkGooglePayButtonPlatformViewFactory(flutterPluginBinding, payButtonViewManager) { stripeSdk })
         flutterPluginBinding
             .platformViewRegistry
-            .registerViewFactory("flutter.stripe/aubecs_form_field",StripeAubecsDebitPlatformViewFactory(flutterPluginBinding, aubecsDebitManager){stripeSdk})
+            .registerViewFactory("flutter.stripe/aubecs_form_field", StripeAubecsDebitPlatformViewFactory(flutterPluginBinding, aubecsDebitManager){stripeSdk})
+        flutterPluginBinding
+            .platformViewRegistry
+            .registerViewFactory("flutter.stripe/add_to_wallet", StripeAddToWalletPlatformViewFactory(flutterPluginBinding, AddToWalletButtonManager(flutterPluginBinding.applicationContext)){stripeSdk})
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
@@ -129,7 +133,7 @@ If you continue to have trouble, follow this discussion to get some support http
             "dangerouslyUpdateCardDetails" -> {
                 stripeSdkCardViewManager.setCardDetails(
                     value = call.requiredArgument("params"),
-                    reactContext = ThemedReactContext(stripeSdk.currentActivity, channel) { stripeSdk }
+                    reactContext = ThemedReactContext(stripeSdk.reactContext, channel) { stripeSdk }
                 )
                 result.success(null)
             }
@@ -158,6 +162,10 @@ If you continue to have trouble, follow this discussion to get some support http
             "verifyMicrodeposits" -> stripeSdk.verifyMicrodeposits(
                 isPaymentIntent = call.requiredArgument("isPaymentIntent"),
                 clientSecret = call.requiredArgument("clientSecret"),
+                params = call.requiredArgument("params"),
+                promise = Promise(result)
+            )
+            "isCardInWallet" -> stripeSdk.isCardInWallet(
                 params = call.requiredArgument("params"),
                 promise = Promise(result)
             )

@@ -91,45 +91,46 @@ class WebStripe extends StripePlatform {
     Map<String, String> options = const {},
   ]) async {
     final response = await params.maybeWhen<Future<s.PaymentIntentResponse>>(
-      card: (usage, billing) {
+      card: (usage, options) {
         return js.confirmCardPayment(
           paymentIntentClientSecret,
           data: s.ConfirmCardPaymentData(
             payment_method: s.CardPaymentMethod(card: element),
-            setup_future_usage:
-                (usage ?? PaymentIntentsFutureUsage.OnSession).toJs(),
-            save_payment_method: usage != null,
+            setup_future_usage: (options?.setupFutureUsage ??
+                    PaymentIntentsFutureUsage.OnSession)
+                .toJs(),
+            save_payment_method: options != null,
             // shipping: billing?.toJs()
             // TODO: Implement return_url for web
             // return_url: '',
           ),
         );
       },
-      cardFromMethodId: (String paymentMethodId, String? cvc) {
+      cardFromMethodId: (paymentMethodData, _) {
         // https://stripe.com/docs/js/payment_intents/confirm_card_payment#stripe_confirm_card_payment-existing
         return js.confirmCardPayment(
           paymentIntentClientSecret,
           data: s.ConfirmCardPaymentData(
-            payment_method: paymentMethodId,
+            payment_method: paymentMethodData.paymentMethodId,
           ),
         );
       },
       cardFromToken:
-          (String token, PaymentIntentsFutureUsage? setupFutureUsage) {
+          (PaymentMethodDataCardFromToken data, PaymentMethodOptions? options) {
         // https: //stripe.com/docs/js/payment_intents/confirm_card_payment#stripe_confirm_card_payment-token
         return js.confirmCardPayment(
           paymentIntentClientSecret,
           data: s.ConfirmCardPaymentData(
             payment_method: s.CardPaymentMethod(
-              card: s.CardTokenPaymentMethod(token: token),
+              card: s.CardTokenPaymentMethod(token: data.token),
             ),
-            setup_future_usage:
-                (setupFutureUsage ?? PaymentIntentsFutureUsage.OnSession)
-                    .toJs(),
+            setup_future_usage: (options?.setupFutureUsage ??
+                    PaymentIntentsFutureUsage.OnSession)
+                .toJs(),
           ),
         );
       },
-      alipay: () {
+      alipay: (_) {
         // https://stripe.com/docs/js/payment_intents/confirm_alipay_payment#stripe_confirm_alipay_payment-options
         return js.confirmAlipayPayment(
           paymentIntentClientSecret,
@@ -141,14 +142,14 @@ class WebStripe extends StripePlatform {
           ),
         );
       },
-      ideal: (billingDetails, bankName) {
-        if (bankName == null) throw 'bankName is required for web';
+      ideal: (paymentData) {
+        if (paymentData.bankName == null) throw 'bankName is required for web';
         // https://stripe.com/docs/js/payment_intents/confirm_alipay_payment#stripe_confirm_alipay_payment-options
         return js.confirmIdealPayment(
           paymentIntentClientSecret,
           data: s.ConfirmCardPaymentData(
             payment_method: s.PaymentMethodDetails(
-              ideal: s.IdealDetails(bank: bankName),
+              ideal: s.IdealDetails(bank: paymentData.bankName!),
             ),
             return_url: window.location.href,
             // recommended
@@ -333,9 +334,10 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<void> updateApplePaySummaryItems(
-      {required List<ApplePayCartSummaryItem> summaryItems,
-      List<ApplePayErrorAddressField>? errorAddressFields}) {
+  Future<void> updateApplePaySummaryItems({
+    required List<ApplePayCartSummaryItem> summaryItems,
+    List<ApplePayErrorAddressField>? errorAddressFields,
+  }) {
     throw WebUnsupportedError.method('updateApplePaySummaryItems');
   }
 }

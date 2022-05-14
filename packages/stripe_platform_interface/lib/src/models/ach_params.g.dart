@@ -11,7 +11,8 @@ _$_CollectBankAccountParams _$$_CollectBankAccountParamsFromJson(
     _$_CollectBankAccountParams(
       billingDetails: BillingDetails.fromJson(
           json['billingDetails'] as Map<String, dynamic>),
-      type: $enumDecodeNullable(_$PaymentMethodTypeEnumMap, json['type']) ??
+      paymentMethodType: $enumDecodeNullable(
+              _$PaymentMethodTypeEnumMap, json['paymentMethodType']) ??
           PaymentMethodType.USBankAccount,
     );
 
@@ -19,7 +20,8 @@ Map<String, dynamic> _$$_CollectBankAccountParamsToJson(
         _$_CollectBankAccountParams instance) =>
     <String, dynamic>{
       'billingDetails': instance.billingDetails.toJson(),
-      'type': _$PaymentMethodTypeEnumMap[instance.type],
+      'paymentMethodType':
+          _$PaymentMethodTypeEnumMap[instance.paymentMethodType],
     };
 
 const _$PaymentMethodTypeEnumMap = {

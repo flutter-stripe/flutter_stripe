@@ -94,9 +94,11 @@ class _UsBankAccountScreenState extends State<UsBankAccountScreen> {
         final intent = await Stripe.instance.confirmPayment(
           paymentIntentResult['clientSecret'],
           PaymentMethodParams.usBankAccount(
+            paymentMethodData: PaymentMethodDataUsBank(
             routingNumber: _routingNumberController.text,
             accountNumber: _accountController.text,
             billingDetails: billingDetails,
+            )
           ),
         );
 

@@ -40,12 +40,28 @@ _$_CardFormStyleConstructor _$$_CardFormStyleConstructorFromJson(
         Map<String, dynamic> json) =>
     _$_CardFormStyleConstructor(
       backgroundColor: ColorKey.fromJson(json['backgroundColor']),
+      borderWidth: (json['borderWidth'] as num?)?.toDouble(),
+      borderColor: ColorKey.fromJson(json['borderColor']),
+      borderRadius: (json['borderRadius'] as num?)?.toDouble(),
+      cursorColor: ColorKey.fromJson(json['cursorColor']),
+      textColor: ColorKey.fromJson(json['textColor']),
+      fontSize: (json['fontSize'] as num?)?.toDouble(),
+      textErrorColor: ColorKey.fromJson(json['textErrorColor']),
+      placeholderColor: ColorKey.fromJson(json['placeholderColor']),
     );
 
 Map<String, dynamic> _$$_CardFormStyleConstructorToJson(
         _$_CardFormStyleConstructor instance) =>
     <String, dynamic>{
       'backgroundColor': ColorKey.toJson(instance.backgroundColor),
+      'borderWidth': instance.borderWidth,
+      'borderColor': ColorKey.toJson(instance.borderColor),
+      'borderRadius': instance.borderRadius,
+      'cursorColor': ColorKey.toJson(instance.cursorColor),
+      'textColor': ColorKey.toJson(instance.textColor),
+      'fontSize': instance.fontSize,
+      'textErrorColor': ColorKey.toJson(instance.textErrorColor),
+      'placeholderColor': ColorKey.toJson(instance.placeholderColor),
     };
 
 _$_CardPlaceholderConstructor _$$_CardPlaceholderConstructorFromJson(

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:stripe_example/.env.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
+import '../../config.dart';
 import 'platforms/stripe_checkout.dart'
     if (dart.library.js) 'platforms/stripe_checkout_web.dart';
 import 'package:flutter/foundation.dart';
@@ -10,9 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:stripe_checkout/stripe_checkout.dart';
 import 'package:http/http.dart' as http;
 
-final kApiUrl = defaultTargetPlatform == TargetPlatform.android
-    ? 'http://10.0.2.2:4242'
-    : 'http://localhost:4242';
 
 class CheckoutScreenExample extends StatefulWidget {
   CheckoutScreenExample({

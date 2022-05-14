@@ -42,7 +42,10 @@ class IdealScreen extends StatelessWidget {
     try {
       await Stripe.instance.confirmPayment(
         clientSecret,
-        PaymentMethodParams.ideal(bankName: kIsWeb ? 'revolut' : null),
+        PaymentMethodParams.ideal(
+          paymentMethodData:
+              PaymentMethodDataIdeal(bankName: kIsWeb ? 'revolut' : null),
+        ),
       );
 
       ScaffoldMessenger.of(context).showSnackBar(

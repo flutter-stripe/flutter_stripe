@@ -94,6 +94,8 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
             return verifyMicrodeposits(call, result: result)
         case "collectBankAccount":
             return collectBankAccount(call, result: result)
+        case "isCardInWallet":
+            return isCardInWallet(call, result: result)
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -245,6 +247,19 @@ extension  StripePlugin {
         collectBankAccount(
             isPaymentIntent: isPaymentIntent,
             clientSecret: clientSecret,
+            params: params,
+            resolver: resolver(for: result),
+            rejecter: rejecter(for: result)
+        )
+    }
+    
+    func isCardInWallet(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? FlutterMap,
+        let params = arguments["params"] as? NSDictionary else {
+            result(FlutterError.invalidParams)
+            return
+        }
+        isCardInWallet(
             params: params,
             resolver: resolver(for: result),
             rejecter: rejecter(for: result)

@@ -41,7 +41,9 @@ class AliPayScreen extends StatelessWidget {
     try {
       await Stripe.instance.confirmPayment(
         clientSecret,
-        PaymentMethodParams.alipay(),
+        PaymentMethodParams.alipay(
+          paymentMethodData:  const PaymentMethodData(),
+        ),
       );
 
       ScaffoldMessenger.of(context).showSnackBar(

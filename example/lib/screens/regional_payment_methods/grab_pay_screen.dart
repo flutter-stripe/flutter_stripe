@@ -55,7 +55,11 @@ class GrabPayScreen extends StatelessWidget {
     try {
       await Stripe.instance.confirmPayment(
         clientSecret,
-        PaymentMethodParams.grabPay(billingDetails: billingDetails),
+        PaymentMethodParams.grabPay(
+          paymentMethodData: PaymentMethodData(
+            billingDetails: billingDetails,
+          ),
+        ),
       );
 
       ScaffoldMessenger.of(context).showSnackBar(

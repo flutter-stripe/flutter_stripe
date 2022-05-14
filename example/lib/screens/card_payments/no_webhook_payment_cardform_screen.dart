@@ -3,12 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
+import 'package:stripe_example/config.dart';
 import 'package:stripe_example/utils.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 import 'package:stripe_example/widgets/response_card.dart';
-
-import 'package:stripe_example/config.dart';
 
 class NoWebhookPaymentCardFormScreen extends StatefulWidget {
   @override
@@ -43,6 +42,10 @@ class _NoWebhookPaymentCardFormScreenState
       children: [
         CardFormField(
           controller: controller,
+          style: CardFormStyle(
+            textColor: Colors.black,
+            fontSize: 24,
+          ),
         ),
         LoadingButton(
           onPressed:
@@ -100,7 +103,9 @@ class _NoWebhookPaymentCardFormScreenState
       // 2. Create payment method
       final paymentMethod =
           await Stripe.instance.createPaymentMethod(PaymentMethodParams.card(
-        billingDetails: billingDetails,
+        paymentMethodData: PaymentMethodData(
+          billingDetails: billingDetails,
+        ),
       ));
 
       // 3. call API to create PaymentIntent

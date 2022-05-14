@@ -13,6 +13,7 @@ import com.facebook.react.bridge.*
 import com.facebook.react.module.annotations.ReactModule
 import com.stripe.android.*
 import com.stripe.android.core.AppInfo
+import com.stripe.android.core.ApiVersion
 import com.stripe.android.googlepaylauncher.GooglePayLauncher
 import com.stripe.android.googlepaylauncher.GooglePayPaymentMethodLauncher
 import com.stripe.android.model.*
@@ -24,7 +25,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @ReactModule(name = StripeSdkModule.NAME)
-class StripeSdkModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+class StripeSdkModule(internal val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
   var cardFieldView: CardFieldView? = null
   var cardFormView: CardFormView? = null
 
@@ -189,6 +190,14 @@ class StripeSdkModule(private val reactContext: ReactApplicationContext) : React
     }
   }
 
+  override fun getConstants(): MutableMap<String, Any> =
+    hashMapOf(
+      "API_VERSIONS" to hashMapOf(
+        "CORE" to ApiVersion.API_VERSION_CODE,
+        "ISSUING" to PushProvisioningProxy.getApiVersion(),
+      )
+    )
+
   @ReactMethod
   fun initialise(params: ReadableMap, promise: Promise) {
     val publishableKey = getValOr(params, "publishableKey", null) as String
@@ -216,9 +225,13 @@ class StripeSdkModule(private val reactContext: ReactApplicationContext) : React
 
     paymentLauncherFragment = PaymentLauncherFragment(stripe, publishableKey, stripeAccountId)
     getCurrentActivityOrResolveWithError(promise)?.let {
-      it.supportFragmentManager.beginTransaction()
-        .add(paymentLauncherFragment, "payment_launcher_fragment")
-        .commit()
+      try {
+        it.supportFragmentManager.beginTransaction()
+          .add(paymentLauncherFragment, "payment_launcher_fragment")
+          .commit()
+      } catch (error: IllegalStateException) {
+        promise.resolve(createError(ErrorType.Failed.toString(), error.message))
+      }
 
       val localBroadcastManager = LocalBroadcastManager.getInstance(reactApplicationContext)
       localBroadcastManager.registerReceiver(mPaymentSheetReceiver, IntentFilter(ON_PAYMENT_RESULT_ACTION))
@@ -243,9 +256,13 @@ class StripeSdkModule(private val reactContext: ReactApplicationContext) : React
         val bundle = toBundleObject(params)
         it.arguments = bundle
       }
-      activity.supportFragmentManager.beginTransaction()
-        .add(paymentSheetFragment!!, "payment_sheet_launch_fragment")
-        .commit()
+      try {
+        activity.supportFragmentManager.beginTransaction()
+          .add(paymentSheetFragment!!, "payment_sheet_launch_fragment")
+          .commit()
+      } catch (error: IllegalStateException) {
+        promise.resolve(createError(ErrorType.Failed.toString(), error.message))
+      }
     }
   }
 
@@ -306,8 +323,8 @@ class StripeSdkModule(private val reactContext: ReactApplicationContext) : React
       return
     }
     val cardAddress = cardFieldView?.cardAddress ?: cardFormView?.cardAddress
-
-    val billingDetailsParams = mapToBillingDetails(getMapOrNull(data, "billingDetails"), cardAddress)
+    val paymentMethodData = getMapOrNull(data, "paymentMethodData")
+    val billingDetailsParams = mapToBillingDetails(getMapOrNull(paymentMethodData, "billingDetails"), cardAddress)
 
     val paymentMethodCreateParams = PaymentMethodCreateParams.create(cardParams, billingDetailsParams)
     stripe.createPaymentMethod(
@@ -452,7 +469,8 @@ class StripeSdkModule(private val reactContext: ReactApplicationContext) : React
 
   @ReactMethod
   fun confirmPayment(paymentIntentClientSecret: String, params: ReadableMap, options: ReadableMap, promise: Promise) {
-    val paymentMethodType = getValOr(params, "type")?.let { mapToPaymentMethodType(it) } ?: run {
+    val paymentMethodData = getMapOrNull(params, "paymentMethodData")
+    val paymentMethodType = getValOr(params, "paymentMethodType")?.let { mapToPaymentMethodType(it) } ?: run {
       promise.resolve(createError(ConfirmPaymentErrorType.Failed.toString(), "You must provide paymentMethodType"))
       return
     }
@@ -476,14 +494,14 @@ class StripeSdkModule(private val reactContext: ReactApplicationContext) : React
 //      return
 //    }
 
-    val factory = PaymentMethodCreateParamsFactory(paymentIntentClientSecret, params, cardFieldView, cardFormView)
+    val factory = PaymentMethodCreateParamsFactory(paymentIntentClientSecret, paymentMethodData, options, cardFieldView, cardFormView)
 
     try {
       val confirmParams = factory.createConfirmParams(paymentMethodType)
       urlScheme?.let {
         confirmParams.returnUrl = mapToReturnURL(urlScheme)
       }
-      confirmParams.shipping = mapToShippingDetails(getMapOrNull(params, "shippingDetails"))
+      confirmParams.shipping = mapToShippingDetails(getMapOrNull(paymentMethodData, "shippingDetails"))
       paymentLauncherFragment.confirm(
         confirmParams,
         paymentIntentClientSecret,
@@ -520,12 +538,12 @@ class StripeSdkModule(private val reactContext: ReactApplicationContext) : React
 
   @ReactMethod
   fun confirmSetupIntent(setupIntentClientSecret: String, params: ReadableMap, options: ReadableMap, promise: Promise) {
-    val paymentMethodType = getValOr(params, "type")?.let { mapToPaymentMethodType(it) } ?: run {
+    val paymentMethodType = getValOr(params, "paymentMethodType")?.let { mapToPaymentMethodType(it) } ?: run {
       promise.resolve(createError(ConfirmPaymentErrorType.Failed.toString(), "You must provide paymentMethodType"))
       return
     }
 
-    val factory = PaymentMethodCreateParamsFactory(setupIntentClientSecret, params, cardFieldView, cardFormView)
+    val factory = PaymentMethodCreateParamsFactory(setupIntentClientSecret, getMapOrNull(params, "paymentMethodData"), options, cardFieldView, cardFormView)
 
     try {
       val confirmParams = factory.createSetupParams(paymentMethodType)
@@ -552,9 +570,13 @@ class StripeSdkModule(private val reactContext: ReactApplicationContext) : React
     )
 
     getCurrentActivityOrResolveWithError(promise)?.let {
-      it.supportFragmentManager.beginTransaction()
-        .add(fragment, "google_pay_support_fragment")
-        .commit()
+      try {
+        it.supportFragmentManager.beginTransaction()
+          .add(fragment, "google_pay_support_fragment")
+          .commit()
+      } catch (error: IllegalStateException) {
+        promise.resolve(createError(ErrorType.Failed.toString(), error.message))
+      }
     }
   }
 
@@ -568,9 +590,13 @@ class StripeSdkModule(private val reactContext: ReactApplicationContext) : React
     getCurrentActivityOrResolveWithError(promise)?.let {
       initGooglePayPromise = promise
 
-      it.supportFragmentManager.beginTransaction()
-        .add(googlePayFragment!!, "google_pay_launch_fragment")
-        .commit()
+      try {
+        it.supportFragmentManager.beginTransaction()
+          .add(googlePayFragment!!, "google_pay_launch_fragment")
+          .commit()
+      } catch (error: IllegalStateException) {
+        promise.resolve(createError(ErrorType.Failed.toString(), error.message))
+      }
     }
   }
 
@@ -607,14 +633,26 @@ class StripeSdkModule(private val reactContext: ReactApplicationContext) : React
   }
 
   @ReactMethod
+  fun isCardInWallet(params: ReadableMap, promise: Promise) {
+    val last4 = getValOr(params, "cardLastFour", null) ?: run {
+      promise.resolve(createError("Failed", "You must provide cardLastFour"))
+      return
+    }
+    getCurrentActivityOrResolveWithError(promise)?.let {
+      PushProvisioningProxy.isCardInWallet(it, last4, promise)
+    }
+  }
+
+  @ReactMethod
   fun collectBankAccount(isPaymentIntent: Boolean, clientSecret: String, params: ReadableMap, promise: Promise) {
-    val paymentMethodType = mapToPaymentMethodType(getValOr(params, "type", null))
+    val paymentMethodData = getMapOrNull(params, "paymentMethodData")
+    val paymentMethodType = mapToPaymentMethodType(getValOr(params, "paymentMethodType", null))
     if (paymentMethodType != PaymentMethod.Type.USBankAccount) {
       promise.resolve(createError(ErrorType.Failed.toString(), "collectBankAccount currently only accepts the USBankAccount payment method type."))
       return
     }
 
-    val billingDetails = getMapOrNull(params, "billingDetails")
+    val billingDetails = getMapOrNull(paymentMethodData, "billingDetails")
 
     val name = billingDetails?.getString("name")
     if (name.isNullOrEmpty()) {
@@ -636,9 +674,13 @@ class StripeSdkModule(private val reactContext: ReactApplicationContext) : React
       promise
     )
     getCurrentActivityOrResolveWithError(promise)?.let {
-      it.supportFragmentManager.beginTransaction()
-        .add(fragment, "collect_bank_account_launcher_fragment")
-        .commit()
+      try {
+        it.supportFragmentManager.beginTransaction()
+          .add(fragment, "collect_bank_account_launcher_fragment")
+          .commit()
+      } catch (error: IllegalStateException) {
+        promise.resolve(createError(ErrorType.Failed.toString(), error.message))
+      }
     }
   }
 

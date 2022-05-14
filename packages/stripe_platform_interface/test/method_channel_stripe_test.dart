@@ -52,8 +52,9 @@ void main() {
               },
             ).methodChannel,
           );
-          result =
-              await sut.createPaymentMethod(const PaymentMethodParams.card());
+          result = await sut.createPaymentMethod(const PaymentMethodParams.card(
+            paymentMethodData: PaymentMethodData(),
+          ));
         });
 
         test('It returns payment method', () {
@@ -76,8 +77,10 @@ void main() {
 
         test('It returns payment method', () async {
           expect(
-              () async => await sut
-                  .createPaymentMethod(const PaymentMethodParams.card()),
+              () async =>
+                  await sut.createPaymentMethod(const PaymentMethodParams.card(
+                    paymentMethodData: PaymentMethodData(),
+                  )),
               throwsA(isInstanceOf<StripeException>()));
         });
       });
@@ -151,7 +154,10 @@ void main() {
             ).methodChannel,
           );
           result = await sut.confirmPayment(
-              'secret', const PaymentMethodParams.card());
+              'secret',
+              const PaymentMethodParams.card(
+                paymentMethodData: PaymentMethodData(),
+              ));
         });
 
         test('It returns payment intent', () {
@@ -176,7 +182,9 @@ void main() {
           expectLater(
             () async => await sut.confirmPayment(
               'secret',
-              const PaymentMethodParams.card(),
+              const PaymentMethodParams.card(
+                paymentMethodData: PaymentMethodData(),
+              ),
             ),
             throwsA(const TypeMatcher<StripeException>()),
           );
@@ -202,7 +210,9 @@ void main() {
         );
         result = await sut.confirmSetupIntent(
           'setupIntentClientSecret',
-          const PaymentMethodParams.card(),
+          const PaymentMethodParams.card(
+            paymentMethodData: PaymentMethodData(),
+          ),
         );
       });
 
