@@ -1,3 +1,9 @@
+## 1.0.0
+
+ - a
+
+ - **FEAT**: update checkout (#582).
+
 ## 0.1.3
 - Updated freezed dependency to allow 2.x
 
