@@ -74,6 +74,7 @@ class CheckoutPage extends StatefulWidget {
         super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _CheckoutPageState createState() => _CheckoutPageState();
 
   /// The ID of the Checkout Session that is used in

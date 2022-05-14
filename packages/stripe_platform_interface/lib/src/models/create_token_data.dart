@@ -126,7 +126,6 @@ class TokenData with _$TokenData {
 class CardData with _$CardData {
   @JsonSerializable(explicitToJson: true)
   const factory CardData({
-
     /// Unique identifier
     String? id,
 

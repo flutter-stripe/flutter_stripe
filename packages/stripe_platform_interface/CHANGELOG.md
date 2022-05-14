@@ -1,3 +1,34 @@
+## 3.0.0
+** Breaking changes **
+- Support for Flutter 3 and support Dart sdk 2.16 and higher. 
+- Only supports application running on Freezed v2.0.0 and higher
+- Changed parameter structure for `createPaymentMethod`, `confirmPayment`, `confirmSetupIntent` in line with latest changes of the Stripe SDK. For example
+```dart
+ Stripe.instance.confirmPayment(
+        clientSecret,
+        PaymentMethodParams.ideal(
+        	bankName:   'revolut',
+        ),
+      );
+```
+
+Becomes
+
+```dart
+ Stripe.instance.confirmPayment(
+        clientSecret,
+        PaymentMethodParams.ideal(
+          paymentMethodData:
+              PaymentMethodDataIdeal( 'revolut'),
+        ),
+      );
+```
+- Change styling parameter structure for Cardformfield in order to support more styling options.
+
+Other changes
+- Support for paypal (accessible in private beta on Stripe)
+- Several fixes by the Stripe sdk [v.0.8.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.8.0) and [v.0.9.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.9.0)
+
 ## 2.5.0+1
 - support freezed 2.0
 
