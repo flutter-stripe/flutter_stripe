@@ -84,6 +84,36 @@ class CardFormStyle with _$CardFormStyle {
         ///
         /// Make sure that there is enough contrast with the text color.
         Color? backgroundColor,
+
+    /// Width for the border.
+    double? borderWidth,
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+
+        /// Border color of the cardfield.
+        Color? borderColor,
+
+    /// Borderradius that can give the Cardfield rounded corners.
+    double? borderRadius,
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+
+        /// Cursor color when the card has focus.
+        Color? cursorColor,
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+
+        /// Color of the typed text on the Card fuekd.
+        Color? textColor,
+
+    /// Font size.
+    double? fontSize,
+
+
+    /// Color of the input in case incorrect data is entered.
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+        Color? textErrorColor,
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+
+        /// Color of the placeholder text.
+        Color? placeholderColor,
   }) = _CardFormStyleConstructor;
 
   factory CardFormStyle.fromJson(Map<String, dynamic> json) =>
