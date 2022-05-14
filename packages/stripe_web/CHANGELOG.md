@@ -1,3 +1,29 @@
+## 1.0.0
+** Breaking changes **
+- Support Flutter 3.0.0
+- Only supports application running on Freezed v2.0.0 and higher
+- Changed parameter structure for `createPaymentMethod`, `confirmPayment`, `confirmSetupIntent` in line with latest changes of the Stripe SDK. For example
+```dart
+ Stripe.instance.confirmPayment(
+        clientSecret,
+        PaymentMethodParams.ideal(
+        	bankName:   'revolut',
+        ),
+      );
+```
+
+Becomes
+
+```dart
+ Stripe.instance.confirmPayment(
+        clientSecret,
+        PaymentMethodParams.ideal(
+          paymentMethodData:
+              PaymentMethodDataIdeal( 'revolut'),
+        ),
+      );
+```
+
 ## 0.1.4
 - Keep stripe web in sync with platform interface `2.5.0`.
 
