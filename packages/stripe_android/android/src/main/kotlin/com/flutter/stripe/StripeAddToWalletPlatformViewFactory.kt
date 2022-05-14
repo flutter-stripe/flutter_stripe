@@ -16,9 +16,13 @@ class StripeAddToWalletPlatformViewFactory(
     private val sdkAccessor: () -> StripeSdkModule
 ) : PlatformViewFactory(StandardMessageCodec.INSTANCE) {
 
-    override fun create(context: Context, viewId: Int, args: Any?): PlatformView {
+    override fun create(context: Context?, viewId: Int, args: Any?): PlatformView {
         val channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter.stripe/add_to_wallet/${viewId}")
         val creationParams = args as? Map<String?, Any?>?
+        if(context == null){
+            throw AssertionError("Context is not allowed to be null when launching add to wallet view.")
+        }
+
         return StripeAddToWalletPlatformView(context, channel, viewId, creationParams, viewManager, sdkAccessor)
     }
 }
