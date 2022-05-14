@@ -18,7 +18,8 @@ class CollectBankAccountParams with _$CollectBankAccountParams {
 
     /// The paymentmethod type. At this point only method [PaymentMethodType.USBankAccount]
     /// is supported.
-    @Default(PaymentMethodType.USBankAccount) PaymentMethodType paymentMethodType,
+    @Default(PaymentMethodType.USBankAccount)
+        PaymentMethodType paymentMethodType,
   }) = _CollectBankAccountParams;
 
   factory CollectBankAccountParams.fromJson(Map<String, dynamic> json) =>
@@ -26,7 +27,6 @@ class CollectBankAccountParams with _$CollectBankAccountParams {
 }
 
 /// The type of payment intent used for collecting bank accoutn
-
 
 @freezed
 

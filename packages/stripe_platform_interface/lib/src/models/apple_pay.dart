@@ -109,7 +109,6 @@ class ApplePayPresentParams with _$ApplePayPresentParams {
       _$ApplePayPresentParamsFromJson(json);
 }
 
-
 @freezed
 class ApplePayErrorAddressField with _$ApplePayErrorAddressField {
   @JsonSerializable(explicitToJson: true)

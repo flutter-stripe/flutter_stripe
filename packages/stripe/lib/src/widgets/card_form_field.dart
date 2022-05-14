@@ -236,7 +236,7 @@ class _MethodChannelCardFormFieldState
   FocusNode get _effectiveNode => widget.focusNode ?? _focusNode;
 
   CardFormStyle? _lastStyle;
-  
+
   CardFormStyle resolveStyle(CardFormStyle? style) {
     return CardFormStyle(
       backgroundColor: Colors.transparent,

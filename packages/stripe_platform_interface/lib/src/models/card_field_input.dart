@@ -106,7 +106,6 @@ class CardFormStyle with _$CardFormStyle {
     /// Font size.
     double? fontSize,
 
-
     /// Color of the input in case incorrect data is entered.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
         Color? textErrorColor,
