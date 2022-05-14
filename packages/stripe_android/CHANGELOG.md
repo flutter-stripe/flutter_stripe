@@ -1,3 +1,7 @@
+## 3.0.0
+
+ - a
+
 ## 2.5.0
 - BREAKING CHANGE: Mostly fixes and changes to types, but some method's now accept slightly different parameters:
   - Removed setUrlSchemeOnAndroid in favor of setReturnUrlSchemeOnAndroid. setReturnUrlSchemeOnAndroid functions exactly the same, this is just a rename.
