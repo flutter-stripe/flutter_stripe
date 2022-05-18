@@ -135,7 +135,7 @@ The library offers several methods to handle stripe related actions:
 
 ```dart
 Future<PaymentMethod> createPaymentMethod(...);
-Future<PaymentIntent> handleCardAction(...);
+Future<PaymentIntent> handleNextAction(...);
 Future<PaymentIntent> confirmPayment(...);
 Future<void> configure3dSecure(...);
 Future<bool> isApplePaySupported();

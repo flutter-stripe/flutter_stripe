@@ -126,10 +126,10 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<PaymentIntent> handleCardAction(
+  Future<PaymentIntent> handleNextAction(
       String paymentIntentClientSecret) async {
     final result = await _methodChannel
-        .invokeMapMethod<String, dynamic>('handleCardAction', {
+        .invokeMapMethod<String, dynamic>('handleNextAction', {
       'paymentIntentClientSecret': paymentIntentClientSecret,
     });
 

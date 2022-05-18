@@ -175,9 +175,9 @@ class _CustomCardPaymentScreenState extends State<CustomCardPaymentScreen> {
 
       if (paymentIntentResult['clientSecret'] != null &&
           paymentIntentResult['requiresAction'] == true) {
-        // 4. if payment requires action calling handleCardAction
+        // 4. if payment requires action calling handleNextAction
         final paymentIntent = await Stripe.instance
-            .handleCardAction(paymentIntentResult['clientSecret']);
+            .handleNextAction(paymentIntentResult['clientSecret']);
 
         if (paymentIntent.status == PaymentIntentsStatus.RequiresConfirmation) {
           // 5. Call API to confirm intent
