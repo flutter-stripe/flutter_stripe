@@ -1,3 +1,6 @@
+## 3.0.2
+- fix internal dependency version to stripe_platform_interface
+
 ## 3.0.1
 ** Breaking change **
 - handleCardAction is now called handleNextAction
