@@ -196,7 +196,7 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<PaymentIntent> handleCardAction(
+  Future<PaymentIntent> handleNextAction(
     String paymentIntentClientSecret,
   ) async {
     final s.PaymentIntentResponse response =

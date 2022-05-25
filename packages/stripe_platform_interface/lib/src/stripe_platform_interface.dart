@@ -39,7 +39,7 @@ abstract class StripePlatform extends PlatformInterface {
     Map<String, String> options = const {},
   ]);
 
-  Future<PaymentIntent> handleCardAction(String paymentIntentClientSecret);
+  Future<PaymentIntent> handleNextAction(String paymentIntentClientSecret);
   Future<PaymentIntent> confirmPayment(
       String paymentIntentClientSecret, PaymentMethodParams params,
       [Map<String, String> options = const {}]);

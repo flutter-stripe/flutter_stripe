@@ -242,7 +242,7 @@ void main() {
       });
     });
 
-    group('handleCardAction', () {
+    group('handleNextAction', () {
       late PaymentIntent result;
 
       group('When handling card action is successfull', () {
@@ -252,14 +252,14 @@ void main() {
             platformIsAndroid: false,
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
-              method: 'handleCardAction',
+              method: 'handleNextAction',
               result: {
                 "paymentIntent":
                     PaymentIntentTestInstance.create('id1').toJsonMap()
               },
             ).methodChannel,
           );
-          result = await sut.handleCardAction('paymentIntentId');
+          result = await sut.handleNextAction('paymentIntentId');
         });
 
         test('It returns payment intent', () {
@@ -274,7 +274,7 @@ void main() {
             platformIsAndroid: false,
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
-              method: 'handleCardAction',
+              method: 'handleNextAction',
               result: createErrorResponse('whoops'),
             ).methodChannel,
           );
@@ -282,7 +282,7 @@ void main() {
 
         test('It returns error', () async {
           expect(
-            () async => await sut.handleCardAction('paymentIntentId'),
+            () async => await sut.handleNextAction('paymentIntentId'),
             throwsA(const TypeMatcher<StripeException>()),
           );
         });
