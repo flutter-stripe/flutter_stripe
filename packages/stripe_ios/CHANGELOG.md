@@ -1,3 +1,7 @@
+## 3.0.1
+** Breaking change **
+- handleCardAction is now called handleNextAction
+
 ## 3.0.0
 ** Breaking changes **
 - Support for Flutter 3 and support Dart sdk 2.16 and higher. 
@@ -39,7 +43,7 @@ Other changes
 - Feat: Add support for ACHv2
 - Feat: Add support for setting a card's currency when creating a Token
 - Feat: Added support for placeholderColor, textErrorColor , borderColor, borderRadius, and borderWidth for AuBECSDebitForm on iOS
-- Several fixes by the Stripe sdk [v0.7.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.4.0)
+- Several fixes by the Stripe sdk [v0.7.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.7.0)
 - Updated freezed dependency to allow 2.x
 
 ## 2.4.0

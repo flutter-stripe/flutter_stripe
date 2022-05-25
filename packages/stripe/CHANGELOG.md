@@ -1,3 +1,7 @@
+## 3.0.1
+** Breaking change **
+- handleCardAction is now called handleNextAction
+
 ## 3.0.0
 ** Breaking changes **
 - Support for Flutter 3 and support Dart sdk 2.16 and higher. 
