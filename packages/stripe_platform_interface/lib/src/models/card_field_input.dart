@@ -122,6 +122,14 @@ class CardFormStyle with _$CardFormStyle {
 
   CardFormStyle apply(CardFormStyle? style) => copyWith(
         backgroundColor: style?.backgroundColor ?? backgroundColor,
+        borderWidth: style?.borderWidth ?? borderWidth,
+        borderColor: style?.borderColor ?? borderColor,
+        borderRadius: style?.borderRadius ?? borderRadius,
+        cursorColor: style?.cursorColor ?? cursorColor,
+        textColor: style?.textColor ?? textColor,
+        fontSize: style?.fontSize ?? fontSize,
+        textErrorColor: style?.textErrorColor ?? textErrorColor,
+        placeholderColor: style?.placeholderColor ?? placeholderColor,
       );
 }
 
