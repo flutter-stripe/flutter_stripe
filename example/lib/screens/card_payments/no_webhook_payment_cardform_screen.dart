@@ -43,8 +43,10 @@ class _NoWebhookPaymentCardFormScreenState
         CardFormField(
           controller: controller,
           style: CardFormStyle(
+            borderColor: Colors.blueGrey,
             textColor: Colors.black,
             fontSize: 24,
+            placeholderColor: Colors.blue,
           ),
         ),
         LoadingButton(

@@ -32,7 +32,10 @@ class CardFormField extends StatefulWidget {
   /// Callback that will be executed when the card information changes.
   final CardChangedCallback? onCardChanged;
 
-  /// Background color of the card form
+  /// Styling parameters of the card form field
+  ///
+  /// Note that currently styling only works on Android. For iOS you can only set
+  /// the background color.
   final CardFormStyle? style;
 
   /// Whether or not to show the postalcode field in the form.
