@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Parcelable
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import com.facebook.react.bridge.*
 import com.facebook.react.module.annotations.ReactModule
 import com.stripe.android.*
@@ -625,8 +626,8 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
    * Safely get and cast the current activity as an AppCompatActivity. If that fails, the promise
    * provided will be resolved with an error message instructing the user to retry the method.
    */
-  private fun getCurrentActivityOrResolveWithError(promise: Promise?): AppCompatActivity? {
-    (currentActivity as? AppCompatActivity)?.let {
+  private fun getCurrentActivityOrResolveWithError(promise: Promise?): FragmentActivity? {
+    (currentActivity as? FragmentActivity)?.let {
       return it
     }
     promise?.resolve(createMissingActivityError())
