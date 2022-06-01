@@ -53,7 +53,7 @@ SPEC CHECKSUMS:
   StripeCore: a94d2823817c97c79fce60884ab9027a2da798c1
   StripeFinancialConnections: 269658b79f639c2d6b7d513235d469418b04c2dd
   StripeUICore: a8e24a6c91a5c99075c7a490d45695fb912876e8
-  webview_flutter_wkwebview: 005fbd90c888a42c5690919a1527ecc6649e1162
+  webview_flutter_wkwebview: b7e70ef1ddded7e69c796c7390ee74180182971f
 
 PODFILE CHECKSUM: 4e8f8b2be68aeea4c0d5beb6ff1e79fface1d048
 

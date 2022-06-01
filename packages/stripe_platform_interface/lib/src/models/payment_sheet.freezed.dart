@@ -64,6 +64,8 @@ mixin _$SetupPaymentSheetParameters {
   bool? get applePay => throw _privateConstructorUsedError;
 
   /// Style options for colors in PaymentSheet
+  ///
+  /// Parts can be overridden by [appearance].
   @JsonKey(toJson: UserInterfaceStyleKey.toJson)
   ThemeMode? get style => throw _privateConstructorUsedError;
 
@@ -77,11 +79,10 @@ mixin _$SetupPaymentSheetParameters {
   /// Defaul value is false.
   bool get allowsDelayedPaymentMethods => throw _privateConstructorUsedError;
 
-  /// Button color of the checkoutButton
+  /// Appearance of the paymentsheet.
   ///
-  /// Make sure that there is enough contrast with the rest of the paymentsheet.
-  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get primaryButtonColor => throw _privateConstructorUsedError;
+  /// When no appearance defined it will fallback to [style] or Stripe default.
+  PaymentSheetAppearance? get appearance => throw _privateConstructorUsedError;
 
   /// Flag for using the test environment
   bool get testEnv => throw _privateConstructorUsedError;
@@ -120,17 +121,15 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
       String? merchantCountryCode,
       String? currencyCode,
       bool? applePay,
-      @JsonKey(toJson: UserInterfaceStyleKey.toJson)
-          ThemeMode? style,
+      @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style,
       bool? googlePay,
       bool allowsDelayedPaymentMethods,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? primaryButtonColor,
+      PaymentSheetAppearance? appearance,
       bool testEnv,
-      @JsonKey(name: 'defaultBillingDetails')
-          BillingDetails? billingDetails,
+      @JsonKey(name: 'defaultBillingDetails') BillingDetails? billingDetails,
       String? returnURL});
 
+  $PaymentSheetAppearanceCopyWith<$Res>? get appearance;
   $BillingDetailsCopyWith<$Res>? get billingDetails;
 }
 
@@ -157,7 +156,7 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res>
     Object? style = freezed,
     Object? googlePay = freezed,
     Object? allowsDelayedPaymentMethods = freezed,
-    Object? primaryButtonColor = freezed,
+    Object? appearance = freezed,
     Object? testEnv = freezed,
     Object? billingDetails = freezed,
     Object? returnURL = freezed,
@@ -211,10 +210,10 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res>
           ? _value.allowsDelayedPaymentMethods
           : allowsDelayedPaymentMethods // ignore: cast_nullable_to_non_nullable
               as bool,
-      primaryButtonColor: primaryButtonColor == freezed
-          ? _value.primaryButtonColor
-          : primaryButtonColor // ignore: cast_nullable_to_non_nullable
-              as Color?,
+      appearance: appearance == freezed
+          ? _value.appearance
+          : appearance // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetAppearance?,
       testEnv: testEnv == freezed
           ? _value.testEnv
           : testEnv // ignore: cast_nullable_to_non_nullable
@@ -228,6 +227,17 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res>
           : returnURL // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
+  }
+
+  @override
+  $PaymentSheetAppearanceCopyWith<$Res>? get appearance {
+    if (_value.appearance == null) {
+      return null;
+    }
+
+    return $PaymentSheetAppearanceCopyWith<$Res>(_value.appearance!, (value) {
+      return _then(_value.copyWith(appearance: value));
+    });
   }
 
   @override
@@ -259,17 +269,16 @@ abstract class _$$_SetupParametersCopyWith<$Res>
       String? merchantCountryCode,
       String? currencyCode,
       bool? applePay,
-      @JsonKey(toJson: UserInterfaceStyleKey.toJson)
-          ThemeMode? style,
+      @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style,
       bool? googlePay,
       bool allowsDelayedPaymentMethods,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? primaryButtonColor,
+      PaymentSheetAppearance? appearance,
       bool testEnv,
-      @JsonKey(name: 'defaultBillingDetails')
-          BillingDetails? billingDetails,
+      @JsonKey(name: 'defaultBillingDetails') BillingDetails? billingDetails,
       String? returnURL});
 
+  @override
+  $PaymentSheetAppearanceCopyWith<$Res>? get appearance;
   @override
   $BillingDetailsCopyWith<$Res>? get billingDetails;
 }
@@ -299,7 +308,7 @@ class __$$_SetupParametersCopyWithImpl<$Res>
     Object? style = freezed,
     Object? googlePay = freezed,
     Object? allowsDelayedPaymentMethods = freezed,
-    Object? primaryButtonColor = freezed,
+    Object? appearance = freezed,
     Object? testEnv = freezed,
     Object? billingDetails = freezed,
     Object? returnURL = freezed,
@@ -353,10 +362,10 @@ class __$$_SetupParametersCopyWithImpl<$Res>
           ? _value.allowsDelayedPaymentMethods
           : allowsDelayedPaymentMethods // ignore: cast_nullable_to_non_nullable
               as bool,
-      primaryButtonColor: primaryButtonColor == freezed
-          ? _value.primaryButtonColor
-          : primaryButtonColor // ignore: cast_nullable_to_non_nullable
-              as Color?,
+      appearance: appearance == freezed
+          ? _value.appearance
+          : appearance // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetAppearance?,
       testEnv: testEnv == freezed
           ? _value.testEnv
           : testEnv // ignore: cast_nullable_to_non_nullable
@@ -374,7 +383,8 @@ class __$$_SetupParametersCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_SetupParameters implements _SetupParameters {
   const _$_SetupParameters(
       {this.customFlow = false,
@@ -386,15 +396,12 @@ class _$_SetupParameters implements _SetupParameters {
       this.merchantCountryCode,
       this.currencyCode,
       this.applePay,
-      @JsonKey(toJson: UserInterfaceStyleKey.toJson)
-          this.style,
+      @JsonKey(toJson: UserInterfaceStyleKey.toJson) this.style,
       this.googlePay,
       this.allowsDelayedPaymentMethods = false,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.primaryButtonColor,
+      this.appearance,
       this.testEnv = false,
-      @JsonKey(name: 'defaultBillingDetails')
-          this.billingDetails,
+      @JsonKey(name: 'defaultBillingDetails') this.billingDetails,
       this.returnURL});
 
   factory _$_SetupParameters.fromJson(Map<String, dynamic> json) =>
@@ -453,6 +460,8 @@ class _$_SetupParameters implements _SetupParameters {
   final bool? applePay;
 
   /// Style options for colors in PaymentSheet
+  ///
+  /// Parts can be overridden by [appearance].
   @override
   @JsonKey(toJson: UserInterfaceStyleKey.toJson)
   final ThemeMode? style;
@@ -470,12 +479,11 @@ class _$_SetupParameters implements _SetupParameters {
   @JsonKey()
   final bool allowsDelayedPaymentMethods;
 
-  /// Button color of the checkoutButton
+  /// Appearance of the paymentsheet.
   ///
-  /// Make sure that there is enough contrast with the rest of the paymentsheet.
+  /// When no appearance defined it will fallback to [style] or Stripe default.
   @override
-  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  final Color? primaryButtonColor;
+  final PaymentSheetAppearance? appearance;
 
   /// Flag for using the test environment
   @override
@@ -498,7 +506,7 @@ class _$_SetupParameters implements _SetupParameters {
 
   @override
   String toString() {
-    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, merchantDisplayName: $merchantDisplayName, merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, primaryButtonColor: $primaryButtonColor, testEnv: $testEnv, billingDetails: $billingDetails, returnURL: $returnURL)';
+    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, merchantDisplayName: $merchantDisplayName, merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, testEnv: $testEnv, billingDetails: $billingDetails, returnURL: $returnURL)';
   }
 
   @override
@@ -529,7 +537,7 @@ class _$_SetupParameters implements _SetupParameters {
                 other.allowsDelayedPaymentMethods,
                 allowsDelayedPaymentMethods) &&
             const DeepCollectionEquality()
-                .equals(other.primaryButtonColor, primaryButtonColor) &&
+                .equals(other.appearance, appearance) &&
             const DeepCollectionEquality().equals(other.testEnv, testEnv) &&
             const DeepCollectionEquality()
                 .equals(other.billingDetails, billingDetails) &&
@@ -552,7 +560,7 @@ class _$_SetupParameters implements _SetupParameters {
       const DeepCollectionEquality().hash(style),
       const DeepCollectionEquality().hash(googlePay),
       const DeepCollectionEquality().hash(allowsDelayedPaymentMethods),
-      const DeepCollectionEquality().hash(primaryButtonColor),
+      const DeepCollectionEquality().hash(appearance),
       const DeepCollectionEquality().hash(testEnv),
       const DeepCollectionEquality().hash(billingDetails),
       const DeepCollectionEquality().hash(returnURL));
@@ -583,8 +591,7 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
           final ThemeMode? style,
       final bool? googlePay,
       final bool allowsDelayedPaymentMethods,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? primaryButtonColor,
+      final PaymentSheetAppearance? appearance,
       final bool testEnv,
       @JsonKey(name: 'defaultBillingDetails')
           final BillingDetails? billingDetails,
@@ -647,6 +654,8 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   @override
 
   /// Style options for colors in PaymentSheet
+  ///
+  /// Parts can be overridden by [appearance].
   @JsonKey(toJson: UserInterfaceStyleKey.toJson)
   ThemeMode? get style => throw _privateConstructorUsedError;
   @override
@@ -663,11 +672,10 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   bool get allowsDelayedPaymentMethods => throw _privateConstructorUsedError;
   @override
 
-  /// Button color of the checkoutButton
+  /// Appearance of the paymentsheet.
   ///
-  /// Make sure that there is enough contrast with the rest of the paymentsheet.
-  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get primaryButtonColor => throw _privateConstructorUsedError;
+  /// When no appearance defined it will fallback to [style] or Stripe default.
+  PaymentSheetAppearance? get appearance => throw _privateConstructorUsedError;
   @override
 
   /// Flag for using the test environment
@@ -690,6 +698,1320 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   @JsonKey(ignore: true)
   _$$_SetupParametersCopyWith<_$_SetupParameters> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+PaymentSheetAppearance _$PaymentSheetAppearanceFromJson(
+    Map<String, dynamic> json) {
+  return _PaymentSheetAppearance.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentSheetAppearance {
+  /// Color parameters
+  PaymentSheetAppearanceColors? get colors =>
+      throw _privateConstructorUsedError;
+
+  /// Shapes parameters
+  PaymentSheetShape? get shapes => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentSheetAppearanceCopyWith<PaymentSheetAppearance> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentSheetAppearanceCopyWith<$Res> {
+  factory $PaymentSheetAppearanceCopyWith(PaymentSheetAppearance value,
+          $Res Function(PaymentSheetAppearance) then) =
+      _$PaymentSheetAppearanceCopyWithImpl<$Res>;
+  $Res call({PaymentSheetAppearanceColors? colors, PaymentSheetShape? shapes});
+
+  $PaymentSheetAppearanceColorsCopyWith<$Res>? get colors;
+  $PaymentSheetShapeCopyWith<$Res>? get shapes;
+}
+
+/// @nodoc
+class _$PaymentSheetAppearanceCopyWithImpl<$Res>
+    implements $PaymentSheetAppearanceCopyWith<$Res> {
+  _$PaymentSheetAppearanceCopyWithImpl(this._value, this._then);
+
+  final PaymentSheetAppearance _value;
+  // ignore: unused_field
+  final $Res Function(PaymentSheetAppearance) _then;
+
+  @override
+  $Res call({
+    Object? colors = freezed,
+    Object? shapes = freezed,
+  }) {
+    return _then(_value.copyWith(
+      colors: colors == freezed
+          ? _value.colors
+          : colors // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetAppearanceColors?,
+      shapes: shapes == freezed
+          ? _value.shapes
+          : shapes // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetShape?,
+    ));
+  }
+
+  @override
+  $PaymentSheetAppearanceColorsCopyWith<$Res>? get colors {
+    if (_value.colors == null) {
+      return null;
+    }
+
+    return $PaymentSheetAppearanceColorsCopyWith<$Res>(_value.colors!, (value) {
+      return _then(_value.copyWith(colors: value));
+    });
+  }
+
+  @override
+  $PaymentSheetShapeCopyWith<$Res>? get shapes {
+    if (_value.shapes == null) {
+      return null;
+    }
+
+    return $PaymentSheetShapeCopyWith<$Res>(_value.shapes!, (value) {
+      return _then(_value.copyWith(shapes: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_PaymentSheetAppearanceCopyWith<$Res>
+    implements $PaymentSheetAppearanceCopyWith<$Res> {
+  factory _$$_PaymentSheetAppearanceCopyWith(_$_PaymentSheetAppearance value,
+          $Res Function(_$_PaymentSheetAppearance) then) =
+      __$$_PaymentSheetAppearanceCopyWithImpl<$Res>;
+  @override
+  $Res call({PaymentSheetAppearanceColors? colors, PaymentSheetShape? shapes});
+
+  @override
+  $PaymentSheetAppearanceColorsCopyWith<$Res>? get colors;
+  @override
+  $PaymentSheetShapeCopyWith<$Res>? get shapes;
+}
+
+/// @nodoc
+class __$$_PaymentSheetAppearanceCopyWithImpl<$Res>
+    extends _$PaymentSheetAppearanceCopyWithImpl<$Res>
+    implements _$$_PaymentSheetAppearanceCopyWith<$Res> {
+  __$$_PaymentSheetAppearanceCopyWithImpl(_$_PaymentSheetAppearance _value,
+      $Res Function(_$_PaymentSheetAppearance) _then)
+      : super(_value, (v) => _then(v as _$_PaymentSheetAppearance));
+
+  @override
+  _$_PaymentSheetAppearance get _value =>
+      super._value as _$_PaymentSheetAppearance;
+
+  @override
+  $Res call({
+    Object? colors = freezed,
+    Object? shapes = freezed,
+  }) {
+    return _then(_$_PaymentSheetAppearance(
+      colors: colors == freezed
+          ? _value.colors
+          : colors // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetAppearanceColors?,
+      shapes: shapes == freezed
+          ? _value.shapes
+          : shapes // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetShape?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_PaymentSheetAppearance implements _PaymentSheetAppearance {
+  const _$_PaymentSheetAppearance({this.colors, this.shapes});
+
+  factory _$_PaymentSheetAppearance.fromJson(Map<String, dynamic> json) =>
+      _$$_PaymentSheetAppearanceFromJson(json);
+
+  /// Color parameters
+  @override
+  final PaymentSheetAppearanceColors? colors;
+
+  /// Shapes parameters
+  @override
+  final PaymentSheetShape? shapes;
+
+  @override
+  String toString() {
+    return 'PaymentSheetAppearance(colors: $colors, shapes: $shapes)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentSheetAppearance &&
+            const DeepCollectionEquality().equals(other.colors, colors) &&
+            const DeepCollectionEquality().equals(other.shapes, shapes));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(colors),
+      const DeepCollectionEquality().hash(shapes));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_PaymentSheetAppearanceCopyWith<_$_PaymentSheetAppearance> get copyWith =>
+      __$$_PaymentSheetAppearanceCopyWithImpl<_$_PaymentSheetAppearance>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentSheetAppearanceToJson(this);
+  }
+}
+
+abstract class _PaymentSheetAppearance implements PaymentSheetAppearance {
+  const factory _PaymentSheetAppearance(
+      {final PaymentSheetAppearanceColors? colors,
+      final PaymentSheetShape? shapes}) = _$_PaymentSheetAppearance;
+
+  factory _PaymentSheetAppearance.fromJson(Map<String, dynamic> json) =
+      _$_PaymentSheetAppearance.fromJson;
+
+  @override
+
+  /// Color parameters
+  PaymentSheetAppearanceColors? get colors =>
+      throw _privateConstructorUsedError;
+  @override
+
+  /// Shapes parameters
+  PaymentSheetShape? get shapes => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PaymentSheetAppearanceCopyWith<_$_PaymentSheetAppearance> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+PaymentSheetAppearanceColors _$PaymentSheetAppearanceColorsFromJson(
+    Map<String, dynamic> json) {
+  return _PaymentSheetAppearanceColors.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentSheetAppearanceColors {
+  ///  Color of the button that represents the primary action on the payment sheet.
+  ///
+  /// Make sure there is enough contrast with [background].
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get primary => throw _privateConstructorUsedError;
+
+  /// Background color of the payment sheet.
+  ///
+  /// Make sure there is enough contrast with [primary].
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get background => throw _privateConstructorUsedError;
+
+  /// Background color of the payment sheet components.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get componentBackground => throw _privateConstructorUsedError;
+
+  ///  Border color of the payment sheet components.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get componentBorder => throw _privateConstructorUsedError;
+
+  ///  Divider color of the payment sheet components.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get componentDivider => throw _privateConstructorUsedError;
+
+  /// Color of the entered text in the payment components.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get componentText => throw _privateConstructorUsedError;
+
+  /// Primary text color.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get primaryText => throw _privateConstructorUsedError;
+
+  /// Secondary text color.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get secondaryText => throw _privateConstructorUsedError;
+
+  /// Place holder text color.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get placeholderText => throw _privateConstructorUsedError;
+
+  /// Color of the displayed icons
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get icon => throw _privateConstructorUsedError;
+
+  /// Color of the warning and error messages.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get error => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentSheetAppearanceColorsCopyWith<PaymentSheetAppearanceColors>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentSheetAppearanceColorsCopyWith<$Res> {
+  factory $PaymentSheetAppearanceColorsCopyWith(
+          PaymentSheetAppearanceColors value,
+          $Res Function(PaymentSheetAppearanceColors) then) =
+      _$PaymentSheetAppearanceColorsCopyWithImpl<$Res>;
+  $Res call(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? primary,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? background,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? componentBackground,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? componentBorder,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? componentDivider,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? componentText,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? primaryText,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? secondaryText,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? placeholderText,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? icon,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? error});
+}
+
+/// @nodoc
+class _$PaymentSheetAppearanceColorsCopyWithImpl<$Res>
+    implements $PaymentSheetAppearanceColorsCopyWith<$Res> {
+  _$PaymentSheetAppearanceColorsCopyWithImpl(this._value, this._then);
+
+  final PaymentSheetAppearanceColors _value;
+  // ignore: unused_field
+  final $Res Function(PaymentSheetAppearanceColors) _then;
+
+  @override
+  $Res call({
+    Object? primary = freezed,
+    Object? background = freezed,
+    Object? componentBackground = freezed,
+    Object? componentBorder = freezed,
+    Object? componentDivider = freezed,
+    Object? componentText = freezed,
+    Object? primaryText = freezed,
+    Object? secondaryText = freezed,
+    Object? placeholderText = freezed,
+    Object? icon = freezed,
+    Object? error = freezed,
+  }) {
+    return _then(_value.copyWith(
+      primary: primary == freezed
+          ? _value.primary
+          : primary // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      background: background == freezed
+          ? _value.background
+          : background // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      componentBackground: componentBackground == freezed
+          ? _value.componentBackground
+          : componentBackground // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      componentBorder: componentBorder == freezed
+          ? _value.componentBorder
+          : componentBorder // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      componentDivider: componentDivider == freezed
+          ? _value.componentDivider
+          : componentDivider // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      componentText: componentText == freezed
+          ? _value.componentText
+          : componentText // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      primaryText: primaryText == freezed
+          ? _value.primaryText
+          : primaryText // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      secondaryText: secondaryText == freezed
+          ? _value.secondaryText
+          : secondaryText // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      placeholderText: placeholderText == freezed
+          ? _value.placeholderText
+          : placeholderText // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      icon: icon == freezed
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      error: error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as Color?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_PaymentSheetAppearanceColorsCopyWith<$Res>
+    implements $PaymentSheetAppearanceColorsCopyWith<$Res> {
+  factory _$$_PaymentSheetAppearanceColorsCopyWith(
+          _$_PaymentSheetAppearanceColors value,
+          $Res Function(_$_PaymentSheetAppearanceColors) then) =
+      __$$_PaymentSheetAppearanceColorsCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? primary,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? background,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? componentBackground,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? componentBorder,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? componentDivider,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? componentText,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? primaryText,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? secondaryText,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? placeholderText,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? icon,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? error});
+}
+
+/// @nodoc
+class __$$_PaymentSheetAppearanceColorsCopyWithImpl<$Res>
+    extends _$PaymentSheetAppearanceColorsCopyWithImpl<$Res>
+    implements _$$_PaymentSheetAppearanceColorsCopyWith<$Res> {
+  __$$_PaymentSheetAppearanceColorsCopyWithImpl(
+      _$_PaymentSheetAppearanceColors _value,
+      $Res Function(_$_PaymentSheetAppearanceColors) _then)
+      : super(_value, (v) => _then(v as _$_PaymentSheetAppearanceColors));
+
+  @override
+  _$_PaymentSheetAppearanceColors get _value =>
+      super._value as _$_PaymentSheetAppearanceColors;
+
+  @override
+  $Res call({
+    Object? primary = freezed,
+    Object? background = freezed,
+    Object? componentBackground = freezed,
+    Object? componentBorder = freezed,
+    Object? componentDivider = freezed,
+    Object? componentText = freezed,
+    Object? primaryText = freezed,
+    Object? secondaryText = freezed,
+    Object? placeholderText = freezed,
+    Object? icon = freezed,
+    Object? error = freezed,
+  }) {
+    return _then(_$_PaymentSheetAppearanceColors(
+      primary: primary == freezed
+          ? _value.primary
+          : primary // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      background: background == freezed
+          ? _value.background
+          : background // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      componentBackground: componentBackground == freezed
+          ? _value.componentBackground
+          : componentBackground // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      componentBorder: componentBorder == freezed
+          ? _value.componentBorder
+          : componentBorder // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      componentDivider: componentDivider == freezed
+          ? _value.componentDivider
+          : componentDivider // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      componentText: componentText == freezed
+          ? _value.componentText
+          : componentText // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      primaryText: primaryText == freezed
+          ? _value.primaryText
+          : primaryText // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      secondaryText: secondaryText == freezed
+          ? _value.secondaryText
+          : secondaryText // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      placeholderText: placeholderText == freezed
+          ? _value.placeholderText
+          : placeholderText // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      icon: icon == freezed
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      error: error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as Color?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_PaymentSheetAppearanceColors implements _PaymentSheetAppearanceColors {
+  const _$_PaymentSheetAppearanceColors(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.primary,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.background,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.componentBackground,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.componentBorder,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.componentDivider,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.componentText,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.primaryText,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.secondaryText,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.placeholderText,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.icon,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.error});
+
+  factory _$_PaymentSheetAppearanceColors.fromJson(Map<String, dynamic> json) =>
+      _$$_PaymentSheetAppearanceColorsFromJson(json);
+
+  ///  Color of the button that represents the primary action on the payment sheet.
+  ///
+  /// Make sure there is enough contrast with [background].
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? primary;
+
+  /// Background color of the payment sheet.
+  ///
+  /// Make sure there is enough contrast with [primary].
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? background;
+
+  /// Background color of the payment sheet components.
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? componentBackground;
+
+  ///  Border color of the payment sheet components.
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? componentBorder;
+
+  ///  Divider color of the payment sheet components.
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? componentDivider;
+
+  /// Color of the entered text in the payment components.
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? componentText;
+
+  /// Primary text color.
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? primaryText;
+
+  /// Secondary text color.
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? secondaryText;
+
+  /// Place holder text color.
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? placeholderText;
+
+  /// Color of the displayed icons
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? icon;
+
+  /// Color of the warning and error messages.
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? error;
+
+  @override
+  String toString() {
+    return 'PaymentSheetAppearanceColors(primary: $primary, background: $background, componentBackground: $componentBackground, componentBorder: $componentBorder, componentDivider: $componentDivider, componentText: $componentText, primaryText: $primaryText, secondaryText: $secondaryText, placeholderText: $placeholderText, icon: $icon, error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentSheetAppearanceColors &&
+            const DeepCollectionEquality().equals(other.primary, primary) &&
+            const DeepCollectionEquality()
+                .equals(other.background, background) &&
+            const DeepCollectionEquality()
+                .equals(other.componentBackground, componentBackground) &&
+            const DeepCollectionEquality()
+                .equals(other.componentBorder, componentBorder) &&
+            const DeepCollectionEquality()
+                .equals(other.componentDivider, componentDivider) &&
+            const DeepCollectionEquality()
+                .equals(other.componentText, componentText) &&
+            const DeepCollectionEquality()
+                .equals(other.primaryText, primaryText) &&
+            const DeepCollectionEquality()
+                .equals(other.secondaryText, secondaryText) &&
+            const DeepCollectionEquality()
+                .equals(other.placeholderText, placeholderText) &&
+            const DeepCollectionEquality().equals(other.icon, icon) &&
+            const DeepCollectionEquality().equals(other.error, error));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(primary),
+      const DeepCollectionEquality().hash(background),
+      const DeepCollectionEquality().hash(componentBackground),
+      const DeepCollectionEquality().hash(componentBorder),
+      const DeepCollectionEquality().hash(componentDivider),
+      const DeepCollectionEquality().hash(componentText),
+      const DeepCollectionEquality().hash(primaryText),
+      const DeepCollectionEquality().hash(secondaryText),
+      const DeepCollectionEquality().hash(placeholderText),
+      const DeepCollectionEquality().hash(icon),
+      const DeepCollectionEquality().hash(error));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_PaymentSheetAppearanceColorsCopyWith<_$_PaymentSheetAppearanceColors>
+      get copyWith => __$$_PaymentSheetAppearanceColorsCopyWithImpl<
+          _$_PaymentSheetAppearanceColors>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentSheetAppearanceColorsToJson(this);
+  }
+}
+
+abstract class _PaymentSheetAppearanceColors
+    implements PaymentSheetAppearanceColors {
+  const factory _PaymentSheetAppearanceColors(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          final Color? primary,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          final Color? background,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          final Color? componentBackground,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          final Color? componentBorder,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          final Color? componentDivider,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          final Color? componentText,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          final Color? primaryText,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          final Color? secondaryText,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          final Color? placeholderText,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          final Color? icon,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          final Color? error}) = _$_PaymentSheetAppearanceColors;
+
+  factory _PaymentSheetAppearanceColors.fromJson(Map<String, dynamic> json) =
+      _$_PaymentSheetAppearanceColors.fromJson;
+
+  @override
+
+  ///  Color of the button that represents the primary action on the payment sheet.
+  ///
+  /// Make sure there is enough contrast with [background].
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get primary => throw _privateConstructorUsedError;
+  @override
+
+  /// Background color of the payment sheet.
+  ///
+  /// Make sure there is enough contrast with [primary].
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get background => throw _privateConstructorUsedError;
+  @override
+
+  /// Background color of the payment sheet components.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get componentBackground => throw _privateConstructorUsedError;
+  @override
+
+  ///  Border color of the payment sheet components.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get componentBorder => throw _privateConstructorUsedError;
+  @override
+
+  ///  Divider color of the payment sheet components.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get componentDivider => throw _privateConstructorUsedError;
+  @override
+
+  /// Color of the entered text in the payment components.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get componentText => throw _privateConstructorUsedError;
+  @override
+
+  /// Primary text color.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get primaryText => throw _privateConstructorUsedError;
+  @override
+
+  /// Secondary text color.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get secondaryText => throw _privateConstructorUsedError;
+  @override
+
+  /// Place holder text color.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get placeholderText => throw _privateConstructorUsedError;
+  @override
+
+  /// Color of the displayed icons
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get icon => throw _privateConstructorUsedError;
+  @override
+
+  /// Color of the warning and error messages.
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get error => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PaymentSheetAppearanceColorsCopyWith<_$_PaymentSheetAppearanceColors>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+PaymentSheetShape _$PaymentSheetShapeFromJson(Map<String, dynamic> json) {
+  return _PaymentSheetShape.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentSheetShape {
+  /// Borderradius for the paymentsheet corners
+  double? get borderRadius => throw _privateConstructorUsedError;
+
+  /// Borderwidth for the paymentsheet components
+  double? get borderWidth => throw _privateConstructorUsedError;
+
+  /// Appearance config of the payment sheet shadow
+  PaymentSheetShadowParams? get shadow => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentSheetShapeCopyWith<PaymentSheetShape> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentSheetShapeCopyWith<$Res> {
+  factory $PaymentSheetShapeCopyWith(
+          PaymentSheetShape value, $Res Function(PaymentSheetShape) then) =
+      _$PaymentSheetShapeCopyWithImpl<$Res>;
+  $Res call(
+      {double? borderRadius,
+      double? borderWidth,
+      PaymentSheetShadowParams? shadow});
+
+  $PaymentSheetShadowParamsCopyWith<$Res>? get shadow;
+}
+
+/// @nodoc
+class _$PaymentSheetShapeCopyWithImpl<$Res>
+    implements $PaymentSheetShapeCopyWith<$Res> {
+  _$PaymentSheetShapeCopyWithImpl(this._value, this._then);
+
+  final PaymentSheetShape _value;
+  // ignore: unused_field
+  final $Res Function(PaymentSheetShape) _then;
+
+  @override
+  $Res call({
+    Object? borderRadius = freezed,
+    Object? borderWidth = freezed,
+    Object? shadow = freezed,
+  }) {
+    return _then(_value.copyWith(
+      borderRadius: borderRadius == freezed
+          ? _value.borderRadius
+          : borderRadius // ignore: cast_nullable_to_non_nullable
+              as double?,
+      borderWidth: borderWidth == freezed
+          ? _value.borderWidth
+          : borderWidth // ignore: cast_nullable_to_non_nullable
+              as double?,
+      shadow: shadow == freezed
+          ? _value.shadow
+          : shadow // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetShadowParams?,
+    ));
+  }
+
+  @override
+  $PaymentSheetShadowParamsCopyWith<$Res>? get shadow {
+    if (_value.shadow == null) {
+      return null;
+    }
+
+    return $PaymentSheetShadowParamsCopyWith<$Res>(_value.shadow!, (value) {
+      return _then(_value.copyWith(shadow: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_PaymentSheetShapeCopyWith<$Res>
+    implements $PaymentSheetShapeCopyWith<$Res> {
+  factory _$$_PaymentSheetShapeCopyWith(_$_PaymentSheetShape value,
+          $Res Function(_$_PaymentSheetShape) then) =
+      __$$_PaymentSheetShapeCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {double? borderRadius,
+      double? borderWidth,
+      PaymentSheetShadowParams? shadow});
+
+  @override
+  $PaymentSheetShadowParamsCopyWith<$Res>? get shadow;
+}
+
+/// @nodoc
+class __$$_PaymentSheetShapeCopyWithImpl<$Res>
+    extends _$PaymentSheetShapeCopyWithImpl<$Res>
+    implements _$$_PaymentSheetShapeCopyWith<$Res> {
+  __$$_PaymentSheetShapeCopyWithImpl(
+      _$_PaymentSheetShape _value, $Res Function(_$_PaymentSheetShape) _then)
+      : super(_value, (v) => _then(v as _$_PaymentSheetShape));
+
+  @override
+  _$_PaymentSheetShape get _value => super._value as _$_PaymentSheetShape;
+
+  @override
+  $Res call({
+    Object? borderRadius = freezed,
+    Object? borderWidth = freezed,
+    Object? shadow = freezed,
+  }) {
+    return _then(_$_PaymentSheetShape(
+      borderRadius: borderRadius == freezed
+          ? _value.borderRadius
+          : borderRadius // ignore: cast_nullable_to_non_nullable
+              as double?,
+      borderWidth: borderWidth == freezed
+          ? _value.borderWidth
+          : borderWidth // ignore: cast_nullable_to_non_nullable
+              as double?,
+      shadow: shadow == freezed
+          ? _value.shadow
+          : shadow // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetShadowParams?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_PaymentSheetShape implements _PaymentSheetShape {
+  const _$_PaymentSheetShape(
+      {this.borderRadius, this.borderWidth, this.shadow});
+
+  factory _$_PaymentSheetShape.fromJson(Map<String, dynamic> json) =>
+      _$$_PaymentSheetShapeFromJson(json);
+
+  /// Borderradius for the paymentsheet corners
+  @override
+  final double? borderRadius;
+
+  /// Borderwidth for the paymentsheet components
+  @override
+  final double? borderWidth;
+
+  /// Appearance config of the payment sheet shadow
+  @override
+  final PaymentSheetShadowParams? shadow;
+
+  @override
+  String toString() {
+    return 'PaymentSheetShape(borderRadius: $borderRadius, borderWidth: $borderWidth, shadow: $shadow)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentSheetShape &&
+            const DeepCollectionEquality()
+                .equals(other.borderRadius, borderRadius) &&
+            const DeepCollectionEquality()
+                .equals(other.borderWidth, borderWidth) &&
+            const DeepCollectionEquality().equals(other.shadow, shadow));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(borderRadius),
+      const DeepCollectionEquality().hash(borderWidth),
+      const DeepCollectionEquality().hash(shadow));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_PaymentSheetShapeCopyWith<_$_PaymentSheetShape> get copyWith =>
+      __$$_PaymentSheetShapeCopyWithImpl<_$_PaymentSheetShape>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentSheetShapeToJson(this);
+  }
+}
+
+abstract class _PaymentSheetShape implements PaymentSheetShape {
+  const factory _PaymentSheetShape(
+      {final double? borderRadius,
+      final double? borderWidth,
+      final PaymentSheetShadowParams? shadow}) = _$_PaymentSheetShape;
+
+  factory _PaymentSheetShape.fromJson(Map<String, dynamic> json) =
+      _$_PaymentSheetShape.fromJson;
+
+  @override
+
+  /// Borderradius for the paymentsheet corners
+  double? get borderRadius => throw _privateConstructorUsedError;
+  @override
+
+  /// Borderwidth for the paymentsheet components
+  double? get borderWidth => throw _privateConstructorUsedError;
+  @override
+
+  /// Appearance config of the payment sheet shadow
+  PaymentSheetShadowParams? get shadow => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PaymentSheetShapeCopyWith<_$_PaymentSheetShape> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+PaymentSheetShadowParams _$PaymentSheetShadowParamsFromJson(
+    Map<String, dynamic> json) {
+  return _PaymentSheetShadowParams.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentSheetShadowParams {
+  /// Shadow color
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get color => throw _privateConstructorUsedError;
+
+  /// Shadow opacity
+  double? get opacity => throw _privateConstructorUsedError;
+
+  /// Shadow offset
+  PaymentSheetShadowOffset? get offset => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentSheetShadowParamsCopyWith<PaymentSheetShadowParams> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentSheetShadowParamsCopyWith<$Res> {
+  factory $PaymentSheetShadowParamsCopyWith(PaymentSheetShadowParams value,
+          $Res Function(PaymentSheetShadowParams) then) =
+      _$PaymentSheetShadowParamsCopyWithImpl<$Res>;
+  $Res call(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? color,
+      double? opacity,
+      PaymentSheetShadowOffset? offset});
+
+  $PaymentSheetShadowOffsetCopyWith<$Res>? get offset;
+}
+
+/// @nodoc
+class _$PaymentSheetShadowParamsCopyWithImpl<$Res>
+    implements $PaymentSheetShadowParamsCopyWith<$Res> {
+  _$PaymentSheetShadowParamsCopyWithImpl(this._value, this._then);
+
+  final PaymentSheetShadowParams _value;
+  // ignore: unused_field
+  final $Res Function(PaymentSheetShadowParams) _then;
+
+  @override
+  $Res call({
+    Object? color = freezed,
+    Object? opacity = freezed,
+    Object? offset = freezed,
+  }) {
+    return _then(_value.copyWith(
+      color: color == freezed
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      opacity: opacity == freezed
+          ? _value.opacity
+          : opacity // ignore: cast_nullable_to_non_nullable
+              as double?,
+      offset: offset == freezed
+          ? _value.offset
+          : offset // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetShadowOffset?,
+    ));
+  }
+
+  @override
+  $PaymentSheetShadowOffsetCopyWith<$Res>? get offset {
+    if (_value.offset == null) {
+      return null;
+    }
+
+    return $PaymentSheetShadowOffsetCopyWith<$Res>(_value.offset!, (value) {
+      return _then(_value.copyWith(offset: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_PaymentSheetShadowParamsCopyWith<$Res>
+    implements $PaymentSheetShadowParamsCopyWith<$Res> {
+  factory _$$_PaymentSheetShadowParamsCopyWith(
+          _$_PaymentSheetShadowParams value,
+          $Res Function(_$_PaymentSheetShadowParams) then) =
+      __$$_PaymentSheetShadowParamsCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? color,
+      double? opacity,
+      PaymentSheetShadowOffset? offset});
+
+  @override
+  $PaymentSheetShadowOffsetCopyWith<$Res>? get offset;
+}
+
+/// @nodoc
+class __$$_PaymentSheetShadowParamsCopyWithImpl<$Res>
+    extends _$PaymentSheetShadowParamsCopyWithImpl<$Res>
+    implements _$$_PaymentSheetShadowParamsCopyWith<$Res> {
+  __$$_PaymentSheetShadowParamsCopyWithImpl(_$_PaymentSheetShadowParams _value,
+      $Res Function(_$_PaymentSheetShadowParams) _then)
+      : super(_value, (v) => _then(v as _$_PaymentSheetShadowParams));
+
+  @override
+  _$_PaymentSheetShadowParams get _value =>
+      super._value as _$_PaymentSheetShadowParams;
+
+  @override
+  $Res call({
+    Object? color = freezed,
+    Object? opacity = freezed,
+    Object? offset = freezed,
+  }) {
+    return _then(_$_PaymentSheetShadowParams(
+      color: color == freezed
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      opacity: opacity == freezed
+          ? _value.opacity
+          : opacity // ignore: cast_nullable_to_non_nullable
+              as double?,
+      offset: offset == freezed
+          ? _value.offset
+          : offset // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetShadowOffset?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_PaymentSheetShadowParams implements _PaymentSheetShadowParams {
+  const _$_PaymentSheetShadowParams(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.color,
+      this.opacity,
+      this.offset});
+
+  factory _$_PaymentSheetShadowParams.fromJson(Map<String, dynamic> json) =>
+      _$$_PaymentSheetShadowParamsFromJson(json);
+
+  /// Shadow color
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? color;
+
+  /// Shadow opacity
+  @override
+  final double? opacity;
+
+  /// Shadow offset
+  @override
+  final PaymentSheetShadowOffset? offset;
+
+  @override
+  String toString() {
+    return 'PaymentSheetShadowParams(color: $color, opacity: $opacity, offset: $offset)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentSheetShadowParams &&
+            const DeepCollectionEquality().equals(other.color, color) &&
+            const DeepCollectionEquality().equals(other.opacity, opacity) &&
+            const DeepCollectionEquality().equals(other.offset, offset));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(color),
+      const DeepCollectionEquality().hash(opacity),
+      const DeepCollectionEquality().hash(offset));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_PaymentSheetShadowParamsCopyWith<_$_PaymentSheetShadowParams>
+      get copyWith => __$$_PaymentSheetShadowParamsCopyWithImpl<
+          _$_PaymentSheetShadowParams>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentSheetShadowParamsToJson(this);
+  }
+}
+
+abstract class _PaymentSheetShadowParams implements PaymentSheetShadowParams {
+  const factory _PaymentSheetShadowParams(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          final Color? color,
+      final double? opacity,
+      final PaymentSheetShadowOffset? offset}) = _$_PaymentSheetShadowParams;
+
+  factory _PaymentSheetShadowParams.fromJson(Map<String, dynamic> json) =
+      _$_PaymentSheetShadowParams.fromJson;
+
+  @override
+
+  /// Shadow color
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get color => throw _privateConstructorUsedError;
+  @override
+
+  /// Shadow opacity
+  double? get opacity => throw _privateConstructorUsedError;
+  @override
+
+  /// Shadow offset
+  PaymentSheetShadowOffset? get offset => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PaymentSheetShadowParamsCopyWith<_$_PaymentSheetShadowParams>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+PaymentSheetShadowOffset _$PaymentSheetShadowOffsetFromJson(
+    Map<String, dynamic> json) {
+  return _PaymentSheetShadowOffset.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentSheetShadowOffset {
+  /// X value
+  double? get x => throw _privateConstructorUsedError;
+
+  /// Y value
+  double? get y => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentSheetShadowOffsetCopyWith<PaymentSheetShadowOffset> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentSheetShadowOffsetCopyWith<$Res> {
+  factory $PaymentSheetShadowOffsetCopyWith(PaymentSheetShadowOffset value,
+          $Res Function(PaymentSheetShadowOffset) then) =
+      _$PaymentSheetShadowOffsetCopyWithImpl<$Res>;
+  $Res call({double? x, double? y});
+}
+
+/// @nodoc
+class _$PaymentSheetShadowOffsetCopyWithImpl<$Res>
+    implements $PaymentSheetShadowOffsetCopyWith<$Res> {
+  _$PaymentSheetShadowOffsetCopyWithImpl(this._value, this._then);
+
+  final PaymentSheetShadowOffset _value;
+  // ignore: unused_field
+  final $Res Function(PaymentSheetShadowOffset) _then;
+
+  @override
+  $Res call({
+    Object? x = freezed,
+    Object? y = freezed,
+  }) {
+    return _then(_value.copyWith(
+      x: x == freezed
+          ? _value.x
+          : x // ignore: cast_nullable_to_non_nullable
+              as double?,
+      y: y == freezed
+          ? _value.y
+          : y // ignore: cast_nullable_to_non_nullable
+              as double?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_PaymentSheetShadowOffsetCopyWith<$Res>
+    implements $PaymentSheetShadowOffsetCopyWith<$Res> {
+  factory _$$_PaymentSheetShadowOffsetCopyWith(
+          _$_PaymentSheetShadowOffset value,
+          $Res Function(_$_PaymentSheetShadowOffset) then) =
+      __$$_PaymentSheetShadowOffsetCopyWithImpl<$Res>;
+  @override
+  $Res call({double? x, double? y});
+}
+
+/// @nodoc
+class __$$_PaymentSheetShadowOffsetCopyWithImpl<$Res>
+    extends _$PaymentSheetShadowOffsetCopyWithImpl<$Res>
+    implements _$$_PaymentSheetShadowOffsetCopyWith<$Res> {
+  __$$_PaymentSheetShadowOffsetCopyWithImpl(_$_PaymentSheetShadowOffset _value,
+      $Res Function(_$_PaymentSheetShadowOffset) _then)
+      : super(_value, (v) => _then(v as _$_PaymentSheetShadowOffset));
+
+  @override
+  _$_PaymentSheetShadowOffset get _value =>
+      super._value as _$_PaymentSheetShadowOffset;
+
+  @override
+  $Res call({
+    Object? x = freezed,
+    Object? y = freezed,
+  }) {
+    return _then(_$_PaymentSheetShadowOffset(
+      x: x == freezed
+          ? _value.x
+          : x // ignore: cast_nullable_to_non_nullable
+              as double?,
+      y: y == freezed
+          ? _value.y
+          : y // ignore: cast_nullable_to_non_nullable
+              as double?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_PaymentSheetShadowOffset implements _PaymentSheetShadowOffset {
+  const _$_PaymentSheetShadowOffset({this.x, this.y});
+
+  factory _$_PaymentSheetShadowOffset.fromJson(Map<String, dynamic> json) =>
+      _$$_PaymentSheetShadowOffsetFromJson(json);
+
+  /// X value
+  @override
+  final double? x;
+
+  /// Y value
+  @override
+  final double? y;
+
+  @override
+  String toString() {
+    return 'PaymentSheetShadowOffset(x: $x, y: $y)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentSheetShadowOffset &&
+            const DeepCollectionEquality().equals(other.x, x) &&
+            const DeepCollectionEquality().equals(other.y, y));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(x),
+      const DeepCollectionEquality().hash(y));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_PaymentSheetShadowOffsetCopyWith<_$_PaymentSheetShadowOffset>
+      get copyWith => __$$_PaymentSheetShadowOffsetCopyWithImpl<
+          _$_PaymentSheetShadowOffset>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentSheetShadowOffsetToJson(this);
+  }
+}
+
+abstract class _PaymentSheetShadowOffset implements PaymentSheetShadowOffset {
+  const factory _PaymentSheetShadowOffset({final double? x, final double? y}) =
+      _$_PaymentSheetShadowOffset;
+
+  factory _PaymentSheetShadowOffset.fromJson(Map<String, dynamic> json) =
+      _$_PaymentSheetShadowOffset.fromJson;
+
+  @override
+
+  /// X value
+  double? get x => throw _privateConstructorUsedError;
+  @override
+
+  /// Y value
+  double? get y => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PaymentSheetShadowOffsetCopyWith<_$_PaymentSheetShadowOffset>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 PresentPaymentSheetParameters _$PresentPaymentSheetParametersFromJson(

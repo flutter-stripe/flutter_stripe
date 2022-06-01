@@ -97,7 +97,17 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
           applePay: true,
           googlePay: true,
           style: ThemeMode.dark,
-          primaryButtonColor: Colors.redAccent,
+          appearance: PaymentSheetAppearance(
+            colors: PaymentSheetAppearanceColors(
+              background: Colors.white,
+              primary: Colors.blue,
+            ),
+            shapes: PaymentSheetShape(
+              borderWidth: 10,
+              shadow: PaymentSheetShadowParams(color: Colors.red),
+            ),
+          ),
+          // primaryButtonColor: Colors.redAccent,
           billingDetails: billingDetails,
           testEnv: true,
           merchantCountryCode: 'DE',
