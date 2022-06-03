@@ -1945,7 +1945,8 @@ class __$$_PaymentSheetShadowOffsetCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_PaymentSheetShadowOffset implements _PaymentSheetShadowOffset {
   const _$_PaymentSheetShadowOffset({this.x, this.y});
 

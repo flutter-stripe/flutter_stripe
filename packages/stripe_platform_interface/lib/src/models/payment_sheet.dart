@@ -168,7 +168,7 @@ class PaymentSheetAppearanceColors with _$PaymentSheetAppearanceColors {
 
 /// Parameters that change the appearance of the payment sheet.
 @freezed
-class PaymentSheetShape with _$PaymentSheetAppearance {
+class PaymentSheetShape with _$PaymentSheetShape {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetShape({
     /// Borderradius for the paymentsheet corners
@@ -207,6 +207,7 @@ class PaymentSheetShadowParams with _$PaymentSheetShadowParams {
 /// Shadow config parameters
 @freezed
 class PaymentSheetShadowOffset with _$PaymentSheetShadowOffset {
+  @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetShadowOffset({
     /// X value
     double? x,
