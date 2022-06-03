@@ -5,9 +5,10 @@ import android.content.Intent
 import android.os.Parcelable
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
 import com.facebook.react.bridge.*
 import com.facebook.react.module.annotations.ReactModule
+import com.flutter.stripe.getCurrentActivityOrResolveWithError
+import com.flutter.stripe.invoke
 import com.stripe.android.*
 import com.stripe.android.core.AppInfo
 import com.stripe.android.core.ApiVersion
@@ -32,9 +33,9 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
   private var stripeAccountId: String? = null
   private var urlScheme: String? = null
 
-  private lateinit var paymentLauncherFragment: PaymentLauncherFragment
   private var paymentSheetFragment: PaymentSheetFragment? = null
   private var googlePayFragment: GooglePayFragment? = null
+  private var paymentLauncherFragment: PaymentLauncherFragment? = null
 
   private var confirmPromise: Promise? = null
   private var confirmPaymentClientSecret: String? = null
@@ -110,19 +111,7 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
     stripe = Stripe(reactApplicationContext, publishableKey, stripeAccountId)
 
     PaymentConfiguration.init(reactApplicationContext, publishableKey, stripeAccountId)
-
-    paymentLauncherFragment = PaymentLauncherFragment(stripe, publishableKey, stripeAccountId)
-    getCurrentActivityOrResolveWithError(promise)?.let {
-      try {
-        it.supportFragmentManager.beginTransaction()
-          .add(paymentLauncherFragment, "payment_launcher_fragment")
-          .commit()
-      } catch (error: IllegalStateException) {
-        promise.resolve(createError(ErrorType.Failed.toString(), error.message))
-      }
-
-      promise.resolve(null)
-    }
+    promise.resolve(null)
   }
 
   @ReactMethod
@@ -166,13 +155,17 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
     when (result) {
       is AddPaymentMethodActivityStarter.Result.Success -> {
         if (confirmPaymentClientSecret != null && confirmPromise != null) {
-          paymentLauncherFragment.confirm(
+          paymentLauncherFragment = PaymentLauncherFragment.forPayment(
+            context = reactApplicationContext,
+            stripe,
+            publishableKey,
+            stripeAccountId,
+            confirmPromise!!,
+            confirmPaymentClientSecret!!,
             ConfirmPaymentIntentParams.createWithPaymentMethodId(
               result.paymentMethod.id!!,
               confirmPaymentClientSecret!!
-            ),
-            confirmPaymentClientSecret!!,
-            confirmPromise!!
+            )
           )
         } else {
           Log.e("StripeReactNative", "FPX payment failed. Promise and/or client secret is not set.")
@@ -316,9 +309,13 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
 
   @ReactMethod
   fun handleNextAction(paymentIntentClientSecret: String, promise: Promise) {
-    paymentLauncherFragment.handleNextActionForPaymentIntent(
-      paymentIntentClientSecret,
-      promise
+    paymentLauncherFragment = PaymentLauncherFragment.forNextAction(
+      context = reactApplicationContext,
+      stripe,
+      publishableKey,
+      stripeAccountId,
+      promise,
+      paymentIntentClientSecret
     )
   }
 
@@ -376,10 +373,14 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
         confirmParams.returnUrl = mapToReturnURL(urlScheme)
       }
       confirmParams.shipping = mapToShippingDetails(getMapOrNull(paymentMethodData, "shippingDetails"))
-      paymentLauncherFragment.confirm(
-        confirmParams,
+      paymentLauncherFragment = PaymentLauncherFragment.forPayment(
+        context = reactApplicationContext,
+        stripe,
+        publishableKey,
+        stripeAccountId,
+        promise,
         paymentIntentClientSecret,
-        promise
+        confirmParams
       )
     } catch (error: PaymentMethodCreateParamsException) {
       promise.resolve(createError(ConfirmPaymentErrorType.Failed.toString(), error))
@@ -424,10 +425,14 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
       urlScheme?.let {
         confirmParams.returnUrl = mapToReturnURL(urlScheme)
       }
-      paymentLauncherFragment.confirm(
-        confirmParams,
+      paymentLauncherFragment = PaymentLauncherFragment.forSetup(
+        context = reactApplicationContext,
+        stripe,
+        publishableKey,
+        stripeAccountId,
+        promise,
         setupIntentClientSecret,
-        promise
+        confirmParams
       )
     } catch (error: PaymentMethodCreateParamsException) {
       promise.resolve(createError(ConfirmPaymentErrorType.Failed.toString(), error))
@@ -585,8 +590,8 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
     }
 
     amounts?.let {
-      if (it.size != 2) {
-        promise.resolve(createError(ErrorType.Failed.toString(), "Expected 2 integers in the amounts array, but received ${it.size}"))
+      if (it.size() != 2) {
+        promise.resolve(createError(ErrorType.Failed.toString(), "Expected 2 integers in the amounts array, but received ${it.size()}"))
         return
       }
 
@@ -622,19 +627,8 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
     }
   }
 
-  /**
-   * Safely get and cast the current activity as an AppCompatActivity. If that fails, the promise
-   * provided will be resolved with an error message instructing the user to retry the method.
-   */
-  private fun getCurrentActivityOrResolveWithError(promise: Promise?): FragmentActivity? {
-    (currentActivity as? FragmentActivity)?.let {
-      return it
-    }
-    promise?.resolve(createMissingActivityError())
-    return null
-  }
-
   companion object {
     const val NAME = "StripeSdk"
   }
 }
+
