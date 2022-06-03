@@ -8,6 +8,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 
+import '../utils.dart';
+
 /// Customizable form that collects card information.
 ///
 /// Notice implementation differs for iOS and Android platforms:
@@ -258,7 +260,7 @@ class _MethodChannelCardFormFieldState
         dev.log('WARNING! Initial card data value has been ignored. \n'
             '$kDebugPCIMessage');
       }
-      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      ambiguate(WidgetsBinding.instance)?.addPostFrameCallback((timeStamp) {
         controller._updateDetails(const CardFieldInputDetails(complete: false));
       });
     }
@@ -412,7 +414,8 @@ class _MethodChannelCardFormFieldState
       final map = Map<String, dynamic>.from(arguments);
       final field = CardFieldFocusName.fromJson(map);
       if (field.focusedField != null &&
-          WidgetsBinding.instance.focusManager.primaryFocus != _effectiveNode) {
+          ambiguate(WidgetsBinding.instance)?.focusManager.primaryFocus !=
+              _effectiveNode) {
         _effectiveNode.requestFocus();
       }
       widget.onFocus?.call(field.focusedField);
