@@ -714,6 +714,10 @@ mixin _$PaymentSheetAppearance {
   /// Shapes parameters
   PaymentSheetShape? get shapes => throw _privateConstructorUsedError;
 
+  /// PaymentSheet appearance
+  PaymentSheetPrimaryButtonAppearance? get primaryButton =>
+      throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentSheetAppearanceCopyWith<PaymentSheetAppearance> get copyWith =>
@@ -725,10 +729,14 @@ abstract class $PaymentSheetAppearanceCopyWith<$Res> {
   factory $PaymentSheetAppearanceCopyWith(PaymentSheetAppearance value,
           $Res Function(PaymentSheetAppearance) then) =
       _$PaymentSheetAppearanceCopyWithImpl<$Res>;
-  $Res call({PaymentSheetAppearanceColors? colors, PaymentSheetShape? shapes});
+  $Res call(
+      {PaymentSheetAppearanceColors? colors,
+      PaymentSheetShape? shapes,
+      PaymentSheetPrimaryButtonAppearance? primaryButton});
 
   $PaymentSheetAppearanceColorsCopyWith<$Res>? get colors;
   $PaymentSheetShapeCopyWith<$Res>? get shapes;
+  $PaymentSheetPrimaryButtonAppearanceCopyWith<$Res>? get primaryButton;
 }
 
 /// @nodoc
@@ -744,6 +752,7 @@ class _$PaymentSheetAppearanceCopyWithImpl<$Res>
   $Res call({
     Object? colors = freezed,
     Object? shapes = freezed,
+    Object? primaryButton = freezed,
   }) {
     return _then(_value.copyWith(
       colors: colors == freezed
@@ -754,6 +763,10 @@ class _$PaymentSheetAppearanceCopyWithImpl<$Res>
           ? _value.shapes
           : shapes // ignore: cast_nullable_to_non_nullable
               as PaymentSheetShape?,
+      primaryButton: primaryButton == freezed
+          ? _value.primaryButton
+          : primaryButton // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetPrimaryButtonAppearance?,
     ));
   }
 
@@ -778,6 +791,18 @@ class _$PaymentSheetAppearanceCopyWithImpl<$Res>
       return _then(_value.copyWith(shapes: value));
     });
   }
+
+  @override
+  $PaymentSheetPrimaryButtonAppearanceCopyWith<$Res>? get primaryButton {
+    if (_value.primaryButton == null) {
+      return null;
+    }
+
+    return $PaymentSheetPrimaryButtonAppearanceCopyWith<$Res>(
+        _value.primaryButton!, (value) {
+      return _then(_value.copyWith(primaryButton: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -787,12 +812,17 @@ abstract class _$$_PaymentSheetAppearanceCopyWith<$Res>
           $Res Function(_$_PaymentSheetAppearance) then) =
       __$$_PaymentSheetAppearanceCopyWithImpl<$Res>;
   @override
-  $Res call({PaymentSheetAppearanceColors? colors, PaymentSheetShape? shapes});
+  $Res call(
+      {PaymentSheetAppearanceColors? colors,
+      PaymentSheetShape? shapes,
+      PaymentSheetPrimaryButtonAppearance? primaryButton});
 
   @override
   $PaymentSheetAppearanceColorsCopyWith<$Res>? get colors;
   @override
   $PaymentSheetShapeCopyWith<$Res>? get shapes;
+  @override
+  $PaymentSheetPrimaryButtonAppearanceCopyWith<$Res>? get primaryButton;
 }
 
 /// @nodoc
@@ -811,6 +841,7 @@ class __$$_PaymentSheetAppearanceCopyWithImpl<$Res>
   $Res call({
     Object? colors = freezed,
     Object? shapes = freezed,
+    Object? primaryButton = freezed,
   }) {
     return _then(_$_PaymentSheetAppearance(
       colors: colors == freezed
@@ -821,6 +852,10 @@ class __$$_PaymentSheetAppearanceCopyWithImpl<$Res>
           ? _value.shapes
           : shapes // ignore: cast_nullable_to_non_nullable
               as PaymentSheetShape?,
+      primaryButton: primaryButton == freezed
+          ? _value.primaryButton
+          : primaryButton // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetPrimaryButtonAppearance?,
     ));
   }
 }
@@ -829,7 +864,8 @@ class __$$_PaymentSheetAppearanceCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$_PaymentSheetAppearance implements _PaymentSheetAppearance {
-  const _$_PaymentSheetAppearance({this.colors, this.shapes});
+  const _$_PaymentSheetAppearance(
+      {this.colors, this.shapes, this.primaryButton});
 
   factory _$_PaymentSheetAppearance.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentSheetAppearanceFromJson(json);
@@ -842,9 +878,13 @@ class _$_PaymentSheetAppearance implements _PaymentSheetAppearance {
   @override
   final PaymentSheetShape? shapes;
 
+  /// PaymentSheet appearance
+  @override
+  final PaymentSheetPrimaryButtonAppearance? primaryButton;
+
   @override
   String toString() {
-    return 'PaymentSheetAppearance(colors: $colors, shapes: $shapes)';
+    return 'PaymentSheetAppearance(colors: $colors, shapes: $shapes, primaryButton: $primaryButton)';
   }
 
   @override
@@ -853,7 +893,9 @@ class _$_PaymentSheetAppearance implements _PaymentSheetAppearance {
         (other.runtimeType == runtimeType &&
             other is _$_PaymentSheetAppearance &&
             const DeepCollectionEquality().equals(other.colors, colors) &&
-            const DeepCollectionEquality().equals(other.shapes, shapes));
+            const DeepCollectionEquality().equals(other.shapes, shapes) &&
+            const DeepCollectionEquality()
+                .equals(other.primaryButton, primaryButton));
   }
 
   @JsonKey(ignore: true)
@@ -861,7 +903,8 @@ class _$_PaymentSheetAppearance implements _PaymentSheetAppearance {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(colors),
-      const DeepCollectionEquality().hash(shapes));
+      const DeepCollectionEquality().hash(shapes),
+      const DeepCollectionEquality().hash(primaryButton));
 
   @JsonKey(ignore: true)
   @override
@@ -877,8 +920,10 @@ class _$_PaymentSheetAppearance implements _PaymentSheetAppearance {
 
 abstract class _PaymentSheetAppearance implements PaymentSheetAppearance {
   const factory _PaymentSheetAppearance(
-      {final PaymentSheetAppearanceColors? colors,
-      final PaymentSheetShape? shapes}) = _$_PaymentSheetAppearance;
+          {final PaymentSheetAppearanceColors? colors,
+          final PaymentSheetShape? shapes,
+          final PaymentSheetPrimaryButtonAppearance? primaryButton}) =
+      _$_PaymentSheetAppearance;
 
   factory _PaymentSheetAppearance.fromJson(Map<String, dynamic> json) =
       _$_PaymentSheetAppearance.fromJson;
@@ -892,6 +937,11 @@ abstract class _PaymentSheetAppearance implements PaymentSheetAppearance {
 
   /// Shapes parameters
   PaymentSheetShape? get shapes => throw _privateConstructorUsedError;
+  @override
+
+  /// PaymentSheet appearance
+  PaymentSheetPrimaryButtonAppearance? get primaryButton =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentSheetAppearanceCopyWith<_$_PaymentSheetAppearance> get copyWith =>
@@ -2012,6 +2062,889 @@ abstract class _PaymentSheetShadowOffset implements PaymentSheetShadowOffset {
   @override
   @JsonKey(ignore: true)
   _$$_PaymentSheetShadowOffsetCopyWith<_$_PaymentSheetShadowOffset>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+PaymentSheetPrimaryButtonAppearance
+    _$PaymentSheetPrimaryButtonAppearanceFromJson(Map<String, dynamic> json) {
+  return _PaymentSheetPrimaryButtonAppearance.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentSheetPrimaryButtonAppearance {
+  /// color theme of the primary button
+  PaymentSheetPrimaryButtonTheme? get colors =>
+      throw _privateConstructorUsedError;
+
+  /// Shape params of the primary button
+  PaymentSheetPrimaryButtonShape? get shapes =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentSheetPrimaryButtonAppearanceCopyWith<
+          PaymentSheetPrimaryButtonAppearance>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentSheetPrimaryButtonAppearanceCopyWith<$Res> {
+  factory $PaymentSheetPrimaryButtonAppearanceCopyWith(
+          PaymentSheetPrimaryButtonAppearance value,
+          $Res Function(PaymentSheetPrimaryButtonAppearance) then) =
+      _$PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res>;
+  $Res call(
+      {PaymentSheetPrimaryButtonTheme? colors,
+      PaymentSheetPrimaryButtonShape? shapes});
+
+  $PaymentSheetPrimaryButtonThemeCopyWith<$Res>? get colors;
+  $PaymentSheetPrimaryButtonShapeCopyWith<$Res>? get shapes;
+}
+
+/// @nodoc
+class _$PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res>
+    implements $PaymentSheetPrimaryButtonAppearanceCopyWith<$Res> {
+  _$PaymentSheetPrimaryButtonAppearanceCopyWithImpl(this._value, this._then);
+
+  final PaymentSheetPrimaryButtonAppearance _value;
+  // ignore: unused_field
+  final $Res Function(PaymentSheetPrimaryButtonAppearance) _then;
+
+  @override
+  $Res call({
+    Object? colors = freezed,
+    Object? shapes = freezed,
+  }) {
+    return _then(_value.copyWith(
+      colors: colors == freezed
+          ? _value.colors
+          : colors // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetPrimaryButtonTheme?,
+      shapes: shapes == freezed
+          ? _value.shapes
+          : shapes // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetPrimaryButtonShape?,
+    ));
+  }
+
+  @override
+  $PaymentSheetPrimaryButtonThemeCopyWith<$Res>? get colors {
+    if (_value.colors == null) {
+      return null;
+    }
+
+    return $PaymentSheetPrimaryButtonThemeCopyWith<$Res>(_value.colors!,
+        (value) {
+      return _then(_value.copyWith(colors: value));
+    });
+  }
+
+  @override
+  $PaymentSheetPrimaryButtonShapeCopyWith<$Res>? get shapes {
+    if (_value.shapes == null) {
+      return null;
+    }
+
+    return $PaymentSheetPrimaryButtonShapeCopyWith<$Res>(_value.shapes!,
+        (value) {
+      return _then(_value.copyWith(shapes: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_PaymentSheetPrimaryButtonAppearanceCopyWith<$Res>
+    implements $PaymentSheetPrimaryButtonAppearanceCopyWith<$Res> {
+  factory _$$_PaymentSheetPrimaryButtonAppearanceCopyWith(
+          _$_PaymentSheetPrimaryButtonAppearance value,
+          $Res Function(_$_PaymentSheetPrimaryButtonAppearance) then) =
+      __$$_PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {PaymentSheetPrimaryButtonTheme? colors,
+      PaymentSheetPrimaryButtonShape? shapes});
+
+  @override
+  $PaymentSheetPrimaryButtonThemeCopyWith<$Res>? get colors;
+  @override
+  $PaymentSheetPrimaryButtonShapeCopyWith<$Res>? get shapes;
+}
+
+/// @nodoc
+class __$$_PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res>
+    extends _$PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res>
+    implements _$$_PaymentSheetPrimaryButtonAppearanceCopyWith<$Res> {
+  __$$_PaymentSheetPrimaryButtonAppearanceCopyWithImpl(
+      _$_PaymentSheetPrimaryButtonAppearance _value,
+      $Res Function(_$_PaymentSheetPrimaryButtonAppearance) _then)
+      : super(
+            _value, (v) => _then(v as _$_PaymentSheetPrimaryButtonAppearance));
+
+  @override
+  _$_PaymentSheetPrimaryButtonAppearance get _value =>
+      super._value as _$_PaymentSheetPrimaryButtonAppearance;
+
+  @override
+  $Res call({
+    Object? colors = freezed,
+    Object? shapes = freezed,
+  }) {
+    return _then(_$_PaymentSheetPrimaryButtonAppearance(
+      colors: colors == freezed
+          ? _value.colors
+          : colors // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetPrimaryButtonTheme?,
+      shapes: shapes == freezed
+          ? _value.shapes
+          : shapes // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetPrimaryButtonShape?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_PaymentSheetPrimaryButtonAppearance
+    implements _PaymentSheetPrimaryButtonAppearance {
+  const _$_PaymentSheetPrimaryButtonAppearance({this.colors, this.shapes});
+
+  factory _$_PaymentSheetPrimaryButtonAppearance.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_PaymentSheetPrimaryButtonAppearanceFromJson(json);
+
+  /// color theme of the primary button
+  @override
+  final PaymentSheetPrimaryButtonTheme? colors;
+
+  /// Shape params of the primary button
+  @override
+  final PaymentSheetPrimaryButtonShape? shapes;
+
+  @override
+  String toString() {
+    return 'PaymentSheetPrimaryButtonAppearance(colors: $colors, shapes: $shapes)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentSheetPrimaryButtonAppearance &&
+            const DeepCollectionEquality().equals(other.colors, colors) &&
+            const DeepCollectionEquality().equals(other.shapes, shapes));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(colors),
+      const DeepCollectionEquality().hash(shapes));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_PaymentSheetPrimaryButtonAppearanceCopyWith<
+          _$_PaymentSheetPrimaryButtonAppearance>
+      get copyWith => __$$_PaymentSheetPrimaryButtonAppearanceCopyWithImpl<
+          _$_PaymentSheetPrimaryButtonAppearance>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentSheetPrimaryButtonAppearanceToJson(this);
+  }
+}
+
+abstract class _PaymentSheetPrimaryButtonAppearance
+    implements PaymentSheetPrimaryButtonAppearance {
+  const factory _PaymentSheetPrimaryButtonAppearance(
+          {final PaymentSheetPrimaryButtonTheme? colors,
+          final PaymentSheetPrimaryButtonShape? shapes}) =
+      _$_PaymentSheetPrimaryButtonAppearance;
+
+  factory _PaymentSheetPrimaryButtonAppearance.fromJson(
+          Map<String, dynamic> json) =
+      _$_PaymentSheetPrimaryButtonAppearance.fromJson;
+
+  @override
+
+  /// color theme of the primary button
+  PaymentSheetPrimaryButtonTheme? get colors =>
+      throw _privateConstructorUsedError;
+  @override
+
+  /// Shape params of the primary button
+  PaymentSheetPrimaryButtonShape? get shapes =>
+      throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PaymentSheetPrimaryButtonAppearanceCopyWith<
+          _$_PaymentSheetPrimaryButtonAppearance>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+PaymentSheetPrimaryButtonShape _$PaymentSheetPrimaryButtonShapeFromJson(
+    Map<String, dynamic> json) {
+  return _PaymentSheetPrimaryButtonShape.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentSheetPrimaryButtonShape {
+  /// Configuration of the primary button's shadow.
+  PaymentSheetShadowParams? get shadow => throw _privateConstructorUsedError;
+
+  /// the blur radius of the button
+  double? get blurRadius => throw _privateConstructorUsedError;
+
+  /// border width of the primary button on the payment sheet
+  double? get borderWidth => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentSheetPrimaryButtonShapeCopyWith<PaymentSheetPrimaryButtonShape>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentSheetPrimaryButtonShapeCopyWith<$Res> {
+  factory $PaymentSheetPrimaryButtonShapeCopyWith(
+          PaymentSheetPrimaryButtonShape value,
+          $Res Function(PaymentSheetPrimaryButtonShape) then) =
+      _$PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res>;
+  $Res call(
+      {PaymentSheetShadowParams? shadow,
+      double? blurRadius,
+      double? borderWidth});
+
+  $PaymentSheetShadowParamsCopyWith<$Res>? get shadow;
+}
+
+/// @nodoc
+class _$PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res>
+    implements $PaymentSheetPrimaryButtonShapeCopyWith<$Res> {
+  _$PaymentSheetPrimaryButtonShapeCopyWithImpl(this._value, this._then);
+
+  final PaymentSheetPrimaryButtonShape _value;
+  // ignore: unused_field
+  final $Res Function(PaymentSheetPrimaryButtonShape) _then;
+
+  @override
+  $Res call({
+    Object? shadow = freezed,
+    Object? blurRadius = freezed,
+    Object? borderWidth = freezed,
+  }) {
+    return _then(_value.copyWith(
+      shadow: shadow == freezed
+          ? _value.shadow
+          : shadow // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetShadowParams?,
+      blurRadius: blurRadius == freezed
+          ? _value.blurRadius
+          : blurRadius // ignore: cast_nullable_to_non_nullable
+              as double?,
+      borderWidth: borderWidth == freezed
+          ? _value.borderWidth
+          : borderWidth // ignore: cast_nullable_to_non_nullable
+              as double?,
+    ));
+  }
+
+  @override
+  $PaymentSheetShadowParamsCopyWith<$Res>? get shadow {
+    if (_value.shadow == null) {
+      return null;
+    }
+
+    return $PaymentSheetShadowParamsCopyWith<$Res>(_value.shadow!, (value) {
+      return _then(_value.copyWith(shadow: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_PaymentSheetPrimaryButtonShapeCopyWith<$Res>
+    implements $PaymentSheetPrimaryButtonShapeCopyWith<$Res> {
+  factory _$$_PaymentSheetPrimaryButtonShapeCopyWith(
+          _$_PaymentSheetPrimaryButtonShape value,
+          $Res Function(_$_PaymentSheetPrimaryButtonShape) then) =
+      __$$_PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {PaymentSheetShadowParams? shadow,
+      double? blurRadius,
+      double? borderWidth});
+
+  @override
+  $PaymentSheetShadowParamsCopyWith<$Res>? get shadow;
+}
+
+/// @nodoc
+class __$$_PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res>
+    extends _$PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res>
+    implements _$$_PaymentSheetPrimaryButtonShapeCopyWith<$Res> {
+  __$$_PaymentSheetPrimaryButtonShapeCopyWithImpl(
+      _$_PaymentSheetPrimaryButtonShape _value,
+      $Res Function(_$_PaymentSheetPrimaryButtonShape) _then)
+      : super(_value, (v) => _then(v as _$_PaymentSheetPrimaryButtonShape));
+
+  @override
+  _$_PaymentSheetPrimaryButtonShape get _value =>
+      super._value as _$_PaymentSheetPrimaryButtonShape;
+
+  @override
+  $Res call({
+    Object? shadow = freezed,
+    Object? blurRadius = freezed,
+    Object? borderWidth = freezed,
+  }) {
+    return _then(_$_PaymentSheetPrimaryButtonShape(
+      shadow: shadow == freezed
+          ? _value.shadow
+          : shadow // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetShadowParams?,
+      blurRadius: blurRadius == freezed
+          ? _value.blurRadius
+          : blurRadius // ignore: cast_nullable_to_non_nullable
+              as double?,
+      borderWidth: borderWidth == freezed
+          ? _value.borderWidth
+          : borderWidth // ignore: cast_nullable_to_non_nullable
+              as double?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_PaymentSheetPrimaryButtonShape
+    implements _PaymentSheetPrimaryButtonShape {
+  const _$_PaymentSheetPrimaryButtonShape(
+      {this.shadow, this.blurRadius, this.borderWidth});
+
+  factory _$_PaymentSheetPrimaryButtonShape.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_PaymentSheetPrimaryButtonShapeFromJson(json);
+
+  /// Configuration of the primary button's shadow.
+  @override
+  final PaymentSheetShadowParams? shadow;
+
+  /// the blur radius of the button
+  @override
+  final double? blurRadius;
+
+  /// border width of the primary button on the payment sheet
+  @override
+  final double? borderWidth;
+
+  @override
+  String toString() {
+    return 'PaymentSheetPrimaryButtonShape(shadow: $shadow, blurRadius: $blurRadius, borderWidth: $borderWidth)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentSheetPrimaryButtonShape &&
+            const DeepCollectionEquality().equals(other.shadow, shadow) &&
+            const DeepCollectionEquality()
+                .equals(other.blurRadius, blurRadius) &&
+            const DeepCollectionEquality()
+                .equals(other.borderWidth, borderWidth));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(shadow),
+      const DeepCollectionEquality().hash(blurRadius),
+      const DeepCollectionEquality().hash(borderWidth));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_PaymentSheetPrimaryButtonShapeCopyWith<_$_PaymentSheetPrimaryButtonShape>
+      get copyWith => __$$_PaymentSheetPrimaryButtonShapeCopyWithImpl<
+          _$_PaymentSheetPrimaryButtonShape>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentSheetPrimaryButtonShapeToJson(this);
+  }
+}
+
+abstract class _PaymentSheetPrimaryButtonShape
+    implements PaymentSheetPrimaryButtonShape {
+  const factory _PaymentSheetPrimaryButtonShape(
+      {final PaymentSheetShadowParams? shadow,
+      final double? blurRadius,
+      final double? borderWidth}) = _$_PaymentSheetPrimaryButtonShape;
+
+  factory _PaymentSheetPrimaryButtonShape.fromJson(Map<String, dynamic> json) =
+      _$_PaymentSheetPrimaryButtonShape.fromJson;
+
+  @override
+
+  /// Configuration of the primary button's shadow.
+  PaymentSheetShadowParams? get shadow => throw _privateConstructorUsedError;
+  @override
+
+  /// the blur radius of the button
+  double? get blurRadius => throw _privateConstructorUsedError;
+  @override
+
+  /// border width of the primary button on the payment sheet
+  double? get borderWidth => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PaymentSheetPrimaryButtonShapeCopyWith<_$_PaymentSheetPrimaryButtonShape>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+PaymentSheetPrimaryButtonTheme _$PaymentSheetPrimaryButtonThemeFromJson(
+    Map<String, dynamic> json) {
+  return _PaymentSheetPrimaryButtonTheme.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentSheetPrimaryButtonTheme {
+  /// Colors when displaying button in dark theme
+  PaymentSheetPrimaryButtonThemeColors? get dark =>
+      throw _privateConstructorUsedError;
+
+  /// Colors when displaying button in light theme
+  PaymentSheetPrimaryButtonThemeColors? get light =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentSheetPrimaryButtonThemeCopyWith<PaymentSheetPrimaryButtonTheme>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentSheetPrimaryButtonThemeCopyWith<$Res> {
+  factory $PaymentSheetPrimaryButtonThemeCopyWith(
+          PaymentSheetPrimaryButtonTheme value,
+          $Res Function(PaymentSheetPrimaryButtonTheme) then) =
+      _$PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res>;
+  $Res call(
+      {PaymentSheetPrimaryButtonThemeColors? dark,
+      PaymentSheetPrimaryButtonThemeColors? light});
+
+  $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>? get dark;
+  $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>? get light;
+}
+
+/// @nodoc
+class _$PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res>
+    implements $PaymentSheetPrimaryButtonThemeCopyWith<$Res> {
+  _$PaymentSheetPrimaryButtonThemeCopyWithImpl(this._value, this._then);
+
+  final PaymentSheetPrimaryButtonTheme _value;
+  // ignore: unused_field
+  final $Res Function(PaymentSheetPrimaryButtonTheme) _then;
+
+  @override
+  $Res call({
+    Object? dark = freezed,
+    Object? light = freezed,
+  }) {
+    return _then(_value.copyWith(
+      dark: dark == freezed
+          ? _value.dark
+          : dark // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetPrimaryButtonThemeColors?,
+      light: light == freezed
+          ? _value.light
+          : light // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetPrimaryButtonThemeColors?,
+    ));
+  }
+
+  @override
+  $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>? get dark {
+    if (_value.dark == null) {
+      return null;
+    }
+
+    return $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>(_value.dark!,
+        (value) {
+      return _then(_value.copyWith(dark: value));
+    });
+  }
+
+  @override
+  $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>? get light {
+    if (_value.light == null) {
+      return null;
+    }
+
+    return $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>(_value.light!,
+        (value) {
+      return _then(_value.copyWith(light: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_PaymentSheetPrimaryButtonThemeCopyWith<$Res>
+    implements $PaymentSheetPrimaryButtonThemeCopyWith<$Res> {
+  factory _$$_PaymentSheetPrimaryButtonThemeCopyWith(
+          _$_PaymentSheetPrimaryButtonTheme value,
+          $Res Function(_$_PaymentSheetPrimaryButtonTheme) then) =
+      __$$_PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {PaymentSheetPrimaryButtonThemeColors? dark,
+      PaymentSheetPrimaryButtonThemeColors? light});
+
+  @override
+  $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>? get dark;
+  @override
+  $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>? get light;
+}
+
+/// @nodoc
+class __$$_PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res>
+    extends _$PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res>
+    implements _$$_PaymentSheetPrimaryButtonThemeCopyWith<$Res> {
+  __$$_PaymentSheetPrimaryButtonThemeCopyWithImpl(
+      _$_PaymentSheetPrimaryButtonTheme _value,
+      $Res Function(_$_PaymentSheetPrimaryButtonTheme) _then)
+      : super(_value, (v) => _then(v as _$_PaymentSheetPrimaryButtonTheme));
+
+  @override
+  _$_PaymentSheetPrimaryButtonTheme get _value =>
+      super._value as _$_PaymentSheetPrimaryButtonTheme;
+
+  @override
+  $Res call({
+    Object? dark = freezed,
+    Object? light = freezed,
+  }) {
+    return _then(_$_PaymentSheetPrimaryButtonTheme(
+      dark: dark == freezed
+          ? _value.dark
+          : dark // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetPrimaryButtonThemeColors?,
+      light: light == freezed
+          ? _value.light
+          : light // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetPrimaryButtonThemeColors?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_PaymentSheetPrimaryButtonTheme
+    implements _PaymentSheetPrimaryButtonTheme {
+  const _$_PaymentSheetPrimaryButtonTheme({this.dark, this.light});
+
+  factory _$_PaymentSheetPrimaryButtonTheme.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_PaymentSheetPrimaryButtonThemeFromJson(json);
+
+  /// Colors when displaying button in dark theme
+  @override
+  final PaymentSheetPrimaryButtonThemeColors? dark;
+
+  /// Colors when displaying button in light theme
+  @override
+  final PaymentSheetPrimaryButtonThemeColors? light;
+
+  @override
+  String toString() {
+    return 'PaymentSheetPrimaryButtonTheme(dark: $dark, light: $light)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentSheetPrimaryButtonTheme &&
+            const DeepCollectionEquality().equals(other.dark, dark) &&
+            const DeepCollectionEquality().equals(other.light, light));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(dark),
+      const DeepCollectionEquality().hash(light));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_PaymentSheetPrimaryButtonThemeCopyWith<_$_PaymentSheetPrimaryButtonTheme>
+      get copyWith => __$$_PaymentSheetPrimaryButtonThemeCopyWithImpl<
+          _$_PaymentSheetPrimaryButtonTheme>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentSheetPrimaryButtonThemeToJson(this);
+  }
+}
+
+abstract class _PaymentSheetPrimaryButtonTheme
+    implements PaymentSheetPrimaryButtonTheme {
+  const factory _PaymentSheetPrimaryButtonTheme(
+          {final PaymentSheetPrimaryButtonThemeColors? dark,
+          final PaymentSheetPrimaryButtonThemeColors? light}) =
+      _$_PaymentSheetPrimaryButtonTheme;
+
+  factory _PaymentSheetPrimaryButtonTheme.fromJson(Map<String, dynamic> json) =
+      _$_PaymentSheetPrimaryButtonTheme.fromJson;
+
+  @override
+
+  /// Colors when displaying button in dark theme
+  PaymentSheetPrimaryButtonThemeColors? get dark =>
+      throw _privateConstructorUsedError;
+  @override
+
+  /// Colors when displaying button in light theme
+  PaymentSheetPrimaryButtonThemeColors? get light =>
+      throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PaymentSheetPrimaryButtonThemeCopyWith<_$_PaymentSheetPrimaryButtonTheme>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+PaymentSheetPrimaryButtonThemeColors
+    _$PaymentSheetPrimaryButtonThemeColorsFromJson(Map<String, dynamic> json) {
+  return _PaymentSheetPrimaryButtonThemeColors.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentSheetPrimaryButtonThemeColors {
+  /// Primary button background color
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get background => throw _privateConstructorUsedError;
+
+  /// Primary button text color
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get text => throw _privateConstructorUsedError;
+
+  /// Primary button border color
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get border => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentSheetPrimaryButtonThemeColorsCopyWith<
+          PaymentSheetPrimaryButtonThemeColors>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res> {
+  factory $PaymentSheetPrimaryButtonThemeColorsCopyWith(
+          PaymentSheetPrimaryButtonThemeColors value,
+          $Res Function(PaymentSheetPrimaryButtonThemeColors) then) =
+      _$PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res>;
+  $Res call(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? background,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? text,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? border});
+}
+
+/// @nodoc
+class _$PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res>
+    implements $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res> {
+  _$PaymentSheetPrimaryButtonThemeColorsCopyWithImpl(this._value, this._then);
+
+  final PaymentSheetPrimaryButtonThemeColors _value;
+  // ignore: unused_field
+  final $Res Function(PaymentSheetPrimaryButtonThemeColors) _then;
+
+  @override
+  $Res call({
+    Object? background = freezed,
+    Object? text = freezed,
+    Object? border = freezed,
+  }) {
+    return _then(_value.copyWith(
+      background: background == freezed
+          ? _value.background
+          : background // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      text: text == freezed
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      border: border == freezed
+          ? _value.border
+          : border // ignore: cast_nullable_to_non_nullable
+              as Color?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>
+    implements $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res> {
+  factory _$$_PaymentSheetPrimaryButtonThemeColorsCopyWith(
+          _$_PaymentSheetPrimaryButtonThemeColors value,
+          $Res Function(_$_PaymentSheetPrimaryButtonThemeColors) then) =
+      __$$_PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? background,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? text,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          Color? border});
+}
+
+/// @nodoc
+class __$$_PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res>
+    extends _$PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res>
+    implements _$$_PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res> {
+  __$$_PaymentSheetPrimaryButtonThemeColorsCopyWithImpl(
+      _$_PaymentSheetPrimaryButtonThemeColors _value,
+      $Res Function(_$_PaymentSheetPrimaryButtonThemeColors) _then)
+      : super(
+            _value, (v) => _then(v as _$_PaymentSheetPrimaryButtonThemeColors));
+
+  @override
+  _$_PaymentSheetPrimaryButtonThemeColors get _value =>
+      super._value as _$_PaymentSheetPrimaryButtonThemeColors;
+
+  @override
+  $Res call({
+    Object? background = freezed,
+    Object? text = freezed,
+    Object? border = freezed,
+  }) {
+    return _then(_$_PaymentSheetPrimaryButtonThemeColors(
+      background: background == freezed
+          ? _value.background
+          : background // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      text: text == freezed
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      border: border == freezed
+          ? _value.border
+          : border // ignore: cast_nullable_to_non_nullable
+              as Color?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_PaymentSheetPrimaryButtonThemeColors
+    implements _PaymentSheetPrimaryButtonThemeColors {
+  const _$_PaymentSheetPrimaryButtonThemeColors(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.background,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.text,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          this.border});
+
+  factory _$_PaymentSheetPrimaryButtonThemeColors.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_PaymentSheetPrimaryButtonThemeColorsFromJson(json);
+
+  /// Primary button background color
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? background;
+
+  /// Primary button text color
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? text;
+
+  /// Primary button border color
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? border;
+
+  @override
+  String toString() {
+    return 'PaymentSheetPrimaryButtonThemeColors(background: $background, text: $text, border: $border)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentSheetPrimaryButtonThemeColors &&
+            const DeepCollectionEquality()
+                .equals(other.background, background) &&
+            const DeepCollectionEquality().equals(other.text, text) &&
+            const DeepCollectionEquality().equals(other.border, border));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(background),
+      const DeepCollectionEquality().hash(text),
+      const DeepCollectionEquality().hash(border));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_PaymentSheetPrimaryButtonThemeColorsCopyWith<
+          _$_PaymentSheetPrimaryButtonThemeColors>
+      get copyWith => __$$_PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<
+          _$_PaymentSheetPrimaryButtonThemeColors>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentSheetPrimaryButtonThemeColorsToJson(this);
+  }
+}
+
+abstract class _PaymentSheetPrimaryButtonThemeColors
+    implements PaymentSheetPrimaryButtonThemeColors {
+  const factory _PaymentSheetPrimaryButtonThemeColors(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          final Color? background,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          final Color? text,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+          final Color? border}) = _$_PaymentSheetPrimaryButtonThemeColors;
+
+  factory _PaymentSheetPrimaryButtonThemeColors.fromJson(
+          Map<String, dynamic> json) =
+      _$_PaymentSheetPrimaryButtonThemeColors.fromJson;
+
+  @override
+
+  /// Primary button background color
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get background => throw _privateConstructorUsedError;
+  @override
+
+  /// Primary button text color
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get text => throw _privateConstructorUsedError;
+  @override
+
+  /// Primary button border color
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get border => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PaymentSheetPrimaryButtonThemeColorsCopyWith<
+          _$_PaymentSheetPrimaryButtonThemeColors>
       get copyWith => throw _privateConstructorUsedError;
 }
 

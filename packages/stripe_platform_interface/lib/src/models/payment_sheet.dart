@@ -105,6 +105,9 @@ class PaymentSheetAppearance with _$PaymentSheetAppearance {
 
     /// Shapes parameters
     PaymentSheetShape? shapes,
+
+    /// PaymentSheet appearance
+    PaymentSheetPrimaryButtonAppearance? primaryButton,
   }) = _PaymentSheetAppearance;
 
   factory PaymentSheetAppearance.fromJson(Map<String, dynamic> json) =>
@@ -218,6 +221,77 @@ class PaymentSheetShadowOffset with _$PaymentSheetShadowOffset {
 
   factory PaymentSheetShadowOffset.fromJson(Map<String, dynamic> json) =>
       _$PaymentSheetShadowOffsetFromJson(json);
+}
+
+@freezed
+class PaymentSheetPrimaryButtonAppearance
+    with _$PaymentSheetPrimaryButtonAppearance {
+  @JsonSerializable(explicitToJson: true)
+  const factory PaymentSheetPrimaryButtonAppearance({
+    /// color theme of the primary button
+    PaymentSheetPrimaryButtonTheme? colors,
+
+    /// Shape params of the primary button
+    PaymentSheetPrimaryButtonShape? shapes,
+
+  }) = _PaymentSheetPrimaryButtonAppearance;
+
+  factory PaymentSheetPrimaryButtonAppearance.fromJson(
+          Map<String, dynamic> json) =>
+      _$PaymentSheetPrimaryButtonAppearanceFromJson(json);
+}
+@freezed
+class PaymentSheetPrimaryButtonShape with _$PaymentSheetPrimaryButtonShape {
+    @JsonSerializable(explicitToJson: true)
+  const factory PaymentSheetPrimaryButtonShape({
+    /// Configuration of the primary button's shadow.
+    PaymentSheetShadowParams? shadow,
+
+    /// the blur radius of the button
+    double? blurRadius,
+
+    /// border width of the primary button on the payment sheet
+    double? borderWidth,
+  }) = _PaymentSheetPrimaryButtonShape;
+
+  factory PaymentSheetPrimaryButtonShape.fromJson(Map<String, dynamic> json) =>
+      _$PaymentSheetPrimaryButtonShapeFromJson(json);
+}
+
+@freezed
+class PaymentSheetPrimaryButtonTheme with _$PaymentSheetPrimaryButtonTheme {
+  @JsonSerializable(explicitToJson: true)
+  const factory PaymentSheetPrimaryButtonTheme({
+    /// Colors when displaying button in dark theme
+    PaymentSheetPrimaryButtonThemeColors? dark,
+
+    /// Colors when displaying button in light theme
+    PaymentSheetPrimaryButtonThemeColors? light,
+  }) = _PaymentSheetPrimaryButtonTheme;
+
+  factory PaymentSheetPrimaryButtonTheme.fromJson(Map<String, dynamic> json) =>
+      _$PaymentSheetPrimaryButtonThemeFromJson(json);
+}
+
+@freezed
+class PaymentSheetPrimaryButtonThemeColors
+    with _$PaymentSheetPrimaryButtonThemeColors {
+  const factory PaymentSheetPrimaryButtonThemeColors({
+    /// Primary button background color
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+        Color? background,
+
+    /// Primary button text color
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? text,
+
+    /// Primary button border color
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+        Color? border,
+  }) = _PaymentSheetPrimaryButtonThemeColors;
+
+  factory PaymentSheetPrimaryButtonThemeColors.fromJson(
+          Map<String, dynamic> json) =>
+      _$PaymentSheetPrimaryButtonThemeColorsFromJson(json);
 }
 
 class UserInterfaceStyleKey {

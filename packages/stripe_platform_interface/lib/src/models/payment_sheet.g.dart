@@ -69,6 +69,10 @@ _$_PaymentSheetAppearance _$$_PaymentSheetAppearanceFromJson(
       shapes: json['shapes'] == null
           ? null
           : PaymentSheetShape.fromJson(json['shapes'] as Map<String, dynamic>),
+      primaryButton: json['primaryButton'] == null
+          ? null
+          : PaymentSheetPrimaryButtonAppearance.fromJson(
+              json['primaryButton'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_PaymentSheetAppearanceToJson(
@@ -76,6 +80,7 @@ Map<String, dynamic> _$$_PaymentSheetAppearanceToJson(
     <String, dynamic>{
       'colors': instance.colors?.toJson(),
       'shapes': instance.shapes?.toJson(),
+      'primaryButton': instance.primaryButton?.toJson(),
     };
 
 _$_PaymentSheetAppearanceColors _$$_PaymentSheetAppearanceColorsFromJson(
@@ -159,6 +164,83 @@ Map<String, dynamic> _$$_PaymentSheetShadowOffsetToJson(
     <String, dynamic>{
       'x': instance.x,
       'y': instance.y,
+    };
+
+_$_PaymentSheetPrimaryButtonAppearance
+    _$$_PaymentSheetPrimaryButtonAppearanceFromJson(
+            Map<String, dynamic> json) =>
+        _$_PaymentSheetPrimaryButtonAppearance(
+          colors: json['colors'] == null
+              ? null
+              : PaymentSheetPrimaryButtonTheme.fromJson(
+                  json['colors'] as Map<String, dynamic>),
+          shapes: json['shapes'] == null
+              ? null
+              : PaymentSheetPrimaryButtonShape.fromJson(
+                  json['shapes'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$$_PaymentSheetPrimaryButtonAppearanceToJson(
+        _$_PaymentSheetPrimaryButtonAppearance instance) =>
+    <String, dynamic>{
+      'colors': instance.colors?.toJson(),
+      'shapes': instance.shapes?.toJson(),
+    };
+
+_$_PaymentSheetPrimaryButtonShape _$$_PaymentSheetPrimaryButtonShapeFromJson(
+        Map<String, dynamic> json) =>
+    _$_PaymentSheetPrimaryButtonShape(
+      shadow: json['shadow'] == null
+          ? null
+          : PaymentSheetShadowParams.fromJson(
+              json['shadow'] as Map<String, dynamic>),
+      blurRadius: (json['blurRadius'] as num?)?.toDouble(),
+      borderWidth: (json['borderWidth'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$$_PaymentSheetPrimaryButtonShapeToJson(
+        _$_PaymentSheetPrimaryButtonShape instance) =>
+    <String, dynamic>{
+      'shadow': instance.shadow?.toJson(),
+      'blurRadius': instance.blurRadius,
+      'borderWidth': instance.borderWidth,
+    };
+
+_$_PaymentSheetPrimaryButtonTheme _$$_PaymentSheetPrimaryButtonThemeFromJson(
+        Map<String, dynamic> json) =>
+    _$_PaymentSheetPrimaryButtonTheme(
+      dark: json['dark'] == null
+          ? null
+          : PaymentSheetPrimaryButtonThemeColors.fromJson(
+              json['dark'] as Map<String, dynamic>),
+      light: json['light'] == null
+          ? null
+          : PaymentSheetPrimaryButtonThemeColors.fromJson(
+              json['light'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$_PaymentSheetPrimaryButtonThemeToJson(
+        _$_PaymentSheetPrimaryButtonTheme instance) =>
+    <String, dynamic>{
+      'dark': instance.dark?.toJson(),
+      'light': instance.light?.toJson(),
+    };
+
+_$_PaymentSheetPrimaryButtonThemeColors
+    _$$_PaymentSheetPrimaryButtonThemeColorsFromJson(
+            Map<String, dynamic> json) =>
+        _$_PaymentSheetPrimaryButtonThemeColors(
+          background: ColorKey.fromJson(json['background']),
+          text: ColorKey.fromJson(json['text']),
+          border: ColorKey.fromJson(json['border']),
+        );
+
+Map<String, dynamic> _$$_PaymentSheetPrimaryButtonThemeColorsToJson(
+        _$_PaymentSheetPrimaryButtonThemeColors instance) =>
+    <String, dynamic>{
+      'background': ColorKey.toJson(instance.background),
+      'text': ColorKey.toJson(instance.text),
+      'border': ColorKey.toJson(instance.border),
     };
 
 _$_PresentParameters _$$_PresentParametersFromJson(Map<String, dynamic> json) =>
