@@ -1,12 +1,15 @@
+import 'dart:developer' as dev;
 import 'dart:html';
 import 'dart:js';
 import 'dart:ui' as ui;
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_stripe_web/src/utils.dart';
+
 import '../../flutter_stripe_web.dart';
 import '../js/js.dart' as stripe_js;
-import 'dart:developer' as dev;
 
 const kCardFieldDefaultHeight = 10.0;
 const kCardFieldDefaultFontSize = 17.0;
@@ -68,7 +71,7 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
 
   void initStripe() {
     attachController(controller);
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    ambiguate(WidgetsBinding.instance)?.addPostFrameCallback((timeStamp) {
       if (!widget.dangerouslyUpdateFullCardDetails) {
         if (kDebugMode &&
             controller.details !=
@@ -76,7 +79,7 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
           dev.log('WARNING! Initial card data value has been ignored. \n'
               '$kDebugPCIMessage');
         }
-        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        ambiguate(WidgetsBinding.instance)?.addPostFrameCallback((timeStamp) {
           updateCardDetails(
             const CardFieldInputDetails(complete: false),
             controller,

@@ -8,6 +8,7 @@ import 'package:flutter_stripe_web/src/web_stripe.dart';
 
 import '../../flutter_stripe_web.dart';
 import '../js/js.dart' as s;
+import '../utils.dart';
 
 const _kDomElementId = 'native-pay-element';
 
@@ -41,7 +42,7 @@ class WebStripeCardState extends State<NativePayButton> {
   s.Element? element;
 
   void initStripe() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    ambiguate(WidgetsBinding.instance)?.addPostFrameCallback((timeStamp) {
       var paymentRequest = WebStripe.js.paymentRequest(
         s.StripePaymentRequestOptions(
           country: 'ES',

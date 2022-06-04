@@ -1,10 +1,13 @@
 import 'dart:html';
 import 'dart:js';
 import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
 import '../../flutter_stripe_web.dart';
 import '../js/js.dart' as s;
+import '../utils.dart';
 
 class PaymentElement extends StatefulWidget {
   PaymentElement({
@@ -58,7 +61,7 @@ class PaymentElementState extends State<PaymentElement> {
   set element(s.Element? value) => WebStripe.element = value;
 
   void initStripe() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    ambiguate(WidgetsBinding.instance)?.addPostFrameCallback((timeStamp) {
       Future.delayed(const Duration(milliseconds: 100), () {
         element = WebStripe.js.elements().create('payment', createOptions())
           ..mount('#payment-element')
