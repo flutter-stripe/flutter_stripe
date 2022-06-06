@@ -1,3 +1,5 @@
+## 1.1.0
+
 ## 1.0.0
 ** Breaking changes **
 - Support Flutter 3.0.0

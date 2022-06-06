@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_stripe: ^3.1.0
-  flutter_stripe_web: ^1.0.2
+  flutter_stripe_web: ^1.1.0
   stripe_checkout: ^1.0.0
   # pay: ^1.0.8
   http: ^0.13.1
