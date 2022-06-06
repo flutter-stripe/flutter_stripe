@@ -21,7 +21,7 @@ flutter:
 dependencies:
   flutter:
     sdk: flutter
-  stripe_android: ^3.0.0
+  stripe_android: ^3.1.0
   stripe_ios: ^3.1.0
   stripe_platform_interface: ^3.1.0
 dev_dependencies:
