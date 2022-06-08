@@ -1,26 +1,26 @@
 PODS:
   - Flutter (1.0.0)
-  - Stripe (22.3.0):
-    - Stripe/Stripe3DS2 (= 22.3.0)
-    - StripeApplePay (= 22.3.0)
-    - StripeCore (= 22.3.0)
-    - StripeUICore (= 22.3.0)
-  - Stripe/Stripe3DS2 (22.3.0):
-    - StripeApplePay (= 22.3.0)
-    - StripeCore (= 22.3.0)
-    - StripeUICore (= 22.3.0)
+  - Stripe (22.4.0):
+    - Stripe/Stripe3DS2 (= 22.4.0)
+    - StripeApplePay (= 22.4.0)
+    - StripeCore (= 22.4.0)
+    - StripeUICore (= 22.4.0)
+  - Stripe/Stripe3DS2 (22.4.0):
+    - StripeApplePay (= 22.4.0)
+    - StripeCore (= 22.4.0)
+    - StripeUICore (= 22.4.0)
   - stripe_ios (0.0.1):
     - Flutter
-    - Stripe (~> 22.3.0)
-    - StripeFinancialConnections (~> 22.3.0)
-  - StripeApplePay (22.3.0):
-    - StripeCore (= 22.3.0)
-  - StripeCore (22.3.0)
-  - StripeFinancialConnections (22.3.0):
-    - StripeCore (= 22.3.0)
-    - StripeUICore (= 22.3.0)
-  - StripeUICore (22.3.0):
-    - StripeCore (= 22.3.0)
+    - Stripe (~> 22.4.0)
+    - StripeFinancialConnections (~> 22.4.0)
+  - StripeApplePay (22.4.0):
+    - StripeCore (= 22.4.0)
+  - StripeCore (22.4.0)
+  - StripeFinancialConnections (22.4.0):
+    - StripeCore (= 22.4.0)
+    - StripeUICore (= 22.4.0)
+  - StripeUICore (22.4.0):
+    - StripeCore (= 22.4.0)
   - webview_flutter_wkwebview (0.0.1):
     - Flutter
 
@@ -47,12 +47,12 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
-  Stripe: b2426ce648aa240a812b6749c09d3839111a9cbb
-  stripe_ios: a0a5c4e07e65afc7370a5d7432af6292c68482c5
-  StripeApplePay: 0b0b744805d36940fd58d0a928c54beb04f1136c
-  StripeCore: 88a3b50b3237b8e1661e48905f2813dedf200540
-  StripeFinancialConnections: d817bcfea7c6c9728dc6801afff813ff77828c65
-  StripeUICore: 5e5abb79e87b86b54919ed7c9d14446254d012a0
+  Stripe: a925dfa9a7e51aa8f782f428abc10cb828b45a85
+  stripe_ios: ba9cf4ad304acf74500b0a2cdd46b519173388c6
+  StripeApplePay: 369857bafe8baf02e31b47478db1574febd2a2f3
+  StripeCore: a94d2823817c97c79fce60884ab9027a2da798c1
+  StripeFinancialConnections: 269658b79f639c2d6b7d513235d469418b04c2dd
+  StripeUICore: a8e24a6c91a5c99075c7a490d45695fb912876e8
   webview_flutter_wkwebview: b7e70ef1ddded7e69c796c7390ee74180182971f
 
 PODFILE CHECKSUM: 4e8f8b2be68aeea4c0d5beb6ff1e79fface1d048

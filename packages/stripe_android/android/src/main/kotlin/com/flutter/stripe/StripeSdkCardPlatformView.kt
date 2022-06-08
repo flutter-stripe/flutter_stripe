@@ -70,28 +70,6 @@ class StripeSdkCardPlatformView(
                 binding.cvcEditText.setText(it)
             }
         }
-        applyFocusFix()
-    }
-
-    /**
-     * https://github.com/flutter-stripe/flutter_stripe/issues/14
-     * https://github.com/flutter/engine/pull/26602 HC_PLATFORM_VIEW was introduced in
-     * that PR - we're checking for its availability and apply the old fix accordingly
-     */
-    private fun applyFocusFix() {
-        try {
-            val enumConstants = Class.forName("io.flutter.plugin.editing.TextInputPlugin\$InputTarget\$Type").enumConstants as Array<Enum<*>>
-            val shouldApplyFix = enumConstants.none { it.name == "HC_PLATFORM_VIEW" || it.name == "FRAMEWORK_CLIENT" }
-            if (shouldApplyFix) {
-                // Temporal fix to https://github.com/flutter/flutter/issues/81029
-                val binding = CardInputWidgetBinding.bind(cardView.mCardWidget)
-                binding.cardNumberEditText.inputType = InputType.TYPE_CLASS_TEXT
-                binding.cvcEditText.inputType = InputType.TYPE_CLASS_TEXT
-                binding.expiryDateEditText.inputType = InputType.TYPE_CLASS_TEXT
-            }
-        } catch (e: Exception) {
-            Log.e("Stripe Plugin", "Error", e)
-        }
     }
 
     override fun getView(): View {

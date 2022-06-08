@@ -6,6 +6,7 @@ import android.graphics.Typeface
 import android.os.Build
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.FrameLayout
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
@@ -20,6 +21,8 @@ import com.stripe.android.model.PaymentMethodCreateParams
 import com.stripe.android.view.CardInputListener
 import com.stripe.android.view.CardInputWidget
 import com.stripe.android.view.CardValidCallback
+import com.stripe.android.view.StripeEditText
+import java.lang.Exception
 
 class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
   internal var mCardWidget: CardInputWidget = CardInputWidget(context)
@@ -89,7 +92,8 @@ class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
       cardInputWidgetBinding.cardNumberEditText,
       cardInputWidgetBinding.cvcEditText,
       cardInputWidgetBinding.expiryDateEditText,
-      cardInputWidgetBinding.postalCodeEditText)
+      cardInputWidgetBinding.postalCodeEditText
+    )
 
     textColor?.let {
       for (editTextBinding in bindings) {
@@ -105,6 +109,7 @@ class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
       for (editTextBinding in bindings) {
         editTextBinding.setHintTextColor(Color.parseColor(it))
       }
+      setCardBrandTint(Color.parseColor(it))
     }
     fontSize?.let {
       for (editTextBinding in bindings) {
@@ -148,6 +153,19 @@ class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
       backgroundColor?.let {
         shape.fillColor = ColorStateList.valueOf(Color.parseColor(it))
       }
+    }
+  }
+
+  private fun setCardBrandTint(color: Int) {
+    try {
+      cardInputWidgetBinding.cardBrandView::class.java.getDeclaredField("tintColorInt").let { internalTintColor ->
+        internalTintColor.isAccessible = true
+        internalTintColor.set(cardInputWidgetBinding.cardBrandView, color)
+      }
+    } catch (e: Exception) {
+      Log.e(
+        "StripeReactNative",
+        "Unable to set card brand tint color: " + e.message)
     }
   }
 
@@ -228,9 +246,18 @@ class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
     }
 
     mCardWidget.setCardValidCallback { isValid, invalidFields ->
-      cardDetails["validNumber"] = if (invalidFields.contains(CardValidCallback.Fields.Number)) "Invalid" else "Valid"
-      cardDetails["validCVC"] = if (invalidFields.contains(CardValidCallback.Fields.Cvc)) "Invalid" else "Valid"
-      cardDetails["validExpiryDate"] = if (invalidFields.contains(CardValidCallback.Fields.Expiry)) "Invalid" else "Valid"
+      fun getCardValidationState(field: CardValidCallback.Fields, editTextField: StripeEditText): String {
+        if (invalidFields.contains(field)) {
+          return if (editTextField.shouldShowError) "Invalid"
+          else "Incomplete"
+        }
+        return "Valid"
+      }
+
+      cardDetails["validNumber"] = getCardValidationState(CardValidCallback.Fields.Number, cardInputWidgetBinding.cardNumberEditText)
+      cardDetails["validCVC"] = getCardValidationState(CardValidCallback.Fields.Cvc, cardInputWidgetBinding.cvcEditText)
+      cardDetails["validExpiryDate"] = getCardValidationState(CardValidCallback.Fields.Expiry, cardInputWidgetBinding.expiryDateEditText)
+
       if (isValid) {
         onValidCardChange()
       } else {
