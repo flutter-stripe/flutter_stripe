@@ -1,3 +1,6 @@
+## 3.1.1
+- Fix #771
+
 ## 3.1.0
 - Added styling parameters for the payment sheet.
 - Better error logging for Google Pay.
@@ -6,7 +9,6 @@
 - Make Flutter Stripe backwards compatible with Flutter v2.
 - Fix #731 Styling for the Cardform field.
 - Several fixes by the Stripe sdk [v.0.10.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.10.0), [v.0.11.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.11.0) and [v.0.12.0](https://github.com/stripe/stripe-react-native/releases/tag/0.12.0) .
-
 
 ## 3.0.2
 - fix internal dependency version to stripe_platform_interface

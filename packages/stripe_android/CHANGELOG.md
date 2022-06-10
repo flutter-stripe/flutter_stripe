@@ -1,3 +1,6 @@
+## 3.1.1
+- Fix #771
+
 ## 3.1.0
 - Added styling parameters for the payment sheet.
 - Better error logging for Google Pay.
