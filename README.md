@@ -47,7 +47,8 @@ dart pub add flutter_stripe
 This plugin requires several changes to be able to work on Android devices. Please make sure you follow all these steps:
 
 1. Use Android 5.0 (API level 21) and above
-2. Use Kotlin version 1.5.0 and above: [example](https://github.com/flutter-stripe/flutter_stripe/blob/79b201a2e9b827196d6a97bb41e1d0e526632a5a/example/android/build.gradle#L2)
+2. Use Kotlin version 1.5.0 and above: [example](https://github.com/flutter-stripe/flutter_stripe/blob/79b201a2e9b827196d6a97bb41e1d0e526632a5a/example/android/
+.gradle#L2)
 3. Using a descendant of `Theme.AppCompat` for your activity: [example](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/app/src/main/res/values/styles.xml#L15), [example night theme](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/app/src/main/res/values-night/styles.xml#L16)
 4. Using an up-to-date Android gradle build tools version: [example](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/build.gradle#L9) and an up-to-date gradle version accordingly: [example](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/gradle/wrapper/gradle-wrapper.properties#L6) 
 5. Using `FlutterFragmentActivity` instead of `FlutterActivity` in `MainActivity.kt`: [example](https://github.com/flutter-stripe/flutter_stripe/blob/79b201a2e9b827196d6a97bb41e1d0e526632a5a/example/android/app/src/main/kotlin/com/flutter/stripe/example/MainActivity.kt#L6)
@@ -80,8 +81,8 @@ The library provides three UI componets for accepting card payments: the `CardFi
 
 We recommend using the `PaymentSheet` for the most easy and smooth Stripe integration. It provides out of the box support for:
 - Localized labels and error messages to the users
-- Build-in animations
-- Build-in Google Pay and Apple Pay buttons
+- Built-in animations
+- Built-in Google Pay and Apple Pay buttons
 - Handling 3D-secure
 
 Notice that `PaymentSheet` is only available for Android and iOS.
