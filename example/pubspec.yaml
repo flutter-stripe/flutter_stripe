@@ -13,7 +13,7 @@ dependencies:
   flutter_stripe: ^3.1.0
   flutter_stripe_web: ^1.1.0
   stripe_checkout: ^1.0.0
-  # pay: ^1.0.8
+  pay: ^1.0.10
   http: ^0.13.1
   font_awesome_flutter: ^9.2.0
   platform: ^3.0.0
