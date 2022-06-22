@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.WritableMap
@@ -75,14 +74,15 @@ class PaymentSheetFragment(
         option.putString("label", paymentOption.label)
         option.putString("image", imageString)
         presentPromise?.resolve(createResult("paymentOption", option))
+      } else {
+        presentPromise?.resolve(createError(PaymentSheetErrorType.Canceled.toString(), "The payment option selection flow has been canceled"))
       }
-      presentPromise?.resolve(WritableNativeMap())
     }
 
     val paymentResultCallback = PaymentSheetResultCallback { paymentResult ->
       when (paymentResult) {
         is PaymentSheetResult.Canceled -> {
-          val message = "The payment has been canceled"
+          val message = "The payment flow has been canceled"
           confirmPromise?.resolve(createError(PaymentSheetErrorType.Canceled.toString(), message))
             ?: run {
               presentPromise?.resolve(createError(PaymentSheetErrorType.Canceled.toString(), message))
