@@ -42,8 +42,11 @@ public class ReadableMap {
         }
     }
 
-    public Integer getInt(String key) {
-        return map.optInt(key);
+    public Integer getInt(String key) throws Exception {
+        if (map.opt(key) instanceof Double) {
+            throw new Exception("We've got a double here");
+        }
+        return map.getInt(key);
     }
 
     public @Nullable ReadableMap getMap(String key) {
