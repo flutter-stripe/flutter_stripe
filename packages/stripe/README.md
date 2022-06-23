@@ -58,7 +58,7 @@ If you are having troubles to make this package to work on Android, join [this d
 
 #### iOS
 
-Compatible with apps targeting iOS 11 or above.
+Compatible with apps targeting iOS 12 or above.
 
 #### Web (Experimental)
 

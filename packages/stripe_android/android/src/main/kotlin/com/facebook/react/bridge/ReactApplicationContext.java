@@ -3,6 +3,8 @@ package com.facebook.react.bridge;
 import android.app.Activity;
 import android.content.ContextWrapper;
 
+import androidx.fragment.app.FragmentActivity;
+
 import com.flutter.stripe.StripeAndroidPlugin;
 
 import org.jetbrains.annotations.NotNull;
@@ -25,11 +27,11 @@ public class ReactApplicationContext extends ContextWrapper {
         binding.addActivityResultListener(activityEventListener);
     }
 
-    public Activity getActivity() {
-        return binding.getActivity();
+    public FragmentActivity getActivity() {
+        return (FragmentActivity) binding.getActivity();
     }
 
-    public Activity getCurrentActivity() {
-        return binding.getActivity();
+    public FragmentActivity getCurrentActivity() {
+        return (FragmentActivity) binding.getActivity();
     }
 }

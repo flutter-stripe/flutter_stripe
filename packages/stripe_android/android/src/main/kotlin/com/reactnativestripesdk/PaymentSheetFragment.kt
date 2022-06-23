@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.WritableMap
@@ -99,7 +100,7 @@ class PaymentSheetFragment(
           }
         }
       }
-      (context.currentActivity as? AppCompatActivity)?.supportFragmentManager?.beginTransaction()?.remove(this)?.commitAllowingStateLoss()
+      context.currentActivity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commitAllowingStateLoss()
     }
 
     var defaultBillingDetails: PaymentSheet.BillingDetails? = null
