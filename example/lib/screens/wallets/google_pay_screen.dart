@@ -5,17 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
+import 'package:pay/pay.dart' as pay;
 import 'package:stripe_example/config.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
-// import 'package:pay/pay.dart' as pay;
 
-// const _paymentItems = [
-//   pay.PaymentItem(
-//     label: 'Total',
-//     amount: '99.99',
-//     status: pay.PaymentItemStatus.final_price,
-//   )
-// ];
+const _paymentItems = [
+  pay.PaymentItem(
+    label: 'Total',
+    amount: '99.99',
+    status: pay.PaymentItemStatus.final_price,
+  )
+];
 
 class GooglePayScreen extends StatefulWidget {
   @override
@@ -44,33 +44,28 @@ class _GooglePayScreenState extends State<GooglePayScreen> {
       padding: EdgeInsets.all(16),
       tags: ['Android', 'Pay plugin'],
       children: [
-        SizedBox(
-          child: Text(
-              'Pay is temporaliy disabled because of https://github.com/google-pay/flutter-plugin/issues/126'),
-        )
-
-        // pay.GooglePayButton(
-        //   paymentConfigurationAsset: 'google_pay_payment_profile.json',
-        //   paymentItems: _paymentItems,
-        //   margin: const EdgeInsets.only(top: 15),
-        //   onPaymentResult: onGooglePayResult,
-        //   loadingIndicator: const Center(
-        //     child: CircularProgressIndicator(),
-        //   ),
-        //   onPressed: () async {
-        //     // 1. Add your stripe publishable key to assets/google_pay_payment_profile.json
-        //     await debugChangedStripePublishableKey();
-        //   },
-        //   childOnError: Text('Google Pay is not available in this device'),
-        //   onError: (e) {
-        //     ScaffoldMessenger.of(context).showSnackBar(
-        //       const SnackBar(
-        //         content: Text(
-        //             'There was an error while trying to perform the payment'),
-        //       ),
-        //     );
-        //   },
-        // ),
+        pay.GooglePayButton(
+          paymentConfigurationAsset: 'google_pay_payment_profile.json',
+          paymentItems: _paymentItems,
+          margin: const EdgeInsets.only(top: 15),
+          onPaymentResult: onGooglePayResult,
+          loadingIndicator: const Center(
+            child: CircularProgressIndicator(),
+          ),
+          onPressed: () async {
+            // 1. Add your stripe publishable key to assets/google_pay_payment_profile.json
+            await debugChangedStripePublishableKey();
+          },
+          childOnError: Text('Google Pay is not available in this device'),
+          onError: (e) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text(
+                    'There was an error while trying to perform the payment'),
+              ),
+            );
+          },
+        ),
       ],
     );
   }
