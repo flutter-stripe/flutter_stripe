@@ -11,23 +11,24 @@ import '../utils.dart';
 
 /// Customizable form that collects card information.
 class CardField extends StatefulWidget {
-  const CardField(
-      {this.onCardChanged,
-      Key? key,
-      this.onFocus,
-      this.decoration,
-      this.enablePostalCode = false,
-      this.style,
-      this.autofocus = false,
-      this.dangerouslyGetFullCardDetails = false,
-      this.dangerouslyUpdateFullCardDetails = false,
-      this.cursorColor,
-      this.numberHintText,
-      this.expirationHintText,
-      this.cvcHintText,
-      this.postalCodeHintText,
-      this.controller})
-      : super(key: key);
+  const CardField({
+    this.onCardChanged,
+    Key? key,
+    this.onFocus,
+    this.decoration,
+    this.enablePostalCode = false,
+    this.countryCode,
+    this.style,
+    this.autofocus = false,
+    this.dangerouslyGetFullCardDetails = false,
+    this.dangerouslyUpdateFullCardDetails = false,
+    this.cursorColor,
+    this.numberHintText,
+    this.expirationHintText,
+    this.cvcHintText,
+    this.postalCodeHintText,
+    this.controller,
+  }) : super(key: key);
 
   /// Decoration related to the input fields.
   final InputDecoration? decoration;
@@ -50,6 +51,12 @@ class CardField extends StatefulWidget {
   /// check as defined in https://stripe.com/docs/radar/rules#traditional-bank-checks
   /// make sure this one is set to `true`.
   final bool enablePostalCode;
+
+  /// Controls the postal code entry shown (when `enablePostalCode` is set to true).
+  ///
+  /// Defaults to the device's default locale. This is not supported on the web.
+
+  final String? countryCode;
 
   /// Hint text for the card number field.
   final String? numberHintText;
@@ -167,6 +174,7 @@ class _CardFieldState extends State<CardField> {
               style: style,
               placeholder: placeholder,
               enablePostalCode: widget.enablePostalCode,
+              countryCode: widget.countryCode,
               dangerouslyGetFullCardDetails:
                   widget.dangerouslyGetFullCardDetails,
               dangerouslyUpdateFullCardDetails:
@@ -251,6 +259,7 @@ class _MethodChannelCardField extends StatefulWidget {
     this.style,
     this.placeholder,
     this.enablePostalCode = false,
+    this.countryCode,
     double? width,
     double? height = kCardFieldDefaultHeight,
     BoxConstraints? constraints,
@@ -271,6 +280,7 @@ class _MethodChannelCardField extends StatefulWidget {
   final CardStyle? style;
   final CardPlaceholder? placeholder;
   final bool enablePostalCode;
+  final String? countryCode;
   final FocusNode? focusNode;
   final bool autofocus;
   final CardEditController controller;
@@ -368,6 +378,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
       'cardStyle': style.toJson(),
       'placeholder': placeholder.toJson(),
       'postalCodeEnabled': widget.enablePostalCode,
+      'countryCode': widget.countryCode,
       'dangerouslyGetFullCardDetails': widget.dangerouslyGetFullCardDetails,
       if (widget.dangerouslyUpdateFullCardDetails &&
           controller.initalDetails != null)
@@ -439,6 +450,12 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
     if (widget.enablePostalCode != oldWidget.enablePostalCode) {
       _methodChannel?.invokeMethod('onPostalCodeEnabledChanged', {
         'postalCodeEnabled': widget.enablePostalCode,
+      });
+    }
+
+    if (widget.countryCode != oldWidget.countryCode) {
+      _methodChannel?.invokeMethod('onCountryCodeChanged', {
+        'countryCode': widget.countryCode,
       });
     }
     if (widget.dangerouslyGetFullCardDetails !=

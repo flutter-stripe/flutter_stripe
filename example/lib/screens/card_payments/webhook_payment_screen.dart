@@ -37,6 +37,9 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
         ),
         SizedBox(height: 20),
         CardField(
+          enablePostalCode: true,
+          countryCode: 'US',
+          postalCodeHintText: 'Enter the us postal code',
           onCardChanged: (card) {
             setState(() {
               _card = card;
