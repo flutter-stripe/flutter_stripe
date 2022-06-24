@@ -30,6 +30,7 @@ Map<String, dynamic> _$$_CreateTokenParamsLegacyToJson(
 const _$TokenTypeEnumMap = {
   TokenType.Card: 'Card',
   TokenType.BankAccount: 'BankAccount',
+  TokenType.Pii: 'Pii',
 };
 
 _$_CreateTokenParamsCard _$$_CreateTokenParamsCardFromJson(
@@ -61,6 +62,20 @@ Map<String, dynamic> _$$_CreateTokenParamsBankAccountToJson(
       'runtimeType': instance.$type,
     };
 
+_$_CreateTokenParamsPII _$$_CreateTokenParamsPIIFromJson(
+        Map<String, dynamic> json) =>
+    _$_CreateTokenParamsPII(
+      params: PIITokenParams.fromJson(json['params'] as Map<String, dynamic>),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$_CreateTokenParamsPIIToJson(
+        _$_CreateTokenParamsPII instance) =>
+    <String, dynamic>{
+      'params': instance.params.toJson(),
+      'runtimeType': instance.$type,
+    };
+
 _$_CardTokenParams _$$_CardTokenParamsFromJson(Map<String, dynamic> json) =>
     _$_CardTokenParams(
       type: $enumDecodeNullable(_$TokenTypeEnumMap, json['type']) ??
@@ -78,6 +93,19 @@ Map<String, dynamic> _$$_CardTokenParamsToJson(_$_CardTokenParams instance) =>
       'name': instance.name,
       'address': instance.address,
       'currency': instance.currency,
+    };
+
+_$_PIITokenParams _$$_PIITokenParamsFromJson(Map<String, dynamic> json) =>
+    _$_PIITokenParams(
+      type: $enumDecodeNullable(_$TokenTypeEnumMap, json['type']) ??
+          TokenType.Pii,
+      personalId: json['personalId'] as String,
+    );
+
+Map<String, dynamic> _$$_PIITokenParamsToJson(_$_PIITokenParams instance) =>
+    <String, dynamic>{
+      'type': _$TokenTypeEnumMap[instance.type],
+      'personalId': instance.personalId,
     };
 
 _$_BankAccountTokenParams _$$_BankAccountTokenParamsFromJson(
