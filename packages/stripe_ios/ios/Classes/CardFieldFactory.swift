@@ -72,6 +72,7 @@ class CardFieldPlatformView: NSObject, FlutterPlatformView, STPPaymentCardTextFi
             
         case "onStyleChanged",
             "onPostalCodeEnabledChanged",
+            "onCountryCodeChangedEvent",
             "onPlaceholderChanged",
             "dangerouslyGetFullCardDetails",
             "autofocus":

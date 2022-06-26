@@ -94,8 +94,7 @@ abstract class CardFormFieldContext {
 class CardFormEditController extends ChangeNotifier {
   CardFormEditController({CardFieldInputDetails? initialDetails})
       : _initalDetails = initialDetails,
-        _details =
-            initialDetails ?? const CardFieldInputDetails(complete: false);
+        _details = initialDetails ?? const CardFieldInputDetails(complete: false);
 
   final CardFieldInputDetails? _initalDetails;
   CardFieldInputDetails _details;
@@ -133,15 +132,13 @@ class CardFormEditController extends ChangeNotifier {
 
   CardFormFieldContext? _context;
   CardFormFieldContext get context {
-    assert(
-        _context != null, 'CardEditController is not attached to any CardView');
+    assert(_context != null, 'CardEditController is not attached to any CardView');
     return _context!;
   }
 }
 
 class _CardFormFieldState extends State<CardFormField> {
-  final FocusNode _node =
-      FocusNode(debugLabel: 'CardFormField', descendantsAreFocusable: false);
+  final FocusNode _node = FocusNode(debugLabel: 'CardFormField', descendantsAreFocusable: false);
 
   CardFormEditController? _fallbackController;
   CardFormEditController get controller {
@@ -238,16 +235,13 @@ class _MethodChannelCardFormField extends StatefulWidget {
   static final _key = UniqueKey();
 
   @override
-  _MethodChannelCardFormFieldState createState() =>
-      _MethodChannelCardFormFieldState();
+  _MethodChannelCardFormFieldState createState() => _MethodChannelCardFormFieldState();
 }
 
-class _MethodChannelCardFormFieldState
-    extends State<_MethodChannelCardFormField> with CardFormFieldContext {
+class _MethodChannelCardFormFieldState extends State<_MethodChannelCardFormField> with CardFormFieldContext {
   MethodChannel? _methodChannel;
 
-  final _focusNode =
-      FocusNode(debugLabel: 'CardFormField', descendantsAreFocusable: false);
+  final _focusNode = FocusNode(debugLabel: 'CardFormField', descendantsAreFocusable: false);
   FocusNode get _effectiveNode => widget.focusNode ?? _focusNode;
 
   CardFormStyle? _lastStyle;
@@ -265,8 +259,7 @@ class _MethodChannelCardFormFieldState
     controller._context = this;
     // Reset card fields if dangerouslyUpdateFullCardDetails is false
     if (!widget.dangerouslyUpdateFullCardDetails) {
-      if (kDebugMode &&
-          controller.details != const CardFieldInputDetails(complete: false)) {
+      if (kDebugMode && controller.details != const CardFieldInputDetails(complete: false)) {
         dev.log('WARNING! Initial card data value has been ignored. \n'
             '$kDebugPCIMessage');
       }
@@ -295,8 +288,7 @@ class _MethodChannelCardFormFieldState
       'cardStyle': style.toJson(),
       'postalCodeEnabled': widget.enablePostalCode,
       'dangerouslyGetFullCardDetails': widget.dangerouslyGetFullCardDetails,
-      if (widget.dangerouslyUpdateFullCardDetails &&
-          controller._initalDetails != null)
+      if (widget.dangerouslyUpdateFullCardDetails && controller._initalDetails != null)
         'cardDetails': controller._initalDetails?.toJson(),
       'autofocus': widget.autofocus,
       'defaultValues': {
@@ -363,8 +355,7 @@ class _MethodChannelCardFormFieldState
   @override
   void didUpdateWidget(covariant _MethodChannelCardFormField oldWidget) {
     if (widget.controller != oldWidget.controller) {
-      assert(controller._context == null,
-          'CardEditController is already attached to a CardView');
+      assert(controller._context == null, 'CardEditController is already attached to a CardView');
       oldWidget.controller._context = this;
       controller._context = this;
     }
@@ -384,8 +375,7 @@ class _MethodChannelCardFormFieldState
         },
       );
     }
-    if (widget.dangerouslyGetFullCardDetails !=
-        oldWidget.dangerouslyGetFullCardDetails) {
+    if (widget.dangerouslyGetFullCardDetails != oldWidget.dangerouslyGetFullCardDetails) {
       _methodChannel?.invokeMethod('dangerouslyGetFullCardDetails', {
         'dangerouslyGetFullCardDetails': widget.dangerouslyGetFullCardDetails,
       });
@@ -438,8 +428,7 @@ class _MethodChannelCardFormFieldState
       final map = Map<String, dynamic>.from(arguments);
       final field = CardFieldFocusName.fromJson(map);
       if (field.focusedField != null &&
-          ambiguate(WidgetsBinding.instance)?.focusManager.primaryFocus !=
-              _effectiveNode) {
+          ambiguate(WidgetsBinding.instance)?.focusManager.primaryFocus != _effectiveNode) {
         _effectiveNode.requestFocus();
       }
       widget.onFocus?.call(field.focusedField);
@@ -557,6 +546,6 @@ class _UiKitCardFormField extends StatelessWidget {
 
 const kCardFormFieldDefaultAndroidHeight = 270.0;
 const kCardFormFieldDefaultIOSHeight = 170.0;
-const kCardFormFieldDefaultFontSize = 17.0;
+const kCardFormFieldDefaultFontSize = 17;
 const kCardFormFieldDefaultTextColor = Colors.black;
 const kCardFormFieldDefaultFontFamily = 'Roboto';

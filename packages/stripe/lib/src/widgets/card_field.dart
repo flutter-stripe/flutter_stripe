@@ -101,8 +101,7 @@ class CardField extends StatefulWidget {
 }
 
 class _CardFieldState extends State<CardField> {
-  final FocusNode _node =
-      FocusNode(debugLabel: 'CardField', descendantsAreFocusable: false);
+  final FocusNode _node = FocusNode(debugLabel: 'CardField', descendantsAreFocusable: false);
 
   CardEditController? _fallbackContoller;
   CardEditController get controller {
@@ -141,7 +140,7 @@ class _CardFieldState extends State<CardField> {
     // Arbitrary values compared for both Android and iOS platform
     // For adding a framework input decorator, the platform one is removed
     // together with the extra padding
-    final platformCardHeight = style.fontSize! + 31;
+    final platformCardHeight = style.fontSize!.toDouble() + 31;
     const platformMargin = EdgeInsets.fromLTRB(12, 10, 10, 12);
 
     final cardHeight = platformCardHeight - platformMargin.vertical;
@@ -175,10 +174,8 @@ class _CardFieldState extends State<CardField> {
               placeholder: placeholder,
               enablePostalCode: widget.enablePostalCode,
               countryCode: widget.countryCode,
-              dangerouslyGetFullCardDetails:
-                  widget.dangerouslyGetFullCardDetails,
-              dangerouslyUpdateFullCardDetails:
-                  widget.dangerouslyUpdateFullCardDetails,
+              dangerouslyGetFullCardDetails: widget.dangerouslyGetFullCardDetails,
+              dangerouslyUpdateFullCardDetails: widget.dangerouslyUpdateFullCardDetails,
               onCardChanged: widget.onCardChanged,
               autofocus: widget.autofocus,
               onFocus: widget.onFocus,
@@ -202,8 +199,8 @@ class _CardFieldState extends State<CardField> {
   }
 
   CardStyle effectiveCardStyle(InputDecoration decoration) {
-    final fontSize = widget.style?.fontSize ??
-        Theme.of(context).textTheme.subtitle1?.fontSize ??
+    final fontSize = widget.style?.fontSize?.toInt() ??
+        Theme.of(context).textTheme.subtitle1?.fontSize?.toInt() ??
         kCardFieldDefaultFontSize;
 
     // Flutter fonts need to be loaded in the native framework to work
@@ -300,12 +297,10 @@ class _MethodChannelCardField extends StatefulWidget {
   _MethodChannelCardFieldState createState() => _MethodChannelCardFieldState();
 }
 
-class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
-    with CardFieldContext {
+class _MethodChannelCardFieldState extends State<_MethodChannelCardField> with CardFieldContext {
   MethodChannel? _methodChannel;
 
-  final _focusNode =
-      FocusNode(debugLabel: 'CardField', descendantsAreFocusable: false);
+  final _focusNode = FocusNode(debugLabel: 'CardField', descendantsAreFocusable: false);
   FocusNode get _effectiveNode => widget.focusNode ?? _focusNode;
 
   CardStyle? _lastStyle;
@@ -318,21 +313,16 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
       borderColor: Colors.transparent,
       borderRadius: 0,
       cursorColor: theme.textSelectionTheme.cursorColor ?? theme.primaryColor,
-      textColor: style?.textColor ??
-          baseTextStyle?.color ??
-          kCardFieldDefaultTextColor,
-      fontSize: baseTextStyle?.fontSize ?? kCardFieldDefaultFontSize,
+      textColor: style?.textColor ?? baseTextStyle?.color ?? kCardFieldDefaultTextColor,
+      fontSize: baseTextStyle?.fontSize?.toInt() ?? kCardFieldDefaultFontSize,
       // fontFamily: baseTextStyle?.fontFamily ?? kCardFieldDefaultFontFamily,
-      textErrorColor:
-          theme.inputDecorationTheme.errorStyle?.color ?? theme.errorColor,
-      placeholderColor:
-          theme.inputDecorationTheme.hintStyle?.color ?? theme.hintColor,
+      textErrorColor: theme.inputDecorationTheme.errorStyle?.color ?? theme.errorColor,
+      placeholderColor: theme.inputDecorationTheme.hintStyle?.color ?? theme.hintColor,
     ).apply(style);
   }
 
   CardPlaceholder? _lastPlaceholder;
-  CardPlaceholder resolvePlaceholder(CardPlaceholder? placeholder) =>
-      CardPlaceholder(
+  CardPlaceholder resolvePlaceholder(CardPlaceholder? placeholder) => CardPlaceholder(
         number: '1234123412341234',
         expiration: 'MM/YY',
         cvc: 'CVC',
@@ -345,8 +335,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
     attachController(controller);
     // Reset card fields if dangerouslyUpdateFullCardDetails is false
     if (!widget.dangerouslyUpdateFullCardDetails) {
-      if (kDebugMode &&
-          controller.details != const CardFieldInputDetails(complete: false)) {
+      if (kDebugMode && controller.details != const CardFieldInputDetails(complete: false)) {
         dev.log('WARNING! Initial card data value has been ignored. \n'
             '$kDebugPCIMessage');
       }
@@ -380,8 +369,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
       'postalCodeEnabled': widget.enablePostalCode,
       'countryCode': widget.countryCode,
       'dangerouslyGetFullCardDetails': widget.dangerouslyGetFullCardDetails,
-      if (widget.dangerouslyUpdateFullCardDetails &&
-          controller.initalDetails != null)
+      if (widget.dangerouslyUpdateFullCardDetails && controller.initalDetails != null)
         'cardDetails': controller.initalDetails?.toJson(),
       'autofocus': widget.autofocus,
     };
@@ -417,8 +405,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
     } else {
       throw UnsupportedError('Unsupported platform view');
     }
-    final constraints = widget.constraints ??
-        const BoxConstraints.expand(height: kCardFieldDefaultHeight);
+    final constraints = widget.constraints ?? const BoxConstraints.expand(height: kCardFieldDefaultHeight);
 
     return ConstrainedBox(
       constraints: constraints,
@@ -442,8 +429,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
   @override
   void didUpdateWidget(covariant _MethodChannelCardField oldWidget) {
     if (widget.controller != oldWidget.controller) {
-      assert(!controller.hasCardField,
-          'CardEditController is already attached to a CardView');
+      assert(!controller.hasCardField, 'CardEditController is already attached to a CardView');
       detachController(oldWidget.controller);
       attachController(oldWidget.controller);
     }
@@ -458,8 +444,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
         'countryCode': widget.countryCode,
       });
     }
-    if (widget.dangerouslyGetFullCardDetails !=
-        oldWidget.dangerouslyGetFullCardDetails) {
+    if (widget.dangerouslyGetFullCardDetails != oldWidget.dangerouslyGetFullCardDetails) {
       _methodChannel?.invokeMethod('dangerouslyGetFullCardDetails', {
         'dangerouslyGetFullCardDetails': widget.dangerouslyGetFullCardDetails,
       });
@@ -514,8 +499,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
       final map = Map<String, dynamic>.from(arguments);
       final field = CardFieldFocusName.fromJson(map);
       if (field.focusedField != null &&
-          ambiguate(WidgetsBinding.instance)?.focusManager.primaryFocus !=
-              _effectiveNode) {
+          ambiguate(WidgetsBinding.instance)?.focusManager.primaryFocus != _effectiveNode) {
         _effectiveNode.requestFocus();
       }
       widget.onFocus?.call(field.focusedField);
@@ -635,6 +619,6 @@ class _UiKitCardField extends StatelessWidget {
 }
 
 const kCardFieldDefaultHeight = 48.0;
-const kCardFieldDefaultFontSize = 17.0;
+const kCardFieldDefaultFontSize = 17;
 const kCardFieldDefaultTextColor = Colors.black;
 const kCardFieldDefaultFontFamily = 'Roboto';
