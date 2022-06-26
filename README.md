@@ -84,8 +84,8 @@ There are 3 ways of handling card payments
 Method        | Ease of use   | description                                                                                                      | Implementation docs |
 ------------- | ------------- |----------------------------------------------------------------------------------------------------------------- | ------------------- |
 Payment sheet | Easy          | Our recommended way of handling payments. It offers localization, animations and error handling out of the box.  | [docs](https://docs.page/flutter-stripe/flutter_stripe/sheet) |
-Cardfield     | Medium        | Single line cardfield. Offers more flexibility but has less built-in functionality.                              |   |
-Card form     | Medium        | Simular as the cardfield but the entry fields are spread across multi lines                                      |   |
+Cardfield     | Medium        | Single line cardfield. Offers more flexibility but has less built-in functionality.                              | [docs](https://docs.page/flutter-stripe/flutter_stripe/card_field)   |
+Card form     | Medium        | Simular as the cardfield but the entry fields are spread across multi lines                                      | [docs](https://docs.page/flutter-stripe/flutter_stripe/card_field)   |
 
 
 ## Stripe initialization

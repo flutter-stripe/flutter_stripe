@@ -233,7 +233,7 @@ To enable card scanning support, set the `NSCameraUsageDescription` **(Privacy -
 
 All customization is configured through the SetupPaymentSheetParameters object.
 
-#### Merchant display name
+### Merchant display name
 You can specify a customer-facing business name that Stripe uses to display a “Pay (merchantDisplayName)” line item in the payment sheet. By default, this is your app’s name.
 
 ```dart
@@ -244,14 +244,32 @@ Stripe.instance.initPaymentSheet(
 );
 ```
 
-#### UserInterfaceStyle (Only iOS)
+### Change appearance
 
-PaymentSheet automatically adapts to the user’s system-wide appearance settings (light and dark mode). If your app doesn’t support dark mode, you can force the style to always light or dark mode.
+From version `3.1.0` and higher it is possible to change the appearance of the payment_sheet. 
 
 ```dart
-Stripe.instance.initPaymentSheet(
-  paymentSheetParameters: SetupPaymentSheetParameters(
-     style: ThemeMode.dark,
-  ),
+ await Stripe.instance.initPaymentSheet(      
+  appearance: PaymentSheetAppearance(
+    colors: PaymentSheetAppearanceColors(
+      background: Colors.lightBlue,
+      primary: Colors.blue,
+      componentBorder: Colors.red,
+    ),
+    shapes: PaymentSheetShape(
+      borderWidth: 4,
+      shadow: PaymentSheetShadowParams(color: Colors.red),
+    ),
+    primaryButton: PaymentSheetPrimaryButtonAppearance(
+      shapes: PaymentSheetPrimaryButtonShape(blurRadius: 8),
+      colors: PaymentSheetPrimaryButtonTheme(
+        light: PaymentSheetPrimaryButtonThemeColors(
+          background: Color.fromARGB(255, 231, 235, 30),
+          text: Color.fromARGB(255, 235, 92, 30),
+          border: Color.fromARGB(255, 235, 92, 30),
+        ),
+      ),
+    ),
+  ),      
 );
 ```
