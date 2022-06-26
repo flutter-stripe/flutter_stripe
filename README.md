@@ -77,60 +77,16 @@ Check the steps needed [here](https://github.com/flutter-stripe/flutter_stripe/t
 
 ## Usage
 
-The library provides three UI componets for accepting card payments: the `CardField`, `CardForm`, and the `Paymentsheet`. 
+### Card payments 
 
-We recommend using the `PaymentSheet` for the most easy and smooth Stripe integration. It provides out of the box support for:
-- Localized labels and error messages to the users
-- Built-in animations
-- Built-in Google Pay and Apple Pay buttons
-- Handling 3D-secure
+There are 3 ways of handling card payments
 
-Notice that `PaymentSheet` is only available for Android and iOS.
+Method        | Ease of use   | description                                                                                                      | Implementation docs |
+------------- | ------------- |----------------------------------------------------------------------------------------------------------------- | ------------------- |
+Payment sheet | Easy          | Our recommended way of handling payments. It offers localization, animations and error handling out of the box.  | [docs](https://docs.page/flutter-stripe/flutter_stripe/sheet) |
+Cardfield     | Medium        | Single line cardfield. Offers more flexibility but has less built-in functionality.                              |   |
+Card form     | Medium        | Simular as the cardfield but the entry fields are spread across multi lines                                      |   |
 
-On the other side the `CardField` allows you to create a more customizable payment flow inside your app.
-
-### Example
-
-```dart
-// main.dart
-import 'package:flutter_stripe/flutter_stripe.dart';
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  // set the publishable key for Stripe - this is mandatory
-  Stripe.publishableKey = stripePublishableKey;
-  runApp(PaymentScreen());
-}
-
-// payment_screen.dart
-class PaymentScreen extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        children: [
-          CardField(
-            onCardChanged: (card) {
-              print(card);
-            },
-          ),
-          TextButton(
-            onPressed: () async {
-              // create payment method
-              final paymentMethod =
-                  await Stripe.instance.createPaymentMethod(PaymentMethodParams.card());
-            },
-            child: Text('pay'),
-          )
-        ],
-      ),
-    );
-  }
-}
-```
 
 ## Stripe initialization
 
