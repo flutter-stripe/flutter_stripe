@@ -5,7 +5,9 @@
     "sidebar": [
         ["Overview", "/"],
         ["Accept a Payment", [
-          ["Payment Sheet", "/sheet"]
+          ["Payment Sheet", "/sheet"],
+          ["CardField", "/card_field"],
+          ["CardFormField", "/card_field"]
           ]      
         ],
         ["Regional payments", [
