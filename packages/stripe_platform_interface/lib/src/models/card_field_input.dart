@@ -15,7 +15,7 @@ class CardStyle with _$CardStyle {
   @JsonSerializable(explicitToJson: true)
   factory CardStyle({
     /// Width for the border.
-    double? borderWidth,
+    int? borderWidth,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
 
         /// Background color of the cardfield
@@ -28,7 +28,7 @@ class CardStyle with _$CardStyle {
         Color? borderColor,
 
     /// Borderradius that can give the Cardfield rounded corners.
-    double? borderRadius,
+    int? borderRadius,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
 
         /// Cursor color when the card has focus.
@@ -39,7 +39,7 @@ class CardStyle with _$CardStyle {
         Color? textColor,
 
     /// Font size.
-    double? fontSize,
+    int? fontSize,
 
     /// Font family
     String? fontFamily,
@@ -53,8 +53,7 @@ class CardStyle with _$CardStyle {
         Color? placeholderColor,
   }) = _CardStyleConstructor;
 
-  factory CardStyle.fromJson(Map<String, dynamic> json) =>
-      _$CardStyleFromJson(json);
+  factory CardStyle.fromJson(Map<String, dynamic> json) => _$CardStyleFromJson(json);
 
   CardStyle._();
 
@@ -86,14 +85,14 @@ class CardFormStyle with _$CardFormStyle {
         Color? backgroundColor,
 
     /// Width for the border.
-    double? borderWidth,
+    int? borderWidth,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
 
         /// Border color of the cardfield.
         Color? borderColor,
 
     /// Borderradius that can give the Cardfield rounded corners.
-    double? borderRadius,
+    int? borderRadius,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
 
         /// Cursor color when the card has focus.
@@ -104,7 +103,7 @@ class CardFormStyle with _$CardFormStyle {
         Color? textColor,
 
     /// Font size.
-    double? fontSize,
+    int? fontSize,
 
     /// Color of the input in case incorrect data is entered.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -115,8 +114,7 @@ class CardFormStyle with _$CardFormStyle {
         Color? placeholderColor,
   }) = _CardFormStyleConstructor;
 
-  factory CardFormStyle.fromJson(Map<String, dynamic> json) =>
-      _$CardFormStyleFromJson(json);
+  factory CardFormStyle.fromJson(Map<String, dynamic> json) => _$CardFormStyleFromJson(json);
 
   CardFormStyle._();
 
@@ -152,8 +150,7 @@ class CardPlaceholder with _$CardPlaceholder {
     String? postalCode,
   }) = _CardPlaceholderConstructor;
 
-  factory CardPlaceholder.fromJson(Map<String, dynamic> json) =>
-      _$CardPlaceholderFromJson(json);
+  factory CardPlaceholder.fromJson(Map<String, dynamic> json) => _$CardPlaceholderFromJson(json);
 
   CardPlaceholder._();
 
@@ -212,19 +209,16 @@ class CardFieldInputDetails with _$CardFieldInputDetails {
     @Default(CardValidationState.Unknown) CardValidationState validNumber,
   }) = _CardFieldInputDetails;
 
-  factory CardFieldInputDetails.fromJson(Map<String, dynamic> json) =>
-      _$CardFieldInputDetailsFromJson(json);
+  factory CardFieldInputDetails.fromJson(Map<String, dynamic> json) => _$CardFieldInputDetailsFromJson(json);
 }
 
 /// Used to communicate with the card handler on the native platform side when focus changes.
 @freezed
 class CardFieldFocusName with _$CardFieldFocusName {
   @JsonSerializable(explicitToJson: true)
-  factory CardFieldFocusName({CardFieldName? focusedField}) =
-      _CardFieldFocusName;
+  factory CardFieldFocusName({CardFieldName? focusedField}) = _CardFieldFocusName;
 
-  factory CardFieldFocusName.fromJson(Map<String, dynamic> json) =>
-      _$CardFieldFocusNameFromJson(json);
+  factory CardFieldFocusName.fromJson(Map<String, dynamic> json) => _$CardFieldFocusNameFromJson(json);
 }
 
 /// Enum representing the different fiels on the card field.

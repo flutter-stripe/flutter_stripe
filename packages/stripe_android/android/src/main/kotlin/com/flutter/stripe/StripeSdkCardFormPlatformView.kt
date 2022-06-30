@@ -34,6 +34,9 @@ class StripeSdkCardFormPlatformView(
         if (creationParams?.containsKey("cardStyle") == true) {
             cardFormViewManager.setCardStyle(cardView, ReadableMap(creationParams["cardStyle"] as Map<String, Any>))
         }
+        if (creationParams?.containsKey("defaultValues") == true) {
+            cardFormViewManager.setDefaultValues(cardView, ReadableMap(creationParams["defaultValues"] as Map<String, Any>))
+        }
         if (creationParams?.containsKey("postalCodeEnabled") == true) {
             cardFormViewManager.setPostalCodeEnabled(cardView, creationParams["postalCodeEnabled"] as Boolean)
         }

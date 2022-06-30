@@ -21,6 +21,7 @@ class CardFormField extends StatefulWidget {
       Key? key,
       this.onFocus,
       this.enablePostalCode = true,
+      this.countryCode,
       this.style,
       this.autofocus = false,
       this.dangerouslyGetFullCardDetails = false,
@@ -45,6 +46,12 @@ class CardFormField extends StatefulWidget {
   /// check as defined in https://stripe.com/docs/radar/rules#traditional-bank-checks
   /// make sure this one is set to `true`.
   final bool enablePostalCode;
+
+  /// Controls the postal code entry shown (when `enablePostalCode` is set to true).
+  ///
+  /// Defaults to the device's default locale. This is not supported on the web.
+
+  final String? countryCode;
 
   /// Defines whether or not to automatically focus on the cardfield/
   /// Default is `false`.
@@ -177,6 +184,7 @@ class _CardFormFieldState extends State<CardFormField> {
       onCardChanged: widget.onCardChanged,
       autofocus: widget.autofocus,
       onFocus: widget.onFocus,
+      countryCode: widget.countryCode,
     );
   }
 
@@ -200,6 +208,7 @@ class _MethodChannelCardFormField extends StatefulWidget {
     this.dangerouslyGetFullCardDetails = false,
     this.dangerouslyUpdateFullCardDetails = false,
     this.autofocus = false,
+    this.countryCode,
   })  : assert(constraints == null || constraints.debugAssertIsValid()),
         constraints = (width != null || height != null)
             ? constraints?.tighten(width: width, height: height) ??
@@ -217,6 +226,7 @@ class _MethodChannelCardFormField extends StatefulWidget {
   final CardFormEditController controller;
   final bool dangerouslyGetFullCardDetails;
   final bool dangerouslyUpdateFullCardDetails;
+  final String? countryCode;
 
   // This is used in the platform side to register the view.
   static const _viewType = 'flutter.stripe/card_form_field';
@@ -289,6 +299,9 @@ class _MethodChannelCardFormFieldState
           controller._initalDetails != null)
         'cardDetails': controller._initalDetails?.toJson(),
       'autofocus': widget.autofocus,
+      'defaultValues': {
+        'countryCode': widget.countryCode,
+      }
     };
 
     Widget platform;
@@ -359,6 +372,17 @@ class _MethodChannelCardFormFieldState
       _methodChannel?.invokeMethod('onPostalCodeEnabledChanged', {
         'postalCodeEnabled': widget.enablePostalCode,
       });
+    }
+
+    if (widget.countryCode != oldWidget.countryCode) {
+      _methodChannel?.invokeMethod(
+        'onDefaultValuesChanged',
+        {
+          'defaultValues': {
+            'countryCode': widget.countryCode,
+          }
+        },
+      );
     }
     if (widget.dangerouslyGetFullCardDetails !=
         oldWidget.dangerouslyGetFullCardDetails) {
@@ -533,6 +557,6 @@ class _UiKitCardFormField extends StatelessWidget {
 
 const kCardFormFieldDefaultAndroidHeight = 270.0;
 const kCardFormFieldDefaultIOSHeight = 170.0;
-const kCardFormFieldDefaultFontSize = 17.0;
+const kCardFormFieldDefaultFontSize = 17;
 const kCardFormFieldDefaultTextColor = Colors.black;
 const kCardFormFieldDefaultFontFamily = 'Roboto';

@@ -22,6 +22,8 @@ CreateTokenParams _$CreateTokenParamsFromJson(Map<String, dynamic> json) {
       return _CreateTokenParamsCard.fromJson(json);
     case 'bankAccount':
       return _CreateTokenParamsBankAccount.fromJson(json);
+    case 'pii':
+      return _CreateTokenParamsPII.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'runtimeType', 'CreateTokenParams',
@@ -36,6 +38,7 @@ mixin _$CreateTokenParams {
     TResult Function(TokenType type, String? name, Address? address) $default, {
     required TResult Function(CardTokenParams params) card,
     required TResult Function(BankAccountTokenParams params) bankAccount,
+    required TResult Function(PIITokenParams params) pii,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +47,7 @@ mixin _$CreateTokenParams {
         $default, {
     TResult Function(CardTokenParams params)? card,
     TResult Function(BankAccountTokenParams params)? bankAccount,
+    TResult Function(PIITokenParams params)? pii,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,6 +56,7 @@ mixin _$CreateTokenParams {
         $default, {
     TResult Function(CardTokenParams params)? card,
     TResult Function(BankAccountTokenParams params)? bankAccount,
+    TResult Function(PIITokenParams params)? pii,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,6 +65,7 @@ mixin _$CreateTokenParams {
     TResult Function(_CreateTokenParamsLegacy value) $default, {
     required TResult Function(_CreateTokenParamsCard value) card,
     required TResult Function(_CreateTokenParamsBankAccount value) bankAccount,
+    required TResult Function(_CreateTokenParamsPII value) pii,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +73,7 @@ mixin _$CreateTokenParams {
     TResult Function(_CreateTokenParamsLegacy value)? $default, {
     TResult Function(_CreateTokenParamsCard value)? card,
     TResult Function(_CreateTokenParamsBankAccount value)? bankAccount,
+    TResult Function(_CreateTokenParamsPII value)? pii,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,6 +81,7 @@ mixin _$CreateTokenParams {
     TResult Function(_CreateTokenParamsLegacy value)? $default, {
     TResult Function(_CreateTokenParamsCard value)? card,
     TResult Function(_CreateTokenParamsBankAccount value)? bankAccount,
+    TResult Function(_CreateTokenParamsPII value)? pii,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -220,6 +228,7 @@ class _$_CreateTokenParamsLegacy implements _CreateTokenParamsLegacy {
     TResult Function(TokenType type, String? name, Address? address) $default, {
     required TResult Function(CardTokenParams params) card,
     required TResult Function(BankAccountTokenParams params) bankAccount,
+    required TResult Function(PIITokenParams params) pii,
   }) {
     return $default(type, name, address);
   }
@@ -231,6 +240,7 @@ class _$_CreateTokenParamsLegacy implements _CreateTokenParamsLegacy {
         $default, {
     TResult Function(CardTokenParams params)? card,
     TResult Function(BankAccountTokenParams params)? bankAccount,
+    TResult Function(PIITokenParams params)? pii,
   }) {
     return $default?.call(type, name, address);
   }
@@ -242,6 +252,7 @@ class _$_CreateTokenParamsLegacy implements _CreateTokenParamsLegacy {
         $default, {
     TResult Function(CardTokenParams params)? card,
     TResult Function(BankAccountTokenParams params)? bankAccount,
+    TResult Function(PIITokenParams params)? pii,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -256,6 +267,7 @@ class _$_CreateTokenParamsLegacy implements _CreateTokenParamsLegacy {
     TResult Function(_CreateTokenParamsLegacy value) $default, {
     required TResult Function(_CreateTokenParamsCard value) card,
     required TResult Function(_CreateTokenParamsBankAccount value) bankAccount,
+    required TResult Function(_CreateTokenParamsPII value) pii,
   }) {
     return $default(this);
   }
@@ -266,6 +278,7 @@ class _$_CreateTokenParamsLegacy implements _CreateTokenParamsLegacy {
     TResult Function(_CreateTokenParamsLegacy value)? $default, {
     TResult Function(_CreateTokenParamsCard value)? card,
     TResult Function(_CreateTokenParamsBankAccount value)? bankAccount,
+    TResult Function(_CreateTokenParamsPII value)? pii,
   }) {
     return $default?.call(this);
   }
@@ -276,6 +289,7 @@ class _$_CreateTokenParamsLegacy implements _CreateTokenParamsLegacy {
     TResult Function(_CreateTokenParamsLegacy value)? $default, {
     TResult Function(_CreateTokenParamsCard value)? card,
     TResult Function(_CreateTokenParamsBankAccount value)? bankAccount,
+    TResult Function(_CreateTokenParamsPII value)? pii,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -400,6 +414,7 @@ class _$_CreateTokenParamsCard implements _CreateTokenParamsCard {
     TResult Function(TokenType type, String? name, Address? address) $default, {
     required TResult Function(CardTokenParams params) card,
     required TResult Function(BankAccountTokenParams params) bankAccount,
+    required TResult Function(PIITokenParams params) pii,
   }) {
     return card(params);
   }
@@ -411,6 +426,7 @@ class _$_CreateTokenParamsCard implements _CreateTokenParamsCard {
         $default, {
     TResult Function(CardTokenParams params)? card,
     TResult Function(BankAccountTokenParams params)? bankAccount,
+    TResult Function(PIITokenParams params)? pii,
   }) {
     return card?.call(params);
   }
@@ -422,6 +438,7 @@ class _$_CreateTokenParamsCard implements _CreateTokenParamsCard {
         $default, {
     TResult Function(CardTokenParams params)? card,
     TResult Function(BankAccountTokenParams params)? bankAccount,
+    TResult Function(PIITokenParams params)? pii,
     required TResult orElse(),
   }) {
     if (card != null) {
@@ -436,6 +453,7 @@ class _$_CreateTokenParamsCard implements _CreateTokenParamsCard {
     TResult Function(_CreateTokenParamsLegacy value) $default, {
     required TResult Function(_CreateTokenParamsCard value) card,
     required TResult Function(_CreateTokenParamsBankAccount value) bankAccount,
+    required TResult Function(_CreateTokenParamsPII value) pii,
   }) {
     return card(this);
   }
@@ -446,6 +464,7 @@ class _$_CreateTokenParamsCard implements _CreateTokenParamsCard {
     TResult Function(_CreateTokenParamsLegacy value)? $default, {
     TResult Function(_CreateTokenParamsCard value)? card,
     TResult Function(_CreateTokenParamsBankAccount value)? bankAccount,
+    TResult Function(_CreateTokenParamsPII value)? pii,
   }) {
     return card?.call(this);
   }
@@ -456,6 +475,7 @@ class _$_CreateTokenParamsCard implements _CreateTokenParamsCard {
     TResult Function(_CreateTokenParamsLegacy value)? $default, {
     TResult Function(_CreateTokenParamsCard value)? card,
     TResult Function(_CreateTokenParamsBankAccount value)? bankAccount,
+    TResult Function(_CreateTokenParamsPII value)? pii,
     required TResult orElse(),
   }) {
     if (card != null) {
@@ -574,6 +594,7 @@ class _$_CreateTokenParamsBankAccount implements _CreateTokenParamsBankAccount {
     TResult Function(TokenType type, String? name, Address? address) $default, {
     required TResult Function(CardTokenParams params) card,
     required TResult Function(BankAccountTokenParams params) bankAccount,
+    required TResult Function(PIITokenParams params) pii,
   }) {
     return bankAccount(params);
   }
@@ -585,6 +606,7 @@ class _$_CreateTokenParamsBankAccount implements _CreateTokenParamsBankAccount {
         $default, {
     TResult Function(CardTokenParams params)? card,
     TResult Function(BankAccountTokenParams params)? bankAccount,
+    TResult Function(PIITokenParams params)? pii,
   }) {
     return bankAccount?.call(params);
   }
@@ -596,6 +618,7 @@ class _$_CreateTokenParamsBankAccount implements _CreateTokenParamsBankAccount {
         $default, {
     TResult Function(CardTokenParams params)? card,
     TResult Function(BankAccountTokenParams params)? bankAccount,
+    TResult Function(PIITokenParams params)? pii,
     required TResult orElse(),
   }) {
     if (bankAccount != null) {
@@ -610,6 +633,7 @@ class _$_CreateTokenParamsBankAccount implements _CreateTokenParamsBankAccount {
     TResult Function(_CreateTokenParamsLegacy value) $default, {
     required TResult Function(_CreateTokenParamsCard value) card,
     required TResult Function(_CreateTokenParamsBankAccount value) bankAccount,
+    required TResult Function(_CreateTokenParamsPII value) pii,
   }) {
     return bankAccount(this);
   }
@@ -620,6 +644,7 @@ class _$_CreateTokenParamsBankAccount implements _CreateTokenParamsBankAccount {
     TResult Function(_CreateTokenParamsLegacy value)? $default, {
     TResult Function(_CreateTokenParamsCard value)? card,
     TResult Function(_CreateTokenParamsBankAccount value)? bankAccount,
+    TResult Function(_CreateTokenParamsPII value)? pii,
   }) {
     return bankAccount?.call(this);
   }
@@ -630,6 +655,7 @@ class _$_CreateTokenParamsBankAccount implements _CreateTokenParamsBankAccount {
     TResult Function(_CreateTokenParamsLegacy value)? $default, {
     TResult Function(_CreateTokenParamsCard value)? card,
     TResult Function(_CreateTokenParamsBankAccount value)? bankAccount,
+    TResult Function(_CreateTokenParamsPII value)? pii,
     required TResult orElse(),
   }) {
     if (bankAccount != null) {
@@ -656,6 +682,182 @@ abstract class _CreateTokenParamsBankAccount implements CreateTokenParams {
   @JsonKey(ignore: true)
   _$$_CreateTokenParamsBankAccountCopyWith<_$_CreateTokenParamsBankAccount>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_CreateTokenParamsPIICopyWith<$Res> {
+  factory _$$_CreateTokenParamsPIICopyWith(_$_CreateTokenParamsPII value,
+          $Res Function(_$_CreateTokenParamsPII) then) =
+      __$$_CreateTokenParamsPIICopyWithImpl<$Res>;
+  $Res call({PIITokenParams params});
+
+  $PIITokenParamsCopyWith<$Res> get params;
+}
+
+/// @nodoc
+class __$$_CreateTokenParamsPIICopyWithImpl<$Res>
+    extends _$CreateTokenParamsCopyWithImpl<$Res>
+    implements _$$_CreateTokenParamsPIICopyWith<$Res> {
+  __$$_CreateTokenParamsPIICopyWithImpl(_$_CreateTokenParamsPII _value,
+      $Res Function(_$_CreateTokenParamsPII) _then)
+      : super(_value, (v) => _then(v as _$_CreateTokenParamsPII));
+
+  @override
+  _$_CreateTokenParamsPII get _value => super._value as _$_CreateTokenParamsPII;
+
+  @override
+  $Res call({
+    Object? params = freezed,
+  }) {
+    return _then(_$_CreateTokenParamsPII(
+      params: params == freezed
+          ? _value.params
+          : params // ignore: cast_nullable_to_non_nullable
+              as PIITokenParams,
+    ));
+  }
+
+  @override
+  $PIITokenParamsCopyWith<$Res> get params {
+    return $PIITokenParamsCopyWith<$Res>(_value.params, (value) {
+      return _then(_value.copyWith(params: value));
+    });
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_CreateTokenParamsPII implements _CreateTokenParamsPII {
+  const _$_CreateTokenParamsPII({required this.params, final String? $type})
+      : $type = $type ?? 'pii';
+
+  factory _$_CreateTokenParamsPII.fromJson(Map<String, dynamic> json) =>
+      _$$_CreateTokenParamsPIIFromJson(json);
+
+  @override
+  final PIITokenParams params;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'CreateTokenParams.pii(params: $params)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_CreateTokenParamsPII &&
+            const DeepCollectionEquality().equals(other.params, params));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(params));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_CreateTokenParamsPIICopyWith<_$_CreateTokenParamsPII> get copyWith =>
+      __$$_CreateTokenParamsPIICopyWithImpl<_$_CreateTokenParamsPII>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(TokenType type, String? name, Address? address) $default, {
+    required TResult Function(CardTokenParams params) card,
+    required TResult Function(BankAccountTokenParams params) bankAccount,
+    required TResult Function(PIITokenParams params) pii,
+  }) {
+    return pii(params);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult Function(TokenType type, String? name, Address? address)?
+        $default, {
+    TResult Function(CardTokenParams params)? card,
+    TResult Function(BankAccountTokenParams params)? bankAccount,
+    TResult Function(PIITokenParams params)? pii,
+  }) {
+    return pii?.call(params);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(TokenType type, String? name, Address? address)?
+        $default, {
+    TResult Function(CardTokenParams params)? card,
+    TResult Function(BankAccountTokenParams params)? bankAccount,
+    TResult Function(PIITokenParams params)? pii,
+    required TResult orElse(),
+  }) {
+    if (pii != null) {
+      return pii(params);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_CreateTokenParamsLegacy value) $default, {
+    required TResult Function(_CreateTokenParamsCard value) card,
+    required TResult Function(_CreateTokenParamsBankAccount value) bankAccount,
+    required TResult Function(_CreateTokenParamsPII value) pii,
+  }) {
+    return pii(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult Function(_CreateTokenParamsLegacy value)? $default, {
+    TResult Function(_CreateTokenParamsCard value)? card,
+    TResult Function(_CreateTokenParamsBankAccount value)? bankAccount,
+    TResult Function(_CreateTokenParamsPII value)? pii,
+  }) {
+    return pii?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_CreateTokenParamsLegacy value)? $default, {
+    TResult Function(_CreateTokenParamsCard value)? card,
+    TResult Function(_CreateTokenParamsBankAccount value)? bankAccount,
+    TResult Function(_CreateTokenParamsPII value)? pii,
+    required TResult orElse(),
+  }) {
+    if (pii != null) {
+      return pii(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CreateTokenParamsPIIToJson(this);
+  }
+}
+
+abstract class _CreateTokenParamsPII implements CreateTokenParams {
+  const factory _CreateTokenParamsPII({required final PIITokenParams params}) =
+      _$_CreateTokenParamsPII;
+
+  factory _CreateTokenParamsPII.fromJson(Map<String, dynamic> json) =
+      _$_CreateTokenParamsPII.fromJson;
+
+  PIITokenParams get params => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$_CreateTokenParamsPIICopyWith<_$_CreateTokenParamsPII> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 CardTokenParams _$CardTokenParamsFromJson(Map<String, dynamic> json) {
@@ -883,6 +1085,171 @@ abstract class _CardTokenParams implements CardTokenParams {
   @override
   @JsonKey(ignore: true)
   _$$_CardTokenParamsCopyWith<_$_CardTokenParams> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+PIITokenParams _$PIITokenParamsFromJson(Map<String, dynamic> json) {
+  return _PIITokenParams.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PIITokenParams {
+  /// Type of token.
+  TokenType get type => throw _privateConstructorUsedError;
+
+  /// The user's personal ID number
+  String get personalId => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PIITokenParamsCopyWith<PIITokenParams> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PIITokenParamsCopyWith<$Res> {
+  factory $PIITokenParamsCopyWith(
+          PIITokenParams value, $Res Function(PIITokenParams) then) =
+      _$PIITokenParamsCopyWithImpl<$Res>;
+  $Res call({TokenType type, String personalId});
+}
+
+/// @nodoc
+class _$PIITokenParamsCopyWithImpl<$Res>
+    implements $PIITokenParamsCopyWith<$Res> {
+  _$PIITokenParamsCopyWithImpl(this._value, this._then);
+
+  final PIITokenParams _value;
+  // ignore: unused_field
+  final $Res Function(PIITokenParams) _then;
+
+  @override
+  $Res call({
+    Object? type = freezed,
+    Object? personalId = freezed,
+  }) {
+    return _then(_value.copyWith(
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as TokenType,
+      personalId: personalId == freezed
+          ? _value.personalId
+          : personalId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_PIITokenParamsCopyWith<$Res>
+    implements $PIITokenParamsCopyWith<$Res> {
+  factory _$$_PIITokenParamsCopyWith(
+          _$_PIITokenParams value, $Res Function(_$_PIITokenParams) then) =
+      __$$_PIITokenParamsCopyWithImpl<$Res>;
+  @override
+  $Res call({TokenType type, String personalId});
+}
+
+/// @nodoc
+class __$$_PIITokenParamsCopyWithImpl<$Res>
+    extends _$PIITokenParamsCopyWithImpl<$Res>
+    implements _$$_PIITokenParamsCopyWith<$Res> {
+  __$$_PIITokenParamsCopyWithImpl(
+      _$_PIITokenParams _value, $Res Function(_$_PIITokenParams) _then)
+      : super(_value, (v) => _then(v as _$_PIITokenParams));
+
+  @override
+  _$_PIITokenParams get _value => super._value as _$_PIITokenParams;
+
+  @override
+  $Res call({
+    Object? type = freezed,
+    Object? personalId = freezed,
+  }) {
+    return _then(_$_PIITokenParams(
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as TokenType,
+      personalId: personalId == freezed
+          ? _value.personalId
+          : personalId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_PIITokenParams implements _PIITokenParams {
+  const _$_PIITokenParams(
+      {this.type = TokenType.Pii, required this.personalId});
+
+  factory _$_PIITokenParams.fromJson(Map<String, dynamic> json) =>
+      _$$_PIITokenParamsFromJson(json);
+
+  /// Type of token.
+  @override
+  @JsonKey()
+  final TokenType type;
+
+  /// The user's personal ID number
+  @override
+  final String personalId;
+
+  @override
+  String toString() {
+    return 'PIITokenParams(type: $type, personalId: $personalId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PIITokenParams &&
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality()
+                .equals(other.personalId, personalId));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(personalId));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_PIITokenParamsCopyWith<_$_PIITokenParams> get copyWith =>
+      __$$_PIITokenParamsCopyWithImpl<_$_PIITokenParams>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PIITokenParamsToJson(this);
+  }
+}
+
+abstract class _PIITokenParams implements PIITokenParams {
+  const factory _PIITokenParams(
+      {final TokenType type,
+      required final String personalId}) = _$_PIITokenParams;
+
+  factory _PIITokenParams.fromJson(Map<String, dynamic> json) =
+      _$_PIITokenParams.fromJson;
+
+  @override
+
+  /// Type of token.
+  TokenType get type => throw _privateConstructorUsedError;
+  @override
+
+  /// The user's personal ID number
+  String get personalId => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PIITokenParamsCopyWith<_$_PIITokenParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
