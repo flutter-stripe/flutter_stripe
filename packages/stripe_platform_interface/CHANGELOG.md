@@ -1,6 +1,8 @@
 ## 3.2.0
-
- - f
+- Added possibility to create a PII token.
+- Support country code in Cardfield.
+- Added default values to CardformField. 
+- Several fixes by the Stripe sdk [v.0.13.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.13.0).
 
 ## 3.1.1
 - Fix #771
