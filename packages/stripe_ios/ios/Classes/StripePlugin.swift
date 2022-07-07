@@ -97,6 +97,8 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
             return collectBankAccount(call, result: result)
         case "isCardInWallet":
             return isCardInWallet(call, result: result)
+        case "canAddCardToWallet":
+            return canAddCardToWallet(call, result: result)
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -274,6 +276,19 @@ extension  StripePlugin {
             return
         }
         isCardInWallet(
+            params: params,
+            resolver: resolver(for: result),
+            rejecter: rejecter(for: result)
+        )
+    }
+    
+    func canAddCardToWallet(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? FlutterMap,
+        let params = arguments["params"] as? NSDictionary else {
+            result(FlutterError.invalidParams)
+            return
+        }
+        canAddCardToWallet(
             params: params,
             resolver: resolver(for: result),
             rejecter: rejecter(for: result)
