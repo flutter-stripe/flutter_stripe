@@ -9,6 +9,7 @@ import com.facebook.react.bridge.*
 import com.facebook.react.module.annotations.ReactModule
 import com.flutter.stripe.getCurrentActivityOrResolveWithError
 import com.flutter.stripe.invoke
+import com.reactnativestripesdk.pushprovisioning.PushProvisioningProxy
 import com.stripe.android.*
 import com.stripe.android.core.AppInfo
 import com.stripe.android.core.ApiVersion
@@ -43,9 +44,10 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
   private val mActivityEventListener = object : BaseActivityEventListener() {
     override fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent?) {
       if (::stripe.isInitialized) {
+        // BEGIN - Necessary on older versions of React Native (~0.64 and below)
         //paymentSheetFragment?.activity?.activityResultRegistry?.dispatchResult(requestCode, resultCode, data)
         //googlePayFragment?.activity?.activityResultRegistry?.dispatchResult(requestCode, resultCode, data)
-        // BEGIN - Necessary on older versions of React Native (~0.64 and below)
+        //paymentLauncherFragment?.activity?.activityResultRegistry?.dispatchResult(requestCode, resultCode, data)
         // END
         try {
           val result = AddPaymentMethodActivityStarter.Result.fromIntent(data)
@@ -117,6 +119,10 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
   @ReactMethod
   fun initPaymentSheet(params: ReadableMap, promise: Promise) {
     getCurrentActivityOrResolveWithError(promise)?.let { activity ->
+      paymentSheetFragment?.let {
+        // If a payment sheet was already initialized, we want to remove its fragment first
+        activity.supportFragmentManager.beginTransaction().remove(it).commitAllowingStateLoss()
+      }
       paymentSheetFragment = PaymentSheetFragment(reactApplicationContext, promise).also {
         val bundle = toBundleObject(params)
         it.arguments = bundle
@@ -527,13 +533,46 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
   }
 
   @ReactMethod
+  fun canAddCardToWallet(params: ReadableMap, promise: Promise) {
+    val last4 = getValOr(params, "cardLastFour", null) ?: run {
+      promise.resolve(createError("Failed", "You must provide cardLastFour"))
+      return
+    }
+
+    if (!PushProvisioningProxy.isNFCEnabled(reactApplicationContext)) {
+      promise.resolve(createCanAddCardResult(false, "UNSUPPORTED_DEVICE"))
+      return
+    }
+
+    getCurrentActivityOrResolveWithError(promise)?.let {
+      PushProvisioningProxy.isCardInWallet(it, last4) { isCardInWallet, token, error ->
+        if (error != null) {
+          promise.resolve(createCanAddCardResult(false, "MISSING_CONFIGURATION", null))
+        } else {
+          val status = if (isCardInWallet) "CARD_ALREADY_EXISTS" else null
+          promise.resolve(createCanAddCardResult(!isCardInWallet, status, token))
+        }
+      }
+    }
+  }
+
+  @ReactMethod
   fun isCardInWallet(params: ReadableMap, promise: Promise) {
     val last4 = getValOr(params, "cardLastFour", null) ?: run {
       promise.resolve(createError("Failed", "You must provide cardLastFour"))
       return
     }
     getCurrentActivityOrResolveWithError(promise)?.let {
-      PushProvisioningProxy.isCardInWallet(it, last4, promise)
+      PushProvisioningProxy.isCardInWallet(it, last4) { isCardInWallet, token, error ->
+        if (error != null) {
+          promise.resolve(error)
+        } else {
+          val result = WritableNativeMap()
+          result.putBoolean("isInWallet", isCardInWallet)
+          result.putMap("token", token)
+          promise.resolve(result)
+        }
+      }
     }
   }
 
