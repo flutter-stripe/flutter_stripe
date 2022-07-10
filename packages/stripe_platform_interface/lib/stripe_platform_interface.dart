@@ -18,3 +18,4 @@ export 'src/models/three_d_secure.dart';
 export 'src/stripe_platform_interface.dart';
 export 'src/card_edit_controller.dart';
 export 'src/models/ach_params.dart';
+export 'src/models/wallet.dart';

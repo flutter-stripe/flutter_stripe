@@ -671,5 +671,39 @@ void main() {
         });
       });
     });
+
+    group('AddToWallet', () {
+      late AddToWalletResult result;
+      setUp(() async {
+        sut = MethodChannelStripe(
+          platformIsIos: true,
+          platformIsAndroid: false,
+          methodChannel: MethodChannelMock(
+            channelName: methodChannelName,
+            method: 'canAddCardToWallet',
+            result: {
+              'canAddCard': false,
+              'details': {
+                'token': 'foo',
+                'status': 'CARD_ALREADY_EXISTS',
+              }
+            },
+          ).methodChannel,
+        );
+        result = await sut.canAddToWallet('1234');
+      });
+
+      test('It returns false', () {
+        expect(
+          result,
+          const AddToWalletResult(
+            canAddToWallet: false,
+            details: AddToWalletDetails(
+                status: CanAddToWalletErrorStatus.CARD_ALREADY_EXISTS,
+                token: 'foo'),
+          ),
+        );
+      });
+    });
   });
 }

@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:stripe_platform_interface/src/models/ach_params.dart';
 import 'package:stripe_platform_interface/src/models/create_token_data.dart';
 import 'package:stripe_platform_interface/src/models/google_pay.dart';
+import 'package:stripe_platform_interface/src/models/wallet.dart';
 import 'package:stripe_platform_interface/src/result_parser.dart';
 
 import 'models/app_info.dart';
@@ -360,6 +361,25 @@ class MethodChannelStripe extends StripePlatform {
     return ResultParser<PaymentIntent>(
             parseJson: (json) => PaymentIntent.fromJson(json))
         .parse(result: result!, successResultKey: 'paymentIntent');
+  }
+
+  @override
+  Future<AddToWalletResult> canAddToWallet(String last4) async {
+    final result = await _methodChannel.invokeMapMethod<String, dynamic>(
+      'canAddCardToWallet',
+      {
+        'params': {
+          'cardLastFour': last4,
+        }
+      },
+    );
+
+    return AddToWalletResult(
+      canAddToWallet: result?['canAddCard'] as bool,
+      details: AddToWalletDetails.fromJson(
+        result?['details'],
+      ),
+    );
   }
 }
 
