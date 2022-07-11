@@ -1,3 +1,6 @@
+## 1.1.1
+- Sdk updates
+
 ## 1.1.0
 - Sdk updates
 
