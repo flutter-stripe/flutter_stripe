@@ -69,6 +69,8 @@ abstract class StripePlatform extends PlatformInterface {
   Future<PaymentMethod> createGooglePayPaymentMethod(
       CreateGooglePayPaymentParams params);
 
+  Future<AddToWalletResult> canAddToWallet(String last4);
+
   /// Creates a token for card details.
   ///
   /// Note this method is legacy and it is advised to use [PaymentIntent].

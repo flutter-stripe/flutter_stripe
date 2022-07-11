@@ -49,6 +49,10 @@ class PaymentSheetFragment(
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     val merchantDisplayName = arguments?.getString("merchantDisplayName").orEmpty()
+    if (merchantDisplayName.isEmpty()) {
+      initPromise.resolve(createError(ErrorType.Failed.toString(), "merchantDisplayName cannot be empty or null."))
+      return
+    }
     val customerId = arguments?.getString("customerId").orEmpty()
     val customerEphemeralKeySecret = arguments?.getString("customerEphemeralKeySecret").orEmpty()
     val countryCode = arguments?.getString("merchantCountryCode").orEmpty()
@@ -98,9 +102,10 @@ class PaymentSheetFragment(
           confirmPromise?.resolve(WritableNativeMap()) ?: run {
             presentPromise?.resolve(WritableNativeMap())
           }
+          // Remove the fragment now, we can be sure it won't be needed again if an intent is successful
+          (context.currentActivity as? AppCompatActivity)?.supportFragmentManager?.beginTransaction()?.remove(this)?.commitAllowingStateLoss()
         }
       }
-      context.currentActivity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commitAllowingStateLoss()
     }
 
     var defaultBillingDetails: PaymentSheet.BillingDetails? = null

@@ -1,3 +1,7 @@
+## 3.3.0
+- Added the canAddCardToWallet method.
+- Several fixes by the Stripe sdk [v.0.14.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.14.0).
+
 ## 3.2.0
 - Added possibility to create a PII token.
 - Support country code in Cardfield.
