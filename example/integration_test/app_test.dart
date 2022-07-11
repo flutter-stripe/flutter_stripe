@@ -69,12 +69,15 @@ void main() {
       await Stripe.instance.dangerouslyUpdateCardDetails(cardDetails);
 
       final paymentMethod = await Stripe.instance.createPaymentMethod(
-        PaymentMethodParams.card(billingDetails: billingDetails),
+        PaymentMethodParams.card(
+          paymentMethodData: PaymentMethodData(
+            billingDetails: billingDetails,
+          ),
+        ),
       );
 
       // 3. create intent on the server
-      final paymentIntentResult =
-          await _createNoWebhookPayEndpointMethod(paymentMethod.id);
+      final paymentIntentResult = await _createNoWebhookPayEndpointMethod(paymentMethod.id);
       expect(paymentIntentResult['status'], 'succeeded');
     });
   });
@@ -97,8 +100,7 @@ Future<Map<String, dynamic>> _createTestPaymentSheet() async {
   return json.decode(response.body);
 }
 
-Future<Map<String, dynamic>> _createNoWebhookPayEndpointMethod(
-    String paymentMethodId) async {
+Future<Map<String, dynamic>> _createNoWebhookPayEndpointMethod(String paymentMethodId) async {
   final ipAddress = kApiUrl.split('\n').last.trim();
   final url = Uri.parse('http://$ipAddress:4242/pay-without-webhooks');
   final response = await http.post(
