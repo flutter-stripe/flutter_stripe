@@ -3,6 +3,7 @@ package com.facebook.react.bridge;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,6 +32,10 @@ public class WritableMap extends HashMap<String, Object> implements Map<String, 
     }
 
     public void putArray(String key, WritableArray value) {
+        put(key, value);
+    }
+
+    public void putArray(String key, List<Object> value) {
         put(key, value);
     }
 

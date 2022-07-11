@@ -71,6 +71,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
 
       // create some billingdetails
       final billingDetails = BillingDetails(
+        name: 'Flutter Stripe',
         email: 'email@stripe.com',
         phone: '+48888000888',
         address: Address(
@@ -96,7 +97,27 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
           applePay: true,
           googlePay: true,
           style: ThemeMode.dark,
-          primaryButtonColor: Colors.redAccent,
+          appearance: PaymentSheetAppearance(
+            colors: PaymentSheetAppearanceColors(
+              background: Colors.lightBlue,
+              primary: Colors.blue,
+              componentBorder: Colors.red,
+            ),
+            shapes: PaymentSheetShape(
+              borderWidth: 4,
+              shadow: PaymentSheetShadowParams(color: Colors.red),
+            ),
+            primaryButton: PaymentSheetPrimaryButtonAppearance(
+              shapes: PaymentSheetPrimaryButtonShape(blurRadius: 8),
+              colors: PaymentSheetPrimaryButtonTheme(
+                light: PaymentSheetPrimaryButtonThemeColors(
+                  background: Color.fromARGB(255, 231, 235, 30),
+                  text: Color.fromARGB(255, 235, 92, 30),
+                  border: Color.fromARGB(255, 235, 92, 30),
+                ),
+              ),
+            ),
+          ),
           billingDetails: billingDetails,
           testEnv: true,
           merchantCountryCode: 'DE',

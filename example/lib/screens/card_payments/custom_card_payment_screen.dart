@@ -5,7 +5,6 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
 import 'package:stripe_example/config.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
-import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 class CustomCardPaymentScreen extends StatefulWidget {
   @override
@@ -142,7 +141,9 @@ class _CustomCardPaymentScreenState extends State<CustomCardPaymentScreen> {
       // 2. Create payment method
       final paymentMethod =
           await Stripe.instance.createPaymentMethod(PaymentMethodParams.card(
-        billingDetails: billingDetails,
+        paymentMethodData: PaymentMethodData(
+          billingDetails: billingDetails,
+        ),
       ));
 
       // 3. call API to create PaymentIntent
@@ -174,9 +175,9 @@ class _CustomCardPaymentScreenState extends State<CustomCardPaymentScreen> {
 
       if (paymentIntentResult['clientSecret'] != null &&
           paymentIntentResult['requiresAction'] == true) {
-        // 4. if payment requires action calling handleCardAction
+        // 4. if payment requires action calling handleNextAction
         final paymentIntent = await Stripe.instance
-            .handleCardAction(paymentIntentResult['clientSecret']);
+            .handleNextAction(paymentIntentResult['clientSecret']);
 
         if (paymentIntent.status == PaymentIntentsStatus.RequiresConfirmation) {
           // 5. Call API to confirm intent

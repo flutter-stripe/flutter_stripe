@@ -37,6 +37,9 @@ _$_ApplePayCartSummaryItem _$$_ApplePayCartSummaryItemFromJson(
     _$_ApplePayCartSummaryItem(
       label: json['label'] as String,
       amount: json['amount'] as String,
+      type:
+          $enumDecodeNullable(_$ApplePaySummaryItemTypeEnumMap, json['type']) ??
+              ApplePaySummaryItemType.fixed,
     );
 
 Map<String, dynamic> _$$_ApplePayCartSummaryItemToJson(
@@ -44,7 +47,13 @@ Map<String, dynamic> _$$_ApplePayCartSummaryItemToJson(
     <String, dynamic>{
       'label': instance.label,
       'amount': instance.amount,
+      'type': _$ApplePaySummaryItemTypeEnumMap[instance.type],
     };
+
+const _$ApplePaySummaryItemTypeEnumMap = {
+  ApplePaySummaryItemType.fixed: 'fixed',
+  ApplePaySummaryItemType.pending: 'pending',
+};
 
 _$_ApplePayPresentParams _$$_ApplePayPresentParamsFromJson(
         Map<String, dynamic> json) =>
@@ -92,3 +101,17 @@ const _$ApplePayContactFieldsTypeEnumMap = {
   ApplePayContactFieldsType.phoneticName: 'phoneticName',
   ApplePayContactFieldsType.postalAddress: 'postalAddress',
 };
+
+_$_ApplePayErrorAddressField _$$_ApplePayErrorAddressFieldFromJson(
+        Map<String, dynamic> json) =>
+    _$_ApplePayErrorAddressField(
+      field: $enumDecode(_$ApplePayContactFieldsTypeEnumMap, json['field']),
+      message: json['message'] as String?,
+    );
+
+Map<String, dynamic> _$$_ApplePayErrorAddressFieldToJson(
+        _$_ApplePayErrorAddressField instance) =>
+    <String, dynamic>{
+      'field': _$ApplePayContactFieldsTypeEnumMap[instance.field],
+      'message': instance.message,
+    };

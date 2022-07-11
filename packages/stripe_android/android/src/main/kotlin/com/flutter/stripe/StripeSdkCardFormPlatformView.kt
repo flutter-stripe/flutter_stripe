@@ -9,7 +9,6 @@ import androidx.annotation.NonNull
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
 import com.reactnativestripesdk.*
-import com.stripe.android.databinding.CardInputWidgetBinding
 import com.stripe.android.databinding.CardMultilineWidgetBinding
 import com.stripe.android.databinding.StripeCardFormViewBinding
 import io.flutter.plugin.common.MethodCall
@@ -21,20 +20,22 @@ class StripeSdkCardFormPlatformView(
         private val context: Context,
         private val channel: MethodChannel,
         id: Int,
-        private val creationParams: Map<String?, Any?>?,
+        creationParams: Map<String?, Any?>?,
         private val cardFormViewManager: CardFormViewManager,
         private val sdkAccessor: () -> StripeSdkModule
 ) : PlatformView, MethodChannel.MethodCallHandler {
 
-    lateinit var cardView: CardFormView
+    private val cardView: CardFormView = cardFormViewManager.getCardViewInstance() ?: let {
+        return@let cardFormViewManager.createViewInstance(ThemedReactContext(sdkAccessor().reactContext, channel, sdkAccessor))
+    }
 
     init {
-        cardView =  cardFormViewManager.getCardViewInstance() ?: let {
-            return@let cardFormViewManager.createViewInstance(ThemedReactContext(context, channel, sdkAccessor))
-        }
         channel.setMethodCallHandler(this)
         if (creationParams?.containsKey("cardStyle") == true) {
             cardFormViewManager.setCardStyle(cardView, ReadableMap(creationParams["cardStyle"] as Map<String, Any>))
+        }
+        if (creationParams?.containsKey("defaultValues") == true) {
+            cardFormViewManager.setDefaultValues(cardView, ReadableMap(creationParams["defaultValues"] as Map<String, Any>))
         }
         if (creationParams?.containsKey("postalCodeEnabled") == true) {
             cardFormViewManager.setPostalCodeEnabled(cardView, creationParams["postalCodeEnabled"] as Boolean)
@@ -45,27 +46,23 @@ class StripeSdkCardFormPlatformView(
         if (creationParams?.containsKey("autofocus") == true) {
             cardFormViewManager.setAutofocus(cardView, creationParams["autofocus"] as Boolean)
         }
-        applyFocusFix()
-    }
+        if (creationParams?.containsKey("cardDetails") == true) {
+            val value = ReadableMap(creationParams["cardDetails"] as Map<String, Any>)
 
-    /**
-     * https://github.com/flutter-stripe/flutter_stripe/issues/14
-     * https://github.com/flutter/engine/pull/26602 HC_PLATFORM_VIEW was introduced in
-     * that PR - we're checking for its availability and apply the old fix accordingly
-     */
-    private fun applyFocusFix() {
-        try {
-            val enumConstants = Class.forName("io.flutter.plugin.editing.TextInputPlugin\$InputTarget\$Type").enumConstants as Array<Enum<*>>
-            val shouldApplyFix = enumConstants.none { it.name == "HC_PLATFORM_VIEW" }
-            if (shouldApplyFix) {
-                // Temporal fix to https://github.com/flutter/flutter/issues/81029
-                val binding = CardMultilineWidgetBinding.bind(cardView.cardForm)
-                binding.etCardNumber.inputType = InputType.TYPE_CLASS_TEXT
-                binding.etCvc.inputType = InputType.TYPE_CLASS_TEXT
-                binding.etExpiry.inputType = InputType.TYPE_CLASS_TEXT
+            val binding = StripeCardFormViewBinding.bind(cardView.cardForm)
+            val number = getValOr(value, "number", null)
+            val expirationYear = getIntOrNull(value, "expiryYear")
+            val expirationMonth = getIntOrNull(value, "expiryMonth")
+            val cvc = getValOr(value, "cvc", null)
+            number?.let {
+                binding.cardMultilineWidget.cardNumberEditText.setText(it)
             }
-        } catch (e: Exception) {
-            Log.e("Stripe Plugin", "Error", e)
+            if (expirationYear != null && expirationMonth != null) {
+                binding.cardMultilineWidget.setExpiryDate(expirationMonth, expirationYear)
+            }
+            cvc?.let {
+                binding.cardMultilineWidget.cvcEditText.setText(it)
+            }
         }
     }
 

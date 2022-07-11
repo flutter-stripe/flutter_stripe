@@ -7,14 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
-const String _kDebugPCIMessage =
-    'Handling card data manually will break PCI compliance provided by Stripe. '
-    'Please make sure you understand the severe consecuences of it. '
-    'https://stripe.com/docs/security/guide#validating-pci-compliance. \n'
-    'To handle PCI compliance yourself and allow to edit card data programatically,'
-    'set `dangerouslyGetFullCardDetails: true`';
+import '../utils.dart';
 
 /// Customizable form that collects card information.
 ///
@@ -27,7 +21,8 @@ class CardFormField extends StatefulWidget {
       Key? key,
       this.onFocus,
       this.enablePostalCode = true,
-      this.backgroundColor,
+      this.countryCode,
+      this.style,
       this.autofocus = false,
       this.dangerouslyGetFullCardDetails = false,
       this.dangerouslyUpdateFullCardDetails = false,
@@ -40,12 +35,23 @@ class CardFormField extends StatefulWidget {
   /// Callback that will be executed when the card information changes.
   final CardChangedCallback? onCardChanged;
 
-  /// Background color of the card form
-  final Color? backgroundColor;
+  /// Styling parameters of the card form field
+  ///
+  /// Note that currently styling only works on Android. For iOS you can only set
+  /// the background color.
+  final CardFormStyle? style;
 
   /// Whether or not to show the postalcode field in the form.
-  /// Defaults is `false`.
+  /// Defaults is `true`. If your configuration in Stripe requires a postalcode
+  /// check as defined in https://stripe.com/docs/radar/rules#traditional-bank-checks
+  /// make sure this one is set to `true`.
   final bool enablePostalCode;
+
+  /// Controls the postal code entry shown (when `enablePostalCode` is set to true).
+  ///
+  /// Defaults to the device's default locale. This is not supported on the web.
+
+  final String? countryCode;
 
   /// Defines whether or not to automatically focus on the cardfield/
   /// Default is `false`.
@@ -73,6 +79,7 @@ class CardFormField extends StatefulWidget {
   final bool dangerouslyUpdateFullCardDetails;
 
   @override
+  // ignore: library_private_types_in_public_api
   _CardFormFieldState createState() => _CardFormFieldState();
 }
 
@@ -177,11 +184,12 @@ class _CardFormFieldState extends State<CardFormField> {
       onCardChanged: widget.onCardChanged,
       autofocus: widget.autofocus,
       onFocus: widget.onFocus,
+      countryCode: widget.countryCode,
     );
   }
 
-  CardFormStyle effectiveCardStyle() {
-    return CardFormStyle(backgroundColor: widget.backgroundColor);
+  CardFormStyle? effectiveCardStyle() {
+    return widget.style;
   }
 }
 
@@ -200,6 +208,7 @@ class _MethodChannelCardFormField extends StatefulWidget {
     this.dangerouslyGetFullCardDetails = false,
     this.dangerouslyUpdateFullCardDetails = false,
     this.autofocus = false,
+    this.countryCode,
   })  : assert(constraints == null || constraints.debugAssertIsValid()),
         constraints = (width != null || height != null)
             ? constraints?.tighten(width: width, height: height) ??
@@ -217,6 +226,7 @@ class _MethodChannelCardFormField extends StatefulWidget {
   final CardFormEditController controller;
   final bool dangerouslyGetFullCardDetails;
   final bool dangerouslyUpdateFullCardDetails;
+  final String? countryCode;
 
   // This is used in the platform side to register the view.
   static const _viewType = 'flutter.stripe/card_form_field';
@@ -225,7 +235,7 @@ class _MethodChannelCardFormField extends StatefulWidget {
   // time.
   // A unique key is used to throw an expection before multiple platform
   // views are created
-  static late final _key = UniqueKey();
+  static final _key = UniqueKey();
 
   @override
   _MethodChannelCardFormFieldState createState() =>
@@ -241,6 +251,7 @@ class _MethodChannelCardFormFieldState
   FocusNode get _effectiveNode => widget.focusNode ?? _focusNode;
 
   CardFormStyle? _lastStyle;
+
   CardFormStyle resolveStyle(CardFormStyle? style) {
     return CardFormStyle(
       backgroundColor: Colors.transparent,
@@ -257,9 +268,9 @@ class _MethodChannelCardFormFieldState
       if (kDebugMode &&
           controller.details != const CardFieldInputDetails(complete: false)) {
         dev.log('WARNING! Initial card data value has been ignored. \n'
-            '$_kDebugPCIMessage');
+            '$kDebugPCIMessage');
       }
-      WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+      ambiguate(WidgetsBinding.instance)?.addPostFrameCallback((timeStamp) {
         controller._updateDetails(const CardFieldInputDetails(complete: false));
       });
     }
@@ -288,6 +299,9 @@ class _MethodChannelCardFormFieldState
           controller._initalDetails != null)
         'cardDetails': controller._initalDetails?.toJson(),
       'autofocus': widget.autofocus,
+      'defaultValues': {
+        'countryCode': widget.countryCode,
+      }
     };
 
     Widget platform;
@@ -359,6 +373,17 @@ class _MethodChannelCardFormFieldState
         'postalCodeEnabled': widget.enablePostalCode,
       });
     }
+
+    if (widget.countryCode != oldWidget.countryCode) {
+      _methodChannel?.invokeMethod(
+        'onDefaultValuesChanged',
+        {
+          'defaultValues': {
+            'countryCode': widget.countryCode,
+          }
+        },
+      );
+    }
     if (widget.dangerouslyGetFullCardDetails !=
         oldWidget.dangerouslyGetFullCardDetails) {
       _methodChannel?.invokeMethod('dangerouslyGetFullCardDetails', {
@@ -413,7 +438,7 @@ class _MethodChannelCardFormFieldState
       final map = Map<String, dynamic>.from(arguments);
       final field = CardFieldFocusName.fromJson(map);
       if (field.focusedField != null &&
-          WidgetsBinding.instance!.focusManager.primaryFocus !=
+          ambiguate(WidgetsBinding.instance)?.focusManager.primaryFocus !=
               _effectiveNode) {
         _effectiveNode.requestFocus();
       }
@@ -458,7 +483,7 @@ class _MethodChannelCardFormFieldState
 
   @override
   void dangerouslyUpdateCardDetails(CardFieldInputDetails details) {
-    assert(widget.dangerouslyUpdateFullCardDetails, _kDebugPCIMessage);
+    assert(widget.dangerouslyUpdateFullCardDetails, kDebugPCIMessage);
     _methodChannel?.invokeMethod('dangerouslyUpdateCardDetails', {
       'cardDetails': details.toJson(),
     });
@@ -532,6 +557,6 @@ class _UiKitCardFormField extends StatelessWidget {
 
 const kCardFormFieldDefaultAndroidHeight = 270.0;
 const kCardFormFieldDefaultIOSHeight = 170.0;
-const kCardFormFieldDefaultFontSize = 17.0;
+const kCardFormFieldDefaultFontSize = 17;
 const kCardFormFieldDefaultTextColor = Colors.black;
 const kCardFormFieldDefaultFontFamily = 'Roboto';

@@ -34,6 +34,15 @@ enum ApplePayContactFieldsType {
   postalAddress
 }
 
+/// The summary item’s type indicating whether or not the amount is final.
+enum ApplePaySummaryItemType {
+  /// amount is final
+  fixed,
+
+  /// amount is pending
+  pending
+}
+
 @freezed
 
 ///
@@ -55,12 +64,16 @@ class ApplePayShippingMethod with _$ApplePayShippingMethod {
 
 /// Object that can be used to explain the different charges on the Apple Pay sheet.
 class ApplePayCartSummaryItem with _$ApplePayCartSummaryItem {
+  @JsonSerializable(explicitToJson: true)
   const factory ApplePayCartSummaryItem({
     /// Short localized description of the item.
     required String label,
 
     /// The monetary amount.
     required String amount,
+
+    /// The type of summary item
+    @Default(ApplePaySummaryItemType.fixed) ApplePaySummaryItemType type,
   }) = _ApplePayCartSummaryItem;
 
   factory ApplePayCartSummaryItem.fromJson(Map<String, dynamic> json) =>
@@ -94,4 +107,21 @@ class ApplePayPresentParams with _$ApplePayPresentParams {
 
   factory ApplePayPresentParams.fromJson(Map<String, dynamic> json) =>
       _$ApplePayPresentParamsFromJson(json);
+}
+
+@freezed
+class ApplePayErrorAddressField with _$ApplePayErrorAddressField {
+  @JsonSerializable(explicitToJson: true)
+  const factory ApplePayErrorAddressField({
+    /// Address field that is affected by the error
+    required ApplePayContactFieldsType field,
+
+    /// The error message that will be shown when it is invalid
+    ///
+    /// Defaults to error in the stripe sdk.
+    String? message,
+  }) = _ApplePayErrorAddressField;
+
+  factory ApplePayErrorAddressField.fromJson(Map<String, dynamic> json) =>
+      _$ApplePayErrorAddressFieldFromJson(json);
 }

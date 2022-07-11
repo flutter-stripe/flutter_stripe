@@ -7,7 +7,6 @@ import 'package:stripe_example/utils.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 import 'package:stripe_example/widgets/response_card.dart';
-import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 import 'package:stripe_example/config.dart';
 
@@ -104,7 +103,9 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
       // 2. Create payment method
       final paymentMethod =
           await Stripe.instance.createPaymentMethod(PaymentMethodParams.card(
-        billingDetails: billingDetails,
+        paymentMethodData: PaymentMethodData(
+          billingDetails: billingDetails,
+        ),
       ));
 
       // 3. call API to create PaymentIntent
@@ -136,9 +137,9 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
 
       if (paymentIntentResult['clientSecret'] != null &&
           paymentIntentResult['requiresAction'] == true) {
-        // 4. if payment requires action calling handleCardAction
+        // 4. if payment requires action calling handleNextAction
         final paymentIntent = await Stripe.instance
-            .handleCardAction(paymentIntentResult['clientSecret']);
+            .handleNextAction(paymentIntentResult['clientSecret']);
 
         // todo handle error
         /*if (cardActionError) {

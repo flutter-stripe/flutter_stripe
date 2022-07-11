@@ -1,29 +1,42 @@
 name: stripe_example
 description: Demonstrates how to use the stripe plugin.
-
+version: 1.0.0
 publish_to: 'none'
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: ">=2.16.0 <3.0.0"
   flutter: ">=2.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_stripe: ^2.0.2
-  pay: ^1.0.5
-  http: ^0.13.3
-  
+  flutter_stripe: ^3.2.0
+  flutter_stripe_web: ^1.1.0
+  stripe_checkout: ^1.0.0
+  pay: ^1.0.10
+  http: ^0.13.1
+  font_awesome_flutter: ^9.2.0
+  platform: ^3.0.0
+
 
 dev_dependencies:
-  integration_test:
-    sdk: flutter
   flutter_test:
     sdk: flutter
-  flutter_driver:
-    sdk: flutter
-  test: any
-  
+
+dependency_overrides:
+  flutter_stripe:
+    path: ../packages/stripe
+  stripe_platform_interface:
+    path: ../packages/stripe_platform_interface
+  stripe_android:
+    path: ../packages/stripe_android
+  stripe_ios:
+    path: ../packages/stripe_ios
+  stripe_checkout:
+    path: ../packages/stripe_checkout/
+  flutter_stripe_web:
+    path: ../packages/stripe_web
+
 flutter:
   uses-material-design: true
 

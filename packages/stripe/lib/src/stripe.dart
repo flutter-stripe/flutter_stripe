@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 /// [Stripe] is the facade of the library and exposes the operations that can be
@@ -30,6 +29,15 @@ class Stripe {
     assert(instance._publishableKey != null,
         'A publishableKey is required and missing');
     return instance._publishableKey!;
+  }
+
+  /// Whether or not to set the return url for Androdi as well
+  static set setReturnUrlSchemeOnAndroid(bool? value) {
+    if (value == instance._setReturnUrlSchemeOnAndroid) {
+      return;
+    }
+    instance._setReturnUrlSchemeOnAndroid = value;
+    instance.markNeedsSettings();
   }
 
   /// Retrieves the id associate with the Stripe account.
@@ -71,6 +79,11 @@ class Stripe {
     return instance._urlScheme;
   }
 
+  /// Retrieves the setReturnUrlSchemeOnAndroid parameter
+  static bool? get setReturnUrlSchemeOnAndroid {
+    return instance._setReturnUrlSchemeOnAndroid;
+  }
+
   /// Retrieves the merchant identifier.
   static String? get merchantIdentifier => instance._merchantIdentifier;
 
@@ -92,6 +105,7 @@ class Stripe {
         stripeAccountId: stripeAccountId,
         threeDSecureParams: threeDSecureParams,
         urlScheme: urlScheme,
+        setReturnUrlSchemeOnAndroid: setReturnUrlSchemeOnAndroid,
       );
 
   /// Exposes a [ValueListenable] whether or not Apple pay is supported for this
@@ -253,13 +267,13 @@ class Stripe {
   /// several seconds and it is important to not resubmit the form.
   ///
   /// Throws a [StripeException] when confirming the handle card action fails.
-  Future<PaymentIntent> handleCardAction(
+  Future<PaymentIntent> handleNextAction(
     String paymentIntentClientSecret,
   ) async {
     await _awaitForSettings();
     try {
       final paymentIntent =
-          await _platform.handleCardAction(paymentIntentClientSecret);
+          await _platform.handleNextAction(paymentIntentClientSecret);
       return paymentIntent;
     } on StripeError {
       //throw StripeError<CardActionError>(error.code, error.message);
@@ -369,6 +383,65 @@ class Stripe {
     return await _platform.createGooglePayPaymentMethod(params);
   }
 
+  /// Determines if Google Pay is supported on the device
+  ///
+  /// On iOS this defaults to false
+  Future<bool> isGooglePaySupported(IsGooglePaySupportedParams params) async {
+    return await _platform.googlePayIsSupported(params);
+  }
+
+  /// Collect the bankaccount details for the payment intent.
+  ///
+  /// Only US bank accounts are supported. This method is only implemented for
+  /// iOS at the moment.
+  Future<PaymentIntent> collectBankAccount({
+    /// Whether the clientsecret is associated with setup or paymentintent
+    required bool isPaymentIntent,
+
+    /// The clientSecret of the payment and setup intent
+    required String clientSecret,
+
+    /// Parameters associated with the account holder.
+    ///
+    /// The name and email is required.
+    required CollectBankAccountParams params,
+  }) async {
+    return await _platform.collectBankAccount(
+      isPaymentIntent: isPaymentIntent,
+      clientSecret: clientSecret,
+      params: params,
+    );
+  }
+
+  /// Verify the bank account with microtransactions
+  ///
+  /// Only US bank accounts are supported.This method is only implemented for
+  /// iOS at the moment.
+  Future<PaymentIntent> verifyPaymentIntentWithMicrodeposits({
+    /// Whether the clientsecret is associated with setup or paymentintent
+
+    required bool isPaymentIntent,
+
+    /// The clientSecret of the payment and setup intent
+
+    required String clientSecret,
+
+    /// Parameters to verify the microdeposits.
+    required VerifyMicroDepositsParams params,
+  }) async {
+    return await _platform.verifyPaymentIntentWithMicrodeposits(
+      isPaymentIntent: isPaymentIntent,
+      clientSecret: clientSecret,
+      params: params,
+    );
+  }
+
+  /// check if a particular card can be provisioned with the current app
+  /// on this particular device.
+  Future<AddToWalletResult> canAddToWallet(String last4) async {
+    return await _platform.canAddToWallet(last4);
+  }
+
   FutureOr<void> _awaitForSettings() {
     if (_needsSettings) {
       _settingsFuture = applySettings();
@@ -381,13 +454,14 @@ class Stripe {
 
   Future<void>? _settingsFuture;
 
-  static late final Stripe instance = Stripe._();
+  static final Stripe instance = Stripe._();
 
   String? _publishableKey;
   String? _stripeAccountId;
   ThreeDSecureConfigurationParams? _threeDSecureParams;
   String? _merchantIdentifier;
   String? _urlScheme;
+  bool? _setReturnUrlSchemeOnAndroid;
 
   static StripePlatform? __platform;
 
@@ -402,15 +476,18 @@ class Stripe {
   bool _needsSettings = true;
   void markNeedsSettings() {
     _needsSettings = true;
+    if (!_platform.updateSettingsLazily) {
+      _awaitForSettings();
+    }
   }
 
-  Future<void> _initialise({
-    required String publishableKey,
-    String? stripeAccountId,
-    ThreeDSecureConfigurationParams? threeDSecureParams,
-    String? merchantIdentifier,
-    String? urlScheme,
-  }) async {
+  Future<void> _initialise(
+      {required String publishableKey,
+      String? stripeAccountId,
+      ThreeDSecureConfigurationParams? threeDSecureParams,
+      String? merchantIdentifier,
+      String? urlScheme,
+      bool? setReturnUrlSchemeOnAndroid}) async {
     _needsSettings = false;
     await _platform.initialise(
       publishableKey: publishableKey,
@@ -422,4 +499,7 @@ class Stripe {
   }
 
   ValueNotifier<bool>? _isApplePaySupported;
+
+  // Internal use only
+  static final buildWebCard = _platform.buildCard;
 }

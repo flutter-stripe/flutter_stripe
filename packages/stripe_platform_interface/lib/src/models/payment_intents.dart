@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 import 'address.dart';
+import 'next_action.dart';
 
 part 'payment_intents.freezed.dart';
 part 'payment_intents.g.dart';
@@ -55,6 +55,10 @@ class PaymentIntent with _$PaymentIntent {
     /// Timestamp since epoch when the intent is cancelled.
     String? canceledAt,
 
+    /// Additional action that needs to be taken in order to complete a payment
+    /// using the provided resource.
+    NextAction? nextAction,
+
     /// Shipping information of the payment intent.
     ShippingDetails? shipping,
   }) = _PaymentIntent;
@@ -81,6 +85,8 @@ enum ConfirmationMethod {
   Automatic,
 }
 
+//nextActionMap.putString("type", "urlRedirect")
+//     nextActionMap.putString("redirectUrl", it.url.toString())
 @freezed
 
 /// Shipping information
@@ -91,17 +97,17 @@ class ShippingDetails with _$ShippingDetails {
     required Address address,
 
     /// Recipient name.
-    required String name,
+    String? name,
 
     /// Deliver service that will ship the product
-    required String carrier,
+    String? carrier,
 
     /// Recipient phone number.
-    required String phone,
+    String? phone,
 
     /// Tracking number of the shipment. If multiple tracking numbers separate them
     /// with commas.
-    required String trackingNumber,
+    String? trackingNumber,
   }) = _ShippingDetails;
 
   factory ShippingDetails.fromJson(Map<String, dynamic> json) =>

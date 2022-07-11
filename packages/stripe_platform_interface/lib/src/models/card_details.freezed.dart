@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'card_details.dart';
@@ -11,36 +12,11 @@ part of 'card_details.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CardDetails _$CardDetailsFromJson(Map<String, dynamic> json) {
   return _CardDetailsConstructor.fromJson(json);
 }
-
-/// @nodoc
-class _$CardDetailsTearOff {
-  const _$CardDetailsTearOff();
-
-  _CardDetailsConstructor call(
-      {String? number,
-      int? expirationYear,
-      int? expirationMonth,
-      String? cvc}) {
-    return _CardDetailsConstructor(
-      number: number,
-      expirationYear: expirationYear,
-      expirationMonth: expirationMonth,
-      cvc: cvc,
-    );
-  }
-
-  CardDetails fromJson(Map<String, Object?> json) {
-    return CardDetails.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CardDetails = _$CardDetailsTearOff();
 
 /// @nodoc
 mixin _$CardDetails {
@@ -101,26 +77,27 @@ class _$CardDetailsCopyWithImpl<$Res> implements $CardDetailsCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$CardDetailsConstructorCopyWith<$Res>
+abstract class _$$_CardDetailsConstructorCopyWith<$Res>
     implements $CardDetailsCopyWith<$Res> {
-  factory _$CardDetailsConstructorCopyWith(_CardDetailsConstructor value,
-          $Res Function(_CardDetailsConstructor) then) =
-      __$CardDetailsConstructorCopyWithImpl<$Res>;
+  factory _$$_CardDetailsConstructorCopyWith(_$_CardDetailsConstructor value,
+          $Res Function(_$_CardDetailsConstructor) then) =
+      __$$_CardDetailsConstructorCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? number, int? expirationYear, int? expirationMonth, String? cvc});
 }
 
 /// @nodoc
-class __$CardDetailsConstructorCopyWithImpl<$Res>
+class __$$_CardDetailsConstructorCopyWithImpl<$Res>
     extends _$CardDetailsCopyWithImpl<$Res>
-    implements _$CardDetailsConstructorCopyWith<$Res> {
-  __$CardDetailsConstructorCopyWithImpl(_CardDetailsConstructor _value,
-      $Res Function(_CardDetailsConstructor) _then)
-      : super(_value, (v) => _then(v as _CardDetailsConstructor));
+    implements _$$_CardDetailsConstructorCopyWith<$Res> {
+  __$$_CardDetailsConstructorCopyWithImpl(_$_CardDetailsConstructor _value,
+      $Res Function(_$_CardDetailsConstructor) _then)
+      : super(_value, (v) => _then(v as _$_CardDetailsConstructor));
 
   @override
-  _CardDetailsConstructor get _value => super._value as _CardDetailsConstructor;
+  _$_CardDetailsConstructor get _value =>
+      super._value as _$_CardDetailsConstructor;
 
   @override
   $Res call({
@@ -129,7 +106,7 @@ class __$CardDetailsConstructorCopyWithImpl<$Res>
     Object? expirationMonth = freezed,
     Object? cvc = freezed,
   }) {
-    return _then(_CardDetailsConstructor(
+    return _then(_$_CardDetailsConstructor(
       number: number == freezed
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
@@ -179,23 +156,28 @@ class _$_CardDetailsConstructor extends _CardDetailsConstructor {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CardDetailsConstructor &&
-            (identical(other.number, number) || other.number == number) &&
-            (identical(other.expirationYear, expirationYear) ||
-                other.expirationYear == expirationYear) &&
-            (identical(other.expirationMonth, expirationMonth) ||
-                other.expirationMonth == expirationMonth) &&
-            (identical(other.cvc, cvc) || other.cvc == cvc));
+            other is _$_CardDetailsConstructor &&
+            const DeepCollectionEquality().equals(other.number, number) &&
+            const DeepCollectionEquality()
+                .equals(other.expirationYear, expirationYear) &&
+            const DeepCollectionEquality()
+                .equals(other.expirationMonth, expirationMonth) &&
+            const DeepCollectionEquality().equals(other.cvc, cvc));
   }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, number, expirationYear, expirationMonth, cvc);
 
   @JsonKey(ignore: true)
   @override
-  _$CardDetailsConstructorCopyWith<_CardDetailsConstructor> get copyWith =>
-      __$CardDetailsConstructorCopyWithImpl<_CardDetailsConstructor>(
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(number),
+      const DeepCollectionEquality().hash(expirationYear),
+      const DeepCollectionEquality().hash(expirationMonth),
+      const DeepCollectionEquality().hash(cvc));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_CardDetailsConstructorCopyWith<_$_CardDetailsConstructor> get copyWith =>
+      __$$_CardDetailsConstructorCopyWithImpl<_$_CardDetailsConstructor>(
           this, _$identity);
 
   @override
@@ -206,25 +188,25 @@ class _$_CardDetailsConstructor extends _CardDetailsConstructor {
 
 abstract class _CardDetailsConstructor extends CardDetails {
   factory _CardDetailsConstructor(
-      {String? number,
-      int? expirationYear,
-      int? expirationMonth,
-      String? cvc}) = _$_CardDetailsConstructor;
+      {final String? number,
+      final int? expirationYear,
+      final int? expirationMonth,
+      final String? cvc}) = _$_CardDetailsConstructor;
   _CardDetailsConstructor._() : super._();
 
   factory _CardDetailsConstructor.fromJson(Map<String, dynamic> json) =
       _$_CardDetailsConstructor.fromJson;
 
   @override
-  String? get number;
+  String? get number => throw _privateConstructorUsedError;
   @override
-  int? get expirationYear;
+  int? get expirationYear => throw _privateConstructorUsedError;
   @override
-  int? get expirationMonth;
+  int? get expirationMonth => throw _privateConstructorUsedError;
   @override
-  String? get cvc;
+  String? get cvc => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CardDetailsConstructorCopyWith<_CardDetailsConstructor> get copyWith =>
+  _$$_CardDetailsConstructorCopyWith<_$_CardDetailsConstructor> get copyWith =>
       throw _privateConstructorUsedError;
 }

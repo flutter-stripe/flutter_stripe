@@ -12,16 +12,108 @@ part 'create_token_data.g.dart';
 ///
 /// At this moment only card tokens are supported.
 class CreateTokenParams with _$CreateTokenParams {
+  @JsonSerializable(explicitToJson: true)
+  @Deprecated('Use [CreateTokenParams.card] instead')
   const factory CreateTokenParams({
     /// Type of token.
     @Default(TokenType.Card) TokenType type,
 
+    /// Name of the card holder
+    String? name,
+
     /// Additional address details
     Address? address,
-  }) = _CreateTokenParams;
+  }) = _CreateTokenParamsLegacy;
+
+  @JsonSerializable(explicitToJson: true)
+  const factory CreateTokenParams.card({
+    required CardTokenParams params,
+  }) = _CreateTokenParamsCard;
+
+  @JsonSerializable(explicitToJson: true)
+  const factory CreateTokenParams.bankAccount({
+    required BankAccountTokenParams params,
+  }) = _CreateTokenParamsBankAccount;
+
+  /// Creates a single-use token that represents the details of personally identifiable information (PII).
+  ///
+  /// See https://stripe.com/docs/api/tokens/create_pii
+  @JsonSerializable(explicitToJson: true)
+  const factory CreateTokenParams.pii({
+    required PIITokenParams params,
+  }) = _CreateTokenParamsPII;
 
   factory CreateTokenParams.fromJson(Map<String, dynamic> json) =>
       _$CreateTokenParamsFromJson(json);
+}
+
+@freezed
+
+/// parameters that are used to create a token for a card.
+class CardTokenParams with _$CardTokenParams {
+  const factory CardTokenParams({
+    /// Type of token.
+    @Default(TokenType.Card) TokenType type,
+
+    /// Name of the card holder
+    String? name,
+
+    /// Additional address details
+    Address? address,
+
+    /// The three letter ISO 4217 code for the currency.
+    String? currency,
+  }) = _CardTokenParams;
+
+  factory CardTokenParams.fromJson(Map<String, dynamic> json) =>
+      _$CardTokenParamsFromJson(json);
+}
+
+@freezed
+
+/// Parameters that are used to create a token for a personally identifiable information (PII).
+class PIITokenParams with _$PIITokenParams {
+  const factory PIITokenParams({
+    /// Type of token.
+    @Default(TokenType.Pii) TokenType type,
+
+    /// The user's personal ID number
+    required String personalId,
+  }) = _PIITokenParams;
+
+  factory PIITokenParams.fromJson(Map<String, dynamic> json) =>
+      _$PIITokenParamsFromJson(json);
+}
+
+@freezed
+
+/// parameters needed to create a token for bank account
+class BankAccountTokenParams with _$BankAccountTokenParams {
+  const factory BankAccountTokenParams({
+    /// Type of token.
+    @Default(TokenType.BankAccount) TokenType type,
+
+    /// unique number of the account.
+    required String accountNumber,
+
+    /// 2 letter code of the country where the account is located
+    required String country,
+
+    /// The three letter ISO 4217 code for the currency.
+    required String currency,
+
+    /// Full name of the account holder
+    String? accountHolderName,
+
+    /// Entity that is holder of the account.
+    BankAccountHolderType? accountHolderType,
+
+    /// The routing number of the bank account (e.g. needer for US accounts).
+    String? routingNumber,
+  }) = _BankAccountTokenParams;
+
+  factory BankAccountTokenParams.fromJson(Map<String, dynamic> json) =>
+      _$BankAccountTokenParamsFromJson(json);
 }
 
 @freezed
@@ -58,6 +150,9 @@ class TokenData with _$TokenData {
 class CardData with _$CardData {
   @JsonSerializable(explicitToJson: true)
   const factory CardData({
+    /// Unique identifier
+    String? id,
+
     /// The brand associated to the card e.g. (visa, amex).
     required String brand,
 
@@ -155,4 +250,4 @@ enum BankAccountStatus {
 }
 
 /// Type of token
-enum TokenType { Card }
+enum TokenType { Card, BankAccount, Pii }

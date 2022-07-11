@@ -3,13 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
+import 'package:stripe_example/config.dart';
 import 'package:stripe_example/utils.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 import 'package:stripe_example/widgets/response_card.dart';
-import 'package:stripe_platform_interface/stripe_platform_interface.dart';
-
-import 'package:stripe_example/config.dart';
 
 class NoWebhookPaymentCardFormScreen extends StatefulWidget {
   @override
@@ -44,6 +42,13 @@ class _NoWebhookPaymentCardFormScreenState
       children: [
         CardFormField(
           controller: controller,
+          countryCode: 'US',
+          style: CardFormStyle(
+            borderColor: Colors.blueGrey,
+            textColor: Colors.black,
+            fontSize: 24,
+            placeholderColor: Colors.blue,
+          ),
         ),
         LoadingButton(
           onPressed:
@@ -65,7 +70,6 @@ class _NoWebhookPaymentCardFormScreenState
                 onPressed: () => controller.blur(),
                 child: Text('Blur'),
               ),
-              
             ],
           ),
         ),
@@ -102,7 +106,9 @@ class _NoWebhookPaymentCardFormScreenState
       // 2. Create payment method
       final paymentMethod =
           await Stripe.instance.createPaymentMethod(PaymentMethodParams.card(
-        billingDetails: billingDetails,
+        paymentMethodData: PaymentMethodData(
+          billingDetails: billingDetails,
+        ),
       ));
 
       // 3. call API to create PaymentIntent
@@ -134,9 +140,9 @@ class _NoWebhookPaymentCardFormScreenState
 
       if (paymentIntentResult['clientSecret'] != null &&
           paymentIntentResult['requiresAction'] == true) {
-        // 4. if payment requires action calling handleCardAction
+        // 4. if payment requires action calling handleNextAction
         final paymentIntent = await Stripe.instance
-            .handleCardAction(paymentIntentResult['clientSecret']);
+            .handleNextAction(paymentIntentResult['clientSecret']);
 
         // todo handle error
         /*if (cardActionError) {

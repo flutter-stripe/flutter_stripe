@@ -6,7 +6,6 @@
 
 [![pub package](https://img.shields.io/pub/v/flutter_stripe.svg)](https://pub.dev/packages/flutter_stripe) ![build](https://img.shields.io/github/workflow/status/flutter-stripe/flutter_stripe/all_plugins?logo=github)
 
-
 The Stripe Flutter SDK allows you to build delightful payment experiences in your native Android and iOS apps using Flutter. We provide powerful and customizable UI screens and elements that can be used out-of-the-box to collect your users' payment details.
 
 
@@ -20,7 +19,7 @@ The Stripe Flutter SDK allows you to build delightful payment experiences in you
 
 **Apple Pay**: We provide a [seamless integration with Apple Pay](https://stripe.com/docs/apple-pay).
 
-**Google Pay**: We provide a [seamless integration with Google Pay](https://stripe.com/docs/google-pay).
+**Google Pay**: The plugin can easily act as payment provider for the [Pay plugin](#Pay-Plugin-support) that enables you to seamlessly integrate Google Pay or Apple Pay. All you need to do is add your stripe publishable key to the payment profile.
 
 **Payment methods**: Accepting more [payment methods](https://stripe.com/docs/payments/payment-methods/overview) helps your business expand its global reach and improve checkout conversion.
 
@@ -44,28 +43,42 @@ dart pub add flutter_stripe
 
 #### Android
 
-- Android 5.0 (API level 21) and above
-- Kotlin version 1.5.0 and above: [example](https://github.com/flutter-stripe/flutter_stripe/blob/79b201a2e9b827196d6a97bb41e1d0e526632a5a/example/android/build.gradle#L2)
-- Using a descendant of `Theme.AppCompat` for your activity: [example](https://github.com/flutter-stripe/flutter_stripe/blob/384d390c8a90d19dc62c73faa5226fa931fd6d44/example/android/app/src/main/res/values/styles.xml#L15)
-- Using `FlutterFragmentActivity` instead of `FlutterActivity` in `MainActivity.kt`: [example](https://github.com/flutter-stripe/flutter_stripe/blob/79b201a2e9b827196d6a97bb41e1d0e526632a5a/example/android/app/src/main/kotlin/com/flutter/stripe/example/MainActivity.kt#L6)
+This plugin requires several changes to be able to work on Android devices. Please make sure you follow all these steps:
 
-This is caused by the Stripe SDK requires the use of the AppCompat theme for their UI components and the Support Fragment Manager for the Payment Sheets
+1. Use Android 5.0 (API level 21) and above
+2. Use Kotlin version 1.5.0 and above: [example](https://github.com/flutter-stripe/flutter_stripe/blob/79b201a2e9b827196d6a97bb41e1d0e526632a5a/example/android/build.gradle#L2)
+3. Using a descendant of `Theme.AppCompat` for your activity: [example](https://github.com/flutter-stripe/flutter_stripe/main/example/android/app/src/main/res/values/styles.xml#L15), [example night theme](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/app/src/main/res/values-night/styles.xml#L16)
+4. Using an up-to-date Android gradle build tools version: [example](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/build.gradle#L9) and an up-to-date gradle version accordingly: [example](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/gradle/wrapper/gradle-wrapper.properties#L6) 
+5. Using `FlutterFragmentActivity` instead of `FlutterActivity` in `MainActivity.kt`: [example](https://github.com/flutter-stripe/flutter_stripe/blob/79b201a2e9b827196d6a97bb41e1d0e526632a5a/example/android/app/src/main/kotlin/com/flutter/stripe/example/MainActivity.kt#L6)
+6. Rebuild the app, as the above changes don't update with hot reload
+
+These changes are needed because the Android Stripe SDK requires the use of the AppCompat theme for their UI components and the Support Fragment Manager for the Payment Sheets
+
+If you are having troubles to make this package to work on Android, join [this discussion](https://github.com/flutter-stripe/flutter_stripe/discussions/538) to get some support 
 
 #### iOS
 
-Compatible with apps targeting iOS 11 or above.
+Compatible with apps targeting iOS 12 or above.
+
+#### Web (Experimental)
+
+Now you can use Stripe with Flutter web! Notice right now it is highly experimental and only a subset of features is implemented.
+
+Check the steps needed [here](https://github.com/flutter-stripe/flutter_stripe/tree/main/packages/stripe_web)
 
 ## Usage
 
-The library supports 2 ways of payment namely the `CardField` and the `Paymentsheet`. The `CardField` has the most configurable options but it has some issues on Android: https://github.com/flutter/flutter/issues/86480 .  
+The library provides three UI componets for accepting card payments: the `CardField`, `CardForm`, and the `Paymentsheet`. 
 
-Furthermore the `PaymentSheet` has a more easy and out of the box integration:
+We recommend using the `PaymentSheet` for the most easy and smooth Stripe integration. It provides out of the box support for:
 - Localized labels and error messages to the users
 - Build-in animations
 - Build-in Google Pay and Apple Pay buttons
-- Handling 3D-secure 
+- Handling 3D-secure
 
-We recommend using the `PaymentSheet` for the most easy and smooth Stripe integration.
+Notice that `PaymentSheet` is only available for Android and iOS.
+
+On the other side the `CardField` allows you to create a more customizable payment flow inside your app.
 
 ### Example
 
@@ -84,36 +97,25 @@ void main() async {
 // payment_screen.dart
 class PaymentScreen extends StatelessWidget {
 
-  Future<void> checkout()async{
-    /// retrieve data from the backend
-    final paymentSheetData = backend.fetchPaymentSheetData();
-
-    await Stripe.instance.initPaymentSheet(
-        paymentSheetParameters: SetupPaymentSheetParameters(
-          applePay: true,
-          googlePay: true,
-          style: ThemeMode.dark,
-          testEnv: true,
-          merchantCountryCode: 'DE',
-          merchantDisplayName: 'Flutter Stripe Store Demo',
-          customerId: _paymentSheetData!['customer'],
-          paymentIntentClientSecret: _paymentSheetData!['paymentIntent'],
-          customerEphemeralKeySecret: _paymentSheetData!['ephemeralKey'],
-    ));
-
-     await Stripe.instance.presentPaymentSheet();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: Column(
         children: [
-          TextButton(
-            onPressed: _checkout,
-            child: const Text('Checkout'),
+          CardField(
+            onCardChanged: (card) {
+              print(card);
+            },
           ),
+          TextButton(
+            onPressed: () async {
+              // create payment method
+              final paymentMethod =
+                  await Stripe.instance.createPaymentMethod(PaymentMethodParams.card());
+            },
+            child: Text('pay'),
+          )
         ],
       ),
     );
@@ -133,8 +135,8 @@ The library offers several methods to handle stripe related actions:
 
 ```dart
 Future<PaymentMethod> createPaymentMethod(...);
-Future<PaymentIntent> handleCardAction(...);
-Future<PaymentIntent> confirmPaymentMethod(...);
+Future<PaymentIntent> handleNextAction(...);
+Future<PaymentIntent> confirmPayment(...);
 Future<void> configure3dSecure(...);
 Future<bool> isApplePaySupported();
 Future<void> presentApplePay(...);
@@ -165,7 +167,7 @@ Future<void> onGooglePayResult(paymentResult) async {
       token: tokenJson['id'],
     );
     // Confirm Google pay payment method
-    await Stripe.instance.confirmPaymentMethod(
+    await Stripe.instance.confirmPayment(
       clientSecret,
       params,
     );
@@ -190,11 +192,6 @@ Future<void> onGooglePayResult(paymentResult) async {
 
 - [Install the `stripe-cli`](https://stripe.com/docs/stripe-cli)
 - Run `stripe listen --forward-to localhost:4242/webhook`
-
-## Known issues
-
-- The Card field on Android has focus issues on older Flutter versions - it has been fixed by the Flutter framework in
-  the master branch. The issue is being tracked in [#14](https://github.com/flutter-stripe/flutter_stripe/issues/14).
 
 ## Contributing
 

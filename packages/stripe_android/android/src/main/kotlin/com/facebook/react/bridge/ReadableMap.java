@@ -3,10 +3,13 @@ package com.facebook.react.bridge;
 import androidx.annotation.Nullable;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -39,8 +42,11 @@ public class ReadableMap {
         }
     }
 
-    public Integer getInt(String key) {
-        return map.optInt(key);
+    public Integer getInt(String key) throws Exception {
+        if (map.opt(key) instanceof Double) {
+            throw new Exception("We've got a double here");
+        }
+        return map.getInt(key);
     }
 
     public @Nullable ReadableMap getMap(String key) {
@@ -81,7 +87,7 @@ public class ReadableMap {
                 return ReadableType.Array;
             } else if (value instanceof Number) {
                 return ReadableType.Number;
-            } else if (value instanceof Map) {
+            } else if (value instanceof Map || (value instanceof  JSONObject)) {
                 return ReadableType.Map;
             } else if (value instanceof String) {
                 return ReadableType.String;
@@ -95,6 +101,51 @@ public class ReadableMap {
 
     public double getDouble(String key) {
         return map.optDouble(key);
+    }
+
+    @Nullable
+    public ReadableArray getArray(@NotNull String key) {
+        if (map.optJSONArray(key) != null && map.optJSONArray(key) != JSONObject.NULL) {
+            return new ReadableArray(map.optJSONArray(key));
+        } else {
+            return null;
+        }
+    }
+
+    private static HashMap<String, Object> toMap(JSONObject jsonobj)  throws JSONException {
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        Iterator<String> keys = jsonobj.keys();
+        while(keys.hasNext()) {
+            String key = keys.next();
+            Object value = jsonobj.get(key);
+            if (value instanceof JSONArray) {
+                value = toList((JSONArray) value);
+            } else if (value instanceof JSONObject) {
+                value = toMap((JSONObject) value);
+            }
+            map.put(key, value);
+        }
+        return map;
+    }
+
+    private static List<Object> toList(JSONArray array) throws JSONException {
+        List<Object> list = new ArrayList<Object>();
+        for(int i = 0; i < array.length(); i++) {
+            Object value = array.get(i);
+            if (value instanceof JSONArray) {
+                value = toList((JSONArray) value);
+            }
+            else if (value instanceof JSONObject) {
+                value = toMap((JSONObject) value);
+            }
+            list.add(value);
+        }
+        return list;
+    }
+
+    @NotNull
+    public HashMap toHashMap() throws JSONException {
+        return toMap(this.map);
     }
 }
 

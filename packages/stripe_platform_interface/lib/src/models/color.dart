@@ -11,6 +11,7 @@ class ColorKey {
       // ignore: lines_longer_than_80_chars
       return '#${color.value.toRadixString(16).padLeft(8, '0').toUpperCase()}';
     }
+    return null;
   }
 
   static Color? fromJson(value) {

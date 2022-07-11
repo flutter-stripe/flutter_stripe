@@ -5,34 +5,40 @@ import android.content.Context;
 import android.content.Intent;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import io.flutter.embedding.android.FlutterFragmentActivity;
 import io.flutter.plugin.common.PluginRegistry;
 
 public class ReactContextBaseJavaModule implements PluginRegistry.ActivityResultListener {
     protected final Activity activity;
-    private final ReactComponentActivityWrapper activityWrapper;
+    protected final ReactApplicationContext context;
 
     private final ArrayList<ActivityEventListener> eventListeners = new ArrayList<>();
 
     protected ReactContextBaseJavaModule(ReactApplicationContext context) {
         this.activity = context.getActivity();
+        this.context = context;
         if (!(activity instanceof FlutterFragmentActivity)) {
             throw new IllegalStateException("Ensure that your Main Activity is subclassed by FlutterFragmentActivity");
         }
-        this.activityWrapper = new ReactComponentActivityWrapper((FlutterFragmentActivity) activity);
     }
 
-    protected Context getReactApplicationContext() {
-        return activity;
+    protected ReactApplicationContext getReactApplicationContext() {
+        return this.context;
     }
 
-    public ReactComponentActivityWrapper getCurrentActivity() {
-        return activityWrapper;
+    public FlutterFragmentActivity getCurrentActivity() {
+        return (FlutterFragmentActivity) activity;
     }
 
     public String getName() {
         return "StripeSdk";
+    }
+
+    public Map<String, Object> getConstants() {
+        return new HashMap();
     }
 
     @Override

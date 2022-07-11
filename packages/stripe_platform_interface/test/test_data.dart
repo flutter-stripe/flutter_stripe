@@ -8,7 +8,7 @@ extension PaymentMethodTestInstance on PaymentMethod {
   static PaymentMethod create(String id) => PaymentMethod(
         id: id,
         livemode: false,
-        type: 'paymentType',
+        paymentMethodType: 'paymentType',
         billingDetails: const BillingDetails(),
         card: const Card(),
         sepaDebit: const SepaDebit(),
@@ -18,17 +18,30 @@ extension PaymentMethodTestInstance on PaymentMethod {
         ideal: const Ideal(),
         fpx: const Fpx(),
         upi: const Upi(),
+        usBankAccount: const UsBankAccount(
+          accountHolderType: BankAccountHolderType.Individual,
+          accountType: UsBankAccountType.Checking,
+        ),
       );
 
   Map<String, dynamic> jsonMap() => {
         'id': id,
         'livemode': livemode,
-        'type': type,
+        'paymentMethodType': paymentMethodType,
         'billingDetails': {
           'email': billingDetails.email,
           'address': billingDetails.address,
           'phone': billingDetails.phone,
           'name': billingDetails.name
+        },
+        'USBankAccount': {
+          'routingNumber': usBankAccount.routingNumber,
+          'last4': usBankAccount.last4,
+          'accountHolderType': usBankAccount.accountHolderType.name,
+          'accountType': usBankAccount.accountType.name,
+          'bankName': usBankAccount.bankName,
+          'fingerprint': usBankAccount.fingerprint,
+          'linkedAccount': usBankAccount.linkedAccount,
         },
         'Card': {
           'brand': card.brand,

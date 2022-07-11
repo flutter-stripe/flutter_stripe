@@ -10,7 +10,6 @@ import 'package:stripe_example/utils.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 import 'package:stripe_example/widgets/response_card.dart';
-import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 class SetupFuturePaymentScreen extends StatefulWidget {
   @override
@@ -130,7 +129,9 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
       final setupIntentResult = await Stripe.instance.confirmSetupIntent(
         clientSecret,
         PaymentMethodParams.card(
-          billingDetails: billingDetails,
+          paymentMethodData: PaymentMethodData(
+            billingDetails: billingDetails,
+          ),
         ),
       );
       log('Setup Intent created $setupIntentResult');
@@ -179,19 +180,6 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
   Future<void> _handleRetrievePaymentIntent(String clientSecret) async {
     final paymentIntent =
         await Stripe.instance.retrievePaymentIntent(clientSecret);
-    /*final errorCode = paymentIntent.lastPaymentError?.code;
-
-    var failureReason = 'Payment failed, try again.'; // Default to a generic error message
-    if (paymentIntent?.lastPaymentError?.type == 'Card') {
-      failureReason = paymentIntent.lastPaymentError.message;
-    }*/
-    final errorCode = false;
-
-    if (errorCode) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('failureReason')));
-      //setPaymentError(errorCode);
-    }
 
     final paymentMethodId = paymentIntent.paymentMethodId == null
         ? _setupIntentResult?.paymentMethodId
@@ -210,7 +198,9 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
       await Stripe.instance.confirmPayment(
         _retrievedPaymentIntent!.clientSecret,
         PaymentMethodParams.cardFromMethodId(
-            paymentMethodId: _retrievedPaymentIntent!.paymentMethodId!),
+          paymentMethodData: PaymentMethodDataCardFromMethod(
+              paymentMethodId: _retrievedPaymentIntent!.paymentMethodId!),
+        ),
       );
     }
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(

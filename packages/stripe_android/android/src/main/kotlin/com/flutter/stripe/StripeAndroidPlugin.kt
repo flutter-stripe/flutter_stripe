@@ -1,14 +1,14 @@
 package com.flutter.stripe
 
+import android.annotation.SuppressLint
 import androidx.annotation.NonNull
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
-import com.reactnativestripesdk.CardFormViewManager
-import com.reactnativestripesdk.GooglePayButtonManager
-import com.reactnativestripesdk.StripeSdkCardViewManager
-import com.reactnativestripesdk.StripeSdkModule
+import com.google.android.material.internal.ThemeEnforcement
+import com.reactnativestripesdk.*
+import com.reactnativestripesdk.pushprovisioning.AddToWalletButtonManager
 import io.flutter.embedding.android.FlutterFragmentActivity
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
@@ -28,10 +28,12 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     /// This local reference serves to register the plugin with the Flutter Engine and unregister it
     /// when the Flutter Engine is detached from the Activity
     private lateinit var channel: MethodChannel
+    private var initializationError: String? = null
+
     lateinit var stripeSdk: StripeSdkModule
 
-    private val stripeSdkCardViewManager: StripeSdkCardViewManager by lazy {
-        StripeSdkCardViewManager()
+    private val stripeSdkCardViewManager: CardFieldViewManager by lazy {
+        CardFieldViewManager()
     }
 
     private val cardFormViewManager: CardFormViewManager by lazy {
@@ -40,6 +42,10 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
     private val payButtonViewManager: GooglePayButtonManager by lazy {
         GooglePayButtonManager()
+    }
+
+    private val aubecsDebitManager: AuBECSDebitFormViewManager by lazy {
+        AuBECSDebitFormViewManager()
     }
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
@@ -54,13 +60,22 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         flutterPluginBinding
                 .platformViewRegistry
                 .registerViewFactory("flutter.stripe/google_pay_button", StripeSdkGooglePayButtonPlatformViewFactory(flutterPluginBinding, payButtonViewManager) { stripeSdk })
+        flutterPluginBinding
+            .platformViewRegistry
+            .registerViewFactory("flutter.stripe/aubecs_form_field", StripeAubecsDebitPlatformViewFactory(flutterPluginBinding, aubecsDebitManager){stripeSdk})
+        flutterPluginBinding
+            .platformViewRegistry
+            .registerViewFactory("flutter.stripe/add_to_wallet", StripeAddToWalletPlatformViewFactory(flutterPluginBinding, AddToWalletButtonManager(flutterPluginBinding.applicationContext)){stripeSdk})
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-        if (!this::stripeSdk.isInitialized) {
+        if (initializationError != null) {
             result.error(
                 "flutter_stripe initialization failed",
-                "The plugin failed to initialize. Are you using FlutterFragmentActivity? Please check the README: https://github.com/flutter-stripe/flutter_stripe#android",
+                """The plugin failed to initialize:
+${initializationError}
+Please make sure you follow all the steps detailed inside the README: https://github.com/flutter-stripe/flutter_stripe#android
+If you continue to have trouble, follow this discussion to get some support https://github.com/flutter-stripe/flutter_stripe/discussions/538""",
                 null
             )
             return
@@ -87,7 +102,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     options = call.requiredArgument("options"),
                     promise = Promise(result)
             )
-            "handleCardAction" -> stripeSdk.handleCardAction(
+            "handleNextAction" -> stripeSdk.handleNextAction(
                     paymentIntentClientSecret = call.requiredArgument("paymentIntentClientSecret"),
                     promise = Promise(result)
             )
@@ -118,7 +133,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             "dangerouslyUpdateCardDetails" -> {
                 stripeSdkCardViewManager.setCardDetails(
                     value = call.requiredArgument("params"),
-                    reactContext = ThemedReactContext(stripeSdk.currentActivity.activity, channel) { stripeSdk }
+                    reactContext = ThemedReactContext(stripeSdk.reactContext, channel) { stripeSdk }
                 )
                 result.success(null)
             }
@@ -134,27 +149,51 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     params = call.requiredArgument("params"),
                     promise = Promise(result)
             )
-            /*"registerConfirmSetupIntentCallbacks" -> stripeSdk.registerConfirmSetupIntentCallbacks(
-                    successCallback = Promise(result),
-                    errorCallback = Promise(result),
+            "isGooglePaySupported" -> stripeSdk.isGooglePaySupported(
+                params = call.requiredArgument("params"),
+                promise = Promise(result)
             )
-            "unregisterConfirmSetupIntentCallbacks" -> {
-                stripeSdk.unregisterConfirmSetupIntentCallbacks()
-                result.success(null)
-            }*/
+            "collectBankAccount" -> stripeSdk.collectBankAccount(
+                isPaymentIntent = call.requiredArgument("isPaymentIntent"),
+                clientSecret = call.requiredArgument("clientSecret"),
+                params = call.requiredArgument("params"),
+                promise = Promise(result)
+            )
+            "verifyMicrodeposits" -> stripeSdk.verifyMicrodeposits(
+                isPaymentIntent = call.requiredArgument("isPaymentIntent"),
+                clientSecret = call.requiredArgument("clientSecret"),
+                params = call.requiredArgument("params"),
+                promise = Promise(result)
+            )
+            "isCardInWallet" -> stripeSdk.isCardInWallet(
+                params = call.requiredArgument("params"),
+                promise = Promise(result)
+            )
+            "canAddCardToWallet" -> stripeSdk.canAddCardToWallet(
+                params = call.requiredArgument("params"),
+                promise = Promise(result)
+            )
             else -> result.notImplemented()
         }
     }
+
 
     override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
         channel.setMethodCallHandler(null)
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-        if (binding.activity is FlutterFragmentActivity) {
-            stripeSdk = StripeSdkModule(ReactApplicationContext(binding))
-        } else {
-            // no-op - will throw errors when method channel is called
+        when {
+            binding.activity !is FlutterFragmentActivity -> {
+                initializationError =
+                    "Your Main Activity ${binding.activity.javaClass} is not a subclass FlutterFragmentActivity."
+            }
+            !ThemeEnforcement.isAppCompatTheme(binding.activity) -> {
+                initializationError =
+                    "Your theme isn't set to use Theme.AppCompat or Theme.MaterialComponents."
+            }
+            else -> stripeSdk = StripeSdkModule(ReactApplicationContext(binding))
         }
     }
 
@@ -165,9 +204,6 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
 
     override fun onDetachedFromActivity() {
-        if (this::stripeSdk.isInitialized) {
-            stripeSdk.currentActivity.unregisterReceivers()
-        }
     }
 }
 

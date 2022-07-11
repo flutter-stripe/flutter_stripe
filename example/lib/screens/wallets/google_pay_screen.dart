@@ -3,12 +3,11 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:http/http.dart' as http;
+import 'package:pay/pay.dart' as pay;
 import 'package:stripe_example/config.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
-import 'package:stripe_platform_interface/stripe_platform_interface.dart';
-import 'package:pay/pay.dart' as pay;
 
 const _paymentItems = [
   pay.PaymentItem(
@@ -85,7 +84,9 @@ class _GooglePayScreenState extends State<GooglePayScreen> {
       print(tokenJson);
 
       final params = PaymentMethodParams.cardFromToken(
-        token: tokenJson['id'], // TODO extract the actual token
+        paymentMethodData: PaymentMethodDataCardFromToken(
+          token: tokenJson['id'], // TODO extract the actual token
+        ),
       );
 
       // 3. Confirm Google pay payment method

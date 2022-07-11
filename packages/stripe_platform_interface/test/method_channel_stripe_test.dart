@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:stripe_platform_interface/src/method_channel_stripe.dart';
-import 'package:stripe_platform_interface/src/models/payment_methods.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 import 'method_channel_mock.dart';
@@ -18,6 +17,7 @@ void main() {
       setUp(() {
         sut = MethodChannelStripe(
           platformIsIos: true,
+          platformIsAndroid: false,
           methodChannel: MethodChannelMock(
             channelName: methodChannelName,
             method: 'initialise',
@@ -42,6 +42,7 @@ void main() {
         setUp(() async {
           sut = MethodChannelStripe(
             platformIsIos: true,
+            platformIsAndroid: false,
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
               method: 'createPaymentMethod',
@@ -51,8 +52,9 @@ void main() {
               },
             ).methodChannel,
           );
-          result =
-              await sut.createPaymentMethod(const PaymentMethodParams.card());
+          result = await sut.createPaymentMethod(const PaymentMethodParams.card(
+            paymentMethodData: PaymentMethodData(),
+          ));
         });
 
         test('It returns payment method', () {
@@ -64,6 +66,7 @@ void main() {
         setUp(() async {
           sut = MethodChannelStripe(
             platformIsIos: true,
+            platformIsAndroid: false,
             methodChannel: MethodChannelMock(
                     channelName: methodChannelName,
                     method: 'createPaymentMethod',
@@ -74,8 +77,10 @@ void main() {
 
         test('It returns payment method', () async {
           expect(
-              () async => await sut
-                  .createPaymentMethod(const PaymentMethodParams.card()),
+              () async =>
+                  await sut.createPaymentMethod(const PaymentMethodParams.card(
+                    paymentMethodData: PaymentMethodData(),
+                  )),
               throwsA(isInstanceOf<StripeException>()));
         });
       });
@@ -85,6 +90,7 @@ void main() {
       setUp(() {
         sut = MethodChannelStripe(
           platformIsIos: true,
+          platformIsAndroid: false,
           methodChannel: MethodChannelMock(
             channelName: methodChannelName,
             method: 'confirmApplePayPayment',
@@ -108,6 +114,7 @@ void main() {
       setUp(() async {
         sut = MethodChannelStripe(
           platformIsIos: true,
+          platformIsAndroid: false,
           methodChannel: MethodChannelMock(
             channelName: methodChannelName,
             method: 'createApplePayToken',
@@ -136,6 +143,7 @@ void main() {
         setUp(() async {
           sut = MethodChannelStripe(
             platformIsIos: true,
+            platformIsAndroid: false,
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
               method: 'confirmPayment',
@@ -146,7 +154,10 @@ void main() {
             ).methodChannel,
           );
           result = await sut.confirmPayment(
-              'secret', const PaymentMethodParams.card());
+              'secret',
+              const PaymentMethodParams.card(
+                paymentMethodData: PaymentMethodData(),
+              ));
         });
 
         test('It returns payment intent', () {
@@ -158,6 +169,7 @@ void main() {
         setUp(() async {
           sut = MethodChannelStripe(
             platformIsIos: true,
+            platformIsAndroid: false,
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
               method: 'confirmPayment',
@@ -170,7 +182,9 @@ void main() {
           expectLater(
             () async => await sut.confirmPayment(
               'secret',
-              const PaymentMethodParams.card(),
+              const PaymentMethodParams.card(
+                paymentMethodData: PaymentMethodData(),
+              ),
             ),
             throwsA(const TypeMatcher<StripeException>()),
           );
@@ -184,6 +198,7 @@ void main() {
       setUp(() async {
         sut = MethodChannelStripe(
           platformIsIos: true,
+          platformIsAndroid: false,
           methodChannel: MethodChannelMock(
             channelName: methodChannelName,
             method: 'confirmSetupIntent',
@@ -195,7 +210,9 @@ void main() {
         );
         result = await sut.confirmSetupIntent(
           'setupIntentClientSecret',
-          const PaymentMethodParams.card(),
+          const PaymentMethodParams.card(
+            paymentMethodData: PaymentMethodData(),
+          ),
         );
       });
 
@@ -210,6 +227,7 @@ void main() {
       setUp(() async {
         sut = MethodChannelStripe(
           platformIsIos: true,
+          platformIsAndroid: false,
           methodChannel: MethodChannelMock(
             channelName: methodChannelName,
             method: 'createTokenForCVCUpdate',
@@ -224,23 +242,24 @@ void main() {
       });
     });
 
-    group('handleCardAction', () {
+    group('handleNextAction', () {
       late PaymentIntent result;
 
       group('When handling card action is successfull', () {
         setUp(() async {
           sut = MethodChannelStripe(
             platformIsIos: true,
+            platformIsAndroid: false,
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
-              method: 'handleCardAction',
+              method: 'handleNextAction',
               result: {
                 "paymentIntent":
                     PaymentIntentTestInstance.create('id1').toJsonMap()
               },
             ).methodChannel,
           );
-          result = await sut.handleCardAction('paymentIntentId');
+          result = await sut.handleNextAction('paymentIntentId');
         });
 
         test('It returns payment intent', () {
@@ -252,9 +271,10 @@ void main() {
         setUp(() async {
           sut = MethodChannelStripe(
             platformIsIos: true,
+            platformIsAndroid: false,
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
-              method: 'handleCardAction',
+              method: 'handleNextAction',
               result: createErrorResponse('whoops'),
             ).methodChannel,
           );
@@ -262,7 +282,7 @@ void main() {
 
         test('It returns error', () async {
           expect(
-            () async => await sut.handleCardAction('paymentIntentId'),
+            () async => await sut.handleNextAction('paymentIntentId'),
             throwsA(const TypeMatcher<StripeException>()),
           );
         });
@@ -274,6 +294,7 @@ void main() {
       setUp(() async {
         sut = MethodChannelStripe(
           platformIsIos: true,
+          platformIsAndroid: false,
           methodChannel: MethodChannelMock(
             channelName: methodChannelName,
             method: 'isApplePaySupported',
@@ -288,6 +309,64 @@ void main() {
       });
     });
 
+    group('updateApple pay summary items', () {
+      group('When platform is ios', () {
+        late Completer<void> completer;
+        setUp(() async {
+          completer = Completer();
+          sut = MethodChannelStripe(
+            platformIsIos: true,
+            platformIsAndroid: false,
+            methodChannel: MethodChannelMock(
+              channelName: methodChannelName,
+              method: 'updateApplePaySummaryItems',
+              result: {},
+            ).methodChannel,
+          );
+          await sut.updateApplePaySummaryItems(summaryItems: const [
+            ApplePayCartSummaryItem(label: '1', amount: '100'),
+          ], errorAddressFields: const [
+            ApplePayErrorAddressField(
+              field: ApplePayContactFieldsType.name,
+              message: 'whoops',
+            ),
+          ]).then((_) => completer.complete());
+        });
+
+        test('It completes operation', () {
+          expect(completer.isCompleted, true);
+        });
+      });
+
+      group('When platform is not ios', () {
+        setUp(() async {
+          sut = MethodChannelStripe(
+            platformIsIos: false,
+            platformIsAndroid: true,
+            methodChannel: MethodChannelMock(
+              channelName: methodChannelName,
+              method: 'updateApplePaySummaryItems',
+              result: true,
+            ).methodChannel,
+          );
+        });
+
+        test('It completes operation', () {
+          expect(
+            () => sut.updateApplePaySummaryItems(summaryItems: const [
+              ApplePayCartSummaryItem(label: '1', amount: '100'),
+            ], errorAddressFields: const [
+              ApplePayErrorAddressField(
+                field: ApplePayContactFieldsType.name,
+                message: 'whoops',
+              ),
+            ]),
+            throwsA(const TypeMatcher<UnsupportedError>()),
+          );
+        });
+      });
+    });
+
     group('presentApplePay', () {
       group('When platform is ios', () {
         late Completer<void> completer;
@@ -295,6 +374,7 @@ void main() {
           completer = Completer();
           sut = MethodChannelStripe(
             platformIsIos: true,
+            platformIsAndroid: false,
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
               method: 'presentApplePay',
@@ -321,6 +401,7 @@ void main() {
         setUp(() async {
           sut = MethodChannelStripe(
             platformIsIos: false,
+            platformIsAndroid: true,
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
               method: 'presentApplePay',
@@ -350,6 +431,7 @@ void main() {
         setUp(() async {
           sut = MethodChannelStripe(
             platformIsIos: false,
+            platformIsAndroid: true,
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
               method: 'retrievePaymentIntent',
@@ -370,6 +452,7 @@ void main() {
         setUp(() async {
           sut = MethodChannelStripe(
             platformIsIos: false,
+            platformIsAndroid: true,
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
               method: 'retrievePaymentIntent',
@@ -390,6 +473,7 @@ void main() {
         completer = Completer();
         sut = MethodChannelStripe(
           platformIsIos: false,
+          platformIsAndroid: true,
           methodChannel: MethodChannelMock(
             channelName: methodChannelName,
             method: 'initPaymentSheet',
@@ -419,6 +503,7 @@ void main() {
         setUp(() async {
           sut = MethodChannelStripe(
             platformIsIos: false,
+            platformIsAndroid: true,
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
               method: 'presentPaymentSheet',
@@ -437,6 +522,7 @@ void main() {
         setUp(() async {
           sut = MethodChannelStripe(
             platformIsIos: false,
+            platformIsAndroid: true,
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
               method: 'presentPaymentSheet',
@@ -451,11 +537,54 @@ void main() {
         });
       });
 
+      group('isGooglePaySupported -Android', () {
+        late bool result;
+        setUp(() async {
+          sut = MethodChannelStripe(
+            platformIsIos: false,
+            platformIsAndroid: true,
+            methodChannel: MethodChannelMock(
+              channelName: methodChannelName,
+              method: 'isGooglePaySupported',
+              result: true,
+            ).methodChannel,
+          );
+          result = await sut
+              .googlePayIsSupported(const IsGooglePaySupportedParams());
+        });
+
+        test('It returns result', () {
+          expect(result, true);
+        });
+      });
+
+      group('isGooglePaySupported -iOS', () {
+        late bool result;
+        setUp(() async {
+          sut = MethodChannelStripe(
+            platformIsIos: true,
+            platformIsAndroid: false,
+            methodChannel: MethodChannelMock(
+              channelName: methodChannelName,
+              method: 'isGooglePaySupported',
+              result: true,
+            ).methodChannel,
+          );
+          result = await sut
+              .googlePayIsSupported(const IsGooglePaySupportedParams());
+        });
+
+        test('It returns false', () {
+          expect(result, false);
+        });
+      });
+
       group('confirmPaymentSheetPayment', () {
         group('When confirm paymentsheet is succesfull', () {
           setUp(() async {
             sut = MethodChannelStripe(
               platformIsIos: false,
+              platformIsAndroid: true,
               methodChannel: MethodChannelMock(
                 channelName: methodChannelName,
                 method: 'confirmPaymentSheetPayment',
@@ -476,6 +605,7 @@ void main() {
           setUp(() async {
             sut = MethodChannelStripe(
               platformIsIos: false,
+              platformIsAndroid: true,
               methodChannel: MethodChannelMock(
                       channelName: methodChannelName,
                       method: 'confirmPaymentSheetPayment',
@@ -497,12 +627,13 @@ void main() {
       late TokenData result;
 
       setUp(() {
-        params = const CreateTokenParams();
+        params = const CreateTokenParams.card(params: CardTokenParams());
       });
       group('When create token succeeds', () {
         setUp(() async {
           sut = MethodChannelStripe(
             platformIsIos: false,
+            platformIsAndroid: true,
             methodChannel: MethodChannelMock(
                     channelName: methodChannelName,
                     method: 'createToken',
@@ -522,6 +653,7 @@ void main() {
         setUp(() async {
           sut = MethodChannelStripe(
             platformIsIos: false,
+            platformIsAndroid: true,
             methodChannel: MethodChannelMock(
               channelName: methodChannelName,
               method: 'createToken',
@@ -537,6 +669,40 @@ void main() {
                 const TypeMatcher<StripeException>(),
               ));
         });
+      });
+    });
+
+    group('AddToWallet', () {
+      late AddToWalletResult result;
+      setUp(() async {
+        sut = MethodChannelStripe(
+          platformIsIos: true,
+          platformIsAndroid: false,
+          methodChannel: MethodChannelMock(
+            channelName: methodChannelName,
+            method: 'canAddCardToWallet',
+            result: {
+              'canAddCard': false,
+              'details': {
+                'token': 'foo',
+                'status': 'CARD_ALREADY_EXISTS',
+              }
+            },
+          ).methodChannel,
+        );
+        result = await sut.canAddToWallet('1234');
+      });
+
+      test('It returns false', () {
+        expect(
+          result,
+          const AddToWalletResult(
+            canAddToWallet: false,
+            details: AddToWalletDetails(
+                status: CanAddToWalletErrorStatus.CARD_ALREADY_EXISTS,
+                token: 'foo'),
+          ),
+        );
       });
     });
   });

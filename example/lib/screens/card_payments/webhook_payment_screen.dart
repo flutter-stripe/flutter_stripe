@@ -1,15 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:http/http.dart' as http;
+import 'package:stripe_example/config.dart';
 import 'package:stripe_example/utils.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 import 'package:stripe_example/widgets/response_card.dart';
-import 'package:stripe_platform_interface/stripe_platform_interface.dart';
-
-import 'package:stripe_example/config.dart';
 
 class WebhookPaymentScreen extends StatefulWidget {
   @override
@@ -39,6 +37,9 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
         ),
         SizedBox(height: 20),
         CardField(
+          enablePostalCode: true,
+          countryCode: 'US',
+          postalCodeHintText: 'Enter the us postal code',
           onCardChanged: (card) {
             setState(() {
               _card = card;
@@ -96,9 +97,13 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
     final paymentIntent = await Stripe.instance.confirmPayment(
       clientSecret['clientSecret'],
       PaymentMethodParams.card(
-        billingDetails: billingDetails,
-        setupFutureUsage:
-            _saveCard == true ? PaymentIntentsFutureUsage.OffSession : null,
+        paymentMethodData: PaymentMethodData(
+          billingDetails: billingDetails,
+        ),
+        options: PaymentMethodOptions(
+          setupFutureUsage:
+              _saveCard == true ? PaymentIntentsFutureUsage.OffSession : null,
+        ),
       ),
     );
 

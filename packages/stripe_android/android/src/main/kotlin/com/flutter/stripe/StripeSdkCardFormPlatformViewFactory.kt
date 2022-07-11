@@ -2,7 +2,6 @@ package com.flutter.stripe
 
 import android.content.Context
 import com.reactnativestripesdk.CardFormViewManager
-import com.reactnativestripesdk.StripeSdkCardViewManager
 import com.reactnativestripesdk.StripeSdkModule
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodChannel
@@ -16,9 +15,12 @@ class StripeSdkCardFormPlatformViewFactory(
         private val sdkAccessor: () -> StripeSdkModule
 ) : PlatformViewFactory(StandardMessageCodec.INSTANCE) {
 
-    override fun create(context: Context, viewId: Int, args: Any?): PlatformView {
+    override fun create(context: Context?, viewId: Int, args: Any?): PlatformView {
         val channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter.stripe/card_form_field/${viewId}")
         val creationParams = args as? Map<String?, Any?>?
+        if(context == null){
+            throw AssertionError("Context is not allowed to be null when launching cardform view.")
+        }
         return StripeSdkCardFormPlatformView(context, channel, viewId, creationParams, cardFormViewManager, sdkAccessor)
     }
 }
