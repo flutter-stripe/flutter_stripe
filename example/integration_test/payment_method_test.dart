@@ -90,6 +90,7 @@ void main() {
       ));
 
       final token = await Stripe.instance.createToken(
+        // ignore: deprecated_member_use
         CreateTokenParams(type: TokenType.Card, address: billingDetails.address),
       );
       final paymentMethod = await Stripe.instance.createPaymentMethod(
