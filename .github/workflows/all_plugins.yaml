@@ -79,6 +79,12 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
+
+    - name: Set up Java version
+      uses: actions/setup-java@v1
+      with:
+        java-version: '11'
+
     - uses: subosito/flutter-action@v1
       with:
         channel: 'stable'
