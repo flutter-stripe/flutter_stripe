@@ -10,6 +10,7 @@ import 'js/js.dart' as s;
 import 'parser/payment_intent.dart';
 import 'parser/payment_methods.dart';
 import 'parser/setup_intent.dart';
+import 'parser/token.dart';
 
 /// An implementation of [StripePlatform] that uses method channels.
 class WebStripe extends StripePlatform {
@@ -205,8 +206,9 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<TokenData> createToken(CreateTokenParams params) {
-    throw UnimplementedError();
+  Future<TokenData> createToken(CreateTokenParams params) async {
+    final response = await _stripe.createToken(element!);
+    return response.token.parse();
   }
 
   @override
