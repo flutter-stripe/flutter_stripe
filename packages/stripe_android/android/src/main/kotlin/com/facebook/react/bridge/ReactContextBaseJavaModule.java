@@ -38,7 +38,7 @@ public class ReactContextBaseJavaModule implements PluginRegistry.ActivityResult
     }
 
     public Map<String, Object> getConstants() {
-        return new HashMap();
+        return new HashMap<String, Object>();
     }
 
     @Override
