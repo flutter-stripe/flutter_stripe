@@ -252,7 +252,10 @@ class WebStripe extends StripePlatform {
     final paymentRequest = js.paymentRequest(s.StripePaymentRequestOptions(
       country: 'us',
       currency: paymentIntent.currency,
-      total: s.DisplayItem(amount: paymentIntent.amount.toInt()),
+      total: s.DisplayItem(
+        amount: paymentIntent.amount.toInt(),
+        label: paymentIntent.description ?? '',
+      ),
     ));
 
     void paymentRequestOnPaymentMethod(event) async {
