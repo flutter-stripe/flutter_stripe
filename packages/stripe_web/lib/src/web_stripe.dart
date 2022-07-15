@@ -1,6 +1,8 @@
 //@dart=2.12
+import 'dart:async';
 import 'dart:developer' as dev;
 import 'dart:html';
+import 'dart:js';
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
@@ -242,18 +244,60 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<void> presentGooglePay(PresentGooglePayParams params) {
-    throw WebUnsupportedError.method('presentGooglePay');
+  Future<void> presentGooglePay(PresentGooglePayParams params) async {
+    final completer = Completer<void>();
+
+    final paymentIntent = await retrievePaymentIntent(params.clientSecret);
+
+    final paymentRequest = js.paymentRequest(s.StripePaymentRequestOptions(
+      country: 'us',
+      currency: paymentIntent.currency,
+      total: s.DisplayItem(amount: paymentIntent.amount.toInt()),
+    ));
+
+    void paymentRequestOnPaymentMethod(event) async {
+      event.complete('success');
+
+      final paymentMethod = event.paymentMethod as s.PaymentMethod;
+
+      await js.confirmCardPayment(
+        params.clientSecret,
+        data: s.ConfirmCardPaymentData(payment_method: paymentMethod.id),
+      );
+
+      completer.complete();
+    }
+
+    paymentRequest.on(
+      'paymentmethod',
+      allowInterop(paymentRequestOnPaymentMethod),
+    );
+
+    final canMakePayment = await paymentRequest.canMakePayment();
+
+    if (canMakePayment.googlePay) {
+      paymentRequest.show();
+    } else {
+      completer.completeError('google pay wallet not supported');
+    }
+
+    return completer.future;
   }
 
   @override
-  Future<bool> googlePayIsSupported(IsGooglePaySupportedParams params) {
-    throw WebUnsupportedError.method('googlePayIsSupported');
+  Future<bool> googlePayIsSupported(IsGooglePaySupportedParams params) async {
+    final paymentRequest = js.paymentRequest(s.StripePaymentRequestOptions(
+      country: 'US',
+      currency: 'usd',
+    ));
+    final canMakePayment = await paymentRequest.canMakePayment();
+    return canMakePayment.googlePay;
   }
 
   @override
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret) async {
-    throw UnimplementedError();
+    final resp = await js.retrievePaymentIntent(clientSecret);
+    return resp.paymentIntent.parse();
   }
 
   @override
