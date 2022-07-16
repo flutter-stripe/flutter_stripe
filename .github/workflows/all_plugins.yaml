@@ -127,14 +127,7 @@ jobs:
 
     - name: "Start iOS Simulator"
       run: |
-        UDID=$(
-          xcrun instruments -s |
-          awk \
-            -F ' *[][]' \
-            -v 'device=${{ matrix.device }}' \
-            '$1 == device { print $2 }'
-        )
-        xcrun simctl boot "${UDID:?No Simulator with this name found}"
+        xcrun simctl boot "iPhone 13 mini" 
 
     - name: "Run Flutter Driver tests on iOS"
       run: "flutter drive --driver test_driver/integration_test.dart --target=integration_test/run_all_tests.dart"
