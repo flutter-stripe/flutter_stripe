@@ -250,7 +250,7 @@ class WebStripe extends StripePlatform {
     final paymentIntent = await retrievePaymentIntent(params.clientSecret);
 
     final paymentRequest = js.paymentRequest(s.StripePaymentRequestOptions(
-      country: 'us',
+      country: 'US',
       currency: paymentIntent.currency,
       total: s.DisplayItem(
         amount: paymentIntent.amount.toInt(),
@@ -278,10 +278,10 @@ class WebStripe extends StripePlatform {
 
     final canMakePayment = await paymentRequest.canMakePayment();
 
-    if (canMakePayment.googlePay) {
+    if (canMakePayment.googlePay || canMakePayment.applePay) {
       paymentRequest.show();
     } else {
-      completer.completeError('google pay wallet not supported');
+      completer.completeError('pay wallet not supported');
     }
 
     return completer.future;
