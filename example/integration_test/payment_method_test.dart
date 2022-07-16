@@ -134,7 +134,7 @@ void main() {
         expect(paymentMethod.id, startsWith('pm_'));
         expect(paymentMethod.ideal, isNotNull);
         expect(paymentMethod.ideal.bank, isNull);
-        expect(paymentMethod.ideal.bankIdentifierCode, isNull);
+        expect(paymentMethod.ideal.bankIdentifierCode, 'REVOLT21');
         //  expect(paymentMethod.billingDetails.isEmpty, isTrue);
       });
     });
@@ -145,8 +145,8 @@ void main() {
       );
       expect(paymentMethod.id, startsWith('pm_'));
       expect(paymentMethod.fpx, isNotNull);
-      expect(paymentMethod.fpx.bank, isNull);
-      expect(paymentMethod.fpx.accountHolderType, isNull);
+      expect(paymentMethod.fpx.bank, 'affin_bank');
+      expect(paymentMethod.fpx.accountHolderType, 'individual');
       //  expect(paymentMethod.billingDetails.isEmpty, isTrue);
     });
   });
