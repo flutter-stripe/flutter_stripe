@@ -130,4 +130,5 @@ jobs:
         xcrun simctl boot "iPhone 13 mini" 
 
     - name: "Run Flutter Driver tests on iOS"
+      working-directory: example
       run: "flutter drive --driver test_driver/integration_test.dart --target=integration_test/run_all_tests.dart"
