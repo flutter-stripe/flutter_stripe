@@ -94,8 +94,13 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
           customerId: data['customer'],
           customerEphemeralKeySecret: data['ephemeralKey'],
           // Extra params
-          applePay: true,
-          googlePay: true,
+          applePay: PaymentSheetApplePay(
+            merchantCountryCode: 'DE',
+          ),
+          googlePay: PaymentSheetGooglePay(
+            merchantCountryCode: 'DE',
+            testEnv: true,
+          ),
           style: ThemeMode.dark,
           appearance: PaymentSheetAppearance(
             colors: PaymentSheetAppearanceColors(
@@ -119,8 +124,6 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
             ),
           ),
           billingDetails: billingDetails,
-          testEnv: true,
-          merchantCountryCode: 'DE',
         ),
       );
       setState(() {
