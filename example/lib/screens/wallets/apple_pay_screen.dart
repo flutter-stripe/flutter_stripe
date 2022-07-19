@@ -52,7 +52,7 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
       await Stripe.instance.presentApplePay(
         ApplePayPresentParams(
           cartItems: [
-            ApplePayCartSummaryItem(
+            ApplePayCartSummaryItem.immediate(
               label: 'Product Test',
               amount: '0.01',
             ),
