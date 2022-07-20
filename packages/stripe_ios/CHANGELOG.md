@@ -1,3 +1,7 @@
+## 4.0.0
+
+ - e
+
 ## 3.3.0
 - Added the canAddCardToWallet method.
 - Several fixes by the Stripe sdk [v.0.14.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.14.0).

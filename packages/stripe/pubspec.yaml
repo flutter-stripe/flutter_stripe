@@ -22,7 +22,7 @@ dependencies:
   flutter:
     sdk: flutter
   stripe_android: ^3.3.0
-  stripe_ios: ^3.3.0
+  stripe_ios: ^4.0.0
   stripe_platform_interface: ^4.0.0
 dev_dependencies:
   flutter_test:
