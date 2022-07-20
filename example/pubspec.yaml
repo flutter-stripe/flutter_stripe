@@ -10,8 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_stripe: ^3.2.0
-  flutter_stripe_web: ^1.1.0
+  flutter_stripe: ^3.3.0
+  flutter_stripe_web: ^1.1.1
   stripe_checkout: ^1.0.0
   pay: ^1.0.10
   http: ^0.13.1
