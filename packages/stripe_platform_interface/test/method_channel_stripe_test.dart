@@ -324,7 +324,7 @@ void main() {
             ).methodChannel,
           );
           await sut.updateApplePaySummaryItems(summaryItems: const [
-            ApplePayCartSummaryItem(label: '1', amount: '100'),
+            ApplePayCartSummaryItem.immediate(label: '1', amount: '100'),
           ], errorAddressFields: const [
             ApplePayErrorAddressField(
               field: ApplePayContactFieldsType.name,
@@ -354,7 +354,11 @@ void main() {
         test('It completes operation', () {
           expect(
             () => sut.updateApplePaySummaryItems(summaryItems: const [
-              ApplePayCartSummaryItem(label: '1', amount: '100'),
+              ApplePayCartSummaryItem.deferred(
+                label: '1',
+                amount: '100',
+                deferredDate: 1234,
+              ),
             ], errorAddressFields: const [
               ApplePayErrorAddressField(
                 field: ApplePayContactFieldsType.name,

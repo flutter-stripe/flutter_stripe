@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: subosito/flutter-action@v1
+      - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
 
@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: subosito/flutter-action@v1
+    - uses: subosito/flutter-action@v2
       with:
         channel: 'stable'
 
@@ -85,7 +85,7 @@ jobs:
       with:
         java-version: '11'
 
-    - uses: subosito/flutter-action@v1
+    - uses: subosito/flutter-action@v2
       with:
         channel: 'stable'
 
@@ -124,3 +124,11 @@ jobs:
           sleep 15;
           flutter drive --driver test_driver/integration_test.dart --target=integration_test/run_all_tests.dart;
           cd android && ./gradlew :app:connectedDebugAndroidTest;
+
+    - name: "Start iOS Simulator"
+      run: |
+        xcrun simctl boot "iPhone 13 mini" 
+
+    - name: "Run Flutter Driver tests on iOS"
+      working-directory: example
+      run: "flutter drive --driver test_driver/integration_test.dart --target=integration_test/run_all_tests.dart"

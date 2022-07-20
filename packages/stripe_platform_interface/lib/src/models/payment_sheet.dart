@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:stripe_platform_interface/src/models/color.dart';
-import 'package:stripe_platform_interface/src/models/payment_methods.dart';
+import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 part 'payment_sheet.freezed.dart';
 part 'payment_sheet.g.dart';
@@ -41,20 +41,9 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// Display name of the merchant
     String? merchantDisplayName,
 
-    /// ISO country code of the country where the merchant is located
-    String? merchantCountryCode,
-
-    /// Three letter ISO currency code
-    ///
-    /// Must be a supported currency code. See https://stripe.com/docs/currencies for supported currencies.
-    ///
-    /// When [setupIntentClientSecret] is not empty it is required to provide a currencyCode.
-    String? currencyCode,
-
     /// Configuration related to Apple Pay
     /// If set, PaymentSheet displays Apple Pay as a payment option
-    /// A merchantCountryCode would then be required
-    bool? applePay,
+    PaymentSheetApplePay? applePay,
 
     /// Style options for colors in PaymentSheet
     ///
@@ -63,8 +52,7 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
 
     /// Configuration related to Google Pay
     /// If set, PaymentSheet displays Google Pay as a payment option
-    /// A merchantCountryCode would then be required
-    bool? googlePay,
+    PaymentSheetGooglePay? googlePay,
 
     /// Flag that allows payment methods that do not move money at the send of the checkout.
     ///
@@ -75,9 +63,6 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     ///
     /// When no appearance defined it will fallback to [style] or Stripe default.
     PaymentSheetAppearance? appearance,
-
-    /// Flag for using the test environment
-    @Default(false) bool testEnv,
 
     /// Default billing information of the customer.
     ///
@@ -93,6 +78,48 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
 
   factory SetupPaymentSheetParameters.fromJson(Map<String, dynamic> json) =>
       _$SetupPaymentSheetParametersFromJson(json);
+}
+
+
+/// Parameters related to the Payment sheet Apple Pay config.
+@freezed
+class PaymentSheetApplePay with _$PaymentSheetApplePay {
+  @JsonSerializable(explicitToJson: true)
+  const factory PaymentSheetApplePay({
+    ///The two-letter ISO 3166 code of the country of your business, e.g. "US"
+    required String merchantCountryCode,
+    
+    ///An array of CartSummaryItem item objects that summarize the amount of the payment. If you're using a SetupIntent
+   /// for a recurring payment, you should set this to display the amount you intend to charge. 
+    List<ApplePayCartSummaryItem>? paymentSummaryItems,
+
+
+  }) = _PaymentSheetApplePay;
+
+  factory PaymentSheetApplePay.fromJson(Map<String, dynamic> json) =>
+      _$PaymentSheetApplePayFromJson(json);
+}
+
+/// Parameters related to the Payment sheet Google Pay config.
+@freezed
+class PaymentSheetGooglePay with _$PaymentSheetGooglePay {
+  @JsonSerializable(explicitToJson: true)
+  const factory PaymentSheetGooglePay({
+    ///The two-letter ISO 3166 code of the country of your business, e.g. "US"
+    required String merchantCountryCode,
+    
+    /// The three-letter ISO 4217 alphabetic currency code, e.g. "USD" or "EUR". Required in order to support Google Pay when processing a Setup Intent. 
+    String? currencyCode,
+
+    /// Whether or not to use the google pay test environment.  Set to `true` until you have applied for and been granted access to the Production environment.
+    @Default(false) bool testEnv,
+
+
+
+  }) = _PaymentSheetGooglePay;
+
+  factory PaymentSheetGooglePay.fromJson(Map<String, dynamic> json) =>
+      _$PaymentSheetGooglePayFromJson(json);
 }
 
 /// Parameters that change the appearance of the payment sheet.
