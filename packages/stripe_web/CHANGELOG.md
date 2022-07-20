@@ -1,6 +1,5 @@
 ## 1.2.0
-
- - e
+- Several fixes by the Stripe sdk [v.0.15.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.15.0).
 
 ## 1.1.1
 - Sdk updates
