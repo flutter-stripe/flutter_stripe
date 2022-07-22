@@ -122,6 +122,7 @@ _$_ApplePayPresentParams _$$_ApplePayPresentParamsFromJson(
           ?.map(
               (e) => ApplePayShippingMethod.fromJson(e as Map<String, dynamic>))
           .toList(),
+      jcbEnabled: json['jcbEnabled'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$_ApplePayPresentParamsToJson(
@@ -138,6 +139,7 @@ Map<String, dynamic> _$$_ApplePayPresentParamsToJson(
           .toList(),
       'shippingMethods':
           instance.shippingMethods?.map((e) => e.toJson()).toList(),
+      'jcbEnabled': instance.jcbEnabled,
     };
 
 const _$ApplePayContactFieldsTypeEnumMap = {
