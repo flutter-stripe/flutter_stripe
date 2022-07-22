@@ -340,6 +340,11 @@ class WebStripe extends StripePlatform {
   }) {
     throw WebUnsupportedError.method('updateApplePaySummaryItems');
   }
+
+  @override
+  Future<AddToWalletResult> canAddToWallet(String last4) {
+    throw WebUnsupportedError.method('canAddToWallet');
+  }
 }
 
 class WebUnsupportedError extends Error implements UnsupportedError {

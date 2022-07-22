@@ -9,13 +9,13 @@ part of 'card_field_input.dart';
 _$_CardStyleConstructor _$$_CardStyleConstructorFromJson(
         Map<String, dynamic> json) =>
     _$_CardStyleConstructor(
-      borderWidth: (json['borderWidth'] as num?)?.toDouble(),
+      borderWidth: json['borderWidth'] as int?,
       backgroundColor: ColorKey.fromJson(json['backgroundColor']),
       borderColor: ColorKey.fromJson(json['borderColor']),
-      borderRadius: (json['borderRadius'] as num?)?.toDouble(),
+      borderRadius: json['borderRadius'] as int?,
       cursorColor: ColorKey.fromJson(json['cursorColor']),
       textColor: ColorKey.fromJson(json['textColor']),
-      fontSize: (json['fontSize'] as num?)?.toDouble(),
+      fontSize: json['fontSize'] as int?,
       fontFamily: json['fontFamily'] as String?,
       textErrorColor: ColorKey.fromJson(json['textErrorColor']),
       placeholderColor: ColorKey.fromJson(json['placeholderColor']),
@@ -40,12 +40,12 @@ _$_CardFormStyleConstructor _$$_CardFormStyleConstructorFromJson(
         Map<String, dynamic> json) =>
     _$_CardFormStyleConstructor(
       backgroundColor: ColorKey.fromJson(json['backgroundColor']),
-      borderWidth: (json['borderWidth'] as num?)?.toDouble(),
+      borderWidth: json['borderWidth'] as int?,
       borderColor: ColorKey.fromJson(json['borderColor']),
-      borderRadius: (json['borderRadius'] as num?)?.toDouble(),
+      borderRadius: json['borderRadius'] as int?,
       cursorColor: ColorKey.fromJson(json['cursorColor']),
       textColor: ColorKey.fromJson(json['textColor']),
-      fontSize: (json['fontSize'] as num?)?.toDouble(),
+      fontSize: json['fontSize'] as int?,
       textErrorColor: ColorKey.fromJson(json['textErrorColor']),
       placeholderColor: ColorKey.fromJson(json['placeholderColor']),
     );

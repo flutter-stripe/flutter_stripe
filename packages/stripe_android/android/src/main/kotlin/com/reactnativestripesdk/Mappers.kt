@@ -14,6 +14,22 @@ internal fun createResult(key: String, value: WritableMap): WritableMap {
   return map
 }
 
+internal fun createCanAddCardResult(canAddCard: Boolean, status: String? = null, token: WritableMap? = null): WritableNativeMap {
+  val result = WritableNativeMap()
+  val details = WritableNativeMap()
+  if (status != null) {
+    result.putBoolean("canAddCard", false)
+    details.putString("status", status)
+  } else {
+    result.putBoolean("canAddCard", canAddCard)
+    if (token != null) {
+      details.putMap("token", token)
+    }
+  }
+  result.putMap("details", details)
+  return result
+}
+
 internal fun mapIntentStatus(status: StripeIntent.Status?): String {
   return when (status) {
     StripeIntent.Status.Succeeded -> "Succeeded"
@@ -402,14 +418,13 @@ internal fun mapFromPaymentIntentResult(paymentIntent: PaymentIntent): WritableM
 
   paymentIntent.lastPaymentError?.let {
     val paymentError: WritableMap = WritableNativeMap()
-
-    paymentIntent.lastPaymentError?.paymentMethod?.let { paymentMethod ->
-      paymentError.putMap("paymentMethod", mapFromPaymentMethod(paymentMethod))
-    }
-
     paymentError.putString("code", it.code)
     paymentError.putString("message", it.message)
     paymentError.putString("type", mapFromPaymentIntentLastErrorType(it.type))
+    paymentError.putString("declineCode", it.declineCode)
+    paymentIntent.lastPaymentError?.paymentMethod?.let { paymentMethod ->
+      paymentError.putMap("paymentMethod", mapFromPaymentMethod(paymentMethod))
+    }
 
     map.putMap("lastPaymentError", paymentError)
   }
@@ -775,11 +790,10 @@ internal fun mapFromSetupIntentResult(setupIntent: SetupIntent): WritableMap {
     setupError.putString("code", it.code)
     setupError.putString("message", it.message)
     setupError.putString("type", mapFromSetupIntentLastErrorType(it.type))
-
+    setupError.putString("declineCode", it.declineCode)
     setupIntent.lastSetupError?.paymentMethod?.let { paymentMethod ->
       setupError.putMap("paymentMethod", mapFromPaymentMethod(paymentMethod))
     }
-
     map.putMap("lastSetupError", setupError)
   }
 

@@ -11,23 +11,24 @@ import '../utils.dart';
 
 /// Customizable form that collects card information.
 class CardField extends StatefulWidget {
-  const CardField(
-      {this.onCardChanged,
-      Key? key,
-      this.onFocus,
-      this.decoration,
-      this.enablePostalCode = false,
-      this.style,
-      this.autofocus = false,
-      this.dangerouslyGetFullCardDetails = false,
-      this.dangerouslyUpdateFullCardDetails = false,
-      this.cursorColor,
-      this.numberHintText,
-      this.expirationHintText,
-      this.cvcHintText,
-      this.postalCodeHintText,
-      this.controller})
-      : super(key: key);
+  const CardField({
+    this.onCardChanged,
+    Key? key,
+    this.onFocus,
+    this.decoration,
+    this.enablePostalCode = false,
+    this.countryCode,
+    this.style,
+    this.autofocus = false,
+    this.dangerouslyGetFullCardDetails = false,
+    this.dangerouslyUpdateFullCardDetails = false,
+    this.cursorColor,
+    this.numberHintText,
+    this.expirationHintText,
+    this.cvcHintText,
+    this.postalCodeHintText,
+    this.controller,
+  }) : super(key: key);
 
   /// Decoration related to the input fields.
   final InputDecoration? decoration;
@@ -50,6 +51,12 @@ class CardField extends StatefulWidget {
   /// check as defined in https://stripe.com/docs/radar/rules#traditional-bank-checks
   /// make sure this one is set to `true`.
   final bool enablePostalCode;
+
+  /// Controls the postal code entry shown (when `enablePostalCode` is set to true).
+  ///
+  /// Defaults to the device's default locale. This is not supported on the web.
+
+  final String? countryCode;
 
   /// Hint text for the card number field.
   final String? numberHintText;
@@ -134,7 +141,7 @@ class _CardFieldState extends State<CardField> {
     // Arbitrary values compared for both Android and iOS platform
     // For adding a framework input decorator, the platform one is removed
     // together with the extra padding
-    final platformCardHeight = style.fontSize! + 31;
+    final platformCardHeight = style.fontSize!.toDouble() + 31;
     const platformMargin = EdgeInsets.fromLTRB(12, 10, 10, 12);
 
     final cardHeight = platformCardHeight - platformMargin.vertical;
@@ -167,6 +174,7 @@ class _CardFieldState extends State<CardField> {
               style: style,
               placeholder: placeholder,
               enablePostalCode: widget.enablePostalCode,
+              countryCode: widget.countryCode,
               dangerouslyGetFullCardDetails:
                   widget.dangerouslyGetFullCardDetails,
               dangerouslyUpdateFullCardDetails:
@@ -194,8 +202,8 @@ class _CardFieldState extends State<CardField> {
   }
 
   CardStyle effectiveCardStyle(InputDecoration decoration) {
-    final fontSize = widget.style?.fontSize ??
-        Theme.of(context).textTheme.subtitle1?.fontSize ??
+    final fontSize = widget.style?.fontSize?.toInt() ??
+        Theme.of(context).textTheme.subtitle1?.fontSize?.toInt() ??
         kCardFieldDefaultFontSize;
 
     // Flutter fonts need to be loaded in the native framework to work
@@ -251,6 +259,7 @@ class _MethodChannelCardField extends StatefulWidget {
     this.style,
     this.placeholder,
     this.enablePostalCode = false,
+    this.countryCode,
     double? width,
     double? height = kCardFieldDefaultHeight,
     BoxConstraints? constraints,
@@ -271,6 +280,7 @@ class _MethodChannelCardField extends StatefulWidget {
   final CardStyle? style;
   final CardPlaceholder? placeholder;
   final bool enablePostalCode;
+  final String? countryCode;
   final FocusNode? focusNode;
   final bool autofocus;
   final CardEditController controller;
@@ -311,7 +321,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
       textColor: style?.textColor ??
           baseTextStyle?.color ??
           kCardFieldDefaultTextColor,
-      fontSize: baseTextStyle?.fontSize ?? kCardFieldDefaultFontSize,
+      fontSize: baseTextStyle?.fontSize?.toInt() ?? kCardFieldDefaultFontSize,
       // fontFamily: baseTextStyle?.fontFamily ?? kCardFieldDefaultFontFamily,
       textErrorColor:
           theme.inputDecorationTheme.errorStyle?.color ?? theme.errorColor,
@@ -368,6 +378,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
       'cardStyle': style.toJson(),
       'placeholder': placeholder.toJson(),
       'postalCodeEnabled': widget.enablePostalCode,
+      'countryCode': widget.countryCode,
       'dangerouslyGetFullCardDetails': widget.dangerouslyGetFullCardDetails,
       if (widget.dangerouslyUpdateFullCardDetails &&
           controller.initalDetails != null)
@@ -439,6 +450,12 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
     if (widget.enablePostalCode != oldWidget.enablePostalCode) {
       _methodChannel?.invokeMethod('onPostalCodeEnabledChanged', {
         'postalCodeEnabled': widget.enablePostalCode,
+      });
+    }
+
+    if (widget.countryCode != oldWidget.countryCode) {
+      _methodChannel?.invokeMethod('onCountryCodeChangedEvent', {
+        'countryCode': widget.countryCode,
       });
     }
     if (widget.dangerouslyGetFullCardDetails !=
@@ -618,6 +635,6 @@ class _UiKitCardField extends StatelessWidget {
 }
 
 const kCardFieldDefaultHeight = 48.0;
-const kCardFieldDefaultFontSize = 17.0;
+const kCardFieldDefaultFontSize = 17;
 const kCardFieldDefaultTextColor = Colors.black;
 const kCardFieldDefaultFontFamily = 'Roboto';

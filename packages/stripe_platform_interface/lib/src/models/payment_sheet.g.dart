@@ -14,18 +14,21 @@ _$_SetupParameters _$$_SetupParametersFromJson(Map<String, dynamic> json) =>
       paymentIntentClientSecret: json['paymentIntentClientSecret'] as String?,
       setupIntentClientSecret: json['setupIntentClientSecret'] as String?,
       merchantDisplayName: json['merchantDisplayName'] as String?,
-      merchantCountryCode: json['merchantCountryCode'] as String?,
-      currencyCode: json['currencyCode'] as String?,
-      applePay: json['applePay'] as bool?,
+      applePay: json['applePay'] == null
+          ? null
+          : PaymentSheetApplePay.fromJson(
+              json['applePay'] as Map<String, dynamic>),
       style: $enumDecodeNullable(_$ThemeModeEnumMap, json['style']),
-      googlePay: json['googlePay'] as bool?,
+      googlePay: json['googlePay'] == null
+          ? null
+          : PaymentSheetGooglePay.fromJson(
+              json['googlePay'] as Map<String, dynamic>),
       allowsDelayedPaymentMethods:
           json['allowsDelayedPaymentMethods'] as bool? ?? false,
       appearance: json['appearance'] == null
           ? null
           : PaymentSheetAppearance.fromJson(
               json['appearance'] as Map<String, dynamic>),
-      testEnv: json['testEnv'] as bool? ?? false,
       billingDetails: json['defaultBillingDetails'] == null
           ? null
           : BillingDetails.fromJson(
@@ -41,14 +44,11 @@ Map<String, dynamic> _$$_SetupParametersToJson(_$_SetupParameters instance) =>
       'paymentIntentClientSecret': instance.paymentIntentClientSecret,
       'setupIntentClientSecret': instance.setupIntentClientSecret,
       'merchantDisplayName': instance.merchantDisplayName,
-      'merchantCountryCode': instance.merchantCountryCode,
-      'currencyCode': instance.currencyCode,
-      'applePay': instance.applePay,
+      'applePay': instance.applePay?.toJson(),
       'style': UserInterfaceStyleKey.toJson(instance.style),
-      'googlePay': instance.googlePay,
+      'googlePay': instance.googlePay?.toJson(),
       'allowsDelayedPaymentMethods': instance.allowsDelayedPaymentMethods,
       'appearance': instance.appearance?.toJson(),
-      'testEnv': instance.testEnv,
       'defaultBillingDetails': instance.billingDetails?.toJson(),
       'returnURL': instance.returnURL,
     };
@@ -58,6 +58,40 @@ const _$ThemeModeEnumMap = {
   ThemeMode.light: 'light',
   ThemeMode.dark: 'dark',
 };
+
+_$_PaymentSheetApplePay _$$_PaymentSheetApplePayFromJson(
+        Map<String, dynamic> json) =>
+    _$_PaymentSheetApplePay(
+      merchantCountryCode: json['merchantCountryCode'] as String,
+      paymentSummaryItems: (json['paymentSummaryItems'] as List<dynamic>?)
+          ?.map((e) =>
+              ApplePayCartSummaryItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$_PaymentSheetApplePayToJson(
+        _$_PaymentSheetApplePay instance) =>
+    <String, dynamic>{
+      'merchantCountryCode': instance.merchantCountryCode,
+      'paymentSummaryItems':
+          instance.paymentSummaryItems?.map((e) => e.toJson()).toList(),
+    };
+
+_$_PaymentSheetGooglePay _$$_PaymentSheetGooglePayFromJson(
+        Map<String, dynamic> json) =>
+    _$_PaymentSheetGooglePay(
+      merchantCountryCode: json['merchantCountryCode'] as String,
+      currencyCode: json['currencyCode'] as String?,
+      testEnv: json['testEnv'] as bool? ?? false,
+    );
+
+Map<String, dynamic> _$$_PaymentSheetGooglePayToJson(
+        _$_PaymentSheetGooglePay instance) =>
+    <String, dynamic>{
+      'merchantCountryCode': instance.merchantCountryCode,
+      'currencyCode': instance.currencyCode,
+      'testEnv': instance.testEnv,
+    };
 
 _$_PaymentSheetAppearance _$$_PaymentSheetAppearanceFromJson(
         Map<String, dynamic> json) =>

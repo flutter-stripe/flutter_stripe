@@ -324,7 +324,7 @@ void main() {
             ).methodChannel,
           );
           await sut.updateApplePaySummaryItems(summaryItems: const [
-            ApplePayCartSummaryItem(label: '1', amount: '100'),
+            ApplePayCartSummaryItem.immediate(label: '1', amount: '100'),
           ], errorAddressFields: const [
             ApplePayErrorAddressField(
               field: ApplePayContactFieldsType.name,
@@ -354,7 +354,11 @@ void main() {
         test('It completes operation', () {
           expect(
             () => sut.updateApplePaySummaryItems(summaryItems: const [
-              ApplePayCartSummaryItem(label: '1', amount: '100'),
+              ApplePayCartSummaryItem.deferred(
+                label: '1',
+                amount: '100',
+                deferredDate: 1234,
+              ),
             ], errorAddressFields: const [
               ApplePayErrorAddressField(
                 field: ApplePayContactFieldsType.name,
@@ -669,6 +673,40 @@ void main() {
                 const TypeMatcher<StripeException>(),
               ));
         });
+      });
+    });
+
+    group('AddToWallet', () {
+      late AddToWalletResult result;
+      setUp(() async {
+        sut = MethodChannelStripe(
+          platformIsIos: true,
+          platformIsAndroid: false,
+          methodChannel: MethodChannelMock(
+            channelName: methodChannelName,
+            method: 'canAddCardToWallet',
+            result: {
+              'canAddCard': false,
+              'details': {
+                'token': 'foo',
+                'status': 'CARD_ALREADY_EXISTS',
+              }
+            },
+          ).methodChannel,
+        );
+        result = await sut.canAddToWallet('1234');
+      });
+
+      test('It returns false', () {
+        expect(
+          result,
+          const AddToWalletResult(
+            canAddToWallet: false,
+            details: AddToWalletDetails(
+                status: CanAddToWalletErrorStatus.CARD_ALREADY_EXISTS,
+                token: 'foo'),
+          ),
+        );
       });
     });
   });

@@ -20,26 +20,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: subosito/flutter-action@v1
+      - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
 
       - name: "Install Tools"
         run: |
           ./.github/workflows/scripts/install-tools.sh
-      
+
       - name: "Bootstrap Workspace"
         run: melos bootstrap
-      
+
       - name: "Set env keys"
-        env: 
+        env:
           STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY }}
         run: |
           ./.github/workflows/scripts/env-files.sh
 
       - name: "Run Analyze"
         run: melos run analyze
-     
+
       - name: "Pub Check"
         run: |
           melos exec -c 1 --no-private --ignore="*example*"  -- \
@@ -47,26 +47,88 @@ jobs:
 
   test:
     name: test
-    timeout-minutes: 15
+    timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: subosito/flutter-action@v1
+    - uses: subosito/flutter-action@v2
       with:
         channel: 'stable'
 
     - name: "Install Tools"
       run: |
         ./.github/workflows/scripts/install-tools.sh
-    
+
     - name: "Bootstrap Workspace"
       run: melos bootstrap
-      
+
     - name: "Set env keys"
-      env: 
+      env:
         STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY }}
+        STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
       run: |
         ./.github/workflows/scripts/env-files.sh
 
     - name: "Run unittest"
       run: melos run unittest
+
+
+  integration_test:
+    name: Integration test
+    timeout-minutes: 30
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Java version
+      uses: actions/setup-java@v1
+      with:
+        java-version: '11'
+
+    - uses: subosito/flutter-action@v2
+      with:
+        channel: 'stable'
+
+    - name: "Install Tools"
+      run: |
+        ./.github/workflows/scripts/install-tools.sh
+
+    - name: "Bootstrap Workspace"
+      run: melos bootstrap
+
+    - name: "Set env keys"
+      env:
+        STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY }}
+        STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+      run: |
+        ./.github/workflows/scripts/env-files.sh
+
+    - name: "Start dev server"
+      working-directory: example/server
+      run: npm install && (npm run start:dev &)
+
+    - name: "Set IP address"
+      working-directory: example
+      run: echo "const kApiUrl='''$(ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}')''';" > integration_test/ip.dart
+
+    - name: "Print ip.dart"
+      working-directory: example
+      run: cat integration_test/ip.dart
+
+    - name: "Run integration test Android"
+      uses: reactivecircus/android-emulator-runner@v2
+      with:
+        api-level: 29
+        working-directory: example
+        script: | 
+          sleep 15;
+          flutter drive --driver test_driver/integration_test.dart --target=integration_test/run_all_tests.dart;
+          cd android && ./gradlew :app:connectedDebugAndroidTest;
+
+    - name: "Start iOS Simulator"
+      run: |
+        xcrun simctl boot "iPhone 13 mini" 
+
+    - name: "Run Flutter Driver tests on iOS"
+      working-directory: example
+      run: "flutter drive --driver test_driver/integration_test.dart --target=integration_test/run_all_tests.dart"

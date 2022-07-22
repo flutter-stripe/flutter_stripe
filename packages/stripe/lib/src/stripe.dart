@@ -436,6 +436,12 @@ class Stripe {
     );
   }
 
+  /// check if a particular card can be provisioned with the current app
+  /// on this particular device.
+  Future<AddToWalletResult> canAddToWallet(String last4) async {
+    return await _platform.canAddToWallet(last4);
+  }
+
   FutureOr<void> _awaitForSettings() {
     if (_needsSettings) {
       _settingsFuture = applySettings();

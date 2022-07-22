@@ -34,11 +34,14 @@ class StripeSdkCardPlatformView(
         if (creationParams?.containsKey("cardStyle") == true) {
             stripeSdkCardViewManager.setCardStyle(cardView, ReadableMap(creationParams["cardStyle"] as Map<String, Any>))
         }
-        if (creationParams?.containsKey("placeholder") == true) {
-            stripeSdkCardViewManager.setPlaceHolders(cardView, ReadableMap(creationParams["placeholder"] as Map<String, Any>))
-        }
         if (creationParams?.containsKey("postalCodeEnabled") == true) {
             stripeSdkCardViewManager.setPostalCodeEnabled(cardView, creationParams["postalCodeEnabled"] as Boolean)
+        }
+        if (creationParams?.containsKey("countryCode") == true) {
+            stripeSdkCardViewManager.setCountryCode(cardView, creationParams["countryCode"] as? String)
+        }
+        if (creationParams?.containsKey("placeholder") == true) {
+            stripeSdkCardViewManager.setPlaceHolders(cardView, ReadableMap(creationParams["placeholder"] as Map<String, Any>))
         }
         if (creationParams?.containsKey("dangerouslyGetFullCardDetails") == true) {
             stripeSdkCardViewManager.setDangerouslyGetFullCardDetails(cardView, creationParams["dangerouslyGetFullCardDetails"] as Boolean)
@@ -98,6 +101,11 @@ class StripeSdkCardPlatformView(
             "onPostalCodeEnabledChanged" -> {
                 val arguments = ReadableMap(call.arguments as Map<String, Any>)
                 stripeSdkCardViewManager.setPostalCodeEnabled(cardView, arguments.getBoolean("postalCodeEnabled"))
+                result.success(null)
+            }
+            "onCountryCodeChangedEvent" -> {
+                val arguments = ReadableMap(call.arguments as Map<String, Any>)
+                stripeSdkCardViewManager.setCountryCode(cardView, arguments.getString("countryCode"))
                 result.success(null)
             }
             "dangerouslyGetFullCardDetails" -> {

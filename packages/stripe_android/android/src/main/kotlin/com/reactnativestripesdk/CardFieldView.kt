@@ -5,9 +5,11 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Build
 import android.text.Editable
+import android.text.InputFilter
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.FrameLayout
+import androidx.core.os.LocaleListCompat
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.UIManagerModule
@@ -15,6 +17,10 @@ import com.facebook.react.uimanager.events.EventDispatcher
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
+import com.reactnativestripesdk.utils.*
+import com.reactnativestripesdk.utils.mapCardBrand
+import com.stripe.android.core.model.CountryCode
+import com.stripe.android.core.model.CountryUtils
 import com.stripe.android.databinding.CardInputWidgetBinding
 import com.stripe.android.model.Address
 import com.stripe.android.model.PaymentMethodCreateParams
@@ -33,6 +39,7 @@ class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
   private var mEventDispatcher: EventDispatcher? = context.getNativeModule(UIManagerModule::class.java)?.eventDispatcher
   private var dangerouslyGetFullCardDetails: Boolean = false
   private var currentFocusedField: String? = null
+  private var isCardValid = false
 
   init {
     cardInputWidgetBinding.container.isFocusable = true
@@ -197,6 +204,18 @@ class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
     mCardWidget.postalCodeEnabled = isEnabled
   }
 
+  /**
+   * We can reliable assume that setPostalCodeEnabled is called before
+   * setCountryCode because of the order of the props in CardField.tsx
+   */
+  fun setCountryCode(countryString: String?) {
+    if (mCardWidget.postalCodeEnabled) {
+      val countryCode = CountryCode.create(value = countryString ?: LocaleListCompat.getAdjustedDefault()[0].country)
+      mCardWidget.postalCodeRequired = CountryUtils.doesCountryUsePostalCode(countryCode)
+      setPostalCodeFilter(countryCode)
+    }
+  }
+
   fun getValue(): MutableMap<String, Any?> {
     return cardDetails
   }
@@ -224,7 +243,7 @@ class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
 
   private fun sendCardDetailsEvent() {
     mEventDispatcher?.dispatchEvent(
-      CardChangedEvent(id, cardDetails, mCardWidget.postalCodeEnabled, cardParams != null, dangerouslyGetFullCardDetails))
+      CardChangedEvent(id, cardDetails, mCardWidget.postalCodeEnabled, isCardValid, dangerouslyGetFullCardDetails))
   }
 
   private fun setListeners() {
@@ -246,6 +265,7 @@ class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
     }
 
     mCardWidget.setCardValidCallback { isValid, invalidFields ->
+      isCardValid = isValid
       fun getCardValidationState(field: CardValidCallback.Fields, editTextField: StripeEditText): String {
         if (invalidFields.contains(field)) {
           return if (editTextField.shouldShowError) "Invalid"
@@ -257,12 +277,14 @@ class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
       cardDetails["validNumber"] = getCardValidationState(CardValidCallback.Fields.Number, cardInputWidgetBinding.cardNumberEditText)
       cardDetails["validCVC"] = getCardValidationState(CardValidCallback.Fields.Cvc, cardInputWidgetBinding.cvcEditText)
       cardDetails["validExpiryDate"] = getCardValidationState(CardValidCallback.Fields.Expiry, cardInputWidgetBinding.expiryDateEditText)
+      cardDetails["brand"] = mapCardBrand(cardInputWidgetBinding.cardNumberEditText.cardBrand)
 
       if (isValid) {
         onValidCardChange()
       } else {
         cardParams = null
         cardAddress = null
+        sendCardDetailsEvent()
       }
     }
 
@@ -284,8 +306,6 @@ class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
         if (splitText.size == 2) {
           cardDetails["expiryYear"] = var1.toString().split("/")[1].toIntOrNull()
         }
-
-        sendCardDetailsEvent()
       }
     })
 
@@ -294,7 +314,6 @@ class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
       override fun afterTextChanged(p0: Editable?) {}
       override fun onTextChanged(var1: CharSequence?, var2: Int, var3: Int, var4: Int) {
         cardDetails["postalCode"] = var1.toString()
-        sendCardDetailsEvent()
       }
     })
 
@@ -305,7 +324,6 @@ class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
         if (dangerouslyGetFullCardDetails) {
           cardDetails["number"] = var1.toString().replace(" ", "")
         }
-        sendCardDetailsEvent()
       }
     })
 
@@ -316,9 +334,28 @@ class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
         if (dangerouslyGetFullCardDetails) {
           cardDetails["cvc"] = var1.toString()
         }
-        sendCardDetailsEvent()
       }
     })
+  }
+
+  private fun setPostalCodeFilter(countryCode: CountryCode) {
+    cardInputWidgetBinding.postalCodeEditText.filters = arrayOf(
+      *cardInputWidgetBinding.postalCodeEditText.filters,
+      createPostalCodeInputFilter(countryCode)
+    )
+  }
+
+  private fun createPostalCodeInputFilter(countryCode: CountryCode): InputFilter {
+    return InputFilter { charSequence, start, end, _, _, _ ->
+      for (i in start until end) {
+        val isValidCharacter = (countryCode == CountryCode.US && PostalCodeUtilities.isValidUsPostalCodeCharacter(charSequence[i])) ||
+          (countryCode != CountryCode.US && PostalCodeUtilities.isValidGlobalPostalCodeCharacter(charSequence[i]))
+        if (!isValidCharacter) {
+          return@InputFilter ""
+        }
+      }
+      return@InputFilter null
+    }
   }
 
   override fun requestLayout() {

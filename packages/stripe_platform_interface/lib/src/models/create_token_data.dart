@@ -35,6 +35,14 @@ class CreateTokenParams with _$CreateTokenParams {
     required BankAccountTokenParams params,
   }) = _CreateTokenParamsBankAccount;
 
+  /// Creates a single-use token that represents the details of personally identifiable information (PII).
+  ///
+  /// See https://stripe.com/docs/api/tokens/create_pii
+  @JsonSerializable(explicitToJson: true)
+  const factory CreateTokenParams.pii({
+    required PIITokenParams params,
+  }) = _CreateTokenParamsPII;
+
   factory CreateTokenParams.fromJson(Map<String, dynamic> json) =>
       _$CreateTokenParamsFromJson(json);
 }
@@ -59,6 +67,22 @@ class CardTokenParams with _$CardTokenParams {
 
   factory CardTokenParams.fromJson(Map<String, dynamic> json) =>
       _$CardTokenParamsFromJson(json);
+}
+
+@freezed
+
+/// Parameters that are used to create a token for a personally identifiable information (PII).
+class PIITokenParams with _$PIITokenParams {
+  const factory PIITokenParams({
+    /// Type of token.
+    @Default(TokenType.Pii) TokenType type,
+
+    /// The user's personal ID number
+    required String personalId,
+  }) = _PIITokenParams;
+
+  factory PIITokenParams.fromJson(Map<String, dynamic> json) =>
+      _$PIITokenParamsFromJson(json);
 }
 
 @freezed
@@ -226,4 +250,4 @@ enum BankAccountStatus {
 }
 
 /// Type of token
-enum TokenType { Card, BankAccount }
+enum TokenType { Card, BankAccount, Pii }

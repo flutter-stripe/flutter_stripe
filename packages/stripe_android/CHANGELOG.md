@@ -1,3 +1,21 @@
+## 4.0.0
+** Breaking changes **
+- Changed paymentsheet parameters to make it more clear which settings are used for Google Pay and Apple Pay. Changes: `merchantCountryCode` is now moved into both `PaymentSheetApplePay`and `PaymentSheetGooglePay`, `currencyCode` and `testEnv` is now part of the `PaymentSheetGooglePay` object. 
+
+Other changes
+- Support for affirm payment method.
+- Several fixes by the Stripe sdk [v.0.15.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.15.0).
+
+## 3.3.0
+- Added the canAddCardToWallet method.
+- Several fixes by the Stripe sdk [v.0.14.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.14.0).
+
+## 3.2.0
+- Added possibility to create a PII token.
+- Support country code in Cardfield.
+- Added default values to CardformField. 
+- Several fixes by the Stripe sdk [v.0.13.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.13.0).
+
 ## 3.1.1
 - Fix #771
 

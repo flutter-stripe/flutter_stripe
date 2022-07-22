@@ -35,15 +35,15 @@ public class CardFieldViewFactory: NSObject, FlutterPlatformViewFactory {
     }
     
     public func createArgsCodec() -> FlutterMessageCodec & NSObjectProtocol {
-       return FlutterStandardMessageCodec.sharedInstance()
+        return FlutterStandardMessageCodec.sharedInstance()
     }
 }
 
 
 
 class CardFieldPlatformView: NSObject, FlutterPlatformView, STPPaymentCardTextFieldDelegate {
-
-   public let cardField = CardFieldView()
+    
+    public let cardField = CardFieldView()
     
     private let channel: FlutterMethodChannel
     public var cardParams: STPPaymentMethodCardParams? = nil
@@ -54,43 +54,44 @@ class CardFieldPlatformView: NSObject, FlutterPlatformView, STPPaymentCardTextFi
         arguments args: Any?,
         binaryMessenger messenger: FlutterBinaryMessenger
     ) {
-       
+        
         channel = FlutterMethodChannel(name: "flutter.stripe/card_field/\(viewId)",
-                                           binaryMessenger: messenger)
-      
-    
+                                       binaryMessenger: messenger)
+        
+        
         super.init()
         channel.setMethodCallHandler(handle)
         cardField.onCardChange = onCardChange
         cardField.onFocusChange = onFocusChange
         updateProps(args)
-       
+        
     }
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
-      
+            
         case "onStyleChanged",
-             "onPostalCodeEnabledChanged",
-             "onPlaceholderChanged",
-             "dangerouslyGetFullCardDetails",
-             "autofocus":
-          updateProps(call.arguments as? [String : Any])
-          result(nil)
+            "onPostalCodeEnabledChanged",
+            "onCountryCodeChangedEvent",
+            "onPlaceholderChanged",
+            "dangerouslyGetFullCardDetails",
+            "autofocus":
+            updateProps(call.arguments as? [String : Any])
+            result(nil)
         case "focus":
-          cardField.focus()
-          result(nil)
+            cardField.focus()
+            result(nil)
         case "blur":
-          cardField.blur()
-          result(nil)
+            cardField.blur()
+            result(nil)
         case "clear":
-          cardField.clear()
-          result(nil)
+            cardField.clear()
+            result(nil)
         default:
             result(FlutterMethodNotImplemented)
         }
     }
-
+    
     func view() -> UIView {
         return cardField
     }
@@ -107,32 +108,35 @@ class CardFieldPlatformView: NSObject, FlutterPlatformView, STPPaymentCardTextFi
         guard let arguments = args  as?  [String: Any]  else{
             return;
         }
-       if let placeholders = arguments["placeholder"] as? NSDictionary {
-        cardField.placeholders = placeholders
-       }
-       if  let cardStyle = arguments["cardStyle"] as? NSDictionary{
+        if let placeholders = arguments["placeholder"] as? NSDictionary {
+            cardField.placeholders = placeholders
+        }
+        if let countryCode = arguments["countryCode"] as? String {
+            cardField.countryCode = countryCode
+        }
+        if  let cardStyle = arguments["cardStyle"] as? NSDictionary{
             if let fontFamily = cardStyle["fontFamily"] as? String {
                 registerFont(fontFamily)
             }
             cardField.cardStyle = cardStyle
-       }
+        }
         if let dangerouslyGetFullCardDetails = arguments["dangerouslyGetFullCardDetails"] as? Bool {
-          cardField.dangerouslyGetFullCardDetails = dangerouslyGetFullCardDetails
+            cardField.dangerouslyGetFullCardDetails = dangerouslyGetFullCardDetails
         }
         
         if let autofocus = arguments["autofocus"] as? Bool {
-         cardField.autofocus = autofocus
+            cardField.autofocus = autofocus
         }
         
-       if let postalCodeEnabled = arguments["postalCodeEnabled"] as? Bool{
-         cardField.postalCodeEnabled = postalCodeEnabled
-       }
+        if let postalCodeEnabled = arguments["postalCodeEnabled"] as? Bool{
+            cardField.postalCodeEnabled = postalCodeEnabled
+        }
         
-       if let cardDetails = arguments["cardDetails"] as? NSDictionary {
-         cardField.dangerouslyUpdateCardDetails(params: cardDetails)
-       }
-      
-       cardField.didSetProps([])
+        if let cardDetails = arguments["cardDetails"] as? NSDictionary {
+            cardField.dangerouslyUpdateCardDetails(params: cardDetails)
+        }
+        
+        cardField.didSetProps([])
     }
     
 }

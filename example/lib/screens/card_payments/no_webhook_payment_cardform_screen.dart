@@ -42,6 +42,7 @@ class _NoWebhookPaymentCardFormScreenState
       children: [
         CardFormField(
           controller: controller,
+          countryCode: 'US',
           style: CardFormStyle(
             borderColor: Colors.blueGrey,
             textColor: Colors.black,
