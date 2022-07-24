@@ -137,6 +137,9 @@ class ApplePayPresentParams with _$ApplePayPresentParams {
 
     /// List of available shipping methods for goods.
     List<ApplePayShippingMethod>? shippingMethods,
+
+    /// Add support for jcb as additional payment method.
+    @Default(false) bool jcbEnabled,
   }) = _ApplePayPresentParams;
 
   factory ApplePayPresentParams.fromJson(Map<String, dynamic> json) =>

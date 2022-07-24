@@ -1142,6 +1142,9 @@ mixin _$ApplePayPresentParams {
   List<ApplePayShippingMethod>? get shippingMethods =>
       throw _privateConstructorUsedError;
 
+  /// Add support for jcb as additional payment method.
+  bool get jcbEnabled => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ApplePayPresentParamsCopyWith<ApplePayPresentParams> get copyWith =>
@@ -1159,7 +1162,8 @@ abstract class $ApplePayPresentParamsCopyWith<$Res> {
       String currency,
       List<ApplePayContactFieldsType>? requiredShippingAddressFields,
       List<ApplePayContactFieldsType>? requiredBillingContactFields,
-      List<ApplePayShippingMethod>? shippingMethods});
+      List<ApplePayShippingMethod>? shippingMethods,
+      bool jcbEnabled});
 }
 
 /// @nodoc
@@ -1179,6 +1183,7 @@ class _$ApplePayPresentParamsCopyWithImpl<$Res>
     Object? requiredShippingAddressFields = freezed,
     Object? requiredBillingContactFields = freezed,
     Object? shippingMethods = freezed,
+    Object? jcbEnabled = freezed,
   }) {
     return _then(_value.copyWith(
       cartItems: cartItems == freezed
@@ -1205,6 +1210,10 @@ class _$ApplePayPresentParamsCopyWithImpl<$Res>
           ? _value.shippingMethods
           : shippingMethods // ignore: cast_nullable_to_non_nullable
               as List<ApplePayShippingMethod>?,
+      jcbEnabled: jcbEnabled == freezed
+          ? _value.jcbEnabled
+          : jcbEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1222,7 +1231,8 @@ abstract class _$$_ApplePayPresentParamsCopyWith<$Res>
       String currency,
       List<ApplePayContactFieldsType>? requiredShippingAddressFields,
       List<ApplePayContactFieldsType>? requiredBillingContactFields,
-      List<ApplePayShippingMethod>? shippingMethods});
+      List<ApplePayShippingMethod>? shippingMethods,
+      bool jcbEnabled});
 }
 
 /// @nodoc
@@ -1245,6 +1255,7 @@ class __$$_ApplePayPresentParamsCopyWithImpl<$Res>
     Object? requiredShippingAddressFields = freezed,
     Object? requiredBillingContactFields = freezed,
     Object? shippingMethods = freezed,
+    Object? jcbEnabled = freezed,
   }) {
     return _then(_$_ApplePayPresentParams(
       cartItems: cartItems == freezed
@@ -1271,6 +1282,10 @@ class __$$_ApplePayPresentParamsCopyWithImpl<$Res>
           ? _value._shippingMethods
           : shippingMethods // ignore: cast_nullable_to_non_nullable
               as List<ApplePayShippingMethod>?,
+      jcbEnabled: jcbEnabled == freezed
+          ? _value.jcbEnabled
+          : jcbEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1285,7 +1300,8 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
       required this.currency,
       final List<ApplePayContactFieldsType>? requiredShippingAddressFields,
       final List<ApplePayContactFieldsType>? requiredBillingContactFields,
-      final List<ApplePayShippingMethod>? shippingMethods})
+      final List<ApplePayShippingMethod>? shippingMethods,
+      this.jcbEnabled = false})
       : _cartItems = cartItems,
         _requiredShippingAddressFields = requiredShippingAddressFields,
         _requiredBillingContactFields = requiredBillingContactFields,
@@ -1352,9 +1368,14 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Add support for jcb as additional payment method.
+  @override
+  @JsonKey()
+  final bool jcbEnabled;
+
   @override
   String toString() {
-    return 'ApplePayPresentParams(cartItems: $cartItems, country: $country, currency: $currency, requiredShippingAddressFields: $requiredShippingAddressFields, requiredBillingContactFields: $requiredBillingContactFields, shippingMethods: $shippingMethods)';
+    return 'ApplePayPresentParams(cartItems: $cartItems, country: $country, currency: $currency, requiredShippingAddressFields: $requiredShippingAddressFields, requiredBillingContactFields: $requiredBillingContactFields, shippingMethods: $shippingMethods, jcbEnabled: $jcbEnabled)';
   }
 
   @override
@@ -1373,7 +1394,9 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
                 other._requiredBillingContactFields,
                 _requiredBillingContactFields) &&
             const DeepCollectionEquality()
-                .equals(other._shippingMethods, _shippingMethods));
+                .equals(other._shippingMethods, _shippingMethods) &&
+            const DeepCollectionEquality()
+                .equals(other.jcbEnabled, jcbEnabled));
   }
 
   @JsonKey(ignore: true)
@@ -1385,7 +1408,8 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
       const DeepCollectionEquality().hash(currency),
       const DeepCollectionEquality().hash(_requiredShippingAddressFields),
       const DeepCollectionEquality().hash(_requiredBillingContactFields),
-      const DeepCollectionEquality().hash(_shippingMethods));
+      const DeepCollectionEquality().hash(_shippingMethods),
+      const DeepCollectionEquality().hash(jcbEnabled));
 
   @JsonKey(ignore: true)
   @override
@@ -1401,13 +1425,13 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
 
 abstract class _ApplePayPresentParams implements ApplePayPresentParams {
   const factory _ApplePayPresentParams(
-          {required final List<ApplePayCartSummaryItem> cartItems,
-          required final String country,
-          required final String currency,
-          final List<ApplePayContactFieldsType>? requiredShippingAddressFields,
-          final List<ApplePayContactFieldsType>? requiredBillingContactFields,
-          final List<ApplePayShippingMethod>? shippingMethods}) =
-      _$_ApplePayPresentParams;
+      {required final List<ApplePayCartSummaryItem> cartItems,
+      required final String country,
+      required final String currency,
+      final List<ApplePayContactFieldsType>? requiredShippingAddressFields,
+      final List<ApplePayContactFieldsType>? requiredBillingContactFields,
+      final List<ApplePayShippingMethod>? shippingMethods,
+      final bool jcbEnabled}) = _$_ApplePayPresentParams;
 
   factory _ApplePayPresentParams.fromJson(Map<String, dynamic> json) =
       _$_ApplePayPresentParams.fromJson;
@@ -1442,6 +1466,10 @@ abstract class _ApplePayPresentParams implements ApplePayPresentParams {
   /// List of available shipping methods for goods.
   List<ApplePayShippingMethod>? get shippingMethods =>
       throw _privateConstructorUsedError;
+  @override
+
+  /// Add support for jcb as additional payment method.
+  bool get jcbEnabled => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_ApplePayPresentParamsCopyWith<_$_ApplePayPresentParams> get copyWith =>
