@@ -8,7 +8,7 @@
       "amex",
       "visa",
       "discover",
-      "mastercard"
+      "masterCard"
     ],
     "countryCode": "US",
     "currencyCode": "USD",
