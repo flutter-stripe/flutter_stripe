@@ -329,6 +329,7 @@ class Stripe {
   Future<void> initPaymentSheet({
     required SetupPaymentSheetParameters paymentSheetParameters,
   }) async {
+    assert(!(paymentSheetParameters.applePay == true && instance._merchantIdentifier == null), 'merchantIdentifier must be specified if you are using Apple Pay. Please refer to this article to get a merchant identifier: https://support.stripe.com/questions/enable-apple-pay-on-your-stripe-account');
     await _awaitForSettings();
     await _platform.initPaymentSheet(paymentSheetParameters);
   }
