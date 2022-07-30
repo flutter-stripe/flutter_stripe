@@ -223,8 +223,15 @@ abstract class _StripePaymentRequest {
   external Promise<dynamic /*{ applePay?: boolean }|Null*/ > canMakePayment();
 }
 
+@anonymous
+@JS()
+abstract class CanMakePaymentResult {
+  external bool get applePay;
+  external bool get googlePay;
+}
+
 extension StripePaymentRequestExtensions on StripePaymentRequest {
-  Future<dynamic /*{ applePay?: boolean }|Null*/ > canMakePayment() {
+  Future<CanMakePaymentResult> canMakePayment() {
     final _StripePaymentRequest tt = this as _StripePaymentRequest;
     return promiseToFuture(tt.canMakePayment());
   }
