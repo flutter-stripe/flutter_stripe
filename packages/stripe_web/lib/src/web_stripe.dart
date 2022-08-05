@@ -240,7 +240,8 @@ class WebStripe extends StripePlatform {
 
   @override
   Future<void> initGooglePay(GooglePayInitParams params) {
-    throw WebUnsupportedError.method('initGooglePay');
+    // It doesn't look like there is any setup required on web
+    return Future.value();
   }
 
   @override
@@ -259,14 +260,14 @@ class WebStripe extends StripePlatform {
     ));
 
     void paymentRequestOnPaymentMethod(event) async {
-      event.complete('success');
-
       final paymentMethod = event.paymentMethod as s.PaymentMethod;
 
       await js.confirmCardPayment(
         params.clientSecret,
         data: s.ConfirmCardPaymentData(payment_method: paymentMethod.id),
       );
+
+      event.complete('success');
 
       completer.complete();
     }
@@ -292,8 +293,10 @@ class WebStripe extends StripePlatform {
     final paymentRequest = js.paymentRequest(s.StripePaymentRequestOptions(
       country: 'US',
       currency: 'usd',
+      total: s.DisplayItem(amount: 1000, label: 'Total'),
     ));
     final canMakePayment = await paymentRequest.canMakePayment();
+
     return canMakePayment.googlePay;
   }
 
