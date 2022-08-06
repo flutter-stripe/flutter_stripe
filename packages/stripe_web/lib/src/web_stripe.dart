@@ -220,11 +220,12 @@ class WebStripe extends StripePlatform {
 
   @override
   Future<bool> isApplePaySupported() async {
-    throw WebUnsupportedError.method('presentApplePay');
+    final result = await _getPaymentResult();
+    return result.applePay;
   }
 
   @override
-  Future<void> presentApplePay(ApplePayPresentParams params) async {
+  Future<void> presentApplePay(ApplePayPresentParams params) {
     throw WebUnsupportedError.method('presentApplePay');
   }
 
@@ -240,15 +241,20 @@ class WebStripe extends StripePlatform {
 
   @override
   Future<void> initGooglePay(GooglePayInitParams params) {
-    // It doesn't look like there is any setup required on web
-    return Future.value();
+    return googlePayIsSupported(IsGooglePaySupportedParams(
+      existingPaymentMethodRequired: params.existingPaymentMethodRequired,
+      testEnv: params.testEnv,
+    ));
   }
 
   @override
-  Future<void> presentGooglePay(PresentGooglePayParams params) async {
+  Future<void> presentGooglePay(PresentGooglePayParams params) =>
+      _showWalletPayment(params.clientSecret);
+
+  Future<void> _showWalletPayment(String clientSecret) async {
     final completer = Completer<void>();
 
-    final paymentIntent = await retrievePaymentIntent(params.clientSecret);
+    final paymentIntent = await retrievePaymentIntent(clientSecret);
 
     final paymentRequest = js.paymentRequest(s.StripePaymentRequestOptions(
       country: 'US',
@@ -263,7 +269,7 @@ class WebStripe extends StripePlatform {
       final paymentMethod = event.paymentMethod as s.PaymentMethod;
 
       await js.confirmCardPayment(
-        params.clientSecret,
+        clientSecret,
         data: s.ConfirmCardPaymentData(payment_method: paymentMethod.id),
       );
 
@@ -290,14 +296,17 @@ class WebStripe extends StripePlatform {
 
   @override
   Future<bool> googlePayIsSupported(IsGooglePaySupportedParams params) async {
+    final result = await _getPaymentResult();
+    return result.googlePay;
+  }
+
+  Future<s.CanMakePaymentResult> _getPaymentResult() {
     final paymentRequest = js.paymentRequest(s.StripePaymentRequestOptions(
       country: 'US',
       currency: 'usd',
       total: s.DisplayItem(amount: 1000, label: 'Total'),
     ));
-    final canMakePayment = await paymentRequest.canMakePayment();
-
-    return canMakePayment.googlePay;
+    return paymentRequest.canMakePayment();
   }
 
   @override
