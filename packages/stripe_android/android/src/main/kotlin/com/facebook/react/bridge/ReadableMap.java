@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * Created by FFuF, Jonas Bark on 2019-10-02.
  */
-public class ReadableMap {
+public class ReadableMap extends WritableMap {
 
     private JSONObject map;
 
