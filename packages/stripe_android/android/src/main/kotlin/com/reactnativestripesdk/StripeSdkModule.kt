@@ -380,12 +380,15 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
 //  }
 
   @ReactMethod
-  fun confirmPayment(paymentIntentClientSecret: String, params: ReadableMap, options: ReadableMap, promise: Promise) {
+  fun confirmPayment(paymentIntentClientSecret: String, params: ReadableMap?, options: ReadableMap, promise: Promise) {
     val paymentMethodData = getMapOrNull(params, "paymentMethodData")
-    val paymentMethodType = getValOr(params, "paymentMethodType")?.let { mapToPaymentMethodType(it) } ?: run {
-      promise.resolve(createError(ConfirmPaymentErrorType.Failed.toString(), "You must provide paymentMethodType"))
-      return
-    }
+    val paymentMethodType = if (params != null)
+      mapToPaymentMethodType(params.getString("paymentMethodType")) ?: run {
+        promise.resolve(createError(ConfirmPaymentErrorType.Failed.toString(), "You must provide paymentMethodType"))
+        return
+      }
+    else
+      null // Expect that payment method was attached on the server
 
     val testOfflineBank = getBooleanOrFalse(params, "testOfflineBank")
 
@@ -618,6 +621,7 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
     collectBankAccountLauncherFragment = CollectBankAccountLauncherFragment(
       reactApplicationContext,
       publishableKey,
+      stripeAccountId,
       clientSecret,
       isPaymentIntent,
       collectParams,
@@ -709,7 +713,7 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
       return
     }
     financialConnectionsSheetFragment = FinancialConnectionsSheetFragment().also {
-      it.presentFinancialConnectionsSheet(clientSecret, FinancialConnectionsSheetFragment.Mode.ForToken, publishableKey, promise, reactApplicationContext)
+      it.presentFinancialConnectionsSheet(clientSecret, FinancialConnectionsSheetFragment.Mode.ForToken, publishableKey, stripeAccountId, promise, reactApplicationContext)
     }
   }
 
@@ -720,7 +724,7 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
       return
     }
     financialConnectionsSheetFragment = FinancialConnectionsSheetFragment().also {
-      it.presentFinancialConnectionsSheet(clientSecret, FinancialConnectionsSheetFragment.Mode.ForSession, publishableKey, promise, reactApplicationContext)
+      it.presentFinancialConnectionsSheet(clientSecret, FinancialConnectionsSheetFragment.Mode.ForSession, publishableKey, stripeAccountId, promise, reactApplicationContext)
     }
   }
 
