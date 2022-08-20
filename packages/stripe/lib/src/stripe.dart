@@ -249,7 +249,7 @@ class Stripe {
 
   Future<PaymentIntent> confirmPayment(
     String paymentIntentClientSecret,
-    PaymentMethodParams data, [
+    PaymentMethodParams? data, [
     Map<String, String> options = const {},
   ]) async {
     await _awaitForSettings();

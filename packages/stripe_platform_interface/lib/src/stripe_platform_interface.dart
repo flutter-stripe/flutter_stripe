@@ -41,7 +41,7 @@ abstract class StripePlatform extends PlatformInterface {
 
   Future<PaymentIntent> handleNextAction(String paymentIntentClientSecret);
   Future<PaymentIntent> confirmPayment(
-      String paymentIntentClientSecret, PaymentMethodParams params,
+      String paymentIntentClientSecret, PaymentMethodParams? params,
       [Map<String, String> options = const {}]);
   Future<bool> isApplePaySupported() async => false;
 
