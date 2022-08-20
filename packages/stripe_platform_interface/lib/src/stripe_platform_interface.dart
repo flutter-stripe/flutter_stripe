@@ -94,6 +94,13 @@ abstract class StripePlatform extends PlatformInterface {
     required VerifyMicroDepositsParams params,
   });
 
+  /// Methods related to financial connections
+  Future<FinancialConnectionTokenResult> collectBankAccountToken(
+      {required String clientSecret});
+
+  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts(
+      {required String clientSecret});
+
   /// Updates the internal card details. This method will not validate the card
   /// information so you should validate the information yourself.
   /// WARNING!!! Only do this if you're certain that you fulfill the necessary

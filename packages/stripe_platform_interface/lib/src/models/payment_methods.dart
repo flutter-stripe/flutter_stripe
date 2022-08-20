@@ -405,7 +405,6 @@ class PaymentMethodParams with _$PaymentMethodParams {
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsEps;
 
-
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Affirm')
 

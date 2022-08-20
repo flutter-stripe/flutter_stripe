@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:stripe_platform_interface/src/models/ach_params.dart';
 import 'package:stripe_platform_interface/src/models/create_token_data.dart';
+import 'package:stripe_platform_interface/src/models/financial_connections.dart';
 import 'package:stripe_platform_interface/src/models/google_pay.dart';
 import 'package:stripe_platform_interface/src/models/wallet.dart';
 import 'package:stripe_platform_interface/src/result_parser.dart';
@@ -380,6 +381,36 @@ class MethodChannelStripe extends StripePlatform {
         result?['details'],
       ),
     );
+  }
+
+  @override
+  Future<FinancialConnectionTokenResult> collectBankAccountToken(
+      {required String clientSecret}) async {
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('collectBankAccountToken', {
+      'clientSecret': clientSecret,
+    });
+
+    if (result!.containsKey('error')) {
+      throw ResultParser<void>(parseJson: (json) => {}).parseError(result);
+    }
+
+    return FinancialConnectionTokenResult.fromJson(result);
+  }
+
+  @override
+  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts(
+      {required String clientSecret}) async {
+    final result = await _methodChannel.invokeMapMethod<String, dynamic>(
+        'collectFinancialConnectionsAccounts', {
+      'clientSecret': clientSecret,
+    });
+
+    if (result!.containsKey('error')) {
+      throw ResultParser<void>(parseJson: (json) => {}).parseError(result);
+    }
+
+    return FinancialConnectionSessionResult.fromJson(result);
   }
 }
 

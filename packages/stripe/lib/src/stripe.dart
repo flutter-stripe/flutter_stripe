@@ -443,6 +443,39 @@ class Stripe {
     return await _platform.canAddToWallet(last4);
   }
 
+  /// Call the financial connections authentication flow in order to collect a US bank account to enhance payouts.
+  ///
+  /// Needs `clientSecret` of the stripe financial connections sessions.
+  /// For more info see [Add a Financial Connections Account to a US Custom Connect](https://stripe.com/docs/financial-connections/connect-payouts).
+  ///
+  ///  Throws [StripeError] in case creating the token fails.
+
+  Future<FinancialConnectionTokenResult> collectBankAccountToken(
+      {required String clientSecret}) async {
+    try {
+      return _platform.collectBankAccountToken(clientSecret: clientSecret);
+    } on StripeError {
+      rethrow;
+    }
+  }
+
+  /// Call the financial connections authentication flow in order to collect the user account data.
+  ///
+  /// Needs `clientSecret` of the stripe financial connections sessions.
+  /// For more info see: [Collect an account to build data-powered products](https://stripe.com/docs/financial-connections/other-data-powered-products)
+  ///
+  /// Throws [StripeError] in case creating the token fails.
+
+  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts(
+      {required String clientSecret}) async {
+    try {
+      return _platform.collectFinancialConnectionsAccounts(
+          clientSecret: clientSecret);
+    } on StripeError {
+      rethrow;
+    }
+  }
+
   FutureOr<void> _awaitForSettings() {
     if (_needsSettings) {
       _settingsFuture = applySettings();

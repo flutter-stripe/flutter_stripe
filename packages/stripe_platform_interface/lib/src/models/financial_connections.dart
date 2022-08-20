@@ -43,7 +43,7 @@ class FinancialConnectionSession with _$FinancialConnectionSession {
     required String clientSecret,
 
     /// When `true` the object exists in livemode and when false the object exists in test mode.
-    required String livemode,
+    required bool livemode,
 
     /// The accounts that were collected as part of this session
     required List<FinancialConnectionAccount> accounts,
@@ -64,7 +64,7 @@ class FinancialConnectionBankAccountToken
     BankAccount? bankAccount,
 
     /// When `true` the object exists in livemode and when false the object exists in test mode.
-    required String livemode,
+    required bool livemode,
 
     /// Unique id for this token.
     String? id,
@@ -184,24 +184,24 @@ enum AccountCategory { cash, credit, investment, other }
 
 enum AccountSubcategory {
   checking,
-  credit_card,
-  line_of_credit,
+  creditCard,
+  lineOfCredit,
   mortgage,
   other,
   savings,
 }
 
 enum FinancialConnectionsPaymentMethodType {
-  us_bank_account,
+  usBankAccount,
   link,
 }
 
 enum AccountPermission {
   balances,
   ownership,
-  payment_method,
+  paymentMethod,
   transactions,
-  account_numbers,
+  accountNumbers,
 }
 
 enum BalanceRefreshStatus { failed, pending, succeeded }

@@ -379,7 +379,7 @@ mixin _$FinancialConnectionSession {
   String get clientSecret => throw _privateConstructorUsedError;
 
   /// When `true` the object exists in livemode and when false the object exists in test mode.
-  String get livemode => throw _privateConstructorUsedError;
+  bool get livemode => throw _privateConstructorUsedError;
 
   /// The accounts that were collected as part of this session
   List<FinancialConnectionAccount> get accounts =>
@@ -399,7 +399,7 @@ abstract class $FinancialConnectionSessionCopyWith<$Res> {
   $Res call(
       {String id,
       String clientSecret,
-      String livemode,
+      bool livemode,
       List<FinancialConnectionAccount> accounts});
 }
 
@@ -431,7 +431,7 @@ class _$FinancialConnectionSessionCopyWithImpl<$Res>
       livemode: livemode == freezed
           ? _value.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
-              as String,
+              as bool,
       accounts: accounts == freezed
           ? _value.accounts
           : accounts // ignore: cast_nullable_to_non_nullable
@@ -451,7 +451,7 @@ abstract class _$$_FinancialConnectionSessionCopyWith<$Res>
   $Res call(
       {String id,
       String clientSecret,
-      String livemode,
+      bool livemode,
       List<FinancialConnectionAccount> accounts});
 }
 
@@ -487,7 +487,7 @@ class __$$_FinancialConnectionSessionCopyWithImpl<$Res>
       livemode: livemode == freezed
           ? _value.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
-              as String,
+              as bool,
       accounts: accounts == freezed
           ? _value._accounts
           : accounts // ignore: cast_nullable_to_non_nullable
@@ -520,7 +520,7 @@ class _$_FinancialConnectionSession implements _FinancialConnectionSession {
 
   /// When `true` the object exists in livemode and when false the object exists in test mode.
   @override
-  final String livemode;
+  final bool livemode;
 
   /// The accounts that were collected as part of this session
   final List<FinancialConnectionAccount> _accounts;
@@ -575,7 +575,7 @@ abstract class _FinancialConnectionSession
   const factory _FinancialConnectionSession(
           {required final String id,
           required final String clientSecret,
-          required final String livemode,
+          required final bool livemode,
           required final List<FinancialConnectionAccount> accounts}) =
       _$_FinancialConnectionSession;
 
@@ -593,7 +593,7 @@ abstract class _FinancialConnectionSession
   @override
 
   /// When `true` the object exists in livemode and when false the object exists in test mode.
-  String get livemode => throw _privateConstructorUsedError;
+  bool get livemode => throw _privateConstructorUsedError;
   @override
 
   /// The accounts that were collected as part of this session
@@ -616,7 +616,7 @@ mixin _$FinancialConnectionBankAccountToken {
   BankAccount? get bankAccount => throw _privateConstructorUsedError;
 
   /// When `true` the object exists in livemode and when false the object exists in test mode.
-  String get livemode => throw _privateConstructorUsedError;
+  bool get livemode => throw _privateConstructorUsedError;
 
   /// Unique id for this token.
   String? get id => throw _privateConstructorUsedError;
@@ -642,7 +642,7 @@ abstract class $FinancialConnectionBankAccountTokenCopyWith<$Res> {
       _$FinancialConnectionBankAccountTokenCopyWithImpl<$Res>;
   $Res call(
       {BankAccount? bankAccount,
-      String livemode,
+      bool livemode,
       String? id,
       bool used,
       int? created});
@@ -675,7 +675,7 @@ class _$FinancialConnectionBankAccountTokenCopyWithImpl<$Res>
       livemode: livemode == freezed
           ? _value.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
-              as String,
+              as bool,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -713,7 +713,7 @@ abstract class _$$_FinancialConnectionBankAccountTokenCopyWith<$Res>
   @override
   $Res call(
       {BankAccount? bankAccount,
-      String livemode,
+      bool livemode,
       String? id,
       bool used,
       int? created});
@@ -752,7 +752,7 @@ class __$$_FinancialConnectionBankAccountTokenCopyWithImpl<$Res>
       livemode: livemode == freezed
           ? _value.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
-              as String,
+              as bool,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -791,7 +791,7 @@ class _$_FinancialConnectionBankAccountToken
 
   /// When `true` the object exists in livemode and when false the object exists in test mode.
   @override
-  final String livemode;
+  final bool livemode;
 
   /// Unique id for this token.
   @override
@@ -850,7 +850,7 @@ abstract class _FinancialConnectionBankAccountToken
     implements FinancialConnectionBankAccountToken {
   const factory _FinancialConnectionBankAccountToken(
       {final BankAccount? bankAccount,
-      required final String livemode,
+      required final bool livemode,
       final String? id,
       required final bool used,
       final int? created}) = _$_FinancialConnectionBankAccountToken;
@@ -866,7 +866,7 @@ abstract class _FinancialConnectionBankAccountToken
   @override
 
   /// When `true` the object exists in livemode and when false the object exists in test mode.
-  String get livemode => throw _privateConstructorUsedError;
+  bool get livemode => throw _privateConstructorUsedError;
   @override
 
   /// Unique id for this token.

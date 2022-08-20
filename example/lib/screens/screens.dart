@@ -20,6 +20,7 @@ import 'card_payments/custom_card_payment_screen.dart';
 import 'card_payments/no_webhook_payment_cardform_screen.dart';
 import 'card_payments/no_webhook_payment_screen.dart';
 import 'card_payments/webhook_payment_screen.dart';
+import 'financial_connections.dart/financial_connections_session_screen.dart';
 import 'others/cvc_re_collection_screen.dart';
 import 'others/legacy_token_bank_screen.dart';
 import 'others/legacy_token_card_screen.dart';
@@ -251,6 +252,19 @@ class Example extends StatelessWidget {
       //   builder: (context) => WeChatPayScreen(),
       // ),
     ]),
+    ExampleSection(
+      title: 'Financial connections',
+      children: [
+        Example(
+          title: 'Financial connection sessions',
+          builder: (_)=> FinancialConnectionsScreen(),
+          platformsSupported: [
+            DevicePlatform.android,
+            DevicePlatform.ios,
+          ],
+        ),
+      ],
+    ),
     ExampleSection(title: 'Others', children: [
       Example(
         title: 'Setup Future Payment',

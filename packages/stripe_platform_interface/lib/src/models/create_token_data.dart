@@ -215,7 +215,7 @@ class BankAccount with _$BankAccount {
     BankAccountStatus? status,
 
     /// Uniquely identifies the particular bank account.
-    /// 
+    ///
     /// You can use this to check whether or not two bank accounts are the same.
     String? fingerprint,
 

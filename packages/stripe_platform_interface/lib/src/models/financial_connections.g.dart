@@ -40,7 +40,7 @@ _$_FinancialConnectionSession _$$_FinancialConnectionSessionFromJson(
     _$_FinancialConnectionSession(
       id: json['id'] as String,
       clientSecret: json['clientSecret'] as String,
-      livemode: json['livemode'] as String,
+      livemode: json['livemode'] as bool,
       accounts: (json['accounts'] as List<dynamic>)
           .map((e) =>
               FinancialConnectionAccount.fromJson(e as Map<String, dynamic>))
@@ -64,7 +64,7 @@ _$_FinancialConnectionBankAccountToken
               ? null
               : BankAccount.fromJson(
                   json['bankAccount'] as Map<String, dynamic>),
-          livemode: json['livemode'] as String,
+          livemode: json['livemode'] as bool,
           id: json['id'] as String?,
           used: json['used'] as bool,
           created: json['created'] as int?,
@@ -147,8 +147,8 @@ const _$AccountCategoryEnumMap = {
 
 const _$AccountSubcategoryEnumMap = {
   AccountSubcategory.checking: 'checking',
-  AccountSubcategory.credit_card: 'credit_card',
-  AccountSubcategory.line_of_credit: 'line_of_credit',
+  AccountSubcategory.creditCard: 'creditCard',
+  AccountSubcategory.lineOfCredit: 'lineOfCredit',
   AccountSubcategory.mortgage: 'mortgage',
   AccountSubcategory.other: 'other',
   AccountSubcategory.savings: 'savings',
@@ -157,13 +157,13 @@ const _$AccountSubcategoryEnumMap = {
 const _$AccountPermissionEnumMap = {
   AccountPermission.balances: 'balances',
   AccountPermission.ownership: 'ownership',
-  AccountPermission.payment_method: 'payment_method',
+  AccountPermission.paymentMethod: 'paymentMethod',
   AccountPermission.transactions: 'transactions',
-  AccountPermission.account_numbers: 'account_numbers',
+  AccountPermission.accountNumbers: 'accountNumbers',
 };
 
 const _$FinancialConnectionsPaymentMethodTypeEnumMap = {
-  FinancialConnectionsPaymentMethodType.us_bank_account: 'us_bank_account',
+  FinancialConnectionsPaymentMethodType.usBankAccount: 'usBankAccount',
   FinancialConnectionsPaymentMethodType.link: 'link',
 };
 

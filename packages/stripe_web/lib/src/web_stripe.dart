@@ -345,6 +345,18 @@ class WebStripe extends StripePlatform {
   Future<AddToWalletResult> canAddToWallet(String last4) {
     throw WebUnsupportedError.method('canAddToWallet');
   }
+
+  @override
+  Future<FinancialConnectionTokenResult> collectBankAccountToken(
+      {required String clientSecret}) {
+    throw WebUnsupportedError.method('collectBankAccountToken');
+  }
+
+  @override
+  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts(
+      {required String clientSecret}) {
+    throw WebUnsupportedError.method('collectFinancialConnectionsAccounts');
+  }
 }
 
 class WebUnsupportedError extends Error implements UnsupportedError {
