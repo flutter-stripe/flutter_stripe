@@ -354,6 +354,21 @@ Map<String, dynamic> _$$_PaymentMethodParamsEpsToJson(
       'paymentMethodType': instance.$type,
     };
 
+_$_PaymentMethodParamsAffirm _$$_PaymentMethodParamsAffirmFromJson(
+        Map<String, dynamic> json) =>
+    _$_PaymentMethodParamsAffirm(
+      paymentMethodData: PaymentMethodData.fromJson(
+          json['paymentMethodData'] as Map<String, dynamic>),
+      $type: json['paymentMethodType'] as String?,
+    );
+
+Map<String, dynamic> _$$_PaymentMethodParamsAffirmToJson(
+        _$_PaymentMethodParamsAffirm instance) =>
+    <String, dynamic>{
+      'paymentMethodData': instance.paymentMethodData.toJson(),
+      'paymentMethodType': instance.$type,
+    };
+
 _$_PaymentMethodParamsPay _$$_PaymentMethodParamsPayFromJson(
         Map<String, dynamic> json) =>
     _$_PaymentMethodParamsPay(

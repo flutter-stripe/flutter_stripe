@@ -242,7 +242,21 @@ abstract class _ApplePayShippingMethod implements ApplePayShippingMethod {
 
 ApplePayCartSummaryItem _$ApplePayCartSummaryItemFromJson(
     Map<String, dynamic> json) {
-  return _ApplePayCartSummaryItem.fromJson(json);
+  switch (json['paymentType']) {
+    case 'Immediate':
+      return _ImmediateCartSummaryItem.fromJson(json);
+    case 'Deferred':
+      return _DeferredSummaryItem.fromJson(json);
+    case 'Recurring':
+      return _RecurringCartSummaryItem.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'paymentType',
+          'ApplePayCartSummaryItem',
+          'Invalid union type "${json['paymentType']}"!');
+  }
 }
 
 /// @nodoc
@@ -252,10 +266,73 @@ mixin _$ApplePayCartSummaryItem {
 
   /// The monetary amount.
   String get amount => throw _privateConstructorUsedError;
-
-  /// The type of summary item
-  ApplePaySummaryItemType get type => throw _privateConstructorUsedError;
-
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String label, String amount, bool? isPending)
+        immediate,
+    required TResult Function(String label, String amount, int deferredDate)
+        deferred,
+    required TResult Function(
+            String label,
+            String amount,
+            ApplePayIntervalUnit intervalUnit,
+            int intervalCount,
+            int? startDate,
+            int? number)
+        recurring,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String label, String amount, bool? isPending)? immediate,
+    TResult Function(String label, String amount, int deferredDate)? deferred,
+    TResult Function(
+            String label,
+            String amount,
+            ApplePayIntervalUnit intervalUnit,
+            int intervalCount,
+            int? startDate,
+            int? number)?
+        recurring,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String label, String amount, bool? isPending)? immediate,
+    TResult Function(String label, String amount, int deferredDate)? deferred,
+    TResult Function(
+            String label,
+            String amount,
+            ApplePayIntervalUnit intervalUnit,
+            int intervalCount,
+            int? startDate,
+            int? number)?
+        recurring,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ImmediateCartSummaryItem value) immediate,
+    required TResult Function(_DeferredSummaryItem value) deferred,
+    required TResult Function(_RecurringCartSummaryItem value) recurring,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ImmediateCartSummaryItem value)? immediate,
+    TResult Function(_DeferredSummaryItem value)? deferred,
+    TResult Function(_RecurringCartSummaryItem value)? recurring,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ImmediateCartSummaryItem value)? immediate,
+    TResult Function(_DeferredSummaryItem value)? deferred,
+    TResult Function(_RecurringCartSummaryItem value)? recurring,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ApplePayCartSummaryItemCopyWith<ApplePayCartSummaryItem> get copyWith =>
@@ -267,7 +344,7 @@ abstract class $ApplePayCartSummaryItemCopyWith<$Res> {
   factory $ApplePayCartSummaryItemCopyWith(ApplePayCartSummaryItem value,
           $Res Function(ApplePayCartSummaryItem) then) =
       _$ApplePayCartSummaryItemCopyWithImpl<$Res>;
-  $Res call({String label, String amount, ApplePaySummaryItemType type});
+  $Res call({String label, String amount});
 }
 
 /// @nodoc
@@ -283,7 +360,6 @@ class _$ApplePayCartSummaryItemCopyWithImpl<$Res>
   $Res call({
     Object? label = freezed,
     Object? amount = freezed,
-    Object? type = freezed,
   }) {
     return _then(_value.copyWith(
       label: label == freezed
@@ -294,43 +370,40 @@ class _$ApplePayCartSummaryItemCopyWithImpl<$Res>
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as String,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ApplePaySummaryItemType,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$$_ApplePayCartSummaryItemCopyWith<$Res>
+abstract class _$$_ImmediateCartSummaryItemCopyWith<$Res>
     implements $ApplePayCartSummaryItemCopyWith<$Res> {
-  factory _$$_ApplePayCartSummaryItemCopyWith(_$_ApplePayCartSummaryItem value,
-          $Res Function(_$_ApplePayCartSummaryItem) then) =
-      __$$_ApplePayCartSummaryItemCopyWithImpl<$Res>;
+  factory _$$_ImmediateCartSummaryItemCopyWith(
+          _$_ImmediateCartSummaryItem value,
+          $Res Function(_$_ImmediateCartSummaryItem) then) =
+      __$$_ImmediateCartSummaryItemCopyWithImpl<$Res>;
   @override
-  $Res call({String label, String amount, ApplePaySummaryItemType type});
+  $Res call({String label, String amount, bool? isPending});
 }
 
 /// @nodoc
-class __$$_ApplePayCartSummaryItemCopyWithImpl<$Res>
+class __$$_ImmediateCartSummaryItemCopyWithImpl<$Res>
     extends _$ApplePayCartSummaryItemCopyWithImpl<$Res>
-    implements _$$_ApplePayCartSummaryItemCopyWith<$Res> {
-  __$$_ApplePayCartSummaryItemCopyWithImpl(_$_ApplePayCartSummaryItem _value,
-      $Res Function(_$_ApplePayCartSummaryItem) _then)
-      : super(_value, (v) => _then(v as _$_ApplePayCartSummaryItem));
+    implements _$$_ImmediateCartSummaryItemCopyWith<$Res> {
+  __$$_ImmediateCartSummaryItemCopyWithImpl(_$_ImmediateCartSummaryItem _value,
+      $Res Function(_$_ImmediateCartSummaryItem) _then)
+      : super(_value, (v) => _then(v as _$_ImmediateCartSummaryItem));
 
   @override
-  _$_ApplePayCartSummaryItem get _value =>
-      super._value as _$_ApplePayCartSummaryItem;
+  _$_ImmediateCartSummaryItem get _value =>
+      super._value as _$_ImmediateCartSummaryItem;
 
   @override
   $Res call({
     Object? label = freezed,
     Object? amount = freezed,
-    Object? type = freezed,
+    Object? isPending = freezed,
   }) {
-    return _then(_$_ApplePayCartSummaryItem(
+    return _then(_$_ImmediateCartSummaryItem(
       label: label == freezed
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
@@ -339,10 +412,10 @@ class __$$_ApplePayCartSummaryItemCopyWithImpl<$Res>
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as String,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ApplePaySummaryItemType,
+      isPending: isPending == freezed
+          ? _value.isPending
+          : isPending // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -350,14 +423,16 @@ class __$$_ApplePayCartSummaryItemCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_ApplePayCartSummaryItem implements _ApplePayCartSummaryItem {
-  const _$_ApplePayCartSummaryItem(
+class _$_ImmediateCartSummaryItem implements _ImmediateCartSummaryItem {
+  const _$_ImmediateCartSummaryItem(
       {required this.label,
       required this.amount,
-      this.type = ApplePaySummaryItemType.fixed});
+      this.isPending,
+      final String? $type})
+      : $type = $type ?? 'Immediate';
 
-  factory _$_ApplePayCartSummaryItem.fromJson(Map<String, dynamic> json) =>
-      _$$_ApplePayCartSummaryItemFromJson(json);
+  factory _$_ImmediateCartSummaryItem.fromJson(Map<String, dynamic> json) =>
+      _$$_ImmediateCartSummaryItemFromJson(json);
 
   /// Short localized description of the item.
   @override
@@ -367,24 +442,26 @@ class _$_ApplePayCartSummaryItem implements _ApplePayCartSummaryItem {
   @override
   final String amount;
 
-  /// The type of summary item
+  /// When creating items for estimates or charges whose final value is not yet known, set this to true.
   @override
-  @JsonKey()
-  final ApplePaySummaryItemType type;
+  final bool? isPending;
+
+  @JsonKey(name: 'paymentType')
+  final String $type;
 
   @override
   String toString() {
-    return 'ApplePayCartSummaryItem(label: $label, amount: $amount, type: $type)';
+    return 'ApplePayCartSummaryItem.immediate(label: $label, amount: $amount, isPending: $isPending)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ApplePayCartSummaryItem &&
+            other is _$_ImmediateCartSummaryItem &&
             const DeepCollectionEquality().equals(other.label, label) &&
             const DeepCollectionEquality().equals(other.amount, amount) &&
-            const DeepCollectionEquality().equals(other.type, type));
+            const DeepCollectionEquality().equals(other.isPending, isPending));
   }
 
   @JsonKey(ignore: true)
@@ -393,29 +470,119 @@ class _$_ApplePayCartSummaryItem implements _ApplePayCartSummaryItem {
       runtimeType,
       const DeepCollectionEquality().hash(label),
       const DeepCollectionEquality().hash(amount),
-      const DeepCollectionEquality().hash(type));
+      const DeepCollectionEquality().hash(isPending));
 
   @JsonKey(ignore: true)
   @override
-  _$$_ApplePayCartSummaryItemCopyWith<_$_ApplePayCartSummaryItem>
-      get copyWith =>
-          __$$_ApplePayCartSummaryItemCopyWithImpl<_$_ApplePayCartSummaryItem>(
-              this, _$identity);
+  _$$_ImmediateCartSummaryItemCopyWith<_$_ImmediateCartSummaryItem>
+      get copyWith => __$$_ImmediateCartSummaryItemCopyWithImpl<
+          _$_ImmediateCartSummaryItem>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String label, String amount, bool? isPending)
+        immediate,
+    required TResult Function(String label, String amount, int deferredDate)
+        deferred,
+    required TResult Function(
+            String label,
+            String amount,
+            ApplePayIntervalUnit intervalUnit,
+            int intervalCount,
+            int? startDate,
+            int? number)
+        recurring,
+  }) {
+    return immediate(label, amount, isPending);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String label, String amount, bool? isPending)? immediate,
+    TResult Function(String label, String amount, int deferredDate)? deferred,
+    TResult Function(
+            String label,
+            String amount,
+            ApplePayIntervalUnit intervalUnit,
+            int intervalCount,
+            int? startDate,
+            int? number)?
+        recurring,
+  }) {
+    return immediate?.call(label, amount, isPending);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String label, String amount, bool? isPending)? immediate,
+    TResult Function(String label, String amount, int deferredDate)? deferred,
+    TResult Function(
+            String label,
+            String amount,
+            ApplePayIntervalUnit intervalUnit,
+            int intervalCount,
+            int? startDate,
+            int? number)?
+        recurring,
+    required TResult orElse(),
+  }) {
+    if (immediate != null) {
+      return immediate(label, amount, isPending);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ImmediateCartSummaryItem value) immediate,
+    required TResult Function(_DeferredSummaryItem value) deferred,
+    required TResult Function(_RecurringCartSummaryItem value) recurring,
+  }) {
+    return immediate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ImmediateCartSummaryItem value)? immediate,
+    TResult Function(_DeferredSummaryItem value)? deferred,
+    TResult Function(_RecurringCartSummaryItem value)? recurring,
+  }) {
+    return immediate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ImmediateCartSummaryItem value)? immediate,
+    TResult Function(_DeferredSummaryItem value)? deferred,
+    TResult Function(_RecurringCartSummaryItem value)? recurring,
+    required TResult orElse(),
+  }) {
+    if (immediate != null) {
+      return immediate(this);
+    }
+    return orElse();
+  }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ApplePayCartSummaryItemToJson(this);
+    return _$$_ImmediateCartSummaryItemToJson(this);
   }
 }
 
-abstract class _ApplePayCartSummaryItem implements ApplePayCartSummaryItem {
-  const factory _ApplePayCartSummaryItem(
+abstract class _ImmediateCartSummaryItem implements ApplePayCartSummaryItem {
+  const factory _ImmediateCartSummaryItem(
       {required final String label,
       required final String amount,
-      final ApplePaySummaryItemType type}) = _$_ApplePayCartSummaryItem;
+      final bool? isPending}) = _$_ImmediateCartSummaryItem;
 
-  factory _ApplePayCartSummaryItem.fromJson(Map<String, dynamic> json) =
-      _$_ApplePayCartSummaryItem.fromJson;
+  factory _ImmediateCartSummaryItem.fromJson(Map<String, dynamic> json) =
+      _$_ImmediateCartSummaryItem.fromJson;
 
   @override
 
@@ -425,13 +592,522 @@ abstract class _ApplePayCartSummaryItem implements ApplePayCartSummaryItem {
 
   /// The monetary amount.
   String get amount => throw _privateConstructorUsedError;
-  @override
 
-  /// The type of summary item
-  ApplePaySummaryItemType get type => throw _privateConstructorUsedError;
+  /// When creating items for estimates or charges whose final value is not yet known, set this to true.
+  bool? get isPending => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$$_ApplePayCartSummaryItemCopyWith<_$_ApplePayCartSummaryItem>
+  _$$_ImmediateCartSummaryItemCopyWith<_$_ImmediateCartSummaryItem>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_DeferredSummaryItemCopyWith<$Res>
+    implements $ApplePayCartSummaryItemCopyWith<$Res> {
+  factory _$$_DeferredSummaryItemCopyWith(_$_DeferredSummaryItem value,
+          $Res Function(_$_DeferredSummaryItem) then) =
+      __$$_DeferredSummaryItemCopyWithImpl<$Res>;
+  @override
+  $Res call({String label, String amount, int deferredDate});
+}
+
+/// @nodoc
+class __$$_DeferredSummaryItemCopyWithImpl<$Res>
+    extends _$ApplePayCartSummaryItemCopyWithImpl<$Res>
+    implements _$$_DeferredSummaryItemCopyWith<$Res> {
+  __$$_DeferredSummaryItemCopyWithImpl(_$_DeferredSummaryItem _value,
+      $Res Function(_$_DeferredSummaryItem) _then)
+      : super(_value, (v) => _then(v as _$_DeferredSummaryItem));
+
+  @override
+  _$_DeferredSummaryItem get _value => super._value as _$_DeferredSummaryItem;
+
+  @override
+  $Res call({
+    Object? label = freezed,
+    Object? amount = freezed,
+    Object? deferredDate = freezed,
+  }) {
+    return _then(_$_DeferredSummaryItem(
+      label: label == freezed
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String,
+      amount: amount == freezed
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as String,
+      deferredDate: deferredDate == freezed
+          ? _value.deferredDate
+          : deferredDate // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_DeferredSummaryItem implements _DeferredSummaryItem {
+  const _$_DeferredSummaryItem(
+      {required this.label,
+      required this.amount,
+      required this.deferredDate,
+      final String? $type})
+      : $type = $type ?? 'Deferred';
+
+  factory _$_DeferredSummaryItem.fromJson(Map<String, dynamic> json) =>
+      _$$_DeferredSummaryItemFromJson(json);
+
+  /// Short localized description of the item.
+  @override
+  final String label;
+
+  /// The monetary amount.
+  @override
+  final String amount;
+
+  /// The unix timestamp of the date, in the future, of the payment. Measured in seconds.
+  @override
+  final int deferredDate;
+
+  @JsonKey(name: 'paymentType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ApplePayCartSummaryItem.deferred(label: $label, amount: $amount, deferredDate: $deferredDate)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DeferredSummaryItem &&
+            const DeepCollectionEquality().equals(other.label, label) &&
+            const DeepCollectionEquality().equals(other.amount, amount) &&
+            const DeepCollectionEquality()
+                .equals(other.deferredDate, deferredDate));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(label),
+      const DeepCollectionEquality().hash(amount),
+      const DeepCollectionEquality().hash(deferredDate));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_DeferredSummaryItemCopyWith<_$_DeferredSummaryItem> get copyWith =>
+      __$$_DeferredSummaryItemCopyWithImpl<_$_DeferredSummaryItem>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String label, String amount, bool? isPending)
+        immediate,
+    required TResult Function(String label, String amount, int deferredDate)
+        deferred,
+    required TResult Function(
+            String label,
+            String amount,
+            ApplePayIntervalUnit intervalUnit,
+            int intervalCount,
+            int? startDate,
+            int? number)
+        recurring,
+  }) {
+    return deferred(label, amount, deferredDate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String label, String amount, bool? isPending)? immediate,
+    TResult Function(String label, String amount, int deferredDate)? deferred,
+    TResult Function(
+            String label,
+            String amount,
+            ApplePayIntervalUnit intervalUnit,
+            int intervalCount,
+            int? startDate,
+            int? number)?
+        recurring,
+  }) {
+    return deferred?.call(label, amount, deferredDate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String label, String amount, bool? isPending)? immediate,
+    TResult Function(String label, String amount, int deferredDate)? deferred,
+    TResult Function(
+            String label,
+            String amount,
+            ApplePayIntervalUnit intervalUnit,
+            int intervalCount,
+            int? startDate,
+            int? number)?
+        recurring,
+    required TResult orElse(),
+  }) {
+    if (deferred != null) {
+      return deferred(label, amount, deferredDate);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ImmediateCartSummaryItem value) immediate,
+    required TResult Function(_DeferredSummaryItem value) deferred,
+    required TResult Function(_RecurringCartSummaryItem value) recurring,
+  }) {
+    return deferred(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ImmediateCartSummaryItem value)? immediate,
+    TResult Function(_DeferredSummaryItem value)? deferred,
+    TResult Function(_RecurringCartSummaryItem value)? recurring,
+  }) {
+    return deferred?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ImmediateCartSummaryItem value)? immediate,
+    TResult Function(_DeferredSummaryItem value)? deferred,
+    TResult Function(_RecurringCartSummaryItem value)? recurring,
+    required TResult orElse(),
+  }) {
+    if (deferred != null) {
+      return deferred(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_DeferredSummaryItemToJson(this);
+  }
+}
+
+abstract class _DeferredSummaryItem implements ApplePayCartSummaryItem {
+  const factory _DeferredSummaryItem(
+      {required final String label,
+      required final String amount,
+      required final int deferredDate}) = _$_DeferredSummaryItem;
+
+  factory _DeferredSummaryItem.fromJson(Map<String, dynamic> json) =
+      _$_DeferredSummaryItem.fromJson;
+
+  @override
+
+  /// Short localized description of the item.
+  String get label => throw _privateConstructorUsedError;
+  @override
+
+  /// The monetary amount.
+  String get amount => throw _privateConstructorUsedError;
+
+  /// The unix timestamp of the date, in the future, of the payment. Measured in seconds.
+  int get deferredDate => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_DeferredSummaryItemCopyWith<_$_DeferredSummaryItem> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_RecurringCartSummaryItemCopyWith<$Res>
+    implements $ApplePayCartSummaryItemCopyWith<$Res> {
+  factory _$$_RecurringCartSummaryItemCopyWith(
+          _$_RecurringCartSummaryItem value,
+          $Res Function(_$_RecurringCartSummaryItem) then) =
+      __$$_RecurringCartSummaryItemCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String label,
+      String amount,
+      ApplePayIntervalUnit intervalUnit,
+      int intervalCount,
+      int? startDate,
+      int? number});
+}
+
+/// @nodoc
+class __$$_RecurringCartSummaryItemCopyWithImpl<$Res>
+    extends _$ApplePayCartSummaryItemCopyWithImpl<$Res>
+    implements _$$_RecurringCartSummaryItemCopyWith<$Res> {
+  __$$_RecurringCartSummaryItemCopyWithImpl(_$_RecurringCartSummaryItem _value,
+      $Res Function(_$_RecurringCartSummaryItem) _then)
+      : super(_value, (v) => _then(v as _$_RecurringCartSummaryItem));
+
+  @override
+  _$_RecurringCartSummaryItem get _value =>
+      super._value as _$_RecurringCartSummaryItem;
+
+  @override
+  $Res call({
+    Object? label = freezed,
+    Object? amount = freezed,
+    Object? intervalUnit = freezed,
+    Object? intervalCount = freezed,
+    Object? startDate = freezed,
+    Object? number = freezed,
+  }) {
+    return _then(_$_RecurringCartSummaryItem(
+      label: label == freezed
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String,
+      amount: amount == freezed
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as String,
+      intervalUnit: intervalUnit == freezed
+          ? _value.intervalUnit
+          : intervalUnit // ignore: cast_nullable_to_non_nullable
+              as ApplePayIntervalUnit,
+      intervalCount: intervalCount == freezed
+          ? _value.intervalCount
+          : intervalCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      startDate: startDate == freezed
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as int?,
+      number: number == freezed
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_RecurringCartSummaryItem implements _RecurringCartSummaryItem {
+  const _$_RecurringCartSummaryItem(
+      {required this.label,
+      required this.amount,
+      required this.intervalUnit,
+      required this.intervalCount,
+      this.startDate,
+      this.number,
+      final String? $type})
+      : $type = $type ?? 'Recurring';
+
+  factory _$_RecurringCartSummaryItem.fromJson(Map<String, dynamic> json) =>
+      _$$_RecurringCartSummaryItemFromJson(json);
+
+  /// Short localized description of the item.
+  @override
+  final String label;
+
+  /// The monetary amount.
+  @override
+  final String amount;
+
+  /// The amount of time – in calendar units such as day, month, or year – that represents a fraction of the total payment interval. For example, if you set the intervalUnit to 'month' and intervalCount to 3, then the payment interval is three months.
+  @override
+  final ApplePayIntervalUnit intervalUnit;
+
+  /// The number of interval units that make up the total payment interval. For example, if you set the intervalUnit to 'month' and intervalCount to 3, then the payment interval is three months.
+  @override
+  final int intervalCount;
+
+  /// The unix timestamp of the start date. Measured in seconds.
+  @override
+  final int? startDate;
+////The unix timestamp of the end date. Measured in seconds. */
+  @override
+  final int? number;
+
+  @JsonKey(name: 'paymentType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ApplePayCartSummaryItem.recurring(label: $label, amount: $amount, intervalUnit: $intervalUnit, intervalCount: $intervalCount, startDate: $startDate, number: $number)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_RecurringCartSummaryItem &&
+            const DeepCollectionEquality().equals(other.label, label) &&
+            const DeepCollectionEquality().equals(other.amount, amount) &&
+            const DeepCollectionEquality()
+                .equals(other.intervalUnit, intervalUnit) &&
+            const DeepCollectionEquality()
+                .equals(other.intervalCount, intervalCount) &&
+            const DeepCollectionEquality().equals(other.startDate, startDate) &&
+            const DeepCollectionEquality().equals(other.number, number));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(label),
+      const DeepCollectionEquality().hash(amount),
+      const DeepCollectionEquality().hash(intervalUnit),
+      const DeepCollectionEquality().hash(intervalCount),
+      const DeepCollectionEquality().hash(startDate),
+      const DeepCollectionEquality().hash(number));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_RecurringCartSummaryItemCopyWith<_$_RecurringCartSummaryItem>
+      get copyWith => __$$_RecurringCartSummaryItemCopyWithImpl<
+          _$_RecurringCartSummaryItem>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String label, String amount, bool? isPending)
+        immediate,
+    required TResult Function(String label, String amount, int deferredDate)
+        deferred,
+    required TResult Function(
+            String label,
+            String amount,
+            ApplePayIntervalUnit intervalUnit,
+            int intervalCount,
+            int? startDate,
+            int? number)
+        recurring,
+  }) {
+    return recurring(
+        label, amount, intervalUnit, intervalCount, startDate, number);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String label, String amount, bool? isPending)? immediate,
+    TResult Function(String label, String amount, int deferredDate)? deferred,
+    TResult Function(
+            String label,
+            String amount,
+            ApplePayIntervalUnit intervalUnit,
+            int intervalCount,
+            int? startDate,
+            int? number)?
+        recurring,
+  }) {
+    return recurring?.call(
+        label, amount, intervalUnit, intervalCount, startDate, number);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String label, String amount, bool? isPending)? immediate,
+    TResult Function(String label, String amount, int deferredDate)? deferred,
+    TResult Function(
+            String label,
+            String amount,
+            ApplePayIntervalUnit intervalUnit,
+            int intervalCount,
+            int? startDate,
+            int? number)?
+        recurring,
+    required TResult orElse(),
+  }) {
+    if (recurring != null) {
+      return recurring(
+          label, amount, intervalUnit, intervalCount, startDate, number);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ImmediateCartSummaryItem value) immediate,
+    required TResult Function(_DeferredSummaryItem value) deferred,
+    required TResult Function(_RecurringCartSummaryItem value) recurring,
+  }) {
+    return recurring(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ImmediateCartSummaryItem value)? immediate,
+    TResult Function(_DeferredSummaryItem value)? deferred,
+    TResult Function(_RecurringCartSummaryItem value)? recurring,
+  }) {
+    return recurring?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ImmediateCartSummaryItem value)? immediate,
+    TResult Function(_DeferredSummaryItem value)? deferred,
+    TResult Function(_RecurringCartSummaryItem value)? recurring,
+    required TResult orElse(),
+  }) {
+    if (recurring != null) {
+      return recurring(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_RecurringCartSummaryItemToJson(this);
+  }
+}
+
+abstract class _RecurringCartSummaryItem implements ApplePayCartSummaryItem {
+  const factory _RecurringCartSummaryItem(
+      {required final String label,
+      required final String amount,
+      required final ApplePayIntervalUnit intervalUnit,
+      required final int intervalCount,
+      final int? startDate,
+      final int? number}) = _$_RecurringCartSummaryItem;
+
+  factory _RecurringCartSummaryItem.fromJson(Map<String, dynamic> json) =
+      _$_RecurringCartSummaryItem.fromJson;
+
+  @override
+
+  /// Short localized description of the item.
+  String get label => throw _privateConstructorUsedError;
+  @override
+
+  /// The monetary amount.
+  String get amount => throw _privateConstructorUsedError;
+
+  /// The amount of time – in calendar units such as day, month, or year – that represents a fraction of the total payment interval. For example, if you set the intervalUnit to 'month' and intervalCount to 3, then the payment interval is three months.
+  ApplePayIntervalUnit get intervalUnit => throw _privateConstructorUsedError;
+
+  /// The number of interval units that make up the total payment interval. For example, if you set the intervalUnit to 'month' and intervalCount to 3, then the payment interval is three months.
+  int get intervalCount => throw _privateConstructorUsedError;
+
+  /// The unix timestamp of the start date. Measured in seconds.
+  int? get startDate =>
+      throw _privateConstructorUsedError; ////The unix timestamp of the end date. Measured in seconds. */
+  int? get number => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_RecurringCartSummaryItemCopyWith<_$_RecurringCartSummaryItem>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -466,6 +1142,9 @@ mixin _$ApplePayPresentParams {
   List<ApplePayShippingMethod>? get shippingMethods =>
       throw _privateConstructorUsedError;
 
+  /// Add support for jcb as additional payment method.
+  bool get jcbEnabled => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ApplePayPresentParamsCopyWith<ApplePayPresentParams> get copyWith =>
@@ -483,7 +1162,8 @@ abstract class $ApplePayPresentParamsCopyWith<$Res> {
       String currency,
       List<ApplePayContactFieldsType>? requiredShippingAddressFields,
       List<ApplePayContactFieldsType>? requiredBillingContactFields,
-      List<ApplePayShippingMethod>? shippingMethods});
+      List<ApplePayShippingMethod>? shippingMethods,
+      bool jcbEnabled});
 }
 
 /// @nodoc
@@ -503,6 +1183,7 @@ class _$ApplePayPresentParamsCopyWithImpl<$Res>
     Object? requiredShippingAddressFields = freezed,
     Object? requiredBillingContactFields = freezed,
     Object? shippingMethods = freezed,
+    Object? jcbEnabled = freezed,
   }) {
     return _then(_value.copyWith(
       cartItems: cartItems == freezed
@@ -529,6 +1210,10 @@ class _$ApplePayPresentParamsCopyWithImpl<$Res>
           ? _value.shippingMethods
           : shippingMethods // ignore: cast_nullable_to_non_nullable
               as List<ApplePayShippingMethod>?,
+      jcbEnabled: jcbEnabled == freezed
+          ? _value.jcbEnabled
+          : jcbEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -546,7 +1231,8 @@ abstract class _$$_ApplePayPresentParamsCopyWith<$Res>
       String currency,
       List<ApplePayContactFieldsType>? requiredShippingAddressFields,
       List<ApplePayContactFieldsType>? requiredBillingContactFields,
-      List<ApplePayShippingMethod>? shippingMethods});
+      List<ApplePayShippingMethod>? shippingMethods,
+      bool jcbEnabled});
 }
 
 /// @nodoc
@@ -569,6 +1255,7 @@ class __$$_ApplePayPresentParamsCopyWithImpl<$Res>
     Object? requiredShippingAddressFields = freezed,
     Object? requiredBillingContactFields = freezed,
     Object? shippingMethods = freezed,
+    Object? jcbEnabled = freezed,
   }) {
     return _then(_$_ApplePayPresentParams(
       cartItems: cartItems == freezed
@@ -595,6 +1282,10 @@ class __$$_ApplePayPresentParamsCopyWithImpl<$Res>
           ? _value._shippingMethods
           : shippingMethods // ignore: cast_nullable_to_non_nullable
               as List<ApplePayShippingMethod>?,
+      jcbEnabled: jcbEnabled == freezed
+          ? _value.jcbEnabled
+          : jcbEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -609,7 +1300,8 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
       required this.currency,
       final List<ApplePayContactFieldsType>? requiredShippingAddressFields,
       final List<ApplePayContactFieldsType>? requiredBillingContactFields,
-      final List<ApplePayShippingMethod>? shippingMethods})
+      final List<ApplePayShippingMethod>? shippingMethods,
+      this.jcbEnabled = false})
       : _cartItems = cartItems,
         _requiredShippingAddressFields = requiredShippingAddressFields,
         _requiredBillingContactFields = requiredBillingContactFields,
@@ -676,9 +1368,14 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Add support for jcb as additional payment method.
+  @override
+  @JsonKey()
+  final bool jcbEnabled;
+
   @override
   String toString() {
-    return 'ApplePayPresentParams(cartItems: $cartItems, country: $country, currency: $currency, requiredShippingAddressFields: $requiredShippingAddressFields, requiredBillingContactFields: $requiredBillingContactFields, shippingMethods: $shippingMethods)';
+    return 'ApplePayPresentParams(cartItems: $cartItems, country: $country, currency: $currency, requiredShippingAddressFields: $requiredShippingAddressFields, requiredBillingContactFields: $requiredBillingContactFields, shippingMethods: $shippingMethods, jcbEnabled: $jcbEnabled)';
   }
 
   @override
@@ -697,7 +1394,9 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
                 other._requiredBillingContactFields,
                 _requiredBillingContactFields) &&
             const DeepCollectionEquality()
-                .equals(other._shippingMethods, _shippingMethods));
+                .equals(other._shippingMethods, _shippingMethods) &&
+            const DeepCollectionEquality()
+                .equals(other.jcbEnabled, jcbEnabled));
   }
 
   @JsonKey(ignore: true)
@@ -709,7 +1408,8 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
       const DeepCollectionEquality().hash(currency),
       const DeepCollectionEquality().hash(_requiredShippingAddressFields),
       const DeepCollectionEquality().hash(_requiredBillingContactFields),
-      const DeepCollectionEquality().hash(_shippingMethods));
+      const DeepCollectionEquality().hash(_shippingMethods),
+      const DeepCollectionEquality().hash(jcbEnabled));
 
   @JsonKey(ignore: true)
   @override
@@ -725,13 +1425,13 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
 
 abstract class _ApplePayPresentParams implements ApplePayPresentParams {
   const factory _ApplePayPresentParams(
-          {required final List<ApplePayCartSummaryItem> cartItems,
-          required final String country,
-          required final String currency,
-          final List<ApplePayContactFieldsType>? requiredShippingAddressFields,
-          final List<ApplePayContactFieldsType>? requiredBillingContactFields,
-          final List<ApplePayShippingMethod>? shippingMethods}) =
-      _$_ApplePayPresentParams;
+      {required final List<ApplePayCartSummaryItem> cartItems,
+      required final String country,
+      required final String currency,
+      final List<ApplePayContactFieldsType>? requiredShippingAddressFields,
+      final List<ApplePayContactFieldsType>? requiredBillingContactFields,
+      final List<ApplePayShippingMethod>? shippingMethods,
+      final bool jcbEnabled}) = _$_ApplePayPresentParams;
 
   factory _ApplePayPresentParams.fromJson(Map<String, dynamic> json) =
       _$_ApplePayPresentParams.fromJson;
@@ -766,6 +1466,10 @@ abstract class _ApplePayPresentParams implements ApplePayPresentParams {
   /// List of available shipping methods for goods.
   List<ApplePayShippingMethod>? get shippingMethods =>
       throw _privateConstructorUsedError;
+  @override
+
+  /// Add support for jcb as additional payment method.
+  bool get jcbEnabled => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_ApplePayPresentParamsCopyWith<_$_ApplePayPresentParams> get copyWith =>

@@ -70,11 +70,11 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreenWithCustomFlow> {
           customerEphemeralKeySecret: data['ephemeralKey'],
           customerId: data['customer'],
           // Extra options
-          testEnv: true,
-          applePay: true,
-          googlePay: true,
+          applePay: PaymentSheetApplePay(
+            merchantCountryCode: 'DE',
+          ),
+          googlePay: PaymentSheetGooglePay(merchantCountryCode: 'DE'),
           style: ThemeMode.dark,
-          merchantCountryCode: 'DE',
         ),
       );
       setState(() {

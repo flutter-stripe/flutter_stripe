@@ -32,27 +32,73 @@ const _$ApplePayShippingMethodTypeEnumMap = {
   ApplePayShippingMethodType.pending: 'pending',
 };
 
-_$_ApplePayCartSummaryItem _$$_ApplePayCartSummaryItemFromJson(
+_$_ImmediateCartSummaryItem _$$_ImmediateCartSummaryItemFromJson(
         Map<String, dynamic> json) =>
-    _$_ApplePayCartSummaryItem(
+    _$_ImmediateCartSummaryItem(
       label: json['label'] as String,
       amount: json['amount'] as String,
-      type:
-          $enumDecodeNullable(_$ApplePaySummaryItemTypeEnumMap, json['type']) ??
-              ApplePaySummaryItemType.fixed,
+      isPending: json['isPending'] as bool?,
+      $type: json['paymentType'] as String?,
     );
 
-Map<String, dynamic> _$$_ApplePayCartSummaryItemToJson(
-        _$_ApplePayCartSummaryItem instance) =>
+Map<String, dynamic> _$$_ImmediateCartSummaryItemToJson(
+        _$_ImmediateCartSummaryItem instance) =>
     <String, dynamic>{
       'label': instance.label,
       'amount': instance.amount,
-      'type': _$ApplePaySummaryItemTypeEnumMap[instance.type],
+      'isPending': instance.isPending,
+      'paymentType': instance.$type,
     };
 
-const _$ApplePaySummaryItemTypeEnumMap = {
-  ApplePaySummaryItemType.fixed: 'fixed',
-  ApplePaySummaryItemType.pending: 'pending',
+_$_DeferredSummaryItem _$$_DeferredSummaryItemFromJson(
+        Map<String, dynamic> json) =>
+    _$_DeferredSummaryItem(
+      label: json['label'] as String,
+      amount: json['amount'] as String,
+      deferredDate: json['deferredDate'] as int,
+      $type: json['paymentType'] as String?,
+    );
+
+Map<String, dynamic> _$$_DeferredSummaryItemToJson(
+        _$_DeferredSummaryItem instance) =>
+    <String, dynamic>{
+      'label': instance.label,
+      'amount': instance.amount,
+      'deferredDate': instance.deferredDate,
+      'paymentType': instance.$type,
+    };
+
+_$_RecurringCartSummaryItem _$$_RecurringCartSummaryItemFromJson(
+        Map<String, dynamic> json) =>
+    _$_RecurringCartSummaryItem(
+      label: json['label'] as String,
+      amount: json['amount'] as String,
+      intervalUnit:
+          $enumDecode(_$ApplePayIntervalUnitEnumMap, json['intervalUnit']),
+      intervalCount: json['intervalCount'] as int,
+      startDate: json['startDate'] as int?,
+      number: json['number'] as int?,
+      $type: json['paymentType'] as String?,
+    );
+
+Map<String, dynamic> _$$_RecurringCartSummaryItemToJson(
+        _$_RecurringCartSummaryItem instance) =>
+    <String, dynamic>{
+      'label': instance.label,
+      'amount': instance.amount,
+      'intervalUnit': _$ApplePayIntervalUnitEnumMap[instance.intervalUnit],
+      'intervalCount': instance.intervalCount,
+      'startDate': instance.startDate,
+      'number': instance.number,
+      'paymentType': instance.$type,
+    };
+
+const _$ApplePayIntervalUnitEnumMap = {
+  ApplePayIntervalUnit.minute: 'minute',
+  ApplePayIntervalUnit.hour: 'hour',
+  ApplePayIntervalUnit.day: 'day',
+  ApplePayIntervalUnit.month: 'month',
+  ApplePayIntervalUnit.year: 'year',
 };
 
 _$_ApplePayPresentParams _$$_ApplePayPresentParamsFromJson(
@@ -76,6 +122,7 @@ _$_ApplePayPresentParams _$$_ApplePayPresentParamsFromJson(
           ?.map(
               (e) => ApplePayShippingMethod.fromJson(e as Map<String, dynamic>))
           .toList(),
+      jcbEnabled: json['jcbEnabled'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$_ApplePayPresentParamsToJson(
@@ -92,6 +139,7 @@ Map<String, dynamic> _$$_ApplePayPresentParamsToJson(
           .toList(),
       'shippingMethods':
           instance.shippingMethods?.map((e) => e.toJson()).toList(),
+      'jcbEnabled': instance.jcbEnabled,
     };
 
 const _$ApplePayContactFieldsTypeEnumMap = {

@@ -2694,6 +2694,8 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
       return _PaymentMethodParamsGiroPay.fromJson(json);
     case 'Eps':
       return _PaymentMethodParamsEps.fromJson(json);
+    case 'Affirm':
+      return _PaymentMethodParamsAffirm.fromJson(json);
     case 'GrabPay':
       return _PaymentMethodParamsPay.fromJson(json);
     case 'P24':
@@ -2743,6 +2745,7 @@ mixin _$PaymentMethodParams {
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
     required TResult Function(PaymentMethodData paymentMethodData) giroPay,
     required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
@@ -2776,6 +2779,7 @@ mixin _$PaymentMethodParams {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -2808,6 +2812,7 @@ mixin _$PaymentMethodParams {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -2837,6 +2842,7 @@ mixin _$PaymentMethodParams {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -2863,6 +2869,7 @@ mixin _$PaymentMethodParams {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -2888,6 +2895,7 @@ mixin _$PaymentMethodParams {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -3051,6 +3059,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
     required TResult Function(PaymentMethodData paymentMethodData) giroPay,
     required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
@@ -3087,6 +3096,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -3122,6 +3132,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -3157,6 +3168,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -3186,6 +3198,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -3214,6 +3227,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -3392,6 +3406,7 @@ class _$_PaymentMethodParamsCardWithToken
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
     required TResult Function(PaymentMethodData paymentMethodData) giroPay,
     required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
@@ -3428,6 +3443,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -3463,6 +3479,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -3498,6 +3515,7 @@ class _$_PaymentMethodParamsCardWithToken
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -3527,6 +3545,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -3555,6 +3574,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -3738,6 +3758,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
     required TResult Function(PaymentMethodData paymentMethodData) giroPay,
     required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
@@ -3774,6 +3795,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -3809,6 +3831,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -3844,6 +3867,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -3873,6 +3897,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -3901,6 +3926,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -4054,6 +4080,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
     required TResult Function(PaymentMethodData paymentMethodData) giroPay,
     required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
@@ -4090,6 +4117,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -4125,6 +4153,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -4160,6 +4189,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -4189,6 +4219,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -4217,6 +4248,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -4362,6 +4394,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
     required TResult Function(PaymentMethodData paymentMethodData) giroPay,
     required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
@@ -4398,6 +4431,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -4433,6 +4467,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -4468,6 +4503,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -4497,6 +4533,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -4525,6 +4562,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -4672,6 +4710,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
     required TResult Function(PaymentMethodData paymentMethodData) giroPay,
     required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
@@ -4708,6 +4747,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -4743,6 +4783,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -4778,6 +4819,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -4807,6 +4849,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -4835,6 +4878,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -4983,6 +5027,7 @@ class _$_PaymentMethodParamsBankContact
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
     required TResult Function(PaymentMethodData paymentMethodData) giroPay,
     required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
@@ -5019,6 +5064,7 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -5054,6 +5100,7 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -5089,6 +5136,7 @@ class _$_PaymentMethodParamsBankContact
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -5118,6 +5166,7 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -5146,6 +5195,7 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -5291,6 +5341,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
     required TResult Function(PaymentMethodData paymentMethodData) giroPay,
     required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
@@ -5327,6 +5378,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -5362,6 +5414,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -5397,6 +5450,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -5426,6 +5480,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -5454,6 +5509,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -5597,6 +5653,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
     required TResult Function(PaymentMethodData paymentMethodData) giroPay,
     required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
@@ -5633,6 +5690,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -5668,6 +5726,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -5703,6 +5762,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -5732,6 +5792,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -5760,6 +5821,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -5798,6 +5860,320 @@ abstract class _PaymentMethodParamsEps implements PaymentMethodParams {
   @JsonKey(ignore: true)
   _$$_PaymentMethodParamsEpsCopyWith<_$_PaymentMethodParamsEps> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_PaymentMethodParamsAffirmCopyWith<$Res> {
+  factory _$$_PaymentMethodParamsAffirmCopyWith(
+          _$_PaymentMethodParamsAffirm value,
+          $Res Function(_$_PaymentMethodParamsAffirm) then) =
+      __$$_PaymentMethodParamsAffirmCopyWithImpl<$Res>;
+  $Res call({PaymentMethodData paymentMethodData});
+
+  $PaymentMethodDataCopyWith<$Res> get paymentMethodData;
+}
+
+/// @nodoc
+class __$$_PaymentMethodParamsAffirmCopyWithImpl<$Res>
+    extends _$PaymentMethodParamsCopyWithImpl<$Res>
+    implements _$$_PaymentMethodParamsAffirmCopyWith<$Res> {
+  __$$_PaymentMethodParamsAffirmCopyWithImpl(
+      _$_PaymentMethodParamsAffirm _value,
+      $Res Function(_$_PaymentMethodParamsAffirm) _then)
+      : super(_value, (v) => _then(v as _$_PaymentMethodParamsAffirm));
+
+  @override
+  _$_PaymentMethodParamsAffirm get _value =>
+      super._value as _$_PaymentMethodParamsAffirm;
+
+  @override
+  $Res call({
+    Object? paymentMethodData = freezed,
+  }) {
+    return _then(_$_PaymentMethodParamsAffirm(
+      paymentMethodData: paymentMethodData == freezed
+          ? _value.paymentMethodData
+          : paymentMethodData // ignore: cast_nullable_to_non_nullable
+              as PaymentMethodData,
+    ));
+  }
+
+  @override
+  $PaymentMethodDataCopyWith<$Res> get paymentMethodData {
+    return $PaymentMethodDataCopyWith<$Res>(_value.paymentMethodData, (value) {
+      return _then(_value.copyWith(paymentMethodData: value));
+    });
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_PaymentMethodParamsAffirm implements _PaymentMethodParamsAffirm {
+  const _$_PaymentMethodParamsAffirm(
+      {required this.paymentMethodData, final String? $type})
+      : $type = $type ?? 'Affirm';
+
+  factory _$_PaymentMethodParamsAffirm.fromJson(Map<String, dynamic> json) =>
+      _$$_PaymentMethodParamsAffirmFromJson(json);
+
+  /// Paymentmethod data for this paymentmethod.
+  @override
+  final PaymentMethodData paymentMethodData;
+
+  @JsonKey(name: 'paymentMethodType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'PaymentMethodParams.affirm(paymentMethodData: $paymentMethodData)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentMethodParamsAffirm &&
+            const DeepCollectionEquality()
+                .equals(other.paymentMethodData, paymentMethodData));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(paymentMethodData));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_PaymentMethodParamsAffirmCopyWith<_$_PaymentMethodParamsAffirm>
+      get copyWith => __$$_PaymentMethodParamsAffirmCopyWithImpl<
+          _$_PaymentMethodParamsAffirm>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)
+        card,
+    required TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
+            PaymentMethodOptions? options)
+        cardFromToken,
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)
+        cardFromMethodId,
+    required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
+    required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
+    required TResult Function(PaymentMethodData paymentMethodData) bancontact,
+    required TResult Function(PaymentMethodData paymentMethodData) giroPay,
+    required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
+    required TResult Function(PaymentMethodData paymentMethodData) grabPay,
+    required TResult Function(PaymentMethodData paymentMethodData) p24,
+    required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
+        sepaDebit,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
+    required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
+        afterpayClearpay,
+    required TResult Function(PaymentMethodData paymentMethodData) oxxo,
+    required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)
+        usBankAccount,
+  }) {
+    return affirm(paymentMethodData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
+        card,
+    TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
+            PaymentMethodOptions? options)?
+        cardFromToken,
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
+        cardFromMethodId,
+    TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
+    TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
+    TResult Function(PaymentMethodData paymentMethodData)? bancontact,
+    TResult Function(PaymentMethodData paymentMethodData)? giroPay,
+    TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
+    TResult Function(PaymentMethodData paymentMethodData)? grabPay,
+    TResult Function(PaymentMethodData paymentMethodData)? p24,
+    TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
+    TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
+        afterpayClearpay,
+    TResult Function(PaymentMethodData paymentMethodData)? oxxo,
+    TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
+  }) {
+    return affirm?.call(paymentMethodData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            PaymentMethodData paymentMethodData, PaymentMethodOptions? options)?
+        card,
+    TResult Function(PaymentMethodDataCardFromToken paymentMethodData,
+            PaymentMethodOptions? options)?
+        cardFromToken,
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData,
+            PaymentMethodOptions? options)?
+        cardFromMethodId,
+    TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
+    TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
+    TResult Function(PaymentMethodData paymentMethodData)? bancontact,
+    TResult Function(PaymentMethodData paymentMethodData)? giroPay,
+    TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
+    TResult Function(PaymentMethodData paymentMethodData)? grabPay,
+    TResult Function(PaymentMethodData paymentMethodData)? p24,
+    TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
+    TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
+        afterpayClearpay,
+    TResult Function(PaymentMethodData paymentMethodData)? oxxo,
+    TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData,
+            PaymentMethodOptions? options)?
+        usBankAccount,
+    required TResult orElse(),
+  }) {
+    if (affirm != null) {
+      return affirm(paymentMethodData);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentMethodParamsCard value) card,
+    required TResult Function(_PaymentMethodParamsCardWithToken value)
+        cardFromToken,
+    required TResult Function(_PaymentMethodParamsCardWithMethodId value)
+        cardFromMethodId,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
+    required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
+    required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
+    required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
+    required TResult Function(_PaymentMethodParamsPay value) grabPay,
+    required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
+    required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsSofort value) sofort,
+    required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
+        afterpayClearpay,
+    required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
+  }) {
+    return affirm(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
+    TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
+    TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
+    TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
+    TResult Function(_PaymentMethodParamsPay value)? grabPay,
+    TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
+    TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsSofort value)? sofort,
+    TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
+        afterpayClearpay,
+    TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+  }) {
+    return affirm?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
+    TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
+    TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
+    TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
+    TResult Function(_PaymentMethodParamsPay value)? grabPay,
+    TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
+    TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsSofort value)? sofort,
+    TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
+        afterpayClearpay,
+    TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    required TResult orElse(),
+  }) {
+    if (affirm != null) {
+      return affirm(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentMethodParamsAffirmToJson(this);
+  }
+}
+
+abstract class _PaymentMethodParamsAffirm implements PaymentMethodParams {
+  const factory _PaymentMethodParamsAffirm(
+          {required final PaymentMethodData paymentMethodData}) =
+      _$_PaymentMethodParamsAffirm;
+
+  factory _PaymentMethodParamsAffirm.fromJson(Map<String, dynamic> json) =
+      _$_PaymentMethodParamsAffirm.fromJson;
+
+  /// Paymentmethod data for this paymentmethod.
+  PaymentMethodData get paymentMethodData => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$_PaymentMethodParamsAffirmCopyWith<_$_PaymentMethodParamsAffirm>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -5903,6 +6279,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
     required TResult Function(PaymentMethodData paymentMethodData) giroPay,
     required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
@@ -5939,6 +6316,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -5974,6 +6352,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -6009,6 +6388,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -6038,6 +6418,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -6066,6 +6447,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -6209,6 +6591,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
     required TResult Function(PaymentMethodData paymentMethodData) giroPay,
     required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
@@ -6245,6 +6628,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -6280,6 +6664,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -6315,6 +6700,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -6344,6 +6730,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -6372,6 +6759,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -6516,6 +6904,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
     required TResult Function(PaymentMethodData paymentMethodData) giroPay,
     required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
@@ -6552,6 +6941,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -6587,6 +6977,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -6622,6 +7013,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -6651,6 +7043,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -6679,6 +7072,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -6826,6 +7220,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
     required TResult Function(PaymentMethodData paymentMethodData) giroPay,
     required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
@@ -6862,6 +7257,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -6897,6 +7293,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -6932,6 +7329,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -6961,6 +7359,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -6989,6 +7388,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -7135,6 +7535,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
     required TResult Function(PaymentMethodData paymentMethodData) giroPay,
     required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
@@ -7171,6 +7572,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -7206,6 +7608,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -7241,6 +7644,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -7270,6 +7674,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -7298,6 +7703,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -7447,6 +7853,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
     required TResult Function(PaymentMethodData paymentMethodData) giroPay,
     required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
@@ -7483,6 +7890,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -7518,6 +7926,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -7553,6 +7962,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -7582,6 +7992,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -7610,6 +8021,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -7757,6 +8169,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
     required TResult Function(PaymentMethodData paymentMethodData) giroPay,
     required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
@@ -7793,6 +8206,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -7828,6 +8242,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -7863,6 +8278,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -7892,6 +8308,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -7920,6 +8337,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -8068,6 +8486,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
     required TResult Function(PaymentMethodData paymentMethodData) giroPay,
     required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
@@ -8104,6 +8523,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -8139,6 +8559,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -8174,6 +8595,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -8203,6 +8625,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -8231,6 +8654,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -8382,6 +8806,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
     required TResult Function(PaymentMethodData paymentMethodData) giroPay,
     required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
@@ -8418,6 +8843,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -8453,6 +8879,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -8488,6 +8915,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -8517,6 +8945,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -8545,6 +8974,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -8723,6 +9153,7 @@ class _$_PaymentMethodParamsUsBankAccount
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
     required TResult Function(PaymentMethodData paymentMethodData) giroPay,
     required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
     required TResult Function(PaymentMethodData paymentMethodData) grabPay,
     required TResult Function(PaymentMethodData paymentMethodData) p24,
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
@@ -8759,6 +9190,7 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -8794,6 +9226,7 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
     TResult Function(PaymentMethodData paymentMethodData)? giroPay,
     TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
     TResult Function(PaymentMethodData paymentMethodData)? grabPay,
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
@@ -8829,6 +9262,7 @@ class _$_PaymentMethodParamsUsBankAccount
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
     required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
     required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
     required TResult Function(_PaymentMethodParamsPay value) grabPay,
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
@@ -8858,6 +9292,7 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
@@ -8886,6 +9321,7 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
     TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
     TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
     TResult Function(_PaymentMethodParamsPay value)? grabPay,
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,

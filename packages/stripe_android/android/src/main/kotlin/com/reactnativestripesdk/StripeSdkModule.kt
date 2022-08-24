@@ -10,9 +10,12 @@ import com.facebook.react.module.annotations.ReactModule
 import com.flutter.stripe.getCurrentActivityOrResolveWithError
 import com.flutter.stripe.invoke
 import com.reactnativestripesdk.pushprovisioning.PushProvisioningProxy
+import com.reactnativestripesdk.utils.*
+import com.reactnativestripesdk.utils.createError
+import com.reactnativestripesdk.utils.createMissingActivityError
 import com.stripe.android.*
-import com.stripe.android.core.AppInfo
 import com.stripe.android.core.ApiVersion
+import com.stripe.android.core.AppInfo
 import com.stripe.android.model.*
 import com.stripe.android.payments.bankaccount.CollectBankAccountConfiguration
 import com.stripe.android.view.AddPaymentMethodActivityStarter
@@ -175,7 +178,7 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
           )
         } else {
           Log.e("StripeReactNative", "FPX payment failed. Promise and/or client secret is not set.")
-          confirmPromise?.resolve(createError(ConfirmPaymentErrorType.Failed.toString(), "FPX payment failed."))
+          confirmPromise?.resolve(createError(ConfirmPaymentErrorType.Failed.toString(), "FPX payment failed. Client secret is not set."))
         }
       }
       is AddPaymentMethodActivityStarter.Result.Failure -> {
@@ -191,27 +194,30 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
 
   @ReactMethod
   fun createPaymentMethod(data: ReadableMap, options: ReadableMap, promise: Promise) {
-    val cardParams = (cardFieldView?.cardParams ?: cardFormView?.cardParams) ?: run {
-      promise.resolve(createError("Failed", "Card details not complete"))
+    val paymentMethodType = getValOr(data, "paymentMethodType")?.let { mapToPaymentMethodType(it) } ?: run {
+      promise.resolve(createError(ConfirmPaymentErrorType.Failed.toString(), "You must provide paymentMethodType"))
       return
     }
-    val cardAddress = cardFieldView?.cardAddress ?: cardFormView?.cardAddress
     val paymentMethodData = getMapOrNull(data, "paymentMethodData")
-    val billingDetailsParams = mapToBillingDetails(getMapOrNull(paymentMethodData, "billingDetails"), cardAddress)
+    val factory = PaymentMethodCreateParamsFactory(paymentMethodData, options, cardFieldView, cardFormView)
+    try {
+      val paymentMethodCreateParams = factory.createPaymentMethodParams(paymentMethodType)
+      stripe.createPaymentMethod(
+        paymentMethodCreateParams,
+        callback = object : ApiResultCallback<PaymentMethod> {
+          override fun onError(e: Exception) {
+            promise.resolve(createError("Failed", e))
+          }
 
-    val paymentMethodCreateParams = PaymentMethodCreateParams.create(cardParams, billingDetailsParams)
-    stripe.createPaymentMethod(
-      paymentMethodCreateParams,
-      callback = object : ApiResultCallback<PaymentMethod> {
-        override fun onError(e: Exception) {
-          promise.resolve(createError("Failed", e))
+          override fun onSuccess(result: PaymentMethod) {
+            val paymentMethodMap: WritableMap = mapFromPaymentMethod(result)
+            promise.resolve(createResult("paymentMethod", paymentMethodMap))
+          }
         }
-
-        override fun onSuccess(result: PaymentMethod) {
-          val paymentMethodMap: WritableMap = mapFromPaymentMethod(result)
-          promise.resolve(createResult("paymentMethod", paymentMethodMap))
-        }
-      })
+      )
+    } catch (error: PaymentMethodCreateParamsException) {
+      promise.resolve(createError(ConfirmPaymentErrorType.Failed.toString(), error))
+    }
   }
 
   @ReactMethod
@@ -389,10 +395,10 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
 //      return
 //    }
 
-    val factory = PaymentMethodCreateParamsFactory(paymentIntentClientSecret, paymentMethodData, options, cardFieldView, cardFormView)
+    val factory = PaymentMethodCreateParamsFactory(paymentMethodData, options, cardFieldView, cardFormView)
 
     try {
-      val confirmParams = factory.createConfirmParams(paymentMethodType)
+      val confirmParams = factory.createParams(paymentIntentClientSecret, paymentMethodType, isPaymentIntent = true) as ConfirmPaymentIntentParams
       urlScheme?.let {
         confirmParams.returnUrl = mapToReturnURL(urlScheme)
       }
@@ -442,10 +448,10 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
       return
     }
 
-    val factory = PaymentMethodCreateParamsFactory(setupIntentClientSecret, getMapOrNull(params, "paymentMethodData"), options, cardFieldView, cardFormView)
+    val factory = PaymentMethodCreateParamsFactory(getMapOrNull(params, "paymentMethodData"), options, cardFieldView, cardFormView)
 
     try {
-      val confirmParams = factory.createSetupParams(paymentMethodType)
+      val confirmParams = factory.createParams(setupIntentClientSecret, paymentMethodType, isPaymentIntent = false) as ConfirmSetupIntentParams
       urlScheme?.let {
         confirmParams.returnUrl = mapToReturnURL(urlScheme)
       }
@@ -546,12 +552,13 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
 
     getCurrentActivityOrResolveWithError(promise)?.let {
       PushProvisioningProxy.isCardInWallet(it, last4) { isCardInWallet, token, error ->
-        if (error != null) {
-          promise.resolve(createCanAddCardResult(false, "MISSING_CONFIGURATION", null))
-        } else {
+        val result = error?.let {
+          createCanAddCardResult(false, "MISSING_CONFIGURATION", null)
+        } ?: run {
           val status = if (isCardInWallet) "CARD_ALREADY_EXISTS" else null
-          promise.resolve(createCanAddCardResult(!isCardInWallet, status, token))
+          createCanAddCardResult(!isCardInWallet, status, token)
         }
+        promise.resolve(result)
       }
     }
   }
@@ -564,14 +571,13 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
     }
     getCurrentActivityOrResolveWithError(promise)?.let {
       PushProvisioningProxy.isCardInWallet(it, last4) { isCardInWallet, token, error ->
-        if (error != null) {
-          promise.resolve(error)
-        } else {
-          val result = WritableNativeMap()
-          result.putBoolean("isInWallet", isCardInWallet)
-          result.putMap("token", token)
-          promise.resolve(result)
+        val result: WritableMap = error ?: run {
+          val map = WritableNativeMap()
+          map.putBoolean("isInWallet", isCardInWallet)
+          map.putMap("token", token)
+          map
         }
+        promise.resolve(result)
       }
     }
   }
@@ -636,6 +642,7 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
         promise.resolve(createResult("paymentIntent", mapFromPaymentIntentResult(result)))
       }
     }
+
     val setupCallback = object : ApiResultCallback<SetupIntent> {
       override fun onError(e: Exception) {
         promise.resolve(createError(ErrorType.Failed.toString(), e))

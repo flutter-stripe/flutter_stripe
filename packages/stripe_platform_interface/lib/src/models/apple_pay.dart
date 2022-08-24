@@ -34,15 +34,6 @@ enum ApplePayContactFieldsType {
   postalAddress
 }
 
-/// The summary item’s type indicating whether or not the amount is final.
-enum ApplePaySummaryItemType {
-  /// amount is final
-  fixed,
-
-  /// amount is pending
-  pending
-}
-
 @freezed
 
 ///
@@ -60,25 +51,68 @@ class ApplePayShippingMethod with _$ApplePayShippingMethod {
       _$ApplePayShippingMethodFromJson(json);
 }
 
-@freezed
+@Freezed(unionKey: 'paymentType')
 
 /// Object that can be used to explain the different charges on the Apple Pay sheet.
 class ApplePayCartSummaryItem with _$ApplePayCartSummaryItem {
   @JsonSerializable(explicitToJson: true)
-  const factory ApplePayCartSummaryItem({
+  @FreezedUnionValue('Immediate')
+
+  /// Use this type for payments that will occur immediately.
+  const factory ApplePayCartSummaryItem.immediate({
     /// Short localized description of the item.
     required String label,
 
     /// The monetary amount.
     required String amount,
 
-    /// The type of summary item
-    @Default(ApplePaySummaryItemType.fixed) ApplePaySummaryItemType type,
-  }) = _ApplePayCartSummaryItem;
+    /// When creating items for estimates or charges whose final value is not yet known, set this to true.
+    bool? isPending,
+  }) = _ImmediateCartSummaryItem;
+
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('Deferred')
+
+  ///  Use this type for a payment that occurs in the future, such as a pre-order. Only available on iOS 15 and up, otherwise falls back to ImmediateCartSummaryItem
+  const factory ApplePayCartSummaryItem.deferred({
+    /// Short localized description of the item.
+    required String label,
+
+    /// The monetary amount.
+    required String amount,
+
+    /// The unix timestamp of the date, in the future, of the payment. Measured in seconds.
+    required int deferredDate,
+  }) = _DeferredSummaryItem;
+
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('Recurring')
+
+  ///  Use this type for payments that occur more than once, such as a subscription. Only available on iOS 15 and up, otherwise falls back to ImmediateCartSummaryItem
+  const factory ApplePayCartSummaryItem.recurring({
+    /// Short localized description of the item.
+    required String label,
+
+    /// The monetary amount.
+    required String amount,
+
+    /// The amount of time – in calendar units such as day, month, or year – that represents a fraction of the total payment interval. For example, if you set the intervalUnit to 'month' and intervalCount to 3, then the payment interval is three months.
+    required ApplePayIntervalUnit intervalUnit,
+
+    /// The number of interval units that make up the total payment interval. For example, if you set the intervalUnit to 'month' and intervalCount to 3, then the payment interval is three months.
+    required int intervalCount,
+
+    /// The unix timestamp of the start date. Measured in seconds.
+    int? startDate,
+    ////The unix timestamp of the end date. Measured in seconds. */
+    int? number,
+  }) = _RecurringCartSummaryItem;
 
   factory ApplePayCartSummaryItem.fromJson(Map<String, dynamic> json) =>
       _$ApplePayCartSummaryItemFromJson(json);
 }
+
+enum ApplePayIntervalUnit { minute, hour, day, month, year }
 
 @freezed
 class ApplePayPresentParams with _$ApplePayPresentParams {
@@ -103,6 +137,9 @@ class ApplePayPresentParams with _$ApplePayPresentParams {
 
     /// List of available shipping methods for goods.
     List<ApplePayShippingMethod>? shippingMethods,
+
+    /// Add support for jcb as additional payment method.
+    @Default(false) bool jcbEnabled,
   }) = _ApplePayPresentParams;
 
   factory ApplePayPresentParams.fromJson(Map<String, dynamic> json) =>
