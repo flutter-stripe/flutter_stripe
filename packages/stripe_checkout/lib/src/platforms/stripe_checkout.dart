@@ -112,7 +112,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         resizeToAvoidBottomInset: false,
         body: SafeArea(
           child: WebView(
-            initialUrl: '',
+            initialUrl: _baseUrl,
             javascriptMode: JavascriptMode.unrestricted,
             onWebViewCreated: (webViewController) {
               _webViewController = webViewController;
