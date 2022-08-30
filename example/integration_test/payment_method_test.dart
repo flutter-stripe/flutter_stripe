@@ -51,7 +51,7 @@ void main() {
         ),
       );
 
-      expect(paymentIntent.id, startsWith('pm_'));
+      expect(paymentIntent.id, startsWith('pi_'));
     });
 
     testWidgets('card confirm', (tester) async {
@@ -200,11 +200,9 @@ Future<Map<String, dynamic>> fetchPaymentIntentClientSecret() async {
       'Content-Type': 'application/json',
     },
     body: json.encode({
-      'email': 'test@stripe.com',
       'currency': 'usd',
-      'items': [
-        {'id': 'id'}
-      ],
+      'amount': 1099,
+      'payment_method_types': ['card'],
       'request_three_d_secure': 'any',
     }),
   );
