@@ -297,6 +297,10 @@ class StripeSdk: RCTEventEmitter, STPApplePayContextDelegate, STPBankSelectionVi
                 return STPSetupIntentConfirmParams(clientSecret: setupIntentClientSecret, paymentMethodType: .USBankAccount)
             } else {
                 let parameters = STPSetupIntentConfirmParams(clientSecret: setupIntentClientSecret)
+                if let paymentMethodId = paymentMethodData?["paymentMethodId"] as? String {
+                    parameters.paymentMethodID = paymentMethodId
+                    return parameters
+                }
                 let factory = PaymentMethodFactory.init(paymentMethodData: paymentMethodData, options: options, cardFieldView: cardFieldView, cardFormView: cardFormView)
                 do {
                     let paymentMethodParams = try factory.createParams(paymentMethodType: paymentMethodType)
