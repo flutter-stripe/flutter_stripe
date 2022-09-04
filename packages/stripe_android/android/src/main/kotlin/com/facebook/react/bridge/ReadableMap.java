@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * Created by FFuF, Jonas Bark on 2019-10-02.
  */
-public class ReadableMap {
+public class ReadableMap extends WritableMap {
 
     private JSONObject map;
 
@@ -99,8 +99,8 @@ public class ReadableMap {
         }
     }
 
-    public double getDouble(String key) {
-        return map.optDouble(key);
+    public float getDouble(String key) {
+        return (float) map.optDouble(key);
     }
 
     @Nullable

@@ -80,7 +80,6 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
       _$SetupPaymentSheetParametersFromJson(json);
 }
 
-
 /// Parameters related to the Payment sheet Apple Pay config.
 @freezed
 class PaymentSheetApplePay with _$PaymentSheetApplePay {
@@ -88,12 +87,10 @@ class PaymentSheetApplePay with _$PaymentSheetApplePay {
   const factory PaymentSheetApplePay({
     ///The two-letter ISO 3166 code of the country of your business, e.g. "US"
     required String merchantCountryCode,
-    
+
     ///An array of CartSummaryItem item objects that summarize the amount of the payment. If you're using a SetupIntent
-   /// for a recurring payment, you should set this to display the amount you intend to charge. 
+    /// for a recurring payment, you should set this to display the amount you intend to charge.
     List<ApplePayCartSummaryItem>? paymentSummaryItems,
-
-
   }) = _PaymentSheetApplePay;
 
   factory PaymentSheetApplePay.fromJson(Map<String, dynamic> json) =>
@@ -107,15 +104,12 @@ class PaymentSheetGooglePay with _$PaymentSheetGooglePay {
   const factory PaymentSheetGooglePay({
     ///The two-letter ISO 3166 code of the country of your business, e.g. "US"
     required String merchantCountryCode,
-    
-    /// The three-letter ISO 4217 alphabetic currency code, e.g. "USD" or "EUR". Required in order to support Google Pay when processing a Setup Intent. 
+
+    /// The three-letter ISO 4217 alphabetic currency code, e.g. "USD" or "EUR". Required in order to support Google Pay when processing a Setup Intent.
     String? currencyCode,
 
     /// Whether or not to use the google pay test environment.  Set to `true` until you have applied for and been granted access to the Production environment.
     @Default(false) bool testEnv,
-
-
-
   }) = _PaymentSheetGooglePay;
 
   factory PaymentSheetGooglePay.fromJson(Map<String, dynamic> json) =>
@@ -260,16 +254,16 @@ class PaymentSheetPrimaryButtonAppearance
 
     /// Shape params of the primary button
     PaymentSheetPrimaryButtonShape? shapes,
-
   }) = _PaymentSheetPrimaryButtonAppearance;
 
   factory PaymentSheetPrimaryButtonAppearance.fromJson(
           Map<String, dynamic> json) =>
       _$PaymentSheetPrimaryButtonAppearanceFromJson(json);
 }
+
 @freezed
 class PaymentSheetPrimaryButtonShape with _$PaymentSheetPrimaryButtonShape {
-    @JsonSerializable(explicitToJson: true)
+  @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetPrimaryButtonShape({
     /// Configuration of the primary button's shadow.
     PaymentSheetShadowParams? shadow,

@@ -195,26 +195,32 @@ Map<String, dynamic> _$$_CardDataToJson(_$_CardData instance) =>
 
 _$_BankAccount _$$_BankAccountFromJson(Map<String, dynamic> json) =>
     _$_BankAccount(
-      accountHolderType: $enumDecode(
+      id: json['id'] as String,
+      accountHolderType: $enumDecodeNullable(
           _$BankAccountHolderTypeEnumMap, json['accountHolderType']),
-      status: $enumDecode(_$BankAccountStatusEnumMap, json['status']),
       bankName: json['bankName'] as String?,
       accountHolderName: json['accountHolderName'] as String?,
       country: json['country'] as String?,
       currency: json['currency'] as String?,
       routingNumber: json['routingNumber'] as String?,
+      status: $enumDecodeNullable(_$BankAccountStatusEnumMap, json['status']),
+      fingerprint: json['fingerprint'] as String?,
+      last4: json['last4'] as String?,
     );
 
 Map<String, dynamic> _$$_BankAccountToJson(_$_BankAccount instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'accountHolderType':
           _$BankAccountHolderTypeEnumMap[instance.accountHolderType],
-      'status': _$BankAccountStatusEnumMap[instance.status],
       'bankName': instance.bankName,
       'accountHolderName': instance.accountHolderName,
       'country': instance.country,
       'currency': instance.currency,
       'routingNumber': instance.routingNumber,
+      'status': _$BankAccountStatusEnumMap[instance.status],
+      'fingerprint': instance.fingerprint,
+      'last4': instance.last4,
     };
 
 const _$BankAccountStatusEnumMap = {
