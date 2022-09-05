@@ -41,7 +41,7 @@ abstract class StripePlatform extends PlatformInterface {
 
   Future<PaymentIntent> handleNextAction(String paymentIntentClientSecret);
   Future<PaymentIntent> confirmPayment(
-      String paymentIntentClientSecret, PaymentMethodParams params,
+      String paymentIntentClientSecret, PaymentMethodParams? params,
       [Map<String, String> options = const {}]);
   Future<bool> isApplePaySupported() async => false;
 
@@ -93,6 +93,13 @@ abstract class StripePlatform extends PlatformInterface {
     required String clientSecret,
     required VerifyMicroDepositsParams params,
   });
+
+  /// Methods related to financial connections
+  Future<FinancialConnectionTokenResult> collectBankAccountToken(
+      {required String clientSecret});
+
+  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts(
+      {required String clientSecret});
 
   /// Updates the internal card details. This method will not validate the card
   /// information so you should validate the information yourself.

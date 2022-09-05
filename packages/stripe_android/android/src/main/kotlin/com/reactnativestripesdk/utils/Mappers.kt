@@ -217,12 +217,11 @@ internal fun mapFromBankAccountStatus(status: BankAccount.Status?): String {
 }
 
 internal fun mapFromBankAccount(bankAccount: BankAccount?): WritableMap? {
-  val bankAccountMap: WritableMap = WritableNativeMap()
-
   if (bankAccount == null) {
     return null
   }
 
+  val bankAccountMap: WritableMap = WritableNativeMap()
   bankAccountMap.putString("id", bankAccount.id)
   bankAccountMap.putString("bankName", bankAccount.bankName)
   bankAccountMap.putString("accountHolderName", bankAccount.accountHolderName)
@@ -231,6 +230,8 @@ internal fun mapFromBankAccount(bankAccount: BankAccount?): WritableMap? {
   bankAccountMap.putString("country", bankAccount.countryCode)
   bankAccountMap.putString("routingNumber", bankAccount.routingNumber)
   bankAccountMap.putString("status", mapFromBankAccountStatus(bankAccount.status))
+  bankAccountMap.putString("fingerprint", bankAccount.fingerprint)
+  bankAccountMap.putString("last4", bankAccount.last4)
 
   return bankAccountMap
 }
@@ -312,13 +313,13 @@ internal fun mapFromCard(card: Card?): WritableMap? {
 
 internal fun mapFromToken(token: Token): WritableMap {
   val tokenMap: WritableMap = WritableNativeMap()
-
   tokenMap.putString("id", token.id)
-  tokenMap.putString("created", token.created.time.toString())
+  tokenMap.putDouble("created", token.created.time.toDouble())
   tokenMap.putString("type", mapTokenType(token.type))
   tokenMap.putBoolean("livemode", token.livemode)
   tokenMap.putMap("bankAccount", mapFromBankAccount(token.bankAccount))
   tokenMap.putMap("card", mapFromCard(token.card))
+  tokenMap.putBoolean("used", token.used)
 
   return tokenMap
 }
@@ -844,7 +845,7 @@ fun toBundleObject(readableMap: ReadableMap?): Bundle {
       ReadableType.Number -> try {
         result.putInt(key, readableMap.getInt(key))
       } catch (e: Exception) {
-        result.putDouble(key, readableMap.getDouble(key))
+        result.putFloat(key, readableMap.getDouble(key))
       }
       ReadableType.String -> result.putString(key, readableMap.getString(key))
       ReadableType.Map -> result.putBundle(key, toBundleObject(readableMap.getMap(key)))

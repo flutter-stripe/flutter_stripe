@@ -1,0 +1,114 @@
+---
+title: Financial Connections
+description: Handling financial connections operations
+---
+
+# Stripe Financial connections (only available for us bank accounts)
+
+### Route payments between multiple parties
+
+To learn more about how it works read: [Official Stripe connect docs](https://stripe.com/docs/connect).
+
+
+## 1. Create 
+
+First, you need a Stripe account. [Register now](https://dashboard.stripe.com/register).
+
+#### Server-side
+
+This integration requires endpoints on your server that talk to the Stripe API. Use one official libraries for access to the Stripe API from your server. [Follow the steps to create an Financial account session here](https://stripe.com/docs/connect/collect-then-transfer-guide?platform=react-native&ui=payment-sheet#setup-server-side).
+
+#### Client-side
+
+The Flutter SDK is open source, fully documented.
+
+To install the SDK, follow these steps:
+ - Run the command `flutter pub add flutter_stripe`
+ - This will add a line like this to your project's pubspec.yaml with the latest package version
+
+
+For details on the latest SDK release and past versions, see the [Releases](https://github.com/flutter-stripe/flutter_stripe/releases) page on GitHub. To receive notifications when a new release is published, [watch releases for the repository](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/managing-subscriptions-for-activity-on-github/viewing-your-subscriptions#watching-releases-for-a-repository).
+
+
+When your app starts, configure the SDK with your Stripe [publishable key](https://dashboard.stripe.com/) so that it can make requests to the Stripe API. 
+
+```dart
+void main() async {
+  Stripe.publishableKey = stripePublishableKey;
+  runApp(const App());
+}
+```
+
+Use your [test mode](https://stripe.com/docs/keys#obtain-api-keys) keys while you test and develop, and your [live mode](https://stripe.com/docs/keys#test-live-modes) keys when you publish your app.
+
+## 2. Create an account holder. [Server Side]
+
+To attach data to an account holder you must first create one.  
+For detailed api instructions checkout the [official docs](https://stripe.com/docs/financial-connections/other-data-powered-products?platform=react-native#create-a-customer).
+
+
+## 3. Create a Financial connections session [Server Side]
+Before you can retrieve data from a user's bank account through Stripe financial connections, your user must authenticate their account with the authentication flow.
+
+[Click here to learn more how to setup a session](https://stripe.com/docs/financial-connections/other-data-powered-products?platform=react-native#create-a-session).
+
+## 4. Collect a financials account  [Client Side]
+
+On the client side you need to receive the sessionsecret in order to start the authorisation flow on the mobile. The example code looks like this:
+
+```dart
+ Future<void> _collectAccount(BuildContext context) async {
+    // Precondition:
+    // 1. Make sure to create a financial connection session on the backend and
+    // forward the client secret of the session to the app.
+    final result = await retrieveSessionClientSecret();
+    final clientSecret = await result['clientSecret'];
+
+    // 2. use the client secret to confirm the payment and handle the result.
+    try {
+      final result = await Stripe.instance.collectFinancialConnectionsAccounts(
+        clientSecret: clientSecret,
+      );
+
+      setState(() {
+        response = result.toString();
+      });
+    } on Exception catch (e) {
+      if (e is StripeException) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error from Stripe: ${e.error.localizedMessage}'),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Unforeseen error: ${e}'),
+          ),
+        );
+      }
+    }
+  }
+  
+  @override
+  Widget build(BuildContext context) {
+    return ExampleScaffold(
+      title: 'Financial connections',
+      tags: ['Financial connections'],
+      padding: EdgeInsets.all(16),
+      children: [
+        LoadingButton(
+          onPressed: () async {
+            await _collectAccount(context);
+          },
+          text: 'Collect financial account',
+        ),
+        Divider(),
+        SizedBox(height: 20),
+        ResponseCard(response: response),
+      ],
+    );
+  }
+```
+
+The `collectFinancialConnectionsAccounts` method from the Flutter Stripe sdk returns a future that completes when the users completes the modal authentication flow. The result is in case if success a `FinancialConnectionSessionResult` or in case of failure (or cancellation) a `StripeException`.
