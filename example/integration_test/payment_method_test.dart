@@ -1,10 +1,13 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
 import 'package:integration_test/integration_test.dart';
 
 import '.env.dart';
+import 'ip.dart';
 
 const billingDetails = BillingDetails(
   email: 'email@flutterstripe.com',
@@ -27,7 +30,31 @@ void main() {
   Stripe.urlScheme = 'flutterstripe';
 
   group('PaymentMethod', () {
-    testWidgets('card', (tester) async {
+    testWidgets('confirmPayment', (tester) async {
+      final clientSecret = await fetchPaymentIntentClientSecret();
+
+      await Stripe.instance.dangerouslyUpdateCardDetails(CardDetails(
+        number: '4242424242424242',
+        cvc: '424',
+        expirationMonth: 04,
+        expirationYear: 2025,
+      ));
+      final paymentIntent = await Stripe.instance.confirmPayment(
+        clientSecret['clientSecret'],
+        PaymentMethodParams.card(
+          paymentMethodData: PaymentMethodData(
+            billingDetails: billingDetails,
+          ),
+          options: PaymentMethodOptions(
+            setupFutureUsage: null,
+          ),
+        ),
+      );
+
+      expect(paymentIntent.id, startsWith('pi_'));
+    });
+
+    testWidgets('card confirm', (tester) async {
       await Stripe.instance.dangerouslyUpdateCardDetails(CardDetails(
         number: '4242424242424242',
         cvc: '424',
@@ -162,4 +189,22 @@ void main() {
       //  expect(paymentMethod.billingDetails.isEmpty, isTrue);
     });
   });
+}
+
+Future<Map<String, dynamic>> fetchPaymentIntentClientSecret() async {
+  final ipAddress = kApiUrl.split('\n').last.trim();
+  final url = Uri.parse('http://$ipAddress:4242/create-payment-intent');
+  final response = await http.post(
+    url,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: json.encode({
+      'currency': 'usd',
+      'amount': 1099,
+      'payment_method_types': ['card'],
+      'request_three_d_secure': 'any',
+    }),
+  );
+  return json.decode(response.body);
 }

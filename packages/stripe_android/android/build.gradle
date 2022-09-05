@@ -26,7 +26,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 32
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -41,8 +41,8 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
-    implementation 'com.stripe:stripe-android:20.4.+'
-    implementation "com.stripe:financial-connections:20.4.+"
+    implementation 'com.stripe:stripe-android:20.9.+'
+    implementation "com.stripe:financial-connections:20.9.+"
     implementation 'com.google.android.material:material:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
