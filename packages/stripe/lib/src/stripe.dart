@@ -26,8 +26,9 @@ class Stripe {
 
   /// Retrieves the publishable API key.
   static String get publishableKey {
-    assert(instance._publishableKey != null,
-        'A publishableKey is required and missing');
+    if(instance._publishableKey == null){
+      throw const StripeConfigException('Publishable key is not set');
+    }
     return instance._publishableKey!;
   }
 
