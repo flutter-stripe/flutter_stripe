@@ -88,6 +88,9 @@ Cardfield     | Medium        | Single line cardfield. Offers more flexibility b
 Card form     | Medium        | Simular as the cardfield but the entry fields are spread across multi lines                                      | [docs](https://docs.page/flutter-stripe/flutter_stripe/card_field)   |
 
 
+### Financial connections
+We also support Financial connections in our latest sdk. Check out the [docs](https://docs.page/flutter-stripe/flutter_stripe/financial_connections) to learn more on how to set it up.
+
 ## Stripe initialization
 
 To initialize Stripe in your Flutter app, use the `Stripe` base class.

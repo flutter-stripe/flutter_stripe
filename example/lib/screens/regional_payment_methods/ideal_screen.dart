@@ -43,8 +43,7 @@ class IdealScreen extends StatelessWidget {
       await Stripe.instance.confirmPayment(
         clientSecret,
         PaymentMethodParams.ideal(
-          paymentMethodData:
-              PaymentMethodDataIdeal(bankName: kIsWeb ? 'revolut' : null),
+          paymentMethodData: PaymentMethodDataIdeal(bankName: kIsWeb ? 'revolut' : null),
         ),
       );
 
@@ -57,7 +56,7 @@ class IdealScreen extends StatelessWidget {
       if (e is StripeException) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Error from Stripe: ${e.error.localizedMessage}'),
+            content: Text('Error from Stripe: ${e.error.localizedMessage ?? e.error.code}'),
           ),
         );
       } else {

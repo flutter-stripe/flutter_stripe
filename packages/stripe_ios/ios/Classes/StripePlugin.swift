@@ -99,6 +99,10 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
             return isCardInWallet(call, result: result)
         case "canAddCardToWallet":
             return canAddCardToWallet(call, result: result)
+        case "collectBankAccountToken":
+            return collectBankAccountToken(call, result: result)
+        case "collectFinancialConnectionsAccounts":
+            return collectFinancialConnectionsAccounts(call, result: result)
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -410,6 +414,28 @@ extension  StripePlugin {
             return
         }
         createToken(params: params,
+                    resolver: resolver(for: result),
+                    rejecter: rejecter(for: result))
+    }
+    
+    func collectBankAccountToken(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? FlutterMap,
+        let clientSecret = arguments["clientSecret"] as? String else {
+            result(FlutterError.invalidParams)
+            return
+        }
+        collectBankAccountToken(clientSecret: clientSecret,
+                    resolver: resolver(for: result),
+                    rejecter: rejecter(for: result))
+    }
+    
+    func collectFinancialConnectionsAccounts(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? FlutterMap,
+       let clientSecret = arguments["clientSecret"] as? String else {
+           result(FlutterError.invalidParams)
+           return
+       }
+        collectFinancialConnectionsAccounts(clientSecret: clientSecret,
                     resolver: resolver(for: result),
                     rejecter: rejecter(for: result))
     }

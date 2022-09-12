@@ -60,3 +60,4 @@ build/
 lcov.info
 
 **/pubspec.lock
+**/server/package-lock.json

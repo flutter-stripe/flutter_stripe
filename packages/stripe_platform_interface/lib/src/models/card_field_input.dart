@@ -53,7 +53,8 @@ class CardStyle with _$CardStyle {
         Color? placeholderColor,
   }) = _CardStyleConstructor;
 
-  factory CardStyle.fromJson(Map<String, dynamic> json) => _$CardStyleFromJson(json);
+  factory CardStyle.fromJson(Map<String, dynamic> json) =>
+      _$CardStyleFromJson(json);
 
   CardStyle._();
 
@@ -114,7 +115,8 @@ class CardFormStyle with _$CardFormStyle {
         Color? placeholderColor,
   }) = _CardFormStyleConstructor;
 
-  factory CardFormStyle.fromJson(Map<String, dynamic> json) => _$CardFormStyleFromJson(json);
+  factory CardFormStyle.fromJson(Map<String, dynamic> json) =>
+      _$CardFormStyleFromJson(json);
 
   CardFormStyle._();
 
@@ -150,7 +152,8 @@ class CardPlaceholder with _$CardPlaceholder {
     String? postalCode,
   }) = _CardPlaceholderConstructor;
 
-  factory CardPlaceholder.fromJson(Map<String, dynamic> json) => _$CardPlaceholderFromJson(json);
+  factory CardPlaceholder.fromJson(Map<String, dynamic> json) =>
+      _$CardPlaceholderFromJson(json);
 
   CardPlaceholder._();
 
@@ -209,16 +212,19 @@ class CardFieldInputDetails with _$CardFieldInputDetails {
     @Default(CardValidationState.Unknown) CardValidationState validNumber,
   }) = _CardFieldInputDetails;
 
-  factory CardFieldInputDetails.fromJson(Map<String, dynamic> json) => _$CardFieldInputDetailsFromJson(json);
+  factory CardFieldInputDetails.fromJson(Map<String, dynamic> json) =>
+      _$CardFieldInputDetailsFromJson(json);
 }
 
 /// Used to communicate with the card handler on the native platform side when focus changes.
 @freezed
 class CardFieldFocusName with _$CardFieldFocusName {
   @JsonSerializable(explicitToJson: true)
-  factory CardFieldFocusName({CardFieldName? focusedField}) = _CardFieldFocusName;
+  factory CardFieldFocusName({CardFieldName? focusedField}) =
+      _CardFieldFocusName;
 
-  factory CardFieldFocusName.fromJson(Map<String, dynamic> json) => _$CardFieldFocusNameFromJson(json);
+  factory CardFieldFocusName.fromJson(Map<String, dynamic> json) =>
+      _$CardFieldFocusNameFromJson(json);
 }
 
 /// Enum representing the different fiels on the card field.

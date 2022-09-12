@@ -26,8 +26,9 @@ class Stripe {
 
   /// Retrieves the publishable API key.
   static String get publishableKey {
-    assert(instance._publishableKey != null,
-        'A publishableKey is required and missing');
+    if(instance._publishableKey == null){
+      throw const StripeConfigException('Publishable key is not set');
+    }
     return instance._publishableKey!;
   }
 
@@ -249,7 +250,7 @@ class Stripe {
 
   Future<PaymentIntent> confirmPayment(
     String paymentIntentClientSecret,
-    PaymentMethodParams data, [
+    PaymentMethodParams? data, [
     Map<String, String> options = const {},
   ]) async {
     await _awaitForSettings();
@@ -329,7 +330,7 @@ class Stripe {
   Future<void> initPaymentSheet({
     required SetupPaymentSheetParameters paymentSheetParameters,
   }) async {
-    assert(!(paymentSheetParameters.applePay == true && instance._merchantIdentifier == null), 'merchantIdentifier must be specified if you are using Apple Pay. Please refer to this article to get a merchant identifier: https://support.stripe.com/questions/enable-apple-pay-on-your-stripe-account');
+    assert(!(paymentSheetParameters.applePay !=null && instance._merchantIdentifier == null), 'merchantIdentifier must be specified if you are using Apple Pay. Please refer to this article to get a merchant identifier: https://support.stripe.com/questions/enable-apple-pay-on-your-stripe-account');
     await _awaitForSettings();
     await _platform.initPaymentSheet(paymentSheetParameters);
   }
@@ -441,6 +442,39 @@ class Stripe {
   /// on this particular device.
   Future<AddToWalletResult> canAddToWallet(String last4) async {
     return await _platform.canAddToWallet(last4);
+  }
+
+  /// Call the financial connections authentication flow in order to collect a US bank account to enhance payouts.
+  ///
+  /// Needs `clientSecret` of the stripe financial connections sessions.
+  /// For more info see [Add a Financial Connections Account to a US Custom Connect](https://stripe.com/docs/financial-connections/connect-payouts).
+  ///
+  ///  Throws [StripeError] in case creating the token fails.
+
+  Future<FinancialConnectionTokenResult> collectBankAccountToken(
+      {required String clientSecret}) async {
+    try {
+      return _platform.collectBankAccountToken(clientSecret: clientSecret);
+    } on StripeError {
+      rethrow;
+    }
+  }
+
+  /// Call the financial connections authentication flow in order to collect the user account data.
+  ///
+  /// Needs `clientSecret` of the stripe financial connections sessions.
+  /// For more info see: [Collect an account to build data-powered products](https://stripe.com/docs/financial-connections/other-data-powered-products)
+  ///
+  /// Throws [StripeError] in case creating the token fails.
+
+  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts(
+      {required String clientSecret}) async {
+    try {
+      return _platform.collectFinancialConnectionsAccounts(
+          clientSecret: clientSecret);
+    } on StripeError {
+      rethrow;
+    }
   }
 
   FutureOr<void> _awaitForSettings() {

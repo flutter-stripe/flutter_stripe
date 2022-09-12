@@ -190,11 +190,11 @@ class CardData with _$CardData {
 /// Bank account data related to the token
 class BankAccount with _$BankAccount {
   const factory BankAccount({
-    /// Entity that is holder of the account.
-    required BankAccountHolderType accountHolderType,
+    /// Unique id for this bank account
+    required String id,
 
-    /// Status of the bank account.
-    required BankAccountStatus status,
+    /// Entity that is holder of the account.
+    BankAccountHolderType? accountHolderType,
 
     /// Name of the bank where the account is registered.
     String? bankName,
@@ -210,6 +210,17 @@ class BankAccount with _$BankAccount {
 
     /// The routing number of the bank account (e.g. needer for US accounts).
     String? routingNumber,
+
+    /// Status of the bank account.
+    BankAccountStatus? status,
+
+    /// Uniquely identifies the particular bank account.
+    ///
+    /// You can use this to check whether or not two bank accounts are the same.
+    String? fingerprint,
+
+    /// Last four numbers of the bank account number
+    String? last4,
   }) = _BankAccount;
 
   factory BankAccount.fromJson(Map<String, dynamic> json) =>

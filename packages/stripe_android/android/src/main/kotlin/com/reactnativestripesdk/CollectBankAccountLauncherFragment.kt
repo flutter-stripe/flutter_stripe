@@ -7,9 +7,13 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
+import com.reactnativestripesdk.utils.*
+import com.reactnativestripesdk.utils.createError
+import com.reactnativestripesdk.utils.createResult
+import com.reactnativestripesdk.utils.mapFromPaymentIntentResult
+import com.reactnativestripesdk.utils.mapFromSetupIntentResult
 import com.stripe.android.model.PaymentIntent
 import com.stripe.android.model.SetupIntent
 import com.stripe.android.model.StripeIntent
@@ -20,6 +24,7 @@ import com.stripe.android.payments.bankaccount.navigation.CollectBankAccountResu
 class CollectBankAccountLauncherFragment(
   private val context: ReactApplicationContext,
   private val publishableKey: String,
+  private val stripeAccountId: String?,
   private val clientSecret: String,
   private val isPaymentIntent: Boolean,
   private val collectParams:  CollectBankAccountConfiguration.USBankAccount,
@@ -44,12 +49,14 @@ class CollectBankAccountLauncherFragment(
     if (isPaymentIntent) {
       collectBankAccountLauncher.presentWithPaymentIntent(
         publishableKey,
+        stripeAccountId,
         clientSecret,
         collectParams
       )
     } else {
       collectBankAccountLauncher.presentWithSetupIntent(
         publishableKey,
+        stripeAccountId,
         clientSecret,
         collectParams
       )
@@ -79,7 +86,11 @@ class CollectBankAccountLauncherFragment(
           promise.resolve(createError(ErrorType.Failed.toString(), result.error))
         }
       }
-      context.currentActivity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commitAllowingStateLoss()
+      removeFragment(context)
     }
+  }
+
+  companion object {
+    const val TAG = "collect_bank_account_launcher_fragment"
   }
 }

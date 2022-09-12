@@ -8,6 +8,7 @@ export 'src/models/card_details.dart';
 export 'src/models/card_field_input.dart';
 export 'src/models/create_token_data.dart';
 export 'src/models/errors.dart';
+export 'src/models/financial_connections.dart';
 export 'src/models/google_pay.dart';
 export 'src/models/next_action.dart';
 export 'src/models/payment_intents.dart';
