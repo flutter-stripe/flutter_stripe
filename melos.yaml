@@ -1,4 +1,7 @@
 name: stripe
+command:
+  bootstrap:
+    usePubspecOverrides: true
 packages:
   - /**
 scripts:
