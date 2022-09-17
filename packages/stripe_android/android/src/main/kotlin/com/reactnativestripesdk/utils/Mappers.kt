@@ -845,7 +845,7 @@ fun toBundleObject(readableMap: ReadableMap?): Bundle {
       ReadableType.Number -> try {
         result.putInt(key, readableMap.getInt(key))
       } catch (e: Exception) {
-        result.putFloat(key, readableMap.getDouble(key))
+        result.putDouble(key, readableMap.getDouble(key))
       }
       ReadableType.String -> result.putString(key, readableMap.getString(key))
       ReadableType.Map -> result.putBundle(key, toBundleObject(readableMap.getMap(key)))

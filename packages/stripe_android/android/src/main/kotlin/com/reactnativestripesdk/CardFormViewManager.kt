@@ -73,9 +73,4 @@ class CardFormViewManager : SimpleViewManager<CardFormView>() {
     stripeSdkModule?.cardFormView = null
     reactContextRef = null
   }
-
-  fun getCardViewInstance(): CardFormView? {
-    val stripeSdkModule: StripeSdkModule? = reactContextRef?.getNativeModule(StripeSdkModule::class.java)
-    return stripeSdkModule?.cardFormView
-  }
 }

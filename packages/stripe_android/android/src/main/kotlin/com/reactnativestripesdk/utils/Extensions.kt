@@ -24,7 +24,7 @@ fun View.hideSoftKeyboard() {
 }
 
 fun Fragment.removeFragment(context: ReactApplicationContext) {
-  context.currentActivity.supportFragmentManager.let {
+  (context.currentActivity as? AppCompatActivity)?.supportFragmentManager?.let {
     if (it.findFragmentByTag(this.tag) != null) {
       it.beginTransaction().remove(this).commitAllowingStateLoss()
     }

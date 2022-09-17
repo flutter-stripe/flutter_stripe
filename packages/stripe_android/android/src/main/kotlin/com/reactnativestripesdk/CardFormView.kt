@@ -24,11 +24,9 @@ import com.stripe.android.model.Address
 import com.stripe.android.model.PaymentMethodCreateParams
 import com.stripe.android.view.CardFormView
 import com.stripe.android.view.CardInputListener
-import com.flutter.stripe.R
-
 
 class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
-  internal var cardForm: CardFormView = CardFormView(context, null, R.style.StripeCardFormView_Borderless)
+  private var cardForm: CardFormView = CardFormView(context, null, R.style.StripeCardFormView_Borderless)
   private var mEventDispatcher: EventDispatcher? = context.getNativeModule(UIManagerModule::class.java)?.eventDispatcher
   private var dangerouslyGetFullCardDetails: Boolean = false
   private var currentFocusedField: String? = null

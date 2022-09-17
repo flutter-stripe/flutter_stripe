@@ -6,7 +6,6 @@ import com.facebook.react.common.MapBuilder
 import com.facebook.react.uimanager.SimpleViewManager
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.annotations.ReactProp
-import com.stripe.android.model.PaymentMethodCreateParams
 
 class CardFieldViewManager : SimpleViewManager<CardFieldView>() {
   override fun getName() = "CardField"
@@ -73,25 +72,5 @@ class CardFieldViewManager : SimpleViewManager<CardFieldView>() {
     val stripeSdkModule: StripeSdkModule? = reactContextRef?.getNativeModule(StripeSdkModule::class.java)
     stripeSdkModule?.cardFieldView = null
     reactContextRef = null
-  }
-
-  fun getCardViewInstance(): CardFieldView? {
-    val stripeSdkModule: StripeSdkModule? = reactContextRef?.getNativeModule(StripeSdkModule::class.java)
-    return stripeSdkModule?.cardFieldView
-  }
-
-  fun setCardDetails(value: ReadableMap, reactContext: ThemedReactContext) {
-    val number = getValOr(value, "number", null)
-    val expirationYear = getIntOrNull(value, "expirationYear")
-    val expirationMonth = getIntOrNull(value, "expirationMonth")
-    val cvc = getValOr(value, "cvc", null)
-
-    val cardViewInstance = getCardViewInstance() ?: createViewInstance(reactContext)
-    cardViewInstance.cardParams = PaymentMethodCreateParams.Card.Builder()
-      .setNumber(number)
-      .setCvc(cvc)
-      .setExpiryMonth(expirationMonth)
-      .setExpiryYear(expirationYear)
-      .build()
   }
 }

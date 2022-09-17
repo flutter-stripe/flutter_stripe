@@ -8,8 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.facebook.react.bridge.*
 import com.facebook.react.module.annotations.ReactModule
-import com.flutter.stripe.getCurrentActivityOrResolveWithError
-import com.flutter.stripe.invoke
 import com.reactnativestripesdk.pushprovisioning.PushProvisioningProxy
 import com.reactnativestripesdk.utils.*
 import com.reactnativestripesdk.utils.createError
@@ -26,7 +24,7 @@ import kotlinx.coroutines.launch
 
 
 @ReactModule(name = StripeSdkModule.NAME)
-class StripeSdkModule(internal val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
   override fun getName(): String {
     return "StripeSdk"
   }
@@ -39,21 +37,22 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
   private var stripeAccountId: String? = null
   private var urlScheme: String? = null
 
+  private var confirmPromise: Promise? = null
+  private var confirmPaymentClientSecret: String? = null
+
   private var paymentSheetFragment: PaymentSheetFragment? = null
   private var googlePayFragment: GooglePayFragment? = null
   private var paymentLauncherFragment: PaymentLauncherFragment? = null
   private var collectBankAccountLauncherFragment: CollectBankAccountLauncherFragment? = null
   private var financialConnectionsSheetFragment: FinancialConnectionsSheetFragment? = null
-  private var allFragments : Array<Fragment?> = arrayOf(
-    paymentSheetFragment,
-    googlePayFragment,
-    paymentLauncherFragment,
-    collectBankAccountLauncherFragment,
-    financialConnectionsSheetFragment
-  )
-
-  private var confirmPromise: Promise? = null
-  private var confirmPaymentClientSecret: String? = null
+  private val allFragments: List<Fragment?>
+    get() = listOf(
+      paymentSheetFragment,
+      googlePayFragment,
+      paymentLauncherFragment,
+      collectBankAccountLauncherFragment,
+      financialConnectionsSheetFragment
+    )
 
   private val mActivityEventListener = object : BaseActivityEventListener() {
     override fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent?) {
@@ -78,7 +77,7 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
   // Necessary on older versions of React Native (~0.65 and below)
   private fun dispatchActivityResultsToFragments(requestCode: Int, resultCode: Int, data: Intent?) {
     for (fragment in allFragments) {
-      //fragment?.activity?.activityResultRegistry?.dispatchResult(requestCode, resultCode, data)
+      fragment?.activity?.activityResultRegistry?.dispatchResult(requestCode, resultCode, data)
     }
   }
 
@@ -726,6 +725,18 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
     financialConnectionsSheetFragment = FinancialConnectionsSheetFragment().also {
       it.presentFinancialConnectionsSheet(clientSecret, FinancialConnectionsSheetFragment.Mode.ForSession, publishableKey, stripeAccountId, promise, reactApplicationContext)
     }
+  }
+
+  /**
+   * Safely get and cast the current activity as an AppCompatActivity. If that fails, the promise
+   * provided will be resolved with an error message instructing the user to retry the method.
+   */
+  private fun getCurrentActivityOrResolveWithError(promise: Promise?): AppCompatActivity? {
+    (currentActivity as? AppCompatActivity)?.let {
+      return it
+    }
+    promise?.resolve(createMissingActivityError())
+    return null
   }
 
   companion object {
