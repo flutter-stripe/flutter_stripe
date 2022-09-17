@@ -3,6 +3,7 @@ package com.reactnativestripesdk
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import com.facebook.react.uimanager.ThemedReactContext
+import com.flutter.stripe.R
 
 class GooglePayButtonView(private val context: ThemedReactContext) : FrameLayout(context) {
   private var buttonType: String? = null

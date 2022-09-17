@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
 
 
 @ReactModule(name = StripeSdkModule.NAME)
-class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+class StripeSdkModule(internal val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
   override fun getName(): String {
     return "StripeSdk"
   }
