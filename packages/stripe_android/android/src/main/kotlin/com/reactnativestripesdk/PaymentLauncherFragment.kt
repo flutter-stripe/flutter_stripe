@@ -107,7 +107,7 @@ class PaymentLauncherFragment(
     }
 
     private fun addFragment(fragment: PaymentLauncherFragment, context: ReactApplicationContext, promise: Promise) {
-      (context.currentActivity as? AppCompatActivity)?.let {
+      context.currentActivity?.let {
         try {
           it.supportFragmentManager.beginTransaction()
             .add(fragment, TAG)

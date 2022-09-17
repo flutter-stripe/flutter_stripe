@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.facebook.react.bridge.*
 import com.reactnativestripesdk.utils.*
 import com.reactnativestripesdk.utils.createError
@@ -69,7 +70,7 @@ class FinancialConnectionsSheetFragment : Fragment() {
       }
       is FinancialConnectionsSheetForTokenResult.Completed -> {
         promise.resolve(createTokenResult(result))
-        (context.currentActivity as? AppCompatActivity)?.supportFragmentManager?.beginTransaction()?.remove(this)?.commitAllowingStateLoss()
+        context.currentActivity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commitAllowingStateLoss()
       }
     }
   }
@@ -92,7 +93,7 @@ class FinancialConnectionsSheetFragment : Fragment() {
               it.putMap("session", mapFromSession(result.financialConnectionsSession))
             }
         )
-        (context.currentActivity as? AppCompatActivity)?.supportFragmentManager?.beginTransaction()?.remove(this)?.commitAllowingStateLoss()
+        context.currentActivity.supportFragmentManager?.beginTransaction()?.remove(this)?.commitAllowingStateLoss()
       }
     }
   }
@@ -107,7 +108,7 @@ class FinancialConnectionsSheetFragment : Fragment() {
       stripeAccountId = stripeAccountId,
     )
 
-    (context.currentActivity as? AppCompatActivity)?.let {
+    context.currentActivity?.let {
       attemptToCleanupPreviousFragment(it)
       commitFragmentAndStartFlow(it)
     } ?: run {
@@ -116,13 +117,13 @@ class FinancialConnectionsSheetFragment : Fragment() {
     }
   }
 
-  private fun attemptToCleanupPreviousFragment(currentActivity: AppCompatActivity) {
+  private fun attemptToCleanupPreviousFragment(currentActivity: FragmentActivity) {
     currentActivity.supportFragmentManager.beginTransaction()
       .remove(this)
       .commitAllowingStateLoss()
   }
 
-  private fun commitFragmentAndStartFlow(currentActivity: AppCompatActivity) {
+  private fun commitFragmentAndStartFlow(currentActivity: FragmentActivity) {
     try {
       currentActivity.supportFragmentManager.beginTransaction()
         .add(this, "financial_connections_sheet_launch_fragment")

@@ -28,9 +28,10 @@ import com.stripe.android.view.CardInputListener
 import com.stripe.android.view.CardInputWidget
 import com.stripe.android.view.CardValidCallback
 import com.stripe.android.view.StripeEditText
+import java.lang.Exception
 
 class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
-  private var mCardWidget: CardInputWidget = CardInputWidget(context)
+  internal var mCardWidget: CardInputWidget = CardInputWidget(context)
   private val cardInputWidgetBinding = CardInputWidgetBinding.bind(mCardWidget)
   val cardDetails: MutableMap<String, Any?> = mutableMapOf("brand" to "", "last4" to "", "expiryMonth" to null, "expiryYear" to null, "postalCode" to "", "validNumber" to "Unknown", "validCVC" to "Unknown", "validExpiryDate" to "Unknown")
   var cardParams: PaymentMethodCreateParams.Card? = null

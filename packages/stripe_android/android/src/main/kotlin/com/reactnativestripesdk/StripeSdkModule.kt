@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.facebook.react.bridge.*
 import com.facebook.react.module.annotations.ReactModule
+import com.flutter.stripe.getCurrentActivityOrResolveWithError
+import com.flutter.stripe.invoke
 import com.reactnativestripesdk.pushprovisioning.PushProvisioningProxy
 import com.reactnativestripesdk.utils.*
 import com.reactnativestripesdk.utils.createError
@@ -77,7 +79,7 @@ class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
   // Necessary on older versions of React Native (~0.65 and below)
   private fun dispatchActivityResultsToFragments(requestCode: Int, resultCode: Int, data: Intent?) {
     for (fragment in allFragments) {
-      fragment?.activity?.activityResultRegistry?.dispatchResult(requestCode, resultCode, data)
+      //fragment?.activity?.activityResultRegistry?.dispatchResult(requestCode, resultCode, data)
     }
   }
 
@@ -725,18 +727,6 @@ class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
     financialConnectionsSheetFragment = FinancialConnectionsSheetFragment().also {
       it.presentFinancialConnectionsSheet(clientSecret, FinancialConnectionsSheetFragment.Mode.ForSession, publishableKey, stripeAccountId, promise, reactApplicationContext)
     }
-  }
-
-  /**
-   * Safely get and cast the current activity as an AppCompatActivity. If that fails, the promise
-   * provided will be resolved with an error message instructing the user to retry the method.
-   */
-  private fun getCurrentActivityOrResolveWithError(promise: Promise?): AppCompatActivity? {
-    (currentActivity as? AppCompatActivity)?.let {
-      return it
-    }
-    promise?.resolve(createMissingActivityError())
-    return null
   }
 
   companion object {
