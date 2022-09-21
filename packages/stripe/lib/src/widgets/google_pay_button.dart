@@ -70,4 +70,4 @@ class _GooglePayButtonState extends State<GooglePayButton> {
 }
 
 // ignore: constant_identifier_names
-enum GooglePayButtonType { standard, standard_shadow, pay, pay_shadow }
+enum GooglePayButtonType { standard, pay }
