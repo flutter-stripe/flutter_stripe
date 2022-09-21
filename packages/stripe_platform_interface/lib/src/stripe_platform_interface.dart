@@ -63,6 +63,8 @@ abstract class StripePlatform extends PlatformInterface {
     List<ApplePayErrorAddressField>? errorAddressFields,
   });
 
+  Future<bool> handleURLCallback(String url);
+
   Future<void> initGooglePay(GooglePayInitParams params);
   Future<void> presentGooglePay(PresentGooglePayParams params);
   Future<bool> googlePayIsSupported(IsGooglePaySupportedParams params);
