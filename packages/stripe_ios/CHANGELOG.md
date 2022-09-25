@@ -1,6 +1,7 @@
-## 5.0.1
+## 5.1.0
 
-- Fix for #462, added `handleURLCallback` method for iOS to handle `returnUrl` when iDeal payment is successful. This will close the in-app webview of Safari
+- Several fixes by the Stripe sdk [v.0.19.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.19.0).
+- Fix for #462, added `handleURLCallback` method for iOS to handle `returnUrl` when iDeal payment is successful. This will close the in-app webview of Safari.
 
 ## 5.0.0
 Breaking changes

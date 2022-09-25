@@ -334,6 +334,7 @@ extension  StripePlugin {
         }
         handleNextAction(
             paymentIntentClientSecret: paymentIntentClientSecret,
+            returnURL: arguments["returnURL"] as? String,
             resolver: resolver(for: result),
             rejecter: rejecter(for: result)
         )

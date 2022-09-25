@@ -39,21 +39,22 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
   private var stripeAccountId: String? = null
   private var urlScheme: String? = null
 
+  private var confirmPromise: Promise? = null
+  private var confirmPaymentClientSecret: String? = null
+
   private var paymentSheetFragment: PaymentSheetFragment? = null
   private var googlePayFragment: GooglePayFragment? = null
   private var paymentLauncherFragment: PaymentLauncherFragment? = null
   private var collectBankAccountLauncherFragment: CollectBankAccountLauncherFragment? = null
   private var financialConnectionsSheetFragment: FinancialConnectionsSheetFragment? = null
-  private var allFragments : Array<Fragment?> = arrayOf(
-    paymentSheetFragment,
-    googlePayFragment,
-    paymentLauncherFragment,
-    collectBankAccountLauncherFragment,
-    financialConnectionsSheetFragment
-  )
-
-  private var confirmPromise: Promise? = null
-  private var confirmPaymentClientSecret: String? = null
+  private val allFragments: List<Fragment?>
+    get() = listOf(
+      paymentSheetFragment,
+      googlePayFragment,
+      paymentLauncherFragment,
+      collectBankAccountLauncherFragment,
+      financialConnectionsSheetFragment
+    )
 
   private val mActivityEventListener = object : BaseActivityEventListener() {
     override fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent?) {
