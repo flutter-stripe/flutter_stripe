@@ -1,5 +1,7 @@
-## 5.0.1
- - Fix for #462, added `handleURLCallback` method for iOS to handle `returnUrl` when iDeal payment is successful. This will close the in-app webview of Safari
+## 5.1.0
+
+ - a
+
 ## 5.0.0
 Breaking changes
 - Your compileSdkVersion (in android/build.gradle) now must be at least 32. Changing your compileSdkVersion does not change runtime behavior.
