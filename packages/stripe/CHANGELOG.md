@@ -1,3 +1,9 @@
+## 5.1.0
+
+ - a
+
+ - **FIX**: No payment sheet has been initialized yet on iOS (#860).
+
 ## 5.0.1
  - Fix for #462, added `handleURLCallback` method for iOS to handle `returnUrl` when iDeal payment is successful. This will close the in-app webview of Safari
  
