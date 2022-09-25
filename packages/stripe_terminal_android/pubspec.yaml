@@ -1,0 +1,25 @@
+name: stripe_terminal_android
+description: Stripe Terminal platform implementation for Android
+version: 0.0.1
+repository: https://github.com/flutter-stripe/flutter_stripe
+homepage: https://pub.dev/packages/flutter_stripe
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.20.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.3
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.flutter.stripe.terminal
+        pluginClass: StripeAndroidPlugin

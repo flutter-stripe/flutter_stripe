@@ -1,0 +1,8 @@
+# melos_managed_dependency_overrides: flutter_stripe,stripe_platform_interface,stripe_android,stripe_ios,stripe_checkout,flutter_stripe_web
+dependency_overrides:
+  flutter_stripe_terminal:
+    path: ../packages/stripe_terminal
+  stripe_terminal_android:
+    path: ../packages/stripe_terminal_android
+  stripe_terminal_ios:
+    path: ../packages/stripe_terminal_ios

@@ -1,0 +1,29 @@
+name: stripe_terminal_example
+description: Demonstrates how to use the stripe terminal plugin.
+version: 1.0.0
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.16.0 <3.0.0"
+  flutter: ">=2.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_stripe_terminal: ^0.0.1
+  font_awesome_flutter:
+  http: ^0.13.1
+  platform: ^3.0.0
+
+
+dev_dependencies:
+  integration_test:
+    sdk: flutter
+  flutter_driver:
+    sdk: flutter
+  test: any
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
