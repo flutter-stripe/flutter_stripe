@@ -1,110 +1,178 @@
-import Stripe
-@_spi(STP) import StripeCore
+import StripeTerminal
 
-enum ErrorType {
-    static let Failed = "Failed"
-    static let Canceled = "Canceled"
-    static let Unknown = "Unknown"
+enum CommonErrorType: String {
+    case InvalidRequiredParameter
 }
 
 class Errors {
-    static internal let isPIClientSecretValidRegex: NSRegularExpression? = try? NSRegularExpression(
-        pattern: "^pi_[^_]+_secret_[^_]+$", options: [])
-
-    static internal let isSetiClientSecretValidRegex: NSRegularExpression? = try? NSRegularExpression(
-        pattern: "^seti_[^_]+_secret_[^_]+$", options: [])
-    
-    static internal let isEKClientSecretValidRegex: NSRegularExpression? = try? NSRegularExpression(
-        pattern: "^ek_[^_](.)+$", options: [])
-
-    class func isPIClientSecretValid(clientSecret: String) -> Bool {
-        return (Errors.isPIClientSecretValidRegex?.numberOfMatches(
-            in: clientSecret,
-            options: .anchored,
-            range: NSRange(location: 0, length: clientSecret.count))) == 1
-    }
-    class func isSetiClientSecretValid(clientSecret: String) -> Bool {
-        return (Errors.isSetiClientSecretValidRegex?.numberOfMatches(
-            in: clientSecret,
-            options: .anchored,
-            range: NSRange(location: 0, length: clientSecret.count))) == 1
-    }
-    class func isEKClientSecretValid(clientSecret: String) -> Bool {
-        return (Errors.isEKClientSecretValidRegex?.numberOfMatches(
-            in: clientSecret,
-            options: .anchored,
-            range: NSRange(location: 0, length: clientSecret.count))) == 1
-    }
-
-    class func createError (_ code: String, _ message: String?) -> NSDictionary {
-        let value: NSDictionary = [
-            "code": code,
-            "message": message ?? NSNull(),
-            "localizedMessage": message ?? NSNull(),
-            "declineCode": NSNull(),
-            "stripeErrorCode": NSNull(),
-            "type": NSNull()
-        ]
+    class func validateRequiredParameters(params: NSDictionary, requiredParams: [String]) -> String? {
+        var invalid: [String] = []
         
-        return ["error": value]
-    }
-    
-    class func createError (_ code: String, _ error: NSError?) -> NSDictionary {
-        let rootError = getRootError(error)
-
-        let value: NSDictionary = [
-            "code": code,
-            "message": rootError?.userInfo[STPError.errorMessageKey] ?? rootError?.localizedDescription ?? NSNull(),
-            "localizedMessage": rootError?.localizedDescription ?? NSNull(),
-            "declineCode": rootError?.userInfo[STPError.stripeDeclineCodeKey] ?? NSNull(),
-            "stripeErrorCode": rootError?.userInfo[STPError.stripeErrorCodeKey] ?? NSNull(),
-            "type": rootError?.userInfo[STPError.stripeErrorTypeKey] ?? NSNull(),
-        ]
-        
-        return ["error": value]
-    }
-    class func createError (_ code: String, _ error: STPSetupIntentLastSetupError?) -> NSDictionary {
-        let value: NSDictionary = [
-            "code": code,
-            "message": error?.message ?? NSNull(),
-            "localizedMessage": error?.message ?? NSNull(),
-            "declineCode": error?.declineCode ?? NSNull(),
-            "stripeErrorCode": error?.code ?? NSNull(),
-            "type": Mappers.mapFromSetupIntentLastPaymentErrorType(error?.type) ?? NSNull()
-        ]
-        
-        return ["error": value]
-    }
-    
-    class func createError (_ code: String, _ error: STPPaymentIntentLastPaymentError?) -> NSDictionary {
-        let value: NSDictionary = [
-            "code": code,
-            "message": error?.message ?? NSNull(),
-            "localizedMessage": error?.message ?? NSNull(),
-            "declineCode": error?.declineCode ?? NSNull(),
-            "stripeErrorCode": error?.code ?? NSNull(),
-            "type": Mappers.mapFromPaymentIntentLastPaymentErrorType(error?.type) ?? NSNull()
-        ]
-        
-        return ["error": value]
-    }
-    
-    class func createError(_ code: String, _ error: Error) -> NSDictionary {
-        if let stripeError = error as? StripeError {
-            return createError(code, NSError.stp_error(from: stripeError))
+        requiredParams.forEach {
+            if (params.object(forKey: $0) == nil) {
+                invalid.append($0)
+            }
         }
-        
-        return createError(code, error as NSError?)
+        let joined = invalid.joined(separator: ", ")
+        return joined.isEmpty ? nil : joined
     }
     
-    class func getRootError(_ error: NSError?) -> NSError? {
-        // Dig and find the underlying error, otherwise we'll throw errors like "Try again"
-        if let underlyingError = error?.userInfo[NSUnderlyingErrorKey] as? NSError {
-            return getRootError(underlyingError)
-        }
-        return error
+    class func createError(code: ErrorCode.Code, message: String) -> NSDictionary {
+        return createError(errorCode: code.stringValue, message: message)
     }
     
-    static let MISSING_INIT_ERROR = Errors.createError(ErrorType.Failed, "Stripe has not been initialized. Initialize Stripe in your app with the StripeProvider component or the initStripe method.")
+    class func createError(code: CommonErrorType, message: String) -> NSDictionary {
+        return createError(errorCode: code.rawValue, message: message)
+    }
+    
+    class func createError(nsError: NSError) -> NSDictionary {
+        return createError(code: ErrorCode.Code.init(rawValue: nsError.code) ?? ErrorCode.unexpectedSdkError, message: nsError.localizedDescription)
+    }
+    
+    private class func createError(errorCode: String, message: String) -> NSDictionary {
+        let error: NSDictionary = [
+            "code": errorCode,
+            "message": message
+        ]
+        return ["error": error]
+    }
 }
 
+func busyMessage(command: String, by busyCommand: String) -> String {
+    return "Could not execute \(command) because the SDK is busy with another command: \(busyCommand)."
+}
+
+extension ErrorCode.Code {
+    var stringValue: String {
+        switch self {
+        case .busy:
+            return "Busy"
+        case .cancelFailedAlreadyCompleted:
+            return "CancelFailedAlreadyCompleted"
+        case .notConnectedToReader:
+            return "NotConnectedToReader"
+        case .alreadyConnectedToReader:
+            return "AlreadyConnectedToReader"
+        case .connectionTokenProviderCompletedWithNothing:
+            return "ConnectionTokenProviderCompletedWithNothing"
+        case .processInvalidPaymentIntent:
+            return "ProcessInvalidPaymentIntent"
+        case .nilPaymentIntent:
+            return "NilPaymentIntent"
+        case .nilSetupIntent:
+            return "NilSetupIntent"
+        case .nilRefundPaymentMethod:
+            return "NilRefundPaymentMethod"
+        case .invalidRefundParameters:
+            return "InvalidRefundParameters"
+        case .invalidClientSecret:
+            return "InvalidClientSecret"
+        case .mustBeDiscoveringToConnect:
+            return "MustBeDiscoveringToConnect"
+        case .cannotConnectToUndiscoveredReader:
+            return "CannotConnectToUndiscoveredReader"
+        case .invalidDiscoveryConfiguration:
+            return "InvalidDiscoveryConfiguration"
+        case .invalidReaderForUpdate:
+            return "InvalidReaderForUpdate"
+        case .unsupportedSDK:
+            return "UnsupportedSDK"
+        case .featureNotAvailableWithConnectedReader:
+            return "FeatureNotAvailableWithConnectedReader"
+        case .featureNotAvailable:
+            return "FeatureNotAvailable"
+        case .invalidListLocationsLimitParameter:
+            return "InvalidListLocationsLimitParameter"
+        case .bluetoothConnectionInvalidLocationIdParameter:
+            return "BluetoothConnectionInvalidLocationIdParameter"
+        case .canceled:
+            return "Canceled"
+        case .locationServicesDisabled:
+            return "LocationServicesDisabled"
+        case .bluetoothDisabled:
+            return "BluetoothDisabled"
+        case .bluetoothAccessDenied:
+            return "BluetoothAccessDenied"
+        case .bluetoothScanTimedOut:
+            return "BluetoothScanTimedOut"
+        case .bluetoothLowEnergyUnsupported:
+            return "BluetoothLowEnergyUnsupported"
+        case .readerSoftwareUpdateFailedBatteryLow:
+            return "ReaderSoftwareUpdateFailedBatteryLow"
+        case .readerSoftwareUpdateFailedInterrupted:
+            return "ReaderSoftwareUpdateFailedInterrupted"
+        case .readerSoftwareUpdateFailedExpiredUpdate:
+            return "ReaderSoftwareUpdateFailedExpiredUpdate"
+        case .bluetoothConnectionFailedBatteryCriticallyLow:
+            return "BluetoothConnectionFailedBatteryCriticallyLow"
+        case .cardInsertNotRead:
+            return "CardInsertNotRead"
+        case .cardSwipeNotRead:
+            return "CardSwipeNotRead"
+        case .cardReadTimedOut:
+            return "CardReadTimedOut"
+        case .cardRemoved:
+            return "CardRemoved"
+        case .cardLeftInReader:
+            return "CardLeftInReader"
+        case .readerBusy:
+            return "ReaderBusy"
+        case .incompatibleReader:
+            return "IncompatibleReader"
+        case .readerCommunicationError:
+            return "ReaderCommunicationError"
+        case .bluetoothError:
+            return "BluetoothError"
+        case .bluetoothConnectTimedOut:
+            return "BluetoothConnectTimedOut"
+        case .bluetoothDisconnected:
+            return "BluetoothDisconnected"
+        case .bluetoothPeerRemovedPairingInformation:
+            return "BluetoothPeerRemovedPairingInformation"
+        case .bluetoothAlreadyPairedWithAnotherDevice:
+            return "BluetoothAlreadyPairedWithAnotherDevice"
+        case .readerSoftwareUpdateFailed:
+            return "ReaderSoftwareUpdateFailed"
+        case .readerSoftwareUpdateFailedReaderError:
+            return "ReaderSoftwareUpdateFailedReaderError"
+        case .readerSoftwareUpdateFailedServerError:
+            return "ReaderSoftwareUpdateFailedServerError"
+        case .unsupportedReaderVersion:
+            return "UnsupportedReaderVersion"
+        case .unknownReaderIpAddress:
+            return "UnknownReaderIpAddress"
+        case .internetConnectTimeOut:
+            return "InternetConnectTimeOut"
+        case .connectFailedReaderIsInUse:
+            return "ConnectFailedReaderIsInUse"
+        case .unexpectedSdkError:
+            return "UnexpectedSdkError"
+        case .unexpectedReaderError:
+            return "UnexpectedReaderError"
+        case .declinedByStripeAPI:
+            return "DeclinedByStripeAPI"
+        case .declinedByReader:
+            return "DeclinedByReader"
+        case .commandRequiresCardholderConsent:
+            return "CommandRequiresCardholderConsent"
+        case .refundFailed:
+            return "RefundFailed"
+        case .notConnectedToInternet:
+            return "NotConnectedToInternet"
+        case .requestTimedOut:
+            return "RequestTimedOut"
+        case .stripeAPIError:
+            return "StripeAPIError"
+        case .stripeAPIResponseDecodingError:
+            return "StripeAPIResponseDecodingError"
+        case .internalNetworkError:
+            return "InternalNetworkError"
+        case .connectionTokenProviderCompletedWithError:
+            return "ConnectionTokenProviderCompletedWithError"
+        case .sessionExpired:
+            return "SessionExpired"
+        @unknown default:
+            return "Unknown"
+        }
+    }
+}

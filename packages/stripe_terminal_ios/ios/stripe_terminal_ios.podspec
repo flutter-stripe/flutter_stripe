@@ -3,7 +3,7 @@
 # Run `pod lib lint stripe_ios.podspec' to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'stripe_ios'
+  s.name             = 'stripe_terminal_ios'
   s.version          = '0.0.1'
   s.summary          = 'A new flutter plugin project.'
   s.description      = <<-DESC
@@ -15,8 +15,7 @@ A new flutter plugin project.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'Stripe', '~> 22.8.1'
-  s.dependency 'StripeFinancialConnections', '~> 22.8.1'
+  s.dependency "StripeTerminal" , "2.11.0"
   s.platform = :ios, '12.0'
 
   # Flutter.framework does not contain a i386 slice.

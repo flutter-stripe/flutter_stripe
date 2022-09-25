@@ -37,8 +37,6 @@ extension NSNull {
 
 protocol FlutterPluginBinding {
     func sendEvent(withName name: String, body: [String:  Any]);
-    
-    var cardFieldUIManager : CardFieldViewFactory? { get  };
 }
 
 
@@ -54,18 +52,13 @@ extension FlutterError {
 
 class RCTBridge {
     
-    public var cardFieldUIManager : CardFieldViewFactory?
-    
-    func module(forName name: String) -> CardFieldViewFactory? {
-       return cardFieldUIManager
-    }
     
 }
 
 public class RCTEventEmitter : NSObject {
     
     
-    func sendEvent(withName name: String, body: [String : Any]) {
+    func sendEvent(withName name: String, body: NSDictionary) {
         
     }
     
@@ -73,7 +66,7 @@ public class RCTEventEmitter : NSObject {
         return []
     }
     
-    func constantsToExport() -> [AnyHashable : Any] {
+    func constantsToExport() -> [AnyHashable : Any]! {
         return [:]
     }
 }

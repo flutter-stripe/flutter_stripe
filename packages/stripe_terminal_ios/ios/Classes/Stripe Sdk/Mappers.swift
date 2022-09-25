@@ -1,923 +1,328 @@
-import Stripe
+import StripeTerminal
 
 class Mappers {
-    class func createResult(_ key: String, _ value: NSDictionary?) -> NSDictionary {
-        return [key: value ?? NSNull()]
+    class func mapFromReaders(_ readers: [Reader]) -> [NSDictionary] {
+        var readersList: [NSDictionary] = []
+
+        for reader in readers {
+            let result = mapFromReader(reader)
+            readersList.append(result)
+        }
+
+        return readersList
     }
 
-    class func mapToPKContactField(field: String) -> PKContactField {
-        switch field {
-        case "emailAddress": return PKContactField.emailAddress
-        case "name": return PKContactField.name
-        case "phoneNumber": return PKContactField.phoneNumber
-        case "phoneticName": return PKContactField.phoneticName
-        case "postalAddress": return PKContactField.postalAddress
-        default: return PKContactField.name
+    class func mapFromReader(_ reader: Reader) -> NSDictionary {
+        let result: NSDictionary = [
+            "label": reader.label ?? NSNull(),
+            "batteryLevel": reader.batteryLevel ?? NSNull(),
+            "batteryStatus": mapFromBatteryStatus(reader.batteryStatus),
+            "simulated": reader.simulated,
+            "serialNumber": reader.serialNumber,
+            "isCharging": reader.isCharging ?? NSNull(),
+            "id": reader.stripeId ?? NSNull(),
+            "availableUpdate": mapFromReaderSoftwareUpdate(reader.availableUpdate) ?? NSNull(),
+            "locationId": reader.locationId ?? NSNull(),
+            "ipAddress": reader.ipAddress ?? NSNull(),
+            "status": mapFromReaderNetworkStatus(reader.status),
+            "location": mapFromLocation(reader.location) ?? NSNull(),
+            "locationStatus": mapFromLocationStatus(reader.locationStatus),
+            "deviceType": mapFromDeviceType(reader.deviceType),
+            "deviceSoftwareVersion": reader.deviceSoftwareVersion ?? NSNull()
+        ]
+        return result
+    }
+
+    class func mapFromLocationStatus(_ status: LocationStatus) -> String {
+        switch status {
+        case LocationStatus.notSet: return "notSet"
+        case LocationStatus.set: return "set"
+        case LocationStatus.unknown: return "unknown"
+        default: return "unknown"
         }
     }
 
-    class func mapFromBankAccountHolderType(_ type: STPBankAccountHolderType?) -> String? {
-        if let type = type {
-            switch type {
-            case STPBankAccountHolderType.company: return "Company"
-            case STPBankAccountHolderType.individual: return "Individual"
-            default: return nil
-            }
+    class func mapFromReaderNetworkStatus(_ status: ReaderNetworkStatus) -> String {
+        switch status {
+        case ReaderNetworkStatus.offline: return "offline"
+        case ReaderNetworkStatus.online: return "online"
+        default: return "unknown"
         }
-        return nil
     }
 
-    class func mapToBankAccountHolderType(_ type: String?) -> STPBankAccountHolderType {
+    class func mapFromBatteryStatus(_ status: BatteryStatus) -> String {
+        switch status {
+        case BatteryStatus.critical: return "critical"
+        case BatteryStatus.low: return "low"
+        case BatteryStatus.nominal: return "nominal"
+        case BatteryStatus.unknown: return "unknown"
+        default: return "unknown"
+        }
+    }
+
+    class func mapFromDeviceType(_ type: DeviceType) -> String {
         switch type {
-        case "Company": return STPBankAccountHolderType.company
-        case "Individual": return STPBankAccountHolderType.individual
-        default: return STPBankAccountHolderType.individual
+        case DeviceType.chipper1X: return "chipper1X"
+        case DeviceType.chipper2X: return "chipper2X"
+        case DeviceType.stripeM2: return "stripeM2"
+        case DeviceType.verifoneP400: return "verifoneP400"
+        case DeviceType.wiseCube: return "wiseCube"
+        case DeviceType.wisePad3: return "wisePad3"
+        case DeviceType.wisePosE: return "wisePosE"
+        default: return "unknown"
         }
     }
 
-    class func mapFromBankAccountStatus(_ status: STPBankAccountStatus?) -> String? {
-        if let status = status {
-            switch status {
-            case STPBankAccountStatus.errored: return "Errored"
-            case STPBankAccountStatus.new: return "New"
-            case STPBankAccountStatus.validated: return "Validated"
-            case STPBankAccountStatus.verified: return "Verified"
-            case STPBankAccountStatus.verificationFailed: return "VerificationFailed"
-            default: return nil
+
+    class func mapToCartLineItem(_ cartLineItem: NSDictionary) -> CartLineItem? {
+        guard let displayName = cartLineItem["displayName"] as? String else { return nil }
+        guard let quantity = cartLineItem["quantity"] as? NSNumber else { return nil }
+        guard let amount = cartLineItem["amount"] as? NSNumber else { return nil }
+
+        let lineItem = CartLineItem(displayName: displayName, quantity: Int(truncating: quantity), amount: Int(truncating: amount))
+
+        return lineItem
+    }
+
+    class func mapToCartLineItems(_ cartLineItems: NSArray) -> [CartLineItem] {
+        var items = [CartLineItem]()
+
+        cartLineItems.forEach {
+            if let item = $0 as? NSDictionary {
+                if let lineItem = Mappers.mapToCartLineItem(item) {
+                    items.append(lineItem)
+                }
             }
         }
-        return nil
+        return items
     }
 
-    class func mapFromBankAccount(_ bankAccount: STPBankAccount?) -> NSDictionary? {
-        guard let bankAccount = bankAccount else {
+
+    class func mapToDiscoveryMethod(_ discoveryMethod: String?) -> DiscoveryMethod {
+        if let method = discoveryMethod {
+            switch method {
+            case "bluetoothProximity": return DiscoveryMethod.bluetoothProximity
+            case "bluetoothScan": return DiscoveryMethod.bluetoothScan
+            case "internet": return DiscoveryMethod.internet
+            default: return DiscoveryMethod.internet
+            }
+        }
+        return DiscoveryMethod.internet
+    }
+
+    class func mapFromPaymentIntent(_ paymentIntent: PaymentIntent) -> NSDictionary {
+        let result: NSDictionary = [
+            "amount": paymentIntent.amount,
+            "charges": mapFromCharges(paymentIntent.charges),
+            "created": convertDateToUnixTimestamp(date: paymentIntent.created) ?? NSNull(),
+            "currency": paymentIntent.currency,
+            "status": mapFromPaymentIntentStatus(paymentIntent.status),
+            "id": paymentIntent.stripeId,
+        ]
+        return result
+    }
+
+    class func mapFromSetupIntent(_ setupIntent: SetupIntent) -> NSDictionary {
+        let result: NSDictionary = [
+            "id": setupIntent.stripeId,
+            "created": convertDateToUnixTimestamp(date: setupIntent.created) ?? NSNull(),
+            "status": mapFromSetupIntentStatus(setupIntent.status),
+            "latestAttempt": mapFromSetupAttempt(setupIntent.latestAttempt) ?? NSNull(),
+            "usage": mapFromSetupIntentUsage(setupIntent.usage),
+        ]
+        return result
+    }
+
+    class func mapFromSetupIntentUsage(_ usage: SetupIntentUsage) -> String {
+        switch usage {
+        case SetupIntentUsage.offSession: return "offSession"
+        case SetupIntentUsage.onSession: return "onSession"
+        default: return "unknown"
+        }
+    }
+
+    class func mapFromSetupAttempt(_ attempt: SetupAttempt?) -> NSDictionary? {
+        guard let unwrappedAttempt = attempt else {
             return nil
         }
-        
         let result: NSDictionary = [
-            "id": bankAccount.stripeID,
-            "bankName": bankAccount.bankName ?? NSNull(),
-            "accountHolderName": bankAccount.accountHolderName ?? NSNull(),
-            "accountHolderType": mapFromBankAccountHolderType(bankAccount.accountHolderType) ?? NSNull(),
-            "country": bankAccount.country ?? NSNull(),
-            "currency": bankAccount.currency ?? NSNull(),
-            "routingNumber": bankAccount.routingNumber ?? NSNull(),
-            "status": mapFromBankAccountStatus(bankAccount.status) ?? NSNull(),
-            "fingerprint": bankAccount.fingerprint ?? NSNull(),
-            "last4": bankAccount.last4 ?? NSNull()
+            "id": unwrappedAttempt.stripeId,
+            "created": convertDateToUnixTimestamp(date: unwrappedAttempt.created) ?? NSNull(),
+            "status": unwrappedAttempt.status,
+            "customer": unwrappedAttempt.customer ?? NSNull(),
+            "setupIntentId": unwrappedAttempt.setupIntent,
+            "onBehalfOfId": unwrappedAttempt.onBehalfOf ?? NSNull(),
+            "applicationId": unwrappedAttempt.application ?? NSNull(),
+            "paymentMethodId": unwrappedAttempt.paymentMethod ?? NSNull(),
+            "paymentMethodDetails": mapFromSetupAttemptPaymentMethodDetails(unwrappedAttempt.paymentMethodDetails) ?? NSNull()
         ]
         return result
     }
 
-    class func mapFromCard(_ card: STPCard?) -> NSDictionary? {
-        if (card == nil) {
+    class func mapFromSetupAttemptPaymentMethodDetails(_ details: SetupAttemptPaymentMethodDetails?) -> NSDictionary? {
+        guard let unwrappedDetails = details else {
             return nil
         }
-        let cardMap: NSDictionary = [
-            "brand": mapFromCardBrand(card?.brand) ?? NSNull(),
-            "country": card?.country ?? NSNull(),
-            "currency": card?.currency ?? NSNull(),
-            "expMonth": card?.expMonth ?? NSNull(),
-            "expYear": card?.expYear ?? NSNull(),
-            "last4": card?.last4 ?? NSNull(),
-            "funding": mapFromFunding(card?.funding) ?? NSNull(),
-            "name": card?.name ?? NSNull(),
-            "address": mapFromAddress(address: card?.address),
-            "id": card?.stripeID ?? NSNull(),
-        ]
-        return cardMap
-    }
-
-    class func mapFromAddress(address: STPAddress?) -> NSDictionary {
         let result: NSDictionary = [
-            "city": address?.city ?? NSNull(),
-            "postalCode": address?.postalCode ?? NSNull(),
-            "country": address?.country ?? NSNull(),
-            "line1": address?.line1 ?? NSNull(),
-            "line2": address?.line2 ?? NSNull(),
-            "state": address?.state ?? NSNull(),
+            "cardPresent": mapFromSetupAttemptCardPresentDetails(unwrappedDetails.cardPresent) ?? NSNull(),
+            "interacPresent": mapFromSetupAttemptCardPresentDetails(unwrappedDetails.interacPresent) ?? NSNull(),
+            "type": mapFromPaymentMethodDetailsType(unwrappedDetails.type),
         ]
-
         return result
     }
 
-    class func mapToAddress(address: NSDictionary?) -> STPAddress {
-        let result = STPAddress()
-        result.city = address?["city"] as? String
-        result.country = address?["country"] as? String
-        result.line1 = address?["line1"] as? String
-        result.line2 = address?["line2"] as? String
-        result.postalCode = address?["postalCode"] as? String
-        result.state = address?["state"] as? String
-
+    class func mapFromSetupAttemptCardPresentDetails(_ details: SetupAttemptCardPresentDetails?) -> NSDictionary? {
+        guard let unwrappedDetails = details else {
+            return nil
+        }
+        let result: NSDictionary = [
+            "emvAuthData": unwrappedDetails.emvAuthData,
+            "generatedCard": unwrappedDetails.generatedCard
+        ]
         return result
     }
 
-    class func mapFromFunding(_ funding: STPCardFundingType?) -> String? {
-        if let funding = funding {
-            switch funding {
-            case STPCardFundingType.credit: return "Credit"
-            case STPCardFundingType.debit: return "Debit"
-            case STPCardFundingType.prepaid: return "Prepaid"
-            case STPCardFundingType.other: return "Unknown"
 
-            default: return nil
-            }
+    class func mapFromSetupIntentStatus(_ status: SetupIntentStatus) -> String {
+        switch status {
+        case SetupIntentStatus.canceled: return "canceled"
+        case SetupIntentStatus.processing: return "processing"
+        case SetupIntentStatus.requiresConfirmation: return "requiresConfirmation"
+        case SetupIntentStatus.requiresPaymentMethod: return "requiresPaymentMethod"
+        case SetupIntentStatus.succeeded: return "succeeded"
+        case SetupIntentStatus.requiresAction: return "requiresAction"
+        default: return "unknown"
         }
-        return nil
     }
 
-    class func mapFromTokenType(_ type: STPTokenType?) -> String? {
-        if let type = type {
-            switch type {
-            case STPTokenType.PII: return "Pii"
-            case STPTokenType.account: return "Account"
-            case STPTokenType.bankAccount: return "BankAccount"
-            case STPTokenType.card: return "Card"
-            case STPTokenType.cvcUpdate: return "CvcUpdate"
-            default: return nil
-            }
+    class func mapFromPaymentIntentStatus(_ status: PaymentIntentStatus) -> String {
+        switch status {
+        case PaymentIntentStatus.canceled: return "canceled"
+        case PaymentIntentStatus.processing: return "processing"
+        case PaymentIntentStatus.requiresCapture: return "requiresCapture"
+        case PaymentIntentStatus.requiresConfirmation: return "requiresConfirmation"
+        case PaymentIntentStatus.requiresPaymentMethod: return "requiresPaymentMethod"
+        case PaymentIntentStatus.succeeded: return "succeeded"
+        default: return "unknown"
         }
-        return nil
     }
 
-    class func mapFromToken(token: STPToken) -> NSDictionary {
-        let tokenMap: NSDictionary = [
-            "id": token.tokenId,
-            "bankAccount": mapFromBankAccount(token.bankAccount) ?? NSNull(),
-            "created": convertDateToUnixTimestamp(date: token.created) ?? NSNull(),
-            "card": mapFromCard(token.card) ?? NSNull(),
-            "livemode": token.livemode,
-            "type": mapFromTokenType(token.type) ?? NSNull(),
+    class func mapFromReaderDisplayMessage(_ displayMessage: ReaderDisplayMessage) -> String {
+        switch displayMessage {
+        case ReaderDisplayMessage.insertCard: return "insertCard"
+        case ReaderDisplayMessage.insertOrSwipeCard: return "insertOrSwipeCard"
+        case ReaderDisplayMessage.multipleContactlessCardsDetected: return "multipleContactlessCardsDetected"
+        case ReaderDisplayMessage.removeCard: return "removeCard"
+        case ReaderDisplayMessage.retryCard: return "retryCard"
+        case ReaderDisplayMessage.swipeCard: return "swipeCard"
+        case ReaderDisplayMessage.tryAnotherCard: return "tryAnotherCard"
+        case ReaderDisplayMessage.tryAnotherReadMethod: return "tryAnotherReadMethod"
+        default: return "unknown"
+        }
+    }
+
+    class func mapFromReaderInputOptions(_ inputOptions: ReaderInputOptions) -> NSMutableArray {
+        let array = inputOptions.rawValue.bitComponents()
+        let mappedOptions: NSMutableArray = []
+
+        array.forEach { item in
+            switch item {
+            case 0: return
+            case 1: return mappedOptions.add("insertCard")
+            case 2: return mappedOptions.add("swipeCard")
+            case 4: return mappedOptions.add("tapCard")
+            default: return
+            }
+        }
+
+        return mappedOptions
+    }
+
+    class func mapFromCharges(_ charges: [Charge]) -> [NSDictionary] {
+        var list: [NSDictionary] = []
+
+        for charge in charges {
+            let result = mapFromCharge(charge)
+            list.append(result)
+        }
+
+        return list
+    }
+
+    class func mapFromReaderSoftwareUpdate(_ update: ReaderSoftwareUpdate?) -> [AnyHashable:Any?]? {
+        guard let unwrappedUpdate = update else {
+            return nil
+        }
+        let result: [AnyHashable: Any?] = [
+            "deviceSoftwareVersion": unwrappedUpdate.deviceSoftwareVersion,
+            "estimatedUpdateTime": mapFromUpdateTimeEstimate(unwrappedUpdate.estimatedUpdateTime),
+            "requiredAt": Mappers.convertDateToUnixTimestamp(date: unwrappedUpdate.requiredAt),
         ]
-
-        return tokenMap
+        return result
     }
 
-    class func mapToShippingMethods(shippingMethods: NSArray?) -> [PKShippingMethod] {
-        var shippingMethodsList: [PKShippingMethod] = []
+    class func mapFromUpdateTimeEstimate(_ time: UpdateTimeEstimate) -> String {
+        switch time {
+        case UpdateTimeEstimate.estimate1To2Minutes: return "estimate1To2Minutes"
+        case UpdateTimeEstimate.estimate2To5Minutes: return "estimate2To5Minutes"
+        case UpdateTimeEstimate.estimate5To15Minutes: return "estimate5To15Minutes"
+        case UpdateTimeEstimate.estimateLessThan1Minute: return "estimateLessThan1Minute"
+        default: return "unknown"
+        }
+    }
 
-        if let methods = shippingMethods as? [[String : Any]] {
-            for method in methods {
-                let label = method["label"] as? String ?? ""
-                let amount = NSDecimalNumber(string: method["amount"] as? String ?? "")
-                let identifier = method["identifier"] as! String
-                let detail = method["detail"] as? String ?? ""
-                let pm = PKShippingMethod.init(
-                    label: label,
-                    amount: amount,
-                    type: method["isPending"] as? Bool ?? false
-                        ? PKPaymentSummaryItemType.pending : PKPaymentSummaryItemType.final
-                )
-                pm.identifier = identifier
-                pm.detail = detail
-                shippingMethodsList.append(pm)
+
+    class func mapFromLocationsList(_ locations: [Location]) -> [NSDictionary] {
+        var list: [NSDictionary] = []
+
+        for location in locations {
+            let result = mapFromLocation(location)
+            if let result = result {
+                list.append(result)
             }
         }
 
-        return shippingMethodsList
+        return list
     }
 
-    class func mapFromShippingMethod(shippingMethod: PKShippingMethod) -> NSDictionary {
-        let method: NSDictionary = [
-            "detail": shippingMethod.detail ?? "",
-            "identifier": shippingMethod.identifier ?? "",
-            "amount": shippingMethod.amount.stringValue,
-            "type": shippingMethod.type,
-            "label": shippingMethod.label
+    class func mapFromLocation(_ location: Location?) -> NSDictionary? {
+        guard let unwrappedLocation = location else {
+            return nil
+        }
+        let result: NSDictionary = [
+            "displayName": unwrappedLocation.displayName ?? NSNull(),
+            "id": unwrappedLocation.stripeId,
+            "livemode": unwrappedLocation.livemode,
+            "address": mapFromAddress(unwrappedLocation.address) ?? NSNull(),
         ]
-
-        return method
+        return result
     }
 
-    class func mapFromShippingContact(shippingContact: PKContact) -> NSDictionary {
-        let name: NSDictionary = [
-            "familyName": shippingContact.name?.familyName ?? "",
-            "namePrefix": shippingContact.name?.namePrefix ?? "",
-            "nameSuffix": shippingContact.name?.nameSuffix ?? "",
-            "givenName": shippingContact.name?.givenName ?? "",
-            "middleName": shippingContact.name?.middleName ?? "",
-            "nickname": shippingContact.name?.nickname ?? "",
-        ]
-        let contact: NSDictionary = [
-            "emailAddress": shippingContact.emailAddress ?? "",
-            "phoneNumber": shippingContact.phoneNumber?.stringValue ?? "",
-            "name": name,
-            "postalAddress": [
-                "city": shippingContact.postalAddress?.city,
-                "country": shippingContact.postalAddress?.country,
-                "postalCode": shippingContact.postalAddress?.postalCode,
-                "state": shippingContact.postalAddress?.state,
-                "street": shippingContact.postalAddress?.street,
-                "isoCountryCode": shippingContact.postalAddress?.isoCountryCode,
-                "subAdministrativeArea": shippingContact.postalAddress?.subAdministrativeArea,
-                "subLocality": shippingContact.postalAddress?.subLocality,
-            ],
-        ]
-
-        return contact
-    }
-
-    class func mapAddressFields(_ addressFields: [String]) -> [String] {
-        return addressFields.map {
-            if ($0 == "street") {
-                return CNPostalAddressStreetKey
-            } else if ($0 == "city") {
-                return CNPostalAddressCityKey
-            } else if ($0 == "subAdministrativeArea") {
-                return CNPostalAddressSubAdministrativeAreaKey
-            } else if ($0 == "state") {
-                return CNPostalAddressStateKey
-            } else if ($0 == "postalCode") {
-                return CNPostalAddressPostalCodeKey
-            } else if ($0 == "country") {
-                return CNPostalAddressCountryKey
-            } else if ($0 == "countryCode") {
-                return CNPostalAddressISOCountryCodeKey
-            } else if ($0 == "subLocality") {
-                return CNPostalAddressSubLocalityKey
-            }
-            return ""
-        }
-    }
-
-    class func mapIntentStatus(status: STPPaymentIntentStatus?) -> String {
-        if let status = status {
-            switch status {
-            case STPPaymentIntentStatus.succeeded: return "Succeeded"
-            case STPPaymentIntentStatus.requiresPaymentMethod: return "RequiresPaymentMethod"
-            case STPPaymentIntentStatus.requiresConfirmation: return "RequiresConfirmation"
-            case STPPaymentIntentStatus.canceled: return "Canceled"
-            case STPPaymentIntentStatus.processing: return "Processing"
-            case STPPaymentIntentStatus.requiresAction: return "RequiresAction"
-            case STPPaymentIntentStatus.requiresCapture: return "RequiresCapture"
-            default: return "Unknown"
-            }
-        }
-        return "Unknown"
-    }
-
-    class func mapPaymentMethodType(type: STPPaymentMethodType) -> String {
-        switch type {
-        case STPPaymentMethodType.card: return "Card"
-        case STPPaymentMethodType.alipay: return "Alipay"
-        case STPPaymentMethodType.grabPay: return "GrabPay"
-        case STPPaymentMethodType.iDEAL: return "Ideal"
-        case STPPaymentMethodType.FPX: return "Fpx"
-        case STPPaymentMethodType.cardPresent: return "CardPresent"
-        case STPPaymentMethodType.SEPADebit: return "SepaDebit"
-        case STPPaymentMethodType.AUBECSDebit: return "AuBecsDebit"
-        case STPPaymentMethodType.bacsDebit: return "BacsDebit"
-        case STPPaymentMethodType.giropay: return "Giropay"
-        case STPPaymentMethodType.przelewy24: return "P24"
-        case STPPaymentMethodType.EPS: return "Eps"
-        case STPPaymentMethodType.bancontact: return "Bancontact"
-        case STPPaymentMethodType.OXXO: return "Oxxo"
-        case STPPaymentMethodType.sofort: return "Sofort"
-        case STPPaymentMethodType.UPI: return "Upi"
-        case STPPaymentMethodType.afterpayClearpay: return "AfterpayClearpay"
-        case STPPaymentMethodType.klarna: return "Klarna"
-        case STPPaymentMethodType.USBankAccount: return "USBankAccount"
-        case STPPaymentMethodType.payPal: return "PayPal"
-        case STPPaymentMethodType.affirm: return "Affirm"
-        case STPPaymentMethodType.unknown: return "Unknown"
-        default: return "Unknown"
-        }
-    }
-
-    class func mapToPaymentMethodType(type: String?) -> STPPaymentMethodType? {
-        if let type = type {
-            switch type {
-            case "Card": return STPPaymentMethodType.card
-            case "Alipay": return STPPaymentMethodType.alipay
-            case "GrabPay": return STPPaymentMethodType.grabPay
-            case "Ideal": return STPPaymentMethodType.iDEAL
-            case "Fpx": return STPPaymentMethodType.FPX
-            case "CardPresent": return STPPaymentMethodType.cardPresent
-            case "SepaDebit": return STPPaymentMethodType.SEPADebit
-            case "AuBecsDebit": return STPPaymentMethodType.AUBECSDebit
-            case "BacsDebit": return STPPaymentMethodType.bacsDebit
-            case "Giropay": return STPPaymentMethodType.giropay
-            case "P24": return STPPaymentMethodType.przelewy24
-            case "Eps": return STPPaymentMethodType.EPS
-            case "Bancontact": return STPPaymentMethodType.bancontact
-            case "Oxxo": return STPPaymentMethodType.OXXO
-            case "Sofort": return STPPaymentMethodType.sofort
-            case "Upi": return STPPaymentMethodType.UPI
-            case "AfterpayClearpay": return STPPaymentMethodType.afterpayClearpay
-            case "Klarna": return STPPaymentMethodType.klarna
-            case "WeChatPay": return STPPaymentMethodType.weChatPay
-            case "USBankAccount": return STPPaymentMethodType.USBankAccount
-            case "PayPal": return STPPaymentMethodType.payPal
-            case "Affirm": return STPPaymentMethodType.affirm
-            default: return STPPaymentMethodType.unknown
-            }
-        }
-        return nil
-    }
-
-    class func mapCaptureMethod(_ captureMethod: STPPaymentIntentCaptureMethod?) -> String {
-        if let captureMethod = captureMethod {
-            switch captureMethod {
-            case STPPaymentIntentCaptureMethod.automatic: return "Automatic"
-            case STPPaymentIntentCaptureMethod.manual: return "Manual"
-            default: return "Unknown"
-            }
-        }
-        return "Unknown"
-    }
-
-    class func mapConfirmationMethod(_ confirmationMethod: STPPaymentIntentConfirmationMethod?) -> String {
-        if let confirmationMethod = confirmationMethod {
-            switch confirmationMethod {
-            case STPPaymentIntentConfirmationMethod.automatic: return "Automatic"
-            case STPPaymentIntentConfirmationMethod.manual: return "Manual"
-            default: return "Unknown"
-            }
-        }
-        return "Unknown"
-    }
-
-    class func mapIntentShipping(_ shipping: STPPaymentIntentShippingDetails) -> NSDictionary {
-        var addressDetails = NSDictionary()
-        if let address = shipping.address {
-            addressDetails = [
+    class func mapFromAddress(_ address: Address?) -> NSDictionary? {
+        if let address = address {
+            let result: NSDictionary = [
                 "city": address.city ?? NSNull(),
                 "country": address.country ?? NSNull(),
-                "line1": address.line1 ?? NSNull(),
-                "line2":address.line2 ?? NSNull(),
                 "postalCode": address.postalCode ?? NSNull(),
+                "line1": address.line1 ?? NSNull(),
+                "line2": address.line2 ?? NSNull(),
+                "state": address.state ?? NSNull(),
             ]
-        }
-        let shippingDetails: NSDictionary = [
-            "address": addressDetails,
-            "name": shipping.name ?? NSNull(),
-            "phone": shipping.phone ?? NSNull(),
-            "trackingNumber": shipping.trackingNumber ?? NSNull(),
-            "carrier": shipping.carrier ?? NSNull(),
-        ]
-        return shippingDetails
-    }
-
-    class func mapFromPaymentIntent (paymentIntent: STPPaymentIntent) -> NSDictionary {
-        let intent: NSMutableDictionary = [
-            "id": paymentIntent.stripeId,
-            "currency": paymentIntent.currency,
-            "status": Mappers.mapIntentStatus(status: paymentIntent.status),
-            "description": paymentIntent.description,
-            "clientSecret": paymentIntent.clientSecret,
-            "receiptEmail": paymentIntent.receiptEmail ?? NSNull(),
-            "livemode": paymentIntent.livemode,
-            "paymentMethodId": paymentIntent.paymentMethodId ?? NSNull(),
-            "captureMethod": mapCaptureMethod(paymentIntent.captureMethod),
-            "confirmationMethod": mapConfirmationMethod(paymentIntent.confirmationMethod),
-            "created": convertDateToUnixTimestamp(date: paymentIntent.created) ?? NSNull(),
-            "amount": paymentIntent.amount,
-            "lastPaymentError": NSNull(),
-            "shipping": NSNull(),
-            "canceledAt": NSNull(),
-            "nextAction": mapNextAction(nextAction: paymentIntent.nextAction) ?? NSNull(),
-        ]
-
-        if let lastPaymentError = paymentIntent.lastPaymentError {
-            let paymentError: NSMutableDictionary = [
-                "code": lastPaymentError.code ?? NSNull(),
-                "message": lastPaymentError.message ?? NSNull(),
-                "type": mapFromPaymentIntentLastPaymentErrorType(lastPaymentError.type) ?? NSNull(),
-                "declineCode": lastPaymentError.declineCode ?? NSNull(),
-                "paymentMethod": mapFromPaymentMethod(lastPaymentError.paymentMethod) ?? NSNull()
-            ]
-
-            intent.setValue(paymentError, forKey: "lastPaymentError")
-        }
-
-        if let shipping = paymentIntent.shipping {
-            intent.setValue(mapIntentShipping(shipping), forKey: "shipping")
-        }
-
-        if let canceledAt = paymentIntent.canceledAt {
-            intent.setValue(convertDateToUnixTimestamp(date: canceledAt), forKey: "canceledAt")
-        }
-
-        return intent;
-    }
-
-    class func mapNextAction(nextAction: STPIntentAction?) -> NSDictionary? {
-        if let it = nextAction {
-            switch it.type {
-            case .verifyWithMicrodeposits:
-                return [
-                    "type": "verifyWithMicrodeposits",
-                    "redirectUrl": it.verifyWithMicrodeposits?.hostedVerificationURL.absoluteString ?? NSNull(),
-                    "microdepositType": it.verifyWithMicrodeposits?.microdepositType.description ?? NSNull(),
-                    "arrivalDate": it.verifyWithMicrodeposits?.arrivalDate.timeIntervalSince1970.description ?? NSNull(),
-                ]
-            case .redirectToURL:
-                return [
-                    "type": "urlRedirect",
-                    "redirectUrl": it.redirectToURL?.url.absoluteString ?? NSNull()
-                ]
-            case .weChatPayRedirectToApp:
-                return [
-                    "type": "weChatRedirect",
-                    "redirectUrl": it.weChatPayRedirectToApp?.nativeURL?.absoluteString ?? NSNull()
-                ]
-            case .alipayHandleRedirect:
-                return [
-                    "type": "alipayRedirect",
-                    "redirectUrl": it.alipayHandleRedirect?.url.absoluteString ?? NSNull(),
-                    "nativeRedirectUrl": it.alipayHandleRedirect?.nativeURL?.absoluteString ?? NSNull(),
-                ]
-            case .OXXODisplayDetails:
-                return [
-                    "type": "oxxoVoucher",
-                    "expiration": it.oxxoDisplayDetails?.expiresAfter.timeIntervalSince1970 ?? NSNull(),
-                    "voucherURL": it.oxxoDisplayDetails?.hostedVoucherURL.absoluteString ?? NSNull(),
-                    "voucherNumber": it.oxxoDisplayDetails?.number ?? NSNull(),
-                ]
-// TODO: Not supported on Android
-//            case .boletoDisplayDetails:
-//                return [
-//                    "type": "boletoVoucher",
-//                    "expiration": it.boletoDisplayDetails?.expiresAt.timeIntervalSince1970.description ?? NSNull(),
-//                    "voucherURL": it.boletoDisplayDetails?.hostedVoucherURL.absoluteString ?? NSNull(),
-//                    "voucherNumber": it.boletoDisplayDetails?.number ?? NSNull(),
-//                ]
-            default: // .useStripeSDK, .BLIKAuthorize, .unknown
-                return nil
-            }
+            return result
         } else {
             return nil
         }
     }
 
-    class func mapFromPaymentIntentLastPaymentErrorType(_ errorType: STPPaymentIntentLastPaymentErrorType?) -> String? {
-        if let errorType = errorType {
-            switch errorType {
-            case STPPaymentIntentLastPaymentErrorType.apiConnection: return "api_connection_error"
-            case STPPaymentIntentLastPaymentErrorType.api: return "api_error"
-            case STPPaymentIntentLastPaymentErrorType.authentication: return "authentication_error"
-            case STPPaymentIntentLastPaymentErrorType.card: return "card_error"
-            case STPPaymentIntentLastPaymentErrorType.idempotency: return "idempotency_error"
-            case STPPaymentIntentLastPaymentErrorType.invalidRequest: return "invalid_request_error"
-            case STPPaymentIntentLastPaymentErrorType.rateLimit: return "rate_limit_error"
-            case STPPaymentIntentLastPaymentErrorType.unknown: return nil
-            default: return nil
-            }
-        }
-        return nil
-    }
-
-    class func mapFromSetupIntentLastPaymentErrorType(_ errorType: STPSetupIntentLastSetupErrorType?) -> String? {
-        if let errorType = errorType {
-            switch errorType {
-            case STPSetupIntentLastSetupErrorType.apiConnection: return "api_connection_error"
-            case STPSetupIntentLastSetupErrorType.API: return "api_error"
-            case STPSetupIntentLastSetupErrorType.authentication: return "authentication_error"
-            case STPSetupIntentLastSetupErrorType.card: return "card_error"
-            case STPSetupIntentLastSetupErrorType.idempotency: return "idempotency_error"
-            case STPSetupIntentLastSetupErrorType.invalidRequest: return "invalid_request_error"
-            case STPSetupIntentLastSetupErrorType.rateLimit: return "rate_limit_error"
-            case STPSetupIntentLastSetupErrorType.unknown: return nil
-            default: return nil
-            }
-        }
-        return nil
-    }
-
-    class func mapToBillingDetails(billingDetails: NSDictionary?) -> STPPaymentMethodBillingDetails? {
-        guard let billingDetails = billingDetails else {
-            return nil
-        }
-        let billing = STPPaymentMethodBillingDetails()
-        billing.email = RCTConvert.nsString(billingDetails["email"])
-        billing.phone = RCTConvert.nsString(billingDetails["phone"])
-        billing.name = RCTConvert.nsString(billingDetails["name"])
-
-        let address = STPPaymentMethodAddress()
-
-        if let addressMap = billingDetails["address"] as? NSDictionary {
-            address.city = RCTConvert.nsString(addressMap["city"])
-            address.postalCode = RCTConvert.nsString(addressMap["postalCode"])
-            address.country = RCTConvert.nsString(addressMap["country"])
-            address.line1 = RCTConvert.nsString(addressMap["line1"])
-            address.line2 = RCTConvert.nsString(addressMap["line2"])
-            address.state = RCTConvert.nsString(addressMap["state"])
-        }
-
-        billing.address = address
-
-        return billing
-    }
-
-    class func mapToShippingDetails(shippingDetails: NSDictionary?) -> STPPaymentIntentShippingDetailsParams? {
-        guard let shippingDetails = shippingDetails else {
-            return nil
-        }
-
-        let shippingAddress = STPPaymentIntentShippingDetailsAddressParams(line1: "")
-
-        if let addressMap = shippingDetails["address"] as? NSDictionary {
-            shippingAddress.city = addressMap["city"] as? String
-            shippingAddress.postalCode = addressMap["postalCode"] as? String
-            shippingAddress.country = addressMap["country"] as? String
-            shippingAddress.line1 = addressMap["line1"] as? String ?? ""
-            shippingAddress.line2 = addressMap["line2"] as? String
-            shippingAddress.state = addressMap["state"] as? String
-        }
-
-        let shipping = STPPaymentIntentShippingDetailsParams(address: shippingAddress, name: shippingDetails["name"] as? String ?? "")
-
-        return shipping
-    }
-
-    class func mapFromBillingDetails(billingDetails: STPPaymentMethodBillingDetails?) -> NSDictionary {
-        let billing: NSDictionary = [
-            "email": billingDetails?.email ?? NSNull(),
-            "phone": billingDetails?.phone ?? NSNull(),
-            "name": billingDetails?.name ?? NSNull(),
-            "address": [
-                "city": billingDetails?.address?.city,
-                "postalCode": billingDetails?.address?.postalCode,
-                "country": billingDetails?.address?.country,
-                "line1": billingDetails?.address?.line1,
-                "line2": billingDetails?.address?.line2,
-                "state": billingDetails?.address?.state,
-            ],
+    class func mapFromCharge(_ charge: Charge) -> NSDictionary {
+        let result: NSDictionary = [
+            "amount": charge.amount,
+            "description": charge.stripeDescription ?? NSNull(),
+            "currency": charge.currency,
+            "status": charge.status,
+            "id": charge.stripeId,
         ]
-
-        return billing
-    }
-
-    class func mapFromCardBrand(_ brand: STPCardBrand?) -> String? {
-        if let brand = brand {
-            switch brand {
-            case STPCardBrand.visa: return "Visa"
-            case STPCardBrand.amex: return "AmericanExpress"
-            case STPCardBrand.mastercard: return "MasterCard"
-            case STPCardBrand.discover: return "Discover"
-            case STPCardBrand.JCB: return "JCB"
-            case STPCardBrand.dinersClub: return "DinersClub"
-            case STPCardBrand.unionPay: return "UnionPay"
-            case STPCardBrand.unknown: return "Unknown"
-            default: return nil
-            }
-        }
-        return nil
-    }
-
-    class func mapToCardBrand(_ brand: String?) -> STPCardBrand {
-        if let brand = brand {
-            switch brand {
-            case "Visa": return STPCardBrand.visa
-            case "AmericanExpress" : return STPCardBrand.amex
-            case "MasterCard": return STPCardBrand.mastercard
-            case "Discover": return STPCardBrand.discover
-            case "JCB": return STPCardBrand.JCB
-            case "DinersClub": return STPCardBrand.dinersClub
-            case "UnionPay": return STPCardBrand.unionPay
-            case "Unknown": return STPCardBrand.unknown
-            default: return STPCardBrand.unknown
-            }
-        }
-        return STPCardBrand.unknown
-    }
-
-    class func mapFromPaymentMethod(_ paymentMethod: STPPaymentMethod?) -> NSDictionary? {
-        guard let paymentMethod = paymentMethod else {
-            return nil
-        }
-        let card: NSDictionary = [
-            "brand": Mappers.mapFromCardBrand(paymentMethod.card?.brand) ?? NSNull(),
-            "country": paymentMethod.card?.country ?? NSNull(),
-            "expYear": paymentMethod.card?.expYear ?? NSNull(),
-            "expMonth": paymentMethod.card?.expMonth ?? NSNull(),
-            "fingerprint": paymentMethod.card?.fingerprint ?? NSNull(),
-            "funding": paymentMethod.card?.funding ?? NSNull(),
-            "last4": paymentMethod.card?.last4 ?? NSNull()
-        ]
-        let sepaDebit: NSDictionary = [
-            "bankCode": paymentMethod.sepaDebit?.bankCode ?? NSNull(),
-            "country": paymentMethod.sepaDebit?.country ?? NSNull(),
-            "fingerprint": paymentMethod.sepaDebit?.fingerprint ?? NSNull(),
-            "last4": paymentMethod.sepaDebit?.last4 ?? NSNull(),
-        ]
-        let bacsDebit: NSDictionary = [
-            "fingerprint": paymentMethod.bacsDebit?.fingerprint ?? NSNull(),
-            "last4": paymentMethod.bacsDebit?.last4 ?? NSNull(),
-            "sortCode": paymentMethod.bacsDebit?.sortCode ?? NSNull()
-        ]
-        let auBECSDebit: NSDictionary = [
-            "bsbNumber": paymentMethod.auBECSDebit?.bsbNumber ?? NSNull(),
-            "fingerprint": paymentMethod.auBECSDebit?.fingerprint ?? NSNull(),
-            "last4": paymentMethod.auBECSDebit?.last4 ?? NSNull()
-        ]
-        let USBankAccount: NSDictionary = [
-            "routingNumber": paymentMethod.usBankAccount?.routingNumber ?? NSNull(),
-            "accountHolderType": mapFromUSBankAccountHolderType(type: paymentMethod.usBankAccount?.accountHolderType),
-            "accountType": mapFromUSBankAccountType(type: paymentMethod.usBankAccount?.accountType),
-            "last4": paymentMethod.usBankAccount?.last4 ?? NSNull(),
-            "bankName": paymentMethod.usBankAccount?.bankName ?? NSNull(),
-            "linkedAccount": paymentMethod.usBankAccount?.linkedAccount ?? NSNull(),
-            "fingerprint": paymentMethod.usBankAccount?.fingerprint ?? NSNull(),
-            "preferredNetworks": paymentMethod.usBankAccount?.networks?.preferred ?? NSNull(),
-            "supportedNetworks": paymentMethod.usBankAccount?.networks?.supported ?? NSNull(),
-        ]
-        let method: NSDictionary = [
-            "id": paymentMethod.stripeId,
-            "paymentMethodType": Mappers.mapPaymentMethodType(type: paymentMethod.type),
-            "livemode": paymentMethod.liveMode,
-            "customerId": paymentMethod.customerId ?? NSNull(),
-            "billingDetails": Mappers.mapFromBillingDetails(billingDetails: paymentMethod.billingDetails),
-            "Card": card,
-            "Ideal": [
-                "bankIdentifierCode": paymentMethod.iDEAL?.bankIdentifierCode ?? "",
-                "bankName": paymentMethod.iDEAL?.bankName ?? ""
-            ],
-            "Fpx": [
-                "bank": paymentMethod.fpx?.bankIdentifierCode ?? "",
-            ],
-            "SepaDebit": sepaDebit,
-            "BacsDebit": bacsDebit,
-            "AuBecsDebit": auBECSDebit,
-            "Sofort": [
-                "country": paymentMethod.sofort?.country
-            ],
-            "Upi": [
-                "vpa": paymentMethod.upi?.vpa
-            ],
-            "USBankAccount": USBankAccount
-        ]
-        return method
-    }
-
-    class func mapIntentStatus(status: STPSetupIntentStatus?) -> String {
-        if let status = status {
-            switch status {
-            case STPSetupIntentStatus.succeeded: return "Succeeded"
-            case STPSetupIntentStatus.requiresPaymentMethod: return "RequiresPaymentMethod"
-            case STPSetupIntentStatus.requiresConfirmation: return "RequiresConfirmation"
-            case STPSetupIntentStatus.canceled: return "Canceled"
-            case STPSetupIntentStatus.processing: return "Processing"
-            case STPSetupIntentStatus.requiresAction: return "RequiresAction"
-            case STPSetupIntentStatus.unknown: return "Unknown"
-            default: return "Unknown"
-            }
-        }
-        return "Unknown"
-    }
-
-    class func mapFromSetupIntentUsage(usage: STPSetupIntentUsage?) -> String {
-        if let usage = usage {
-            switch usage {
-            case STPSetupIntentUsage.none: return "None"
-            case STPSetupIntentUsage.offSession: return "OffSession"
-            case STPSetupIntentUsage.onSession: return "OnSession"
-            case STPSetupIntentUsage.unknown: return "Unknown"
-            default: return "Unknown"
-            }
-        }
-        return "Unknown"
-    }
-
-    class func mapToPaymentIntentFutureUsage(usage: String?) -> STPPaymentIntentSetupFutureUsage {
-        if let usage = usage {
-            switch usage {
-            case "None": return STPPaymentIntentSetupFutureUsage.none
-            case "OffSession": return STPPaymentIntentSetupFutureUsage.offSession
-            case "OnSession": return STPPaymentIntentSetupFutureUsage.onSession
-            case "Unknown": return STPPaymentIntentSetupFutureUsage.unknown
-            default: return STPPaymentIntentSetupFutureUsage.unknown
-            }
-        }
-        return STPPaymentIntentSetupFutureUsage.unknown
-    }
-
-    class func mapFromSetupIntent(setupIntent: STPSetupIntent) -> NSDictionary {
-        let intent: NSMutableDictionary = [
-            "id": setupIntent.stripeID,
-            "clientSecret": setupIntent.clientSecret,
-            "status": mapIntentStatus(status: setupIntent.status),
-            "description": setupIntent.stripeDescription ?? NSNull(),
-            "livemode": setupIntent.livemode,
-            "paymentMethodTypes": NSArray(),
-            "usage": mapFromSetupIntentUsage(usage: setupIntent.usage),
-            "paymentMethodId": setupIntent.paymentMethodID ?? NSNull(),
-            "created": NSNull(),
-            "lastSetupError": NSNull(),
-            "nextAction": mapNextAction(nextAction: setupIntent.nextAction) ?? NSNull(),
-        ]
-
-
-        let types = setupIntent.paymentMethodTypes.map {
-            mapPaymentMethodType(type: STPPaymentMethodType.init(rawValue: Int(truncating: $0))!)
-        }
-
-        intent.setValue(types, forKey: "paymentMethodTypes")
-        intent.setValue(convertDateToUnixTimestamp(date: setupIntent.created), forKey: "created")
-
-        if let lastSetupError = setupIntent.lastSetupError {
-            let setupError: NSMutableDictionary = [
-                "code": lastSetupError.code ?? NSNull(),
-                "message": lastSetupError.message ?? NSNull(),
-                "type": mapFromSetupIntentLastPaymentErrorType(lastSetupError.type) ?? NSNull(),
-                "declineCode": lastSetupError.declineCode ?? NSNull(),
-                "paymentMethod": mapFromPaymentMethod(lastSetupError.paymentMethod) ?? NSNull()
-            ]
-            intent.setValue(setupError, forKey: "lastSetupError")
-        }
-
-        return intent
-    }
-
-    @available(iOS 13.0, *)
-    class func mapToUserInterfaceStyle(_ style: String) -> PaymentSheet.UserInterfaceStyle {
-        switch style {
-        case "alwaysDark": return PaymentSheet.UserInterfaceStyle.alwaysDark
-        case "alwaysLight": return PaymentSheet.UserInterfaceStyle.alwaysLight
-        default: return PaymentSheet.UserInterfaceStyle.automatic
-        }
-    }
-
-    class func mapToReturnURL(urlScheme: String) -> String {
-        return urlScheme + "://safepay"
-    }
-
-    class func mapUICustomization(_ params: NSDictionary) -> STPThreeDSUICustomization {
-        let uiCustomization = STPThreeDSUICustomization()
-        if let labelSettings = params["label"] as? Dictionary<String, Any?> {
-            if let headingTextColor = labelSettings["headingTextColor"] as? String {
-                uiCustomization.labelCustomization.headingTextColor = UIColor(hexString: headingTextColor)
-            }
-            if let textColor = labelSettings["textColor"] as? String {
-                uiCustomization.labelCustomization.textColor = UIColor(hexString: textColor)
-            }
-            if let headingFontSize = labelSettings["headingFontSize"] as? Int {
-                uiCustomization.labelCustomization.headingFont = UIFont.systemFont(ofSize: CGFloat(headingFontSize))
-            }
-            if let textFontSize = labelSettings["textFontSize"] as? Int {
-                uiCustomization.labelCustomization.font = UIFont.systemFont(ofSize: CGFloat(textFontSize))
-            }
-        }
-
-        if let navigationBarSettings = params["navigationBar"] as? Dictionary<String, Any?> {
-            if let barTintColor = navigationBarSettings["barTintColor"] as? String {
-                uiCustomization.navigationBarCustomization.barTintColor = UIColor(hexString: barTintColor)
-            }
-            if let barStyle = navigationBarSettings["barStyle"] as? Int {
-                uiCustomization.navigationBarCustomization.barStyle = UIBarStyle(rawValue: barStyle) ?? .default
-            }
-            if let headerText = navigationBarSettings["headerText"] as? String {
-                uiCustomization.navigationBarCustomization.headerText = headerText
-            }
-            if let buttonText = navigationBarSettings["buttonText"] as? String {
-                uiCustomization.navigationBarCustomization.buttonText = buttonText
-            }
-            if let textFontSize = navigationBarSettings["textFontSize"] as? Int {
-                uiCustomization.navigationBarCustomization.font = UIFont.systemFont(ofSize: CGFloat(textFontSize))
-            }
-            if let textColor = navigationBarSettings["textColor"] as? String {
-                uiCustomization.navigationBarCustomization.textColor = UIColor(hexString: textColor)
-            }
-            if let translucent = navigationBarSettings["translucent"] as? Bool {
-                uiCustomization.navigationBarCustomization.translucent = translucent
-            }
-        }
-
-        if let textFieldSettings = params["textField"] as? Dictionary<String, Any?> {
-            if let borderColor = textFieldSettings["borderColor"] as? String {
-                uiCustomization.textFieldCustomization.borderColor = UIColor(hexString: borderColor)
-            }
-            if let borderWidth = textFieldSettings["borderWidth"] as? Int {
-                uiCustomization.textFieldCustomization.borderWidth = CGFloat(borderWidth)
-            }
-            if let borderRadius = textFieldSettings["borderRadius"] as? Int {
-                uiCustomization.textFieldCustomization.cornerRadius = CGFloat(borderRadius)
-            }
-            if let textColor = textFieldSettings["textColor"] as? String {
-                uiCustomization.textFieldCustomization.textColor = UIColor(hexString: textColor)
-            }
-            if let textFontSize = textFieldSettings["textFontSize"] as? Int {
-                uiCustomization.textFieldCustomization.font = UIFont.systemFont(ofSize: CGFloat(textFontSize))
-            }
-        }
-
-        if let footerSettings = params["footer"] as? Dictionary<String, Any?> {
-            if let backgroundColor = footerSettings["backgroundColor"] as? String {
-                uiCustomization.footerCustomization.backgroundColor = UIColor(hexString: backgroundColor)
-            }
-            if let chevronColor = footerSettings["chevronColor"] as? String {
-                uiCustomization.footerCustomization.chevronColor = UIColor(hexString: chevronColor)
-            }
-            if let headingTextColor = footerSettings["headingTextColor"] as? String {
-                uiCustomization.footerCustomization.headingTextColor = UIColor(hexString: headingTextColor)
-            }
-            if let textColor = footerSettings["textColor"] as? String {
-                uiCustomization.footerCustomization.textColor = UIColor(hexString: textColor)
-            }
-        }
-
-        if let submitButtonSettings = params["submitButton"] as? Dictionary<String, Any?> {
-            let buttonCustomization = uiCustomization.buttonCustomization(for: STPThreeDSCustomizationButtonType.submit)
-
-            if let backgroundColor = submitButtonSettings["backgroundColor"] as? String {
-                buttonCustomization.backgroundColor = UIColor(hexString: backgroundColor)
-            }
-            if let borderRadius = submitButtonSettings["borderRadius"] as? Int {
-                buttonCustomization.cornerRadius = CGFloat(borderRadius)
-            }
-            if let textFontSize = submitButtonSettings["textFontSize"] as? Int {
-                buttonCustomization.font = UIFont.systemFont(ofSize: CGFloat(textFontSize))
-            }
-            if let textColor = submitButtonSettings["textColor"] as? String {
-                buttonCustomization.textColor = UIColor(hexString: textColor)
-            }
-
-            uiCustomization.setButtonCustomization(buttonCustomization, for: STPThreeDSCustomizationButtonType.submit)
-        }
-
-        if let submitButtonSettings = params["cancelButton"] as? Dictionary<String, Any?> {
-            let buttonCustomization = uiCustomization.buttonCustomization(for: STPThreeDSCustomizationButtonType.cancel)
-
-            if let backgroundColor = submitButtonSettings["backgroundColor"] as? String {
-                buttonCustomization.backgroundColor = UIColor(hexString: backgroundColor)
-            }
-            if let borderRadius = submitButtonSettings["borderRadius"] as? Int {
-                buttonCustomization.cornerRadius = CGFloat(borderRadius)
-            }
-            if let textFontSize = submitButtonSettings["textFontSize"] as? Int {
-                buttonCustomization.font = UIFont.systemFont(ofSize: CGFloat(textFontSize))
-            }
-            if let textColor = submitButtonSettings["textColor"] as? String {
-                buttonCustomization.textColor = UIColor(hexString: textColor)
-            }
-
-            uiCustomization.setButtonCustomization(buttonCustomization, for: STPThreeDSCustomizationButtonType.cancel)
-        }
-
-        if let submitButtonSettings = params["continueButton"] as? Dictionary<String, Any?> {
-            let buttonCustomization = uiCustomization.buttonCustomization(for: STPThreeDSCustomizationButtonType.continue)
-
-            if let backgroundColor = submitButtonSettings["backgroundColor"] as? String {
-                buttonCustomization.backgroundColor = UIColor(hexString: backgroundColor)
-            }
-            if let borderRadius = submitButtonSettings["borderRadius"] as? Int {
-                buttonCustomization.cornerRadius = CGFloat(borderRadius)
-            }
-            if let textFontSize = submitButtonSettings["textFontSize"] as? Int {
-                buttonCustomization.font = UIFont.systemFont(ofSize: CGFloat(textFontSize))
-            }
-            if let textColor = submitButtonSettings["textColor"] as? String {
-                buttonCustomization.textColor = UIColor(hexString: textColor)
-            }
-
-            uiCustomization.setButtonCustomization(buttonCustomization, for: STPThreeDSCustomizationButtonType.continue)
-        }
-
-        if let submitButtonSettings = params["nextButton"] as? Dictionary<String, Any?> {
-            let buttonCustomization = uiCustomization.buttonCustomization(for: STPThreeDSCustomizationButtonType.next)
-
-            if let backgroundColor = submitButtonSettings["backgroundColor"] as? String {
-                buttonCustomization.backgroundColor = UIColor(hexString: backgroundColor)
-            }
-            if let borderRadius = submitButtonSettings["borderRadius"] as? Int {
-                buttonCustomization.cornerRadius = CGFloat(borderRadius)
-            }
-            if let textFontSize = submitButtonSettings["textFontSize"] as? Int {
-                buttonCustomization.font = UIFont.systemFont(ofSize: CGFloat(textFontSize))
-            }
-            if let textColor = submitButtonSettings["textColor"] as? String {
-                buttonCustomization.textColor = UIColor(hexString: textColor)
-            }
-
-            uiCustomization.setButtonCustomization(buttonCustomization, for: STPThreeDSCustomizationButtonType.next)
-        }
-
-        if let submitButtonSettings = params["resendButton"] as? Dictionary<String, Any?> {
-            let buttonCustomization = uiCustomization.buttonCustomization(for: STPThreeDSCustomizationButtonType.resend)
-
-            if let backgroundColor = submitButtonSettings["backgroundColor"] as? String {
-                buttonCustomization.backgroundColor = UIColor(hexString: backgroundColor)
-            }
-            if let borderRadius = submitButtonSettings["borderRadius"] as? Int {
-                buttonCustomization.cornerRadius = CGFloat(borderRadius)
-            }
-            if let textFontSize = submitButtonSettings["textFontSize"] as? Int {
-                buttonCustomization.font = UIFont.systemFont(ofSize: CGFloat(textFontSize))
-            }
-            if let textColor = submitButtonSettings["textColor"] as? String {
-                buttonCustomization.textColor = UIColor(hexString: textColor)
-            }
-
-            uiCustomization.setButtonCustomization(buttonCustomization, for: STPThreeDSCustomizationButtonType.resend)
-        }
-
-        if let backgroundColor = params["backgroundColor"] as? String {
-            uiCustomization.backgroundColor = UIColor(hexString: backgroundColor)
-        }
-
-
-        return uiCustomization
+        return result
     }
 
     class func convertDateToUnixTimestamp(date: Date?) -> String? {
@@ -928,62 +333,150 @@ class Mappers {
         return nil
     }
 
-    class func mapFromCardValidationState(state: STPCardValidationState?) -> String {
-        if let state = state {
-            switch state {
-            case STPCardValidationState.valid: return "Valid"
-            case STPCardValidationState.invalid: return "Invalid"
-            case STPCardValidationState.incomplete: return "Incomplete"
-            default: return "Unknown"
-            }
+    class func mapToSimulateReaderUpdate(_ update: String) -> SimulateReaderUpdate {
+        switch update {
+        case "available": return SimulateReaderUpdate.available
+        case "lowBattery": return SimulateReaderUpdate.lowBattery
+        case "none": return SimulateReaderUpdate.none
+        case "random": return SimulateReaderUpdate.random
+        case "required": return SimulateReaderUpdate.required
+        default: return SimulateReaderUpdate.none
         }
-        return "Unknown"
     }
 
-    class func mapToPKAddPassButtonStyle(style: String?) -> PKAddPassButtonStyle {
-        if let style = style {
-            if (style == "onDarkBackground") {
-                return .blackOutline
-            }
-        }
-        return .black
+    class func mapFromCardPresent(_ cardPresent: CardPresentDetails) -> NSDictionary {
+        let result: NSDictionary = [
+            "last4": cardPresent.last4,
+            "expMonth": cardPresent.expMonth,
+            "expYear": cardPresent.expYear,
+            "cardholderName": cardPresent.cardholderName ?? NSNull(),
+            "funding": cardPresent.funding,
+            "brand": cardPresent.brand,
+            "fingerprint": cardPresent.fingerprint,
+            "generatedCard": cardPresent.generatedCard ?? NSNull(),
+            "receipt": cardPresent.receipt ?? NSNull(),
+            "emvAuthData": cardPresent.emvAuthData ?? NSNull(),
+            "country": cardPresent.country ?? NSNull(),
+            "preferredLocales": cardPresent.preferredLocales ?? NSNull(),
+        ]
+        return result
     }
 
-    class func mapFromUSBankAccountHolderType(type: STPPaymentMethodUSBankAccountHolderType?) -> String {
-        if let type = type {
-            switch type {
-                case STPPaymentMethodUSBankAccountHolderType.company: return "Company"
-                case STPPaymentMethodUSBankAccountHolderType.individual: return "Individual"
-                case STPPaymentMethodUSBankAccountHolderType.unknown: return "Unknown"
-            }
-        }
-        return "Unknown"
-    }
-
-    class func mapToUSBankAccountHolderType(type: String?) -> STPPaymentMethodUSBankAccountHolderType {
+    class func mapFromPaymentMethodDetailsType(_ type: PaymentMethodType) -> String {
         switch type {
-            case "Company": return STPPaymentMethodUSBankAccountHolderType.company
-            case "Individual": return STPPaymentMethodUSBankAccountHolderType.individual
-            default: return STPPaymentMethodUSBankAccountHolderType.individual
+        case PaymentMethodType.card: return "card"
+        case PaymentMethodType.cardPresent: return "cardPresent"
+        case PaymentMethodType.interacPresent: return "interacPresent"
+        default: return "unknown"
         }
     }
 
-    class func mapFromUSBankAccountType(type: STPPaymentMethodUSBankAccountType?) -> String {
-        if let type = type {
-            switch type {
-                case STPPaymentMethodUSBankAccountType.savings: return "Savings"
-                case STPPaymentMethodUSBankAccountType.checking: return "Checking"
-                case STPPaymentMethodUSBankAccountType.unknown: return "Unknown"
-            }
+    class func mapFromPaymentMethodDetails(_ paymentMethodDetails: PaymentMethodDetails) -> NSDictionary {
+        var cardPresentMapped: NSDictionary?
+        if let cardPresent = paymentMethodDetails.cardPresent{
+            cardPresentMapped = mapFromCardPresent(cardPresent)
         }
-        return "Unknown"
+        var interacPresentMapped: NSDictionary?
+        if let interacPresent = paymentMethodDetails.interacPresent{
+            interacPresentMapped = mapFromCardPresent(interacPresent)
+        }
+
+        let result: NSDictionary = [
+            "type": mapFromPaymentMethodDetailsType(paymentMethodDetails.type),
+            "cardPresent": cardPresentMapped ?? NSNull(),
+            "interacPresent": interacPresentMapped ?? NSNull(),
+        ]
+        return result
     }
 
-    class func mapToUSBankAccountType(type: String?) -> STPPaymentMethodUSBankAccountType {
+    class func mapFromRefund(_ refund: Refund) -> NSDictionary {
+        var paymentMethodDetailsMapped: NSDictionary?
+        if let paymentMethodDetails = refund.paymentMethodDetails{
+            paymentMethodDetailsMapped = mapFromPaymentMethodDetails(paymentMethodDetails)
+        }
+        let result: NSDictionary = [
+            "amount": refund.amount,
+            "created": convertDateToUnixTimestamp(date: refund.created) ?? NSNull(),
+            "chargeId": refund.charge,
+            "id": refund.stripeId,
+            "currency": refund.currency,
+            "description": refund.description,
+            "failureReason": refund.failureReason ?? NSNull(),
+            "reason": refund.reason ?? NSNull(),
+            "status": mapFromRefundStatus(refund.status),
+            "paymentMethodDetails": paymentMethodDetailsMapped ?? NSNull(),
+        ]
+        return result
+    }
+
+    class func mapFromRefundStatus(_ type: RefundStatus) -> String {
         switch type {
-            case "Savings": return STPPaymentMethodUSBankAccountType.savings
-            case "Checking": return STPPaymentMethodUSBankAccountType.checking
-            default: return STPPaymentMethodUSBankAccountType.checking
+        case RefundStatus.failed: return "failed"
+        case RefundStatus.pending: return "pending"
+        case RefundStatus.succeeded: return "succeeded"
+        case RefundStatus.unknown: return "unknown"
+        default: return "unknown"
         }
+    }
+
+    class func mapFromCardDetails(_ cardDetails: CardDetails) -> NSDictionary {
+        let result: NSDictionary = [
+            "brand": cardDetails.brand,
+            "country": cardDetails.country ?? NSNull(),
+            "expMonth": cardDetails.expMonth,
+            "expYear": cardDetails.expYear,
+            "funding": cardDetails.funding,
+            "last4": cardDetails.last4 ?? NSNull(),
+            "fingerprint": cardDetails.fingerprint ?? NSNull(),
+        ]
+        return result
+    }
+
+    class func mapFromPaymentMethod(_ paymentMethod: PaymentMethod) -> NSDictionary {
+        let result: NSDictionary = [
+            "id": paymentMethod.stripeId,
+            "created": convertDateToUnixTimestamp(date: paymentMethod.created) ?? NSNull(),
+            "customer": paymentMethod.customer ?? NSNull(),
+            "cardDetails": mapFromCardDetails(paymentMethod.card!),
+            "type": mapFromPaymentMethodDetailsType(paymentMethod.type),
+        ]
+        return result
+    }
+
+    class func mapFromPaymentStatus(_ paymentStatus: PaymentStatus) -> String {
+        switch paymentStatus {
+        case PaymentStatus.notReady: return "notReady"
+        case PaymentStatus.ready: return "ready"
+        case PaymentStatus.processing: return "processing"
+        case PaymentStatus.waitingForInput: return "waitingForInput"
+        default: return "unknown"
+        }
+    }
+
+    class func mapFromConnectionStatus(_ connectionStatus: ConnectionStatus) -> String {
+        switch connectionStatus {
+        case ConnectionStatus.connected: return "connected"
+        case ConnectionStatus.connecting: return "connecting"
+        case ConnectionStatus.notConnected: return "notConnected"
+        default: return "unknown"
+        }
+    }
+
+    class func mapToLogLevel(_ logLevel: String?) -> LogLevel {
+        switch logLevel {
+        case "none": return LogLevel.none
+        case "verbose": return LogLevel.verbose
+        default: return LogLevel.none
+        }
+    }
+}
+
+extension UInt {
+    init(bitComponents : [UInt]) {
+        self = bitComponents.reduce(0, +)
+    }
+
+    func bitComponents() -> [UInt] {
+        return (0 ..< 8*MemoryLayout<UInt>.size).map( { 1 << $0 }).filter( { self & $0 != 0 } )
     }
 }
