@@ -14,6 +14,19 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Reader _$ReaderFromJson(Map<String, dynamic> json) {
+  switch (json['type']) {
+    case 'Android':
+      return _ReaderAndroid.fromJson(json);
+    case 'Ios':
+      return _ReaderIos.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json, 'type', 'Reader', 'Invalid union type "${json['type']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$Reader {
   String get id => throw _privateConstructorUsedError;
@@ -196,7 +209,7 @@ mixin _$Reader {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ReaderCopyWith<Reader> get copyWith => throw _privateConstructorUsedError;
 }
@@ -539,7 +552,12 @@ class _$_ReaderAndroid implements _ReaderAndroid {
       this.pinKeyProfileId,
       this.trackKeyProfileId,
       this.settingsVersion,
-      this.pinKeysetId});
+      this.pinKeysetId,
+      final String? $type})
+      : $type = $type ?? 'Android';
+
+  factory _$_ReaderAndroid.fromJson(Map<String, dynamic> json) =>
+      _$$_ReaderAndroidFromJson(json);
 
   @override
   final String id;
@@ -591,6 +609,9 @@ class _$_ReaderAndroid implements _ReaderAndroid {
   final String? settingsVersion;
   @override
   final String? pinKeysetId;
+
+  @JsonKey(name: 'type')
+  final String $type;
 
   @override
   String toString() {
@@ -647,6 +668,7 @@ class _$_ReaderAndroid implements _ReaderAndroid {
                 .equals(other.pinKeysetId, pinKeysetId));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -947,6 +969,13 @@ class _$_ReaderAndroid implements _ReaderAndroid {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ReaderAndroidToJson(
+      this,
+    );
+  }
 }
 
 abstract class _ReaderAndroid implements Reader {
@@ -976,6 +1005,9 @@ abstract class _ReaderAndroid implements Reader {
       final String? trackKeyProfileId,
       final String? settingsVersion,
       final String? pinKeysetId}) = _$_ReaderAndroid;
+
+  factory _ReaderAndroid.fromJson(Map<String, dynamic> json) =
+      _$_ReaderAndroid.fromJson;
 
   @override
   String get id;
@@ -1169,7 +1201,12 @@ class _$_ReaderIos implements _ReaderIos {
       required this.status,
       required this.discoveryMethod,
       required this.batteryStatus,
-      this.isCharging});
+      this.isCharging,
+      final String? $type})
+      : $type = $type ?? 'Ios';
+
+  factory _$_ReaderIos.fromJson(Map<String, dynamic> json) =>
+      _$$_ReaderIosFromJson(json);
 
   @override
   final String id;
@@ -1203,6 +1240,9 @@ class _$_ReaderIos implements _ReaderIos {
   final BatteryStatus batteryStatus;
   @override
   final int? isCharging;
+
+  @JsonKey(name: 'type')
+  final String $type;
 
   @override
   String toString() {
@@ -1242,6 +1282,7 @@ class _$_ReaderIos implements _ReaderIos {
                 .equals(other.isCharging, isCharging));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1505,6 +1546,13 @@ class _$_ReaderIos implements _ReaderIos {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ReaderIosToJson(
+      this,
+    );
+  }
 }
 
 abstract class _ReaderIos implements Reader {
@@ -1525,6 +1573,9 @@ abstract class _ReaderIos implements Reader {
       required final IosDiscoveryMethod discoveryMethod,
       required final BatteryStatus batteryStatus,
       final int? isCharging}) = _$_ReaderIos;
+
+  factory _ReaderIos.fromJson(Map<String, dynamic> json) =
+      _$_ReaderIos.fromJson;
 
   @override
   String get id;

@@ -40,6 +40,7 @@ _$_ReaderAndroid _$$_ReaderAndroidFromJson(Map<String, dynamic> json) =>
       trackKeyProfileId: json['trackKeyProfileId'] as String?,
       settingsVersion: json['settingsVersion'] as String?,
       pinKeysetId: json['pinKeysetId'] as String?,
+      $type: json['type'] as String?,
     );
 
 Map<String, dynamic> _$$_ReaderAndroidToJson(_$_ReaderAndroid instance) =>
@@ -70,6 +71,7 @@ Map<String, dynamic> _$$_ReaderAndroidToJson(_$_ReaderAndroid instance) =>
       'trackKeyProfileId': instance.trackKeyProfileId,
       'settingsVersion': instance.settingsVersion,
       'pinKeysetId': instance.pinKeysetId,
+      'type': instance.$type,
     };
 
 const _$LocationStatusEnumMap = {
@@ -127,6 +129,7 @@ _$_ReaderIos _$$_ReaderIosFromJson(Map<String, dynamic> json) => _$_ReaderIos(
           $enumDecode(_$IosDiscoveryMethodEnumMap, json['discoveryMethod']),
       batteryStatus: $enumDecode(_$BatteryStatusEnumMap, json['batteryStatus']),
       isCharging: json['isCharging'] as int?,
+      $type: json['type'] as String?,
     );
 
 Map<String, dynamic> _$$_ReaderIosToJson(_$_ReaderIos instance) =>
@@ -147,6 +150,7 @@ Map<String, dynamic> _$$_ReaderIosToJson(_$_ReaderIos instance) =>
       'discoveryMethod': _$IosDiscoveryMethodEnumMap[instance.discoveryMethod]!,
       'batteryStatus': _$BatteryStatusEnumMap[instance.batteryStatus]!,
       'isCharging': instance.isCharging,
+      'type': instance.$type,
     };
 
 const _$IosDiscoveryMethodEnumMap = {

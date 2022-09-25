@@ -1,3 +1,4 @@
+import 'dart:io';
 
 import 'package:flutter/services.dart';
 
@@ -11,5 +12,6 @@ class MethodChannelStripeTerminalFactory {
           'flutter.stripe.terminal/payments',
           JSONMethodCodec(),
         ),
+        isAndroid: Platform.isAndroid,
       );
 }

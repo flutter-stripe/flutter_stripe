@@ -56,6 +56,8 @@ class Reader with _$Reader {
     required BatteryStatus batteryStatus,
     int? isCharging,
   }) = _ReaderIos;
+
+  factory Reader.fromJson(Map<String, dynamic> json) => _$ReaderFromJson(json);
 }
 
 enum ConnectionStatus {

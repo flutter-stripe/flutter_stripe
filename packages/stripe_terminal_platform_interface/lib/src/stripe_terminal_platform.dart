@@ -1,5 +1,7 @@
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+import 'package:stripe_terminal_platform_interface/src/model/init_params.dart';
 
+import 'model/reader.dart';
 import 'stripe_terminal_method_channel_factory.dart';
 
 abstract class StripeTerminalPlatform extends PlatformInterface {
@@ -19,6 +21,12 @@ abstract class StripeTerminalPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-    static StripeTerminalPlatform _instance = const MethodChannelStripeTerminalFactory().create();
+  static StripeTerminalPlatform _instance =
+      const MethodChannelStripeTerminalFactory().create();
 
+  /// Intitialise the platform
+  ///
+  /// Returns a [Reader] in case successfull and throws [StripeError] in case
+  /// of failure.
+  Future<Reader> initialize(InitParams params);
 }
