@@ -358,6 +358,12 @@ class WebStripe extends StripePlatform {
       {required String clientSecret}) {
     throw WebUnsupportedError.method('collectFinancialConnectionsAccounts');
   }
+
+  @override
+  Future<bool> handleURLCallback(String url) {
+    // TODO: implement handleURLCallback
+    throw UnimplementedError();
+  }
 }
 
 class WebUnsupportedError extends Error implements UnsupportedError {

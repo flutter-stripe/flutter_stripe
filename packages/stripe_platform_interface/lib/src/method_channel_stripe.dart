@@ -412,6 +412,14 @@ class MethodChannelStripe extends StripePlatform {
 
     return FinancialConnectionSessionResult.fromJson(result);
   }
+
+  @override
+  Future<bool> handleURLCallback(String url) async {
+    final result = await _methodChannel.invokeMethod('handleURLCallback', {
+      'url': url,
+    });
+    return result ?? false;
+  }
 }
 
 class MethodChannelStripeFactory {
