@@ -27,12 +27,12 @@ class StripeTerminalAndroidPlugin : FlutterPlugin, MethodCallHandler {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter.stripe.terminal/payments", JSONMethodCodec.INSTANCE)
         channel.setMethodCallHandler(this)
 
-        stripeSdk = StripeTerminalReactNativeModule(ReactApplicationContext(flutterPluginBinding.applicationContext))
+        stripeSdk = StripeTerminalReactNativeModule(ReactApplicationContext(flutterPluginBinding.applicationContext, channel))
     }
 
     override fun onMethodCall(call: MethodCall, result: Result) {
         when (call.method) {
-            "initialise" -> stripeSdk.initialize(call.requiredArgument("params"), Promise(result))
+            "initialize" -> stripeSdk.initialize(call.requiredArgument("params"), Promise(result))
             "cancelCollectPaymentMethod" -> stripeSdk.cancelCollectPaymentMethod(Promise(result))
             "cancelCollectSetupIntent" -> stripeSdk.cancelCollectSetupIntent(Promise(result))
             "simulateReaderUpdate" -> stripeSdk.simulateReaderUpdate(call.requiredArgument("update"), Promise(result))

@@ -25,9 +25,81 @@ class StripePlugin: StripeTerminalReactNative, FlutterPlugin {
     }
 
     func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        
+        let resolve = resolver(for: result)
+        let reject = rejecter(for: result)
+        
         switch call.method {
-        case "initialise":
-            return initialise(call, result: result)
+        case "initialize":
+            return initialize(params: getRequiredParameter(call, key: "params"), resolver: resolve, rejecter: reject)
+        case "cancelCollectPaymentMethod":
+            return cancelCollectPaymentMethod( resolver: resolve, rejecter: reject)
+        case "cancelCollectSetupIntent":
+            return cancelCollectSetupIntent( resolver: resolve, rejecter: reject)
+        case "simulateReaderUpdate":
+            return simulateReaderUpdate(update: getRequiredParameter(call, key: "update"), resolver: resolve, rejecter: reject)
+        case "setSimulatedCard":
+            return setSimulatedCard(cardNumber: getRequiredParameter(call, key: "cardNumber"), resolver: resolve, rejecter: reject)
+        case "setConnectionToken":
+            return setConnectionToken(params: getRequiredParameter(call, key: "params"), resolver: resolve, rejecter: reject)
+        case "discoverReaders":
+            return discoverReaders(params: getRequiredParameter(call, key: "params"), resolver: resolve, rejecter: reject)
+        case "cancelDiscovering":
+            return cancelDiscovering( resolver: resolve, rejecter: reject)
+        case "connectBluetoothReader":
+            return connectBluetoothReader(params: getRequiredParameter(call, key: "params"), resolver: resolve, rejecter: reject)
+        /*case "connectEmbeddedReader":
+            return connectEmbeddedReader(params: getRequiredParameter(call, key: "params"), resolver: resolve, rejecter: reject)
+        case "connectHandoffReader":
+            return connectHandoffReader(params: getRequiredParameter(call, key: "params"), resolver: resolve, rejecter: reject)*/
+        case "connectInternetReader":
+            return connectInternetReader(params: getRequiredParameter(call, key: "params"), resolver: resolve, rejecter: reject)
+        /*case "connectLocalMobileReader":
+            return connectLocalMobileReader(params: getRequiredParameter(call, key: "params"), resolver: resolve, rejecter: reject)
+        case "connectUsbReader":
+            return connectUsbReader(params: getRequiredParameter(call, key: "params"), resolver: resolve, rejecter: reject)*/
+        case "disconnectReader":
+            return disconnectReader( resolver: resolve, rejecter: reject)
+        case "createPaymentIntent":
+            return createPaymentIntent(params: getRequiredParameter(call, key: "params"), resolver: resolve, rejecter: reject)
+        case "collectPaymentMethod":
+            return collectPaymentMethod(params: getRequiredParameter(call, key: "params"), resolver: resolve, rejecter: reject)
+        case "retrievePaymentIntent":
+            return retrievePaymentIntent(secret: getRequiredParameter(call, key: "clientSecret"), resolver: resolve, rejecter: reject)
+        case "processPayment":
+            return processPayment(paymentIntentId: getRequiredParameter(call, key: "paymentIntentId"), resolver: resolve, rejecter: reject)
+        case "getLocations":
+            return getLocations(params: getRequiredParameter(call, key: "params"), resolver: resolve, rejecter: reject)
+        case "createSetupIntent":
+            return createSetupIntent(params: getRequiredParameter(call, key: "params"), resolver: resolve, rejecter: reject)
+        case "retrieveSetupIntent":
+            return retrieveSetupIntent(secret: getRequiredParameter(call, key: "clientSecret"), resolver: resolve, rejecter: reject)
+        case "cancelPaymentIntent":
+            return cancelPaymentIntent(paymentIntentId: getRequiredParameter(call, key: "paymentIntentId"), resolver: resolve, rejecter: reject)
+        case "cancelReadReusableCard":
+            return cancelReadReusableCard( resolver: resolve, rejecter: reject)
+        case "collectSetupIntentPaymentMethod":
+            return collectSetupIntentPaymentMethod(params: getRequiredParameter(call, key: "params"), resolver: resolve, rejecter: reject)
+        case "installAvailableUpdate":
+            return installAvailableUpdate( resolver: resolve, rejecter: reject)
+        case "cancelInstallingUpdate":
+            return cancelInstallingUpdate( resolver: resolve, rejecter: reject)
+        case "setReaderDisplay":
+            return setReaderDisplay(params: getRequiredParameter(call, key: "params"), resolver: resolve, rejecter: reject)
+        case "cancelSetupIntent":
+            return cancelSetupIntent(setupIntentId: getRequiredParameter(call, key: "setupIntentId"), resolver: resolve, rejecter: reject)
+        case "confirmSetupIntent":
+            return confirmSetupIntent(setupIntentId: getRequiredParameter(call, key: "setupIntentId"), resolver: resolve, rejecter: reject)
+        case "clearReaderDisplay":
+            return clearReaderDisplay( resolver: resolve, rejecter: reject)
+        case "collectRefundPaymentMethod":
+            return collectRefundPaymentMethod(params: getRequiredParameter(call, key: "params"), resolver: resolve, rejecter: reject)
+        case "clearCachedCredentials":
+            return clearCachedCredentials( resolver: resolve, rejecter: reject)
+        case "processRefund":
+            return processRefund( resolver: resolve, rejecter: reject)
+        case "readReusableCard":
+            return readReusableCard(params: getRequiredParameter(call, key: "params"), resolver: resolve, rejecter: reject)
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -57,18 +129,10 @@ class StripePlugin: StripeTerminalReactNative, FlutterPlugin {
     func sendEvent(withName name: String, body: NSDictionary) {
         channel.invokeMethod(name, arguments: body)
     }
-}
-
-
-// Mark: MethodChannel handlers
-extension  StripePlugin {
     
-    func initialise(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        guard let params = call.arguments as? NSDictionary else {
-            result(FlutterError.invalidParams)
-            return
-        }
+    func getRequiredParameter<T>(_ call: FlutterMethodCall, key: String) -> T {
+        let arguments = call.arguments as! FlutterMap
+        let params = arguments[key] as! T
+        return params
     }
-
 }
-
