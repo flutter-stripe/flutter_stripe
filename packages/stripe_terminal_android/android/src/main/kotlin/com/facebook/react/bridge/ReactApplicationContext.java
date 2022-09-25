@@ -1,42 +1,29 @@
 package com.facebook.react.bridge;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.ContextWrapper;
-
-import androidx.fragment.app.FragmentActivity;
 
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.ref.WeakReference;
-
-import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
-import kotlin.Unit;
+import io.flutter.plugin.common.MethodChannel;
 
 public class ReactApplicationContext extends ContextWrapper {
 
-    private final ActivityPluginBinding binding;
+    private final MethodChannel channel;
 
-    public ReactApplicationContext(ActivityPluginBinding binding) {
-        super(binding.getActivity());
-        this.binding = binding;
+    public ReactApplicationContext(Context context, MethodChannel channel) {
+        super(context);
+        this.channel = channel;
     }
 
-    public void addActivityEventListener(@NotNull BaseActivityEventListener activityEventListener) {
-        activityEventListener.activity = new WeakReference<>(binding.getActivity());
-        binding.addActivityResultListener(activityEventListener);
-    }
-
-    public FragmentActivity getActivity() {
-        return (FragmentActivity) binding.getActivity();
-    }
-
-    public FragmentActivity getCurrentActivity() {
-        return (FragmentActivity) binding.getActivity();
-    }
-
+    @SuppressWarnings("unchecked")
     public <T> T getJSModule(@NotNull Class<T> clazz) {
-        return (T) new DeviceEventManagerModule.RCTDeviceEventEmitter();
+        if (clazz == DeviceEventManagerModule.RCTDeviceEventEmitter.class) {
+            return (T) new DeviceEventManagerModule.RCTDeviceEventEmitter(channel);
+        } else {
+            throw new IllegalArgumentException("Class " + clazz + " not supported");
+        }
     }
 }

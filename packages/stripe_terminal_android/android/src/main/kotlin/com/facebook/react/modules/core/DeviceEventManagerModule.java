@@ -1,18 +1,17 @@
 package com.facebook.react.modules.core;
 
-import com.facebook.react.bridge.WritableMap;
+import androidx.annotation.NonNull;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.facebook.react.uimanager.events.RCTEventEmitter;
 
-import kotlin.Unit;
+import io.flutter.plugin.common.MethodChannel;
 
 public class DeviceEventManagerModule {
 
-    public static class RCTDeviceEventEmitter {
+    public static class RCTDeviceEventEmitter extends RCTEventEmitter {
 
-        public void emit(@NotNull String eventName, @Nullable WritableMap eventData) {
-
+        public RCTDeviceEventEmitter(@NonNull MethodChannel channel) {
+            super(channel);
         }
     }
 }
