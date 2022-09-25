@@ -5,7 +5,6 @@ import androidx.annotation.NonNull
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.uimanager.ThemedReactContext
 import com.stripeterminalreactnative.StripeTerminalReactNativeModule
 import io.flutter.embedding.android.FlutterFragmentActivity
 import io.flutter.embedding.engine.plugins.FlutterPlugin

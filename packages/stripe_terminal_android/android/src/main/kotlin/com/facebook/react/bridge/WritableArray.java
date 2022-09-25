@@ -1,5 +1,7 @@
 package com.facebook.react.bridge;
 
+import androidx.annotation.Nullable;
+
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 
@@ -22,7 +24,9 @@ public class WritableArray extends ReadableArray {
         add(value);
     }
 
-    public void pushMap(@NotNull WritableNativeMap map) {
-        add(map);
+    public void pushMap(@Nullable ReadableMap map) {
+        if (map != null) {
+            add(map);
+        }
     }
 }

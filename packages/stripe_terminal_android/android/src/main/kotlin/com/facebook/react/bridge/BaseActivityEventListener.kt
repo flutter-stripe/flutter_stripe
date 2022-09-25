@@ -2,7 +2,6 @@ package com.facebook.react.bridge
 
 import android.app.Activity
 import android.content.Intent
-import com.flutter.stripe.StripeAndroidPlugin
 import io.flutter.plugin.common.PluginRegistry.ActivityResultListener
 import java.lang.ref.WeakReference
 

@@ -5,13 +5,14 @@ import android.content.ContextWrapper;
 
 import androidx.fragment.app.FragmentActivity;
 
-import com.flutter.stripe.StripeAndroidPlugin;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.ref.WeakReference;
 
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
+import kotlin.Unit;
 
 public class ReactApplicationContext extends ContextWrapper {
 
@@ -33,5 +34,9 @@ public class ReactApplicationContext extends ContextWrapper {
 
     public FragmentActivity getCurrentActivity() {
         return (FragmentActivity) binding.getActivity();
+    }
+
+    public <T> T getJSModule(@NotNull Class<T> clazz) {
+        return (T) new DeviceEventManagerModule.RCTDeviceEventEmitter();
     }
 }
