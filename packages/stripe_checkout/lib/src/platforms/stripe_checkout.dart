@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import 'checkout.dart';
@@ -87,7 +88,7 @@ class CheckoutPage extends StatefulWidget {
   /// The URL to which Stripe should send customers when payment is complete.
   ///
   /// Only needed when using on a non web app. If the webview url matches
-  /// this one, [onCompleted] will return as succesfull
+  /// this one, [onCompleted] will return as successful
   final String successUrl;
 
   /// The URL to which Stripe should send customers when payment is canceled.
@@ -133,11 +134,20 @@ class _CheckoutPageState extends State<CheckoutPage> {
               final successUrl = widget.successUrl;
               final canceledUrl = widget.canceledUrl;
 
+              const testUrl =
+                  "intent://ideal.ing.nl/ideal/static/detect/detect_mob?trxid=0140000710955039&random=z05d7b5bbfb700bb";
+              _launchURL(testUrl);
+              return NavigationDecision.prevent;
+
+              print("@@@@@@@@@@@@@@@@@@ request.url: ${request.url}");
               if (request.url.startsWith(successUrl)) {
                 widget.onCompleted?.call(const CheckoutResponse.success());
                 return NavigationDecision.prevent;
               } else if (request.url.startsWith(canceledUrl)) {
                 widget.onCompleted?.call(const CheckoutResponse.canceled());
+                return NavigationDecision.prevent;
+              } else if (request.url.contains(RegExp('^intent://.*\$'))) {
+                _launchURL(request.url);
                 return NavigationDecision.prevent;
               }
               return NavigationDecision.navigate;
@@ -177,6 +187,21 @@ class _CheckoutPageState extends State<CheckoutPage> {
     } catch (e) {
       widget.onCompleted?.call(CheckoutResponse.error(error: e));
     }
+  }
+
+  Future<void> _launchURL(String url) async {
+    final uri = Uri.parse(url);
+
+    await launchUrl(
+      uri,
+      mode: LaunchMode.externalApplication,
+    );
+
+    // if (await canLaunchUrl(uri)) {
+    //
+    // } else {
+    //   throw 'Could not launch $url';
+    // }
   }
 }
 
