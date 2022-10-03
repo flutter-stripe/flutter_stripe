@@ -241,7 +241,9 @@ class _$_Address extends _Address {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AddressToJson(this);
+    return _$$_AddressToJson(
+      this,
+    );
   }
 }
 
@@ -260,27 +262,27 @@ abstract class _Address extends Address {
   @override
 
   /// City, town or district.
-  String? get city => throw _privateConstructorUsedError;
+  String? get city;
   @override
 
   /// Country
-  String? get country => throw _privateConstructorUsedError;
+  String? get country;
   @override
 
   /// Address line1 (e.g. Street, C/O , PO Box).
-  String? get line1 => throw _privateConstructorUsedError;
+  String? get line1;
   @override
 
   /// Address line2 (e.g. building, appartment or unit).
-  String? get line2 => throw _privateConstructorUsedError;
+  String? get line2;
   @override
 
   /// ZIP or postal code.
-  String? get postalCode => throw _privateConstructorUsedError;
+  String? get postalCode;
   @override
 
   /// State or province.
-  String? get state => throw _privateConstructorUsedError;
+  String? get state;
   @override
   @JsonKey(ignore: true)
   _$$_AddressCopyWith<_$_Address> get copyWith =>

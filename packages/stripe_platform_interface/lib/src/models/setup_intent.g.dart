@@ -37,7 +37,7 @@ Map<String, dynamic> _$$_SetupIntentToJson(_$_SetupIntent instance) =>
       'paymentMethodId': instance.paymentMethodId,
       'usage': instance.usage,
       'paymentMethodTypes': instance.paymentMethodTypes
-          .map((e) => _$PaymentMethodTypeEnumMap[e])
+          .map((e) => _$PaymentMethodTypeEnumMap[e]!)
           .toList(),
       'description': instance.description,
       'created': instance.created,

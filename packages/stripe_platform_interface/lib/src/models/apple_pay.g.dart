@@ -86,7 +86,7 @@ Map<String, dynamic> _$$_RecurringCartSummaryItemToJson(
     <String, dynamic>{
       'label': instance.label,
       'amount': instance.amount,
-      'intervalUnit': _$ApplePayIntervalUnitEnumMap[instance.intervalUnit],
+      'intervalUnit': _$ApplePayIntervalUnitEnumMap[instance.intervalUnit]!,
       'intervalCount': instance.intervalCount,
       'startDate': instance.startDate,
       'number': instance.number,
@@ -132,10 +132,10 @@ Map<String, dynamic> _$$_ApplePayPresentParamsToJson(
       'country': instance.country,
       'currency': instance.currency,
       'requiredShippingAddressFields': instance.requiredShippingAddressFields
-          ?.map((e) => _$ApplePayContactFieldsTypeEnumMap[e])
+          ?.map((e) => _$ApplePayContactFieldsTypeEnumMap[e]!)
           .toList(),
       'requiredBillingContactFields': instance.requiredBillingContactFields
-          ?.map((e) => _$ApplePayContactFieldsTypeEnumMap[e])
+          ?.map((e) => _$ApplePayContactFieldsTypeEnumMap[e]!)
           .toList(),
       'shippingMethods':
           instance.shippingMethods?.map((e) => e.toJson()).toList(),
@@ -160,6 +160,6 @@ _$_ApplePayErrorAddressField _$$_ApplePayErrorAddressFieldFromJson(
 Map<String, dynamic> _$$_ApplePayErrorAddressFieldToJson(
         _$_ApplePayErrorAddressField instance) =>
     <String, dynamic>{
-      'field': _$ApplePayContactFieldsTypeEnumMap[instance.field],
+      'field': _$ApplePayContactFieldsTypeEnumMap[instance.field]!,
       'message': instance.message,
     };

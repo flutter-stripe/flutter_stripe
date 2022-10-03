@@ -54,14 +54,14 @@ class WebStripe extends StripePlatform {
   @override
   Future<PaymentMethod> createPaymentMethod(
     PaymentMethodParams data, [
-    Map<String, String> options = const {},
+    PaymentMethodOptions? options,
   ]) async {
     final type = data.toJson()['type'];
     switch (type) {
       case 'Card':
-        return createCardPaymentMethod(data, options);
+        return createCardPaymentMethod(data, {});
       case 'Alipay':
-        return createCardPaymentMethod(data, options);
+        return createCardPaymentMethod(data, {});
     }
 
     throw UnimplementedError();
@@ -87,7 +87,7 @@ class WebStripe extends StripePlatform {
   Future<PaymentIntent> confirmPayment(
     String paymentIntentClientSecret,
     PaymentMethodParams? params, [
-    Map<String, String> options = const {},
+    PaymentMethodOptions? options,
   ]) async {
     assert(params != null, 'params are not allowed to be null on the web');
     final response = await params!.maybeWhen<Future<s.PaymentIntentResponse>>(

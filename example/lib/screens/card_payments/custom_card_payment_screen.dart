@@ -139,8 +139,8 @@ class _CustomCardPaymentScreenState extends State<CustomCardPaymentScreen> {
       ); // mocked data for tests
 
       // 2. Create payment method
-      final paymentMethod =
-          await Stripe.instance.createPaymentMethod(PaymentMethodParams.card(
+      final paymentMethod = await Stripe.instance.createPaymentMethod(
+          params: PaymentMethodParams.card(
         paymentMethodData: PaymentMethodData(
           billingDetails: billingDetails,
         ),

@@ -21,7 +21,7 @@ Map<String, dynamic> _$$_CollectBankAccountParamsToJson(
     <String, dynamic>{
       'billingDetails': instance.billingDetails.toJson(),
       'paymentMethodType':
-          _$PaymentMethodTypeEnumMap[instance.paymentMethodType],
+          _$PaymentMethodTypeEnumMap[instance.paymentMethodType]!,
     };
 
 const _$PaymentMethodTypeEnumMap = {

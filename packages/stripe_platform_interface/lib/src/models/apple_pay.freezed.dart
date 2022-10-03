@@ -209,7 +209,9 @@ class _$_ApplePayShippingMethod implements _ApplePayShippingMethod {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ApplePayShippingMethodToJson(this);
+    return _$$_ApplePayShippingMethodToJson(
+      this,
+    );
   }
 }
 
@@ -225,15 +227,15 @@ abstract class _ApplePayShippingMethod implements ApplePayShippingMethod {
       _$_ApplePayShippingMethod.fromJson;
 
   @override
-  String get label => throw _privateConstructorUsedError;
+  String get label;
   @override
-  String get amount => throw _privateConstructorUsedError;
+  String get amount;
   @override
-  String get identifier => throw _privateConstructorUsedError;
+  String get identifier;
   @override
-  ApplePayShippingMethodType? get type => throw _privateConstructorUsedError;
+  ApplePayShippingMethodType? get type;
   @override
-  String? get detail => throw _privateConstructorUsedError;
+  String? get detail;
   @override
   @JsonKey(ignore: true)
   _$$_ApplePayShippingMethodCopyWith<_$_ApplePayShippingMethod> get copyWith =>
@@ -571,7 +573,9 @@ class _$_ImmediateCartSummaryItem implements _ImmediateCartSummaryItem {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ImmediateCartSummaryItemToJson(this);
+    return _$$_ImmediateCartSummaryItemToJson(
+      this,
+    );
   }
 }
 
@@ -587,14 +591,14 @@ abstract class _ImmediateCartSummaryItem implements ApplePayCartSummaryItem {
   @override
 
   /// Short localized description of the item.
-  String get label => throw _privateConstructorUsedError;
+  String get label;
   @override
 
   /// The monetary amount.
-  String get amount => throw _privateConstructorUsedError;
+  String get amount;
 
   /// When creating items for estimates or charges whose final value is not yet known, set this to true.
-  bool? get isPending => throw _privateConstructorUsedError;
+  bool? get isPending;
   @override
   @JsonKey(ignore: true)
   _$$_ImmediateCartSummaryItemCopyWith<_$_ImmediateCartSummaryItem>
@@ -797,7 +801,9 @@ class _$_DeferredSummaryItem implements _DeferredSummaryItem {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DeferredSummaryItemToJson(this);
+    return _$$_DeferredSummaryItemToJson(
+      this,
+    );
   }
 }
 
@@ -813,14 +819,14 @@ abstract class _DeferredSummaryItem implements ApplePayCartSummaryItem {
   @override
 
   /// Short localized description of the item.
-  String get label => throw _privateConstructorUsedError;
+  String get label;
   @override
 
   /// The monetary amount.
-  String get amount => throw _privateConstructorUsedError;
+  String get amount;
 
   /// The unix timestamp of the date, in the future, of the payment. Measured in seconds.
-  int get deferredDate => throw _privateConstructorUsedError;
+  int get deferredDate;
   @override
   @JsonKey(ignore: true)
   _$$_DeferredSummaryItemCopyWith<_$_DeferredSummaryItem> get copyWith =>
@@ -1070,7 +1076,9 @@ class _$_RecurringCartSummaryItem implements _RecurringCartSummaryItem {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RecurringCartSummaryItemToJson(this);
+    return _$$_RecurringCartSummaryItemToJson(
+      this,
+    );
   }
 }
 
@@ -1089,22 +1097,22 @@ abstract class _RecurringCartSummaryItem implements ApplePayCartSummaryItem {
   @override
 
   /// Short localized description of the item.
-  String get label => throw _privateConstructorUsedError;
+  String get label;
   @override
 
   /// The monetary amount.
-  String get amount => throw _privateConstructorUsedError;
+  String get amount;
 
   /// The amount of time – in calendar units such as day, month, or year – that represents a fraction of the total payment interval. For example, if you set the intervalUnit to 'month' and intervalCount to 3, then the payment interval is three months.
-  ApplePayIntervalUnit get intervalUnit => throw _privateConstructorUsedError;
+  ApplePayIntervalUnit get intervalUnit;
 
   /// The number of interval units that make up the total payment interval. For example, if you set the intervalUnit to 'month' and intervalCount to 3, then the payment interval is three months.
-  int get intervalCount => throw _privateConstructorUsedError;
+  int get intervalCount;
 
   /// The unix timestamp of the start date. Measured in seconds.
-  int? get startDate =>
-      throw _privateConstructorUsedError; ////The unix timestamp of the end date. Measured in seconds. */
-  int? get number => throw _privateConstructorUsedError;
+  int?
+      get startDate; ////The unix timestamp of the end date. Measured in seconds. */
+  int? get number;
   @override
   @JsonKey(ignore: true)
   _$$_RecurringCartSummaryItemCopyWith<_$_RecurringCartSummaryItem>
@@ -1419,7 +1427,9 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ApplePayPresentParamsToJson(this);
+    return _$$_ApplePayPresentParamsToJson(
+      this,
+    );
   }
 }
 
@@ -1439,37 +1449,33 @@ abstract class _ApplePayPresentParams implements ApplePayPresentParams {
   @override
 
   /// Line Items of the payment request.
-  List<ApplePayCartSummaryItem> get cartItems =>
-      throw _privateConstructorUsedError;
+  List<ApplePayCartSummaryItem> get cartItems;
   @override
 
   /// The two letter ISO 3166 country code representing the merchant.
-  String get country => throw _privateConstructorUsedError;
+  String get country;
   @override
 
   /// The three letter ISO 4217 code for the currency.
-  String get currency => throw _privateConstructorUsedError;
+  String get currency;
   @override
 
   /// Fields that will be shown on the required shipping address section. If
   /// empty no fields will be displayed.
-  List<ApplePayContactFieldsType>? get requiredShippingAddressFields =>
-      throw _privateConstructorUsedError;
+  List<ApplePayContactFieldsType>? get requiredShippingAddressFields;
   @override
 
   /// Fields that will be shown on the required billing address section. If
   /// empty no fields will be displayed.
-  List<ApplePayContactFieldsType>? get requiredBillingContactFields =>
-      throw _privateConstructorUsedError;
+  List<ApplePayContactFieldsType>? get requiredBillingContactFields;
   @override
 
   /// List of available shipping methods for goods.
-  List<ApplePayShippingMethod>? get shippingMethods =>
-      throw _privateConstructorUsedError;
+  List<ApplePayShippingMethod>? get shippingMethods;
   @override
 
   /// Add support for jcb as additional payment method.
-  bool get jcbEnabled => throw _privateConstructorUsedError;
+  bool get jcbEnabled;
   @override
   @JsonKey(ignore: true)
   _$$_ApplePayPresentParamsCopyWith<_$_ApplePayPresentParams> get copyWith =>
@@ -1622,7 +1628,9 @@ class _$_ApplePayErrorAddressField implements _ApplePayErrorAddressField {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ApplePayErrorAddressFieldToJson(this);
+    return _$$_ApplePayErrorAddressFieldToJson(
+      this,
+    );
   }
 }
 
@@ -1637,13 +1645,13 @@ abstract class _ApplePayErrorAddressField implements ApplePayErrorAddressField {
   @override
 
   /// Address field that is affected by the error
-  ApplePayContactFieldsType get field => throw _privateConstructorUsedError;
+  ApplePayContactFieldsType get field;
   @override
 
   /// The error message that will be shown when it is invalid
   ///
   /// Defaults to error in the stripe sdk.
-  String? get message => throw _privateConstructorUsedError;
+  String? get message;
   @override
   @JsonKey(ignore: true)
   _$$_ApplePayErrorAddressFieldCopyWith<_$_ApplePayErrorAddressField>

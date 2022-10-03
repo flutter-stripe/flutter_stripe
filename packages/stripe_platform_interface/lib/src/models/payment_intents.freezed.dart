@@ -484,7 +484,9 @@ class _$_PaymentIntent implements _PaymentIntent {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentIntentToJson(this);
+    return _$$_PaymentIntentToJson(
+      this,
+    );
   }
 }
 
@@ -512,65 +514,64 @@ abstract class _PaymentIntent implements PaymentIntent {
   @override
 
   /// Unique identifier.
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
 
   /// Amount that will be collected in the payment intent.
-  num get amount => throw _privateConstructorUsedError;
+  num get amount;
   @override
 
   /// Timestamp since epoch that represents the time the intent is created.
-  String get created => throw _privateConstructorUsedError;
+  String get created;
   @override
 
   /// The three letter ISO 4217 code for the currency.
-  String get currency => throw _privateConstructorUsedError;
+  String get currency;
   @override
 
   /// Current status of the intent.
-  PaymentIntentsStatus get status => throw _privateConstructorUsedError;
+  PaymentIntentsStatus get status;
   @override
 
   /// The client is secret is used for handling the payment from the Client side.
-  String get clientSecret => throw _privateConstructorUsedError;
+  String get clientSecret;
   @override
 
   /// Determines whether the intent is in live mode or in test mode.
-  bool get livemode => throw _privateConstructorUsedError;
+  bool get livemode;
   @override
 
   /// How the funds will be caputure from the customer's account.
-  CaptureMethod get captureMethod => throw _privateConstructorUsedError;
+  CaptureMethod get captureMethod;
   @override
 
   /// Method of how the payment will be confirmed.
-  ConfirmationMethod get confirmationMethod =>
-      throw _privateConstructorUsedError;
+  ConfirmationMethod get confirmationMethod;
   @override
 
   /// Id of the payment method used in this intent.
-  String? get paymentMethodId => throw _privateConstructorUsedError;
+  String? get paymentMethodId;
   @override
 
   /// Localized description that provides additional context to users.
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
 
   /// Email address where the receipt will be send to.
-  String? get receiptEmail => throw _privateConstructorUsedError;
+  String? get receiptEmail;
   @override
 
   /// Timestamp since epoch when the intent is cancelled.
-  String? get canceledAt => throw _privateConstructorUsedError;
+  String? get canceledAt;
   @override
 
   /// Additional action that needs to be taken in order to complete a payment
   /// using the provided resource.
-  NextAction? get nextAction => throw _privateConstructorUsedError;
+  NextAction? get nextAction;
   @override
 
   /// Shipping information of the payment intent.
-  ShippingDetails? get shipping => throw _privateConstructorUsedError;
+  ShippingDetails? get shipping;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentIntentCopyWith<_$_PaymentIntent> get copyWith =>
@@ -801,7 +802,9 @@ class _$_ShippingDetails implements _ShippingDetails {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ShippingDetailsToJson(this);
+    return _$$_ShippingDetailsToJson(
+      this,
+    );
   }
 }
 
@@ -819,24 +822,24 @@ abstract class _ShippingDetails implements ShippingDetails {
   @override
 
   /// Recipient address.
-  Address get address => throw _privateConstructorUsedError;
+  Address get address;
   @override
 
   /// Recipient name.
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
 
   /// Deliver service that will ship the product
-  String? get carrier => throw _privateConstructorUsedError;
+  String? get carrier;
   @override
 
   /// Recipient phone number.
-  String? get phone => throw _privateConstructorUsedError;
+  String? get phone;
   @override
 
   /// Tracking number of the shipment. If multiple tracking numbers separate them
   /// with commas.
-  String? get trackingNumber => throw _privateConstructorUsedError;
+  String? get trackingNumber;
   @override
   @JsonKey(ignore: true)
   _$$_ShippingDetailsCopyWith<_$_ShippingDetails> get copyWith =>

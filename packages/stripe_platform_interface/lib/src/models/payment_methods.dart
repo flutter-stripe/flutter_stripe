@@ -318,9 +318,6 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.card({
     /// Paymentmethod data for this paymentmethod.
     required PaymentMethodData paymentMethodData,
-
-    /// Paymentmethod options
-    PaymentMethodOptions? options,
   }) = _PaymentMethodParamsCard;
 
   @JsonSerializable(explicitToJson: true)
@@ -330,9 +327,6 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.cardFromToken({
     /// Paymentmethod data for this paymentmethod.
     required PaymentMethodDataCardFromToken paymentMethodData,
-
-    /// Paymentmethod options
-    PaymentMethodOptions? options,
   }) = _PaymentMethodParamsCardWithToken;
 
   @JsonSerializable(explicitToJson: true)
@@ -343,8 +337,6 @@ class PaymentMethodParams with _$PaymentMethodParams {
     /// Payment method data object for card from payment method.
     required PaymentMethodDataCardFromMethod paymentMethodData,
 
-    /// Paymentmethod options
-    PaymentMethodOptions? options,
   }) = _PaymentMethodParamsCardWithMethodId;
 
   @JsonSerializable(explicitToJson: true)
@@ -495,9 +487,6 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.usBankAccount({
     /// Paymentmethod data for this paymentmethod.
     required PaymentMethodDataUsBank paymentMethodData,
-
-    /// Payment options.
-    PaymentMethodOptions? options,
   }) = _PaymentMethodParamsUsBankAccount;
 
   // TODO uncomment and regenerate when we can re-enable wechat pay

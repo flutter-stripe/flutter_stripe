@@ -54,8 +54,8 @@ class GrabPayScreen extends StatelessWidget {
     // 3. use the client secret to confirm the payment and handle the result.
     try {
       await Stripe.instance.confirmPayment(
-        clientSecret,
-        PaymentMethodParams.grabPay(
+       paymentIntentClientSecret:   clientSecret,
+      data:  PaymentMethodParams.grabPay(
           paymentMethodData: PaymentMethodData(
             billingDetails: billingDetails,
           ),
