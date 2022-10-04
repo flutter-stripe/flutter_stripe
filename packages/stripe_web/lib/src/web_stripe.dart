@@ -91,7 +91,7 @@ class WebStripe extends StripePlatform {
   ]) async {
     assert(params != null, 'params are not allowed to be null on the web');
     final response = await params!.maybeWhen<Future<s.PaymentIntentResponse>>(
-      card: (usage, options) {
+      card: (usage) {
         return js.confirmCardPayment(
           paymentIntentClientSecret,
           data: s.ConfirmCardPaymentData(
@@ -106,7 +106,7 @@ class WebStripe extends StripePlatform {
           ),
         );
       },
-      cardFromMethodId: (paymentMethodData, _) {
+      cardFromMethodId: (paymentMethodData) {
         // https://stripe.com/docs/js/payment_intents/confirm_card_payment#stripe_confirm_card_payment-existing
         return js.confirmCardPayment(
           paymentIntentClientSecret,
@@ -116,7 +116,7 @@ class WebStripe extends StripePlatform {
         );
       },
       cardFromToken:
-          (PaymentMethodDataCardFromToken data, PaymentMethodOptions? options) {
+          (PaymentMethodDataCardFromToken data) {
         // https: //stripe.com/docs/js/payment_intents/confirm_card_payment#stripe_confirm_card_payment-token
         return js.confirmCardPayment(
           paymentIntentClientSecret,
@@ -175,7 +175,7 @@ class WebStripe extends StripePlatform {
     Map<String, String> options = const {},
   ]) async {
     final response = await data.maybeWhen<Future<s.SetupIntentResponse>>(
-        card: (usage, billing) {
+        card: (usage) {
       return js.confirmCardSetup(
         setupIntentClientSecret,
         data: s.ConfirmCardSetupData(
