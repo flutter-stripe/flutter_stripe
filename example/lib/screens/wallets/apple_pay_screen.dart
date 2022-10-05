@@ -89,9 +89,7 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
       body: json.encode({
         'email': 'example@gmail.com',
         'currency': 'usd',
-        'items': [
-          {'id': 'id'}
-        ],
+        'items': ['id-1'],
         'request_three_d_secure': 'any',
       }),
     );

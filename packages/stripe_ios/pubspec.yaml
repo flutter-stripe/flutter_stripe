@@ -1,6 +1,6 @@
 name: stripe_ios
 description: Stripe platform implementation for iOS
-version: 5.0.0
+version: 5.1.0
 repository: https://github.com/flutter-stripe/flutter_stripe
 homepage: https://pub.dev/packages/flutter_stripe
 
@@ -18,7 +18,7 @@ dev_dependencies:
   flutter_lints: ^1.0.3
 
 flutter:
-   plugin:
+  plugin:
     platforms:
       ios:
         pluginClass: StripeIosPlugin

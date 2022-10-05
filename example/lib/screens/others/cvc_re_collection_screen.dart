@@ -3,7 +3,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 
@@ -66,13 +65,12 @@ class _CVCReCollectionScreenState extends State<CVCReCollectionScreen> {
     final paymentMethod = await _fetchPaymentIntentWithPaymentMethod();
 
     if (paymentMethod['error'] != null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error code: ${paymentMethod['error']}')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error code: ${paymentMethod['error']}')));
       return;
     }
 
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text('Success!: The payment was confirmed successfully!')));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text('Success!: The payment was confirmed successfully!')));
   }
 
   Future<void> _paySynchronously() async {
@@ -80,34 +78,22 @@ class _CVCReCollectionScreenState extends State<CVCReCollectionScreen> {
       return;
     }
 
-    final tokenId = await Stripe.instance.createTokenForCVCUpdate(_cvc);
-    final paymentIntent = await _callNoWebhookPayEndpoint(
-      useStripeSdk: true,
-      currency: 'usd',
-      items: [
-        {'id': 'id'}
-      ],
-      cvcToken: tokenId!,
+    final paymentIntent = await _callChargeCardOffSession(
       email: _email,
     );
     log('paymentIntent $paymentIntent');
     if (paymentIntent['error'] != null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error code: ${paymentIntent['error']}')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error code: ${paymentIntent['error']}')));
     } else if (paymentIntent['succeeded'] == true) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Success!: The payment was confirmed successfully!')));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Success!: The payment was confirmed successfully!')));
     } else {
       // Handle other statuses accordingly
       throw UnimplementedError();
     }
   }
 
-  Future<Map<String, dynamic>> _callNoWebhookPayEndpoint({
-    required bool useStripeSdk,
-    required String cvcToken,
-    required String currency,
-    required List<dynamic> items,
+  Future<Map<String, dynamic>> _callChargeCardOffSession({
     required String email,
   }) async {
     final url = Uri.parse('$kApiUrl/charge-card-off-session');
@@ -117,11 +103,7 @@ class _CVCReCollectionScreenState extends State<CVCReCollectionScreen> {
         'Content-Type': 'application/json',
       },
       body: json.encode({
-        'useStripeSdk': useStripeSdk,
-        'currency': currency,
-        'cvcToken': cvcToken,
         'email': email,
-        'items': items
       }),
     );
     return json.decode(response.body);

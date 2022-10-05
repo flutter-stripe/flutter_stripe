@@ -39,7 +39,8 @@ abstract class StripePlatform extends PlatformInterface {
     Map<String, String> options = const {},
   ]);
 
-  Future<PaymentIntent> handleNextAction(String paymentIntentClientSecret);
+  Future<PaymentIntent> handleNextAction(String paymentIntentClientSecret,
+      {String? returnURL});
   Future<PaymentIntent> confirmPayment(
       String paymentIntentClientSecret, PaymentMethodParams? params,
       [Map<String, String> options = const {}]);
@@ -62,6 +63,8 @@ abstract class StripePlatform extends PlatformInterface {
     required List<ApplePayCartSummaryItem> summaryItems,
     List<ApplePayErrorAddressField>? errorAddressFields,
   });
+
+  Future<bool> handleURLCallback(String url);
 
   Future<void> initGooglePay(GooglePayInitParams params);
   Future<void> presentGooglePay(PresentGooglePayParams params);

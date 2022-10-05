@@ -115,9 +115,7 @@ Future<Map<String, dynamic>> _createNoWebhookPayEndpointMethod(
       'useStripeSdk': true,
       'paymentMethodId': paymentMethodId,
       'currency': 'usd',
-      'items': [
-        {'id': 'id'}
-      ]
+      'items': ['id-1']
     }),
   );
   return json.decode(response.body);

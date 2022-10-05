@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +17,7 @@ class GooglePayStripeScreen extends StatefulWidget {
 
 class _GooglePayStripeScreenState extends State<GooglePayStripeScreen> {
   Future<void> startGooglePay() async {
-    final googlePaySupported = await Stripe.instance
-        .isGooglePaySupported(IsGooglePaySupportedParams());
+    final googlePaySupported = await Stripe.instance.isGooglePaySupported(IsGooglePaySupportedParams());
     if (googlePaySupported) {
       try {
         // 1. fetch Intent Client Secret from backend
@@ -25,20 +25,18 @@ class _GooglePayStripeScreenState extends State<GooglePayStripeScreen> {
         final clientSecret = response['clientSecret'];
 
         // 2.present google pay sheet
-        await Stripe.instance.initGooglePay(GooglePayInitParams(
-            testEnv: true,
-            merchantName: "Example Merchant Name",
-            countryCode: 'us'));
+        await Stripe.instance.initGooglePay(
+            GooglePayInitParams(testEnv: true, merchantName: "Example Merchant Name", countryCode: 'us'));
 
         await Stripe.instance.presentGooglePay(
           PresentGooglePayParams(clientSecret: clientSecret),
         );
 
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-              content: Text('Google Pay payment succesfully completed')),
+          const SnackBar(content: Text('Google Pay payment succesfully completed')),
         );
       } catch (e) {
+        log('Error during google pay', error: e, stackTrace: (e as Error?)?.stackTrace);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Error: $e')),
         );
@@ -60,9 +58,6 @@ class _GooglePayStripeScreenState extends State<GooglePayStripeScreen> {
       body: json.encode({
         'email': 'example@gmail.com',
         'currency': 'usd',
-        'items': [
-          {'id': 'id'}
-        ],
         'request_three_d_secure': 'any',
       }),
     );

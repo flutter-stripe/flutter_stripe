@@ -197,9 +197,8 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<PaymentIntent> handleNextAction(
-    String paymentIntentClientSecret,
-  ) async {
+  Future<PaymentIntent> handleNextAction(String paymentIntentClientSecret,
+      {String? returnURL}) async {
     final s.PaymentIntentResponse response =
         await _stripe.handleCardAction(paymentIntentClientSecret);
     return response.paymentIntent.parse();
@@ -357,6 +356,12 @@ class WebStripe extends StripePlatform {
   Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts(
       {required String clientSecret}) {
     throw WebUnsupportedError.method('collectFinancialConnectionsAccounts');
+  }
+
+  @override
+  Future<bool> handleURLCallback(String url) {
+    // TODO: implement handleURLCallback
+    throw UnimplementedError();
   }
 }
 

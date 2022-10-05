@@ -26,8 +26,9 @@ class Stripe {
 
   /// Retrieves the publishable API key.
   static String get publishableKey {
-    assert(instance._publishableKey != null,
-        'A publishableKey is required and missing');
+    if (instance._publishableKey == null) {
+      throw const StripeConfigException('Publishable key is not set');
+    }
     return instance._publishableKey!;
   }
 
@@ -240,6 +241,15 @@ class Stripe {
     }
   }
 
+  /// Handle URL callback from iDeal payment returnUrl to close iOS in-app webview
+  Future<bool> handleURLCallback(String url) async {
+    try {
+      return await _platform.handleURLCallback(url);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   /// Confirms a payment method, using the provided [paymentIntentClientSecret]
   /// and [data].
   ///
@@ -329,7 +339,10 @@ class Stripe {
   Future<void> initPaymentSheet({
     required SetupPaymentSheetParameters paymentSheetParameters,
   }) async {
-    assert(!(paymentSheetParameters.applePay !=null && instance._merchantIdentifier == null), 'merchantIdentifier must be specified if you are using Apple Pay. Please refer to this article to get a merchant identifier: https://support.stripe.com/questions/enable-apple-pay-on-your-stripe-account');
+    assert(
+        !(paymentSheetParameters.applePay != null &&
+            instance._merchantIdentifier == null),
+        'merchantIdentifier must be specified if you are using Apple Pay. Please refer to this article to get a merchant identifier: https://support.stripe.com/questions/enable-apple-pay-on-your-stripe-account');
     await _awaitForSettings();
     await _platform.initPaymentSheet(paymentSheetParameters);
   }
