@@ -76,7 +76,7 @@ class Example extends StatelessWidget {
         final route = MaterialPageRoute(builder: builder);
         Navigator.push(context, route);
       },
-      title: Text(title, style: style),
+      title: Text(title,),
       leading: this.leading,
       trailing: Row(mainAxisSize: MainAxisSize.min, children: [
         PlatformIcons(supported: platformsSupported),
