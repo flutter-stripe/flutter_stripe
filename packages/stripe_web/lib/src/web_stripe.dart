@@ -41,12 +41,11 @@ class WebStripe extends StripePlatform {
     bool? setReturnUrlSchemeOnAndroid,
   }) async {
     if (__stripe != null) return;
-    __stripe = s.Stripe(
-      publishableKey,
-      s.StripeOptions(
-        betas: s.jsify(['payment_element_beta_1']),
-      ),
-    );
+    final stripeOption = s.StripeOptions();
+    if (stripeAccountId != null) {
+      stripeOption.stripeAccount = stripeAccountId;
+    }
+    __stripe = s.Stripe(publishableKey, stripeOption);
     this.urlScheme = urlScheme;
   }
 

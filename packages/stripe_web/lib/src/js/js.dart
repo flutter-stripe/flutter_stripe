@@ -40,8 +40,8 @@ abstract class StripeJS {}
 @anonymous
 @JS()
 abstract class StripeOptions {
-  external String get stripeAccount;
-  external set stripeAccount(String v);
+  external String? get stripeAccount;
+  external set stripeAccount(String? v);
   external String get apiVersion;
   external set apiVersion(String v);
   external List get betas;
@@ -49,7 +49,7 @@ abstract class StripeOptions {
   external String get locale;
   external set locale(String v);
   external factory StripeOptions({
-    String stripeAccount,
+    String? stripeAccount,
     String apiVersion,
     List betas,
     String locale,
