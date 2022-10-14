@@ -22,6 +22,10 @@ app.use(
     res: express.Response,
     next: express.NextFunction
   ): void => {
+    // This is to allow local web demo to call local backend
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
     if (req.originalUrl === '/webhook') {
       next();
     } else {
@@ -112,7 +116,7 @@ app.post(
     const { secret_key } = getKeys(payment_method_types[0]);
 
     const stripe = new Stripe(secret_key as string, {
-      apiVersion: '2020-08-27',
+      apiVersion: '2022-08-01',
       typescript: true,
     });
 
@@ -172,7 +176,7 @@ app.post(
     const { secret_key } = getKeys();
 
     const stripe = new Stripe(secret_key as string, {
-      apiVersion: '2020-08-27',
+      apiVersion: '2022-08-01',
       typescript: true,
     });
     const customers = await stripe.customers.list({
@@ -250,7 +254,7 @@ app.post(
     const { secret_key } = getKeys();
 
     const stripe = new Stripe(secret_key as string, {
-      apiVersion: '2020-08-27',
+      apiVersion: '2022-08-01',
       typescript: true,
     });
 
@@ -337,7 +341,7 @@ app.post('/create-setup-intent', async (req, res) => {
   const { secret_key } = getKeys(payment_method_types[0]);
 
   const stripe = new Stripe(secret_key as string, {
-    apiVersion: '2020-08-27',
+    apiVersion: '2022-08-01',
     typescript: true,
   });
   const customer = await stripe.customers.create({ email });
@@ -385,7 +389,7 @@ app.post(
     const { secret_key } = getKeys();
 
     const stripe = new Stripe(secret_key as string, {
-      apiVersion: '2020-08-27',
+      apiVersion: '2022-08-01',
       typescript: true,
     });
     // console.log('webhook!', req);
@@ -448,7 +452,7 @@ app.post('/charge-card-off-session', async (req, res) => {
   const { secret_key } = getKeys();
 
   const stripe = new Stripe(secret_key as string, {
-    apiVersion: '2020-08-27',
+    apiVersion: '2022-08-01',
     typescript: true,
   });
 
@@ -522,7 +526,7 @@ app.post('/payment-sheet', async (_, res) => {
   const { secret_key } = getKeys();
 
   const stripe = new Stripe(secret_key as string, {
-    apiVersion: '2020-08-27',
+    apiVersion: '2022-08-01',
     typescript: true,
   });
 
@@ -539,7 +543,7 @@ app.post('/payment-sheet', async (_, res) => {
 
   const ephemeralKey = await stripe.ephemeralKeys.create(
     { customer: customer.id },
-    { apiVersion: '2020-08-27' }
+    { apiVersion: '2022-08-01' }
   );
   const paymentIntent = await stripe.paymentIntents.create({
     amount: 5099,
@@ -582,7 +586,7 @@ app.post('/payment-sheet-subscription', async (_, res) => {
   const { secret_key } = getKeys();
 
   const stripe = new Stripe(secret_key as string, {
-    apiVersion: '2020-08-27',
+    apiVersion: '2022-08-01',
     typescript: true,
   });
 
@@ -645,7 +649,7 @@ app.post('/issuing-card-details', async (req, res) => {
   const { secret_key } = getKeys();
 
   const stripe = new Stripe(secret_key as string, {
-    apiVersion: '2020-08-27',
+    apiVersion: '2022-08-01',
     typescript: true,
   });
 
@@ -664,7 +668,7 @@ app.post('/financial-connections-sheet', async (_, res) => {
   const { secret_key } = getKeys();
 
   const stripe = new Stripe(secret_key as string, {
-    apiVersion: '2020-08-27',
+    apiVersion: '2022-08-01',
     typescript: true,
   });
 
@@ -685,6 +689,43 @@ app.post('/financial-connections-sheet', async (_, res) => {
 
   return res.send({ clientSecret: session.client_secret });
 });
+
+app.post('/create-checkout-session', async (req, res) => {
+  console.log(`Called /create-checkout-session`)
+  const {
+    port,
+  }: { port?: string; } = req.body;
+  var effectivePort = port ?? 8080;
+  const { secret_key } = getKeys();
+
+  const stripe = new Stripe(secret_key as string, {
+    apiVersion: '2022-08-01',
+    typescript: true,
+  });
+
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: [
+      {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: 'Stubborn Attachments',
+            images: ['https://i.imgur.com/EHyR2nP.png'],
+          },
+          unit_amount: 2000,
+        },
+        quantity: 1,
+      },
+    ],
+    mode: 'payment',
+    success_url: `https://checkout.stripe.dev/success`,
+    cancel_url: `https://checkout.stripe.dev/cancel`,
+
+  });
+  return res.json({ id: session.id });
+});
+
 
 app.listen(4242, (): void =>
   console.log(`Node server listening on port ${4242}!`)

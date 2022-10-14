@@ -6,13 +6,18 @@ Future<CheckoutResponse> redirectToCheckout({
   required BuildContext context,
   required String sessionId,
   required String publishableKey,
+  String? stripeAccountId,
   String? successUrl,
   String? canceledUrl,
 }) async {
   final options = stripe_js.StripeServerCheckoutOptions(sessionId: sessionId);
+  final stripeOption = stripe_js.StripeOptions();
+  if (stripeAccountId != null) {
+    stripeOption.stripeAccount = stripeAccountId;
+  }
   try {
-    final response =
-        await stripe_js.Stripe(publishableKey).redirectToCheckout(options);
+    final response = await stripe_js.Stripe(publishableKey, stripeOption)
+        .redirectToCheckout(options);
     if (response != null && response.error != null) {
       return CheckoutResponse.error(error: response.error);
     } else {
