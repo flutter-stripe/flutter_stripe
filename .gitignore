@@ -60,4 +60,10 @@ build/
 lcov.info
 
 **/pubspec.lock
+
 **/server/package-lock.json
+
+node_modules/
+/test-results/
+/playwright-report/
+/playwright/.cache/

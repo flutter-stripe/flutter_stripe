@@ -1,0 +1,11 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "flutter: Run web e2e",
+            "type": "shell",
+            "command": "cd packages/stripe_web/e2e && npx playwright test",
+            "problemMatcher": []
+        }
+    ],
+}

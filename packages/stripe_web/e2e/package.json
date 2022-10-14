@@ -1,0 +1,41 @@
+{
+  "name": "flutter_stripe",
+  "version": "1.0.0",
+  "description": "<img src=\"https://user-images.githubusercontent.com/19904063/116995247-20519e80-acda-11eb-8e1b-7d0efbd193ad.png\" height=\"36\" />",
+  "main": "build/index.js",
+  "directories": {
+    "doc": "docs",
+    "example": "example"
+  },
+  "scripts": {
+    "build": "npx tsc && tools/build_app.sh",
+    "start": "node build/index.js",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q build/index.js\"",
+    "test": "npx playwright test",
+    "goldens": "npx playwright test --update-snapshots"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flutter-stripe/flutter_stripe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/flutter-stripe/flutter_stripe/issues"
+  },
+  "homepage": "https://github.com/flutter-stripe/flutter_stripe#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.27.1",
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.11.52",
+    "concurrently": "^7.3.0",
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "playwright": "^1.27.1",
+    "playwright-core": "^1.27.1",
+    "typescript": "^4.7.4"
+  }
+}
