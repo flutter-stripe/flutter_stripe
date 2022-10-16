@@ -83,8 +83,10 @@ abstract class StripePlatform extends PlatformInterface {
   /// Note this method is legacy and it is advised to use [PaymentIntent].
   Future<TokenData> createToken(CreateTokenParams params);
   Future<SetupIntent> confirmSetupIntent(
-      String setupIntentClientSecret, PaymentMethodParams data,
-      [Map<String, String> options = const {}]);
+    String setupIntentClientSecret,
+    PaymentMethodParams data,
+    PaymentMethodOptions? options,
+  );
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret);
   Future<String> createTokenForCVCUpdate(String cvc);
 

@@ -115,8 +115,7 @@ class WebStripe extends StripePlatform {
           ),
         );
       },
-      cardFromToken:
-          (PaymentMethodDataCardFromToken data) {
+      cardFromToken: (PaymentMethodDataCardFromToken data) {
         // https: //stripe.com/docs/js/payment_intents/confirm_card_payment#stripe_confirm_card_payment-token
         return js.confirmCardPayment(
           paymentIntentClientSecret,
@@ -171,11 +170,11 @@ class WebStripe extends StripePlatform {
   @override
   Future<SetupIntent> confirmSetupIntent(
     String setupIntentClientSecret,
-    PaymentMethodParams data, [
-    Map<String, String> options = const {},
-  ]) async {
-    final response = await data.maybeWhen<Future<s.SetupIntentResponse>>(
-        card: (usage) {
+    PaymentMethodParams data,
+    PaymentMethodOptions? options,
+  ) async {
+    final response =
+        await data.maybeWhen<Future<s.SetupIntentResponse>>(card: (usage) {
       return js.confirmCardSetup(
         setupIntentClientSecret,
         data: s.ConfirmCardSetupData(

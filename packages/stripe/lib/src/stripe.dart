@@ -301,11 +301,11 @@ class Stripe {
   /// Use this method when the customer submits the form for SetupIntent.
   ///
   /// Throws a [StripeException] when confirming the setupintent fails.
-  Future<SetupIntent> confirmSetupIntent(
-    String paymentIntentClientSecret,
-    PaymentMethodParams params, [
-    Map<String, String> options = const {},
-  ]) async {
+  Future<SetupIntent> confirmSetupIntent({
+    required String paymentIntentClientSecret,
+    required PaymentMethodParams params,
+    PaymentMethodOptions? options,
+  }) async {
     await _awaitForSettings();
     try {
       final setupIntent = await _platform.confirmSetupIntent(
