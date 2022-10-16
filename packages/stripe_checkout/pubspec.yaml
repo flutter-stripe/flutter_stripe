@@ -5,7 +5,7 @@ homepage: https://github.com/flutter-stripe/flutter_stripe/
 
 environment:
   sdk: ">=2.16.0 <3.0.0"
-  flutter: ">=2.0.0"
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:
