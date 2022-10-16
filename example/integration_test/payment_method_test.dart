@@ -40,14 +40,14 @@ void main() {
         expirationYear: 2025,
       ));
       final paymentIntent = await Stripe.instance.confirmPayment(
-        clientSecret['clientSecret'],
-        PaymentMethodParams.card(
+        paymentIntentClientSecret: clientSecret['clientSecret'],
+        data: PaymentMethodParams.card(
           paymentMethodData: PaymentMethodData(
             billingDetails: billingDetails,
           ),
-          options: PaymentMethodOptions(
-            setupFutureUsage: null,
-          ),
+        ),
+        options: PaymentMethodOptions(
+          setupFutureUsage: null,
         ),
       );
 
@@ -63,7 +63,7 @@ void main() {
       ));
 
       final paymentMethod = await Stripe.instance.createPaymentMethod(
-        PaymentMethodParams.card(
+        params: PaymentMethodParams.card(
           paymentMethodData: PaymentMethodData(
             billingDetails: billingDetails,
           ),
@@ -87,14 +87,14 @@ void main() {
       ));
 
       final cardPaymentMethod = await Stripe.instance.createPaymentMethod(
-        PaymentMethodParams.card(
+        params: PaymentMethodParams.card(
           paymentMethodData: PaymentMethodData(
             billingDetails: billingDetails,
           ),
         ),
       );
       final paymentMethod = await Stripe.instance.createPaymentMethod(
-        PaymentMethodParams.cardFromMethodId(
+        params: PaymentMethodParams.cardFromMethodId(
           paymentMethodData: PaymentMethodDataCardFromMethod(
             paymentMethodId: cardPaymentMethod.id,
             cvc: '424',
@@ -120,10 +120,11 @@ void main() {
 
       final token = await Stripe.instance.createToken(
         // ignore: deprecated_member_use
-        CreateTokenParams(type: TokenType.Card, address: billingDetails.address),
+        CreateTokenParams(
+            type: TokenType.Card, address: billingDetails.address),
       );
       final paymentMethod = await Stripe.instance.createPaymentMethod(
-        PaymentMethodParams.cardFromToken(
+        params: PaymentMethodParams.cardFromToken(
           paymentMethodData: PaymentMethodDataCardFromToken(token: token.id),
         ),
       );
@@ -137,7 +138,8 @@ void main() {
     });
     testWidgets('alipay', (tester) async {
       final paymentMethod = await Stripe.instance.createPaymentMethod(
-        PaymentMethodParams.alipay(paymentMethodData: PaymentMethodData()),
+        params:
+            PaymentMethodParams.alipay(paymentMethodData: PaymentMethodData()),
       );
       expect(paymentMethod.id, startsWith('pm_'));
       //expect(paymentMethod.type, equals('Alipay'));
@@ -147,7 +149,8 @@ void main() {
     group('ideal', () {
       testWidgets('no default bank', (tester) async {
         final paymentMethod = await Stripe.instance.createPaymentMethod(
-          PaymentMethodParams.ideal(paymentMethodData: PaymentMethodDataIdeal()),
+          params: PaymentMethodParams.ideal(
+              paymentMethodData: PaymentMethodDataIdeal()),
         );
         expect(paymentMethod.id, startsWith('pm_'));
         expect(paymentMethod.ideal, isNotNull);
@@ -163,7 +166,8 @@ void main() {
 
       testWidgets('with bank', (tester) async {
         final paymentMethod = await Stripe.instance.createPaymentMethod(
-          PaymentMethodParams.ideal(paymentMethodData: PaymentMethodDataIdeal(bankName: 'revolut')),
+          params: PaymentMethodParams.ideal(
+              paymentMethodData: PaymentMethodDataIdeal(bankName: 'revolut')),
         );
         expect(paymentMethod.id, startsWith('pm_'));
         expect(paymentMethod.ideal, isNotNull);
@@ -175,7 +179,8 @@ void main() {
 
     testWidgets('fpx, testOfflineBank: true', (tester) async {
       final paymentMethod = await Stripe.instance.createPaymentMethod(
-        PaymentMethodParams.fpx(paymentMethodData: PaymentMethodDataFpx(testOfflineBank: true)),
+        params: PaymentMethodParams.fpx(
+            paymentMethodData: PaymentMethodDataFpx(testOfflineBank: true)),
       );
       expect(paymentMethod.id, startsWith('pm_'));
       expect(paymentMethod.fpx, isNotNull);

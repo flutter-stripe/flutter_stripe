@@ -519,7 +519,9 @@ class _$_SetupParameters implements _SetupParameters {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SetupParametersToJson(this);
+    return _$$_SetupParametersToJson(
+      this,
+    );
   }
 }
 
@@ -551,61 +553,61 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   /// If this value is true, the payment sheet will allow to select a payment method
   /// and a later confirmation will be needed by calling [confirmPaymentSheetPayment]
   /// By default, false.
-  bool get customFlow => throw _privateConstructorUsedError;
+  bool get customFlow;
   @override
 
   /// The identifier of the Stripe Customer object.
   /// See https://stripe.com/docs/api/customers/object#customer_object-id
-  String? get customerId => throw _privateConstructorUsedError;
+  String? get customerId;
   @override
 
   ///A temp key can be used for API operations that require a secret key.
-  String? get customerEphemeralKeySecret => throw _privateConstructorUsedError;
+  String? get customerEphemeralKeySecret;
   @override
 
   /// Secret used for client-side retrieval using a publishable key.
   ///
   /// If this value is null make sure to add a [setupIntentClientSecret]
-  String? get paymentIntentClientSecret => throw _privateConstructorUsedError;
+  String? get paymentIntentClientSecret;
   @override
 
   /// The client secret of this SetupIntent
   ///
   /// If this value is null make sure to add a [paymentIntentClientSecret]
-  String? get setupIntentClientSecret => throw _privateConstructorUsedError;
+  String? get setupIntentClientSecret;
   @override
 
   /// Display name of the merchant
-  String? get merchantDisplayName => throw _privateConstructorUsedError;
+  String? get merchantDisplayName;
   @override
 
   /// Configuration related to Apple Pay
   /// If set, PaymentSheet displays Apple Pay as a payment option
-  PaymentSheetApplePay? get applePay => throw _privateConstructorUsedError;
+  PaymentSheetApplePay? get applePay;
   @override
 
   /// Style options for colors in PaymentSheet
   ///
   /// Parts can be overridden by [appearance].
   @JsonKey(toJson: UserInterfaceStyleKey.toJson)
-  ThemeMode? get style => throw _privateConstructorUsedError;
+  ThemeMode? get style;
   @override
 
   /// Configuration related to Google Pay
   /// If set, PaymentSheet displays Google Pay as a payment option
-  PaymentSheetGooglePay? get googlePay => throw _privateConstructorUsedError;
+  PaymentSheetGooglePay? get googlePay;
   @override
 
   /// Flag that allows payment methods that do not move money at the send of the checkout.
   ///
   /// Defaul value is false.
-  bool get allowsDelayedPaymentMethods => throw _privateConstructorUsedError;
+  bool get allowsDelayedPaymentMethods;
   @override
 
   /// Appearance of the paymentsheet.
   ///
   /// When no appearance defined it will fallback to [style] or Stripe default.
-  PaymentSheetAppearance? get appearance => throw _privateConstructorUsedError;
+  PaymentSheetAppearance? get appearance;
   @override
 
   /// Default billing information of the customer.
@@ -615,11 +617,11 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   /// alternative localization options. This does not set the billingDetails on the
   /// paymentIntent since the customer can change those.
   @JsonKey(name: 'defaultBillingDetails')
-  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
+  BillingDetails? get billingDetails;
   @override
 
   /// Return URL is required for IDEAL and few other payment methods
-  String? get returnURL => throw _privateConstructorUsedError;
+  String? get returnURL;
   @override
   @JsonKey(ignore: true)
   _$$_SetupParametersCopyWith<_$_SetupParameters> get copyWith =>
@@ -785,7 +787,9 @@ class _$_PaymentSheetApplePay implements _PaymentSheetApplePay {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetApplePayToJson(this);
+    return _$$_PaymentSheetApplePayToJson(
+      this,
+    );
   }
 }
 
@@ -801,13 +805,12 @@ abstract class _PaymentSheetApplePay implements PaymentSheetApplePay {
   @override
 
   ///The two-letter ISO 3166 code of the country of your business, e.g. "US"
-  String get merchantCountryCode => throw _privateConstructorUsedError;
+  String get merchantCountryCode;
   @override
 
   ///An array of CartSummaryItem item objects that summarize the amount of the payment. If you're using a SetupIntent
   /// for a recurring payment, you should set this to display the amount you intend to charge.
-  List<ApplePayCartSummaryItem>? get paymentSummaryItems =>
-      throw _privateConstructorUsedError;
+  List<ApplePayCartSummaryItem>? get paymentSummaryItems;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentSheetApplePayCopyWith<_$_PaymentSheetApplePay> get copyWith =>
@@ -979,7 +982,9 @@ class _$_PaymentSheetGooglePay implements _PaymentSheetGooglePay {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetGooglePayToJson(this);
+    return _$$_PaymentSheetGooglePayToJson(
+      this,
+    );
   }
 }
 
@@ -995,15 +1000,15 @@ abstract class _PaymentSheetGooglePay implements PaymentSheetGooglePay {
   @override
 
   ///The two-letter ISO 3166 code of the country of your business, e.g. "US"
-  String get merchantCountryCode => throw _privateConstructorUsedError;
+  String get merchantCountryCode;
   @override
 
   /// The three-letter ISO 4217 alphabetic currency code, e.g. "USD" or "EUR". Required in order to support Google Pay when processing a Setup Intent.
-  String? get currencyCode => throw _privateConstructorUsedError;
+  String? get currencyCode;
   @override
 
   /// Whether or not to use the google pay test environment.  Set to `true` until you have applied for and been granted access to the Production environment.
-  bool get testEnv => throw _privateConstructorUsedError;
+  bool get testEnv;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentSheetGooglePayCopyWith<_$_PaymentSheetGooglePay> get copyWith =>
@@ -1224,7 +1229,9 @@ class _$_PaymentSheetAppearance implements _PaymentSheetAppearance {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetAppearanceToJson(this);
+    return _$$_PaymentSheetAppearanceToJson(
+      this,
+    );
   }
 }
 
@@ -1241,17 +1248,15 @@ abstract class _PaymentSheetAppearance implements PaymentSheetAppearance {
   @override
 
   /// Color parameters
-  PaymentSheetAppearanceColors? get colors =>
-      throw _privateConstructorUsedError;
+  PaymentSheetAppearanceColors? get colors;
   @override
 
   /// Shapes parameters
-  PaymentSheetShape? get shapes => throw _privateConstructorUsedError;
+  PaymentSheetShape? get shapes;
   @override
 
   /// PaymentSheet appearance
-  PaymentSheetPrimaryButtonAppearance? get primaryButton =>
-      throw _privateConstructorUsedError;
+  PaymentSheetPrimaryButtonAppearance? get primaryButton;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentSheetAppearanceCopyWith<_$_PaymentSheetAppearance> get copyWith =>
@@ -1675,7 +1680,9 @@ class _$_PaymentSheetAppearanceColors implements _PaymentSheetAppearanceColors {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetAppearanceColorsToJson(this);
+    return _$$_PaymentSheetAppearanceColorsToJson(
+      this,
+    );
   }
 }
 
@@ -1714,59 +1721,59 @@ abstract class _PaymentSheetAppearanceColors
   ///
   /// Make sure there is enough contrast with [background].
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get primary => throw _privateConstructorUsedError;
+  Color? get primary;
   @override
 
   /// Background color of the payment sheet.
   ///
   /// Make sure there is enough contrast with [primary].
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get background => throw _privateConstructorUsedError;
+  Color? get background;
   @override
 
   /// Background color of the payment sheet components.
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get componentBackground => throw _privateConstructorUsedError;
+  Color? get componentBackground;
   @override
 
   ///  Border color of the payment sheet components.
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get componentBorder => throw _privateConstructorUsedError;
+  Color? get componentBorder;
   @override
 
   ///  Divider color of the payment sheet components.
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get componentDivider => throw _privateConstructorUsedError;
+  Color? get componentDivider;
   @override
 
   /// Color of the entered text in the payment components.
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get componentText => throw _privateConstructorUsedError;
+  Color? get componentText;
   @override
 
   /// Primary text color.
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get primaryText => throw _privateConstructorUsedError;
+  Color? get primaryText;
   @override
 
   /// Secondary text color.
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get secondaryText => throw _privateConstructorUsedError;
+  Color? get secondaryText;
   @override
 
   /// Place holder text color.
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get placeholderText => throw _privateConstructorUsedError;
+  Color? get placeholderText;
   @override
 
   /// Color of the displayed icons
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get icon => throw _privateConstructorUsedError;
+  Color? get icon;
   @override
 
   /// Color of the warning and error messages.
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get error => throw _privateConstructorUsedError;
+  Color? get error;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentSheetAppearanceColorsCopyWith<_$_PaymentSheetAppearanceColors>
@@ -1955,7 +1962,9 @@ class _$_PaymentSheetShape implements _PaymentSheetShape {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetShapeToJson(this);
+    return _$$_PaymentSheetShapeToJson(
+      this,
+    );
   }
 }
 
@@ -1971,15 +1980,15 @@ abstract class _PaymentSheetShape implements PaymentSheetShape {
   @override
 
   /// Borderradius for the paymentsheet corners
-  double? get borderRadius => throw _privateConstructorUsedError;
+  double? get borderRadius;
   @override
 
   /// Borderwidth for the paymentsheet components
-  double? get borderWidth => throw _privateConstructorUsedError;
+  double? get borderWidth;
   @override
 
   /// Appearance config of the payment sheet shadow
-  PaymentSheetShadowParams? get shadow => throw _privateConstructorUsedError;
+  PaymentSheetShadowParams? get shadow;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentSheetShapeCopyWith<_$_PaymentSheetShape> get copyWith =>
@@ -2176,7 +2185,9 @@ class _$_PaymentSheetShadowParams implements _PaymentSheetShadowParams {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetShadowParamsToJson(this);
+    return _$$_PaymentSheetShadowParamsToJson(
+      this,
+    );
   }
 }
 
@@ -2194,15 +2205,15 @@ abstract class _PaymentSheetShadowParams implements PaymentSheetShadowParams {
 
   /// Shadow color
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get color => throw _privateConstructorUsedError;
+  Color? get color;
   @override
 
   /// Shadow opacity
-  double? get opacity => throw _privateConstructorUsedError;
+  double? get opacity;
   @override
 
   /// Shadow offset
-  PaymentSheetShadowOffset? get offset => throw _privateConstructorUsedError;
+  PaymentSheetShadowOffset? get offset;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentSheetShadowParamsCopyWith<_$_PaymentSheetShadowParams>
@@ -2350,7 +2361,9 @@ class _$_PaymentSheetShadowOffset implements _PaymentSheetShadowOffset {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetShadowOffsetToJson(this);
+    return _$$_PaymentSheetShadowOffsetToJson(
+      this,
+    );
   }
 }
 
@@ -2364,11 +2377,11 @@ abstract class _PaymentSheetShadowOffset implements PaymentSheetShadowOffset {
   @override
 
   /// X value
-  double? get x => throw _privateConstructorUsedError;
+  double? get x;
   @override
 
   /// Y value
-  double? get y => throw _privateConstructorUsedError;
+  double? get y;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentSheetShadowOffsetCopyWith<_$_PaymentSheetShadowOffset>
@@ -2561,7 +2574,9 @@ class _$_PaymentSheetPrimaryButtonAppearance
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetPrimaryButtonAppearanceToJson(this);
+    return _$$_PaymentSheetPrimaryButtonAppearanceToJson(
+      this,
+    );
   }
 }
 
@@ -2579,13 +2594,11 @@ abstract class _PaymentSheetPrimaryButtonAppearance
   @override
 
   /// color theme of the primary button
-  PaymentSheetPrimaryButtonTheme? get colors =>
-      throw _privateConstructorUsedError;
+  PaymentSheetPrimaryButtonTheme? get colors;
   @override
 
   /// Shape params of the primary button
-  PaymentSheetPrimaryButtonShape? get shapes =>
-      throw _privateConstructorUsedError;
+  PaymentSheetPrimaryButtonShape? get shapes;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentSheetPrimaryButtonAppearanceCopyWith<
@@ -2782,7 +2795,9 @@ class _$_PaymentSheetPrimaryButtonShape
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetPrimaryButtonShapeToJson(this);
+    return _$$_PaymentSheetPrimaryButtonShapeToJson(
+      this,
+    );
   }
 }
 
@@ -2799,15 +2814,15 @@ abstract class _PaymentSheetPrimaryButtonShape
   @override
 
   /// Configuration of the primary button's shadow.
-  PaymentSheetShadowParams? get shadow => throw _privateConstructorUsedError;
+  PaymentSheetShadowParams? get shadow;
   @override
 
   /// the blur radius of the button
-  double? get blurRadius => throw _privateConstructorUsedError;
+  double? get blurRadius;
   @override
 
   /// border width of the primary button on the payment sheet
-  double? get borderWidth => throw _privateConstructorUsedError;
+  double? get borderWidth;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentSheetPrimaryButtonShapeCopyWith<_$_PaymentSheetPrimaryButtonShape>
@@ -2997,7 +3012,9 @@ class _$_PaymentSheetPrimaryButtonTheme
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetPrimaryButtonThemeToJson(this);
+    return _$$_PaymentSheetPrimaryButtonThemeToJson(
+      this,
+    );
   }
 }
 
@@ -3014,13 +3031,11 @@ abstract class _PaymentSheetPrimaryButtonTheme
   @override
 
   /// Colors when displaying button in dark theme
-  PaymentSheetPrimaryButtonThemeColors? get dark =>
-      throw _privateConstructorUsedError;
+  PaymentSheetPrimaryButtonThemeColors? get dark;
   @override
 
   /// Colors when displaying button in light theme
-  PaymentSheetPrimaryButtonThemeColors? get light =>
-      throw _privateConstructorUsedError;
+  PaymentSheetPrimaryButtonThemeColors? get light;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentSheetPrimaryButtonThemeCopyWith<_$_PaymentSheetPrimaryButtonTheme>
@@ -3218,7 +3233,9 @@ class _$_PaymentSheetPrimaryButtonThemeColors
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetPrimaryButtonThemeColorsToJson(this);
+    return _$$_PaymentSheetPrimaryButtonThemeColorsToJson(
+      this,
+    );
   }
 }
 
@@ -3240,17 +3257,17 @@ abstract class _PaymentSheetPrimaryButtonThemeColors
 
   /// Primary button background color
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get background => throw _privateConstructorUsedError;
+  Color? get background;
   @override
 
   /// Primary button text color
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get text => throw _privateConstructorUsedError;
+  Color? get text;
   @override
 
   /// Primary button border color
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-  Color? get border => throw _privateConstructorUsedError;
+  Color? get border;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentSheetPrimaryButtonThemeColorsCopyWith<
@@ -3413,7 +3430,9 @@ class _$_PresentParameters implements _PresentParameters {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PresentParametersToJson(this);
+    return _$$_PresentParametersToJson(
+      this,
+    );
   }
 }
 
@@ -3428,7 +3447,7 @@ abstract class _PresentParameters implements PresentPaymentSheetParameters {
   @override
 
   /// Key used for client-side retrieval using a publishable key.
-  String get clientSecret => throw _privateConstructorUsedError;
+  String get clientSecret;
   @override
 
   /// Flag that determines whether or not to present payment options or
@@ -3438,7 +3457,7 @@ abstract class _PresentParameters implements PresentPaymentSheetParameters {
   /// is set to `true` when initializing the payment sheet.
   /// If value is set to `true` [SetupPaymentSheetParameters.customFlow]
   /// has to be set to `false` when initializing the payment sheet.
-  bool get confirmPayment => throw _privateConstructorUsedError;
+  bool get confirmPayment;
   @override
   @JsonKey(ignore: true)
   _$$_PresentParametersCopyWith<_$_PresentParameters> get copyWith =>

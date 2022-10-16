@@ -21,7 +21,7 @@ _$_CreateTokenParamsLegacy _$$_CreateTokenParamsLegacyFromJson(
 Map<String, dynamic> _$$_CreateTokenParamsLegacyToJson(
         _$_CreateTokenParamsLegacy instance) =>
     <String, dynamic>{
-      'type': _$TokenTypeEnumMap[instance.type],
+      'type': _$TokenTypeEnumMap[instance.type]!,
       'name': instance.name,
       'address': instance.address?.toJson(),
       'runtimeType': instance.$type,
@@ -89,7 +89,7 @@ _$_CardTokenParams _$$_CardTokenParamsFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_CardTokenParamsToJson(_$_CardTokenParams instance) =>
     <String, dynamic>{
-      'type': _$TokenTypeEnumMap[instance.type],
+      'type': _$TokenTypeEnumMap[instance.type]!,
       'name': instance.name,
       'address': instance.address,
       'currency': instance.currency,
@@ -104,7 +104,7 @@ _$_PIITokenParams _$$_PIITokenParamsFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_PIITokenParamsToJson(_$_PIITokenParams instance) =>
     <String, dynamic>{
-      'type': _$TokenTypeEnumMap[instance.type],
+      'type': _$TokenTypeEnumMap[instance.type]!,
       'personalId': instance.personalId,
     };
 
@@ -125,7 +125,7 @@ _$_BankAccountTokenParams _$$_BankAccountTokenParamsFromJson(
 Map<String, dynamic> _$$_BankAccountTokenParamsToJson(
         _$_BankAccountTokenParams instance) =>
     <String, dynamic>{
-      'type': _$TokenTypeEnumMap[instance.type],
+      'type': _$TokenTypeEnumMap[instance.type]!,
       'accountNumber': instance.accountNumber,
       'country': instance.country,
       'currency': instance.currency,
@@ -158,7 +158,7 @@ Map<String, dynamic> _$$_TokenDataToJson(_$_TokenData instance) =>
     <String, dynamic>{
       'id': instance.id,
       'created': instance.createdDateTime,
-      'type': _$TokenTypeEnumMap[instance.type],
+      'type': _$TokenTypeEnumMap[instance.type]!,
       'livemode': instance.livemode,
       'bankAccount': instance.bankAccount,
       'card': instance.card,

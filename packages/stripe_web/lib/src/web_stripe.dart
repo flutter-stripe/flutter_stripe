@@ -54,14 +54,14 @@ class WebStripe extends StripePlatform {
   @override
   Future<PaymentMethod> createPaymentMethod(
     PaymentMethodParams data, [
-    Map<String, String> options = const {},
+    PaymentMethodOptions? options,
   ]) async {
     final type = data.toJson()['type'];
     switch (type) {
       case 'Card':
-        return createCardPaymentMethod(data, options);
+        return createCardPaymentMethod(data, {});
       case 'Alipay':
-        return createCardPaymentMethod(data, options);
+        return createCardPaymentMethod(data, {});
     }
 
     throw UnimplementedError();
@@ -87,11 +87,11 @@ class WebStripe extends StripePlatform {
   Future<PaymentIntent> confirmPayment(
     String paymentIntentClientSecret,
     PaymentMethodParams? params, [
-    Map<String, String> options = const {},
+    PaymentMethodOptions? options,
   ]) async {
     assert(params != null, 'params are not allowed to be null on the web');
     final response = await params!.maybeWhen<Future<s.PaymentIntentResponse>>(
-      card: (usage, options) {
+      card: (usage) {
         return js.confirmCardPayment(
           paymentIntentClientSecret,
           data: s.ConfirmCardPaymentData(
@@ -106,7 +106,7 @@ class WebStripe extends StripePlatform {
           ),
         );
       },
-      cardFromMethodId: (paymentMethodData, _) {
+      cardFromMethodId: (paymentMethodData) {
         // https://stripe.com/docs/js/payment_intents/confirm_card_payment#stripe_confirm_card_payment-existing
         return js.confirmCardPayment(
           paymentIntentClientSecret,
@@ -115,8 +115,7 @@ class WebStripe extends StripePlatform {
           ),
         );
       },
-      cardFromToken:
-          (PaymentMethodDataCardFromToken data, PaymentMethodOptions? options) {
+      cardFromToken: (PaymentMethodDataCardFromToken data) {
         // https: //stripe.com/docs/js/payment_intents/confirm_card_payment#stripe_confirm_card_payment-token
         return js.confirmCardPayment(
           paymentIntentClientSecret,
@@ -171,11 +170,11 @@ class WebStripe extends StripePlatform {
   @override
   Future<SetupIntent> confirmSetupIntent(
     String setupIntentClientSecret,
-    PaymentMethodParams data, [
-    Map<String, String> options = const {},
-  ]) async {
-    final response = await data.maybeWhen<Future<s.SetupIntentResponse>>(
-        card: (usage, billing) {
+    PaymentMethodParams data,
+    PaymentMethodOptions? options,
+  ) async {
+    final response =
+        await data.maybeWhen<Future<s.SetupIntentResponse>>(card: (usage) {
       return js.confirmCardSetup(
         setupIntentClientSecret,
         data: s.ConfirmCardSetupData(

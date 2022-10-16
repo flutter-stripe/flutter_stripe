@@ -100,8 +100,8 @@ class _AubecsExampleState extends State<AubecsExample> {
     // 2. use the client secret to confirm the payment and handle the result.
     try {
       await Stripe.instance.confirmPayment(
-        clientSecret,
-        PaymentMethodParams.aubecs(
+       paymentIntentClientSecret: clientSecret,
+       data: PaymentMethodParams.aubecs(
           paymentMethodData: PaymentMethodDataAubecs(formDetails: _details!),
         ),
       );

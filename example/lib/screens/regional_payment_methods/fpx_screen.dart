@@ -40,8 +40,8 @@ class FpxScreen extends StatelessWidget {
     // 2. use the client secret to confirm the payment and handle the result.
     try {
       await Stripe.instance.confirmPayment(
-        clientSecret,
-        PaymentMethodParams.fpx(
+        paymentIntentClientSecret:  clientSecret,
+       data: PaymentMethodParams.fpx(
           paymentMethodData: PaymentMethodDataFpx(
             testOfflineBank: false,
           ),

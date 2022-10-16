@@ -116,19 +116,19 @@ Map<String, dynamic> _$$_FinancialConnectionAccountToJson(
       'id': instance.id,
       'livemode': instance.livemode,
       'displayName': instance.displayName,
-      'status': _$AccountStatusEnumMap[instance.status],
+      'status': _$AccountStatusEnumMap[instance.status]!,
       'institutionName': instance.institutionName,
       'last4': instance.last4,
       'created': instance.created,
       'balance': instance.balance?.toJson(),
       'balanceRefresh': instance.balanceRefresh?.toJson(),
-      'category': _$AccountCategoryEnumMap[instance.category],
-      'subcategory': _$AccountSubcategoryEnumMap[instance.subcategory],
+      'category': _$AccountCategoryEnumMap[instance.category]!,
+      'subcategory': _$AccountSubcategoryEnumMap[instance.subcategory]!,
       'permissions': instance.permissions
-          ?.map((e) => _$AccountPermissionEnumMap[e])
+          ?.map((e) => _$AccountPermissionEnumMap[e]!)
           .toList(),
       'supportedPaymentMethodTypes': instance.supportedPaymentMethodTypes
-          .map((e) => _$FinancialConnectionsPaymentMethodTypeEnumMap[e])
+          .map((e) => _$FinancialConnectionsPaymentMethodTypeEnumMap[e]!)
           .toList(),
     };
 
@@ -175,7 +175,7 @@ _$_BalanceRefresh _$$_BalanceRefreshFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_BalanceRefreshToJson(_$_BalanceRefresh instance) =>
     <String, dynamic>{
-      'status': _$BalanceRefreshStatusEnumMap[instance.status],
+      'status': _$BalanceRefreshStatusEnumMap[instance.status]!,
       'lastAttemptedAt': instance.lastAttemptedAt,
     };
 
@@ -203,7 +203,7 @@ _$_AccountBalance _$$_AccountBalanceFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_AccountBalanceToJson(_$_AccountBalance instance) =>
     <String, dynamic>{
       'asOf': instance.asOf,
-      'type': _$BalanceTypeEnumMap[instance.type],
+      'type': _$BalanceTypeEnumMap[instance.type]!,
       'cash': instance.cash,
       'credit': instance.credit,
       'current': instance.current,
