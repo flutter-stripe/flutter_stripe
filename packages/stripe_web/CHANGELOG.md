@@ -1,3 +1,9 @@
+## 2.0.0
+
+ - a
+
+ - **FIX**: web_checkout (#973).
+
 ## 1.3.0
  - Sdk updates
 
