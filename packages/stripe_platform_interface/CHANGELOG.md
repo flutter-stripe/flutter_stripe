@@ -1,3 +1,7 @@
+## 6.0.0
+
+ - a
+
 ## 5.1.0
 
 - Several fixes by the Stripe sdk [v.0.19.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.19.0).
