@@ -1,6 +1,41 @@
 ## 6.0.0
 
- - a
+** Breaking Changes **
+
+- Move `PaymentMethodOptions` out of `PaymentMethodparams` so interface is similar with Stripe sdk. 
+
+Before
+
+```dart
+await Stripe.instance.confirmPayment(
+	paymentIntentClientSecret: clientSecret,
+		data: PaymentMethodParams.card(
+		  paymentMethodData: PaymentMethodData(
+		    billingDetails: billingDetails,
+		  ),
+		  options: PaymentMethodOptions(
+		  	setupFutureUsage: PaymentIntentsFutureUsage.OffSession : null,
+		),
+	),	
+);
+
+Now
+
+```dart
+await Stripe.instance.confirmPayment(
+	paymentIntentClientSecret: clientSecret,
+		data: PaymentMethodParams.card(
+		  paymentMethodData: PaymentMethodData(
+		    billingDetails: billingDetails,
+		  ),
+		),
+		options: PaymentMethodOptions(
+		  setupFutureUsage: PaymentIntentsFutureUsage.OffSession : null,
+		),
+);
+```
+
+- Deprecate support for Flutter 2 in order to use the new expensive Androidviews. This improves the overall experience on Android.
 
 ## 5.1.0
 
