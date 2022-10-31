@@ -1,6 +1,6 @@
 ## 6.0.0
 
-** Breaking Changes **
+**Breaking Changes**
 
 - Move `PaymentMethodOptions` out of `PaymentMethodparams` so interface is similar with Stripe sdk. 
 
@@ -18,6 +18,7 @@ await Stripe.instance.confirmPayment(
 		),
 	),	
 );
+```
 
 Now
 
