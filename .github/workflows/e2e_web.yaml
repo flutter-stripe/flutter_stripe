@@ -34,6 +34,7 @@ jobs:
         STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY }}
         STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
       run: |
+        cd ../../../
         ./.github/workflows/scripts/web-e2e-env-files.sh
     - name: Build Flutter project
       run: npm run build
