@@ -4,16 +4,12 @@ on:
     branches: [ main ]
     paths:
       - ".github/workflows/e2e_web.yaml"
-      - "packages/stripe/**"
       - "packages/stripe_web/**"
-      - "packages/stripe_platform_interface/**"
   pull_request:
     branches: [ main ]
     paths:
       - ".github/workflows/e2e_web.yaml"
-      - "packages/stripe/**"
       - "packages/stripe_web/**"
-      - "packages/stripe_platform_interface/**"
 jobs:
   test:
     timeout-minutes: 60
@@ -33,11 +29,14 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-    - name: Build Flutter project
+    - name: "Set env keys"
+      env:
+        STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY }}
+        STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
       run: |
-        cd app;
-        flutter pub get;
-        flutter build web --web-renderer html;
+        ./.github/workflows/scripts/web-e2e-env-files.sh
+    - name: Build Flutter project
+      run: npm run build
     - name: Run Playwright tests
       run: npm run test
     - uses: actions/upload-artifact@v2

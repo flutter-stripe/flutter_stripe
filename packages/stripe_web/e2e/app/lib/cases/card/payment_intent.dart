@@ -86,8 +86,8 @@ class _CardFieldPageState extends State<PayCardFieldPage> {
     // The rest will be done automatically using webhooks
     // ignore: unused_local_variable
     final paymentIntent = await Stripe.instance.confirmPayment(
-      clientSecret,
-      const PaymentMethodParams.card(
+      paymentIntentClientSecret: clientSecret,
+      data: const PaymentMethodParams.card(
         paymentMethodData: PaymentMethodData(
           billingDetails: billingDetails,
         ),

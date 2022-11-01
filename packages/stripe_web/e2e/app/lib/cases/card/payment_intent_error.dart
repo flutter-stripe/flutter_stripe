@@ -76,8 +76,9 @@ class _CardFieldPageState extends State<PayErrorCardFieldPage> {
     try {
       // By passing an invalid client secret this method will throw
       await Stripe.instance.confirmPayment(
-        'pi_3LzJvQLLSCwoVL5p1D2qIzxI_secret_iBMY9mfjjAnKTW2NkkwBJGVfU',
-        const PaymentMethodParams.card(
+        paymentIntentClientSecret:
+            'pi_3LzJvQLLSCwoVL5p1D2qIzxI_secret_iBMY9mfjjAnKTW2NkkwBJGVfU',
+        data: const PaymentMethodParams.card(
           paymentMethodData: PaymentMethodData(
             billingDetails: billingDetails,
           ),
