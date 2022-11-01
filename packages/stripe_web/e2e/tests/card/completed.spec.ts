@@ -7,7 +7,7 @@ test.describe('CardField', () => {
 
   test('card details are not completed by default', async ({ page }) => {
     await page.goto('/#/card/completed', { waitUntil: 'load' });
-    await page.waitForTimeout(2000)
+    let frame = await waitForStripeFrame(page)
     await expect(page.locator('text=complete: false')).toHaveCount(1)
   });
 
