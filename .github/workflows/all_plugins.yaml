@@ -36,7 +36,7 @@ jobs:
           STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY }}
         run: |
           ./.github/workflows/scripts/env-files.sh
-
+          ./.github/workflows/scripts/web-e2e-env-files.sh
       - name: "Run Analyze"
         run: melos run analyze
 

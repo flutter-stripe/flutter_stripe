@@ -9,7 +9,7 @@ else
   sed -i "s/<ADD_YOUR_KEY_HERE>/$STRIPE_PUBLISHABLE_KEY/" ./.env.dart
 fi
 
-cd ..
+cd ../../
 
 cp .env.example .env
 
