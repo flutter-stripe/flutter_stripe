@@ -37,7 +37,12 @@ class _CardFieldPageState extends State<CardFieldPage> {
           children: [
             CardField(controller: _controller),
             Text(_controller.details.toJson().toString()),
-            
+            TextButton(
+              onPressed: () {
+                _controller.clear();
+              },
+              child: const Text('Clear'),
+            )
           ],
         ),
       ),

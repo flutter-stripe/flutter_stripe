@@ -4,7 +4,6 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 class SimpleCardFieldPage extends StatelessWidget {
   const SimpleCardFieldPage({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return const Scaffold(

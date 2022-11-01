@@ -14,6 +14,8 @@ dependencies:
     path: ../../../stripe
   flutter_stripe_web:
     path: ../../../stripe_web
+  go_router: ^5.1.0
+  http: ^0.13.5
 
 
 dev_dependencies:

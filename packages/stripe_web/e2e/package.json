@@ -33,9 +33,11 @@
     "nodemon": "^2.0.19"
   },
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "playwright": "^1.27.1",
     "playwright-core": "^1.27.1",
+    "stripe": "^10.15.0",
     "typescript": "^4.7.4"
   }
 }
