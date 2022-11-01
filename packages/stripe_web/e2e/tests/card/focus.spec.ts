@@ -10,7 +10,7 @@ test.describe('CardField', () => {
     let cardNumber = frame.locator(`[name='cardnumber']`)
     await cardNumber.click()
 
-    await expect(cardNumber).toBeFocused({ timeout: 2000 })
+    await expect(cardNumber).toBeFocused()
     await expect(page).toHaveScreenshot();
 
   });

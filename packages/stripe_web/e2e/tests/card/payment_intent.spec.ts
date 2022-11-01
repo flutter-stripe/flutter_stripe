@@ -15,11 +15,11 @@ test.describe('CardField', () => {
     await frame.locator(`[name='cvc']`).fill('123')
     expect(frame.locator(`[name='cardnumber']`)).toHaveValue('4242 4242 4242 4242')
 
-    await expect(page.locator('text=complete: true')).toHaveCount(1, { timeout: 2000 })
+    await expect(page.locator('text=complete: true')).toHaveCount(1)
 
     await page.locator('text=Pay').click({ force: true })
 
-    await expect(page.locator('text=Payment State: Succeeded')).toHaveCount(1, { timeout: 10000 })
+    await expect(page.locator('text=Payment State: Succeeded')).toHaveCount(1, { timeout: 15000 })
   });
 
 
@@ -33,13 +33,13 @@ test.describe('CardField', () => {
     await frame.locator(`[name='cvc']`).fill('123')
     expect(frame.locator(`[name='cardnumber']`)).toHaveValue('4242 4242 4242 4242')
 
-    await expect(page.locator('text=complete: true')).toHaveCount(1, { timeout: 2000 })
+    await expect(page.locator('text=complete: true')).toHaveCount(1)
 
     await page.locator('text=Pay').click({ force: true })
 
     await expect(
       page.locator('text=Payment State: StripeError<String>(message: A processing error occurred., code: payment_intent_unexpected_state)'),
-    ).toHaveCount(1, { timeout: 10000 })
+    ).toHaveCount(1, { timeout: 15000 })
   });
 
 })
