@@ -17,6 +17,23 @@ In web, the website is redirected automatically to the checkout stripe url. And 
 
 https://user-images.githubusercontent.com/19904063/116256859-d87bc600-a773-11eb-9288-c53da161f20d.mov
 
+Alongside this package it is required to add the js library into the `index.html`
+
+```html
+
+<html>
+<head>
+    ...
+</head>
+<body>
+    ...
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="main.dart.js" type="application/javascript"></script>
+</body>
+</html>
+```
+
+
 
 # Android and iOS
 
