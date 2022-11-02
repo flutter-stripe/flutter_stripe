@@ -13,9 +13,7 @@ on:
 jobs:
   test:
     timeout-minutes: 60
-    runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.27.0-focal
+    runs-on: macos-latest
     defaults:
       run:
         working-directory: packages/stripe_web/e2e
