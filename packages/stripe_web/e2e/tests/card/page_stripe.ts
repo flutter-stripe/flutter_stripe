@@ -1,4 +1,4 @@
-import { Page, PlaywrightTestConfig } from "@playwright/test";
+import { Page } from "@playwright/test";
 
 export function stripeFrame(page: Page) {
     return page.locator('.StripeElement').frameLocator('iframe');
@@ -11,10 +11,3 @@ export async function waitForStripeFrame(page: Page) {
     await frame.locator(`[name='cardnumber']`).waitFor({ state: 'attached' })
     return frame;
 }
-
-const config: PlaywrightTestConfig = {
-  expect: {
-    toHaveScreenshot: { maxDiffPixels: 100 },
-  },
-};
-export default config;
