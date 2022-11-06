@@ -19,6 +19,7 @@ import com.stripe.android.core.ApiVersion
 import com.stripe.android.core.AppInfo
 import com.stripe.android.model.*
 import com.stripe.android.payments.bankaccount.CollectBankAccountConfiguration
+import com.stripe.android.paymentsheet.PaymentSheet
 import com.stripe.android.view.AddPaymentMethodActivityStarter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -160,6 +161,12 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
   @ReactMethod
   fun confirmPaymentSheetPayment(promise: Promise) {
     paymentSheetFragment?.confirmPayment(promise)
+  }
+
+  @ReactMethod
+  fun resetPaymentSheetCustomer(promise: Promise) {
+    PaymentSheet.resetCustomer(context = reactApplicationContext)
+    promise.resolve(null)
   }
 
   private fun payWithFpx() {

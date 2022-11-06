@@ -2,16 +2,17 @@ package com.reactnativestripesdk
 
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.graphics.Typeface
 import android.os.Build
 import android.text.InputFilter
 import android.view.View
 import android.view.View.OnFocusChangeListener
 import android.widget.FrameLayout
 import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.uimanager.PixelUtil
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.UIManagerModule
 import com.facebook.react.uimanager.events.EventDispatcher
+import com.facebook.react.views.text.ReactTypefaceUtils
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
@@ -136,6 +137,12 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
       cardFormViewBinding.cardMultilineWidget.expiryDateEditText,
       cardFormViewBinding.postalCode
     )
+    val placeholderTextBindings = setOf(
+      multilineWidgetBinding.tlExpiry,
+      multilineWidgetBinding.tlCardNumber,
+      multilineWidgetBinding.tlCvc,
+      cardFormViewBinding.postalCodeContainer,
+    )
 
     textColor?.let {
       for (binding in editTextBindings) {
@@ -150,10 +157,9 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
       }
     }
     placeholderColor?.let {
-      multilineWidgetBinding.tlExpiry.defaultHintTextColor = ColorStateList.valueOf(Color.parseColor(it))
-      multilineWidgetBinding.tlCardNumber.defaultHintTextColor = ColorStateList.valueOf(Color.parseColor(it))
-      multilineWidgetBinding.tlCvc.defaultHintTextColor = ColorStateList.valueOf(Color.parseColor(it))
-      cardFormViewBinding.postalCodeContainer.defaultHintTextColor = ColorStateList.valueOf(Color.parseColor(it))
+      for (binding in placeholderTextBindings) {
+        binding.defaultHintTextColor = ColorStateList.valueOf(Color.parseColor(it))
+      }
     }
     fontSize?.let {
       for (binding in editTextBindings) {
@@ -161,9 +167,17 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
       }
     }
     fontFamily?.let {
+      // Load custom font from assets, and fallback to default system font
+      val typeface = ReactTypefaceUtils.applyStyles(null, -1, -1, it.takeIf { it.isNotEmpty() }, context.assets)
       for (binding in editTextBindings) {
-        binding.typeface = Typeface.create(it, Typeface.NORMAL)
+        binding.typeface = typeface
       }
+      for (binding in placeholderTextBindings) {
+        binding.typeface = typeface
+      }
+      cardFormViewBinding.countryLayout.typeface = typeface
+      cardFormViewBinding.countryLayout.countryAutocomplete.typeface = typeface
+      cardFormViewBinding.errors.typeface = typeface
     }
     cursorColor?.let {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -182,14 +196,14 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
     cardFormViewBinding.cardMultilineWidgetContainer.background = MaterialShapeDrawable(
       ShapeAppearanceModel()
         .toBuilder()
-        .setAllCorners(CornerFamily.ROUNDED, (borderRadius * 2).toFloat())
+        .setAllCorners(CornerFamily.ROUNDED, PixelUtil.toPixelFromDIP(borderRadius.toDouble()))
         .build()
     ).also { shape ->
       shape.strokeWidth = 0.0f
       shape.strokeColor = ColorStateList.valueOf(Color.parseColor("#000000"))
       shape.fillColor = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
       borderWidth?.let {
-        shape.strokeWidth = (it * 2).toFloat()
+        shape.strokeWidth = PixelUtil.toPixelFromDIP(it.toDouble())
       }
       borderColor?.let {
         shape.strokeColor = ColorStateList.valueOf(Color.parseColor(it))

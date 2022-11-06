@@ -5,6 +5,7 @@ import androidx.annotation.NonNull
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.uimanager.DisplayMetricsHolder
 import com.facebook.react.uimanager.ThemedReactContext
 import com.google.android.material.internal.ThemeEnforcement
 import com.reactnativestripesdk.*
@@ -49,6 +50,8 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+        DisplayMetricsHolder.initDisplayMetricsIfNotInitialized(flutterPluginBinding.applicationContext)
+
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter.stripe/payments", JSONMethodCodec.INSTANCE)
         channel.setMethodCallHandler(this)
         flutterPluginBinding
