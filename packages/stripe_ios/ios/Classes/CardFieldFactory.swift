@@ -144,12 +144,15 @@ class CardFieldPlatformView: NSObject, FlutterPlatformView, STPPaymentCardTextFi
 
 extension CardFieldView {
     func dangerouslyUpdateCardDetails(params: NSDictionary ) {
-        let cardParams = STPPaymentMethodCardParams()
-        cardParams.cvc = params["cvc"] as? String
-        cardParams.number = params["number"] as? String
-        cardParams.expYear = params["expirationYear"] as? NSNumber ??  params["expiryYear"] as? NSNumber
-        cardParams.expMonth = params["expirationMonth"] as? NSNumber ?? params["expiryMonth"] as? NSNumber
-        self.cardField.cardParams = cardParams
+        let cardMethodParams = STPPaymentMethodCardParams()
+        cardMethodParams.cvc = params["cvc"] as? String
+        cardMethodParams.number = params["number"] as? String
+        cardMethodParams.expYear = params["expirationYear"] as? NSNumber ??  params["expiryYear"] as? NSNumber
+        cardMethodParams.expMonth = params["expirationMonth"] as? NSNumber ?? params["expiryMonth"] as? NSNumber
+        let cardParams = STPPaymentMethodParams()
+        cardParams.card = cardMethodParams
+        
+        self.cardField.paymentMethodParams.card = cardMethodParams
         self.cardField.postalCode = params["postalCode"] as? String
         self.cardParams = cardParams
         self.cardPostalCode = params["postalCode"] as? String

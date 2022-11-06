@@ -184,6 +184,9 @@ If you continue to have trouble, follow this discussion to get some support http
                 clientSecret = call.requiredArgument("clientSecret"),
                 promise = Promise(result)
             )
+            "resetPaymentSheetCustomer" -> stripeSdk.resetPaymentSheetCustomer(
+                promise = Promise(result)
+            )
             else -> result.notImplemented()
         }
     }
