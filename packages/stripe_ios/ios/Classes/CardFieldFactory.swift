@@ -150,6 +150,7 @@ extension CardFieldView {
         cardMethodParams.expYear = params["expirationYear"] as? NSNumber ??  params["expiryYear"] as? NSNumber
         cardMethodParams.expMonth = params["expirationMonth"] as? NSNumber ?? params["expiryMonth"] as? NSNumber
         let cardParams = STPPaymentMethodParams()
+        cardParams.type = STPPaymentMethodType.card
         cardParams.card = cardMethodParams
         
         self.cardField.paymentMethodParams.card = cardMethodParams
