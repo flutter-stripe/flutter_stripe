@@ -501,6 +501,29 @@ void main() {
       });
     });
 
+    group('Reset payment sheet', () {
+      late Completer<void> completer;
+
+      setUp(() async {
+        completer = Completer();
+
+        sut = MethodChannelStripe(
+          platformIsIos: false,
+          platformIsAndroid: true,
+          methodChannel: MethodChannelMock(
+            channelName: methodChannelName,
+            method: 'resetPaymentSheetCustomer',
+            result: {},
+          ).methodChannel,
+        );
+        await sut.resetPaymentSheetCustomer().then((_) => completer.complete());
+      });
+
+      test('It completes operation', () {
+        expect(completer.isCompleted, true);
+      });
+    });
+
     group('presentPaymentSheet', () {
       late Completer<void> completer;
 

@@ -364,6 +364,11 @@ class WebStripe extends StripePlatform {
     // TODO: implement handleURLCallback
     throw UnimplementedError();
   }
+
+  @override
+  Future<void> resetPaymentSheetCustomer() {
+    throw WebUnsupportedError.method('resetPaymentSheet');
+  }
 }
 
 class WebUnsupportedError extends Error implements UnsupportedError {

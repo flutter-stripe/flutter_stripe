@@ -56,6 +56,9 @@ abstract class StripePlatform extends PlatformInterface {
   /// Display the payment sheet.
   Future<void> presentPaymentSheet();
 
+  /// Reset the payment sheet.
+  Future<void> resetPaymentSheetCustomer();
+
   /// Confirm the payment on a payment sheet.
   Future<void> confirmPaymentSheetPayment();
 
