@@ -208,16 +208,17 @@ class Stripe {
   /// configuration. See [ApplePayPresentParams] for more details.
   ///
   /// Throws an [StripeError] in case presenting the payment sheet fails.
-  Future<void> presentApplePay(
-    ApplePayPresentParams params,
-  ) async {
+  Future<void> presentApplePay({
+    required ApplePayPresentParams params,
+    OnDidSetShippingContact? onDidSetShippingContact,
+  }) async {
     await _awaitForSettings();
     if (!isApplePaySupported.value) {
       //throw StripeError<ApplePayError>
       //(ApplePayError.canceled, 'APPLE_PAY_NOT_SUPPORTED_MESSAGE');
     }
     try {
-      await _platform.presentApplePay(params);
+      await _platform.presentApplePay(params, onDidSetShippingContact);
     } on StripeError {
       rethrow;
     }

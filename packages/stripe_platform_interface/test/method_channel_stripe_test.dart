@@ -396,6 +396,7 @@ void main() {
                   country: 'country',
                   currency: 'currency',
                 ),
+                null
               )
               .then((_) => completer.complete());
         });
@@ -426,6 +427,7 @@ void main() {
                 country: 'country',
                 currency: 'currency',
               ),
+              null,
             ),
             throwsA(const TypeMatcher<UnsupportedError>()),
           );
