@@ -12,8 +12,7 @@ _$_ApplePayShippingMethod _$$_ApplePayShippingMethodFromJson(
       label: json['label'] as String,
       amount: json['amount'] as String,
       identifier: json['identifier'] as String,
-      type: $enumDecodeNullable(
-          _$ApplePayShippingMethodTypeEnumMap, json['type']),
+      isPending: json['isPending'] as bool?,
       detail: json['detail'] as String?,
     );
 
@@ -23,14 +22,9 @@ Map<String, dynamic> _$$_ApplePayShippingMethodToJson(
       'label': instance.label,
       'amount': instance.amount,
       'identifier': instance.identifier,
-      'type': _$ApplePayShippingMethodTypeEnumMap[instance.type],
+      'isPending': instance.isPending,
       'detail': instance.detail,
     };
-
-const _$ApplePayShippingMethodTypeEnumMap = {
-  ApplePayShippingMethodType.ready: 'ready',
-  ApplePayShippingMethodType.pending: 'pending',
-};
 
 _$_ImmediateCartSummaryItem _$$_ImmediateCartSummaryItemFromJson(
         Map<String, dynamic> json) =>

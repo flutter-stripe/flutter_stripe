@@ -167,6 +167,7 @@ class MethodChannelStripe extends StripePlatform {
   Future<void> presentApplePay(
     ApplePayPresentParams params,
     OnDidSetShippingContact? onDidSetShippingContact,
+    OnDidSetShippingMethod? onDidSetShippingMethod,
   ) async {
     if (!_platformIsIos) {
       throw UnsupportedError('Apple Pay is only available for iOS devices');
@@ -182,10 +183,18 @@ class MethodChannelStripe extends StripePlatform {
           'summaryItems': paramsJson['cartItems'],
         });
         onDidSetShippingContact?.call(contact);
+      } else if (call.method == 'onDidSetShippingMethod') {
+        final method =
+            ApplePayShippingMethod.fromJson(call.arguments['shippingMethod']);
+        _methodChannel
+            .invokeMethod('updateApplePaySummaryItems', <String, dynamic>{
+          'summaryItems': paramsJson['cartItems'],
+        });
+        onDidSetShippingMethod?.call(method);
       }
     });
 
-    await _methodChannel.invokeMethod('presentApplePay', params.toJson());
+    await _methodChannel.invokeMethod('presentApplePay', paramsJson);
   }
 
   @override

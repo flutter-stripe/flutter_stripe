@@ -43,7 +43,7 @@ class ApplePayShippingMethod with _$ApplePayShippingMethod {
     required String label,
     required String amount,
     required String identifier,
-    ApplePayShippingMethodType? type,
+    bool? isPending,
     String? detail,
   }) = _ApplePayShippingMethod;
 
@@ -224,4 +224,6 @@ class ApplePayPostalAddress with _$ApplePayPostalAddress {
       _$ApplePayPostalAddressFromJson(json);
 }
 
-typedef OnDidSetShippingContact = void Function(ApplePayShippingContact contact);
+typedef OnDidSetShippingContact = void Function(
+    ApplePayShippingContact contact);
+typedef OnDidSetShippingMethod = void Function(ApplePayShippingMethod method);

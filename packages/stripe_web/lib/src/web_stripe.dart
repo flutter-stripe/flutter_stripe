@@ -224,6 +224,7 @@ class WebStripe extends StripePlatform {
   Future<void> presentApplePay(
     ApplePayPresentParams params,
     OnDidSetShippingContact? onDidSetShippingContact,
+    OnDidSetShippingMethod? onDidSetShippingMethod,
   ) async {
     throw WebUnsupportedError.method('presentApplePay');
   }

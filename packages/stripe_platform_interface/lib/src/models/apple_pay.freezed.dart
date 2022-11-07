@@ -24,7 +24,7 @@ mixin _$ApplePayShippingMethod {
   String get label => throw _privateConstructorUsedError;
   String get amount => throw _privateConstructorUsedError;
   String get identifier => throw _privateConstructorUsedError;
-  ApplePayShippingMethodType? get type => throw _privateConstructorUsedError;
+  bool? get isPending => throw _privateConstructorUsedError;
   String? get detail => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ abstract class $ApplePayShippingMethodCopyWith<$Res> {
       {String label,
       String amount,
       String identifier,
-      ApplePayShippingMethodType? type,
+      bool? isPending,
       String? detail});
 }
 
@@ -60,7 +60,7 @@ class _$ApplePayShippingMethodCopyWithImpl<$Res>
     Object? label = freezed,
     Object? amount = freezed,
     Object? identifier = freezed,
-    Object? type = freezed,
+    Object? isPending = freezed,
     Object? detail = freezed,
   }) {
     return _then(_value.copyWith(
@@ -76,10 +76,10 @@ class _$ApplePayShippingMethodCopyWithImpl<$Res>
           ? _value.identifier
           : identifier // ignore: cast_nullable_to_non_nullable
               as String,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ApplePayShippingMethodType?,
+      isPending: isPending == freezed
+          ? _value.isPending
+          : isPending // ignore: cast_nullable_to_non_nullable
+              as bool?,
       detail: detail == freezed
           ? _value.detail
           : detail // ignore: cast_nullable_to_non_nullable
@@ -99,7 +99,7 @@ abstract class _$$_ApplePayShippingMethodCopyWith<$Res>
       {String label,
       String amount,
       String identifier,
-      ApplePayShippingMethodType? type,
+      bool? isPending,
       String? detail});
 }
 
@@ -120,7 +120,7 @@ class __$$_ApplePayShippingMethodCopyWithImpl<$Res>
     Object? label = freezed,
     Object? amount = freezed,
     Object? identifier = freezed,
-    Object? type = freezed,
+    Object? isPending = freezed,
     Object? detail = freezed,
   }) {
     return _then(_$_ApplePayShippingMethod(
@@ -136,10 +136,10 @@ class __$$_ApplePayShippingMethodCopyWithImpl<$Res>
           ? _value.identifier
           : identifier // ignore: cast_nullable_to_non_nullable
               as String,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ApplePayShippingMethodType?,
+      isPending: isPending == freezed
+          ? _value.isPending
+          : isPending // ignore: cast_nullable_to_non_nullable
+              as bool?,
       detail: detail == freezed
           ? _value.detail
           : detail // ignore: cast_nullable_to_non_nullable
@@ -156,7 +156,7 @@ class _$_ApplePayShippingMethod implements _ApplePayShippingMethod {
       {required this.label,
       required this.amount,
       required this.identifier,
-      this.type,
+      this.isPending,
       this.detail});
 
   factory _$_ApplePayShippingMethod.fromJson(Map<String, dynamic> json) =>
@@ -169,13 +169,13 @@ class _$_ApplePayShippingMethod implements _ApplePayShippingMethod {
   @override
   final String identifier;
   @override
-  final ApplePayShippingMethodType? type;
+  final bool? isPending;
   @override
   final String? detail;
 
   @override
   String toString() {
-    return 'ApplePayShippingMethod(label: $label, amount: $amount, identifier: $identifier, type: $type, detail: $detail)';
+    return 'ApplePayShippingMethod(label: $label, amount: $amount, identifier: $identifier, isPending: $isPending, detail: $detail)';
   }
 
   @override
@@ -187,7 +187,7 @@ class _$_ApplePayShippingMethod implements _ApplePayShippingMethod {
             const DeepCollectionEquality().equals(other.amount, amount) &&
             const DeepCollectionEquality()
                 .equals(other.identifier, identifier) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.isPending, isPending) &&
             const DeepCollectionEquality().equals(other.detail, detail));
   }
 
@@ -198,7 +198,7 @@ class _$_ApplePayShippingMethod implements _ApplePayShippingMethod {
       const DeepCollectionEquality().hash(label),
       const DeepCollectionEquality().hash(amount),
       const DeepCollectionEquality().hash(identifier),
-      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(isPending),
       const DeepCollectionEquality().hash(detail));
 
   @JsonKey(ignore: true)
@@ -220,7 +220,7 @@ abstract class _ApplePayShippingMethod implements ApplePayShippingMethod {
       {required final String label,
       required final String amount,
       required final String identifier,
-      final ApplePayShippingMethodType? type,
+      final bool? isPending,
       final String? detail}) = _$_ApplePayShippingMethod;
 
   factory _ApplePayShippingMethod.fromJson(Map<String, dynamic> json) =
@@ -233,7 +233,7 @@ abstract class _ApplePayShippingMethod implements ApplePayShippingMethod {
   @override
   String get identifier;
   @override
-  ApplePayShippingMethodType? get type;
+  bool? get isPending;
   @override
   String? get detail;
   @override

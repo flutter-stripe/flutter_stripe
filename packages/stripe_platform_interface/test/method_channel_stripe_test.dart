@@ -158,7 +158,7 @@ void main() {
               const PaymentMethodParams.card(
                 paymentMethodData: PaymentMethodData(),
               ),
-            const  PaymentMethodOptions(
+              const PaymentMethodOptions(
                 setupFutureUsage: PaymentIntentsFutureUsage.OffSession,
               ));
         });
@@ -396,7 +396,8 @@ void main() {
                   country: 'country',
                   currency: 'currency',
                 ),
-                null
+                null,
+                null,
               )
               .then((_) => completer.complete());
         });
@@ -427,6 +428,7 @@ void main() {
                 country: 'country',
                 currency: 'currency',
               ),
+              null,
               null,
             ),
             throwsA(const TypeMatcher<UnsupportedError>()),
