@@ -1,3 +1,6 @@
+## 2.0.1
+- Sdk updates
+
 ## 2.0.0
 
 ** Breaking Changes **
