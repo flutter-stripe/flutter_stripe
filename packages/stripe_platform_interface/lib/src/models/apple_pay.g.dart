@@ -12,8 +12,7 @@ _$_ApplePayShippingMethod _$$_ApplePayShippingMethodFromJson(
       label: json['label'] as String,
       amount: json['amount'] as String,
       identifier: json['identifier'] as String,
-      type: $enumDecodeNullable(
-          _$ApplePayShippingMethodTypeEnumMap, json['type']),
+      isPending: json['isPending'] as bool?,
       detail: json['detail'] as String?,
     );
 
@@ -23,14 +22,9 @@ Map<String, dynamic> _$$_ApplePayShippingMethodToJson(
       'label': instance.label,
       'amount': instance.amount,
       'identifier': instance.identifier,
-      'type': _$ApplePayShippingMethodTypeEnumMap[instance.type],
+      'isPending': instance.isPending,
       'detail': instance.detail,
     };
-
-const _$ApplePayShippingMethodTypeEnumMap = {
-  ApplePayShippingMethodType.ready: 'ready',
-  ApplePayShippingMethodType.pending: 'pending',
-};
 
 _$_ImmediateCartSummaryItem _$$_ImmediateCartSummaryItemFromJson(
         Map<String, dynamic> json) =>
@@ -162,4 +156,71 @@ Map<String, dynamic> _$$_ApplePayErrorAddressFieldToJson(
     <String, dynamic>{
       'field': _$ApplePayContactFieldsTypeEnumMap[instance.field]!,
       'message': instance.message,
+    };
+
+_$_ApplePayShippingContact _$$_ApplePayShippingContactFromJson(
+        Map<String, dynamic> json) =>
+    _$_ApplePayShippingContact(
+      emailAddress: json['emailAddress'] as String?,
+      name: ApplePayContactName.fromJson(json['name'] as Map<String, dynamic>),
+      postalAddress: ApplePayPostalAddress.fromJson(
+          json['postalAddress'] as Map<String, dynamic>),
+      phoneNumber: json['phoneNumber'] as String?,
+    );
+
+Map<String, dynamic> _$$_ApplePayShippingContactToJson(
+        _$_ApplePayShippingContact instance) =>
+    <String, dynamic>{
+      'emailAddress': instance.emailAddress,
+      'name': instance.name.toJson(),
+      'postalAddress': instance.postalAddress.toJson(),
+      'phoneNumber': instance.phoneNumber,
+    };
+
+_$_ApplePayContactName _$$_ApplePayContactNameFromJson(
+        Map<String, dynamic> json) =>
+    _$_ApplePayContactName(
+      familyName: json['familyName'] as String?,
+      namePrefix: json['namePrefix'] as String?,
+      nameSuffix: json['nameSuffix'] as String?,
+      givenName: json['givenName'] as String?,
+      middleName: json['middleName'] as String?,
+      nickname: json['nickname'] as String?,
+    );
+
+Map<String, dynamic> _$$_ApplePayContactNameToJson(
+        _$_ApplePayContactName instance) =>
+    <String, dynamic>{
+      'familyName': instance.familyName,
+      'namePrefix': instance.namePrefix,
+      'nameSuffix': instance.nameSuffix,
+      'givenName': instance.givenName,
+      'middleName': instance.middleName,
+      'nickname': instance.nickname,
+    };
+
+_$_ApplePayPostalAddress _$$_ApplePayPostalAddressFromJson(
+        Map<String, dynamic> json) =>
+    _$_ApplePayPostalAddress(
+      city: json['city'] as String?,
+      country: json['country'] as String?,
+      postalCode: json['postalCode'] as String?,
+      state: json['state'] as String?,
+      street: json['street'] as String?,
+      isoCountryCode: json['isoCountryCode'] as String?,
+      subAdministrativeArea: json['subAdministrativeArea'] as String?,
+      subLocality: json['subLocality'] as String?,
+    );
+
+Map<String, dynamic> _$$_ApplePayPostalAddressToJson(
+        _$_ApplePayPostalAddress instance) =>
+    <String, dynamic>{
+      'city': instance.city,
+      'country': instance.country,
+      'postalCode': instance.postalCode,
+      'state': instance.state,
+      'street': instance.street,
+      'isoCountryCode': instance.isoCountryCode,
+      'subAdministrativeArea': instance.subAdministrativeArea,
+      'subLocality': instance.subLocality,
     };

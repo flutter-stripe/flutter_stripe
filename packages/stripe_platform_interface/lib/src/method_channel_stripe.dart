@@ -32,7 +32,9 @@ class MethodChannelStripe extends StripePlatform {
     required bool platformIsAndroid,
   })  : _methodChannel = methodChannel,
         _platformIsAndroid = platformIsAndroid,
-        _platformIsIos = platformIsIos;
+        _platformIsIos = platformIsIos {
+    _init();
+  }
 
   final MethodChannel _methodChannel;
   final bool _platformIsIos;
@@ -57,6 +59,8 @@ class MethodChannelStripe extends StripePlatform {
       'setReturnUrlSchemeOnAndroid': setReturnUrlSchemeOnAndroid,
     });
   }
+
+  void _init() {}
 
   @override
   Future<PaymentMethod> createPaymentMethod(
@@ -160,11 +164,37 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<void> presentApplePay(ApplePayPresentParams params) async {
+  Future<void> presentApplePay(
+    ApplePayPresentParams params,
+    OnDidSetShippingContact? onDidSetShippingContact,
+    OnDidSetShippingMethod? onDidSetShippingMethod,
+  ) async {
     if (!_platformIsIos) {
       throw UnsupportedError('Apple Pay is only available for iOS devices');
     }
-    await _methodChannel.invokeMethod('presentApplePay', params.toJson());
+    final paramsJson = params.toJson();
+
+    _methodChannel.setMethodCallHandler((call) async {
+      if (call.method == 'onDidSetShippingContact') {
+        final contact =
+            ApplePayShippingContact.fromJson(call.arguments['shippingContact']);
+        _methodChannel
+            .invokeMethod('updateApplePaySummaryItems', <String, dynamic>{
+          'summaryItems': paramsJson['cartItems'],
+        });
+        onDidSetShippingContact?.call(contact);
+      } else if (call.method == 'onDidSetShippingMethod') {
+        final method =
+            ApplePayShippingMethod.fromJson(call.arguments['shippingMethod']);
+        _methodChannel
+            .invokeMethod('updateApplePaySummaryItems', <String, dynamic>{
+          'summaryItems': paramsJson['cartItems'],
+        });
+        onDidSetShippingMethod?.call(method);
+      }
+    });
+
+    await _methodChannel.invokeMethod('presentApplePay', paramsJson);
   }
 
   @override
@@ -206,6 +236,21 @@ class MethodChannelStripe extends StripePlatform {
   Future<void> presentPaymentSheet() async {
     final result = await _methodChannel.invokeMethod<dynamic>(
       'presentPaymentSheet',
+      {'params': {}},
+    );
+
+    // iOS returns empty list on success
+    if (result is List) {
+      return;
+    } else {
+      return _parsePaymentSheetResult(result);
+    }
+  }
+
+  @override
+  Future<void> resetPaymentSheetCustomer() async {
+    final result = await _methodChannel.invokeMethod<dynamic>(
+      'resetPaymentSheetCustomer',
       {'params': {}},
     );
 

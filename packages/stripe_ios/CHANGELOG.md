@@ -1,6 +1,21 @@
+## 7.0.0
+**Breaking Changes**
+- This library now supports iOS 13 and up, due to stripe-ios increasing the deployment target
+
+**Features**
+- Added Link support in Payment Sheet.
+- Added the resetPaymentSheetCustomer method to clear persisted authentication state in the PaymentSheet.
+- Added preferredNetwork and availableNetworks fields to the CardResult payment method.
+- Added support for custom fonts to CardForm and CardView on Android.
+- Added support for customizing the call to action button label in Payment Sheet by providing the primaryButtonLabel property to initPaymentSheet().
+
+- **Fixes**
+- Several fixes by the Stripe sdk [v.0.20.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.20.0).
+
+
 ## 6.0.0
 
-** Breaking Changes **
+**Breaking Changes**
 
 - Move `PaymentMethodOptions` out of `PaymentMethodparams` so interface is similar with Stripe sdk. 
 
@@ -18,6 +33,7 @@ await Stripe.instance.confirmPayment(
 		),
 	),	
 );
+```
 
 Now
 
@@ -35,13 +51,16 @@ await Stripe.instance.confirmPayment(
 );
 ```
 
-- Deprecate support for Flutter 2.
+- Deprecate support for Flutter 2 in order to use the new expensive Androidviews. This improves the overall experience on Android.
 
 ## 5.1.0
 
 - Several fixes by the Stripe sdk [v.0.19.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.19.0).
 - Fix for #462, added `handleURLCallback` method for iOS to handle `returnUrl` when iDeal payment is successful. This will close the in-app webview of Safari.
 
+## 5.0.1
+ - Fix for #462, added `handleURLCallback` method for iOS to handle `returnUrl` when iDeal payment is successful. This will close the in-app webview of Safari
+ 
 ## 5.0.0
 Breaking changes
 - Your compileSdkVersion (in android/build.gradle) now must be at least 32. Changing your compileSdkVersion does not change runtime behavior.

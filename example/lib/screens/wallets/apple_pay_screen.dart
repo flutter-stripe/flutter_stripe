@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
@@ -50,16 +51,43 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
     try {
       // 1. Present Apple Pay sheet
       await Stripe.instance.presentApplePay(
-        ApplePayPresentParams(
+        params: ApplePayPresentParams(
           cartItems: [
             ApplePayCartSummaryItem.immediate(
               label: 'Product Test',
               amount: '0.01',
             ),
           ],
+          requiredShippingAddressFields: [
+            ApplePayContactFieldsType.postalAddress,
+          ],
+          shippingMethods: [
+            ApplePayShippingMethod(
+              identifier: 'free',
+              detail: 'Arrives by July 2',
+              label: 'Free Shipping',
+              amount: '0.0',
+            ),
+            ApplePayShippingMethod(
+              identifier: 'standard',
+              detail: 'Arrives by June 29',
+              label: 'Standard Shipping',
+              amount: '3.21',
+            ),
+          ],
           country: 'Es',
           currency: 'EUR',
         ),
+        onDidSetShippingContact: (contact) {
+          if (kDebugMode) {
+            print('shipping contact provided $contact ');
+          }
+        },
+        onDidSetShippingMethod: (method) {
+          if (kDebugMode) {
+            print('shipping method provided $method ');
+          }
+        },
       );
 
       // 2. fetch Intent Client Secret from backend

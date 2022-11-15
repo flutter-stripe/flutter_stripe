@@ -1279,6 +1279,12 @@ mixin _$Card {
   /// last four digits of the card.
   String? get last4 => throw _privateConstructorUsedError;
 
+  /// The preffered card brand for payment
+  String? get preferredNetwork => throw _privateConstructorUsedError;
+
+  /// The available networks the card can run.
+  List<String>? get availableNetworks => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CardCopyWith<Card> get copyWith => throw _privateConstructorUsedError;
@@ -1294,7 +1300,9 @@ abstract class $CardCopyWith<$Res> {
       int? expYear,
       int? expMonth,
       String? funding,
-      String? last4});
+      String? last4,
+      String? preferredNetwork,
+      List<String>? availableNetworks});
 }
 
 /// @nodoc
@@ -1313,6 +1321,8 @@ class _$CardCopyWithImpl<$Res> implements $CardCopyWith<$Res> {
     Object? expMonth = freezed,
     Object? funding = freezed,
     Object? last4 = freezed,
+    Object? preferredNetwork = freezed,
+    Object? availableNetworks = freezed,
   }) {
     return _then(_value.copyWith(
       brand: brand == freezed
@@ -1339,6 +1349,14 @@ class _$CardCopyWithImpl<$Res> implements $CardCopyWith<$Res> {
           ? _value.last4
           : last4 // ignore: cast_nullable_to_non_nullable
               as String?,
+      preferredNetwork: preferredNetwork == freezed
+          ? _value.preferredNetwork
+          : preferredNetwork // ignore: cast_nullable_to_non_nullable
+              as String?,
+      availableNetworks: availableNetworks == freezed
+          ? _value.availableNetworks
+          : availableNetworks // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -1354,7 +1372,9 @@ abstract class _$$_CardCopyWith<$Res> implements $CardCopyWith<$Res> {
       int? expYear,
       int? expMonth,
       String? funding,
-      String? last4});
+      String? last4,
+      String? preferredNetwork,
+      List<String>? availableNetworks});
 }
 
 /// @nodoc
@@ -1374,6 +1394,8 @@ class __$$_CardCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res>
     Object? expMonth = freezed,
     Object? funding = freezed,
     Object? last4 = freezed,
+    Object? preferredNetwork = freezed,
+    Object? availableNetworks = freezed,
   }) {
     return _then(_$_Card(
       brand: brand == freezed
@@ -1400,6 +1422,14 @@ class __$$_CardCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res>
           ? _value.last4
           : last4 // ignore: cast_nullable_to_non_nullable
               as String?,
+      preferredNetwork: preferredNetwork == freezed
+          ? _value.preferredNetwork
+          : preferredNetwork // ignore: cast_nullable_to_non_nullable
+              as String?,
+      availableNetworks: availableNetworks == freezed
+          ? _value._availableNetworks
+          : availableNetworks // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -1414,7 +1444,10 @@ class _$_Card implements _Card {
       this.expYear,
       this.expMonth,
       this.funding,
-      this.last4});
+      this.last4,
+      this.preferredNetwork,
+      final List<String>? availableNetworks})
+      : _availableNetworks = availableNetworks;
 
   factory _$_Card.fromJson(Map<String, dynamic> json) => _$$_CardFromJson(json);
 
@@ -1442,9 +1475,25 @@ class _$_Card implements _Card {
   @override
   final String? last4;
 
+  /// The preffered card brand for payment
+  @override
+  final String? preferredNetwork;
+
+  /// The available networks the card can run.
+  final List<String>? _availableNetworks;
+
+  /// The available networks the card can run.
+  @override
+  List<String>? get availableNetworks {
+    final value = _availableNetworks;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   String toString() {
-    return 'Card(brand: $brand, country: $country, expYear: $expYear, expMonth: $expMonth, funding: $funding, last4: $last4)';
+    return 'Card(brand: $brand, country: $country, expYear: $expYear, expMonth: $expMonth, funding: $funding, last4: $last4, preferredNetwork: $preferredNetwork, availableNetworks: $availableNetworks)';
   }
 
   @override
@@ -1457,7 +1506,11 @@ class _$_Card implements _Card {
             const DeepCollectionEquality().equals(other.expYear, expYear) &&
             const DeepCollectionEquality().equals(other.expMonth, expMonth) &&
             const DeepCollectionEquality().equals(other.funding, funding) &&
-            const DeepCollectionEquality().equals(other.last4, last4));
+            const DeepCollectionEquality().equals(other.last4, last4) &&
+            const DeepCollectionEquality()
+                .equals(other.preferredNetwork, preferredNetwork) &&
+            const DeepCollectionEquality()
+                .equals(other._availableNetworks, _availableNetworks));
   }
 
   @JsonKey(ignore: true)
@@ -1469,7 +1522,9 @@ class _$_Card implements _Card {
       const DeepCollectionEquality().hash(expYear),
       const DeepCollectionEquality().hash(expMonth),
       const DeepCollectionEquality().hash(funding),
-      const DeepCollectionEquality().hash(last4));
+      const DeepCollectionEquality().hash(last4),
+      const DeepCollectionEquality().hash(preferredNetwork),
+      const DeepCollectionEquality().hash(_availableNetworks));
 
   @JsonKey(ignore: true)
   @override
@@ -1491,7 +1546,9 @@ abstract class _Card implements Card {
       final int? expYear,
       final int? expMonth,
       final String? funding,
-      final String? last4}) = _$_Card;
+      final String? last4,
+      final String? preferredNetwork,
+      final List<String>? availableNetworks}) = _$_Card;
 
   factory _Card.fromJson(Map<String, dynamic> json) = _$_Card.fromJson;
 
@@ -1519,6 +1576,14 @@ abstract class _Card implements Card {
 
   /// last four digits of the card.
   String? get last4;
+  @override
+
+  /// The preffered card brand for payment
+  String? get preferredNetwork;
+  @override
+
+  /// The available networks the card can run.
+  List<String>? get availableNetworks;
   @override
   @JsonKey(ignore: true)
   _$$_CardCopyWith<_$_Card> get copyWith => throw _privateConstructorUsedError;

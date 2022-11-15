@@ -221,7 +221,11 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<void> presentApplePay(ApplePayPresentParams params) async {
+  Future<void> presentApplePay(
+    ApplePayPresentParams params,
+    OnDidSetShippingContact? onDidSetShippingContact,
+    OnDidSetShippingMethod? onDidSetShippingMethod,
+  ) async {
     throw WebUnsupportedError.method('presentApplePay');
   }
 
@@ -363,6 +367,11 @@ class WebStripe extends StripePlatform {
   Future<bool> handleURLCallback(String url) {
     // TODO: implement handleURLCallback
     throw UnimplementedError();
+  }
+
+  @override
+  Future<void> resetPaymentSheetCustomer() {
+    throw WebUnsupportedError.method('resetPaymentSheet');
   }
 }
 

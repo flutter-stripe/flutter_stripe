@@ -102,6 +102,8 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
             return collectBankAccountToken(call, result: result)
         case "collectFinancialConnectionsAccounts":
             return collectFinancialConnectionsAccounts(call, result: result)
+        case "resetPaymentSheetCustomer":
+            return resetPaymentSheetCustomer(call, result: result)
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -424,6 +426,11 @@ extension  StripePlugin {
        }
         collectFinancialConnectionsAccounts(clientSecret: clientSecret,
                     resolver: resolver(for: result),
+                    rejecter: rejecter(for: result))
+    }
+    
+    func resetPaymentSheetCustomer(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        resetPaymentSheetCustomer(resolver: resolver(for: result),
                     rejecter: rejecter(for: result))
     }
     

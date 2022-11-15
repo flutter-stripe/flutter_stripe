@@ -152,6 +152,12 @@ class Card with _$Card {
 
     /// last four digits of the card.
     String? last4,
+
+    /// The preffered card brand for payment
+    String? preferredNetwork,
+
+    /// The available networks the card can run.
+    List<String>? availableNetworks,
   }) = _Card;
 
   factory Card.fromJson(Map<String, dynamic> json) => _$CardFromJson(json);

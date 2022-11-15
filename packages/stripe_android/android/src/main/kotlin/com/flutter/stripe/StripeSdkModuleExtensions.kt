@@ -3,8 +3,7 @@ package com.flutter.stripe
 import androidx.fragment.app.FragmentActivity
 import com.facebook.react.bridge.Promise
 import com.reactnativestripesdk.StripeSdkModule
-import com.reactnativestripesdk.createMissingActivityError
-import io.flutter.embedding.android.FlutterFragmentActivity
+import com.reactnativestripesdk.utils.createMissingActivityError
 
 
 operator fun Int.invoke(): Int {
