@@ -490,6 +490,9 @@ internal fun mapNextAction(type: NextActionType?, data: NextActionData?): Writab
     NextActionType.BlikAuthorize, NextActionType.UseStripeSdk, null -> {
       return null
     }
+    NextActionType.UpiAwaitNotification -> { // TODO: Implement #1022
+      return null
+    }
   }
   return nextActionMap
 }
