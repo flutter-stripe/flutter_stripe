@@ -1,3 +1,7 @@
+## 7.0.1
+
+ - Fix #1022 make library compatible with Kotlin 1.7
+
 ## 7.0.0
 **Breaking Changes**
 - This library now supports iOS 13 and up, due to stripe-ios increasing the deployment target
