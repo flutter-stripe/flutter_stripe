@@ -180,7 +180,9 @@ class _$_CollectBankAccountParams implements _CollectBankAccountParams {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CollectBankAccountParamsToJson(this);
+    return _$$_CollectBankAccountParamsToJson(
+      this,
+    );
   }
 }
 
@@ -197,12 +199,12 @@ abstract class _CollectBankAccountParams implements CollectBankAccountParams {
   /// Billingdetails of the account holder
   ///
   /// It is required to fill in the name in the billing details
-  BillingDetails get billingDetails => throw _privateConstructorUsedError;
+  BillingDetails get billingDetails;
   @override
 
   /// The paymentmethod type. At this point only method [PaymentMethodType.USBankAccount]
   /// is supported.
-  PaymentMethodType get paymentMethodType => throw _privateConstructorUsedError;
+  PaymentMethodType get paymentMethodType;
   @override
   @JsonKey(ignore: true)
   _$$_CollectBankAccountParamsCopyWith<_$_CollectBankAccountParams>
@@ -375,7 +377,9 @@ class _$_VerifyMicroDepositsParams implements _VerifyMicroDepositsParams {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_VerifyMicroDepositsParamsToJson(this);
+    return _$$_VerifyMicroDepositsParamsToJson(
+      this,
+    );
   }
 }
 
@@ -393,13 +397,13 @@ abstract class _VerifyMicroDepositsParams implements VerifyMicroDepositsParams {
   ///
   /// Make sure that the amount is exactly 2. When using this field make sure
   /// [descriptorCode] is `null`.
-  List<int>? get amounts => throw _privateConstructorUsedError;
+  List<int>? get amounts;
   @override
 
   /// The descriptor code that is part of the microdepot to the customer bank account.
   ///
   /// When Using this field make sure [amounts] is `null`.
-  String? get descriptorCode => throw _privateConstructorUsedError;
+  String? get descriptorCode;
   @override
   @JsonKey(ignore: true)
   _$$_VerifyMicroDepositsParamsCopyWith<_$_VerifyMicroDepositsParams>

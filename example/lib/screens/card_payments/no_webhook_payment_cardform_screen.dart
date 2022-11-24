@@ -104,8 +104,8 @@ class _NoWebhookPaymentCardFormScreenState
       ); // mocked data for tests
 
       // 2. Create payment method
-      final paymentMethod =
-          await Stripe.instance.createPaymentMethod(PaymentMethodParams.card(
+      final paymentMethod = await Stripe.instance.createPaymentMethod(
+          params: PaymentMethodParams.card(
         paymentMethodData: PaymentMethodData(
           billingDetails: billingDetails,
         ),
@@ -116,9 +116,7 @@ class _NoWebhookPaymentCardFormScreenState
         useStripeSdk: true,
         paymentMethodId: paymentMethod.id,
         currency: 'usd', // mocked data
-        items: [
-          {'id': 'id'}
-        ],
+        items: ['id-1'],
       );
 
       if (paymentIntentResult['error'] != null) {
@@ -198,7 +196,7 @@ class _NoWebhookPaymentCardFormScreenState
     required bool useStripeSdk,
     required String paymentMethodId,
     required String currency,
-    List<Map<String, dynamic>>? items,
+    List<String>? items,
   }) async {
     final url = Uri.parse('$kApiUrl/pay-without-webhooks');
     final response = await http.post(

@@ -22,6 +22,7 @@ Future<CheckoutResponse> redirectToCheckout({
   required BuildContext context,
   required String sessionId,
   required String publishableKey,
+  String? stripeAccountId,
   String? successUrl,
   String? canceledUrl,
 }) async {
@@ -41,6 +42,7 @@ Future<CheckoutResponse> redirectToCheckout({
       builder: (context) => CheckoutPage(
         sessionId: sessionId,
         publishableKey: publishableKey,
+        stripeAccountId: stripeAccountId,
         onCompleted: (response) => Navigator.of(context).pop(response),
         successUrl: successUrl!,
         canceledUrl: canceledUrl!,
@@ -60,6 +62,7 @@ class CheckoutPage extends StatefulWidget {
     required this.successUrl,
     required this.canceledUrl,
     this.publishableKey,
+    this.stripeAccountId,
   })  : assert(() {
           assert(
             successUrl.startsWith('https'),
@@ -96,6 +99,9 @@ class CheckoutPage extends StatefulWidget {
   /// Stripe publishable key
   final String? publishableKey;
 
+  /// The account id of the Stripe account
+  final String? stripeAccountId;
+
   final Function(CheckoutResponse)? onCompleted;
 }
 
@@ -112,7 +118,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         resizeToAvoidBottomInset: false,
         body: SafeArea(
           child: WebView(
-            initialUrl: '',
+            initialUrl: _baseUrl,
             javascriptMode: JavascriptMode.unrestricted,
             onWebViewCreated: (webViewController) {
               _webViewController = webViewController;
@@ -149,11 +155,17 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
   Future<void> _redirectToStripe(String sessionId) async {
     final publishableKey = widget.publishableKey;
-    final redirectToCheckoutJs = '''
-var stripe = Stripe("$publishableKey");
-stripe.redirectToCheckout({sessionId: "$sessionId"});
-''';
+    final stripeAccountId = widget.stripeAccountId;
 
+    var options = '';
+    if (stripeAccountId != null) {
+      options += 'stripeAccount: "$stripeAccountId"';
+    }
+
+    final redirectToCheckoutJs = '''
+      var stripe = Stripe("$publishableKey", {$options});
+      stripe.redirectToCheckout({sessionId: "$sessionId"});
+    ''';
     try {
       assert(_webViewController != null, 'WebView has not been created');
       await _webViewController!.runJavascript(redirectToCheckoutJs);

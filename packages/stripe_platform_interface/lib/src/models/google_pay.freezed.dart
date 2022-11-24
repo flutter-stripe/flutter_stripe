@@ -186,7 +186,9 @@ class _$_PresentGooglePayParams implements _PresentGooglePayParams {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PresentGooglePayParamsToJson(this);
+    return _$$_PresentGooglePayParamsToJson(
+      this,
+    );
   }
 }
 
@@ -202,18 +204,18 @@ abstract class _PresentGooglePayParams implements PresentGooglePayParams {
   @override
 
   /// The client is secret is used for handling the payment from the Client side.
-  String get clientSecret => throw _privateConstructorUsedError;
+  String get clientSecret;
   @override
 
   /// Determines whether to present Google Pay in order to confirm a [SetupIntent]
   /// or a [PaymentIntent].
-  bool get forSetupIntent => throw _privateConstructorUsedError;
+  bool get forSetupIntent;
   @override
 
   /// When forSetupIntent is `true` it is required to provide a currencyCode.
   ///
   /// For more details see: https://developers.google.com/pay/api/android/reference/request-objects#TransactionInfo .
-  String? get currencyCode => throw _privateConstructorUsedError;
+  String? get currencyCode;
   @override
   @JsonKey(ignore: true)
   _$$_PresentGooglePayParamsCopyWith<_$_PresentGooglePayParams> get copyWith =>
@@ -481,7 +483,9 @@ class _$_GooglePayInitParams implements _GooglePayInitParams {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GooglePayInitParamsToJson(this);
+    return _$$_GooglePayInitParamsToJson(
+      this,
+    );
   }
 }
 
@@ -500,29 +504,28 @@ abstract class _GooglePayInitParams implements GooglePayInitParams {
   @override
 
   /// Merchant name
-  String get merchantName => throw _privateConstructorUsedError;
+  String get merchantName;
   @override
 
   /// ISO country code of the merchant
-  String get countryCode => throw _privateConstructorUsedError;
+  String get countryCode;
   @override
 
   /// Flag to use test environment or live environment.
-  bool get testEnv => throw _privateConstructorUsedError;
+  bool get testEnv;
   @override
 
   /// Configuration regarding collection of billing address,
-  BillingAddressConfig? get billingAddressConfig =>
-      throw _privateConstructorUsedError;
+  BillingAddressConfig? get billingAddressConfig;
   @override
 
   /// Flag to indicate wheter Google Pay should collect email of the customer.
-  bool get isEmailRequired => throw _privateConstructorUsedError;
+  bool get isEmailRequired;
   @override
 
   /// When `true` Google Pay is considered ready if the customers's Google Pay
   /// wallet has existing payment methods.
-  bool get existingPaymentMethodRequired => throw _privateConstructorUsedError;
+  bool get existingPaymentMethodRequired;
   @override
   @JsonKey(ignore: true)
   _$$_GooglePayInitParamsCopyWith<_$_GooglePayInitParams> get copyWith =>
@@ -699,7 +702,9 @@ class _$_BillingAddressConfig implements _BillingAddressConfig {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BillingAddressConfigToJson(this);
+    return _$$_BillingAddressConfigToJson(
+      this,
+    );
   }
 }
 
@@ -716,16 +721,16 @@ abstract class _BillingAddressConfig implements BillingAddressConfig {
 
   /// If `true` Google pay requires a Billing address in order to process the
   /// payment.
-  bool? get isRequired => throw _privateConstructorUsedError;
+  bool? get isRequired;
   @override
 
   /// Desired format
-  BillingAddressFormat? get format => throw _privateConstructorUsedError;
+  BillingAddressFormat? get format;
   @override
 
   /// If `true` customer needs to provide a phonenummer in order to process
   /// the transaction.
-  bool? get isPhoneNumberRequired => throw _privateConstructorUsedError;
+  bool? get isPhoneNumberRequired;
   @override
   @JsonKey(ignore: true)
   _$$_BillingAddressConfigCopyWith<_$_BillingAddressConfig> get copyWith =>
@@ -887,7 +892,9 @@ class _$_CreateGooglePayPaymentParams implements _CreateGooglePayPaymentParams {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CreateGooglePayPaymentParamsToJson(this);
+    return _$$_CreateGooglePayPaymentParamsToJson(
+      this,
+    );
   }
 }
 
@@ -905,14 +912,14 @@ abstract class _CreateGooglePayPaymentParams
   /// ISO 4217 alphabetic currency code.
   ///
   /// For example: `USD`
-  String get currencyCode => throw _privateConstructorUsedError;
+  String get currencyCode;
   @override
 
   /// Amount intended to be collected.
   ///
   /// The amount has to be a positive zero-digit integer representing the charge
   /// in the smallest currency unit (e.g. cents for US dollar).
-  int get amount => throw _privateConstructorUsedError;
+  int get amount;
   @override
   @JsonKey(ignore: true)
   _$$_CreateGooglePayPaymentParamsCopyWith<_$_CreateGooglePayPaymentParams>
@@ -1076,7 +1083,9 @@ class _$_IsGooglePaySupportedParams implements _IsGooglePaySupportedParams {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IsGooglePaySupportedParamsToJson(this);
+    return _$$_IsGooglePaySupportedParamsToJson(
+      this,
+    );
   }
 }
 
@@ -1094,14 +1103,14 @@ abstract class _IsGooglePaySupportedParams
   /// Flag to use test environment or live environment.
   ///
   /// Defaults to `false`.
-  bool get testEnv => throw _privateConstructorUsedError;
+  bool get testEnv;
   @override
 
   /// When set to true Google pay is only considered ready in case the
   /// customers google Pay wallet has an existing payment method configured.
   ///
   /// Defaults to `false`.
-  bool get existingPaymentMethodRequired => throw _privateConstructorUsedError;
+  bool get existingPaymentMethodRequired;
   @override
   @JsonKey(ignore: true)
   _$$_IsGooglePaySupportedParamsCopyWith<_$_IsGooglePaySupportedParams>

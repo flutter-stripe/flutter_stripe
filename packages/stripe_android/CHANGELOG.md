@@ -1,6 +1,110 @@
+## 7.0.1
+
+ - Fix #1022 make library compatible with Kotlin 1.7
+
+## 7.0.0
+**Breaking Changes**
+- This library now supports iOS 13 and up, due to stripe-ios increasing the deployment target
+
+**Features**
+- Added Link support in Payment Sheet.
+- Added the resetPaymentSheetCustomer method to clear persisted authentication state in the PaymentSheet.
+- Added preferredNetwork and availableNetworks fields to the CardResult payment method.
+- Added support for custom fonts to CardForm and CardView on Android.
+- Added support for customizing the call to action button label in Payment Sheet by providing the primaryButtonLabel property to initPaymentSheet().
+
+- **Fixes**
+- Several fixes by the Stripe sdk [v.0.20.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.20.0).
+
+
+## 6.0.0
+
+**Breaking Changes**
+
+- Move `PaymentMethodOptions` out of `PaymentMethodparams` so interface is similar with Stripe sdk. 
+
+Before
+
+```dart
+await Stripe.instance.confirmPayment(
+	paymentIntentClientSecret: clientSecret,
+		data: PaymentMethodParams.card(
+		  paymentMethodData: PaymentMethodData(
+		    billingDetails: billingDetails,
+		  ),
+		  options: PaymentMethodOptions(
+		  	setupFutureUsage: PaymentIntentsFutureUsage.OffSession : null,
+		),
+	),	
+);
+```
+
+Now
+
+```dart
+await Stripe.instance.confirmPayment(
+	paymentIntentClientSecret: clientSecret,
+		data: PaymentMethodParams.card(
+		  paymentMethodData: PaymentMethodData(
+		    billingDetails: billingDetails,
+		  ),
+		),
+		options: PaymentMethodOptions(
+		  setupFutureUsage: PaymentIntentsFutureUsage.OffSession : null,
+		),
+);
+```
+
+- Deprecate support for Flutter 2 in order to use the new expensive Androidviews. This improves the overall experience on Android.
+
+## 5.1.0
+
+- Several fixes by the Stripe sdk [v.0.19.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.19.0).
+- Fix for #462, added `handleURLCallback` method for iOS to handle `returnUrl` when iDeal payment is successful. This will close the in-app webview of Safari.
+
+## 5.0.1
+ - Fix for #462, added `handleURLCallback` method for iOS to handle `returnUrl` when iDeal payment is successful. This will close the in-app webview of Safari
+ 
+## 5.0.0
+Breaking changes
+- Your compileSdkVersion (in android/build.gradle) now must be at least 32. Changing your compileSdkVersion does not change runtime behavior.
+
+Features
+- Added support for pay_dark and standard_dark to the GooglePayButton component. This allows you to display the dark Google Pay button.
+- Added support for borderColor, borderRadius, and cursorColor to CardForm's cardStyle prop on iOS (already exists on Android).
+- Added the collectBankAccountToken & collectFinancialConnectionsAccounts functions.
+- confirmPayment can now be called with just a client secret (e.g. await confirmPayment("payment-intent-id")), in other words the payment method can be excluded. If the payment method is excluded, it is assumed by the SDK that you have attached the payment method on the server-side during payment intent creation.
+- Payment Sheet now supports Link on iOS. [#1086](https://github.com/stripe/stripe-react-native/pull/1086).
+
+Other changes
+- Several fixes by the Stripe sdk [v.0.16.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.16.0).
+- Several fixes by the Stripe sdk [v.0.17.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.17.0).
+- Several fixes by the Stripe sdk [v.0.18.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.18.0).
+
 ## 4.0.0
 ** Breaking changes **
+- Added support for iOS 15 paymentSummaryItems: PKDeferredPaymentSummaryItem and PKRecurringPaymentSummaryItem.
+Adding a summary item before was:
+
+```dart
+ ApplePayCartSummaryItem(
+    label: 'Product Test',
+    amount: '0.01',
+);
+```
+
+Becomes
+
+```dart
+ApplePayCartSummaryItem.immediate(
+  label: 'Product Test',
+  amount: '0.01',
+);
+```
+
 - Changed paymentsheet parameters to make it more clear which settings are used for Google Pay and Apple Pay. Changes: `merchantCountryCode` is now moved into both `PaymentSheetApplePay`and `PaymentSheetGooglePay`, `currencyCode` and `testEnv` is now part of the `PaymentSheetGooglePay` object. 
+
+- Added possibility to add  `ApplePayCartSummaryItem` to the paymensheet.
 
 Other changes
 - Support for affirm payment method.

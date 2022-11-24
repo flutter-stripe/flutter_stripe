@@ -21,7 +21,6 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
         
         let instance = StripePlugin(channel: channel)
         registrar.addMethodCallDelegate(instance, channel: channel)
-        registrar.addApplicationDelegate(instance)
         
         // Card Field
         let cardFieldFactory = CardFieldViewFactory(messenger: registrar.messenger(), delegate:instance)
@@ -99,6 +98,12 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
             return isCardInWallet(call, result: result)
         case "canAddCardToWallet":
             return canAddCardToWallet(call, result: result)
+        case "collectBankAccountToken":
+            return collectBankAccountToken(call, result: result)
+        case "collectFinancialConnectionsAccounts":
+            return collectFinancialConnectionsAccounts(call, result: result)
+        case "resetPaymentSheetCustomer":
+            return resetPaymentSheetCustomer(call, result: result)
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -127,19 +132,6 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
     override
     func sendEvent(withName name: String, body: [String:  Any]) {
         channel.invokeMethod(name, arguments: body)
-    }
-    
-    public func application( _ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool {
-        return StripeAPI.handleURLCallback(with: url)
-    }
-
-    public func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool  {
-        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
-            if let url = userActivity.webpageURL {
-                return StripeAPI.handleURLCallback(with: url)
-            }
-        }
-        return false
     }
 }
 
@@ -344,6 +336,7 @@ extension  StripePlugin {
         }
         handleNextAction(
             paymentIntentClientSecret: paymentIntentClientSecret,
+            returnURL: arguments["returnURL"] as? String,
             resolver: resolver(for: result),
             rejecter: rejecter(for: result)
         )
@@ -411,6 +404,33 @@ extension  StripePlugin {
         }
         createToken(params: params,
                     resolver: resolver(for: result),
+                    rejecter: rejecter(for: result))
+    }
+    
+    func collectBankAccountToken(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? FlutterMap,
+        let clientSecret = arguments["clientSecret"] as? String else {
+            result(FlutterError.invalidParams)
+            return
+        }
+        collectBankAccountToken(clientSecret: clientSecret,
+                    resolver: resolver(for: result),
+                    rejecter: rejecter(for: result))
+    }
+    
+    func collectFinancialConnectionsAccounts(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? FlutterMap,
+       let clientSecret = arguments["clientSecret"] as? String else {
+           result(FlutterError.invalidParams)
+           return
+       }
+        collectFinancialConnectionsAccounts(clientSecret: clientSecret,
+                    resolver: resolver(for: result),
+                    rejecter: rejecter(for: result))
+    }
+    
+    func resetPaymentSheetCustomer(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        resetPaymentSheetCustomer(resolver: resolver(for: result),
                     rejecter: rejecter(for: result))
     }
     

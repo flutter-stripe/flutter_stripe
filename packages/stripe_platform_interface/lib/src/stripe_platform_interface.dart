@@ -36,13 +36,18 @@ abstract class StripePlatform extends PlatformInterface {
 
   Future<PaymentMethod> createPaymentMethod(
     PaymentMethodParams data, [
-    Map<String, String> options = const {},
+    PaymentMethodOptions? options,
   ]);
 
-  Future<PaymentIntent> handleNextAction(String paymentIntentClientSecret);
+  Future<PaymentIntent> handleNextAction(String paymentIntentClientSecret,
+      {String? returnURL});
   Future<PaymentIntent> confirmPayment(
-      String paymentIntentClientSecret, PaymentMethodParams params,
-      [Map<String, String> options = const {}]);
+    String paymentIntentClientSecret,
+    PaymentMethodParams? params,
+
+    /// Paymentmethod options
+    PaymentMethodOptions? options,
+  );
   Future<bool> isApplePaySupported() async => false;
 
   /// Configure the payment sheet using [SetupPaymentSheetParameters] as config.
@@ -51,17 +56,26 @@ abstract class StripePlatform extends PlatformInterface {
   /// Display the payment sheet.
   Future<void> presentPaymentSheet();
 
+  /// Reset the payment sheet.
+  Future<void> resetPaymentSheetCustomer();
+
   /// Confirm the payment on a payment sheet.
   Future<void> confirmPaymentSheetPayment();
 
   Future<void> openApplePaySetup();
-  Future<void> presentApplePay(ApplePayPresentParams params);
+  Future<void> presentApplePay(
+    ApplePayPresentParams params,
+    OnDidSetShippingContact? onDidSetShippingContact,
+    OnDidSetShippingMethod? onDidSetShippingMethod,
+  );
   Future<void> confirmApplePayPayment(String clientSecret);
   Future<TokenData> createApplePayToken(Map<String, dynamic> payment);
   Future<void> updateApplePaySummaryItems({
     required List<ApplePayCartSummaryItem> summaryItems,
     List<ApplePayErrorAddressField>? errorAddressFields,
   });
+
+  Future<bool> handleURLCallback(String url);
 
   Future<void> initGooglePay(GooglePayInitParams params);
   Future<void> presentGooglePay(PresentGooglePayParams params);
@@ -76,8 +90,10 @@ abstract class StripePlatform extends PlatformInterface {
   /// Note this method is legacy and it is advised to use [PaymentIntent].
   Future<TokenData> createToken(CreateTokenParams params);
   Future<SetupIntent> confirmSetupIntent(
-      String setupIntentClientSecret, PaymentMethodParams data,
-      [Map<String, String> options = const {}]);
+    String setupIntentClientSecret,
+    PaymentMethodParams data,
+    PaymentMethodOptions? options,
+  );
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret);
   Future<String> createTokenForCVCUpdate(String cvc);
 
@@ -93,6 +109,13 @@ abstract class StripePlatform extends PlatformInterface {
     required String clientSecret,
     required VerifyMicroDepositsParams params,
   });
+
+  /// Methods related to financial connections
+  Future<FinancialConnectionTokenResult> collectBankAccountToken(
+      {required String clientSecret});
+
+  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts(
+      {required String clientSecret});
 
   /// Updates the internal card details. This method will not validate the card
   /// information so you should validate the information yourself.

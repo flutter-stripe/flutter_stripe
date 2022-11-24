@@ -97,6 +97,10 @@ _$_Card _$$_CardFromJson(Map<String, dynamic> json) => _$_Card(
       expMonth: json['expMonth'] as int?,
       funding: json['funding'] as String?,
       last4: json['last4'] as String?,
+      preferredNetwork: json['preferredNetwork'] as String?,
+      availableNetworks: (json['availableNetworks'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$_CardToJson(_$_Card instance) => <String, dynamic>{
@@ -106,6 +110,8 @@ Map<String, dynamic> _$$_CardToJson(_$_Card instance) => <String, dynamic>{
       'expMonth': instance.expMonth,
       'funding': instance.funding,
       'last4': instance.last4,
+      'preferredNetwork': instance.preferredNetwork,
+      'availableNetworks': instance.availableNetworks,
     };
 
 _$_Fpx _$$_FpxFromJson(Map<String, dynamic> json) => _$_Fpx(
@@ -182,8 +188,8 @@ Map<String, dynamic> _$$_UsBankAccountToJson(_$_UsBankAccount instance) =>
       'routingNumber': instance.routingNumber,
       'last4': instance.last4,
       'accountHolderType':
-          _$BankAccountHolderTypeEnumMap[instance.accountHolderType],
-      'accountType': _$UsBankAccountTypeEnumMap[instance.accountType],
+          _$BankAccountHolderTypeEnumMap[instance.accountHolderType]!,
+      'accountType': _$UsBankAccountTypeEnumMap[instance.accountType]!,
       'bankName': instance.bankName,
       'fingerprint': instance.fingerprint,
       'linkedAccount': instance.linkedAccount,
@@ -208,10 +214,6 @@ _$_PaymentMethodParamsCard _$$_PaymentMethodParamsCardFromJson(
     _$_PaymentMethodParamsCard(
       paymentMethodData: PaymentMethodData.fromJson(
           json['paymentMethodData'] as Map<String, dynamic>),
-      options: json['options'] == null
-          ? null
-          : PaymentMethodOptions.fromJson(
-              json['options'] as Map<String, dynamic>),
       $type: json['paymentMethodType'] as String?,
     );
 
@@ -219,7 +221,6 @@ Map<String, dynamic> _$$_PaymentMethodParamsCardToJson(
         _$_PaymentMethodParamsCard instance) =>
     <String, dynamic>{
       'paymentMethodData': instance.paymentMethodData.toJson(),
-      'options': instance.options?.toJson(),
       'paymentMethodType': instance.$type,
     };
 
@@ -228,10 +229,6 @@ _$_PaymentMethodParamsCardWithToken
         _$_PaymentMethodParamsCardWithToken(
           paymentMethodData: PaymentMethodDataCardFromToken.fromJson(
               json['paymentMethodData'] as Map<String, dynamic>),
-          options: json['options'] == null
-              ? null
-              : PaymentMethodOptions.fromJson(
-                  json['options'] as Map<String, dynamic>),
           $type: json['paymentMethodType'] as String?,
         );
 
@@ -239,7 +236,6 @@ Map<String, dynamic> _$$_PaymentMethodParamsCardWithTokenToJson(
         _$_PaymentMethodParamsCardWithToken instance) =>
     <String, dynamic>{
       'paymentMethodData': instance.paymentMethodData.toJson(),
-      'options': instance.options?.toJson(),
       'paymentMethodType': instance.$type,
     };
 
@@ -249,10 +245,6 @@ _$_PaymentMethodParamsCardWithMethodId
         _$_PaymentMethodParamsCardWithMethodId(
           paymentMethodData: PaymentMethodDataCardFromMethod.fromJson(
               json['paymentMethodData'] as Map<String, dynamic>),
-          options: json['options'] == null
-              ? null
-              : PaymentMethodOptions.fromJson(
-                  json['options'] as Map<String, dynamic>),
           $type: json['paymentMethodType'] as String?,
         );
 
@@ -260,7 +252,6 @@ Map<String, dynamic> _$$_PaymentMethodParamsCardWithMethodIdToJson(
         _$_PaymentMethodParamsCardWithMethodId instance) =>
     <String, dynamic>{
       'paymentMethodData': instance.paymentMethodData.toJson(),
-      'options': instance.options?.toJson(),
       'paymentMethodType': instance.$type,
     };
 
@@ -510,10 +501,6 @@ _$_PaymentMethodParamsUsBankAccount
         _$_PaymentMethodParamsUsBankAccount(
           paymentMethodData: PaymentMethodDataUsBank.fromJson(
               json['paymentMethodData'] as Map<String, dynamic>),
-          options: json['options'] == null
-              ? null
-              : PaymentMethodOptions.fromJson(
-                  json['options'] as Map<String, dynamic>),
           $type: json['paymentMethodType'] as String?,
         );
 
@@ -521,7 +508,6 @@ Map<String, dynamic> _$$_PaymentMethodParamsUsBankAccountToJson(
         _$_PaymentMethodParamsUsBankAccount instance) =>
     <String, dynamic>{
       'paymentMethodData': instance.paymentMethodData.toJson(),
-      'options': instance.options?.toJson(),
       'paymentMethodType': instance.$type,
     };
 

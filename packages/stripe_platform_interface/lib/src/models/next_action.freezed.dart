@@ -280,7 +280,9 @@ class _$_NextActionRedirect implements _NextActionRedirect {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_NextActionRedirectToJson(this);
+    return _$$_NextActionRedirectToJson(
+      this,
+    );
   }
 }
 
@@ -292,7 +294,7 @@ abstract class _NextActionRedirect implements NextAction {
       _$_NextActionRedirect.fromJson;
 
   /// Url to redirect to
-  String? get redirectUrl => throw _privateConstructorUsedError;
+  String? get redirectUrl;
   @JsonKey(ignore: true)
   _$$_NextActionRedirectCopyWith<_$_NextActionRedirect> get copyWith =>
       throw _privateConstructorUsedError;
@@ -490,7 +492,9 @@ class _$_NextActionOxxo implements _NextActionOxxo {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_NextActionOxxoToJson(this);
+    return _$$_NextActionOxxoToJson(
+      this,
+    );
   }
 }
 
@@ -504,13 +508,13 @@ abstract class _NextActionOxxo implements NextAction {
       _$_NextActionOxxo.fromJson;
 
   /// expiration date of the voucher in UTC
-  int? get expiration => throw _privateConstructorUsedError;
+  int? get expiration;
 
   /// The URL for the hosted OXXO voucher page, which allows customers to view and print an OXXO voucher.
-  String? get voucherURL => throw _privateConstructorUsedError;
+  String? get voucherURL;
 
   /// Oxxo reference number
-  String? get voucherNumber => throw _privateConstructorUsedError;
+  String? get voucherNumber;
   @JsonKey(ignore: true)
   _$$_NextActionOxxoCopyWith<_$_NextActionOxxo> get copyWith =>
       throw _privateConstructorUsedError;
@@ -682,7 +686,9 @@ class _$_NextActionWeChatRedirect implements _NextActionWeChatRedirect {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_NextActionWeChatRedirectToJson(this);
+    return _$$_NextActionWeChatRedirectToJson(
+      this,
+    );
   }
 }
 
@@ -694,7 +700,7 @@ abstract class _NextActionWeChatRedirect implements NextAction {
       _$_NextActionWeChatRedirect.fromJson;
 
   /// Url to the Qr code.
-  String? get redirectUrl => throw _privateConstructorUsedError;
+  String? get redirectUrl;
   @JsonKey(ignore: true)
   _$$_NextActionWeChatRedirectCopyWith<_$_NextActionWeChatRedirect>
       get copyWith => throw _privateConstructorUsedError;
@@ -898,7 +904,9 @@ class _$_NextActionMicroDeposits implements _NextActionMicroDeposits {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_NextActionMicroDepositsToJson(this);
+    return _$$_NextActionMicroDepositsToJson(
+      this,
+    );
   }
 }
 
@@ -912,13 +920,13 @@ abstract class _NextActionMicroDeposits implements NextAction {
       _$_NextActionMicroDeposits.fromJson;
 
   /// The timestamp of when the microdeposits are expended to land
-  String? get arrivalDate => throw _privateConstructorUsedError;
+  String? get arrivalDate;
 
   /// The URL for the hosted verification page.
-  String? get redirectUrl => throw _privateConstructorUsedError;
+  String? get redirectUrl;
 
   /// The type of the microdeposit sent to the customer.
-  String? get microdepositType => throw _privateConstructorUsedError;
+  String? get microdepositType;
   @JsonKey(ignore: true)
   _$$_NextActionMicroDepositsCopyWith<_$_NextActionMicroDeposits>
       get copyWith => throw _privateConstructorUsedError;

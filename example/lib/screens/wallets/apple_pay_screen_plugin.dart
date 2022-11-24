@@ -83,7 +83,10 @@ class _ApplePayExternalPluginScreenState
       );
 
       // 3. Confirm Apple pay payment method
-      await Stripe.instance.confirmPayment(clientSecret, params);
+      await Stripe.instance.confirmPayment(
+        paymentIntentClientSecret: clientSecret,
+        data: params,
+      );
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -106,9 +109,7 @@ class _ApplePayExternalPluginScreenState
       body: json.encode({
         'email': 'example@gmail.com',
         'currency': 'usd',
-        'items': [
-          {'id': 'id'}
-        ],
+        'items': ['id-1'],
         'request_three_d_secure': 'any',
       }),
     );

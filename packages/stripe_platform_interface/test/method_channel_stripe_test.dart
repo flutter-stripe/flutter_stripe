@@ -157,6 +157,9 @@ void main() {
               'secret',
               const PaymentMethodParams.card(
                 paymentMethodData: PaymentMethodData(),
+              ),
+              const PaymentMethodOptions(
+                setupFutureUsage: PaymentIntentsFutureUsage.OffSession,
               ));
         });
 
@@ -185,6 +188,7 @@ void main() {
               const PaymentMethodParams.card(
                 paymentMethodData: PaymentMethodData(),
               ),
+              null,
             ),
             throwsA(const TypeMatcher<StripeException>()),
           );
@@ -392,6 +396,8 @@ void main() {
                   country: 'country',
                   currency: 'currency',
                 ),
+                null,
+                null,
               )
               .then((_) => completer.complete());
         });
@@ -422,6 +428,8 @@ void main() {
                 country: 'country',
                 currency: 'currency',
               ),
+              null,
+              null,
             ),
             throwsA(const TypeMatcher<UnsupportedError>()),
           );
@@ -490,6 +498,29 @@ void main() {
                   paymentIntentClientSecret: 'paymentIntentClientSecret'),
             )
             .then((_) => completer.complete());
+      });
+
+      test('It completes operation', () {
+        expect(completer.isCompleted, true);
+      });
+    });
+
+    group('Reset payment sheet', () {
+      late Completer<void> completer;
+
+      setUp(() async {
+        completer = Completer();
+
+        sut = MethodChannelStripe(
+          platformIsIos: false,
+          platformIsAndroid: true,
+          methodChannel: MethodChannelMock(
+            channelName: methodChannelName,
+            method: 'resetPaymentSheetCustomer',
+            result: {},
+          ).methodChannel,
+        );
+        await sut.resetPaymentSheetCustomer().then((_) => completer.complete());
       });
 
       test('It completes operation', () {

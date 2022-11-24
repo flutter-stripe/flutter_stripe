@@ -1,10 +1,13 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
 import 'package:integration_test/integration_test.dart';
 
 import '.env.dart';
+import 'ip.dart';
 
 const billingDetails = BillingDetails(
   email: 'email@flutterstripe.com',
@@ -27,7 +30,31 @@ void main() {
   Stripe.urlScheme = 'flutterstripe';
 
   group('PaymentMethod', () {
-    testWidgets('card', (tester) async {
+    testWidgets('confirmPayment', (tester) async {
+      final clientSecret = await fetchPaymentIntentClientSecret();
+
+      await Stripe.instance.dangerouslyUpdateCardDetails(CardDetails(
+        number: '4242424242424242',
+        cvc: '424',
+        expirationMonth: 04,
+        expirationYear: 2025,
+      ));
+      final paymentIntent = await Stripe.instance.confirmPayment(
+        paymentIntentClientSecret: clientSecret['clientSecret'],
+        data: PaymentMethodParams.card(
+          paymentMethodData: PaymentMethodData(
+            billingDetails: billingDetails,
+          ),
+        ),
+        options: PaymentMethodOptions(
+          setupFutureUsage: null,
+        ),
+      );
+
+      expect(paymentIntent.id, startsWith('pi_'));
+    });
+
+    testWidgets('card confirm', (tester) async {
       await Stripe.instance.dangerouslyUpdateCardDetails(CardDetails(
         number: '4242424242424242',
         cvc: '424',
@@ -36,7 +63,7 @@ void main() {
       ));
 
       final paymentMethod = await Stripe.instance.createPaymentMethod(
-        PaymentMethodParams.card(
+        params: PaymentMethodParams.card(
           paymentMethodData: PaymentMethodData(
             billingDetails: billingDetails,
           ),
@@ -60,14 +87,14 @@ void main() {
       ));
 
       final cardPaymentMethod = await Stripe.instance.createPaymentMethod(
-        PaymentMethodParams.card(
+        params: PaymentMethodParams.card(
           paymentMethodData: PaymentMethodData(
             billingDetails: billingDetails,
           ),
         ),
       );
       final paymentMethod = await Stripe.instance.createPaymentMethod(
-        PaymentMethodParams.cardFromMethodId(
+        params: PaymentMethodParams.cardFromMethodId(
           paymentMethodData: PaymentMethodDataCardFromMethod(
             paymentMethodId: cardPaymentMethod.id,
             cvc: '424',
@@ -93,10 +120,11 @@ void main() {
 
       final token = await Stripe.instance.createToken(
         // ignore: deprecated_member_use
-        CreateTokenParams(type: TokenType.Card, address: billingDetails.address),
+        CreateTokenParams(
+            type: TokenType.Card, address: billingDetails.address),
       );
       final paymentMethod = await Stripe.instance.createPaymentMethod(
-        PaymentMethodParams.cardFromToken(
+        params: PaymentMethodParams.cardFromToken(
           paymentMethodData: PaymentMethodDataCardFromToken(token: token.id),
         ),
       );
@@ -110,7 +138,8 @@ void main() {
     });
     testWidgets('alipay', (tester) async {
       final paymentMethod = await Stripe.instance.createPaymentMethod(
-        PaymentMethodParams.alipay(paymentMethodData: PaymentMethodData()),
+        params:
+            PaymentMethodParams.alipay(paymentMethodData: PaymentMethodData()),
       );
       expect(paymentMethod.id, startsWith('pm_'));
       //expect(paymentMethod.type, equals('Alipay'));
@@ -120,7 +149,8 @@ void main() {
     group('ideal', () {
       testWidgets('no default bank', (tester) async {
         final paymentMethod = await Stripe.instance.createPaymentMethod(
-          PaymentMethodParams.ideal(paymentMethodData: PaymentMethodDataIdeal()),
+          params: PaymentMethodParams.ideal(
+              paymentMethodData: PaymentMethodDataIdeal()),
         );
         expect(paymentMethod.id, startsWith('pm_'));
         expect(paymentMethod.ideal, isNotNull);
@@ -136,7 +166,8 @@ void main() {
 
       testWidgets('with bank', (tester) async {
         final paymentMethod = await Stripe.instance.createPaymentMethod(
-          PaymentMethodParams.ideal(paymentMethodData: PaymentMethodDataIdeal(bankName: 'revolut')),
+          params: PaymentMethodParams.ideal(
+              paymentMethodData: PaymentMethodDataIdeal(bankName: 'revolut')),
         );
         expect(paymentMethod.id, startsWith('pm_'));
         expect(paymentMethod.ideal, isNotNull);
@@ -148,7 +179,8 @@ void main() {
 
     testWidgets('fpx, testOfflineBank: true', (tester) async {
       final paymentMethod = await Stripe.instance.createPaymentMethod(
-        PaymentMethodParams.fpx(paymentMethodData: PaymentMethodDataFpx(testOfflineBank: true)),
+        params: PaymentMethodParams.fpx(
+            paymentMethodData: PaymentMethodDataFpx(testOfflineBank: true)),
       );
       expect(paymentMethod.id, startsWith('pm_'));
       expect(paymentMethod.fpx, isNotNull);
@@ -162,4 +194,22 @@ void main() {
       //  expect(paymentMethod.billingDetails.isEmpty, isTrue);
     });
   });
+}
+
+Future<Map<String, dynamic>> fetchPaymentIntentClientSecret() async {
+  final ipAddress = kApiUrl.split('\n').last.trim();
+  final url = Uri.parse('http://$ipAddress:4242/create-payment-intent');
+  final response = await http.post(
+    url,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: json.encode({
+      'currency': 'usd',
+      'amount': 1099,
+      'payment_method_types': ['card'],
+      'request_three_d_secure': 'any',
+    }),
+  );
+  return json.decode(response.body);
 }

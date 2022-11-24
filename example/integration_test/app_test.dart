@@ -70,7 +70,7 @@ void main() {
       await Stripe.instance.dangerouslyUpdateCardDetails(cardDetails);
 
       final paymentMethod = await Stripe.instance.createPaymentMethod(
-        PaymentMethodParams.card(
+        params: PaymentMethodParams.card(
           paymentMethodData: PaymentMethodData(
             billingDetails: billingDetails,
           ),
@@ -115,9 +115,7 @@ Future<Map<String, dynamic>> _createNoWebhookPayEndpointMethod(
       'useStripeSdk': true,
       'paymentMethodId': paymentMethodId,
       'currency': 'usd',
-      'items': [
-        {'id': 'id'}
-      ]
+      'items': ['id-1']
     }),
   );
   return json.decode(response.body);

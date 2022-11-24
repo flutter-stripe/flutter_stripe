@@ -8,6 +8,7 @@ Future<CheckoutResponse> redirectToCheckout({
   required BuildContext context,
   required String sessionId,
   required String publishableKey,
+  String? stripeAccountId,
   String? successUrl,
   String? canceledUrl,
 }) {
@@ -15,6 +16,7 @@ Future<CheckoutResponse> redirectToCheckout({
     context: context,
     sessionId: sessionId,
     publishableKey: publishableKey,
+    stripeAccountId: stripeAccountId,
     successUrl: successUrl,
     canceledUrl: canceledUrl,
   );

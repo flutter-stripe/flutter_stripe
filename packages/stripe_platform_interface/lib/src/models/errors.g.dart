@@ -45,7 +45,7 @@ _$_LocalizedErrorMessage _$$_LocalizedErrorMessageFromJson(
 Map<String, dynamic> _$$_LocalizedErrorMessageToJson(
         _$_LocalizedErrorMessage instance) =>
     <String, dynamic>{
-      'code': _$FailureCodeEnumMap[instance.code],
+      'code': _$FailureCodeEnumMap[instance.code]!,
       'localizedMessage': instance.localizedMessage,
       'message': instance.message,
       'stripeErrorCode': instance.stripeErrorCode,

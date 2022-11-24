@@ -300,7 +300,9 @@ class _$_CreateTokenParamsLegacy implements _CreateTokenParamsLegacy {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CreateTokenParamsLegacyToJson(this);
+    return _$$_CreateTokenParamsLegacyToJson(
+      this,
+    );
   }
 }
 
@@ -314,13 +316,13 @@ abstract class _CreateTokenParamsLegacy implements CreateTokenParams {
       _$_CreateTokenParamsLegacy.fromJson;
 
   /// Type of token.
-  TokenType get type => throw _privateConstructorUsedError;
+  TokenType get type;
 
   /// Name of the card holder
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
 
   /// Additional address details
-  Address? get address => throw _privateConstructorUsedError;
+  Address? get address;
   @JsonKey(ignore: true)
   _$$_CreateTokenParamsLegacyCopyWith<_$_CreateTokenParamsLegacy>
       get copyWith => throw _privateConstructorUsedError;
@@ -486,7 +488,9 @@ class _$_CreateTokenParamsCard implements _CreateTokenParamsCard {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CreateTokenParamsCardToJson(this);
+    return _$$_CreateTokenParamsCardToJson(
+      this,
+    );
   }
 }
 
@@ -497,7 +501,7 @@ abstract class _CreateTokenParamsCard implements CreateTokenParams {
   factory _CreateTokenParamsCard.fromJson(Map<String, dynamic> json) =
       _$_CreateTokenParamsCard.fromJson;
 
-  CardTokenParams get params => throw _privateConstructorUsedError;
+  CardTokenParams get params;
   @JsonKey(ignore: true)
   _$$_CreateTokenParamsCardCopyWith<_$_CreateTokenParamsCard> get copyWith =>
       throw _privateConstructorUsedError;
@@ -666,7 +670,9 @@ class _$_CreateTokenParamsBankAccount implements _CreateTokenParamsBankAccount {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CreateTokenParamsBankAccountToJson(this);
+    return _$$_CreateTokenParamsBankAccountToJson(
+      this,
+    );
   }
 }
 
@@ -678,7 +684,7 @@ abstract class _CreateTokenParamsBankAccount implements CreateTokenParams {
   factory _CreateTokenParamsBankAccount.fromJson(Map<String, dynamic> json) =
       _$_CreateTokenParamsBankAccount.fromJson;
 
-  BankAccountTokenParams get params => throw _privateConstructorUsedError;
+  BankAccountTokenParams get params;
   @JsonKey(ignore: true)
   _$$_CreateTokenParamsBankAccountCopyWith<_$_CreateTokenParamsBankAccount>
       get copyWith => throw _privateConstructorUsedError;
@@ -843,7 +849,9 @@ class _$_CreateTokenParamsPII implements _CreateTokenParamsPII {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CreateTokenParamsPIIToJson(this);
+    return _$$_CreateTokenParamsPIIToJson(
+      this,
+    );
   }
 }
 
@@ -854,7 +862,7 @@ abstract class _CreateTokenParamsPII implements CreateTokenParams {
   factory _CreateTokenParamsPII.fromJson(Map<String, dynamic> json) =
       _$_CreateTokenParamsPII.fromJson;
 
-  PIITokenParams get params => throw _privateConstructorUsedError;
+  PIITokenParams get params;
   @JsonKey(ignore: true)
   _$$_CreateTokenParamsPIICopyWith<_$_CreateTokenParamsPII> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1052,7 +1060,9 @@ class _$_CardTokenParams implements _CardTokenParams {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CardTokenParamsToJson(this);
+    return _$$_CardTokenParamsToJson(
+      this,
+    );
   }
 }
 
@@ -1069,19 +1079,19 @@ abstract class _CardTokenParams implements CardTokenParams {
   @override
 
   /// Type of token.
-  TokenType get type => throw _privateConstructorUsedError;
+  TokenType get type;
   @override
 
   /// Name of the card holder
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
 
   /// Additional address details
-  Address? get address => throw _privateConstructorUsedError;
+  Address? get address;
   @override
 
   /// The three letter ISO 4217 code for the currency.
-  String? get currency => throw _privateConstructorUsedError;
+  String? get currency;
   @override
   @JsonKey(ignore: true)
   _$$_CardTokenParamsCopyWith<_$_CardTokenParams> get copyWith =>
@@ -1227,7 +1237,9 @@ class _$_PIITokenParams implements _PIITokenParams {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PIITokenParamsToJson(this);
+    return _$$_PIITokenParamsToJson(
+      this,
+    );
   }
 }
 
@@ -1242,11 +1254,11 @@ abstract class _PIITokenParams implements PIITokenParams {
   @override
 
   /// Type of token.
-  TokenType get type => throw _privateConstructorUsedError;
+  TokenType get type;
   @override
 
   /// The user's personal ID number
-  String get personalId => throw _privateConstructorUsedError;
+  String get personalId;
   @override
   @JsonKey(ignore: true)
   _$$_PIITokenParamsCopyWith<_$_PIITokenParams> get copyWith =>
@@ -1514,7 +1526,9 @@ class _$_BankAccountTokenParams implements _BankAccountTokenParams {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BankAccountTokenParamsToJson(this);
+    return _$$_BankAccountTokenParamsToJson(
+      this,
+    );
   }
 }
 
@@ -1534,32 +1548,31 @@ abstract class _BankAccountTokenParams implements BankAccountTokenParams {
   @override
 
   /// Type of token.
-  TokenType get type => throw _privateConstructorUsedError;
+  TokenType get type;
   @override
 
   /// unique number of the account.
-  String get accountNumber => throw _privateConstructorUsedError;
+  String get accountNumber;
   @override
 
   /// 2 letter code of the country where the account is located
-  String get country => throw _privateConstructorUsedError;
+  String get country;
   @override
 
   /// The three letter ISO 4217 code for the currency.
-  String get currency => throw _privateConstructorUsedError;
+  String get currency;
   @override
 
   /// Full name of the account holder
-  String? get accountHolderName => throw _privateConstructorUsedError;
+  String? get accountHolderName;
   @override
 
   /// Entity that is holder of the account.
-  BankAccountHolderType? get accountHolderType =>
-      throw _privateConstructorUsedError;
+  BankAccountHolderType? get accountHolderType;
   @override
 
   /// The routing number of the bank account (e.g. needer for US accounts).
-  String? get routingNumber => throw _privateConstructorUsedError;
+  String? get routingNumber;
   @override
   @JsonKey(ignore: true)
   _$$_BankAccountTokenParamsCopyWith<_$_BankAccountTokenParams> get copyWith =>
@@ -1826,7 +1839,9 @@ class _$_TokenData implements _TokenData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TokenDataToJson(this);
+    return _$$_TokenDataToJson(
+      this,
+    );
   }
 }
 
@@ -1845,28 +1860,28 @@ abstract class _TokenData implements TokenData {
   @override
 
   /// Unique identifier of the token
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
 
   /// Timestamp when token was created
   @JsonKey(name: 'created')
-  String get createdDateTime => throw _privateConstructorUsedError;
+  String get createdDateTime;
   @override
 
   /// Type of the token
-  TokenType get type => throw _privateConstructorUsedError;
+  TokenType get type;
   @override
 
   /// Whether or not the object exists in livemode
-  bool get livemode => throw _privateConstructorUsedError;
+  bool get livemode;
   @override
 
   /// Bank account data
-  BankAccount? get bankAccount => throw _privateConstructorUsedError;
+  BankAccount? get bankAccount;
   @override
 
   /// Card data
-  CardData? get card => throw _privateConstructorUsedError;
+  CardData? get card;
   @override
   @JsonKey(ignore: true)
   _$$_TokenDataCopyWith<_$_TokenData> get copyWith =>
@@ -2204,7 +2219,9 @@ class _$_CardData implements _CardData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CardDataToJson(this);
+    return _$$_CardDataToJson(
+      this,
+    );
   }
 }
 
@@ -2226,43 +2243,43 @@ abstract class _CardData implements CardData {
   @override
 
   /// Unique identifier
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
 
   /// The brand associated to the card e.g. (visa, amex).
-  String get brand => throw _privateConstructorUsedError;
+  String get brand;
   @override
 
   /// Two letter iso code.
-  String? get country => throw _privateConstructorUsedError;
+  String? get country;
   @override
 
   /// The three letter ISO 4217 code for the currency.
-  String? get currency => throw _privateConstructorUsedError;
+  String? get currency;
   @override
 
   /// four digit number representing the year of expiry of the card.
-  int? get expYear => throw _privateConstructorUsedError;
+  int? get expYear;
   @override
 
   /// two digit number representing the month of expire of the card.
-  int? get expMonth => throw _privateConstructorUsedError;
+  int? get expMonth;
   @override
 
   /// Fullname of the cardholder
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
 
   /// card funding type e.g. (credit, debit).
-  String? get funding => throw _privateConstructorUsedError;
+  String? get funding;
   @override
 
   /// last four digits of the card.
-  String? get last4 => throw _privateConstructorUsedError;
+  String? get last4;
   @override
 
   /// Address of the cardholder
-  Address? get address => throw _privateConstructorUsedError;
+  Address? get address;
   @override
   @JsonKey(ignore: true)
   _$$_CardDataCopyWith<_$_CardData> get copyWith =>
@@ -2275,12 +2292,12 @@ BankAccount _$BankAccountFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BankAccount {
-  /// Entity that is holder of the account.
-  BankAccountHolderType get accountHolderType =>
-      throw _privateConstructorUsedError;
+  /// Unique id for this bank account
+  String get id => throw _privateConstructorUsedError;
 
-  /// Status of the bank account.
-  BankAccountStatus get status => throw _privateConstructorUsedError;
+  /// Entity that is holder of the account.
+  BankAccountHolderType? get accountHolderType =>
+      throw _privateConstructorUsedError;
 
   /// Name of the bank where the account is registered.
   String? get bankName => throw _privateConstructorUsedError;
@@ -2297,6 +2314,17 @@ mixin _$BankAccount {
   /// The routing number of the bank account (e.g. needer for US accounts).
   String? get routingNumber => throw _privateConstructorUsedError;
 
+  /// Status of the bank account.
+  BankAccountStatus? get status => throw _privateConstructorUsedError;
+
+  /// Uniquely identifies the particular bank account.
+  ///
+  /// You can use this to check whether or not two bank accounts are the same.
+  String? get fingerprint => throw _privateConstructorUsedError;
+
+  /// Last four numbers of the bank account number
+  String? get last4 => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $BankAccountCopyWith<BankAccount> get copyWith =>
@@ -2309,13 +2337,16 @@ abstract class $BankAccountCopyWith<$Res> {
           BankAccount value, $Res Function(BankAccount) then) =
       _$BankAccountCopyWithImpl<$Res>;
   $Res call(
-      {BankAccountHolderType accountHolderType,
-      BankAccountStatus status,
+      {String id,
+      BankAccountHolderType? accountHolderType,
       String? bankName,
       String? accountHolderName,
       String? country,
       String? currency,
-      String? routingNumber});
+      String? routingNumber,
+      BankAccountStatus? status,
+      String? fingerprint,
+      String? last4});
 }
 
 /// @nodoc
@@ -2328,23 +2359,26 @@ class _$BankAccountCopyWithImpl<$Res> implements $BankAccountCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? accountHolderType = freezed,
-    Object? status = freezed,
     Object? bankName = freezed,
     Object? accountHolderName = freezed,
     Object? country = freezed,
     Object? currency = freezed,
     Object? routingNumber = freezed,
+    Object? status = freezed,
+    Object? fingerprint = freezed,
+    Object? last4 = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       accountHolderType: accountHolderType == freezed
           ? _value.accountHolderType
           : accountHolderType // ignore: cast_nullable_to_non_nullable
-              as BankAccountHolderType,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as BankAccountStatus,
+              as BankAccountHolderType?,
       bankName: bankName == freezed
           ? _value.bankName
           : bankName // ignore: cast_nullable_to_non_nullable
@@ -2365,6 +2399,18 @@ class _$BankAccountCopyWithImpl<$Res> implements $BankAccountCopyWith<$Res> {
           ? _value.routingNumber
           : routingNumber // ignore: cast_nullable_to_non_nullable
               as String?,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as BankAccountStatus?,
+      fingerprint: fingerprint == freezed
+          ? _value.fingerprint
+          : fingerprint // ignore: cast_nullable_to_non_nullable
+              as String?,
+      last4: last4 == freezed
+          ? _value.last4
+          : last4 // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -2377,13 +2423,16 @@ abstract class _$$_BankAccountCopyWith<$Res>
       __$$_BankAccountCopyWithImpl<$Res>;
   @override
   $Res call(
-      {BankAccountHolderType accountHolderType,
-      BankAccountStatus status,
+      {String id,
+      BankAccountHolderType? accountHolderType,
       String? bankName,
       String? accountHolderName,
       String? country,
       String? currency,
-      String? routingNumber});
+      String? routingNumber,
+      BankAccountStatus? status,
+      String? fingerprint,
+      String? last4});
 }
 
 /// @nodoc
@@ -2398,23 +2447,26 @@ class __$$_BankAccountCopyWithImpl<$Res> extends _$BankAccountCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? accountHolderType = freezed,
-    Object? status = freezed,
     Object? bankName = freezed,
     Object? accountHolderName = freezed,
     Object? country = freezed,
     Object? currency = freezed,
     Object? routingNumber = freezed,
+    Object? status = freezed,
+    Object? fingerprint = freezed,
+    Object? last4 = freezed,
   }) {
     return _then(_$_BankAccount(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       accountHolderType: accountHolderType == freezed
           ? _value.accountHolderType
           : accountHolderType // ignore: cast_nullable_to_non_nullable
-              as BankAccountHolderType,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as BankAccountStatus,
+              as BankAccountHolderType?,
       bankName: bankName == freezed
           ? _value.bankName
           : bankName // ignore: cast_nullable_to_non_nullable
@@ -2435,6 +2487,18 @@ class __$$_BankAccountCopyWithImpl<$Res> extends _$BankAccountCopyWithImpl<$Res>
           ? _value.routingNumber
           : routingNumber // ignore: cast_nullable_to_non_nullable
               as String?,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as BankAccountStatus?,
+      fingerprint: fingerprint == freezed
+          ? _value.fingerprint
+          : fingerprint // ignore: cast_nullable_to_non_nullable
+              as String?,
+      last4: last4 == freezed
+          ? _value.last4
+          : last4 // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -2443,24 +2507,27 @@ class __$$_BankAccountCopyWithImpl<$Res> extends _$BankAccountCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_BankAccount implements _BankAccount {
   const _$_BankAccount(
-      {required this.accountHolderType,
-      required this.status,
+      {required this.id,
+      this.accountHolderType,
       this.bankName,
       this.accountHolderName,
       this.country,
       this.currency,
-      this.routingNumber});
+      this.routingNumber,
+      this.status,
+      this.fingerprint,
+      this.last4});
 
   factory _$_BankAccount.fromJson(Map<String, dynamic> json) =>
       _$$_BankAccountFromJson(json);
 
+  /// Unique id for this bank account
+  @override
+  final String id;
+
   /// Entity that is holder of the account.
   @override
-  final BankAccountHolderType accountHolderType;
-
-  /// Status of the bank account.
-  @override
-  final BankAccountStatus status;
+  final BankAccountHolderType? accountHolderType;
 
   /// Name of the bank where the account is registered.
   @override
@@ -2482,9 +2549,23 @@ class _$_BankAccount implements _BankAccount {
   @override
   final String? routingNumber;
 
+  /// Status of the bank account.
+  @override
+  final BankAccountStatus? status;
+
+  /// Uniquely identifies the particular bank account.
+  ///
+  /// You can use this to check whether or not two bank accounts are the same.
+  @override
+  final String? fingerprint;
+
+  /// Last four numbers of the bank account number
+  @override
+  final String? last4;
+
   @override
   String toString() {
-    return 'BankAccount(accountHolderType: $accountHolderType, status: $status, bankName: $bankName, accountHolderName: $accountHolderName, country: $country, currency: $currency, routingNumber: $routingNumber)';
+    return 'BankAccount(id: $id, accountHolderType: $accountHolderType, bankName: $bankName, accountHolderName: $accountHolderName, country: $country, currency: $currency, routingNumber: $routingNumber, status: $status, fingerprint: $fingerprint, last4: $last4)';
   }
 
   @override
@@ -2492,29 +2573,36 @@ class _$_BankAccount implements _BankAccount {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_BankAccount &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other.accountHolderType, accountHolderType) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.bankName, bankName) &&
             const DeepCollectionEquality()
                 .equals(other.accountHolderName, accountHolderName) &&
             const DeepCollectionEquality().equals(other.country, country) &&
             const DeepCollectionEquality().equals(other.currency, currency) &&
             const DeepCollectionEquality()
-                .equals(other.routingNumber, routingNumber));
+                .equals(other.routingNumber, routingNumber) &&
+            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality()
+                .equals(other.fingerprint, fingerprint) &&
+            const DeepCollectionEquality().equals(other.last4, last4));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(accountHolderType),
-      const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(bankName),
       const DeepCollectionEquality().hash(accountHolderName),
       const DeepCollectionEquality().hash(country),
       const DeepCollectionEquality().hash(currency),
-      const DeepCollectionEquality().hash(routingNumber));
+      const DeepCollectionEquality().hash(routingNumber),
+      const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(fingerprint),
+      const DeepCollectionEquality().hash(last4));
 
   @JsonKey(ignore: true)
   @override
@@ -2523,52 +2611,70 @@ class _$_BankAccount implements _BankAccount {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BankAccountToJson(this);
+    return _$$_BankAccountToJson(
+      this,
+    );
   }
 }
 
 abstract class _BankAccount implements BankAccount {
   const factory _BankAccount(
-      {required final BankAccountHolderType accountHolderType,
-      required final BankAccountStatus status,
+      {required final String id,
+      final BankAccountHolderType? accountHolderType,
       final String? bankName,
       final String? accountHolderName,
       final String? country,
       final String? currency,
-      final String? routingNumber}) = _$_BankAccount;
+      final String? routingNumber,
+      final BankAccountStatus? status,
+      final String? fingerprint,
+      final String? last4}) = _$_BankAccount;
 
   factory _BankAccount.fromJson(Map<String, dynamic> json) =
       _$_BankAccount.fromJson;
 
   @override
 
-  /// Entity that is holder of the account.
-  BankAccountHolderType get accountHolderType =>
-      throw _privateConstructorUsedError;
+  /// Unique id for this bank account
+  String get id;
   @override
 
-  /// Status of the bank account.
-  BankAccountStatus get status => throw _privateConstructorUsedError;
+  /// Entity that is holder of the account.
+  BankAccountHolderType? get accountHolderType;
   @override
 
   /// Name of the bank where the account is registered.
-  String? get bankName => throw _privateConstructorUsedError;
+  String? get bankName;
   @override
 
   /// Full name of the account holder
-  String? get accountHolderName => throw _privateConstructorUsedError;
+  String? get accountHolderName;
   @override
 
   /// 2 letter code of the country where the account is located
-  String? get country => throw _privateConstructorUsedError;
+  String? get country;
   @override
 
   /// The three letter ISO 4217 code for the currency.
-  String? get currency => throw _privateConstructorUsedError;
+  String? get currency;
   @override
 
   /// The routing number of the bank account (e.g. needer for US accounts).
-  String? get routingNumber => throw _privateConstructorUsedError;
+  String? get routingNumber;
+  @override
+
+  /// Status of the bank account.
+  BankAccountStatus? get status;
+  @override
+
+  /// Uniquely identifies the particular bank account.
+  ///
+  /// You can use this to check whether or not two bank accounts are the same.
+  String? get fingerprint;
+  @override
+
+  /// Last four numbers of the bank account number
+  String? get last4;
   @override
   @JsonKey(ignore: true)
   _$$_BankAccountCopyWith<_$_BankAccount> get copyWith =>

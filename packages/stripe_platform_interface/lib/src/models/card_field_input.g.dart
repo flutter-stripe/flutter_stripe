@@ -115,9 +115,10 @@ Map<String, dynamic> _$$_CardFieldInputDetailsToJson(
       'brand': instance.brand,
       'number': instance.number,
       'cvc': instance.cvc,
-      'validExpiryDate': _$CardValidationStateEnumMap[instance.validExpiryDate],
-      'validCVC': _$CardValidationStateEnumMap[instance.validCVC],
-      'validNumber': _$CardValidationStateEnumMap[instance.validNumber],
+      'validExpiryDate':
+          _$CardValidationStateEnumMap[instance.validExpiryDate]!,
+      'validCVC': _$CardValidationStateEnumMap[instance.validCVC]!,
+      'validNumber': _$CardValidationStateEnumMap[instance.validNumber]!,
     };
 
 const _$CardValidationStateEnumMap = {

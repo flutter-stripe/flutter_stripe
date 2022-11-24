@@ -92,14 +92,13 @@ class _UsBankAccountScreenState extends State<UsBankAccountScreen> {
 
       if (paymentIntentResult['clientSecret'] != null) {
         final intent = await Stripe.instance.confirmPayment(
-          paymentIntentResult['clientSecret'],
-          PaymentMethodParams.usBankAccount(
-            paymentMethodData: PaymentMethodDataUsBank(
+          paymentIntentClientSecret: paymentIntentResult['clientSecret'],
+          data: PaymentMethodParams.usBankAccount(
+              paymentMethodData: PaymentMethodDataUsBank(
             routingNumber: _routingNumberController.text,
             accountNumber: _accountController.text,
             billingDetails: billingDetails,
-            )
-          ),
+          )),
         );
 
         handleNexAction(intent.nextAction, intent.clientSecret);
@@ -139,9 +138,7 @@ class _UsBankAccountScreenState extends State<UsBankAccountScreen> {
       },
       body: json.encode({
         'email': 'email@stripe.com',
-        'items': [
-          {'id': 'id'}
-        ],
+        'items': ['id-1'],
         'currency': 'usd',
         'payment_method_types': ['us_bank_account'],
         // 'amount': 1099,

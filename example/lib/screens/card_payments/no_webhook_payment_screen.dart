@@ -3,12 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
+import 'package:stripe_example/config.dart';
 import 'package:stripe_example/utils.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 import 'package:stripe_example/widgets/response_card.dart';
-
-import 'package:stripe_example/config.dart';
 
 class NoWebhookPaymentScreen extends StatefulWidget {
   @override
@@ -101,8 +100,8 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
       ); // mocked data for tests
 
       // 2. Create payment method
-      final paymentMethod =
-          await Stripe.instance.createPaymentMethod(PaymentMethodParams.card(
+      final paymentMethod = await Stripe.instance.createPaymentMethod(
+          params: PaymentMethodParams.card(
         paymentMethodData: PaymentMethodData(
           billingDetails: billingDetails,
         ),
@@ -113,9 +112,7 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
         useStripeSdk: true,
         paymentMethodId: paymentMethod.id,
         currency: 'usd', // mocked data
-        items: [
-          {'id': 'id'}
-        ],
+        items: ['id-1'],
       );
 
       if (paymentIntentResult['error'] != null) {
@@ -195,7 +192,7 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
     required bool useStripeSdk,
     required String paymentMethodId,
     required String currency,
-    List<Map<String, dynamic>>? items,
+    List<String>? items,
   }) async {
     final url = Uri.parse('$kApiUrl/pay-without-webhooks');
     final response = await http.post(

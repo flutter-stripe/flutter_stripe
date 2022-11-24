@@ -24,7 +24,7 @@ mixin _$ApplePayShippingMethod {
   String get label => throw _privateConstructorUsedError;
   String get amount => throw _privateConstructorUsedError;
   String get identifier => throw _privateConstructorUsedError;
-  ApplePayShippingMethodType? get type => throw _privateConstructorUsedError;
+  bool? get isPending => throw _privateConstructorUsedError;
   String? get detail => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ abstract class $ApplePayShippingMethodCopyWith<$Res> {
       {String label,
       String amount,
       String identifier,
-      ApplePayShippingMethodType? type,
+      bool? isPending,
       String? detail});
 }
 
@@ -60,7 +60,7 @@ class _$ApplePayShippingMethodCopyWithImpl<$Res>
     Object? label = freezed,
     Object? amount = freezed,
     Object? identifier = freezed,
-    Object? type = freezed,
+    Object? isPending = freezed,
     Object? detail = freezed,
   }) {
     return _then(_value.copyWith(
@@ -76,10 +76,10 @@ class _$ApplePayShippingMethodCopyWithImpl<$Res>
           ? _value.identifier
           : identifier // ignore: cast_nullable_to_non_nullable
               as String,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ApplePayShippingMethodType?,
+      isPending: isPending == freezed
+          ? _value.isPending
+          : isPending // ignore: cast_nullable_to_non_nullable
+              as bool?,
       detail: detail == freezed
           ? _value.detail
           : detail // ignore: cast_nullable_to_non_nullable
@@ -99,7 +99,7 @@ abstract class _$$_ApplePayShippingMethodCopyWith<$Res>
       {String label,
       String amount,
       String identifier,
-      ApplePayShippingMethodType? type,
+      bool? isPending,
       String? detail});
 }
 
@@ -120,7 +120,7 @@ class __$$_ApplePayShippingMethodCopyWithImpl<$Res>
     Object? label = freezed,
     Object? amount = freezed,
     Object? identifier = freezed,
-    Object? type = freezed,
+    Object? isPending = freezed,
     Object? detail = freezed,
   }) {
     return _then(_$_ApplePayShippingMethod(
@@ -136,10 +136,10 @@ class __$$_ApplePayShippingMethodCopyWithImpl<$Res>
           ? _value.identifier
           : identifier // ignore: cast_nullable_to_non_nullable
               as String,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ApplePayShippingMethodType?,
+      isPending: isPending == freezed
+          ? _value.isPending
+          : isPending // ignore: cast_nullable_to_non_nullable
+              as bool?,
       detail: detail == freezed
           ? _value.detail
           : detail // ignore: cast_nullable_to_non_nullable
@@ -156,7 +156,7 @@ class _$_ApplePayShippingMethod implements _ApplePayShippingMethod {
       {required this.label,
       required this.amount,
       required this.identifier,
-      this.type,
+      this.isPending,
       this.detail});
 
   factory _$_ApplePayShippingMethod.fromJson(Map<String, dynamic> json) =>
@@ -169,13 +169,13 @@ class _$_ApplePayShippingMethod implements _ApplePayShippingMethod {
   @override
   final String identifier;
   @override
-  final ApplePayShippingMethodType? type;
+  final bool? isPending;
   @override
   final String? detail;
 
   @override
   String toString() {
-    return 'ApplePayShippingMethod(label: $label, amount: $amount, identifier: $identifier, type: $type, detail: $detail)';
+    return 'ApplePayShippingMethod(label: $label, amount: $amount, identifier: $identifier, isPending: $isPending, detail: $detail)';
   }
 
   @override
@@ -187,7 +187,7 @@ class _$_ApplePayShippingMethod implements _ApplePayShippingMethod {
             const DeepCollectionEquality().equals(other.amount, amount) &&
             const DeepCollectionEquality()
                 .equals(other.identifier, identifier) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.isPending, isPending) &&
             const DeepCollectionEquality().equals(other.detail, detail));
   }
 
@@ -198,7 +198,7 @@ class _$_ApplePayShippingMethod implements _ApplePayShippingMethod {
       const DeepCollectionEquality().hash(label),
       const DeepCollectionEquality().hash(amount),
       const DeepCollectionEquality().hash(identifier),
-      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(isPending),
       const DeepCollectionEquality().hash(detail));
 
   @JsonKey(ignore: true)
@@ -209,7 +209,9 @@ class _$_ApplePayShippingMethod implements _ApplePayShippingMethod {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ApplePayShippingMethodToJson(this);
+    return _$$_ApplePayShippingMethodToJson(
+      this,
+    );
   }
 }
 
@@ -218,22 +220,22 @@ abstract class _ApplePayShippingMethod implements ApplePayShippingMethod {
       {required final String label,
       required final String amount,
       required final String identifier,
-      final ApplePayShippingMethodType? type,
+      final bool? isPending,
       final String? detail}) = _$_ApplePayShippingMethod;
 
   factory _ApplePayShippingMethod.fromJson(Map<String, dynamic> json) =
       _$_ApplePayShippingMethod.fromJson;
 
   @override
-  String get label => throw _privateConstructorUsedError;
+  String get label;
   @override
-  String get amount => throw _privateConstructorUsedError;
+  String get amount;
   @override
-  String get identifier => throw _privateConstructorUsedError;
+  String get identifier;
   @override
-  ApplePayShippingMethodType? get type => throw _privateConstructorUsedError;
+  bool? get isPending;
   @override
-  String? get detail => throw _privateConstructorUsedError;
+  String? get detail;
   @override
   @JsonKey(ignore: true)
   _$$_ApplePayShippingMethodCopyWith<_$_ApplePayShippingMethod> get copyWith =>
@@ -571,7 +573,9 @@ class _$_ImmediateCartSummaryItem implements _ImmediateCartSummaryItem {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ImmediateCartSummaryItemToJson(this);
+    return _$$_ImmediateCartSummaryItemToJson(
+      this,
+    );
   }
 }
 
@@ -587,14 +591,14 @@ abstract class _ImmediateCartSummaryItem implements ApplePayCartSummaryItem {
   @override
 
   /// Short localized description of the item.
-  String get label => throw _privateConstructorUsedError;
+  String get label;
   @override
 
   /// The monetary amount.
-  String get amount => throw _privateConstructorUsedError;
+  String get amount;
 
   /// When creating items for estimates or charges whose final value is not yet known, set this to true.
-  bool? get isPending => throw _privateConstructorUsedError;
+  bool? get isPending;
   @override
   @JsonKey(ignore: true)
   _$$_ImmediateCartSummaryItemCopyWith<_$_ImmediateCartSummaryItem>
@@ -797,7 +801,9 @@ class _$_DeferredSummaryItem implements _DeferredSummaryItem {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DeferredSummaryItemToJson(this);
+    return _$$_DeferredSummaryItemToJson(
+      this,
+    );
   }
 }
 
@@ -813,14 +819,14 @@ abstract class _DeferredSummaryItem implements ApplePayCartSummaryItem {
   @override
 
   /// Short localized description of the item.
-  String get label => throw _privateConstructorUsedError;
+  String get label;
   @override
 
   /// The monetary amount.
-  String get amount => throw _privateConstructorUsedError;
+  String get amount;
 
   /// The unix timestamp of the date, in the future, of the payment. Measured in seconds.
-  int get deferredDate => throw _privateConstructorUsedError;
+  int get deferredDate;
   @override
   @JsonKey(ignore: true)
   _$$_DeferredSummaryItemCopyWith<_$_DeferredSummaryItem> get copyWith =>
@@ -1070,7 +1076,9 @@ class _$_RecurringCartSummaryItem implements _RecurringCartSummaryItem {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RecurringCartSummaryItemToJson(this);
+    return _$$_RecurringCartSummaryItemToJson(
+      this,
+    );
   }
 }
 
@@ -1089,22 +1097,22 @@ abstract class _RecurringCartSummaryItem implements ApplePayCartSummaryItem {
   @override
 
   /// Short localized description of the item.
-  String get label => throw _privateConstructorUsedError;
+  String get label;
   @override
 
   /// The monetary amount.
-  String get amount => throw _privateConstructorUsedError;
+  String get amount;
 
   /// The amount of time – in calendar units such as day, month, or year – that represents a fraction of the total payment interval. For example, if you set the intervalUnit to 'month' and intervalCount to 3, then the payment interval is three months.
-  ApplePayIntervalUnit get intervalUnit => throw _privateConstructorUsedError;
+  ApplePayIntervalUnit get intervalUnit;
 
   /// The number of interval units that make up the total payment interval. For example, if you set the intervalUnit to 'month' and intervalCount to 3, then the payment interval is three months.
-  int get intervalCount => throw _privateConstructorUsedError;
+  int get intervalCount;
 
   /// The unix timestamp of the start date. Measured in seconds.
-  int? get startDate =>
-      throw _privateConstructorUsedError; ////The unix timestamp of the end date. Measured in seconds. */
-  int? get number => throw _privateConstructorUsedError;
+  int?
+      get startDate; ////The unix timestamp of the end date. Measured in seconds. */
+  int? get number;
   @override
   @JsonKey(ignore: true)
   _$$_RecurringCartSummaryItemCopyWith<_$_RecurringCartSummaryItem>
@@ -1419,7 +1427,9 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ApplePayPresentParamsToJson(this);
+    return _$$_ApplePayPresentParamsToJson(
+      this,
+    );
   }
 }
 
@@ -1439,37 +1449,33 @@ abstract class _ApplePayPresentParams implements ApplePayPresentParams {
   @override
 
   /// Line Items of the payment request.
-  List<ApplePayCartSummaryItem> get cartItems =>
-      throw _privateConstructorUsedError;
+  List<ApplePayCartSummaryItem> get cartItems;
   @override
 
   /// The two letter ISO 3166 country code representing the merchant.
-  String get country => throw _privateConstructorUsedError;
+  String get country;
   @override
 
   /// The three letter ISO 4217 code for the currency.
-  String get currency => throw _privateConstructorUsedError;
+  String get currency;
   @override
 
   /// Fields that will be shown on the required shipping address section. If
   /// empty no fields will be displayed.
-  List<ApplePayContactFieldsType>? get requiredShippingAddressFields =>
-      throw _privateConstructorUsedError;
+  List<ApplePayContactFieldsType>? get requiredShippingAddressFields;
   @override
 
   /// Fields that will be shown on the required billing address section. If
   /// empty no fields will be displayed.
-  List<ApplePayContactFieldsType>? get requiredBillingContactFields =>
-      throw _privateConstructorUsedError;
+  List<ApplePayContactFieldsType>? get requiredBillingContactFields;
   @override
 
   /// List of available shipping methods for goods.
-  List<ApplePayShippingMethod>? get shippingMethods =>
-      throw _privateConstructorUsedError;
+  List<ApplePayShippingMethod>? get shippingMethods;
   @override
 
   /// Add support for jcb as additional payment method.
-  bool get jcbEnabled => throw _privateConstructorUsedError;
+  bool get jcbEnabled;
   @override
   @JsonKey(ignore: true)
   _$$_ApplePayPresentParamsCopyWith<_$_ApplePayPresentParams> get copyWith =>
@@ -1622,7 +1628,9 @@ class _$_ApplePayErrorAddressField implements _ApplePayErrorAddressField {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ApplePayErrorAddressFieldToJson(this);
+    return _$$_ApplePayErrorAddressFieldToJson(
+      this,
+    );
   }
 }
 
@@ -1637,15 +1645,813 @@ abstract class _ApplePayErrorAddressField implements ApplePayErrorAddressField {
   @override
 
   /// Address field that is affected by the error
-  ApplePayContactFieldsType get field => throw _privateConstructorUsedError;
+  ApplePayContactFieldsType get field;
   @override
 
   /// The error message that will be shown when it is invalid
   ///
   /// Defaults to error in the stripe sdk.
-  String? get message => throw _privateConstructorUsedError;
+  String? get message;
   @override
   @JsonKey(ignore: true)
   _$$_ApplePayErrorAddressFieldCopyWith<_$_ApplePayErrorAddressField>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+ApplePayShippingContact _$ApplePayShippingContactFromJson(
+    Map<String, dynamic> json) {
+  return _ApplePayShippingContact.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ApplePayShippingContact {
+  /// Email address of the shipping contact
+  String? get emailAddress => throw _privateConstructorUsedError;
+
+  /// Name of shipping contact
+  ApplePayContactName get name => throw _privateConstructorUsedError;
+
+  /// Postal address of shipping contact
+  ApplePayPostalAddress get postalAddress => throw _privateConstructorUsedError;
+
+  ///Phone Number of the shipping contact
+  String? get phoneNumber => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ApplePayShippingContactCopyWith<ApplePayShippingContact> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ApplePayShippingContactCopyWith<$Res> {
+  factory $ApplePayShippingContactCopyWith(ApplePayShippingContact value,
+          $Res Function(ApplePayShippingContact) then) =
+      _$ApplePayShippingContactCopyWithImpl<$Res>;
+  $Res call(
+      {String? emailAddress,
+      ApplePayContactName name,
+      ApplePayPostalAddress postalAddress,
+      String? phoneNumber});
+
+  $ApplePayContactNameCopyWith<$Res> get name;
+  $ApplePayPostalAddressCopyWith<$Res> get postalAddress;
+}
+
+/// @nodoc
+class _$ApplePayShippingContactCopyWithImpl<$Res>
+    implements $ApplePayShippingContactCopyWith<$Res> {
+  _$ApplePayShippingContactCopyWithImpl(this._value, this._then);
+
+  final ApplePayShippingContact _value;
+  // ignore: unused_field
+  final $Res Function(ApplePayShippingContact) _then;
+
+  @override
+  $Res call({
+    Object? emailAddress = freezed,
+    Object? name = freezed,
+    Object? postalAddress = freezed,
+    Object? phoneNumber = freezed,
+  }) {
+    return _then(_value.copyWith(
+      emailAddress: emailAddress == freezed
+          ? _value.emailAddress
+          : emailAddress // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as ApplePayContactName,
+      postalAddress: postalAddress == freezed
+          ? _value.postalAddress
+          : postalAddress // ignore: cast_nullable_to_non_nullable
+              as ApplePayPostalAddress,
+      phoneNumber: phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+
+  @override
+  $ApplePayContactNameCopyWith<$Res> get name {
+    return $ApplePayContactNameCopyWith<$Res>(_value.name, (value) {
+      return _then(_value.copyWith(name: value));
+    });
+  }
+
+  @override
+  $ApplePayPostalAddressCopyWith<$Res> get postalAddress {
+    return $ApplePayPostalAddressCopyWith<$Res>(_value.postalAddress, (value) {
+      return _then(_value.copyWith(postalAddress: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_ApplePayShippingContactCopyWith<$Res>
+    implements $ApplePayShippingContactCopyWith<$Res> {
+  factory _$$_ApplePayShippingContactCopyWith(_$_ApplePayShippingContact value,
+          $Res Function(_$_ApplePayShippingContact) then) =
+      __$$_ApplePayShippingContactCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String? emailAddress,
+      ApplePayContactName name,
+      ApplePayPostalAddress postalAddress,
+      String? phoneNumber});
+
+  @override
+  $ApplePayContactNameCopyWith<$Res> get name;
+  @override
+  $ApplePayPostalAddressCopyWith<$Res> get postalAddress;
+}
+
+/// @nodoc
+class __$$_ApplePayShippingContactCopyWithImpl<$Res>
+    extends _$ApplePayShippingContactCopyWithImpl<$Res>
+    implements _$$_ApplePayShippingContactCopyWith<$Res> {
+  __$$_ApplePayShippingContactCopyWithImpl(_$_ApplePayShippingContact _value,
+      $Res Function(_$_ApplePayShippingContact) _then)
+      : super(_value, (v) => _then(v as _$_ApplePayShippingContact));
+
+  @override
+  _$_ApplePayShippingContact get _value =>
+      super._value as _$_ApplePayShippingContact;
+
+  @override
+  $Res call({
+    Object? emailAddress = freezed,
+    Object? name = freezed,
+    Object? postalAddress = freezed,
+    Object? phoneNumber = freezed,
+  }) {
+    return _then(_$_ApplePayShippingContact(
+      emailAddress: emailAddress == freezed
+          ? _value.emailAddress
+          : emailAddress // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as ApplePayContactName,
+      postalAddress: postalAddress == freezed
+          ? _value.postalAddress
+          : postalAddress // ignore: cast_nullable_to_non_nullable
+              as ApplePayPostalAddress,
+      phoneNumber: phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_ApplePayShippingContact implements _ApplePayShippingContact {
+  const _$_ApplePayShippingContact(
+      {this.emailAddress,
+      required this.name,
+      required this.postalAddress,
+      this.phoneNumber});
+
+  factory _$_ApplePayShippingContact.fromJson(Map<String, dynamic> json) =>
+      _$$_ApplePayShippingContactFromJson(json);
+
+  /// Email address of the shipping contact
+  @override
+  final String? emailAddress;
+
+  /// Name of shipping contact
+  @override
+  final ApplePayContactName name;
+
+  /// Postal address of shipping contact
+  @override
+  final ApplePayPostalAddress postalAddress;
+
+  ///Phone Number of the shipping contact
+  @override
+  final String? phoneNumber;
+
+  @override
+  String toString() {
+    return 'ApplePayShippingContact(emailAddress: $emailAddress, name: $name, postalAddress: $postalAddress, phoneNumber: $phoneNumber)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ApplePayShippingContact &&
+            const DeepCollectionEquality()
+                .equals(other.emailAddress, emailAddress) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.postalAddress, postalAddress) &&
+            const DeepCollectionEquality()
+                .equals(other.phoneNumber, phoneNumber));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(emailAddress),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(postalAddress),
+      const DeepCollectionEquality().hash(phoneNumber));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ApplePayShippingContactCopyWith<_$_ApplePayShippingContact>
+      get copyWith =>
+          __$$_ApplePayShippingContactCopyWithImpl<_$_ApplePayShippingContact>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ApplePayShippingContactToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ApplePayShippingContact implements ApplePayShippingContact {
+  const factory _ApplePayShippingContact(
+      {final String? emailAddress,
+      required final ApplePayContactName name,
+      required final ApplePayPostalAddress postalAddress,
+      final String? phoneNumber}) = _$_ApplePayShippingContact;
+
+  factory _ApplePayShippingContact.fromJson(Map<String, dynamic> json) =
+      _$_ApplePayShippingContact.fromJson;
+
+  @override
+
+  /// Email address of the shipping contact
+  String? get emailAddress;
+  @override
+
+  /// Name of shipping contact
+  ApplePayContactName get name;
+  @override
+
+  /// Postal address of shipping contact
+  ApplePayPostalAddress get postalAddress;
+  @override
+
+  ///Phone Number of the shipping contact
+  String? get phoneNumber;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ApplePayShippingContactCopyWith<_$_ApplePayShippingContact>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+ApplePayContactName _$ApplePayContactNameFromJson(Map<String, dynamic> json) {
+  return _ApplePayContactName.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ApplePayContactName {
+  String? get familyName => throw _privateConstructorUsedError;
+  String? get namePrefix => throw _privateConstructorUsedError;
+  String? get nameSuffix => throw _privateConstructorUsedError;
+  String? get givenName => throw _privateConstructorUsedError;
+  String? get middleName => throw _privateConstructorUsedError;
+  String? get nickname => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ApplePayContactNameCopyWith<ApplePayContactName> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ApplePayContactNameCopyWith<$Res> {
+  factory $ApplePayContactNameCopyWith(
+          ApplePayContactName value, $Res Function(ApplePayContactName) then) =
+      _$ApplePayContactNameCopyWithImpl<$Res>;
+  $Res call(
+      {String? familyName,
+      String? namePrefix,
+      String? nameSuffix,
+      String? givenName,
+      String? middleName,
+      String? nickname});
+}
+
+/// @nodoc
+class _$ApplePayContactNameCopyWithImpl<$Res>
+    implements $ApplePayContactNameCopyWith<$Res> {
+  _$ApplePayContactNameCopyWithImpl(this._value, this._then);
+
+  final ApplePayContactName _value;
+  // ignore: unused_field
+  final $Res Function(ApplePayContactName) _then;
+
+  @override
+  $Res call({
+    Object? familyName = freezed,
+    Object? namePrefix = freezed,
+    Object? nameSuffix = freezed,
+    Object? givenName = freezed,
+    Object? middleName = freezed,
+    Object? nickname = freezed,
+  }) {
+    return _then(_value.copyWith(
+      familyName: familyName == freezed
+          ? _value.familyName
+          : familyName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      namePrefix: namePrefix == freezed
+          ? _value.namePrefix
+          : namePrefix // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameSuffix: nameSuffix == freezed
+          ? _value.nameSuffix
+          : nameSuffix // ignore: cast_nullable_to_non_nullable
+              as String?,
+      givenName: givenName == freezed
+          ? _value.givenName
+          : givenName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      middleName: middleName == freezed
+          ? _value.middleName
+          : middleName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nickname: nickname == freezed
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_ApplePayContactNameCopyWith<$Res>
+    implements $ApplePayContactNameCopyWith<$Res> {
+  factory _$$_ApplePayContactNameCopyWith(_$_ApplePayContactName value,
+          $Res Function(_$_ApplePayContactName) then) =
+      __$$_ApplePayContactNameCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String? familyName,
+      String? namePrefix,
+      String? nameSuffix,
+      String? givenName,
+      String? middleName,
+      String? nickname});
+}
+
+/// @nodoc
+class __$$_ApplePayContactNameCopyWithImpl<$Res>
+    extends _$ApplePayContactNameCopyWithImpl<$Res>
+    implements _$$_ApplePayContactNameCopyWith<$Res> {
+  __$$_ApplePayContactNameCopyWithImpl(_$_ApplePayContactName _value,
+      $Res Function(_$_ApplePayContactName) _then)
+      : super(_value, (v) => _then(v as _$_ApplePayContactName));
+
+  @override
+  _$_ApplePayContactName get _value => super._value as _$_ApplePayContactName;
+
+  @override
+  $Res call({
+    Object? familyName = freezed,
+    Object? namePrefix = freezed,
+    Object? nameSuffix = freezed,
+    Object? givenName = freezed,
+    Object? middleName = freezed,
+    Object? nickname = freezed,
+  }) {
+    return _then(_$_ApplePayContactName(
+      familyName: familyName == freezed
+          ? _value.familyName
+          : familyName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      namePrefix: namePrefix == freezed
+          ? _value.namePrefix
+          : namePrefix // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nameSuffix: nameSuffix == freezed
+          ? _value.nameSuffix
+          : nameSuffix // ignore: cast_nullable_to_non_nullable
+              as String?,
+      givenName: givenName == freezed
+          ? _value.givenName
+          : givenName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      middleName: middleName == freezed
+          ? _value.middleName
+          : middleName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nickname: nickname == freezed
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_ApplePayContactName implements _ApplePayContactName {
+  const _$_ApplePayContactName(
+      {this.familyName,
+      this.namePrefix,
+      this.nameSuffix,
+      this.givenName,
+      this.middleName,
+      this.nickname});
+
+  factory _$_ApplePayContactName.fromJson(Map<String, dynamic> json) =>
+      _$$_ApplePayContactNameFromJson(json);
+
+  @override
+  final String? familyName;
+  @override
+  final String? namePrefix;
+  @override
+  final String? nameSuffix;
+  @override
+  final String? givenName;
+  @override
+  final String? middleName;
+  @override
+  final String? nickname;
+
+  @override
+  String toString() {
+    return 'ApplePayContactName(familyName: $familyName, namePrefix: $namePrefix, nameSuffix: $nameSuffix, givenName: $givenName, middleName: $middleName, nickname: $nickname)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ApplePayContactName &&
+            const DeepCollectionEquality()
+                .equals(other.familyName, familyName) &&
+            const DeepCollectionEquality()
+                .equals(other.namePrefix, namePrefix) &&
+            const DeepCollectionEquality()
+                .equals(other.nameSuffix, nameSuffix) &&
+            const DeepCollectionEquality().equals(other.givenName, givenName) &&
+            const DeepCollectionEquality()
+                .equals(other.middleName, middleName) &&
+            const DeepCollectionEquality().equals(other.nickname, nickname));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(familyName),
+      const DeepCollectionEquality().hash(namePrefix),
+      const DeepCollectionEquality().hash(nameSuffix),
+      const DeepCollectionEquality().hash(givenName),
+      const DeepCollectionEquality().hash(middleName),
+      const DeepCollectionEquality().hash(nickname));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ApplePayContactNameCopyWith<_$_ApplePayContactName> get copyWith =>
+      __$$_ApplePayContactNameCopyWithImpl<_$_ApplePayContactName>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ApplePayContactNameToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ApplePayContactName implements ApplePayContactName {
+  const factory _ApplePayContactName(
+      {final String? familyName,
+      final String? namePrefix,
+      final String? nameSuffix,
+      final String? givenName,
+      final String? middleName,
+      final String? nickname}) = _$_ApplePayContactName;
+
+  factory _ApplePayContactName.fromJson(Map<String, dynamic> json) =
+      _$_ApplePayContactName.fromJson;
+
+  @override
+  String? get familyName;
+  @override
+  String? get namePrefix;
+  @override
+  String? get nameSuffix;
+  @override
+  String? get givenName;
+  @override
+  String? get middleName;
+  @override
+  String? get nickname;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ApplePayContactNameCopyWith<_$_ApplePayContactName> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ApplePayPostalAddress _$ApplePayPostalAddressFromJson(
+    Map<String, dynamic> json) {
+  return _ApplePayPostalAddress.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ApplePayPostalAddress {
+  String? get city => throw _privateConstructorUsedError;
+  String? get country => throw _privateConstructorUsedError;
+  String? get postalCode => throw _privateConstructorUsedError;
+  String? get state => throw _privateConstructorUsedError;
+  String? get street => throw _privateConstructorUsedError;
+  String? get isoCountryCode => throw _privateConstructorUsedError;
+  String? get subAdministrativeArea => throw _privateConstructorUsedError;
+  String? get subLocality => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ApplePayPostalAddressCopyWith<ApplePayPostalAddress> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ApplePayPostalAddressCopyWith<$Res> {
+  factory $ApplePayPostalAddressCopyWith(ApplePayPostalAddress value,
+          $Res Function(ApplePayPostalAddress) then) =
+      _$ApplePayPostalAddressCopyWithImpl<$Res>;
+  $Res call(
+      {String? city,
+      String? country,
+      String? postalCode,
+      String? state,
+      String? street,
+      String? isoCountryCode,
+      String? subAdministrativeArea,
+      String? subLocality});
+}
+
+/// @nodoc
+class _$ApplePayPostalAddressCopyWithImpl<$Res>
+    implements $ApplePayPostalAddressCopyWith<$Res> {
+  _$ApplePayPostalAddressCopyWithImpl(this._value, this._then);
+
+  final ApplePayPostalAddress _value;
+  // ignore: unused_field
+  final $Res Function(ApplePayPostalAddress) _then;
+
+  @override
+  $Res call({
+    Object? city = freezed,
+    Object? country = freezed,
+    Object? postalCode = freezed,
+    Object? state = freezed,
+    Object? street = freezed,
+    Object? isoCountryCode = freezed,
+    Object? subAdministrativeArea = freezed,
+    Object? subLocality = freezed,
+  }) {
+    return _then(_value.copyWith(
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String?,
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as String?,
+      postalCode: postalCode == freezed
+          ? _value.postalCode
+          : postalCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      state: state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String?,
+      street: street == freezed
+          ? _value.street
+          : street // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isoCountryCode: isoCountryCode == freezed
+          ? _value.isoCountryCode
+          : isoCountryCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subAdministrativeArea: subAdministrativeArea == freezed
+          ? _value.subAdministrativeArea
+          : subAdministrativeArea // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subLocality: subLocality == freezed
+          ? _value.subLocality
+          : subLocality // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_ApplePayPostalAddressCopyWith<$Res>
+    implements $ApplePayPostalAddressCopyWith<$Res> {
+  factory _$$_ApplePayPostalAddressCopyWith(_$_ApplePayPostalAddress value,
+          $Res Function(_$_ApplePayPostalAddress) then) =
+      __$$_ApplePayPostalAddressCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String? city,
+      String? country,
+      String? postalCode,
+      String? state,
+      String? street,
+      String? isoCountryCode,
+      String? subAdministrativeArea,
+      String? subLocality});
+}
+
+/// @nodoc
+class __$$_ApplePayPostalAddressCopyWithImpl<$Res>
+    extends _$ApplePayPostalAddressCopyWithImpl<$Res>
+    implements _$$_ApplePayPostalAddressCopyWith<$Res> {
+  __$$_ApplePayPostalAddressCopyWithImpl(_$_ApplePayPostalAddress _value,
+      $Res Function(_$_ApplePayPostalAddress) _then)
+      : super(_value, (v) => _then(v as _$_ApplePayPostalAddress));
+
+  @override
+  _$_ApplePayPostalAddress get _value =>
+      super._value as _$_ApplePayPostalAddress;
+
+  @override
+  $Res call({
+    Object? city = freezed,
+    Object? country = freezed,
+    Object? postalCode = freezed,
+    Object? state = freezed,
+    Object? street = freezed,
+    Object? isoCountryCode = freezed,
+    Object? subAdministrativeArea = freezed,
+    Object? subLocality = freezed,
+  }) {
+    return _then(_$_ApplePayPostalAddress(
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String?,
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as String?,
+      postalCode: postalCode == freezed
+          ? _value.postalCode
+          : postalCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      state: state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String?,
+      street: street == freezed
+          ? _value.street
+          : street // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isoCountryCode: isoCountryCode == freezed
+          ? _value.isoCountryCode
+          : isoCountryCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subAdministrativeArea: subAdministrativeArea == freezed
+          ? _value.subAdministrativeArea
+          : subAdministrativeArea // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subLocality: subLocality == freezed
+          ? _value.subLocality
+          : subLocality // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_ApplePayPostalAddress implements _ApplePayPostalAddress {
+  const _$_ApplePayPostalAddress(
+      {this.city,
+      this.country,
+      this.postalCode,
+      this.state,
+      this.street,
+      this.isoCountryCode,
+      this.subAdministrativeArea,
+      this.subLocality});
+
+  factory _$_ApplePayPostalAddress.fromJson(Map<String, dynamic> json) =>
+      _$$_ApplePayPostalAddressFromJson(json);
+
+  @override
+  final String? city;
+  @override
+  final String? country;
+  @override
+  final String? postalCode;
+  @override
+  final String? state;
+  @override
+  final String? street;
+  @override
+  final String? isoCountryCode;
+  @override
+  final String? subAdministrativeArea;
+  @override
+  final String? subLocality;
+
+  @override
+  String toString() {
+    return 'ApplePayPostalAddress(city: $city, country: $country, postalCode: $postalCode, state: $state, street: $street, isoCountryCode: $isoCountryCode, subAdministrativeArea: $subAdministrativeArea, subLocality: $subLocality)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ApplePayPostalAddress &&
+            const DeepCollectionEquality().equals(other.city, city) &&
+            const DeepCollectionEquality().equals(other.country, country) &&
+            const DeepCollectionEquality()
+                .equals(other.postalCode, postalCode) &&
+            const DeepCollectionEquality().equals(other.state, state) &&
+            const DeepCollectionEquality().equals(other.street, street) &&
+            const DeepCollectionEquality()
+                .equals(other.isoCountryCode, isoCountryCode) &&
+            const DeepCollectionEquality()
+                .equals(other.subAdministrativeArea, subAdministrativeArea) &&
+            const DeepCollectionEquality()
+                .equals(other.subLocality, subLocality));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(city),
+      const DeepCollectionEquality().hash(country),
+      const DeepCollectionEquality().hash(postalCode),
+      const DeepCollectionEquality().hash(state),
+      const DeepCollectionEquality().hash(street),
+      const DeepCollectionEquality().hash(isoCountryCode),
+      const DeepCollectionEquality().hash(subAdministrativeArea),
+      const DeepCollectionEquality().hash(subLocality));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ApplePayPostalAddressCopyWith<_$_ApplePayPostalAddress> get copyWith =>
+      __$$_ApplePayPostalAddressCopyWithImpl<_$_ApplePayPostalAddress>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ApplePayPostalAddressToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ApplePayPostalAddress implements ApplePayPostalAddress {
+  const factory _ApplePayPostalAddress(
+      {final String? city,
+      final String? country,
+      final String? postalCode,
+      final String? state,
+      final String? street,
+      final String? isoCountryCode,
+      final String? subAdministrativeArea,
+      final String? subLocality}) = _$_ApplePayPostalAddress;
+
+  factory _ApplePayPostalAddress.fromJson(Map<String, dynamic> json) =
+      _$_ApplePayPostalAddress.fromJson;
+
+  @override
+  String? get city;
+  @override
+  String? get country;
+  @override
+  String? get postalCode;
+  @override
+  String? get state;
+  @override
+  String? get street;
+  @override
+  String? get isoCountryCode;
+  @override
+  String? get subAdministrativeArea;
+  @override
+  String? get subLocality;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ApplePayPostalAddressCopyWith<_$_ApplePayPostalAddress> get copyWith =>
+      throw _privateConstructorUsedError;
 }

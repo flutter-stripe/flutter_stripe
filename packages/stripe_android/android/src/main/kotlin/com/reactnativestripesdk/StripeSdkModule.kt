@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Parcelable
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.facebook.react.bridge.*
 import com.facebook.react.module.annotations.ReactModule
 import com.flutter.stripe.getCurrentActivityOrResolveWithError
@@ -18,10 +19,12 @@ import com.stripe.android.core.ApiVersion
 import com.stripe.android.core.AppInfo
 import com.stripe.android.model.*
 import com.stripe.android.payments.bankaccount.CollectBankAccountConfiguration
+import com.stripe.android.paymentsheet.PaymentSheet
 import com.stripe.android.view.AddPaymentMethodActivityStarter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+
 
 @ReactModule(name = StripeSdkModule.NAME)
 class StripeSdkModule(internal val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
@@ -37,21 +40,27 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
   private var stripeAccountId: String? = null
   private var urlScheme: String? = null
 
+  private var confirmPromise: Promise? = null
+  private var confirmPaymentClientSecret: String? = null
+
   private var paymentSheetFragment: PaymentSheetFragment? = null
   private var googlePayFragment: GooglePayFragment? = null
   private var paymentLauncherFragment: PaymentLauncherFragment? = null
-
-  private var confirmPromise: Promise? = null
-  private var confirmPaymentClientSecret: String? = null
+  private var collectBankAccountLauncherFragment: CollectBankAccountLauncherFragment? = null
+  private var financialConnectionsSheetFragment: FinancialConnectionsSheetFragment? = null
+  private val allFragments: List<Fragment?>
+    get() = listOf(
+      paymentSheetFragment,
+      googlePayFragment,
+      paymentLauncherFragment,
+      collectBankAccountLauncherFragment,
+      financialConnectionsSheetFragment
+    )
 
   private val mActivityEventListener = object : BaseActivityEventListener() {
     override fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent?) {
       if (::stripe.isInitialized) {
-        // BEGIN - Necessary on older versions of React Native (~0.64 and below)
-        //paymentSheetFragment?.activity?.activityResultRegistry?.dispatchResult(requestCode, resultCode, data)
-        //googlePayFragment?.activity?.activityResultRegistry?.dispatchResult(requestCode, resultCode, data)
-        //paymentLauncherFragment?.activity?.activityResultRegistry?.dispatchResult(requestCode, resultCode, data)
-        // END
+        dispatchActivityResultsToFragments(requestCode, resultCode, data)
         try {
           val result = AddPaymentMethodActivityStarter.Result.fromIntent(data)
           if (data?.getParcelableExtra<Parcelable>("extra_activity_result") != null) {
@@ -66,6 +75,13 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
 
   init {
     reactContext.addActivityEventListener(mActivityEventListener)
+  }
+
+  // Necessary on older versions of React Native (~0.65 and below)
+  private fun dispatchActivityResultsToFragments(requestCode: Int, resultCode: Int, data: Intent?) {
+    for (fragment in allFragments) {
+      //fragment?.activity?.activityResultRegistry?.dispatchResult(requestCode, resultCode, data)
+    }
   }
 
   private fun configure3dSecure(params: ReadableMap) {
@@ -122,17 +138,14 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
   @ReactMethod
   fun initPaymentSheet(params: ReadableMap, promise: Promise) {
     getCurrentActivityOrResolveWithError(promise)?.let { activity ->
-      paymentSheetFragment?.let {
-        // If a payment sheet was already initialized, we want to remove its fragment first
-        activity.supportFragmentManager.beginTransaction().remove(it).commitAllowingStateLoss()
-      }
+      paymentSheetFragment?.removeFragment(reactApplicationContext)
       paymentSheetFragment = PaymentSheetFragment(reactApplicationContext, promise).also {
         val bundle = toBundleObject(params)
         it.arguments = bundle
       }
       try {
         activity.supportFragmentManager.beginTransaction()
-          .add(paymentSheetFragment!!, "payment_sheet_launch_fragment")
+          .add(paymentSheetFragment!!, PaymentSheetFragment.TAG)
           .commit()
       } catch (error: IllegalStateException) {
         promise.resolve(createError(ErrorType.Failed.toString(), error.message))
@@ -148,6 +161,12 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
   @ReactMethod
   fun confirmPaymentSheetPayment(promise: Promise) {
     paymentSheetFragment?.confirmPayment(promise)
+  }
+
+  @ReactMethod
+  fun resetPaymentSheetCustomer(promise: Promise) {
+    PaymentSheet.resetCustomer(context = reactApplicationContext)
+    promise.resolve(null)
   }
 
   private fun payWithFpx() {
@@ -369,12 +388,15 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
 //  }
 
   @ReactMethod
-  fun confirmPayment(paymentIntentClientSecret: String, params: ReadableMap, options: ReadableMap, promise: Promise) {
+  fun confirmPayment(paymentIntentClientSecret: String, params: ReadableMap?, options: ReadableMap, promise: Promise) {
     val paymentMethodData = getMapOrNull(params, "paymentMethodData")
-    val paymentMethodType = getValOr(params, "paymentMethodType")?.let { mapToPaymentMethodType(it) } ?: run {
-      promise.resolve(createError(ConfirmPaymentErrorType.Failed.toString(), "You must provide paymentMethodType"))
-      return
-    }
+    val paymentMethodType = if (params != null)
+      mapToPaymentMethodType(params.getString("paymentMethodType")) ?: run {
+        promise.resolve(createError(ConfirmPaymentErrorType.Failed.toString(), "You must provide paymentMethodType"))
+        return
+      }
+    else
+      null // Expect that payment method was attached on the server
 
     val testOfflineBank = getBooleanOrFalse(params, "testOfflineBank")
 
@@ -481,7 +503,7 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
     getCurrentActivityOrResolveWithError(promise)?.let {
       try {
         it.supportFragmentManager.beginTransaction()
-          .add(fragment, "google_pay_support_fragment")
+          .add(fragment, GooglePayPaymentMethodLauncherFragment.TAG)
           .commit()
       } catch (error: IllegalStateException) {
         promise.resolve(createError(ErrorType.Failed.toString(), error.message))
@@ -499,7 +521,7 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
     getCurrentActivityOrResolveWithError(promise)?.let {
       try {
         it.supportFragmentManager.beginTransaction()
-          .add(googlePayFragment!!, "google_pay_launch_fragment")
+          .add(googlePayFragment!!, GooglePayFragment.TAG)
           .commit()
       } catch (error: IllegalStateException) {
         promise.resolve(createError(ErrorType.Failed.toString(), error.message))
@@ -604,9 +626,10 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
       billingDetails.getString("email")
     )
 
-    val fragment = CollectBankAccountLauncherFragment(
+    collectBankAccountLauncherFragment = CollectBankAccountLauncherFragment(
       reactApplicationContext,
       publishableKey,
+      stripeAccountId,
       clientSecret,
       isPaymentIntent,
       collectParams,
@@ -615,7 +638,7 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
     getCurrentActivityOrResolveWithError(promise)?.let {
       try {
         it.supportFragmentManager.beginTransaction()
-          .add(fragment, "collect_bank_account_launcher_fragment")
+          .add(collectBankAccountLauncherFragment!!, "collect_bank_account_launcher_fragment")
           .commit()
       } catch (error: IllegalStateException) {
         promise.resolve(createError(ErrorType.Failed.toString(), error.message))
@@ -691,8 +714,29 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
     }
   }
 
+  @ReactMethod
+  fun collectBankAccountToken(clientSecret: String, promise: Promise) {
+    if (!::stripe.isInitialized) {
+      promise.resolve(createMissingInitError())
+      return
+    }
+    financialConnectionsSheetFragment = FinancialConnectionsSheetFragment().also {
+      it.presentFinancialConnectionsSheet(clientSecret, FinancialConnectionsSheetFragment.Mode.ForToken, publishableKey, stripeAccountId, promise, reactApplicationContext)
+    }
+  }
+
+  @ReactMethod
+  fun collectFinancialConnectionsAccounts(clientSecret: String, promise: Promise) {
+    if (!::stripe.isInitialized) {
+      promise.resolve(createMissingInitError())
+      return
+    }
+    financialConnectionsSheetFragment = FinancialConnectionsSheetFragment().also {
+      it.presentFinancialConnectionsSheet(clientSecret, FinancialConnectionsSheetFragment.Mode.ForSession, publishableKey, stripeAccountId, promise, reactApplicationContext)
+    }
+  }
+
   companion object {
     const val NAME = "StripeSdk"
   }
 }
-

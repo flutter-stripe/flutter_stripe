@@ -56,6 +56,7 @@ class PaymentSheetFragment(
       initPromise.resolve(createError(ErrorType.Failed.toString(), "merchantDisplayName cannot be empty or null."))
       return
     }
+    val primaryButtonLabel = arguments?.getString("primaryButtonLabel")
     val customerId = arguments?.getString("customerId").orEmpty()
     val customerEphemeralKeySecret = arguments?.getString("customerEphemeralKeySecret").orEmpty()
     val googlePayConfig = buildGooglePayConfig(arguments?.getBundle("googlePay"))
@@ -95,7 +96,7 @@ class PaymentSheetFragment(
         is PaymentSheetResult.Completed -> {
           resolvePaymentResult(WritableNativeMap())
           // Remove the fragment now, we can be sure it won't be needed again if an intent is successful
-          (context.currentActivity as? AppCompatActivity)?.supportFragmentManager?.beginTransaction()?.remove(this)?.commitAllowingStateLoss()
+          removeFragment(context)
         }
       }
     }
@@ -126,7 +127,8 @@ class PaymentSheetFragment(
         ephemeralKeySecret = customerEphemeralKeySecret
       ) else null,
       googlePay = googlePayConfig,
-      appearance = appearance
+      appearance = appearance,
+      primaryButtonLabel = primaryButtonLabel
     )
 
     if (arguments?.getBoolean("customFlow") == true) {
@@ -196,6 +198,8 @@ class PaymentSheetFragment(
   }
 
   companion object {
+    const val TAG = "payment_sheet_launch_fragment"
+
     internal fun buildGooglePayConfig(params: Bundle?): PaymentSheet.GooglePayConfiguration? {
       if (params == null) {
         return null

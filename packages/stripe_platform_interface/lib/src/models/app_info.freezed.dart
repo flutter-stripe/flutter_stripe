@@ -169,7 +169,9 @@ class _$_AppInfo implements _AppInfo {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AppInfoToJson(this);
+    return _$$_AppInfoToJson(
+      this,
+    );
   }
 }
 
@@ -183,13 +185,13 @@ abstract class _AppInfo implements AppInfo {
   factory _AppInfo.fromJson(Map<String, dynamic> json) = _$_AppInfo.fromJson;
 
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  String? get partnerId => throw _privateConstructorUsedError;
+  String? get partnerId;
   @override
-  String? get url => throw _privateConstructorUsedError;
+  String? get url;
   @override
-  String? get version => throw _privateConstructorUsedError;
+  String? get version;
   @override
   @JsonKey(ignore: true)
   _$$_AppInfoCopyWith<_$_AppInfo> get copyWith =>

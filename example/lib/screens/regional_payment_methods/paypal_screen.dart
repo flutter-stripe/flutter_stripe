@@ -72,8 +72,8 @@ class _PayPalScreenState extends State<PayPalScreen> {
       );
 
       await Stripe.instance.confirmPayment(
-        clientSecret,
-        PaymentMethodParams.payPal(
+        paymentIntentClientSecret: clientSecret,
+        data: PaymentMethodParams.payPal(
           paymentMethodData: PaymentMethodData(billingDetails: billingDetails),
         ),
       );

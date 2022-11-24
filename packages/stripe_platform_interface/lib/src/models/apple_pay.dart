@@ -43,7 +43,7 @@ class ApplePayShippingMethod with _$ApplePayShippingMethod {
     required String label,
     required String amount,
     required String identifier,
-    ApplePayShippingMethodType? type,
+    bool? isPending,
     String? detail,
   }) = _ApplePayShippingMethod;
 
@@ -162,3 +162,68 @@ class ApplePayErrorAddressField with _$ApplePayErrorAddressField {
   factory ApplePayErrorAddressField.fromJson(Map<String, dynamic> json) =>
       _$ApplePayErrorAddressFieldFromJson(json);
 }
+
+@freezed
+
+/// Entered Shipping contact data
+class ApplePayShippingContact with _$ApplePayShippingContact {
+  @JsonSerializable(explicitToJson: true)
+  const factory ApplePayShippingContact({
+    /// Email address of the shipping contact
+    String? emailAddress,
+
+    /// Name of shipping contact
+    required ApplePayContactName name,
+
+    /// Postal address of shipping contact
+    required ApplePayPostalAddress postalAddress,
+
+    ///Phone Number of the shipping contact
+    String? phoneNumber,
+  }) = _ApplePayShippingContact;
+
+  factory ApplePayShippingContact.fromJson(Map<String, dynamic> json) =>
+      _$ApplePayShippingContactFromJson(json);
+}
+
+@freezed
+
+/// Contact name data for Apple pay
+class ApplePayContactName with _$ApplePayContactName {
+  @JsonSerializable(explicitToJson: true)
+  const factory ApplePayContactName({
+    String? familyName,
+    String? namePrefix,
+    String? nameSuffix,
+    String? givenName,
+    String? middleName,
+    String? nickname,
+  }) = _ApplePayContactName;
+
+  factory ApplePayContactName.fromJson(Map<String, dynamic> json) =>
+      _$ApplePayContactNameFromJson(json);
+}
+
+@freezed
+
+/// Postal address data for Apple pay
+class ApplePayPostalAddress with _$ApplePayPostalAddress {
+  @JsonSerializable(explicitToJson: true)
+  const factory ApplePayPostalAddress({
+    String? city,
+    String? country,
+    String? postalCode,
+    String? state,
+    String? street,
+    String? isoCountryCode,
+    String? subAdministrativeArea,
+    String? subLocality,
+  }) = _ApplePayPostalAddress;
+
+  factory ApplePayPostalAddress.fromJson(Map<String, dynamic> json) =>
+      _$ApplePayPostalAddressFromJson(json);
+}
+
+typedef OnDidSetShippingContact = void Function(
+    ApplePayShippingContact contact);
+typedef OnDidSetShippingMethod = void Function(ApplePayShippingMethod method);

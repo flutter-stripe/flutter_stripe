@@ -9,13 +9,13 @@ class GooglePayButtonView(private val context: ThemedReactContext) : FrameLayout
   private var buttonType: String? = null
 
   fun initialize() {
-    val type = when (buttonType) {
-      "pay" -> R.layout.pay_with_googlepay_button_no_shadow
-      "pay_shadow" -> R.layout.pay_with_googlepay_button
-      "standard_shadow" -> R.layout.googlepay_button
-      "standard" -> R.layout.googlepay_button_no_shadow
-      else -> R.layout.googlepay_button
-    }
+    val type =
+      when (buttonType) {
+        "pay" -> R.layout.pay_with_googlepay_button
+        "standard" -> R.layout.googlepay_button
+        else -> R.layout.googlepay_button
+      }
+
     val button = LayoutInflater.from(context).inflate(
       type, null
     )

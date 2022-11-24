@@ -1,4 +1,5 @@
 import Stripe
+import StripePaymentSheet
 
 class Mappers {
     class func createResult(_ key: String, _ value: NSDictionary?) -> NSDictionary {
@@ -50,18 +51,21 @@ class Mappers {
     }
 
     class func mapFromBankAccount(_ bankAccount: STPBankAccount?) -> NSDictionary? {
-        if (bankAccount == nil) {
+        guard let bankAccount = bankAccount else {
             return nil
         }
+
         let result: NSDictionary = [
-            "id": bankAccount?.stripeID ?? NSNull(),
-            "bankName": bankAccount?.bankName ?? NSNull(),
-            "accountHolderName": bankAccount?.accountHolderName ?? NSNull(),
-            "accountHolderType": mapFromBankAccountHolderType(bankAccount?.accountHolderType) ?? NSNull(),
-            "country": bankAccount?.country ?? NSNull(),
-            "currency": bankAccount?.currency ?? NSNull(),
-            "routingNumber": bankAccount?.routingNumber ?? NSNull(),
-            "status": mapFromBankAccountStatus(bankAccount?.status) ?? NSNull(),
+            "id": bankAccount.stripeID,
+            "bankName": bankAccount.bankName ?? NSNull(),
+            "accountHolderName": bankAccount.accountHolderName ?? NSNull(),
+            "accountHolderType": mapFromBankAccountHolderType(bankAccount.accountHolderType) ?? NSNull(),
+            "country": bankAccount.country ?? NSNull(),
+            "currency": bankAccount.currency ?? NSNull(),
+            "routingNumber": bankAccount.routingNumber ?? NSNull(),
+            "status": mapFromBankAccountStatus(bankAccount.status) ?? NSNull(),
+            "fingerprint": bankAccount.fingerprint ?? NSNull(),
+            "last4": bankAccount.last4 ?? NSNull()
         ]
         return result
     }
@@ -591,8 +595,11 @@ class Mappers {
             "expMonth": paymentMethod.card?.expMonth ?? NSNull(),
             "fingerprint": paymentMethod.card?.fingerprint ?? NSNull(),
             "funding": paymentMethod.card?.funding ?? NSNull(),
-            "last4": paymentMethod.card?.last4 ?? NSNull()
+            "last4": paymentMethod.card?.last4 ?? NSNull(),
+            "preferredNetwork": paymentMethod.card?.networks?.preferred ?? NSNull(),
+            "availableNetworks": paymentMethod.card?.networks?.available ?? NSNull(),
         ]
+        
         let sepaDebit: NSDictionary = [
             "bankCode": paymentMethod.sepaDebit?.bankCode ?? NSNull(),
             "country": paymentMethod.sepaDebit?.country ?? NSNull(),
@@ -738,6 +745,10 @@ class Mappers {
 
     class func mapToReturnURL(urlScheme: String) -> String {
         return urlScheme + "://safepay"
+    }
+
+    class func mapToFinancialConnectionsReturnURL(urlScheme: String) -> String {
+        return urlScheme + "://financial_connections_redirect"
     }
 
     class func mapUICustomization(_ params: NSDictionary) -> STPThreeDSUICustomization {

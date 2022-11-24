@@ -3,6 +3,11 @@
    <application
         android:label="example"
         android:icon="@mipmap/ic_launcher">
+
+        <meta-data
+                android:name="com.google.android.gms.wallet.api.enabled"
+                android:value="true" />
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -28,9 +33,6 @@
               android:name="io.flutter.embedding.android.SplashScreenDrawable"
               android:resource="@drawable/launch_background"
               />
-            <meta-data
-                android:name="com.google.android.gms.wallet.api.enabled"
-                android:value="true" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
