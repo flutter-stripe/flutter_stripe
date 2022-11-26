@@ -14,6 +14,7 @@ import 'package:stripe_example/screens/wallets/apple_pay_screen_plugin.dart';
 import 'package:stripe_example/screens/wallets/google_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/google_pay_stripe_screen.dart';
 import 'package:stripe_example/screens/wallets/open_apple_pay_setup_screen.dart';
+import 'package:stripe_example/screens/web/src/payment_element.dart';
 import 'package:stripe_example/widgets/platform_icons.dart';
 
 import 'card_payments/custom_card_payment_screen.dart';
@@ -257,7 +258,7 @@ class Example extends StatelessWidget {
       children: [
         Example(
           title: 'Financial connection sessions',
-          builder: (_)=> FinancialConnectionsScreen(),
+          builder: (_) => FinancialConnectionsScreen(),
           platformsSupported: [
             DevicePlatform.android,
             DevicePlatform.ios,
@@ -294,6 +295,13 @@ class Example extends StatelessWidget {
         DevicePlatform.android,
         DevicePlatform.ios,
         DevicePlatform.web
+      ],
+    ),
+    Example(
+      title: 'Payment Element',
+      builder: (c) => PaymentElementExample(),
+      platformsSupported: [
+        DevicePlatform.web,
       ],
     ),
   ];

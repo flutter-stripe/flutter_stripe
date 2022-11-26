@@ -1,0 +1,50 @@
+name: stripe_js
+
+on:
+  push:
+    branches: [master]
+    paths-ignore:
+      - "docs/**"
+      - "website/**"
+      - "**.md"
+  pull_request:
+    branches: ['**']
+    paths-ignore:
+      - "docs/**"
+      - "website/**"
+      - "**.md"
+
+jobs:
+  build:
+    defaults:
+      run:
+        working-directory: /packages/stripe_js
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v3
+
+      - name: 🎯 Setup Dart
+        uses: dart-lang/setup-dart@v1
+
+      - name: 📦 Install Dependencies
+        run: dart pub get
+
+      - name: ✨ Check Formatting
+        run: dart format --set-exit-if-changed .
+
+      - name: 🕵️ Analyze
+        run: dart analyze --fatal-infos --fatal-warnings lib test
+
+      - name: 🧪 Run Tests
+        run: |
+          dart pub global activate coverage
+          dart test -j 4 --coverage=coverage --platform=chrome && dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --packages=.dart_tool/package_config.json --report-on=lib
+      - name: 📊 Check Code Coverage
+        uses: VeryGoodOpenSource/very_good_coverage@v2
+        with:
+          path: /packages/stripe_js/coverage/lcov.info
+          exclude: "lib/**/*.g.dart"
+          min_coverage: 0

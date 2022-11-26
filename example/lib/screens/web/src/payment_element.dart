@@ -1,9 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 import 'package:stripe_example/config.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:stripe_example/widgets/loading_button.dart';
+
+import '../../checkout/platforms/stripe_checkout_web.dart';
 
 class PaymentElementExample extends StatefulWidget {
   @override
@@ -44,33 +48,45 @@ class _ThemeCardExampleState extends State<PaymentElementExample> {
       ),
       body: Column(
         children: [
-          // Container(
-          //   height: 150,
-          //   alignment: Alignment.center,
-          //   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-          //   child:  clientSecret != null ? PaymentElement(
-          //     autofocus: true,
-          //     enablePostalCode: true,
-          //     onCardChanged: (_) {},
-          //     clientSecret: clientSecret ?? '',
-          //   ) : Center(
-          //     child: CircularProgressIndicator(),
-          //   )
-          // )
+          Container(
+              child: clientSecret != null
+                  ? PaymentElement(
+                      autofocus: true,
+                      enablePostalCode: true,
+                      onCardChanged: (_) {},
+                      clientSecret: clientSecret ?? '',
+                    )
+                  : Center(
+                      child: CircularProgressIndicator(),
+                    )),
+          LoadingButton(onPressed: pay, text: 'Pay'),
         ],
       ),
     );
   }
 
   Future<String> createPaymentIntent() async {
-    final url = Uri.parse('$kApiUrl/universal-payment');
+    final url = Uri.parse('$kApiUrl/create-payment-intent');
     final response = await http.post(
       url,
       headers: {
         'Content-Type': 'application/json',
       },
-      body: json.encode({}),
+      body: json.encode({
+        'currency': 'usd',
+        'amount': 1099,
+        'payment_method_types': ['card'],
+        'request_three_d_secure': 'any',
+      }),
     );
     return json.decode(response.body)['clientSecret'];
+  }
+
+  Future<void> pay() async {
+    await WebStripe().confirmPaymentElement(
+      ConfirmPaymentElementOptions(
+        confirmParams: ConfirmPaymentParams(return_url: getReturnUrl()),
+      ),
+    );
   }
 }

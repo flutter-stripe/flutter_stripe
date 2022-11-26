@@ -1,18 +1,18 @@
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
-import '../js/js.dart' as s;
+import 'package:stripe_js/stripe_api.dart' as js;
 
-extension PaymentMethodParser on s.PaymentMethod {
+extension PaymentMethodParser on js.PaymentMethod {
   PaymentMethod parse() {
     return PaymentMethod(
       id: id,
       livemode: livemode,
-      paymentMethodType: type,
-      card: card.parse(),
+      paymentMethodType: type.name,
+      card: (card ?? const js.CardPaymentMethod()).parse(),
       auBecsDebit: const AuBecsDebit(),
       bacsDebit: const BacsDebit(),
-      billingDetails: billing_details.parse(),
+      billingDetails: billingDetails?.parse() ?? const BillingDetails(),
       fpx: const Fpx(),
       ideal: const Ideal(),
       sepaDebit: const SepaDebit(),
@@ -26,19 +26,19 @@ extension PaymentMethodParser on s.PaymentMethod {
   }
 }
 
-extension StripeParser on s.PaymentMethodCard {
+extension StripeParser on js.CardPaymentMethod {
   Card parse() {
     return Card(
       brand: brand,
       country: country,
-      expMonth: exp_month.toInt(),
-      expYear: exp_year.toInt(),
+      expMonth: expYear,
+      expYear: expYear,
       funding: funding,
     );
   }
 }
 
-extension StripeBillingDetails on s.BillingDetails {
+extension StripeBillingDetails on js.BillingDetails {
   BillingDetails parse() {
     return BillingDetails(
       email: email,
@@ -49,14 +49,14 @@ extension StripeBillingDetails on s.BillingDetails {
   }
 }
 
-extension StripeBillingAddress on s.BillingDetailsAddress {
+extension StripeBillingAddress on js.BillingAddress {
   Address parse() {
     return Address(
       city: city,
       country: country,
       line1: line1,
       line2: line2,
-      postalCode: postal_code,
+      postalCode: postalCode,
       state: state,
     );
   }
