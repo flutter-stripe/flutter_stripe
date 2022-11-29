@@ -72,11 +72,11 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-        if (initializationError != null) {
+        if (initializationError != null || !this::stripeSdk.isInitialized) {
             result.error(
                 "flutter_stripe initialization failed",
                 """The plugin failed to initialize:
-${initializationError}
+${initializationError ?: "Stripe SDK did not initialize."}
 Please make sure you follow all the steps detailed inside the README: https://github.com/flutter-stripe/flutter_stripe#android
 If you continue to have trouble, follow this discussion to get some support https://github.com/flutter-stripe/flutter_stripe/discussions/538""",
                 null
