@@ -32,6 +32,9 @@ mixin _$SetupPaymentSheetParameters {
   /// See https://stripe.com/docs/api/customers/object#customer_object-id
   String? get customerId => throw _privateConstructorUsedError;
 
+  ///  The label to use for the primary button. If not set, Payment Sheet will display suitable default labels for payment and setup intents
+  String? get primaryButtonLabel => throw _privateConstructorUsedError;
+
   ///A temp key can be used for API operations that require a secret key.
   String? get customerEphemeralKeySecret => throw _privateConstructorUsedError;
 
@@ -99,6 +102,7 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
   $Res call(
       {bool customFlow,
       String? customerId,
+      String? primaryButtonLabel,
       String? customerEphemeralKeySecret,
       String? paymentIntentClientSecret,
       String? setupIntentClientSecret,
@@ -130,6 +134,7 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res>
   $Res call({
     Object? customFlow = freezed,
     Object? customerId = freezed,
+    Object? primaryButtonLabel = freezed,
     Object? customerEphemeralKeySecret = freezed,
     Object? paymentIntentClientSecret = freezed,
     Object? setupIntentClientSecret = freezed,
@@ -150,6 +155,10 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res>
       customerId: customerId == freezed
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      primaryButtonLabel: primaryButtonLabel == freezed
+          ? _value.primaryButtonLabel
+          : primaryButtonLabel // ignore: cast_nullable_to_non_nullable
               as String?,
       customerEphemeralKeySecret: customerEphemeralKeySecret == freezed
           ? _value.customerEphemeralKeySecret
@@ -253,6 +262,7 @@ abstract class _$$_SetupParametersCopyWith<$Res>
   $Res call(
       {bool customFlow,
       String? customerId,
+      String? primaryButtonLabel,
       String? customerEphemeralKeySecret,
       String? paymentIntentClientSecret,
       String? setupIntentClientSecret,
@@ -290,6 +300,7 @@ class __$$_SetupParametersCopyWithImpl<$Res>
   $Res call({
     Object? customFlow = freezed,
     Object? customerId = freezed,
+    Object? primaryButtonLabel = freezed,
     Object? customerEphemeralKeySecret = freezed,
     Object? paymentIntentClientSecret = freezed,
     Object? setupIntentClientSecret = freezed,
@@ -310,6 +321,10 @@ class __$$_SetupParametersCopyWithImpl<$Res>
       customerId: customerId == freezed
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      primaryButtonLabel: primaryButtonLabel == freezed
+          ? _value.primaryButtonLabel
+          : primaryButtonLabel // ignore: cast_nullable_to_non_nullable
               as String?,
       customerEphemeralKeySecret: customerEphemeralKeySecret == freezed
           ? _value.customerEphemeralKeySecret
@@ -366,6 +381,7 @@ class _$_SetupParameters implements _SetupParameters {
   const _$_SetupParameters(
       {this.customFlow = false,
       this.customerId,
+      this.primaryButtonLabel,
       this.customerEphemeralKeySecret,
       this.paymentIntentClientSecret,
       this.setupIntentClientSecret,
@@ -394,6 +410,10 @@ class _$_SetupParameters implements _SetupParameters {
   /// See https://stripe.com/docs/api/customers/object#customer_object-id
   @override
   final String? customerId;
+
+  ///  The label to use for the primary button. If not set, Payment Sheet will display suitable default labels for payment and setup intents
+  @override
+  final String? primaryButtonLabel;
 
   ///A temp key can be used for API operations that require a secret key.
   @override
@@ -461,7 +481,7 @@ class _$_SetupParameters implements _SetupParameters {
 
   @override
   String toString() {
-    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, returnURL: $returnURL)';
+    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, returnURL: $returnURL)';
   }
 
   @override
@@ -473,6 +493,8 @@ class _$_SetupParameters implements _SetupParameters {
                 .equals(other.customFlow, customFlow) &&
             const DeepCollectionEquality()
                 .equals(other.customerId, customerId) &&
+            const DeepCollectionEquality()
+                .equals(other.primaryButtonLabel, primaryButtonLabel) &&
             const DeepCollectionEquality().equals(
                 other.customerEphemeralKeySecret, customerEphemeralKeySecret) &&
             const DeepCollectionEquality().equals(
@@ -500,6 +522,7 @@ class _$_SetupParameters implements _SetupParameters {
       runtimeType,
       const DeepCollectionEquality().hash(customFlow),
       const DeepCollectionEquality().hash(customerId),
+      const DeepCollectionEquality().hash(primaryButtonLabel),
       const DeepCollectionEquality().hash(customerEphemeralKeySecret),
       const DeepCollectionEquality().hash(paymentIntentClientSecret),
       const DeepCollectionEquality().hash(setupIntentClientSecret),
@@ -529,6 +552,7 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   const factory _SetupParameters(
       {final bool customFlow,
       final String? customerId,
+      final String? primaryButtonLabel,
       final String? customerEphemeralKeySecret,
       final String? paymentIntentClientSecret,
       final String? setupIntentClientSecret,
@@ -559,6 +583,10 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   /// The identifier of the Stripe Customer object.
   /// See https://stripe.com/docs/api/customers/object#customer_object-id
   String? get customerId;
+  @override
+
+  ///  The label to use for the primary button. If not set, Payment Sheet will display suitable default labels for payment and setup intents
+  String? get primaryButtonLabel;
   @override
 
   ///A temp key can be used for API operations that require a secret key.
