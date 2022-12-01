@@ -249,17 +249,10 @@ class MethodChannelStripe extends StripePlatform {
 
   @override
   Future<void> resetPaymentSheetCustomer() async {
-    final result = await _methodChannel.invokeMethod<dynamic>(
+    await _methodChannel.invokeMethod<dynamic>(
       'resetPaymentSheetCustomer',
       {'params': {}},
     );
-
-    // iOS returns empty list on success
-    if (result is List) {
-      return;
-    } else {
-      return _parsePaymentSheetResult(result);
-    }
   }
 
   @override
