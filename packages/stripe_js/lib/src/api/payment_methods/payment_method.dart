@@ -47,32 +47,32 @@ class PaymentMethod with _$PaymentMethod {
 
     /// Containing additional data in case paymentmethod type is sepa.
 
-    @JsonKey(name: 'SepaDebit') SepaDebit? sepaDebit,
+    SepaDebit? sepaDebit,
 
     /// Containing additional data in case paymentmethod type is Bacs debit.
 
-    @JsonKey(name: 'BacsDebit') BacsDebit? bacsDebit,
+    BacsDebit? bacsDebit,
 
     /// Containing additional data in case paymentmethod type is Aubecs debit.
 
-    @JsonKey(name: 'AuBecsDebit') AuBecsDebit? auBecsDebit,
+    AuBecsDebit? auBecsDebit,
 
     /// Containing additional data in case paymentmethod type is sofort.
 
-    @JsonKey(name: 'Sofort') Sofort? sofort,
+    Sofort? sofort,
 
     /// Containing additional data in case paymentmethod type is Ideal.
 
-    @JsonKey(name: 'Ideal') Ideal? ideal,
+    Ideal? ideal,
 
     /// Containing additional data in case paymentmethod type is FPX.
 
-    @JsonKey(name: 'Fpx') Fpx? fpx,
+    Fpx? fpx,
 
     /// Containing additional data in case paymentmethod type is UPI.
 
-    @JsonKey(name: 'Upi') Upi? upi,
-    @JsonKey(name: 'USBankAccount') UsBankAccount? usBankAccount,
+    Upi? upi,
+    UsBankAccount? usBankAccount,
 
     /// The type of the PaymentMethod.
     /// An additional hash is included on the PaymentMethod with a name

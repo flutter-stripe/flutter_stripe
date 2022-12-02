@@ -26,7 +26,7 @@ class CreatePaymentMethodData with _$CreatePaymentMethodData {
     /// The customer's bank.
     @JsonKey(name: "netbanking[bank]") String? netbankingBank,
 
-    ///    An idealBank Element.
+    /// An idealBank Element.
     @ElementConverter() Element? ideal,
 
     /// The customer's bank.

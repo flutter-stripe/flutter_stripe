@@ -45,7 +45,7 @@ mixin _$CreatePaymentMethodData {
   @JsonKey(name: "netbanking[bank]")
   String? get netbankingBank => throw _privateConstructorUsedError;
 
-  ///    An idealBank Element.
+  /// An idealBank Element.
   @ElementConverter()
   Element? get ideal => throw _privateConstructorUsedError;
 
@@ -345,7 +345,7 @@ class _$_CreatePaymentMethodData implements _CreatePaymentMethodData {
   @JsonKey(name: "netbanking[bank]")
   final String? netbankingBank;
 
-  ///    An idealBank Element.
+  /// An idealBank Element.
   @override
   @ElementConverter()
   final Element? ideal;
@@ -502,7 +502,7 @@ abstract class _CreatePaymentMethodData implements CreatePaymentMethodData {
   String? get netbankingBank;
   @override
 
-  ///    An idealBank Element.
+  /// An idealBank Element.
   @ElementConverter()
   Element? get ideal;
   @override

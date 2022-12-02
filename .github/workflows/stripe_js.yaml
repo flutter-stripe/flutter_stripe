@@ -32,6 +32,13 @@ jobs:
       - name: 📦 Install Dependencies
         run: dart pub get
 
+      - name: "Set env keys"
+        env:
+          STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY }}
+        run: |
+          cd ../../  
+          ./.github/workflows/scripts/env-files.sh
+
       - name: ✨ Check Formatting
         run: dart format --set-exit-if-changed .
 

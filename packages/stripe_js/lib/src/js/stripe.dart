@@ -26,13 +26,13 @@ class Stripe {
 abstract class StripeOptions {
   external String? stripeAccount;
   external String apiVersion;
-  external List betas;
+  external List<String> betas;
   external String locale;
 
   external factory StripeOptions({
     String? stripeAccount,
     String apiVersion,
-    List betas,
+    List<String> betas,
     String locale,
   });
 }

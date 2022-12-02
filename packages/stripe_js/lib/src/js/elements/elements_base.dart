@@ -4,8 +4,6 @@ import 'package:js/js.dart';
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 
-/*type eventTypes = 'blur' | 'change' | 'focus' | 'ready';*/
-
 @anonymous
 @JS()
 abstract class StripeElements implements Elements {
@@ -55,16 +53,6 @@ abstract class ElementOptions {
   external set locale(String v);
   external factory ElementOptions({JsArray<Font> fonts, String locale});
 }
-
-/*type elementsType = 'card' |
-    'cardNumber' |
-    'cardExpiry' |
-    'cardCvc' |
-    'postalCode' |
-    'paymentRequestButton' |
-    'iban' |
-    'idealBank';
-*/
 
 enum ElementsType {
   card,

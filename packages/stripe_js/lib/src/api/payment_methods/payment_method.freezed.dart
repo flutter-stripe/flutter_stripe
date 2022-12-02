@@ -53,33 +53,25 @@ mixin _$PaymentMethod {
   CardPaymentMethod? get card => throw _privateConstructorUsedError;
 
   /// Containing additional data in case paymentmethod type is sepa.
-  @JsonKey(name: 'SepaDebit')
   SepaDebit? get sepaDebit => throw _privateConstructorUsedError;
 
   /// Containing additional data in case paymentmethod type is Bacs debit.
-  @JsonKey(name: 'BacsDebit')
   BacsDebit? get bacsDebit => throw _privateConstructorUsedError;
 
   /// Containing additional data in case paymentmethod type is Aubecs debit.
-  @JsonKey(name: 'AuBecsDebit')
   AuBecsDebit? get auBecsDebit => throw _privateConstructorUsedError;
 
   /// Containing additional data in case paymentmethod type is sofort.
-  @JsonKey(name: 'Sofort')
   Sofort? get sofort => throw _privateConstructorUsedError;
 
   /// Containing additional data in case paymentmethod type is Ideal.
-  @JsonKey(name: 'Ideal')
   Ideal? get ideal => throw _privateConstructorUsedError;
 
   /// Containing additional data in case paymentmethod type is FPX.
-  @JsonKey(name: 'Fpx')
   Fpx? get fpx => throw _privateConstructorUsedError;
 
   /// Containing additional data in case paymentmethod type is UPI.
-  @JsonKey(name: 'Upi')
   Upi? get upi => throw _privateConstructorUsedError;
-  @JsonKey(name: 'USBankAccount')
   UsBankAccount? get usBankAccount => throw _privateConstructorUsedError;
 
   /// The type of the PaymentMethod.
@@ -109,14 +101,14 @@ abstract class $PaymentMethodCopyWith<$Res> {
       bool livemode,
       int? created,
       CardPaymentMethod? card,
-      @JsonKey(name: 'SepaDebit') SepaDebit? sepaDebit,
-      @JsonKey(name: 'BacsDebit') BacsDebit? bacsDebit,
-      @JsonKey(name: 'AuBecsDebit') AuBecsDebit? auBecsDebit,
-      @JsonKey(name: 'Sofort') Sofort? sofort,
-      @JsonKey(name: 'Ideal') Ideal? ideal,
-      @JsonKey(name: 'Fpx') Fpx? fpx,
-      @JsonKey(name: 'Upi') Upi? upi,
-      @JsonKey(name: 'USBankAccount') UsBankAccount? usBankAccount,
+      SepaDebit? sepaDebit,
+      BacsDebit? bacsDebit,
+      AuBecsDebit? auBecsDebit,
+      Sofort? sofort,
+      Ideal? ideal,
+      Fpx? fpx,
+      Upi? upi,
+      UsBankAccount? usBankAccount,
       PaymentMethodType type});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
@@ -372,14 +364,14 @@ abstract class _$$_PaymentMethodCopyWith<$Res>
       bool livemode,
       int? created,
       CardPaymentMethod? card,
-      @JsonKey(name: 'SepaDebit') SepaDebit? sepaDebit,
-      @JsonKey(name: 'BacsDebit') BacsDebit? bacsDebit,
-      @JsonKey(name: 'AuBecsDebit') AuBecsDebit? auBecsDebit,
-      @JsonKey(name: 'Sofort') Sofort? sofort,
-      @JsonKey(name: 'Ideal') Ideal? ideal,
-      @JsonKey(name: 'Fpx') Fpx? fpx,
-      @JsonKey(name: 'Upi') Upi? upi,
-      @JsonKey(name: 'USBankAccount') UsBankAccount? usBankAccount,
+      SepaDebit? sepaDebit,
+      BacsDebit? bacsDebit,
+      AuBecsDebit? auBecsDebit,
+      Sofort? sofort,
+      Ideal? ideal,
+      Fpx? fpx,
+      Upi? upi,
+      UsBankAccount? usBankAccount,
       PaymentMethodType type});
 
   @override
@@ -519,14 +511,14 @@ class _$_PaymentMethod implements _PaymentMethod {
       this.livemode = true,
       this.created,
       this.card,
-      @JsonKey(name: 'SepaDebit') this.sepaDebit,
-      @JsonKey(name: 'BacsDebit') this.bacsDebit,
-      @JsonKey(name: 'AuBecsDebit') this.auBecsDebit,
-      @JsonKey(name: 'Sofort') this.sofort,
-      @JsonKey(name: 'Ideal') this.ideal,
-      @JsonKey(name: 'Fpx') this.fpx,
-      @JsonKey(name: 'Upi') this.upi,
-      @JsonKey(name: 'USBankAccount') this.usBankAccount,
+      this.sepaDebit,
+      this.bacsDebit,
+      this.auBecsDebit,
+      this.sofort,
+      this.ideal,
+      this.fpx,
+      this.upi,
+      this.usBankAccount,
       required this.type})
       : _metadata = metadata;
 
@@ -586,40 +578,32 @@ class _$_PaymentMethod implements _PaymentMethod {
 
   /// Containing additional data in case paymentmethod type is sepa.
   @override
-  @JsonKey(name: 'SepaDebit')
   final SepaDebit? sepaDebit;
 
   /// Containing additional data in case paymentmethod type is Bacs debit.
   @override
-  @JsonKey(name: 'BacsDebit')
   final BacsDebit? bacsDebit;
 
   /// Containing additional data in case paymentmethod type is Aubecs debit.
   @override
-  @JsonKey(name: 'AuBecsDebit')
   final AuBecsDebit? auBecsDebit;
 
   /// Containing additional data in case paymentmethod type is sofort.
   @override
-  @JsonKey(name: 'Sofort')
   final Sofort? sofort;
 
   /// Containing additional data in case paymentmethod type is Ideal.
   @override
-  @JsonKey(name: 'Ideal')
   final Ideal? ideal;
 
   /// Containing additional data in case paymentmethod type is FPX.
   @override
-  @JsonKey(name: 'Fpx')
   final Fpx? fpx;
 
   /// Containing additional data in case paymentmethod type is UPI.
   @override
-  @JsonKey(name: 'Upi')
   final Upi? upi;
   @override
-  @JsonKey(name: 'USBankAccount')
   final UsBankAccount? usBankAccount;
 
   /// The type of the PaymentMethod.
@@ -711,14 +695,14 @@ abstract class _PaymentMethod implements PaymentMethod {
       final bool livemode,
       final int? created,
       final CardPaymentMethod? card,
-      @JsonKey(name: 'SepaDebit') final SepaDebit? sepaDebit,
-      @JsonKey(name: 'BacsDebit') final BacsDebit? bacsDebit,
-      @JsonKey(name: 'AuBecsDebit') final AuBecsDebit? auBecsDebit,
-      @JsonKey(name: 'Sofort') final Sofort? sofort,
-      @JsonKey(name: 'Ideal') final Ideal? ideal,
-      @JsonKey(name: 'Fpx') final Fpx? fpx,
-      @JsonKey(name: 'Upi') final Upi? upi,
-      @JsonKey(name: 'USBankAccount') final UsBankAccount? usBankAccount,
+      final SepaDebit? sepaDebit,
+      final BacsDebit? bacsDebit,
+      final AuBecsDebit? auBecsDebit,
+      final Sofort? sofort,
+      final Ideal? ideal,
+      final Fpx? fpx,
+      final Upi? upi,
+      final UsBankAccount? usBankAccount,
       required final PaymentMethodType type}) = _$_PaymentMethod;
 
   factory _PaymentMethod.fromJson(Map<String, dynamic> json) =
@@ -767,40 +751,32 @@ abstract class _PaymentMethod implements PaymentMethod {
   @override
 
   /// Containing additional data in case paymentmethod type is sepa.
-  @JsonKey(name: 'SepaDebit')
   SepaDebit? get sepaDebit;
   @override
 
   /// Containing additional data in case paymentmethod type is Bacs debit.
-  @JsonKey(name: 'BacsDebit')
   BacsDebit? get bacsDebit;
   @override
 
   /// Containing additional data in case paymentmethod type is Aubecs debit.
-  @JsonKey(name: 'AuBecsDebit')
   AuBecsDebit? get auBecsDebit;
   @override
 
   /// Containing additional data in case paymentmethod type is sofort.
-  @JsonKey(name: 'Sofort')
   Sofort? get sofort;
   @override
 
   /// Containing additional data in case paymentmethod type is Ideal.
-  @JsonKey(name: 'Ideal')
   Ideal? get ideal;
   @override
 
   /// Containing additional data in case paymentmethod type is FPX.
-  @JsonKey(name: 'Fpx')
   Fpx? get fpx;
   @override
 
   /// Containing additional data in case paymentmethod type is UPI.
-  @JsonKey(name: 'Upi')
   Upi? get upi;
   @override
-  @JsonKey(name: 'USBankAccount')
   UsBankAccount? get usBankAccount;
   @override
 

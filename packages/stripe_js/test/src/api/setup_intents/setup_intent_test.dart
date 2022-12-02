@@ -3,7 +3,7 @@ import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
 
 void main() {
-  group('description', () {
+  group('SetupIntent', () {
     group('doc example', () {
       test(' parsing correctly', () {
         final value = {

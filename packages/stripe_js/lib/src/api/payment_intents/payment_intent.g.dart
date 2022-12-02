@@ -12,7 +12,7 @@ _$_PaymentIntent _$$_PaymentIntentFromJson(Map json) => _$_PaymentIntent(
       amount: json['amount'] as int,
       amountCapturable: json['amount_capturable'] as int?,
       amountDetails: json['amount_details'] == null
-          ? null
+          ? const PaymentIntentAmountDetails()
           : PaymentIntentAmountDetails.fromJson(
               Map<String, dynamic>.from(json['amount_details'] as Map)),
       amountReceived: json['amount_received'] as int?,
@@ -204,7 +204,7 @@ _$_PaymentIntentAmountDetails _$$_PaymentIntentAmountDetailsFromJson(
         Map json) =>
     _$_PaymentIntentAmountDetails(
       tip: json['tip'] == null
-          ? null
+          ? const PaymentIntentTip()
           : PaymentIntentTip.fromJson(
               Map<String, dynamic>.from(json['tip'] as Map)),
     );

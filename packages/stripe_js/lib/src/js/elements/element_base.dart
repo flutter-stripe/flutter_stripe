@@ -33,6 +33,12 @@ extension ElementExtension on StripeElement {
     }));
   }
 
+  void onReady(EventCallback<dynamic> onEvent) {
+    return on("ready", allowInterop((e) {
+      onEvent(e);
+    }));
+  }
+
   void onBlur(EventCallback<dynamic> onEvent) {
     return on("blur", allowInterop((e) {
       onEvent(e);

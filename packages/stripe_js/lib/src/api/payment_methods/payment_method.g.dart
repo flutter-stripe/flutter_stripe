@@ -24,34 +24,34 @@ _$_PaymentMethod _$$_PaymentMethodFromJson(Map json) => _$_PaymentMethod(
           ? null
           : CardPaymentMethod.fromJson(
               Map<String, dynamic>.from(json['card'] as Map)),
-      sepaDebit: json['SepaDebit'] == null
+      sepaDebit: json['sepaDebit'] == null
           ? null
           : SepaDebit.fromJson(
-              Map<String, dynamic>.from(json['SepaDebit'] as Map)),
-      bacsDebit: json['BacsDebit'] == null
+              Map<String, dynamic>.from(json['sepaDebit'] as Map)),
+      bacsDebit: json['bacsDebit'] == null
           ? null
           : BacsDebit.fromJson(
-              Map<String, dynamic>.from(json['BacsDebit'] as Map)),
-      auBecsDebit: json['AuBecsDebit'] == null
+              Map<String, dynamic>.from(json['bacsDebit'] as Map)),
+      auBecsDebit: json['auBecsDebit'] == null
           ? null
           : AuBecsDebit.fromJson(
-              Map<String, dynamic>.from(json['AuBecsDebit'] as Map)),
-      sofort: json['Sofort'] == null
+              Map<String, dynamic>.from(json['auBecsDebit'] as Map)),
+      sofort: json['sofort'] == null
           ? null
-          : Sofort.fromJson(Map<String, dynamic>.from(json['Sofort'] as Map)),
-      ideal: json['Ideal'] == null
+          : Sofort.fromJson(Map<String, dynamic>.from(json['sofort'] as Map)),
+      ideal: json['ideal'] == null
           ? null
-          : Ideal.fromJson(Map<String, dynamic>.from(json['Ideal'] as Map)),
-      fpx: json['Fpx'] == null
+          : Ideal.fromJson(Map<String, dynamic>.from(json['ideal'] as Map)),
+      fpx: json['fpx'] == null
           ? null
-          : Fpx.fromJson(Map<String, dynamic>.from(json['Fpx'] as Map)),
-      upi: json['Upi'] == null
+          : Fpx.fromJson(Map<String, dynamic>.from(json['fpx'] as Map)),
+      upi: json['upi'] == null
           ? null
-          : Upi.fromJson(Map<String, dynamic>.from(json['Upi'] as Map)),
-      usBankAccount: json['USBankAccount'] == null
+          : Upi.fromJson(Map<String, dynamic>.from(json['upi'] as Map)),
+      usBankAccount: json['usBankAccount'] == null
           ? null
           : UsBankAccount.fromJson(
-              Map<String, dynamic>.from(json['USBankAccount'] as Map)),
+              Map<String, dynamic>.from(json['usBankAccount'] as Map)),
       type: $enumDecode(_$PaymentMethodTypeEnumMap, json['type']),
     );
 
@@ -73,14 +73,14 @@ Map<String, dynamic> _$$_PaymentMethodToJson(_$_PaymentMethod instance) {
   val['livemode'] = instance.livemode;
   writeNotNull('created', instance.created);
   writeNotNull('card', instance.card?.toJson());
-  writeNotNull('SepaDebit', instance.sepaDebit?.toJson());
-  writeNotNull('BacsDebit', instance.bacsDebit?.toJson());
-  writeNotNull('AuBecsDebit', instance.auBecsDebit?.toJson());
-  writeNotNull('Sofort', instance.sofort?.toJson());
-  writeNotNull('Ideal', instance.ideal?.toJson());
-  writeNotNull('Fpx', instance.fpx?.toJson());
-  writeNotNull('Upi', instance.upi?.toJson());
-  writeNotNull('USBankAccount', instance.usBankAccount?.toJson());
+  writeNotNull('sepaDebit', instance.sepaDebit?.toJson());
+  writeNotNull('bacsDebit', instance.bacsDebit?.toJson());
+  writeNotNull('auBecsDebit', instance.auBecsDebit?.toJson());
+  writeNotNull('sofort', instance.sofort?.toJson());
+  writeNotNull('ideal', instance.ideal?.toJson());
+  writeNotNull('fpx', instance.fpx?.toJson());
+  writeNotNull('upi', instance.upi?.toJson());
+  writeNotNull('usBankAccount', instance.usBankAccount?.toJson());
   val['type'] = _$PaymentMethodTypeEnumMap[instance.type]!;
   return val;
 }

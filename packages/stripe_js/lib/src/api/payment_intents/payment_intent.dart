@@ -92,7 +92,9 @@ class PaymentIntent with _$PaymentIntent {
     @JsonKey(name: "amount_capturable") int? amountCapturable,
 
     /// Details about items included in the amount
-    @JsonKey(name: "amount_details") PaymentIntentAmountDetails? amountDetails,
+    @Default(PaymentIntentAmountDetails())
+    @JsonKey(name: "amount_details")
+        PaymentIntentAmountDetails? amountDetails,
 
     /// The amount that was collected from this PaymentIntent (in cents).
     @JsonKey(name: "amount_received") int? amountReceived,
@@ -277,7 +279,7 @@ class PaymentIntent with _$PaymentIntent {
 class PaymentIntentAmountDetails with _$PaymentIntentAmountDetails {
   const factory PaymentIntentAmountDetails({
     /// Details about items included in the amount
-    PaymentIntentTip? tip,
+    @Default(PaymentIntentTip()) PaymentIntentTip? tip,
   }) = _PaymentIntentAmountDetails;
 
   factory PaymentIntentAmountDetails.fromJson(Map<String, dynamic> json) =>

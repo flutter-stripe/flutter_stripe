@@ -876,7 +876,7 @@ class _$_PaymentIntent implements _PaymentIntent {
       @JsonKey(name: "amount_capturable")
           this.amountCapturable,
       @JsonKey(name: "amount_details")
-          this.amountDetails,
+          this.amountDetails = const PaymentIntentAmountDetails(),
       @JsonKey(name: "amount_received")
           this.amountReceived,
       this.application,
@@ -1769,13 +1769,14 @@ class __$$_PaymentIntentAmountDetailsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_PaymentIntentAmountDetails implements _PaymentIntentAmountDetails {
-  const _$_PaymentIntentAmountDetails({this.tip});
+  const _$_PaymentIntentAmountDetails({this.tip = const PaymentIntentTip()});
 
   factory _$_PaymentIntentAmountDetails.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentIntentAmountDetailsFromJson(json);
 
   /// Details about items included in the amount
   @override
+  @JsonKey()
   final PaymentIntentTip? tip;
 
   @override
