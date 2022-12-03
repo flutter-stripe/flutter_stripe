@@ -1,2 +1,2 @@
-## 0.0.1
+## 2.0.1
 - Preview of Stripe.js port

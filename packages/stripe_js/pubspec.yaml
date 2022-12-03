@@ -1,6 +1,6 @@
 name: stripe_js
-description: Stripe.js port to dart
-version: 0.0.1
+description: Stripe.js bindings for dart
+version: 2.0.1
 homepage: https://github.com/flutter-stripe/flutter_stripe
 
 environment:
