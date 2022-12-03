@@ -49,9 +49,10 @@ jobs:
         run: |
           dart pub global activate coverage
           dart test -j 4 --coverage=coverage --platform=chrome && dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --packages=.dart_tool/package_config.json --report-on=lib
+      
       - name: 📊 Check Code Coverage
         uses: VeryGoodOpenSource/very_good_coverage@v2
         with:
-          path: /packages/stripe_js/coverage/lcov.info
-          exclude: "lib/**/*.g.dart"
+          path: packages/stripe_js/coverage/lcov.info
+          exclude: "lib/**/*.g.dart lib/**/*.freezed.dart"
           min_coverage: 0
