@@ -101,8 +101,7 @@ class WebStripe extends StripePlatform {
                 .toJs(),
             save_payment_method: options != null,
             // shipping: billing?.toJs()
-            // TODO: Implement return_url for web
-            // return_url: '',
+            return_url: options != null ? options.returnUrl != null ? options.returnUrl! : window.location.href,
           ),
         );
       },
@@ -137,7 +136,7 @@ class WebStripe extends StripePlatform {
             payment_method: s.PaymentMethodDetails,
             // recommended:
             // payment_method:
-            return_url: window.location.href,
+            return_url: options != null ? options.returnUrl != null ? options.returnUrl! : window.location.href,
           ),
         );
       },
@@ -150,7 +149,7 @@ class WebStripe extends StripePlatform {
             payment_method: s.PaymentMethodDetails(
               ideal: s.IdealDetails(bank: paymentData.bankName!),
             ),
-            return_url: window.location.href,
+            return_url: options != null ? options.returnUrl != null ? options.returnUrl! : window.location.href,
             // recommended
             // setup_future_usage:
           ),
@@ -183,8 +182,7 @@ class WebStripe extends StripePlatform {
         data: s.ConfirmCardSetupData(
           payment_method: s.CardPaymentMethod(card: element),
           // shipping: billing?.toJs()
-          // TODO: Implement return_url for web
-          // return_url: '',
+          return_url: options != null ? options.returnUrl != null ? options.returnUrl! : window.location.href,
         ),
       );
     }, orElse: () {
