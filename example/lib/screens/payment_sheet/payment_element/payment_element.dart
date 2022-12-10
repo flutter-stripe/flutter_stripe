@@ -1,13 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 import 'package:stripe_example/config.dart';
 
 import 'package:http/http.dart' as http;
+import 'platforms/payment_element.dart'
+    if (dart.library.js) 'platforms/payment_element_web.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
-
-import '../../checkout/platforms/stripe_checkout_web.dart';
 
 class PaymentElementExample extends StatefulWidget {
   @override
@@ -50,15 +49,8 @@ class _ThemeCardExampleState extends State<PaymentElementExample> {
         children: [
           Container(
               child: clientSecret != null
-                  ? PaymentElement(
-                      autofocus: true,
-                      enablePostalCode: true,
-                      onCardChanged: (_) {},
-                      clientSecret: clientSecret ?? '',
-                    )
-                  : Center(
-                      child: CircularProgressIndicator(),
-                    )),
+                  ? PlatformPaymentElement(clientSecret)
+                  : Center(child: CircularProgressIndicator())),
           LoadingButton(onPressed: pay, text: 'Pay'),
         ],
       ),
@@ -80,13 +72,5 @@ class _ThemeCardExampleState extends State<PaymentElementExample> {
       }),
     );
     return json.decode(response.body)['clientSecret'];
-  }
-
-  Future<void> pay() async {
-    await WebStripe().confirmPaymentElement(
-      ConfirmPaymentElementOptions(
-        confirmParams: ConfirmPaymentParams(return_url: getReturnUrl()),
-      ),
-    );
   }
 }
