@@ -298,7 +298,7 @@ class _MethodChannelCardField extends StatefulWidget {
   // time.
   // A unique key is used to throw an expection before multiple platform
   // views are created
-  static final _key = GlobalKey();
+  static final _key = UniqueKey();
 
   @override
   _MethodChannelCardFieldState createState() => _MethodChannelCardFieldState();
