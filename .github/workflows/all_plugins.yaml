@@ -72,9 +72,9 @@ jobs:
     - name: "Run unittest"
       run: melos run unittest
 
-
-  android_integration_test:
-    name: Android Integration test
+  ios_integration_test:
+    name: integration test (iOS)
+    needs: [analyze, test]
     timeout-minutes: 60
     runs-on: macos-latest
     steps:
@@ -83,11 +83,67 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 16
-        cache: 'npm'
+        cache: 'yarn'
+        cache-dependency-path: example/server/yarn.lock
+    - name: Cache pods
+      uses: actions/cache@v2
+      with:
+        path: example/iOS/Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-pods-
+    - name: "Install Tools"
+      run: |
+        ./.github/workflows/scripts/install-tools.sh
+
+    - name: "Bootstrap Workspace"
+      run: melos bootstrap
+
+    - name: "Set env keys"
+      env:
+        STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY }}
+        STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+      run: |
+        ./.github/workflows/scripts/env-files.sh
+
+    - name: "Start dev server"
+      working-directory: example/server
+      run: yarn install && (yarn start:dev &)
+
+    - name: "Set IP address"
+      working-directory: example
+      run: |
+        echo "const kApiUrl='''$(ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}')''';" > integration_test/ip.dart
+        cat integration_test/ip.dart
+
+    - name: "Start iOS Simulator"
+      run: |
+        xcrun simctl boot "iPhone 13 mini" 
+
+    - name: "Run Flutter Driver tests on iOS"
+      working-directory: example
+      run: "flutter drive --driver test_driver/integration_test.dart --target=integration_test/run_all_tests.dart"
+
+  android_integration_test:
+    name: integration test (Android)
+    needs: [analyze, test, ios_integration_test]
+    timeout-minutes: 60
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: subosito/flutter-action@v2
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'yarn'
+        cache-dependency-path: example/server/yarn.lock
+
     - name: Set up Java version
       uses: actions/setup-java@v1
       with:
         java-version: '11'
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v2
 
     - name: "Install Tools"
       run: |
@@ -105,7 +161,7 @@ jobs:
 
     - name: "Start dev server"
       working-directory: example/server
-      run: npm ci && (npm run start:dev &)
+      run: yarn install && (yarn start:dev &)
 
     - name: "Set IP address"
       working-directory: example
@@ -122,46 +178,3 @@ jobs:
           sleep 15;
           flutter drive --driver test_driver/integration_test.dart --target=integration_test/run_all_tests.dart;
           cd android && ./gradlew :app:connectedDebugAndroidTest;
-
-  ios_integration_test:
-    name: iOS Integration test
-    timeout-minutes: 60
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: subosito/flutter-action@v2
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16
-        cache: 'npm'
-    - name: "Install Tools"
-      run: |
-        ./.github/workflows/scripts/install-tools.sh
-
-    - name: "Bootstrap Workspace"
-      run: melos bootstrap
-
-    - name: "Set env keys"
-      env:
-        STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY }}
-        STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
-      run: |
-        ./.github/workflows/scripts/env-files.sh
-
-    - name: "Start dev server"
-      working-directory: example/server
-      run: npm ci && (npm run start:dev &)
-
-    - name: "Set IP address"
-      working-directory: example
-      run: |
-        echo "const kApiUrl='''$(ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}')''';" > integration_test/ip.dart
-        cat integration_test/ip.dart
-
-    - name: "Start iOS Simulator"
-      run: |
-        xcrun simctl boot "iPhone 13 mini" 
-
-    - name: "Run Flutter Driver tests on iOS"
-      working-directory: example
-      run: "flutter drive --driver test_driver/integration_test.dart --target=integration_test/run_all_tests.dart"
