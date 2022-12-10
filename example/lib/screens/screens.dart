@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:stripe_example/screens/checkout/checkout_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen.dart';

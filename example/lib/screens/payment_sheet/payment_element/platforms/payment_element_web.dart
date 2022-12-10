@@ -1,5 +1,3 @@
-import 'dart:html' as html;
-
 import 'package:flutter/widgets.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 
