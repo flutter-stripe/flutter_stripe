@@ -61,12 +61,9 @@ class _LegacyTokenCardScreenState extends State<LegacyTokenCardScreen> {
       ); // mocked data for tests
 
       // 2. Create payment method
-      final tokenData =
-          await Stripe.instance.createToken(CreateTokenParams.card(
-              params: CardTokenParams(
-        address: address,
-        currency: 'USD'
-      )));
+      final tokenData = await Stripe.instance.createToken(
+          CreateTokenParams.card(
+              params: CardTokenParams(address: address, currency: 'USD')));
       setState(() {
         this.tokenData = tokenData;
       });

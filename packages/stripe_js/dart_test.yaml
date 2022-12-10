@@ -1,0 +1,13 @@
+tags:
+  browser: {test_on: "browser"}
+
+override_platforms:
+  chrome:
+    settings:
+      arguments:  --user-data-dir=/tmp --disable-web-security --disable-site-isolation-trials --remote-debugging-port=9222
+
+presets:
+  # Pass "-P chrome" to run only Chrome tests.
+  chrome:
+    include_tags: browser
+    platforms: [chrome]

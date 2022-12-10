@@ -342,7 +342,6 @@ class PaymentMethodParams with _$PaymentMethodParams {
   const factory PaymentMethodParams.cardFromMethodId({
     /// Payment method data object for card from payment method.
     required PaymentMethodDataCardFromMethod paymentMethodData,
-
   }) = _PaymentMethodParamsCardWithMethodId;
 
   @JsonSerializable(explicitToJson: true)

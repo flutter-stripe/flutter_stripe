@@ -40,9 +40,9 @@ class AliPayScreen extends StatelessWidget {
     // 2. use the client secret to confirm the payment and handle the result.
     try {
       await Stripe.instance.confirmPayment(
-      paymentIntentClientSecret:  clientSecret,
-       data: PaymentMethodParams.alipay(
-          paymentMethodData:  const PaymentMethodData(),
+        paymentIntentClientSecret: clientSecret,
+        data: PaymentMethodParams.alipay(
+          paymentMethodData: const PaymentMethodData(),
         ),
       );
 
