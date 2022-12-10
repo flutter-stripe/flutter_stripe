@@ -73,21 +73,21 @@ jobs:
       run: melos run unittest
 
 
-  integration_test:
-    name: Integration test
+  android_integration_test:
+    name: Android Integration test
     timeout-minutes: 60
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
-
+    - uses: subosito/flutter-action@v2
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
     - name: Set up Java version
       uses: actions/setup-java@v1
       with:
         java-version: '11'
-
-    - uses: subosito/flutter-action@v2
-      with:
-        channel: 'stable'
 
     - name: "Install Tools"
       run: |
@@ -105,15 +105,13 @@ jobs:
 
     - name: "Start dev server"
       working-directory: example/server
-      run: npm install && (npm run start:dev &)
+      run: npm ci && (npm run start:dev &)
 
     - name: "Set IP address"
       working-directory: example
-      run: echo "const kApiUrl='''$(ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}')''';" > integration_test/ip.dart
-
-    - name: "Print ip.dart"
-      working-directory: example
-      run: cat integration_test/ip.dart
+      run: |
+        echo "const kApiUrl='''$(ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}')''';" > integration_test/ip.dart
+        cat integration_test/ip.dart
 
     - name: "Run integration test Android"
       uses: reactivecircus/android-emulator-runner@v2
@@ -124,6 +122,41 @@ jobs:
           sleep 15;
           flutter drive --driver test_driver/integration_test.dart --target=integration_test/run_all_tests.dart;
           cd android && ./gradlew :app:connectedDebugAndroidTest;
+
+  ios_integration_test:
+    name: iOS Integration test
+    timeout-minutes: 60
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: subosito/flutter-action@v2
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+    - name: "Install Tools"
+      run: |
+        ./.github/workflows/scripts/install-tools.sh
+
+    - name: "Bootstrap Workspace"
+      run: melos bootstrap
+
+    - name: "Set env keys"
+      env:
+        STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY }}
+        STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+      run: |
+        ./.github/workflows/scripts/env-files.sh
+
+    - name: "Start dev server"
+      working-directory: example/server
+      run: npm ci && (npm run start:dev &)
+
+    - name: "Set IP address"
+      working-directory: example
+      run: |
+        echo "const kApiUrl='''$(ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}')''';" > integration_test/ip.dart
+        cat integration_test/ip.dart
 
     - name: "Start iOS Simulator"
       run: |
