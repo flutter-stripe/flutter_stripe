@@ -1,4 +1,4 @@
-name: all_plugins
+name: packages (all)
 
 on:
   push:
@@ -80,6 +80,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: subosito/flutter-action@v2
+      with:
+        cache: true
     - uses: actions/setup-node@v3
       with:
         node-version: 16
@@ -132,6 +134,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: subosito/flutter-action@v2
+      with:
+        cache: true
     - uses: actions/setup-node@v3
       with:
         node-version: 16
