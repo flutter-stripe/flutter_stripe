@@ -22,4 +22,4 @@ flutter:
     platforms:
       android:
         package: com.flutter.stripe.terminal
-        pluginClass: StripeAndroidPlugin
+        pluginClass: StripeTerminalAndroidPlugin

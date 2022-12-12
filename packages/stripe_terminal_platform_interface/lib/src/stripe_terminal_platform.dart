@@ -29,4 +29,10 @@ abstract class StripeTerminalPlatform extends PlatformInterface {
   /// Returns a [Reader] in case successfull and throws [StripeError] in case
   /// of failure.
   Future<Reader> initialize(InitParams params);
+
+  /// Set the connection token to connect with the Stripe reader
+  Future<void> setConnectionToken({
+    String? connectionToken,
+    String? error,
+  });
 }

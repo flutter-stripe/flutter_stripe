@@ -13,8 +13,9 @@ dependencies:
   flutter_stripe_terminal: ^0.0.1
   font_awesome_flutter:
   http: ^0.13.1
+  permission_handler: ^10.2.0
   platform: ^3.0.0
-
+  stripe_terminal_platform_interface: ^0.0.1
 
 dev_dependencies:
   integration_test:

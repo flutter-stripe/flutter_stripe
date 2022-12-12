@@ -22,6 +22,8 @@ class MethodChannelStripeTerminal extends StripeTerminalPlatform {
         await _methodChannel.invokeMapMethod<String, dynamic>('initialize', {
       'params': params.toJson(),
     });
+    print('blaat $result');
+
     if (result?.containsKey('reader') ?? false) {
       result!['reader']['type'] = _isAndroid ? 'Android' : 'Ios';
 
@@ -31,5 +33,18 @@ class MethodChannelStripeTerminal extends StripeTerminalPlatform {
     }
 
     throw StripeError.fromJson(result!);
+  }
+
+  @override
+  Future<void> setConnectionToken({
+    String? connectionToken,
+    String? error,
+  }) async {
+    await _methodChannel
+        .invokeMapMethod<String, dynamic>('setConnectionToken', {
+      'params': {
+        'connectionToken': connectionToken,
+      }
+    });
   }
 }

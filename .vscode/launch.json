@@ -10,5 +10,12 @@
             "request": "launch",
             "type": "dart",
         },
+        {
+            "name": "Stripe terminal example",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "program": "${workspaceFolder}/example_terminal/lib/main.dart",
+        },
     ]
 }

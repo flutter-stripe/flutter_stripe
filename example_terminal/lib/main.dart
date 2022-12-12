@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stripe_terminal_example/screens.dart';
 
 import 'widgets/dismiss_focus_overlay.dart';
 
@@ -43,12 +44,14 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('Stripe Examples'),
       ),
-      body: ListView(children: [
-        ...ListTile.divideTiles(
-          context: context,
-          tiles: [Container()],
-        ),
-      ]),
+      body: ListView(
+        children: [
+          ...ListTile.divideTiles(
+            context: context,
+            tiles: [for (final example in Example.screens) example],
+          ),
+        ],
+      ),
     );
   }
 }
