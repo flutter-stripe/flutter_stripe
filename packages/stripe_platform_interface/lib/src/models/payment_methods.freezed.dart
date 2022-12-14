@@ -11541,7 +11541,7 @@ class _$_PaymentMethodOptions implements _PaymentMethodOptions {
 
 abstract class _PaymentMethodOptions implements PaymentMethodOptions {
   const factory _PaymentMethodOptions(
-          {final PaymentIntentsFutureUsage? setupFutureUsage}) =
+          {final PaymentIntentsFutureUsage? setupFutureUsage, final String? returnUrl}) =
       _$_PaymentMethodOptions;
 
   factory _PaymentMethodOptions.fromJson(Map<String, dynamic> json) =
