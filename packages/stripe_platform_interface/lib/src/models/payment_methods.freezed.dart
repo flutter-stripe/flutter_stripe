@@ -11493,7 +11493,7 @@ class __$$_PaymentMethodOptionsCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$_PaymentMethodOptions implements _PaymentMethodOptions {
-  const _$_PaymentMethodOptions({this.setupFutureUsage});
+  const _$_PaymentMethodOptions({this.setupFutureUsage, this.returnUrl});
 
   factory _$_PaymentMethodOptions.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodOptionsFromJson(json);
