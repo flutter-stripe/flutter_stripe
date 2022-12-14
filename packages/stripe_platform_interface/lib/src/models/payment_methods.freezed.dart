@@ -11507,8 +11507,7 @@ class _$_PaymentMethodOptions implements _PaymentMethodOptions {
   final PaymentIntentsFutureUsage? setupFutureUsage;
 
   ///return URL from payment web page
-  String? get returnUrl =>
-      throw _privateConstructorUsedError;
+  final String? returnUrl;
 
   @override
   String toString() {

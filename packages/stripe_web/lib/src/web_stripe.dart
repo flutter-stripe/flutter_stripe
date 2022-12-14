@@ -182,7 +182,6 @@ class WebStripe extends StripePlatform {
         data: s.ConfirmCardSetupData(
           payment_method: s.CardPaymentMethod(card: element),
           // shipping: billing?.toJs()
-          return_url: options != null && options.returnUrl != null ? options.returnUrl! : window.location.href,
         ),
       );
     }, orElse: () {
