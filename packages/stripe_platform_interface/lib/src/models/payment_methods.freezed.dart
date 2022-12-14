@@ -11419,6 +11419,10 @@ mixin _$PaymentMethodOptions {
   PaymentIntentsFutureUsage? get setupFutureUsage =>
       throw _privateConstructorUsedError;
 
+  ///return URL from payment web page
+  String? get returnUrl =>
+      throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodOptionsCopyWith<PaymentMethodOptions> get copyWith =>
