@@ -21,11 +21,34 @@ ApplePayShippingMethod _$ApplePayShippingMethodFromJson(
 
 /// @nodoc
 mixin _$ApplePayShippingMethod {
+  ///  A short, localized description.
   String get label => throw _privateConstructorUsedError;
+
+  /// The cost associated with this shipping option.
   String get amount => throw _privateConstructorUsedError;
+
+  /// A unique identifier for the shipping method.
   String get identifier => throw _privateConstructorUsedError;
+
+  /// When creating items for estimates or charges whose final value is not yet known, set this to true.
+  ///
+  /// Defaults to false.
   bool? get isPending => throw _privateConstructorUsedError;
+
+  ///  A user-readable description of the shipping method.
+  ///
+  /// For example “Ships in 24 hours.” Don't repeat content
   String? get detail => throw _privateConstructorUsedError;
+
+  ///  The unix timestamp of the start date of the expected range of delivery or shipping dates for a package, or the time range when an item is available for pickup.
+  ///
+  /// Measured in seconds
+  int? get startDate => throw _privateConstructorUsedError;
+
+  ///  The unix timestamp of the end date of the expected range of delivery or shipping dates for a package, or the time range when an item is available for pickup.
+  ///
+  /// Measured in seconds.
+  int? get endDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +66,9 @@ abstract class $ApplePayShippingMethodCopyWith<$Res> {
       String amount,
       String identifier,
       bool? isPending,
-      String? detail});
+      String? detail,
+      int? startDate,
+      int? endDate});
 }
 
 /// @nodoc
@@ -62,6 +87,8 @@ class _$ApplePayShippingMethodCopyWithImpl<$Res>
     Object? identifier = freezed,
     Object? isPending = freezed,
     Object? detail = freezed,
+    Object? startDate = freezed,
+    Object? endDate = freezed,
   }) {
     return _then(_value.copyWith(
       label: label == freezed
@@ -84,6 +111,14 @@ class _$ApplePayShippingMethodCopyWithImpl<$Res>
           ? _value.detail
           : detail // ignore: cast_nullable_to_non_nullable
               as String?,
+      startDate: startDate == freezed
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as int?,
+      endDate: endDate == freezed
+          ? _value.endDate
+          : endDate // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -100,7 +135,9 @@ abstract class _$$_ApplePayShippingMethodCopyWith<$Res>
       String amount,
       String identifier,
       bool? isPending,
-      String? detail});
+      String? detail,
+      int? startDate,
+      int? endDate});
 }
 
 /// @nodoc
@@ -122,6 +159,8 @@ class __$$_ApplePayShippingMethodCopyWithImpl<$Res>
     Object? identifier = freezed,
     Object? isPending = freezed,
     Object? detail = freezed,
+    Object? startDate = freezed,
+    Object? endDate = freezed,
   }) {
     return _then(_$_ApplePayShippingMethod(
       label: label == freezed
@@ -144,6 +183,14 @@ class __$$_ApplePayShippingMethodCopyWithImpl<$Res>
           ? _value.detail
           : detail // ignore: cast_nullable_to_non_nullable
               as String?,
+      startDate: startDate == freezed
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as int?,
+      endDate: endDate == freezed
+          ? _value.endDate
+          : endDate // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -157,25 +204,52 @@ class _$_ApplePayShippingMethod implements _ApplePayShippingMethod {
       required this.amount,
       required this.identifier,
       this.isPending,
-      this.detail});
+      this.detail,
+      this.startDate,
+      this.endDate});
 
   factory _$_ApplePayShippingMethod.fromJson(Map<String, dynamic> json) =>
       _$$_ApplePayShippingMethodFromJson(json);
 
+  ///  A short, localized description.
   @override
   final String label;
+
+  /// The cost associated with this shipping option.
   @override
   final String amount;
+
+  /// A unique identifier for the shipping method.
   @override
   final String identifier;
+
+  /// When creating items for estimates or charges whose final value is not yet known, set this to true.
+  ///
+  /// Defaults to false.
   @override
   final bool? isPending;
+
+  ///  A user-readable description of the shipping method.
+  ///
+  /// For example “Ships in 24 hours.” Don't repeat content
   @override
   final String? detail;
 
+  ///  The unix timestamp of the start date of the expected range of delivery or shipping dates for a package, or the time range when an item is available for pickup.
+  ///
+  /// Measured in seconds
+  @override
+  final int? startDate;
+
+  ///  The unix timestamp of the end date of the expected range of delivery or shipping dates for a package, or the time range when an item is available for pickup.
+  ///
+  /// Measured in seconds.
+  @override
+  final int? endDate;
+
   @override
   String toString() {
-    return 'ApplePayShippingMethod(label: $label, amount: $amount, identifier: $identifier, isPending: $isPending, detail: $detail)';
+    return 'ApplePayShippingMethod(label: $label, amount: $amount, identifier: $identifier, isPending: $isPending, detail: $detail, startDate: $startDate, endDate: $endDate)';
   }
 
   @override
@@ -188,7 +262,9 @@ class _$_ApplePayShippingMethod implements _ApplePayShippingMethod {
             const DeepCollectionEquality()
                 .equals(other.identifier, identifier) &&
             const DeepCollectionEquality().equals(other.isPending, isPending) &&
-            const DeepCollectionEquality().equals(other.detail, detail));
+            const DeepCollectionEquality().equals(other.detail, detail) &&
+            const DeepCollectionEquality().equals(other.startDate, startDate) &&
+            const DeepCollectionEquality().equals(other.endDate, endDate));
   }
 
   @JsonKey(ignore: true)
@@ -199,7 +275,9 @@ class _$_ApplePayShippingMethod implements _ApplePayShippingMethod {
       const DeepCollectionEquality().hash(amount),
       const DeepCollectionEquality().hash(identifier),
       const DeepCollectionEquality().hash(isPending),
-      const DeepCollectionEquality().hash(detail));
+      const DeepCollectionEquality().hash(detail),
+      const DeepCollectionEquality().hash(startDate),
+      const DeepCollectionEquality().hash(endDate));
 
   @JsonKey(ignore: true)
   @override
@@ -221,21 +299,49 @@ abstract class _ApplePayShippingMethod implements ApplePayShippingMethod {
       required final String amount,
       required final String identifier,
       final bool? isPending,
-      final String? detail}) = _$_ApplePayShippingMethod;
+      final String? detail,
+      final int? startDate,
+      final int? endDate}) = _$_ApplePayShippingMethod;
 
   factory _ApplePayShippingMethod.fromJson(Map<String, dynamic> json) =
       _$_ApplePayShippingMethod.fromJson;
 
   @override
+
+  ///  A short, localized description.
   String get label;
   @override
+
+  /// The cost associated with this shipping option.
   String get amount;
   @override
+
+  /// A unique identifier for the shipping method.
   String get identifier;
   @override
+
+  /// When creating items for estimates or charges whose final value is not yet known, set this to true.
+  ///
+  /// Defaults to false.
   bool? get isPending;
   @override
+
+  ///  A user-readable description of the shipping method.
+  ///
+  /// For example “Ships in 24 hours.” Don't repeat content
   String? get detail;
+  @override
+
+  ///  The unix timestamp of the start date of the expected range of delivery or shipping dates for a package, or the time range when an item is available for pickup.
+  ///
+  /// Measured in seconds
+  int? get startDate;
+  @override
+
+  ///  The unix timestamp of the end date of the expected range of delivery or shipping dates for a package, or the time range when an item is available for pickup.
+  ///
+  /// Measured in seconds.
+  int? get endDate;
   @override
   @JsonKey(ignore: true)
   _$$_ApplePayShippingMethodCopyWith<_$_ApplePayShippingMethod> get copyWith =>

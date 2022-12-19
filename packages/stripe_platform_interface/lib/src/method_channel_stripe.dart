@@ -5,6 +5,7 @@ import 'package:stripe_platform_interface/src/models/ach_params.dart';
 import 'package:stripe_platform_interface/src/models/create_token_data.dart';
 import 'package:stripe_platform_interface/src/models/financial_connections.dart';
 import 'package:stripe_platform_interface/src/models/google_pay.dart';
+import 'package:stripe_platform_interface/src/models/platform_pay.dart';
 import 'package:stripe_platform_interface/src/models/wallet.dart';
 import 'package:stripe_platform_interface/src/result_parser.dart';
 
@@ -355,6 +356,70 @@ class MethodChannelStripe extends StripePlatform {
         .invokeMethod('isGooglePaySupported', {'params': params.toJson()});
 
     return isSupported ?? false;
+  }
+
+  @override
+  Future<bool> isPlatformPaySupported({
+    IsGooglePaySupportedParams? params,
+  }) async {
+    final isSupported = await _methodChannel
+        .invokeMethod('isPlatformPaySupported', {'params': params?.toJson()});
+
+    return isSupported ?? false;
+  }
+
+  @override
+  Future<SetupIntent> platformPayConfirmSetupIntent({
+    required String clientSecret,
+    required PlatformPayConfirmParams params,
+  }) async {
+    if (params is PlatformPayConfirmParamsGooglePay) {
+      final result = await _methodChannel.invokeMapMethod<String, dynamic>('', {
+        'clientSecret': clientSecret,
+        'params': params.googlePay.toJson(),
+        'isPaymentIntent': false,
+      });
+      return ResultParser<SetupIntent>(
+        parseJson: (json) => SetupIntent.fromJson(json),
+      ).parse(result: result!, successResultKey: 'setupIntent');
+    } else if (params is PlatformPayConfirmParamsApplePay) {
+      final result = await _methodChannel.invokeMapMethod<String, dynamic>('', {
+        'clientSecret': clientSecret,
+        'params': params.applePay.toJson(),
+        'isPaymentIntent': false,
+      });
+      return ResultParser<SetupIntent>(
+        parseJson: (json) => SetupIntent.fromJson(json),
+      ).parse(result: result!, successResultKey: 'setupIntent');
+    }
+    throw AssertionError('Unknown type provided!');
+  }
+
+  @override
+  Future<PaymentIntent> platformPayConfirmPaymentIntent({
+    required String clientSecret,
+    required PlatformPayConfirmParams params,
+  }) async {
+    if (params is PlatformPayConfirmParamsGooglePay) {
+      final result = await _methodChannel.invokeMapMethod<String, dynamic>('', {
+        'clientSecret': clientSecret,
+        'params': params.googlePay.toJson(),
+        'isPaymentIntent': true,
+      });
+      return ResultParser<PaymentIntent>(
+              parseJson: (json) => PaymentIntent.fromJson(json))
+          .parse(result: result!, successResultKey: 'paymentIntent');
+    } else if (params is PlatformPayConfirmParamsApplePay) {
+      final result = await _methodChannel.invokeMapMethod<String, dynamic>('', {
+        'setupIntentClientSecret': clientSecret,
+        'params': params.applePay.toJson(),
+        'isPaymentIntent': true,
+      });
+      return ResultParser<PaymentIntent>(
+              parseJson: (json) => PaymentIntent.fromJson(json))
+          .parse(result: result!, successResultKey: 'paymentIntent');
+    }
+    throw AssertionError('Unknown type provided!');
   }
 
   @override
