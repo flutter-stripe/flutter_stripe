@@ -105,6 +105,16 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
             return collectFinancialConnectionsAccounts(call, result: result)
         case "resetPaymentSheetCustomer":
             return resetPaymentSheetCustomer(call, result: result)
+        case "updatePlatformPaySheet":
+            return updatePlatformPaySheet(call, result: result)
+        case "isPlatformPaySupported":
+            return isPlatformPaySupported(call, result: result)
+        case "createPlatformPayPaymentMethod":
+            return createPlatformPayPaymentMethod(call, result: result)
+        case "dismissPlatformPay":
+            return dismissPlatformPay(call, result: result)
+        case "confirmPlatformPay":
+            return confirmPlatformPay(call, result: result)
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -447,6 +457,52 @@ extension  StripePlugin {
     func resetPaymentSheetCustomer(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         resetPaymentSheetCustomer(resolver: resolver(for: result),
                     rejecter: rejecter(for: result))
+    }
+    
+    func updatePlatformPaySheet(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? FlutterMap,
+        let summaryItems = arguments["summaryItems"] as? NSArray,
+        let shippingMethods = arguments["shippingMethods"] as? NSArray,
+        let errors = arguments["errors"] as? [NSDictionary] else {
+            result(FlutterError.invalidParams)
+            return
+        }
+        
+        updatePlatformPaySheet(summaryItems: summaryItems, shippingMethods: shippingMethods, errors: errors, resolver: resolver(for: result), rejecter: rejecter(for: result))
+    }
+    
+    func isPlatformPaySupported(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? FlutterMap,
+              let params = arguments["params"] as? NSDictionary else {
+            result(FlutterError.invalidParams)
+            return
+        }
+        isPlatformPaySupported(params: params, resolver: resolver(for: result), rejecter: rejecter(for: result))
+    }
+    
+    func createPlatformPayPaymentMethod(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? FlutterMap,
+              let params = arguments["params"] as? NSDictionary else {
+            result(FlutterError.invalidParams)
+            return
+        }
+        createPlatformPayPaymentMethod(params: params, resolver: resolver(for: result), rejecter: rejecter(for: result))
+    }
+    
+    func dismissPlatformPay(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        dismissPlatformPay(resolver: resolver(for: result), rejecter: rejecter(for: result))
+    }
+    
+    func confirmPlatformPay(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? FlutterMap,
+       let clientSecret = arguments["clientSecret"] as? String,
+       let params = arguments["params"] as? NSDictionary,
+       let isPaymentIntent = arguments["isPaymentIntent"] as? Bool
+        else {
+           result(FlutterError.invalidParams)
+           return
+       }
+        confirmPlatformPay(clientSecret: clientSecret, params: params, isPaymentIntent: isPaymentIntent, resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
     
     func dangerouslyUpdateCardDetails(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
