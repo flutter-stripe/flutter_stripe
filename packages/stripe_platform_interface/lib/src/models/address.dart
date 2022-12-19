@@ -3,6 +3,25 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'address.freezed.dart';
 part 'address.g.dart';
 
+/// Information regarding the Address sheet field
+@freezed
+class AddressDetails with _$AddressDetails {
+  @JsonSerializable(explicitToJson: true)
+  const factory AddressDetails({
+    /// The customer's full name
+    String? name,
+
+    /// The customer's address
+    Address? address,
+
+    /// the customer's phonumber
+    String? phoneNumber,
+  }) = _AddressDetails;
+
+  factory AddressDetails.fromJson(Map<String, dynamic> json) =>
+      _$AddressDetailsFromJson(json);
+}
+
 @freezed
 
 /// Address information

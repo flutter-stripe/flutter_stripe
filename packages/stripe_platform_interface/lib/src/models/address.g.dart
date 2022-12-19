@@ -6,6 +6,22 @@ part of 'address.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$_AddressDetails _$$_AddressDetailsFromJson(Map<String, dynamic> json) =>
+    _$_AddressDetails(
+      name: json['name'] as String?,
+      address: json['address'] == null
+          ? null
+          : Address.fromJson(json['address'] as Map<String, dynamic>),
+      phoneNumber: json['phoneNumber'] as String?,
+    );
+
+Map<String, dynamic> _$$_AddressDetailsToJson(_$_AddressDetails instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'address': instance.address?.toJson(),
+      'phoneNumber': instance.phoneNumber,
+    };
+
 _$_Address _$$_AddressFromJson(Map<String, dynamic> json) => _$_Address(
       city: json['city'] as String?,
       country: json['country'] as String?,

@@ -14,6 +14,212 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+AddressDetails _$AddressDetailsFromJson(Map<String, dynamic> json) {
+  return _AddressDetails.fromJson(json);
+}
+
+/// @nodoc
+mixin _$AddressDetails {
+  /// The customer's full name
+  String? get name => throw _privateConstructorUsedError;
+
+  /// The customer's address
+  Address? get address => throw _privateConstructorUsedError;
+
+  /// the customer's phonumber
+  String? get phoneNumber => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $AddressDetailsCopyWith<AddressDetails> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AddressDetailsCopyWith<$Res> {
+  factory $AddressDetailsCopyWith(
+          AddressDetails value, $Res Function(AddressDetails) then) =
+      _$AddressDetailsCopyWithImpl<$Res>;
+  $Res call({String? name, Address? address, String? phoneNumber});
+
+  $AddressCopyWith<$Res>? get address;
+}
+
+/// @nodoc
+class _$AddressDetailsCopyWithImpl<$Res>
+    implements $AddressDetailsCopyWith<$Res> {
+  _$AddressDetailsCopyWithImpl(this._value, this._then);
+
+  final AddressDetails _value;
+  // ignore: unused_field
+  final $Res Function(AddressDetails) _then;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? address = freezed,
+    Object? phoneNumber = freezed,
+  }) {
+    return _then(_value.copyWith(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as Address?,
+      phoneNumber: phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+
+  @override
+  $AddressCopyWith<$Res>? get address {
+    if (_value.address == null) {
+      return null;
+    }
+
+    return $AddressCopyWith<$Res>(_value.address!, (value) {
+      return _then(_value.copyWith(address: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_AddressDetailsCopyWith<$Res>
+    implements $AddressDetailsCopyWith<$Res> {
+  factory _$$_AddressDetailsCopyWith(
+          _$_AddressDetails value, $Res Function(_$_AddressDetails) then) =
+      __$$_AddressDetailsCopyWithImpl<$Res>;
+  @override
+  $Res call({String? name, Address? address, String? phoneNumber});
+
+  @override
+  $AddressCopyWith<$Res>? get address;
+}
+
+/// @nodoc
+class __$$_AddressDetailsCopyWithImpl<$Res>
+    extends _$AddressDetailsCopyWithImpl<$Res>
+    implements _$$_AddressDetailsCopyWith<$Res> {
+  __$$_AddressDetailsCopyWithImpl(
+      _$_AddressDetails _value, $Res Function(_$_AddressDetails) _then)
+      : super(_value, (v) => _then(v as _$_AddressDetails));
+
+  @override
+  _$_AddressDetails get _value => super._value as _$_AddressDetails;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? address = freezed,
+    Object? phoneNumber = freezed,
+  }) {
+    return _then(_$_AddressDetails(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as Address?,
+      phoneNumber: phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_AddressDetails implements _AddressDetails {
+  const _$_AddressDetails({this.name, this.address, this.phoneNumber});
+
+  factory _$_AddressDetails.fromJson(Map<String, dynamic> json) =>
+      _$$_AddressDetailsFromJson(json);
+
+  /// The customer's full name
+  @override
+  final String? name;
+
+  /// The customer's address
+  @override
+  final Address? address;
+
+  /// the customer's phonumber
+  @override
+  final String? phoneNumber;
+
+  @override
+  String toString() {
+    return 'AddressDetails(name: $name, address: $address, phoneNumber: $phoneNumber)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AddressDetails &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.address, address) &&
+            const DeepCollectionEquality()
+                .equals(other.phoneNumber, phoneNumber));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(address),
+      const DeepCollectionEquality().hash(phoneNumber));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_AddressDetailsCopyWith<_$_AddressDetails> get copyWith =>
+      __$$_AddressDetailsCopyWithImpl<_$_AddressDetails>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_AddressDetailsToJson(
+      this,
+    );
+  }
+}
+
+abstract class _AddressDetails implements AddressDetails {
+  const factory _AddressDetails(
+      {final String? name,
+      final Address? address,
+      final String? phoneNumber}) = _$_AddressDetails;
+
+  factory _AddressDetails.fromJson(Map<String, dynamic> json) =
+      _$_AddressDetails.fromJson;
+
+  @override
+
+  /// The customer's full name
+  String? get name;
+  @override
+
+  /// The customer's address
+  Address? get address;
+  @override
+
+  /// the customer's phonumber
+  String? get phoneNumber;
+  @override
+  @JsonKey(ignore: true)
+  _$$_AddressDetailsCopyWith<_$_AddressDetails> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 Address _$AddressFromJson(Map<String, dynamic> json) {
   return _Address.fromJson(json);
 }
