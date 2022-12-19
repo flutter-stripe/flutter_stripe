@@ -7,6 +7,7 @@ import android.text.InputFilter
 import android.view.View
 import android.view.View.OnFocusChangeListener
 import android.widget.FrameLayout
+import androidx.core.view.setMargins
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.PixelUtil
 import com.facebook.react.uimanager.ThemedReactContext
@@ -41,7 +42,7 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
   init {
     cardFormViewBinding.cardMultilineWidgetContainer.isFocusable = true
     cardFormViewBinding.cardMultilineWidgetContainer.isFocusableInTouchMode = true
-
+    (cardFormViewBinding.cardMultilineWidgetContainer.layoutParams as MarginLayoutParams).setMargins(0)
     addView(cardForm)
     setListeners()
 
@@ -192,7 +193,6 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
       }
     }
 
-    cardFormViewBinding.cardMultilineWidgetContainer.setPadding(40, 0, 40, 0)
     cardFormViewBinding.cardMultilineWidgetContainer.background = MaterialShapeDrawable(
       ShapeAppearanceModel()
         .toBuilder()

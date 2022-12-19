@@ -187,6 +187,20 @@ If you continue to have trouble, follow this discussion to get some support http
             "resetPaymentSheetCustomer" -> stripeSdk.resetPaymentSheetCustomer(
                 promise = Promise(result)
             )
+            "createPlatformPayPaymentMethod" -> stripeSdk.createPlatformPayPaymentMethod(
+                params = call.requiredArgument("params"),
+                promise = Promise(result)
+            )
+            "isPlatformPaySupported" -> stripeSdk.isPlatformPaySupported(
+                params = call.optionalArgument("params"),
+                promise = Promise(result)
+            )
+            "confirmPlatformPay" -> stripeSdk.confirmPlatformPay(
+                clientSecret = call.requiredArgument("clientSecret"),
+                params = call.requiredArgument("params"),
+                isPaymentIntent = call.requiredArgument("isPaymentIntent"),
+                promise = Promise(result)
+            )
             else -> result.notImplemented()
         }
     }

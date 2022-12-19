@@ -1,9 +1,11 @@
 package com.facebook.react.bridge;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -30,4 +32,12 @@ public class ReadableArray extends ArrayList<Object> {
         return array.getInt(index);
     }
 
+    @NotNull
+    public ArrayList<Object> toArrayList() {
+        ArrayList<Object> arrayList = new ArrayList<>();
+        for (int i = 0; i < array.length(); i++) {
+            arrayList.add(array.opt(i));
+        }
+        return arrayList;
+    }
 }
