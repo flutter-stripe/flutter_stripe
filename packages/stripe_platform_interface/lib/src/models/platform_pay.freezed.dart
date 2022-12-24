@@ -14,6 +14,23 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+PlatformPayConfirmParams _$PlatformPayConfirmParamsFromJson(
+    Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'googlePay':
+      return PlatformPayConfirmParamsGooglePay.fromJson(json);
+    case 'applePay':
+      return PlatformPayConfirmParamsApplePay.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'PlatformPayConfirmParams',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$PlatformPayConfirmParams {
   @optionalTypeArgs
@@ -55,6 +72,7 @@ mixin _$PlatformPayConfirmParams {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -120,12 +138,22 @@ class __$$PlatformPayConfirmParamsGooglePayCopyWithImpl<$Res>
 
 /// @nodoc
 
+@JsonSerializable(explicitToJson: true)
 class _$PlatformPayConfirmParamsGooglePay
     implements PlatformPayConfirmParamsGooglePay {
-  const _$PlatformPayConfirmParamsGooglePay({required this.googlePay});
+  const _$PlatformPayConfirmParamsGooglePay(
+      {required this.googlePay, final String? $type})
+      : $type = $type ?? 'googlePay';
+
+  factory _$PlatformPayConfirmParamsGooglePay.fromJson(
+          Map<String, dynamic> json) =>
+      _$$PlatformPayConfirmParamsGooglePayFromJson(json);
 
   @override
   final GooglePayParams googlePay;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -140,6 +168,7 @@ class _$PlatformPayConfirmParamsGooglePay
             const DeepCollectionEquality().equals(other.googlePay, googlePay));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(googlePay));
@@ -213,6 +242,13 @@ class _$PlatformPayConfirmParamsGooglePay
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PlatformPayConfirmParamsGooglePayToJson(
+      this,
+    );
+  }
 }
 
 abstract class PlatformPayConfirmParamsGooglePay
@@ -220,6 +256,9 @@ abstract class PlatformPayConfirmParamsGooglePay
   const factory PlatformPayConfirmParamsGooglePay(
           {required final GooglePayParams googlePay}) =
       _$PlatformPayConfirmParamsGooglePay;
+
+  factory PlatformPayConfirmParamsGooglePay.fromJson(
+      Map<String, dynamic> json) = _$PlatformPayConfirmParamsGooglePay.fromJson;
 
   GooglePayParams get googlePay;
   @JsonKey(ignore: true)
@@ -274,12 +313,22 @@ class __$$PlatformPayConfirmParamsApplePayCopyWithImpl<$Res>
 
 /// @nodoc
 
+@JsonSerializable(explicitToJson: true)
 class _$PlatformPayConfirmParamsApplePay
     implements PlatformPayConfirmParamsApplePay {
-  const _$PlatformPayConfirmParamsApplePay({required this.applePay});
+  const _$PlatformPayConfirmParamsApplePay(
+      {required this.applePay, final String? $type})
+      : $type = $type ?? 'applePay';
+
+  factory _$PlatformPayConfirmParamsApplePay.fromJson(
+          Map<String, dynamic> json) =>
+      _$$PlatformPayConfirmParamsApplePayFromJson(json);
 
   @override
   final ApplePayParams applePay;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -294,6 +343,7 @@ class _$PlatformPayConfirmParamsApplePay
             const DeepCollectionEquality().equals(other.applePay, applePay));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(applePay));
@@ -367,6 +417,13 @@ class _$PlatformPayConfirmParamsApplePay
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PlatformPayConfirmParamsApplePayToJson(
+      this,
+    );
+  }
 }
 
 abstract class PlatformPayConfirmParamsApplePay
@@ -374,6 +431,9 @@ abstract class PlatformPayConfirmParamsApplePay
   const factory PlatformPayConfirmParamsApplePay(
           {required final ApplePayParams applePay}) =
       _$PlatformPayConfirmParamsApplePay;
+
+  factory PlatformPayConfirmParamsApplePay.fromJson(Map<String, dynamic> json) =
+      _$PlatformPayConfirmParamsApplePay.fromJson;
 
   ApplePayParams get applePay;
   @JsonKey(ignore: true)

@@ -6,6 +6,36 @@ part of 'platform_pay.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$PlatformPayConfirmParamsGooglePay
+    _$$PlatformPayConfirmParamsGooglePayFromJson(Map<String, dynamic> json) =>
+        _$PlatformPayConfirmParamsGooglePay(
+          googlePay: GooglePayParams.fromJson(
+              json['googlePay'] as Map<String, dynamic>),
+          $type: json['runtimeType'] as String?,
+        );
+
+Map<String, dynamic> _$$PlatformPayConfirmParamsGooglePayToJson(
+        _$PlatformPayConfirmParamsGooglePay instance) =>
+    <String, dynamic>{
+      'googlePay': instance.googlePay.toJson(),
+      'runtimeType': instance.$type,
+    };
+
+_$PlatformPayConfirmParamsApplePay _$$PlatformPayConfirmParamsApplePayFromJson(
+        Map<String, dynamic> json) =>
+    _$PlatformPayConfirmParamsApplePay(
+      applePay:
+          ApplePayParams.fromJson(json['applePay'] as Map<String, dynamic>),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$PlatformPayConfirmParamsApplePayToJson(
+        _$PlatformPayConfirmParamsApplePay instance) =>
+    <String, dynamic>{
+      'applePay': instance.applePay.toJson(),
+      'runtimeType': instance.$type,
+    };
+
 _$_ApplePayParams _$$_ApplePayParamsFromJson(Map<String, dynamic> json) =>
     _$_ApplePayParams(
       merchantCountryCode: json['merchantCountryCode'] as String,

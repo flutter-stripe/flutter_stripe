@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
@@ -16,13 +15,13 @@ class ApplePayScreen extends StatefulWidget {
 class _ApplePayScreenState extends State<ApplePayScreen> {
   @override
   void initState() {
-    Stripe.instance.isApplePaySupported.addListener(update);
+    Stripe.instance.isPlatformPaySupportedListenable.addListener(update);
     super.initState();
   }
 
   @override
   void dispose() {
-    Stripe.instance.isApplePaySupported.removeListener(update);
+    Stripe.instance.isPlatformPaySupportedListenable.removeListener(update);
     super.dispose();
   }
 
@@ -37,7 +36,7 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
       tags: ['iOS'],
       padding: EdgeInsets.all(16),
       children: [
-        if (Stripe.instance.isApplePaySupported.value)
+        if (Stripe.instance.isPlatformPaySupportedListenable.value)
           ApplePayButton(
             onPressed: _handlePayPress,
           )
@@ -49,53 +48,44 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
 
   Future<void> _handlePayPress() async {
     try {
-      // 1. Present Apple Pay sheet
-      await Stripe.instance.presentApplePay(
-        params: ApplePayPresentParams(
-          cartItems: [
-            ApplePayCartSummaryItem.immediate(
-              label: 'Product Test',
-              amount: '0.01',
-            ),
-          ],
-          requiredShippingAddressFields: [
-            ApplePayContactFieldsType.postalAddress,
-          ],
-          shippingMethods: [
-            ApplePayShippingMethod(
-              identifier: 'free',
-              detail: 'Arrives by July 2',
-              label: 'Free Shipping',
-              amount: '0.0',
-            ),
-            ApplePayShippingMethod(
-              identifier: 'standard',
-              detail: 'Arrives by June 29',
-              label: 'Standard Shipping',
-              amount: '3.21',
-            ),
-          ],
-          country: 'Es',
-          currency: 'EUR',
-        ),
-        onDidSetShippingContact: (contact) {
-          if (kDebugMode) {
-            print('shipping contact provided $contact ');
-          }
-        },
-        onDidSetShippingMethod: (method) {
-          if (kDebugMode) {
-            print('shipping method provided $method ');
-          }
-        },
-      );
-
-      // 2. fetch Intent Client Secret from backend
+     
+      // 1. fetch Intent Client Secret from backend
       final response = await fetchPaymentIntentClientSecret();
       final clientSecret = response['clientSecret'];
 
       // 2. Confirm apple pay payment
-      await Stripe.instance.confirmApplePayPayment(clientSecret);
+      await Stripe.instance.confirmPlatformPayPaymentIntent(
+        clientSecret: clientSecret,
+        confirmParams: PlatformPayConfirmParams.applePay(
+          applePay: ApplePayParams(
+            cartItems: [
+              ApplePayCartSummaryItem.immediate(
+                label: 'Product Test',
+                amount: '0.01',
+              ),
+            ],
+            requiredShippingAddressFields: [
+              ApplePayContactFieldsType.postalAddress,
+            ],
+            shippingMethods: [
+              ApplePayShippingMethod(
+                identifier: 'free',
+                detail: 'Arrives by July 2',
+                label: 'Free Shipping',
+                amount: '0.0',
+              ),
+              ApplePayShippingMethod(
+                identifier: 'standard',
+                detail: 'Arrives by June 29',
+                label: 'Standard Shipping',
+                amount: '3.21',
+              ),
+            ],
+            merchantCountryCode: 'Es',
+            currencyCode: 'EUR',
+          ),
+        ),
+      );
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
             content: Text('Apple Pay payment succesfully completed')),

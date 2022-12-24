@@ -10,13 +10,18 @@ part 'platform_pay.g.dart';
 
 @freezed
 class PlatformPayConfirmParams with _$PlatformPayConfirmParams {
+    @JsonSerializable(explicitToJson: true)
   const factory PlatformPayConfirmParams.googlePay({
     required GooglePayParams googlePay,
   }) = PlatformPayConfirmParamsGooglePay;
 
+  @JsonSerializable(explicitToJson: true)
   const factory PlatformPayConfirmParams.applePay({
     required ApplePayParams applePay,
   }) = PlatformPayConfirmParamsApplePay;
+
+    factory PlatformPayConfirmParams.fromJson(Map<String, dynamic> json) =>
+      _$PlatformPayConfirmParamsFromJson(json);
 }
 
 @freezed

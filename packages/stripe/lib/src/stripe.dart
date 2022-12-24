@@ -135,7 +135,7 @@ class Stripe {
   ///Checks if Apple pay is supported on this device.
   ///
   /// Always returns false on non Apple devices.
-  @Deprecated('Use []')
+  @Deprecated('Use [PlatformPaySupported] instead')
   Future<bool> checkApplePaySupport() async {
     await _awaitForSettings();
     final isSupported = await _platform.isApplePaySupported();
@@ -156,8 +156,8 @@ class Stripe {
     final isSupported =
         await _platform.isPlatformPaySupported(params: googlePay);
 
-    _isApplePaySupported ??= ValueNotifier(false);
-    _isApplePaySupported?.value = isSupported;
+    _isPlatformPaySupported ??= ValueNotifier(false);
+    _isPlatformPaySupported?.value = isSupported;
     return isSupported;
   }
 
@@ -481,7 +481,7 @@ class Stripe {
   /// Setup google pay.
   ///
   /// Throws a [StripeException] in case it is failing
-    @Deprecated(
+  @Deprecated(
       'Use [confirmPlatformPaySetupIntent] or [confirmPlatformPayPaymentIntent].')
   Future<void> presentGooglePay(PresentGooglePayParams params) async {
     return await _platform.presentGooglePay(params);
@@ -490,8 +490,7 @@ class Stripe {
   /// Create a payment method for google pay.
   ///
   /// Throws a [StripeException] in case it is failing
-    @Deprecated(
-      'Use [createPlatformPayPaymentMethod.')
+  @Deprecated('Use [createPlatformPayPaymentMethod instead.')
   Future<PaymentMethod> createGooglePayPaymentMethod(
       CreateGooglePayPaymentParams params) async {
     return await _platform.createGooglePayPaymentMethod(params);
