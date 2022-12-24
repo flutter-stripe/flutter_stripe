@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'apple_pay.dart';
 
@@ -60,7 +60,8 @@ mixin _$ApplePayShippingMethod {
 abstract class $ApplePayShippingMethodCopyWith<$Res> {
   factory $ApplePayShippingMethodCopyWith(ApplePayShippingMethod value,
           $Res Function(ApplePayShippingMethod) then) =
-      _$ApplePayShippingMethodCopyWithImpl<$Res>;
+      _$ApplePayShippingMethodCopyWithImpl<$Res, ApplePayShippingMethod>;
+  @useResult
   $Res call(
       {String label,
       String amount,
@@ -72,54 +73,57 @@ abstract class $ApplePayShippingMethodCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ApplePayShippingMethodCopyWithImpl<$Res>
+class _$ApplePayShippingMethodCopyWithImpl<$Res,
+        $Val extends ApplePayShippingMethod>
     implements $ApplePayShippingMethodCopyWith<$Res> {
   _$ApplePayShippingMethodCopyWithImpl(this._value, this._then);
 
-  final ApplePayShippingMethod _value;
   // ignore: unused_field
-  final $Res Function(ApplePayShippingMethod) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? label = freezed,
-    Object? amount = freezed,
-    Object? identifier = freezed,
+    Object? label = null,
+    Object? amount = null,
+    Object? identifier = null,
     Object? isPending = freezed,
     Object? detail = freezed,
     Object? startDate = freezed,
     Object? endDate = freezed,
   }) {
     return _then(_value.copyWith(
-      label: label == freezed
+      label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: amount == freezed
+      amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as String,
-      identifier: identifier == freezed
+      identifier: null == identifier
           ? _value.identifier
           : identifier // ignore: cast_nullable_to_non_nullable
               as String,
-      isPending: isPending == freezed
+      isPending: freezed == isPending
           ? _value.isPending
           : isPending // ignore: cast_nullable_to_non_nullable
               as bool?,
-      detail: detail == freezed
+      detail: freezed == detail
           ? _value.detail
           : detail // ignore: cast_nullable_to_non_nullable
               as String?,
-      startDate: startDate == freezed
+      startDate: freezed == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
               as int?,
-      endDate: endDate == freezed
+      endDate: freezed == endDate
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
               as int?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -130,6 +134,7 @@ abstract class _$$_ApplePayShippingMethodCopyWith<$Res>
           $Res Function(_$_ApplePayShippingMethod) then) =
       __$$_ApplePayShippingMethodCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String label,
       String amount,
@@ -142,52 +147,50 @@ abstract class _$$_ApplePayShippingMethodCopyWith<$Res>
 
 /// @nodoc
 class __$$_ApplePayShippingMethodCopyWithImpl<$Res>
-    extends _$ApplePayShippingMethodCopyWithImpl<$Res>
+    extends _$ApplePayShippingMethodCopyWithImpl<$Res,
+        _$_ApplePayShippingMethod>
     implements _$$_ApplePayShippingMethodCopyWith<$Res> {
   __$$_ApplePayShippingMethodCopyWithImpl(_$_ApplePayShippingMethod _value,
       $Res Function(_$_ApplePayShippingMethod) _then)
-      : super(_value, (v) => _then(v as _$_ApplePayShippingMethod));
+      : super(_value, _then);
 
-  @override
-  _$_ApplePayShippingMethod get _value =>
-      super._value as _$_ApplePayShippingMethod;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? label = freezed,
-    Object? amount = freezed,
-    Object? identifier = freezed,
+    Object? label = null,
+    Object? amount = null,
+    Object? identifier = null,
     Object? isPending = freezed,
     Object? detail = freezed,
     Object? startDate = freezed,
     Object? endDate = freezed,
   }) {
     return _then(_$_ApplePayShippingMethod(
-      label: label == freezed
+      label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: amount == freezed
+      amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as String,
-      identifier: identifier == freezed
+      identifier: null == identifier
           ? _value.identifier
           : identifier // ignore: cast_nullable_to_non_nullable
               as String,
-      isPending: isPending == freezed
+      isPending: freezed == isPending
           ? _value.isPending
           : isPending // ignore: cast_nullable_to_non_nullable
               as bool?,
-      detail: detail == freezed
+      detail: freezed == detail
           ? _value.detail
           : detail // ignore: cast_nullable_to_non_nullable
               as String?,
-      startDate: startDate == freezed
+      startDate: freezed == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
               as int?,
-      endDate: endDate == freezed
+      endDate: freezed == endDate
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -257,30 +260,26 @@ class _$_ApplePayShippingMethod implements _ApplePayShippingMethod {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ApplePayShippingMethod &&
-            const DeepCollectionEquality().equals(other.label, label) &&
-            const DeepCollectionEquality().equals(other.amount, amount) &&
-            const DeepCollectionEquality()
-                .equals(other.identifier, identifier) &&
-            const DeepCollectionEquality().equals(other.isPending, isPending) &&
-            const DeepCollectionEquality().equals(other.detail, detail) &&
-            const DeepCollectionEquality().equals(other.startDate, startDate) &&
-            const DeepCollectionEquality().equals(other.endDate, endDate));
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.identifier, identifier) ||
+                other.identifier == identifier) &&
+            (identical(other.isPending, isPending) ||
+                other.isPending == isPending) &&
+            (identical(other.detail, detail) || other.detail == detail) &&
+            (identical(other.startDate, startDate) ||
+                other.startDate == startDate) &&
+            (identical(other.endDate, endDate) || other.endDate == endDate));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(label),
-      const DeepCollectionEquality().hash(amount),
-      const DeepCollectionEquality().hash(identifier),
-      const DeepCollectionEquality().hash(isPending),
-      const DeepCollectionEquality().hash(detail),
-      const DeepCollectionEquality().hash(startDate),
-      const DeepCollectionEquality().hash(endDate));
+  int get hashCode => Object.hash(runtimeType, label, amount, identifier,
+      isPending, detail, startDate, endDate);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ApplePayShippingMethodCopyWith<_$_ApplePayShippingMethod> get copyWith =>
       __$$_ApplePayShippingMethodCopyWithImpl<_$_ApplePayShippingMethod>(
           this, _$identity);
@@ -392,9 +391,9 @@ mixin _$ApplePayCartSummaryItem {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String label, String amount, bool? isPending)? immediate,
-    TResult Function(String label, String amount, int deferredDate)? deferred,
-    TResult Function(
+    TResult? Function(String label, String amount, bool? isPending)? immediate,
+    TResult? Function(String label, String amount, int deferredDate)? deferred,
+    TResult? Function(
             String label,
             String amount,
             ApplePayIntervalUnit intervalUnit,
@@ -428,9 +427,9 @@ mixin _$ApplePayCartSummaryItem {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ImmediateCartSummaryItem value)? immediate,
-    TResult Function(_DeferredSummaryItem value)? deferred,
-    TResult Function(_RecurringCartSummaryItem value)? recurring,
+    TResult? Function(_ImmediateCartSummaryItem value)? immediate,
+    TResult? Function(_DeferredSummaryItem value)? deferred,
+    TResult? Function(_RecurringCartSummaryItem value)? recurring,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -451,34 +450,38 @@ mixin _$ApplePayCartSummaryItem {
 abstract class $ApplePayCartSummaryItemCopyWith<$Res> {
   factory $ApplePayCartSummaryItemCopyWith(ApplePayCartSummaryItem value,
           $Res Function(ApplePayCartSummaryItem) then) =
-      _$ApplePayCartSummaryItemCopyWithImpl<$Res>;
+      _$ApplePayCartSummaryItemCopyWithImpl<$Res, ApplePayCartSummaryItem>;
+  @useResult
   $Res call({String label, String amount});
 }
 
 /// @nodoc
-class _$ApplePayCartSummaryItemCopyWithImpl<$Res>
+class _$ApplePayCartSummaryItemCopyWithImpl<$Res,
+        $Val extends ApplePayCartSummaryItem>
     implements $ApplePayCartSummaryItemCopyWith<$Res> {
   _$ApplePayCartSummaryItemCopyWithImpl(this._value, this._then);
 
-  final ApplePayCartSummaryItem _value;
   // ignore: unused_field
-  final $Res Function(ApplePayCartSummaryItem) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? label = freezed,
-    Object? amount = freezed,
+    Object? label = null,
+    Object? amount = null,
   }) {
     return _then(_value.copyWith(
-      label: label == freezed
+      label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: amount == freezed
+      amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -490,37 +493,36 @@ abstract class _$$_ImmediateCartSummaryItemCopyWith<$Res>
           $Res Function(_$_ImmediateCartSummaryItem) then) =
       __$$_ImmediateCartSummaryItemCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String label, String amount, bool? isPending});
 }
 
 /// @nodoc
 class __$$_ImmediateCartSummaryItemCopyWithImpl<$Res>
-    extends _$ApplePayCartSummaryItemCopyWithImpl<$Res>
+    extends _$ApplePayCartSummaryItemCopyWithImpl<$Res,
+        _$_ImmediateCartSummaryItem>
     implements _$$_ImmediateCartSummaryItemCopyWith<$Res> {
   __$$_ImmediateCartSummaryItemCopyWithImpl(_$_ImmediateCartSummaryItem _value,
       $Res Function(_$_ImmediateCartSummaryItem) _then)
-      : super(_value, (v) => _then(v as _$_ImmediateCartSummaryItem));
+      : super(_value, _then);
 
-  @override
-  _$_ImmediateCartSummaryItem get _value =>
-      super._value as _$_ImmediateCartSummaryItem;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? label = freezed,
-    Object? amount = freezed,
+    Object? label = null,
+    Object? amount = null,
     Object? isPending = freezed,
   }) {
     return _then(_$_ImmediateCartSummaryItem(
-      label: label == freezed
+      label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: amount == freezed
+      amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as String,
-      isPending: isPending == freezed
+      isPending: freezed == isPending
           ? _value.isPending
           : isPending // ignore: cast_nullable_to_non_nullable
               as bool?,
@@ -567,21 +569,19 @@ class _$_ImmediateCartSummaryItem implements _ImmediateCartSummaryItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ImmediateCartSummaryItem &&
-            const DeepCollectionEquality().equals(other.label, label) &&
-            const DeepCollectionEquality().equals(other.amount, amount) &&
-            const DeepCollectionEquality().equals(other.isPending, isPending));
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.isPending, isPending) ||
+                other.isPending == isPending));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(label),
-      const DeepCollectionEquality().hash(amount),
-      const DeepCollectionEquality().hash(isPending));
+  int get hashCode => Object.hash(runtimeType, label, amount, isPending);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ImmediateCartSummaryItemCopyWith<_$_ImmediateCartSummaryItem>
       get copyWith => __$$_ImmediateCartSummaryItemCopyWithImpl<
           _$_ImmediateCartSummaryItem>(this, _$identity);
@@ -608,9 +608,9 @@ class _$_ImmediateCartSummaryItem implements _ImmediateCartSummaryItem {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String label, String amount, bool? isPending)? immediate,
-    TResult Function(String label, String amount, int deferredDate)? deferred,
-    TResult Function(
+    TResult? Function(String label, String amount, bool? isPending)? immediate,
+    TResult? Function(String label, String amount, int deferredDate)? deferred,
+    TResult? Function(
             String label,
             String amount,
             ApplePayIntervalUnit intervalUnit,
@@ -656,9 +656,9 @@ class _$_ImmediateCartSummaryItem implements _ImmediateCartSummaryItem {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ImmediateCartSummaryItem value)? immediate,
-    TResult Function(_DeferredSummaryItem value)? deferred,
-    TResult Function(_RecurringCartSummaryItem value)? recurring,
+    TResult? Function(_ImmediateCartSummaryItem value)? immediate,
+    TResult? Function(_DeferredSummaryItem value)? deferred,
+    TResult? Function(_RecurringCartSummaryItem value)? recurring,
   }) {
     return immediate?.call(this);
   }
@@ -718,36 +718,35 @@ abstract class _$$_DeferredSummaryItemCopyWith<$Res>
           $Res Function(_$_DeferredSummaryItem) then) =
       __$$_DeferredSummaryItemCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String label, String amount, int deferredDate});
 }
 
 /// @nodoc
 class __$$_DeferredSummaryItemCopyWithImpl<$Res>
-    extends _$ApplePayCartSummaryItemCopyWithImpl<$Res>
+    extends _$ApplePayCartSummaryItemCopyWithImpl<$Res, _$_DeferredSummaryItem>
     implements _$$_DeferredSummaryItemCopyWith<$Res> {
   __$$_DeferredSummaryItemCopyWithImpl(_$_DeferredSummaryItem _value,
       $Res Function(_$_DeferredSummaryItem) _then)
-      : super(_value, (v) => _then(v as _$_DeferredSummaryItem));
+      : super(_value, _then);
 
-  @override
-  _$_DeferredSummaryItem get _value => super._value as _$_DeferredSummaryItem;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? label = freezed,
-    Object? amount = freezed,
-    Object? deferredDate = freezed,
+    Object? label = null,
+    Object? amount = null,
+    Object? deferredDate = null,
   }) {
     return _then(_$_DeferredSummaryItem(
-      label: label == freezed
+      label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: amount == freezed
+      amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as String,
-      deferredDate: deferredDate == freezed
+      deferredDate: null == deferredDate
           ? _value.deferredDate
           : deferredDate // ignore: cast_nullable_to_non_nullable
               as int,
@@ -794,22 +793,19 @@ class _$_DeferredSummaryItem implements _DeferredSummaryItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DeferredSummaryItem &&
-            const DeepCollectionEquality().equals(other.label, label) &&
-            const DeepCollectionEquality().equals(other.amount, amount) &&
-            const DeepCollectionEquality()
-                .equals(other.deferredDate, deferredDate));
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.deferredDate, deferredDate) ||
+                other.deferredDate == deferredDate));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(label),
-      const DeepCollectionEquality().hash(amount),
-      const DeepCollectionEquality().hash(deferredDate));
+  int get hashCode => Object.hash(runtimeType, label, amount, deferredDate);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_DeferredSummaryItemCopyWith<_$_DeferredSummaryItem> get copyWith =>
       __$$_DeferredSummaryItemCopyWithImpl<_$_DeferredSummaryItem>(
           this, _$identity);
@@ -836,9 +832,9 @@ class _$_DeferredSummaryItem implements _DeferredSummaryItem {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String label, String amount, bool? isPending)? immediate,
-    TResult Function(String label, String amount, int deferredDate)? deferred,
-    TResult Function(
+    TResult? Function(String label, String amount, bool? isPending)? immediate,
+    TResult? Function(String label, String amount, int deferredDate)? deferred,
+    TResult? Function(
             String label,
             String amount,
             ApplePayIntervalUnit intervalUnit,
@@ -884,9 +880,9 @@ class _$_DeferredSummaryItem implements _DeferredSummaryItem {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ImmediateCartSummaryItem value)? immediate,
-    TResult Function(_DeferredSummaryItem value)? deferred,
-    TResult Function(_RecurringCartSummaryItem value)? recurring,
+    TResult? Function(_ImmediateCartSummaryItem value)? immediate,
+    TResult? Function(_DeferredSummaryItem value)? deferred,
+    TResult? Function(_RecurringCartSummaryItem value)? recurring,
   }) {
     return deferred?.call(this);
   }
@@ -947,6 +943,7 @@ abstract class _$$_RecurringCartSummaryItemCopyWith<$Res>
           $Res Function(_$_RecurringCartSummaryItem) then) =
       __$$_RecurringCartSummaryItemCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String label,
       String amount,
@@ -958,47 +955,45 @@ abstract class _$$_RecurringCartSummaryItemCopyWith<$Res>
 
 /// @nodoc
 class __$$_RecurringCartSummaryItemCopyWithImpl<$Res>
-    extends _$ApplePayCartSummaryItemCopyWithImpl<$Res>
+    extends _$ApplePayCartSummaryItemCopyWithImpl<$Res,
+        _$_RecurringCartSummaryItem>
     implements _$$_RecurringCartSummaryItemCopyWith<$Res> {
   __$$_RecurringCartSummaryItemCopyWithImpl(_$_RecurringCartSummaryItem _value,
       $Res Function(_$_RecurringCartSummaryItem) _then)
-      : super(_value, (v) => _then(v as _$_RecurringCartSummaryItem));
+      : super(_value, _then);
 
-  @override
-  _$_RecurringCartSummaryItem get _value =>
-      super._value as _$_RecurringCartSummaryItem;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? label = freezed,
-    Object? amount = freezed,
-    Object? intervalUnit = freezed,
-    Object? intervalCount = freezed,
+    Object? label = null,
+    Object? amount = null,
+    Object? intervalUnit = null,
+    Object? intervalCount = null,
     Object? startDate = freezed,
     Object? number = freezed,
   }) {
     return _then(_$_RecurringCartSummaryItem(
-      label: label == freezed
+      label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: amount == freezed
+      amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as String,
-      intervalUnit: intervalUnit == freezed
+      intervalUnit: null == intervalUnit
           ? _value.intervalUnit
           : intervalUnit // ignore: cast_nullable_to_non_nullable
               as ApplePayIntervalUnit,
-      intervalCount: intervalCount == freezed
+      intervalCount: null == intervalCount
           ? _value.intervalCount
           : intervalCount // ignore: cast_nullable_to_non_nullable
               as int,
-      startDate: startDate == freezed
+      startDate: freezed == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
               as int?,
-      number: number == freezed
+      number: freezed == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -1059,29 +1054,25 @@ class _$_RecurringCartSummaryItem implements _RecurringCartSummaryItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RecurringCartSummaryItem &&
-            const DeepCollectionEquality().equals(other.label, label) &&
-            const DeepCollectionEquality().equals(other.amount, amount) &&
-            const DeepCollectionEquality()
-                .equals(other.intervalUnit, intervalUnit) &&
-            const DeepCollectionEquality()
-                .equals(other.intervalCount, intervalCount) &&
-            const DeepCollectionEquality().equals(other.startDate, startDate) &&
-            const DeepCollectionEquality().equals(other.number, number));
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.intervalUnit, intervalUnit) ||
+                other.intervalUnit == intervalUnit) &&
+            (identical(other.intervalCount, intervalCount) ||
+                other.intervalCount == intervalCount) &&
+            (identical(other.startDate, startDate) ||
+                other.startDate == startDate) &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(label),
-      const DeepCollectionEquality().hash(amount),
-      const DeepCollectionEquality().hash(intervalUnit),
-      const DeepCollectionEquality().hash(intervalCount),
-      const DeepCollectionEquality().hash(startDate),
-      const DeepCollectionEquality().hash(number));
+  int get hashCode => Object.hash(runtimeType, label, amount, intervalUnit,
+      intervalCount, startDate, number);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_RecurringCartSummaryItemCopyWith<_$_RecurringCartSummaryItem>
       get copyWith => __$$_RecurringCartSummaryItemCopyWithImpl<
           _$_RecurringCartSummaryItem>(this, _$identity);
@@ -1109,9 +1100,9 @@ class _$_RecurringCartSummaryItem implements _RecurringCartSummaryItem {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String label, String amount, bool? isPending)? immediate,
-    TResult Function(String label, String amount, int deferredDate)? deferred,
-    TResult Function(
+    TResult? Function(String label, String amount, bool? isPending)? immediate,
+    TResult? Function(String label, String amount, int deferredDate)? deferred,
+    TResult? Function(
             String label,
             String amount,
             ApplePayIntervalUnit intervalUnit,
@@ -1159,9 +1150,9 @@ class _$_RecurringCartSummaryItem implements _RecurringCartSummaryItem {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ImmediateCartSummaryItem value)? immediate,
-    TResult Function(_DeferredSummaryItem value)? deferred,
-    TResult Function(_RecurringCartSummaryItem value)? recurring,
+    TResult? Function(_ImmediateCartSummaryItem value)? immediate,
+    TResult? Function(_DeferredSummaryItem value)? deferred,
+    TResult? Function(_RecurringCartSummaryItem value)? recurring,
   }) {
     return recurring?.call(this);
   }
@@ -1269,7 +1260,8 @@ mixin _$ApplePayPresentParams {
 abstract class $ApplePayPresentParamsCopyWith<$Res> {
   factory $ApplePayPresentParamsCopyWith(ApplePayPresentParams value,
           $Res Function(ApplePayPresentParams) then) =
-      _$ApplePayPresentParamsCopyWithImpl<$Res>;
+      _$ApplePayPresentParamsCopyWithImpl<$Res, ApplePayPresentParams>;
+  @useResult
   $Res call(
       {List<ApplePayCartSummaryItem> cartItems,
       String country,
@@ -1281,54 +1273,57 @@ abstract class $ApplePayPresentParamsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ApplePayPresentParamsCopyWithImpl<$Res>
+class _$ApplePayPresentParamsCopyWithImpl<$Res,
+        $Val extends ApplePayPresentParams>
     implements $ApplePayPresentParamsCopyWith<$Res> {
   _$ApplePayPresentParamsCopyWithImpl(this._value, this._then);
 
-  final ApplePayPresentParams _value;
   // ignore: unused_field
-  final $Res Function(ApplePayPresentParams) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? cartItems = freezed,
-    Object? country = freezed,
-    Object? currency = freezed,
+    Object? cartItems = null,
+    Object? country = null,
+    Object? currency = null,
     Object? requiredShippingAddressFields = freezed,
     Object? requiredBillingContactFields = freezed,
     Object? shippingMethods = freezed,
-    Object? jcbEnabled = freezed,
+    Object? jcbEnabled = null,
   }) {
     return _then(_value.copyWith(
-      cartItems: cartItems == freezed
+      cartItems: null == cartItems
           ? _value.cartItems
           : cartItems // ignore: cast_nullable_to_non_nullable
               as List<ApplePayCartSummaryItem>,
-      country: country == freezed
+      country: null == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String,
-      currency: currency == freezed
+      currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
-      requiredShippingAddressFields: requiredShippingAddressFields == freezed
+      requiredShippingAddressFields: freezed == requiredShippingAddressFields
           ? _value.requiredShippingAddressFields
           : requiredShippingAddressFields // ignore: cast_nullable_to_non_nullable
               as List<ApplePayContactFieldsType>?,
-      requiredBillingContactFields: requiredBillingContactFields == freezed
+      requiredBillingContactFields: freezed == requiredBillingContactFields
           ? _value.requiredBillingContactFields
           : requiredBillingContactFields // ignore: cast_nullable_to_non_nullable
               as List<ApplePayContactFieldsType>?,
-      shippingMethods: shippingMethods == freezed
+      shippingMethods: freezed == shippingMethods
           ? _value.shippingMethods
           : shippingMethods // ignore: cast_nullable_to_non_nullable
               as List<ApplePayShippingMethod>?,
-      jcbEnabled: jcbEnabled == freezed
+      jcbEnabled: null == jcbEnabled
           ? _value.jcbEnabled
           : jcbEnabled // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -1339,6 +1334,7 @@ abstract class _$$_ApplePayPresentParamsCopyWith<$Res>
           $Res Function(_$_ApplePayPresentParams) then) =
       __$$_ApplePayPresentParamsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {List<ApplePayCartSummaryItem> cartItems,
       String country,
@@ -1351,52 +1347,49 @@ abstract class _$$_ApplePayPresentParamsCopyWith<$Res>
 
 /// @nodoc
 class __$$_ApplePayPresentParamsCopyWithImpl<$Res>
-    extends _$ApplePayPresentParamsCopyWithImpl<$Res>
+    extends _$ApplePayPresentParamsCopyWithImpl<$Res, _$_ApplePayPresentParams>
     implements _$$_ApplePayPresentParamsCopyWith<$Res> {
   __$$_ApplePayPresentParamsCopyWithImpl(_$_ApplePayPresentParams _value,
       $Res Function(_$_ApplePayPresentParams) _then)
-      : super(_value, (v) => _then(v as _$_ApplePayPresentParams));
+      : super(_value, _then);
 
-  @override
-  _$_ApplePayPresentParams get _value =>
-      super._value as _$_ApplePayPresentParams;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? cartItems = freezed,
-    Object? country = freezed,
-    Object? currency = freezed,
+    Object? cartItems = null,
+    Object? country = null,
+    Object? currency = null,
     Object? requiredShippingAddressFields = freezed,
     Object? requiredBillingContactFields = freezed,
     Object? shippingMethods = freezed,
-    Object? jcbEnabled = freezed,
+    Object? jcbEnabled = null,
   }) {
     return _then(_$_ApplePayPresentParams(
-      cartItems: cartItems == freezed
+      cartItems: null == cartItems
           ? _value._cartItems
           : cartItems // ignore: cast_nullable_to_non_nullable
               as List<ApplePayCartSummaryItem>,
-      country: country == freezed
+      country: null == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String,
-      currency: currency == freezed
+      currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
-      requiredShippingAddressFields: requiredShippingAddressFields == freezed
+      requiredShippingAddressFields: freezed == requiredShippingAddressFields
           ? _value._requiredShippingAddressFields
           : requiredShippingAddressFields // ignore: cast_nullable_to_non_nullable
               as List<ApplePayContactFieldsType>?,
-      requiredBillingContactFields: requiredBillingContactFields == freezed
+      requiredBillingContactFields: freezed == requiredBillingContactFields
           ? _value._requiredBillingContactFields
           : requiredBillingContactFields // ignore: cast_nullable_to_non_nullable
               as List<ApplePayContactFieldsType>?,
-      shippingMethods: shippingMethods == freezed
+      shippingMethods: freezed == shippingMethods
           ? _value._shippingMethods
           : shippingMethods // ignore: cast_nullable_to_non_nullable
               as List<ApplePayShippingMethod>?,
-      jcbEnabled: jcbEnabled == freezed
+      jcbEnabled: null == jcbEnabled
           ? _value.jcbEnabled
           : jcbEnabled // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -1430,6 +1423,7 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
   /// Line Items of the payment request.
   @override
   List<ApplePayCartSummaryItem> get cartItems {
+    if (_cartItems is EqualUnmodifiableListView) return _cartItems;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_cartItems);
   }
@@ -1452,6 +1446,8 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
   List<ApplePayContactFieldsType>? get requiredShippingAddressFields {
     final value = _requiredShippingAddressFields;
     if (value == null) return null;
+    if (_requiredShippingAddressFields is EqualUnmodifiableListView)
+      return _requiredShippingAddressFields;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -1466,6 +1462,8 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
   List<ApplePayContactFieldsType>? get requiredBillingContactFields {
     final value = _requiredBillingContactFields;
     if (value == null) return null;
+    if (_requiredBillingContactFields is EqualUnmodifiableListView)
+      return _requiredBillingContactFields;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -1478,6 +1476,7 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
   List<ApplePayShippingMethod>? get shippingMethods {
     final value = _shippingMethods;
     if (value == null) return null;
+    if (_shippingMethods is EqualUnmodifiableListView) return _shippingMethods;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -1499,8 +1498,9 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
             other is _$_ApplePayPresentParams &&
             const DeepCollectionEquality()
                 .equals(other._cartItems, _cartItems) &&
-            const DeepCollectionEquality().equals(other.country, country) &&
-            const DeepCollectionEquality().equals(other.currency, currency) &&
+            (identical(other.country, country) || other.country == country) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency) &&
             const DeepCollectionEquality().equals(
                 other._requiredShippingAddressFields,
                 _requiredShippingAddressFields) &&
@@ -1509,8 +1509,8 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
                 _requiredBillingContactFields) &&
             const DeepCollectionEquality()
                 .equals(other._shippingMethods, _shippingMethods) &&
-            const DeepCollectionEquality()
-                .equals(other.jcbEnabled, jcbEnabled));
+            (identical(other.jcbEnabled, jcbEnabled) ||
+                other.jcbEnabled == jcbEnabled));
   }
 
   @JsonKey(ignore: true)
@@ -1518,15 +1518,16 @@ class _$_ApplePayPresentParams implements _ApplePayPresentParams {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_cartItems),
-      const DeepCollectionEquality().hash(country),
-      const DeepCollectionEquality().hash(currency),
+      country,
+      currency,
       const DeepCollectionEquality().hash(_requiredShippingAddressFields),
       const DeepCollectionEquality().hash(_requiredBillingContactFields),
       const DeepCollectionEquality().hash(_shippingMethods),
-      const DeepCollectionEquality().hash(jcbEnabled));
+      jcbEnabled);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ApplePayPresentParamsCopyWith<_$_ApplePayPresentParams> get copyWith =>
       __$$_ApplePayPresentParamsCopyWithImpl<_$_ApplePayPresentParams>(
           this, _$identity);
@@ -1613,34 +1614,38 @@ mixin _$ApplePayErrorAddressField {
 abstract class $ApplePayErrorAddressFieldCopyWith<$Res> {
   factory $ApplePayErrorAddressFieldCopyWith(ApplePayErrorAddressField value,
           $Res Function(ApplePayErrorAddressField) then) =
-      _$ApplePayErrorAddressFieldCopyWithImpl<$Res>;
+      _$ApplePayErrorAddressFieldCopyWithImpl<$Res, ApplePayErrorAddressField>;
+  @useResult
   $Res call({ApplePayContactFieldsType field, String? message});
 }
 
 /// @nodoc
-class _$ApplePayErrorAddressFieldCopyWithImpl<$Res>
+class _$ApplePayErrorAddressFieldCopyWithImpl<$Res,
+        $Val extends ApplePayErrorAddressField>
     implements $ApplePayErrorAddressFieldCopyWith<$Res> {
   _$ApplePayErrorAddressFieldCopyWithImpl(this._value, this._then);
 
-  final ApplePayErrorAddressField _value;
   // ignore: unused_field
-  final $Res Function(ApplePayErrorAddressField) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? field = freezed,
+    Object? field = null,
     Object? message = freezed,
   }) {
     return _then(_value.copyWith(
-      field: field == freezed
+      field: null == field
           ? _value.field
           : field // ignore: cast_nullable_to_non_nullable
               as ApplePayContactFieldsType,
-      message: message == freezed
+      message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -1652,33 +1657,32 @@ abstract class _$$_ApplePayErrorAddressFieldCopyWith<$Res>
           $Res Function(_$_ApplePayErrorAddressField) then) =
       __$$_ApplePayErrorAddressFieldCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({ApplePayContactFieldsType field, String? message});
 }
 
 /// @nodoc
 class __$$_ApplePayErrorAddressFieldCopyWithImpl<$Res>
-    extends _$ApplePayErrorAddressFieldCopyWithImpl<$Res>
+    extends _$ApplePayErrorAddressFieldCopyWithImpl<$Res,
+        _$_ApplePayErrorAddressField>
     implements _$$_ApplePayErrorAddressFieldCopyWith<$Res> {
   __$$_ApplePayErrorAddressFieldCopyWithImpl(
       _$_ApplePayErrorAddressField _value,
       $Res Function(_$_ApplePayErrorAddressField) _then)
-      : super(_value, (v) => _then(v as _$_ApplePayErrorAddressField));
+      : super(_value, _then);
 
-  @override
-  _$_ApplePayErrorAddressField get _value =>
-      super._value as _$_ApplePayErrorAddressField;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? field = freezed,
+    Object? field = null,
     Object? message = freezed,
   }) {
     return _then(_$_ApplePayErrorAddressField(
-      field: field == freezed
+      field: null == field
           ? _value.field
           : field // ignore: cast_nullable_to_non_nullable
               as ApplePayContactFieldsType,
-      message: message == freezed
+      message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -1715,19 +1719,17 @@ class _$_ApplePayErrorAddressField implements _ApplePayErrorAddressField {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ApplePayErrorAddressField &&
-            const DeepCollectionEquality().equals(other.field, field) &&
-            const DeepCollectionEquality().equals(other.message, message));
+            (identical(other.field, field) || other.field == field) &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(field),
-      const DeepCollectionEquality().hash(message));
+  int get hashCode => Object.hash(runtimeType, field, message);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ApplePayErrorAddressFieldCopyWith<_$_ApplePayErrorAddressField>
       get copyWith => __$$_ApplePayErrorAddressFieldCopyWithImpl<
           _$_ApplePayErrorAddressField>(this, _$identity);
@@ -1793,7 +1795,8 @@ mixin _$ApplePayShippingContact {
 abstract class $ApplePayShippingContactCopyWith<$Res> {
   factory $ApplePayShippingContactCopyWith(ApplePayShippingContact value,
           $Res Function(ApplePayShippingContact) then) =
-      _$ApplePayShippingContactCopyWithImpl<$Res>;
+      _$ApplePayShippingContactCopyWithImpl<$Res, ApplePayShippingContact>;
+  @useResult
   $Res call(
       {String? emailAddress,
       ApplePayContactName name,
@@ -1805,52 +1808,57 @@ abstract class $ApplePayShippingContactCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ApplePayShippingContactCopyWithImpl<$Res>
+class _$ApplePayShippingContactCopyWithImpl<$Res,
+        $Val extends ApplePayShippingContact>
     implements $ApplePayShippingContactCopyWith<$Res> {
   _$ApplePayShippingContactCopyWithImpl(this._value, this._then);
 
-  final ApplePayShippingContact _value;
   // ignore: unused_field
-  final $Res Function(ApplePayShippingContact) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? emailAddress = freezed,
-    Object? name = freezed,
-    Object? postalAddress = freezed,
+    Object? name = null,
+    Object? postalAddress = null,
     Object? phoneNumber = freezed,
   }) {
     return _then(_value.copyWith(
-      emailAddress: emailAddress == freezed
+      emailAddress: freezed == emailAddress
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as ApplePayContactName,
-      postalAddress: postalAddress == freezed
+      postalAddress: null == postalAddress
           ? _value.postalAddress
           : postalAddress // ignore: cast_nullable_to_non_nullable
               as ApplePayPostalAddress,
-      phoneNumber: phoneNumber == freezed
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ApplePayContactNameCopyWith<$Res> get name {
     return $ApplePayContactNameCopyWith<$Res>(_value.name, (value) {
-      return _then(_value.copyWith(name: value));
+      return _then(_value.copyWith(name: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ApplePayPostalAddressCopyWith<$Res> get postalAddress {
     return $ApplePayPostalAddressCopyWith<$Res>(_value.postalAddress, (value) {
-      return _then(_value.copyWith(postalAddress: value));
+      return _then(_value.copyWith(postalAddress: value) as $Val);
     });
   }
 }
@@ -1862,6 +1870,7 @@ abstract class _$$_ApplePayShippingContactCopyWith<$Res>
           $Res Function(_$_ApplePayShippingContact) then) =
       __$$_ApplePayShippingContactCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? emailAddress,
       ApplePayContactName name,
@@ -1876,37 +1885,35 @@ abstract class _$$_ApplePayShippingContactCopyWith<$Res>
 
 /// @nodoc
 class __$$_ApplePayShippingContactCopyWithImpl<$Res>
-    extends _$ApplePayShippingContactCopyWithImpl<$Res>
+    extends _$ApplePayShippingContactCopyWithImpl<$Res,
+        _$_ApplePayShippingContact>
     implements _$$_ApplePayShippingContactCopyWith<$Res> {
   __$$_ApplePayShippingContactCopyWithImpl(_$_ApplePayShippingContact _value,
       $Res Function(_$_ApplePayShippingContact) _then)
-      : super(_value, (v) => _then(v as _$_ApplePayShippingContact));
+      : super(_value, _then);
 
-  @override
-  _$_ApplePayShippingContact get _value =>
-      super._value as _$_ApplePayShippingContact;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? emailAddress = freezed,
-    Object? name = freezed,
-    Object? postalAddress = freezed,
+    Object? name = null,
+    Object? postalAddress = null,
     Object? phoneNumber = freezed,
   }) {
     return _then(_$_ApplePayShippingContact(
-      emailAddress: emailAddress == freezed
+      emailAddress: freezed == emailAddress
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as ApplePayContactName,
-      postalAddress: postalAddress == freezed
+      postalAddress: null == postalAddress
           ? _value.postalAddress
           : postalAddress // ignore: cast_nullable_to_non_nullable
               as ApplePayPostalAddress,
-      phoneNumber: phoneNumber == freezed
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -1953,26 +1960,23 @@ class _$_ApplePayShippingContact implements _ApplePayShippingContact {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ApplePayShippingContact &&
-            const DeepCollectionEquality()
-                .equals(other.emailAddress, emailAddress) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other.postalAddress, postalAddress) &&
-            const DeepCollectionEquality()
-                .equals(other.phoneNumber, phoneNumber));
+            (identical(other.emailAddress, emailAddress) ||
+                other.emailAddress == emailAddress) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.postalAddress, postalAddress) ||
+                other.postalAddress == postalAddress) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(emailAddress),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(postalAddress),
-      const DeepCollectionEquality().hash(phoneNumber));
+  int get hashCode =>
+      Object.hash(runtimeType, emailAddress, name, postalAddress, phoneNumber);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ApplePayShippingContactCopyWith<_$_ApplePayShippingContact>
       get copyWith =>
           __$$_ApplePayShippingContactCopyWithImpl<_$_ApplePayShippingContact>(
@@ -2041,7 +2045,8 @@ mixin _$ApplePayContactName {
 abstract class $ApplePayContactNameCopyWith<$Res> {
   factory $ApplePayContactNameCopyWith(
           ApplePayContactName value, $Res Function(ApplePayContactName) then) =
-      _$ApplePayContactNameCopyWithImpl<$Res>;
+      _$ApplePayContactNameCopyWithImpl<$Res, ApplePayContactName>;
+  @useResult
   $Res call(
       {String? familyName,
       String? namePrefix,
@@ -2052,14 +2057,16 @@ abstract class $ApplePayContactNameCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ApplePayContactNameCopyWithImpl<$Res>
+class _$ApplePayContactNameCopyWithImpl<$Res, $Val extends ApplePayContactName>
     implements $ApplePayContactNameCopyWith<$Res> {
   _$ApplePayContactNameCopyWithImpl(this._value, this._then);
 
-  final ApplePayContactName _value;
   // ignore: unused_field
-  final $Res Function(ApplePayContactName) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? familyName = freezed,
@@ -2070,31 +2077,31 @@ class _$ApplePayContactNameCopyWithImpl<$Res>
     Object? nickname = freezed,
   }) {
     return _then(_value.copyWith(
-      familyName: familyName == freezed
+      familyName: freezed == familyName
           ? _value.familyName
           : familyName // ignore: cast_nullable_to_non_nullable
               as String?,
-      namePrefix: namePrefix == freezed
+      namePrefix: freezed == namePrefix
           ? _value.namePrefix
           : namePrefix // ignore: cast_nullable_to_non_nullable
               as String?,
-      nameSuffix: nameSuffix == freezed
+      nameSuffix: freezed == nameSuffix
           ? _value.nameSuffix
           : nameSuffix // ignore: cast_nullable_to_non_nullable
               as String?,
-      givenName: givenName == freezed
+      givenName: freezed == givenName
           ? _value.givenName
           : givenName // ignore: cast_nullable_to_non_nullable
               as String?,
-      middleName: middleName == freezed
+      middleName: freezed == middleName
           ? _value.middleName
           : middleName // ignore: cast_nullable_to_non_nullable
               as String?,
-      nickname: nickname == freezed
+      nickname: freezed == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -2105,6 +2112,7 @@ abstract class _$$_ApplePayContactNameCopyWith<$Res>
           $Res Function(_$_ApplePayContactName) then) =
       __$$_ApplePayContactNameCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? familyName,
       String? namePrefix,
@@ -2116,15 +2124,13 @@ abstract class _$$_ApplePayContactNameCopyWith<$Res>
 
 /// @nodoc
 class __$$_ApplePayContactNameCopyWithImpl<$Res>
-    extends _$ApplePayContactNameCopyWithImpl<$Res>
+    extends _$ApplePayContactNameCopyWithImpl<$Res, _$_ApplePayContactName>
     implements _$$_ApplePayContactNameCopyWith<$Res> {
   __$$_ApplePayContactNameCopyWithImpl(_$_ApplePayContactName _value,
       $Res Function(_$_ApplePayContactName) _then)
-      : super(_value, (v) => _then(v as _$_ApplePayContactName));
+      : super(_value, _then);
 
-  @override
-  _$_ApplePayContactName get _value => super._value as _$_ApplePayContactName;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? familyName = freezed,
@@ -2135,27 +2141,27 @@ class __$$_ApplePayContactNameCopyWithImpl<$Res>
     Object? nickname = freezed,
   }) {
     return _then(_$_ApplePayContactName(
-      familyName: familyName == freezed
+      familyName: freezed == familyName
           ? _value.familyName
           : familyName // ignore: cast_nullable_to_non_nullable
               as String?,
-      namePrefix: namePrefix == freezed
+      namePrefix: freezed == namePrefix
           ? _value.namePrefix
           : namePrefix // ignore: cast_nullable_to_non_nullable
               as String?,
-      nameSuffix: nameSuffix == freezed
+      nameSuffix: freezed == nameSuffix
           ? _value.nameSuffix
           : nameSuffix // ignore: cast_nullable_to_non_nullable
               as String?,
-      givenName: givenName == freezed
+      givenName: freezed == givenName
           ? _value.givenName
           : givenName // ignore: cast_nullable_to_non_nullable
               as String?,
-      middleName: middleName == freezed
+      middleName: freezed == middleName
           ? _value.middleName
           : middleName // ignore: cast_nullable_to_non_nullable
               as String?,
-      nickname: nickname == freezed
+      nickname: freezed == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -2201,31 +2207,28 @@ class _$_ApplePayContactName implements _ApplePayContactName {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ApplePayContactName &&
-            const DeepCollectionEquality()
-                .equals(other.familyName, familyName) &&
-            const DeepCollectionEquality()
-                .equals(other.namePrefix, namePrefix) &&
-            const DeepCollectionEquality()
-                .equals(other.nameSuffix, nameSuffix) &&
-            const DeepCollectionEquality().equals(other.givenName, givenName) &&
-            const DeepCollectionEquality()
-                .equals(other.middleName, middleName) &&
-            const DeepCollectionEquality().equals(other.nickname, nickname));
+            (identical(other.familyName, familyName) ||
+                other.familyName == familyName) &&
+            (identical(other.namePrefix, namePrefix) ||
+                other.namePrefix == namePrefix) &&
+            (identical(other.nameSuffix, nameSuffix) ||
+                other.nameSuffix == nameSuffix) &&
+            (identical(other.givenName, givenName) ||
+                other.givenName == givenName) &&
+            (identical(other.middleName, middleName) ||
+                other.middleName == middleName) &&
+            (identical(other.nickname, nickname) ||
+                other.nickname == nickname));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(familyName),
-      const DeepCollectionEquality().hash(namePrefix),
-      const DeepCollectionEquality().hash(nameSuffix),
-      const DeepCollectionEquality().hash(givenName),
-      const DeepCollectionEquality().hash(middleName),
-      const DeepCollectionEquality().hash(nickname));
+  int get hashCode => Object.hash(runtimeType, familyName, namePrefix,
+      nameSuffix, givenName, middleName, nickname);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ApplePayContactNameCopyWith<_$_ApplePayContactName> get copyWith =>
       __$$_ApplePayContactNameCopyWithImpl<_$_ApplePayContactName>(
           this, _$identity);
@@ -2294,7 +2297,8 @@ mixin _$ApplePayPostalAddress {
 abstract class $ApplePayPostalAddressCopyWith<$Res> {
   factory $ApplePayPostalAddressCopyWith(ApplePayPostalAddress value,
           $Res Function(ApplePayPostalAddress) then) =
-      _$ApplePayPostalAddressCopyWithImpl<$Res>;
+      _$ApplePayPostalAddressCopyWithImpl<$Res, ApplePayPostalAddress>;
+  @useResult
   $Res call(
       {String? city,
       String? country,
@@ -2307,14 +2311,17 @@ abstract class $ApplePayPostalAddressCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ApplePayPostalAddressCopyWithImpl<$Res>
+class _$ApplePayPostalAddressCopyWithImpl<$Res,
+        $Val extends ApplePayPostalAddress>
     implements $ApplePayPostalAddressCopyWith<$Res> {
   _$ApplePayPostalAddressCopyWithImpl(this._value, this._then);
 
-  final ApplePayPostalAddress _value;
   // ignore: unused_field
-  final $Res Function(ApplePayPostalAddress) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? city = freezed,
@@ -2327,39 +2334,39 @@ class _$ApplePayPostalAddressCopyWithImpl<$Res>
     Object? subLocality = freezed,
   }) {
     return _then(_value.copyWith(
-      city: city == freezed
+      city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String?,
-      country: country == freezed
+      country: freezed == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String?,
-      postalCode: postalCode == freezed
+      postalCode: freezed == postalCode
           ? _value.postalCode
           : postalCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      state: state == freezed
+      state: freezed == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as String?,
-      street: street == freezed
+      street: freezed == street
           ? _value.street
           : street // ignore: cast_nullable_to_non_nullable
               as String?,
-      isoCountryCode: isoCountryCode == freezed
+      isoCountryCode: freezed == isoCountryCode
           ? _value.isoCountryCode
           : isoCountryCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      subAdministrativeArea: subAdministrativeArea == freezed
+      subAdministrativeArea: freezed == subAdministrativeArea
           ? _value.subAdministrativeArea
           : subAdministrativeArea // ignore: cast_nullable_to_non_nullable
               as String?,
-      subLocality: subLocality == freezed
+      subLocality: freezed == subLocality
           ? _value.subLocality
           : subLocality // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -2370,6 +2377,7 @@ abstract class _$$_ApplePayPostalAddressCopyWith<$Res>
           $Res Function(_$_ApplePayPostalAddress) then) =
       __$$_ApplePayPostalAddressCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? city,
       String? country,
@@ -2383,16 +2391,13 @@ abstract class _$$_ApplePayPostalAddressCopyWith<$Res>
 
 /// @nodoc
 class __$$_ApplePayPostalAddressCopyWithImpl<$Res>
-    extends _$ApplePayPostalAddressCopyWithImpl<$Res>
+    extends _$ApplePayPostalAddressCopyWithImpl<$Res, _$_ApplePayPostalAddress>
     implements _$$_ApplePayPostalAddressCopyWith<$Res> {
   __$$_ApplePayPostalAddressCopyWithImpl(_$_ApplePayPostalAddress _value,
       $Res Function(_$_ApplePayPostalAddress) _then)
-      : super(_value, (v) => _then(v as _$_ApplePayPostalAddress));
+      : super(_value, _then);
 
-  @override
-  _$_ApplePayPostalAddress get _value =>
-      super._value as _$_ApplePayPostalAddress;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? city = freezed,
@@ -2405,35 +2410,35 @@ class __$$_ApplePayPostalAddressCopyWithImpl<$Res>
     Object? subLocality = freezed,
   }) {
     return _then(_$_ApplePayPostalAddress(
-      city: city == freezed
+      city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String?,
-      country: country == freezed
+      country: freezed == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String?,
-      postalCode: postalCode == freezed
+      postalCode: freezed == postalCode
           ? _value.postalCode
           : postalCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      state: state == freezed
+      state: freezed == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as String?,
-      street: street == freezed
+      street: freezed == street
           ? _value.street
           : street // ignore: cast_nullable_to_non_nullable
               as String?,
-      isoCountryCode: isoCountryCode == freezed
+      isoCountryCode: freezed == isoCountryCode
           ? _value.isoCountryCode
           : isoCountryCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      subAdministrativeArea: subAdministrativeArea == freezed
+      subAdministrativeArea: freezed == subAdministrativeArea
           ? _value.subAdministrativeArea
           : subAdministrativeArea // ignore: cast_nullable_to_non_nullable
               as String?,
-      subLocality: subLocality == freezed
+      subLocality: freezed == subLocality
           ? _value.subLocality
           : subLocality // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -2485,35 +2490,28 @@ class _$_ApplePayPostalAddress implements _ApplePayPostalAddress {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ApplePayPostalAddress &&
-            const DeepCollectionEquality().equals(other.city, city) &&
-            const DeepCollectionEquality().equals(other.country, country) &&
-            const DeepCollectionEquality()
-                .equals(other.postalCode, postalCode) &&
-            const DeepCollectionEquality().equals(other.state, state) &&
-            const DeepCollectionEquality().equals(other.street, street) &&
-            const DeepCollectionEquality()
-                .equals(other.isoCountryCode, isoCountryCode) &&
-            const DeepCollectionEquality()
-                .equals(other.subAdministrativeArea, subAdministrativeArea) &&
-            const DeepCollectionEquality()
-                .equals(other.subLocality, subLocality));
+            (identical(other.city, city) || other.city == city) &&
+            (identical(other.country, country) || other.country == country) &&
+            (identical(other.postalCode, postalCode) ||
+                other.postalCode == postalCode) &&
+            (identical(other.state, state) || other.state == state) &&
+            (identical(other.street, street) || other.street == street) &&
+            (identical(other.isoCountryCode, isoCountryCode) ||
+                other.isoCountryCode == isoCountryCode) &&
+            (identical(other.subAdministrativeArea, subAdministrativeArea) ||
+                other.subAdministrativeArea == subAdministrativeArea) &&
+            (identical(other.subLocality, subLocality) ||
+                other.subLocality == subLocality));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(city),
-      const DeepCollectionEquality().hash(country),
-      const DeepCollectionEquality().hash(postalCode),
-      const DeepCollectionEquality().hash(state),
-      const DeepCollectionEquality().hash(street),
-      const DeepCollectionEquality().hash(isoCountryCode),
-      const DeepCollectionEquality().hash(subAdministrativeArea),
-      const DeepCollectionEquality().hash(subLocality));
+  int get hashCode => Object.hash(runtimeType, city, country, postalCode, state,
+      street, isoCountryCode, subAdministrativeArea, subLocality);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ApplePayPostalAddressCopyWith<_$_ApplePayPostalAddress> get copyWith =>
       __$$_ApplePayPostalAddressCopyWithImpl<_$_ApplePayPostalAddress>(
           this, _$identity);

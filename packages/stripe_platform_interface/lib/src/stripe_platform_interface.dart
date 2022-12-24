@@ -106,6 +106,11 @@ abstract class StripePlatform extends PlatformInterface {
     required PlatformPayConfirmParams params,
   });
 
+  /// Use native payment sheet to create payment method
+  Future<PaymentMethod> platformPayCreatePaymentMethod({
+    required PlatformPayPaymentMethodParams params,
+  });
+
   /// Creates a token for card details.
   ///
   /// Note this method is legacy and it is advised to use [PaymentIntent].

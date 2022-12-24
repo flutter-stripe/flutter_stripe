@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'card_field_input.dart';
 
@@ -55,7 +55,8 @@ mixin _$CardStyle {
 /// @nodoc
 abstract class $CardStyleCopyWith<$Res> {
   factory $CardStyleCopyWith(CardStyle value, $Res Function(CardStyle) then) =
-      _$CardStyleCopyWithImpl<$Res>;
+      _$CardStyleCopyWithImpl<$Res, CardStyle>;
+  @useResult
   $Res call(
       {int? borderWidth,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -76,13 +77,16 @@ abstract class $CardStyleCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CardStyleCopyWithImpl<$Res> implements $CardStyleCopyWith<$Res> {
+class _$CardStyleCopyWithImpl<$Res, $Val extends CardStyle>
+    implements $CardStyleCopyWith<$Res> {
   _$CardStyleCopyWithImpl(this._value, this._then);
 
-  final CardStyle _value;
   // ignore: unused_field
-  final $Res Function(CardStyle) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? borderWidth = freezed,
@@ -97,47 +101,47 @@ class _$CardStyleCopyWithImpl<$Res> implements $CardStyleCopyWith<$Res> {
     Object? placeholderColor = freezed,
   }) {
     return _then(_value.copyWith(
-      borderWidth: borderWidth == freezed
+      borderWidth: freezed == borderWidth
           ? _value.borderWidth
           : borderWidth // ignore: cast_nullable_to_non_nullable
               as int?,
-      backgroundColor: backgroundColor == freezed
+      backgroundColor: freezed == backgroundColor
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      borderColor: borderColor == freezed
+      borderColor: freezed == borderColor
           ? _value.borderColor
           : borderColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      borderRadius: borderRadius == freezed
+      borderRadius: freezed == borderRadius
           ? _value.borderRadius
           : borderRadius // ignore: cast_nullable_to_non_nullable
               as int?,
-      cursorColor: cursorColor == freezed
+      cursorColor: freezed == cursorColor
           ? _value.cursorColor
           : cursorColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      textColor: textColor == freezed
+      textColor: freezed == textColor
           ? _value.textColor
           : textColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      fontSize: fontSize == freezed
+      fontSize: freezed == fontSize
           ? _value.fontSize
           : fontSize // ignore: cast_nullable_to_non_nullable
               as int?,
-      fontFamily: fontFamily == freezed
+      fontFamily: freezed == fontFamily
           ? _value.fontFamily
           : fontFamily // ignore: cast_nullable_to_non_nullable
               as String?,
-      textErrorColor: textErrorColor == freezed
+      textErrorColor: freezed == textErrorColor
           ? _value.textErrorColor
           : textErrorColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      placeholderColor: placeholderColor == freezed
+      placeholderColor: freezed == placeholderColor
           ? _value.placeholderColor
           : placeholderColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -148,6 +152,7 @@ abstract class _$$_CardStyleConstructorCopyWith<$Res>
           $Res Function(_$_CardStyleConstructor) then) =
       __$$_CardStyleConstructorCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? borderWidth,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -169,15 +174,13 @@ abstract class _$$_CardStyleConstructorCopyWith<$Res>
 
 /// @nodoc
 class __$$_CardStyleConstructorCopyWithImpl<$Res>
-    extends _$CardStyleCopyWithImpl<$Res>
+    extends _$CardStyleCopyWithImpl<$Res, _$_CardStyleConstructor>
     implements _$$_CardStyleConstructorCopyWith<$Res> {
   __$$_CardStyleConstructorCopyWithImpl(_$_CardStyleConstructor _value,
       $Res Function(_$_CardStyleConstructor) _then)
-      : super(_value, (v) => _then(v as _$_CardStyleConstructor));
+      : super(_value, _then);
 
-  @override
-  _$_CardStyleConstructor get _value => super._value as _$_CardStyleConstructor;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? borderWidth = freezed,
@@ -192,43 +195,43 @@ class __$$_CardStyleConstructorCopyWithImpl<$Res>
     Object? placeholderColor = freezed,
   }) {
     return _then(_$_CardStyleConstructor(
-      borderWidth: borderWidth == freezed
+      borderWidth: freezed == borderWidth
           ? _value.borderWidth
           : borderWidth // ignore: cast_nullable_to_non_nullable
               as int?,
-      backgroundColor: backgroundColor == freezed
+      backgroundColor: freezed == backgroundColor
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      borderColor: borderColor == freezed
+      borderColor: freezed == borderColor
           ? _value.borderColor
           : borderColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      borderRadius: borderRadius == freezed
+      borderRadius: freezed == borderRadius
           ? _value.borderRadius
           : borderRadius // ignore: cast_nullable_to_non_nullable
               as int?,
-      cursorColor: cursorColor == freezed
+      cursorColor: freezed == cursorColor
           ? _value.cursorColor
           : cursorColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      textColor: textColor == freezed
+      textColor: freezed == textColor
           ? _value.textColor
           : textColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      fontSize: fontSize == freezed
+      fontSize: freezed == fontSize
           ? _value.fontSize
           : fontSize // ignore: cast_nullable_to_non_nullable
               as int?,
-      fontFamily: fontFamily == freezed
+      fontFamily: freezed == fontFamily
           ? _value.fontFamily
           : fontFamily // ignore: cast_nullable_to_non_nullable
               as String?,
-      textErrorColor: textErrorColor == freezed
+      textErrorColor: freezed == textErrorColor
           ? _value.textErrorColor
           : textErrorColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      placeholderColor: placeholderColor == freezed
+      placeholderColor: freezed == placeholderColor
           ? _value.placeholderColor
           : placeholderColor // ignore: cast_nullable_to_non_nullable
               as Color?,
@@ -308,43 +311,46 @@ class _$_CardStyleConstructor extends _CardStyleConstructor {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CardStyleConstructor &&
-            const DeepCollectionEquality()
-                .equals(other.borderWidth, borderWidth) &&
-            const DeepCollectionEquality()
-                .equals(other.backgroundColor, backgroundColor) &&
-            const DeepCollectionEquality()
-                .equals(other.borderColor, borderColor) &&
-            const DeepCollectionEquality()
-                .equals(other.borderRadius, borderRadius) &&
-            const DeepCollectionEquality()
-                .equals(other.cursorColor, cursorColor) &&
-            const DeepCollectionEquality().equals(other.textColor, textColor) &&
-            const DeepCollectionEquality().equals(other.fontSize, fontSize) &&
-            const DeepCollectionEquality()
-                .equals(other.fontFamily, fontFamily) &&
-            const DeepCollectionEquality()
-                .equals(other.textErrorColor, textErrorColor) &&
-            const DeepCollectionEquality()
-                .equals(other.placeholderColor, placeholderColor));
+            (identical(other.borderWidth, borderWidth) ||
+                other.borderWidth == borderWidth) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.borderColor, borderColor) ||
+                other.borderColor == borderColor) &&
+            (identical(other.borderRadius, borderRadius) ||
+                other.borderRadius == borderRadius) &&
+            (identical(other.cursorColor, cursorColor) ||
+                other.cursorColor == cursorColor) &&
+            (identical(other.textColor, textColor) ||
+                other.textColor == textColor) &&
+            (identical(other.fontSize, fontSize) ||
+                other.fontSize == fontSize) &&
+            (identical(other.fontFamily, fontFamily) ||
+                other.fontFamily == fontFamily) &&
+            (identical(other.textErrorColor, textErrorColor) ||
+                other.textErrorColor == textErrorColor) &&
+            (identical(other.placeholderColor, placeholderColor) ||
+                other.placeholderColor == placeholderColor));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(borderWidth),
-      const DeepCollectionEquality().hash(backgroundColor),
-      const DeepCollectionEquality().hash(borderColor),
-      const DeepCollectionEquality().hash(borderRadius),
-      const DeepCollectionEquality().hash(cursorColor),
-      const DeepCollectionEquality().hash(textColor),
-      const DeepCollectionEquality().hash(fontSize),
-      const DeepCollectionEquality().hash(fontFamily),
-      const DeepCollectionEquality().hash(textErrorColor),
-      const DeepCollectionEquality().hash(placeholderColor));
+      borderWidth,
+      backgroundColor,
+      borderColor,
+      borderRadius,
+      cursorColor,
+      textColor,
+      fontSize,
+      fontFamily,
+      textErrorColor,
+      placeholderColor);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CardStyleConstructorCopyWith<_$_CardStyleConstructor> get copyWith =>
       __$$_CardStyleConstructorCopyWithImpl<_$_CardStyleConstructor>(
           this, _$identity);
@@ -462,7 +468,8 @@ mixin _$CardFormStyle {
 abstract class $CardFormStyleCopyWith<$Res> {
   factory $CardFormStyleCopyWith(
           CardFormStyle value, $Res Function(CardFormStyle) then) =
-      _$CardFormStyleCopyWithImpl<$Res>;
+      _$CardFormStyleCopyWithImpl<$Res, CardFormStyle>;
+  @useResult
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? backgroundColor,
@@ -482,14 +489,16 @@ abstract class $CardFormStyleCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CardFormStyleCopyWithImpl<$Res>
+class _$CardFormStyleCopyWithImpl<$Res, $Val extends CardFormStyle>
     implements $CardFormStyleCopyWith<$Res> {
   _$CardFormStyleCopyWithImpl(this._value, this._then);
 
-  final CardFormStyle _value;
   // ignore: unused_field
-  final $Res Function(CardFormStyle) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? backgroundColor = freezed,
@@ -503,43 +512,43 @@ class _$CardFormStyleCopyWithImpl<$Res>
     Object? placeholderColor = freezed,
   }) {
     return _then(_value.copyWith(
-      backgroundColor: backgroundColor == freezed
+      backgroundColor: freezed == backgroundColor
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      borderWidth: borderWidth == freezed
+      borderWidth: freezed == borderWidth
           ? _value.borderWidth
           : borderWidth // ignore: cast_nullable_to_non_nullable
               as int?,
-      borderColor: borderColor == freezed
+      borderColor: freezed == borderColor
           ? _value.borderColor
           : borderColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      borderRadius: borderRadius == freezed
+      borderRadius: freezed == borderRadius
           ? _value.borderRadius
           : borderRadius // ignore: cast_nullable_to_non_nullable
               as int?,
-      cursorColor: cursorColor == freezed
+      cursorColor: freezed == cursorColor
           ? _value.cursorColor
           : cursorColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      textColor: textColor == freezed
+      textColor: freezed == textColor
           ? _value.textColor
           : textColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      fontSize: fontSize == freezed
+      fontSize: freezed == fontSize
           ? _value.fontSize
           : fontSize // ignore: cast_nullable_to_non_nullable
               as int?,
-      textErrorColor: textErrorColor == freezed
+      textErrorColor: freezed == textErrorColor
           ? _value.textErrorColor
           : textErrorColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      placeholderColor: placeholderColor == freezed
+      placeholderColor: freezed == placeholderColor
           ? _value.placeholderColor
           : placeholderColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -551,6 +560,7 @@ abstract class _$$_CardFormStyleConstructorCopyWith<$Res>
           $Res Function(_$_CardFormStyleConstructor) then) =
       __$$_CardFormStyleConstructorCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? backgroundColor,
@@ -571,16 +581,13 @@ abstract class _$$_CardFormStyleConstructorCopyWith<$Res>
 
 /// @nodoc
 class __$$_CardFormStyleConstructorCopyWithImpl<$Res>
-    extends _$CardFormStyleCopyWithImpl<$Res>
+    extends _$CardFormStyleCopyWithImpl<$Res, _$_CardFormStyleConstructor>
     implements _$$_CardFormStyleConstructorCopyWith<$Res> {
   __$$_CardFormStyleConstructorCopyWithImpl(_$_CardFormStyleConstructor _value,
       $Res Function(_$_CardFormStyleConstructor) _then)
-      : super(_value, (v) => _then(v as _$_CardFormStyleConstructor));
+      : super(_value, _then);
 
-  @override
-  _$_CardFormStyleConstructor get _value =>
-      super._value as _$_CardFormStyleConstructor;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? backgroundColor = freezed,
@@ -594,39 +601,39 @@ class __$$_CardFormStyleConstructorCopyWithImpl<$Res>
     Object? placeholderColor = freezed,
   }) {
     return _then(_$_CardFormStyleConstructor(
-      backgroundColor: backgroundColor == freezed
+      backgroundColor: freezed == backgroundColor
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      borderWidth: borderWidth == freezed
+      borderWidth: freezed == borderWidth
           ? _value.borderWidth
           : borderWidth // ignore: cast_nullable_to_non_nullable
               as int?,
-      borderColor: borderColor == freezed
+      borderColor: freezed == borderColor
           ? _value.borderColor
           : borderColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      borderRadius: borderRadius == freezed
+      borderRadius: freezed == borderRadius
           ? _value.borderRadius
           : borderRadius // ignore: cast_nullable_to_non_nullable
               as int?,
-      cursorColor: cursorColor == freezed
+      cursorColor: freezed == cursorColor
           ? _value.cursorColor
           : cursorColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      textColor: textColor == freezed
+      textColor: freezed == textColor
           ? _value.textColor
           : textColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      fontSize: fontSize == freezed
+      fontSize: freezed == fontSize
           ? _value.fontSize
           : fontSize // ignore: cast_nullable_to_non_nullable
               as int?,
-      textErrorColor: textErrorColor == freezed
+      textErrorColor: freezed == textErrorColor
           ? _value.textErrorColor
           : textErrorColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      placeholderColor: placeholderColor == freezed
+      placeholderColor: freezed == placeholderColor
           ? _value.placeholderColor
           : placeholderColor // ignore: cast_nullable_to_non_nullable
               as Color?,
@@ -702,40 +709,43 @@ class _$_CardFormStyleConstructor extends _CardFormStyleConstructor {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CardFormStyleConstructor &&
-            const DeepCollectionEquality()
-                .equals(other.backgroundColor, backgroundColor) &&
-            const DeepCollectionEquality()
-                .equals(other.borderWidth, borderWidth) &&
-            const DeepCollectionEquality()
-                .equals(other.borderColor, borderColor) &&
-            const DeepCollectionEquality()
-                .equals(other.borderRadius, borderRadius) &&
-            const DeepCollectionEquality()
-                .equals(other.cursorColor, cursorColor) &&
-            const DeepCollectionEquality().equals(other.textColor, textColor) &&
-            const DeepCollectionEquality().equals(other.fontSize, fontSize) &&
-            const DeepCollectionEquality()
-                .equals(other.textErrorColor, textErrorColor) &&
-            const DeepCollectionEquality()
-                .equals(other.placeholderColor, placeholderColor));
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.borderWidth, borderWidth) ||
+                other.borderWidth == borderWidth) &&
+            (identical(other.borderColor, borderColor) ||
+                other.borderColor == borderColor) &&
+            (identical(other.borderRadius, borderRadius) ||
+                other.borderRadius == borderRadius) &&
+            (identical(other.cursorColor, cursorColor) ||
+                other.cursorColor == cursorColor) &&
+            (identical(other.textColor, textColor) ||
+                other.textColor == textColor) &&
+            (identical(other.fontSize, fontSize) ||
+                other.fontSize == fontSize) &&
+            (identical(other.textErrorColor, textErrorColor) ||
+                other.textErrorColor == textErrorColor) &&
+            (identical(other.placeholderColor, placeholderColor) ||
+                other.placeholderColor == placeholderColor));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(backgroundColor),
-      const DeepCollectionEquality().hash(borderWidth),
-      const DeepCollectionEquality().hash(borderColor),
-      const DeepCollectionEquality().hash(borderRadius),
-      const DeepCollectionEquality().hash(cursorColor),
-      const DeepCollectionEquality().hash(textColor),
-      const DeepCollectionEquality().hash(fontSize),
-      const DeepCollectionEquality().hash(textErrorColor),
-      const DeepCollectionEquality().hash(placeholderColor));
+      backgroundColor,
+      borderWidth,
+      borderColor,
+      borderRadius,
+      cursorColor,
+      textColor,
+      fontSize,
+      textErrorColor,
+      placeholderColor);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CardFormStyleConstructorCopyWith<_$_CardFormStyleConstructor>
       get copyWith => __$$_CardFormStyleConstructorCopyWithImpl<
           _$_CardFormStyleConstructor>(this, _$identity);
@@ -836,20 +846,23 @@ mixin _$CardPlaceholder {
 abstract class $CardPlaceholderCopyWith<$Res> {
   factory $CardPlaceholderCopyWith(
           CardPlaceholder value, $Res Function(CardPlaceholder) then) =
-      _$CardPlaceholderCopyWithImpl<$Res>;
+      _$CardPlaceholderCopyWithImpl<$Res, CardPlaceholder>;
+  @useResult
   $Res call(
       {String? number, String? expiration, String? cvc, String? postalCode});
 }
 
 /// @nodoc
-class _$CardPlaceholderCopyWithImpl<$Res>
+class _$CardPlaceholderCopyWithImpl<$Res, $Val extends CardPlaceholder>
     implements $CardPlaceholderCopyWith<$Res> {
   _$CardPlaceholderCopyWithImpl(this._value, this._then);
 
-  final CardPlaceholder _value;
   // ignore: unused_field
-  final $Res Function(CardPlaceholder) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? number = freezed,
@@ -858,23 +871,23 @@ class _$CardPlaceholderCopyWithImpl<$Res>
     Object? postalCode = freezed,
   }) {
     return _then(_value.copyWith(
-      number: number == freezed
+      number: freezed == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String?,
-      expiration: expiration == freezed
+      expiration: freezed == expiration
           ? _value.expiration
           : expiration // ignore: cast_nullable_to_non_nullable
               as String?,
-      cvc: cvc == freezed
+      cvc: freezed == cvc
           ? _value.cvc
           : cvc // ignore: cast_nullable_to_non_nullable
               as String?,
-      postalCode: postalCode == freezed
+      postalCode: freezed == postalCode
           ? _value.postalCode
           : postalCode // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -886,23 +899,21 @@ abstract class _$$_CardPlaceholderConstructorCopyWith<$Res>
           $Res Function(_$_CardPlaceholderConstructor) then) =
       __$$_CardPlaceholderConstructorCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? number, String? expiration, String? cvc, String? postalCode});
 }
 
 /// @nodoc
 class __$$_CardPlaceholderConstructorCopyWithImpl<$Res>
-    extends _$CardPlaceholderCopyWithImpl<$Res>
+    extends _$CardPlaceholderCopyWithImpl<$Res, _$_CardPlaceholderConstructor>
     implements _$$_CardPlaceholderConstructorCopyWith<$Res> {
   __$$_CardPlaceholderConstructorCopyWithImpl(
       _$_CardPlaceholderConstructor _value,
       $Res Function(_$_CardPlaceholderConstructor) _then)
-      : super(_value, (v) => _then(v as _$_CardPlaceholderConstructor));
+      : super(_value, _then);
 
-  @override
-  _$_CardPlaceholderConstructor get _value =>
-      super._value as _$_CardPlaceholderConstructor;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? number = freezed,
@@ -911,19 +922,19 @@ class __$$_CardPlaceholderConstructorCopyWithImpl<$Res>
     Object? postalCode = freezed,
   }) {
     return _then(_$_CardPlaceholderConstructor(
-      number: number == freezed
+      number: freezed == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String?,
-      expiration: expiration == freezed
+      expiration: freezed == expiration
           ? _value.expiration
           : expiration // ignore: cast_nullable_to_non_nullable
               as String?,
-      cvc: cvc == freezed
+      cvc: freezed == cvc
           ? _value.cvc
           : cvc // ignore: cast_nullable_to_non_nullable
               as String?,
-      postalCode: postalCode == freezed
+      postalCode: freezed == postalCode
           ? _value.postalCode
           : postalCode // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -968,25 +979,22 @@ class _$_CardPlaceholderConstructor extends _CardPlaceholderConstructor {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CardPlaceholderConstructor &&
-            const DeepCollectionEquality().equals(other.number, number) &&
-            const DeepCollectionEquality()
-                .equals(other.expiration, expiration) &&
-            const DeepCollectionEquality().equals(other.cvc, cvc) &&
-            const DeepCollectionEquality()
-                .equals(other.postalCode, postalCode));
+            (identical(other.number, number) || other.number == number) &&
+            (identical(other.expiration, expiration) ||
+                other.expiration == expiration) &&
+            (identical(other.cvc, cvc) || other.cvc == cvc) &&
+            (identical(other.postalCode, postalCode) ||
+                other.postalCode == postalCode));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(number),
-      const DeepCollectionEquality().hash(expiration),
-      const DeepCollectionEquality().hash(cvc),
-      const DeepCollectionEquality().hash(postalCode));
+  int get hashCode =>
+      Object.hash(runtimeType, number, expiration, cvc, postalCode);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CardPlaceholderConstructorCopyWith<_$_CardPlaceholderConstructor>
       get copyWith => __$$_CardPlaceholderConstructorCopyWithImpl<
           _$_CardPlaceholderConstructor>(this, _$identity);
@@ -1084,7 +1092,8 @@ mixin _$CardFieldInputDetails {
 abstract class $CardFieldInputDetailsCopyWith<$Res> {
   factory $CardFieldInputDetailsCopyWith(CardFieldInputDetails value,
           $Res Function(CardFieldInputDetails) then) =
-      _$CardFieldInputDetailsCopyWithImpl<$Res>;
+      _$CardFieldInputDetailsCopyWithImpl<$Res, CardFieldInputDetails>;
+  @useResult
   $Res call(
       {bool complete,
       String? last4,
@@ -1100,17 +1109,20 @@ abstract class $CardFieldInputDetailsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CardFieldInputDetailsCopyWithImpl<$Res>
+class _$CardFieldInputDetailsCopyWithImpl<$Res,
+        $Val extends CardFieldInputDetails>
     implements $CardFieldInputDetailsCopyWith<$Res> {
   _$CardFieldInputDetailsCopyWithImpl(this._value, this._then);
 
-  final CardFieldInputDetails _value;
   // ignore: unused_field
-  final $Res Function(CardFieldInputDetails) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? complete = freezed,
+    Object? complete = null,
     Object? last4 = freezed,
     Object? expiryMonth = freezed,
     Object? expiryYear = freezed,
@@ -1118,56 +1130,56 @@ class _$CardFieldInputDetailsCopyWithImpl<$Res>
     Object? brand = freezed,
     Object? number = freezed,
     Object? cvc = freezed,
-    Object? validExpiryDate = freezed,
-    Object? validCVC = freezed,
-    Object? validNumber = freezed,
+    Object? validExpiryDate = null,
+    Object? validCVC = null,
+    Object? validNumber = null,
   }) {
     return _then(_value.copyWith(
-      complete: complete == freezed
+      complete: null == complete
           ? _value.complete
           : complete // ignore: cast_nullable_to_non_nullable
               as bool,
-      last4: last4 == freezed
+      last4: freezed == last4
           ? _value.last4
           : last4 // ignore: cast_nullable_to_non_nullable
               as String?,
-      expiryMonth: expiryMonth == freezed
+      expiryMonth: freezed == expiryMonth
           ? _value.expiryMonth
           : expiryMonth // ignore: cast_nullable_to_non_nullable
               as int?,
-      expiryYear: expiryYear == freezed
+      expiryYear: freezed == expiryYear
           ? _value.expiryYear
           : expiryYear // ignore: cast_nullable_to_non_nullable
               as int?,
-      postalCode: postalCode == freezed
+      postalCode: freezed == postalCode
           ? _value.postalCode
           : postalCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      brand: brand == freezed
+      brand: freezed == brand
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
               as String?,
-      number: number == freezed
+      number: freezed == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String?,
-      cvc: cvc == freezed
+      cvc: freezed == cvc
           ? _value.cvc
           : cvc // ignore: cast_nullable_to_non_nullable
               as String?,
-      validExpiryDate: validExpiryDate == freezed
+      validExpiryDate: null == validExpiryDate
           ? _value.validExpiryDate
           : validExpiryDate // ignore: cast_nullable_to_non_nullable
               as CardValidationState,
-      validCVC: validCVC == freezed
+      validCVC: null == validCVC
           ? _value.validCVC
           : validCVC // ignore: cast_nullable_to_non_nullable
               as CardValidationState,
-      validNumber: validNumber == freezed
+      validNumber: null == validNumber
           ? _value.validNumber
           : validNumber // ignore: cast_nullable_to_non_nullable
               as CardValidationState,
-    ));
+    ) as $Val);
   }
 }
 
@@ -1178,6 +1190,7 @@ abstract class _$$_CardFieldInputDetailsCopyWith<$Res>
           $Res Function(_$_CardFieldInputDetails) then) =
       __$$_CardFieldInputDetailsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {bool complete,
       String? last4,
@@ -1194,19 +1207,16 @@ abstract class _$$_CardFieldInputDetailsCopyWith<$Res>
 
 /// @nodoc
 class __$$_CardFieldInputDetailsCopyWithImpl<$Res>
-    extends _$CardFieldInputDetailsCopyWithImpl<$Res>
+    extends _$CardFieldInputDetailsCopyWithImpl<$Res, _$_CardFieldInputDetails>
     implements _$$_CardFieldInputDetailsCopyWith<$Res> {
   __$$_CardFieldInputDetailsCopyWithImpl(_$_CardFieldInputDetails _value,
       $Res Function(_$_CardFieldInputDetails) _then)
-      : super(_value, (v) => _then(v as _$_CardFieldInputDetails));
+      : super(_value, _then);
 
-  @override
-  _$_CardFieldInputDetails get _value =>
-      super._value as _$_CardFieldInputDetails;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? complete = freezed,
+    Object? complete = null,
     Object? last4 = freezed,
     Object? expiryMonth = freezed,
     Object? expiryYear = freezed,
@@ -1214,52 +1224,52 @@ class __$$_CardFieldInputDetailsCopyWithImpl<$Res>
     Object? brand = freezed,
     Object? number = freezed,
     Object? cvc = freezed,
-    Object? validExpiryDate = freezed,
-    Object? validCVC = freezed,
-    Object? validNumber = freezed,
+    Object? validExpiryDate = null,
+    Object? validCVC = null,
+    Object? validNumber = null,
   }) {
     return _then(_$_CardFieldInputDetails(
-      complete: complete == freezed
+      complete: null == complete
           ? _value.complete
           : complete // ignore: cast_nullable_to_non_nullable
               as bool,
-      last4: last4 == freezed
+      last4: freezed == last4
           ? _value.last4
           : last4 // ignore: cast_nullable_to_non_nullable
               as String?,
-      expiryMonth: expiryMonth == freezed
+      expiryMonth: freezed == expiryMonth
           ? _value.expiryMonth
           : expiryMonth // ignore: cast_nullable_to_non_nullable
               as int?,
-      expiryYear: expiryYear == freezed
+      expiryYear: freezed == expiryYear
           ? _value.expiryYear
           : expiryYear // ignore: cast_nullable_to_non_nullable
               as int?,
-      postalCode: postalCode == freezed
+      postalCode: freezed == postalCode
           ? _value.postalCode
           : postalCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      brand: brand == freezed
+      brand: freezed == brand
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
               as String?,
-      number: number == freezed
+      number: freezed == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String?,
-      cvc: cvc == freezed
+      cvc: freezed == cvc
           ? _value.cvc
           : cvc // ignore: cast_nullable_to_non_nullable
               as String?,
-      validExpiryDate: validExpiryDate == freezed
+      validExpiryDate: null == validExpiryDate
           ? _value.validExpiryDate
           : validExpiryDate // ignore: cast_nullable_to_non_nullable
               as CardValidationState,
-      validCVC: validCVC == freezed
+      validCVC: null == validCVC
           ? _value.validCVC
           : validCVC // ignore: cast_nullable_to_non_nullable
               as CardValidationState,
-      validNumber: validNumber == freezed
+      validNumber: null == validNumber
           ? _value.validNumber
           : validNumber // ignore: cast_nullable_to_non_nullable
               as CardValidationState,
@@ -1347,42 +1357,45 @@ class _$_CardFieldInputDetails extends _CardFieldInputDetails {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CardFieldInputDetails &&
-            const DeepCollectionEquality().equals(other.complete, complete) &&
-            const DeepCollectionEquality().equals(other.last4, last4) &&
-            const DeepCollectionEquality()
-                .equals(other.expiryMonth, expiryMonth) &&
-            const DeepCollectionEquality()
-                .equals(other.expiryYear, expiryYear) &&
-            const DeepCollectionEquality()
-                .equals(other.postalCode, postalCode) &&
-            const DeepCollectionEquality().equals(other.brand, brand) &&
-            const DeepCollectionEquality().equals(other.number, number) &&
-            const DeepCollectionEquality().equals(other.cvc, cvc) &&
-            const DeepCollectionEquality()
-                .equals(other.validExpiryDate, validExpiryDate) &&
-            const DeepCollectionEquality().equals(other.validCVC, validCVC) &&
-            const DeepCollectionEquality()
-                .equals(other.validNumber, validNumber));
+            (identical(other.complete, complete) ||
+                other.complete == complete) &&
+            (identical(other.last4, last4) || other.last4 == last4) &&
+            (identical(other.expiryMonth, expiryMonth) ||
+                other.expiryMonth == expiryMonth) &&
+            (identical(other.expiryYear, expiryYear) ||
+                other.expiryYear == expiryYear) &&
+            (identical(other.postalCode, postalCode) ||
+                other.postalCode == postalCode) &&
+            (identical(other.brand, brand) || other.brand == brand) &&
+            (identical(other.number, number) || other.number == number) &&
+            (identical(other.cvc, cvc) || other.cvc == cvc) &&
+            (identical(other.validExpiryDate, validExpiryDate) ||
+                other.validExpiryDate == validExpiryDate) &&
+            (identical(other.validCVC, validCVC) ||
+                other.validCVC == validCVC) &&
+            (identical(other.validNumber, validNumber) ||
+                other.validNumber == validNumber));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(complete),
-      const DeepCollectionEquality().hash(last4),
-      const DeepCollectionEquality().hash(expiryMonth),
-      const DeepCollectionEquality().hash(expiryYear),
-      const DeepCollectionEquality().hash(postalCode),
-      const DeepCollectionEquality().hash(brand),
-      const DeepCollectionEquality().hash(number),
-      const DeepCollectionEquality().hash(cvc),
-      const DeepCollectionEquality().hash(validExpiryDate),
-      const DeepCollectionEquality().hash(validCVC),
-      const DeepCollectionEquality().hash(validNumber));
+      complete,
+      last4,
+      expiryMonth,
+      expiryYear,
+      postalCode,
+      brand,
+      number,
+      cvc,
+      validExpiryDate,
+      validCVC,
+      validNumber);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CardFieldInputDetailsCopyWith<_$_CardFieldInputDetails> get copyWith =>
       __$$_CardFieldInputDetailsCopyWithImpl<_$_CardFieldInputDetails>(
           this, _$identity);
@@ -1483,29 +1496,32 @@ mixin _$CardFieldFocusName {
 abstract class $CardFieldFocusNameCopyWith<$Res> {
   factory $CardFieldFocusNameCopyWith(
           CardFieldFocusName value, $Res Function(CardFieldFocusName) then) =
-      _$CardFieldFocusNameCopyWithImpl<$Res>;
+      _$CardFieldFocusNameCopyWithImpl<$Res, CardFieldFocusName>;
+  @useResult
   $Res call({CardFieldName? focusedField});
 }
 
 /// @nodoc
-class _$CardFieldFocusNameCopyWithImpl<$Res>
+class _$CardFieldFocusNameCopyWithImpl<$Res, $Val extends CardFieldFocusName>
     implements $CardFieldFocusNameCopyWith<$Res> {
   _$CardFieldFocusNameCopyWithImpl(this._value, this._then);
 
-  final CardFieldFocusName _value;
   // ignore: unused_field
-  final $Res Function(CardFieldFocusName) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? focusedField = freezed,
   }) {
     return _then(_value.copyWith(
-      focusedField: focusedField == freezed
+      focusedField: freezed == focusedField
           ? _value.focusedField
           : focusedField // ignore: cast_nullable_to_non_nullable
               as CardFieldName?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -1516,26 +1532,25 @@ abstract class _$$_CardFieldFocusNameCopyWith<$Res>
           $Res Function(_$_CardFieldFocusName) then) =
       __$$_CardFieldFocusNameCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({CardFieldName? focusedField});
 }
 
 /// @nodoc
 class __$$_CardFieldFocusNameCopyWithImpl<$Res>
-    extends _$CardFieldFocusNameCopyWithImpl<$Res>
+    extends _$CardFieldFocusNameCopyWithImpl<$Res, _$_CardFieldFocusName>
     implements _$$_CardFieldFocusNameCopyWith<$Res> {
   __$$_CardFieldFocusNameCopyWithImpl(
       _$_CardFieldFocusName _value, $Res Function(_$_CardFieldFocusName) _then)
-      : super(_value, (v) => _then(v as _$_CardFieldFocusName));
+      : super(_value, _then);
 
-  @override
-  _$_CardFieldFocusName get _value => super._value as _$_CardFieldFocusName;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? focusedField = freezed,
   }) {
     return _then(_$_CardFieldFocusName(
-      focusedField: focusedField == freezed
+      focusedField: freezed == focusedField
           ? _value.focusedField
           : focusedField // ignore: cast_nullable_to_non_nullable
               as CardFieldName?,
@@ -1565,17 +1580,17 @@ class _$_CardFieldFocusName implements _CardFieldFocusName {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CardFieldFocusName &&
-            const DeepCollectionEquality()
-                .equals(other.focusedField, focusedField));
+            (identical(other.focusedField, focusedField) ||
+                other.focusedField == focusedField));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(focusedField));
+  int get hashCode => Object.hash(runtimeType, focusedField);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CardFieldFocusNameCopyWith<_$_CardFieldFocusName> get copyWith =>
       __$$_CardFieldFocusNameCopyWithImpl<_$_CardFieldFocusName>(
           this, _$identity);

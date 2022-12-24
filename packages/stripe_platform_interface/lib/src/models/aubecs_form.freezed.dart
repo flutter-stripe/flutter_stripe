@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'aubecs_form.dart';
 
@@ -52,7 +52,8 @@ mixin _$AubecsFormStyle {
 abstract class $AubecsFormStyleCopyWith<$Res> {
   factory $AubecsFormStyleCopyWith(
           AubecsFormStyle value, $Res Function(AubecsFormStyle) then) =
-      _$AubecsFormStyleCopyWithImpl<$Res>;
+      _$AubecsFormStyleCopyWithImpl<$Res, AubecsFormStyle>;
+  @useResult
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? textColor,
@@ -70,14 +71,16 @@ abstract class $AubecsFormStyleCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AubecsFormStyleCopyWithImpl<$Res>
+class _$AubecsFormStyleCopyWithImpl<$Res, $Val extends AubecsFormStyle>
     implements $AubecsFormStyleCopyWith<$Res> {
   _$AubecsFormStyleCopyWithImpl(this._value, this._then);
 
-  final AubecsFormStyle _value;
   // ignore: unused_field
-  final $Res Function(AubecsFormStyle) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? textColor = freezed,
@@ -90,39 +93,39 @@ class _$AubecsFormStyleCopyWithImpl<$Res>
     Object? borderRadius = freezed,
   }) {
     return _then(_value.copyWith(
-      textColor: textColor == freezed
+      textColor: freezed == textColor
           ? _value.textColor
           : textColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      textErrorColor: textErrorColor == freezed
+      textErrorColor: freezed == textErrorColor
           ? _value.textErrorColor
           : textErrorColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      placeholderColor: placeholderColor == freezed
+      placeholderColor: freezed == placeholderColor
           ? _value.placeholderColor
           : placeholderColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      fontSize: fontSize == freezed
+      fontSize: freezed == fontSize
           ? _value.fontSize
           : fontSize // ignore: cast_nullable_to_non_nullable
               as int?,
-      borderWidth: borderWidth == freezed
+      borderWidth: freezed == borderWidth
           ? _value.borderWidth
           : borderWidth // ignore: cast_nullable_to_non_nullable
               as int?,
-      backgroundColor: backgroundColor == freezed
+      backgroundColor: freezed == backgroundColor
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      borderColor: borderColor == freezed
+      borderColor: freezed == borderColor
           ? _value.borderColor
           : borderColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      borderRadius: borderRadius == freezed
+      borderRadius: freezed == borderRadius
           ? _value.borderRadius
           : borderRadius // ignore: cast_nullable_to_non_nullable
               as int?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -133,6 +136,7 @@ abstract class _$$_AubecsFormStyleCopyWith<$Res>
           _$_AubecsFormStyle value, $Res Function(_$_AubecsFormStyle) then) =
       __$$_AubecsFormStyleCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? textColor,
@@ -151,15 +155,13 @@ abstract class _$$_AubecsFormStyleCopyWith<$Res>
 
 /// @nodoc
 class __$$_AubecsFormStyleCopyWithImpl<$Res>
-    extends _$AubecsFormStyleCopyWithImpl<$Res>
+    extends _$AubecsFormStyleCopyWithImpl<$Res, _$_AubecsFormStyle>
     implements _$$_AubecsFormStyleCopyWith<$Res> {
   __$$_AubecsFormStyleCopyWithImpl(
       _$_AubecsFormStyle _value, $Res Function(_$_AubecsFormStyle) _then)
-      : super(_value, (v) => _then(v as _$_AubecsFormStyle));
+      : super(_value, _then);
 
-  @override
-  _$_AubecsFormStyle get _value => super._value as _$_AubecsFormStyle;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? textColor = freezed,
@@ -172,35 +174,35 @@ class __$$_AubecsFormStyleCopyWithImpl<$Res>
     Object? borderRadius = freezed,
   }) {
     return _then(_$_AubecsFormStyle(
-      textColor: textColor == freezed
+      textColor: freezed == textColor
           ? _value.textColor
           : textColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      textErrorColor: textErrorColor == freezed
+      textErrorColor: freezed == textErrorColor
           ? _value.textErrorColor
           : textErrorColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      placeholderColor: placeholderColor == freezed
+      placeholderColor: freezed == placeholderColor
           ? _value.placeholderColor
           : placeholderColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      fontSize: fontSize == freezed
+      fontSize: freezed == fontSize
           ? _value.fontSize
           : fontSize // ignore: cast_nullable_to_non_nullable
               as int?,
-      borderWidth: borderWidth == freezed
+      borderWidth: freezed == borderWidth
           ? _value.borderWidth
           : borderWidth // ignore: cast_nullable_to_non_nullable
               as int?,
-      backgroundColor: backgroundColor == freezed
+      backgroundColor: freezed == backgroundColor
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      borderColor: borderColor == freezed
+      borderColor: freezed == borderColor
           ? _value.borderColor
           : borderColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      borderRadius: borderRadius == freezed
+      borderRadius: freezed == borderRadius
           ? _value.borderRadius
           : borderRadius // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -270,37 +272,40 @@ class _$_AubecsFormStyle implements _AubecsFormStyle {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AubecsFormStyle &&
-            const DeepCollectionEquality().equals(other.textColor, textColor) &&
-            const DeepCollectionEquality()
-                .equals(other.textErrorColor, textErrorColor) &&
-            const DeepCollectionEquality()
-                .equals(other.placeholderColor, placeholderColor) &&
-            const DeepCollectionEquality().equals(other.fontSize, fontSize) &&
-            const DeepCollectionEquality()
-                .equals(other.borderWidth, borderWidth) &&
-            const DeepCollectionEquality()
-                .equals(other.backgroundColor, backgroundColor) &&
-            const DeepCollectionEquality()
-                .equals(other.borderColor, borderColor) &&
-            const DeepCollectionEquality()
-                .equals(other.borderRadius, borderRadius));
+            (identical(other.textColor, textColor) ||
+                other.textColor == textColor) &&
+            (identical(other.textErrorColor, textErrorColor) ||
+                other.textErrorColor == textErrorColor) &&
+            (identical(other.placeholderColor, placeholderColor) ||
+                other.placeholderColor == placeholderColor) &&
+            (identical(other.fontSize, fontSize) ||
+                other.fontSize == fontSize) &&
+            (identical(other.borderWidth, borderWidth) ||
+                other.borderWidth == borderWidth) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.borderColor, borderColor) ||
+                other.borderColor == borderColor) &&
+            (identical(other.borderRadius, borderRadius) ||
+                other.borderRadius == borderRadius));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(textColor),
-      const DeepCollectionEquality().hash(textErrorColor),
-      const DeepCollectionEquality().hash(placeholderColor),
-      const DeepCollectionEquality().hash(fontSize),
-      const DeepCollectionEquality().hash(borderWidth),
-      const DeepCollectionEquality().hash(backgroundColor),
-      const DeepCollectionEquality().hash(borderColor),
-      const DeepCollectionEquality().hash(borderRadius));
+      textColor,
+      textErrorColor,
+      placeholderColor,
+      fontSize,
+      borderWidth,
+      backgroundColor,
+      borderColor,
+      borderRadius);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AubecsFormStyleCopyWith<_$_AubecsFormStyle> get copyWith =>
       __$$_AubecsFormStyleCopyWithImpl<_$_AubecsFormStyle>(this, _$identity);
 
@@ -395,20 +400,24 @@ mixin _$AubecsFormInputDetails {
 abstract class $AubecsFormInputDetailsCopyWith<$Res> {
   factory $AubecsFormInputDetailsCopyWith(AubecsFormInputDetails value,
           $Res Function(AubecsFormInputDetails) then) =
-      _$AubecsFormInputDetailsCopyWithImpl<$Res>;
+      _$AubecsFormInputDetailsCopyWithImpl<$Res, AubecsFormInputDetails>;
+  @useResult
   $Res call(
       {String? bsbNumber, String? name, String? accountNumber, String? email});
 }
 
 /// @nodoc
-class _$AubecsFormInputDetailsCopyWithImpl<$Res>
+class _$AubecsFormInputDetailsCopyWithImpl<$Res,
+        $Val extends AubecsFormInputDetails>
     implements $AubecsFormInputDetailsCopyWith<$Res> {
   _$AubecsFormInputDetailsCopyWithImpl(this._value, this._then);
 
-  final AubecsFormInputDetails _value;
   // ignore: unused_field
-  final $Res Function(AubecsFormInputDetails) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? bsbNumber = freezed,
@@ -417,23 +426,23 @@ class _$AubecsFormInputDetailsCopyWithImpl<$Res>
     Object? email = freezed,
   }) {
     return _then(_value.copyWith(
-      bsbNumber: bsbNumber == freezed
+      bsbNumber: freezed == bsbNumber
           ? _value.bsbNumber
           : bsbNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      accountNumber: accountNumber == freezed
+      accountNumber: freezed == accountNumber
           ? _value.accountNumber
           : accountNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -444,22 +453,21 @@ abstract class _$$_AubecsFormInputDetailsCopyWith<$Res>
           $Res Function(_$_AubecsFormInputDetails) then) =
       __$$_AubecsFormInputDetailsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? bsbNumber, String? name, String? accountNumber, String? email});
 }
 
 /// @nodoc
 class __$$_AubecsFormInputDetailsCopyWithImpl<$Res>
-    extends _$AubecsFormInputDetailsCopyWithImpl<$Res>
+    extends _$AubecsFormInputDetailsCopyWithImpl<$Res,
+        _$_AubecsFormInputDetails>
     implements _$$_AubecsFormInputDetailsCopyWith<$Res> {
   __$$_AubecsFormInputDetailsCopyWithImpl(_$_AubecsFormInputDetails _value,
       $Res Function(_$_AubecsFormInputDetails) _then)
-      : super(_value, (v) => _then(v as _$_AubecsFormInputDetails));
+      : super(_value, _then);
 
-  @override
-  _$_AubecsFormInputDetails get _value =>
-      super._value as _$_AubecsFormInputDetails;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? bsbNumber = freezed,
@@ -468,19 +476,19 @@ class __$$_AubecsFormInputDetailsCopyWithImpl<$Res>
     Object? email = freezed,
   }) {
     return _then(_$_AubecsFormInputDetails(
-      bsbNumber: bsbNumber == freezed
+      bsbNumber: freezed == bsbNumber
           ? _value.bsbNumber
           : bsbNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      accountNumber: accountNumber == freezed
+      accountNumber: freezed == accountNumber
           ? _value.accountNumber
           : accountNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -524,24 +532,22 @@ class _$_AubecsFormInputDetails implements _AubecsFormInputDetails {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AubecsFormInputDetails &&
-            const DeepCollectionEquality().equals(other.bsbNumber, bsbNumber) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other.accountNumber, accountNumber) &&
-            const DeepCollectionEquality().equals(other.email, email));
+            (identical(other.bsbNumber, bsbNumber) ||
+                other.bsbNumber == bsbNumber) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.accountNumber, accountNumber) ||
+                other.accountNumber == accountNumber) &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(bsbNumber),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(accountNumber),
-      const DeepCollectionEquality().hash(email));
+  int get hashCode =>
+      Object.hash(runtimeType, bsbNumber, name, accountNumber, email);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AubecsFormInputDetailsCopyWith<_$_AubecsFormInputDetails> get copyWith =>
       __$$_AubecsFormInputDetailsCopyWithImpl<_$_AubecsFormInputDetails>(
           this, _$identity);

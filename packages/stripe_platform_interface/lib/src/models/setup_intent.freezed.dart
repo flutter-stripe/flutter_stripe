@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'setup_intent.dart';
 
@@ -67,7 +67,8 @@ mixin _$SetupIntent {
 abstract class $SetupIntentCopyWith<$Res> {
   factory $SetupIntentCopyWith(
           SetupIntent value, $Res Function(SetupIntent) then) =
-      _$SetupIntentCopyWithImpl<$Res>;
+      _$SetupIntentCopyWithImpl<$Res, SetupIntent>;
+  @useResult
   $Res call(
       {String id,
       String status,
@@ -86,94 +87,99 @@ abstract class $SetupIntentCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SetupIntentCopyWithImpl<$Res> implements $SetupIntentCopyWith<$Res> {
+class _$SetupIntentCopyWithImpl<$Res, $Val extends SetupIntent>
+    implements $SetupIntentCopyWith<$Res> {
   _$SetupIntentCopyWithImpl(this._value, this._then);
 
-  final SetupIntent _value;
   // ignore: unused_field
-  final $Res Function(SetupIntent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? status = freezed,
-    Object? livemode = freezed,
-    Object? clientSecret = freezed,
-    Object? paymentMethodId = freezed,
-    Object? usage = freezed,
-    Object? paymentMethodTypes = freezed,
+    Object? id = null,
+    Object? status = null,
+    Object? livemode = null,
+    Object? clientSecret = null,
+    Object? paymentMethodId = null,
+    Object? usage = null,
+    Object? paymentMethodTypes = null,
     Object? description = freezed,
     Object? created = freezed,
     Object? lastSetupError = freezed,
     Object? nextAction = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      livemode: livemode == freezed
+      livemode: null == livemode
           ? _value.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
-      clientSecret: clientSecret == freezed
+      clientSecret: null == clientSecret
           ? _value.clientSecret
           : clientSecret // ignore: cast_nullable_to_non_nullable
               as String,
-      paymentMethodId: paymentMethodId == freezed
+      paymentMethodId: null == paymentMethodId
           ? _value.paymentMethodId
           : paymentMethodId // ignore: cast_nullable_to_non_nullable
               as String,
-      usage: usage == freezed
+      usage: null == usage
           ? _value.usage
           : usage // ignore: cast_nullable_to_non_nullable
               as String,
-      paymentMethodTypes: paymentMethodTypes == freezed
+      paymentMethodTypes: null == paymentMethodTypes
           ? _value.paymentMethodTypes
           : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
               as List<PaymentMethodType>,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      created: created == freezed
+      created: freezed == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastSetupError: lastSetupError == freezed
+      lastSetupError: freezed == lastSetupError
           ? _value.lastSetupError
           : lastSetupError // ignore: cast_nullable_to_non_nullable
               as LastSetupError?,
-      nextAction: nextAction == freezed
+      nextAction: freezed == nextAction
           ? _value.nextAction
           : nextAction // ignore: cast_nullable_to_non_nullable
               as NextAction?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $LastSetupErrorCopyWith<$Res>? get lastSetupError {
     if (_value.lastSetupError == null) {
       return null;
     }
 
     return $LastSetupErrorCopyWith<$Res>(_value.lastSetupError!, (value) {
-      return _then(_value.copyWith(lastSetupError: value));
+      return _then(_value.copyWith(lastSetupError: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $NextActionCopyWith<$Res>? get nextAction {
     if (_value.nextAction == null) {
       return null;
     }
 
     return $NextActionCopyWith<$Res>(_value.nextAction!, (value) {
-      return _then(_value.copyWith(nextAction: value));
+      return _then(_value.copyWith(nextAction: value) as $Val);
     });
   }
 }
@@ -185,6 +191,7 @@ abstract class _$$_SetupIntentCopyWith<$Res>
           _$_SetupIntent value, $Res Function(_$_SetupIntent) then) =
       __$$_SetupIntentCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String id,
       String status,
@@ -205,71 +212,70 @@ abstract class _$$_SetupIntentCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SetupIntentCopyWithImpl<$Res> extends _$SetupIntentCopyWithImpl<$Res>
+class __$$_SetupIntentCopyWithImpl<$Res>
+    extends _$SetupIntentCopyWithImpl<$Res, _$_SetupIntent>
     implements _$$_SetupIntentCopyWith<$Res> {
   __$$_SetupIntentCopyWithImpl(
       _$_SetupIntent _value, $Res Function(_$_SetupIntent) _then)
-      : super(_value, (v) => _then(v as _$_SetupIntent));
+      : super(_value, _then);
 
-  @override
-  _$_SetupIntent get _value => super._value as _$_SetupIntent;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? status = freezed,
-    Object? livemode = freezed,
-    Object? clientSecret = freezed,
-    Object? paymentMethodId = freezed,
-    Object? usage = freezed,
-    Object? paymentMethodTypes = freezed,
+    Object? id = null,
+    Object? status = null,
+    Object? livemode = null,
+    Object? clientSecret = null,
+    Object? paymentMethodId = null,
+    Object? usage = null,
+    Object? paymentMethodTypes = null,
     Object? description = freezed,
     Object? created = freezed,
     Object? lastSetupError = freezed,
     Object? nextAction = freezed,
   }) {
     return _then(_$_SetupIntent(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      livemode: livemode == freezed
+      livemode: null == livemode
           ? _value.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
-      clientSecret: clientSecret == freezed
+      clientSecret: null == clientSecret
           ? _value.clientSecret
           : clientSecret // ignore: cast_nullable_to_non_nullable
               as String,
-      paymentMethodId: paymentMethodId == freezed
+      paymentMethodId: null == paymentMethodId
           ? _value.paymentMethodId
           : paymentMethodId // ignore: cast_nullable_to_non_nullable
               as String,
-      usage: usage == freezed
+      usage: null == usage
           ? _value.usage
           : usage // ignore: cast_nullable_to_non_nullable
               as String,
-      paymentMethodTypes: paymentMethodTypes == freezed
+      paymentMethodTypes: null == paymentMethodTypes
           ? _value._paymentMethodTypes
           : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
               as List<PaymentMethodType>,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      created: created == freezed
+      created: freezed == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastSetupError: lastSetupError == freezed
+      lastSetupError: freezed == lastSetupError
           ? _value.lastSetupError
           : lastSetupError // ignore: cast_nullable_to_non_nullable
               as LastSetupError?,
-      nextAction: nextAction == freezed
+      nextAction: freezed == nextAction
           ? _value.nextAction
           : nextAction // ignore: cast_nullable_to_non_nullable
               as NextAction?,
@@ -330,6 +336,8 @@ class _$_SetupIntent implements _SetupIntent {
   /// List of payment method types associated with this intent.
   @override
   List<PaymentMethodType> get paymentMethodTypes {
+    if (_paymentMethodTypes is EqualUnmodifiableListView)
+      return _paymentMethodTypes;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_paymentMethodTypes);
   }
@@ -361,43 +369,45 @@ class _$_SetupIntent implements _SetupIntent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SetupIntent &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(other.livemode, livemode) &&
-            const DeepCollectionEquality()
-                .equals(other.clientSecret, clientSecret) &&
-            const DeepCollectionEquality()
-                .equals(other.paymentMethodId, paymentMethodId) &&
-            const DeepCollectionEquality().equals(other.usage, usage) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.livemode, livemode) ||
+                other.livemode == livemode) &&
+            (identical(other.clientSecret, clientSecret) ||
+                other.clientSecret == clientSecret) &&
+            (identical(other.paymentMethodId, paymentMethodId) ||
+                other.paymentMethodId == paymentMethodId) &&
+            (identical(other.usage, usage) || other.usage == usage) &&
             const DeepCollectionEquality()
                 .equals(other._paymentMethodTypes, _paymentMethodTypes) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.created, created) &&
-            const DeepCollectionEquality()
-                .equals(other.lastSetupError, lastSetupError) &&
-            const DeepCollectionEquality()
-                .equals(other.nextAction, nextAction));
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.created, created) || other.created == created) &&
+            (identical(other.lastSetupError, lastSetupError) ||
+                other.lastSetupError == lastSetupError) &&
+            (identical(other.nextAction, nextAction) ||
+                other.nextAction == nextAction));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(livemode),
-      const DeepCollectionEquality().hash(clientSecret),
-      const DeepCollectionEquality().hash(paymentMethodId),
-      const DeepCollectionEquality().hash(usage),
+      id,
+      status,
+      livemode,
+      clientSecret,
+      paymentMethodId,
+      usage,
       const DeepCollectionEquality().hash(_paymentMethodTypes),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(created),
-      const DeepCollectionEquality().hash(lastSetupError),
-      const DeepCollectionEquality().hash(nextAction));
+      description,
+      created,
+      lastSetupError,
+      nextAction);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SetupIntentCopyWith<_$_SetupIntent> get copyWith =>
       __$$_SetupIntentCopyWithImpl<_$_SetupIntent>(this, _$identity);
 
@@ -501,34 +511,37 @@ mixin _$LastSetupError {
 abstract class $LastSetupErrorCopyWith<$Res> {
   factory $LastSetupErrorCopyWith(
           LastSetupError value, $Res Function(LastSetupError) then) =
-      _$LastSetupErrorCopyWithImpl<$Res>;
+      _$LastSetupErrorCopyWithImpl<$Res, LastSetupError>;
+  @useResult
   $Res call({String code, String message});
 }
 
 /// @nodoc
-class _$LastSetupErrorCopyWithImpl<$Res>
+class _$LastSetupErrorCopyWithImpl<$Res, $Val extends LastSetupError>
     implements $LastSetupErrorCopyWith<$Res> {
   _$LastSetupErrorCopyWithImpl(this._value, this._then);
 
-  final LastSetupError _value;
   // ignore: unused_field
-  final $Res Function(LastSetupError) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
-    Object? message = freezed,
+    Object? code = null,
+    Object? message = null,
   }) {
     return _then(_value.copyWith(
-      code: code == freezed
+      code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
-      message: message == freezed
+      message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -539,31 +552,30 @@ abstract class _$$_LastSetupErrorCopyWith<$Res>
           _$_LastSetupError value, $Res Function(_$_LastSetupError) then) =
       __$$_LastSetupErrorCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String code, String message});
 }
 
 /// @nodoc
 class __$$_LastSetupErrorCopyWithImpl<$Res>
-    extends _$LastSetupErrorCopyWithImpl<$Res>
+    extends _$LastSetupErrorCopyWithImpl<$Res, _$_LastSetupError>
     implements _$$_LastSetupErrorCopyWith<$Res> {
   __$$_LastSetupErrorCopyWithImpl(
       _$_LastSetupError _value, $Res Function(_$_LastSetupError) _then)
-      : super(_value, (v) => _then(v as _$_LastSetupError));
+      : super(_value, _then);
 
-  @override
-  _$_LastSetupError get _value => super._value as _$_LastSetupError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
-    Object? message = freezed,
+    Object? code = null,
+    Object? message = null,
   }) {
     return _then(_$_LastSetupError(
-      code: code == freezed
+      code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
-      message: message == freezed
+      message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
@@ -598,19 +610,17 @@ class _$_LastSetupError implements _LastSetupError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LastSetupError &&
-            const DeepCollectionEquality().equals(other.code, code) &&
-            const DeepCollectionEquality().equals(other.message, message));
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(code),
-      const DeepCollectionEquality().hash(message));
+  int get hashCode => Object.hash(runtimeType, code, message);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LastSetupErrorCopyWith<_$_LastSetupError> get copyWith =>
       __$$_LastSetupErrorCopyWithImpl<_$_LastSetupError>(this, _$identity);
 

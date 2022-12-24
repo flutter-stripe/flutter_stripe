@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'three_d_secure.dart';
 
@@ -66,7 +66,9 @@ abstract class $ThreeDSecureConfigurationParamsCopyWith<$Res> {
   factory $ThreeDSecureConfigurationParamsCopyWith(
           ThreeDSecureConfigurationParams value,
           $Res Function(ThreeDSecureConfigurationParams) then) =
-      _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res>;
+      _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res,
+          ThreeDSecureConfigurationParams>;
+  @useResult
   $Res call(
       {ThreeDSecureNavigationBarThemeData navigationBar,
       int? timeout,
@@ -89,17 +91,20 @@ abstract class $ThreeDSecureConfigurationParamsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res>
+class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res,
+        $Val extends ThreeDSecureConfigurationParams>
     implements $ThreeDSecureConfigurationParamsCopyWith<$Res> {
   _$ThreeDSecureConfigurationParamsCopyWithImpl(this._value, this._then);
 
-  final ThreeDSecureConfigurationParams _value;
   // ignore: unused_field
-  final $Res Function(ThreeDSecureConfigurationParams) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? navigationBar = freezed,
+    Object? navigationBar = null,
     Object? timeout = freezed,
     Object? label = freezed,
     Object? textField = freezed,
@@ -110,65 +115,68 @@ class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res>
     Object? resendButton = freezed,
   }) {
     return _then(_value.copyWith(
-      navigationBar: navigationBar == freezed
+      navigationBar: null == navigationBar
           ? _value.navigationBar
           : navigationBar // ignore: cast_nullable_to_non_nullable
               as ThreeDSecureNavigationBarThemeData,
-      timeout: timeout == freezed
+      timeout: freezed == timeout
           ? _value.timeout
           : timeout // ignore: cast_nullable_to_non_nullable
               as int?,
-      label: label == freezed
+      label: freezed == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as ThreeDSecureLabelThemeData?,
-      textField: textField == freezed
+      textField: freezed == textField
           ? _value.textField
           : textField // ignore: cast_nullable_to_non_nullable
               as ThreeDSecureTextFieldThemeData?,
-      submitButton: submitButton == freezed
+      submitButton: freezed == submitButton
           ? _value.submitButton
           : submitButton // ignore: cast_nullable_to_non_nullable
               as ThreeDSecureButtonThemeData?,
-      cancelButton: cancelButton == freezed
+      cancelButton: freezed == cancelButton
           ? _value.cancelButton
           : cancelButton // ignore: cast_nullable_to_non_nullable
               as ThreeDSecureButtonThemeData?,
-      nextButton: nextButton == freezed
+      nextButton: freezed == nextButton
           ? _value.nextButton
           : nextButton // ignore: cast_nullable_to_non_nullable
               as ThreeDSecureButtonThemeData?,
-      continueButton: continueButton == freezed
+      continueButton: freezed == continueButton
           ? _value.continueButton
           : continueButton // ignore: cast_nullable_to_non_nullable
               as ThreeDSecureButtonThemeData?,
-      resendButton: resendButton == freezed
+      resendButton: freezed == resendButton
           ? _value.resendButton
           : resendButton // ignore: cast_nullable_to_non_nullable
               as ThreeDSecureButtonThemeData?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ThreeDSecureNavigationBarThemeDataCopyWith<$Res> get navigationBar {
     return $ThreeDSecureNavigationBarThemeDataCopyWith<$Res>(
         _value.navigationBar, (value) {
-      return _then(_value.copyWith(navigationBar: value));
+      return _then(_value.copyWith(navigationBar: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ThreeDSecureLabelThemeDataCopyWith<$Res>? get label {
     if (_value.label == null) {
       return null;
     }
 
     return $ThreeDSecureLabelThemeDataCopyWith<$Res>(_value.label!, (value) {
-      return _then(_value.copyWith(label: value));
+      return _then(_value.copyWith(label: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ThreeDSecureTextFieldThemeDataCopyWith<$Res>? get textField {
     if (_value.textField == null) {
       return null;
@@ -176,11 +184,12 @@ class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res>
 
     return $ThreeDSecureTextFieldThemeDataCopyWith<$Res>(_value.textField!,
         (value) {
-      return _then(_value.copyWith(textField: value));
+      return _then(_value.copyWith(textField: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ThreeDSecureButtonThemeDataCopyWith<$Res>? get submitButton {
     if (_value.submitButton == null) {
       return null;
@@ -188,11 +197,12 @@ class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res>
 
     return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_value.submitButton!,
         (value) {
-      return _then(_value.copyWith(submitButton: value));
+      return _then(_value.copyWith(submitButton: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ThreeDSecureButtonThemeDataCopyWith<$Res>? get cancelButton {
     if (_value.cancelButton == null) {
       return null;
@@ -200,11 +210,12 @@ class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res>
 
     return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_value.cancelButton!,
         (value) {
-      return _then(_value.copyWith(cancelButton: value));
+      return _then(_value.copyWith(cancelButton: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ThreeDSecureButtonThemeDataCopyWith<$Res>? get nextButton {
     if (_value.nextButton == null) {
       return null;
@@ -212,11 +223,12 @@ class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res>
 
     return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_value.nextButton!,
         (value) {
-      return _then(_value.copyWith(nextButton: value));
+      return _then(_value.copyWith(nextButton: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ThreeDSecureButtonThemeDataCopyWith<$Res>? get continueButton {
     if (_value.continueButton == null) {
       return null;
@@ -224,11 +236,12 @@ class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res>
 
     return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_value.continueButton!,
         (value) {
-      return _then(_value.copyWith(continueButton: value));
+      return _then(_value.copyWith(continueButton: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ThreeDSecureButtonThemeDataCopyWith<$Res>? get resendButton {
     if (_value.resendButton == null) {
       return null;
@@ -236,7 +249,7 @@ class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res>
 
     return $ThreeDSecureButtonThemeDataCopyWith<$Res>(_value.resendButton!,
         (value) {
-      return _then(_value.copyWith(resendButton: value));
+      return _then(_value.copyWith(resendButton: value) as $Val);
     });
   }
 }
@@ -249,6 +262,7 @@ abstract class _$$_ThreeDSecureConfigurationParamsCopyWith<$Res>
           $Res Function(_$_ThreeDSecureConfigurationParams) then) =
       __$$_ThreeDSecureConfigurationParamsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {ThreeDSecureNavigationBarThemeData navigationBar,
       int? timeout,
@@ -280,20 +294,18 @@ abstract class _$$_ThreeDSecureConfigurationParamsCopyWith<$Res>
 
 /// @nodoc
 class __$$_ThreeDSecureConfigurationParamsCopyWithImpl<$Res>
-    extends _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res>
+    extends _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res,
+        _$_ThreeDSecureConfigurationParams>
     implements _$$_ThreeDSecureConfigurationParamsCopyWith<$Res> {
   __$$_ThreeDSecureConfigurationParamsCopyWithImpl(
       _$_ThreeDSecureConfigurationParams _value,
       $Res Function(_$_ThreeDSecureConfigurationParams) _then)
-      : super(_value, (v) => _then(v as _$_ThreeDSecureConfigurationParams));
+      : super(_value, _then);
 
-  @override
-  _$_ThreeDSecureConfigurationParams get _value =>
-      super._value as _$_ThreeDSecureConfigurationParams;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? navigationBar = freezed,
+    Object? navigationBar = null,
     Object? timeout = freezed,
     Object? label = freezed,
     Object? textField = freezed,
@@ -304,39 +316,39 @@ class __$$_ThreeDSecureConfigurationParamsCopyWithImpl<$Res>
     Object? resendButton = freezed,
   }) {
     return _then(_$_ThreeDSecureConfigurationParams(
-      navigationBar: navigationBar == freezed
+      navigationBar: null == navigationBar
           ? _value.navigationBar
           : navigationBar // ignore: cast_nullable_to_non_nullable
               as ThreeDSecureNavigationBarThemeData,
-      timeout: timeout == freezed
+      timeout: freezed == timeout
           ? _value.timeout
           : timeout // ignore: cast_nullable_to_non_nullable
               as int?,
-      label: label == freezed
+      label: freezed == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as ThreeDSecureLabelThemeData?,
-      textField: textField == freezed
+      textField: freezed == textField
           ? _value.textField
           : textField // ignore: cast_nullable_to_non_nullable
               as ThreeDSecureTextFieldThemeData?,
-      submitButton: submitButton == freezed
+      submitButton: freezed == submitButton
           ? _value.submitButton
           : submitButton // ignore: cast_nullable_to_non_nullable
               as ThreeDSecureButtonThemeData?,
-      cancelButton: cancelButton == freezed
+      cancelButton: freezed == cancelButton
           ? _value.cancelButton
           : cancelButton // ignore: cast_nullable_to_non_nullable
               as ThreeDSecureButtonThemeData?,
-      nextButton: nextButton == freezed
+      nextButton: freezed == nextButton
           ? _value.nextButton
           : nextButton // ignore: cast_nullable_to_non_nullable
               as ThreeDSecureButtonThemeData?,
-      continueButton: continueButton == freezed
+      continueButton: freezed == continueButton
           ? _value.continueButton
           : continueButton // ignore: cast_nullable_to_non_nullable
               as ThreeDSecureButtonThemeData?,
-      resendButton: resendButton == freezed
+      resendButton: freezed == resendButton
           ? _value.resendButton
           : resendButton // ignore: cast_nullable_to_non_nullable
               as ThreeDSecureButtonThemeData?,
@@ -410,39 +422,41 @@ class _$_ThreeDSecureConfigurationParams
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ThreeDSecureConfigurationParams &&
-            const DeepCollectionEquality()
-                .equals(other.navigationBar, navigationBar) &&
-            const DeepCollectionEquality().equals(other.timeout, timeout) &&
-            const DeepCollectionEquality().equals(other.label, label) &&
-            const DeepCollectionEquality().equals(other.textField, textField) &&
-            const DeepCollectionEquality()
-                .equals(other.submitButton, submitButton) &&
-            const DeepCollectionEquality()
-                .equals(other.cancelButton, cancelButton) &&
-            const DeepCollectionEquality()
-                .equals(other.nextButton, nextButton) &&
-            const DeepCollectionEquality()
-                .equals(other.continueButton, continueButton) &&
-            const DeepCollectionEquality()
-                .equals(other.resendButton, resendButton));
+            (identical(other.navigationBar, navigationBar) ||
+                other.navigationBar == navigationBar) &&
+            (identical(other.timeout, timeout) || other.timeout == timeout) &&
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.textField, textField) ||
+                other.textField == textField) &&
+            (identical(other.submitButton, submitButton) ||
+                other.submitButton == submitButton) &&
+            (identical(other.cancelButton, cancelButton) ||
+                other.cancelButton == cancelButton) &&
+            (identical(other.nextButton, nextButton) ||
+                other.nextButton == nextButton) &&
+            (identical(other.continueButton, continueButton) ||
+                other.continueButton == continueButton) &&
+            (identical(other.resendButton, resendButton) ||
+                other.resendButton == resendButton));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(navigationBar),
-      const DeepCollectionEquality().hash(timeout),
-      const DeepCollectionEquality().hash(label),
-      const DeepCollectionEquality().hash(textField),
-      const DeepCollectionEquality().hash(submitButton),
-      const DeepCollectionEquality().hash(cancelButton),
-      const DeepCollectionEquality().hash(nextButton),
-      const DeepCollectionEquality().hash(continueButton),
-      const DeepCollectionEquality().hash(resendButton));
+      navigationBar,
+      timeout,
+      label,
+      textField,
+      submitButton,
+      cancelButton,
+      nextButton,
+      continueButton,
+      resendButton);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ThreeDSecureConfigurationParamsCopyWith<
           _$_ThreeDSecureConfigurationParams>
       get copyWith => __$$_ThreeDSecureConfigurationParamsCopyWithImpl<
@@ -553,7 +567,9 @@ abstract class $ThreeDSecureNavigationBarThemeDataCopyWith<$Res> {
   factory $ThreeDSecureNavigationBarThemeDataCopyWith(
           ThreeDSecureNavigationBarThemeData value,
           $Res Function(ThreeDSecureNavigationBarThemeData) then) =
-      _$ThreeDSecureNavigationBarThemeDataCopyWithImpl<$Res>;
+      _$ThreeDSecureNavigationBarThemeDataCopyWithImpl<$Res,
+          ThreeDSecureNavigationBarThemeData>;
+  @useResult
   $Res call(
       {String? headerText,
       String? buttonText,
@@ -564,14 +580,17 @@ abstract class $ThreeDSecureNavigationBarThemeDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ThreeDSecureNavigationBarThemeDataCopyWithImpl<$Res>
+class _$ThreeDSecureNavigationBarThemeDataCopyWithImpl<$Res,
+        $Val extends ThreeDSecureNavigationBarThemeData>
     implements $ThreeDSecureNavigationBarThemeDataCopyWith<$Res> {
   _$ThreeDSecureNavigationBarThemeDataCopyWithImpl(this._value, this._then);
 
-  final ThreeDSecureNavigationBarThemeData _value;
   // ignore: unused_field
-  final $Res Function(ThreeDSecureNavigationBarThemeData) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? headerText = freezed,
@@ -582,31 +601,31 @@ class _$ThreeDSecureNavigationBarThemeDataCopyWithImpl<$Res>
     Object? textFontSize = freezed,
   }) {
     return _then(_value.copyWith(
-      headerText: headerText == freezed
+      headerText: freezed == headerText
           ? _value.headerText
           : headerText // ignore: cast_nullable_to_non_nullable
               as String?,
-      buttonText: buttonText == freezed
+      buttonText: freezed == buttonText
           ? _value.buttonText
           : buttonText // ignore: cast_nullable_to_non_nullable
               as String?,
-      textColor: textColor == freezed
+      textColor: freezed == textColor
           ? _value.textColor
           : textColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      statusBarColor: statusBarColor == freezed
+      statusBarColor: freezed == statusBarColor
           ? _value.statusBarColor
           : statusBarColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      backgroundColor: backgroundColor == freezed
+      backgroundColor: freezed == backgroundColor
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      textFontSize: textFontSize == freezed
+      textFontSize: freezed == textFontSize
           ? _value.textFontSize
           : textFontSize // ignore: cast_nullable_to_non_nullable
               as double?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -618,6 +637,7 @@ abstract class _$$_ThreeDSecureNavigationBarThemeDataCopyWith<$Res>
           $Res Function(_$_ThreeDSecureNavigationBarThemeData) then) =
       __$$_ThreeDSecureNavigationBarThemeDataCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? headerText,
       String? buttonText,
@@ -629,17 +649,15 @@ abstract class _$$_ThreeDSecureNavigationBarThemeDataCopyWith<$Res>
 
 /// @nodoc
 class __$$_ThreeDSecureNavigationBarThemeDataCopyWithImpl<$Res>
-    extends _$ThreeDSecureNavigationBarThemeDataCopyWithImpl<$Res>
+    extends _$ThreeDSecureNavigationBarThemeDataCopyWithImpl<$Res,
+        _$_ThreeDSecureNavigationBarThemeData>
     implements _$$_ThreeDSecureNavigationBarThemeDataCopyWith<$Res> {
   __$$_ThreeDSecureNavigationBarThemeDataCopyWithImpl(
       _$_ThreeDSecureNavigationBarThemeData _value,
       $Res Function(_$_ThreeDSecureNavigationBarThemeData) _then)
-      : super(_value, (v) => _then(v as _$_ThreeDSecureNavigationBarThemeData));
+      : super(_value, _then);
 
-  @override
-  _$_ThreeDSecureNavigationBarThemeData get _value =>
-      super._value as _$_ThreeDSecureNavigationBarThemeData;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? headerText = freezed,
@@ -650,27 +668,27 @@ class __$$_ThreeDSecureNavigationBarThemeDataCopyWithImpl<$Res>
     Object? textFontSize = freezed,
   }) {
     return _then(_$_ThreeDSecureNavigationBarThemeData(
-      headerText: headerText == freezed
+      headerText: freezed == headerText
           ? _value.headerText
           : headerText // ignore: cast_nullable_to_non_nullable
               as String?,
-      buttonText: buttonText == freezed
+      buttonText: freezed == buttonText
           ? _value.buttonText
           : buttonText // ignore: cast_nullable_to_non_nullable
               as String?,
-      textColor: textColor == freezed
+      textColor: freezed == textColor
           ? _value.textColor
           : textColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      statusBarColor: statusBarColor == freezed
+      statusBarColor: freezed == statusBarColor
           ? _value.statusBarColor
           : statusBarColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      backgroundColor: backgroundColor == freezed
+      backgroundColor: freezed == backgroundColor
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      textFontSize: textFontSize == freezed
+      textFontSize: freezed == textFontSize
           ? _value.textFontSize
           : textFontSize // ignore: cast_nullable_to_non_nullable
               as double?,
@@ -729,32 +747,28 @@ class _$_ThreeDSecureNavigationBarThemeData
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ThreeDSecureNavigationBarThemeData &&
-            const DeepCollectionEquality()
-                .equals(other.headerText, headerText) &&
-            const DeepCollectionEquality()
-                .equals(other.buttonText, buttonText) &&
-            const DeepCollectionEquality().equals(other.textColor, textColor) &&
-            const DeepCollectionEquality()
-                .equals(other.statusBarColor, statusBarColor) &&
-            const DeepCollectionEquality()
-                .equals(other.backgroundColor, backgroundColor) &&
-            const DeepCollectionEquality()
-                .equals(other.textFontSize, textFontSize));
+            (identical(other.headerText, headerText) ||
+                other.headerText == headerText) &&
+            (identical(other.buttonText, buttonText) ||
+                other.buttonText == buttonText) &&
+            (identical(other.textColor, textColor) ||
+                other.textColor == textColor) &&
+            (identical(other.statusBarColor, statusBarColor) ||
+                other.statusBarColor == statusBarColor) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.textFontSize, textFontSize) ||
+                other.textFontSize == textFontSize));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(headerText),
-      const DeepCollectionEquality().hash(buttonText),
-      const DeepCollectionEquality().hash(textColor),
-      const DeepCollectionEquality().hash(statusBarColor),
-      const DeepCollectionEquality().hash(backgroundColor),
-      const DeepCollectionEquality().hash(textFontSize));
+  int get hashCode => Object.hash(runtimeType, headerText, buttonText,
+      textColor, statusBarColor, backgroundColor, textFontSize);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ThreeDSecureNavigationBarThemeDataCopyWith<
           _$_ThreeDSecureNavigationBarThemeData>
       get copyWith => __$$_ThreeDSecureNavigationBarThemeDataCopyWithImpl<
@@ -841,7 +855,9 @@ mixin _$ThreeDSecureLabelThemeData {
 abstract class $ThreeDSecureLabelThemeDataCopyWith<$Res> {
   factory $ThreeDSecureLabelThemeDataCopyWith(ThreeDSecureLabelThemeData value,
           $Res Function(ThreeDSecureLabelThemeData) then) =
-      _$ThreeDSecureLabelThemeDataCopyWithImpl<$Res>;
+      _$ThreeDSecureLabelThemeDataCopyWithImpl<$Res,
+          ThreeDSecureLabelThemeData>;
+  @useResult
   $Res call(
       {String? headingTextColor,
       String? textColor,
@@ -850,14 +866,17 @@ abstract class $ThreeDSecureLabelThemeDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ThreeDSecureLabelThemeDataCopyWithImpl<$Res>
+class _$ThreeDSecureLabelThemeDataCopyWithImpl<$Res,
+        $Val extends ThreeDSecureLabelThemeData>
     implements $ThreeDSecureLabelThemeDataCopyWith<$Res> {
   _$ThreeDSecureLabelThemeDataCopyWithImpl(this._value, this._then);
 
-  final ThreeDSecureLabelThemeData _value;
   // ignore: unused_field
-  final $Res Function(ThreeDSecureLabelThemeData) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? headingTextColor = freezed,
@@ -866,23 +885,23 @@ class _$ThreeDSecureLabelThemeDataCopyWithImpl<$Res>
     Object? headingFontSize = freezed,
   }) {
     return _then(_value.copyWith(
-      headingTextColor: headingTextColor == freezed
+      headingTextColor: freezed == headingTextColor
           ? _value.headingTextColor
           : headingTextColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      textColor: textColor == freezed
+      textColor: freezed == textColor
           ? _value.textColor
           : textColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      textFontSize: textFontSize == freezed
+      textFontSize: freezed == textFontSize
           ? _value.textFontSize
           : textFontSize // ignore: cast_nullable_to_non_nullable
               as double?,
-      headingFontSize: headingFontSize == freezed
+      headingFontSize: freezed == headingFontSize
           ? _value.headingFontSize
           : headingFontSize // ignore: cast_nullable_to_non_nullable
               as double?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -894,6 +913,7 @@ abstract class _$$_ThreeDSecureLabelThemeDataCopyWith<$Res>
           $Res Function(_$_ThreeDSecureLabelThemeData) then) =
       __$$_ThreeDSecureLabelThemeDataCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? headingTextColor,
       String? textColor,
@@ -903,17 +923,15 @@ abstract class _$$_ThreeDSecureLabelThemeDataCopyWith<$Res>
 
 /// @nodoc
 class __$$_ThreeDSecureLabelThemeDataCopyWithImpl<$Res>
-    extends _$ThreeDSecureLabelThemeDataCopyWithImpl<$Res>
+    extends _$ThreeDSecureLabelThemeDataCopyWithImpl<$Res,
+        _$_ThreeDSecureLabelThemeData>
     implements _$$_ThreeDSecureLabelThemeDataCopyWith<$Res> {
   __$$_ThreeDSecureLabelThemeDataCopyWithImpl(
       _$_ThreeDSecureLabelThemeData _value,
       $Res Function(_$_ThreeDSecureLabelThemeData) _then)
-      : super(_value, (v) => _then(v as _$_ThreeDSecureLabelThemeData));
+      : super(_value, _then);
 
-  @override
-  _$_ThreeDSecureLabelThemeData get _value =>
-      super._value as _$_ThreeDSecureLabelThemeData;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? headingTextColor = freezed,
@@ -922,19 +940,19 @@ class __$$_ThreeDSecureLabelThemeDataCopyWithImpl<$Res>
     Object? headingFontSize = freezed,
   }) {
     return _then(_$_ThreeDSecureLabelThemeData(
-      headingTextColor: headingTextColor == freezed
+      headingTextColor: freezed == headingTextColor
           ? _value.headingTextColor
           : headingTextColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      textColor: textColor == freezed
+      textColor: freezed == textColor
           ? _value.textColor
           : textColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      textFontSize: textFontSize == freezed
+      textFontSize: freezed == textFontSize
           ? _value.textFontSize
           : textFontSize // ignore: cast_nullable_to_non_nullable
               as double?,
-      headingFontSize: headingFontSize == freezed
+      headingFontSize: freezed == headingFontSize
           ? _value.headingFontSize
           : headingFontSize // ignore: cast_nullable_to_non_nullable
               as double?,
@@ -980,26 +998,24 @@ class _$_ThreeDSecureLabelThemeData implements _ThreeDSecureLabelThemeData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ThreeDSecureLabelThemeData &&
-            const DeepCollectionEquality()
-                .equals(other.headingTextColor, headingTextColor) &&
-            const DeepCollectionEquality().equals(other.textColor, textColor) &&
-            const DeepCollectionEquality()
-                .equals(other.textFontSize, textFontSize) &&
-            const DeepCollectionEquality()
-                .equals(other.headingFontSize, headingFontSize));
+            (identical(other.headingTextColor, headingTextColor) ||
+                other.headingTextColor == headingTextColor) &&
+            (identical(other.textColor, textColor) ||
+                other.textColor == textColor) &&
+            (identical(other.textFontSize, textFontSize) ||
+                other.textFontSize == textFontSize) &&
+            (identical(other.headingFontSize, headingFontSize) ||
+                other.headingFontSize == headingFontSize));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(headingTextColor),
-      const DeepCollectionEquality().hash(textColor),
-      const DeepCollectionEquality().hash(textFontSize),
-      const DeepCollectionEquality().hash(headingFontSize));
+      runtimeType, headingTextColor, textColor, textFontSize, headingFontSize);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ThreeDSecureLabelThemeDataCopyWith<_$_ThreeDSecureLabelThemeData>
       get copyWith => __$$_ThreeDSecureLabelThemeDataCopyWithImpl<
           _$_ThreeDSecureLabelThemeData>(this, _$identity);
@@ -1076,7 +1092,9 @@ abstract class $ThreeDSecureTextFieldThemeDataCopyWith<$Res> {
   factory $ThreeDSecureTextFieldThemeDataCopyWith(
           ThreeDSecureTextFieldThemeData value,
           $Res Function(ThreeDSecureTextFieldThemeData) then) =
-      _$ThreeDSecureTextFieldThemeDataCopyWithImpl<$Res>;
+      _$ThreeDSecureTextFieldThemeDataCopyWithImpl<$Res,
+          ThreeDSecureTextFieldThemeData>;
+  @useResult
   $Res call(
       {String? borderColor,
       double? borderWidth,
@@ -1086,14 +1104,17 @@ abstract class $ThreeDSecureTextFieldThemeDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ThreeDSecureTextFieldThemeDataCopyWithImpl<$Res>
+class _$ThreeDSecureTextFieldThemeDataCopyWithImpl<$Res,
+        $Val extends ThreeDSecureTextFieldThemeData>
     implements $ThreeDSecureTextFieldThemeDataCopyWith<$Res> {
   _$ThreeDSecureTextFieldThemeDataCopyWithImpl(this._value, this._then);
 
-  final ThreeDSecureTextFieldThemeData _value;
   // ignore: unused_field
-  final $Res Function(ThreeDSecureTextFieldThemeData) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? borderColor = freezed,
@@ -1103,27 +1124,27 @@ class _$ThreeDSecureTextFieldThemeDataCopyWithImpl<$Res>
     Object? textFontSize = freezed,
   }) {
     return _then(_value.copyWith(
-      borderColor: borderColor == freezed
+      borderColor: freezed == borderColor
           ? _value.borderColor
           : borderColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      borderWidth: borderWidth == freezed
+      borderWidth: freezed == borderWidth
           ? _value.borderWidth
           : borderWidth // ignore: cast_nullable_to_non_nullable
               as double?,
-      cornerRadius: cornerRadius == freezed
+      cornerRadius: freezed == cornerRadius
           ? _value.cornerRadius
           : cornerRadius // ignore: cast_nullable_to_non_nullable
               as double?,
-      textColor: textColor == freezed
+      textColor: freezed == textColor
           ? _value.textColor
           : textColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      textFontSize: textFontSize == freezed
+      textFontSize: freezed == textFontSize
           ? _value.textFontSize
           : textFontSize // ignore: cast_nullable_to_non_nullable
               as double?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -1135,6 +1156,7 @@ abstract class _$$_ThreeDSecureTextFieldThemeDataCopyWith<$Res>
           $Res Function(_$_ThreeDSecureTextFieldThemeData) then) =
       __$$_ThreeDSecureTextFieldThemeDataCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? borderColor,
       double? borderWidth,
@@ -1145,17 +1167,15 @@ abstract class _$$_ThreeDSecureTextFieldThemeDataCopyWith<$Res>
 
 /// @nodoc
 class __$$_ThreeDSecureTextFieldThemeDataCopyWithImpl<$Res>
-    extends _$ThreeDSecureTextFieldThemeDataCopyWithImpl<$Res>
+    extends _$ThreeDSecureTextFieldThemeDataCopyWithImpl<$Res,
+        _$_ThreeDSecureTextFieldThemeData>
     implements _$$_ThreeDSecureTextFieldThemeDataCopyWith<$Res> {
   __$$_ThreeDSecureTextFieldThemeDataCopyWithImpl(
       _$_ThreeDSecureTextFieldThemeData _value,
       $Res Function(_$_ThreeDSecureTextFieldThemeData) _then)
-      : super(_value, (v) => _then(v as _$_ThreeDSecureTextFieldThemeData));
+      : super(_value, _then);
 
-  @override
-  _$_ThreeDSecureTextFieldThemeData get _value =>
-      super._value as _$_ThreeDSecureTextFieldThemeData;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? borderColor = freezed,
@@ -1165,23 +1185,23 @@ class __$$_ThreeDSecureTextFieldThemeDataCopyWithImpl<$Res>
     Object? textFontSize = freezed,
   }) {
     return _then(_$_ThreeDSecureTextFieldThemeData(
-      borderColor: borderColor == freezed
+      borderColor: freezed == borderColor
           ? _value.borderColor
           : borderColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      borderWidth: borderWidth == freezed
+      borderWidth: freezed == borderWidth
           ? _value.borderWidth
           : borderWidth // ignore: cast_nullable_to_non_nullable
               as double?,
-      cornerRadius: cornerRadius == freezed
+      cornerRadius: freezed == cornerRadius
           ? _value.cornerRadius
           : cornerRadius // ignore: cast_nullable_to_non_nullable
               as double?,
-      textColor: textColor == freezed
+      textColor: freezed == textColor
           ? _value.textColor
           : textColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      textFontSize: textFontSize == freezed
+      textFontSize: freezed == textFontSize
           ? _value.textFontSize
           : textFontSize // ignore: cast_nullable_to_non_nullable
               as double?,
@@ -1235,29 +1255,26 @@ class _$_ThreeDSecureTextFieldThemeData
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ThreeDSecureTextFieldThemeData &&
-            const DeepCollectionEquality()
-                .equals(other.borderColor, borderColor) &&
-            const DeepCollectionEquality()
-                .equals(other.borderWidth, borderWidth) &&
-            const DeepCollectionEquality()
-                .equals(other.cornerRadius, cornerRadius) &&
-            const DeepCollectionEquality().equals(other.textColor, textColor) &&
-            const DeepCollectionEquality()
-                .equals(other.textFontSize, textFontSize));
+            (identical(other.borderColor, borderColor) ||
+                other.borderColor == borderColor) &&
+            (identical(other.borderWidth, borderWidth) ||
+                other.borderWidth == borderWidth) &&
+            (identical(other.cornerRadius, cornerRadius) ||
+                other.cornerRadius == cornerRadius) &&
+            (identical(other.textColor, textColor) ||
+                other.textColor == textColor) &&
+            (identical(other.textFontSize, textFontSize) ||
+                other.textFontSize == textFontSize));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(borderColor),
-      const DeepCollectionEquality().hash(borderWidth),
-      const DeepCollectionEquality().hash(cornerRadius),
-      const DeepCollectionEquality().hash(textColor),
-      const DeepCollectionEquality().hash(textFontSize));
+  int get hashCode => Object.hash(runtimeType, borderColor, borderWidth,
+      cornerRadius, textColor, textFontSize);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ThreeDSecureTextFieldThemeDataCopyWith<_$_ThreeDSecureTextFieldThemeData>
       get copyWith => __$$_ThreeDSecureTextFieldThemeDataCopyWithImpl<
           _$_ThreeDSecureTextFieldThemeData>(this, _$identity);
@@ -1338,7 +1355,9 @@ abstract class $ThreeDSecureButtonThemeDataCopyWith<$Res> {
   factory $ThreeDSecureButtonThemeDataCopyWith(
           ThreeDSecureButtonThemeData value,
           $Res Function(ThreeDSecureButtonThemeData) then) =
-      _$ThreeDSecureButtonThemeDataCopyWithImpl<$Res>;
+      _$ThreeDSecureButtonThemeDataCopyWithImpl<$Res,
+          ThreeDSecureButtonThemeData>;
+  @useResult
   $Res call(
       {String? backgroundColor,
       double? cornerRadius,
@@ -1347,14 +1366,17 @@ abstract class $ThreeDSecureButtonThemeDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ThreeDSecureButtonThemeDataCopyWithImpl<$Res>
+class _$ThreeDSecureButtonThemeDataCopyWithImpl<$Res,
+        $Val extends ThreeDSecureButtonThemeData>
     implements $ThreeDSecureButtonThemeDataCopyWith<$Res> {
   _$ThreeDSecureButtonThemeDataCopyWithImpl(this._value, this._then);
 
-  final ThreeDSecureButtonThemeData _value;
   // ignore: unused_field
-  final $Res Function(ThreeDSecureButtonThemeData) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? backgroundColor = freezed,
@@ -1363,23 +1385,23 @@ class _$ThreeDSecureButtonThemeDataCopyWithImpl<$Res>
     Object? textFontSize = freezed,
   }) {
     return _then(_value.copyWith(
-      backgroundColor: backgroundColor == freezed
+      backgroundColor: freezed == backgroundColor
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      cornerRadius: cornerRadius == freezed
+      cornerRadius: freezed == cornerRadius
           ? _value.cornerRadius
           : cornerRadius // ignore: cast_nullable_to_non_nullable
               as double?,
-      textColor: textColor == freezed
+      textColor: freezed == textColor
           ? _value.textColor
           : textColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      textFontSize: textFontSize == freezed
+      textFontSize: freezed == textFontSize
           ? _value.textFontSize
           : textFontSize // ignore: cast_nullable_to_non_nullable
               as double?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -1391,6 +1413,7 @@ abstract class _$$_ThreeDSecureButtonThemeDataCopyWith<$Res>
           $Res Function(_$_ThreeDSecureButtonThemeData) then) =
       __$$_ThreeDSecureButtonThemeDataCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? backgroundColor,
       double? cornerRadius,
@@ -1400,17 +1423,15 @@ abstract class _$$_ThreeDSecureButtonThemeDataCopyWith<$Res>
 
 /// @nodoc
 class __$$_ThreeDSecureButtonThemeDataCopyWithImpl<$Res>
-    extends _$ThreeDSecureButtonThemeDataCopyWithImpl<$Res>
+    extends _$ThreeDSecureButtonThemeDataCopyWithImpl<$Res,
+        _$_ThreeDSecureButtonThemeData>
     implements _$$_ThreeDSecureButtonThemeDataCopyWith<$Res> {
   __$$_ThreeDSecureButtonThemeDataCopyWithImpl(
       _$_ThreeDSecureButtonThemeData _value,
       $Res Function(_$_ThreeDSecureButtonThemeData) _then)
-      : super(_value, (v) => _then(v as _$_ThreeDSecureButtonThemeData));
+      : super(_value, _then);
 
-  @override
-  _$_ThreeDSecureButtonThemeData get _value =>
-      super._value as _$_ThreeDSecureButtonThemeData;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? backgroundColor = freezed,
@@ -1419,19 +1440,19 @@ class __$$_ThreeDSecureButtonThemeDataCopyWithImpl<$Res>
     Object? textFontSize = freezed,
   }) {
     return _then(_$_ThreeDSecureButtonThemeData(
-      backgroundColor: backgroundColor == freezed
+      backgroundColor: freezed == backgroundColor
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      cornerRadius: cornerRadius == freezed
+      cornerRadius: freezed == cornerRadius
           ? _value.cornerRadius
           : cornerRadius // ignore: cast_nullable_to_non_nullable
               as double?,
-      textColor: textColor == freezed
+      textColor: freezed == textColor
           ? _value.textColor
           : textColor // ignore: cast_nullable_to_non_nullable
               as String?,
-      textFontSize: textFontSize == freezed
+      textFontSize: freezed == textFontSize
           ? _value.textFontSize
           : textFontSize // ignore: cast_nullable_to_non_nullable
               as double?,
@@ -1478,26 +1499,24 @@ class _$_ThreeDSecureButtonThemeData implements _ThreeDSecureButtonThemeData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ThreeDSecureButtonThemeData &&
-            const DeepCollectionEquality()
-                .equals(other.backgroundColor, backgroundColor) &&
-            const DeepCollectionEquality()
-                .equals(other.cornerRadius, cornerRadius) &&
-            const DeepCollectionEquality().equals(other.textColor, textColor) &&
-            const DeepCollectionEquality()
-                .equals(other.textFontSize, textFontSize));
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.cornerRadius, cornerRadius) ||
+                other.cornerRadius == cornerRadius) &&
+            (identical(other.textColor, textColor) ||
+                other.textColor == textColor) &&
+            (identical(other.textFontSize, textFontSize) ||
+                other.textFontSize == textFontSize));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(backgroundColor),
-      const DeepCollectionEquality().hash(cornerRadius),
-      const DeepCollectionEquality().hash(textColor),
-      const DeepCollectionEquality().hash(textFontSize));
+      runtimeType, backgroundColor, cornerRadius, textColor, textFontSize);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ThreeDSecureButtonThemeDataCopyWith<_$_ThreeDSecureButtonThemeData>
       get copyWith => __$$_ThreeDSecureButtonThemeDataCopyWithImpl<
           _$_ThreeDSecureButtonThemeData>(this, _$identity);

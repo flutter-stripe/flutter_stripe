@@ -6,6 +6,42 @@ part of 'platform_pay.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$PlatformPayPaymentMethodParamsGooglePay
+    _$$PlatformPayPaymentMethodParamsGooglePayFromJson(
+            Map<String, dynamic> json) =>
+        _$PlatformPayPaymentMethodParamsGooglePay(
+          googlePayParams: GooglePayParams.fromJson(
+              json['googlePayParams'] as Map<String, dynamic>),
+          googlePayPaymentMethodParams: GooglePayPaymentMethodParams.fromJson(
+              json['googlePayPaymentMethodParams'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$$PlatformPayPaymentMethodParamsGooglePayToJson(
+        _$PlatformPayPaymentMethodParamsGooglePay instance) =>
+    <String, dynamic>{
+      'googlePayParams': instance.googlePayParams.toJson(),
+      'googlePayPaymentMethodParams':
+          instance.googlePayPaymentMethodParams.toJson(),
+    };
+
+_$PlatformPayPaymentMethodParamsApplePay
+    _$$PlatformPayPaymentMethodParamsApplePayFromJson(
+            Map<String, dynamic> json) =>
+        _$PlatformPayPaymentMethodParamsApplePay(
+          applePayParams: ApplePayParams.fromJson(
+              json['applePayParams'] as Map<String, dynamic>),
+          applePayPaymentMethodParams: ApplePayPaymentMethodParams.fromJson(
+              json['applePayPaymentMethodParams'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$$PlatformPayPaymentMethodParamsApplePayToJson(
+        _$PlatformPayPaymentMethodParamsApplePay instance) =>
+    <String, dynamic>{
+      'applePayParams': instance.applePayParams.toJson(),
+      'applePayPaymentMethodParams':
+          instance.applePayPaymentMethodParams.toJson(),
+    };
+
 _$PlatformPayConfirmParamsGooglePay
     _$$PlatformPayConfirmParamsGooglePayFromJson(Map<String, dynamic> json) =>
         _$PlatformPayConfirmParamsGooglePay(
@@ -111,6 +147,20 @@ const _$ApplePayShippingTypeEnumMap = {
   ApplePayShippingType.delivery: 'delivery',
   ApplePayShippingType.shipping: 'shipping',
 };
+
+_$_ApplePayPaymentMethodParams _$$_ApplePayPaymentMethodParamsFromJson(
+        Map<String, dynamic> json) =>
+    _$_ApplePayPaymentMethodParams(
+      supportsCouponCode: json['supportsCouponCode'] as bool?,
+      couponCode: json['couponCode'] as String?,
+    );
+
+Map<String, dynamic> _$$_ApplePayPaymentMethodParamsToJson(
+        _$_ApplePayPaymentMethodParams instance) =>
+    <String, dynamic>{
+      'supportsCouponCode': instance.supportsCouponCode,
+      'couponCode': instance.couponCode,
+    };
 
 _$_GooglePayParams _$$_GooglePayParamsFromJson(Map<String, dynamic> json) =>
     _$_GooglePayParams(

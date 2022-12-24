@@ -161,7 +161,24 @@ class Stripe {
     return isSupported;
   }
 
-  /// Launches the relevant native wallet sheet (Apple Pay on iOS an Google Pay on Android)
+  /// Laucnhes the relevant native wallsheet (Apple Pay on iOS and Google Pay on Android)
+  /// in order to create a payment intent
+  ///
+  /// Argument [params] is describing the the Apple Pay or Google pay configuration.
+  ///
+  /// throws [StripeError] in case creating payment method is failing.
+  Future<PaymentMethod> createPlatformPayPaymentMethod({
+    required PlatformPayPaymentMethodParams params,
+  }) async {
+    try {
+      await _awaitForSettings();
+      return await _platform.platformPayCreatePaymentMethod(params: params);
+    } on StripeError {
+      rethrow;
+    }
+  }
+
+  /// Launches the relevant native wallet sheet (Apple Pay on iOS and Google Pay on Android)
   /// in order to confirm a Stripe setup intent.
   ///
   /// The [clientSecret] is the secret of the SetupIntent. [ConfirmParams] are

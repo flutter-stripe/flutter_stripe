@@ -510,6 +510,37 @@ class MethodChannelStripe extends StripePlatform {
     });
     return result ?? false;
   }
+
+  @override
+  Future<PaymentMethod> platformPayCreatePaymentMethod({
+    required PlatformPayPaymentMethodParams params,
+  }) async {
+    var data = <String, dynamic>{};
+    if (params is PlatformPayPaymentMethodParamsApplePay) {
+      data = {
+        'applePay': {
+          ...params.applePayParams.toJson(),
+          ...params.applePayPaymentMethodParams.toJson()
+        },
+      };
+    } else if (params is PlatformPayPaymentMethodParamsGooglePay) {
+      data = {
+        'googlePay': {
+          ...params.googlePayParams.toJson(),
+          ...params.googlePayPaymentMethodParams.toJson(),
+        },
+      };
+    }
+
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('createPlatformPayPaymentMethod', {
+      'params': data,
+    });
+
+    return ResultParser<PaymentMethod>(
+            parseJson: (json) => PaymentMethod.fromJson(json))
+        .parse(result: result!, successResultKey: 'paymentMethod');
+  }
 }
 
 class MethodChannelStripeFactory {

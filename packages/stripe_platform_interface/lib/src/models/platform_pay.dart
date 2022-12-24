@@ -9,8 +9,24 @@ part 'platform_pay.freezed.dart';
 part 'platform_pay.g.dart';
 
 @freezed
+class PlatformPayPaymentMethodParams with _$PlatformPayPaymentMethodParams {
+   
+  @JsonSerializable(explicitToJson: true)
+  const factory PlatformPayPaymentMethodParams.googlePay({
+    required GooglePayParams googlePayParams,
+    required GooglePayPaymentMethodParams googlePayPaymentMethodParams,
+  }) = PlatformPayPaymentMethodParamsGooglePay;
+
+  @JsonSerializable(explicitToJson: true)
+  const factory PlatformPayPaymentMethodParams.applePay({
+    required ApplePayParams applePayParams,
+    required ApplePayPaymentMethodParams applePayPaymentMethodParams,
+  }) = PlatformPayPaymentMethodParamsApplePay;
+}
+
+@freezed
 class PlatformPayConfirmParams with _$PlatformPayConfirmParams {
-    @JsonSerializable(explicitToJson: true)
+  @JsonSerializable(explicitToJson: true)
   const factory PlatformPayConfirmParams.googlePay({
     required GooglePayParams googlePay,
   }) = PlatformPayConfirmParamsGooglePay;
@@ -20,7 +36,7 @@ class PlatformPayConfirmParams with _$PlatformPayConfirmParams {
     required ApplePayParams applePay,
   }) = PlatformPayConfirmParamsApplePay;
 
-    factory PlatformPayConfirmParams.fromJson(Map<String, dynamic> json) =>
+  factory PlatformPayConfirmParams.fromJson(Map<String, dynamic> json) =>
       _$PlatformPayConfirmParamsFromJson(json);
 }
 
@@ -61,6 +77,26 @@ class ApplePayParams with _$ApplePayParams {
 
   factory ApplePayParams.fromJson(Map<String, dynamic> json) =>
       _$ApplePayParamsFromJson(json);
+}
+
+@freezed
+
+/// Additional parameters for create apple pay paymentMethod
+class ApplePayPaymentMethodParams with _$ApplePayPaymentMethodParams {
+  @JsonSerializable(explicitToJson: true)
+  const factory ApplePayPaymentMethodParams({
+    /// Variable that enables the coupon code field.
+    ///
+    /// When this is set to true it shows the coupon code field and if [couponCode]
+    /// is set to true it will display the
+    bool? supportsCouponCode,
+
+    /// Value used for prefilling the coupon code field.
+    String? couponCode,
+  }) = _ApplePayPaymentMethodParams;
+
+  factory ApplePayPaymentMethodParams.fromJson(Map<String, dynamic> json) =>
+      _$ApplePayPaymentMethodParamsFromJson(json);
 }
 
 @freezed

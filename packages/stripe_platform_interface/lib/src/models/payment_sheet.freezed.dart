@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'payment_sheet.dart';
 
@@ -98,7 +98,9 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
   factory $SetupPaymentSheetParametersCopyWith(
           SetupPaymentSheetParameters value,
           $Res Function(SetupPaymentSheetParameters) then) =
-      _$SetupPaymentSheetParametersCopyWithImpl<$Res>;
+      _$SetupPaymentSheetParametersCopyWithImpl<$Res,
+          SetupPaymentSheetParameters>;
+  @useResult
   $Res call(
       {bool customFlow,
       String? customerId,
@@ -122,17 +124,20 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SetupPaymentSheetParametersCopyWithImpl<$Res>
+class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
+        $Val extends SetupPaymentSheetParameters>
     implements $SetupPaymentSheetParametersCopyWith<$Res> {
   _$SetupPaymentSheetParametersCopyWithImpl(this._value, this._then);
 
-  final SetupPaymentSheetParameters _value;
   // ignore: unused_field
-  final $Res Function(SetupPaymentSheetParameters) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? customFlow = freezed,
+    Object? customFlow = null,
     Object? customerId = freezed,
     Object? primaryButtonLabel = freezed,
     Object? customerEphemeralKeySecret = freezed,
@@ -142,112 +147,116 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res>
     Object? applePay = freezed,
     Object? style = freezed,
     Object? googlePay = freezed,
-    Object? allowsDelayedPaymentMethods = freezed,
+    Object? allowsDelayedPaymentMethods = null,
     Object? appearance = freezed,
     Object? billingDetails = freezed,
     Object? returnURL = freezed,
   }) {
     return _then(_value.copyWith(
-      customFlow: customFlow == freezed
+      customFlow: null == customFlow
           ? _value.customFlow
           : customFlow // ignore: cast_nullable_to_non_nullable
               as bool,
-      customerId: customerId == freezed
+      customerId: freezed == customerId
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
               as String?,
-      primaryButtonLabel: primaryButtonLabel == freezed
+      primaryButtonLabel: freezed == primaryButtonLabel
           ? _value.primaryButtonLabel
           : primaryButtonLabel // ignore: cast_nullable_to_non_nullable
               as String?,
-      customerEphemeralKeySecret: customerEphemeralKeySecret == freezed
+      customerEphemeralKeySecret: freezed == customerEphemeralKeySecret
           ? _value.customerEphemeralKeySecret
           : customerEphemeralKeySecret // ignore: cast_nullable_to_non_nullable
               as String?,
-      paymentIntentClientSecret: paymentIntentClientSecret == freezed
+      paymentIntentClientSecret: freezed == paymentIntentClientSecret
           ? _value.paymentIntentClientSecret
           : paymentIntentClientSecret // ignore: cast_nullable_to_non_nullable
               as String?,
-      setupIntentClientSecret: setupIntentClientSecret == freezed
+      setupIntentClientSecret: freezed == setupIntentClientSecret
           ? _value.setupIntentClientSecret
           : setupIntentClientSecret // ignore: cast_nullable_to_non_nullable
               as String?,
-      merchantDisplayName: merchantDisplayName == freezed
+      merchantDisplayName: freezed == merchantDisplayName
           ? _value.merchantDisplayName
           : merchantDisplayName // ignore: cast_nullable_to_non_nullable
               as String?,
-      applePay: applePay == freezed
+      applePay: freezed == applePay
           ? _value.applePay
           : applePay // ignore: cast_nullable_to_non_nullable
               as PaymentSheetApplePay?,
-      style: style == freezed
+      style: freezed == style
           ? _value.style
           : style // ignore: cast_nullable_to_non_nullable
               as ThemeMode?,
-      googlePay: googlePay == freezed
+      googlePay: freezed == googlePay
           ? _value.googlePay
           : googlePay // ignore: cast_nullable_to_non_nullable
               as PaymentSheetGooglePay?,
-      allowsDelayedPaymentMethods: allowsDelayedPaymentMethods == freezed
+      allowsDelayedPaymentMethods: null == allowsDelayedPaymentMethods
           ? _value.allowsDelayedPaymentMethods
           : allowsDelayedPaymentMethods // ignore: cast_nullable_to_non_nullable
               as bool,
-      appearance: appearance == freezed
+      appearance: freezed == appearance
           ? _value.appearance
           : appearance // ignore: cast_nullable_to_non_nullable
               as PaymentSheetAppearance?,
-      billingDetails: billingDetails == freezed
+      billingDetails: freezed == billingDetails
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
               as BillingDetails?,
-      returnURL: returnURL == freezed
+      returnURL: freezed == returnURL
           ? _value.returnURL
           : returnURL // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PaymentSheetApplePayCopyWith<$Res>? get applePay {
     if (_value.applePay == null) {
       return null;
     }
 
     return $PaymentSheetApplePayCopyWith<$Res>(_value.applePay!, (value) {
-      return _then(_value.copyWith(applePay: value));
+      return _then(_value.copyWith(applePay: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PaymentSheetGooglePayCopyWith<$Res>? get googlePay {
     if (_value.googlePay == null) {
       return null;
     }
 
     return $PaymentSheetGooglePayCopyWith<$Res>(_value.googlePay!, (value) {
-      return _then(_value.copyWith(googlePay: value));
+      return _then(_value.copyWith(googlePay: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PaymentSheetAppearanceCopyWith<$Res>? get appearance {
     if (_value.appearance == null) {
       return null;
     }
 
     return $PaymentSheetAppearanceCopyWith<$Res>(_value.appearance!, (value) {
-      return _then(_value.copyWith(appearance: value));
+      return _then(_value.copyWith(appearance: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $BillingDetailsCopyWith<$Res>? get billingDetails {
     if (_value.billingDetails == null) {
       return null;
     }
 
     return $BillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
-      return _then(_value.copyWith(billingDetails: value));
+      return _then(_value.copyWith(billingDetails: value) as $Val);
     });
   }
 }
@@ -259,6 +268,7 @@ abstract class _$$_SetupParametersCopyWith<$Res>
           _$_SetupParameters value, $Res Function(_$_SetupParameters) then) =
       __$$_SetupParametersCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {bool customFlow,
       String? customerId,
@@ -287,18 +297,16 @@ abstract class _$$_SetupParametersCopyWith<$Res>
 
 /// @nodoc
 class __$$_SetupParametersCopyWithImpl<$Res>
-    extends _$SetupPaymentSheetParametersCopyWithImpl<$Res>
+    extends _$SetupPaymentSheetParametersCopyWithImpl<$Res, _$_SetupParameters>
     implements _$$_SetupParametersCopyWith<$Res> {
   __$$_SetupParametersCopyWithImpl(
       _$_SetupParameters _value, $Res Function(_$_SetupParameters) _then)
-      : super(_value, (v) => _then(v as _$_SetupParameters));
+      : super(_value, _then);
 
-  @override
-  _$_SetupParameters get _value => super._value as _$_SetupParameters;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? customFlow = freezed,
+    Object? customFlow = null,
     Object? customerId = freezed,
     Object? primaryButtonLabel = freezed,
     Object? customerEphemeralKeySecret = freezed,
@@ -308,65 +316,65 @@ class __$$_SetupParametersCopyWithImpl<$Res>
     Object? applePay = freezed,
     Object? style = freezed,
     Object? googlePay = freezed,
-    Object? allowsDelayedPaymentMethods = freezed,
+    Object? allowsDelayedPaymentMethods = null,
     Object? appearance = freezed,
     Object? billingDetails = freezed,
     Object? returnURL = freezed,
   }) {
     return _then(_$_SetupParameters(
-      customFlow: customFlow == freezed
+      customFlow: null == customFlow
           ? _value.customFlow
           : customFlow // ignore: cast_nullable_to_non_nullable
               as bool,
-      customerId: customerId == freezed
+      customerId: freezed == customerId
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
               as String?,
-      primaryButtonLabel: primaryButtonLabel == freezed
+      primaryButtonLabel: freezed == primaryButtonLabel
           ? _value.primaryButtonLabel
           : primaryButtonLabel // ignore: cast_nullable_to_non_nullable
               as String?,
-      customerEphemeralKeySecret: customerEphemeralKeySecret == freezed
+      customerEphemeralKeySecret: freezed == customerEphemeralKeySecret
           ? _value.customerEphemeralKeySecret
           : customerEphemeralKeySecret // ignore: cast_nullable_to_non_nullable
               as String?,
-      paymentIntentClientSecret: paymentIntentClientSecret == freezed
+      paymentIntentClientSecret: freezed == paymentIntentClientSecret
           ? _value.paymentIntentClientSecret
           : paymentIntentClientSecret // ignore: cast_nullable_to_non_nullable
               as String?,
-      setupIntentClientSecret: setupIntentClientSecret == freezed
+      setupIntentClientSecret: freezed == setupIntentClientSecret
           ? _value.setupIntentClientSecret
           : setupIntentClientSecret // ignore: cast_nullable_to_non_nullable
               as String?,
-      merchantDisplayName: merchantDisplayName == freezed
+      merchantDisplayName: freezed == merchantDisplayName
           ? _value.merchantDisplayName
           : merchantDisplayName // ignore: cast_nullable_to_non_nullable
               as String?,
-      applePay: applePay == freezed
+      applePay: freezed == applePay
           ? _value.applePay
           : applePay // ignore: cast_nullable_to_non_nullable
               as PaymentSheetApplePay?,
-      style: style == freezed
+      style: freezed == style
           ? _value.style
           : style // ignore: cast_nullable_to_non_nullable
               as ThemeMode?,
-      googlePay: googlePay == freezed
+      googlePay: freezed == googlePay
           ? _value.googlePay
           : googlePay // ignore: cast_nullable_to_non_nullable
               as PaymentSheetGooglePay?,
-      allowsDelayedPaymentMethods: allowsDelayedPaymentMethods == freezed
+      allowsDelayedPaymentMethods: null == allowsDelayedPaymentMethods
           ? _value.allowsDelayedPaymentMethods
           : allowsDelayedPaymentMethods // ignore: cast_nullable_to_non_nullable
               as bool,
-      appearance: appearance == freezed
+      appearance: freezed == appearance
           ? _value.appearance
           : appearance // ignore: cast_nullable_to_non_nullable
               as PaymentSheetAppearance?,
-      billingDetails: billingDetails == freezed
+      billingDetails: freezed == billingDetails
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
               as BillingDetails?,
-      returnURL: returnURL == freezed
+      returnURL: freezed == returnURL
           ? _value.returnURL
           : returnURL // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -489,54 +497,63 @@ class _$_SetupParameters implements _SetupParameters {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SetupParameters &&
-            const DeepCollectionEquality()
-                .equals(other.customFlow, customFlow) &&
-            const DeepCollectionEquality()
-                .equals(other.customerId, customerId) &&
-            const DeepCollectionEquality()
-                .equals(other.primaryButtonLabel, primaryButtonLabel) &&
-            const DeepCollectionEquality().equals(
-                other.customerEphemeralKeySecret, customerEphemeralKeySecret) &&
-            const DeepCollectionEquality().equals(
-                other.paymentIntentClientSecret, paymentIntentClientSecret) &&
-            const DeepCollectionEquality().equals(
-                other.setupIntentClientSecret, setupIntentClientSecret) &&
-            const DeepCollectionEquality()
-                .equals(other.merchantDisplayName, merchantDisplayName) &&
-            const DeepCollectionEquality().equals(other.applePay, applePay) &&
-            const DeepCollectionEquality().equals(other.style, style) &&
-            const DeepCollectionEquality().equals(other.googlePay, googlePay) &&
-            const DeepCollectionEquality().equals(
-                other.allowsDelayedPaymentMethods,
-                allowsDelayedPaymentMethods) &&
-            const DeepCollectionEquality()
-                .equals(other.appearance, appearance) &&
-            const DeepCollectionEquality()
-                .equals(other.billingDetails, billingDetails) &&
-            const DeepCollectionEquality().equals(other.returnURL, returnURL));
+            (identical(other.customFlow, customFlow) ||
+                other.customFlow == customFlow) &&
+            (identical(other.customerId, customerId) ||
+                other.customerId == customerId) &&
+            (identical(other.primaryButtonLabel, primaryButtonLabel) ||
+                other.primaryButtonLabel == primaryButtonLabel) &&
+            (identical(other.customerEphemeralKeySecret,
+                    customerEphemeralKeySecret) ||
+                other.customerEphemeralKeySecret ==
+                    customerEphemeralKeySecret) &&
+            (identical(other.paymentIntentClientSecret,
+                    paymentIntentClientSecret) ||
+                other.paymentIntentClientSecret == paymentIntentClientSecret) &&
+            (identical(
+                    other.setupIntentClientSecret, setupIntentClientSecret) ||
+                other.setupIntentClientSecret == setupIntentClientSecret) &&
+            (identical(other.merchantDisplayName, merchantDisplayName) ||
+                other.merchantDisplayName == merchantDisplayName) &&
+            (identical(other.applePay, applePay) ||
+                other.applePay == applePay) &&
+            (identical(other.style, style) || other.style == style) &&
+            (identical(other.googlePay, googlePay) ||
+                other.googlePay == googlePay) &&
+            (identical(other.allowsDelayedPaymentMethods,
+                    allowsDelayedPaymentMethods) ||
+                other.allowsDelayedPaymentMethods ==
+                    allowsDelayedPaymentMethods) &&
+            (identical(other.appearance, appearance) ||
+                other.appearance == appearance) &&
+            (identical(other.billingDetails, billingDetails) ||
+                other.billingDetails == billingDetails) &&
+            (identical(other.returnURL, returnURL) ||
+                other.returnURL == returnURL));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(customFlow),
-      const DeepCollectionEquality().hash(customerId),
-      const DeepCollectionEquality().hash(primaryButtonLabel),
-      const DeepCollectionEquality().hash(customerEphemeralKeySecret),
-      const DeepCollectionEquality().hash(paymentIntentClientSecret),
-      const DeepCollectionEquality().hash(setupIntentClientSecret),
-      const DeepCollectionEquality().hash(merchantDisplayName),
-      const DeepCollectionEquality().hash(applePay),
-      const DeepCollectionEquality().hash(style),
-      const DeepCollectionEquality().hash(googlePay),
-      const DeepCollectionEquality().hash(allowsDelayedPaymentMethods),
-      const DeepCollectionEquality().hash(appearance),
-      const DeepCollectionEquality().hash(billingDetails),
-      const DeepCollectionEquality().hash(returnURL));
+      customFlow,
+      customerId,
+      primaryButtonLabel,
+      customerEphemeralKeySecret,
+      paymentIntentClientSecret,
+      setupIntentClientSecret,
+      merchantDisplayName,
+      applePay,
+      style,
+      googlePay,
+      allowsDelayedPaymentMethods,
+      appearance,
+      billingDetails,
+      returnURL);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SetupParametersCopyWith<_$_SetupParameters> get copyWith =>
       __$$_SetupParametersCopyWithImpl<_$_SetupParameters>(this, _$identity);
 
@@ -680,36 +697,40 @@ mixin _$PaymentSheetApplePay {
 abstract class $PaymentSheetApplePayCopyWith<$Res> {
   factory $PaymentSheetApplePayCopyWith(PaymentSheetApplePay value,
           $Res Function(PaymentSheetApplePay) then) =
-      _$PaymentSheetApplePayCopyWithImpl<$Res>;
+      _$PaymentSheetApplePayCopyWithImpl<$Res, PaymentSheetApplePay>;
+  @useResult
   $Res call(
       {String merchantCountryCode,
       List<ApplePayCartSummaryItem>? paymentSummaryItems});
 }
 
 /// @nodoc
-class _$PaymentSheetApplePayCopyWithImpl<$Res>
+class _$PaymentSheetApplePayCopyWithImpl<$Res,
+        $Val extends PaymentSheetApplePay>
     implements $PaymentSheetApplePayCopyWith<$Res> {
   _$PaymentSheetApplePayCopyWithImpl(this._value, this._then);
 
-  final PaymentSheetApplePay _value;
   // ignore: unused_field
-  final $Res Function(PaymentSheetApplePay) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? merchantCountryCode = freezed,
+    Object? merchantCountryCode = null,
     Object? paymentSummaryItems = freezed,
   }) {
     return _then(_value.copyWith(
-      merchantCountryCode: merchantCountryCode == freezed
+      merchantCountryCode: null == merchantCountryCode
           ? _value.merchantCountryCode
           : merchantCountryCode // ignore: cast_nullable_to_non_nullable
               as String,
-      paymentSummaryItems: paymentSummaryItems == freezed
+      paymentSummaryItems: freezed == paymentSummaryItems
           ? _value.paymentSummaryItems
           : paymentSummaryItems // ignore: cast_nullable_to_non_nullable
               as List<ApplePayCartSummaryItem>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -720,6 +741,7 @@ abstract class _$$_PaymentSheetApplePayCopyWith<$Res>
           $Res Function(_$_PaymentSheetApplePay) then) =
       __$$_PaymentSheetApplePayCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String merchantCountryCode,
       List<ApplePayCartSummaryItem>? paymentSummaryItems});
@@ -727,26 +749,24 @@ abstract class _$$_PaymentSheetApplePayCopyWith<$Res>
 
 /// @nodoc
 class __$$_PaymentSheetApplePayCopyWithImpl<$Res>
-    extends _$PaymentSheetApplePayCopyWithImpl<$Res>
+    extends _$PaymentSheetApplePayCopyWithImpl<$Res, _$_PaymentSheetApplePay>
     implements _$$_PaymentSheetApplePayCopyWith<$Res> {
   __$$_PaymentSheetApplePayCopyWithImpl(_$_PaymentSheetApplePay _value,
       $Res Function(_$_PaymentSheetApplePay) _then)
-      : super(_value, (v) => _then(v as _$_PaymentSheetApplePay));
+      : super(_value, _then);
 
-  @override
-  _$_PaymentSheetApplePay get _value => super._value as _$_PaymentSheetApplePay;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? merchantCountryCode = freezed,
+    Object? merchantCountryCode = null,
     Object? paymentSummaryItems = freezed,
   }) {
     return _then(_$_PaymentSheetApplePay(
-      merchantCountryCode: merchantCountryCode == freezed
+      merchantCountryCode: null == merchantCountryCode
           ? _value.merchantCountryCode
           : merchantCountryCode // ignore: cast_nullable_to_non_nullable
               as String,
-      paymentSummaryItems: paymentSummaryItems == freezed
+      paymentSummaryItems: freezed == paymentSummaryItems
           ? _value._paymentSummaryItems
           : paymentSummaryItems // ignore: cast_nullable_to_non_nullable
               as List<ApplePayCartSummaryItem>?,
@@ -780,6 +800,8 @@ class _$_PaymentSheetApplePay implements _PaymentSheetApplePay {
   List<ApplePayCartSummaryItem>? get paymentSummaryItems {
     final value = _paymentSummaryItems;
     if (value == null) return null;
+    if (_paymentSummaryItems is EqualUnmodifiableListView)
+      return _paymentSummaryItems;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -794,21 +816,20 @@ class _$_PaymentSheetApplePay implements _PaymentSheetApplePay {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PaymentSheetApplePay &&
-            const DeepCollectionEquality()
-                .equals(other.merchantCountryCode, merchantCountryCode) &&
+            (identical(other.merchantCountryCode, merchantCountryCode) ||
+                other.merchantCountryCode == merchantCountryCode) &&
             const DeepCollectionEquality()
                 .equals(other._paymentSummaryItems, _paymentSummaryItems));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(merchantCountryCode),
+  int get hashCode => Object.hash(runtimeType, merchantCountryCode,
       const DeepCollectionEquality().hash(_paymentSummaryItems));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PaymentSheetApplePayCopyWith<_$_PaymentSheetApplePay> get copyWith =>
       __$$_PaymentSheetApplePayCopyWithImpl<_$_PaymentSheetApplePay>(
           this, _$identity);
@@ -871,39 +892,43 @@ mixin _$PaymentSheetGooglePay {
 abstract class $PaymentSheetGooglePayCopyWith<$Res> {
   factory $PaymentSheetGooglePayCopyWith(PaymentSheetGooglePay value,
           $Res Function(PaymentSheetGooglePay) then) =
-      _$PaymentSheetGooglePayCopyWithImpl<$Res>;
+      _$PaymentSheetGooglePayCopyWithImpl<$Res, PaymentSheetGooglePay>;
+  @useResult
   $Res call({String merchantCountryCode, String? currencyCode, bool testEnv});
 }
 
 /// @nodoc
-class _$PaymentSheetGooglePayCopyWithImpl<$Res>
+class _$PaymentSheetGooglePayCopyWithImpl<$Res,
+        $Val extends PaymentSheetGooglePay>
     implements $PaymentSheetGooglePayCopyWith<$Res> {
   _$PaymentSheetGooglePayCopyWithImpl(this._value, this._then);
 
-  final PaymentSheetGooglePay _value;
   // ignore: unused_field
-  final $Res Function(PaymentSheetGooglePay) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? merchantCountryCode = freezed,
+    Object? merchantCountryCode = null,
     Object? currencyCode = freezed,
-    Object? testEnv = freezed,
+    Object? testEnv = null,
   }) {
     return _then(_value.copyWith(
-      merchantCountryCode: merchantCountryCode == freezed
+      merchantCountryCode: null == merchantCountryCode
           ? _value.merchantCountryCode
           : merchantCountryCode // ignore: cast_nullable_to_non_nullable
               as String,
-      currencyCode: currencyCode == freezed
+      currencyCode: freezed == currencyCode
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      testEnv: testEnv == freezed
+      testEnv: null == testEnv
           ? _value.testEnv
           : testEnv // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -914,37 +939,35 @@ abstract class _$$_PaymentSheetGooglePayCopyWith<$Res>
           $Res Function(_$_PaymentSheetGooglePay) then) =
       __$$_PaymentSheetGooglePayCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String merchantCountryCode, String? currencyCode, bool testEnv});
 }
 
 /// @nodoc
 class __$$_PaymentSheetGooglePayCopyWithImpl<$Res>
-    extends _$PaymentSheetGooglePayCopyWithImpl<$Res>
+    extends _$PaymentSheetGooglePayCopyWithImpl<$Res, _$_PaymentSheetGooglePay>
     implements _$$_PaymentSheetGooglePayCopyWith<$Res> {
   __$$_PaymentSheetGooglePayCopyWithImpl(_$_PaymentSheetGooglePay _value,
       $Res Function(_$_PaymentSheetGooglePay) _then)
-      : super(_value, (v) => _then(v as _$_PaymentSheetGooglePay));
+      : super(_value, _then);
 
-  @override
-  _$_PaymentSheetGooglePay get _value =>
-      super._value as _$_PaymentSheetGooglePay;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? merchantCountryCode = freezed,
+    Object? merchantCountryCode = null,
     Object? currencyCode = freezed,
-    Object? testEnv = freezed,
+    Object? testEnv = null,
   }) {
     return _then(_$_PaymentSheetGooglePay(
-      merchantCountryCode: merchantCountryCode == freezed
+      merchantCountryCode: null == merchantCountryCode
           ? _value.merchantCountryCode
           : merchantCountryCode // ignore: cast_nullable_to_non_nullable
               as String,
-      currencyCode: currencyCode == freezed
+      currencyCode: freezed == currencyCode
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      testEnv: testEnv == freezed
+      testEnv: null == testEnv
           ? _value.testEnv
           : testEnv // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -987,23 +1010,21 @@ class _$_PaymentSheetGooglePay implements _PaymentSheetGooglePay {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PaymentSheetGooglePay &&
-            const DeepCollectionEquality()
-                .equals(other.merchantCountryCode, merchantCountryCode) &&
-            const DeepCollectionEquality()
-                .equals(other.currencyCode, currencyCode) &&
-            const DeepCollectionEquality().equals(other.testEnv, testEnv));
+            (identical(other.merchantCountryCode, merchantCountryCode) ||
+                other.merchantCountryCode == merchantCountryCode) &&
+            (identical(other.currencyCode, currencyCode) ||
+                other.currencyCode == currencyCode) &&
+            (identical(other.testEnv, testEnv) || other.testEnv == testEnv));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(merchantCountryCode),
-      const DeepCollectionEquality().hash(currencyCode),
-      const DeepCollectionEquality().hash(testEnv));
+  int get hashCode =>
+      Object.hash(runtimeType, merchantCountryCode, currencyCode, testEnv);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PaymentSheetGooglePayCopyWith<_$_PaymentSheetGooglePay> get copyWith =>
       __$$_PaymentSheetGooglePayCopyWithImpl<_$_PaymentSheetGooglePay>(
           this, _$identity);
@@ -1071,7 +1092,8 @@ mixin _$PaymentSheetAppearance {
 abstract class $PaymentSheetAppearanceCopyWith<$Res> {
   factory $PaymentSheetAppearanceCopyWith(PaymentSheetAppearance value,
           $Res Function(PaymentSheetAppearance) then) =
-      _$PaymentSheetAppearanceCopyWithImpl<$Res>;
+      _$PaymentSheetAppearanceCopyWithImpl<$Res, PaymentSheetAppearance>;
+  @useResult
   $Res call(
       {PaymentSheetAppearanceColors? colors,
       PaymentSheetShape? shapes,
@@ -1083,14 +1105,17 @@ abstract class $PaymentSheetAppearanceCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PaymentSheetAppearanceCopyWithImpl<$Res>
+class _$PaymentSheetAppearanceCopyWithImpl<$Res,
+        $Val extends PaymentSheetAppearance>
     implements $PaymentSheetAppearanceCopyWith<$Res> {
   _$PaymentSheetAppearanceCopyWithImpl(this._value, this._then);
 
-  final PaymentSheetAppearance _value;
   // ignore: unused_field
-  final $Res Function(PaymentSheetAppearance) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? colors = freezed,
@@ -1098,44 +1123,47 @@ class _$PaymentSheetAppearanceCopyWithImpl<$Res>
     Object? primaryButton = freezed,
   }) {
     return _then(_value.copyWith(
-      colors: colors == freezed
+      colors: freezed == colors
           ? _value.colors
           : colors // ignore: cast_nullable_to_non_nullable
               as PaymentSheetAppearanceColors?,
-      shapes: shapes == freezed
+      shapes: freezed == shapes
           ? _value.shapes
           : shapes // ignore: cast_nullable_to_non_nullable
               as PaymentSheetShape?,
-      primaryButton: primaryButton == freezed
+      primaryButton: freezed == primaryButton
           ? _value.primaryButton
           : primaryButton // ignore: cast_nullable_to_non_nullable
               as PaymentSheetPrimaryButtonAppearance?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PaymentSheetAppearanceColorsCopyWith<$Res>? get colors {
     if (_value.colors == null) {
       return null;
     }
 
     return $PaymentSheetAppearanceColorsCopyWith<$Res>(_value.colors!, (value) {
-      return _then(_value.copyWith(colors: value));
+      return _then(_value.copyWith(colors: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PaymentSheetShapeCopyWith<$Res>? get shapes {
     if (_value.shapes == null) {
       return null;
     }
 
     return $PaymentSheetShapeCopyWith<$Res>(_value.shapes!, (value) {
-      return _then(_value.copyWith(shapes: value));
+      return _then(_value.copyWith(shapes: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PaymentSheetPrimaryButtonAppearanceCopyWith<$Res>? get primaryButton {
     if (_value.primaryButton == null) {
       return null;
@@ -1143,7 +1171,7 @@ class _$PaymentSheetAppearanceCopyWithImpl<$Res>
 
     return $PaymentSheetPrimaryButtonAppearanceCopyWith<$Res>(
         _value.primaryButton!, (value) {
-      return _then(_value.copyWith(primaryButton: value));
+      return _then(_value.copyWith(primaryButton: value) as $Val);
     });
   }
 }
@@ -1155,6 +1183,7 @@ abstract class _$$_PaymentSheetAppearanceCopyWith<$Res>
           $Res Function(_$_PaymentSheetAppearance) then) =
       __$$_PaymentSheetAppearanceCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {PaymentSheetAppearanceColors? colors,
       PaymentSheetShape? shapes,
@@ -1170,16 +1199,14 @@ abstract class _$$_PaymentSheetAppearanceCopyWith<$Res>
 
 /// @nodoc
 class __$$_PaymentSheetAppearanceCopyWithImpl<$Res>
-    extends _$PaymentSheetAppearanceCopyWithImpl<$Res>
+    extends _$PaymentSheetAppearanceCopyWithImpl<$Res,
+        _$_PaymentSheetAppearance>
     implements _$$_PaymentSheetAppearanceCopyWith<$Res> {
   __$$_PaymentSheetAppearanceCopyWithImpl(_$_PaymentSheetAppearance _value,
       $Res Function(_$_PaymentSheetAppearance) _then)
-      : super(_value, (v) => _then(v as _$_PaymentSheetAppearance));
+      : super(_value, _then);
 
-  @override
-  _$_PaymentSheetAppearance get _value =>
-      super._value as _$_PaymentSheetAppearance;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? colors = freezed,
@@ -1187,15 +1214,15 @@ class __$$_PaymentSheetAppearanceCopyWithImpl<$Res>
     Object? primaryButton = freezed,
   }) {
     return _then(_$_PaymentSheetAppearance(
-      colors: colors == freezed
+      colors: freezed == colors
           ? _value.colors
           : colors // ignore: cast_nullable_to_non_nullable
               as PaymentSheetAppearanceColors?,
-      shapes: shapes == freezed
+      shapes: freezed == shapes
           ? _value.shapes
           : shapes // ignore: cast_nullable_to_non_nullable
               as PaymentSheetShape?,
-      primaryButton: primaryButton == freezed
+      primaryButton: freezed == primaryButton
           ? _value.primaryButton
           : primaryButton // ignore: cast_nullable_to_non_nullable
               as PaymentSheetPrimaryButtonAppearance?,
@@ -1235,22 +1262,19 @@ class _$_PaymentSheetAppearance implements _PaymentSheetAppearance {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PaymentSheetAppearance &&
-            const DeepCollectionEquality().equals(other.colors, colors) &&
-            const DeepCollectionEquality().equals(other.shapes, shapes) &&
-            const DeepCollectionEquality()
-                .equals(other.primaryButton, primaryButton));
+            (identical(other.colors, colors) || other.colors == colors) &&
+            (identical(other.shapes, shapes) || other.shapes == shapes) &&
+            (identical(other.primaryButton, primaryButton) ||
+                other.primaryButton == primaryButton));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(colors),
-      const DeepCollectionEquality().hash(shapes),
-      const DeepCollectionEquality().hash(primaryButton));
+  int get hashCode => Object.hash(runtimeType, colors, shapes, primaryButton);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PaymentSheetAppearanceCopyWith<_$_PaymentSheetAppearance> get copyWith =>
       __$$_PaymentSheetAppearanceCopyWithImpl<_$_PaymentSheetAppearance>(
           this, _$identity);
@@ -1357,7 +1381,9 @@ abstract class $PaymentSheetAppearanceColorsCopyWith<$Res> {
   factory $PaymentSheetAppearanceColorsCopyWith(
           PaymentSheetAppearanceColors value,
           $Res Function(PaymentSheetAppearanceColors) then) =
-      _$PaymentSheetAppearanceColorsCopyWithImpl<$Res>;
+      _$PaymentSheetAppearanceColorsCopyWithImpl<$Res,
+          PaymentSheetAppearanceColors>;
+  @useResult
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? primary,
@@ -1384,14 +1410,17 @@ abstract class $PaymentSheetAppearanceColorsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PaymentSheetAppearanceColorsCopyWithImpl<$Res>
+class _$PaymentSheetAppearanceColorsCopyWithImpl<$Res,
+        $Val extends PaymentSheetAppearanceColors>
     implements $PaymentSheetAppearanceColorsCopyWith<$Res> {
   _$PaymentSheetAppearanceColorsCopyWithImpl(this._value, this._then);
 
-  final PaymentSheetAppearanceColors _value;
   // ignore: unused_field
-  final $Res Function(PaymentSheetAppearanceColors) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? primary = freezed,
@@ -1407,51 +1436,51 @@ class _$PaymentSheetAppearanceColorsCopyWithImpl<$Res>
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
-      primary: primary == freezed
+      primary: freezed == primary
           ? _value.primary
           : primary // ignore: cast_nullable_to_non_nullable
               as Color?,
-      background: background == freezed
+      background: freezed == background
           ? _value.background
           : background // ignore: cast_nullable_to_non_nullable
               as Color?,
-      componentBackground: componentBackground == freezed
+      componentBackground: freezed == componentBackground
           ? _value.componentBackground
           : componentBackground // ignore: cast_nullable_to_non_nullable
               as Color?,
-      componentBorder: componentBorder == freezed
+      componentBorder: freezed == componentBorder
           ? _value.componentBorder
           : componentBorder // ignore: cast_nullable_to_non_nullable
               as Color?,
-      componentDivider: componentDivider == freezed
+      componentDivider: freezed == componentDivider
           ? _value.componentDivider
           : componentDivider // ignore: cast_nullable_to_non_nullable
               as Color?,
-      componentText: componentText == freezed
+      componentText: freezed == componentText
           ? _value.componentText
           : componentText // ignore: cast_nullable_to_non_nullable
               as Color?,
-      primaryText: primaryText == freezed
+      primaryText: freezed == primaryText
           ? _value.primaryText
           : primaryText // ignore: cast_nullable_to_non_nullable
               as Color?,
-      secondaryText: secondaryText == freezed
+      secondaryText: freezed == secondaryText
           ? _value.secondaryText
           : secondaryText // ignore: cast_nullable_to_non_nullable
               as Color?,
-      placeholderText: placeholderText == freezed
+      placeholderText: freezed == placeholderText
           ? _value.placeholderText
           : placeholderText // ignore: cast_nullable_to_non_nullable
               as Color?,
-      icon: icon == freezed
+      icon: freezed == icon
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
               as Color?,
-      error: error == freezed
+      error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as Color?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -1463,6 +1492,7 @@ abstract class _$$_PaymentSheetAppearanceColorsCopyWith<$Res>
           $Res Function(_$_PaymentSheetAppearanceColors) then) =
       __$$_PaymentSheetAppearanceColorsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? primary,
@@ -1490,17 +1520,15 @@ abstract class _$$_PaymentSheetAppearanceColorsCopyWith<$Res>
 
 /// @nodoc
 class __$$_PaymentSheetAppearanceColorsCopyWithImpl<$Res>
-    extends _$PaymentSheetAppearanceColorsCopyWithImpl<$Res>
+    extends _$PaymentSheetAppearanceColorsCopyWithImpl<$Res,
+        _$_PaymentSheetAppearanceColors>
     implements _$$_PaymentSheetAppearanceColorsCopyWith<$Res> {
   __$$_PaymentSheetAppearanceColorsCopyWithImpl(
       _$_PaymentSheetAppearanceColors _value,
       $Res Function(_$_PaymentSheetAppearanceColors) _then)
-      : super(_value, (v) => _then(v as _$_PaymentSheetAppearanceColors));
+      : super(_value, _then);
 
-  @override
-  _$_PaymentSheetAppearanceColors get _value =>
-      super._value as _$_PaymentSheetAppearanceColors;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? primary = freezed,
@@ -1516,47 +1544,47 @@ class __$$_PaymentSheetAppearanceColorsCopyWithImpl<$Res>
     Object? error = freezed,
   }) {
     return _then(_$_PaymentSheetAppearanceColors(
-      primary: primary == freezed
+      primary: freezed == primary
           ? _value.primary
           : primary // ignore: cast_nullable_to_non_nullable
               as Color?,
-      background: background == freezed
+      background: freezed == background
           ? _value.background
           : background // ignore: cast_nullable_to_non_nullable
               as Color?,
-      componentBackground: componentBackground == freezed
+      componentBackground: freezed == componentBackground
           ? _value.componentBackground
           : componentBackground // ignore: cast_nullable_to_non_nullable
               as Color?,
-      componentBorder: componentBorder == freezed
+      componentBorder: freezed == componentBorder
           ? _value.componentBorder
           : componentBorder // ignore: cast_nullable_to_non_nullable
               as Color?,
-      componentDivider: componentDivider == freezed
+      componentDivider: freezed == componentDivider
           ? _value.componentDivider
           : componentDivider // ignore: cast_nullable_to_non_nullable
               as Color?,
-      componentText: componentText == freezed
+      componentText: freezed == componentText
           ? _value.componentText
           : componentText // ignore: cast_nullable_to_non_nullable
               as Color?,
-      primaryText: primaryText == freezed
+      primaryText: freezed == primaryText
           ? _value.primaryText
           : primaryText // ignore: cast_nullable_to_non_nullable
               as Color?,
-      secondaryText: secondaryText == freezed
+      secondaryText: freezed == secondaryText
           ? _value.secondaryText
           : secondaryText // ignore: cast_nullable_to_non_nullable
               as Color?,
-      placeholderText: placeholderText == freezed
+      placeholderText: freezed == placeholderText
           ? _value.placeholderText
           : placeholderText // ignore: cast_nullable_to_non_nullable
               as Color?,
-      icon: icon == freezed
+      icon: freezed == icon
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
               as Color?,
-      error: error == freezed
+      error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as Color?,
@@ -1663,45 +1691,46 @@ class _$_PaymentSheetAppearanceColors implements _PaymentSheetAppearanceColors {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PaymentSheetAppearanceColors &&
-            const DeepCollectionEquality().equals(other.primary, primary) &&
-            const DeepCollectionEquality()
-                .equals(other.background, background) &&
-            const DeepCollectionEquality()
-                .equals(other.componentBackground, componentBackground) &&
-            const DeepCollectionEquality()
-                .equals(other.componentBorder, componentBorder) &&
-            const DeepCollectionEquality()
-                .equals(other.componentDivider, componentDivider) &&
-            const DeepCollectionEquality()
-                .equals(other.componentText, componentText) &&
-            const DeepCollectionEquality()
-                .equals(other.primaryText, primaryText) &&
-            const DeepCollectionEquality()
-                .equals(other.secondaryText, secondaryText) &&
-            const DeepCollectionEquality()
-                .equals(other.placeholderText, placeholderText) &&
-            const DeepCollectionEquality().equals(other.icon, icon) &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.primary, primary) || other.primary == primary) &&
+            (identical(other.background, background) ||
+                other.background == background) &&
+            (identical(other.componentBackground, componentBackground) ||
+                other.componentBackground == componentBackground) &&
+            (identical(other.componentBorder, componentBorder) ||
+                other.componentBorder == componentBorder) &&
+            (identical(other.componentDivider, componentDivider) ||
+                other.componentDivider == componentDivider) &&
+            (identical(other.componentText, componentText) ||
+                other.componentText == componentText) &&
+            (identical(other.primaryText, primaryText) ||
+                other.primaryText == primaryText) &&
+            (identical(other.secondaryText, secondaryText) ||
+                other.secondaryText == secondaryText) &&
+            (identical(other.placeholderText, placeholderText) ||
+                other.placeholderText == placeholderText) &&
+            (identical(other.icon, icon) || other.icon == icon) &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(primary),
-      const DeepCollectionEquality().hash(background),
-      const DeepCollectionEquality().hash(componentBackground),
-      const DeepCollectionEquality().hash(componentBorder),
-      const DeepCollectionEquality().hash(componentDivider),
-      const DeepCollectionEquality().hash(componentText),
-      const DeepCollectionEquality().hash(primaryText),
-      const DeepCollectionEquality().hash(secondaryText),
-      const DeepCollectionEquality().hash(placeholderText),
-      const DeepCollectionEquality().hash(icon),
-      const DeepCollectionEquality().hash(error));
+      primary,
+      background,
+      componentBackground,
+      componentBorder,
+      componentDivider,
+      componentText,
+      primaryText,
+      secondaryText,
+      placeholderText,
+      icon,
+      error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PaymentSheetAppearanceColorsCopyWith<_$_PaymentSheetAppearanceColors>
       get copyWith => __$$_PaymentSheetAppearanceColorsCopyWithImpl<
           _$_PaymentSheetAppearanceColors>(this, _$identity);
@@ -1833,7 +1862,8 @@ mixin _$PaymentSheetShape {
 abstract class $PaymentSheetShapeCopyWith<$Res> {
   factory $PaymentSheetShapeCopyWith(
           PaymentSheetShape value, $Res Function(PaymentSheetShape) then) =
-      _$PaymentSheetShapeCopyWithImpl<$Res>;
+      _$PaymentSheetShapeCopyWithImpl<$Res, PaymentSheetShape>;
+  @useResult
   $Res call(
       {double? borderRadius,
       double? borderWidth,
@@ -1843,14 +1873,16 @@ abstract class $PaymentSheetShapeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PaymentSheetShapeCopyWithImpl<$Res>
+class _$PaymentSheetShapeCopyWithImpl<$Res, $Val extends PaymentSheetShape>
     implements $PaymentSheetShapeCopyWith<$Res> {
   _$PaymentSheetShapeCopyWithImpl(this._value, this._then);
 
-  final PaymentSheetShape _value;
   // ignore: unused_field
-  final $Res Function(PaymentSheetShape) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? borderRadius = freezed,
@@ -1858,29 +1890,30 @@ class _$PaymentSheetShapeCopyWithImpl<$Res>
     Object? shadow = freezed,
   }) {
     return _then(_value.copyWith(
-      borderRadius: borderRadius == freezed
+      borderRadius: freezed == borderRadius
           ? _value.borderRadius
           : borderRadius // ignore: cast_nullable_to_non_nullable
               as double?,
-      borderWidth: borderWidth == freezed
+      borderWidth: freezed == borderWidth
           ? _value.borderWidth
           : borderWidth // ignore: cast_nullable_to_non_nullable
               as double?,
-      shadow: shadow == freezed
+      shadow: freezed == shadow
           ? _value.shadow
           : shadow // ignore: cast_nullable_to_non_nullable
               as PaymentSheetShadowParams?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PaymentSheetShadowParamsCopyWith<$Res>? get shadow {
     if (_value.shadow == null) {
       return null;
     }
 
     return $PaymentSheetShadowParamsCopyWith<$Res>(_value.shadow!, (value) {
-      return _then(_value.copyWith(shadow: value));
+      return _then(_value.copyWith(shadow: value) as $Val);
     });
   }
 }
@@ -1892,6 +1925,7 @@ abstract class _$$_PaymentSheetShapeCopyWith<$Res>
           $Res Function(_$_PaymentSheetShape) then) =
       __$$_PaymentSheetShapeCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {double? borderRadius,
       double? borderWidth,
@@ -1903,15 +1937,13 @@ abstract class _$$_PaymentSheetShapeCopyWith<$Res>
 
 /// @nodoc
 class __$$_PaymentSheetShapeCopyWithImpl<$Res>
-    extends _$PaymentSheetShapeCopyWithImpl<$Res>
+    extends _$PaymentSheetShapeCopyWithImpl<$Res, _$_PaymentSheetShape>
     implements _$$_PaymentSheetShapeCopyWith<$Res> {
   __$$_PaymentSheetShapeCopyWithImpl(
       _$_PaymentSheetShape _value, $Res Function(_$_PaymentSheetShape) _then)
-      : super(_value, (v) => _then(v as _$_PaymentSheetShape));
+      : super(_value, _then);
 
-  @override
-  _$_PaymentSheetShape get _value => super._value as _$_PaymentSheetShape;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? borderRadius = freezed,
@@ -1919,15 +1951,15 @@ class __$$_PaymentSheetShapeCopyWithImpl<$Res>
     Object? shadow = freezed,
   }) {
     return _then(_$_PaymentSheetShape(
-      borderRadius: borderRadius == freezed
+      borderRadius: freezed == borderRadius
           ? _value.borderRadius
           : borderRadius // ignore: cast_nullable_to_non_nullable
               as double?,
-      borderWidth: borderWidth == freezed
+      borderWidth: freezed == borderWidth
           ? _value.borderWidth
           : borderWidth // ignore: cast_nullable_to_non_nullable
               as double?,
-      shadow: shadow == freezed
+      shadow: freezed == shadow
           ? _value.shadow
           : shadow // ignore: cast_nullable_to_non_nullable
               as PaymentSheetShadowParams?,
@@ -1967,23 +1999,21 @@ class _$_PaymentSheetShape implements _PaymentSheetShape {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PaymentSheetShape &&
-            const DeepCollectionEquality()
-                .equals(other.borderRadius, borderRadius) &&
-            const DeepCollectionEquality()
-                .equals(other.borderWidth, borderWidth) &&
-            const DeepCollectionEquality().equals(other.shadow, shadow));
+            (identical(other.borderRadius, borderRadius) ||
+                other.borderRadius == borderRadius) &&
+            (identical(other.borderWidth, borderWidth) ||
+                other.borderWidth == borderWidth) &&
+            (identical(other.shadow, shadow) || other.shadow == shadow));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(borderRadius),
-      const DeepCollectionEquality().hash(borderWidth),
-      const DeepCollectionEquality().hash(shadow));
+  int get hashCode =>
+      Object.hash(runtimeType, borderRadius, borderWidth, shadow);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PaymentSheetShapeCopyWith<_$_PaymentSheetShape> get copyWith =>
       __$$_PaymentSheetShapeCopyWithImpl<_$_PaymentSheetShape>(
           this, _$identity);
@@ -2050,7 +2080,8 @@ mixin _$PaymentSheetShadowParams {
 abstract class $PaymentSheetShadowParamsCopyWith<$Res> {
   factory $PaymentSheetShadowParamsCopyWith(PaymentSheetShadowParams value,
           $Res Function(PaymentSheetShadowParams) then) =
-      _$PaymentSheetShadowParamsCopyWithImpl<$Res>;
+      _$PaymentSheetShadowParamsCopyWithImpl<$Res, PaymentSheetShadowParams>;
+  @useResult
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? color,
@@ -2061,14 +2092,17 @@ abstract class $PaymentSheetShadowParamsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PaymentSheetShadowParamsCopyWithImpl<$Res>
+class _$PaymentSheetShadowParamsCopyWithImpl<$Res,
+        $Val extends PaymentSheetShadowParams>
     implements $PaymentSheetShadowParamsCopyWith<$Res> {
   _$PaymentSheetShadowParamsCopyWithImpl(this._value, this._then);
 
-  final PaymentSheetShadowParams _value;
   // ignore: unused_field
-  final $Res Function(PaymentSheetShadowParams) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? color = freezed,
@@ -2076,29 +2110,30 @@ class _$PaymentSheetShadowParamsCopyWithImpl<$Res>
     Object? offset = freezed,
   }) {
     return _then(_value.copyWith(
-      color: color == freezed
+      color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
               as Color?,
-      opacity: opacity == freezed
+      opacity: freezed == opacity
           ? _value.opacity
           : opacity // ignore: cast_nullable_to_non_nullable
               as double?,
-      offset: offset == freezed
+      offset: freezed == offset
           ? _value.offset
           : offset // ignore: cast_nullable_to_non_nullable
               as PaymentSheetShadowOffset?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PaymentSheetShadowOffsetCopyWith<$Res>? get offset {
     if (_value.offset == null) {
       return null;
     }
 
     return $PaymentSheetShadowOffsetCopyWith<$Res>(_value.offset!, (value) {
-      return _then(_value.copyWith(offset: value));
+      return _then(_value.copyWith(offset: value) as $Val);
     });
   }
 }
@@ -2111,6 +2146,7 @@ abstract class _$$_PaymentSheetShadowParamsCopyWith<$Res>
           $Res Function(_$_PaymentSheetShadowParams) then) =
       __$$_PaymentSheetShadowParamsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? color,
@@ -2123,16 +2159,14 @@ abstract class _$$_PaymentSheetShadowParamsCopyWith<$Res>
 
 /// @nodoc
 class __$$_PaymentSheetShadowParamsCopyWithImpl<$Res>
-    extends _$PaymentSheetShadowParamsCopyWithImpl<$Res>
+    extends _$PaymentSheetShadowParamsCopyWithImpl<$Res,
+        _$_PaymentSheetShadowParams>
     implements _$$_PaymentSheetShadowParamsCopyWith<$Res> {
   __$$_PaymentSheetShadowParamsCopyWithImpl(_$_PaymentSheetShadowParams _value,
       $Res Function(_$_PaymentSheetShadowParams) _then)
-      : super(_value, (v) => _then(v as _$_PaymentSheetShadowParams));
+      : super(_value, _then);
 
-  @override
-  _$_PaymentSheetShadowParams get _value =>
-      super._value as _$_PaymentSheetShadowParams;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? color = freezed,
@@ -2140,15 +2174,15 @@ class __$$_PaymentSheetShadowParamsCopyWithImpl<$Res>
     Object? offset = freezed,
   }) {
     return _then(_$_PaymentSheetShadowParams(
-      color: color == freezed
+      color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
               as Color?,
-      opacity: opacity == freezed
+      opacity: freezed == opacity
           ? _value.opacity
           : opacity // ignore: cast_nullable_to_non_nullable
               as double?,
-      offset: offset == freezed
+      offset: freezed == offset
           ? _value.offset
           : offset // ignore: cast_nullable_to_non_nullable
               as PaymentSheetShadowOffset?,
@@ -2192,21 +2226,18 @@ class _$_PaymentSheetShadowParams implements _PaymentSheetShadowParams {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PaymentSheetShadowParams &&
-            const DeepCollectionEquality().equals(other.color, color) &&
-            const DeepCollectionEquality().equals(other.opacity, opacity) &&
-            const DeepCollectionEquality().equals(other.offset, offset));
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.opacity, opacity) || other.opacity == opacity) &&
+            (identical(other.offset, offset) || other.offset == offset));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(color),
-      const DeepCollectionEquality().hash(opacity),
-      const DeepCollectionEquality().hash(offset));
+  int get hashCode => Object.hash(runtimeType, color, opacity, offset);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PaymentSheetShadowParamsCopyWith<_$_PaymentSheetShadowParams>
       get copyWith => __$$_PaymentSheetShadowParamsCopyWithImpl<
           _$_PaymentSheetShadowParams>(this, _$identity);
@@ -2271,34 +2302,38 @@ mixin _$PaymentSheetShadowOffset {
 abstract class $PaymentSheetShadowOffsetCopyWith<$Res> {
   factory $PaymentSheetShadowOffsetCopyWith(PaymentSheetShadowOffset value,
           $Res Function(PaymentSheetShadowOffset) then) =
-      _$PaymentSheetShadowOffsetCopyWithImpl<$Res>;
+      _$PaymentSheetShadowOffsetCopyWithImpl<$Res, PaymentSheetShadowOffset>;
+  @useResult
   $Res call({double? x, double? y});
 }
 
 /// @nodoc
-class _$PaymentSheetShadowOffsetCopyWithImpl<$Res>
+class _$PaymentSheetShadowOffsetCopyWithImpl<$Res,
+        $Val extends PaymentSheetShadowOffset>
     implements $PaymentSheetShadowOffsetCopyWith<$Res> {
   _$PaymentSheetShadowOffsetCopyWithImpl(this._value, this._then);
 
-  final PaymentSheetShadowOffset _value;
   // ignore: unused_field
-  final $Res Function(PaymentSheetShadowOffset) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? x = freezed,
     Object? y = freezed,
   }) {
     return _then(_value.copyWith(
-      x: x == freezed
+      x: freezed == x
           ? _value.x
           : x // ignore: cast_nullable_to_non_nullable
               as double?,
-      y: y == freezed
+      y: freezed == y
           ? _value.y
           : y // ignore: cast_nullable_to_non_nullable
               as double?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -2310,32 +2345,31 @@ abstract class _$$_PaymentSheetShadowOffsetCopyWith<$Res>
           $Res Function(_$_PaymentSheetShadowOffset) then) =
       __$$_PaymentSheetShadowOffsetCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({double? x, double? y});
 }
 
 /// @nodoc
 class __$$_PaymentSheetShadowOffsetCopyWithImpl<$Res>
-    extends _$PaymentSheetShadowOffsetCopyWithImpl<$Res>
+    extends _$PaymentSheetShadowOffsetCopyWithImpl<$Res,
+        _$_PaymentSheetShadowOffset>
     implements _$$_PaymentSheetShadowOffsetCopyWith<$Res> {
   __$$_PaymentSheetShadowOffsetCopyWithImpl(_$_PaymentSheetShadowOffset _value,
       $Res Function(_$_PaymentSheetShadowOffset) _then)
-      : super(_value, (v) => _then(v as _$_PaymentSheetShadowOffset));
+      : super(_value, _then);
 
-  @override
-  _$_PaymentSheetShadowOffset get _value =>
-      super._value as _$_PaymentSheetShadowOffset;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? x = freezed,
     Object? y = freezed,
   }) {
     return _then(_$_PaymentSheetShadowOffset(
-      x: x == freezed
+      x: freezed == x
           ? _value.x
           : x // ignore: cast_nullable_to_non_nullable
               as double?,
-      y: y == freezed
+      y: freezed == y
           ? _value.y
           : y // ignore: cast_nullable_to_non_nullable
               as double?,
@@ -2370,19 +2404,17 @@ class _$_PaymentSheetShadowOffset implements _PaymentSheetShadowOffset {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PaymentSheetShadowOffset &&
-            const DeepCollectionEquality().equals(other.x, x) &&
-            const DeepCollectionEquality().equals(other.y, y));
+            (identical(other.x, x) || other.x == x) &&
+            (identical(other.y, y) || other.y == y));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(x),
-      const DeepCollectionEquality().hash(y));
+  int get hashCode => Object.hash(runtimeType, x, y);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PaymentSheetShadowOffsetCopyWith<_$_PaymentSheetShadowOffset>
       get copyWith => __$$_PaymentSheetShadowOffsetCopyWithImpl<
           _$_PaymentSheetShadowOffset>(this, _$identity);
@@ -2443,7 +2475,9 @@ abstract class $PaymentSheetPrimaryButtonAppearanceCopyWith<$Res> {
   factory $PaymentSheetPrimaryButtonAppearanceCopyWith(
           PaymentSheetPrimaryButtonAppearance value,
           $Res Function(PaymentSheetPrimaryButtonAppearance) then) =
-      _$PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res>;
+      _$PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res,
+          PaymentSheetPrimaryButtonAppearance>;
+  @useResult
   $Res call(
       {PaymentSheetPrimaryButtonTheme? colors,
       PaymentSheetPrimaryButtonShape? shapes});
@@ -2453,32 +2487,36 @@ abstract class $PaymentSheetPrimaryButtonAppearanceCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res>
+class _$PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res,
+        $Val extends PaymentSheetPrimaryButtonAppearance>
     implements $PaymentSheetPrimaryButtonAppearanceCopyWith<$Res> {
   _$PaymentSheetPrimaryButtonAppearanceCopyWithImpl(this._value, this._then);
 
-  final PaymentSheetPrimaryButtonAppearance _value;
   // ignore: unused_field
-  final $Res Function(PaymentSheetPrimaryButtonAppearance) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? colors = freezed,
     Object? shapes = freezed,
   }) {
     return _then(_value.copyWith(
-      colors: colors == freezed
+      colors: freezed == colors
           ? _value.colors
           : colors // ignore: cast_nullable_to_non_nullable
               as PaymentSheetPrimaryButtonTheme?,
-      shapes: shapes == freezed
+      shapes: freezed == shapes
           ? _value.shapes
           : shapes // ignore: cast_nullable_to_non_nullable
               as PaymentSheetPrimaryButtonShape?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PaymentSheetPrimaryButtonThemeCopyWith<$Res>? get colors {
     if (_value.colors == null) {
       return null;
@@ -2486,11 +2524,12 @@ class _$PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res>
 
     return $PaymentSheetPrimaryButtonThemeCopyWith<$Res>(_value.colors!,
         (value) {
-      return _then(_value.copyWith(colors: value));
+      return _then(_value.copyWith(colors: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PaymentSheetPrimaryButtonShapeCopyWith<$Res>? get shapes {
     if (_value.shapes == null) {
       return null;
@@ -2498,7 +2537,7 @@ class _$PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res>
 
     return $PaymentSheetPrimaryButtonShapeCopyWith<$Res>(_value.shapes!,
         (value) {
-      return _then(_value.copyWith(shapes: value));
+      return _then(_value.copyWith(shapes: value) as $Val);
     });
   }
 }
@@ -2511,6 +2550,7 @@ abstract class _$$_PaymentSheetPrimaryButtonAppearanceCopyWith<$Res>
           $Res Function(_$_PaymentSheetPrimaryButtonAppearance) then) =
       __$$_PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {PaymentSheetPrimaryButtonTheme? colors,
       PaymentSheetPrimaryButtonShape? shapes});
@@ -2523,29 +2563,26 @@ abstract class _$$_PaymentSheetPrimaryButtonAppearanceCopyWith<$Res>
 
 /// @nodoc
 class __$$_PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res>
-    extends _$PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res>
+    extends _$PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res,
+        _$_PaymentSheetPrimaryButtonAppearance>
     implements _$$_PaymentSheetPrimaryButtonAppearanceCopyWith<$Res> {
   __$$_PaymentSheetPrimaryButtonAppearanceCopyWithImpl(
       _$_PaymentSheetPrimaryButtonAppearance _value,
       $Res Function(_$_PaymentSheetPrimaryButtonAppearance) _then)
-      : super(
-            _value, (v) => _then(v as _$_PaymentSheetPrimaryButtonAppearance));
+      : super(_value, _then);
 
-  @override
-  _$_PaymentSheetPrimaryButtonAppearance get _value =>
-      super._value as _$_PaymentSheetPrimaryButtonAppearance;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? colors = freezed,
     Object? shapes = freezed,
   }) {
     return _then(_$_PaymentSheetPrimaryButtonAppearance(
-      colors: colors == freezed
+      colors: freezed == colors
           ? _value.colors
           : colors // ignore: cast_nullable_to_non_nullable
               as PaymentSheetPrimaryButtonTheme?,
-      shapes: shapes == freezed
+      shapes: freezed == shapes
           ? _value.shapes
           : shapes // ignore: cast_nullable_to_non_nullable
               as PaymentSheetPrimaryButtonShape?,
@@ -2582,19 +2619,17 @@ class _$_PaymentSheetPrimaryButtonAppearance
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PaymentSheetPrimaryButtonAppearance &&
-            const DeepCollectionEquality().equals(other.colors, colors) &&
-            const DeepCollectionEquality().equals(other.shapes, shapes));
+            (identical(other.colors, colors) || other.colors == colors) &&
+            (identical(other.shapes, shapes) || other.shapes == shapes));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(colors),
-      const DeepCollectionEquality().hash(shapes));
+  int get hashCode => Object.hash(runtimeType, colors, shapes);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PaymentSheetPrimaryButtonAppearanceCopyWith<
           _$_PaymentSheetPrimaryButtonAppearance>
       get copyWith => __$$_PaymentSheetPrimaryButtonAppearanceCopyWithImpl<
@@ -2661,7 +2696,9 @@ abstract class $PaymentSheetPrimaryButtonShapeCopyWith<$Res> {
   factory $PaymentSheetPrimaryButtonShapeCopyWith(
           PaymentSheetPrimaryButtonShape value,
           $Res Function(PaymentSheetPrimaryButtonShape) then) =
-      _$PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res>;
+      _$PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res,
+          PaymentSheetPrimaryButtonShape>;
+  @useResult
   $Res call(
       {PaymentSheetShadowParams? shadow,
       double? blurRadius,
@@ -2671,14 +2708,17 @@ abstract class $PaymentSheetPrimaryButtonShapeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res>
+class _$PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res,
+        $Val extends PaymentSheetPrimaryButtonShape>
     implements $PaymentSheetPrimaryButtonShapeCopyWith<$Res> {
   _$PaymentSheetPrimaryButtonShapeCopyWithImpl(this._value, this._then);
 
-  final PaymentSheetPrimaryButtonShape _value;
   // ignore: unused_field
-  final $Res Function(PaymentSheetPrimaryButtonShape) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? shadow = freezed,
@@ -2686,29 +2726,30 @@ class _$PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res>
     Object? borderWidth = freezed,
   }) {
     return _then(_value.copyWith(
-      shadow: shadow == freezed
+      shadow: freezed == shadow
           ? _value.shadow
           : shadow // ignore: cast_nullable_to_non_nullable
               as PaymentSheetShadowParams?,
-      blurRadius: blurRadius == freezed
+      blurRadius: freezed == blurRadius
           ? _value.blurRadius
           : blurRadius // ignore: cast_nullable_to_non_nullable
               as double?,
-      borderWidth: borderWidth == freezed
+      borderWidth: freezed == borderWidth
           ? _value.borderWidth
           : borderWidth // ignore: cast_nullable_to_non_nullable
               as double?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PaymentSheetShadowParamsCopyWith<$Res>? get shadow {
     if (_value.shadow == null) {
       return null;
     }
 
     return $PaymentSheetShadowParamsCopyWith<$Res>(_value.shadow!, (value) {
-      return _then(_value.copyWith(shadow: value));
+      return _then(_value.copyWith(shadow: value) as $Val);
     });
   }
 }
@@ -2721,6 +2762,7 @@ abstract class _$$_PaymentSheetPrimaryButtonShapeCopyWith<$Res>
           $Res Function(_$_PaymentSheetPrimaryButtonShape) then) =
       __$$_PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {PaymentSheetShadowParams? shadow,
       double? blurRadius,
@@ -2732,17 +2774,15 @@ abstract class _$$_PaymentSheetPrimaryButtonShapeCopyWith<$Res>
 
 /// @nodoc
 class __$$_PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res>
-    extends _$PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res>
+    extends _$PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res,
+        _$_PaymentSheetPrimaryButtonShape>
     implements _$$_PaymentSheetPrimaryButtonShapeCopyWith<$Res> {
   __$$_PaymentSheetPrimaryButtonShapeCopyWithImpl(
       _$_PaymentSheetPrimaryButtonShape _value,
       $Res Function(_$_PaymentSheetPrimaryButtonShape) _then)
-      : super(_value, (v) => _then(v as _$_PaymentSheetPrimaryButtonShape));
+      : super(_value, _then);
 
-  @override
-  _$_PaymentSheetPrimaryButtonShape get _value =>
-      super._value as _$_PaymentSheetPrimaryButtonShape;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? shadow = freezed,
@@ -2750,15 +2790,15 @@ class __$$_PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res>
     Object? borderWidth = freezed,
   }) {
     return _then(_$_PaymentSheetPrimaryButtonShape(
-      shadow: shadow == freezed
+      shadow: freezed == shadow
           ? _value.shadow
           : shadow // ignore: cast_nullable_to_non_nullable
               as PaymentSheetShadowParams?,
-      blurRadius: blurRadius == freezed
+      blurRadius: freezed == blurRadius
           ? _value.blurRadius
           : blurRadius // ignore: cast_nullable_to_non_nullable
               as double?,
-      borderWidth: borderWidth == freezed
+      borderWidth: freezed == borderWidth
           ? _value.borderWidth
           : borderWidth // ignore: cast_nullable_to_non_nullable
               as double?,
@@ -2800,23 +2840,20 @@ class _$_PaymentSheetPrimaryButtonShape
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PaymentSheetPrimaryButtonShape &&
-            const DeepCollectionEquality().equals(other.shadow, shadow) &&
-            const DeepCollectionEquality()
-                .equals(other.blurRadius, blurRadius) &&
-            const DeepCollectionEquality()
-                .equals(other.borderWidth, borderWidth));
+            (identical(other.shadow, shadow) || other.shadow == shadow) &&
+            (identical(other.blurRadius, blurRadius) ||
+                other.blurRadius == blurRadius) &&
+            (identical(other.borderWidth, borderWidth) ||
+                other.borderWidth == borderWidth));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(shadow),
-      const DeepCollectionEquality().hash(blurRadius),
-      const DeepCollectionEquality().hash(borderWidth));
+  int get hashCode => Object.hash(runtimeType, shadow, blurRadius, borderWidth);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PaymentSheetPrimaryButtonShapeCopyWith<_$_PaymentSheetPrimaryButtonShape>
       get copyWith => __$$_PaymentSheetPrimaryButtonShapeCopyWithImpl<
           _$_PaymentSheetPrimaryButtonShape>(this, _$identity);
@@ -2883,7 +2920,9 @@ abstract class $PaymentSheetPrimaryButtonThemeCopyWith<$Res> {
   factory $PaymentSheetPrimaryButtonThemeCopyWith(
           PaymentSheetPrimaryButtonTheme value,
           $Res Function(PaymentSheetPrimaryButtonTheme) then) =
-      _$PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res>;
+      _$PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res,
+          PaymentSheetPrimaryButtonTheme>;
+  @useResult
   $Res call(
       {PaymentSheetPrimaryButtonThemeColors? dark,
       PaymentSheetPrimaryButtonThemeColors? light});
@@ -2893,32 +2932,36 @@ abstract class $PaymentSheetPrimaryButtonThemeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res>
+class _$PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res,
+        $Val extends PaymentSheetPrimaryButtonTheme>
     implements $PaymentSheetPrimaryButtonThemeCopyWith<$Res> {
   _$PaymentSheetPrimaryButtonThemeCopyWithImpl(this._value, this._then);
 
-  final PaymentSheetPrimaryButtonTheme _value;
   // ignore: unused_field
-  final $Res Function(PaymentSheetPrimaryButtonTheme) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? dark = freezed,
     Object? light = freezed,
   }) {
     return _then(_value.copyWith(
-      dark: dark == freezed
+      dark: freezed == dark
           ? _value.dark
           : dark // ignore: cast_nullable_to_non_nullable
               as PaymentSheetPrimaryButtonThemeColors?,
-      light: light == freezed
+      light: freezed == light
           ? _value.light
           : light // ignore: cast_nullable_to_non_nullable
               as PaymentSheetPrimaryButtonThemeColors?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>? get dark {
     if (_value.dark == null) {
       return null;
@@ -2926,11 +2969,12 @@ class _$PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res>
 
     return $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>(_value.dark!,
         (value) {
-      return _then(_value.copyWith(dark: value));
+      return _then(_value.copyWith(dark: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>? get light {
     if (_value.light == null) {
       return null;
@@ -2938,7 +2982,7 @@ class _$PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res>
 
     return $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>(_value.light!,
         (value) {
-      return _then(_value.copyWith(light: value));
+      return _then(_value.copyWith(light: value) as $Val);
     });
   }
 }
@@ -2951,6 +2995,7 @@ abstract class _$$_PaymentSheetPrimaryButtonThemeCopyWith<$Res>
           $Res Function(_$_PaymentSheetPrimaryButtonTheme) then) =
       __$$_PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {PaymentSheetPrimaryButtonThemeColors? dark,
       PaymentSheetPrimaryButtonThemeColors? light});
@@ -2963,28 +3008,26 @@ abstract class _$$_PaymentSheetPrimaryButtonThemeCopyWith<$Res>
 
 /// @nodoc
 class __$$_PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res>
-    extends _$PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res>
+    extends _$PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res,
+        _$_PaymentSheetPrimaryButtonTheme>
     implements _$$_PaymentSheetPrimaryButtonThemeCopyWith<$Res> {
   __$$_PaymentSheetPrimaryButtonThemeCopyWithImpl(
       _$_PaymentSheetPrimaryButtonTheme _value,
       $Res Function(_$_PaymentSheetPrimaryButtonTheme) _then)
-      : super(_value, (v) => _then(v as _$_PaymentSheetPrimaryButtonTheme));
+      : super(_value, _then);
 
-  @override
-  _$_PaymentSheetPrimaryButtonTheme get _value =>
-      super._value as _$_PaymentSheetPrimaryButtonTheme;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? dark = freezed,
     Object? light = freezed,
   }) {
     return _then(_$_PaymentSheetPrimaryButtonTheme(
-      dark: dark == freezed
+      dark: freezed == dark
           ? _value.dark
           : dark // ignore: cast_nullable_to_non_nullable
               as PaymentSheetPrimaryButtonThemeColors?,
-      light: light == freezed
+      light: freezed == light
           ? _value.light
           : light // ignore: cast_nullable_to_non_nullable
               as PaymentSheetPrimaryButtonThemeColors?,
@@ -3021,19 +3064,17 @@ class _$_PaymentSheetPrimaryButtonTheme
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PaymentSheetPrimaryButtonTheme &&
-            const DeepCollectionEquality().equals(other.dark, dark) &&
-            const DeepCollectionEquality().equals(other.light, light));
+            (identical(other.dark, dark) || other.dark == dark) &&
+            (identical(other.light, light) || other.light == light));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(dark),
-      const DeepCollectionEquality().hash(light));
+  int get hashCode => Object.hash(runtimeType, dark, light);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PaymentSheetPrimaryButtonThemeCopyWith<_$_PaymentSheetPrimaryButtonTheme>
       get copyWith => __$$_PaymentSheetPrimaryButtonThemeCopyWithImpl<
           _$_PaymentSheetPrimaryButtonTheme>(this, _$identity);
@@ -3101,7 +3142,9 @@ abstract class $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res> {
   factory $PaymentSheetPrimaryButtonThemeColorsCopyWith(
           PaymentSheetPrimaryButtonThemeColors value,
           $Res Function(PaymentSheetPrimaryButtonThemeColors) then) =
-      _$PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res>;
+      _$PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res,
+          PaymentSheetPrimaryButtonThemeColors>;
+  @useResult
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? background,
@@ -3112,14 +3155,17 @@ abstract class $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res>
+class _$PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res,
+        $Val extends PaymentSheetPrimaryButtonThemeColors>
     implements $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res> {
   _$PaymentSheetPrimaryButtonThemeColorsCopyWithImpl(this._value, this._then);
 
-  final PaymentSheetPrimaryButtonThemeColors _value;
   // ignore: unused_field
-  final $Res Function(PaymentSheetPrimaryButtonThemeColors) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? background = freezed,
@@ -3127,19 +3173,19 @@ class _$PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res>
     Object? border = freezed,
   }) {
     return _then(_value.copyWith(
-      background: background == freezed
+      background: freezed == background
           ? _value.background
           : background // ignore: cast_nullable_to_non_nullable
               as Color?,
-      text: text == freezed
+      text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as Color?,
-      border: border == freezed
+      border: freezed == border
           ? _value.border
           : border // ignore: cast_nullable_to_non_nullable
               as Color?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -3151,6 +3197,7 @@ abstract class _$$_PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>
           $Res Function(_$_PaymentSheetPrimaryButtonThemeColors) then) =
       __$$_PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
           Color? background,
@@ -3162,18 +3209,15 @@ abstract class _$$_PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>
 
 /// @nodoc
 class __$$_PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res>
-    extends _$PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res>
+    extends _$PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res,
+        _$_PaymentSheetPrimaryButtonThemeColors>
     implements _$$_PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res> {
   __$$_PaymentSheetPrimaryButtonThemeColorsCopyWithImpl(
       _$_PaymentSheetPrimaryButtonThemeColors _value,
       $Res Function(_$_PaymentSheetPrimaryButtonThemeColors) _then)
-      : super(
-            _value, (v) => _then(v as _$_PaymentSheetPrimaryButtonThemeColors));
+      : super(_value, _then);
 
-  @override
-  _$_PaymentSheetPrimaryButtonThemeColors get _value =>
-      super._value as _$_PaymentSheetPrimaryButtonThemeColors;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? background = freezed,
@@ -3181,15 +3225,15 @@ class __$$_PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res>
     Object? border = freezed,
   }) {
     return _then(_$_PaymentSheetPrimaryButtonThemeColors(
-      background: background == freezed
+      background: freezed == background
           ? _value.background
           : background // ignore: cast_nullable_to_non_nullable
               as Color?,
-      text: text == freezed
+      text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as Color?,
-      border: border == freezed
+      border: freezed == border
           ? _value.border
           : border // ignore: cast_nullable_to_non_nullable
               as Color?,
@@ -3238,22 +3282,19 @@ class _$_PaymentSheetPrimaryButtonThemeColors
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PaymentSheetPrimaryButtonThemeColors &&
-            const DeepCollectionEquality()
-                .equals(other.background, background) &&
-            const DeepCollectionEquality().equals(other.text, text) &&
-            const DeepCollectionEquality().equals(other.border, border));
+            (identical(other.background, background) ||
+                other.background == background) &&
+            (identical(other.text, text) || other.text == text) &&
+            (identical(other.border, border) || other.border == border));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(background),
-      const DeepCollectionEquality().hash(text),
-      const DeepCollectionEquality().hash(border));
+  int get hashCode => Object.hash(runtimeType, background, text, border);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PaymentSheetPrimaryButtonThemeColorsCopyWith<
           _$_PaymentSheetPrimaryButtonThemeColors>
       get copyWith => __$$_PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<
@@ -3333,34 +3374,39 @@ abstract class $PresentPaymentSheetParametersCopyWith<$Res> {
   factory $PresentPaymentSheetParametersCopyWith(
           PresentPaymentSheetParameters value,
           $Res Function(PresentPaymentSheetParameters) then) =
-      _$PresentPaymentSheetParametersCopyWithImpl<$Res>;
+      _$PresentPaymentSheetParametersCopyWithImpl<$Res,
+          PresentPaymentSheetParameters>;
+  @useResult
   $Res call({String clientSecret, bool confirmPayment});
 }
 
 /// @nodoc
-class _$PresentPaymentSheetParametersCopyWithImpl<$Res>
+class _$PresentPaymentSheetParametersCopyWithImpl<$Res,
+        $Val extends PresentPaymentSheetParameters>
     implements $PresentPaymentSheetParametersCopyWith<$Res> {
   _$PresentPaymentSheetParametersCopyWithImpl(this._value, this._then);
 
-  final PresentPaymentSheetParameters _value;
   // ignore: unused_field
-  final $Res Function(PresentPaymentSheetParameters) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clientSecret = freezed,
-    Object? confirmPayment = freezed,
+    Object? clientSecret = null,
+    Object? confirmPayment = null,
   }) {
     return _then(_value.copyWith(
-      clientSecret: clientSecret == freezed
+      clientSecret: null == clientSecret
           ? _value.clientSecret
           : clientSecret // ignore: cast_nullable_to_non_nullable
               as String,
-      confirmPayment: confirmPayment == freezed
+      confirmPayment: null == confirmPayment
           ? _value.confirmPayment
           : confirmPayment // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -3371,31 +3417,30 @@ abstract class _$$_PresentParametersCopyWith<$Res>
           $Res Function(_$_PresentParameters) then) =
       __$$_PresentParametersCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String clientSecret, bool confirmPayment});
 }
 
 /// @nodoc
 class __$$_PresentParametersCopyWithImpl<$Res>
-    extends _$PresentPaymentSheetParametersCopyWithImpl<$Res>
-    implements _$$_PresentParametersCopyWith<$Res> {
+    extends _$PresentPaymentSheetParametersCopyWithImpl<$Res,
+        _$_PresentParameters> implements _$$_PresentParametersCopyWith<$Res> {
   __$$_PresentParametersCopyWithImpl(
       _$_PresentParameters _value, $Res Function(_$_PresentParameters) _then)
-      : super(_value, (v) => _then(v as _$_PresentParameters));
+      : super(_value, _then);
 
-  @override
-  _$_PresentParameters get _value => super._value as _$_PresentParameters;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clientSecret = freezed,
-    Object? confirmPayment = freezed,
+    Object? clientSecret = null,
+    Object? confirmPayment = null,
   }) {
     return _then(_$_PresentParameters(
-      clientSecret: clientSecret == freezed
+      clientSecret: null == clientSecret
           ? _value.clientSecret
           : clientSecret // ignore: cast_nullable_to_non_nullable
               as String,
-      confirmPayment: confirmPayment == freezed
+      confirmPayment: null == confirmPayment
           ? _value.confirmPayment
           : confirmPayment // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -3437,21 +3482,19 @@ class _$_PresentParameters implements _PresentParameters {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PresentParameters &&
-            const DeepCollectionEquality()
-                .equals(other.clientSecret, clientSecret) &&
-            const DeepCollectionEquality()
-                .equals(other.confirmPayment, confirmPayment));
+            (identical(other.clientSecret, clientSecret) ||
+                other.clientSecret == clientSecret) &&
+            (identical(other.confirmPayment, confirmPayment) ||
+                other.confirmPayment == confirmPayment));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(clientSecret),
-      const DeepCollectionEquality().hash(confirmPayment));
+  int get hashCode => Object.hash(runtimeType, clientSecret, confirmPayment);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PresentParametersCopyWith<_$_PresentParameters> get copyWith =>
       __$$_PresentParametersCopyWithImpl<_$_PresentParameters>(
           this, _$identity);

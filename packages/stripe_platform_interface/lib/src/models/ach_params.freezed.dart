@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'ach_params.dart';
 
@@ -40,7 +40,8 @@ mixin _$CollectBankAccountParams {
 abstract class $CollectBankAccountParamsCopyWith<$Res> {
   factory $CollectBankAccountParamsCopyWith(CollectBankAccountParams value,
           $Res Function(CollectBankAccountParams) then) =
-      _$CollectBankAccountParamsCopyWithImpl<$Res>;
+      _$CollectBankAccountParamsCopyWithImpl<$Res, CollectBankAccountParams>;
+  @useResult
   $Res call(
       {BillingDetails billingDetails, PaymentMethodType paymentMethodType});
 
@@ -48,35 +49,39 @@ abstract class $CollectBankAccountParamsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CollectBankAccountParamsCopyWithImpl<$Res>
+class _$CollectBankAccountParamsCopyWithImpl<$Res,
+        $Val extends CollectBankAccountParams>
     implements $CollectBankAccountParamsCopyWith<$Res> {
   _$CollectBankAccountParamsCopyWithImpl(this._value, this._then);
 
-  final CollectBankAccountParams _value;
   // ignore: unused_field
-  final $Res Function(CollectBankAccountParams) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? billingDetails = freezed,
-    Object? paymentMethodType = freezed,
+    Object? billingDetails = null,
+    Object? paymentMethodType = null,
   }) {
     return _then(_value.copyWith(
-      billingDetails: billingDetails == freezed
+      billingDetails: null == billingDetails
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
               as BillingDetails,
-      paymentMethodType: paymentMethodType == freezed
+      paymentMethodType: null == paymentMethodType
           ? _value.paymentMethodType
           : paymentMethodType // ignore: cast_nullable_to_non_nullable
               as PaymentMethodType,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $BillingDetailsCopyWith<$Res> get billingDetails {
     return $BillingDetailsCopyWith<$Res>(_value.billingDetails, (value) {
-      return _then(_value.copyWith(billingDetails: value));
+      return _then(_value.copyWith(billingDetails: value) as $Val);
     });
   }
 }
@@ -89,6 +94,7 @@ abstract class _$$_CollectBankAccountParamsCopyWith<$Res>
           $Res Function(_$_CollectBankAccountParams) then) =
       __$$_CollectBankAccountParamsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {BillingDetails billingDetails, PaymentMethodType paymentMethodType});
 
@@ -98,27 +104,25 @@ abstract class _$$_CollectBankAccountParamsCopyWith<$Res>
 
 /// @nodoc
 class __$$_CollectBankAccountParamsCopyWithImpl<$Res>
-    extends _$CollectBankAccountParamsCopyWithImpl<$Res>
+    extends _$CollectBankAccountParamsCopyWithImpl<$Res,
+        _$_CollectBankAccountParams>
     implements _$$_CollectBankAccountParamsCopyWith<$Res> {
   __$$_CollectBankAccountParamsCopyWithImpl(_$_CollectBankAccountParams _value,
       $Res Function(_$_CollectBankAccountParams) _then)
-      : super(_value, (v) => _then(v as _$_CollectBankAccountParams));
+      : super(_value, _then);
 
-  @override
-  _$_CollectBankAccountParams get _value =>
-      super._value as _$_CollectBankAccountParams;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? billingDetails = freezed,
-    Object? paymentMethodType = freezed,
+    Object? billingDetails = null,
+    Object? paymentMethodType = null,
   }) {
     return _then(_$_CollectBankAccountParams(
-      billingDetails: billingDetails == freezed
+      billingDetails: null == billingDetails
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
               as BillingDetails,
-      paymentMethodType: paymentMethodType == freezed
+      paymentMethodType: null == paymentMethodType
           ? _value.paymentMethodType
           : paymentMethodType // ignore: cast_nullable_to_non_nullable
               as PaymentMethodType,
@@ -159,21 +163,20 @@ class _$_CollectBankAccountParams implements _CollectBankAccountParams {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CollectBankAccountParams &&
-            const DeepCollectionEquality()
-                .equals(other.billingDetails, billingDetails) &&
-            const DeepCollectionEquality()
-                .equals(other.paymentMethodType, paymentMethodType));
+            (identical(other.billingDetails, billingDetails) ||
+                other.billingDetails == billingDetails) &&
+            (identical(other.paymentMethodType, paymentMethodType) ||
+                other.paymentMethodType == paymentMethodType));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(billingDetails),
-      const DeepCollectionEquality().hash(paymentMethodType));
+  int get hashCode =>
+      Object.hash(runtimeType, billingDetails, paymentMethodType);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CollectBankAccountParamsCopyWith<_$_CollectBankAccountParams>
       get copyWith => __$$_CollectBankAccountParamsCopyWithImpl<
           _$_CollectBankAccountParams>(this, _$identity);
@@ -239,34 +242,38 @@ mixin _$VerifyMicroDepositsParams {
 abstract class $VerifyMicroDepositsParamsCopyWith<$Res> {
   factory $VerifyMicroDepositsParamsCopyWith(VerifyMicroDepositsParams value,
           $Res Function(VerifyMicroDepositsParams) then) =
-      _$VerifyMicroDepositsParamsCopyWithImpl<$Res>;
+      _$VerifyMicroDepositsParamsCopyWithImpl<$Res, VerifyMicroDepositsParams>;
+  @useResult
   $Res call({List<int>? amounts, String? descriptorCode});
 }
 
 /// @nodoc
-class _$VerifyMicroDepositsParamsCopyWithImpl<$Res>
+class _$VerifyMicroDepositsParamsCopyWithImpl<$Res,
+        $Val extends VerifyMicroDepositsParams>
     implements $VerifyMicroDepositsParamsCopyWith<$Res> {
   _$VerifyMicroDepositsParamsCopyWithImpl(this._value, this._then);
 
-  final VerifyMicroDepositsParams _value;
   // ignore: unused_field
-  final $Res Function(VerifyMicroDepositsParams) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? amounts = freezed,
     Object? descriptorCode = freezed,
   }) {
     return _then(_value.copyWith(
-      amounts: amounts == freezed
+      amounts: freezed == amounts
           ? _value.amounts
           : amounts // ignore: cast_nullable_to_non_nullable
               as List<int>?,
-      descriptorCode: descriptorCode == freezed
+      descriptorCode: freezed == descriptorCode
           ? _value.descriptorCode
           : descriptorCode // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -278,33 +285,32 @@ abstract class _$$_VerifyMicroDepositsParamsCopyWith<$Res>
           $Res Function(_$_VerifyMicroDepositsParams) then) =
       __$$_VerifyMicroDepositsParamsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<int>? amounts, String? descriptorCode});
 }
 
 /// @nodoc
 class __$$_VerifyMicroDepositsParamsCopyWithImpl<$Res>
-    extends _$VerifyMicroDepositsParamsCopyWithImpl<$Res>
+    extends _$VerifyMicroDepositsParamsCopyWithImpl<$Res,
+        _$_VerifyMicroDepositsParams>
     implements _$$_VerifyMicroDepositsParamsCopyWith<$Res> {
   __$$_VerifyMicroDepositsParamsCopyWithImpl(
       _$_VerifyMicroDepositsParams _value,
       $Res Function(_$_VerifyMicroDepositsParams) _then)
-      : super(_value, (v) => _then(v as _$_VerifyMicroDepositsParams));
+      : super(_value, _then);
 
-  @override
-  _$_VerifyMicroDepositsParams get _value =>
-      super._value as _$_VerifyMicroDepositsParams;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? amounts = freezed,
     Object? descriptorCode = freezed,
   }) {
     return _then(_$_VerifyMicroDepositsParams(
-      amounts: amounts == freezed
+      amounts: freezed == amounts
           ? _value._amounts
           : amounts // ignore: cast_nullable_to_non_nullable
               as List<int>?,
-      descriptorCode: descriptorCode == freezed
+      descriptorCode: freezed == descriptorCode
           ? _value.descriptorCode
           : descriptorCode // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -337,6 +343,7 @@ class _$_VerifyMicroDepositsParams implements _VerifyMicroDepositsParams {
   List<int>? get amounts {
     final value = _amounts;
     if (value == null) return null;
+    if (_amounts is EqualUnmodifiableListView) return _amounts;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -358,19 +365,18 @@ class _$_VerifyMicroDepositsParams implements _VerifyMicroDepositsParams {
         (other.runtimeType == runtimeType &&
             other is _$_VerifyMicroDepositsParams &&
             const DeepCollectionEquality().equals(other._amounts, _amounts) &&
-            const DeepCollectionEquality()
-                .equals(other.descriptorCode, descriptorCode));
+            (identical(other.descriptorCode, descriptorCode) ||
+                other.descriptorCode == descriptorCode));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_amounts),
-      const DeepCollectionEquality().hash(descriptorCode));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_amounts), descriptorCode);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_VerifyMicroDepositsParamsCopyWith<_$_VerifyMicroDepositsParams>
       get copyWith => __$$_VerifyMicroDepositsParamsCopyWithImpl<
           _$_VerifyMicroDepositsParams>(this, _$identity);
