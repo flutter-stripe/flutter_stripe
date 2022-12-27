@@ -961,6 +961,20 @@ mixin _$ApplePayParams {
   /// A list of two-letter ISO 3166 country codes for limiting payment to cards from specific countries or regions.
   List<String>? get supportedCountries => throw _privateConstructorUsedError;
 
+  /// Callback to execute when shipping contact data is set
+  @JsonKey(ignore: true)
+  OnDidSetShippingContact? get onDidSetShippingContact =>
+      throw _privateConstructorUsedError;
+
+  /// Callback to execute when shipping method is set
+  @JsonKey(ignore: true)
+  OnDidSetShippingMethod? get onDidSetShippingMethod =>
+      throw _privateConstructorUsedError;
+
+  /// Callback to execute when couponcode is entered
+  @JsonKey(ignore: true)
+  OnDidSetCoupon? get onDidSetCoupon => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ApplePayParamsCopyWith<ApplePayParams> get copyWith =>
@@ -983,7 +997,10 @@ abstract class $ApplePayParamsCopyWith<$Res> {
       List<ApplePayShippingMethod>? shippingMethods,
       List<ApplePayMerchantCapability>? merchantCapabilities,
       ApplePayShippingType? shippingType,
-      List<String>? supportedCountries});
+      List<String>? supportedCountries,
+      @JsonKey(ignore: true) OnDidSetShippingContact? onDidSetShippingContact,
+      @JsonKey(ignore: true) OnDidSetShippingMethod? onDidSetShippingMethod,
+      @JsonKey(ignore: true) OnDidSetCoupon? onDidSetCoupon});
 }
 
 /// @nodoc
@@ -1009,6 +1026,9 @@ class _$ApplePayParamsCopyWithImpl<$Res, $Val extends ApplePayParams>
     Object? merchantCapabilities = freezed,
     Object? shippingType = freezed,
     Object? supportedCountries = freezed,
+    Object? onDidSetShippingContact = freezed,
+    Object? onDidSetShippingMethod = freezed,
+    Object? onDidSetCoupon = freezed,
   }) {
     return _then(_value.copyWith(
       merchantCountryCode: null == merchantCountryCode
@@ -1051,6 +1071,18 @@ class _$ApplePayParamsCopyWithImpl<$Res, $Val extends ApplePayParams>
           ? _value.supportedCountries
           : supportedCountries // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      onDidSetShippingContact: freezed == onDidSetShippingContact
+          ? _value.onDidSetShippingContact
+          : onDidSetShippingContact // ignore: cast_nullable_to_non_nullable
+              as OnDidSetShippingContact?,
+      onDidSetShippingMethod: freezed == onDidSetShippingMethod
+          ? _value.onDidSetShippingMethod
+          : onDidSetShippingMethod // ignore: cast_nullable_to_non_nullable
+              as OnDidSetShippingMethod?,
+      onDidSetCoupon: freezed == onDidSetCoupon
+          ? _value.onDidSetCoupon
+          : onDidSetCoupon // ignore: cast_nullable_to_non_nullable
+              as OnDidSetCoupon?,
     ) as $Val);
   }
 }
@@ -1073,7 +1105,10 @@ abstract class _$$_ApplePayParamsCopyWith<$Res>
       List<ApplePayShippingMethod>? shippingMethods,
       List<ApplePayMerchantCapability>? merchantCapabilities,
       ApplePayShippingType? shippingType,
-      List<String>? supportedCountries});
+      List<String>? supportedCountries,
+      @JsonKey(ignore: true) OnDidSetShippingContact? onDidSetShippingContact,
+      @JsonKey(ignore: true) OnDidSetShippingMethod? onDidSetShippingMethod,
+      @JsonKey(ignore: true) OnDidSetCoupon? onDidSetCoupon});
 }
 
 /// @nodoc
@@ -1097,6 +1132,9 @@ class __$$_ApplePayParamsCopyWithImpl<$Res>
     Object? merchantCapabilities = freezed,
     Object? shippingType = freezed,
     Object? supportedCountries = freezed,
+    Object? onDidSetShippingContact = freezed,
+    Object? onDidSetShippingMethod = freezed,
+    Object? onDidSetCoupon = freezed,
   }) {
     return _then(_$_ApplePayParams(
       merchantCountryCode: null == merchantCountryCode
@@ -1139,6 +1177,18 @@ class __$$_ApplePayParamsCopyWithImpl<$Res>
           ? _value._supportedCountries
           : supportedCountries // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      onDidSetShippingContact: freezed == onDidSetShippingContact
+          ? _value.onDidSetShippingContact
+          : onDidSetShippingContact // ignore: cast_nullable_to_non_nullable
+              as OnDidSetShippingContact?,
+      onDidSetShippingMethod: freezed == onDidSetShippingMethod
+          ? _value.onDidSetShippingMethod
+          : onDidSetShippingMethod // ignore: cast_nullable_to_non_nullable
+              as OnDidSetShippingMethod?,
+      onDidSetCoupon: freezed == onDidSetCoupon
+          ? _value.onDidSetCoupon
+          : onDidSetCoupon // ignore: cast_nullable_to_non_nullable
+              as OnDidSetCoupon?,
     ));
   }
 }
@@ -1157,7 +1207,10 @@ class _$_ApplePayParams implements _ApplePayParams {
       final List<ApplePayShippingMethod>? shippingMethods,
       final List<ApplePayMerchantCapability>? merchantCapabilities,
       this.shippingType,
-      final List<String>? supportedCountries})
+      final List<String>? supportedCountries,
+      @JsonKey(ignore: true) this.onDidSetShippingContact,
+      @JsonKey(ignore: true) this.onDidSetShippingMethod,
+      @JsonKey(ignore: true) this.onDidSetCoupon})
       : _additionalEnabledNetworks = additionalEnabledNetworks,
         _cartItems = cartItems,
         _requiredShippingAddressFields = requiredShippingAddressFields,
@@ -1275,9 +1328,24 @@ class _$_ApplePayParams implements _ApplePayParams {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Callback to execute when shipping contact data is set
+  @override
+  @JsonKey(ignore: true)
+  final OnDidSetShippingContact? onDidSetShippingContact;
+
+  /// Callback to execute when shipping method is set
+  @override
+  @JsonKey(ignore: true)
+  final OnDidSetShippingMethod? onDidSetShippingMethod;
+
+  /// Callback to execute when couponcode is entered
+  @override
+  @JsonKey(ignore: true)
+  final OnDidSetCoupon? onDidSetCoupon;
+
   @override
   String toString() {
-    return 'ApplePayParams(merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, additionalEnabledNetworks: $additionalEnabledNetworks, cartItems: $cartItems, requiredShippingAddressFields: $requiredShippingAddressFields, requiredBillingContactFields: $requiredBillingContactFields, shippingMethods: $shippingMethods, merchantCapabilities: $merchantCapabilities, shippingType: $shippingType, supportedCountries: $supportedCountries)';
+    return 'ApplePayParams(merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, additionalEnabledNetworks: $additionalEnabledNetworks, cartItems: $cartItems, requiredShippingAddressFields: $requiredShippingAddressFields, requiredBillingContactFields: $requiredBillingContactFields, shippingMethods: $shippingMethods, merchantCapabilities: $merchantCapabilities, shippingType: $shippingType, supportedCountries: $supportedCountries, onDidSetShippingContact: $onDidSetShippingContact, onDidSetShippingMethod: $onDidSetShippingMethod, onDidSetCoupon: $onDidSetCoupon)';
   }
 
   @override
@@ -1306,7 +1374,14 @@ class _$_ApplePayParams implements _ApplePayParams {
             (identical(other.shippingType, shippingType) ||
                 other.shippingType == shippingType) &&
             const DeepCollectionEquality()
-                .equals(other._supportedCountries, _supportedCountries));
+                .equals(other._supportedCountries, _supportedCountries) &&
+            (identical(
+                    other.onDidSetShippingContact, onDidSetShippingContact) ||
+                other.onDidSetShippingContact == onDidSetShippingContact) &&
+            (identical(other.onDidSetShippingMethod, onDidSetShippingMethod) ||
+                other.onDidSetShippingMethod == onDidSetShippingMethod) &&
+            (identical(other.onDidSetCoupon, onDidSetCoupon) ||
+                other.onDidSetCoupon == onDidSetCoupon));
   }
 
   @JsonKey(ignore: true)
@@ -1322,7 +1397,10 @@ class _$_ApplePayParams implements _ApplePayParams {
       const DeepCollectionEquality().hash(_shippingMethods),
       const DeepCollectionEquality().hash(_merchantCapabilities),
       shippingType,
-      const DeepCollectionEquality().hash(_supportedCountries));
+      const DeepCollectionEquality().hash(_supportedCountries),
+      onDidSetShippingContact,
+      onDidSetShippingMethod,
+      onDidSetCoupon);
 
   @JsonKey(ignore: true)
   @override
@@ -1349,7 +1427,13 @@ abstract class _ApplePayParams implements ApplePayParams {
       final List<ApplePayShippingMethod>? shippingMethods,
       final List<ApplePayMerchantCapability>? merchantCapabilities,
       final ApplePayShippingType? shippingType,
-      final List<String>? supportedCountries}) = _$_ApplePayParams;
+      final List<String>? supportedCountries,
+      @JsonKey(ignore: true)
+          final OnDidSetShippingContact? onDidSetShippingContact,
+      @JsonKey(ignore: true)
+          final OnDidSetShippingMethod? onDidSetShippingMethod,
+      @JsonKey(ignore: true)
+          final OnDidSetCoupon? onDidSetCoupon}) = _$_ApplePayParams;
 
   factory _ApplePayParams.fromJson(Map<String, dynamic> json) =
       _$_ApplePayParams.fromJson;
@@ -1394,6 +1478,21 @@ abstract class _ApplePayParams implements ApplePayParams {
 
   /// A list of two-letter ISO 3166 country codes for limiting payment to cards from specific countries or regions.
   List<String>? get supportedCountries;
+  @override
+
+  /// Callback to execute when shipping contact data is set
+  @JsonKey(ignore: true)
+  OnDidSetShippingContact? get onDidSetShippingContact;
+  @override
+
+  /// Callback to execute when shipping method is set
+  @JsonKey(ignore: true)
+  OnDidSetShippingMethod? get onDidSetShippingMethod;
+  @override
+
+  /// Callback to execute when couponcode is entered
+  @JsonKey(ignore: true)
+  OnDidSetCoupon? get onDidSetCoupon;
   @override
   @JsonKey(ignore: true)
   _$$_ApplePayParamsCopyWith<_$_ApplePayParams> get copyWith =>

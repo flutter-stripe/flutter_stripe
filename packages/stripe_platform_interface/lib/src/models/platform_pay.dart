@@ -73,6 +73,18 @@ class ApplePayParams with _$ApplePayParams {
 
     /// A list of two-letter ISO 3166 country codes for limiting payment to cards from specific countries or regions.
     List<String>? supportedCountries,
+
+    /// Callback to execute when shipping contact data is set
+    @JsonKey(ignore: true)
+     OnDidSetShippingContact? onDidSetShippingContact,
+
+    /// Callback to execute when shipping method is set 
+    @JsonKey(ignore: true)
+    OnDidSetShippingMethod? onDidSetShippingMethod,
+
+    /// Callback to execute when couponcode is entered
+    @JsonKey(ignore: true)
+    OnDidSetCoupon? onDidSetCoupon,
   }) = _ApplePayParams;
 
   factory ApplePayParams.fromJson(Map<String, dynamic> json) =>

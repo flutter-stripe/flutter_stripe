@@ -264,3 +264,4 @@ class ApplePayPostalAddress with _$ApplePayPostalAddress {
 typedef OnDidSetShippingContact = void Function(
     ApplePayShippingContact contact);
 typedef OnDidSetShippingMethod = void Function(ApplePayShippingMethod method);
+typedef OnDidSetCoupon = void Function(String couponCode);

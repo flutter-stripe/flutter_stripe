@@ -397,6 +397,30 @@ class MethodChannelStripe extends StripePlatform {
     required String clientSecret,
     required PlatformPayConfirmParams params,
   }) async {
+    if (params is PlatformPayConfirmParamsApplePay) {
+      print('blaat!!!!!!');
+      _methodChannel.setMethodCallHandler((call) async {
+        print('foo ${call.method}');
+        if (call.method == 'onDidSetShippingContact') {
+          final contact = ApplePayShippingContact.fromJson(
+              call.arguments['shippingContact']);
+          _methodChannel
+              .invokeMethod('updateApplePaySummaryItems', <String, dynamic>{
+            'summaryItems': params.applePay.toJson()['cartItems'],
+          });
+          params.applePay.onDidSetShippingContact?.call(contact);
+        } else if (call.method == 'onDidSetShippingMethod') {
+          final method =
+              ApplePayShippingMethod.fromJson(call.arguments['shippingMethod']);
+          _methodChannel
+              .invokeMethod('updateApplePaySummaryItems', <String, dynamic>{
+            'summaryItems': params.applePay.toJson()['cartItems'],
+          });
+          params.applePay.onDidSetShippingMethod?.call(method);
+        }
+      });
+    }
+
     final result = await _methodChannel
         .invokeMapMethod<String, dynamic>('confirmPlatformPay', {
       'clientSecret': clientSecret,

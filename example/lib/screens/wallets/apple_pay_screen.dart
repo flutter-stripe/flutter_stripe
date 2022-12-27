@@ -37,7 +37,9 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
       padding: EdgeInsets.all(16),
       children: [
         if (Stripe.instance.isPlatformPaySupportedListenable.value)
-          ApplePayButton(
+          PlatformPayButton(
+            type: PlatformButtonType.buy,
+            appearance: PlatformButtonStyle.whiteOutline,
             onPressed: _handlePayPress,
           )
         else
@@ -48,7 +50,6 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
 
   Future<void> _handlePayPress() async {
     try {
-     
       // 1. fetch Intent Client Secret from backend
       final response = await fetchPaymentIntentClientSecret();
       final clientSecret = response['clientSecret'];
@@ -81,6 +82,12 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
                 amount: '3.21',
               ),
             ],
+            onDidSetShippingContact: (contact) {
+              print('Shipping contact updated $contact');
+            },
+            onDidSetShippingMethod: (method) {
+              print('Shipping method updated $method');
+            },
             merchantCountryCode: 'Es',
             currencyCode: 'EUR',
           ),
@@ -94,6 +101,7 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error: $e')),
       );
+      rethrow;
     }
   }
 

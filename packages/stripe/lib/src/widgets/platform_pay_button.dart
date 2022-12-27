@@ -10,7 +10,7 @@ import 'package:flutter_stripe/src/model/platform_pay_button.dart';
 
 class PlatformPayButton extends StatelessWidget {
   const PlatformPayButton({
-    required this.onTap,
+    required this.onPressed,
     super.key,
     this.type = PlatformButtonType.plain,
     this.appearance = PlatformButtonStyle.automatic,
@@ -28,7 +28,7 @@ class PlatformPayButton extends StatelessWidget {
   final double borderRadius;
 
   /// Function called when the button is pressed
-  final VoidCallback onTap;
+  final VoidCallback onPressed;
 
   /// iOS only,  additional constraints for the Apple pay button widget.
   final BoxConstraints? constraints;
@@ -37,12 +37,12 @@ class PlatformPayButton extends StatelessWidget {
   Widget build(BuildContext context) {
     if (Platform.isAndroid) {
       return GooglePayButton(
-        onTap: onTap,
+        onTap: onPressed,
         buttonType: type,
       );
     } else if (Platform.isIOS) {
       return ApplePayButton(
-        onPressed: onTap,
+        onPressed: onPressed,
         style: appearance,
         type: type,
         cornerRadius: borderRadius,
