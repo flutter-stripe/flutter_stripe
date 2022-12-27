@@ -11,19 +11,28 @@ import io.flutter.plugin.platform.PlatformView
 
 
 class StripeSdkGooglePayButtonPlatformView(
-        context: Context,
-        private val channel: MethodChannel,
-        id: Int,
-        creationParams: Map<String?, Any?>?,
-        private val googlePayButtonManager: GooglePayButtonManager,
-        sdkAccessor: () -> StripeSdkModule
+    context: Context,
+    private val channel: MethodChannel,
+    id: Int,
+    creationParams: Map<String?, Any?>?,
+    private val googlePayButtonManager: GooglePayButtonManager,
+    sdkAccessor: () -> StripeSdkModule
 ) : PlatformView {
 
-    private val payButton: GooglePayButtonView = googlePayButtonManager.createViewInstance(ThemedReactContext(sdkAccessor().reactContext, channel, sdkAccessor))
+    private val payButton: GooglePayButtonView = googlePayButtonManager.createViewInstance(
+        ThemedReactContext(
+            sdkAccessor().reactContext,
+            channel,
+            sdkAccessor
+        )
+    )
 
     init {
         if (creationParams?.containsKey("buttonType") == true) {
             googlePayButtonManager.buttonType(payButton, creationParams["buttonType"] as String)
+        }
+        if (creationParams?.containsKey("type") == true) {
+            googlePayButtonManager.type(payButton, creationParams["type"] as Int)
         }
         payButton.initialize()
         payButton.getChildAt(0).setOnClickListener {
