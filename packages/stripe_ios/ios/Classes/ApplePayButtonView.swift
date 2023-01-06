@@ -35,17 +35,41 @@ class ApplePayButtonViewFactory: NSObject, FlutterPlatformViewFactory {
 
 class ApplePayButtonView: NSObject, FlutterPlatformView {
     private var _view: UIView
-    var type: NSNumber?
-    var style: NSNumber?
-    var cornerRadius: CGFloat = 4.0
-    
-    
-    private var applePayButton: PKPaymentButton?
     
     private let channel: FlutterMethodChannel
     
+    var applePayButton: PKPaymentButton?
+    var stripeSdk: StripeSdk?
+    
+    @objc var onPressAction: RCTDirectEventBlock?
+    @objc var onShippingMethodSelectedAction: RCTDirectEventBlock?
+    @objc var onShippingContactSelectedAction: RCTDirectEventBlock?
+    @objc var onCouponCodeEnteredAction: RCTDirectEventBlock?
+    
+    
+    @objc var type: NSNumber?
+    @objc var buttonStyle: NSNumber?
+    @objc var borderRadius: NSNumber?
+    @objc var disabled = false
+    
+    func doesNothing(_: Optional<Dictionary<AnyHashable, Any>>) {
+        return
+    }
+    
     @objc func handleApplePayButtonTapped() {
-       channel.invokeMethod("onPressed", arguments: nil)
+        if onPressAction != nil {
+            onPressAction!(["true": true])
+            // JS Callbacks are all no-ops since in legacy code (useApplePay hook),
+            // this behavior is controlled via the onDidSetShippingMethod and onDidSetShippingContact
+            // events
+            stripeSdk?.shippingMethodUpdateJSCallback = doesNothing
+            stripeSdk?.shippingContactUpdateJSCallback = doesNothing
+            stripeSdk?.couponCodeEnteredJSCallback = doesNothing
+        } else {
+            stripeSdk?.shippingMethodUpdateJSCallback = onShippingMethodSelectedAction
+            stripeSdk?.shippingContactUpdateJSCallback = onShippingContactSelectedAction
+            stripeSdk?.couponCodeEnteredJSCallback = onCouponCodeEnteredAction
+        }
     }
 
     init(
@@ -60,8 +84,8 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
         super.init()
         if  let arguments = args as? Dictionary<String, AnyObject> {
             type = arguments["type"] as? NSNumber
-            style = arguments["style"] as? NSNumber
-            cornerRadius = arguments["cornerRadius"] as! CGFloat
+            buttonStyle = arguments["buttonStyle"] as? NSNumber
+            borderRadius = arguments["borderRadius"] as? NSNumber
         }
         // iOS views can be created here
         createApplePayView()
@@ -75,8 +99,8 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
         case "updateStyle":
             if  let arguments = call.arguments as? Dictionary<String, AnyObject> {
                 self.type = arguments["type"] as? NSNumber
-                self.style = arguments["style"] as? NSNumber
-                self.cornerRadius = arguments["cornerRadius"] as! CGFloat
+                self.buttonStyle = arguments["buttonStyle"] as? NSNumber
+                self.borderRadius = arguments["borderRadius"] as? NSNumber
             }
             
             self.createApplePayView()
@@ -96,9 +120,9 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
        if let applePayButton = self.applePayButton {
          applePayButton.removeFromSuperview()
        }
-       let paymentButtonType = PKPaymentButtonType(rawValue: self.type as? Int ?? 0) ?? .plain
-       let paymentButtonStyle = PKPaymentButtonStyle(rawValue: self.style as? Int ?? 2) ?? .black
-       self.applePayButton = PKPaymentButton(paymentButtonType: paymentButtonType, paymentButtonStyle: paymentButtonStyle)
+        let paymentButtonType = PKPaymentButtonType(rawValue: self.type as? Int ?? 0) ?? .plain
+        let paymentButtonStyle = PKPaymentButtonStyle(rawValue: self.buttonStyle as? Int ?? 2) ?? .black
+        self.applePayButton = PKPaymentButton(paymentButtonType: paymentButtonType, paymentButtonStyle: paymentButtonStyle)
       
         if let applePayButton = self.applePayButton {
            applePayButton.translatesAutoresizingMaskIntoConstraints = false
@@ -111,7 +135,7 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
            applePayButton.rightAnchor.constraint(equalTo: _view.rightAnchor).isActive = true
 
            if #available(iOS 12.0, *) {
-               applePayButton.cornerRadius = cornerRadius
+               applePayButton.cornerRadius = self.borderRadius as? CGFloat ?? 4.0
            }
         }
     }
