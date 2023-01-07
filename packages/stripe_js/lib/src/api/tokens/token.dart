@@ -38,7 +38,7 @@ class Token with _$Token {
     @Default("token") String object,
 
     /// Hash describing the bank account.
-    BankAccountToken? bank,
+    @JsonKey(name: "bank_account") BankAccountToken? bankAccount,
 
     /// Hash describing the card used to make the charge.
     CardToken? card,

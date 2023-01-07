@@ -29,7 +29,8 @@ mixin _$Token {
   String get object => throw _privateConstructorUsedError;
 
   /// Hash describing the bank account.
-  BankAccountToken? get bank => throw _privateConstructorUsedError;
+  @JsonKey(name: "bank_account")
+  BankAccountToken? get bankAccount => throw _privateConstructorUsedError;
 
   /// Hash describing the card used to make the charge.
   CardToken? get card => throw _privateConstructorUsedError;
@@ -65,7 +66,7 @@ abstract class $TokenCopyWith<$Res> {
   $Res call(
       {String id,
       String object,
-      BankAccountToken? bank,
+      @JsonKey(name: "bank_account") BankAccountToken? bankAccount,
       CardToken? card,
       @JsonKey(name: "client_ip") String? clientIP,
       int? created,
@@ -73,7 +74,7 @@ abstract class $TokenCopyWith<$Res> {
       TokenType type,
       bool used});
 
-  $BankAccountTokenCopyWith<$Res>? get bank;
+  $BankAccountTokenCopyWith<$Res>? get bankAccount;
   $CardTokenCopyWith<$Res>? get card;
 }
 
@@ -92,7 +93,7 @@ class _$TokenCopyWithImpl<$Res, $Val extends Token>
   $Res call({
     Object? id = null,
     Object? object = null,
-    Object? bank = freezed,
+    Object? bankAccount = freezed,
     Object? card = freezed,
     Object? clientIP = freezed,
     Object? created = freezed,
@@ -109,9 +110,9 @@ class _$TokenCopyWithImpl<$Res, $Val extends Token>
           ? _value.object
           : object // ignore: cast_nullable_to_non_nullable
               as String,
-      bank: freezed == bank
-          ? _value.bank
-          : bank // ignore: cast_nullable_to_non_nullable
+      bankAccount: freezed == bankAccount
+          ? _value.bankAccount
+          : bankAccount // ignore: cast_nullable_to_non_nullable
               as BankAccountToken?,
       card: freezed == card
           ? _value.card
@@ -142,13 +143,13 @@ class _$TokenCopyWithImpl<$Res, $Val extends Token>
 
   @override
   @pragma('vm:prefer-inline')
-  $BankAccountTokenCopyWith<$Res>? get bank {
-    if (_value.bank == null) {
+  $BankAccountTokenCopyWith<$Res>? get bankAccount {
+    if (_value.bankAccount == null) {
       return null;
     }
 
-    return $BankAccountTokenCopyWith<$Res>(_value.bank!, (value) {
-      return _then(_value.copyWith(bank: value) as $Val);
+    return $BankAccountTokenCopyWith<$Res>(_value.bankAccount!, (value) {
+      return _then(_value.copyWith(bankAccount: value) as $Val);
     });
   }
 
@@ -174,7 +175,7 @@ abstract class _$$_TokenCopyWith<$Res> implements $TokenCopyWith<$Res> {
   $Res call(
       {String id,
       String object,
-      BankAccountToken? bank,
+      @JsonKey(name: "bank_account") BankAccountToken? bankAccount,
       CardToken? card,
       @JsonKey(name: "client_ip") String? clientIP,
       int? created,
@@ -183,7 +184,7 @@ abstract class _$$_TokenCopyWith<$Res> implements $TokenCopyWith<$Res> {
       bool used});
 
   @override
-  $BankAccountTokenCopyWith<$Res>? get bank;
+  $BankAccountTokenCopyWith<$Res>? get bankAccount;
   @override
   $CardTokenCopyWith<$Res>? get card;
 }
@@ -199,7 +200,7 @@ class __$$_TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res, _$_Token>
   $Res call({
     Object? id = null,
     Object? object = null,
-    Object? bank = freezed,
+    Object? bankAccount = freezed,
     Object? card = freezed,
     Object? clientIP = freezed,
     Object? created = freezed,
@@ -216,9 +217,9 @@ class __$$_TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res, _$_Token>
           ? _value.object
           : object // ignore: cast_nullable_to_non_nullable
               as String,
-      bank: freezed == bank
-          ? _value.bank
-          : bank // ignore: cast_nullable_to_non_nullable
+      bankAccount: freezed == bankAccount
+          ? _value.bankAccount
+          : bankAccount // ignore: cast_nullable_to_non_nullable
               as BankAccountToken?,
       card: freezed == card
           ? _value.card
@@ -254,7 +255,7 @@ class _$_Token implements _Token {
   const _$_Token(
       {required this.id,
       this.object = "token",
-      this.bank,
+      @JsonKey(name: "bank_account") this.bankAccount,
       this.card,
       @JsonKey(name: "client_ip") this.clientIP,
       this.created,
@@ -278,7 +279,8 @@ class _$_Token implements _Token {
 
   /// Hash describing the bank account.
   @override
-  final BankAccountToken? bank;
+  @JsonKey(name: "bank_account")
+  final BankAccountToken? bankAccount;
 
   /// Hash describing the card used to make the charge.
   @override
@@ -311,7 +313,7 @@ class _$_Token implements _Token {
 
   @override
   String toString() {
-    return 'Token(id: $id, object: $object, bank: $bank, card: $card, clientIP: $clientIP, created: $created, livemode: $livemode, type: $type, used: $used)';
+    return 'Token(id: $id, object: $object, bankAccount: $bankAccount, card: $card, clientIP: $clientIP, created: $created, livemode: $livemode, type: $type, used: $used)';
   }
 
   @override
@@ -321,7 +323,8 @@ class _$_Token implements _Token {
             other is _$_Token &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.object, object) || other.object == object) &&
-            (identical(other.bank, bank) || other.bank == bank) &&
+            (identical(other.bankAccount, bankAccount) ||
+                other.bankAccount == bankAccount) &&
             (identical(other.card, card) || other.card == card) &&
             (identical(other.clientIP, clientIP) ||
                 other.clientIP == clientIP) &&
@@ -334,8 +337,8 @@ class _$_Token implements _Token {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, object, bank, card, clientIP,
-      created, livemode, type, used);
+  int get hashCode => Object.hash(runtimeType, id, object, bankAccount, card,
+      clientIP, created, livemode, type, used);
 
   @JsonKey(ignore: true)
   @override
@@ -355,7 +358,7 @@ abstract class _Token implements Token {
   const factory _Token(
       {required final String id,
       final String object,
-      final BankAccountToken? bank,
+      @JsonKey(name: "bank_account") final BankAccountToken? bankAccount,
       final CardToken? card,
       @JsonKey(name: "client_ip") final String? clientIP,
       final int? created,
@@ -378,7 +381,8 @@ abstract class _Token implements Token {
   @override
 
   /// Hash describing the bank account.
-  BankAccountToken? get bank;
+  @JsonKey(name: "bank_account")
+  BankAccountToken? get bankAccount;
   @override
 
   /// Hash describing the card used to make the charge.

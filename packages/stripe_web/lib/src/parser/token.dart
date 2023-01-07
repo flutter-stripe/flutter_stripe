@@ -9,7 +9,7 @@ extension Token on js.Token {
       livemode: livemode,
       type: type.parse(),
       card: card?.parse(),
-      bankAccount: bank?.parse(),
+      bankAccount: bankAccount?.parse(),
     );
   }
 }
@@ -100,6 +100,7 @@ extension BankAccountTokenExtension on js.BankAccountToken {
   BankAccount parse() {
     return BankAccount(
       id: id,
+      accountHolderName: accountHolderName,
       accountHolderType: accountHolderType.parse(),
       bankName: bankName,
       country: country,

@@ -9,10 +9,10 @@ part of 'token.dart';
 _$_Token _$$_TokenFromJson(Map json) => _$_Token(
       id: json['id'] as String,
       object: json['object'] as String? ?? "token",
-      bank: json['bank'] == null
+      bankAccount: json['bank_account'] == null
           ? null
           : BankAccountToken.fromJson(
-              Map<String, dynamic>.from(json['bank'] as Map)),
+              Map<String, dynamic>.from(json['bank_account'] as Map)),
       card: json['card'] == null
           ? null
           : CardToken.fromJson(Map<String, dynamic>.from(json['card'] as Map)),
@@ -35,7 +35,7 @@ Map<String, dynamic> _$$_TokenToJson(_$_Token instance) {
     }
   }
 
-  writeNotNull('bank', instance.bank?.toJson());
+  writeNotNull('bank_account', instance.bankAccount?.toJson());
   writeNotNull('card', instance.card?.toJson());
   writeNotNull('client_ip', instance.clientIP);
   writeNotNull('created', instance.created);
