@@ -314,12 +314,20 @@ class Example extends StatelessWidget {
       Example(
         title: 'Create token for card (legacy)',
         builder: (context) => LegacyTokenCardScreen(),
-        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+        platformsSupported: [
+          DevicePlatform.android,
+          DevicePlatform.ios,
+          DevicePlatform.web,
+        ],
       ),
       Example(
         title: 'Create token for bank (legacy)',
         builder: (context) => LegacyTokenBankScreen(),
-        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+        platformsSupported: [
+          DevicePlatform.android,
+          DevicePlatform.ios,
+          DevicePlatform.web,
+        ],
       ),
     ]),
     Example(
