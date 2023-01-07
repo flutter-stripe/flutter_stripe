@@ -59,7 +59,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:6.7.0'
     implementation 'com.google.android.gms:play-services-wallet:19.1.0'
-    implementation 'com.stripe:stripe-wechatpay:17.1.0'
-    androidTestImplementation 'androidx.test:runner:1.4.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }

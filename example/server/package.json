@@ -46,7 +46,7 @@
     "@types/express": "^4.17.2",
     "babel-plugin-module-resolver": "^4.0.0",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "path": "^0.12.7",
     "stripe": "^10.14.0"
   },

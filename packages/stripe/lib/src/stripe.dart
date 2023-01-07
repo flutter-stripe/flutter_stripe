@@ -208,16 +208,22 @@ class Stripe {
   /// configuration. See [ApplePayPresentParams] for more details.
   ///
   /// Throws an [StripeError] in case presenting the payment sheet fails.
-  Future<void> presentApplePay(
-    ApplePayPresentParams params,
-  ) async {
+  Future<void> presentApplePay({
+    required ApplePayPresentParams params,
+    OnDidSetShippingContact? onDidSetShippingContact,
+    OnDidSetShippingMethod? onDidSetShippingMethod,
+  }) async {
     await _awaitForSettings();
     if (!isApplePaySupported.value) {
       //throw StripeError<ApplePayError>
       //(ApplePayError.canceled, 'APPLE_PAY_NOT_SUPPORTED_MESSAGE');
     }
     try {
-      await _platform.presentApplePay(params);
+      await _platform.presentApplePay(
+        params,
+        onDidSetShippingContact,
+        onDidSetShippingMethod,
+      );
     } on StripeError {
       rethrow;
     }
@@ -356,12 +362,18 @@ class Stripe {
   /// See [PresentPaymentSheetPameters] for more details
   ///
   /// throws [StripeException] in case of a failure
-  Future<void> presentPaymentSheet({
-    @Deprecated('Params are now inherited from initPaymentSheet so this `parameters` can be removed')
-        dynamic parameters,
-  }) async {
+  Future<void> presentPaymentSheet() async {
     await _awaitForSettings();
     return await _platform.presentPaymentSheet();
+  }
+
+  /// Call this method when the user logs out from your app.
+  ///
+  /// This will ensur ethat any persisted authentication state in the
+  /// paymentsheet, such as authentication cookies are cleared during logout.
+  Future<void> resetPaymentSheetCustomer() async {
+    await _awaitForSettings();
+    return await _platform.resetPaymentSheetCustomer();
   }
 
   /// Confirms the paymentsheet payment

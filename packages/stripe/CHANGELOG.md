@@ -1,3 +1,18 @@
+## 7.0.0
+**Breaking Changes**
+- This library now supports iOS 13 and up, due to stripe-ios increasing the deployment target
+
+**Features**
+- Added Link support in Payment Sheet.
+- Added the resetPaymentSheetCustomer method to clear persisted authentication state in the PaymentSheet.
+- Added preferredNetwork and availableNetworks fields to the CardResult payment method.
+- Added support for custom fonts to CardForm and CardView on Android.
+- Added support for customizing the call to action button label in Payment Sheet by providing the primaryButtonLabel property to initPaymentSheet().
+
+- **Fixes**
+- Several fixes by the Stripe sdk [v.0.20.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.20.0).
+
+
 ## 6.0.0
 
 **Breaking Changes**

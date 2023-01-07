@@ -6,16 +6,17 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
-import 'js/js.dart' as s;
+import 'package:stripe_js/stripe_js.dart' as stripe_js;
+import 'package:stripe_js/stripe_api.dart' as stripe_js;
 import 'parser/payment_intent.dart';
 import 'parser/payment_methods.dart';
 import 'parser/setup_intent.dart';
 
 /// An implementation of [StripePlatform] that uses method channels.
 class WebStripe extends StripePlatform {
-  static s.StripeJS get js => __stripe!;
-  static s.StripeJS? __stripe;
-  s.StripeJS get _stripe {
+  static stripe_js.Stripe get js => __stripe!;
+  static stripe_js.Stripe? __stripe;
+  stripe_js.Stripe get _stripe {
     assert(__stripe != null);
     return __stripe!;
   }
@@ -40,23 +41,25 @@ class WebStripe extends StripePlatform {
     String? urlScheme,
     bool? setReturnUrlSchemeOnAndroid,
   }) async {
+    await stripe_js.loadStripe();
     if (__stripe != null) return;
-    final stripeOption = s.StripeOptions();
+    final stripeOption = stripe_js.StripeOptions();
     if (stripeAccountId != null) {
       stripeOption.stripeAccount = stripeAccountId;
     }
-    __stripe = s.Stripe(publishableKey, stripeOption);
+    __stripe = stripe_js.Stripe(publishableKey, stripeOption);
     this.urlScheme = urlScheme;
   }
 
-  static s.Element? element;
+  static stripe_js.StripeElement? element;
+  static stripe_js.StripeElements? elements;
 
   @override
   Future<PaymentMethod> createPaymentMethod(
     PaymentMethodParams data, [
     PaymentMethodOptions? options,
   ]) async {
-    final type = data.toJson()['type'];
+    final type = data.toJson()['paymentMethodType'];
     switch (type) {
       case 'Card':
         return createCardPaymentMethod(data, {});
@@ -71,12 +74,13 @@ class WebStripe extends StripePlatform {
     PaymentMethodParams data, [
     Map<String, String> options = const {},
   ]) async {
-    final params = s.CreatePaymentMethodCardData(type: 'card', card: element!);
+    final params =
+        stripe_js.CreatePaymentMethodData(type: 'card', card: element!);
     try {
       final response = await js.createPaymentMethod(
         params,
       );
-      return response.paymentMethod.parse();
+      return response.paymentMethod!.parse();
     } catch (e) {
       dev.log('Error $e');
       rethrow;
@@ -90,19 +94,18 @@ class WebStripe extends StripePlatform {
     PaymentMethodOptions? options,
   ]) async {
     assert(params != null, 'params are not allowed to be null on the web');
-    final response = await params!.maybeWhen<Future<s.PaymentIntentResponse>>(
+    final response =
+        await params!.maybeWhen<Future<stripe_js.PaymentIntentResponse>>(
       card: (usage) {
         return js.confirmCardPayment(
           paymentIntentClientSecret,
-          data: s.ConfirmCardPaymentData(
-            payment_method: s.CardPaymentMethod(card: element),
-            setup_future_usage: (options?.setupFutureUsage ??
+          data: stripe_js.ConfirmCardPaymentData(
+            paymentMethod: stripe_js.PaymentMethodRef.details(
+              stripe_js.CardPaymentMethodDetails(card: element!),
+            ),
+            setupFutureUsage: (options?.setupFutureUsage ??
                     PaymentIntentsFutureUsage.OnSession)
                 .toJs(),
-            save_payment_method: options != null,
-            // shipping: billing?.toJs()
-            // TODO: Implement return_url for web
-            // return_url: '',
           ),
         );
       },
@@ -110,8 +113,8 @@ class WebStripe extends StripePlatform {
         // https://stripe.com/docs/js/payment_intents/confirm_card_payment#stripe_confirm_card_payment-existing
         return js.confirmCardPayment(
           paymentIntentClientSecret,
-          data: s.ConfirmCardPaymentData(
-            payment_method: paymentMethodData.paymentMethodId,
+          data: stripe_js.ConfirmCardPaymentData(
+            paymentMethod: stripe_js.$id(paymentMethodData.paymentMethodId),
           ),
         );
       },
@@ -119,25 +122,24 @@ class WebStripe extends StripePlatform {
         // https: //stripe.com/docs/js/payment_intents/confirm_card_payment#stripe_confirm_card_payment-token
         return js.confirmCardPayment(
           paymentIntentClientSecret,
-          data: s.ConfirmCardPaymentData(
-            payment_method: s.CardPaymentMethod(
-              card: s.CardTokenPaymentMethod(token: data.token),
+          data: stripe_js.ConfirmCardPaymentData(
+            paymentMethod: stripe_js.$expanded(
+              stripe_js.CardPaymentMethodDetails.token(
+                card: stripe_js.CardToken(token: data.token),
+              ),
             ),
-            setup_future_usage: (options?.setupFutureUsage ??
+            setupFutureUsage: (options?.setupFutureUsage ??
                     PaymentIntentsFutureUsage.OnSession)
                 .toJs(),
           ),
         );
       },
-      alipay: (_) {
+      alipay: (data) {
         // https://stripe.com/docs/js/payment_intents/confirm_alipay_payment#stripe_confirm_alipay_payment-options
         return js.confirmAlipayPayment(
           paymentIntentClientSecret,
-          data: s.ConfirmCardPaymentData(
-            payment_method: s.PaymentMethodDetails,
-            // recommended:
-            // payment_method:
-            return_url: window.location.href,
+          data: stripe_js.ConfirmAlipayPaymentData(
+            returnUrl: window.location.href,
           ),
         );
       },
@@ -146,11 +148,13 @@ class WebStripe extends StripePlatform {
         // https://stripe.com/docs/js/payment_intents/confirm_alipay_payment#stripe_confirm_alipay_payment-options
         return js.confirmIdealPayment(
           paymentIntentClientSecret,
-          data: s.ConfirmCardPaymentData(
-            payment_method: s.PaymentMethodDetails(
-              ideal: s.IdealDetails(bank: paymentData.bankName!),
+          data: stripe_js.ConfirmIdealPaymentData(
+            paymentMethod: stripe_js.$expanded(
+              stripe_js.IdealPaymentMethodDetails.withBank(
+                ideal: stripe_js.IdealBankData(bank: paymentData.bankName!),
+              ),
             ),
-            return_url: window.location.href,
+            returnUrl: window.location.href,
             // recommended
             // setup_future_usage:
           ),
@@ -160,14 +164,14 @@ class WebStripe extends StripePlatform {
         throw UnimplementedError();
       },
     );
-    if (Error.safeToString(response.error) != 'null') {
+    if (response.error != null) {
       throw StripeError(
-        message: response.error.message,
-        code: response.error.code,
+        message: response.error?.message ?? '',
+        code: response.error!.code,
       );
     }
 
-    return response.paymentIntent.parse();
+    return response.paymentIntent!.parse();
   }
 
   @override
@@ -176,12 +180,14 @@ class WebStripe extends StripePlatform {
     PaymentMethodParams data,
     PaymentMethodOptions? options,
   ) async {
-    final response =
-        await data.maybeWhen<Future<s.SetupIntentResponse>>(card: (usage) {
+    final response = await data
+        .maybeWhen<Future<stripe_js.SetupIntentResponse>>(card: (usage) {
       return js.confirmCardSetup(
         setupIntentClientSecret,
-        data: s.ConfirmCardSetupData(
-          payment_method: s.CardPaymentMethod(card: element),
+        data: stripe_js.ConfirmCardSetupData(
+          paymentMethod: stripe_js.$expanded(
+            stripe_js.CardPaymentMethodDetails(card: element!),
+          ),
           // shipping: billing?.toJs()
           // TODO: Implement return_url for web
           // return_url: '',
@@ -190,19 +196,19 @@ class WebStripe extends StripePlatform {
     }, orElse: () {
       throw UnimplementedError();
     });
-    if (Error.safeToString(response.error) != 'null') {
-      throw response.error;
+    if (response.error != null) {
+      throw response.error!;
     }
 
-    return response.setupIntent.parse();
+    return response.setupIntent!.parse();
   }
 
   @override
   Future<PaymentIntent> handleNextAction(String paymentIntentClientSecret,
       {String? returnURL}) async {
-    final s.PaymentIntentResponse response =
+    final stripe_js.PaymentIntentResponse response =
         await _stripe.handleCardAction(paymentIntentClientSecret);
-    return response.paymentIntent.parse();
+    return response.paymentIntent!.parse();
   }
 
   @override
@@ -221,7 +227,11 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<void> presentApplePay(ApplePayPresentParams params) async {
+  Future<void> presentApplePay(
+    ApplePayPresentParams params,
+    OnDidSetShippingContact? onDidSetShippingContact,
+    OnDidSetShippingMethod? onDidSetShippingMethod,
+  ) async {
     throw WebUnsupportedError.method('presentApplePay');
   }
 
@@ -284,6 +294,18 @@ class WebStripe extends StripePlatform {
   @override
   Future<void> openApplePaySetup() {
     throw WebUnsupportedError.method('openApplePaySetup');
+  }
+
+  Future<void> confirmPaymentElement(
+    ConfirmPaymentElementOptions options,
+  ) async {
+    await js.confirmPayment(
+      stripe_js.ConfirmPaymentOptions(
+        elements: elements!,
+        confirmParams: options.confirmParams,
+        redirect: options.redirect,
+      ),
+    );
   }
 
   @override
@@ -363,6 +385,11 @@ class WebStripe extends StripePlatform {
   Future<bool> handleURLCallback(String url) {
     // TODO: implement handleURLCallback
     throw UnimplementedError();
+  }
+
+  @override
+  Future<void> resetPaymentSheetCustomer() {
+    throw WebUnsupportedError.method('resetPaymentSheet');
   }
 }
 

@@ -18,8 +18,12 @@ public class ReadableArray extends ArrayList<Object> {
         this.array = array;
     }
 
-    public String getString(int index) throws JSONException {
-        return array.getString(index);
+    public String getString(int index) {
+        try {
+            return array.getString(index);
+        } catch (JSONException e) {
+            return null;
+        }
     }
 
     public int getInt(int index) throws JSONException {

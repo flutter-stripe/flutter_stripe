@@ -71,6 +71,7 @@ class _FinancialConnectionsScreenState
       }
     }
   }
+
   Future<void> _collectBankToken(BuildContext context) async {
     // Precondition:
     // 1. Make sure to create a financial connection session on the backend and
@@ -117,7 +118,6 @@ class _FinancialConnectionsScreenState
           },
           text: 'Collect financial account',
         ),
-
         LoadingButton(
           onPressed: () async {
             await _collectBankToken(context);

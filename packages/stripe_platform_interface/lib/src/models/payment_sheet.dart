@@ -24,6 +24,9 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// See https://stripe.com/docs/api/customers/object#customer_object-id
     String? customerId,
 
+    ///  The label to use for the primary button. If not set, Payment Sheet will display suitable default labels for payment and setup intents
+    String? primaryButtonLabel,
+
     ///A temp key can be used for API operations that require a secret key.
     String? customerEphemeralKeySecret,
 

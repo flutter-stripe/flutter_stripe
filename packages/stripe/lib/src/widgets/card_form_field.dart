@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 
 import '../utils.dart';
+import 'keep_visible_on_focus.dart';
 
 /// Customizable form that collects card information.
 ///
@@ -204,7 +205,7 @@ class _MethodChannelCardFormField extends StatefulWidget {
     double? width,
     double? height,
     BoxConstraints? constraints,
-    this.focusNode,
+    required this.focusNode,
     this.dangerouslyGetFullCardDetails = false,
     this.dangerouslyUpdateFullCardDetails = false,
     this.autofocus = false,
@@ -221,7 +222,7 @@ class _MethodChannelCardFormField extends StatefulWidget {
   final CardChangedCallback? onCardChanged;
   final CardFormStyle? style;
   final bool enablePostalCode;
-  final FocusNode? focusNode;
+  final FocusNode focusNode;
   final bool autofocus;
   final CardFormEditController controller;
   final bool dangerouslyGetFullCardDetails;
@@ -245,10 +246,6 @@ class _MethodChannelCardFormField extends StatefulWidget {
 class _MethodChannelCardFormFieldState
     extends State<_MethodChannelCardFormField> with CardFormFieldContext {
   MethodChannel? _methodChannel;
-
-  final _focusNode =
-      FocusNode(debugLabel: 'CardFormField', descendantsAreFocusable: false);
-  FocusNode get _effectiveNode => widget.focusNode ?? _focusNode;
 
   CardFormStyle? _lastStyle;
 
@@ -283,7 +280,7 @@ class _MethodChannelCardFormFieldState
     if (controller._context == this) {
       controller._context = null;
     }
-    _focusNode.dispose();
+
     super.dispose();
   }
 
@@ -315,20 +312,23 @@ class _MethodChannelCardFormFieldState
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       platform = Listener(
         onPointerDown: (_) {
-          if (!_effectiveNode.hasFocus) {
-            _effectiveNode.requestFocus();
+          if (!widget.focusNode.hasFocus) {
+            widget.focusNode.requestFocus();
           }
         },
         child: Focus(
           autofocus: widget.autofocus,
           descendantsAreFocusable: true,
-          focusNode: _effectiveNode,
+          focusNode: widget.focusNode,
           onFocusChange: _handleFrameworkFocusChanged,
-          child: _UiKitCardFormField(
-            key: _MethodChannelCardFormField._key,
-            viewType: _MethodChannelCardFormField._viewType,
-            creationParams: creationParams,
-            onPlatformViewCreated: onPlatformViewCreated,
+          child: KeepVisibleOnFocus(
+            focusNode: widget.focusNode,
+            child: _UiKitCardFormField(
+              key: _MethodChannelCardFormField._key,
+              viewType: _MethodChannelCardFormField._viewType,
+              creationParams: creationParams,
+              onPlatformViewCreated: onPlatformViewCreated,
+            ),
           ),
         ),
       );
@@ -402,7 +402,7 @@ class _MethodChannelCardFormFieldState
   }
 
   void onPlatformViewCreated(int viewId) {
-    _focusNode.debugLabel = 'CardFormField(id: $viewId)';
+    widget.focusNode.debugLabel = 'CardFormField(id: $viewId)';
     _methodChannel = MethodChannel('flutter.stripe/card_form_field/$viewId');
     _methodChannel?.setMethodCallHandler((call) async {
       if (call.method == 'topFocusChange') {
@@ -439,8 +439,8 @@ class _MethodChannelCardFormFieldState
       final field = CardFieldFocusName.fromJson(map);
       if (field.focusedField != null &&
           ambiguate(WidgetsBinding.instance)?.focusManager.primaryFocus !=
-              _effectiveNode) {
-        _effectiveNode.requestFocus();
+              widget.focusNode) {
+        widget.focusNode.requestFocus();
       }
       widget.onFocus?.call(field.focusedField);
       // ignore: avoid_catches_without_on_clauses
@@ -556,7 +556,7 @@ class _UiKitCardFormField extends StatelessWidget {
 }
 
 const kCardFormFieldDefaultAndroidHeight = 270.0;
-const kCardFormFieldDefaultIOSHeight = 170.0;
+const kCardFormFieldDefaultIOSHeight = 192.0;
 const kCardFormFieldDefaultFontSize = 17;
 const kCardFormFieldDefaultTextColor = Colors.black;
 const kCardFormFieldDefaultFontFamily = 'Roboto';

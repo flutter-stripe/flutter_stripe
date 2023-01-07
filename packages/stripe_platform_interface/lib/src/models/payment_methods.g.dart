@@ -97,6 +97,10 @@ _$_Card _$$_CardFromJson(Map<String, dynamic> json) => _$_Card(
       expMonth: json['expMonth'] as int?,
       funding: json['funding'] as String?,
       last4: json['last4'] as String?,
+      preferredNetwork: json['preferredNetwork'] as String?,
+      availableNetworks: (json['availableNetworks'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$_CardToJson(_$_Card instance) => <String, dynamic>{
@@ -106,6 +110,8 @@ Map<String, dynamic> _$$_CardToJson(_$_Card instance) => <String, dynamic>{
       'expMonth': instance.expMonth,
       'funding': instance.funding,
       'last4': instance.last4,
+      'preferredNetwork': instance.preferredNetwork,
+      'availableNetworks': instance.availableNetworks,
     };
 
 _$_Fpx _$$_FpxFromJson(Map<String, dynamic> json) => _$_Fpx(

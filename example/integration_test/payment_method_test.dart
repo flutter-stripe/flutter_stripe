@@ -1,10 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:integration_test/integration_test.dart';
+import 'package:stripe_example/screens/card_payments/webhook_payment_screen.dart';
 
 import '.env.dart';
 import 'ip.dart';
@@ -31,14 +33,17 @@ void main() {
 
   group('PaymentMethod', () {
     testWidgets('confirmPayment', (tester) async {
+      await tester.pumpWidget(MaterialApp(home: WebhookPaymentScreen()));
+      await tester.pumpAndSettle();
       final clientSecret = await fetchPaymentIntentClientSecret();
 
       await Stripe.instance.dangerouslyUpdateCardDetails(CardDetails(
-        number: '4242424242424242',
+        number: '378282246310005', // Use a card does not support 3DS
         cvc: '424',
         expirationMonth: 04,
         expirationYear: 2025,
       ));
+      ;
       final paymentIntent = await Stripe.instance.confirmPayment(
         paymentIntentClientSecret: clientSecret['clientSecret'],
         data: PaymentMethodParams.card(
@@ -50,7 +55,6 @@ void main() {
           setupFutureUsage: null,
         ),
       );
-
       expect(paymentIntent.id, startsWith('pi_'));
     });
 

@@ -1,3 +1,10 @@
+## 2.1.0
+- Stripe on web can be loaded without 
+- The internals js binding have been refactored to be more stable
+
+## 2.0.1
+- Sdk updates
+
 ## 2.0.0
 
 ** Breaking Changes **

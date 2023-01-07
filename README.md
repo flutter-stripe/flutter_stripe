@@ -73,7 +73,7 @@ You will also need to update in your Podfile:
 
 Now you can use Stripe with Flutter web! Notice right now it is highly experimental and only a subset of features is implemented.
 
-Check the steps needed [here](https://github.com/flutter-stripe/flutter_stripe/tree/main/packages/stripe_web)
+To use Stripe on web, it is required to add `flutter_stripe_web` in your pubspec file
 
 ## Usage
 
