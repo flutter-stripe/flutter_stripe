@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:stripe_checkout/stripe_checkout.dart';
 import 'package:http/http.dart' as http;
 
-
 class CheckoutScreenExample extends StatefulWidget {
   CheckoutScreenExample({
     Key? key,

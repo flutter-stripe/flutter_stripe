@@ -1,0 +1,17 @@
+name: Docs
+
+on:
+  push:
+    branches-ignore:
+      - main
+jobs:
+  readme:
+    name: Readme
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    steps:
+      - uses: actions/checkout@v2
+      - name: root readme matches stripe readme
+        run: |
+          sh ./.github/workflows/scripts/compare-readme.sh

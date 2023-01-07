@@ -10,5 +10,27 @@
             "request": "launch",
             "type": "dart",
         },
+        {
+            "name": "Stripe.js web tests",
+            "request": "launch",
+            "type": "dart",
+            "program": "packages/stripe_js/test",
+            "args": [
+                "-p",
+                "chrome",
+                "-t",
+                "browser"
+            ], // Additional args to pass
+            "codeLens": {
+                "for": [
+                    "run-test",
+                    "run-test-file",
+                    "debug-test",
+                    "debug-test-file"
+                ],
+                "path": "packages/stripe_js/test",
+                "title": "${debugType} (chrome)"
+            },
+        },
     ]
 }

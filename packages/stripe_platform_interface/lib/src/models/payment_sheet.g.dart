@@ -10,6 +10,7 @@ _$_SetupParameters _$$_SetupParametersFromJson(Map<String, dynamic> json) =>
     _$_SetupParameters(
       customFlow: json['customFlow'] as bool? ?? false,
       customerId: json['customerId'] as String?,
+      primaryButtonLabel: json['primaryButtonLabel'] as String?,
       customerEphemeralKeySecret: json['customerEphemeralKeySecret'] as String?,
       paymentIntentClientSecret: json['paymentIntentClientSecret'] as String?,
       setupIntentClientSecret: json['setupIntentClientSecret'] as String?,
@@ -40,6 +41,7 @@ Map<String, dynamic> _$$_SetupParametersToJson(_$_SetupParameters instance) =>
     <String, dynamic>{
       'customFlow': instance.customFlow,
       'customerId': instance.customerId,
+      'primaryButtonLabel': instance.primaryButtonLabel,
       'customerEphemeralKeySecret': instance.customerEphemeralKeySecret,
       'paymentIntentClientSecret': instance.paymentIntentClientSecret,
       'setupIntentClientSecret': instance.setupIntentClientSecret,

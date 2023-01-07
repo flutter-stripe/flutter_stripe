@@ -127,7 +127,7 @@ class _SetupFuturePaymentScreenState extends State<SetupFuturePaymentScreen> {
       // 3. Confirm setup intent
 
       final setupIntentResult = await Stripe.instance.confirmSetupIntent(
-      paymentIntentClientSecret:  clientSecret,
+        paymentIntentClientSecret: clientSecret,
         params: PaymentMethodParams.card(
           paymentMethodData: PaymentMethodData(
             billingDetails: billingDetails,

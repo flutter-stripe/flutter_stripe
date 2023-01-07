@@ -43,11 +43,13 @@ dart pub add flutter_stripe
 
 #### Android
 
+
 This plugin requires several changes to be able to work on Android devices. Please make sure you follow all these steps:
 
 1. Use Android 5.0 (API level 21) and above
-2. Use Kotlin version 1.5.0 and above: [example](https://github.com/flutter-stripe/flutter_stripe/blob/79b201a2e9b827196d6a97bb41e1d0e526632a5a/example/android/build.gradle#L2)
-3. Using a descendant of `Theme.AppCompat` for your activity: [example](https://github.com/flutter-stripe/flutter_stripe/main/example/android/app/src/main/res/values/styles.xml#L15), [example night theme](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/app/src/main/res/values-night/styles.xml#L16)
+2. Use Kotlin version 1.5.0 and above: [example](https://github.com/flutter-stripe/flutter_stripe/blob/79b201a2e9b827196d6a97bb41e1d0e526632a5a/example/android/
+.gradle#L2)
+3. Using a descendant of `Theme.AppCompat` for your activity: [example](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/app/src/main/res/values/styles.xml#L15), [example night theme](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/app/src/main/res/values-night/styles.xml#L16)
 4. Using an up-to-date Android gradle build tools version: [example](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/build.gradle#L9) and an up-to-date gradle version accordingly: [example](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/gradle/wrapper/gradle-wrapper.properties#L6) 
 5. Using `FlutterFragmentActivity` instead of `FlutterActivity` in `MainActivity.kt`: [example](https://github.com/flutter-stripe/flutter_stripe/blob/79b201a2e9b827196d6a97bb41e1d0e526632a5a/example/android/app/src/main/kotlin/com/flutter/stripe/example/MainActivity.kt#L6)
 6. Rebuild the app, as the above changes don't update with hot reload
@@ -60,68 +62,34 @@ If you are having troubles to make this package to work on Android, join [this d
 
 Compatible with apps targeting iOS 12 or above.
 
+To upgrade your iOS deployment target to 12.0, you can either do so in Xcode under your Build Settings, or by modifying IPHONEOS_DEPLOYMENT_TARGET in your project.pbxproj directly.
+
+You will also need to update in your Podfile:
+
+`platform :ios, '12.0'`
+
+
 #### Web (Experimental)
 
 Now you can use Stripe with Flutter web! Notice right now it is highly experimental and only a subset of features is implemented.
 
-Check the steps needed [here](https://github.com/flutter-stripe/flutter_stripe/tree/main/packages/stripe_web)
+To use Stripe on web, it is required to add `flutter_stripe_web` in your pubspec file
 
 ## Usage
 
-The library provides three UI componets for accepting card payments: the `CardField`, `CardForm`, and the `Paymentsheet`. 
+### Card payments 
 
-We recommend using the `PaymentSheet` for the most easy and smooth Stripe integration. It provides out of the box support for:
-- Localized labels and error messages to the users
-- Build-in animations
-- Build-in Google Pay and Apple Pay buttons
-- Handling 3D-secure
+There are 3 ways of handling card payments
 
-Notice that `PaymentSheet` is only available for Android and iOS.
+Method        | Ease of use   | description                                                                                                      | Implementation docs |
+------------- | ------------- |----------------------------------------------------------------------------------------------------------------- | ------------------- |
+Payment sheet | Easy          | Our recommended way of handling payments. It offers localization, animations and error handling out of the box.  | [docs](https://docs.page/flutter-stripe/flutter_stripe/sheet) |
+Cardfield     | Medium        | Single line cardfield. Offers more flexibility but has less built-in functionality.                              | [docs](https://docs.page/flutter-stripe/flutter_stripe/card_field)   |
+Card form     | Medium        | Simular as the cardfield but the entry fields are spread across multi lines                                      | [docs](https://docs.page/flutter-stripe/flutter_stripe/card_field)   |
 
-On the other side the `CardField` allows you to create a more customizable payment flow inside your app.
 
-### Example
-
-```dart
-// main.dart
-import 'package:flutter_stripe/flutter_stripe.dart';
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  // set the publishable key for Stripe - this is mandatory
-  Stripe.publishableKey = stripePublishableKey;
-  runApp(PaymentScreen());
-}
-
-// payment_screen.dart
-class PaymentScreen extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        children: [
-          CardField(
-            onCardChanged: (card) {
-              print(card);
-            },
-          ),
-          TextButton(
-            onPressed: () async {
-              // create payment method
-              final paymentMethod =
-                  await Stripe.instance.createPaymentMethod(PaymentMethodParams.card());
-            },
-            child: Text('pay'),
-          )
-        ],
-      ),
-    );
-  }
-}
-```
+### Financial connections
+We also support Financial connections in our latest sdk. Check out the [docs](https://docs.page/flutter-stripe/flutter_stripe/financial_connections) to learn more on how to set it up.
 
 ## Stripe initialization
 
@@ -183,9 +151,9 @@ Future<void> onGooglePayResult(paymentResult) async {
   - [Get your test Stripe API keys](https://stripe.com/docs/keys)
   - `cp lib/.env.example.dart lib/.env.dart` and set your Stripe publishable key.
   - `cp server/.env.example server/.env` and set the variable values in your newly created `.env` file.
-- Install the server dependencies: `yarn --cwd "server"`
+- Install the server dependencies: `npm install` or `yarn --cwd "server"`
 - Start the example
-  - Terminal 1: `yarn --cwd "server" start`
+  - Terminal 1: `npm start` or `yarn --cwd "server" start`
   - Terminal 2: `flutter run`
 
 ##### Additional steps for webhook forwarding
@@ -208,7 +176,7 @@ This project uses [melos](https://github.com/invertase/melos) to manage all the 
 
 - Format `melos run format`
 - Analyze `melos run analyze`
-- Test `melos run test`
+- Test `melos run unittest`
 - Pub get `melos run get`
 
 ##### Publishing

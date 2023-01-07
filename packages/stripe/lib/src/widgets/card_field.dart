@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 
 import '../utils.dart';
+import 'keep_visible_on_focus.dart';
 
 /// Customizable form that collects card information.
 class CardField extends StatefulWidget {
@@ -188,9 +189,12 @@ class _CardFieldState extends State<CardField> {
       isFocused: _node.hasFocus,
       decoration: inputDecoration,
       baseStyle: widget.style,
-      child: SizedBox(
-        height: cardHeight,
-        child: platform,
+      child: KeepVisibleOnFocus(
+        focusNode: _node,
+        child: SizedBox(
+          height: cardHeight,
+          child: platform,
+        ),
       ),
     );
   }
@@ -263,7 +267,7 @@ class _MethodChannelCardField extends StatefulWidget {
     double? width,
     double? height = kCardFieldDefaultHeight,
     BoxConstraints? constraints,
-    this.focusNode,
+    required this.focusNode,
     this.dangerouslyGetFullCardDetails = false,
     this.dangerouslyUpdateFullCardDetails = false,
     this.autofocus = false,
@@ -281,7 +285,7 @@ class _MethodChannelCardField extends StatefulWidget {
   final CardPlaceholder? placeholder;
   final bool enablePostalCode;
   final String? countryCode;
-  final FocusNode? focusNode;
+  final FocusNode focusNode;
   final bool autofocus;
   final CardEditController controller;
   final bool dangerouslyGetFullCardDetails;
@@ -303,10 +307,6 @@ class _MethodChannelCardField extends StatefulWidget {
 class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
     with CardFieldContext {
   MethodChannel? _methodChannel;
-
-  final _focusNode =
-      FocusNode(debugLabel: 'CardField', descendantsAreFocusable: false);
-  FocusNode get _effectiveNode => widget.focusNode ?? _focusNode;
 
   CardStyle? _lastStyle;
   CardStyle resolveStyle(CardStyle? style) {
@@ -365,7 +365,6 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
   void dispose() {
     detachController(controller);
 
-    _focusNode.dispose();
     super.dispose();
   }
 
@@ -397,14 +396,14 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       platform = Listener(
         onPointerDown: (_) {
-          if (!_effectiveNode.hasFocus) {
-            _effectiveNode.requestFocus();
+          if (!widget.focusNode.hasFocus) {
+            widget.focusNode.requestFocus();
           }
         },
         child: Focus(
           autofocus: widget.autofocus,
           descendantsAreFocusable: true,
-          focusNode: _effectiveNode,
+          focusNode: widget.focusNode,
           onFocusChange: _handleFrameworkFocusChanged,
           child: _UiKitCardField(
             key: _MethodChannelCardField._key,
@@ -483,7 +482,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
   }
 
   void onPlatformViewCreated(int viewId) {
-    _focusNode.debugLabel = 'CardField(id: $viewId)';
+    widget.focusNode.debugLabel = 'CardField(id: $viewId)';
     _methodChannel = MethodChannel('flutter.stripe/card_field/$viewId');
     _methodChannel?.setMethodCallHandler((call) async {
       if (call.method == 'topFocusChange') {
@@ -515,10 +514,12 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
       final field = CardFieldFocusName.fromJson(map);
       if (field.focusedField != null &&
           ambiguate(WidgetsBinding.instance)?.focusManager.primaryFocus !=
-              _effectiveNode) {
-        _effectiveNode.requestFocus();
+              widget.focusNode) {
+        widget.focusNode.requestFocus();
       }
+
       widget.onFocus?.call(field.focusedField);
+
       // ignore: avoid_catches_without_on_clauses
     } catch (e) {
       dev.log(
@@ -529,7 +530,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
 
   /// Handler called when the focus changes in the node attached to the platform
   /// view. This updates the correspondant platform view to keep it in sync.
-  void _handleFrameworkFocusChanged(bool isFocused) {
+  void _handleFrameworkFocusChanged(bool isFocused) async {
     final methodChannel = _methodChannel;
     if (methodChannel == null) {
       return;
@@ -539,6 +540,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
     }
     if (!isFocused) {
       blur();
+
       return;
     }
 

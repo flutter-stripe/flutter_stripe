@@ -21,23 +21,25 @@ void main() {
       // 1. create payment intent on the server
       final _paymentSheetData = await _createTestPaymentSheet();
 
+      expect(_paymentSheetData['paymentIntent'], isNotNull);
       // 2. initialize the payment sheet
-      await Stripe.instance.initPaymentSheet(
-        paymentSheetParameters: SetupPaymentSheetParameters(
-          applePay: PaymentSheetApplePay(merchantCountryCode: 'DE'),
-          googlePay: PaymentSheetGooglePay(
-            merchantCountryCode: 'DE',
-            testEnv: true,
+      expect(
+        Stripe.instance.initPaymentSheet(
+          paymentSheetParameters: SetupPaymentSheetParameters(
+            applePay: PaymentSheetApplePay(merchantCountryCode: 'DE'),
+            googlePay: PaymentSheetGooglePay(
+              merchantCountryCode: 'DE',
+              testEnv: true,
+            ),
+            style: ThemeMode.dark,
+            merchantDisplayName: 'Flutter Stripe Store Demo',
+            customerId: _paymentSheetData['customer'],
+            paymentIntentClientSecret: _paymentSheetData['paymentIntent'],
+            customerEphemeralKeySecret: _paymentSheetData['ephemeralKey'],
           ),
-          style: ThemeMode.dark,
-          merchantDisplayName: 'Flutter Stripe Store Demo',
-          customerId: _paymentSheetData['customer'],
-          paymentIntentClientSecret: _paymentSheetData['paymentIntent'],
-          customerEphemeralKeySecret: _paymentSheetData['ephemeralKey'],
         ),
+        completes,
       );
-
-      expect(true, _paymentSheetData['paymentIntent'] != null);
     });
   });
 

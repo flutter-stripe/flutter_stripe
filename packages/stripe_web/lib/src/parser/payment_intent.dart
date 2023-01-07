@@ -1,26 +1,26 @@
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
-import '../js/js.dart' as s;
+import 'package:stripe_js/stripe_api.dart' as js;
 
-extension PaymentIntentExtension on s.PaymentIntent {
+extension PaymentIntentExtension on js.PaymentIntent {
   PaymentIntent parse() {
     return PaymentIntent(
       id: id,
       amount: amount,
       created: created.toString(),
       currency: currency,
-      status: PaymentIntentsStatusExtension.parse(status),
-      clientSecret: client_secret,
+      status: PaymentIntentsStatusExtension.parse(status.name),
+      clientSecret: clientSecret,
       livemode: livemode,
-      paymentMethodId: payment_method,
-      captureMethod: CaptureMethodExtension.parse(capture_method),
+      //paymentMethodId: payment_method,
+      captureMethod: CaptureMethodExtension.parse(captureMethod.name),
       confirmationMethod:
-          ConfirmationMethodExtension.parse(confirmation_method!),
-
+          ConfirmationMethodExtension.parse(confirmationMethod.name),
+//
       description: description,
-      receiptEmail: receipt_email,
-      canceledAt: canceled_at?.toString(),
+      // receiptEmail: receipt_email,
+      canceledAt: canceledAt?.toString(),
       // LastPaymentError? lastPaymentError,
-      shipping: shipping?.parse(),
+      //   shipping: shipping?.parse(),
     );
   }
 }
@@ -85,10 +85,10 @@ extension ConfirmationMethodExtension on ConfirmationMethod {
   }
 }
 
-extension StripeShippingDetails on s.ShippingDetails {
+extension StripeShippingDetails on js.ShippingDetails {
   ShippingDetails parse() {
     return ShippingDetails(
-      trackingNumber: tracking_number,
+      trackingNumber: trackingNumber,
       carrier: carrier,
       address: address.parse(),
       phone: phone,
@@ -97,23 +97,23 @@ extension StripeShippingDetails on s.ShippingDetails {
   }
 }
 
-extension StripeShippingAddress on s.ShippingDetailsAddress {
+extension StripeShippingAddress on js.ShippingDetailsAddress {
   Address parse() {
     return Address(
       city: city,
       country: country,
       line1: line1,
       line2: line2,
-      postalCode: postal_code,
+      postalCode: postalCode,
       state: state,
     );
   }
 }
 
 extension ShippingDetailsToJs on ShippingDetails {
-  s.ShippingDetails toJs() {
-    return s.ShippingDetails(
-      tracking_number: trackingNumber,
+  js.ShippingDetails toJs() {
+    return js.ShippingDetails(
+      trackingNumber: trackingNumber,
       carrier: carrier,
       address: address.toShippingAddressJs(),
       phone: phone,
@@ -123,8 +123,8 @@ extension ShippingDetailsToJs on ShippingDetails {
 }
 
 extension BillingDetailsToJs on BillingDetails {
-  s.BillingDetails toJs() {
-    return s.BillingDetails(
+  js.BillingDetails toJs() {
+    return js.BillingDetails(
       address: address?.toBillingAddressJs(),
       email: email,
       phone: phone,
@@ -134,36 +134,36 @@ extension BillingDetailsToJs on BillingDetails {
 }
 
 extension ShippingAddressFromJs on Address {
-  s.BillingDetailsAddress toBillingAddressJs() {
-    return s.BillingDetailsAddress(
+  js.BillingAddress toBillingAddressJs() {
+    return js.BillingAddress(
       city: city ?? '',
       country: country ?? '',
       line1: line1 ?? '',
       line2: line2 ?? '',
-      postal_code: postalCode ?? '',
+      postalCode: postalCode ?? '',
       state: state ?? '',
     );
   }
 
-  s.ShippingDetailsAddress toShippingAddressJs() {
-    return s.ShippingDetailsAddress(
+  js.ShippingDetailsAddress toShippingAddressJs() {
+    return js.ShippingDetailsAddress(
       city: city ?? '',
       country: country ?? '',
       line1: line1 ?? '',
       line2: line2 ?? '',
-      postal_code: postalCode ?? '',
+      postalCode: postalCode ?? '',
       state: state ?? '',
     );
   }
 }
 
 extension PaymentIntentsFutureUsageParser on PaymentIntentsFutureUsage {
-  String toJs() {
+  js.PaymentIntentSetupFutureUsage toJs() {
     switch (this) {
       case PaymentIntentsFutureUsage.OffSession:
-        return 'off_session';
+        return js.PaymentIntentSetupFutureUsage.offSession;
       case PaymentIntentsFutureUsage.OnSession:
-        return 'on_session';
+        return js.PaymentIntentSetupFutureUsage.onSession;
     }
   }
 }

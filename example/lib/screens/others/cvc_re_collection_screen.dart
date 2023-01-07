@@ -65,12 +65,13 @@ class _CVCReCollectionScreenState extends State<CVCReCollectionScreen> {
     final paymentMethod = await _fetchPaymentIntentWithPaymentMethod();
 
     if (paymentMethod['error'] != null) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error code: ${paymentMethod['error']}')));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error code: ${paymentMethod['error']}')));
       return;
     }
 
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text('Success!: The payment was confirmed successfully!')));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Success!: The payment was confirmed successfully!')));
   }
 
   Future<void> _paySynchronously() async {
@@ -83,10 +84,11 @@ class _CVCReCollectionScreenState extends State<CVCReCollectionScreen> {
     );
     log('paymentIntent $paymentIntent');
     if (paymentIntent['error'] != null) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error code: ${paymentIntent['error']}')));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error code: ${paymentIntent['error']}')));
     } else if (paymentIntent['succeeded'] == true) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Success!: The payment was confirmed successfully!')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('Success!: The payment was confirmed successfully!')));
     } else {
       // Handle other statuses accordingly
       throw UnimplementedError();
