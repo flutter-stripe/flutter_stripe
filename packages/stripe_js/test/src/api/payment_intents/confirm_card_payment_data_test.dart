@@ -42,7 +42,7 @@ void main() {
         ConfirmCardPaymentData(
           paymentMethod: PaymentMethodRef.details(
             CardPaymentMethodDetails.token(
-              card: CardToken(token: "tokenValue"),
+              card: CardTokenPaymentMethod(token: "tokenValue"),
               billingDetails: BillingDetails(name: 'Jenny Rosen'),
             ),
           ),

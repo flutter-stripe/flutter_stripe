@@ -77,7 +77,7 @@ class CardPaymentMethodDetails
   @FreezedUnionValue('card')
   const factory CardPaymentMethodDetails.token({
     /// Uses the provided card or cardNumber Element for confirmation.
-    required CardToken card,
+    required CardTokenPaymentMethod card,
 
     /// The billing_details associated with the card.
     @JsonKey(name: "billing_details") BillingDetails? billingDetails,
@@ -136,12 +136,12 @@ class IdealBankData with _$IdealBankData {
 }
 
 @freezed
-class CardToken with _$CardToken {
+class CardTokenPaymentMethod with _$CardTokenPaymentMethod {
   /// Config parameters for card payment method.
-  const factory CardToken({
+  const factory CardTokenPaymentMethod({
     required String token,
-  }) = _CardToken;
+  }) = _CardTokenPaymentMethod;
 
-  factory CardToken.fromJson(Map<String, dynamic> json) =>
-      _$CardTokenFromJson(json);
+  factory CardTokenPaymentMethod.fromJson(Map<String, dynamic> json) =>
+      _$CardTokenPaymentMethodFromJson(json);
 }

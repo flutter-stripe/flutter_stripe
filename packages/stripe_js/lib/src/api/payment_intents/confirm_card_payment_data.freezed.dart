@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'confirm_card_payment_data.dart';
 
@@ -114,7 +114,7 @@ class _$ConfirmCardPaymentDataCopyWithImpl<$Res,
     Object? returnUrl = freezed,
     Object? receiptEmail = freezed,
     Object? setupFutureUsage = freezed,
-    Object? paymentMethodOptions = null,
+    Object? paymentMethodOptions = freezed,
   }) {
     return _then(_value.copyWith(
       paymentMethod: freezed == paymentMethod
@@ -137,7 +137,7 @@ class _$ConfirmCardPaymentDataCopyWithImpl<$Res,
           ? _value.setupFutureUsage
           : setupFutureUsage // ignore: cast_nullable_to_non_nullable
               as PaymentIntentSetupFutureUsage?,
-      paymentMethodOptions: null == paymentMethodOptions
+      paymentMethodOptions: freezed == paymentMethodOptions
           ? _value.paymentMethodOptions
           : paymentMethodOptions // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -215,7 +215,7 @@ class __$$_ConfirmCardPaymentDataCopyWithImpl<$Res>
     Object? returnUrl = freezed,
     Object? receiptEmail = freezed,
     Object? setupFutureUsage = freezed,
-    Object? paymentMethodOptions = null,
+    Object? paymentMethodOptions = freezed,
   }) {
     return _then(_$_ConfirmCardPaymentData(
       paymentMethod: freezed == paymentMethod
@@ -238,7 +238,7 @@ class __$$_ConfirmCardPaymentDataCopyWithImpl<$Res>
           ? _value.setupFutureUsage
           : setupFutureUsage // ignore: cast_nullable_to_non_nullable
               as PaymentIntentSetupFutureUsage?,
-      paymentMethodOptions: null == paymentMethodOptions
+      paymentMethodOptions: freezed == paymentMethodOptions
           ? _value.paymentMethodOptions
           : paymentMethodOptions // ignore: cast_nullable_to_non_nullable
               as dynamic,

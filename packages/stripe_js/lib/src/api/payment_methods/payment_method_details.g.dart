@@ -90,7 +90,8 @@ Map<String, dynamic> _$$_CardPaymentMethodRefToJson(
 _$_CardPaymentMethodDetailsToken _$$_CardPaymentMethodDetailsTokenFromJson(
         Map json) =>
     _$_CardPaymentMethodDetailsToken(
-      card: CardToken.fromJson(Map<String, dynamic>.from(json['card'] as Map)),
+      card: CardTokenPaymentMethod.fromJson(
+          Map<String, dynamic>.from(json['card'] as Map)),
       billingDetails: json['billing_details'] == null
           ? null
           : BillingDetails.fromJson(
@@ -179,11 +180,13 @@ Map<String, dynamic> _$$_IdealBankDataToJson(_$_IdealBankData instance) =>
       'bank': instance.bank,
     };
 
-_$_CardToken _$$_CardTokenFromJson(Map json) => _$_CardToken(
+_$_CardTokenPaymentMethod _$$_CardTokenPaymentMethodFromJson(Map json) =>
+    _$_CardTokenPaymentMethod(
       token: json['token'] as String,
     );
 
-Map<String, dynamic> _$$_CardTokenToJson(_$_CardToken instance) =>
+Map<String, dynamic> _$$_CardTokenPaymentMethodToJson(
+        _$_CardTokenPaymentMethod instance) =>
     <String, dynamic>{
       'token': instance.token,
     };

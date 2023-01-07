@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'payment_method_details.dart';
 
@@ -581,6 +581,10 @@ CardPaymentMethodDetails _$CardPaymentMethodDetailsFromJson(
 
 /// @nodoc
 mixin _$CardPaymentMethodDetails {
+  /// Uses the provided card or cardNumber Element for confirmation.
+  @ElementConverter()
+  Object get card => throw _privateConstructorUsedError;
+
   /// The billing_details associated with the card.
   @JsonKey(name: "billing_details")
   BillingDetails? get billingDetails => throw _privateConstructorUsedError;
@@ -589,7 +593,7 @@ mixin _$CardPaymentMethodDetails {
     TResult Function(@ElementConverter() Element card,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         $default, {
-    required TResult Function(CardToken card,
+    required TResult Function(CardTokenPaymentMethod card,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         token,
   }) =>
@@ -599,7 +603,7 @@ mixin _$CardPaymentMethodDetails {
     TResult? Function(@ElementConverter() Element card,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
-    TResult? Function(CardToken card,
+    TResult? Function(CardTokenPaymentMethod card,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         token,
   }) =>
@@ -609,7 +613,7 @@ mixin _$CardPaymentMethodDetails {
     TResult Function(@ElementConverter() Element card,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
-    TResult Function(CardToken card,
+    TResult Function(CardTokenPaymentMethod card,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         token,
     required TResult orElse(),
@@ -789,7 +793,7 @@ class _$_CardPaymentMethodRef implements _CardPaymentMethodRef {
     TResult Function(@ElementConverter() Element card,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         $default, {
-    required TResult Function(CardToken card,
+    required TResult Function(CardTokenPaymentMethod card,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         token,
   }) {
@@ -802,7 +806,7 @@ class _$_CardPaymentMethodRef implements _CardPaymentMethodRef {
     TResult? Function(@ElementConverter() Element card,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
-    TResult? Function(CardToken card,
+    TResult? Function(CardTokenPaymentMethod card,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         token,
   }) {
@@ -815,7 +819,7 @@ class _$_CardPaymentMethodRef implements _CardPaymentMethodRef {
     TResult Function(@ElementConverter() Element card,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
-    TResult Function(CardToken card,
+    TResult Function(CardTokenPaymentMethod card,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         token,
     required TResult orElse(),
@@ -875,6 +879,8 @@ abstract class _CardPaymentMethodRef implements CardPaymentMethodDetails {
   factory _CardPaymentMethodRef.fromJson(Map<String, dynamic> json) =
       _$_CardPaymentMethodRef.fromJson;
 
+  @override
+
   /// Uses the provided card or cardNumber Element for confirmation.
   @ElementConverter()
   Element get card;
@@ -899,10 +905,10 @@ abstract class _$$_CardPaymentMethodDetailsTokenCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {CardToken card,
+      {CardTokenPaymentMethod card,
       @JsonKey(name: "billing_details") BillingDetails? billingDetails});
 
-  $CardTokenCopyWith<$Res> get card;
+  $CardTokenPaymentMethodCopyWith<$Res> get card;
   @override
   $BillingDetailsCopyWith<$Res>? get billingDetails;
 }
@@ -927,7 +933,7 @@ class __$$_CardPaymentMethodDetailsTokenCopyWithImpl<$Res>
       card: null == card
           ? _value.card
           : card // ignore: cast_nullable_to_non_nullable
-              as CardToken,
+              as CardTokenPaymentMethod,
       billingDetails: freezed == billingDetails
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
@@ -937,8 +943,8 @@ class __$$_CardPaymentMethodDetailsTokenCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $CardTokenCopyWith<$Res> get card {
-    return $CardTokenCopyWith<$Res>(_value.card, (value) {
+  $CardTokenPaymentMethodCopyWith<$Res> get card {
+    return $CardTokenPaymentMethodCopyWith<$Res>(_value.card, (value) {
       return _then(_value.copyWith(card: value));
     });
   }
@@ -960,7 +966,7 @@ class _$_CardPaymentMethodDetailsToken
 
   /// Uses the provided card or cardNumber Element for confirmation.
   @override
-  final CardToken card;
+  final CardTokenPaymentMethod card;
 
   /// The billing_details associated with the card.
   @override
@@ -1002,7 +1008,7 @@ class _$_CardPaymentMethodDetailsToken
     TResult Function(@ElementConverter() Element card,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         $default, {
-    required TResult Function(CardToken card,
+    required TResult Function(CardTokenPaymentMethod card,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         token,
   }) {
@@ -1015,7 +1021,7 @@ class _$_CardPaymentMethodDetailsToken
     TResult? Function(@ElementConverter() Element card,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
-    TResult? Function(CardToken card,
+    TResult? Function(CardTokenPaymentMethod card,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         token,
   }) {
@@ -1028,7 +1034,7 @@ class _$_CardPaymentMethodDetailsToken
     TResult Function(@ElementConverter() Element card,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
-    TResult Function(CardToken card,
+    TResult Function(CardTokenPaymentMethod card,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         token,
     required TResult orElse(),
@@ -1081,7 +1087,7 @@ class _$_CardPaymentMethodDetailsToken
 abstract class _CardPaymentMethodDetailsToken
     implements CardPaymentMethodDetails {
   const factory _CardPaymentMethodDetailsToken(
-          {required final CardToken card,
+          {required final CardTokenPaymentMethod card,
           @JsonKey(name: "billing_details")
               final BillingDetails? billingDetails}) =
       _$_CardPaymentMethodDetailsToken;
@@ -1089,8 +1095,10 @@ abstract class _CardPaymentMethodDetailsToken
   factory _CardPaymentMethodDetailsToken.fromJson(Map<String, dynamic> json) =
       _$_CardPaymentMethodDetailsToken.fromJson;
 
+  @override
+
   /// Uses the provided card or cardNumber Element for confirmation.
-  CardToken get card;
+  CardTokenPaymentMethod get card;
   @override
 
   /// The billing_details associated with the card.
@@ -1118,6 +1126,10 @@ IdealPaymentMethodDetails _$IdealPaymentMethodDetailsFromJson(
 
 /// @nodoc
 mixin _$IdealPaymentMethodDetails {
+  /// Uses the provided card or cardNumber Element for confirmation.
+  @ElementConverter()
+  Object get ideal => throw _privateConstructorUsedError;
+
   /// The billing_details associated with the card.
   @JsonKey(name: "billing_details")
   BillingDetails? get billingDetails => throw _privateConstructorUsedError;
@@ -1416,6 +1428,8 @@ abstract class _IdealPaymentMethodDetails implements IdealPaymentMethodDetails {
   factory _IdealPaymentMethodDetails.fromJson(Map<String, dynamic> json) =
       _$_IdealPaymentMethodDetails.fromJson;
 
+  @override
+
   /// Uses the provided card or cardNumber Element for confirmation.
   @ElementConverter()
   Element get ideal;
@@ -1633,6 +1647,8 @@ abstract class _IdealPaymentMethodDetailsSelfCollect
           Map<String, dynamic> json) =
       _$_IdealPaymentMethodDetailsSelfCollect.fromJson;
 
+  @override
+
   /// Uses the provided card or cardNumber Element for confirmation.
   IdealBankData get ideal;
   @override
@@ -1787,32 +1803,35 @@ abstract class _IdealBankData implements IdealBankData {
       throw _privateConstructorUsedError;
 }
 
-CardToken _$CardTokenFromJson(Map<String, dynamic> json) {
-  return _CardToken.fromJson(json);
+CardTokenPaymentMethod _$CardTokenPaymentMethodFromJson(
+    Map<String, dynamic> json) {
+  return _CardTokenPaymentMethod.fromJson(json);
 }
 
 /// @nodoc
-mixin _$CardToken {
+mixin _$CardTokenPaymentMethod {
   String get token => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CardTokenCopyWith<CardToken> get copyWith =>
+  $CardTokenPaymentMethodCopyWith<CardTokenPaymentMethod> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CardTokenCopyWith<$Res> {
-  factory $CardTokenCopyWith(CardToken value, $Res Function(CardToken) then) =
-      _$CardTokenCopyWithImpl<$Res, CardToken>;
+abstract class $CardTokenPaymentMethodCopyWith<$Res> {
+  factory $CardTokenPaymentMethodCopyWith(CardTokenPaymentMethod value,
+          $Res Function(CardTokenPaymentMethod) then) =
+      _$CardTokenPaymentMethodCopyWithImpl<$Res, CardTokenPaymentMethod>;
   @useResult
   $Res call({String token});
 }
 
 /// @nodoc
-class _$CardTokenCopyWithImpl<$Res, $Val extends CardToken>
-    implements $CardTokenCopyWith<$Res> {
-  _$CardTokenCopyWithImpl(this._value, this._then);
+class _$CardTokenPaymentMethodCopyWithImpl<$Res,
+        $Val extends CardTokenPaymentMethod>
+    implements $CardTokenPaymentMethodCopyWith<$Res> {
+  _$CardTokenPaymentMethodCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -1834,21 +1853,23 @@ class _$CardTokenCopyWithImpl<$Res, $Val extends CardToken>
 }
 
 /// @nodoc
-abstract class _$$_CardTokenCopyWith<$Res> implements $CardTokenCopyWith<$Res> {
-  factory _$$_CardTokenCopyWith(
-          _$_CardToken value, $Res Function(_$_CardToken) then) =
-      __$$_CardTokenCopyWithImpl<$Res>;
+abstract class _$$_CardTokenPaymentMethodCopyWith<$Res>
+    implements $CardTokenPaymentMethodCopyWith<$Res> {
+  factory _$$_CardTokenPaymentMethodCopyWith(_$_CardTokenPaymentMethod value,
+          $Res Function(_$_CardTokenPaymentMethod) then) =
+      __$$_CardTokenPaymentMethodCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String token});
 }
 
 /// @nodoc
-class __$$_CardTokenCopyWithImpl<$Res>
-    extends _$CardTokenCopyWithImpl<$Res, _$_CardToken>
-    implements _$$_CardTokenCopyWith<$Res> {
-  __$$_CardTokenCopyWithImpl(
-      _$_CardToken _value, $Res Function(_$_CardToken) _then)
+class __$$_CardTokenPaymentMethodCopyWithImpl<$Res>
+    extends _$CardTokenPaymentMethodCopyWithImpl<$Res,
+        _$_CardTokenPaymentMethod>
+    implements _$$_CardTokenPaymentMethodCopyWith<$Res> {
+  __$$_CardTokenPaymentMethodCopyWithImpl(_$_CardTokenPaymentMethod _value,
+      $Res Function(_$_CardTokenPaymentMethod) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1856,7 +1877,7 @@ class __$$_CardTokenCopyWithImpl<$Res>
   $Res call({
     Object? token = null,
   }) {
-    return _then(_$_CardToken(
+    return _then(_$_CardTokenPaymentMethod(
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
@@ -1867,25 +1888,25 @@ class __$$_CardTokenCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CardToken implements _CardToken {
-  const _$_CardToken({required this.token});
+class _$_CardTokenPaymentMethod implements _CardTokenPaymentMethod {
+  const _$_CardTokenPaymentMethod({required this.token});
 
-  factory _$_CardToken.fromJson(Map<String, dynamic> json) =>
-      _$$_CardTokenFromJson(json);
+  factory _$_CardTokenPaymentMethod.fromJson(Map<String, dynamic> json) =>
+      _$$_CardTokenPaymentMethodFromJson(json);
 
   @override
   final String token;
 
   @override
   String toString() {
-    return 'CardToken(token: $token)';
+    return 'CardTokenPaymentMethod(token: $token)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CardToken &&
+            other is _$_CardTokenPaymentMethod &&
             (identical(other.token, token) || other.token == token));
   }
 
@@ -1896,27 +1917,29 @@ class _$_CardToken implements _CardToken {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CardTokenCopyWith<_$_CardToken> get copyWith =>
-      __$$_CardTokenCopyWithImpl<_$_CardToken>(this, _$identity);
+  _$$_CardTokenPaymentMethodCopyWith<_$_CardTokenPaymentMethod> get copyWith =>
+      __$$_CardTokenPaymentMethodCopyWithImpl<_$_CardTokenPaymentMethod>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CardTokenToJson(
+    return _$$_CardTokenPaymentMethodToJson(
       this,
     );
   }
 }
 
-abstract class _CardToken implements CardToken {
-  const factory _CardToken({required final String token}) = _$_CardToken;
+abstract class _CardTokenPaymentMethod implements CardTokenPaymentMethod {
+  const factory _CardTokenPaymentMethod({required final String token}) =
+      _$_CardTokenPaymentMethod;
 
-  factory _CardToken.fromJson(Map<String, dynamic> json) =
-      _$_CardToken.fromJson;
+  factory _CardTokenPaymentMethod.fromJson(Map<String, dynamic> json) =
+      _$_CardTokenPaymentMethod.fromJson;
 
   @override
   String get token;
   @override
   @JsonKey(ignore: true)
-  _$$_CardTokenCopyWith<_$_CardToken> get copyWith =>
+  _$$_CardTokenPaymentMethodCopyWith<_$_CardTokenPaymentMethod> get copyWith =>
       throw _privateConstructorUsedError;
 }

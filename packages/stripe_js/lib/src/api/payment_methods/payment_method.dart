@@ -244,7 +244,7 @@ class Upi with _$Upi {
   factory Upi.fromJson(Map<String, dynamic> json) => _$UpiFromJson(json);
 }
 
-enum BankAccountHolderType {
+enum UsBankAccountHolderType {
   /// Company.
   Company,
 
@@ -267,7 +267,7 @@ class UsBankAccount with _$UsBankAccount {
     String? last4,
 
     /// The bank account type of the holder
-    required BankAccountHolderType accountHolderType,
+    required UsBankAccountHolderType accountHolderType,
 
     /// The account type
     required UsBankAccountType accountType,
