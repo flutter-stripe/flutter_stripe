@@ -224,6 +224,16 @@ class Stripe {
     }
   }
 
+  /// Updates the native payment sheet with new data **iOS-only.
+  ///
+  /// For example this method is required to call when the user updates shippingmethod, shippingAddress and couponcode.
+  Future<void> updatePlatformSheet({
+    required PlatformPaySheetUpdateParams params,
+  }) async {
+    await _awaitForSettings();
+    return _platform.updatePlatformSheet(params: params);
+  }
+
   /// Creates a single-use token that represents an Apple Pay credit card’s details.
   ///
   /// The [payment] param should be the data response from the `pay` plugin. It can

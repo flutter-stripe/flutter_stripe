@@ -6,6 +6,103 @@ part of 'platform_pay.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$_PlatformPaySheetUpdateParams _$$_PlatformPaySheetUpdateParamsFromJson(
+        Map<String, dynamic> json) =>
+    _$_PlatformPaySheetUpdateParams(
+      summaryItems: (json['summaryItems'] as List<dynamic>)
+          .map((e) =>
+              ApplePayCartSummaryItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      shippingMethods: (json['shippingMethods'] as List<dynamic>)
+          .map(
+              (e) => ApplePayShippingMethod.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      errors: (json['errors'] as List<dynamic>?)
+          ?.map((e) => ApplePaySheetError.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$_PlatformPaySheetUpdateParamsToJson(
+        _$_PlatformPaySheetUpdateParams instance) =>
+    <String, dynamic>{
+      'summaryItems': instance.summaryItems.map((e) => e.toJson()).toList(),
+      'shippingMethods':
+          instance.shippingMethods.map((e) => e.toJson()).toList(),
+      'errors': instance.errors?.map((e) => e.toJson()).toList(),
+    };
+
+_$_ApplePaySheetErrorInvalidShipping
+    _$$_ApplePaySheetErrorInvalidShippingFromJson(Map<String, dynamic> json) =>
+        _$_ApplePaySheetErrorInvalidShipping(
+          field: $enumDecode(_$InvalidShippingFieldEnumMap, json['field']),
+          message: json['message'] as String?,
+          $type: json['errorType'] as String?,
+        );
+
+Map<String, dynamic> _$$_ApplePaySheetErrorInvalidShippingToJson(
+        _$_ApplePaySheetErrorInvalidShipping instance) =>
+    <String, dynamic>{
+      'field': _$InvalidShippingFieldEnumMap[instance.field]!,
+      'message': instance.message,
+      'errorType': instance.$type,
+    };
+
+const _$InvalidShippingFieldEnumMap = {
+  InvalidShippingField.Street: 'Street',
+  InvalidShippingField.City: 'City',
+  InvalidShippingField.SubAdministrativeArea: 'SubAdministrativeArea',
+  InvalidShippingField.State: 'State',
+  InvalidShippingField.PostalCode: 'PostalCode',
+  InvalidShippingField.Country: 'Country',
+  InvalidShippingField.CountryCode: 'CountryCode',
+  InvalidShippingField.SubLocality: 'SubLocality',
+};
+
+_$_ApplePaySheetErrorUnserviceableShipping
+    _$$_ApplePaySheetErrorUnserviceableShippingFromJson(
+            Map<String, dynamic> json) =>
+        _$_ApplePaySheetErrorUnserviceableShipping(
+          message: json['message'] as String?,
+          $type: json['errorType'] as String?,
+        );
+
+Map<String, dynamic> _$$_ApplePaySheetErrorUnserviceableShippingToJson(
+        _$_ApplePaySheetErrorUnserviceableShipping instance) =>
+    <String, dynamic>{
+      'message': instance.message,
+      'errorType': instance.$type,
+    };
+
+_$_ApplePaySheetErrorInvalidCouponCode
+    _$$_ApplePaySheetErrorInvalidCouponCodeFromJson(
+            Map<String, dynamic> json) =>
+        _$_ApplePaySheetErrorInvalidCouponCode(
+          message: json['message'] as String?,
+          $type: json['errorType'] as String?,
+        );
+
+Map<String, dynamic> _$$_ApplePaySheetErrorInvalidCouponCodeToJson(
+        _$_ApplePaySheetErrorInvalidCouponCode instance) =>
+    <String, dynamic>{
+      'message': instance.message,
+      'errorType': instance.$type,
+    };
+
+_$_ApplePaySheetErrorExpiredCouponCode
+    _$$_ApplePaySheetErrorExpiredCouponCodeFromJson(
+            Map<String, dynamic> json) =>
+        _$_ApplePaySheetErrorExpiredCouponCode(
+          message: json['message'] as String?,
+          $type: json['errorType'] as String?,
+        );
+
+Map<String, dynamic> _$$_ApplePaySheetErrorExpiredCouponCodeToJson(
+        _$_ApplePaySheetErrorExpiredCouponCode instance) =>
+    <String, dynamic>{
+      'message': instance.message,
+      'errorType': instance.$type,
+    };
+
 _$PlatformPayPaymentMethodParamsGooglePay
     _$$PlatformPayPaymentMethodParamsGooglePayFromJson(
             Map<String, dynamic> json) =>

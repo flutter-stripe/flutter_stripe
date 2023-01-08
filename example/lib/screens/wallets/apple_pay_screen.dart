@@ -13,6 +13,28 @@ class ApplePayScreen extends StatefulWidget {
 }
 
 class _ApplePayScreenState extends State<ApplePayScreen> {
+  final items = [
+    ApplePayCartSummaryItem.immediate(
+      label: 'Product Test',
+      amount: '0.01',
+    )
+  ];
+
+  final shippingMethods = [
+    ApplePayShippingMethod(
+      identifier: 'free',
+      detail: 'Arrives by July 2',
+      label: 'Free Shipping',
+      amount: '0.0',
+    ),
+    ApplePayShippingMethod(
+      identifier: 'standard',
+      detail: 'Arrives by June 29',
+      label: 'Standard Shipping',
+      amount: '3.21',
+    )
+  ];
+
   @override
   void initState() {
     Stripe.instance.isPlatformPaySupportedListenable.addListener(update);
@@ -38,9 +60,27 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
       children: [
         if (Stripe.instance.isPlatformPaySupportedListenable.value)
           PlatformPayButton(
+            onDidSetShippingContact: (contact) {
+              print('Shipping contact updated $contact');
+
+              // Mandatory after entering a shipping contact
+              Stripe.instance.updatePlatformSheet(
+                params: PlatformPaySheetUpdateParams.applePay(
+                  summaryItems: items,
+                  shippingMethods: shippingMethods,
+                ),
+              );
+            },
+            // },
+            // onDidSetShippingMethod: (method) {
+            //   print('Shipping method updated $method');
+            // },
             type: PlatformButtonType.buy,
             appearance: PlatformButtonStyle.whiteOutline,
-            onPressed: _handlePayPress,
+            onPressed: () => _handlePayPress(
+              summaryItems: items,
+              shippingMethods: shippingMethods,
+            ),
           )
         else
           Text('Apple Pay is not available in this device'),
@@ -48,7 +88,10 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
     );
   }
 
-  Future<void> _handlePayPress() async {
+  Future<void> _handlePayPress({
+    required List<ApplePayCartSummaryItem> summaryItems,
+    required List<ApplePayShippingMethod> shippingMethods,
+  }) async {
     try {
       // 1. fetch Intent Client Secret from backend
       final response = await fetchPaymentIntentClientSecret();
@@ -59,35 +102,11 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
         clientSecret: clientSecret,
         confirmParams: PlatformPayConfirmParams.applePay(
           applePay: ApplePayParams(
-            cartItems: [
-              ApplePayCartSummaryItem.immediate(
-                label: 'Product Test',
-                amount: '0.01',
-              ),
-            ],
+            cartItems: items,
             requiredShippingAddressFields: [
               ApplePayContactFieldsType.postalAddress,
             ],
-            shippingMethods: [
-              ApplePayShippingMethod(
-                identifier: 'free',
-                detail: 'Arrives by July 2',
-                label: 'Free Shipping',
-                amount: '0.0',
-              ),
-              ApplePayShippingMethod(
-                identifier: 'standard',
-                detail: 'Arrives by June 29',
-                label: 'Standard Shipping',
-                amount: '3.21',
-              ),
-            ],
-            onDidSetShippingContact: (contact) {
-              print('Shipping contact updated $contact');
-            },
-            onDidSetShippingMethod: (method) {
-              print('Shipping method updated $method');
-            },
+            shippingMethods: shippingMethods,
             merchantCountryCode: 'Es',
             currencyCode: 'EUR',
           ),

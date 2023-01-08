@@ -3,6 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_stripe/src/model/platform_pay_button.dart';
+import 'package:stripe_platform_interface/stripe_platform_interface.dart';
+
 import '../model/apple_pay_button.dart';
 
 const double _kApplePayButtonDefaultHeight = 48;
@@ -23,6 +25,9 @@ class ApplePayButton extends StatelessWidget {
     double? width,
     double? height = _kApplePayButtonDefaultHeight,
     BoxConstraints? constraints,
+    this.onShippingContactSelected,
+    this.onDidSetCoupon,
+    this.onShippingMethodSelected,
   })  : assert(constraints == null || constraints.debugAssertIsValid()),
         constraints = (width != null || height != null)
             ? constraints?.tighten(width: width, height: height) ??
@@ -52,6 +57,15 @@ class ApplePayButton extends StatelessWidget {
   /// Callback that is executed when the button is pressed.
   final VoidCallback? onPressed;
 
+  /// Callback that is executed when a shipping contact is selected
+  final OnDidSetShippingContact? onShippingContactSelected;
+
+  /// Callback that is execyted when shipping method is selected
+  final OnDidSetShippingMethod? onShippingMethodSelected;
+
+  /// Callback that is execyted when shipping method is selected
+  final OnDidSetCoupon? onDidSetCoupon;
+
   /// Additional constraints for the Apple pay button widget.
   final BoxConstraints? constraints;
 
@@ -71,6 +85,9 @@ class ApplePayButton extends StatelessWidget {
           style: style,
           cornerRadius: cornerRadius,
           onPressed: onPressed,
+          onDidSetShippingContact: onShippingContactSelected,
+          onDidSetCoupon: onDidSetCoupon,
+          onShippingMethodSelected: onShippingMethodSelected,
         );
       default:
         throw UnsupportedError(
@@ -86,12 +103,18 @@ class _UiKitApplePayButton extends StatefulWidget {
     required this.type,
     this.cornerRadius = 4.0,
     this.onPressed,
+    this.onDidSetShippingContact,
+    this.onDidSetCoupon,
+    this.onShippingMethodSelected,
   }) : super(key: key);
 
   final PlatformButtonStyle style;
   final PlatformButtonType type;
   final double cornerRadius;
   final VoidCallback? onPressed;
+  final OnDidSetShippingContact? onDidSetShippingContact;
+  final OnDidSetShippingMethod? onShippingMethodSelected;
+  final OnDidSetCoupon? onDidSetCoupon;
   @override
   _UiKitApplePayButtonState createState() => _UiKitApplePayButtonState();
 }
@@ -101,8 +124,6 @@ class _UiKitApplePayButtonState extends State<_UiKitApplePayButton> {
 
   @override
   Widget build(BuildContext context) {
-
-
     return UiKitView(
       viewType: 'flutter.stripe/apple_pay',
       creationParamsCodec: const StandardMessageCodec(),
@@ -117,6 +138,19 @@ class _UiKitApplePayButtonState extends State<_UiKitApplePayButton> {
           if (call.method == 'onPressed') {
             widget.onPressed?.call();
           }
+          if (call.method == 'onShippingContactSelected') {
+            final args =
+                _convertShippingContact(call.arguments['shippingContact']);
+            widget.onDidSetShippingContact?.call(args);
+          }
+          if (call.method == 'onShippingMethodSelected') {
+            final args = ApplePayShippingMethod.fromJson(
+                call.arguments['shippingMethod']);
+            widget.onShippingMethodSelected?.call(args);
+          }
+          if (call.method == 'onShippingContactSelected') {
+            widget.onDidSetCoupon?.call(call.arguments['couponCode']);
+          }
           return;
         });
       },
@@ -126,7 +160,6 @@ class _UiKitApplePayButtonState extends State<_UiKitApplePayButton> {
   @override
   void didUpdateWidget(covariant _UiKitApplePayButton oldWidget) {
     if (widget.style != oldWidget.style || widget.type != oldWidget.type) {
-   
       methodChannel?.invokeMethod('updateStyle', {
         'type': widget.type.id,
         'style': widget.style.id,
@@ -135,3 +168,27 @@ class _UiKitApplePayButtonState extends State<_UiKitApplePayButton> {
     super.didUpdateWidget(oldWidget);
   }
 }
+
+// For some reason json serializable cannot be cast
+ApplePayShippingContact _convertShippingContact(dynamic json) =>
+    ApplePayShippingContact(
+      phoneNumber: json['phoneNumber'],
+      name: ApplePayContactName(
+        familyName: json['name']['familyName'],
+        namePrefix: json['name']['namePrefix'],
+        nameSuffix: json['name']['nameSuffix'],
+        givenName: json['name']['givenName'],
+        middleName: json['name']['middleName'],
+        nickname: json['name']['nickname'],
+      ),
+      postalAddress: ApplePayPostalAddress(
+        city: json['postalAddress']['city'],
+        country: json['postalAddress']['country'],
+        postalCode: json['postalAddress']['postalCode'],
+        state: json['postalAddress']['state'],
+        street: json['postalAddress']['street'],
+        isoCountryCode: json['postalAddress']['isoCountryCode'],
+        subAdministrativeArea: json['postalAddress']['subAdministrativeArea'],
+        subLocality: json['postalAddress']['subLocality'],
+      ),
+    );

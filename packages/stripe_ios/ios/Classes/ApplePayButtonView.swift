@@ -74,10 +74,10 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
             stripeSdk?.shippingContactUpdateJSCallback = doesNothing
             stripeSdk?.couponCodeEnteredJSCallback = doesNothing
         } else {
-            channel.invokeMethod("onPressed", arguments:nil)
             stripeSdk?.shippingMethodUpdateJSCallback = onShippingMethodSelectedAction
             stripeSdk?.shippingContactUpdateJSCallback = onShippingContactSelectedAction
             stripeSdk?.couponCodeEnteredJSCallback = onCouponCodeEnteredAction
+            channel.invokeMethod("onPressed", arguments: nil)
         }
     }
 

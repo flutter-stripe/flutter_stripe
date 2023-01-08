@@ -458,15 +458,23 @@ extension  StripePlugin {
     }
     
     func updatePlatformPaySheet(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        guard let arguments = call.arguments as? FlutterMap,
-        let summaryItems = arguments["summaryItems"] as? NSArray,
-        let shippingMethods = arguments["shippingMethods"] as? NSArray,
-        let errors = arguments["errors"] as? [NSDictionary] else {
+        guard let arguments = call.arguments as? FlutterMap else {
             result(FlutterError.invalidParams)
             return
         }
         
-        updatePlatformPaySheet(summaryItems: summaryItems, shippingMethods: shippingMethods, errors: errors, resolver: resolver(for: result), rejecter: rejecter(for: result))
+        guard let params = arguments["params"] as? NSDictionary else{
+            result(FlutterError.invalidParams)
+            return
+        }
+        
+        guard let summaryItems = params["summaryItems"] as? NSArray,
+         let shippingMethods = params["shippingMethods"] as? NSArray else {
+            result(FlutterError.invalidParams)
+            return
+        }
+        
+        updatePlatformPaySheet(summaryItems: summaryItems, shippingMethods: shippingMethods, errors: [], resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
     
     func isPlatformPaySupported(_ call: FlutterMethodCall, result: @escaping FlutterResult) {

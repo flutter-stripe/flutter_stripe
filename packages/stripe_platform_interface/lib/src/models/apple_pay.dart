@@ -242,7 +242,6 @@ class ApplePayContactName with _$ApplePayContactName {
 }
 
 @freezed
-
 /// Postal address data for Apple pay
 class ApplePayPostalAddress with _$ApplePayPostalAddress {
   @JsonSerializable(explicitToJson: true)

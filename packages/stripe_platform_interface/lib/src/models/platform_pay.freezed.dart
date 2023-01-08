@@ -14,6 +14,1278 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+PlatformPaySheetUpdateParams _$PlatformPaySheetUpdateParamsFromJson(
+    Map<String, dynamic> json) {
+  return _PlatformPaySheetUpdateParams.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PlatformPaySheetUpdateParams {
+  /// list of updated summary items
+  List<ApplePayCartSummaryItem> get summaryItems =>
+      throw _privateConstructorUsedError;
+
+  /// list of updated shipping methods
+  List<ApplePayShippingMethod> get shippingMethods =>
+      throw _privateConstructorUsedError;
+
+  /// In case user input is wrong use this to display the errors in the apple pay sheet.
+  List<ApplePaySheetError>? get errors => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            List<ApplePayCartSummaryItem> summaryItems,
+            List<ApplePayShippingMethod> shippingMethods,
+            List<ApplePaySheetError>? errors)
+        applePay,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            List<ApplePayCartSummaryItem> summaryItems,
+            List<ApplePayShippingMethod> shippingMethods,
+            List<ApplePaySheetError>? errors)?
+        applePay,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            List<ApplePayCartSummaryItem> summaryItems,
+            List<ApplePayShippingMethod> shippingMethods,
+            List<ApplePaySheetError>? errors)?
+        applePay,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PlatformPaySheetUpdateParams value) applePay,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PlatformPaySheetUpdateParams value)? applePay,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PlatformPaySheetUpdateParams value)? applePay,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PlatformPaySheetUpdateParamsCopyWith<PlatformPaySheetUpdateParams>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PlatformPaySheetUpdateParamsCopyWith<$Res> {
+  factory $PlatformPaySheetUpdateParamsCopyWith(
+          PlatformPaySheetUpdateParams value,
+          $Res Function(PlatformPaySheetUpdateParams) then) =
+      _$PlatformPaySheetUpdateParamsCopyWithImpl<$Res,
+          PlatformPaySheetUpdateParams>;
+  @useResult
+  $Res call(
+      {List<ApplePayCartSummaryItem> summaryItems,
+      List<ApplePayShippingMethod> shippingMethods,
+      List<ApplePaySheetError>? errors});
+}
+
+/// @nodoc
+class _$PlatformPaySheetUpdateParamsCopyWithImpl<$Res,
+        $Val extends PlatformPaySheetUpdateParams>
+    implements $PlatformPaySheetUpdateParamsCopyWith<$Res> {
+  _$PlatformPaySheetUpdateParamsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? summaryItems = null,
+    Object? shippingMethods = null,
+    Object? errors = freezed,
+  }) {
+    return _then(_value.copyWith(
+      summaryItems: null == summaryItems
+          ? _value.summaryItems
+          : summaryItems // ignore: cast_nullable_to_non_nullable
+              as List<ApplePayCartSummaryItem>,
+      shippingMethods: null == shippingMethods
+          ? _value.shippingMethods
+          : shippingMethods // ignore: cast_nullable_to_non_nullable
+              as List<ApplePayShippingMethod>,
+      errors: freezed == errors
+          ? _value.errors
+          : errors // ignore: cast_nullable_to_non_nullable
+              as List<ApplePaySheetError>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_PlatformPaySheetUpdateParamsCopyWith<$Res>
+    implements $PlatformPaySheetUpdateParamsCopyWith<$Res> {
+  factory _$$_PlatformPaySheetUpdateParamsCopyWith(
+          _$_PlatformPaySheetUpdateParams value,
+          $Res Function(_$_PlatformPaySheetUpdateParams) then) =
+      __$$_PlatformPaySheetUpdateParamsCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {List<ApplePayCartSummaryItem> summaryItems,
+      List<ApplePayShippingMethod> shippingMethods,
+      List<ApplePaySheetError>? errors});
+}
+
+/// @nodoc
+class __$$_PlatformPaySheetUpdateParamsCopyWithImpl<$Res>
+    extends _$PlatformPaySheetUpdateParamsCopyWithImpl<$Res,
+        _$_PlatformPaySheetUpdateParams>
+    implements _$$_PlatformPaySheetUpdateParamsCopyWith<$Res> {
+  __$$_PlatformPaySheetUpdateParamsCopyWithImpl(
+      _$_PlatformPaySheetUpdateParams _value,
+      $Res Function(_$_PlatformPaySheetUpdateParams) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? summaryItems = null,
+    Object? shippingMethods = null,
+    Object? errors = freezed,
+  }) {
+    return _then(_$_PlatformPaySheetUpdateParams(
+      summaryItems: null == summaryItems
+          ? _value._summaryItems
+          : summaryItems // ignore: cast_nullable_to_non_nullable
+              as List<ApplePayCartSummaryItem>,
+      shippingMethods: null == shippingMethods
+          ? _value._shippingMethods
+          : shippingMethods // ignore: cast_nullable_to_non_nullable
+              as List<ApplePayShippingMethod>,
+      errors: freezed == errors
+          ? _value._errors
+          : errors // ignore: cast_nullable_to_non_nullable
+              as List<ApplePaySheetError>?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_PlatformPaySheetUpdateParams implements _PlatformPaySheetUpdateParams {
+  const _$_PlatformPaySheetUpdateParams(
+      {required final List<ApplePayCartSummaryItem> summaryItems,
+      required final List<ApplePayShippingMethod> shippingMethods,
+      final List<ApplePaySheetError>? errors})
+      : _summaryItems = summaryItems,
+        _shippingMethods = shippingMethods,
+        _errors = errors;
+
+  factory _$_PlatformPaySheetUpdateParams.fromJson(Map<String, dynamic> json) =>
+      _$$_PlatformPaySheetUpdateParamsFromJson(json);
+
+  /// list of updated summary items
+  final List<ApplePayCartSummaryItem> _summaryItems;
+
+  /// list of updated summary items
+  @override
+  List<ApplePayCartSummaryItem> get summaryItems {
+    if (_summaryItems is EqualUnmodifiableListView) return _summaryItems;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_summaryItems);
+  }
+
+  /// list of updated shipping methods
+  final List<ApplePayShippingMethod> _shippingMethods;
+
+  /// list of updated shipping methods
+  @override
+  List<ApplePayShippingMethod> get shippingMethods {
+    if (_shippingMethods is EqualUnmodifiableListView) return _shippingMethods;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_shippingMethods);
+  }
+
+  /// In case user input is wrong use this to display the errors in the apple pay sheet.
+  final List<ApplePaySheetError>? _errors;
+
+  /// In case user input is wrong use this to display the errors in the apple pay sheet.
+  @override
+  List<ApplePaySheetError>? get errors {
+    final value = _errors;
+    if (value == null) return null;
+    if (_errors is EqualUnmodifiableListView) return _errors;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'PlatformPaySheetUpdateParams.applePay(summaryItems: $summaryItems, shippingMethods: $shippingMethods, errors: $errors)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PlatformPaySheetUpdateParams &&
+            const DeepCollectionEquality()
+                .equals(other._summaryItems, _summaryItems) &&
+            const DeepCollectionEquality()
+                .equals(other._shippingMethods, _shippingMethods) &&
+            const DeepCollectionEquality().equals(other._errors, _errors));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_summaryItems),
+      const DeepCollectionEquality().hash(_shippingMethods),
+      const DeepCollectionEquality().hash(_errors));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PlatformPaySheetUpdateParamsCopyWith<_$_PlatformPaySheetUpdateParams>
+      get copyWith => __$$_PlatformPaySheetUpdateParamsCopyWithImpl<
+          _$_PlatformPaySheetUpdateParams>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            List<ApplePayCartSummaryItem> summaryItems,
+            List<ApplePayShippingMethod> shippingMethods,
+            List<ApplePaySheetError>? errors)
+        applePay,
+  }) {
+    return applePay(summaryItems, shippingMethods, errors);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            List<ApplePayCartSummaryItem> summaryItems,
+            List<ApplePayShippingMethod> shippingMethods,
+            List<ApplePaySheetError>? errors)?
+        applePay,
+  }) {
+    return applePay?.call(summaryItems, shippingMethods, errors);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            List<ApplePayCartSummaryItem> summaryItems,
+            List<ApplePayShippingMethod> shippingMethods,
+            List<ApplePaySheetError>? errors)?
+        applePay,
+    required TResult orElse(),
+  }) {
+    if (applePay != null) {
+      return applePay(summaryItems, shippingMethods, errors);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PlatformPaySheetUpdateParams value) applePay,
+  }) {
+    return applePay(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PlatformPaySheetUpdateParams value)? applePay,
+  }) {
+    return applePay?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PlatformPaySheetUpdateParams value)? applePay,
+    required TResult orElse(),
+  }) {
+    if (applePay != null) {
+      return applePay(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PlatformPaySheetUpdateParamsToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PlatformPaySheetUpdateParams
+    implements PlatformPaySheetUpdateParams {
+  const factory _PlatformPaySheetUpdateParams(
+          {required final List<ApplePayCartSummaryItem> summaryItems,
+          required final List<ApplePayShippingMethod> shippingMethods,
+          final List<ApplePaySheetError>? errors}) =
+      _$_PlatformPaySheetUpdateParams;
+
+  factory _PlatformPaySheetUpdateParams.fromJson(Map<String, dynamic> json) =
+      _$_PlatformPaySheetUpdateParams.fromJson;
+
+  @override
+
+  /// list of updated summary items
+  List<ApplePayCartSummaryItem> get summaryItems;
+  @override
+
+  /// list of updated shipping methods
+  List<ApplePayShippingMethod> get shippingMethods;
+  @override
+
+  /// In case user input is wrong use this to display the errors in the apple pay sheet.
+  List<ApplePaySheetError>? get errors;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PlatformPaySheetUpdateParamsCopyWith<_$_PlatformPaySheetUpdateParams>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+ApplePaySheetError _$ApplePaySheetErrorFromJson(Map<String, dynamic> json) {
+  switch (json['errorType']) {
+    case 'InvalidShippingAddress':
+      return _ApplePaySheetErrorInvalidShipping.fromJson(json);
+    case 'UnserviceableShippingAddress':
+      return _ApplePaySheetErrorUnserviceableShipping.fromJson(json);
+    case 'InvalidCouponCode':
+      return _ApplePaySheetErrorInvalidCouponCode.fromJson(json);
+    case 'ExpiredCouponCode':
+      return _ApplePaySheetErrorExpiredCouponCode.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'errorType', 'ApplePaySheetError',
+          'Invalid union type "${json['errorType']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$ApplePaySheetError {
+// message that needs to be displayed on the sheet
+  String? get message => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(InvalidShippingField field, String? message)
+        invalidShippingField,
+    required TResult Function(String? message) unserviceableShippingAddress,
+    required TResult Function(String? message) invalidCouponCode,
+    required TResult Function(String? message) expiredCouponCode,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(InvalidShippingField field, String? message)?
+        invalidShippingField,
+    TResult? Function(String? message)? unserviceableShippingAddress,
+    TResult? Function(String? message)? invalidCouponCode,
+    TResult? Function(String? message)? expiredCouponCode,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(InvalidShippingField field, String? message)?
+        invalidShippingField,
+    TResult Function(String? message)? unserviceableShippingAddress,
+    TResult Function(String? message)? invalidCouponCode,
+    TResult Function(String? message)? expiredCouponCode,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ApplePaySheetErrorInvalidShipping value)
+        invalidShippingField,
+    required TResult Function(_ApplePaySheetErrorUnserviceableShipping value)
+        unserviceableShippingAddress,
+    required TResult Function(_ApplePaySheetErrorInvalidCouponCode value)
+        invalidCouponCode,
+    required TResult Function(_ApplePaySheetErrorExpiredCouponCode value)
+        expiredCouponCode,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ApplePaySheetErrorInvalidShipping value)?
+        invalidShippingField,
+    TResult? Function(_ApplePaySheetErrorUnserviceableShipping value)?
+        unserviceableShippingAddress,
+    TResult? Function(_ApplePaySheetErrorInvalidCouponCode value)?
+        invalidCouponCode,
+    TResult? Function(_ApplePaySheetErrorExpiredCouponCode value)?
+        expiredCouponCode,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ApplePaySheetErrorInvalidShipping value)?
+        invalidShippingField,
+    TResult Function(_ApplePaySheetErrorUnserviceableShipping value)?
+        unserviceableShippingAddress,
+    TResult Function(_ApplePaySheetErrorInvalidCouponCode value)?
+        invalidCouponCode,
+    TResult Function(_ApplePaySheetErrorExpiredCouponCode value)?
+        expiredCouponCode,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ApplePaySheetErrorCopyWith<ApplePaySheetError> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ApplePaySheetErrorCopyWith<$Res> {
+  factory $ApplePaySheetErrorCopyWith(
+          ApplePaySheetError value, $Res Function(ApplePaySheetError) then) =
+      _$ApplePaySheetErrorCopyWithImpl<$Res, ApplePaySheetError>;
+  @useResult
+  $Res call({String? message});
+}
+
+/// @nodoc
+class _$ApplePaySheetErrorCopyWithImpl<$Res, $Val extends ApplePaySheetError>
+    implements $ApplePaySheetErrorCopyWith<$Res> {
+  _$ApplePaySheetErrorCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_value.copyWith(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_ApplePaySheetErrorInvalidShippingCopyWith<$Res>
+    implements $ApplePaySheetErrorCopyWith<$Res> {
+  factory _$$_ApplePaySheetErrorInvalidShippingCopyWith(
+          _$_ApplePaySheetErrorInvalidShipping value,
+          $Res Function(_$_ApplePaySheetErrorInvalidShipping) then) =
+      __$$_ApplePaySheetErrorInvalidShippingCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({InvalidShippingField field, String? message});
+}
+
+/// @nodoc
+class __$$_ApplePaySheetErrorInvalidShippingCopyWithImpl<$Res>
+    extends _$ApplePaySheetErrorCopyWithImpl<$Res,
+        _$_ApplePaySheetErrorInvalidShipping>
+    implements _$$_ApplePaySheetErrorInvalidShippingCopyWith<$Res> {
+  __$$_ApplePaySheetErrorInvalidShippingCopyWithImpl(
+      _$_ApplePaySheetErrorInvalidShipping _value,
+      $Res Function(_$_ApplePaySheetErrorInvalidShipping) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field = null,
+    Object? message = freezed,
+  }) {
+    return _then(_$_ApplePaySheetErrorInvalidShipping(
+      field: null == field
+          ? _value.field
+          : field // ignore: cast_nullable_to_non_nullable
+              as InvalidShippingField,
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_ApplePaySheetErrorInvalidShipping
+    implements _ApplePaySheetErrorInvalidShipping {
+  const _$_ApplePaySheetErrorInvalidShipping(
+      {required this.field, this.message, final String? $type})
+      : $type = $type ?? 'InvalidShippingAddress';
+
+  factory _$_ApplePaySheetErrorInvalidShipping.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_ApplePaySheetErrorInvalidShippingFromJson(json);
+
+// Field that will be marked as invalid
+  @override
+  final InvalidShippingField field;
+// message that needs to be displayed on the sheet
+  @override
+  final String? message;
+
+  @JsonKey(name: 'errorType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ApplePaySheetError.invalidShippingField(field: $field, message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ApplePaySheetErrorInvalidShipping &&
+            (identical(other.field, field) || other.field == field) &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, field, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ApplePaySheetErrorInvalidShippingCopyWith<
+          _$_ApplePaySheetErrorInvalidShipping>
+      get copyWith => __$$_ApplePaySheetErrorInvalidShippingCopyWithImpl<
+          _$_ApplePaySheetErrorInvalidShipping>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(InvalidShippingField field, String? message)
+        invalidShippingField,
+    required TResult Function(String? message) unserviceableShippingAddress,
+    required TResult Function(String? message) invalidCouponCode,
+    required TResult Function(String? message) expiredCouponCode,
+  }) {
+    return invalidShippingField(field, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(InvalidShippingField field, String? message)?
+        invalidShippingField,
+    TResult? Function(String? message)? unserviceableShippingAddress,
+    TResult? Function(String? message)? invalidCouponCode,
+    TResult? Function(String? message)? expiredCouponCode,
+  }) {
+    return invalidShippingField?.call(field, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(InvalidShippingField field, String? message)?
+        invalidShippingField,
+    TResult Function(String? message)? unserviceableShippingAddress,
+    TResult Function(String? message)? invalidCouponCode,
+    TResult Function(String? message)? expiredCouponCode,
+    required TResult orElse(),
+  }) {
+    if (invalidShippingField != null) {
+      return invalidShippingField(field, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ApplePaySheetErrorInvalidShipping value)
+        invalidShippingField,
+    required TResult Function(_ApplePaySheetErrorUnserviceableShipping value)
+        unserviceableShippingAddress,
+    required TResult Function(_ApplePaySheetErrorInvalidCouponCode value)
+        invalidCouponCode,
+    required TResult Function(_ApplePaySheetErrorExpiredCouponCode value)
+        expiredCouponCode,
+  }) {
+    return invalidShippingField(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ApplePaySheetErrorInvalidShipping value)?
+        invalidShippingField,
+    TResult? Function(_ApplePaySheetErrorUnserviceableShipping value)?
+        unserviceableShippingAddress,
+    TResult? Function(_ApplePaySheetErrorInvalidCouponCode value)?
+        invalidCouponCode,
+    TResult? Function(_ApplePaySheetErrorExpiredCouponCode value)?
+        expiredCouponCode,
+  }) {
+    return invalidShippingField?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ApplePaySheetErrorInvalidShipping value)?
+        invalidShippingField,
+    TResult Function(_ApplePaySheetErrorUnserviceableShipping value)?
+        unserviceableShippingAddress,
+    TResult Function(_ApplePaySheetErrorInvalidCouponCode value)?
+        invalidCouponCode,
+    TResult Function(_ApplePaySheetErrorExpiredCouponCode value)?
+        expiredCouponCode,
+    required TResult orElse(),
+  }) {
+    if (invalidShippingField != null) {
+      return invalidShippingField(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ApplePaySheetErrorInvalidShippingToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ApplePaySheetErrorInvalidShipping
+    implements ApplePaySheetError {
+  const factory _ApplePaySheetErrorInvalidShipping(
+      {required final InvalidShippingField field,
+      final String? message}) = _$_ApplePaySheetErrorInvalidShipping;
+
+  factory _ApplePaySheetErrorInvalidShipping.fromJson(
+          Map<String, dynamic> json) =
+      _$_ApplePaySheetErrorInvalidShipping.fromJson;
+
+// Field that will be marked as invalid
+  InvalidShippingField get field;
+  @override // message that needs to be displayed on the sheet
+  String? get message;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ApplePaySheetErrorInvalidShippingCopyWith<
+          _$_ApplePaySheetErrorInvalidShipping>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ApplePaySheetErrorUnserviceableShippingCopyWith<$Res>
+    implements $ApplePaySheetErrorCopyWith<$Res> {
+  factory _$$_ApplePaySheetErrorUnserviceableShippingCopyWith(
+          _$_ApplePaySheetErrorUnserviceableShipping value,
+          $Res Function(_$_ApplePaySheetErrorUnserviceableShipping) then) =
+      __$$_ApplePaySheetErrorUnserviceableShippingCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? message});
+}
+
+/// @nodoc
+class __$$_ApplePaySheetErrorUnserviceableShippingCopyWithImpl<$Res>
+    extends _$ApplePaySheetErrorCopyWithImpl<$Res,
+        _$_ApplePaySheetErrorUnserviceableShipping>
+    implements _$$_ApplePaySheetErrorUnserviceableShippingCopyWith<$Res> {
+  __$$_ApplePaySheetErrorUnserviceableShippingCopyWithImpl(
+      _$_ApplePaySheetErrorUnserviceableShipping _value,
+      $Res Function(_$_ApplePaySheetErrorUnserviceableShipping) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$_ApplePaySheetErrorUnserviceableShipping(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_ApplePaySheetErrorUnserviceableShipping
+    implements _ApplePaySheetErrorUnserviceableShipping {
+  const _$_ApplePaySheetErrorUnserviceableShipping(
+      {this.message, final String? $type})
+      : $type = $type ?? 'UnserviceableShippingAddress';
+
+  factory _$_ApplePaySheetErrorUnserviceableShipping.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_ApplePaySheetErrorUnserviceableShippingFromJson(json);
+
+// message that needs to be displayed on the sheet
+  @override
+  final String? message;
+
+  @JsonKey(name: 'errorType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ApplePaySheetError.unserviceableShippingAddress(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ApplePaySheetErrorUnserviceableShipping &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ApplePaySheetErrorUnserviceableShippingCopyWith<
+          _$_ApplePaySheetErrorUnserviceableShipping>
+      get copyWith => __$$_ApplePaySheetErrorUnserviceableShippingCopyWithImpl<
+          _$_ApplePaySheetErrorUnserviceableShipping>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(InvalidShippingField field, String? message)
+        invalidShippingField,
+    required TResult Function(String? message) unserviceableShippingAddress,
+    required TResult Function(String? message) invalidCouponCode,
+    required TResult Function(String? message) expiredCouponCode,
+  }) {
+    return unserviceableShippingAddress(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(InvalidShippingField field, String? message)?
+        invalidShippingField,
+    TResult? Function(String? message)? unserviceableShippingAddress,
+    TResult? Function(String? message)? invalidCouponCode,
+    TResult? Function(String? message)? expiredCouponCode,
+  }) {
+    return unserviceableShippingAddress?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(InvalidShippingField field, String? message)?
+        invalidShippingField,
+    TResult Function(String? message)? unserviceableShippingAddress,
+    TResult Function(String? message)? invalidCouponCode,
+    TResult Function(String? message)? expiredCouponCode,
+    required TResult orElse(),
+  }) {
+    if (unserviceableShippingAddress != null) {
+      return unserviceableShippingAddress(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ApplePaySheetErrorInvalidShipping value)
+        invalidShippingField,
+    required TResult Function(_ApplePaySheetErrorUnserviceableShipping value)
+        unserviceableShippingAddress,
+    required TResult Function(_ApplePaySheetErrorInvalidCouponCode value)
+        invalidCouponCode,
+    required TResult Function(_ApplePaySheetErrorExpiredCouponCode value)
+        expiredCouponCode,
+  }) {
+    return unserviceableShippingAddress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ApplePaySheetErrorInvalidShipping value)?
+        invalidShippingField,
+    TResult? Function(_ApplePaySheetErrorUnserviceableShipping value)?
+        unserviceableShippingAddress,
+    TResult? Function(_ApplePaySheetErrorInvalidCouponCode value)?
+        invalidCouponCode,
+    TResult? Function(_ApplePaySheetErrorExpiredCouponCode value)?
+        expiredCouponCode,
+  }) {
+    return unserviceableShippingAddress?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ApplePaySheetErrorInvalidShipping value)?
+        invalidShippingField,
+    TResult Function(_ApplePaySheetErrorUnserviceableShipping value)?
+        unserviceableShippingAddress,
+    TResult Function(_ApplePaySheetErrorInvalidCouponCode value)?
+        invalidCouponCode,
+    TResult Function(_ApplePaySheetErrorExpiredCouponCode value)?
+        expiredCouponCode,
+    required TResult orElse(),
+  }) {
+    if (unserviceableShippingAddress != null) {
+      return unserviceableShippingAddress(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ApplePaySheetErrorUnserviceableShippingToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ApplePaySheetErrorUnserviceableShipping
+    implements ApplePaySheetError {
+  const factory _ApplePaySheetErrorUnserviceableShipping(
+      {final String? message}) = _$_ApplePaySheetErrorUnserviceableShipping;
+
+  factory _ApplePaySheetErrorUnserviceableShipping.fromJson(
+          Map<String, dynamic> json) =
+      _$_ApplePaySheetErrorUnserviceableShipping.fromJson;
+
+  @override // message that needs to be displayed on the sheet
+  String? get message;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ApplePaySheetErrorUnserviceableShippingCopyWith<
+          _$_ApplePaySheetErrorUnserviceableShipping>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ApplePaySheetErrorInvalidCouponCodeCopyWith<$Res>
+    implements $ApplePaySheetErrorCopyWith<$Res> {
+  factory _$$_ApplePaySheetErrorInvalidCouponCodeCopyWith(
+          _$_ApplePaySheetErrorInvalidCouponCode value,
+          $Res Function(_$_ApplePaySheetErrorInvalidCouponCode) then) =
+      __$$_ApplePaySheetErrorInvalidCouponCodeCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? message});
+}
+
+/// @nodoc
+class __$$_ApplePaySheetErrorInvalidCouponCodeCopyWithImpl<$Res>
+    extends _$ApplePaySheetErrorCopyWithImpl<$Res,
+        _$_ApplePaySheetErrorInvalidCouponCode>
+    implements _$$_ApplePaySheetErrorInvalidCouponCodeCopyWith<$Res> {
+  __$$_ApplePaySheetErrorInvalidCouponCodeCopyWithImpl(
+      _$_ApplePaySheetErrorInvalidCouponCode _value,
+      $Res Function(_$_ApplePaySheetErrorInvalidCouponCode) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$_ApplePaySheetErrorInvalidCouponCode(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_ApplePaySheetErrorInvalidCouponCode
+    implements _ApplePaySheetErrorInvalidCouponCode {
+  const _$_ApplePaySheetErrorInvalidCouponCode(
+      {this.message, final String? $type})
+      : $type = $type ?? 'InvalidCouponCode';
+
+  factory _$_ApplePaySheetErrorInvalidCouponCode.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_ApplePaySheetErrorInvalidCouponCodeFromJson(json);
+
+// message that needs to be displayed on the sheet
+  @override
+  final String? message;
+
+  @JsonKey(name: 'errorType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ApplePaySheetError.invalidCouponCode(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ApplePaySheetErrorInvalidCouponCode &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ApplePaySheetErrorInvalidCouponCodeCopyWith<
+          _$_ApplePaySheetErrorInvalidCouponCode>
+      get copyWith => __$$_ApplePaySheetErrorInvalidCouponCodeCopyWithImpl<
+          _$_ApplePaySheetErrorInvalidCouponCode>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(InvalidShippingField field, String? message)
+        invalidShippingField,
+    required TResult Function(String? message) unserviceableShippingAddress,
+    required TResult Function(String? message) invalidCouponCode,
+    required TResult Function(String? message) expiredCouponCode,
+  }) {
+    return invalidCouponCode(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(InvalidShippingField field, String? message)?
+        invalidShippingField,
+    TResult? Function(String? message)? unserviceableShippingAddress,
+    TResult? Function(String? message)? invalidCouponCode,
+    TResult? Function(String? message)? expiredCouponCode,
+  }) {
+    return invalidCouponCode?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(InvalidShippingField field, String? message)?
+        invalidShippingField,
+    TResult Function(String? message)? unserviceableShippingAddress,
+    TResult Function(String? message)? invalidCouponCode,
+    TResult Function(String? message)? expiredCouponCode,
+    required TResult orElse(),
+  }) {
+    if (invalidCouponCode != null) {
+      return invalidCouponCode(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ApplePaySheetErrorInvalidShipping value)
+        invalidShippingField,
+    required TResult Function(_ApplePaySheetErrorUnserviceableShipping value)
+        unserviceableShippingAddress,
+    required TResult Function(_ApplePaySheetErrorInvalidCouponCode value)
+        invalidCouponCode,
+    required TResult Function(_ApplePaySheetErrorExpiredCouponCode value)
+        expiredCouponCode,
+  }) {
+    return invalidCouponCode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ApplePaySheetErrorInvalidShipping value)?
+        invalidShippingField,
+    TResult? Function(_ApplePaySheetErrorUnserviceableShipping value)?
+        unserviceableShippingAddress,
+    TResult? Function(_ApplePaySheetErrorInvalidCouponCode value)?
+        invalidCouponCode,
+    TResult? Function(_ApplePaySheetErrorExpiredCouponCode value)?
+        expiredCouponCode,
+  }) {
+    return invalidCouponCode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ApplePaySheetErrorInvalidShipping value)?
+        invalidShippingField,
+    TResult Function(_ApplePaySheetErrorUnserviceableShipping value)?
+        unserviceableShippingAddress,
+    TResult Function(_ApplePaySheetErrorInvalidCouponCode value)?
+        invalidCouponCode,
+    TResult Function(_ApplePaySheetErrorExpiredCouponCode value)?
+        expiredCouponCode,
+    required TResult orElse(),
+  }) {
+    if (invalidCouponCode != null) {
+      return invalidCouponCode(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ApplePaySheetErrorInvalidCouponCodeToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ApplePaySheetErrorInvalidCouponCode
+    implements ApplePaySheetError {
+  const factory _ApplePaySheetErrorInvalidCouponCode({final String? message}) =
+      _$_ApplePaySheetErrorInvalidCouponCode;
+
+  factory _ApplePaySheetErrorInvalidCouponCode.fromJson(
+          Map<String, dynamic> json) =
+      _$_ApplePaySheetErrorInvalidCouponCode.fromJson;
+
+  @override // message that needs to be displayed on the sheet
+  String? get message;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ApplePaySheetErrorInvalidCouponCodeCopyWith<
+          _$_ApplePaySheetErrorInvalidCouponCode>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ApplePaySheetErrorExpiredCouponCodeCopyWith<$Res>
+    implements $ApplePaySheetErrorCopyWith<$Res> {
+  factory _$$_ApplePaySheetErrorExpiredCouponCodeCopyWith(
+          _$_ApplePaySheetErrorExpiredCouponCode value,
+          $Res Function(_$_ApplePaySheetErrorExpiredCouponCode) then) =
+      __$$_ApplePaySheetErrorExpiredCouponCodeCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? message});
+}
+
+/// @nodoc
+class __$$_ApplePaySheetErrorExpiredCouponCodeCopyWithImpl<$Res>
+    extends _$ApplePaySheetErrorCopyWithImpl<$Res,
+        _$_ApplePaySheetErrorExpiredCouponCode>
+    implements _$$_ApplePaySheetErrorExpiredCouponCodeCopyWith<$Res> {
+  __$$_ApplePaySheetErrorExpiredCouponCodeCopyWithImpl(
+      _$_ApplePaySheetErrorExpiredCouponCode _value,
+      $Res Function(_$_ApplePaySheetErrorExpiredCouponCode) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$_ApplePaySheetErrorExpiredCouponCode(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_ApplePaySheetErrorExpiredCouponCode
+    implements _ApplePaySheetErrorExpiredCouponCode {
+  const _$_ApplePaySheetErrorExpiredCouponCode(
+      {this.message, final String? $type})
+      : $type = $type ?? 'ExpiredCouponCode';
+
+  factory _$_ApplePaySheetErrorExpiredCouponCode.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_ApplePaySheetErrorExpiredCouponCodeFromJson(json);
+
+// message that needs to be displayed on the sheet
+  @override
+  final String? message;
+
+  @JsonKey(name: 'errorType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ApplePaySheetError.expiredCouponCode(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ApplePaySheetErrorExpiredCouponCode &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ApplePaySheetErrorExpiredCouponCodeCopyWith<
+          _$_ApplePaySheetErrorExpiredCouponCode>
+      get copyWith => __$$_ApplePaySheetErrorExpiredCouponCodeCopyWithImpl<
+          _$_ApplePaySheetErrorExpiredCouponCode>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(InvalidShippingField field, String? message)
+        invalidShippingField,
+    required TResult Function(String? message) unserviceableShippingAddress,
+    required TResult Function(String? message) invalidCouponCode,
+    required TResult Function(String? message) expiredCouponCode,
+  }) {
+    return expiredCouponCode(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(InvalidShippingField field, String? message)?
+        invalidShippingField,
+    TResult? Function(String? message)? unserviceableShippingAddress,
+    TResult? Function(String? message)? invalidCouponCode,
+    TResult? Function(String? message)? expiredCouponCode,
+  }) {
+    return expiredCouponCode?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(InvalidShippingField field, String? message)?
+        invalidShippingField,
+    TResult Function(String? message)? unserviceableShippingAddress,
+    TResult Function(String? message)? invalidCouponCode,
+    TResult Function(String? message)? expiredCouponCode,
+    required TResult orElse(),
+  }) {
+    if (expiredCouponCode != null) {
+      return expiredCouponCode(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ApplePaySheetErrorInvalidShipping value)
+        invalidShippingField,
+    required TResult Function(_ApplePaySheetErrorUnserviceableShipping value)
+        unserviceableShippingAddress,
+    required TResult Function(_ApplePaySheetErrorInvalidCouponCode value)
+        invalidCouponCode,
+    required TResult Function(_ApplePaySheetErrorExpiredCouponCode value)
+        expiredCouponCode,
+  }) {
+    return expiredCouponCode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ApplePaySheetErrorInvalidShipping value)?
+        invalidShippingField,
+    TResult? Function(_ApplePaySheetErrorUnserviceableShipping value)?
+        unserviceableShippingAddress,
+    TResult? Function(_ApplePaySheetErrorInvalidCouponCode value)?
+        invalidCouponCode,
+    TResult? Function(_ApplePaySheetErrorExpiredCouponCode value)?
+        expiredCouponCode,
+  }) {
+    return expiredCouponCode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ApplePaySheetErrorInvalidShipping value)?
+        invalidShippingField,
+    TResult Function(_ApplePaySheetErrorUnserviceableShipping value)?
+        unserviceableShippingAddress,
+    TResult Function(_ApplePaySheetErrorInvalidCouponCode value)?
+        invalidCouponCode,
+    TResult Function(_ApplePaySheetErrorExpiredCouponCode value)?
+        expiredCouponCode,
+    required TResult orElse(),
+  }) {
+    if (expiredCouponCode != null) {
+      return expiredCouponCode(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ApplePaySheetErrorExpiredCouponCodeToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ApplePaySheetErrorExpiredCouponCode
+    implements ApplePaySheetError {
+  const factory _ApplePaySheetErrorExpiredCouponCode({final String? message}) =
+      _$_ApplePaySheetErrorExpiredCouponCode;
+
+  factory _ApplePaySheetErrorExpiredCouponCode.fromJson(
+          Map<String, dynamic> json) =
+      _$_ApplePaySheetErrorExpiredCouponCode.fromJson;
+
+  @override // message that needs to be displayed on the sheet
+  String? get message;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ApplePaySheetErrorExpiredCouponCodeCopyWith<
+          _$_ApplePaySheetErrorExpiredCouponCode>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
 /// @nodoc
 mixin _$PlatformPayPaymentMethodParams {
   @optionalTypeArgs
@@ -961,20 +2233,6 @@ mixin _$ApplePayParams {
   /// A list of two-letter ISO 3166 country codes for limiting payment to cards from specific countries or regions.
   List<String>? get supportedCountries => throw _privateConstructorUsedError;
 
-  /// Callback to execute when shipping contact data is set
-  @JsonKey(ignore: true)
-  OnDidSetShippingContact? get onDidSetShippingContact =>
-      throw _privateConstructorUsedError;
-
-  /// Callback to execute when shipping method is set
-  @JsonKey(ignore: true)
-  OnDidSetShippingMethod? get onDidSetShippingMethod =>
-      throw _privateConstructorUsedError;
-
-  /// Callback to execute when couponcode is entered
-  @JsonKey(ignore: true)
-  OnDidSetCoupon? get onDidSetCoupon => throw _privateConstructorUsedError;
-
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ApplePayParamsCopyWith<ApplePayParams> get copyWith =>
@@ -997,10 +2255,7 @@ abstract class $ApplePayParamsCopyWith<$Res> {
       List<ApplePayShippingMethod>? shippingMethods,
       List<ApplePayMerchantCapability>? merchantCapabilities,
       ApplePayShippingType? shippingType,
-      List<String>? supportedCountries,
-      @JsonKey(ignore: true) OnDidSetShippingContact? onDidSetShippingContact,
-      @JsonKey(ignore: true) OnDidSetShippingMethod? onDidSetShippingMethod,
-      @JsonKey(ignore: true) OnDidSetCoupon? onDidSetCoupon});
+      List<String>? supportedCountries});
 }
 
 /// @nodoc
@@ -1026,9 +2281,6 @@ class _$ApplePayParamsCopyWithImpl<$Res, $Val extends ApplePayParams>
     Object? merchantCapabilities = freezed,
     Object? shippingType = freezed,
     Object? supportedCountries = freezed,
-    Object? onDidSetShippingContact = freezed,
-    Object? onDidSetShippingMethod = freezed,
-    Object? onDidSetCoupon = freezed,
   }) {
     return _then(_value.copyWith(
       merchantCountryCode: null == merchantCountryCode
@@ -1071,18 +2323,6 @@ class _$ApplePayParamsCopyWithImpl<$Res, $Val extends ApplePayParams>
           ? _value.supportedCountries
           : supportedCountries // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      onDidSetShippingContact: freezed == onDidSetShippingContact
-          ? _value.onDidSetShippingContact
-          : onDidSetShippingContact // ignore: cast_nullable_to_non_nullable
-              as OnDidSetShippingContact?,
-      onDidSetShippingMethod: freezed == onDidSetShippingMethod
-          ? _value.onDidSetShippingMethod
-          : onDidSetShippingMethod // ignore: cast_nullable_to_non_nullable
-              as OnDidSetShippingMethod?,
-      onDidSetCoupon: freezed == onDidSetCoupon
-          ? _value.onDidSetCoupon
-          : onDidSetCoupon // ignore: cast_nullable_to_non_nullable
-              as OnDidSetCoupon?,
     ) as $Val);
   }
 }
@@ -1105,10 +2345,7 @@ abstract class _$$_ApplePayParamsCopyWith<$Res>
       List<ApplePayShippingMethod>? shippingMethods,
       List<ApplePayMerchantCapability>? merchantCapabilities,
       ApplePayShippingType? shippingType,
-      List<String>? supportedCountries,
-      @JsonKey(ignore: true) OnDidSetShippingContact? onDidSetShippingContact,
-      @JsonKey(ignore: true) OnDidSetShippingMethod? onDidSetShippingMethod,
-      @JsonKey(ignore: true) OnDidSetCoupon? onDidSetCoupon});
+      List<String>? supportedCountries});
 }
 
 /// @nodoc
@@ -1132,9 +2369,6 @@ class __$$_ApplePayParamsCopyWithImpl<$Res>
     Object? merchantCapabilities = freezed,
     Object? shippingType = freezed,
     Object? supportedCountries = freezed,
-    Object? onDidSetShippingContact = freezed,
-    Object? onDidSetShippingMethod = freezed,
-    Object? onDidSetCoupon = freezed,
   }) {
     return _then(_$_ApplePayParams(
       merchantCountryCode: null == merchantCountryCode
@@ -1177,18 +2411,6 @@ class __$$_ApplePayParamsCopyWithImpl<$Res>
           ? _value._supportedCountries
           : supportedCountries // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      onDidSetShippingContact: freezed == onDidSetShippingContact
-          ? _value.onDidSetShippingContact
-          : onDidSetShippingContact // ignore: cast_nullable_to_non_nullable
-              as OnDidSetShippingContact?,
-      onDidSetShippingMethod: freezed == onDidSetShippingMethod
-          ? _value.onDidSetShippingMethod
-          : onDidSetShippingMethod // ignore: cast_nullable_to_non_nullable
-              as OnDidSetShippingMethod?,
-      onDidSetCoupon: freezed == onDidSetCoupon
-          ? _value.onDidSetCoupon
-          : onDidSetCoupon // ignore: cast_nullable_to_non_nullable
-              as OnDidSetCoupon?,
     ));
   }
 }
@@ -1207,10 +2429,7 @@ class _$_ApplePayParams implements _ApplePayParams {
       final List<ApplePayShippingMethod>? shippingMethods,
       final List<ApplePayMerchantCapability>? merchantCapabilities,
       this.shippingType,
-      final List<String>? supportedCountries,
-      @JsonKey(ignore: true) this.onDidSetShippingContact,
-      @JsonKey(ignore: true) this.onDidSetShippingMethod,
-      @JsonKey(ignore: true) this.onDidSetCoupon})
+      final List<String>? supportedCountries})
       : _additionalEnabledNetworks = additionalEnabledNetworks,
         _cartItems = cartItems,
         _requiredShippingAddressFields = requiredShippingAddressFields,
@@ -1328,24 +2547,9 @@ class _$_ApplePayParams implements _ApplePayParams {
     return EqualUnmodifiableListView(value);
   }
 
-  /// Callback to execute when shipping contact data is set
-  @override
-  @JsonKey(ignore: true)
-  final OnDidSetShippingContact? onDidSetShippingContact;
-
-  /// Callback to execute when shipping method is set
-  @override
-  @JsonKey(ignore: true)
-  final OnDidSetShippingMethod? onDidSetShippingMethod;
-
-  /// Callback to execute when couponcode is entered
-  @override
-  @JsonKey(ignore: true)
-  final OnDidSetCoupon? onDidSetCoupon;
-
   @override
   String toString() {
-    return 'ApplePayParams(merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, additionalEnabledNetworks: $additionalEnabledNetworks, cartItems: $cartItems, requiredShippingAddressFields: $requiredShippingAddressFields, requiredBillingContactFields: $requiredBillingContactFields, shippingMethods: $shippingMethods, merchantCapabilities: $merchantCapabilities, shippingType: $shippingType, supportedCountries: $supportedCountries, onDidSetShippingContact: $onDidSetShippingContact, onDidSetShippingMethod: $onDidSetShippingMethod, onDidSetCoupon: $onDidSetCoupon)';
+    return 'ApplePayParams(merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, additionalEnabledNetworks: $additionalEnabledNetworks, cartItems: $cartItems, requiredShippingAddressFields: $requiredShippingAddressFields, requiredBillingContactFields: $requiredBillingContactFields, shippingMethods: $shippingMethods, merchantCapabilities: $merchantCapabilities, shippingType: $shippingType, supportedCountries: $supportedCountries)';
   }
 
   @override
@@ -1374,14 +2578,7 @@ class _$_ApplePayParams implements _ApplePayParams {
             (identical(other.shippingType, shippingType) ||
                 other.shippingType == shippingType) &&
             const DeepCollectionEquality()
-                .equals(other._supportedCountries, _supportedCountries) &&
-            (identical(
-                    other.onDidSetShippingContact, onDidSetShippingContact) ||
-                other.onDidSetShippingContact == onDidSetShippingContact) &&
-            (identical(other.onDidSetShippingMethod, onDidSetShippingMethod) ||
-                other.onDidSetShippingMethod == onDidSetShippingMethod) &&
-            (identical(other.onDidSetCoupon, onDidSetCoupon) ||
-                other.onDidSetCoupon == onDidSetCoupon));
+                .equals(other._supportedCountries, _supportedCountries));
   }
 
   @JsonKey(ignore: true)
@@ -1397,10 +2594,7 @@ class _$_ApplePayParams implements _ApplePayParams {
       const DeepCollectionEquality().hash(_shippingMethods),
       const DeepCollectionEquality().hash(_merchantCapabilities),
       shippingType,
-      const DeepCollectionEquality().hash(_supportedCountries),
-      onDidSetShippingContact,
-      onDidSetShippingMethod,
-      onDidSetCoupon);
+      const DeepCollectionEquality().hash(_supportedCountries));
 
   @JsonKey(ignore: true)
   @override
@@ -1427,13 +2621,7 @@ abstract class _ApplePayParams implements ApplePayParams {
       final List<ApplePayShippingMethod>? shippingMethods,
       final List<ApplePayMerchantCapability>? merchantCapabilities,
       final ApplePayShippingType? shippingType,
-      final List<String>? supportedCountries,
-      @JsonKey(ignore: true)
-          final OnDidSetShippingContact? onDidSetShippingContact,
-      @JsonKey(ignore: true)
-          final OnDidSetShippingMethod? onDidSetShippingMethod,
-      @JsonKey(ignore: true)
-          final OnDidSetCoupon? onDidSetCoupon}) = _$_ApplePayParams;
+      final List<String>? supportedCountries}) = _$_ApplePayParams;
 
   factory _ApplePayParams.fromJson(Map<String, dynamic> json) =
       _$_ApplePayParams.fromJson;
@@ -1478,21 +2666,6 @@ abstract class _ApplePayParams implements ApplePayParams {
 
   /// A list of two-letter ISO 3166 country codes for limiting payment to cards from specific countries or regions.
   List<String>? get supportedCountries;
-  @override
-
-  /// Callback to execute when shipping contact data is set
-  @JsonKey(ignore: true)
-  OnDidSetShippingContact? get onDidSetShippingContact;
-  @override
-
-  /// Callback to execute when shipping method is set
-  @JsonKey(ignore: true)
-  OnDidSetShippingMethod? get onDidSetShippingMethod;
-  @override
-
-  /// Callback to execute when couponcode is entered
-  @JsonKey(ignore: true)
-  OnDidSetCoupon? get onDidSetCoupon;
   @override
   @JsonKey(ignore: true)
   _$$_ApplePayParamsCopyWith<_$_ApplePayParams> get copyWith =>

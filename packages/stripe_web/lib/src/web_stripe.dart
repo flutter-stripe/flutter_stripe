@@ -416,6 +416,12 @@ class WebStripe extends StripePlatform {
       {required PlatformPayPaymentMethodParams params}) {
     throw WebUnsupportedError.method('platformPayCreatePaymentMethod');
   }
+
+  @override
+  Future<void> updatePlatformSheet(
+      {required PlatformPaySheetUpdateParams params}) {
+    throw WebUnsupportedError.method('updatePlatformSheet');
+  }
 }
 
 class WebUnsupportedError extends Error implements UnsupportedError {

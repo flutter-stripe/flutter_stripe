@@ -9,8 +9,84 @@ part 'platform_pay.freezed.dart';
 part 'platform_pay.g.dart';
 
 @freezed
+
+///Parameters related to updating the platform pay sheet
+///
+/// At this moment only Apple pay is supported
+class PlatformPaySheetUpdateParams with _$PlatformPaySheetUpdateParams {
+  @JsonSerializable(explicitToJson: true)
+  const factory PlatformPaySheetUpdateParams.applePay({
+    /// list of updated summary items
+    required List<ApplePayCartSummaryItem> summaryItems,
+
+    /// list of updated shipping methods
+    required List<ApplePayShippingMethod> shippingMethods,
+
+    /// In case user input is wrong use this to display the errors in the apple pay sheet.
+    List<ApplePaySheetError>? errors,
+  }) = _PlatformPaySheetUpdateParams;
+
+  factory PlatformPaySheetUpdateParams.fromJson(Map<String, dynamic> json) =>
+      _$PlatformPaySheetUpdateParamsFromJson(json);
+}
+
+@Freezed(unionKey: 'errorType')
+class ApplePaySheetError with _$ApplePaySheetError {
+  @FreezedUnionValue('InvalidShippingAddress')
+  @JsonSerializable(explicitToJson: true)
+
+  /// Use this in case the shipping address is invalid
+  const factory ApplePaySheetError.invalidShippingField(
+      {
+      // Field that will be marked as invalid
+      required InvalidShippingField field,
+      // message that needs to be displayed on the sheet
+      String? message}) = _ApplePaySheetErrorInvalidShipping;
+
+  @FreezedUnionValue('UnserviceableShippingAddress')
+  @JsonSerializable(explicitToJson: true)
+
+  /// Use this in case you cannot deliver to the shipping address
+  const factory ApplePaySheetError.unserviceableShippingAddress(
+      {
+      // message that needs to be displayed on the sheet
+      String? message}) = _ApplePaySheetErrorUnserviceableShipping;
+
+  @FreezedUnionValue('InvalidCouponCode')
+
+  /// Use this in case the entered coupon code is wrong
+  const factory ApplePaySheetError.invalidCouponCode(
+      {
+      // message that needs to be displayed on the sheet
+      String? message}) = _ApplePaySheetErrorInvalidCouponCode;
+
+  @FreezedUnionValue('ExpiredCouponCode')
+  @JsonSerializable(explicitToJson: true)
+
+  /// Use this in case the entered coupon code has expired
+  const factory ApplePaySheetError.expiredCouponCode(
+      {
+      // message that needs to be displayed on the sheet
+      String? message}) = _ApplePaySheetErrorExpiredCouponCode;
+
+  factory ApplePaySheetError.fromJson(Map<String, dynamic> json) =>
+      _$ApplePaySheetErrorFromJson(json);
+}
+
+// Field that needs to be marked invalid in the apple pay field
+enum InvalidShippingField {
+  Street,
+  City,
+  SubAdministrativeArea,
+  State,
+  PostalCode,
+  Country,
+  CountryCode,
+  SubLocality,
+}
+
+@freezed
 class PlatformPayPaymentMethodParams with _$PlatformPayPaymentMethodParams {
-   
   @JsonSerializable(explicitToJson: true)
   const factory PlatformPayPaymentMethodParams.googlePay({
     required GooglePayParams googlePayParams,
@@ -73,18 +149,6 @@ class ApplePayParams with _$ApplePayParams {
 
     /// A list of two-letter ISO 3166 country codes for limiting payment to cards from specific countries or regions.
     List<String>? supportedCountries,
-
-    /// Callback to execute when shipping contact data is set
-    @JsonKey(ignore: true)
-     OnDidSetShippingContact? onDidSetShippingContact,
-
-    /// Callback to execute when shipping method is set 
-    @JsonKey(ignore: true)
-    OnDidSetShippingMethod? onDidSetShippingMethod,
-
-    /// Callback to execute when couponcode is entered
-    @JsonKey(ignore: true)
-    OnDidSetCoupon? onDidSetCoupon,
   }) = _ApplePayParams;
 
   factory ApplePayParams.fromJson(Map<String, dynamic> json) =>
