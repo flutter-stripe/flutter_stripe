@@ -36,10 +36,8 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
         registrar.register(auebecsFormFactory, withId: "flutter.stripe/aubecs_form_field")
         
         // Apple Pay Button
-        let applePayFactory = ApplePayButtonViewFactory(messenger: registrar.messenger())
+        let applePayFactory = ApplePayButtonViewFactory(messenger: registrar.messenger(),stripeSdk: instance)
         registrar.register(applePayFactory, withId: "flutter.stripe/apple_pay")
-        
-    
     }
     
     init(channel : FlutterMethodChannel) {

@@ -10,9 +10,11 @@ import UIKit
 
 class ApplePayButtonViewFactory: NSObject, FlutterPlatformViewFactory {
     private var messenger: FlutterBinaryMessenger
+    private var stripeSdk: StripeSdk
     
-    init(messenger: FlutterBinaryMessenger) {
+    init(messenger: FlutterBinaryMessenger, stripeSdk: StripeSdk) {
         self.messenger = messenger
+        self.stripeSdk = stripeSdk
         super.init()
     }
 
@@ -21,12 +23,18 @@ class ApplePayButtonViewFactory: NSObject, FlutterPlatformViewFactory {
         viewIdentifier viewId: Int64,
         arguments args: Any?
     ) -> FlutterPlatformView {
-        return ApplePayButtonView(
+        let applePayButton = ApplePayButtonView(
             frame: frame,
             viewIdentifier: viewId,
             arguments: args,
             binaryMessenger: messenger)
+        
+        applePayButton.stripeSdk = stripeSdk
+        
+        return applePayButton
     }
+    
+  
     
     func createArgsCodec() -> FlutterMessageCodec & NSObjectProtocol {
        return FlutterStandardMessageCodec.sharedInstance()
@@ -66,6 +74,7 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
             stripeSdk?.shippingContactUpdateJSCallback = doesNothing
             stripeSdk?.couponCodeEnteredJSCallback = doesNothing
         } else {
+            channel.invokeMethod("onPressed", arguments:nil)
             stripeSdk?.shippingMethodUpdateJSCallback = onShippingMethodSelectedAction
             stripeSdk?.shippingContactUpdateJSCallback = onShippingContactSelectedAction
             stripeSdk?.couponCodeEnteredJSCallback = onCouponCodeEnteredAction
@@ -82,6 +91,9 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
                                            binaryMessenger: messenger)
         _view = UIView()
         super.init()
+        onShippingContactSelectedAction = onShippingContactSelected
+        onShippingMethodSelectedAction = onShippingMethodSelected
+        onCouponCodeEnteredAction = onCouponCodeEntered
         if  let arguments = args as? Dictionary<String, AnyObject> {
             type = arguments["type"] as? NSNumber
             buttonStyle = arguments["buttonStyle"] as? NSNumber
@@ -90,6 +102,19 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
         // iOS views can be created here
         createApplePayView()
         channel.setMethodCallHandler(handle)
+    }
+    
+    
+    func onShippingContactSelected(_ arguments: Dictionary<AnyHashable, Any>?) {
+        channel.invokeMethod("onShippingContactSelected", arguments: arguments!)
+    }
+    
+    func onShippingMethodSelected(_ arguments: Dictionary<AnyHashable, Any>?) {
+        channel.invokeMethod("onShippingMethodSelected", arguments: arguments!)
+    }
+    
+    func onCouponCodeEntered(_ arguments: Dictionary<AnyHashable, Any>?) {
+        channel.invokeMethod("onCouponCodeEntered", arguments: arguments!)
     }
     
     
