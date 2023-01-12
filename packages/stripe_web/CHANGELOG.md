@@ -1,3 +1,7 @@
+## 2.1.1
+
+ - Bump "flutter_stripe_web" to `2.1.1`.
+
 ## 2.1.0+1
 
  - **FIX**: payment intent error in web (#1010).
