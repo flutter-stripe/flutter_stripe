@@ -189,6 +189,7 @@ If you continue to have trouble, follow this discussion to get some support http
             )
             "createPlatformPayPaymentMethod" -> stripeSdk.createPlatformPayPaymentMethod(
                 params = call.requiredArgument("params"),
+                usesDeprecatedTokenFlow = call.requiredArgument("usesDeprecatedTokenFlow"),
                 promise = Promise(result)
             )
             "isPlatformPaySupported" -> stripeSdk.isPlatformPaySupported(

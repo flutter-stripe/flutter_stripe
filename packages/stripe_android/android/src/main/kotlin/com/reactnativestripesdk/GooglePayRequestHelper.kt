@@ -52,11 +52,11 @@ class GooglePayRequestHelper {
       val isPhoneNumberRequired = params?.getBooleanOr("isPhoneNumberRequired", false)
       val isRequired = params?.getBooleanOr("isRequired", false)
       val allowedCountryCodes = if (params?.hasKey("allowedCountryCodes") == true)
-        params.getArray("allowedCountryCodes") as Array<String> else Locale.getISOCountries()
+        params.getArray("allowedCountryCodes")?.toArrayList()?.toSet() as? Set<String> else null
 
       return GooglePayJsonFactory.ShippingAddressParameters(
         isRequired = isRequired ?: false,
-        allowedCountryCodes = allowedCountryCodes.toSet(),
+        allowedCountryCodes = allowedCountryCodes ?: Locale.getISOCountries().toSet(),
         phoneNumberRequired = isPhoneNumberRequired ?: false
       )
     }
@@ -99,12 +99,16 @@ class GooglePayRequestHelper {
       )
     }
 
-    internal fun handleGooglePaymentMethodResult(resultCode: Int, data: Intent?, stripe: Stripe, promise: Promise) {
+    internal fun handleGooglePaymentMethodResult(resultCode: Int, data: Intent?, stripe: Stripe, forToken: Boolean, promise: Promise) {
       when (resultCode) {
         Activity.RESULT_OK -> {
           data?.let { intent ->
             PaymentData.getFromIntent(intent)?.let {
-              resolveWithPaymentMethodAndToken(it, stripe, promise)
+              if (forToken) {
+                resolveWithToken(it, promise)
+              } else {
+                resolveWithPaymentMethod(it, stripe, promise)
+              }
             }
           }
         }
@@ -119,13 +123,9 @@ class GooglePayRequestHelper {
       }
     }
 
-    private fun resolveWithPaymentMethodAndToken(paymentData: PaymentData, stripe: Stripe, promise: Promise) {
+    private fun resolveWithPaymentMethod(paymentData: PaymentData, stripe: Stripe, promise: Promise) {
       val paymentInformation = JSONObject(paymentData.toJson())
-      val googlePayResult = GooglePayResult.fromJson(paymentInformation)
       val promiseResult = WritableNativeMap()
-      googlePayResult.token?.let {
-        promiseResult.putMap("token", mapFromToken(it))
-      }
       stripe.createPaymentMethod(
         PaymentMethodCreateParams.createFromGooglePay(paymentInformation),
         callback = object : ApiResultCallback<PaymentMethod> {
@@ -139,6 +139,18 @@ class GooglePayRequestHelper {
           }
         }
       )
+    }
+
+    private fun resolveWithToken(paymentData: PaymentData, promise: Promise) {
+      val paymentInformation = JSONObject(paymentData.toJson())
+      val googlePayResult = GooglePayResult.fromJson(paymentInformation)
+      val promiseResult = WritableNativeMap()
+      googlePayResult.token?.let {
+        promiseResult.putMap("token", mapFromToken(it))
+        promise.resolve(promiseResult)
+      } ?: run {
+        promise.resolve(createError("Failed", "Unexpected response from Google Pay. No token was found."))
+      }
     }
   }
 }
