@@ -29,6 +29,7 @@ class StripeSdk: RCTEventEmitter, STPBankSelectionViewControllerDelegate, UIAdap
     
     var applePaymentAuthorizationController: PKPaymentAuthorizationViewController? = nil
     var createPlatformPayPaymentMethodResolver: RCTPromiseResolveBlock? = nil
+    var platformPayUsesDeprecatedTokenFlow = false
     var applePaymentMethodFlowCanBeCanceled = false
     
     var confirmPaymentClientSecret: String? = nil
@@ -93,10 +94,10 @@ class StripeSdk: RCTEventEmitter, STPBankSelectionViewControllerDelegate, UIAdap
         StripeAPI.defaultPublishableKey = publishableKey
         STPAPIClient.shared.stripeAccount = stripeAccountId
 
-        let name = RCTConvert.nsString(appInfo["name"]) ?? ""
-        let partnerId = RCTConvert.nsString(appInfo["partnerId"]) ?? ""
-        let version = RCTConvert.nsString(appInfo["version"]) ?? ""
-        let url = RCTConvert.nsString(appInfo["url"]) ?? ""
+        let name = appInfo["name"] as? String ?? ""
+        let partnerId = appInfo["partnerId"] as? String ?? ""
+        let version = appInfo["version"] as? String ?? ""
+        let url = appInfo["url"] as? String ?? ""
 
         STPAPIClient.shared.appInfo = STPAppInfo(name: name, partnerId: partnerId, version: version, url: url)
         self.merchantIdentifier = merchantIdentifier
@@ -536,8 +537,9 @@ class StripeSdk: RCTEventEmitter, STPBankSelectionViewControllerDelegate, UIAdap
         resolve(StripeAPI.deviceSupportsApplePay())
     }
     
-    @objc(createPlatformPayPaymentMethod:resolver:rejecter:)
+    @objc(createPlatformPayPaymentMethod:usesDeprecatedTokenFlow:resolver:rejecter:)
     func createPlatformPayPaymentMethod(params: NSDictionary,
+                                        usesDeprecatedTokenFlow: Bool,
                                           resolver resolve: @escaping RCTPromiseResolveBlock,
                                           rejecter reject: @escaping RCTPromiseRejectBlock) {
         guard let applePayPatams = params["applePay"] as? NSDictionary else {
@@ -554,6 +556,7 @@ class StripeSdk: RCTEventEmitter, STPBankSelectionViewControllerDelegate, UIAdap
         self.applePayShippingMethods = paymentRequest.shippingMethods ?? []
         self.applePayShippingAddressErrors = nil
         self.applePayCouponCodeErrors = nil
+        platformPayUsesDeprecatedTokenFlow = usesDeprecatedTokenFlow
         applePaymentMethodFlowCanBeCanceled = true
         createPlatformPayPaymentMethodResolver = resolve
         self.applePaymentAuthorizationController = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest)
