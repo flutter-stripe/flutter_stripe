@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
@@ -56,8 +55,7 @@ class SofortScreen extends StatelessWidget {
       if (e is StripeException) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(
-                'Error from Stripe: ${e.error.localizedMessage ?? e.error.code}'),
+            content: Text('Error from Stripe: ${e.error.localizedMessage ?? e.error.code}'),
           ),
         );
       } else {
