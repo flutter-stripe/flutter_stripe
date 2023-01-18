@@ -94,7 +94,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
           customerId: data['customer'],
           customerEphemeralKeySecret: data['ephemeralKey'],
           // Extra params
-          primaryButtonLabel: 'Pay now',
+          //primaryButtonLabel: 'Pay now',
           applePay: PaymentSheetApplePay(
             merchantCountryCode: 'DE',
           ),
