@@ -514,6 +514,7 @@ class MethodChannelStripe extends StripePlatform {
   @override
   Future<PaymentMethod> platformPayCreatePaymentMethod({
     required PlatformPayPaymentMethodParams params,
+    bool usesDeprecatedTokenFlow = false,
   }) async {
     var data = <String, dynamic>{};
     if (params is PlatformPayPaymentMethodParamsApplePay) {
@@ -535,6 +536,7 @@ class MethodChannelStripe extends StripePlatform {
     final result = await _methodChannel
         .invokeMapMethod<String, dynamic>('createPlatformPayPaymentMethod', {
       'params': data,
+      'usesDeprecatedTokenFlow': usesDeprecatedTokenFlow,
     });
 
     return ResultParser<PaymentMethod>(

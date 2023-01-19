@@ -165,10 +165,12 @@ class Stripe {
   /// in order to create a payment intent
   ///
   /// Argument [params] is describing the the Apple Pay or Google pay configuration.
+  /// Creating payment method does not return a token by default. Use `usesDeprecatedTokenFlow` instead.
   ///
   /// throws [StripeError] in case creating payment method is failing.
   Future<PaymentMethod> createPlatformPayPaymentMethod({
     required PlatformPayPaymentMethodParams params,
+    bool usesDeprecatedTokenFlow = false,
   }) async {
     try {
       await _awaitForSettings();

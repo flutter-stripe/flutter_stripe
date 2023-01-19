@@ -81,7 +81,7 @@ class _GooglePayScreenState extends State<GooglePayScreen> {
       final token =
           paymentResult['paymentMethodData']['tokenizationData']['token'];
       final tokenJson = Map.castFrom(json.decode(token));
-      print(tokenJson);
+      debugPrint(tokenJson.toString());
 
       final params = PaymentMethodParams.cardFromToken(
         paymentMethodData: PaymentMethodDataCardFromToken(

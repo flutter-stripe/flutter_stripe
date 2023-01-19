@@ -61,20 +61,28 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
         if (Stripe.instance.isPlatformPaySupportedListenable.value)
           PlatformPayButton(
             onDidSetShippingContact: (contact) {
-              print('Shipping contact updated $contact');
+              debugPrint('Shipping contact updated $contact');
 
               // Mandatory after entering a shipping contact
               Stripe.instance.updatePlatformSheet(
                 params: PlatformPaySheetUpdateParams.applePay(
                   summaryItems: items,
                   shippingMethods: shippingMethods,
+                  errors: [],
                 ),
               );
             },
-            // },
-            // onDidSetShippingMethod: (method) {
-            //   print('Shipping method updated $method');
-            // },
+            onShippingMethodSelected: (method) {
+              debugPrint('Shipping contact updated $method');
+
+              Stripe.instance.updatePlatformSheet(
+                params: PlatformPaySheetUpdateParams.applePay(
+                  summaryItems: items,
+                  shippingMethods: shippingMethods,
+                  errors: [],
+                ),
+              );
+            },
             type: PlatformButtonType.buy,
             appearance: PlatformButtonStyle.whiteOutline,
             onPressed: () => _handlePayPress(
@@ -104,7 +112,10 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
           applePay: ApplePayParams(
             cartItems: items,
             requiredShippingAddressFields: [
+              ApplePayContactFieldsType.name,
               ApplePayContactFieldsType.postalAddress,
+              ApplePayContactFieldsType.emailAddress,
+              ApplePayContactFieldsType.phoneNumber,
             ],
             shippingMethods: shippingMethods,
             merchantCountryCode: 'Es',
