@@ -33,7 +33,7 @@ class _ApplePayScreenState extends State<ApplePayCreatePaymentMethodScreen> {
       padding: EdgeInsets.all(16),
       children: [
         if (Stripe.instance.isPlatformPaySupportedListenable.value)
-          ApplePayButton(
+          PlatformPayButton(
             onPressed: _handlePayPress,
           )
         else

@@ -17,6 +17,7 @@
         ],
         ["Financial connections", "/financial_connections" ],
         ["Troubleshooting", "/troubleshooting"],
+        ["Migration guide platformpay", "/platform_pay_migration"],
         ["Api Reference", "https://pub.dev/documentation/flutter_stripe/latest/flutter_stripe/flutter_stripe-library.html"]
       ]
 }

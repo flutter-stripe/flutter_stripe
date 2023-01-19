@@ -92,8 +92,8 @@ class _GooglePayStripeScreenState extends State<GooglePayStripeScreen> {
         if (defaultTargetPlatform == TargetPlatform.android)
           SizedBox(
             height: 75,
-            child: GooglePayButton(
-              onTap: () {
+            child: PlatformPayButton(
+              onPressed: () {
                 startGooglePay();
               },
             ),
