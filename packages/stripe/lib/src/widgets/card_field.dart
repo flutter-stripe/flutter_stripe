@@ -565,9 +565,15 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
   @override
   void dangerouslyUpdateCardDetails(CardFieldInputDetails details) {
     assert(widget.dangerouslyUpdateFullCardDetails, kDebugPCIMessage);
-    _methodChannel?.invokeMethod('dangerouslyUpdateCardDetails', {
-      'cardDetails': details.toJson(),
-    });
+
+    Stripe.instance.dangerouslyUpdateCardDetails(
+      CardDetails(
+        number: details.number,
+        cvc: details.cvc,
+        expirationMonth: details.expiryMonth,
+        expirationYear: details.expiryYear,
+      ),
+    );
   }
 }
 
