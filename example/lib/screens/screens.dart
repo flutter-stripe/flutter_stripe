@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stripe_example/screens/checkout/checkout_screen.dart';
+import 'package:stripe_example/screens/payment_sheet/payment_element/payment_element.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen_custom_flow.dart';
 import 'package:stripe_example/screens/regional_payment_methods/ali_pay_screen.dart';
@@ -8,13 +9,13 @@ import 'package:stripe_example/screens/regional_payment_methods/fpx_screen.dart'
 import 'package:stripe_example/screens/regional_payment_methods/ideal_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/klarna_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/paypal_screen.dart';
+import 'package:stripe_example/screens/regional_payment_methods/sofort_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/us_bank_account.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen_plugin.dart';
 import 'package:stripe_example/screens/wallets/google_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/google_pay_stripe_screen.dart';
 import 'package:stripe_example/screens/wallets/open_apple_pay_setup_screen.dart';
-import 'package:stripe_example/screens/payment_sheet/payment_element/payment_element.dart';
 import 'package:stripe_example/widgets/platform_icons.dart';
 
 import 'card_payments/custom_card_payment_screen.dart';
@@ -207,6 +208,12 @@ class Example extends StatelessWidget {
           width: 48,
         ),
         builder: (context) => IdealScreen(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+      ),
+      Example(
+        title: 'Sofort',
+        leading: SizedBox(),
+        builder: (context) => SofortScreen(),
         platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
       Example(
