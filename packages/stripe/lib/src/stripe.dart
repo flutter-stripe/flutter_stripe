@@ -287,13 +287,12 @@ class Stripe {
   /// several seconds and it is important to not resubmit the form.
   ///
   /// Throws a [StripeException] when confirming the handle card action fails.
-  Future<PaymentIntent> handleNextAction(
-    String paymentIntentClientSecret,
-  ) async {
+  Future<PaymentIntent> handleNextAction(String paymentIntentClientSecret,
+      {String? returnURL}) async {
     await _awaitForSettings();
     try {
-      final paymentIntent =
-          await _platform.handleNextAction(paymentIntentClientSecret);
+      final paymentIntent = await _platform
+          .handleNextAction(paymentIntentClientSecret, returnURL: returnURL);
       return paymentIntent;
     } on StripeError {
       //throw StripeError<CardActionError>(error.code, error.message);

@@ -288,6 +288,7 @@ app.post(
         const params: Stripe.PaymentIntentCreateParams = {
           amount: orderAmount,
           confirm: true,
+          return_url: 'flutterstripe://redirect',
           confirmation_method: 'manual',
           currency,
           payment_method: paymentMethods.data[0].id,
@@ -306,6 +307,7 @@ app.post(
         const params: Stripe.PaymentIntentCreateParams = {
           amount: orderAmount,
           confirm: true,
+          return_url: 'flutterstripe://redirect',
           confirmation_method: 'manual',
           currency,
           payment_method: paymentMethodId,
