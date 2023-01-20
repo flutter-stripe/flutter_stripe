@@ -34,6 +34,7 @@ await Stripe.instance.confirmPayment(
 		),
 	),	
 );
+```
 
 Now
 
