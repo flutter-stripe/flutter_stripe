@@ -135,8 +135,10 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
       if (paymentIntentResult['clientSecret'] != null &&
           paymentIntentResult['requiresAction'] == true) {
         // 4. if payment requires action calling handleNextAction
-        final paymentIntent = await Stripe.instance
-            .handleNextAction(paymentIntentResult['clientSecret']);
+        final paymentIntent = await Stripe.instance.handleNextAction(
+          paymentIntentResult['clientSecret'],
+          returnURL: 'flutterstripe://redirect',
+        );
 
         // todo handle error
         /*if (cardActionError) {

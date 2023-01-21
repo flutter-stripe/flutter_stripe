@@ -21,6 +21,7 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
         
         let instance = StripePlugin(channel: channel)
         registrar.addMethodCallDelegate(instance, channel: channel)
+        registrar.addApplicationDelegate(instance)
         
         // Card Field
         let cardFieldFactory = CardFieldViewFactory(messenger: registrar.messenger(), delegate:instance)
@@ -132,6 +133,20 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
     override
     func sendEvent(withName name: String, body: [String:  Any]) {
         channel.invokeMethod(name, arguments: body)
+    }
+    
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return StripeAPI.handleURLCallback(with: url)
+    }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]) -> Void) -> Bool {
+        
+        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
+            if let url = userActivity.webpageURL {
+                return StripeAPI.handleURLCallback(with: url)
+            }
+        }
+        return false
     }
 }
 
