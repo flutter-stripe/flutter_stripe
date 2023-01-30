@@ -1,0 +1,33 @@
+---
+title: Platform pay migration guide
+description: Migration guide to platform pay when upgrading to release >v.8.0
+---
+
+# `isApplePaySupported` and `isGooglePaySupported`
+
+`isApplePaySupported` and `isGooglePaySupported` have both been replaced by `isPlatformPaySupported`.
+
+`isPlatformPaySupported` requires no parameters, but you _can_ optionally pass in the same parameters in the old method.
+
+```diff
+- isGooglePaySupported(myParams);
++ isPlatformPaySupported({googlePay: myParams});
+```
+
+# `presentApplePay`, `confirmApplePayPayment`, `initGooglePay`, `presentGooglePay`, and `createGooglePayPaymentMethod`
+
+`presentApplePay`, `confirmApplePayPayment`, `isGooglePaySupported`, `presentGooglePay`, and `createGooglePayPaymentMethod` have been replaced with:
+
+- `confirmPlatformPaySetupIntent` if you use platform pay to confirm setupintent.
+- `confirmPlatformPayPayment` if you use platform pay to confirm payment intent
+- `createPlatformPayPaymentMethod` if you were use platformpay to create a payment method (this was not possible previously with Apple Pay).
+
+# `updateApplePaySummaryItems`
+
+`updateApplePaySummaryItems` has been replaced with `updatePlatformPaySheet`.
+
+`updatePlatformPaySheet` accepts an parameter `applePay`. When using this, you can pass an object containing your `summaryItems`, `shippingMethods`, and `errors` to be displayed in the Apple Pay sheet to your customer.
+
+# `<GooglePayButton />` and `<ApplePayButton />`
+
+The `GooglePayButton` and `ApplePayButton` components have been replaced with `PlatformPayButton`.

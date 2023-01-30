@@ -48,6 +48,8 @@ abstract class StripePlatform extends PlatformInterface {
     /// Paymentmethod options
     PaymentMethodOptions? options,
   );
+
+  @Deprecated('This method is deprecated use [isPlatformPaySupported] instead')
   Future<bool> isApplePaySupported() async => false;
 
   /// Configure the payment sheet using [SetupPaymentSheetParameters] as config.
@@ -79,11 +81,39 @@ abstract class StripePlatform extends PlatformInterface {
 
   Future<void> initGooglePay(GooglePayInitParams params);
   Future<void> presentGooglePay(PresentGooglePayParams params);
+
+  @Deprecated('This method is deprecated use [isPlatformPaySupported] instead')
   Future<bool> googlePayIsSupported(IsGooglePaySupportedParams params);
   Future<PaymentMethod> createGooglePayPaymentMethod(
       CreateGooglePayPaymentParams params);
 
   Future<AddToWalletResult> canAddToWallet(String last4);
+
+  /// Check if either google pay or apple pay  is supported on device.
+  Future<bool> isPlatformPaySupported({
+    IsGooglePaySupportedParams? params,
+  });
+
+  /// Start native Payment sheet to confirm setup intent
+  Future<SetupIntent> platformPayConfirmSetupIntent({
+    required String clientSecret,
+    required PlatformPayConfirmParams params,
+  });
+
+  /// Start native Payment sheet to confirm payment intent
+  Future<PaymentIntent> platformPayConfirmPaymentIntent({
+    required String clientSecret,
+    required PlatformPayConfirmParams params,
+  });
+
+  /// Use native payment sheet to create payment method
+  Future<PaymentMethod> platformPayCreatePaymentMethod({
+    required PlatformPayPaymentMethodParams params,
+    bool usesDeprecatedTokenFlow = false,
+  });
+
+  Future<void> updatePlatformSheet(
+      {required PlatformPaySheetUpdateParams params});
 
   /// Creates a token for card details.
   ///

@@ -5,6 +5,7 @@ import 'package:stripe_platform_interface/src/models/ach_params.dart';
 import 'package:stripe_platform_interface/src/models/create_token_data.dart';
 import 'package:stripe_platform_interface/src/models/financial_connections.dart';
 import 'package:stripe_platform_interface/src/models/google_pay.dart';
+import 'package:stripe_platform_interface/src/models/platform_pay.dart';
 import 'package:stripe_platform_interface/src/models/wallet.dart';
 import 'package:stripe_platform_interface/src/result_parser.dart';
 
@@ -358,6 +359,56 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
+  Future<bool> isPlatformPaySupported({
+    IsGooglePaySupportedParams? params,
+  }) async {
+    bool? isSupported;
+    if (params == null) {
+      isSupported =
+          await _methodChannel.invokeMethod('isPlatformPaySupported', {
+        'params': {},
+      });
+    } else {
+      isSupported = await _methodChannel
+          .invokeMethod('isPlatformPaySupported', {'params': params.toJson()});
+    }
+
+    return isSupported ?? false;
+  }
+
+  @override
+  Future<SetupIntent> platformPayConfirmSetupIntent({
+    required String clientSecret,
+    required PlatformPayConfirmParams params,
+  }) async {
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('confirmPlatformPay', {
+      'clientSecret': clientSecret,
+      'params': params.toJson(),
+      'isPaymentIntent': false,
+    });
+    return ResultParser<SetupIntent>(
+      parseJson: (json) => SetupIntent.fromJson(json),
+    ).parse(result: result!, successResultKey: 'setupIntent');
+  }
+
+  @override
+  Future<PaymentIntent> platformPayConfirmPaymentIntent({
+    required String clientSecret,
+    required PlatformPayConfirmParams params,
+  }) async {
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('confirmPlatformPay', {
+      'clientSecret': clientSecret,
+      'params': params.toJson(),
+      'isPaymentIntent': true,
+    });
+    return ResultParser<PaymentIntent>(
+      parseJson: (json) => PaymentIntent.fromJson(json),
+    ).parse(result: result!, successResultKey: 'paymentIntent');
+  }
+
+  @override
   Future<TokenData> createApplePayToken(Map<String, dynamic> payment) async {
     final result = await _methodChannel.invokeMapMethod<String, dynamic>(
         'createApplePayToken', {'payment': payment});
@@ -458,6 +509,46 @@ class MethodChannelStripe extends StripePlatform {
       'url': url,
     });
     return result ?? false;
+  }
+
+  @override
+  Future<PaymentMethod> platformPayCreatePaymentMethod({
+    required PlatformPayPaymentMethodParams params,
+    bool usesDeprecatedTokenFlow = false,
+  }) async {
+    var data = <String, dynamic>{};
+    if (params is PlatformPayPaymentMethodParamsApplePay) {
+      data = {
+        'applePay': {
+          ...params.applePayParams.toJson(),
+          ...params.applePayPaymentMethodParams.toJson()
+        },
+      };
+    } else if (params is PlatformPayPaymentMethodParamsGooglePay) {
+      data = {
+        'googlePay': {
+          ...params.googlePayParams.toJson(),
+          ...params.googlePayPaymentMethodParams.toJson(),
+        },
+      };
+    }
+
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('createPlatformPayPaymentMethod', {
+      'params': data,
+      'usesDeprecatedTokenFlow': usesDeprecatedTokenFlow,
+    });
+
+    return ResultParser<PaymentMethod>(
+            parseJson: (json) => PaymentMethod.fromJson(json))
+        .parse(result: result!, successResultKey: 'paymentMethod');
+  }
+
+  @override
+  Future<void> updatePlatformSheet(
+      {required PlatformPaySheetUpdateParams params}) async {
+    await _methodChannel
+        .invokeMethod('updatePlatformPaySheet', {'params': params.toJson()});
   }
 }
 

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'app_info.dart';
 
@@ -33,18 +33,22 @@ mixin _$AppInfo {
 /// @nodoc
 abstract class $AppInfoCopyWith<$Res> {
   factory $AppInfoCopyWith(AppInfo value, $Res Function(AppInfo) then) =
-      _$AppInfoCopyWithImpl<$Res>;
+      _$AppInfoCopyWithImpl<$Res, AppInfo>;
+  @useResult
   $Res call({String? name, String? partnerId, String? url, String? version});
 }
 
 /// @nodoc
-class _$AppInfoCopyWithImpl<$Res> implements $AppInfoCopyWith<$Res> {
+class _$AppInfoCopyWithImpl<$Res, $Val extends AppInfo>
+    implements $AppInfoCopyWith<$Res> {
   _$AppInfoCopyWithImpl(this._value, this._then);
 
-  final AppInfo _value;
   // ignore: unused_field
-  final $Res Function(AppInfo) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = freezed,
@@ -53,23 +57,23 @@ class _$AppInfoCopyWithImpl<$Res> implements $AppInfoCopyWith<$Res> {
     Object? version = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      partnerId: partnerId == freezed
+      partnerId: freezed == partnerId
           ? _value.partnerId
           : partnerId // ignore: cast_nullable_to_non_nullable
               as String?,
-      url: url == freezed
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
-      version: version == freezed
+      version: freezed == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -79,18 +83,18 @@ abstract class _$$_AppInfoCopyWith<$Res> implements $AppInfoCopyWith<$Res> {
           _$_AppInfo value, $Res Function(_$_AppInfo) then) =
       __$$_AppInfoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String? name, String? partnerId, String? url, String? version});
 }
 
 /// @nodoc
-class __$$_AppInfoCopyWithImpl<$Res> extends _$AppInfoCopyWithImpl<$Res>
+class __$$_AppInfoCopyWithImpl<$Res>
+    extends _$AppInfoCopyWithImpl<$Res, _$_AppInfo>
     implements _$$_AppInfoCopyWith<$Res> {
   __$$_AppInfoCopyWithImpl(_$_AppInfo _value, $Res Function(_$_AppInfo) _then)
-      : super(_value, (v) => _then(v as _$_AppInfo));
+      : super(_value, _then);
 
-  @override
-  _$_AppInfo get _value => super._value as _$_AppInfo;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = freezed,
@@ -99,19 +103,19 @@ class __$$_AppInfoCopyWithImpl<$Res> extends _$AppInfoCopyWithImpl<$Res>
     Object? version = freezed,
   }) {
     return _then(_$_AppInfo(
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      partnerId: partnerId == freezed
+      partnerId: freezed == partnerId
           ? _value.partnerId
           : partnerId // ignore: cast_nullable_to_non_nullable
               as String?,
-      url: url == freezed
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
-      version: version == freezed
+      version: freezed == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -147,23 +151,20 @@ class _$_AppInfo implements _AppInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AppInfo &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.partnerId, partnerId) &&
-            const DeepCollectionEquality().equals(other.url, url) &&
-            const DeepCollectionEquality().equals(other.version, version));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.partnerId, partnerId) ||
+                other.partnerId == partnerId) &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.version, version) || other.version == version));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(partnerId),
-      const DeepCollectionEquality().hash(url),
-      const DeepCollectionEquality().hash(version));
+  int get hashCode => Object.hash(runtimeType, name, partnerId, url, version);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AppInfoCopyWith<_$_AppInfo> get copyWith =>
       __$$_AppInfoCopyWithImpl<_$_AppInfo>(this, _$identity);
 

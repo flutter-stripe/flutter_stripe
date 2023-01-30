@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'errors.dart';
 
@@ -34,36 +34,39 @@ mixin _$StripeError<T> {
 abstract class $StripeErrorCopyWith<T, $Res> {
   factory $StripeErrorCopyWith(
           StripeError<T> value, $Res Function(StripeError<T>) then) =
-      _$StripeErrorCopyWithImpl<T, $Res>;
+      _$StripeErrorCopyWithImpl<T, $Res, StripeError<T>>;
+  @useResult
   $Res call(
       {String message,
       @JsonKey(fromJson: _dataFromJson, toJson: _dataToJson) T code});
 }
 
 /// @nodoc
-class _$StripeErrorCopyWithImpl<T, $Res>
+class _$StripeErrorCopyWithImpl<T, $Res, $Val extends StripeError<T>>
     implements $StripeErrorCopyWith<T, $Res> {
   _$StripeErrorCopyWithImpl(this._value, this._then);
 
-  final StripeError<T> _value;
   // ignore: unused_field
-  final $Res Function(StripeError<T>) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = freezed,
+    Object? message = null,
     Object? code = freezed,
   }) {
     return _then(_value.copyWith(
-      message: message == freezed
+      message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      code: code == freezed
+      code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as T,
-    ));
+    ) as $Val);
   }
 }
 
@@ -74,6 +77,7 @@ abstract class _$$_StripeErrorGenericCopyWith<T, $Res>
           $Res Function(_$_StripeErrorGeneric<T>) then) =
       __$$_StripeErrorGenericCopyWithImpl<T, $Res>;
   @override
+  @useResult
   $Res call(
       {String message,
       @JsonKey(fromJson: _dataFromJson, toJson: _dataToJson) T code});
@@ -81,27 +85,24 @@ abstract class _$$_StripeErrorGenericCopyWith<T, $Res>
 
 /// @nodoc
 class __$$_StripeErrorGenericCopyWithImpl<T, $Res>
-    extends _$StripeErrorCopyWithImpl<T, $Res>
+    extends _$StripeErrorCopyWithImpl<T, $Res, _$_StripeErrorGeneric<T>>
     implements _$$_StripeErrorGenericCopyWith<T, $Res> {
   __$$_StripeErrorGenericCopyWithImpl(_$_StripeErrorGeneric<T> _value,
       $Res Function(_$_StripeErrorGeneric<T>) _then)
-      : super(_value, (v) => _then(v as _$_StripeErrorGeneric<T>));
+      : super(_value, _then);
 
-  @override
-  _$_StripeErrorGeneric<T> get _value =>
-      super._value as _$_StripeErrorGeneric<T>;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = freezed,
+    Object? message = null,
     Object? code = freezed,
   }) {
     return _then(_$_StripeErrorGeneric<T>(
-      message: message == freezed
+      message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      code: code == freezed
+      code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as T,
@@ -137,19 +138,18 @@ class _$_StripeErrorGeneric<T> implements _StripeErrorGeneric<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StripeErrorGeneric<T> &&
-            const DeepCollectionEquality().equals(other.message, message) &&
+            (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other.code, code));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(message),
-      const DeepCollectionEquality().hash(code));
+      runtimeType, message, const DeepCollectionEquality().hash(code));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_StripeErrorGenericCopyWith<T, _$_StripeErrorGeneric<T>> get copyWith =>
       __$$_StripeErrorGenericCopyWithImpl<T, _$_StripeErrorGeneric<T>>(
           this, _$identity);
@@ -201,37 +201,41 @@ mixin _$StripeException {
 abstract class $StripeExceptionCopyWith<$Res> {
   factory $StripeExceptionCopyWith(
           StripeException value, $Res Function(StripeException) then) =
-      _$StripeExceptionCopyWithImpl<$Res>;
+      _$StripeExceptionCopyWithImpl<$Res, StripeException>;
+  @useResult
   $Res call({LocalizedErrorMessage error});
 
   $LocalizedErrorMessageCopyWith<$Res> get error;
 }
 
 /// @nodoc
-class _$StripeExceptionCopyWithImpl<$Res>
+class _$StripeExceptionCopyWithImpl<$Res, $Val extends StripeException>
     implements $StripeExceptionCopyWith<$Res> {
   _$StripeExceptionCopyWithImpl(this._value, this._then);
 
-  final StripeException _value;
   // ignore: unused_field
-  final $Res Function(StripeException) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_value.copyWith(
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as LocalizedErrorMessage,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $LocalizedErrorMessageCopyWith<$Res> get error {
     return $LocalizedErrorMessageCopyWith<$Res>(_value.error, (value) {
-      return _then(_value.copyWith(error: value));
+      return _then(_value.copyWith(error: value) as $Val);
     });
   }
 }
@@ -243,6 +247,7 @@ abstract class _$$_StripeExceptionCopyWith<$Res>
           _$_StripeException value, $Res Function(_$_StripeException) then) =
       __$$_StripeExceptionCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({LocalizedErrorMessage error});
 
   @override
@@ -251,21 +256,19 @@ abstract class _$$_StripeExceptionCopyWith<$Res>
 
 /// @nodoc
 class __$$_StripeExceptionCopyWithImpl<$Res>
-    extends _$StripeExceptionCopyWithImpl<$Res>
+    extends _$StripeExceptionCopyWithImpl<$Res, _$_StripeException>
     implements _$$_StripeExceptionCopyWith<$Res> {
   __$$_StripeExceptionCopyWithImpl(
       _$_StripeException _value, $Res Function(_$_StripeException) _then)
-      : super(_value, (v) => _then(v as _$_StripeException));
+      : super(_value, _then);
 
-  @override
-  _$_StripeException get _value => super._value as _$_StripeException;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$_StripeException(
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as LocalizedErrorMessage,
@@ -295,16 +298,16 @@ class _$_StripeException implements _StripeException {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StripeException &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_StripeExceptionCopyWith<_$_StripeException> get copyWith =>
       __$$_StripeExceptionCopyWithImpl<_$_StripeException>(this, _$identity);
 
@@ -368,7 +371,8 @@ mixin _$LocalizedErrorMessage {
 abstract class $LocalizedErrorMessageCopyWith<$Res> {
   factory $LocalizedErrorMessageCopyWith(LocalizedErrorMessage value,
           $Res Function(LocalizedErrorMessage) then) =
-      _$LocalizedErrorMessageCopyWithImpl<$Res>;
+      _$LocalizedErrorMessageCopyWithImpl<$Res, LocalizedErrorMessage>;
+  @useResult
   $Res call(
       {FailureCode code,
       String? localizedMessage,
@@ -379,17 +383,20 @@ abstract class $LocalizedErrorMessageCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LocalizedErrorMessageCopyWithImpl<$Res>
+class _$LocalizedErrorMessageCopyWithImpl<$Res,
+        $Val extends LocalizedErrorMessage>
     implements $LocalizedErrorMessageCopyWith<$Res> {
   _$LocalizedErrorMessageCopyWithImpl(this._value, this._then);
 
-  final LocalizedErrorMessage _value;
   // ignore: unused_field
-  final $Res Function(LocalizedErrorMessage) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
+    Object? code = null,
     Object? localizedMessage = freezed,
     Object? message = freezed,
     Object? stripeErrorCode = freezed,
@@ -397,31 +404,31 @@ class _$LocalizedErrorMessageCopyWithImpl<$Res>
     Object? type = freezed,
   }) {
     return _then(_value.copyWith(
-      code: code == freezed
+      code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as FailureCode,
-      localizedMessage: localizedMessage == freezed
+      localizedMessage: freezed == localizedMessage
           ? _value.localizedMessage
           : localizedMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      message: message == freezed
+      message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      stripeErrorCode: stripeErrorCode == freezed
+      stripeErrorCode: freezed == stripeErrorCode
           ? _value.stripeErrorCode
           : stripeErrorCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      declineCode: declineCode == freezed
+      declineCode: freezed == declineCode
           ? _value.declineCode
           : declineCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -432,6 +439,7 @@ abstract class _$$_LocalizedErrorMessageCopyWith<$Res>
           $Res Function(_$_LocalizedErrorMessage) then) =
       __$$_LocalizedErrorMessageCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {FailureCode code,
       String? localizedMessage,
@@ -443,19 +451,16 @@ abstract class _$$_LocalizedErrorMessageCopyWith<$Res>
 
 /// @nodoc
 class __$$_LocalizedErrorMessageCopyWithImpl<$Res>
-    extends _$LocalizedErrorMessageCopyWithImpl<$Res>
+    extends _$LocalizedErrorMessageCopyWithImpl<$Res, _$_LocalizedErrorMessage>
     implements _$$_LocalizedErrorMessageCopyWith<$Res> {
   __$$_LocalizedErrorMessageCopyWithImpl(_$_LocalizedErrorMessage _value,
       $Res Function(_$_LocalizedErrorMessage) _then)
-      : super(_value, (v) => _then(v as _$_LocalizedErrorMessage));
+      : super(_value, _then);
 
-  @override
-  _$_LocalizedErrorMessage get _value =>
-      super._value as _$_LocalizedErrorMessage;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
+    Object? code = null,
     Object? localizedMessage = freezed,
     Object? message = freezed,
     Object? stripeErrorCode = freezed,
@@ -463,27 +468,27 @@ class __$$_LocalizedErrorMessageCopyWithImpl<$Res>
     Object? type = freezed,
   }) {
     return _then(_$_LocalizedErrorMessage(
-      code: code == freezed
+      code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as FailureCode,
-      localizedMessage: localizedMessage == freezed
+      localizedMessage: freezed == localizedMessage
           ? _value.localizedMessage
           : localizedMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      message: message == freezed
+      message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      stripeErrorCode: stripeErrorCode == freezed
+      stripeErrorCode: freezed == stripeErrorCode
           ? _value.stripeErrorCode
           : stripeErrorCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      declineCode: declineCode == freezed
+      declineCode: freezed == declineCode
           ? _value.declineCode
           : declineCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -540,30 +545,25 @@ class _$_LocalizedErrorMessage implements _LocalizedErrorMessage {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LocalizedErrorMessage &&
-            const DeepCollectionEquality().equals(other.code, code) &&
-            const DeepCollectionEquality()
-                .equals(other.localizedMessage, localizedMessage) &&
-            const DeepCollectionEquality().equals(other.message, message) &&
-            const DeepCollectionEquality()
-                .equals(other.stripeErrorCode, stripeErrorCode) &&
-            const DeepCollectionEquality()
-                .equals(other.declineCode, declineCode) &&
-            const DeepCollectionEquality().equals(other.type, type));
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.localizedMessage, localizedMessage) ||
+                other.localizedMessage == localizedMessage) &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.stripeErrorCode, stripeErrorCode) ||
+                other.stripeErrorCode == stripeErrorCode) &&
+            (identical(other.declineCode, declineCode) ||
+                other.declineCode == declineCode) &&
+            (identical(other.type, type) || other.type == type));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(code),
-      const DeepCollectionEquality().hash(localizedMessage),
-      const DeepCollectionEquality().hash(message),
-      const DeepCollectionEquality().hash(stripeErrorCode),
-      const DeepCollectionEquality().hash(declineCode),
-      const DeepCollectionEquality().hash(type));
+  int get hashCode => Object.hash(runtimeType, code, localizedMessage, message,
+      stripeErrorCode, declineCode, type);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LocalizedErrorMessageCopyWith<_$_LocalizedErrorMessage> get copyWith =>
       __$$_LocalizedErrorMessageCopyWithImpl<_$_LocalizedErrorMessage>(
           this, _$identity);

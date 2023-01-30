@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'payment_intents.dart';
 
@@ -77,7 +77,8 @@ mixin _$PaymentIntent {
 abstract class $PaymentIntentCopyWith<$Res> {
   factory $PaymentIntentCopyWith(
           PaymentIntent value, $Res Function(PaymentIntent) then) =
-      _$PaymentIntentCopyWithImpl<$Res>;
+      _$PaymentIntentCopyWithImpl<$Res, PaymentIntent>;
+  @useResult
   $Res call(
       {String id,
       num amount,
@@ -100,25 +101,27 @@ abstract class $PaymentIntentCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PaymentIntentCopyWithImpl<$Res>
+class _$PaymentIntentCopyWithImpl<$Res, $Val extends PaymentIntent>
     implements $PaymentIntentCopyWith<$Res> {
   _$PaymentIntentCopyWithImpl(this._value, this._then);
 
-  final PaymentIntent _value;
   // ignore: unused_field
-  final $Res Function(PaymentIntent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? amount = freezed,
-    Object? created = freezed,
-    Object? currency = freezed,
-    Object? status = freezed,
-    Object? clientSecret = freezed,
-    Object? livemode = freezed,
-    Object? captureMethod = freezed,
-    Object? confirmationMethod = freezed,
+    Object? id = null,
+    Object? amount = null,
+    Object? created = null,
+    Object? currency = null,
+    Object? status = null,
+    Object? clientSecret = null,
+    Object? livemode = null,
+    Object? captureMethod = null,
+    Object? confirmationMethod = null,
     Object? paymentMethodId = freezed,
     Object? description = freezed,
     Object? receiptEmail = freezed,
@@ -127,88 +130,90 @@ class _$PaymentIntentCopyWithImpl<$Res>
     Object? shipping = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: amount == freezed
+      amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as num,
-      created: created == freezed
+      created: null == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
               as String,
-      currency: currency == freezed
+      currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as PaymentIntentsStatus,
-      clientSecret: clientSecret == freezed
+      clientSecret: null == clientSecret
           ? _value.clientSecret
           : clientSecret // ignore: cast_nullable_to_non_nullable
               as String,
-      livemode: livemode == freezed
+      livemode: null == livemode
           ? _value.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
-      captureMethod: captureMethod == freezed
+      captureMethod: null == captureMethod
           ? _value.captureMethod
           : captureMethod // ignore: cast_nullable_to_non_nullable
               as CaptureMethod,
-      confirmationMethod: confirmationMethod == freezed
+      confirmationMethod: null == confirmationMethod
           ? _value.confirmationMethod
           : confirmationMethod // ignore: cast_nullable_to_non_nullable
               as ConfirmationMethod,
-      paymentMethodId: paymentMethodId == freezed
+      paymentMethodId: freezed == paymentMethodId
           ? _value.paymentMethodId
           : paymentMethodId // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      receiptEmail: receiptEmail == freezed
+      receiptEmail: freezed == receiptEmail
           ? _value.receiptEmail
           : receiptEmail // ignore: cast_nullable_to_non_nullable
               as String?,
-      canceledAt: canceledAt == freezed
+      canceledAt: freezed == canceledAt
           ? _value.canceledAt
           : canceledAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      nextAction: nextAction == freezed
+      nextAction: freezed == nextAction
           ? _value.nextAction
           : nextAction // ignore: cast_nullable_to_non_nullable
               as NextAction?,
-      shipping: shipping == freezed
+      shipping: freezed == shipping
           ? _value.shipping
           : shipping // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $NextActionCopyWith<$Res>? get nextAction {
     if (_value.nextAction == null) {
       return null;
     }
 
     return $NextActionCopyWith<$Res>(_value.nextAction!, (value) {
-      return _then(_value.copyWith(nextAction: value));
+      return _then(_value.copyWith(nextAction: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ShippingDetailsCopyWith<$Res>? get shipping {
     if (_value.shipping == null) {
       return null;
     }
 
     return $ShippingDetailsCopyWith<$Res>(_value.shipping!, (value) {
-      return _then(_value.copyWith(shipping: value));
+      return _then(_value.copyWith(shipping: value) as $Val);
     });
   }
 }
@@ -220,6 +225,7 @@ abstract class _$$_PaymentIntentCopyWith<$Res>
           _$_PaymentIntent value, $Res Function(_$_PaymentIntent) then) =
       __$$_PaymentIntentCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String id,
       num amount,
@@ -245,26 +251,24 @@ abstract class _$$_PaymentIntentCopyWith<$Res>
 
 /// @nodoc
 class __$$_PaymentIntentCopyWithImpl<$Res>
-    extends _$PaymentIntentCopyWithImpl<$Res>
+    extends _$PaymentIntentCopyWithImpl<$Res, _$_PaymentIntent>
     implements _$$_PaymentIntentCopyWith<$Res> {
   __$$_PaymentIntentCopyWithImpl(
       _$_PaymentIntent _value, $Res Function(_$_PaymentIntent) _then)
-      : super(_value, (v) => _then(v as _$_PaymentIntent));
+      : super(_value, _then);
 
-  @override
-  _$_PaymentIntent get _value => super._value as _$_PaymentIntent;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? amount = freezed,
-    Object? created = freezed,
-    Object? currency = freezed,
-    Object? status = freezed,
-    Object? clientSecret = freezed,
-    Object? livemode = freezed,
-    Object? captureMethod = freezed,
-    Object? confirmationMethod = freezed,
+    Object? id = null,
+    Object? amount = null,
+    Object? created = null,
+    Object? currency = null,
+    Object? status = null,
+    Object? clientSecret = null,
+    Object? livemode = null,
+    Object? captureMethod = null,
+    Object? confirmationMethod = null,
     Object? paymentMethodId = freezed,
     Object? description = freezed,
     Object? receiptEmail = freezed,
@@ -273,63 +277,63 @@ class __$$_PaymentIntentCopyWithImpl<$Res>
     Object? shipping = freezed,
   }) {
     return _then(_$_PaymentIntent(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: amount == freezed
+      amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as num,
-      created: created == freezed
+      created: null == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
               as String,
-      currency: currency == freezed
+      currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as PaymentIntentsStatus,
-      clientSecret: clientSecret == freezed
+      clientSecret: null == clientSecret
           ? _value.clientSecret
           : clientSecret // ignore: cast_nullable_to_non_nullable
               as String,
-      livemode: livemode == freezed
+      livemode: null == livemode
           ? _value.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
-      captureMethod: captureMethod == freezed
+      captureMethod: null == captureMethod
           ? _value.captureMethod
           : captureMethod // ignore: cast_nullable_to_non_nullable
               as CaptureMethod,
-      confirmationMethod: confirmationMethod == freezed
+      confirmationMethod: null == confirmationMethod
           ? _value.confirmationMethod
           : confirmationMethod // ignore: cast_nullable_to_non_nullable
               as ConfirmationMethod,
-      paymentMethodId: paymentMethodId == freezed
+      paymentMethodId: freezed == paymentMethodId
           ? _value.paymentMethodId
           : paymentMethodId // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      receiptEmail: receiptEmail == freezed
+      receiptEmail: freezed == receiptEmail
           ? _value.receiptEmail
           : receiptEmail // ignore: cast_nullable_to_non_nullable
               as String?,
-      canceledAt: canceledAt == freezed
+      canceledAt: freezed == canceledAt
           ? _value.canceledAt
           : canceledAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      nextAction: nextAction == freezed
+      nextAction: freezed == nextAction
           ? _value.nextAction
           : nextAction // ignore: cast_nullable_to_non_nullable
               as NextAction?,
-      shipping: shipping == freezed
+      shipping: freezed == shipping
           ? _value.shipping
           : shipping // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
@@ -432,53 +436,57 @@ class _$_PaymentIntent implements _PaymentIntent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PaymentIntent &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.amount, amount) &&
-            const DeepCollectionEquality().equals(other.created, created) &&
-            const DeepCollectionEquality().equals(other.currency, currency) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.clientSecret, clientSecret) &&
-            const DeepCollectionEquality().equals(other.livemode, livemode) &&
-            const DeepCollectionEquality()
-                .equals(other.captureMethod, captureMethod) &&
-            const DeepCollectionEquality()
-                .equals(other.confirmationMethod, confirmationMethod) &&
-            const DeepCollectionEquality()
-                .equals(other.paymentMethodId, paymentMethodId) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality()
-                .equals(other.receiptEmail, receiptEmail) &&
-            const DeepCollectionEquality()
-                .equals(other.canceledAt, canceledAt) &&
-            const DeepCollectionEquality()
-                .equals(other.nextAction, nextAction) &&
-            const DeepCollectionEquality().equals(other.shipping, shipping));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.created, created) || other.created == created) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.clientSecret, clientSecret) ||
+                other.clientSecret == clientSecret) &&
+            (identical(other.livemode, livemode) ||
+                other.livemode == livemode) &&
+            (identical(other.captureMethod, captureMethod) ||
+                other.captureMethod == captureMethod) &&
+            (identical(other.confirmationMethod, confirmationMethod) ||
+                other.confirmationMethod == confirmationMethod) &&
+            (identical(other.paymentMethodId, paymentMethodId) ||
+                other.paymentMethodId == paymentMethodId) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.receiptEmail, receiptEmail) ||
+                other.receiptEmail == receiptEmail) &&
+            (identical(other.canceledAt, canceledAt) ||
+                other.canceledAt == canceledAt) &&
+            (identical(other.nextAction, nextAction) ||
+                other.nextAction == nextAction) &&
+            (identical(other.shipping, shipping) ||
+                other.shipping == shipping));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(amount),
-      const DeepCollectionEquality().hash(created),
-      const DeepCollectionEquality().hash(currency),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(clientSecret),
-      const DeepCollectionEquality().hash(livemode),
-      const DeepCollectionEquality().hash(captureMethod),
-      const DeepCollectionEquality().hash(confirmationMethod),
-      const DeepCollectionEquality().hash(paymentMethodId),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(receiptEmail),
-      const DeepCollectionEquality().hash(canceledAt),
-      const DeepCollectionEquality().hash(nextAction),
-      const DeepCollectionEquality().hash(shipping));
+      id,
+      amount,
+      created,
+      currency,
+      status,
+      clientSecret,
+      livemode,
+      captureMethod,
+      confirmationMethod,
+      paymentMethodId,
+      description,
+      receiptEmail,
+      canceledAt,
+      nextAction,
+      shipping);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PaymentIntentCopyWith<_$_PaymentIntent> get copyWith =>
       __$$_PaymentIntentCopyWithImpl<_$_PaymentIntent>(this, _$identity);
 
@@ -610,7 +618,8 @@ mixin _$ShippingDetails {
 abstract class $ShippingDetailsCopyWith<$Res> {
   factory $ShippingDetailsCopyWith(
           ShippingDetails value, $Res Function(ShippingDetails) then) =
-      _$ShippingDetailsCopyWithImpl<$Res>;
+      _$ShippingDetailsCopyWithImpl<$Res, ShippingDetails>;
+  @useResult
   $Res call(
       {Address address,
       String? name,
@@ -622,50 +631,53 @@ abstract class $ShippingDetailsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ShippingDetailsCopyWithImpl<$Res>
+class _$ShippingDetailsCopyWithImpl<$Res, $Val extends ShippingDetails>
     implements $ShippingDetailsCopyWith<$Res> {
   _$ShippingDetailsCopyWithImpl(this._value, this._then);
 
-  final ShippingDetails _value;
   // ignore: unused_field
-  final $Res Function(ShippingDetails) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? address = freezed,
+    Object? address = null,
     Object? name = freezed,
     Object? carrier = freezed,
     Object? phone = freezed,
     Object? trackingNumber = freezed,
   }) {
     return _then(_value.copyWith(
-      address: address == freezed
+      address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as Address,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      carrier: carrier == freezed
+      carrier: freezed == carrier
           ? _value.carrier
           : carrier // ignore: cast_nullable_to_non_nullable
               as String?,
-      phone: phone == freezed
+      phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
-      trackingNumber: trackingNumber == freezed
+      trackingNumber: freezed == trackingNumber
           ? _value.trackingNumber
           : trackingNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AddressCopyWith<$Res> get address {
     return $AddressCopyWith<$Res>(_value.address, (value) {
-      return _then(_value.copyWith(address: value));
+      return _then(_value.copyWith(address: value) as $Val);
     });
   }
 }
@@ -677,6 +689,7 @@ abstract class _$$_ShippingDetailsCopyWith<$Res>
           _$_ShippingDetails value, $Res Function(_$_ShippingDetails) then) =
       __$$_ShippingDetailsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {Address address,
       String? name,
@@ -690,41 +703,39 @@ abstract class _$$_ShippingDetailsCopyWith<$Res>
 
 /// @nodoc
 class __$$_ShippingDetailsCopyWithImpl<$Res>
-    extends _$ShippingDetailsCopyWithImpl<$Res>
+    extends _$ShippingDetailsCopyWithImpl<$Res, _$_ShippingDetails>
     implements _$$_ShippingDetailsCopyWith<$Res> {
   __$$_ShippingDetailsCopyWithImpl(
       _$_ShippingDetails _value, $Res Function(_$_ShippingDetails) _then)
-      : super(_value, (v) => _then(v as _$_ShippingDetails));
+      : super(_value, _then);
 
-  @override
-  _$_ShippingDetails get _value => super._value as _$_ShippingDetails;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? address = freezed,
+    Object? address = null,
     Object? name = freezed,
     Object? carrier = freezed,
     Object? phone = freezed,
     Object? trackingNumber = freezed,
   }) {
     return _then(_$_ShippingDetails(
-      address: address == freezed
+      address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as Address,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      carrier: carrier == freezed
+      carrier: freezed == carrier
           ? _value.carrier
           : carrier // ignore: cast_nullable_to_non_nullable
               as String?,
-      phone: phone == freezed
+      phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
-      trackingNumber: trackingNumber == freezed
+      trackingNumber: freezed == trackingNumber
           ? _value.trackingNumber
           : trackingNumber // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -777,26 +788,22 @@ class _$_ShippingDetails implements _ShippingDetails {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ShippingDetails &&
-            const DeepCollectionEquality().equals(other.address, address) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.carrier, carrier) &&
-            const DeepCollectionEquality().equals(other.phone, phone) &&
-            const DeepCollectionEquality()
-                .equals(other.trackingNumber, trackingNumber));
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.carrier, carrier) || other.carrier == carrier) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.trackingNumber, trackingNumber) ||
+                other.trackingNumber == trackingNumber));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(address),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(carrier),
-      const DeepCollectionEquality().hash(phone),
-      const DeepCollectionEquality().hash(trackingNumber));
+  int get hashCode =>
+      Object.hash(runtimeType, address, name, carrier, phone, trackingNumber);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ShippingDetailsCopyWith<_$_ShippingDetails> get copyWith =>
       __$$_ShippingDetailsCopyWithImpl<_$_ShippingDetails>(this, _$identity);
 

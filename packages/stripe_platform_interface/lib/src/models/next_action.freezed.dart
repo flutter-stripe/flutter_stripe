@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'next_action.dart';
 
@@ -47,12 +47,12 @@ mixin _$NextAction {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? redirectUrl)? redirectToUrl,
-    TResult Function(
+    TResult? Function(String? redirectUrl)? redirectToUrl,
+    TResult? Function(
             int? expiration, String? voucherURL, String? voucherNumber)?
         displayOxxoDetails,
-    TResult Function(String? redirectUrl)? wechatPayRedirect,
-    TResult Function(
+    TResult? Function(String? redirectUrl)? wechatPayRedirect,
+    TResult? Function(
             String? arrivalDate, String? redirectUrl, String? microdepositType)?
         verifyWithMicroDeposits,
   }) =>
@@ -82,10 +82,10 @@ mixin _$NextAction {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_NextActionRedirect value)? redirectToUrl,
-    TResult Function(_NextActionOxxo value)? displayOxxoDetails,
-    TResult Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
-    TResult Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
+    TResult? Function(_NextActionRedirect value)? redirectToUrl,
+    TResult? Function(_NextActionOxxo value)? displayOxxoDetails,
+    TResult? Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
+    TResult? Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -104,16 +104,18 @@ mixin _$NextAction {
 abstract class $NextActionCopyWith<$Res> {
   factory $NextActionCopyWith(
           NextAction value, $Res Function(NextAction) then) =
-      _$NextActionCopyWithImpl<$Res>;
+      _$NextActionCopyWithImpl<$Res, NextAction>;
 }
 
 /// @nodoc
-class _$NextActionCopyWithImpl<$Res> implements $NextActionCopyWith<$Res> {
+class _$NextActionCopyWithImpl<$Res, $Val extends NextAction>
+    implements $NextActionCopyWith<$Res> {
   _$NextActionCopyWithImpl(this._value, this._then);
 
-  final NextAction _value;
   // ignore: unused_field
-  final $Res Function(NextAction) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -121,26 +123,25 @@ abstract class _$$_NextActionRedirectCopyWith<$Res> {
   factory _$$_NextActionRedirectCopyWith(_$_NextActionRedirect value,
           $Res Function(_$_NextActionRedirect) then) =
       __$$_NextActionRedirectCopyWithImpl<$Res>;
+  @useResult
   $Res call({String? redirectUrl});
 }
 
 /// @nodoc
 class __$$_NextActionRedirectCopyWithImpl<$Res>
-    extends _$NextActionCopyWithImpl<$Res>
+    extends _$NextActionCopyWithImpl<$Res, _$_NextActionRedirect>
     implements _$$_NextActionRedirectCopyWith<$Res> {
   __$$_NextActionRedirectCopyWithImpl(
       _$_NextActionRedirect _value, $Res Function(_$_NextActionRedirect) _then)
-      : super(_value, (v) => _then(v as _$_NextActionRedirect));
+      : super(_value, _then);
 
-  @override
-  _$_NextActionRedirect get _value => super._value as _$_NextActionRedirect;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? redirectUrl = freezed,
   }) {
     return _then(_$_NextActionRedirect(
-      redirectUrl: redirectUrl == freezed
+      redirectUrl: freezed == redirectUrl
           ? _value.redirectUrl
           : redirectUrl // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -175,17 +176,17 @@ class _$_NextActionRedirect implements _NextActionRedirect {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_NextActionRedirect &&
-            const DeepCollectionEquality()
-                .equals(other.redirectUrl, redirectUrl));
+            (identical(other.redirectUrl, redirectUrl) ||
+                other.redirectUrl == redirectUrl));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(redirectUrl));
+  int get hashCode => Object.hash(runtimeType, redirectUrl);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_NextActionRedirectCopyWith<_$_NextActionRedirect> get copyWith =>
       __$$_NextActionRedirectCopyWithImpl<_$_NextActionRedirect>(
           this, _$identity);
@@ -208,12 +209,12 @@ class _$_NextActionRedirect implements _NextActionRedirect {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? redirectUrl)? redirectToUrl,
-    TResult Function(
+    TResult? Function(String? redirectUrl)? redirectToUrl,
+    TResult? Function(
             int? expiration, String? voucherURL, String? voucherNumber)?
         displayOxxoDetails,
-    TResult Function(String? redirectUrl)? wechatPayRedirect,
-    TResult Function(
+    TResult? Function(String? redirectUrl)? wechatPayRedirect,
+    TResult? Function(
             String? arrivalDate, String? redirectUrl, String? microdepositType)?
         verifyWithMicroDeposits,
   }) {
@@ -255,10 +256,10 @@ class _$_NextActionRedirect implements _NextActionRedirect {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_NextActionRedirect value)? redirectToUrl,
-    TResult Function(_NextActionOxxo value)? displayOxxoDetails,
-    TResult Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
-    TResult Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
+    TResult? Function(_NextActionRedirect value)? redirectToUrl,
+    TResult? Function(_NextActionOxxo value)? displayOxxoDetails,
+    TResult? Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
+    TResult? Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
   }) {
     return redirectToUrl?.call(this);
   }
@@ -305,20 +306,19 @@ abstract class _$$_NextActionOxxoCopyWith<$Res> {
   factory _$$_NextActionOxxoCopyWith(
           _$_NextActionOxxo value, $Res Function(_$_NextActionOxxo) then) =
       __$$_NextActionOxxoCopyWithImpl<$Res>;
+  @useResult
   $Res call({int? expiration, String? voucherURL, String? voucherNumber});
 }
 
 /// @nodoc
 class __$$_NextActionOxxoCopyWithImpl<$Res>
-    extends _$NextActionCopyWithImpl<$Res>
+    extends _$NextActionCopyWithImpl<$Res, _$_NextActionOxxo>
     implements _$$_NextActionOxxoCopyWith<$Res> {
   __$$_NextActionOxxoCopyWithImpl(
       _$_NextActionOxxo _value, $Res Function(_$_NextActionOxxo) _then)
-      : super(_value, (v) => _then(v as _$_NextActionOxxo));
+      : super(_value, _then);
 
-  @override
-  _$_NextActionOxxo get _value => super._value as _$_NextActionOxxo;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? expiration = freezed,
@@ -326,15 +326,15 @@ class __$$_NextActionOxxoCopyWithImpl<$Res>
     Object? voucherNumber = freezed,
   }) {
     return _then(_$_NextActionOxxo(
-      expiration: expiration == freezed
+      expiration: freezed == expiration
           ? _value.expiration
           : expiration // ignore: cast_nullable_to_non_nullable
               as int?,
-      voucherURL: voucherURL == freezed
+      voucherURL: freezed == voucherURL
           ? _value.voucherURL
           : voucherURL // ignore: cast_nullable_to_non_nullable
               as String?,
-      voucherNumber: voucherNumber == freezed
+      voucherNumber: freezed == voucherNumber
           ? _value.voucherNumber
           : voucherNumber // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -381,24 +381,22 @@ class _$_NextActionOxxo implements _NextActionOxxo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_NextActionOxxo &&
-            const DeepCollectionEquality()
-                .equals(other.expiration, expiration) &&
-            const DeepCollectionEquality()
-                .equals(other.voucherURL, voucherURL) &&
-            const DeepCollectionEquality()
-                .equals(other.voucherNumber, voucherNumber));
+            (identical(other.expiration, expiration) ||
+                other.expiration == expiration) &&
+            (identical(other.voucherURL, voucherURL) ||
+                other.voucherURL == voucherURL) &&
+            (identical(other.voucherNumber, voucherNumber) ||
+                other.voucherNumber == voucherNumber));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(expiration),
-      const DeepCollectionEquality().hash(voucherURL),
-      const DeepCollectionEquality().hash(voucherNumber));
+  int get hashCode =>
+      Object.hash(runtimeType, expiration, voucherURL, voucherNumber);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_NextActionOxxoCopyWith<_$_NextActionOxxo> get copyWith =>
       __$$_NextActionOxxoCopyWithImpl<_$_NextActionOxxo>(this, _$identity);
 
@@ -420,12 +418,12 @@ class _$_NextActionOxxo implements _NextActionOxxo {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? redirectUrl)? redirectToUrl,
-    TResult Function(
+    TResult? Function(String? redirectUrl)? redirectToUrl,
+    TResult? Function(
             int? expiration, String? voucherURL, String? voucherNumber)?
         displayOxxoDetails,
-    TResult Function(String? redirectUrl)? wechatPayRedirect,
-    TResult Function(
+    TResult? Function(String? redirectUrl)? wechatPayRedirect,
+    TResult? Function(
             String? arrivalDate, String? redirectUrl, String? microdepositType)?
         verifyWithMicroDeposits,
   }) {
@@ -467,10 +465,10 @@ class _$_NextActionOxxo implements _NextActionOxxo {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_NextActionRedirect value)? redirectToUrl,
-    TResult Function(_NextActionOxxo value)? displayOxxoDetails,
-    TResult Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
-    TResult Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
+    TResult? Function(_NextActionRedirect value)? redirectToUrl,
+    TResult? Function(_NextActionOxxo value)? displayOxxoDetails,
+    TResult? Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
+    TResult? Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
   }) {
     return displayOxxoDetails?.call(this);
   }
@@ -526,27 +524,25 @@ abstract class _$$_NextActionWeChatRedirectCopyWith<$Res> {
           _$_NextActionWeChatRedirect value,
           $Res Function(_$_NextActionWeChatRedirect) then) =
       __$$_NextActionWeChatRedirectCopyWithImpl<$Res>;
+  @useResult
   $Res call({String? redirectUrl});
 }
 
 /// @nodoc
 class __$$_NextActionWeChatRedirectCopyWithImpl<$Res>
-    extends _$NextActionCopyWithImpl<$Res>
+    extends _$NextActionCopyWithImpl<$Res, _$_NextActionWeChatRedirect>
     implements _$$_NextActionWeChatRedirectCopyWith<$Res> {
   __$$_NextActionWeChatRedirectCopyWithImpl(_$_NextActionWeChatRedirect _value,
       $Res Function(_$_NextActionWeChatRedirect) _then)
-      : super(_value, (v) => _then(v as _$_NextActionWeChatRedirect));
+      : super(_value, _then);
 
-  @override
-  _$_NextActionWeChatRedirect get _value =>
-      super._value as _$_NextActionWeChatRedirect;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? redirectUrl = freezed,
   }) {
     return _then(_$_NextActionWeChatRedirect(
-      redirectUrl: redirectUrl == freezed
+      redirectUrl: freezed == redirectUrl
           ? _value.redirectUrl
           : redirectUrl // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -581,17 +577,17 @@ class _$_NextActionWeChatRedirect implements _NextActionWeChatRedirect {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_NextActionWeChatRedirect &&
-            const DeepCollectionEquality()
-                .equals(other.redirectUrl, redirectUrl));
+            (identical(other.redirectUrl, redirectUrl) ||
+                other.redirectUrl == redirectUrl));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(redirectUrl));
+  int get hashCode => Object.hash(runtimeType, redirectUrl);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_NextActionWeChatRedirectCopyWith<_$_NextActionWeChatRedirect>
       get copyWith => __$$_NextActionWeChatRedirectCopyWithImpl<
           _$_NextActionWeChatRedirect>(this, _$identity);
@@ -614,12 +610,12 @@ class _$_NextActionWeChatRedirect implements _NextActionWeChatRedirect {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? redirectUrl)? redirectToUrl,
-    TResult Function(
+    TResult? Function(String? redirectUrl)? redirectToUrl,
+    TResult? Function(
             int? expiration, String? voucherURL, String? voucherNumber)?
         displayOxxoDetails,
-    TResult Function(String? redirectUrl)? wechatPayRedirect,
-    TResult Function(
+    TResult? Function(String? redirectUrl)? wechatPayRedirect,
+    TResult? Function(
             String? arrivalDate, String? redirectUrl, String? microdepositType)?
         verifyWithMicroDeposits,
   }) {
@@ -661,10 +657,10 @@ class _$_NextActionWeChatRedirect implements _NextActionWeChatRedirect {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_NextActionRedirect value)? redirectToUrl,
-    TResult Function(_NextActionOxxo value)? displayOxxoDetails,
-    TResult Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
-    TResult Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
+    TResult? Function(_NextActionRedirect value)? redirectToUrl,
+    TResult? Function(_NextActionOxxo value)? displayOxxoDetails,
+    TResult? Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
+    TResult? Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
   }) {
     return wechatPayRedirect?.call(this);
   }
@@ -711,22 +707,20 @@ abstract class _$$_NextActionMicroDepositsCopyWith<$Res> {
   factory _$$_NextActionMicroDepositsCopyWith(_$_NextActionMicroDeposits value,
           $Res Function(_$_NextActionMicroDeposits) then) =
       __$$_NextActionMicroDepositsCopyWithImpl<$Res>;
+  @useResult
   $Res call(
       {String? arrivalDate, String? redirectUrl, String? microdepositType});
 }
 
 /// @nodoc
 class __$$_NextActionMicroDepositsCopyWithImpl<$Res>
-    extends _$NextActionCopyWithImpl<$Res>
+    extends _$NextActionCopyWithImpl<$Res, _$_NextActionMicroDeposits>
     implements _$$_NextActionMicroDepositsCopyWith<$Res> {
   __$$_NextActionMicroDepositsCopyWithImpl(_$_NextActionMicroDeposits _value,
       $Res Function(_$_NextActionMicroDeposits) _then)
-      : super(_value, (v) => _then(v as _$_NextActionMicroDeposits));
+      : super(_value, _then);
 
-  @override
-  _$_NextActionMicroDeposits get _value =>
-      super._value as _$_NextActionMicroDeposits;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? arrivalDate = freezed,
@@ -734,15 +728,15 @@ class __$$_NextActionMicroDepositsCopyWithImpl<$Res>
     Object? microdepositType = freezed,
   }) {
     return _then(_$_NextActionMicroDeposits(
-      arrivalDate: arrivalDate == freezed
+      arrivalDate: freezed == arrivalDate
           ? _value.arrivalDate
           : arrivalDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      redirectUrl: redirectUrl == freezed
+      redirectUrl: freezed == redirectUrl
           ? _value.redirectUrl
           : redirectUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      microdepositType: microdepositType == freezed
+      microdepositType: freezed == microdepositType
           ? _value.microdepositType
           : microdepositType // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -789,24 +783,22 @@ class _$_NextActionMicroDeposits implements _NextActionMicroDeposits {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_NextActionMicroDeposits &&
-            const DeepCollectionEquality()
-                .equals(other.arrivalDate, arrivalDate) &&
-            const DeepCollectionEquality()
-                .equals(other.redirectUrl, redirectUrl) &&
-            const DeepCollectionEquality()
-                .equals(other.microdepositType, microdepositType));
+            (identical(other.arrivalDate, arrivalDate) ||
+                other.arrivalDate == arrivalDate) &&
+            (identical(other.redirectUrl, redirectUrl) ||
+                other.redirectUrl == redirectUrl) &&
+            (identical(other.microdepositType, microdepositType) ||
+                other.microdepositType == microdepositType));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(arrivalDate),
-      const DeepCollectionEquality().hash(redirectUrl),
-      const DeepCollectionEquality().hash(microdepositType));
+  int get hashCode =>
+      Object.hash(runtimeType, arrivalDate, redirectUrl, microdepositType);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_NextActionMicroDepositsCopyWith<_$_NextActionMicroDeposits>
       get copyWith =>
           __$$_NextActionMicroDepositsCopyWithImpl<_$_NextActionMicroDeposits>(
@@ -830,12 +822,12 @@ class _$_NextActionMicroDeposits implements _NextActionMicroDeposits {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? redirectUrl)? redirectToUrl,
-    TResult Function(
+    TResult? Function(String? redirectUrl)? redirectToUrl,
+    TResult? Function(
             int? expiration, String? voucherURL, String? voucherNumber)?
         displayOxxoDetails,
-    TResult Function(String? redirectUrl)? wechatPayRedirect,
-    TResult Function(
+    TResult? Function(String? redirectUrl)? wechatPayRedirect,
+    TResult? Function(
             String? arrivalDate, String? redirectUrl, String? microdepositType)?
         verifyWithMicroDeposits,
   }) {
@@ -879,10 +871,10 @@ class _$_NextActionMicroDeposits implements _NextActionMicroDeposits {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_NextActionRedirect value)? redirectToUrl,
-    TResult Function(_NextActionOxxo value)? displayOxxoDetails,
-    TResult Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
-    TResult Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
+    TResult? Function(_NextActionRedirect value)? redirectToUrl,
+    TResult? Function(_NextActionOxxo value)? displayOxxoDetails,
+    TResult? Function(_NextActionWeChatRedirect value)? wechatPayRedirect,
+    TResult? Function(_NextActionMicroDeposits value)? verifyWithMicroDeposits,
   }) {
     return verifyWithMicroDeposits?.call(this);
   }

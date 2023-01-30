@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'google_pay.dart';
 
@@ -43,39 +43,43 @@ mixin _$PresentGooglePayParams {
 abstract class $PresentGooglePayParamsCopyWith<$Res> {
   factory $PresentGooglePayParamsCopyWith(PresentGooglePayParams value,
           $Res Function(PresentGooglePayParams) then) =
-      _$PresentGooglePayParamsCopyWithImpl<$Res>;
+      _$PresentGooglePayParamsCopyWithImpl<$Res, PresentGooglePayParams>;
+  @useResult
   $Res call({String clientSecret, bool forSetupIntent, String? currencyCode});
 }
 
 /// @nodoc
-class _$PresentGooglePayParamsCopyWithImpl<$Res>
+class _$PresentGooglePayParamsCopyWithImpl<$Res,
+        $Val extends PresentGooglePayParams>
     implements $PresentGooglePayParamsCopyWith<$Res> {
   _$PresentGooglePayParamsCopyWithImpl(this._value, this._then);
 
-  final PresentGooglePayParams _value;
   // ignore: unused_field
-  final $Res Function(PresentGooglePayParams) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clientSecret = freezed,
-    Object? forSetupIntent = freezed,
+    Object? clientSecret = null,
+    Object? forSetupIntent = null,
     Object? currencyCode = freezed,
   }) {
     return _then(_value.copyWith(
-      clientSecret: clientSecret == freezed
+      clientSecret: null == clientSecret
           ? _value.clientSecret
           : clientSecret // ignore: cast_nullable_to_non_nullable
               as String,
-      forSetupIntent: forSetupIntent == freezed
+      forSetupIntent: null == forSetupIntent
           ? _value.forSetupIntent
           : forSetupIntent // ignore: cast_nullable_to_non_nullable
               as bool,
-      currencyCode: currencyCode == freezed
+      currencyCode: freezed == currencyCode
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -86,37 +90,36 @@ abstract class _$$_PresentGooglePayParamsCopyWith<$Res>
           $Res Function(_$_PresentGooglePayParams) then) =
       __$$_PresentGooglePayParamsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String clientSecret, bool forSetupIntent, String? currencyCode});
 }
 
 /// @nodoc
 class __$$_PresentGooglePayParamsCopyWithImpl<$Res>
-    extends _$PresentGooglePayParamsCopyWithImpl<$Res>
+    extends _$PresentGooglePayParamsCopyWithImpl<$Res,
+        _$_PresentGooglePayParams>
     implements _$$_PresentGooglePayParamsCopyWith<$Res> {
   __$$_PresentGooglePayParamsCopyWithImpl(_$_PresentGooglePayParams _value,
       $Res Function(_$_PresentGooglePayParams) _then)
-      : super(_value, (v) => _then(v as _$_PresentGooglePayParams));
+      : super(_value, _then);
 
-  @override
-  _$_PresentGooglePayParams get _value =>
-      super._value as _$_PresentGooglePayParams;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clientSecret = freezed,
-    Object? forSetupIntent = freezed,
+    Object? clientSecret = null,
+    Object? forSetupIntent = null,
     Object? currencyCode = freezed,
   }) {
     return _then(_$_PresentGooglePayParams(
-      clientSecret: clientSecret == freezed
+      clientSecret: null == clientSecret
           ? _value.clientSecret
           : clientSecret // ignore: cast_nullable_to_non_nullable
               as String,
-      forSetupIntent: forSetupIntent == freezed
+      forSetupIntent: null == forSetupIntent
           ? _value.forSetupIntent
           : forSetupIntent // ignore: cast_nullable_to_non_nullable
               as bool,
-      currencyCode: currencyCode == freezed
+      currencyCode: freezed == currencyCode
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -162,24 +165,22 @@ class _$_PresentGooglePayParams implements _PresentGooglePayParams {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PresentGooglePayParams &&
-            const DeepCollectionEquality()
-                .equals(other.clientSecret, clientSecret) &&
-            const DeepCollectionEquality()
-                .equals(other.forSetupIntent, forSetupIntent) &&
-            const DeepCollectionEquality()
-                .equals(other.currencyCode, currencyCode));
+            (identical(other.clientSecret, clientSecret) ||
+                other.clientSecret == clientSecret) &&
+            (identical(other.forSetupIntent, forSetupIntent) ||
+                other.forSetupIntent == forSetupIntent) &&
+            (identical(other.currencyCode, currencyCode) ||
+                other.currencyCode == currencyCode));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(clientSecret),
-      const DeepCollectionEquality().hash(forSetupIntent),
-      const DeepCollectionEquality().hash(currencyCode));
+  int get hashCode =>
+      Object.hash(runtimeType, clientSecret, forSetupIntent, currencyCode);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PresentGooglePayParamsCopyWith<_$_PresentGooglePayParams> get copyWith =>
       __$$_PresentGooglePayParamsCopyWithImpl<_$_PresentGooglePayParams>(
           this, _$identity);
@@ -258,7 +259,8 @@ mixin _$GooglePayInitParams {
 abstract class $GooglePayInitParamsCopyWith<$Res> {
   factory $GooglePayInitParamsCopyWith(
           GooglePayInitParams value, $Res Function(GooglePayInitParams) then) =
-      _$GooglePayInitParamsCopyWithImpl<$Res>;
+      _$GooglePayInitParamsCopyWithImpl<$Res, GooglePayInitParams>;
+  @useResult
   $Res call(
       {String merchantName,
       String countryCode,
@@ -271,52 +273,55 @@ abstract class $GooglePayInitParamsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$GooglePayInitParamsCopyWithImpl<$Res>
+class _$GooglePayInitParamsCopyWithImpl<$Res, $Val extends GooglePayInitParams>
     implements $GooglePayInitParamsCopyWith<$Res> {
   _$GooglePayInitParamsCopyWithImpl(this._value, this._then);
 
-  final GooglePayInitParams _value;
   // ignore: unused_field
-  final $Res Function(GooglePayInitParams) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? merchantName = freezed,
-    Object? countryCode = freezed,
-    Object? testEnv = freezed,
+    Object? merchantName = null,
+    Object? countryCode = null,
+    Object? testEnv = null,
     Object? billingAddressConfig = freezed,
-    Object? isEmailRequired = freezed,
-    Object? existingPaymentMethodRequired = freezed,
+    Object? isEmailRequired = null,
+    Object? existingPaymentMethodRequired = null,
   }) {
     return _then(_value.copyWith(
-      merchantName: merchantName == freezed
+      merchantName: null == merchantName
           ? _value.merchantName
           : merchantName // ignore: cast_nullable_to_non_nullable
               as String,
-      countryCode: countryCode == freezed
+      countryCode: null == countryCode
           ? _value.countryCode
           : countryCode // ignore: cast_nullable_to_non_nullable
               as String,
-      testEnv: testEnv == freezed
+      testEnv: null == testEnv
           ? _value.testEnv
           : testEnv // ignore: cast_nullable_to_non_nullable
               as bool,
-      billingAddressConfig: billingAddressConfig == freezed
+      billingAddressConfig: freezed == billingAddressConfig
           ? _value.billingAddressConfig
           : billingAddressConfig // ignore: cast_nullable_to_non_nullable
               as BillingAddressConfig?,
-      isEmailRequired: isEmailRequired == freezed
+      isEmailRequired: null == isEmailRequired
           ? _value.isEmailRequired
           : isEmailRequired // ignore: cast_nullable_to_non_nullable
               as bool,
-      existingPaymentMethodRequired: existingPaymentMethodRequired == freezed
+      existingPaymentMethodRequired: null == existingPaymentMethodRequired
           ? _value.existingPaymentMethodRequired
           : existingPaymentMethodRequired // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $BillingAddressConfigCopyWith<$Res>? get billingAddressConfig {
     if (_value.billingAddressConfig == null) {
       return null;
@@ -324,7 +329,7 @@ class _$GooglePayInitParamsCopyWithImpl<$Res>
 
     return $BillingAddressConfigCopyWith<$Res>(_value.billingAddressConfig!,
         (value) {
-      return _then(_value.copyWith(billingAddressConfig: value));
+      return _then(_value.copyWith(billingAddressConfig: value) as $Val);
     });
   }
 }
@@ -336,6 +341,7 @@ abstract class _$$_GooglePayInitParamsCopyWith<$Res>
           $Res Function(_$_GooglePayInitParams) then) =
       __$$_GooglePayInitParamsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String merchantName,
       String countryCode,
@@ -350,46 +356,44 @@ abstract class _$$_GooglePayInitParamsCopyWith<$Res>
 
 /// @nodoc
 class __$$_GooglePayInitParamsCopyWithImpl<$Res>
-    extends _$GooglePayInitParamsCopyWithImpl<$Res>
+    extends _$GooglePayInitParamsCopyWithImpl<$Res, _$_GooglePayInitParams>
     implements _$$_GooglePayInitParamsCopyWith<$Res> {
   __$$_GooglePayInitParamsCopyWithImpl(_$_GooglePayInitParams _value,
       $Res Function(_$_GooglePayInitParams) _then)
-      : super(_value, (v) => _then(v as _$_GooglePayInitParams));
+      : super(_value, _then);
 
-  @override
-  _$_GooglePayInitParams get _value => super._value as _$_GooglePayInitParams;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? merchantName = freezed,
-    Object? countryCode = freezed,
-    Object? testEnv = freezed,
+    Object? merchantName = null,
+    Object? countryCode = null,
+    Object? testEnv = null,
     Object? billingAddressConfig = freezed,
-    Object? isEmailRequired = freezed,
-    Object? existingPaymentMethodRequired = freezed,
+    Object? isEmailRequired = null,
+    Object? existingPaymentMethodRequired = null,
   }) {
     return _then(_$_GooglePayInitParams(
-      merchantName: merchantName == freezed
+      merchantName: null == merchantName
           ? _value.merchantName
           : merchantName // ignore: cast_nullable_to_non_nullable
               as String,
-      countryCode: countryCode == freezed
+      countryCode: null == countryCode
           ? _value.countryCode
           : countryCode // ignore: cast_nullable_to_non_nullable
               as String,
-      testEnv: testEnv == freezed
+      testEnv: null == testEnv
           ? _value.testEnv
           : testEnv // ignore: cast_nullable_to_non_nullable
               as bool,
-      billingAddressConfig: billingAddressConfig == freezed
+      billingAddressConfig: freezed == billingAddressConfig
           ? _value.billingAddressConfig
           : billingAddressConfig // ignore: cast_nullable_to_non_nullable
               as BillingAddressConfig?,
-      isEmailRequired: isEmailRequired == freezed
+      isEmailRequired: null == isEmailRequired
           ? _value.isEmailRequired
           : isEmailRequired // ignore: cast_nullable_to_non_nullable
               as bool,
-      existingPaymentMethodRequired: existingPaymentMethodRequired == freezed
+      existingPaymentMethodRequired: null == existingPaymentMethodRequired
           ? _value.existingPaymentMethodRequired
           : existingPaymentMethodRequired // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -450,33 +454,35 @@ class _$_GooglePayInitParams implements _GooglePayInitParams {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GooglePayInitParams &&
-            const DeepCollectionEquality()
-                .equals(other.merchantName, merchantName) &&
-            const DeepCollectionEquality()
-                .equals(other.countryCode, countryCode) &&
-            const DeepCollectionEquality().equals(other.testEnv, testEnv) &&
-            const DeepCollectionEquality()
-                .equals(other.billingAddressConfig, billingAddressConfig) &&
-            const DeepCollectionEquality()
-                .equals(other.isEmailRequired, isEmailRequired) &&
-            const DeepCollectionEquality().equals(
-                other.existingPaymentMethodRequired,
-                existingPaymentMethodRequired));
+            (identical(other.merchantName, merchantName) ||
+                other.merchantName == merchantName) &&
+            (identical(other.countryCode, countryCode) ||
+                other.countryCode == countryCode) &&
+            (identical(other.testEnv, testEnv) || other.testEnv == testEnv) &&
+            (identical(other.billingAddressConfig, billingAddressConfig) ||
+                other.billingAddressConfig == billingAddressConfig) &&
+            (identical(other.isEmailRequired, isEmailRequired) ||
+                other.isEmailRequired == isEmailRequired) &&
+            (identical(other.existingPaymentMethodRequired,
+                    existingPaymentMethodRequired) ||
+                other.existingPaymentMethodRequired ==
+                    existingPaymentMethodRequired));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(merchantName),
-      const DeepCollectionEquality().hash(countryCode),
-      const DeepCollectionEquality().hash(testEnv),
-      const DeepCollectionEquality().hash(billingAddressConfig),
-      const DeepCollectionEquality().hash(isEmailRequired),
-      const DeepCollectionEquality().hash(existingPaymentMethodRequired));
+      merchantName,
+      countryCode,
+      testEnv,
+      billingAddressConfig,
+      isEmailRequired,
+      existingPaymentMethodRequired);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_GooglePayInitParamsCopyWith<_$_GooglePayInitParams> get copyWith =>
       __$$_GooglePayInitParamsCopyWithImpl<_$_GooglePayInitParams>(
           this, _$identity);
@@ -559,7 +565,8 @@ mixin _$BillingAddressConfig {
 abstract class $BillingAddressConfigCopyWith<$Res> {
   factory $BillingAddressConfigCopyWith(BillingAddressConfig value,
           $Res Function(BillingAddressConfig) then) =
-      _$BillingAddressConfigCopyWithImpl<$Res>;
+      _$BillingAddressConfigCopyWithImpl<$Res, BillingAddressConfig>;
+  @useResult
   $Res call(
       {bool? isRequired,
       BillingAddressFormat? format,
@@ -567,14 +574,17 @@ abstract class $BillingAddressConfigCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$BillingAddressConfigCopyWithImpl<$Res>
+class _$BillingAddressConfigCopyWithImpl<$Res,
+        $Val extends BillingAddressConfig>
     implements $BillingAddressConfigCopyWith<$Res> {
   _$BillingAddressConfigCopyWithImpl(this._value, this._then);
 
-  final BillingAddressConfig _value;
   // ignore: unused_field
-  final $Res Function(BillingAddressConfig) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? isRequired = freezed,
@@ -582,19 +592,19 @@ class _$BillingAddressConfigCopyWithImpl<$Res>
     Object? isPhoneNumberRequired = freezed,
   }) {
     return _then(_value.copyWith(
-      isRequired: isRequired == freezed
+      isRequired: freezed == isRequired
           ? _value.isRequired
           : isRequired // ignore: cast_nullable_to_non_nullable
               as bool?,
-      format: format == freezed
+      format: freezed == format
           ? _value.format
           : format // ignore: cast_nullable_to_non_nullable
               as BillingAddressFormat?,
-      isPhoneNumberRequired: isPhoneNumberRequired == freezed
+      isPhoneNumberRequired: freezed == isPhoneNumberRequired
           ? _value.isPhoneNumberRequired
           : isPhoneNumberRequired // ignore: cast_nullable_to_non_nullable
               as bool?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -605,6 +615,7 @@ abstract class _$$_BillingAddressConfigCopyWith<$Res>
           $Res Function(_$_BillingAddressConfig) then) =
       __$$_BillingAddressConfigCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {bool? isRequired,
       BillingAddressFormat? format,
@@ -613,15 +624,13 @@ abstract class _$$_BillingAddressConfigCopyWith<$Res>
 
 /// @nodoc
 class __$$_BillingAddressConfigCopyWithImpl<$Res>
-    extends _$BillingAddressConfigCopyWithImpl<$Res>
+    extends _$BillingAddressConfigCopyWithImpl<$Res, _$_BillingAddressConfig>
     implements _$$_BillingAddressConfigCopyWith<$Res> {
   __$$_BillingAddressConfigCopyWithImpl(_$_BillingAddressConfig _value,
       $Res Function(_$_BillingAddressConfig) _then)
-      : super(_value, (v) => _then(v as _$_BillingAddressConfig));
+      : super(_value, _then);
 
-  @override
-  _$_BillingAddressConfig get _value => super._value as _$_BillingAddressConfig;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? isRequired = freezed,
@@ -629,15 +638,15 @@ class __$$_BillingAddressConfigCopyWithImpl<$Res>
     Object? isPhoneNumberRequired = freezed,
   }) {
     return _then(_$_BillingAddressConfig(
-      isRequired: isRequired == freezed
+      isRequired: freezed == isRequired
           ? _value.isRequired
           : isRequired // ignore: cast_nullable_to_non_nullable
               as bool?,
-      format: format == freezed
+      format: freezed == format
           ? _value.format
           : format // ignore: cast_nullable_to_non_nullable
               as BillingAddressFormat?,
-      isPhoneNumberRequired: isPhoneNumberRequired == freezed
+      isPhoneNumberRequired: freezed == isPhoneNumberRequired
           ? _value.isPhoneNumberRequired
           : isPhoneNumberRequired // ignore: cast_nullable_to_non_nullable
               as bool?,
@@ -679,23 +688,21 @@ class _$_BillingAddressConfig implements _BillingAddressConfig {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_BillingAddressConfig &&
-            const DeepCollectionEquality()
-                .equals(other.isRequired, isRequired) &&
-            const DeepCollectionEquality().equals(other.format, format) &&
-            const DeepCollectionEquality()
-                .equals(other.isPhoneNumberRequired, isPhoneNumberRequired));
+            (identical(other.isRequired, isRequired) ||
+                other.isRequired == isRequired) &&
+            (identical(other.format, format) || other.format == format) &&
+            (identical(other.isPhoneNumberRequired, isPhoneNumberRequired) ||
+                other.isPhoneNumberRequired == isPhoneNumberRequired));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(isRequired),
-      const DeepCollectionEquality().hash(format),
-      const DeepCollectionEquality().hash(isPhoneNumberRequired));
+  int get hashCode =>
+      Object.hash(runtimeType, isRequired, format, isPhoneNumberRequired);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_BillingAddressConfigCopyWith<_$_BillingAddressConfig> get copyWith =>
       __$$_BillingAddressConfigCopyWithImpl<_$_BillingAddressConfig>(
           this, _$identity);
@@ -766,34 +773,39 @@ abstract class $CreateGooglePayPaymentParamsCopyWith<$Res> {
   factory $CreateGooglePayPaymentParamsCopyWith(
           CreateGooglePayPaymentParams value,
           $Res Function(CreateGooglePayPaymentParams) then) =
-      _$CreateGooglePayPaymentParamsCopyWithImpl<$Res>;
+      _$CreateGooglePayPaymentParamsCopyWithImpl<$Res,
+          CreateGooglePayPaymentParams>;
+  @useResult
   $Res call({String currencyCode, int amount});
 }
 
 /// @nodoc
-class _$CreateGooglePayPaymentParamsCopyWithImpl<$Res>
+class _$CreateGooglePayPaymentParamsCopyWithImpl<$Res,
+        $Val extends CreateGooglePayPaymentParams>
     implements $CreateGooglePayPaymentParamsCopyWith<$Res> {
   _$CreateGooglePayPaymentParamsCopyWithImpl(this._value, this._then);
 
-  final CreateGooglePayPaymentParams _value;
   // ignore: unused_field
-  final $Res Function(CreateGooglePayPaymentParams) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currencyCode = freezed,
-    Object? amount = freezed,
+    Object? currencyCode = null,
+    Object? amount = null,
   }) {
     return _then(_value.copyWith(
-      currencyCode: currencyCode == freezed
+      currencyCode: null == currencyCode
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: amount == freezed
+      amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -805,33 +817,32 @@ abstract class _$$_CreateGooglePayPaymentParamsCopyWith<$Res>
           $Res Function(_$_CreateGooglePayPaymentParams) then) =
       __$$_CreateGooglePayPaymentParamsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String currencyCode, int amount});
 }
 
 /// @nodoc
 class __$$_CreateGooglePayPaymentParamsCopyWithImpl<$Res>
-    extends _$CreateGooglePayPaymentParamsCopyWithImpl<$Res>
+    extends _$CreateGooglePayPaymentParamsCopyWithImpl<$Res,
+        _$_CreateGooglePayPaymentParams>
     implements _$$_CreateGooglePayPaymentParamsCopyWith<$Res> {
   __$$_CreateGooglePayPaymentParamsCopyWithImpl(
       _$_CreateGooglePayPaymentParams _value,
       $Res Function(_$_CreateGooglePayPaymentParams) _then)
-      : super(_value, (v) => _then(v as _$_CreateGooglePayPaymentParams));
+      : super(_value, _then);
 
-  @override
-  _$_CreateGooglePayPaymentParams get _value =>
-      super._value as _$_CreateGooglePayPaymentParams;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currencyCode = freezed,
-    Object? amount = freezed,
+    Object? currencyCode = null,
+    Object? amount = null,
   }) {
     return _then(_$_CreateGooglePayPaymentParams(
-      currencyCode: currencyCode == freezed
+      currencyCode: null == currencyCode
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: amount == freezed
+      amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as int,
@@ -872,20 +883,18 @@ class _$_CreateGooglePayPaymentParams implements _CreateGooglePayPaymentParams {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CreateGooglePayPaymentParams &&
-            const DeepCollectionEquality()
-                .equals(other.currencyCode, currencyCode) &&
-            const DeepCollectionEquality().equals(other.amount, amount));
+            (identical(other.currencyCode, currencyCode) ||
+                other.currencyCode == currencyCode) &&
+            (identical(other.amount, amount) || other.amount == amount));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(currencyCode),
-      const DeepCollectionEquality().hash(amount));
+  int get hashCode => Object.hash(runtimeType, currencyCode, amount);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CreateGooglePayPaymentParamsCopyWith<_$_CreateGooglePayPaymentParams>
       get copyWith => __$$_CreateGooglePayPaymentParamsCopyWithImpl<
           _$_CreateGooglePayPaymentParams>(this, _$identity);
@@ -954,34 +963,39 @@ mixin _$IsGooglePaySupportedParams {
 abstract class $IsGooglePaySupportedParamsCopyWith<$Res> {
   factory $IsGooglePaySupportedParamsCopyWith(IsGooglePaySupportedParams value,
           $Res Function(IsGooglePaySupportedParams) then) =
-      _$IsGooglePaySupportedParamsCopyWithImpl<$Res>;
+      _$IsGooglePaySupportedParamsCopyWithImpl<$Res,
+          IsGooglePaySupportedParams>;
+  @useResult
   $Res call({bool testEnv, bool existingPaymentMethodRequired});
 }
 
 /// @nodoc
-class _$IsGooglePaySupportedParamsCopyWithImpl<$Res>
+class _$IsGooglePaySupportedParamsCopyWithImpl<$Res,
+        $Val extends IsGooglePaySupportedParams>
     implements $IsGooglePaySupportedParamsCopyWith<$Res> {
   _$IsGooglePaySupportedParamsCopyWithImpl(this._value, this._then);
 
-  final IsGooglePaySupportedParams _value;
   // ignore: unused_field
-  final $Res Function(IsGooglePaySupportedParams) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? testEnv = freezed,
-    Object? existingPaymentMethodRequired = freezed,
+    Object? testEnv = null,
+    Object? existingPaymentMethodRequired = null,
   }) {
     return _then(_value.copyWith(
-      testEnv: testEnv == freezed
+      testEnv: null == testEnv
           ? _value.testEnv
           : testEnv // ignore: cast_nullable_to_non_nullable
               as bool,
-      existingPaymentMethodRequired: existingPaymentMethodRequired == freezed
+      existingPaymentMethodRequired: null == existingPaymentMethodRequired
           ? _value.existingPaymentMethodRequired
           : existingPaymentMethodRequired // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -993,33 +1007,32 @@ abstract class _$$_IsGooglePaySupportedParamsCopyWith<$Res>
           $Res Function(_$_IsGooglePaySupportedParams) then) =
       __$$_IsGooglePaySupportedParamsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({bool testEnv, bool existingPaymentMethodRequired});
 }
 
 /// @nodoc
 class __$$_IsGooglePaySupportedParamsCopyWithImpl<$Res>
-    extends _$IsGooglePaySupportedParamsCopyWithImpl<$Res>
+    extends _$IsGooglePaySupportedParamsCopyWithImpl<$Res,
+        _$_IsGooglePaySupportedParams>
     implements _$$_IsGooglePaySupportedParamsCopyWith<$Res> {
   __$$_IsGooglePaySupportedParamsCopyWithImpl(
       _$_IsGooglePaySupportedParams _value,
       $Res Function(_$_IsGooglePaySupportedParams) _then)
-      : super(_value, (v) => _then(v as _$_IsGooglePaySupportedParams));
+      : super(_value, _then);
 
-  @override
-  _$_IsGooglePaySupportedParams get _value =>
-      super._value as _$_IsGooglePaySupportedParams;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? testEnv = freezed,
-    Object? existingPaymentMethodRequired = freezed,
+    Object? testEnv = null,
+    Object? existingPaymentMethodRequired = null,
   }) {
     return _then(_$_IsGooglePaySupportedParams(
-      testEnv: testEnv == freezed
+      testEnv: null == testEnv
           ? _value.testEnv
           : testEnv // ignore: cast_nullable_to_non_nullable
               as bool,
-      existingPaymentMethodRequired: existingPaymentMethodRequired == freezed
+      existingPaymentMethodRequired: null == existingPaymentMethodRequired
           ? _value.existingPaymentMethodRequired
           : existingPaymentMethodRequired // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -1062,21 +1075,21 @@ class _$_IsGooglePaySupportedParams implements _IsGooglePaySupportedParams {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IsGooglePaySupportedParams &&
-            const DeepCollectionEquality().equals(other.testEnv, testEnv) &&
-            const DeepCollectionEquality().equals(
-                other.existingPaymentMethodRequired,
-                existingPaymentMethodRequired));
+            (identical(other.testEnv, testEnv) || other.testEnv == testEnv) &&
+            (identical(other.existingPaymentMethodRequired,
+                    existingPaymentMethodRequired) ||
+                other.existingPaymentMethodRequired ==
+                    existingPaymentMethodRequired));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(testEnv),
-      const DeepCollectionEquality().hash(existingPaymentMethodRequired));
+  int get hashCode =>
+      Object.hash(runtimeType, testEnv, existingPaymentMethodRequired);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_IsGooglePaySupportedParamsCopyWith<_$_IsGooglePaySupportedParams>
       get copyWith => __$$_IsGooglePaySupportedParamsCopyWithImpl<
           _$_IsGooglePaySupportedParams>(this, _$identity);

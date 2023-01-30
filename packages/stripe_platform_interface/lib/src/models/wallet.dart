@@ -9,7 +9,11 @@ part 'wallet.g.dart';
 enum CanAddToWalletErrorStatus {
   UNSUPPORTED_DEVICE,
   MISSING_CONFIGURATION,
-  CARD_ALREADY_EXISTS
+  CARD_ALREADY_EXISTS,
+  ///This card already exists on this device, but not on the paired device.
+  CARD_EXISTS_ON_CURRENT_DEVICE,
+  /// This card already exists on the paired device, but not on this device.
+  CARD_EXISTS_ON_PAIRED_DEVICE,
 }
 
 @freezed

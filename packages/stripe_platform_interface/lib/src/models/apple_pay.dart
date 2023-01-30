@@ -34,17 +34,48 @@ enum ApplePayContactFieldsType {
   postalAddress
 }
 
+/// A type that indicates how to ship purchased items
+enum ApplePayShippingType {
+  storePickup,
+  servicePickup,
+  delivery,
+  shipping,
+}
+
 @freezed
 
-///
+/// Shipping method details regarding apple pay
 class ApplePayShippingMethod with _$ApplePayShippingMethod {
   @JsonSerializable(explicitToJson: true)
   const factory ApplePayShippingMethod({
+    ///  A short, localized description.
     required String label,
+
+    /// The cost associated with this shipping option.
     required String amount,
+
+    /// A unique identifier for the shipping method.
     required String identifier,
+
+    /// When creating items for estimates or charges whose final value is not yet known, set this to true.
+    ///
+    /// Defaults to false.
     bool? isPending,
+
+    ///  A user-readable description of the shipping method.
+    ///
+    /// For example “Ships in 24 hours.” Don't repeat content
     String? detail,
+
+    ///  The unix timestamp of the start date of the expected range of delivery or shipping dates for a package, or the time range when an item is available for pickup.
+    ///
+    /// Measured in seconds
+    int? startDate,
+
+    ///  The unix timestamp of the end date of the expected range of delivery or shipping dates for a package, or the time range when an item is available for pickup.
+    ///
+    /// Measured in seconds.
+    int? endDate,
   }) = _ApplePayShippingMethod;
 
   factory ApplePayShippingMethod.fromJson(Map<String, dynamic> json) =>
@@ -113,6 +144,12 @@ class ApplePayCartSummaryItem with _$ApplePayCartSummaryItem {
 }
 
 enum ApplePayIntervalUnit { minute, hour, day, month, year }
+
+enum ApplePayMerchantCapability {
+  supports3DS,
+  supportsCredit,
+  supportsDebit,
+}
 
 @freezed
 class ApplePayPresentParams with _$ApplePayPresentParams {
@@ -205,7 +242,6 @@ class ApplePayContactName with _$ApplePayContactName {
 }
 
 @freezed
-
 /// Postal address data for Apple pay
 class ApplePayPostalAddress with _$ApplePayPostalAddress {
   @JsonSerializable(explicitToJson: true)
@@ -227,3 +263,4 @@ class ApplePayPostalAddress with _$ApplePayPostalAddress {
 typedef OnDidSetShippingContact = void Function(
     ApplePayShippingContact contact);
 typedef OnDidSetShippingMethod = void Function(ApplePayShippingMethod method);
+typedef OnDidSetCoupon = void Function(String couponCode);

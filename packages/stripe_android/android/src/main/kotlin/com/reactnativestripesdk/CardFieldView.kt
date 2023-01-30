@@ -143,7 +143,7 @@ class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
       }
     }
 
-    mCardWidget.setPadding(40, 0, 40, 0)
+    mCardWidget.setPadding(20, 0, 20, 0)
     mCardWidget.background = MaterialShapeDrawable(
       ShapeAppearanceModel()
         .toBuilder()
@@ -204,6 +204,10 @@ class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
 
   fun setPostalCodeEnabled(isEnabled: Boolean) {
     mCardWidget.postalCodeEnabled = isEnabled
+
+    if (isEnabled === false) {
+      mCardWidget.postalCodeRequired = false
+    }
   }
 
   /**

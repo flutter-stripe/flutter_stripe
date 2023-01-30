@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'financial_connections.dart';
 
@@ -34,37 +34,43 @@ abstract class $FinancialConnectionSessionResultCopyWith<$Res> {
   factory $FinancialConnectionSessionResultCopyWith(
           FinancialConnectionSessionResult value,
           $Res Function(FinancialConnectionSessionResult) then) =
-      _$FinancialConnectionSessionResultCopyWithImpl<$Res>;
+      _$FinancialConnectionSessionResultCopyWithImpl<$Res,
+          FinancialConnectionSessionResult>;
+  @useResult
   $Res call({FinancialConnectionSession session});
 
   $FinancialConnectionSessionCopyWith<$Res> get session;
 }
 
 /// @nodoc
-class _$FinancialConnectionSessionResultCopyWithImpl<$Res>
+class _$FinancialConnectionSessionResultCopyWithImpl<$Res,
+        $Val extends FinancialConnectionSessionResult>
     implements $FinancialConnectionSessionResultCopyWith<$Res> {
   _$FinancialConnectionSessionResultCopyWithImpl(this._value, this._then);
 
-  final FinancialConnectionSessionResult _value;
   // ignore: unused_field
-  final $Res Function(FinancialConnectionSessionResult) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? session = freezed,
+    Object? session = null,
   }) {
     return _then(_value.copyWith(
-      session: session == freezed
+      session: null == session
           ? _value.session
           : session // ignore: cast_nullable_to_non_nullable
               as FinancialConnectionSession,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $FinancialConnectionSessionCopyWith<$Res> get session {
     return $FinancialConnectionSessionCopyWith<$Res>(_value.session, (value) {
-      return _then(_value.copyWith(session: value));
+      return _then(_value.copyWith(session: value) as $Val);
     });
   }
 }
@@ -77,6 +83,7 @@ abstract class _$$_FinancialConnectionSessionResultCopyWith<$Res>
           $Res Function(_$_FinancialConnectionSessionResult) then) =
       __$$_FinancialConnectionSessionResultCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({FinancialConnectionSession session});
 
   @override
@@ -85,23 +92,21 @@ abstract class _$$_FinancialConnectionSessionResultCopyWith<$Res>
 
 /// @nodoc
 class __$$_FinancialConnectionSessionResultCopyWithImpl<$Res>
-    extends _$FinancialConnectionSessionResultCopyWithImpl<$Res>
+    extends _$FinancialConnectionSessionResultCopyWithImpl<$Res,
+        _$_FinancialConnectionSessionResult>
     implements _$$_FinancialConnectionSessionResultCopyWith<$Res> {
   __$$_FinancialConnectionSessionResultCopyWithImpl(
       _$_FinancialConnectionSessionResult _value,
       $Res Function(_$_FinancialConnectionSessionResult) _then)
-      : super(_value, (v) => _then(v as _$_FinancialConnectionSessionResult));
+      : super(_value, _then);
 
-  @override
-  _$_FinancialConnectionSessionResult get _value =>
-      super._value as _$_FinancialConnectionSessionResult;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? session = freezed,
+    Object? session = null,
   }) {
     return _then(_$_FinancialConnectionSessionResult(
-      session: session == freezed
+      session: null == session
           ? _value.session
           : session // ignore: cast_nullable_to_non_nullable
               as FinancialConnectionSession,
@@ -133,16 +138,16 @@ class _$_FinancialConnectionSessionResult
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FinancialConnectionSessionResult &&
-            const DeepCollectionEquality().equals(other.session, session));
+            (identical(other.session, session) || other.session == session));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(session));
+  int get hashCode => Object.hash(runtimeType, session);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FinancialConnectionSessionResultCopyWith<
           _$_FinancialConnectionSessionResult>
       get copyWith => __$$_FinancialConnectionSessionResultCopyWithImpl<
@@ -196,7 +201,9 @@ abstract class $FinancialConnectionTokenResultCopyWith<$Res> {
   factory $FinancialConnectionTokenResultCopyWith(
           FinancialConnectionTokenResult value,
           $Res Function(FinancialConnectionTokenResult) then) =
-      _$FinancialConnectionTokenResultCopyWithImpl<$Res>;
+      _$FinancialConnectionTokenResultCopyWithImpl<$Res,
+          FinancialConnectionTokenResult>;
+  @useResult
   $Res call(
       {FinancialConnectionSession session,
       FinancialConnectionBankAccountToken token});
@@ -206,43 +213,48 @@ abstract class $FinancialConnectionTokenResultCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FinancialConnectionTokenResultCopyWithImpl<$Res>
+class _$FinancialConnectionTokenResultCopyWithImpl<$Res,
+        $Val extends FinancialConnectionTokenResult>
     implements $FinancialConnectionTokenResultCopyWith<$Res> {
   _$FinancialConnectionTokenResultCopyWithImpl(this._value, this._then);
 
-  final FinancialConnectionTokenResult _value;
   // ignore: unused_field
-  final $Res Function(FinancialConnectionTokenResult) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? session = freezed,
-    Object? token = freezed,
+    Object? session = null,
+    Object? token = null,
   }) {
     return _then(_value.copyWith(
-      session: session == freezed
+      session: null == session
           ? _value.session
           : session // ignore: cast_nullable_to_non_nullable
               as FinancialConnectionSession,
-      token: token == freezed
+      token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as FinancialConnectionBankAccountToken,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $FinancialConnectionSessionCopyWith<$Res> get session {
     return $FinancialConnectionSessionCopyWith<$Res>(_value.session, (value) {
-      return _then(_value.copyWith(session: value));
+      return _then(_value.copyWith(session: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $FinancialConnectionBankAccountTokenCopyWith<$Res> get token {
     return $FinancialConnectionBankAccountTokenCopyWith<$Res>(_value.token,
         (value) {
-      return _then(_value.copyWith(token: value));
+      return _then(_value.copyWith(token: value) as $Val);
     });
   }
 }
@@ -255,6 +267,7 @@ abstract class _$$_FinancialConnectionTokenResultCopyWith<$Res>
           $Res Function(_$_FinancialConnectionTokenResult) then) =
       __$$_FinancialConnectionTokenResultCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {FinancialConnectionSession session,
       FinancialConnectionBankAccountToken token});
@@ -267,28 +280,26 @@ abstract class _$$_FinancialConnectionTokenResultCopyWith<$Res>
 
 /// @nodoc
 class __$$_FinancialConnectionTokenResultCopyWithImpl<$Res>
-    extends _$FinancialConnectionTokenResultCopyWithImpl<$Res>
+    extends _$FinancialConnectionTokenResultCopyWithImpl<$Res,
+        _$_FinancialConnectionTokenResult>
     implements _$$_FinancialConnectionTokenResultCopyWith<$Res> {
   __$$_FinancialConnectionTokenResultCopyWithImpl(
       _$_FinancialConnectionTokenResult _value,
       $Res Function(_$_FinancialConnectionTokenResult) _then)
-      : super(_value, (v) => _then(v as _$_FinancialConnectionTokenResult));
+      : super(_value, _then);
 
-  @override
-  _$_FinancialConnectionTokenResult get _value =>
-      super._value as _$_FinancialConnectionTokenResult;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? session = freezed,
-    Object? token = freezed,
+    Object? session = null,
+    Object? token = null,
   }) {
     return _then(_$_FinancialConnectionTokenResult(
-      session: session == freezed
+      session: null == session
           ? _value.session
           : session // ignore: cast_nullable_to_non_nullable
               as FinancialConnectionSession,
-      token: token == freezed
+      token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as FinancialConnectionBankAccountToken,
@@ -323,19 +334,17 @@ class _$_FinancialConnectionTokenResult
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FinancialConnectionTokenResult &&
-            const DeepCollectionEquality().equals(other.session, session) &&
-            const DeepCollectionEquality().equals(other.token, token));
+            (identical(other.session, session) || other.session == session) &&
+            (identical(other.token, token) || other.token == token));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(session),
-      const DeepCollectionEquality().hash(token));
+  int get hashCode => Object.hash(runtimeType, session, token);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FinancialConnectionTokenResultCopyWith<_$_FinancialConnectionTokenResult>
       get copyWith => __$$_FinancialConnectionTokenResultCopyWithImpl<
           _$_FinancialConnectionTokenResult>(this, _$identity);
@@ -398,7 +407,9 @@ mixin _$FinancialConnectionSession {
 abstract class $FinancialConnectionSessionCopyWith<$Res> {
   factory $FinancialConnectionSessionCopyWith(FinancialConnectionSession value,
           $Res Function(FinancialConnectionSession) then) =
-      _$FinancialConnectionSessionCopyWithImpl<$Res>;
+      _$FinancialConnectionSessionCopyWithImpl<$Res,
+          FinancialConnectionSession>;
+  @useResult
   $Res call(
       {String id,
       String clientSecret,
@@ -407,39 +418,42 @@ abstract class $FinancialConnectionSessionCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FinancialConnectionSessionCopyWithImpl<$Res>
+class _$FinancialConnectionSessionCopyWithImpl<$Res,
+        $Val extends FinancialConnectionSession>
     implements $FinancialConnectionSessionCopyWith<$Res> {
   _$FinancialConnectionSessionCopyWithImpl(this._value, this._then);
 
-  final FinancialConnectionSession _value;
   // ignore: unused_field
-  final $Res Function(FinancialConnectionSession) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? clientSecret = freezed,
-    Object? livemode = freezed,
-    Object? accounts = freezed,
+    Object? id = null,
+    Object? clientSecret = null,
+    Object? livemode = null,
+    Object? accounts = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      clientSecret: clientSecret == freezed
+      clientSecret: null == clientSecret
           ? _value.clientSecret
           : clientSecret // ignore: cast_nullable_to_non_nullable
               as String,
-      livemode: livemode == freezed
+      livemode: null == livemode
           ? _value.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
-      accounts: accounts == freezed
+      accounts: null == accounts
           ? _value.accounts
           : accounts // ignore: cast_nullable_to_non_nullable
               as List<FinancialConnectionAccount>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -451,6 +465,7 @@ abstract class _$$_FinancialConnectionSessionCopyWith<$Res>
           $Res Function(_$_FinancialConnectionSession) then) =
       __$$_FinancialConnectionSessionCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String id,
       String clientSecret,
@@ -460,38 +475,36 @@ abstract class _$$_FinancialConnectionSessionCopyWith<$Res>
 
 /// @nodoc
 class __$$_FinancialConnectionSessionCopyWithImpl<$Res>
-    extends _$FinancialConnectionSessionCopyWithImpl<$Res>
+    extends _$FinancialConnectionSessionCopyWithImpl<$Res,
+        _$_FinancialConnectionSession>
     implements _$$_FinancialConnectionSessionCopyWith<$Res> {
   __$$_FinancialConnectionSessionCopyWithImpl(
       _$_FinancialConnectionSession _value,
       $Res Function(_$_FinancialConnectionSession) _then)
-      : super(_value, (v) => _then(v as _$_FinancialConnectionSession));
+      : super(_value, _then);
 
-  @override
-  _$_FinancialConnectionSession get _value =>
-      super._value as _$_FinancialConnectionSession;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? clientSecret = freezed,
-    Object? livemode = freezed,
-    Object? accounts = freezed,
+    Object? id = null,
+    Object? clientSecret = null,
+    Object? livemode = null,
+    Object? accounts = null,
   }) {
     return _then(_$_FinancialConnectionSession(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      clientSecret: clientSecret == freezed
+      clientSecret: null == clientSecret
           ? _value.clientSecret
           : clientSecret // ignore: cast_nullable_to_non_nullable
               as String,
-      livemode: livemode == freezed
+      livemode: null == livemode
           ? _value.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
-      accounts: accounts == freezed
+      accounts: null == accounts
           ? _value._accounts
           : accounts // ignore: cast_nullable_to_non_nullable
               as List<FinancialConnectionAccount>,
@@ -531,6 +544,7 @@ class _$_FinancialConnectionSession implements _FinancialConnectionSession {
   /// The accounts that were collected as part of this session
   @override
   List<FinancialConnectionAccount> get accounts {
+    if (_accounts is EqualUnmodifiableListView) return _accounts;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_accounts);
   }
@@ -545,24 +559,22 @@ class _$_FinancialConnectionSession implements _FinancialConnectionSession {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FinancialConnectionSession &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.clientSecret, clientSecret) &&
-            const DeepCollectionEquality().equals(other.livemode, livemode) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.clientSecret, clientSecret) ||
+                other.clientSecret == clientSecret) &&
+            (identical(other.livemode, livemode) ||
+                other.livemode == livemode) &&
             const DeepCollectionEquality().equals(other._accounts, _accounts));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(clientSecret),
-      const DeepCollectionEquality().hash(livemode),
+  int get hashCode => Object.hash(runtimeType, id, clientSecret, livemode,
       const DeepCollectionEquality().hash(_accounts));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FinancialConnectionSessionCopyWith<_$_FinancialConnectionSession>
       get copyWith => __$$_FinancialConnectionSessionCopyWithImpl<
           _$_FinancialConnectionSession>(this, _$identity);
@@ -643,7 +655,9 @@ abstract class $FinancialConnectionBankAccountTokenCopyWith<$Res> {
   factory $FinancialConnectionBankAccountTokenCopyWith(
           FinancialConnectionBankAccountToken value,
           $Res Function(FinancialConnectionBankAccountToken) then) =
-      _$FinancialConnectionBankAccountTokenCopyWithImpl<$Res>;
+      _$FinancialConnectionBankAccountTokenCopyWithImpl<$Res,
+          FinancialConnectionBankAccountToken>;
+  @useResult
   $Res call(
       {BankAccount? bankAccount,
       bool livemode,
@@ -655,54 +669,58 @@ abstract class $FinancialConnectionBankAccountTokenCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FinancialConnectionBankAccountTokenCopyWithImpl<$Res>
+class _$FinancialConnectionBankAccountTokenCopyWithImpl<$Res,
+        $Val extends FinancialConnectionBankAccountToken>
     implements $FinancialConnectionBankAccountTokenCopyWith<$Res> {
   _$FinancialConnectionBankAccountTokenCopyWithImpl(this._value, this._then);
 
-  final FinancialConnectionBankAccountToken _value;
   // ignore: unused_field
-  final $Res Function(FinancialConnectionBankAccountToken) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? bankAccount = freezed,
-    Object? livemode = freezed,
+    Object? livemode = null,
     Object? id = freezed,
-    Object? used = freezed,
+    Object? used = null,
     Object? created = freezed,
   }) {
     return _then(_value.copyWith(
-      bankAccount: bankAccount == freezed
+      bankAccount: freezed == bankAccount
           ? _value.bankAccount
           : bankAccount // ignore: cast_nullable_to_non_nullable
               as BankAccount?,
-      livemode: livemode == freezed
+      livemode: null == livemode
           ? _value.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      used: used == freezed
+      used: null == used
           ? _value.used
           : used // ignore: cast_nullable_to_non_nullable
               as bool,
-      created: created == freezed
+      created: freezed == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
               as int?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $BankAccountCopyWith<$Res>? get bankAccount {
     if (_value.bankAccount == null) {
       return null;
     }
 
     return $BankAccountCopyWith<$Res>(_value.bankAccount!, (value) {
-      return _then(_value.copyWith(bankAccount: value));
+      return _then(_value.copyWith(bankAccount: value) as $Val);
     });
   }
 }
@@ -715,6 +733,7 @@ abstract class _$$_FinancialConnectionBankAccountTokenCopyWith<$Res>
           $Res Function(_$_FinancialConnectionBankAccountToken) then) =
       __$$_FinancialConnectionBankAccountTokenCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {BankAccount? bankAccount,
       bool livemode,
@@ -728,44 +747,41 @@ abstract class _$$_FinancialConnectionBankAccountTokenCopyWith<$Res>
 
 /// @nodoc
 class __$$_FinancialConnectionBankAccountTokenCopyWithImpl<$Res>
-    extends _$FinancialConnectionBankAccountTokenCopyWithImpl<$Res>
+    extends _$FinancialConnectionBankAccountTokenCopyWithImpl<$Res,
+        _$_FinancialConnectionBankAccountToken>
     implements _$$_FinancialConnectionBankAccountTokenCopyWith<$Res> {
   __$$_FinancialConnectionBankAccountTokenCopyWithImpl(
       _$_FinancialConnectionBankAccountToken _value,
       $Res Function(_$_FinancialConnectionBankAccountToken) _then)
-      : super(
-            _value, (v) => _then(v as _$_FinancialConnectionBankAccountToken));
+      : super(_value, _then);
 
-  @override
-  _$_FinancialConnectionBankAccountToken get _value =>
-      super._value as _$_FinancialConnectionBankAccountToken;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? bankAccount = freezed,
-    Object? livemode = freezed,
+    Object? livemode = null,
     Object? id = freezed,
-    Object? used = freezed,
+    Object? used = null,
     Object? created = freezed,
   }) {
     return _then(_$_FinancialConnectionBankAccountToken(
-      bankAccount: bankAccount == freezed
+      bankAccount: freezed == bankAccount
           ? _value.bankAccount
           : bankAccount // ignore: cast_nullable_to_non_nullable
               as BankAccount?,
-      livemode: livemode == freezed
+      livemode: null == livemode
           ? _value.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      used: used == freezed
+      used: null == used
           ? _value.used
           : used // ignore: cast_nullable_to_non_nullable
               as bool,
-      created: created == freezed
+      created: freezed == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -819,26 +835,23 @@ class _$_FinancialConnectionBankAccountToken
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FinancialConnectionBankAccountToken &&
-            const DeepCollectionEquality()
-                .equals(other.bankAccount, bankAccount) &&
-            const DeepCollectionEquality().equals(other.livemode, livemode) &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.used, used) &&
-            const DeepCollectionEquality().equals(other.created, created));
+            (identical(other.bankAccount, bankAccount) ||
+                other.bankAccount == bankAccount) &&
+            (identical(other.livemode, livemode) ||
+                other.livemode == livemode) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.used, used) || other.used == used) &&
+            (identical(other.created, created) || other.created == created));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(bankAccount),
-      const DeepCollectionEquality().hash(livemode),
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(used),
-      const DeepCollectionEquality().hash(created));
+  int get hashCode =>
+      Object.hash(runtimeType, bankAccount, livemode, id, used, created);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FinancialConnectionBankAccountTokenCopyWith<
           _$_FinancialConnectionBankAccountToken>
       get copyWith => __$$_FinancialConnectionBankAccountTokenCopyWithImpl<
@@ -950,7 +963,9 @@ mixin _$FinancialConnectionAccount {
 abstract class $FinancialConnectionAccountCopyWith<$Res> {
   factory $FinancialConnectionAccountCopyWith(FinancialConnectionAccount value,
           $Res Function(FinancialConnectionAccount) then) =
-      _$FinancialConnectionAccountCopyWithImpl<$Res>;
+      _$FinancialConnectionAccountCopyWithImpl<$Res,
+          FinancialConnectionAccount>;
+  @useResult
   $Res call(
       {String id,
       bool livemode,
@@ -971,105 +986,110 @@ abstract class $FinancialConnectionAccountCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FinancialConnectionAccountCopyWithImpl<$Res>
+class _$FinancialConnectionAccountCopyWithImpl<$Res,
+        $Val extends FinancialConnectionAccount>
     implements $FinancialConnectionAccountCopyWith<$Res> {
   _$FinancialConnectionAccountCopyWithImpl(this._value, this._then);
 
-  final FinancialConnectionAccount _value;
   // ignore: unused_field
-  final $Res Function(FinancialConnectionAccount) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? livemode = freezed,
+    Object? id = null,
+    Object? livemode = null,
     Object? displayName = freezed,
-    Object? status = freezed,
-    Object? institutionName = freezed,
+    Object? status = null,
+    Object? institutionName = null,
     Object? last4 = freezed,
-    Object? created = freezed,
+    Object? created = null,
     Object? balance = freezed,
     Object? balanceRefresh = freezed,
-    Object? category = freezed,
-    Object? subcategory = freezed,
+    Object? category = null,
+    Object? subcategory = null,
     Object? permissions = freezed,
-    Object? supportedPaymentMethodTypes = freezed,
+    Object? supportedPaymentMethodTypes = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      livemode: livemode == freezed
+      livemode: null == livemode
           ? _value.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
-      displayName: displayName == freezed
+      displayName: freezed == displayName
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as AccountStatus,
-      institutionName: institutionName == freezed
+      institutionName: null == institutionName
           ? _value.institutionName
           : institutionName // ignore: cast_nullable_to_non_nullable
               as String,
-      last4: last4 == freezed
+      last4: freezed == last4
           ? _value.last4
           : last4 // ignore: cast_nullable_to_non_nullable
               as String?,
-      created: created == freezed
+      created: null == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
               as int,
-      balance: balance == freezed
+      balance: freezed == balance
           ? _value.balance
           : balance // ignore: cast_nullable_to_non_nullable
               as AccountBalance?,
-      balanceRefresh: balanceRefresh == freezed
+      balanceRefresh: freezed == balanceRefresh
           ? _value.balanceRefresh
           : balanceRefresh // ignore: cast_nullable_to_non_nullable
               as BalanceRefresh?,
-      category: category == freezed
+      category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as AccountCategory,
-      subcategory: subcategory == freezed
+      subcategory: null == subcategory
           ? _value.subcategory
           : subcategory // ignore: cast_nullable_to_non_nullable
               as AccountSubcategory,
-      permissions: permissions == freezed
+      permissions: freezed == permissions
           ? _value.permissions
           : permissions // ignore: cast_nullable_to_non_nullable
               as List<AccountPermission>?,
-      supportedPaymentMethodTypes: supportedPaymentMethodTypes == freezed
+      supportedPaymentMethodTypes: null == supportedPaymentMethodTypes
           ? _value.supportedPaymentMethodTypes
           : supportedPaymentMethodTypes // ignore: cast_nullable_to_non_nullable
               as List<FinancialConnectionsPaymentMethodType>,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AccountBalanceCopyWith<$Res>? get balance {
     if (_value.balance == null) {
       return null;
     }
 
     return $AccountBalanceCopyWith<$Res>(_value.balance!, (value) {
-      return _then(_value.copyWith(balance: value));
+      return _then(_value.copyWith(balance: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $BalanceRefreshCopyWith<$Res>? get balanceRefresh {
     if (_value.balanceRefresh == null) {
       return null;
     }
 
     return $BalanceRefreshCopyWith<$Res>(_value.balanceRefresh!, (value) {
-      return _then(_value.copyWith(balanceRefresh: value));
+      return _then(_value.copyWith(balanceRefresh: value) as $Val);
     });
   }
 }
@@ -1082,6 +1102,7 @@ abstract class _$$_FinancialConnectionAccountCopyWith<$Res>
           $Res Function(_$_FinancialConnectionAccount) then) =
       __$$_FinancialConnectionAccountCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String id,
       bool livemode,
@@ -1105,83 +1126,81 @@ abstract class _$$_FinancialConnectionAccountCopyWith<$Res>
 
 /// @nodoc
 class __$$_FinancialConnectionAccountCopyWithImpl<$Res>
-    extends _$FinancialConnectionAccountCopyWithImpl<$Res>
+    extends _$FinancialConnectionAccountCopyWithImpl<$Res,
+        _$_FinancialConnectionAccount>
     implements _$$_FinancialConnectionAccountCopyWith<$Res> {
   __$$_FinancialConnectionAccountCopyWithImpl(
       _$_FinancialConnectionAccount _value,
       $Res Function(_$_FinancialConnectionAccount) _then)
-      : super(_value, (v) => _then(v as _$_FinancialConnectionAccount));
+      : super(_value, _then);
 
-  @override
-  _$_FinancialConnectionAccount get _value =>
-      super._value as _$_FinancialConnectionAccount;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? livemode = freezed,
+    Object? id = null,
+    Object? livemode = null,
     Object? displayName = freezed,
-    Object? status = freezed,
-    Object? institutionName = freezed,
+    Object? status = null,
+    Object? institutionName = null,
     Object? last4 = freezed,
-    Object? created = freezed,
+    Object? created = null,
     Object? balance = freezed,
     Object? balanceRefresh = freezed,
-    Object? category = freezed,
-    Object? subcategory = freezed,
+    Object? category = null,
+    Object? subcategory = null,
     Object? permissions = freezed,
-    Object? supportedPaymentMethodTypes = freezed,
+    Object? supportedPaymentMethodTypes = null,
   }) {
     return _then(_$_FinancialConnectionAccount(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      livemode: livemode == freezed
+      livemode: null == livemode
           ? _value.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
-      displayName: displayName == freezed
+      displayName: freezed == displayName
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as AccountStatus,
-      institutionName: institutionName == freezed
+      institutionName: null == institutionName
           ? _value.institutionName
           : institutionName // ignore: cast_nullable_to_non_nullable
               as String,
-      last4: last4 == freezed
+      last4: freezed == last4
           ? _value.last4
           : last4 // ignore: cast_nullable_to_non_nullable
               as String?,
-      created: created == freezed
+      created: null == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
               as int,
-      balance: balance == freezed
+      balance: freezed == balance
           ? _value.balance
           : balance // ignore: cast_nullable_to_non_nullable
               as AccountBalance?,
-      balanceRefresh: balanceRefresh == freezed
+      balanceRefresh: freezed == balanceRefresh
           ? _value.balanceRefresh
           : balanceRefresh // ignore: cast_nullable_to_non_nullable
               as BalanceRefresh?,
-      category: category == freezed
+      category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as AccountCategory,
-      subcategory: subcategory == freezed
+      subcategory: null == subcategory
           ? _value.subcategory
           : subcategory // ignore: cast_nullable_to_non_nullable
               as AccountSubcategory,
-      permissions: permissions == freezed
+      permissions: freezed == permissions
           ? _value._permissions
           : permissions // ignore: cast_nullable_to_non_nullable
               as List<AccountPermission>?,
-      supportedPaymentMethodTypes: supportedPaymentMethodTypes == freezed
+      supportedPaymentMethodTypes: null == supportedPaymentMethodTypes
           ? _value._supportedPaymentMethodTypes
           : supportedPaymentMethodTypes // ignore: cast_nullable_to_non_nullable
               as List<FinancialConnectionsPaymentMethodType>,
@@ -1266,6 +1285,7 @@ class _$_FinancialConnectionAccount implements _FinancialConnectionAccount {
   List<AccountPermission>? get permissions {
     final value = _permissions;
     if (value == null) return null;
+    if (_permissions is EqualUnmodifiableListView) return _permissions;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -1277,6 +1297,8 @@ class _$_FinancialConnectionAccount implements _FinancialConnectionAccount {
   /// Support payment method types for this account.
   @override
   List<FinancialConnectionsPaymentMethodType> get supportedPaymentMethodTypes {
+    if (_supportedPaymentMethodTypes is EqualUnmodifiableListView)
+      return _supportedPaymentMethodTypes;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_supportedPaymentMethodTypes);
   }
@@ -1291,21 +1313,23 @@ class _$_FinancialConnectionAccount implements _FinancialConnectionAccount {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FinancialConnectionAccount &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.livemode, livemode) &&
-            const DeepCollectionEquality()
-                .equals(other.displayName, displayName) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.institutionName, institutionName) &&
-            const DeepCollectionEquality().equals(other.last4, last4) &&
-            const DeepCollectionEquality().equals(other.created, created) &&
-            const DeepCollectionEquality().equals(other.balance, balance) &&
-            const DeepCollectionEquality()
-                .equals(other.balanceRefresh, balanceRefresh) &&
-            const DeepCollectionEquality().equals(other.category, category) &&
-            const DeepCollectionEquality()
-                .equals(other.subcategory, subcategory) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.livemode, livemode) ||
+                other.livemode == livemode) &&
+            (identical(other.displayName, displayName) ||
+                other.displayName == displayName) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.institutionName, institutionName) ||
+                other.institutionName == institutionName) &&
+            (identical(other.last4, last4) || other.last4 == last4) &&
+            (identical(other.created, created) || other.created == created) &&
+            (identical(other.balance, balance) || other.balance == balance) &&
+            (identical(other.balanceRefresh, balanceRefresh) ||
+                other.balanceRefresh == balanceRefresh) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
+            (identical(other.subcategory, subcategory) ||
+                other.subcategory == subcategory) &&
             const DeepCollectionEquality()
                 .equals(other._permissions, _permissions) &&
             const DeepCollectionEquality().equals(
@@ -1317,22 +1341,23 @@ class _$_FinancialConnectionAccount implements _FinancialConnectionAccount {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(livemode),
-      const DeepCollectionEquality().hash(displayName),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(institutionName),
-      const DeepCollectionEquality().hash(last4),
-      const DeepCollectionEquality().hash(created),
-      const DeepCollectionEquality().hash(balance),
-      const DeepCollectionEquality().hash(balanceRefresh),
-      const DeepCollectionEquality().hash(category),
-      const DeepCollectionEquality().hash(subcategory),
+      id,
+      livemode,
+      displayName,
+      status,
+      institutionName,
+      last4,
+      created,
+      balance,
+      balanceRefresh,
+      category,
+      subcategory,
       const DeepCollectionEquality().hash(_permissions),
       const DeepCollectionEquality().hash(_supportedPaymentMethodTypes));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FinancialConnectionAccountCopyWith<_$_FinancialConnectionAccount>
       get copyWith => __$$_FinancialConnectionAccountCopyWithImpl<
           _$_FinancialConnectionAccount>(this, _$identity);
@@ -1446,34 +1471,37 @@ mixin _$BalanceRefresh {
 abstract class $BalanceRefreshCopyWith<$Res> {
   factory $BalanceRefreshCopyWith(
           BalanceRefresh value, $Res Function(BalanceRefresh) then) =
-      _$BalanceRefreshCopyWithImpl<$Res>;
+      _$BalanceRefreshCopyWithImpl<$Res, BalanceRefresh>;
+  @useResult
   $Res call({BalanceRefreshStatus status, int lastAttemptedAt});
 }
 
 /// @nodoc
-class _$BalanceRefreshCopyWithImpl<$Res>
+class _$BalanceRefreshCopyWithImpl<$Res, $Val extends BalanceRefresh>
     implements $BalanceRefreshCopyWith<$Res> {
   _$BalanceRefreshCopyWithImpl(this._value, this._then);
 
-  final BalanceRefresh _value;
   // ignore: unused_field
-  final $Res Function(BalanceRefresh) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? lastAttemptedAt = freezed,
+    Object? status = null,
+    Object? lastAttemptedAt = null,
   }) {
     return _then(_value.copyWith(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as BalanceRefreshStatus,
-      lastAttemptedAt: lastAttemptedAt == freezed
+      lastAttemptedAt: null == lastAttemptedAt
           ? _value.lastAttemptedAt
           : lastAttemptedAt // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -1484,31 +1512,30 @@ abstract class _$$_BalanceRefreshCopyWith<$Res>
           _$_BalanceRefresh value, $Res Function(_$_BalanceRefresh) then) =
       __$$_BalanceRefreshCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({BalanceRefreshStatus status, int lastAttemptedAt});
 }
 
 /// @nodoc
 class __$$_BalanceRefreshCopyWithImpl<$Res>
-    extends _$BalanceRefreshCopyWithImpl<$Res>
+    extends _$BalanceRefreshCopyWithImpl<$Res, _$_BalanceRefresh>
     implements _$$_BalanceRefreshCopyWith<$Res> {
   __$$_BalanceRefreshCopyWithImpl(
       _$_BalanceRefresh _value, $Res Function(_$_BalanceRefresh) _then)
-      : super(_value, (v) => _then(v as _$_BalanceRefresh));
+      : super(_value, _then);
 
-  @override
-  _$_BalanceRefresh get _value => super._value as _$_BalanceRefresh;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? lastAttemptedAt = freezed,
+    Object? status = null,
+    Object? lastAttemptedAt = null,
   }) {
     return _then(_$_BalanceRefresh(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as BalanceRefreshStatus,
-      lastAttemptedAt: lastAttemptedAt == freezed
+      lastAttemptedAt: null == lastAttemptedAt
           ? _value.lastAttemptedAt
           : lastAttemptedAt // ignore: cast_nullable_to_non_nullable
               as int,
@@ -1544,20 +1571,18 @@ class _$_BalanceRefresh implements _BalanceRefresh {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_BalanceRefresh &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.lastAttemptedAt, lastAttemptedAt));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.lastAttemptedAt, lastAttemptedAt) ||
+                other.lastAttemptedAt == lastAttemptedAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(lastAttemptedAt));
+  int get hashCode => Object.hash(runtimeType, status, lastAttemptedAt);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_BalanceRefreshCopyWith<_$_BalanceRefresh> get copyWith =>
       __$$_BalanceRefreshCopyWithImpl<_$_BalanceRefresh>(this, _$identity);
 
@@ -1632,7 +1657,8 @@ mixin _$AccountBalance {
 abstract class $AccountBalanceCopyWith<$Res> {
   factory $AccountBalanceCopyWith(
           AccountBalance value, $Res Function(AccountBalance) then) =
-      _$AccountBalanceCopyWithImpl<$Res>;
+      _$AccountBalanceCopyWithImpl<$Res, AccountBalance>;
+  @useResult
   $Res call(
       {int asOf,
       BalanceType type,
@@ -1642,44 +1668,46 @@ abstract class $AccountBalanceCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AccountBalanceCopyWithImpl<$Res>
+class _$AccountBalanceCopyWithImpl<$Res, $Val extends AccountBalance>
     implements $AccountBalanceCopyWith<$Res> {
   _$AccountBalanceCopyWithImpl(this._value, this._then);
 
-  final AccountBalance _value;
   // ignore: unused_field
-  final $Res Function(AccountBalance) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? asOf = freezed,
-    Object? type = freezed,
+    Object? asOf = null,
+    Object? type = null,
     Object? cash = freezed,
     Object? credit = freezed,
     Object? current = freezed,
   }) {
     return _then(_value.copyWith(
-      asOf: asOf == freezed
+      asOf: null == asOf
           ? _value.asOf
           : asOf // ignore: cast_nullable_to_non_nullable
               as int,
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as BalanceType,
-      cash: cash == freezed
+      cash: freezed == cash
           ? _value.cash
           : cash // ignore: cast_nullable_to_non_nullable
               as Map<String, int>?,
-      credit: credit == freezed
+      credit: freezed == credit
           ? _value.credit
           : credit // ignore: cast_nullable_to_non_nullable
               as Map<String, int>?,
-      current: current == freezed
+      current: freezed == current
           ? _value.current
           : current // ignore: cast_nullable_to_non_nullable
               as Map<String, int>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -1690,6 +1718,7 @@ abstract class _$$_AccountBalanceCopyWith<$Res>
           _$_AccountBalance value, $Res Function(_$_AccountBalance) then) =
       __$$_AccountBalanceCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int asOf,
       BalanceType type,
@@ -1700,41 +1729,39 @@ abstract class _$$_AccountBalanceCopyWith<$Res>
 
 /// @nodoc
 class __$$_AccountBalanceCopyWithImpl<$Res>
-    extends _$AccountBalanceCopyWithImpl<$Res>
+    extends _$AccountBalanceCopyWithImpl<$Res, _$_AccountBalance>
     implements _$$_AccountBalanceCopyWith<$Res> {
   __$$_AccountBalanceCopyWithImpl(
       _$_AccountBalance _value, $Res Function(_$_AccountBalance) _then)
-      : super(_value, (v) => _then(v as _$_AccountBalance));
+      : super(_value, _then);
 
-  @override
-  _$_AccountBalance get _value => super._value as _$_AccountBalance;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? asOf = freezed,
-    Object? type = freezed,
+    Object? asOf = null,
+    Object? type = null,
     Object? cash = freezed,
     Object? credit = freezed,
     Object? current = freezed,
   }) {
     return _then(_$_AccountBalance(
-      asOf: asOf == freezed
+      asOf: null == asOf
           ? _value.asOf
           : asOf // ignore: cast_nullable_to_non_nullable
               as int,
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as BalanceType,
-      cash: cash == freezed
+      cash: freezed == cash
           ? _value._cash
           : cash // ignore: cast_nullable_to_non_nullable
               as Map<String, int>?,
-      credit: credit == freezed
+      credit: freezed == credit
           ? _value._credit
           : credit // ignore: cast_nullable_to_non_nullable
               as Map<String, int>?,
-      current: current == freezed
+      current: freezed == current
           ? _value._current
           : current // ignore: cast_nullable_to_non_nullable
               as Map<String, int>?,
@@ -1783,6 +1810,7 @@ class _$_AccountBalance implements _AccountBalance {
   Map<String, int>? get cash {
     final value = _cash;
     if (value == null) return null;
+    if (_cash is EqualUnmodifiableMapView) return _cash;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(value);
   }
@@ -1801,6 +1829,7 @@ class _$_AccountBalance implements _AccountBalance {
   Map<String, int>? get credit {
     final value = _credit;
     if (value == null) return null;
+    if (_credit is EqualUnmodifiableMapView) return _credit;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(value);
   }
@@ -1819,6 +1848,7 @@ class _$_AccountBalance implements _AccountBalance {
   Map<String, int>? get current {
     final value = _current;
     if (value == null) return null;
+    if (_current is EqualUnmodifiableMapView) return _current;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(value);
   }
@@ -1833,8 +1863,8 @@ class _$_AccountBalance implements _AccountBalance {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AccountBalance &&
-            const DeepCollectionEquality().equals(other.asOf, asOf) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
+            (identical(other.asOf, asOf) || other.asOf == asOf) &&
+            (identical(other.type, type) || other.type == type) &&
             const DeepCollectionEquality().equals(other._cash, _cash) &&
             const DeepCollectionEquality().equals(other._credit, _credit) &&
             const DeepCollectionEquality().equals(other._current, _current));
@@ -1844,14 +1874,15 @@ class _$_AccountBalance implements _AccountBalance {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(asOf),
-      const DeepCollectionEquality().hash(type),
+      asOf,
+      type,
       const DeepCollectionEquality().hash(_cash),
       const DeepCollectionEquality().hash(_credit),
       const DeepCollectionEquality().hash(_current));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AccountBalanceCopyWith<_$_AccountBalance> get copyWith =>
       __$$_AccountBalanceCopyWithImpl<_$_AccountBalance>(this, _$identity);
 

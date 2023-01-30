@@ -76,6 +76,14 @@ public class RCTEventEmitter : NSObject {
     func constantsToExport() -> [AnyHashable : Any] {
         return [:]
     }
+    
+    func startObserving() {
+        
+    }
+    
+    func stopObserving() {
+        
+    }
 }
 
 
@@ -95,5 +103,16 @@ func registerFont(_ fontFamily: String) {
     if let fr = fontRef {
         CTFontManagerRegisterGraphicsFont(fr, &errorRef)
         
+    }
+}
+
+@objc
+class RCTViewManager: NSObject {
+    func view() -> UIView! {
+        return UIView()
+    }
+    
+    func requiresMainQueueSetup() -> Bool {
+        return true
     }
 }

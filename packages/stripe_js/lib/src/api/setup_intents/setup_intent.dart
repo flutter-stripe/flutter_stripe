@@ -1,6 +1,5 @@
-import 'package:stripe_js/stripe_api.dart';
-
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:stripe_js/stripe_api.dart';
 
 part 'setup_intent.freezed.dart';
 part 'setup_intent.g.dart';
@@ -106,14 +105,7 @@ class SetupIntent with _$SetupIntent {
     /// Unix epoch.
     int? created,
 
-    /// The client secret of this SetupIntent.
-    /// Used for client-side retrieval using a publishable key.
-    /// The client secret can be used to complete payment setup from your
-    /// frontend.
-    /// It should not be stored, logged, or exposed to anyone other
-    /// than the customer.
-    /// Make sure that you have TLS enabled on any page that includes the
-    /// client secret.
+    /// The ID of the Customer this SetupIntent belongs to.
     String? customer,
 
     /// An arbitrary string attached to the object.

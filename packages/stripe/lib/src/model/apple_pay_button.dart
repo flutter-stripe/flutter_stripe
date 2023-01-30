@@ -16,6 +16,7 @@ enum ApplePayButtonType {
   support,
   contribute,
   tip,
+  advance,
 }
 
 /// Predefined styles for the Apple pay button.

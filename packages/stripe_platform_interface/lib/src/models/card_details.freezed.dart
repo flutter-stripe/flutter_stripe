@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'card_details.dart';
 
@@ -35,19 +35,23 @@ mixin _$CardDetails {
 abstract class $CardDetailsCopyWith<$Res> {
   factory $CardDetailsCopyWith(
           CardDetails value, $Res Function(CardDetails) then) =
-      _$CardDetailsCopyWithImpl<$Res>;
+      _$CardDetailsCopyWithImpl<$Res, CardDetails>;
+  @useResult
   $Res call(
       {String? number, int? expirationYear, int? expirationMonth, String? cvc});
 }
 
 /// @nodoc
-class _$CardDetailsCopyWithImpl<$Res> implements $CardDetailsCopyWith<$Res> {
+class _$CardDetailsCopyWithImpl<$Res, $Val extends CardDetails>
+    implements $CardDetailsCopyWith<$Res> {
   _$CardDetailsCopyWithImpl(this._value, this._then);
 
-  final CardDetails _value;
   // ignore: unused_field
-  final $Res Function(CardDetails) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? number = freezed,
@@ -56,23 +60,23 @@ class _$CardDetailsCopyWithImpl<$Res> implements $CardDetailsCopyWith<$Res> {
     Object? cvc = freezed,
   }) {
     return _then(_value.copyWith(
-      number: number == freezed
+      number: freezed == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String?,
-      expirationYear: expirationYear == freezed
+      expirationYear: freezed == expirationYear
           ? _value.expirationYear
           : expirationYear // ignore: cast_nullable_to_non_nullable
               as int?,
-      expirationMonth: expirationMonth == freezed
+      expirationMonth: freezed == expirationMonth
           ? _value.expirationMonth
           : expirationMonth // ignore: cast_nullable_to_non_nullable
               as int?,
-      cvc: cvc == freezed
+      cvc: freezed == cvc
           ? _value.cvc
           : cvc // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -83,22 +87,20 @@ abstract class _$$_CardDetailsConstructorCopyWith<$Res>
           $Res Function(_$_CardDetailsConstructor) then) =
       __$$_CardDetailsConstructorCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? number, int? expirationYear, int? expirationMonth, String? cvc});
 }
 
 /// @nodoc
 class __$$_CardDetailsConstructorCopyWithImpl<$Res>
-    extends _$CardDetailsCopyWithImpl<$Res>
+    extends _$CardDetailsCopyWithImpl<$Res, _$_CardDetailsConstructor>
     implements _$$_CardDetailsConstructorCopyWith<$Res> {
   __$$_CardDetailsConstructorCopyWithImpl(_$_CardDetailsConstructor _value,
       $Res Function(_$_CardDetailsConstructor) _then)
-      : super(_value, (v) => _then(v as _$_CardDetailsConstructor));
+      : super(_value, _then);
 
-  @override
-  _$_CardDetailsConstructor get _value =>
-      super._value as _$_CardDetailsConstructor;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? number = freezed,
@@ -107,19 +109,19 @@ class __$$_CardDetailsConstructorCopyWithImpl<$Res>
     Object? cvc = freezed,
   }) {
     return _then(_$_CardDetailsConstructor(
-      number: number == freezed
+      number: freezed == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as String?,
-      expirationYear: expirationYear == freezed
+      expirationYear: freezed == expirationYear
           ? _value.expirationYear
           : expirationYear // ignore: cast_nullable_to_non_nullable
               as int?,
-      expirationMonth: expirationMonth == freezed
+      expirationMonth: freezed == expirationMonth
           ? _value.expirationMonth
           : expirationMonth // ignore: cast_nullable_to_non_nullable
               as int?,
-      cvc: cvc == freezed
+      cvc: freezed == cvc
           ? _value.cvc
           : cvc // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -157,25 +159,22 @@ class _$_CardDetailsConstructor extends _CardDetailsConstructor {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CardDetailsConstructor &&
-            const DeepCollectionEquality().equals(other.number, number) &&
-            const DeepCollectionEquality()
-                .equals(other.expirationYear, expirationYear) &&
-            const DeepCollectionEquality()
-                .equals(other.expirationMonth, expirationMonth) &&
-            const DeepCollectionEquality().equals(other.cvc, cvc));
+            (identical(other.number, number) || other.number == number) &&
+            (identical(other.expirationYear, expirationYear) ||
+                other.expirationYear == expirationYear) &&
+            (identical(other.expirationMonth, expirationMonth) ||
+                other.expirationMonth == expirationMonth) &&
+            (identical(other.cvc, cvc) || other.cvc == cvc));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(number),
-      const DeepCollectionEquality().hash(expirationYear),
-      const DeepCollectionEquality().hash(expirationMonth),
-      const DeepCollectionEquality().hash(cvc));
+  int get hashCode =>
+      Object.hash(runtimeType, number, expirationYear, expirationMonth, cvc);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CardDetailsConstructorCopyWith<_$_CardDetailsConstructor> get copyWith =>
       __$$_CardDetailsConstructorCopyWithImpl<_$_CardDetailsConstructor>(
           this, _$identity);

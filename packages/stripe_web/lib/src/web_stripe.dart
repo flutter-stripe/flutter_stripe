@@ -5,9 +5,9 @@ import 'dart:html';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-
-import 'package:stripe_js/stripe_js.dart' as stripe_js;
 import 'package:stripe_js/stripe_api.dart' as stripe_js;
+import 'package:stripe_js/stripe_js.dart' as stripe_js;
+
 import 'parser/payment_intent.dart';
 import 'parser/payment_methods.dart';
 import 'parser/setup_intent.dart';
@@ -390,6 +390,39 @@ class WebStripe extends StripePlatform {
   @override
   Future<void> resetPaymentSheetCustomer() {
     throw WebUnsupportedError.method('resetPaymentSheet');
+  }
+
+  @override
+  Future<bool> isPlatformPaySupported({IsGooglePaySupportedParams? params}) {
+    throw WebUnsupportedError.method('isPlatformPaySupported');
+  }
+
+  @override
+  Future<PaymentIntent> platformPayConfirmPaymentIntent(
+      {required String clientSecret,
+      required PlatformPayConfirmParams params}) {
+    throw WebUnsupportedError.method('platformPayConfirmPaymentIntent');
+  }
+
+  @override
+  Future<SetupIntent> platformPayConfirmSetupIntent(
+      {required String clientSecret,
+      required PlatformPayConfirmParams params}) {
+    throw WebUnsupportedError.method('platformPayConfirmSetupIntent');
+  }
+
+  @override
+  Future<PaymentMethod> platformPayCreatePaymentMethod({
+    required PlatformPayPaymentMethodParams params,
+    bool usesDeprecatedTokenFlow = false,
+  }) {
+    throw WebUnsupportedError.method('platformPayCreatePaymentMethod');
+  }
+
+  @override
+  Future<void> updatePlatformSheet(
+      {required PlatformPaySheetUpdateParams params}) {
+    throw WebUnsupportedError.method('updatePlatformSheet');
   }
 }
 

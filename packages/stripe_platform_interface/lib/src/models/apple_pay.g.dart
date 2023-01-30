@@ -14,6 +14,8 @@ _$_ApplePayShippingMethod _$$_ApplePayShippingMethodFromJson(
       identifier: json['identifier'] as String,
       isPending: json['isPending'] as bool?,
       detail: json['detail'] as String?,
+      startDate: json['startDate'] as int?,
+      endDate: json['endDate'] as int?,
     );
 
 Map<String, dynamic> _$$_ApplePayShippingMethodToJson(
@@ -24,6 +26,8 @@ Map<String, dynamic> _$$_ApplePayShippingMethodToJson(
       'identifier': instance.identifier,
       'isPending': instance.isPending,
       'detail': instance.detail,
+      'startDate': instance.startDate,
+      'endDate': instance.endDate,
     };
 
 _$_ImmediateCartSummaryItem _$$_ImmediateCartSummaryItemFromJson(

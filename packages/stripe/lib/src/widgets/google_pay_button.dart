@@ -3,11 +3,13 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_stripe/src/model/platform_pay_button.dart';
 
 class GooglePayButton extends StatefulWidget {
   const GooglePayButton({
     required this.onTap,
     this.type = GooglePayButtonType.pay,
+    this.buttonType = PlatformButtonType.pay,
     Key? key,
   }) : super(key: key);
 
@@ -17,7 +19,10 @@ class GooglePayButton extends StatefulWidget {
   // ignore: library_private_types_in_public_api
   _GooglePayButtonState createState() => _GooglePayButtonState();
 
+  @Deprecated('Use [buttonType] instead')
   final GooglePayButtonType type;
+
+  final PlatformButtonType buttonType;
   final VoidCallback onTap;
 }
 
@@ -27,7 +32,9 @@ class _GooglePayButtonState extends State<GooglePayButton> {
 
   @override
   void initState() {
+    // ignore: deprecated_member_use_from_same_package
     _creationParams['buttonType'] = describeEnum(widget.type);
+    _creationParams['type'] = widget.buttonType.id;
 
     super.initState();
   }
