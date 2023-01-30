@@ -135,7 +135,7 @@ class Stripe {
   ///Checks if Apple pay is supported on this device.
   ///
   /// Always returns false on non Apple devices.
-  @Deprecated('Use [PlatformPaySupported] instead')
+  @Deprecated('Use [isPlatformPaySupported] instead')
   Future<bool> checkApplePaySupport() async {
     await _awaitForSettings();
     final isSupported = await _platform.isApplePaySupported();
