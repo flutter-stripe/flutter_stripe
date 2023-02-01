@@ -1,3 +1,7 @@
+## 8.0.0
+
+ - a
+
 ## 7.0.0
 **Breaking Changes**
 - This library now supports iOS 13 and up, due to stripe-ios increasing the deployment target
