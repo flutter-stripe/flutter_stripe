@@ -1,3 +1,7 @@
+## 3.0.0
+
+ - a
+
 ## 2.1.1
 
  - Bump "flutter_stripe_web" to `2.1.1`.
