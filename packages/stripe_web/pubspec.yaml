@@ -13,7 +13,7 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
   freezed_annotation: ^2.0.3
-  stripe_platform_interface: ^7.0.0
+  stripe_platform_interface: ^8.0.0
   js: ^0.6.3
   stripe_js: ^2.0.1
 
