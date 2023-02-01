@@ -1,3 +1,9 @@
+## 8.0.0
+
+ - a
+
+ - **FEAT**: Detect uninitialized stripeSdk on Android (#1030).
+
 ## 7.0.1
 
  - Fix #1022 make library compatible with Kotlin 1.7
