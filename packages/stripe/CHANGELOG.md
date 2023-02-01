@@ -1,7 +1,11 @@
-## 8.0.0
+## 8.0.0+1
+**Breaking Changes**
+- This library now supports the new Stripe platform pay methods. See: [migration guide](https://docs.page/flutter-stripe/flutter_stripe/platform_pay_migration) for more details.
 
- - a
-
+- **Fixes**
+-  Fix for #955 and #1081, enable automatic webview closing.
+- Fix #1083 use correct method channel for dangerouslyupdateCard.
+- Several fixes by the Stripe sdk [v.0.21.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.21.0) , [v.0.22.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.22.0) and [v.0.23.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.23.0).
  - **FIX**: #1083 use correct method channel for dangerouslyupdateCard (#1094).
  - **FEAT**: scroll to keep card field visible (#1061).
 
