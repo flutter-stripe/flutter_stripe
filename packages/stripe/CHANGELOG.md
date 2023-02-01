@@ -1,3 +1,10 @@
+## 8.0.0
+
+ - a
+
+ - **FIX**: #1083 use correct method channel for dangerouslyupdateCard (#1094).
+ - **FEAT**: scroll to keep card field visible (#1061).
+
 ## 7.0.0
 **Breaking Changes**
 - This library now supports iOS 13 and up, due to stripe-ios increasing the deployment target
