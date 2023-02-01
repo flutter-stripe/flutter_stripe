@@ -1,3 +1,6 @@
+## 3.0.0
+- Comply to breaking changes in platform interface. No changes further.
+
 ## 2.1.1
 
  - Bump "flutter_stripe_web" to `2.1.1`.
