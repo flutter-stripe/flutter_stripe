@@ -207,7 +207,7 @@ class _CardFieldState extends State<CardField> {
 
   CardStyle effectiveCardStyle(InputDecoration decoration) {
     final fontSize = widget.style?.fontSize?.toInt() ??
-        Theme.of(context).textTheme.subtitle1?.fontSize?.toInt() ??
+        Theme.of(context).textTheme.titleMedium?.fontSize?.toInt() ??
         kCardFieldDefaultFontSize;
 
     // Flutter fonts need to be loaded in the native framework to work
@@ -311,7 +311,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
   CardStyle? _lastStyle;
   CardStyle resolveStyle(CardStyle? style) {
     final theme = Theme.of(context);
-    final baseTextStyle = Theme.of(context).textTheme.subtitle1;
+    final baseTextStyle = Theme.of(context).textTheme.titleMedium;
     return CardStyle(
       borderWidth: 0,
       backgroundColor: Colors.transparent,
@@ -323,8 +323,8 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
           kCardFieldDefaultTextColor,
       fontSize: baseTextStyle?.fontSize?.toInt() ?? kCardFieldDefaultFontSize,
       // fontFamily: baseTextStyle?.fontFamily ?? kCardFieldDefaultFontFamily,
-      textErrorColor:
-          theme.inputDecorationTheme.errorStyle?.color ?? theme.errorColor,
+      textErrorColor: theme.inputDecorationTheme.errorStyle?.color ??
+          theme.colorScheme.error,
       placeholderColor:
           theme.inputDecorationTheme.hintStyle?.color ?? theme.hintColor,
     ).apply(style);
