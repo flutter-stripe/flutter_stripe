@@ -1,3 +1,7 @@
+## 8.0.0+1
+
+ - Fix #1103 broken android imports
+
 ## 8.0.0
 **Breaking Changes**
 - This library now supports the new Stripe platform pay methods. See: [migration guide](https://docs.page/flutter-stripe/flutter_stripe/platform_pay_migration) for more details.
