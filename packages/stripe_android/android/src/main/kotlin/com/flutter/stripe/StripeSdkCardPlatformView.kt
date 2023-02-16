@@ -1,14 +1,14 @@
 package com.flutter.stripe
 
 import android.content.Context
-import android.text.InputType
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.NonNull
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
 import com.reactnativestripesdk.*
+import com.reactnativestripesdk.utils.getIntOrNull
+import com.reactnativestripesdk.utils.getValOr
 import com.stripe.android.databinding.CardInputWidgetBinding
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
