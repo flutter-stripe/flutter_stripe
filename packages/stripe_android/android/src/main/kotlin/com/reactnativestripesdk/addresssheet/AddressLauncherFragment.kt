@@ -89,7 +89,7 @@ class AddressLauncherFragment : Fragment() {
       autocompleteCountries = autocompleteCountries,
     )
     this.callback = callback
-    context.currentActivity.let {
+    (context.currentActivity as? FragmentActivity)?.let {
       attemptToCleanupPreviousFragment(it)
       commitFragmentAndStartFlow(it)
     }

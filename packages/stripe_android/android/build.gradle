@@ -42,7 +42,7 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
-    implementation 'com.stripe:stripe-android:20.16.+'
+    implementation 'com.stripe:stripe-android:[20.19.2, 20.20.0['
     implementation "com.stripe:financial-connections:20.16.+"
     implementation 'com.google.android.material:material:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'

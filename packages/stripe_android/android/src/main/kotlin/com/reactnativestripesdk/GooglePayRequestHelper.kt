@@ -2,7 +2,6 @@ package com.reactnativestripesdk
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReadableMap

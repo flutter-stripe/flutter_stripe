@@ -7,8 +7,6 @@ import com.facebook.react.common.MapBuilder
 import com.facebook.react.uimanager.SimpleViewManager
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.annotations.ReactProp
-import com.facebook.react.bridge.ReactApplicationContext
-import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding
 
 
 class AddToWalletButtonManager(applicationContext: Context) : SimpleViewManager<AddToWalletButtonView?>() {

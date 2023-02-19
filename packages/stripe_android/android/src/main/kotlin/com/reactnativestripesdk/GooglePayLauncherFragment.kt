@@ -57,7 +57,7 @@ class GooglePayLauncherFragment : Fragment() {
       allowCreditCards = googlePayParams.getBooleanOr("allowCreditCards", true),
     )
 
-    context.currentActivity?.let {
+    (context.currentActivity as? FragmentActivity)?.let {
       attemptToCleanupPreviousFragment(it)
       commitFragmentAndStartFlow(it)
     } ?: run {
