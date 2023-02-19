@@ -9,6 +9,10 @@ protocol ViewManagerDelegate {
     var cardFormView: CardFormView? { get set }
 }
 
+func RCTMakeAndLogError(_ error: String, _ something: String?, _ anotherSomething: String?) {
+    print("Error from flutter_stripe: $error")
+}
+
 @objc(StripePlugin)
 class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
 
@@ -184,7 +188,12 @@ extension  StripePlugin {
     }
     
     func presentPaymentSheet(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        presentPaymentSheet(resolver: resolver(for: result), rejecter: rejecter(for: result))
+        guard let arguments = call.arguments as? FlutterMap,
+              let options = arguments["options"] as? NSDictionary else {
+            result(FlutterError.invalidParams)
+            return
+        }
+        presentPaymentSheet(options: options, resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
     
     func createTokenForCVCUpdate(_ call: FlutterMethodCall, result: @escaping FlutterResult) {

@@ -167,6 +167,8 @@ extension StripeSdk : PKPaymentAuthorizationViewControllerDelegate, STPApplePayC
     ) {
         if let clientSecret = self.confirmApplePayPaymentClientSecret {
             completion(clientSecret, nil)
+        } else if let clientSecret = self.confirmApplePaySetupClientSecret {
+            completion(clientSecret, nil)
         } else {
             self.applePayCompletionCallback = completion
             let method = Mappers.mapFromPaymentMethod(paymentMethod.splitApplePayAddressByNewline())
@@ -174,6 +176,19 @@ extension StripeSdk : PKPaymentAuthorizationViewControllerDelegate, STPApplePayC
             self.deprecatedApplePayRequestRejecter = nil
         }
     }
+    
+   func applePayContext(
+       _ context: STPApplePayContext,
+       willCompleteWithResult authorizationResult: PKPaymentAuthorizationResult,
+       handler: @escaping (PKPaymentAuthorizationResult) -> Void
+   ) {
+       if let callback = self.platformPayOrderTrackingJSCallback {
+           self.orderTrackingHandler = (authorizationResult, handler)
+           callback(nil)
+       } else {
+           handler(authorizationResult)
+       }
+   }
     
     func applePayContext(
         _ context: STPApplePayContext,
