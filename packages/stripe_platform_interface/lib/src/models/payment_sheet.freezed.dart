@@ -3647,3 +3647,161 @@ abstract class _PresentParameters implements PresentPaymentSheetParameters {
   _$$_PresentParametersCopyWith<_$_PresentParameters> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+PaymentSheetPresentOptions _$PaymentSheetPresentOptionsFromJson(
+    Map<String, dynamic> json) {
+  return _PaymentSheetPresentOptions.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentSheetPresentOptions {
+  /// The number of milliseconds (after presenting) before the Payment Sheet
+  /// closes automatically.
+  ///
+  /// At which point presentPaymentSheet` will resolve with an error.
+  int? get timeout => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentSheetPresentOptionsCopyWith<PaymentSheetPresentOptions>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentSheetPresentOptionsCopyWith<$Res> {
+  factory $PaymentSheetPresentOptionsCopyWith(PaymentSheetPresentOptions value,
+          $Res Function(PaymentSheetPresentOptions) then) =
+      _$PaymentSheetPresentOptionsCopyWithImpl<$Res,
+          PaymentSheetPresentOptions>;
+  @useResult
+  $Res call({int? timeout});
+}
+
+/// @nodoc
+class _$PaymentSheetPresentOptionsCopyWithImpl<$Res,
+        $Val extends PaymentSheetPresentOptions>
+    implements $PaymentSheetPresentOptionsCopyWith<$Res> {
+  _$PaymentSheetPresentOptionsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? timeout = freezed,
+  }) {
+    return _then(_value.copyWith(
+      timeout: freezed == timeout
+          ? _value.timeout
+          : timeout // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_PaymentSheetPresentOptionsCopyWith<$Res>
+    implements $PaymentSheetPresentOptionsCopyWith<$Res> {
+  factory _$$_PaymentSheetPresentOptionsCopyWith(
+          _$_PaymentSheetPresentOptions value,
+          $Res Function(_$_PaymentSheetPresentOptions) then) =
+      __$$_PaymentSheetPresentOptionsCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int? timeout});
+}
+
+/// @nodoc
+class __$$_PaymentSheetPresentOptionsCopyWithImpl<$Res>
+    extends _$PaymentSheetPresentOptionsCopyWithImpl<$Res,
+        _$_PaymentSheetPresentOptions>
+    implements _$$_PaymentSheetPresentOptionsCopyWith<$Res> {
+  __$$_PaymentSheetPresentOptionsCopyWithImpl(
+      _$_PaymentSheetPresentOptions _value,
+      $Res Function(_$_PaymentSheetPresentOptions) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? timeout = freezed,
+  }) {
+    return _then(_$_PaymentSheetPresentOptions(
+      timeout: freezed == timeout
+          ? _value.timeout
+          : timeout // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_PaymentSheetPresentOptions implements _PaymentSheetPresentOptions {
+  const _$_PaymentSheetPresentOptions({this.timeout});
+
+  factory _$_PaymentSheetPresentOptions.fromJson(Map<String, dynamic> json) =>
+      _$$_PaymentSheetPresentOptionsFromJson(json);
+
+  /// The number of milliseconds (after presenting) before the Payment Sheet
+  /// closes automatically.
+  ///
+  /// At which point presentPaymentSheet` will resolve with an error.
+  @override
+  final int? timeout;
+
+  @override
+  String toString() {
+    return 'PaymentSheetPresentOptions(timeout: $timeout)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentSheetPresentOptions &&
+            (identical(other.timeout, timeout) || other.timeout == timeout));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, timeout);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PaymentSheetPresentOptionsCopyWith<_$_PaymentSheetPresentOptions>
+      get copyWith => __$$_PaymentSheetPresentOptionsCopyWithImpl<
+          _$_PaymentSheetPresentOptions>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentSheetPresentOptionsToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymentSheetPresentOptions
+    implements PaymentSheetPresentOptions {
+  const factory _PaymentSheetPresentOptions({final int? timeout}) =
+      _$_PaymentSheetPresentOptions;
+
+  factory _PaymentSheetPresentOptions.fromJson(Map<String, dynamic> json) =
+      _$_PaymentSheetPresentOptions.fromJson;
+
+  @override
+
+  /// The number of milliseconds (after presenting) before the Payment Sheet
+  /// closes automatically.
+  ///
+  /// At which point presentPaymentSheet` will resolve with an error.
+  int? get timeout;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PaymentSheetPresentOptionsCopyWith<_$_PaymentSheetPresentOptions>
+      get copyWith => throw _privateConstructorUsedError;
+}

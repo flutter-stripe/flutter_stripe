@@ -320,3 +320,15 @@ Map<String, dynamic> _$$_PresentParametersToJson(
       'clientSecret': instance.clientSecret,
       'confirmPayment': instance.confirmPayment,
     };
+
+_$_PaymentSheetPresentOptions _$$_PaymentSheetPresentOptionsFromJson(
+        Map<String, dynamic> json) =>
+    _$_PaymentSheetPresentOptions(
+      timeout: json['timeout'] as int?,
+    );
+
+Map<String, dynamic> _$$_PaymentSheetPresentOptionsToJson(
+        _$_PaymentSheetPresentOptions instance) =>
+    <String, dynamic>{
+      'timeout': instance.timeout,
+    };
