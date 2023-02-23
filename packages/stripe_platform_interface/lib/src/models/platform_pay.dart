@@ -169,6 +169,11 @@ class ApplePayPaymentMethodParams with _$ApplePayPaymentMethodParams {
 
     /// Value used for prefilling the coupon code field.
     String? couponCode,
+
+    /// Use this to support different types of payment request.
+    ///
+    /// Only supported on iOS 16 and higher.
+    PaymentRequestType? request,
   }) = _ApplePayPaymentMethodParams;
 
   factory ApplePayPaymentMethodParams.fromJson(Map<String, dynamic> json) =>
@@ -283,4 +288,109 @@ class GooglePayShippingAddressConfig with _$GooglePayShippingAddressConfig {
 
   factory GooglePayShippingAddressConfig.fromJson(Map<String, dynamic> json) =>
       _$GooglePayShippingAddressConfigFromJson(json);
+}
+
+/// Request for a one time payment.
+///
+/// To support different types of payments request include a payment request type.
+///Only supported on iOS 16 and higher.
+@Freezed(unionKey: 'type')
+class PaymentRequestType with _$PaymentRequestType {
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('Recurring')
+
+  /// Use this for a recurring payment
+  ///
+  /// For example a subscription
+  const factory PaymentRequestType.recurring({
+    /// Descirption that you provide to the recurring payment.
+    ///
+    /// Apple will display this in the sheet
+    required String description,
+
+    /// A URL to web page where the user can update or delete the payment method for recurring
+    required String managementUrl,
+
+    /// The regular billing cycle for the payment, including start end dates, interval and count.
+    required ImmediateCartSummaryItem billing,
+
+    /// Same as the billing property but related to trial period.
+    ImmediateCartSummaryItem? trialBilling,
+
+    /// A localized billing agreement that Apple displays to user before authorizing the payment
+    String? billingAgreement,
+
+    /// A URL you provide to receive life cycle notifications from Apple pay servers about the merchant token for recurring payment.
+    ///
+    /// For more info see receiving and handling merchant token notifications
+    String? tokenNotificationURL,
+  }) = _PaymentRequestTypeRecurring;
+
+  @FreezedUnionValue('AutomaticReload')
+
+  /// Use this for a reload or refill payment
+  ///
+  /// For example a store card top up
+  const factory PaymentRequestType.automaticReload({
+    /// Descirption that you provide to the recurring payment.
+    ///
+    /// Apple will display this in the sheet
+    required String description,
+
+    /// A URL to web page where the user can update or delete the payment method for recurring
+    required String managementUrl,
+
+    /// A short localized description of the item
+    required String label,
+
+    /// The amount that is automatically applied to the account when the balance drops below the threshold amount.
+    required String reloadAmount,
+
+    /// The balance and account reaches before you apply the automatic reload amount.
+    required String thresholdAmount,
+
+    /// A localized billing agreement that Apple displays to user before authorizing the payment
+    String? billingAgreement,
+
+    /// A URL you provide to receive life cycle notifications from Apple pay servers about the merchant token for recurring payment.
+    ///
+    /// For more info see receiving and handling merchant token notifications
+    String? tokenNotificationURL,
+  }) = _PaymentRequestTypeReload;
+
+  @FreezedUnionValue('MultiMerchant')
+
+  /// Use this to indicate payments for multiple merchants.
+  const factory PaymentRequestType.multiMerchant({
+    required List<ApplePayMultiMerchant> merchants,
+  }) = _PaymentRequestTypeMultiMerchant;
+
+  factory PaymentRequestType.fromJson(Map<String, dynamic> json) =>
+      _$PaymentRequestTypeFromJson(json);
+}
+
+@freezed
+
+/// Data record for multimerchant payment
+class ApplePayMultiMerchant with _$ApplePayMultiMerchant {
+  @JsonSerializable(explicitToJson: true)
+  const factory ApplePayMultiMerchant({
+    /// The apple pay merchant identifier
+    required String merchantIdentifier,
+
+    /// External identifier for the merchant
+    required String externalIdentifier,
+
+    /// The merchant display name Apple pay associates with the payment token
+    required String merchantName,
+
+    /// The merchant top level domain Apple Pay associates with teh payment token
+    String? merchantDomain,
+
+    /// Amount to authorize for the payment token
+    required String amount,
+  }) = _ApplePayMultiMerchant;
+
+  factory ApplePayMultiMerchant.fromJson(Map<String, dynamic> json) =>
+      _$ApplePayMultiMerchantFromJson(json);
 }

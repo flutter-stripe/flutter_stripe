@@ -2688,6 +2688,11 @@ mixin _$ApplePayPaymentMethodParams {
   /// Value used for prefilling the coupon code field.
   String? get couponCode => throw _privateConstructorUsedError;
 
+  /// Use this to support different types of payment request.
+  ///
+  /// Only supported on iOS 16 and higher.
+  PaymentRequestType? get request => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ApplePayPaymentMethodParamsCopyWith<ApplePayPaymentMethodParams>
@@ -2702,7 +2707,12 @@ abstract class $ApplePayPaymentMethodParamsCopyWith<$Res> {
       _$ApplePayPaymentMethodParamsCopyWithImpl<$Res,
           ApplePayPaymentMethodParams>;
   @useResult
-  $Res call({bool? supportsCouponCode, String? couponCode});
+  $Res call(
+      {bool? supportsCouponCode,
+      String? couponCode,
+      PaymentRequestType? request});
+
+  $PaymentRequestTypeCopyWith<$Res>? get request;
 }
 
 /// @nodoc
@@ -2721,6 +2731,7 @@ class _$ApplePayPaymentMethodParamsCopyWithImpl<$Res,
   $Res call({
     Object? supportsCouponCode = freezed,
     Object? couponCode = freezed,
+    Object? request = freezed,
   }) {
     return _then(_value.copyWith(
       supportsCouponCode: freezed == supportsCouponCode
@@ -2731,7 +2742,23 @@ class _$ApplePayPaymentMethodParamsCopyWithImpl<$Res,
           ? _value.couponCode
           : couponCode // ignore: cast_nullable_to_non_nullable
               as String?,
+      request: freezed == request
+          ? _value.request
+          : request // ignore: cast_nullable_to_non_nullable
+              as PaymentRequestType?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentRequestTypeCopyWith<$Res>? get request {
+    if (_value.request == null) {
+      return null;
+    }
+
+    return $PaymentRequestTypeCopyWith<$Res>(_value.request!, (value) {
+      return _then(_value.copyWith(request: value) as $Val);
+    });
   }
 }
 
@@ -2744,7 +2771,13 @@ abstract class _$$_ApplePayPaymentMethodParamsCopyWith<$Res>
       __$$_ApplePayPaymentMethodParamsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool? supportsCouponCode, String? couponCode});
+  $Res call(
+      {bool? supportsCouponCode,
+      String? couponCode,
+      PaymentRequestType? request});
+
+  @override
+  $PaymentRequestTypeCopyWith<$Res>? get request;
 }
 
 /// @nodoc
@@ -2762,6 +2795,7 @@ class __$$_ApplePayPaymentMethodParamsCopyWithImpl<$Res>
   $Res call({
     Object? supportsCouponCode = freezed,
     Object? couponCode = freezed,
+    Object? request = freezed,
   }) {
     return _then(_$_ApplePayPaymentMethodParams(
       supportsCouponCode: freezed == supportsCouponCode
@@ -2772,6 +2806,10 @@ class __$$_ApplePayPaymentMethodParamsCopyWithImpl<$Res>
           ? _value.couponCode
           : couponCode // ignore: cast_nullable_to_non_nullable
               as String?,
+      request: freezed == request
+          ? _value.request
+          : request // ignore: cast_nullable_to_non_nullable
+              as PaymentRequestType?,
     ));
   }
 }
@@ -2781,7 +2819,7 @@ class __$$_ApplePayPaymentMethodParamsCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_ApplePayPaymentMethodParams implements _ApplePayPaymentMethodParams {
   const _$_ApplePayPaymentMethodParams(
-      {this.supportsCouponCode, this.couponCode});
+      {this.supportsCouponCode, this.couponCode, this.request});
 
   factory _$_ApplePayPaymentMethodParams.fromJson(Map<String, dynamic> json) =>
       _$$_ApplePayPaymentMethodParamsFromJson(json);
@@ -2797,9 +2835,15 @@ class _$_ApplePayPaymentMethodParams implements _ApplePayPaymentMethodParams {
   @override
   final String? couponCode;
 
+  /// Use this to support different types of payment request.
+  ///
+  /// Only supported on iOS 16 and higher.
+  @override
+  final PaymentRequestType? request;
+
   @override
   String toString() {
-    return 'ApplePayPaymentMethodParams(supportsCouponCode: $supportsCouponCode, couponCode: $couponCode)';
+    return 'ApplePayPaymentMethodParams(supportsCouponCode: $supportsCouponCode, couponCode: $couponCode, request: $request)';
   }
 
   @override
@@ -2810,12 +2854,14 @@ class _$_ApplePayPaymentMethodParams implements _ApplePayPaymentMethodParams {
             (identical(other.supportsCouponCode, supportsCouponCode) ||
                 other.supportsCouponCode == supportsCouponCode) &&
             (identical(other.couponCode, couponCode) ||
-                other.couponCode == couponCode));
+                other.couponCode == couponCode) &&
+            (identical(other.request, request) || other.request == request));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, supportsCouponCode, couponCode);
+  int get hashCode =>
+      Object.hash(runtimeType, supportsCouponCode, couponCode, request);
 
   @JsonKey(ignore: true)
   @override
@@ -2836,7 +2882,8 @@ abstract class _ApplePayPaymentMethodParams
     implements ApplePayPaymentMethodParams {
   const factory _ApplePayPaymentMethodParams(
       {final bool? supportsCouponCode,
-      final String? couponCode}) = _$_ApplePayPaymentMethodParams;
+      final String? couponCode,
+      final PaymentRequestType? request}) = _$_ApplePayPaymentMethodParams;
 
   factory _ApplePayPaymentMethodParams.fromJson(Map<String, dynamic> json) =
       _$_ApplePayPaymentMethodParams.fromJson;
@@ -2852,6 +2899,12 @@ abstract class _ApplePayPaymentMethodParams
 
   /// Value used for prefilling the coupon code field.
   String? get couponCode;
+  @override
+
+  /// Use this to support different types of payment request.
+  ///
+  /// Only supported on iOS 16 and higher.
+  PaymentRequestType? get request;
   @override
   @JsonKey(ignore: true)
   _$$_ApplePayPaymentMethodParamsCopyWith<_$_ApplePayPaymentMethodParams>
@@ -3922,4 +3975,1265 @@ abstract class _GooglePayShippingAddressConfig
   @JsonKey(ignore: true)
   _$$_GooglePayShippingAddressConfigCopyWith<_$_GooglePayShippingAddressConfig>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+PaymentRequestType _$PaymentRequestTypeFromJson(Map<String, dynamic> json) {
+  switch (json['type']) {
+    case 'Recurring':
+      return _PaymentRequestTypeRecurring.fromJson(json);
+    case 'AutomaticReload':
+      return _PaymentRequestTypeReload.fromJson(json);
+    case 'MultiMerchant':
+      return _PaymentRequestTypeMultiMerchant.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'type', 'PaymentRequestType',
+          'Invalid union type "${json['type']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$PaymentRequestType {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String description,
+            String managementUrl,
+            ImmediateCartSummaryItem billing,
+            ImmediateCartSummaryItem? trialBilling,
+            String? billingAgreement,
+            String? tokenNotificationURL)
+        recurring,
+    required TResult Function(
+            String description,
+            String managementUrl,
+            String label,
+            String reloadAmount,
+            String thresholdAmount,
+            String? billingAgreement,
+            String? tokenNotificationURL)
+        automaticReload,
+    required TResult Function(List<ApplePayMultiMerchant> merchants)
+        multiMerchant,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            String description,
+            String managementUrl,
+            ImmediateCartSummaryItem billing,
+            ImmediateCartSummaryItem? trialBilling,
+            String? billingAgreement,
+            String? tokenNotificationURL)?
+        recurring,
+    TResult? Function(
+            String description,
+            String managementUrl,
+            String label,
+            String reloadAmount,
+            String thresholdAmount,
+            String? billingAgreement,
+            String? tokenNotificationURL)?
+        automaticReload,
+    TResult? Function(List<ApplePayMultiMerchant> merchants)? multiMerchant,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String description,
+            String managementUrl,
+            ImmediateCartSummaryItem billing,
+            ImmediateCartSummaryItem? trialBilling,
+            String? billingAgreement,
+            String? tokenNotificationURL)?
+        recurring,
+    TResult Function(
+            String description,
+            String managementUrl,
+            String label,
+            String reloadAmount,
+            String thresholdAmount,
+            String? billingAgreement,
+            String? tokenNotificationURL)?
+        automaticReload,
+    TResult Function(List<ApplePayMultiMerchant> merchants)? multiMerchant,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentRequestTypeRecurring value) recurring,
+    required TResult Function(_PaymentRequestTypeReload value) automaticReload,
+    required TResult Function(_PaymentRequestTypeMultiMerchant value)
+        multiMerchant,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PaymentRequestTypeRecurring value)? recurring,
+    TResult? Function(_PaymentRequestTypeReload value)? automaticReload,
+    TResult? Function(_PaymentRequestTypeMultiMerchant value)? multiMerchant,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentRequestTypeRecurring value)? recurring,
+    TResult Function(_PaymentRequestTypeReload value)? automaticReload,
+    TResult Function(_PaymentRequestTypeMultiMerchant value)? multiMerchant,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentRequestTypeCopyWith<$Res> {
+  factory $PaymentRequestTypeCopyWith(
+          PaymentRequestType value, $Res Function(PaymentRequestType) then) =
+      _$PaymentRequestTypeCopyWithImpl<$Res, PaymentRequestType>;
+}
+
+/// @nodoc
+class _$PaymentRequestTypeCopyWithImpl<$Res, $Val extends PaymentRequestType>
+    implements $PaymentRequestTypeCopyWith<$Res> {
+  _$PaymentRequestTypeCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$_PaymentRequestTypeRecurringCopyWith<$Res> {
+  factory _$$_PaymentRequestTypeRecurringCopyWith(
+          _$_PaymentRequestTypeRecurring value,
+          $Res Function(_$_PaymentRequestTypeRecurring) then) =
+      __$$_PaymentRequestTypeRecurringCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String description,
+      String managementUrl,
+      ImmediateCartSummaryItem billing,
+      ImmediateCartSummaryItem? trialBilling,
+      String? billingAgreement,
+      String? tokenNotificationURL});
+}
+
+/// @nodoc
+class __$$_PaymentRequestTypeRecurringCopyWithImpl<$Res>
+    extends _$PaymentRequestTypeCopyWithImpl<$Res,
+        _$_PaymentRequestTypeRecurring>
+    implements _$$_PaymentRequestTypeRecurringCopyWith<$Res> {
+  __$$_PaymentRequestTypeRecurringCopyWithImpl(
+      _$_PaymentRequestTypeRecurring _value,
+      $Res Function(_$_PaymentRequestTypeRecurring) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? description = null,
+    Object? managementUrl = null,
+    Object? billing = freezed,
+    Object? trialBilling = freezed,
+    Object? billingAgreement = freezed,
+    Object? tokenNotificationURL = freezed,
+  }) {
+    return _then(_$_PaymentRequestTypeRecurring(
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      managementUrl: null == managementUrl
+          ? _value.managementUrl
+          : managementUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      billing: freezed == billing
+          ? _value.billing
+          : billing // ignore: cast_nullable_to_non_nullable
+              as ImmediateCartSummaryItem,
+      trialBilling: freezed == trialBilling
+          ? _value.trialBilling
+          : trialBilling // ignore: cast_nullable_to_non_nullable
+              as ImmediateCartSummaryItem?,
+      billingAgreement: freezed == billingAgreement
+          ? _value.billingAgreement
+          : billingAgreement // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tokenNotificationURL: freezed == tokenNotificationURL
+          ? _value.tokenNotificationURL
+          : tokenNotificationURL // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_PaymentRequestTypeRecurring implements _PaymentRequestTypeRecurring {
+  const _$_PaymentRequestTypeRecurring(
+      {required this.description,
+      required this.managementUrl,
+      required this.billing,
+      this.trialBilling,
+      this.billingAgreement,
+      this.tokenNotificationURL,
+      final String? $type})
+      : $type = $type ?? 'Recurring';
+
+  factory _$_PaymentRequestTypeRecurring.fromJson(Map<String, dynamic> json) =>
+      _$$_PaymentRequestTypeRecurringFromJson(json);
+
+  /// Descirption that you provide to the recurring payment.
+  ///
+  /// Apple will display this in the sheet
+  @override
+  final String description;
+
+  /// A URL to web page where the user can update or delete the payment method for recurring
+  @override
+  final String managementUrl;
+
+  /// The regular billing cycle for the payment, including start end dates, interval and count.
+  @override
+  final ImmediateCartSummaryItem billing;
+
+  /// Same as the billing property but related to trial period.
+  @override
+  final ImmediateCartSummaryItem? trialBilling;
+
+  /// A localized billing agreement that Apple displays to user before authorizing the payment
+  @override
+  final String? billingAgreement;
+
+  /// A URL you provide to receive life cycle notifications from Apple pay servers about the merchant token for recurring payment.
+  ///
+  /// For more info see receiving and handling merchant token notifications
+  @override
+  final String? tokenNotificationURL;
+
+  @JsonKey(name: 'type')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'PaymentRequestType.recurring(description: $description, managementUrl: $managementUrl, billing: $billing, trialBilling: $trialBilling, billingAgreement: $billingAgreement, tokenNotificationURL: $tokenNotificationURL)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentRequestTypeRecurring &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.managementUrl, managementUrl) ||
+                other.managementUrl == managementUrl) &&
+            const DeepCollectionEquality().equals(other.billing, billing) &&
+            const DeepCollectionEquality()
+                .equals(other.trialBilling, trialBilling) &&
+            (identical(other.billingAgreement, billingAgreement) ||
+                other.billingAgreement == billingAgreement) &&
+            (identical(other.tokenNotificationURL, tokenNotificationURL) ||
+                other.tokenNotificationURL == tokenNotificationURL));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      description,
+      managementUrl,
+      const DeepCollectionEquality().hash(billing),
+      const DeepCollectionEquality().hash(trialBilling),
+      billingAgreement,
+      tokenNotificationURL);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PaymentRequestTypeRecurringCopyWith<_$_PaymentRequestTypeRecurring>
+      get copyWith => __$$_PaymentRequestTypeRecurringCopyWithImpl<
+          _$_PaymentRequestTypeRecurring>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String description,
+            String managementUrl,
+            ImmediateCartSummaryItem billing,
+            ImmediateCartSummaryItem? trialBilling,
+            String? billingAgreement,
+            String? tokenNotificationURL)
+        recurring,
+    required TResult Function(
+            String description,
+            String managementUrl,
+            String label,
+            String reloadAmount,
+            String thresholdAmount,
+            String? billingAgreement,
+            String? tokenNotificationURL)
+        automaticReload,
+    required TResult Function(List<ApplePayMultiMerchant> merchants)
+        multiMerchant,
+  }) {
+    return recurring(description, managementUrl, billing, trialBilling,
+        billingAgreement, tokenNotificationURL);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            String description,
+            String managementUrl,
+            ImmediateCartSummaryItem billing,
+            ImmediateCartSummaryItem? trialBilling,
+            String? billingAgreement,
+            String? tokenNotificationURL)?
+        recurring,
+    TResult? Function(
+            String description,
+            String managementUrl,
+            String label,
+            String reloadAmount,
+            String thresholdAmount,
+            String? billingAgreement,
+            String? tokenNotificationURL)?
+        automaticReload,
+    TResult? Function(List<ApplePayMultiMerchant> merchants)? multiMerchant,
+  }) {
+    return recurring?.call(description, managementUrl, billing, trialBilling,
+        billingAgreement, tokenNotificationURL);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String description,
+            String managementUrl,
+            ImmediateCartSummaryItem billing,
+            ImmediateCartSummaryItem? trialBilling,
+            String? billingAgreement,
+            String? tokenNotificationURL)?
+        recurring,
+    TResult Function(
+            String description,
+            String managementUrl,
+            String label,
+            String reloadAmount,
+            String thresholdAmount,
+            String? billingAgreement,
+            String? tokenNotificationURL)?
+        automaticReload,
+    TResult Function(List<ApplePayMultiMerchant> merchants)? multiMerchant,
+    required TResult orElse(),
+  }) {
+    if (recurring != null) {
+      return recurring(description, managementUrl, billing, trialBilling,
+          billingAgreement, tokenNotificationURL);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentRequestTypeRecurring value) recurring,
+    required TResult Function(_PaymentRequestTypeReload value) automaticReload,
+    required TResult Function(_PaymentRequestTypeMultiMerchant value)
+        multiMerchant,
+  }) {
+    return recurring(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PaymentRequestTypeRecurring value)? recurring,
+    TResult? Function(_PaymentRequestTypeReload value)? automaticReload,
+    TResult? Function(_PaymentRequestTypeMultiMerchant value)? multiMerchant,
+  }) {
+    return recurring?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentRequestTypeRecurring value)? recurring,
+    TResult Function(_PaymentRequestTypeReload value)? automaticReload,
+    TResult Function(_PaymentRequestTypeMultiMerchant value)? multiMerchant,
+    required TResult orElse(),
+  }) {
+    if (recurring != null) {
+      return recurring(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentRequestTypeRecurringToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymentRequestTypeRecurring implements PaymentRequestType {
+  const factory _PaymentRequestTypeRecurring(
+      {required final String description,
+      required final String managementUrl,
+      required final ImmediateCartSummaryItem billing,
+      final ImmediateCartSummaryItem? trialBilling,
+      final String? billingAgreement,
+      final String? tokenNotificationURL}) = _$_PaymentRequestTypeRecurring;
+
+  factory _PaymentRequestTypeRecurring.fromJson(Map<String, dynamic> json) =
+      _$_PaymentRequestTypeRecurring.fromJson;
+
+  /// Descirption that you provide to the recurring payment.
+  ///
+  /// Apple will display this in the sheet
+  String get description;
+
+  /// A URL to web page where the user can update or delete the payment method for recurring
+  String get managementUrl;
+
+  /// The regular billing cycle for the payment, including start end dates, interval and count.
+  ImmediateCartSummaryItem get billing;
+
+  /// Same as the billing property but related to trial period.
+  ImmediateCartSummaryItem? get trialBilling;
+
+  /// A localized billing agreement that Apple displays to user before authorizing the payment
+  String? get billingAgreement;
+
+  /// A URL you provide to receive life cycle notifications from Apple pay servers about the merchant token for recurring payment.
+  ///
+  /// For more info see receiving and handling merchant token notifications
+  String? get tokenNotificationURL;
+  @JsonKey(ignore: true)
+  _$$_PaymentRequestTypeRecurringCopyWith<_$_PaymentRequestTypeRecurring>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_PaymentRequestTypeReloadCopyWith<$Res> {
+  factory _$$_PaymentRequestTypeReloadCopyWith(
+          _$_PaymentRequestTypeReload value,
+          $Res Function(_$_PaymentRequestTypeReload) then) =
+      __$$_PaymentRequestTypeReloadCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String description,
+      String managementUrl,
+      String label,
+      String reloadAmount,
+      String thresholdAmount,
+      String? billingAgreement,
+      String? tokenNotificationURL});
+}
+
+/// @nodoc
+class __$$_PaymentRequestTypeReloadCopyWithImpl<$Res>
+    extends _$PaymentRequestTypeCopyWithImpl<$Res, _$_PaymentRequestTypeReload>
+    implements _$$_PaymentRequestTypeReloadCopyWith<$Res> {
+  __$$_PaymentRequestTypeReloadCopyWithImpl(_$_PaymentRequestTypeReload _value,
+      $Res Function(_$_PaymentRequestTypeReload) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? description = null,
+    Object? managementUrl = null,
+    Object? label = null,
+    Object? reloadAmount = null,
+    Object? thresholdAmount = null,
+    Object? billingAgreement = freezed,
+    Object? tokenNotificationURL = freezed,
+  }) {
+    return _then(_$_PaymentRequestTypeReload(
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      managementUrl: null == managementUrl
+          ? _value.managementUrl
+          : managementUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      label: null == label
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String,
+      reloadAmount: null == reloadAmount
+          ? _value.reloadAmount
+          : reloadAmount // ignore: cast_nullable_to_non_nullable
+              as String,
+      thresholdAmount: null == thresholdAmount
+          ? _value.thresholdAmount
+          : thresholdAmount // ignore: cast_nullable_to_non_nullable
+              as String,
+      billingAgreement: freezed == billingAgreement
+          ? _value.billingAgreement
+          : billingAgreement // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tokenNotificationURL: freezed == tokenNotificationURL
+          ? _value.tokenNotificationURL
+          : tokenNotificationURL // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_PaymentRequestTypeReload implements _PaymentRequestTypeReload {
+  const _$_PaymentRequestTypeReload(
+      {required this.description,
+      required this.managementUrl,
+      required this.label,
+      required this.reloadAmount,
+      required this.thresholdAmount,
+      this.billingAgreement,
+      this.tokenNotificationURL,
+      final String? $type})
+      : $type = $type ?? 'AutomaticReload';
+
+  factory _$_PaymentRequestTypeReload.fromJson(Map<String, dynamic> json) =>
+      _$$_PaymentRequestTypeReloadFromJson(json);
+
+  /// Descirption that you provide to the recurring payment.
+  ///
+  /// Apple will display this in the sheet
+  @override
+  final String description;
+
+  /// A URL to web page where the user can update or delete the payment method for recurring
+  @override
+  final String managementUrl;
+
+  /// A short localized description of the item
+  @override
+  final String label;
+
+  /// The amount that is automatically applied to the account when the balance drops below the threshold amount.
+  @override
+  final String reloadAmount;
+
+  /// The balance and account reaches before you apply the automatic reload amount.
+  @override
+  final String thresholdAmount;
+
+  /// A localized billing agreement that Apple displays to user before authorizing the payment
+  @override
+  final String? billingAgreement;
+
+  /// A URL you provide to receive life cycle notifications from Apple pay servers about the merchant token for recurring payment.
+  ///
+  /// For more info see receiving and handling merchant token notifications
+  @override
+  final String? tokenNotificationURL;
+
+  @JsonKey(name: 'type')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'PaymentRequestType.automaticReload(description: $description, managementUrl: $managementUrl, label: $label, reloadAmount: $reloadAmount, thresholdAmount: $thresholdAmount, billingAgreement: $billingAgreement, tokenNotificationURL: $tokenNotificationURL)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentRequestTypeReload &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.managementUrl, managementUrl) ||
+                other.managementUrl == managementUrl) &&
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.reloadAmount, reloadAmount) ||
+                other.reloadAmount == reloadAmount) &&
+            (identical(other.thresholdAmount, thresholdAmount) ||
+                other.thresholdAmount == thresholdAmount) &&
+            (identical(other.billingAgreement, billingAgreement) ||
+                other.billingAgreement == billingAgreement) &&
+            (identical(other.tokenNotificationURL, tokenNotificationURL) ||
+                other.tokenNotificationURL == tokenNotificationURL));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      description,
+      managementUrl,
+      label,
+      reloadAmount,
+      thresholdAmount,
+      billingAgreement,
+      tokenNotificationURL);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PaymentRequestTypeReloadCopyWith<_$_PaymentRequestTypeReload>
+      get copyWith => __$$_PaymentRequestTypeReloadCopyWithImpl<
+          _$_PaymentRequestTypeReload>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String description,
+            String managementUrl,
+            ImmediateCartSummaryItem billing,
+            ImmediateCartSummaryItem? trialBilling,
+            String? billingAgreement,
+            String? tokenNotificationURL)
+        recurring,
+    required TResult Function(
+            String description,
+            String managementUrl,
+            String label,
+            String reloadAmount,
+            String thresholdAmount,
+            String? billingAgreement,
+            String? tokenNotificationURL)
+        automaticReload,
+    required TResult Function(List<ApplePayMultiMerchant> merchants)
+        multiMerchant,
+  }) {
+    return automaticReload(description, managementUrl, label, reloadAmount,
+        thresholdAmount, billingAgreement, tokenNotificationURL);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            String description,
+            String managementUrl,
+            ImmediateCartSummaryItem billing,
+            ImmediateCartSummaryItem? trialBilling,
+            String? billingAgreement,
+            String? tokenNotificationURL)?
+        recurring,
+    TResult? Function(
+            String description,
+            String managementUrl,
+            String label,
+            String reloadAmount,
+            String thresholdAmount,
+            String? billingAgreement,
+            String? tokenNotificationURL)?
+        automaticReload,
+    TResult? Function(List<ApplePayMultiMerchant> merchants)? multiMerchant,
+  }) {
+    return automaticReload?.call(description, managementUrl, label,
+        reloadAmount, thresholdAmount, billingAgreement, tokenNotificationURL);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String description,
+            String managementUrl,
+            ImmediateCartSummaryItem billing,
+            ImmediateCartSummaryItem? trialBilling,
+            String? billingAgreement,
+            String? tokenNotificationURL)?
+        recurring,
+    TResult Function(
+            String description,
+            String managementUrl,
+            String label,
+            String reloadAmount,
+            String thresholdAmount,
+            String? billingAgreement,
+            String? tokenNotificationURL)?
+        automaticReload,
+    TResult Function(List<ApplePayMultiMerchant> merchants)? multiMerchant,
+    required TResult orElse(),
+  }) {
+    if (automaticReload != null) {
+      return automaticReload(description, managementUrl, label, reloadAmount,
+          thresholdAmount, billingAgreement, tokenNotificationURL);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentRequestTypeRecurring value) recurring,
+    required TResult Function(_PaymentRequestTypeReload value) automaticReload,
+    required TResult Function(_PaymentRequestTypeMultiMerchant value)
+        multiMerchant,
+  }) {
+    return automaticReload(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PaymentRequestTypeRecurring value)? recurring,
+    TResult? Function(_PaymentRequestTypeReload value)? automaticReload,
+    TResult? Function(_PaymentRequestTypeMultiMerchant value)? multiMerchant,
+  }) {
+    return automaticReload?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentRequestTypeRecurring value)? recurring,
+    TResult Function(_PaymentRequestTypeReload value)? automaticReload,
+    TResult Function(_PaymentRequestTypeMultiMerchant value)? multiMerchant,
+    required TResult orElse(),
+  }) {
+    if (automaticReload != null) {
+      return automaticReload(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentRequestTypeReloadToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymentRequestTypeReload implements PaymentRequestType {
+  const factory _PaymentRequestTypeReload(
+      {required final String description,
+      required final String managementUrl,
+      required final String label,
+      required final String reloadAmount,
+      required final String thresholdAmount,
+      final String? billingAgreement,
+      final String? tokenNotificationURL}) = _$_PaymentRequestTypeReload;
+
+  factory _PaymentRequestTypeReload.fromJson(Map<String, dynamic> json) =
+      _$_PaymentRequestTypeReload.fromJson;
+
+  /// Descirption that you provide to the recurring payment.
+  ///
+  /// Apple will display this in the sheet
+  String get description;
+
+  /// A URL to web page where the user can update or delete the payment method for recurring
+  String get managementUrl;
+
+  /// A short localized description of the item
+  String get label;
+
+  /// The amount that is automatically applied to the account when the balance drops below the threshold amount.
+  String get reloadAmount;
+
+  /// The balance and account reaches before you apply the automatic reload amount.
+  String get thresholdAmount;
+
+  /// A localized billing agreement that Apple displays to user before authorizing the payment
+  String? get billingAgreement;
+
+  /// A URL you provide to receive life cycle notifications from Apple pay servers about the merchant token for recurring payment.
+  ///
+  /// For more info see receiving and handling merchant token notifications
+  String? get tokenNotificationURL;
+  @JsonKey(ignore: true)
+  _$$_PaymentRequestTypeReloadCopyWith<_$_PaymentRequestTypeReload>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_PaymentRequestTypeMultiMerchantCopyWith<$Res> {
+  factory _$$_PaymentRequestTypeMultiMerchantCopyWith(
+          _$_PaymentRequestTypeMultiMerchant value,
+          $Res Function(_$_PaymentRequestTypeMultiMerchant) then) =
+      __$$_PaymentRequestTypeMultiMerchantCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<ApplePayMultiMerchant> merchants});
+}
+
+/// @nodoc
+class __$$_PaymentRequestTypeMultiMerchantCopyWithImpl<$Res>
+    extends _$PaymentRequestTypeCopyWithImpl<$Res,
+        _$_PaymentRequestTypeMultiMerchant>
+    implements _$$_PaymentRequestTypeMultiMerchantCopyWith<$Res> {
+  __$$_PaymentRequestTypeMultiMerchantCopyWithImpl(
+      _$_PaymentRequestTypeMultiMerchant _value,
+      $Res Function(_$_PaymentRequestTypeMultiMerchant) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? merchants = null,
+  }) {
+    return _then(_$_PaymentRequestTypeMultiMerchant(
+      merchants: null == merchants
+          ? _value._merchants
+          : merchants // ignore: cast_nullable_to_non_nullable
+              as List<ApplePayMultiMerchant>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_PaymentRequestTypeMultiMerchant
+    implements _PaymentRequestTypeMultiMerchant {
+  const _$_PaymentRequestTypeMultiMerchant(
+      {required final List<ApplePayMultiMerchant> merchants,
+      final String? $type})
+      : _merchants = merchants,
+        $type = $type ?? 'MultiMerchant';
+
+  factory _$_PaymentRequestTypeMultiMerchant.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_PaymentRequestTypeMultiMerchantFromJson(json);
+
+  final List<ApplePayMultiMerchant> _merchants;
+  @override
+  List<ApplePayMultiMerchant> get merchants {
+    if (_merchants is EqualUnmodifiableListView) return _merchants;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_merchants);
+  }
+
+  @JsonKey(name: 'type')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'PaymentRequestType.multiMerchant(merchants: $merchants)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentRequestTypeMultiMerchant &&
+            const DeepCollectionEquality()
+                .equals(other._merchants, _merchants));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_merchants));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PaymentRequestTypeMultiMerchantCopyWith<
+          _$_PaymentRequestTypeMultiMerchant>
+      get copyWith => __$$_PaymentRequestTypeMultiMerchantCopyWithImpl<
+          _$_PaymentRequestTypeMultiMerchant>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String description,
+            String managementUrl,
+            ImmediateCartSummaryItem billing,
+            ImmediateCartSummaryItem? trialBilling,
+            String? billingAgreement,
+            String? tokenNotificationURL)
+        recurring,
+    required TResult Function(
+            String description,
+            String managementUrl,
+            String label,
+            String reloadAmount,
+            String thresholdAmount,
+            String? billingAgreement,
+            String? tokenNotificationURL)
+        automaticReload,
+    required TResult Function(List<ApplePayMultiMerchant> merchants)
+        multiMerchant,
+  }) {
+    return multiMerchant(merchants);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            String description,
+            String managementUrl,
+            ImmediateCartSummaryItem billing,
+            ImmediateCartSummaryItem? trialBilling,
+            String? billingAgreement,
+            String? tokenNotificationURL)?
+        recurring,
+    TResult? Function(
+            String description,
+            String managementUrl,
+            String label,
+            String reloadAmount,
+            String thresholdAmount,
+            String? billingAgreement,
+            String? tokenNotificationURL)?
+        automaticReload,
+    TResult? Function(List<ApplePayMultiMerchant> merchants)? multiMerchant,
+  }) {
+    return multiMerchant?.call(merchants);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String description,
+            String managementUrl,
+            ImmediateCartSummaryItem billing,
+            ImmediateCartSummaryItem? trialBilling,
+            String? billingAgreement,
+            String? tokenNotificationURL)?
+        recurring,
+    TResult Function(
+            String description,
+            String managementUrl,
+            String label,
+            String reloadAmount,
+            String thresholdAmount,
+            String? billingAgreement,
+            String? tokenNotificationURL)?
+        automaticReload,
+    TResult Function(List<ApplePayMultiMerchant> merchants)? multiMerchant,
+    required TResult orElse(),
+  }) {
+    if (multiMerchant != null) {
+      return multiMerchant(merchants);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentRequestTypeRecurring value) recurring,
+    required TResult Function(_PaymentRequestTypeReload value) automaticReload,
+    required TResult Function(_PaymentRequestTypeMultiMerchant value)
+        multiMerchant,
+  }) {
+    return multiMerchant(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PaymentRequestTypeRecurring value)? recurring,
+    TResult? Function(_PaymentRequestTypeReload value)? automaticReload,
+    TResult? Function(_PaymentRequestTypeMultiMerchant value)? multiMerchant,
+  }) {
+    return multiMerchant?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentRequestTypeRecurring value)? recurring,
+    TResult Function(_PaymentRequestTypeReload value)? automaticReload,
+    TResult Function(_PaymentRequestTypeMultiMerchant value)? multiMerchant,
+    required TResult orElse(),
+  }) {
+    if (multiMerchant != null) {
+      return multiMerchant(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentRequestTypeMultiMerchantToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymentRequestTypeMultiMerchant implements PaymentRequestType {
+  const factory _PaymentRequestTypeMultiMerchant(
+          {required final List<ApplePayMultiMerchant> merchants}) =
+      _$_PaymentRequestTypeMultiMerchant;
+
+  factory _PaymentRequestTypeMultiMerchant.fromJson(Map<String, dynamic> json) =
+      _$_PaymentRequestTypeMultiMerchant.fromJson;
+
+  List<ApplePayMultiMerchant> get merchants;
+  @JsonKey(ignore: true)
+  _$$_PaymentRequestTypeMultiMerchantCopyWith<
+          _$_PaymentRequestTypeMultiMerchant>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+ApplePayMultiMerchant _$ApplePayMultiMerchantFromJson(
+    Map<String, dynamic> json) {
+  return _ApplePayMultiMerchant.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ApplePayMultiMerchant {
+  /// The apple pay merchant identifier
+  String get merchantIdentifier => throw _privateConstructorUsedError;
+
+  /// External identifier for the merchant
+  String get externalIdentifier => throw _privateConstructorUsedError;
+
+  /// The merchant display name Apple pay associates with the payment token
+  String get merchantName => throw _privateConstructorUsedError;
+
+  /// The merchant top level domain Apple Pay associates with teh payment token
+  String? get merchantDomain => throw _privateConstructorUsedError;
+
+  /// Amount to authorize for the payment token
+  String get amount => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ApplePayMultiMerchantCopyWith<ApplePayMultiMerchant> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ApplePayMultiMerchantCopyWith<$Res> {
+  factory $ApplePayMultiMerchantCopyWith(ApplePayMultiMerchant value,
+          $Res Function(ApplePayMultiMerchant) then) =
+      _$ApplePayMultiMerchantCopyWithImpl<$Res, ApplePayMultiMerchant>;
+  @useResult
+  $Res call(
+      {String merchantIdentifier,
+      String externalIdentifier,
+      String merchantName,
+      String? merchantDomain,
+      String amount});
+}
+
+/// @nodoc
+class _$ApplePayMultiMerchantCopyWithImpl<$Res,
+        $Val extends ApplePayMultiMerchant>
+    implements $ApplePayMultiMerchantCopyWith<$Res> {
+  _$ApplePayMultiMerchantCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? merchantIdentifier = null,
+    Object? externalIdentifier = null,
+    Object? merchantName = null,
+    Object? merchantDomain = freezed,
+    Object? amount = null,
+  }) {
+    return _then(_value.copyWith(
+      merchantIdentifier: null == merchantIdentifier
+          ? _value.merchantIdentifier
+          : merchantIdentifier // ignore: cast_nullable_to_non_nullable
+              as String,
+      externalIdentifier: null == externalIdentifier
+          ? _value.externalIdentifier
+          : externalIdentifier // ignore: cast_nullable_to_non_nullable
+              as String,
+      merchantName: null == merchantName
+          ? _value.merchantName
+          : merchantName // ignore: cast_nullable_to_non_nullable
+              as String,
+      merchantDomain: freezed == merchantDomain
+          ? _value.merchantDomain
+          : merchantDomain // ignore: cast_nullable_to_non_nullable
+              as String?,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_ApplePayMultiMerchantCopyWith<$Res>
+    implements $ApplePayMultiMerchantCopyWith<$Res> {
+  factory _$$_ApplePayMultiMerchantCopyWith(_$_ApplePayMultiMerchant value,
+          $Res Function(_$_ApplePayMultiMerchant) then) =
+      __$$_ApplePayMultiMerchantCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String merchantIdentifier,
+      String externalIdentifier,
+      String merchantName,
+      String? merchantDomain,
+      String amount});
+}
+
+/// @nodoc
+class __$$_ApplePayMultiMerchantCopyWithImpl<$Res>
+    extends _$ApplePayMultiMerchantCopyWithImpl<$Res, _$_ApplePayMultiMerchant>
+    implements _$$_ApplePayMultiMerchantCopyWith<$Res> {
+  __$$_ApplePayMultiMerchantCopyWithImpl(_$_ApplePayMultiMerchant _value,
+      $Res Function(_$_ApplePayMultiMerchant) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? merchantIdentifier = null,
+    Object? externalIdentifier = null,
+    Object? merchantName = null,
+    Object? merchantDomain = freezed,
+    Object? amount = null,
+  }) {
+    return _then(_$_ApplePayMultiMerchant(
+      merchantIdentifier: null == merchantIdentifier
+          ? _value.merchantIdentifier
+          : merchantIdentifier // ignore: cast_nullable_to_non_nullable
+              as String,
+      externalIdentifier: null == externalIdentifier
+          ? _value.externalIdentifier
+          : externalIdentifier // ignore: cast_nullable_to_non_nullable
+              as String,
+      merchantName: null == merchantName
+          ? _value.merchantName
+          : merchantName // ignore: cast_nullable_to_non_nullable
+              as String,
+      merchantDomain: freezed == merchantDomain
+          ? _value.merchantDomain
+          : merchantDomain // ignore: cast_nullable_to_non_nullable
+              as String?,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_ApplePayMultiMerchant implements _ApplePayMultiMerchant {
+  const _$_ApplePayMultiMerchant(
+      {required this.merchantIdentifier,
+      required this.externalIdentifier,
+      required this.merchantName,
+      this.merchantDomain,
+      required this.amount});
+
+  factory _$_ApplePayMultiMerchant.fromJson(Map<String, dynamic> json) =>
+      _$$_ApplePayMultiMerchantFromJson(json);
+
+  /// The apple pay merchant identifier
+  @override
+  final String merchantIdentifier;
+
+  /// External identifier for the merchant
+  @override
+  final String externalIdentifier;
+
+  /// The merchant display name Apple pay associates with the payment token
+  @override
+  final String merchantName;
+
+  /// The merchant top level domain Apple Pay associates with teh payment token
+  @override
+  final String? merchantDomain;
+
+  /// Amount to authorize for the payment token
+  @override
+  final String amount;
+
+  @override
+  String toString() {
+    return 'ApplePayMultiMerchant(merchantIdentifier: $merchantIdentifier, externalIdentifier: $externalIdentifier, merchantName: $merchantName, merchantDomain: $merchantDomain, amount: $amount)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ApplePayMultiMerchant &&
+            (identical(other.merchantIdentifier, merchantIdentifier) ||
+                other.merchantIdentifier == merchantIdentifier) &&
+            (identical(other.externalIdentifier, externalIdentifier) ||
+                other.externalIdentifier == externalIdentifier) &&
+            (identical(other.merchantName, merchantName) ||
+                other.merchantName == merchantName) &&
+            (identical(other.merchantDomain, merchantDomain) ||
+                other.merchantDomain == merchantDomain) &&
+            (identical(other.amount, amount) || other.amount == amount));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, merchantIdentifier,
+      externalIdentifier, merchantName, merchantDomain, amount);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ApplePayMultiMerchantCopyWith<_$_ApplePayMultiMerchant> get copyWith =>
+      __$$_ApplePayMultiMerchantCopyWithImpl<_$_ApplePayMultiMerchant>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ApplePayMultiMerchantToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ApplePayMultiMerchant implements ApplePayMultiMerchant {
+  const factory _ApplePayMultiMerchant(
+      {required final String merchantIdentifier,
+      required final String externalIdentifier,
+      required final String merchantName,
+      final String? merchantDomain,
+      required final String amount}) = _$_ApplePayMultiMerchant;
+
+  factory _ApplePayMultiMerchant.fromJson(Map<String, dynamic> json) =
+      _$_ApplePayMultiMerchant.fromJson;
+
+  @override
+
+  /// The apple pay merchant identifier
+  String get merchantIdentifier;
+  @override
+
+  /// External identifier for the merchant
+  String get externalIdentifier;
+  @override
+
+  /// The merchant display name Apple pay associates with the payment token
+  String get merchantName;
+  @override
+
+  /// The merchant top level domain Apple Pay associates with teh payment token
+  String? get merchantDomain;
+  @override
+
+  /// Amount to authorize for the payment token
+  String get amount;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ApplePayMultiMerchantCopyWith<_$_ApplePayMultiMerchant> get copyWith =>
+      throw _privateConstructorUsedError;
 }

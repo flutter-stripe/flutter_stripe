@@ -99,7 +99,7 @@ class ApplePayCartSummaryItem with _$ApplePayCartSummaryItem {
 
     /// When creating items for estimates or charges whose final value is not yet known, set this to true.
     bool? isPending,
-  }) = _ImmediateCartSummaryItem;
+  }) = ImmediateCartSummaryItem;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Deferred')
@@ -114,7 +114,7 @@ class ApplePayCartSummaryItem with _$ApplePayCartSummaryItem {
 
     /// The unix timestamp of the date, in the future, of the payment. Measured in seconds.
     required int deferredDate,
-  }) = _DeferredSummaryItem;
+  }) = DeferredSummaryItem;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Recurring')
@@ -137,7 +137,7 @@ class ApplePayCartSummaryItem with _$ApplePayCartSummaryItem {
     int? startDate,
     ////The unix timestamp of the end date. Measured in seconds. */
     int? number,
-  }) = _RecurringCartSummaryItem;
+  }) = RecurringCartSummaryItem;
 
   factory ApplePayCartSummaryItem.fromJson(Map<String, dynamic> json) =>
       _$ApplePayCartSummaryItemFromJson(json);
@@ -242,6 +242,7 @@ class ApplePayContactName with _$ApplePayContactName {
 }
 
 @freezed
+
 /// Postal address data for Apple pay
 class ApplePayPostalAddress with _$ApplePayPostalAddress {
   @JsonSerializable(explicitToJson: true)
@@ -264,3 +265,10 @@ typedef OnDidSetShippingContact = void Function(
     ApplePayShippingContact contact);
 typedef OnDidSetShippingMethod = void Function(ApplePayShippingMethod method);
 typedef OnDidSetCoupon = void Function(String couponCode);
+
+typedef SetOrderTracking = void Function(
+  String orderIdentifier,
+  String orderTypeIdentifier,
+  String authenticationToken,
+  String webServiceUrl,
+);

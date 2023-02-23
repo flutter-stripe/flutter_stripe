@@ -684,8 +684,21 @@ mixin _$PaymentSheetApplePay {
 
   ///An array of CartSummaryItem item objects that summarize the amount of the payment. If you're using a SetupIntent
   /// for a recurring payment, you should set this to display the amount you intend to charge.
-  List<ApplePayCartSummaryItem>? get paymentSummaryItems =>
+  List<ApplePayCartSummaryItem>? get cartItems =>
       throw _privateConstructorUsedError;
+
+  /// Sets the the text displayed by the call to action button in the apple pay sheet.
+  PlatformButtonType? get buttonType => throw _privateConstructorUsedError;
+
+  /// Use this for a different payment request than a one time request.
+  PaymentRequestType? get request => throw _privateConstructorUsedError;
+
+  /// Callback function for setting the order details (retrieved from your server) to give users the
+  /// ability to track and manage their purchases in Wallet. Stripe calls your implementation after the
+  /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
+  /// function, or else the Apple Pay sheet will hang.
+  @JsonKey(ignore: true)
+  SetOrderTracking? get setOrderTracking => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -701,7 +714,12 @@ abstract class $PaymentSheetApplePayCopyWith<$Res> {
   @useResult
   $Res call(
       {String merchantCountryCode,
-      List<ApplePayCartSummaryItem>? paymentSummaryItems});
+      List<ApplePayCartSummaryItem>? cartItems,
+      PlatformButtonType? buttonType,
+      PaymentRequestType? request,
+      @JsonKey(ignore: true) SetOrderTracking? setOrderTracking});
+
+  $PaymentRequestTypeCopyWith<$Res>? get request;
 }
 
 /// @nodoc
@@ -719,18 +737,45 @@ class _$PaymentSheetApplePayCopyWithImpl<$Res,
   @override
   $Res call({
     Object? merchantCountryCode = null,
-    Object? paymentSummaryItems = freezed,
+    Object? cartItems = freezed,
+    Object? buttonType = freezed,
+    Object? request = freezed,
+    Object? setOrderTracking = freezed,
   }) {
     return _then(_value.copyWith(
       merchantCountryCode: null == merchantCountryCode
           ? _value.merchantCountryCode
           : merchantCountryCode // ignore: cast_nullable_to_non_nullable
               as String,
-      paymentSummaryItems: freezed == paymentSummaryItems
-          ? _value.paymentSummaryItems
-          : paymentSummaryItems // ignore: cast_nullable_to_non_nullable
+      cartItems: freezed == cartItems
+          ? _value.cartItems
+          : cartItems // ignore: cast_nullable_to_non_nullable
               as List<ApplePayCartSummaryItem>?,
+      buttonType: freezed == buttonType
+          ? _value.buttonType
+          : buttonType // ignore: cast_nullable_to_non_nullable
+              as PlatformButtonType?,
+      request: freezed == request
+          ? _value.request
+          : request // ignore: cast_nullable_to_non_nullable
+              as PaymentRequestType?,
+      setOrderTracking: freezed == setOrderTracking
+          ? _value.setOrderTracking
+          : setOrderTracking // ignore: cast_nullable_to_non_nullable
+              as SetOrderTracking?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentRequestTypeCopyWith<$Res>? get request {
+    if (_value.request == null) {
+      return null;
+    }
+
+    return $PaymentRequestTypeCopyWith<$Res>(_value.request!, (value) {
+      return _then(_value.copyWith(request: value) as $Val);
+    });
   }
 }
 
@@ -744,7 +789,13 @@ abstract class _$$_PaymentSheetApplePayCopyWith<$Res>
   @useResult
   $Res call(
       {String merchantCountryCode,
-      List<ApplePayCartSummaryItem>? paymentSummaryItems});
+      List<ApplePayCartSummaryItem>? cartItems,
+      PlatformButtonType? buttonType,
+      PaymentRequestType? request,
+      @JsonKey(ignore: true) SetOrderTracking? setOrderTracking});
+
+  @override
+  $PaymentRequestTypeCopyWith<$Res>? get request;
 }
 
 /// @nodoc
@@ -759,17 +810,32 @@ class __$$_PaymentSheetApplePayCopyWithImpl<$Res>
   @override
   $Res call({
     Object? merchantCountryCode = null,
-    Object? paymentSummaryItems = freezed,
+    Object? cartItems = freezed,
+    Object? buttonType = freezed,
+    Object? request = freezed,
+    Object? setOrderTracking = freezed,
   }) {
     return _then(_$_PaymentSheetApplePay(
       merchantCountryCode: null == merchantCountryCode
           ? _value.merchantCountryCode
           : merchantCountryCode // ignore: cast_nullable_to_non_nullable
               as String,
-      paymentSummaryItems: freezed == paymentSummaryItems
-          ? _value._paymentSummaryItems
-          : paymentSummaryItems // ignore: cast_nullable_to_non_nullable
+      cartItems: freezed == cartItems
+          ? _value._cartItems
+          : cartItems // ignore: cast_nullable_to_non_nullable
               as List<ApplePayCartSummaryItem>?,
+      buttonType: freezed == buttonType
+          ? _value.buttonType
+          : buttonType // ignore: cast_nullable_to_non_nullable
+              as PlatformButtonType?,
+      request: freezed == request
+          ? _value.request
+          : request // ignore: cast_nullable_to_non_nullable
+              as PaymentRequestType?,
+      setOrderTracking: freezed == setOrderTracking
+          ? _value.setOrderTracking
+          : setOrderTracking // ignore: cast_nullable_to_non_nullable
+              as SetOrderTracking?,
     ));
   }
 }
@@ -780,8 +846,11 @@ class __$$_PaymentSheetApplePayCopyWithImpl<$Res>
 class _$_PaymentSheetApplePay implements _PaymentSheetApplePay {
   const _$_PaymentSheetApplePay(
       {required this.merchantCountryCode,
-      final List<ApplePayCartSummaryItem>? paymentSummaryItems})
-      : _paymentSummaryItems = paymentSummaryItems;
+      final List<ApplePayCartSummaryItem>? cartItems,
+      this.buttonType,
+      this.request,
+      @JsonKey(ignore: true) this.setOrderTracking})
+      : _cartItems = cartItems;
 
   factory _$_PaymentSheetApplePay.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentSheetApplePayFromJson(json);
@@ -792,23 +861,38 @@ class _$_PaymentSheetApplePay implements _PaymentSheetApplePay {
 
   ///An array of CartSummaryItem item objects that summarize the amount of the payment. If you're using a SetupIntent
   /// for a recurring payment, you should set this to display the amount you intend to charge.
-  final List<ApplePayCartSummaryItem>? _paymentSummaryItems;
+  final List<ApplePayCartSummaryItem>? _cartItems;
 
   ///An array of CartSummaryItem item objects that summarize the amount of the payment. If you're using a SetupIntent
   /// for a recurring payment, you should set this to display the amount you intend to charge.
   @override
-  List<ApplePayCartSummaryItem>? get paymentSummaryItems {
-    final value = _paymentSummaryItems;
+  List<ApplePayCartSummaryItem>? get cartItems {
+    final value = _cartItems;
     if (value == null) return null;
-    if (_paymentSummaryItems is EqualUnmodifiableListView)
-      return _paymentSummaryItems;
+    if (_cartItems is EqualUnmodifiableListView) return _cartItems;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
 
+  /// Sets the the text displayed by the call to action button in the apple pay sheet.
+  @override
+  final PlatformButtonType? buttonType;
+
+  /// Use this for a different payment request than a one time request.
+  @override
+  final PaymentRequestType? request;
+
+  /// Callback function for setting the order details (retrieved from your server) to give users the
+  /// ability to track and manage their purchases in Wallet. Stripe calls your implementation after the
+  /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
+  /// function, or else the Apple Pay sheet will hang.
+  @override
+  @JsonKey(ignore: true)
+  final SetOrderTracking? setOrderTracking;
+
   @override
   String toString() {
-    return 'PaymentSheetApplePay(merchantCountryCode: $merchantCountryCode, paymentSummaryItems: $paymentSummaryItems)';
+    return 'PaymentSheetApplePay(merchantCountryCode: $merchantCountryCode, cartItems: $cartItems, buttonType: $buttonType, request: $request, setOrderTracking: $setOrderTracking)';
   }
 
   @override
@@ -819,13 +903,23 @@ class _$_PaymentSheetApplePay implements _PaymentSheetApplePay {
             (identical(other.merchantCountryCode, merchantCountryCode) ||
                 other.merchantCountryCode == merchantCountryCode) &&
             const DeepCollectionEquality()
-                .equals(other._paymentSummaryItems, _paymentSummaryItems));
+                .equals(other._cartItems, _cartItems) &&
+            (identical(other.buttonType, buttonType) ||
+                other.buttonType == buttonType) &&
+            (identical(other.request, request) || other.request == request) &&
+            (identical(other.setOrderTracking, setOrderTracking) ||
+                other.setOrderTracking == setOrderTracking));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, merchantCountryCode,
-      const DeepCollectionEquality().hash(_paymentSummaryItems));
+  int get hashCode => Object.hash(
+      runtimeType,
+      merchantCountryCode,
+      const DeepCollectionEquality().hash(_cartItems),
+      buttonType,
+      request,
+      setOrderTracking);
 
   @JsonKey(ignore: true)
   @override
@@ -845,7 +939,10 @@ class _$_PaymentSheetApplePay implements _PaymentSheetApplePay {
 abstract class _PaymentSheetApplePay implements PaymentSheetApplePay {
   const factory _PaymentSheetApplePay(
           {required final String merchantCountryCode,
-          final List<ApplePayCartSummaryItem>? paymentSummaryItems}) =
+          final List<ApplePayCartSummaryItem>? cartItems,
+          final PlatformButtonType? buttonType,
+          final PaymentRequestType? request,
+          @JsonKey(ignore: true) final SetOrderTracking? setOrderTracking}) =
       _$_PaymentSheetApplePay;
 
   factory _PaymentSheetApplePay.fromJson(Map<String, dynamic> json) =
@@ -859,7 +956,23 @@ abstract class _PaymentSheetApplePay implements PaymentSheetApplePay {
 
   ///An array of CartSummaryItem item objects that summarize the amount of the payment. If you're using a SetupIntent
   /// for a recurring payment, you should set this to display the amount you intend to charge.
-  List<ApplePayCartSummaryItem>? get paymentSummaryItems;
+  List<ApplePayCartSummaryItem>? get cartItems;
+  @override
+
+  /// Sets the the text displayed by the call to action button in the apple pay sheet.
+  PlatformButtonType? get buttonType;
+  @override
+
+  /// Use this for a different payment request than a one time request.
+  PaymentRequestType? get request;
+  @override
+
+  /// Callback function for setting the order details (retrieved from your server) to give users the
+  /// ability to track and manage their purchases in Wallet. Stripe calls your implementation after the
+  /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
+  /// function, or else the Apple Pay sheet will hang.
+  @JsonKey(ignore: true)
+  SetOrderTracking? get setOrderTracking;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentSheetApplePayCopyWith<_$_PaymentSheetApplePay> get copyWith =>

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_stripe/src/model/platform_pay_button.dart';
+import 'package:stripe_platform_interface/src/models/platform_pay_button.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 import '../model/apple_pay_button.dart';
@@ -28,6 +28,7 @@ class ApplePayButton extends StatelessWidget {
     this.onShippingContactSelected,
     this.onDidSetCoupon,
     this.onShippingMethodSelected,
+    this.setOrderTracking,
   })  : assert(constraints == null || constraints.debugAssertIsValid()),
         constraints = (width != null || height != null)
             ? constraints?.tighten(width: width, height: height) ??
@@ -68,6 +69,12 @@ class ApplePayButton extends StatelessWidget {
 
   /// Additional constraints for the Apple pay button widget.
   final BoxConstraints? constraints;
+
+  /// Callback function for setting the order details (retrieved from your server) to give users the
+  /// ability to track and manage their purchases in Wallet. Stripe calls your implementation after the
+  /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
+  /// function, or else the Apple Pay sheet will hang.
+  final SetOrderTracking? setOrderTracking;
 
   @override
   Widget build(BuildContext context) => ConstrainedBox(

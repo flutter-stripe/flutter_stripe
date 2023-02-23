@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_stripe/src/model/platform_pay_button.dart';
+import 'package:stripe_platform_interface/src/models/platform_pay_button.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 import 'apple_pay_button.dart';

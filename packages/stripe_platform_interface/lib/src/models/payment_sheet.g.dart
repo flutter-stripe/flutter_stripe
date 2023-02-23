@@ -65,19 +65,48 @@ _$_PaymentSheetApplePay _$$_PaymentSheetApplePayFromJson(
         Map<String, dynamic> json) =>
     _$_PaymentSheetApplePay(
       merchantCountryCode: json['merchantCountryCode'] as String,
-      paymentSummaryItems: (json['paymentSummaryItems'] as List<dynamic>?)
+      cartItems: (json['cartItems'] as List<dynamic>?)
           ?.map((e) =>
               ApplePayCartSummaryItem.fromJson(e as Map<String, dynamic>))
           .toList(),
+      buttonType:
+          $enumDecodeNullable(_$PlatformButtonTypeEnumMap, json['buttonType']),
+      request: json['request'] == null
+          ? null
+          : PaymentRequestType.fromJson(
+              json['request'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_PaymentSheetApplePayToJson(
         _$_PaymentSheetApplePay instance) =>
     <String, dynamic>{
       'merchantCountryCode': instance.merchantCountryCode,
-      'paymentSummaryItems':
-          instance.paymentSummaryItems?.map((e) => e.toJson()).toList(),
+      'cartItems': instance.cartItems?.map((e) => e.toJson()).toList(),
+      'buttonType': _$PlatformButtonTypeEnumMap[instance.buttonType],
+      'request': instance.request?.toJson(),
     };
+
+const _$PlatformButtonTypeEnumMap = {
+  PlatformButtonType.plain: 'plain',
+  PlatformButtonType.buy: 'buy',
+  PlatformButtonType.setUp: 'setUp',
+  PlatformButtonType.inStore: 'inStore',
+  PlatformButtonType.donate: 'donate',
+  PlatformButtonType.checkout: 'checkout',
+  PlatformButtonType.book: 'book',
+  PlatformButtonType.subscribe: 'subscribe',
+  PlatformButtonType.reload: 'reload',
+  PlatformButtonType.addMoney: 'addMoney',
+  PlatformButtonType.topUp: 'topUp',
+  PlatformButtonType.order: 'order',
+  PlatformButtonType.rent: 'rent',
+  PlatformButtonType.support: 'support',
+  PlatformButtonType.contribute: 'contribute',
+  PlatformButtonType.tip: 'tip',
+  PlatformButtonType.advance: 'advance',
+  PlatformButtonType.pay: 'pay',
+  PlatformButtonType.googlePayMark: 'googlePayMark',
+};
 
 _$_PaymentSheetGooglePay _$$_PaymentSheetGooglePayFromJson(
         Map<String, dynamic> json) =>

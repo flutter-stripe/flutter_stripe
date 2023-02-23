@@ -21,3 +21,4 @@ export 'src/stripe_platform_interface.dart';
 export 'src/card_edit_controller.dart';
 export 'src/models/ach_params.dart';
 export 'src/models/wallet.dart';
+export 'src/models/platform_pay_button.dart';
