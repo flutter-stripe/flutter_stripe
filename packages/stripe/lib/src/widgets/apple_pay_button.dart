@@ -113,6 +113,7 @@ class _UiKitApplePayButton extends StatefulWidget {
     this.onDidSetShippingContact,
     this.onDidSetCoupon,
     this.onShippingMethodSelected,
+    this.onOrderTracking,
   }) : super(key: key);
 
   final PlatformButtonStyle style;
@@ -122,6 +123,7 @@ class _UiKitApplePayButton extends StatefulWidget {
   final OnDidSetShippingContact? onDidSetShippingContact;
   final OnDidSetShippingMethod? onShippingMethodSelected;
   final OnDidSetCoupon? onDidSetCoupon;
+  final SetOrderTracking? onOrderTracking;
   @override
   _UiKitApplePayButtonState createState() => _UiKitApplePayButtonState();
 }
@@ -157,6 +159,15 @@ class _UiKitApplePayButtonState extends State<_UiKitApplePayButton> {
           }
           if (call.method == 'onShippingContactSelected') {
             widget.onDidSetCoupon?.call(call.arguments['couponCode']);
+          }
+          if (call.method == 'onOrderTracking') {
+            final argumens = call.arguments;
+            widget.onOrderTracking?.call(
+              call.arguments['orderIdentifier'],
+              call.arguments['orderTypeIdentifier'],
+              call.arguments['authenticationToken'],
+              call.arguments['webServiceUrl'],
+            );
           }
           return;
         });

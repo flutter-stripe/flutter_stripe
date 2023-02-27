@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:stripe_platform_interface/src/models/platform_pay_button.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 import 'apple_pay_button.dart';
@@ -22,6 +21,7 @@ class PlatformPayButton extends StatelessWidget {
     this.onDidSetShippingContact,
     this.onDidSetCoupon,
     this.onShippingMethodSelected,
+    this.setOrderTracking,
   });
 
   /// Defines the displayed text on the button.
@@ -50,6 +50,12 @@ class PlatformPayButton extends StatelessWidget {
   /// iOS only,  additional constraints for the Apple pay button widget.
   final BoxConstraints? constraints;
 
+  /// iOS only, callback function for setting the order details (retrieved from your server) to give users the
+  /// ability to track and manage their purchases in Wallet. Stripe calls your implementation after the
+  /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
+  /// function, or else the Apple Pay sheet will hang.
+  final SetOrderTracking? setOrderTracking;
+
   @override
   Widget build(BuildContext context) {
     if (Platform.isAndroid) {
@@ -65,6 +71,9 @@ class PlatformPayButton extends StatelessWidget {
         type: type,
         cornerRadius: borderRadius,
         constraints: constraints,
+        setOrderTracking: setOrderTracking,
+        onDidSetCoupon: onDidSetCoupon,
+        onShippingMethodSelected: onShippingMethodSelected,
       );
     }
     throw AssertionError('Platform not supported');
