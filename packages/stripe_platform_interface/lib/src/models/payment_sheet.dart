@@ -48,7 +48,7 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// If set, PaymentSheet displays Apple Pay as a payment option
     PaymentSheetApplePay? applePay,
 
-    /// Style options for colors in PaymentSheet
+    /// iOS only style options for colors in PaymentSheet
     ///
     /// Parts can be overridden by [appearance].
     @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style,
