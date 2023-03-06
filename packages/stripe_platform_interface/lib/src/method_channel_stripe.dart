@@ -239,7 +239,7 @@ class MethodChannelStripe extends StripePlatform {
   }) async {
     final result = await _methodChannel.invokeMethod<dynamic>(
       'presentPaymentSheet',
-      {'params': {}, 'options': options?.toJson()},
+      {'params': {}, 'options': options?.toJson() ?? {}},
     );
 
     // iOS returns empty list on success

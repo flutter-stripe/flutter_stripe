@@ -149,6 +149,12 @@ class ApplePayParams with _$ApplePayParams {
 
     /// A list of two-letter ISO 3166 country codes for limiting payment to cards from specific countries or regions.
     List<String>? supportedCountries,
+
+
+    /// Use this to support different types of payment request.
+    ///
+    /// Only supported on iOS 16 and higher.
+    PaymentRequestType? request,
   }) = _ApplePayParams;
 
   factory ApplePayParams.fromJson(Map<String, dynamic> json) =>

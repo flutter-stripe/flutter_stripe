@@ -2233,6 +2233,11 @@ mixin _$ApplePayParams {
   /// A list of two-letter ISO 3166 country codes for limiting payment to cards from specific countries or regions.
   List<String>? get supportedCountries => throw _privateConstructorUsedError;
 
+  /// Use this to support different types of payment request.
+  ///
+  /// Only supported on iOS 16 and higher.
+  PaymentRequestType? get request => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ApplePayParamsCopyWith<ApplePayParams> get copyWith =>
@@ -2255,7 +2260,10 @@ abstract class $ApplePayParamsCopyWith<$Res> {
       List<ApplePayShippingMethod>? shippingMethods,
       List<ApplePayMerchantCapability>? merchantCapabilities,
       ApplePayShippingType? shippingType,
-      List<String>? supportedCountries});
+      List<String>? supportedCountries,
+      PaymentRequestType? request});
+
+  $PaymentRequestTypeCopyWith<$Res>? get request;
 }
 
 /// @nodoc
@@ -2281,6 +2289,7 @@ class _$ApplePayParamsCopyWithImpl<$Res, $Val extends ApplePayParams>
     Object? merchantCapabilities = freezed,
     Object? shippingType = freezed,
     Object? supportedCountries = freezed,
+    Object? request = freezed,
   }) {
     return _then(_value.copyWith(
       merchantCountryCode: null == merchantCountryCode
@@ -2323,7 +2332,23 @@ class _$ApplePayParamsCopyWithImpl<$Res, $Val extends ApplePayParams>
           ? _value.supportedCountries
           : supportedCountries // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      request: freezed == request
+          ? _value.request
+          : request // ignore: cast_nullable_to_non_nullable
+              as PaymentRequestType?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentRequestTypeCopyWith<$Res>? get request {
+    if (_value.request == null) {
+      return null;
+    }
+
+    return $PaymentRequestTypeCopyWith<$Res>(_value.request!, (value) {
+      return _then(_value.copyWith(request: value) as $Val);
+    });
   }
 }
 
@@ -2345,7 +2370,11 @@ abstract class _$$_ApplePayParamsCopyWith<$Res>
       List<ApplePayShippingMethod>? shippingMethods,
       List<ApplePayMerchantCapability>? merchantCapabilities,
       ApplePayShippingType? shippingType,
-      List<String>? supportedCountries});
+      List<String>? supportedCountries,
+      PaymentRequestType? request});
+
+  @override
+  $PaymentRequestTypeCopyWith<$Res>? get request;
 }
 
 /// @nodoc
@@ -2369,6 +2398,7 @@ class __$$_ApplePayParamsCopyWithImpl<$Res>
     Object? merchantCapabilities = freezed,
     Object? shippingType = freezed,
     Object? supportedCountries = freezed,
+    Object? request = freezed,
   }) {
     return _then(_$_ApplePayParams(
       merchantCountryCode: null == merchantCountryCode
@@ -2411,6 +2441,10 @@ class __$$_ApplePayParamsCopyWithImpl<$Res>
           ? _value._supportedCountries
           : supportedCountries // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      request: freezed == request
+          ? _value.request
+          : request // ignore: cast_nullable_to_non_nullable
+              as PaymentRequestType?,
     ));
   }
 }
@@ -2429,7 +2463,8 @@ class _$_ApplePayParams implements _ApplePayParams {
       final List<ApplePayShippingMethod>? shippingMethods,
       final List<ApplePayMerchantCapability>? merchantCapabilities,
       this.shippingType,
-      final List<String>? supportedCountries})
+      final List<String>? supportedCountries,
+      this.request})
       : _additionalEnabledNetworks = additionalEnabledNetworks,
         _cartItems = cartItems,
         _requiredShippingAddressFields = requiredShippingAddressFields,
@@ -2547,9 +2582,15 @@ class _$_ApplePayParams implements _ApplePayParams {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Use this to support different types of payment request.
+  ///
+  /// Only supported on iOS 16 and higher.
+  @override
+  final PaymentRequestType? request;
+
   @override
   String toString() {
-    return 'ApplePayParams(merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, additionalEnabledNetworks: $additionalEnabledNetworks, cartItems: $cartItems, requiredShippingAddressFields: $requiredShippingAddressFields, requiredBillingContactFields: $requiredBillingContactFields, shippingMethods: $shippingMethods, merchantCapabilities: $merchantCapabilities, shippingType: $shippingType, supportedCountries: $supportedCountries)';
+    return 'ApplePayParams(merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, additionalEnabledNetworks: $additionalEnabledNetworks, cartItems: $cartItems, requiredShippingAddressFields: $requiredShippingAddressFields, requiredBillingContactFields: $requiredBillingContactFields, shippingMethods: $shippingMethods, merchantCapabilities: $merchantCapabilities, shippingType: $shippingType, supportedCountries: $supportedCountries, request: $request)';
   }
 
   @override
@@ -2578,7 +2619,8 @@ class _$_ApplePayParams implements _ApplePayParams {
             (identical(other.shippingType, shippingType) ||
                 other.shippingType == shippingType) &&
             const DeepCollectionEquality()
-                .equals(other._supportedCountries, _supportedCountries));
+                .equals(other._supportedCountries, _supportedCountries) &&
+            (identical(other.request, request) || other.request == request));
   }
 
   @JsonKey(ignore: true)
@@ -2594,7 +2636,8 @@ class _$_ApplePayParams implements _ApplePayParams {
       const DeepCollectionEquality().hash(_shippingMethods),
       const DeepCollectionEquality().hash(_merchantCapabilities),
       shippingType,
-      const DeepCollectionEquality().hash(_supportedCountries));
+      const DeepCollectionEquality().hash(_supportedCountries),
+      request);
 
   @JsonKey(ignore: true)
   @override
@@ -2621,7 +2664,8 @@ abstract class _ApplePayParams implements ApplePayParams {
       final List<ApplePayShippingMethod>? shippingMethods,
       final List<ApplePayMerchantCapability>? merchantCapabilities,
       final ApplePayShippingType? shippingType,
-      final List<String>? supportedCountries}) = _$_ApplePayParams;
+      final List<String>? supportedCountries,
+      final PaymentRequestType? request}) = _$_ApplePayParams;
 
   factory _ApplePayParams.fromJson(Map<String, dynamic> json) =
       _$_ApplePayParams.fromJson;
@@ -2666,6 +2710,12 @@ abstract class _ApplePayParams implements ApplePayParams {
 
   /// A list of two-letter ISO 3166 country codes for limiting payment to cards from specific countries or regions.
   List<String>? get supportedCountries;
+  @override
+
+  /// Use this to support different types of payment request.
+  ///
+  /// Only supported on iOS 16 and higher.
+  PaymentRequestType? get request;
   @override
   @JsonKey(ignore: true)
   _$$_ApplePayParamsCopyWith<_$_ApplePayParams> get copyWith =>

@@ -201,6 +201,10 @@ _$_ApplePayParams _$$_ApplePayParamsFromJson(Map<String, dynamic> json) =>
       supportedCountries: (json['supportedCountries'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      request: json['request'] == null
+          ? null
+          : PaymentRequestType.fromJson(
+              json['request'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_ApplePayParamsToJson(_$_ApplePayParams instance) =>
@@ -222,6 +226,7 @@ Map<String, dynamic> _$$_ApplePayParamsToJson(_$_ApplePayParams instance) =>
           .toList(),
       'shippingType': _$ApplePayShippingTypeEnumMap[instance.shippingType],
       'supportedCountries': instance.supportedCountries,
+      'request': instance.request?.toJson(),
     };
 
 const _$ApplePayContactFieldsTypeEnumMap = {
