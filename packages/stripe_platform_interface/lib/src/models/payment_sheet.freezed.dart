@@ -55,7 +55,7 @@ mixin _$SetupPaymentSheetParameters {
   /// If set, PaymentSheet displays Apple Pay as a payment option
   PaymentSheetApplePay? get applePay => throw _privateConstructorUsedError;
 
-  /// Style options for colors in PaymentSheet
+  /// iOS only style options for colors in PaymentSheet
   ///
   /// Parts can be overridden by [appearance].
   @JsonKey(toJson: UserInterfaceStyleKey.toJson)
@@ -448,7 +448,7 @@ class _$_SetupParameters implements _SetupParameters {
   @override
   final PaymentSheetApplePay? applePay;
 
-  /// Style options for colors in PaymentSheet
+  /// iOS only style options for colors in PaymentSheet
   ///
   /// Parts can be overridden by [appearance].
   @override
@@ -631,7 +631,7 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   PaymentSheetApplePay? get applePay;
   @override
 
-  /// Style options for colors in PaymentSheet
+  /// iOS only style options for colors in PaymentSheet
   ///
   /// Parts can be overridden by [appearance].
   @JsonKey(toJson: UserInterfaceStyleKey.toJson)
