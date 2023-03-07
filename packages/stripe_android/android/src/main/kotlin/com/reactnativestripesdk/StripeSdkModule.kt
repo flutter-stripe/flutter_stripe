@@ -7,8 +7,6 @@ import android.util.Log
 import androidx.fragment.app.FragmentActivity
 import com.facebook.react.bridge.*
 import com.facebook.react.module.annotations.ReactModule
-import com.flutter.stripe.activityResultRegistry
-import com.flutter.stripe.invoke
 import com.reactnativestripesdk.addresssheet.AddressLauncherFragment
 import com.reactnativestripesdk.pushprovisioning.PushProvisioningProxy
 import com.reactnativestripesdk.utils.*
@@ -697,7 +695,7 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
       return
     }
 
-    if (!PushProvisioningProxy.isNFCEnabled(reactApplicationContext)) {
+    if (params.getBooleanOr("supportsTapToPay", true) && !PushProvisioningProxy.isNFCEnabled(reactApplicationContext)) {
       promise.resolve(createCanAddCardResult(false, "UNSUPPORTED_DEVICE"))
       return
     }
