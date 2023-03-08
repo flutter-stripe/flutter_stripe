@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.reactnativestripesdk.utils.*
@@ -107,7 +107,7 @@ class PaymentLauncherFragment(
     }
 
     private fun addFragment(fragment: PaymentLauncherFragment, context: ReactApplicationContext, promise: Promise) {
-      context.currentActivity?.let {
+      (context.currentActivity as? FragmentActivity)?.let {
         try {
           it.supportFragmentManager.beginTransaction()
             .add(fragment, TAG)
@@ -167,7 +167,7 @@ class PaymentLauncherFragment(
   }
 
   private fun retrieveSetupIntent(clientSecret: String, stripeAccountId: String?) {
-    stripe.retrieveSetupIntent(clientSecret, stripeAccountId, object : ApiResultCallback<SetupIntent> {
+    stripe.retrieveSetupIntent(clientSecret, stripeAccountId, expand = listOf("payment_method"), object : ApiResultCallback<SetupIntent> {
       override fun onError(e: Exception) {
         promise.resolve(createError(ConfirmSetupIntentErrorType.Failed.toString(), e))
         removeFragment(context)
@@ -208,7 +208,7 @@ class PaymentLauncherFragment(
   }
 
   private fun retrievePaymentIntent(clientSecret: String, stripeAccountId: String?) {
-    stripe.retrievePaymentIntent(clientSecret, stripeAccountId, object : ApiResultCallback<PaymentIntent> {
+    stripe.retrievePaymentIntent(clientSecret, stripeAccountId, expand = listOf("payment_method"), object : ApiResultCallback<PaymentIntent> {
       override fun onError(e: Exception) {
         promise.resolve(createError(ConfirmPaymentErrorType.Failed.toString(), e))
         removeFragment(context)
@@ -262,7 +262,8 @@ class PaymentLauncherFragment(
       StripeIntent.NextActionType.BlikAuthorize,
       StripeIntent.NextActionType.WeChatPayRedirect,
       StripeIntent.NextActionType.UpiAwaitNotification,
-      null -> false
+      StripeIntent.NextActionType.CashAppRedirect,
+      null, -> false
     }
   }
 }

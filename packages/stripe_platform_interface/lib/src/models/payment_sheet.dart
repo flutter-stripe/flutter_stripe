@@ -48,7 +48,7 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// If set, PaymentSheet displays Apple Pay as a payment option
     PaymentSheetApplePay? applePay,
 
-    /// Style options for colors in PaymentSheet
+    /// iOS only style options for colors in PaymentSheet
     ///
     /// Parts can be overridden by [appearance].
     @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style,
@@ -93,7 +93,19 @@ class PaymentSheetApplePay with _$PaymentSheetApplePay {
 
     ///An array of CartSummaryItem item objects that summarize the amount of the payment. If you're using a SetupIntent
     /// for a recurring payment, you should set this to display the amount you intend to charge.
-    List<ApplePayCartSummaryItem>? paymentSummaryItems,
+    List<ApplePayCartSummaryItem>? cartItems,
+
+    /// Sets the the text displayed by the call to action button in the apple pay sheet.
+    PlatformButtonType? buttonType,
+
+    /// Use this for a different payment request than a one time request.
+    PaymentRequestType? request,
+
+    /// Callback function for setting the order details (retrieved from your server) to give users the
+    /// ability to track and manage their purchases in Wallet. Stripe calls your implementation after the
+    /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
+    /// function, or else the Apple Pay sheet will hang.
+    @JsonKey(ignore: true) SetOrderTracking? setOrderTracking,
   }) = _PaymentSheetApplePay;
 
   factory PaymentSheetApplePay.fromJson(Map<String, dynamic> json) =>
@@ -358,4 +370,18 @@ class PresentPaymentSheetParameters with _$PresentPaymentSheetParameters {
 
   factory PresentPaymentSheetParameters.fromJson(Map<String, dynamic> json) =>
       _$PresentPaymentSheetParametersFromJson(json);
+}
+
+@freezed
+class PaymentSheetPresentOptions with _$PaymentSheetPresentOptions {
+  const factory PaymentSheetPresentOptions({
+    /// The number of milliseconds (after presenting) before the Payment Sheet
+    /// closes automatically.
+    ///
+    /// At which point presentPaymentSheet` will resolve with an error.
+    int? timeout,
+  }) = _PaymentSheetPresentOptions;
+
+  factory PaymentSheetPresentOptions.fromJson(Map<String, dynamic> json) =>
+      _$PaymentSheetPresentOptionsFromJson(json);
 }

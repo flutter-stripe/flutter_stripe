@@ -30,6 +30,7 @@ import 'others/setup_future_payment_screen.dart';
 import 'regional_payment_methods/grab_pay_screen.dart';
 import 'themes.dart';
 import 'wallets/apple_pay_create_payment_method.dart';
+import 'wallets/payment_sheet_screen_subscription.dart';
 
 class ExampleSection extends StatelessWidget {
   final String title;
@@ -170,6 +171,15 @@ class Example extends StatelessWidget {
             width: 48,
           ),
           builder: (c) => ApplePayCreatePaymentMethodScreen(),
+          platformsSupported: [DevicePlatform.ios],
+        ),
+        Example(
+          title: 'Apple Pay - Paymentsheet subscription',
+          leading: Image.asset(
+            'assets/apple_pay.png',
+            width: 48,
+          ),
+          builder: (c) => ApplePayPaymentSheetScreen(),
           platformsSupported: [DevicePlatform.ios],
         ),
         Example(

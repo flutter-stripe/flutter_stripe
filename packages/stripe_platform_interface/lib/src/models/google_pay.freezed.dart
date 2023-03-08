@@ -951,7 +951,11 @@ mixin _$IsGooglePaySupportedParams {
   /// customers google Pay wallet has an existing payment method configured.
   ///
   /// Defaults to `false`.
-  bool get existingPaymentMethodRequired => throw _privateConstructorUsedError;
+  bool get existingPaymentMethodRequired =>
+      throw _privateConstructorUsedError; // When set to true it allow users without NFC-enabled devices to add cards to the wallet.
+//
+//NFC is required for paying in stores. Defaults to `true`. Set this to `false`
+  bool get supportsTapToPay => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -966,7 +970,10 @@ abstract class $IsGooglePaySupportedParamsCopyWith<$Res> {
       _$IsGooglePaySupportedParamsCopyWithImpl<$Res,
           IsGooglePaySupportedParams>;
   @useResult
-  $Res call({bool testEnv, bool existingPaymentMethodRequired});
+  $Res call(
+      {bool testEnv,
+      bool existingPaymentMethodRequired,
+      bool supportsTapToPay});
 }
 
 /// @nodoc
@@ -985,6 +992,7 @@ class _$IsGooglePaySupportedParamsCopyWithImpl<$Res,
   $Res call({
     Object? testEnv = null,
     Object? existingPaymentMethodRequired = null,
+    Object? supportsTapToPay = null,
   }) {
     return _then(_value.copyWith(
       testEnv: null == testEnv
@@ -994,6 +1002,10 @@ class _$IsGooglePaySupportedParamsCopyWithImpl<$Res,
       existingPaymentMethodRequired: null == existingPaymentMethodRequired
           ? _value.existingPaymentMethodRequired
           : existingPaymentMethodRequired // ignore: cast_nullable_to_non_nullable
+              as bool,
+      supportsTapToPay: null == supportsTapToPay
+          ? _value.supportsTapToPay
+          : supportsTapToPay // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -1008,7 +1020,10 @@ abstract class _$$_IsGooglePaySupportedParamsCopyWith<$Res>
       __$$_IsGooglePaySupportedParamsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool testEnv, bool existingPaymentMethodRequired});
+  $Res call(
+      {bool testEnv,
+      bool existingPaymentMethodRequired,
+      bool supportsTapToPay});
 }
 
 /// @nodoc
@@ -1026,6 +1041,7 @@ class __$$_IsGooglePaySupportedParamsCopyWithImpl<$Res>
   $Res call({
     Object? testEnv = null,
     Object? existingPaymentMethodRequired = null,
+    Object? supportsTapToPay = null,
   }) {
     return _then(_$_IsGooglePaySupportedParams(
       testEnv: null == testEnv
@@ -1036,6 +1052,10 @@ class __$$_IsGooglePaySupportedParamsCopyWithImpl<$Res>
           ? _value.existingPaymentMethodRequired
           : existingPaymentMethodRequired // ignore: cast_nullable_to_non_nullable
               as bool,
+      supportsTapToPay: null == supportsTapToPay
+          ? _value.supportsTapToPay
+          : supportsTapToPay // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1045,7 +1065,9 @@ class __$$_IsGooglePaySupportedParamsCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_IsGooglePaySupportedParams implements _IsGooglePaySupportedParams {
   const _$_IsGooglePaySupportedParams(
-      {this.testEnv = false, this.existingPaymentMethodRequired = false});
+      {this.testEnv = false,
+      this.existingPaymentMethodRequired = false,
+      this.supportsTapToPay = true});
 
   factory _$_IsGooglePaySupportedParams.fromJson(Map<String, dynamic> json) =>
       _$$_IsGooglePaySupportedParamsFromJson(json);
@@ -1064,10 +1086,16 @@ class _$_IsGooglePaySupportedParams implements _IsGooglePaySupportedParams {
   @override
   @JsonKey()
   final bool existingPaymentMethodRequired;
+// When set to true it allow users without NFC-enabled devices to add cards to the wallet.
+//
+//NFC is required for paying in stores. Defaults to `true`. Set this to `false`
+  @override
+  @JsonKey()
+  final bool supportsTapToPay;
 
   @override
   String toString() {
-    return 'IsGooglePaySupportedParams(testEnv: $testEnv, existingPaymentMethodRequired: $existingPaymentMethodRequired)';
+    return 'IsGooglePaySupportedParams(testEnv: $testEnv, existingPaymentMethodRequired: $existingPaymentMethodRequired, supportsTapToPay: $supportsTapToPay)';
   }
 
   @override
@@ -1079,13 +1107,15 @@ class _$_IsGooglePaySupportedParams implements _IsGooglePaySupportedParams {
             (identical(other.existingPaymentMethodRequired,
                     existingPaymentMethodRequired) ||
                 other.existingPaymentMethodRequired ==
-                    existingPaymentMethodRequired));
+                    existingPaymentMethodRequired) &&
+            (identical(other.supportsTapToPay, supportsTapToPay) ||
+                other.supportsTapToPay == supportsTapToPay));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, testEnv, existingPaymentMethodRequired);
+  int get hashCode => Object.hash(
+      runtimeType, testEnv, existingPaymentMethodRequired, supportsTapToPay);
 
   @JsonKey(ignore: true)
   @override
@@ -1105,8 +1135,9 @@ class _$_IsGooglePaySupportedParams implements _IsGooglePaySupportedParams {
 abstract class _IsGooglePaySupportedParams
     implements IsGooglePaySupportedParams {
   const factory _IsGooglePaySupportedParams(
-          {final bool testEnv, final bool existingPaymentMethodRequired}) =
-      _$_IsGooglePaySupportedParams;
+      {final bool testEnv,
+      final bool existingPaymentMethodRequired,
+      final bool supportsTapToPay}) = _$_IsGooglePaySupportedParams;
 
   factory _IsGooglePaySupportedParams.fromJson(Map<String, dynamic> json) =
       _$_IsGooglePaySupportedParams.fromJson;
@@ -1124,6 +1155,10 @@ abstract class _IsGooglePaySupportedParams
   ///
   /// Defaults to `false`.
   bool get existingPaymentMethodRequired;
+  @override // When set to true it allow users without NFC-enabled devices to add cards to the wallet.
+//
+//NFC is required for paying in stores. Defaults to `true`. Set this to `false`
+  bool get supportsTapToPay;
   @override
   @JsonKey(ignore: true)
   _$$_IsGooglePaySupportedParamsCopyWith<_$_IsGooglePaySupportedParams>

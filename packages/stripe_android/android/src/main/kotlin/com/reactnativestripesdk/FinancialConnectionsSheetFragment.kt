@@ -69,7 +69,7 @@ class FinancialConnectionsSheetFragment : Fragment() {
       }
       is FinancialConnectionsSheetForTokenResult.Completed -> {
         promise.resolve(createTokenResult(result))
-        context.currentActivity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commitAllowingStateLoss()
+        (context.currentActivity as? FragmentActivity)?.supportFragmentManager?.beginTransaction()?.remove(this)?.commitAllowingStateLoss()
       }
     }
   }
@@ -92,7 +92,7 @@ class FinancialConnectionsSheetFragment : Fragment() {
               it.putMap("session", mapFromSession(result.financialConnectionsSession))
             }
         )
-        context.currentActivity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commitAllowingStateLoss()
+        (context.currentActivity as? FragmentActivity)?.supportFragmentManager?.beginTransaction()?.remove(this)?.commitAllowingStateLoss()
       }
     }
   }
@@ -107,7 +107,7 @@ class FinancialConnectionsSheetFragment : Fragment() {
       stripeAccountId = stripeAccountId,
     )
 
-    context.currentActivity?.let {
+    (context.currentActivity as? FragmentActivity)?.let {
       attemptToCleanupPreviousFragment(it)
       commitFragmentAndStartFlow(it)
     } ?: run {

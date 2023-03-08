@@ -9,6 +9,10 @@ protocol ViewManagerDelegate {
     var cardFormView: CardFormView? { get set }
 }
 
+func RCTMakeAndLogError(_ error: String, _ something: String?, _ anotherSomething: String?) {
+    print("Error from flutter_stripe: $error")
+}
+
 @objc(StripePlugin)
 class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
 
@@ -113,6 +117,8 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
             return dismissPlatformPay(call, result: result)
         case "confirmPlatformPay":
             return confirmPlatformPay(call, result: result)
+        case "configureOrderTracking":
+            return configureOrderTracking(call, result: result)
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -184,7 +190,12 @@ extension  StripePlugin {
     }
     
     func presentPaymentSheet(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        presentPaymentSheet(resolver: resolver(for: result), rejecter: rejecter(for: result))
+        guard let arguments = call.arguments as? FlutterMap,
+              let options = arguments["options"] as? NSDictionary else {
+            result(FlutterError.invalidParams)
+            return
+        }
+        presentPaymentSheet(options: options, resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
     
     func createTokenForCVCUpdate(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -511,6 +522,26 @@ extension  StripePlugin {
            return
        }
         confirmPlatformPay(clientSecret: clientSecret, params: params, isPaymentIntent: isPaymentIntent, resolver: resolver(for: result), rejecter: rejecter(for: result))
+    }
+    
+    func configureOrderTracking(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? FlutterMap,
+       let orderTypeIdentifier = arguments["orderTypeIdentifier"] as? String,
+       let orderIdentifier = arguments["orderIdentifier"] as? String,
+       let webServiceUrl = arguments["webServiceUrl"] as? String,
+       let authenticationToken = arguments["authenticationToken"] as? String
+        else {
+           result(FlutterError.invalidParams)
+           return
+       }
+        configureOrderTracking(
+            orderTypeIdentifier: orderTypeIdentifier,
+            orderIdentifier: orderIdentifier,
+            webServiceUrl: webServiceUrl,
+            authenticationToken: authenticationToken,
+            resolver: resolver(for: result),
+            rejecter: rejecter(for: result)
+        )
     }
     
     func dangerouslyUpdateCardDetails(_ call: FlutterMethodCall, result: @escaping FlutterResult) {

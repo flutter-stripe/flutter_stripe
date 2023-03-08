@@ -4,11 +4,9 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Parcelable
 import android.util.Log
+import androidx.fragment.app.FragmentActivity
 import com.facebook.react.bridge.*
 import com.facebook.react.module.annotations.ReactModule
-import com.flutter.stripe.activityResultRegistry
-import com.flutter.stripe.getCurrentActivityOrResolveWithError
-import com.flutter.stripe.invoke
 import com.reactnativestripesdk.addresssheet.AddressLauncherFragment
 import com.reactnativestripesdk.pushprovisioning.PushProvisioningProxy
 import com.reactnativestripesdk.utils.*
@@ -173,12 +171,29 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
   }
 
   @ReactMethod
-  fun presentPaymentSheet(promise: Promise) {
-    paymentSheetFragment?.present(promise)
+  fun presentPaymentSheet(options: ReadableMap, promise: Promise) {
+    if (paymentSheetFragment == null) {
+      promise.resolve(PaymentSheetFragment.createMissingInitError())
+      return
+    }
+
+    val timeoutKey = "timeout"
+    if (options.hasKey(timeoutKey)) {
+      paymentSheetFragment?.presentWithTimeout(
+        options.getInt(timeoutKey).toLong(), promise
+      )
+    } else {
+      paymentSheetFragment?.present(promise)
+    }
   }
 
   @ReactMethod
   fun confirmPaymentSheetPayment(promise: Promise) {
+    if (paymentSheetFragment == null) {
+      promise.resolve(PaymentSheetFragment.createMissingInitError())
+      return
+    }
+
     paymentSheetFragment?.confirmPayment(promise)
   }
 
@@ -611,7 +626,7 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
           when (launcherResult) {
             GooglePayLauncher.Result.Completed -> {
               if (isPaymentIntent) {
-                stripe.retrievePaymentIntent(clientSecret, stripeAccountId,  object : ApiResultCallback<PaymentIntent> {
+                stripe.retrievePaymentIntent(clientSecret, stripeAccountId, expand = listOf("payment_method"), object : ApiResultCallback<PaymentIntent> {
                   override fun onError(e: Exception) {
                     promise.resolve(createResult("paymentIntent", WritableNativeMap()))
                   }
@@ -620,7 +635,7 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
                   }
                 })
               } else {
-                stripe.retrieveSetupIntent(clientSecret, stripeAccountId,  object : ApiResultCallback<SetupIntent> {
+                stripe.retrieveSetupIntent(clientSecret, stripeAccountId, expand = listOf("payment_method"),  object : ApiResultCallback<SetupIntent> {
                   override fun onError(e: Exception) {
                     promise.resolve(createResult("setupIntent", WritableNativeMap()))
                   }
@@ -680,7 +695,7 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
       return
     }
 
-    if (!PushProvisioningProxy.isNFCEnabled(reactApplicationContext)) {
+    if (params.getBooleanOr("supportsTapToPay", true) && !PushProvisioningProxy.isNFCEnabled(reactApplicationContext)) {
       promise.resolve(createCanAddCardResult(false, "UNSUPPORTED_DEVICE"))
       return
     }
@@ -858,6 +873,17 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
   @ReactMethod
   fun removeListeners(count: Int) {}
 
+  /**
+   * Safely get and cast the current activity as an AppCompatActivity. If that fails, the promise
+   * provided will be resolved with an error message instructing the user to retry the method.
+   */
+  private fun getCurrentActivityOrResolveWithError(promise: Promise?): FragmentActivity? {
+    (currentActivity as? FragmentActivity)?.let {
+      return it
+    }
+    promise?.resolve(createMissingActivityError())
+    return null
+  }
 
   companion object {
     const val NAME = "StripeSdk"

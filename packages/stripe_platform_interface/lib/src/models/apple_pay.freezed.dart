@@ -351,11 +351,11 @@ ApplePayCartSummaryItem _$ApplePayCartSummaryItemFromJson(
     Map<String, dynamic> json) {
   switch (json['paymentType']) {
     case 'Immediate':
-      return _ImmediateCartSummaryItem.fromJson(json);
+      return ImmediateCartSummaryItem.fromJson(json);
     case 'Deferred':
-      return _DeferredSummaryItem.fromJson(json);
+      return DeferredSummaryItem.fromJson(json);
     case 'Recurring':
-      return _RecurringCartSummaryItem.fromJson(json);
+      return RecurringCartSummaryItem.fromJson(json);
 
     default:
       throw CheckedFromJsonException(
@@ -420,23 +420,23 @@ mixin _$ApplePayCartSummaryItem {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ImmediateCartSummaryItem value) immediate,
-    required TResult Function(_DeferredSummaryItem value) deferred,
-    required TResult Function(_RecurringCartSummaryItem value) recurring,
+    required TResult Function(ImmediateCartSummaryItem value) immediate,
+    required TResult Function(DeferredSummaryItem value) deferred,
+    required TResult Function(RecurringCartSummaryItem value) recurring,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ImmediateCartSummaryItem value)? immediate,
-    TResult? Function(_DeferredSummaryItem value)? deferred,
-    TResult? Function(_RecurringCartSummaryItem value)? recurring,
+    TResult? Function(ImmediateCartSummaryItem value)? immediate,
+    TResult? Function(DeferredSummaryItem value)? deferred,
+    TResult? Function(RecurringCartSummaryItem value)? recurring,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ImmediateCartSummaryItem value)? immediate,
-    TResult Function(_DeferredSummaryItem value)? deferred,
-    TResult Function(_RecurringCartSummaryItem value)? recurring,
+    TResult Function(ImmediateCartSummaryItem value)? immediate,
+    TResult Function(DeferredSummaryItem value)? deferred,
+    TResult Function(RecurringCartSummaryItem value)? recurring,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -486,24 +486,23 @@ class _$ApplePayCartSummaryItemCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ImmediateCartSummaryItemCopyWith<$Res>
+abstract class _$$ImmediateCartSummaryItemCopyWith<$Res>
     implements $ApplePayCartSummaryItemCopyWith<$Res> {
-  factory _$$_ImmediateCartSummaryItemCopyWith(
-          _$_ImmediateCartSummaryItem value,
-          $Res Function(_$_ImmediateCartSummaryItem) then) =
-      __$$_ImmediateCartSummaryItemCopyWithImpl<$Res>;
+  factory _$$ImmediateCartSummaryItemCopyWith(_$ImmediateCartSummaryItem value,
+          $Res Function(_$ImmediateCartSummaryItem) then) =
+      __$$ImmediateCartSummaryItemCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String label, String amount, bool? isPending});
 }
 
 /// @nodoc
-class __$$_ImmediateCartSummaryItemCopyWithImpl<$Res>
+class __$$ImmediateCartSummaryItemCopyWithImpl<$Res>
     extends _$ApplePayCartSummaryItemCopyWithImpl<$Res,
-        _$_ImmediateCartSummaryItem>
-    implements _$$_ImmediateCartSummaryItemCopyWith<$Res> {
-  __$$_ImmediateCartSummaryItemCopyWithImpl(_$_ImmediateCartSummaryItem _value,
-      $Res Function(_$_ImmediateCartSummaryItem) _then)
+        _$ImmediateCartSummaryItem>
+    implements _$$ImmediateCartSummaryItemCopyWith<$Res> {
+  __$$ImmediateCartSummaryItemCopyWithImpl(_$ImmediateCartSummaryItem _value,
+      $Res Function(_$ImmediateCartSummaryItem) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -513,7 +512,7 @@ class __$$_ImmediateCartSummaryItemCopyWithImpl<$Res>
     Object? amount = null,
     Object? isPending = freezed,
   }) {
-    return _then(_$_ImmediateCartSummaryItem(
+    return _then(_$ImmediateCartSummaryItem(
       label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
@@ -533,16 +532,16 @@ class __$$_ImmediateCartSummaryItemCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_ImmediateCartSummaryItem implements _ImmediateCartSummaryItem {
-  const _$_ImmediateCartSummaryItem(
+class _$ImmediateCartSummaryItem implements ImmediateCartSummaryItem {
+  const _$ImmediateCartSummaryItem(
       {required this.label,
       required this.amount,
       this.isPending,
       final String? $type})
       : $type = $type ?? 'Immediate';
 
-  factory _$_ImmediateCartSummaryItem.fromJson(Map<String, dynamic> json) =>
-      _$$_ImmediateCartSummaryItemFromJson(json);
+  factory _$ImmediateCartSummaryItem.fromJson(Map<String, dynamic> json) =>
+      _$$ImmediateCartSummaryItemFromJson(json);
 
   /// Short localized description of the item.
   @override
@@ -568,7 +567,7 @@ class _$_ImmediateCartSummaryItem implements _ImmediateCartSummaryItem {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ImmediateCartSummaryItem &&
+            other is _$ImmediateCartSummaryItem &&
             (identical(other.label, label) || other.label == label) &&
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.isPending, isPending) ||
@@ -582,9 +581,10 @@ class _$_ImmediateCartSummaryItem implements _ImmediateCartSummaryItem {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ImmediateCartSummaryItemCopyWith<_$_ImmediateCartSummaryItem>
-      get copyWith => __$$_ImmediateCartSummaryItemCopyWithImpl<
-          _$_ImmediateCartSummaryItem>(this, _$identity);
+  _$$ImmediateCartSummaryItemCopyWith<_$ImmediateCartSummaryItem>
+      get copyWith =>
+          __$$ImmediateCartSummaryItemCopyWithImpl<_$ImmediateCartSummaryItem>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -646,9 +646,9 @@ class _$_ImmediateCartSummaryItem implements _ImmediateCartSummaryItem {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ImmediateCartSummaryItem value) immediate,
-    required TResult Function(_DeferredSummaryItem value) deferred,
-    required TResult Function(_RecurringCartSummaryItem value) recurring,
+    required TResult Function(ImmediateCartSummaryItem value) immediate,
+    required TResult Function(DeferredSummaryItem value) deferred,
+    required TResult Function(RecurringCartSummaryItem value) recurring,
   }) {
     return immediate(this);
   }
@@ -656,9 +656,9 @@ class _$_ImmediateCartSummaryItem implements _ImmediateCartSummaryItem {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ImmediateCartSummaryItem value)? immediate,
-    TResult? Function(_DeferredSummaryItem value)? deferred,
-    TResult? Function(_RecurringCartSummaryItem value)? recurring,
+    TResult? Function(ImmediateCartSummaryItem value)? immediate,
+    TResult? Function(DeferredSummaryItem value)? deferred,
+    TResult? Function(RecurringCartSummaryItem value)? recurring,
   }) {
     return immediate?.call(this);
   }
@@ -666,9 +666,9 @@ class _$_ImmediateCartSummaryItem implements _ImmediateCartSummaryItem {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ImmediateCartSummaryItem value)? immediate,
-    TResult Function(_DeferredSummaryItem value)? deferred,
-    TResult Function(_RecurringCartSummaryItem value)? recurring,
+    TResult Function(ImmediateCartSummaryItem value)? immediate,
+    TResult Function(DeferredSummaryItem value)? deferred,
+    TResult Function(RecurringCartSummaryItem value)? recurring,
     required TResult orElse(),
   }) {
     if (immediate != null) {
@@ -679,20 +679,20 @@ class _$_ImmediateCartSummaryItem implements _ImmediateCartSummaryItem {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ImmediateCartSummaryItemToJson(
+    return _$$ImmediateCartSummaryItemToJson(
       this,
     );
   }
 }
 
-abstract class _ImmediateCartSummaryItem implements ApplePayCartSummaryItem {
-  const factory _ImmediateCartSummaryItem(
+abstract class ImmediateCartSummaryItem implements ApplePayCartSummaryItem {
+  const factory ImmediateCartSummaryItem(
       {required final String label,
       required final String amount,
-      final bool? isPending}) = _$_ImmediateCartSummaryItem;
+      final bool? isPending}) = _$ImmediateCartSummaryItem;
 
-  factory _ImmediateCartSummaryItem.fromJson(Map<String, dynamic> json) =
-      _$_ImmediateCartSummaryItem.fromJson;
+  factory ImmediateCartSummaryItem.fromJson(Map<String, dynamic> json) =
+      _$ImmediateCartSummaryItem.fromJson;
 
   @override
 
@@ -707,27 +707,27 @@ abstract class _ImmediateCartSummaryItem implements ApplePayCartSummaryItem {
   bool? get isPending;
   @override
   @JsonKey(ignore: true)
-  _$$_ImmediateCartSummaryItemCopyWith<_$_ImmediateCartSummaryItem>
+  _$$ImmediateCartSummaryItemCopyWith<_$ImmediateCartSummaryItem>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_DeferredSummaryItemCopyWith<$Res>
+abstract class _$$DeferredSummaryItemCopyWith<$Res>
     implements $ApplePayCartSummaryItemCopyWith<$Res> {
-  factory _$$_DeferredSummaryItemCopyWith(_$_DeferredSummaryItem value,
-          $Res Function(_$_DeferredSummaryItem) then) =
-      __$$_DeferredSummaryItemCopyWithImpl<$Res>;
+  factory _$$DeferredSummaryItemCopyWith(_$DeferredSummaryItem value,
+          $Res Function(_$DeferredSummaryItem) then) =
+      __$$DeferredSummaryItemCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String label, String amount, int deferredDate});
 }
 
 /// @nodoc
-class __$$_DeferredSummaryItemCopyWithImpl<$Res>
-    extends _$ApplePayCartSummaryItemCopyWithImpl<$Res, _$_DeferredSummaryItem>
-    implements _$$_DeferredSummaryItemCopyWith<$Res> {
-  __$$_DeferredSummaryItemCopyWithImpl(_$_DeferredSummaryItem _value,
-      $Res Function(_$_DeferredSummaryItem) _then)
+class __$$DeferredSummaryItemCopyWithImpl<$Res>
+    extends _$ApplePayCartSummaryItemCopyWithImpl<$Res, _$DeferredSummaryItem>
+    implements _$$DeferredSummaryItemCopyWith<$Res> {
+  __$$DeferredSummaryItemCopyWithImpl(
+      _$DeferredSummaryItem _value, $Res Function(_$DeferredSummaryItem) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -737,7 +737,7 @@ class __$$_DeferredSummaryItemCopyWithImpl<$Res>
     Object? amount = null,
     Object? deferredDate = null,
   }) {
-    return _then(_$_DeferredSummaryItem(
+    return _then(_$DeferredSummaryItem(
       label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
@@ -757,16 +757,16 @@ class __$$_DeferredSummaryItemCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_DeferredSummaryItem implements _DeferredSummaryItem {
-  const _$_DeferredSummaryItem(
+class _$DeferredSummaryItem implements DeferredSummaryItem {
+  const _$DeferredSummaryItem(
       {required this.label,
       required this.amount,
       required this.deferredDate,
       final String? $type})
       : $type = $type ?? 'Deferred';
 
-  factory _$_DeferredSummaryItem.fromJson(Map<String, dynamic> json) =>
-      _$$_DeferredSummaryItemFromJson(json);
+  factory _$DeferredSummaryItem.fromJson(Map<String, dynamic> json) =>
+      _$$DeferredSummaryItemFromJson(json);
 
   /// Short localized description of the item.
   @override
@@ -792,7 +792,7 @@ class _$_DeferredSummaryItem implements _DeferredSummaryItem {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DeferredSummaryItem &&
+            other is _$DeferredSummaryItem &&
             (identical(other.label, label) || other.label == label) &&
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.deferredDate, deferredDate) ||
@@ -806,8 +806,8 @@ class _$_DeferredSummaryItem implements _DeferredSummaryItem {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DeferredSummaryItemCopyWith<_$_DeferredSummaryItem> get copyWith =>
-      __$$_DeferredSummaryItemCopyWithImpl<_$_DeferredSummaryItem>(
+  _$$DeferredSummaryItemCopyWith<_$DeferredSummaryItem> get copyWith =>
+      __$$DeferredSummaryItemCopyWithImpl<_$DeferredSummaryItem>(
           this, _$identity);
 
   @override
@@ -870,9 +870,9 @@ class _$_DeferredSummaryItem implements _DeferredSummaryItem {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ImmediateCartSummaryItem value) immediate,
-    required TResult Function(_DeferredSummaryItem value) deferred,
-    required TResult Function(_RecurringCartSummaryItem value) recurring,
+    required TResult Function(ImmediateCartSummaryItem value) immediate,
+    required TResult Function(DeferredSummaryItem value) deferred,
+    required TResult Function(RecurringCartSummaryItem value) recurring,
   }) {
     return deferred(this);
   }
@@ -880,9 +880,9 @@ class _$_DeferredSummaryItem implements _DeferredSummaryItem {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ImmediateCartSummaryItem value)? immediate,
-    TResult? Function(_DeferredSummaryItem value)? deferred,
-    TResult? Function(_RecurringCartSummaryItem value)? recurring,
+    TResult? Function(ImmediateCartSummaryItem value)? immediate,
+    TResult? Function(DeferredSummaryItem value)? deferred,
+    TResult? Function(RecurringCartSummaryItem value)? recurring,
   }) {
     return deferred?.call(this);
   }
@@ -890,9 +890,9 @@ class _$_DeferredSummaryItem implements _DeferredSummaryItem {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ImmediateCartSummaryItem value)? immediate,
-    TResult Function(_DeferredSummaryItem value)? deferred,
-    TResult Function(_RecurringCartSummaryItem value)? recurring,
+    TResult Function(ImmediateCartSummaryItem value)? immediate,
+    TResult Function(DeferredSummaryItem value)? deferred,
+    TResult Function(RecurringCartSummaryItem value)? recurring,
     required TResult orElse(),
   }) {
     if (deferred != null) {
@@ -903,20 +903,20 @@ class _$_DeferredSummaryItem implements _DeferredSummaryItem {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DeferredSummaryItemToJson(
+    return _$$DeferredSummaryItemToJson(
       this,
     );
   }
 }
 
-abstract class _DeferredSummaryItem implements ApplePayCartSummaryItem {
-  const factory _DeferredSummaryItem(
+abstract class DeferredSummaryItem implements ApplePayCartSummaryItem {
+  const factory DeferredSummaryItem(
       {required final String label,
       required final String amount,
-      required final int deferredDate}) = _$_DeferredSummaryItem;
+      required final int deferredDate}) = _$DeferredSummaryItem;
 
-  factory _DeferredSummaryItem.fromJson(Map<String, dynamic> json) =
-      _$_DeferredSummaryItem.fromJson;
+  factory DeferredSummaryItem.fromJson(Map<String, dynamic> json) =
+      _$DeferredSummaryItem.fromJson;
 
   @override
 
@@ -931,17 +931,16 @@ abstract class _DeferredSummaryItem implements ApplePayCartSummaryItem {
   int get deferredDate;
   @override
   @JsonKey(ignore: true)
-  _$$_DeferredSummaryItemCopyWith<_$_DeferredSummaryItem> get copyWith =>
+  _$$DeferredSummaryItemCopyWith<_$DeferredSummaryItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_RecurringCartSummaryItemCopyWith<$Res>
+abstract class _$$RecurringCartSummaryItemCopyWith<$Res>
     implements $ApplePayCartSummaryItemCopyWith<$Res> {
-  factory _$$_RecurringCartSummaryItemCopyWith(
-          _$_RecurringCartSummaryItem value,
-          $Res Function(_$_RecurringCartSummaryItem) then) =
-      __$$_RecurringCartSummaryItemCopyWithImpl<$Res>;
+  factory _$$RecurringCartSummaryItemCopyWith(_$RecurringCartSummaryItem value,
+          $Res Function(_$RecurringCartSummaryItem) then) =
+      __$$RecurringCartSummaryItemCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -954,12 +953,12 @@ abstract class _$$_RecurringCartSummaryItemCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RecurringCartSummaryItemCopyWithImpl<$Res>
+class __$$RecurringCartSummaryItemCopyWithImpl<$Res>
     extends _$ApplePayCartSummaryItemCopyWithImpl<$Res,
-        _$_RecurringCartSummaryItem>
-    implements _$$_RecurringCartSummaryItemCopyWith<$Res> {
-  __$$_RecurringCartSummaryItemCopyWithImpl(_$_RecurringCartSummaryItem _value,
-      $Res Function(_$_RecurringCartSummaryItem) _then)
+        _$RecurringCartSummaryItem>
+    implements _$$RecurringCartSummaryItemCopyWith<$Res> {
+  __$$RecurringCartSummaryItemCopyWithImpl(_$RecurringCartSummaryItem _value,
+      $Res Function(_$RecurringCartSummaryItem) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -972,7 +971,7 @@ class __$$_RecurringCartSummaryItemCopyWithImpl<$Res>
     Object? startDate = freezed,
     Object? number = freezed,
   }) {
-    return _then(_$_RecurringCartSummaryItem(
+    return _then(_$RecurringCartSummaryItem(
       label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
@@ -1004,8 +1003,8 @@ class __$$_RecurringCartSummaryItemCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_RecurringCartSummaryItem implements _RecurringCartSummaryItem {
-  const _$_RecurringCartSummaryItem(
+class _$RecurringCartSummaryItem implements RecurringCartSummaryItem {
+  const _$RecurringCartSummaryItem(
       {required this.label,
       required this.amount,
       required this.intervalUnit,
@@ -1015,8 +1014,8 @@ class _$_RecurringCartSummaryItem implements _RecurringCartSummaryItem {
       final String? $type})
       : $type = $type ?? 'Recurring';
 
-  factory _$_RecurringCartSummaryItem.fromJson(Map<String, dynamic> json) =>
-      _$$_RecurringCartSummaryItemFromJson(json);
+  factory _$RecurringCartSummaryItem.fromJson(Map<String, dynamic> json) =>
+      _$$RecurringCartSummaryItemFromJson(json);
 
   /// Short localized description of the item.
   @override
@@ -1053,7 +1052,7 @@ class _$_RecurringCartSummaryItem implements _RecurringCartSummaryItem {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RecurringCartSummaryItem &&
+            other is _$RecurringCartSummaryItem &&
             (identical(other.label, label) || other.label == label) &&
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.intervalUnit, intervalUnit) ||
@@ -1073,9 +1072,10 @@ class _$_RecurringCartSummaryItem implements _RecurringCartSummaryItem {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RecurringCartSummaryItemCopyWith<_$_RecurringCartSummaryItem>
-      get copyWith => __$$_RecurringCartSummaryItemCopyWithImpl<
-          _$_RecurringCartSummaryItem>(this, _$identity);
+  _$$RecurringCartSummaryItemCopyWith<_$RecurringCartSummaryItem>
+      get copyWith =>
+          __$$RecurringCartSummaryItemCopyWithImpl<_$RecurringCartSummaryItem>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1140,9 +1140,9 @@ class _$_RecurringCartSummaryItem implements _RecurringCartSummaryItem {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ImmediateCartSummaryItem value) immediate,
-    required TResult Function(_DeferredSummaryItem value) deferred,
-    required TResult Function(_RecurringCartSummaryItem value) recurring,
+    required TResult Function(ImmediateCartSummaryItem value) immediate,
+    required TResult Function(DeferredSummaryItem value) deferred,
+    required TResult Function(RecurringCartSummaryItem value) recurring,
   }) {
     return recurring(this);
   }
@@ -1150,9 +1150,9 @@ class _$_RecurringCartSummaryItem implements _RecurringCartSummaryItem {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ImmediateCartSummaryItem value)? immediate,
-    TResult? Function(_DeferredSummaryItem value)? deferred,
-    TResult? Function(_RecurringCartSummaryItem value)? recurring,
+    TResult? Function(ImmediateCartSummaryItem value)? immediate,
+    TResult? Function(DeferredSummaryItem value)? deferred,
+    TResult? Function(RecurringCartSummaryItem value)? recurring,
   }) {
     return recurring?.call(this);
   }
@@ -1160,9 +1160,9 @@ class _$_RecurringCartSummaryItem implements _RecurringCartSummaryItem {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ImmediateCartSummaryItem value)? immediate,
-    TResult Function(_DeferredSummaryItem value)? deferred,
-    TResult Function(_RecurringCartSummaryItem value)? recurring,
+    TResult Function(ImmediateCartSummaryItem value)? immediate,
+    TResult Function(DeferredSummaryItem value)? deferred,
+    TResult Function(RecurringCartSummaryItem value)? recurring,
     required TResult orElse(),
   }) {
     if (recurring != null) {
@@ -1173,23 +1173,23 @@ class _$_RecurringCartSummaryItem implements _RecurringCartSummaryItem {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RecurringCartSummaryItemToJson(
+    return _$$RecurringCartSummaryItemToJson(
       this,
     );
   }
 }
 
-abstract class _RecurringCartSummaryItem implements ApplePayCartSummaryItem {
-  const factory _RecurringCartSummaryItem(
+abstract class RecurringCartSummaryItem implements ApplePayCartSummaryItem {
+  const factory RecurringCartSummaryItem(
       {required final String label,
       required final String amount,
       required final ApplePayIntervalUnit intervalUnit,
       required final int intervalCount,
       final int? startDate,
-      final int? number}) = _$_RecurringCartSummaryItem;
+      final int? number}) = _$RecurringCartSummaryItem;
 
-  factory _RecurringCartSummaryItem.fromJson(Map<String, dynamic> json) =
-      _$_RecurringCartSummaryItem.fromJson;
+  factory RecurringCartSummaryItem.fromJson(Map<String, dynamic> json) =
+      _$RecurringCartSummaryItem.fromJson;
 
   @override
 
@@ -1212,7 +1212,7 @@ abstract class _RecurringCartSummaryItem implements ApplePayCartSummaryItem {
   int? get number;
   @override
   @JsonKey(ignore: true)
-  _$$_RecurringCartSummaryItemCopyWith<_$_RecurringCartSummaryItem>
+  _$$RecurringCartSummaryItemCopyWith<_$RecurringCartSummaryItem>
       get copyWith => throw _privateConstructorUsedError;
 }
 
