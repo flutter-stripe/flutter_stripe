@@ -1,3 +1,6 @@
+## 9.0.0+1
+- Fix Android compilation issue (thanks to @asaarnak)
+
 ## 9.0.0
 This release is based on version [0.25.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.25.0) of Stripe React Native:
 
