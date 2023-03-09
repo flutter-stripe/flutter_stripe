@@ -805,8 +805,8 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
     }
 
     amounts?.let {
-      if (it.size() != 2) {
-        promise.resolve(createError(ErrorType.Failed.toString(), "Expected 2 integers in the amounts array, but received ${it.size()}"))
+      if (it.size != 2) {
+        promise.resolve(createError(ErrorType.Failed.toString(), "Expected 2 integers in the amounts array, but received ${it.size}"))
         return
       }
 
