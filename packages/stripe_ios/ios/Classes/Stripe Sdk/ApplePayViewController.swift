@@ -122,13 +122,13 @@ extension StripeSdk : PKPaymentAuthorizationViewControllerDelegate, STPApplePayC
         didSelect shippingMethod: PKShippingMethod,
         handler: @escaping (PKPaymentRequestShippingMethodUpdate) -> Void
     ) {
+        if (self.hasLegacyApplePayListeners) {
+            // Legacy, remove when useApplePay hook is removed
+            sendEvent(withName: "onDidSetShippingMethod", body: ["shippingMethod": Mappers.mapFromShippingMethod(shippingMethod: shippingMethod)])
+        }
         if let callback = self.shippingMethodUpdateJSCallback {
             self.shippingMethodUpdateCompletion = handler
             callback(["shippingMethod": Mappers.mapFromShippingMethod(shippingMethod: shippingMethod)])
-            if (self.hasLegacyApplePayListeners) {
-                // Legacy, remove when useApplePay hook is removed
-                sendEvent(withName: "onDidSetShippingMethod", body: ["shippingMethod": Mappers.mapFromShippingMethod(shippingMethod: shippingMethod)])
-            }
         } else {
             handler(
                 PKPaymentRequestShippingMethodUpdate.init(paymentSummaryItems: applePaySummaryItems)
@@ -141,13 +141,13 @@ extension StripeSdk : PKPaymentAuthorizationViewControllerDelegate, STPApplePayC
         didSelectShippingContact contact: PKContact,
         handler: @escaping (PKPaymentRequestShippingContactUpdate) -> Void
     ) {
+        if (self.hasLegacyApplePayListeners) {
+            // Legacy, remove when useApplePay hook is removed
+            sendEvent(withName: "onDidSetShippingContact", body: ["shippingContact": Mappers.mapFromShippingContact(shippingContact: contact)])
+        }
         if let callback = self.shippingContactUpdateJSCallback {
             self.shippingContactUpdateCompletion = handler
             callback(["shippingContact": Mappers.mapFromShippingContact(shippingContact: contact)])
-            if (self.hasLegacyApplePayListeners) {
-                // Legacy, remove when useApplePay hook is removed
-                sendEvent(withName: "onDidSetShippingContact", body: ["shippingContact": Mappers.mapFromShippingContact(shippingContact: contact)])
-            }
         } else {
             handler(
                 PKPaymentRequestShippingContactUpdate.init(
@@ -167,6 +167,8 @@ extension StripeSdk : PKPaymentAuthorizationViewControllerDelegate, STPApplePayC
     ) {
         if let clientSecret = self.confirmApplePayPaymentClientSecret {
             completion(clientSecret, nil)
+        } else if let clientSecret = self.confirmApplePaySetupClientSecret {
+            completion(clientSecret, nil)
         } else {
             self.applePayCompletionCallback = completion
             let method = Mappers.mapFromPaymentMethod(paymentMethod.splitApplePayAddressByNewline())
@@ -174,6 +176,19 @@ extension StripeSdk : PKPaymentAuthorizationViewControllerDelegate, STPApplePayC
             self.deprecatedApplePayRequestRejecter = nil
         }
     }
+    
+   func applePayContext(
+       _ context: STPApplePayContext,
+       willCompleteWithResult authorizationResult: PKPaymentAuthorizationResult,
+       handler: @escaping (PKPaymentAuthorizationResult) -> Void
+   ) {
+       if let callback = self.platformPayOrderTrackingJSCallback {
+           self.orderTrackingHandler = (authorizationResult, handler)
+           callback(nil)
+       } else {
+           handler(authorizationResult)
+       }
+   }
     
     func applePayContext(
         _ context: STPApplePayContext,

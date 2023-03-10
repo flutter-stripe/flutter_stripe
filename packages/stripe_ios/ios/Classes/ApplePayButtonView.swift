@@ -53,7 +53,7 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
     @objc var onShippingMethodSelectedAction: RCTDirectEventBlock?
     @objc var onShippingContactSelectedAction: RCTDirectEventBlock?
     @objc var onCouponCodeEnteredAction: RCTDirectEventBlock?
-    
+    @objc var onOrderTrackingAction: RCTDirectEventBlock?
     
     @objc var type: NSNumber?
     @objc var buttonStyle: NSNumber?
@@ -77,6 +77,7 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
             stripeSdk?.shippingMethodUpdateJSCallback = onShippingMethodSelectedAction
             stripeSdk?.shippingContactUpdateJSCallback = onShippingContactSelectedAction
             stripeSdk?.couponCodeEnteredJSCallback = onCouponCodeEnteredAction
+            stripeSdk?.platformPayOrderTrackingJSCallback = onOrderTrackingAction
             channel.invokeMethod("onPressed", arguments: nil)
         }
     }
@@ -94,6 +95,7 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
         onShippingContactSelectedAction = onShippingContactSelected
         onShippingMethodSelectedAction = onShippingMethodSelected
         onCouponCodeEnteredAction = onCouponCodeEntered
+        onOrderTrackingAction = onOrderTracking
         if  let arguments = args as? Dictionary<String, AnyObject> {
             type = arguments["type"] as? NSNumber
             buttonStyle = arguments["buttonStyle"] as? NSNumber
@@ -117,6 +119,9 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
         channel.invokeMethod("onCouponCodeEntered", arguments: arguments!)
     }
     
+    func onOrderTracking(_ arguments: Dictionary<AnyHashable, Any>?) {
+        channel.invokeMethod("onOrderTracking", arguments: arguments!)
+    }
     
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {

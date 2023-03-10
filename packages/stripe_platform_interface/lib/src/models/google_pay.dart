@@ -117,6 +117,11 @@ class IsGooglePaySupportedParams with _$IsGooglePaySupportedParams {
     ///
     /// Defaults to `false`.
     @Default(false) bool existingPaymentMethodRequired,
+
+    // When set to true it allow users without NFC-enabled devices to add cards to the wallet.
+    //
+    //NFC is required for paying in stores. Defaults to `true`. Set this to `false`
+    @Default(true) bool supportsTapToPay,
   }) = _IsGooglePaySupportedParams;
 
   factory IsGooglePaySupportedParams.fromJson(Map<String, dynamic> json) =>

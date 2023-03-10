@@ -90,6 +90,7 @@ _$_IsGooglePaySupportedParams _$$_IsGooglePaySupportedParamsFromJson(
       testEnv: json['testEnv'] as bool? ?? false,
       existingPaymentMethodRequired:
           json['existingPaymentMethodRequired'] as bool? ?? false,
+      supportsTapToPay: json['supportsTapToPay'] as bool? ?? true,
     );
 
 Map<String, dynamic> _$$_IsGooglePaySupportedParamsToJson(
@@ -97,4 +98,5 @@ Map<String, dynamic> _$$_IsGooglePaySupportedParamsToJson(
     <String, dynamic>{
       'testEnv': instance.testEnv,
       'existingPaymentMethodRequired': instance.existingPaymentMethodRequired,
+      'supportsTapToPay': instance.supportsTapToPay,
     };

@@ -30,17 +30,17 @@ Map<String, dynamic> _$$_ApplePayShippingMethodToJson(
       'endDate': instance.endDate,
     };
 
-_$_ImmediateCartSummaryItem _$$_ImmediateCartSummaryItemFromJson(
+_$ImmediateCartSummaryItem _$$ImmediateCartSummaryItemFromJson(
         Map<String, dynamic> json) =>
-    _$_ImmediateCartSummaryItem(
+    _$ImmediateCartSummaryItem(
       label: json['label'] as String,
       amount: json['amount'] as String,
       isPending: json['isPending'] as bool?,
       $type: json['paymentType'] as String?,
     );
 
-Map<String, dynamic> _$$_ImmediateCartSummaryItemToJson(
-        _$_ImmediateCartSummaryItem instance) =>
+Map<String, dynamic> _$$ImmediateCartSummaryItemToJson(
+        _$ImmediateCartSummaryItem instance) =>
     <String, dynamic>{
       'label': instance.label,
       'amount': instance.amount,
@@ -48,17 +48,17 @@ Map<String, dynamic> _$$_ImmediateCartSummaryItemToJson(
       'paymentType': instance.$type,
     };
 
-_$_DeferredSummaryItem _$$_DeferredSummaryItemFromJson(
+_$DeferredSummaryItem _$$DeferredSummaryItemFromJson(
         Map<String, dynamic> json) =>
-    _$_DeferredSummaryItem(
+    _$DeferredSummaryItem(
       label: json['label'] as String,
       amount: json['amount'] as String,
       deferredDate: json['deferredDate'] as int,
       $type: json['paymentType'] as String?,
     );
 
-Map<String, dynamic> _$$_DeferredSummaryItemToJson(
-        _$_DeferredSummaryItem instance) =>
+Map<String, dynamic> _$$DeferredSummaryItemToJson(
+        _$DeferredSummaryItem instance) =>
     <String, dynamic>{
       'label': instance.label,
       'amount': instance.amount,
@@ -66,9 +66,9 @@ Map<String, dynamic> _$$_DeferredSummaryItemToJson(
       'paymentType': instance.$type,
     };
 
-_$_RecurringCartSummaryItem _$$_RecurringCartSummaryItemFromJson(
+_$RecurringCartSummaryItem _$$RecurringCartSummaryItemFromJson(
         Map<String, dynamic> json) =>
-    _$_RecurringCartSummaryItem(
+    _$RecurringCartSummaryItem(
       label: json['label'] as String,
       amount: json['amount'] as String,
       intervalUnit:
@@ -79,8 +79,8 @@ _$_RecurringCartSummaryItem _$$_RecurringCartSummaryItemFromJson(
       $type: json['paymentType'] as String?,
     );
 
-Map<String, dynamic> _$$_RecurringCartSummaryItemToJson(
-        _$_RecurringCartSummaryItem instance) =>
+Map<String, dynamic> _$$RecurringCartSummaryItemToJson(
+        _$RecurringCartSummaryItem instance) =>
     <String, dynamic>{
       'label': instance.label,
       'amount': instance.amount,

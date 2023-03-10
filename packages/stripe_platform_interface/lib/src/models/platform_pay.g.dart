@@ -201,6 +201,10 @@ _$_ApplePayParams _$$_ApplePayParamsFromJson(Map<String, dynamic> json) =>
       supportedCountries: (json['supportedCountries'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      request: json['request'] == null
+          ? null
+          : PaymentRequestType.fromJson(
+              json['request'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_ApplePayParamsToJson(_$_ApplePayParams instance) =>
@@ -222,6 +226,7 @@ Map<String, dynamic> _$$_ApplePayParamsToJson(_$_ApplePayParams instance) =>
           .toList(),
       'shippingType': _$ApplePayShippingTypeEnumMap[instance.shippingType],
       'supportedCountries': instance.supportedCountries,
+      'request': instance.request?.toJson(),
     };
 
 const _$ApplePayContactFieldsTypeEnumMap = {
@@ -250,6 +255,10 @@ _$_ApplePayPaymentMethodParams _$$_ApplePayPaymentMethodParamsFromJson(
     _$_ApplePayPaymentMethodParams(
       supportsCouponCode: json['supportsCouponCode'] as bool?,
       couponCode: json['couponCode'] as String?,
+      request: json['request'] == null
+          ? null
+          : PaymentRequestType.fromJson(
+              json['request'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_ApplePayPaymentMethodParamsToJson(
@@ -257,6 +266,7 @@ Map<String, dynamic> _$$_ApplePayPaymentMethodParamsToJson(
     <String, dynamic>{
       'supportsCouponCode': instance.supportsCouponCode,
       'couponCode': instance.couponCode,
+      'request': instance.request?.toJson(),
     };
 
 _$_GooglePayParams _$$_GooglePayParamsFromJson(Map<String, dynamic> json) =>
@@ -342,4 +352,94 @@ Map<String, dynamic> _$$_GooglePayShippingAddressConfigToJson(
       'isRequired': instance.isRequired,
       'isPhoneNumberRequired': instance.isPhoneNumberRequired,
       'allowedCountryCodes': instance.allowedCountryCodes,
+    };
+
+_$_PaymentRequestTypeRecurring _$$_PaymentRequestTypeRecurringFromJson(
+        Map<String, dynamic> json) =>
+    _$_PaymentRequestTypeRecurring(
+      description: json['description'] as String,
+      managementUrl: json['managementUrl'] as String,
+      billing: ImmediateCartSummaryItem.fromJson(
+          json['billing'] as Map<String, dynamic>),
+      trialBilling: json['trialBilling'] == null
+          ? null
+          : ImmediateCartSummaryItem.fromJson(
+              json['trialBilling'] as Map<String, dynamic>),
+      billingAgreement: json['billingAgreement'] as String?,
+      tokenNotificationURL: json['tokenNotificationURL'] as String?,
+      $type: json['type'] as String?,
+    );
+
+Map<String, dynamic> _$$_PaymentRequestTypeRecurringToJson(
+        _$_PaymentRequestTypeRecurring instance) =>
+    <String, dynamic>{
+      'description': instance.description,
+      'managementUrl': instance.managementUrl,
+      'billing': instance.billing.toJson(),
+      'trialBilling': instance.trialBilling?.toJson(),
+      'billingAgreement': instance.billingAgreement,
+      'tokenNotificationURL': instance.tokenNotificationURL,
+      'type': instance.$type,
+    };
+
+_$_PaymentRequestTypeReload _$$_PaymentRequestTypeReloadFromJson(
+        Map<String, dynamic> json) =>
+    _$_PaymentRequestTypeReload(
+      description: json['description'] as String,
+      managementUrl: json['managementUrl'] as String,
+      label: json['label'] as String,
+      reloadAmount: json['reloadAmount'] as String,
+      thresholdAmount: json['thresholdAmount'] as String,
+      billingAgreement: json['billingAgreement'] as String?,
+      tokenNotificationURL: json['tokenNotificationURL'] as String?,
+      $type: json['type'] as String?,
+    );
+
+Map<String, dynamic> _$$_PaymentRequestTypeReloadToJson(
+        _$_PaymentRequestTypeReload instance) =>
+    <String, dynamic>{
+      'description': instance.description,
+      'managementUrl': instance.managementUrl,
+      'label': instance.label,
+      'reloadAmount': instance.reloadAmount,
+      'thresholdAmount': instance.thresholdAmount,
+      'billingAgreement': instance.billingAgreement,
+      'tokenNotificationURL': instance.tokenNotificationURL,
+      'type': instance.$type,
+    };
+
+_$_PaymentRequestTypeMultiMerchant _$$_PaymentRequestTypeMultiMerchantFromJson(
+        Map<String, dynamic> json) =>
+    _$_PaymentRequestTypeMultiMerchant(
+      merchants: (json['merchants'] as List<dynamic>)
+          .map((e) => ApplePayMultiMerchant.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      $type: json['type'] as String?,
+    );
+
+Map<String, dynamic> _$$_PaymentRequestTypeMultiMerchantToJson(
+        _$_PaymentRequestTypeMultiMerchant instance) =>
+    <String, dynamic>{
+      'merchants': instance.merchants,
+      'type': instance.$type,
+    };
+
+_$_ApplePayMultiMerchant _$$_ApplePayMultiMerchantFromJson(
+        Map<String, dynamic> json) =>
+    _$_ApplePayMultiMerchant(
+      merchantIdentifier: json['merchantIdentifier'] as String,
+      externalIdentifier: json['externalIdentifier'] as String,
+      merchantName: json['merchantName'] as String,
+      merchantDomain: json['merchantDomain'] as String?,
+      amount: json['amount'] as String,
+    );
+
+Map<String, dynamic> _$$_ApplePayMultiMerchantToJson(
+        _$_ApplePayMultiMerchant instance) =>
+    <String, dynamic>{
+      'merchantIdentifier': instance.merchantIdentifier,
+      'externalIdentifier': instance.externalIdentifier,
+      'merchantName': instance.merchantName,
+      'merchantDomain': instance.merchantDomain,
+      'amount': instance.amount,
     };
