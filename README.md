@@ -4,7 +4,7 @@
 
 # Flutter Stripe
 
-[![pub package](https://img.shields.io/pub/v/flutter_stripe.svg)](https://pub.dev/packages/flutter_stripe) ![build](https://img.shields.io/github/actions/workflow/status/flutter-stripe/flutter_stripe/all_plugins.yml?logo=github?branch=main)
+[![pub package](https://img.shields.io/pub/v/flutter_stripe.svg)](https://pub.dev/packages/flutter_stripe) ![build](https://img.shields.io/github/actions/workflow/status/flutter-stripe/flutter_stripe/all_plugins.yaml?logo=github?branch=main)
 
 The Stripe Flutter SDK allows you to build delightful payment experiences in your native Android and iOS apps using Flutter. We provide powerful and customizable UI screens and elements that can be used out-of-the-box to collect your users' payment details.
 
