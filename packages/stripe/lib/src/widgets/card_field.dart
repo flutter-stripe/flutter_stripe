@@ -602,7 +602,7 @@ class _AndroidCardField extends StatelessWidget {
       ),
       onCreatePlatformView: (params) {
         onPlatformViewCreated(params.id);
-        return PlatformViewsService.initExpensiveAndroidView(
+        return PlatformViewsService.initAndroidView(
           id: params.id,
           viewType: viewType,
           layoutDirection: Directionality.of(context),
