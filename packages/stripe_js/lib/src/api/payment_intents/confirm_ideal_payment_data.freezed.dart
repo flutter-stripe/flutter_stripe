@@ -24,9 +24,8 @@ mixin _$ConfirmIdealPaymentData {
   /// Either the id of an existing PaymentMethod, or an object containing
   /// data to create a PaymentMethod with.
   /// See the use case sections below for details.
-  @JsonKey(name: "payment_method")
-  @IdealPaymentMethodRefConverter()
-  PaymentMethodRef<IdealPaymentMethodDetails>? get paymentMethod =>
+  @paymentMethodDetailJsonKey
+  IdealPaymentMethodDetails? get paymentMethod =>
       throw _privateConstructorUsedError;
 
   /// The url your customer will be directed to after they complete authentication.
@@ -55,15 +54,14 @@ abstract class $ConfirmIdealPaymentDataCopyWith<$Res> {
       _$ConfirmIdealPaymentDataCopyWithImpl<$Res, ConfirmIdealPaymentData>;
   @useResult
   $Res call(
-      {@JsonKey(name: "payment_method")
-      @IdealPaymentMethodRefConverter()
-          PaymentMethodRef<IdealPaymentMethodDetails>? paymentMethod,
+      {@paymentMethodDetailJsonKey
+          IdealPaymentMethodDetails? paymentMethod,
       @JsonKey(name: "return_url")
           String? returnUrl,
       @JsonKey(name: "setup_future_usage")
           PaymentIntentSetupFutureUsage? setupFutureUsage});
 
-  $PaymentMethodRefCopyWith<IdealPaymentMethodDetails, $Res>? get paymentMethod;
+  $IdealPaymentMethodDetailsCopyWith<$Res>? get paymentMethod;
 }
 
 /// @nodoc
@@ -88,7 +86,7 @@ class _$ConfirmIdealPaymentDataCopyWithImpl<$Res,
       paymentMethod: freezed == paymentMethod
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
-              as PaymentMethodRef<IdealPaymentMethodDetails>?,
+              as IdealPaymentMethodDetails?,
       returnUrl: freezed == returnUrl
           ? _value.returnUrl
           : returnUrl // ignore: cast_nullable_to_non_nullable
@@ -102,14 +100,13 @@ class _$ConfirmIdealPaymentDataCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $PaymentMethodRefCopyWith<IdealPaymentMethodDetails, $Res>?
-      get paymentMethod {
+  $IdealPaymentMethodDetailsCopyWith<$Res>? get paymentMethod {
     if (_value.paymentMethod == null) {
       return null;
     }
 
-    return $PaymentMethodRefCopyWith<IdealPaymentMethodDetails, $Res>(
-        _value.paymentMethod!, (value) {
+    return $IdealPaymentMethodDetailsCopyWith<$Res>(_value.paymentMethod!,
+        (value) {
       return _then(_value.copyWith(paymentMethod: value) as $Val);
     });
   }
@@ -124,16 +121,15 @@ abstract class _$$_ConfirmIdealPaymentDataCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "payment_method")
-      @IdealPaymentMethodRefConverter()
-          PaymentMethodRef<IdealPaymentMethodDetails>? paymentMethod,
+      {@paymentMethodDetailJsonKey
+          IdealPaymentMethodDetails? paymentMethod,
       @JsonKey(name: "return_url")
           String? returnUrl,
       @JsonKey(name: "setup_future_usage")
           PaymentIntentSetupFutureUsage? setupFutureUsage});
 
   @override
-  $PaymentMethodRefCopyWith<IdealPaymentMethodDetails, $Res>? get paymentMethod;
+  $IdealPaymentMethodDetailsCopyWith<$Res>? get paymentMethod;
 }
 
 /// @nodoc
@@ -156,7 +152,7 @@ class __$$_ConfirmIdealPaymentDataCopyWithImpl<$Res>
       paymentMethod: freezed == paymentMethod
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
-              as PaymentMethodRef<IdealPaymentMethodDetails>?,
+              as IdealPaymentMethodDetails?,
       returnUrl: freezed == returnUrl
           ? _value.returnUrl
           : returnUrl // ignore: cast_nullable_to_non_nullable
@@ -173,13 +169,9 @@ class __$$_ConfirmIdealPaymentDataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ConfirmIdealPaymentData implements _ConfirmIdealPaymentData {
   const _$_ConfirmIdealPaymentData(
-      {@JsonKey(name: "payment_method")
-      @IdealPaymentMethodRefConverter()
-          this.paymentMethod,
-      @JsonKey(name: "return_url")
-          this.returnUrl,
-      @JsonKey(name: "setup_future_usage")
-          this.setupFutureUsage});
+      {@paymentMethodDetailJsonKey this.paymentMethod,
+      @JsonKey(name: "return_url") this.returnUrl,
+      @JsonKey(name: "setup_future_usage") this.setupFutureUsage});
 
   factory _$_ConfirmIdealPaymentData.fromJson(Map<String, dynamic> json) =>
       _$$_ConfirmIdealPaymentDataFromJson(json);
@@ -188,9 +180,8 @@ class _$_ConfirmIdealPaymentData implements _ConfirmIdealPaymentData {
   /// data to create a PaymentMethod with.
   /// See the use case sections below for details.
   @override
-  @JsonKey(name: "payment_method")
-  @IdealPaymentMethodRefConverter()
-  final PaymentMethodRef<IdealPaymentMethodDetails>? paymentMethod;
+  @paymentMethodDetailJsonKey
+  final IdealPaymentMethodDetails? paymentMethod;
 
   /// The url your customer will be directed to after they complete authentication.
   @override
@@ -247,9 +238,8 @@ class _$_ConfirmIdealPaymentData implements _ConfirmIdealPaymentData {
 
 abstract class _ConfirmIdealPaymentData implements ConfirmIdealPaymentData {
   const factory _ConfirmIdealPaymentData(
-          {@JsonKey(name: "payment_method")
-          @IdealPaymentMethodRefConverter()
-              final PaymentMethodRef<IdealPaymentMethodDetails>? paymentMethod,
+          {@paymentMethodDetailJsonKey
+              final IdealPaymentMethodDetails? paymentMethod,
           @JsonKey(name: "return_url")
               final String? returnUrl,
           @JsonKey(name: "setup_future_usage")
@@ -264,9 +254,8 @@ abstract class _ConfirmIdealPaymentData implements ConfirmIdealPaymentData {
   /// Either the id of an existing PaymentMethod, or an object containing
   /// data to create a PaymentMethod with.
   /// See the use case sections below for details.
-  @JsonKey(name: "payment_method")
-  @IdealPaymentMethodRefConverter()
-  PaymentMethodRef<IdealPaymentMethodDetails>? get paymentMethod;
+  @paymentMethodDetailJsonKey
+  IdealPaymentMethodDetails? get paymentMethod;
   @override
 
   /// The url your customer will be directed to after they complete authentication.

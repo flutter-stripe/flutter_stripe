@@ -23,8 +23,8 @@ mixin _$ConfirmCardSetupData {
   /// Either the id of an existing PaymentMethod, or an object containing
   /// data to create a PaymentMethod with.
   /// See the use case sections below for details.
-  @PaymentMethodRefConverter()
-  PaymentMethodRef<CardPaymentMethodDetails>? get paymentMethod =>
+  @paymentMethodDetailJsonKey
+  CardPaymentMethodDetails? get paymentMethod =>
       throw _privateConstructorUsedError;
 
   /// If you are handling next actions yourself, pass in a return_url.
@@ -46,12 +46,10 @@ abstract class $ConfirmCardSetupDataCopyWith<$Res> {
       _$ConfirmCardSetupDataCopyWithImpl<$Res, ConfirmCardSetupData>;
   @useResult
   $Res call(
-      {@PaymentMethodRefConverter()
-          PaymentMethodRef<CardPaymentMethodDetails>? paymentMethod,
-      @JsonKey(name: "return_url")
-          String? returnUrl});
+      {@paymentMethodDetailJsonKey CardPaymentMethodDetails? paymentMethod,
+      @JsonKey(name: "return_url") String? returnUrl});
 
-  $PaymentMethodRefCopyWith<CardPaymentMethodDetails, $Res>? get paymentMethod;
+  $CardPaymentMethodDetailsCopyWith<$Res>? get paymentMethod;
 }
 
 /// @nodoc
@@ -75,7 +73,7 @@ class _$ConfirmCardSetupDataCopyWithImpl<$Res,
       paymentMethod: freezed == paymentMethod
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
-              as PaymentMethodRef<CardPaymentMethodDetails>?,
+              as CardPaymentMethodDetails?,
       returnUrl: freezed == returnUrl
           ? _value.returnUrl
           : returnUrl // ignore: cast_nullable_to_non_nullable
@@ -85,13 +83,13 @@ class _$ConfirmCardSetupDataCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $PaymentMethodRefCopyWith<CardPaymentMethodDetails, $Res>? get paymentMethod {
+  $CardPaymentMethodDetailsCopyWith<$Res>? get paymentMethod {
     if (_value.paymentMethod == null) {
       return null;
     }
 
-    return $PaymentMethodRefCopyWith<CardPaymentMethodDetails, $Res>(
-        _value.paymentMethod!, (value) {
+    return $CardPaymentMethodDetailsCopyWith<$Res>(_value.paymentMethod!,
+        (value) {
       return _then(_value.copyWith(paymentMethod: value) as $Val);
     });
   }
@@ -106,13 +104,11 @@ abstract class _$$_ConfirmCardSetupDataCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@PaymentMethodRefConverter()
-          PaymentMethodRef<CardPaymentMethodDetails>? paymentMethod,
-      @JsonKey(name: "return_url")
-          String? returnUrl});
+      {@paymentMethodDetailJsonKey CardPaymentMethodDetails? paymentMethod,
+      @JsonKey(name: "return_url") String? returnUrl});
 
   @override
-  $PaymentMethodRefCopyWith<CardPaymentMethodDetails, $Res>? get paymentMethod;
+  $CardPaymentMethodDetailsCopyWith<$Res>? get paymentMethod;
 }
 
 /// @nodoc
@@ -133,7 +129,7 @@ class __$$_ConfirmCardSetupDataCopyWithImpl<$Res>
       paymentMethod: freezed == paymentMethod
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
-              as PaymentMethodRef<CardPaymentMethodDetails>?,
+              as CardPaymentMethodDetails?,
       returnUrl: freezed == returnUrl
           ? _value.returnUrl
           : returnUrl // ignore: cast_nullable_to_non_nullable
@@ -146,7 +142,7 @@ class __$$_ConfirmCardSetupDataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ConfirmCardSetupData implements _ConfirmCardSetupData {
   const _$_ConfirmCardSetupData(
-      {@PaymentMethodRefConverter() this.paymentMethod,
+      {@paymentMethodDetailJsonKey this.paymentMethod,
       @JsonKey(name: "return_url") this.returnUrl});
 
   factory _$_ConfirmCardSetupData.fromJson(Map<String, dynamic> json) =>
@@ -156,8 +152,8 @@ class _$_ConfirmCardSetupData implements _ConfirmCardSetupData {
   /// data to create a PaymentMethod with.
   /// See the use case sections below for details.
   @override
-  @PaymentMethodRefConverter()
-  final PaymentMethodRef<CardPaymentMethodDetails>? paymentMethod;
+  @paymentMethodDetailJsonKey
+  final CardPaymentMethodDetails? paymentMethod;
 
   /// If you are handling next actions yourself, pass in a return_url.
   /// If the subsequent action is redirect_to_url,
@@ -203,8 +199,8 @@ class _$_ConfirmCardSetupData implements _ConfirmCardSetupData {
 
 abstract class _ConfirmCardSetupData implements ConfirmCardSetupData {
   const factory _ConfirmCardSetupData(
-      {@PaymentMethodRefConverter()
-          final PaymentMethodRef<CardPaymentMethodDetails>? paymentMethod,
+      {@paymentMethodDetailJsonKey
+          final CardPaymentMethodDetails? paymentMethod,
       @JsonKey(name: "return_url")
           final String? returnUrl}) = _$_ConfirmCardSetupData;
 
@@ -216,8 +212,8 @@ abstract class _ConfirmCardSetupData implements ConfirmCardSetupData {
   /// Either the id of an existing PaymentMethod, or an object containing
   /// data to create a PaymentMethod with.
   /// See the use case sections below for details.
-  @PaymentMethodRefConverter()
-  PaymentMethodRef<CardPaymentMethodDetails>? get paymentMethod;
+  @paymentMethodDetailJsonKey
+  CardPaymentMethodDetails? get paymentMethod;
   @override
 
   /// If you are handling next actions yourself, pass in a return_url.

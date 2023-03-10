@@ -24,9 +24,8 @@ mixin _$ConfirmCardPaymentData {
   /// Either the id of an existing PaymentMethod, or an object containing
   /// data to create a PaymentMethod with.
   /// See the use case sections below for details.
-  @JsonKey(name: "payment_method")
-  @CardPaymentMethodRefConverter()
-  PaymentMethodRef<CardPaymentMethodDetails>? get paymentMethod =>
+  @paymentMethodDetailJsonKey
+  CardPaymentMethodDetails? get paymentMethod =>
       throw _privateConstructorUsedError;
 
   /// The shipping details for the payment, if collected.
@@ -78,9 +77,8 @@ abstract class $ConfirmCardPaymentDataCopyWith<$Res> {
       _$ConfirmCardPaymentDataCopyWithImpl<$Res, ConfirmCardPaymentData>;
   @useResult
   $Res call(
-      {@JsonKey(name: "payment_method")
-      @CardPaymentMethodRefConverter()
-          PaymentMethodRef<CardPaymentMethodDetails>? paymentMethod,
+      {@paymentMethodDetailJsonKey
+          CardPaymentMethodDetails? paymentMethod,
       ShippingDetails? shipping,
       @JsonKey(name: "return_url")
           String? returnUrl,
@@ -91,7 +89,7 @@ abstract class $ConfirmCardPaymentDataCopyWith<$Res> {
       @JsonKey(name: "payment_method_options")
           dynamic paymentMethodOptions});
 
-  $PaymentMethodRefCopyWith<CardPaymentMethodDetails, $Res>? get paymentMethod;
+  $CardPaymentMethodDetailsCopyWith<$Res>? get paymentMethod;
   $ShippingDetailsCopyWith<$Res>? get shipping;
 }
 
@@ -120,7 +118,7 @@ class _$ConfirmCardPaymentDataCopyWithImpl<$Res,
       paymentMethod: freezed == paymentMethod
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
-              as PaymentMethodRef<CardPaymentMethodDetails>?,
+              as CardPaymentMethodDetails?,
       shipping: freezed == shipping
           ? _value.shipping
           : shipping // ignore: cast_nullable_to_non_nullable
@@ -146,13 +144,13 @@ class _$ConfirmCardPaymentDataCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $PaymentMethodRefCopyWith<CardPaymentMethodDetails, $Res>? get paymentMethod {
+  $CardPaymentMethodDetailsCopyWith<$Res>? get paymentMethod {
     if (_value.paymentMethod == null) {
       return null;
     }
 
-    return $PaymentMethodRefCopyWith<CardPaymentMethodDetails, $Res>(
-        _value.paymentMethod!, (value) {
+    return $CardPaymentMethodDetailsCopyWith<$Res>(_value.paymentMethod!,
+        (value) {
       return _then(_value.copyWith(paymentMethod: value) as $Val);
     });
   }
@@ -179,9 +177,8 @@ abstract class _$$_ConfirmCardPaymentDataCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "payment_method")
-      @CardPaymentMethodRefConverter()
-          PaymentMethodRef<CardPaymentMethodDetails>? paymentMethod,
+      {@paymentMethodDetailJsonKey
+          CardPaymentMethodDetails? paymentMethod,
       ShippingDetails? shipping,
       @JsonKey(name: "return_url")
           String? returnUrl,
@@ -193,7 +190,7 @@ abstract class _$$_ConfirmCardPaymentDataCopyWith<$Res>
           dynamic paymentMethodOptions});
 
   @override
-  $PaymentMethodRefCopyWith<CardPaymentMethodDetails, $Res>? get paymentMethod;
+  $CardPaymentMethodDetailsCopyWith<$Res>? get paymentMethod;
   @override
   $ShippingDetailsCopyWith<$Res>? get shipping;
 }
@@ -221,7 +218,7 @@ class __$$_ConfirmCardPaymentDataCopyWithImpl<$Res>
       paymentMethod: freezed == paymentMethod
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
-              as PaymentMethodRef<CardPaymentMethodDetails>?,
+              as CardPaymentMethodDetails?,
       shipping: freezed == shipping
           ? _value.shipping
           : shipping // ignore: cast_nullable_to_non_nullable
@@ -250,18 +247,12 @@ class __$$_ConfirmCardPaymentDataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ConfirmCardPaymentData implements _ConfirmCardPaymentData {
   const _$_ConfirmCardPaymentData(
-      {@JsonKey(name: "payment_method")
-      @CardPaymentMethodRefConverter()
-          this.paymentMethod,
+      {@paymentMethodDetailJsonKey this.paymentMethod,
       this.shipping,
-      @JsonKey(name: "return_url")
-          this.returnUrl,
-      @JsonKey(name: "receipt_email")
-          this.receiptEmail,
-      @JsonKey(name: "setup_future_usage")
-          this.setupFutureUsage,
-      @JsonKey(name: "payment_method_options")
-          this.paymentMethodOptions});
+      @JsonKey(name: "return_url") this.returnUrl,
+      @JsonKey(name: "receipt_email") this.receiptEmail,
+      @JsonKey(name: "setup_future_usage") this.setupFutureUsage,
+      @JsonKey(name: "payment_method_options") this.paymentMethodOptions});
 
   factory _$_ConfirmCardPaymentData.fromJson(Map<String, dynamic> json) =>
       _$$_ConfirmCardPaymentDataFromJson(json);
@@ -270,9 +261,8 @@ class _$_ConfirmCardPaymentData implements _ConfirmCardPaymentData {
   /// data to create a PaymentMethod with.
   /// See the use case sections below for details.
   @override
-  @JsonKey(name: "payment_method")
-  @CardPaymentMethodRefConverter()
-  final PaymentMethodRef<CardPaymentMethodDetails>? paymentMethod;
+  @paymentMethodDetailJsonKey
+  final CardPaymentMethodDetails? paymentMethod;
 
   /// The shipping details for the payment, if collected.
   @override
@@ -366,9 +356,8 @@ class _$_ConfirmCardPaymentData implements _ConfirmCardPaymentData {
 
 abstract class _ConfirmCardPaymentData implements ConfirmCardPaymentData {
   const factory _ConfirmCardPaymentData(
-      {@JsonKey(name: "payment_method")
-      @CardPaymentMethodRefConverter()
-          final PaymentMethodRef<CardPaymentMethodDetails>? paymentMethod,
+      {@paymentMethodDetailJsonKey
+          final CardPaymentMethodDetails? paymentMethod,
       final ShippingDetails? shipping,
       @JsonKey(name: "return_url")
           final String? returnUrl,
@@ -387,9 +376,8 @@ abstract class _ConfirmCardPaymentData implements ConfirmCardPaymentData {
   /// Either the id of an existing PaymentMethod, or an object containing
   /// data to create a PaymentMethod with.
   /// See the use case sections below for details.
-  @JsonKey(name: "payment_method")
-  @CardPaymentMethodRefConverter()
-  PaymentMethodRef<CardPaymentMethodDetails>? get paymentMethod;
+  @paymentMethodDetailJsonKey
+  CardPaymentMethodDetails? get paymentMethod;
   @override
 
   /// The shipping details for the payment, if collected.

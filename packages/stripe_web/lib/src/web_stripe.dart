@@ -101,9 +101,7 @@ class WebStripe extends StripePlatform {
         return js.confirmCardPayment(
           paymentIntentClientSecret,
           data: stripe_js.ConfirmCardPaymentData(
-            paymentMethod: stripe_js.PaymentMethodRef.details(
-              stripe_js.CardPaymentMethodDetails(card: element!),
-            ),
+            paymentMethod: stripe_js.CardPaymentMethodDetails(card: element!),
             setupFutureUsage: (options?.setupFutureUsage ??
                     PaymentIntentsFutureUsage.OnSession)
                 .toJs(),
@@ -115,7 +113,9 @@ class WebStripe extends StripePlatform {
         return js.confirmCardPayment(
           paymentIntentClientSecret,
           data: stripe_js.ConfirmCardPaymentData(
-            paymentMethod: stripe_js.$id(paymentMethodData.paymentMethodId),
+            paymentMethod: stripe_js.CardPaymentMethodDetails.id(
+              paymentMethodData.paymentMethodId,
+            ),
           ),
         );
       },
@@ -124,10 +124,8 @@ class WebStripe extends StripePlatform {
         return js.confirmCardPayment(
           paymentIntentClientSecret,
           data: stripe_js.ConfirmCardPaymentData(
-            paymentMethod: stripe_js.$expanded(
-              stripe_js.CardPaymentMethodDetails.token(
-                card: stripe_js.CardTokenPaymentMethod(token: data.token),
-              ),
+            paymentMethod: stripe_js.CardPaymentMethodDetails.token(
+              card: stripe_js.CardTokenPaymentMethod(token: data.token),
             ),
             setupFutureUsage: (options?.setupFutureUsage ??
                     PaymentIntentsFutureUsage.OnSession)
@@ -150,10 +148,8 @@ class WebStripe extends StripePlatform {
         return js.confirmIdealPayment(
           paymentIntentClientSecret,
           data: stripe_js.ConfirmIdealPaymentData(
-            paymentMethod: stripe_js.$expanded(
-              stripe_js.IdealPaymentMethodDetails.withBank(
-                ideal: stripe_js.IdealBankData(bank: paymentData.bankName!),
-              ),
+            paymentMethod: stripe_js.IdealPaymentMethodDetails.withBank(
+              ideal: stripe_js.IdealBankData(bank: paymentData.bankName!),
             ),
             returnUrl: window.location.href,
             // recommended
@@ -182,17 +178,16 @@ class WebStripe extends StripePlatform {
     PaymentMethodOptions? options,
   ) async {
     final response = await data
-        .maybeWhen<Future<stripe_js.SetupIntentResponse>>(card: (usage) {
+        .maybeWhen<Future<stripe_js.SetupIntentResponse>>(card: (params) {
+      final data = stripe_js.ConfirmCardSetupData(
+        paymentMethod: stripe_js.CardPaymentMethodDetails(
+          card: element!,
+          billingDetails: params.billingDetails?.toJs(),
+        ),
+      );
       return js.confirmCardSetup(
         setupIntentClientSecret,
-        data: stripe_js.ConfirmCardSetupData(
-          paymentMethod: stripe_js.$expanded(
-            stripe_js.CardPaymentMethodDetails(card: element!),
-          ),
-          // shipping: billing?.toJs()
-          // TODO: Implement return_url for web
-          // return_url: '',
-        ),
+        data: data,
       );
     }, orElse: () {
       throw UnimplementedError();

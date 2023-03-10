@@ -9,11 +9,9 @@ void main() {
       final fakeElement = FakeElement();
       expect(
         ConfirmIdealPaymentData(
-          paymentMethod: $expanded(
-            IdealPaymentMethodDetails(
-              ideal: fakeElement,
-              billingDetails: BillingDetails(name: 'Jenny Rosen'),
-            ),
+          paymentMethod: IdealPaymentMethodDetails(
+            ideal: fakeElement,
+            billingDetails: BillingDetails(name: 'Jenny Rosen'),
           ),
         ).toJson(),
         {
@@ -31,7 +29,7 @@ void main() {
     test('with id parses correctly', () {
       expect(
         ConfirmIdealPaymentData(
-          paymentMethod: $id('id'),
+          paymentMethod: IdealPaymentMethodDetails.id('id'),
         ).toJson(),
         {"payment_method": "id"},
       );
@@ -40,11 +38,9 @@ void main() {
     test('with token parses correctly', () {
       expect(
         ConfirmIdealPaymentData(
-          paymentMethod: PaymentMethodRef.details(
-            IdealPaymentMethodDetails.withBank(
-              ideal: IdealBankData(bank: "abn_amro"),
-              billingDetails: BillingDetails(name: 'Jenny Rosen'),
-            ),
+          paymentMethod: IdealPaymentMethodDetails.withBank(
+            ideal: IdealBankData(bank: "abn_amro"),
+            billingDetails: BillingDetails(name: 'Jenny Rosen'),
           ),
         ).toJson(),
         {

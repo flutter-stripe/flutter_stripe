@@ -228,7 +228,6 @@ class Example extends StatelessWidget {
           width: 48,
         ),
         builder: (context) => IdealScreen(),
-        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
       Example(
         title: 'Sofort',
@@ -239,6 +238,7 @@ class Example extends StatelessWidget {
       Example(
         title: 'Aubecs',
         builder: (context) => AubecsExample(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
       Example(
         title: 'Fpx',
@@ -247,6 +247,7 @@ class Example extends StatelessWidget {
           width: 48,
         ),
         builder: (contex) => FpxScreen(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
       Example(
         title: 'Grab pay',
@@ -255,6 +256,7 @@ class Example extends StatelessWidget {
           width: 48,
         ),
         builder: (contex) => GrabPayScreen(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
       Example(
         title: 'Klarna',
@@ -263,6 +265,7 @@ class Example extends StatelessWidget {
           width: 48,
         ),
         builder: (contex) => KlarnaScreen(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
       Example(
         title: 'PayPal',
@@ -276,6 +279,7 @@ class Example extends StatelessWidget {
       Example(
         title: 'Us bank accounts (ACH)',
         builder: (contex) => UsBankAccountScreen(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
       // TODO: uncomment when we can re-enable wechat pay
       // Example(
@@ -304,7 +308,6 @@ class Example extends StatelessWidget {
       Example(
         title: 'Setup Future Payment',
         builder: (c) => SetupFuturePaymentScreen(),
-        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
       Example(
         title: 'Re-collect CVC',

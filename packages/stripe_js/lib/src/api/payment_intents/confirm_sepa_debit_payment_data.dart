@@ -5,23 +5,13 @@ import 'package:stripe_js/stripe_api.dart';
 part 'confirm_sepa_debit_payment_data.freezed.dart';
 part 'confirm_sepa_debit_payment_data.g.dart';
 
-class SepaDebitPaymentMethodRefConverter
-    extends PaymentMethodRefConverter<SepaDebitPaymentMethodDetails> {
-  const SepaDebitPaymentMethodRefConverter();
-}
-
-typedef SepaDebitPaymentMethodRef
-    = PaymentMethodRef<SepaDebitPaymentMethodDetails>;
-
 @freezed
 class ConfirmSepaDebitPaymentData with _$ConfirmSepaDebitPaymentData {
   const factory ConfirmSepaDebitPaymentData({
     /// Either the id of an existing PaymentMethod, or an object containing
     /// data to create a PaymentMethod with.
     /// See the use case sections below for details.
-    @JsonKey(name: "payment_method")
-    @SepaDebitPaymentMethodRefConverter()
-        SepaDebitPaymentMethodRef? paymentMethod,
+    @paymentMethodDetailJsonKey SepaDebitPaymentMethodDetails? paymentMethod,
 
     /// To set up the SEPA Direct Debit account for reuse, set this parameter
     /// to off_session. SEPA Direct Debit only accepts an off_session value
@@ -40,6 +30,11 @@ class ConfirmSepaDebitPaymentData with _$ConfirmSepaDebitPaymentData {
 class SepaDebitPaymentMethodDetails
     with _$SepaDebitPaymentMethodDetails
     implements PaymentMethodDetails {
+  @FreezedUnionValue('sepa_debit')
+  @Implements<IdPaymentMethodDetails>()
+  const factory SepaDebitPaymentMethodDetails.id(String id) =
+      _IdSepaDebitPaymentMethodDetails;
+
   /// Use stripe.confirmCardPayment with payment data from an Element by
   /// passing a card or cardNumber Element as payment_method[card] in the
   /// data argument.
