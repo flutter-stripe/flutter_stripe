@@ -12,6 +12,7 @@ Future<CheckoutResponse> redirectToCheckout({
   String? successUrl,
   String? canceledUrl,
 }) {
+  // ignore: deprecated_member_use_from_same_package
   return stripe.redirectToCheckout(
     context: context,
     sessionId: sessionId,
