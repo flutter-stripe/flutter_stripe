@@ -141,7 +141,9 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
   Future<void> confirmPayment() async {
     try {
       // 3. display the payment sheet.
-      await Stripe.instance.presentPaymentSheet();
+      await Stripe.instance.presentPaymentSheet(
+        options: PaymentSheetPresentOptions(timeout: 10000),
+      );
 
       setState(() {
         step = 0;
