@@ -19,7 +19,6 @@ class _ThemeCardExampleState extends State<ThemeCardExample> {
             secondary: Colors.green,
             error: Colors.red,
           ),
-          errorColor: Colors.red,
           inputDecorationTheme: InputDecorationTheme(
             filled: true,
           ),

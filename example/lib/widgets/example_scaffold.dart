@@ -24,7 +24,7 @@ class ExampleScaffold extends StatelessWidget {
           children: [
             SizedBox(height: 60),
             Padding(
-              child: Text(title, style: Theme.of(context).textTheme.headline5),
+              child: Text(title, style: Theme.of(context).textTheme.headlineSmall),
               padding: EdgeInsets.symmetric(horizontal: 20),
             ),
             SizedBox(height: 4),
