@@ -3,7 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:stripe_platform_interface/src/models/platform_pay_button.dart';
+import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 class GooglePayButton extends StatefulWidget {
   const GooglePayButton({
