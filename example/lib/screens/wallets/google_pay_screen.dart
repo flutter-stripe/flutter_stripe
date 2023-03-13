@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
 import 'package:pay/pay.dart' as pay;
 import 'package:stripe_example/config.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
+
+import '../../.env.dart';
 
 const _paymentItems = [
   pay.PaymentItem(
@@ -45,17 +45,16 @@ class _GooglePayScreenState extends State<GooglePayScreen> {
       tags: ['Android', 'Pay plugin'],
       children: [
         pay.GooglePayButton(
-          paymentConfigurationAsset: 'google_pay_payment_profile.json',
+          paymentConfiguration: pay.PaymentConfiguration.fromJsonString(
+            _paymentProfile,
+          ),
           paymentItems: _paymentItems,
           margin: const EdgeInsets.only(top: 15),
           onPaymentResult: onGooglePayResult,
           loadingIndicator: const Center(
             child: CircularProgressIndicator(),
           ),
-          onPressed: () async {
-            // 1. Add your stripe publishable key to assets/google_pay_payment_profile.json
-            await debugChangedStripePublishableKey();
-          },
+          onPressed: () async {},
           childOnError: Text('Google Pay is not available in this device'),
           onError: (e) {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -72,8 +71,6 @@ class _GooglePayScreenState extends State<GooglePayScreen> {
 
   Future<void> onGooglePayResult(paymentResult) async {
     try {
-      // 1. Add your stripe publishable key to assets/google_pay_payment_profile.json
-
       debugPrint(paymentResult.toString());
       // 2. fetch Intent Client Secret from backend
       final response = await fetchPaymentIntentClientSecret();
@@ -122,16 +119,43 @@ class _GooglePayScreenState extends State<GooglePayScreen> {
     );
     return json.decode(response.body);
   }
+}
 
-  Future<void> debugChangedStripePublishableKey() async {
-    if (kDebugMode) {
-      final profile =
-          await rootBundle.loadString('assets/google_pay_payment_profile.json');
-      final isValidKey = !profile.contains('<ADD_YOUR_KEY_HERE>');
-      assert(
-        isValidKey,
-        'No stripe publishable key added to assets/google_pay_payment_profile.json',
-      );
+final _paymentProfile = """{
+  "provider": "google_pay",
+  "data": {
+    "environment": "TEST",
+    "apiVersion": 2,
+    "apiVersionMinor": 0,
+    "allowedPaymentMethods": [
+      {
+        "type": "CARD",
+        "tokenizationSpecification": {
+          "type": "PAYMENT_GATEWAY",
+          "parameters": {
+            "gateway": "stripe",
+            "stripe:version": "2020-08-27",
+            "stripe:publishableKey": "$stripePublishableKey"
+          }
+        },
+        "parameters": {
+          "allowedCardNetworks": ["VISA", "MASTERCARD"],
+          "allowedAuthMethods": ["PAN_ONLY", "CRYPTOGRAM_3DS"],
+          "billingAddressRequired": true,
+          "billingAddressParameters": {
+            "format": "FULL",
+            "phoneNumberRequired": true
+          }
+        }
+      }
+    ],
+    "merchantInfo": {
+      "merchantId": "01234567890123456789",
+      "merchantName": "Example Merchant Name"
+    },
+    "transactionInfo": {
+      "countryCode": "US",
+      "currencyCode": "USD"
     }
   }
-}
+}""";
