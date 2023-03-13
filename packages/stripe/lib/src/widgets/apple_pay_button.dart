@@ -139,7 +139,7 @@ class _UiKitApplePayButtonState extends State<_UiKitApplePayButton> {
       creationParams: {
         'type': widget.type.id,
         'style': widget.style.id,
-        'cornerRadius': widget.cornerRadius
+        'borderRadius': widget.cornerRadius
       },
       onPlatformViewCreated: (viewId) {
         methodChannel = MethodChannel('flutter.stripe/apple_pay/$viewId');
