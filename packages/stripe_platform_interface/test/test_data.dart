@@ -138,7 +138,7 @@ extension SetupIntentTestInstance on SetupIntent {
 extension TokenDataTestInstance on TokenData {
   static TokenData create(String id) => TokenData(
         id: id,
-        createdDateTime: 'createdDateTime',
+        createdDateTime: 1337,
         type: TokenType.Card,
         livemode: false,
         card: const CardData(brand: 'Visa'),

@@ -1584,7 +1584,7 @@ mixin _$TokenData {
 
   /// Timestamp when token was created
   @JsonKey(name: 'created')
-  String get createdDateTime => throw _privateConstructorUsedError;
+  int get createdDateTime => throw _privateConstructorUsedError;
 
   /// Type of the token
   TokenType get type => throw _privateConstructorUsedError;
@@ -1611,7 +1611,7 @@ abstract class $TokenDataCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      @JsonKey(name: 'created') String createdDateTime,
+      @JsonKey(name: 'created') int createdDateTime,
       TokenType type,
       bool livemode,
       BankAccount? bankAccount,
@@ -1649,7 +1649,7 @@ class _$TokenDataCopyWithImpl<$Res, $Val extends TokenData>
       createdDateTime: null == createdDateTime
           ? _value.createdDateTime
           : createdDateTime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -1703,7 +1703,7 @@ abstract class _$$_TokenDataCopyWith<$Res> implements $TokenDataCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      @JsonKey(name: 'created') String createdDateTime,
+      @JsonKey(name: 'created') int createdDateTime,
       TokenType type,
       bool livemode,
       BankAccount? bankAccount,
@@ -1741,7 +1741,7 @@ class __$$_TokenDataCopyWithImpl<$Res>
       createdDateTime: null == createdDateTime
           ? _value.createdDateTime
           : createdDateTime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -1783,7 +1783,7 @@ class _$_TokenData implements _TokenData {
   /// Timestamp when token was created
   @override
   @JsonKey(name: 'created')
-  final String createdDateTime;
+  final int createdDateTime;
 
   /// Type of the token
   @override
@@ -1844,7 +1844,7 @@ class _$_TokenData implements _TokenData {
 abstract class _TokenData implements TokenData {
   const factory _TokenData(
       {required final String id,
-      @JsonKey(name: 'created') required final String createdDateTime,
+      @JsonKey(name: 'created') required final int createdDateTime,
       required final TokenType type,
       required final bool livemode,
       final BankAccount? bankAccount,
@@ -1861,7 +1861,7 @@ abstract class _TokenData implements TokenData {
 
   /// Timestamp when token was created
   @JsonKey(name: 'created')
-  String get createdDateTime;
+  int get createdDateTime;
   @override
 
   /// Type of the token

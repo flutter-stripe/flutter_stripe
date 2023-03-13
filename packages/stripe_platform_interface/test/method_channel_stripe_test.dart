@@ -123,7 +123,7 @@ void main() {
                 'id': 'cvcResultToken',
                 'type': 'Card',
                 'livemode': true,
-                'created': "1630670419"
+                'created': 1630670419
               }
             },
           ).methodChannel,

@@ -125,7 +125,7 @@ class TokenData with _$TokenData {
     required String id,
 
     /// Timestamp when token was created
-    @JsonKey(name: 'created') required String createdDateTime,
+    @JsonKey(name: 'created') required int createdDateTime,
 
     /// Type of the token
     required TokenType type,
