@@ -21,7 +21,7 @@ class PlatformPayButton extends StatelessWidget {
     this.onDidSetShippingContact,
     this.onDidSetCoupon,
     this.onShippingMethodSelected,
-    this.setOrderTracking,
+    this.onOrderTracking,
   });
 
   /// Defines the displayed text on the button.
@@ -54,7 +54,7 @@ class PlatformPayButton extends StatelessWidget {
   /// ability to track and manage their purchases in Wallet. Stripe calls your implementation after the
   /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
   /// function, or else the Apple Pay sheet will hang.
-  final SetOrderTracking? setOrderTracking;
+  final SetOrderTracking? onOrderTracking;
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +71,7 @@ class PlatformPayButton extends StatelessWidget {
         type: type,
         cornerRadius: borderRadius,
         constraints: constraints,
-        setOrderTracking: setOrderTracking,
+        onOrderTracking: onOrderTracking,
         onDidSetCoupon: onDidSetCoupon,
         onShippingMethodSelected: onShippingMethodSelected,
       );

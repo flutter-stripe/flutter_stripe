@@ -282,7 +282,9 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<void> presentPaymentSheet() {
+  Future<void> presentPaymentSheet({
+    PaymentSheetPresentOptions? options,
+  }) {
     throw WebUnsupportedError.method('presentPaymentSheet');
   }
 

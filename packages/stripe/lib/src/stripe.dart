@@ -473,7 +473,7 @@ class Stripe {
     PaymentSheetPresentOptions? options,
   }) async {
     await _awaitForSettings();
-    return await _platform.presentPaymentSheet();
+    return await _platform.presentPaymentSheet(options: options);
   }
 
   /// Call this method when the user logs out from your app.

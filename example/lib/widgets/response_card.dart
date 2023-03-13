@@ -17,10 +17,10 @@ class ResponseCard extends StatelessWidget {
         children: [
           Text(
             'RESPONSE',
-            style: Theme.of(context).textTheme.caption?.copyWith(
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   color: Theme.of(context)
                       .textTheme
-                      .caption
+                      .bodySmall
                       ?.color
                       ?.withOpacity(0.5),
                 ),

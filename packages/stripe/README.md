@@ -4,7 +4,7 @@
 
 # Flutter Stripe
 
-[![pub package](https://img.shields.io/pub/v/flutter_stripe.svg)](https://pub.dev/packages/flutter_stripe) ![build](https://img.shields.io/github/workflow/status/flutter-stripe/flutter_stripe/all_plugins?logo=github)
+[![pub package](https://img.shields.io/pub/v/flutter_stripe.svg)](https://pub.dev/packages/flutter_stripe) ![build](https://img.shields.io/github/actions/workflow/status/flutter-stripe/flutter_stripe/all_plugins.yaml?logo=github?branch=main)
 
 The Stripe Flutter SDK allows you to build delightful payment experiences in your native Android and iOS apps using Flutter. We provide powerful and customizable UI screens and elements that can be used out-of-the-box to collect your users' payment details.
 
@@ -60,13 +60,13 @@ If you are having troubles to make this package to work on Android, join [this d
 
 #### iOS
 
-Compatible with apps targeting iOS 12 or above.
+Compatible with apps targeting iOS 13 or above.
 
-To upgrade your iOS deployment target to 12.0, you can either do so in Xcode under your Build Settings, or by modifying IPHONEOS_DEPLOYMENT_TARGET in your project.pbxproj directly.
+To upgrade your iOS deployment target to 13.0, you can either do so in Xcode under your Build Settings, or by modifying IPHONEOS_DEPLOYMENT_TARGET in your project.pbxproj directly.
 
 You will also need to update in your Podfile:
 
-`platform :ios, '12.0'`
+`platform :ios, '13.0'`
 
 
 #### Web (Experimental)

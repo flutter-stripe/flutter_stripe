@@ -71,7 +71,7 @@ class LocalizedErrorMessage with _$LocalizedErrorMessage {
       _$LocalizedErrorMessageFromJson(json);
 }
 
-enum FailureCode { Failed, Canceled }
+enum FailureCode { Failed, Canceled, Timeout }
 
 class StripeConfigException implements Exception {
   const StripeConfigException(this.message);

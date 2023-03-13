@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:stripe_platform_interface/src/models/platform_pay_button.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 import '../model/apple_pay_button.dart';
@@ -28,7 +27,7 @@ class ApplePayButton extends StatelessWidget {
     this.onShippingContactSelected,
     this.onDidSetCoupon,
     this.onShippingMethodSelected,
-    this.setOrderTracking,
+    this.onOrderTracking,
   })  : assert(constraints == null || constraints.debugAssertIsValid()),
         constraints = (width != null || height != null)
             ? constraints?.tighten(width: width, height: height) ??
@@ -74,7 +73,7 @@ class ApplePayButton extends StatelessWidget {
   /// ability to track and manage their purchases in Wallet. Stripe calls your implementation after the
   /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
   /// function, or else the Apple Pay sheet will hang.
-  final SetOrderTracking? setOrderTracking;
+  final SetOrderTracking? onOrderTracking;
 
   @override
   Widget build(BuildContext context) => ConstrainedBox(
@@ -95,6 +94,7 @@ class ApplePayButton extends StatelessWidget {
           onDidSetShippingContact: onShippingContactSelected,
           onDidSetCoupon: onDidSetCoupon,
           onShippingMethodSelected: onShippingMethodSelected,
+          onOrderTracking: onOrderTracking,
         );
       default:
         throw UnsupportedError(
@@ -161,7 +161,6 @@ class _UiKitApplePayButtonState extends State<_UiKitApplePayButton> {
             widget.onDidSetCoupon?.call(call.arguments['couponCode']);
           }
           if (call.method == 'onOrderTracking') {
-            final argumens = call.arguments;
             widget.onOrderTracking?.call(
               call.arguments['orderIdentifier'],
               call.arguments['orderTypeIdentifier'],
