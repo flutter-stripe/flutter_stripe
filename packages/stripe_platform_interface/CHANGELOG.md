@@ -1,3 +1,9 @@
+## 9.0.1
+
+ - Fix #1112 token type cast error
+
+ - **FIX**: timeout payment sheet (#1161).
+
 ## 9.0.0
 This release is based on version [0.25.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.25.0) of Stripe React Native:
 
