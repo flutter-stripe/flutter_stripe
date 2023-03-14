@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'dart:developer' as dev;
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
@@ -48,7 +49,7 @@ class CardFormField extends StatefulWidget {
   /// make sure this one is set to `true`.
   final bool enablePostalCode;
 
-  /// Controls the postal code entry shown (when `enablePostalCode` is set to true).
+  /// Android only: Controls the postal code entry shown (when `enablePostalCode` is set to true).
   ///
   /// Defaults to the device's default locale. This is not supported on the web.
 
@@ -87,6 +88,8 @@ class CardFormField extends StatefulWidget {
 abstract class CardFormFieldContext {
   void focus();
   void blur();
+
+  /// Only supported on Android will throw [UnimplementedError] on iOS.
   void clear();
 
   void dangerouslyUpdateCardDetails(CardFieldInputDetails details);
@@ -473,6 +476,9 @@ class _MethodChannelCardFormFieldState
 
   @override
   void clear() {
+    if (Platform.isIOS) {
+      throw UnimplementedError('This method is not supported for iOS');
+    }
     _methodChannel?.invokeMethod('clear');
   }
 
