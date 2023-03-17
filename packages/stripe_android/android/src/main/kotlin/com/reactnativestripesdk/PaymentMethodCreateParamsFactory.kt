@@ -25,6 +25,7 @@ class PaymentMethodCreateParamsFactory(
         PaymentMethod.Type.Sofort -> createSofortParams()
         PaymentMethod.Type.Bancontact -> createBancontactParams()
         PaymentMethod.Type.SepaDebit -> createSepaParams()
+        PaymentMethod.Type.BacsDebit -> createBacsParams()
         PaymentMethod.Type.Oxxo -> createOXXOParams()
         PaymentMethod.Type.Giropay -> createGiropayParams()
         PaymentMethod.Type.Eps -> createEPSParams()
@@ -89,6 +90,26 @@ class PaymentMethodCreateParamsFactory(
 
       return PaymentMethodCreateParams.create(
         sepaDebit = PaymentMethodCreateParams.SepaDebit(iban),
+        billingDetails = it
+      )
+    }
+
+    throw PaymentMethodCreateParamsException("You must provide billing details")
+  }
+
+  @Throws(PaymentMethodCreateParamsException::class)
+  private fun createBacsParams(): PaymentMethodCreateParams {
+    billingDetailsParams?.let {
+      val sortCode = getValOr(paymentMethodData, "sortCode", null) ?: run {
+        throw PaymentMethodCreateParamsException("You must provide Sort Code")
+      }
+
+      val accountNumber = getValOr(paymentMethodData, "accountNumber", null) ?: run {
+        throw PaymentMethodCreateParamsException("You must provide Account Number")
+      }
+
+      return PaymentMethodCreateParams.create(
+        bacsDebit = PaymentMethodCreateParams.BacsDebit(accountNumber, sortCode), 
         billingDetails = it
       )
     }
@@ -215,6 +236,7 @@ class PaymentMethodCreateParamsFactory(
         PaymentMethod.Type.Sofort,
         PaymentMethod.Type.Bancontact,
         PaymentMethod.Type.SepaDebit,
+        PaymentMethod.Type.BacsDebit,
         PaymentMethod.Type.Oxxo,
         PaymentMethod.Type.Giropay,
         PaymentMethod.Type.Eps,
