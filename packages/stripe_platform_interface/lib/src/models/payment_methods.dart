@@ -457,6 +457,13 @@ class PaymentMethodParams with _$PaymentMethodParams {
   }) = _PaymentMethodParamsSepaDebit;
 
   @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('BacsDebit')
+  const factory PaymentMethodParams.bacsDebit({
+    /// Paymentmethod data for this paymentmethod.
+    required PaymentMethodDataBacs paymentMethodData,
+  }) = _PaymentMethodParamsBacsDebit;
+
+  @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Sofort')
   const factory PaymentMethodParams.sofort({
     required PaymentMethodDataSofort paymentMethodData,
@@ -694,6 +701,29 @@ class PaymentMethodDataSepa with _$PaymentMethodDataSepa {
 
   factory PaymentMethodDataSepa.fromJson(Map<String, dynamic> json) =>
       _$PaymentMethodDataSepaFromJson(json);
+}
+
+@freezed
+
+/// Payment method data object for Sepa debit payment method.
+class PaymentMethodDataBacs with _$PaymentMethodDataBacs {
+  @JsonSerializable(explicitToJson: true)
+  const factory PaymentMethodDataBacs({
+    /// Sort Code of the account
+    required String sortCode,
+
+    /// Account Number of the account
+    required String accountNumber,
+
+    /// Billing information.
+    BillingDetails? billingDetails,
+
+    /// Shipping details
+    ShippingDetails? shippingDetails,
+  }) = _PaymentMethodDataBacs;
+
+  factory PaymentMethodDataBacs.fromJson(Map<String, dynamic> json) =>
+      _$PaymentMethodDataBacsFromJson(json);
 }
 
 @freezed

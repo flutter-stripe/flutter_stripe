@@ -435,6 +435,21 @@ Map<String, dynamic> _$$_PaymentMethodParamsSepaDebitToJson(
       'paymentMethodType': instance.$type,
     };
 
+_$_PaymentMethodParamsBacsDebit _$$_PaymentMethodParamsBacsDebitFromJson(
+        Map<String, dynamic> json) =>
+    _$_PaymentMethodParamsBacsDebit(
+      paymentMethodData: PaymentMethodDataBacs.fromJson(
+          json['paymentMethodData'] as Map<String, dynamic>),
+      $type: json['paymentMethodType'] as String?,
+    );
+
+Map<String, dynamic> _$$_PaymentMethodParamsBacsDebitToJson(
+        _$_PaymentMethodParamsBacsDebit instance) =>
+    <String, dynamic>{
+      'paymentMethodData': instance.paymentMethodData.toJson(),
+      'paymentMethodType': instance.$type,
+    };
+
 _$_PaymentMethodParamsSofort _$$_PaymentMethodParamsSofortFromJson(
         Map<String, dynamic> json) =>
     _$_PaymentMethodParamsSofort(
@@ -732,6 +747,30 @@ Map<String, dynamic> _$$_PaymentMethodDataSepaToJson(
       'billingDetails': instance.billingDetails?.toJson(),
       'shippingDetails': instance.shippingDetails?.toJson(),
       'mandateData': instance.mandateData?.toJson(),
+    };
+
+_$_PaymentMethodDataBacs _$$_PaymentMethodDataBacsFromJson(
+        Map<String, dynamic> json) =>
+    _$_PaymentMethodDataBacs(
+      sortCode: json['sortCode'] as String,
+      accountNumber: json['accountNumber'] as String,
+      billingDetails: json['billingDetails'] == null
+          ? null
+          : BillingDetails.fromJson(
+              json['billingDetails'] as Map<String, dynamic>),
+      shippingDetails: json['shippingDetails'] == null
+          ? null
+          : ShippingDetails.fromJson(
+              json['shippingDetails'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$_PaymentMethodDataBacsToJson(
+        _$_PaymentMethodDataBacs instance) =>
+    <String, dynamic>{
+      'sortCode': instance.sortCode,
+      'accountNumber': instance.accountNumber,
+      'billingDetails': instance.billingDetails?.toJson(),
+      'shippingDetails': instance.shippingDetails?.toJson(),
     };
 
 _$_PaymentMethodDataAfterPay _$$_PaymentMethodDataAfterPayFromJson(

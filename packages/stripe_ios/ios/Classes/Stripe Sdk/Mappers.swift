@@ -278,6 +278,7 @@ class Mappers {
         case STPPaymentMethodType.FPX: return "Fpx"
         case STPPaymentMethodType.cardPresent: return "CardPresent"
         case STPPaymentMethodType.SEPADebit: return "SepaDebit"
+        case STPPaymentMethodType.bacsDebit: return "BacsDebit"
         case STPPaymentMethodType.AUBECSDebit: return "AuBecsDebit"
         case STPPaymentMethodType.bacsDebit: return "BacsDebit"
         case STPPaymentMethodType.giropay: return "Giropay"
@@ -308,6 +309,7 @@ class Mappers {
             case "Fpx": return STPPaymentMethodType.FPX
             case "CardPresent": return STPPaymentMethodType.cardPresent
             case "SepaDebit": return STPPaymentMethodType.SEPADebit
+            case "BacsDebit": return STPPaymentMethodType.bacsDebit
             case "AuBecsDebit": return STPPaymentMethodType.AUBECSDebit
             case "BacsDebit": return STPPaymentMethodType.bacsDebit
             case "Giropay": return STPPaymentMethodType.giropay

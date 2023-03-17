@@ -2835,6 +2835,8 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
       return _PaymentMethodParamsFpx.fromJson(json);
     case 'SepaDebit':
       return _PaymentMethodParamsSepaDebit.fromJson(json);
+    case 'BacsDebit':
+      return _PaymentMethodParamsBacsDebit.fromJson(json);
     case 'Sofort':
       return _PaymentMethodParamsSofort.fromJson(json);
     case 'AfterpayClearpay':
@@ -2881,6 +2883,8 @@ mixin _$PaymentMethodParams {
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -2910,6 +2914,7 @@ mixin _$PaymentMethodParams {
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -2938,6 +2943,7 @@ mixin _$PaymentMethodParams {
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -2967,6 +2973,7 @@ mixin _$PaymentMethodParams {
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -2995,6 +3002,7 @@ mixin _$PaymentMethodParams {
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -3022,6 +3030,7 @@ mixin _$PaymentMethodParams {
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -3159,6 +3168,8 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -3191,6 +3202,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -3222,6 +3234,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -3257,6 +3270,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -3288,6 +3302,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -3318,6 +3333,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -3470,6 +3486,8 @@ class _$_PaymentMethodParamsCardWithToken
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -3502,6 +3520,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -3533,6 +3552,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -3568,6 +3588,7 @@ class _$_PaymentMethodParamsCardWithToken
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -3599,6 +3620,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -3629,6 +3651,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -3783,6 +3806,8 @@ class _$_PaymentMethodParamsCardWithMethodId
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -3815,6 +3840,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -3846,6 +3872,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -3881,6 +3908,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -3912,6 +3940,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -3942,6 +3971,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -4093,6 +4123,8 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -4125,6 +4157,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -4156,6 +4189,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -4191,6 +4225,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -4222,6 +4257,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -4252,6 +4288,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -4708,6 +4745,8 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -4740,6 +4779,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -4771,6 +4811,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -4806,6 +4847,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -4837,6 +4879,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -4867,6 +4910,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -5016,6 +5060,8 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -5048,6 +5094,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -5079,6 +5126,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -5114,6 +5162,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -5145,6 +5194,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -5175,6 +5225,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -5325,6 +5376,8 @@ class _$_PaymentMethodParamsBankContact
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -5357,6 +5410,7 @@ class _$_PaymentMethodParamsBankContact
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -5388,6 +5442,7 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -5423,6 +5478,7 @@ class _$_PaymentMethodParamsBankContact
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -5454,6 +5510,7 @@ class _$_PaymentMethodParamsBankContact
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -5484,6 +5541,7 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -5632,6 +5690,8 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -5664,6 +5724,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -5695,6 +5756,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -5730,6 +5792,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -5761,6 +5824,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -5791,6 +5855,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -5936,6 +6001,8 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -5968,6 +6035,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -5999,6 +6067,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -6034,6 +6103,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -6065,6 +6135,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -6095,6 +6166,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -6243,6 +6315,8 @@ class _$_PaymentMethodParamsAffirm implements _PaymentMethodParamsAffirm {
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -6275,6 +6349,7 @@ class _$_PaymentMethodParamsAffirm implements _PaymentMethodParamsAffirm {
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -6306,6 +6381,7 @@ class _$_PaymentMethodParamsAffirm implements _PaymentMethodParamsAffirm {
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -6341,6 +6417,7 @@ class _$_PaymentMethodParamsAffirm implements _PaymentMethodParamsAffirm {
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -6372,6 +6449,7 @@ class _$_PaymentMethodParamsAffirm implements _PaymentMethodParamsAffirm {
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -6402,6 +6480,7 @@ class _$_PaymentMethodParamsAffirm implements _PaymentMethodParamsAffirm {
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -6547,6 +6626,8 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -6579,6 +6660,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -6610,6 +6692,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -6645,6 +6728,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -6676,6 +6760,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -6706,6 +6791,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -6851,6 +6937,8 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -6883,6 +6971,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -6914,6 +7003,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -6949,6 +7039,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -6980,6 +7071,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -7010,6 +7102,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -7156,6 +7249,8 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -7188,6 +7283,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -7219,6 +7315,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -7254,6 +7351,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -7285,6 +7383,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -7315,6 +7414,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -7464,6 +7564,8 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -7496,6 +7598,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -7527,6 +7630,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -7562,6 +7666,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -7593,6 +7698,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -7623,6 +7729,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -7660,6 +7767,315 @@ abstract class _PaymentMethodParamsSepaDebit implements PaymentMethodParams {
   PaymentMethodDataSepa get paymentMethodData;
   @JsonKey(ignore: true)
   _$$_PaymentMethodParamsSepaDebitCopyWith<_$_PaymentMethodParamsSepaDebit>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_PaymentMethodParamsBacsDebitCopyWith<$Res> {
+  factory _$$_PaymentMethodParamsBacsDebitCopyWith(
+          _$_PaymentMethodParamsBacsDebit value,
+          $Res Function(_$_PaymentMethodParamsBacsDebit) then) =
+      __$$_PaymentMethodParamsBacsDebitCopyWithImpl<$Res>;
+  @useResult
+  $Res call({PaymentMethodDataBacs paymentMethodData});
+
+  $PaymentMethodDataBacsCopyWith<$Res> get paymentMethodData;
+}
+
+/// @nodoc
+class __$$_PaymentMethodParamsBacsDebitCopyWithImpl<$Res>
+    extends _$PaymentMethodParamsCopyWithImpl<$Res,
+        _$_PaymentMethodParamsBacsDebit>
+    implements _$$_PaymentMethodParamsBacsDebitCopyWith<$Res> {
+  __$$_PaymentMethodParamsBacsDebitCopyWithImpl(
+      _$_PaymentMethodParamsBacsDebit _value,
+      $Res Function(_$_PaymentMethodParamsBacsDebit) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? paymentMethodData = null,
+  }) {
+    return _then(_$_PaymentMethodParamsBacsDebit(
+      paymentMethodData: null == paymentMethodData
+          ? _value.paymentMethodData
+          : paymentMethodData // ignore: cast_nullable_to_non_nullable
+              as PaymentMethodDataBacs,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentMethodDataBacsCopyWith<$Res> get paymentMethodData {
+    return $PaymentMethodDataBacsCopyWith<$Res>(_value.paymentMethodData,
+        (value) {
+      return _then(_value.copyWith(paymentMethodData: value));
+    });
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_PaymentMethodParamsBacsDebit implements _PaymentMethodParamsBacsDebit {
+  const _$_PaymentMethodParamsBacsDebit(
+      {required this.paymentMethodData, final String? $type})
+      : $type = $type ?? 'BacsDebit';
+
+  factory _$_PaymentMethodParamsBacsDebit.fromJson(Map<String, dynamic> json) =>
+      _$$_PaymentMethodParamsBacsDebitFromJson(json);
+
+  /// Paymentmethod data for this paymentmethod.
+  @override
+  final PaymentMethodDataBacs paymentMethodData;
+
+  @JsonKey(name: 'paymentMethodType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'PaymentMethodParams.bacsDebit(paymentMethodData: $paymentMethodData)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentMethodParamsBacsDebit &&
+            (identical(other.paymentMethodData, paymentMethodData) ||
+                other.paymentMethodData == paymentMethodData));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, paymentMethodData);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PaymentMethodParamsBacsDebitCopyWith<_$_PaymentMethodParamsBacsDebit>
+      get copyWith => __$$_PaymentMethodParamsBacsDebitCopyWithImpl<
+          _$_PaymentMethodParamsBacsDebit>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PaymentMethodData paymentMethodData) card,
+    required TResult Function(PaymentMethodDataCardFromToken paymentMethodData)
+        cardFromToken,
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+        cardFromMethodId,
+    required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
+    required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
+    required TResult Function(PaymentMethodData paymentMethodData) bancontact,
+    required TResult Function(PaymentMethodData paymentMethodData) giroPay,
+    required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
+    required TResult Function(PaymentMethodData paymentMethodData) grabPay,
+    required TResult Function(PaymentMethodData paymentMethodData) p24,
+    required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
+        sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
+    required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
+        afterpayClearpay,
+    required TResult Function(PaymentMethodData paymentMethodData) oxxo,
+    required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+        usBankAccount,
+  }) {
+    return bacsDebit(paymentMethodData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PaymentMethodData paymentMethodData)? card,
+    TResult? Function(PaymentMethodDataCardFromToken paymentMethodData)?
+        cardFromToken,
+    TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+        cardFromMethodId,
+    TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
+    TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
+    TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
+    TResult? Function(PaymentMethodData paymentMethodData)? giroPay,
+    TResult? Function(PaymentMethodData paymentMethodData)? eps,
+    TResult? Function(PaymentMethodData paymentMethodData)? affirm,
+    TResult? Function(PaymentMethodData paymentMethodData)? grabPay,
+    TResult? Function(PaymentMethodData paymentMethodData)? p24,
+    TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
+    TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
+    TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
+    TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
+        afterpayClearpay,
+    TResult? Function(PaymentMethodData paymentMethodData)? oxxo,
+    TResult? Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult? Function(PaymentMethodData paymentMethodData)? payPal,
+    TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+  }) {
+    return bacsDebit?.call(paymentMethodData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PaymentMethodData paymentMethodData)? card,
+    TResult Function(PaymentMethodDataCardFromToken paymentMethodData)?
+        cardFromToken,
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+        cardFromMethodId,
+    TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
+    TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
+    TResult Function(PaymentMethodData paymentMethodData)? bancontact,
+    TResult Function(PaymentMethodData paymentMethodData)? giroPay,
+    TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
+    TResult Function(PaymentMethodData paymentMethodData)? grabPay,
+    TResult Function(PaymentMethodData paymentMethodData)? p24,
+    TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
+    TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
+        afterpayClearpay,
+    TResult Function(PaymentMethodData paymentMethodData)? oxxo,
+    TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    required TResult orElse(),
+  }) {
+    if (bacsDebit != null) {
+      return bacsDebit(paymentMethodData);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentMethodParamsCard value) card,
+    required TResult Function(_PaymentMethodParamsCardWithToken value)
+        cardFromToken,
+    required TResult Function(_PaymentMethodParamsCardWithMethodId value)
+        cardFromMethodId,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
+    required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
+    required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
+    required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
+    required TResult Function(_PaymentMethodParamsPay value) grabPay,
+    required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
+    required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
+    required TResult Function(_PaymentMethodParamsSofort value) sofort,
+    required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
+        afterpayClearpay,
+    required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
+  }) {
+    return bacsDebit(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PaymentMethodParamsCard value)? card,
+    TResult? Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
+    TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
+    TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
+    TResult? Function(_PaymentMethodParamsGiroPay value)? giroPay,
+    TResult? Function(_PaymentMethodParamsEps value)? eps,
+    TResult? Function(_PaymentMethodParamsAffirm value)? affirm,
+    TResult? Function(_PaymentMethodParamsPay value)? grabPay,
+    TResult? Function(_PaymentMethodParamsP24 value)? p24,
+    TResult? Function(_PaymentMethodParamsFpx value)? fpx,
+    TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
+    TResult? Function(_PaymentMethodParamsSofort value)? sofort,
+    TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
+        afterpayClearpay,
+    TResult? Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult? Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
+    TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+  }) {
+    return bacsDebit?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
+    TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
+    TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
+    TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
+    TResult Function(_PaymentMethodParamsPay value)? grabPay,
+    TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
+    TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
+    TResult Function(_PaymentMethodParamsSofort value)? sofort,
+    TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
+        afterpayClearpay,
+    TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    required TResult orElse(),
+  }) {
+    if (bacsDebit != null) {
+      return bacsDebit(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentMethodParamsBacsDebitToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymentMethodParamsBacsDebit implements PaymentMethodParams {
+  const factory _PaymentMethodParamsBacsDebit(
+          {required final PaymentMethodDataBacs paymentMethodData}) =
+      _$_PaymentMethodParamsBacsDebit;
+
+  factory _PaymentMethodParamsBacsDebit.fromJson(Map<String, dynamic> json) =
+      _$_PaymentMethodParamsBacsDebit.fromJson;
+
+  @override
+
+  /// Paymentmethod data for this paymentmethod.
+  PaymentMethodDataBacs get paymentMethodData;
+  @JsonKey(ignore: true)
+  _$$_PaymentMethodParamsBacsDebitCopyWith<_$_PaymentMethodParamsBacsDebit>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -7771,6 +8187,8 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -7803,6 +8221,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -7834,6 +8253,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -7869,6 +8289,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -7900,6 +8321,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -7930,6 +8352,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -8079,6 +8502,8 @@ class _$_PaymentMethodParamsAfterpayClearpay
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -8111,6 +8536,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -8142,6 +8568,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -8177,6 +8604,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -8208,6 +8636,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -8238,6 +8667,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -8385,6 +8815,8 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -8417,6 +8849,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -8448,6 +8881,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -8483,6 +8917,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -8514,6 +8949,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -8544,6 +8980,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -8695,6 +9132,8 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -8727,6 +9166,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -8758,6 +9198,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -8793,6 +9234,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -8824,6 +9266,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -8854,6 +9297,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -9005,6 +9449,8 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -9037,6 +9483,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -9068,6 +9515,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -9103,6 +9551,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -9134,6 +9583,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -9164,6 +9614,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -9316,6 +9767,8 @@ class _$_PaymentMethodParamsUsBankAccount
     required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
     required TResult Function(PaymentMethodDataSepa paymentMethodData)
         sepaDebit,
+    required TResult Function(PaymentMethodDataBacs paymentMethodData)
+        bacsDebit,
     required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
     required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
         afterpayClearpay,
@@ -9348,6 +9801,7 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult? Function(PaymentMethodData paymentMethodData)? p24,
     TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -9379,6 +9833,7 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult Function(PaymentMethodData paymentMethodData)? p24,
     TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
     TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataBacs paymentMethodData)? bacsDebit,
     TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
     TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
         afterpayClearpay,
@@ -9414,6 +9869,7 @@ class _$_PaymentMethodParamsUsBankAccount
     required TResult Function(_PaymentMethodParamsP24 value) p24,
     required TResult Function(_PaymentMethodParamsFpx value) fpx,
     required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsBacsDebit value) bacsDebit,
     required TResult Function(_PaymentMethodParamsSofort value) sofort,
     required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
         afterpayClearpay,
@@ -9445,6 +9901,7 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult? Function(_PaymentMethodParamsP24 value)? p24,
     TResult? Function(_PaymentMethodParamsFpx value)? fpx,
     TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult? Function(_PaymentMethodParamsSofort value)? sofort,
     TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -9475,6 +9932,7 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult Function(_PaymentMethodParamsP24 value)? p24,
     TResult Function(_PaymentMethodParamsFpx value)? fpx,
     TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsBacsDebit value)? bacsDebit,
     TResult Function(_PaymentMethodParamsSofort value)? sofort,
     TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
         afterpayClearpay,
@@ -11764,6 +12222,269 @@ abstract class _PaymentMethodDataSepa implements PaymentMethodDataSepa {
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataSepaCopyWith<_$_PaymentMethodDataSepa> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+PaymentMethodDataBacs _$PaymentMethodDataBacsFromJson(
+    Map<String, dynamic> json) {
+  return _PaymentMethodDataBacs.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentMethodDataBacs {
+  /// Sort Code of the account
+  String get sortCode => throw _privateConstructorUsedError;
+
+  /// Account Number of the account
+  String get accountNumber => throw _privateConstructorUsedError;
+
+  /// Billing information.
+  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
+
+  /// Shipping details
+  ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentMethodDataBacsCopyWith<PaymentMethodDataBacs> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentMethodDataBacsCopyWith<$Res> {
+  factory $PaymentMethodDataBacsCopyWith(PaymentMethodDataBacs value,
+          $Res Function(PaymentMethodDataBacs) then) =
+      _$PaymentMethodDataBacsCopyWithImpl<$Res, PaymentMethodDataBacs>;
+  @useResult
+  $Res call(
+      {String sortCode,
+      String accountNumber,
+      BillingDetails? billingDetails,
+      ShippingDetails? shippingDetails});
+
+  $BillingDetailsCopyWith<$Res>? get billingDetails;
+  $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+}
+
+/// @nodoc
+class _$PaymentMethodDataBacsCopyWithImpl<$Res,
+        $Val extends PaymentMethodDataBacs>
+    implements $PaymentMethodDataBacsCopyWith<$Res> {
+  _$PaymentMethodDataBacsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sortCode = null,
+    Object? accountNumber = null,
+    Object? billingDetails = freezed,
+    Object? shippingDetails = freezed,
+  }) {
+    return _then(_value.copyWith(
+      sortCode: null == sortCode
+          ? _value.sortCode
+          : sortCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      accountNumber: null == accountNumber
+          ? _value.accountNumber
+          : accountNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      billingDetails: freezed == billingDetails
+          ? _value.billingDetails
+          : billingDetails // ignore: cast_nullable_to_non_nullable
+              as BillingDetails?,
+      shippingDetails: freezed == shippingDetails
+          ? _value.shippingDetails
+          : shippingDetails // ignore: cast_nullable_to_non_nullable
+              as ShippingDetails?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BillingDetailsCopyWith<$Res>? get billingDetails {
+    if (_value.billingDetails == null) {
+      return null;
+    }
+
+    return $BillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
+      return _then(_value.copyWith(billingDetails: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ShippingDetailsCopyWith<$Res>? get shippingDetails {
+    if (_value.shippingDetails == null) {
+      return null;
+    }
+
+    return $ShippingDetailsCopyWith<$Res>(_value.shippingDetails!, (value) {
+      return _then(_value.copyWith(shippingDetails: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_PaymentMethodDataBacsCopyWith<$Res>
+    implements $PaymentMethodDataBacsCopyWith<$Res> {
+  factory _$$_PaymentMethodDataBacsCopyWith(_$_PaymentMethodDataBacs value,
+          $Res Function(_$_PaymentMethodDataBacs) then) =
+      __$$_PaymentMethodDataBacsCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String sortCode,
+      String accountNumber,
+      BillingDetails? billingDetails,
+      ShippingDetails? shippingDetails});
+
+  @override
+  $BillingDetailsCopyWith<$Res>? get billingDetails;
+  @override
+  $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+}
+
+/// @nodoc
+class __$$_PaymentMethodDataBacsCopyWithImpl<$Res>
+    extends _$PaymentMethodDataBacsCopyWithImpl<$Res, _$_PaymentMethodDataBacs>
+    implements _$$_PaymentMethodDataBacsCopyWith<$Res> {
+  __$$_PaymentMethodDataBacsCopyWithImpl(_$_PaymentMethodDataBacs _value,
+      $Res Function(_$_PaymentMethodDataBacs) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sortCode = null,
+    Object? accountNumber = null,
+    Object? billingDetails = freezed,
+    Object? shippingDetails = freezed,
+  }) {
+    return _then(_$_PaymentMethodDataBacs(
+      sortCode: null == sortCode
+          ? _value.sortCode
+          : sortCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      accountNumber: null == accountNumber
+          ? _value.accountNumber
+          : accountNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      billingDetails: freezed == billingDetails
+          ? _value.billingDetails
+          : billingDetails // ignore: cast_nullable_to_non_nullable
+              as BillingDetails?,
+      shippingDetails: freezed == shippingDetails
+          ? _value.shippingDetails
+          : shippingDetails // ignore: cast_nullable_to_non_nullable
+              as ShippingDetails?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_PaymentMethodDataBacs implements _PaymentMethodDataBacs {
+  const _$_PaymentMethodDataBacs(
+      {required this.sortCode,
+      required this.accountNumber,
+      this.billingDetails,
+      this.shippingDetails});
+
+  factory _$_PaymentMethodDataBacs.fromJson(Map<String, dynamic> json) =>
+      _$$_PaymentMethodDataBacsFromJson(json);
+
+  /// Sort Code of the account
+  @override
+  final String sortCode;
+
+  /// Account Number of the account
+  @override
+  final String accountNumber;
+
+  /// Billing information.
+  @override
+  final BillingDetails? billingDetails;
+
+  /// Shipping details
+  @override
+  final ShippingDetails? shippingDetails;
+
+  @override
+  String toString() {
+    return 'PaymentMethodDataBacs(sortCode: $sortCode, accountNumber: $accountNumber, billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentMethodDataBacs &&
+            (identical(other.sortCode, sortCode) ||
+                other.sortCode == sortCode) &&
+            (identical(other.accountNumber, accountNumber) ||
+                other.accountNumber == accountNumber) &&
+            (identical(other.billingDetails, billingDetails) ||
+                other.billingDetails == billingDetails) &&
+            (identical(other.shippingDetails, shippingDetails) ||
+                other.shippingDetails == shippingDetails));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, sortCode, accountNumber, billingDetails, shippingDetails);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PaymentMethodDataBacsCopyWith<_$_PaymentMethodDataBacs> get copyWith =>
+      __$$_PaymentMethodDataBacsCopyWithImpl<_$_PaymentMethodDataBacs>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentMethodDataBacsToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymentMethodDataBacs implements PaymentMethodDataBacs {
+  const factory _PaymentMethodDataBacs(
+      {required final String sortCode,
+      required final String accountNumber,
+      final BillingDetails? billingDetails,
+      final ShippingDetails? shippingDetails}) = _$_PaymentMethodDataBacs;
+
+  factory _PaymentMethodDataBacs.fromJson(Map<String, dynamic> json) =
+      _$_PaymentMethodDataBacs.fromJson;
+
+  @override
+
+  /// Sort Code of the account
+  String get sortCode;
+  @override
+
+  /// Account Number of the account
+  String get accountNumber;
+  @override
+
+  /// Billing information.
+  BillingDetails? get billingDetails;
+  @override
+
+  /// Shipping details
+  ShippingDetails? get shippingDetails;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PaymentMethodDataBacsCopyWith<_$_PaymentMethodDataBacs> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
