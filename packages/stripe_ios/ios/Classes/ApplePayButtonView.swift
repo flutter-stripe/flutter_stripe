@@ -129,7 +129,7 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
         case "updateStyle":
             if  let arguments = call.arguments as? Dictionary<String, AnyObject> {
                 self.type = arguments["type"] as? NSNumber
-                self.buttonStyle = arguments["buttonStyle"] as? NSNumber
+                self.buttonStyle = arguments["style"] as? NSNumber
                 self.borderRadius = arguments["borderRadius"] as? NSNumber
             }
             
