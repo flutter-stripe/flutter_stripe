@@ -98,7 +98,7 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
         onOrderTrackingAction = onOrderTracking
         if  let arguments = args as? Dictionary<String, AnyObject> {
             type = arguments["type"] as? NSNumber
-            buttonStyle = arguments["buttonStyle"] as? NSNumber
+            buttonStyle = arguments["style"] as? NSNumber
             borderRadius = arguments["borderRadius"] as? NSNumber
         }
         // iOS views can be created here
