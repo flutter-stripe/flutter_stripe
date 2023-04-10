@@ -26,6 +26,9 @@ _$_SetupIntent _$$_SetupIntentFromJson(Map<String, dynamic> json) =>
       nextAction: json['nextAction'] == null
           ? null
           : NextAction.fromJson(json['nextAction'] as Map<String, dynamic>),
+      mandateData: json['mandateData'] == null
+          ? null
+          : MandateData.fromJson(json['mandateData'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_SetupIntentToJson(_$_SetupIntent instance) =>
@@ -43,6 +46,7 @@ Map<String, dynamic> _$$_SetupIntentToJson(_$_SetupIntent instance) =>
       'created': instance.created,
       'lastSetupError': instance.lastSetupError?.toJson(),
       'nextAction': instance.nextAction?.toJson(),
+      'mandateData': instance.mandateData?.toJson(),
     };
 
 const _$PaymentMethodTypeEnumMap = {

@@ -28,6 +28,9 @@ _$_PaymentIntent _$$_PaymentIntentFromJson(Map<String, dynamic> json) =>
       shipping: json['shipping'] == null
           ? null
           : ShippingDetails.fromJson(json['shipping'] as Map<String, dynamic>),
+      mandateData: json['mandateData'] == null
+          ? null
+          : MandateData.fromJson(json['mandateData'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_PaymentIntentToJson(_$_PaymentIntent instance) =>
@@ -48,6 +51,7 @@ Map<String, dynamic> _$$_PaymentIntentToJson(_$_PaymentIntent instance) =>
       'canceledAt': instance.canceledAt,
       'nextAction': instance.nextAction?.toJson(),
       'shipping': instance.shipping?.toJson(),
+      'mandateData': instance.mandateData?.toJson(),
     };
 
 const _$PaymentIntentsStatusEnumMap = {

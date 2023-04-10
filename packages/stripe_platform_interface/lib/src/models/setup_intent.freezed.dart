@@ -57,6 +57,9 @@ mixin _$SetupIntent {
   /// using the provided resource.
   NextAction? get nextAction => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentintent.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SetupIntentCopyWith<SetupIntent> get copyWith =>
@@ -80,10 +83,12 @@ abstract class $SetupIntentCopyWith<$Res> {
       String? description,
       String? created,
       LastSetupError? lastSetupError,
-      NextAction? nextAction});
+      NextAction? nextAction,
+      MandateData? mandateData});
 
   $LastSetupErrorCopyWith<$Res>? get lastSetupError;
   $NextActionCopyWith<$Res>? get nextAction;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -110,6 +115,7 @@ class _$SetupIntentCopyWithImpl<$Res, $Val extends SetupIntent>
     Object? created = freezed,
     Object? lastSetupError = freezed,
     Object? nextAction = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -156,6 +162,10 @@ class _$SetupIntentCopyWithImpl<$Res, $Val extends SetupIntent>
           ? _value.nextAction
           : nextAction // ignore: cast_nullable_to_non_nullable
               as NextAction?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -182,6 +192,18 @@ class _$SetupIntentCopyWithImpl<$Res, $Val extends SetupIntent>
       return _then(_value.copyWith(nextAction: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -203,12 +225,15 @@ abstract class _$$_SetupIntentCopyWith<$Res>
       String? description,
       String? created,
       LastSetupError? lastSetupError,
-      NextAction? nextAction});
+      NextAction? nextAction,
+      MandateData? mandateData});
 
   @override
   $LastSetupErrorCopyWith<$Res>? get lastSetupError;
   @override
   $NextActionCopyWith<$Res>? get nextAction;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -233,6 +258,7 @@ class __$$_SetupIntentCopyWithImpl<$Res>
     Object? created = freezed,
     Object? lastSetupError = freezed,
     Object? nextAction = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_SetupIntent(
       id: null == id
@@ -279,6 +305,10 @@ class __$$_SetupIntentCopyWithImpl<$Res>
           ? _value.nextAction
           : nextAction // ignore: cast_nullable_to_non_nullable
               as NextAction?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -298,7 +328,8 @@ class _$_SetupIntent implements _SetupIntent {
       this.description,
       this.created,
       this.lastSetupError,
-      this.nextAction})
+      this.nextAction,
+      this.mandateData})
       : _paymentMethodTypes = paymentMethodTypes;
 
   factory _$_SetupIntent.fromJson(Map<String, dynamic> json) =>
@@ -359,9 +390,13 @@ class _$_SetupIntent implements _SetupIntent {
   @override
   final NextAction? nextAction;
 
+  /// Mandata data for this paymentintent.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'SetupIntent(id: $id, status: $status, livemode: $livemode, clientSecret: $clientSecret, paymentMethodId: $paymentMethodId, usage: $usage, paymentMethodTypes: $paymentMethodTypes, description: $description, created: $created, lastSetupError: $lastSetupError, nextAction: $nextAction)';
+    return 'SetupIntent(id: $id, status: $status, livemode: $livemode, clientSecret: $clientSecret, paymentMethodId: $paymentMethodId, usage: $usage, paymentMethodTypes: $paymentMethodTypes, description: $description, created: $created, lastSetupError: $lastSetupError, nextAction: $nextAction, mandateData: $mandateData)';
   }
 
   @override
@@ -386,7 +421,9 @@ class _$_SetupIntent implements _SetupIntent {
             (identical(other.lastSetupError, lastSetupError) ||
                 other.lastSetupError == lastSetupError) &&
             (identical(other.nextAction, nextAction) ||
-                other.nextAction == nextAction));
+                other.nextAction == nextAction) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
@@ -403,7 +440,8 @@ class _$_SetupIntent implements _SetupIntent {
       description,
       created,
       lastSetupError,
-      nextAction);
+      nextAction,
+      mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -431,7 +469,8 @@ abstract class _SetupIntent implements SetupIntent {
       final String? description,
       final String? created,
       final LastSetupError? lastSetupError,
-      final NextAction? nextAction}) = _$_SetupIntent;
+      final NextAction? nextAction,
+      final MandateData? mandateData}) = _$_SetupIntent;
 
   factory _SetupIntent.fromJson(Map<String, dynamic> json) =
       _$_SetupIntent.fromJson;
@@ -483,6 +522,10 @@ abstract class _SetupIntent implements SetupIntent {
   /// Additional action that needs to be taken in order to complete a payment
   /// using the provided resource.
   NextAction? get nextAction;
+  @override
+
+  /// Mandata data for this paymentintent.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_SetupIntentCopyWith<_$_SetupIntent> get copyWith =>

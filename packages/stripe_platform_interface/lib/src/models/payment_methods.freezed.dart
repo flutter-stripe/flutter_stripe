@@ -9098,6 +9098,9 @@ mixin _$PaymentMethodData {
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodDataCopyWith<PaymentMethodData> get copyWith =>
@@ -9110,10 +9113,14 @@ abstract class $PaymentMethodDataCopyWith<$Res> {
           PaymentMethodData value, $Res Function(PaymentMethodData) then) =
       _$PaymentMethodDataCopyWithImpl<$Res, PaymentMethodData>;
   @useResult
-  $Res call({BillingDetails? billingDetails, ShippingDetails? shippingDetails});
+  $Res call(
+      {BillingDetails? billingDetails,
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -9131,6 +9138,7 @@ class _$PaymentMethodDataCopyWithImpl<$Res, $Val extends PaymentMethodData>
   $Res call({
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       billingDetails: freezed == billingDetails
@@ -9141,6 +9149,10 @@ class _$PaymentMethodDataCopyWithImpl<$Res, $Val extends PaymentMethodData>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -9167,6 +9179,18 @@ class _$PaymentMethodDataCopyWithImpl<$Res, $Val extends PaymentMethodData>
       return _then(_value.copyWith(shippingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -9177,12 +9201,17 @@ abstract class _$$_PaymentMethodDataCopyWith<$Res>
       __$$_PaymentMethodDataCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({BillingDetails? billingDetails, ShippingDetails? shippingDetails});
+  $Res call(
+      {BillingDetails? billingDetails,
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   @override
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   @override
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -9198,6 +9227,7 @@ class __$$_PaymentMethodDataCopyWithImpl<$Res>
   $Res call({
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_PaymentMethodData(
       billingDetails: freezed == billingDetails
@@ -9208,6 +9238,10 @@ class __$$_PaymentMethodDataCopyWithImpl<$Res>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -9216,7 +9250,8 @@ class __$$_PaymentMethodDataCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$_PaymentMethodData implements _PaymentMethodData {
-  const _$_PaymentMethodData({this.billingDetails, this.shippingDetails});
+  const _$_PaymentMethodData(
+      {this.billingDetails, this.shippingDetails, this.mandateData});
 
   factory _$_PaymentMethodData.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodDataFromJson(json);
@@ -9229,9 +9264,13 @@ class _$_PaymentMethodData implements _PaymentMethodData {
   @override
   final ShippingDetails? shippingDetails;
 
+  /// Mandata data for this paymentmethod.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'PaymentMethodData(billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+    return 'PaymentMethodData(billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
   }
 
   @override
@@ -9242,12 +9281,15 @@ class _$_PaymentMethodData implements _PaymentMethodData {
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.shippingDetails, shippingDetails) ||
-                other.shippingDetails == shippingDetails));
+                other.shippingDetails == shippingDetails) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, billingDetails, shippingDetails);
+  int get hashCode =>
+      Object.hash(runtimeType, billingDetails, shippingDetails, mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -9267,7 +9309,8 @@ class _$_PaymentMethodData implements _PaymentMethodData {
 abstract class _PaymentMethodData implements PaymentMethodData {
   const factory _PaymentMethodData(
       {final BillingDetails? billingDetails,
-      final ShippingDetails? shippingDetails}) = _$_PaymentMethodData;
+      final ShippingDetails? shippingDetails,
+      final MandateData? mandateData}) = _$_PaymentMethodData;
 
   factory _PaymentMethodData.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodData.fromJson;
@@ -9280,6 +9323,10 @@ abstract class _PaymentMethodData implements PaymentMethodData {
 
   /// Shipping details
   ShippingDetails? get shippingDetails;
+  @override
+
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataCopyWith<_$_PaymentMethodData> get copyWith =>
@@ -9302,6 +9349,9 @@ mixin _$PaymentMethodDataCardFromToken {
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodDataCardFromTokenCopyWith<PaymentMethodDataCardFromToken>
@@ -9319,10 +9369,12 @@ abstract class $PaymentMethodDataCardFromTokenCopyWith<$Res> {
   $Res call(
       {String token,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -9342,6 +9394,7 @@ class _$PaymentMethodDataCardFromTokenCopyWithImpl<$Res,
     Object? token = null,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       token: null == token
@@ -9356,6 +9409,10 @@ class _$PaymentMethodDataCardFromTokenCopyWithImpl<$Res,
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -9382,6 +9439,18 @@ class _$PaymentMethodDataCardFromTokenCopyWithImpl<$Res,
       return _then(_value.copyWith(shippingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -9396,12 +9465,15 @@ abstract class _$$_PaymentMethodDataCardFromTokenCopyWith<$Res>
   $Res call(
       {String token,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   @override
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   @override
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -9420,6 +9492,7 @@ class __$$_PaymentMethodDataCardFromTokenCopyWithImpl<$Res>
     Object? token = null,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_PaymentMethodDataCardFromToken(
       token: null == token
@@ -9434,6 +9507,10 @@ class __$$_PaymentMethodDataCardFromTokenCopyWithImpl<$Res>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -9444,7 +9521,10 @@ class __$$_PaymentMethodDataCardFromTokenCopyWithImpl<$Res>
 class _$_PaymentMethodDataCardFromToken
     implements _PaymentMethodDataCardFromToken {
   const _$_PaymentMethodDataCardFromToken(
-      {required this.token, this.billingDetails, this.shippingDetails});
+      {required this.token,
+      this.billingDetails,
+      this.shippingDetails,
+      this.mandateData});
 
   factory _$_PaymentMethodDataCardFromToken.fromJson(
           Map<String, dynamic> json) =>
@@ -9462,9 +9542,13 @@ class _$_PaymentMethodDataCardFromToken
   @override
   final ShippingDetails? shippingDetails;
 
+  /// Mandata data for this paymentmethod.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'PaymentMethodDataCardFromToken(token: $token, billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+    return 'PaymentMethodDataCardFromToken(token: $token, billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
   }
 
   @override
@@ -9476,13 +9560,15 @@ class _$_PaymentMethodDataCardFromToken
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.shippingDetails, shippingDetails) ||
-                other.shippingDetails == shippingDetails));
+                other.shippingDetails == shippingDetails) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, token, billingDetails, shippingDetails);
+  int get hashCode => Object.hash(
+      runtimeType, token, billingDetails, shippingDetails, mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -9502,10 +9588,10 @@ class _$_PaymentMethodDataCardFromToken
 abstract class _PaymentMethodDataCardFromToken
     implements PaymentMethodDataCardFromToken {
   const factory _PaymentMethodDataCardFromToken(
-          {required final String token,
-          final BillingDetails? billingDetails,
-          final ShippingDetails? shippingDetails}) =
-      _$_PaymentMethodDataCardFromToken;
+      {required final String token,
+      final BillingDetails? billingDetails,
+      final ShippingDetails? shippingDetails,
+      final MandateData? mandateData}) = _$_PaymentMethodDataCardFromToken;
 
   factory _PaymentMethodDataCardFromToken.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodDataCardFromToken.fromJson;
@@ -9522,6 +9608,10 @@ abstract class _PaymentMethodDataCardFromToken
 
   /// Shipping details
   ShippingDetails? get shippingDetails;
+  @override
+
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataCardFromTokenCopyWith<_$_PaymentMethodDataCardFromToken>
@@ -9547,6 +9637,9 @@ mixin _$PaymentMethodDataCardFromMethod {
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodDataCardFromMethodCopyWith<PaymentMethodDataCardFromMethod>
@@ -9565,10 +9658,12 @@ abstract class $PaymentMethodDataCardFromMethodCopyWith<$Res> {
       {String paymentMethodId,
       String? cvc,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -9589,6 +9684,7 @@ class _$PaymentMethodDataCardFromMethodCopyWithImpl<$Res,
     Object? cvc = freezed,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       paymentMethodId: null == paymentMethodId
@@ -9607,6 +9703,10 @@ class _$PaymentMethodDataCardFromMethodCopyWithImpl<$Res,
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -9633,6 +9733,18 @@ class _$PaymentMethodDataCardFromMethodCopyWithImpl<$Res,
       return _then(_value.copyWith(shippingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -9648,12 +9760,15 @@ abstract class _$$_PaymentMethodDataCardFromMethodCopyWith<$Res>
       {String paymentMethodId,
       String? cvc,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   @override
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   @override
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -9673,6 +9788,7 @@ class __$$_PaymentMethodDataCardFromMethodCopyWithImpl<$Res>
     Object? cvc = freezed,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_PaymentMethodDataCardFromMethod(
       paymentMethodId: null == paymentMethodId
@@ -9691,6 +9807,10 @@ class __$$_PaymentMethodDataCardFromMethodCopyWithImpl<$Res>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -9704,7 +9824,8 @@ class _$_PaymentMethodDataCardFromMethod
       {required this.paymentMethodId,
       this.cvc,
       this.billingDetails,
-      this.shippingDetails});
+      this.shippingDetails,
+      this.mandateData});
 
   factory _$_PaymentMethodDataCardFromMethod.fromJson(
           Map<String, dynamic> json) =>
@@ -9726,9 +9847,13 @@ class _$_PaymentMethodDataCardFromMethod
   @override
   final ShippingDetails? shippingDetails;
 
+  /// Mandata data for this paymentmethod.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'PaymentMethodDataCardFromMethod(paymentMethodId: $paymentMethodId, cvc: $cvc, billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+    return 'PaymentMethodDataCardFromMethod(paymentMethodId: $paymentMethodId, cvc: $cvc, billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
   }
 
   @override
@@ -9742,13 +9867,15 @@ class _$_PaymentMethodDataCardFromMethod
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.shippingDetails, shippingDetails) ||
-                other.shippingDetails == shippingDetails));
+                other.shippingDetails == shippingDetails) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, paymentMethodId, cvc, billingDetails, shippingDetails);
+  int get hashCode => Object.hash(runtimeType, paymentMethodId, cvc,
+      billingDetails, shippingDetails, mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -9769,11 +9896,11 @@ class _$_PaymentMethodDataCardFromMethod
 abstract class _PaymentMethodDataCardFromMethod
     implements PaymentMethodDataCardFromMethod {
   const factory _PaymentMethodDataCardFromMethod(
-          {required final String paymentMethodId,
-          final String? cvc,
-          final BillingDetails? billingDetails,
-          final ShippingDetails? shippingDetails}) =
-      _$_PaymentMethodDataCardFromMethod;
+      {required final String paymentMethodId,
+      final String? cvc,
+      final BillingDetails? billingDetails,
+      final ShippingDetails? shippingDetails,
+      final MandateData? mandateData}) = _$_PaymentMethodDataCardFromMethod;
 
   factory _PaymentMethodDataCardFromMethod.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodDataCardFromMethod.fromJson;
@@ -9794,6 +9921,10 @@ abstract class _PaymentMethodDataCardFromMethod
 
   /// Shipping details
   ShippingDetails? get shippingDetails;
+  @override
+
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataCardFromMethodCopyWith<
@@ -9817,6 +9948,9 @@ mixin _$PaymentMethodDataIdeal {
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodDataIdealCopyWith<PaymentMethodDataIdeal> get copyWith =>
@@ -9832,10 +9966,12 @@ abstract class $PaymentMethodDataIdealCopyWith<$Res> {
   $Res call(
       {String? bankName,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -9855,6 +9991,7 @@ class _$PaymentMethodDataIdealCopyWithImpl<$Res,
     Object? bankName = freezed,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       bankName: freezed == bankName
@@ -9869,6 +10006,10 @@ class _$PaymentMethodDataIdealCopyWithImpl<$Res,
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -9895,6 +10036,18 @@ class _$PaymentMethodDataIdealCopyWithImpl<$Res,
       return _then(_value.copyWith(shippingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -9908,12 +10061,15 @@ abstract class _$$_PaymentMethodDataIdealCopyWith<$Res>
   $Res call(
       {String? bankName,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   @override
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   @override
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -9931,6 +10087,7 @@ class __$$_PaymentMethodDataIdealCopyWithImpl<$Res>
     Object? bankName = freezed,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_PaymentMethodDataIdeal(
       bankName: freezed == bankName
@@ -9945,6 +10102,10 @@ class __$$_PaymentMethodDataIdealCopyWithImpl<$Res>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -9954,7 +10115,10 @@ class __$$_PaymentMethodDataIdealCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_PaymentMethodDataIdeal implements _PaymentMethodDataIdeal {
   const _$_PaymentMethodDataIdeal(
-      {this.bankName, this.billingDetails, this.shippingDetails});
+      {this.bankName,
+      this.billingDetails,
+      this.shippingDetails,
+      this.mandateData});
 
   factory _$_PaymentMethodDataIdeal.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodDataIdealFromJson(json);
@@ -9971,9 +10135,13 @@ class _$_PaymentMethodDataIdeal implements _PaymentMethodDataIdeal {
   @override
   final ShippingDetails? shippingDetails;
 
+  /// Mandata data for this paymentmethod.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'PaymentMethodDataIdeal(bankName: $bankName, billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+    return 'PaymentMethodDataIdeal(bankName: $bankName, billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
   }
 
   @override
@@ -9986,13 +10154,15 @@ class _$_PaymentMethodDataIdeal implements _PaymentMethodDataIdeal {
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.shippingDetails, shippingDetails) ||
-                other.shippingDetails == shippingDetails));
+                other.shippingDetails == shippingDetails) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, bankName, billingDetails, shippingDetails);
+  int get hashCode => Object.hash(
+      runtimeType, bankName, billingDetails, shippingDetails, mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -10013,7 +10183,8 @@ abstract class _PaymentMethodDataIdeal implements PaymentMethodDataIdeal {
   const factory _PaymentMethodDataIdeal(
       {final String? bankName,
       final BillingDetails? billingDetails,
-      final ShippingDetails? shippingDetails}) = _$_PaymentMethodDataIdeal;
+      final ShippingDetails? shippingDetails,
+      final MandateData? mandateData}) = _$_PaymentMethodDataIdeal;
 
   factory _PaymentMethodDataIdeal.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodDataIdeal.fromJson;
@@ -10030,6 +10201,10 @@ abstract class _PaymentMethodDataIdeal implements PaymentMethodDataIdeal {
 
   /// Shipping details
   ShippingDetails? get shippingDetails;
+  @override
+
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataIdealCopyWith<_$_PaymentMethodDataIdeal> get copyWith =>
@@ -10052,6 +10227,9 @@ mixin _$PaymentMethodDataAubecs {
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodDataAubecsCopyWith<PaymentMethodDataAubecs> get copyWith =>
@@ -10067,11 +10245,13 @@ abstract class $PaymentMethodDataAubecsCopyWith<$Res> {
   $Res call(
       {AubecsFormInputDetails formDetails,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   $AubecsFormInputDetailsCopyWith<$Res> get formDetails;
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -10091,6 +10271,7 @@ class _$PaymentMethodDataAubecsCopyWithImpl<$Res,
     Object? formDetails = null,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       formDetails: null == formDetails
@@ -10105,6 +10286,10 @@ class _$PaymentMethodDataAubecsCopyWithImpl<$Res,
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -10139,6 +10324,18 @@ class _$PaymentMethodDataAubecsCopyWithImpl<$Res,
       return _then(_value.copyWith(shippingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -10152,7 +10349,8 @@ abstract class _$$_PaymentMethodDataAubecsCopyWith<$Res>
   $Res call(
       {AubecsFormInputDetails formDetails,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   @override
   $AubecsFormInputDetailsCopyWith<$Res> get formDetails;
@@ -10160,6 +10358,8 @@ abstract class _$$_PaymentMethodDataAubecsCopyWith<$Res>
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   @override
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -10177,6 +10377,7 @@ class __$$_PaymentMethodDataAubecsCopyWithImpl<$Res>
     Object? formDetails = null,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_PaymentMethodDataAubecs(
       formDetails: null == formDetails
@@ -10191,6 +10392,10 @@ class __$$_PaymentMethodDataAubecsCopyWithImpl<$Res>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -10200,7 +10405,10 @@ class __$$_PaymentMethodDataAubecsCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_PaymentMethodDataAubecs implements _PaymentMethodDataAubecs {
   const _$_PaymentMethodDataAubecs(
-      {required this.formDetails, this.billingDetails, this.shippingDetails});
+      {required this.formDetails,
+      this.billingDetails,
+      this.shippingDetails,
+      this.mandateData});
 
   factory _$_PaymentMethodDataAubecs.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodDataAubecsFromJson(json);
@@ -10217,9 +10425,13 @@ class _$_PaymentMethodDataAubecs implements _PaymentMethodDataAubecs {
   @override
   final ShippingDetails? shippingDetails;
 
+  /// Mandata data for this paymentmethod.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'PaymentMethodDataAubecs(formDetails: $formDetails, billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+    return 'PaymentMethodDataAubecs(formDetails: $formDetails, billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
   }
 
   @override
@@ -10232,13 +10444,15 @@ class _$_PaymentMethodDataAubecs implements _PaymentMethodDataAubecs {
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.shippingDetails, shippingDetails) ||
-                other.shippingDetails == shippingDetails));
+                other.shippingDetails == shippingDetails) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, formDetails, billingDetails, shippingDetails);
+  int get hashCode => Object.hash(
+      runtimeType, formDetails, billingDetails, shippingDetails, mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -10260,7 +10474,8 @@ abstract class _PaymentMethodDataAubecs implements PaymentMethodDataAubecs {
   const factory _PaymentMethodDataAubecs(
       {required final AubecsFormInputDetails formDetails,
       final BillingDetails? billingDetails,
-      final ShippingDetails? shippingDetails}) = _$_PaymentMethodDataAubecs;
+      final ShippingDetails? shippingDetails,
+      final MandateData? mandateData}) = _$_PaymentMethodDataAubecs;
 
   factory _PaymentMethodDataAubecs.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodDataAubecs.fromJson;
@@ -10277,6 +10492,10 @@ abstract class _PaymentMethodDataAubecs implements PaymentMethodDataAubecs {
 
   /// Shipping details
   ShippingDetails? get shippingDetails;
+  @override
+
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataAubecsCopyWith<_$_PaymentMethodDataAubecs>
@@ -10298,6 +10517,9 @@ mixin _$PaymentMethodDataFpx {
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodDataFpxCopyWith<PaymentMethodDataFpx> get copyWith =>
@@ -10313,10 +10535,12 @@ abstract class $PaymentMethodDataFpxCopyWith<$Res> {
   $Res call(
       {bool testOfflineBank,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -10336,6 +10560,7 @@ class _$PaymentMethodDataFpxCopyWithImpl<$Res,
     Object? testOfflineBank = null,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       testOfflineBank: null == testOfflineBank
@@ -10350,6 +10575,10 @@ class _$PaymentMethodDataFpxCopyWithImpl<$Res,
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -10376,6 +10605,18 @@ class _$PaymentMethodDataFpxCopyWithImpl<$Res,
       return _then(_value.copyWith(shippingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -10389,12 +10630,15 @@ abstract class _$$_PaymentMethodDataFpxCopyWith<$Res>
   $Res call(
       {bool testOfflineBank,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   @override
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   @override
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -10411,6 +10655,7 @@ class __$$_PaymentMethodDataFpxCopyWithImpl<$Res>
     Object? testOfflineBank = null,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_PaymentMethodDataFpx(
       testOfflineBank: null == testOfflineBank
@@ -10425,6 +10670,10 @@ class __$$_PaymentMethodDataFpxCopyWithImpl<$Res>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -10436,7 +10685,8 @@ class _$_PaymentMethodDataFpx implements _PaymentMethodDataFpx {
   const _$_PaymentMethodDataFpx(
       {this.testOfflineBank = false,
       this.billingDetails,
-      this.shippingDetails});
+      this.shippingDetails,
+      this.mandateData});
 
   factory _$_PaymentMethodDataFpx.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodDataFpxFromJson(json);
@@ -10454,9 +10704,13 @@ class _$_PaymentMethodDataFpx implements _PaymentMethodDataFpx {
   @override
   final ShippingDetails? shippingDetails;
 
+  /// Mandata data for this paymentmethod.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'PaymentMethodDataFpx(testOfflineBank: $testOfflineBank, billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+    return 'PaymentMethodDataFpx(testOfflineBank: $testOfflineBank, billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
   }
 
   @override
@@ -10469,13 +10723,15 @@ class _$_PaymentMethodDataFpx implements _PaymentMethodDataFpx {
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.shippingDetails, shippingDetails) ||
-                other.shippingDetails == shippingDetails));
+                other.shippingDetails == shippingDetails) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, testOfflineBank, billingDetails, shippingDetails);
+  int get hashCode => Object.hash(runtimeType, testOfflineBank, billingDetails,
+      shippingDetails, mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -10496,7 +10752,8 @@ abstract class _PaymentMethodDataFpx implements PaymentMethodDataFpx {
   const factory _PaymentMethodDataFpx(
       {final bool testOfflineBank,
       final BillingDetails? billingDetails,
-      final ShippingDetails? shippingDetails}) = _$_PaymentMethodDataFpx;
+      final ShippingDetails? shippingDetails,
+      final MandateData? mandateData}) = _$_PaymentMethodDataFpx;
 
   factory _PaymentMethodDataFpx.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodDataFpx.fromJson;
@@ -10513,6 +10770,10 @@ abstract class _PaymentMethodDataFpx implements PaymentMethodDataFpx {
 
   /// Shipping details
   ShippingDetails? get shippingDetails;
+  @override
+
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataFpxCopyWith<_$_PaymentMethodDataFpx> get copyWith =>
@@ -10535,6 +10796,9 @@ mixin _$PaymentMethodDataSofort {
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodDataSofortCopyWith<PaymentMethodDataSofort> get copyWith =>
@@ -10550,10 +10814,12 @@ abstract class $PaymentMethodDataSofortCopyWith<$Res> {
   $Res call(
       {String country,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -10573,6 +10839,7 @@ class _$PaymentMethodDataSofortCopyWithImpl<$Res,
     Object? country = null,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       country: null == country
@@ -10587,6 +10854,10 @@ class _$PaymentMethodDataSofortCopyWithImpl<$Res,
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -10613,6 +10884,18 @@ class _$PaymentMethodDataSofortCopyWithImpl<$Res,
       return _then(_value.copyWith(shippingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -10626,12 +10909,15 @@ abstract class _$$_PaymentMethodDataSofortCopyWith<$Res>
   $Res call(
       {String country,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   @override
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   @override
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -10649,6 +10935,7 @@ class __$$_PaymentMethodDataSofortCopyWithImpl<$Res>
     Object? country = null,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_PaymentMethodDataSofort(
       country: null == country
@@ -10663,6 +10950,10 @@ class __$$_PaymentMethodDataSofortCopyWithImpl<$Res>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -10672,7 +10963,10 @@ class __$$_PaymentMethodDataSofortCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_PaymentMethodDataSofort implements _PaymentMethodDataSofort {
   const _$_PaymentMethodDataSofort(
-      {required this.country, this.billingDetails, this.shippingDetails});
+      {required this.country,
+      this.billingDetails,
+      this.shippingDetails,
+      this.mandateData});
 
   factory _$_PaymentMethodDataSofort.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodDataSofortFromJson(json);
@@ -10689,9 +10983,13 @@ class _$_PaymentMethodDataSofort implements _PaymentMethodDataSofort {
   @override
   final ShippingDetails? shippingDetails;
 
+  /// Mandata data for this paymentmethod.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'PaymentMethodDataSofort(country: $country, billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+    return 'PaymentMethodDataSofort(country: $country, billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
   }
 
   @override
@@ -10703,13 +11001,15 @@ class _$_PaymentMethodDataSofort implements _PaymentMethodDataSofort {
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.shippingDetails, shippingDetails) ||
-                other.shippingDetails == shippingDetails));
+                other.shippingDetails == shippingDetails) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, country, billingDetails, shippingDetails);
+  int get hashCode => Object.hash(
+      runtimeType, country, billingDetails, shippingDetails, mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -10731,7 +11031,8 @@ abstract class _PaymentMethodDataSofort implements PaymentMethodDataSofort {
   const factory _PaymentMethodDataSofort(
       {required final String country,
       final BillingDetails? billingDetails,
-      final ShippingDetails? shippingDetails}) = _$_PaymentMethodDataSofort;
+      final ShippingDetails? shippingDetails,
+      final MandateData? mandateData}) = _$_PaymentMethodDataSofort;
 
   factory _PaymentMethodDataSofort.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodDataSofort.fromJson;
@@ -10748,6 +11049,10 @@ abstract class _PaymentMethodDataSofort implements PaymentMethodDataSofort {
 
   /// Shipping details
   ShippingDetails? get shippingDetails;
+  @override
+
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataSofortCopyWith<_$_PaymentMethodDataSofort>
@@ -10770,6 +11075,9 @@ mixin _$PaymentMethodDataSepa {
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodDataSepaCopyWith<PaymentMethodDataSepa> get copyWith =>
@@ -10785,10 +11093,12 @@ abstract class $PaymentMethodDataSepaCopyWith<$Res> {
   $Res call(
       {String iban,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -10808,6 +11118,7 @@ class _$PaymentMethodDataSepaCopyWithImpl<$Res,
     Object? iban = null,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       iban: null == iban
@@ -10822,6 +11133,10 @@ class _$PaymentMethodDataSepaCopyWithImpl<$Res,
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -10848,6 +11163,18 @@ class _$PaymentMethodDataSepaCopyWithImpl<$Res,
       return _then(_value.copyWith(shippingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -10861,12 +11188,15 @@ abstract class _$$_PaymentMethodDataSepaCopyWith<$Res>
   $Res call(
       {String iban,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   @override
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   @override
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -10883,6 +11213,7 @@ class __$$_PaymentMethodDataSepaCopyWithImpl<$Res>
     Object? iban = null,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_PaymentMethodDataSepa(
       iban: null == iban
@@ -10897,6 +11228,10 @@ class __$$_PaymentMethodDataSepaCopyWithImpl<$Res>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -10906,7 +11241,10 @@ class __$$_PaymentMethodDataSepaCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_PaymentMethodDataSepa implements _PaymentMethodDataSepa {
   const _$_PaymentMethodDataSepa(
-      {required this.iban, this.billingDetails, this.shippingDetails});
+      {required this.iban,
+      this.billingDetails,
+      this.shippingDetails,
+      this.mandateData});
 
   factory _$_PaymentMethodDataSepa.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodDataSepaFromJson(json);
@@ -10923,9 +11261,13 @@ class _$_PaymentMethodDataSepa implements _PaymentMethodDataSepa {
   @override
   final ShippingDetails? shippingDetails;
 
+  /// Mandata data for this paymentmethod.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'PaymentMethodDataSepa(iban: $iban, billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+    return 'PaymentMethodDataSepa(iban: $iban, billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
   }
 
   @override
@@ -10937,13 +11279,15 @@ class _$_PaymentMethodDataSepa implements _PaymentMethodDataSepa {
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.shippingDetails, shippingDetails) ||
-                other.shippingDetails == shippingDetails));
+                other.shippingDetails == shippingDetails) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, iban, billingDetails, shippingDetails);
+  int get hashCode => Object.hash(
+      runtimeType, iban, billingDetails, shippingDetails, mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -10964,7 +11308,8 @@ abstract class _PaymentMethodDataSepa implements PaymentMethodDataSepa {
   const factory _PaymentMethodDataSepa(
       {required final String iban,
       final BillingDetails? billingDetails,
-      final ShippingDetails? shippingDetails}) = _$_PaymentMethodDataSepa;
+      final ShippingDetails? shippingDetails,
+      final MandateData? mandateData}) = _$_PaymentMethodDataSepa;
 
   factory _PaymentMethodDataSepa.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodDataSepa.fromJson;
@@ -10981,6 +11326,10 @@ abstract class _PaymentMethodDataSepa implements PaymentMethodDataSepa {
 
   /// Shipping details
   ShippingDetails? get shippingDetails;
+  @override
+
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataSepaCopyWith<_$_PaymentMethodDataSepa> get copyWith =>
@@ -11000,6 +11349,9 @@ mixin _$PaymentMethodDataAfterPay {
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodDataAfterPayCopyWith<PaymentMethodDataAfterPay> get copyWith =>
@@ -11012,10 +11364,14 @@ abstract class $PaymentMethodDataAfterPayCopyWith<$Res> {
           $Res Function(PaymentMethodDataAfterPay) then) =
       _$PaymentMethodDataAfterPayCopyWithImpl<$Res, PaymentMethodDataAfterPay>;
   @useResult
-  $Res call({BillingDetails billingDetails, ShippingDetails? shippingDetails});
+  $Res call(
+      {BillingDetails billingDetails,
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   $BillingDetailsCopyWith<$Res> get billingDetails;
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -11034,6 +11390,7 @@ class _$PaymentMethodDataAfterPayCopyWithImpl<$Res,
   $Res call({
     Object? billingDetails = null,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       billingDetails: null == billingDetails
@@ -11044,6 +11401,10 @@ class _$PaymentMethodDataAfterPayCopyWithImpl<$Res,
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -11066,6 +11427,18 @@ class _$PaymentMethodDataAfterPayCopyWithImpl<$Res,
       return _then(_value.copyWith(shippingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -11077,12 +11450,17 @@ abstract class _$$_PaymentMethodDataAfterPayCopyWith<$Res>
       __$$_PaymentMethodDataAfterPayCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({BillingDetails billingDetails, ShippingDetails? shippingDetails});
+  $Res call(
+      {BillingDetails billingDetails,
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   @override
   $BillingDetailsCopyWith<$Res> get billingDetails;
   @override
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -11100,6 +11478,7 @@ class __$$_PaymentMethodDataAfterPayCopyWithImpl<$Res>
   $Res call({
     Object? billingDetails = null,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_PaymentMethodDataAfterPay(
       billingDetails: null == billingDetails
@@ -11110,6 +11489,10 @@ class __$$_PaymentMethodDataAfterPayCopyWithImpl<$Res>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -11119,7 +11502,7 @@ class __$$_PaymentMethodDataAfterPayCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_PaymentMethodDataAfterPay implements _PaymentMethodDataAfterPay {
   const _$_PaymentMethodDataAfterPay(
-      {required this.billingDetails, this.shippingDetails});
+      {required this.billingDetails, this.shippingDetails, this.mandateData});
 
   factory _$_PaymentMethodDataAfterPay.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodDataAfterPayFromJson(json);
@@ -11132,9 +11515,13 @@ class _$_PaymentMethodDataAfterPay implements _PaymentMethodDataAfterPay {
   @override
   final ShippingDetails? shippingDetails;
 
+  /// Mandata data for this paymentmethod.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'PaymentMethodDataAfterPay(billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+    return 'PaymentMethodDataAfterPay(billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
   }
 
   @override
@@ -11145,12 +11532,15 @@ class _$_PaymentMethodDataAfterPay implements _PaymentMethodDataAfterPay {
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.shippingDetails, shippingDetails) ||
-                other.shippingDetails == shippingDetails));
+                other.shippingDetails == shippingDetails) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, billingDetails, shippingDetails);
+  int get hashCode =>
+      Object.hash(runtimeType, billingDetails, shippingDetails, mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -11170,7 +11560,8 @@ class _$_PaymentMethodDataAfterPay implements _PaymentMethodDataAfterPay {
 abstract class _PaymentMethodDataAfterPay implements PaymentMethodDataAfterPay {
   const factory _PaymentMethodDataAfterPay(
       {required final BillingDetails billingDetails,
-      final ShippingDetails? shippingDetails}) = _$_PaymentMethodDataAfterPay;
+      final ShippingDetails? shippingDetails,
+      final MandateData? mandateData}) = _$_PaymentMethodDataAfterPay;
 
   factory _PaymentMethodDataAfterPay.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodDataAfterPay.fromJson;
@@ -11183,6 +11574,10 @@ abstract class _PaymentMethodDataAfterPay implements PaymentMethodDataAfterPay {
 
   /// Shipping details
   ShippingDetails? get shippingDetails;
+  @override
+
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataAfterPayCopyWith<_$_PaymentMethodDataAfterPay>
@@ -11216,6 +11611,9 @@ mixin _$PaymentMethodDataUsBank {
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodDataUsBankCopyWith<PaymentMethodDataUsBank> get copyWith =>
@@ -11234,10 +11632,12 @@ abstract class $PaymentMethodDataUsBankCopyWith<$Res> {
       BankAccountHolderType? accountHolderType,
       UsBankAccountType? accountType,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -11260,6 +11660,7 @@ class _$PaymentMethodDataUsBankCopyWithImpl<$Res,
     Object? accountType = freezed,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       accountNumber: freezed == accountNumber
@@ -11286,6 +11687,10 @@ class _$PaymentMethodDataUsBankCopyWithImpl<$Res,
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -11312,6 +11717,18 @@ class _$PaymentMethodDataUsBankCopyWithImpl<$Res,
       return _then(_value.copyWith(shippingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -11328,12 +11745,15 @@ abstract class _$$_PaymentMethodDataUsBankCopyWith<$Res>
       BankAccountHolderType? accountHolderType,
       UsBankAccountType? accountType,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   @override
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   @override
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -11354,6 +11774,7 @@ class __$$_PaymentMethodDataUsBankCopyWithImpl<$Res>
     Object? accountType = freezed,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_PaymentMethodDataUsBank(
       accountNumber: freezed == accountNumber
@@ -11380,6 +11801,10 @@ class __$$_PaymentMethodDataUsBankCopyWithImpl<$Res>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -11394,7 +11819,8 @@ class _$_PaymentMethodDataUsBank implements _PaymentMethodDataUsBank {
       this.accountHolderType,
       this.accountType,
       this.billingDetails,
-      this.shippingDetails});
+      this.shippingDetails,
+      this.mandateData});
 
   factory _$_PaymentMethodDataUsBank.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodDataUsBankFromJson(json);
@@ -11424,9 +11850,13 @@ class _$_PaymentMethodDataUsBank implements _PaymentMethodDataUsBank {
   @override
   final ShippingDetails? shippingDetails;
 
+  /// Mandata data for this paymentmethod.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'PaymentMethodDataUsBank(accountNumber: $accountNumber, routingNumber: $routingNumber, accountHolderType: $accountHolderType, accountType: $accountType, billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+    return 'PaymentMethodDataUsBank(accountNumber: $accountNumber, routingNumber: $routingNumber, accountHolderType: $accountHolderType, accountType: $accountType, billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
   }
 
   @override
@@ -11445,13 +11875,22 @@ class _$_PaymentMethodDataUsBank implements _PaymentMethodDataUsBank {
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.shippingDetails, shippingDetails) ||
-                other.shippingDetails == shippingDetails));
+                other.shippingDetails == shippingDetails) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, accountNumber, routingNumber,
-      accountHolderType, accountType, billingDetails, shippingDetails);
+  int get hashCode => Object.hash(
+      runtimeType,
+      accountNumber,
+      routingNumber,
+      accountHolderType,
+      accountType,
+      billingDetails,
+      shippingDetails,
+      mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -11476,7 +11915,8 @@ abstract class _PaymentMethodDataUsBank implements PaymentMethodDataUsBank {
       final BankAccountHolderType? accountHolderType,
       final UsBankAccountType? accountType,
       final BillingDetails? billingDetails,
-      final ShippingDetails? shippingDetails}) = _$_PaymentMethodDataUsBank;
+      final ShippingDetails? shippingDetails,
+      final MandateData? mandateData}) = _$_PaymentMethodDataUsBank;
 
   factory _PaymentMethodDataUsBank.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodDataUsBank.fromJson;
@@ -11506,6 +11946,10 @@ abstract class _PaymentMethodDataUsBank implements PaymentMethodDataUsBank {
 
   /// Shipping details
   ShippingDetails? get shippingDetails;
+  @override
+
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataUsBankCopyWith<_$_PaymentMethodDataUsBank>
@@ -11656,5 +12100,510 @@ abstract class _PaymentMethodOptions implements PaymentMethodOptions {
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodOptionsCopyWith<_$_PaymentMethodOptions> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+MandateData _$MandateDataFromJson(Map<String, dynamic> json) {
+  return _MandateData.fromJson(json);
+}
+
+/// @nodoc
+mixin _$MandateData {
+  /// The type of mandate to create.
+  MandateDataCustomerAcceptance? get customerAcceptance =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $MandateDataCopyWith<MandateData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MandateDataCopyWith<$Res> {
+  factory $MandateDataCopyWith(
+          MandateData value, $Res Function(MandateData) then) =
+      _$MandateDataCopyWithImpl<$Res, MandateData>;
+  @useResult
+  $Res call({MandateDataCustomerAcceptance? customerAcceptance});
+
+  $MandateDataCustomerAcceptanceCopyWith<$Res>? get customerAcceptance;
+}
+
+/// @nodoc
+class _$MandateDataCopyWithImpl<$Res, $Val extends MandateData>
+    implements $MandateDataCopyWith<$Res> {
+  _$MandateDataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? customerAcceptance = freezed,
+  }) {
+    return _then(_value.copyWith(
+      customerAcceptance: freezed == customerAcceptance
+          ? _value.customerAcceptance
+          : customerAcceptance // ignore: cast_nullable_to_non_nullable
+              as MandateDataCustomerAcceptance?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCustomerAcceptanceCopyWith<$Res>? get customerAcceptance {
+    if (_value.customerAcceptance == null) {
+      return null;
+    }
+
+    return $MandateDataCustomerAcceptanceCopyWith<$Res>(
+        _value.customerAcceptance!, (value) {
+      return _then(_value.copyWith(customerAcceptance: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_MandateDataCopyWith<$Res>
+    implements $MandateDataCopyWith<$Res> {
+  factory _$$_MandateDataCopyWith(
+          _$_MandateData value, $Res Function(_$_MandateData) then) =
+      __$$_MandateDataCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({MandateDataCustomerAcceptance? customerAcceptance});
+
+  @override
+  $MandateDataCustomerAcceptanceCopyWith<$Res>? get customerAcceptance;
+}
+
+/// @nodoc
+class __$$_MandateDataCopyWithImpl<$Res>
+    extends _$MandateDataCopyWithImpl<$Res, _$_MandateData>
+    implements _$$_MandateDataCopyWith<$Res> {
+  __$$_MandateDataCopyWithImpl(
+      _$_MandateData _value, $Res Function(_$_MandateData) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? customerAcceptance = freezed,
+  }) {
+    return _then(_$_MandateData(
+      customerAcceptance: freezed == customerAcceptance
+          ? _value.customerAcceptance
+          : customerAcceptance // ignore: cast_nullable_to_non_nullable
+              as MandateDataCustomerAcceptance?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_MandateData implements _MandateData {
+  const _$_MandateData({this.customerAcceptance});
+
+  factory _$_MandateData.fromJson(Map<String, dynamic> json) =>
+      _$$_MandateDataFromJson(json);
+
+  /// The type of mandate to create.
+  @override
+  final MandateDataCustomerAcceptance? customerAcceptance;
+
+  @override
+  String toString() {
+    return 'MandateData(customerAcceptance: $customerAcceptance)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MandateData &&
+            (identical(other.customerAcceptance, customerAcceptance) ||
+                other.customerAcceptance == customerAcceptance));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, customerAcceptance);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MandateDataCopyWith<_$_MandateData> get copyWith =>
+      __$$_MandateDataCopyWithImpl<_$_MandateData>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_MandateDataToJson(
+      this,
+    );
+  }
+}
+
+abstract class _MandateData implements MandateData {
+  const factory _MandateData(
+          {final MandateDataCustomerAcceptance? customerAcceptance}) =
+      _$_MandateData;
+
+  factory _MandateData.fromJson(Map<String, dynamic> json) =
+      _$_MandateData.fromJson;
+
+  @override
+
+  /// The type of mandate to create.
+  MandateDataCustomerAcceptance? get customerAcceptance;
+  @override
+  @JsonKey(ignore: true)
+  _$$_MandateDataCopyWith<_$_MandateData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+MandateDataCustomerAcceptance _$MandateDataCustomerAcceptanceFromJson(
+    Map<String, dynamic> json) {
+  return _MandateDataCustomerAcceptance.fromJson(json);
+}
+
+/// @nodoc
+mixin _$MandateDataCustomerAcceptance {
+  /// Online data regarding the mandate.
+  MandateDataOnlineData? get ipAddress => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $MandateDataCustomerAcceptanceCopyWith<MandateDataCustomerAcceptance>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MandateDataCustomerAcceptanceCopyWith<$Res> {
+  factory $MandateDataCustomerAcceptanceCopyWith(
+          MandateDataCustomerAcceptance value,
+          $Res Function(MandateDataCustomerAcceptance) then) =
+      _$MandateDataCustomerAcceptanceCopyWithImpl<$Res,
+          MandateDataCustomerAcceptance>;
+  @useResult
+  $Res call({MandateDataOnlineData? ipAddress});
+
+  $MandateDataOnlineDataCopyWith<$Res>? get ipAddress;
+}
+
+/// @nodoc
+class _$MandateDataCustomerAcceptanceCopyWithImpl<$Res,
+        $Val extends MandateDataCustomerAcceptance>
+    implements $MandateDataCustomerAcceptanceCopyWith<$Res> {
+  _$MandateDataCustomerAcceptanceCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ipAddress = freezed,
+  }) {
+    return _then(_value.copyWith(
+      ipAddress: freezed == ipAddress
+          ? _value.ipAddress
+          : ipAddress // ignore: cast_nullable_to_non_nullable
+              as MandateDataOnlineData?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataOnlineDataCopyWith<$Res>? get ipAddress {
+    if (_value.ipAddress == null) {
+      return null;
+    }
+
+    return $MandateDataOnlineDataCopyWith<$Res>(_value.ipAddress!, (value) {
+      return _then(_value.copyWith(ipAddress: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_MandateDataCustomerAcceptanceCopyWith<$Res>
+    implements $MandateDataCustomerAcceptanceCopyWith<$Res> {
+  factory _$$_MandateDataCustomerAcceptanceCopyWith(
+          _$_MandateDataCustomerAcceptance value,
+          $Res Function(_$_MandateDataCustomerAcceptance) then) =
+      __$$_MandateDataCustomerAcceptanceCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({MandateDataOnlineData? ipAddress});
+
+  @override
+  $MandateDataOnlineDataCopyWith<$Res>? get ipAddress;
+}
+
+/// @nodoc
+class __$$_MandateDataCustomerAcceptanceCopyWithImpl<$Res>
+    extends _$MandateDataCustomerAcceptanceCopyWithImpl<$Res,
+        _$_MandateDataCustomerAcceptance>
+    implements _$$_MandateDataCustomerAcceptanceCopyWith<$Res> {
+  __$$_MandateDataCustomerAcceptanceCopyWithImpl(
+      _$_MandateDataCustomerAcceptance _value,
+      $Res Function(_$_MandateDataCustomerAcceptance) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ipAddress = freezed,
+  }) {
+    return _then(_$_MandateDataCustomerAcceptance(
+      ipAddress: freezed == ipAddress
+          ? _value.ipAddress
+          : ipAddress // ignore: cast_nullable_to_non_nullable
+              as MandateDataOnlineData?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_MandateDataCustomerAcceptance
+    implements _MandateDataCustomerAcceptance {
+  const _$_MandateDataCustomerAcceptance({this.ipAddress});
+
+  factory _$_MandateDataCustomerAcceptance.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_MandateDataCustomerAcceptanceFromJson(json);
+
+  /// Online data regarding the mandate.
+  @override
+  final MandateDataOnlineData? ipAddress;
+
+  @override
+  String toString() {
+    return 'MandateDataCustomerAcceptance(ipAddress: $ipAddress)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MandateDataCustomerAcceptance &&
+            (identical(other.ipAddress, ipAddress) ||
+                other.ipAddress == ipAddress));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, ipAddress);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MandateDataCustomerAcceptanceCopyWith<_$_MandateDataCustomerAcceptance>
+      get copyWith => __$$_MandateDataCustomerAcceptanceCopyWithImpl<
+          _$_MandateDataCustomerAcceptance>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_MandateDataCustomerAcceptanceToJson(
+      this,
+    );
+  }
+}
+
+abstract class _MandateDataCustomerAcceptance
+    implements MandateDataCustomerAcceptance {
+  const factory _MandateDataCustomerAcceptance(
+          {final MandateDataOnlineData? ipAddress}) =
+      _$_MandateDataCustomerAcceptance;
+
+  factory _MandateDataCustomerAcceptance.fromJson(Map<String, dynamic> json) =
+      _$_MandateDataCustomerAcceptance.fromJson;
+
+  @override
+
+  /// Online data regarding the mandate.
+  MandateDataOnlineData? get ipAddress;
+  @override
+  @JsonKey(ignore: true)
+  _$$_MandateDataCustomerAcceptanceCopyWith<_$_MandateDataCustomerAcceptance>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+MandateDataOnlineData _$MandateDataOnlineDataFromJson(
+    Map<String, dynamic> json) {
+  return _MandateDataOnlineData.fromJson(json);
+}
+
+/// @nodoc
+mixin _$MandateDataOnlineData {
+  /// The ip address of the user.
+  String? get ipAddress => throw _privateConstructorUsedError;
+
+  /// The user agent of the user.
+  String? get userAgent => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $MandateDataOnlineDataCopyWith<MandateDataOnlineData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MandateDataOnlineDataCopyWith<$Res> {
+  factory $MandateDataOnlineDataCopyWith(MandateDataOnlineData value,
+          $Res Function(MandateDataOnlineData) then) =
+      _$MandateDataOnlineDataCopyWithImpl<$Res, MandateDataOnlineData>;
+  @useResult
+  $Res call({String? ipAddress, String? userAgent});
+}
+
+/// @nodoc
+class _$MandateDataOnlineDataCopyWithImpl<$Res,
+        $Val extends MandateDataOnlineData>
+    implements $MandateDataOnlineDataCopyWith<$Res> {
+  _$MandateDataOnlineDataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ipAddress = freezed,
+    Object? userAgent = freezed,
+  }) {
+    return _then(_value.copyWith(
+      ipAddress: freezed == ipAddress
+          ? _value.ipAddress
+          : ipAddress // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userAgent: freezed == userAgent
+          ? _value.userAgent
+          : userAgent // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_MandateDataOnlineDataCopyWith<$Res>
+    implements $MandateDataOnlineDataCopyWith<$Res> {
+  factory _$$_MandateDataOnlineDataCopyWith(_$_MandateDataOnlineData value,
+          $Res Function(_$_MandateDataOnlineData) then) =
+      __$$_MandateDataOnlineDataCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? ipAddress, String? userAgent});
+}
+
+/// @nodoc
+class __$$_MandateDataOnlineDataCopyWithImpl<$Res>
+    extends _$MandateDataOnlineDataCopyWithImpl<$Res, _$_MandateDataOnlineData>
+    implements _$$_MandateDataOnlineDataCopyWith<$Res> {
+  __$$_MandateDataOnlineDataCopyWithImpl(_$_MandateDataOnlineData _value,
+      $Res Function(_$_MandateDataOnlineData) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ipAddress = freezed,
+    Object? userAgent = freezed,
+  }) {
+    return _then(_$_MandateDataOnlineData(
+      ipAddress: freezed == ipAddress
+          ? _value.ipAddress
+          : ipAddress // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userAgent: freezed == userAgent
+          ? _value.userAgent
+          : userAgent // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_MandateDataOnlineData implements _MandateDataOnlineData {
+  const _$_MandateDataOnlineData({this.ipAddress, this.userAgent});
+
+  factory _$_MandateDataOnlineData.fromJson(Map<String, dynamic> json) =>
+      _$$_MandateDataOnlineDataFromJson(json);
+
+  /// The ip address of the user.
+  @override
+  final String? ipAddress;
+
+  /// The user agent of the user.
+  @override
+  final String? userAgent;
+
+  @override
+  String toString() {
+    return 'MandateDataOnlineData(ipAddress: $ipAddress, userAgent: $userAgent)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MandateDataOnlineData &&
+            (identical(other.ipAddress, ipAddress) ||
+                other.ipAddress == ipAddress) &&
+            (identical(other.userAgent, userAgent) ||
+                other.userAgent == userAgent));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, ipAddress, userAgent);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MandateDataOnlineDataCopyWith<_$_MandateDataOnlineData> get copyWith =>
+      __$$_MandateDataOnlineDataCopyWithImpl<_$_MandateDataOnlineData>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_MandateDataOnlineDataToJson(
+      this,
+    );
+  }
+}
+
+abstract class _MandateDataOnlineData implements MandateDataOnlineData {
+  const factory _MandateDataOnlineData(
+      {final String? ipAddress,
+      final String? userAgent}) = _$_MandateDataOnlineData;
+
+  factory _MandateDataOnlineData.fromJson(Map<String, dynamic> json) =
+      _$_MandateDataOnlineData.fromJson;
+
+  @override
+
+  /// The ip address of the user.
+  String? get ipAddress;
+  @override
+
+  /// The user agent of the user.
+  String? get userAgent;
+  @override
+  @JsonKey(ignore: true)
+  _$$_MandateDataOnlineDataCopyWith<_$_MandateDataOnlineData> get copyWith =>
       throw _privateConstructorUsedError;
 }
