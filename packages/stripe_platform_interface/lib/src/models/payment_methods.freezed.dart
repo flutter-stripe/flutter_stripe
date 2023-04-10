@@ -2813,6 +2813,8 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
       return _PaymentMethodParamsCardWithMethodId.fromJson(json);
     case 'Alipay':
       return _PaymentMethodParamsAlipay.fromJson(json);
+    case 'CashAppPay':
+      return _PaymentMethodParamsCashAppPay.fromJson(json);
     case 'Ideal':
       return _PaymentMethodParamsIdeal.fromJson(json);
     case 'AuBecsDebit':
@@ -2867,6 +2869,7 @@ mixin _$PaymentMethodParams {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -2896,6 +2899,7 @@ mixin _$PaymentMethodParams {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -2923,6 +2927,7 @@ mixin _$PaymentMethodParams {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -2951,6 +2956,7 @@ mixin _$PaymentMethodParams {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -2978,6 +2984,7 @@ mixin _$PaymentMethodParams {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -3004,6 +3011,7 @@ mixin _$PaymentMethodParams {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -3139,6 +3147,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -3171,6 +3180,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -3201,6 +3211,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -3235,6 +3246,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -3265,6 +3277,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -3294,6 +3307,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -3444,6 +3458,7 @@ class _$_PaymentMethodParamsCardWithToken
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -3476,6 +3491,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -3506,6 +3522,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -3540,6 +3557,7 @@ class _$_PaymentMethodParamsCardWithToken
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -3570,6 +3588,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -3599,6 +3618,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -3751,6 +3771,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -3783,6 +3804,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -3813,6 +3835,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -3847,6 +3870,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -3877,6 +3901,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -3906,6 +3931,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -4055,6 +4081,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -4087,6 +4114,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -4117,6 +4145,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -4151,6 +4180,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -4181,6 +4211,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -4210,6 +4241,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -4257,6 +4289,315 @@ abstract class _PaymentMethodParamsAlipay implements PaymentMethodParams {
   PaymentMethodData get paymentMethodData;
   @JsonKey(ignore: true)
   _$$_PaymentMethodParamsAlipayCopyWith<_$_PaymentMethodParamsAlipay>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_PaymentMethodParamsCashAppPayCopyWith<$Res> {
+  factory _$$_PaymentMethodParamsCashAppPayCopyWith(
+          _$_PaymentMethodParamsCashAppPay value,
+          $Res Function(_$_PaymentMethodParamsCashAppPay) then) =
+      __$$_PaymentMethodParamsCashAppPayCopyWithImpl<$Res>;
+  @useResult
+  $Res call({PaymentMethodData paymentMethodData});
+
+  $PaymentMethodDataCopyWith<$Res> get paymentMethodData;
+}
+
+/// @nodoc
+class __$$_PaymentMethodParamsCashAppPayCopyWithImpl<$Res>
+    extends _$PaymentMethodParamsCopyWithImpl<$Res,
+        _$_PaymentMethodParamsCashAppPay>
+    implements _$$_PaymentMethodParamsCashAppPayCopyWith<$Res> {
+  __$$_PaymentMethodParamsCashAppPayCopyWithImpl(
+      _$_PaymentMethodParamsCashAppPay _value,
+      $Res Function(_$_PaymentMethodParamsCashAppPay) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? paymentMethodData = null,
+  }) {
+    return _then(_$_PaymentMethodParamsCashAppPay(
+      paymentMethodData: null == paymentMethodData
+          ? _value.paymentMethodData
+          : paymentMethodData // ignore: cast_nullable_to_non_nullable
+              as PaymentMethodData,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentMethodDataCopyWith<$Res> get paymentMethodData {
+    return $PaymentMethodDataCopyWith<$Res>(_value.paymentMethodData, (value) {
+      return _then(_value.copyWith(paymentMethodData: value));
+    });
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_PaymentMethodParamsCashAppPay
+    implements _PaymentMethodParamsCashAppPay {
+  const _$_PaymentMethodParamsCashAppPay(
+      {required this.paymentMethodData, final String? $type})
+      : $type = $type ?? 'CashAppPay';
+
+  factory _$_PaymentMethodParamsCashAppPay.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_PaymentMethodParamsCashAppPayFromJson(json);
+
+  /// Paymentmethod data for this paymentmethod.
+  @override
+  final PaymentMethodData paymentMethodData;
+
+  @JsonKey(name: 'paymentMethodType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'PaymentMethodParams.cashAppPay(paymentMethodData: $paymentMethodData)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentMethodParamsCashAppPay &&
+            (identical(other.paymentMethodData, paymentMethodData) ||
+                other.paymentMethodData == paymentMethodData));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, paymentMethodData);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PaymentMethodParamsCashAppPayCopyWith<_$_PaymentMethodParamsCashAppPay>
+      get copyWith => __$$_PaymentMethodParamsCashAppPayCopyWithImpl<
+          _$_PaymentMethodParamsCashAppPay>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PaymentMethodData paymentMethodData) card,
+    required TResult Function(PaymentMethodDataCardFromToken paymentMethodData)
+        cardFromToken,
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+        cardFromMethodId,
+    required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
+    required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
+    required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
+    required TResult Function(PaymentMethodData paymentMethodData) bancontact,
+    required TResult Function(PaymentMethodData paymentMethodData) giroPay,
+    required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
+    required TResult Function(PaymentMethodData paymentMethodData) grabPay,
+    required TResult Function(PaymentMethodData paymentMethodData) p24,
+    required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
+        sepaDebit,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
+    required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
+        afterpayClearpay,
+    required TResult Function(PaymentMethodData paymentMethodData) oxxo,
+    required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+        usBankAccount,
+  }) {
+    return cashAppPay(paymentMethodData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PaymentMethodData paymentMethodData)? card,
+    TResult? Function(PaymentMethodDataCardFromToken paymentMethodData)?
+        cardFromToken,
+    TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+        cardFromMethodId,
+    TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
+    TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
+    TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
+    TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
+    TResult? Function(PaymentMethodData paymentMethodData)? giroPay,
+    TResult? Function(PaymentMethodData paymentMethodData)? eps,
+    TResult? Function(PaymentMethodData paymentMethodData)? affirm,
+    TResult? Function(PaymentMethodData paymentMethodData)? grabPay,
+    TResult? Function(PaymentMethodData paymentMethodData)? p24,
+    TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
+    TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
+    TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
+        afterpayClearpay,
+    TResult? Function(PaymentMethodData paymentMethodData)? oxxo,
+    TResult? Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult? Function(PaymentMethodData paymentMethodData)? payPal,
+    TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+  }) {
+    return cashAppPay?.call(paymentMethodData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PaymentMethodData paymentMethodData)? card,
+    TResult Function(PaymentMethodDataCardFromToken paymentMethodData)?
+        cardFromToken,
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+        cardFromMethodId,
+    TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
+    TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
+    TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
+    TResult Function(PaymentMethodData paymentMethodData)? bancontact,
+    TResult Function(PaymentMethodData paymentMethodData)? giroPay,
+    TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
+    TResult Function(PaymentMethodData paymentMethodData)? grabPay,
+    TResult Function(PaymentMethodData paymentMethodData)? p24,
+    TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
+    TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
+        afterpayClearpay,
+    TResult Function(PaymentMethodData paymentMethodData)? oxxo,
+    TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    required TResult orElse(),
+  }) {
+    if (cashAppPay != null) {
+      return cashAppPay(paymentMethodData);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentMethodParamsCard value) card,
+    required TResult Function(_PaymentMethodParamsCardWithToken value)
+        cardFromToken,
+    required TResult Function(_PaymentMethodParamsCardWithMethodId value)
+        cardFromMethodId,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
+    required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
+    required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
+    required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
+    required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
+    required TResult Function(_PaymentMethodParamsPay value) grabPay,
+    required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
+    required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsSofort value) sofort,
+    required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
+        afterpayClearpay,
+    required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
+  }) {
+    return cashAppPay(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PaymentMethodParamsCard value)? card,
+    TResult? Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
+    TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
+    TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
+    TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
+    TResult? Function(_PaymentMethodParamsGiroPay value)? giroPay,
+    TResult? Function(_PaymentMethodParamsEps value)? eps,
+    TResult? Function(_PaymentMethodParamsAffirm value)? affirm,
+    TResult? Function(_PaymentMethodParamsPay value)? grabPay,
+    TResult? Function(_PaymentMethodParamsP24 value)? p24,
+    TResult? Function(_PaymentMethodParamsFpx value)? fpx,
+    TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsSofort value)? sofort,
+    TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
+        afterpayClearpay,
+    TResult? Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult? Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
+    TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+  }) {
+    return cashAppPay?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
+    TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
+    TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
+    TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
+    TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
+    TResult Function(_PaymentMethodParamsPay value)? grabPay,
+    TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
+    TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsSofort value)? sofort,
+    TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
+        afterpayClearpay,
+    TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    required TResult orElse(),
+  }) {
+    if (cashAppPay != null) {
+      return cashAppPay(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentMethodParamsCashAppPayToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymentMethodParamsCashAppPay implements PaymentMethodParams {
+  const factory _PaymentMethodParamsCashAppPay(
+          {required final PaymentMethodData paymentMethodData}) =
+      _$_PaymentMethodParamsCashAppPay;
+
+  factory _PaymentMethodParamsCashAppPay.fromJson(Map<String, dynamic> json) =
+      _$_PaymentMethodParamsCashAppPay.fromJson;
+
+  @override
+
+  /// Paymentmethod data for this paymentmethod.
+  PaymentMethodData get paymentMethodData;
+  @JsonKey(ignore: true)
+  _$$_PaymentMethodParamsCashAppPayCopyWith<_$_PaymentMethodParamsCashAppPay>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -4355,6 +4696,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -4387,6 +4729,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -4417,6 +4760,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -4451,6 +4795,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -4481,6 +4826,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -4510,6 +4856,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -4657,6 +5004,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -4689,6 +5037,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -4719,6 +5068,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -4753,6 +5103,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -4783,6 +5134,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -4812,6 +5164,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -4960,6 +5313,7 @@ class _$_PaymentMethodParamsBankContact
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -4992,6 +5346,7 @@ class _$_PaymentMethodParamsBankContact
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -5022,6 +5377,7 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -5056,6 +5412,7 @@ class _$_PaymentMethodParamsBankContact
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -5086,6 +5443,7 @@ class _$_PaymentMethodParamsBankContact
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -5115,6 +5473,7 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -5261,6 +5620,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -5293,6 +5653,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -5323,6 +5684,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -5357,6 +5719,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -5387,6 +5750,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -5416,6 +5780,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -5559,6 +5924,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -5591,6 +5957,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -5621,6 +5988,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -5655,6 +6023,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -5685,6 +6054,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -5714,6 +6084,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -5860,6 +6231,7 @@ class _$_PaymentMethodParamsAffirm implements _PaymentMethodParamsAffirm {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -5892,6 +6264,7 @@ class _$_PaymentMethodParamsAffirm implements _PaymentMethodParamsAffirm {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -5922,6 +6295,7 @@ class _$_PaymentMethodParamsAffirm implements _PaymentMethodParamsAffirm {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -5956,6 +6330,7 @@ class _$_PaymentMethodParamsAffirm implements _PaymentMethodParamsAffirm {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -5986,6 +6361,7 @@ class _$_PaymentMethodParamsAffirm implements _PaymentMethodParamsAffirm {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -6015,6 +6391,7 @@ class _$_PaymentMethodParamsAffirm implements _PaymentMethodParamsAffirm {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -6158,6 +6535,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -6190,6 +6568,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -6220,6 +6599,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -6254,6 +6634,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -6284,6 +6665,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -6313,6 +6695,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -6456,6 +6839,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -6488,6 +6872,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -6518,6 +6903,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -6552,6 +6938,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -6582,6 +6969,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -6611,6 +6999,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -6755,6 +7144,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -6787,6 +7177,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -6817,6 +7208,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -6851,6 +7243,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -6881,6 +7274,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -6910,6 +7304,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -7057,6 +7452,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -7089,6 +7485,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -7119,6 +7516,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -7153,6 +7551,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -7183,6 +7582,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -7212,6 +7612,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -7358,6 +7759,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -7390,6 +7792,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -7420,6 +7823,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -7454,6 +7858,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -7484,6 +7889,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -7513,6 +7919,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -7660,6 +8067,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -7692,6 +8100,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -7722,6 +8131,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -7756,6 +8166,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -7786,6 +8197,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -7815,6 +8227,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -7960,6 +8373,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -7992,6 +8406,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -8022,6 +8437,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -8056,6 +8472,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -8086,6 +8503,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -8115,6 +8533,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -8264,6 +8683,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -8296,6 +8716,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -8326,6 +8747,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -8360,6 +8782,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -8390,6 +8813,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -8419,6 +8843,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -8528,9 +8953,6 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
       _$$_PaymentMethodParamsPayPalFromJson(json);
 
   /// Paymentmethod data for this paymentmethod.
-  ///
-  /// Make sure to add an email and country (part of the address) in the
-  /// billingdetails which is required for using Klarna.
   @override
   final PaymentMethodData paymentMethodData;
 
@@ -8571,6 +8993,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -8603,6 +9026,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -8633,6 +9057,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -8667,6 +9092,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -8697,6 +9123,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -8726,6 +9153,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -8770,9 +9198,6 @@ abstract class _PaymentMethodParamsPayPal implements PaymentMethodParams {
   @override
 
   /// Paymentmethod data for this paymentmethod.
-  ///
-  /// Make sure to add an email and country (part of the address) in the
-  /// billingdetails which is required for using Klarna.
   PaymentMethodData get paymentMethodData;
   @JsonKey(ignore: true)
   _$$_PaymentMethodParamsPayPalCopyWith<_$_PaymentMethodParamsPayPal>
@@ -8879,6 +9304,7 @@ class _$_PaymentMethodParamsUsBankAccount
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -8911,6 +9337,7 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -8941,6 +9368,7 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -8975,6 +9403,7 @@ class _$_PaymentMethodParamsUsBankAccount
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -9005,6 +9434,7 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -9034,6 +9464,7 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,

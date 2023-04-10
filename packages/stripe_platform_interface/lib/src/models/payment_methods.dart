@@ -293,6 +293,7 @@ enum UsBankAccountType {
 enum PaymentMethodType {
   AfterpayClearpay,
   Card,
+  CashAppPay,
   Alipay,
   Grabpay,
   Ideal,
@@ -352,6 +353,15 @@ class PaymentMethodParams with _$PaymentMethodParams {
     /// Paymentmethod data for this paymentmethod.
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsAlipay;
+
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('CashAppPay')
+
+  /// Config parameters for Alipay card payment method.
+  const factory PaymentMethodParams.cashAppPay({
+    /// Paymentmethod data for this paymentmethod.
+    required PaymentMethodData paymentMethodData,
+  }) = _PaymentMethodParamsCashAppPay;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Ideal')
@@ -481,9 +491,6 @@ class PaymentMethodParams with _$PaymentMethodParams {
   /// Paypal is in private beta make sure to request access at Stripe to try it out.
   const factory PaymentMethodParams.payPal({
     /// Paymentmethod data for this paymentmethod.
-    ///
-    /// Make sure to add an email and country (part of the address) in the
-    /// billingdetails which is required for using Klarna.
     required PaymentMethodData paymentMethodData,
   }) = _PaymentMethodParamsPayPal;
 

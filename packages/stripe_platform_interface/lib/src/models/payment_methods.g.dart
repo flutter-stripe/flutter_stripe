@@ -270,6 +270,21 @@ Map<String, dynamic> _$$_PaymentMethodParamsAlipayToJson(
       'paymentMethodType': instance.$type,
     };
 
+_$_PaymentMethodParamsCashAppPay _$$_PaymentMethodParamsCashAppPayFromJson(
+        Map<String, dynamic> json) =>
+    _$_PaymentMethodParamsCashAppPay(
+      paymentMethodData: PaymentMethodData.fromJson(
+          json['paymentMethodData'] as Map<String, dynamic>),
+      $type: json['paymentMethodType'] as String?,
+    );
+
+Map<String, dynamic> _$$_PaymentMethodParamsCashAppPayToJson(
+        _$_PaymentMethodParamsCashAppPay instance) =>
+    <String, dynamic>{
+      'paymentMethodData': instance.paymentMethodData.toJson(),
+      'paymentMethodType': instance.$type,
+    };
+
 _$_PaymentMethodParamsIdeal _$$_PaymentMethodParamsIdealFromJson(
         Map<String, dynamic> json) =>
     _$_PaymentMethodParamsIdeal(
