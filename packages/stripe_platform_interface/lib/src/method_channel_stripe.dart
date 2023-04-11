@@ -523,7 +523,6 @@ class MethodChannelStripe extends StripePlatform {
       data = {
         'applePay': {
           ...params.applePayParams.toJson(),
-          ...params.applePayPaymentMethodParams.toJson()
         },
       };
     } else if (params is PlatformPayPaymentMethodParamsGooglePay) {
@@ -551,6 +550,16 @@ class MethodChannelStripe extends StripePlatform {
       {required PlatformPaySheetUpdateParams params}) async {
     await _methodChannel
         .invokeMethod('updatePlatformPaySheet', {'params': params.toJson()});
+  }
+
+  @override
+  Future<void> configurePlatformOrderTracking({
+    required PlatformPayOrderDetails orderDetails,
+  }) async {
+    await _methodChannel.invokeMethod(
+      'configureOrderTracking',
+      orderDetails.toJson(),
+    );
   }
 }
 
