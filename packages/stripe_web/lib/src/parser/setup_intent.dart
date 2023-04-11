@@ -3,13 +3,10 @@ import 'package:stripe_js/stripe_api.dart' as js;
 
 extension SetupIntentExtension on js.SetupIntent {
   SetupIntent parse() {
-    throw UnimplementedError();
-    // TODO(jaime) : Add support for setup intents
-    // ignore: dead_code
     return SetupIntent(
       id: id,
       created: created.toString(),
-      status: '',
+      status: status.toString(),
       clientSecret: clientSecret,
       livemode: livemode,
       paymentMethodId: paymentMethod!,

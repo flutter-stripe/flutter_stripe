@@ -4,22 +4,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'confirm_card_payment_data.freezed.dart';
 part 'confirm_card_payment_data.g.dart';
 
-class CardPaymentMethodRefConverter
-    extends PaymentMethodRefConverter<CardPaymentMethodDetails> {
-  const CardPaymentMethodRefConverter();
-}
-
-typedef CardPaymentMethodRef = PaymentMethodRef<CardPaymentMethodDetails>;
-
 @freezed
 class ConfirmCardPaymentData with _$ConfirmCardPaymentData {
   const factory ConfirmCardPaymentData({
     /// Either the id of an existing PaymentMethod, or an object containing
     /// data to create a PaymentMethod with.
     /// See the use case sections below for details.
-    @JsonKey(name: "payment_method")
-    @CardPaymentMethodRefConverter()
-        CardPaymentMethodRef? paymentMethod,
+    @paymentMethodDetailJsonKey CardPaymentMethodDetails? paymentMethod,
 
     /// The shipping details for the payment, if collected.
     ShippingDetails? shipping,

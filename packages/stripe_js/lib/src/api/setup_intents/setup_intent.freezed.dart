@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'setup_intent.dart';
 
@@ -219,15 +219,15 @@ class _$SetupIntentCopyWithImpl<$Res, $Val extends SetupIntent>
     Object? customer = freezed,
     Object? description = freezed,
     Object? flowDirections = freezed,
-    Object? lastSetupError = null,
+    Object? lastSetupError = freezed,
     Object? latestAttempt = freezed,
     Object? livemode = null,
     Object? mandate = freezed,
     Object? metadata = null,
-    Object? nextAction = null,
+    Object? nextAction = freezed,
     Object? onBehalfOf = freezed,
     Object? paymentMethod = freezed,
-    Object? paymentMethodOptions = null,
+    Object? paymentMethodOptions = freezed,
     Object? paymentMethodTypes = null,
     Object? singleUseMandate = freezed,
     Object? status = null,
@@ -274,7 +274,7 @@ class _$SetupIntentCopyWithImpl<$Res, $Val extends SetupIntent>
           ? _value.flowDirections
           : flowDirections // ignore: cast_nullable_to_non_nullable
               as List<SetupIntentFlowDirections>?,
-      lastSetupError: null == lastSetupError
+      lastSetupError: freezed == lastSetupError
           ? _value.lastSetupError
           : lastSetupError // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -294,7 +294,7 @@ class _$SetupIntentCopyWithImpl<$Res, $Val extends SetupIntent>
           ? _value.metadata
           : metadata // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
-      nextAction: null == nextAction
+      nextAction: freezed == nextAction
           ? _value.nextAction
           : nextAction // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -306,7 +306,7 @@ class _$SetupIntentCopyWithImpl<$Res, $Val extends SetupIntent>
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
               as String?,
-      paymentMethodOptions: null == paymentMethodOptions
+      paymentMethodOptions: freezed == paymentMethodOptions
           ? _value.paymentMethodOptions
           : paymentMethodOptions // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -397,15 +397,15 @@ class __$$_SetupIntentCopyWithImpl<$Res>
     Object? customer = freezed,
     Object? description = freezed,
     Object? flowDirections = freezed,
-    Object? lastSetupError = null,
+    Object? lastSetupError = freezed,
     Object? latestAttempt = freezed,
     Object? livemode = null,
     Object? mandate = freezed,
     Object? metadata = null,
-    Object? nextAction = null,
+    Object? nextAction = freezed,
     Object? onBehalfOf = freezed,
     Object? paymentMethod = freezed,
-    Object? paymentMethodOptions = null,
+    Object? paymentMethodOptions = freezed,
     Object? paymentMethodTypes = null,
     Object? singleUseMandate = freezed,
     Object? status = null,
@@ -452,7 +452,7 @@ class __$$_SetupIntentCopyWithImpl<$Res>
           ? _value._flowDirections
           : flowDirections // ignore: cast_nullable_to_non_nullable
               as List<SetupIntentFlowDirections>?,
-      lastSetupError: null == lastSetupError
+      lastSetupError: freezed == lastSetupError
           ? _value.lastSetupError
           : lastSetupError // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -472,7 +472,7 @@ class __$$_SetupIntentCopyWithImpl<$Res>
           ? _value._metadata
           : metadata // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
-      nextAction: null == nextAction
+      nextAction: freezed == nextAction
           ? _value.nextAction
           : nextAction // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -484,7 +484,7 @@ class __$$_SetupIntentCopyWithImpl<$Res>
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
               as String?,
-      paymentMethodOptions: null == paymentMethodOptions
+      paymentMethodOptions: freezed == paymentMethodOptions
           ? _value.paymentMethodOptions
           : paymentMethodOptions // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -640,6 +640,7 @@ class _$_SetupIntent implements _SetupIntent {
   List<SetupIntentFlowDirections>? get flowDirections {
     final value = _flowDirections;
     if (value == null) return null;
+    if (_flowDirections is EqualUnmodifiableListView) return _flowDirections;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -675,6 +676,7 @@ class _$_SetupIntent implements _SetupIntent {
   @override
   @JsonKey()
   Map<String, dynamic> get metadata {
+    if (_metadata is EqualUnmodifiableMapView) return _metadata;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_metadata);
   }
@@ -710,6 +712,8 @@ class _$_SetupIntent implements _SetupIntent {
   @override
   @JsonKey(name: "payment_method_types")
   List<PaymentMethodType> get paymentMethodTypes {
+    if (_paymentMethodTypes is EqualUnmodifiableListView)
+      return _paymentMethodTypes;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_paymentMethodTypes);
   }

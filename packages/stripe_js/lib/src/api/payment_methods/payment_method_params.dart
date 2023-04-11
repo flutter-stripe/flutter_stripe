@@ -386,7 +386,7 @@ class PaymentMethodDataUsBank with _$PaymentMethodDataUsBank {
     String? routingNumber,
 
     /// The bank account type of the holder
-    BankAccountHolderType? accountHolderType,
+    UsBankAccountHolderType? accountHolderType,
 
     /// The account type
     UsBankAccountType? accountType,

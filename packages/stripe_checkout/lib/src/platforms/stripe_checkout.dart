@@ -18,6 +18,7 @@ import 'checkout.dart';
 /// session in your server
 ///
 /// To have a custom route transition use [CheckoutPage] directly
+@Deprecated('Use CheckoutPage instead')
 Future<CheckoutResponse> redirectToCheckout({
   required BuildContext context,
   required String sessionId,

@@ -1,60 +1,50 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:stripe_js/src/api/converters/js_converter.dart';
 import 'package:stripe_js/stripe_api.dart';
+import 'package:meta/meta_meta.dart';
 
 part 'payment_method_details.freezed.dart';
 part 'payment_method_details.g.dart';
 
+/// Abstraction for details of a payment method.
+/// In general this can be just the identifier of the payment method,
+/// or be a class that contains more information depending on the payment type.
+///
+/// See [CardPaymentMethodDetails], [IdealPaymentMethodDetails],
+/// [SepaDebitPaymentMethodDetails].
 abstract class PaymentMethodDetails {
   Map<String, dynamic> toJson();
+
+  static dynamic toJsonConverter(PaymentMethodDetails? object) {
+    if (object is IdPaymentMethodDetails) return object.id;
+    return object?.toJson();
+  }
 }
 
-class UndefinedPaymentMethodDetails extends PaymentMethodDetails {
-  Map<String, dynamic> toJson() => {};
+// Reference to an existing payment method.
+abstract class IdPaymentMethodDetails implements PaymentMethodDetails {
+  String get id;
 }
 
-Map<String, dynamic> toJson<T extends PaymentMethodDetails>(T json) {
-  return json.toJson();
-}
-
-PaymentMethodRef<T> $id<T extends PaymentMethodDetails>(String id) =>
-    PaymentMethodRef<T>.id(id);
-
-PaymentMethodRef<T> $expanded<T extends PaymentMethodDetails>(T value) =>
-    PaymentMethodRef<T>.details(value);
-
-@Freezed()
-class PaymentMethodRef<T extends PaymentMethodDetails>
-    with _$PaymentMethodRef<T> {
-  /// Config parameters for card payment method.
-
-  const factory PaymentMethodRef.id(String id) = _PaymentMethodFactory<T>;
-
-  const factory PaymentMethodRef.details(
-    @PaymentMethodDetailsConverter() T value,
-  ) = _PaymentMethodDetails<T>;
-
-  const factory PaymentMethodRef.none() = _PaymentMethodNoneFactory<T>;
-
-  factory PaymentMethodRef.fromJson(Map<String, dynamic> json) =>
-      _$PaymentMethodRefFromJson(json);
-}
-
-class PaymentMethodDetailsConverter<T extends PaymentMethodDetails>
-    implements JsonConverter<T, dynamic> {
-  const PaymentMethodDetailsConverter();
-
-  @override
-  T fromJson(dynamic json) => json as T;
-
-  @override
-  dynamic toJson(T object) => object.toJson;
-}
+/// JSON key for the payment method details.
+///
+/// It supports creating a payment method from an id or custom payment
+/// method details like [CardPaymentMethodDetails].
+@Target({TargetKind.parameter})
+@internal
+const paymentMethodDetailJsonKey = JsonKey(
+  name: "payment_method",
+  toJson: PaymentMethodDetails.toJsonConverter,
+);
 
 @Freezed(unionKey: 'type')
 class CardPaymentMethodDetails
     with _$CardPaymentMethodDetails
     implements PaymentMethodDetails {
+  @FreezedUnionValue('card')
+  @Implements<IdPaymentMethodDetails>()
+  const factory CardPaymentMethodDetails.id(String id) = _CardPaymentMethodRef;
+
   /// Use stripe.confirmCardPayment with payment data from an Element by
   /// passing a card or cardNumber Element as payment_method[card] in the
   /// data argument.
@@ -68,7 +58,7 @@ class CardPaymentMethodDetails
 
     /// The billing_details associated with the card.
     @JsonKey(name: "billing_details") BillingDetails? billingDetails,
-  }) = _CardPaymentMethodRef;
+  }) = _CardPaymentMethodDefault;
 
   /// For backwards compatibility, you can convert an existing Token into a
   /// PaymentMethod with stripe.confirmCardPayment by passing the Token to
@@ -77,7 +67,7 @@ class CardPaymentMethodDetails
   @FreezedUnionValue('card')
   const factory CardPaymentMethodDetails.token({
     /// Uses the provided card or cardNumber Element for confirmation.
-    required CardToken card,
+    required CardTokenPaymentMethod card,
 
     /// The billing_details associated with the card.
     @JsonKey(name: "billing_details") BillingDetails? billingDetails,
@@ -91,6 +81,11 @@ class CardPaymentMethodDetails
 class IdealPaymentMethodDetails
     with _$IdealPaymentMethodDetails
     implements PaymentMethodDetails {
+  @FreezedUnionValue('ideal')
+  @Implements<IdPaymentMethodDetails>()
+  const factory IdealPaymentMethodDetails.id(String id) =
+      _IdIdealPaymentMethodDetails;
+
   /// Use stripe.confirmCardPayment with payment data from an Element by
   /// passing a card or cardNumber Element as payment_method[card] in the
   /// data argument.
@@ -136,12 +131,12 @@ class IdealBankData with _$IdealBankData {
 }
 
 @freezed
-class CardToken with _$CardToken {
+class CardTokenPaymentMethod with _$CardTokenPaymentMethod {
   /// Config parameters for card payment method.
-  const factory CardToken({
+  const factory CardTokenPaymentMethod({
     required String token,
-  }) = _CardToken;
+  }) = _CardTokenPaymentMethod;
 
-  factory CardToken.fromJson(Map<String, dynamic> json) =>
-      _$CardTokenFromJson(json);
+  factory CardTokenPaymentMethod.fromJson(Map<String, dynamic> json) =>
+      _$CardTokenPaymentMethodFromJson(json);
 }

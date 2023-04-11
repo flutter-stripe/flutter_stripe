@@ -8,8 +8,10 @@ part of 'confirm_ideal_payment_data.dart';
 
 _$_ConfirmIdealPaymentData _$$_ConfirmIdealPaymentDataFromJson(Map json) =>
     _$_ConfirmIdealPaymentData(
-      paymentMethod: const IdealPaymentMethodRefConverter()
-          .fromJson(json['payment_method']),
+      paymentMethod: json['payment_method'] == null
+          ? null
+          : IdealPaymentMethodDetails.fromJson(
+              Map<String, dynamic>.from(json['payment_method'] as Map)),
       returnUrl: json['return_url'] as String?,
       setupFutureUsage: $enumDecodeNullable(
           _$PaymentIntentSetupFutureUsageEnumMap, json['setup_future_usage']),
@@ -25,12 +27,8 @@ Map<String, dynamic> _$$_ConfirmIdealPaymentDataToJson(
     }
   }
 
-  writeNotNull(
-      'payment_method',
-      _$JsonConverterToJson<dynamic,
-              PaymentMethodRef<IdealPaymentMethodDetails>>(
-          instance.paymentMethod,
-          const IdealPaymentMethodRefConverter().toJson));
+  writeNotNull('payment_method',
+      PaymentMethodDetails.toJsonConverter(instance.paymentMethod));
   writeNotNull('return_url', instance.returnUrl);
   writeNotNull('setup_future_usage',
       _$PaymentIntentSetupFutureUsageEnumMap[instance.setupFutureUsage]);
@@ -41,9 +39,3 @@ const _$PaymentIntentSetupFutureUsageEnumMap = {
   PaymentIntentSetupFutureUsage.onSession: 'on_session',
   PaymentIntentSetupFutureUsage.offSession: 'off_session',
 };
-
-Json? _$JsonConverterToJson<Json, Value>(
-  Value? value,
-  Json? Function(Value value) toJson,
-) =>
-    value == null ? null : toJson(value);

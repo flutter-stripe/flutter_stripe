@@ -8,10 +8,10 @@ part of 'confirm_card_setup_data.dart';
 
 _$_ConfirmCardSetupData _$$_ConfirmCardSetupDataFromJson(Map json) =>
     _$_ConfirmCardSetupData(
-      paymentMethod: json['paymentMethod'] == null
+      paymentMethod: json['payment_method'] == null
           ? null
-          : PaymentMethodRef<CardPaymentMethodDetails>.fromJson(
-              Map<String, dynamic>.from(json['paymentMethod'] as Map)),
+          : CardPaymentMethodDetails.fromJson(
+              Map<String, dynamic>.from(json['payment_method'] as Map)),
       returnUrl: json['return_url'] as String?,
     );
 
@@ -25,7 +25,8 @@ Map<String, dynamic> _$$_ConfirmCardSetupDataToJson(
     }
   }
 
-  writeNotNull('paymentMethod', instance.paymentMethod?.toJson());
+  writeNotNull('payment_method',
+      PaymentMethodDetails.toJsonConverter(instance.paymentMethod));
   writeNotNull('return_url', instance.returnUrl);
   return val;
 }

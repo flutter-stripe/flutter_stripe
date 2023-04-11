@@ -4,22 +4,13 @@ import 'package:stripe_js/stripe_api.dart';
 part 'confirm_ideal_payment_data.freezed.dart';
 part 'confirm_ideal_payment_data.g.dart';
 
-class IdealPaymentMethodRefConverter
-    extends PaymentMethodRefConverter<IdealPaymentMethodDetails> {
-  const IdealPaymentMethodRefConverter();
-}
-
-typedef IdealPaymentMethodRef = PaymentMethodRef<IdealPaymentMethodDetails>;
-
 @freezed
 class ConfirmIdealPaymentData with _$ConfirmIdealPaymentData {
   const factory ConfirmIdealPaymentData({
     /// Either the id of an existing PaymentMethod, or an object containing
     /// data to create a PaymentMethod with.
     /// See the use case sections below for details.
-    @JsonKey(name: "payment_method")
-    @IdealPaymentMethodRefConverter()
-        IdealPaymentMethodRef? paymentMethod,
+    @paymentMethodDetailJsonKey IdealPaymentMethodDetails? paymentMethod,
 
     /// The url your customer will be directed to after they complete authentication.
     @JsonKey(name: "return_url") String? returnUrl,
