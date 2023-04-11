@@ -1,3 +1,11 @@
+## 4.0.0
+- Adds support for SetupIntent
+- Adds support for Tokens Api
+- Adds support for PaymentElement
+- Allows to dynamically change the stripeAccountId for Connect users 
+- Fixes PaymentConfirmationRedirect.ifRequired parsing error
+- Bump "stripe_js" to `3.0.0`.
+
 ## 3.0.0
 - Comply to breaking changes in platform interface. No changes further.
 
