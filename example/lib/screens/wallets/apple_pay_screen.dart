@@ -71,11 +71,21 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
                   errors: [],
                 ),
               );
-              print(Stripe.instance.debugUpdatePlatformSheetCalled);
+
               return;
             },
-            onShippingMethodSelected: (method) {
+            onShippingMethodSelected: (method) async {
               debugPrint('Shipping method updated $method');
+              // Mandatory after entering a shipping contact
+              await Stripe.instance.updatePlatformSheet(
+                params: PlatformPaySheetUpdateParams.applePay(
+                  summaryItems: items,
+                  shippingMethods: shippingMethods,
+                  errors: [],
+                ),
+              );
+
+              return;
             },
             onCouponCodeEntered: (couponCode) {
               debugPrint('set coupon $couponCode');
