@@ -5,7 +5,7 @@ extension Token on js.Token {
   TokenData parse() {
     return TokenData(
       id: id,
-      createdDateTime: created?.toString() ?? '',
+      createdDateTime: created ?? 0,
       livemode: livemode,
       type: type.parse(),
       card: card?.parse(),
