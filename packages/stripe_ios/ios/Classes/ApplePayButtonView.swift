@@ -49,7 +49,6 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
     var applePayButton: PKPaymentButton?
     var stripeSdk: StripeSdk?
     
-    @objc var onPressAction: RCTDirectEventBlock?
     @objc var onShippingMethodSelectedAction: RCTDirectEventBlock?
     @objc var onShippingContactSelectedAction: RCTDirectEventBlock?
     @objc var onCouponCodeEnteredAction: RCTDirectEventBlock?
@@ -65,21 +64,7 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
     }
     
     @objc func handleApplePayButtonTapped() {
-        if onPressAction != nil {
-            onPressAction!(["true": true])
-            // JS Callbacks are all no-ops since in legacy code (useApplePay hook),
-            // this behavior is controlled via the onDidSetShippingMethod and onDidSetShippingContact
-            // events
-            stripeSdk?.shippingMethodUpdateJSCallback = doesNothing
-            stripeSdk?.shippingContactUpdateJSCallback = doesNothing
-            stripeSdk?.couponCodeEnteredJSCallback = doesNothing
-        } else {
-            stripeSdk?.shippingMethodUpdateJSCallback = onShippingMethodSelectedAction
-            stripeSdk?.shippingContactUpdateJSCallback = onShippingContactSelectedAction
-            stripeSdk?.couponCodeEnteredJSCallback = onCouponCodeEnteredAction
-            stripeSdk?.platformPayOrderTrackingJSCallback = onOrderTrackingAction
-            channel.invokeMethod("onPressed", arguments: nil)
-        }
+        channel.invokeMethod("onPressed", arguments: nil)
     }
 
     init(
@@ -108,19 +93,19 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
     
     
     func onShippingContactSelected(_ arguments: Dictionary<AnyHashable, Any>?) {
-        channel.invokeMethod("onShippingContactSelected", arguments: arguments!)
+        channel.invokeMethod("onShippingContactSelected", arguments: arguments)
     }
     
     func onShippingMethodSelected(_ arguments: Dictionary<AnyHashable, Any>?) {
-        channel.invokeMethod("onShippingMethodSelected", arguments: arguments!)
+        channel.invokeMethod("onShippingMethodSelected", arguments: arguments)
     }
     
     func onCouponCodeEntered(_ arguments: Dictionary<AnyHashable, Any>?) {
-        channel.invokeMethod("onCouponCodeEntered", arguments: arguments!)
+        channel.invokeMethod("onCouponCodeEntered", arguments: arguments)
     }
     
     func onOrderTracking(_ arguments: Dictionary<AnyHashable, Any>?) {
-        channel.invokeMethod("onOrderTracking", arguments: arguments!)
+        channel.invokeMethod("onOrderTracking", arguments: arguments)
     }
     
     
@@ -134,7 +119,12 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
             }
             
             self.createApplePayView()
-       
+        case "updateHandlers":
+            if  let arguments = call.arguments as? Dictionary<String, AnyObject> {
+                self.updateHandlers(arguments: arguments)
+            }
+            
+            
           result(nil)
         default:
             result(FlutterMethodNotImplemented)
@@ -143,6 +133,33 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
 
     func view() -> UIView {
         return _view
+    }
+    
+    func updateHandlers(arguments: Dictionary<String, AnyObject> ) {
+        if(arguments["onShippingContactSelected"] as? Bool == true) {
+            stripeSdk?.shippingContactUpdateJSCallback = onShippingContactSelectedAction
+        } else {
+            stripeSdk?.shippingContactUpdateJSCallback = nil
+        }
+        
+        if(arguments["onShippingMethodSelected"] as? Bool == true) {
+            stripeSdk?.shippingMethodUpdateJSCallback = onShippingMethodSelectedAction
+        } else {
+            stripeSdk?.shippingMethodUpdateJSCallback = nil
+        }
+       
+        if(arguments["onCouponCodeEntered"] as? Bool == true) {
+            stripeSdk?.couponCodeEnteredJSCallback = onCouponCodeEnteredAction
+        } else {
+            stripeSdk?.couponCodeEnteredJSCallback = nil
+        }
+        
+        if(arguments["onOrderTracking"] as? Bool == true) {
+            stripeSdk?.platformPayOrderTrackingJSCallback = onOrderTrackingAction
+        } else {
+            stripeSdk?.platformPayOrderTrackingJSCallback = nil
+        }
+       
     }
 
     func createApplePayView(){

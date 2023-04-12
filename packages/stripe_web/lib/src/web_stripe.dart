@@ -465,6 +465,12 @@ class WebStripe extends StripePlatform {
       {required PlatformPaySheetUpdateParams params}) {
     throw WebUnsupportedError.method('updatePlatformSheet');
   }
+
+  @override
+  Future<void> configurePlatformOrderTracking(
+      {required PlatformPayOrderDetails orderDetails}) {
+    throw WebUnsupportedError.method('configurePlatformOrderTracking');
+  }
 }
 
 class WebUnsupportedError extends Error implements UnsupportedError {

@@ -698,7 +698,7 @@ mixin _$PaymentSheetApplePay {
   /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
   /// function, or else the Apple Pay sheet will hang.
   @JsonKey(ignore: true)
-  SetOrderTracking? get setOrderTracking => throw _privateConstructorUsedError;
+  OnOrderTracking? get setOrderTracking => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -717,7 +717,7 @@ abstract class $PaymentSheetApplePayCopyWith<$Res> {
       List<ApplePayCartSummaryItem>? cartItems,
       PlatformButtonType? buttonType,
       PaymentRequestType? request,
-      @JsonKey(ignore: true) SetOrderTracking? setOrderTracking});
+      @JsonKey(ignore: true) OnOrderTracking? setOrderTracking});
 
   $PaymentRequestTypeCopyWith<$Res>? get request;
 }
@@ -762,7 +762,7 @@ class _$PaymentSheetApplePayCopyWithImpl<$Res,
       setOrderTracking: freezed == setOrderTracking
           ? _value.setOrderTracking
           : setOrderTracking // ignore: cast_nullable_to_non_nullable
-              as SetOrderTracking?,
+              as OnOrderTracking?,
     ) as $Val);
   }
 
@@ -792,7 +792,7 @@ abstract class _$$_PaymentSheetApplePayCopyWith<$Res>
       List<ApplePayCartSummaryItem>? cartItems,
       PlatformButtonType? buttonType,
       PaymentRequestType? request,
-      @JsonKey(ignore: true) SetOrderTracking? setOrderTracking});
+      @JsonKey(ignore: true) OnOrderTracking? setOrderTracking});
 
   @override
   $PaymentRequestTypeCopyWith<$Res>? get request;
@@ -835,7 +835,7 @@ class __$$_PaymentSheetApplePayCopyWithImpl<$Res>
       setOrderTracking: freezed == setOrderTracking
           ? _value.setOrderTracking
           : setOrderTracking // ignore: cast_nullable_to_non_nullable
-              as SetOrderTracking?,
+              as OnOrderTracking?,
     ));
   }
 }
@@ -888,7 +888,7 @@ class _$_PaymentSheetApplePay implements _PaymentSheetApplePay {
   /// function, or else the Apple Pay sheet will hang.
   @override
   @JsonKey(ignore: true)
-  final SetOrderTracking? setOrderTracking;
+  final OnOrderTracking? setOrderTracking;
 
   @override
   String toString() {
@@ -942,7 +942,7 @@ abstract class _PaymentSheetApplePay implements PaymentSheetApplePay {
           final List<ApplePayCartSummaryItem>? cartItems,
           final PlatformButtonType? buttonType,
           final PaymentRequestType? request,
-          @JsonKey(ignore: true) final SetOrderTracking? setOrderTracking}) =
+          @JsonKey(ignore: true) final OnOrderTracking? setOrderTracking}) =
       _$_PaymentSheetApplePay;
 
   factory _PaymentSheetApplePay.fromJson(Map<String, dynamic> json) =
@@ -972,7 +972,7 @@ abstract class _PaymentSheetApplePay implements PaymentSheetApplePay {
   /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
   /// function, or else the Apple Pay sheet will hang.
   @JsonKey(ignore: true)
-  SetOrderTracking? get setOrderTracking;
+  OnOrderTracking? get setOrderTracking;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentSheetApplePayCopyWith<_$_PaymentSheetApplePay> get copyWith =>

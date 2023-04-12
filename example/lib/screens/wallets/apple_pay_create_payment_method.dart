@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
 
-
 class ApplePayCreatePaymentMethodScreen extends StatefulWidget {
   @override
   _ApplePayScreenState createState() => _ApplePayScreenState();
@@ -74,7 +73,6 @@ class _ApplePayScreenState extends State<ApplePayCreatePaymentMethodScreen> {
           merchantCountryCode: 'Es',
           currencyCode: 'EUR',
         ),
-        applePayPaymentMethodParams: ApplePayPaymentMethodParams(),
       ),
     );
 
