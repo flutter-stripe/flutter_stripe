@@ -1,3 +1,6 @@
+## 3.0.0+1
+- Update dependencies stripe_js and stripe_platform_interface to latest versions.
+
 ## 3.0.0
 - Comply to breaking changes in platform interface. No changes further.
 
