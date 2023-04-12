@@ -19,6 +19,9 @@ class Stripe {
   external static num get version;
 
   external StripeElements elements([ElementsCreateOptions options]);
+
+  external String? get stripeAccount;
+  external set stripeAccount(String? stripeAccount);
 }
 
 @anonymous
