@@ -1,4 +1,4 @@
-## 9.1.0
+## 9.1.1
 This release brings a lot of improvments to the web plugin, like later payments using SetupIntents or using tokens. 
 It also fixes the Apple Pay plugin that comes with new native features like order tracking and discount codes
 
