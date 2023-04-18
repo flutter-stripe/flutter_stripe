@@ -1,4 +1,4 @@
-## 4.0.0
+## 4.0.1
 - Adds support for SetupIntent
 - Adds support for Tokens Api
 - Adds support for PaymentElement

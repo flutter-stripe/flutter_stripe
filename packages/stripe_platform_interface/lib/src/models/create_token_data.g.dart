@@ -143,7 +143,7 @@ const _$BankAccountHolderTypeEnumMap = {
 
 _$_TokenData _$$_TokenDataFromJson(Map<String, dynamic> json) => _$_TokenData(
       id: json['id'] as String,
-      createdDateTime: json['created'] as int,
+      created: json['created'] as int,
       type: $enumDecode(_$TokenTypeEnumMap, json['type']),
       livemode: json['livemode'] as bool,
       bankAccount: json['bankAccount'] == null
@@ -157,7 +157,7 @@ _$_TokenData _$$_TokenDataFromJson(Map<String, dynamic> json) => _$_TokenData(
 Map<String, dynamic> _$$_TokenDataToJson(_$_TokenData instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'created': instance.createdDateTime,
+      'created': instance.created,
       'type': _$TokenTypeEnumMap[instance.type]!,
       'livemode': instance.livemode,
       'bankAccount': instance.bankAccount,

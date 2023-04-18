@@ -118,14 +118,16 @@ class BankAccountTokenParams with _$BankAccountTokenParams {
 
 @freezed
 
-/// Data  that provides information about the token
+/// Data that provides information about the token
 class TokenData with _$TokenData {
+
+  const TokenData._();
   const factory TokenData({
     /// Unique identifier of the token
     required String id,
 
     /// Timestamp when token was created
-    @JsonKey(name: 'created') required int createdDateTime,
+    @JsonKey(name: 'created') required int created,
 
     /// Type of the token
     required TokenType type,
@@ -142,6 +144,9 @@ class TokenData with _$TokenData {
 
   factory TokenData.fromJson(Map<String, dynamic> json) =>
       _$TokenDataFromJson(json);
+
+  @Deprecated('Use [created] instead')
+  String get createdDateTime => created.toString();
 }
 
 @freezed
