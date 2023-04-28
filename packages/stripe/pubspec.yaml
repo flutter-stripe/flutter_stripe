@@ -25,6 +25,15 @@ dependencies:
   stripe_android: ^9.1.0
   stripe_ios: ^9.1.0
   stripe_platform_interface: ^9.1.0
+
+dependency_overrides:
+  stripe_android:
+    path: ../stripe_android
+  stripe_ios:
+    path: ../stripe_ios
+  stripe_platform_interface:
+    path: ../stripe_platform_interface
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -17,6 +17,12 @@ dependencies:
   js: ^0.6.3
   stripe_js: ^3.0.0
 
+dependency_overrides:
+  stripe_js:
+    path: ../stripe_js
+  stripe_platform_interface:
+    path: ../stripe_platform_interface
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
