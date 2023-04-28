@@ -57,6 +57,8 @@ class PaymentMethodFactory {
                 return try createPayPalPaymentMethodParams()
             case STPPaymentMethodType.affirm:
                 return try createAffirmPaymentMethodParams()
+            case STPPaymentMethodType.cashApp:
+                return try createCashAppPaymentMethodParams()
 //            case STPPaymentMethodType.weChatPay:
 //                return try createWeChatPayPaymentMethodParams()
             default:
@@ -109,6 +111,8 @@ class PaymentMethodFactory {
             case STPPaymentMethodType.payPal:
                 return nil
             case STPPaymentMethodType.affirm:
+                return nil
+            case STPPaymentMethodType.cashApp:
                 return nil
             default:
                 throw PaymentMethodError.paymentNotSupported
@@ -391,6 +395,26 @@ class PaymentMethodFactory {
     private func createAffirmPaymentMethodParams() throws -> STPPaymentMethodParams {
         let params = STPPaymentMethodAffirmParams()
         return STPPaymentMethodParams(affirm: params, metadata: nil)
+    }
+    
+    private func createCashAppPaymentMethodParams() throws -> STPPaymentMethodParams {
+        let params = STPPaymentMethodCashAppParams()
+        return STPPaymentMethodParams(cashApp: params, billingDetails: billingDetailsParams, metadata: nil)
+    }
+
+    func createMandateData() -> STPMandateDataParams? {
+        if let mandateParams = paymentMethodData?["mandateData"] as? NSDictionary {
+            if let customerAcceptanceParams = mandateParams["customerAcceptance"] as? NSDictionary {
+                let mandate = STPMandateDataParams.init(customerAcceptance: STPMandateCustomerAcceptanceParams.init())
+                
+                mandate.customerAcceptance.type = .online
+                if let onlineParams = customerAcceptanceParams["online"] as? NSDictionary {
+                    mandate.customerAcceptance.onlineParams = .init(ipAddress: onlineParams["ipAddress"] as? String ?? "", userAgent: onlineParams["userAgent"] as? String ?? "")
+                }
+                return mandate
+            }
+        }
+        return nil
     }
 }
 

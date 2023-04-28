@@ -229,7 +229,6 @@ class Example extends StatelessWidget {
           width: 48,
         ),
         builder: (context) => IdealScreen(),
-        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
       Example(
         title: 'Sofort',
@@ -240,6 +239,7 @@ class Example extends StatelessWidget {
       Example(
         title: 'Aubecs',
         builder: (context) => AubecsExample(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
       Example(
         title: 'Fpx',
@@ -248,6 +248,7 @@ class Example extends StatelessWidget {
           width: 48,
         ),
         builder: (contex) => FpxScreen(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
       Example(
         title: 'Grab pay',
@@ -256,6 +257,7 @@ class Example extends StatelessWidget {
           width: 48,
         ),
         builder: (contex) => GrabPayScreen(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
       Example(
         title: 'Klarna',
@@ -264,6 +266,7 @@ class Example extends StatelessWidget {
           width: 48,
         ),
         builder: (contex) => KlarnaScreen(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
       Example(
         title: 'PayPal',
@@ -277,6 +280,11 @@ class Example extends StatelessWidget {
       Example(
         title: 'Us bank accounts (ACH)',
         builder: (contex) => UsBankAccountScreen(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+      ),
+      Example(
+        title: 'UK bank accounts (BACS)',
+        builder: (contex) => BacsScreen(),
       ),
       Example(
         title: 'UK bank accounts (BACS)',
@@ -309,7 +317,6 @@ class Example extends StatelessWidget {
       Example(
         title: 'Setup Future Payment',
         builder: (c) => SetupFuturePaymentScreen(),
-        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
       Example(
         title: 'Re-collect CVC',
@@ -319,12 +326,20 @@ class Example extends StatelessWidget {
       Example(
         title: 'Create token for card (legacy)',
         builder: (context) => LegacyTokenCardScreen(),
-        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+        platformsSupported: [
+          DevicePlatform.android,
+          DevicePlatform.ios,
+          DevicePlatform.web,
+        ],
       ),
       Example(
         title: 'Create token for bank (legacy)',
         builder: (context) => LegacyTokenBankScreen(),
-        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+        platformsSupported: [
+          DevicePlatform.android,
+          DevicePlatform.ios,
+          DevicePlatform.web,
+        ],
       ),
     ]),
     Example(

@@ -1,3 +1,19 @@
+## 9.1.1
+This release brings a lot of improvments to the web plugin, like later payments using SetupIntents or using tokens. 
+It also fixes the Apple Pay plugin that comes with new native features like order tracking and discount codes
+
+**Deprecated fields**
+- The field `createdDateTime` in `TokenData` has changed to 
+`created`. It will be removed in later versions
+
+**Features**
+- Web: Adds support for token endpoints [ref](https://github.com/flutter-stripe/flutter_stripe/pull/1079)
+- Web: Adds support SetupIntents  [ref](https://github.com/flutter-stripe/flutter_stripe/pull/1079)
+- Web: Adds possibility to change `stripeAccountId` for stripe web` [ref](https://github.com/flutter-stripe/flutter_stripe/pull/1201)
+- Web: Fix enum `PaymentConfirmationRedirect` parsing [ref](https://github.com/flutter-stripe/flutter_stripe/pull/1201)
+- iOS: Fixes Apple Pay flow [ref](https://github.com/flutter-stripe/flutter_stripe/pull/1202)
+- Sync with Stripe [0.26](https://github.com/stripe/stripe-react-native/releases/tag/v0.26.0)
+
 ## 9.0.0+1
 - Fix Android compilation issue (thanks to @asaarnak)
 

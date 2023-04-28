@@ -500,12 +500,12 @@ extension  StripePlugin {
     func createPlatformPayPaymentMethod(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
               let params = arguments["params"] as? NSDictionary,
-              let useDeprecatedTokenFlow = arguments["useDeprecatedTokenFlow"] as? Bool
+              let usesDeprecatedTokenFlow = arguments["usesDeprecatedTokenFlow"] as? Bool
         else {
             result(FlutterError.invalidParams)
             return
         }
-        createPlatformPayPaymentMethod(params: params, usesDeprecatedTokenFlow: useDeprecatedTokenFlow, resolver: resolver(for: result), rejecter: rejecter(for: result))
+        createPlatformPayPaymentMethod(params: params, usesDeprecatedTokenFlow: usesDeprecatedTokenFlow, resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
     
     func dismissPlatformPay(_ call: FlutterMethodCall, result: @escaping FlutterResult) {

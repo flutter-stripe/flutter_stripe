@@ -563,7 +563,7 @@ _$_PaymentMethodDataUsBank _$$_PaymentMethodDataUsBankFromJson(Map json) =>
       accountNumber: json['accountNumber'] as String?,
       routingNumber: json['routingNumber'] as String?,
       accountHolderType: $enumDecodeNullable(
-          _$BankAccountHolderTypeEnumMap, json['accountHolderType']),
+          _$UsBankAccountHolderTypeEnumMap, json['accountHolderType']),
       accountType:
           $enumDecodeNullable(_$UsBankAccountTypeEnumMap, json['accountType']),
       billingDetails: json['billingDetails'] == null
@@ -589,17 +589,17 @@ Map<String, dynamic> _$$_PaymentMethodDataUsBankToJson(
   writeNotNull('accountNumber', instance.accountNumber);
   writeNotNull('routingNumber', instance.routingNumber);
   writeNotNull('accountHolderType',
-      _$BankAccountHolderTypeEnumMap[instance.accountHolderType]);
+      _$UsBankAccountHolderTypeEnumMap[instance.accountHolderType]);
   writeNotNull('accountType', _$UsBankAccountTypeEnumMap[instance.accountType]);
   writeNotNull('billingDetails', instance.billingDetails?.toJson());
   writeNotNull('shippingDetails', instance.shippingDetails?.toJson());
   return val;
 }
 
-const _$BankAccountHolderTypeEnumMap = {
-  BankAccountHolderType.Company: 'Company',
-  BankAccountHolderType.Individual: 'Individual',
-  BankAccountHolderType.Unknown: 'Unknown',
+const _$UsBankAccountHolderTypeEnumMap = {
+  UsBankAccountHolderType.Company: 'Company',
+  UsBankAccountHolderType.Individual: 'Individual',
+  UsBankAccountHolderType.Unknown: 'Unknown',
 };
 
 const _$UsBankAccountTypeEnumMap = {

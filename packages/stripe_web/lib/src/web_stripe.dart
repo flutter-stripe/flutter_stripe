@@ -11,6 +11,7 @@ import 'package:stripe_js/stripe_js.dart' as stripe_js;
 import 'parser/payment_intent.dart';
 import 'parser/payment_methods.dart';
 import 'parser/setup_intent.dart';
+import 'parser/token.dart';
 
 /// An implementation of [StripePlatform] that uses method channels.
 class WebStripe extends StripePlatform {
@@ -41,14 +42,18 @@ class WebStripe extends StripePlatform {
     String? urlScheme,
     bool? setReturnUrlSchemeOnAndroid,
   }) async {
+    this.urlScheme = urlScheme;
+    if (__stripe != null) {
+      __stripe!.stripeAccount = stripeAccountId;
+      return;
+    }
+
     await stripe_js.loadStripe();
-    if (__stripe != null) return;
     final stripeOption = stripe_js.StripeOptions();
     if (stripeAccountId != null) {
       stripeOption.stripeAccount = stripeAccountId;
     }
     __stripe = stripe_js.Stripe(publishableKey, stripeOption);
-    this.urlScheme = urlScheme;
   }
 
   static stripe_js.StripeElement? element;
@@ -100,9 +105,7 @@ class WebStripe extends StripePlatform {
         return js.confirmCardPayment(
           paymentIntentClientSecret,
           data: stripe_js.ConfirmCardPaymentData(
-            paymentMethod: stripe_js.PaymentMethodRef.details(
-              stripe_js.CardPaymentMethodDetails(card: element!),
-            ),
+            paymentMethod: stripe_js.CardPaymentMethodDetails(card: element!),
             setupFutureUsage: (options?.setupFutureUsage ??
                     PaymentIntentsFutureUsage.OnSession)
                 .toJs(),
@@ -114,7 +117,9 @@ class WebStripe extends StripePlatform {
         return js.confirmCardPayment(
           paymentIntentClientSecret,
           data: stripe_js.ConfirmCardPaymentData(
-            paymentMethod: stripe_js.$id(paymentMethodData.paymentMethodId),
+            paymentMethod: stripe_js.CardPaymentMethodDetails.id(
+              paymentMethodData.paymentMethodId,
+            ),
           ),
         );
       },
@@ -123,10 +128,8 @@ class WebStripe extends StripePlatform {
         return js.confirmCardPayment(
           paymentIntentClientSecret,
           data: stripe_js.ConfirmCardPaymentData(
-            paymentMethod: stripe_js.$expanded(
-              stripe_js.CardPaymentMethodDetails.token(
-                card: stripe_js.CardToken(token: data.token),
-              ),
+            paymentMethod: stripe_js.CardPaymentMethodDetails.token(
+              card: stripe_js.CardTokenPaymentMethod(token: data.token),
             ),
             setupFutureUsage: (options?.setupFutureUsage ??
                     PaymentIntentsFutureUsage.OnSession)
@@ -149,10 +152,8 @@ class WebStripe extends StripePlatform {
         return js.confirmIdealPayment(
           paymentIntentClientSecret,
           data: stripe_js.ConfirmIdealPaymentData(
-            paymentMethod: stripe_js.$expanded(
-              stripe_js.IdealPaymentMethodDetails.withBank(
-                ideal: stripe_js.IdealBankData(bank: paymentData.bankName!),
-              ),
+            paymentMethod: stripe_js.IdealPaymentMethodDetails.withBank(
+              ideal: stripe_js.IdealBankData(bank: paymentData.bankName!),
             ),
             returnUrl: window.location.href,
             // recommended
@@ -181,17 +182,16 @@ class WebStripe extends StripePlatform {
     PaymentMethodOptions? options,
   ) async {
     final response = await data
-        .maybeWhen<Future<stripe_js.SetupIntentResponse>>(card: (usage) {
+        .maybeWhen<Future<stripe_js.SetupIntentResponse>>(card: (params) {
+      final data = stripe_js.ConfirmCardSetupData(
+        paymentMethod: stripe_js.CardPaymentMethodDetails(
+          card: element!,
+          billingDetails: params.billingDetails?.toJs(),
+        ),
+      );
       return js.confirmCardSetup(
         setupIntentClientSecret,
-        data: stripe_js.ConfirmCardSetupData(
-          paymentMethod: stripe_js.$expanded(
-            stripe_js.CardPaymentMethodDetails(card: element!),
-          ),
-          // shipping: billing?.toJs()
-          // TODO: Implement return_url for web
-          // return_url: '',
-        ),
+        data: data,
       );
     }, orElse: () {
       throw UnimplementedError();
@@ -212,8 +212,51 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<TokenData> createToken(CreateTokenParams params) {
-    throw UnimplementedError();
+  Future<TokenData> createToken(CreateTokenParams params) async {
+    final response = await params.maybeWhen<Future<stripe_js.TokenResponse>>(
+      (type, name, address) => throw UnimplementedError(),
+      card: (params) {
+        return _stripe.createCardElementToken(
+          element! as stripe_js.CardPaymentElement,
+          stripe_js.CreateTokenCardData(
+            name: params.name,
+            addressLine1: params.address?.line1,
+            addressLine2: params.address?.line2,
+            addressCity: params.address?.city,
+            addressState: params.address?.state,
+            addressCountry: params.address?.country,
+            addressZip: params.address?.postalCode,
+          ),
+        );
+      },
+      bankAccount: (params) {
+        return _stripe.createBankAccountToken(
+          stripe_js.CreateTokenBankAccountData(
+            country: params.country,
+            currency: params.currency,
+            accountHolderName: params.accountHolderName,
+            accountHolderType: params.accountHolderType?.toJs(),
+            routingNumber: params.routingNumber,
+            accountNumber: params.accountNumber,
+          ),
+        );
+      },
+      pii: (params) {
+        return _stripe.createPIIToken(
+          stripe_js.CreateTokenPIIData(
+            personalIdNumber: params.personalId,
+          ),
+        );
+      },
+      orElse: () {
+        throw UnimplementedError();
+      },
+    );
+    if (response.error != null) {
+      throw response.error!;
+    }
+
+    return response.token!.parse();
   }
 
   @override
@@ -425,6 +468,12 @@ class WebStripe extends StripePlatform {
   Future<void> updatePlatformSheet(
       {required PlatformPaySheetUpdateParams params}) {
     throw WebUnsupportedError.method('updatePlatformSheet');
+  }
+
+  @override
+  Future<void> configurePlatformOrderTracking(
+      {required PlatformPayOrderDetails orderDetails}) {
+    throw WebUnsupportedError.method('configurePlatformOrderTracking');
   }
 }
 

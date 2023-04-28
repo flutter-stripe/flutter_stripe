@@ -293,6 +293,7 @@ class Mappers {
         case STPPaymentMethodType.USBankAccount: return "USBankAccount"
         case STPPaymentMethodType.payPal: return "PayPal"
         case STPPaymentMethodType.affirm: return "Affirm"
+        case STPPaymentMethodType.cashApp: return "CashApp"
         case STPPaymentMethodType.unknown: return "Unknown"
         default: return "Unknown"
         }
@@ -324,6 +325,7 @@ class Mappers {
             case "USBankAccount": return STPPaymentMethodType.USBankAccount
             case "PayPal": return STPPaymentMethodType.payPal
             case "Affirm": return STPPaymentMethodType.affirm
+            case "CashApp": return STPPaymentMethodType.cashApp
             default: return STPPaymentMethodType.unknown
             }
         }

@@ -2813,6 +2813,8 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
       return _PaymentMethodParamsCardWithMethodId.fromJson(json);
     case 'Alipay':
       return _PaymentMethodParamsAlipay.fromJson(json);
+    case 'CashAppPay':
+      return _PaymentMethodParamsCashAppPay.fromJson(json);
     case 'Ideal':
       return _PaymentMethodParamsIdeal.fromJson(json);
     case 'AuBecsDebit':
@@ -2869,6 +2871,7 @@ mixin _$PaymentMethodParams {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -2900,6 +2903,7 @@ mixin _$PaymentMethodParams {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -2928,6 +2932,7 @@ mixin _$PaymentMethodParams {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -2957,6 +2962,7 @@ mixin _$PaymentMethodParams {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -2985,6 +2991,7 @@ mixin _$PaymentMethodParams {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -3012,6 +3019,7 @@ mixin _$PaymentMethodParams {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -3148,6 +3156,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -3182,6 +3191,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -3213,6 +3223,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -3248,6 +3259,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -3279,6 +3291,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -3309,6 +3322,7 @@ class _$_PaymentMethodParamsCard implements _PaymentMethodParamsCard {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -3460,6 +3474,7 @@ class _$_PaymentMethodParamsCardWithToken
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -3494,6 +3509,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -3525,6 +3541,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -3560,6 +3577,7 @@ class _$_PaymentMethodParamsCardWithToken
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -3591,6 +3609,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -3621,6 +3640,7 @@ class _$_PaymentMethodParamsCardWithToken
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -3774,6 +3794,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -3808,6 +3829,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -3839,6 +3861,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -3874,6 +3897,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -3905,6 +3929,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -3935,6 +3960,7 @@ class _$_PaymentMethodParamsCardWithMethodId
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -4085,6 +4111,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -4119,6 +4146,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -4150,6 +4178,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -4185,6 +4214,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -4216,6 +4246,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -4246,6 +4277,7 @@ class _$_PaymentMethodParamsAlipay implements _PaymentMethodParamsAlipay {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -4294,6 +4326,315 @@ abstract class _PaymentMethodParamsAlipay implements PaymentMethodParams {
   PaymentMethodData get paymentMethodData;
   @JsonKey(ignore: true)
   _$$_PaymentMethodParamsAlipayCopyWith<_$_PaymentMethodParamsAlipay>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_PaymentMethodParamsCashAppPayCopyWith<$Res> {
+  factory _$$_PaymentMethodParamsCashAppPayCopyWith(
+          _$_PaymentMethodParamsCashAppPay value,
+          $Res Function(_$_PaymentMethodParamsCashAppPay) then) =
+      __$$_PaymentMethodParamsCashAppPayCopyWithImpl<$Res>;
+  @useResult
+  $Res call({PaymentMethodData paymentMethodData});
+
+  $PaymentMethodDataCopyWith<$Res> get paymentMethodData;
+}
+
+/// @nodoc
+class __$$_PaymentMethodParamsCashAppPayCopyWithImpl<$Res>
+    extends _$PaymentMethodParamsCopyWithImpl<$Res,
+        _$_PaymentMethodParamsCashAppPay>
+    implements _$$_PaymentMethodParamsCashAppPayCopyWith<$Res> {
+  __$$_PaymentMethodParamsCashAppPayCopyWithImpl(
+      _$_PaymentMethodParamsCashAppPay _value,
+      $Res Function(_$_PaymentMethodParamsCashAppPay) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? paymentMethodData = null,
+  }) {
+    return _then(_$_PaymentMethodParamsCashAppPay(
+      paymentMethodData: null == paymentMethodData
+          ? _value.paymentMethodData
+          : paymentMethodData // ignore: cast_nullable_to_non_nullable
+              as PaymentMethodData,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentMethodDataCopyWith<$Res> get paymentMethodData {
+    return $PaymentMethodDataCopyWith<$Res>(_value.paymentMethodData, (value) {
+      return _then(_value.copyWith(paymentMethodData: value));
+    });
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_PaymentMethodParamsCashAppPay
+    implements _PaymentMethodParamsCashAppPay {
+  const _$_PaymentMethodParamsCashAppPay(
+      {required this.paymentMethodData, final String? $type})
+      : $type = $type ?? 'CashAppPay';
+
+  factory _$_PaymentMethodParamsCashAppPay.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_PaymentMethodParamsCashAppPayFromJson(json);
+
+  /// Paymentmethod data for this paymentmethod.
+  @override
+  final PaymentMethodData paymentMethodData;
+
+  @JsonKey(name: 'paymentMethodType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'PaymentMethodParams.cashAppPay(paymentMethodData: $paymentMethodData)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentMethodParamsCashAppPay &&
+            (identical(other.paymentMethodData, paymentMethodData) ||
+                other.paymentMethodData == paymentMethodData));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, paymentMethodData);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PaymentMethodParamsCashAppPayCopyWith<_$_PaymentMethodParamsCashAppPay>
+      get copyWith => __$$_PaymentMethodParamsCashAppPayCopyWithImpl<
+          _$_PaymentMethodParamsCashAppPay>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PaymentMethodData paymentMethodData) card,
+    required TResult Function(PaymentMethodDataCardFromToken paymentMethodData)
+        cardFromToken,
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+        cardFromMethodId,
+    required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
+    required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
+    required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
+    required TResult Function(PaymentMethodData paymentMethodData) bancontact,
+    required TResult Function(PaymentMethodData paymentMethodData) giroPay,
+    required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
+    required TResult Function(PaymentMethodData paymentMethodData) grabPay,
+    required TResult Function(PaymentMethodData paymentMethodData) p24,
+    required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
+        sepaDebit,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
+    required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
+        afterpayClearpay,
+    required TResult Function(PaymentMethodData paymentMethodData) oxxo,
+    required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+        usBankAccount,
+  }) {
+    return cashAppPay(paymentMethodData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PaymentMethodData paymentMethodData)? card,
+    TResult? Function(PaymentMethodDataCardFromToken paymentMethodData)?
+        cardFromToken,
+    TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+        cardFromMethodId,
+    TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
+    TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
+    TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
+    TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
+    TResult? Function(PaymentMethodData paymentMethodData)? giroPay,
+    TResult? Function(PaymentMethodData paymentMethodData)? eps,
+    TResult? Function(PaymentMethodData paymentMethodData)? affirm,
+    TResult? Function(PaymentMethodData paymentMethodData)? grabPay,
+    TResult? Function(PaymentMethodData paymentMethodData)? p24,
+    TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
+    TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
+    TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
+        afterpayClearpay,
+    TResult? Function(PaymentMethodData paymentMethodData)? oxxo,
+    TResult? Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult? Function(PaymentMethodData paymentMethodData)? payPal,
+    TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+  }) {
+    return cashAppPay?.call(paymentMethodData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PaymentMethodData paymentMethodData)? card,
+    TResult Function(PaymentMethodDataCardFromToken paymentMethodData)?
+        cardFromToken,
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+        cardFromMethodId,
+    TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
+    TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
+    TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
+    TResult Function(PaymentMethodData paymentMethodData)? bancontact,
+    TResult Function(PaymentMethodData paymentMethodData)? giroPay,
+    TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
+    TResult Function(PaymentMethodData paymentMethodData)? grabPay,
+    TResult Function(PaymentMethodData paymentMethodData)? p24,
+    TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
+    TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
+        afterpayClearpay,
+    TResult Function(PaymentMethodData paymentMethodData)? oxxo,
+    TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    required TResult orElse(),
+  }) {
+    if (cashAppPay != null) {
+      return cashAppPay(paymentMethodData);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentMethodParamsCard value) card,
+    required TResult Function(_PaymentMethodParamsCardWithToken value)
+        cardFromToken,
+    required TResult Function(_PaymentMethodParamsCardWithMethodId value)
+        cardFromMethodId,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
+    required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
+    required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
+    required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
+    required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
+    required TResult Function(_PaymentMethodParamsPay value) grabPay,
+    required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
+    required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsSofort value) sofort,
+    required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
+        afterpayClearpay,
+    required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
+  }) {
+    return cashAppPay(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PaymentMethodParamsCard value)? card,
+    TResult? Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
+    TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
+    TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
+    TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
+    TResult? Function(_PaymentMethodParamsGiroPay value)? giroPay,
+    TResult? Function(_PaymentMethodParamsEps value)? eps,
+    TResult? Function(_PaymentMethodParamsAffirm value)? affirm,
+    TResult? Function(_PaymentMethodParamsPay value)? grabPay,
+    TResult? Function(_PaymentMethodParamsP24 value)? p24,
+    TResult? Function(_PaymentMethodParamsFpx value)? fpx,
+    TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsSofort value)? sofort,
+    TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
+        afterpayClearpay,
+    TResult? Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult? Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
+    TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+  }) {
+    return cashAppPay?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
+    TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
+    TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
+    TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
+    TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
+    TResult Function(_PaymentMethodParamsPay value)? grabPay,
+    TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
+    TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsSofort value)? sofort,
+    TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
+        afterpayClearpay,
+    TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    required TResult orElse(),
+  }) {
+    if (cashAppPay != null) {
+      return cashAppPay(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentMethodParamsCashAppPayToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymentMethodParamsCashAppPay implements PaymentMethodParams {
+  const factory _PaymentMethodParamsCashAppPay(
+          {required final PaymentMethodData paymentMethodData}) =
+      _$_PaymentMethodParamsCashAppPay;
+
+  factory _PaymentMethodParamsCashAppPay.fromJson(Map<String, dynamic> json) =
+      _$_PaymentMethodParamsCashAppPay.fromJson;
+
+  @override
+
+  /// Paymentmethod data for this paymentmethod.
+  PaymentMethodData get paymentMethodData;
+  @JsonKey(ignore: true)
+  _$$_PaymentMethodParamsCashAppPayCopyWith<_$_PaymentMethodParamsCashAppPay>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -4392,6 +4733,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -4426,6 +4768,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -4457,6 +4800,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -4492,6 +4836,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -4523,6 +4868,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -4553,6 +4899,7 @@ class _$_PaymentMethodParamsIdeal implements _PaymentMethodParamsIdeal {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -4701,6 +5048,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -4735,6 +5083,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -4766,6 +5115,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -4801,6 +5151,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -4832,6 +5183,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -4862,6 +5214,7 @@ class _$_PaymentMethodParamsAubecs implements _PaymentMethodParamsAubecs {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -5011,6 +5364,7 @@ class _$_PaymentMethodParamsBankContact
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -5045,6 +5399,7 @@ class _$_PaymentMethodParamsBankContact
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -5076,6 +5431,7 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -5111,6 +5467,7 @@ class _$_PaymentMethodParamsBankContact
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -5142,6 +5499,7 @@ class _$_PaymentMethodParamsBankContact
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -5172,6 +5530,7 @@ class _$_PaymentMethodParamsBankContact
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -5319,6 +5678,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -5353,6 +5713,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -5384,6 +5745,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -5419,6 +5781,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -5450,6 +5813,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -5480,6 +5844,7 @@ class _$_PaymentMethodParamsGiroPay implements _PaymentMethodParamsGiroPay {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -5624,6 +5989,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -5658,6 +6024,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -5689,6 +6056,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -5724,6 +6092,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -5755,6 +6124,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -5785,6 +6155,7 @@ class _$_PaymentMethodParamsEps implements _PaymentMethodParamsEps {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -5932,6 +6303,7 @@ class _$_PaymentMethodParamsAffirm implements _PaymentMethodParamsAffirm {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -5966,6 +6338,7 @@ class _$_PaymentMethodParamsAffirm implements _PaymentMethodParamsAffirm {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -5997,6 +6370,7 @@ class _$_PaymentMethodParamsAffirm implements _PaymentMethodParamsAffirm {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -6032,6 +6406,7 @@ class _$_PaymentMethodParamsAffirm implements _PaymentMethodParamsAffirm {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -6063,6 +6438,7 @@ class _$_PaymentMethodParamsAffirm implements _PaymentMethodParamsAffirm {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -6093,6 +6469,7 @@ class _$_PaymentMethodParamsAffirm implements _PaymentMethodParamsAffirm {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -6237,6 +6614,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -6271,6 +6649,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -6302,6 +6681,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -6337,6 +6717,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -6368,6 +6749,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -6398,6 +6780,7 @@ class _$_PaymentMethodParamsPay implements _PaymentMethodParamsPay {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -6542,6 +6925,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -6576,6 +6960,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -6607,6 +6992,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -6642,6 +7028,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -6673,6 +7060,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -6703,6 +7091,7 @@ class _$_PaymentMethodParamsP24 implements _PaymentMethodParamsP24 {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -6848,6 +7237,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -6882,6 +7272,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -6913,6 +7304,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -6948,6 +7340,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -6979,6 +7372,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -7009,6 +7403,7 @@ class _$_PaymentMethodParamsFpx implements _PaymentMethodParamsFpx {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -7157,6 +7552,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -7191,6 +7587,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -7222,6 +7619,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -7257,6 +7655,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -7288,6 +7687,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -7318,6 +7718,7 @@ class _$_PaymentMethodParamsSepaDebit implements _PaymentMethodParamsSepaDebit {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -7774,6 +8175,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -7808,6 +8210,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -7839,6 +8242,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -7874,6 +8278,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -7905,6 +8310,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -7935,6 +8341,7 @@ class _$_PaymentMethodParamsSofort implements _PaymentMethodParamsSofort {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -8083,6 +8490,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -8117,6 +8525,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -8148,6 +8557,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -8183,6 +8593,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -8214,6 +8625,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -8244,6 +8656,7 @@ class _$_PaymentMethodParamsAfterpayClearpay
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -8390,6 +8803,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -8424,6 +8838,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -8455,6 +8870,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -8490,6 +8906,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -8521,6 +8938,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -8551,6 +8969,7 @@ class _$_PaymentMethodParamsOxxo implements _PaymentMethodParamsOxxo {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -8701,6 +9120,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -8735,6 +9155,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -8766,6 +9187,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -8801,6 +9223,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -8832,6 +9255,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -8862,6 +9286,7 @@ class _$_PaymentMethodParamsKlarna implements _PaymentMethodParamsKlarna {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -8972,9 +9397,6 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
       _$$_PaymentMethodParamsPayPalFromJson(json);
 
   /// Paymentmethod data for this paymentmethod.
-  ///
-  /// Make sure to add an email and country (part of the address) in the
-  /// billingdetails which is required for using Klarna.
   @override
   final PaymentMethodData paymentMethodData;
 
@@ -9015,6 +9437,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -9049,6 +9472,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -9080,6 +9504,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -9115,6 +9540,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -9146,6 +9572,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -9176,6 +9603,7 @@ class _$_PaymentMethodParamsPayPal implements _PaymentMethodParamsPayPal {
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -9221,9 +9649,6 @@ abstract class _PaymentMethodParamsPayPal implements PaymentMethodParams {
   @override
 
   /// Paymentmethod data for this paymentmethod.
-  ///
-  /// Make sure to add an email and country (part of the address) in the
-  /// billingdetails which is required for using Klarna.
   PaymentMethodData get paymentMethodData;
   @JsonKey(ignore: true)
   _$$_PaymentMethodParamsPayPalCopyWith<_$_PaymentMethodParamsPayPal>
@@ -9330,6 +9755,7 @@ class _$_PaymentMethodParamsUsBankAccount
     required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
         cardFromMethodId,
     required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
     required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
     required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
     required TResult Function(PaymentMethodData paymentMethodData) bancontact,
@@ -9364,6 +9790,7 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -9395,6 +9822,7 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
         cardFromMethodId,
     TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
     TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
     TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
     TResult Function(PaymentMethodData paymentMethodData)? bancontact,
@@ -9430,6 +9858,7 @@ class _$_PaymentMethodParamsUsBankAccount
     required TResult Function(_PaymentMethodParamsCardWithMethodId value)
         cardFromMethodId,
     required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
     required TResult Function(_PaymentMethodParamsIdeal value) ideal,
     required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
     required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
@@ -9461,6 +9890,7 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -9491,6 +9921,7 @@ class _$_PaymentMethodParamsUsBankAccount
     TResult Function(_PaymentMethodParamsCardWithMethodId value)?
         cardFromMethodId,
     TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
     TResult Function(_PaymentMethodParamsIdeal value)? ideal,
     TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
     TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
@@ -9556,6 +9987,9 @@ mixin _$PaymentMethodData {
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodDataCopyWith<PaymentMethodData> get copyWith =>
@@ -9568,10 +10002,14 @@ abstract class $PaymentMethodDataCopyWith<$Res> {
           PaymentMethodData value, $Res Function(PaymentMethodData) then) =
       _$PaymentMethodDataCopyWithImpl<$Res, PaymentMethodData>;
   @useResult
-  $Res call({BillingDetails? billingDetails, ShippingDetails? shippingDetails});
+  $Res call(
+      {BillingDetails? billingDetails,
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -9589,6 +10027,7 @@ class _$PaymentMethodDataCopyWithImpl<$Res, $Val extends PaymentMethodData>
   $Res call({
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       billingDetails: freezed == billingDetails
@@ -9599,6 +10038,10 @@ class _$PaymentMethodDataCopyWithImpl<$Res, $Val extends PaymentMethodData>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -9625,6 +10068,18 @@ class _$PaymentMethodDataCopyWithImpl<$Res, $Val extends PaymentMethodData>
       return _then(_value.copyWith(shippingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -9635,12 +10090,17 @@ abstract class _$$_PaymentMethodDataCopyWith<$Res>
       __$$_PaymentMethodDataCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({BillingDetails? billingDetails, ShippingDetails? shippingDetails});
+  $Res call(
+      {BillingDetails? billingDetails,
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   @override
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   @override
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -9656,6 +10116,7 @@ class __$$_PaymentMethodDataCopyWithImpl<$Res>
   $Res call({
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_PaymentMethodData(
       billingDetails: freezed == billingDetails
@@ -9666,6 +10127,10 @@ class __$$_PaymentMethodDataCopyWithImpl<$Res>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -9674,7 +10139,8 @@ class __$$_PaymentMethodDataCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$_PaymentMethodData implements _PaymentMethodData {
-  const _$_PaymentMethodData({this.billingDetails, this.shippingDetails});
+  const _$_PaymentMethodData(
+      {this.billingDetails, this.shippingDetails, this.mandateData});
 
   factory _$_PaymentMethodData.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodDataFromJson(json);
@@ -9687,9 +10153,13 @@ class _$_PaymentMethodData implements _PaymentMethodData {
   @override
   final ShippingDetails? shippingDetails;
 
+  /// Mandata data for this paymentmethod.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'PaymentMethodData(billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+    return 'PaymentMethodData(billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
   }
 
   @override
@@ -9700,12 +10170,15 @@ class _$_PaymentMethodData implements _PaymentMethodData {
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.shippingDetails, shippingDetails) ||
-                other.shippingDetails == shippingDetails));
+                other.shippingDetails == shippingDetails) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, billingDetails, shippingDetails);
+  int get hashCode =>
+      Object.hash(runtimeType, billingDetails, shippingDetails, mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -9725,7 +10198,8 @@ class _$_PaymentMethodData implements _PaymentMethodData {
 abstract class _PaymentMethodData implements PaymentMethodData {
   const factory _PaymentMethodData(
       {final BillingDetails? billingDetails,
-      final ShippingDetails? shippingDetails}) = _$_PaymentMethodData;
+      final ShippingDetails? shippingDetails,
+      final MandateData? mandateData}) = _$_PaymentMethodData;
 
   factory _PaymentMethodData.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodData.fromJson;
@@ -9738,6 +10212,10 @@ abstract class _PaymentMethodData implements PaymentMethodData {
 
   /// Shipping details
   ShippingDetails? get shippingDetails;
+  @override
+
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataCopyWith<_$_PaymentMethodData> get copyWith =>
@@ -9760,6 +10238,9 @@ mixin _$PaymentMethodDataCardFromToken {
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodDataCardFromTokenCopyWith<PaymentMethodDataCardFromToken>
@@ -9777,10 +10258,12 @@ abstract class $PaymentMethodDataCardFromTokenCopyWith<$Res> {
   $Res call(
       {String token,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -9800,6 +10283,7 @@ class _$PaymentMethodDataCardFromTokenCopyWithImpl<$Res,
     Object? token = null,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       token: null == token
@@ -9814,6 +10298,10 @@ class _$PaymentMethodDataCardFromTokenCopyWithImpl<$Res,
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -9840,6 +10328,18 @@ class _$PaymentMethodDataCardFromTokenCopyWithImpl<$Res,
       return _then(_value.copyWith(shippingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -9854,12 +10354,15 @@ abstract class _$$_PaymentMethodDataCardFromTokenCopyWith<$Res>
   $Res call(
       {String token,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   @override
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   @override
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -9878,6 +10381,7 @@ class __$$_PaymentMethodDataCardFromTokenCopyWithImpl<$Res>
     Object? token = null,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_PaymentMethodDataCardFromToken(
       token: null == token
@@ -9892,6 +10396,10 @@ class __$$_PaymentMethodDataCardFromTokenCopyWithImpl<$Res>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -9902,7 +10410,10 @@ class __$$_PaymentMethodDataCardFromTokenCopyWithImpl<$Res>
 class _$_PaymentMethodDataCardFromToken
     implements _PaymentMethodDataCardFromToken {
   const _$_PaymentMethodDataCardFromToken(
-      {required this.token, this.billingDetails, this.shippingDetails});
+      {required this.token,
+      this.billingDetails,
+      this.shippingDetails,
+      this.mandateData});
 
   factory _$_PaymentMethodDataCardFromToken.fromJson(
           Map<String, dynamic> json) =>
@@ -9920,9 +10431,13 @@ class _$_PaymentMethodDataCardFromToken
   @override
   final ShippingDetails? shippingDetails;
 
+  /// Mandata data for this paymentmethod.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'PaymentMethodDataCardFromToken(token: $token, billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+    return 'PaymentMethodDataCardFromToken(token: $token, billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
   }
 
   @override
@@ -9934,13 +10449,15 @@ class _$_PaymentMethodDataCardFromToken
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.shippingDetails, shippingDetails) ||
-                other.shippingDetails == shippingDetails));
+                other.shippingDetails == shippingDetails) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, token, billingDetails, shippingDetails);
+  int get hashCode => Object.hash(
+      runtimeType, token, billingDetails, shippingDetails, mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -9960,10 +10477,10 @@ class _$_PaymentMethodDataCardFromToken
 abstract class _PaymentMethodDataCardFromToken
     implements PaymentMethodDataCardFromToken {
   const factory _PaymentMethodDataCardFromToken(
-          {required final String token,
-          final BillingDetails? billingDetails,
-          final ShippingDetails? shippingDetails}) =
-      _$_PaymentMethodDataCardFromToken;
+      {required final String token,
+      final BillingDetails? billingDetails,
+      final ShippingDetails? shippingDetails,
+      final MandateData? mandateData}) = _$_PaymentMethodDataCardFromToken;
 
   factory _PaymentMethodDataCardFromToken.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodDataCardFromToken.fromJson;
@@ -9980,6 +10497,10 @@ abstract class _PaymentMethodDataCardFromToken
 
   /// Shipping details
   ShippingDetails? get shippingDetails;
+  @override
+
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataCardFromTokenCopyWith<_$_PaymentMethodDataCardFromToken>
@@ -10005,6 +10526,9 @@ mixin _$PaymentMethodDataCardFromMethod {
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodDataCardFromMethodCopyWith<PaymentMethodDataCardFromMethod>
@@ -10023,10 +10547,12 @@ abstract class $PaymentMethodDataCardFromMethodCopyWith<$Res> {
       {String paymentMethodId,
       String? cvc,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -10047,6 +10573,7 @@ class _$PaymentMethodDataCardFromMethodCopyWithImpl<$Res,
     Object? cvc = freezed,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       paymentMethodId: null == paymentMethodId
@@ -10065,6 +10592,10 @@ class _$PaymentMethodDataCardFromMethodCopyWithImpl<$Res,
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -10091,6 +10622,18 @@ class _$PaymentMethodDataCardFromMethodCopyWithImpl<$Res,
       return _then(_value.copyWith(shippingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -10106,12 +10649,15 @@ abstract class _$$_PaymentMethodDataCardFromMethodCopyWith<$Res>
       {String paymentMethodId,
       String? cvc,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   @override
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   @override
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -10131,6 +10677,7 @@ class __$$_PaymentMethodDataCardFromMethodCopyWithImpl<$Res>
     Object? cvc = freezed,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_PaymentMethodDataCardFromMethod(
       paymentMethodId: null == paymentMethodId
@@ -10149,6 +10696,10 @@ class __$$_PaymentMethodDataCardFromMethodCopyWithImpl<$Res>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -10162,7 +10713,8 @@ class _$_PaymentMethodDataCardFromMethod
       {required this.paymentMethodId,
       this.cvc,
       this.billingDetails,
-      this.shippingDetails});
+      this.shippingDetails,
+      this.mandateData});
 
   factory _$_PaymentMethodDataCardFromMethod.fromJson(
           Map<String, dynamic> json) =>
@@ -10184,9 +10736,13 @@ class _$_PaymentMethodDataCardFromMethod
   @override
   final ShippingDetails? shippingDetails;
 
+  /// Mandata data for this paymentmethod.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'PaymentMethodDataCardFromMethod(paymentMethodId: $paymentMethodId, cvc: $cvc, billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+    return 'PaymentMethodDataCardFromMethod(paymentMethodId: $paymentMethodId, cvc: $cvc, billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
   }
 
   @override
@@ -10200,13 +10756,15 @@ class _$_PaymentMethodDataCardFromMethod
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.shippingDetails, shippingDetails) ||
-                other.shippingDetails == shippingDetails));
+                other.shippingDetails == shippingDetails) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, paymentMethodId, cvc, billingDetails, shippingDetails);
+  int get hashCode => Object.hash(runtimeType, paymentMethodId, cvc,
+      billingDetails, shippingDetails, mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -10227,11 +10785,11 @@ class _$_PaymentMethodDataCardFromMethod
 abstract class _PaymentMethodDataCardFromMethod
     implements PaymentMethodDataCardFromMethod {
   const factory _PaymentMethodDataCardFromMethod(
-          {required final String paymentMethodId,
-          final String? cvc,
-          final BillingDetails? billingDetails,
-          final ShippingDetails? shippingDetails}) =
-      _$_PaymentMethodDataCardFromMethod;
+      {required final String paymentMethodId,
+      final String? cvc,
+      final BillingDetails? billingDetails,
+      final ShippingDetails? shippingDetails,
+      final MandateData? mandateData}) = _$_PaymentMethodDataCardFromMethod;
 
   factory _PaymentMethodDataCardFromMethod.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodDataCardFromMethod.fromJson;
@@ -10252,6 +10810,10 @@ abstract class _PaymentMethodDataCardFromMethod
 
   /// Shipping details
   ShippingDetails? get shippingDetails;
+  @override
+
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataCardFromMethodCopyWith<
@@ -10275,6 +10837,9 @@ mixin _$PaymentMethodDataIdeal {
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodDataIdealCopyWith<PaymentMethodDataIdeal> get copyWith =>
@@ -10290,10 +10855,12 @@ abstract class $PaymentMethodDataIdealCopyWith<$Res> {
   $Res call(
       {String? bankName,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -10313,6 +10880,7 @@ class _$PaymentMethodDataIdealCopyWithImpl<$Res,
     Object? bankName = freezed,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       bankName: freezed == bankName
@@ -10327,6 +10895,10 @@ class _$PaymentMethodDataIdealCopyWithImpl<$Res,
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -10353,6 +10925,18 @@ class _$PaymentMethodDataIdealCopyWithImpl<$Res,
       return _then(_value.copyWith(shippingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -10366,12 +10950,15 @@ abstract class _$$_PaymentMethodDataIdealCopyWith<$Res>
   $Res call(
       {String? bankName,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   @override
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   @override
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -10389,6 +10976,7 @@ class __$$_PaymentMethodDataIdealCopyWithImpl<$Res>
     Object? bankName = freezed,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_PaymentMethodDataIdeal(
       bankName: freezed == bankName
@@ -10403,6 +10991,10 @@ class __$$_PaymentMethodDataIdealCopyWithImpl<$Res>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -10412,7 +11004,10 @@ class __$$_PaymentMethodDataIdealCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_PaymentMethodDataIdeal implements _PaymentMethodDataIdeal {
   const _$_PaymentMethodDataIdeal(
-      {this.bankName, this.billingDetails, this.shippingDetails});
+      {this.bankName,
+      this.billingDetails,
+      this.shippingDetails,
+      this.mandateData});
 
   factory _$_PaymentMethodDataIdeal.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodDataIdealFromJson(json);
@@ -10429,9 +11024,13 @@ class _$_PaymentMethodDataIdeal implements _PaymentMethodDataIdeal {
   @override
   final ShippingDetails? shippingDetails;
 
+  /// Mandata data for this paymentmethod.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'PaymentMethodDataIdeal(bankName: $bankName, billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+    return 'PaymentMethodDataIdeal(bankName: $bankName, billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
   }
 
   @override
@@ -10444,13 +11043,15 @@ class _$_PaymentMethodDataIdeal implements _PaymentMethodDataIdeal {
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.shippingDetails, shippingDetails) ||
-                other.shippingDetails == shippingDetails));
+                other.shippingDetails == shippingDetails) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, bankName, billingDetails, shippingDetails);
+  int get hashCode => Object.hash(
+      runtimeType, bankName, billingDetails, shippingDetails, mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -10471,7 +11072,8 @@ abstract class _PaymentMethodDataIdeal implements PaymentMethodDataIdeal {
   const factory _PaymentMethodDataIdeal(
       {final String? bankName,
       final BillingDetails? billingDetails,
-      final ShippingDetails? shippingDetails}) = _$_PaymentMethodDataIdeal;
+      final ShippingDetails? shippingDetails,
+      final MandateData? mandateData}) = _$_PaymentMethodDataIdeal;
 
   factory _PaymentMethodDataIdeal.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodDataIdeal.fromJson;
@@ -10488,6 +11090,10 @@ abstract class _PaymentMethodDataIdeal implements PaymentMethodDataIdeal {
 
   /// Shipping details
   ShippingDetails? get shippingDetails;
+  @override
+
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataIdealCopyWith<_$_PaymentMethodDataIdeal> get copyWith =>
@@ -10510,6 +11116,9 @@ mixin _$PaymentMethodDataAubecs {
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodDataAubecsCopyWith<PaymentMethodDataAubecs> get copyWith =>
@@ -10525,11 +11134,13 @@ abstract class $PaymentMethodDataAubecsCopyWith<$Res> {
   $Res call(
       {AubecsFormInputDetails formDetails,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   $AubecsFormInputDetailsCopyWith<$Res> get formDetails;
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -10549,6 +11160,7 @@ class _$PaymentMethodDataAubecsCopyWithImpl<$Res,
     Object? formDetails = null,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       formDetails: null == formDetails
@@ -10563,6 +11175,10 @@ class _$PaymentMethodDataAubecsCopyWithImpl<$Res,
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -10597,6 +11213,18 @@ class _$PaymentMethodDataAubecsCopyWithImpl<$Res,
       return _then(_value.copyWith(shippingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -10610,7 +11238,8 @@ abstract class _$$_PaymentMethodDataAubecsCopyWith<$Res>
   $Res call(
       {AubecsFormInputDetails formDetails,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   @override
   $AubecsFormInputDetailsCopyWith<$Res> get formDetails;
@@ -10618,6 +11247,8 @@ abstract class _$$_PaymentMethodDataAubecsCopyWith<$Res>
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   @override
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -10635,6 +11266,7 @@ class __$$_PaymentMethodDataAubecsCopyWithImpl<$Res>
     Object? formDetails = null,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_PaymentMethodDataAubecs(
       formDetails: null == formDetails
@@ -10649,6 +11281,10 @@ class __$$_PaymentMethodDataAubecsCopyWithImpl<$Res>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -10658,7 +11294,10 @@ class __$$_PaymentMethodDataAubecsCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_PaymentMethodDataAubecs implements _PaymentMethodDataAubecs {
   const _$_PaymentMethodDataAubecs(
-      {required this.formDetails, this.billingDetails, this.shippingDetails});
+      {required this.formDetails,
+      this.billingDetails,
+      this.shippingDetails,
+      this.mandateData});
 
   factory _$_PaymentMethodDataAubecs.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodDataAubecsFromJson(json);
@@ -10675,9 +11314,13 @@ class _$_PaymentMethodDataAubecs implements _PaymentMethodDataAubecs {
   @override
   final ShippingDetails? shippingDetails;
 
+  /// Mandata data for this paymentmethod.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'PaymentMethodDataAubecs(formDetails: $formDetails, billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+    return 'PaymentMethodDataAubecs(formDetails: $formDetails, billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
   }
 
   @override
@@ -10690,13 +11333,15 @@ class _$_PaymentMethodDataAubecs implements _PaymentMethodDataAubecs {
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.shippingDetails, shippingDetails) ||
-                other.shippingDetails == shippingDetails));
+                other.shippingDetails == shippingDetails) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, formDetails, billingDetails, shippingDetails);
+  int get hashCode => Object.hash(
+      runtimeType, formDetails, billingDetails, shippingDetails, mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -10718,7 +11363,8 @@ abstract class _PaymentMethodDataAubecs implements PaymentMethodDataAubecs {
   const factory _PaymentMethodDataAubecs(
       {required final AubecsFormInputDetails formDetails,
       final BillingDetails? billingDetails,
-      final ShippingDetails? shippingDetails}) = _$_PaymentMethodDataAubecs;
+      final ShippingDetails? shippingDetails,
+      final MandateData? mandateData}) = _$_PaymentMethodDataAubecs;
 
   factory _PaymentMethodDataAubecs.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodDataAubecs.fromJson;
@@ -10735,6 +11381,10 @@ abstract class _PaymentMethodDataAubecs implements PaymentMethodDataAubecs {
 
   /// Shipping details
   ShippingDetails? get shippingDetails;
+  @override
+
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataAubecsCopyWith<_$_PaymentMethodDataAubecs>
@@ -10756,6 +11406,9 @@ mixin _$PaymentMethodDataFpx {
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodDataFpxCopyWith<PaymentMethodDataFpx> get copyWith =>
@@ -10771,10 +11424,12 @@ abstract class $PaymentMethodDataFpxCopyWith<$Res> {
   $Res call(
       {bool testOfflineBank,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -10794,6 +11449,7 @@ class _$PaymentMethodDataFpxCopyWithImpl<$Res,
     Object? testOfflineBank = null,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       testOfflineBank: null == testOfflineBank
@@ -10808,6 +11464,10 @@ class _$PaymentMethodDataFpxCopyWithImpl<$Res,
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -10834,6 +11494,18 @@ class _$PaymentMethodDataFpxCopyWithImpl<$Res,
       return _then(_value.copyWith(shippingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -10847,12 +11519,15 @@ abstract class _$$_PaymentMethodDataFpxCopyWith<$Res>
   $Res call(
       {bool testOfflineBank,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   @override
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   @override
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -10869,6 +11544,7 @@ class __$$_PaymentMethodDataFpxCopyWithImpl<$Res>
     Object? testOfflineBank = null,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_PaymentMethodDataFpx(
       testOfflineBank: null == testOfflineBank
@@ -10883,6 +11559,10 @@ class __$$_PaymentMethodDataFpxCopyWithImpl<$Res>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -10894,7 +11574,8 @@ class _$_PaymentMethodDataFpx implements _PaymentMethodDataFpx {
   const _$_PaymentMethodDataFpx(
       {this.testOfflineBank = false,
       this.billingDetails,
-      this.shippingDetails});
+      this.shippingDetails,
+      this.mandateData});
 
   factory _$_PaymentMethodDataFpx.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodDataFpxFromJson(json);
@@ -10912,9 +11593,13 @@ class _$_PaymentMethodDataFpx implements _PaymentMethodDataFpx {
   @override
   final ShippingDetails? shippingDetails;
 
+  /// Mandata data for this paymentmethod.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'PaymentMethodDataFpx(testOfflineBank: $testOfflineBank, billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+    return 'PaymentMethodDataFpx(testOfflineBank: $testOfflineBank, billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
   }
 
   @override
@@ -10927,13 +11612,15 @@ class _$_PaymentMethodDataFpx implements _PaymentMethodDataFpx {
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.shippingDetails, shippingDetails) ||
-                other.shippingDetails == shippingDetails));
+                other.shippingDetails == shippingDetails) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, testOfflineBank, billingDetails, shippingDetails);
+  int get hashCode => Object.hash(runtimeType, testOfflineBank, billingDetails,
+      shippingDetails, mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -10954,7 +11641,8 @@ abstract class _PaymentMethodDataFpx implements PaymentMethodDataFpx {
   const factory _PaymentMethodDataFpx(
       {final bool testOfflineBank,
       final BillingDetails? billingDetails,
-      final ShippingDetails? shippingDetails}) = _$_PaymentMethodDataFpx;
+      final ShippingDetails? shippingDetails,
+      final MandateData? mandateData}) = _$_PaymentMethodDataFpx;
 
   factory _PaymentMethodDataFpx.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodDataFpx.fromJson;
@@ -10971,6 +11659,10 @@ abstract class _PaymentMethodDataFpx implements PaymentMethodDataFpx {
 
   /// Shipping details
   ShippingDetails? get shippingDetails;
+  @override
+
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataFpxCopyWith<_$_PaymentMethodDataFpx> get copyWith =>
@@ -10993,6 +11685,9 @@ mixin _$PaymentMethodDataSofort {
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodDataSofortCopyWith<PaymentMethodDataSofort> get copyWith =>
@@ -11008,10 +11703,12 @@ abstract class $PaymentMethodDataSofortCopyWith<$Res> {
   $Res call(
       {String country,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -11031,6 +11728,7 @@ class _$PaymentMethodDataSofortCopyWithImpl<$Res,
     Object? country = null,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       country: null == country
@@ -11045,6 +11743,10 @@ class _$PaymentMethodDataSofortCopyWithImpl<$Res,
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -11071,6 +11773,18 @@ class _$PaymentMethodDataSofortCopyWithImpl<$Res,
       return _then(_value.copyWith(shippingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -11084,12 +11798,15 @@ abstract class _$$_PaymentMethodDataSofortCopyWith<$Res>
   $Res call(
       {String country,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   @override
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   @override
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -11107,6 +11824,7 @@ class __$$_PaymentMethodDataSofortCopyWithImpl<$Res>
     Object? country = null,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_PaymentMethodDataSofort(
       country: null == country
@@ -11121,6 +11839,10 @@ class __$$_PaymentMethodDataSofortCopyWithImpl<$Res>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -11130,7 +11852,10 @@ class __$$_PaymentMethodDataSofortCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_PaymentMethodDataSofort implements _PaymentMethodDataSofort {
   const _$_PaymentMethodDataSofort(
-      {required this.country, this.billingDetails, this.shippingDetails});
+      {required this.country,
+      this.billingDetails,
+      this.shippingDetails,
+      this.mandateData});
 
   factory _$_PaymentMethodDataSofort.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodDataSofortFromJson(json);
@@ -11147,9 +11872,13 @@ class _$_PaymentMethodDataSofort implements _PaymentMethodDataSofort {
   @override
   final ShippingDetails? shippingDetails;
 
+  /// Mandata data for this paymentmethod.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'PaymentMethodDataSofort(country: $country, billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+    return 'PaymentMethodDataSofort(country: $country, billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
   }
 
   @override
@@ -11161,13 +11890,15 @@ class _$_PaymentMethodDataSofort implements _PaymentMethodDataSofort {
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.shippingDetails, shippingDetails) ||
-                other.shippingDetails == shippingDetails));
+                other.shippingDetails == shippingDetails) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, country, billingDetails, shippingDetails);
+  int get hashCode => Object.hash(
+      runtimeType, country, billingDetails, shippingDetails, mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -11189,7 +11920,8 @@ abstract class _PaymentMethodDataSofort implements PaymentMethodDataSofort {
   const factory _PaymentMethodDataSofort(
       {required final String country,
       final BillingDetails? billingDetails,
-      final ShippingDetails? shippingDetails}) = _$_PaymentMethodDataSofort;
+      final ShippingDetails? shippingDetails,
+      final MandateData? mandateData}) = _$_PaymentMethodDataSofort;
 
   factory _PaymentMethodDataSofort.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodDataSofort.fromJson;
@@ -11206,6 +11938,10 @@ abstract class _PaymentMethodDataSofort implements PaymentMethodDataSofort {
 
   /// Shipping details
   ShippingDetails? get shippingDetails;
+  @override
+
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataSofortCopyWith<_$_PaymentMethodDataSofort>
@@ -11228,6 +11964,9 @@ mixin _$PaymentMethodDataSepa {
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodDataSepaCopyWith<PaymentMethodDataSepa> get copyWith =>
@@ -11243,10 +11982,12 @@ abstract class $PaymentMethodDataSepaCopyWith<$Res> {
   $Res call(
       {String iban,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -11266,11 +12007,292 @@ class _$PaymentMethodDataSepaCopyWithImpl<$Res,
     Object? iban = null,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       iban: null == iban
           ? _value.iban
           : iban // ignore: cast_nullable_to_non_nullable
+              as String,
+      billingDetails: freezed == billingDetails
+          ? _value.billingDetails
+          : billingDetails // ignore: cast_nullable_to_non_nullable
+              as BillingDetails?,
+      shippingDetails: freezed == shippingDetails
+          ? _value.shippingDetails
+          : shippingDetails // ignore: cast_nullable_to_non_nullable
+              as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BillingDetailsCopyWith<$Res>? get billingDetails {
+    if (_value.billingDetails == null) {
+      return null;
+    }
+
+    return $BillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
+      return _then(_value.copyWith(billingDetails: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ShippingDetailsCopyWith<$Res>? get shippingDetails {
+    if (_value.shippingDetails == null) {
+      return null;
+    }
+
+    return $ShippingDetailsCopyWith<$Res>(_value.shippingDetails!, (value) {
+      return _then(_value.copyWith(shippingDetails: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_PaymentMethodDataSepaCopyWith<$Res>
+    implements $PaymentMethodDataSepaCopyWith<$Res> {
+  factory _$$_PaymentMethodDataSepaCopyWith(_$_PaymentMethodDataSepa value,
+          $Res Function(_$_PaymentMethodDataSepa) then) =
+      __$$_PaymentMethodDataSepaCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String iban,
+      BillingDetails? billingDetails,
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
+
+  @override
+  $BillingDetailsCopyWith<$Res>? get billingDetails;
+  @override
+  $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
+}
+
+/// @nodoc
+class __$$_PaymentMethodDataSepaCopyWithImpl<$Res>
+    extends _$PaymentMethodDataSepaCopyWithImpl<$Res, _$_PaymentMethodDataSepa>
+    implements _$$_PaymentMethodDataSepaCopyWith<$Res> {
+  __$$_PaymentMethodDataSepaCopyWithImpl(_$_PaymentMethodDataSepa _value,
+      $Res Function(_$_PaymentMethodDataSepa) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? iban = null,
+    Object? billingDetails = freezed,
+    Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
+  }) {
+    return _then(_$_PaymentMethodDataSepa(
+      iban: null == iban
+          ? _value.iban
+          : iban // ignore: cast_nullable_to_non_nullable
+              as String,
+      billingDetails: freezed == billingDetails
+          ? _value.billingDetails
+          : billingDetails // ignore: cast_nullable_to_non_nullable
+              as BillingDetails?,
+      shippingDetails: freezed == shippingDetails
+          ? _value.shippingDetails
+          : shippingDetails // ignore: cast_nullable_to_non_nullable
+              as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_PaymentMethodDataSepa implements _PaymentMethodDataSepa {
+  const _$_PaymentMethodDataSepa(
+      {required this.iban,
+      this.billingDetails,
+      this.shippingDetails,
+      this.mandateData});
+
+  factory _$_PaymentMethodDataSepa.fromJson(Map<String, dynamic> json) =>
+      _$$_PaymentMethodDataSepaFromJson(json);
+
+  /// Iban number of the accountholder
+  @override
+  final String iban;
+
+  /// Billing information.
+  @override
+  final BillingDetails? billingDetails;
+
+  /// Shipping details
+  @override
+  final ShippingDetails? shippingDetails;
+
+  /// Mandata data for this paymentmethod.
+  @override
+  final MandateData? mandateData;
+
+  @override
+  String toString() {
+    return 'PaymentMethodDataSepa(iban: $iban, billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentMethodDataSepa &&
+            (identical(other.iban, iban) || other.iban == iban) &&
+            (identical(other.billingDetails, billingDetails) ||
+                other.billingDetails == billingDetails) &&
+            (identical(other.shippingDetails, shippingDetails) ||
+                other.shippingDetails == shippingDetails) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, iban, billingDetails, shippingDetails, mandateData);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PaymentMethodDataSepaCopyWith<_$_PaymentMethodDataSepa> get copyWith =>
+      __$$_PaymentMethodDataSepaCopyWithImpl<_$_PaymentMethodDataSepa>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentMethodDataSepaToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymentMethodDataSepa implements PaymentMethodDataSepa {
+  const factory _PaymentMethodDataSepa(
+      {required final String iban,
+      final BillingDetails? billingDetails,
+      final ShippingDetails? shippingDetails,
+      final MandateData? mandateData}) = _$_PaymentMethodDataSepa;
+
+  factory _PaymentMethodDataSepa.fromJson(Map<String, dynamic> json) =
+      _$_PaymentMethodDataSepa.fromJson;
+
+  @override
+
+  /// Iban number of the accountholder
+  String get iban;
+  @override
+
+  /// Billing information.
+  BillingDetails? get billingDetails;
+  @override
+
+  /// Shipping details
+  ShippingDetails? get shippingDetails;
+  @override
+
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PaymentMethodDataSepaCopyWith<_$_PaymentMethodDataSepa> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+PaymentMethodDataBacs _$PaymentMethodDataBacsFromJson(
+    Map<String, dynamic> json) {
+  return _PaymentMethodDataBacs.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentMethodDataBacs {
+  /// Sort Code of the account
+  String get sortCode => throw _privateConstructorUsedError;
+
+  /// Account Number of the account
+  String get accountNumber => throw _privateConstructorUsedError;
+
+  /// Billing information.
+  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
+
+  /// Shipping details
+  ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentMethodDataBacsCopyWith<PaymentMethodDataBacs> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentMethodDataBacsCopyWith<$Res> {
+  factory $PaymentMethodDataBacsCopyWith(PaymentMethodDataBacs value,
+          $Res Function(PaymentMethodDataBacs) then) =
+      _$PaymentMethodDataBacsCopyWithImpl<$Res, PaymentMethodDataBacs>;
+  @useResult
+  $Res call(
+      {String sortCode,
+      String accountNumber,
+      BillingDetails? billingDetails,
+      ShippingDetails? shippingDetails});
+
+  $BillingDetailsCopyWith<$Res>? get billingDetails;
+  $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+}
+
+/// @nodoc
+class _$PaymentMethodDataBacsCopyWithImpl<$Res,
+        $Val extends PaymentMethodDataBacs>
+    implements $PaymentMethodDataBacsCopyWith<$Res> {
+  _$PaymentMethodDataBacsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sortCode = null,
+    Object? accountNumber = null,
+    Object? billingDetails = freezed,
+    Object? shippingDetails = freezed,
+  }) {
+    return _then(_value.copyWith(
+      sortCode: null == sortCode
+          ? _value.sortCode
+          : sortCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      accountNumber: null == accountNumber
+          ? _value.accountNumber
+          : accountNumber // ignore: cast_nullable_to_non_nullable
               as String,
       billingDetails: freezed == billingDetails
           ? _value.billingDetails
@@ -11309,15 +12331,16 @@ class _$PaymentMethodDataSepaCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PaymentMethodDataSepaCopyWith<$Res>
-    implements $PaymentMethodDataSepaCopyWith<$Res> {
-  factory _$$_PaymentMethodDataSepaCopyWith(_$_PaymentMethodDataSepa value,
-          $Res Function(_$_PaymentMethodDataSepa) then) =
-      __$$_PaymentMethodDataSepaCopyWithImpl<$Res>;
+abstract class _$$_PaymentMethodDataBacsCopyWith<$Res>
+    implements $PaymentMethodDataBacsCopyWith<$Res> {
+  factory _$$_PaymentMethodDataBacsCopyWith(_$_PaymentMethodDataBacs value,
+          $Res Function(_$_PaymentMethodDataBacs) then) =
+      __$$_PaymentMethodDataBacsCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String iban,
+      {String sortCode,
+      String accountNumber,
       BillingDetails? billingDetails,
       ShippingDetails? shippingDetails});
 
@@ -11328,24 +12351,29 @@ abstract class _$$_PaymentMethodDataSepaCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaymentMethodDataSepaCopyWithImpl<$Res>
-    extends _$PaymentMethodDataSepaCopyWithImpl<$Res, _$_PaymentMethodDataSepa>
-    implements _$$_PaymentMethodDataSepaCopyWith<$Res> {
-  __$$_PaymentMethodDataSepaCopyWithImpl(_$_PaymentMethodDataSepa _value,
-      $Res Function(_$_PaymentMethodDataSepa) _then)
+class __$$_PaymentMethodDataBacsCopyWithImpl<$Res>
+    extends _$PaymentMethodDataBacsCopyWithImpl<$Res, _$_PaymentMethodDataBacs>
+    implements _$$_PaymentMethodDataBacsCopyWith<$Res> {
+  __$$_PaymentMethodDataBacsCopyWithImpl(_$_PaymentMethodDataBacs _value,
+      $Res Function(_$_PaymentMethodDataBacs) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? iban = null,
+    Object? sortCode = null,
+    Object? accountNumber = null,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
   }) {
-    return _then(_$_PaymentMethodDataSepa(
-      iban: null == iban
-          ? _value.iban
-          : iban // ignore: cast_nullable_to_non_nullable
+    return _then(_$_PaymentMethodDataBacs(
+      sortCode: null == sortCode
+          ? _value.sortCode
+          : sortCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      accountNumber: null == accountNumber
+          ? _value.accountNumber
+          : accountNumber // ignore: cast_nullable_to_non_nullable
               as String,
       billingDetails: freezed == billingDetails
           ? _value.billingDetails
@@ -11362,16 +12390,23 @@ class __$$_PaymentMethodDataSepaCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_PaymentMethodDataSepa implements _PaymentMethodDataSepa {
-  const _$_PaymentMethodDataSepa(
-      {required this.iban, this.billingDetails, this.shippingDetails});
+class _$_PaymentMethodDataBacs implements _PaymentMethodDataBacs {
+  const _$_PaymentMethodDataBacs(
+      {required this.sortCode,
+      required this.accountNumber,
+      this.billingDetails,
+      this.shippingDetails});
 
-  factory _$_PaymentMethodDataSepa.fromJson(Map<String, dynamic> json) =>
-      _$$_PaymentMethodDataSepaFromJson(json);
+  factory _$_PaymentMethodDataBacs.fromJson(Map<String, dynamic> json) =>
+      _$$_PaymentMethodDataBacsFromJson(json);
 
-  /// Iban number of the accountholder
+  /// Sort Code of the account
   @override
-  final String iban;
+  final String sortCode;
+
+  /// Account Number of the account
+  @override
+  final String accountNumber;
 
   /// Billing information.
   @override
@@ -11383,15 +12418,18 @@ class _$_PaymentMethodDataSepa implements _PaymentMethodDataSepa {
 
   @override
   String toString() {
-    return 'PaymentMethodDataSepa(iban: $iban, billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+    return 'PaymentMethodDataBacs(sortCode: $sortCode, accountNumber: $accountNumber, billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentMethodDataSepa &&
-            (identical(other.iban, iban) || other.iban == iban) &&
+            other is _$_PaymentMethodDataBacs &&
+            (identical(other.sortCode, sortCode) ||
+                other.sortCode == sortCode) &&
+            (identical(other.accountNumber, accountNumber) ||
+                other.accountNumber == accountNumber) &&
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.shippingDetails, shippingDetails) ||
@@ -11400,37 +12438,42 @@ class _$_PaymentMethodDataSepa implements _PaymentMethodDataSepa {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, iban, billingDetails, shippingDetails);
+  int get hashCode => Object.hash(
+      runtimeType, sortCode, accountNumber, billingDetails, shippingDetails);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentMethodDataSepaCopyWith<_$_PaymentMethodDataSepa> get copyWith =>
-      __$$_PaymentMethodDataSepaCopyWithImpl<_$_PaymentMethodDataSepa>(
+  _$$_PaymentMethodDataBacsCopyWith<_$_PaymentMethodDataBacs> get copyWith =>
+      __$$_PaymentMethodDataBacsCopyWithImpl<_$_PaymentMethodDataBacs>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentMethodDataSepaToJson(
+    return _$$_PaymentMethodDataBacsToJson(
       this,
     );
   }
 }
 
-abstract class _PaymentMethodDataSepa implements PaymentMethodDataSepa {
-  const factory _PaymentMethodDataSepa(
-      {required final String iban,
+abstract class _PaymentMethodDataBacs implements PaymentMethodDataBacs {
+  const factory _PaymentMethodDataBacs(
+      {required final String sortCode,
+      required final String accountNumber,
       final BillingDetails? billingDetails,
-      final ShippingDetails? shippingDetails}) = _$_PaymentMethodDataSepa;
+      final ShippingDetails? shippingDetails}) = _$_PaymentMethodDataBacs;
 
-  factory _PaymentMethodDataSepa.fromJson(Map<String, dynamic> json) =
-      _$_PaymentMethodDataSepa.fromJson;
+  factory _PaymentMethodDataBacs.fromJson(Map<String, dynamic> json) =
+      _$_PaymentMethodDataBacs.fromJson;
 
   @override
 
-  /// Iban number of the accountholder
-  String get iban;
+  /// Sort Code of the account
+  String get sortCode;
+  @override
+
+  /// Account Number of the account
+  String get accountNumber;
   @override
 
   /// Billing information.
@@ -11441,7 +12484,7 @@ abstract class _PaymentMethodDataSepa implements PaymentMethodDataSepa {
   ShippingDetails? get shippingDetails;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentMethodDataSepaCopyWith<_$_PaymentMethodDataSepa> get copyWith =>
+  _$$_PaymentMethodDataBacsCopyWith<_$_PaymentMethodDataBacs> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -11721,6 +12764,9 @@ mixin _$PaymentMethodDataAfterPay {
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodDataAfterPayCopyWith<PaymentMethodDataAfterPay> get copyWith =>
@@ -11733,10 +12779,14 @@ abstract class $PaymentMethodDataAfterPayCopyWith<$Res> {
           $Res Function(PaymentMethodDataAfterPay) then) =
       _$PaymentMethodDataAfterPayCopyWithImpl<$Res, PaymentMethodDataAfterPay>;
   @useResult
-  $Res call({BillingDetails billingDetails, ShippingDetails? shippingDetails});
+  $Res call(
+      {BillingDetails billingDetails,
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   $BillingDetailsCopyWith<$Res> get billingDetails;
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -11755,6 +12805,7 @@ class _$PaymentMethodDataAfterPayCopyWithImpl<$Res,
   $Res call({
     Object? billingDetails = null,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       billingDetails: null == billingDetails
@@ -11765,6 +12816,10 @@ class _$PaymentMethodDataAfterPayCopyWithImpl<$Res,
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -11787,6 +12842,18 @@ class _$PaymentMethodDataAfterPayCopyWithImpl<$Res,
       return _then(_value.copyWith(shippingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -11798,12 +12865,17 @@ abstract class _$$_PaymentMethodDataAfterPayCopyWith<$Res>
       __$$_PaymentMethodDataAfterPayCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({BillingDetails billingDetails, ShippingDetails? shippingDetails});
+  $Res call(
+      {BillingDetails billingDetails,
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   @override
   $BillingDetailsCopyWith<$Res> get billingDetails;
   @override
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -11821,6 +12893,7 @@ class __$$_PaymentMethodDataAfterPayCopyWithImpl<$Res>
   $Res call({
     Object? billingDetails = null,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_PaymentMethodDataAfterPay(
       billingDetails: null == billingDetails
@@ -11831,6 +12904,10 @@ class __$$_PaymentMethodDataAfterPayCopyWithImpl<$Res>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -11840,7 +12917,7 @@ class __$$_PaymentMethodDataAfterPayCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_PaymentMethodDataAfterPay implements _PaymentMethodDataAfterPay {
   const _$_PaymentMethodDataAfterPay(
-      {required this.billingDetails, this.shippingDetails});
+      {required this.billingDetails, this.shippingDetails, this.mandateData});
 
   factory _$_PaymentMethodDataAfterPay.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodDataAfterPayFromJson(json);
@@ -11853,9 +12930,13 @@ class _$_PaymentMethodDataAfterPay implements _PaymentMethodDataAfterPay {
   @override
   final ShippingDetails? shippingDetails;
 
+  /// Mandata data for this paymentmethod.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'PaymentMethodDataAfterPay(billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+    return 'PaymentMethodDataAfterPay(billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
   }
 
   @override
@@ -11866,12 +12947,15 @@ class _$_PaymentMethodDataAfterPay implements _PaymentMethodDataAfterPay {
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.shippingDetails, shippingDetails) ||
-                other.shippingDetails == shippingDetails));
+                other.shippingDetails == shippingDetails) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, billingDetails, shippingDetails);
+  int get hashCode =>
+      Object.hash(runtimeType, billingDetails, shippingDetails, mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -11891,7 +12975,8 @@ class _$_PaymentMethodDataAfterPay implements _PaymentMethodDataAfterPay {
 abstract class _PaymentMethodDataAfterPay implements PaymentMethodDataAfterPay {
   const factory _PaymentMethodDataAfterPay(
       {required final BillingDetails billingDetails,
-      final ShippingDetails? shippingDetails}) = _$_PaymentMethodDataAfterPay;
+      final ShippingDetails? shippingDetails,
+      final MandateData? mandateData}) = _$_PaymentMethodDataAfterPay;
 
   factory _PaymentMethodDataAfterPay.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodDataAfterPay.fromJson;
@@ -11904,6 +12989,10 @@ abstract class _PaymentMethodDataAfterPay implements PaymentMethodDataAfterPay {
 
   /// Shipping details
   ShippingDetails? get shippingDetails;
+  @override
+
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataAfterPayCopyWith<_$_PaymentMethodDataAfterPay>
@@ -11937,6 +13026,9 @@ mixin _$PaymentMethodDataUsBank {
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentMethodDataUsBankCopyWith<PaymentMethodDataUsBank> get copyWith =>
@@ -11955,10 +13047,12 @@ abstract class $PaymentMethodDataUsBankCopyWith<$Res> {
       BankAccountHolderType? accountHolderType,
       UsBankAccountType? accountType,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -11981,6 +13075,7 @@ class _$PaymentMethodDataUsBankCopyWithImpl<$Res,
     Object? accountType = freezed,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       accountNumber: freezed == accountNumber
@@ -12007,6 +13102,10 @@ class _$PaymentMethodDataUsBankCopyWithImpl<$Res,
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -12033,6 +13132,18 @@ class _$PaymentMethodDataUsBankCopyWithImpl<$Res,
       return _then(_value.copyWith(shippingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -12049,12 +13160,15 @@ abstract class _$$_PaymentMethodDataUsBankCopyWith<$Res>
       BankAccountHolderType? accountHolderType,
       UsBankAccountType? accountType,
       BillingDetails? billingDetails,
-      ShippingDetails? shippingDetails});
+      ShippingDetails? shippingDetails,
+      MandateData? mandateData});
 
   @override
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   @override
   $ShippingDetailsCopyWith<$Res>? get shippingDetails;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -12075,6 +13189,7 @@ class __$$_PaymentMethodDataUsBankCopyWithImpl<$Res>
     Object? accountType = freezed,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_PaymentMethodDataUsBank(
       accountNumber: freezed == accountNumber
@@ -12101,6 +13216,10 @@ class __$$_PaymentMethodDataUsBankCopyWithImpl<$Res>
           ? _value.shippingDetails
           : shippingDetails // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -12115,7 +13234,8 @@ class _$_PaymentMethodDataUsBank implements _PaymentMethodDataUsBank {
       this.accountHolderType,
       this.accountType,
       this.billingDetails,
-      this.shippingDetails});
+      this.shippingDetails,
+      this.mandateData});
 
   factory _$_PaymentMethodDataUsBank.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentMethodDataUsBankFromJson(json);
@@ -12145,9 +13265,13 @@ class _$_PaymentMethodDataUsBank implements _PaymentMethodDataUsBank {
   @override
   final ShippingDetails? shippingDetails;
 
+  /// Mandata data for this paymentmethod.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'PaymentMethodDataUsBank(accountNumber: $accountNumber, routingNumber: $routingNumber, accountHolderType: $accountHolderType, accountType: $accountType, billingDetails: $billingDetails, shippingDetails: $shippingDetails)';
+    return 'PaymentMethodDataUsBank(accountNumber: $accountNumber, routingNumber: $routingNumber, accountHolderType: $accountHolderType, accountType: $accountType, billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
   }
 
   @override
@@ -12166,13 +13290,22 @@ class _$_PaymentMethodDataUsBank implements _PaymentMethodDataUsBank {
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.shippingDetails, shippingDetails) ||
-                other.shippingDetails == shippingDetails));
+                other.shippingDetails == shippingDetails) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, accountNumber, routingNumber,
-      accountHolderType, accountType, billingDetails, shippingDetails);
+  int get hashCode => Object.hash(
+      runtimeType,
+      accountNumber,
+      routingNumber,
+      accountHolderType,
+      accountType,
+      billingDetails,
+      shippingDetails,
+      mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -12197,7 +13330,8 @@ abstract class _PaymentMethodDataUsBank implements PaymentMethodDataUsBank {
       final BankAccountHolderType? accountHolderType,
       final UsBankAccountType? accountType,
       final BillingDetails? billingDetails,
-      final ShippingDetails? shippingDetails}) = _$_PaymentMethodDataUsBank;
+      final ShippingDetails? shippingDetails,
+      final MandateData? mandateData}) = _$_PaymentMethodDataUsBank;
 
   factory _PaymentMethodDataUsBank.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodDataUsBank.fromJson;
@@ -12227,6 +13361,10 @@ abstract class _PaymentMethodDataUsBank implements PaymentMethodDataUsBank {
 
   /// Shipping details
   ShippingDetails? get shippingDetails;
+  @override
+
+  /// Mandata data for this paymentmethod.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodDataUsBankCopyWith<_$_PaymentMethodDataUsBank>
@@ -12377,5 +13515,510 @@ abstract class _PaymentMethodOptions implements PaymentMethodOptions {
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodOptionsCopyWith<_$_PaymentMethodOptions> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+MandateData _$MandateDataFromJson(Map<String, dynamic> json) {
+  return _MandateData.fromJson(json);
+}
+
+/// @nodoc
+mixin _$MandateData {
+  /// The type of mandate to create.
+  MandateDataCustomerAcceptance? get customerAcceptance =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $MandateDataCopyWith<MandateData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MandateDataCopyWith<$Res> {
+  factory $MandateDataCopyWith(
+          MandateData value, $Res Function(MandateData) then) =
+      _$MandateDataCopyWithImpl<$Res, MandateData>;
+  @useResult
+  $Res call({MandateDataCustomerAcceptance? customerAcceptance});
+
+  $MandateDataCustomerAcceptanceCopyWith<$Res>? get customerAcceptance;
+}
+
+/// @nodoc
+class _$MandateDataCopyWithImpl<$Res, $Val extends MandateData>
+    implements $MandateDataCopyWith<$Res> {
+  _$MandateDataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? customerAcceptance = freezed,
+  }) {
+    return _then(_value.copyWith(
+      customerAcceptance: freezed == customerAcceptance
+          ? _value.customerAcceptance
+          : customerAcceptance // ignore: cast_nullable_to_non_nullable
+              as MandateDataCustomerAcceptance?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCustomerAcceptanceCopyWith<$Res>? get customerAcceptance {
+    if (_value.customerAcceptance == null) {
+      return null;
+    }
+
+    return $MandateDataCustomerAcceptanceCopyWith<$Res>(
+        _value.customerAcceptance!, (value) {
+      return _then(_value.copyWith(customerAcceptance: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_MandateDataCopyWith<$Res>
+    implements $MandateDataCopyWith<$Res> {
+  factory _$$_MandateDataCopyWith(
+          _$_MandateData value, $Res Function(_$_MandateData) then) =
+      __$$_MandateDataCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({MandateDataCustomerAcceptance? customerAcceptance});
+
+  @override
+  $MandateDataCustomerAcceptanceCopyWith<$Res>? get customerAcceptance;
+}
+
+/// @nodoc
+class __$$_MandateDataCopyWithImpl<$Res>
+    extends _$MandateDataCopyWithImpl<$Res, _$_MandateData>
+    implements _$$_MandateDataCopyWith<$Res> {
+  __$$_MandateDataCopyWithImpl(
+      _$_MandateData _value, $Res Function(_$_MandateData) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? customerAcceptance = freezed,
+  }) {
+    return _then(_$_MandateData(
+      customerAcceptance: freezed == customerAcceptance
+          ? _value.customerAcceptance
+          : customerAcceptance // ignore: cast_nullable_to_non_nullable
+              as MandateDataCustomerAcceptance?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_MandateData implements _MandateData {
+  const _$_MandateData({this.customerAcceptance});
+
+  factory _$_MandateData.fromJson(Map<String, dynamic> json) =>
+      _$$_MandateDataFromJson(json);
+
+  /// The type of mandate to create.
+  @override
+  final MandateDataCustomerAcceptance? customerAcceptance;
+
+  @override
+  String toString() {
+    return 'MandateData(customerAcceptance: $customerAcceptance)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MandateData &&
+            (identical(other.customerAcceptance, customerAcceptance) ||
+                other.customerAcceptance == customerAcceptance));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, customerAcceptance);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MandateDataCopyWith<_$_MandateData> get copyWith =>
+      __$$_MandateDataCopyWithImpl<_$_MandateData>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_MandateDataToJson(
+      this,
+    );
+  }
+}
+
+abstract class _MandateData implements MandateData {
+  const factory _MandateData(
+          {final MandateDataCustomerAcceptance? customerAcceptance}) =
+      _$_MandateData;
+
+  factory _MandateData.fromJson(Map<String, dynamic> json) =
+      _$_MandateData.fromJson;
+
+  @override
+
+  /// The type of mandate to create.
+  MandateDataCustomerAcceptance? get customerAcceptance;
+  @override
+  @JsonKey(ignore: true)
+  _$$_MandateDataCopyWith<_$_MandateData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+MandateDataCustomerAcceptance _$MandateDataCustomerAcceptanceFromJson(
+    Map<String, dynamic> json) {
+  return _MandateDataCustomerAcceptance.fromJson(json);
+}
+
+/// @nodoc
+mixin _$MandateDataCustomerAcceptance {
+  /// Online data regarding the mandate.
+  MandateDataOnlineData? get ipAddress => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $MandateDataCustomerAcceptanceCopyWith<MandateDataCustomerAcceptance>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MandateDataCustomerAcceptanceCopyWith<$Res> {
+  factory $MandateDataCustomerAcceptanceCopyWith(
+          MandateDataCustomerAcceptance value,
+          $Res Function(MandateDataCustomerAcceptance) then) =
+      _$MandateDataCustomerAcceptanceCopyWithImpl<$Res,
+          MandateDataCustomerAcceptance>;
+  @useResult
+  $Res call({MandateDataOnlineData? ipAddress});
+
+  $MandateDataOnlineDataCopyWith<$Res>? get ipAddress;
+}
+
+/// @nodoc
+class _$MandateDataCustomerAcceptanceCopyWithImpl<$Res,
+        $Val extends MandateDataCustomerAcceptance>
+    implements $MandateDataCustomerAcceptanceCopyWith<$Res> {
+  _$MandateDataCustomerAcceptanceCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ipAddress = freezed,
+  }) {
+    return _then(_value.copyWith(
+      ipAddress: freezed == ipAddress
+          ? _value.ipAddress
+          : ipAddress // ignore: cast_nullable_to_non_nullable
+              as MandateDataOnlineData?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataOnlineDataCopyWith<$Res>? get ipAddress {
+    if (_value.ipAddress == null) {
+      return null;
+    }
+
+    return $MandateDataOnlineDataCopyWith<$Res>(_value.ipAddress!, (value) {
+      return _then(_value.copyWith(ipAddress: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_MandateDataCustomerAcceptanceCopyWith<$Res>
+    implements $MandateDataCustomerAcceptanceCopyWith<$Res> {
+  factory _$$_MandateDataCustomerAcceptanceCopyWith(
+          _$_MandateDataCustomerAcceptance value,
+          $Res Function(_$_MandateDataCustomerAcceptance) then) =
+      __$$_MandateDataCustomerAcceptanceCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({MandateDataOnlineData? ipAddress});
+
+  @override
+  $MandateDataOnlineDataCopyWith<$Res>? get ipAddress;
+}
+
+/// @nodoc
+class __$$_MandateDataCustomerAcceptanceCopyWithImpl<$Res>
+    extends _$MandateDataCustomerAcceptanceCopyWithImpl<$Res,
+        _$_MandateDataCustomerAcceptance>
+    implements _$$_MandateDataCustomerAcceptanceCopyWith<$Res> {
+  __$$_MandateDataCustomerAcceptanceCopyWithImpl(
+      _$_MandateDataCustomerAcceptance _value,
+      $Res Function(_$_MandateDataCustomerAcceptance) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ipAddress = freezed,
+  }) {
+    return _then(_$_MandateDataCustomerAcceptance(
+      ipAddress: freezed == ipAddress
+          ? _value.ipAddress
+          : ipAddress // ignore: cast_nullable_to_non_nullable
+              as MandateDataOnlineData?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_MandateDataCustomerAcceptance
+    implements _MandateDataCustomerAcceptance {
+  const _$_MandateDataCustomerAcceptance({this.ipAddress});
+
+  factory _$_MandateDataCustomerAcceptance.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_MandateDataCustomerAcceptanceFromJson(json);
+
+  /// Online data regarding the mandate.
+  @override
+  final MandateDataOnlineData? ipAddress;
+
+  @override
+  String toString() {
+    return 'MandateDataCustomerAcceptance(ipAddress: $ipAddress)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MandateDataCustomerAcceptance &&
+            (identical(other.ipAddress, ipAddress) ||
+                other.ipAddress == ipAddress));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, ipAddress);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MandateDataCustomerAcceptanceCopyWith<_$_MandateDataCustomerAcceptance>
+      get copyWith => __$$_MandateDataCustomerAcceptanceCopyWithImpl<
+          _$_MandateDataCustomerAcceptance>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_MandateDataCustomerAcceptanceToJson(
+      this,
+    );
+  }
+}
+
+abstract class _MandateDataCustomerAcceptance
+    implements MandateDataCustomerAcceptance {
+  const factory _MandateDataCustomerAcceptance(
+          {final MandateDataOnlineData? ipAddress}) =
+      _$_MandateDataCustomerAcceptance;
+
+  factory _MandateDataCustomerAcceptance.fromJson(Map<String, dynamic> json) =
+      _$_MandateDataCustomerAcceptance.fromJson;
+
+  @override
+
+  /// Online data regarding the mandate.
+  MandateDataOnlineData? get ipAddress;
+  @override
+  @JsonKey(ignore: true)
+  _$$_MandateDataCustomerAcceptanceCopyWith<_$_MandateDataCustomerAcceptance>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+MandateDataOnlineData _$MandateDataOnlineDataFromJson(
+    Map<String, dynamic> json) {
+  return _MandateDataOnlineData.fromJson(json);
+}
+
+/// @nodoc
+mixin _$MandateDataOnlineData {
+  /// The ip address of the user.
+  String? get ipAddress => throw _privateConstructorUsedError;
+
+  /// The user agent of the user.
+  String? get userAgent => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $MandateDataOnlineDataCopyWith<MandateDataOnlineData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MandateDataOnlineDataCopyWith<$Res> {
+  factory $MandateDataOnlineDataCopyWith(MandateDataOnlineData value,
+          $Res Function(MandateDataOnlineData) then) =
+      _$MandateDataOnlineDataCopyWithImpl<$Res, MandateDataOnlineData>;
+  @useResult
+  $Res call({String? ipAddress, String? userAgent});
+}
+
+/// @nodoc
+class _$MandateDataOnlineDataCopyWithImpl<$Res,
+        $Val extends MandateDataOnlineData>
+    implements $MandateDataOnlineDataCopyWith<$Res> {
+  _$MandateDataOnlineDataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ipAddress = freezed,
+    Object? userAgent = freezed,
+  }) {
+    return _then(_value.copyWith(
+      ipAddress: freezed == ipAddress
+          ? _value.ipAddress
+          : ipAddress // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userAgent: freezed == userAgent
+          ? _value.userAgent
+          : userAgent // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_MandateDataOnlineDataCopyWith<$Res>
+    implements $MandateDataOnlineDataCopyWith<$Res> {
+  factory _$$_MandateDataOnlineDataCopyWith(_$_MandateDataOnlineData value,
+          $Res Function(_$_MandateDataOnlineData) then) =
+      __$$_MandateDataOnlineDataCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? ipAddress, String? userAgent});
+}
+
+/// @nodoc
+class __$$_MandateDataOnlineDataCopyWithImpl<$Res>
+    extends _$MandateDataOnlineDataCopyWithImpl<$Res, _$_MandateDataOnlineData>
+    implements _$$_MandateDataOnlineDataCopyWith<$Res> {
+  __$$_MandateDataOnlineDataCopyWithImpl(_$_MandateDataOnlineData _value,
+      $Res Function(_$_MandateDataOnlineData) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ipAddress = freezed,
+    Object? userAgent = freezed,
+  }) {
+    return _then(_$_MandateDataOnlineData(
+      ipAddress: freezed == ipAddress
+          ? _value.ipAddress
+          : ipAddress // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userAgent: freezed == userAgent
+          ? _value.userAgent
+          : userAgent // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_MandateDataOnlineData implements _MandateDataOnlineData {
+  const _$_MandateDataOnlineData({this.ipAddress, this.userAgent});
+
+  factory _$_MandateDataOnlineData.fromJson(Map<String, dynamic> json) =>
+      _$$_MandateDataOnlineDataFromJson(json);
+
+  /// The ip address of the user.
+  @override
+  final String? ipAddress;
+
+  /// The user agent of the user.
+  @override
+  final String? userAgent;
+
+  @override
+  String toString() {
+    return 'MandateDataOnlineData(ipAddress: $ipAddress, userAgent: $userAgent)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MandateDataOnlineData &&
+            (identical(other.ipAddress, ipAddress) ||
+                other.ipAddress == ipAddress) &&
+            (identical(other.userAgent, userAgent) ||
+                other.userAgent == userAgent));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, ipAddress, userAgent);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MandateDataOnlineDataCopyWith<_$_MandateDataOnlineData> get copyWith =>
+      __$$_MandateDataOnlineDataCopyWithImpl<_$_MandateDataOnlineData>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_MandateDataOnlineDataToJson(
+      this,
+    );
+  }
+}
+
+abstract class _MandateDataOnlineData implements MandateDataOnlineData {
+  const factory _MandateDataOnlineData(
+      {final String? ipAddress,
+      final String? userAgent}) = _$_MandateDataOnlineData;
+
+  factory _MandateDataOnlineData.fromJson(Map<String, dynamic> json) =
+      _$_MandateDataOnlineData.fromJson;
+
+  @override
+
+  /// The ip address of the user.
+  String? get ipAddress;
+  @override
+
+  /// The user agent of the user.
+  String? get userAgent;
+  @override
+  @JsonKey(ignore: true)
+  _$$_MandateDataOnlineDataCopyWith<_$_MandateDataOnlineData> get copyWith =>
       throw _privateConstructorUsedError;
 }

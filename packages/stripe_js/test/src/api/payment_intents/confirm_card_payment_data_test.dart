@@ -9,11 +9,9 @@ void main() {
       final fakeElement = FakeElement();
       expect(
         ConfirmCardPaymentData(
-          paymentMethod: $expanded(
-            CardPaymentMethodDetails(
-              card: fakeElement,
-              billingDetails: BillingDetails(name: 'Jenny Rosen'),
-            ),
+          paymentMethod: CardPaymentMethodDetails(
+            card: fakeElement,
+            billingDetails: BillingDetails(name: 'Jenny Rosen'),
           ),
         ).toJson(),
         {
@@ -31,7 +29,7 @@ void main() {
     test('with id parses correctly', () {
       expect(
         ConfirmCardPaymentData(
-          paymentMethod: $id('id'),
+          paymentMethod: CardPaymentMethodDetails.id('id'),
         ).toJson(),
         {"payment_method": "id"},
       );
@@ -40,11 +38,9 @@ void main() {
     test('with token parses correctly', () {
       expect(
         ConfirmCardPaymentData(
-          paymentMethod: PaymentMethodRef.details(
-            CardPaymentMethodDetails.token(
-              card: CardToken(token: "tokenValue"),
-              billingDetails: BillingDetails(name: 'Jenny Rosen'),
-            ),
+          paymentMethod: CardPaymentMethodDetails.token(
+            card: CardTokenPaymentMethod(token: "tokenValue"),
+            billingDetails: BillingDetails(name: 'Jenny Rosen'),
           ),
         ).toJson(),
         {

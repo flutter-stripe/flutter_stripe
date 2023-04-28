@@ -105,7 +105,7 @@ class PaymentSheetApplePay with _$PaymentSheetApplePay {
     /// ability to track and manage their purchases in Wallet. Stripe calls your implementation after the
     /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
     /// function, or else the Apple Pay sheet will hang.
-    @JsonKey(ignore: true) SetOrderTracking? setOrderTracking,
+    @JsonKey(ignore: true) OnOrderTracking? setOrderTracking,
   }) = _PaymentSheetApplePay;
 
   factory PaymentSheetApplePay.fromJson(Map<String, dynamic> json) =>

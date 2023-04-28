@@ -8,8 +8,10 @@ part of 'confirm_card_payment_data.dart';
 
 _$_ConfirmCardPaymentData _$$_ConfirmCardPaymentDataFromJson(Map json) =>
     _$_ConfirmCardPaymentData(
-      paymentMethod: const CardPaymentMethodRefConverter()
-          .fromJson(json['payment_method']),
+      paymentMethod: json['payment_method'] == null
+          ? null
+          : CardPaymentMethodDetails.fromJson(
+              Map<String, dynamic>.from(json['payment_method'] as Map)),
       shipping: json['shipping'] == null
           ? null
           : ShippingDetails.fromJson(
@@ -31,12 +33,8 @@ Map<String, dynamic> _$$_ConfirmCardPaymentDataToJson(
     }
   }
 
-  writeNotNull(
-      'payment_method',
-      _$JsonConverterToJson<dynamic,
-              PaymentMethodRef<CardPaymentMethodDetails>>(
-          instance.paymentMethod,
-          const CardPaymentMethodRefConverter().toJson));
+  writeNotNull('payment_method',
+      PaymentMethodDetails.toJsonConverter(instance.paymentMethod));
   writeNotNull('shipping', instance.shipping?.toJson());
   writeNotNull('return_url', instance.returnUrl);
   writeNotNull('receipt_email', instance.receiptEmail);
@@ -50,9 +48,3 @@ const _$PaymentIntentSetupFutureUsageEnumMap = {
   PaymentIntentSetupFutureUsage.onSession: 'on_session',
   PaymentIntentSetupFutureUsage.offSession: 'off_session',
 };
-
-Json? _$JsonConverterToJson<Json, Value>(
-  Value? value,
-  Json? Function(Value value) toJson,
-) =>
-    value == null ? null : toJson(value);
