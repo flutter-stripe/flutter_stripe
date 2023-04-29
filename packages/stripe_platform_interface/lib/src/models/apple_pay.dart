@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'apple_pay.freezed.dart';
@@ -261,14 +263,10 @@ class ApplePayPostalAddress with _$ApplePayPostalAddress {
       _$ApplePayPostalAddressFromJson(json);
 }
 
-typedef OnDidSetShippingContact = void Function(
+typedef OnDidSetShippingContact = FutureOr<void> Function(
     ApplePayShippingContact contact);
-typedef OnDidSetShippingMethod = void Function(ApplePayShippingMethod method);
-typedef OnDidSetCoupon = void Function(String couponCode);
+typedef OnDidSetShippingMethod = FutureOr<void> Function(
+    ApplePayShippingMethod method);
+typedef OnCouponCodeEntered = FutureOr<void> Function(String couponCode);
 
-typedef SetOrderTracking = void Function(
-  String orderIdentifier,
-  String orderTypeIdentifier,
-  String authenticationToken,
-  String webServiceUrl,
-);
+typedef OnOrderTracking = FutureOr<void> Function();

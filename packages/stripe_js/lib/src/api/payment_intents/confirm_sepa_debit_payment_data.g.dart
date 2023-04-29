@@ -9,8 +9,10 @@ part of 'confirm_sepa_debit_payment_data.dart';
 _$_ConfirmSepaDebitPaymentData _$$_ConfirmSepaDebitPaymentDataFromJson(
         Map json) =>
     _$_ConfirmSepaDebitPaymentData(
-      paymentMethod: const SepaDebitPaymentMethodRefConverter()
-          .fromJson(json['payment_method']),
+      paymentMethod: json['payment_method'] == null
+          ? null
+          : SepaDebitPaymentMethodDetails.fromJson(
+              Map<String, dynamic>.from(json['payment_method'] as Map)),
       setupFutureUsage: $enumDecodeNullable(
           _$PaymentIntentSetupFutureUsageEnumMap, json['setup_future_usage']),
     );
@@ -25,12 +27,8 @@ Map<String, dynamic> _$$_ConfirmSepaDebitPaymentDataToJson(
     }
   }
 
-  writeNotNull(
-      'payment_method',
-      _$JsonConverterToJson<dynamic,
-              PaymentMethodRef<SepaDebitPaymentMethodDetails>>(
-          instance.paymentMethod,
-          const SepaDebitPaymentMethodRefConverter().toJson));
+  writeNotNull('payment_method',
+      PaymentMethodDetails.toJsonConverter(instance.paymentMethod));
   writeNotNull('setup_future_usage',
       _$PaymentIntentSetupFutureUsageEnumMap[instance.setupFutureUsage]);
   return val;
@@ -41,11 +39,19 @@ const _$PaymentIntentSetupFutureUsageEnumMap = {
   PaymentIntentSetupFutureUsage.offSession: 'off_session',
 };
 
-Json? _$JsonConverterToJson<Json, Value>(
-  Value? value,
-  Json? Function(Value value) toJson,
-) =>
-    value == null ? null : toJson(value);
+_$_IdSepaDebitPaymentMethodDetails _$$_IdSepaDebitPaymentMethodDetailsFromJson(
+        Map json) =>
+    _$_IdSepaDebitPaymentMethodDetails(
+      json['id'] as String,
+      $type: json['type'] as String?,
+    );
+
+Map<String, dynamic> _$$_IdSepaDebitPaymentMethodDetailsToJson(
+        _$_IdSepaDebitPaymentMethodDetails instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'type': instance.$type,
+    };
 
 _$_SepaDebitPaymentMethodDetails _$$_SepaDebitPaymentMethodDetailsFromJson(
         Map json) =>

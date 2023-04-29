@@ -27,6 +27,7 @@ Map<String, dynamic> _$$_CollectBankAccountParamsToJson(
 const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.AfterpayClearpay: 'AfterpayClearpay',
   PaymentMethodType.Card: 'Card',
+  PaymentMethodType.CashAppPay: 'CashAppPay',
   PaymentMethodType.Alipay: 'Alipay',
   PaymentMethodType.Grabpay: 'Grabpay',
   PaymentMethodType.Ideal: 'Ideal',

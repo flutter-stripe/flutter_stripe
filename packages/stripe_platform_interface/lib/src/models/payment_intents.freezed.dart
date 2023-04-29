@@ -67,6 +67,9 @@ mixin _$PaymentIntent {
   /// Shipping information of the payment intent.
   ShippingDetails? get shipping => throw _privateConstructorUsedError;
 
+  /// Mandata data for this paymentintent.
+  MandateData? get mandateData => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentIntentCopyWith<PaymentIntent> get copyWith =>
@@ -94,10 +97,12 @@ abstract class $PaymentIntentCopyWith<$Res> {
       String? receiptEmail,
       String? canceledAt,
       NextAction? nextAction,
-      ShippingDetails? shipping});
+      ShippingDetails? shipping,
+      MandateData? mandateData});
 
   $NextActionCopyWith<$Res>? get nextAction;
   $ShippingDetailsCopyWith<$Res>? get shipping;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -128,6 +133,7 @@ class _$PaymentIntentCopyWithImpl<$Res, $Val extends PaymentIntent>
     Object? canceledAt = freezed,
     Object? nextAction = freezed,
     Object? shipping = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -190,6 +196,10 @@ class _$PaymentIntentCopyWithImpl<$Res, $Val extends PaymentIntent>
           ? _value.shipping
           : shipping // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ) as $Val);
   }
 
@@ -214,6 +224,18 @@ class _$PaymentIntentCopyWithImpl<$Res, $Val extends PaymentIntent>
 
     return $ShippingDetailsCopyWith<$Res>(_value.shipping!, (value) {
       return _then(_value.copyWith(shipping: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_value.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
+      return _then(_value.copyWith(mandateData: value) as $Val);
     });
   }
 }
@@ -241,12 +263,15 @@ abstract class _$$_PaymentIntentCopyWith<$Res>
       String? receiptEmail,
       String? canceledAt,
       NextAction? nextAction,
-      ShippingDetails? shipping});
+      ShippingDetails? shipping,
+      MandateData? mandateData});
 
   @override
   $NextActionCopyWith<$Res>? get nextAction;
   @override
   $ShippingDetailsCopyWith<$Res>? get shipping;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
@@ -275,6 +300,7 @@ class __$$_PaymentIntentCopyWithImpl<$Res>
     Object? canceledAt = freezed,
     Object? nextAction = freezed,
     Object? shipping = freezed,
+    Object? mandateData = freezed,
   }) {
     return _then(_$_PaymentIntent(
       id: null == id
@@ -337,6 +363,10 @@ class __$$_PaymentIntentCopyWithImpl<$Res>
           ? _value.shipping
           : shipping // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _value.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
     ));
   }
 }
@@ -360,7 +390,8 @@ class _$_PaymentIntent implements _PaymentIntent {
       this.receiptEmail,
       this.canceledAt,
       this.nextAction,
-      this.shipping});
+      this.shipping,
+      this.mandateData});
 
   factory _$_PaymentIntent.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentIntentFromJson(json);
@@ -426,9 +457,13 @@ class _$_PaymentIntent implements _PaymentIntent {
   @override
   final ShippingDetails? shipping;
 
+  /// Mandata data for this paymentintent.
+  @override
+  final MandateData? mandateData;
+
   @override
   String toString() {
-    return 'PaymentIntent(id: $id, amount: $amount, created: $created, currency: $currency, status: $status, clientSecret: $clientSecret, livemode: $livemode, captureMethod: $captureMethod, confirmationMethod: $confirmationMethod, paymentMethodId: $paymentMethodId, description: $description, receiptEmail: $receiptEmail, canceledAt: $canceledAt, nextAction: $nextAction, shipping: $shipping)';
+    return 'PaymentIntent(id: $id, amount: $amount, created: $created, currency: $currency, status: $status, clientSecret: $clientSecret, livemode: $livemode, captureMethod: $captureMethod, confirmationMethod: $confirmationMethod, paymentMethodId: $paymentMethodId, description: $description, receiptEmail: $receiptEmail, canceledAt: $canceledAt, nextAction: $nextAction, shipping: $shipping, mandateData: $mandateData)';
   }
 
   @override
@@ -461,7 +496,9 @@ class _$_PaymentIntent implements _PaymentIntent {
             (identical(other.nextAction, nextAction) ||
                 other.nextAction == nextAction) &&
             (identical(other.shipping, shipping) ||
-                other.shipping == shipping));
+                other.shipping == shipping) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
   }
 
   @JsonKey(ignore: true)
@@ -482,7 +519,8 @@ class _$_PaymentIntent implements _PaymentIntent {
       receiptEmail,
       canceledAt,
       nextAction,
-      shipping);
+      shipping,
+      mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -514,7 +552,8 @@ abstract class _PaymentIntent implements PaymentIntent {
       final String? receiptEmail,
       final String? canceledAt,
       final NextAction? nextAction,
-      final ShippingDetails? shipping}) = _$_PaymentIntent;
+      final ShippingDetails? shipping,
+      final MandateData? mandateData}) = _$_PaymentIntent;
 
   factory _PaymentIntent.fromJson(Map<String, dynamic> json) =
       _$_PaymentIntent.fromJson;
@@ -580,6 +619,10 @@ abstract class _PaymentIntent implements PaymentIntent {
 
   /// Shipping information of the payment intent.
   ShippingDetails? get shipping;
+  @override
+
+  /// Mandata data for this paymentintent.
+  MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentIntentCopyWith<_$_PaymentIntent> get copyWith =>

@@ -60,28 +60,48 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
       children: [
         if (Stripe.instance.isPlatformPaySupportedListenable.value)
           PlatformPayButton(
-            onDidSetShippingContact: (contact) {
+            onShippingContactSelected: (contact) async {
               debugPrint('Shipping contact updated $contact');
 
               // Mandatory after entering a shipping contact
-              Stripe.instance.updatePlatformSheet(
+              await Stripe.instance.updatePlatformSheet(
                 params: PlatformPaySheetUpdateParams.applePay(
                   summaryItems: items,
                   shippingMethods: shippingMethods,
                   errors: [],
                 ),
               );
-            },
-            onShippingMethodSelected: (method) {
-              debugPrint('Shipping contact updated $method');
 
-              Stripe.instance.updatePlatformSheet(
+              return;
+            },
+            onShippingMethodSelected: (method) async {
+              debugPrint('Shipping method updated $method');
+              // Mandatory after entering a shipping contact
+              await Stripe.instance.updatePlatformSheet(
                 params: PlatformPaySheetUpdateParams.applePay(
                   summaryItems: items,
                   shippingMethods: shippingMethods,
                   errors: [],
                 ),
               );
+
+              return;
+            },
+            onCouponCodeEntered: (couponCode) {
+              debugPrint('set coupon $couponCode');
+            },
+            onOrderTracking: () async {
+              debugPrint('set order tracking');
+
+              /// Provide a URL to your web service that will provide the order details
+              ///
+              await Stripe.instance.configurePlatformOrderTracking(
+                  orderDetails: PlatformPayOrderDetails.applePay(
+                orderTypeIdentifier: 'orderTypeIdentifier',
+                orderIdentifier: 'https://your-web-service.com/v1/orders/',
+                webServiceUrl: 'webServiceURL',
+                authenticationToken: 'token',
+              ));
             },
             type: PlatformButtonType.buy,
             appearance: PlatformButtonStyle.whiteOutline,
@@ -110,17 +130,18 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
         clientSecret: clientSecret,
         confirmParams: PlatformPayConfirmParams.applePay(
           applePay: ApplePayParams(
-            cartItems: items,
-            requiredShippingAddressFields: [
-              ApplePayContactFieldsType.name,
-              ApplePayContactFieldsType.postalAddress,
-              ApplePayContactFieldsType.emailAddress,
-              ApplePayContactFieldsType.phoneNumber,
-            ],
-            shippingMethods: shippingMethods,
-            merchantCountryCode: 'Es',
-            currencyCode: 'EUR',
-          ),
+              cartItems: items,
+              requiredShippingAddressFields: [
+                ApplePayContactFieldsType.name,
+                ApplePayContactFieldsType.postalAddress,
+                ApplePayContactFieldsType.emailAddress,
+                ApplePayContactFieldsType.phoneNumber,
+              ],
+              shippingMethods: shippingMethods,
+              merchantCountryCode: 'Es',
+              currencyCode: 'EUR',
+              supportsCouponCode: true,
+              couponCode: 'Coupon'),
         ),
       );
       ScaffoldMessenger.of(context).showSnackBar(

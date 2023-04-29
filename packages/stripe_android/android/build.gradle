@@ -3,7 +3,7 @@ version '1.0-SNAPSHOT'
 
 buildscript {
     ext.kotlin_version = '1.8.0'
-    ext.stripe_version = '[20.19.2, 20.20.0['
+    ext.stripe_version = '[20.20.0, 20.22.0['
 
     repositories {
         google()
@@ -27,6 +27,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
+    namespace 'com.flutter.stripe'
     compileSdkVersion 32
 
     sourceSets {

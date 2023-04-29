@@ -96,7 +96,6 @@ class PlatformPayPaymentMethodParams with _$PlatformPayPaymentMethodParams {
   @JsonSerializable(explicitToJson: true)
   const factory PlatformPayPaymentMethodParams.applePay({
     required ApplePayParams applePayParams,
-    required ApplePayPaymentMethodParams applePayPaymentMethodParams,
   }) = PlatformPayPaymentMethodParamsApplePay;
 }
 
@@ -150,6 +149,15 @@ class ApplePayParams with _$ApplePayParams {
     /// A list of two-letter ISO 3166 country codes for limiting payment to cards from specific countries or regions.
     List<String>? supportedCountries,
 
+    /// Enables support for coupon codes in the Apple Pay button.
+    /// When this is set to true it shows the coupon code field and if [couponCode]
+    /// has a value it will display the value as default
+    ///
+    /// Supported on iOS 15 and higher.
+    bool? supportsCouponCode,
+
+    /// Default coupon code display in the apple pay sheet
+    String? couponCode,
 
     /// Use this to support different types of payment request.
     ///
@@ -159,31 +167,6 @@ class ApplePayParams with _$ApplePayParams {
 
   factory ApplePayParams.fromJson(Map<String, dynamic> json) =>
       _$ApplePayParamsFromJson(json);
-}
-
-@freezed
-
-/// Additional parameters for create apple pay paymentMethod
-class ApplePayPaymentMethodParams with _$ApplePayPaymentMethodParams {
-  @JsonSerializable(explicitToJson: true)
-  const factory ApplePayPaymentMethodParams({
-    /// Variable that enables the coupon code field.
-    ///
-    /// When this is set to true it shows the coupon code field and if [couponCode]
-    /// is set to true it will display the
-    bool? supportsCouponCode,
-
-    /// Value used for prefilling the coupon code field.
-    String? couponCode,
-
-    /// Use this to support different types of payment request.
-    ///
-    /// Only supported on iOS 16 and higher.
-    PaymentRequestType? request,
-  }) = _ApplePayPaymentMethodParams;
-
-  factory ApplePayPaymentMethodParams.fromJson(Map<String, dynamic> json) =>
-      _$ApplePayPaymentMethodParamsFromJson(json);
 }
 
 @freezed
@@ -399,4 +382,31 @@ class ApplePayMultiMerchant with _$ApplePayMultiMerchant {
 
   factory ApplePayMultiMerchant.fromJson(Map<String, dynamic> json) =>
       _$ApplePayMultiMerchantFromJson(json);
+}
+
+@freezed
+
+/// Parameters related to order details with Apple pay
+///
+/// At this moment only Apple pay is supported.
+/// Similar to [KPaymentOrderDetails]
+/// See https://stripe.com/docs/apple-pay?platform=ios&locale=es-ES#order-tracking
+class PlatformPayOrderDetails with _$PlatformPayOrderDetails {
+  @JsonSerializable(explicitToJson: true)
+  const factory PlatformPayOrderDetails.applePay({
+    /// eg: "com.myapp.order"
+    required String orderTypeIdentifier,
+
+    /// eg: "ABC123-AAAA-1111"
+    required String orderIdentifier,
+
+    /// eg: "https://my-backend.example.com/apple-order-tracking-backend"
+    required String webServiceUrl,
+
+    /// eg: "abc123"
+    required String authenticationToken,
+  }) = _PlatformPayOrderDetails;
+
+  factory PlatformPayOrderDetails.fromJson(Map<String, dynamic> json) =>
+      _$PlatformPayOrderDetailsFromJson(json);
 }

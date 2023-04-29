@@ -9,12 +9,10 @@ void main() {
       final fakeElement = FakeElement();
       expect(
         ConfirmSepaDebitPaymentData(
-          paymentMethod: $expanded(
-            SepaDebitPaymentMethodDetails(
-              sepaDebit: fakeElement,
-              billingDetails: SepaBillingDetails(
-                  name: 'Jenny Rosen', email: 'jenny@example.com'),
-            ),
+          paymentMethod: SepaDebitPaymentMethodDetails(
+            sepaDebit: fakeElement,
+            billingDetails: SepaBillingDetails(
+                name: 'Jenny Rosen', email: 'jenny@example.com'),
           ),
         ).toJson(),
         {
@@ -33,7 +31,7 @@ void main() {
     test('with id parses correctly', () {
       expect(
         ConfirmSepaDebitPaymentData(
-          paymentMethod: $id('id'),
+          paymentMethod: SepaDebitPaymentMethodDetails.id('id'),
         ).toJson(),
         {"payment_method": "id"},
       );
@@ -42,13 +40,11 @@ void main() {
     test('with token parses correctly', () {
       expect(
         ConfirmSepaDebitPaymentData(
-          paymentMethod: $expanded(
-            SepaDebitPaymentMethodDetails.withIban(
-              sepaDebit: SepaDebitIbanData(iban: "IBAN"),
-              billingDetails: SepaBillingDetails(
-                name: 'Jenny Rosen',
-                email: 'jenny@example.com',
-              ),
+          paymentMethod: SepaDebitPaymentMethodDetails.withIban(
+            sepaDebit: SepaDebitIbanData(iban: "IBAN"),
+            billingDetails: SepaBillingDetails(
+              name: 'Jenny Rosen',
+              email: 'jenny@example.com',
             ),
           ),
         ).toJson(),

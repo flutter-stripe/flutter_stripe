@@ -56,6 +56,9 @@ class SetupIntent with _$SetupIntent {
     /// Additional action that needs to be taken in order to complete a payment
     /// using the provided resource.
     NextAction? nextAction,
+
+    /// Mandata data for this paymentintent.
+    MandateData? mandateData,
   }) = _SetupIntent;
 
   factory SetupIntent.fromJson(Map<String, dynamic> json) =>

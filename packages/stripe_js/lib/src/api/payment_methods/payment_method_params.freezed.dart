@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'payment_method_params.dart';
 
@@ -68,6 +68,8 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PaymentMethodParams {
+  /// Paymentmethod data for this paymentmethod.
+  Object get paymentMethodData => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(PaymentMethodData paymentMethodData) card,
@@ -544,6 +546,8 @@ abstract class _PaymentMethodParamsCard implements PaymentMethodParams {
   factory _PaymentMethodParamsCard.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsCard.fromJson;
 
+  @override
+
   /// Paymentmethod data for this paymentmethod.
   PaymentMethodData get paymentMethodData;
   @JsonKey(ignore: true)
@@ -847,6 +851,8 @@ abstract class _PaymentMethodParamsCardWithToken
 
   factory _PaymentMethodParamsCardWithToken.fromJson(
       Map<String, dynamic> json) = _$_PaymentMethodParamsCardWithToken.fromJson;
+
+  @override
 
   /// Paymentmethod data for this paymentmethod.
   PaymentMethodDataCardFromToken get paymentMethodData;
@@ -1154,6 +1160,8 @@ abstract class _PaymentMethodParamsCardWithMethodId
           Map<String, dynamic> json) =
       _$_PaymentMethodParamsCardWithMethodId.fromJson;
 
+  @override
+
   /// Payment method data object for card from payment method.
   PaymentMethodDataCardFromMethod get paymentMethodData;
   @JsonKey(ignore: true)
@@ -1454,6 +1462,8 @@ abstract class _PaymentMethodParamsAlipay implements PaymentMethodParams {
   factory _PaymentMethodParamsAlipay.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsAlipay.fromJson;
 
+  @override
+
   /// Paymentmethod data for this paymentmethod.
   PaymentMethodData get paymentMethodData;
   @JsonKey(ignore: true)
@@ -1751,6 +1761,8 @@ abstract class _PaymentMethodParamsIdeal implements PaymentMethodParams {
 
   factory _PaymentMethodParamsIdeal.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsIdeal.fromJson;
+
+  @override
 
   /// Paymentmethod data for this paymentmethod.
   PaymentMethodDataIdeal get paymentMethodData;
@@ -2051,6 +2063,8 @@ abstract class _PaymentMethodParamsAubecs implements PaymentMethodParams {
 
   factory _PaymentMethodParamsAubecs.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsAubecs.fromJson;
+
+  @override
 
   /// Paymentmethod data for this paymentmethod.
   PaymentMethodDataAubecs get paymentMethodData;
@@ -2353,6 +2367,8 @@ abstract class _PaymentMethodParamsBankContact implements PaymentMethodParams {
   factory _PaymentMethodParamsBankContact.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsBankContact.fromJson;
 
+  @override
+
   /// Paymentmethod data for this paymentmethod.
   PaymentMethodData get paymentMethodData;
   @JsonKey(ignore: true)
@@ -2652,6 +2668,8 @@ abstract class _PaymentMethodParamsGiroPay implements PaymentMethodParams {
   factory _PaymentMethodParamsGiroPay.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsGiroPay.fromJson;
 
+  @override
+
   /// Paymentmethod data for this paymentmethod.
   PaymentMethodData get paymentMethodData;
   @JsonKey(ignore: true)
@@ -2947,6 +2965,8 @@ abstract class _PaymentMethodParamsEps implements PaymentMethodParams {
 
   factory _PaymentMethodParamsEps.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsEps.fromJson;
+
+  @override
 
   /// Paymentmethod data for this paymentmethod.
   PaymentMethodData get paymentMethodData;
@@ -3247,6 +3267,8 @@ abstract class _PaymentMethodParamsAffirm implements PaymentMethodParams {
   factory _PaymentMethodParamsAffirm.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsAffirm.fromJson;
 
+  @override
+
   /// Paymentmethod data for this paymentmethod.
   PaymentMethodData get paymentMethodData;
   @JsonKey(ignore: true)
@@ -3542,6 +3564,8 @@ abstract class _PaymentMethodParamsPay implements PaymentMethodParams {
 
   factory _PaymentMethodParamsPay.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsPay.fromJson;
+
+  @override
 
   /// Paymentmethod data for this paymentmethod.
   PaymentMethodData get paymentMethodData;
@@ -3839,6 +3863,8 @@ abstract class _PaymentMethodParamsP24 implements PaymentMethodParams {
   factory _PaymentMethodParamsP24.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsP24.fromJson;
 
+  @override
+
   /// Paymentmethod data for this paymentmethod.
   PaymentMethodData get paymentMethodData;
   @JsonKey(ignore: true)
@@ -4135,6 +4161,8 @@ abstract class _PaymentMethodParamsFpx implements PaymentMethodParams {
 
   factory _PaymentMethodParamsFpx.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsFpx.fromJson;
+
+  @override
 
   /// Paymentmethod data for this paymentmethod.
   PaymentMethodDataFpx get paymentMethodData;
@@ -4436,6 +4464,8 @@ abstract class _PaymentMethodParamsSepaDebit implements PaymentMethodParams {
   factory _PaymentMethodParamsSepaDebit.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsSepaDebit.fromJson;
 
+  @override
+
   /// Paymentmethod data for this paymentmethod.
   PaymentMethodDataSepa get paymentMethodData;
   @JsonKey(ignore: true)
@@ -4735,6 +4765,7 @@ abstract class _PaymentMethodParamsSofort implements PaymentMethodParams {
   factory _PaymentMethodParamsSofort.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsSofort.fromJson;
 
+  @override
   PaymentMethodDataSofort get paymentMethodData;
   @JsonKey(ignore: true)
   _$$_PaymentMethodParamsSofortCopyWith<_$_PaymentMethodParamsSofort>
@@ -5038,6 +5069,7 @@ abstract class _PaymentMethodParamsAfterpayClearpay
           Map<String, dynamic> json) =
       _$_PaymentMethodParamsAfterpayClearpay.fromJson;
 
+  @override
   PaymentMethodDataAfterPay get paymentMethodData;
   @JsonKey(ignore: true)
   _$$_PaymentMethodParamsAfterpayClearpayCopyWith<
@@ -5334,6 +5366,8 @@ abstract class _PaymentMethodParamsOxxo implements PaymentMethodParams {
 
   factory _PaymentMethodParamsOxxo.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsOxxo.fromJson;
+
+  @override
 
   /// Paymentmethod data for this paymentmethod.
   PaymentMethodData get paymentMethodData;
@@ -5636,6 +5670,8 @@ abstract class _PaymentMethodParamsKlarna implements PaymentMethodParams {
 
   factory _PaymentMethodParamsKlarna.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsKlarna.fromJson;
+
+  @override
 
   /// Paymentmethod data for this paymentmethod.
   ///
@@ -5941,6 +5977,8 @@ abstract class _PaymentMethodParamsPayPal implements PaymentMethodParams {
 
   factory _PaymentMethodParamsPayPal.fromJson(Map<String, dynamic> json) =
       _$_PaymentMethodParamsPayPal.fromJson;
+
+  @override
 
   /// Paymentmethod data for this paymentmethod.
   ///
@@ -6248,6 +6286,8 @@ abstract class _PaymentMethodParamsUsBankAccount
 
   factory _PaymentMethodParamsUsBankAccount.fromJson(
       Map<String, dynamic> json) = _$_PaymentMethodParamsUsBankAccount.fromJson;
+
+  @override
 
   /// Paymentmethod data for this paymentmethod.
   PaymentMethodDataUsBank get paymentMethodData;
@@ -7258,12 +7298,12 @@ class _$PaymentMethodDataAubecsCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? formDetails = null,
+    Object? formDetails = freezed,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
   }) {
     return _then(_value.copyWith(
-      formDetails: null == formDetails
+      formDetails: freezed == formDetails
           ? _value.formDetails
           : formDetails // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -7334,12 +7374,12 @@ class __$$_PaymentMethodDataAubecsCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? formDetails = null,
+    Object? formDetails = freezed,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
   }) {
     return _then(_$_PaymentMethodDataAubecs(
-      formDetails: null == formDetails
+      formDetails: freezed == formDetails
           ? _value.formDetails
           : formDetails // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -8367,7 +8407,7 @@ mixin _$PaymentMethodDataUsBank {
   String? get routingNumber => throw _privateConstructorUsedError;
 
   /// The bank account type of the holder
-  BankAccountHolderType? get accountHolderType =>
+  UsBankAccountHolderType? get accountHolderType =>
       throw _privateConstructorUsedError;
 
   /// The account type
@@ -8394,7 +8434,7 @@ abstract class $PaymentMethodDataUsBankCopyWith<$Res> {
   $Res call(
       {String? accountNumber,
       String? routingNumber,
-      BankAccountHolderType? accountHolderType,
+      UsBankAccountHolderType? accountHolderType,
       UsBankAccountType? accountType,
       BillingDetails? billingDetails,
       ShippingDetails? shippingDetails});
@@ -8436,7 +8476,7 @@ class _$PaymentMethodDataUsBankCopyWithImpl<$Res,
       accountHolderType: freezed == accountHolderType
           ? _value.accountHolderType
           : accountHolderType // ignore: cast_nullable_to_non_nullable
-              as BankAccountHolderType?,
+              as UsBankAccountHolderType?,
       accountType: freezed == accountType
           ? _value.accountType
           : accountType // ignore: cast_nullable_to_non_nullable
@@ -8488,7 +8528,7 @@ abstract class _$$_PaymentMethodDataUsBankCopyWith<$Res>
   $Res call(
       {String? accountNumber,
       String? routingNumber,
-      BankAccountHolderType? accountHolderType,
+      UsBankAccountHolderType? accountHolderType,
       UsBankAccountType? accountType,
       BillingDetails? billingDetails,
       ShippingDetails? shippingDetails});
@@ -8530,7 +8570,7 @@ class __$$_PaymentMethodDataUsBankCopyWithImpl<$Res>
       accountHolderType: freezed == accountHolderType
           ? _value.accountHolderType
           : accountHolderType // ignore: cast_nullable_to_non_nullable
-              as BankAccountHolderType?,
+              as UsBankAccountHolderType?,
       accountType: freezed == accountType
           ? _value.accountType
           : accountType // ignore: cast_nullable_to_non_nullable
@@ -8573,7 +8613,7 @@ class _$_PaymentMethodDataUsBank implements _PaymentMethodDataUsBank {
 
   /// The bank account type of the holder
   @override
-  final BankAccountHolderType? accountHolderType;
+  final UsBankAccountHolderType? accountHolderType;
 
   /// The account type
   @override
@@ -8636,7 +8676,7 @@ abstract class _PaymentMethodDataUsBank implements PaymentMethodDataUsBank {
   const factory _PaymentMethodDataUsBank(
       {final String? accountNumber,
       final String? routingNumber,
-      final BankAccountHolderType? accountHolderType,
+      final UsBankAccountHolderType? accountHolderType,
       final UsBankAccountType? accountType,
       final BillingDetails? billingDetails,
       final ShippingDetails? shippingDetails}) = _$_PaymentMethodDataUsBank;
@@ -8656,7 +8696,7 @@ abstract class _PaymentMethodDataUsBank implements PaymentMethodDataUsBank {
   @override
 
   /// The bank account type of the holder
-  BankAccountHolderType? get accountHolderType;
+  UsBankAccountHolderType? get accountHolderType;
   @override
 
   /// The account type

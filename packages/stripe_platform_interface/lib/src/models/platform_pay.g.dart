@@ -127,16 +127,12 @@ _$PlatformPayPaymentMethodParamsApplePay
         _$PlatformPayPaymentMethodParamsApplePay(
           applePayParams: ApplePayParams.fromJson(
               json['applePayParams'] as Map<String, dynamic>),
-          applePayPaymentMethodParams: ApplePayPaymentMethodParams.fromJson(
-              json['applePayPaymentMethodParams'] as Map<String, dynamic>),
         );
 
 Map<String, dynamic> _$$PlatformPayPaymentMethodParamsApplePayToJson(
         _$PlatformPayPaymentMethodParamsApplePay instance) =>
     <String, dynamic>{
       'applePayParams': instance.applePayParams.toJson(),
-      'applePayPaymentMethodParams':
-          instance.applePayPaymentMethodParams.toJson(),
     };
 
 _$PlatformPayConfirmParamsGooglePay
@@ -201,6 +197,8 @@ _$_ApplePayParams _$$_ApplePayParamsFromJson(Map<String, dynamic> json) =>
       supportedCountries: (json['supportedCountries'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      supportsCouponCode: json['supportsCouponCode'] as bool?,
+      couponCode: json['couponCode'] as String?,
       request: json['request'] == null
           ? null
           : PaymentRequestType.fromJson(
@@ -226,6 +224,8 @@ Map<String, dynamic> _$$_ApplePayParamsToJson(_$_ApplePayParams instance) =>
           .toList(),
       'shippingType': _$ApplePayShippingTypeEnumMap[instance.shippingType],
       'supportedCountries': instance.supportedCountries,
+      'supportsCouponCode': instance.supportsCouponCode,
+      'couponCode': instance.couponCode,
       'request': instance.request?.toJson(),
     };
 
@@ -249,25 +249,6 @@ const _$ApplePayShippingTypeEnumMap = {
   ApplePayShippingType.delivery: 'delivery',
   ApplePayShippingType.shipping: 'shipping',
 };
-
-_$_ApplePayPaymentMethodParams _$$_ApplePayPaymentMethodParamsFromJson(
-        Map<String, dynamic> json) =>
-    _$_ApplePayPaymentMethodParams(
-      supportsCouponCode: json['supportsCouponCode'] as bool?,
-      couponCode: json['couponCode'] as String?,
-      request: json['request'] == null
-          ? null
-          : PaymentRequestType.fromJson(
-              json['request'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$_ApplePayPaymentMethodParamsToJson(
-        _$_ApplePayPaymentMethodParams instance) =>
-    <String, dynamic>{
-      'supportsCouponCode': instance.supportsCouponCode,
-      'couponCode': instance.couponCode,
-      'request': instance.request?.toJson(),
-    };
 
 _$_GooglePayParams _$$_GooglePayParamsFromJson(Map<String, dynamic> json) =>
     _$_GooglePayParams(
@@ -442,4 +423,22 @@ Map<String, dynamic> _$$_ApplePayMultiMerchantToJson(
       'merchantName': instance.merchantName,
       'merchantDomain': instance.merchantDomain,
       'amount': instance.amount,
+    };
+
+_$_PlatformPayOrderDetails _$$_PlatformPayOrderDetailsFromJson(
+        Map<String, dynamic> json) =>
+    _$_PlatformPayOrderDetails(
+      orderTypeIdentifier: json['orderTypeIdentifier'] as String,
+      orderIdentifier: json['orderIdentifier'] as String,
+      webServiceUrl: json['webServiceUrl'] as String,
+      authenticationToken: json['authenticationToken'] as String,
+    );
+
+Map<String, dynamic> _$$_PlatformPayOrderDetailsToJson(
+        _$_PlatformPayOrderDetails instance) =>
+    <String, dynamic>{
+      'orderTypeIdentifier': instance.orderTypeIdentifier,
+      'orderIdentifier': instance.orderIdentifier,
+      'webServiceUrl': instance.webServiceUrl,
+      'authenticationToken': instance.authenticationToken,
     };

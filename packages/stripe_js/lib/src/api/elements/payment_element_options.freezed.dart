@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'payment_element_options.dart';
 
@@ -99,11 +99,11 @@ class _$PaymentElementOptionsCopyWithImpl<$Res,
     Object? layout = freezed,
     Object? defaultValues = freezed,
     Object? business = freezed,
-    Object? paymentMethodOrder = null,
+    Object? paymentMethodOrder = freezed,
     Object? fields = freezed,
-    Object? readOnly = null,
-    Object? terms = null,
-    Object? wallets = null,
+    Object? readOnly = freezed,
+    Object? terms = freezed,
+    Object? wallets = freezed,
   }) {
     return _then(_value.copyWith(
       layout: freezed == layout
@@ -118,7 +118,7 @@ class _$PaymentElementOptionsCopyWithImpl<$Res,
           ? _value.business
           : business // ignore: cast_nullable_to_non_nullable
               as PaymentElementBusiness?,
-      paymentMethodOrder: null == paymentMethodOrder
+      paymentMethodOrder: freezed == paymentMethodOrder
           ? _value.paymentMethodOrder
           : paymentMethodOrder // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -126,15 +126,15 @@ class _$PaymentElementOptionsCopyWithImpl<$Res,
           ? _value.fields
           : fields // ignore: cast_nullable_to_non_nullable
               as PaymentElementFields?,
-      readOnly: null == readOnly
+      readOnly: freezed == readOnly
           ? _value.readOnly
           : readOnly // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      terms: null == terms
+      terms: freezed == terms
           ? _value.terms
           : terms // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      wallets: null == wallets
+      wallets: freezed == wallets
           ? _value.wallets
           : wallets // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -233,11 +233,11 @@ class __$$_PaymentElementOptionsCopyWithImpl<$Res>
     Object? layout = freezed,
     Object? defaultValues = freezed,
     Object? business = freezed,
-    Object? paymentMethodOrder = null,
+    Object? paymentMethodOrder = freezed,
     Object? fields = freezed,
-    Object? readOnly = null,
-    Object? terms = null,
-    Object? wallets = null,
+    Object? readOnly = freezed,
+    Object? terms = freezed,
+    Object? wallets = freezed,
   }) {
     return _then(_$_PaymentElementOptions(
       layout: freezed == layout
@@ -252,7 +252,7 @@ class __$$_PaymentElementOptionsCopyWithImpl<$Res>
           ? _value.business
           : business // ignore: cast_nullable_to_non_nullable
               as PaymentElementBusiness?,
-      paymentMethodOrder: null == paymentMethodOrder
+      paymentMethodOrder: freezed == paymentMethodOrder
           ? _value.paymentMethodOrder
           : paymentMethodOrder // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -260,15 +260,15 @@ class __$$_PaymentElementOptionsCopyWithImpl<$Res>
           ? _value.fields
           : fields // ignore: cast_nullable_to_non_nullable
               as PaymentElementFields?,
-      readOnly: null == readOnly
+      readOnly: freezed == readOnly
           ? _value.readOnly
           : readOnly // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      terms: null == terms
+      terms: freezed == terms
           ? _value.terms
           : terms // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      wallets: null == wallets
+      wallets: freezed == wallets
           ? _value.wallets
           : wallets // ignore: cast_nullable_to_non_nullable
               as dynamic,

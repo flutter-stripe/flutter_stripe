@@ -1293,9 +1293,7 @@ mixin _$PlatformPayPaymentMethodParams {
     required TResult Function(GooglePayParams googlePayParams,
             GooglePayPaymentMethodParams googlePayPaymentMethodParams)
         googlePay,
-    required TResult Function(ApplePayParams applePayParams,
-            ApplePayPaymentMethodParams applePayPaymentMethodParams)
-        applePay,
+    required TResult Function(ApplePayParams applePayParams) applePay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1303,9 +1301,7 @@ mixin _$PlatformPayPaymentMethodParams {
     TResult? Function(GooglePayParams googlePayParams,
             GooglePayPaymentMethodParams googlePayPaymentMethodParams)?
         googlePay,
-    TResult? Function(ApplePayParams applePayParams,
-            ApplePayPaymentMethodParams applePayPaymentMethodParams)?
-        applePay,
+    TResult? Function(ApplePayParams applePayParams)? applePay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1313,9 +1309,7 @@ mixin _$PlatformPayPaymentMethodParams {
     TResult Function(GooglePayParams googlePayParams,
             GooglePayPaymentMethodParams googlePayPaymentMethodParams)?
         googlePay,
-    TResult Function(ApplePayParams applePayParams,
-            ApplePayPaymentMethodParams applePayPaymentMethodParams)?
-        applePay,
+    TResult Function(ApplePayParams applePayParams)? applePay,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1474,9 +1468,7 @@ class _$PlatformPayPaymentMethodParamsGooglePay
     required TResult Function(GooglePayParams googlePayParams,
             GooglePayPaymentMethodParams googlePayPaymentMethodParams)
         googlePay,
-    required TResult Function(ApplePayParams applePayParams,
-            ApplePayPaymentMethodParams applePayPaymentMethodParams)
-        applePay,
+    required TResult Function(ApplePayParams applePayParams) applePay,
   }) {
     return googlePay(googlePayParams, googlePayPaymentMethodParams);
   }
@@ -1487,9 +1479,7 @@ class _$PlatformPayPaymentMethodParamsGooglePay
     TResult? Function(GooglePayParams googlePayParams,
             GooglePayPaymentMethodParams googlePayPaymentMethodParams)?
         googlePay,
-    TResult? Function(ApplePayParams applePayParams,
-            ApplePayPaymentMethodParams applePayPaymentMethodParams)?
-        applePay,
+    TResult? Function(ApplePayParams applePayParams)? applePay,
   }) {
     return googlePay?.call(googlePayParams, googlePayPaymentMethodParams);
   }
@@ -1500,9 +1490,7 @@ class _$PlatformPayPaymentMethodParamsGooglePay
     TResult Function(GooglePayParams googlePayParams,
             GooglePayPaymentMethodParams googlePayPaymentMethodParams)?
         googlePay,
-    TResult Function(ApplePayParams applePayParams,
-            ApplePayPaymentMethodParams applePayPaymentMethodParams)?
-        applePay,
+    TResult Function(ApplePayParams applePayParams)? applePay,
     required TResult orElse(),
   }) {
     if (googlePay != null) {
@@ -1568,12 +1556,9 @@ abstract class _$$PlatformPayPaymentMethodParamsApplePayCopyWith<$Res> {
           $Res Function(_$PlatformPayPaymentMethodParamsApplePay) then) =
       __$$PlatformPayPaymentMethodParamsApplePayCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {ApplePayParams applePayParams,
-      ApplePayPaymentMethodParams applePayPaymentMethodParams});
+  $Res call({ApplePayParams applePayParams});
 
   $ApplePayParamsCopyWith<$Res> get applePayParams;
-  $ApplePayPaymentMethodParamsCopyWith<$Res> get applePayPaymentMethodParams;
 }
 
 /// @nodoc
@@ -1590,17 +1575,12 @@ class __$$PlatformPayPaymentMethodParamsApplePayCopyWithImpl<$Res>
   @override
   $Res call({
     Object? applePayParams = null,
-    Object? applePayPaymentMethodParams = null,
   }) {
     return _then(_$PlatformPayPaymentMethodParamsApplePay(
       applePayParams: null == applePayParams
           ? _value.applePayParams
           : applePayParams // ignore: cast_nullable_to_non_nullable
               as ApplePayParams,
-      applePayPaymentMethodParams: null == applePayPaymentMethodParams
-          ? _value.applePayPaymentMethodParams
-          : applePayPaymentMethodParams // ignore: cast_nullable_to_non_nullable
-              as ApplePayPaymentMethodParams,
     ));
   }
 
@@ -1611,15 +1591,6 @@ class __$$PlatformPayPaymentMethodParamsApplePayCopyWithImpl<$Res>
       return _then(_value.copyWith(applePayParams: value));
     });
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ApplePayPaymentMethodParamsCopyWith<$Res> get applePayPaymentMethodParams {
-    return $ApplePayPaymentMethodParamsCopyWith<$Res>(
-        _value.applePayPaymentMethodParams, (value) {
-      return _then(_value.copyWith(applePayPaymentMethodParams: value));
-    });
-  }
 }
 
 /// @nodoc
@@ -1628,17 +1599,14 @@ class __$$PlatformPayPaymentMethodParamsApplePayCopyWithImpl<$Res>
 class _$PlatformPayPaymentMethodParamsApplePay
     implements PlatformPayPaymentMethodParamsApplePay {
   const _$PlatformPayPaymentMethodParamsApplePay(
-      {required this.applePayParams,
-      required this.applePayPaymentMethodParams});
+      {required this.applePayParams});
 
   @override
   final ApplePayParams applePayParams;
-  @override
-  final ApplePayPaymentMethodParams applePayPaymentMethodParams;
 
   @override
   String toString() {
-    return 'PlatformPayPaymentMethodParams.applePay(applePayParams: $applePayParams, applePayPaymentMethodParams: $applePayPaymentMethodParams)';
+    return 'PlatformPayPaymentMethodParams.applePay(applePayParams: $applePayParams)';
   }
 
   @override
@@ -1647,16 +1615,11 @@ class _$PlatformPayPaymentMethodParamsApplePay
         (other.runtimeType == runtimeType &&
             other is _$PlatformPayPaymentMethodParamsApplePay &&
             (identical(other.applePayParams, applePayParams) ||
-                other.applePayParams == applePayParams) &&
-            (identical(other.applePayPaymentMethodParams,
-                    applePayPaymentMethodParams) ||
-                other.applePayPaymentMethodParams ==
-                    applePayPaymentMethodParams));
+                other.applePayParams == applePayParams));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, applePayParams, applePayPaymentMethodParams);
+  int get hashCode => Object.hash(runtimeType, applePayParams);
 
   @JsonKey(ignore: true)
   @override
@@ -1672,11 +1635,9 @@ class _$PlatformPayPaymentMethodParamsApplePay
     required TResult Function(GooglePayParams googlePayParams,
             GooglePayPaymentMethodParams googlePayPaymentMethodParams)
         googlePay,
-    required TResult Function(ApplePayParams applePayParams,
-            ApplePayPaymentMethodParams applePayPaymentMethodParams)
-        applePay,
+    required TResult Function(ApplePayParams applePayParams) applePay,
   }) {
-    return applePay(applePayParams, applePayPaymentMethodParams);
+    return applePay(applePayParams);
   }
 
   @override
@@ -1685,11 +1646,9 @@ class _$PlatformPayPaymentMethodParamsApplePay
     TResult? Function(GooglePayParams googlePayParams,
             GooglePayPaymentMethodParams googlePayPaymentMethodParams)?
         googlePay,
-    TResult? Function(ApplePayParams applePayParams,
-            ApplePayPaymentMethodParams applePayPaymentMethodParams)?
-        applePay,
+    TResult? Function(ApplePayParams applePayParams)? applePay,
   }) {
-    return applePay?.call(applePayParams, applePayPaymentMethodParams);
+    return applePay?.call(applePayParams);
   }
 
   @override
@@ -1698,13 +1657,11 @@ class _$PlatformPayPaymentMethodParamsApplePay
     TResult Function(GooglePayParams googlePayParams,
             GooglePayPaymentMethodParams googlePayPaymentMethodParams)?
         googlePay,
-    TResult Function(ApplePayParams applePayParams,
-            ApplePayPaymentMethodParams applePayPaymentMethodParams)?
-        applePay,
+    TResult Function(ApplePayParams applePayParams)? applePay,
     required TResult orElse(),
   }) {
     if (applePay != null) {
-      return applePay(applePayParams, applePayPaymentMethodParams);
+      return applePay(applePayParams);
     }
     return orElse();
   }
@@ -1746,13 +1703,10 @@ class _$PlatformPayPaymentMethodParamsApplePay
 abstract class PlatformPayPaymentMethodParamsApplePay
     implements PlatformPayPaymentMethodParams {
   const factory PlatformPayPaymentMethodParamsApplePay(
-          {required final ApplePayParams applePayParams,
-          required final ApplePayPaymentMethodParams
-              applePayPaymentMethodParams}) =
+          {required final ApplePayParams applePayParams}) =
       _$PlatformPayPaymentMethodParamsApplePay;
 
   ApplePayParams get applePayParams;
-  ApplePayPaymentMethodParams get applePayPaymentMethodParams;
   @JsonKey(ignore: true)
   _$$PlatformPayPaymentMethodParamsApplePayCopyWith<
           _$PlatformPayPaymentMethodParamsApplePay>
@@ -2233,6 +2187,16 @@ mixin _$ApplePayParams {
   /// A list of two-letter ISO 3166 country codes for limiting payment to cards from specific countries or regions.
   List<String>? get supportedCountries => throw _privateConstructorUsedError;
 
+  /// Enables support for coupon codes in the Apple Pay button.
+  /// When this is set to true it shows the coupon code field and if [couponCode]
+  /// has a value it will display the value as default
+  ///
+  /// Supported on iOS 15 and higher.
+  bool? get supportsCouponCode => throw _privateConstructorUsedError;
+
+  /// Default coupon code display in the apple pay sheet
+  String? get couponCode => throw _privateConstructorUsedError;
+
   /// Use this to support different types of payment request.
   ///
   /// Only supported on iOS 16 and higher.
@@ -2261,6 +2225,8 @@ abstract class $ApplePayParamsCopyWith<$Res> {
       List<ApplePayMerchantCapability>? merchantCapabilities,
       ApplePayShippingType? shippingType,
       List<String>? supportedCountries,
+      bool? supportsCouponCode,
+      String? couponCode,
       PaymentRequestType? request});
 
   $PaymentRequestTypeCopyWith<$Res>? get request;
@@ -2289,6 +2255,8 @@ class _$ApplePayParamsCopyWithImpl<$Res, $Val extends ApplePayParams>
     Object? merchantCapabilities = freezed,
     Object? shippingType = freezed,
     Object? supportedCountries = freezed,
+    Object? supportsCouponCode = freezed,
+    Object? couponCode = freezed,
     Object? request = freezed,
   }) {
     return _then(_value.copyWith(
@@ -2332,6 +2300,14 @@ class _$ApplePayParamsCopyWithImpl<$Res, $Val extends ApplePayParams>
           ? _value.supportedCountries
           : supportedCountries // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      supportsCouponCode: freezed == supportsCouponCode
+          ? _value.supportsCouponCode
+          : supportsCouponCode // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      couponCode: freezed == couponCode
+          ? _value.couponCode
+          : couponCode // ignore: cast_nullable_to_non_nullable
+              as String?,
       request: freezed == request
           ? _value.request
           : request // ignore: cast_nullable_to_non_nullable
@@ -2371,6 +2347,8 @@ abstract class _$$_ApplePayParamsCopyWith<$Res>
       List<ApplePayMerchantCapability>? merchantCapabilities,
       ApplePayShippingType? shippingType,
       List<String>? supportedCountries,
+      bool? supportsCouponCode,
+      String? couponCode,
       PaymentRequestType? request});
 
   @override
@@ -2398,6 +2376,8 @@ class __$$_ApplePayParamsCopyWithImpl<$Res>
     Object? merchantCapabilities = freezed,
     Object? shippingType = freezed,
     Object? supportedCountries = freezed,
+    Object? supportsCouponCode = freezed,
+    Object? couponCode = freezed,
     Object? request = freezed,
   }) {
     return _then(_$_ApplePayParams(
@@ -2441,6 +2421,14 @@ class __$$_ApplePayParamsCopyWithImpl<$Res>
           ? _value._supportedCountries
           : supportedCountries // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      supportsCouponCode: freezed == supportsCouponCode
+          ? _value.supportsCouponCode
+          : supportsCouponCode // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      couponCode: freezed == couponCode
+          ? _value.couponCode
+          : couponCode // ignore: cast_nullable_to_non_nullable
+              as String?,
       request: freezed == request
           ? _value.request
           : request // ignore: cast_nullable_to_non_nullable
@@ -2464,6 +2452,8 @@ class _$_ApplePayParams implements _ApplePayParams {
       final List<ApplePayMerchantCapability>? merchantCapabilities,
       this.shippingType,
       final List<String>? supportedCountries,
+      this.supportsCouponCode,
+      this.couponCode,
       this.request})
       : _additionalEnabledNetworks = additionalEnabledNetworks,
         _cartItems = cartItems,
@@ -2582,6 +2572,18 @@ class _$_ApplePayParams implements _ApplePayParams {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Enables support for coupon codes in the Apple Pay button.
+  /// When this is set to true it shows the coupon code field and if [couponCode]
+  /// has a value it will display the value as default
+  ///
+  /// Supported on iOS 15 and higher.
+  @override
+  final bool? supportsCouponCode;
+
+  /// Default coupon code display in the apple pay sheet
+  @override
+  final String? couponCode;
+
   /// Use this to support different types of payment request.
   ///
   /// Only supported on iOS 16 and higher.
@@ -2590,7 +2592,7 @@ class _$_ApplePayParams implements _ApplePayParams {
 
   @override
   String toString() {
-    return 'ApplePayParams(merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, additionalEnabledNetworks: $additionalEnabledNetworks, cartItems: $cartItems, requiredShippingAddressFields: $requiredShippingAddressFields, requiredBillingContactFields: $requiredBillingContactFields, shippingMethods: $shippingMethods, merchantCapabilities: $merchantCapabilities, shippingType: $shippingType, supportedCountries: $supportedCountries, request: $request)';
+    return 'ApplePayParams(merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, additionalEnabledNetworks: $additionalEnabledNetworks, cartItems: $cartItems, requiredShippingAddressFields: $requiredShippingAddressFields, requiredBillingContactFields: $requiredBillingContactFields, shippingMethods: $shippingMethods, merchantCapabilities: $merchantCapabilities, shippingType: $shippingType, supportedCountries: $supportedCountries, supportsCouponCode: $supportsCouponCode, couponCode: $couponCode, request: $request)';
   }
 
   @override
@@ -2620,6 +2622,10 @@ class _$_ApplePayParams implements _ApplePayParams {
                 other.shippingType == shippingType) &&
             const DeepCollectionEquality()
                 .equals(other._supportedCountries, _supportedCountries) &&
+            (identical(other.supportsCouponCode, supportsCouponCode) ||
+                other.supportsCouponCode == supportsCouponCode) &&
+            (identical(other.couponCode, couponCode) ||
+                other.couponCode == couponCode) &&
             (identical(other.request, request) || other.request == request));
   }
 
@@ -2637,6 +2643,8 @@ class _$_ApplePayParams implements _ApplePayParams {
       const DeepCollectionEquality().hash(_merchantCapabilities),
       shippingType,
       const DeepCollectionEquality().hash(_supportedCountries),
+      supportsCouponCode,
+      couponCode,
       request);
 
   @JsonKey(ignore: true)
@@ -2665,6 +2673,8 @@ abstract class _ApplePayParams implements ApplePayParams {
       final List<ApplePayMerchantCapability>? merchantCapabilities,
       final ApplePayShippingType? shippingType,
       final List<String>? supportedCountries,
+      final bool? supportsCouponCode,
+      final String? couponCode,
       final PaymentRequestType? request}) = _$_ApplePayParams;
 
   factory _ApplePayParams.fromJson(Map<String, dynamic> json) =
@@ -2712,242 +2722,15 @@ abstract class _ApplePayParams implements ApplePayParams {
   List<String>? get supportedCountries;
   @override
 
-  /// Use this to support different types of payment request.
-  ///
-  /// Only supported on iOS 16 and higher.
-  PaymentRequestType? get request;
-  @override
-  @JsonKey(ignore: true)
-  _$$_ApplePayParamsCopyWith<_$_ApplePayParams> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-ApplePayPaymentMethodParams _$ApplePayPaymentMethodParamsFromJson(
-    Map<String, dynamic> json) {
-  return _ApplePayPaymentMethodParams.fromJson(json);
-}
-
-/// @nodoc
-mixin _$ApplePayPaymentMethodParams {
-  /// Variable that enables the coupon code field.
-  ///
+  /// Enables support for coupon codes in the Apple Pay button.
   /// When this is set to true it shows the coupon code field and if [couponCode]
-  /// is set to true it will display the
-  bool? get supportsCouponCode => throw _privateConstructorUsedError;
-
-  /// Value used for prefilling the coupon code field.
-  String? get couponCode => throw _privateConstructorUsedError;
-
-  /// Use this to support different types of payment request.
+  /// has a value it will display the value as default
   ///
-  /// Only supported on iOS 16 and higher.
-  PaymentRequestType? get request => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ApplePayPaymentMethodParamsCopyWith<ApplePayPaymentMethodParams>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ApplePayPaymentMethodParamsCopyWith<$Res> {
-  factory $ApplePayPaymentMethodParamsCopyWith(
-          ApplePayPaymentMethodParams value,
-          $Res Function(ApplePayPaymentMethodParams) then) =
-      _$ApplePayPaymentMethodParamsCopyWithImpl<$Res,
-          ApplePayPaymentMethodParams>;
-  @useResult
-  $Res call(
-      {bool? supportsCouponCode,
-      String? couponCode,
-      PaymentRequestType? request});
-
-  $PaymentRequestTypeCopyWith<$Res>? get request;
-}
-
-/// @nodoc
-class _$ApplePayPaymentMethodParamsCopyWithImpl<$Res,
-        $Val extends ApplePayPaymentMethodParams>
-    implements $ApplePayPaymentMethodParamsCopyWith<$Res> {
-  _$ApplePayPaymentMethodParamsCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? supportsCouponCode = freezed,
-    Object? couponCode = freezed,
-    Object? request = freezed,
-  }) {
-    return _then(_value.copyWith(
-      supportsCouponCode: freezed == supportsCouponCode
-          ? _value.supportsCouponCode
-          : supportsCouponCode // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      couponCode: freezed == couponCode
-          ? _value.couponCode
-          : couponCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      request: freezed == request
-          ? _value.request
-          : request // ignore: cast_nullable_to_non_nullable
-              as PaymentRequestType?,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PaymentRequestTypeCopyWith<$Res>? get request {
-    if (_value.request == null) {
-      return null;
-    }
-
-    return $PaymentRequestTypeCopyWith<$Res>(_value.request!, (value) {
-      return _then(_value.copyWith(request: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$_ApplePayPaymentMethodParamsCopyWith<$Res>
-    implements $ApplePayPaymentMethodParamsCopyWith<$Res> {
-  factory _$$_ApplePayPaymentMethodParamsCopyWith(
-          _$_ApplePayPaymentMethodParams value,
-          $Res Function(_$_ApplePayPaymentMethodParams) then) =
-      __$$_ApplePayPaymentMethodParamsCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {bool? supportsCouponCode,
-      String? couponCode,
-      PaymentRequestType? request});
-
-  @override
-  $PaymentRequestTypeCopyWith<$Res>? get request;
-}
-
-/// @nodoc
-class __$$_ApplePayPaymentMethodParamsCopyWithImpl<$Res>
-    extends _$ApplePayPaymentMethodParamsCopyWithImpl<$Res,
-        _$_ApplePayPaymentMethodParams>
-    implements _$$_ApplePayPaymentMethodParamsCopyWith<$Res> {
-  __$$_ApplePayPaymentMethodParamsCopyWithImpl(
-      _$_ApplePayPaymentMethodParams _value,
-      $Res Function(_$_ApplePayPaymentMethodParams) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? supportsCouponCode = freezed,
-    Object? couponCode = freezed,
-    Object? request = freezed,
-  }) {
-    return _then(_$_ApplePayPaymentMethodParams(
-      supportsCouponCode: freezed == supportsCouponCode
-          ? _value.supportsCouponCode
-          : supportsCouponCode // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      couponCode: freezed == couponCode
-          ? _value.couponCode
-          : couponCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      request: freezed == request
-          ? _value.request
-          : request // ignore: cast_nullable_to_non_nullable
-              as PaymentRequestType?,
-    ));
-  }
-}
-
-/// @nodoc
-
-@JsonSerializable(explicitToJson: true)
-class _$_ApplePayPaymentMethodParams implements _ApplePayPaymentMethodParams {
-  const _$_ApplePayPaymentMethodParams(
-      {this.supportsCouponCode, this.couponCode, this.request});
-
-  factory _$_ApplePayPaymentMethodParams.fromJson(Map<String, dynamic> json) =>
-      _$$_ApplePayPaymentMethodParamsFromJson(json);
-
-  /// Variable that enables the coupon code field.
-  ///
-  /// When this is set to true it shows the coupon code field and if [couponCode]
-  /// is set to true it will display the
-  @override
-  final bool? supportsCouponCode;
-
-  /// Value used for prefilling the coupon code field.
-  @override
-  final String? couponCode;
-
-  /// Use this to support different types of payment request.
-  ///
-  /// Only supported on iOS 16 and higher.
-  @override
-  final PaymentRequestType? request;
-
-  @override
-  String toString() {
-    return 'ApplePayPaymentMethodParams(supportsCouponCode: $supportsCouponCode, couponCode: $couponCode, request: $request)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ApplePayPaymentMethodParams &&
-            (identical(other.supportsCouponCode, supportsCouponCode) ||
-                other.supportsCouponCode == supportsCouponCode) &&
-            (identical(other.couponCode, couponCode) ||
-                other.couponCode == couponCode) &&
-            (identical(other.request, request) || other.request == request));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, supportsCouponCode, couponCode, request);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_ApplePayPaymentMethodParamsCopyWith<_$_ApplePayPaymentMethodParams>
-      get copyWith => __$$_ApplePayPaymentMethodParamsCopyWithImpl<
-          _$_ApplePayPaymentMethodParams>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_ApplePayPaymentMethodParamsToJson(
-      this,
-    );
-  }
-}
-
-abstract class _ApplePayPaymentMethodParams
-    implements ApplePayPaymentMethodParams {
-  const factory _ApplePayPaymentMethodParams(
-      {final bool? supportsCouponCode,
-      final String? couponCode,
-      final PaymentRequestType? request}) = _$_ApplePayPaymentMethodParams;
-
-  factory _ApplePayPaymentMethodParams.fromJson(Map<String, dynamic> json) =
-      _$_ApplePayPaymentMethodParams.fromJson;
-
-  @override
-
-  /// Variable that enables the coupon code field.
-  ///
-  /// When this is set to true it shows the coupon code field and if [couponCode]
-  /// is set to true it will display the
+  /// Supported on iOS 15 and higher.
   bool? get supportsCouponCode;
   @override
 
-  /// Value used for prefilling the coupon code field.
+  /// Default coupon code display in the apple pay sheet
   String? get couponCode;
   @override
 
@@ -2957,8 +2740,8 @@ abstract class _ApplePayPaymentMethodParams
   PaymentRequestType? get request;
   @override
   @JsonKey(ignore: true)
-  _$$_ApplePayPaymentMethodParamsCopyWith<_$_ApplePayPaymentMethodParams>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_ApplePayParamsCopyWith<_$_ApplePayParams> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 GooglePayParams _$GooglePayParamsFromJson(Map<String, dynamic> json) {
@@ -5286,4 +5069,345 @@ abstract class _ApplePayMultiMerchant implements ApplePayMultiMerchant {
   @JsonKey(ignore: true)
   _$$_ApplePayMultiMerchantCopyWith<_$_ApplePayMultiMerchant> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+PlatformPayOrderDetails _$PlatformPayOrderDetailsFromJson(
+    Map<String, dynamic> json) {
+  return _PlatformPayOrderDetails.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PlatformPayOrderDetails {
+  /// eg: "com.myapp.order"
+  String get orderTypeIdentifier => throw _privateConstructorUsedError;
+
+  /// eg: "ABC123-AAAA-1111"
+  String get orderIdentifier => throw _privateConstructorUsedError;
+
+  /// eg: "https://my-backend.example.com/apple-order-tracking-backend"
+  String get webServiceUrl => throw _privateConstructorUsedError;
+
+  /// eg: "abc123"
+  String get authenticationToken => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String orderTypeIdentifier,
+            String orderIdentifier,
+            String webServiceUrl,
+            String authenticationToken)
+        applePay,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String orderTypeIdentifier, String orderIdentifier,
+            String webServiceUrl, String authenticationToken)?
+        applePay,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String orderTypeIdentifier, String orderIdentifier,
+            String webServiceUrl, String authenticationToken)?
+        applePay,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PlatformPayOrderDetails value) applePay,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PlatformPayOrderDetails value)? applePay,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PlatformPayOrderDetails value)? applePay,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PlatformPayOrderDetailsCopyWith<PlatformPayOrderDetails> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PlatformPayOrderDetailsCopyWith<$Res> {
+  factory $PlatformPayOrderDetailsCopyWith(PlatformPayOrderDetails value,
+          $Res Function(PlatformPayOrderDetails) then) =
+      _$PlatformPayOrderDetailsCopyWithImpl<$Res, PlatformPayOrderDetails>;
+  @useResult
+  $Res call(
+      {String orderTypeIdentifier,
+      String orderIdentifier,
+      String webServiceUrl,
+      String authenticationToken});
+}
+
+/// @nodoc
+class _$PlatformPayOrderDetailsCopyWithImpl<$Res,
+        $Val extends PlatformPayOrderDetails>
+    implements $PlatformPayOrderDetailsCopyWith<$Res> {
+  _$PlatformPayOrderDetailsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderTypeIdentifier = null,
+    Object? orderIdentifier = null,
+    Object? webServiceUrl = null,
+    Object? authenticationToken = null,
+  }) {
+    return _then(_value.copyWith(
+      orderTypeIdentifier: null == orderTypeIdentifier
+          ? _value.orderTypeIdentifier
+          : orderTypeIdentifier // ignore: cast_nullable_to_non_nullable
+              as String,
+      orderIdentifier: null == orderIdentifier
+          ? _value.orderIdentifier
+          : orderIdentifier // ignore: cast_nullable_to_non_nullable
+              as String,
+      webServiceUrl: null == webServiceUrl
+          ? _value.webServiceUrl
+          : webServiceUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      authenticationToken: null == authenticationToken
+          ? _value.authenticationToken
+          : authenticationToken // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_PlatformPayOrderDetailsCopyWith<$Res>
+    implements $PlatformPayOrderDetailsCopyWith<$Res> {
+  factory _$$_PlatformPayOrderDetailsCopyWith(_$_PlatformPayOrderDetails value,
+          $Res Function(_$_PlatformPayOrderDetails) then) =
+      __$$_PlatformPayOrderDetailsCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String orderTypeIdentifier,
+      String orderIdentifier,
+      String webServiceUrl,
+      String authenticationToken});
+}
+
+/// @nodoc
+class __$$_PlatformPayOrderDetailsCopyWithImpl<$Res>
+    extends _$PlatformPayOrderDetailsCopyWithImpl<$Res,
+        _$_PlatformPayOrderDetails>
+    implements _$$_PlatformPayOrderDetailsCopyWith<$Res> {
+  __$$_PlatformPayOrderDetailsCopyWithImpl(_$_PlatformPayOrderDetails _value,
+      $Res Function(_$_PlatformPayOrderDetails) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderTypeIdentifier = null,
+    Object? orderIdentifier = null,
+    Object? webServiceUrl = null,
+    Object? authenticationToken = null,
+  }) {
+    return _then(_$_PlatformPayOrderDetails(
+      orderTypeIdentifier: null == orderTypeIdentifier
+          ? _value.orderTypeIdentifier
+          : orderTypeIdentifier // ignore: cast_nullable_to_non_nullable
+              as String,
+      orderIdentifier: null == orderIdentifier
+          ? _value.orderIdentifier
+          : orderIdentifier // ignore: cast_nullable_to_non_nullable
+              as String,
+      webServiceUrl: null == webServiceUrl
+          ? _value.webServiceUrl
+          : webServiceUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      authenticationToken: null == authenticationToken
+          ? _value.authenticationToken
+          : authenticationToken // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_PlatformPayOrderDetails implements _PlatformPayOrderDetails {
+  const _$_PlatformPayOrderDetails(
+      {required this.orderTypeIdentifier,
+      required this.orderIdentifier,
+      required this.webServiceUrl,
+      required this.authenticationToken});
+
+  factory _$_PlatformPayOrderDetails.fromJson(Map<String, dynamic> json) =>
+      _$$_PlatformPayOrderDetailsFromJson(json);
+
+  /// eg: "com.myapp.order"
+  @override
+  final String orderTypeIdentifier;
+
+  /// eg: "ABC123-AAAA-1111"
+  @override
+  final String orderIdentifier;
+
+  /// eg: "https://my-backend.example.com/apple-order-tracking-backend"
+  @override
+  final String webServiceUrl;
+
+  /// eg: "abc123"
+  @override
+  final String authenticationToken;
+
+  @override
+  String toString() {
+    return 'PlatformPayOrderDetails.applePay(orderTypeIdentifier: $orderTypeIdentifier, orderIdentifier: $orderIdentifier, webServiceUrl: $webServiceUrl, authenticationToken: $authenticationToken)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PlatformPayOrderDetails &&
+            (identical(other.orderTypeIdentifier, orderTypeIdentifier) ||
+                other.orderTypeIdentifier == orderTypeIdentifier) &&
+            (identical(other.orderIdentifier, orderIdentifier) ||
+                other.orderIdentifier == orderIdentifier) &&
+            (identical(other.webServiceUrl, webServiceUrl) ||
+                other.webServiceUrl == webServiceUrl) &&
+            (identical(other.authenticationToken, authenticationToken) ||
+                other.authenticationToken == authenticationToken));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, orderTypeIdentifier,
+      orderIdentifier, webServiceUrl, authenticationToken);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PlatformPayOrderDetailsCopyWith<_$_PlatformPayOrderDetails>
+      get copyWith =>
+          __$$_PlatformPayOrderDetailsCopyWithImpl<_$_PlatformPayOrderDetails>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String orderTypeIdentifier,
+            String orderIdentifier,
+            String webServiceUrl,
+            String authenticationToken)
+        applePay,
+  }) {
+    return applePay(orderTypeIdentifier, orderIdentifier, webServiceUrl,
+        authenticationToken);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String orderTypeIdentifier, String orderIdentifier,
+            String webServiceUrl, String authenticationToken)?
+        applePay,
+  }) {
+    return applePay?.call(orderTypeIdentifier, orderIdentifier, webServiceUrl,
+        authenticationToken);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String orderTypeIdentifier, String orderIdentifier,
+            String webServiceUrl, String authenticationToken)?
+        applePay,
+    required TResult orElse(),
+  }) {
+    if (applePay != null) {
+      return applePay(orderTypeIdentifier, orderIdentifier, webServiceUrl,
+          authenticationToken);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PlatformPayOrderDetails value) applePay,
+  }) {
+    return applePay(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PlatformPayOrderDetails value)? applePay,
+  }) {
+    return applePay?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PlatformPayOrderDetails value)? applePay,
+    required TResult orElse(),
+  }) {
+    if (applePay != null) {
+      return applePay(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PlatformPayOrderDetailsToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PlatformPayOrderDetails implements PlatformPayOrderDetails {
+  const factory _PlatformPayOrderDetails(
+      {required final String orderTypeIdentifier,
+      required final String orderIdentifier,
+      required final String webServiceUrl,
+      required final String authenticationToken}) = _$_PlatformPayOrderDetails;
+
+  factory _PlatformPayOrderDetails.fromJson(Map<String, dynamic> json) =
+      _$_PlatformPayOrderDetails.fromJson;
+
+  @override
+
+  /// eg: "com.myapp.order"
+  String get orderTypeIdentifier;
+  @override
+
+  /// eg: "ABC123-AAAA-1111"
+  String get orderIdentifier;
+  @override
+
+  /// eg: "https://my-backend.example.com/apple-order-tracking-backend"
+  String get webServiceUrl;
+  @override
+
+  /// eg: "abc123"
+  String get authenticationToken;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PlatformPayOrderDetailsCopyWith<_$_PlatformPayOrderDetails>
+      get copyWith => throw _privateConstructorUsedError;
 }

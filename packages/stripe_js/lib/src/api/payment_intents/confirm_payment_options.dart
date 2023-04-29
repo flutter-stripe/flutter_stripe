@@ -50,5 +50,6 @@ class ConfirmPaymentParams with _$ConfirmPaymentParams {
 /// will only redirect if your user chooses a redirect-based payment method.
 enum PaymentConfirmationRedirect {
   always,
+  @JsonKey(name: 'if_required')
   ifRequired,
 }

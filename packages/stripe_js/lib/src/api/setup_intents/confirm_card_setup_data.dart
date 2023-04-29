@@ -10,8 +10,7 @@ class ConfirmCardSetupData with _$ConfirmCardSetupData {
     /// Either the id of an existing PaymentMethod, or an object containing
     /// data to create a PaymentMethod with.
     /// See the use case sections below for details.
-    @PaymentMethodRefConverter()
-        PaymentMethodRef<CardPaymentMethodDetails>? paymentMethod,
+    @paymentMethodDetailJsonKey CardPaymentMethodDetails? paymentMethod,
 
     /// If you are handling next actions yourself, pass in a return_url.
     /// If the subsequent action is redirect_to_url,

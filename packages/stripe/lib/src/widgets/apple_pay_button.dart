@@ -2,9 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:stripe_platform_interface/stripe_platform_interface.dart';
-
-import '../model/apple_pay_button.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 const double _kApplePayButtonDefaultHeight = 48;
 
@@ -25,8 +23,8 @@ class ApplePayButton extends StatelessWidget {
     double? height = _kApplePayButtonDefaultHeight,
     BoxConstraints? constraints,
     this.onShippingContactSelected,
-    this.onDidSetCoupon,
     this.onShippingMethodSelected,
+    this.onCouponCodeEntered,
     this.onOrderTracking,
   })  : assert(constraints == null || constraints.debugAssertIsValid()),
         constraints = (width != null || height != null)
@@ -57,23 +55,33 @@ class ApplePayButton extends StatelessWidget {
   /// Callback that is executed when the button is pressed.
   final VoidCallback? onPressed;
 
-  /// Callback that is executed when a shipping contact is selected
-  final OnDidSetShippingContact? onShippingContactSelected;
-
-  /// Callback that is execyted when shipping method is selected
-  final OnDidSetShippingMethod? onShippingMethodSelected;
-
-  /// Callback that is execyted when shipping method is selected
-  final OnDidSetCoupon? onDidSetCoupon;
-
   /// Additional constraints for the Apple pay button widget.
   final BoxConstraints? constraints;
 
-  /// Callback function for setting the order details (retrieved from your server) to give users the
-  /// ability to track and manage their purchases in Wallet. Stripe calls your implementation after the
-  /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
-  /// function, or else the Apple Pay sheet will hang.
-  final SetOrderTracking? onOrderTracking;
+  /// For iOS only, a callback that is executed when a shipping contact is
+  /// entered. If implemented this method requires to call
+  /// 'Stripe.instance.updatePlatformSheet' with the updated shipping details
+  final OnDidSetShippingContact? onShippingContactSelected;
+
+  /// For iOS only, a callback that is executed when a shipping method is
+  /// selected. If implemented this method requires to call
+  /// 'Stripe.instance.updatePlatformSheet' with the updated price items
+  final OnDidSetShippingMethod? onShippingMethodSelected;
+
+  /// For iOS only, a callback that is executed when a shipping method is
+  /// selected. If implemented this method requires to call
+  /// 'Stripe.instance.updatePlatformSheet' with the updated price items
+  final OnCouponCodeEntered? onCouponCodeEntered;
+
+  /// For iOS only. If implemented, the callback is executed when an order is
+  /// about to be completed and the developer needs to provide the tracking
+  /// information. This method needs to call
+  /// 'Stripe.instance.configurePlatformOrderTracking' with that info for
+  /// setting the order details (retrieved from your server) to give users the
+  /// ability to track and manage their purchases in Wallet
+  ///
+  /// See https://stripe.com/docs/apple-pay?platform=ios&locale=es-ES#order-tracking
+  final OnOrderTracking? onOrderTracking;
 
   @override
   Widget build(BuildContext context) => ConstrainedBox(
@@ -91,9 +99,9 @@ class ApplePayButton extends StatelessWidget {
           style: style,
           cornerRadius: cornerRadius,
           onPressed: onPressed,
-          onDidSetShippingContact: onShippingContactSelected,
-          onDidSetCoupon: onDidSetCoupon,
+          onShippingContactSelected: onShippingContactSelected,
           onShippingMethodSelected: onShippingMethodSelected,
+          onCouponCodeEntered: onCouponCodeEntered,
           onOrderTracking: onOrderTracking,
         );
       default:
@@ -110,8 +118,8 @@ class _UiKitApplePayButton extends StatefulWidget {
     required this.type,
     this.cornerRadius = 4.0,
     this.onPressed,
-    this.onDidSetShippingContact,
-    this.onDidSetCoupon,
+    this.onShippingContactSelected,
+    this.onCouponCodeEntered,
     this.onShippingMethodSelected,
     this.onOrderTracking,
   }) : super(key: key);
@@ -120,10 +128,10 @@ class _UiKitApplePayButton extends StatefulWidget {
   final PlatformButtonType type;
   final double cornerRadius;
   final VoidCallback? onPressed;
-  final OnDidSetShippingContact? onDidSetShippingContact;
+  final OnDidSetShippingContact? onShippingContactSelected;
   final OnDidSetShippingMethod? onShippingMethodSelected;
-  final OnDidSetCoupon? onDidSetCoupon;
-  final SetOrderTracking? onOrderTracking;
+  final OnCouponCodeEntered? onCouponCodeEntered;
+  final OnOrderTracking? onOrderTracking;
   @override
   _UiKitApplePayButtonState createState() => _UiKitApplePayButtonState();
 }
@@ -143,35 +151,70 @@ class _UiKitApplePayButtonState extends State<_UiKitApplePayButton> {
       },
       onPlatformViewCreated: (viewId) {
         methodChannel = MethodChannel('flutter.stripe/apple_pay/$viewId');
-        methodChannel?.setMethodCallHandler((call) async {
-          if (call.method == 'onPressed') {
-            widget.onPressed?.call();
-          }
-          if (call.method == 'onShippingContactSelected') {
-            final args =
-                _convertShippingContact(call.arguments['shippingContact']);
-            widget.onDidSetShippingContact?.call(args);
-          }
-          if (call.method == 'onShippingMethodSelected') {
-            final args = ApplePayShippingMethod.fromJson(
-                call.arguments['shippingMethod']);
-            widget.onShippingMethodSelected?.call(args);
-          }
-          if (call.method == 'onShippingContactSelected') {
-            widget.onDidSetCoupon?.call(call.arguments['couponCode']);
-          }
-          if (call.method == 'onOrderTracking') {
-            widget.onOrderTracking?.call(
-              call.arguments['orderIdentifier'],
-              call.arguments['orderTypeIdentifier'],
-              call.arguments['authenticationToken'],
-              call.arguments['webServiceUrl'],
-            );
-          }
-          return;
-        });
+        methodChannel?.setMethodCallHandler(callHandler);
+        _updateHandlers();
       },
     );
+  }
+
+  Future<void> callHandler(MethodCall call) async {
+    switch (call.method) {
+      case 'onPressed':
+        widget.onPressed?.call();
+        break;
+      case 'onShippingContactSelected':
+        if (widget.onShippingContactSelected == null) {
+          return;
+        }
+        assert(() {
+          Stripe.instance.debugUpdatePlatformSheetCalled = false;
+          return true;
+        }());
+
+        final args = _convertShippingContact(call.arguments['shippingContact']);
+        await widget.onShippingContactSelected?.call(args);
+        assert(
+          Stripe.instance.debugUpdatePlatformSheetCalled,
+          'You need to call Stripe.instance.updatePlatformSheet after onShippingContactSelected is called',
+        );
+        break;
+      case 'onShippingMethodSelected':
+        if (widget.onShippingMethodSelected == null) {
+          return;
+        }
+        assert(() {
+          Stripe.instance.debugUpdatePlatformSheetCalled = false;
+          return true;
+        }());
+        final args =
+            Map<String, dynamic>.from(call.arguments['shippingMethod']);
+
+        final newShippingMethod = ApplePayShippingMethod.fromJson(args);
+        await widget.onShippingMethodSelected!.call(newShippingMethod);
+        assert(
+          Stripe.instance.debugUpdatePlatformSheetCalled,
+          'You need to call Stripe.instance.updatePlatformSheet after onShippingMethodSelected is called',
+        );
+        break;
+      case 'onCouponCodeEntered':
+        await widget.onCouponCodeEntered?.call(call.arguments['couponCode']);
+        break;
+      case 'onOrderTracking':
+        if (widget.onOrderTracking == null) {
+          return;
+        }
+        assert(() {
+          Stripe.instance.debugConfigurePlatformOrderTrackingCalled = false;
+          return true;
+        }());
+
+        await widget.onOrderTracking?.call();
+        assert(
+          Stripe.instance.debugConfigurePlatformOrderTrackingCalled,
+          'You need to call Stripe.instance.configurePlatformOrderTracking after onOrderTracking is called',
+        );
+        break;
+    }
   }
 
   @override
@@ -181,8 +224,20 @@ class _UiKitApplePayButtonState extends State<_UiKitApplePayButton> {
         'type': widget.type.id,
         'style': widget.style.id,
       });
+      _updateHandlers();
     }
+
     super.didUpdateWidget(oldWidget);
+  }
+
+  /// The platform layer needs to know if the callbacks are implemented or not
+  void _updateHandlers() {
+    methodChannel?.invokeMethod('updateHandlers', {
+      'onShippingContactSelected': widget.onShippingContactSelected != null,
+      'onShippingMethodSelected': widget.onShippingMethodSelected != null,
+      'onCouponCodeEntered': widget.onCouponCodeEntered != null,
+      'onOrderTracking': widget.onOrderTracking != null,
+    });
   }
 }
 

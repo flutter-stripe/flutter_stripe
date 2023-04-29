@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'confirm_sepa_debit_payment_data.dart';
 
@@ -24,9 +24,8 @@ mixin _$ConfirmSepaDebitPaymentData {
   /// Either the id of an existing PaymentMethod, or an object containing
   /// data to create a PaymentMethod with.
   /// See the use case sections below for details.
-  @JsonKey(name: "payment_method")
-  @SepaDebitPaymentMethodRefConverter()
-  PaymentMethodRef<SepaDebitPaymentMethodDetails>? get paymentMethod =>
+  @paymentMethodDetailJsonKey
+  SepaDebitPaymentMethodDetails? get paymentMethod =>
       throw _privateConstructorUsedError;
 
   /// To set up the SEPA Direct Debit account for reuse, set this parameter
@@ -53,14 +52,12 @@ abstract class $ConfirmSepaDebitPaymentDataCopyWith<$Res> {
           ConfirmSepaDebitPaymentData>;
   @useResult
   $Res call(
-      {@JsonKey(name: "payment_method")
-      @SepaDebitPaymentMethodRefConverter()
-          PaymentMethodRef<SepaDebitPaymentMethodDetails>? paymentMethod,
+      {@paymentMethodDetailJsonKey
+          SepaDebitPaymentMethodDetails? paymentMethod,
       @JsonKey(name: "setup_future_usage")
           PaymentIntentSetupFutureUsage? setupFutureUsage});
 
-  $PaymentMethodRefCopyWith<SepaDebitPaymentMethodDetails, $Res>?
-      get paymentMethod;
+  $SepaDebitPaymentMethodDetailsCopyWith<$Res>? get paymentMethod;
 }
 
 /// @nodoc
@@ -84,7 +81,7 @@ class _$ConfirmSepaDebitPaymentDataCopyWithImpl<$Res,
       paymentMethod: freezed == paymentMethod
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
-              as PaymentMethodRef<SepaDebitPaymentMethodDetails>?,
+              as SepaDebitPaymentMethodDetails?,
       setupFutureUsage: freezed == setupFutureUsage
           ? _value.setupFutureUsage
           : setupFutureUsage // ignore: cast_nullable_to_non_nullable
@@ -94,14 +91,13 @@ class _$ConfirmSepaDebitPaymentDataCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $PaymentMethodRefCopyWith<SepaDebitPaymentMethodDetails, $Res>?
-      get paymentMethod {
+  $SepaDebitPaymentMethodDetailsCopyWith<$Res>? get paymentMethod {
     if (_value.paymentMethod == null) {
       return null;
     }
 
-    return $PaymentMethodRefCopyWith<SepaDebitPaymentMethodDetails, $Res>(
-        _value.paymentMethod!, (value) {
+    return $SepaDebitPaymentMethodDetailsCopyWith<$Res>(_value.paymentMethod!,
+        (value) {
       return _then(_value.copyWith(paymentMethod: value) as $Val);
     });
   }
@@ -117,15 +113,13 @@ abstract class _$$_ConfirmSepaDebitPaymentDataCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "payment_method")
-      @SepaDebitPaymentMethodRefConverter()
-          PaymentMethodRef<SepaDebitPaymentMethodDetails>? paymentMethod,
+      {@paymentMethodDetailJsonKey
+          SepaDebitPaymentMethodDetails? paymentMethod,
       @JsonKey(name: "setup_future_usage")
           PaymentIntentSetupFutureUsage? setupFutureUsage});
 
   @override
-  $PaymentMethodRefCopyWith<SepaDebitPaymentMethodDetails, $Res>?
-      get paymentMethod;
+  $SepaDebitPaymentMethodDetailsCopyWith<$Res>? get paymentMethod;
 }
 
 /// @nodoc
@@ -148,7 +142,7 @@ class __$$_ConfirmSepaDebitPaymentDataCopyWithImpl<$Res>
       paymentMethod: freezed == paymentMethod
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
-              as PaymentMethodRef<SepaDebitPaymentMethodDetails>?,
+              as SepaDebitPaymentMethodDetails?,
       setupFutureUsage: freezed == setupFutureUsage
           ? _value.setupFutureUsage
           : setupFutureUsage // ignore: cast_nullable_to_non_nullable
@@ -161,11 +155,8 @@ class __$$_ConfirmSepaDebitPaymentDataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ConfirmSepaDebitPaymentData implements _ConfirmSepaDebitPaymentData {
   const _$_ConfirmSepaDebitPaymentData(
-      {@JsonKey(name: "payment_method")
-      @SepaDebitPaymentMethodRefConverter()
-          this.paymentMethod,
-      @JsonKey(name: "setup_future_usage")
-          this.setupFutureUsage});
+      {@paymentMethodDetailJsonKey this.paymentMethod,
+      @JsonKey(name: "setup_future_usage") this.setupFutureUsage});
 
   factory _$_ConfirmSepaDebitPaymentData.fromJson(Map<String, dynamic> json) =>
       _$$_ConfirmSepaDebitPaymentDataFromJson(json);
@@ -174,9 +165,8 @@ class _$_ConfirmSepaDebitPaymentData implements _ConfirmSepaDebitPaymentData {
   /// data to create a PaymentMethod with.
   /// See the use case sections below for details.
   @override
-  @JsonKey(name: "payment_method")
-  @SepaDebitPaymentMethodRefConverter()
-  final PaymentMethodRef<SepaDebitPaymentMethodDetails>? paymentMethod;
+  @paymentMethodDetailJsonKey
+  final SepaDebitPaymentMethodDetails? paymentMethod;
 
   /// To set up the SEPA Direct Debit account for reuse, set this parameter
   /// to off_session. SEPA Direct Debit only accepts an off_session value
@@ -225,12 +215,11 @@ class _$_ConfirmSepaDebitPaymentData implements _ConfirmSepaDebitPaymentData {
 abstract class _ConfirmSepaDebitPaymentData
     implements ConfirmSepaDebitPaymentData {
   const factory _ConfirmSepaDebitPaymentData(
-      {@JsonKey(name: "payment_method")
-      @SepaDebitPaymentMethodRefConverter()
-          final PaymentMethodRef<SepaDebitPaymentMethodDetails>? paymentMethod,
-      @JsonKey(name: "setup_future_usage")
-          final PaymentIntentSetupFutureUsage?
-              setupFutureUsage}) = _$_ConfirmSepaDebitPaymentData;
+          {@paymentMethodDetailJsonKey
+              final SepaDebitPaymentMethodDetails? paymentMethod,
+          @JsonKey(name: "setup_future_usage")
+              final PaymentIntentSetupFutureUsage? setupFutureUsage}) =
+      _$_ConfirmSepaDebitPaymentData;
 
   factory _ConfirmSepaDebitPaymentData.fromJson(Map<String, dynamic> json) =
       _$_ConfirmSepaDebitPaymentData.fromJson;
@@ -240,9 +229,8 @@ abstract class _ConfirmSepaDebitPaymentData
   /// Either the id of an existing PaymentMethod, or an object containing
   /// data to create a PaymentMethod with.
   /// See the use case sections below for details.
-  @JsonKey(name: "payment_method")
-  @SepaDebitPaymentMethodRefConverter()
-  PaymentMethodRef<SepaDebitPaymentMethodDetails>? get paymentMethod;
+  @paymentMethodDetailJsonKey
+  SepaDebitPaymentMethodDetails? get paymentMethod;
   @override
 
   /// To set up the SEPA Direct Debit account for reuse, set this parameter
@@ -262,6 +250,8 @@ SepaDebitPaymentMethodDetails _$SepaDebitPaymentMethodDetailsFromJson(
     Map<String, dynamic> json) {
   switch (json['type']) {
     case 'sepa_debit':
+      return _IdSepaDebitPaymentMethodDetails.fromJson(json);
+    case 'sepa_debit':
       return _SepaDebitPaymentMethodDetails.fromJson(json);
     case 'sepa_debit':
       return _SepaDebitPaymentMethodDetailsWithIban.fromJson(json);
@@ -277,9 +267,6 @@ SepaDebitPaymentMethodDetails _$SepaDebitPaymentMethodDetailsFromJson(
 
 /// @nodoc
 mixin _$SepaDebitPaymentMethodDetails {
-  /// The customer's billing_details. name and email are required.
-  @JsonKey(name: "billing_details")
-  SepaBillingDetails? get billingDetails => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
@@ -289,6 +276,7 @@ mixin _$SepaDebitPaymentMethodDetails {
             @JsonKey(name: "billing_details")
                 SepaBillingDetails? billingDetails)
         $default, {
+    required TResult Function(String id) id,
     required TResult Function(
             @JsonKey(name: "sepa_debit")
                 SepaDebitIbanData sepaDebit,
@@ -306,6 +294,7 @@ mixin _$SepaDebitPaymentMethodDetails {
             @JsonKey(name: "billing_details")
                 SepaBillingDetails? billingDetails)?
         $default, {
+    TResult? Function(String id)? id,
     TResult? Function(
             @JsonKey(name: "sepa_debit")
                 SepaDebitIbanData sepaDebit,
@@ -323,6 +312,7 @@ mixin _$SepaDebitPaymentMethodDetails {
             @JsonKey(name: "billing_details")
                 SepaBillingDetails? billingDetails)?
         $default, {
+    TResult Function(String id)? id,
     TResult Function(
             @JsonKey(name: "sepa_debit")
                 SepaDebitIbanData sepaDebit,
@@ -335,6 +325,7 @@ mixin _$SepaDebitPaymentMethodDetails {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_SepaDebitPaymentMethodDetails value) $default, {
+    required TResult Function(_IdSepaDebitPaymentMethodDetails value) id,
     required TResult Function(_SepaDebitPaymentMethodDetailsWithIban value)
         withIban,
   }) =>
@@ -342,20 +333,19 @@ mixin _$SepaDebitPaymentMethodDetails {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_SepaDebitPaymentMethodDetails value)? $default, {
+    TResult? Function(_IdSepaDebitPaymentMethodDetails value)? id,
     TResult? Function(_SepaDebitPaymentMethodDetailsWithIban value)? withIban,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_SepaDebitPaymentMethodDetails value)? $default, {
+    TResult Function(_IdSepaDebitPaymentMethodDetails value)? id,
     TResult Function(_SepaDebitPaymentMethodDetailsWithIban value)? withIban,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $SepaDebitPaymentMethodDetailsCopyWith<SepaDebitPaymentMethodDetails>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -365,11 +355,6 @@ abstract class $SepaDebitPaymentMethodDetailsCopyWith<$Res> {
           $Res Function(SepaDebitPaymentMethodDetails) then) =
       _$SepaDebitPaymentMethodDetailsCopyWithImpl<$Res,
           SepaDebitPaymentMethodDetails>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: "billing_details") SepaBillingDetails? billingDetails});
-
-  $SepaBillingDetailsCopyWith<$Res>? get billingDetails;
 }
 
 /// @nodoc
@@ -382,47 +367,220 @@ class _$SepaDebitPaymentMethodDetailsCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$_IdSepaDebitPaymentMethodDetailsCopyWith<$Res> {
+  factory _$$_IdSepaDebitPaymentMethodDetailsCopyWith(
+          _$_IdSepaDebitPaymentMethodDetails value,
+          $Res Function(_$_IdSepaDebitPaymentMethodDetails) then) =
+      __$$_IdSepaDebitPaymentMethodDetailsCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$_IdSepaDebitPaymentMethodDetailsCopyWithImpl<$Res>
+    extends _$SepaDebitPaymentMethodDetailsCopyWithImpl<$Res,
+        _$_IdSepaDebitPaymentMethodDetails>
+    implements _$$_IdSepaDebitPaymentMethodDetailsCopyWith<$Res> {
+  __$$_IdSepaDebitPaymentMethodDetailsCopyWithImpl(
+      _$_IdSepaDebitPaymentMethodDetails _value,
+      $Res Function(_$_IdSepaDebitPaymentMethodDetails) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? billingDetails = freezed,
+    Object? id = null,
   }) {
-    return _then(_value.copyWith(
-      billingDetails: freezed == billingDetails
-          ? _value.billingDetails
-          : billingDetails // ignore: cast_nullable_to_non_nullable
-              as SepaBillingDetails?,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $SepaBillingDetailsCopyWith<$Res>? get billingDetails {
-    if (_value.billingDetails == null) {
-      return null;
-    }
-
-    return $SepaBillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
-      return _then(_value.copyWith(billingDetails: value) as $Val);
-    });
+    return _then(_$_IdSepaDebitPaymentMethodDetails(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
-abstract class _$$_SepaDebitPaymentMethodDetailsCopyWith<$Res>
-    implements $SepaDebitPaymentMethodDetailsCopyWith<$Res> {
+@JsonSerializable()
+class _$_IdSepaDebitPaymentMethodDetails
+    implements _IdSepaDebitPaymentMethodDetails {
+  const _$_IdSepaDebitPaymentMethodDetails(this.id, {final String? $type})
+      : $type = $type ?? 'sepa_debit';
+
+  factory _$_IdSepaDebitPaymentMethodDetails.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_IdSepaDebitPaymentMethodDetailsFromJson(json);
+
+  @override
+  final String id;
+
+  @JsonKey(name: 'type')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'SepaDebitPaymentMethodDetails.id(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_IdSepaDebitPaymentMethodDetails &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_IdSepaDebitPaymentMethodDetailsCopyWith<
+          _$_IdSepaDebitPaymentMethodDetails>
+      get copyWith => __$$_IdSepaDebitPaymentMethodDetailsCopyWithImpl<
+          _$_IdSepaDebitPaymentMethodDetails>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: "sepa_debit")
+            @ElementConverter()
+                Element sepaDebit,
+            @JsonKey(name: "billing_details")
+                SepaBillingDetails? billingDetails)
+        $default, {
+    required TResult Function(String id) id,
+    required TResult Function(
+            @JsonKey(name: "sepa_debit")
+                SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details")
+                SepaBillingDetails? billingDetails)
+        withIban,
+  }) {
+    return id(this.id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: "sepa_debit")
+            @ElementConverter()
+                Element sepaDebit,
+            @JsonKey(name: "billing_details")
+                SepaBillingDetails? billingDetails)?
+        $default, {
+    TResult? Function(String id)? id,
+    TResult? Function(
+            @JsonKey(name: "sepa_debit")
+                SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details")
+                SepaBillingDetails? billingDetails)?
+        withIban,
+  }) {
+    return id?.call(this.id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: "sepa_debit")
+            @ElementConverter()
+                Element sepaDebit,
+            @JsonKey(name: "billing_details")
+                SepaBillingDetails? billingDetails)?
+        $default, {
+    TResult Function(String id)? id,
+    TResult Function(
+            @JsonKey(name: "sepa_debit")
+                SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details")
+                SepaBillingDetails? billingDetails)?
+        withIban,
+    required TResult orElse(),
+  }) {
+    if (id != null) {
+      return id(this.id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_SepaDebitPaymentMethodDetails value) $default, {
+    required TResult Function(_IdSepaDebitPaymentMethodDetails value) id,
+    required TResult Function(_SepaDebitPaymentMethodDetailsWithIban value)
+        withIban,
+  }) {
+    return id(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_SepaDebitPaymentMethodDetails value)? $default, {
+    TResult? Function(_IdSepaDebitPaymentMethodDetails value)? id,
+    TResult? Function(_SepaDebitPaymentMethodDetailsWithIban value)? withIban,
+  }) {
+    return id?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_SepaDebitPaymentMethodDetails value)? $default, {
+    TResult Function(_IdSepaDebitPaymentMethodDetails value)? id,
+    TResult Function(_SepaDebitPaymentMethodDetailsWithIban value)? withIban,
+    required TResult orElse(),
+  }) {
+    if (id != null) {
+      return id(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_IdSepaDebitPaymentMethodDetailsToJson(
+      this,
+    );
+  }
+}
+
+abstract class _IdSepaDebitPaymentMethodDetails
+    implements SepaDebitPaymentMethodDetails, IdPaymentMethodDetails {
+  const factory _IdSepaDebitPaymentMethodDetails(final String id) =
+      _$_IdSepaDebitPaymentMethodDetails;
+
+  factory _IdSepaDebitPaymentMethodDetails.fromJson(Map<String, dynamic> json) =
+      _$_IdSepaDebitPaymentMethodDetails.fromJson;
+
+  String get id;
+  @JsonKey(ignore: true)
+  _$$_IdSepaDebitPaymentMethodDetailsCopyWith<
+          _$_IdSepaDebitPaymentMethodDetails>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SepaDebitPaymentMethodDetailsCopyWith<$Res> {
   factory _$$_SepaDebitPaymentMethodDetailsCopyWith(
           _$_SepaDebitPaymentMethodDetails value,
           $Res Function(_$_SepaDebitPaymentMethodDetails) then) =
       __$$_SepaDebitPaymentMethodDetailsCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call(
       {@JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
       @JsonKey(name: "billing_details") SepaBillingDetails? billingDetails});
 
-  @override
   $SepaBillingDetailsCopyWith<$Res>? get billingDetails;
 }
 
@@ -452,6 +610,18 @@ class __$$_SepaDebitPaymentMethodDetailsCopyWithImpl<$Res>
           : billingDetails // ignore: cast_nullable_to_non_nullable
               as SepaBillingDetails?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SepaBillingDetailsCopyWith<$Res>? get billingDetails {
+    if (_value.billingDetails == null) {
+      return null;
+    }
+
+    return $SepaBillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
+      return _then(_value.copyWith(billingDetails: value));
+    });
   }
 }
 
@@ -520,6 +690,7 @@ class _$_SepaDebitPaymentMethodDetails
             @JsonKey(name: "billing_details")
                 SepaBillingDetails? billingDetails)
         $default, {
+    required TResult Function(String id) id,
     required TResult Function(
             @JsonKey(name: "sepa_debit")
                 SepaDebitIbanData sepaDebit,
@@ -540,6 +711,7 @@ class _$_SepaDebitPaymentMethodDetails
             @JsonKey(name: "billing_details")
                 SepaBillingDetails? billingDetails)?
         $default, {
+    TResult? Function(String id)? id,
     TResult? Function(
             @JsonKey(name: "sepa_debit")
                 SepaDebitIbanData sepaDebit,
@@ -560,6 +732,7 @@ class _$_SepaDebitPaymentMethodDetails
             @JsonKey(name: "billing_details")
                 SepaBillingDetails? billingDetails)?
         $default, {
+    TResult Function(String id)? id,
     TResult Function(
             @JsonKey(name: "sepa_debit")
                 SepaDebitIbanData sepaDebit,
@@ -578,6 +751,7 @@ class _$_SepaDebitPaymentMethodDetails
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_SepaDebitPaymentMethodDetails value) $default, {
+    required TResult Function(_IdSepaDebitPaymentMethodDetails value) id,
     required TResult Function(_SepaDebitPaymentMethodDetailsWithIban value)
         withIban,
   }) {
@@ -588,6 +762,7 @@ class _$_SepaDebitPaymentMethodDetails
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_SepaDebitPaymentMethodDetails value)? $default, {
+    TResult? Function(_IdSepaDebitPaymentMethodDetails value)? id,
     TResult? Function(_SepaDebitPaymentMethodDetailsWithIban value)? withIban,
   }) {
     return $default?.call(this);
@@ -597,6 +772,7 @@ class _$_SepaDebitPaymentMethodDetails
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_SepaDebitPaymentMethodDetails value)? $default, {
+    TResult Function(_IdSepaDebitPaymentMethodDetails value)? id,
     TResult Function(_SepaDebitPaymentMethodDetailsWithIban value)? withIban,
     required TResult orElse(),
   }) {
@@ -631,32 +807,27 @@ abstract class _SepaDebitPaymentMethodDetails
   @JsonKey(name: "sepa_debit")
   @ElementConverter()
   Element get sepaDebit;
-  @override
 
   /// The customer's billing_details. name and email are required.
   @JsonKey(name: "billing_details")
   SepaBillingDetails? get billingDetails;
-  @override
   @JsonKey(ignore: true)
   _$$_SepaDebitPaymentMethodDetailsCopyWith<_$_SepaDebitPaymentMethodDetails>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_SepaDebitPaymentMethodDetailsWithIbanCopyWith<$Res>
-    implements $SepaDebitPaymentMethodDetailsCopyWith<$Res> {
+abstract class _$$_SepaDebitPaymentMethodDetailsWithIbanCopyWith<$Res> {
   factory _$$_SepaDebitPaymentMethodDetailsWithIbanCopyWith(
           _$_SepaDebitPaymentMethodDetailsWithIban value,
           $Res Function(_$_SepaDebitPaymentMethodDetailsWithIban) then) =
       __$$_SepaDebitPaymentMethodDetailsWithIbanCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call(
       {@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
       @JsonKey(name: "billing_details") SepaBillingDetails? billingDetails});
 
   $SepaDebitIbanDataCopyWith<$Res> get sepaDebit;
-  @override
   $SepaBillingDetailsCopyWith<$Res>? get billingDetails;
 }
 
@@ -693,6 +864,18 @@ class __$$_SepaDebitPaymentMethodDetailsWithIbanCopyWithImpl<$Res>
   $SepaDebitIbanDataCopyWith<$Res> get sepaDebit {
     return $SepaDebitIbanDataCopyWith<$Res>(_value.sepaDebit, (value) {
       return _then(_value.copyWith(sepaDebit: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SepaBillingDetailsCopyWith<$Res>? get billingDetails {
+    if (_value.billingDetails == null) {
+      return null;
+    }
+
+    return $SepaBillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
+      return _then(_value.copyWith(billingDetails: value));
     });
   }
 }
@@ -762,6 +945,7 @@ class _$_SepaDebitPaymentMethodDetailsWithIban
             @JsonKey(name: "billing_details")
                 SepaBillingDetails? billingDetails)
         $default, {
+    required TResult Function(String id) id,
     required TResult Function(
             @JsonKey(name: "sepa_debit")
                 SepaDebitIbanData sepaDebit,
@@ -782,6 +966,7 @@ class _$_SepaDebitPaymentMethodDetailsWithIban
             @JsonKey(name: "billing_details")
                 SepaBillingDetails? billingDetails)?
         $default, {
+    TResult? Function(String id)? id,
     TResult? Function(
             @JsonKey(name: "sepa_debit")
                 SepaDebitIbanData sepaDebit,
@@ -802,6 +987,7 @@ class _$_SepaDebitPaymentMethodDetailsWithIban
             @JsonKey(name: "billing_details")
                 SepaBillingDetails? billingDetails)?
         $default, {
+    TResult Function(String id)? id,
     TResult Function(
             @JsonKey(name: "sepa_debit")
                 SepaDebitIbanData sepaDebit,
@@ -820,6 +1006,7 @@ class _$_SepaDebitPaymentMethodDetailsWithIban
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_SepaDebitPaymentMethodDetails value) $default, {
+    required TResult Function(_IdSepaDebitPaymentMethodDetails value) id,
     required TResult Function(_SepaDebitPaymentMethodDetailsWithIban value)
         withIban,
   }) {
@@ -830,6 +1017,7 @@ class _$_SepaDebitPaymentMethodDetailsWithIban
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_SepaDebitPaymentMethodDetails value)? $default, {
+    TResult? Function(_IdSepaDebitPaymentMethodDetails value)? id,
     TResult? Function(_SepaDebitPaymentMethodDetailsWithIban value)? withIban,
   }) {
     return withIban?.call(this);
@@ -839,6 +1027,7 @@ class _$_SepaDebitPaymentMethodDetailsWithIban
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_SepaDebitPaymentMethodDetails value)? $default, {
+    TResult Function(_IdSepaDebitPaymentMethodDetails value)? id,
     TResult Function(_SepaDebitPaymentMethodDetailsWithIban value)? withIban,
     required TResult orElse(),
   }) {
@@ -872,12 +1061,10 @@ abstract class _SepaDebitPaymentMethodDetailsWithIban
   /// Uses the provided card or cardNumber Element for confirmation.
   @JsonKey(name: "sepa_debit")
   SepaDebitIbanData get sepaDebit;
-  @override
 
   /// The customer's billing_details. name and email are required.
   @JsonKey(name: "billing_details")
   SepaBillingDetails? get billingDetails;
-  @override
   @JsonKey(ignore: true)
   _$$_SepaDebitPaymentMethodDetailsWithIbanCopyWith<
           _$_SepaDebitPaymentMethodDetailsWithIban>

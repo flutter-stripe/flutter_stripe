@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 /// [Stripe] is the facade of the library and exposes the operations that can be
@@ -226,6 +227,9 @@ class Stripe {
     }
   }
 
+  @internal
+  bool debugUpdatePlatformSheetCalled = false;
+
   /// Updates the native payment sheet with new data **iOS-only.
   ///
   /// For example this method is required to call when the user updates shippingmethod, shippingAddress and couponcode.
@@ -233,7 +237,31 @@ class Stripe {
     required PlatformPaySheetUpdateParams params,
   }) async {
     await _awaitForSettings();
+    assert(() {
+      debugUpdatePlatformSheetCalled = true;
+      return true;
+    }());
+    debugUpdatePlatformSheetCalled = true;
     return _platform.updatePlatformSheet(params: params);
+  }
+
+  @internal
+  bool debugConfigurePlatformOrderTrackingCalled = false;
+
+  /// Updates the native payment sheet with new order tracking information
+  /// **iOS-only.
+  ///
+  /// This method is required to call when the onOrderTracking is
+  /// called
+  Future<void> configurePlatformOrderTracking({
+    required PlatformPayOrderDetails orderDetails,
+  }) async {
+    await _awaitForSettings();
+    assert(() {
+      debugConfigurePlatformOrderTrackingCalled = true;
+      return true;
+    }());
+    return _platform.configurePlatformOrderTracking(orderDetails: orderDetails);
   }
 
   /// Creates a single-use token that represents an Apple Pay credit card’s details.

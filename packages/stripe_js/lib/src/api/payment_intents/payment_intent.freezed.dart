@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'payment_intent.dart';
 
@@ -353,12 +353,12 @@ class _$PaymentIntentCopyWithImpl<$Res, $Val extends PaymentIntent>
     Object? latestCharge = freezed,
     Object? livemode = null,
     Object? metadata = null,
-    Object? nextAction = null,
+    Object? nextAction = freezed,
     Object? onBehalfOf = freezed,
     Object? paymentMethod = freezed,
     Object? paymentMethodOptions = null,
     Object? paymentMethodTypes = null,
-    Object? processing = null,
+    Object? processing = freezed,
     Object? receiptEmail = freezed,
     Object? review = freezed,
     Object? setupFutureUsage = freezed,
@@ -366,8 +366,8 @@ class _$PaymentIntentCopyWithImpl<$Res, $Val extends PaymentIntent>
     Object? statementDescriptor = freezed,
     Object? statementDescriptorSuffix = freezed,
     Object? status = null,
-    Object? transferData = null,
-    Object? transferGroup = null,
+    Object? transferData = freezed,
+    Object? transferGroup = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -462,7 +462,7 @@ class _$PaymentIntentCopyWithImpl<$Res, $Val extends PaymentIntent>
           ? _value.metadata
           : metadata // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
-      nextAction: null == nextAction
+      nextAction: freezed == nextAction
           ? _value.nextAction
           : nextAction // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -482,7 +482,7 @@ class _$PaymentIntentCopyWithImpl<$Res, $Val extends PaymentIntent>
           ? _value.paymentMethodTypes
           : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
               as List<PaymentMethodType>,
-      processing: null == processing
+      processing: freezed == processing
           ? _value.processing
           : processing // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -514,11 +514,11 @@ class _$PaymentIntentCopyWithImpl<$Res, $Val extends PaymentIntent>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as PaymentIntentsStatus,
-      transferData: null == transferData
+      transferData: freezed == transferData
           ? _value.transferData
           : transferData // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      transferGroup: null == transferGroup
+      transferGroup: freezed == transferGroup
           ? _value.transferGroup
           : transferGroup // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -693,12 +693,12 @@ class __$$_PaymentIntentCopyWithImpl<$Res>
     Object? latestCharge = freezed,
     Object? livemode = null,
     Object? metadata = null,
-    Object? nextAction = null,
+    Object? nextAction = freezed,
     Object? onBehalfOf = freezed,
     Object? paymentMethod = freezed,
     Object? paymentMethodOptions = null,
     Object? paymentMethodTypes = null,
-    Object? processing = null,
+    Object? processing = freezed,
     Object? receiptEmail = freezed,
     Object? review = freezed,
     Object? setupFutureUsage = freezed,
@@ -706,8 +706,8 @@ class __$$_PaymentIntentCopyWithImpl<$Res>
     Object? statementDescriptor = freezed,
     Object? statementDescriptorSuffix = freezed,
     Object? status = null,
-    Object? transferData = null,
-    Object? transferGroup = null,
+    Object? transferData = freezed,
+    Object? transferGroup = freezed,
   }) {
     return _then(_$_PaymentIntent(
       id: null == id
@@ -802,7 +802,7 @@ class __$$_PaymentIntentCopyWithImpl<$Res>
           ? _value._metadata
           : metadata // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
-      nextAction: null == nextAction
+      nextAction: freezed == nextAction
           ? _value.nextAction
           : nextAction // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -822,7 +822,7 @@ class __$$_PaymentIntentCopyWithImpl<$Res>
           ? _value._paymentMethodTypes
           : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
               as List<PaymentMethodType>,
-      processing: null == processing
+      processing: freezed == processing
           ? _value.processing
           : processing // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -854,11 +854,11 @@ class __$$_PaymentIntentCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as PaymentIntentsStatus,
-      transferData: null == transferData
+      transferData: freezed == transferData
           ? _value.transferData
           : transferData // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      transferGroup: null == transferGroup
+      transferGroup: freezed == transferGroup
           ? _value.transferGroup
           : transferGroup // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -1089,6 +1089,7 @@ class _$_PaymentIntent implements _PaymentIntent {
   @override
   @JsonKey()
   Map<String, dynamic> get metadata {
+    if (_metadata is EqualUnmodifiableMapView) return _metadata;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_metadata);
   }
@@ -1120,6 +1121,8 @@ class _$_PaymentIntent implements _PaymentIntent {
   @override
   @JsonKey(name: "payment_method_options")
   Map<dynamic, dynamic> get paymentMethodOptions {
+    if (_paymentMethodOptions is EqualUnmodifiableMapView)
+      return _paymentMethodOptions;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_paymentMethodOptions);
   }
@@ -1133,6 +1136,8 @@ class _$_PaymentIntent implements _PaymentIntent {
   @override
   @JsonKey(name: "payment_method_types")
   List<PaymentMethodType> get paymentMethodTypes {
+    if (_paymentMethodTypes is EqualUnmodifiableListView)
+      return _paymentMethodTypes;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_paymentMethodTypes);
   }

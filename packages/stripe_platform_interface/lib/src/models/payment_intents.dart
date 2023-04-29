@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'address.dart';
 import 'next_action.dart';
+import 'payment_methods.dart';
 
 part 'payment_intents.freezed.dart';
 part 'payment_intents.g.dart';
@@ -61,6 +62,9 @@ class PaymentIntent with _$PaymentIntent {
 
     /// Shipping information of the payment intent.
     ShippingDetails? shipping,
+
+    /// Mandata data for this paymentintent.
+    MandateData? mandateData,
   }) = _PaymentIntent;
 
   factory PaymentIntent.fromJson(Map<String, dynamic> json) =>

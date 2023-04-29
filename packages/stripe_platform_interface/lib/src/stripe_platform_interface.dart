@@ -117,6 +117,9 @@ abstract class StripePlatform extends PlatformInterface {
   Future<void> updatePlatformSheet(
       {required PlatformPaySheetUpdateParams params});
 
+  Future<void> configurePlatformOrderTracking(
+      {required PlatformPayOrderDetails orderDetails});
+
   /// Creates a token for card details.
   ///
   /// Note this method is legacy and it is advised to use [PaymentIntent].
