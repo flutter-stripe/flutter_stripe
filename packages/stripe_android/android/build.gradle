@@ -27,6 +27,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
+    namespace 'com.flutter.stripe'
     compileSdkVersion 32
 
     sourceSets {
