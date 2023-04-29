@@ -34,7 +34,7 @@ Map<String, dynamic> _$$_ConfirmPaymentOptionsToJson(
 
 const _$PaymentConfirmationRedirectEnumMap = {
   PaymentConfirmationRedirect.always: 'always',
-  PaymentConfirmationRedirect.ifRequired: 'ifRequired',
+  PaymentConfirmationRedirect.ifRequired: 'if_required',
 };
 
 _$_ConfirmPaymentParams _$$_ConfirmPaymentParamsFromJson(Map json) =>

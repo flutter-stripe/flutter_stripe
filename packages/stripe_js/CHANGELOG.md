@@ -1,3 +1,5 @@
+## 3.0.1 
+Fixes PaymentConfirmationRedirect.ifRedirect enum value parsing
 ## 3.0.0
 - Adds support for SetupIntent
 - Adds support for Tokens Api
