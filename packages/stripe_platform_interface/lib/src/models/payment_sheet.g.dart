@@ -35,6 +35,12 @@ _$_SetupParameters _$$_SetupParametersFromJson(Map<String, dynamic> json) =>
           : BillingDetails.fromJson(
               json['defaultBillingDetails'] as Map<String, dynamic>),
       returnURL: json['returnURL'] as String?,
+      billingDetailsCollectionConfiguration:
+          json['billingDetailsCollectionConfiguration'] == null
+              ? null
+              : BillingDetailsCollectionConfiguration.fromJson(
+                  json['billingDetailsCollectionConfiguration']
+                      as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_SetupParametersToJson(_$_SetupParameters instance) =>
@@ -53,6 +59,8 @@ Map<String, dynamic> _$$_SetupParametersToJson(_$_SetupParameters instance) =>
       'appearance': instance.appearance?.toJson(),
       'defaultBillingDetails': instance.billingDetails?.toJson(),
       'returnURL': instance.returnURL,
+      'billingDetailsCollectionConfiguration':
+          instance.billingDetailsCollectionConfiguration?.toJson(),
     };
 
 const _$ThemeModeEnumMap = {
@@ -332,3 +340,38 @@ Map<String, dynamic> _$$_PaymentSheetPresentOptionsToJson(
     <String, dynamic>{
       'timeout': instance.timeout,
     };
+
+_$_BillingDetailsCollectionConfiguration
+    _$$_BillingDetailsCollectionConfigurationFromJson(
+            Map<String, dynamic> json) =>
+        _$_BillingDetailsCollectionConfiguration(
+          name: $enumDecodeNullable(_$CollectionModeEnumMap, json['name']),
+          phone: $enumDecodeNullable(_$CollectionModeEnumMap, json['phone']),
+          email: $enumDecodeNullable(_$CollectionModeEnumMap, json['email']),
+          address: $enumDecodeNullable(
+              _$AddressCollectionModeEnumMap, json['address']),
+          attachDefaultsToPaymentMethod:
+              json['attachDefaultsToPaymentMethod'] as bool?,
+        );
+
+Map<String, dynamic> _$$_BillingDetailsCollectionConfigurationToJson(
+        _$_BillingDetailsCollectionConfiguration instance) =>
+    <String, dynamic>{
+      'name': _$CollectionModeEnumMap[instance.name],
+      'phone': _$CollectionModeEnumMap[instance.phone],
+      'email': _$CollectionModeEnumMap[instance.email],
+      'address': _$AddressCollectionModeEnumMap[instance.address],
+      'attachDefaultsToPaymentMethod': instance.attachDefaultsToPaymentMethod,
+    };
+
+const _$CollectionModeEnumMap = {
+  CollectionMode.automatic: 'automatic',
+  CollectionMode.never: 'never',
+  CollectionMode.always: 'always',
+};
+
+const _$AddressCollectionModeEnumMap = {
+  AddressCollectionMode.automatic: 'automatic',
+  AddressCollectionMode.never: 'never',
+  AddressCollectionMode.full: 'full',
+};
