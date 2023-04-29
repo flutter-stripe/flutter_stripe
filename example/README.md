@@ -10,9 +10,9 @@ Demonstrates how to use the stripe plugin.
   - [Get your test Stripe API keys](https://stripe.com/docs/keys)
   - `cp lib/.env.example.dart lib/.env.dart` and set your Stripe publishable key.
   - `cp server/.env.example server/.env` and set the variable values in your newly created `.env` file.
-- Install the server dependencies: `npm install` or `yarn --cwd "server"`
+- Install the server dependencies: [go in server/ dir] `npm install` or `yarn --cwd "server"`
 - Start the example
-  - Terminal 1: `npm start` or `yarn --cwd "server" start`
+  - Terminal 1: [in server/ dir] `npm start` or `yarn --cwd "server" start`
   - Terminal 2: `flutter run`
 
 ##### Additional steps when using a real device
