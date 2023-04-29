@@ -1304,6 +1304,10 @@ mixin _$Card {
   /// The available networks the card can run.
   List<String>? get availableNetworks => throw _privateConstructorUsedError;
 
+  /// Three 3ds usage data.
+  ThreeDSecureUsage? get threeDSecureUsage =>
+      throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CardCopyWith<Card> get copyWith => throw _privateConstructorUsedError;
@@ -1322,7 +1326,10 @@ abstract class $CardCopyWith<$Res> {
       String? funding,
       String? last4,
       String? preferredNetwork,
-      List<String>? availableNetworks});
+      List<String>? availableNetworks,
+      ThreeDSecureUsage? threeDSecureUsage});
+
+  $ThreeDSecureUsageCopyWith<$Res>? get threeDSecureUsage;
 }
 
 /// @nodoc
@@ -1346,6 +1353,7 @@ class _$CardCopyWithImpl<$Res, $Val extends Card>
     Object? last4 = freezed,
     Object? preferredNetwork = freezed,
     Object? availableNetworks = freezed,
+    Object? threeDSecureUsage = freezed,
   }) {
     return _then(_value.copyWith(
       brand: freezed == brand
@@ -1380,7 +1388,23 @@ class _$CardCopyWithImpl<$Res, $Val extends Card>
           ? _value.availableNetworks
           : availableNetworks // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      threeDSecureUsage: freezed == threeDSecureUsage
+          ? _value.threeDSecureUsage
+          : threeDSecureUsage // ignore: cast_nullable_to_non_nullable
+              as ThreeDSecureUsage?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ThreeDSecureUsageCopyWith<$Res>? get threeDSecureUsage {
+    if (_value.threeDSecureUsage == null) {
+      return null;
+    }
+
+    return $ThreeDSecureUsageCopyWith<$Res>(_value.threeDSecureUsage!, (value) {
+      return _then(_value.copyWith(threeDSecureUsage: value) as $Val);
+    });
   }
 }
 
@@ -1398,7 +1422,11 @@ abstract class _$$_CardCopyWith<$Res> implements $CardCopyWith<$Res> {
       String? funding,
       String? last4,
       String? preferredNetwork,
-      List<String>? availableNetworks});
+      List<String>? availableNetworks,
+      ThreeDSecureUsage? threeDSecureUsage});
+
+  @override
+  $ThreeDSecureUsageCopyWith<$Res>? get threeDSecureUsage;
 }
 
 /// @nodoc
@@ -1418,6 +1446,7 @@ class __$$_CardCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res, _$_Card>
     Object? last4 = freezed,
     Object? preferredNetwork = freezed,
     Object? availableNetworks = freezed,
+    Object? threeDSecureUsage = freezed,
   }) {
     return _then(_$_Card(
       brand: freezed == brand
@@ -1452,6 +1481,10 @@ class __$$_CardCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res, _$_Card>
           ? _value._availableNetworks
           : availableNetworks // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      threeDSecureUsage: freezed == threeDSecureUsage
+          ? _value.threeDSecureUsage
+          : threeDSecureUsage // ignore: cast_nullable_to_non_nullable
+              as ThreeDSecureUsage?,
     ));
   }
 }
@@ -1468,7 +1501,8 @@ class _$_Card implements _Card {
       this.funding,
       this.last4,
       this.preferredNetwork,
-      final List<String>? availableNetworks})
+      final List<String>? availableNetworks,
+      this.threeDSecureUsage})
       : _availableNetworks = availableNetworks;
 
   factory _$_Card.fromJson(Map<String, dynamic> json) => _$$_CardFromJson(json);
@@ -1515,9 +1549,13 @@ class _$_Card implements _Card {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Three 3ds usage data.
+  @override
+  final ThreeDSecureUsage? threeDSecureUsage;
+
   @override
   String toString() {
-    return 'Card(brand: $brand, country: $country, expYear: $expYear, expMonth: $expMonth, funding: $funding, last4: $last4, preferredNetwork: $preferredNetwork, availableNetworks: $availableNetworks)';
+    return 'Card(brand: $brand, country: $country, expYear: $expYear, expMonth: $expMonth, funding: $funding, last4: $last4, preferredNetwork: $preferredNetwork, availableNetworks: $availableNetworks, threeDSecureUsage: $threeDSecureUsage)';
   }
 
   @override
@@ -1535,7 +1573,9 @@ class _$_Card implements _Card {
             (identical(other.preferredNetwork, preferredNetwork) ||
                 other.preferredNetwork == preferredNetwork) &&
             const DeepCollectionEquality()
-                .equals(other._availableNetworks, _availableNetworks));
+                .equals(other._availableNetworks, _availableNetworks) &&
+            (identical(other.threeDSecureUsage, threeDSecureUsage) ||
+                other.threeDSecureUsage == threeDSecureUsage));
   }
 
   @JsonKey(ignore: true)
@@ -1549,7 +1589,8 @@ class _$_Card implements _Card {
       funding,
       last4,
       preferredNetwork,
-      const DeepCollectionEquality().hash(_availableNetworks));
+      const DeepCollectionEquality().hash(_availableNetworks),
+      threeDSecureUsage);
 
   @JsonKey(ignore: true)
   @override
@@ -1574,7 +1615,8 @@ abstract class _Card implements Card {
       final String? funding,
       final String? last4,
       final String? preferredNetwork,
-      final List<String>? availableNetworks}) = _$_Card;
+      final List<String>? availableNetworks,
+      final ThreeDSecureUsage? threeDSecureUsage}) = _$_Card;
 
   factory _Card.fromJson(Map<String, dynamic> json) = _$_Card.fromJson;
 
@@ -1610,6 +1652,10 @@ abstract class _Card implements Card {
 
   /// The available networks the card can run.
   List<String>? get availableNetworks;
+  @override
+
+  /// Three 3ds usage data.
+  ThreeDSecureUsage? get threeDSecureUsage;
   @override
   @JsonKey(ignore: true)
   _$$_CardCopyWith<_$_Card> get copyWith => throw _privateConstructorUsedError;
@@ -13036,5 +13082,149 @@ abstract class _MandateDataOnlineData implements MandateDataOnlineData {
   @override
   @JsonKey(ignore: true)
   _$$_MandateDataOnlineDataCopyWith<_$_MandateDataOnlineData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ThreeDSecureUsage _$ThreeDSecureUsageFromJson(Map<String, dynamic> json) {
+  return _ThreeDSecureUsage.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ThreeDSecureUsage {
+  /// Whether 3ds is supported or not.
+  bool? get isSupported => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ThreeDSecureUsageCopyWith<ThreeDSecureUsage> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ThreeDSecureUsageCopyWith<$Res> {
+  factory $ThreeDSecureUsageCopyWith(
+          ThreeDSecureUsage value, $Res Function(ThreeDSecureUsage) then) =
+      _$ThreeDSecureUsageCopyWithImpl<$Res, ThreeDSecureUsage>;
+  @useResult
+  $Res call({bool? isSupported});
+}
+
+/// @nodoc
+class _$ThreeDSecureUsageCopyWithImpl<$Res, $Val extends ThreeDSecureUsage>
+    implements $ThreeDSecureUsageCopyWith<$Res> {
+  _$ThreeDSecureUsageCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isSupported = freezed,
+  }) {
+    return _then(_value.copyWith(
+      isSupported: freezed == isSupported
+          ? _value.isSupported
+          : isSupported // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_ThreeDSecureUsageCopyWith<$Res>
+    implements $ThreeDSecureUsageCopyWith<$Res> {
+  factory _$$_ThreeDSecureUsageCopyWith(_$_ThreeDSecureUsage value,
+          $Res Function(_$_ThreeDSecureUsage) then) =
+      __$$_ThreeDSecureUsageCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool? isSupported});
+}
+
+/// @nodoc
+class __$$_ThreeDSecureUsageCopyWithImpl<$Res>
+    extends _$ThreeDSecureUsageCopyWithImpl<$Res, _$_ThreeDSecureUsage>
+    implements _$$_ThreeDSecureUsageCopyWith<$Res> {
+  __$$_ThreeDSecureUsageCopyWithImpl(
+      _$_ThreeDSecureUsage _value, $Res Function(_$_ThreeDSecureUsage) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isSupported = freezed,
+  }) {
+    return _then(_$_ThreeDSecureUsage(
+      isSupported: freezed == isSupported
+          ? _value.isSupported
+          : isSupported // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_ThreeDSecureUsage implements _ThreeDSecureUsage {
+  const _$_ThreeDSecureUsage({this.isSupported});
+
+  factory _$_ThreeDSecureUsage.fromJson(Map<String, dynamic> json) =>
+      _$$_ThreeDSecureUsageFromJson(json);
+
+  /// Whether 3ds is supported or not.
+  @override
+  final bool? isSupported;
+
+  @override
+  String toString() {
+    return 'ThreeDSecureUsage(isSupported: $isSupported)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ThreeDSecureUsage &&
+            (identical(other.isSupported, isSupported) ||
+                other.isSupported == isSupported));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, isSupported);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ThreeDSecureUsageCopyWith<_$_ThreeDSecureUsage> get copyWith =>
+      __$$_ThreeDSecureUsageCopyWithImpl<_$_ThreeDSecureUsage>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ThreeDSecureUsageToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ThreeDSecureUsage implements ThreeDSecureUsage {
+  const factory _ThreeDSecureUsage({final bool? isSupported}) =
+      _$_ThreeDSecureUsage;
+
+  factory _ThreeDSecureUsage.fromJson(Map<String, dynamic> json) =
+      _$_ThreeDSecureUsage.fromJson;
+
+  @override
+
+  /// Whether 3ds is supported or not.
+  bool? get isSupported;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ThreeDSecureUsageCopyWith<_$_ThreeDSecureUsage> get copyWith =>
       throw _privateConstructorUsedError;
 }

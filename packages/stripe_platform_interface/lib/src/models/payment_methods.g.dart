@@ -101,6 +101,10 @@ _$_Card _$$_CardFromJson(Map<String, dynamic> json) => _$_Card(
       availableNetworks: (json['availableNetworks'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      threeDSecureUsage: json['threeDSecureUsage'] == null
+          ? null
+          : ThreeDSecureUsage.fromJson(
+              json['threeDSecureUsage'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_CardToJson(_$_Card instance) => <String, dynamic>{
@@ -112,6 +116,7 @@ Map<String, dynamic> _$$_CardToJson(_$_Card instance) => <String, dynamic>{
       'last4': instance.last4,
       'preferredNetwork': instance.preferredNetwork,
       'availableNetworks': instance.availableNetworks,
+      'threeDSecureUsage': instance.threeDSecureUsage?.toJson(),
     };
 
 _$_Fpx _$$_FpxFromJson(Map<String, dynamic> json) => _$_Fpx(
@@ -850,4 +855,15 @@ Map<String, dynamic> _$$_MandateDataOnlineDataToJson(
     <String, dynamic>{
       'ipAddress': instance.ipAddress,
       'userAgent': instance.userAgent,
+    };
+
+_$_ThreeDSecureUsage _$$_ThreeDSecureUsageFromJson(Map<String, dynamic> json) =>
+    _$_ThreeDSecureUsage(
+      isSupported: json['isSupported'] as bool?,
+    );
+
+Map<String, dynamic> _$$_ThreeDSecureUsageToJson(
+        _$_ThreeDSecureUsage instance) =>
+    <String, dynamic>{
+      'isSupported': instance.isSupported,
     };
