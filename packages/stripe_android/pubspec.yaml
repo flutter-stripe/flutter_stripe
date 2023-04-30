@@ -1,6 +1,6 @@
 name: stripe_android
 description: Stripe platform implementation for Android
-version: 9.1.0
+version: 9.2.0
 repository: https://github.com/flutter-stripe/flutter_stripe
 homepage: https://pub.dev/packages/flutter_stripe
 

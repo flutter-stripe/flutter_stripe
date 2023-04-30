@@ -1,3 +1,7 @@
+## 9.2.0
+
+ - a
+
 
 ## 9.1.0
 This release brings a lot of improvments to the web plugin, like later payments using SetupIntents or using tokens. 
