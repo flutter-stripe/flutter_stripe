@@ -1,12 +1,6 @@
 ## 4.1.0
-
- - a
-
- - **FIX**: confirmation redirect and stripeAccountId (#1201).
- - **FIX**: apple pay (#1202).
- - **FIX**: timeout payment sheet (#1161).
- - **FEAT**: tokens for web (#1079).
-
+- Update to platform interface 9.2.0.
+- Small fixes for the web
 ## 4.0.1
 - Adds support for SetupIntent
 - Adds support for Tokens Api
