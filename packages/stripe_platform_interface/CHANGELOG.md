@@ -1,3 +1,9 @@
+## 9.2.0
+
+ - a
+
+ - **FIX**: apple pay (#1202).
+
 
 ## 9.1.0
 This release brings a lot of improvments to the web plugin, like later payments using SetupIntents or using tokens. 
