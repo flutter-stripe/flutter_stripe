@@ -15,6 +15,32 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe_web` - `v4.1.0`](#flutter_stripe_web---v410)
+
+---
+
+#### `flutter_stripe_web` - `v4.1.0`
+
+ - a
+
+ - **FIX**: confirmation redirect and stripeAccountId (#1201).
+ - **FIX**: apple pay (#1202).
+ - **FIX**: timeout payment sheet (#1161).
+ - **FEAT**: tokens for web (#1079).
+
+
+## 2023-04-30
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_ios` - `v9.2.0`](#stripe_ios---v920)
  - [`flutter_stripe` - `v9.1.2`](#flutter_stripe---v912)
 
