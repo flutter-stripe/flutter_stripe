@@ -15,6 +15,32 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe` - `v9.2.0`](#flutter_stripe---v920)
+
+---
+
+#### `flutter_stripe` - `v9.2.0`
+
+ - a
+
+ - **FIX**: apple pay (#1202).
+ - **FIX**: timeout payment sheet (#1161).
+ - **FIX**: reamde (#1158).
+ - **FEAT**: pay update (#1159).
+
+
+## 2023-04-30
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`flutter_stripe_web` - `v4.1.0`](#flutter_stripe_web---v410)
 
 ---
