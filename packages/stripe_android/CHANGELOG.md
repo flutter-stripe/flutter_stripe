@@ -1,3 +1,13 @@
+## 9.2.0
+**Features**
+- Add `BillingDetailsCollectionConfiguration` to payment sheet for collecting addresses.
+- Sync with Stripe [0.27](https://github.com/stripe/stripe-react-native/releases/tag/v0.27.0).
+
+**Fixes**
+- Make project compatible with Android gradle plugin 8.0.
+- New google pay button assets in order to comply with Google's new branding guidelines.
+- #1219 use correct value for enum PaymentConfirmationRedirect.ifRequired.
+- Add setting to render the cardfield using the standard AndroidView instead as alternative to the default ExpensiveAndroid view.
 
 ## 9.1.0
 This release brings a lot of improvments to the web plugin, like later payments using SetupIntents or using tokens. 

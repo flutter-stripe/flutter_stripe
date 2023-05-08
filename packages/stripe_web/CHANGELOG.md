@@ -1,3 +1,6 @@
+## 4.1.0
+- Update to platform interface 9.2.0.
+- Small fixes for the web
 ## 4.0.1
 - Adds support for SetupIntent
 - Adds support for Tokens Api

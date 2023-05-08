@@ -1,3 +1,10 @@
+## 9.2.0
+**Features**
+- Add `BillingDetailsCollectionConfiguration` to payment sheet for collecting addresses.
+- Sync with Stripe [0.27](https://github.com/stripe/stripe-react-native/releases/tag/v0.27.0).
+
+**Fixes**
+- #1219 use correct value for enum PaymentConfirmationRedirect.ifRequired.
 
 ## 9.1.0
 This release brings a lot of improvments to the web plugin, like later payments using SetupIntents or using tokens. 
