@@ -485,7 +485,9 @@ extension  StripePlugin {
             return
         }
         
-        updatePlatformPaySheet(summaryItems: summaryItems, shippingMethods: shippingMethods, errors: [], resolver: resolver(for: result), rejecter: rejecter(for: result))
+        let errors = params["errors"] as? [NSDictionary]
+        
+        updatePlatformPaySheet(summaryItems: summaryItems, shippingMethods: shippingMethods, errors: errors ?? [], resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
     
     func isPlatformPaySupported(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
