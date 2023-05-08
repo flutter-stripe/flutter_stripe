@@ -146,7 +146,7 @@ class _UiKitApplePayButtonState extends State<_UiKitApplePayButton> {
       creationParamsCodec: const StandardMessageCodec(),
       creationParams: {
         'type': widget.type.id,
-        'style': widget.style.id,
+        'buttonStyle': widget.style.id,
         'borderRadius': widget.cornerRadius
       },
       onPlatformViewCreated: (viewId) {
