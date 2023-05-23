@@ -120,7 +120,6 @@ class BankAccountTokenParams with _$BankAccountTokenParams {
 
 /// Data that provides information about the token
 class TokenData with _$TokenData {
-
   const TokenData._();
   const factory TokenData({
     /// Unique identifier of the token

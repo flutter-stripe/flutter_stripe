@@ -77,17 +77,13 @@ abstract class $ConfirmCardPaymentDataCopyWith<$Res> {
       _$ConfirmCardPaymentDataCopyWithImpl<$Res, ConfirmCardPaymentData>;
   @useResult
   $Res call(
-      {@paymentMethodDetailJsonKey
-          CardPaymentMethodDetails? paymentMethod,
+      {@paymentMethodDetailJsonKey CardPaymentMethodDetails? paymentMethod,
       ShippingDetails? shipping,
-      @JsonKey(name: "return_url")
-          String? returnUrl,
-      @JsonKey(name: "receipt_email")
-          String? receiptEmail,
+      @JsonKey(name: "return_url") String? returnUrl,
+      @JsonKey(name: "receipt_email") String? receiptEmail,
       @JsonKey(name: "setup_future_usage")
-          PaymentIntentSetupFutureUsage? setupFutureUsage,
-      @JsonKey(name: "payment_method_options")
-          dynamic paymentMethodOptions});
+      PaymentIntentSetupFutureUsage? setupFutureUsage,
+      @JsonKey(name: "payment_method_options") dynamic paymentMethodOptions});
 
   $CardPaymentMethodDetailsCopyWith<$Res>? get paymentMethod;
   $ShippingDetailsCopyWith<$Res>? get shipping;
@@ -177,17 +173,13 @@ abstract class _$$_ConfirmCardPaymentDataCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@paymentMethodDetailJsonKey
-          CardPaymentMethodDetails? paymentMethod,
+      {@paymentMethodDetailJsonKey CardPaymentMethodDetails? paymentMethod,
       ShippingDetails? shipping,
-      @JsonKey(name: "return_url")
-          String? returnUrl,
-      @JsonKey(name: "receipt_email")
-          String? receiptEmail,
+      @JsonKey(name: "return_url") String? returnUrl,
+      @JsonKey(name: "receipt_email") String? receiptEmail,
       @JsonKey(name: "setup_future_usage")
-          PaymentIntentSetupFutureUsage? setupFutureUsage,
-      @JsonKey(name: "payment_method_options")
-          dynamic paymentMethodOptions});
+      PaymentIntentSetupFutureUsage? setupFutureUsage,
+      @JsonKey(name: "payment_method_options") dynamic paymentMethodOptions});
 
   @override
   $CardPaymentMethodDetailsCopyWith<$Res>? get paymentMethod;
@@ -357,16 +349,14 @@ class _$_ConfirmCardPaymentData implements _ConfirmCardPaymentData {
 abstract class _ConfirmCardPaymentData implements ConfirmCardPaymentData {
   const factory _ConfirmCardPaymentData(
       {@paymentMethodDetailJsonKey
-          final CardPaymentMethodDetails? paymentMethod,
+      final CardPaymentMethodDetails? paymentMethod,
       final ShippingDetails? shipping,
-      @JsonKey(name: "return_url")
-          final String? returnUrl,
-      @JsonKey(name: "receipt_email")
-          final String? receiptEmail,
+      @JsonKey(name: "return_url") final String? returnUrl,
+      @JsonKey(name: "receipt_email") final String? receiptEmail,
       @JsonKey(name: "setup_future_usage")
-          final PaymentIntentSetupFutureUsage? setupFutureUsage,
+      final PaymentIntentSetupFutureUsage? setupFutureUsage,
       @JsonKey(name: "payment_method_options")
-          final dynamic paymentMethodOptions}) = _$_ConfirmCardPaymentData;
+      final dynamic paymentMethodOptions}) = _$_ConfirmCardPaymentData;
 
   factory _ConfirmCardPaymentData.fromJson(Map<String, dynamic> json) =
       _$_ConfirmCardPaymentData.fromJson;

@@ -625,13 +625,12 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
       final String? setupIntentClientSecret,
       final String? merchantDisplayName,
       final PaymentSheetApplePay? applePay,
-      @JsonKey(toJson: UserInterfaceStyleKey.toJson)
-          final ThemeMode? style,
+      @JsonKey(toJson: UserInterfaceStyleKey.toJson) final ThemeMode? style,
       final PaymentSheetGooglePay? googlePay,
       final bool allowsDelayedPaymentMethods,
       final PaymentSheetAppearance? appearance,
       @JsonKey(name: 'defaultBillingDetails')
-          final BillingDetails? billingDetails,
+      final BillingDetails? billingDetails,
       final String? returnURL,
       final BillingDetailsCollectionConfiguration?
           billingDetailsCollectionConfiguration}) = _$_SetupParameters;
@@ -1556,27 +1555,27 @@ abstract class $PaymentSheetAppearanceColorsCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? primary,
+      Color? primary,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? background,
+      Color? background,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? componentBackground,
+      Color? componentBackground,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? componentBorder,
+      Color? componentBorder,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? componentDivider,
+      Color? componentDivider,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? componentText,
+      Color? componentText,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? primaryText,
+      Color? primaryText,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? secondaryText,
+      Color? secondaryText,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? placeholderText,
+      Color? placeholderText,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? icon,
+      Color? icon,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? error});
+      Color? error});
 }
 
 /// @nodoc
@@ -1665,27 +1664,27 @@ abstract class _$$_PaymentSheetAppearanceColorsCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? primary,
+      Color? primary,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? background,
+      Color? background,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? componentBackground,
+      Color? componentBackground,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? componentBorder,
+      Color? componentBorder,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? componentDivider,
+      Color? componentDivider,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? componentText,
+      Color? componentText,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? primaryText,
+      Color? primaryText,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? secondaryText,
+      Color? secondaryText,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? placeholderText,
+      Color? placeholderText,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? icon,
+      Color? icon,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? error});
+      Color? error});
 }
 
 /// @nodoc
@@ -1767,27 +1766,26 @@ class __$$_PaymentSheetAppearanceColorsCopyWithImpl<$Res>
 class _$_PaymentSheetAppearanceColors implements _PaymentSheetAppearanceColors {
   const _$_PaymentSheetAppearanceColors(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.primary,
+      this.primary,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.background,
+      this.background,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.componentBackground,
+      this.componentBackground,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.componentBorder,
+      this.componentBorder,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.componentDivider,
+      this.componentDivider,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.componentText,
+      this.componentText,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.primaryText,
+      this.primaryText,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.secondaryText,
+      this.secondaryText,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.placeholderText,
+      this.placeholderText,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.icon,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.icon,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.error});
+      this.error});
 
   factory _$_PaymentSheetAppearanceColors.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentSheetAppearanceColorsFromJson(json);
@@ -1917,27 +1915,27 @@ abstract class _PaymentSheetAppearanceColors
     implements PaymentSheetAppearanceColors {
   const factory _PaymentSheetAppearanceColors(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? primary,
+      final Color? primary,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? background,
+      final Color? background,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? componentBackground,
+      final Color? componentBackground,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? componentBorder,
+      final Color? componentBorder,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? componentDivider,
+      final Color? componentDivider,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? componentText,
+      final Color? componentText,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? primaryText,
+      final Color? primaryText,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? secondaryText,
+      final Color? secondaryText,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? placeholderText,
+      final Color? placeholderText,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? icon,
+      final Color? icon,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? error}) = _$_PaymentSheetAppearanceColors;
+      final Color? error}) = _$_PaymentSheetAppearanceColors;
 
   factory _PaymentSheetAppearanceColors.fromJson(Map<String, dynamic> json) =
       _$_PaymentSheetAppearanceColors.fromJson;
@@ -2254,7 +2252,7 @@ abstract class $PaymentSheetShadowParamsCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? color,
+      Color? color,
       double? opacity,
       PaymentSheetShadowOffset? offset});
 
@@ -2319,7 +2317,7 @@ abstract class _$$_PaymentSheetShadowParamsCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? color,
+      Color? color,
       double? opacity,
       PaymentSheetShadowOffset? offset});
 
@@ -2366,7 +2364,7 @@ class __$$_PaymentSheetShadowParamsCopyWithImpl<$Res>
 class _$_PaymentSheetShadowParams implements _PaymentSheetShadowParams {
   const _$_PaymentSheetShadowParams(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.color,
+      this.color,
       this.opacity,
       this.offset});
 
@@ -2423,7 +2421,7 @@ class _$_PaymentSheetShadowParams implements _PaymentSheetShadowParams {
 abstract class _PaymentSheetShadowParams implements PaymentSheetShadowParams {
   const factory _PaymentSheetShadowParams(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? color,
+      final Color? color,
       final double? opacity,
       final PaymentSheetShadowOffset? offset}) = _$_PaymentSheetShadowParams;
 
@@ -3317,11 +3315,11 @@ abstract class $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? background,
+      Color? background,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? text,
+      Color? text,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? border});
+      Color? border});
 }
 
 /// @nodoc
@@ -3370,11 +3368,11 @@ abstract class _$$_PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? background,
+      Color? background,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? text,
+      Color? text,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? border});
+      Color? border});
 }
 
 /// @nodoc
@@ -3417,11 +3415,10 @@ class _$_PaymentSheetPrimaryButtonThemeColors
     implements _PaymentSheetPrimaryButtonThemeColors {
   const _$_PaymentSheetPrimaryButtonThemeColors(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.background,
+      this.background,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.text,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.text,
-      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.border});
+      this.border});
 
   factory _$_PaymentSheetPrimaryButtonThemeColors.fromJson(
           Map<String, dynamic> json) =>
@@ -3482,11 +3479,11 @@ abstract class _PaymentSheetPrimaryButtonThemeColors
     implements PaymentSheetPrimaryButtonThemeColors {
   const factory _PaymentSheetPrimaryButtonThemeColors(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? background,
+      final Color? background,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? text,
+      final Color? text,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? border}) = _$_PaymentSheetPrimaryButtonThemeColors;
+      final Color? border}) = _$_PaymentSheetPrimaryButtonThemeColors;
 
   factory _PaymentSheetPrimaryButtonThemeColors.fromJson(
           Map<String, dynamic> json) =

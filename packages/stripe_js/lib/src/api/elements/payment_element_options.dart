@@ -176,11 +176,11 @@ class BillingDetailsFields with _$BillingDetailsFields {
   const factory BillingDetailsFields({
     @Default(PaymentElementFieldRequired.auto) PaymentElementFieldRequired name,
     @Default(PaymentElementFieldRequired.auto)
-        PaymentElementFieldRequired email,
+    PaymentElementFieldRequired email,
     @Default(PaymentElementFieldRequired.auto)
-        PaymentElementFieldRequired phone,
+    PaymentElementFieldRequired phone,
     @Default(PaymentElementAddressFields.auto)
-        PaymentElementAddressFields address,
+    PaymentElementAddressFields address,
   }) = _BillingDetailsFields;
 
   static const auto = BillingDetailsFields();
@@ -193,16 +193,16 @@ class BillingDetailsFields with _$BillingDetailsFields {
 class PaymentElementAddressFields with _$PaymentElementAddressFields {
   const factory PaymentElementAddressFields({
     @Default(PaymentElementFieldRequired.auto)
-        PaymentElementFieldRequired line1,
+    PaymentElementFieldRequired line1,
     @Default(PaymentElementFieldRequired.auto)
-        PaymentElementFieldRequired line2,
+    PaymentElementFieldRequired line2,
     @Default(PaymentElementFieldRequired.auto) PaymentElementFieldRequired city,
     @Default(PaymentElementFieldRequired.auto)
-        PaymentElementFieldRequired state,
+    PaymentElementFieldRequired state,
     @Default(PaymentElementFieldRequired.auto)
-        PaymentElementFieldRequired country,
+    PaymentElementFieldRequired country,
     @Default(PaymentElementFieldRequired.auto)
-        PaymentElementFieldRequired postalCode,
+    PaymentElementFieldRequired postalCode,
   }) = _PaymentElementAddressFields;
 
   static const auto = PaymentElementAddressFields();

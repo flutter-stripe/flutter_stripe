@@ -55,7 +55,8 @@ class SofortScreen extends StatelessWidget {
       if (e is StripeException) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Error from Stripe: ${e.error.localizedMessage ?? e.error.code}'),
+            content: Text(
+                'Error from Stripe: ${e.error.localizedMessage ?? e.error.code}'),
           ),
         );
       } else {

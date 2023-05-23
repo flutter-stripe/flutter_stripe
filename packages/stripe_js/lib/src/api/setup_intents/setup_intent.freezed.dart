@@ -155,36 +155,27 @@ abstract class $SetupIntentCopyWith<$Res> {
       {String id,
       String object,
       String? application,
-      @JsonKey(name: "attach_to_self")
-          String? attachToSelf,
+      @JsonKey(name: "attach_to_self") String? attachToSelf,
       @JsonKey(name: "cancellation_reason")
-          SetupIntentCancellationReason? cancellationReason,
-      @JsonKey(name: "client_secret")
-          String clientSecret,
+      SetupIntentCancellationReason? cancellationReason,
+      @JsonKey(name: "client_secret") String clientSecret,
       int? created,
       String? customer,
       String? description,
       @JsonKey(name: "flow_directions")
-          List<SetupIntentFlowDirections>? flowDirections,
-      @JsonKey(name: "last_setup_error")
-          dynamic lastSetupError,
-      @JsonKey(name: "latest_attempt")
-          String? latestAttempt,
+      List<SetupIntentFlowDirections>? flowDirections,
+      @JsonKey(name: "last_setup_error") dynamic lastSetupError,
+      @JsonKey(name: "latest_attempt") String? latestAttempt,
       bool livemode,
       String? mandate,
       Map<String, dynamic> metadata,
-      @JsonKey(name: "next_action")
-          dynamic nextAction,
-      @JsonKey(name: "on_behalf_of")
-          String? onBehalfOf,
-      @JsonKey(name: "payment_method")
-          String? paymentMethod,
-      @JsonKey(name: "payment_method_options")
-          dynamic paymentMethodOptions,
+      @JsonKey(name: "next_action") dynamic nextAction,
+      @JsonKey(name: "on_behalf_of") String? onBehalfOf,
+      @JsonKey(name: "payment_method") String? paymentMethod,
+      @JsonKey(name: "payment_method_options") dynamic paymentMethodOptions,
       @JsonKey(name: "payment_method_types")
-          List<PaymentMethodType> paymentMethodTypes,
-      @JsonKey(name: "single_use_mandate")
-          String? singleUseMandate,
+      List<PaymentMethodType> paymentMethodTypes,
+      @JsonKey(name: "single_use_mandate") String? singleUseMandate,
       SetupIntentsStatus status,
       SetupIntentUsage usage});
 }
@@ -335,36 +326,27 @@ abstract class _$$_SetupIntentCopyWith<$Res>
       {String id,
       String object,
       String? application,
-      @JsonKey(name: "attach_to_self")
-          String? attachToSelf,
+      @JsonKey(name: "attach_to_self") String? attachToSelf,
       @JsonKey(name: "cancellation_reason")
-          SetupIntentCancellationReason? cancellationReason,
-      @JsonKey(name: "client_secret")
-          String clientSecret,
+      SetupIntentCancellationReason? cancellationReason,
+      @JsonKey(name: "client_secret") String clientSecret,
       int? created,
       String? customer,
       String? description,
       @JsonKey(name: "flow_directions")
-          List<SetupIntentFlowDirections>? flowDirections,
-      @JsonKey(name: "last_setup_error")
-          dynamic lastSetupError,
-      @JsonKey(name: "latest_attempt")
-          String? latestAttempt,
+      List<SetupIntentFlowDirections>? flowDirections,
+      @JsonKey(name: "last_setup_error") dynamic lastSetupError,
+      @JsonKey(name: "latest_attempt") String? latestAttempt,
       bool livemode,
       String? mandate,
       Map<String, dynamic> metadata,
-      @JsonKey(name: "next_action")
-          dynamic nextAction,
-      @JsonKey(name: "on_behalf_of")
-          String? onBehalfOf,
-      @JsonKey(name: "payment_method")
-          String? paymentMethod,
-      @JsonKey(name: "payment_method_options")
-          dynamic paymentMethodOptions,
+      @JsonKey(name: "next_action") dynamic nextAction,
+      @JsonKey(name: "on_behalf_of") String? onBehalfOf,
+      @JsonKey(name: "payment_method") String? paymentMethod,
+      @JsonKey(name: "payment_method_options") dynamic paymentMethodOptions,
       @JsonKey(name: "payment_method_types")
-          List<PaymentMethodType> paymentMethodTypes,
-      @JsonKey(name: "single_use_mandate")
-          String? singleUseMandate,
+      List<PaymentMethodType> paymentMethodTypes,
+      @JsonKey(name: "single_use_mandate") String? singleUseMandate,
       SetupIntentsStatus status,
       SetupIntentUsage usage});
 }
@@ -508,36 +490,26 @@ class _$_SetupIntent implements _SetupIntent {
       {required this.id,
       this.object = "setup_intent",
       this.application,
-      @JsonKey(name: "attach_to_self")
-          this.attachToSelf,
-      @JsonKey(name: "cancellation_reason")
-          this.cancellationReason,
-      @JsonKey(name: "client_secret")
-          required this.clientSecret,
+      @JsonKey(name: "attach_to_self") this.attachToSelf,
+      @JsonKey(name: "cancellation_reason") this.cancellationReason,
+      @JsonKey(name: "client_secret") required this.clientSecret,
       this.created,
       this.customer,
       this.description,
       @JsonKey(name: "flow_directions")
-          final List<SetupIntentFlowDirections>? flowDirections,
-      @JsonKey(name: "last_setup_error")
-          this.lastSetupError,
-      @JsonKey(name: "latest_attempt")
-          this.latestAttempt,
+      final List<SetupIntentFlowDirections>? flowDirections,
+      @JsonKey(name: "last_setup_error") this.lastSetupError,
+      @JsonKey(name: "latest_attempt") this.latestAttempt,
       this.livemode = true,
       this.mandate,
       final Map<String, dynamic> metadata = const {},
-      @JsonKey(name: "next_action")
-          this.nextAction,
-      @JsonKey(name: "on_behalf_of")
-          this.onBehalfOf,
-      @JsonKey(name: "payment_method")
-          this.paymentMethod,
-      @JsonKey(name: "payment_method_options")
-          this.paymentMethodOptions,
+      @JsonKey(name: "next_action") this.nextAction,
+      @JsonKey(name: "on_behalf_of") this.onBehalfOf,
+      @JsonKey(name: "payment_method") this.paymentMethod,
+      @JsonKey(name: "payment_method_options") this.paymentMethodOptions,
       @JsonKey(name: "payment_method_types")
-          final List<PaymentMethodType> paymentMethodTypes = const [],
-      @JsonKey(name: "single_use_mandate")
-          this.singleUseMandate,
+      final List<PaymentMethodType> paymentMethodTypes = const [],
+      @JsonKey(name: "single_use_mandate") this.singleUseMandate,
       required this.status,
       this.usage = SetupIntentUsage.offSession})
       : _flowDirections = flowDirections,
@@ -823,36 +795,28 @@ abstract class _SetupIntent implements SetupIntent {
       {required final String id,
       final String object,
       final String? application,
-      @JsonKey(name: "attach_to_self")
-          final String? attachToSelf,
+      @JsonKey(name: "attach_to_self") final String? attachToSelf,
       @JsonKey(name: "cancellation_reason")
-          final SetupIntentCancellationReason? cancellationReason,
-      @JsonKey(name: "client_secret")
-          required final String clientSecret,
+      final SetupIntentCancellationReason? cancellationReason,
+      @JsonKey(name: "client_secret") required final String clientSecret,
       final int? created,
       final String? customer,
       final String? description,
       @JsonKey(name: "flow_directions")
-          final List<SetupIntentFlowDirections>? flowDirections,
-      @JsonKey(name: "last_setup_error")
-          final dynamic lastSetupError,
-      @JsonKey(name: "latest_attempt")
-          final String? latestAttempt,
+      final List<SetupIntentFlowDirections>? flowDirections,
+      @JsonKey(name: "last_setup_error") final dynamic lastSetupError,
+      @JsonKey(name: "latest_attempt") final String? latestAttempt,
       final bool livemode,
       final String? mandate,
       final Map<String, dynamic> metadata,
-      @JsonKey(name: "next_action")
-          final dynamic nextAction,
-      @JsonKey(name: "on_behalf_of")
-          final String? onBehalfOf,
-      @JsonKey(name: "payment_method")
-          final String? paymentMethod,
+      @JsonKey(name: "next_action") final dynamic nextAction,
+      @JsonKey(name: "on_behalf_of") final String? onBehalfOf,
+      @JsonKey(name: "payment_method") final String? paymentMethod,
       @JsonKey(name: "payment_method_options")
-          final dynamic paymentMethodOptions,
+      final dynamic paymentMethodOptions,
       @JsonKey(name: "payment_method_types")
-          final List<PaymentMethodType> paymentMethodTypes,
-      @JsonKey(name: "single_use_mandate")
-          final String? singleUseMandate,
+      final List<PaymentMethodType> paymentMethodTypes,
+      @JsonKey(name: "single_use_mandate") final String? singleUseMandate,
       required final SetupIntentsStatus status,
       final SetupIntentUsage usage}) = _$_SetupIntent;
 

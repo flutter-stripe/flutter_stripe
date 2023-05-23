@@ -19,7 +19,7 @@ class ConfirmSepaDebitPaymentData with _$ConfirmSepaDebitPaymentData {
     /// the PaymentMethod will be attached to the customer when the
     /// PaymentIntent transitions to processing.
     @JsonKey(name: "setup_future_usage")
-        PaymentIntentSetupFutureUsage? setupFutureUsage,
+    PaymentIntentSetupFutureUsage? setupFutureUsage,
   }) = _ConfirmSepaDebitPaymentData;
 
   factory ConfirmSepaDebitPaymentData.fromJson(Map<String, dynamic> json) =>

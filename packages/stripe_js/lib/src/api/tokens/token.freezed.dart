@@ -506,20 +506,16 @@ abstract class $BankAccountTokenCopyWith<$Res> {
   $Res call(
       {String id,
       String object,
-      @JsonKey(name: "account_holder_name")
-          String? accountHolderName,
+      @JsonKey(name: "account_holder_name") String? accountHolderName,
       @JsonKey(name: "account_holder_type")
-          BankAccountHolderType? accountHolderType,
-      @JsonKey(name: "account_type")
-          String? accountType,
-      @JsonKey(name: "bank_name")
-          String? bankName,
+      BankAccountHolderType? accountHolderType,
+      @JsonKey(name: "account_type") String? accountType,
+      @JsonKey(name: "bank_name") String? bankName,
       String? country,
       String? currency,
       String? fingerprint,
       String? last4,
-      @JsonKey(name: "routing_number")
-          String? routingNumber,
+      @JsonKey(name: "routing_number") String? routingNumber,
       BankAccountStatus? status});
 }
 
@@ -613,20 +609,16 @@ abstract class _$$_BankAccountTokenCopyWith<$Res>
   $Res call(
       {String id,
       String object,
-      @JsonKey(name: "account_holder_name")
-          String? accountHolderName,
+      @JsonKey(name: "account_holder_name") String? accountHolderName,
       @JsonKey(name: "account_holder_type")
-          BankAccountHolderType? accountHolderType,
-      @JsonKey(name: "account_type")
-          String? accountType,
-      @JsonKey(name: "bank_name")
-          String? bankName,
+      BankAccountHolderType? accountHolderType,
+      @JsonKey(name: "account_type") String? accountType,
+      @JsonKey(name: "bank_name") String? bankName,
       String? country,
       String? currency,
       String? fingerprint,
       String? last4,
-      @JsonKey(name: "routing_number")
-          String? routingNumber,
+      @JsonKey(name: "routing_number") String? routingNumber,
       BankAccountStatus? status});
 }
 
@@ -874,20 +866,16 @@ abstract class _BankAccountToken implements BankAccountToken {
   const factory _BankAccountToken(
       {required final String id,
       final String object,
-      @JsonKey(name: "account_holder_name")
-          final String? accountHolderName,
+      @JsonKey(name: "account_holder_name") final String? accountHolderName,
       @JsonKey(name: "account_holder_type")
-          final BankAccountHolderType? accountHolderType,
-      @JsonKey(name: "account_type")
-          final String? accountType,
-      @JsonKey(name: "bank_name")
-          final String? bankName,
+      final BankAccountHolderType? accountHolderType,
+      @JsonKey(name: "account_type") final String? accountType,
+      @JsonKey(name: "bank_name") final String? bankName,
       final String? country,
       final String? currency,
       final String? fingerprint,
       final String? last4,
-      @JsonKey(name: "routing_number")
-          final String? routingNumber,
+      @JsonKey(name: "routing_number") final String? routingNumber,
       final BankAccountStatus? status}) = _$_BankAccountToken;
 
   factory _BankAccountToken.fromJson(Map<String, dynamic> json) =
@@ -1111,40 +1099,29 @@ abstract class $CardTokenCopyWith<$Res> {
   $Res call(
       {String id,
       String object,
-      @JsonKey(name: "address_city")
-          String? addressCity,
-      @JsonKey(name: "address_country")
-          String? addressCountry,
-      @JsonKey(name: "address_line1")
-          String? addressLine1,
+      @JsonKey(name: "address_city") String? addressCity,
+      @JsonKey(name: "address_country") String? addressCountry,
+      @JsonKey(name: "address_line1") String? addressLine1,
       @JsonKey(name: "address_line1_check")
-          VerificationCheck? addressLine1Check,
-      @JsonKey(name: "address_line2")
-          String? addressLine2,
-      @JsonKey(name: "address_state")
-          String? addressState,
-      @JsonKey(name: "address_zip")
-          String? addressZip,
-      @JsonKey(name: "address_zip_check")
-          VerificationCheck? addressZipCheck,
+      VerificationCheck? addressLine1Check,
+      @JsonKey(name: "address_line2") String? addressLine2,
+      @JsonKey(name: "address_state") String? addressState,
+      @JsonKey(name: "address_zip") String? addressZip,
+      @JsonKey(name: "address_zip_check") VerificationCheck? addressZipCheck,
       CardTokenBrand? brand,
       String? country,
       String? currency,
-      @JsonKey(name: "cvc_check")
-          VerificationCheck? cvcCheck,
-      @JsonKey(name: "dynamic_last4")
-          String? dynamicLast4,
-      @JsonKey(name: "exp_month")
-          int? expMonth,
-      @JsonKey(name: "exp_year")
-          int? expYear,
+      @JsonKey(name: "cvc_check") VerificationCheck? cvcCheck,
+      @JsonKey(name: "dynamic_last4") String? dynamicLast4,
+      @JsonKey(name: "exp_month") int? expMonth,
+      @JsonKey(name: "exp_year") int? expYear,
       String? fingerprint,
       CardFundingType? funding,
       String? last4,
       Map<String, dynamic> metadata,
       String? name,
       @JsonKey(name: "tokenization_method")
-          CardTokenizationMethod? tokenizationMethod});
+      CardTokenizationMethod? tokenizationMethod});
 }
 
 /// @nodoc
@@ -1291,40 +1268,29 @@ abstract class _$$_CardTokenCopyWith<$Res> implements $CardTokenCopyWith<$Res> {
   $Res call(
       {String id,
       String object,
-      @JsonKey(name: "address_city")
-          String? addressCity,
-      @JsonKey(name: "address_country")
-          String? addressCountry,
-      @JsonKey(name: "address_line1")
-          String? addressLine1,
+      @JsonKey(name: "address_city") String? addressCity,
+      @JsonKey(name: "address_country") String? addressCountry,
+      @JsonKey(name: "address_line1") String? addressLine1,
       @JsonKey(name: "address_line1_check")
-          VerificationCheck? addressLine1Check,
-      @JsonKey(name: "address_line2")
-          String? addressLine2,
-      @JsonKey(name: "address_state")
-          String? addressState,
-      @JsonKey(name: "address_zip")
-          String? addressZip,
-      @JsonKey(name: "address_zip_check")
-          VerificationCheck? addressZipCheck,
+      VerificationCheck? addressLine1Check,
+      @JsonKey(name: "address_line2") String? addressLine2,
+      @JsonKey(name: "address_state") String? addressState,
+      @JsonKey(name: "address_zip") String? addressZip,
+      @JsonKey(name: "address_zip_check") VerificationCheck? addressZipCheck,
       CardTokenBrand? brand,
       String? country,
       String? currency,
-      @JsonKey(name: "cvc_check")
-          VerificationCheck? cvcCheck,
-      @JsonKey(name: "dynamic_last4")
-          String? dynamicLast4,
-      @JsonKey(name: "exp_month")
-          int? expMonth,
-      @JsonKey(name: "exp_year")
-          int? expYear,
+      @JsonKey(name: "cvc_check") VerificationCheck? cvcCheck,
+      @JsonKey(name: "dynamic_last4") String? dynamicLast4,
+      @JsonKey(name: "exp_month") int? expMonth,
+      @JsonKey(name: "exp_year") int? expYear,
       String? fingerprint,
       CardFundingType? funding,
       String? last4,
       Map<String, dynamic> metadata,
       String? name,
       @JsonKey(name: "tokenization_method")
-          CardTokenizationMethod? tokenizationMethod});
+      CardTokenizationMethod? tokenizationMethod});
 }
 
 /// @nodoc
@@ -1732,40 +1698,30 @@ abstract class _CardToken implements CardToken {
   const factory _CardToken(
       {required final String id,
       final String object,
-      @JsonKey(name: "address_city")
-          final String? addressCity,
-      @JsonKey(name: "address_country")
-          final String? addressCountry,
-      @JsonKey(name: "address_line1")
-          final String? addressLine1,
+      @JsonKey(name: "address_city") final String? addressCity,
+      @JsonKey(name: "address_country") final String? addressCountry,
+      @JsonKey(name: "address_line1") final String? addressLine1,
       @JsonKey(name: "address_line1_check")
-          final VerificationCheck? addressLine1Check,
-      @JsonKey(name: "address_line2")
-          final String? addressLine2,
-      @JsonKey(name: "address_state")
-          final String? addressState,
-      @JsonKey(name: "address_zip")
-          final String? addressZip,
+      final VerificationCheck? addressLine1Check,
+      @JsonKey(name: "address_line2") final String? addressLine2,
+      @JsonKey(name: "address_state") final String? addressState,
+      @JsonKey(name: "address_zip") final String? addressZip,
       @JsonKey(name: "address_zip_check")
-          final VerificationCheck? addressZipCheck,
+      final VerificationCheck? addressZipCheck,
       final CardTokenBrand? brand,
       final String? country,
       final String? currency,
-      @JsonKey(name: "cvc_check")
-          final VerificationCheck? cvcCheck,
-      @JsonKey(name: "dynamic_last4")
-          final String? dynamicLast4,
-      @JsonKey(name: "exp_month")
-          final int? expMonth,
-      @JsonKey(name: "exp_year")
-          final int? expYear,
+      @JsonKey(name: "cvc_check") final VerificationCheck? cvcCheck,
+      @JsonKey(name: "dynamic_last4") final String? dynamicLast4,
+      @JsonKey(name: "exp_month") final int? expMonth,
+      @JsonKey(name: "exp_year") final int? expYear,
       final String? fingerprint,
       final CardFundingType? funding,
       final String? last4,
       final Map<String, dynamic> metadata,
       final String? name,
       @JsonKey(name: "tokenization_method")
-          final CardTokenizationMethod? tokenizationMethod}) = _$_CardToken;
+      final CardTokenizationMethod? tokenizationMethod}) = _$_CardToken;
 
   factory _CardToken.fromJson(Map<String, dynamic> json) =
       _$_CardToken.fromJson;

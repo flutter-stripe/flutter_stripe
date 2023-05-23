@@ -54,12 +54,10 @@ abstract class $ConfirmIdealPaymentDataCopyWith<$Res> {
       _$ConfirmIdealPaymentDataCopyWithImpl<$Res, ConfirmIdealPaymentData>;
   @useResult
   $Res call(
-      {@paymentMethodDetailJsonKey
-          IdealPaymentMethodDetails? paymentMethod,
-      @JsonKey(name: "return_url")
-          String? returnUrl,
+      {@paymentMethodDetailJsonKey IdealPaymentMethodDetails? paymentMethod,
+      @JsonKey(name: "return_url") String? returnUrl,
       @JsonKey(name: "setup_future_usage")
-          PaymentIntentSetupFutureUsage? setupFutureUsage});
+      PaymentIntentSetupFutureUsage? setupFutureUsage});
 
   $IdealPaymentMethodDetailsCopyWith<$Res>? get paymentMethod;
 }
@@ -121,12 +119,10 @@ abstract class _$$_ConfirmIdealPaymentDataCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@paymentMethodDetailJsonKey
-          IdealPaymentMethodDetails? paymentMethod,
-      @JsonKey(name: "return_url")
-          String? returnUrl,
+      {@paymentMethodDetailJsonKey IdealPaymentMethodDetails? paymentMethod,
+      @JsonKey(name: "return_url") String? returnUrl,
       @JsonKey(name: "setup_future_usage")
-          PaymentIntentSetupFutureUsage? setupFutureUsage});
+      PaymentIntentSetupFutureUsage? setupFutureUsage});
 
   @override
   $IdealPaymentMethodDetailsCopyWith<$Res>? get paymentMethod;
@@ -239,11 +235,10 @@ class _$_ConfirmIdealPaymentData implements _ConfirmIdealPaymentData {
 abstract class _ConfirmIdealPaymentData implements ConfirmIdealPaymentData {
   const factory _ConfirmIdealPaymentData(
           {@paymentMethodDetailJsonKey
-              final IdealPaymentMethodDetails? paymentMethod,
-          @JsonKey(name: "return_url")
-              final String? returnUrl,
+          final IdealPaymentMethodDetails? paymentMethod,
+          @JsonKey(name: "return_url") final String? returnUrl,
           @JsonKey(name: "setup_future_usage")
-              final PaymentIntentSetupFutureUsage? setupFutureUsage}) =
+          final PaymentIntentSetupFutureUsage? setupFutureUsage}) =
       _$_ConfirmIdealPaymentData;
 
   factory _ConfirmIdealPaymentData.fromJson(Map<String, dynamic> json) =
