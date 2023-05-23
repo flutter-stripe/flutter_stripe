@@ -566,7 +566,7 @@ class _UiKitCardFormField extends StatelessWidget {
   }
 }
 
-const kCardFormFieldDefaultAndroidHeight = 270.0;
+const kCardFormFieldDefaultAndroidHeight = 292.0;
 const kCardFormFieldDefaultIOSHeight = 192.0;
 const kCardFormFieldDefaultFontSize = 17;
 const kCardFormFieldDefaultTextColor = Colors.black;
