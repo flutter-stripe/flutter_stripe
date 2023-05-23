@@ -478,10 +478,9 @@ class _$_CardPaymentMethodDefault implements _CardPaymentMethodDefault {
 
 abstract class _CardPaymentMethodDefault implements CardPaymentMethodDetails {
   const factory _CardPaymentMethodDefault(
-      {@ElementConverter()
-          required final Element card,
+      {@ElementConverter() required final Element card,
       @JsonKey(name: "billing_details")
-          final BillingDetails? billingDetails}) = _$_CardPaymentMethodDefault;
+      final BillingDetails? billingDetails}) = _$_CardPaymentMethodDefault;
 
   factory _CardPaymentMethodDefault.fromJson(Map<String, dynamic> json) =
       _$_CardPaymentMethodDefault.fromJson;
@@ -705,10 +704,9 @@ class _$_CardPaymentMethodDetailsToken
 abstract class _CardPaymentMethodDetailsToken
     implements CardPaymentMethodDetails {
   const factory _CardPaymentMethodDetailsToken(
-          {required final CardTokenPaymentMethod card,
-          @JsonKey(name: "billing_details")
-              final BillingDetails? billingDetails}) =
-      _$_CardPaymentMethodDetailsToken;
+      {required final CardTokenPaymentMethod card,
+      @JsonKey(name: "billing_details")
+      final BillingDetails? billingDetails}) = _$_CardPaymentMethodDetailsToken;
 
   factory _CardPaymentMethodDetailsToken.fromJson(Map<String, dynamic> json) =
       _$_CardPaymentMethodDetailsToken.fromJson;
@@ -1194,10 +1192,9 @@ class _$_IdealPaymentMethodDetails implements _IdealPaymentMethodDetails {
 
 abstract class _IdealPaymentMethodDetails implements IdealPaymentMethodDetails {
   const factory _IdealPaymentMethodDetails(
-      {@ElementConverter()
-          required final Element ideal,
+      {@ElementConverter() required final Element ideal,
       @JsonKey(name: "billing_details")
-          final BillingDetails? billingDetails}) = _$_IdealPaymentMethodDetails;
+      final BillingDetails? billingDetails}) = _$_IdealPaymentMethodDetails;
 
   factory _IdealPaymentMethodDetails.fromJson(Map<String, dynamic> json) =
       _$_IdealPaymentMethodDetails.fromJson;
@@ -1425,7 +1422,7 @@ abstract class _IdealPaymentMethodDetailsSelfCollect
   const factory _IdealPaymentMethodDetailsSelfCollect(
           {required final IdealBankData ideal,
           @JsonKey(name: "billing_details")
-              final BillingDetails? billingDetails}) =
+          final BillingDetails? billingDetails}) =
       _$_IdealPaymentMethodDetailsSelfCollect;
 
   factory _IdealPaymentMethodDetailsSelfCollect.fromJson(

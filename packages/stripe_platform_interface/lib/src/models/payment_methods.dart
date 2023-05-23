@@ -810,7 +810,6 @@ class MandateDataOnlineData with _$MandateDataOnlineData {
       _$MandateDataOnlineDataFromJson(json);
 }
 
-
 @freezed
 class ThreeDSecureUsage with _$ThreeDSecureUsage {
   /// Data associated with the 3ds usage.

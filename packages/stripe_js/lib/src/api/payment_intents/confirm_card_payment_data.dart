@@ -38,7 +38,7 @@ class ConfirmCardPaymentData with _$ConfirmCardPaymentData {
     /// and comply with regional legislation and network rules. For example, if
     /// your customer is impacted by SCA, using off_session will ensure that they are authenticated while processing this PaymentIntent. You will then be able to collect off-session payments for this customer.
     @JsonKey(name: "setup_future_usage")
-        PaymentIntentSetupFutureUsage? setupFutureUsage,
+    PaymentIntentSetupFutureUsage? setupFutureUsage,
 
     /// An object containing payment-method-specific configuration to
     /// confirm the PaymentIntent with.

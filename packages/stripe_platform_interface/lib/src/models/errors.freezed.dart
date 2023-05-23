@@ -117,7 +117,7 @@ class _$_StripeErrorGeneric<T> implements _StripeErrorGeneric<T> {
   const _$_StripeErrorGeneric(
       {required this.message,
       @JsonKey(fromJson: _dataFromJson, toJson: _dataToJson)
-          required this.code});
+      required this.code});
 
   factory _$_StripeErrorGeneric.fromJson(Map<String, dynamic> json) =>
       _$$_StripeErrorGenericFromJson(json);
@@ -166,7 +166,7 @@ abstract class _StripeErrorGeneric<T> implements StripeError<T> {
   const factory _StripeErrorGeneric(
       {required final String message,
       @JsonKey(fromJson: _dataFromJson, toJson: _dataToJson)
-          required final T code}) = _$_StripeErrorGeneric<T>;
+      required final T code}) = _$_StripeErrorGeneric<T>;
 
   factory _StripeErrorGeneric.fromJson(Map<String, dynamic> json) =
       _$_StripeErrorGeneric<T>.fromJson;

@@ -527,10 +527,11 @@ class StripeSdkModule(internal val reactContext: ReactApplicationContext) : Reac
 
   @ReactMethod
   fun isPlatformPaySupported(params: ReadableMap?, promise: Promise) {
+    val googlePayParams = params?.getMap("googlePay")
     val fragment = GooglePayPaymentMethodLauncherFragment(
       reactApplicationContext,
-      getBooleanOrFalse(params, "testEnv"),
-      getBooleanOrFalse(params, "existingPaymentMethodRequired"),
+      getBooleanOrFalse(googlePayParams, "testEnv"),
+      getBooleanOrFalse(googlePayParams, "existingPaymentMethodRequired"),
       promise
     )
 
