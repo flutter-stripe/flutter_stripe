@@ -81,7 +81,7 @@ class BankAccountToken with _$BankAccountToken {
     /// The type of entity that holds the account.
     /// This can be either individual or company.
     @JsonKey(name: "account_holder_type")
-        BankAccountHolderType? accountHolderType,
+    BankAccountHolderType? accountHolderType,
 
     /// The bank account type.
     /// This can only be checking or savings in most countries.
@@ -235,7 +235,7 @@ class CardToken with _$CardToken {
     /// Can be android_pay (includes Google Pay), apple_pay, masterpass,
     /// visa_checkout, or null.
     @JsonKey(name: "tokenization_method")
-        CardTokenizationMethod? tokenizationMethod,
+    CardTokenizationMethod? tokenizationMethod,
   }) = _CardToken;
 
   factory CardToken.fromJson(Map<String, dynamic> json) =>

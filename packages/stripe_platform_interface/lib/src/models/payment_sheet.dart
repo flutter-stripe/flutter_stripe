@@ -109,7 +109,8 @@ class PaymentSheetApplePay with _$PaymentSheetApplePay {
     /// ability to track and manage their purchases in Wallet. Stripe calls your implementation after the
     /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
     /// function, or else the Apple Pay sheet will hang.
-    @JsonKey(ignore: true) OnOrderTracking? setOrderTracking,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    OnOrderTracking? setOrderTracking,
   }) = _PaymentSheetApplePay;
 
   factory PaymentSheetApplePay.fromJson(Map<String, dynamic> json) =>
@@ -162,41 +163,41 @@ class PaymentSheetAppearanceColors with _$PaymentSheetAppearanceColors {
     ///
     /// Make sure there is enough contrast with [background].
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? primary,
+    Color? primary,
 
     /// Background color of the payment sheet.
     ///
     /// Make sure there is enough contrast with [primary].
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? background,
+    Color? background,
 
     /// Background color of the payment sheet components.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? componentBackground,
+    Color? componentBackground,
 
     ///  Border color of the payment sheet components.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? componentBorder,
+    Color? componentBorder,
 
     ///  Divider color of the payment sheet components.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? componentDivider,
+    Color? componentDivider,
 
     /// Color of the entered text in the payment components.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? componentText,
+    Color? componentText,
 
     /// Primary text color.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? primaryText,
+    Color? primaryText,
 
     /// Secondary text color.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? secondaryText,
+    Color? secondaryText,
 
     /// Place holder text color.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? placeholderText,
+    Color? placeholderText,
 
     /// Color of the displayed icons
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? icon,
@@ -319,14 +320,14 @@ class PaymentSheetPrimaryButtonThemeColors
   const factory PaymentSheetPrimaryButtonThemeColors({
     /// Primary button background color
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? background,
+    Color? background,
 
     /// Primary button text color
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? text,
 
     /// Primary button border color
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? border,
+    Color? border,
   }) = _PaymentSheetPrimaryButtonThemeColors;
 
   factory PaymentSheetPrimaryButtonThemeColors.fromJson(

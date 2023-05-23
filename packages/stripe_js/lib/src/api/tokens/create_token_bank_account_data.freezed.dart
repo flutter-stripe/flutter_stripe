@@ -53,16 +53,12 @@ abstract class $CreateTokenBankAccountDataCopyWith<$Res> {
   $Res call(
       {String country,
       String currency,
-      @JsonKey(name: "routing_number")
-          String? routingNumber,
-      @JsonKey(name: "account_number")
-          String accountNumber,
-      @JsonKey(name: "account_holder_name")
-          String? accountHolderName,
+      @JsonKey(name: "routing_number") String? routingNumber,
+      @JsonKey(name: "account_number") String accountNumber,
+      @JsonKey(name: "account_holder_name") String? accountHolderName,
       @JsonKey(name: "account_holder_type")
-          BankAccountHolderType? accountHolderType,
-      @JsonKey(name: "account_type")
-          String? accountType});
+      BankAccountHolderType? accountHolderType,
+      @JsonKey(name: "account_type") String? accountType});
 }
 
 /// @nodoc
@@ -132,16 +128,12 @@ abstract class _$$_CreateTokenBankAccountDataCopyWith<$Res>
   $Res call(
       {String country,
       String currency,
-      @JsonKey(name: "routing_number")
-          String? routingNumber,
-      @JsonKey(name: "account_number")
-          String accountNumber,
-      @JsonKey(name: "account_holder_name")
-          String? accountHolderName,
+      @JsonKey(name: "routing_number") String? routingNumber,
+      @JsonKey(name: "account_number") String accountNumber,
+      @JsonKey(name: "account_holder_name") String? accountHolderName,
       @JsonKey(name: "account_holder_type")
-          BankAccountHolderType? accountHolderType,
-      @JsonKey(name: "account_type")
-          String? accountType});
+      BankAccountHolderType? accountHolderType,
+      @JsonKey(name: "account_type") String? accountType});
 }
 
 /// @nodoc
@@ -283,18 +275,15 @@ class _$_CreateTokenBankAccountData implements _CreateTokenBankAccountData {
 abstract class _CreateTokenBankAccountData
     implements CreateTokenBankAccountData {
   const factory _CreateTokenBankAccountData(
-      {required final String country,
-      required final String currency,
-      @JsonKey(name: "routing_number")
-          final String? routingNumber,
-      @JsonKey(name: "account_number")
-          required final String accountNumber,
-      @JsonKey(name: "account_holder_name")
-          final String? accountHolderName,
-      @JsonKey(name: "account_holder_type")
+          {required final String country,
+          required final String currency,
+          @JsonKey(name: "routing_number") final String? routingNumber,
+          @JsonKey(name: "account_number") required final String accountNumber,
+          @JsonKey(name: "account_holder_name") final String? accountHolderName,
+          @JsonKey(name: "account_holder_type")
           final BankAccountHolderType? accountHolderType,
-      @JsonKey(name: "account_type")
-          final String? accountType}) = _$_CreateTokenBankAccountData;
+          @JsonKey(name: "account_type") final String? accountType}) =
+      _$_CreateTokenBankAccountData;
 
   factory _CreateTokenBankAccountData.fromJson(Map<String, dynamic> json) =
       _$_CreateTokenBankAccountData.fromJson;

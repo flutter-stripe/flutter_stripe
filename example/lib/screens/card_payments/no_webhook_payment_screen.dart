@@ -140,8 +140,6 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
           returnURL: 'flutterstripe://redirect',
         );
 
-   
-
         if (paymentIntent.status == PaymentIntentsStatus.RequiresConfirmation) {
           // 5. Call API to confirm intent
           await confirmIntent(paymentIntent.id);

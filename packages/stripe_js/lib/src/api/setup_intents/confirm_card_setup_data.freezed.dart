@@ -199,10 +199,10 @@ class _$_ConfirmCardSetupData implements _ConfirmCardSetupData {
 
 abstract class _ConfirmCardSetupData implements ConfirmCardSetupData {
   const factory _ConfirmCardSetupData(
-      {@paymentMethodDetailJsonKey
+          {@paymentMethodDetailJsonKey
           final CardPaymentMethodDetails? paymentMethod,
-      @JsonKey(name: "return_url")
-          final String? returnUrl}) = _$_ConfirmCardSetupData;
+          @JsonKey(name: "return_url") final String? returnUrl}) =
+      _$_ConfirmCardSetupData;
 
   factory _ConfirmCardSetupData.fromJson(Map<String, dynamic> json) =
       _$_ConfirmCardSetupData.fromJson;

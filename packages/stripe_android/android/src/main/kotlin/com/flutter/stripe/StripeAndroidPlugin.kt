@@ -111,7 +111,7 @@ If you continue to have trouble, follow this discussion to get some support http
             )
             "confirmPayment" -> stripeSdk.confirmPayment(
                 paymentIntentClientSecret = call.requiredArgument("paymentIntentClientSecret"),
-                params = call.requiredArgument("params"),
+                params = call.optionalArgument("params"),
                 options = call.requiredArgument("options"),
                 promise = Promise(result)
             )

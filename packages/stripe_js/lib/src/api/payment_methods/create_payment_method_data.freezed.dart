@@ -442,30 +442,20 @@ class _$_CreatePaymentMethodData implements _CreatePaymentMethodData {
 abstract class _CreatePaymentMethodData implements CreatePaymentMethodData {
   const factory _CreatePaymentMethodData(
       {required final String type,
-      @ElementConverter()
-          final Element? card,
+      @ElementConverter() final Element? card,
       @JsonKey(name: "au_becs_debit")
       @ElementConverter()
-          final Element? auBecsDebit,
-      @ElementConverter()
-          final Element? fpx,
-      @JsonKey(name: "fpx[bank]")
-          final String? fpxBank,
-      @JsonKey(name: "netbanking[bank]")
-          final String? netbankingBank,
-      @ElementConverter()
-          final Element? ideal,
-      @JsonKey(name: "ideal[bank]")
-          final String? idealBank,
-      @JsonKey(name: "sepa_debit")
-      @ElementConverter()
-          final Element? sepaDebit,
-      @JsonKey(name: "sepa_debit[iban]")
-          final String? sepaDebitIban,
-      @JsonKey(name: "upi[vpa]")
-          final String? upiVpa,
+      final Element? auBecsDebit,
+      @ElementConverter() final Element? fpx,
+      @JsonKey(name: "fpx[bank]") final String? fpxBank,
+      @JsonKey(name: "netbanking[bank]") final String? netbankingBank,
+      @ElementConverter() final Element? ideal,
+      @JsonKey(name: "ideal[bank]") final String? idealBank,
+      @JsonKey(name: "sepa_debit") @ElementConverter() final Element? sepaDebit,
+      @JsonKey(name: "sepa_debit[iban]") final String? sepaDebitIban,
+      @JsonKey(name: "upi[vpa]") final String? upiVpa,
       @JsonKey(name: "billing_details")
-          final BillingDetails? billingDetails}) = _$_CreatePaymentMethodData;
+      final BillingDetails? billingDetails}) = _$_CreatePaymentMethodData;
 
   factory _CreatePaymentMethodData.fromJson(Map<String, dynamic> json) =
       _$_CreatePaymentMethodData.fromJson;

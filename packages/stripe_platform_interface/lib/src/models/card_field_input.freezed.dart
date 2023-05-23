@@ -60,20 +60,20 @@ abstract class $CardStyleCopyWith<$Res> {
   $Res call(
       {int? borderWidth,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? backgroundColor,
+      Color? backgroundColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? borderColor,
+      Color? borderColor,
       int? borderRadius,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? cursorColor,
+      Color? cursorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textColor,
+      Color? textColor,
       int? fontSize,
       String? fontFamily,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textErrorColor,
+      Color? textErrorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? placeholderColor});
+      Color? placeholderColor});
 }
 
 /// @nodoc
@@ -156,20 +156,20 @@ abstract class _$$_CardStyleConstructorCopyWith<$Res>
   $Res call(
       {int? borderWidth,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? backgroundColor,
+      Color? backgroundColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? borderColor,
+      Color? borderColor,
       int? borderRadius,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? cursorColor,
+      Color? cursorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textColor,
+      Color? textColor,
       int? fontSize,
       String? fontFamily,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textErrorColor,
+      Color? textErrorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? placeholderColor});
+      Color? placeholderColor});
 }
 
 /// @nodoc
@@ -246,20 +246,20 @@ class _$_CardStyleConstructor extends _CardStyleConstructor {
   _$_CardStyleConstructor(
       {this.borderWidth,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.backgroundColor,
+      this.backgroundColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.borderColor,
+      this.borderColor,
       this.borderRadius,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.cursorColor,
+      this.cursorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.textColor,
+      this.textColor,
       this.fontSize,
       this.fontFamily,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.textErrorColor,
+      this.textErrorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.placeholderColor})
+      this.placeholderColor})
       : super._();
 
   factory _$_CardStyleConstructor.fromJson(Map<String, dynamic> json) =>
@@ -367,20 +367,20 @@ abstract class _CardStyleConstructor extends CardStyle {
   factory _CardStyleConstructor(
       {final int? borderWidth,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? backgroundColor,
+      final Color? backgroundColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? borderColor,
+      final Color? borderColor,
       final int? borderRadius,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? cursorColor,
+      final Color? cursorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? textColor,
+      final Color? textColor,
       final int? fontSize,
       final String? fontFamily,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? textErrorColor,
+      final Color? textErrorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? placeholderColor}) = _$_CardStyleConstructor;
+      final Color? placeholderColor}) = _$_CardStyleConstructor;
   _CardStyleConstructor._() : super._();
 
   factory _CardStyleConstructor.fromJson(Map<String, dynamic> json) =
@@ -472,20 +472,20 @@ abstract class $CardFormStyleCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? backgroundColor,
+      Color? backgroundColor,
       int? borderWidth,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? borderColor,
+      Color? borderColor,
       int? borderRadius,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? cursorColor,
+      Color? cursorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textColor,
+      Color? textColor,
       int? fontSize,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textErrorColor,
+      Color? textErrorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? placeholderColor});
+      Color? placeholderColor});
 }
 
 /// @nodoc
@@ -563,20 +563,20 @@ abstract class _$$_CardFormStyleConstructorCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? backgroundColor,
+      Color? backgroundColor,
       int? borderWidth,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? borderColor,
+      Color? borderColor,
       int? borderRadius,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? cursorColor,
+      Color? cursorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textColor,
+      Color? textColor,
       int? fontSize,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? textErrorColor,
+      Color? textErrorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          Color? placeholderColor});
+      Color? placeholderColor});
 }
 
 /// @nodoc
@@ -647,20 +647,20 @@ class __$$_CardFormStyleConstructorCopyWithImpl<$Res>
 class _$_CardFormStyleConstructor extends _CardFormStyleConstructor {
   _$_CardFormStyleConstructor(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.backgroundColor,
+      this.backgroundColor,
       this.borderWidth,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.borderColor,
+      this.borderColor,
       this.borderRadius,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.cursorColor,
+      this.cursorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.textColor,
+      this.textColor,
       this.fontSize,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.textErrorColor,
+      this.textErrorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          this.placeholderColor})
+      this.placeholderColor})
       : super._();
 
   factory _$_CardFormStyleConstructor.fromJson(Map<String, dynamic> json) =>
@@ -761,20 +761,20 @@ class _$_CardFormStyleConstructor extends _CardFormStyleConstructor {
 abstract class _CardFormStyleConstructor extends CardFormStyle {
   factory _CardFormStyleConstructor(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? backgroundColor,
+      final Color? backgroundColor,
       final int? borderWidth,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? borderColor,
+      final Color? borderColor,
       final int? borderRadius,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? cursorColor,
+      final Color? cursorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? textColor,
+      final Color? textColor,
       final int? fontSize,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? textErrorColor,
+      final Color? textErrorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-          final Color? placeholderColor}) = _$_CardFormStyleConstructor;
+      final Color? placeholderColor}) = _$_CardFormStyleConstructor;
   _CardFormStyleConstructor._() : super._();
 
   factory _CardFormStyleConstructor.fromJson(Map<String, dynamic> json) =

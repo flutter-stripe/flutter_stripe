@@ -120,14 +120,13 @@ class BankAccountTokenParams with _$BankAccountTokenParams {
 
 /// Data that provides information about the token
 class TokenData with _$TokenData {
-
   const TokenData._();
   const factory TokenData({
     /// Unique identifier of the token
     required String id,
 
     /// Timestamp when token was created
-    @JsonKey(name: 'created') required int created,
+    @JsonKey(name: 'created') required String created,
 
     /// Type of the token
     required TokenType type,

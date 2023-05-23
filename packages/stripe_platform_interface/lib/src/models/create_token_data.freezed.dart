@@ -1584,7 +1584,7 @@ mixin _$TokenData {
 
   /// Timestamp when token was created
   @JsonKey(name: 'created')
-  int get created => throw _privateConstructorUsedError;
+  String get created => throw _privateConstructorUsedError;
 
   /// Type of the token
   TokenType get type => throw _privateConstructorUsedError;
@@ -1611,7 +1611,7 @@ abstract class $TokenDataCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      @JsonKey(name: 'created') int created,
+      @JsonKey(name: 'created') String created,
       TokenType type,
       bool livemode,
       BankAccount? bankAccount,
@@ -1649,7 +1649,7 @@ class _$TokenDataCopyWithImpl<$Res, $Val extends TokenData>
       created: null == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -1703,7 +1703,7 @@ abstract class _$$_TokenDataCopyWith<$Res> implements $TokenDataCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      @JsonKey(name: 'created') int created,
+      @JsonKey(name: 'created') String created,
       TokenType type,
       bool livemode,
       BankAccount? bankAccount,
@@ -1741,7 +1741,7 @@ class __$$_TokenDataCopyWithImpl<$Res>
       created: null == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -1784,7 +1784,7 @@ class _$_TokenData extends _TokenData {
   /// Timestamp when token was created
   @override
   @JsonKey(name: 'created')
-  final int created;
+  final String created;
 
   /// Type of the token
   @override
@@ -1844,7 +1844,7 @@ class _$_TokenData extends _TokenData {
 abstract class _TokenData extends TokenData {
   const factory _TokenData(
       {required final String id,
-      @JsonKey(name: 'created') required final int created,
+      @JsonKey(name: 'created') required final String created,
       required final TokenType type,
       required final bool livemode,
       final BankAccount? bankAccount,
@@ -1862,7 +1862,7 @@ abstract class _TokenData extends TokenData {
 
   /// Timestamp when token was created
   @JsonKey(name: 'created')
-  int get created;
+  String get created;
   @override
 
   /// Type of the token
