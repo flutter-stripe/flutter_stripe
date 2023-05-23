@@ -255,7 +255,6 @@ _$_GooglePayParams _$$_GooglePayParamsFromJson(Map<String, dynamic> json) =>
       testEnv: json['testEnv'] as bool? ?? false,
       merchantCountryCode: json['merchantCountryCode'] as String,
       currencyCode: json['currencyCode'] as String,
-      amount: json['amount'] as int,
       merchantName: json['merchantName'] as String?,
       isEmailRequired: json['isEmailRequired'] as bool?,
       allowCreditCards: json['allowCreditCards'] as bool?,
@@ -266,7 +265,6 @@ Map<String, dynamic> _$$_GooglePayParamsToJson(_$_GooglePayParams instance) =>
       'testEnv': instance.testEnv,
       'merchantCountryCode': instance.merchantCountryCode,
       'currencyCode': instance.currencyCode,
-      'amount': instance.amount,
       'merchantName': instance.merchantName,
       'isEmailRequired': instance.isEmailRequired,
       'allowCreditCards': instance.allowCreditCards,
@@ -277,6 +275,7 @@ _$_GooglePayPaymentMethodParams _$$_GooglePayPaymentMethodParamsFromJson(
     _$_GooglePayPaymentMethodParams(
       existingPaymentMethodRequired:
           json['existingPaymentMethodRequired'] as bool?,
+      amount: json['amount'] as int,
       billingAddressConfig: json['billingAddressConfig'] == null
           ? null
           : GooglePayBillingAddressConfig.fromJson(
@@ -291,6 +290,7 @@ Map<String, dynamic> _$$_GooglePayPaymentMethodParamsToJson(
         _$_GooglePayPaymentMethodParams instance) =>
     <String, dynamic>{
       'existingPaymentMethodRequired': instance.existingPaymentMethodRequired,
+      'amount': instance.amount,
       'billingAddressConfig': instance.billingAddressConfig?.toJson(),
       'shippingAddressConfig': instance.shippingAddressConfig?.toJson(),
     };

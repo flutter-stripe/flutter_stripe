@@ -188,9 +188,6 @@ class GooglePayParams with _$GooglePayParams {
     /// ISO 4217 alphabetic currency code.
     required String currencyCode,
 
-    /// Total monetary value of the transaction.
-    required int amount,
-
     /// Merchant name, displayed in the Google Pay sheet.
     String? merchantName,
 
@@ -219,6 +216,9 @@ class GooglePayPaymentMethodParams with _$GooglePayPaymentMethodParams {
     ///
     /// Defaults to false.
     bool? existingPaymentMethodRequired,
+
+    /// Total monetary value of the transaction.
+    required int amount,
 
     /// Describes the configuration for billing address collection in the Google Pay sheet.
     GooglePayBillingAddressConfig? billingAddressConfig,
