@@ -32,7 +32,7 @@ class _KeepVisibleOnFocusState extends State<KeepVisibleOnFocus>
   void onFocusChanged() {
     if (widget.focusNode.hasFocus) {
       WidgetsBinding.instance.addObserver(this);
-      _lastBottomViewInset = WidgetsBinding.instance.window.viewInsets.bottom;
+      _lastBottomViewInset = View.of(context).viewInsets.bottom;
     } else {
       WidgetsBinding.instance.removeObserver(this);
     }
@@ -61,16 +61,15 @@ class _KeepVisibleOnFocusState extends State<KeepVisibleOnFocus>
 
   @override
   void didChangeMetrics() {
-    if (_lastBottomViewInset !=
-        WidgetsBinding.instance.window.viewInsets.bottom) {
-      if (_lastBottomViewInset <
-          WidgetsBinding.instance.window.viewInsets.bottom) {
+    final currentBottomViewInsets = View.of(context).viewInsets.bottom;
+    if (_lastBottomViewInset != currentBottomViewInsets) {
+      if (_lastBottomViewInset < currentBottomViewInsets) {
         // Because the metrics change signal from engine will come here every frame
         // (on both iOS and Android). So we don't need to show caret with animation.
         _showOnScreen();
       }
     }
-    _lastBottomViewInset = WidgetsBinding.instance.window.viewInsets.bottom;
+    _lastBottomViewInset = currentBottomViewInsets;
   }
 
   @override

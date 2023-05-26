@@ -144,7 +144,7 @@ class _$_CreateTokenPIIData implements _CreateTokenPIIData {
 abstract class _CreateTokenPIIData implements CreateTokenPIIData {
   const factory _CreateTokenPIIData(
       {@JsonKey(name: "personal_id_number")
-          required final String personalIdNumber}) = _$_CreateTokenPIIData;
+      required final String personalIdNumber}) = _$_CreateTokenPIIData;
 
   factory _CreateTokenPIIData.fromJson(Map<String, dynamic> json) =
       _$_CreateTokenPIIData.fromJson;

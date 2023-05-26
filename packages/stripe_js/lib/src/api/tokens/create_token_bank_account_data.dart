@@ -15,7 +15,7 @@ class CreateTokenBankAccountData with _$CreateTokenBankAccountData {
     @JsonKey(name: "account_number") required String accountNumber,
     @JsonKey(name: "account_holder_name") String? accountHolderName,
     @JsonKey(name: "account_holder_type")
-        BankAccountHolderType? accountHolderType,
+    BankAccountHolderType? accountHolderType,
     @JsonKey(name: "account_type") String? accountType,
   }) = _CreateTokenBankAccountData;
 

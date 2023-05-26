@@ -21,7 +21,7 @@ class ConfirmIdealPaymentData with _$ConfirmIdealPaymentData {
     /// PaymentIntent. The newly created SEPA Direct Debit PaymentMethod
     /// will be attached to this customer.
     @JsonKey(name: "setup_future_usage")
-        PaymentIntentSetupFutureUsage? setupFutureUsage,
+    PaymentIntentSetupFutureUsage? setupFutureUsage,
   }) = _ConfirmIdealPaymentData;
 
   factory ConfirmIdealPaymentData.fromJson(Map<String, dynamic> json) =>

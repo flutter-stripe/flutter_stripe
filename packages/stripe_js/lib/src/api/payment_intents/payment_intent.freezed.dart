@@ -251,64 +251,49 @@ abstract class $PaymentIntentCopyWith<$Res> {
       {String id,
       String object,
       int amount,
-      @JsonKey(name: "amount_capturable")
-          int? amountCapturable,
+      @JsonKey(name: "amount_capturable") int? amountCapturable,
       @JsonKey(name: "amount_details")
-          PaymentIntentAmountDetails? amountDetails,
-      @JsonKey(name: "amount_received")
-          int? amountReceived,
+      PaymentIntentAmountDetails? amountDetails,
+      @JsonKey(name: "amount_received") int? amountReceived,
       String? application,
-      @JsonKey(name: "application_fee_amount")
-          int? applicationFeeAmount,
+      @JsonKey(name: "application_fee_amount") int? applicationFeeAmount,
       @JsonKey(name: "automatic_payment_methods")
-          PaymentIntentAutomaticPaymentMethods? automaticPaymentMethods,
-      @JsonKey(name: "canceled_at")
-          int? canceledAt,
+      PaymentIntentAutomaticPaymentMethods? automaticPaymentMethods,
+      @JsonKey(name: "canceled_at") int? canceledAt,
       @JsonKey(name: "cancellation_reason")
-          PaymentIntentCancellationReason? cancellationReason,
-      @JsonKey(name: "client_secret")
-          String clientSecret,
-      @JsonKey(name: "capture_method")
-          PaymentIntentCaptureMethod captureMethod,
+      PaymentIntentCancellationReason? cancellationReason,
+      @JsonKey(name: "client_secret") String clientSecret,
+      @JsonKey(name: "capture_method") PaymentIntentCaptureMethod captureMethod,
       @JsonKey(name: "confirmation_method")
-          PaymentIntentConfirmationMethod confirmationMethod,
+      PaymentIntentConfirmationMethod confirmationMethod,
       int? created,
       String currency,
       String? customer,
       String? description,
       String? invoice,
-      @JsonKey(name: "last_payment_error")
-          StripeError? lastPaymentError,
-      @JsonKey(name: "latest_charge")
-          String? latestCharge,
+      @JsonKey(name: "last_payment_error") StripeError? lastPaymentError,
+      @JsonKey(name: "latest_charge") String? latestCharge,
       bool livemode,
       Map<String, dynamic> metadata,
-      @JsonKey(name: "next_action")
-          dynamic nextAction,
-      @JsonKey(name: "on_behalf_of")
-          String? onBehalfOf,
-      @JsonKey(name: "payment_method")
-          String? paymentMethod,
+      @JsonKey(name: "next_action") dynamic nextAction,
+      @JsonKey(name: "on_behalf_of") String? onBehalfOf,
+      @JsonKey(name: "payment_method") String? paymentMethod,
       @JsonKey(name: "payment_method_options")
-          Map<dynamic, dynamic> paymentMethodOptions,
+      Map<dynamic, dynamic> paymentMethodOptions,
       @JsonKey(name: "payment_method_types")
-          List<PaymentMethodType> paymentMethodTypes,
+      List<PaymentMethodType> paymentMethodTypes,
       dynamic processing,
-      @JsonKey(name: "receipt_email")
-          String? receiptEmail,
+      @JsonKey(name: "receipt_email") String? receiptEmail,
       String? review,
       @JsonKey(name: "setup_future_usage")
-          PaymentIntentSetupFutureUsage? setupFutureUsage,
+      PaymentIntentSetupFutureUsage? setupFutureUsage,
       ShippingDetails? shipping,
-      @JsonKey(name: "statement_descriptor")
-          String? statementDescriptor,
+      @JsonKey(name: "statement_descriptor") String? statementDescriptor,
       @JsonKey(name: "statement_descriptor_suffix")
-          String? statementDescriptorSuffix,
+      String? statementDescriptorSuffix,
       PaymentIntentsStatus status,
-      @JsonKey(name: "transfer_data")
-          dynamic transferData,
-      @JsonKey(name: "transfer_group")
-          dynamic transferGroup});
+      @JsonKey(name: "transfer_data") dynamic transferData,
+      @JsonKey(name: "transfer_group") dynamic transferGroup});
 
   $PaymentIntentAmountDetailsCopyWith<$Res>? get amountDetails;
   $PaymentIntentAutomaticPaymentMethodsCopyWith<$Res>?
@@ -589,64 +574,49 @@ abstract class _$$_PaymentIntentCopyWith<$Res>
       {String id,
       String object,
       int amount,
-      @JsonKey(name: "amount_capturable")
-          int? amountCapturable,
+      @JsonKey(name: "amount_capturable") int? amountCapturable,
       @JsonKey(name: "amount_details")
-          PaymentIntentAmountDetails? amountDetails,
-      @JsonKey(name: "amount_received")
-          int? amountReceived,
+      PaymentIntentAmountDetails? amountDetails,
+      @JsonKey(name: "amount_received") int? amountReceived,
       String? application,
-      @JsonKey(name: "application_fee_amount")
-          int? applicationFeeAmount,
+      @JsonKey(name: "application_fee_amount") int? applicationFeeAmount,
       @JsonKey(name: "automatic_payment_methods")
-          PaymentIntentAutomaticPaymentMethods? automaticPaymentMethods,
-      @JsonKey(name: "canceled_at")
-          int? canceledAt,
+      PaymentIntentAutomaticPaymentMethods? automaticPaymentMethods,
+      @JsonKey(name: "canceled_at") int? canceledAt,
       @JsonKey(name: "cancellation_reason")
-          PaymentIntentCancellationReason? cancellationReason,
-      @JsonKey(name: "client_secret")
-          String clientSecret,
-      @JsonKey(name: "capture_method")
-          PaymentIntentCaptureMethod captureMethod,
+      PaymentIntentCancellationReason? cancellationReason,
+      @JsonKey(name: "client_secret") String clientSecret,
+      @JsonKey(name: "capture_method") PaymentIntentCaptureMethod captureMethod,
       @JsonKey(name: "confirmation_method")
-          PaymentIntentConfirmationMethod confirmationMethod,
+      PaymentIntentConfirmationMethod confirmationMethod,
       int? created,
       String currency,
       String? customer,
       String? description,
       String? invoice,
-      @JsonKey(name: "last_payment_error")
-          StripeError? lastPaymentError,
-      @JsonKey(name: "latest_charge")
-          String? latestCharge,
+      @JsonKey(name: "last_payment_error") StripeError? lastPaymentError,
+      @JsonKey(name: "latest_charge") String? latestCharge,
       bool livemode,
       Map<String, dynamic> metadata,
-      @JsonKey(name: "next_action")
-          dynamic nextAction,
-      @JsonKey(name: "on_behalf_of")
-          String? onBehalfOf,
-      @JsonKey(name: "payment_method")
-          String? paymentMethod,
+      @JsonKey(name: "next_action") dynamic nextAction,
+      @JsonKey(name: "on_behalf_of") String? onBehalfOf,
+      @JsonKey(name: "payment_method") String? paymentMethod,
       @JsonKey(name: "payment_method_options")
-          Map<dynamic, dynamic> paymentMethodOptions,
+      Map<dynamic, dynamic> paymentMethodOptions,
       @JsonKey(name: "payment_method_types")
-          List<PaymentMethodType> paymentMethodTypes,
+      List<PaymentMethodType> paymentMethodTypes,
       dynamic processing,
-      @JsonKey(name: "receipt_email")
-          String? receiptEmail,
+      @JsonKey(name: "receipt_email") String? receiptEmail,
       String? review,
       @JsonKey(name: "setup_future_usage")
-          PaymentIntentSetupFutureUsage? setupFutureUsage,
+      PaymentIntentSetupFutureUsage? setupFutureUsage,
       ShippingDetails? shipping,
-      @JsonKey(name: "statement_descriptor")
-          String? statementDescriptor,
+      @JsonKey(name: "statement_descriptor") String? statementDescriptor,
       @JsonKey(name: "statement_descriptor_suffix")
-          String? statementDescriptorSuffix,
+      String? statementDescriptorSuffix,
       PaymentIntentsStatus status,
-      @JsonKey(name: "transfer_data")
-          dynamic transferData,
-      @JsonKey(name: "transfer_group")
-          dynamic transferGroup});
+      @JsonKey(name: "transfer_data") dynamic transferData,
+      @JsonKey(name: "transfer_group") dynamic transferGroup});
 
   @override
   $PaymentIntentAmountDetailsCopyWith<$Res>? get amountDetails;
@@ -873,64 +843,47 @@ class _$_PaymentIntent implements _PaymentIntent {
       {required this.id,
       this.object = "payment_intent",
       required this.amount,
-      @JsonKey(name: "amount_capturable")
-          this.amountCapturable,
+      @JsonKey(name: "amount_capturable") this.amountCapturable,
       @JsonKey(name: "amount_details")
-          this.amountDetails = const PaymentIntentAmountDetails(),
-      @JsonKey(name: "amount_received")
-          this.amountReceived,
+      this.amountDetails = const PaymentIntentAmountDetails(),
+      @JsonKey(name: "amount_received") this.amountReceived,
       this.application,
-      @JsonKey(name: "application_fee_amount")
-          this.applicationFeeAmount,
-      @JsonKey(name: "automatic_payment_methods")
-          this.automaticPaymentMethods,
-      @JsonKey(name: "canceled_at")
-          this.canceledAt,
-      @JsonKey(name: "cancellation_reason")
-          this.cancellationReason,
-      @JsonKey(name: "client_secret")
-          required this.clientSecret,
+      @JsonKey(name: "application_fee_amount") this.applicationFeeAmount,
+      @JsonKey(name: "automatic_payment_methods") this.automaticPaymentMethods,
+      @JsonKey(name: "canceled_at") this.canceledAt,
+      @JsonKey(name: "cancellation_reason") this.cancellationReason,
+      @JsonKey(name: "client_secret") required this.clientSecret,
       @JsonKey(name: "capture_method")
-          this.captureMethod = PaymentIntentCaptureMethod.automatic,
+      this.captureMethod = PaymentIntentCaptureMethod.automatic,
       @JsonKey(name: "confirmation_method")
-          this.confirmationMethod = PaymentIntentConfirmationMethod.automatic,
+      this.confirmationMethod = PaymentIntentConfirmationMethod.automatic,
       this.created,
       required this.currency,
       this.customer,
       this.description,
       this.invoice,
-      @JsonKey(name: "last_payment_error")
-          this.lastPaymentError,
-      @JsonKey(name: "latest_charge")
-          this.latestCharge,
+      @JsonKey(name: "last_payment_error") this.lastPaymentError,
+      @JsonKey(name: "latest_charge") this.latestCharge,
       required this.livemode,
       final Map<String, dynamic> metadata = const {},
-      @JsonKey(name: "next_action")
-          this.nextAction,
-      @JsonKey(name: "on_behalf_of")
-          this.onBehalfOf,
-      @JsonKey(name: "payment_method")
-          this.paymentMethod,
+      @JsonKey(name: "next_action") this.nextAction,
+      @JsonKey(name: "on_behalf_of") this.onBehalfOf,
+      @JsonKey(name: "payment_method") this.paymentMethod,
       @JsonKey(name: "payment_method_options")
-          final Map<dynamic, dynamic> paymentMethodOptions = const {},
+      final Map<dynamic, dynamic> paymentMethodOptions = const {},
       @JsonKey(name: "payment_method_types")
-          final List<PaymentMethodType> paymentMethodTypes = const [],
+      final List<PaymentMethodType> paymentMethodTypes = const [],
       this.processing,
-      @JsonKey(name: "receipt_email")
-          this.receiptEmail,
+      @JsonKey(name: "receipt_email") this.receiptEmail,
       this.review,
-      @JsonKey(name: "setup_future_usage")
-          this.setupFutureUsage,
+      @JsonKey(name: "setup_future_usage") this.setupFutureUsage,
       this.shipping,
-      @JsonKey(name: "statement_descriptor")
-          this.statementDescriptor,
+      @JsonKey(name: "statement_descriptor") this.statementDescriptor,
       @JsonKey(name: "statement_descriptor_suffix")
-          this.statementDescriptorSuffix,
+      this.statementDescriptorSuffix,
       required this.status,
-      @JsonKey(name: "transfer_data")
-          this.transferData,
-      @JsonKey(name: "transfer_group")
-          this.transferGroup})
+      @JsonKey(name: "transfer_data") this.transferData,
+      @JsonKey(name: "transfer_group") this.transferGroup})
       : _metadata = metadata,
         _paymentMethodOptions = paymentMethodOptions,
         _paymentMethodTypes = paymentMethodTypes;
@@ -1355,64 +1308,51 @@ abstract class _PaymentIntent implements PaymentIntent {
       {required final String id,
       final String object,
       required final int amount,
-      @JsonKey(name: "amount_capturable")
-          final int? amountCapturable,
+      @JsonKey(name: "amount_capturable") final int? amountCapturable,
       @JsonKey(name: "amount_details")
-          final PaymentIntentAmountDetails? amountDetails,
-      @JsonKey(name: "amount_received")
-          final int? amountReceived,
+      final PaymentIntentAmountDetails? amountDetails,
+      @JsonKey(name: "amount_received") final int? amountReceived,
       final String? application,
-      @JsonKey(name: "application_fee_amount")
-          final int? applicationFeeAmount,
+      @JsonKey(name: "application_fee_amount") final int? applicationFeeAmount,
       @JsonKey(name: "automatic_payment_methods")
-          final PaymentIntentAutomaticPaymentMethods? automaticPaymentMethods,
-      @JsonKey(name: "canceled_at")
-          final int? canceledAt,
+      final PaymentIntentAutomaticPaymentMethods? automaticPaymentMethods,
+      @JsonKey(name: "canceled_at") final int? canceledAt,
       @JsonKey(name: "cancellation_reason")
-          final PaymentIntentCancellationReason? cancellationReason,
-      @JsonKey(name: "client_secret")
-          required final String clientSecret,
+      final PaymentIntentCancellationReason? cancellationReason,
+      @JsonKey(name: "client_secret") required final String clientSecret,
       @JsonKey(name: "capture_method")
-          final PaymentIntentCaptureMethod captureMethod,
+      final PaymentIntentCaptureMethod captureMethod,
       @JsonKey(name: "confirmation_method")
-          final PaymentIntentConfirmationMethod confirmationMethod,
+      final PaymentIntentConfirmationMethod confirmationMethod,
       final int? created,
       required final String currency,
       final String? customer,
       final String? description,
       final String? invoice,
-      @JsonKey(name: "last_payment_error")
-          final StripeError? lastPaymentError,
-      @JsonKey(name: "latest_charge")
-          final String? latestCharge,
+      @JsonKey(name: "last_payment_error") final StripeError? lastPaymentError,
+      @JsonKey(name: "latest_charge") final String? latestCharge,
       required final bool livemode,
       final Map<String, dynamic> metadata,
-      @JsonKey(name: "next_action")
-          final dynamic nextAction,
-      @JsonKey(name: "on_behalf_of")
-          final String? onBehalfOf,
-      @JsonKey(name: "payment_method")
-          final String? paymentMethod,
+      @JsonKey(name: "next_action") final dynamic nextAction,
+      @JsonKey(name: "on_behalf_of") final String? onBehalfOf,
+      @JsonKey(name: "payment_method") final String? paymentMethod,
       @JsonKey(name: "payment_method_options")
-          final Map<dynamic, dynamic> paymentMethodOptions,
+      final Map<dynamic, dynamic> paymentMethodOptions,
       @JsonKey(name: "payment_method_types")
-          final List<PaymentMethodType> paymentMethodTypes,
+      final List<PaymentMethodType> paymentMethodTypes,
       final dynamic processing,
-      @JsonKey(name: "receipt_email")
-          final String? receiptEmail,
+      @JsonKey(name: "receipt_email") final String? receiptEmail,
       final String? review,
       @JsonKey(name: "setup_future_usage")
-          final PaymentIntentSetupFutureUsage? setupFutureUsage,
+      final PaymentIntentSetupFutureUsage? setupFutureUsage,
       final ShippingDetails? shipping,
-      @JsonKey(name: "statement_descriptor")
-          final String? statementDescriptor,
+      @JsonKey(name: "statement_descriptor") final String? statementDescriptor,
       @JsonKey(name: "statement_descriptor_suffix")
-          final String? statementDescriptorSuffix,
+      final String? statementDescriptorSuffix,
       required final PaymentIntentsStatus status,
-      @JsonKey(name: "transfer_data")
-          final dynamic transferData,
+      @JsonKey(name: "transfer_data") final dynamic transferData,
       @JsonKey(name: "transfer_group")
-          final dynamic transferGroup}) = _$_PaymentIntent;
+      final dynamic transferGroup}) = _$_PaymentIntent;
 
   factory _PaymentIntent.fromJson(Map<String, dynamic> json) =
       _$_PaymentIntent.fromJson;

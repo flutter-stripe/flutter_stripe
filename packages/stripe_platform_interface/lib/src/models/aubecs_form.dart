@@ -13,18 +13,18 @@ class AubecsFormStyle with _$AubecsFormStyle {
   const factory AubecsFormStyle({
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
 
-        /// Color of the textinput
-        Color? textColor,
+    /// Color of the textinput
+    Color? textColor,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
 
-        /// Color of the errormessage
-        /// Only available for Android
-        Color? textErrorColor,
+    /// Color of the errormessage
+    /// Only available for Android
+    Color? textErrorColor,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
 
-        /// Color of the place holder text
-        /// Only available for Android
-        Color? placeholderColor,
+    /// Color of the place holder text
+    /// Only available for Android
+    Color? placeholderColor,
 
     /// Size of the font in the input form.
     int? fontSize,
@@ -34,17 +34,17 @@ class AubecsFormStyle with _$AubecsFormStyle {
     int? borderWidth,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
 
-        /// Background color of the form.
-        ///
-        /// Make sure there is enough contrast with the text color
-        Color? backgroundColor,
+    /// Background color of the form.
+    ///
+    /// Make sure there is enough contrast with the text color
+    Color? backgroundColor,
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
 
-        ///  Color of the border of the formfields.
-        ///
-        /// Make sure there is enough contrast with the text color
-        /// Only available for Android
-        Color? borderColor,
+    ///  Color of the border of the formfields.
+    ///
+    /// Make sure there is enough contrast with the text color
+    /// Only available for Android
+    Color? borderColor,
 
     /// Borderadius of the form
     /// Only available for Android
