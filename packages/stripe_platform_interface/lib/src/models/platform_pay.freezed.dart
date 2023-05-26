@@ -2765,9 +2765,6 @@ mixin _$GooglePayParams {
   /// ISO 4217 alphabetic currency code.
   String get currencyCode => throw _privateConstructorUsedError;
 
-  /// Total monetary value of the transaction.
-  int get amount => throw _privateConstructorUsedError;
-
   /// Merchant name, displayed in the Google Pay sheet.
   String? get merchantName => throw _privateConstructorUsedError;
 
@@ -2797,7 +2794,6 @@ abstract class $GooglePayParamsCopyWith<$Res> {
       {bool testEnv,
       String merchantCountryCode,
       String currencyCode,
-      int amount,
       String? merchantName,
       bool? isEmailRequired,
       bool? allowCreditCards});
@@ -2819,7 +2815,6 @@ class _$GooglePayParamsCopyWithImpl<$Res, $Val extends GooglePayParams>
     Object? testEnv = null,
     Object? merchantCountryCode = null,
     Object? currencyCode = null,
-    Object? amount = null,
     Object? merchantName = freezed,
     Object? isEmailRequired = freezed,
     Object? allowCreditCards = freezed,
@@ -2837,10 +2832,6 @@ class _$GooglePayParamsCopyWithImpl<$Res, $Val extends GooglePayParams>
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as int,
       merchantName: freezed == merchantName
           ? _value.merchantName
           : merchantName // ignore: cast_nullable_to_non_nullable
@@ -2869,7 +2860,6 @@ abstract class _$$_GooglePayParamsCopyWith<$Res>
       {bool testEnv,
       String merchantCountryCode,
       String currencyCode,
-      int amount,
       String? merchantName,
       bool? isEmailRequired,
       bool? allowCreditCards});
@@ -2889,7 +2879,6 @@ class __$$_GooglePayParamsCopyWithImpl<$Res>
     Object? testEnv = null,
     Object? merchantCountryCode = null,
     Object? currencyCode = null,
-    Object? amount = null,
     Object? merchantName = freezed,
     Object? isEmailRequired = freezed,
     Object? allowCreditCards = freezed,
@@ -2907,10 +2896,6 @@ class __$$_GooglePayParamsCopyWithImpl<$Res>
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as int,
       merchantName: freezed == merchantName
           ? _value.merchantName
           : merchantName // ignore: cast_nullable_to_non_nullable
@@ -2935,7 +2920,6 @@ class _$_GooglePayParams implements _GooglePayParams {
       {this.testEnv = false,
       required this.merchantCountryCode,
       required this.currencyCode,
-      required this.amount,
       this.merchantName,
       this.isEmailRequired,
       this.allowCreditCards});
@@ -2962,10 +2946,6 @@ class _$_GooglePayParams implements _GooglePayParams {
   @override
   final String currencyCode;
 
-  /// Total monetary value of the transaction.
-  @override
-  final int amount;
-
   /// Merchant name, displayed in the Google Pay sheet.
   @override
   final String? merchantName;
@@ -2984,7 +2964,7 @@ class _$_GooglePayParams implements _GooglePayParams {
 
   @override
   String toString() {
-    return 'GooglePayParams(testEnv: $testEnv, merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, amount: $amount, merchantName: $merchantName, isEmailRequired: $isEmailRequired, allowCreditCards: $allowCreditCards)';
+    return 'GooglePayParams(testEnv: $testEnv, merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, merchantName: $merchantName, isEmailRequired: $isEmailRequired, allowCreditCards: $allowCreditCards)';
   }
 
   @override
@@ -2997,7 +2977,6 @@ class _$_GooglePayParams implements _GooglePayParams {
                 other.merchantCountryCode == merchantCountryCode) &&
             (identical(other.currencyCode, currencyCode) ||
                 other.currencyCode == currencyCode) &&
-            (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.merchantName, merchantName) ||
                 other.merchantName == merchantName) &&
             (identical(other.isEmailRequired, isEmailRequired) ||
@@ -3009,7 +2988,7 @@ class _$_GooglePayParams implements _GooglePayParams {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, testEnv, merchantCountryCode,
-      currencyCode, amount, merchantName, isEmailRequired, allowCreditCards);
+      currencyCode, merchantName, isEmailRequired, allowCreditCards);
 
   @JsonKey(ignore: true)
   @override
@@ -3030,7 +3009,6 @@ abstract class _GooglePayParams implements GooglePayParams {
       {final bool testEnv,
       required final String merchantCountryCode,
       required final String currencyCode,
-      required final int amount,
       final String? merchantName,
       final bool? isEmailRequired,
       final bool? allowCreditCards}) = _$_GooglePayParams;
@@ -3055,10 +3033,6 @@ abstract class _GooglePayParams implements GooglePayParams {
 
   /// ISO 4217 alphabetic currency code.
   String get currencyCode;
-  @override
-
-  /// Total monetary value of the transaction.
-  int get amount;
   @override
 
   /// Merchant name, displayed in the Google Pay sheet.
@@ -3093,6 +3067,9 @@ mixin _$GooglePayPaymentMethodParams {
   /// Defaults to false.
   bool? get existingPaymentMethodRequired => throw _privateConstructorUsedError;
 
+  /// Total monetary value of the transaction.
+  int get amount => throw _privateConstructorUsedError;
+
   /// Describes the configuration for billing address collection in the Google Pay sheet.
   GooglePayBillingAddressConfig? get billingAddressConfig =>
       throw _privateConstructorUsedError;
@@ -3117,6 +3094,7 @@ abstract class $GooglePayPaymentMethodParamsCopyWith<$Res> {
   @useResult
   $Res call(
       {bool? existingPaymentMethodRequired,
+      int amount,
       GooglePayBillingAddressConfig? billingAddressConfig,
       GooglePayShippingAddressConfig? shippingAddressConfig});
 
@@ -3139,6 +3117,7 @@ class _$GooglePayPaymentMethodParamsCopyWithImpl<$Res,
   @override
   $Res call({
     Object? existingPaymentMethodRequired = freezed,
+    Object? amount = null,
     Object? billingAddressConfig = freezed,
     Object? shippingAddressConfig = freezed,
   }) {
@@ -3147,6 +3126,10 @@ class _$GooglePayPaymentMethodParamsCopyWithImpl<$Res,
           ? _value.existingPaymentMethodRequired
           : existingPaymentMethodRequired // ignore: cast_nullable_to_non_nullable
               as bool?,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int,
       billingAddressConfig: freezed == billingAddressConfig
           ? _value.billingAddressConfig
           : billingAddressConfig // ignore: cast_nullable_to_non_nullable
@@ -3196,6 +3179,7 @@ abstract class _$$_GooglePayPaymentMethodParamsCopyWith<$Res>
   @useResult
   $Res call(
       {bool? existingPaymentMethodRequired,
+      int amount,
       GooglePayBillingAddressConfig? billingAddressConfig,
       GooglePayShippingAddressConfig? shippingAddressConfig});
 
@@ -3219,6 +3203,7 @@ class __$$_GooglePayPaymentMethodParamsCopyWithImpl<$Res>
   @override
   $Res call({
     Object? existingPaymentMethodRequired = freezed,
+    Object? amount = null,
     Object? billingAddressConfig = freezed,
     Object? shippingAddressConfig = freezed,
   }) {
@@ -3227,6 +3212,10 @@ class __$$_GooglePayPaymentMethodParamsCopyWithImpl<$Res>
           ? _value.existingPaymentMethodRequired
           : existingPaymentMethodRequired // ignore: cast_nullable_to_non_nullable
               as bool?,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int,
       billingAddressConfig: freezed == billingAddressConfig
           ? _value.billingAddressConfig
           : billingAddressConfig // ignore: cast_nullable_to_non_nullable
@@ -3245,6 +3234,7 @@ class __$$_GooglePayPaymentMethodParamsCopyWithImpl<$Res>
 class _$_GooglePayPaymentMethodParams implements _GooglePayPaymentMethodParams {
   const _$_GooglePayPaymentMethodParams(
       {this.existingPaymentMethodRequired,
+      required this.amount,
       this.billingAddressConfig,
       this.shippingAddressConfig});
 
@@ -3257,6 +3247,10 @@ class _$_GooglePayPaymentMethodParams implements _GooglePayPaymentMethodParams {
   @override
   final bool? existingPaymentMethodRequired;
 
+  /// Total monetary value of the transaction.
+  @override
+  final int amount;
+
   /// Describes the configuration for billing address collection in the Google Pay sheet.
   @override
   final GooglePayBillingAddressConfig? billingAddressConfig;
@@ -3267,7 +3261,7 @@ class _$_GooglePayPaymentMethodParams implements _GooglePayPaymentMethodParams {
 
   @override
   String toString() {
-    return 'GooglePayPaymentMethodParams(existingPaymentMethodRequired: $existingPaymentMethodRequired, billingAddressConfig: $billingAddressConfig, shippingAddressConfig: $shippingAddressConfig)';
+    return 'GooglePayPaymentMethodParams(existingPaymentMethodRequired: $existingPaymentMethodRequired, amount: $amount, billingAddressConfig: $billingAddressConfig, shippingAddressConfig: $shippingAddressConfig)';
   }
 
   @override
@@ -3279,6 +3273,7 @@ class _$_GooglePayPaymentMethodParams implements _GooglePayPaymentMethodParams {
                     existingPaymentMethodRequired) ||
                 other.existingPaymentMethodRequired ==
                     existingPaymentMethodRequired) &&
+            (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.billingAddressConfig, billingAddressConfig) ||
                 other.billingAddressConfig == billingAddressConfig) &&
             (identical(other.shippingAddressConfig, shippingAddressConfig) ||
@@ -3288,7 +3283,7 @@ class _$_GooglePayPaymentMethodParams implements _GooglePayPaymentMethodParams {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, existingPaymentMethodRequired,
-      billingAddressConfig, shippingAddressConfig);
+      amount, billingAddressConfig, shippingAddressConfig);
 
   @JsonKey(ignore: true)
   @override
@@ -3309,6 +3304,7 @@ abstract class _GooglePayPaymentMethodParams
     implements GooglePayPaymentMethodParams {
   const factory _GooglePayPaymentMethodParams(
           {final bool? existingPaymentMethodRequired,
+          required final int amount,
           final GooglePayBillingAddressConfig? billingAddressConfig,
           final GooglePayShippingAddressConfig? shippingAddressConfig}) =
       _$_GooglePayPaymentMethodParams;
@@ -3322,6 +3318,10 @@ abstract class _GooglePayPaymentMethodParams
   ///
   /// Defaults to false.
   bool? get existingPaymentMethodRequired;
+  @override
+
+  /// Total monetary value of the transaction.
+  int get amount;
   @override
 
   /// Describes the configuration for billing address collection in the Google Pay sheet.
