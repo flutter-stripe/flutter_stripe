@@ -1,3 +1,11 @@
+## 9.2.1
+**Fixes**
+- Move amount value to GooglePayPaymentMethodParams #1255 
+- iOS: Apple Pay updatePlatformSheet now pass the errors #1230
+- iOS: Fixes styling parameter for ApplePayButton #1231
+- Android: Fixes bug that to display image in card form #1254
+- Sync with Stripe [0.27.1](https://github.com/stripe/stripe-react-native/releases/tag/v0.27.1).
+
 ## 9.2.0
 **Features**
 - Add `BillingDetailsCollectionConfiguration` to payment sheet for collecting addresses.
