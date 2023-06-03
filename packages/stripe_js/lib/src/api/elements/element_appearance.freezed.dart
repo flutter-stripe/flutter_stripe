@@ -24,7 +24,7 @@ mixin _$ElementAppearance {
   Map<String, String>? get variables => throw _privateConstructorUsedError;
   Map<String, Map<String, String>>? get rules =>
       throw _privateConstructorUsedError;
-  dynamic get labels => throw _privateConstructorUsedError;
+  ElementAppearanceLabels get labels => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +42,7 @@ abstract class $ElementAppearanceCopyWith<$Res> {
       {ElementTheme theme,
       Map<String, String>? variables,
       Map<String, Map<String, String>>? rules,
-      dynamic labels});
+      ElementAppearanceLabels labels});
 }
 
 /// @nodoc
@@ -61,7 +61,7 @@ class _$ElementAppearanceCopyWithImpl<$Res, $Val extends ElementAppearance>
     Object? theme = null,
     Object? variables = freezed,
     Object? rules = freezed,
-    Object? labels = freezed,
+    Object? labels = null,
   }) {
     return _then(_value.copyWith(
       theme: null == theme
@@ -76,10 +76,10 @@ class _$ElementAppearanceCopyWithImpl<$Res, $Val extends ElementAppearance>
           ? _value.rules
           : rules // ignore: cast_nullable_to_non_nullable
               as Map<String, Map<String, String>>?,
-      labels: freezed == labels
+      labels: null == labels
           ? _value.labels
           : labels // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as ElementAppearanceLabels,
     ) as $Val);
   }
 }
@@ -96,7 +96,7 @@ abstract class _$$_ElementAppearanceCopyWith<$Res>
       {ElementTheme theme,
       Map<String, String>? variables,
       Map<String, Map<String, String>>? rules,
-      dynamic labels});
+      ElementAppearanceLabels labels});
 }
 
 /// @nodoc
@@ -113,7 +113,7 @@ class __$$_ElementAppearanceCopyWithImpl<$Res>
     Object? theme = null,
     Object? variables = freezed,
     Object? rules = freezed,
-    Object? labels = freezed,
+    Object? labels = null,
   }) {
     return _then(_$_ElementAppearance(
       theme: null == theme
@@ -128,7 +128,10 @@ class __$$_ElementAppearanceCopyWithImpl<$Res>
           ? _value._rules
           : rules // ignore: cast_nullable_to_non_nullable
               as Map<String, Map<String, String>>?,
-      labels: freezed == labels ? _value.labels! : labels,
+      labels: null == labels
+          ? _value.labels
+          : labels // ignore: cast_nullable_to_non_nullable
+              as ElementAppearanceLabels,
     ));
   }
 }
@@ -172,7 +175,7 @@ class _$_ElementAppearance implements _ElementAppearance {
 
   @override
   @JsonKey()
-  final dynamic labels;
+  final ElementAppearanceLabels labels;
 
   @override
   String toString() {
@@ -188,7 +191,7 @@ class _$_ElementAppearance implements _ElementAppearance {
             const DeepCollectionEquality()
                 .equals(other._variables, _variables) &&
             const DeepCollectionEquality().equals(other._rules, _rules) &&
-            const DeepCollectionEquality().equals(other.labels, labels));
+            (identical(other.labels, labels) || other.labels == labels));
   }
 
   @JsonKey(ignore: true)
@@ -198,7 +201,7 @@ class _$_ElementAppearance implements _ElementAppearance {
       theme,
       const DeepCollectionEquality().hash(_variables),
       const DeepCollectionEquality().hash(_rules),
-      const DeepCollectionEquality().hash(labels));
+      labels);
 
   @JsonKey(ignore: true)
   @override
@@ -220,7 +223,7 @@ abstract class _ElementAppearance implements ElementAppearance {
       {final ElementTheme theme,
       final Map<String, String>? variables,
       final Map<String, Map<String, String>>? rules,
-      final dynamic labels}) = _$_ElementAppearance;
+      final ElementAppearanceLabels labels}) = _$_ElementAppearance;
 
   factory _ElementAppearance.fromJson(Map<String, dynamic> json) =
       _$_ElementAppearance.fromJson;
@@ -232,7 +235,7 @@ abstract class _ElementAppearance implements ElementAppearance {
   @override
   Map<String, Map<String, String>>? get rules;
   @override
-  dynamic get labels;
+  ElementAppearanceLabels get labels;
   @override
   @JsonKey(ignore: true)
   _$$_ElementAppearanceCopyWith<_$_ElementAppearance> get copyWith =>

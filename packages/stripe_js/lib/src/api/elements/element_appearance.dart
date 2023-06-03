@@ -18,7 +18,7 @@ class ElementAppearance with _$ElementAppearance {
     @Default(ElementTheme.stripe) ElementTheme theme,
     Map<String, String>? variables,
     Map<String, Map<String, String>>? rules,
-    @Default(ElementAppearanceLabels.above) labels,
+    @Default(ElementAppearanceLabels.above) ElementAppearanceLabels labels,
   }) = _ElementAppearance;
 
   factory ElementAppearance.fromJson(Map<String, dynamic> json) =>

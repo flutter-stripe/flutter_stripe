@@ -16,7 +16,9 @@ _$_ElementAppearance _$$_ElementAppearanceFromJson(Map json) =>
       rules: (json['rules'] as Map?)?.map(
         (k, e) => MapEntry(k as String, Map<String, String>.from(e as Map)),
       ),
-      labels: json['labels'] ?? ElementAppearanceLabels.above,
+      labels: $enumDecodeNullable(
+              _$ElementAppearanceLabelsEnumMap, json['labels']) ??
+          ElementAppearanceLabels.above,
     );
 
 Map<String, dynamic> _$$_ElementAppearanceToJson(
@@ -33,7 +35,7 @@ Map<String, dynamic> _$$_ElementAppearanceToJson(
 
   writeNotNull('variables', instance.variables);
   writeNotNull('rules', instance.rules);
-  writeNotNull('labels', instance.labels);
+  val['labels'] = _$ElementAppearanceLabelsEnumMap[instance.labels]!;
   return val;
 }
 
@@ -42,4 +44,9 @@ const _$ElementThemeEnumMap = {
   ElementTheme.night: 'night',
   ElementTheme.flat: 'flat',
   ElementTheme.none: 'none',
+};
+
+const _$ElementAppearanceLabelsEnumMap = {
+  ElementAppearanceLabels.above: 'above',
+  ElementAppearanceLabels.floating: 'floating',
 };
