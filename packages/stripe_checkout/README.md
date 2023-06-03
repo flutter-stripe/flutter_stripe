@@ -1,5 +1,22 @@
 # Stripe Checkout For Flutter
 
+## :warning:  Important! 
+
+This package is being discontinued as checkout now only relies on backend code to work.
+https://stripe.com/docs/checkout/quickstart
+
+The method that we use to redirect to checkout [has been deprecated](https://stripe.com/docs/js/deprecated/redirect_to_checkout) in the official sdk and will be removed in future versions.
+
+The alternatives for this are described as here:
+https://stripe.com/docs/payments/online-payments#compare-features-and-availability
+
+ - Payment Links: They do not require any code integration
+ - Checkout: It requires to setup the checkout session in the server and handle the routes redirection for Flutter
+ - Elements: The Flutter Stripe SDK provides with the PaymentSheet (for iOS and Android) and the PaymentElement (web)
+  that with minimal coding you can easily integrate a pre built UI in your app that allows to handle multiple payment methods and allows to customize your UI.
+
+--- 
+
 <img width="1403" alt="Screenshot 2021-04-27 at 15 29 27" src="https://user-images.githubusercontent.com/19904063/116255508-9736e680-a772-11eb-9f63-13dff8c21805.png">
 
 The quickest way to build conversion-optimized payment forms, hosted on Stripe.

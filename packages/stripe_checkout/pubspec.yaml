@@ -1,6 +1,6 @@
 name: stripe_checkout
 description: Create Stripe checkout payment pages for web and mobile
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/flutter-stripe/flutter_stripe/
 
 environment:
