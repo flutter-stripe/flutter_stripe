@@ -16,7 +16,7 @@ _$_ElementAppearance _$$_ElementAppearanceFromJson(Map json) =>
       rules: (json['rules'] as Map?)?.map(
         (k, e) => MapEntry(k as String, Map<String, String>.from(e as Map)),
       ),
-      label: json['label'] ?? ElementAppearanceLabel.above,
+      labels: json['labels'] ?? ElementAppearanceLabels.above,
     );
 
 Map<String, dynamic> _$$_ElementAppearanceToJson(
@@ -33,7 +33,7 @@ Map<String, dynamic> _$$_ElementAppearanceToJson(
 
   writeNotNull('variables', instance.variables);
   writeNotNull('rules', instance.rules);
-  writeNotNull('label', instance.label);
+  writeNotNull('labels', instance.labels);
   return val;
 }
 

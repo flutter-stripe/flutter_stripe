@@ -28,10 +28,12 @@ class JsElementAppearance {
   external String? theme;
   external Map<String, String>? variables;
   external Map<String, Map<String, String>>? rules;
+  external String? labels;
   @JS("ElementAppearance")
   external factory JsElementAppearance({
     String? theme,
     Map<String, String>? variables,
     Map<String, Map<String, String>>? rules,
+    String? labels,
   });
 }

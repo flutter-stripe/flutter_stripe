@@ -7,7 +7,7 @@ enum ElementTheme { stripe, night, flat, none }
 
 /// Enables switching between labels above form fields and floating
 /// labels within the form fields
-enum ElementAppearanceLabel { above, floating }
+enum ElementAppearanceLabels { above, floating }
 
 @freezed
 
@@ -18,7 +18,7 @@ class ElementAppearance with _$ElementAppearance {
     @Default(ElementTheme.stripe) ElementTheme theme,
     Map<String, String>? variables,
     Map<String, Map<String, String>>? rules,
-    @Default(ElementAppearanceLabel.above) label,
+    @Default(ElementAppearanceLabels.above) labels,
   }) = _ElementAppearance;
 
   factory ElementAppearance.fromJson(Map<String, dynamic> json) =>
