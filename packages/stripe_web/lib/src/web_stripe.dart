@@ -30,7 +30,7 @@ class WebStripe extends StripePlatform {
 
   WebStripe._();
   @Deprecated('Use WebStripe.instance instead')
-  WebStripe();
+  factory WebStripe() => instance;
 
   @override
   bool get updateSettingsLazily => false;
