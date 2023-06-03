@@ -16,12 +16,13 @@ void main() {
     });
 
     test('can be initialized with options', () {
-      expect(stripe.elements(ElementsCreateOptions()), isNotNull);
+      expect(stripe.elements(JsElementsCreateOptions()), isNotNull);
     });
 
     test('can be initialized with custom ElementAppareance', () {
-      final options = ElementsCreateOptions(
-          appearance: ElementAppareance(theme: ElementTheme.flat));
+      final options = JsElementsCreateOptions(
+        appearance: JsElementAppearance(theme: 'stripe'),
+      );
       expect(stripe.elements(options), isNotNull);
     });
   });

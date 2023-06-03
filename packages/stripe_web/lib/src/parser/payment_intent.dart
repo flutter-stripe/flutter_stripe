@@ -136,23 +136,23 @@ extension BillingDetailsToJs on BillingDetails {
 extension ShippingAddressFromJs on Address {
   js.BillingAddress toBillingAddressJs() {
     return js.BillingAddress(
-      city: city ?? '',
-      country: country ?? '',
-      line1: line1 ?? '',
-      line2: line2 ?? '',
-      postalCode: postalCode ?? '',
-      state: state ?? '',
+      city: city,
+      country: country,
+      line1: line1,
+      line2: line2,
+      postalCode: postalCode,
+      state: state,
     );
   }
 
   js.ShippingDetailsAddress toShippingAddressJs() {
     return js.ShippingDetailsAddress(
-      city: city ?? '',
-      country: country ?? '',
-      line1: line1 ?? '',
-      line2: line2 ?? '',
-      postalCode: postalCode ?? '',
-      state: state ?? '',
+      city: city,
+      country: country,
+      line1: line1,
+      line2: line2,
+      postalCode: postalCode,
+      state: state,
     );
   }
 }

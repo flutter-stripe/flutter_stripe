@@ -4,7 +4,7 @@ import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 import '../../../checkout/platforms/stripe_checkout_web.dart';
 
 Future<void> pay() async {
-  await WebStripe().confirmPaymentElement(
+  await WebStripe.instance.confirmPaymentElement(
     ConfirmPaymentElementOptions(
       confirmParams: ConfirmPaymentParams(return_url: getReturnUrl()),
     ),

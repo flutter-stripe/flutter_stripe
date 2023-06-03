@@ -18,7 +18,7 @@ class Stripe {
   }
   external static num get version;
 
-  external StripeElements elements([ElementsCreateOptions options]);
+  external StripeElements elements([JsElementsCreateOptions options]);
 
   external String? get stripeAccount;
   external set stripeAccount(String? stripeAccount);

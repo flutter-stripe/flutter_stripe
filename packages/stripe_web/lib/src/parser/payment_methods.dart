@@ -34,6 +34,9 @@ extension StripeParser on js.CardPaymentMethod {
       expMonth: expYear,
       expYear: expYear,
       funding: funding,
+      last4: last4,
+      availableNetworks: availableNetworks,
+      preferredNetwork: preferredNetwork,
     );
   }
 }
