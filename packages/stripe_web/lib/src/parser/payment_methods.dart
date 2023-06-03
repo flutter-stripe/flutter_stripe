@@ -31,7 +31,7 @@ extension StripeParser on js.CardPaymentMethod {
     return Card(
       brand: brand,
       country: country,
-      expMonth: expYear,
+      expMonth: expMonth,
       expYear: expYear,
       funding: funding,
       last4: last4,
