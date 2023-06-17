@@ -68,10 +68,15 @@ You will also need to update in your Podfile:
 
 `platform :ios, '13.0'`
 
-
 #### Web (Experimental)
 
-Now you can use Stripe with Flutter web! Notice right now it is highly experimental and only a subset of features is implemented.
+Now you can use Stripe with Flutter web! Notice right now it is highly experimental and only a subset of features is implemented. Namely:
+
+- Create paymentmethod
+- Confirm payment intent
+- Confirm setup intent
+- Create token
+- Confirm payment element (recommended way of handling payments on web)
 
 To use Stripe on web, it is required to add `flutter_stripe_web` in your pubspec file
 
