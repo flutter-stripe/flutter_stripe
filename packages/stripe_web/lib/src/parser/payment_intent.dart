@@ -53,7 +53,7 @@ extension PaymentIntentsStatusExtension on PaymentIntentsStatus {
       case 'Unknown':
         return PaymentIntentsStatus.Unknown;
     }
-    throw '$value is not a payment intent status';
+    throw Exception('$value is not a payment intent status');
   }
 }
 
@@ -67,7 +67,7 @@ extension CaptureMethodExtension on CaptureMethod {
       case 'manual':
         return CaptureMethod.Manual;
     }
-    throw '$value is not a valid capture method';
+    throw Exception('$value is not a valid capture method');
   }
 }
 
@@ -81,7 +81,7 @@ extension ConfirmationMethodExtension on ConfirmationMethod {
       case 'manual':
         return ConfirmationMethod.Manual;
     }
-    throw '$value is not a valid confirmation method';
+    throw Exception('$value is not a valid confirmation method');
   }
 }
 

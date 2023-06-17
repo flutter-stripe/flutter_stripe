@@ -168,7 +168,7 @@ class WebStripe extends StripePlatform {
         );
       },
       orElse: () {
-        throw UnimplementedError();
+        throw WebUnsupportedError();
       },
     );
     if (response.error != null) {
@@ -198,7 +198,7 @@ class WebStripe extends StripePlatform {
 
     if (response.error != null) {
       throw StripeError(
-        message: response.error?.message ?? '',
+        message: response.error!.message ?? '',
         code: response.error!.code,
       );
     }
