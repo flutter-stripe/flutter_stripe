@@ -9,6 +9,10 @@ import '../../flutter_stripe_web.dart';
 import 'package:stripe_js/stripe_js.dart' as js;
 import 'package:stripe_js/stripe_api.dart' as js;
 
+export 'package:stripe_js/stripe_api.dart' show PaymentElementLayout;
+
+typedef PaymentElementTheme = js.ElementTheme;
+
 class PaymentElement extends StatefulWidget {
   PaymentElement({
     required this.onCardChanged,
@@ -23,6 +27,8 @@ class PaymentElement extends StatefulWidget {
     this.focusNode,
     required this.clientSecret,
     this.autofocus = false,
+    this.layout = PaymentElementLayout.accordion,
+    this.appearance,
   })  : assert(constraints == null || constraints.debugAssertIsValid()),
         constraints = (width != null || height != null)
             ? constraints?.tighten(width: width, height: height) ??
@@ -39,6 +45,8 @@ class PaymentElement extends StatefulWidget {
   final bool enablePostalCode;
   final FocusNode? focusNode;
   final bool autofocus;
+  final PaymentElementLayout layout;
+  final js.ElementAppearance? appearance;
   @override
   PaymentElementState createState() => PaymentElementState();
 }
@@ -143,18 +151,16 @@ class PaymentElementState extends State<PaymentElement> {
     );
   }
 
-  js.ElementsCreateOptions createOptions() {
-    final appearance = js.ElementAppareance(theme: js.ElementTheme.night);
-    return js.ElementsCreateOptions(
+  js.JsElementsCreateOptions createOptions() {
+    final appearance = widget.appearance ?? js.ElementAppearance();
+    return js.JsElementsCreateOptions(
       clientSecret: widget.clientSecret,
-      appearance: appearance,
+      appearance: js.jsify(appearance.toJson()) as js.JsElementAppearance,
     );
   }
 
   js.PaymentElementOptions elementOptions() {
-    return const js.PaymentElementOptions(
-      layout: js.PaymentElementLayout.accordion,
-    );
+    return js.PaymentElementOptions(layout: widget.layout);
   }
 
   @override

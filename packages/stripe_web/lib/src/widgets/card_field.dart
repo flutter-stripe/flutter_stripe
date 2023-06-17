@@ -85,7 +85,9 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
             const CardFieldInputDetails(complete: false),
             controller,
           );
-          element = WebStripe.js.elements().createCard(createOptions())
+          element = WebStripe.js
+              .elements(createElementOptions())
+              .createCard(createOptions())
             ..mount('#card-element')
             ..onBlur(requestBlur)
             ..onFocus(requestFocus)
@@ -135,6 +137,24 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
         ),
       ),
     );
+  }
+
+  js.JsElementsCreateOptions createElementOptions() {
+    final textColor = widget.style?.textColor;
+    return js.JsElementsCreateOptions(
+      appearance: js.jsify(
+        js.ElementAppearance(
+          theme: js.ElementTheme.stripe,
+          variables: {
+            if (textColor != null) 'colorText': colorToCssString(textColor),
+          },
+        ).toJson(),
+      ) as js.JsElementAppearance,
+    );
+  }
+
+  String colorToCssString(Color color) {
+    return 'rgb(${color.red}, ${color.green}, ${color.blue})';
   }
 
   js.CardElementOptions createOptions() {

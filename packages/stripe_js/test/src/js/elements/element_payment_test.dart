@@ -17,7 +17,7 @@ void main() {
       final stripe = Stripe(stripePublishableKey);
 
       elements = stripe.elements(
-        ElementsCreateOptions(
+        JsElementsCreateOptions(
           clientSecret: setupInputClientSecret,
         ),
       );
