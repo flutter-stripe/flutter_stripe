@@ -56,17 +56,17 @@ abstract class $AubecsFormStyleCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      Color? textColor,
+          Color? textColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      Color? textErrorColor,
+          Color? textErrorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      Color? placeholderColor,
+          Color? placeholderColor,
       int? fontSize,
       int? borderWidth,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      Color? backgroundColor,
+          Color? backgroundColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      Color? borderColor,
+          Color? borderColor,
       int? borderRadius});
 }
 
@@ -139,17 +139,17 @@ abstract class _$$_AubecsFormStyleCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      Color? textColor,
+          Color? textColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      Color? textErrorColor,
+          Color? textErrorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      Color? placeholderColor,
+          Color? placeholderColor,
       int? fontSize,
       int? borderWidth,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      Color? backgroundColor,
+          Color? backgroundColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      Color? borderColor,
+          Color? borderColor,
       int? borderRadius});
 }
 
@@ -216,17 +216,17 @@ class __$$_AubecsFormStyleCopyWithImpl<$Res>
 class _$_AubecsFormStyle implements _AubecsFormStyle {
   const _$_AubecsFormStyle(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      this.textColor,
+          this.textColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      this.textErrorColor,
+          this.textErrorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      this.placeholderColor,
+          this.placeholderColor,
       this.fontSize,
       this.borderWidth,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      this.backgroundColor,
+          this.backgroundColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      this.borderColor,
+          this.borderColor,
       this.borderRadius});
 
   factory _$_AubecsFormStyle.fromJson(Map<String, dynamic> json) =>
@@ -320,17 +320,17 @@ class _$_AubecsFormStyle implements _AubecsFormStyle {
 abstract class _AubecsFormStyle implements AubecsFormStyle {
   const factory _AubecsFormStyle(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      final Color? textColor,
+          final Color? textColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      final Color? textErrorColor,
+          final Color? textErrorColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      final Color? placeholderColor,
+          final Color? placeholderColor,
       final int? fontSize,
       final int? borderWidth,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      final Color? backgroundColor,
+          final Color? backgroundColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      final Color? borderColor,
+          final Color? borderColor,
       final int? borderRadius}) = _$_AubecsFormStyle;
 
   factory _AubecsFormStyle.fromJson(Map<String, dynamic> json) =

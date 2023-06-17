@@ -1,3 +1,7 @@
+## 9.2.2
+**Fixes**
+- Updates json_annotation version requirement
+
 ## 9.2.1
 **Fixes**
 - Move amount value to GooglePayPaymentMethodParams #1255 
