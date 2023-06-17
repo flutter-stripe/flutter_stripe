@@ -574,16 +574,24 @@ abstract class _PaymentMethod implements PaymentMethod {
       required final bool livemode,
       required final String paymentMethodType,
       required final BillingDetails billingDetails,
-      @JsonKey(name: 'Card') required final Card card,
-      @JsonKey(name: 'SepaDebit') required final SepaDebit sepaDebit,
-      @JsonKey(name: 'BacsDebit') required final BacsDebit bacsDebit,
-      @JsonKey(name: 'AuBecsDebit') required final AuBecsDebit auBecsDebit,
-      @JsonKey(name: 'Sofort') required final Sofort sofort,
-      @JsonKey(name: 'Ideal') required final Ideal ideal,
-      @JsonKey(name: 'Fpx') required final Fpx fpx,
-      @JsonKey(name: 'Upi') required final Upi upi,
+      @JsonKey(name: 'Card')
+          required final Card card,
+      @JsonKey(name: 'SepaDebit')
+          required final SepaDebit sepaDebit,
+      @JsonKey(name: 'BacsDebit')
+          required final BacsDebit bacsDebit,
+      @JsonKey(name: 'AuBecsDebit')
+          required final AuBecsDebit auBecsDebit,
+      @JsonKey(name: 'Sofort')
+          required final Sofort sofort,
+      @JsonKey(name: 'Ideal')
+          required final Ideal ideal,
+      @JsonKey(name: 'Fpx')
+          required final Fpx fpx,
+      @JsonKey(name: 'Upi')
+          required final Upi upi,
       @JsonKey(name: 'USBankAccount')
-      required final UsBankAccount usBankAccount,
+          required final UsBankAccount usBankAccount,
       final String? customerId}) = _$_PaymentMethod;
 
   factory _PaymentMethod.fromJson(Map<String, dynamic> json) =

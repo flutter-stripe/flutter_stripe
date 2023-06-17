@@ -1,3 +1,13 @@
+## 4.2.0
+**Fixes for web**
+- Makes WebStripe a singleton accessible by WebStripe.instance
+- Allows to change the layout for the payment element. Closes [#1260](https://github.com/flutter-stripe/flutter_stripe/pull/1270#:~:text=Makes%20a%20singleton,flow%C2%A0%231075)
+- Allows to change the full appearance for the payment element. It is possible to fully customize it by adding any of the values from the appearance api.
+- Fixes parsing PaymentMethod to contain dates and last4 digits. Closes [#1212](https://github.com/flutter-stripe/flutter_stripe/pull/1270#:~:text=Makes%20a%20singleton,flow%C2%A0%231075)
+- Fixes parsing Address to not add empty strings if null. Closes [#1208](https://github.com/flutter-stripe/flutter_stripe/pull/1270#:~:text=Makes%20a%20singleton,flow%C2%A0%231075)
+- Adds support for confirmAcssDebitPayment on web WebStripe.instance.confirmAcssDebitPayment. Ref [#794](https://github.com/flutter-stripe/flutter_stripe/pull/1270#:~:text=Makes%20a%20singleton,flow%C2%A0%231075)
+- Fixes text color not sync with CardStyle on the web card field. Closes [#541](https://github.com/flutter-stripe/flutter_stripe/pull/1270#:~:text=Makes%20a%20singleton,flow%C2%A0%231075)
+- Adds independent method for confirmIdealPayment: WebStripe.instance.confirmIdealPayment, that allows to pass a custom returnUrl. Ref [#1075](https://github.com/flutter-stripe/flutter_stripe/pull/1270#:~:text=Makes%20a%20singleton,flow%C2%A0%231075)
 ## 4.1.1
 **Fixes**
 - Move amount value to GooglePayPaymentMethodParams #1255 
