@@ -393,6 +393,21 @@ class PaymentSheetPresentOptions with _$PaymentSheetPresentOptions {
 }
 
 @freezed
+class PaymentSheetPaymentOption with _$PaymentSheetPaymentOption {
+  @JsonSerializable(explicitToJson: true)
+  const factory PaymentSheetPaymentOption({
+    /// The label of the payment option
+    required String label,
+
+    /// String decoding of the image
+    required String image,
+  }) = _PaymentSheetPaymentOption;
+
+  factory PaymentSheetPaymentOption.fromJson(Map<String, dynamic> json) =>
+      _$PaymentSheetPaymentOptionFromJson(json);
+}
+
+@freezed
 class BillingDetailsCollectionConfiguration
     with _$BillingDetailsCollectionConfiguration {
   @JsonSerializable(explicitToJson: true)

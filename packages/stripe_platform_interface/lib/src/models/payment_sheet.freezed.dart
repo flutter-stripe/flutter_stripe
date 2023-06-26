@@ -3867,6 +3867,178 @@ abstract class _PaymentSheetPresentOptions
       get copyWith => throw _privateConstructorUsedError;
 }
 
+PaymentSheetPaymentOption _$PaymentSheetPaymentOptionFromJson(
+    Map<String, dynamic> json) {
+  return _PaymentSheetPaymentOption.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentSheetPaymentOption {
+  /// The label of the payment option
+  String get label => throw _privateConstructorUsedError;
+
+  /// String decoding of the image
+  String get image => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentSheetPaymentOptionCopyWith<PaymentSheetPaymentOption> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentSheetPaymentOptionCopyWith<$Res> {
+  factory $PaymentSheetPaymentOptionCopyWith(PaymentSheetPaymentOption value,
+          $Res Function(PaymentSheetPaymentOption) then) =
+      _$PaymentSheetPaymentOptionCopyWithImpl<$Res, PaymentSheetPaymentOption>;
+  @useResult
+  $Res call({String label, String image});
+}
+
+/// @nodoc
+class _$PaymentSheetPaymentOptionCopyWithImpl<$Res,
+        $Val extends PaymentSheetPaymentOption>
+    implements $PaymentSheetPaymentOptionCopyWith<$Res> {
+  _$PaymentSheetPaymentOptionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? label = null,
+    Object? image = null,
+  }) {
+    return _then(_value.copyWith(
+      label: null == label
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_PaymentSheetPaymentOptionCopyWith<$Res>
+    implements $PaymentSheetPaymentOptionCopyWith<$Res> {
+  factory _$$_PaymentSheetPaymentOptionCopyWith(
+          _$_PaymentSheetPaymentOption value,
+          $Res Function(_$_PaymentSheetPaymentOption) then) =
+      __$$_PaymentSheetPaymentOptionCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String label, String image});
+}
+
+/// @nodoc
+class __$$_PaymentSheetPaymentOptionCopyWithImpl<$Res>
+    extends _$PaymentSheetPaymentOptionCopyWithImpl<$Res,
+        _$_PaymentSheetPaymentOption>
+    implements _$$_PaymentSheetPaymentOptionCopyWith<$Res> {
+  __$$_PaymentSheetPaymentOptionCopyWithImpl(
+      _$_PaymentSheetPaymentOption _value,
+      $Res Function(_$_PaymentSheetPaymentOption) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? label = null,
+    Object? image = null,
+  }) {
+    return _then(_$_PaymentSheetPaymentOption(
+      label: null == label
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_PaymentSheetPaymentOption implements _PaymentSheetPaymentOption {
+  const _$_PaymentSheetPaymentOption(
+      {required this.label, required this.image});
+
+  factory _$_PaymentSheetPaymentOption.fromJson(Map<String, dynamic> json) =>
+      _$$_PaymentSheetPaymentOptionFromJson(json);
+
+  /// The label of the payment option
+  @override
+  final String label;
+
+  /// String decoding of the image
+  @override
+  final String image;
+
+  @override
+  String toString() {
+    return 'PaymentSheetPaymentOption(label: $label, image: $image)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentSheetPaymentOption &&
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.image, image) || other.image == image));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, label, image);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PaymentSheetPaymentOptionCopyWith<_$_PaymentSheetPaymentOption>
+      get copyWith => __$$_PaymentSheetPaymentOptionCopyWithImpl<
+          _$_PaymentSheetPaymentOption>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentSheetPaymentOptionToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymentSheetPaymentOption implements PaymentSheetPaymentOption {
+  const factory _PaymentSheetPaymentOption(
+      {required final String label,
+      required final String image}) = _$_PaymentSheetPaymentOption;
+
+  factory _PaymentSheetPaymentOption.fromJson(Map<String, dynamic> json) =
+      _$_PaymentSheetPaymentOption.fromJson;
+
+  @override
+
+  /// The label of the payment option
+  String get label;
+  @override
+
+  /// String decoding of the image
+  String get image;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PaymentSheetPaymentOptionCopyWith<_$_PaymentSheetPaymentOption>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
 BillingDetailsCollectionConfiguration
     _$BillingDetailsCollectionConfigurationFromJson(Map<String, dynamic> json) {
   return _BillingDetailsCollectionConfiguration.fromJson(json);

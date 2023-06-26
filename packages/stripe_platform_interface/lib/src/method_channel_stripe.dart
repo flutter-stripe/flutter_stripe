@@ -226,15 +226,21 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<void> initPaymentSheet(SetupPaymentSheetParameters params) async {
-    await _methodChannel.invokeMethod(
+  Future<PaymentSheetPaymentOption?> initPaymentSheet(
+      SetupPaymentSheetParameters params) async {
+    final result = await _methodChannel.invokeMethod(
       'initPaymentSheet',
       {'params': params.toJson()},
     );
+    if (result is List) {
+      return null;
+    } else {
+      return _parsePaymentSheetResult(result);
+    }
   }
 
   @override
-  Future<void> presentPaymentSheet({
+  Future<PaymentSheetPaymentOption?> presentPaymentSheet({
     PaymentSheetPresentOptions? options,
   }) async {
     final result = await _methodChannel.invokeMethod<dynamic>(
@@ -242,12 +248,7 @@ class MethodChannelStripe extends StripePlatform {
       {'params': {}, 'options': options?.toJson() ?? {}},
     );
 
-    // iOS returns empty list on success
-    if (result is List) {
-      return;
-    } else {
-      return _parsePaymentSheetResult(result);
-    }
+    return _parsePaymentSheetResult(result);
   }
 
   @override
@@ -262,12 +263,11 @@ class MethodChannelStripe extends StripePlatform {
   Future<void> confirmPaymentSheetPayment() async {
     final result = await _methodChannel
         .invokeMethod<dynamic>('confirmPaymentSheetPayment');
-
     // iOS returns empty list on success
     if (result is List) {
       return;
     } else {
-      return _parsePaymentSheetResult(result);
+      _parsePaymentSheetResult(result);
     }
   }
 
@@ -295,10 +295,13 @@ class MethodChannelStripe extends StripePlatform {
     });
   }
 
-  void _parsePaymentSheetResult(Map<String, dynamic>? result) {
+  PaymentSheetPaymentOption? _parsePaymentSheetResult(
+      Map<String, dynamic>? result) {
     if (result != null) {
-      if (result.isEmpty || result['paymentOption'] != null) {
-        return;
+      if (result.isEmpty) {
+        return null;
+      } else if (result['paymentOption'] != null) {
+        return PaymentSheetPaymentOption.fromJson(result['paymentOption']);
       } else {
         if (result['error'] != null) {
           //workaround for tojson in sumtypes

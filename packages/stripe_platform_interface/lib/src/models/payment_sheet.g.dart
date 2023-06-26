@@ -341,6 +341,20 @@ Map<String, dynamic> _$$_PaymentSheetPresentOptionsToJson(
       'timeout': instance.timeout,
     };
 
+_$_PaymentSheetPaymentOption _$$_PaymentSheetPaymentOptionFromJson(
+        Map<String, dynamic> json) =>
+    _$_PaymentSheetPaymentOption(
+      label: json['label'] as String,
+      image: json['image'] as String,
+    );
+
+Map<String, dynamic> _$$_PaymentSheetPaymentOptionToJson(
+        _$_PaymentSheetPaymentOption instance) =>
+    <String, dynamic>{
+      'label': instance.label,
+      'image': instance.image,
+    };
+
 _$_BillingDetailsCollectionConfiguration
     _$$_BillingDetailsCollectionConfigurationFromJson(
             Map<String, dynamic> json) =>
