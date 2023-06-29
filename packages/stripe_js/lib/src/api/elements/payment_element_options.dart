@@ -174,7 +174,8 @@ class PaymentElementFields with _$PaymentElementFields {
 @freezed
 class BillingDetailsFields with _$BillingDetailsFields {
   const factory BillingDetailsFields({
-    @Default(PaymentElementFieldRequired.auto) PaymentElementFieldRequired name,
+    @Default(PaymentElementFieldRequired.auto)
+        PaymentElementFieldRequired name,
     @Default(PaymentElementFieldRequired.auto)
         PaymentElementFieldRequired email,
     @Default(PaymentElementFieldRequired.auto)
@@ -196,7 +197,8 @@ class PaymentElementAddressFields with _$PaymentElementAddressFields {
         PaymentElementFieldRequired line1,
     @Default(PaymentElementFieldRequired.auto)
         PaymentElementFieldRequired line2,
-    @Default(PaymentElementFieldRequired.auto) PaymentElementFieldRequired city,
+    @Default(PaymentElementFieldRequired.auto)
+        PaymentElementFieldRequired city,
     @Default(PaymentElementFieldRequired.auto)
         PaymentElementFieldRequired state,
     @Default(PaymentElementFieldRequired.auto)

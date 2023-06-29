@@ -73,10 +73,12 @@ class BankAccountToken with _$BankAccountToken {
     /// String representing the object’s type.
     /// Objects of the same type share the same value.
     /// Value is "bank_account".
-    @Default("bank_account") String object,
+    @Default("bank_account")
+        String object,
 
     /// The name of the person or business that owns the bank account.
-    @JsonKey(name: "account_holder_name") String? accountHolderName,
+    @JsonKey(name: "account_holder_name")
+        String? accountHolderName,
 
     /// The type of entity that holds the account.
     /// This can be either individual or company.
@@ -86,10 +88,12 @@ class BankAccountToken with _$BankAccountToken {
     /// The bank account type.
     /// This can only be checking or savings in most countries.
     /// In Japan, this can only be futsu or toza.
-    @JsonKey(name: "account_type") String? accountType,
+    @JsonKey(name: "account_type")
+        String? accountType,
 
     /// Name of the bank associated with the routing number (e.g., WELLS FARGO).
-    @JsonKey(name: "bank_name") String? bankName,
+    @JsonKey(name: "bank_name")
+        String? bankName,
 
     /// Two-letter ISO code representing the country the bank account is
     /// located in.
@@ -107,7 +111,8 @@ class BankAccountToken with _$BankAccountToken {
     String? last4,
 
     /// The routing transit number for the bank account.
-    @JsonKey(name: "routing_number") String? routingNumber,
+    @JsonKey(name: "routing_number")
+        String? routingNumber,
 
     /// For bank accounts, possible values are new, validated, verified,
     /// verification_failed, or errored.
@@ -145,37 +150,47 @@ class CardToken with _$CardToken {
     /// String representing the object’s type.
     /// Objects of the same type share the same value.
     /// Value is "card".
-    @Default("card") String object,
+    @Default("card")
+        String object,
 
     /// City/District/Suburb/Town/Village.
-    @JsonKey(name: "address_city") String? addressCity,
+    @JsonKey(name: "address_city")
+        String? addressCity,
 
     /// Billing address country, if provided when creating card.
-    @JsonKey(name: "address_country") String? addressCountry,
+    @JsonKey(name: "address_country")
+        String? addressCountry,
 
     /// Address line 1 (Street address/PO Box/Company name).
-    @JsonKey(name: "address_line1") String? addressLine1,
+    @JsonKey(name: "address_line1")
+        String? addressLine1,
 
     /// If address_line1 was provided, results of the check:
     /// pass, fail, unavailable, or unchecked.
-    @JsonKey(name: "address_line1_check") VerificationCheck? addressLine1Check,
+    @JsonKey(name: "address_line1_check")
+        VerificationCheck? addressLine1Check,
 
     /// Address line 2 (Apartment/Suite/Unit/Building).
-    @JsonKey(name: "address_line2") String? addressLine2,
+    @JsonKey(name: "address_line2")
+        String? addressLine2,
 
     /// State/County/Province/Region.
-    @JsonKey(name: "address_state") String? addressState,
+    @JsonKey(name: "address_state")
+        String? addressState,
 
     /// ZIP or postal code.
-    @JsonKey(name: "address_zip") String? addressZip,
+    @JsonKey(name: "address_zip")
+        String? addressZip,
 
     /// If address_zip was provided, results of the check:
     /// pass, fail, unavailable, or unchecked.
-    @JsonKey(name: "address_zip_check") VerificationCheck? addressZipCheck,
+    @JsonKey(name: "address_zip_check")
+        VerificationCheck? addressZipCheck,
 
     /// If address_zip was provided, results of the check:
     /// pass, fail, unavailable, or unchecked.
-    @Default(CardTokenBrand.unknown) CardTokenBrand? brand,
+    @Default(CardTokenBrand.unknown)
+        CardTokenBrand? brand,
 
     /// Two-letter ISO code representing the country of the card.
     /// You could use this attribute to get a sense of the
@@ -194,17 +209,21 @@ class CardToken with _$CardToken {
     /// object, or when creating a charge. For more details, see
     /// Check if a card is valid without a charge.
     /// https://support.stripe.com/questions/check-if-a-card-is-valid-without-a-charge
-    @JsonKey(name: "cvc_check") VerificationCheck? cvcCheck,
+    @JsonKey(name: "cvc_check")
+        VerificationCheck? cvcCheck,
 
     /// (For tokenized numbers only.)
     /// The last four digits of the device account number.
-    @JsonKey(name: "dynamic_last4") String? dynamicLast4,
+    @JsonKey(name: "dynamic_last4")
+        String? dynamicLast4,
 
     /// Two-digit number representing the card’s expiration month.
-    @JsonKey(name: "exp_month") int? expMonth,
+    @JsonKey(name: "exp_month")
+        int? expMonth,
 
     /// Four-digit number representing the card’s expiration year.
-    @JsonKey(name: "exp_year") int? expYear,
+    @JsonKey(name: "exp_year")
+        int? expYear,
 
     /// Uniquely identifies this particular card number.
     /// You can use this attribute to check whether two customers who’ve
@@ -226,7 +245,8 @@ class CardToken with _$CardToken {
     /// Set of key-value pairs that you can attach to an object.
     /// This can be useful for storing additional information about the object
     /// in a structured forma
-    @Default({}) Map<String, dynamic> metadata,
+    @Default({})
+        Map<String, dynamic> metadata,
 
     /// Cardholder name.
     String? name,

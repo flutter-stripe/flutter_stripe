@@ -10,10 +10,12 @@ class ConfirmIdealPaymentData with _$ConfirmIdealPaymentData {
     /// Either the id of an existing PaymentMethod, or an object containing
     /// data to create a PaymentMethod with.
     /// See the use case sections below for details.
-    @paymentMethodDetailJsonKey IdealPaymentMethodDetails? paymentMethod,
+    @paymentMethodDetailJsonKey
+        IdealPaymentMethodDetails? paymentMethod,
 
     /// The url your customer will be directed to after they complete authentication.
-    @JsonKey(name: "return_url") String? returnUrl,
+    @JsonKey(name: "return_url")
+        String? returnUrl,
 
     /// To set up a SEPA Direct Debit payment method using the bank details
     ///  from this iDEAL payment, set this parameter to off_session.

@@ -77,7 +77,8 @@ class PaymentIntent with _$PaymentIntent {
     /// String representing the object’s type.
     /// Objects of the same type share the same value.
     /// Value is "payment_intent".
-    @Default("payment_intent") String object,
+    @Default("payment_intent")
+        String object,
 
     /// Amount intended to be collected by this PaymentIntent.
     /// A positive integer representing how much to charge in the
@@ -89,7 +90,8 @@ class PaymentIntent with _$PaymentIntent {
     required int amount,
 
     /// The amount that can be captured with from this PaymentIntent (in cents).
-    @JsonKey(name: "amount_capturable") int? amountCapturable,
+    @JsonKey(name: "amount_capturable")
+        int? amountCapturable,
 
     /// Details about items included in the amount
     @Default(PaymentIntentAmountDetails())
@@ -97,7 +99,8 @@ class PaymentIntent with _$PaymentIntent {
         PaymentIntentAmountDetails? amountDetails,
 
     /// The amount that was collected from this PaymentIntent (in cents).
-    @JsonKey(name: "amount_received") int? amountReceived,
+    @JsonKey(name: "amount_received")
+        int? amountReceived,
 
     /// CONNECT ONLY
     /// ID of the Connect application that created the PaymentIntent.
@@ -110,7 +113,8 @@ class PaymentIntent with _$PaymentIntent {
     /// capped at the total payment amount.
     /// For more information, see the PaymentIntents use
     /// case for connected accounts..
-    @JsonKey(name: "application_fee_amount") int? applicationFeeAmount,
+    @JsonKey(name: "application_fee_amount")
+        int? applicationFeeAmount,
 
     /// Settings to configure compatible payment methods from the
     /// Stripe Dashboard
@@ -119,7 +123,8 @@ class PaymentIntent with _$PaymentIntent {
 
     /// Populated when status is canceled, this is the time at which the
     /// PaymentIntent was canceled. Measured in seconds since the Unix epoch.
-    @JsonKey(name: "canceled_at") int? canceledAt,
+    @JsonKey(name: "canceled_at")
+        int? canceledAt,
 
     /// Reason for cancellation of this PaymentIntent,
     /// either user-provided
@@ -138,7 +143,8 @@ class PaymentIntent with _$PaymentIntent {
     ///
     /// Refer to our docs to accept a payment and learn about how `client_secret`
     /// should be handled.
-    @JsonKey(name: "client_secret") required String clientSecret,
+    @JsonKey(name: "client_secret")
+        required String clientSecret,
 
     /// Controls when the funds will be captured from the customer’s account.
     @JsonKey(name: "capture_method")
@@ -175,10 +181,12 @@ class PaymentIntent with _$PaymentIntent {
 
     /// The payment error encountered in the previous PaymentIntent confirmation.
     /// It will be cleared if the PaymentIntent is later updated for any reason.
-    @JsonKey(name: "last_payment_error") StripeError? lastPaymentError,
+    @JsonKey(name: "last_payment_error")
+        StripeError? lastPaymentError,
 
     /// The latest charge created by this payment intent.
-    @JsonKey(name: "latest_charge") String? latestCharge,
+    @JsonKey(name: "latest_charge")
+        String? latestCharge,
 
     /// Has the value true if the object exists in live mode or the
     /// value false if the object exists in test mode.
@@ -187,21 +195,25 @@ class PaymentIntent with _$PaymentIntent {
     /// Set of key-value pairs that you can attach to an object.
     /// This can be useful for storing additional information about the
     /// object in a structured format.
-    @Default({}) Map<String, dynamic> metadata,
+    @Default({})
+        Map<String, dynamic> metadata,
 
     /// If present, this property tells you what actions you need to
     /// take in order for your customer to fulfill a payment using the
     /// provided source.
-    @JsonKey(name: "next_action") dynamic nextAction,
+    @JsonKey(name: "next_action")
+        dynamic nextAction,
 
     /// CONNECT ONLY
     /// The account (if any) for which the funds of the PaymentIntent are
     /// intended. See the PaymentIntents use case for connected accounts
     /// for details.
-    @JsonKey(name: "on_behalf_of") String? onBehalfOf,
+    @JsonKey(name: "on_behalf_of")
+        String? onBehalfOf,
 
     /// ID of the payment method used in this PaymentIntent.
-    @JsonKey(name: "payment_method") String? paymentMethod,
+    @JsonKey(name: "payment_method")
+        String? paymentMethod,
 
     /// Payment-method-specific configuration for this PaymentIntent.
     @Default({})
@@ -220,7 +232,8 @@ class PaymentIntent with _$PaymentIntent {
     /// Email address that the receipt for the resulting payment will be sent to.
     /// If receipt_email is specified for a payment in live mode, a receipt
     /// will be sent regardless of your email settings.
-    @JsonKey(name: "receipt_email") String? receiptEmail,
+    @JsonKey(name: "receipt_email")
+        String? receiptEmail,
 
     // ID of the review associated with this PaymentIntent, if any.
     String? review,
@@ -244,7 +257,8 @@ class PaymentIntent with _$PaymentIntent {
     /// For non-card charges, you can use this value as the complete
     /// description that appears on your customers’ statements.
     /// Must contain at least one letter, maximum 22 characters.
-    @JsonKey(name: "statement_descriptor") String? statementDescriptor,
+    @JsonKey(name: "statement_descriptor")
+        String? statementDescriptor,
 
     /// Provides information about a card payment that customers see on
     /// their statements.
@@ -263,12 +277,14 @@ class PaymentIntent with _$PaymentIntent {
     /// The data with which to automatically create a Transfer when the payment
     /// is finalized. See the PaymentIntents use case for connected
     /// accounts for details.
-    @JsonKey(name: "transfer_data") dynamic transferData,
+    @JsonKey(name: "transfer_data")
+        dynamic transferData,
 
     /// CONNECT ONLY
     /// A string that identifies the resulting payment as part of a group.
     /// See the PaymentIntents use case for connected accounts for details.
-    @JsonKey(name: "transfer_group") dynamic transferGroup,
+    @JsonKey(name: "transfer_group")
+        dynamic transferGroup,
   }) = _PaymentIntent;
 
   factory PaymentIntent.fromJson(Map<String, dynamic> json) =>

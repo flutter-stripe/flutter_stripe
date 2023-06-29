@@ -11,12 +11,16 @@ class CreateTokenBankAccountData with _$CreateTokenBankAccountData {
 
     /// Three character currency code (e.g., usd).
     required String currency,
-    @JsonKey(name: "routing_number") String? routingNumber,
-    @JsonKey(name: "account_number") required String accountNumber,
-    @JsonKey(name: "account_holder_name") String? accountHolderName,
+    @JsonKey(name: "routing_number")
+        String? routingNumber,
+    @JsonKey(name: "account_number")
+        required String accountNumber,
+    @JsonKey(name: "account_holder_name")
+        String? accountHolderName,
     @JsonKey(name: "account_holder_type")
         BankAccountHolderType? accountHolderType,
-    @JsonKey(name: "account_type") String? accountType,
+    @JsonKey(name: "account_type")
+        String? accountType,
   }) = _CreateTokenBankAccountData;
 
   factory CreateTokenBankAccountData.fromJson(Map<String, dynamic> json) =>

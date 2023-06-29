@@ -11,7 +11,8 @@ class ConfirmSepaDebitPaymentData with _$ConfirmSepaDebitPaymentData {
     /// Either the id of an existing PaymentMethod, or an object containing
     /// data to create a PaymentMethod with.
     /// See the use case sections below for details.
-    @paymentMethodDetailJsonKey SepaDebitPaymentMethodDetails? paymentMethod,
+    @paymentMethodDetailJsonKey
+        SepaDebitPaymentMethodDetails? paymentMethod,
 
     /// To set up the SEPA Direct Debit account for reuse, set this parameter
     /// to off_session. SEPA Direct Debit only accepts an off_session value

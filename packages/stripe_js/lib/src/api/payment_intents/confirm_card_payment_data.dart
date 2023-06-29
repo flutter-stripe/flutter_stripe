@@ -10,7 +10,8 @@ class ConfirmCardPaymentData with _$ConfirmCardPaymentData {
     /// Either the id of an existing PaymentMethod, or an object containing
     /// data to create a PaymentMethod with.
     /// See the use case sections below for details.
-    @paymentMethodDetailJsonKey CardPaymentMethodDetails? paymentMethod,
+    @paymentMethodDetailJsonKey
+        CardPaymentMethodDetails? paymentMethod,
 
     /// The shipping details for the payment, if collected.
     ShippingDetails? shipping,
@@ -18,10 +19,12 @@ class ConfirmCardPaymentData with _$ConfirmCardPaymentData {
     /// If you are handling next actions yourself, pass in a return_url.
     /// If the subsequent action is redirect_to_url,
     /// this URL will be used on the return path for the redirect.
-    @JsonKey(name: "return_url") String? returnUrl,
+    @JsonKey(name: "return_url")
+        String? returnUrl,
 
     /// Email address that the receipt for the resulting payment will be sent to.
-    @JsonKey(name: "receipt_email") String? receiptEmail,
+    @JsonKey(name: "receipt_email")
+        String? receiptEmail,
 
     /// Indicates that you intend to make future payments with this
     /// PaymentIntent's payment method.
@@ -42,7 +45,8 @@ class ConfirmCardPaymentData with _$ConfirmCardPaymentData {
 
     /// An object containing payment-method-specific configuration to
     /// confirm the PaymentIntent with.
-    @JsonKey(name: "payment_method_options") dynamic paymentMethodOptions,
+    @JsonKey(name: "payment_method_options")
+        dynamic paymentMethodOptions,
   }) = _ConfirmCardPaymentData;
 
   factory ConfirmCardPaymentData.fromJson(Map<String, dynamic> json) =>
