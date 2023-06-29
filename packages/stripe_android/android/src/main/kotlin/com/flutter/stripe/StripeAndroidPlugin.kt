@@ -238,10 +238,13 @@ If you continue to have trouble, follow this discussion to get some support http
 }
 
 private inline fun <reified T> MethodCall.optionalArgument(key: String): T? {
+    val value = argument<T>(key)
+    if (value == JSONObject.NULL)
+        return null
     if (T::class.java == ReadableMap::class.java) {
         return ReadableMap(argument<JSONObject>(key) ?: JSONObject()) as T
     }
-    return argument<T>(key)
+    return value
 }
 
 private inline fun <reified T> MethodCall.requiredArgument(key: String): T {
