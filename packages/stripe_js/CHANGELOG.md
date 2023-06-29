@@ -1,3 +1,8 @@
+## 3.2.0
+**Features**
+- Adds support for Klarna on web
+- Adds support for retrievePaymentIntent on web
+
 ## 3.1.0
 - Makes WebStripe a singleton accessible by WebStripe.instance
 - Allows to change the layout for the payment element. Closes [#1260](https://github.com/flutter-stripe/flutter_stripe/pull/1270#:~:text=Makes%20a%20singleton,flow%C2%A0%231075)
