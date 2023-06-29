@@ -90,7 +90,6 @@ class WebStripe extends StripePlatform {
       if (response.error != null) {
         throw response.error!;
       }
-      print(response);
       return response.paymentMethod!.parse();
     } catch (e) {
       dev.log('Error $e');
@@ -167,6 +166,18 @@ class WebStripe extends StripePlatform {
           ),
         );
       },
+      klarna: (paymentMethodData) {
+        // https://stripe.com/docs/js/payment_intents/confirm_klarna_payment#stripe_confirm_klarna_payment-options
+        return js.confirmKlarnaPayment(
+          paymentIntentClientSecret,
+          data: stripe_js.ConfirmKlarnaPaymentData(
+            paymentMethod: stripe_js.KlarnaPaymentMethodDetails(
+              billingDetails: paymentMethodData.billingDetails?.toJs(),
+            ),
+            returnUrl: urlScheme,
+          ),
+        );
+      },
       orElse: () {
         throw WebUnsupportedError();
       },
@@ -219,6 +230,30 @@ class WebStripe extends StripePlatform {
     if (response.error != null) {
       throw StripeError(
         message: response.error?.message ?? '',
+        code: response.error!.code,
+      );
+    }
+
+    return response.paymentIntent!.parse();
+  }
+
+  Future<PaymentIntent> confirmKlarnaPayment(
+      String paymentIntentClientSecret, PaymentMethodData paymentData,
+      {String? returnUrl}) async {
+    // https://stripe.com/docs/js/payment_intents/confirm_alipay_payment#stripe_confirm_alipay_payment-options
+    final response = await js.confirmKlarnaPayment(
+      paymentIntentClientSecret,
+      data: stripe_js.ConfirmKlarnaPaymentData(
+        paymentMethod: stripe_js.KlarnaPaymentMethodDetails(
+          billingDetails: paymentData.billingDetails?.toJs(),
+        ),
+        returnUrl: returnUrl ?? urlScheme,
+      ),
+    );
+
+    if (response.error != null) {
+      throw StripeError(
+        message: response.error!.message ?? '',
         code: response.error!.code,
       );
     }
@@ -356,7 +391,11 @@ class WebStripe extends StripePlatform {
 
   @override
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret) async {
-    throw UnimplementedError();
+    final response = await js.retrievePaymentIntent(clientSecret);
+    if (response.error != null) {
+      throw response.error!;
+    }
+    return response.paymentIntent!.parse();
   }
 
   @override

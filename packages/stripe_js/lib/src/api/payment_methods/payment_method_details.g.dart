@@ -162,3 +162,42 @@ Map<String, dynamic> _$$_CardTokenPaymentMethodToJson(
     <String, dynamic>{
       'token': instance.token,
     };
+
+_$_IdKlarnaPaymentMethodDetails _$$_IdKlarnaPaymentMethodDetailsFromJson(
+        Map json) =>
+    _$_IdKlarnaPaymentMethodDetails(
+      json['id'] as String,
+      $type: json['type'] as String?,
+    );
+
+Map<String, dynamic> _$$_IdKlarnaPaymentMethodDetailsToJson(
+        _$_IdKlarnaPaymentMethodDetails instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'type': instance.$type,
+    };
+
+_$_KlarnaPaymentMethodDetails _$$_KlarnaPaymentMethodDetailsFromJson(
+        Map json) =>
+    _$_KlarnaPaymentMethodDetails(
+      billingDetails: json['billing_details'] == null
+          ? null
+          : BillingDetails.fromJson(
+              Map<String, dynamic>.from(json['billing_details'] as Map)),
+      $type: json['type'] as String?,
+    );
+
+Map<String, dynamic> _$$_KlarnaPaymentMethodDetailsToJson(
+    _$_KlarnaPaymentMethodDetails instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('billing_details', instance.billingDetails?.toJson());
+  val['type'] = instance.$type;
+  return val;
+}
