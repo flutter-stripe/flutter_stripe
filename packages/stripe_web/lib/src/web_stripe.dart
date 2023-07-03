@@ -371,12 +371,12 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<void> initPaymentSheet(SetupPaymentSheetParameters params) {
+  Future<PaymentSheetPaymentOption?> initPaymentSheet(SetupPaymentSheetParameters params) {
     throw WebUnsupportedError.method('initPaymentSheet');
   }
 
   @override
-  Future<void> presentPaymentSheet({
+  Future<PaymentSheetPaymentOption?> presentPaymentSheet({
     PaymentSheetPresentOptions? options,
   }) {
     throw WebUnsupportedError.method('presentPaymentSheet');

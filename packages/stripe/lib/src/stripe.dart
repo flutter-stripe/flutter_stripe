@@ -481,7 +481,7 @@ class Stripe {
   ///
   /// See [SetupPaymentSheetParameters] for more info. In order to show the
   /// payment sheet it is required to call [presentPaymentSheet].
-  Future<void> initPaymentSheet({
+  Future<PaymentSheetPaymentOption?> initPaymentSheet({
     required SetupPaymentSheetParameters paymentSheetParameters,
   }) async {
     assert(
@@ -489,7 +489,7 @@ class Stripe {
             instance._merchantIdentifier == null),
         'merchantIdentifier must be specified if you are using Apple Pay. Please refer to this article to get a merchant identifier: https://support.stripe.com/questions/enable-apple-pay-on-your-stripe-account');
     await _awaitForSettings();
-    await _platform.initPaymentSheet(paymentSheetParameters);
+    return _platform.initPaymentSheet(paymentSheetParameters);
   }
 
   /// Displays the paymentsheet
@@ -497,7 +497,7 @@ class Stripe {
   /// See [PresentPaymentSheetPameters] for more details
   ///
   /// throws [StripeException] in case of a failure
-  Future<void> presentPaymentSheet({
+  Future<PaymentSheetPaymentOption?> presentPaymentSheet({
     PaymentSheetPresentOptions? options,
   }) async {
     await _awaitForSettings();

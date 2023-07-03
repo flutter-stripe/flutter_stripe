@@ -12,7 +12,7 @@ class MethodChannelMock {
     this.delay = Duration.zero,
     this.result,
   }) : methodChannel = MethodChannel(channelName, const JSONMethodCodec()) {
-    TestDefaultBinaryMessengerBinding.instance?.defaultBinaryMessenger
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
         .setMockMethodCallHandler(methodChannel, _handler);
   }
 
