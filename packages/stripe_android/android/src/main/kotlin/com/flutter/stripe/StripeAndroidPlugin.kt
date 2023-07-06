@@ -119,6 +119,10 @@ If you continue to have trouble, follow this discussion to get some support http
                 clientSecret = call.requiredArgument("clientSecret"),
                 promise = Promise(result)
             )
+            "retrieveSetupIntent" -> stripeSdk.retrieveSetupIntent(
+                    clientSecret = call.requiredArgument("clientSecret"),
+                    promise = Promise(result)
+            )
             "initPaymentSheet" -> stripeSdk.initPaymentSheet(
                 params = call.requiredArgument("params"),
                 promise = Promise(result)

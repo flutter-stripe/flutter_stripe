@@ -360,6 +360,11 @@ class WebStripe extends StripePlatform {
   }
 
   @override
+  Future<SetupIntent> retrieveSetupIntent(String clientSecret) async {
+    throw UnimplementedError();
+  }
+
+  @override
   Future<PaymentMethod> createGooglePayPaymentMethod(
       CreateGooglePayPaymentParams params) {
     throw WebUnsupportedError.method('createGooglePayPaymentMethod');
