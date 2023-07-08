@@ -43,6 +43,9 @@ class StripeSdkCardPlatformView(
         if (creationParams?.containsKey("placeholder") == true) {
             stripeSdkCardViewManager.setPlaceHolders(cardView, ReadableMap(creationParams["placeholder"] as Map<String, Any>))
         }
+        if (creationParams?.containsKey("disabled") == true) {
+            stripeSdkCardViewManager.setDisabled(cardView, creationParams["disabled"] as Boolean)
+        }
         if (creationParams?.containsKey("dangerouslyGetFullCardDetails") == true) {
             stripeSdkCardViewManager.setDangerouslyGetFullCardDetails(cardView, creationParams["dangerouslyGetFullCardDetails"] as Boolean)
         }
@@ -116,6 +119,11 @@ class StripeSdkCardPlatformView(
             "autofocus" -> {
                 val arguments = ReadableMap(call.arguments as Map<String, Any>)
                 stripeSdkCardViewManager.setAutofocus(cardView, arguments.getBoolean("autofocus"))
+                result.success(null)
+            }
+            "disabled" -> {
+                val arguments = ReadableMap(call.arguments as Map<String, Any>)
+                stripeSdkCardViewManager.setDisabled(cardView, arguments.getBoolean("disabled"))
                 result.success(null)
             }
             "requestFocus" -> {

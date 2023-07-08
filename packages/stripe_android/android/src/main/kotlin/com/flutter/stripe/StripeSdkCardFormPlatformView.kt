@@ -48,6 +48,9 @@ class StripeSdkCardFormPlatformView(
         if (creationParams?.containsKey("autofocus") == true) {
             cardFormViewManager.setAutofocus(cardView, creationParams["autofocus"] as Boolean)
         }
+        if (creationParams?.containsKey("disabled") == true) {
+            cardFormViewManager.setDisabled(cardView, creationParams["disabled"] as Boolean)
+        }
         if (creationParams?.containsKey("cardDetails") == true) {
             val value = ReadableMap(creationParams["cardDetails"] as Map<String, Any>)
 
@@ -99,6 +102,11 @@ class StripeSdkCardFormPlatformView(
             "autofocus" -> {
                 val arguments = ReadableMap(call.arguments as Map<String, Any>)
                 cardFormViewManager.setAutofocus(cardView, arguments.getBoolean("autofocus"))
+                result.success(null)
+            }
+            "disabled" -> {
+                val arguments = ReadableMap(call.arguments as Map<String, Any>)
+                cardFormViewManager.setDisabled(cardView, arguments.getBoolean("disabled"))
                 result.success(null)
             }
             "requestFocus" -> {

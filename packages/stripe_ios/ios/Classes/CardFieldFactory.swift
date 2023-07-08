@@ -75,7 +75,8 @@ class CardFieldPlatformView: NSObject, FlutterPlatformView, STPPaymentCardTextFi
             "onCountryCodeChangedEvent",
             "onPlaceholderChanged",
             "dangerouslyGetFullCardDetails",
-            "autofocus":
+            "autofocus",
+            "disabled":
             updateProps(call.arguments as? [String : Any])
             result(nil)
         case "focus":
@@ -130,6 +131,10 @@ class CardFieldPlatformView: NSObject, FlutterPlatformView, STPPaymentCardTextFi
         
         if let postalCodeEnabled = arguments["postalCodeEnabled"] as? Bool{
             cardField.postalCodeEnabled = postalCodeEnabled
+        }
+        
+        if let disabled = arguments["disabled"] as? Bool{
+            cardField.disabled = disabled
         }
         
         if let cardDetails = arguments["cardDetails"] as? NSDictionary {

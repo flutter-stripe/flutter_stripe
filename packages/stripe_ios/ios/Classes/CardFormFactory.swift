@@ -75,7 +75,8 @@ class CardFormPlatformView : NSObject, FlutterPlatformView  {
              "onPostalCodeEnabledChanged",
              "dangerouslyGetFullCardDetails",
              "isUserInteractionEnabledValue",
-             "autofocus":
+             "autofocus",
+             "disabled":
           updateProps(call.arguments)
           result(nil)
         case "focus":
@@ -104,8 +105,8 @@ class CardFormPlatformView : NSObject, FlutterPlatformView  {
             cardForm.dangerouslyGetFullCardDetails = dangerouslyGetFullCardDetails
         }
 
-        if let isUserInteractionEnabledValue = arguments["isUserInteractionEnabledValue"] as? Bool{
-            cardForm.isUserInteractionEnabledValue = isUserInteractionEnabledValue
+        if let disabled = arguments["disabled"] as? Bool{
+            cardForm.disabled = disabled
         }
         if let autofocus = arguments["autofocus"] as? Bool{
             cardForm.autofocus = autofocus
