@@ -22,7 +22,7 @@ import com.reactnativestripesdk.utils.*
 import com.reactnativestripesdk.utils.mapCardBrand
 import com.stripe.android.core.model.CountryCode
 import com.stripe.android.core.model.CountryUtils
-import com.stripe.android.databinding.CardInputWidgetBinding
+import com.stripe.android.databinding.StripeCardInputWidgetBinding
 import com.stripe.android.model.Address
 import com.stripe.android.model.PaymentMethodCreateParams
 import com.stripe.android.view.CardInputListener
@@ -208,6 +208,10 @@ class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
     if (isEnabled === false) {
       mCardWidget.postalCodeRequired = false
     }
+  }
+
+  fun setDisabled(isDisabled: Boolean) {
+    mCardWidget.isEnabled = !isDisabled
   }
 
   /**
