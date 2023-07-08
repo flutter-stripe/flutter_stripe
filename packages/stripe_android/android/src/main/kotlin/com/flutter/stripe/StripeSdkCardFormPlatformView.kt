@@ -11,7 +11,7 @@ import com.facebook.react.uimanager.ThemedReactContext
 import com.reactnativestripesdk.*
 import com.reactnativestripesdk.utils.getIntOrNull
 import com.reactnativestripesdk.utils.getValOr
-import com.stripe.android.databinding.CardMultilineWidgetBinding
+import com.stripe.android.databinding.StripeCardMultilineWidgetBinding
 import com.stripe.android.databinding.StripeCardFormViewBinding
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -110,7 +110,7 @@ class StripeSdkCardFormPlatformView(
                 result.success(null)
             }
             "requestFocus" -> {
-                val binding = CardMultilineWidgetBinding.bind(cardView.cardForm)
+                val binding = StripeCardMultilineWidgetBinding.bind(cardView.cardForm)
                 binding.etCardNumber.requestFocus()
                 val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);

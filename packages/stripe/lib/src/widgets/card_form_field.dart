@@ -18,18 +18,19 @@ import 'keep_visible_on_focus.dart';
 /// ![Sripe Card Form]
 /// (https://github.com/flutter-stripe/flutter_stripe/tree/main/docs/assets/card_form.png)
 class CardFormField extends StatefulWidget {
-  const CardFormField(
-      {this.onCardChanged,
-      Key? key,
-      this.onFocus,
-      this.enablePostalCode = true,
-      this.countryCode,
-      this.style,
-      this.autofocus = false,
-      this.dangerouslyGetFullCardDetails = false,
-      this.dangerouslyUpdateFullCardDetails = false,
-      this.controller})
-      : super(key: key);
+  const CardFormField({
+    this.onCardChanged,
+    Key? key,
+    this.onFocus,
+    this.enablePostalCode = true,
+    this.countryCode,
+    this.style,
+    this.autofocus = false,
+    this.dangerouslyGetFullCardDetails = false,
+    this.dangerouslyUpdateFullCardDetails = false,
+    this.disabled = false,
+    this.controller,
+  }) : super(key: key);
 
   /// Callback that will be executed when a specific field gets focus.
   final CardFocusCallback? onFocus;
@@ -79,6 +80,11 @@ class CardFormField extends StatefulWidget {
   //  'https://stripe.com/docs/security/guide#validating-pci-compliance'
   /// Default is `false`.
   final bool dangerouslyUpdateFullCardDetails;
+
+  /// When true it applies a state that does not allow the user to interact with
+  /// the card form field.
+  /// Default is `false`.
+  final bool disabled;
 
   @override
   // ignore: library_private_types_in_public_api
@@ -187,6 +193,7 @@ class _CardFormFieldState extends State<CardFormField> {
       enablePostalCode: widget.enablePostalCode,
       onCardChanged: widget.onCardChanged,
       autofocus: widget.autofocus,
+      disabled: widget.disabled,
       onFocus: widget.onFocus,
       countryCode: widget.countryCode,
     );
@@ -212,6 +219,7 @@ class _MethodChannelCardFormField extends StatefulWidget {
     this.dangerouslyGetFullCardDetails = false,
     this.dangerouslyUpdateFullCardDetails = false,
     this.autofocus = false,
+    this.disabled = false,
     this.countryCode,
   })  : assert(constraints == null || constraints.debugAssertIsValid()),
         constraints = (width != null || height != null)
@@ -227,6 +235,7 @@ class _MethodChannelCardFormField extends StatefulWidget {
   final bool enablePostalCode;
   final FocusNode focusNode;
   final bool autofocus;
+  final bool disabled;
   final CardFormEditController controller;
   final bool dangerouslyGetFullCardDetails;
   final bool dangerouslyUpdateFullCardDetails;
@@ -299,6 +308,7 @@ class _MethodChannelCardFormFieldState
           controller._initalDetails != null)
         'cardDetails': controller._initalDetails?.toJson(),
       'autofocus': widget.autofocus,
+      'disabled': widget.disabled,
       'defaultValues': {
         'countryCode': widget.countryCode,
       }

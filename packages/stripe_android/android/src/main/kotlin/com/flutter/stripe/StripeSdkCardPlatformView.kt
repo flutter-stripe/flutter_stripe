@@ -9,7 +9,7 @@ import com.facebook.react.uimanager.ThemedReactContext
 import com.reactnativestripesdk.*
 import com.reactnativestripesdk.utils.getIntOrNull
 import com.reactnativestripesdk.utils.getValOr
-import com.stripe.android.databinding.CardInputWidgetBinding
+import com.stripe.android.databinding.StripeCardInputWidgetBinding
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
@@ -56,7 +56,7 @@ class StripeSdkCardPlatformView(
             val value = ReadableMap(creationParams["cardDetails"] as Map<String, Any>)
             stripeSdkCardViewManager.setCardDetails(value, themedContext)
 
-            val binding = CardInputWidgetBinding.bind(cardView.mCardWidget)
+            val binding = StripeCardInputWidgetBinding.bind(cardView.mCardWidget)
             val number = getValOr(value, "number", null)
             val expirationYear = getIntOrNull(value, "expiryYear")
             val expirationMonth = getIntOrNull(value, "expiryMonth")
@@ -127,7 +127,7 @@ class StripeSdkCardPlatformView(
                 result.success(null)
             }
             "requestFocus" -> {
-                val binding = CardInputWidgetBinding.bind(cardView.mCardWidget)
+                val binding = StripeCardInputWidgetBinding.bind(cardView.mCardWidget)
                 binding.cardNumberEditText.requestFocus()
                 val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);

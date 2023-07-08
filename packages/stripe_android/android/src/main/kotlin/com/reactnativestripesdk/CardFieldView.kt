@@ -33,7 +33,7 @@ import java.lang.Exception
 
 class CardFieldView(context: ThemedReactContext) : FrameLayout(context) {
   internal var mCardWidget: CardInputWidget = CardInputWidget(context)
-  private val cardInputWidgetBinding = CardInputWidgetBinding.bind(mCardWidget)
+  private val cardInputWidgetBinding = StripeCardInputWidgetBinding.bind(mCardWidget)
   val cardDetails: MutableMap<String, Any?> = mutableMapOf("brand" to "", "last4" to "", "expiryMonth" to null, "expiryYear" to null, "postalCode" to "", "validNumber" to "Unknown", "validCVC" to "Unknown", "validExpiryDate" to "Unknown")
   var cardParams: PaymentMethodCreateParams.Card? = null
   var cardAddress: Address? = null
