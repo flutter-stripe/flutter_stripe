@@ -506,7 +506,7 @@ class Stripe {
 
   /// Call this method when the user logs out from your app.
   ///
-  /// This will ensur ethat any persisted authentication state in the
+  /// This will ensure that any persisted authentication state in the
   /// paymentsheet, such as authentication cookies are cleared during logout.
   Future<void> resetPaymentSheetCustomer() async {
     await _awaitForSettings();

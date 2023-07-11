@@ -21,6 +21,7 @@ class CardField extends StatefulWidget {
     this.countryCode,
     this.style,
     this.autofocus = false,
+    this.disabled = false,
     this.dangerouslyGetFullCardDetails = false,
     this.dangerouslyUpdateFullCardDetails = false,
     this.cursorColor,
@@ -76,6 +77,11 @@ class CardField extends StatefulWidget {
   /// Defines whether or not to automatically focus on the cardfield/
   /// Default is `false`.
   final bool autofocus;
+
+  /// When true it applies a state that does not allow the user to interact with
+  /// the card form field.
+  /// Default is `false`.
+  final bool disabled;
 
   /// Controller that can be use to execute several operations on the cardfield
   /// e.g (clear).
@@ -178,6 +184,7 @@ class _CardFieldState extends State<CardField> {
             delegate: const _NegativeMarginLayout(margin: platformMargin),
             child: _MethodChannelCardField(
               controller: controller,
+              disabled: widget.disabled,
               height: platformCardHeight,
               androidPlatformViewRenderType:
                   widget.androidPlatformViewRenderType,
@@ -274,6 +281,7 @@ class _MethodChannelCardField extends StatefulWidget {
     this.style,
     this.placeholder,
     this.enablePostalCode = false,
+    this.disabled = false,
     this.countryCode,
     double? width,
     double? height = kCardFieldDefaultHeight,
@@ -298,6 +306,7 @@ class _MethodChannelCardField extends StatefulWidget {
   final String? countryCode;
   final FocusNode focusNode;
   final bool autofocus;
+  final bool disabled;
   final CardEditController controller;
   final bool dangerouslyGetFullCardDetails;
   final bool dangerouslyUpdateFullCardDetails;
@@ -395,6 +404,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
           controller.initalDetails != null)
         'cardDetails': controller.initalDetails?.toJson(),
       'autofocus': widget.autofocus,
+      'disabled': widget.disabled,
     };
 
     Widget platform;

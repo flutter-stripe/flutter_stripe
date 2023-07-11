@@ -2,7 +2,7 @@
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
 # Run `pod lib lint stripe_ios.podspec' to validate before publishing.
 #
-stripe_version = '~> 23.7.0'
+stripe_version = '~> 23.8.0'
 Pod::Spec.new do |s|
   s.name             = 'stripe_ios'
   s.version          = '0.0.1'
