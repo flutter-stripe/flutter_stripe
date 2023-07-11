@@ -88,11 +88,11 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
       await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
           // Main params
-          paymentIntentClientSecret: data['paymentIntent'],
+           paymentIntentClientSecret: data['client_secret'],
+
           merchantDisplayName: 'Flutter Stripe Store Demo',
           // Customer params
           customerId: data['customer'],
-          customerEphemeralKeySecret: data['ephemeralKey'],
           // Extra params
           primaryButtonLabel: 'Pay now',
           applePay: PaymentSheetApplePay(
