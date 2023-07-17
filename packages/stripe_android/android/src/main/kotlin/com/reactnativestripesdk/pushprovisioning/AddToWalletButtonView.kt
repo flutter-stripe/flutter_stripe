@@ -95,7 +95,7 @@ class AddToWalletButtonView(private val context: ThemedReactContext, private val
           }
         })
         .centerCrop()
-        .override((widthOverride * scale.toFloat()).toInt(), (heightOverride * scale.toFloat()).toInt())
+        .override((widthOverride * scale.toInt()), (heightOverride * scale.toInt()))
         .into(this)
     }
   }
