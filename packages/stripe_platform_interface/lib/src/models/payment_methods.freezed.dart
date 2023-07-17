@@ -2859,7 +2859,7 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
       return _PaymentMethodParamsCardWithMethodId.fromJson(json);
     case 'Alipay':
       return _PaymentMethodParamsAlipay.fromJson(json);
-    case 'CashAppPay':
+    case 'CashApp':
       return _PaymentMethodParamsCashAppPay.fromJson(json);
     case 'Ideal':
       return _PaymentMethodParamsIdeal.fromJson(json);
@@ -4389,7 +4389,7 @@ class _$_PaymentMethodParamsCashAppPay
     implements _PaymentMethodParamsCashAppPay {
   const _$_PaymentMethodParamsCashAppPay(
       {required this.paymentMethodData, final String? $type})
-      : $type = $type ?? 'CashAppPay';
+      : $type = $type ?? 'CashApp';
 
   factory _$_PaymentMethodParamsCashAppPay.fromJson(
           Map<String, dynamic> json) =>
