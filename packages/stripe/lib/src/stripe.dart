@@ -331,6 +331,19 @@ class Stripe {
     }
   }
 
+  /// Retrieves a [SetupIntent] using the provided [clientSecret].
+  ///
+  /// Throws a [StripeException] in case retrieving the intent fails.
+  Future<SetupIntent> retrieveSetupIntent(String clientSecret) async {
+    await _awaitForSettings();
+    try {
+      final setupIntent = await _platform.retrieveSetupIntent(clientSecret);
+      return setupIntent;
+    } on StripeError catch (error) {
+      throw StripeError(message: error.message, code: error.message);
+    }
+  }
+
   /// Opens the UI to set up credit cards for Apple Pay.
   Future<void> openApplePaySetup() async {
     await _platform.openApplePaySetup();
