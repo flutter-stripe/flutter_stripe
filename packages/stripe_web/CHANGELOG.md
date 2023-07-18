@@ -1,3 +1,12 @@
+## 4.3.0
+
+ - a
+
+ - **FEAT**: add retrieveSetupIntent (#1302).
+ - **FEAT**: release versions (#1283).
+ - **FEAT**: web fixes and features (#1270).
+ - **FEAT**: release 9.2.1 (#1262).
+
 ## 4.2.0
 **Fixes for web**
 - Makes WebStripe a singleton accessible by WebStripe.instance
