@@ -15,6 +15,42 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`stripe_js` - `v3.2.0`](#stripe_js---v320)
+ - [`flutter_stripe_web` - `v4.2.1`](#flutter_stripe_web---v421)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v4.2.1`
+
+---
+
+#### `stripe_js` - `v3.2.0`
+
+ - a
+
+ - **FIX**: PaymentConfirmationRedirect enum value (#1221).
+ - **FIX**: confirmation redirect and stripeAccountId (#1201).
+ - **FEAT**: release versions (#1283).
+ - **FEAT**: web fixes and features (#1270).
+ - **FEAT**: release 9.2.1 (#1262).
+ - **FEAT**: tokens for web (#1079).
+ - **FEAT**: stripe js (#1052).
+
+
+## 2023-07-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_android` - `v9.3.0`](#stripe_android---v930)
  - [`flutter_stripe` - `v9.2.3`](#flutter_stripe---v923)
 
