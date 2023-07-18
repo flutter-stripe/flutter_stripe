@@ -1,3 +1,10 @@
+## 9.3.0
+
+ - a
+
+ - **FIX**: #1246 handle empty params on confirmPayment (#1286).
+ - **FEAT**: release 9.2.1 (#1262).
+
 ## 9.2.1
 **Fixes**
 - Move amount value to GooglePayPaymentMethodParams #1255 
