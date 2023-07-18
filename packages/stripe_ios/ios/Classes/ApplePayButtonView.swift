@@ -83,7 +83,7 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
         onOrderTrackingAction = onOrderTracking
         if  let arguments = args as? Dictionary<String, AnyObject> {
             type = arguments["type"] as? NSNumber
-            buttonStyle = arguments["buttonStyle"] as? NSNumber
+            buttonStyle = arguments["style"] as? NSNumber
             borderRadius = arguments["borderRadius"] as? NSNumber
         }
         // iOS views can be created here
@@ -114,7 +114,7 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
         case "updateStyle":
             if  let arguments = call.arguments as? Dictionary<String, AnyObject> {
                 self.type = arguments["type"] as? NSNumber
-                self.buttonStyle = arguments["buttonStyle"] as? NSNumber
+                self.buttonStyle = arguments["style"] as? NSNumber
                 self.borderRadius = arguments["borderRadius"] as? NSNumber
             }
             
