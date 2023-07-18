@@ -11,7 +11,8 @@ class ConfirmSepaDebitPaymentData with _$ConfirmSepaDebitPaymentData {
     /// Either the id of an existing PaymentMethod, or an object containing
     /// data to create a PaymentMethod with.
     /// See the use case sections below for details.
-    @paymentMethodDetailJsonKey SepaDebitPaymentMethodDetails? paymentMethod,
+    @paymentMethodDetailJsonKey
+        SepaDebitPaymentMethodDetails? paymentMethod,
 
     /// To set up the SEPA Direct Debit account for reuse, set this parameter
     /// to off_session. SEPA Direct Debit only accepts an off_session value
@@ -19,7 +20,7 @@ class ConfirmSepaDebitPaymentData with _$ConfirmSepaDebitPaymentData {
     /// the PaymentMethod will be attached to the customer when the
     /// PaymentIntent transitions to processing.
     @JsonKey(name: "setup_future_usage")
-    PaymentIntentSetupFutureUsage? setupFutureUsage,
+        PaymentIntentSetupFutureUsage? setupFutureUsage,
   }) = _ConfirmSepaDebitPaymentData;
 
   factory ConfirmSepaDebitPaymentData.fromJson(Map<String, dynamic> json) =>

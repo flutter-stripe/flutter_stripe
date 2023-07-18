@@ -140,3 +140,21 @@ class CardTokenPaymentMethod with _$CardTokenPaymentMethod {
   factory CardTokenPaymentMethod.fromJson(Map<String, dynamic> json) =>
       _$CardTokenPaymentMethodFromJson(json);
 }
+
+@Freezed(unionKey: 'type')
+class KlarnaPaymentMethodDetails
+    with _$KlarnaPaymentMethodDetails
+    implements PaymentMethodDetails {
+  @FreezedUnionValue('klarna')
+  @Implements<IdPaymentMethodDetails>()
+  const factory KlarnaPaymentMethodDetails.id(String id) =
+      _IdKlarnaPaymentMethodDetails;
+
+  @FreezedUnionValue('klarna')
+  const factory KlarnaPaymentMethodDetails({
+    @JsonKey(name: "billing_details") BillingDetails? billingDetails,
+  }) = _KlarnaPaymentMethodDetails;
+
+  factory KlarnaPaymentMethodDetails.fromJson(Map<String, dynamic> json) =>
+      _$KlarnaPaymentMethodDetailsFromJson(json);
+}

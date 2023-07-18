@@ -1,3 +1,8 @@
+## 4.3.0
+**Features**
+- Adds support for Klarna on web
+- Adds support for retrievePaymentIntent on web
+
 ## 4.2.0
 **Fixes for web**
 - Makes WebStripe a singleton accessible by WebStripe.instance

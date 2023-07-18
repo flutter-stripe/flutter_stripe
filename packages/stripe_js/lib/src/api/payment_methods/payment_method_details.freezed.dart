@@ -478,9 +478,10 @@ class _$_CardPaymentMethodDefault implements _CardPaymentMethodDefault {
 
 abstract class _CardPaymentMethodDefault implements CardPaymentMethodDetails {
   const factory _CardPaymentMethodDefault(
-      {@ElementConverter() required final Element card,
+      {@ElementConverter()
+          required final Element card,
       @JsonKey(name: "billing_details")
-      final BillingDetails? billingDetails}) = _$_CardPaymentMethodDefault;
+          final BillingDetails? billingDetails}) = _$_CardPaymentMethodDefault;
 
   factory _CardPaymentMethodDefault.fromJson(Map<String, dynamic> json) =
       _$_CardPaymentMethodDefault.fromJson;
@@ -704,9 +705,10 @@ class _$_CardPaymentMethodDetailsToken
 abstract class _CardPaymentMethodDetailsToken
     implements CardPaymentMethodDetails {
   const factory _CardPaymentMethodDetailsToken(
-      {required final CardTokenPaymentMethod card,
-      @JsonKey(name: "billing_details")
-      final BillingDetails? billingDetails}) = _$_CardPaymentMethodDetailsToken;
+          {required final CardTokenPaymentMethod card,
+          @JsonKey(name: "billing_details")
+              final BillingDetails? billingDetails}) =
+      _$_CardPaymentMethodDetailsToken;
 
   factory _CardPaymentMethodDetailsToken.fromJson(Map<String, dynamic> json) =
       _$_CardPaymentMethodDetailsToken.fromJson;
@@ -1192,9 +1194,10 @@ class _$_IdealPaymentMethodDetails implements _IdealPaymentMethodDetails {
 
 abstract class _IdealPaymentMethodDetails implements IdealPaymentMethodDetails {
   const factory _IdealPaymentMethodDetails(
-      {@ElementConverter() required final Element ideal,
+      {@ElementConverter()
+          required final Element ideal,
       @JsonKey(name: "billing_details")
-      final BillingDetails? billingDetails}) = _$_IdealPaymentMethodDetails;
+          final BillingDetails? billingDetails}) = _$_IdealPaymentMethodDetails;
 
   factory _IdealPaymentMethodDetails.fromJson(Map<String, dynamic> json) =
       _$_IdealPaymentMethodDetails.fromJson;
@@ -1422,7 +1425,7 @@ abstract class _IdealPaymentMethodDetailsSelfCollect
   const factory _IdealPaymentMethodDetailsSelfCollect(
           {required final IdealBankData ideal,
           @JsonKey(name: "billing_details")
-          final BillingDetails? billingDetails}) =
+              final BillingDetails? billingDetails}) =
       _$_IdealPaymentMethodDetailsSelfCollect;
 
   factory _IdealPaymentMethodDetailsSelfCollect.fromJson(
@@ -1720,4 +1723,436 @@ abstract class _CardTokenPaymentMethod implements CardTokenPaymentMethod {
   @JsonKey(ignore: true)
   _$$_CardTokenPaymentMethodCopyWith<_$_CardTokenPaymentMethod> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+KlarnaPaymentMethodDetails _$KlarnaPaymentMethodDetailsFromJson(
+    Map<String, dynamic> json) {
+  switch (json['type']) {
+    case 'klarna':
+      return _IdKlarnaPaymentMethodDetails.fromJson(json);
+    case 'klarna':
+      return _KlarnaPaymentMethodDetails.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'type', 'KlarnaPaymentMethodDetails',
+          'Invalid union type "${json['type']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$KlarnaPaymentMethodDetails {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
+        $default, {
+    required TResult Function(String id) id,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+        $default, {
+    TResult? Function(String id)? id,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+        $default, {
+    TResult Function(String id)? id,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_KlarnaPaymentMethodDetails value) $default, {
+    required TResult Function(_IdKlarnaPaymentMethodDetails value) id,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_KlarnaPaymentMethodDetails value)? $default, {
+    TResult? Function(_IdKlarnaPaymentMethodDetails value)? id,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_KlarnaPaymentMethodDetails value)? $default, {
+    TResult Function(_IdKlarnaPaymentMethodDetails value)? id,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $KlarnaPaymentMethodDetailsCopyWith<$Res> {
+  factory $KlarnaPaymentMethodDetailsCopyWith(KlarnaPaymentMethodDetails value,
+          $Res Function(KlarnaPaymentMethodDetails) then) =
+      _$KlarnaPaymentMethodDetailsCopyWithImpl<$Res,
+          KlarnaPaymentMethodDetails>;
+}
+
+/// @nodoc
+class _$KlarnaPaymentMethodDetailsCopyWithImpl<$Res,
+        $Val extends KlarnaPaymentMethodDetails>
+    implements $KlarnaPaymentMethodDetailsCopyWith<$Res> {
+  _$KlarnaPaymentMethodDetailsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$_IdKlarnaPaymentMethodDetailsCopyWith<$Res> {
+  factory _$$_IdKlarnaPaymentMethodDetailsCopyWith(
+          _$_IdKlarnaPaymentMethodDetails value,
+          $Res Function(_$_IdKlarnaPaymentMethodDetails) then) =
+      __$$_IdKlarnaPaymentMethodDetailsCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$_IdKlarnaPaymentMethodDetailsCopyWithImpl<$Res>
+    extends _$KlarnaPaymentMethodDetailsCopyWithImpl<$Res,
+        _$_IdKlarnaPaymentMethodDetails>
+    implements _$$_IdKlarnaPaymentMethodDetailsCopyWith<$Res> {
+  __$$_IdKlarnaPaymentMethodDetailsCopyWithImpl(
+      _$_IdKlarnaPaymentMethodDetails _value,
+      $Res Function(_$_IdKlarnaPaymentMethodDetails) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$_IdKlarnaPaymentMethodDetails(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_IdKlarnaPaymentMethodDetails implements _IdKlarnaPaymentMethodDetails {
+  const _$_IdKlarnaPaymentMethodDetails(this.id, {final String? $type})
+      : $type = $type ?? 'klarna';
+
+  factory _$_IdKlarnaPaymentMethodDetails.fromJson(Map<String, dynamic> json) =>
+      _$$_IdKlarnaPaymentMethodDetailsFromJson(json);
+
+  @override
+  final String id;
+
+  @JsonKey(name: 'type')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'KlarnaPaymentMethodDetails.id(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_IdKlarnaPaymentMethodDetails &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_IdKlarnaPaymentMethodDetailsCopyWith<_$_IdKlarnaPaymentMethodDetails>
+      get copyWith => __$$_IdKlarnaPaymentMethodDetailsCopyWithImpl<
+          _$_IdKlarnaPaymentMethodDetails>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
+        $default, {
+    required TResult Function(String id) id,
+  }) {
+    return id(this.id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+        $default, {
+    TResult? Function(String id)? id,
+  }) {
+    return id?.call(this.id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+        $default, {
+    TResult Function(String id)? id,
+    required TResult orElse(),
+  }) {
+    if (id != null) {
+      return id(this.id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_KlarnaPaymentMethodDetails value) $default, {
+    required TResult Function(_IdKlarnaPaymentMethodDetails value) id,
+  }) {
+    return id(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_KlarnaPaymentMethodDetails value)? $default, {
+    TResult? Function(_IdKlarnaPaymentMethodDetails value)? id,
+  }) {
+    return id?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_KlarnaPaymentMethodDetails value)? $default, {
+    TResult Function(_IdKlarnaPaymentMethodDetails value)? id,
+    required TResult orElse(),
+  }) {
+    if (id != null) {
+      return id(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_IdKlarnaPaymentMethodDetailsToJson(
+      this,
+    );
+  }
+}
+
+abstract class _IdKlarnaPaymentMethodDetails
+    implements KlarnaPaymentMethodDetails, IdPaymentMethodDetails {
+  const factory _IdKlarnaPaymentMethodDetails(final String id) =
+      _$_IdKlarnaPaymentMethodDetails;
+
+  factory _IdKlarnaPaymentMethodDetails.fromJson(Map<String, dynamic> json) =
+      _$_IdKlarnaPaymentMethodDetails.fromJson;
+
+  String get id;
+  @JsonKey(ignore: true)
+  _$$_IdKlarnaPaymentMethodDetailsCopyWith<_$_IdKlarnaPaymentMethodDetails>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_KlarnaPaymentMethodDetailsCopyWith<$Res> {
+  factory _$$_KlarnaPaymentMethodDetailsCopyWith(
+          _$_KlarnaPaymentMethodDetails value,
+          $Res Function(_$_KlarnaPaymentMethodDetails) then) =
+      __$$_KlarnaPaymentMethodDetailsCopyWithImpl<$Res>;
+  @useResult
+  $Res call({@JsonKey(name: "billing_details") BillingDetails? billingDetails});
+
+  $BillingDetailsCopyWith<$Res>? get billingDetails;
+}
+
+/// @nodoc
+class __$$_KlarnaPaymentMethodDetailsCopyWithImpl<$Res>
+    extends _$KlarnaPaymentMethodDetailsCopyWithImpl<$Res,
+        _$_KlarnaPaymentMethodDetails>
+    implements _$$_KlarnaPaymentMethodDetailsCopyWith<$Res> {
+  __$$_KlarnaPaymentMethodDetailsCopyWithImpl(
+      _$_KlarnaPaymentMethodDetails _value,
+      $Res Function(_$_KlarnaPaymentMethodDetails) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? billingDetails = freezed,
+  }) {
+    return _then(_$_KlarnaPaymentMethodDetails(
+      billingDetails: freezed == billingDetails
+          ? _value.billingDetails
+          : billingDetails // ignore: cast_nullable_to_non_nullable
+              as BillingDetails?,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BillingDetailsCopyWith<$Res>? get billingDetails {
+    if (_value.billingDetails == null) {
+      return null;
+    }
+
+    return $BillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
+      return _then(_value.copyWith(billingDetails: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_KlarnaPaymentMethodDetails implements _KlarnaPaymentMethodDetails {
+  const _$_KlarnaPaymentMethodDetails(
+      {@JsonKey(name: "billing_details") this.billingDetails,
+      final String? $type})
+      : $type = $type ?? 'klarna';
+
+  factory _$_KlarnaPaymentMethodDetails.fromJson(Map<String, dynamic> json) =>
+      _$$_KlarnaPaymentMethodDetailsFromJson(json);
+
+  /// The billing_details associated with the card.
+  @override
+  @JsonKey(name: "billing_details")
+  final BillingDetails? billingDetails;
+
+  @JsonKey(name: 'type')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'KlarnaPaymentMethodDetails(billingDetails: $billingDetails)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_KlarnaPaymentMethodDetails &&
+            (identical(other.billingDetails, billingDetails) ||
+                other.billingDetails == billingDetails));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, billingDetails);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_KlarnaPaymentMethodDetailsCopyWith<_$_KlarnaPaymentMethodDetails>
+      get copyWith => __$$_KlarnaPaymentMethodDetailsCopyWithImpl<
+          _$_KlarnaPaymentMethodDetails>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
+        $default, {
+    required TResult Function(String id) id,
+  }) {
+    return $default(billingDetails);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+        $default, {
+    TResult? Function(String id)? id,
+  }) {
+    return $default?.call(billingDetails);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+        $default, {
+    TResult Function(String id)? id,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(billingDetails);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_KlarnaPaymentMethodDetails value) $default, {
+    required TResult Function(_IdKlarnaPaymentMethodDetails value) id,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_KlarnaPaymentMethodDetails value)? $default, {
+    TResult? Function(_IdKlarnaPaymentMethodDetails value)? id,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_KlarnaPaymentMethodDetails value)? $default, {
+    TResult Function(_IdKlarnaPaymentMethodDetails value)? id,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_KlarnaPaymentMethodDetailsToJson(
+      this,
+    );
+  }
+}
+
+abstract class _KlarnaPaymentMethodDetails
+    implements KlarnaPaymentMethodDetails {
+  const factory _KlarnaPaymentMethodDetails(
+          {@JsonKey(name: "billing_details")
+              final BillingDetails? billingDetails}) =
+      _$_KlarnaPaymentMethodDetails;
+
+  factory _KlarnaPaymentMethodDetails.fromJson(Map<String, dynamic> json) =
+      _$_KlarnaPaymentMethodDetails.fromJson;
+
+  /// The billing_details associated with the card.
+  @JsonKey(name: "billing_details")
+  BillingDetails? get billingDetails;
+  @JsonKey(ignore: true)
+  _$$_KlarnaPaymentMethodDetailsCopyWith<_$_KlarnaPaymentMethodDetails>
+      get copyWith => throw _privateConstructorUsedError;
 }

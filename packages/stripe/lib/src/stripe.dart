@@ -709,5 +709,6 @@ class Stripe {
   ValueNotifier<bool>? _isPlatformPaySupported;
 
   // Internal use only
+  @internal
   static final buildWebCard = _platform.buildCard;
 }
