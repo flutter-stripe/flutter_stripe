@@ -358,9 +358,9 @@ class PaymentMethodParams with _$PaymentMethodParams {
   }) = _PaymentMethodParamsAlipay;
 
   @JsonSerializable(explicitToJson: true)
-  @FreezedUnionValue('CashAppPay')
+  @FreezedUnionValue('CashApp')
 
-  /// Config parameters for Alipay card payment method.
+  /// Config parameters for cashapp payment method.
   const factory PaymentMethodParams.cashAppPay({
     /// Paymentmethod data for this paymentmethod.
     required PaymentMethodData paymentMethodData,
