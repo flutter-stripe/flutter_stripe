@@ -15,6 +15,32 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe` - `v9.3.0`](#flutter_stripe---v930)
+
+---
+
+#### `flutter_stripe` - `v9.3.0`
+
+ - a
+
+ - **FIX**: #1233 increase  android cardform height to display image (#1254).
+ - **FEAT**: add retrieveSetupIntent (#1302).
+ - **FEAT**: release versions (#1283).
+ - **FEAT**: release 9.2.1 (#1262).
+
+
+## 2023-07-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`flutter_stripe_web` - `v4.3.0`](#flutter_stripe_web---v430)
 
 ---

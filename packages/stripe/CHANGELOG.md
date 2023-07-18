@@ -1,3 +1,12 @@
+## 9.3.0
+
+ - a
+
+ - **FIX**: #1233 increase  android cardform height to display image (#1254).
+ - **FEAT**: add retrieveSetupIntent (#1302).
+ - **FEAT**: release versions (#1283).
+ - **FEAT**: release 9.2.1 (#1262).
+
 ## 9.2.2
 **Fixes**
 - Updates json_annotation version requirement
