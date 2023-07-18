@@ -1,11 +1,8 @@
 ## 4.3.0
-
- - a
-
- - **FEAT**: add retrieveSetupIntent (#1302).
- - **FEAT**: release versions (#1283).
- - **FEAT**: web fixes and features (#1270).
- - **FEAT**: release 9.2.1 (#1262).
+**FIXES**
+ - PaymentConfirmationRedirect enum value (#1221).
+ - Confirmation redirect and stripeAccountId (#1201).
+ - Multiple fixes in (#1270).
 
 ## 4.2.0
 **Fixes for web**

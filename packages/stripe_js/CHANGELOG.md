@@ -1,14 +1,9 @@
 ## 3.2.0
+**FIXES**
+ - PaymentConfirmationRedirect enum value (#1221).
+ - Confirmation redirect and stripeAccountId (#1201).
+ - Multiple fixes in (#1270).
 
- - a
-
- - **FIX**: PaymentConfirmationRedirect enum value (#1221).
- - **FIX**: confirmation redirect and stripeAccountId (#1201).
- - **FEAT**: release versions (#1283).
- - **FEAT**: web fixes and features (#1270).
- - **FEAT**: release 9.2.1 (#1262).
- - **FEAT**: tokens for web (#1079).
- - **FEAT**: stripe js (#1052).
 
 ## 3.1.0
 - Makes WebStripe a singleton accessible by WebStripe.instance

@@ -1,14 +1,4 @@
 ## 9.3.0
-
- - a
-
- - **FIX**: #1246 handle empty params on confirmPayment (#1286).
- - **FIX**: #1250 incorrectly providing amount to confirmplatformpaysetupintent params (#1255).
- - **FEAT**: add retrieveSetupIntent (#1302).
- - **FEAT**: release versions (#1283).
- - **FEAT**: release 9.2.1 (#1262).
-
-## 9.3.0
 **Features**
 - Add method for retrieve setupintent.
 
