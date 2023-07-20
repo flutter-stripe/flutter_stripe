@@ -197,7 +197,7 @@ class StripeSdk: RCTEventEmitter, STPBankSelectionViewControllerDelegate, UIAdap
                     paymentSheetViewController = nil
                     switch paymentResult {
                     case .completed:
-                        resolve([])
+                        resolve([:])
                         self.paymentSheet = nil
                     case .canceled:
                         resolve(Errors.createError(ErrorType.Canceled, "The payment has been canceled"))
