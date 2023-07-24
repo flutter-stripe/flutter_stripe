@@ -310,6 +310,7 @@ enum PaymentMethodType {
   Eps,
   Bancontact,
   Oxxo,
+  PayPal,
   Sofort,
   Upi,
   USBankAccount,
