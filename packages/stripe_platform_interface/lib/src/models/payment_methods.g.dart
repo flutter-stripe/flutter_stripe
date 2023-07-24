@@ -828,21 +828,6 @@ Map<String, dynamic> _$$_MandateDataToJson(_$_MandateData instance) =>
       'customerAcceptance': instance.customerAcceptance?.toJson(),
     };
 
-_$_MandateDataCustomerAcceptance _$$_MandateDataCustomerAcceptanceFromJson(
-        Map<String, dynamic> json) =>
-    _$_MandateDataCustomerAcceptance(
-      ipAddress: json['ipAddress'] == null
-          ? null
-          : MandateDataOnlineData.fromJson(
-              json['ipAddress'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$_MandateDataCustomerAcceptanceToJson(
-        _$_MandateDataCustomerAcceptance instance) =>
-    <String, dynamic>{
-      'ipAddress': instance.ipAddress?.toJson(),
-    };
-
 _$_MandateDataOnlineData _$$_MandateDataOnlineDataFromJson(
         Map<String, dynamic> json) =>
     _$_MandateDataOnlineData(

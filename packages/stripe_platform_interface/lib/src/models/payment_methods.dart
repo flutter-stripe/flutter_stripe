@@ -784,14 +784,37 @@ class MandateData with _$MandateData {
 
 ///Information about the online mandate
 class MandateDataCustomerAcceptance with _$MandateDataCustomerAcceptance {
-  @JsonSerializable(explicitToJson: true)
   const factory MandateDataCustomerAcceptance({
     /// Online data regarding the mandate.
     MandateDataOnlineData? ipAddress,
   }) = _MandateDataCustomerAcceptance;
+  const MandateDataCustomerAcceptance._();
 
-  factory MandateDataCustomerAcceptance.fromJson(Map<String, dynamic> json) =>
-      _$MandateDataCustomerAcceptanceFromJson(json);
+  factory MandateDataCustomerAcceptance.fromJson(Map<String, dynamic> json) {
+    final type = json['type'] as String?;
+    if (type != 'online') {
+      throw ArgumentError.value(
+        type,
+        'type',
+        'Only customer acceptance of type online is supported.',
+      );
+    }
+
+    return _MandateDataCustomerAcceptance(
+      ipAddress: json['online'] == null
+          ? null
+          : MandateDataOnlineData.fromJson(
+              json['online'] as Map<String, dynamic>,
+            ),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'type': 'online',
+      'online': ipAddress?.toJson(),
+    };
+  }
 }
 
 @freezed
