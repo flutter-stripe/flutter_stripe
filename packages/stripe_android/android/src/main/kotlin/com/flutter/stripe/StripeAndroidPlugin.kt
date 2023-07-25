@@ -192,6 +192,10 @@ If you continue to have trouble, follow this discussion to get some support http
             "resetPaymentSheetCustomer" -> stripeSdk.resetPaymentSheetCustomer(
                 promise = Promise(result)
             )
+            "intentCreationCallback" -> stripeSdk.intentCreationCallback(
+                params = call.requiredArgument("params"),
+                promise = Promise(result)
+            )
             "createPlatformPayPaymentMethod" -> stripeSdk.createPlatformPayPaymentMethod(
                 params = call.requiredArgument("params"),
                 usesDeprecatedTokenFlow = call.requiredArgument("usesDeprecatedTokenFlow"),
@@ -227,7 +231,10 @@ If you continue to have trouble, follow this discussion to get some support http
                 initializationError =
                     "Your theme isn't set to use Theme.AppCompat or Theme.MaterialComponents."
             }
-            else -> stripeSdk = StripeSdkModule(ReactApplicationContext(binding))
+            else -> {
+                val context = ReactApplicationContext(binding, channel) { stripeSdk }
+                stripeSdk = StripeSdkModule(context)
+            }
         }
     }
 

@@ -74,7 +74,7 @@ class AddToWalletButtonView(private val context: ThemedReactContext, private val
       loadedSource = null
     } else if (sourceToLoad != loadedSource || (heightOverride > 0 || widthOverride > 0)) {
       loadedSource = sourceToLoad
-      val scale = sourceMap?.getDouble("scale") ?: 1.0
+      val scale = sourceMap?.getDouble("scale")?.toDouble() ?: 1.0
 
       requestManager
         .load(sourceToLoad)
@@ -95,7 +95,7 @@ class AddToWalletButtonView(private val context: ThemedReactContext, private val
           }
         })
         .centerCrop()
-        .override((widthOverride * scale.toInt()), (heightOverride * scale.toInt()))
+        .override((widthOverride * scale).toInt(), (heightOverride * scale).toInt())
         .into(this)
     }
   }
