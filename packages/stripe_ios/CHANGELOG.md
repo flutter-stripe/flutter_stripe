@@ -1,3 +1,6 @@
+## 9.3.1
+- Fix #1325 Paymentsheet conversion issue
+
 ## 9.3.0
 **Features**
 - Add method for retrieve setupintent.
