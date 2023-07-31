@@ -10,7 +10,6 @@ import 'package:stripe_platform_interface/src/models/wallet.dart';
 import 'package:stripe_platform_interface/src/result_parser.dart';
 
 import 'models/app_info.dart';
-import 'models/apple_pay.dart';
 import 'models/card_details.dart';
 import 'models/errors.dart';
 import 'models/payment_intents.dart';
@@ -80,13 +79,6 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<void> confirmApplePayPayment(String clientSecret) async {
-    await _methodChannel.invokeMethod('confirmApplePayPayment', {
-      'clientSecret': clientSecret,
-    });
-  }
-
-  @override
   Future<PaymentIntent> confirmPayment(
     String paymentIntentClientSecret,
     PaymentMethodParams? params,
@@ -147,70 +139,11 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<bool> isApplePaySupported() async {
-    if (!_platformIsIos) {
-      return false;
-    }
-    final isSupported =
-        await _methodChannel.invokeMethod('isApplePaySupported');
-    return isSupported ?? false;
-  }
-
-  @override
   Future<void> openApplePaySetup() async {
     if (!_platformIsIos) {
       throw UnsupportedError('Apple Pay is only available for iOS devices');
     }
     await _methodChannel.invokeMethod('openApplePaySetup');
-  }
-
-  @override
-  Future<void> presentApplePay(
-    ApplePayPresentParams params,
-    OnDidSetShippingContact? onDidSetShippingContact,
-    OnDidSetShippingMethod? onDidSetShippingMethod,
-  ) async {
-    if (!_platformIsIos) {
-      throw UnsupportedError('Apple Pay is only available for iOS devices');
-    }
-    final paramsJson = params.toJson();
-
-    _methodChannel.setMethodCallHandler((call) async {
-      if (call.method == 'onDidSetShippingContact') {
-        final contact =
-            ApplePayShippingContact.fromJson(call.arguments['shippingContact']);
-        _methodChannel
-            .invokeMethod('updateApplePaySummaryItems', <String, dynamic>{
-          'summaryItems': paramsJson['cartItems'],
-        });
-        onDidSetShippingContact?.call(contact);
-      } else if (call.method == 'onDidSetShippingMethod') {
-        final method =
-            ApplePayShippingMethod.fromJson(call.arguments['shippingMethod']);
-        _methodChannel
-            .invokeMethod('updateApplePaySummaryItems', <String, dynamic>{
-          'summaryItems': paramsJson['cartItems'],
-        });
-        onDidSetShippingMethod?.call(method);
-      }
-    });
-
-    await _methodChannel.invokeMethod('presentApplePay', paramsJson);
-  }
-
-  @override
-  Future<void> updateApplePaySummaryItems({
-    required List<ApplePayCartSummaryItem> summaryItems,
-    List<ApplePayErrorAddressField>? errorAddressFields,
-  }) async {
-    if (!_platformIsIos) {
-      throw UnsupportedError('Apple Pay is only available for iOS devices');
-    }
-    await _methodChannel
-        .invokeMapMethod<String, dynamic>('updateApplePaySummaryItems', {
-      'summaryItems': summaryItems.map((e) => e.toJson()).toList(),
-      'errorAddressFields': errorAddressFields?.map((e) => e.toJson()).toList(),
-    });
   }
 
   @override

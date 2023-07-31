@@ -49,11 +49,9 @@ abstract class StripePlatform extends PlatformInterface {
     PaymentMethodOptions? options,
   );
 
-  @Deprecated('This method is deprecated use [isPlatformPaySupported] instead')
-  Future<bool> isApplePaySupported() async => false;
-
   /// Configure the payment sheet using [SetupPaymentSheetParameters] as config.
-  Future<PaymentSheetPaymentOption?> initPaymentSheet(SetupPaymentSheetParameters params);
+  Future<PaymentSheetPaymentOption?> initPaymentSheet(
+      SetupPaymentSheetParameters params);
 
   /// Display the payment sheet.
   Future<PaymentSheetPaymentOption?> presentPaymentSheet({
@@ -67,17 +65,8 @@ abstract class StripePlatform extends PlatformInterface {
   Future<void> confirmPaymentSheetPayment();
 
   Future<void> openApplePaySetup();
-  Future<void> presentApplePay(
-    ApplePayPresentParams params,
-    OnDidSetShippingContact? onDidSetShippingContact,
-    OnDidSetShippingMethod? onDidSetShippingMethod,
-  );
-  Future<void> confirmApplePayPayment(String clientSecret);
+
   Future<TokenData> createApplePayToken(Map<String, dynamic> payment);
-  Future<void> updateApplePaySummaryItems({
-    required List<ApplePayCartSummaryItem> summaryItems,
-    List<ApplePayErrorAddressField>? errorAddressFields,
-  });
 
   Future<bool> handleURLCallback(String url);
 
