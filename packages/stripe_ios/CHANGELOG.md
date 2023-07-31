@@ -1,3 +1,7 @@
+## 9.3.0+1
+
+ - Fix #1325 Stripe conversion issue
+
 ## 9.3.0
 **Features**
 - Add method for retrieve setupintent.
