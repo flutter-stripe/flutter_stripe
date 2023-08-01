@@ -53,7 +53,8 @@ abstract class StripePlatform extends PlatformInterface {
   Future<bool> isApplePaySupported() async => false;
 
   /// Configure the payment sheet using [SetupPaymentSheetParameters] as config.
-  Future<PaymentSheetPaymentOption?> initPaymentSheet(SetupPaymentSheetParameters params);
+  Future<PaymentSheetPaymentOption?> initPaymentSheet(
+      SetupPaymentSheetParameters params);
 
   /// Display the payment sheet.
   Future<PaymentSheetPaymentOption?> presentPaymentSheet({
