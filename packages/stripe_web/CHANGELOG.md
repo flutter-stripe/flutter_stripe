@@ -1,3 +1,9 @@
+## 4.3.0
+**FIXES**
+ - PaymentConfirmationRedirect enum value (#1221).
+ - Confirmation redirect and stripeAccountId (#1201).
+ - Multiple fixes in (#1270).
+
 ## 4.2.0
 **Fixes for web**
 - Makes WebStripe a singleton accessible by WebStripe.instance

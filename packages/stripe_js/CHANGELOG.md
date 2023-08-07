@@ -1,3 +1,10 @@
+## 3.2.0
+**FIXES**
+ - PaymentConfirmationRedirect enum value (#1221).
+ - Confirmation redirect and stripeAccountId (#1201).
+ - Multiple fixes in (#1270).
+
+
 ## 3.1.0
 - Makes WebStripe a singleton accessible by WebStripe.instance
 - Allows to change the layout for the payment element. Closes [#1260](https://github.com/flutter-stripe/flutter_stripe/pull/1270#:~:text=Makes%20a%20singleton,flow%C2%A0%231075)

@@ -1,3 +1,12 @@
+## 9.3.0
+**Features**
+- Add method for retrieve setupintent.
+
+**Fixes**
+- Calling confirm payment without params won't crash #1246 
+- Fix inproper calling of cashapp payment method. #1313
+- Sync with Stripe [0.28.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.28.0).
+
 ## 9.2.2
 **Fixes**
 - Updates json_annotation version requirement
