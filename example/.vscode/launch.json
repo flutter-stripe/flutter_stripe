@@ -10,7 +10,7 @@
             "args": []
         },
         {
-            "name": "Release (dev)",
+            "name": "Release",
             "request": "launch",
             "type": "dart",
             "program": "lib/main.dart",
