@@ -5,6 +5,7 @@ import 'package:stripe_platform_interface/src/models/ach_params.dart';
 import 'package:stripe_platform_interface/src/models/create_token_data.dart';
 import 'package:stripe_platform_interface/src/models/financial_connections.dart';
 import 'package:stripe_platform_interface/src/models/google_pay.dart';
+import 'package:stripe_platform_interface/src/models/intent_creation_callback_params.dart';
 import 'package:stripe_platform_interface/src/models/platform_pay.dart';
 import 'package:stripe_platform_interface/src/models/wallet.dart';
 import 'package:stripe_platform_interface/src/result_parser.dart';
@@ -32,9 +33,7 @@ class MethodChannelStripe extends StripePlatform {
     required bool platformIsAndroid,
   })  : _methodChannel = methodChannel,
         _platformIsAndroid = platformIsAndroid,
-        _platformIsIos = platformIsIos {
-    _init();
-  }
+        _platformIsIos = platformIsIos;
 
   final MethodChannel _methodChannel;
   final bool _platformIsIos;
@@ -58,9 +57,11 @@ class MethodChannelStripe extends StripePlatform {
       'urlScheme': urlScheme,
       'setReturnUrlSchemeOnAndroid': setReturnUrlSchemeOnAndroid,
     });
-  }
 
-  void _init() {}
+    _methodChannel.setMethodCallHandler((call) async {
+      print('foo ${call.method}');
+    });
+  }
 
   @override
   Future<PaymentMethod> createPaymentMethod(
@@ -507,6 +508,15 @@ class MethodChannelStripe extends StripePlatform {
     await _methodChannel.invokeMethod(
       'configureOrderTracking',
       orderDetails.toJson(),
+    );
+  }
+
+  @override
+  Future<void> intentCreationCallback(
+      IntentCreationCallbackParams params) async {
+    await _methodChannel.invokeMethod(
+      'intentCreationCallback',
+      {'params': params.toJson()},
     );
   }
 }

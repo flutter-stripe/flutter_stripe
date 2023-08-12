@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:stripe_platform_interface/src/models/color.dart';
@@ -40,6 +42,10 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// If this value is null make sure to add a [paymentIntentClientSecret]
 
     String? setupIntentClientSecret,
+
+    /// Use this when you want to collect payment information before creating a
+    /// setupintent or payment intent.
+    IntentConfiguration? intentConfiguration,
 
     /// Display name of the merchant
     String? merchantDisplayName,
@@ -85,6 +91,48 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
 
   factory SetupPaymentSheetParameters.fromJson(Map<String, dynamic> json) =>
       _$SetupPaymentSheetParametersFromJson(json);
+}
+
+@freezed
+class IntentConfiguration with _$IntentConfiguration {
+  @JsonSerializable(explicitToJson: true)
+  const factory IntentConfiguration({
+    /// Data related to the future payment intent
+    required IntentMode mode,
+
+    /// The list of payment method types that the customer can use in the payment sheet.
+    ///
+    /// If not set, the payment sheet will display all the payment methods enabled in your Stripe dashboard.
+    List<String>? paymentMethodTypes,
+
+    /// Called when the customer confirms payment. Your implementation should create
+    /// a payment intent or setupintent on your server and call the intent creation callback with its client secret or an error if one occurred.
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    ConfirmHandler? intentCreationCallback,
+
+    /// Confirm handler
+  }) = _IntentConfiguration;
+
+  factory IntentConfiguration.fromJson(Map<String, dynamic> json) =>
+      _$IntentConfigurationFromJson(json);
+}
+
+@freezed
+class IntentMode with _$IntentMode {
+  @JsonSerializable(explicitToJson: true)
+  const factory IntentMode({
+    required String currencyCode,
+    required int amount,
+
+    /// Data related to the future payment intent
+    IntentFutureUsage? setupFutureUsage,
+
+    /// Capture method for the future payment intent
+    CaptureMethod? captureMethod,
+  }) = _IntentMode;
+
+  factory IntentMode.fromJson(Map<String, dynamic> json) =>
+      _$IntentModeFromJson(json);
 }
 
 /// Parameters related to the Payment sheet Apple Pay config.
@@ -470,3 +518,17 @@ enum AddressCollectionMode {
   /// Collect the full billing address, regardless of the Payment Method's requirements. */
   full,
 }
+
+/// The type of payment method to attach to a Customer.
+enum IntentFutureUsage {
+  /// The payment method will be used for future off-session payments.
+  OffSession,
+
+  /// The payment method will be used for future on-session payments.
+  OnSession,
+}
+
+typedef ConfirmHandler = void Function(
+  PaymentMethod result,
+  bool shouldSavePaymentMethod,
+);

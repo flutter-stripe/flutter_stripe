@@ -150,6 +150,10 @@ abstract class StripePlatform extends PlatformInterface {
   /// details: https://stripe.com/docs/security/guide#validating-pci-compliance
   Future<void> dangerouslyUpdateCardDetails(CardDetails card);
 
+  /// Method used to confirm to the user that the intent is created successfull
+  /// or not successfull when using a defferred payment method.
+  Future<void> intentCreationCallback(IntentCreationCallbackParams params);
+
   Widget buildCard({
     Key? key,
     required CardEditController controller,

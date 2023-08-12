@@ -48,6 +48,11 @@ mixin _$SetupPaymentSheetParameters {
   /// If this value is null make sure to add a [paymentIntentClientSecret]
   String? get setupIntentClientSecret => throw _privateConstructorUsedError;
 
+  /// Use this when you want to collect payment information before creating a
+  /// setupintent or payment intent.
+  IntentConfiguration? get intentConfiguration =>
+      throw _privateConstructorUsedError;
+
   /// Display name of the merchant
   String? get merchantDisplayName => throw _privateConstructorUsedError;
 
@@ -113,6 +118,7 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
       String? customerEphemeralKeySecret,
       String? paymentIntentClientSecret,
       String? setupIntentClientSecret,
+      IntentConfiguration? intentConfiguration,
       String? merchantDisplayName,
       PaymentSheetApplePay? applePay,
       @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style,
@@ -124,6 +130,7 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
       BillingDetailsCollectionConfiguration?
           billingDetailsCollectionConfiguration});
 
+  $IntentConfigurationCopyWith<$Res>? get intentConfiguration;
   $PaymentSheetApplePayCopyWith<$Res>? get applePay;
   $PaymentSheetGooglePayCopyWith<$Res>? get googlePay;
   $PaymentSheetAppearanceCopyWith<$Res>? get appearance;
@@ -152,6 +159,7 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
     Object? customerEphemeralKeySecret = freezed,
     Object? paymentIntentClientSecret = freezed,
     Object? setupIntentClientSecret = freezed,
+    Object? intentConfiguration = freezed,
     Object? merchantDisplayName = freezed,
     Object? applePay = freezed,
     Object? style = freezed,
@@ -187,6 +195,10 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
           ? _value.setupIntentClientSecret
           : setupIntentClientSecret // ignore: cast_nullable_to_non_nullable
               as String?,
+      intentConfiguration: freezed == intentConfiguration
+          ? _value.intentConfiguration
+          : intentConfiguration // ignore: cast_nullable_to_non_nullable
+              as IntentConfiguration?,
       merchantDisplayName: freezed == merchantDisplayName
           ? _value.merchantDisplayName
           : merchantDisplayName // ignore: cast_nullable_to_non_nullable
@@ -225,6 +237,19 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
           : billingDetailsCollectionConfiguration // ignore: cast_nullable_to_non_nullable
               as BillingDetailsCollectionConfiguration?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $IntentConfigurationCopyWith<$Res>? get intentConfiguration {
+    if (_value.intentConfiguration == null) {
+      return null;
+    }
+
+    return $IntentConfigurationCopyWith<$Res>(_value.intentConfiguration!,
+        (value) {
+      return _then(_value.copyWith(intentConfiguration: value) as $Val);
+    });
   }
 
   @override
@@ -306,6 +331,7 @@ abstract class _$$_SetupParametersCopyWith<$Res>
       String? customerEphemeralKeySecret,
       String? paymentIntentClientSecret,
       String? setupIntentClientSecret,
+      IntentConfiguration? intentConfiguration,
       String? merchantDisplayName,
       PaymentSheetApplePay? applePay,
       @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style,
@@ -317,6 +343,8 @@ abstract class _$$_SetupParametersCopyWith<$Res>
       BillingDetailsCollectionConfiguration?
           billingDetailsCollectionConfiguration});
 
+  @override
+  $IntentConfigurationCopyWith<$Res>? get intentConfiguration;
   @override
   $PaymentSheetApplePayCopyWith<$Res>? get applePay;
   @override
@@ -347,6 +375,7 @@ class __$$_SetupParametersCopyWithImpl<$Res>
     Object? customerEphemeralKeySecret = freezed,
     Object? paymentIntentClientSecret = freezed,
     Object? setupIntentClientSecret = freezed,
+    Object? intentConfiguration = freezed,
     Object? merchantDisplayName = freezed,
     Object? applePay = freezed,
     Object? style = freezed,
@@ -382,6 +411,10 @@ class __$$_SetupParametersCopyWithImpl<$Res>
           ? _value.setupIntentClientSecret
           : setupIntentClientSecret // ignore: cast_nullable_to_non_nullable
               as String?,
+      intentConfiguration: freezed == intentConfiguration
+          ? _value.intentConfiguration
+          : intentConfiguration // ignore: cast_nullable_to_non_nullable
+              as IntentConfiguration?,
       merchantDisplayName: freezed == merchantDisplayName
           ? _value.merchantDisplayName
           : merchantDisplayName // ignore: cast_nullable_to_non_nullable
@@ -434,6 +467,7 @@ class _$_SetupParameters implements _SetupParameters {
       this.customerEphemeralKeySecret,
       this.paymentIntentClientSecret,
       this.setupIntentClientSecret,
+      this.intentConfiguration,
       this.merchantDisplayName,
       this.applePay,
       @JsonKey(toJson: UserInterfaceStyleKey.toJson) this.style,
@@ -480,6 +514,11 @@ class _$_SetupParameters implements _SetupParameters {
   /// If this value is null make sure to add a [paymentIntentClientSecret]
   @override
   final String? setupIntentClientSecret;
+
+  /// Use this when you want to collect payment information before creating a
+  /// setupintent or payment intent.
+  @override
+  final IntentConfiguration? intentConfiguration;
 
   /// Display name of the merchant
   @override
@@ -536,7 +575,7 @@ class _$_SetupParameters implements _SetupParameters {
 
   @override
   String toString() {
-    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, returnURL: $returnURL, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration)';
+    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, intentConfiguration: $intentConfiguration, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, returnURL: $returnURL, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration)';
   }
 
   @override
@@ -555,9 +594,10 @@ class _$_SetupParameters implements _SetupParameters {
                     customerEphemeralKeySecret) &&
             (identical(other.paymentIntentClientSecret, paymentIntentClientSecret) ||
                 other.paymentIntentClientSecret == paymentIntentClientSecret) &&
-            (identical(
-                    other.setupIntentClientSecret, setupIntentClientSecret) ||
+            (identical(other.setupIntentClientSecret, setupIntentClientSecret) ||
                 other.setupIntentClientSecret == setupIntentClientSecret) &&
+            (identical(other.intentConfiguration, intentConfiguration) ||
+                other.intentConfiguration == intentConfiguration) &&
             (identical(other.merchantDisplayName, merchantDisplayName) ||
                 other.merchantDisplayName == merchantDisplayName) &&
             (identical(other.applePay, applePay) ||
@@ -591,6 +631,7 @@ class _$_SetupParameters implements _SetupParameters {
       customerEphemeralKeySecret,
       paymentIntentClientSecret,
       setupIntentClientSecret,
+      intentConfiguration,
       merchantDisplayName,
       applePay,
       style,
@@ -623,6 +664,7 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
       final String? customerEphemeralKeySecret,
       final String? paymentIntentClientSecret,
       final String? setupIntentClientSecret,
+      final IntentConfiguration? intentConfiguration,
       final String? merchantDisplayName,
       final PaymentSheetApplePay? applePay,
       @JsonKey(toJson: UserInterfaceStyleKey.toJson)
@@ -672,6 +714,11 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   ///
   /// If this value is null make sure to add a [paymentIntentClientSecret]
   String? get setupIntentClientSecret;
+  @override
+
+  /// Use this when you want to collect payment information before creating a
+  /// setupintent or payment intent.
+  IntentConfiguration? get intentConfiguration;
   @override
 
   /// Display name of the merchant
@@ -727,6 +774,471 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   @override
   @JsonKey(ignore: true)
   _$$_SetupParametersCopyWith<_$_SetupParameters> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+IntentConfiguration _$IntentConfigurationFromJson(Map<String, dynamic> json) {
+  return _IntentConfiguration.fromJson(json);
+}
+
+/// @nodoc
+mixin _$IntentConfiguration {
+  /// Data related to the future payment intent
+  IntentMode get mode => throw _privateConstructorUsedError;
+
+  /// The list of payment method types that the customer can use in the payment sheet.
+  ///
+  /// If not set, the payment sheet will display all the payment methods enabled in your Stripe dashboard.
+  List<String>? get paymentMethodTypes => throw _privateConstructorUsedError;
+
+  /// Called when the customer confirms payment. Your implementation should create
+  /// a payment intent or setupintent on your server and call the intent creation callback with its client secret or an error if one occurred.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  ConfirmHandler? get intentCreationCallback =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $IntentConfigurationCopyWith<IntentConfiguration> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $IntentConfigurationCopyWith<$Res> {
+  factory $IntentConfigurationCopyWith(
+          IntentConfiguration value, $Res Function(IntentConfiguration) then) =
+      _$IntentConfigurationCopyWithImpl<$Res, IntentConfiguration>;
+  @useResult
+  $Res call(
+      {IntentMode mode,
+      List<String>? paymentMethodTypes,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+          ConfirmHandler? intentCreationCallback});
+
+  $IntentModeCopyWith<$Res> get mode;
+}
+
+/// @nodoc
+class _$IntentConfigurationCopyWithImpl<$Res, $Val extends IntentConfiguration>
+    implements $IntentConfigurationCopyWith<$Res> {
+  _$IntentConfigurationCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? mode = null,
+    Object? paymentMethodTypes = freezed,
+    Object? intentCreationCallback = freezed,
+  }) {
+    return _then(_value.copyWith(
+      mode: null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as IntentMode,
+      paymentMethodTypes: freezed == paymentMethodTypes
+          ? _value.paymentMethodTypes
+          : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      intentCreationCallback: freezed == intentCreationCallback
+          ? _value.intentCreationCallback
+          : intentCreationCallback // ignore: cast_nullable_to_non_nullable
+              as ConfirmHandler?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $IntentModeCopyWith<$Res> get mode {
+    return $IntentModeCopyWith<$Res>(_value.mode, (value) {
+      return _then(_value.copyWith(mode: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_IntentConfigurationCopyWith<$Res>
+    implements $IntentConfigurationCopyWith<$Res> {
+  factory _$$_IntentConfigurationCopyWith(_$_IntentConfiguration value,
+          $Res Function(_$_IntentConfiguration) then) =
+      __$$_IntentConfigurationCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {IntentMode mode,
+      List<String>? paymentMethodTypes,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+          ConfirmHandler? intentCreationCallback});
+
+  @override
+  $IntentModeCopyWith<$Res> get mode;
+}
+
+/// @nodoc
+class __$$_IntentConfigurationCopyWithImpl<$Res>
+    extends _$IntentConfigurationCopyWithImpl<$Res, _$_IntentConfiguration>
+    implements _$$_IntentConfigurationCopyWith<$Res> {
+  __$$_IntentConfigurationCopyWithImpl(_$_IntentConfiguration _value,
+      $Res Function(_$_IntentConfiguration) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? mode = null,
+    Object? paymentMethodTypes = freezed,
+    Object? intentCreationCallback = freezed,
+  }) {
+    return _then(_$_IntentConfiguration(
+      mode: null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as IntentMode,
+      paymentMethodTypes: freezed == paymentMethodTypes
+          ? _value._paymentMethodTypes
+          : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      intentCreationCallback: freezed == intentCreationCallback
+          ? _value.intentCreationCallback
+          : intentCreationCallback // ignore: cast_nullable_to_non_nullable
+              as ConfirmHandler?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_IntentConfiguration implements _IntentConfiguration {
+  const _$_IntentConfiguration(
+      {required this.mode,
+      final List<String>? paymentMethodTypes,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+          this.intentCreationCallback})
+      : _paymentMethodTypes = paymentMethodTypes;
+
+  factory _$_IntentConfiguration.fromJson(Map<String, dynamic> json) =>
+      _$$_IntentConfigurationFromJson(json);
+
+  /// Data related to the future payment intent
+  @override
+  final IntentMode mode;
+
+  /// The list of payment method types that the customer can use in the payment sheet.
+  ///
+  /// If not set, the payment sheet will display all the payment methods enabled in your Stripe dashboard.
+  final List<String>? _paymentMethodTypes;
+
+  /// The list of payment method types that the customer can use in the payment sheet.
+  ///
+  /// If not set, the payment sheet will display all the payment methods enabled in your Stripe dashboard.
+  @override
+  List<String>? get paymentMethodTypes {
+    final value = _paymentMethodTypes;
+    if (value == null) return null;
+    if (_paymentMethodTypes is EqualUnmodifiableListView)
+      return _paymentMethodTypes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  /// Called when the customer confirms payment. Your implementation should create
+  /// a payment intent or setupintent on your server and call the intent creation callback with its client secret or an error if one occurred.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final ConfirmHandler? intentCreationCallback;
+
+  @override
+  String toString() {
+    return 'IntentConfiguration(mode: $mode, paymentMethodTypes: $paymentMethodTypes, intentCreationCallback: $intentCreationCallback)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_IntentConfiguration &&
+            (identical(other.mode, mode) || other.mode == mode) &&
+            const DeepCollectionEquality()
+                .equals(other._paymentMethodTypes, _paymentMethodTypes) &&
+            (identical(other.intentCreationCallback, intentCreationCallback) ||
+                other.intentCreationCallback == intentCreationCallback));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      mode,
+      const DeepCollectionEquality().hash(_paymentMethodTypes),
+      intentCreationCallback);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_IntentConfigurationCopyWith<_$_IntentConfiguration> get copyWith =>
+      __$$_IntentConfigurationCopyWithImpl<_$_IntentConfiguration>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_IntentConfigurationToJson(
+      this,
+    );
+  }
+}
+
+abstract class _IntentConfiguration implements IntentConfiguration {
+  const factory _IntentConfiguration(
+          {required final IntentMode mode,
+          final List<String>? paymentMethodTypes,
+          @JsonKey(includeFromJson: false, includeToJson: false)
+              final ConfirmHandler? intentCreationCallback}) =
+      _$_IntentConfiguration;
+
+  factory _IntentConfiguration.fromJson(Map<String, dynamic> json) =
+      _$_IntentConfiguration.fromJson;
+
+  @override
+
+  /// Data related to the future payment intent
+  IntentMode get mode;
+  @override
+
+  /// The list of payment method types that the customer can use in the payment sheet.
+  ///
+  /// If not set, the payment sheet will display all the payment methods enabled in your Stripe dashboard.
+  List<String>? get paymentMethodTypes;
+  @override
+
+  /// Called when the customer confirms payment. Your implementation should create
+  /// a payment intent or setupintent on your server and call the intent creation callback with its client secret or an error if one occurred.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  ConfirmHandler? get intentCreationCallback;
+  @override
+  @JsonKey(ignore: true)
+  _$$_IntentConfigurationCopyWith<_$_IntentConfiguration> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+IntentMode _$IntentModeFromJson(Map<String, dynamic> json) {
+  return _IntentMode.fromJson(json);
+}
+
+/// @nodoc
+mixin _$IntentMode {
+  String get currencyCode => throw _privateConstructorUsedError;
+  int get amount => throw _privateConstructorUsedError;
+
+  /// Data related to the future payment intent
+  IntentFutureUsage? get setupFutureUsage => throw _privateConstructorUsedError;
+
+  /// Capture method for the future payment intent
+  CaptureMethod? get captureMethod => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $IntentModeCopyWith<IntentMode> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $IntentModeCopyWith<$Res> {
+  factory $IntentModeCopyWith(
+          IntentMode value, $Res Function(IntentMode) then) =
+      _$IntentModeCopyWithImpl<$Res, IntentMode>;
+  @useResult
+  $Res call(
+      {String currencyCode,
+      int amount,
+      IntentFutureUsage? setupFutureUsage,
+      CaptureMethod? captureMethod});
+}
+
+/// @nodoc
+class _$IntentModeCopyWithImpl<$Res, $Val extends IntentMode>
+    implements $IntentModeCopyWith<$Res> {
+  _$IntentModeCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? currencyCode = null,
+    Object? amount = null,
+    Object? setupFutureUsage = freezed,
+    Object? captureMethod = freezed,
+  }) {
+    return _then(_value.copyWith(
+      currencyCode: null == currencyCode
+          ? _value.currencyCode
+          : currencyCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int,
+      setupFutureUsage: freezed == setupFutureUsage
+          ? _value.setupFutureUsage
+          : setupFutureUsage // ignore: cast_nullable_to_non_nullable
+              as IntentFutureUsage?,
+      captureMethod: freezed == captureMethod
+          ? _value.captureMethod
+          : captureMethod // ignore: cast_nullable_to_non_nullable
+              as CaptureMethod?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_IntentModeCopyWith<$Res>
+    implements $IntentModeCopyWith<$Res> {
+  factory _$$_IntentModeCopyWith(
+          _$_IntentMode value, $Res Function(_$_IntentMode) then) =
+      __$$_IntentModeCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String currencyCode,
+      int amount,
+      IntentFutureUsage? setupFutureUsage,
+      CaptureMethod? captureMethod});
+}
+
+/// @nodoc
+class __$$_IntentModeCopyWithImpl<$Res>
+    extends _$IntentModeCopyWithImpl<$Res, _$_IntentMode>
+    implements _$$_IntentModeCopyWith<$Res> {
+  __$$_IntentModeCopyWithImpl(
+      _$_IntentMode _value, $Res Function(_$_IntentMode) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? currencyCode = null,
+    Object? amount = null,
+    Object? setupFutureUsage = freezed,
+    Object? captureMethod = freezed,
+  }) {
+    return _then(_$_IntentMode(
+      currencyCode: null == currencyCode
+          ? _value.currencyCode
+          : currencyCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int,
+      setupFutureUsage: freezed == setupFutureUsage
+          ? _value.setupFutureUsage
+          : setupFutureUsage // ignore: cast_nullable_to_non_nullable
+              as IntentFutureUsage?,
+      captureMethod: freezed == captureMethod
+          ? _value.captureMethod
+          : captureMethod // ignore: cast_nullable_to_non_nullable
+              as CaptureMethod?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_IntentMode implements _IntentMode {
+  const _$_IntentMode(
+      {required this.currencyCode,
+      required this.amount,
+      this.setupFutureUsage,
+      this.captureMethod});
+
+  factory _$_IntentMode.fromJson(Map<String, dynamic> json) =>
+      _$$_IntentModeFromJson(json);
+
+  @override
+  final String currencyCode;
+  @override
+  final int amount;
+
+  /// Data related to the future payment intent
+  @override
+  final IntentFutureUsage? setupFutureUsage;
+
+  /// Capture method for the future payment intent
+  @override
+  final CaptureMethod? captureMethod;
+
+  @override
+  String toString() {
+    return 'IntentMode(currencyCode: $currencyCode, amount: $amount, setupFutureUsage: $setupFutureUsage, captureMethod: $captureMethod)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_IntentMode &&
+            (identical(other.currencyCode, currencyCode) ||
+                other.currencyCode == currencyCode) &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.setupFutureUsage, setupFutureUsage) ||
+                other.setupFutureUsage == setupFutureUsage) &&
+            (identical(other.captureMethod, captureMethod) ||
+                other.captureMethod == captureMethod));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, currencyCode, amount, setupFutureUsage, captureMethod);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_IntentModeCopyWith<_$_IntentMode> get copyWith =>
+      __$$_IntentModeCopyWithImpl<_$_IntentMode>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_IntentModeToJson(
+      this,
+    );
+  }
+}
+
+abstract class _IntentMode implements IntentMode {
+  const factory _IntentMode(
+      {required final String currencyCode,
+      required final int amount,
+      final IntentFutureUsage? setupFutureUsage,
+      final CaptureMethod? captureMethod}) = _$_IntentMode;
+
+  factory _IntentMode.fromJson(Map<String, dynamic> json) =
+      _$_IntentMode.fromJson;
+
+  @override
+  String get currencyCode;
+  @override
+  int get amount;
+  @override
+
+  /// Data related to the future payment intent
+  IntentFutureUsage? get setupFutureUsage;
+  @override
+
+  /// Capture method for the future payment intent
+  CaptureMethod? get captureMethod;
+  @override
+  @JsonKey(ignore: true)
+  _$$_IntentModeCopyWith<_$_IntentMode> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

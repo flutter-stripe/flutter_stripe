@@ -444,6 +444,13 @@ class Stripe {
     return await _platform.presentPaymentSheet(options: options);
   }
 
+  /// Method used to confirm to the user that the intent is created successfull
+  /// or not successfull when using a defferred payment method.
+  Future<void> intentCreationCallback(IntentCreationCallbackParams params) async {
+    await _awaitForSettings();
+    return await _platform.intentCreationCallback(params);
+  }
+
   /// Call this method when the user logs out from your app.
   ///
   /// This will ensure that any persisted authentication state in the

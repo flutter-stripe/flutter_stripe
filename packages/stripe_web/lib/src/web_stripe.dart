@@ -510,6 +510,11 @@ class WebStripe extends StripePlatform {
       {required PlatformPayOrderDetails orderDetails}) {
     throw WebUnsupportedError.method('configurePlatformOrderTracking');
   }
+
+  @override
+  Future<void> intentCreationCallback(IntentCreationCallbackParams params) {
+    throw WebUnsupportedError.method('intentCreationCallback');
+  }
 }
 
 class WebUnsupportedError extends Error implements UnsupportedError {
