@@ -91,8 +91,8 @@ Future<void> initPaymentSheet() async {
       // 2. initialize the payment sheet
      await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
-          // Enable custom flow
-          customFlow: true,
+          // Set to true for custom flow
+          customFlow: false,
           // Main params
           merchantDisplayName: 'Flutter Stripe Store Demo',
           paymentIntentClientSecret: data['paymentIntent'],
@@ -122,6 +122,12 @@ Future<void> initPaymentSheet() async {
 When the customer taps a **Checkout** button, call present to present the payment sheet. After the customer completes the payment, the sheet is dismissed.
 ```dart
 await Stripe.instance.presentPaymentSheet();
+```
+
+When you set `customFlow` to `true`, you need to handle the payment intent confirmation manually. You can do this by calling `confirmPaymentSheetPayment`.
+
+```dart
+await Stripe.instance.confirmPaymentSheetPayment();
 ```
 
 Unless your business model requires immediate payment (e.g., an on-demand service), don’t assume you have received payment at this point. Instead, inform the customer that you confirmed their order and notify them by email when you fulfill their order in the next step.
