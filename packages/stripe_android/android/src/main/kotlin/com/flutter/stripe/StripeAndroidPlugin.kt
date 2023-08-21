@@ -145,22 +145,6 @@ If you continue to have trouble, follow this discussion to get some support http
                 )
                 result.success(null)
             }
-            "initGooglePay" -> stripeSdk.initGooglePay(
-                params = call.requiredArgument("params"),
-                promise = Promise(result)
-            )
-            "presentGooglePay" -> stripeSdk.presentGooglePay(
-                params = call.requiredArgument("params"),
-                promise = Promise(result)
-            )
-            "createGooglePayPaymentMethod" -> stripeSdk.createGooglePayPaymentMethod(
-                params = call.requiredArgument("params"),
-                promise = Promise(result)
-            )
-            "isGooglePaySupported" -> stripeSdk.isGooglePaySupported(
-                params = call.requiredArgument("params"),
-                promise = Promise(result)
-            )
             "collectBankAccount" -> stripeSdk.collectBankAccount(
                 isPaymentIntent = call.requiredArgument("isPaymentIntent"),
                 clientSecret = call.requiredArgument("clientSecret"),
@@ -211,6 +195,14 @@ If you continue to have trouble, follow this discussion to get some support http
                 isPaymentIntent = call.requiredArgument("isPaymentIntent"),
                 promise = Promise(result)
             )
+            "addListener" -> {
+                stripeSdk.addListener(eventName = call.requiredArgument("eventName"))
+                result.success("OK")
+            }
+            "removeListener" -> {
+                stripeSdk.removeListeners(count = call.requiredArgument("count"))
+                result.success("OK")
+            }
             else -> result.notImplemented()
         }
     }

@@ -28,7 +28,7 @@ import java.io.ByteArrayOutputStream
 import kotlin.Exception
 
 class PaymentSheetFragment(
-  private val context: ReactContext,
+  private val context: ReactApplicationContext,
   private val initPromise: Promise
 ) : Fragment() {
   private var paymentSheet: PaymentSheet? = null
