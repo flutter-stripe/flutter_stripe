@@ -496,6 +496,22 @@ extension  StripePlugin {
         )
     }
     
+    func handleNextActionForSetup(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? FlutterMap,
+       let setupIntentClientSecret = arguments["setupIntentClientSecret"] as? String,
+       let returnURL = arguments["returnURL"] as? String
+        else {
+           result(FlutterError.invalidParams)
+           return
+       }
+        handleNextActionForSetup(
+            setupIntentClientSecret: setupIntentClientSecret,
+            returnURL: returnURL,
+            resolver: resolver(for: result),
+            rejecter: rejecter(for: result)
+        )
+    }
+    
     func dangerouslyUpdateCardDetails(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
         let params = arguments["params"] as? NSDictionary else {
