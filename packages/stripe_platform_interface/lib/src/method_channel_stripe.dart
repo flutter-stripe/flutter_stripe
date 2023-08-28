@@ -150,6 +150,20 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
+  Future<SetupIntent> handleNextActionForSetupIntent(String setupIntentClientSecret,
+      {String? returnURL}) async {
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('handleNextAction', {
+      'setupIntentClientSecret': setupIntentClientSecret,
+      if (_platformIsIos) 'returnURL': returnURL,
+    });
+
+    return ResultParser<SetupIntent>(
+            parseJson: (json) => SetupIntent.fromJson(json))
+        .parse(result: result!, successResultKey: 'setupIntent');
+  }
+
+  @override
   Future<void> openApplePaySetup() async {
     if (!_platformIsIos) {
       throw UnsupportedError('Apple Pay is only available for iOS devices');

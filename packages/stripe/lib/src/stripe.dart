@@ -376,6 +376,25 @@ class Stripe {
     }
   }
 
+  /// Use this method in case the [SetupIntent] status is
+  /// [PaymentIntentsStatus.RequiresAction]. Executing this action can take
+  /// several seconds and it is important to not resubmit the form.
+  ///
+  /// Throws a [StripeException] when confirming the handle card action fails.
+  Future<SetupIntent> handleNextActionForSetupIntent(
+      String setupIntentClientSecret,
+      {String? returnURL}) async {
+    await _awaitForSettings();
+    try {
+      final paymentIntent = await _platform.handleNextActionForSetupIntent(
+          setupIntentClientSecret,
+          returnURL: returnURL);
+      return paymentIntent;
+    } on StripeError {
+      rethrow;
+    }
+  }
+
   /// Confirm the [SetupIntent] using the [paymentIntentClientSecret]
   /// and [params].
   ///
@@ -446,7 +465,8 @@ class Stripe {
 
   /// Method used to confirm to the user that the intent is created successfull
   /// or not successfull when using a defferred payment method.
-  Future<void> intentCreationCallback(IntentCreationCallbackParams params) async {
+  Future<void> intentCreationCallback(
+      IntentCreationCallbackParams params) async {
     await _awaitForSettings();
     return await _platform.intentCreationCallback(params);
   }

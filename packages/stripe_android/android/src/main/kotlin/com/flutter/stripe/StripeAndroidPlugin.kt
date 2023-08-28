@@ -109,6 +109,11 @@ If you continue to have trouble, follow this discussion to get some support http
                 paymentIntentClientSecret = call.requiredArgument("paymentIntentClientSecret"),
                 promise = Promise(result)
             )
+            "handleNextActionForSetup" -> stripeSdk.handleNextActionForSetup(
+                setupIntentClientSecret = call.requiredArgument("setupIntentClientSecret"),
+                promise = Promise(result)
+            )
+
             "confirmPayment" -> stripeSdk.confirmPayment(
                 paymentIntentClientSecret = call.requiredArgument("paymentIntentClientSecret"),
                 params = call.optionalArgument("params"),

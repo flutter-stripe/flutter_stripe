@@ -515,6 +515,13 @@ class WebStripe extends StripePlatform {
   Future<void> intentCreationCallback(IntentCreationCallbackParams params) {
     throw WebUnsupportedError.method('intentCreationCallback');
   }
+
+  @override
+  Future<SetupIntent> handleNextActionForSetupIntent(
+      String setupIntentClientSecret,
+      {String? returnURL}) {
+    throw WebUnsupportedError.method('handleNextActionForSetupIntent');
+  }
 }
 
 class WebUnsupportedError extends Error implements UnsupportedError {
