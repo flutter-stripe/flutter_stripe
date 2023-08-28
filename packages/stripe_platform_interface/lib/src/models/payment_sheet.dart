@@ -108,7 +108,7 @@ class IntentConfiguration with _$IntentConfiguration {
     /// Called when the customer confirms payment. Your implementation should create
     /// a payment intent or setupintent on your server and call the intent creation callback with its client secret or an error if one occurred.
     @JsonKey(includeFromJson: false, includeToJson: false)
-    ConfirmHandler? intentCreationCallback,
+    ConfirmHandler? confirmHandler,
 
     /// Confirm handler
   }) = _IntentConfiguration;

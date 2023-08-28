@@ -38,6 +38,7 @@ class MethodChannelStripe extends StripePlatform {
   final MethodChannel _methodChannel;
   final bool _platformIsIos;
   final bool _platformIsAndroid;
+  ConfirmHandler? _confirmHandler;
 
   @override
   Future<void> initialise({
@@ -59,7 +60,16 @@ class MethodChannelStripe extends StripePlatform {
     });
 
     _methodChannel.setMethodCallHandler((call) async {
-      print('foo ${call.method}');
+      if (call.method == 'onConfirmHandlerCallback' &&
+          _confirmHandler != null) {
+        final method = ResultParser<PaymentMethod>(
+                parseJson: (json) => PaymentMethod.fromJson(json))
+            .parse(result: call.arguments!, successResultKey: 'paymentMethod');
+        _confirmHandler!(
+          method,
+          call.arguments['shouldSavePaymentMethod'] as bool,
+        );
+      }
     });
   }
 
@@ -178,6 +188,10 @@ class MethodChannelStripe extends StripePlatform {
       'initPaymentSheet',
       {'params': params.toJson()},
     );
+    if (params.intentConfiguration?.confirmHandler != null) {
+      _addListenerForDeffered();
+      _confirmHandler = params.intentConfiguration?.confirmHandler;
+    }
     if (result is List) {
       return null;
     } else {
@@ -239,6 +253,13 @@ class MethodChannelStripe extends StripePlatform {
     await _methodChannel.invokeMethod('dangerouslyUpdateCardDetails', {
       'params': card.toJson(),
     });
+  }
+
+  Future<void> _addListenerForDeffered() async {
+    await _methodChannel.invokeMethod(
+      'addListener',
+      {'eventName': 'onConfirmHandlerCallback'},
+    );
   }
 
   PaymentSheetPaymentOption? _parsePaymentSheetResult(

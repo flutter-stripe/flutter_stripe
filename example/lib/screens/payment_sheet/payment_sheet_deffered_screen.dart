@@ -46,15 +46,16 @@ class _PaymentSheetScreenState extends State<PaymentSheetDefferedScreen> {
     );
   }
 
-  Future<void> _createIntentAndConfirmToUser() async {
-    final url = Uri.parse('$kApiUrl/payment-sheet');
+  Future<void> _createIntentAndConfirmToUser(String paymentMethodId) async {
+    print('foo $paymentMethodId');
+    final url = Uri.parse('$kApiUrl/payment-intent-for-payment-sheet');
     final response = await http.post(
       url,
       headers: {
         'Content-Type': 'application/json',
       },
       body: json.encode({
-        'a': 'a',
+        'paymentMethodId': paymentMethodId,
       }),
     );
     final body = json.decode(response.body);
@@ -62,8 +63,10 @@ class _PaymentSheetScreenState extends State<PaymentSheetDefferedScreen> {
       throw Exception(body['error']);
     }
 
+    print('blaat $body');
+
     await Stripe.instance.intentCreationCallback(
-        IntentCreationCallbackParams(clientSecret: body['paymentIntent']));
+        IntentCreationCallbackParams(clientSecret: body['clientSecret']));
   }
 
   Future<void> initPaymentSheet() async {
@@ -96,8 +99,8 @@ class _PaymentSheetScreenState extends State<PaymentSheetDefferedScreen> {
                 currencyCode: 'EUR',
                 amount: 1500,
               ),
-              intentCreationCallback: (method, saveFuture) {
-                _createIntentAndConfirmToUser();
+              confirmHandler: (method, saveFuture) {
+                _createIntentAndConfirmToUser(method.id);
               }),
 
           // Extra params
@@ -109,6 +112,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetDefferedScreen> {
             merchantCountryCode: 'DE',
             testEnv: true,
           ),
+
           style: ThemeMode.dark,
           appearance: PaymentSheetAppearance(
             colors: PaymentSheetAppearanceColors(

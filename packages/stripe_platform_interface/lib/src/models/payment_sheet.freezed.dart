@@ -794,8 +794,7 @@ mixin _$IntentConfiguration {
   /// Called when the customer confirms payment. Your implementation should create
   /// a payment intent or setupintent on your server and call the intent creation callback with its client secret or an error if one occurred.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  ConfirmHandler? get intentCreationCallback =>
-      throw _privateConstructorUsedError;
+  ConfirmHandler? get confirmHandler => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -813,7 +812,7 @@ abstract class $IntentConfigurationCopyWith<$Res> {
       {IntentMode mode,
       List<String>? paymentMethodTypes,
       @JsonKey(includeFromJson: false, includeToJson: false)
-          ConfirmHandler? intentCreationCallback});
+          ConfirmHandler? confirmHandler});
 
   $IntentModeCopyWith<$Res> get mode;
 }
@@ -833,7 +832,7 @@ class _$IntentConfigurationCopyWithImpl<$Res, $Val extends IntentConfiguration>
   $Res call({
     Object? mode = null,
     Object? paymentMethodTypes = freezed,
-    Object? intentCreationCallback = freezed,
+    Object? confirmHandler = freezed,
   }) {
     return _then(_value.copyWith(
       mode: null == mode
@@ -844,9 +843,9 @@ class _$IntentConfigurationCopyWithImpl<$Res, $Val extends IntentConfiguration>
           ? _value.paymentMethodTypes
           : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      intentCreationCallback: freezed == intentCreationCallback
-          ? _value.intentCreationCallback
-          : intentCreationCallback // ignore: cast_nullable_to_non_nullable
+      confirmHandler: freezed == confirmHandler
+          ? _value.confirmHandler
+          : confirmHandler // ignore: cast_nullable_to_non_nullable
               as ConfirmHandler?,
     ) as $Val);
   }
@@ -872,7 +871,7 @@ abstract class _$$_IntentConfigurationCopyWith<$Res>
       {IntentMode mode,
       List<String>? paymentMethodTypes,
       @JsonKey(includeFromJson: false, includeToJson: false)
-          ConfirmHandler? intentCreationCallback});
+          ConfirmHandler? confirmHandler});
 
   @override
   $IntentModeCopyWith<$Res> get mode;
@@ -891,7 +890,7 @@ class __$$_IntentConfigurationCopyWithImpl<$Res>
   $Res call({
     Object? mode = null,
     Object? paymentMethodTypes = freezed,
-    Object? intentCreationCallback = freezed,
+    Object? confirmHandler = freezed,
   }) {
     return _then(_$_IntentConfiguration(
       mode: null == mode
@@ -902,9 +901,9 @@ class __$$_IntentConfigurationCopyWithImpl<$Res>
           ? _value._paymentMethodTypes
           : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      intentCreationCallback: freezed == intentCreationCallback
-          ? _value.intentCreationCallback
-          : intentCreationCallback // ignore: cast_nullable_to_non_nullable
+      confirmHandler: freezed == confirmHandler
+          ? _value.confirmHandler
+          : confirmHandler // ignore: cast_nullable_to_non_nullable
               as ConfirmHandler?,
     ));
   }
@@ -918,7 +917,7 @@ class _$_IntentConfiguration implements _IntentConfiguration {
       {required this.mode,
       final List<String>? paymentMethodTypes,
       @JsonKey(includeFromJson: false, includeToJson: false)
-          this.intentCreationCallback})
+          this.confirmHandler})
       : _paymentMethodTypes = paymentMethodTypes;
 
   factory _$_IntentConfiguration.fromJson(Map<String, dynamic> json) =>
@@ -950,11 +949,11 @@ class _$_IntentConfiguration implements _IntentConfiguration {
   /// a payment intent or setupintent on your server and call the intent creation callback with its client secret or an error if one occurred.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  final ConfirmHandler? intentCreationCallback;
+  final ConfirmHandler? confirmHandler;
 
   @override
   String toString() {
-    return 'IntentConfiguration(mode: $mode, paymentMethodTypes: $paymentMethodTypes, intentCreationCallback: $intentCreationCallback)';
+    return 'IntentConfiguration(mode: $mode, paymentMethodTypes: $paymentMethodTypes, confirmHandler: $confirmHandler)';
   }
 
   @override
@@ -965,17 +964,14 @@ class _$_IntentConfiguration implements _IntentConfiguration {
             (identical(other.mode, mode) || other.mode == mode) &&
             const DeepCollectionEquality()
                 .equals(other._paymentMethodTypes, _paymentMethodTypes) &&
-            (identical(other.intentCreationCallback, intentCreationCallback) ||
-                other.intentCreationCallback == intentCreationCallback));
+            (identical(other.confirmHandler, confirmHandler) ||
+                other.confirmHandler == confirmHandler));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      mode,
-      const DeepCollectionEquality().hash(_paymentMethodTypes),
-      intentCreationCallback);
+  int get hashCode => Object.hash(runtimeType, mode,
+      const DeepCollectionEquality().hash(_paymentMethodTypes), confirmHandler);
 
   @JsonKey(ignore: true)
   @override
@@ -994,11 +990,10 @@ class _$_IntentConfiguration implements _IntentConfiguration {
 
 abstract class _IntentConfiguration implements IntentConfiguration {
   const factory _IntentConfiguration(
-          {required final IntentMode mode,
-          final List<String>? paymentMethodTypes,
-          @JsonKey(includeFromJson: false, includeToJson: false)
-              final ConfirmHandler? intentCreationCallback}) =
-      _$_IntentConfiguration;
+      {required final IntentMode mode,
+      final List<String>? paymentMethodTypes,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+          final ConfirmHandler? confirmHandler}) = _$_IntentConfiguration;
 
   factory _IntentConfiguration.fromJson(Map<String, dynamic> json) =
       _$_IntentConfiguration.fromJson;
@@ -1018,7 +1013,7 @@ abstract class _IntentConfiguration implements IntentConfiguration {
   /// Called when the customer confirms payment. Your implementation should create
   /// a payment intent or setupintent on your server and call the intent creation callback with its client secret or an error if one occurred.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  ConfirmHandler? get intentCreationCallback;
+  ConfirmHandler? get confirmHandler;
   @override
   @JsonKey(ignore: true)
   _$$_IntentConfigurationCopyWith<_$_IntentConfiguration> get copyWith =>
