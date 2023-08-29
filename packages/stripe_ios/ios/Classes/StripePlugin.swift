@@ -111,6 +111,12 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
             return confirmPlatformPay(call, result: result)
         case "configureOrderTracking":
             return configureOrderTracking(call, result: result)
+        case "addListener":
+            return addListener(call, result: result)
+        case "removeListener":
+            return removeListener(call, result: result)
+        case "intentCreationCallback":
+            return intentCreationCallback(call, result: result)
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -524,6 +530,25 @@ extension  StripePlugin {
             resolver: resolver(for: result),
             rejecter: rejecter(for: result)
         )
+    }
+    
+    func addListener(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        startObserving()
+    }
+    
+    func removeListener(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        stopObserving()
+    }
+    
+    func intentCreationCallback(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        guard let arguments = call.arguments as? FlutterMap,
+              let params = arguments["params"] as? NSDictionary
+        else {
+            result(FlutterError.invalidParams)
+            return
+        }
+        
+        intentCreationCallback(result: params, resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
     
     func dangerouslyUpdateCardDetails(_ call: FlutterMethodCall, result: @escaping FlutterResult) {

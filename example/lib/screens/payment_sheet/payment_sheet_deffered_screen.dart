@@ -96,7 +96,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetDefferedScreen> {
           merchantDisplayName: 'Flutter Stripe Store Demo',
           intentConfiguration: IntentConfiguration(
               mode: IntentMode(
-                currencyCode: 'EUR',
+                currencyCode: 'USD',
                 amount: 1500,
               ),
               confirmHandler: (method, saveFuture) {
