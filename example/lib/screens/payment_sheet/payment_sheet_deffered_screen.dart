@@ -47,7 +47,6 @@ class _PaymentSheetScreenState extends State<PaymentSheetDefferedScreen> {
   }
 
   Future<void> _createIntentAndConfirmToUser(String paymentMethodId) async {
-    print('foo $paymentMethodId');
     final url = Uri.parse('$kApiUrl/payment-intent-for-payment-sheet');
     final response = await http.post(
       url,
@@ -63,7 +62,6 @@ class _PaymentSheetScreenState extends State<PaymentSheetDefferedScreen> {
       throw Exception(body['error']);
     }
 
-    print('blaat $body');
 
     await Stripe.instance.intentCreationCallback(
         IntentCreationCallbackParams(clientSecret: body['clientSecret']));
