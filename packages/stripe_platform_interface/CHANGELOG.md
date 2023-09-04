@@ -1,3 +1,7 @@
+## 9.4.0
+
+ - a
+
 ## 9.3.0
 **Features**
 - Add method for retrieve setupintent.
