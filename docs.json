@@ -6,6 +6,7 @@
         ["Overview", "/"],
         ["Accept a Payment", [
           ["Payment Sheet", "/sheet"],
+          ["Payment sheet (deferred payment)", "/sheet_deferred"],
           ["CardField", "/card_field"],
           ["CardFormField", "/card_field"]
           ]      

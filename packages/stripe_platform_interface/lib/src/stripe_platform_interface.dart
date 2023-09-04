@@ -41,6 +41,11 @@ abstract class StripePlatform extends PlatformInterface {
 
   Future<PaymentIntent> handleNextAction(String paymentIntentClientSecret,
       {String? returnURL});
+
+  Future<SetupIntent> handleNextActionForSetupIntent(
+      String setupIntentClientSecret,
+      {String? returnURL});
+
   Future<PaymentIntent> confirmPayment(
     String paymentIntentClientSecret,
     PaymentMethodParams? params,
@@ -49,11 +54,9 @@ abstract class StripePlatform extends PlatformInterface {
     PaymentMethodOptions? options,
   );
 
-  @Deprecated('This method is deprecated use [isPlatformPaySupported] instead')
-  Future<bool> isApplePaySupported() async => false;
-
   /// Configure the payment sheet using [SetupPaymentSheetParameters] as config.
-  Future<PaymentSheetPaymentOption?> initPaymentSheet(SetupPaymentSheetParameters params);
+  Future<PaymentSheetPaymentOption?> initPaymentSheet(
+      SetupPaymentSheetParameters params);
 
   /// Display the payment sheet.
   Future<PaymentSheetPaymentOption?> presentPaymentSheet({
@@ -67,17 +70,8 @@ abstract class StripePlatform extends PlatformInterface {
   Future<void> confirmPaymentSheetPayment();
 
   Future<void> openApplePaySetup();
-  Future<void> presentApplePay(
-    ApplePayPresentParams params,
-    OnDidSetShippingContact? onDidSetShippingContact,
-    OnDidSetShippingMethod? onDidSetShippingMethod,
-  );
-  Future<void> confirmApplePayPayment(String clientSecret);
+
   Future<TokenData> createApplePayToken(Map<String, dynamic> payment);
-  Future<void> updateApplePaySummaryItems({
-    required List<ApplePayCartSummaryItem> summaryItems,
-    List<ApplePayErrorAddressField>? errorAddressFields,
-  });
 
   Future<bool> handleURLCallback(String url);
 
@@ -160,6 +154,10 @@ abstract class StripePlatform extends PlatformInterface {
   /// or storing full card details! See the docs for
   /// details: https://stripe.com/docs/security/guide#validating-pci-compliance
   Future<void> dangerouslyUpdateCardDetails(CardDetails card);
+
+  /// Method used to confirm to the user that the intent is created successfull
+  /// or not successfull when using a defferred payment method.
+  Future<void> intentCreationCallback(IntentCreationCallbackParams params);
 
   Widget buildCard({
     Key? key,

@@ -473,10 +473,10 @@ class _MethodChannelCardFormFieldState
     setState(() {});
     if (!isFocused) {
       blur();
+      focus();
+
       return;
     }
-
-    focus();
   }
 
   @override

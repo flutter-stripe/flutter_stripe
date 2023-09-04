@@ -99,8 +99,8 @@ public class ReadableMap extends WritableMap {
         }
     }
 
-    public float getDouble(String key) {
-        return (float) map.optDouble(key);
+    public double getDouble(String key) {
+        return map.optDouble(key);
     }
 
     @Nullable

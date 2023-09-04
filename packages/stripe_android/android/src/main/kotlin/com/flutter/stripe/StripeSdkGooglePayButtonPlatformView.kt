@@ -28,9 +28,6 @@ class StripeSdkGooglePayButtonPlatformView(
     )
 
     init {
-        if (creationParams?.containsKey("buttonType") == true) {
-            googlePayButtonManager.buttonType(payButton, creationParams["buttonType"] as String)
-        }
         if (creationParams?.containsKey("type") == true) {
             googlePayButtonManager.type(payButton, creationParams["type"] as Int)
         }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stripe_example/screens/checkout/checkout_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_element/payment_element.dart';
+import 'package:stripe_example/screens/payment_sheet/payment_sheet_deffered_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen_custom_flow.dart';
 import 'package:stripe_example/screens/regional_payment_methods/ali_pay_screen.dart';
@@ -99,6 +100,11 @@ class Example extends StatelessWidget {
         Example(
           title: 'Single Step',
           builder: (context) => PaymentSheetScreen(),
+          platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+        ),
+        Example(
+          title: 'Single Step (deffered payment)',
+          builder: (context) => PaymentSheetDefferedScreen(),
           platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
         ),
         Example(

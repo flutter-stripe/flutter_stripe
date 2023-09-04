@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'address.dart';
+import 'capture_method.dart';
 import 'next_action.dart';
 import 'payment_methods.dart';
 
@@ -69,15 +70,6 @@ class PaymentIntent with _$PaymentIntent {
 
   factory PaymentIntent.fromJson(Map<String, dynamic> json) =>
       _$PaymentIntentFromJson(json);
-}
-
-/// Defines how the money will be captured from the customer's account.
-enum CaptureMethod {
-  /// Reserve the funds but the customer has to authorize the payment.
-  Manual,
-
-  /// Funds are automatically captured by stripe
-  Automatic,
 }
 
 /// Defines how the payment will be confirmed.

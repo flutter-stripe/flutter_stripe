@@ -14,6 +14,10 @@ _$_SetupParameters _$$_SetupParametersFromJson(Map<String, dynamic> json) =>
       customerEphemeralKeySecret: json['customerEphemeralKeySecret'] as String?,
       paymentIntentClientSecret: json['paymentIntentClientSecret'] as String?,
       setupIntentClientSecret: json['setupIntentClientSecret'] as String?,
+      intentConfiguration: json['intentConfiguration'] == null
+          ? null
+          : IntentConfiguration.fromJson(
+              json['intentConfiguration'] as Map<String, dynamic>),
       merchantDisplayName: json['merchantDisplayName'] as String?,
       applePay: json['applePay'] == null
           ? null
@@ -51,6 +55,7 @@ Map<String, dynamic> _$$_SetupParametersToJson(_$_SetupParameters instance) =>
       'customerEphemeralKeySecret': instance.customerEphemeralKeySecret,
       'paymentIntentClientSecret': instance.paymentIntentClientSecret,
       'setupIntentClientSecret': instance.setupIntentClientSecret,
+      'intentConfiguration': instance.intentConfiguration?.toJson(),
       'merchantDisplayName': instance.merchantDisplayName,
       'applePay': instance.applePay?.toJson(),
       'style': UserInterfaceStyleKey.toJson(instance.style),
@@ -67,6 +72,51 @@ const _$ThemeModeEnumMap = {
   ThemeMode.system: 'system',
   ThemeMode.light: 'light',
   ThemeMode.dark: 'dark',
+};
+
+_$_IntentConfiguration _$$_IntentConfigurationFromJson(
+        Map<String, dynamic> json) =>
+    _$_IntentConfiguration(
+      mode: IntentMode.fromJson(json['mode'] as Map<String, dynamic>),
+      paymentMethodTypes: (json['paymentMethodTypes'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+    );
+
+Map<String, dynamic> _$$_IntentConfigurationToJson(
+        _$_IntentConfiguration instance) =>
+    <String, dynamic>{
+      'mode': instance.mode.toJson(),
+      'paymentMethodTypes': instance.paymentMethodTypes,
+    };
+
+_$_IntentMode _$$_IntentModeFromJson(Map<String, dynamic> json) =>
+    _$_IntentMode(
+      currencyCode: json['currencyCode'] as String,
+      amount: json['amount'] as int,
+      setupFutureUsage: $enumDecodeNullable(
+          _$IntentFutureUsageEnumMap, json['setupFutureUsage']),
+      captureMethod:
+          $enumDecodeNullable(_$CaptureMethodEnumMap, json['captureMethod']),
+    );
+
+Map<String, dynamic> _$$_IntentModeToJson(_$_IntentMode instance) =>
+    <String, dynamic>{
+      'currencyCode': instance.currencyCode,
+      'amount': instance.amount,
+      'setupFutureUsage': _$IntentFutureUsageEnumMap[instance.setupFutureUsage],
+      'captureMethod': _$CaptureMethodEnumMap[instance.captureMethod],
+    };
+
+const _$IntentFutureUsageEnumMap = {
+  IntentFutureUsage.OffSession: 'OffSession',
+  IntentFutureUsage.OnSession: 'OnSession',
+};
+
+const _$CaptureMethodEnumMap = {
+  CaptureMethod.Manual: 'Manual',
+  CaptureMethod.Automatic: 'Automatic',
+  CaptureMethod.AutomaticAsync: 'AutomaticAsync',
 };
 
 _$_PaymentSheetApplePay _$$_PaymentSheetApplePayFromJson(

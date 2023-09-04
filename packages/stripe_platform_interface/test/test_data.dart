@@ -1,8 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:stripe_platform_interface/src/models/create_token_data.dart';
-import 'package:stripe_platform_interface/src/models/payment_intents.dart';
-import 'package:stripe_platform_interface/src/models/payment_methods.dart';
-import 'package:stripe_platform_interface/src/models/setup_intent.dart';
+import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 extension PaymentMethodTestInstance on PaymentMethod {
   static PaymentMethod create(String id) => PaymentMethod(

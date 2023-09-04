@@ -68,6 +68,7 @@ const _$PaymentIntentsStatusEnumMap = {
 const _$CaptureMethodEnumMap = {
   CaptureMethod.Manual: 'Manual',
   CaptureMethod.Automatic: 'Automatic',
+  CaptureMethod.AutomaticAsync: 'AutomaticAsync',
 };
 
 const _$ConfirmationMethodEnumMap = {
