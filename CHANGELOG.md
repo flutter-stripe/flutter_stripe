@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe_web` - `v4.4.0`](#flutter_stripe_web---v440)
+
+---
+
+#### `flutter_stripe_web` - `v4.4.0`
+
+ - Make sure Stripe web is compatible with Stripe platform interface 9.4.0
+
+
+## 2023-09-04
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_platform_interface` - `v9.4.0`](#stripe_platform_interface---v940)
  - [`flutter_stripe` - `v9.3.1`](#flutter_stripe---v931)
  - [`flutter_stripe_web` - `v4.3.1`](#flutter_stripe_web---v431)
