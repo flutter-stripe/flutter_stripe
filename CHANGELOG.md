@@ -15,6 +15,34 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`stripe_ios` - `v9.4.0`](#stripe_ios---v940)
+ - [`flutter_stripe` - `v9.3.1`](#flutter_stripe---v931)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v9.3.1`
+
+---
+
+#### `stripe_ios` - `v9.4.0`
+
+ - aa
+
+
+## 2023-09-04
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`flutter_stripe_web` - `v4.4.0`](#flutter_stripe_web---v440)
 
 ---
