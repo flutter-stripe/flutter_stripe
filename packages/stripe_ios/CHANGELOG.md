@@ -1,3 +1,15 @@
+## 9.4.0
+
+**Breaking changes**
+- Removed deprecated methods `isApplePaySupported`, `checkApplePaySupport`, `presentApplePay`, `confirmApplePayPayment`.
+
+**Features**
+ - Added support for deffered payments in the payment sheet for more info see [docs](https://docs.page/flutter-stripe/flutter_stripe/sheet_deferred).
+ - Sync with Stripe [0.29.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.29.0) and [0.30.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.30.0).
+
+ **Fixes**
+ - Fixed #1376 focus issue on iOS.
+
 ## 9.3.1
 - Fix #1325 Paymentsheet conversion issue
 
