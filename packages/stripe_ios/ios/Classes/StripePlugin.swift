@@ -180,7 +180,7 @@ extension  StripePlugin {
             result(FlutterError.invalidParams)
             return
         }
-        if (params.object(forKey: "intentConfiguration") != nil) {
+        if (params.object(forKey: "intentConfiguration") != nil && params.object(forKey: "intentConfiguration") is NSDictionary) {
             let mutable = (params["intentConfiguration"] as! NSDictionary).mutableCopy() as! NSMutableDictionary
             mutable["confirmHandler"] = true;
             let adjusted = params.mutableCopy() as! NSMutableDictionary
