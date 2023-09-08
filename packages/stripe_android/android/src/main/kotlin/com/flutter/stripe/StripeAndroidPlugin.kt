@@ -2,11 +2,11 @@ package com.flutter.stripe
 
 import android.annotation.SuppressLint
 import androidx.annotation.NonNull
-import com.facebook.react.bridge.Promise
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.uimanager.DisplayMetricsHolder
-import com.facebook.react.uimanager.ThemedReactContext
+import com.facebook.react.bridge.PromiseStripe
+import com.facebook.react.bridge.ReactApplicationContextStripe
+import com.facebook.react.bridge.ReadableMapStripe
+import com.facebook.react.uimanager.DisplayMetricsHolderStripe
+import com.facebook.react.uimanager.ThemedReactContextStripe
 import com.google.android.material.internal.ThemeEnforcement
 import com.reactnativestripesdk.*
 import com.reactnativestripesdk.pushprovisioning.AddToWalletButtonManager
@@ -50,7 +50,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-        DisplayMetricsHolder.initDisplayMetricsIfNotInitialized(flutterPluginBinding.applicationContext)
+        DisplayMetricsHolderStripe.initDisplayMetricsIfNotInitialized(flutterPluginBinding.applicationContext)
 
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter.stripe/payments", JSONMethodCodec.INSTANCE)
         channel.setMethodCallHandler(this)
@@ -86,67 +86,67 @@ If you continue to have trouble, follow this discussion to get some support http
         when (call.method) {
             "initialise" -> {
                 stripeSdk.initialise(
-                    params = ReadableMap(call.arguments as JSONObject),
-                    promise = Promise(result),
+                    params = ReadableMapStripe(call.arguments as JSONObject),
+                    promise = PromiseStripe(result),
                 )
             }
             "createPaymentMethod" -> stripeSdk.createPaymentMethod(
                 data = call.requiredArgument("data"),
                 options = call.requiredArgument("options"),
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
             "createTokenForCVCUpdate" -> stripeSdk.createTokenForCVCUpdate(
                 cvc = call.requiredArgument("cvc"),
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
             "confirmSetupIntent" -> stripeSdk.confirmSetupIntent(
                 setupIntentClientSecret = call.requiredArgument("setupIntentClientSecret"),
                 params = call.requiredArgument("params"),
                 options = call.requiredArgument("options"),
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
             "handleNextAction" -> stripeSdk.handleNextAction(
                 paymentIntentClientSecret = call.requiredArgument("paymentIntentClientSecret"),
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
             "handleNextActionForSetup" -> stripeSdk.handleNextActionForSetup(
                 setupIntentClientSecret = call.requiredArgument("setupIntentClientSecret"),
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
 
             "confirmPayment" -> stripeSdk.confirmPayment(
                 paymentIntentClientSecret = call.requiredArgument("paymentIntentClientSecret"),
                 params = call.optionalArgument("params"),
                 options = call.requiredArgument("options"),
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
             "retrievePaymentIntent" -> stripeSdk.retrievePaymentIntent(
                 clientSecret = call.requiredArgument("clientSecret"),
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
             "retrieveSetupIntent" -> stripeSdk.retrieveSetupIntent(
                     clientSecret = call.requiredArgument("clientSecret"),
-                    promise = Promise(result)
+                    promise = PromiseStripe(result)
             )
             "initPaymentSheet" -> stripeSdk.initPaymentSheet(
                 params = call.requiredArgument("params"),
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
             "presentPaymentSheet" -> stripeSdk.presentPaymentSheet(
                 options = call.requiredArgument("options"),
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
             "confirmPaymentSheetPayment" -> stripeSdk.confirmPaymentSheetPayment(
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
             "createToken" -> stripeSdk.createToken(
-                promise = Promise(result),
+                promise = PromiseStripe(result),
                 params = call.requiredArgument("params")
             )
             "dangerouslyUpdateCardDetails" -> {
                 stripeSdkCardViewManager.setCardDetails(
                     value = call.requiredArgument("params"),
-                    reactContext = ThemedReactContext(stripeSdk.reactContext, channel) { stripeSdk }
+                    reactContext = ThemedReactContextStripe(stripeSdk.reactContext, channel) { stripeSdk }
                 )
                 result.success(null)
             }
@@ -154,51 +154,51 @@ If you continue to have trouble, follow this discussion to get some support http
                 isPaymentIntent = call.requiredArgument("isPaymentIntent"),
                 clientSecret = call.requiredArgument("clientSecret"),
                 params = call.requiredArgument("params"),
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
             "verifyMicrodeposits" -> stripeSdk.verifyMicrodeposits(
                 isPaymentIntent = call.requiredArgument("isPaymentIntent"),
                 clientSecret = call.requiredArgument("clientSecret"),
                 params = call.requiredArgument("params"),
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
             "isCardInWallet" -> stripeSdk.isCardInWallet(
                 params = call.requiredArgument("params"),
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
             "canAddCardToWallet" -> stripeSdk.canAddCardToWallet(
                 params = call.requiredArgument("params"),
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
             "collectBankAccountToken" -> stripeSdk.collectBankAccountToken(
                 clientSecret = call.requiredArgument("clientSecret"),
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
             "collectFinancialConnectionsAccounts" -> stripeSdk.collectFinancialConnectionsAccounts(
                 clientSecret = call.requiredArgument("clientSecret"),
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
             "resetPaymentSheetCustomer" -> stripeSdk.resetPaymentSheetCustomer(
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
             "intentCreationCallback" -> stripeSdk.intentCreationCallback(
                 params = call.requiredArgument("params"),
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
             "createPlatformPayPaymentMethod" -> stripeSdk.createPlatformPayPaymentMethod(
                 params = call.requiredArgument("params"),
                 usesDeprecatedTokenFlow = call.requiredArgument("usesDeprecatedTokenFlow"),
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
             "isPlatformPaySupported" -> stripeSdk.isPlatformPaySupported(
                 params = call.optionalArgument("params"),
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
             "confirmPlatformPay" -> stripeSdk.confirmPlatformPay(
                 clientSecret = call.requiredArgument("clientSecret"),
                 params = call.requiredArgument("params"),
                 isPaymentIntent = call.requiredArgument("isPaymentIntent"),
-                promise = Promise(result)
+                promise = PromiseStripe(result)
             )
             "addListener" -> {
                 stripeSdk.addListener(eventName = call.requiredArgument("eventName"))
@@ -229,7 +229,7 @@ If you continue to have trouble, follow this discussion to get some support http
                     "Your theme isn't set to use Theme.AppCompat or Theme.MaterialComponents."
             }
             else -> {
-                val context = ReactApplicationContext(binding, channel) { stripeSdk }
+                val context = ReactApplicationContextStripe(binding, channel) { stripeSdk }
                 stripeSdk = StripeSdkModule(context)
             }
         }
@@ -249,15 +249,15 @@ private inline fun <reified T> MethodCall.optionalArgument(key: String): T? {
     val value = argument<T>(key)
     if (value == JSONObject.NULL)
         return null
-    if (T::class.java == ReadableMap::class.java) {
-        return ReadableMap(argument<JSONObject>(key) ?: JSONObject()) as T
+    if (T::class.java == ReadableMapStripe::class.java) {
+        return ReadableMapStripe(argument<JSONObject>(key) ?: JSONObject()) as T
     }
     return value
 }
 
 private inline fun <reified T> MethodCall.requiredArgument(key: String): T {
-    if (T::class.java == ReadableMap::class.java) {
-        return ReadableMap(argument<JSONObject>(key) ?: error("Required parameter $key not set")) as T
+    if (T::class.java == ReadableMapStripe::class.java) {
+        return ReadableMapStripe(argument<JSONObject>(key) ?: error("Required parameter $key not set")) as T
     }
     return argument<T>(key) ?: error("Required parameter $key not set")
 }

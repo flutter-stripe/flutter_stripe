@@ -37,10 +37,10 @@ class CardField extends StatefulWidget {
   /// Decoration related to the input fields.
   final InputDecoration? decoration;
 
-  /// Callback that will be executed when a specific field gets focus.
+  /// CallbackStripe that will be executed when a specific field gets focus.
   final CardFocusCallback? onFocus;
 
-  /// Callback that will be executed when the card information changes.
+  /// CallbackStripe that will be executed when the card information changes.
   final CardChangedCallback? onCardChanged;
 
   /// Textstyle of the card input fields.

@@ -3,7 +3,7 @@ package com.reactnativestripesdk
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import com.facebook.react.bridge.ReactContext
+import com.facebook.react.bridge.ReactContextStripe
 import com.reactnativestripesdk.utils.PaymentSheetAppearanceException
 import com.stripe.android.paymentsheet.PaymentSheet
 

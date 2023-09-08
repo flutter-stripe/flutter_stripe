@@ -1,67 +1,67 @@
 package com.reactnativestripesdk.addresssheet
 
-import com.facebook.react.bridge.ReadableArray
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.common.MapBuilder
-import com.facebook.react.uimanager.SimpleViewManager
-import com.facebook.react.uimanager.ThemedReactContext
-import com.facebook.react.uimanager.annotations.ReactProp
+import com.facebook.react.bridge.ReadableArrayStripe
+import com.facebook.react.bridge.ReadableMapStripe
+import com.facebook.react.common.MapBuilderStripe
+import com.facebook.react.uimanager.SimpleViewManagerStripe
+import com.facebook.react.uimanager.ThemedReactContextStripe
+import com.facebook.react.uimanager.annotations.ReactPropStripe
 
-class AddressSheetViewManager : SimpleViewManager<AddressSheetView>() {
+class AddressSheetViewManager : SimpleViewManagerStripe<AddressSheetView>() {
   override fun getName() = "AddressSheetView"
 
   override fun getExportedCustomDirectEventTypeConstants(): MutableMap<String, Any> {
-    return MapBuilder.of(
-      AddressSheetEvent.ON_SUBMIT, MapBuilder.of("registrationName", "onSubmitAction"),
-      AddressSheetEvent.ON_ERROR, MapBuilder.of("registrationName", "onErrorAction"))
+    return MapBuilderStripe.of(
+      AddressSheetEvent.ON_SUBMIT, MapBuilderStripe.of("registrationName", "onSubmitAction"),
+      AddressSheetEvent.ON_ERROR, MapBuilderStripe.of("registrationName", "onErrorAction"))
   }
 
-  @ReactProp(name = "visible")
+  @ReactPropStripe(name = "visible")
   fun setVisible(view: AddressSheetView, visibility: Boolean) {
     view.setVisible(visibility)
   }
 
-  @ReactProp(name = "appearance")
-  fun setAppearance(view: AddressSheetView, appearance: ReadableMap) {
+  @ReactPropStripe(name = "appearance")
+  fun setAppearance(view: AddressSheetView, appearance: ReadableMapStripe) {
     view.setAppearance(appearance)
   }
 
-  @ReactProp(name = "defaultValues")
-  fun setDefaultValues(view: AddressSheetView, defaults: ReadableMap) {
+  @ReactPropStripe(name = "defaultValues")
+  fun setDefaultValues(view: AddressSheetView, defaults: ReadableMapStripe) {
     view.setDefaultValues(defaults)
   }
 
-  @ReactProp(name = "additionalFields")
-  fun setAdditionalFields(view: AddressSheetView, fields: ReadableMap) {
+  @ReactPropStripe(name = "additionalFields")
+  fun setAdditionalFields(view: AddressSheetView, fields: ReadableMapStripe) {
     view.setAdditionalFields(fields)
   }
 
-  @ReactProp(name = "allowedCountries")
-  fun setAllowedCountries(view: AddressSheetView, countries: ReadableArray) {
+  @ReactPropStripe(name = "allowedCountries")
+  fun setAllowedCountries(view: AddressSheetView, countries: ReadableArrayStripe) {
     view.setAllowedCountries(countries.toArrayList().filterIsInstance<String>())
   }
 
-  @ReactProp(name = "autocompleteCountries")
-  fun setAutocompleteCountries(view: AddressSheetView, countries: ReadableArray) {
+  @ReactPropStripe(name = "autocompleteCountries")
+  fun setAutocompleteCountries(view: AddressSheetView, countries: ReadableArrayStripe) {
     view.setAutocompleteCountries(countries.toArrayList().filterIsInstance<String>())
   }
 
-  @ReactProp(name = "primaryButtonTitle")
+  @ReactPropStripe(name = "primaryButtonTitle")
   fun setPrimaryButtonTitle(view: AddressSheetView, title: String) {
     view.setPrimaryButtonTitle(title)
   }
 
-  @ReactProp(name = "sheetTitle")
+  @ReactPropStripe(name = "sheetTitle")
   fun setSheetTitle(view: AddressSheetView, title: String) {
     view.setSheetTitle(title)
   }
 
-  @ReactProp(name = "googlePlacesApiKey")
+  @ReactPropStripe(name = "googlePlacesApiKey")
   fun setGooglePlacesApiKey(view: AddressSheetView, key: String) {
     view.setGooglePlacesApiKey(key)
   }
 
-  override fun createViewInstance(reactContext: ThemedReactContext): AddressSheetView {
+  override fun createViewInstance(reactContext: ThemedReactContextStripe): AddressSheetView {
     return AddressSheetView(reactContext)
   }
 }

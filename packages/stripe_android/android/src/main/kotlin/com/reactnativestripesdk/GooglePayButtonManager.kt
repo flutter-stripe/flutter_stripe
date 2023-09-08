@@ -1,10 +1,10 @@
 package com.reactnativestripesdk
 
-import com.facebook.react.uimanager.SimpleViewManager
-import com.facebook.react.uimanager.ThemedReactContext
-import com.facebook.react.uimanager.annotations.ReactProp
+import com.facebook.react.uimanager.SimpleViewManagerStripe
+import com.facebook.react.uimanager.ThemedReactContextStripe
+import com.facebook.react.uimanager.annotations.ReactPropStripe
 
-class GooglePayButtonManager : SimpleViewManager<GooglePayButtonView?>() {
+class GooglePayButtonManager : SimpleViewManagerStripe<GooglePayButtonView?>() {
   override fun getName(): String {
     return REACT_CLASS
   }
@@ -15,12 +15,12 @@ class GooglePayButtonManager : SimpleViewManager<GooglePayButtonView?>() {
     view.initialize()
   }
 
-  @ReactProp(name = "type")
+  @ReactPropStripe(name = "type")
   fun type(view: GooglePayButtonView, buttonType: Int) {
     view.setType(buttonType)
   }
 
-  override fun createViewInstance(reactContext: ThemedReactContext): GooglePayButtonView {
+  override fun createViewInstance(reactContext: ThemedReactContextStripe): GooglePayButtonView {
     return GooglePayButtonView(reactContext)
   }
 

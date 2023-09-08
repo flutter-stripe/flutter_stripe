@@ -28,8 +28,8 @@ import java.io.ByteArrayOutputStream
 import kotlin.Exception
 
 class PaymentSheetFragment(
-  private val context: ReactApplicationContext,
-  private val initPromise: Promise
+  private val context: ReactApplicationContextStripe,
+  private val initPromise: PromiseStripe
 ) : Fragment() {
   private var paymentSheet: PaymentSheet? = null
   private var flowController: PaymentSheet.FlowController? = null
@@ -37,10 +37,10 @@ class PaymentSheetFragment(
   private var setupIntentClientSecret: String? = null
   private var intentConfiguration: PaymentSheet.IntentConfiguration? = null
   private lateinit var paymentSheetConfiguration: PaymentSheet.Configuration
-  private var confirmPromise: Promise? = null
-  private var presentPromise: Promise? = null
+  private var confirmPromise: PromiseStripe? = null
+  private var presentPromise: PromiseStripe? = null
   private var paymentSheetTimedOut = false
-  internal val paymentSheetIntentCreationCallback = CompletableDeferred<ReadableMap>()
+  internal val paymentSheetIntentCreationCallback = CompletableDeferred<ReadableMapStripe>()
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -89,7 +89,7 @@ class PaymentSheetFragment(
       val result = paymentOption?.let {
         val bitmap = getBitmapFromVectorDrawable(context, it.drawableResourceId)
         val imageString = getBase64FromBitmap(bitmap)
-        val option: WritableMap = WritableNativeMap()
+        val option: WritableMapStripe = WritableNativeMapStripe()
         option.putString("label", it.label)
         option.putString("image", imageString)
         createResult("paymentOption", option)
@@ -117,7 +117,7 @@ class PaymentSheetFragment(
             resolvePaymentResult(createError(PaymentSheetErrorType.Failed.toString(), paymentResult.error))
           }
           is PaymentSheetResult.Completed -> {
-            resolvePaymentResult(WritableNativeMap())
+            resolvePaymentResult(WritableNativeMapStripe())
             // Remove the fragment now, we can be sure it won't be needed again if an intent is successful
             removeFragment(context)
             paymentSheet = null
@@ -135,7 +135,7 @@ class PaymentSheetFragment(
           displayMessage = "An unexpected error occurred"
           )
       }
-      val params = Arguments.createMap().apply {
+      val params = ArgumentsStripe.createMap().apply {
         putMap("paymentMethod", mapFromPaymentMethod(paymentMethod))
         putBoolean("shouldSavePaymentMethod", shouldSavePaymentMethod)
       }
@@ -225,11 +225,11 @@ class PaymentSheetFragment(
           callback = paymentResultCallback
         )
       }
-      initPromise.resolve(WritableNativeMap())
+      initPromise.resolve(WritableNativeMapStripe())
     }
   }
 
-  fun present(promise: Promise) {
+  fun present(promise: PromiseStripe) {
     this.presentPromise = promise
     if(paymentSheet != null) {
       if (!paymentIntentClientSecret.isNullOrEmpty()) {
@@ -249,7 +249,7 @@ class PaymentSheetFragment(
     }
   }
 
-  fun presentWithTimeout(timeout: Long, promise: Promise) {
+  fun presentWithTimeout(timeout: Long, promise: PromiseStripe) {
     var paymentSheetActivity: Activity? = null
 
     val activityLifecycleCallbacks = object : Application.ActivityLifecycleCallbacks {
@@ -285,7 +285,7 @@ class PaymentSheetFragment(
     this.present(promise)
   }
 
-  fun confirmPayment(promise: Promise) {
+  fun confirmPayment(promise: PromiseStripe) {
     this.confirmPromise = promise
     flowController?.confirm()
   }
@@ -295,12 +295,12 @@ class PaymentSheetFragment(
       val result = flowController?.getPaymentOption()?.let {
         val bitmap = getBitmapFromVectorDrawable(context, it.drawableResourceId)
         val imageString = getBase64FromBitmap(bitmap)
-        val option: WritableMap = WritableNativeMap()
+        val option: WritableMapStripe = WritableNativeMapStripe()
         option.putString("label", it.label)
         option.putString("image", imageString)
         createResult("paymentOption", option)
       } ?: run {
-        WritableNativeMap()
+        WritableNativeMapStripe()
       }
       initPromise.resolve(result)
     }
@@ -329,7 +329,7 @@ class PaymentSheetFragment(
     }
   }
 
-  private fun resolvePaymentResult(map: WritableMap) {
+  private fun resolvePaymentResult(map: WritableMapStripe) {
     confirmPromise?.let {
       it.resolve(map)
       confirmPromise = null
@@ -341,7 +341,7 @@ class PaymentSheetFragment(
   companion object {
     internal const val TAG = "payment_sheet_launch_fragment"
 
-    internal fun createMissingInitError(): WritableMap {
+    internal fun createMissingInitError(): WritableMapStripe {
       return createError(PaymentSheetErrorType.Failed.toString(), "No payment sheet has been initialized yet. You must call `initPaymentSheet` before `presentPaymentSheet`.")
     }
 

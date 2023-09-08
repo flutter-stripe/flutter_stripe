@@ -8,15 +8,15 @@ import com.stripe.android.model.*
 import com.stripe.android.model.StripeIntent.NextActionType
 import com.stripe.android.model.StripeIntent.NextActionData
 
-internal fun createResult(key: String, value: WritableMap): WritableMap {
-  val map = WritableNativeMap()
+internal fun createResult(key: String, value: WritableMapStripe): WritableMapStripe {
+  val map = WritableNativeMapStripe()
   map.putMap(key, value)
   return map
 }
 
-internal fun createCanAddCardResult(canAddCard: Boolean, status: String? = null, token: WritableMap? = null): WritableNativeMap {
-  val result = WritableNativeMap()
-  val details = WritableNativeMap()
+internal fun createCanAddCardResult(canAddCard: Boolean, status: String? = null, token: WritableMapStripe? = null): WritableNativeMapStripe {
+  val result = WritableNativeMapStripe()
+  val details = WritableNativeMapStripe()
   result.putBoolean("canAddCard", canAddCard)
   if (status != null) {
     details.putString("status", status)
@@ -65,9 +65,9 @@ internal fun mapToReturnURL(urlScheme: String?): String? {
   return null
 }
 
-internal fun mapIntentShipping(shipping: PaymentIntent.Shipping): WritableMap {
-  val map: WritableMap = WritableNativeMap()
-  val address: WritableMap = WritableNativeMap()
+internal fun mapIntentShipping(shipping: PaymentIntent.Shipping): WritableMapStripe {
+  val map: WritableMapStripe = WritableNativeMapStripe()
+  val address: WritableMapStripe = WritableNativeMapStripe()
 
   address.putString("city", shipping.address.city)
   address.putString("country", shipping.address.country)
@@ -158,9 +158,9 @@ internal fun mapToPaymentMethodType(type: String?): PaymentMethod.Type? {
   }
 }
 
-internal fun mapFromBillingDetails(billingDatails: PaymentMethod.BillingDetails?): WritableMap {
-  val details: WritableMap = WritableNativeMap()
-  val address: WritableMap = WritableNativeMap()
+internal fun mapFromBillingDetails(billingDatails: PaymentMethod.BillingDetails?): WritableMapStripe {
+  val details: WritableMapStripe = WritableNativeMapStripe()
+  val address: WritableMapStripe = WritableNativeMapStripe()
 
   address.putString("country", billingDatails?.address?.country)
   address.putString("city", billingDatails?.address?.city)
@@ -216,12 +216,12 @@ internal fun mapFromBankAccountStatus(status: BankAccount.Status?): String {
   }
 }
 
-internal fun mapFromBankAccount(bankAccount: BankAccount?): WritableMap? {
+internal fun mapFromBankAccount(bankAccount: BankAccount?): WritableMapStripe? {
   if (bankAccount == null) {
     return null
   }
 
-  val bankAccountMap: WritableMap = WritableNativeMap()
+  val bankAccountMap: WritableMapStripe = WritableNativeMapStripe()
   bankAccountMap.putString("id", bankAccount.id)
   bankAccountMap.putString("bankName", bankAccount.bankName)
   bankAccountMap.putString("accountHolderName", bankAccount.accountHolderName)
@@ -268,14 +268,14 @@ internal fun mapFromUSBankAccountType(type: PaymentMethod.USBankAccount.USBankAc
   }
 }
 
-internal fun mapFromCard(card: Card?): WritableMap? {
-  val cardMap: WritableMap = WritableNativeMap()
+internal fun mapFromCard(card: Card?): WritableMapStripe? {
+  val cardMap: WritableMapStripe = WritableNativeMapStripe()
 
   if (card == null) {
     return null
   }
 
-  val address: WritableMap = WritableNativeMap()
+  val address: WritableMapStripe = WritableNativeMapStripe()
 
   cardMap.putString("country", card.country)
   cardMap.putString("brand", mapCardBrand(card.brand))
@@ -311,8 +311,8 @@ internal fun mapFromCard(card: Card?): WritableMap? {
 }
 
 
-internal fun mapFromToken(token: Token): WritableMap {
-  val tokenMap: WritableMap = WritableNativeMap()
+internal fun mapFromToken(token: Token): WritableMapStripe {
+  val tokenMap: WritableMapStripe = WritableNativeMapStripe()
   tokenMap.putString("id", token.id)
   tokenMap.putString("created", token.created.time.toString())
   tokenMap.putString("type", mapTokenType(token.type))
@@ -324,15 +324,15 @@ internal fun mapFromToken(token: Token): WritableMap {
   return tokenMap
 }
 
-internal fun mapFromPaymentMethod(paymentMethod: PaymentMethod): WritableMap {
-  val pm: WritableMap = WritableNativeMap()
+internal fun mapFromPaymentMethod(paymentMethod: PaymentMethod): WritableMapStripe {
+  val pm: WritableMapStripe = WritableNativeMapStripe()
 
   pm.putString("id", paymentMethod.id)
   pm.putString("paymentMethodType", mapPaymentMethodType(paymentMethod.type))
   pm.putBoolean("livemode", paymentMethod.liveMode)
   pm.putString("customerId", paymentMethod.customerId)
   pm.putMap("billingDetails", mapFromBillingDetails(paymentMethod.billingDetails))
-  pm.putMap("Card", WritableNativeMap().also {
+  pm.putMap("Card", WritableNativeMapStripe().also {
     it.putString("brand", mapCardBrand(paymentMethod.card?.brand))
     it.putString("country", paymentMethod.card?.country)
     paymentMethod.card?.expiryYear?.let { year ->
@@ -345,43 +345,43 @@ internal fun mapFromPaymentMethod(paymentMethod: PaymentMethod): WritableMap {
     it.putString("last4", paymentMethod.card?.last4)
     it.putString("fingerprint", paymentMethod.card?.fingerprint)
     it.putString("preferredNetwork", paymentMethod.card?.networks?.preferred)
-    it.putArray("availableNetworks", paymentMethod.card?.networks?.available?.toList() as? ReadableArray)
-    it.putMap("threeDSecureUsage", WritableNativeMap().also { threeDSecureUsageMap ->
+    it.putArray("availableNetworks", paymentMethod.card?.networks?.available?.toList() as? ReadableArrayStripe)
+    it.putMap("threeDSecureUsage", WritableNativeMapStripe().also { threeDSecureUsageMap ->
       threeDSecureUsageMap.putBoolean("isSupported", paymentMethod.card?.threeDSecureUsage?.isSupported ?: false)
     })
   })
-  pm.putMap("SepaDebit", WritableNativeMap().also {
+  pm.putMap("SepaDebit", WritableNativeMapStripe().also {
     it.putString("bankCode", paymentMethod.sepaDebit?.bankCode)
     it.putString("country", paymentMethod.sepaDebit?.country)
     it.putString("fingerprint", paymentMethod.sepaDebit?.fingerprint)
     it.putString("last4", paymentMethod.sepaDebit?.branchCode)
   })
-  pm.putMap("BacsDebit", WritableNativeMap().also {
+  pm.putMap("BacsDebit", WritableNativeMapStripe().also {
     it.putString("fingerprint", paymentMethod.bacsDebit?.fingerprint)
     it.putString("last4", paymentMethod.bacsDebit?.last4)
     it.putString("sortCode", paymentMethod.bacsDebit?.sortCode)
   })
   pm.putMap("AuBecsDebit",
-    WritableNativeMap().also {
+    WritableNativeMapStripe().also {
       it.putString("bsbNumber", paymentMethod.bacsDebit?.sortCode)
       it.putString("fingerprint", paymentMethod.bacsDebit?.fingerprint)
       it.putString("last4", paymentMethod.bacsDebit?.last4)
     })
-  pm.putMap("Sofort", WritableNativeMap().also {
+  pm.putMap("Sofort", WritableNativeMapStripe().also {
     it.putString("country", paymentMethod.sofort?.country)
   })
-  pm.putMap("Ideal", WritableNativeMap().also {
+  pm.putMap("Ideal", WritableNativeMapStripe().also {
     it.putString("bankName", paymentMethod.ideal?.bank)
     it.putString("bankIdentifierCode", paymentMethod.ideal?.bankIdentifierCode)
   })
-  pm.putMap("Fpx", WritableNativeMap().also {
+  pm.putMap("Fpx", WritableNativeMapStripe().also {
     it.putString("accountHolderType", paymentMethod.fpx?.accountHolderType)
     it.putString("bank", paymentMethod.fpx?.bank)
   })
-  pm.putMap("Upi", WritableNativeMap().also {
+  pm.putMap("Upi", WritableNativeMapStripe().also {
     it.putString("vpa", paymentMethod.upi?.vpa)
   })
-  pm.putMap("USBankAccount", WritableNativeMap().also {
+  pm.putMap("USBankAccount", WritableNativeMapStripe().also {
     it.putString("routingNumber", paymentMethod.usBankAccount?.routingNumber)
     it.putString("accountType", mapFromUSBankAccountType(paymentMethod.usBankAccount?.accountType))
     it.putString("accountHolderType", mapFromUSBankAccountHolderType(paymentMethod.usBankAccount?.accountHolderType))
@@ -390,14 +390,14 @@ internal fun mapFromPaymentMethod(paymentMethod: PaymentMethod): WritableMap {
     it.putString("linkedAccount", paymentMethod.usBankAccount?.linkedAccount)
     it.putString("fingerprint", paymentMethod.usBankAccount?.fingerprint)
     it.putString("preferredNetworks", paymentMethod.usBankAccount?.networks?.preferred)
-    it.putArray("supportedNetworks", paymentMethod.usBankAccount?.networks?.supported as? ReadableArray)
+    it.putArray("supportedNetworks", paymentMethod.usBankAccount?.networks?.supported as? ReadableArrayStripe)
   })
 
   return pm
 }
 
-internal fun mapFromPaymentIntentResult(paymentIntent: PaymentIntent): WritableMap {
-  val map: WritableMap = WritableNativeMap()
+internal fun mapFromPaymentIntentResult(paymentIntent: PaymentIntent): WritableMapStripe {
+  val map: WritableMapStripe = WritableNativeMapStripe()
   map.putString("id", paymentIntent.id)
   map.putString("clientSecret", paymentIntent.clientSecret)
   map.putBoolean("livemode", paymentIntent.isLiveMode)
@@ -422,7 +422,7 @@ internal fun mapFromPaymentIntentResult(paymentIntent: PaymentIntent): WritableM
   map.putNull("canceledAt")
 
   paymentIntent.lastPaymentError?.let {
-    val paymentError: WritableMap = WritableNativeMap()
+    val paymentError: WritableMapStripe = WritableNativeMapStripe()
     paymentError.putString("code", it.code)
     paymentError.putString("message", it.message)
     paymentError.putString("type", mapFromPaymentIntentLastErrorType(it.type))
@@ -453,8 +453,8 @@ internal fun mapFromMicrodepositType(type: MicrodepositType): String {
   }
 }
 
-internal fun mapNextAction(type: NextActionType?, data: NextActionData?): WritableNativeMap? {
-  val nextActionMap = WritableNativeMap()
+internal fun mapNextAction(type: NextActionType?, data: NextActionData?): WritableNativeMapStripe? {
+  val nextActionMap = WritableNativeMapStripe()
   when (type) {
     NextActionType.RedirectToUrl -> {
       (data as? NextActionData.RedirectToUrl)?.let {
@@ -520,13 +520,13 @@ internal fun mapFromSetupIntentLastErrorType(errorType: SetupIntent.Error.Type?)
   }
 }
 
-fun getValOr(map: ReadableMap?, key: String, default: String? = ""): String? {
+fun getValOr(map: ReadableMapStripe?, key: String, default: String? = ""): String? {
   return map?.let {
     if (it.hasKey(key)) it.getString(key) else default
   } ?: default
 }
 
-internal fun mapToAddress(addressMap: ReadableMap?, cardAddress: Address?): Address {
+internal fun mapToAddress(addressMap: ReadableMapStripe?, cardAddress: Address?): Address {
   val address = Address.Builder()
 
   addressMap?.let {
@@ -551,7 +551,7 @@ internal fun mapToAddress(addressMap: ReadableMap?, cardAddress: Address?): Addr
   return address.build()
 }
 
-internal fun mapToBillingDetails(billingDetails: ReadableMap?, cardAddress: Address?): PaymentMethod.BillingDetails? {
+internal fun mapToBillingDetails(billingDetails: ReadableMapStripe?, cardAddress: Address?): PaymentMethod.BillingDetails? {
   if (billingDetails == null && cardAddress == null) {
     return null
   }
@@ -569,7 +569,7 @@ internal fun mapToBillingDetails(billingDetails: ReadableMap?, cardAddress: Addr
   return paymentMethodBillingDetailsBuilder.build()
 }
 
-internal fun mapToShippingDetails(shippingDetails: ReadableMap?): ConfirmPaymentIntentParams.Shipping? {
+internal fun mapToShippingDetails(shippingDetails: ReadableMapStripe?): ConfirmPaymentIntentParams.Shipping? {
   if (shippingDetails == null) {
     return null
   }
@@ -582,19 +582,19 @@ internal fun mapToShippingDetails(shippingDetails: ReadableMap?): ConfirmPayment
   )
 }
 
-private fun getStringOrNull(map: ReadableMap?, key: String): String? {
+private fun getStringOrNull(map: ReadableMapStripe?, key: String): String? {
   return if (map?.hasKey(key) == true) map.getString(key) else null
 }
 
-fun getIntOrNull(map: ReadableMap?, key: String): Int? {
+fun getIntOrNull(map: ReadableMapStripe?, key: String): Int? {
   return if (map?.hasKey(key) == true) map.getInt(key) else null
 }
 
-fun getMapOrNull(map: ReadableMap?, key: String): ReadableMap? {
+fun getMapOrNull(map: ReadableMapStripe?, key: String): ReadableMapStripe? {
   return if (map?.hasKey(key) == true) map.getMap(key) else null
 }
 
-fun getBooleanOrFalse(map: ReadableMap?, key: String): Boolean {
+fun getBooleanOrFalse(map: ReadableMapStripe?, key: String): Boolean {
   return if (map?.hasKey(key) == true) map.getBoolean(key) else false
 }
 
@@ -602,7 +602,7 @@ private fun convertToUnixTimestamp(timestamp: Long): String {
   return (timestamp * 1000).toString()
 }
 
-fun mapToUICustomization(params: ReadableMap): PaymentAuthConfig.Stripe3ds2UiCustomization {
+fun mapToUICustomization(params: ReadableMapStripe): PaymentAuthConfig.Stripe3ds2UiCustomization {
   val labelCustomization = getMapOrNull(params, "label")
   val navigationBarCustomization = params.getMap("navigationBar")
   val textBoxCustomization = getMapOrNull(params, "textField")
@@ -777,9 +777,9 @@ fun mapToUICustomization(params: ReadableMap): PaymentAuthConfig.Stripe3ds2UiCus
   return uiCustomization.build()
 }
 
-internal fun mapFromSetupIntentResult(setupIntent: SetupIntent): WritableMap {
-  val map: WritableMap = WritableNativeMap()
-  val paymentMethodTypes: WritableArray = Arguments.createArray()
+internal fun mapFromSetupIntentResult(setupIntent: SetupIntent): WritableMapStripe {
+  val map: WritableMapStripe = WritableNativeMapStripe()
+  val paymentMethodTypes: WritableArrayStripe = ArgumentsStripe.createArray()
   map.putString("id", setupIntent.id)
   map.putString("status", mapIntentStatus(setupIntent.status))
   map.putString("description", setupIntent.description)
@@ -796,7 +796,7 @@ internal fun mapFromSetupIntentResult(setupIntent: SetupIntent): WritableMap {
   map.putMap("nextAction", mapNextAction(setupIntent.nextActionType, setupIntent.nextActionData))
 
   setupIntent.lastSetupError?.let {
-    val setupError: WritableMap = WritableNativeMap()
+    val setupError: WritableMapStripe = WritableNativeMapStripe()
     setupError.putString("code", it.code)
     setupError.putString("message", it.message)
     setupError.putString("type", mapFromSetupIntentLastErrorType(it.type))
@@ -838,7 +838,7 @@ fun mapToPaymentIntentFutureUsage(type: String?): ConfirmPaymentIntentParams.Set
   }
 }
 
-fun toBundleObject(readableMap: ReadableMap?): Bundle {
+fun toBundleObject(readableMap: ReadableMapStripe?): Bundle {
   val result = Bundle()
   if (readableMap == null) {
     return result
@@ -847,9 +847,9 @@ fun toBundleObject(readableMap: ReadableMap?): Bundle {
   while (iterator.hasNextKey()) {
     val key = iterator.nextKey()
     when (readableMap.getType(key)) {
-      ReadableType.Null -> result.putString(key, null)
-      ReadableType.Boolean -> result.putBoolean(key, readableMap.getBoolean(key))
-      ReadableType.Number -> try {
+      ReadableTypeStripe.Null -> result.putString(key, null)
+      ReadableTypeStripe.Boolean -> result.putBoolean(key, readableMap.getBoolean(key))
+      ReadableTypeStripe.Number -> try {
         val numAsInt = readableMap.getInt(key)
         val numAsDouble = readableMap.getDouble(key)
         if (numAsDouble - numAsInt != 0.0) {
@@ -860,9 +860,9 @@ fun toBundleObject(readableMap: ReadableMap?): Bundle {
       } catch (e: Exception) {
         Log.e("toBundleException", "Failed to add number to bundle. Failed on: $key.")
       }
-      ReadableType.String -> result.putString(key, readableMap.getString(key))
-      ReadableType.Map -> result.putBundle(key, toBundleObject(readableMap.getMap(key)))
-      ReadableType.Array -> {
+      ReadableTypeStripe.String -> result.putString(key, readableMap.getString(key))
+      ReadableTypeStripe.Map -> result.putBundle(key, toBundleObject(readableMap.getMap(key)))
+      ReadableTypeStripe.Array -> {
         val list = readableMap.getArray(key)?.toArrayList()
         if (list == null) {
           result.putString(key, null)

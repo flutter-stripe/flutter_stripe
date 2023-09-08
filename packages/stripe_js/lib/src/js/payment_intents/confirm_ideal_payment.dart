@@ -42,7 +42,7 @@ extension ExtensionIdealPayment on Stripe {
 @anonymous
 @JS()
 abstract class _JS {
-  external Promise<dynamic> confirmIdealPayment(
+  external PromiseStripe<dynamic> confirmIdealPayment(
     String clientSecret, [
     dynamic data,
     dynamic options,

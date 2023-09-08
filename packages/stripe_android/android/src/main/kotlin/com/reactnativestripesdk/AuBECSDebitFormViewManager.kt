@@ -1,30 +1,30 @@
 package com.reactnativestripesdk
 
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.common.MapBuilder
-import com.facebook.react.uimanager.SimpleViewManager
-import com.facebook.react.uimanager.ThemedReactContext
-import com.facebook.react.uimanager.annotations.ReactProp
+import com.facebook.react.bridge.ReadableMapStripe
+import com.facebook.react.common.MapBuilderStripe
+import com.facebook.react.uimanager.SimpleViewManagerStripe
+import com.facebook.react.uimanager.ThemedReactContextStripe
+import com.facebook.react.uimanager.annotations.ReactPropStripe
 
-class AuBECSDebitFormViewManager : SimpleViewManager<AuBECSDebitFormView>() {
+class AuBECSDebitFormViewManager : SimpleViewManagerStripe<AuBECSDebitFormView>() {
   override fun getName() = "AuBECSDebitForm"
 
   override fun getExportedCustomDirectEventTypeConstants(): MutableMap<String, Any> {
-    return MapBuilder.of(
-      FormCompleteEvent.EVENT_NAME, MapBuilder.of("registrationName", "onCompleteAction"))
+    return MapBuilderStripe.of(
+      FormCompleteEvent.EVENT_NAME, MapBuilderStripe.of("registrationName", "onCompleteAction"))
   }
 
-  @ReactProp(name = "companyName")
+  @ReactPropStripe(name = "companyName")
   fun setCompanyName(view: AuBECSDebitFormView, name: String?) {
     view.setCompanyName(name)
   }
 
-  @ReactProp(name = "formStyle")
-  fun setFormStyle(view: AuBECSDebitFormView, style: ReadableMap) {
+  @ReactPropStripe(name = "formStyle")
+  fun setFormStyle(view: AuBECSDebitFormView, style: ReadableMapStripe) {
     view.setFormStyle(style)
   }
 
-  override fun createViewInstance(reactContext: ThemedReactContext): AuBECSDebitFormView {
+  override fun createViewInstance(reactContext: ThemedReactContextStripe): AuBECSDebitFormView {
     return AuBECSDebitFormView(reactContext)
   }
 }

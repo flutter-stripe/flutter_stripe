@@ -1,21 +1,21 @@
 package com.reactnativestripesdk
 
-import com.facebook.react.bridge.Arguments
-import com.facebook.react.bridge.WritableMap
-import com.facebook.react.uimanager.events.Event
-import com.facebook.react.uimanager.events.RCTEventEmitter
+import com.facebook.react.bridge.ArgumentsStripe
+import com.facebook.react.bridge.WritableMapStripe
+import com.facebook.react.uimanager.events.EventStripe
+import com.facebook.react.uimanager.events.RCTEventEmitterStripe
 
-internal class CardFormCompleteEvent constructor(viewTag: Int, private val cardDetails: MutableMap<String, Any>?, private val complete: Boolean, private val dangerouslyGetFullCardDetails: Boolean) : Event<CardChangedEvent>(viewTag) {
+internal class CardFormCompleteEvent constructor(viewTag: Int, private val cardDetails: MutableMap<String, Any>?, private val complete: Boolean, private val dangerouslyGetFullCardDetails: Boolean) : EventStripe<CardChangedEvent>(viewTag) {
   override fun getEventName(): String {
     return EVENT_NAME
   }
 
-  override fun dispatch(rctEventEmitter: RCTEventEmitter) {
+  override fun dispatch(rctEventEmitter: RCTEventEmitterStripe) {
     rctEventEmitter.receiveEvent(viewTag, eventName, serializeEventData())
   }
 
-  private fun serializeEventData(): WritableMap {
-    val eventData = Arguments.createMap()
+  private fun serializeEventData(): WritableMapStripe {
+    val eventData = ArgumentsStripe.createMap()
 
     if (cardDetails == null) {
       return eventData

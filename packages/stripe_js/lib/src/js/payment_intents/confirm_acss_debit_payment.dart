@@ -44,7 +44,7 @@ extension ExtensionAcssDebitPayment on Stripe {
 @anonymous
 @JS()
 abstract class _JS {
-  external Promise<dynamic> confirmAcssDebitPayment(
+  external PromiseStripe<dynamic> confirmAcssDebitPayment(
     String clientSecret, [
     dynamic data,
     dynamic options,

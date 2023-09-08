@@ -6,17 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
-import com.facebook.react.bridge.Promise
-import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.bridge.PromiseStripe
+import com.facebook.react.bridge.ReactApplicationContextStripe
 import com.reactnativestripesdk.utils.removeFragment
 import com.stripe.android.googlepaylauncher.GooglePayEnvironment
 import com.stripe.android.googlepaylauncher.GooglePayPaymentMethodLauncher
 
 class GooglePayPaymentMethodLauncherFragment(
-  private val context: ReactApplicationContext,
+  private val context: ReactApplicationContextStripe,
   private val isTestEnv: Boolean,
   private val paymentMethodRequired: Boolean,
-  private val promise: Promise
+  private val promise: PromiseStripe
   ) : Fragment() {
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                             savedInstanceState: Bundle?): View {

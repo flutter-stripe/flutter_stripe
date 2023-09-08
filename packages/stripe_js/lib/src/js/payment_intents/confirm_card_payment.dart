@@ -44,7 +44,7 @@ extension ExtensionCardPayment on Stripe {
 @anonymous
 @JS()
 abstract class _JS {
-  external Promise<dynamic> confirmCardPayment(
+  external PromiseStripe<dynamic> confirmCardPayment(
     String clientSecret, [
     dynamic data,
     dynamic options,

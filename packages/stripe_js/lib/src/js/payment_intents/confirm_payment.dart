@@ -16,11 +16,11 @@ extension ExtensionConfirmPayment on Stripe {
   ///
   /// Returns
   ///
-  /// stripe.confirmPayment will return a Promise. Upon a successful
+  /// stripe.confirmPayment will return a PromiseStripe. Upon a successful
   /// confirmation, your user will be redirected to the return_url you provide
-  /// before the Promise ever resolves.
+  /// before the PromiseStripe ever resolves.
   ///
-  /// If the confirmation fails, the Promise will resolve with an {error}
+  /// If the confirmation fails, the PromiseStripe will resolve with an {error}
   /// object that describes the failure. When the error type is card_error or
   /// validation_error, you can display the error message in error.message
   /// directly to your user. An error type of invalid_request_error could be
@@ -50,7 +50,7 @@ extension ExtensionConfirmPayment on Stripe {
 @anonymous
 @JS()
 abstract class _JS {
-  external Promise<PaymentElementResponse> confirmPayment(
+  external PromiseStripe<PaymentElementResponse> confirmPayment(
     dynamic options,
   );
 }

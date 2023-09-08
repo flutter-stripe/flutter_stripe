@@ -1,8 +1,8 @@
 import 'package:js/js.dart';
 
 @JS()
-abstract class Promise<T> {
-  external factory Promise(
+abstract class PromiseStripe<T> {
+  external factory PromiseStripe(
       void executor(void resolve(T result), Function reject));
-  external Promise then(void onFulfilled(T result), [Function onRejected]);
+  external PromiseStripe then(void onFulfilled(T result), [Function onRejected]);
 }

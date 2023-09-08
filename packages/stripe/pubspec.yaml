@@ -21,8 +21,9 @@ flutter:
 dependencies:
   flutter:
     sdk: flutter
-  meta: ^1.8.0
-  stripe_android: ^9.4.0
+#  meta: ^1.8.0
+  stripe_android:
+    path: /Users/pp/Desktop/Vidavo Projects/flutter_stripe/packages/stripe_android
   stripe_ios: ^9.4.0
   stripe_platform_interface: ^9.4.0
 dev_dependencies:

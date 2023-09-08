@@ -5,7 +5,7 @@ import StripeFinancialConnections
 import Foundation
 
 @objc(StripeSdk)
-class StripeSdk: RCTEventEmitter, STPBankSelectionViewControllerDelegate, UIAdaptivePresentationControllerDelegate {
+class StripeSdk: RCTEventEmitterStripe, STPBankSelectionViewControllerDelegate, UIAdaptivePresentationControllerDelegate {
     public var cardFieldView: CardFieldView? = nil
     public var cardFormView: CardFormView? = nil
 

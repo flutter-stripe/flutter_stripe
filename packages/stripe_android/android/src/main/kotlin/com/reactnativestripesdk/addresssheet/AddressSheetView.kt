@@ -3,13 +3,13 @@ package com.reactnativestripesdk.addresssheet
 import android.os.Bundle
 import android.util.Log
 import android.widget.FrameLayout
-import com.facebook.react.bridge.Arguments
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.bridge.WritableMap
-import com.facebook.react.bridge.WritableNativeMap
-import com.facebook.react.uimanager.ThemedReactContext
-import com.facebook.react.uimanager.UIManagerModule
-import com.facebook.react.uimanager.events.EventDispatcher
+import com.facebook.react.bridge.ArgumentsStripe
+import com.facebook.react.bridge.ReadableMapStripe
+import com.facebook.react.bridge.WritableMapStripe
+import com.facebook.react.bridge.WritableNativeMapStripe
+import com.facebook.react.uimanager.ThemedReactContextStripe
+import com.facebook.react.uimanager.UIManagerModuleStripe
+import com.facebook.react.uimanager.events.EventDispatcherStripe
 import com.reactnativestripesdk.buildPaymentSheetAppearance
 import com.reactnativestripesdk.utils.ErrorType
 import com.reactnativestripesdk.utils.PaymentSheetAppearanceException
@@ -20,10 +20,10 @@ import com.stripe.android.paymentsheet.addresselement.AddressDetails
 import com.stripe.android.paymentsheet.addresselement.AddressLauncher
 import com.stripe.android.paymentsheet.addresselement.AddressLauncherResult
 
-class AddressSheetView(private val context: ThemedReactContext) : FrameLayout(context) {
-  private var eventDispatcher: EventDispatcher? = context.getNativeModule(UIManagerModule::class.java)?.eventDispatcher
+class AddressSheetView(private val context: ThemedReactContextStripe) : FrameLayout(context) {
+  private var eventDispatcher: EventDispatcherStripe? = context.getNativeModule(UIManagerModuleStripe::class.java)?.eventDispatcher
   private var isVisible = false
-  private var appearanceParams: ReadableMap? = null
+  private var appearanceParams: ReadableMapStripe? = null
   private var defaultAddress: AddressDetails? = null
   private var allowedCountries: Set<String> = emptySet()
   private var buttonTitle: String? = null
@@ -32,13 +32,13 @@ class AddressSheetView(private val context: ThemedReactContext) : FrameLayout(co
   private var autocompleteCountries: Set<String> = emptySet()
   private var additionalFields: AddressLauncher.AdditionalFieldsConfiguration? = null
 
-  private fun onSubmit(params: WritableMap) {
+  private fun onSubmit(params: WritableMapStripe) {
     eventDispatcher?.dispatchEvent(
       AddressSheetEvent(id, AddressSheetEvent.EventType.OnSubmit, params)
     )
   }
 
-  private fun onError(params: WritableMap?) {
+  private fun onError(params: WritableMapStripe?) {
     eventDispatcher?.dispatchEvent(
       AddressSheetEvent(id, AddressSheetEvent.EventType.OnError, params)
     )
@@ -80,15 +80,15 @@ class AddressSheetView(private val context: ThemedReactContext) : FrameLayout(co
     }
   }
 
-  fun setAppearance(appearanceParams: ReadableMap) {
+  fun setAppearance(appearanceParams: ReadableMapStripe) {
     this.appearanceParams = appearanceParams
   }
 
-  fun setDefaultValues(defaults: ReadableMap) {
+  fun setDefaultValues(defaults: ReadableMapStripe) {
     defaultAddress = buildAddressDetails(defaults)
   }
 
-  fun setAdditionalFields(fields: ReadableMap) {
+  fun setAdditionalFields(fields: ReadableMapStripe) {
     additionalFields = buildAdditionalFieldsConfiguration(fields)
   }
 
@@ -122,7 +122,7 @@ class AddressSheetView(private val context: ThemedReactContext) : FrameLayout(co
       )
     }
 
-    internal fun buildAddressDetails(map: ReadableMap): AddressDetails {
+    internal fun buildAddressDetails(map: ReadableMapStripe): AddressDetails {
       return buildAddressDetails(toBundleObject(map))
     }
 
@@ -149,7 +149,7 @@ class AddressSheetView(private val context: ThemedReactContext) : FrameLayout(co
       }
     }
 
-    internal fun buildAdditionalFieldsConfiguration(params: ReadableMap): AddressLauncher.AdditionalFieldsConfiguration {
+    internal fun buildAdditionalFieldsConfiguration(params: ReadableMapStripe): AddressLauncher.AdditionalFieldsConfiguration {
       val phoneConfiguration = getFieldConfiguration(params.getString("phoneNumber"))
 
       return AddressLauncher.AdditionalFieldsConfiguration(
@@ -158,10 +158,10 @@ class AddressSheetView(private val context: ThemedReactContext) : FrameLayout(co
       )
     }
 
-    internal fun buildResult(addressDetails: AddressDetails): WritableMap {
-      val result = WritableNativeMap()
+    internal fun buildResult(addressDetails: AddressDetails): WritableMapStripe {
+      val result = WritableNativeMapStripe()
       result.putString("name", addressDetails.name)
-      WritableNativeMap().let {
+      WritableNativeMapStripe().let {
         it.putString("city", addressDetails.address?.city)
         it.putString("country", addressDetails.address?.country)
         it.putString("line1", addressDetails.address?.line1)

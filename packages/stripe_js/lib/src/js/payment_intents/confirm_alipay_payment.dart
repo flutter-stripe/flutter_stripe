@@ -42,7 +42,7 @@ extension ExtensionAlipayPayment on Stripe {
 @anonymous
 @JS()
 abstract class _JS {
-  external Promise<dynamic> confirmAlipayPayment(
+  external PromiseStripe<dynamic> confirmAlipayPayment(
     String clientSecret, [
     dynamic data,
     dynamic options,

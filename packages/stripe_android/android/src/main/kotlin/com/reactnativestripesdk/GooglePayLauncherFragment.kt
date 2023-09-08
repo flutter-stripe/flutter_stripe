@@ -24,7 +24,7 @@ class GooglePayLauncherFragment : Fragment() {
   private lateinit var mode: Mode
   private lateinit var configuration: GooglePayLauncher.Config
   private lateinit var currencyCode: String
-  private lateinit var callback: (result: GooglePayLauncher.Result?, error: WritableMap?) -> Unit
+  private lateinit var callback: (result: GooglePayLauncher.Result?, error: WritableMapStripe?) -> Unit
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                             savedInstanceState: Bundle?): View {
@@ -42,7 +42,7 @@ class GooglePayLauncherFragment : Fragment() {
     )
   }
 
-  fun presentGooglePaySheet(clientSecret: String, mode: Mode, googlePayParams: ReadableMap, context: ReactApplicationContext, callback: (GooglePayLauncher.Result?, error: WritableMap?) -> Unit) {
+  fun presentGooglePaySheet(clientSecret: String, mode: Mode, googlePayParams: ReadableMapStripe, context: ReactApplicationContextStripe, callback: (GooglePayLauncher.Result?, error: WritableMapStripe?) -> Unit) {
     this.clientSecret = clientSecret
     this.mode = mode
     this.callback = callback
@@ -113,7 +113,7 @@ class GooglePayLauncherFragment : Fragment() {
   companion object {
     const val TAG = "google_pay_launcher_fragment"
 
-    private fun buildBillingAddressParameters(params: ReadableMap?): GooglePayLauncher.BillingAddressConfig {
+    private fun buildBillingAddressParameters(params: ReadableMapStripe?): GooglePayLauncher.BillingAddressConfig {
       val isRequired = params?.getBooleanOr("isRequired", false)
       val isPhoneNumberRequired = params?.getBooleanOr("isPhoneNumberRequired", false)
       val format = when (params?.getString("format").orEmpty()) {

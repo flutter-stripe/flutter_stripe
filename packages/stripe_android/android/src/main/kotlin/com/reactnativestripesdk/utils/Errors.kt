@@ -1,7 +1,7 @@
 package com.reactnativestripesdk.utils
 
-import com.facebook.react.bridge.WritableMap
-import com.facebook.react.bridge.WritableNativeMap
+import com.facebook.react.bridge.WritableMapStripe
+import com.facebook.react.bridge.WritableNativeMapStripe
 import com.stripe.android.core.exception.APIException
 import com.stripe.android.core.exception.AuthenticationException
 import com.stripe.android.core.exception.InvalidRequestException
@@ -45,9 +45,9 @@ class PaymentSheetAppearanceException(message: String) : Exception(message)
 
 class PaymentSheetException(message: String) : Exception(message)
 
-internal fun mapError(code: String, message: String?, localizedMessage: String?, declineCode: String?, type: String?, stripeErrorCode: String?): WritableMap {
-  val map: WritableMap = WritableNativeMap()
-  val details: WritableMap = WritableNativeMap()
+internal fun mapError(code: String, message: String?, localizedMessage: String?, declineCode: String?, type: String?, stripeErrorCode: String?): WritableMapStripe {
+  val map: WritableMapStripe = WritableNativeMapStripe()
+  val details: WritableMapStripe = WritableNativeMapStripe()
   details.putString("code", code)
   details.putString("message", message)
   details.putString("localizedMessage", localizedMessage)
@@ -59,11 +59,11 @@ internal fun mapError(code: String, message: String?, localizedMessage: String?,
   return map
 }
 
-internal fun createError(code: String, message: String?): WritableMap {
+internal fun createError(code: String, message: String?): WritableMapStripe {
   return mapError(code, message, message, null, null, null)
 }
 
-internal fun createMissingActivityError(): WritableMap {
+internal fun createMissingActivityError(): WritableMapStripe {
   return mapError(
     "Failed",
     "Activity doesn't exist yet. You can safely retry this method.",
@@ -73,15 +73,15 @@ internal fun createMissingActivityError(): WritableMap {
     null)
 }
 
-internal fun createError(code: String, error: PaymentIntent.Error?): WritableMap {
+internal fun createError(code: String, error: PaymentIntent.Error?): WritableMapStripe {
   return mapError(code, error?.message, error?.message, error?.declineCode, error?.type?.code, error?.code)
 }
 
-internal fun createError(code: String, error: SetupIntent.Error?): WritableMap {
+internal fun createError(code: String, error: SetupIntent.Error?): WritableMapStripe {
   return mapError(code, error?.message, error?.message, error?.declineCode, error?.type?.code, error?.code)
 }
 
-internal fun createError(code: String, error: Exception): WritableMap {
+internal fun createError(code: String, error: Exception): WritableMapStripe {
   return when (error) {
     is CardException -> {
       mapError(code, error.message, error.localizedMessage, error.declineCode, error.stripeError?.type, error.stripeError?.code)
@@ -99,7 +99,7 @@ internal fun createError(code: String, error: Exception): WritableMap {
   }
 }
 
-internal fun createError(code: String, error: Throwable): WritableMap {
+internal fun createError(code: String, error: Throwable): WritableMapStripe {
   (error as? Exception)?.let {
     return createError(
       code,
@@ -114,6 +114,6 @@ internal fun createError(code: String, error: Throwable): WritableMap {
     null)
 }
 
-internal fun createMissingInitError(): WritableMap {
+internal fun createMissingInitError(): WritableMapStripe {
   return createError(ErrorType.Failed.toString(), "Stripe has not been initialized. Initialize Stripe in your app with the StripeProvider component or the initStripe method.")
 }

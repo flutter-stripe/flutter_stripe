@@ -52,7 +52,7 @@ class ApplePayButton extends StatelessWidget {
   /// The default value is set to 4.0
   final double cornerRadius;
 
-  /// Callback that is executed when the button is pressed.
+  /// CallbackStripe that is executed when the button is pressed.
   final VoidCallback? onPressed;
 
   /// Additional constraints for the Apple pay button widget.

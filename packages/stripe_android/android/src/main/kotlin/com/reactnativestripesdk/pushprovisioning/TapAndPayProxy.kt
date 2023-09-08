@@ -2,13 +2,13 @@ package com.reactnativestripesdk.pushprovisioning
 
 import android.app.Activity
 import android.util.Log
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.bridge.WritableMap
-import com.facebook.react.bridge.WritableNativeMap
+import com.facebook.react.bridge.ReadableMapStripe
+import com.facebook.react.bridge.WritableMapStripe
+import com.facebook.react.bridge.WritableNativeMapStripe
 import com.reactnativestripesdk.utils.createError
 import com.google.android.gms.tasks.Task
 
-typealias TokenCheckHandler = (isCardInWallet: Boolean, token: WritableMap?, error: WritableMap?) -> Unit
+typealias TokenCheckHandler = (isCardInWallet: Boolean, token: WritableMapStripe?, error: WritableMapStripe?) -> Unit
 
 object TapAndPayProxy {
   private const val TAG = "StripeTapAndPay"
@@ -67,7 +67,7 @@ object TapAndPayProxy {
     }
   }
 
-  fun tokenize(activity: Activity, tokenReferenceId: String, token: ReadableMap, cardDescription: String) {
+  fun tokenize(activity: Activity, tokenReferenceId: String, token: ReadableMapStripe, cardDescription: String) {
     try {
       val tapAndPayClientClass = Class.forName("com.google.android.gms.tapandpay.TapAndPayClient")
       val tokenizeMethod = tapAndPayClientClass::class.java.getMethod("tokenize", Activity::class.java, String::class.java, Int::class.java, String::class.java, Int::class.java, Int::class.java)
@@ -83,8 +83,8 @@ object TapAndPayProxy {
     }
   }
 
-  private fun mapFromTokenInfo(token: Any?): WritableMap {
-    val result = WritableNativeMap()
+  private fun mapFromTokenInfo(token: Any?): WritableMapStripe {
+    val result = WritableNativeMapStripe()
     token?.let {
       try {
         val tokenInfoClass = Class.forName("com.google.android.gms.tapandpay.issuer.TokenInfo")

@@ -59,7 +59,7 @@ extension ExtensionCreateTokenMethod on Stripe {
 @anonymous
 @JS()
 abstract class _JS {
-  external Promise<dynamic> createToken(
+  external PromiseStripe<dynamic> createToken(
     dynamic value,
     dynamic data,
   );

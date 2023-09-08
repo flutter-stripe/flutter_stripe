@@ -6,19 +6,22 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.nfc.NfcAdapter
 import android.util.Log
-import com.facebook.react.bridge.BaseActivityEventListener
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.bridge.BaseActivityEventListenerStripe
+import com.facebook.react.bridge.ReactApplicationContextStripe
+import com.facebook.react.bridge.ReadableMapStripe
 import com.reactnativestripesdk.utils.createError
 import com.reactnativestripesdk.utils.mapError
 import com.stripe.android.pushProvisioning.PushProvisioningActivity
+//import com.stripe.android.pushProvisioning.AddToWalletButtonView
+//import com.stripe.android.pushProvisioning.EphemeralKeyProvider
+//import com.stripe.android.pushProvisioning.TapAndPayProxy
 import com.stripe.android.pushProvisioning.PushProvisioningActivityStarter
 
 
 object PushProvisioningProxy {
   private const val TAG = "StripePushProvisioning"
   private var description = "Added by Stripe"
-  private var tokenRequiringTokenization: ReadableMap? = null
+  private var tokenRequiringTokenization: ReadableMapStripe? = null
 
   fun getApiVersion(): String {
     return try {
@@ -30,7 +33,7 @@ object PushProvisioningProxy {
     }
   }
 
-  fun isNFCEnabled(context: ReactApplicationContext): Boolean {
+  fun isNFCEnabled(context: ReactApplicationContextStripe): Boolean {
     return if (context.packageManager.hasSystemFeature(PackageManager.FEATURE_NFC)) {
       val adapter = NfcAdapter.getDefaultAdapter(context)
       adapter?.isEnabled ?: false
@@ -40,11 +43,11 @@ object PushProvisioningProxy {
   }
 
   fun invoke(
-          context: ReactApplicationContext,
+          context: ReactApplicationContextStripe,
           view: AddToWalletButtonView,
           cardDescription: String,
           ephemeralKey: String,
-          token: ReadableMap?
+          token: ReadableMapStripe?
   ) {
     try {
       Class.forName("com.stripe.android.pushProvisioning.PushProvisioningActivityStarter")
@@ -73,8 +76,8 @@ object PushProvisioningProxy {
     TapAndPayProxy.findExistingToken(activity, cardLastFour, callback)
   }
 
-  private fun createActivityEventListener(context: ReactApplicationContext, view: AddToWalletButtonView) {
-    val listener = object : BaseActivityEventListener() {
+  private fun createActivityEventListener(context: ReactApplicationContextStripe, view: AddToWalletButtonView) {
+    val listener = object : BaseActivityEventListenerStripe() {
       override fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(activity, requestCode, resultCode, data)
         if (requestCode == TapAndPayProxy.REQUEST_CODE_TOKENIZE) {

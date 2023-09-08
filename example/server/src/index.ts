@@ -96,7 +96,7 @@ app.post(
   async (
     req: express.Request,
     res: express.Response
-  ): Promise<express.Response<any>> => {
+  ): PromiseStripe<express.Response<any>> => {
     const {
       email,
       items,
@@ -161,7 +161,7 @@ app.post(
   async (
     req: express.Request,
     res: express.Response
-  ): Promise<express.Response<any>> => {
+  ): PromiseStripe<express.Response<any>> => {
     const {
       items,
       currency,
@@ -231,7 +231,7 @@ app.post(
   async (
     req: express.Request,
     res: express.Response
-  ): Promise<express.Response<any>> => {
+  ): PromiseStripe<express.Response<any>> => {
     const {
       paymentMethodId,
       paymentIntentId,
@@ -387,7 +387,7 @@ app.post(
   bodyParser.raw({ type: 'application/json' }),
   (req: express.Request, res: express.Response): express.Response<any> => {
     // Retrieve the event by verifying the signature using the raw body and secret.
-    let event: Stripe.Event;
+    let event: Stripe.EventStripe;
     const { secret_key } = getKeys();
 
     const stripe = new Stripe(secret_key as string, {
@@ -407,7 +407,7 @@ app.post(
     }
 
     // Extract the data from the event.
-    const data: Stripe.Event.Data = event.data;
+    const data: Stripe.EventStripe.Data = event.data;
     const eventType: string = event.type;
 
     if (eventType === 'payment_intent.succeeded') {

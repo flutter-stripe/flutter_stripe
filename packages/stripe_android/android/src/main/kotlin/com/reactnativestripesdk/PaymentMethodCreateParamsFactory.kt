@@ -1,6 +1,6 @@
 package com.reactnativestripesdk
 
-import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.bridge.ReadableMapStripe
 import com.reactnativestripesdk.utils.*
 import com.reactnativestripesdk.utils.mapToBillingDetails
 import com.reactnativestripesdk.utils.mapToUSBankAccountHolderType
@@ -8,8 +8,8 @@ import com.reactnativestripesdk.utils.mapToUSBankAccountType
 import com.stripe.android.model.*
 
 class PaymentMethodCreateParamsFactory(
-  private val paymentMethodData: ReadableMap?,
-  private val options: ReadableMap,
+  private val paymentMethodData: ReadableMapStripe?,
+  private val options: ReadableMapStripe,
   private val cardFieldView: CardFieldView?,
   private val cardFormView: CardFormView?,
 ) {
@@ -366,7 +366,7 @@ class PaymentMethodCreateParamsFactory(
   }
 
   @Throws(PaymentMethodCreateParamsException::class)
-  private fun createUSBankAccountParams(params: ReadableMap?): PaymentMethodCreateParams {
+  private fun createUSBankAccountParams(params: ReadableMapStripe?): PaymentMethodCreateParams {
     val accountNumber = getValOr(params, "accountNumber", null)
     val routingNumber = getValOr(params, "routingNumber", null)
 

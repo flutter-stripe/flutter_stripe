@@ -16,7 +16,7 @@ extension ExtensionRetreivePaymentIntent on Stripe {
 @anonymous
 @JS()
 abstract class _JS {
-  external Promise<dynamic> retrievePaymentIntent(
+  external PromiseStripe<dynamic> retrievePaymentIntent(
     String clientSecret,
   );
 }

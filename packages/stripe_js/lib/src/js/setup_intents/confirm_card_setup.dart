@@ -36,7 +36,7 @@ extension ExtensionConfirmCardSetup on Stripe {
 @anonymous
 @JS()
 abstract class _JS {
-  external Promise<dynamic> confirmCardSetup(
+  external PromiseStripe<dynamic> confirmCardSetup(
     String clientSecret, [
     dynamic data,
     dynamic options,

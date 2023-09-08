@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import com.facebook.react.bridge.Promise
-import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.bridge.PromiseStripe
+import com.facebook.react.bridge.ReactApplicationContextStripe
 import com.reactnativestripesdk.utils.*
 import com.reactnativestripesdk.utils.createError
 import com.reactnativestripesdk.utils.createMissingActivityError
@@ -22,11 +22,11 @@ import com.stripe.android.payments.paymentlauncher.PaymentResult
  * Instances of this class should only be initialized with the companion's helper methods.
  */
 class PaymentLauncherFragment(
-  private val context: ReactApplicationContext,
+  private val context: ReactApplicationContextStripe,
   private val stripe: Stripe,
   private val publishableKey: String,
   private val stripeAccountId: String?,
-  private val promise: Promise,
+  private val promise: PromiseStripe,
   // Used when confirming a payment intent
   private val paymentIntentClientSecret: String? = null,
   private val confirmPaymentParams: ConfirmPaymentIntentParams? = null,
@@ -44,11 +44,11 @@ class PaymentLauncherFragment(
     /**
      * Helper-constructor used for confirming payment intents
      */
-    fun forPayment(context: ReactApplicationContext,
+    fun forPayment(context: ReactApplicationContextStripe,
                    stripe: Stripe,
                    publishableKey: String,
                    stripeAccountId: String?,
-                   promise: Promise,
+                   promise: PromiseStripe,
                    paymentIntentClientSecret: String,
                    confirmPaymentParams: ConfirmPaymentIntentParams): PaymentLauncherFragment {
       val paymentLauncherFragment = PaymentLauncherFragment(
@@ -67,11 +67,11 @@ class PaymentLauncherFragment(
     /**
      * Helper-constructor used for confirming setup intents
      */
-    fun forSetup(context: ReactApplicationContext,
+    fun forSetup(context: ReactApplicationContextStripe,
                  stripe: Stripe,
                  publishableKey: String,
                  stripeAccountId: String?,
-                 promise: Promise,
+                 promise: PromiseStripe,
                  setupIntentClientSecret: String,
                  confirmSetupParams: ConfirmSetupIntentParams): PaymentLauncherFragment {
       val paymentLauncherFragment = PaymentLauncherFragment(
@@ -90,11 +90,11 @@ class PaymentLauncherFragment(
     /**
      * Helper-constructor used for handling the next action on a payment intent
      */
-    fun forNextActionPayment(context: ReactApplicationContext,
+    fun forNextActionPayment(context: ReactApplicationContextStripe,
                       stripe: Stripe,
                       publishableKey: String,
                       stripeAccountId: String?,
-                      promise: Promise,
+                      promise: PromiseStripe,
                       handleNextActionPaymentIntentClientSecret: String): PaymentLauncherFragment {
       val paymentLauncherFragment = PaymentLauncherFragment(
         context,
@@ -111,11 +111,11 @@ class PaymentLauncherFragment(
     /**
      * Helper-constructor used for handling the next action on a setup intent
      */
-    fun forNextActionSetup(context: ReactApplicationContext,
+    fun forNextActionSetup(context: ReactApplicationContextStripe,
                       stripe: Stripe,
                       publishableKey: String,
                       stripeAccountId: String?,
-                      promise: Promise,
+                      promise: PromiseStripe,
                       handleNextActionSetupIntentClientSecret: String): PaymentLauncherFragment {
       val paymentLauncherFragment = PaymentLauncherFragment(
         context,
@@ -129,7 +129,7 @@ class PaymentLauncherFragment(
       return paymentLauncherFragment
     }
 
-    private fun addFragment(fragment: PaymentLauncherFragment, context: ReactApplicationContext, promise: Promise) {
+    private fun addFragment(fragment: PaymentLauncherFragment, context: ReactApplicationContextStripe, promise: PromiseStripe) {
       (context.currentActivity as? FragmentActivity)?.let {
         try {
           it.supportFragmentManager.beginTransaction()

@@ -16,7 +16,7 @@ extension ExtensionRetrieveSetupIntent on Stripe {
 @anonymous
 @JS()
 abstract class _JS {
-  external Promise<dynamic> retrieveSetupIntent(
+  external PromiseStripe<dynamic> retrieveSetupIntent(
     String clientSecret,
   );
 }

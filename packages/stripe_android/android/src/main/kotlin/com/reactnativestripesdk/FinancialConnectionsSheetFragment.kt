@@ -22,8 +22,8 @@ class FinancialConnectionsSheetFragment : Fragment() {
     ForToken, ForSession
   }
 
-  private lateinit var promise: Promise
-  private lateinit var context: ReactApplicationContext
+  private lateinit var promise: PromiseStripe
+  private lateinit var context: ReactApplicationContextStripe
   private lateinit var configuration: FinancialConnectionsSheet.Configuration
   private lateinit var mode: Mode
 
@@ -88,7 +88,7 @@ class FinancialConnectionsSheetFragment : Fragment() {
       }
       is FinancialConnectionsSheetResult.Completed -> {
         promise.resolve(
-            WritableNativeMap().also {
+            WritableNativeMapStripe().also {
               it.putMap("session", mapFromSession(result.financialConnectionsSession))
             }
         )
@@ -97,7 +97,7 @@ class FinancialConnectionsSheetFragment : Fragment() {
     }
   }
 
-  fun presentFinancialConnectionsSheet(clientSecret: String, mode: Mode, publishableKey: String, stripeAccountId: String?, promise: Promise, context: ReactApplicationContext) {
+  fun presentFinancialConnectionsSheet(clientSecret: String, mode: Mode, publishableKey: String, stripeAccountId: String?, promise: PromiseStripe, context: ReactApplicationContextStripe) {
     this.promise = promise
     this.context = context
     this.mode = mode
@@ -135,15 +135,15 @@ class FinancialConnectionsSheetFragment : Fragment() {
   companion object {
     internal const val TAG = "financial_connections_sheet_launch_fragment"
 
-    private fun createTokenResult(result: FinancialConnectionsSheetForTokenResult.Completed): WritableMap {
-      return WritableNativeMap().also {
+    private fun createTokenResult(result: FinancialConnectionsSheetForTokenResult.Completed): WritableMapStripe {
+      return WritableNativeMapStripe().also {
         it.putMap("session", mapFromSession(result.financialConnectionsSession))
         it.putMap("token", mapFromToken(result.token))
       }
     }
 
-    private fun mapFromSession(financialConnectionsSession: FinancialConnectionsSession): WritableMap {
-      val session = WritableNativeMap()
+    private fun mapFromSession(financialConnectionsSession: FinancialConnectionsSession): WritableMapStripe {
+      val session = WritableNativeMapStripe()
       session.putString("id", financialConnectionsSession.id)
       session.putString("clientSecret", financialConnectionsSession.clientSecret)
       session.putBoolean("livemode", financialConnectionsSession.livemode)
@@ -151,10 +151,10 @@ class FinancialConnectionsSheetFragment : Fragment() {
       return session
     }
 
-    private fun mapFromAccountsList(accounts: FinancialConnectionsAccountList): ReadableArray {
-      val results: WritableArray = Arguments.createArray()
+    private fun mapFromAccountsList(accounts: FinancialConnectionsAccountList): ReadableArrayStripe {
+      val results: WritableArrayStripe = ArgumentsStripe.createArray()
       for (account in accounts.data) {
-        val map = WritableNativeMap()
+        val map = WritableNativeMapStripe()
         map.putString("id", account.id)
         map.putBoolean("livemode", account.livemode)
         map.putString("displayName", account.displayName)
@@ -173,14 +173,14 @@ class FinancialConnectionsSheetFragment : Fragment() {
       return results
     }
 
-    private fun mapFromAccountBalance(balance: Balance?): WritableMap? {
+    private fun mapFromAccountBalance(balance: Balance?): WritableMapStripe? {
       if (balance == null) {
         return null
       }
-      val map = WritableNativeMap()
+      val map = WritableNativeMapStripe()
       map.putDouble("asOf", balance.asOf * 1000.0)
       map.putString("type", mapFromBalanceType(balance.type))
-      WritableNativeMap().also {
+      WritableNativeMapStripe().also {
         for (entry in balance.current.entries) {
           it.putInt(entry.key, entry.value)
         }
@@ -192,9 +192,9 @@ class FinancialConnectionsSheetFragment : Fragment() {
       return map
     }
 
-    private fun mapFromCashAvailable(balance: Balance): WritableNativeMap {
-      return WritableNativeMap().also { cashMap ->
-        WritableNativeMap().also { availableMap ->
+    private fun mapFromCashAvailable(balance: Balance): WritableNativeMapStripe {
+      return WritableNativeMapStripe().also { cashMap ->
+        WritableNativeMapStripe().also { availableMap ->
           balance.cash?.available?.entries?.let { entries ->
             for (entry in entries) {
               availableMap.putInt(entry.key, entry.value)
@@ -205,9 +205,9 @@ class FinancialConnectionsSheetFragment : Fragment() {
       }
     }
 
-    private fun mapFromCreditUsed(balance: Balance): WritableNativeMap {
-      return WritableNativeMap().also { creditMap ->
-        WritableNativeMap().also { usedMap ->
+    private fun mapFromCreditUsed(balance: Balance): WritableNativeMapStripe {
+      return WritableNativeMapStripe().also { creditMap ->
+        WritableNativeMapStripe().also { usedMap ->
           balance.credit?.used?.entries?.let { entries ->
             for (entry in entries) {
               usedMap.putInt(entry.key, entry.value)
@@ -218,11 +218,11 @@ class FinancialConnectionsSheetFragment : Fragment() {
       }
     }
 
-    private fun mapFromAccountBalanceRefresh(balanceRefresh: BalanceRefresh?): WritableMap? {
+    private fun mapFromAccountBalanceRefresh(balanceRefresh: BalanceRefresh?): WritableMapStripe? {
       if (balanceRefresh == null) {
         return null
       }
-      val map = WritableNativeMap()
+      val map = WritableNativeMapStripe()
       map.putString("status", mapFromBalanceRefreshStatus(balanceRefresh.status))
       map.putDouble("lastAttemptedAt", balanceRefresh.lastAttemptedAt * 1000.0)
       return map
@@ -299,8 +299,8 @@ class FinancialConnectionsSheetFragment : Fragment() {
   }
 }
 
-fun List<String>.toReadableArray(): ReadableArray {
-  val results: WritableArray = Arguments.createArray()
+fun List<String>.toReadableArray(): ReadableArrayStripe {
+  val results: WritableArrayStripe = ArgumentsStripe.createArray()
   for (s in this) {
     results.pushString(s)
   }

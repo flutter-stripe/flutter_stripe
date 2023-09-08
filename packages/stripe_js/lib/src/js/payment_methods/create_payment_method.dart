@@ -27,7 +27,7 @@ extension ExtensionCreatePaymentMethod on Stripe {
 @anonymous
 @JS()
 abstract class _JS {
-  external Promise<dynamic> createPaymentMethod(
+  external PromiseStripe<dynamic> createPaymentMethod(
     dynamic data,
   );
 }

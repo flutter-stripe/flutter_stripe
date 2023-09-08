@@ -2,8 +2,8 @@ package com.flutter.stripe
 
 import android.content.Context
 import android.view.View
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.uimanager.ThemedReactContext
+import com.facebook.react.bridge.ReadableMapStripe
+import com.facebook.react.uimanager.ThemedReactContextStripe
 import com.reactnativestripesdk.AuBECSDebitFormView
 import com.reactnativestripesdk.AuBECSDebitFormViewManager
 import com.reactnativestripesdk.StripeSdkModule
@@ -25,7 +25,7 @@ class StripeAubecsDebitPlatformView(
     init {
 
         aubecsView = aubecsFormViewManager.createViewInstance(
-            ThemedReactContext(
+            ThemedReactContextStripe(
                 sdkAccessor().reactContext,
                 channel,
                 sdkAccessor
@@ -37,7 +37,7 @@ class StripeAubecsDebitPlatformView(
         if (creationParams?.containsKey("formStyle") == true) {
             aubecsFormViewManager.setFormStyle(
                 aubecsView,
-                ReadableMap(creationParams["formStyle"] as Map<String, Any>)
+                ReadableMapStripe(creationParams["formStyle"] as Map<String, Any>)
             )
         }
 
@@ -65,10 +65,10 @@ class StripeAubecsDebitPlatformView(
     override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
         when (call.method) {
             "onStyleChanged" -> {
-                val arguments = ReadableMap(call.arguments as Map<String, Any>)
+                val arguments = ReadableMapStripe(call.arguments as Map<String, Any>)
                 aubecsFormViewManager.setFormStyle(
                     aubecsView,
-                    arguments.getMap("formStyle") as ReadableMap
+                    arguments.getMap("formStyle") as ReadableMapStripe
                 )
 
                 result.success(null)

@@ -29,7 +29,7 @@ extension ExtensionConfirmSepaDebitSetup on Stripe {
 @anonymous
 @JS()
 abstract class _JS {
-  external Promise<dynamic> confirmSepaDebitSetup(
+  external PromiseStripe<dynamic> confirmSepaDebitSetup(
     String clientSecret, [
     dynamic data,
   ]);

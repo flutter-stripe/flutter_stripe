@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import com.facebook.react.bridge.ReactContext
-import com.facebook.react.bridge.WritableMap
+import com.facebook.react.bridge.ReactContextStripe
+import com.facebook.react.bridge.WritableMapStripe
 import com.reactnativestripesdk.utils.ErrorType
 import com.reactnativestripesdk.utils.createError
 import com.stripe.android.paymentsheet.PaymentSheet
@@ -24,7 +24,7 @@ class AddressLauncherFragment : Fragment() {
 
   private lateinit var addressLauncher: AddressLauncher
   private var configuration = AddressLauncher.Configuration()
-  private var callback: ((error: WritableMap?, address: AddressDetails?) -> Unit)? = null
+  private var callback: ((error: WritableMapStripe?, address: AddressDetails?) -> Unit)? = null
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                             savedInstanceState: Bundle?): View {
@@ -68,7 +68,7 @@ class AddressLauncherFragment : Fragment() {
   }
 
   fun presentAddressSheet(
-    context: ReactContext,
+    context: ReactContextStripe,
     appearance: PaymentSheet.Appearance,
     defaultAddress: AddressDetails?,
     allowedCountries: Set<String>,
@@ -77,7 +77,7 @@ class AddressLauncherFragment : Fragment() {
     googlePlacesApiKey: String?,
     autocompleteCountries: Set<String>,
     additionalFields: AddressLauncher.AdditionalFieldsConfiguration?,
-    callback: ((error: WritableMap?, address: AddressDetails?) -> Unit)) {
+    callback: ((error: WritableMapStripe?, address: AddressDetails?) -> Unit)) {
     configuration = AddressLauncher.Configuration(
       appearance = appearance,
       address = defaultAddress,

@@ -31,5 +31,5 @@ extension ExtensionHandleCardAction on Stripe {
 @anonymous
 @JS()
 abstract class _JS {
-  external Promise<dynamic> handleCardAction(dynamic clientSecret);
+  external PromiseStripe<dynamic> handleCardAction(dynamic clientSecret);
 }

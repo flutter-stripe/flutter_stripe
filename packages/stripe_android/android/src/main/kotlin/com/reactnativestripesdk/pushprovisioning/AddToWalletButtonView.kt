@@ -13,21 +13,21 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.bridge.WritableMap
-import com.facebook.react.uimanager.ThemedReactContext
-import com.facebook.react.uimanager.UIManagerModule
-import com.facebook.react.uimanager.events.EventDispatcher
+import com.facebook.react.bridge.ReadableMapStripe
+import com.facebook.react.bridge.WritableMapStripe
+import com.facebook.react.uimanager.ThemedReactContextStripe
+import com.facebook.react.uimanager.UIManagerModuleStripe
+import com.facebook.react.uimanager.events.EventDispatcherStripe
 import com.reactnativestripesdk.utils.createError
 
 
-class AddToWalletButtonView(private val context: ThemedReactContext, private val requestManager: RequestManager) : AppCompatImageView(context) {
-  private var cardDetails: ReadableMap? = null
+class AddToWalletButtonView(private val context: ThemedReactContextStripe, private val requestManager: RequestManager) : AppCompatImageView(context) {
+  private var cardDetails: ReadableMapStripe? = null
   private var ephemeralKey: String? = null
-  private var sourceMap: ReadableMap? = null
-  private var token: ReadableMap? = null
+  private var sourceMap: ReadableMapStripe? = null
+  private var token: ReadableMapStripe? = null
 
-  private var eventDispatcher: EventDispatcher? = context.getNativeModule(UIManagerModule::class.java)?.eventDispatcher
+  private var eventDispatcher: EventDispatcherStripe? = context.getNativeModule(UIManagerModuleStripe::class.java)?.eventDispatcher
   private var loadedSource: Any? = null
   private var heightOverride: Int = 0
   private var widthOverride: Int = 0
@@ -100,7 +100,7 @@ class AddToWalletButtonView(private val context: ThemedReactContext, private val
     }
   }
 
-  private fun getUrlOrResourceId(sourceMap: ReadableMap?): Any? {
+  private fun getUrlOrResourceId(sourceMap: ReadableMapStripe?): Any? {
     sourceMap?.getString("uri")?.let {
       return if (URLUtil.isValidUrl(it)) {
         // Debug mode, Image.resolveAssetSource resolves to local http:// URL
@@ -128,23 +128,23 @@ class AddToWalletButtonView(private val context: ThemedReactContext, private val
     requestManager.clear(this)
   }
 
-  fun setSourceMap(map: ReadableMap) {
+  fun setSourceMap(map: ReadableMapStripe) {
     sourceMap = map
   }
 
-  fun setCardDetails(detailsMap: ReadableMap) {
+  fun setCardDetails(detailsMap: ReadableMapStripe) {
     cardDetails = detailsMap
   }
 
-  fun setEphemeralKey(map: ReadableMap) {
+  fun setEphemeralKey(map: ReadableMapStripe) {
     ephemeralKey = map.toHashMap().toString()
   }
 
-  fun setToken(map: ReadableMap?) {
+  fun setToken(map: ReadableMapStripe?) {
     token = map
   }
 
-  fun dispatchEvent(error: WritableMap?) {
+  fun dispatchEvent(error: WritableMapStripe?) {
     eventDispatcher?.dispatchEvent(
       AddToWalletCompleteEvent(
         id,

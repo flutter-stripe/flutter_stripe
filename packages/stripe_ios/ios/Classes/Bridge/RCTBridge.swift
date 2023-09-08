@@ -62,7 +62,7 @@ class RCTBridge {
     
 }
 
-public class RCTEventEmitter : NSObject {
+public class RCTEventEmitterStripe : NSObject {
     
     
     func sendEvent(withName name: String, body: [String : Any]) {

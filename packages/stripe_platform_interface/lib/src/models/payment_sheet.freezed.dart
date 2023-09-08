@@ -1257,7 +1257,7 @@ mixin _$PaymentSheetApplePay {
   /// Use this for a different payment request than a one time request.
   PaymentRequestType? get request => throw _privateConstructorUsedError;
 
-  /// Callback function for setting the order details (retrieved from your server) to give users the
+  /// CallbackStripe function for setting the order details (retrieved from your server) to give users the
   /// ability to track and manage their purchases in Wallet. Stripe calls your implementation after the
   /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
   /// function, or else the Apple Pay sheet will hang.
@@ -1449,7 +1449,7 @@ class _$_PaymentSheetApplePay implements _PaymentSheetApplePay {
   @override
   final PaymentRequestType? request;
 
-  /// Callback function for setting the order details (retrieved from your server) to give users the
+  /// CallbackStripe function for setting the order details (retrieved from your server) to give users the
   /// ability to track and manage their purchases in Wallet. Stripe calls your implementation after the
   /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
   /// function, or else the Apple Pay sheet will hang.
@@ -1534,7 +1534,7 @@ abstract class _PaymentSheetApplePay implements PaymentSheetApplePay {
   PaymentRequestType? get request;
   @override
 
-  /// Callback function for setting the order details (retrieved from your server) to give users the
+  /// CallbackStripe function for setting the order details (retrieved from your server) to give users the
   /// ability to track and manage their purchases in Wallet. Stripe calls your implementation after the
   /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
   /// function, or else the Apple Pay sheet will hang.

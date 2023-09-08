@@ -2,7 +2,7 @@ package com.flutter.stripe
 
 import android.content.Context
 import android.view.View
-import com.facebook.react.uimanager.ThemedReactContext
+import com.facebook.react.uimanager.ThemedReactContextStripe
 import com.reactnativestripesdk.GooglePayButtonManager
 import com.reactnativestripesdk.GooglePayButtonView
 import com.reactnativestripesdk.StripeSdkModule
@@ -20,7 +20,7 @@ class StripeSdkGooglePayButtonPlatformView(
 ) : PlatformView {
 
     private val payButton: GooglePayButtonView = googlePayButtonManager.createViewInstance(
-        ThemedReactContext(
+        ThemedReactContextStripe(
             sdkAccessor().reactContext,
             channel,
             sdkAccessor

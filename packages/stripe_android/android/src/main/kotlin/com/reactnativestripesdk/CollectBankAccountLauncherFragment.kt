@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.facebook.react.bridge.Promise
-import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.bridge.PromiseStripe
+import com.facebook.react.bridge.ReactApplicationContextStripe
 import com.reactnativestripesdk.utils.*
 import com.reactnativestripesdk.utils.createError
 import com.reactnativestripesdk.utils.createResult
@@ -22,13 +22,13 @@ import com.stripe.android.payments.bankaccount.CollectBankAccountLauncher
 import com.stripe.android.payments.bankaccount.navigation.CollectBankAccountResult
 
 class CollectBankAccountLauncherFragment(
-  private val context: ReactApplicationContext,
+  private val context: ReactApplicationContextStripe,
   private val publishableKey: String,
   private val stripeAccountId: String?,
   private val clientSecret: String,
   private val isPaymentIntent: Boolean,
   private val collectParams:  CollectBankAccountConfiguration.USBankAccount,
-  private val promise: Promise
+  private val promise: PromiseStripe
 ) : Fragment() {
   private lateinit var collectBankAccountLauncher: CollectBankAccountLauncher
 

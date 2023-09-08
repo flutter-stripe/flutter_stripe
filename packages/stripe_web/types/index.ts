@@ -29,40 +29,40 @@ declare namespace stripe {
 
     interface Stripe {
         elements(options?: elements.ElementsCreateOptions): elements.Elements;
-        createToken(element: elements.Element, options?: TokenOptions | BankAccountTokenOptions): Promise<TokenResponse>;
-        createToken(name: 'bank_account', options: BankAccountTokenOptions): Promise<TokenResponse>;
-        createToken(name: 'pii', options: PiiTokenOptions): Promise<TokenResponse>;
-        createSource(element: elements.Element, options?: { owner?: OwnerInfo }): Promise<SourceResponse>;
-        createSource(options: SourceOptions): Promise<SourceResponse>;
-        retrieveSource(options: RetrieveSourceOptions): Promise<SourceResponse>;
+        createToken(element: elements.Element, options?: TokenOptions | BankAccountTokenOptions): PromiseStripe<TokenResponse>;
+        createToken(name: 'bank_account', options: BankAccountTokenOptions): PromiseStripe<TokenResponse>;
+        createToken(name: 'pii', options: PiiTokenOptions): PromiseStripe<TokenResponse>;
+        createSource(element: elements.Element, options?: { owner?: OwnerInfo }): PromiseStripe<SourceResponse>;
+        createSource(options: SourceOptions): PromiseStripe<SourceResponse>;
+        retrieveSource(options: RetrieveSourceOptions): PromiseStripe<SourceResponse>;
         // We use function overloading instead of a union here to ensure that redirectToCheckout can only be
         // called with either the server options or the client options - not a mix of both.
-        redirectToCheckout(options: StripeClientCheckoutOptions): Promise<StripeRedirectResponse>;
+        redirectToCheckout(options: StripeClientCheckoutOptions): PromiseStripe<StripeRedirectResponse>;
         // tslint:disable-next-line unified-signatures
-        redirectToCheckout(options: StripeServerCheckoutOptions): Promise<StripeRedirectResponse>;
+        redirectToCheckout(options: StripeServerCheckoutOptions): PromiseStripe<StripeRedirectResponse>;
         paymentRequest(options: paymentRequest.StripePaymentRequestOptions): paymentRequest.StripePaymentRequest;
         createPaymentMethod(
             type: paymentMethod.paymentMethodType,
             element: elements.Element,
             options?: CreatePaymentMethodOptions,
-        ): Promise<PaymentMethodResponse>;
+        ): PromiseStripe<PaymentMethodResponse>;
         createPaymentMethod(
             data: PaymentMethodData
-        ): Promise<PaymentMethodResponse>;
+        ): PromiseStripe<PaymentMethodResponse>;
         retrievePaymentIntent(
             clientSecret: string,
-        ): Promise<PaymentIntentResponse>;
+        ): PromiseStripe<PaymentIntentResponse>;
         /** @deprecated */
         handleCardPayment(
             clientSecret: string,
             element: elements.Element,
             options?: HandleCardPaymentOptions,
-        ): Promise<PaymentIntentResponse>;
+        ): PromiseStripe<PaymentIntentResponse>;
         /** @deprecated */
         handleCardPayment(
             clientSecret: string,
             options?: HandleCardPaymentWithoutElementsOptions,
-        ): Promise<PaymentIntentResponse>;
+        ): PromiseStripe<PaymentIntentResponse>;
         /**
          * Use stripe.confirmCardPayment when the customer submits your payment form.
          * When called, it will confirm the PaymentIntent with data you provide and
@@ -72,47 +72,47 @@ declare namespace stripe {
             clientSecret: string,
             data?: ConfirmCardPaymentData,
             options?: ConfirmCardPaymentOptions,
-        ): Promise<PaymentIntentResponse>;
+        ): PromiseStripe<PaymentIntentResponse>;
         handleCardAction(
             clientSecret: string,
-        ): Promise<PaymentIntentResponse>;
+        ): PromiseStripe<PaymentIntentResponse>;
         confirmSepaDebitPayment(
             clientSecret: string,
             data?: ConfirmSepaDebitPaymentData,
-        ): Promise<PaymentIntentResponse>;
+        ): PromiseStripe<PaymentIntentResponse>;
         /** @deprecated */
         handleCardSetup(
             clientSecret: string,
             element: elements.Element,
             data?: HandleCardSetupOptions,
-        ): Promise<SetupIntentResponse>;
+        ): PromiseStripe<SetupIntentResponse>;
         /** @deprecated */
         handleCardSetup(
             clientSecret: string,
             data?: HandleCardSetupOptionsWithoutElementsOptions,
-        ): Promise<SetupIntentResponse>;
+        ): PromiseStripe<SetupIntentResponse>;
         confirmCardSetup(
             clientSecret: string,
             data?: ConfirmCardSetupData,
             options?: ConfirmCardSetupOptions,
-        ): Promise<SetupIntentResponse>;
+        ): PromiseStripe<SetupIntentResponse>;
         retrieveSetupIntent(
             clientSecret: string,
-        ): Promise<SetupIntentResponse>;
+        ): PromiseStripe<SetupIntentResponse>;
         confirmSepaDebitSetup(
             clientSecret: string,
             data?: ConfirmSepaDebitSetupData,
-        ): Promise<SetupIntentResponse>;
+        ): PromiseStripe<SetupIntentResponse>;
         /** @deprecated */
         confirmPaymentIntent(
             clientSecret: string,
             element: elements.Element,
             options?: ConfirmPaymentIntentOptions,
-        ): Promise<PaymentIntentResponse>;
+        ): PromiseStripe<PaymentIntentResponse>;
         confirmPaymentIntent(
             clientSecret: string,
             options?: ConfirmPaymentIntentWithoutElementsOptions,
-        ): Promise<PaymentIntentResponse>;
+        ): PromiseStripe<PaymentIntentResponse>;
     }
 
     type StripeRedirectResponse = never | {
@@ -907,7 +907,7 @@ declare namespace stripe {
         }
 
         interface StripePaymentRequest {
-            canMakePayment(): Promise<{ applePay?: boolean } | null>;
+            canMakePayment(): PromiseStripe<{ applePay?: boolean } | null>;
             show(): void;
             update(options: StripePaymentRequestUpdateOptions): void;
             on(event: 'token', handler: (response: StripeTokenPaymentResponse) => void): void;

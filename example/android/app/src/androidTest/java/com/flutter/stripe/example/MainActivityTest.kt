@@ -1,7 +1,7 @@
 package com.flutter.stripe.example
 
 import androidx.test.rule.ActivityTestRule
-import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.bridge.ReadableMapStripe
 import dev.flutter.plugins.integration_test.FlutterTestRunner
 import org.json.JSONObject
 import org.junit.Rule

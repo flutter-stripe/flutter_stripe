@@ -8,12 +8,12 @@ import android.view.View
 import android.view.View.OnFocusChangeListener
 import android.widget.FrameLayout
 import androidx.core.view.setMargins
-import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.uimanager.PixelUtil
-import com.facebook.react.uimanager.ThemedReactContext
-import com.facebook.react.uimanager.UIManagerModule
-import com.facebook.react.uimanager.events.EventDispatcher
-import com.facebook.react.views.text.ReactTypefaceUtils
+import com.facebook.react.bridge.ReadableMapStripe
+import com.facebook.react.uimanager.PixelUtilStripe
+import com.facebook.react.uimanager.ThemedReactContextStripe
+import com.facebook.react.uimanager.UIManagerModuleStripe
+import com.facebook.react.uimanager.events.EventDispatcherStripe
+import com.facebook.react.views.text.ReactTypefaceUtilsStripe
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
@@ -29,9 +29,9 @@ import com.stripe.android.view.CardInputListener
 import com.flutter.stripe.R
 
 
-class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
+class CardFormView(context: ThemedReactContextStripe) : FrameLayout(context) {
   internal var cardForm: CardFormView = CardFormView(context, null, R.style.StripeCardFormView_Borderless)
-  private var mEventDispatcher: EventDispatcher? = context.getNativeModule(UIManagerModule::class.java)?.eventDispatcher
+  private var mEventDispatcher: EventDispatcherStripe? = context.getNativeModule(UIManagerModuleStripe::class.java)?.eventDispatcher
   private var dangerouslyGetFullCardDetails: Boolean = false
   private var currentFocusedField: String? = null
   var cardParams: PaymentMethodCreateParams.Card? = null
@@ -56,7 +56,7 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
     cardFormViewBinding.postalCodeContainer.visibility = visibility
   }
 
-  fun setDefaultValues(defaults: ReadableMap) {
+  fun setDefaultValues(defaults: ReadableMapStripe) {
     setCountry(defaults.getString("countryCode"))
   }
 
@@ -72,7 +72,7 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
     setPostalCodeFilter()
   }
 
-  fun setPlaceHolders(value: ReadableMap) {
+  fun setPlaceHolders(value: ReadableMapStripe) {
     val numberPlaceholder = getValOr(value, "number", null)
     val expirationPlaceholder = getValOr(value, "expiration", null)
     val cvcPlaceholder = getValOr(value, "cvc", null)
@@ -124,7 +124,7 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
       CardFocusEvent(id, currentFocusedField))
   }
 
-  fun setCardStyle(value: ReadableMap) {
+  fun setCardStyle(value: ReadableMapStripe) {
     val backgroundColor = getValOr(value, "backgroundColor", null)
     val textColor = getValOr(value, "textColor", null)
     val borderWidth = getIntOrNull(value, "borderWidth")
@@ -173,7 +173,7 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
     }
     fontFamily?.let {
       // Load custom font from assets, and fallback to default system font
-      val typeface = ReactTypefaceUtils.applyStyles(null, -1, -1, it.takeIf { it.isNotEmpty() }, context.assets)
+      val typeface = ReactTypefaceUtilsStripe.applyStyles(null, -1, -1, it.takeIf { it.isNotEmpty() }, context.assets)
       for (binding in editTextBindings) {
         binding.typeface = typeface
       }
@@ -200,14 +200,14 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
     cardFormViewBinding.cardMultilineWidgetContainer.background = MaterialShapeDrawable(
       ShapeAppearanceModel()
         .toBuilder()
-        .setAllCorners(CornerFamily.ROUNDED, PixelUtil.toPixelFromDIP(borderRadius.toDouble()))
+        .setAllCorners(CornerFamily.ROUNDED, PixelUtilStripe.toPixelFromDIP(borderRadius.toDouble()))
         .build()
     ).also { shape ->
       shape.strokeWidth = 0.0f
       shape.strokeColor = ColorStateList.valueOf(Color.parseColor("#000000"))
       shape.fillColor = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
       borderWidth?.let {
-        shape.strokeWidth = PixelUtil.toPixelFromDIP(it.toDouble())
+        shape.strokeWidth = PixelUtilStripe.toPixelFromDIP(it.toDouble())
       }
       borderColor?.let {
         shape.strokeColor = ColorStateList.valueOf(Color.parseColor(it))
