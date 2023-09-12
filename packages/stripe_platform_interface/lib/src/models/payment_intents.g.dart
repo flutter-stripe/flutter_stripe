@@ -74,6 +74,7 @@ const _$CaptureMethodEnumMap = {
 const _$ConfirmationMethodEnumMap = {
   ConfirmationMethod.Manual: 'Manual',
   ConfirmationMethod.Automatic: 'Automatic',
+  ConfirmationMethod.Unknown: 'Unknown',
 };
 
 _$_ShippingDetails _$$_ShippingDetailsFromJson(Map<String, dynamic> json) =>

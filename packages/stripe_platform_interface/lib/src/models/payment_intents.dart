@@ -79,6 +79,9 @@ enum ConfirmationMethod {
 
   /// Payment intent will be confirmed using the publishable key.
   Automatic,
+
+  /// Unknown confirmation method.
+  Unknown,
 }
 
 //nextActionMap.putString("type", "urlRedirect")
