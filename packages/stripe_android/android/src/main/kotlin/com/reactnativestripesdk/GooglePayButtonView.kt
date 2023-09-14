@@ -7,7 +7,7 @@ import com.facebook.react.uimanager.ThemedReactContext
 import com.flutter.stripe.R
 
 class GooglePayButtonView(private val context: ThemedReactContext) : FrameLayout(context) {
-  private var button: View? = null
+  public var button: View? = null
   private var type: Int? = null
 
   fun initialize() {

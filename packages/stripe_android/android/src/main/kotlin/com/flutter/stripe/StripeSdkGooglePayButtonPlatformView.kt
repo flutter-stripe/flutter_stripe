@@ -32,7 +32,7 @@ class StripeSdkGooglePayButtonPlatformView(
             googlePayButtonManager.type(payButton, creationParams["type"] as Int)
         }
         payButton.initialize()
-        payButton.isClickable=true
+        payButton.button?.isClickable=true
         payButton.getChildAt(0).setOnClickListener {
             channel.invokeMethod("onPressed", null)
         }
