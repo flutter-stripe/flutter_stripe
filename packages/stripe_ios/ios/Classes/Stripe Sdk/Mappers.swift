@@ -543,7 +543,7 @@ class Mappers {
         }
 
         let shipping = STPPaymentIntentShippingDetailsParams(address: shippingAddress, name: shippingDetails["name"] as? String ?? "")
-
+        shipping.phone = shippingDetails["phone"] as? String ?? ""
         return shipping
     }
 
