@@ -150,7 +150,10 @@ class Stripe {
   }) async {
     try {
       await _awaitForSettings();
-      return await _platform.platformPayCreatePaymentMethod(params: params);
+      return await _platform.platformPayCreatePaymentMethod(
+        params: params,
+        usesDeprecatedTokenFlow: usesDeprecatedTokenFlow,
+      );
     } on StripeError {
       rethrow;
     }

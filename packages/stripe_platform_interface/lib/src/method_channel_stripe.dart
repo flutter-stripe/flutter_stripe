@@ -508,6 +508,7 @@ class MethodChannelStripe extends StripePlatform {
       data = {
         'applePay': {
           ...params.applePayParams.toJson(),
+          'usesDeprecatedTokenFlow': usesDeprecatedTokenFlow,
         },
       };
     } else if (params is PlatformPayPaymentMethodParamsGooglePay) {
@@ -515,6 +516,7 @@ class MethodChannelStripe extends StripePlatform {
         'googlePay': {
           ...params.googlePayParams.toJson(),
           ...params.googlePayPaymentMethodParams.toJson(),
+          'usesDeprecatedTokenFlow': usesDeprecatedTokenFlow,
         },
       };
     }
