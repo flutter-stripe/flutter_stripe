@@ -138,6 +138,13 @@ void main() {
       );
     });
 
+    test('parses intent with requires_capture status', () {
+      expect(
+        PaymentIntent.fromJson(_paymentIntentWithStatusJson('requires_capture')), 
+        _expectedPaymentIntentWithStatus(PaymentIntentsStatus.requiresCapture)
+      );
+    });
+
     test('parses intent with requires_confirmation status', () {
       expect(
         PaymentIntent.fromJson(_paymentIntentWithStatusJson('requires_confirmation')), 

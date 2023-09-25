@@ -195,6 +195,7 @@ const _$PaymentIntentsStatusEnumMap = {
   PaymentIntentsStatus.requiresPaymentMethod: 'requires_payment_method',
   PaymentIntentsStatus.requiresConfirmation: 'requires_confirmation',
   PaymentIntentsStatus.requiresAction: 'requires_action',
+  PaymentIntentsStatus.requiresCapture: 'requires_capture',
   PaymentIntentsStatus.processing: 'processing',
   PaymentIntentsStatus.succeeded: 'succeeded',
   PaymentIntentsStatus.canceled: 'canceled',
