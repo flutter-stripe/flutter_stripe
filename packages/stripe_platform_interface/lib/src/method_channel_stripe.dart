@@ -150,7 +150,8 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<SetupIntent> handleNextActionForSetupIntent(String setupIntentClientSecret,
+  Future<SetupIntent> handleNextActionForSetupIntent(
+      String setupIntentClientSecret,
       {String? returnURL}) async {
     final result = await _methodChannel
         .invokeMapMethod<String, dynamic>('handleNextAction', {
