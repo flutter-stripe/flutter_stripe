@@ -131,7 +131,7 @@ void main() {
       );
     });
 
-    test('parses intent with requires_action status', () {
+    test('parses intent with requires_action status', () {      
       expect(
         PaymentIntent.fromJson(_paymentIntentWithStatusJson('requires_action')), 
         _expectedPaymentIntentWithStatus(PaymentIntentsStatus.requiresAction)

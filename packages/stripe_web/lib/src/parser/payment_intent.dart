@@ -31,25 +31,35 @@ extension PaymentIntentsStatusExtension on PaymentIntentsStatus {
       case 'Succeeded':
       case 'succeeded':
         return PaymentIntentsStatus.Succeeded;
+        
       case 'RequiresPaymentMethod':
       case 'requires_payment_method':
+      case 'requiresPaymentMethod':
         return PaymentIntentsStatus.RequiresPaymentMethod;
+
       case 'RequiresConfirmation':
       case 'requires_confirmation':
+      case 'requiresConfirmation':
         return PaymentIntentsStatus.RequiresConfirmation;
 
       case 'Canceled':
       case 'canceled':
         return PaymentIntentsStatus.Canceled;
+
       case 'Processing':
       case 'processing':
         return PaymentIntentsStatus.Processing;
+
       case 'RequiresAction':
       case 'requires_action':
+      case 'requiresAction':
         return PaymentIntentsStatus.RequiresAction;
+
       case 'RequiresCapture':
       case 'requires_capture':
+      case 'requiresCapture':
         return PaymentIntentsStatus.RequiresCapture;
+        
       case 'Unknown':
         return PaymentIntentsStatus.Unknown;
     }
