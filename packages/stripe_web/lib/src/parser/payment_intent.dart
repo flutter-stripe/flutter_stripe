@@ -31,7 +31,7 @@ extension PaymentIntentsStatusExtension on PaymentIntentsStatus {
       case 'Succeeded':
       case 'succeeded':
         return PaymentIntentsStatus.Succeeded;
-        
+
       case 'RequiresPaymentMethod':
       case 'requires_payment_method':
       case 'requiresPaymentMethod':
@@ -59,7 +59,7 @@ extension PaymentIntentsStatusExtension on PaymentIntentsStatus {
       case 'requires_capture':
       case 'requiresCapture':
         return PaymentIntentsStatus.RequiresCapture;
-        
+
       case 'Unknown':
         return PaymentIntentsStatus.Unknown;
     }

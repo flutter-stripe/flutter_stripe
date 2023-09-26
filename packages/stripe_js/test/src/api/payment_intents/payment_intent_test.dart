@@ -116,54 +116,52 @@ void main() {
         ),
       );
     });
-  
+
     test('parses intent with canceled status', () {
-      expect(
-        PaymentIntent.fromJson(_paymentIntentWithStatusJson('canceled')), 
-        _expectedPaymentIntentWithStatus(PaymentIntentsStatus.canceled)
-      );
+      expect(PaymentIntent.fromJson(_paymentIntentWithStatusJson('canceled')),
+          _expectedPaymentIntentWithStatus(PaymentIntentsStatus.canceled));
     });
 
     test('parses intent with processing status', () {
-      expect(
-        PaymentIntent.fromJson(_paymentIntentWithStatusJson('processing')), 
-        _expectedPaymentIntentWithStatus(PaymentIntentsStatus.processing)
-      );
+      expect(PaymentIntent.fromJson(_paymentIntentWithStatusJson('processing')),
+          _expectedPaymentIntentWithStatus(PaymentIntentsStatus.processing));
     });
 
-    test('parses intent with requires_action status', () {      
+    test('parses intent with requires_action status', () {
       expect(
-        PaymentIntent.fromJson(_paymentIntentWithStatusJson('requires_action')), 
-        _expectedPaymentIntentWithStatus(PaymentIntentsStatus.requiresAction)
-      );
+          PaymentIntent.fromJson(
+              _paymentIntentWithStatusJson('requires_action')),
+          _expectedPaymentIntentWithStatus(
+              PaymentIntentsStatus.requiresAction));
     });
 
     test('parses intent with requires_capture status', () {
       expect(
-        PaymentIntent.fromJson(_paymentIntentWithStatusJson('requires_capture')), 
-        _expectedPaymentIntentWithStatus(PaymentIntentsStatus.requiresCapture)
-      );
+          PaymentIntent.fromJson(
+              _paymentIntentWithStatusJson('requires_capture')),
+          _expectedPaymentIntentWithStatus(
+              PaymentIntentsStatus.requiresCapture));
     });
 
     test('parses intent with requires_confirmation status', () {
       expect(
-        PaymentIntent.fromJson(_paymentIntentWithStatusJson('requires_confirmation')), 
-        _expectedPaymentIntentWithStatus(PaymentIntentsStatus.requiresConfirmation)
-      );
+          PaymentIntent.fromJson(
+              _paymentIntentWithStatusJson('requires_confirmation')),
+          _expectedPaymentIntentWithStatus(
+              PaymentIntentsStatus.requiresConfirmation));
     });
 
     test('parses intent with requires_payment_method status', () {
       expect(
-        PaymentIntent.fromJson(_paymentIntentWithStatusJson('requires_payment_method')), 
-        _expectedPaymentIntentWithStatus(PaymentIntentsStatus.requiresPaymentMethod)
-      );
+          PaymentIntent.fromJson(
+              _paymentIntentWithStatusJson('requires_payment_method')),
+          _expectedPaymentIntentWithStatus(
+              PaymentIntentsStatus.requiresPaymentMethod));
     });
 
     test('parses intent with succeeded status', () {
-      expect(
-        PaymentIntent.fromJson(_paymentIntentWithStatusJson('succeeded')), 
-        _expectedPaymentIntentWithStatus(PaymentIntentsStatus.succeeded)
-      );
+      expect(PaymentIntent.fromJson(_paymentIntentWithStatusJson('succeeded')),
+          _expectedPaymentIntentWithStatus(PaymentIntentsStatus.succeeded));
     });
   });
 }
@@ -215,21 +213,20 @@ Map<String, dynamic> _paymentIntentWithStatusJson(String status) {
 
 PaymentIntent _expectedPaymentIntentWithStatus(PaymentIntentsStatus status) {
   return PaymentIntent(
-    id: "pi_1Dsr1T2eZvKYlo2C7KHhBRmV",
-    amount: 100,
-    amountCapturable: 0,
-    amountDetails: PaymentIntentAmountDetails(
-      tip: PaymentIntentTip(),
-    ),
-    amountReceived: 0,
-    clientSecret:
-        "pi_1Dsr1T2eZvKYlo2C7KHhBRmV_secret_qH4mhHMXKbJjDgyVuBao7MkBq",
-    currency: "usd",
-    created: 1547555283,
-    livemode: false,
-    paymentMethodTypes: [
-      PaymentMethodType.card,
-    ],
-    status: status
-  );
+      id: "pi_1Dsr1T2eZvKYlo2C7KHhBRmV",
+      amount: 100,
+      amountCapturable: 0,
+      amountDetails: PaymentIntentAmountDetails(
+        tip: PaymentIntentTip(),
+      ),
+      amountReceived: 0,
+      clientSecret:
+          "pi_1Dsr1T2eZvKYlo2C7KHhBRmV_secret_qH4mhHMXKbJjDgyVuBao7MkBq",
+      currency: "usd",
+      created: 1547555283,
+      livemode: false,
+      paymentMethodTypes: [
+        PaymentMethodType.card,
+      ],
+      status: status);
 }
