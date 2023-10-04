@@ -6,6 +6,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -353,11 +354,15 @@ class PaymentSheetFragment(
       val countryCode = params.getString("merchantCountryCode").orEmpty()
       val currencyCode = params.getString("currencyCode").orEmpty()
       val testEnv = params.getBoolean("testEnv")
+      val amount = params.getString("amount")?.toLongOrNull()
+      val label = params.getString("label")
 
       return PaymentSheet.GooglePayConfiguration(
         environment = if (testEnv) PaymentSheet.GooglePayConfiguration.Environment.Test else PaymentSheet.GooglePayConfiguration.Environment.Production,
         countryCode = countryCode,
-        currencyCode = currencyCode
+        currencyCode = currencyCode,
+        amount = amount,
+        label = label
       )
     }
 
@@ -399,10 +404,16 @@ class PaymentSheetFragment(
 }
 
 fun getBitmapFromVectorDrawable(context: Context?, drawableId: Int): Bitmap? {
-  var drawable = AppCompatResources.getDrawable(context!!, drawableId) ?: return null
+  val drawable = AppCompatResources.getDrawable(context!!, drawableId) ?: return null
+  return getBitmapFromDrawable(drawable)
+}
 
-  drawable = DrawableCompat.wrap(drawable).mutate()
-  val bitmap = Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
+fun getBitmapFromDrawable(drawable: Drawable): Bitmap? {
+  val drawableCompat = DrawableCompat.wrap(drawable).mutate()
+  if (drawableCompat.intrinsicWidth <= 0 || drawableCompat.intrinsicHeight <= 0) {
+    return null
+  }
+  val bitmap = Bitmap.createBitmap(drawableCompat.intrinsicWidth, drawableCompat.intrinsicHeight, Bitmap.Config.ARGB_8888)
   bitmap.eraseColor(Color.WHITE)
   val canvas = Canvas(bitmap)
   drawable.setBounds(0, 0, canvas.width, canvas.height)

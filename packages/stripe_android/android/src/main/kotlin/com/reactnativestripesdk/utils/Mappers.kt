@@ -490,6 +490,18 @@ internal fun mapNextAction(type: NextActionType?, data: NextActionData?): Writab
     NextActionType.CashAppRedirect, NextActionType.BlikAuthorize, NextActionType.UseStripeSdk, NextActionType.UpiAwaitNotification,  null -> {
       return null
     }
+    NextActionType.DisplayBoletoDetails -> {
+      (data as? NextActionData.DisplayBoletoDetails)?.let {
+        nextActionMap.putString("type", "boletoVoucher")
+        nextActionMap.putString("voucherURL", it.hostedVoucherUrl)
+      }
+    }
+    NextActionType.DisplayKonbiniDetails -> {
+      (data as? NextActionData.DisplayKonbiniDetails)?.let {
+        nextActionMap.putString("type", "konbiniVoucher")
+        nextActionMap.putString("voucherURL", it.hostedVoucherUrl)
+      }
+    }
   }
   return nextActionMap
 }
@@ -807,11 +819,8 @@ internal fun mapFromSetupIntentResult(setupIntent: SetupIntent): WritableMap {
     map.putMap("lastSetupError", setupError)
   }
 
-  setupIntent.paymentMethodTypes.forEach { code ->
-    val type: PaymentMethod.Type? = PaymentMethod.Type.values().find {
-      code == it.code
-    }
-    type?.let {
+  for (code in setupIntent.paymentMethodTypes) {
+    PaymentMethod.Type.fromCode(code)?.let {
       paymentMethodTypes.pushString(mapPaymentMethodType(it))
     }
   }
@@ -880,4 +889,23 @@ fun toBundleObject(readableMap: ReadableMap?): Bundle {
     }
   }
   return result
+}
+
+internal fun mapFromShippingContact(googlePayResult: GooglePayResult): WritableMap {
+  val map = WritableNativeMap()
+  map.putString("emailAddress", googlePayResult.email)
+  val name = WritableNativeMap()
+  googlePayResult.name
+  name.putString("givenName", googlePayResult.shippingInformation?.name)
+  map.putMap("name", name)
+  map.putString("phoneNumber", googlePayResult.phoneNumber)
+  val postalAddress = WritableNativeMap()
+  postalAddress.putString("city", googlePayResult.shippingInformation?.address?.city)
+  postalAddress.putString("country", googlePayResult.shippingInformation?.address?.country)
+  postalAddress.putString("postalCode", googlePayResult.shippingInformation?.address?.postalCode)
+  postalAddress.putString("state", googlePayResult.shippingInformation?.address?.state)
+  postalAddress.putString("street", googlePayResult.shippingInformation?.address?.line1 + "\n" + googlePayResult.shippingInformation?.address?.line2)
+  postalAddress.putString("isoCountryCode", googlePayResult.shippingInformation?.address?.country)
+  map.putMap("postalAddress", postalAddress)
+  return map
 }

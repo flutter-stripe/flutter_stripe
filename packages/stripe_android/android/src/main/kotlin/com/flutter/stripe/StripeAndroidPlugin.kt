@@ -208,6 +208,59 @@ If you continue to have trouble, follow this discussion to get some support http
                 stripeSdk.removeListeners(count = call.requiredArgument("count"))
                 result.success("OK")
             }
+            "initCustomerSheet" -> {
+                stripeSdk.initCustomerSheet(
+                    params = call.requiredArgument("params"),
+                    customerAdapterOverrides = call.requiredArgument("customerAdapterOverrides"),
+                    promise = Promise(result)
+                )
+            }
+            "presentCustomerSheet" -> {
+                stripeSdk.presentCustomerSheet(
+                    params = call.requiredArgument("params"),
+                    promise = Promise(result)
+                )
+            }
+            "retrieveCustomerSheetPaymentOptionSelection" -> {
+                stripeSdk.retrieveCustomerSheetPaymentOptionSelection(
+                    promise = Promise(result)
+                )
+            }
+            "customerAdapterFetchPaymentMethodsCallback" -> {
+                stripeSdk.customerAdapterFetchPaymentMethodsCallback(
+                    paymentMethodJsonObjects = call.requiredArgument("paymentMethodJsonObjects"),
+                    promise = Promise(result)
+                )
+            }
+            "customerAdapterAttachPaymentMethodCallback" -> {
+                stripeSdk.customerAdapterAttachPaymentMethodCallback(
+                    paymentMethodJson = call.requiredArgument("paymentMethodJson"),
+                    promise = Promise(result)
+                )
+            }
+            "customerAdapterDetachPaymentMethodCallback" -> {
+                stripeSdk.customerAdapterDetachPaymentMethodCallback(
+                    paymentMethodJson = call.requiredArgument("paymentMethodJson"),
+                    promise = Promise(result)
+                )
+            }
+            "customerAdapterSetSelectedPaymentOptionCallback" -> {
+                stripeSdk.customerAdapterSetSelectedPaymentOptionCallback(
+                    promise = Promise(result)
+                )
+            }
+            "customerAdapterFetchSelectedPaymentOptionCallback" -> {
+                stripeSdk.customerAdapterFetchSelectedPaymentOptionCallback(
+                    paymentOption = call.optionalArgument("paymentOption"),
+                    promise = Promise(result)
+                )
+            }
+            "customerAdapterSetupIntentClientSecretForCustomerAttachCallback" -> {
+                stripeSdk.customerAdapterSetupIntentClientSecretForCustomerAttachCallback(
+                    clientSecret = call.requiredArgument("clientSecret"),
+                    promise = Promise(result)
+                )
+            }
             else -> result.notImplemented()
         }
     }
