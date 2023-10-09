@@ -712,6 +712,42 @@ app.post('/payment-intent-for-payment-sheet', async (req, res) => {
   }
 });
 
+app.post('/create-checkout-session', async (req, res) => {
+  console.log(`Called /create-checkout-session`)
+  const {
+    port,
+  }: { port?: string; } = req.body;
+  var effectivePort = port ?? 8080;
+  const { secret_key } = getKeys();
+
+  const stripe = new Stripe(secret_key as string, {
+    apiVersion: '2023-08-16',
+    typescript: true,
+  });
+
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: [
+      {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: 'Stubborn Attachments',
+            images: ['https://i.imgur.com/EHyR2nP.png'],
+          },
+          unit_amount: 2000,
+        },
+        quantity: 1,
+      },
+    ],
+    mode: 'payment',
+    success_url: `https://checkout.stripe.dev/success`,
+    cancel_url: `https://checkout.stripe.dev/cancel`,
+
+  });
+  return res.json({ id: session.id });
+});
+
 app.listen(4242, (): void =>
   console.log(`Node server listening on port ${4242}!`)
 );
