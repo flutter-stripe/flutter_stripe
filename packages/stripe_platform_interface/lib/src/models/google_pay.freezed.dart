@@ -249,6 +249,12 @@ mixin _$GooglePayInitParams {
   /// wallet has existing payment methods.
   bool get existingPaymentMethodRequired => throw _privateConstructorUsedError;
 
+  /// An optional label to display with the amount. Google Pay may or may not display this label depending on its own internal logic. Defaults to a generic label if none is provided.
+  String? get label => throw _privateConstructorUsedError;
+
+  /// An optional amount to display for setup intents. Google Pay may or may not display this amount depending on its own internal logic. Defaults to 0 if none is provided.
+  double? get amount => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $GooglePayInitParamsCopyWith<GooglePayInitParams> get copyWith =>
@@ -267,7 +273,9 @@ abstract class $GooglePayInitParamsCopyWith<$Res> {
       bool testEnv,
       BillingAddressConfig? billingAddressConfig,
       bool isEmailRequired,
-      bool existingPaymentMethodRequired});
+      bool existingPaymentMethodRequired,
+      String? label,
+      double? amount});
 
   $BillingAddressConfigCopyWith<$Res>? get billingAddressConfig;
 }
@@ -291,6 +299,8 @@ class _$GooglePayInitParamsCopyWithImpl<$Res, $Val extends GooglePayInitParams>
     Object? billingAddressConfig = freezed,
     Object? isEmailRequired = null,
     Object? existingPaymentMethodRequired = null,
+    Object? label = freezed,
+    Object? amount = freezed,
   }) {
     return _then(_value.copyWith(
       merchantName: null == merchantName
@@ -317,6 +327,14 @@ class _$GooglePayInitParamsCopyWithImpl<$Res, $Val extends GooglePayInitParams>
           ? _value.existingPaymentMethodRequired
           : existingPaymentMethodRequired // ignore: cast_nullable_to_non_nullable
               as bool,
+      label: freezed == label
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String?,
+      amount: freezed == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double?,
     ) as $Val);
   }
 
@@ -348,7 +366,9 @@ abstract class _$$_GooglePayInitParamsCopyWith<$Res>
       bool testEnv,
       BillingAddressConfig? billingAddressConfig,
       bool isEmailRequired,
-      bool existingPaymentMethodRequired});
+      bool existingPaymentMethodRequired,
+      String? label,
+      double? amount});
 
   @override
   $BillingAddressConfigCopyWith<$Res>? get billingAddressConfig;
@@ -371,6 +391,8 @@ class __$$_GooglePayInitParamsCopyWithImpl<$Res>
     Object? billingAddressConfig = freezed,
     Object? isEmailRequired = null,
     Object? existingPaymentMethodRequired = null,
+    Object? label = freezed,
+    Object? amount = freezed,
   }) {
     return _then(_$_GooglePayInitParams(
       merchantName: null == merchantName
@@ -397,6 +419,14 @@ class __$$_GooglePayInitParamsCopyWithImpl<$Res>
           ? _value.existingPaymentMethodRequired
           : existingPaymentMethodRequired // ignore: cast_nullable_to_non_nullable
               as bool,
+      label: freezed == label
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String?,
+      amount: freezed == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double?,
     ));
   }
 }
@@ -411,7 +441,9 @@ class _$_GooglePayInitParams implements _GooglePayInitParams {
       this.testEnv = false,
       this.billingAddressConfig,
       this.isEmailRequired = false,
-      this.existingPaymentMethodRequired = true});
+      this.existingPaymentMethodRequired = true,
+      this.label,
+      this.amount});
 
   factory _$_GooglePayInitParams.fromJson(Map<String, dynamic> json) =>
       _$$_GooglePayInitParamsFromJson(json);
@@ -444,9 +476,17 @@ class _$_GooglePayInitParams implements _GooglePayInitParams {
   @JsonKey()
   final bool existingPaymentMethodRequired;
 
+  /// An optional label to display with the amount. Google Pay may or may not display this label depending on its own internal logic. Defaults to a generic label if none is provided.
+  @override
+  final String? label;
+
+  /// An optional amount to display for setup intents. Google Pay may or may not display this amount depending on its own internal logic. Defaults to 0 if none is provided.
+  @override
+  final double? amount;
+
   @override
   String toString() {
-    return 'GooglePayInitParams(merchantName: $merchantName, countryCode: $countryCode, testEnv: $testEnv, billingAddressConfig: $billingAddressConfig, isEmailRequired: $isEmailRequired, existingPaymentMethodRequired: $existingPaymentMethodRequired)';
+    return 'GooglePayInitParams(merchantName: $merchantName, countryCode: $countryCode, testEnv: $testEnv, billingAddressConfig: $billingAddressConfig, isEmailRequired: $isEmailRequired, existingPaymentMethodRequired: $existingPaymentMethodRequired, label: $label, amount: $amount)';
   }
 
   @override
@@ -466,7 +506,9 @@ class _$_GooglePayInitParams implements _GooglePayInitParams {
             (identical(other.existingPaymentMethodRequired,
                     existingPaymentMethodRequired) ||
                 other.existingPaymentMethodRequired ==
-                    existingPaymentMethodRequired));
+                    existingPaymentMethodRequired) &&
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.amount, amount) || other.amount == amount));
   }
 
   @JsonKey(ignore: true)
@@ -478,7 +520,9 @@ class _$_GooglePayInitParams implements _GooglePayInitParams {
       testEnv,
       billingAddressConfig,
       isEmailRequired,
-      existingPaymentMethodRequired);
+      existingPaymentMethodRequired,
+      label,
+      amount);
 
   @JsonKey(ignore: true)
   @override
@@ -502,7 +546,9 @@ abstract class _GooglePayInitParams implements GooglePayInitParams {
       final bool testEnv,
       final BillingAddressConfig? billingAddressConfig,
       final bool isEmailRequired,
-      final bool existingPaymentMethodRequired}) = _$_GooglePayInitParams;
+      final bool existingPaymentMethodRequired,
+      final String? label,
+      final double? amount}) = _$_GooglePayInitParams;
 
   factory _GooglePayInitParams.fromJson(Map<String, dynamic> json) =
       _$_GooglePayInitParams.fromJson;
@@ -532,6 +578,14 @@ abstract class _GooglePayInitParams implements GooglePayInitParams {
   /// When `true` Google Pay is considered ready if the customers's Google Pay
   /// wallet has existing payment methods.
   bool get existingPaymentMethodRequired;
+  @override
+
+  /// An optional label to display with the amount. Google Pay may or may not display this label depending on its own internal logic. Defaults to a generic label if none is provided.
+  String? get label;
+  @override
+
+  /// An optional amount to display for setup intents. Google Pay may or may not display this amount depending on its own internal logic. Defaults to 0 if none is provided.
+  double? get amount;
   @override
   @JsonKey(ignore: true)
   _$$_GooglePayInitParamsCopyWith<_$_GooglePayInitParams> get copyWith =>

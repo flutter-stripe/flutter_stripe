@@ -172,6 +172,8 @@ _$_PaymentSheetGooglePay _$$_PaymentSheetGooglePayFromJson(
       merchantCountryCode: json['merchantCountryCode'] as String,
       currencyCode: json['currencyCode'] as String?,
       testEnv: json['testEnv'] as bool? ?? false,
+      label: json['label'] as String?,
+      amount: json['amount'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentSheetGooglePayToJson(
@@ -180,6 +182,8 @@ Map<String, dynamic> _$$_PaymentSheetGooglePayToJson(
       'merchantCountryCode': instance.merchantCountryCode,
       'currencyCode': instance.currencyCode,
       'testEnv': instance.testEnv,
+      'label': instance.label,
+      'amount': instance.amount,
     };
 
 _$_PaymentSheetAppearance _$$_PaymentSheetAppearanceFromJson(
