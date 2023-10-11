@@ -101,7 +101,7 @@ void main() {
                 'id': 'cvcResultToken',
                 'type': 'Card',
                 'livemode': true,
-                'created': 1630670419
+                'created': '1630670419'
               }
             },
           ).methodChannel,
@@ -572,6 +572,54 @@ void main() {
                 token: 'foo'),
           ),
         );
+      });
+    });
+
+    group('init customer sheet', () {
+      late Completer<void> completer;
+      setUp(() async {
+        completer = Completer();
+        sut = MethodChannelStripe(
+          platformIsIos: false,
+          platformIsAndroid: true,
+          methodChannel: MethodChannelMock(
+            channelName: methodChannelName,
+            method: 'initCustomerSheet',
+            result: {},
+          ).methodChannel,
+        );
+        await sut
+            .initCustomerSheet(
+              const CustomerSheetInitParams(
+                  customerId: 'customerId',
+                  customerEphemeralKeySecret: 'customerEphemeralKeySecret'),
+            )
+            .then((_) => completer.complete());
+      });
+
+      test('It completes operation', () {
+        expect(completer.isCompleted, true);
+      });
+    });
+
+    group('When customersheet is succesfull', () {
+      late Completer<void> completer;
+      setUp(() async {
+        completer = Completer();
+        sut = MethodChannelStripe(
+          platformIsIos: false,
+          platformIsAndroid: true,
+          methodChannel: MethodChannelMock(
+            channelName: methodChannelName,
+            method: 'presentCustomerSheet',
+            result: {},
+          ).methodChannel,
+        );
+        await sut.presentCustomerSheet().then((_) => completer.complete());
+      });
+
+      test('It completes operation', () {
+        expect(completer.isCompleted, true);
       });
     });
   });

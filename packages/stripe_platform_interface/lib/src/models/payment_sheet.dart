@@ -87,6 +87,9 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// Configuration for how billing details are collected during checkout.
     BillingDetailsCollectionConfiguration?
         billingDetailsCollectionConfiguration,
+
+    ///  Optional configuration to display a custom message when a saved payment method is removed. iOS only.
+    String? removeSavedPaymentMethodMessage,
   }) = _SetupParameters;
 
   factory SetupPaymentSheetParameters.fromJson(Map<String, dynamic> json) =>

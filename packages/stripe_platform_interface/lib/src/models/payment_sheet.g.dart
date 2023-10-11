@@ -45,6 +45,8 @@ _$_SetupParameters _$$_SetupParametersFromJson(Map<String, dynamic> json) =>
               : BillingDetailsCollectionConfiguration.fromJson(
                   json['billingDetailsCollectionConfiguration']
                       as Map<String, dynamic>),
+      removeSavedPaymentMethodMessage:
+          json['removeSavedPaymentMethodMessage'] as String?,
     );
 
 Map<String, dynamic> _$$_SetupParametersToJson(_$_SetupParameters instance) =>
@@ -66,6 +68,8 @@ Map<String, dynamic> _$$_SetupParametersToJson(_$_SetupParameters instance) =>
       'returnURL': instance.returnURL,
       'billingDetailsCollectionConfiguration':
           instance.billingDetailsCollectionConfiguration?.toJson(),
+      'removeSavedPaymentMethodMessage':
+          instance.removeSavedPaymentMethodMessage,
     };
 
 const _$ThemeModeEnumMap = {

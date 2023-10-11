@@ -97,6 +97,10 @@ mixin _$SetupPaymentSheetParameters {
       get billingDetailsCollectionConfiguration =>
           throw _privateConstructorUsedError;
 
+  ///  Optional configuration to display a custom message when a saved payment method is removed. iOS only.
+  String? get removeSavedPaymentMethodMessage =>
+      throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SetupPaymentSheetParametersCopyWith<SetupPaymentSheetParameters>
@@ -128,7 +132,8 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
       @JsonKey(name: 'defaultBillingDetails') BillingDetails? billingDetails,
       String? returnURL,
       BillingDetailsCollectionConfiguration?
-          billingDetailsCollectionConfiguration});
+          billingDetailsCollectionConfiguration,
+      String? removeSavedPaymentMethodMessage});
 
   $IntentConfigurationCopyWith<$Res>? get intentConfiguration;
   $PaymentSheetApplePayCopyWith<$Res>? get applePay;
@@ -169,6 +174,7 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
     Object? billingDetails = freezed,
     Object? returnURL = freezed,
     Object? billingDetailsCollectionConfiguration = freezed,
+    Object? removeSavedPaymentMethodMessage = freezed,
   }) {
     return _then(_value.copyWith(
       customFlow: null == customFlow
@@ -236,6 +242,11 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
           ? _value.billingDetailsCollectionConfiguration
           : billingDetailsCollectionConfiguration // ignore: cast_nullable_to_non_nullable
               as BillingDetailsCollectionConfiguration?,
+      removeSavedPaymentMethodMessage: freezed ==
+              removeSavedPaymentMethodMessage
+          ? _value.removeSavedPaymentMethodMessage
+          : removeSavedPaymentMethodMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -341,7 +352,8 @@ abstract class _$$_SetupParametersCopyWith<$Res>
       @JsonKey(name: 'defaultBillingDetails') BillingDetails? billingDetails,
       String? returnURL,
       BillingDetailsCollectionConfiguration?
-          billingDetailsCollectionConfiguration});
+          billingDetailsCollectionConfiguration,
+      String? removeSavedPaymentMethodMessage});
 
   @override
   $IntentConfigurationCopyWith<$Res>? get intentConfiguration;
@@ -385,6 +397,7 @@ class __$$_SetupParametersCopyWithImpl<$Res>
     Object? billingDetails = freezed,
     Object? returnURL = freezed,
     Object? billingDetailsCollectionConfiguration = freezed,
+    Object? removeSavedPaymentMethodMessage = freezed,
   }) {
     return _then(_$_SetupParameters(
       customFlow: null == customFlow
@@ -452,6 +465,11 @@ class __$$_SetupParametersCopyWithImpl<$Res>
           ? _value.billingDetailsCollectionConfiguration
           : billingDetailsCollectionConfiguration // ignore: cast_nullable_to_non_nullable
               as BillingDetailsCollectionConfiguration?,
+      removeSavedPaymentMethodMessage: freezed ==
+              removeSavedPaymentMethodMessage
+          ? _value.removeSavedPaymentMethodMessage
+          : removeSavedPaymentMethodMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -476,7 +494,8 @@ class _$_SetupParameters implements _SetupParameters {
       this.appearance,
       @JsonKey(name: 'defaultBillingDetails') this.billingDetails,
       this.returnURL,
-      this.billingDetailsCollectionConfiguration});
+      this.billingDetailsCollectionConfiguration,
+      this.removeSavedPaymentMethodMessage});
 
   factory _$_SetupParameters.fromJson(Map<String, dynamic> json) =>
       _$$_SetupParametersFromJson(json);
@@ -573,9 +592,13 @@ class _$_SetupParameters implements _SetupParameters {
   final BillingDetailsCollectionConfiguration?
       billingDetailsCollectionConfiguration;
 
+  ///  Optional configuration to display a custom message when a saved payment method is removed. iOS only.
+  @override
+  final String? removeSavedPaymentMethodMessage;
+
   @override
   String toString() {
-    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, intentConfiguration: $intentConfiguration, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, returnURL: $returnURL, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration)';
+    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, intentConfiguration: $intentConfiguration, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, returnURL: $returnURL, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage)';
   }
 
   @override
@@ -605,8 +628,7 @@ class _$_SetupParameters implements _SetupParameters {
             (identical(other.style, style) || other.style == style) &&
             (identical(other.googlePay, googlePay) ||
                 other.googlePay == googlePay) &&
-            (identical(other.allowsDelayedPaymentMethods,
-                    allowsDelayedPaymentMethods) ||
+            (identical(other.allowsDelayedPaymentMethods, allowsDelayedPaymentMethods) ||
                 other.allowsDelayedPaymentMethods ==
                     allowsDelayedPaymentMethods) &&
             (identical(other.appearance, appearance) ||
@@ -618,7 +640,10 @@ class _$_SetupParameters implements _SetupParameters {
             (identical(other.billingDetailsCollectionConfiguration,
                     billingDetailsCollectionConfiguration) ||
                 other.billingDetailsCollectionConfiguration ==
-                    billingDetailsCollectionConfiguration));
+                    billingDetailsCollectionConfiguration) &&
+            (identical(other.removeSavedPaymentMethodMessage, removeSavedPaymentMethodMessage) ||
+                other.removeSavedPaymentMethodMessage ==
+                    removeSavedPaymentMethodMessage));
   }
 
   @JsonKey(ignore: true)
@@ -640,7 +665,8 @@ class _$_SetupParameters implements _SetupParameters {
       appearance,
       billingDetails,
       returnURL,
-      billingDetailsCollectionConfiguration);
+      billingDetailsCollectionConfiguration,
+      removeSavedPaymentMethodMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -675,7 +701,8 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
       final BillingDetails? billingDetails,
       final String? returnURL,
       final BillingDetailsCollectionConfiguration?
-          billingDetailsCollectionConfiguration}) = _$_SetupParameters;
+          billingDetailsCollectionConfiguration,
+      final String? removeSavedPaymentMethodMessage}) = _$_SetupParameters;
 
   factory _SetupParameters.fromJson(Map<String, dynamic> json) =
       _$_SetupParameters.fromJson;
@@ -770,6 +797,10 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   /// Configuration for how billing details are collected during checkout.
   BillingDetailsCollectionConfiguration?
       get billingDetailsCollectionConfiguration;
+  @override
+
+  ///  Optional configuration to display a custom message when a saved payment method is removed. iOS only.
+  String? get removeSavedPaymentMethodMessage;
   @override
   @JsonKey(ignore: true)
   _$$_SetupParametersCopyWith<_$_SetupParameters> get copyWith =>

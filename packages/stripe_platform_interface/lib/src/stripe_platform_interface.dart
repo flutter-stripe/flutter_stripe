@@ -69,6 +69,17 @@ abstract class StripePlatform extends PlatformInterface {
   /// Confirm the payment on a payment sheet.
   Future<void> confirmPaymentSheetPayment();
 
+  /// Configure the payment sheet using [CustomerSheetInitParams] as config.
+  Future<CustomerSheetResult?> initCustomerSheet(
+      CustomerSheetInitParams params);
+
+  /// Display the customersheet sheet.
+  Future<CustomerSheetResult?> presentCustomerSheet({
+    CustomerSheetPresentParams? options,
+  });
+
+  Future<CustomerSheetResult?> retrieveCustomerSheetPaymentOptionSelection();
+
   Future<void> openApplePaySetup();
 
   Future<TokenData> createApplePayToken(Map<String, dynamic> payment);
