@@ -252,7 +252,10 @@ class MethodChannelStripe extends StripePlatform {
       CustomerSheetInitParams params) async {
     final result = await _methodChannel.invokeMethod(
       'initCustomerSheet',
-      {'params': params.toJson()},
+      {
+        'params': params.toJson(),
+        'customerAdapterOverrides': {},
+      },
     );
 
     if (result is List) {
@@ -349,7 +352,7 @@ class MethodChannelStripe extends StripePlatform {
       if (result.isEmpty) {
         return null;
       } else if (result['paymentOption'] != null) {
-        return CustomerSheetResult.fromJson(result['paymentOption']);
+        return CustomerSheetResult.fromJson(result);
       } else {
         if (result['error'] != null) {
           //workaround for tojson in sumtypes

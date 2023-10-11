@@ -621,9 +621,9 @@ class Stripe {
 
   /// Initializes the customer sheet with the provided [parameters].
   Future<CustomerSheetResult?> initCustomerSheet(
-      CustomerSheetInitParams params) async {
+      {required CustomerSheetInitParams customerSheetInitParams}) async {
     await _awaitForSettings();
-    return _platform.initCustomerSheet(params);
+    return _platform.initCustomerSheet(customerSheetInitParams);
   }
 
   /// Display the customersheet sheet. With the provided [options].
