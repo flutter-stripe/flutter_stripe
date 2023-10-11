@@ -11,6 +11,9 @@
           ["CardFormField", "/card_field"]
           ]      
         ],
+        ["Mobile elements",
+          ["Customer Sheet", "/customer_sheet"]
+        ],
         ["Regional payments", [
             ["ACH direct debit", "/ach"],
             ["Ideal", "/ideal"]

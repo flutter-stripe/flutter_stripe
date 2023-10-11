@@ -83,7 +83,7 @@ class _CustomerSheetScreenState extends State<CustomerSheetScreen> {
         ),
       ); // mocked data for tests
 
-      // 2. initialize the payment sheet
+      // 2. initialize the customer sheet
       await Stripe.instance.initCustomerSheet(
         customerSheetInitParams: CustomerSheetInitParams(
           // Main params
@@ -119,7 +119,7 @@ class _CustomerSheetScreenState extends State<CustomerSheetScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-              'Payment succesfully completed option selected: ${result?.paymentOption?.label}}'),
+              'Payment preferences modfied completed option selected: ${result?.paymentOption?.label}}'),
         ),
       );
     } on Exception catch (e) {
