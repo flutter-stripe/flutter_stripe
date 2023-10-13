@@ -97,6 +97,7 @@ void main() {
           response.error?.toJson(),
           equals({
             'type': 'invalid_request_error',
+            'code': 'bank_account_unusable',
             'param': 'bank_account[country]',
             'message':
                 'Country INVALID not supported (you should use the 2-letter country code, e.g. US).'
