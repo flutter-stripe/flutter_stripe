@@ -712,7 +712,12 @@ app.post('/payment-intent-for-payment-sheet', async (req, res) => {
   }
 });
 
-app.post('/customer-sheet', async (_, res) => {
+app.post('/create-checkout-session', async (req, res) => {
+  console.log(`Called /create-checkout-session`)
+  const {
+    port,
+  }: { port?: string; } = req.body;
+
   const { secret_key } = getKeys();
 
   const stripe = new Stripe(secret_key as string, {
@@ -720,6 +725,7 @@ app.post('/customer-sheet', async (_, res) => {
     typescript: true,
   });
 
+  var effectivePort = port ?? 8080;
   // Use an existing Customer ID if this is a returning customer.
   const customer = await stripe.customers.create();
 
@@ -801,10 +807,39 @@ app.post('/set-payment-option', async (req, res) => {
 });
 
 app.post('/get-payment-option', async (req, res) => {
+
+  const { secret_key } = getKeys();
+
+  const stripe = new Stripe(secret_key as string, {
+    apiVersion: '2023-08-16',
+    typescript: true,
+  });
+
   const customerPaymentOption = savedPaymentOptions.get(req.body.customerId);
   res.json({
     savedPaymentOption: customerPaymentOption ?? null,
   });
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: [
+      {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: 'Stubborn Attachments',
+            images: ['https://i.imgur.com/EHyR2nP.png'],
+          },
+          unit_amount: 2000,
+        },
+        quantity: 1,
+      },
+    ],
+    mode: 'payment',
+    success_url: `https://checkout.stripe.dev/success`,
+    cancel_url: `https://checkout.stripe.dev/cancel`,
+
+  });
+  return res.json({ id: session.id });
 });
 
 app.listen(4242, (): void =>
