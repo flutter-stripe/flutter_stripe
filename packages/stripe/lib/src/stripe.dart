@@ -619,6 +619,29 @@ class Stripe {
     }
   }
 
+  /// Initializes the customer sheet with the provided [parameters].
+  Future<CustomerSheetResult?> initCustomerSheet(
+      {required CustomerSheetInitParams customerSheetInitParams}) async {
+    await _awaitForSettings();
+    return _platform.initCustomerSheet(customerSheetInitParams);
+  }
+
+  /// Display the customersheet sheet. With the provided [options].
+  Future<CustomerSheetResult?> presentCustomerSheet({
+    CustomerSheetPresentParams? options,
+  }) async {
+    await _awaitForSettings();
+    return _platform.presentCustomerSheet(options: options);
+  }
+
+  /// Retrieve the customer sheet payment option selection.
+  Future<CustomerSheetResult?>
+      retrieveCustomerSheetPaymentOptionSelection() async {
+    await _awaitForSettings();
+
+    return _platform.retrieveCustomerSheetPaymentOptionSelection();
+  }
+
   FutureOr<void> _awaitForSettings() {
     if (_needsSettings) {
       _settingsFuture = applySettings();

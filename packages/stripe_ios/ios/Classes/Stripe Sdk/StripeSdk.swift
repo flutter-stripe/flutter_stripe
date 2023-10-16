@@ -22,6 +22,7 @@ class StripeSdk: RCTEventEmitter, STPBankSelectionViewControllerDelegate, UIAdap
     var confirmApplePayResolver: RCTPromiseResolveBlock? = nil
     var confirmApplePayPaymentClientSecret: String? = nil
     var confirmApplePaySetupClientSecret: String? = nil
+    var confirmApplePayPaymentMethod: STPPaymentMethod? = nil
     
     var applePaymentAuthorizationController: PKPaymentAuthorizationViewController? = nil
     var createPlatformPayPaymentMethodResolver: RCTPromiseResolveBlock? = nil
@@ -48,6 +49,17 @@ class StripeSdk: RCTEventEmitter, STPBankSelectionViewControllerDelegate, UIAdap
     var applePayShippingAddressErrors: [Error]? = nil
     var applePayCouponCodeErrors: [Error]? = nil
     
+    var customerSheetConfiguration = CustomerSheet.Configuration()
+    var customerSheet: CustomerSheet? = nil
+    var customerAdapter: StripeCustomerAdapter? = nil
+    var customerSheetViewController: UIViewController?
+    var fetchPaymentMethodsCallback: (([STPPaymentMethod]) -> Void)? = nil
+    var attachPaymentMethodCallback: (() -> Void)? = nil
+    var detachPaymentMethodCallback: (() -> Void)? = nil
+    var setSelectedPaymentOptionCallback: (() -> Void)? = nil
+    var fetchSelectedPaymentOptionCallback: ((CustomerPaymentOption?) -> Void)? = nil
+    var setupIntentClientSecretForCustomerAttachCallback: ((String) -> Void)? = nil
+    
     var hasEventListeners = false
     override func startObserving() {
         hasEventListeners = true
@@ -57,7 +69,9 @@ class StripeSdk: RCTEventEmitter, STPBankSelectionViewControllerDelegate, UIAdap
     }
     
     override func supportedEvents() -> [String]! {
-        return ["onOrderTrackingCallback", "onConfirmHandlerCallback"]
+        return ["onOrderTrackingCallback", "onConfirmHandlerCallback", "onCustomerAdapterFetchPaymentMethodsCallback", "onCustomerAdapterAttachPaymentMethodCallback",
+        "onCustomerAdapterDetachPaymentMethodCallback", "onCustomerAdapterSetSelectedPaymentOptionCallback", "onCustomerAdapterFetchSelectedPaymentOptionCallback",
+        "onCustomerAdapterSetupIntentClientSecretForCustomerAttachCallback"]
     }
 
     @objc override static func requiresMainQueueSetup() -> Bool {
@@ -252,20 +266,20 @@ class StripeSdk: RCTEventEmitter, STPBankSelectionViewControllerDelegate, UIAdap
             if (paymentMethodType == .USBankAccount && paymentMethodData == nil) {
                 return STPSetupIntentConfirmParams(clientSecret: setupIntentClientSecret, paymentMethodType: .USBankAccount)
             } else {
+                let factory = PaymentMethodFactory.init(paymentMethodData: paymentMethodData, options: options, cardFieldView: cardFieldView, cardFormView: cardFormView)
                 let parameters = STPSetupIntentConfirmParams(clientSecret: setupIntentClientSecret)
 
                 if let paymentMethodId = paymentMethodData?["paymentMethodId"] as? String {
                     parameters.paymentMethodID = paymentMethodId
                 } else {
-                    let factory = PaymentMethodFactory.init(paymentMethodData: paymentMethodData, options: options, cardFieldView: cardFieldView, cardFormView: cardFormView)
                     do {
-                        let paymentMethodParams = try factory.createParams(paymentMethodType: paymentMethodType)
-                        parameters.paymentMethodParams = paymentMethodParams
-                        parameters.mandateData = factory.createMandateData()
+                        parameters.paymentMethodParams = try factory.createParams(paymentMethodType: paymentMethodType)
                     } catch  {
                         err = Errors.createError(ErrorType.Failed, error as NSError?)
                     }
                 }
+                
+                parameters.mandateData = factory.createMandateData()
 
                 return parameters
             }
@@ -829,7 +843,6 @@ class StripeSdk: RCTEventEmitter, STPBankSelectionViewControllerDelegate, UIAdap
         paymentMethodData: NSDictionary?,
         options: NSDictionary
     ) -> (NSDictionary?, STPPaymentIntentParams) {
-        let factory = PaymentMethodFactory.init(paymentMethodData: paymentMethodData, options: options, cardFieldView: cardFieldView, cardFormView: cardFormView)
         var err: NSDictionary? = nil
 
         let paymentIntentParams: STPPaymentIntentParams = {
@@ -838,7 +851,7 @@ class StripeSdk: RCTEventEmitter, STPBankSelectionViewControllerDelegate, UIAdap
                 return STPPaymentIntentParams(clientSecret: paymentIntentClientSecret, paymentMethodType: .USBankAccount)
             } else {
                 guard let paymentMethodType = paymentMethodType else { return STPPaymentIntentParams(clientSecret: paymentIntentClientSecret) }
-
+                let factory = PaymentMethodFactory.init(paymentMethodData: paymentMethodData, options: options, cardFieldView: cardFieldView, cardFormView: cardFormView)
                 let paymentMethodId = paymentMethodData?["paymentMethodId"] as? String
                 let parameters = STPPaymentIntentParams(clientSecret: paymentIntentClientSecret)
 
@@ -846,15 +859,19 @@ class StripeSdk: RCTEventEmitter, STPBankSelectionViewControllerDelegate, UIAdap
                     parameters.paymentMethodId = paymentMethodId
                 } else {
                     do {
-                        let paymentMethodParams = try factory.createParams(paymentMethodType: paymentMethodType)
-                        let paymentMethodOptions = try factory.createOptions(paymentMethodType: paymentMethodType)
-                        parameters.paymentMethodParams = paymentMethodParams
-                        parameters.paymentMethodOptions = paymentMethodOptions
-                        parameters.mandateData = factory.createMandateData()
+                        parameters.paymentMethodParams = try factory.createParams(paymentMethodType: paymentMethodType)
                     } catch  {
                         err = Errors.createError(ErrorType.Failed, error as NSError?)
                     }
                 }
+                
+                do {
+                    parameters.paymentMethodOptions = try factory.createOptions(paymentMethodType: paymentMethodType)
+                    parameters.mandateData = factory.createMandateData()
+                } catch  {
+                    err = Errors.createError(ErrorType.Failed, error as NSError?)
+                }
+                
                 return parameters
             }
         }()

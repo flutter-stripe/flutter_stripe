@@ -6,7 +6,7 @@ class BridgeTest {
     @Test
     fun testGetDouble() {
         val map = ReadableMap(mapOf("test" to 1.1))
-        assert(map.getDouble("test") == 1.1f)
+        assert(map.getDouble("test") == 1.1)
     }
     @Test
     fun testGetIntShouldFail() {

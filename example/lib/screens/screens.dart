@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stripe_example/screens/checkout/checkout_screen.dart';
+import 'package:stripe_example/screens/customer_sheet/customer_sheet_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_element/payment_element.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_deffered_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen.dart';
@@ -122,6 +123,13 @@ class Example extends StatelessWidget {
       ],
       expanded: true,
     ),
+    ExampleSection(title: 'Customer sheet', children: [
+      Example(
+        title: 'Customer sheet',
+        builder: (context) => CustomerSheetScreen(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+      ),
+    ]),
     ExampleSection(
       title: 'Card Payments',
       children: [

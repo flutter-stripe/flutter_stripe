@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:stripe_platform_interface/src/models/ach_params.dart';
 import 'package:stripe_platform_interface/src/models/create_token_data.dart';
+import 'package:stripe_platform_interface/src/models/customer_sheet.dart';
 import 'package:stripe_platform_interface/src/models/financial_connections.dart';
 import 'package:stripe_platform_interface/src/models/google_pay.dart';
 import 'package:stripe_platform_interface/src/models/intent_creation_callback_params.dart';
@@ -247,6 +248,47 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
+  Future<CustomerSheetResult?> initCustomerSheet(
+      CustomerSheetInitParams params) async {
+    final result = await _methodChannel.invokeMethod(
+      'initCustomerSheet',
+      {
+        'params': params.toJson(),
+        'customerAdapterOverrides': {},
+      },
+    );
+
+    if (result is List) {
+      return null;
+    } else {
+      return _parseCustomerSheetResult(result);
+    }
+  }
+
+  @override
+  Future<CustomerSheetResult?> presentCustomerSheet({
+    CustomerSheetPresentParams? options,
+  }) async {
+    final result = await _methodChannel.invokeMethod<dynamic>(
+      'presentCustomerSheet',
+      {'params': {}, 'options': options?.toJson() ?? {}},
+    );
+
+    return _parseCustomerSheetResult(result);
+  }
+
+  @override
+  Future<CustomerSheetResult?>
+      retrieveCustomerSheetPaymentOptionSelection() async {
+    final result = await _methodChannel.invokeMethod<dynamic>(
+      'retrieveCustomerSheetPaymentOptionSelection',
+      {},
+    );
+
+    return _parseCustomerSheetResult(result);
+  }
+
+  @override
   Future<TokenData> createToken(CreateTokenParams params) async {
     final invokeParams = params.map(
       (value) => value.toJson(),
@@ -301,6 +343,33 @@ class MethodChannelStripe extends StripePlatform {
       throw const StripeError<PaymentSheetError>(
         message: 'Result should not be null',
         code: PaymentSheetError.unknown,
+      );
+    }
+  }
+
+  CustomerSheetResult? _parseCustomerSheetResult(Map<String, dynamic>? result) {
+    if (result != null) {
+      if (result.isEmpty) {
+        return null;
+      } else if (result['paymentOption'] != null) {
+        return CustomerSheetResult.fromJson(result);
+      } else {
+        if (result['error'] != null) {
+          //workaround for tojson in sumtypes
+          result['runtimeType'] = 'failed';
+          throw StripeException.fromJson(result);
+        } else {
+          throw StripeError<CustomerSheetError>(
+            message:
+                'Unknown result this is likely a problem in the plugin $result',
+            code: CustomerSheetError.unknown,
+          );
+        }
+      }
+    } else {
+      throw const StripeError<CustomerSheetError>(
+        message: 'Result should not be null',
+        code: CustomerSheetError.unknown,
       );
     }
   }

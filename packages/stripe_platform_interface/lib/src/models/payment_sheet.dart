@@ -87,6 +87,9 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// Configuration for how billing details are collected during checkout.
     BillingDetailsCollectionConfiguration?
         billingDetailsCollectionConfiguration,
+
+    ///  Optional configuration to display a custom message when a saved payment method is removed. iOS only.
+    String? removeSavedPaymentMethodMessage,
   }) = _SetupParameters;
 
   factory SetupPaymentSheetParameters.fromJson(Map<String, dynamic> json) =>
@@ -178,6 +181,12 @@ class PaymentSheetGooglePay with _$PaymentSheetGooglePay {
 
     /// Whether or not to use the google pay test environment.  Set to `true` until you have applied for and been granted access to the Production environment.
     @Default(false) bool testEnv,
+
+    /// An optional label to display with the amount. Google Pay may or may not display this label depending on its own internal logic. Defaults to a generic label if none is provided.
+    String? label,
+
+    /// An optional amount to display for setup intents. Google Pay may or may not display this amount depending on its own internal logic. Defaults to 0 if none is provided.
+    String? amount,
   }) = _PaymentSheetGooglePay;
 
   factory PaymentSheetGooglePay.fromJson(Map<String, dynamic> json) =>

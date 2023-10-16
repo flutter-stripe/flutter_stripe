@@ -45,6 +45,8 @@ _$_SetupParameters _$$_SetupParametersFromJson(Map<String, dynamic> json) =>
               : BillingDetailsCollectionConfiguration.fromJson(
                   json['billingDetailsCollectionConfiguration']
                       as Map<String, dynamic>),
+      removeSavedPaymentMethodMessage:
+          json['removeSavedPaymentMethodMessage'] as String?,
     );
 
 Map<String, dynamic> _$$_SetupParametersToJson(_$_SetupParameters instance) =>
@@ -66,6 +68,8 @@ Map<String, dynamic> _$$_SetupParametersToJson(_$_SetupParameters instance) =>
       'returnURL': instance.returnURL,
       'billingDetailsCollectionConfiguration':
           instance.billingDetailsCollectionConfiguration?.toJson(),
+      'removeSavedPaymentMethodMessage':
+          instance.removeSavedPaymentMethodMessage,
     };
 
 const _$ThemeModeEnumMap = {
@@ -172,6 +176,8 @@ _$_PaymentSheetGooglePay _$$_PaymentSheetGooglePayFromJson(
       merchantCountryCode: json['merchantCountryCode'] as String,
       currencyCode: json['currencyCode'] as String?,
       testEnv: json['testEnv'] as bool? ?? false,
+      label: json['label'] as String?,
+      amount: json['amount'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentSheetGooglePayToJson(
@@ -180,6 +186,8 @@ Map<String, dynamic> _$$_PaymentSheetGooglePayToJson(
       'merchantCountryCode': instance.merchantCountryCode,
       'currencyCode': instance.currencyCode,
       'testEnv': instance.testEnv,
+      'label': instance.label,
+      'amount': instance.amount,
     };
 
 _$_PaymentSheetAppearance _$$_PaymentSheetAppearanceFromJson(

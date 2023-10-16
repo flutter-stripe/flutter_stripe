@@ -97,6 +97,10 @@ mixin _$SetupPaymentSheetParameters {
       get billingDetailsCollectionConfiguration =>
           throw _privateConstructorUsedError;
 
+  ///  Optional configuration to display a custom message when a saved payment method is removed. iOS only.
+  String? get removeSavedPaymentMethodMessage =>
+      throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SetupPaymentSheetParametersCopyWith<SetupPaymentSheetParameters>
@@ -128,7 +132,8 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
       @JsonKey(name: 'defaultBillingDetails') BillingDetails? billingDetails,
       String? returnURL,
       BillingDetailsCollectionConfiguration?
-          billingDetailsCollectionConfiguration});
+          billingDetailsCollectionConfiguration,
+      String? removeSavedPaymentMethodMessage});
 
   $IntentConfigurationCopyWith<$Res>? get intentConfiguration;
   $PaymentSheetApplePayCopyWith<$Res>? get applePay;
@@ -169,6 +174,7 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
     Object? billingDetails = freezed,
     Object? returnURL = freezed,
     Object? billingDetailsCollectionConfiguration = freezed,
+    Object? removeSavedPaymentMethodMessage = freezed,
   }) {
     return _then(_value.copyWith(
       customFlow: null == customFlow
@@ -236,6 +242,11 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
           ? _value.billingDetailsCollectionConfiguration
           : billingDetailsCollectionConfiguration // ignore: cast_nullable_to_non_nullable
               as BillingDetailsCollectionConfiguration?,
+      removeSavedPaymentMethodMessage: freezed ==
+              removeSavedPaymentMethodMessage
+          ? _value.removeSavedPaymentMethodMessage
+          : removeSavedPaymentMethodMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -341,7 +352,8 @@ abstract class _$$_SetupParametersCopyWith<$Res>
       @JsonKey(name: 'defaultBillingDetails') BillingDetails? billingDetails,
       String? returnURL,
       BillingDetailsCollectionConfiguration?
-          billingDetailsCollectionConfiguration});
+          billingDetailsCollectionConfiguration,
+      String? removeSavedPaymentMethodMessage});
 
   @override
   $IntentConfigurationCopyWith<$Res>? get intentConfiguration;
@@ -385,6 +397,7 @@ class __$$_SetupParametersCopyWithImpl<$Res>
     Object? billingDetails = freezed,
     Object? returnURL = freezed,
     Object? billingDetailsCollectionConfiguration = freezed,
+    Object? removeSavedPaymentMethodMessage = freezed,
   }) {
     return _then(_$_SetupParameters(
       customFlow: null == customFlow
@@ -452,6 +465,11 @@ class __$$_SetupParametersCopyWithImpl<$Res>
           ? _value.billingDetailsCollectionConfiguration
           : billingDetailsCollectionConfiguration // ignore: cast_nullable_to_non_nullable
               as BillingDetailsCollectionConfiguration?,
+      removeSavedPaymentMethodMessage: freezed ==
+              removeSavedPaymentMethodMessage
+          ? _value.removeSavedPaymentMethodMessage
+          : removeSavedPaymentMethodMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -476,7 +494,8 @@ class _$_SetupParameters implements _SetupParameters {
       this.appearance,
       @JsonKey(name: 'defaultBillingDetails') this.billingDetails,
       this.returnURL,
-      this.billingDetailsCollectionConfiguration});
+      this.billingDetailsCollectionConfiguration,
+      this.removeSavedPaymentMethodMessage});
 
   factory _$_SetupParameters.fromJson(Map<String, dynamic> json) =>
       _$$_SetupParametersFromJson(json);
@@ -573,9 +592,13 @@ class _$_SetupParameters implements _SetupParameters {
   final BillingDetailsCollectionConfiguration?
       billingDetailsCollectionConfiguration;
 
+  ///  Optional configuration to display a custom message when a saved payment method is removed. iOS only.
+  @override
+  final String? removeSavedPaymentMethodMessage;
+
   @override
   String toString() {
-    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, intentConfiguration: $intentConfiguration, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, returnURL: $returnURL, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration)';
+    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, intentConfiguration: $intentConfiguration, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, returnURL: $returnURL, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage)';
   }
 
   @override
@@ -605,8 +628,7 @@ class _$_SetupParameters implements _SetupParameters {
             (identical(other.style, style) || other.style == style) &&
             (identical(other.googlePay, googlePay) ||
                 other.googlePay == googlePay) &&
-            (identical(other.allowsDelayedPaymentMethods,
-                    allowsDelayedPaymentMethods) ||
+            (identical(other.allowsDelayedPaymentMethods, allowsDelayedPaymentMethods) ||
                 other.allowsDelayedPaymentMethods ==
                     allowsDelayedPaymentMethods) &&
             (identical(other.appearance, appearance) ||
@@ -618,7 +640,10 @@ class _$_SetupParameters implements _SetupParameters {
             (identical(other.billingDetailsCollectionConfiguration,
                     billingDetailsCollectionConfiguration) ||
                 other.billingDetailsCollectionConfiguration ==
-                    billingDetailsCollectionConfiguration));
+                    billingDetailsCollectionConfiguration) &&
+            (identical(other.removeSavedPaymentMethodMessage, removeSavedPaymentMethodMessage) ||
+                other.removeSavedPaymentMethodMessage ==
+                    removeSavedPaymentMethodMessage));
   }
 
   @JsonKey(ignore: true)
@@ -640,7 +665,8 @@ class _$_SetupParameters implements _SetupParameters {
       appearance,
       billingDetails,
       returnURL,
-      billingDetailsCollectionConfiguration);
+      billingDetailsCollectionConfiguration,
+      removeSavedPaymentMethodMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -675,7 +701,8 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
       final BillingDetails? billingDetails,
       final String? returnURL,
       final BillingDetailsCollectionConfiguration?
-          billingDetailsCollectionConfiguration}) = _$_SetupParameters;
+          billingDetailsCollectionConfiguration,
+      final String? removeSavedPaymentMethodMessage}) = _$_SetupParameters;
 
   factory _SetupParameters.fromJson(Map<String, dynamic> json) =
       _$_SetupParameters.fromJson;
@@ -770,6 +797,10 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   /// Configuration for how billing details are collected during checkout.
   BillingDetailsCollectionConfiguration?
       get billingDetailsCollectionConfiguration;
+  @override
+
+  ///  Optional configuration to display a custom message when a saved payment method is removed. iOS only.
+  String? get removeSavedPaymentMethodMessage;
   @override
   @JsonKey(ignore: true)
   _$$_SetupParametersCopyWith<_$_SetupParameters> get copyWith =>
@@ -1561,6 +1592,12 @@ mixin _$PaymentSheetGooglePay {
   /// Whether or not to use the google pay test environment.  Set to `true` until you have applied for and been granted access to the Production environment.
   bool get testEnv => throw _privateConstructorUsedError;
 
+  /// An optional label to display with the amount. Google Pay may or may not display this label depending on its own internal logic. Defaults to a generic label if none is provided.
+  String? get label => throw _privateConstructorUsedError;
+
+  /// An optional amount to display for setup intents. Google Pay may or may not display this amount depending on its own internal logic. Defaults to 0 if none is provided.
+  String? get amount => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentSheetGooglePayCopyWith<PaymentSheetGooglePay> get copyWith =>
@@ -1573,7 +1610,12 @@ abstract class $PaymentSheetGooglePayCopyWith<$Res> {
           $Res Function(PaymentSheetGooglePay) then) =
       _$PaymentSheetGooglePayCopyWithImpl<$Res, PaymentSheetGooglePay>;
   @useResult
-  $Res call({String merchantCountryCode, String? currencyCode, bool testEnv});
+  $Res call(
+      {String merchantCountryCode,
+      String? currencyCode,
+      bool testEnv,
+      String? label,
+      String? amount});
 }
 
 /// @nodoc
@@ -1593,6 +1635,8 @@ class _$PaymentSheetGooglePayCopyWithImpl<$Res,
     Object? merchantCountryCode = null,
     Object? currencyCode = freezed,
     Object? testEnv = null,
+    Object? label = freezed,
+    Object? amount = freezed,
   }) {
     return _then(_value.copyWith(
       merchantCountryCode: null == merchantCountryCode
@@ -1607,6 +1651,14 @@ class _$PaymentSheetGooglePayCopyWithImpl<$Res,
           ? _value.testEnv
           : testEnv // ignore: cast_nullable_to_non_nullable
               as bool,
+      label: freezed == label
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String?,
+      amount: freezed == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -1619,7 +1671,12 @@ abstract class _$$_PaymentSheetGooglePayCopyWith<$Res>
       __$$_PaymentSheetGooglePayCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String merchantCountryCode, String? currencyCode, bool testEnv});
+  $Res call(
+      {String merchantCountryCode,
+      String? currencyCode,
+      bool testEnv,
+      String? label,
+      String? amount});
 }
 
 /// @nodoc
@@ -1636,6 +1693,8 @@ class __$$_PaymentSheetGooglePayCopyWithImpl<$Res>
     Object? merchantCountryCode = null,
     Object? currencyCode = freezed,
     Object? testEnv = null,
+    Object? label = freezed,
+    Object? amount = freezed,
   }) {
     return _then(_$_PaymentSheetGooglePay(
       merchantCountryCode: null == merchantCountryCode
@@ -1650,6 +1709,14 @@ class __$$_PaymentSheetGooglePayCopyWithImpl<$Res>
           ? _value.testEnv
           : testEnv // ignore: cast_nullable_to_non_nullable
               as bool,
+      label: freezed == label
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String?,
+      amount: freezed == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1661,7 +1728,9 @@ class _$_PaymentSheetGooglePay implements _PaymentSheetGooglePay {
   const _$_PaymentSheetGooglePay(
       {required this.merchantCountryCode,
       this.currencyCode,
-      this.testEnv = false});
+      this.testEnv = false,
+      this.label,
+      this.amount});
 
   factory _$_PaymentSheetGooglePay.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentSheetGooglePayFromJson(json);
@@ -1679,9 +1748,17 @@ class _$_PaymentSheetGooglePay implements _PaymentSheetGooglePay {
   @JsonKey()
   final bool testEnv;
 
+  /// An optional label to display with the amount. Google Pay may or may not display this label depending on its own internal logic. Defaults to a generic label if none is provided.
+  @override
+  final String? label;
+
+  /// An optional amount to display for setup intents. Google Pay may or may not display this amount depending on its own internal logic. Defaults to 0 if none is provided.
+  @override
+  final String? amount;
+
   @override
   String toString() {
-    return 'PaymentSheetGooglePay(merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, testEnv: $testEnv)';
+    return 'PaymentSheetGooglePay(merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, testEnv: $testEnv, label: $label, amount: $amount)';
   }
 
   @override
@@ -1693,13 +1770,15 @@ class _$_PaymentSheetGooglePay implements _PaymentSheetGooglePay {
                 other.merchantCountryCode == merchantCountryCode) &&
             (identical(other.currencyCode, currencyCode) ||
                 other.currencyCode == currencyCode) &&
-            (identical(other.testEnv, testEnv) || other.testEnv == testEnv));
+            (identical(other.testEnv, testEnv) || other.testEnv == testEnv) &&
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.amount, amount) || other.amount == amount));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, merchantCountryCode, currencyCode, testEnv);
+  int get hashCode => Object.hash(
+      runtimeType, merchantCountryCode, currencyCode, testEnv, label, amount);
 
   @JsonKey(ignore: true)
   @override
@@ -1720,7 +1799,9 @@ abstract class _PaymentSheetGooglePay implements PaymentSheetGooglePay {
   const factory _PaymentSheetGooglePay(
       {required final String merchantCountryCode,
       final String? currencyCode,
-      final bool testEnv}) = _$_PaymentSheetGooglePay;
+      final bool testEnv,
+      final String? label,
+      final String? amount}) = _$_PaymentSheetGooglePay;
 
   factory _PaymentSheetGooglePay.fromJson(Map<String, dynamic> json) =
       _$_PaymentSheetGooglePay.fromJson;
@@ -1737,6 +1818,14 @@ abstract class _PaymentSheetGooglePay implements PaymentSheetGooglePay {
 
   /// Whether or not to use the google pay test environment.  Set to `true` until you have applied for and been granted access to the Production environment.
   bool get testEnv;
+  @override
+
+  /// An optional label to display with the amount. Google Pay may or may not display this label depending on its own internal logic. Defaults to a generic label if none is provided.
+  String? get label;
+  @override
+
+  /// An optional amount to display for setup intents. Google Pay may or may not display this amount depending on its own internal logic. Defaults to 0 if none is provided.
+  String? get amount;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentSheetGooglePayCopyWith<_$_PaymentSheetGooglePay> get copyWith =>

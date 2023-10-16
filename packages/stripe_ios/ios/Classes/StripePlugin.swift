@@ -117,6 +117,93 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
             return removeListener(call, result: result)
         case "intentCreationCallback":
             return intentCreationCallback(call, result: result)
+        case "initCustomerSheet":
+            guard let arguments = call.arguments as? FlutterMap,
+            let customerAdapterOverrides = arguments["customerAdapterOverrides"] as? NSDictionary,
+            let params = arguments["params"] as? NSDictionary else {
+                result(FlutterError.invalidParams)
+                return
+            }
+            return initCustomerSheet(
+                params: params,
+                customerAdapterOverrides: customerAdapterOverrides,
+                resolver: resolver(for: result),
+                rejecter: rejecter(for: result)
+            )
+        case "presentCustomerSheet":
+            guard let arguments = call.arguments as? FlutterMap,
+            let params = arguments["params"] as? NSDictionary else {
+                result(FlutterError.invalidParams)
+                return
+            }
+            return presentCustomerSheet(
+                params: params,
+                resolver: resolver(for: result),
+                rejecter: rejecter(for: result)
+            )
+        case "retrieveCustomerSheetPaymentOptionSelection":
+            return retrieveCustomerSheetPaymentOptionSelection(
+                resolver: resolver(for: result),
+                rejecter: rejecter(for: result)
+            )
+        case "customerAdapterFetchPaymentMethodsCallback":
+            guard let arguments = call.arguments as? FlutterMap,
+            let paymentMethods = arguments["paymentMethods"] as? [NSDictionary] else {
+                result(FlutterError.invalidParams)
+                return
+            }
+            return customerAdapterFetchPaymentMethodsCallback(
+                paymentMethods: paymentMethods,
+                resolver: resolver(for: result),
+                rejecter: rejecter(for: result)
+            )
+        case "customerAdapterAttachPaymentMethodCallback":
+            guard let arguments = call.arguments as? FlutterMap,
+            let unusedPaymentMethod = arguments["unusedPaymentMethod"] as? NSDictionary else {
+                result(FlutterError.invalidParams)
+                return
+            }
+            return customerAdapterAttachPaymentMethodCallback(
+                unusedPaymentMethod: unusedPaymentMethod,
+                resolver: resolver(for: result),
+                rejecter: rejecter(for: result)
+            )
+        case "customerAdapterDetachPaymentMethodCallback":
+            guard let arguments = call.arguments as? FlutterMap,
+            let unusedPaymentMethod = arguments["unusedPaymentMethod"] as? NSDictionary else {
+                result(FlutterError.invalidParams)
+                return
+            }
+            return customerAdapterDetachPaymentMethodCallback(
+                unusedPaymentMethod: unusedPaymentMethod,
+                resolver: resolver(for: result),
+                rejecter: rejecter(for: result)
+            )
+        case "customerAdapterSetSelectedPaymentOptionCallback":
+            return customerAdapterSetSelectedPaymentOptionCallback(
+                resolver: resolver(for: result),
+                rejecter: rejecter(for: result)
+            )
+        case "customerAdapterFetchSelectedPaymentOptionCallback":
+            let arguments = call.arguments as? FlutterMap
+            let paymentOption = arguments?["paymentOption"] as? String
+            
+            return customerAdapterFetchSelectedPaymentOptionCallback(
+                paymentOption: paymentOption,
+                resolver: resolver(for: result),
+                rejecter: rejecter(for: result)
+            )
+        case "customerAdapterSetupIntentClientSecretForCustomerAttachCallback":
+            guard let arguments = call.arguments as? FlutterMap,
+            let clientSecret = arguments["clientSecret"] as? String else {
+                result(FlutterError.invalidParams)
+                return
+            }
+            return customerAdapterSetupIntentClientSecretForCustomerAttachCallback(
+                clientSecret: clientSecret,
+                resolver: resolver(for: result),
+                rejecter: rejecter(for: result)
+            )
         default:
             result(FlutterMethodNotImplemented)
         }

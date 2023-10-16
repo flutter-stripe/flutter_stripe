@@ -522,6 +522,24 @@ class WebStripe extends StripePlatform {
       {String? returnURL}) {
     throw WebUnsupportedError.method('handleNextActionForSetupIntent');
   }
+
+  @override
+  Future<CustomerSheetResult?> initCustomerSheet(
+      CustomerSheetInitParams params) {
+    throw WebUnsupportedError.method('initCustomerSheet');
+  }
+
+  @override
+  Future<CustomerSheetResult?> presentCustomerSheet(
+      {CustomerSheetPresentParams? options}) {
+    throw WebUnsupportedError.method('presentCustomerSheet');
+  }
+
+  @override
+  Future<CustomerSheetResult?> retrieveCustomerSheetPaymentOptionSelection() {
+    throw WebUnsupportedError.method(
+        'retrieveCustomerSheetPaymentOptionSelection');
+  }
 }
 
 class WebUnsupportedError extends Error implements UnsupportedError {
