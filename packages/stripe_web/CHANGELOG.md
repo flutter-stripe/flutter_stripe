@@ -1,3 +1,6 @@
+## 4.5.0
+- Make sure Stripe web is compatible with Stripe platform interface 9.5.0+1
+
 ## 4.4.0
 
  - Make sure Stripe web is compatible with Stripe platform interface 9.4.0

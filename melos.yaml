@@ -3,12 +3,12 @@ command:
   bootstrap:
     usePubspecOverrides: true
 packages:
-  - ./**
+  - ./packages/**
 scripts:
   analyze: melos exec -- flutter analyze
   format: melos exec -- dart format .
   get: melos exec -- flutter pub get
-  unittest: 
+  unittest:
     run: melos exec -- flutter test
     select-package:
       dir-exists:
