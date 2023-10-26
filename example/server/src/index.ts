@@ -746,6 +746,34 @@ app.post('/create-checkout-session', async (req, res) => {
   });
 });
 
+app.post('/customer-sheet', async (_, res) => {
+  const { secret_key } = getKeys();
+
+  const stripe = new Stripe(secret_key as string, {
+    apiVersion: '2023-08-16',
+    typescript: true,
+  });
+
+  // Use an existing Customer ID if this is a returning customer.
+  const customer = await stripe.customers.create();
+
+  // Use the same version as the SDK
+  const ephemeralKey = await stripe.ephemeralKeys.create(
+    { customer: customer.id },
+    { apiVersion: '2020-08-27' }
+  );
+
+  const setupIntent = await stripe.setupIntents.create({
+    customer: customer.id,
+  });
+
+  res.json({
+    customer: customer.id,
+    ephemeralKeySecret: ephemeralKey.secret,
+    setupIntent: setupIntent.client_secret,
+  });
+});
+
 app.post('/fetch-payment-methods', async (req, res) => {
   const { secret_key } = getKeys();
 
