@@ -110,19 +110,6 @@ class Stripe {
         setReturnUrlSchemeOnAndroid: setReturnUrlSchemeOnAndroid,
       );
 
-  /// Exposes a [ValueListenable] whether or not Apple pay is supported for this
-  /// device.
-  ///
-  /// Always returns false on non Apple platforms.
-  @Deprecated('Use [isPlatformPaySupportedListenable] instead.')
-  ValueListenable<bool> get isApplePaySupported {
-    if (_isApplePaySupported == null) {
-      _isApplePaySupported = ValueNotifier(false);
-      checkApplePaySupport();
-    }
-    return _isApplePaySupported!;
-  }
-
   /// Exposes a [ValueListenable] whether or not GooglePay (on Android) or Apple Pay (on iOS)
   /// is supported for this device.
   ValueListenable<bool> get isPlatformPaySupportedListenable {
@@ -131,18 +118,6 @@ class Stripe {
       isPlatformPaySupported();
     }
     return _isPlatformPaySupported!;
-  }
-
-  ///Checks if Apple pay is supported on this device.
-  ///
-  /// Always returns false on non Apple devices.
-  @Deprecated('Use [isPlatformPaySupported] instead')
-  Future<bool> checkApplePaySupport() async {
-    await _awaitForSettings();
-    final isSupported = await _platform.isApplePaySupported();
-    _isApplePaySupported ??= ValueNotifier(false);
-    _isApplePaySupported?.value = isSupported;
-    return isSupported;
   }
 
   /// Check if the relevant native wallet (Apple Pay on iOS and Google Pay on Android)
@@ -175,7 +150,10 @@ class Stripe {
   }) async {
     try {
       await _awaitForSettings();
-      return await _platform.platformPayCreatePaymentMethod(params: params);
+      return await _platform.platformPayCreatePaymentMethod(
+        params: params,
+        usesDeprecatedTokenFlow: usesDeprecatedTokenFlow,
+      );
     } on StripeError {
       rethrow;
     }
@@ -349,54 +327,6 @@ class Stripe {
     await _platform.openApplePaySetup();
   }
 
-  /// Presents an Apple payment sheet using [params] for additional
-  /// configuration. See [ApplePayPresentParams] for more details.
-  ///
-  /// Throws an [StripeError] in case presenting the payment sheet fails.
-  @Deprecated(
-      'Use either [confirmPlatformPaySetupIntent] or [confirmPlatformPayPaymentIntent].')
-  Future<void> presentApplePay({
-    required ApplePayPresentParams params,
-    OnDidSetShippingContact? onDidSetShippingContact,
-    OnDidSetShippingMethod? onDidSetShippingMethod,
-  }) async {
-    await _awaitForSettings();
-    if (!isApplePaySupported.value) {
-      //throw StripeError<ApplePayError>
-      //(ApplePayError.canceled, 'APPLE_PAY_NOT_SUPPORTED_MESSAGE');
-    }
-    try {
-      await _platform.presentApplePay(
-        params,
-        onDidSetShippingContact,
-        onDidSetShippingMethod,
-      );
-    } on StripeError {
-      rethrow;
-    }
-  }
-
-  /// Confirms the Apple pay payment using the provided [clientSecret].
-  /// Use this method when the form is being submitted.
-  ///
-  /// Throws an [StripeError] in confirming the payment fails.
-  @Deprecated(
-      'Use [confirmPlatformPaySetupIntent] or [confirmPlatformPayPaymentIntent].')
-  Future<void> confirmApplePayPayment(
-    String clientSecret,
-  ) async {
-    await _awaitForSettings();
-    if (!isApplePaySupported.value) {
-      //throw StripeError<ApplePayError>
-      //(ApplePayError.canceled, 'APPLE_PAY_NOT_SUPPORTED_MESSAGE');
-    }
-    try {
-      await _platform.confirmApplePayPayment(clientSecret);
-    } on StripeError {
-      rethrow;
-    }
-  }
-
   /// Handle URL callback from iDeal payment returnUrl to close iOS in-app webview
   Future<bool> handleURLCallback(String url) async {
     try {
@@ -445,6 +375,25 @@ class Stripe {
       return paymentIntent;
     } on StripeError {
       //throw StripeError<CardActionError>(error.code, error.message);
+      rethrow;
+    }
+  }
+
+  /// Use this method in case the [SetupIntent] status is
+  /// [PaymentIntentsStatus.RequiresAction]. Executing this action can take
+  /// several seconds and it is important to not resubmit the form.
+  ///
+  /// Throws a [StripeException] when confirming the handle card action fails.
+  Future<SetupIntent> handleNextActionForSetupIntent(
+      String setupIntentClientSecret,
+      {String? returnURL}) async {
+    await _awaitForSettings();
+    try {
+      final paymentIntent = await _platform.handleNextActionForSetupIntent(
+          setupIntentClientSecret,
+          returnURL: returnURL);
+      return paymentIntent;
+    } on StripeError {
       rethrow;
     }
   }
@@ -515,6 +464,14 @@ class Stripe {
   }) async {
     await _awaitForSettings();
     return await _platform.presentPaymentSheet(options: options);
+  }
+
+  /// Method used to confirm to the user that the intent is created successfull
+  /// or not successfull when using a defferred payment method.
+  Future<void> intentCreationCallback(
+      IntentCreationCallbackParams params) async {
+    await _awaitForSettings();
+    return await _platform.intentCreationCallback(params);
   }
 
   /// Call this method when the user logs out from your app.
@@ -662,6 +619,29 @@ class Stripe {
     }
   }
 
+  /// Initializes the customer sheet with the provided [parameters].
+  Future<CustomerSheetResult?> initCustomerSheet(
+      {required CustomerSheetInitParams customerSheetInitParams}) async {
+    await _awaitForSettings();
+    return _platform.initCustomerSheet(customerSheetInitParams);
+  }
+
+  /// Display the customersheet sheet. With the provided [options].
+  Future<CustomerSheetResult?> presentCustomerSheet({
+    CustomerSheetPresentParams? options,
+  }) async {
+    await _awaitForSettings();
+    return _platform.presentCustomerSheet(options: options);
+  }
+
+  /// Retrieve the customer sheet payment option selection.
+  Future<CustomerSheetResult?>
+      retrieveCustomerSheetPaymentOptionSelection() async {
+    await _awaitForSettings();
+
+    return _platform.retrieveCustomerSheetPaymentOptionSelection();
+  }
+
   FutureOr<void> _awaitForSettings() {
     if (_needsSettings) {
       _settingsFuture = applySettings();
@@ -718,7 +698,6 @@ class Stripe {
     );
   }
 
-  ValueNotifier<bool>? _isApplePaySupported;
   ValueNotifier<bool>? _isPlatformPaySupported;
 
   // Internal use only

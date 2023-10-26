@@ -35,6 +35,8 @@ _$_GooglePayInitParams _$$_GooglePayInitParamsFromJson(
       isEmailRequired: json['isEmailRequired'] as bool? ?? false,
       existingPaymentMethodRequired:
           json['existingPaymentMethodRequired'] as bool? ?? true,
+      label: json['label'] as String?,
+      amount: (json['amount'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$$_GooglePayInitParamsToJson(
@@ -46,6 +48,8 @@ Map<String, dynamic> _$$_GooglePayInitParamsToJson(
       'billingAddressConfig': instance.billingAddressConfig?.toJson(),
       'isEmailRequired': instance.isEmailRequired,
       'existingPaymentMethodRequired': instance.existingPaymentMethodRequired,
+      'label': instance.label,
+      'amount': instance.amount,
     };
 
 _$_BillingAddressConfig _$$_BillingAddressConfigFromJson(

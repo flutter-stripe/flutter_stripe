@@ -316,25 +316,6 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<bool> isApplePaySupported() async {
-    throw WebUnsupportedError.method('presentApplePay');
-  }
-
-  @override
-  Future<void> presentApplePay(
-    ApplePayPresentParams params,
-    OnDidSetShippingContact? onDidSetShippingContact,
-    OnDidSetShippingMethod? onDidSetShippingMethod,
-  ) async {
-    throw WebUnsupportedError.method('presentApplePay');
-  }
-
-  @override
-  Future<void> confirmApplePayPayment(String clientSecret) async {
-    throw WebUnsupportedError.method('confirmApplePayPayment');
-  }
-
-  @override
   Future<TokenData> createApplePayToken(Map<String, dynamic> payment) {
     throw WebUnsupportedError.method('createApplePayToken');
   }
@@ -376,7 +357,8 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<PaymentSheetPaymentOption?> initPaymentSheet(SetupPaymentSheetParameters params) {
+  Future<PaymentSheetPaymentOption?> initPaymentSheet(
+      SetupPaymentSheetParameters params) {
     throw WebUnsupportedError.method('initPaymentSheet');
   }
 
@@ -463,14 +445,6 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<void> updateApplePaySummaryItems({
-    required List<ApplePayCartSummaryItem> summaryItems,
-    List<ApplePayErrorAddressField>? errorAddressFields,
-  }) {
-    throw WebUnsupportedError.method('updateApplePaySummaryItems');
-  }
-
-  @override
   Future<AddToWalletResult> canAddToWallet(String last4) {
     throw WebUnsupportedError.method('canAddToWallet');
   }
@@ -535,6 +509,36 @@ class WebStripe extends StripePlatform {
   Future<void> configurePlatformOrderTracking(
       {required PlatformPayOrderDetails orderDetails}) {
     throw WebUnsupportedError.method('configurePlatformOrderTracking');
+  }
+
+  @override
+  Future<void> intentCreationCallback(IntentCreationCallbackParams params) {
+    throw WebUnsupportedError.method('intentCreationCallback');
+  }
+
+  @override
+  Future<SetupIntent> handleNextActionForSetupIntent(
+      String setupIntentClientSecret,
+      {String? returnURL}) {
+    throw WebUnsupportedError.method('handleNextActionForSetupIntent');
+  }
+
+  @override
+  Future<CustomerSheetResult?> initCustomerSheet(
+      CustomerSheetInitParams params) {
+    throw WebUnsupportedError.method('initCustomerSheet');
+  }
+
+  @override
+  Future<CustomerSheetResult?> presentCustomerSheet(
+      {CustomerSheetPresentParams? options}) {
+    throw WebUnsupportedError.method('presentCustomerSheet');
+  }
+
+  @override
+  Future<CustomerSheetResult?> retrieveCustomerSheetPaymentOptionSelection() {
+    throw WebUnsupportedError.method(
+        'retrieveCustomerSheetPaymentOptionSelection');
   }
 }
 

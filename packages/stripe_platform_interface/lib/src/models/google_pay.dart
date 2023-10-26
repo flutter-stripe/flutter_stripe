@@ -52,6 +52,12 @@ class GooglePayInitParams with _$GooglePayInitParams {
     /// When `true` Google Pay is considered ready if the customers's Google Pay
     /// wallet has existing payment methods.
     @Default(true) bool existingPaymentMethodRequired,
+
+    /// An optional label to display with the amount. Google Pay may or may not display this label depending on its own internal logic. Defaults to a generic label if none is provided.
+    String? label,
+
+    /// An optional amount to display for setup intents. Google Pay may or may not display this amount depending on its own internal logic. Defaults to 0 if none is provided.
+    double? amount,
   }) = _GooglePayInitParams;
 
   factory GooglePayInitParams.fromJson(Map<String, dynamic> json) =>

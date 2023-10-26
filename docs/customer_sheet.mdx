@@ -1,0 +1,186 @@
+---
+title: Customer sheet
+description: Offer a pre-built UI for your customers to manage their saved payment methods.
+---
+
+# Mobile elements - Customer Sheet
+
+### Let customers manage their own payments.
+
+<img src="https://b.stripecdn.com/docs-statics-srv/assets/ios-landing.e79179b84cd87dd1e6936fa12e283e3b.png" height="36" />
+
+Important the customer sheet is in Beta so it is not guaranteed to work under all circumstances.
+
+## 1. Set up Stripe [Server Side] [Client Side]
+
+First, you need a Stripe account. [Register now](https://dashboard.stripe.com/register).
+
+#### Server-side
+
+This integration requires endpoints on your server that talk to the Stripe API. Use one official libraries for access to the Stripe API from your server. [Follow the steps here](https://stripe.com/docs/payments/accept-a-payment?platform=ios&ui=payment-sheet#setup-server-side)
+
+#### Client-side
+
+The Flutter SDK is open source, fully documented.
+
+To install the SDK, follow these steps:
+ - Run the commmand `flutter pub add flutter_stripe`
+ - This will add a line like this to your project's pubspec.yaml with the latest package version
+
+
+For details on the latest SDK release and past versions, see the [Releases](https://github.com/flutter-stripe/flutter_stripe/releases) page on GitHub. To receive notifications when a new release is published, [watch releases for the repository](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/managing-subscriptions-for-activity-on-github/viewing-your-subscriptions#watching-releases-for-a-repository).
+
+
+When your app starts, configure the SDK with your Stripe [publishable key](https://dashboard.stripe.com/) so that it can make requests to the Stripe API. 
+
+```dart
+void main() async {
+  Stripe.publishableKey = stripePublishableKey;
+  runApp(const App());
+}
+```
+
+Use your [test mode](https://stripe.com/docs/keys#obtain-api-keys) keys while you test and develop, and your [live mode](https://stripe.com/docs/keys#test-live-modes) keys when you publish your app.
+
+## 2. Add an enpoint [Server Side]
+
+First, you need a Stripe account. [Register now](https://dashboard.stripe.com/register).
+
+#### Server-side
+
+This integration uses three Stripe API objects:
+
+1. A [PaymentIntent](https://stripe.com/docs/api/payment_intents). Stripe uses this to represent your intent to collect payment from a customer, tracking your charge attempts and payment state changes throughout the process.
+
+2. A [Customer](https://stripe.com/docs/api/customers) (optional). To set up a card for future payments, it must be attached to a Customer. Create a Customer object when your customer creates an account with your business. If your customer is making a payment as a guest, you can create a Customer object before payment and associate it with your own internal representation of the customer’s account later.
+
+3. A Customer Ephemeral Key (optional). Information on the Customer object is sensitive, and can’t be retrieved directly from an app. An Ephemeral Key grants the SDK temporary access to the Customer.
+
+>> If you never save cards to a Customer and don’t allow returning Customers to reuse saved cards, you can omit the Customer and Customer Ephemeral Key objects from your integration.
+
+For security reasons, your app can’t create these objects. Instead, add an endpoint on your server that:
+
+1. Retrieves the Customer, or creates a new one.
+2. Creates an Ephemeral Key for the Customer.
+3. Creates a PaymentIntent, passing the Customer id.
+4. Returns the Payment Intent’s [client secret](https://stripe.com/docs/api/payment_intents/object#payment_intent_object-client_secret), the Ephemeral Key’s secret, and the Customer’s id to your app.
+
+Check examples implementations for your server [here](https://stripe.com/docs/payments/accept-a-payment?platform=ios#add-server-endpoint)
+
+## 3. Collect customer details [Client Side]
+
+First initialize the customer sheet
+
+```dart
+ Future<void> initCustomerSheet() async {
+    try {
+      // 1. retrieve customer from backend.
+      final data = await _createTestCustomerSheet();
+
+      // create some billingdetails
+      final billingDetails = BillingDetails(
+        name: 'Flutter Stripe',
+        email: 'email@stripe.com',
+        phone: '+48888000888',
+        address: Address(
+          city: 'Houston',
+          country: 'US',
+          line1: '1459  Circle Drive',
+          line2: '',
+          state: 'Texas',
+          postalCode: '77063',
+        ),
+      ); // mocked data for tests
+
+      // 2. initialize the customer sheet
+      await Stripe.instance.initCustomerSheet(
+        customerSheetInitParams: CustomerSheetInitParams(
+          // Main params
+          setupIntentClientSecret: data['setupIntent'],
+          merchantDisplayName: 'Flutter Stripe Store Demo',
+          // Customer params
+          customerId: data['customer'],
+          customerEphemeralKeySecret: data['ephemeralKeySecret'],
+          style: ThemeMode.system,
+          defaultBillingDetails: billingDetails,
+        ),
+      );
+      setState(() {
+        step = 1;
+      });
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: $e')),
+      );
+      rethrow;
+    }
+  }
+  ```
+
+  Then you can show the customer sheet
+
+  ```dart
+   Future<void> confirmCustomerSheet() async {
+    try {
+      // 3. display the customer sheet.
+      final result = await Stripe.instance.presentCustomerSheet();
+
+      setState(() {
+        step = 0;
+      });
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+              'Payment succesfully modified option selected: ${result?.paymentOption?.label}}'),
+        ),
+      );
+    } on Exception catch (e) {
+      if (e is StripeException) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error from Stripe: ${e.error.localizedMessage}'),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Unforeseen error: ${e}'),
+          ),
+        );
+      }
+    }
+  }
+  ```
+
+## 3. Optional configuration
+
+### Change appearance
+
+It is possible to change the appearance of the customer sheet. 
+
+```dart
+ await Stripe.instance.initCustomerSheet(      
+  appearance: PaymentSheetAppearance(
+    colors: PaymentSheetAppearanceColors(
+      background: Colors.lightBlue,
+      primary: Colors.blue,
+      componentBorder: Colors.red,
+    ),
+    shapes: PaymentSheetShape(
+      borderWidth: 4,
+      shadow: PaymentSheetShadowParams(color: Colors.red),
+    ),
+    primaryButton: PaymentSheetPrimaryButtonAppearance(
+      shapes: PaymentSheetPrimaryButtonShape(blurRadius: 8),
+      colors: PaymentSheetPrimaryButtonTheme(
+        light: PaymentSheetPrimaryButtonThemeColors(
+          background: Color.fromARGB(255, 231, 235, 30),
+          text: Color.fromARGB(255, 235, 92, 30),
+          border: Color.fromARGB(255, 235, 92, 30),
+        ),
+      ),
+    ),
+  ),      
+);
+```

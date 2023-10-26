@@ -1,24 +1,23 @@
 package com.facebook.react.bridge;
 
-import android.app.Activity;
-import android.content.ContextWrapper;
-
 import androidx.fragment.app.FragmentActivity;
 
-import com.flutter.stripe.StripeAndroidPlugin;
+import com.reactnativestripesdk.StripeSdkModule;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.ref.WeakReference;
 
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
+import io.flutter.plugin.common.MethodChannel;
+import kotlin.jvm.functions.Function0;
 
-public class ReactApplicationContext extends ContextWrapper {
+public class ReactApplicationContext extends ReactContext {
 
     private final ActivityPluginBinding binding;
 
-    public ReactApplicationContext(ActivityPluginBinding binding) {
-        super(binding.getActivity());
+    public ReactApplicationContext(ActivityPluginBinding binding, MethodChannel channel, Function0<StripeSdkModule> sdkAccessor) {
+        super((FragmentActivity) binding.getActivity(), channel, sdkAccessor);
         this.binding = binding;
     }
 
@@ -31,7 +30,4 @@ public class ReactApplicationContext extends ContextWrapper {
         return (FragmentActivity) binding.getActivity();
     }
 
-    public FragmentActivity getCurrentActivity() {
-        return (FragmentActivity) binding.getActivity();
-    }
 }

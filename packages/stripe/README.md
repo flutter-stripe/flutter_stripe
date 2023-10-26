@@ -90,8 +90,10 @@ Method        | Ease of use   | description                                     
 ------------- | ------------- |----------------------------------------------------------------------------------------------------------------- | ------------------- |
 Payment sheet | Easy          | Our recommended way of handling payments. It offers localization, animations and error handling out of the box.  | [docs](https://docs.page/flutter-stripe/flutter_stripe/sheet) |
 Cardfield     | Medium        | Single line cardfield. Offers more flexibility but has less built-in functionality.                              | [docs](https://docs.page/flutter-stripe/flutter_stripe/card_field)   |
-Card form     | Medium        | Simular as the cardfield but the entry fields are spread across multi lines                                      | [docs](https://docs.page/flutter-stripe/flutter_stripe/card_field)   |
+Card form     | Medium        | Similar as the cardfield but the entry fields are spread across multi lines                                      | [docs](https://docs.page/flutter-stripe/flutter_stripe/card_field)   |
 
+### Mobile elements [BETA]
+We also support the customer sheet mobile element. Check out the [docs](https://docs.page/flutter-stripe/flutter_stripe/customer_sheet) to learn more on how to set it up.
 
 ### Financial connections
 We also support Financial connections in our latest sdk. Check out the [docs](https://docs.page/flutter-stripe/flutter_stripe/financial_connections) to learn more on how to set it up.

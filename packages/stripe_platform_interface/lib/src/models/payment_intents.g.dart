@@ -68,11 +68,13 @@ const _$PaymentIntentsStatusEnumMap = {
 const _$CaptureMethodEnumMap = {
   CaptureMethod.Manual: 'Manual',
   CaptureMethod.Automatic: 'Automatic',
+  CaptureMethod.AutomaticAsync: 'AutomaticAsync',
 };
 
 const _$ConfirmationMethodEnumMap = {
   ConfirmationMethod.Manual: 'Manual',
   ConfirmationMethod.Automatic: 'Automatic',
+  ConfirmationMethod.Unknown: 'Unknown',
 };
 
 _$_ShippingDetails _$$_ShippingDetailsFromJson(Map<String, dynamic> json) =>

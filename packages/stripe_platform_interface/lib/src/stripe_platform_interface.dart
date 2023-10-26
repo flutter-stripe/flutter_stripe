@@ -41,6 +41,11 @@ abstract class StripePlatform extends PlatformInterface {
 
   Future<PaymentIntent> handleNextAction(String paymentIntentClientSecret,
       {String? returnURL});
+
+  Future<SetupIntent> handleNextActionForSetupIntent(
+      String setupIntentClientSecret,
+      {String? returnURL});
+
   Future<PaymentIntent> confirmPayment(
     String paymentIntentClientSecret,
     PaymentMethodParams? params,
@@ -48,9 +53,6 @@ abstract class StripePlatform extends PlatformInterface {
     /// Paymentmethod options
     PaymentMethodOptions? options,
   );
-
-  @Deprecated('This method is deprecated use [isPlatformPaySupported] instead')
-  Future<bool> isApplePaySupported() async => false;
 
   /// Configure the payment sheet using [SetupPaymentSheetParameters] as config.
   Future<PaymentSheetPaymentOption?> initPaymentSheet(
@@ -67,18 +69,20 @@ abstract class StripePlatform extends PlatformInterface {
   /// Confirm the payment on a payment sheet.
   Future<void> confirmPaymentSheetPayment();
 
-  Future<void> openApplePaySetup();
-  Future<void> presentApplePay(
-    ApplePayPresentParams params,
-    OnDidSetShippingContact? onDidSetShippingContact,
-    OnDidSetShippingMethod? onDidSetShippingMethod,
-  );
-  Future<void> confirmApplePayPayment(String clientSecret);
-  Future<TokenData> createApplePayToken(Map<String, dynamic> payment);
-  Future<void> updateApplePaySummaryItems({
-    required List<ApplePayCartSummaryItem> summaryItems,
-    List<ApplePayErrorAddressField>? errorAddressFields,
+  /// Configure the payment sheet using [CustomerSheetInitParams] as config.
+  Future<CustomerSheetResult?> initCustomerSheet(
+      CustomerSheetInitParams params);
+
+  /// Display the customersheet sheet.
+  Future<CustomerSheetResult?> presentCustomerSheet({
+    CustomerSheetPresentParams? options,
   });
+
+  Future<CustomerSheetResult?> retrieveCustomerSheetPaymentOptionSelection();
+
+  Future<void> openApplePaySetup();
+
+  Future<TokenData> createApplePayToken(Map<String, dynamic> payment);
 
   Future<bool> handleURLCallback(String url);
 
@@ -161,6 +165,10 @@ abstract class StripePlatform extends PlatformInterface {
   /// or storing full card details! See the docs for
   /// details: https://stripe.com/docs/security/guide#validating-pci-compliance
   Future<void> dangerouslyUpdateCardDetails(CardDetails card);
+
+  /// Method used to confirm to the user that the intent is created successfull
+  /// or not successfull when using a defferred payment method.
+  Future<void> intentCreationCallback(IntentCreationCallbackParams params);
 
   Widget buildCard({
     Key? key,

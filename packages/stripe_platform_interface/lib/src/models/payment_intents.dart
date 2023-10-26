@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'address.dart';
+import 'capture_method.dart';
 import 'next_action.dart';
 import 'payment_methods.dart';
 
@@ -71,15 +72,6 @@ class PaymentIntent with _$PaymentIntent {
       _$PaymentIntentFromJson(json);
 }
 
-/// Defines how the money will be captured from the customer's account.
-enum CaptureMethod {
-  /// Reserve the funds but the customer has to authorize the payment.
-  Manual,
-
-  /// Funds are automatically captured by stripe
-  Automatic,
-}
-
 /// Defines how the payment will be confirmed.
 enum ConfirmationMethod {
   /// Server needs to initiate each payment with a secret and explictly confirm it.
@@ -87,6 +79,9 @@ enum ConfirmationMethod {
 
   /// Payment intent will be confirmed using the publishable key.
   Automatic,
+
+  /// Unknown confirmation method.
+  Unknown,
 }
 
 //nextActionMap.putString("type", "urlRedirect")

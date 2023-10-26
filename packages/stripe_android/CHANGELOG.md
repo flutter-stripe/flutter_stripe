@@ -1,3 +1,52 @@
+## 9.5.0
+
+Sync with Stripe React Native v0.33:
+
+**Features**
+
+- Added the `amount` and `label` params to `initPaymentSheet`'s `googlePay` field configuration. Use this to diplay the amount for setup intents.
+- Added the `amount` and `label` params `createPlatformPayPaymentMethod`, `confirmPlatformPayPayment`, and `confirmPlatformPaySetupIntent`.
+- PaymentSheet now supports the following payment methods on both iOS and Android (previously some of the following were iOS only) for SetupIntents and PaymentIntents with setup for future usage:
+  - Alipay
+  - BECS Direct Debit
+  - Cash App Pay
+  - iDEAL
+  - SEPA
+  - Sofort
+  - Bancontact
+  - BLIK
+  - Boleto
+  - Revolut Pay
+  - OXXO (PaymentIntents only)
+  - Konbini (PaymentIntents only)
+- PaymentSheet now supports the following payment methods on iOS only for SetupIntents and PaymentIntents with setup for future usage:
+  - PayNow
+  - PromptPay
+
+- `createPlatformPayPaymentMethod` and `createPlatformPayToken` now also include an optional `shippingContact` field in their results. [#1500](https://github.com/stripe/stripe-react-native/pull/1500)
+- Added the `removeSavedPaymentMethodMessage` field to `initPaymentSheet` to display a custom message when a saved payment method is removed. iOS Only. [#1498](https://github.com/stripe/stripe-react-native/pull/1498)
+
+- **[BETA]** Added [CustomerSheet](https://stripe.com/docs/elements/customer-sheet?platform=react-native) API, a prebuilt UI component that lets your customers manage their saved payment methods. [#1491](https://github.com/stripe/stripe-react-native/pull/1491)
+- [PaymentSheet] Added support for AmazonPay (private beta), BLIK (iOS only), GrabPay, and FPX with PaymentIntents. [#1491](https://github.com/stripe/stripe-react-native/pull/1491)
+
+**Fixes**
+
+- Fixed an issue on iOS where the value for the `paymentMethod` field on the returned `paymentIntent` object from `confirmPlatformPayPayment` and the returned `setupIntent` object from `confirmPlatformPaySetupIntent` would be null.
+- Fixed an issue on iOS where recollecting the CVC wouldn't work correctly. [#1501](https://github.com/stripe/stripe-react-native/pull/1501)
+- Fixed font scaling on Android PaymentSheet not respecting floating-point number values. [#1469](https://github.com/stripe/stripe-react-native/pull/1469)
+
+## 9.4.0
+
+**Breaking changes**
+- Removed deprecated methods `isApplePaySupported`, `checkApplePaySupport`, `presentApplePay`, `confirmApplePayPayment`.
+
+**Features**
+ - Added support for deffered payments in the payment sheet for more info see [docs](https://docs.page/flutter-stripe/flutter_stripe/sheet_deferred).
+ - Sync with Stripe [0.29.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.29.0) and [0.30.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.30.0).
+
+ **Fixes**
+ - Fixed #1376 focus issue on iOS.
+ 
 ## 9.3.0
 **Features**
 - Add method for retrieve setupintent.
@@ -6,6 +55,10 @@
 - Calling confirm payment without params won't crash #1246 
 - Fix inproper calling of cashapp payment method. #1313
 - Sync with Stripe [0.28.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.28.0).
+
+## 9.2.2
+**Fixes**
+- Updates json_annotation version requirement
 
 ## 9.2.1
 **Fixes**
@@ -26,7 +79,7 @@
 - #1219 use correct value for enum PaymentConfirmationRedirect.ifRequired.
 - Add setting to render the cardfield using the standard AndroidView instead as alternative to the default ExpensiveAndroid view.
 
-## 9.1.0
+## 9.1.1
 This release brings a lot of improvments to the web plugin, like later payments using SetupIntents or using tokens. 
 It also fixes the Apple Pay plugin that comes with new native features like order tracking and discount codes
 

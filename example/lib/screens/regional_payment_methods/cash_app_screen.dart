@@ -53,7 +53,6 @@ class CashAppScreen extends StatelessWidget {
       );
     } on Exception catch (e) {
       if (e is StripeException) {
-        print('blaat $e');
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(

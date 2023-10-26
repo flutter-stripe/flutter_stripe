@@ -91,8 +91,8 @@ Future<void> initPaymentSheet() async {
       // 2. initialize the payment sheet
      await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
-          // Enable custom flow
-          customFlow: true,
+          // Set to true for custom flow
+          customFlow: false,
           // Main params
           merchantDisplayName: 'Flutter Stripe Store Demo',
           paymentIntentClientSecret: data['paymentIntent'],
@@ -122,6 +122,12 @@ Future<void> initPaymentSheet() async {
 When the customer taps a **Checkout** button, call present to present the payment sheet. After the customer completes the payment, the sheet is dismissed.
 ```dart
 await Stripe.instance.presentPaymentSheet();
+```
+
+When you set `customFlow` to `true`, you need to handle the payment intent confirmation manually. You can do this by calling `confirmPaymentSheetPayment`.
+
+```dart
+await Stripe.instance.confirmPaymentSheetPayment();
 ```
 
 Unless your business model requires immediate payment (e.g., an on-demand service), don’t assume you have received payment at this point. Instead, inform the customer that you confirmed their order and notify them by email when you fulfill their order in the next step.
@@ -169,15 +175,31 @@ Add the Apple Pay capability to your app. In Xcode, open your project settings, 
 <img src="https://b.stripecdn.com/docs/assets/xcode.a05220aeae26f8b793b5694692a79117.png" height="36" />
 
 ####  Add Apple Pay
-To add Apple Pay to PaymentSheet, set `applePay: true`  with your Apple merchant ID and the country code of your business.
+To add Apple Pay to PaymentSheet, 
+Make sure to set your Apple merchant ID `Stripe.merchantIdentifier` when you init stripe instance in your `main.dart`
+
+[Check stripe docs](https://support.stripe.com/questions/enable-apple-pay-on-your-stripe-account) for enabling Apple Pay on your Stripe account & create merchantIdentifier
+
+
+```dart
+  Stripe.publishableKey = stripePublishableKey;
+  Stripe.merchantIdentifier = 'merchant.flutter.stripe.test';
+  Stripe.urlScheme = 'flutterstripe';
+  await Stripe.instance.applySettings();
+```
+
+
+then add `applePay: PaymentSheetApplePay()`  with your  and the country code of your business.
  
 ```dart
 Stripe.instance.initPaymentSheet(
   paymentSheetParameters: SetupPaymentSheetParameters(
     merchantDisplayName: 'Flutter Stripe Store Demo',
     //...
-    merchantId: "merchant.com.your_app_name",
-    merchantCountryCode: "US
+    applePay: const PaymentSheetApplePay(
+      buttonType: PlatformButtonType.buy,
+      merchantCountryCode: 'US',
+    ),
   ),
 );
 ```
