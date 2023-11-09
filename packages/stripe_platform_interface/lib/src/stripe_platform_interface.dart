@@ -99,6 +99,7 @@ abstract class StripePlatform extends PlatformInterface {
   /// Check if either google pay or apple pay  is supported on device.
   Future<bool> isPlatformPaySupported({
     IsGooglePaySupportedParams? params,
+    PlatformPayWebPaymentRequestCreateOptions? paymentRequestOptions,
   });
 
   /// Start native Payment sheet to confirm setup intent
