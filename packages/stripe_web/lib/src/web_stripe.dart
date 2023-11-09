@@ -10,6 +10,7 @@ import 'package:stripe_js/stripe_js.dart' as stripe_js;
 
 import 'parser/payment_intent.dart';
 import 'parser/payment_methods.dart';
+import 'parser/payment_request.dart';
 import 'parser/setup_intent.dart';
 import 'parser/token.dart';
 
@@ -473,8 +474,19 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<bool> isPlatformPaySupported({IsGooglePaySupportedParams? params}) {
-    throw WebUnsupportedError.method('isPlatformPaySupported');
+  Future<bool> isPlatformPaySupported({
+    IsGooglePaySupportedParams? params,
+    PlatformPayWebPaymentRequestCreateOptions? paymentRequestOptions,
+  }) {
+    final paymentRequest = js.paymentRequest((paymentRequestOptions ??
+            PlatformPayWebPaymentRequestCreateOptions.defaultOptions)
+        .toJS());
+
+    return paymentRequest.canMakePayment()
+        .then((value) =>
+            value?.applePay == true ||
+            value?.googlePay == true ||
+            value?.link == true);
   }
 
   @override
