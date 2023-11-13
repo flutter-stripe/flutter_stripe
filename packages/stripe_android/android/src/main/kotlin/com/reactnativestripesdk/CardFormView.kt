@@ -30,7 +30,7 @@ import com.flutter.stripe.R
 
 
 class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
-  internal var cardForm: CardFormView = CardFormView(context, null, R.style.StripeCardFormView_Borderless)
+  internal var cardForm: CardFormView = CardFormView(context, null, com.stripe.android.R.style.StripeCardFormView_Borderless)
   private var mEventDispatcher: EventDispatcher? = context.getNativeModule(UIManagerModule::class.java)?.eventDispatcher
   private var dangerouslyGetFullCardDetails: Boolean = false
   private var currentFocusedField: String? = null
