@@ -12735,17 +12735,11 @@ abstract class _MandateData implements MandateData {
       throw _privateConstructorUsedError;
 }
 
-MandateDataCustomerAcceptance _$MandateDataCustomerAcceptanceFromJson(
-    Map<String, dynamic> json) {
-  return _MandateDataCustomerAcceptance.fromJson(json);
-}
-
 /// @nodoc
 mixin _$MandateDataCustomerAcceptance {
   /// Online data regarding the mandate.
   MandateDataOnlineData? get ipAddress => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $MandateDataCustomerAcceptanceCopyWith<MandateDataCustomerAcceptance>
       get copyWith => throw _privateConstructorUsedError;
@@ -12842,14 +12836,8 @@ class __$$_MandateDataCustomerAcceptanceCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(explicitToJson: true)
-class _$_MandateDataCustomerAcceptance
-    implements _MandateDataCustomerAcceptance {
-  const _$_MandateDataCustomerAcceptance({this.ipAddress});
-
-  factory _$_MandateDataCustomerAcceptance.fromJson(
-          Map<String, dynamic> json) =>
-      _$$_MandateDataCustomerAcceptanceFromJson(json);
+class _$_MandateDataCustomerAcceptance extends _MandateDataCustomerAcceptance {
+  const _$_MandateDataCustomerAcceptance({this.ipAddress}) : super._();
 
   /// Online data regarding the mandate.
   @override
@@ -12869,7 +12857,6 @@ class _$_MandateDataCustomerAcceptance
                 other.ipAddress == ipAddress));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, ipAddress);
 
@@ -12879,23 +12866,14 @@ class _$_MandateDataCustomerAcceptance
   _$$_MandateDataCustomerAcceptanceCopyWith<_$_MandateDataCustomerAcceptance>
       get copyWith => __$$_MandateDataCustomerAcceptanceCopyWithImpl<
           _$_MandateDataCustomerAcceptance>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_MandateDataCustomerAcceptanceToJson(
-      this,
-    );
-  }
 }
 
 abstract class _MandateDataCustomerAcceptance
-    implements MandateDataCustomerAcceptance {
+    extends MandateDataCustomerAcceptance {
   const factory _MandateDataCustomerAcceptance(
           {final MandateDataOnlineData? ipAddress}) =
       _$_MandateDataCustomerAcceptance;
-
-  factory _MandateDataCustomerAcceptance.fromJson(Map<String, dynamic> json) =
-      _$_MandateDataCustomerAcceptance.fromJson;
+  const _MandateDataCustomerAcceptance._() : super._();
 
   @override
 

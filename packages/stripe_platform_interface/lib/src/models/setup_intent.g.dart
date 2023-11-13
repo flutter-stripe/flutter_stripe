@@ -66,6 +66,7 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.Eps: 'Eps',
   PaymentMethodType.Bancontact: 'Bancontact',
   PaymentMethodType.Oxxo: 'Oxxo',
+  PaymentMethodType.PayPal: 'PayPal',
   PaymentMethodType.Sofort: 'Sofort',
   PaymentMethodType.Upi: 'Upi',
   PaymentMethodType.USBankAccount: 'USBankAccount',
