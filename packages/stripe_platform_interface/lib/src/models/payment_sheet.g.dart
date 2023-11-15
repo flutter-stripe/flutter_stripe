@@ -403,7 +403,7 @@ _$_PaymentSheetPaymentOption _$$_PaymentSheetPaymentOptionFromJson(
         Map<String, dynamic> json) =>
     _$_PaymentSheetPaymentOption(
       label: json['label'] as String,
-      image: json['image'] as String,
+      image: json['image'] as String?,
     );
 
 Map<String, dynamic> _$$_PaymentSheetPaymentOptionToJson(

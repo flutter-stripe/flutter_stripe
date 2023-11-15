@@ -4471,7 +4471,7 @@ mixin _$PaymentSheetPaymentOption {
   String get label => throw _privateConstructorUsedError;
 
   /// String decoding of the image
-  String get image => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -4485,7 +4485,7 @@ abstract class $PaymentSheetPaymentOptionCopyWith<$Res> {
           $Res Function(PaymentSheetPaymentOption) then) =
       _$PaymentSheetPaymentOptionCopyWithImpl<$Res, PaymentSheetPaymentOption>;
   @useResult
-  $Res call({String label, String image});
+  $Res call({String label, String? image});
 }
 
 /// @nodoc
@@ -4503,17 +4503,17 @@ class _$PaymentSheetPaymentOptionCopyWithImpl<$Res,
   @override
   $Res call({
     Object? label = null,
-    Object? image = null,
+    Object? image = freezed,
   }) {
     return _then(_value.copyWith(
       label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -4527,7 +4527,7 @@ abstract class _$$_PaymentSheetPaymentOptionCopyWith<$Res>
       __$$_PaymentSheetPaymentOptionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String label, String image});
+  $Res call({String label, String? image});
 }
 
 /// @nodoc
@@ -4544,17 +4544,17 @@ class __$$_PaymentSheetPaymentOptionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? label = null,
-    Object? image = null,
+    Object? image = freezed,
   }) {
     return _then(_$_PaymentSheetPaymentOption(
       label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -4563,8 +4563,7 @@ class __$$_PaymentSheetPaymentOptionCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$_PaymentSheetPaymentOption implements _PaymentSheetPaymentOption {
-  const _$_PaymentSheetPaymentOption(
-      {required this.label, required this.image});
+  const _$_PaymentSheetPaymentOption({required this.label, this.image});
 
   factory _$_PaymentSheetPaymentOption.fromJson(Map<String, dynamic> json) =>
       _$$_PaymentSheetPaymentOptionFromJson(json);
@@ -4575,7 +4574,7 @@ class _$_PaymentSheetPaymentOption implements _PaymentSheetPaymentOption {
 
   /// String decoding of the image
   @override
-  final String image;
+  final String? image;
 
   @override
   String toString() {
@@ -4613,7 +4612,7 @@ class _$_PaymentSheetPaymentOption implements _PaymentSheetPaymentOption {
 abstract class _PaymentSheetPaymentOption implements PaymentSheetPaymentOption {
   const factory _PaymentSheetPaymentOption(
       {required final String label,
-      required final String image}) = _$_PaymentSheetPaymentOption;
+      final String? image}) = _$_PaymentSheetPaymentOption;
 
   factory _PaymentSheetPaymentOption.fromJson(Map<String, dynamic> json) =
       _$_PaymentSheetPaymentOption.fromJson;
@@ -4625,7 +4624,7 @@ abstract class _PaymentSheetPaymentOption implements PaymentSheetPaymentOption {
   @override
 
   /// String decoding of the image
-  String get image;
+  String? get image;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentSheetPaymentOptionCopyWith<_$_PaymentSheetPaymentOption>

@@ -457,7 +457,7 @@ class PaymentSheetPaymentOption with _$PaymentSheetPaymentOption {
     required String label,
 
     /// String decoding of the image
-    required String image,
+    String? image,
   }) = _PaymentSheetPaymentOption;
 
   factory PaymentSheetPaymentOption.fromJson(Map<String, dynamic> json) =>
