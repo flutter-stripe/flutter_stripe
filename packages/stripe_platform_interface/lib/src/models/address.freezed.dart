@@ -93,11 +93,11 @@ class _$AddressDetailsCopyWithImpl<$Res, $Val extends AddressDetails>
 }
 
 /// @nodoc
-abstract class _$$_AddressDetailsCopyWith<$Res>
+abstract class _$$AddressDetailsImplCopyWith<$Res>
     implements $AddressDetailsCopyWith<$Res> {
-  factory _$$_AddressDetailsCopyWith(
-          _$_AddressDetails value, $Res Function(_$_AddressDetails) then) =
-      __$$_AddressDetailsCopyWithImpl<$Res>;
+  factory _$$AddressDetailsImplCopyWith(_$AddressDetailsImpl value,
+          $Res Function(_$AddressDetailsImpl) then) =
+      __$$AddressDetailsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? name, Address? address, String? phoneNumber});
@@ -107,11 +107,11 @@ abstract class _$$_AddressDetailsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AddressDetailsCopyWithImpl<$Res>
-    extends _$AddressDetailsCopyWithImpl<$Res, _$_AddressDetails>
-    implements _$$_AddressDetailsCopyWith<$Res> {
-  __$$_AddressDetailsCopyWithImpl(
-      _$_AddressDetails _value, $Res Function(_$_AddressDetails) _then)
+class __$$AddressDetailsImplCopyWithImpl<$Res>
+    extends _$AddressDetailsCopyWithImpl<$Res, _$AddressDetailsImpl>
+    implements _$$AddressDetailsImplCopyWith<$Res> {
+  __$$AddressDetailsImplCopyWithImpl(
+      _$AddressDetailsImpl _value, $Res Function(_$AddressDetailsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -121,7 +121,7 @@ class __$$_AddressDetailsCopyWithImpl<$Res>
     Object? address = freezed,
     Object? phoneNumber = freezed,
   }) {
-    return _then(_$_AddressDetails(
+    return _then(_$AddressDetailsImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -141,11 +141,11 @@ class __$$_AddressDetailsCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_AddressDetails implements _AddressDetails {
-  const _$_AddressDetails({this.name, this.address, this.phoneNumber});
+class _$AddressDetailsImpl implements _AddressDetails {
+  const _$AddressDetailsImpl({this.name, this.address, this.phoneNumber});
 
-  factory _$_AddressDetails.fromJson(Map<String, dynamic> json) =>
-      _$$_AddressDetailsFromJson(json);
+  factory _$AddressDetailsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AddressDetailsImplFromJson(json);
 
   /// The customer's full name
   @override
@@ -168,7 +168,7 @@ class _$_AddressDetails implements _AddressDetails {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AddressDetails &&
+            other is _$AddressDetailsImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.phoneNumber, phoneNumber) ||
@@ -182,12 +182,13 @@ class _$_AddressDetails implements _AddressDetails {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddressDetailsCopyWith<_$_AddressDetails> get copyWith =>
-      __$$_AddressDetailsCopyWithImpl<_$_AddressDetails>(this, _$identity);
+  _$$AddressDetailsImplCopyWith<_$AddressDetailsImpl> get copyWith =>
+      __$$AddressDetailsImplCopyWithImpl<_$AddressDetailsImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AddressDetailsToJson(
+    return _$$AddressDetailsImplToJson(
       this,
     );
   }
@@ -197,10 +198,10 @@ abstract class _AddressDetails implements AddressDetails {
   const factory _AddressDetails(
       {final String? name,
       final Address? address,
-      final String? phoneNumber}) = _$_AddressDetails;
+      final String? phoneNumber}) = _$AddressDetailsImpl;
 
   factory _AddressDetails.fromJson(Map<String, dynamic> json) =
-      _$_AddressDetails.fromJson;
+      _$AddressDetailsImpl.fromJson;
 
   @override
 
@@ -216,7 +217,7 @@ abstract class _AddressDetails implements AddressDetails {
   String? get phoneNumber;
   @override
   @JsonKey(ignore: true)
-  _$$_AddressDetailsCopyWith<_$_AddressDetails> get copyWith =>
+  _$$AddressDetailsImplCopyWith<_$AddressDetailsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -313,10 +314,10 @@ class _$AddressCopyWithImpl<$Res, $Val extends Address>
 }
 
 /// @nodoc
-abstract class _$$_AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
-  factory _$$_AddressCopyWith(
-          _$_Address value, $Res Function(_$_Address) then) =
-      __$$_AddressCopyWithImpl<$Res>;
+abstract class _$$AddressImplCopyWith<$Res> implements $AddressCopyWith<$Res> {
+  factory _$$AddressImplCopyWith(
+          _$AddressImpl value, $Res Function(_$AddressImpl) then) =
+      __$$AddressImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -329,10 +330,11 @@ abstract class _$$_AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AddressCopyWithImpl<$Res>
-    extends _$AddressCopyWithImpl<$Res, _$_Address>
-    implements _$$_AddressCopyWith<$Res> {
-  __$$_AddressCopyWithImpl(_$_Address _value, $Res Function(_$_Address) _then)
+class __$$AddressImplCopyWithImpl<$Res>
+    extends _$AddressCopyWithImpl<$Res, _$AddressImpl>
+    implements _$$AddressImplCopyWith<$Res> {
+  __$$AddressImplCopyWithImpl(
+      _$AddressImpl _value, $Res Function(_$AddressImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -345,7 +347,7 @@ class __$$_AddressCopyWithImpl<$Res>
     Object? postalCode = freezed,
     Object? state = freezed,
   }) {
-    return _then(_$_Address(
+    return _then(_$AddressImpl(
       city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
@@ -377,8 +379,8 @@ class __$$_AddressCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_Address extends _Address {
-  const _$_Address(
+class _$AddressImpl extends _Address {
+  const _$AddressImpl(
       {required this.city,
       required this.country,
       required this.line1,
@@ -387,8 +389,8 @@ class _$_Address extends _Address {
       required this.state})
       : super._();
 
-  factory _$_Address.fromJson(Map<String, dynamic> json) =>
-      _$$_AddressFromJson(json);
+  factory _$AddressImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AddressImplFromJson(json);
 
   /// City, town or district.
   @override
@@ -423,7 +425,7 @@ class _$_Address extends _Address {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Address &&
+            other is _$AddressImpl &&
             (identical(other.city, city) || other.city == city) &&
             (identical(other.country, country) || other.country == country) &&
             (identical(other.line1, line1) || other.line1 == line1) &&
@@ -441,12 +443,12 @@ class _$_Address extends _Address {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddressCopyWith<_$_Address> get copyWith =>
-      __$$_AddressCopyWithImpl<_$_Address>(this, _$identity);
+  _$$AddressImplCopyWith<_$AddressImpl> get copyWith =>
+      __$$AddressImplCopyWithImpl<_$AddressImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AddressToJson(
+    return _$$AddressImplToJson(
       this,
     );
   }
@@ -459,10 +461,10 @@ abstract class _Address extends Address {
       required final String? line1,
       required final String? line2,
       required final String? postalCode,
-      required final String? state}) = _$_Address;
+      required final String? state}) = _$AddressImpl;
   const _Address._() : super._();
 
-  factory _Address.fromJson(Map<String, dynamic> json) = _$_Address.fromJson;
+  factory _Address.fromJson(Map<String, dynamic> json) = _$AddressImpl.fromJson;
 
   @override
 
@@ -490,6 +492,6 @@ abstract class _Address extends Address {
   String? get state;
   @override
   @JsonKey(ignore: true)
-  _$$_AddressCopyWith<_$_Address> get copyWith =>
+  _$$AddressImplCopyWith<_$AddressImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

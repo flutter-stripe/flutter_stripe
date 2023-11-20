@@ -27,10 +27,10 @@ class PlatformPayButton extends StatelessWidget {
   /// Defines the displayed text on the button.
   final PlatformButtonType type;
 
-  /// iOS only, defines the color and border radius of the button
+  /// Defines the coloring of the button
   final PlatformButtonStyle appearance;
 
-  /// iOS only, sets the border radius of the corners.
+  /// Sets the border radius of the corners.
   final double borderRadius;
 
   /// ios only, execute a callback when shipping
@@ -72,6 +72,7 @@ class PlatformPayButton extends StatelessWidget {
       return GooglePayButton(
         onTap: onPressed,
         buttonType: type,
+        borderRadius: borderRadius,
       );
     } else if (Platform.isIOS) {
       return ApplePayButton(

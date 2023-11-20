@@ -6,9 +6,9 @@ part of 'ach_params.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CollectBankAccountParams _$$_CollectBankAccountParamsFromJson(
+_$CollectBankAccountParamsImpl _$$CollectBankAccountParamsImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CollectBankAccountParams(
+    _$CollectBankAccountParamsImpl(
       billingDetails: BillingDetails.fromJson(
           json['billingDetails'] as Map<String, dynamic>),
       paymentMethodType: $enumDecodeNullable(
@@ -16,8 +16,8 @@ _$_CollectBankAccountParams _$$_CollectBankAccountParamsFromJson(
           PaymentMethodType.USBankAccount,
     );
 
-Map<String, dynamic> _$$_CollectBankAccountParamsToJson(
-        _$_CollectBankAccountParams instance) =>
+Map<String, dynamic> _$$CollectBankAccountParamsImplToJson(
+        _$CollectBankAccountParamsImpl instance) =>
     <String, dynamic>{
       'billingDetails': instance.billingDetails.toJson(),
       'paymentMethodType':
@@ -45,19 +45,20 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.Sofort: 'Sofort',
   PaymentMethodType.Upi: 'Upi',
   PaymentMethodType.USBankAccount: 'USBankAccount',
+  PaymentMethodType.RevolutPay: 'RevolutPay',
   PaymentMethodType.Unknown: 'Unknown',
 };
 
-_$_VerifyMicroDepositsParams _$$_VerifyMicroDepositsParamsFromJson(
+_$VerifyMicroDepositsParamsImpl _$$VerifyMicroDepositsParamsImplFromJson(
         Map<String, dynamic> json) =>
-    _$_VerifyMicroDepositsParams(
+    _$VerifyMicroDepositsParamsImpl(
       amounts:
           (json['amounts'] as List<dynamic>?)?.map((e) => e as int).toList(),
       descriptorCode: json['descriptorCode'] as String?,
     );
 
-Map<String, dynamic> _$$_VerifyMicroDepositsParamsToJson(
-        _$_VerifyMicroDepositsParams instance) =>
+Map<String, dynamic> _$$VerifyMicroDepositsParamsImplToJson(
+        _$VerifyMicroDepositsParamsImpl instance) =>
     <String, dynamic>{
       'amounts': instance.amounts,
       'descriptorCode': instance.descriptorCode,
