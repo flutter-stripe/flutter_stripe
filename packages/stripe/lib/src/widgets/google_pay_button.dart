@@ -37,7 +37,7 @@ class _GooglePayButtonState extends State<GooglePayButton> {
   @override
   void initState() {
     // ignore: deprecated_member_use_from_same_package
-    _creationParams['buttonType'] = describeEnum(widget.type);
+    _creationParams['buttonType'] = widget.type.name;
     _creationParams['type'] = widget.buttonType.id;
     _creationParams['appearance'] = widget.appearance.id;
     _creationParams['borderRadius'] = widget.borderRadius;
