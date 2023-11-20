@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 extension PaymentMethodTestInstance on PaymentMethod {
@@ -94,12 +93,12 @@ extension PaymentIntentTestInstance on PaymentIntent {
         'amount': amount,
         'created': created,
         'currency': currency,
-        'status': describeEnum(status),
+        'status': status.name,
         'clientSecret': clientSecret,
         'livemode': livemode,
         'paymentMethodId': paymentMethodId,
-        'captureMethod': describeEnum(captureMethod),
-        'confirmationMethod': describeEnum(confirmationMethod),
+        'captureMethod': captureMethod.name,
+        'confirmationMethod': confirmationMethod.name,
         'description': description,
         'receiptEmail': receiptEmail,
         'canceledAt': canceledAt,
@@ -124,8 +123,7 @@ extension SetupIntentTestInstance on SetupIntent {
         'clientSecret': clientSecret,
         'paymentMethodId': paymentMethodId,
         'usage': usage,
-        'paymentMethodTypes':
-            paymentMethodTypes.map((e) => describeEnum(e)).toList(),
+        'paymentMethodTypes': paymentMethodTypes.map((e) => e.name).toList(),
         'description': description,
         'created': created,
         'lastSetupError': lastSetupError,
@@ -145,7 +143,7 @@ extension TokenDataTestInstance on TokenData {
         'token': {
           'id': id,
           'livemode': livemode,
-          'type': describeEnum(type),
+          'type': type.name,
           'created': created,
           'card': {
             'brand': card?.brand,
