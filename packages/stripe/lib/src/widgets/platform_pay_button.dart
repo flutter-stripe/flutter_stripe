@@ -16,7 +16,7 @@ class PlatformPayButton extends StatelessWidget {
     super.key,
     this.type = PlatformButtonType.plain,
     this.appearance = PlatformButtonStyle.automatic,
-    this.borderRadius = 4.0,
+    this.borderRadius = 4,
     this.constraints,
     this.onShippingContactSelected,
     this.onCouponCodeEntered,
@@ -31,7 +31,7 @@ class PlatformPayButton extends StatelessWidget {
   final PlatformButtonStyle appearance;
 
   /// Sets the border radius of the corners.
-  final double borderRadius;
+  final int borderRadius;
 
   /// ios only, execute a callback when shipping
 

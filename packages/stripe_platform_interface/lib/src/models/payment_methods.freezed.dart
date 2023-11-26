@@ -2899,7 +2899,7 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
       return _PaymentMethodParamsKlarna.fromJson(json);
     case 'PayPal':
       return _PaymentMethodParamsPayPal.fromJson(json);
-    case 'RevoluPay':
+    case 'RevolutPay':
       return _PaymentMethodParamsRevolutPay.fromJson(json);
     case 'USBankAccount':
       return _PaymentMethodParamsUsBankAccount.fromJson(json);
@@ -9465,7 +9465,7 @@ class _$PaymentMethodParamsRevolutPayImpl
     implements _PaymentMethodParamsRevolutPay {
   const _$PaymentMethodParamsRevolutPayImpl(
       {required this.paymentMethodData, final String? $type})
-      : $type = $type ?? 'RevoluPay';
+      : $type = $type ?? 'RevolutPay';
 
   factory _$PaymentMethodParamsRevolutPayImpl.fromJson(
           Map<String, dynamic> json) =>

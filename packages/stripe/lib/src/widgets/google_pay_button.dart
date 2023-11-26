@@ -24,7 +24,7 @@ class GooglePayButton extends StatefulWidget {
   @Deprecated('Use [buttonType] instead')
   final GooglePayButtonType type;
 
-  final double? borderRadius;
+  final int? borderRadius;
   final PlatformButtonStyle appearance;
   final PlatformButtonType buttonType;
   final VoidCallback onTap;

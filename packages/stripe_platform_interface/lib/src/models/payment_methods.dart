@@ -500,7 +500,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
   }) = _PaymentMethodParamsPayPal;
 
   @JsonSerializable(explicitToJson: true)
-  @FreezedUnionValue('RevoluPay')
+  @FreezedUnionValue('RevolutPay')
 
   /// Paypal is in private beta make sure to request access at Stripe to try it out.
   const factory PaymentMethodParams.revolutPay({
