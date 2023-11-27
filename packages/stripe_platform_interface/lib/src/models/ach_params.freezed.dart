@@ -21,7 +21,7 @@ CollectBankAccountParams _$CollectBankAccountParamsFromJson(
 
 /// @nodoc
 mixin _$CollectBankAccountParams {
-  /// Billingdetails of the account holder
+  /// Generic payment method data object that holds the billingdetails.
   ///
   /// It is required to fill in the name in the billing details
   CollectBankAccountPaymentMethodData get paymentMethodData =>
@@ -275,9 +275,9 @@ class _$CollectBankAccountPaymentMethodDataCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $BillingDetailsCopyWith<$Res> get billingDetails {
-    return $BillingDetailsCopyWith<$Res>(_value.billingDetails, (value) {
-      return _then(_value.copyWith(billingDetails: value) as $Val);
+  $PaymentMethodDataCopyWith<$Res> get paymentMethodData {
+    return $PaymentMethodDataCopyWith<$Res>(_value.paymentMethodData, (value) {
+      return _then(_value.copyWith(paymentMethodData: value) as $Val);
     });
   }
 }
@@ -294,7 +294,7 @@ abstract class _$$CollectBankAccountPaymentMethodDataImplCopyWith<$Res>
   $Res call({BillingDetails billingDetails});
 
   @override
-  $BillingDetailsCopyWith<$Res> get billingDetails;
+  $PaymentMethodDataCopyWith<$Res> get paymentMethodData;
 }
 
 /// @nodoc
@@ -334,7 +334,7 @@ class _$CollectBankAccountPaymentMethodDataImpl
       _$$CollectBankAccountPaymentMethodDataImplFromJson(json);
 
   @override
-  final BillingDetails billingDetails;
+  final PaymentMethodData paymentMethodData;
 
   @override
   String toString() {

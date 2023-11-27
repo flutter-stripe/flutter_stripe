@@ -11,7 +11,7 @@ part 'ach_params.g.dart';
 class CollectBankAccountParams with _$CollectBankAccountParams {
   @JsonSerializable(explicitToJson: true)
   const factory CollectBankAccountParams({
-    /// Billingdetails of the account holder
+    /// Generic payment method data object that holds the billingdetails.
     ///
     /// It is required to fill in the name in the billing details
     required CollectBankAccountPaymentMethodData paymentMethodData,
