@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-11-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_platform_interface` - `v9.6.0`](#stripe_platform_interface---v960)
+ - [`flutter_stripe_web` - `v4.5.1`](#flutter_stripe_web---v451)
+ - [`flutter_stripe` - `v9.5.1`](#flutter_stripe---v951)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v4.5.1`
+ - `flutter_stripe` - `v9.5.1`
+
+---
+
+#### `stripe_platform_interface` - `v9.6.0`
+
+ - a
+
+ - **FIX**: #1459 allow image to be null (#1466).
+ - **FIX**: #1409 send usesDeprecatedTokenFlow to stripe platform (#1410).
+
+
 ## 2023-09-04
 
 ### Changes

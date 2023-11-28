@@ -1,3 +1,11 @@
+## 9.6.0
+
+ - a
+
+ - **FIX**: #1459 allow image to be null (#1466).
+ - **FIX**: #1409 send usesDeprecatedTokenFlow to stripe platform (#1410).
+
+
 ## 9.5.0
 
 Sync with Stripe React Native v0.33:
