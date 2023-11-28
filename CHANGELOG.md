@@ -15,6 +15,34 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`stripe_checkout` - `v2.0.0`](#stripe_checkout---v200)
+
+---
+
+#### `stripe_checkout` - `v2.0.0`
+
+ - Add support for Flutter 3.16
+
+ - **FIX**: upgrade to android agp 8 (#1479).
+ - **FIX**: web_checkout (#973).
+ - **FEAT**: release 9.2.1 (#1262).
+ - **FEAT**: tokens for web (#1079).
+ - **DOCS**: fix typo "succesfullly" in `checkout.dart` (#1013).
+ - **DOCS**: update checkout readme.
+
+
+## 2023-11-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_ios` - `v9.6.0`](#stripe_ios---v960)
  - [`flutter_stripe` - `v9.5.1`](#flutter_stripe---v951)
 
