@@ -218,6 +218,7 @@ class GooglePayPaymentMethodParams with _$GooglePayPaymentMethodParams {
     bool? existingPaymentMethodRequired,
 
     /// Total monetary value of the transaction.
+    /// Provide this value in the currency’s smallest unit.
     required int amount,
 
     /// Describes the configuration for billing address collection in the Google Pay sheet.

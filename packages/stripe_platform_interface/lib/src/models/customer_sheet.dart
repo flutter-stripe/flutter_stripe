@@ -64,6 +64,7 @@ class CustomerSheetPresentParams with _$CustomerSheetPresentParams {
   @JsonSerializable(explicitToJson: true)
   const factory CustomerSheetPresentParams({
     /// Controls how the modal is presented (after animation). iOS only. Defaults to `popover`.
+    /// See https://developer.apple.com/documentation/uikit/uimodalpresentationstyle for more info.
     CustomerSheetPresentationStyle? presentationStyle,
 
     /// Controls how the modal animates. iOS only.
@@ -105,6 +106,10 @@ enum CustomerSheetAnimationStyle {
 enum CustomerSheetPresentationStyle {
   fullscreen,
   popover,
+  pageSheet,
+  formSheet,
+  automatic,
+  overFullScreen,
 }
 
 /*

@@ -230,11 +230,12 @@ class _$CustomerSheetInitParamsCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CustomerSheetInitParamsCopyWith<$Res>
+abstract class _$$CustomerSheetInitParamsImplCopyWith<$Res>
     implements $CustomerSheetInitParamsCopyWith<$Res> {
-  factory _$$_CustomerSheetInitParamsCopyWith(_$_CustomerSheetInitParams value,
-          $Res Function(_$_CustomerSheetInitParams) then) =
-      __$$_CustomerSheetInitParamsCopyWithImpl<$Res>;
+  factory _$$CustomerSheetInitParamsImplCopyWith(
+          _$CustomerSheetInitParamsImpl value,
+          $Res Function(_$CustomerSheetInitParamsImpl) then) =
+      __$$CustomerSheetInitParamsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -263,12 +264,13 @@ abstract class _$$_CustomerSheetInitParamsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CustomerSheetInitParamsCopyWithImpl<$Res>
+class __$$CustomerSheetInitParamsImplCopyWithImpl<$Res>
     extends _$CustomerSheetInitParamsCopyWithImpl<$Res,
-        _$_CustomerSheetInitParams>
-    implements _$$_CustomerSheetInitParamsCopyWith<$Res> {
-  __$$_CustomerSheetInitParamsCopyWithImpl(_$_CustomerSheetInitParams _value,
-      $Res Function(_$_CustomerSheetInitParams) _then)
+        _$CustomerSheetInitParamsImpl>
+    implements _$$CustomerSheetInitParamsImplCopyWith<$Res> {
+  __$$CustomerSheetInitParamsImplCopyWithImpl(
+      _$CustomerSheetInitParamsImpl _value,
+      $Res Function(_$CustomerSheetInitParamsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -288,7 +290,7 @@ class __$$_CustomerSheetInitParamsCopyWithImpl<$Res>
     Object? applePayEnabled = null,
     Object? googlePayEnabled = null,
   }) {
-    return _then(_$_CustomerSheetInitParams(
+    return _then(_$CustomerSheetInitParamsImpl(
       style: freezed == style
           ? _value.style
           : style // ignore: cast_nullable_to_non_nullable
@@ -350,8 +352,8 @@ class __$$_CustomerSheetInitParamsCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_CustomerSheetInitParams implements _CustomerSheetInitParams {
-  const _$_CustomerSheetInitParams(
+class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
+  const _$CustomerSheetInitParamsImpl(
       {@JsonKey(toJson: UserInterfaceStyleKey.toJson) this.style,
       this.appearance,
       this.setupIntentClientSecret,
@@ -366,8 +368,8 @@ class _$_CustomerSheetInitParams implements _CustomerSheetInitParams {
       this.applePayEnabled = true,
       this.googlePayEnabled = true});
 
-  factory _$_CustomerSheetInitParams.fromJson(Map<String, dynamic> json) =>
-      _$$_CustomerSheetInitParamsFromJson(json);
+  factory _$CustomerSheetInitParamsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CustomerSheetInitParamsImplFromJson(json);
 
   /// Color styling used for the Customersheet UI
   @override
@@ -436,7 +438,7 @@ class _$_CustomerSheetInitParams implements _CustomerSheetInitParams {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CustomerSheetInitParams &&
+            other is _$CustomerSheetInitParamsImpl &&
             (identical(other.style, style) || other.style == style) &&
             (identical(other.appearance, appearance) ||
                 other.appearance == appearance) &&
@@ -492,14 +494,13 @@ class _$_CustomerSheetInitParams implements _CustomerSheetInitParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CustomerSheetInitParamsCopyWith<_$_CustomerSheetInitParams>
-      get copyWith =>
-          __$$_CustomerSheetInitParamsCopyWithImpl<_$_CustomerSheetInitParams>(
-              this, _$identity);
+  _$$CustomerSheetInitParamsImplCopyWith<_$CustomerSheetInitParamsImpl>
+      get copyWith => __$$CustomerSheetInitParamsImplCopyWithImpl<
+          _$CustomerSheetInitParamsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CustomerSheetInitParamsToJson(
+    return _$$CustomerSheetInitParamsImplToJson(
       this,
     );
   }
@@ -520,10 +521,10 @@ abstract class _CustomerSheetInitParams implements CustomerSheetInitParams {
       final String? returnURL,
       final String? removeSavedPaymentMethodMessage,
       final bool applePayEnabled,
-      final bool googlePayEnabled}) = _$_CustomerSheetInitParams;
+      final bool googlePayEnabled}) = _$CustomerSheetInitParamsImpl;
 
   factory _CustomerSheetInitParams.fromJson(Map<String, dynamic> json) =
-      _$_CustomerSheetInitParams.fromJson;
+      _$CustomerSheetInitParamsImpl.fromJson;
 
   @override
 
@@ -583,7 +584,7 @@ abstract class _CustomerSheetInitParams implements CustomerSheetInitParams {
   bool get googlePayEnabled;
   @override
   @JsonKey(ignore: true)
-  _$$_CustomerSheetInitParamsCopyWith<_$_CustomerSheetInitParams>
+  _$$CustomerSheetInitParamsImplCopyWith<_$CustomerSheetInitParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -595,6 +596,7 @@ CustomerSheetPresentParams _$CustomerSheetPresentParamsFromJson(
 /// @nodoc
 mixin _$CustomerSheetPresentParams {
   /// Controls how the modal is presented (after animation). iOS only. Defaults to `popover`.
+  /// See https://developer.apple.com/documentation/uikit/uimodalpresentationstyle for more info.
   CustomerSheetPresentationStyle? get presentationStyle =>
       throw _privateConstructorUsedError;
 
@@ -660,12 +662,12 @@ class _$CustomerSheetPresentParamsCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CustomerSheetPresentParamsCopyWith<$Res>
+abstract class _$$CustomerSheetPresentParamsImplCopyWith<$Res>
     implements $CustomerSheetPresentParamsCopyWith<$Res> {
-  factory _$$_CustomerSheetPresentParamsCopyWith(
-          _$_CustomerSheetPresentParams value,
-          $Res Function(_$_CustomerSheetPresentParams) then) =
-      __$$_CustomerSheetPresentParamsCopyWithImpl<$Res>;
+  factory _$$CustomerSheetPresentParamsImplCopyWith(
+          _$CustomerSheetPresentParamsImpl value,
+          $Res Function(_$CustomerSheetPresentParamsImpl) then) =
+      __$$CustomerSheetPresentParamsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -675,13 +677,13 @@ abstract class _$$_CustomerSheetPresentParamsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CustomerSheetPresentParamsCopyWithImpl<$Res>
+class __$$CustomerSheetPresentParamsImplCopyWithImpl<$Res>
     extends _$CustomerSheetPresentParamsCopyWithImpl<$Res,
-        _$_CustomerSheetPresentParams>
-    implements _$$_CustomerSheetPresentParamsCopyWith<$Res> {
-  __$$_CustomerSheetPresentParamsCopyWithImpl(
-      _$_CustomerSheetPresentParams _value,
-      $Res Function(_$_CustomerSheetPresentParams) _then)
+        _$CustomerSheetPresentParamsImpl>
+    implements _$$CustomerSheetPresentParamsImplCopyWith<$Res> {
+  __$$CustomerSheetPresentParamsImplCopyWithImpl(
+      _$CustomerSheetPresentParamsImpl _value,
+      $Res Function(_$CustomerSheetPresentParamsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -691,7 +693,7 @@ class __$$_CustomerSheetPresentParamsCopyWithImpl<$Res>
     Object? animationStyle = freezed,
     Object? timeout = freezed,
   }) {
-    return _then(_$_CustomerSheetPresentParams(
+    return _then(_$CustomerSheetPresentParamsImpl(
       presentationStyle: freezed == presentationStyle
           ? _value.presentationStyle
           : presentationStyle // ignore: cast_nullable_to_non_nullable
@@ -711,14 +713,16 @@ class __$$_CustomerSheetPresentParamsCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_CustomerSheetPresentParams implements _CustomerSheetPresentParams {
-  const _$_CustomerSheetPresentParams(
+class _$CustomerSheetPresentParamsImpl implements _CustomerSheetPresentParams {
+  const _$CustomerSheetPresentParamsImpl(
       {this.presentationStyle, this.animationStyle, this.timeout});
 
-  factory _$_CustomerSheetPresentParams.fromJson(Map<String, dynamic> json) =>
-      _$$_CustomerSheetPresentParamsFromJson(json);
+  factory _$CustomerSheetPresentParamsImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CustomerSheetPresentParamsImplFromJson(json);
 
   /// Controls how the modal is presented (after animation). iOS only. Defaults to `popover`.
+  /// See https://developer.apple.com/documentation/uikit/uimodalpresentationstyle for more info.
   @override
   final CustomerSheetPresentationStyle? presentationStyle;
 
@@ -739,7 +743,7 @@ class _$_CustomerSheetPresentParams implements _CustomerSheetPresentParams {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CustomerSheetPresentParams &&
+            other is _$CustomerSheetPresentParamsImpl &&
             (identical(other.presentationStyle, presentationStyle) ||
                 other.presentationStyle == presentationStyle) &&
             (identical(other.animationStyle, animationStyle) ||
@@ -755,13 +759,13 @@ class _$_CustomerSheetPresentParams implements _CustomerSheetPresentParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CustomerSheetPresentParamsCopyWith<_$_CustomerSheetPresentParams>
-      get copyWith => __$$_CustomerSheetPresentParamsCopyWithImpl<
-          _$_CustomerSheetPresentParams>(this, _$identity);
+  _$$CustomerSheetPresentParamsImplCopyWith<_$CustomerSheetPresentParamsImpl>
+      get copyWith => __$$CustomerSheetPresentParamsImplCopyWithImpl<
+          _$CustomerSheetPresentParamsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CustomerSheetPresentParamsToJson(
+    return _$$CustomerSheetPresentParamsImplToJson(
       this,
     );
   }
@@ -772,14 +776,15 @@ abstract class _CustomerSheetPresentParams
   const factory _CustomerSheetPresentParams(
       {final CustomerSheetPresentationStyle? presentationStyle,
       final CustomerSheetAnimationStyle? animationStyle,
-      final int? timeout}) = _$_CustomerSheetPresentParams;
+      final int? timeout}) = _$CustomerSheetPresentParamsImpl;
 
   factory _CustomerSheetPresentParams.fromJson(Map<String, dynamic> json) =
-      _$_CustomerSheetPresentParams.fromJson;
+      _$CustomerSheetPresentParamsImpl.fromJson;
 
   @override
 
   /// Controls how the modal is presented (after animation). iOS only. Defaults to `popover`.
+  /// See https://developer.apple.com/documentation/uikit/uimodalpresentationstyle for more info.
   CustomerSheetPresentationStyle? get presentationStyle;
   @override
 
@@ -791,7 +796,7 @@ abstract class _CustomerSheetPresentParams
   int? get timeout;
   @override
   @JsonKey(ignore: true)
-  _$$_CustomerSheetPresentParamsCopyWith<_$_CustomerSheetPresentParams>
+  _$$CustomerSheetPresentParamsImplCopyWith<_$CustomerSheetPresentParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -905,11 +910,11 @@ class _$CustomerSheetResultCopyWithImpl<$Res, $Val extends CustomerSheetResult>
 }
 
 /// @nodoc
-abstract class _$$_CustomerSheetResultCopyWith<$Res>
+abstract class _$$CustomerSheetResultImplCopyWith<$Res>
     implements $CustomerSheetResultCopyWith<$Res> {
-  factory _$$_CustomerSheetResultCopyWith(_$_CustomerSheetResult value,
-          $Res Function(_$_CustomerSheetResult) then) =
-      __$$_CustomerSheetResultCopyWithImpl<$Res>;
+  factory _$$CustomerSheetResultImplCopyWith(_$CustomerSheetResultImpl value,
+          $Res Function(_$CustomerSheetResultImpl) then) =
+      __$$CustomerSheetResultImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -926,11 +931,11 @@ abstract class _$$_CustomerSheetResultCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CustomerSheetResultCopyWithImpl<$Res>
-    extends _$CustomerSheetResultCopyWithImpl<$Res, _$_CustomerSheetResult>
-    implements _$$_CustomerSheetResultCopyWith<$Res> {
-  __$$_CustomerSheetResultCopyWithImpl(_$_CustomerSheetResult _value,
-      $Res Function(_$_CustomerSheetResult) _then)
+class __$$CustomerSheetResultImplCopyWithImpl<$Res>
+    extends _$CustomerSheetResultCopyWithImpl<$Res, _$CustomerSheetResultImpl>
+    implements _$$CustomerSheetResultImplCopyWith<$Res> {
+  __$$CustomerSheetResultImplCopyWithImpl(_$CustomerSheetResultImpl _value,
+      $Res Function(_$CustomerSheetResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -940,7 +945,7 @@ class __$$_CustomerSheetResultCopyWithImpl<$Res>
     Object? paymentMethod = freezed,
     Object? error = freezed,
   }) {
-    return _then(_$_CustomerSheetResult(
+    return _then(_$CustomerSheetResultImpl(
       paymentOption: freezed == paymentOption
           ? _value.paymentOption
           : paymentOption // ignore: cast_nullable_to_non_nullable
@@ -960,12 +965,12 @@ class __$$_CustomerSheetResultCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_CustomerSheetResult implements _CustomerSheetResult {
-  const _$_CustomerSheetResult(
+class _$CustomerSheetResultImpl implements _CustomerSheetResult {
+  const _$CustomerSheetResultImpl(
       {this.paymentOption, this.paymentMethod, this.error});
 
-  factory _$_CustomerSheetResult.fromJson(Map<String, dynamic> json) =>
-      _$$_CustomerSheetResultFromJson(json);
+  factory _$CustomerSheetResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CustomerSheetResultImplFromJson(json);
 
   /// The users selected payment option, if one exists.
   @override
@@ -988,7 +993,7 @@ class _$_CustomerSheetResult implements _CustomerSheetResult {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CustomerSheetResult &&
+            other is _$CustomerSheetResultImpl &&
             (identical(other.paymentOption, paymentOption) ||
                 other.paymentOption == paymentOption) &&
             (identical(other.paymentMethod, paymentMethod) ||
@@ -1004,13 +1009,13 @@ class _$_CustomerSheetResult implements _CustomerSheetResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CustomerSheetResultCopyWith<_$_CustomerSheetResult> get copyWith =>
-      __$$_CustomerSheetResultCopyWithImpl<_$_CustomerSheetResult>(
+  _$$CustomerSheetResultImplCopyWith<_$CustomerSheetResultImpl> get copyWith =>
+      __$$CustomerSheetResultImplCopyWithImpl<_$CustomerSheetResultImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CustomerSheetResultToJson(
+    return _$$CustomerSheetResultImplToJson(
       this,
     );
   }
@@ -1020,10 +1025,10 @@ abstract class _CustomerSheetResult implements CustomerSheetResult {
   const factory _CustomerSheetResult(
       {final PaymentSheetPaymentOption? paymentOption,
       final PaymentMethod? paymentMethod,
-      final StripeError<dynamic>? error}) = _$_CustomerSheetResult;
+      final StripeError<dynamic>? error}) = _$CustomerSheetResultImpl;
 
   factory _CustomerSheetResult.fromJson(Map<String, dynamic> json) =
-      _$_CustomerSheetResult.fromJson;
+      _$CustomerSheetResultImpl.fromJson;
 
   @override
 
@@ -1039,6 +1044,6 @@ abstract class _CustomerSheetResult implements CustomerSheetResult {
   StripeError<dynamic>? get error;
   @override
   @JsonKey(ignore: true)
-  _$$_CustomerSheetResultCopyWith<_$_CustomerSheetResult> get copyWith =>
+  _$$CustomerSheetResultImplCopyWith<_$CustomerSheetResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

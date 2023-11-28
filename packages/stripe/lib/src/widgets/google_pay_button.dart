@@ -10,6 +10,8 @@ class GooglePayButton extends StatefulWidget {
     required this.onTap,
     this.type = GooglePayButtonType.pay,
     this.buttonType = PlatformButtonType.pay,
+    this.borderRadius,
+    this.appearance = PlatformButtonStyle.automatic,
     Key? key,
   }) : super(key: key);
 
@@ -22,6 +24,8 @@ class GooglePayButton extends StatefulWidget {
   @Deprecated('Use [buttonType] instead')
   final GooglePayButtonType type;
 
+  final int? borderRadius;
+  final PlatformButtonStyle appearance;
   final PlatformButtonType buttonType;
   final VoidCallback onTap;
 }
@@ -35,7 +39,8 @@ class _GooglePayButtonState extends State<GooglePayButton> {
     // ignore: deprecated_member_use_from_same_package
     _creationParams['buttonType'] = widget.type.name;
     _creationParams['type'] = widget.buttonType.id;
-
+    _creationParams['appearance'] = widget.appearance.id;
+    _creationParams['borderRadius'] = widget.borderRadius;
     super.initState();
   }
 

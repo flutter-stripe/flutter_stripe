@@ -130,11 +130,11 @@ class _$AubecsFormStyleCopyWithImpl<$Res, $Val extends AubecsFormStyle>
 }
 
 /// @nodoc
-abstract class _$$_AubecsFormStyleCopyWith<$Res>
+abstract class _$$AubecsFormStyleImplCopyWith<$Res>
     implements $AubecsFormStyleCopyWith<$Res> {
-  factory _$$_AubecsFormStyleCopyWith(
-          _$_AubecsFormStyle value, $Res Function(_$_AubecsFormStyle) then) =
-      __$$_AubecsFormStyleCopyWithImpl<$Res>;
+  factory _$$AubecsFormStyleImplCopyWith(_$AubecsFormStyleImpl value,
+          $Res Function(_$AubecsFormStyleImpl) then) =
+      __$$AubecsFormStyleImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -154,11 +154,11 @@ abstract class _$$_AubecsFormStyleCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AubecsFormStyleCopyWithImpl<$Res>
-    extends _$AubecsFormStyleCopyWithImpl<$Res, _$_AubecsFormStyle>
-    implements _$$_AubecsFormStyleCopyWith<$Res> {
-  __$$_AubecsFormStyleCopyWithImpl(
-      _$_AubecsFormStyle _value, $Res Function(_$_AubecsFormStyle) _then)
+class __$$AubecsFormStyleImplCopyWithImpl<$Res>
+    extends _$AubecsFormStyleCopyWithImpl<$Res, _$AubecsFormStyleImpl>
+    implements _$$AubecsFormStyleImplCopyWith<$Res> {
+  __$$AubecsFormStyleImplCopyWithImpl(
+      _$AubecsFormStyleImpl _value, $Res Function(_$AubecsFormStyleImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -173,7 +173,7 @@ class __$$_AubecsFormStyleCopyWithImpl<$Res>
     Object? borderColor = freezed,
     Object? borderRadius = freezed,
   }) {
-    return _then(_$_AubecsFormStyle(
+    return _then(_$AubecsFormStyleImpl(
       textColor: freezed == textColor
           ? _value.textColor
           : textColor // ignore: cast_nullable_to_non_nullable
@@ -213,8 +213,8 @@ class __$$_AubecsFormStyleCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_AubecsFormStyle implements _AubecsFormStyle {
-  const _$_AubecsFormStyle(
+class _$AubecsFormStyleImpl implements _AubecsFormStyle {
+  const _$AubecsFormStyleImpl(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
       this.textColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -229,8 +229,8 @@ class _$_AubecsFormStyle implements _AubecsFormStyle {
       this.borderColor,
       this.borderRadius});
 
-  factory _$_AubecsFormStyle.fromJson(Map<String, dynamic> json) =>
-      _$$_AubecsFormStyleFromJson(json);
+  factory _$AubecsFormStyleImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AubecsFormStyleImplFromJson(json);
 
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -271,7 +271,7 @@ class _$_AubecsFormStyle implements _AubecsFormStyle {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AubecsFormStyle &&
+            other is _$AubecsFormStyleImpl &&
             (identical(other.textColor, textColor) ||
                 other.textColor == textColor) &&
             (identical(other.textErrorColor, textErrorColor) ||
@@ -306,12 +306,13 @@ class _$_AubecsFormStyle implements _AubecsFormStyle {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AubecsFormStyleCopyWith<_$_AubecsFormStyle> get copyWith =>
-      __$$_AubecsFormStyleCopyWithImpl<_$_AubecsFormStyle>(this, _$identity);
+  _$$AubecsFormStyleImplCopyWith<_$AubecsFormStyleImpl> get copyWith =>
+      __$$AubecsFormStyleImplCopyWithImpl<_$AubecsFormStyleImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AubecsFormStyleToJson(
+    return _$$AubecsFormStyleImplToJson(
       this,
     );
   }
@@ -331,10 +332,10 @@ abstract class _AubecsFormStyle implements AubecsFormStyle {
       final Color? backgroundColor,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
       final Color? borderColor,
-      final int? borderRadius}) = _$_AubecsFormStyle;
+      final int? borderRadius}) = _$AubecsFormStyleImpl;
 
   factory _AubecsFormStyle.fromJson(Map<String, dynamic> json) =
-      _$_AubecsFormStyle.fromJson;
+      _$AubecsFormStyleImpl.fromJson;
 
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -367,7 +368,7 @@ abstract class _AubecsFormStyle implements AubecsFormStyle {
   int? get borderRadius;
   @override
   @JsonKey(ignore: true)
-  _$$_AubecsFormStyleCopyWith<_$_AubecsFormStyle> get copyWith =>
+  _$$AubecsFormStyleImplCopyWith<_$AubecsFormStyleImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -447,11 +448,12 @@ class _$AubecsFormInputDetailsCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_AubecsFormInputDetailsCopyWith<$Res>
+abstract class _$$AubecsFormInputDetailsImplCopyWith<$Res>
     implements $AubecsFormInputDetailsCopyWith<$Res> {
-  factory _$$_AubecsFormInputDetailsCopyWith(_$_AubecsFormInputDetails value,
-          $Res Function(_$_AubecsFormInputDetails) then) =
-      __$$_AubecsFormInputDetailsCopyWithImpl<$Res>;
+  factory _$$AubecsFormInputDetailsImplCopyWith(
+          _$AubecsFormInputDetailsImpl value,
+          $Res Function(_$AubecsFormInputDetailsImpl) then) =
+      __$$AubecsFormInputDetailsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -459,12 +461,13 @@ abstract class _$$_AubecsFormInputDetailsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AubecsFormInputDetailsCopyWithImpl<$Res>
+class __$$AubecsFormInputDetailsImplCopyWithImpl<$Res>
     extends _$AubecsFormInputDetailsCopyWithImpl<$Res,
-        _$_AubecsFormInputDetails>
-    implements _$$_AubecsFormInputDetailsCopyWith<$Res> {
-  __$$_AubecsFormInputDetailsCopyWithImpl(_$_AubecsFormInputDetails _value,
-      $Res Function(_$_AubecsFormInputDetails) _then)
+        _$AubecsFormInputDetailsImpl>
+    implements _$$AubecsFormInputDetailsImplCopyWith<$Res> {
+  __$$AubecsFormInputDetailsImplCopyWithImpl(
+      _$AubecsFormInputDetailsImpl _value,
+      $Res Function(_$AubecsFormInputDetailsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -475,7 +478,7 @@ class __$$_AubecsFormInputDetailsCopyWithImpl<$Res>
     Object? accountNumber = freezed,
     Object? email = freezed,
   }) {
-    return _then(_$_AubecsFormInputDetails(
+    return _then(_$AubecsFormInputDetailsImpl(
       bsbNumber: freezed == bsbNumber
           ? _value.bsbNumber
           : bsbNumber // ignore: cast_nullable_to_non_nullable
@@ -499,12 +502,12 @@ class __$$_AubecsFormInputDetailsCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_AubecsFormInputDetails implements _AubecsFormInputDetails {
-  const _$_AubecsFormInputDetails(
+class _$AubecsFormInputDetailsImpl implements _AubecsFormInputDetails {
+  const _$AubecsFormInputDetailsImpl(
       {this.bsbNumber, this.name, this.accountNumber, this.email});
 
-  factory _$_AubecsFormInputDetails.fromJson(Map<String, dynamic> json) =>
-      _$$_AubecsFormInputDetailsFromJson(json);
+  factory _$AubecsFormInputDetailsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AubecsFormInputDetailsImplFromJson(json);
 
   /// Six digit identifier to identify the branch of an financial institution.
   @override
@@ -531,7 +534,7 @@ class _$_AubecsFormInputDetails implements _AubecsFormInputDetails {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AubecsFormInputDetails &&
+            other is _$AubecsFormInputDetailsImpl &&
             (identical(other.bsbNumber, bsbNumber) ||
                 other.bsbNumber == bsbNumber) &&
             (identical(other.name, name) || other.name == name) &&
@@ -548,13 +551,13 @@ class _$_AubecsFormInputDetails implements _AubecsFormInputDetails {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AubecsFormInputDetailsCopyWith<_$_AubecsFormInputDetails> get copyWith =>
-      __$$_AubecsFormInputDetailsCopyWithImpl<_$_AubecsFormInputDetails>(
-          this, _$identity);
+  _$$AubecsFormInputDetailsImplCopyWith<_$AubecsFormInputDetailsImpl>
+      get copyWith => __$$AubecsFormInputDetailsImplCopyWithImpl<
+          _$AubecsFormInputDetailsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AubecsFormInputDetailsToJson(
+    return _$$AubecsFormInputDetailsImplToJson(
       this,
     );
   }
@@ -565,10 +568,10 @@ abstract class _AubecsFormInputDetails implements AubecsFormInputDetails {
       {final String? bsbNumber,
       final String? name,
       final String? accountNumber,
-      final String? email}) = _$_AubecsFormInputDetails;
+      final String? email}) = _$AubecsFormInputDetailsImpl;
 
   factory _AubecsFormInputDetails.fromJson(Map<String, dynamic> json) =
-      _$_AubecsFormInputDetails.fromJson;
+      _$AubecsFormInputDetailsImpl.fromJson;
 
   @override
 
@@ -588,6 +591,6 @@ abstract class _AubecsFormInputDetails implements AubecsFormInputDetails {
   String? get email;
   @override
   @JsonKey(ignore: true)
-  _$$_AubecsFormInputDetailsCopyWith<_$_AubecsFormInputDetails> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AubecsFormInputDetailsImplCopyWith<_$AubecsFormInputDetailsImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
