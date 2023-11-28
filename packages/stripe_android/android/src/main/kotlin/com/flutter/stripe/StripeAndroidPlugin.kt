@@ -151,7 +151,7 @@ If you continue to have trouble, follow this discussion to get some support http
                 result.success(null)
             }
             "collectBankAccount" -> stripeSdk.collectBankAccount(
-                isPaymentIntent = call.requiredArgument("isPaymentIntent"),
+                isPaymentIntent = call.requiredArgument("intentType"),
                 clientSecret = call.requiredArgument("clientSecret"),
                 params = call.requiredArgument("params"),
                 promise = Promise(result)
