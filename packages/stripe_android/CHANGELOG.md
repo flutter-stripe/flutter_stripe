@@ -1,8 +1,17 @@
 ## 9.6.0
+Sync with Stripe React Native v0.34 and v0.35:
 
- - aa
+**Features**
 
- - **FIX**: upgrade to android agp 8 (#1479).
+- Added new presentationStyle options for CustomerSheet and AddressSheet.
+- Support PlatformPayButton's appearance and borderRadius props on Android.
+- PaymentSheet now supports Swish for PaymentIntents in private beta.
+- PaymentSheet now supports saved payment method support for SEPA family payment methods.
+- Added support for Flutter 3.16 and AGP 8
+
+**Fixes**
+#1459 allow image to be null (#1466).
+#1409 send usesDeprecatedTokenFlow to stripe platform (#1410).
 
 ## 9.5.0
 

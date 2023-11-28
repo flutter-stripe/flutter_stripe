@@ -1,8 +1,6 @@
 ## 4.6.0
-
  - Support Flutter 3.16
-
- - **FIX**: invalid argument `requires_capture` on web (#1431).
+ - Fix invalid argument `requires_capture` on web (#1431).
 
 ## 4.5.0
 - Make sure Stripe web is compatible with Stripe platform interface 9.5.0+1
