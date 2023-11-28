@@ -479,14 +479,13 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<PaymentIntent> collectBankAccount({
-    required bool isPaymentIntent,
+  Future<PaymentIntent> collectBankAccountPayment({
     required String clientSecret,
     required CollectBankAccountParams params,
   }) async {
     final result = await _methodChannel
         .invokeMapMethod<String, dynamic>('collectBankAccount', {
-      'intentType': isPaymentIntent,
+      'intentType': true,
       'params': params.toJson(),
       'clientSecret': clientSecret,
     });
@@ -494,6 +493,23 @@ class MethodChannelStripe extends StripePlatform {
     return ResultParser<PaymentIntent>(
             parseJson: (json) => PaymentIntent.fromJson(json))
         .parse(result: result!, successResultKey: 'paymentIntent');
+  }
+
+  @override
+  Future<SetupIntent> collectBankAccountSetup({
+    required String clientSecret,
+    required CollectBankAccountParams params,
+  }) async {
+    final result = await _methodChannel
+        .invokeMapMethod<String, dynamic>('collectBankAccount', {
+      'intentType': false,
+      'params': params.toJson(),
+      'clientSecret': clientSecret,
+    });
+
+    return ResultParser<SetupIntent>(
+            parseJson: (json) => SetupIntent.fromJson(json))
+        .parse(result: result!, successResultKey: 'setupIntent');
   }
 
   @override
