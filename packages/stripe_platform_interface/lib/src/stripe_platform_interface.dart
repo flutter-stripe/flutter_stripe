@@ -139,8 +139,12 @@ abstract class StripePlatform extends PlatformInterface {
   Future<String> createTokenForCVCUpdate(String cvc);
 
   /// Methods related to ACH payments
-  Future<PaymentIntent> collectBankAccount({
-    required bool isPaymentIntent,
+  Future<PaymentIntent> collectBankAccountPayment({
+    required String clientSecret,
+    required CollectBankAccountParams params,
+  });
+
+  Future<SetupIntent> collectBankAccountSetup({
     required String clientSecret,
     required CollectBankAccountParams params,
   });
