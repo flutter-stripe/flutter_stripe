@@ -1,3 +1,9 @@
+## 9.6.0
+
+ - aaa
+
+ - **FIX**: #1409 send usesDeprecatedTokenFlow to stripe platform (#1410).
+
 ## 9.5.0
 
 Sync with Stripe React Native v0.33:

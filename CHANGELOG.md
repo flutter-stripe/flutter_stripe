@@ -15,6 +15,29 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe` - `v9.6.0`](#flutter_stripe---v960)
+
+---
+
+#### `flutter_stripe` - `v9.6.0`
+
+ - aaa
+
+ - **FIX**: #1409 send usesDeprecatedTokenFlow to stripe platform (#1410).
+
+
+## 2023-11-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`flutter_stripe_web` - `v4.6.0`](#flutter_stripe_web---v460)
 
 ---
