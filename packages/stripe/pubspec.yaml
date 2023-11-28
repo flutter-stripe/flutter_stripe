@@ -22,8 +22,16 @@ dependencies:
   flutter:
     sdk: flutter
   meta: ^1.8.0
-  stripe_android: ^9.5.0+1
-  stripe_ios: ^9.5.0+1
+  stripe_android: 
+    git:
+      ref: xk/local-use
+      path: packages/stripe_android
+      url: https://github.com/xkxeeshankhan/flutter_stripe.git
+  stripe_ios: 
+    git:
+      ref: xk/local-use
+      path: packages/stripe_ios
+      url: https://github.com/xkxeeshankhan/flutter_stripe.git
   stripe_platform_interface: 
     git:
       ref: xk/local-use
