@@ -1,3 +1,9 @@
+## 9.6.0
+
+ - aa
+
+ - **FIX**: upgrade to android agp 8 (#1479).
+
 ## 9.5.0
 
 Sync with Stripe React Native v0.33:

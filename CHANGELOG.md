@@ -15,6 +15,36 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`stripe_android` - `v9.6.0`](#stripe_android---v960)
+ - [`flutter_stripe` - `v9.5.1`](#flutter_stripe---v951)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v9.5.1`
+
+---
+
+#### `stripe_android` - `v9.6.0`
+
+ - aa
+
+ - **FIX**: upgrade to android agp 8 (#1479).
+
+
+## 2023-11-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_platform_interface` - `v9.6.0`](#stripe_platform_interface---v960)
  - [`flutter_stripe_web` - `v4.5.1`](#flutter_stripe_web---v451)
  - [`flutter_stripe` - `v9.5.1`](#flutter_stripe---v951)
