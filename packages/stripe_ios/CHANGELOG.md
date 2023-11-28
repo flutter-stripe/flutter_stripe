@@ -1,3 +1,7 @@
+## 9.6.0
+
+ - aaa
+
 ## 9.5.0
 
 Sync with Stripe React Native v0.33:
