@@ -6,8 +6,9 @@ part of 'aubecs_form.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AubecsFormStyle _$$_AubecsFormStyleFromJson(Map<String, dynamic> json) =>
-    _$_AubecsFormStyle(
+_$AubecsFormStyleImpl _$$AubecsFormStyleImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AubecsFormStyleImpl(
       textColor: ColorKey.fromJson(json['textColor']),
       textErrorColor: ColorKey.fromJson(json['textErrorColor']),
       placeholderColor: ColorKey.fromJson(json['placeholderColor']),
@@ -18,7 +19,8 @@ _$_AubecsFormStyle _$$_AubecsFormStyleFromJson(Map<String, dynamic> json) =>
       borderRadius: json['borderRadius'] as int?,
     );
 
-Map<String, dynamic> _$$_AubecsFormStyleToJson(_$_AubecsFormStyle instance) =>
+Map<String, dynamic> _$$AubecsFormStyleImplToJson(
+        _$AubecsFormStyleImpl instance) =>
     <String, dynamic>{
       'textColor': ColorKey.toJson(instance.textColor),
       'textErrorColor': ColorKey.toJson(instance.textErrorColor),
@@ -30,17 +32,17 @@ Map<String, dynamic> _$$_AubecsFormStyleToJson(_$_AubecsFormStyle instance) =>
       'borderRadius': instance.borderRadius,
     };
 
-_$_AubecsFormInputDetails _$$_AubecsFormInputDetailsFromJson(
+_$AubecsFormInputDetailsImpl _$$AubecsFormInputDetailsImplFromJson(
         Map<String, dynamic> json) =>
-    _$_AubecsFormInputDetails(
+    _$AubecsFormInputDetailsImpl(
       bsbNumber: json['bsbNumber'] as String?,
       name: json['name'] as String?,
       accountNumber: json['accountNumber'] as String?,
       email: json['email'] as String?,
     );
 
-Map<String, dynamic> _$$_AubecsFormInputDetailsToJson(
-        _$_AubecsFormInputDetails instance) =>
+Map<String, dynamic> _$$AubecsFormInputDetailsImplToJson(
+        _$AubecsFormInputDetailsImpl instance) =>
     <String, dynamic>{
       'bsbNumber': instance.bsbNumber,
       'name': instance.name,

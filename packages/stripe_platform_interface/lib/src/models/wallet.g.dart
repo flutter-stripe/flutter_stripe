@@ -6,16 +6,16 @@ part of 'wallet.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AddToWalletDetails _$$_AddToWalletDetailsFromJson(
+_$AddToWalletDetailsImpl _$$AddToWalletDetailsImplFromJson(
         Map<String, dynamic> json) =>
-    _$_AddToWalletDetails(
+    _$AddToWalletDetailsImpl(
       status: $enumDecodeNullable(
           _$CanAddToWalletErrorStatusEnumMap, json['status']),
       token: json['token'] as String?,
     );
 
-Map<String, dynamic> _$$_AddToWalletDetailsToJson(
-        _$_AddToWalletDetails instance) =>
+Map<String, dynamic> _$$AddToWalletDetailsImplToJson(
+        _$AddToWalletDetailsImpl instance) =>
     <String, dynamic>{
       'status': _$CanAddToWalletErrorStatusEnumMap[instance.status],
       'token': instance.token,

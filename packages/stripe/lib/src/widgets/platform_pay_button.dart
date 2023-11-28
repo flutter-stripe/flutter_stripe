@@ -16,7 +16,7 @@ class PlatformPayButton extends StatelessWidget {
     super.key,
     this.type = PlatformButtonType.plain,
     this.appearance = PlatformButtonStyle.automatic,
-    this.borderRadius = 4.0,
+    this.borderRadius = 4,
     this.constraints,
     this.onShippingContactSelected,
     this.onCouponCodeEntered,
@@ -27,11 +27,11 @@ class PlatformPayButton extends StatelessWidget {
   /// Defines the displayed text on the button.
   final PlatformButtonType type;
 
-  /// iOS only, defines the color and border radius of the button
+  /// Defines the coloring of the button
   final PlatformButtonStyle appearance;
 
-  /// iOS only, sets the border radius of the corners.
-  final double borderRadius;
+  /// Sets the border radius of the corners.
+  final int borderRadius;
 
   /// ios only, execute a callback when shipping
 
@@ -72,6 +72,7 @@ class PlatformPayButton extends StatelessWidget {
       return GooglePayButton(
         onTap: onPressed,
         buttonType: type,
+        borderRadius: borderRadius,
       );
     } else if (Platform.isIOS) {
       return ApplePayButton(

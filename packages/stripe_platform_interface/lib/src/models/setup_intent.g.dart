@@ -6,8 +6,8 @@ part of 'setup_intent.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SetupIntent _$$_SetupIntentFromJson(Map<String, dynamic> json) =>
-    _$_SetupIntent(
+_$SetupIntentImpl _$$SetupIntentImplFromJson(Map<String, dynamic> json) =>
+    _$SetupIntentImpl(
       id: json['id'] as String,
       status: json['status'] as String,
       livemode: json['livemode'] as bool,
@@ -31,7 +31,7 @@ _$_SetupIntent _$$_SetupIntentFromJson(Map<String, dynamic> json) =>
           : MandateData.fromJson(json['mandateData'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_SetupIntentToJson(_$_SetupIntent instance) =>
+Map<String, dynamic> _$$SetupIntentImplToJson(_$SetupIntentImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'status': instance.status,
@@ -70,16 +70,18 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.Sofort: 'Sofort',
   PaymentMethodType.Upi: 'Upi',
   PaymentMethodType.USBankAccount: 'USBankAccount',
+  PaymentMethodType.RevolutPay: 'RevolutPay',
   PaymentMethodType.Unknown: 'Unknown',
 };
 
-_$_LastSetupError _$$_LastSetupErrorFromJson(Map<String, dynamic> json) =>
-    _$_LastSetupError(
+_$LastSetupErrorImpl _$$LastSetupErrorImplFromJson(Map<String, dynamic> json) =>
+    _$LastSetupErrorImpl(
       code: json['code'] as String,
       message: json['message'] as String,
     );
 
-Map<String, dynamic> _$$_LastSetupErrorToJson(_$_LastSetupError instance) =>
+Map<String, dynamic> _$$LastSetupErrorImplToJson(
+        _$LastSetupErrorImpl instance) =>
     <String, dynamic>{
       'code': instance.code,
       'message': instance.message,

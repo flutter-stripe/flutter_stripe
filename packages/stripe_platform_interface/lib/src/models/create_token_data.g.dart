@@ -6,9 +6,9 @@ part of 'create_token_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CreateTokenParamsLegacy _$$_CreateTokenParamsLegacyFromJson(
+_$CreateTokenParamsLegacyImpl _$$CreateTokenParamsLegacyImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CreateTokenParamsLegacy(
+    _$CreateTokenParamsLegacyImpl(
       type: $enumDecodeNullable(_$TokenTypeEnumMap, json['type']) ??
           TokenType.Card,
       name: json['name'] as String?,
@@ -18,8 +18,8 @@ _$_CreateTokenParamsLegacy _$$_CreateTokenParamsLegacyFromJson(
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_CreateTokenParamsLegacyToJson(
-        _$_CreateTokenParamsLegacy instance) =>
+Map<String, dynamic> _$$CreateTokenParamsLegacyImplToJson(
+        _$CreateTokenParamsLegacyImpl instance) =>
     <String, dynamic>{
       'type': _$TokenTypeEnumMap[instance.type]!,
       'name': instance.name,
@@ -33,51 +33,52 @@ const _$TokenTypeEnumMap = {
   TokenType.Pii: 'Pii',
 };
 
-_$_CreateTokenParamsCard _$$_CreateTokenParamsCardFromJson(
+_$CreateTokenParamsCardImpl _$$CreateTokenParamsCardImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CreateTokenParamsCard(
+    _$CreateTokenParamsCardImpl(
       params: CardTokenParams.fromJson(json['params'] as Map<String, dynamic>),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_CreateTokenParamsCardToJson(
-        _$_CreateTokenParamsCard instance) =>
+Map<String, dynamic> _$$CreateTokenParamsCardImplToJson(
+        _$CreateTokenParamsCardImpl instance) =>
     <String, dynamic>{
       'params': instance.params.toJson(),
       'runtimeType': instance.$type,
     };
 
-_$_CreateTokenParamsBankAccount _$$_CreateTokenParamsBankAccountFromJson(
+_$CreateTokenParamsBankAccountImpl _$$CreateTokenParamsBankAccountImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CreateTokenParamsBankAccount(
+    _$CreateTokenParamsBankAccountImpl(
       params: BankAccountTokenParams.fromJson(
           json['params'] as Map<String, dynamic>),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_CreateTokenParamsBankAccountToJson(
-        _$_CreateTokenParamsBankAccount instance) =>
+Map<String, dynamic> _$$CreateTokenParamsBankAccountImplToJson(
+        _$CreateTokenParamsBankAccountImpl instance) =>
     <String, dynamic>{
       'params': instance.params.toJson(),
       'runtimeType': instance.$type,
     };
 
-_$_CreateTokenParamsPII _$$_CreateTokenParamsPIIFromJson(
+_$CreateTokenParamsPIIImpl _$$CreateTokenParamsPIIImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CreateTokenParamsPII(
+    _$CreateTokenParamsPIIImpl(
       params: PIITokenParams.fromJson(json['params'] as Map<String, dynamic>),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_CreateTokenParamsPIIToJson(
-        _$_CreateTokenParamsPII instance) =>
+Map<String, dynamic> _$$CreateTokenParamsPIIImplToJson(
+        _$CreateTokenParamsPIIImpl instance) =>
     <String, dynamic>{
       'params': instance.params.toJson(),
       'runtimeType': instance.$type,
     };
 
-_$_CardTokenParams _$$_CardTokenParamsFromJson(Map<String, dynamic> json) =>
-    _$_CardTokenParams(
+_$CardTokenParamsImpl _$$CardTokenParamsImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CardTokenParamsImpl(
       type: $enumDecodeNullable(_$TokenTypeEnumMap, json['type']) ??
           TokenType.Card,
       name: json['name'] as String?,
@@ -87,7 +88,8 @@ _$_CardTokenParams _$$_CardTokenParamsFromJson(Map<String, dynamic> json) =>
       currency: json['currency'] as String?,
     );
 
-Map<String, dynamic> _$$_CardTokenParamsToJson(_$_CardTokenParams instance) =>
+Map<String, dynamic> _$$CardTokenParamsImplToJson(
+        _$CardTokenParamsImpl instance) =>
     <String, dynamic>{
       'type': _$TokenTypeEnumMap[instance.type]!,
       'name': instance.name,
@@ -95,22 +97,23 @@ Map<String, dynamic> _$$_CardTokenParamsToJson(_$_CardTokenParams instance) =>
       'currency': instance.currency,
     };
 
-_$_PIITokenParams _$$_PIITokenParamsFromJson(Map<String, dynamic> json) =>
-    _$_PIITokenParams(
+_$PIITokenParamsImpl _$$PIITokenParamsImplFromJson(Map<String, dynamic> json) =>
+    _$PIITokenParamsImpl(
       type: $enumDecodeNullable(_$TokenTypeEnumMap, json['type']) ??
           TokenType.Pii,
       personalId: json['personalId'] as String,
     );
 
-Map<String, dynamic> _$$_PIITokenParamsToJson(_$_PIITokenParams instance) =>
+Map<String, dynamic> _$$PIITokenParamsImplToJson(
+        _$PIITokenParamsImpl instance) =>
     <String, dynamic>{
       'type': _$TokenTypeEnumMap[instance.type]!,
       'personalId': instance.personalId,
     };
 
-_$_BankAccountTokenParams _$$_BankAccountTokenParamsFromJson(
+_$BankAccountTokenParamsImpl _$$BankAccountTokenParamsImplFromJson(
         Map<String, dynamic> json) =>
-    _$_BankAccountTokenParams(
+    _$BankAccountTokenParamsImpl(
       type: $enumDecodeNullable(_$TokenTypeEnumMap, json['type']) ??
           TokenType.BankAccount,
       accountNumber: json['accountNumber'] as String,
@@ -122,8 +125,8 @@ _$_BankAccountTokenParams _$$_BankAccountTokenParamsFromJson(
       routingNumber: json['routingNumber'] as String?,
     );
 
-Map<String, dynamic> _$$_BankAccountTokenParamsToJson(
-        _$_BankAccountTokenParams instance) =>
+Map<String, dynamic> _$$BankAccountTokenParamsImplToJson(
+        _$BankAccountTokenParamsImpl instance) =>
     <String, dynamic>{
       'type': _$TokenTypeEnumMap[instance.type]!,
       'accountNumber': instance.accountNumber,
@@ -141,7 +144,8 @@ const _$BankAccountHolderTypeEnumMap = {
   BankAccountHolderType.Unknown: 'Unknown',
 };
 
-_$_TokenData _$$_TokenDataFromJson(Map<String, dynamic> json) => _$_TokenData(
+_$TokenDataImpl _$$TokenDataImplFromJson(Map<String, dynamic> json) =>
+    _$TokenDataImpl(
       id: json['id'] as String,
       created: json['created'] as String,
       type: $enumDecode(_$TokenTypeEnumMap, json['type']),
@@ -154,7 +158,7 @@ _$_TokenData _$$_TokenDataFromJson(Map<String, dynamic> json) => _$_TokenData(
           : CardData.fromJson(json['card'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_TokenDataToJson(_$_TokenData instance) =>
+Map<String, dynamic> _$$TokenDataImplToJson(_$TokenDataImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'created': instance.created,
@@ -164,7 +168,8 @@ Map<String, dynamic> _$$_TokenDataToJson(_$_TokenData instance) =>
       'card': instance.card,
     };
 
-_$_CardData _$$_CardDataFromJson(Map<String, dynamic> json) => _$_CardData(
+_$CardDataImpl _$$CardDataImplFromJson(Map<String, dynamic> json) =>
+    _$CardDataImpl(
       id: json['id'] as String?,
       brand: json['brand'] as String,
       country: json['country'] as String?,
@@ -179,7 +184,7 @@ _$_CardData _$$_CardDataFromJson(Map<String, dynamic> json) => _$_CardData(
           : Address.fromJson(json['address'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_CardDataToJson(_$_CardData instance) =>
+Map<String, dynamic> _$$CardDataImplToJson(_$CardDataImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'brand': instance.brand,
@@ -193,8 +198,8 @@ Map<String, dynamic> _$$_CardDataToJson(_$_CardData instance) =>
       'address': instance.address?.toJson(),
     };
 
-_$_BankAccount _$$_BankAccountFromJson(Map<String, dynamic> json) =>
-    _$_BankAccount(
+_$BankAccountImpl _$$BankAccountImplFromJson(Map<String, dynamic> json) =>
+    _$BankAccountImpl(
       id: json['id'] as String,
       accountHolderType: $enumDecodeNullable(
           _$BankAccountHolderTypeEnumMap, json['accountHolderType']),
@@ -208,7 +213,7 @@ _$_BankAccount _$$_BankAccountFromJson(Map<String, dynamic> json) =>
       last4: json['last4'] as String?,
     );
 
-Map<String, dynamic> _$$_BankAccountToJson(_$_BankAccount instance) =>
+Map<String, dynamic> _$$BankAccountImplToJson(_$BankAccountImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'accountHolderType':
