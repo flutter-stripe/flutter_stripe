@@ -15,6 +15,29 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe_web` - `v4.6.0`](#flutter_stripe_web---v460)
+
+---
+
+#### `flutter_stripe_web` - `v4.6.0`
+
+ - Support Flutter 3.16
+
+ - **FIX**: invalid argument `requires_capture` on web (#1431).
+
+
+## 2023-11-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_checkout` - `v2.0.0`](#stripe_checkout---v200)
 
 ---
