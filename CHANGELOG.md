@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-11-29
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_stripe` - `v9.6.0+1`](#flutter_stripe---v9601)
+
+---
+
+#### `flutter_stripe` - `v9.6.0+1`
+
+ - add requirement for Android gradle plugin to readme
+
+
 ## 2023-11-28
 
 ### Changes
