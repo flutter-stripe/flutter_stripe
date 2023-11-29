@@ -1,3 +1,7 @@
+## 9.6.0+1
+
+ - add requirement for Android gradle plugin to readme
+
 ## 9.6.0
 Sync with Stripe React Native v0.34 and v0.35:
 
