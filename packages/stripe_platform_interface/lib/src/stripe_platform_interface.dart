@@ -188,4 +188,12 @@ abstract class StripePlatform extends PlatformInterface {
   }) {
     throw UnimplementedError();
   }
+
+  Widget buildPaymentRequestButton({
+    Key? key,
+    required PlatformPayWebPaymentRequestCreateOptions paymentRequestCreateOptions,
+    BoxConstraints? constraints,
+  }) {
+    throw UnimplementedError();
+  }
 }

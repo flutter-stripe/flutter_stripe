@@ -12,11 +12,12 @@ extension PaymentRequestExtension on Stripe {
 }
 
 class PaymentRequest {
-  final _JSPaymentRequest _js;
+  final JsPaymentRequest _js;
 
   PaymentRequest.of(this._js);
 
   String get id => _js.id;
+  JsPaymentRequest get js => _js;
 
   Future<CanMakePaymentResponse?> canMakePayment() =>
       promiseToFuture(_js.canMakePayment());
@@ -25,14 +26,14 @@ class PaymentRequest {
 @anonymous
 @JS()
 abstract class _JS {
-  external _JSPaymentRequest paymentRequest(
-    PaymentRequestCreateOptions options,
+  external JsPaymentRequest paymentRequest(
+      PaymentRequestCreateOptions options,
   );
 }
 
 @anonymous
 @JS()
-abstract class _JSPaymentRequest {
+abstract class JsPaymentRequest {
   external String get id;
   external Promise<CanMakePaymentResponse?> canMakePayment();
 }

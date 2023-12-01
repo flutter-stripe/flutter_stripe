@@ -706,4 +706,5 @@ class Stripe {
 
   // Internal use only
   static final buildWebCard = _platform.buildCard;
+  static final buildPaymentRequestButton = _platform.buildPaymentRequestButton;
 }

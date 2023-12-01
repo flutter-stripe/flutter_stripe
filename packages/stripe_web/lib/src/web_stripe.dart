@@ -4,6 +4,7 @@ import 'dart:html';
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
+import 'package:flutter_stripe_web/platform_pay_button.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:stripe_js/stripe_api.dart' as stripe_js;
 import 'package:stripe_js/stripe_js.dart' as stripe_js;
@@ -426,6 +427,18 @@ class WebStripe extends StripePlatform {
       focusNode: focusNode,
       autofocus: autofocus,
       dangerouslyUpdateFullCardDetails: dangerouslyUpdateFullCardDetails,
+    );
+  }
+
+  @override
+  Widget buildPaymentRequestButton(
+      {Key? key,
+      required PlatformPayWebPaymentRequestCreateOptions
+          paymentRequestCreateOptions,
+      BoxConstraints? constraints}) {
+    return WebPlatformPayButton(
+      paymentRequestCreateOptions: paymentRequestCreateOptions,
+      constraints: constraints,
     );
   }
 
