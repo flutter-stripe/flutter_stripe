@@ -601,6 +601,9 @@ class PaymentMethodDataCardFromMethod with _$PaymentMethodDataCardFromMethod {
 class PaymentMethodDataIdeal with _$PaymentMethodDataIdeal {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodDataIdeal({
+    /// The bank identifier code of the bank.
+    String? bankIdentifierCode,
+
     /// The name of bank.
     String? bankName,
 
