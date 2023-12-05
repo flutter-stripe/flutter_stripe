@@ -32,7 +32,7 @@ class _KeepVisibleOnFocusState extends State<KeepVisibleOnFocus>
   void onFocusChanged() {
     if (widget.focusNode.hasFocus) {
       WidgetsBinding.instance.addObserver(this);
-      _lastBottomViewInset = MediaQuery.of(context).viewInsets.bottom;
+      _lastBottomViewInset = MediaQuery.viewInsetsOf(context).bottom;
     } else {
       WidgetsBinding.instance.removeObserver(this);
     }
@@ -61,7 +61,7 @@ class _KeepVisibleOnFocusState extends State<KeepVisibleOnFocus>
 
   @override
   void didChangeMetrics() {
-    final currentBottomViewInsets = MediaQuery.of(context).viewInsets.bottom;
+    final currentBottomViewInsets = MediaQuery.viewInsetsOf(context).bottom;
     if (_lastBottomViewInset != currentBottomViewInsets) {
       if (_lastBottomViewInset < currentBottomViewInsets) {
         // Because the metrics change signal from engine will come here every frame
