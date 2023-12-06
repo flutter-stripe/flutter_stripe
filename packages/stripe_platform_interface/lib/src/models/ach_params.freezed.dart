@@ -21,10 +21,10 @@ CollectBankAccountParams _$CollectBankAccountParamsFromJson(
 
 /// @nodoc
 mixin _$CollectBankAccountParams {
-  /// Billingdetails of the account holder
+  /// Generic payment method data object that holds the billingdetails.
   ///
   /// It is required to fill in the name in the billing details
-  BillingDetails get billingDetails => throw _privateConstructorUsedError;
+  PaymentMethodData get paymentMethodData => throw _privateConstructorUsedError;
 
   /// The paymentmethod type. At this point only method [PaymentMethodType.USBankAccount]
   /// is supported.
@@ -43,9 +43,10 @@ abstract class $CollectBankAccountParamsCopyWith<$Res> {
       _$CollectBankAccountParamsCopyWithImpl<$Res, CollectBankAccountParams>;
   @useResult
   $Res call(
-      {BillingDetails billingDetails, PaymentMethodType paymentMethodType});
+      {PaymentMethodData paymentMethodData,
+      PaymentMethodType paymentMethodType});
 
-  $BillingDetailsCopyWith<$Res> get billingDetails;
+  $PaymentMethodDataCopyWith<$Res> get paymentMethodData;
 }
 
 /// @nodoc
@@ -62,14 +63,14 @@ class _$CollectBankAccountParamsCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? billingDetails = null,
+    Object? paymentMethodData = null,
     Object? paymentMethodType = null,
   }) {
     return _then(_value.copyWith(
-      billingDetails: null == billingDetails
-          ? _value.billingDetails
-          : billingDetails // ignore: cast_nullable_to_non_nullable
-              as BillingDetails,
+      paymentMethodData: null == paymentMethodData
+          ? _value.paymentMethodData
+          : paymentMethodData // ignore: cast_nullable_to_non_nullable
+              as PaymentMethodData,
       paymentMethodType: null == paymentMethodType
           ? _value.paymentMethodType
           : paymentMethodType // ignore: cast_nullable_to_non_nullable
@@ -79,9 +80,9 @@ class _$CollectBankAccountParamsCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $BillingDetailsCopyWith<$Res> get billingDetails {
-    return $BillingDetailsCopyWith<$Res>(_value.billingDetails, (value) {
-      return _then(_value.copyWith(billingDetails: value) as $Val);
+  $PaymentMethodDataCopyWith<$Res> get paymentMethodData {
+    return $PaymentMethodDataCopyWith<$Res>(_value.paymentMethodData, (value) {
+      return _then(_value.copyWith(paymentMethodData: value) as $Val);
     });
   }
 }
@@ -96,10 +97,11 @@ abstract class _$$CollectBankAccountParamsImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {BillingDetails billingDetails, PaymentMethodType paymentMethodType});
+      {PaymentMethodData paymentMethodData,
+      PaymentMethodType paymentMethodType});
 
   @override
-  $BillingDetailsCopyWith<$Res> get billingDetails;
+  $PaymentMethodDataCopyWith<$Res> get paymentMethodData;
 }
 
 /// @nodoc
@@ -115,14 +117,14 @@ class __$$CollectBankAccountParamsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? billingDetails = null,
+    Object? paymentMethodData = null,
     Object? paymentMethodType = null,
   }) {
     return _then(_$CollectBankAccountParamsImpl(
-      billingDetails: null == billingDetails
-          ? _value.billingDetails
-          : billingDetails // ignore: cast_nullable_to_non_nullable
-              as BillingDetails,
+      paymentMethodData: null == paymentMethodData
+          ? _value.paymentMethodData
+          : paymentMethodData // ignore: cast_nullable_to_non_nullable
+              as PaymentMethodData,
       paymentMethodType: null == paymentMethodType
           ? _value.paymentMethodType
           : paymentMethodType // ignore: cast_nullable_to_non_nullable
@@ -136,17 +138,17 @@ class __$$CollectBankAccountParamsImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$CollectBankAccountParamsImpl implements _CollectBankAccountParams {
   const _$CollectBankAccountParamsImpl(
-      {required this.billingDetails,
+      {required this.paymentMethodData,
       this.paymentMethodType = PaymentMethodType.USBankAccount});
 
   factory _$CollectBankAccountParamsImpl.fromJson(Map<String, dynamic> json) =>
       _$$CollectBankAccountParamsImplFromJson(json);
 
-  /// Billingdetails of the account holder
+  /// Generic payment method data object that holds the billingdetails.
   ///
   /// It is required to fill in the name in the billing details
   @override
-  final BillingDetails billingDetails;
+  final PaymentMethodData paymentMethodData;
 
   /// The paymentmethod type. At this point only method [PaymentMethodType.USBankAccount]
   /// is supported.
@@ -156,7 +158,7 @@ class _$CollectBankAccountParamsImpl implements _CollectBankAccountParams {
 
   @override
   String toString() {
-    return 'CollectBankAccountParams(billingDetails: $billingDetails, paymentMethodType: $paymentMethodType)';
+    return 'CollectBankAccountParams(paymentMethodData: $paymentMethodData, paymentMethodType: $paymentMethodType)';
   }
 
   @override
@@ -164,8 +166,8 @@ class _$CollectBankAccountParamsImpl implements _CollectBankAccountParams {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CollectBankAccountParamsImpl &&
-            (identical(other.billingDetails, billingDetails) ||
-                other.billingDetails == billingDetails) &&
+            (identical(other.paymentMethodData, paymentMethodData) ||
+                other.paymentMethodData == paymentMethodData) &&
             (identical(other.paymentMethodType, paymentMethodType) ||
                 other.paymentMethodType == paymentMethodType));
   }
@@ -173,7 +175,7 @@ class _$CollectBankAccountParamsImpl implements _CollectBankAccountParams {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, billingDetails, paymentMethodType);
+      Object.hash(runtimeType, paymentMethodData, paymentMethodType);
 
   @JsonKey(ignore: true)
   @override
@@ -192,7 +194,7 @@ class _$CollectBankAccountParamsImpl implements _CollectBankAccountParams {
 
 abstract class _CollectBankAccountParams implements CollectBankAccountParams {
   const factory _CollectBankAccountParams(
-          {required final BillingDetails billingDetails,
+          {required final PaymentMethodData paymentMethodData,
           final PaymentMethodType paymentMethodType}) =
       _$CollectBankAccountParamsImpl;
 
@@ -201,10 +203,10 @@ abstract class _CollectBankAccountParams implements CollectBankAccountParams {
 
   @override
 
-  /// Billingdetails of the account holder
+  /// Generic payment method data object that holds the billingdetails.
   ///
   /// It is required to fill in the name in the billing details
-  BillingDetails get billingDetails;
+  PaymentMethodData get paymentMethodData;
   @override
 
   /// The paymentmethod type. At this point only method [PaymentMethodType.USBankAccount]
