@@ -3,6 +3,220 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-11-29
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_android` - `v9.6.0+1`](#stripe_android---v9601)
+ - [`flutter_stripe` - `v9.6.1`](#flutter_stripe---v961)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v9.6.1`
+
+---
+
+#### `stripe_android` - `v9.6.0+1`
+
+ - fix: compile sdk to 33
+
+
+## 2023-11-29
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_stripe` - `v9.6.0+1`](#flutter_stripe---v9601)
+
+---
+
+#### `flutter_stripe` - `v9.6.0+1`
+
+ - add requirement for Android gradle plugin to readme
+
+
+## 2023-11-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_stripe` - `v9.6.0`](#flutter_stripe---v960)
+
+---
+
+#### `flutter_stripe` - `v9.6.0`
+
+ - aaa
+
+ - **FIX**: #1409 send usesDeprecatedTokenFlow to stripe platform (#1410).
+
+
+## 2023-11-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_stripe_web` - `v4.6.0`](#flutter_stripe_web---v460)
+
+---
+
+#### `flutter_stripe_web` - `v4.6.0`
+
+ - Support Flutter 3.16
+
+ - **FIX**: invalid argument `requires_capture` on web (#1431).
+
+
+## 2023-11-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_checkout` - `v2.0.0`](#stripe_checkout---v200)
+
+---
+
+#### `stripe_checkout` - `v2.0.0`
+
+ - Add support for Flutter 3.16
+
+ - **FIX**: upgrade to android agp 8 (#1479).
+ - **FIX**: web_checkout (#973).
+ - **FEAT**: release 9.2.1 (#1262).
+ - **FEAT**: tokens for web (#1079).
+ - **DOCS**: fix typo "succesfullly" in `checkout.dart` (#1013).
+ - **DOCS**: update checkout readme.
+
+
+## 2023-11-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_ios` - `v9.6.0`](#stripe_ios---v960)
+ - [`flutter_stripe` - `v9.5.1`](#flutter_stripe---v951)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v9.5.1`
+
+---
+
+#### `stripe_ios` - `v9.6.0`
+
+ - aaa
+
+
+## 2023-11-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_android` - `v9.6.0`](#stripe_android---v960)
+ - [`flutter_stripe` - `v9.5.1`](#flutter_stripe---v951)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v9.5.1`
+
+---
+
+#### `stripe_android` - `v9.6.0`
+
+ - aa
+
+ - **FIX**: upgrade to android agp 8 (#1479).
+
+
+## 2023-11-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_platform_interface` - `v9.6.0`](#stripe_platform_interface---v960)
+ - [`flutter_stripe_web` - `v4.5.1`](#flutter_stripe_web---v451)
+ - [`flutter_stripe` - `v9.5.1`](#flutter_stripe---v951)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v4.5.1`
+ - `flutter_stripe` - `v9.5.1`
+
+---
+
+#### `stripe_platform_interface` - `v9.6.0`
+
+ - a
+
+ - **FIX**: #1459 allow image to be null (#1466).
+ - **FIX**: #1409 send usesDeprecatedTokenFlow to stripe platform (#1410).
+
+
 ## 2023-09-04
 
 ### Changes

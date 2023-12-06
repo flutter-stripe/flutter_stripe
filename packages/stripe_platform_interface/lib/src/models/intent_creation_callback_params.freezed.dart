@@ -89,12 +89,12 @@ class _$IntentCreationCallbackParamsCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_IntentCreationCallbackParamsCopyWith<$Res>
+abstract class _$$IntentCreationCallbackParamsImplCopyWith<$Res>
     implements $IntentCreationCallbackParamsCopyWith<$Res> {
-  factory _$$_IntentCreationCallbackParamsCopyWith(
-          _$_IntentCreationCallbackParams value,
-          $Res Function(_$_IntentCreationCallbackParams) then) =
-      __$$_IntentCreationCallbackParamsCopyWithImpl<$Res>;
+  factory _$$IntentCreationCallbackParamsImplCopyWith(
+          _$IntentCreationCallbackParamsImpl value,
+          $Res Function(_$IntentCreationCallbackParamsImpl) then) =
+      __$$IntentCreationCallbackParamsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? clientSecret, StripeException? error});
@@ -104,13 +104,13 @@ abstract class _$$_IntentCreationCallbackParamsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_IntentCreationCallbackParamsCopyWithImpl<$Res>
+class __$$IntentCreationCallbackParamsImplCopyWithImpl<$Res>
     extends _$IntentCreationCallbackParamsCopyWithImpl<$Res,
-        _$_IntentCreationCallbackParams>
-    implements _$$_IntentCreationCallbackParamsCopyWith<$Res> {
-  __$$_IntentCreationCallbackParamsCopyWithImpl(
-      _$_IntentCreationCallbackParams _value,
-      $Res Function(_$_IntentCreationCallbackParams) _then)
+        _$IntentCreationCallbackParamsImpl>
+    implements _$$IntentCreationCallbackParamsImplCopyWith<$Res> {
+  __$$IntentCreationCallbackParamsImplCopyWithImpl(
+      _$IntentCreationCallbackParamsImpl _value,
+      $Res Function(_$IntentCreationCallbackParamsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -119,7 +119,7 @@ class __$$_IntentCreationCallbackParamsCopyWithImpl<$Res>
     Object? clientSecret = freezed,
     Object? error = freezed,
   }) {
-    return _then(_$_IntentCreationCallbackParams(
+    return _then(_$IntentCreationCallbackParamsImpl(
       clientSecret: freezed == clientSecret
           ? _value.clientSecret
           : clientSecret // ignore: cast_nullable_to_non_nullable
@@ -135,11 +135,13 @@ class __$$_IntentCreationCallbackParamsCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_IntentCreationCallbackParams implements _IntentCreationCallbackParams {
-  const _$_IntentCreationCallbackParams({this.clientSecret, this.error});
+class _$IntentCreationCallbackParamsImpl
+    implements _IntentCreationCallbackParams {
+  const _$IntentCreationCallbackParamsImpl({this.clientSecret, this.error});
 
-  factory _$_IntentCreationCallbackParams.fromJson(Map<String, dynamic> json) =>
-      _$$_IntentCreationCallbackParamsFromJson(json);
+  factory _$IntentCreationCallbackParamsImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$IntentCreationCallbackParamsImplFromJson(json);
 
   /// Client secret of the payment intent or setup intent.
   @override
@@ -158,7 +160,7 @@ class _$_IntentCreationCallbackParams implements _IntentCreationCallbackParams {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IntentCreationCallbackParams &&
+            other is _$IntentCreationCallbackParamsImpl &&
             (identical(other.clientSecret, clientSecret) ||
                 other.clientSecret == clientSecret) &&
             (identical(other.error, error) || other.error == error));
@@ -171,13 +173,14 @@ class _$_IntentCreationCallbackParams implements _IntentCreationCallbackParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IntentCreationCallbackParamsCopyWith<_$_IntentCreationCallbackParams>
-      get copyWith => __$$_IntentCreationCallbackParamsCopyWithImpl<
-          _$_IntentCreationCallbackParams>(this, _$identity);
+  _$$IntentCreationCallbackParamsImplCopyWith<
+          _$IntentCreationCallbackParamsImpl>
+      get copyWith => __$$IntentCreationCallbackParamsImplCopyWithImpl<
+          _$IntentCreationCallbackParamsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IntentCreationCallbackParamsToJson(
+    return _$$IntentCreationCallbackParamsImplToJson(
       this,
     );
   }
@@ -187,10 +190,10 @@ abstract class _IntentCreationCallbackParams
     implements IntentCreationCallbackParams {
   const factory _IntentCreationCallbackParams(
       {final String? clientSecret,
-      final StripeException? error}) = _$_IntentCreationCallbackParams;
+      final StripeException? error}) = _$IntentCreationCallbackParamsImpl;
 
   factory _IntentCreationCallbackParams.fromJson(Map<String, dynamic> json) =
-      _$_IntentCreationCallbackParams.fromJson;
+      _$IntentCreationCallbackParamsImpl.fromJson;
 
   @override
 
@@ -202,6 +205,7 @@ abstract class _IntentCreationCallbackParams
   StripeException? get error;
   @override
   @JsonKey(ignore: true)
-  _$$_IntentCreationCallbackParamsCopyWith<_$_IntentCreationCallbackParams>
+  _$$IntentCreationCallbackParamsImplCopyWith<
+          _$IntentCreationCallbackParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

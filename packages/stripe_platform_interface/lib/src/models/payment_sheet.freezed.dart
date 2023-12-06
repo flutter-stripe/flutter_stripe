@@ -328,11 +328,11 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_SetupParametersCopyWith<$Res>
+abstract class _$$SetupParametersImplCopyWith<$Res>
     implements $SetupPaymentSheetParametersCopyWith<$Res> {
-  factory _$$_SetupParametersCopyWith(
-          _$_SetupParameters value, $Res Function(_$_SetupParameters) then) =
-      __$$_SetupParametersCopyWithImpl<$Res>;
+  factory _$$SetupParametersImplCopyWith(_$SetupParametersImpl value,
+          $Res Function(_$SetupParametersImpl) then) =
+      __$$SetupParametersImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -371,11 +371,11 @@ abstract class _$$_SetupParametersCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SetupParametersCopyWithImpl<$Res>
-    extends _$SetupPaymentSheetParametersCopyWithImpl<$Res, _$_SetupParameters>
-    implements _$$_SetupParametersCopyWith<$Res> {
-  __$$_SetupParametersCopyWithImpl(
-      _$_SetupParameters _value, $Res Function(_$_SetupParameters) _then)
+class __$$SetupParametersImplCopyWithImpl<$Res>
+    extends _$SetupPaymentSheetParametersCopyWithImpl<$Res,
+        _$SetupParametersImpl> implements _$$SetupParametersImplCopyWith<$Res> {
+  __$$SetupParametersImplCopyWithImpl(
+      _$SetupParametersImpl _value, $Res Function(_$SetupParametersImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -399,7 +399,7 @@ class __$$_SetupParametersCopyWithImpl<$Res>
     Object? billingDetailsCollectionConfiguration = freezed,
     Object? removeSavedPaymentMethodMessage = freezed,
   }) {
-    return _then(_$_SetupParameters(
+    return _then(_$SetupParametersImpl(
       customFlow: null == customFlow
           ? _value.customFlow
           : customFlow // ignore: cast_nullable_to_non_nullable
@@ -477,8 +477,8 @@ class __$$_SetupParametersCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_SetupParameters implements _SetupParameters {
-  const _$_SetupParameters(
+class _$SetupParametersImpl implements _SetupParameters {
+  const _$SetupParametersImpl(
       {this.customFlow = false,
       this.customerId,
       this.primaryButtonLabel,
@@ -497,8 +497,8 @@ class _$_SetupParameters implements _SetupParameters {
       this.billingDetailsCollectionConfiguration,
       this.removeSavedPaymentMethodMessage});
 
-  factory _$_SetupParameters.fromJson(Map<String, dynamic> json) =>
-      _$$_SetupParametersFromJson(json);
+  factory _$SetupParametersImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SetupParametersImplFromJson(json);
 
   /// Whether or not to use a custom flow.
   ///
@@ -605,7 +605,7 @@ class _$_SetupParameters implements _SetupParameters {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SetupParameters &&
+            other is _$SetupParametersImpl &&
             (identical(other.customFlow, customFlow) ||
                 other.customFlow == customFlow) &&
             (identical(other.customerId, customerId) ||
@@ -671,12 +671,13 @@ class _$_SetupParameters implements _SetupParameters {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SetupParametersCopyWith<_$_SetupParameters> get copyWith =>
-      __$$_SetupParametersCopyWithImpl<_$_SetupParameters>(this, _$identity);
+  _$$SetupParametersImplCopyWith<_$SetupParametersImpl> get copyWith =>
+      __$$SetupParametersImplCopyWithImpl<_$SetupParametersImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SetupParametersToJson(
+    return _$$SetupParametersImplToJson(
       this,
     );
   }
@@ -702,10 +703,10 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
       final String? returnURL,
       final BillingDetailsCollectionConfiguration?
           billingDetailsCollectionConfiguration,
-      final String? removeSavedPaymentMethodMessage}) = _$_SetupParameters;
+      final String? removeSavedPaymentMethodMessage}) = _$SetupParametersImpl;
 
   factory _SetupParameters.fromJson(Map<String, dynamic> json) =
-      _$_SetupParameters.fromJson;
+      _$SetupParametersImpl.fromJson;
 
   @override
 
@@ -803,7 +804,7 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   String? get removeSavedPaymentMethodMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_SetupParametersCopyWith<_$_SetupParameters> get copyWith =>
+  _$$SetupParametersImplCopyWith<_$SetupParametersImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -890,11 +891,11 @@ class _$IntentConfigurationCopyWithImpl<$Res, $Val extends IntentConfiguration>
 }
 
 /// @nodoc
-abstract class _$$_IntentConfigurationCopyWith<$Res>
+abstract class _$$IntentConfigurationImplCopyWith<$Res>
     implements $IntentConfigurationCopyWith<$Res> {
-  factory _$$_IntentConfigurationCopyWith(_$_IntentConfiguration value,
-          $Res Function(_$_IntentConfiguration) then) =
-      __$$_IntentConfigurationCopyWithImpl<$Res>;
+  factory _$$IntentConfigurationImplCopyWith(_$IntentConfigurationImpl value,
+          $Res Function(_$IntentConfigurationImpl) then) =
+      __$$IntentConfigurationImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -908,11 +909,11 @@ abstract class _$$_IntentConfigurationCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_IntentConfigurationCopyWithImpl<$Res>
-    extends _$IntentConfigurationCopyWithImpl<$Res, _$_IntentConfiguration>
-    implements _$$_IntentConfigurationCopyWith<$Res> {
-  __$$_IntentConfigurationCopyWithImpl(_$_IntentConfiguration _value,
-      $Res Function(_$_IntentConfiguration) _then)
+class __$$IntentConfigurationImplCopyWithImpl<$Res>
+    extends _$IntentConfigurationCopyWithImpl<$Res, _$IntentConfigurationImpl>
+    implements _$$IntentConfigurationImplCopyWith<$Res> {
+  __$$IntentConfigurationImplCopyWithImpl(_$IntentConfigurationImpl _value,
+      $Res Function(_$IntentConfigurationImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -922,7 +923,7 @@ class __$$_IntentConfigurationCopyWithImpl<$Res>
     Object? paymentMethodTypes = freezed,
     Object? confirmHandler = freezed,
   }) {
-    return _then(_$_IntentConfiguration(
+    return _then(_$IntentConfigurationImpl(
       mode: null == mode
           ? _value.mode
           : mode // ignore: cast_nullable_to_non_nullable
@@ -942,16 +943,16 @@ class __$$_IntentConfigurationCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_IntentConfiguration implements _IntentConfiguration {
-  const _$_IntentConfiguration(
+class _$IntentConfigurationImpl implements _IntentConfiguration {
+  const _$IntentConfigurationImpl(
       {required this.mode,
       final List<String>? paymentMethodTypes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.confirmHandler})
       : _paymentMethodTypes = paymentMethodTypes;
 
-  factory _$_IntentConfiguration.fromJson(Map<String, dynamic> json) =>
-      _$$_IntentConfigurationFromJson(json);
+  factory _$IntentConfigurationImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IntentConfigurationImplFromJson(json);
 
   /// Data related to the future payment intent
   @override
@@ -990,7 +991,7 @@ class _$_IntentConfiguration implements _IntentConfiguration {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IntentConfiguration &&
+            other is _$IntentConfigurationImpl &&
             (identical(other.mode, mode) || other.mode == mode) &&
             const DeepCollectionEquality()
                 .equals(other._paymentMethodTypes, _paymentMethodTypes) &&
@@ -1006,13 +1007,13 @@ class _$_IntentConfiguration implements _IntentConfiguration {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IntentConfigurationCopyWith<_$_IntentConfiguration> get copyWith =>
-      __$$_IntentConfigurationCopyWithImpl<_$_IntentConfiguration>(
+  _$$IntentConfigurationImplCopyWith<_$IntentConfigurationImpl> get copyWith =>
+      __$$IntentConfigurationImplCopyWithImpl<_$IntentConfigurationImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IntentConfigurationToJson(
+    return _$$IntentConfigurationImplToJson(
       this,
     );
   }
@@ -1023,10 +1024,10 @@ abstract class _IntentConfiguration implements IntentConfiguration {
       {required final IntentMode mode,
       final List<String>? paymentMethodTypes,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      final ConfirmHandler? confirmHandler}) = _$_IntentConfiguration;
+      final ConfirmHandler? confirmHandler}) = _$IntentConfigurationImpl;
 
   factory _IntentConfiguration.fromJson(Map<String, dynamic> json) =
-      _$_IntentConfiguration.fromJson;
+      _$IntentConfigurationImpl.fromJson;
 
   @override
 
@@ -1046,7 +1047,7 @@ abstract class _IntentConfiguration implements IntentConfiguration {
   ConfirmHandler? get confirmHandler;
   @override
   @JsonKey(ignore: true)
-  _$$_IntentConfigurationCopyWith<_$_IntentConfiguration> get copyWith =>
+  _$$IntentConfigurationImplCopyWith<_$IntentConfigurationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1124,11 +1125,11 @@ class _$IntentModeCopyWithImpl<$Res, $Val extends IntentMode>
 }
 
 /// @nodoc
-abstract class _$$_IntentModeCopyWith<$Res>
+abstract class _$$IntentModeImplCopyWith<$Res>
     implements $IntentModeCopyWith<$Res> {
-  factory _$$_IntentModeCopyWith(
-          _$_IntentMode value, $Res Function(_$_IntentMode) then) =
-      __$$_IntentModeCopyWithImpl<$Res>;
+  factory _$$IntentModeImplCopyWith(
+          _$IntentModeImpl value, $Res Function(_$IntentModeImpl) then) =
+      __$$IntentModeImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1139,11 +1140,11 @@ abstract class _$$_IntentModeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_IntentModeCopyWithImpl<$Res>
-    extends _$IntentModeCopyWithImpl<$Res, _$_IntentMode>
-    implements _$$_IntentModeCopyWith<$Res> {
-  __$$_IntentModeCopyWithImpl(
-      _$_IntentMode _value, $Res Function(_$_IntentMode) _then)
+class __$$IntentModeImplCopyWithImpl<$Res>
+    extends _$IntentModeCopyWithImpl<$Res, _$IntentModeImpl>
+    implements _$$IntentModeImplCopyWith<$Res> {
+  __$$IntentModeImplCopyWithImpl(
+      _$IntentModeImpl _value, $Res Function(_$IntentModeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1154,7 +1155,7 @@ class __$$_IntentModeCopyWithImpl<$Res>
     Object? setupFutureUsage = freezed,
     Object? captureMethod = freezed,
   }) {
-    return _then(_$_IntentMode(
+    return _then(_$IntentModeImpl(
       currencyCode: null == currencyCode
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
@@ -1178,15 +1179,15 @@ class __$$_IntentModeCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_IntentMode implements _IntentMode {
-  const _$_IntentMode(
+class _$IntentModeImpl implements _IntentMode {
+  const _$IntentModeImpl(
       {required this.currencyCode,
       required this.amount,
       this.setupFutureUsage,
       this.captureMethod});
 
-  factory _$_IntentMode.fromJson(Map<String, dynamic> json) =>
-      _$$_IntentModeFromJson(json);
+  factory _$IntentModeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IntentModeImplFromJson(json);
 
   @override
   final String currencyCode;
@@ -1210,7 +1211,7 @@ class _$_IntentMode implements _IntentMode {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IntentMode &&
+            other is _$IntentModeImpl &&
             (identical(other.currencyCode, currencyCode) ||
                 other.currencyCode == currencyCode) &&
             (identical(other.amount, amount) || other.amount == amount) &&
@@ -1228,12 +1229,12 @@ class _$_IntentMode implements _IntentMode {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IntentModeCopyWith<_$_IntentMode> get copyWith =>
-      __$$_IntentModeCopyWithImpl<_$_IntentMode>(this, _$identity);
+  _$$IntentModeImplCopyWith<_$IntentModeImpl> get copyWith =>
+      __$$IntentModeImplCopyWithImpl<_$IntentModeImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IntentModeToJson(
+    return _$$IntentModeImplToJson(
       this,
     );
   }
@@ -1244,10 +1245,10 @@ abstract class _IntentMode implements IntentMode {
       {required final String currencyCode,
       required final int amount,
       final IntentFutureUsage? setupFutureUsage,
-      final CaptureMethod? captureMethod}) = _$_IntentMode;
+      final CaptureMethod? captureMethod}) = _$IntentModeImpl;
 
   factory _IntentMode.fromJson(Map<String, dynamic> json) =
-      _$_IntentMode.fromJson;
+      _$IntentModeImpl.fromJson;
 
   @override
   String get currencyCode;
@@ -1263,7 +1264,7 @@ abstract class _IntentMode implements IntentMode {
   CaptureMethod? get captureMethod;
   @override
   @JsonKey(ignore: true)
-  _$$_IntentModeCopyWith<_$_IntentMode> get copyWith =>
+  _$$IntentModeImplCopyWith<_$IntentModeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1375,11 +1376,11 @@ class _$PaymentSheetApplePayCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PaymentSheetApplePayCopyWith<$Res>
+abstract class _$$PaymentSheetApplePayImplCopyWith<$Res>
     implements $PaymentSheetApplePayCopyWith<$Res> {
-  factory _$$_PaymentSheetApplePayCopyWith(_$_PaymentSheetApplePay value,
-          $Res Function(_$_PaymentSheetApplePay) then) =
-      __$$_PaymentSheetApplePayCopyWithImpl<$Res>;
+  factory _$$PaymentSheetApplePayImplCopyWith(_$PaymentSheetApplePayImpl value,
+          $Res Function(_$PaymentSheetApplePayImpl) then) =
+      __$$PaymentSheetApplePayImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1395,11 +1396,11 @@ abstract class _$$_PaymentSheetApplePayCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaymentSheetApplePayCopyWithImpl<$Res>
-    extends _$PaymentSheetApplePayCopyWithImpl<$Res, _$_PaymentSheetApplePay>
-    implements _$$_PaymentSheetApplePayCopyWith<$Res> {
-  __$$_PaymentSheetApplePayCopyWithImpl(_$_PaymentSheetApplePay _value,
-      $Res Function(_$_PaymentSheetApplePay) _then)
+class __$$PaymentSheetApplePayImplCopyWithImpl<$Res>
+    extends _$PaymentSheetApplePayCopyWithImpl<$Res, _$PaymentSheetApplePayImpl>
+    implements _$$PaymentSheetApplePayImplCopyWith<$Res> {
+  __$$PaymentSheetApplePayImplCopyWithImpl(_$PaymentSheetApplePayImpl _value,
+      $Res Function(_$PaymentSheetApplePayImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1411,7 +1412,7 @@ class __$$_PaymentSheetApplePayCopyWithImpl<$Res>
     Object? request = freezed,
     Object? setOrderTracking = freezed,
   }) {
-    return _then(_$_PaymentSheetApplePay(
+    return _then(_$PaymentSheetApplePayImpl(
       merchantCountryCode: null == merchantCountryCode
           ? _value.merchantCountryCode
           : merchantCountryCode // ignore: cast_nullable_to_non_nullable
@@ -1439,8 +1440,8 @@ class __$$_PaymentSheetApplePayCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_PaymentSheetApplePay implements _PaymentSheetApplePay {
-  const _$_PaymentSheetApplePay(
+class _$PaymentSheetApplePayImpl implements _PaymentSheetApplePay {
+  const _$PaymentSheetApplePayImpl(
       {required this.merchantCountryCode,
       final List<ApplePayCartSummaryItem>? cartItems,
       this.buttonType,
@@ -1449,8 +1450,8 @@ class _$_PaymentSheetApplePay implements _PaymentSheetApplePay {
       this.setOrderTracking})
       : _cartItems = cartItems;
 
-  factory _$_PaymentSheetApplePay.fromJson(Map<String, dynamic> json) =>
-      _$$_PaymentSheetApplePayFromJson(json);
+  factory _$PaymentSheetApplePayImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaymentSheetApplePayImplFromJson(json);
 
   ///The two-letter ISO 3166 code of the country of your business, e.g. "US"
   @override
@@ -1496,7 +1497,7 @@ class _$_PaymentSheetApplePay implements _PaymentSheetApplePay {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentSheetApplePay &&
+            other is _$PaymentSheetApplePayImpl &&
             (identical(other.merchantCountryCode, merchantCountryCode) ||
                 other.merchantCountryCode == merchantCountryCode) &&
             const DeepCollectionEquality()
@@ -1521,13 +1522,14 @@ class _$_PaymentSheetApplePay implements _PaymentSheetApplePay {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentSheetApplePayCopyWith<_$_PaymentSheetApplePay> get copyWith =>
-      __$$_PaymentSheetApplePayCopyWithImpl<_$_PaymentSheetApplePay>(
-          this, _$identity);
+  _$$PaymentSheetApplePayImplCopyWith<_$PaymentSheetApplePayImpl>
+      get copyWith =>
+          __$$PaymentSheetApplePayImplCopyWithImpl<_$PaymentSheetApplePayImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetApplePayToJson(
+    return _$$PaymentSheetApplePayImplToJson(
       this,
     );
   }
@@ -1540,10 +1542,10 @@ abstract class _PaymentSheetApplePay implements PaymentSheetApplePay {
       final PlatformButtonType? buttonType,
       final PaymentRequestType? request,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      final OnOrderTracking? setOrderTracking}) = _$_PaymentSheetApplePay;
+      final OnOrderTracking? setOrderTracking}) = _$PaymentSheetApplePayImpl;
 
   factory _PaymentSheetApplePay.fromJson(Map<String, dynamic> json) =
-      _$_PaymentSheetApplePay.fromJson;
+      _$PaymentSheetApplePayImpl.fromJson;
 
   @override
 
@@ -1572,8 +1574,8 @@ abstract class _PaymentSheetApplePay implements PaymentSheetApplePay {
   OnOrderTracking? get setOrderTracking;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentSheetApplePayCopyWith<_$_PaymentSheetApplePay> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PaymentSheetApplePayImplCopyWith<_$PaymentSheetApplePayImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 PaymentSheetGooglePay _$PaymentSheetGooglePayFromJson(
@@ -1664,11 +1666,12 @@ class _$PaymentSheetGooglePayCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PaymentSheetGooglePayCopyWith<$Res>
+abstract class _$$PaymentSheetGooglePayImplCopyWith<$Res>
     implements $PaymentSheetGooglePayCopyWith<$Res> {
-  factory _$$_PaymentSheetGooglePayCopyWith(_$_PaymentSheetGooglePay value,
-          $Res Function(_$_PaymentSheetGooglePay) then) =
-      __$$_PaymentSheetGooglePayCopyWithImpl<$Res>;
+  factory _$$PaymentSheetGooglePayImplCopyWith(
+          _$PaymentSheetGooglePayImpl value,
+          $Res Function(_$PaymentSheetGooglePayImpl) then) =
+      __$$PaymentSheetGooglePayImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1680,11 +1683,12 @@ abstract class _$$_PaymentSheetGooglePayCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaymentSheetGooglePayCopyWithImpl<$Res>
-    extends _$PaymentSheetGooglePayCopyWithImpl<$Res, _$_PaymentSheetGooglePay>
-    implements _$$_PaymentSheetGooglePayCopyWith<$Res> {
-  __$$_PaymentSheetGooglePayCopyWithImpl(_$_PaymentSheetGooglePay _value,
-      $Res Function(_$_PaymentSheetGooglePay) _then)
+class __$$PaymentSheetGooglePayImplCopyWithImpl<$Res>
+    extends _$PaymentSheetGooglePayCopyWithImpl<$Res,
+        _$PaymentSheetGooglePayImpl>
+    implements _$$PaymentSheetGooglePayImplCopyWith<$Res> {
+  __$$PaymentSheetGooglePayImplCopyWithImpl(_$PaymentSheetGooglePayImpl _value,
+      $Res Function(_$PaymentSheetGooglePayImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1696,7 +1700,7 @@ class __$$_PaymentSheetGooglePayCopyWithImpl<$Res>
     Object? label = freezed,
     Object? amount = freezed,
   }) {
-    return _then(_$_PaymentSheetGooglePay(
+    return _then(_$PaymentSheetGooglePayImpl(
       merchantCountryCode: null == merchantCountryCode
           ? _value.merchantCountryCode
           : merchantCountryCode // ignore: cast_nullable_to_non_nullable
@@ -1724,16 +1728,16 @@ class __$$_PaymentSheetGooglePayCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_PaymentSheetGooglePay implements _PaymentSheetGooglePay {
-  const _$_PaymentSheetGooglePay(
+class _$PaymentSheetGooglePayImpl implements _PaymentSheetGooglePay {
+  const _$PaymentSheetGooglePayImpl(
       {required this.merchantCountryCode,
       this.currencyCode,
       this.testEnv = false,
       this.label,
       this.amount});
 
-  factory _$_PaymentSheetGooglePay.fromJson(Map<String, dynamic> json) =>
-      _$$_PaymentSheetGooglePayFromJson(json);
+  factory _$PaymentSheetGooglePayImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaymentSheetGooglePayImplFromJson(json);
 
   ///The two-letter ISO 3166 code of the country of your business, e.g. "US"
   @override
@@ -1765,7 +1769,7 @@ class _$_PaymentSheetGooglePay implements _PaymentSheetGooglePay {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentSheetGooglePay &&
+            other is _$PaymentSheetGooglePayImpl &&
             (identical(other.merchantCountryCode, merchantCountryCode) ||
                 other.merchantCountryCode == merchantCountryCode) &&
             (identical(other.currencyCode, currencyCode) ||
@@ -1783,13 +1787,13 @@ class _$_PaymentSheetGooglePay implements _PaymentSheetGooglePay {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentSheetGooglePayCopyWith<_$_PaymentSheetGooglePay> get copyWith =>
-      __$$_PaymentSheetGooglePayCopyWithImpl<_$_PaymentSheetGooglePay>(
-          this, _$identity);
+  _$$PaymentSheetGooglePayImplCopyWith<_$PaymentSheetGooglePayImpl>
+      get copyWith => __$$PaymentSheetGooglePayImplCopyWithImpl<
+          _$PaymentSheetGooglePayImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetGooglePayToJson(
+    return _$$PaymentSheetGooglePayImplToJson(
       this,
     );
   }
@@ -1801,10 +1805,10 @@ abstract class _PaymentSheetGooglePay implements PaymentSheetGooglePay {
       final String? currencyCode,
       final bool testEnv,
       final String? label,
-      final String? amount}) = _$_PaymentSheetGooglePay;
+      final String? amount}) = _$PaymentSheetGooglePayImpl;
 
   factory _PaymentSheetGooglePay.fromJson(Map<String, dynamic> json) =
-      _$_PaymentSheetGooglePay.fromJson;
+      _$PaymentSheetGooglePayImpl.fromJson;
 
   @override
 
@@ -1828,8 +1832,8 @@ abstract class _PaymentSheetGooglePay implements PaymentSheetGooglePay {
   String? get amount;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentSheetGooglePayCopyWith<_$_PaymentSheetGooglePay> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PaymentSheetGooglePayImplCopyWith<_$PaymentSheetGooglePayImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 PaymentSheetAppearance _$PaymentSheetAppearanceFromJson(
@@ -1945,11 +1949,12 @@ class _$PaymentSheetAppearanceCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PaymentSheetAppearanceCopyWith<$Res>
+abstract class _$$PaymentSheetAppearanceImplCopyWith<$Res>
     implements $PaymentSheetAppearanceCopyWith<$Res> {
-  factory _$$_PaymentSheetAppearanceCopyWith(_$_PaymentSheetAppearance value,
-          $Res Function(_$_PaymentSheetAppearance) then) =
-      __$$_PaymentSheetAppearanceCopyWithImpl<$Res>;
+  factory _$$PaymentSheetAppearanceImplCopyWith(
+          _$PaymentSheetAppearanceImpl value,
+          $Res Function(_$PaymentSheetAppearanceImpl) then) =
+      __$$PaymentSheetAppearanceImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1966,12 +1971,13 @@ abstract class _$$_PaymentSheetAppearanceCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaymentSheetAppearanceCopyWithImpl<$Res>
+class __$$PaymentSheetAppearanceImplCopyWithImpl<$Res>
     extends _$PaymentSheetAppearanceCopyWithImpl<$Res,
-        _$_PaymentSheetAppearance>
-    implements _$$_PaymentSheetAppearanceCopyWith<$Res> {
-  __$$_PaymentSheetAppearanceCopyWithImpl(_$_PaymentSheetAppearance _value,
-      $Res Function(_$_PaymentSheetAppearance) _then)
+        _$PaymentSheetAppearanceImpl>
+    implements _$$PaymentSheetAppearanceImplCopyWith<$Res> {
+  __$$PaymentSheetAppearanceImplCopyWithImpl(
+      _$PaymentSheetAppearanceImpl _value,
+      $Res Function(_$PaymentSheetAppearanceImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1981,7 +1987,7 @@ class __$$_PaymentSheetAppearanceCopyWithImpl<$Res>
     Object? shapes = freezed,
     Object? primaryButton = freezed,
   }) {
-    return _then(_$_PaymentSheetAppearance(
+    return _then(_$PaymentSheetAppearanceImpl(
       colors: freezed == colors
           ? _value.colors
           : colors // ignore: cast_nullable_to_non_nullable
@@ -2001,12 +2007,12 @@ class __$$_PaymentSheetAppearanceCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_PaymentSheetAppearance implements _PaymentSheetAppearance {
-  const _$_PaymentSheetAppearance(
+class _$PaymentSheetAppearanceImpl implements _PaymentSheetAppearance {
+  const _$PaymentSheetAppearanceImpl(
       {this.colors, this.shapes, this.primaryButton});
 
-  factory _$_PaymentSheetAppearance.fromJson(Map<String, dynamic> json) =>
-      _$$_PaymentSheetAppearanceFromJson(json);
+  factory _$PaymentSheetAppearanceImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaymentSheetAppearanceImplFromJson(json);
 
   /// Color parameters
   @override
@@ -2029,7 +2035,7 @@ class _$_PaymentSheetAppearance implements _PaymentSheetAppearance {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentSheetAppearance &&
+            other is _$PaymentSheetAppearanceImpl &&
             (identical(other.colors, colors) || other.colors == colors) &&
             (identical(other.shapes, shapes) || other.shapes == shapes) &&
             (identical(other.primaryButton, primaryButton) ||
@@ -2043,13 +2049,13 @@ class _$_PaymentSheetAppearance implements _PaymentSheetAppearance {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentSheetAppearanceCopyWith<_$_PaymentSheetAppearance> get copyWith =>
-      __$$_PaymentSheetAppearanceCopyWithImpl<_$_PaymentSheetAppearance>(
-          this, _$identity);
+  _$$PaymentSheetAppearanceImplCopyWith<_$PaymentSheetAppearanceImpl>
+      get copyWith => __$$PaymentSheetAppearanceImplCopyWithImpl<
+          _$PaymentSheetAppearanceImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetAppearanceToJson(
+    return _$$PaymentSheetAppearanceImplToJson(
       this,
     );
   }
@@ -2060,10 +2066,10 @@ abstract class _PaymentSheetAppearance implements PaymentSheetAppearance {
           {final PaymentSheetAppearanceColors? colors,
           final PaymentSheetShape? shapes,
           final PaymentSheetPrimaryButtonAppearance? primaryButton}) =
-      _$_PaymentSheetAppearance;
+      _$PaymentSheetAppearanceImpl;
 
   factory _PaymentSheetAppearance.fromJson(Map<String, dynamic> json) =
-      _$_PaymentSheetAppearance.fromJson;
+      _$PaymentSheetAppearanceImpl.fromJson;
 
   @override
 
@@ -2079,8 +2085,8 @@ abstract class _PaymentSheetAppearance implements PaymentSheetAppearance {
   PaymentSheetPrimaryButtonAppearance? get primaryButton;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentSheetAppearanceCopyWith<_$_PaymentSheetAppearance> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PaymentSheetAppearanceImplCopyWith<_$PaymentSheetAppearanceImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 PaymentSheetAppearanceColors _$PaymentSheetAppearanceColorsFromJson(
@@ -2253,12 +2259,12 @@ class _$PaymentSheetAppearanceColorsCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PaymentSheetAppearanceColorsCopyWith<$Res>
+abstract class _$$PaymentSheetAppearanceColorsImplCopyWith<$Res>
     implements $PaymentSheetAppearanceColorsCopyWith<$Res> {
-  factory _$$_PaymentSheetAppearanceColorsCopyWith(
-          _$_PaymentSheetAppearanceColors value,
-          $Res Function(_$_PaymentSheetAppearanceColors) then) =
-      __$$_PaymentSheetAppearanceColorsCopyWithImpl<$Res>;
+  factory _$$PaymentSheetAppearanceColorsImplCopyWith(
+          _$PaymentSheetAppearanceColorsImpl value,
+          $Res Function(_$PaymentSheetAppearanceColorsImpl) then) =
+      __$$PaymentSheetAppearanceColorsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -2287,13 +2293,13 @@ abstract class _$$_PaymentSheetAppearanceColorsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaymentSheetAppearanceColorsCopyWithImpl<$Res>
+class __$$PaymentSheetAppearanceColorsImplCopyWithImpl<$Res>
     extends _$PaymentSheetAppearanceColorsCopyWithImpl<$Res,
-        _$_PaymentSheetAppearanceColors>
-    implements _$$_PaymentSheetAppearanceColorsCopyWith<$Res> {
-  __$$_PaymentSheetAppearanceColorsCopyWithImpl(
-      _$_PaymentSheetAppearanceColors _value,
-      $Res Function(_$_PaymentSheetAppearanceColors) _then)
+        _$PaymentSheetAppearanceColorsImpl>
+    implements _$$PaymentSheetAppearanceColorsImplCopyWith<$Res> {
+  __$$PaymentSheetAppearanceColorsImplCopyWithImpl(
+      _$PaymentSheetAppearanceColorsImpl _value,
+      $Res Function(_$PaymentSheetAppearanceColorsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2311,7 +2317,7 @@ class __$$_PaymentSheetAppearanceColorsCopyWithImpl<$Res>
     Object? icon = freezed,
     Object? error = freezed,
   }) {
-    return _then(_$_PaymentSheetAppearanceColors(
+    return _then(_$PaymentSheetAppearanceColorsImpl(
       primary: freezed == primary
           ? _value.primary
           : primary // ignore: cast_nullable_to_non_nullable
@@ -2362,8 +2368,9 @@ class __$$_PaymentSheetAppearanceColorsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PaymentSheetAppearanceColors implements _PaymentSheetAppearanceColors {
-  const _$_PaymentSheetAppearanceColors(
+class _$PaymentSheetAppearanceColorsImpl
+    implements _PaymentSheetAppearanceColors {
+  const _$PaymentSheetAppearanceColorsImpl(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
       this.primary,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -2386,8 +2393,9 @@ class _$_PaymentSheetAppearanceColors implements _PaymentSheetAppearanceColors {
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
       this.error});
 
-  factory _$_PaymentSheetAppearanceColors.fromJson(Map<String, dynamic> json) =>
-      _$$_PaymentSheetAppearanceColorsFromJson(json);
+  factory _$PaymentSheetAppearanceColorsImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$PaymentSheetAppearanceColorsImplFromJson(json);
 
   ///  Color of the button that represents the primary action on the payment sheet.
   ///
@@ -2457,7 +2465,7 @@ class _$_PaymentSheetAppearanceColors implements _PaymentSheetAppearanceColors {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentSheetAppearanceColors &&
+            other is _$PaymentSheetAppearanceColorsImpl &&
             (identical(other.primary, primary) || other.primary == primary) &&
             (identical(other.background, background) ||
                 other.background == background) &&
@@ -2498,13 +2506,14 @@ class _$_PaymentSheetAppearanceColors implements _PaymentSheetAppearanceColors {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentSheetAppearanceColorsCopyWith<_$_PaymentSheetAppearanceColors>
-      get copyWith => __$$_PaymentSheetAppearanceColorsCopyWithImpl<
-          _$_PaymentSheetAppearanceColors>(this, _$identity);
+  _$$PaymentSheetAppearanceColorsImplCopyWith<
+          _$PaymentSheetAppearanceColorsImpl>
+      get copyWith => __$$PaymentSheetAppearanceColorsImplCopyWithImpl<
+          _$PaymentSheetAppearanceColorsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetAppearanceColorsToJson(
+    return _$$PaymentSheetAppearanceColorsImplToJson(
       this,
     );
   }
@@ -2534,10 +2543,10 @@ abstract class _PaymentSheetAppearanceColors
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
       final Color? icon,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      final Color? error}) = _$_PaymentSheetAppearanceColors;
+      final Color? error}) = _$PaymentSheetAppearanceColorsImpl;
 
   factory _PaymentSheetAppearanceColors.fromJson(Map<String, dynamic> json) =
-      _$_PaymentSheetAppearanceColors.fromJson;
+      _$PaymentSheetAppearanceColorsImpl.fromJson;
 
   @override
 
@@ -2600,7 +2609,8 @@ abstract class _PaymentSheetAppearanceColors
   Color? get error;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentSheetAppearanceColorsCopyWith<_$_PaymentSheetAppearanceColors>
+  _$$PaymentSheetAppearanceColorsImplCopyWith<
+          _$PaymentSheetAppearanceColorsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -2686,11 +2696,11 @@ class _$PaymentSheetShapeCopyWithImpl<$Res, $Val extends PaymentSheetShape>
 }
 
 /// @nodoc
-abstract class _$$_PaymentSheetShapeCopyWith<$Res>
+abstract class _$$PaymentSheetShapeImplCopyWith<$Res>
     implements $PaymentSheetShapeCopyWith<$Res> {
-  factory _$$_PaymentSheetShapeCopyWith(_$_PaymentSheetShape value,
-          $Res Function(_$_PaymentSheetShape) then) =
-      __$$_PaymentSheetShapeCopyWithImpl<$Res>;
+  factory _$$PaymentSheetShapeImplCopyWith(_$PaymentSheetShapeImpl value,
+          $Res Function(_$PaymentSheetShapeImpl) then) =
+      __$$PaymentSheetShapeImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -2703,11 +2713,11 @@ abstract class _$$_PaymentSheetShapeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaymentSheetShapeCopyWithImpl<$Res>
-    extends _$PaymentSheetShapeCopyWithImpl<$Res, _$_PaymentSheetShape>
-    implements _$$_PaymentSheetShapeCopyWith<$Res> {
-  __$$_PaymentSheetShapeCopyWithImpl(
-      _$_PaymentSheetShape _value, $Res Function(_$_PaymentSheetShape) _then)
+class __$$PaymentSheetShapeImplCopyWithImpl<$Res>
+    extends _$PaymentSheetShapeCopyWithImpl<$Res, _$PaymentSheetShapeImpl>
+    implements _$$PaymentSheetShapeImplCopyWith<$Res> {
+  __$$PaymentSheetShapeImplCopyWithImpl(_$PaymentSheetShapeImpl _value,
+      $Res Function(_$PaymentSheetShapeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2717,7 +2727,7 @@ class __$$_PaymentSheetShapeCopyWithImpl<$Res>
     Object? borderWidth = freezed,
     Object? shadow = freezed,
   }) {
-    return _then(_$_PaymentSheetShape(
+    return _then(_$PaymentSheetShapeImpl(
       borderRadius: freezed == borderRadius
           ? _value.borderRadius
           : borderRadius // ignore: cast_nullable_to_non_nullable
@@ -2737,12 +2747,12 @@ class __$$_PaymentSheetShapeCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_PaymentSheetShape implements _PaymentSheetShape {
-  const _$_PaymentSheetShape(
+class _$PaymentSheetShapeImpl implements _PaymentSheetShape {
+  const _$PaymentSheetShapeImpl(
       {this.borderRadius, this.borderWidth, this.shadow});
 
-  factory _$_PaymentSheetShape.fromJson(Map<String, dynamic> json) =>
-      _$$_PaymentSheetShapeFromJson(json);
+  factory _$PaymentSheetShapeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaymentSheetShapeImplFromJson(json);
 
   /// Borderradius for the paymentsheet corners
   @override
@@ -2765,7 +2775,7 @@ class _$_PaymentSheetShape implements _PaymentSheetShape {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentSheetShape &&
+            other is _$PaymentSheetShapeImpl &&
             (identical(other.borderRadius, borderRadius) ||
                 other.borderRadius == borderRadius) &&
             (identical(other.borderWidth, borderWidth) ||
@@ -2781,13 +2791,13 @@ class _$_PaymentSheetShape implements _PaymentSheetShape {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentSheetShapeCopyWith<_$_PaymentSheetShape> get copyWith =>
-      __$$_PaymentSheetShapeCopyWithImpl<_$_PaymentSheetShape>(
+  _$$PaymentSheetShapeImplCopyWith<_$PaymentSheetShapeImpl> get copyWith =>
+      __$$PaymentSheetShapeImplCopyWithImpl<_$PaymentSheetShapeImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetShapeToJson(
+    return _$$PaymentSheetShapeImplToJson(
       this,
     );
   }
@@ -2797,10 +2807,10 @@ abstract class _PaymentSheetShape implements PaymentSheetShape {
   const factory _PaymentSheetShape(
       {final double? borderRadius,
       final double? borderWidth,
-      final PaymentSheetShadowParams? shadow}) = _$_PaymentSheetShape;
+      final PaymentSheetShadowParams? shadow}) = _$PaymentSheetShapeImpl;
 
   factory _PaymentSheetShape.fromJson(Map<String, dynamic> json) =
-      _$_PaymentSheetShape.fromJson;
+      _$PaymentSheetShapeImpl.fromJson;
 
   @override
 
@@ -2816,7 +2826,7 @@ abstract class _PaymentSheetShape implements PaymentSheetShape {
   PaymentSheetShadowParams? get shadow;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentSheetShapeCopyWith<_$_PaymentSheetShape> get copyWith =>
+  _$$PaymentSheetShapeImplCopyWith<_$PaymentSheetShapeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2906,12 +2916,12 @@ class _$PaymentSheetShadowParamsCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PaymentSheetShadowParamsCopyWith<$Res>
+abstract class _$$PaymentSheetShadowParamsImplCopyWith<$Res>
     implements $PaymentSheetShadowParamsCopyWith<$Res> {
-  factory _$$_PaymentSheetShadowParamsCopyWith(
-          _$_PaymentSheetShadowParams value,
-          $Res Function(_$_PaymentSheetShadowParams) then) =
-      __$$_PaymentSheetShadowParamsCopyWithImpl<$Res>;
+  factory _$$PaymentSheetShadowParamsImplCopyWith(
+          _$PaymentSheetShadowParamsImpl value,
+          $Res Function(_$PaymentSheetShadowParamsImpl) then) =
+      __$$PaymentSheetShadowParamsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -2925,12 +2935,13 @@ abstract class _$$_PaymentSheetShadowParamsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaymentSheetShadowParamsCopyWithImpl<$Res>
+class __$$PaymentSheetShadowParamsImplCopyWithImpl<$Res>
     extends _$PaymentSheetShadowParamsCopyWithImpl<$Res,
-        _$_PaymentSheetShadowParams>
-    implements _$$_PaymentSheetShadowParamsCopyWith<$Res> {
-  __$$_PaymentSheetShadowParamsCopyWithImpl(_$_PaymentSheetShadowParams _value,
-      $Res Function(_$_PaymentSheetShadowParams) _then)
+        _$PaymentSheetShadowParamsImpl>
+    implements _$$PaymentSheetShadowParamsImplCopyWith<$Res> {
+  __$$PaymentSheetShadowParamsImplCopyWithImpl(
+      _$PaymentSheetShadowParamsImpl _value,
+      $Res Function(_$PaymentSheetShadowParamsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2940,7 +2951,7 @@ class __$$_PaymentSheetShadowParamsCopyWithImpl<$Res>
     Object? opacity = freezed,
     Object? offset = freezed,
   }) {
-    return _then(_$_PaymentSheetShadowParams(
+    return _then(_$PaymentSheetShadowParamsImpl(
       color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -2960,15 +2971,15 @@ class __$$_PaymentSheetShadowParamsCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_PaymentSheetShadowParams implements _PaymentSheetShadowParams {
-  const _$_PaymentSheetShadowParams(
+class _$PaymentSheetShadowParamsImpl implements _PaymentSheetShadowParams {
+  const _$PaymentSheetShadowParamsImpl(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
       this.color,
       this.opacity,
       this.offset});
 
-  factory _$_PaymentSheetShadowParams.fromJson(Map<String, dynamic> json) =>
-      _$$_PaymentSheetShadowParamsFromJson(json);
+  factory _$PaymentSheetShadowParamsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaymentSheetShadowParamsImplFromJson(json);
 
   /// Shadow color
   @override
@@ -2992,7 +3003,7 @@ class _$_PaymentSheetShadowParams implements _PaymentSheetShadowParams {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentSheetShadowParams &&
+            other is _$PaymentSheetShadowParamsImpl &&
             (identical(other.color, color) || other.color == color) &&
             (identical(other.opacity, opacity) || other.opacity == opacity) &&
             (identical(other.offset, offset) || other.offset == offset));
@@ -3005,13 +3016,13 @@ class _$_PaymentSheetShadowParams implements _PaymentSheetShadowParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentSheetShadowParamsCopyWith<_$_PaymentSheetShadowParams>
-      get copyWith => __$$_PaymentSheetShadowParamsCopyWithImpl<
-          _$_PaymentSheetShadowParams>(this, _$identity);
+  _$$PaymentSheetShadowParamsImplCopyWith<_$PaymentSheetShadowParamsImpl>
+      get copyWith => __$$PaymentSheetShadowParamsImplCopyWithImpl<
+          _$PaymentSheetShadowParamsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetShadowParamsToJson(
+    return _$$PaymentSheetShadowParamsImplToJson(
       this,
     );
   }
@@ -3022,10 +3033,10 @@ abstract class _PaymentSheetShadowParams implements PaymentSheetShadowParams {
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
       final Color? color,
       final double? opacity,
-      final PaymentSheetShadowOffset? offset}) = _$_PaymentSheetShadowParams;
+      final PaymentSheetShadowOffset? offset}) = _$PaymentSheetShadowParamsImpl;
 
   factory _PaymentSheetShadowParams.fromJson(Map<String, dynamic> json) =
-      _$_PaymentSheetShadowParams.fromJson;
+      _$PaymentSheetShadowParamsImpl.fromJson;
 
   @override
 
@@ -3042,7 +3053,7 @@ abstract class _PaymentSheetShadowParams implements PaymentSheetShadowParams {
   PaymentSheetShadowOffset? get offset;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentSheetShadowParamsCopyWith<_$_PaymentSheetShadowParams>
+  _$$PaymentSheetShadowParamsImplCopyWith<_$PaymentSheetShadowParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -3105,24 +3116,25 @@ class _$PaymentSheetShadowOffsetCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PaymentSheetShadowOffsetCopyWith<$Res>
+abstract class _$$PaymentSheetShadowOffsetImplCopyWith<$Res>
     implements $PaymentSheetShadowOffsetCopyWith<$Res> {
-  factory _$$_PaymentSheetShadowOffsetCopyWith(
-          _$_PaymentSheetShadowOffset value,
-          $Res Function(_$_PaymentSheetShadowOffset) then) =
-      __$$_PaymentSheetShadowOffsetCopyWithImpl<$Res>;
+  factory _$$PaymentSheetShadowOffsetImplCopyWith(
+          _$PaymentSheetShadowOffsetImpl value,
+          $Res Function(_$PaymentSheetShadowOffsetImpl) then) =
+      __$$PaymentSheetShadowOffsetImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({double? x, double? y});
 }
 
 /// @nodoc
-class __$$_PaymentSheetShadowOffsetCopyWithImpl<$Res>
+class __$$PaymentSheetShadowOffsetImplCopyWithImpl<$Res>
     extends _$PaymentSheetShadowOffsetCopyWithImpl<$Res,
-        _$_PaymentSheetShadowOffset>
-    implements _$$_PaymentSheetShadowOffsetCopyWith<$Res> {
-  __$$_PaymentSheetShadowOffsetCopyWithImpl(_$_PaymentSheetShadowOffset _value,
-      $Res Function(_$_PaymentSheetShadowOffset) _then)
+        _$PaymentSheetShadowOffsetImpl>
+    implements _$$PaymentSheetShadowOffsetImplCopyWith<$Res> {
+  __$$PaymentSheetShadowOffsetImplCopyWithImpl(
+      _$PaymentSheetShadowOffsetImpl _value,
+      $Res Function(_$PaymentSheetShadowOffsetImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3131,7 +3143,7 @@ class __$$_PaymentSheetShadowOffsetCopyWithImpl<$Res>
     Object? x = freezed,
     Object? y = freezed,
   }) {
-    return _then(_$_PaymentSheetShadowOffset(
+    return _then(_$PaymentSheetShadowOffsetImpl(
       x: freezed == x
           ? _value.x
           : x // ignore: cast_nullable_to_non_nullable
@@ -3147,11 +3159,11 @@ class __$$_PaymentSheetShadowOffsetCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_PaymentSheetShadowOffset implements _PaymentSheetShadowOffset {
-  const _$_PaymentSheetShadowOffset({this.x, this.y});
+class _$PaymentSheetShadowOffsetImpl implements _PaymentSheetShadowOffset {
+  const _$PaymentSheetShadowOffsetImpl({this.x, this.y});
 
-  factory _$_PaymentSheetShadowOffset.fromJson(Map<String, dynamic> json) =>
-      _$$_PaymentSheetShadowOffsetFromJson(json);
+  factory _$PaymentSheetShadowOffsetImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaymentSheetShadowOffsetImplFromJson(json);
 
   /// X value
   @override
@@ -3170,7 +3182,7 @@ class _$_PaymentSheetShadowOffset implements _PaymentSheetShadowOffset {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentSheetShadowOffset &&
+            other is _$PaymentSheetShadowOffsetImpl &&
             (identical(other.x, x) || other.x == x) &&
             (identical(other.y, y) || other.y == y));
   }
@@ -3182,13 +3194,13 @@ class _$_PaymentSheetShadowOffset implements _PaymentSheetShadowOffset {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentSheetShadowOffsetCopyWith<_$_PaymentSheetShadowOffset>
-      get copyWith => __$$_PaymentSheetShadowOffsetCopyWithImpl<
-          _$_PaymentSheetShadowOffset>(this, _$identity);
+  _$$PaymentSheetShadowOffsetImplCopyWith<_$PaymentSheetShadowOffsetImpl>
+      get copyWith => __$$PaymentSheetShadowOffsetImplCopyWithImpl<
+          _$PaymentSheetShadowOffsetImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetShadowOffsetToJson(
+    return _$$PaymentSheetShadowOffsetImplToJson(
       this,
     );
   }
@@ -3196,10 +3208,10 @@ class _$_PaymentSheetShadowOffset implements _PaymentSheetShadowOffset {
 
 abstract class _PaymentSheetShadowOffset implements PaymentSheetShadowOffset {
   const factory _PaymentSheetShadowOffset({final double? x, final double? y}) =
-      _$_PaymentSheetShadowOffset;
+      _$PaymentSheetShadowOffsetImpl;
 
   factory _PaymentSheetShadowOffset.fromJson(Map<String, dynamic> json) =
-      _$_PaymentSheetShadowOffset.fromJson;
+      _$PaymentSheetShadowOffsetImpl.fromJson;
 
   @override
 
@@ -3211,7 +3223,7 @@ abstract class _PaymentSheetShadowOffset implements PaymentSheetShadowOffset {
   double? get y;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentSheetShadowOffsetCopyWith<_$_PaymentSheetShadowOffset>
+  _$$PaymentSheetShadowOffsetImplCopyWith<_$PaymentSheetShadowOffsetImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -3310,12 +3322,12 @@ class _$PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PaymentSheetPrimaryButtonAppearanceCopyWith<$Res>
+abstract class _$$PaymentSheetPrimaryButtonAppearanceImplCopyWith<$Res>
     implements $PaymentSheetPrimaryButtonAppearanceCopyWith<$Res> {
-  factory _$$_PaymentSheetPrimaryButtonAppearanceCopyWith(
-          _$_PaymentSheetPrimaryButtonAppearance value,
-          $Res Function(_$_PaymentSheetPrimaryButtonAppearance) then) =
-      __$$_PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res>;
+  factory _$$PaymentSheetPrimaryButtonAppearanceImplCopyWith(
+          _$PaymentSheetPrimaryButtonAppearanceImpl value,
+          $Res Function(_$PaymentSheetPrimaryButtonAppearanceImpl) then) =
+      __$$PaymentSheetPrimaryButtonAppearanceImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -3329,13 +3341,13 @@ abstract class _$$_PaymentSheetPrimaryButtonAppearanceCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res>
+class __$$PaymentSheetPrimaryButtonAppearanceImplCopyWithImpl<$Res>
     extends _$PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res,
-        _$_PaymentSheetPrimaryButtonAppearance>
-    implements _$$_PaymentSheetPrimaryButtonAppearanceCopyWith<$Res> {
-  __$$_PaymentSheetPrimaryButtonAppearanceCopyWithImpl(
-      _$_PaymentSheetPrimaryButtonAppearance _value,
-      $Res Function(_$_PaymentSheetPrimaryButtonAppearance) _then)
+        _$PaymentSheetPrimaryButtonAppearanceImpl>
+    implements _$$PaymentSheetPrimaryButtonAppearanceImplCopyWith<$Res> {
+  __$$PaymentSheetPrimaryButtonAppearanceImplCopyWithImpl(
+      _$PaymentSheetPrimaryButtonAppearanceImpl _value,
+      $Res Function(_$PaymentSheetPrimaryButtonAppearanceImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3344,7 +3356,7 @@ class __$$_PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res>
     Object? colors = freezed,
     Object? shapes = freezed,
   }) {
-    return _then(_$_PaymentSheetPrimaryButtonAppearance(
+    return _then(_$PaymentSheetPrimaryButtonAppearanceImpl(
       colors: freezed == colors
           ? _value.colors
           : colors // ignore: cast_nullable_to_non_nullable
@@ -3360,13 +3372,13 @@ class __$$_PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_PaymentSheetPrimaryButtonAppearance
+class _$PaymentSheetPrimaryButtonAppearanceImpl
     implements _PaymentSheetPrimaryButtonAppearance {
-  const _$_PaymentSheetPrimaryButtonAppearance({this.colors, this.shapes});
+  const _$PaymentSheetPrimaryButtonAppearanceImpl({this.colors, this.shapes});
 
-  factory _$_PaymentSheetPrimaryButtonAppearance.fromJson(
+  factory _$PaymentSheetPrimaryButtonAppearanceImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_PaymentSheetPrimaryButtonAppearanceFromJson(json);
+      _$$PaymentSheetPrimaryButtonAppearanceImplFromJson(json);
 
   /// color theme of the primary button
   @override
@@ -3385,7 +3397,7 @@ class _$_PaymentSheetPrimaryButtonAppearance
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentSheetPrimaryButtonAppearance &&
+            other is _$PaymentSheetPrimaryButtonAppearanceImpl &&
             (identical(other.colors, colors) || other.colors == colors) &&
             (identical(other.shapes, shapes) || other.shapes == shapes));
   }
@@ -3397,14 +3409,14 @@ class _$_PaymentSheetPrimaryButtonAppearance
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentSheetPrimaryButtonAppearanceCopyWith<
-          _$_PaymentSheetPrimaryButtonAppearance>
-      get copyWith => __$$_PaymentSheetPrimaryButtonAppearanceCopyWithImpl<
-          _$_PaymentSheetPrimaryButtonAppearance>(this, _$identity);
+  _$$PaymentSheetPrimaryButtonAppearanceImplCopyWith<
+          _$PaymentSheetPrimaryButtonAppearanceImpl>
+      get copyWith => __$$PaymentSheetPrimaryButtonAppearanceImplCopyWithImpl<
+          _$PaymentSheetPrimaryButtonAppearanceImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetPrimaryButtonAppearanceToJson(
+    return _$$PaymentSheetPrimaryButtonAppearanceImplToJson(
       this,
     );
   }
@@ -3415,11 +3427,11 @@ abstract class _PaymentSheetPrimaryButtonAppearance
   const factory _PaymentSheetPrimaryButtonAppearance(
           {final PaymentSheetPrimaryButtonTheme? colors,
           final PaymentSheetPrimaryButtonShape? shapes}) =
-      _$_PaymentSheetPrimaryButtonAppearance;
+      _$PaymentSheetPrimaryButtonAppearanceImpl;
 
   factory _PaymentSheetPrimaryButtonAppearance.fromJson(
           Map<String, dynamic> json) =
-      _$_PaymentSheetPrimaryButtonAppearance.fromJson;
+      _$PaymentSheetPrimaryButtonAppearanceImpl.fromJson;
 
   @override
 
@@ -3431,8 +3443,8 @@ abstract class _PaymentSheetPrimaryButtonAppearance
   PaymentSheetPrimaryButtonShape? get shapes;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentSheetPrimaryButtonAppearanceCopyWith<
-          _$_PaymentSheetPrimaryButtonAppearance>
+  _$$PaymentSheetPrimaryButtonAppearanceImplCopyWith<
+          _$PaymentSheetPrimaryButtonAppearanceImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -3522,12 +3534,12 @@ class _$PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PaymentSheetPrimaryButtonShapeCopyWith<$Res>
+abstract class _$$PaymentSheetPrimaryButtonShapeImplCopyWith<$Res>
     implements $PaymentSheetPrimaryButtonShapeCopyWith<$Res> {
-  factory _$$_PaymentSheetPrimaryButtonShapeCopyWith(
-          _$_PaymentSheetPrimaryButtonShape value,
-          $Res Function(_$_PaymentSheetPrimaryButtonShape) then) =
-      __$$_PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res>;
+  factory _$$PaymentSheetPrimaryButtonShapeImplCopyWith(
+          _$PaymentSheetPrimaryButtonShapeImpl value,
+          $Res Function(_$PaymentSheetPrimaryButtonShapeImpl) then) =
+      __$$PaymentSheetPrimaryButtonShapeImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -3540,13 +3552,13 @@ abstract class _$$_PaymentSheetPrimaryButtonShapeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res>
+class __$$PaymentSheetPrimaryButtonShapeImplCopyWithImpl<$Res>
     extends _$PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res,
-        _$_PaymentSheetPrimaryButtonShape>
-    implements _$$_PaymentSheetPrimaryButtonShapeCopyWith<$Res> {
-  __$$_PaymentSheetPrimaryButtonShapeCopyWithImpl(
-      _$_PaymentSheetPrimaryButtonShape _value,
-      $Res Function(_$_PaymentSheetPrimaryButtonShape) _then)
+        _$PaymentSheetPrimaryButtonShapeImpl>
+    implements _$$PaymentSheetPrimaryButtonShapeImplCopyWith<$Res> {
+  __$$PaymentSheetPrimaryButtonShapeImplCopyWithImpl(
+      _$PaymentSheetPrimaryButtonShapeImpl _value,
+      $Res Function(_$PaymentSheetPrimaryButtonShapeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3556,7 +3568,7 @@ class __$$_PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res>
     Object? blurRadius = freezed,
     Object? borderWidth = freezed,
   }) {
-    return _then(_$_PaymentSheetPrimaryButtonShape(
+    return _then(_$PaymentSheetPrimaryButtonShapeImpl(
       shadow: freezed == shadow
           ? _value.shadow
           : shadow // ignore: cast_nullable_to_non_nullable
@@ -3576,14 +3588,14 @@ class __$$_PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_PaymentSheetPrimaryButtonShape
+class _$PaymentSheetPrimaryButtonShapeImpl
     implements _PaymentSheetPrimaryButtonShape {
-  const _$_PaymentSheetPrimaryButtonShape(
+  const _$PaymentSheetPrimaryButtonShapeImpl(
       {this.shadow, this.blurRadius, this.borderWidth});
 
-  factory _$_PaymentSheetPrimaryButtonShape.fromJson(
+  factory _$PaymentSheetPrimaryButtonShapeImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_PaymentSheetPrimaryButtonShapeFromJson(json);
+      _$$PaymentSheetPrimaryButtonShapeImplFromJson(json);
 
   /// Configuration of the primary button's shadow.
   @override
@@ -3606,7 +3618,7 @@ class _$_PaymentSheetPrimaryButtonShape
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentSheetPrimaryButtonShape &&
+            other is _$PaymentSheetPrimaryButtonShapeImpl &&
             (identical(other.shadow, shadow) || other.shadow == shadow) &&
             (identical(other.blurRadius, blurRadius) ||
                 other.blurRadius == blurRadius) &&
@@ -3621,13 +3633,14 @@ class _$_PaymentSheetPrimaryButtonShape
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentSheetPrimaryButtonShapeCopyWith<_$_PaymentSheetPrimaryButtonShape>
-      get copyWith => __$$_PaymentSheetPrimaryButtonShapeCopyWithImpl<
-          _$_PaymentSheetPrimaryButtonShape>(this, _$identity);
+  _$$PaymentSheetPrimaryButtonShapeImplCopyWith<
+          _$PaymentSheetPrimaryButtonShapeImpl>
+      get copyWith => __$$PaymentSheetPrimaryButtonShapeImplCopyWithImpl<
+          _$PaymentSheetPrimaryButtonShapeImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetPrimaryButtonShapeToJson(
+    return _$$PaymentSheetPrimaryButtonShapeImplToJson(
       this,
     );
   }
@@ -3638,10 +3651,10 @@ abstract class _PaymentSheetPrimaryButtonShape
   const factory _PaymentSheetPrimaryButtonShape(
       {final PaymentSheetShadowParams? shadow,
       final double? blurRadius,
-      final double? borderWidth}) = _$_PaymentSheetPrimaryButtonShape;
+      final double? borderWidth}) = _$PaymentSheetPrimaryButtonShapeImpl;
 
   factory _PaymentSheetPrimaryButtonShape.fromJson(Map<String, dynamic> json) =
-      _$_PaymentSheetPrimaryButtonShape.fromJson;
+      _$PaymentSheetPrimaryButtonShapeImpl.fromJson;
 
   @override
 
@@ -3657,7 +3670,8 @@ abstract class _PaymentSheetPrimaryButtonShape
   double? get borderWidth;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentSheetPrimaryButtonShapeCopyWith<_$_PaymentSheetPrimaryButtonShape>
+  _$$PaymentSheetPrimaryButtonShapeImplCopyWith<
+          _$PaymentSheetPrimaryButtonShapeImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -3755,12 +3769,12 @@ class _$PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PaymentSheetPrimaryButtonThemeCopyWith<$Res>
+abstract class _$$PaymentSheetPrimaryButtonThemeImplCopyWith<$Res>
     implements $PaymentSheetPrimaryButtonThemeCopyWith<$Res> {
-  factory _$$_PaymentSheetPrimaryButtonThemeCopyWith(
-          _$_PaymentSheetPrimaryButtonTheme value,
-          $Res Function(_$_PaymentSheetPrimaryButtonTheme) then) =
-      __$$_PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res>;
+  factory _$$PaymentSheetPrimaryButtonThemeImplCopyWith(
+          _$PaymentSheetPrimaryButtonThemeImpl value,
+          $Res Function(_$PaymentSheetPrimaryButtonThemeImpl) then) =
+      __$$PaymentSheetPrimaryButtonThemeImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -3774,13 +3788,13 @@ abstract class _$$_PaymentSheetPrimaryButtonThemeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res>
+class __$$PaymentSheetPrimaryButtonThemeImplCopyWithImpl<$Res>
     extends _$PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res,
-        _$_PaymentSheetPrimaryButtonTheme>
-    implements _$$_PaymentSheetPrimaryButtonThemeCopyWith<$Res> {
-  __$$_PaymentSheetPrimaryButtonThemeCopyWithImpl(
-      _$_PaymentSheetPrimaryButtonTheme _value,
-      $Res Function(_$_PaymentSheetPrimaryButtonTheme) _then)
+        _$PaymentSheetPrimaryButtonThemeImpl>
+    implements _$$PaymentSheetPrimaryButtonThemeImplCopyWith<$Res> {
+  __$$PaymentSheetPrimaryButtonThemeImplCopyWithImpl(
+      _$PaymentSheetPrimaryButtonThemeImpl _value,
+      $Res Function(_$PaymentSheetPrimaryButtonThemeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3789,7 +3803,7 @@ class __$$_PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res>
     Object? dark = freezed,
     Object? light = freezed,
   }) {
-    return _then(_$_PaymentSheetPrimaryButtonTheme(
+    return _then(_$PaymentSheetPrimaryButtonThemeImpl(
       dark: freezed == dark
           ? _value.dark
           : dark // ignore: cast_nullable_to_non_nullable
@@ -3805,13 +3819,13 @@ class __$$_PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_PaymentSheetPrimaryButtonTheme
+class _$PaymentSheetPrimaryButtonThemeImpl
     implements _PaymentSheetPrimaryButtonTheme {
-  const _$_PaymentSheetPrimaryButtonTheme({this.dark, this.light});
+  const _$PaymentSheetPrimaryButtonThemeImpl({this.dark, this.light});
 
-  factory _$_PaymentSheetPrimaryButtonTheme.fromJson(
+  factory _$PaymentSheetPrimaryButtonThemeImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_PaymentSheetPrimaryButtonThemeFromJson(json);
+      _$$PaymentSheetPrimaryButtonThemeImplFromJson(json);
 
   /// Colors when displaying button in dark theme
   @override
@@ -3830,7 +3844,7 @@ class _$_PaymentSheetPrimaryButtonTheme
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentSheetPrimaryButtonTheme &&
+            other is _$PaymentSheetPrimaryButtonThemeImpl &&
             (identical(other.dark, dark) || other.dark == dark) &&
             (identical(other.light, light) || other.light == light));
   }
@@ -3842,13 +3856,14 @@ class _$_PaymentSheetPrimaryButtonTheme
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentSheetPrimaryButtonThemeCopyWith<_$_PaymentSheetPrimaryButtonTheme>
-      get copyWith => __$$_PaymentSheetPrimaryButtonThemeCopyWithImpl<
-          _$_PaymentSheetPrimaryButtonTheme>(this, _$identity);
+  _$$PaymentSheetPrimaryButtonThemeImplCopyWith<
+          _$PaymentSheetPrimaryButtonThemeImpl>
+      get copyWith => __$$PaymentSheetPrimaryButtonThemeImplCopyWithImpl<
+          _$PaymentSheetPrimaryButtonThemeImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetPrimaryButtonThemeToJson(
+    return _$$PaymentSheetPrimaryButtonThemeImplToJson(
       this,
     );
   }
@@ -3859,10 +3874,10 @@ abstract class _PaymentSheetPrimaryButtonTheme
   const factory _PaymentSheetPrimaryButtonTheme(
           {final PaymentSheetPrimaryButtonThemeColors? dark,
           final PaymentSheetPrimaryButtonThemeColors? light}) =
-      _$_PaymentSheetPrimaryButtonTheme;
+      _$PaymentSheetPrimaryButtonThemeImpl;
 
   factory _PaymentSheetPrimaryButtonTheme.fromJson(Map<String, dynamic> json) =
-      _$_PaymentSheetPrimaryButtonTheme.fromJson;
+      _$PaymentSheetPrimaryButtonThemeImpl.fromJson;
 
   @override
 
@@ -3874,7 +3889,8 @@ abstract class _PaymentSheetPrimaryButtonTheme
   PaymentSheetPrimaryButtonThemeColors? get light;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentSheetPrimaryButtonThemeCopyWith<_$_PaymentSheetPrimaryButtonTheme>
+  _$$PaymentSheetPrimaryButtonThemeImplCopyWith<
+          _$PaymentSheetPrimaryButtonThemeImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -3957,12 +3973,12 @@ class _$PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>
+abstract class _$$PaymentSheetPrimaryButtonThemeColorsImplCopyWith<$Res>
     implements $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res> {
-  factory _$$_PaymentSheetPrimaryButtonThemeColorsCopyWith(
-          _$_PaymentSheetPrimaryButtonThemeColors value,
-          $Res Function(_$_PaymentSheetPrimaryButtonThemeColors) then) =
-      __$$_PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res>;
+  factory _$$PaymentSheetPrimaryButtonThemeColorsImplCopyWith(
+          _$PaymentSheetPrimaryButtonThemeColorsImpl value,
+          $Res Function(_$PaymentSheetPrimaryButtonThemeColorsImpl) then) =
+      __$$PaymentSheetPrimaryButtonThemeColorsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -3975,13 +3991,13 @@ abstract class _$$_PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res>
+class __$$PaymentSheetPrimaryButtonThemeColorsImplCopyWithImpl<$Res>
     extends _$PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res,
-        _$_PaymentSheetPrimaryButtonThemeColors>
-    implements _$$_PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res> {
-  __$$_PaymentSheetPrimaryButtonThemeColorsCopyWithImpl(
-      _$_PaymentSheetPrimaryButtonThemeColors _value,
-      $Res Function(_$_PaymentSheetPrimaryButtonThemeColors) _then)
+        _$PaymentSheetPrimaryButtonThemeColorsImpl>
+    implements _$$PaymentSheetPrimaryButtonThemeColorsImplCopyWith<$Res> {
+  __$$PaymentSheetPrimaryButtonThemeColorsImplCopyWithImpl(
+      _$PaymentSheetPrimaryButtonThemeColorsImpl _value,
+      $Res Function(_$PaymentSheetPrimaryButtonThemeColorsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3991,7 +4007,7 @@ class __$$_PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res>
     Object? text = freezed,
     Object? border = freezed,
   }) {
-    return _then(_$_PaymentSheetPrimaryButtonThemeColors(
+    return _then(_$PaymentSheetPrimaryButtonThemeColorsImpl(
       background: freezed == background
           ? _value.background
           : background // ignore: cast_nullable_to_non_nullable
@@ -4010,18 +4026,18 @@ class __$$_PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PaymentSheetPrimaryButtonThemeColors
+class _$PaymentSheetPrimaryButtonThemeColorsImpl
     implements _PaymentSheetPrimaryButtonThemeColors {
-  const _$_PaymentSheetPrimaryButtonThemeColors(
+  const _$PaymentSheetPrimaryButtonThemeColorsImpl(
       {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
       this.background,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) this.text,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
       this.border});
 
-  factory _$_PaymentSheetPrimaryButtonThemeColors.fromJson(
+  factory _$PaymentSheetPrimaryButtonThemeColorsImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_PaymentSheetPrimaryButtonThemeColorsFromJson(json);
+      _$$PaymentSheetPrimaryButtonThemeColorsImplFromJson(json);
 
   /// Primary button background color
   @override
@@ -4047,7 +4063,7 @@ class _$_PaymentSheetPrimaryButtonThemeColors
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentSheetPrimaryButtonThemeColors &&
+            other is _$PaymentSheetPrimaryButtonThemeColorsImpl &&
             (identical(other.background, background) ||
                 other.background == background) &&
             (identical(other.text, text) || other.text == text) &&
@@ -4061,14 +4077,14 @@ class _$_PaymentSheetPrimaryButtonThemeColors
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentSheetPrimaryButtonThemeColorsCopyWith<
-          _$_PaymentSheetPrimaryButtonThemeColors>
-      get copyWith => __$$_PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<
-          _$_PaymentSheetPrimaryButtonThemeColors>(this, _$identity);
+  _$$PaymentSheetPrimaryButtonThemeColorsImplCopyWith<
+          _$PaymentSheetPrimaryButtonThemeColorsImpl>
+      get copyWith => __$$PaymentSheetPrimaryButtonThemeColorsImplCopyWithImpl<
+          _$PaymentSheetPrimaryButtonThemeColorsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetPrimaryButtonThemeColorsToJson(
+    return _$$PaymentSheetPrimaryButtonThemeColorsImplToJson(
       this,
     );
   }
@@ -4082,11 +4098,11 @@ abstract class _PaymentSheetPrimaryButtonThemeColors
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
       final Color? text,
       @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-      final Color? border}) = _$_PaymentSheetPrimaryButtonThemeColors;
+      final Color? border}) = _$PaymentSheetPrimaryButtonThemeColorsImpl;
 
   factory _PaymentSheetPrimaryButtonThemeColors.fromJson(
           Map<String, dynamic> json) =
-      _$_PaymentSheetPrimaryButtonThemeColors.fromJson;
+      _$PaymentSheetPrimaryButtonThemeColorsImpl.fromJson;
 
   @override
 
@@ -4105,8 +4121,8 @@ abstract class _PaymentSheetPrimaryButtonThemeColors
   Color? get border;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentSheetPrimaryButtonThemeColorsCopyWith<
-          _$_PaymentSheetPrimaryButtonThemeColors>
+  _$$PaymentSheetPrimaryButtonThemeColorsImplCopyWith<
+          _$PaymentSheetPrimaryButtonThemeColorsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -4177,22 +4193,23 @@ class _$PresentPaymentSheetParametersCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PresentParametersCopyWith<$Res>
+abstract class _$$PresentParametersImplCopyWith<$Res>
     implements $PresentPaymentSheetParametersCopyWith<$Res> {
-  factory _$$_PresentParametersCopyWith(_$_PresentParameters value,
-          $Res Function(_$_PresentParameters) then) =
-      __$$_PresentParametersCopyWithImpl<$Res>;
+  factory _$$PresentParametersImplCopyWith(_$PresentParametersImpl value,
+          $Res Function(_$PresentParametersImpl) then) =
+      __$$PresentParametersImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String clientSecret, bool confirmPayment});
 }
 
 /// @nodoc
-class __$$_PresentParametersCopyWithImpl<$Res>
+class __$$PresentParametersImplCopyWithImpl<$Res>
     extends _$PresentPaymentSheetParametersCopyWithImpl<$Res,
-        _$_PresentParameters> implements _$$_PresentParametersCopyWith<$Res> {
-  __$$_PresentParametersCopyWithImpl(
-      _$_PresentParameters _value, $Res Function(_$_PresentParameters) _then)
+        _$PresentParametersImpl>
+    implements _$$PresentParametersImplCopyWith<$Res> {
+  __$$PresentParametersImplCopyWithImpl(_$PresentParametersImpl _value,
+      $Res Function(_$PresentParametersImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -4201,7 +4218,7 @@ class __$$_PresentParametersCopyWithImpl<$Res>
     Object? clientSecret = null,
     Object? confirmPayment = null,
   }) {
-    return _then(_$_PresentParameters(
+    return _then(_$PresentParametersImpl(
       clientSecret: null == clientSecret
           ? _value.clientSecret
           : clientSecret // ignore: cast_nullable_to_non_nullable
@@ -4216,12 +4233,12 @@ class __$$_PresentParametersCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PresentParameters implements _PresentParameters {
-  const _$_PresentParameters(
+class _$PresentParametersImpl implements _PresentParameters {
+  const _$PresentParametersImpl(
       {required this.clientSecret, this.confirmPayment = false});
 
-  factory _$_PresentParameters.fromJson(Map<String, dynamic> json) =>
-      _$$_PresentParametersFromJson(json);
+  factory _$PresentParametersImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PresentParametersImplFromJson(json);
 
   /// Key used for client-side retrieval using a publishable key.
   @override
@@ -4247,7 +4264,7 @@ class _$_PresentParameters implements _PresentParameters {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PresentParameters &&
+            other is _$PresentParametersImpl &&
             (identical(other.clientSecret, clientSecret) ||
                 other.clientSecret == clientSecret) &&
             (identical(other.confirmPayment, confirmPayment) ||
@@ -4261,13 +4278,13 @@ class _$_PresentParameters implements _PresentParameters {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PresentParametersCopyWith<_$_PresentParameters> get copyWith =>
-      __$$_PresentParametersCopyWithImpl<_$_PresentParameters>(
+  _$$PresentParametersImplCopyWith<_$PresentParametersImpl> get copyWith =>
+      __$$PresentParametersImplCopyWithImpl<_$PresentParametersImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PresentParametersToJson(
+    return _$$PresentParametersImplToJson(
       this,
     );
   }
@@ -4276,10 +4293,10 @@ class _$_PresentParameters implements _PresentParameters {
 abstract class _PresentParameters implements PresentPaymentSheetParameters {
   const factory _PresentParameters(
       {required final String clientSecret,
-      final bool confirmPayment}) = _$_PresentParameters;
+      final bool confirmPayment}) = _$PresentParametersImpl;
 
   factory _PresentParameters.fromJson(Map<String, dynamic> json) =
-      _$_PresentParameters.fromJson;
+      _$PresentParametersImpl.fromJson;
 
   @override
 
@@ -4297,7 +4314,7 @@ abstract class _PresentParameters implements PresentPaymentSheetParameters {
   bool get confirmPayment;
   @override
   @JsonKey(ignore: true)
-  _$$_PresentParametersCopyWith<_$_PresentParameters> get copyWith =>
+  _$$PresentParametersImplCopyWith<_$PresentParametersImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -4356,25 +4373,25 @@ class _$PaymentSheetPresentOptionsCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PaymentSheetPresentOptionsCopyWith<$Res>
+abstract class _$$PaymentSheetPresentOptionsImplCopyWith<$Res>
     implements $PaymentSheetPresentOptionsCopyWith<$Res> {
-  factory _$$_PaymentSheetPresentOptionsCopyWith(
-          _$_PaymentSheetPresentOptions value,
-          $Res Function(_$_PaymentSheetPresentOptions) then) =
-      __$$_PaymentSheetPresentOptionsCopyWithImpl<$Res>;
+  factory _$$PaymentSheetPresentOptionsImplCopyWith(
+          _$PaymentSheetPresentOptionsImpl value,
+          $Res Function(_$PaymentSheetPresentOptionsImpl) then) =
+      __$$PaymentSheetPresentOptionsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int? timeout});
 }
 
 /// @nodoc
-class __$$_PaymentSheetPresentOptionsCopyWithImpl<$Res>
+class __$$PaymentSheetPresentOptionsImplCopyWithImpl<$Res>
     extends _$PaymentSheetPresentOptionsCopyWithImpl<$Res,
-        _$_PaymentSheetPresentOptions>
-    implements _$$_PaymentSheetPresentOptionsCopyWith<$Res> {
-  __$$_PaymentSheetPresentOptionsCopyWithImpl(
-      _$_PaymentSheetPresentOptions _value,
-      $Res Function(_$_PaymentSheetPresentOptions) _then)
+        _$PaymentSheetPresentOptionsImpl>
+    implements _$$PaymentSheetPresentOptionsImplCopyWith<$Res> {
+  __$$PaymentSheetPresentOptionsImplCopyWithImpl(
+      _$PaymentSheetPresentOptionsImpl _value,
+      $Res Function(_$PaymentSheetPresentOptionsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -4382,7 +4399,7 @@ class __$$_PaymentSheetPresentOptionsCopyWithImpl<$Res>
   $Res call({
     Object? timeout = freezed,
   }) {
-    return _then(_$_PaymentSheetPresentOptions(
+    return _then(_$PaymentSheetPresentOptionsImpl(
       timeout: freezed == timeout
           ? _value.timeout
           : timeout // ignore: cast_nullable_to_non_nullable
@@ -4394,11 +4411,12 @@ class __$$_PaymentSheetPresentOptionsCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_PaymentSheetPresentOptions implements _PaymentSheetPresentOptions {
-  const _$_PaymentSheetPresentOptions({this.timeout});
+class _$PaymentSheetPresentOptionsImpl implements _PaymentSheetPresentOptions {
+  const _$PaymentSheetPresentOptionsImpl({this.timeout});
 
-  factory _$_PaymentSheetPresentOptions.fromJson(Map<String, dynamic> json) =>
-      _$$_PaymentSheetPresentOptionsFromJson(json);
+  factory _$PaymentSheetPresentOptionsImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$PaymentSheetPresentOptionsImplFromJson(json);
 
   /// The number of milliseconds (after presenting) before the Payment Sheet
   /// closes automatically.
@@ -4416,7 +4434,7 @@ class _$_PaymentSheetPresentOptions implements _PaymentSheetPresentOptions {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentSheetPresentOptions &&
+            other is _$PaymentSheetPresentOptionsImpl &&
             (identical(other.timeout, timeout) || other.timeout == timeout));
   }
 
@@ -4427,13 +4445,13 @@ class _$_PaymentSheetPresentOptions implements _PaymentSheetPresentOptions {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentSheetPresentOptionsCopyWith<_$_PaymentSheetPresentOptions>
-      get copyWith => __$$_PaymentSheetPresentOptionsCopyWithImpl<
-          _$_PaymentSheetPresentOptions>(this, _$identity);
+  _$$PaymentSheetPresentOptionsImplCopyWith<_$PaymentSheetPresentOptionsImpl>
+      get copyWith => __$$PaymentSheetPresentOptionsImplCopyWithImpl<
+          _$PaymentSheetPresentOptionsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetPresentOptionsToJson(
+    return _$$PaymentSheetPresentOptionsImplToJson(
       this,
     );
   }
@@ -4442,10 +4460,10 @@ class _$_PaymentSheetPresentOptions implements _PaymentSheetPresentOptions {
 abstract class _PaymentSheetPresentOptions
     implements PaymentSheetPresentOptions {
   const factory _PaymentSheetPresentOptions({final int? timeout}) =
-      _$_PaymentSheetPresentOptions;
+      _$PaymentSheetPresentOptionsImpl;
 
   factory _PaymentSheetPresentOptions.fromJson(Map<String, dynamic> json) =
-      _$_PaymentSheetPresentOptions.fromJson;
+      _$PaymentSheetPresentOptionsImpl.fromJson;
 
   @override
 
@@ -4456,7 +4474,7 @@ abstract class _PaymentSheetPresentOptions
   int? get timeout;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentSheetPresentOptionsCopyWith<_$_PaymentSheetPresentOptions>
+  _$$PaymentSheetPresentOptionsImplCopyWith<_$PaymentSheetPresentOptionsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -4519,25 +4537,25 @@ class _$PaymentSheetPaymentOptionCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PaymentSheetPaymentOptionCopyWith<$Res>
+abstract class _$$PaymentSheetPaymentOptionImplCopyWith<$Res>
     implements $PaymentSheetPaymentOptionCopyWith<$Res> {
-  factory _$$_PaymentSheetPaymentOptionCopyWith(
-          _$_PaymentSheetPaymentOption value,
-          $Res Function(_$_PaymentSheetPaymentOption) then) =
-      __$$_PaymentSheetPaymentOptionCopyWithImpl<$Res>;
+  factory _$$PaymentSheetPaymentOptionImplCopyWith(
+          _$PaymentSheetPaymentOptionImpl value,
+          $Res Function(_$PaymentSheetPaymentOptionImpl) then) =
+      __$$PaymentSheetPaymentOptionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String label, String? image});
 }
 
 /// @nodoc
-class __$$_PaymentSheetPaymentOptionCopyWithImpl<$Res>
+class __$$PaymentSheetPaymentOptionImplCopyWithImpl<$Res>
     extends _$PaymentSheetPaymentOptionCopyWithImpl<$Res,
-        _$_PaymentSheetPaymentOption>
-    implements _$$_PaymentSheetPaymentOptionCopyWith<$Res> {
-  __$$_PaymentSheetPaymentOptionCopyWithImpl(
-      _$_PaymentSheetPaymentOption _value,
-      $Res Function(_$_PaymentSheetPaymentOption) _then)
+        _$PaymentSheetPaymentOptionImpl>
+    implements _$$PaymentSheetPaymentOptionImplCopyWith<$Res> {
+  __$$PaymentSheetPaymentOptionImplCopyWithImpl(
+      _$PaymentSheetPaymentOptionImpl _value,
+      $Res Function(_$PaymentSheetPaymentOptionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -4546,7 +4564,7 @@ class __$$_PaymentSheetPaymentOptionCopyWithImpl<$Res>
     Object? label = null,
     Object? image = freezed,
   }) {
-    return _then(_$_PaymentSheetPaymentOption(
+    return _then(_$PaymentSheetPaymentOptionImpl(
       label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
@@ -4562,11 +4580,11 @@ class __$$_PaymentSheetPaymentOptionCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_PaymentSheetPaymentOption implements _PaymentSheetPaymentOption {
-  const _$_PaymentSheetPaymentOption({required this.label, this.image});
+class _$PaymentSheetPaymentOptionImpl implements _PaymentSheetPaymentOption {
+  const _$PaymentSheetPaymentOptionImpl({required this.label, this.image});
 
-  factory _$_PaymentSheetPaymentOption.fromJson(Map<String, dynamic> json) =>
-      _$$_PaymentSheetPaymentOptionFromJson(json);
+  factory _$PaymentSheetPaymentOptionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaymentSheetPaymentOptionImplFromJson(json);
 
   /// The label of the payment option
   @override
@@ -4585,7 +4603,7 @@ class _$_PaymentSheetPaymentOption implements _PaymentSheetPaymentOption {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentSheetPaymentOption &&
+            other is _$PaymentSheetPaymentOptionImpl &&
             (identical(other.label, label) || other.label == label) &&
             (identical(other.image, image) || other.image == image));
   }
@@ -4597,13 +4615,13 @@ class _$_PaymentSheetPaymentOption implements _PaymentSheetPaymentOption {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentSheetPaymentOptionCopyWith<_$_PaymentSheetPaymentOption>
-      get copyWith => __$$_PaymentSheetPaymentOptionCopyWithImpl<
-          _$_PaymentSheetPaymentOption>(this, _$identity);
+  _$$PaymentSheetPaymentOptionImplCopyWith<_$PaymentSheetPaymentOptionImpl>
+      get copyWith => __$$PaymentSheetPaymentOptionImplCopyWithImpl<
+          _$PaymentSheetPaymentOptionImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentSheetPaymentOptionToJson(
+    return _$$PaymentSheetPaymentOptionImplToJson(
       this,
     );
   }
@@ -4612,10 +4630,10 @@ class _$_PaymentSheetPaymentOption implements _PaymentSheetPaymentOption {
 abstract class _PaymentSheetPaymentOption implements PaymentSheetPaymentOption {
   const factory _PaymentSheetPaymentOption(
       {required final String label,
-      final String? image}) = _$_PaymentSheetPaymentOption;
+      final String? image}) = _$PaymentSheetPaymentOptionImpl;
 
   factory _PaymentSheetPaymentOption.fromJson(Map<String, dynamic> json) =
-      _$_PaymentSheetPaymentOption.fromJson;
+      _$PaymentSheetPaymentOptionImpl.fromJson;
 
   @override
 
@@ -4627,7 +4645,7 @@ abstract class _PaymentSheetPaymentOption implements PaymentSheetPaymentOption {
   String? get image;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentSheetPaymentOptionCopyWith<_$_PaymentSheetPaymentOption>
+  _$$PaymentSheetPaymentOptionImplCopyWith<_$PaymentSheetPaymentOptionImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -4732,12 +4750,12 @@ class _$BillingDetailsCollectionConfigurationCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_BillingDetailsCollectionConfigurationCopyWith<$Res>
+abstract class _$$BillingDetailsCollectionConfigurationImplCopyWith<$Res>
     implements $BillingDetailsCollectionConfigurationCopyWith<$Res> {
-  factory _$$_BillingDetailsCollectionConfigurationCopyWith(
-          _$_BillingDetailsCollectionConfiguration value,
-          $Res Function(_$_BillingDetailsCollectionConfiguration) then) =
-      __$$_BillingDetailsCollectionConfigurationCopyWithImpl<$Res>;
+  factory _$$BillingDetailsCollectionConfigurationImplCopyWith(
+          _$BillingDetailsCollectionConfigurationImpl value,
+          $Res Function(_$BillingDetailsCollectionConfigurationImpl) then) =
+      __$$BillingDetailsCollectionConfigurationImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -4749,13 +4767,13 @@ abstract class _$$_BillingDetailsCollectionConfigurationCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_BillingDetailsCollectionConfigurationCopyWithImpl<$Res>
+class __$$BillingDetailsCollectionConfigurationImplCopyWithImpl<$Res>
     extends _$BillingDetailsCollectionConfigurationCopyWithImpl<$Res,
-        _$_BillingDetailsCollectionConfiguration>
-    implements _$$_BillingDetailsCollectionConfigurationCopyWith<$Res> {
-  __$$_BillingDetailsCollectionConfigurationCopyWithImpl(
-      _$_BillingDetailsCollectionConfiguration _value,
-      $Res Function(_$_BillingDetailsCollectionConfiguration) _then)
+        _$BillingDetailsCollectionConfigurationImpl>
+    implements _$$BillingDetailsCollectionConfigurationImplCopyWith<$Res> {
+  __$$BillingDetailsCollectionConfigurationImplCopyWithImpl(
+      _$BillingDetailsCollectionConfigurationImpl _value,
+      $Res Function(_$BillingDetailsCollectionConfigurationImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -4767,7 +4785,7 @@ class __$$_BillingDetailsCollectionConfigurationCopyWithImpl<$Res>
     Object? address = freezed,
     Object? attachDefaultsToPaymentMethod = freezed,
   }) {
-    return _then(_$_BillingDetailsCollectionConfiguration(
+    return _then(_$BillingDetailsCollectionConfigurationImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -4795,18 +4813,18 @@ class __$$_BillingDetailsCollectionConfigurationCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_BillingDetailsCollectionConfiguration
+class _$BillingDetailsCollectionConfigurationImpl
     implements _BillingDetailsCollectionConfiguration {
-  const _$_BillingDetailsCollectionConfiguration(
+  const _$BillingDetailsCollectionConfigurationImpl(
       {this.name,
       this.phone,
       this.email,
       this.address,
       this.attachDefaultsToPaymentMethod});
 
-  factory _$_BillingDetailsCollectionConfiguration.fromJson(
+  factory _$BillingDetailsCollectionConfigurationImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_BillingDetailsCollectionConfigurationFromJson(json);
+      _$$BillingDetailsCollectionConfigurationImplFromJson(json);
 
   /// How to collect the name field.
   ///
@@ -4847,7 +4865,7 @@ class _$_BillingDetailsCollectionConfiguration
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_BillingDetailsCollectionConfiguration &&
+            other is _$BillingDetailsCollectionConfigurationImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.email, email) || other.email == email) &&
@@ -4866,14 +4884,14 @@ class _$_BillingDetailsCollectionConfiguration
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BillingDetailsCollectionConfigurationCopyWith<
-          _$_BillingDetailsCollectionConfiguration>
-      get copyWith => __$$_BillingDetailsCollectionConfigurationCopyWithImpl<
-          _$_BillingDetailsCollectionConfiguration>(this, _$identity);
+  _$$BillingDetailsCollectionConfigurationImplCopyWith<
+          _$BillingDetailsCollectionConfigurationImpl>
+      get copyWith => __$$BillingDetailsCollectionConfigurationImplCopyWithImpl<
+          _$BillingDetailsCollectionConfigurationImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BillingDetailsCollectionConfigurationToJson(
+    return _$$BillingDetailsCollectionConfigurationImplToJson(
       this,
     );
   }
@@ -4887,11 +4905,11 @@ abstract class _BillingDetailsCollectionConfiguration
           final CollectionMode? email,
           final AddressCollectionMode? address,
           final bool? attachDefaultsToPaymentMethod}) =
-      _$_BillingDetailsCollectionConfiguration;
+      _$BillingDetailsCollectionConfigurationImpl;
 
   factory _BillingDetailsCollectionConfiguration.fromJson(
           Map<String, dynamic> json) =
-      _$_BillingDetailsCollectionConfiguration.fromJson;
+      _$BillingDetailsCollectionConfigurationImpl.fromJson;
 
   @override
 
@@ -4925,7 +4943,7 @@ abstract class _BillingDetailsCollectionConfiguration
   bool? get attachDefaultsToPaymentMethod;
   @override
   @JsonKey(ignore: true)
-  _$$_BillingDetailsCollectionConfigurationCopyWith<
-          _$_BillingDetailsCollectionConfiguration>
+  _$$BillingDetailsCollectionConfigurationImplCopyWith<
+          _$BillingDetailsCollectionConfigurationImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

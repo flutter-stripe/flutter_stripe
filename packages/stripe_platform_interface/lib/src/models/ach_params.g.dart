@@ -9,8 +9,8 @@ part of 'ach_params.dart';
 _$CollectBankAccountParamsImpl _$$CollectBankAccountParamsImplFromJson(
         Map<String, dynamic> json) =>
     _$CollectBankAccountParamsImpl(
-      paymentMethodData: PaymentMethodData.fromJson(
-          json['paymentMethodData'] as Map<String, dynamic>),
+      billingDetails: BillingDetails.fromJson(
+          json['billingDetails'] as Map<String, dynamic>),
       paymentMethodType: $enumDecodeNullable(
               _$PaymentMethodTypeEnumMap, json['paymentMethodType']) ??
           PaymentMethodType.USBankAccount,
@@ -19,7 +19,7 @@ _$CollectBankAccountParamsImpl _$$CollectBankAccountParamsImplFromJson(
 Map<String, dynamic> _$$CollectBankAccountParamsImplToJson(
         _$CollectBankAccountParamsImpl instance) =>
     <String, dynamic>{
-      'paymentMethodData': instance.paymentMethodData.toJson(),
+      'billingDetails': instance.billingDetails.toJson(),
       'paymentMethodType':
           _$PaymentMethodTypeEnumMap[instance.paymentMethodType]!,
     };
@@ -45,6 +45,7 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.Sofort: 'Sofort',
   PaymentMethodType.Upi: 'Upi',
   PaymentMethodType.USBankAccount: 'USBankAccount',
+  PaymentMethodType.RevolutPay: 'RevolutPay',
   PaymentMethodType.Unknown: 'Unknown',
 };
 

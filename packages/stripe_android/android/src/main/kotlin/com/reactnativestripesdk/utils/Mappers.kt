@@ -124,6 +124,7 @@ internal fun mapPaymentMethodType(type: PaymentMethod.Type?): String {
     PaymentMethod.Type.PayPal -> "PayPal"
     PaymentMethod.Type.Affirm -> "Affirm"
     PaymentMethod.Type.CashAppPay -> "CashApp"
+    PaymentMethod.Type.RevolutPay -> "RevolutPay"
     else -> "Unknown"
   }
 }
@@ -154,6 +155,7 @@ internal fun mapToPaymentMethodType(type: String?): PaymentMethod.Type? {
     "PayPal" -> PaymentMethod.Type.PayPal
     "Affirm" -> PaymentMethod.Type.Affirm
     "CashApp" -> PaymentMethod.Type.CashAppPay
+    "RevolutPay" -> PaymentMethod.Type.RevolutPay
     else -> null
   }
 }
@@ -500,6 +502,12 @@ internal fun mapNextAction(type: NextActionType?, data: NextActionData?): Writab
       (data as? NextActionData.DisplayKonbiniDetails)?.let {
         nextActionMap.putString("type", "konbiniVoucher")
         nextActionMap.putString("voucherURL", it.hostedVoucherUrl)
+      }
+    }
+    NextActionType.SwishRedirect -> {
+      (data as? NextActionData.SwishRedirect)?.let {
+        nextActionMap.putString("type", "swishRedirect")
+        nextActionMap.putString("mobileAuthUrl", it.mobileAuthUrl)
       }
     }
   }
@@ -898,13 +906,22 @@ internal fun mapFromShippingContact(googlePayResult: GooglePayResult): WritableM
   googlePayResult.name
   name.putString("givenName", googlePayResult.shippingInformation?.name)
   map.putMap("name", name)
-  map.putString("phoneNumber", googlePayResult.phoneNumber)
+  googlePayResult.shippingInformation?.phone?.let {
+    map.putString("phoneNumber", it)
+  } ?: run {
+    map.putString("phoneNumber", googlePayResult?.phoneNumber)
+  }
   val postalAddress = WritableNativeMap()
   postalAddress.putString("city", googlePayResult.shippingInformation?.address?.city)
   postalAddress.putString("country", googlePayResult.shippingInformation?.address?.country)
   postalAddress.putString("postalCode", googlePayResult.shippingInformation?.address?.postalCode)
   postalAddress.putString("state", googlePayResult.shippingInformation?.address?.state)
-  postalAddress.putString("street", googlePayResult.shippingInformation?.address?.line1 + "\n" + googlePayResult.shippingInformation?.address?.line2)
+  val line1: String? = googlePayResult.shippingInformation?.address?.line1
+  val line2: String? = googlePayResult.shippingInformation?.address?.line2
+  val street =
+    (if (line1 != null) "$line1" else "") +
+    (if (line2 != null) "\n$line2" else "")
+  postalAddress.putString("street", street)
   postalAddress.putString("isoCountryCode", googlePayResult.shippingInformation?.address?.country)
   map.putMap("postalAddress", postalAddress)
   return map
