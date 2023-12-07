@@ -5,7 +5,7 @@ extension PaymentRequestExtension on Stripe {
   _JS get _js => this as _JS;
 
   PaymentRequest paymentRequest(
-      PaymentRequestCreateOptions options,
+    PaymentRequestCreateOptions options,
   ) {
     return PaymentRequest.of(_js.paymentRequest(options));
   }
@@ -26,7 +26,7 @@ class PaymentRequest {
 @JS()
 abstract class _JS {
   external _JSPaymentRequest paymentRequest(
-      PaymentRequestCreateOptions options,
+    PaymentRequestCreateOptions options,
   );
 }
 
