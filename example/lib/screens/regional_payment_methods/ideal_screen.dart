@@ -43,8 +43,10 @@ class IdealScreen extends StatelessWidget {
       await Stripe.instance.confirmPayment(
         paymentIntentClientSecret: clientSecret,
         data: PaymentMethodParams.ideal(
-          paymentMethodData:
-              PaymentMethodDataIdeal(bankName: kIsWeb ? 'revolut' : null),
+          paymentMethodData: PaymentMethodDataIdeal(
+            bankIdentifierCode: 'INGBNL2A',
+            bankName: kIsWeb ? 'revolut' : 'ing',
+          ),
         ),
       );
 

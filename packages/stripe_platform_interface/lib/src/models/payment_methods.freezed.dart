@@ -10906,6 +10906,9 @@ PaymentMethodDataIdeal _$PaymentMethodDataIdealFromJson(
 
 /// @nodoc
 mixin _$PaymentMethodDataIdeal {
+  /// The bank identifier code of the bank.
+  String? get bankIdentifierCode => throw _privateConstructorUsedError;
+
   /// The name of bank.
   String? get bankName => throw _privateConstructorUsedError;
 
@@ -10931,7 +10934,8 @@ abstract class $PaymentMethodDataIdealCopyWith<$Res> {
       _$PaymentMethodDataIdealCopyWithImpl<$Res, PaymentMethodDataIdeal>;
   @useResult
   $Res call(
-      {String? bankName,
+      {String? bankIdentifierCode,
+      String? bankName,
       BillingDetails? billingDetails,
       ShippingDetails? shippingDetails,
       MandateData? mandateData});
@@ -10955,12 +10959,17 @@ class _$PaymentMethodDataIdealCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? bankIdentifierCode = freezed,
     Object? bankName = freezed,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
     Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
+      bankIdentifierCode: freezed == bankIdentifierCode
+          ? _value.bankIdentifierCode
+          : bankIdentifierCode // ignore: cast_nullable_to_non_nullable
+              as String?,
       bankName: freezed == bankName
           ? _value.bankName
           : bankName // ignore: cast_nullable_to_non_nullable
@@ -11027,7 +11036,8 @@ abstract class _$$PaymentMethodDataIdealImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? bankName,
+      {String? bankIdentifierCode,
+      String? bankName,
       BillingDetails? billingDetails,
       ShippingDetails? shippingDetails,
       MandateData? mandateData});
@@ -11053,12 +11063,17 @@ class __$$PaymentMethodDataIdealImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? bankIdentifierCode = freezed,
     Object? bankName = freezed,
     Object? billingDetails = freezed,
     Object? shippingDetails = freezed,
     Object? mandateData = freezed,
   }) {
     return _then(_$PaymentMethodDataIdealImpl(
+      bankIdentifierCode: freezed == bankIdentifierCode
+          ? _value.bankIdentifierCode
+          : bankIdentifierCode // ignore: cast_nullable_to_non_nullable
+              as String?,
       bankName: freezed == bankName
           ? _value.bankName
           : bankName // ignore: cast_nullable_to_non_nullable
@@ -11084,13 +11099,18 @@ class __$$PaymentMethodDataIdealImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$PaymentMethodDataIdealImpl implements _PaymentMethodDataIdeal {
   const _$PaymentMethodDataIdealImpl(
-      {this.bankName,
+      {this.bankIdentifierCode,
+      this.bankName,
       this.billingDetails,
       this.shippingDetails,
       this.mandateData});
 
   factory _$PaymentMethodDataIdealImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentMethodDataIdealImplFromJson(json);
+
+  /// The bank identifier code of the bank.
+  @override
+  final String? bankIdentifierCode;
 
   /// The name of bank.
   @override
@@ -11110,7 +11130,7 @@ class _$PaymentMethodDataIdealImpl implements _PaymentMethodDataIdeal {
 
   @override
   String toString() {
-    return 'PaymentMethodDataIdeal(bankName: $bankName, billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
+    return 'PaymentMethodDataIdeal(bankIdentifierCode: $bankIdentifierCode, bankName: $bankName, billingDetails: $billingDetails, shippingDetails: $shippingDetails, mandateData: $mandateData)';
   }
 
   @override
@@ -11118,6 +11138,8 @@ class _$PaymentMethodDataIdealImpl implements _PaymentMethodDataIdeal {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataIdealImpl &&
+            (identical(other.bankIdentifierCode, bankIdentifierCode) ||
+                other.bankIdentifierCode == bankIdentifierCode) &&
             (identical(other.bankName, bankName) ||
                 other.bankName == bankName) &&
             (identical(other.billingDetails, billingDetails) ||
@@ -11130,8 +11152,8 @@ class _$PaymentMethodDataIdealImpl implements _PaymentMethodDataIdeal {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, bankName, billingDetails, shippingDetails, mandateData);
+  int get hashCode => Object.hash(runtimeType, bankIdentifierCode, bankName,
+      billingDetails, shippingDetails, mandateData);
 
   @JsonKey(ignore: true)
   @override
@@ -11150,7 +11172,8 @@ class _$PaymentMethodDataIdealImpl implements _PaymentMethodDataIdeal {
 
 abstract class _PaymentMethodDataIdeal implements PaymentMethodDataIdeal {
   const factory _PaymentMethodDataIdeal(
-      {final String? bankName,
+      {final String? bankIdentifierCode,
+      final String? bankName,
       final BillingDetails? billingDetails,
       final ShippingDetails? shippingDetails,
       final MandateData? mandateData}) = _$PaymentMethodDataIdealImpl;
@@ -11158,6 +11181,10 @@ abstract class _PaymentMethodDataIdeal implements PaymentMethodDataIdeal {
   factory _PaymentMethodDataIdeal.fromJson(Map<String, dynamic> json) =
       _$PaymentMethodDataIdealImpl.fromJson;
 
+  @override
+
+  /// The bank identifier code of the bank.
+  String? get bankIdentifierCode;
   @override
 
   /// The name of bank.
