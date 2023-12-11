@@ -18,8 +18,6 @@ class KeepVisibleOnFocus extends StatefulWidget {
 
 class _KeepVisibleOnFocusState extends State<KeepVisibleOnFocus>
     with WidgetsBindingObserver {
-  bool isObserverRegistered = false;
-
   @override
   void initState() {
     widget.focusNode.addListener(onFocusChanged);
