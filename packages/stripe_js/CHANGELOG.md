@@ -1,3 +1,9 @@
+## 3.3.0
+
+ - aaa
+
+ - **FIX**: invalid argument `requires_capture` on web (#1431).
+
 ## 3.2.0
 **FIXES**
  - PaymentConfirmationRedirect enum value (#1221).
