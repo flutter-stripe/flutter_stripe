@@ -68,6 +68,16 @@ You will also need to update in your Podfile:
 
 `platform :ios, '13.0'`
 
+For card scanning add the following to your Info.plist:
+
+```xml
+<key>NSCameraUsageDescription</key>
+<string>Scan your card to add it automatically</string>
+<key>NSCameraUsageDescription
+&lt;string&gt;To scan cards&lt;/string&gt;</key>
+<string>To scan cards</string>
+```
+
 #### Web (Experimental)
 
 Now you can use Stripe with Flutter web! Notice right now it is highly experimental and only a subset of features is implemented. Namely:
