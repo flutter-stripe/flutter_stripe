@@ -14,6 +14,215 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+PlatformPayPaymentMethod _$PlatformPayPaymentMethodFromJson(
+    Map<String, dynamic> json) {
+  return _PlatformPayPaymentMethod.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PlatformPayPaymentMethod {
+  /// The payment method
+  PaymentMethod get paymentMethod => throw _privateConstructorUsedError;
+
+  /// shipping contact of the user
+  PlatformPayShippingContact? get shippingContact =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PlatformPayPaymentMethodCopyWith<PlatformPayPaymentMethod> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PlatformPayPaymentMethodCopyWith<$Res> {
+  factory $PlatformPayPaymentMethodCopyWith(PlatformPayPaymentMethod value,
+          $Res Function(PlatformPayPaymentMethod) then) =
+      _$PlatformPayPaymentMethodCopyWithImpl<$Res, PlatformPayPaymentMethod>;
+  @useResult
+  $Res call(
+      {PaymentMethod paymentMethod,
+      PlatformPayShippingContact? shippingContact});
+
+  $PaymentMethodCopyWith<$Res> get paymentMethod;
+  $PlatformPayShippingContactCopyWith<$Res>? get shippingContact;
+}
+
+/// @nodoc
+class _$PlatformPayPaymentMethodCopyWithImpl<$Res,
+        $Val extends PlatformPayPaymentMethod>
+    implements $PlatformPayPaymentMethodCopyWith<$Res> {
+  _$PlatformPayPaymentMethodCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? paymentMethod = null,
+    Object? shippingContact = freezed,
+  }) {
+    return _then(_value.copyWith(
+      paymentMethod: null == paymentMethod
+          ? _value.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as PaymentMethod,
+      shippingContact: freezed == shippingContact
+          ? _value.shippingContact
+          : shippingContact // ignore: cast_nullable_to_non_nullable
+              as PlatformPayShippingContact?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentMethodCopyWith<$Res> get paymentMethod {
+    return $PaymentMethodCopyWith<$Res>(_value.paymentMethod, (value) {
+      return _then(_value.copyWith(paymentMethod: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PlatformPayShippingContactCopyWith<$Res>? get shippingContact {
+    if (_value.shippingContact == null) {
+      return null;
+    }
+
+    return $PlatformPayShippingContactCopyWith<$Res>(_value.shippingContact!,
+        (value) {
+      return _then(_value.copyWith(shippingContact: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$PlatformPayPaymentMethodImplCopyWith<$Res>
+    implements $PlatformPayPaymentMethodCopyWith<$Res> {
+  factory _$$PlatformPayPaymentMethodImplCopyWith(
+          _$PlatformPayPaymentMethodImpl value,
+          $Res Function(_$PlatformPayPaymentMethodImpl) then) =
+      __$$PlatformPayPaymentMethodImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {PaymentMethod paymentMethod,
+      PlatformPayShippingContact? shippingContact});
+
+  @override
+  $PaymentMethodCopyWith<$Res> get paymentMethod;
+  @override
+  $PlatformPayShippingContactCopyWith<$Res>? get shippingContact;
+}
+
+/// @nodoc
+class __$$PlatformPayPaymentMethodImplCopyWithImpl<$Res>
+    extends _$PlatformPayPaymentMethodCopyWithImpl<$Res,
+        _$PlatformPayPaymentMethodImpl>
+    implements _$$PlatformPayPaymentMethodImplCopyWith<$Res> {
+  __$$PlatformPayPaymentMethodImplCopyWithImpl(
+      _$PlatformPayPaymentMethodImpl _value,
+      $Res Function(_$PlatformPayPaymentMethodImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? paymentMethod = null,
+    Object? shippingContact = freezed,
+  }) {
+    return _then(_$PlatformPayPaymentMethodImpl(
+      paymentMethod: null == paymentMethod
+          ? _value.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as PaymentMethod,
+      shippingContact: freezed == shippingContact
+          ? _value.shippingContact
+          : shippingContact // ignore: cast_nullable_to_non_nullable
+              as PlatformPayShippingContact?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$PlatformPayPaymentMethodImpl implements _PlatformPayPaymentMethod {
+  const _$PlatformPayPaymentMethodImpl(
+      {required this.paymentMethod, this.shippingContact});
+
+  factory _$PlatformPayPaymentMethodImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PlatformPayPaymentMethodImplFromJson(json);
+
+  /// The payment method
+  @override
+  final PaymentMethod paymentMethod;
+
+  /// shipping contact of the user
+  @override
+  final PlatformPayShippingContact? shippingContact;
+
+  @override
+  String toString() {
+    return 'PlatformPayPaymentMethod(paymentMethod: $paymentMethod, shippingContact: $shippingContact)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PlatformPayPaymentMethodImpl &&
+            (identical(other.paymentMethod, paymentMethod) ||
+                other.paymentMethod == paymentMethod) &&
+            (identical(other.shippingContact, shippingContact) ||
+                other.shippingContact == shippingContact));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, paymentMethod, shippingContact);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PlatformPayPaymentMethodImplCopyWith<_$PlatformPayPaymentMethodImpl>
+      get copyWith => __$$PlatformPayPaymentMethodImplCopyWithImpl<
+          _$PlatformPayPaymentMethodImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PlatformPayPaymentMethodImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PlatformPayPaymentMethod implements PlatformPayPaymentMethod {
+  const factory _PlatformPayPaymentMethod(
+          {required final PaymentMethod paymentMethod,
+          final PlatformPayShippingContact? shippingContact}) =
+      _$PlatformPayPaymentMethodImpl;
+
+  factory _PlatformPayPaymentMethod.fromJson(Map<String, dynamic> json) =
+      _$PlatformPayPaymentMethodImpl.fromJson;
+
+  @override
+
+  /// The payment method
+  PaymentMethod get paymentMethod;
+  @override
+
+  /// shipping contact of the user
+  PlatformPayShippingContact? get shippingContact;
+  @override
+  @JsonKey(ignore: true)
+  _$$PlatformPayPaymentMethodImplCopyWith<_$PlatformPayPaymentMethodImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
 PlatformPaySheetUpdateParams _$PlatformPaySheetUpdateParamsFromJson(
     Map<String, dynamic> json) {
   return _PlatformPaySheetUpdateParams.fromJson(json);
@@ -2150,6 +2359,266 @@ abstract class PlatformPayConfirmParamsApplePay
   @JsonKey(ignore: true)
   _$$PlatformPayConfirmParamsApplePayImplCopyWith<
           _$PlatformPayConfirmParamsApplePayImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+PlatformPayShippingContact _$PlatformPayShippingContactFromJson(
+    Map<String, dynamic> json) {
+  return _PlatformPayShippingContact.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PlatformPayShippingContact {
+  /// Email address of the shipping contact
+  String? get emailAddress => throw _privateConstructorUsedError;
+
+  /// Name of shipping contact
+  ApplePayContactName get name => throw _privateConstructorUsedError;
+
+  /// Postal address of shipping contact
+  ApplePayPostalAddress get postalAddress => throw _privateConstructorUsedError;
+
+  ///Phone Number of the shipping contact
+  String? get phoneNumber => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PlatformPayShippingContactCopyWith<PlatformPayShippingContact>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PlatformPayShippingContactCopyWith<$Res> {
+  factory $PlatformPayShippingContactCopyWith(PlatformPayShippingContact value,
+          $Res Function(PlatformPayShippingContact) then) =
+      _$PlatformPayShippingContactCopyWithImpl<$Res,
+          PlatformPayShippingContact>;
+  @useResult
+  $Res call(
+      {String? emailAddress,
+      ApplePayContactName name,
+      ApplePayPostalAddress postalAddress,
+      String? phoneNumber});
+
+  $ApplePayContactNameCopyWith<$Res> get name;
+  $ApplePayPostalAddressCopyWith<$Res> get postalAddress;
+}
+
+/// @nodoc
+class _$PlatformPayShippingContactCopyWithImpl<$Res,
+        $Val extends PlatformPayShippingContact>
+    implements $PlatformPayShippingContactCopyWith<$Res> {
+  _$PlatformPayShippingContactCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? emailAddress = freezed,
+    Object? name = null,
+    Object? postalAddress = null,
+    Object? phoneNumber = freezed,
+  }) {
+    return _then(_value.copyWith(
+      emailAddress: freezed == emailAddress
+          ? _value.emailAddress
+          : emailAddress // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as ApplePayContactName,
+      postalAddress: null == postalAddress
+          ? _value.postalAddress
+          : postalAddress // ignore: cast_nullable_to_non_nullable
+              as ApplePayPostalAddress,
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ApplePayContactNameCopyWith<$Res> get name {
+    return $ApplePayContactNameCopyWith<$Res>(_value.name, (value) {
+      return _then(_value.copyWith(name: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ApplePayPostalAddressCopyWith<$Res> get postalAddress {
+    return $ApplePayPostalAddressCopyWith<$Res>(_value.postalAddress, (value) {
+      return _then(_value.copyWith(postalAddress: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$PlatformPayShippingContactImplCopyWith<$Res>
+    implements $PlatformPayShippingContactCopyWith<$Res> {
+  factory _$$PlatformPayShippingContactImplCopyWith(
+          _$PlatformPayShippingContactImpl value,
+          $Res Function(_$PlatformPayShippingContactImpl) then) =
+      __$$PlatformPayShippingContactImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String? emailAddress,
+      ApplePayContactName name,
+      ApplePayPostalAddress postalAddress,
+      String? phoneNumber});
+
+  @override
+  $ApplePayContactNameCopyWith<$Res> get name;
+  @override
+  $ApplePayPostalAddressCopyWith<$Res> get postalAddress;
+}
+
+/// @nodoc
+class __$$PlatformPayShippingContactImplCopyWithImpl<$Res>
+    extends _$PlatformPayShippingContactCopyWithImpl<$Res,
+        _$PlatformPayShippingContactImpl>
+    implements _$$PlatformPayShippingContactImplCopyWith<$Res> {
+  __$$PlatformPayShippingContactImplCopyWithImpl(
+      _$PlatformPayShippingContactImpl _value,
+      $Res Function(_$PlatformPayShippingContactImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? emailAddress = freezed,
+    Object? name = null,
+    Object? postalAddress = null,
+    Object? phoneNumber = freezed,
+  }) {
+    return _then(_$PlatformPayShippingContactImpl(
+      emailAddress: freezed == emailAddress
+          ? _value.emailAddress
+          : emailAddress // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as ApplePayContactName,
+      postalAddress: null == postalAddress
+          ? _value.postalAddress
+          : postalAddress // ignore: cast_nullable_to_non_nullable
+              as ApplePayPostalAddress,
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$PlatformPayShippingContactImpl implements _PlatformPayShippingContact {
+  const _$PlatformPayShippingContactImpl(
+      {this.emailAddress,
+      required this.name,
+      required this.postalAddress,
+      this.phoneNumber});
+
+  factory _$PlatformPayShippingContactImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$PlatformPayShippingContactImplFromJson(json);
+
+  /// Email address of the shipping contact
+  @override
+  final String? emailAddress;
+
+  /// Name of shipping contact
+  @override
+  final ApplePayContactName name;
+
+  /// Postal address of shipping contact
+  @override
+  final ApplePayPostalAddress postalAddress;
+
+  ///Phone Number of the shipping contact
+  @override
+  final String? phoneNumber;
+
+  @override
+  String toString() {
+    return 'PlatformPayShippingContact(emailAddress: $emailAddress, name: $name, postalAddress: $postalAddress, phoneNumber: $phoneNumber)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PlatformPayShippingContactImpl &&
+            (identical(other.emailAddress, emailAddress) ||
+                other.emailAddress == emailAddress) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.postalAddress, postalAddress) ||
+                other.postalAddress == postalAddress) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, emailAddress, name, postalAddress, phoneNumber);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PlatformPayShippingContactImplCopyWith<_$PlatformPayShippingContactImpl>
+      get copyWith => __$$PlatformPayShippingContactImplCopyWithImpl<
+          _$PlatformPayShippingContactImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PlatformPayShippingContactImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PlatformPayShippingContact
+    implements PlatformPayShippingContact {
+  const factory _PlatformPayShippingContact(
+      {final String? emailAddress,
+      required final ApplePayContactName name,
+      required final ApplePayPostalAddress postalAddress,
+      final String? phoneNumber}) = _$PlatformPayShippingContactImpl;
+
+  factory _PlatformPayShippingContact.fromJson(Map<String, dynamic> json) =
+      _$PlatformPayShippingContactImpl.fromJson;
+
+  @override
+
+  /// Email address of the shipping contact
+  String? get emailAddress;
+  @override
+
+  /// Name of shipping contact
+  ApplePayContactName get name;
+  @override
+
+  /// Postal address of shipping contact
+  ApplePayPostalAddress get postalAddress;
+  @override
+
+  ///Phone Number of the shipping contact
+  String? get phoneNumber;
+  @override
+  @JsonKey(ignore: true)
+  _$$PlatformPayShippingContactImplCopyWith<_$PlatformPayShippingContactImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 

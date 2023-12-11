@@ -144,7 +144,7 @@ class Stripe {
   /// Creating payment method does not return a token by default. Use `usesDeprecatedTokenFlow` instead.
   ///
   /// throws [StripeError] in case creating payment method is failing.
-  Future<PaymentMethod> createPlatformPayPaymentMethod({
+  Future<PlatformPayPaymentMethod> createPlatformPayPaymentMethod({
     required PlatformPayPaymentMethodParams params,
     bool usesDeprecatedTokenFlow = false,
   }) async {

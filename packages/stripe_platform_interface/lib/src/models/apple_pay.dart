@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:stripe_platform_interface/src/models/platform_pay.dart';
 
 part 'apple_pay.freezed.dart';
 part 'apple_pay.g.dart';
@@ -202,28 +203,7 @@ class ApplePayErrorAddressField with _$ApplePayErrorAddressField {
       _$ApplePayErrorAddressFieldFromJson(json);
 }
 
-@freezed
 
-/// Entered Shipping contact data
-class ApplePayShippingContact with _$ApplePayShippingContact {
-  @JsonSerializable(explicitToJson: true)
-  const factory ApplePayShippingContact({
-    /// Email address of the shipping contact
-    String? emailAddress,
-
-    /// Name of shipping contact
-    required ApplePayContactName name,
-
-    /// Postal address of shipping contact
-    required ApplePayPostalAddress postalAddress,
-
-    ///Phone Number of the shipping contact
-    String? phoneNumber,
-  }) = _ApplePayShippingContact;
-
-  factory ApplePayShippingContact.fromJson(Map<String, dynamic> json) =>
-      _$ApplePayShippingContactFromJson(json);
-}
 
 @freezed
 
@@ -264,7 +244,7 @@ class ApplePayPostalAddress with _$ApplePayPostalAddress {
 }
 
 typedef OnDidSetShippingContact = FutureOr<void> Function(
-    ApplePayShippingContact contact);
+    PlatformPayShippingContact contact);
 typedef OnDidSetShippingMethod = FutureOr<void> Function(
     ApplePayShippingMethod method);
 typedef OnCouponCodeEntered = FutureOr<void> Function(String couponCode);

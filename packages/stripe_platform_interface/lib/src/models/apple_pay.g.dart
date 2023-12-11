@@ -162,25 +162,6 @@ Map<String, dynamic> _$$ApplePayErrorAddressFieldImplToJson(
       'message': instance.message,
     };
 
-_$ApplePayShippingContactImpl _$$ApplePayShippingContactImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ApplePayShippingContactImpl(
-      emailAddress: json['emailAddress'] as String?,
-      name: ApplePayContactName.fromJson(json['name'] as Map<String, dynamic>),
-      postalAddress: ApplePayPostalAddress.fromJson(
-          json['postalAddress'] as Map<String, dynamic>),
-      phoneNumber: json['phoneNumber'] as String?,
-    );
-
-Map<String, dynamic> _$$ApplePayShippingContactImplToJson(
-        _$ApplePayShippingContactImpl instance) =>
-    <String, dynamic>{
-      'emailAddress': instance.emailAddress,
-      'name': instance.name.toJson(),
-      'postalAddress': instance.postalAddress.toJson(),
-      'phoneNumber': instance.phoneNumber,
-    };
-
 _$ApplePayContactNameImpl _$$ApplePayContactNameImplFromJson(
         Map<String, dynamic> json) =>
     _$ApplePayContactNameImpl(
