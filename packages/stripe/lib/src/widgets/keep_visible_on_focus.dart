@@ -30,17 +30,22 @@ class _KeepVisibleOnFocusState extends State<KeepVisibleOnFocus>
   }
 
   void onFocusChanged() {
-    if (widget.focusNode.hasFocus) {
+    if (widget.focusNode.hasFocus && !_isObserverRegistered) {
       WidgetsBinding.instance.addObserver(this);
       _lastBottomViewInset = MediaQuery.of(context).viewInsets.bottom;
+      _isObserverRegistered = true;
+      
     } else {
       WidgetsBinding.instance.removeObserver(this);
+      _isObserverRegistered = false;
     }
   }
 
   late double _lastBottomViewInset;
 
   bool _showOnScreenScheduled = false;
+
+  bool _isObserverRegistered = false;
 
   void _showOnScreen() {
     if (_showOnScreenScheduled) {
@@ -79,3 +84,4 @@ class _KeepVisibleOnFocusState extends State<KeepVisibleOnFocus>
     super.dispose();
   }
 }
+
