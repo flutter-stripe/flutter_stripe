@@ -23,6 +23,7 @@ class PlatformPayButton extends StatelessWidget {
     this.onCouponCodeEntered,
     this.onShippingMethodSelected,
     this.onOrderTracking,
+    this.paymentRequestCreateOptions = PlatformPayWebPaymentRequestCreateOptions.defaultOptions,
   });
 
   /// Defines the displayed text on the button.
@@ -67,14 +68,17 @@ class PlatformPayButton extends StatelessWidget {
   /// See https://stripe.com/docs/apple-pay?platform=ios&locale=es-ES#order-tracking
   final OnOrderTracking? onOrderTracking;
 
+  final PlatformPayWebPaymentRequestCreateOptions paymentRequestCreateOptions;
+
   @override
   Widget build(BuildContext context) {
     if (kIsWeb) {
       return Stripe.buildPaymentRequestButton(
+        onPressed: onPressed,
+        paymentRequestCreateOptions: paymentRequestCreateOptions,
         constraints: constraints,
-        // TODO: add support for web payment request options
-        paymentRequestCreateOptions:
-            PlatformPayWebPaymentRequestCreateOptions.defaultOptions,
+        type: type,
+        style: appearance,
       );
     }
     if (Platform.isAndroid) {

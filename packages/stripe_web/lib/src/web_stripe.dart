@@ -1,6 +1,7 @@
 //@dart=2.12
 import 'dart:developer' as dev;
 import 'dart:html';
+import 'dart:ui' as ui;
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
@@ -19,6 +20,7 @@ import 'parser/token.dart';
 class WebStripe extends StripePlatform {
   static stripe_js.Stripe get js => __stripe!;
   static stripe_js.Stripe? __stripe;
+
   stripe_js.Stripe get _stripe {
     assert(__stripe != null);
     return __stripe!;
@@ -31,6 +33,7 @@ class WebStripe extends StripePlatform {
   static final WebStripe instance = WebStripe._();
 
   WebStripe._();
+
   @Deprecated('Use WebStripe.instance instead')
   factory WebStripe() => instance;
 
@@ -38,6 +41,7 @@ class WebStripe extends StripePlatform {
   bool get updateSettingsLazily => false;
 
   String? _urlScheme;
+
   String get urlScheme => _urlScheme ?? window.location.href;
 
   @override
@@ -431,14 +435,21 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Widget buildPaymentRequestButton(
-      {Key? key,
-      required PlatformPayWebPaymentRequestCreateOptions
-          paymentRequestCreateOptions,
-      BoxConstraints? constraints}) {
+  Widget buildPaymentRequestButton({
+    Key? key,
+    required ui.VoidCallback onPressed,
+    required PlatformPayWebPaymentRequestCreateOptions
+        paymentRequestCreateOptions,
+    BoxConstraints? constraints,
+    PlatformButtonType? type,
+    PlatformButtonStyle? style,
+  }) {
     return WebPlatformPayButton(
+      onPressed: onPressed,
       paymentRequestCreateOptions: paymentRequestCreateOptions,
       constraints: constraints,
+      type: type,
+      style: style,
     );
   }
 
@@ -495,11 +506,10 @@ class WebStripe extends StripePlatform {
             PlatformPayWebPaymentRequestCreateOptions.defaultOptions)
         .toJS());
 
-    return paymentRequest.canMakePayment()
-        .then((value) =>
-            value?.applePay == true ||
-            value?.googlePay == true ||
-            value?.link == true);
+    return paymentRequest.canMakePayment().then((value) =>
+        value?.applePay == true ||
+        value?.googlePay == true ||
+        value?.link == true);
   }
 
   @override
@@ -577,6 +587,7 @@ class WebUnsupportedError extends Error implements UnsupportedError {
       : message = (method != null)
             ? "$method is not supported for Web"
             : "not supported for Web";
+
   @override
   String toString() => (message != null)
       ? "WebUnsupportedError: $message"

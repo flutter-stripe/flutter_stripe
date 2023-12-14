@@ -11,13 +11,19 @@ const kPlatformPayButtonDefaultHeight = 40.0;
 
 class WebPlatformPayButton extends StatefulWidget {
   final PlatformPayWebPaymentRequestCreateOptions paymentRequestCreateOptions;
+  final PlatformButtonType? type;
+  final PlatformButtonStyle? style;
   final BoxConstraints? constraints;
+  final ui.VoidCallback onPressed;
 
   const WebPlatformPayButton(
       {super.key,
       this.paymentRequestCreateOptions =
           PlatformPayWebPaymentRequestCreateOptions.defaultOptions,
-      this.constraints});
+      this.constraints,
+      this.type,
+      this.style,
+      required ui.VoidCallback this.onPressed});
 
   @override
   State<StatefulWidget> createState() {
@@ -26,7 +32,8 @@ class WebPlatformPayButton extends StatefulWidget {
 }
 
 class _WebPlatformPayButtonState extends State<WebPlatformPayButton> {
-  BoxConstraints get constraints => widget.constraints ??
+  BoxConstraints get constraints =>
+      widget.constraints ??
       const BoxConstraints.expand(height: kPlatformPayButtonDefaultHeight);
 
   @override
@@ -63,12 +70,46 @@ class _WebPlatformPayButtonState extends State<WebPlatformPayButton> {
                 style: JsPaymentRequestButtonElementStyle(
                     paymentRequestButton:
                         JsPaymentRequestButtonElementStyleProps(
-                  theme: 'dark',
-                  type: 'book',
+                  theme: theme,
+                  type: type,
                   height: '${constraints.maxHeight}px',
                 ))))
+          ..on('click', allowInterop((event) {
+            callMethod(event, 'preventDefault', []);
+            widget.onPressed();
+          }))
           ..mount('#platform-pay-button');
       });
     });
+  }
+
+  String get type {
+    switch (widget.type) {
+      case PlatformButtonType.buy:
+        return 'buy';
+      case PlatformButtonType.book:
+        return 'book';
+      case PlatformButtonType.donate:
+        return 'donate';
+      case PlatformButtonType.plain:
+      default:
+        if (widget.type != null && widget.type != PlatformButtonType.plain) {
+          window.console.warn(
+              'PlatformPayButton: ${widget.type} is not supported on web - defaulting to plain presentation');
+        }
+        return 'default';
+    }
+  }
+
+  String get theme {
+    switch (widget.style) {
+      case PlatformButtonStyle.white:
+        return 'light';
+      case PlatformButtonStyle.whiteOutline:
+        return 'light-outline';
+      case PlatformButtonStyle.black:
+      default:
+        return 'dark';
+    }
   }
 }
