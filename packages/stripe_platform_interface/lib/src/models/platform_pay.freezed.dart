@@ -1508,6 +1508,8 @@ mixin _$PlatformPayPaymentMethodParams {
             GooglePayPaymentMethodParams googlePayPaymentMethodParams)
         googlePay,
     required TResult Function(ApplePayParams applePayParams) applePay,
+    required TResult Function(PlatformPayWebPaymentRequestCreateOptions options)
+        web,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1516,6 +1518,7 @@ mixin _$PlatformPayPaymentMethodParams {
             GooglePayPaymentMethodParams googlePayPaymentMethodParams)?
         googlePay,
     TResult? Function(ApplePayParams applePayParams)? applePay,
+    TResult? Function(PlatformPayWebPaymentRequestCreateOptions options)? web,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1524,6 +1527,7 @@ mixin _$PlatformPayPaymentMethodParams {
             GooglePayPaymentMethodParams googlePayPaymentMethodParams)?
         googlePay,
     TResult Function(ApplePayParams applePayParams)? applePay,
+    TResult Function(PlatformPayWebPaymentRequestCreateOptions options)? web,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1533,18 +1537,21 @@ mixin _$PlatformPayPaymentMethodParams {
         googlePay,
     required TResult Function(PlatformPayPaymentMethodParamsApplePay value)
         applePay,
+    required TResult Function(PlatformPayPaymentMethodParamsWeb value) web,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(PlatformPayPaymentMethodParamsGooglePay value)? googlePay,
     TResult? Function(PlatformPayPaymentMethodParamsApplePay value)? applePay,
+    TResult? Function(PlatformPayPaymentMethodParamsWeb value)? web,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PlatformPayPaymentMethodParamsGooglePay value)? googlePay,
     TResult Function(PlatformPayPaymentMethodParamsApplePay value)? applePay,
+    TResult Function(PlatformPayPaymentMethodParamsWeb value)? web,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1684,6 +1691,8 @@ class _$PlatformPayPaymentMethodParamsGooglePayImpl
             GooglePayPaymentMethodParams googlePayPaymentMethodParams)
         googlePay,
     required TResult Function(ApplePayParams applePayParams) applePay,
+    required TResult Function(PlatformPayWebPaymentRequestCreateOptions options)
+        web,
   }) {
     return googlePay(googlePayParams, googlePayPaymentMethodParams);
   }
@@ -1695,6 +1704,7 @@ class _$PlatformPayPaymentMethodParamsGooglePayImpl
             GooglePayPaymentMethodParams googlePayPaymentMethodParams)?
         googlePay,
     TResult? Function(ApplePayParams applePayParams)? applePay,
+    TResult? Function(PlatformPayWebPaymentRequestCreateOptions options)? web,
   }) {
     return googlePay?.call(googlePayParams, googlePayPaymentMethodParams);
   }
@@ -1706,6 +1716,7 @@ class _$PlatformPayPaymentMethodParamsGooglePayImpl
             GooglePayPaymentMethodParams googlePayPaymentMethodParams)?
         googlePay,
     TResult Function(ApplePayParams applePayParams)? applePay,
+    TResult Function(PlatformPayWebPaymentRequestCreateOptions options)? web,
     required TResult orElse(),
   }) {
     if (googlePay != null) {
@@ -1721,6 +1732,7 @@ class _$PlatformPayPaymentMethodParamsGooglePayImpl
         googlePay,
     required TResult Function(PlatformPayPaymentMethodParamsApplePay value)
         applePay,
+    required TResult Function(PlatformPayPaymentMethodParamsWeb value) web,
   }) {
     return googlePay(this);
   }
@@ -1730,6 +1742,7 @@ class _$PlatformPayPaymentMethodParamsGooglePayImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(PlatformPayPaymentMethodParamsGooglePay value)? googlePay,
     TResult? Function(PlatformPayPaymentMethodParamsApplePay value)? applePay,
+    TResult? Function(PlatformPayPaymentMethodParamsWeb value)? web,
   }) {
     return googlePay?.call(this);
   }
@@ -1739,6 +1752,7 @@ class _$PlatformPayPaymentMethodParamsGooglePayImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PlatformPayPaymentMethodParamsGooglePay value)? googlePay,
     TResult Function(PlatformPayPaymentMethodParamsApplePay value)? applePay,
+    TResult Function(PlatformPayPaymentMethodParamsWeb value)? web,
     required TResult orElse(),
   }) {
     if (googlePay != null) {
@@ -1852,6 +1866,8 @@ class _$PlatformPayPaymentMethodParamsApplePayImpl
             GooglePayPaymentMethodParams googlePayPaymentMethodParams)
         googlePay,
     required TResult Function(ApplePayParams applePayParams) applePay,
+    required TResult Function(PlatformPayWebPaymentRequestCreateOptions options)
+        web,
   }) {
     return applePay(applePayParams);
   }
@@ -1863,6 +1879,7 @@ class _$PlatformPayPaymentMethodParamsApplePayImpl
             GooglePayPaymentMethodParams googlePayPaymentMethodParams)?
         googlePay,
     TResult? Function(ApplePayParams applePayParams)? applePay,
+    TResult? Function(PlatformPayWebPaymentRequestCreateOptions options)? web,
   }) {
     return applePay?.call(applePayParams);
   }
@@ -1874,6 +1891,7 @@ class _$PlatformPayPaymentMethodParamsApplePayImpl
             GooglePayPaymentMethodParams googlePayPaymentMethodParams)?
         googlePay,
     TResult Function(ApplePayParams applePayParams)? applePay,
+    TResult Function(PlatformPayWebPaymentRequestCreateOptions options)? web,
     required TResult orElse(),
   }) {
     if (applePay != null) {
@@ -1889,6 +1907,7 @@ class _$PlatformPayPaymentMethodParamsApplePayImpl
         googlePay,
     required TResult Function(PlatformPayPaymentMethodParamsApplePay value)
         applePay,
+    required TResult Function(PlatformPayPaymentMethodParamsWeb value) web,
   }) {
     return applePay(this);
   }
@@ -1898,6 +1917,7 @@ class _$PlatformPayPaymentMethodParamsApplePayImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(PlatformPayPaymentMethodParamsGooglePay value)? googlePay,
     TResult? Function(PlatformPayPaymentMethodParamsApplePay value)? applePay,
+    TResult? Function(PlatformPayPaymentMethodParamsWeb value)? web,
   }) {
     return applePay?.call(this);
   }
@@ -1907,6 +1927,7 @@ class _$PlatformPayPaymentMethodParamsApplePayImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PlatformPayPaymentMethodParamsGooglePay value)? googlePay,
     TResult Function(PlatformPayPaymentMethodParamsApplePay value)? applePay,
+    TResult Function(PlatformPayPaymentMethodParamsWeb value)? web,
     required TResult orElse(),
   }) {
     if (applePay != null) {
@@ -1929,6 +1950,176 @@ abstract class PlatformPayPaymentMethodParamsApplePay
       get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
+abstract class _$$PlatformPayPaymentMethodParamsWebImplCopyWith<$Res> {
+  factory _$$PlatformPayPaymentMethodParamsWebImplCopyWith(
+          _$PlatformPayPaymentMethodParamsWebImpl value,
+          $Res Function(_$PlatformPayPaymentMethodParamsWebImpl) then) =
+      __$$PlatformPayPaymentMethodParamsWebImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({PlatformPayWebPaymentRequestCreateOptions options});
+
+  $PlatformPayWebPaymentRequestCreateOptionsCopyWith<$Res> get options;
+}
+
+/// @nodoc
+class __$$PlatformPayPaymentMethodParamsWebImplCopyWithImpl<$Res>
+    extends _$PlatformPayPaymentMethodParamsCopyWithImpl<$Res,
+        _$PlatformPayPaymentMethodParamsWebImpl>
+    implements _$$PlatformPayPaymentMethodParamsWebImplCopyWith<$Res> {
+  __$$PlatformPayPaymentMethodParamsWebImplCopyWithImpl(
+      _$PlatformPayPaymentMethodParamsWebImpl _value,
+      $Res Function(_$PlatformPayPaymentMethodParamsWebImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? options = null,
+  }) {
+    return _then(_$PlatformPayPaymentMethodParamsWebImpl(
+      options: null == options
+          ? _value.options
+          : options // ignore: cast_nullable_to_non_nullable
+              as PlatformPayWebPaymentRequestCreateOptions,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PlatformPayWebPaymentRequestCreateOptionsCopyWith<$Res> get options {
+    return $PlatformPayWebPaymentRequestCreateOptionsCopyWith<$Res>(
+        _value.options, (value) {
+      return _then(_value.copyWith(options: value));
+    });
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$PlatformPayPaymentMethodParamsWebImpl
+    implements PlatformPayPaymentMethodParamsWeb {
+  const _$PlatformPayPaymentMethodParamsWebImpl({required this.options});
+
+  @override
+  final PlatformPayWebPaymentRequestCreateOptions options;
+
+  @override
+  String toString() {
+    return 'PlatformPayPaymentMethodParams.web(options: $options)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PlatformPayPaymentMethodParamsWebImpl &&
+            (identical(other.options, options) || other.options == options));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, options);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PlatformPayPaymentMethodParamsWebImplCopyWith<
+          _$PlatformPayPaymentMethodParamsWebImpl>
+      get copyWith => __$$PlatformPayPaymentMethodParamsWebImplCopyWithImpl<
+          _$PlatformPayPaymentMethodParamsWebImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(GooglePayParams googlePayParams,
+            GooglePayPaymentMethodParams googlePayPaymentMethodParams)
+        googlePay,
+    required TResult Function(ApplePayParams applePayParams) applePay,
+    required TResult Function(PlatformPayWebPaymentRequestCreateOptions options)
+        web,
+  }) {
+    return web(options);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(GooglePayParams googlePayParams,
+            GooglePayPaymentMethodParams googlePayPaymentMethodParams)?
+        googlePay,
+    TResult? Function(ApplePayParams applePayParams)? applePay,
+    TResult? Function(PlatformPayWebPaymentRequestCreateOptions options)? web,
+  }) {
+    return web?.call(options);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(GooglePayParams googlePayParams,
+            GooglePayPaymentMethodParams googlePayPaymentMethodParams)?
+        googlePay,
+    TResult Function(ApplePayParams applePayParams)? applePay,
+    TResult Function(PlatformPayWebPaymentRequestCreateOptions options)? web,
+    required TResult orElse(),
+  }) {
+    if (web != null) {
+      return web(options);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PlatformPayPaymentMethodParamsGooglePay value)
+        googlePay,
+    required TResult Function(PlatformPayPaymentMethodParamsApplePay value)
+        applePay,
+    required TResult Function(PlatformPayPaymentMethodParamsWeb value) web,
+  }) {
+    return web(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(PlatformPayPaymentMethodParamsGooglePay value)? googlePay,
+    TResult? Function(PlatformPayPaymentMethodParamsApplePay value)? applePay,
+    TResult? Function(PlatformPayPaymentMethodParamsWeb value)? web,
+  }) {
+    return web?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PlatformPayPaymentMethodParamsGooglePay value)? googlePay,
+    TResult Function(PlatformPayPaymentMethodParamsApplePay value)? applePay,
+    TResult Function(PlatformPayPaymentMethodParamsWeb value)? web,
+    required TResult orElse(),
+  }) {
+    if (web != null) {
+      return web(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PlatformPayPaymentMethodParamsWeb
+    implements PlatformPayPaymentMethodParams {
+  const factory PlatformPayPaymentMethodParamsWeb(
+          {required final PlatformPayWebPaymentRequestCreateOptions options}) =
+      _$PlatformPayPaymentMethodParamsWebImpl;
+
+  PlatformPayWebPaymentRequestCreateOptions get options;
+  @JsonKey(ignore: true)
+  _$$PlatformPayPaymentMethodParamsWebImplCopyWith<
+          _$PlatformPayPaymentMethodParamsWebImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
 PlatformPayConfirmParams _$PlatformPayConfirmParamsFromJson(
     Map<String, dynamic> json) {
   switch (json['runtimeType']) {
@@ -1936,6 +2127,8 @@ PlatformPayConfirmParams _$PlatformPayConfirmParamsFromJson(
       return PlatformPayConfirmParamsGooglePay.fromJson(json);
     case 'applePay':
       return PlatformPayConfirmParamsApplePay.fromJson(json);
+    case 'web':
+      return PlatformPayConfirmParamsWeb.fromJson(json);
 
     default:
       throw CheckedFromJsonException(
@@ -1952,18 +2145,22 @@ mixin _$PlatformPayConfirmParams {
   TResult when<TResult extends Object?>({
     required TResult Function(GooglePayParams googlePay) googlePay,
     required TResult Function(ApplePayParams applePay) applePay,
+    required TResult Function(PlatformPayWebPaymentRequestCreateOptions options)
+        web,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(GooglePayParams googlePay)? googlePay,
     TResult? Function(ApplePayParams applePay)? applePay,
+    TResult? Function(PlatformPayWebPaymentRequestCreateOptions options)? web,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(GooglePayParams googlePay)? googlePay,
     TResult Function(ApplePayParams applePay)? applePay,
+    TResult Function(PlatformPayWebPaymentRequestCreateOptions options)? web,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1972,18 +2169,21 @@ mixin _$PlatformPayConfirmParams {
     required TResult Function(PlatformPayConfirmParamsGooglePay value)
         googlePay,
     required TResult Function(PlatformPayConfirmParamsApplePay value) applePay,
+    required TResult Function(PlatformPayConfirmParamsWeb value) web,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(PlatformPayConfirmParamsGooglePay value)? googlePay,
     TResult? Function(PlatformPayConfirmParamsApplePay value)? applePay,
+    TResult? Function(PlatformPayConfirmParamsWeb value)? web,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PlatformPayConfirmParamsGooglePay value)? googlePay,
     TResult Function(PlatformPayConfirmParamsApplePay value)? applePay,
+    TResult Function(PlatformPayConfirmParamsWeb value)? web,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -2103,6 +2303,8 @@ class _$PlatformPayConfirmParamsGooglePayImpl
   TResult when<TResult extends Object?>({
     required TResult Function(GooglePayParams googlePay) googlePay,
     required TResult Function(ApplePayParams applePay) applePay,
+    required TResult Function(PlatformPayWebPaymentRequestCreateOptions options)
+        web,
   }) {
     return googlePay(this.googlePay);
   }
@@ -2112,6 +2314,7 @@ class _$PlatformPayConfirmParamsGooglePayImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(GooglePayParams googlePay)? googlePay,
     TResult? Function(ApplePayParams applePay)? applePay,
+    TResult? Function(PlatformPayWebPaymentRequestCreateOptions options)? web,
   }) {
     return googlePay?.call(this.googlePay);
   }
@@ -2121,6 +2324,7 @@ class _$PlatformPayConfirmParamsGooglePayImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(GooglePayParams googlePay)? googlePay,
     TResult Function(ApplePayParams applePay)? applePay,
+    TResult Function(PlatformPayWebPaymentRequestCreateOptions options)? web,
     required TResult orElse(),
   }) {
     if (googlePay != null) {
@@ -2135,6 +2339,7 @@ class _$PlatformPayConfirmParamsGooglePayImpl
     required TResult Function(PlatformPayConfirmParamsGooglePay value)
         googlePay,
     required TResult Function(PlatformPayConfirmParamsApplePay value) applePay,
+    required TResult Function(PlatformPayConfirmParamsWeb value) web,
   }) {
     return googlePay(this);
   }
@@ -2144,6 +2349,7 @@ class _$PlatformPayConfirmParamsGooglePayImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(PlatformPayConfirmParamsGooglePay value)? googlePay,
     TResult? Function(PlatformPayConfirmParamsApplePay value)? applePay,
+    TResult? Function(PlatformPayConfirmParamsWeb value)? web,
   }) {
     return googlePay?.call(this);
   }
@@ -2153,6 +2359,7 @@ class _$PlatformPayConfirmParamsGooglePayImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PlatformPayConfirmParamsGooglePay value)? googlePay,
     TResult Function(PlatformPayConfirmParamsApplePay value)? applePay,
+    TResult Function(PlatformPayConfirmParamsWeb value)? web,
     required TResult orElse(),
   }) {
     if (googlePay != null) {
@@ -2280,6 +2487,8 @@ class _$PlatformPayConfirmParamsApplePayImpl
   TResult when<TResult extends Object?>({
     required TResult Function(GooglePayParams googlePay) googlePay,
     required TResult Function(ApplePayParams applePay) applePay,
+    required TResult Function(PlatformPayWebPaymentRequestCreateOptions options)
+        web,
   }) {
     return applePay(this.applePay);
   }
@@ -2289,6 +2498,7 @@ class _$PlatformPayConfirmParamsApplePayImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(GooglePayParams googlePay)? googlePay,
     TResult? Function(ApplePayParams applePay)? applePay,
+    TResult? Function(PlatformPayWebPaymentRequestCreateOptions options)? web,
   }) {
     return applePay?.call(this.applePay);
   }
@@ -2298,6 +2508,7 @@ class _$PlatformPayConfirmParamsApplePayImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(GooglePayParams googlePay)? googlePay,
     TResult Function(ApplePayParams applePay)? applePay,
+    TResult Function(PlatformPayWebPaymentRequestCreateOptions options)? web,
     required TResult orElse(),
   }) {
     if (applePay != null) {
@@ -2312,6 +2523,7 @@ class _$PlatformPayConfirmParamsApplePayImpl
     required TResult Function(PlatformPayConfirmParamsGooglePay value)
         googlePay,
     required TResult Function(PlatformPayConfirmParamsApplePay value) applePay,
+    required TResult Function(PlatformPayConfirmParamsWeb value) web,
   }) {
     return applePay(this);
   }
@@ -2321,6 +2533,7 @@ class _$PlatformPayConfirmParamsApplePayImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(PlatformPayConfirmParamsGooglePay value)? googlePay,
     TResult? Function(PlatformPayConfirmParamsApplePay value)? applePay,
+    TResult? Function(PlatformPayConfirmParamsWeb value)? web,
   }) {
     return applePay?.call(this);
   }
@@ -2330,6 +2543,7 @@ class _$PlatformPayConfirmParamsApplePayImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PlatformPayConfirmParamsGooglePay value)? googlePay,
     TResult Function(PlatformPayConfirmParamsApplePay value)? applePay,
+    TResult Function(PlatformPayConfirmParamsWeb value)? web,
     required TResult orElse(),
   }) {
     if (applePay != null) {
@@ -2359,6 +2573,185 @@ abstract class PlatformPayConfirmParamsApplePay
   @JsonKey(ignore: true)
   _$$PlatformPayConfirmParamsApplePayImplCopyWith<
           _$PlatformPayConfirmParamsApplePayImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PlatformPayConfirmParamsWebImplCopyWith<$Res> {
+  factory _$$PlatformPayConfirmParamsWebImplCopyWith(
+          _$PlatformPayConfirmParamsWebImpl value,
+          $Res Function(_$PlatformPayConfirmParamsWebImpl) then) =
+      __$$PlatformPayConfirmParamsWebImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({PlatformPayWebPaymentRequestCreateOptions options});
+
+  $PlatformPayWebPaymentRequestCreateOptionsCopyWith<$Res> get options;
+}
+
+/// @nodoc
+class __$$PlatformPayConfirmParamsWebImplCopyWithImpl<$Res>
+    extends _$PlatformPayConfirmParamsCopyWithImpl<$Res,
+        _$PlatformPayConfirmParamsWebImpl>
+    implements _$$PlatformPayConfirmParamsWebImplCopyWith<$Res> {
+  __$$PlatformPayConfirmParamsWebImplCopyWithImpl(
+      _$PlatformPayConfirmParamsWebImpl _value,
+      $Res Function(_$PlatformPayConfirmParamsWebImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? options = null,
+  }) {
+    return _then(_$PlatformPayConfirmParamsWebImpl(
+      options: null == options
+          ? _value.options
+          : options // ignore: cast_nullable_to_non_nullable
+              as PlatformPayWebPaymentRequestCreateOptions,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PlatformPayWebPaymentRequestCreateOptionsCopyWith<$Res> get options {
+    return $PlatformPayWebPaymentRequestCreateOptionsCopyWith<$Res>(
+        _value.options, (value) {
+      return _then(_value.copyWith(options: value));
+    });
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$PlatformPayConfirmParamsWebImpl implements PlatformPayConfirmParamsWeb {
+  const _$PlatformPayConfirmParamsWebImpl(
+      {required this.options, final String? $type})
+      : $type = $type ?? 'web';
+
+  factory _$PlatformPayConfirmParamsWebImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$PlatformPayConfirmParamsWebImplFromJson(json);
+
+  @override
+  final PlatformPayWebPaymentRequestCreateOptions options;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'PlatformPayConfirmParams.web(options: $options)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PlatformPayConfirmParamsWebImpl &&
+            (identical(other.options, options) || other.options == options));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, options);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PlatformPayConfirmParamsWebImplCopyWith<_$PlatformPayConfirmParamsWebImpl>
+      get copyWith => __$$PlatformPayConfirmParamsWebImplCopyWithImpl<
+          _$PlatformPayConfirmParamsWebImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(GooglePayParams googlePay) googlePay,
+    required TResult Function(ApplePayParams applePay) applePay,
+    required TResult Function(PlatformPayWebPaymentRequestCreateOptions options)
+        web,
+  }) {
+    return web(options);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(GooglePayParams googlePay)? googlePay,
+    TResult? Function(ApplePayParams applePay)? applePay,
+    TResult? Function(PlatformPayWebPaymentRequestCreateOptions options)? web,
+  }) {
+    return web?.call(options);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(GooglePayParams googlePay)? googlePay,
+    TResult Function(ApplePayParams applePay)? applePay,
+    TResult Function(PlatformPayWebPaymentRequestCreateOptions options)? web,
+    required TResult orElse(),
+  }) {
+    if (web != null) {
+      return web(options);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PlatformPayConfirmParamsGooglePay value)
+        googlePay,
+    required TResult Function(PlatformPayConfirmParamsApplePay value) applePay,
+    required TResult Function(PlatformPayConfirmParamsWeb value) web,
+  }) {
+    return web(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(PlatformPayConfirmParamsGooglePay value)? googlePay,
+    TResult? Function(PlatformPayConfirmParamsApplePay value)? applePay,
+    TResult? Function(PlatformPayConfirmParamsWeb value)? web,
+  }) {
+    return web?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PlatformPayConfirmParamsGooglePay value)? googlePay,
+    TResult Function(PlatformPayConfirmParamsApplePay value)? applePay,
+    TResult Function(PlatformPayConfirmParamsWeb value)? web,
+    required TResult orElse(),
+  }) {
+    if (web != null) {
+      return web(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PlatformPayConfirmParamsWebImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class PlatformPayConfirmParamsWeb implements PlatformPayConfirmParams {
+  const factory PlatformPayConfirmParamsWeb(
+          {required final PlatformPayWebPaymentRequestCreateOptions options}) =
+      _$PlatformPayConfirmParamsWebImpl;
+
+  factory PlatformPayConfirmParamsWeb.fromJson(Map<String, dynamic> json) =
+      _$PlatformPayConfirmParamsWebImpl.fromJson;
+
+  PlatformPayWebPaymentRequestCreateOptions get options;
+  @JsonKey(ignore: true)
+  _$$PlatformPayConfirmParamsWebImplCopyWith<_$PlatformPayConfirmParamsWebImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 

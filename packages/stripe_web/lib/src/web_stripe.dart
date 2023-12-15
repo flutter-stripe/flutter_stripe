@@ -1,4 +1,5 @@
 //@dart=2.12
+import 'dart:async';
 import 'dart:developer' as dev;
 import 'dart:html';
 import 'dart:ui' as ui;
@@ -506,10 +507,7 @@ class WebStripe extends StripePlatform {
             PlatformPayWebPaymentRequestCreateOptions.defaultOptions)
         .toJS());
 
-    return paymentRequest.canMakePayment().then((value) =>
-        value?.applePay == true ||
-        value?.googlePay == true ||
-        value?.link == true);
+    return paymentRequest.isPaymentAvailable;
   }
 
   @override
@@ -531,7 +529,30 @@ class WebStripe extends StripePlatform {
     required PlatformPayPaymentMethodParams params,
     bool usesDeprecatedTokenFlow = false,
   }) {
-    throw WebUnsupportedError.method('platformPayCreatePaymentMethod');
+    if (!(params is PlatformPayPaymentMethodParamsWeb)) {
+      throw WebUnsupportedError("platformPayCreatePaymentMethod - ${params.runtimeType} is not supported on web");
+    }
+
+    Completer<PaymentMethod> completer = Completer();
+    stripe_js.PaymentRequest paymentRequest =
+        js.paymentRequest(params.options.toJS());
+    paymentRequest.isPaymentAvailable.then((available) {
+      if (available) {
+        paymentRequest.show();
+      } else {
+        completer.completeError(CancellationError(
+            "No enabled wallets are available for payment method creation"));
+      }
+    });
+    paymentRequest.onPaymentMethod((response) {
+      completer.complete(response.paymentMethod.parse());
+      response.complete('success');
+    });
+    paymentRequest.onCancel(() {
+      completer.completeError(CancellationError('Payment request cancelled'));
+    });
+
+    return completer.future;
   }
 
   @override
@@ -592,4 +613,21 @@ class WebUnsupportedError extends Error implements UnsupportedError {
   String toString() => (message != null)
       ? "WebUnsupportedError: $message"
       : "WebUnsupportedError";
+}
+
+class CancellationError extends Error implements Exception {
+  final String? message;
+
+  CancellationError([this.message]);
+
+  @override
+  String toString() =>
+      (message != null) ? "CancellationError: $message" : "CancellationError";
+}
+
+extension CanMakePayment on stripe_js.PaymentRequest {
+  Future<bool> get isPaymentAvailable => this.canMakePayment().then((value) =>
+      value?.applePay == true ||
+      value?.googlePay == true ||
+      value?.link == true);
 }

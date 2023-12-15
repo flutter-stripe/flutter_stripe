@@ -115,6 +115,11 @@ class PlatformPayPaymentMethodParams with _$PlatformPayPaymentMethodParams {
   const factory PlatformPayPaymentMethodParams.applePay({
     required ApplePayParams applePayParams,
   }) = PlatformPayPaymentMethodParamsApplePay;
+
+  @JsonSerializable(explicitToJson: true)
+  const factory PlatformPayPaymentMethodParams.web({
+    required PlatformPayWebPaymentRequestCreateOptions options,
+  }) = PlatformPayPaymentMethodParamsWeb;
 }
 
 @freezed
@@ -128,6 +133,11 @@ class PlatformPayConfirmParams with _$PlatformPayConfirmParams {
   const factory PlatformPayConfirmParams.applePay({
     required ApplePayParams applePay,
   }) = PlatformPayConfirmParamsApplePay;
+
+  @JsonSerializable(explicitToJson: true)
+  const factory PlatformPayConfirmParams.web({
+    required PlatformPayWebPaymentRequestCreateOptions options,
+  }) = PlatformPayConfirmParamsWeb;
 
   factory PlatformPayConfirmParams.fromJson(Map<String, dynamic> json) =>
       _$PlatformPayConfirmParamsFromJson(json);

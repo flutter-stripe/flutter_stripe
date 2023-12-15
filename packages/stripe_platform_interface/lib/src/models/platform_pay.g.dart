@@ -154,6 +154,20 @@ Map<String, dynamic> _$$PlatformPayPaymentMethodParamsApplePayImplToJson(
       'applePayParams': instance.applePayParams.toJson(),
     };
 
+_$PlatformPayPaymentMethodParamsWebImpl
+    _$$PlatformPayPaymentMethodParamsWebImplFromJson(
+            Map<String, dynamic> json) =>
+        _$PlatformPayPaymentMethodParamsWebImpl(
+          options: PlatformPayWebPaymentRequestCreateOptions.fromJson(
+              json['options'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$$PlatformPayPaymentMethodParamsWebImplToJson(
+        _$PlatformPayPaymentMethodParamsWebImpl instance) =>
+    <String, dynamic>{
+      'options': instance.options.toJson(),
+    };
+
 _$PlatformPayConfirmParamsGooglePayImpl
     _$$PlatformPayConfirmParamsGooglePayImplFromJson(
             Map<String, dynamic> json) =>
@@ -183,6 +197,21 @@ Map<String, dynamic> _$$PlatformPayConfirmParamsApplePayImplToJson(
         _$PlatformPayConfirmParamsApplePayImpl instance) =>
     <String, dynamic>{
       'applePay': instance.applePay.toJson(),
+      'runtimeType': instance.$type,
+    };
+
+_$PlatformPayConfirmParamsWebImpl _$$PlatformPayConfirmParamsWebImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PlatformPayConfirmParamsWebImpl(
+      options: PlatformPayWebPaymentRequestCreateOptions.fromJson(
+          json['options'] as Map<String, dynamic>),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$PlatformPayConfirmParamsWebImplToJson(
+        _$PlatformPayConfirmParamsWebImpl instance) =>
+    <String, dynamic>{
+      'options': instance.options.toJson(),
       'runtimeType': instance.$type,
     };
 

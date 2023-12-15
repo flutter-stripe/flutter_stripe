@@ -3,9 +3,13 @@ import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 
 Future<Map<String, dynamic>> _parsePromise(Promise<dynamic> promise) async {
-  final response = await promiseToFuture(promise);
-  final value = dartify(response) as Map<dynamic, dynamic>;
-  return value.cast<String, dynamic>();
+  return jsToJsonMap(await promiseToFuture(promise));
+}
+
+@internal
+Map<String,dynamic> jsToJsonMap(dynamic jsObject) {
+  final value = dartify(jsObject) as Map<dynamic, dynamic>;
+  return value.cast();
 }
 
 @internal
