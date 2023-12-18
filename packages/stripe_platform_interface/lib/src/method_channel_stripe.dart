@@ -322,7 +322,9 @@ class MethodChannelStripe extends StripePlatform {
   PaymentSheetPaymentOption? _parsePaymentSheetResult(
       Map<String, dynamic>? result) {
     if (result != null) {
-      if (result.isEmpty) {
+      ///iOS sometimes returns empty paymentoption so add workaround for it.
+      if (result.isEmpty ||
+          (result['paymentOption'] == null && result['error'] == null)) {
         return null;
       } else if (result['paymentOption'] != null) {
         return PaymentSheetPaymentOption.fromJson(result['paymentOption']);
