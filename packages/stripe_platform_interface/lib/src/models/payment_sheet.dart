@@ -81,7 +81,7 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// paymentIntent since the customer can change those.
     @JsonKey(name: 'defaultBillingDetails') BillingDetails? billingDetails,
 
-    /// Return URL is required for IDEAL and few other payment methods
+    /// Return URL is required for IDEAL, Klarna and few other payment methods
     String? returnURL,
 
     /// Configuration for how billing details are collected during checkout.
