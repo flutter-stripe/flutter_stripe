@@ -537,6 +537,13 @@ class WebStripe extends StripePlatform {
     Completer<PaymentMethod> completer = Completer();
     stripe_js.PaymentRequest paymentRequest =
         js.paymentRequest(params.options.toJS());
+    paymentRequest.onPaymentMethod((response) {
+      completer.complete(response.paymentMethod.parse());
+      response.complete('success');
+    });
+    paymentRequest.onCancel(() {
+      completer.completeError(CancellationError('Payment request cancelled'));
+    });
     paymentRequest.isPaymentAvailable.then((available) {
       if (available) {
         paymentRequest.show();
@@ -544,13 +551,6 @@ class WebStripe extends StripePlatform {
         completer.completeError(CancellationError(
             "No enabled wallets are available for payment method creation"));
       }
-    });
-    paymentRequest.onPaymentMethod((response) {
-      completer.complete(response.paymentMethod.parse());
-      response.complete('success');
-    });
-    paymentRequest.onCancel(() {
-      completer.completeError(CancellationError('Payment request cancelled'));
     });
 
     return completer.future;
