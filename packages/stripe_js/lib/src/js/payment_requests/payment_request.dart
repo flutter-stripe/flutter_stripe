@@ -55,7 +55,7 @@ class PaymentResponse {
 @JS()
 abstract class _JS {
   external JsPaymentRequest paymentRequest(
-      PaymentRequestCreateOptions options,
+    PaymentRequestCreateOptions options,
   );
 }
 

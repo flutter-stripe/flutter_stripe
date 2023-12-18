@@ -53,6 +53,7 @@ abstract class PaymentRequestButtonElement extends StripeElement {}
 extension ElementsPaymentRequestExtension on StripeElements {
   PaymentRequestButtonElement createPaymentRequestButton(
       JsPaymentRequestButtonElementCreateOptions options) {
-    return create('paymentRequestButton', options) as PaymentRequestButtonElement;
+    return create('paymentRequestButton', options)
+        as PaymentRequestButtonElement;
   }
 }

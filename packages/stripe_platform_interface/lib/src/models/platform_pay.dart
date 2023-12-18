@@ -470,7 +470,8 @@ enum PlatformPayWebWalletType {
 }
 
 @freezed
-class PlatformPayWebPaymentRequestCreateOptions with _$PlatformPayWebPaymentRequestCreateOptions {
+class PlatformPayWebPaymentRequestCreateOptions
+    with _$PlatformPayWebPaymentRequestCreateOptions {
   @JsonSerializable(explicitToJson: true)
   const factory PlatformPayWebPaymentRequestCreateOptions({
     /// The two-letter country code of your Stripe account (e.g., US).
@@ -484,8 +485,7 @@ class PlatformPayWebPaymentRequestCreateOptions with _$PlatformPayWebPaymentRequ
 
     /// An array of PaymentItem objects. These objects are shown as line items in the browser’s payment interface.
     /// Note that the sum of the line item amounts does not need to add up to the total amount above.
-    @Default([])
-    List<PlatformPayWebPaymentItem> displayItems,
+    @Default([]) List<PlatformPayWebPaymentItem> displayItems,
 
     /// By default, the browser‘s payment interface only asks the customer for actual payment information. A customer
     /// name can be collected by setting this option to true. This collected name will appears in the PaymentResponse object.
@@ -493,35 +493,30 @@ class PlatformPayWebPaymentRequestCreateOptions with _$PlatformPayWebPaymentRequ
     ///  We highly recommend you collect name as this also results in collection of billing address for Apple Pay.
     ///  The billing address can be used to perform address verification and block fraudulent payments.
     ///  For all other payment methods, the billing address is automatically collected when available.
-    @Default(false)
-    bool requestPayerName,
+    @Default(false) bool requestPayerName,
 
     /// See the requestPayerName option.
-    @Default(false)
-    bool requestPayerEmail,
+    @Default(false) bool requestPayerEmail,
 
     /// See the requestPayerName option.
-    @Default(false)
-    bool requestPayerPhone,
+    @Default(false) bool requestPayerPhone,
 
     /// Collect shipping address by setting this option to true. The address appears in the PaymentResponse.
     ///
     ///  You must also supply a valid [ShippingOptions] to the shippingOptions property. This can be up front at the
     ///  time stripe.paymentRequest is called, or in response to a shippingaddresschange event using the updateWith callback.
-    @Default(false)
-    bool requestShipping,
+    @Default(false) bool requestShipping,
 
     /// An array of ShippingOption objects. The first shipping option listed appears in the browser payment interface as the default option.
-    @Default([])
-    List<PlatformPayWebShippingOption> shippingOptions,
+    @Default([]) List<PlatformPayWebShippingOption> shippingOptions,
 
     /// An array of wallet strings. Can be one or more of applePay, googlePay, link, and browserCard. Use this option
     /// to disable Apple Pay, Google Pay, Link, and/or browser-saved cards.
-    @Default([])
-    List<PlatformPayWebWalletType> disableWallets,
+    @Default([]) List<PlatformPayWebWalletType> disableWallets,
   }) = _PaymentRequestCreateOptions;
 
-  factory PlatformPayWebPaymentRequestCreateOptions.fromJson(Map<String, dynamic> json) =>
+  factory PlatformPayWebPaymentRequestCreateOptions.fromJson(
+          Map<String, dynamic> json) =>
       _$PlatformPayWebPaymentRequestCreateOptionsFromJson(json);
 
   static const defaultOptions = PlatformPayWebPaymentRequestCreateOptions(
@@ -570,8 +565,7 @@ class PlatformPayWebPaymentItem with _$PlatformPayWebPaymentItem {
     /// If you might change this amount later (for example, after you have calculated shipping costs), set this to true.
     /// Note that browsers treat this as a hint for how to display things, and not necessarily as something that will
     /// prevent submission.
-    @Default(false)
-    bool pending,
+    @Default(false) bool pending,
   }) = _$PaymentItem;
 
   factory PlatformPayWebPaymentItem.fromJson(Map<String, dynamic> json) =>

@@ -1,7 +1,8 @@
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 import 'package:stripe_js/stripe_js.dart' as js;
 
-extension PaymentRequestCreateOptionsExtension on PlatformPayWebPaymentRequestCreateOptions {
+extension PaymentRequestCreateOptionsExtension
+    on PlatformPayWebPaymentRequestCreateOptions {
   js.PaymentRequestCreateOptions toJS() {
     return js.PaymentRequestCreateOptions(
       country: country,

@@ -23,7 +23,8 @@ class PlatformPayButton extends StatelessWidget {
     this.onCouponCodeEntered,
     this.onShippingMethodSelected,
     this.onOrderTracking,
-    this.paymentRequestCreateOptions = PlatformPayWebPaymentRequestCreateOptions.defaultOptions,
+    this.paymentRequestCreateOptions =
+        PlatformPayWebPaymentRequestCreateOptions.defaultOptions,
   });
 
   /// Defines the displayed text on the button.

@@ -7,7 +7,7 @@ Future<Map<String, dynamic>> _parsePromise(Promise<dynamic> promise) async {
 }
 
 @internal
-Map<String,dynamic> jsToJsonMap(dynamic jsObject) {
+Map<String, dynamic> jsToJsonMap(dynamic jsObject) {
   final value = dartify(jsObject) as Map<dynamic, dynamic>;
   return value.cast();
 }

@@ -530,7 +530,8 @@ class WebStripe extends StripePlatform {
     bool usesDeprecatedTokenFlow = false,
   }) {
     if (!(params is PlatformPayPaymentMethodParamsWeb)) {
-      throw WebUnsupportedError("platformPayCreatePaymentMethod - ${params.runtimeType} is not supported on web");
+      throw WebUnsupportedError(
+          "platformPayCreatePaymentMethod - ${params.runtimeType} is not supported on web");
     }
 
     Completer<PaymentMethod> completer = Completer();

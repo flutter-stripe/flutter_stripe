@@ -192,7 +192,8 @@ abstract class StripePlatform extends PlatformInterface {
   Widget buildPaymentRequestButton({
     Key? key,
     required VoidCallback onPressed,
-    required PlatformPayWebPaymentRequestCreateOptions paymentRequestCreateOptions,
+    required PlatformPayWebPaymentRequestCreateOptions
+        paymentRequestCreateOptions,
     BoxConstraints? constraints,
     PlatformButtonType? type,
     PlatformButtonStyle? style,
