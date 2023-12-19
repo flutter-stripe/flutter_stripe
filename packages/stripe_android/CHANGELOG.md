@@ -1,3 +1,7 @@
+## 10.0.0
+
+ - **FIX**: add bankidentifiercode to ideal paymentdata (#1522).
+
 ## 9.6.0+1
 
  - fix: compile sdk to 33
