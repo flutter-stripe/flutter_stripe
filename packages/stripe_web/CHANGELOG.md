@@ -1,3 +1,10 @@
+## 5.0.0
+
+> Note: This release has breaking changes.
+
+ - **FIX**: #1512 add latest charge field to payment intent (Web only).
+ - **BREAKING** **BREAKING**: rename ApplePayShippingContact to Platformpayshipping contact.
+
 ## 4.6.0
  - Support Flutter 3.16
  - Fix invalid argument `requires_capture` on web (#1431).
