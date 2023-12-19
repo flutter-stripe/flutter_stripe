@@ -11,6 +11,27 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 Packages with breaking changes:
 
+ - [`flutter_stripe` - `v10.0.0`](#flutter_stripe---v1000)
+
+Packages with other changes:
+
+ - There are no other changes in this release.
+
+---
+
+#### `flutter_stripe` - `v10.0.0`
+
+ - **BREAKING** **BREAKING**: rename ApplePayShippingContact to Platformpayshipping contact.
+
+
+## 2023-12-19
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
  - [`flutter_stripe_web` - `v5.0.0`](#flutter_stripe_web---v500)
 
 Packages with other changes:

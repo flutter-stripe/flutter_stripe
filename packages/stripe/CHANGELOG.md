@@ -1,3 +1,9 @@
+## 10.0.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **BREAKING**: rename ApplePayShippingContact to Platformpayshipping contact.
+
 ## 9.6.0+1
 - add requirement for Android gradle plugin to readme
 
