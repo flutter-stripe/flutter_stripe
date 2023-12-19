@@ -1,3 +1,14 @@
+## 10.0.0
+
+> Note: This release has breaking changes.
+
+ - aa
+
+ - **FIX**: #1465 unknow result.
+ - **FIX**: #1512 add latest charge field to payment intent (Web only).
+ - **FIX**: add bankidentifiercode to ideal paymentdata (#1522).
+ - **BREAKING** **BREAKING**: rename ApplePayShippingContact to Platformpayshipping contact.
+
 ## 9.6.0
 Sync with Stripe React Native v0.34 and v0.35:
 
