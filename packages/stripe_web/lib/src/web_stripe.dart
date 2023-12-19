@@ -492,7 +492,7 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<PaymentMethod> platformPayCreatePaymentMethod({
+  Future<PlatformPayPaymentMethod> platformPayCreatePaymentMethod({
     required PlatformPayPaymentMethodParams params,
     bool usesDeprecatedTokenFlow = false,
   }) {

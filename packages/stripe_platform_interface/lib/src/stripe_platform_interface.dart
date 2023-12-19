@@ -114,7 +114,7 @@ abstract class StripePlatform extends PlatformInterface {
   });
 
   /// Use native payment sheet to create payment method
-  Future<PaymentMethod> platformPayCreatePaymentMethod({
+  Future<PlatformPayPaymentMethod> platformPayCreatePaymentMethod({
     required PlatformPayPaymentMethodParams params,
     bool usesDeprecatedTokenFlow = false,
   });

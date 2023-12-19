@@ -554,6 +554,7 @@ app.post('/payment-sheet', async (_, res) => {
     // Edit the following to support different payment methods in your PaymentSheet
     // Note: some payment methods have different requirements: https://stripe.com/docs/payments/payment-methods/integration-options
     payment_method_types: [
+      'card',
       // 'ideal',
       // 'sepa_debit',
       // 'sofort',
@@ -562,7 +563,7 @@ app.post('/payment-sheet', async (_, res) => {
       // 'giropay',
       // 'eps',
       // 'afterpay_clearpay',
-      'klarna',
+      // 'klarna',
       // 'us_bank_account',
     ],
   });

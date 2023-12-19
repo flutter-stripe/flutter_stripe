@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
+import 'package:stripe_example/widgets/response_card.dart';
 
 class ApplePayCreatePaymentMethodScreen extends StatefulWidget {
   @override
@@ -8,6 +9,7 @@ class ApplePayCreatePaymentMethodScreen extends StatefulWidget {
 }
 
 class _ApplePayScreenState extends State<ApplePayCreatePaymentMethodScreen> {
+  PlatformPayPaymentMethod? response;
   @override
   void initState() {
     Stripe.instance.isPlatformPaySupportedListenable.addListener(update);
@@ -37,6 +39,10 @@ class _ApplePayScreenState extends State<ApplePayCreatePaymentMethodScreen> {
           )
         else
           Text('Apple Pay is not available in this device'),
+        SizedBox(
+          height: 50,
+        ),
+        ResponseCard(response: response?.toString() ?? ''),
       ],
     );
   }
@@ -76,8 +82,12 @@ class _ApplePayScreenState extends State<ApplePayCreatePaymentMethodScreen> {
       ),
     );
 
+    setState(() {
+      response = paymentMethod;
+    });
+
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(
-            'Success!: The payment method with id: ${paymentMethod.id} was created successfully,')));
+            'Success!: The payment method with id: ${paymentMethod.paymentMethod.id} was created successfully,')));
   }
 }

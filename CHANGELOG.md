@@ -3,6 +3,165 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-12-19
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`flutter_stripe` - `v10.0.0`](#flutter_stripe---v1000)
+
+Packages with other changes:
+
+ - There are no other changes in this release.
+
+---
+
+#### `flutter_stripe` - `v10.0.0`
+
+ - **BREAKING** **BREAKING**: rename ApplePayShippingContact to Platformpayshipping contact.
+
+
+## 2023-12-19
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`flutter_stripe_web` - `v5.0.0`](#flutter_stripe_web---v500)
+
+Packages with other changes:
+
+ - There are no other changes in this release.
+
+---
+
+#### `flutter_stripe_web` - `v5.0.0`
+
+ - **FIX**: #1512 add latest charge field to payment intent (Web only).
+ - **BREAKING** **BREAKING**: rename ApplePayShippingContact to Platformpayshipping contact.
+
+
+## 2023-12-19
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_ios` - `v10.0.0`](#stripe_ios---v1000)
+ - [`flutter_stripe` - `v9.6.1`](#flutter_stripe---v961)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v9.6.1`
+
+---
+
+#### `stripe_ios` - `v10.0.0`
+
+
+## 2023-12-19
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_android` - `v10.0.0`](#stripe_android---v1000)
+ - [`flutter_stripe` - `v9.6.1`](#flutter_stripe---v961)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v9.6.1`
+
+---
+
+#### `stripe_android` - `v10.0.0`
+
+ - **FIX**: add bankidentifiercode to ideal paymentdata (#1522).
+
+
+## 2023-12-19
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`stripe_platform_interface` - `v10.0.0`](#stripe_platform_interface---v1000)
+
+Packages with other changes:
+
+ - [`flutter_stripe_web` - `v4.6.1`](#flutter_stripe_web---v461)
+ - [`flutter_stripe` - `v9.6.1`](#flutter_stripe---v961)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v4.6.1`
+ - `flutter_stripe` - `v9.6.1`
+
+---
+
+#### `stripe_platform_interface` - `v10.0.0`
+
+ - **FIX**: #1465 unknow result.
+ - **FIX**: #1512 add latest charge field to payment intent (Web only).
+ - **FIX**: add bankidentifiercode to ideal paymentdata (#1522).
+ - **BREAKING** **BREAKING**: rename ApplePayShippingContact to Platformpayshipping contact.
+
+
+## 2023-12-11
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_js` - `v3.3.0`](#stripe_js---v330)
+ - [`flutter_stripe_web` - `v4.6.1`](#flutter_stripe_web---v461)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v4.6.1`
+
+---
+
+#### `stripe_js` - `v3.3.0`
+
+ - aaa
+
+ - **FIX**: invalid argument `requires_capture` on web (#1431).
+
+
 ## 2023-11-29
 
 ### Changes

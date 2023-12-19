@@ -93,6 +93,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
           // Customer params
           customerId: data['customer'],
           customerEphemeralKeySecret: data['ephemeralKey'],
+          returnURL: 'flutterstripe://redirect',
 
           // Extra params
           primaryButtonLabel: 'Pay now',
