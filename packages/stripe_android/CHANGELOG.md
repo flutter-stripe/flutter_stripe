@@ -1,6 +1,12 @@
 ## 10.0.0
 
- - **FIX**: add bankidentifiercode to ideal paymentdata (#1522).
+**Breaking changes**
+Rename `ApplePayShippingContact` to `PlatformpayshippingContact`.
+
+**Fixes**
+- #1465 Handle nullable result coming from Stripe sdk.
+- #1522 add bankidentifiercode to ideal paymentdata.
+- #1560 fix payment sheet crash when pressing back button.
 
 ## 9.6.0+1
 

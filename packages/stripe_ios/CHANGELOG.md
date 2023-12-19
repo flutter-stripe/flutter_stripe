@@ -1,5 +1,13 @@
 ## 10.0.0
 
+**Breaking changes**
+Rename `ApplePayShippingContact` to `PlatformpayshippingContact`.
+
+**Fixes**
+- #1465 Handle nullable result coming from Stripe sdk.
+- #1522 add bankidentifiercode to ideal paymentdata.
+- #1560 fix payment sheet crash when pressing back button.
+
 ## 9.6.0
 Sync with Stripe React Native v0.34 and v0.35:
 

@@ -1,9 +1,12 @@
 ## 5.0.0
 
-> Note: This release has breaking changes.
+**Breaking changes**
+Rename `ApplePayShippingContact` to `PlatformpayshippingContact`.
 
- - **FIX**: #1512 add latest charge field to payment intent (Web only).
- - **BREAKING** **BREAKING**: rename ApplePayShippingContact to Platformpayshipping contact.
+**Fixes**
+- #1465 Handle nullable result coming from Stripe sdk.
+- #1512 add latest charge field to payment intent (Web only).
+- #1522 add bankidentifiercode to ideal paymentdata.
 
 ## 4.6.0
  - Support Flutter 3.16

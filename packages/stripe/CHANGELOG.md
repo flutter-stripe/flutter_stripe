@@ -1,8 +1,13 @@
 ## 10.0.0
 
-> Note: This release has breaking changes.
+**Breaking changes**
+Rename `ApplePayShippingContact` to `PlatformpayshippingContact`.
 
- - **BREAKING** **BREAKING**: rename ApplePayShippingContact to Platformpayshipping contact.
+**Fixes**
+- #1465 Handle nullable result coming from Stripe sdk.
+- #1512 add latest charge field to payment intent (Web only).
+- #1522 add bankidentifiercode to ideal paymentdata.
+- #1560 fix payment sheet crash when pressing back button.
 
 ## 9.6.0+1
 - add requirement for Android gradle plugin to readme
