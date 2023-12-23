@@ -46,7 +46,7 @@ class _ApplePayScreenState extends State<GooglePayPaymentMethod> {
     double price = 100.5;
     int constPrice = (price * 100).toInt();
 
-    // 1. create payment method
+    //create payment method
 
     try {
       final paymentMethod =
