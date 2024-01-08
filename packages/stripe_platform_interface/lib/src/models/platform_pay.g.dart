@@ -6,6 +6,24 @@ part of 'platform_pay.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$PlatformPayPaymentMethodImpl _$$PlatformPayPaymentMethodImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PlatformPayPaymentMethodImpl(
+      paymentMethod:
+          PaymentMethod.fromJson(json['paymentMethod'] as Map<String, dynamic>),
+      shippingContact: json['shippingContact'] == null
+          ? null
+          : PlatformPayShippingContact.fromJson(
+              json['shippingContact'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$PlatformPayPaymentMethodImplToJson(
+        _$PlatformPayPaymentMethodImpl instance) =>
+    <String, dynamic>{
+      'paymentMethod': instance.paymentMethod.toJson(),
+      'shippingContact': instance.shippingContact?.toJson(),
+    };
+
 _$PlatformPaySheetUpdateParamsImpl _$$PlatformPaySheetUpdateParamsImplFromJson(
         Map<String, dynamic> json) =>
     _$PlatformPaySheetUpdateParamsImpl(
@@ -166,6 +184,25 @@ Map<String, dynamic> _$$PlatformPayConfirmParamsApplePayImplToJson(
     <String, dynamic>{
       'applePay': instance.applePay.toJson(),
       'runtimeType': instance.$type,
+    };
+
+_$PlatformPayShippingContactImpl _$$PlatformPayShippingContactImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PlatformPayShippingContactImpl(
+      emailAddress: json['emailAddress'] as String?,
+      name: ApplePayContactName.fromJson(json['name'] as Map<String, dynamic>),
+      postalAddress: ApplePayPostalAddress.fromJson(
+          json['postalAddress'] as Map<String, dynamic>),
+      phoneNumber: json['phoneNumber'] as String?,
+    );
+
+Map<String, dynamic> _$$PlatformPayShippingContactImplToJson(
+        _$PlatformPayShippingContactImpl instance) =>
+    <String, dynamic>{
+      'emailAddress': instance.emailAddress,
+      'name': instance.name.toJson(),
+      'postalAddress': instance.postalAddress.toJson(),
+      'phoneNumber': instance.phoneNumber,
     };
 
 _$ApplePayParamsImpl _$$ApplePayParamsImplFromJson(Map<String, dynamic> json) =>

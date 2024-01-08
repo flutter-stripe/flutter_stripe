@@ -60,6 +60,7 @@ class PaymentMethod with _$PaymentMethod {
 
     /// Id related to the customer to which this paymentmethod has been saved.
     String? customerId,
+
   }) = _PaymentMethod;
 
   factory PaymentMethod.fromJson(Map<String, dynamic> json) =>

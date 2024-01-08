@@ -115,7 +115,7 @@ class __$$StripeErrorGenericImplCopyWithImpl<T, $Res>
 @JsonSerializable(explicitToJson: true)
 class _$StripeErrorGenericImpl<T> implements _StripeErrorGeneric<T> {
   const _$StripeErrorGenericImpl(
-      {required this.message,
+      {required this.message = 'Unknown error',
       @JsonKey(fromJson: _dataFromJson, toJson: _dataToJson)
       required this.code});
 
@@ -123,6 +123,7 @@ class _$StripeErrorGenericImpl<T> implements _StripeErrorGeneric<T> {
       _$$StripeErrorGenericImplFromJson(json);
 
   @override
+  @JsonKey()
   final String message;
   @override
   @JsonKey(fromJson: _dataFromJson, toJson: _dataToJson)

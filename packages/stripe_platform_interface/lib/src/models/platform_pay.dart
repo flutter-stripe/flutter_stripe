@@ -4,9 +4,27 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'apple_pay.dart';
 import 'google_pay.dart';
+import 'payment_methods.dart';
 
 part 'platform_pay.freezed.dart';
 part 'platform_pay.g.dart';
+
+@freezed
+
+/// Result object when creating a payment method through apple pay or google pay.
+class PlatformPayPaymentMethod with _$PlatformPayPaymentMethod {
+  @JsonSerializable(explicitToJson: true)
+  const factory PlatformPayPaymentMethod({
+    /// The payment method
+    required PaymentMethod paymentMethod,
+
+    /// shipping contact of the user
+    PlatformPayShippingContact? shippingContact,
+  }) = _PlatformPayPaymentMethod;
+
+  factory PlatformPayPaymentMethod.fromJson(Map<String, dynamic> json) =>
+      _$PlatformPayPaymentMethodFromJson(json);
+}
 
 @freezed
 
@@ -113,6 +131,28 @@ class PlatformPayConfirmParams with _$PlatformPayConfirmParams {
 
   factory PlatformPayConfirmParams.fromJson(Map<String, dynamic> json) =>
       _$PlatformPayConfirmParamsFromJson(json);
+}
+
+@freezed
+/// Entered Shipping contact data
+class PlatformPayShippingContact with _$PlatformPayShippingContact {
+  @JsonSerializable(explicitToJson: true)
+  const factory PlatformPayShippingContact({
+    /// Email address of the shipping contact
+    String? emailAddress,
+
+    /// Name of shipping contact
+    required ApplePayContactName name,
+
+    /// Postal address of shipping contact
+    required ApplePayPostalAddress postalAddress,
+
+    ///Phone Number of the shipping contact
+    String? phoneNumber,
+  }) = _PlatformPayShippingContact;
+
+  factory PlatformPayShippingContact.fromJson(Map<String, dynamic> json) =>
+      _$PlatformPayShippingContactFromJson(json);
 }
 
 @freezed

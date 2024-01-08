@@ -11,6 +11,7 @@ extension PaymentIntentExtension on js.PaymentIntent {
       status: PaymentIntentsStatusExtension.parse(status.name),
       clientSecret: clientSecret,
       livemode: livemode,
+      latestCharge: latestCharge,
       //paymentMethodId: payment_method,
       captureMethod: CaptureMethodExtension.parse(captureMethod.name),
       confirmationMethod:

@@ -17,7 +17,7 @@ class ApplePayButton extends StatelessWidget {
     Key? key,
     this.style = PlatformButtonStyle.automatic,
     this.type = PlatformButtonType.plain,
-    this.cornerRadius=4,
+    this.cornerRadius = 4,
     this.onPressed,
     double? width,
     double? height = _kApplePayButtonDefaultHeight,
@@ -242,8 +242,8 @@ class _UiKitApplePayButtonState extends State<_UiKitApplePayButton> {
 }
 
 // For some reason json serializable cannot be cast
-ApplePayShippingContact _convertShippingContact(dynamic json) =>
-    ApplePayShippingContact(
+PlatformPayShippingContact _convertShippingContact(dynamic json) =>
+    PlatformPayShippingContact(
       phoneNumber: json['phoneNumber'],
       name: ApplePayContactName(
         familyName: json['name']['familyName'],

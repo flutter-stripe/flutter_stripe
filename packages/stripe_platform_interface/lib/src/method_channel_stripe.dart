@@ -322,7 +322,9 @@ class MethodChannelStripe extends StripePlatform {
   PaymentSheetPaymentOption? _parsePaymentSheetResult(
       Map<String, dynamic>? result) {
     if (result != null) {
-      if (result.isEmpty) {
+      ///iOS sometimes returns empty paymentoption so add workaround for it.
+      if (result.isEmpty ||
+          (result['paymentOption'] == null && result['error'] == null)) {
         return null;
       } else if (result['paymentOption'] != null) {
         return PaymentSheetPaymentOption.fromJson(result['paymentOption']);
@@ -568,7 +570,7 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<PaymentMethod> platformPayCreatePaymentMethod({
+  Future<PlatformPayPaymentMethod> platformPayCreatePaymentMethod({
     required PlatformPayPaymentMethodParams params,
     bool usesDeprecatedTokenFlow = false,
   }) async {
@@ -596,9 +598,11 @@ class MethodChannelStripe extends StripePlatform {
       'usesDeprecatedTokenFlow': usesDeprecatedTokenFlow,
     });
 
-    return ResultParser<PaymentMethod>(
-            parseJson: (json) => PaymentMethod.fromJson(json))
-        .parse(result: result!, successResultKey: 'paymentMethod');
+    if (result!.containsKey('error')) {
+      throw ResultParser<void>(parseJson: (json) => {}).parseError(result);
+    }
+
+    return PlatformPayPaymentMethod.fromJson(result);
   }
 
   @override

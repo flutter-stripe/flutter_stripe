@@ -9,7 +9,7 @@ part of 'errors.dart';
 _$StripeErrorGenericImpl<T> _$$StripeErrorGenericImplFromJson<T>(
         Map<String, dynamic> json) =>
     _$StripeErrorGenericImpl<T>(
-      message: json['message'] as String,
+      message: json['message'] as String? ?? 'Unknown error',
       code: _dataFromJson(json['code'] as Map<String, dynamic>),
     );
 

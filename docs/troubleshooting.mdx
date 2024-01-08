@@ -119,7 +119,7 @@ You can check if your backend is communicating with the live environment at the 
   "livemode": true,
   "next_action": null,
   "status": "succeeded",
-  ...
+}
 ```
 
 #### Client side
@@ -157,16 +157,19 @@ The payment intent should be linked to a customer and for the customer an epheme
 
 
 ```json
-
+{
   "id": "pi_12345",
   "object": "payment_intent",
-  ....
   "charges": {
     "object": "list",
     "data": [
       {
         "id": "ch_1234",
         "customer": "cus_12345",
+      }
+    ]
+  },
+  }
 ```
 
 #### Client-side
@@ -184,4 +187,21 @@ The payment intent should be linked to a customer and for the customer an epheme
           customerEphemeralKeySecret: data['ephemeralKey'],
           // Extra params
 ```
+#### Android compile issue app bundle
+When you get this issue when building android app bundle.
 
+```bash
+Missing class com.stripe.android.pushProvisioning.PushProvisioningActivityStarter$Args (referenced from: void com.reactnativestripesdk.pushprovisioning.DefaultPushProvisioningProxy.beginPushProvisioning(android.app.Activity, java.lang.String, com.reactnativestripesdk.pushprovisioning.EphemeralKeyProvider))
+Missing class com.stripe.android.pushProvisioning.PushProvisioningActivityStarter$Error (referenced from: void com.reactnativestripesdk.pushprovisioning.PushProvisioningProxy$createActivityEventListener$listener$1.onActivityResult(android.app.Activity, int, int, android.content.Intent))
+Missing class com.stripe.android.pushProvisioning.PushProvisioningActivityStarter (referenced from: void com.reactnativestripesdk.pushprovisioning.DefaultPushProvisioningProxy.beginPushProvisioning(android.app.Activity, java.lang.String, com.reactnativestripesdk.pushprovisioning.EphemeralKeyProvider))
+Missing class com.stripe.android.pushProvisioning.PushProvisioningEphemeralKeyProvider (referenced from: void com.reactnativestripesdk.pushprovisioning.DefaultPushProvisioningProxy.beginPushProvisioning(android.app.Activity, java.lang.String, com.reactnativestripesdk.pushprovisioning.EphemeralKeyProvider) and 1 other context)
+```
+
+Add the following rules to your `proguard-rules.pro` file: [example](https://github.com/flutter-stripe/flutter_stripe/blob/master/example/android/app/proguard-rules.pro)  
+```proguard
+-dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivity$g
+-dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter$Args
+-dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter$Error
+-dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter
+-dontwarn com.stripe.android.pushProvisioning.PushProvisioningEphemeralKeyProvider
+```

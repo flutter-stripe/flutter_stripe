@@ -66,6 +66,11 @@ class PaymentIntent with _$PaymentIntent {
 
     /// Mandata data for this paymentintent.
     MandateData? mandateData,
+
+    /// The latest charge created by this payment intent.
+    ///
+    /// This field is only available on stripe web.
+    String? latestCharge,
   }) = _PaymentIntent;
 
   factory PaymentIntent.fromJson(Map<String, dynamic> json) =>
