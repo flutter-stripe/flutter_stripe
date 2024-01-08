@@ -92,6 +92,7 @@ class _GooglePayStripeScreenState extends State<GooglePayStripeScreen> {
           SizedBox(
             height: 75,
             child: PlatformPayButton(
+              type: PlatformButtonType.buy,
               onPressed: () {
                 startGooglePay();
               },
