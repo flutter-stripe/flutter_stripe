@@ -73,6 +73,7 @@ class PlatformPayButton extends StatelessWidget {
         onTap: onPressed,
         buttonType: type,
         borderRadius: borderRadius,
+        appearance: appearance,
       );
     } else if (Platform.isIOS) {
       return ApplePayButton(
