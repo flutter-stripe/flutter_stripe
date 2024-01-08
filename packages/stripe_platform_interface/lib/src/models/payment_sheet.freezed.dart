@@ -89,7 +89,7 @@ mixin _$SetupPaymentSheetParameters {
   @JsonKey(name: 'defaultBillingDetails')
   BillingDetails? get billingDetails => throw _privateConstructorUsedError;
 
-  /// Return URL is required for IDEAL and few other payment methods
+  /// Return URL is required for IDEAL, Klarna and few other payment methods
   String? get returnURL => throw _privateConstructorUsedError;
 
   /// Configuration for how billing details are collected during checkout.
@@ -583,7 +583,7 @@ class _$SetupParametersImpl implements _SetupParameters {
   @JsonKey(name: 'defaultBillingDetails')
   final BillingDetails? billingDetails;
 
-  /// Return URL is required for IDEAL and few other payment methods
+  /// Return URL is required for IDEAL, Klarna and few other payment methods
   @override
   final String? returnURL;
 
@@ -791,7 +791,7 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   BillingDetails? get billingDetails;
   @override
 
-  /// Return URL is required for IDEAL and few other payment methods
+  /// Return URL is required for IDEAL, Klarna and few other payment methods
   String? get returnURL;
   @override
 
