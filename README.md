@@ -110,6 +110,9 @@ Payment sheet | Easy          | Our recommended way of handling payments. It off
 Cardfield     | Medium        | Single line cardfield. Offers more flexibility but has less built-in functionality.                              | [docs](https://docs.page/flutter-stripe/flutter_stripe/card_field)   |
 Card form     | Medium        | Similar as the cardfield but the entry fields are spread across multi lines                                      | [docs](https://docs.page/flutter-stripe/flutter_stripe/card_field)   |
 
+### Wallets
+This library fully supports native Apple Pay and [Google pay](https://docs.page/flutter-stripe/flutter_stripe/google_pay) integration.
+
 ### Mobile elements [BETA]
 We also support the customer sheet mobile element. Check out the [docs](https://docs.page/flutter-stripe/flutter_stripe/customer_sheet) to learn more on how to set it up.
 

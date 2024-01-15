@@ -117,7 +117,7 @@ class _UsBankAccountScreenState extends State<UsBankAccountScreen> {
             context: context,
             builder: (context) {
               return _VerifyMicroDepositsDialog(
-                microdepositType: microdepositType,
+                microdepositType: microdepositType!,
                 clientSecret: clientSecret,
               );
             });
