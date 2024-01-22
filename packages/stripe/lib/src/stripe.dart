@@ -582,8 +582,26 @@ class Stripe {
 
   /// check if a particular card can be provisioned with the current app
   /// on this particular device.
+  ///
+  /// This method is deprecated. Use [canAddCardToWallet] instead.
+  @Deprecated('Use [canAddCardToWallet] instead')
   Future<AddToWalletResult> canAddToWallet(String last4) async {
     return await _platform.canAddToWallet(last4);
+  }
+
+  /// check if a particular card can be provisioned with the current app
+  /// on this particular device.
+  /// Throws [StripeException] in case creating the token fails.
+  Future<CanAddCardToWalletResult> canAddCardToWallet(
+      CanAddCardToWalletParams params) async {
+    return await _platform.canAddCardToWallet(params);
+  }
+
+  /// check if a particular card can be provisioned with the current app
+  /// on this particular device.
+  /// Throws [StripeException] in case creating the token fails.
+  Future<IsCardInWalletResult> isCardInWallet(String cardLastFour) async {
+    return await _platform.isCardInWallet(cardLastFour);
   }
 
   /// Call the financial connections authentication flow in order to collect a US bank account to enhance payouts.

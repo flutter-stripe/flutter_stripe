@@ -8,6 +8,7 @@ import 'package:stripe_platform_interface/src/models/financial_connections.dart'
 import 'package:stripe_platform_interface/src/models/google_pay.dart';
 import 'package:stripe_platform_interface/src/models/intent_creation_callback_params.dart';
 import 'package:stripe_platform_interface/src/models/platform_pay.dart';
+import 'package:stripe_platform_interface/src/models/push_provisioning.dart';
 import 'package:stripe_platform_interface/src/models/wallet.dart';
 import 'package:stripe_platform_interface/src/result_parser.dart';
 
@@ -629,6 +630,29 @@ class MethodChannelStripe extends StripePlatform {
       'intentCreationCallback',
       {'params': params.toJson()},
     );
+  }
+
+  @override
+  Future<CanAddCardToWalletResult> canAddCardToWallet(
+      CanAddCardToWalletParams params) async {
+    final result = await _methodChannel.invokeMethod('canAddCardToWallet', {
+      'params': params.toJson(),
+    });
+
+    return ResultParser<CanAddCardToWalletResult>(
+            parseJson: (json) => CanAddCardToWalletResult.fromJson(json))
+        .parse(result: result!, successResultKey: 'canAddCardToWalletResult');
+  }
+
+  @override
+  Future<IsCardInWalletResult> isCardInWallet(String cardLastFour) async {
+    final result = await _methodChannel.invokeMethod('canAddCardToWallet', {
+      'params': {'cardLastFour': cardLastFour},
+    });
+
+    return ResultParser<IsCardInWalletResult>(
+            parseJson: (json) => IsCardInWalletResult.fromJson(json))
+        .parse(result: result!, successResultKey: 'canAddCardToWalletResult');
   }
 }
 

@@ -540,6 +540,17 @@ class WebStripe extends StripePlatform {
     throw WebUnsupportedError.method(
         'retrieveCustomerSheetPaymentOptionSelection');
   }
+
+  @override
+  Future<CanAddCardToWalletResult> canAddCardToWallet(
+      CanAddCardToWalletParams params) {
+    throw WebUnsupportedError.method('canAddCardToWallet');
+  }
+
+  @override
+  Future<IsCardInWalletResult> isCardInWallet(String cardLastFour) {
+    throw WebUnsupportedError.method('isCardInWallet');
+  }
 }
 
 class WebUnsupportedError extends Error implements UnsupportedError {
