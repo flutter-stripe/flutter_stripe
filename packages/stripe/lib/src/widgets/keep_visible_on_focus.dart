@@ -34,7 +34,6 @@ class _KeepVisibleOnFocusState extends State<KeepVisibleOnFocus>
       WidgetsBinding.instance.addObserver(this);
       _lastBottomViewInset = MediaQuery.of(context).viewInsets.bottom;
       _isObserverRegistered = true;
-      
     } else {
       WidgetsBinding.instance.removeObserver(this);
       _isObserverRegistered = false;
@@ -84,4 +83,3 @@ class _KeepVisibleOnFocusState extends State<KeepVisibleOnFocus>
     super.dispose();
   }
 }
-

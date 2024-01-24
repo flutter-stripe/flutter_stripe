@@ -144,6 +144,7 @@ class PlatformPayConfirmParams with _$PlatformPayConfirmParams {
 }
 
 @freezed
+
 /// Entered Shipping contact data
 class PlatformPayShippingContact with _$PlatformPayShippingContact {
   @JsonSerializable(explicitToJson: true)

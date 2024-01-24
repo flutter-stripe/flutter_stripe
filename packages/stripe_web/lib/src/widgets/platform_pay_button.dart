@@ -10,12 +10,6 @@ import 'package:stripe_js/stripe_js.dart';
 const kPlatformPayButtonDefaultHeight = 40.0;
 
 class WebPlatformPayButton extends StatefulWidget {
-  final PlatformPayWebPaymentRequestCreateOptions paymentRequestCreateOptions;
-  final PlatformButtonType? type;
-  final PlatformButtonStyle? style;
-  final BoxConstraints? constraints;
-  final ui.VoidCallback onPressed;
-
   const WebPlatformPayButton(
       {super.key,
       this.paymentRequestCreateOptions =
@@ -24,6 +18,12 @@ class WebPlatformPayButton extends StatefulWidget {
       this.type,
       this.style,
       required ui.VoidCallback this.onPressed});
+
+  final PlatformPayWebPaymentRequestCreateOptions paymentRequestCreateOptions;
+  final PlatformButtonType? type;
+  final PlatformButtonStyle? style;
+  final BoxConstraints? constraints;
+  final ui.VoidCallback onPressed;
 
   @override
   State<StatefulWidget> createState() {
