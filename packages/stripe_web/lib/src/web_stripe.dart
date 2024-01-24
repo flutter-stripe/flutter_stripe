@@ -534,11 +534,12 @@ class WebStripe extends StripePlatform {
           "platformPayCreatePaymentMethod - ${params.runtimeType} is not supported on web");
     }
 
-    Completer<PaymentMethod> completer = Completer();
+    Completer<PlatformPayPaymentMethod> completer = Completer();
     stripe_js.PaymentRequest paymentRequest =
         js.paymentRequest(params.options.toJS());
     paymentRequest.onPaymentMethod((response) {
-      completer.complete(response.paymentMethod.parse());
+      completer.complete(PlatformPayPaymentMethod(
+          paymentMethod: response.paymentMethod.parse()));
       response.complete('success');
     });
     paymentRequest.onCancel(() {
