@@ -33,7 +33,7 @@ class Stripe {
     return instance._publishableKey!;
   }
 
-  /// Whether or not to set the return url for Androdi as well
+  /// Whether or not to set the return url for Android as well
   static set setReturnUrlSchemeOnAndroid(bool? value) {
     if (value == instance._setReturnUrlSchemeOnAndroid) {
       return;
