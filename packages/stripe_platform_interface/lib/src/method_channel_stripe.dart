@@ -155,7 +155,7 @@ class MethodChannelStripe extends StripePlatform {
       String setupIntentClientSecret,
       {String? returnURL}) async {
     final result = await _methodChannel
-        .invokeMapMethod<String, dynamic>('handleNextAction', {
+        .invokeMapMethod<String, dynamic>('handleNextActionForSetup', {
       'setupIntentClientSecret': setupIntentClientSecret,
       if (_platformIsIos) 'returnURL': returnURL,
     });
