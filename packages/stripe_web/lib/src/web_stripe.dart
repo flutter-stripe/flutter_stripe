@@ -543,14 +543,20 @@ class WebStripe extends StripePlatform {
       response.complete('success');
     });
     paymentRequest.onCancel(() {
-      completer.completeError(CancellationError('Payment request cancelled'));
+      completer.completeError(StripeException(
+          error: LocalizedErrorMessage(
+              code: FailureCode.Canceled,
+              message: 'Payment request cancelled')));
     });
     paymentRequest.isPaymentAvailable.then((available) {
       if (available) {
         paymentRequest.show();
       } else {
-        completer.completeError(CancellationError(
-            "No enabled wallets are available for payment method creation"));
+        completer.completeError(StripeException(
+            error: LocalizedErrorMessage(
+                code: FailureCode.Failed,
+                message:
+                    "No enabled wallets are available for payment method creation")));
       }
     });
 
@@ -615,16 +621,6 @@ class WebUnsupportedError extends Error implements UnsupportedError {
   String toString() => (message != null)
       ? "WebUnsupportedError: $message"
       : "WebUnsupportedError";
-}
-
-class CancellationError extends Error implements Exception {
-  final String? message;
-
-  CancellationError([this.message]);
-
-  @override
-  String toString() =>
-      (message != null) ? "CancellationError: $message" : "CancellationError";
 }
 
 extension CanMakePayment on stripe_js.PaymentRequest {
