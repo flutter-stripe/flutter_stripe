@@ -203,8 +203,6 @@ class ApplePayErrorAddressField with _$ApplePayErrorAddressField {
       _$ApplePayErrorAddressFieldFromJson(json);
 }
 
-
-
 @freezed
 
 /// Contact name data for Apple pay
