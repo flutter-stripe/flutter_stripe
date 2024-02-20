@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.NonNull
+import com.facebook.react.bridge.ReadableArray
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
 import com.reactnativestripesdk.*
@@ -45,6 +46,9 @@ class StripeSdkCardPlatformView(
         }
         if (creationParams?.containsKey("disabled") == true) {
             stripeSdkCardViewManager.setDisabled(cardView, creationParams["disabled"] as Boolean)
+        }
+        if (creationParams?.containsKey("preferredNetworks") == true) {
+            stripeSdkCardViewManager.setPreferredNetworks(cardView, ReadableArray(creationParams["preferredNetworks"] as List<Any>))
         }
         if (creationParams?.containsKey("dangerouslyGetFullCardDetails") == true) {
             stripeSdkCardViewManager.setDangerouslyGetFullCardDetails(cardView, creationParams["dangerouslyGetFullCardDetails"] as Boolean)
