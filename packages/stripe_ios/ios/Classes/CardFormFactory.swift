@@ -104,7 +104,10 @@ class CardFormPlatformView : NSObject, FlutterPlatformView  {
         if let dangerouslyGetFullCardDetails = arguments["dangerouslyGetFullCardDetails"] as? Bool{
             cardForm.dangerouslyGetFullCardDetails = dangerouslyGetFullCardDetails
         }
-
+        
+        if let preferredNetworks = arguments["preferredNetworks"] as? Array<Int>{
+            cardForm.preferredNetworks = preferredNetworks
+        }
         if let disabled = arguments["disabled"] as? Bool{
             cardForm.disabled = disabled
         }
