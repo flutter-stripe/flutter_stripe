@@ -6,8 +6,8 @@ part of 'setup_intent_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SetupIntentResponse _$$_SetupIntentResponseFromJson(Map json) =>
-    _$_SetupIntentResponse(
+_$SetupIntentResponseImpl _$$SetupIntentResponseImplFromJson(Map json) =>
+    _$SetupIntentResponseImpl(
       setupIntent: json['setupIntent'] == null
           ? null
           : SetupIntent.fromJson(
@@ -18,8 +18,8 @@ _$_SetupIntentResponse _$$_SetupIntentResponseFromJson(Map json) =>
               Map<String, dynamic>.from(json['error'] as Map)),
     );
 
-Map<String, dynamic> _$$_SetupIntentResponseToJson(
-    _$_SetupIntentResponse instance) {
+Map<String, dynamic> _$$SetupIntentResponseImplToJson(
+    _$SetupIntentResponseImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
