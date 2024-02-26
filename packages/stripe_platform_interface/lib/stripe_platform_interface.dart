@@ -7,6 +7,7 @@ export 'src/models/app_info.dart';
 export 'src/models/apple_pay.dart';
 export 'src/models/aubecs_form.dart';
 export 'src/models/capture_method.dart';
+export 'src/models/card_brand.dart';
 export 'src/models/card_details.dart';
 export 'src/models/card_field_input.dart';
 export 'src/models/create_token_data.dart';

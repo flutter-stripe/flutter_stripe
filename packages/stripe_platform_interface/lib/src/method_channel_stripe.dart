@@ -420,6 +420,7 @@ class MethodChannelStripe extends StripePlatform {
   @override
   Future<bool> isPlatformPaySupported({
     IsGooglePaySupportedParams? params,
+    PlatformPayWebPaymentRequestCreateOptions? paymentRequestOptions,
   }) async {
     bool? isSupported;
     if (params == null) {

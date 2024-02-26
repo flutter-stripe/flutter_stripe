@@ -48,6 +48,9 @@ _$SetupParametersImpl _$$SetupParametersImplFromJson(
                       as Map<String, dynamic>),
       removeSavedPaymentMethodMessage:
           json['removeSavedPaymentMethodMessage'] as String?,
+      preferredNetworks: (json['preferredNetworks'] as List<dynamic>?)
+          ?.map((e) => $enumDecode(_$CardBrandEnumMap, e))
+          .toList(),
     );
 
 Map<String, dynamic> _$$SetupParametersImplToJson(
@@ -72,12 +75,25 @@ Map<String, dynamic> _$$SetupParametersImplToJson(
           instance.billingDetailsCollectionConfiguration?.toJson(),
       'removeSavedPaymentMethodMessage':
           instance.removeSavedPaymentMethodMessage,
+      'preferredNetworks': _cardBrandListToJson(instance.preferredNetworks),
     };
 
 const _$ThemeModeEnumMap = {
   ThemeMode.system: 'system',
   ThemeMode.light: 'light',
   ThemeMode.dark: 'dark',
+};
+
+const _$CardBrandEnumMap = {
+  CardBrand.JCB: 'JCB',
+  CardBrand.Amex: 'Amex',
+  CardBrand.CartesBancaires: 'CartesBancaires',
+  CardBrand.DinersClub: 'DinersClub',
+  CardBrand.Discover: 'Discover',
+  CardBrand.Mastercard: 'Mastercard',
+  CardBrand.UnionPay: 'UnionPay',
+  CardBrand.Visa: 'Visa',
+  CardBrand.Unknown: 'Unknown',
 };
 
 _$IntentConfigurationImpl _$$IntentConfigurationImplFromJson(
@@ -181,6 +197,8 @@ _$PaymentSheetGooglePayImpl _$$PaymentSheetGooglePayImplFromJson(
       testEnv: json['testEnv'] as bool? ?? false,
       label: json['label'] as String?,
       amount: json['amount'] as String?,
+      buttonType:
+          $enumDecodeNullable(_$PlatformButtonTypeEnumMap, json['buttonType']),
     );
 
 Map<String, dynamic> _$$PaymentSheetGooglePayImplToJson(
@@ -191,6 +209,7 @@ Map<String, dynamic> _$$PaymentSheetGooglePayImplToJson(
       'testEnv': instance.testEnv,
       'label': instance.label,
       'amount': instance.amount,
+      'buttonType': _$PlatformButtonTypeEnumMap[instance.buttonType],
     };
 
 _$PaymentSheetAppearanceImpl _$$PaymentSheetAppearanceImplFromJson(

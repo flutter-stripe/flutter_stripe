@@ -33,7 +33,7 @@ class Stripe {
     return instance._publishableKey!;
   }
 
-  /// Whether or not to set the return url for Androdi as well
+  /// Whether or not to set the return url for Android as well
   static set setReturnUrlSchemeOnAndroid(bool? value) {
     if (value == instance._setReturnUrlSchemeOnAndroid) {
       return;
@@ -125,12 +125,16 @@ class Stripe {
   ///
   /// The [googlePay] param can be provided to check if platform pay is supported on
   /// Google Pay test env or if a payment method is required.
+  /// The [webPaymentRequestCreateOptions] param can be provided to confirm what
+  /// if any platform pay options are available on web.
   Future<bool> isPlatformPaySupported({
     IsGooglePaySupportedParams? googlePay,
+    PlatformPayWebPaymentRequestCreateOptions? webPaymentRequestCreateOptions,
   }) async {
     await _awaitForSettings();
-    final isSupported =
-        await _platform.isPlatformPaySupported(params: googlePay);
+    final isSupported = await _platform.isPlatformPaySupported(
+        params: googlePay,
+        paymentRequestOptions: webPaymentRequestCreateOptions);
 
     _isPlatformPaySupported ??= ValueNotifier(false);
     _isPlatformPaySupported?.value = isSupported;
@@ -720,4 +724,5 @@ class Stripe {
 
   // Internal use only
   static final buildWebCard = _platform.buildCard;
+  static final buildPaymentRequestButton = _platform.buildPaymentRequestButton;
 }
