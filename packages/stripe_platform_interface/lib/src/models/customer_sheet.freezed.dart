@@ -68,6 +68,11 @@ mixin _$CustomerSheetInitParams {
   /// Whether to show Google Pay as an option. Defaults to `false`.
   bool get googlePayEnabled => throw _privateConstructorUsedError;
 
+  /// The list of preferred networks that should be used to process payments made with a co-branded card.
+  /// This value will only be used if your user hasn't selected a network themselves.
+  @JsonKey(toJson: _cardBrandListToJson)
+  List<CardBrand>? get preferredNetworks => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CustomerSheetInitParamsCopyWith<CustomerSheetInitParams> get copyWith =>
@@ -94,7 +99,9 @@ abstract class $CustomerSheetInitParamsCopyWith<$Res> {
       String? returnURL,
       String? removeSavedPaymentMethodMessage,
       bool applePayEnabled,
-      bool googlePayEnabled});
+      bool googlePayEnabled,
+      @JsonKey(toJson: _cardBrandListToJson)
+      List<CardBrand>? preferredNetworks});
 
   $PaymentSheetAppearanceCopyWith<$Res>? get appearance;
   $BillingDetailsCopyWith<$Res>? get defaultBillingDetails;
@@ -129,6 +136,7 @@ class _$CustomerSheetInitParamsCopyWithImpl<$Res,
     Object? removeSavedPaymentMethodMessage = freezed,
     Object? applePayEnabled = null,
     Object? googlePayEnabled = null,
+    Object? preferredNetworks = freezed,
   }) {
     return _then(_value.copyWith(
       style: freezed == style
@@ -185,6 +193,10 @@ class _$CustomerSheetInitParamsCopyWithImpl<$Res,
           ? _value.googlePayEnabled
           : googlePayEnabled // ignore: cast_nullable_to_non_nullable
               as bool,
+      preferredNetworks: freezed == preferredNetworks
+          ? _value.preferredNetworks
+          : preferredNetworks // ignore: cast_nullable_to_non_nullable
+              as List<CardBrand>?,
     ) as $Val);
   }
 
@@ -252,7 +264,9 @@ abstract class _$$CustomerSheetInitParamsImplCopyWith<$Res>
       String? returnURL,
       String? removeSavedPaymentMethodMessage,
       bool applePayEnabled,
-      bool googlePayEnabled});
+      bool googlePayEnabled,
+      @JsonKey(toJson: _cardBrandListToJson)
+      List<CardBrand>? preferredNetworks});
 
   @override
   $PaymentSheetAppearanceCopyWith<$Res>? get appearance;
@@ -289,6 +303,7 @@ class __$$CustomerSheetInitParamsImplCopyWithImpl<$Res>
     Object? removeSavedPaymentMethodMessage = freezed,
     Object? applePayEnabled = null,
     Object? googlePayEnabled = null,
+    Object? preferredNetworks = freezed,
   }) {
     return _then(_$CustomerSheetInitParamsImpl(
       style: freezed == style
@@ -345,6 +360,10 @@ class __$$CustomerSheetInitParamsImplCopyWithImpl<$Res>
           ? _value.googlePayEnabled
           : googlePayEnabled // ignore: cast_nullable_to_non_nullable
               as bool,
+      preferredNetworks: freezed == preferredNetworks
+          ? _value._preferredNetworks
+          : preferredNetworks // ignore: cast_nullable_to_non_nullable
+              as List<CardBrand>?,
     ));
   }
 }
@@ -366,7 +385,10 @@ class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
       this.returnURL,
       this.removeSavedPaymentMethodMessage,
       this.applePayEnabled = true,
-      this.googlePayEnabled = true});
+      this.googlePayEnabled = true,
+      @JsonKey(toJson: _cardBrandListToJson)
+      final List<CardBrand>? preferredNetworks})
+      : _preferredNetworks = preferredNetworks;
 
   factory _$CustomerSheetInitParamsImpl.fromJson(Map<String, dynamic> json) =>
       _$$CustomerSheetInitParamsImplFromJson(json);
@@ -429,9 +451,26 @@ class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
   @JsonKey()
   final bool googlePayEnabled;
 
+  /// The list of preferred networks that should be used to process payments made with a co-branded card.
+  /// This value will only be used if your user hasn't selected a network themselves.
+  final List<CardBrand>? _preferredNetworks;
+
+  /// The list of preferred networks that should be used to process payments made with a co-branded card.
+  /// This value will only be used if your user hasn't selected a network themselves.
+  @override
+  @JsonKey(toJson: _cardBrandListToJson)
+  List<CardBrand>? get preferredNetworks {
+    final value = _preferredNetworks;
+    if (value == null) return null;
+    if (_preferredNetworks is EqualUnmodifiableListView)
+      return _preferredNetworks;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   String toString() {
-    return 'CustomerSheetInitParams(style: $style, appearance: $appearance, setupIntentClientSecret: $setupIntentClientSecret, customerId: $customerId, customerEphemeralKeySecret: $customerEphemeralKeySecret, merchantDisplayName: $merchantDisplayName, headerTextForSelectionScreen: $headerTextForSelectionScreen, defaultBillingDetails: $defaultBillingDetails, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, returnURL: $returnURL, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, applePayEnabled: $applePayEnabled, googlePayEnabled: $googlePayEnabled)';
+    return 'CustomerSheetInitParams(style: $style, appearance: $appearance, setupIntentClientSecret: $setupIntentClientSecret, customerId: $customerId, customerEphemeralKeySecret: $customerEphemeralKeySecret, merchantDisplayName: $merchantDisplayName, headerTextForSelectionScreen: $headerTextForSelectionScreen, defaultBillingDetails: $defaultBillingDetails, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, returnURL: $returnURL, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, applePayEnabled: $applePayEnabled, googlePayEnabled: $googlePayEnabled, preferredNetworks: $preferredNetworks)';
   }
 
   @override
@@ -442,7 +481,8 @@ class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
             (identical(other.style, style) || other.style == style) &&
             (identical(other.appearance, appearance) ||
                 other.appearance == appearance) &&
-            (identical(other.setupIntentClientSecret, setupIntentClientSecret) ||
+            (identical(
+                    other.setupIntentClientSecret, setupIntentClientSecret) ||
                 other.setupIntentClientSecret == setupIntentClientSecret) &&
             (identical(other.customerId, customerId) ||
                 other.customerId == customerId) &&
@@ -451,8 +491,7 @@ class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
                     customerEphemeralKeySecret) &&
             (identical(other.merchantDisplayName, merchantDisplayName) ||
                 other.merchantDisplayName == merchantDisplayName) &&
-            (identical(other.headerTextForSelectionScreen,
-                    headerTextForSelectionScreen) ||
+            (identical(other.headerTextForSelectionScreen, headerTextForSelectionScreen) ||
                 other.headerTextForSelectionScreen ==
                     headerTextForSelectionScreen) &&
             (identical(other.defaultBillingDetails, defaultBillingDetails) ||
@@ -470,7 +509,9 @@ class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
             (identical(other.applePayEnabled, applePayEnabled) ||
                 other.applePayEnabled == applePayEnabled) &&
             (identical(other.googlePayEnabled, googlePayEnabled) ||
-                other.googlePayEnabled == googlePayEnabled));
+                other.googlePayEnabled == googlePayEnabled) &&
+            const DeepCollectionEquality()
+                .equals(other._preferredNetworks, _preferredNetworks));
   }
 
   @JsonKey(ignore: true)
@@ -489,7 +530,8 @@ class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
       returnURL,
       removeSavedPaymentMethodMessage,
       applePayEnabled,
-      googlePayEnabled);
+      googlePayEnabled,
+      const DeepCollectionEquality().hash(_preferredNetworks));
 
   @JsonKey(ignore: true)
   @override
@@ -521,7 +563,10 @@ abstract class _CustomerSheetInitParams implements CustomerSheetInitParams {
       final String? returnURL,
       final String? removeSavedPaymentMethodMessage,
       final bool applePayEnabled,
-      final bool googlePayEnabled}) = _$CustomerSheetInitParamsImpl;
+      final bool googlePayEnabled,
+      @JsonKey(toJson: _cardBrandListToJson)
+      final List<CardBrand>?
+          preferredNetworks}) = _$CustomerSheetInitParamsImpl;
 
   factory _CustomerSheetInitParams.fromJson(Map<String, dynamic> json) =
       _$CustomerSheetInitParamsImpl.fromJson;
@@ -582,6 +627,12 @@ abstract class _CustomerSheetInitParams implements CustomerSheetInitParams {
 
   /// Whether to show Google Pay as an option. Defaults to `false`.
   bool get googlePayEnabled;
+  @override
+
+  /// The list of preferred networks that should be used to process payments made with a co-branded card.
+  /// This value will only be used if your user hasn't selected a network themselves.
+  @JsonKey(toJson: _cardBrandListToJson)
+  List<CardBrand>? get preferredNetworks;
   @override
   @JsonKey(ignore: true)
   _$$CustomerSheetInitParamsImplCopyWith<_$CustomerSheetInitParamsImpl>

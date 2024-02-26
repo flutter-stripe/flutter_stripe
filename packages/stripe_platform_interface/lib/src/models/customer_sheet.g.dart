@@ -35,6 +35,9 @@ _$CustomerSheetInitParamsImpl _$$CustomerSheetInitParamsImplFromJson(
           json['removeSavedPaymentMethodMessage'] as String?,
       applePayEnabled: json['applePayEnabled'] as bool? ?? true,
       googlePayEnabled: json['googlePayEnabled'] as bool? ?? true,
+      preferredNetworks: (json['preferredNetworks'] as List<dynamic>?)
+          ?.map((e) => $enumDecode(_$CardBrandEnumMap, e))
+          .toList(),
     );
 
 Map<String, dynamic> _$$CustomerSheetInitParamsImplToJson(
@@ -55,12 +58,25 @@ Map<String, dynamic> _$$CustomerSheetInitParamsImplToJson(
           instance.removeSavedPaymentMethodMessage,
       'applePayEnabled': instance.applePayEnabled,
       'googlePayEnabled': instance.googlePayEnabled,
+      'preferredNetworks': _cardBrandListToJson(instance.preferredNetworks),
     };
 
 const _$ThemeModeEnumMap = {
   ThemeMode.system: 'system',
   ThemeMode.light: 'light',
   ThemeMode.dark: 'dark',
+};
+
+const _$CardBrandEnumMap = {
+  CardBrand.JCB: 'JCB',
+  CardBrand.Amex: 'Amex',
+  CardBrand.CartesBancaires: 'CartesBancaires',
+  CardBrand.DinersClub: 'DinersClub',
+  CardBrand.Discover: 'Discover',
+  CardBrand.Mastercard: 'Mastercard',
+  CardBrand.UnionPay: 'UnionPay',
+  CardBrand.Visa: 'Visa',
+  CardBrand.Unknown: 'Unknown',
 };
 
 _$CustomerSheetPresentParamsImpl _$$CustomerSheetPresentParamsImplFromJson(
