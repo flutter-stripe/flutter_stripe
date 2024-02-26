@@ -166,6 +166,7 @@ jobs:
       uses: reactivecircus/android-emulator-runner@v2
       with:
         api-level: 34
+        arch: x86_64
         working-directory: example
         script: | 
           sleep 15;
