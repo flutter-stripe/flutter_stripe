@@ -120,7 +120,7 @@ jobs:
 
     - name: "Start iOS Simulator"
       run: |
-        xcrun simctl boot "iPhone 13 mini" 
+        xcrun simctl boot "iPhone 15" 
 
     - name: "Run Flutter Driver tests on iOS"
       working-directory: example
