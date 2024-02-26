@@ -39,6 +39,7 @@ class _NoWebhookPaymentScreenState extends State<NoWebhookPaymentScreen> {
       padding: EdgeInsets.symmetric(horizontal: 16),
       children: [
         CardField(
+          preferredNetworks: [CardBrand.Amex],
           controller: controller,
         ),
         SizedBox(height: 20),
