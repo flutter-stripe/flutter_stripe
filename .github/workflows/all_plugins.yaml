@@ -80,20 +80,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: subosito/flutter-action@v2
-      with:
-        cache: true
     - uses: actions/setup-node@v3
       with:
         node-version: 16
         cache: 'yarn'
         cache-dependency-path: example/server/yarn.lock
-    - name: Cache pods
-      uses: actions/cache@v2
-      with:
-        path: example/iOS/Pods
-        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-pods-
     - name: "Install Tools"
       run: |
         ./.github/workflows/scripts/install-tools.sh
@@ -134,8 +125,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: subosito/flutter-action@v2
-      with:
-        cache: true
     - uses: actions/setup-node@v3
       with:
         node-version: 16
