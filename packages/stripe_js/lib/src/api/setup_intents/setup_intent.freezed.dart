@@ -315,11 +315,11 @@ class _$SetupIntentCopyWithImpl<$Res, $Val extends SetupIntent>
 }
 
 /// @nodoc
-abstract class _$$_SetupIntentCopyWith<$Res>
+abstract class _$$SetupIntentImplCopyWith<$Res>
     implements $SetupIntentCopyWith<$Res> {
-  factory _$$_SetupIntentCopyWith(
-          _$_SetupIntent value, $Res Function(_$_SetupIntent) then) =
-      __$$_SetupIntentCopyWithImpl<$Res>;
+  factory _$$SetupIntentImplCopyWith(
+          _$SetupIntentImpl value, $Res Function(_$SetupIntentImpl) then) =
+      __$$SetupIntentImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -352,11 +352,11 @@ abstract class _$$_SetupIntentCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SetupIntentCopyWithImpl<$Res>
-    extends _$SetupIntentCopyWithImpl<$Res, _$_SetupIntent>
-    implements _$$_SetupIntentCopyWith<$Res> {
-  __$$_SetupIntentCopyWithImpl(
-      _$_SetupIntent _value, $Res Function(_$_SetupIntent) _then)
+class __$$SetupIntentImplCopyWithImpl<$Res>
+    extends _$SetupIntentCopyWithImpl<$Res, _$SetupIntentImpl>
+    implements _$$SetupIntentImplCopyWith<$Res> {
+  __$$SetupIntentImplCopyWithImpl(
+      _$SetupIntentImpl _value, $Res Function(_$SetupIntentImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -386,7 +386,7 @@ class __$$_SetupIntentCopyWithImpl<$Res>
     Object? status = null,
     Object? usage = null,
   }) {
-    return _then(_$_SetupIntent(
+    return _then(_$SetupIntentImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -485,8 +485,8 @@ class __$$_SetupIntentCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SetupIntent implements _SetupIntent {
-  const _$_SetupIntent(
+class _$SetupIntentImpl implements _SetupIntent {
+  const _$SetupIntentImpl(
       {required this.id,
       this.object = "setup_intent",
       this.application,
@@ -516,8 +516,8 @@ class _$_SetupIntent implements _SetupIntent {
         _metadata = metadata,
         _paymentMethodTypes = paymentMethodTypes;
 
-  factory _$_SetupIntent.fromJson(Map<String, dynamic> json) =>
-      _$$_SetupIntentFromJson(json);
+  factory _$SetupIntentImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SetupIntentImplFromJson(json);
 
   /// Unique identifier for the object.
   @override
@@ -705,7 +705,7 @@ class _$_SetupIntent implements _SetupIntent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SetupIntent &&
+            other is _$SetupIntentImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.object, object) || other.object == object) &&
             (identical(other.application, application) ||
@@ -779,12 +779,12 @@ class _$_SetupIntent implements _SetupIntent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SetupIntentCopyWith<_$_SetupIntent> get copyWith =>
-      __$$_SetupIntentCopyWithImpl<_$_SetupIntent>(this, _$identity);
+  _$$SetupIntentImplCopyWith<_$SetupIntentImpl> get copyWith =>
+      __$$SetupIntentImplCopyWithImpl<_$SetupIntentImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SetupIntentToJson(
+    return _$$SetupIntentImplToJson(
       this,
     );
   }
@@ -818,10 +818,10 @@ abstract class _SetupIntent implements SetupIntent {
       final List<PaymentMethodType> paymentMethodTypes,
       @JsonKey(name: "single_use_mandate") final String? singleUseMandate,
       required final SetupIntentsStatus status,
-      final SetupIntentUsage usage}) = _$_SetupIntent;
+      final SetupIntentUsage usage}) = _$SetupIntentImpl;
 
   factory _SetupIntent.fromJson(Map<String, dynamic> json) =
-      _$_SetupIntent.fromJson;
+      _$SetupIntentImpl.fromJson;
 
   @override
 
@@ -964,6 +964,6 @@ abstract class _SetupIntent implements SetupIntent {
   SetupIntentUsage get usage;
   @override
   @JsonKey(ignore: true)
-  _$$_SetupIntentCopyWith<_$_SetupIntent> get copyWith =>
+  _$$SetupIntentImplCopyWith<_$SetupIntentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

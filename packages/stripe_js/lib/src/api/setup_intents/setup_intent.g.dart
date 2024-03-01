@@ -6,7 +6,7 @@ part of 'setup_intent.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SetupIntent _$$_SetupIntentFromJson(Map json) => _$_SetupIntent(
+_$SetupIntentImpl _$$SetupIntentImplFromJson(Map json) => _$SetupIntentImpl(
       id: json['id'] as String,
       object: json['object'] as String? ?? "setup_intent",
       application: json['application'] as String?,
@@ -42,7 +42,7 @@ _$_SetupIntent _$$_SetupIntentFromJson(Map json) => _$_SetupIntent(
           SetupIntentUsage.offSession,
     );
 
-Map<String, dynamic> _$$_SetupIntentToJson(_$_SetupIntent instance) {
+Map<String, dynamic> _$$SetupIntentImplToJson(_$SetupIntentImpl instance) {
   final val = <String, dynamic>{
     'id': instance.id,
     'object': instance.object,
@@ -107,6 +107,7 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.blik: 'blik',
   PaymentMethodType.boleto: 'boleto',
   PaymentMethodType.card: 'card',
+  PaymentMethodType.cashapp: 'cashapp',
   PaymentMethodType.cardPresent: 'cardPresent',
   PaymentMethodType.customerBalance: 'customerBalance',
   PaymentMethodType.eps: 'eps',

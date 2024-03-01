@@ -67,25 +67,25 @@ class _$ConfirmIdealPaymentOptionsCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ConfirmIdealPaymentOptionsCopyWith<$Res>
+abstract class _$$ConfirmIdealPaymentOptionsImplCopyWith<$Res>
     implements $ConfirmIdealPaymentOptionsCopyWith<$Res> {
-  factory _$$_ConfirmIdealPaymentOptionsCopyWith(
-          _$_ConfirmIdealPaymentOptions value,
-          $Res Function(_$_ConfirmIdealPaymentOptions) then) =
-      __$$_ConfirmIdealPaymentOptionsCopyWithImpl<$Res>;
+  factory _$$ConfirmIdealPaymentOptionsImplCopyWith(
+          _$ConfirmIdealPaymentOptionsImpl value,
+          $Res Function(_$ConfirmIdealPaymentOptionsImpl) then) =
+      __$$ConfirmIdealPaymentOptionsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool? handleActions});
 }
 
 /// @nodoc
-class __$$_ConfirmIdealPaymentOptionsCopyWithImpl<$Res>
+class __$$ConfirmIdealPaymentOptionsImplCopyWithImpl<$Res>
     extends _$ConfirmIdealPaymentOptionsCopyWithImpl<$Res,
-        _$_ConfirmIdealPaymentOptions>
-    implements _$$_ConfirmIdealPaymentOptionsCopyWith<$Res> {
-  __$$_ConfirmIdealPaymentOptionsCopyWithImpl(
-      _$_ConfirmIdealPaymentOptions _value,
-      $Res Function(_$_ConfirmIdealPaymentOptions) _then)
+        _$ConfirmIdealPaymentOptionsImpl>
+    implements _$$ConfirmIdealPaymentOptionsImplCopyWith<$Res> {
+  __$$ConfirmIdealPaymentOptionsImplCopyWithImpl(
+      _$ConfirmIdealPaymentOptionsImpl _value,
+      $Res Function(_$ConfirmIdealPaymentOptionsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,7 +93,7 @@ class __$$_ConfirmIdealPaymentOptionsCopyWithImpl<$Res>
   $Res call({
     Object? handleActions = freezed,
   }) {
-    return _then(_$_ConfirmIdealPaymentOptions(
+    return _then(_$ConfirmIdealPaymentOptionsImpl(
       handleActions: freezed == handleActions
           ? _value.handleActions
           : handleActions // ignore: cast_nullable_to_non_nullable
@@ -104,11 +104,12 @@ class __$$_ConfirmIdealPaymentOptionsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ConfirmIdealPaymentOptions implements _ConfirmIdealPaymentOptions {
-  const _$_ConfirmIdealPaymentOptions({this.handleActions = true});
+class _$ConfirmIdealPaymentOptionsImpl implements _ConfirmIdealPaymentOptions {
+  const _$ConfirmIdealPaymentOptionsImpl({this.handleActions = true});
 
-  factory _$_ConfirmIdealPaymentOptions.fromJson(Map<String, dynamic> json) =>
-      _$$_ConfirmIdealPaymentOptionsFromJson(json);
+  factory _$ConfirmIdealPaymentOptionsImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$ConfirmIdealPaymentOptionsImplFromJson(json);
 
   /// Set this to false if you want to manually handle
   /// the authorization redirect. Default is true.
@@ -125,7 +126,7 @@ class _$_ConfirmIdealPaymentOptions implements _ConfirmIdealPaymentOptions {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ConfirmIdealPaymentOptions &&
+            other is _$ConfirmIdealPaymentOptionsImpl &&
             (identical(other.handleActions, handleActions) ||
                 other.handleActions == handleActions));
   }
@@ -137,13 +138,13 @@ class _$_ConfirmIdealPaymentOptions implements _ConfirmIdealPaymentOptions {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ConfirmIdealPaymentOptionsCopyWith<_$_ConfirmIdealPaymentOptions>
-      get copyWith => __$$_ConfirmIdealPaymentOptionsCopyWithImpl<
-          _$_ConfirmIdealPaymentOptions>(this, _$identity);
+  _$$ConfirmIdealPaymentOptionsImplCopyWith<_$ConfirmIdealPaymentOptionsImpl>
+      get copyWith => __$$ConfirmIdealPaymentOptionsImplCopyWithImpl<
+          _$ConfirmIdealPaymentOptionsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ConfirmIdealPaymentOptionsToJson(
+    return _$$ConfirmIdealPaymentOptionsImplToJson(
       this,
     );
   }
@@ -152,10 +153,10 @@ class _$_ConfirmIdealPaymentOptions implements _ConfirmIdealPaymentOptions {
 abstract class _ConfirmIdealPaymentOptions
     implements ConfirmIdealPaymentOptions {
   const factory _ConfirmIdealPaymentOptions({final bool? handleActions}) =
-      _$_ConfirmIdealPaymentOptions;
+      _$ConfirmIdealPaymentOptionsImpl;
 
   factory _ConfirmIdealPaymentOptions.fromJson(Map<String, dynamic> json) =
-      _$_ConfirmIdealPaymentOptions.fromJson;
+      _$ConfirmIdealPaymentOptionsImpl.fromJson;
 
   @override
 
@@ -164,6 +165,6 @@ abstract class _ConfirmIdealPaymentOptions
   bool? get handleActions;
   @override
   @JsonKey(ignore: true)
-  _$$_ConfirmIdealPaymentOptionsCopyWith<_$_ConfirmIdealPaymentOptions>
+  _$$ConfirmIdealPaymentOptionsImplCopyWith<_$ConfirmIdealPaymentOptionsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

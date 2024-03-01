@@ -76,24 +76,15 @@ jobs:
     name: integration test (iOS)
     needs: [analyze, test]
     timeout-minutes: 60
-    runs-on: macos-latest
+    runs-on: macos-14
     steps:
     - uses: actions/checkout@v2
     - uses: subosito/flutter-action@v2
-      with:
-        cache: true
     - uses: actions/setup-node@v3
       with:
         node-version: 16
         cache: 'yarn'
         cache-dependency-path: example/server/yarn.lock
-    - name: Cache pods
-      uses: actions/cache@v2
-      with:
-        path: example/iOS/Pods
-        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-pods-
     - name: "Install Tools"
       run: |
         ./.github/workflows/scripts/install-tools.sh
@@ -120,7 +111,7 @@ jobs:
 
     - name: "Start iOS Simulator"
       run: |
-        xcrun simctl boot "iPhone 13 mini" 
+        xcrun simctl boot "iPhone 15" 
 
     - name: "Run Flutter Driver tests on iOS"
       working-directory: example
@@ -130,12 +121,10 @@ jobs:
     name: integration test (Android)
     needs: [analyze, test, ios_integration_test]
     timeout-minutes: 60
-    runs-on: macos-latest
+    runs-on: macos-14
     steps:
     - uses: actions/checkout@v2
     - uses: subosito/flutter-action@v2
-      with:
-        cache: true
     - uses: actions/setup-node@v3
       with:
         node-version: 16
@@ -177,6 +166,7 @@ jobs:
       uses: reactivecircus/android-emulator-runner@v2
       with:
         api-level: 34
+        arch: x86_64
         working-directory: example
         script: | 
           sleep 15;

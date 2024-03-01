@@ -6,8 +6,8 @@ part of 'card_element_change_event.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CardElementChangeEvent _$$_CardElementChangeEventFromJson(Map json) =>
-    _$_CardElementChangeEvent(
+_$CardElementChangeEventImpl _$$CardElementChangeEventImplFromJson(Map json) =>
+    _$CardElementChangeEventImpl(
       elementType: json['elementType'] as String,
       empty: json['empty'] as bool,
       complete: json['complete'] as bool,
@@ -22,8 +22,8 @@ _$_CardElementChangeEvent _$$_CardElementChangeEventFromJson(Map json) =>
               Map<String, dynamic>.from(json['value'] as Map)),
     );
 
-Map<String, dynamic> _$$_CardElementChangeEventToJson(
-    _$_CardElementChangeEvent instance) {
+Map<String, dynamic> _$$CardElementChangeEventImplToJson(
+    _$CardElementChangeEventImpl instance) {
   final val = <String, dynamic>{
     'elementType': instance.elementType,
     'empty': instance.empty,
@@ -42,14 +42,14 @@ Map<String, dynamic> _$$_CardElementChangeEventToJson(
   return val;
 }
 
-_$_CardElementChangeEventValue _$$_CardElementChangeEventValueFromJson(
+_$CardElementChangeEventValueImpl _$$CardElementChangeEventValueImplFromJson(
         Map json) =>
-    _$_CardElementChangeEventValue(
+    _$CardElementChangeEventValueImpl(
       postalCode: json['postalCode'] as String?,
     );
 
-Map<String, dynamic> _$$_CardElementChangeEventValueToJson(
-    _$_CardElementChangeEventValue instance) {
+Map<String, dynamic> _$$CardElementChangeEventValueImplToJson(
+    _$CardElementChangeEventValueImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

@@ -70,25 +70,25 @@ class _$PaymentElementShippingDetailsCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PaymentElementShippingDetailsCopyWith<$Res>
+abstract class _$$PaymentElementShippingDetailsImplCopyWith<$Res>
     implements $PaymentElementShippingDetailsCopyWith<$Res> {
-  factory _$$_PaymentElementShippingDetailsCopyWith(
-          _$_PaymentElementShippingDetails value,
-          $Res Function(_$_PaymentElementShippingDetails) then) =
-      __$$_PaymentElementShippingDetailsCopyWithImpl<$Res>;
+  factory _$$PaymentElementShippingDetailsImplCopyWith(
+          _$PaymentElementShippingDetailsImpl value,
+          $Res Function(_$PaymentElementShippingDetailsImpl) then) =
+      __$$PaymentElementShippingDetailsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? trackingNumber});
 }
 
 /// @nodoc
-class __$$_PaymentElementShippingDetailsCopyWithImpl<$Res>
+class __$$PaymentElementShippingDetailsImplCopyWithImpl<$Res>
     extends _$PaymentElementShippingDetailsCopyWithImpl<$Res,
-        _$_PaymentElementShippingDetails>
-    implements _$$_PaymentElementShippingDetailsCopyWith<$Res> {
-  __$$_PaymentElementShippingDetailsCopyWithImpl(
-      _$_PaymentElementShippingDetails _value,
-      $Res Function(_$_PaymentElementShippingDetails) _then)
+        _$PaymentElementShippingDetailsImpl>
+    implements _$$PaymentElementShippingDetailsImplCopyWith<$Res> {
+  __$$PaymentElementShippingDetailsImplCopyWithImpl(
+      _$PaymentElementShippingDetailsImpl _value,
+      $Res Function(_$PaymentElementShippingDetailsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -96,7 +96,7 @@ class __$$_PaymentElementShippingDetailsCopyWithImpl<$Res>
   $Res call({
     Object? trackingNumber = freezed,
   }) {
-    return _then(_$_PaymentElementShippingDetails(
+    return _then(_$PaymentElementShippingDetailsImpl(
       trackingNumber: freezed == trackingNumber
           ? _value.trackingNumber
           : trackingNumber // ignore: cast_nullable_to_non_nullable
@@ -107,13 +107,13 @@ class __$$_PaymentElementShippingDetailsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PaymentElementShippingDetails
+class _$PaymentElementShippingDetailsImpl
     implements _PaymentElementShippingDetails {
-  const _$_PaymentElementShippingDetails({this.trackingNumber});
+  const _$PaymentElementShippingDetailsImpl({this.trackingNumber});
 
-  factory _$_PaymentElementShippingDetails.fromJson(
+  factory _$PaymentElementShippingDetailsImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_PaymentElementShippingDetailsFromJson(json);
+      _$$PaymentElementShippingDetailsImplFromJson(json);
 
   /// The Elements instance that was used to create the Payment Element.
 //  @ElementsConverter() required Elements elements,
@@ -131,7 +131,7 @@ class _$_PaymentElementShippingDetails
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentElementShippingDetails &&
+            other is _$PaymentElementShippingDetailsImpl &&
             (identical(other.trackingNumber, trackingNumber) ||
                 other.trackingNumber == trackingNumber));
   }
@@ -143,13 +143,14 @@ class _$_PaymentElementShippingDetails
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentElementShippingDetailsCopyWith<_$_PaymentElementShippingDetails>
-      get copyWith => __$$_PaymentElementShippingDetailsCopyWithImpl<
-          _$_PaymentElementShippingDetails>(this, _$identity);
+  _$$PaymentElementShippingDetailsImplCopyWith<
+          _$PaymentElementShippingDetailsImpl>
+      get copyWith => __$$PaymentElementShippingDetailsImplCopyWithImpl<
+          _$PaymentElementShippingDetailsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentElementShippingDetailsToJson(
+    return _$$PaymentElementShippingDetailsImplToJson(
       this,
     );
   }
@@ -158,10 +159,10 @@ class _$_PaymentElementShippingDetails
 abstract class _PaymentElementShippingDetails
     implements PaymentElementShippingDetails {
   const factory _PaymentElementShippingDetails({final String? trackingNumber}) =
-      _$_PaymentElementShippingDetails;
+      _$PaymentElementShippingDetailsImpl;
 
   factory _PaymentElementShippingDetails.fromJson(Map<String, dynamic> json) =
-      _$_PaymentElementShippingDetails.fromJson;
+      _$PaymentElementShippingDetailsImpl.fromJson;
 
   @override
 
@@ -172,6 +173,7 @@ abstract class _PaymentElementShippingDetails
   String? get trackingNumber;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentElementShippingDetailsCopyWith<_$_PaymentElementShippingDetails>
+  _$$PaymentElementShippingDetailsImplCopyWith<
+          _$PaymentElementShippingDetailsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
