@@ -165,7 +165,7 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
           if (textColor != null)
             'color': '${colorToCssString(textColor)}'
         }
-      }
+      },
       hidePostalCode: !widget.enablePostalCode,
     );
   }
