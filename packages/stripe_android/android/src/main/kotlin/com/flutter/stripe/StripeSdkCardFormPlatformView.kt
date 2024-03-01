@@ -1,11 +1,13 @@
 package com.flutter.stripe
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.text.InputType
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.NonNull
+import com.facebook.react.bridge.ReadableArray
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
 import com.reactnativestripesdk.*
@@ -18,6 +20,7 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
 
 
+@SuppressLint("RestrictedApi")
 class StripeSdkCardFormPlatformView(
         private val context: Context,
         private val channel: MethodChannel,
@@ -50,6 +53,9 @@ class StripeSdkCardFormPlatformView(
         }
         if (creationParams?.containsKey("disabled") == true) {
             cardFormViewManager.setDisabled(cardView, creationParams["disabled"] as Boolean)
+        }
+        if (creationParams?.containsKey("preferredNetworks") == true) {
+            cardFormViewManager.setPreferredNetworks(cardView, ReadableArray(creationParams["preferredNetworks"] as List<Any>))
         }
         if (creationParams?.containsKey("cardDetails") == true) {
             val value = ReadableMap(creationParams["cardDetails"] as Map<String, Any>)

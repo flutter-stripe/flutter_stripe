@@ -37,6 +37,7 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
         ),
         SizedBox(height: 20),
         CardField(
+          preferredNetworks: [CardBrand.Amex],
           enablePostalCode: true,
           countryCode: 'US',
           postalCodeHintText: 'Enter the us postal code',

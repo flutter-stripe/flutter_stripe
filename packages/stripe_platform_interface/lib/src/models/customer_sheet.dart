@@ -53,6 +53,10 @@ class CustomerSheetInitParams with _$CustomerSheetInitParams {
 
     /// Whether to show Google Pay as an option. Defaults to `false`.
     @Default(true) bool googlePayEnabled,
+
+    /// The list of preferred networks that should be used to process payments made with a co-branded card.
+    /// This value will only be used if your user hasn't selected a network themselves.
+    @JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks,
   }) = _CustomerSheetInitParams;
 
   factory CustomerSheetInitParams.fromJson(Map<String, dynamic> json) =>
@@ -119,3 +123,10 @@ enum CustomerSheetPresentationStyle {
    */
   customerAdapter?: CustomerAdapter;
 */
+
+List<int> _cardBrandListToJson(List<CardBrand>? list) {
+  if (list == null) {
+    return [];
+  }
+  return list.map((e) => e.brandValue).toList();
+}

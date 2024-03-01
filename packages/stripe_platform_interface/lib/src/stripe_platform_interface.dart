@@ -99,6 +99,7 @@ abstract class StripePlatform extends PlatformInterface {
   /// Check if either google pay or apple pay  is supported on device.
   Future<bool> isPlatformPaySupported({
     IsGooglePaySupportedParams? params,
+    PlatformPayWebPaymentRequestCreateOptions? paymentRequestOptions,
   });
 
   /// Start native Payment sheet to confirm setup intent
@@ -184,6 +185,18 @@ abstract class StripePlatform extends PlatformInterface {
     FocusNode? focusNode,
     bool autofocus = false,
     bool dangerouslyUpdateFullCardDetails = false,
+  }) {
+    throw UnimplementedError();
+  }
+
+  Widget buildPaymentRequestButton({
+    Key? key,
+    required VoidCallback onPressed,
+    required PlatformPayWebPaymentRequestCreateOptions
+        paymentRequestCreateOptions,
+    BoxConstraints? constraints,
+    PlatformButtonType? type,
+    PlatformButtonStyle? style,
   }) {
     throw UnimplementedError();
   }
