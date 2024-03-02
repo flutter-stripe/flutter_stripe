@@ -1,3 +1,11 @@
+## 10.1.0
+
+> Note: This release has breaking changes.
+
+ - aa
+
+ - **BREAKING** **BREAKING**: rename ApplePayShippingContact to Platformpayshipping contact.
+
 ## 10.0.0
 
 **Breaking changes**
