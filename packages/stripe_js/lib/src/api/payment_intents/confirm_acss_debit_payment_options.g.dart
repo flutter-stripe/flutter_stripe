@@ -6,14 +6,14 @@ part of 'confirm_acss_debit_payment_options.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ConfirmAcssDebitPaymentOptions _$$_ConfirmAcssDebitPaymentOptionsFromJson(
-        Map json) =>
-    _$_ConfirmAcssDebitPaymentOptions(
-      skipMandate: json['skipMandate'] as bool? ?? false,
-    );
+_$ConfirmAcssDebitPaymentOptionsImpl
+    _$$ConfirmAcssDebitPaymentOptionsImplFromJson(Map json) =>
+        _$ConfirmAcssDebitPaymentOptionsImpl(
+          skipMandate: json['skipMandate'] as bool? ?? false,
+        );
 
-Map<String, dynamic> _$$_ConfirmAcssDebitPaymentOptionsToJson(
-    _$_ConfirmAcssDebitPaymentOptions instance) {
+Map<String, dynamic> _$$ConfirmAcssDebitPaymentOptionsImplToJson(
+    _$ConfirmAcssDebitPaymentOptionsImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

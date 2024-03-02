@@ -6,7 +6,8 @@ part of 'payment_intent.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PaymentIntent _$$_PaymentIntentFromJson(Map json) => _$_PaymentIntent(
+_$PaymentIntentImpl _$$PaymentIntentImplFromJson(Map json) =>
+    _$PaymentIntentImpl(
       id: json['id'] as String,
       object: json['object'] as String? ?? "payment_intent",
       amount: json['amount'] as int,
@@ -74,7 +75,7 @@ _$_PaymentIntent _$$_PaymentIntentFromJson(Map json) => _$_PaymentIntent(
       transferGroup: json['transfer_group'],
     );
 
-Map<String, dynamic> _$$_PaymentIntentToJson(_$_PaymentIntent instance) {
+Map<String, dynamic> _$$PaymentIntentImplToJson(_$PaymentIntentImpl instance) {
   final val = <String, dynamic>{
     'id': instance.id,
     'object': instance.object,
@@ -164,6 +165,7 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.blik: 'blik',
   PaymentMethodType.boleto: 'boleto',
   PaymentMethodType.card: 'card',
+  PaymentMethodType.cashapp: 'cashapp',
   PaymentMethodType.cardPresent: 'cardPresent',
   PaymentMethodType.customerBalance: 'customerBalance',
   PaymentMethodType.eps: 'eps',
@@ -201,17 +203,17 @@ const _$PaymentIntentsStatusEnumMap = {
   PaymentIntentsStatus.canceled: 'canceled',
 };
 
-_$_PaymentIntentAmountDetails _$$_PaymentIntentAmountDetailsFromJson(
+_$PaymentIntentAmountDetailsImpl _$$PaymentIntentAmountDetailsImplFromJson(
         Map json) =>
-    _$_PaymentIntentAmountDetails(
+    _$PaymentIntentAmountDetailsImpl(
       tip: json['tip'] == null
           ? const PaymentIntentTip()
           : PaymentIntentTip.fromJson(
               Map<String, dynamic>.from(json['tip'] as Map)),
     );
 
-Map<String, dynamic> _$$_PaymentIntentAmountDetailsToJson(
-    _$_PaymentIntentAmountDetails instance) {
+Map<String, dynamic> _$$PaymentIntentAmountDetailsImplToJson(
+    _$PaymentIntentAmountDetailsImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -224,12 +226,13 @@ Map<String, dynamic> _$$_PaymentIntentAmountDetailsToJson(
   return val;
 }
 
-_$_PaymentIntentTip _$$_PaymentIntentTipFromJson(Map json) =>
-    _$_PaymentIntentTip(
+_$PaymentIntentTipImpl _$$PaymentIntentTipImplFromJson(Map json) =>
+    _$PaymentIntentTipImpl(
       amount: json['amount'] as int?,
     );
 
-Map<String, dynamic> _$$_PaymentIntentTipToJson(_$_PaymentIntentTip instance) {
+Map<String, dynamic> _$$PaymentIntentTipImplToJson(
+    _$PaymentIntentTipImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -242,14 +245,14 @@ Map<String, dynamic> _$$_PaymentIntentTipToJson(_$_PaymentIntentTip instance) {
   return val;
 }
 
-_$_PaymentIntentAutomaticPaymentMethods
-    _$$_PaymentIntentAutomaticPaymentMethodsFromJson(Map json) =>
-        _$_PaymentIntentAutomaticPaymentMethods(
+_$PaymentIntentAutomaticPaymentMethodsImpl
+    _$$PaymentIntentAutomaticPaymentMethodsImplFromJson(Map json) =>
+        _$PaymentIntentAutomaticPaymentMethodsImpl(
           enabled: json['enabled'] as bool?,
         );
 
-Map<String, dynamic> _$$_PaymentIntentAutomaticPaymentMethodsToJson(
-    _$_PaymentIntentAutomaticPaymentMethods instance) {
+Map<String, dynamic> _$$PaymentIntentAutomaticPaymentMethodsImplToJson(
+    _$PaymentIntentAutomaticPaymentMethodsImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

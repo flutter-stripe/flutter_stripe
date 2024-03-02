@@ -139,6 +139,7 @@ const _$CaptureMethodEnumMap = {
   CaptureMethod.Manual: 'Manual',
   CaptureMethod.Automatic: 'Automatic',
   CaptureMethod.AutomaticAsync: 'AutomaticAsync',
+  CaptureMethod.Unknown: 'Unknown',
 };
 
 _$PaymentSheetApplePayImpl _$$PaymentSheetApplePayImplFromJson(
