@@ -71,6 +71,7 @@ const _$CaptureMethodEnumMap = {
   CaptureMethod.Manual: 'Manual',
   CaptureMethod.Automatic: 'Automatic',
   CaptureMethod.AutomaticAsync: 'AutomaticAsync',
+  CaptureMethod.Unknown: 'Unknown',
 };
 
 const _$ConfirmationMethodEnumMap = {

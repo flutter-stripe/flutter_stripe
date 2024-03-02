@@ -94,7 +94,13 @@ abstract class StripePlatform extends PlatformInterface {
   Future<PaymentMethod> createGooglePayPaymentMethod(
       CreateGooglePayPaymentParams params);
 
+  @Deprecated('use the new method [CanAddCardToWalletParams] instead')
   Future<AddToWalletResult> canAddToWallet(String last4);
+
+  Future<CanAddCardToWalletResult> canAddCardToWallet(
+      CanAddCardToWalletParams params);
+
+  Future<IsCardInWalletResult> isCardInWallet(String cardLastFour);
 
   /// Check if either google pay or apple pay  is supported on device.
   Future<bool> isPlatformPaySupported({

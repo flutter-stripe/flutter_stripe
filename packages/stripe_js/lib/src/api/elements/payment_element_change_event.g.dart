@@ -6,8 +6,9 @@ part of 'payment_element_change_event.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PaymentElementChangeEvent _$$_PaymentElementChangeEventFromJson(Map json) =>
-    _$_PaymentElementChangeEvent(
+_$PaymentElementChangeEventImpl _$$PaymentElementChangeEventImplFromJson(
+        Map json) =>
+    _$PaymentElementChangeEventImpl(
       elementType: json['elementType'] as String,
       empty: json['empty'] as bool,
       complete: json['complete'] as bool,
@@ -18,8 +19,8 @@ _$_PaymentElementChangeEvent _$$_PaymentElementChangeEventFromJson(Map json) =>
               Map<String, dynamic>.from(json['value'] as Map)),
     );
 
-Map<String, dynamic> _$$_PaymentElementChangeEventToJson(
-    _$_PaymentElementChangeEvent instance) {
+Map<String, dynamic> _$$PaymentElementChangeEventImplToJson(
+    _$PaymentElementChangeEventImpl instance) {
   final val = <String, dynamic>{
     'elementType': instance.elementType,
     'empty': instance.empty,
@@ -37,14 +38,14 @@ Map<String, dynamic> _$$_PaymentElementChangeEventToJson(
   return val;
 }
 
-_$_PaymentElementChangeEventValue _$$_PaymentElementChangeEventValueFromJson(
-        Map json) =>
-    _$_PaymentElementChangeEventValue(
-      type: json['type'] as String?,
-    );
+_$PaymentElementChangeEventValueImpl
+    _$$PaymentElementChangeEventValueImplFromJson(Map json) =>
+        _$PaymentElementChangeEventValueImpl(
+          type: json['type'] as String?,
+        );
 
-Map<String, dynamic> _$$_PaymentElementChangeEventValueToJson(
-    _$_PaymentElementChangeEventValue instance) {
+Map<String, dynamic> _$$PaymentElementChangeEventValueImplToJson(
+    _$PaymentElementChangeEventValueImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

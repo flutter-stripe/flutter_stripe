@@ -6,13 +6,13 @@ part of 'confirm_sepa_debit_setup_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ConfirmCardSetupData _$$_ConfirmCardSetupDataFromJson(Map json) =>
-    _$_ConfirmCardSetupData(
+_$ConfirmCardSetupDataImpl _$$ConfirmCardSetupDataImplFromJson(Map json) =>
+    _$ConfirmCardSetupDataImpl(
       paymentMethod: json['payment_method'] as String?,
     );
 
-Map<String, dynamic> _$$_ConfirmCardSetupDataToJson(
-    _$_ConfirmCardSetupData instance) {
+Map<String, dynamic> _$$ConfirmCardSetupDataImplToJson(
+    _$ConfirmCardSetupDataImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

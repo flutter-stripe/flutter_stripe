@@ -6,8 +6,9 @@ part of 'error.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PaymentElementChangeEvent _$$_PaymentElementChangeEventFromJson(Map json) =>
-    _$_PaymentElementChangeEvent(
+_$PaymentElementChangeEventImpl _$$PaymentElementChangeEventImplFromJson(
+        Map json) =>
+    _$PaymentElementChangeEventImpl(
       type: json['type'] as String?,
       code: json['code'] as String?,
       decline_code: json['decline_code'] as String?,
@@ -15,8 +16,8 @@ _$_PaymentElementChangeEvent _$$_PaymentElementChangeEventFromJson(Map json) =>
       param: json['param'] as String?,
     );
 
-Map<String, dynamic> _$$_PaymentElementChangeEventToJson(
-    _$_PaymentElementChangeEvent instance) {
+Map<String, dynamic> _$$PaymentElementChangeEventImplToJson(
+    _$PaymentElementChangeEventImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

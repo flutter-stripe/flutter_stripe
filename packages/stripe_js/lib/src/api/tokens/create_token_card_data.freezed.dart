@@ -138,11 +138,11 @@ class _$CreateTokenCardDataCopyWithImpl<$Res, $Val extends CreateTokenCardData>
 }
 
 /// @nodoc
-abstract class _$$_CreateTokenCardDataCopyWith<$Res>
+abstract class _$$CreateTokenCardDataImplCopyWith<$Res>
     implements $CreateTokenCardDataCopyWith<$Res> {
-  factory _$$_CreateTokenCardDataCopyWith(_$_CreateTokenCardData value,
-          $Res Function(_$_CreateTokenCardData) then) =
-      __$$_CreateTokenCardDataCopyWithImpl<$Res>;
+  factory _$$CreateTokenCardDataImplCopyWith(_$CreateTokenCardDataImpl value,
+          $Res Function(_$CreateTokenCardDataImpl) then) =
+      __$$CreateTokenCardDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -157,11 +157,11 @@ abstract class _$$_CreateTokenCardDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CreateTokenCardDataCopyWithImpl<$Res>
-    extends _$CreateTokenCardDataCopyWithImpl<$Res, _$_CreateTokenCardData>
-    implements _$$_CreateTokenCardDataCopyWith<$Res> {
-  __$$_CreateTokenCardDataCopyWithImpl(_$_CreateTokenCardData _value,
-      $Res Function(_$_CreateTokenCardData) _then)
+class __$$CreateTokenCardDataImplCopyWithImpl<$Res>
+    extends _$CreateTokenCardDataCopyWithImpl<$Res, _$CreateTokenCardDataImpl>
+    implements _$$CreateTokenCardDataImplCopyWith<$Res> {
+  __$$CreateTokenCardDataImplCopyWithImpl(_$CreateTokenCardDataImpl _value,
+      $Res Function(_$CreateTokenCardDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -176,7 +176,7 @@ class __$$_CreateTokenCardDataCopyWithImpl<$Res>
     Object? addressCountry = freezed,
     Object? currency = freezed,
   }) {
-    return _then(_$_CreateTokenCardData(
+    return _then(_$CreateTokenCardDataImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -215,8 +215,8 @@ class __$$_CreateTokenCardDataCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CreateTokenCardData implements _CreateTokenCardData {
-  const _$_CreateTokenCardData(
+class _$CreateTokenCardDataImpl implements _CreateTokenCardData {
+  const _$CreateTokenCardDataImpl(
       {this.name,
       @JsonKey(name: "address_line1") this.addressLine1,
       @JsonKey(name: "address_line2") this.addressLine2,
@@ -226,8 +226,8 @@ class _$_CreateTokenCardData implements _CreateTokenCardData {
       @JsonKey(name: "address_country") this.addressCountry,
       @JsonKey(name: "currency") this.currency});
 
-  factory _$_CreateTokenCardData.fromJson(Map<String, dynamic> json) =>
-      _$$_CreateTokenCardDataFromJson(json);
+  factory _$CreateTokenCardDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CreateTokenCardDataImplFromJson(json);
 
   /// RECOMMENDED
   /// Cardholder name.
@@ -281,7 +281,7 @@ class _$_CreateTokenCardData implements _CreateTokenCardData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CreateTokenCardData &&
+            other is _$CreateTokenCardDataImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.addressLine1, addressLine1) ||
                 other.addressLine1 == addressLine1) &&
@@ -307,13 +307,13 @@ class _$_CreateTokenCardData implements _CreateTokenCardData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CreateTokenCardDataCopyWith<_$_CreateTokenCardData> get copyWith =>
-      __$$_CreateTokenCardDataCopyWithImpl<_$_CreateTokenCardData>(
+  _$$CreateTokenCardDataImplCopyWith<_$CreateTokenCardDataImpl> get copyWith =>
+      __$$CreateTokenCardDataImplCopyWithImpl<_$CreateTokenCardDataImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CreateTokenCardDataToJson(
+    return _$$CreateTokenCardDataImplToJson(
       this,
     );
   }
@@ -329,10 +329,10 @@ abstract class _CreateTokenCardData implements CreateTokenCardData {
           @JsonKey(name: "address_zip") final String? addressZip,
           @JsonKey(name: "address_country") final String? addressCountry,
           @JsonKey(name: "currency") final String? currency}) =
-      _$_CreateTokenCardData;
+      _$CreateTokenCardDataImpl;
 
   factory _CreateTokenCardData.fromJson(Map<String, dynamic> json) =
-      _$_CreateTokenCardData.fromJson;
+      _$CreateTokenCardDataImpl.fromJson;
 
   @override
 
@@ -379,6 +379,6 @@ abstract class _CreateTokenCardData implements CreateTokenCardData {
   String? get currency;
   @override
   @JsonKey(ignore: true)
-  _$$_CreateTokenCardDataCopyWith<_$_CreateTokenCardData> get copyWith =>
+  _$$CreateTokenCardDataImplCopyWith<_$CreateTokenCardDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

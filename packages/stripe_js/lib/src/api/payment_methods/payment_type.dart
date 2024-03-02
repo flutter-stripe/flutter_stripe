@@ -39,6 +39,9 @@ enum PaymentMethodType {
   /// Card payments are supported through many networks and card brands.
   card,
 
+  /// cash app payment
+  cashapp,
+
   /// Stripe Terminal is used to collect in-person card payments.
   @JsonKey(name: "bacs_debit")
   cardPresent,

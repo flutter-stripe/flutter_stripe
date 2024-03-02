@@ -6,9 +6,9 @@ part of 'create_token_bank_account_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CreateTokenBankAccountData _$$_CreateTokenBankAccountDataFromJson(
+_$CreateTokenBankAccountDataImpl _$$CreateTokenBankAccountDataImplFromJson(
         Map json) =>
-    _$_CreateTokenBankAccountData(
+    _$CreateTokenBankAccountDataImpl(
       country: json['country'] as String,
       currency: json['currency'] as String,
       routingNumber: json['routing_number'] as String?,
@@ -19,8 +19,8 @@ _$_CreateTokenBankAccountData _$$_CreateTokenBankAccountDataFromJson(
       accountType: json['account_type'] as String?,
     );
 
-Map<String, dynamic> _$$_CreateTokenBankAccountDataToJson(
-    _$_CreateTokenBankAccountData instance) {
+Map<String, dynamic> _$$CreateTokenBankAccountDataImplToJson(
+    _$CreateTokenBankAccountDataImpl instance) {
   final val = <String, dynamic>{
     'country': instance.country,
     'currency': instance.currency,
