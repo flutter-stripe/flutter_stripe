@@ -1,10 +1,15 @@
 ## 10.1.0
 
-> Note: This release has breaking changes.
+**Features**
+- #1122 Add google pay and apple pay for web
+- Sync with Stripe [0.37.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.37.0)
+- #1606 Enable tap to pay
 
- - aa
-
- - **BREAKING** **BREAKING**: rename ApplePayShippingContact to Platformpayshipping contact.
+**Fixes**
+- #1637 Cash app pay causes crash on web.
+- #1608 prevent paymentintent crash.
+- #1465 unknow result.
+- #1512 add latest charge field to payment intent (Web only).
 
 ## 10.0.0
 
