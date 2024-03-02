@@ -1,3 +1,12 @@
+## 10.1.0
+
+**Features**
+- Sync with Stripe [0.37.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.37.0)
+
+**Fixes**
+- #1608 prevent paymentintent crash.
+- #1465 unknow result.
+
 ## 10.0.0
 
 **Breaking changes**
