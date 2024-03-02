@@ -1,3 +1,13 @@
+## 10.1.0
+
+> Note: This release has breaking changes.
+
+ - aaa
+
+ - **FIX**: #1465 unknow result.
+ - **FIX**: #1512 add latest charge field to payment intent (Web only).
+ - **BREAKING** **BREAKING**: rename ApplePayShippingContact to Platformpayshipping contact.
+
 ## 10.0.0
 
 **Breaking changes**

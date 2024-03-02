@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-03-02
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`stripe_platform_interface` - `v10.1.0`](#stripe_platform_interface---v1010)
+
+Packages with other changes:
+
+ - [`flutter_stripe` - `v10.0.1`](#flutter_stripe---v1001)
+ - [`flutter_stripe_web` - `v5.0.1`](#flutter_stripe_web---v501)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v10.0.1`
+ - `flutter_stripe_web` - `v5.0.1`
+
+---
+
+#### `stripe_platform_interface` - `v10.1.0`
+
+ - aaa
+
+ - **FIX**: #1465 unknow result.
+ - **FIX**: #1512 add latest charge field to payment intent (Web only).
+ - **BREAKING** **BREAKING**: rename ApplePayShippingContact to Platformpayshipping contact.
+
+
 ## 2023-12-19
 
 ### Changes
