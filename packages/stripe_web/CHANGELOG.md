@@ -1,3 +1,13 @@
+## 5.1.0
+
+> Note: This release has breaking changes.
+
+ - aaa
+
+ - **FIX**: Respect the font color for CardField on web platforms (#1658).
+ - **FIX**: #1512 add latest charge field to payment intent (Web only).
+ - **BREAKING** **BREAKING**: rename ApplePayShippingContact to Platformpayshipping contact.
+
 ## 5.0.0
 
 **Breaking changes**
