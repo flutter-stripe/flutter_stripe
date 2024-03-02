@@ -616,7 +616,7 @@ app.post('/payment-sheet-subscription', async (_, res) => {
   } else {
     throw new Error(
       'Expected response type string, but received: ' +
-        typeof subscription.pending_setup_intent
+      typeof subscription.pending_setup_intent
     );
   }
 });
@@ -717,7 +717,7 @@ app.post('/create-checkout-session', async (req, res) => {
   const {
     port,
   }: { port?: string; } = req.body;
-
+  var effectivePort = port ?? 8080;
   const { secret_key } = getKeys();
 
   const stripe = new Stripe(secret_key as string, {
@@ -725,25 +725,27 @@ app.post('/create-checkout-session', async (req, res) => {
     typescript: true,
   });
 
-  var effectivePort = port ?? 8080;
-  // Use an existing Customer ID if this is a returning customer.
-  const customer = await stripe.customers.create();
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: [
+      {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: 'Stubborn Attachments',
+            images: ['https://i.imgur.com/EHyR2nP.png'],
+          },
+          unit_amount: 2000,
+        },
+        quantity: 1,
+      },
+    ],
+    mode: 'payment',
+    success_url: `https://checkout.stripe.dev/success`,
+    cancel_url: `https://checkout.stripe.dev/cancel`,
 
-  // Use the same version as the SDK
-  const ephemeralKey = await stripe.ephemeralKeys.create(
-    { customer: customer.id },
-    { apiVersion: '2020-08-27' }
-  );
-
-  const setupIntent = await stripe.setupIntents.create({
-    customer: customer.id,
   });
-
-  res.json({
-    customer: customer.id,
-    ephemeralKeySecret: ephemeralKey.secret,
-    setupIntent: setupIntent.client_secret,
-  });
+  return res.json({ id: session.id });
 });
 
 app.post('/customer-sheet', async (_, res) => {
