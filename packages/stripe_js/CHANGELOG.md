@@ -1,3 +1,7 @@
+## 3.4.0
+
+ - a
+
 ## 3.3.0
 **FIXES** 
  - Invalid argument `requires_capture` on web (#1431).
