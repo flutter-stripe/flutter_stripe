@@ -119,9 +119,7 @@ class WebStripe extends StripePlatform {
           paymentIntentClientSecret,
           data: stripe_js.ConfirmCardPaymentData(
             paymentMethod: stripe_js.CardPaymentMethodDetails(card: element!),
-            setupFutureUsage: (options?.setupFutureUsage ??
-                    PaymentIntentsFutureUsage.OnSession)
-                .toJs(),
+            setupFutureUsage: options?.setupFutureUsage?.toJs(),
           ),
         );
       },
