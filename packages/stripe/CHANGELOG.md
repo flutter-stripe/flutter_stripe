@@ -1,3 +1,8 @@
+## 10.1.1
+
+**Fixes**
+- #1670 Fix issue when not providing preferredNetworks on `CardField` or `CardForm`
+
 ## 10.1.0
 
 **Features**

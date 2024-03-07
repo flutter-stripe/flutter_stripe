@@ -316,8 +316,9 @@ class _MethodChannelCardFormFieldState
           controller._initalDetails != null)
         'cardDetails': controller._initalDetails?.toJson(),
       'autofocus': widget.autofocus,
-      'preferredNetworks':
-          widget.preferredNetworks?.map((e) => e.brandValue).toList(),
+      if (widget.preferredNetworks != null)
+        'preferredNetworks':
+            widget.preferredNetworks?.map((e) => e.brandValue).toList(),
       'disabled': widget.disabled,
       'defaultValues': {
         'countryCode': widget.countryCode,
