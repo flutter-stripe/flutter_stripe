@@ -407,8 +407,9 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
       'placeholder': placeholder.toJson(),
       'postalCodeEnabled': widget.enablePostalCode,
       'countryCode': widget.countryCode,
-      'preferredNetworks':
-          widget.preferredNetworks?.map((e) => e.brandValue).toList(),
+      if (widget.preferredNetworks != null)
+        'preferredNetworks':
+            widget.preferredNetworks?.map((e) => e.brandValue).toList(),
       'dangerouslyGetFullCardDetails': widget.dangerouslyGetFullCardDetails,
       if (widget.dangerouslyUpdateFullCardDetails &&
           controller.initalDetails != null)
