@@ -1,3 +1,6 @@
+## 10.1.1
+- Fix build error on SDK 34
+
 ## 10.1.0
 
 **Features**
