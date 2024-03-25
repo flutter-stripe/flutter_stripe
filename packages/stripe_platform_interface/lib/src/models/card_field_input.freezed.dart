@@ -12,7 +12,7 @@ part of 'card_field_input.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CardStyle _$CardStyleFromJson(Map<String, dynamic> json) {
   return _CardStyleConstructor.fromJson(json);
@@ -307,7 +307,7 @@ class _$CardStyleConstructorImpl extends _CardStyleConstructor {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardStyleConstructorImpl &&
@@ -707,7 +707,7 @@ class _$CardFormStyleConstructorImpl extends _CardFormStyleConstructor {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardFormStyleConstructorImpl &&
@@ -979,7 +979,7 @@ class _$CardPlaceholderConstructorImpl extends _CardPlaceholderConstructor {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardPlaceholderConstructorImpl &&
@@ -1359,7 +1359,7 @@ class _$CardFieldInputDetailsImpl extends _CardFieldInputDetails {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardFieldInputDetailsImpl &&
@@ -1582,7 +1582,7 @@ class _$CardFieldFocusNameImpl implements _CardFieldFocusName {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardFieldFocusNameImpl &&

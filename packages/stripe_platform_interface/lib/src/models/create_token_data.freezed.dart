@@ -12,7 +12,7 @@ part of 'create_token_data.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CreateTokenParams _$CreateTokenParamsFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
@@ -200,7 +200,7 @@ class _$CreateTokenParamsLegacyImpl implements _CreateTokenParamsLegacy {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateTokenParamsLegacyImpl &&
@@ -390,7 +390,7 @@ class _$CreateTokenParamsCardImpl implements _CreateTokenParamsCard {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateTokenParamsCardImpl &&
@@ -574,7 +574,7 @@ class _$CreateTokenParamsBankAccountImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateTokenParamsBankAccountImpl &&
@@ -755,7 +755,7 @@ class _$CreateTokenParamsPIIImpl implements _CreateTokenParamsPII {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateTokenParamsPIIImpl &&
@@ -1040,7 +1040,7 @@ class _$CardTokenParamsImpl implements _CardTokenParams {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardTokenParamsImpl &&
@@ -1220,7 +1220,7 @@ class _$PIITokenParamsImpl implements _PIITokenParams {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PIITokenParamsImpl &&
@@ -1499,7 +1499,7 @@ class _$BankAccountTokenParamsImpl implements _BankAccountTokenParams {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BankAccountTokenParamsImpl &&
@@ -1820,7 +1820,7 @@ class _$TokenDataImpl extends _TokenData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TokenDataImpl &&
@@ -2196,7 +2196,7 @@ class _$CardDataImpl implements _CardData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardDataImpl &&
@@ -2582,7 +2582,7 @@ class _$BankAccountImpl implements _BankAccount {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BankAccountImpl &&

@@ -12,7 +12,7 @@ part of 'three_d_secure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ThreeDSecureConfigurationParams _$ThreeDSecureConfigurationParamsFromJson(
     Map<String, dynamic> json) {
@@ -418,7 +418,7 @@ class _$ThreeDSecureConfigurationParamsImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ThreeDSecureConfigurationParamsImpl &&
@@ -743,7 +743,7 @@ class _$ThreeDSecureNavigationBarThemeDataImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ThreeDSecureNavigationBarThemeDataImpl &&
@@ -995,7 +995,7 @@ class _$ThreeDSecureLabelThemeDataImpl implements _ThreeDSecureLabelThemeData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ThreeDSecureLabelThemeDataImpl &&
@@ -1252,7 +1252,7 @@ class _$ThreeDSecureTextFieldThemeDataImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ThreeDSecureTextFieldThemeDataImpl &&
@@ -1500,7 +1500,7 @@ class _$ThreeDSecureButtonThemeDataImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ThreeDSecureButtonThemeDataImpl &&
