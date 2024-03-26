@@ -2,7 +2,7 @@
 import 'dart:async';
 import 'dart:developer' as dev;
 import 'dart:html';
-import 'dart:ui' as ui;
+import 'dart:ui_web' as ui;
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
