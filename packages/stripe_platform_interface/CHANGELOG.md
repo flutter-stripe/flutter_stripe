@@ -1,3 +1,7 @@
+## 10.1.1
+
+ - Fix #1639 cashapp payments
+
 ## 10.1.0
 
 **Features**
