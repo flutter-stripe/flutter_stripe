@@ -296,7 +296,7 @@ enum UsBankAccountType {
 enum PaymentMethodType {
   AfterpayClearpay,
   Card,
-  CashAppPay,
+  CashApp,
   Alipay,
   Grabpay,
   Ideal,
