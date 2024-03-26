@@ -1,5 +1,6 @@
 import 'dart:html';
-import 'dart:ui' as ui;
+import 'dart:ui' as dart_ui;
+import 'dart:ui_web' as ui;
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
@@ -17,13 +18,13 @@ class WebPlatformPayButton extends StatefulWidget {
       this.constraints,
       this.type,
       this.style,
-      required ui.VoidCallback this.onPressed});
+      required dart_ui.VoidCallback this.onPressed});
 
   final PlatformPayWebPaymentRequestCreateOptions paymentRequestCreateOptions;
   final PlatformButtonType? type;
   final PlatformButtonStyle? style;
   final BoxConstraints? constraints;
-  final ui.VoidCallback onPressed;
+  final dart_ui.VoidCallback onPressed;
 
   @override
   State<StatefulWidget> createState() {

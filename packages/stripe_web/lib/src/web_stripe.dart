@@ -1,8 +1,7 @@
 //@dart=2.12
 import 'dart:async';
 import 'dart:developer' as dev;
-import 'dart:html';
-import 'dart:ui' as ui;
+import 'dart:html' hide VoidCallback;
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
@@ -438,7 +437,7 @@ class WebStripe extends StripePlatform {
   @override
   Widget buildPaymentRequestButton({
     Key? key,
-    required ui.VoidCallback onPressed,
+    required VoidCallback onPressed,
     required PlatformPayWebPaymentRequestCreateOptions
         paymentRequestCreateOptions,
     BoxConstraints? constraints,

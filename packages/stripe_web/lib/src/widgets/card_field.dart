@@ -1,15 +1,15 @@
 import 'dart:developer' as dev;
 import 'dart:html';
-import 'dart:ui' as ui;
+import 'dart:ui_web' as ui;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_stripe_web/src/utils.dart';
+import 'package:stripe_js/stripe_api.dart' as js;
+import 'package:stripe_js/stripe_js.dart' as js;
 
 import '../../flutter_stripe_web.dart';
-import 'package:stripe_js/stripe_js.dart' as js;
-import 'package:stripe_js/stripe_api.dart' as js;
 
 const kCardFieldDefaultHeight = 10.0;
 const kCardFieldDefaultFontSize = 17.0;
@@ -162,8 +162,7 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
     return js.CardElementOptions(
       style: {
         'base': {
-          if (textColor != null)
-            'color': '${colorToCssString(textColor)}'
+          if (textColor != null) 'color': '${colorToCssString(textColor)}'
         }
       },
       hidePostalCode: !widget.enablePostalCode,
