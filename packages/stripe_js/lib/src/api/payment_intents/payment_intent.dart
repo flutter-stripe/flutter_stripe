@@ -210,7 +210,10 @@ class PaymentIntent with _$PaymentIntent {
 
     /// The list of payment method types (e.g. card) that this PaymentIntent
     /// is allowed to use.
-    @JsonKey(name: "payment_method_types")
+    @JsonKey(
+      name: "payment_method_types",
+      unknownEnumValue: PaymentMethodType.unknown,
+    )
     @Default([])
     List<PaymentMethodType> paymentMethodTypes,
 
