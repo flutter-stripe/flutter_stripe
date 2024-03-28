@@ -56,7 +56,8 @@ _$PaymentIntentImpl _$$PaymentIntentImplFromJson(Map json) =>
       paymentMethod: json['payment_method'] as String?,
       paymentMethodOptions: json['payment_method_options'] as Map? ?? const {},
       paymentMethodTypes: (json['payment_method_types'] as List<dynamic>?)
-              ?.map((e) => $enumDecode(_$PaymentMethodTypeEnumMap, e))
+              ?.map((e) => $enumDecode(_$PaymentMethodTypeEnumMap, e,
+                  unknownValue: PaymentMethodType.unknown))
               .toList() ??
           const [],
       processing: json['processing'],
@@ -155,25 +156,25 @@ const _$PaymentIntentConfirmationMethodEnumMap = {
 };
 
 const _$PaymentMethodTypeEnumMap = {
-  PaymentMethodType.acssDebit: 'acssDebit',
+  PaymentMethodType.acssDebit: 'acss_debit',
   PaymentMethodType.affirm: 'affirm',
-  PaymentMethodType.afterpayClearpay: 'afterpayClearpay',
+  PaymentMethodType.afterpayClearpay: 'afterpay_clearpay',
   PaymentMethodType.alipay: 'alipay',
-  PaymentMethodType.auBecsDebit: 'auBecsDebit',
-  PaymentMethodType.bacsDebit: 'bacsDebit',
+  PaymentMethodType.auBecsDebit: 'au_becs_debit',
+  PaymentMethodType.bacsDebit: 'bacs_debit',
   PaymentMethodType.bancontact: 'bancontact',
   PaymentMethodType.blik: 'blik',
   PaymentMethodType.boleto: 'boleto',
   PaymentMethodType.card: 'card',
   PaymentMethodType.cashapp: 'cashapp',
-  PaymentMethodType.cardPresent: 'cardPresent',
-  PaymentMethodType.customerBalance: 'customerBalance',
+  PaymentMethodType.cardPresent: 'bacs_debit',
+  PaymentMethodType.customerBalance: 'customer_balance',
   PaymentMethodType.eps: 'eps',
   PaymentMethodType.fpx: 'fpx',
   PaymentMethodType.giropay: 'giropay',
   PaymentMethodType.grabpay: 'grabpay',
   PaymentMethodType.ideal: 'ideal',
-  PaymentMethodType.interacPresent: 'interacPresent',
+  PaymentMethodType.interacPresent: 'interac_present',
   PaymentMethodType.klarna: 'klarna',
   PaymentMethodType.konbini: 'konbini',
   PaymentMethodType.link: 'link',
@@ -182,10 +183,11 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.paynow: 'paynow',
   PaymentMethodType.pix: 'pix',
   PaymentMethodType.promptpay: 'promptpay',
-  PaymentMethodType.sepaDebit: 'sepaDebit',
+  PaymentMethodType.sepaDebit: 'sepa_debit',
   PaymentMethodType.sofort: 'sofort',
-  PaymentMethodType.usBankAccount: 'usBankAccount',
-  PaymentMethodType.wechatPay: 'wechatPay',
+  PaymentMethodType.usBankAccount: 'us_bank_account',
+  PaymentMethodType.wechatPay: 'wechat_pay',
+  PaymentMethodType.unknown: 'unknown',
 };
 
 const _$PaymentIntentSetupFutureUsageEnumMap = {
