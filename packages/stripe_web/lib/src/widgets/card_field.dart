@@ -73,7 +73,7 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   void initStripe() {
     attachController(controller);
     ambiguate(WidgetsBinding.instance)?.addPostFrameCallback((timeStamp) {
-      if (!widget.dangerouslyUpdateFullCardDetails) {
+      if (!widget.dangerouslyUpdateFullCardDetails && mounted) {
         if (kDebugMode &&
             controller.details !=
                 const CardFieldInputDetails(complete: false)) {
