@@ -12,7 +12,7 @@ part of 'payment_intent.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 PaymentIntent _$PaymentIntentFromJson(Map<String, dynamic> json) {
   return _PaymentIntent.fromJson(json);
@@ -171,7 +171,8 @@ mixin _$PaymentIntent {
 
   /// The list of payment method types (e.g. card) that this PaymentIntent
   /// is allowed to use.
-  @JsonKey(name: "payment_method_types")
+  @JsonKey(
+      name: "payment_method_types", unknownEnumValue: PaymentMethodType.unknown)
   List<PaymentMethodType> get paymentMethodTypes =>
       throw _privateConstructorUsedError;
 
@@ -280,7 +281,9 @@ abstract class $PaymentIntentCopyWith<$Res> {
       @JsonKey(name: "payment_method") String? paymentMethod,
       @JsonKey(name: "payment_method_options")
       Map<dynamic, dynamic> paymentMethodOptions,
-      @JsonKey(name: "payment_method_types")
+      @JsonKey(
+          name: "payment_method_types",
+          unknownEnumValue: PaymentMethodType.unknown)
       List<PaymentMethodType> paymentMethodTypes,
       dynamic processing,
       @JsonKey(name: "receipt_email") String? receiptEmail,
@@ -603,7 +606,9 @@ abstract class _$$PaymentIntentImplCopyWith<$Res>
       @JsonKey(name: "payment_method") String? paymentMethod,
       @JsonKey(name: "payment_method_options")
       Map<dynamic, dynamic> paymentMethodOptions,
-      @JsonKey(name: "payment_method_types")
+      @JsonKey(
+          name: "payment_method_types",
+          unknownEnumValue: PaymentMethodType.unknown)
       List<PaymentMethodType> paymentMethodTypes,
       dynamic processing,
       @JsonKey(name: "receipt_email") String? receiptEmail,
@@ -871,7 +876,9 @@ class _$PaymentIntentImpl implements _PaymentIntent {
       @JsonKey(name: "payment_method") this.paymentMethod,
       @JsonKey(name: "payment_method_options")
       final Map<dynamic, dynamic> paymentMethodOptions = const {},
-      @JsonKey(name: "payment_method_types")
+      @JsonKey(
+          name: "payment_method_types",
+          unknownEnumValue: PaymentMethodType.unknown)
       final List<PaymentMethodType> paymentMethodTypes = const [],
       this.processing,
       @JsonKey(name: "receipt_email") this.receiptEmail,
@@ -1087,7 +1094,8 @@ class _$PaymentIntentImpl implements _PaymentIntent {
   /// The list of payment method types (e.g. card) that this PaymentIntent
   /// is allowed to use.
   @override
-  @JsonKey(name: "payment_method_types")
+  @JsonKey(
+      name: "payment_method_types", unknownEnumValue: PaymentMethodType.unknown)
   List<PaymentMethodType> get paymentMethodTypes {
     if (_paymentMethodTypes is EqualUnmodifiableListView)
       return _paymentMethodTypes;
@@ -1170,7 +1178,7 @@ class _$PaymentIntentImpl implements _PaymentIntent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentIntentImpl &&
@@ -1338,7 +1346,9 @@ abstract class _PaymentIntent implements PaymentIntent {
       @JsonKey(name: "payment_method") final String? paymentMethod,
       @JsonKey(name: "payment_method_options")
       final Map<dynamic, dynamic> paymentMethodOptions,
-      @JsonKey(name: "payment_method_types")
+      @JsonKey(
+          name: "payment_method_types",
+          unknownEnumValue: PaymentMethodType.unknown)
       final List<PaymentMethodType> paymentMethodTypes,
       final dynamic processing,
       @JsonKey(name: "receipt_email") final String? receiptEmail,
@@ -1531,7 +1541,8 @@ abstract class _PaymentIntent implements PaymentIntent {
 
   /// The list of payment method types (e.g. card) that this PaymentIntent
   /// is allowed to use.
-  @JsonKey(name: "payment_method_types")
+  @JsonKey(
+      name: "payment_method_types", unknownEnumValue: PaymentMethodType.unknown)
   List<PaymentMethodType> get paymentMethodTypes;
   @override
 
@@ -1731,7 +1742,7 @@ class _$PaymentIntentAmountDetailsImpl implements _PaymentIntentAmountDetails {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentIntentAmountDetailsImpl &&
@@ -1874,7 +1885,7 @@ class _$PaymentIntentTipImpl implements _PaymentIntentTip {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentIntentTipImpl &&
@@ -2025,7 +2036,7 @@ class _$PaymentIntentAutomaticPaymentMethodsImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentIntentAutomaticPaymentMethodsImpl &&
