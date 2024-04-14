@@ -222,7 +222,7 @@ class _UiKitApplePayButtonState extends State<_UiKitApplePayButton> {
     if (widget.style != oldWidget.style || widget.type != oldWidget.type) {
       methodChannel?.invokeMethod('updateStyle', {
         'type': widget.type.id,
-        'style': widget.style.id,
+        'buttonStyle': widget.style.id,
       });
       _updateHandlers();
     }
