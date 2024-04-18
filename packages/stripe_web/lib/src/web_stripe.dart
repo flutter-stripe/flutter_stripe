@@ -1,7 +1,7 @@
 //@dart=2.12
 import 'dart:async';
 import 'dart:developer' as dev;
-import 'dart:html';
+import 'package:web/web.dart' as web;
 import 'dart:ui' as ui;
 
 import 'package:flutter/widgets.dart';
@@ -43,7 +43,7 @@ class WebStripe extends StripePlatform {
 
   String? _urlScheme;
 
-  String get urlScheme => _urlScheme ?? window.location.href;
+  String get urlScheme => _urlScheme ?? web.window.location.href;
 
   @override
   Future<void> initialise({
@@ -153,7 +153,7 @@ class WebStripe extends StripePlatform {
         return js.confirmAlipayPayment(
           paymentIntentClientSecret,
           data: stripe_js.ConfirmAlipayPaymentData(
-            returnUrl: window.location.href,
+            returnUrl: web.window.location.href,
           ),
         );
       },
