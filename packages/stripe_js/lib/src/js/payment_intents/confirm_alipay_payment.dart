@@ -1,11 +1,9 @@
-import 'package:js/js.dart';
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 import '../utils/utils.dart';
+import 'dart:js_interop';
 
 extension ExtensionAlipayPayment on Stripe {
-  _JS get js => this as _JS;
-
   /// Use stripe.confirmAlipayPayment in the Alipay payment method
   /// creation flow when the customer submits your payment form.
   /// When called, it will confirm the PaymentIntent with data you provide,
@@ -31,20 +29,17 @@ extension ExtensionAlipayPayment on Stripe {
     ConfirmAlipayPaymentData? data,
     ConfirmAlipayPaymentOptions? options,
   }) {
-    final jsData = jsify(data?.toJson() ?? {});
-    final jsOptions = jsify(options?.toJson() ?? {});
-    return parseIntentResponse(
-      js.confirmAlipayPayment(clientSecret, jsData, jsOptions),
-    );
+    final jsData = (data?.toJson() ?? {}).jsify();
+    final jsOptions = (options?.toJson() ?? {}).jsify();
+    return _confirmAlipayPayment(clientSecret, jsData, jsOptions)
+        .toDart
+        .then((response) => response.toDart);
   }
-}
 
-@anonymous
-@JS()
-abstract class _JS {
-  external Promise<dynamic> confirmAlipayPayment(
+  @JS('confirmAlipayPayment')
+  external JSPromise<JSIntentResponse> _confirmAlipayPayment(
     String clientSecret, [
-    dynamic data,
-    dynamic options,
+    JSAny? data,
+    JSAny? options,
   ]);
 }

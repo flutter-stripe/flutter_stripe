@@ -1,15 +1,15 @@
 import 'dart:developer' as dev;
-import 'dart:html';
+import 'dart:js_interop';
 import 'dart:ui' as ui;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_stripe_web/src/utils.dart';
+import 'package:stripe_js/stripe_api.dart' as js;
+import 'package:stripe_js/stripe_js.dart' as js;
+import 'package:web/web.dart' as web;
 
 import '../../flutter_stripe_web.dart';
-import 'package:stripe_js/stripe_js.dart' as js;
-import 'package:stripe_js/stripe_api.dart' as js;
 
 const kCardFieldDefaultHeight = 10.0;
 const kCardFieldDefaultFontSize = 17.0;
@@ -60,7 +60,7 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
     // ignore: undefined_prefixed_name
     ui.platformViewRegistry.registerViewFactory(
       'stripe_card',
-      (int viewId) => DivElement()
+      (int viewId) => web.HTMLDivElement()
         ..id = 'card-element'
         ..style.border = 'none',
     );
@@ -92,7 +92,7 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
 
   void initStripe() {
     attachController(controller);
-    ambiguate(WidgetsBinding.instance)?.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       if (!widget.dangerouslyUpdateFullCardDetails) {
         if (kDebugMode &&
             controller.details !=
@@ -100,6 +100,20 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
           dev.log('WARNING! Initial card data value has been ignored. \n'
               '$kDebugPCIMessage');
         }
+
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+          updateCardDetails(
+            const CardFieldInputDetails(complete: false),
+            controller,
+          );
+          element = WebStripe.js
+              .elements(createElementOptions())
+              .createCard(createOptions())
+            ..mount('#card-element'.toJS)
+            ..onBlur(requestBlur)
+            ..onFocus(requestFocus)
+            ..onChange(onCardChanged);
+        });
       }
     });
   }
@@ -149,14 +163,12 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   js.JsElementsCreateOptions createElementOptions() {
     final textColor = widget.style?.textColor;
     return js.JsElementsCreateOptions(
-      appearance: js.jsify(
-        js.ElementAppearance(
-          theme: js.ElementTheme.stripe,
-          variables: {
-            if (textColor != null) 'colorText': colorToCssString(textColor),
-          },
-        ).toJson(),
-      ) as js.JsElementAppearance,
+      appearance: js.ElementAppearance(
+        theme: js.ElementTheme.stripe,
+        variables: {
+          if (textColor != null) 'colorText': colorToCssString(textColor),
+        },
+      ).toJson().jsify() as js.JsElementAppearance,
     );
   }
 

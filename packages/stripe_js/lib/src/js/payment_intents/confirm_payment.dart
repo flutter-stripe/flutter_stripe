@@ -1,11 +1,9 @@
-import 'package:js/js.dart';
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 import '../utils/utils.dart';
+import 'dart:js_interop';
 
 extension ExtensionConfirmPayment on Stripe {
-  _JS get js => this as _JS;
-
   /// Use stripe.confirmPayment to confirm a PaymentIntent using
   /// data collected by the Payment Element.
   /// When called, stripe.confirmPayment will attempt to complete any
@@ -43,21 +41,11 @@ extension ExtensionConfirmPayment on Stripe {
   Future<PaymentIntentResponse> confirmPayment(
     ConfirmPaymentOptions options,
   ) {
-    return parseIntentResponse(js.confirmPayment(jsify(options.toJson())));
+    return _confirmPayment(options.toJson().jsify())
+        .toDart
+        .then((response) => response.toDart);
   }
-}
 
-@anonymous
-@JS()
-abstract class _JS {
-  external Promise<PaymentElementResponse> confirmPayment(
-    dynamic options,
-  );
-}
-
-@anonymous
-@JS()
-abstract class PaymentElementResponse {
-  external dynamic get error;
-  external dynamic get PaymentIntent;
+  @JS('confirmPayment')
+  external JSPromise<JSIntentResponse> _confirmPayment(JSAny? options);
 }

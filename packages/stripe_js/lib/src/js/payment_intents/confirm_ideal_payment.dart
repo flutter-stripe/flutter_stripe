@@ -1,11 +1,9 @@
-import 'package:js/js.dart';
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 import '../utils/utils.dart';
+import 'dart:js_interop';
 
 extension ExtensionIdealPayment on Stripe {
-  _JS get js => this as _JS;
-
   /// Use stripe.confirmIdealPayment in the iDEAL Payments with Payment
   /// Methods flow when the customer submits your payment form.
   /// When called, it will confirm the PaymentIntent with data you provide,
@@ -31,20 +29,17 @@ extension ExtensionIdealPayment on Stripe {
     ConfirmIdealPaymentData? data,
     ConfirmIdealPaymentOptions? options,
   }) {
-    final jsData = jsify(data?.toJson() ?? {});
-    final jsOptions = jsify(options?.toJson() ?? {});
-    return parseIntentResponse(
-      js.confirmIdealPayment(clientSecret, jsData, jsOptions),
-    );
+    final jsData = (data?.toJson() ?? {}).jsify();
+    final jsOptions = (options?.toJson() ?? {}).jsify();
+    return _confirmIdealPayment(clientSecret, jsData, jsOptions)
+        .toDart
+        .then((response) => response.toDart);
   }
-}
 
-@anonymous
-@JS()
-abstract class _JS {
-  external Promise<dynamic> confirmIdealPayment(
+  @JS('confirmIdealPayment')
+  external JSPromise<JSIntentResponse> _confirmIdealPayment(
     String clientSecret, [
-    dynamic data,
-    dynamic options,
+    JSAny? data,
+    JSAny? options,
   ]);
 }

@@ -1,3 +1,5 @@
+import 'dart:js_interop';
+
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 import 'package:stripe_js/stripe_js.dart' as js;
 
@@ -12,14 +14,15 @@ extension PaymentRequestCreateOptionsExtension
       requestPayerEmail: requestPayerEmail,
       requestPayerPhone: requestPayerPhone,
       requestShipping: requestShipping,
-      shippingOptions: shippingOptions.map((option) => option.toJS()).toList(),
-      disableWallets: disableWallets.map((type) => type.toJS()).toList(),
+      shippingOptions:
+          shippingOptions.map((option) => option.toJS).toList().toJS,
+      disableWallets: disableWallets.map((type) => type.toJS).toList().toJS,
     );
   }
 }
 
 extension ShippingOptionExtension on PlatformPayWebShippingOption {
-  js.ShippingOption toJS() => js.ShippingOption(
+  js.ShippingOption get toJS => js.ShippingOption(
         id: id,
         label: label,
         detail: detail,
@@ -36,5 +39,5 @@ extension PaymentItemExtension on PlatformPayWebPaymentItem {
 }
 
 extension WalletTypeExtension on PlatformPayWebWalletType {
-  String toJS() => name;
+  JSString get toJS => name.toJS;
 }

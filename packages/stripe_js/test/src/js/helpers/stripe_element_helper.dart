@@ -1,15 +1,12 @@
 import 'dart:async';
-import 'dart:html' as html;
-import 'dart:html';
-import 'package:js/js.dart';
+
 import 'package:stripe_js/stripe_js.dart';
 
-@JS()
-@staticInterop
-class JSIFrameElement {}
+import 'dart:js_interop';
+import 'package:web/web.dart' as web;
 
-extension Extension on JSIFrameElement {
-  external Document get contentDocument;
+extension type JSIFrameElement(JSObject element) {
+  external web.Document get contentDocument;
 }
 
 extension WaitStripeElement on StripeElement {
@@ -24,34 +21,35 @@ extension WaitStripeElement on StripeElement {
   }
 }
 
-extension ElementWaitFor on html.Element {
-  Future<html.Element> waitFor(
+extension ElementWaitFor on web.Element {
+  Future<web.Element> waitFor(
     String selectors, {
     Duration timeout = const Duration(seconds: 2),
   }) async {
-    window.console.log(this.innerHtml);
+    web.console.log(this.innerHTML.toJS);
     final element = this.querySelector(selectors);
     if (element != null) {
       return element;
     }
 
-    final completer = Completer<html.Element>();
+    final completer = Completer<web.Element>();
     late final mutationObserver;
-    mutationObserver = MutationObserver((entries, observer) {
-      window.console.log("${this.innerHtml}");
+    mutationObserver = web.MutationObserver(
+        (JSArray<web.MutationRecord> entries, web.MutationObserver observer) {
+      web.console.log("${this.innerHTML}".toJS);
       final element = this.querySelector(selectors);
       if (element != null) {
-        window.console.log("found");
+        web.console.log("found".toJS);
         mutationObserver.disconnect();
         completer.complete(element);
       }
-    });
-    window.console.log("searching");
+    }.toJS);
+    web.console.log("searching".toJS);
 
     mutationObserver.observe(this, childList: true, subtree: true);
-    this.append(DivElement());
+    this.append(web.HTMLDivElement());
     await Future.delayed(Duration(seconds: 2));
-    this.append(DivElement());
+    this.append(web.HTMLDivElement());
     return completer.future.timeout(timeout, onTimeout: () {
       mutationObserver.disconnect();
       throw TimeoutException('Could not find element $selectors');

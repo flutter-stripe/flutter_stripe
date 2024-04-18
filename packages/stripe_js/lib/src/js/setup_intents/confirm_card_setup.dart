@@ -1,11 +1,9 @@
-import 'package:js/js.dart';
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 import '../utils/utils.dart';
+import 'dart:js_interop';
 
 extension ExtensionConfirmCardSetup on Stripe {
-  _JS get js => this as _JS;
-
   /// Use stripe.confirmCardSetup in the Setup Intents API flow when the
   /// customer submits your payment form.
   /// When called, it will confirm the SetupIntent with data you provide and
@@ -25,20 +23,17 @@ extension ExtensionConfirmCardSetup on Stripe {
     ConfirmCardSetupData? data,
     ConfirmCardSetupOptions? options,
   }) {
-    final jsData = jsify(data?.toJson() ?? {});
-    final jsOptions = jsify(options?.toJson() ?? {});
-    return parseSetupIntentResponse(
-      js.confirmCardSetup(clientSecret, jsData, jsOptions),
-    );
+    final jsData = (data?.toJson() ?? {}).jsify();
+    final jsOptions = (options?.toJson() ?? {}).jsify();
+    return _confirmCardSetup(clientSecret, jsData, jsOptions)
+        .toDart
+        .then((response) => response.toDart);
   }
-}
 
-@anonymous
-@JS()
-abstract class _JS {
-  external Promise<dynamic> confirmCardSetup(
+  @JS('confirmCardSetup')
+  external JSPromise<JSSetupIntentResponse> _confirmCardSetup(
     String clientSecret, [
-    dynamic data,
-    dynamic options,
+    JSAny? data,
+    JSAny? options,
   ]);
 }

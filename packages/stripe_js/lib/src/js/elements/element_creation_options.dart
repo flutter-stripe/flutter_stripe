@@ -1,39 +1,47 @@
 // Module elements
-import 'dart:js';
 
-import 'package:js/js.dart';
 import 'package:stripe_js/stripe_js.dart';
+import 'dart:js_interop';
 
-@anonymous
-@JS()
-abstract class JsElementsCreateOptions {
-  @JS("ElementsCreateOptions")
+extension type JsElementsCreateOptions._(JSObject o) {
   external factory JsElementsCreateOptions({
-    JsArray<Font>? fonts,
+    JSArray<Font>? fonts,
     String? locale,
     String? clientSecret,
     JsElementAppearance? appearance,
-    String loader = "auto",
+    String loader,
   });
 
-  external JsArray<Font> fonts;
+  external JSArray<Font> fonts;
   external String locale;
   external String clientSecret;
   external JsElementAppearance appearance;
 }
 
-@anonymous
-@JS()
-class JsElementAppearance {
-  external String? theme;
-  external Map<String, String>? variables;
-  external Map<String, Map<String, String>>? rules;
-  external String? labels;
-  @JS("ElementAppearance")
-  external factory JsElementAppearance({
+extension type JsElementAppearance._(JSObject o) {
+  factory JsElementAppearance({
     String? theme,
     Map<String, String>? variables,
     Map<String, Map<String, String>>? rules,
     String? labels,
+  }) {
+    return JsElementAppearance.__(
+      theme: theme,
+      variables: variables.jsify(),
+      rules: rules.jsify(),
+      labels: labels,
+    );
+  }
+
+  external JsElementAppearance.__({
+    String? theme,
+    JSAny? variables,
+    JSAny? rules,
+    String? labels,
   });
+
+  external String? theme;
+  external JSAny? variables;
+  external JSAny? rules;
+  external String? labels;
 }

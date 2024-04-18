@@ -1,11 +1,9 @@
-import 'package:js/js.dart';
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 import '../utils/utils.dart';
+import 'dart:js_interop';
 
 extension ExtensionCardPayment on Stripe {
-  _JS get js => this as _JS;
-
   /// Use stripe.confirmCardPayment when the customer submits your payment form.
   /// When called, it will confirm the PaymentIntent with data you provide and
   /// carry out 3DS or other next actions if they are required.
@@ -28,25 +26,17 @@ extension ExtensionCardPayment on Stripe {
     ConfirmCardPaymentData? data,
     ConfirmCardPaymentOptions? options,
   }) {
-    print(data?.toJson());
-    final jsData = jsify(data?.toJson() ?? {});
-    final jsOptions = jsify(options?.toJson() ?? {});
-    return parseIntentResponse(
-      js.confirmCardPayment(
-        clientSecret,
-        jsData,
-        jsOptions,
-      ),
-    );
+    final jsData = (data?.toJson() ?? {}).jsify();
+    final jsOptions = (options?.toJson() ?? {}).jsify();
+    return _confirmCardPayment(clientSecret, jsData, jsOptions)
+        .toDart
+        .then((response) => response.toDart);
   }
-}
 
-@anonymous
-@JS()
-abstract class _JS {
-  external Promise<dynamic> confirmCardPayment(
+  @JS('confirmCardPayment')
+  external JSPromise<JSIntentResponse> _confirmCardPayment(
     String clientSecret, [
-    dynamic data,
-    dynamic options,
+    JSAny? data,
+    JSAny? options,
   ]);
 }
