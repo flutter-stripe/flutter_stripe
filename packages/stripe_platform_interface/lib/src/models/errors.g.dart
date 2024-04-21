@@ -36,7 +36,8 @@ Map<String, dynamic> _$$StripeExceptionImplToJson(
 _$LocalizedErrorMessageImpl _$$LocalizedErrorMessageImplFromJson(
         Map<String, dynamic> json) =>
     _$LocalizedErrorMessageImpl(
-      code: $enumDecode(_$FailureCodeEnumMap, json['code']),
+      code: $enumDecode(_$FailureCodeEnumMap, json['code'],
+          unknownValue: FailureCode.Unknown),
       localizedMessage: json['localizedMessage'] as String?,
       message: json['message'] as String?,
       stripeErrorCode: json['stripeErrorCode'] as String?,
@@ -59,4 +60,5 @@ const _$FailureCodeEnumMap = {
   FailureCode.Failed: 'Failed',
   FailureCode.Canceled: 'Canceled',
   FailureCode.Timeout: 'Timeout',
+  FailureCode.Unknown: 'Unknown',
 };
