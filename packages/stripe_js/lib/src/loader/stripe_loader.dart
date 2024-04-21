@@ -1,13 +1,14 @@
 import 'dart:async';
-import 'dart:html';
-import 'dart:js';
+import 'dart:js_interop';
+import 'package:web/web.dart';
+import 'dart:js_interop_unsafe';
 
 const String _version = "v3";
 
 /// Injects a `script` with a `src` dynamically into the head of the current
 /// document.
 Future<void> _injectSrcScript(String src, String windowVar) async {
-  ScriptElement script = ScriptElement();
+  HTMLScriptElement script = HTMLScriptElement();
   script.type = 'text/javascript';
   script.crossOrigin = 'anonymous';
   script.text = '''
@@ -20,13 +21,14 @@ Future<void> _injectSrcScript(String src, String windowVar) async {
   document.head!.append(script);
   Completer completer = Completer();
 
-  context.callMethod('ff_trigger_$windowVar', [
-    (module) {
-      context[windowVar] = module;
-      context.deleteProperty('ff_trigger_$windowVar');
+  globalContext.callMethod(
+    'ff_trigger_$windowVar'.toJS,
+    ((JSAny? module) {
+      globalContext[windowVar] = module;
+      globalContext.delete('ff_trigger_$windowVar'.toJS);
       completer.complete();
-    }
-  ]);
+    }).toJS,
+  );
 
   await completer.future;
 }
@@ -36,7 +38,7 @@ Future<void> _injectSrcScript(String src, String windowVar) async {
 Future<void> loadStripe() async {
   // If Stripe is already available, Stripe has already been initialized
   // (or the user has added the scripts to their html file).
-  if (context['Stripe'] != null) {
+  if (globalContext['Stripe'] != null) {
     return;
   }
 

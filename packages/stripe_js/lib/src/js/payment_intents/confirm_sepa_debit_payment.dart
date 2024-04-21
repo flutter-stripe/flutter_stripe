@@ -1,11 +1,9 @@
-import 'package:js/js.dart';
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 import '../utils/utils.dart';
+import 'dart:js_interop';
 
 extension ExtensionSepaDebitPayment on Stripe {
-  _JS get js => this as _JS;
-
   /// Use stripe.confirmSepaDebitPayment in the SEPA Direct Debit Payments with
   /// Payment Methods flow when the customer submits your payment form.
   /// When called, it will confirm the PaymentIntent with data you provide.
@@ -31,18 +29,15 @@ extension ExtensionSepaDebitPayment on Stripe {
     String clientSecret, {
     ConfirmSepaDebitPaymentData? data,
   }) {
-    final jsData = jsify(data?.toJson() ?? {});
-    return parseIntentResponse(
-      js.confirmSepaDebitPayment(clientSecret, jsData),
-    );
+    final jsData = (data?.toJson() ?? {}).jsify();
+    return _confirmSepaDebitPayment(clientSecret, jsData)
+        .toDart
+        .then((response) => response.toDart);
   }
-}
 
-@anonymous
-@JS()
-abstract class _JS {
-  external Promise<dynamic> confirmSepaDebitPayment(
+  @JS('confirmSepaDebitPayment')
+  external JSPromise<JSIntentResponse> _confirmSepaDebitPayment(
     String clientSecret, [
-    dynamic data,
+    JSAny? data,
   ]);
 }

@@ -1,22 +1,6 @@
-import 'package:js/js.dart';
+import 'dart:js_interop';
 
-@anonymous
-@JS()
-abstract class Style implements StyleOptions {
-  /*external StyleOptions get :hover;*/
-  /*external set :hover(StyleOptions v);*/
-  /*external StyleOptions get :focus;*/
-  /*external set :focus(StyleOptions v);*/
-  /*external StyleOptions get ::placeholder;*/
-  /*external set ::placeholder(StyleOptions v);*/
-  /*external StyleOptions get ::selection;*/
-  /*external set ::selection(StyleOptions v);*/
-  /*external StyleOptions get :-webkit-autofill;*/
-  /*external set :-webkit-autofill(StyleOptions v);*/
-  /*external StyleOptions get :disabled;*/
-  /*external set :disabled(StyleOptions v);*/
-  /*external StyleOptions get ::-ms-clear;*/
-  /*external set ::-ms-clear(StyleOptions v);*/
+extension type Style._(StyleOptions o) implements StyleOptions {
   external factory Style({
     StyleOptions hover,
     StyleOptions focus,
@@ -28,7 +12,7 @@ abstract class Style implements StyleOptions {
     String fontSmoothing,
     String fontStyle,
     String fontVariant,
-    dynamic /*String|num*/ fontWeight,
+    JSAny /*String|num*/ fontWeight,
     String iconColor,
     String lineHeight,
     String letterSpacing,
@@ -37,26 +21,27 @@ abstract class Style implements StyleOptions {
     String textShadow,
     String textTransform,
   });
+  @JS(':hover:')
+  external StyleOptions hover;
+
+  @JS(':focus')
+  external StyleOptions focus;
+
+  @JS(':disabled:')
+  external StyleOptions disabled;
+
+  /*external StyleOptions get ::placeholder;*/
+  /*external set ::placeholder(StyleOptions v);*/
+  /*external StyleOptions get ::selection;*/
+  /*external set ::selection(StyleOptions v);*/
+  /*external StyleOptions get :-webkit-autofill;*/
+  /*external set :-webkit-autofill(StyleOptions v);*/
+  /*external StyleOptions get ::-ms-clear;*/
+  /*external set ::-ms-clear(StyleOptions v);*/
 }
 
-@anonymous
-@JS()
-abstract class Font {
-  external String get family;
-  external set family(String v);
-  external String get src;
-  external set src(String v);
-  external String get display;
-  external set display(String v);
-  external String get style;
-  external set style(String v);
-  external String get unicodeRange;
-  external set unicodeRange(String v);
-  external String get weight;
-  external set weight(String v);
-  external String get cssSrc;
-  external set cssSrc(String v);
-  external factory Font({
+extension type Font._(JSObject o) implements JSObject {
+  external Font({
     String family,
     String src,
     String display,
@@ -65,42 +50,33 @@ abstract class Font {
     String weight,
     String cssSrc,
   });
+
+  external String family;
+  external String src;
+  external String display;
+  external String style;
+  external String unicodeRange;
+  external String weight;
+  external String cssSrc;
 }
 
-@anonymous
-@JS()
-abstract class StyleOptions {
+extension type StyleOptions._(JSObject o) implements JSObject {
   external String get color;
-  external set color(String v);
   external String get backgroundColor;
-  external set backgroundColor(String v);
   external String get fontFamily;
-  external set fontFamily(String v);
   external String get fontSize;
-  external set fontSize(String v);
   external String get fontSmoothing;
-  external set fontSmoothing(String v);
   external String get fontStyle;
-  external set fontStyle(String v);
   external String get fontVariant;
-  external set fontVariant(String v);
-  external dynamic /*String|num*/ get fontWeight;
-  external set fontWeight(dynamic /*String|num*/ v);
+  external JSAny /*String|num*/ get fontWeight;
   external String get iconColor;
-  external set iconColor(String v);
   external String get lineHeight;
-  external set lineHeight(String v);
   external String get letterSpacing;
-  external set letterSpacing(String v);
   external String get textAlign;
-  external set textAlign(String v);
   external String get textDecoration;
-  external set textDecoration(String v);
   external String get textShadow;
-  external set textShadow(String v);
   external String get textTransform;
-  external set textTransform(String v);
-  external factory StyleOptions({
+  external StyleOptions({
     String color,
     String backgroundColor,
     String fontFamily,
@@ -108,7 +84,7 @@ abstract class StyleOptions {
     String fontSmoothing,
     String fontStyle,
     String fontVariant,
-    dynamic /*String|num*/ fontWeight,
+    JSAny /*String|num*/ fontWeight,
     String iconColor,
     String lineHeight,
     String letterSpacing,
@@ -119,18 +95,31 @@ abstract class StyleOptions {
   });
 }
 
-@anonymous
-@JS()
-abstract class PaymentRequestButtonStyleOptions {
-  external String /*'default'|'donate'|'buy'*/ get type;
-  external set type(String /*'default'|'donate'|'buy'*/ v);
-  external String /*'dark'|'light'|'light-outline'*/ get theme;
-  external set theme(String /*'dark'|'light'|'light-outline'*/ v);
-  external String get height;
-  external set height(String v);
-  external factory PaymentRequestButtonStyleOptions({
-    String /*'default'|'donate'|'buy'*/ type,
-    String /*'dark'|'light'|'light-outline'*/ theme,
+extension type PaymentRequestButtonStyleOptions._(JSObject o) {
+  external PaymentRequestButtonStyleOptions({
+    PaymentRequestButtonType type,
+    PaymentRequestButtonTheme theme,
     String height,
   });
+
+  /// One of 'default', 'book', 'buy', or 'donate'
+  external PaymentRequestButtonType type;
+
+  /// One of 'dark', 'light', or 'light-outline'
+  external PaymentRequestButtonTheme theme;
+
+  ///  Defaults to '40px'. The width is always '100%'.
+  external String height;
+}
+
+extension type const PaymentRequestButtonType._(String o) {
+  static const donate = PaymentRequestButtonType._('donate');
+  static const buy = PaymentRequestButtonType._('buy');
+  static const book = PaymentRequestButtonType._('book');
+  static const defaultType = PaymentRequestButtonType._('default');
+}
+extension type const PaymentRequestButtonTheme._(String o) {
+  static const dark = PaymentRequestButtonTheme._('dark');
+  static const light = PaymentRequestButtonTheme._('light');
+  static const lightOutline = PaymentRequestButtonTheme._('light-outline');
 }

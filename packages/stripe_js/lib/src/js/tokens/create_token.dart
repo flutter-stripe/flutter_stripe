@@ -1,11 +1,9 @@
-import 'package:js/js.dart';
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 import '../utils/utils.dart';
+import 'dart:js_interop';
 
 extension ExtensionCreateTokenMethod on Stripe {
-  _JS get js => this as _JS;
-
   /// Use createCardElementToken to convert information collected by card
   /// elements into a single-use Token that you safely pass to your
   /// server to use in an API call.
@@ -28,20 +26,20 @@ extension ExtensionCreateTokenMethod on Stripe {
     CardPaymentElement element, [
     CreateTokenCardData? data,
   ]) {
-    final jsData = data != null ? jsify(data.toJson()) : null;
-    return parseTokenResponse(
-      js.createToken(element, jsData),
-    );
+    final jsData = data != null ? data.toJson().jsify() : null;
+    return _createToken(element, jsData)
+        .toDart
+        .then((response) => response.toDart);
   }
 
   /// Use createBankAccountToken to convert bank account information into a
   /// single-use token that you safely pass to your server to use in an API call.
   Future<TokenResponse> createBankAccountToken(
       CreateTokenBankAccountData data) {
-    final jsData = jsify(data.toJson());
-    return parseTokenResponse(
-      js.createToken('bank_account', jsData),
-    );
+    final jsData = data.toJson().jsify();
+    return _createToken('bank_account'.toJS, jsData)
+        .toDart
+        .then((response) => response.toDart);
   }
 
   /// Use createPIIToken to convert personally identifiable information (PII)
@@ -49,18 +47,12 @@ extension ExtensionCreateTokenMethod on Stripe {
   Future<TokenResponse> createPIIToken(
     CreateTokenPIIData data,
   ) {
-    final jsData = jsify(data.toJson());
-    return parseTokenResponse(
-      js.createToken('pii', jsData),
-    );
+    final jsData = data.toJson().jsify();
+    return _createToken('pii'.toJS, jsData)
+        .toDart
+        .then((response) => response.toDart);
   }
-}
 
-@anonymous
-@JS()
-abstract class _JS {
-  external Promise<dynamic> createToken(
-    dynamic value,
-    dynamic data,
-  );
+  @JS('createToken')
+  external JSPromise<JSTokenResponse> _createToken(JSAny? value, JSAny? data);
 }
