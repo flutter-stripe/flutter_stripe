@@ -865,7 +865,7 @@ mixin _$CustomerSheetResult {
   PaymentMethod? get paymentMethod => throw _privateConstructorUsedError;
 
   /// The error that occurred
-  StripeError<dynamic>? get error => throw _privateConstructorUsedError;
+  LocalizedErrorMessage? get error => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -882,11 +882,11 @@ abstract class $CustomerSheetResultCopyWith<$Res> {
   $Res call(
       {PaymentSheetPaymentOption? paymentOption,
       PaymentMethod? paymentMethod,
-      StripeError<dynamic>? error});
+      LocalizedErrorMessage? error});
 
   $PaymentSheetPaymentOptionCopyWith<$Res>? get paymentOption;
   $PaymentMethodCopyWith<$Res>? get paymentMethod;
-  $StripeErrorCopyWith<dynamic, $Res>? get error;
+  $LocalizedErrorMessageCopyWith<$Res>? get error;
 }
 
 /// @nodoc
@@ -918,7 +918,7 @@ class _$CustomerSheetResultCopyWithImpl<$Res, $Val extends CustomerSheetResult>
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as StripeError<dynamic>?,
+              as LocalizedErrorMessage?,
     ) as $Val);
   }
 
@@ -949,12 +949,12 @@ class _$CustomerSheetResultCopyWithImpl<$Res, $Val extends CustomerSheetResult>
 
   @override
   @pragma('vm:prefer-inline')
-  $StripeErrorCopyWith<dynamic, $Res>? get error {
+  $LocalizedErrorMessageCopyWith<$Res>? get error {
     if (_value.error == null) {
       return null;
     }
 
-    return $StripeErrorCopyWith<dynamic, $Res>(_value.error!, (value) {
+    return $LocalizedErrorMessageCopyWith<$Res>(_value.error!, (value) {
       return _then(_value.copyWith(error: value) as $Val);
     });
   }
@@ -971,14 +971,14 @@ abstract class _$$CustomerSheetResultImplCopyWith<$Res>
   $Res call(
       {PaymentSheetPaymentOption? paymentOption,
       PaymentMethod? paymentMethod,
-      StripeError<dynamic>? error});
+      LocalizedErrorMessage? error});
 
   @override
   $PaymentSheetPaymentOptionCopyWith<$Res>? get paymentOption;
   @override
   $PaymentMethodCopyWith<$Res>? get paymentMethod;
   @override
-  $StripeErrorCopyWith<dynamic, $Res>? get error;
+  $LocalizedErrorMessageCopyWith<$Res>? get error;
 }
 
 /// @nodoc
@@ -1008,7 +1008,7 @@ class __$$CustomerSheetResultImplCopyWithImpl<$Res>
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as StripeError<dynamic>?,
+              as LocalizedErrorMessage?,
     ));
   }
 }
@@ -1033,7 +1033,7 @@ class _$CustomerSheetResultImpl implements _CustomerSheetResult {
 
   /// The error that occurred
   @override
-  final StripeError<dynamic>? error;
+  final LocalizedErrorMessage? error;
 
   @override
   String toString() {
@@ -1076,7 +1076,7 @@ abstract class _CustomerSheetResult implements CustomerSheetResult {
   const factory _CustomerSheetResult(
       {final PaymentSheetPaymentOption? paymentOption,
       final PaymentMethod? paymentMethod,
-      final StripeError<dynamic>? error}) = _$CustomerSheetResultImpl;
+      final LocalizedErrorMessage? error}) = _$CustomerSheetResultImpl;
 
   factory _CustomerSheetResult.fromJson(Map<String, dynamic> json) =
       _$CustomerSheetResultImpl.fromJson;
@@ -1092,7 +1092,7 @@ abstract class _CustomerSheetResult implements CustomerSheetResult {
   @override
 
   /// The error that occurred
-  StripeError<dynamic>? get error;
+  LocalizedErrorMessage? get error;
   @override
   @JsonKey(ignore: true)
   _$$CustomerSheetResultImplCopyWith<_$CustomerSheetResultImpl> get copyWith =>

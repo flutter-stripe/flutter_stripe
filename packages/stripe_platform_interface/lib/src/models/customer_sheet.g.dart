@@ -128,7 +128,7 @@ _$CustomerSheetResultImpl _$$CustomerSheetResultImplFromJson(
               json['paymentMethod'] as Map<String, dynamic>),
       error: json['error'] == null
           ? null
-          : StripeError<dynamic>.fromJson(
+          : LocalizedErrorMessage.fromJson(
               json['error'] as Map<String, dynamic>),
     );
 

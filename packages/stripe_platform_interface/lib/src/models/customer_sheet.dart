@@ -93,7 +93,7 @@ class CustomerSheetResult with _$CustomerSheetResult {
     PaymentMethod? paymentMethod,
 
     /// The error that occurred
-    StripeError? error,
+    LocalizedErrorMessage? error,
   }) = _CustomerSheetResult;
 
   factory CustomerSheetResult.fromJson(Map<String, dynamic> json) =>
