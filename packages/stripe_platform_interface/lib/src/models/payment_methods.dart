@@ -153,6 +153,9 @@ class Card with _$Card {
     /// last four digits of the card.
     String? last4,
 
+    /// fingerprint of the card.
+    String? fingerprint,
+
     /// The preffered card brand for payment
     String? preferredNetwork,
 
