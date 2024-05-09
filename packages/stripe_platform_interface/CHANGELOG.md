@@ -1,3 +1,18 @@
+## 10.2.0
+
+ - **FIX**: add bankidentifiercode to ideal paymentdata (#1522).
+ - **FIX**: #1459 allow image to be null (#1466).
+ - **FIX**: #1409 send usesDeprecatedTokenFlow to stripe platform (#1410).
+ - **FIX**: #1246 handle empty params on confirmPayment (#1286).
+ - **FIX**: #1250 incorrectly providing amount to confirmplatformpaysetupintent params (#1255).
+ - **FIX**: apple pay (#1202).
+ - **FIX**: timeout payment sheet (#1161).
+ - **FIX**: implemented handleURLCallback method for iOS iDeal payment. (#939).
+ - **FEAT**: add retrieveSetupIntent (#1302).
+ - **FEAT**: release versions (#1283).
+ - **FEAT**: release 9.2.1 (#1262).
+ - **FEAT**: stripe js (#1052).
+
 ## 10.1.1
 
  - Fix #1639 cashapp payments
