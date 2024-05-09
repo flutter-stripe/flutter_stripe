@@ -30,6 +30,8 @@ Packages with dependency updates only:
 
 #### `stripe_platform_interface` - `v10.2.0`
 
+ - **FIX**: Not Getting Card's Fingerprint in Flutter (#707).
+ - **FIX**: validate with fingerprint (#688).
  - **FIX**: add bankidentifiercode to ideal paymentdata (#1522).
  - **FIX**: #1459 allow image to be null (#1466).
  - **FIX**: #1409 send usesDeprecatedTokenFlow to stripe platform (#1410).
