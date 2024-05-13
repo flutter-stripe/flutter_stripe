@@ -147,6 +147,7 @@ const _$PaymentIntentCancellationReasonEnumMap = {
 
 const _$PaymentIntentCaptureMethodEnumMap = {
   PaymentIntentCaptureMethod.automatic: 'automatic',
+  PaymentIntentCaptureMethod.automaticAsync: 'automatic_async',
   PaymentIntentCaptureMethod.manual: 'manual',
 };
 
