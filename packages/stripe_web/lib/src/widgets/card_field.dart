@@ -53,6 +53,7 @@ class WebCardField extends StatefulWidget {
 class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   CardEditController get controller => widget.controller;
 
+  late web.MutationObserver mutationObserver;
   @override
   void initState() {
     // ignore: undefined_prefixed_name
@@ -64,6 +65,31 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
     );
     initStripe();
     super.initState();
+
+    mutationObserver = web.MutationObserver(
+      ((JSArray<web.MutationRecord> entries, web.MutationObserver observer) {
+        if (web.document.getElementById('card-element') != null) {
+          mutationObserver.disconnect();
+          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+            updateCardDetails(
+              const CardFieldInputDetails(complete: false),
+              controller,
+            );
+            element = WebStripe.js
+                .elements(createElementOptions())
+                .createCard(createOptions())
+              ..mount('#card-element'.toJS)
+              ..onBlur(requestBlur)
+              ..onFocus(requestFocus)
+              ..onChange(onCardChanged);
+          });
+        }
+      }.toJS),
+    );
+    mutationObserver.observe(
+      web.document,
+      web.MutationObserverInit(childList: true, subtree: true),
+    );
   }
 
   js.CardPaymentElement? get element =>
@@ -80,19 +106,6 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
           dev.log('WARNING! Initial card data value has been ignored. \n'
               '$kDebugPCIMessage');
         }
-        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-          updateCardDetails(
-            const CardFieldInputDetails(complete: false),
-            controller,
-          );
-          element = WebStripe.js
-              .elements(createElementOptions())
-              .createCard(createOptions())
-            ..mount('#card-element'.toJS)
-            ..onBlur(requestBlur)
-            ..onFocus(requestFocus)
-            ..onChange(onCardChanged);
-        });
       }
     });
   }
@@ -142,13 +155,12 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   js.JsElementsCreateOptions createElementOptions() {
     final textColor = widget.style?.textColor;
     return js.JsElementsCreateOptions(
-      appearance: 
-        js.ElementAppearance(
-          theme: js.ElementTheme.stripe,
-          variables: {
-            if (textColor != null) 'colorText': colorToCssString(textColor),
-          },
-        ).toJson().jsify() as js.JsElementAppearance,
+      appearance: js.ElementAppearance(
+        theme: js.ElementTheme.stripe,
+        variables: {
+          if (textColor != null) 'colorText': colorToCssString(textColor),
+        },
+      ).toJson().jsify() as js.JsElementAppearance,
     );
   }
 
