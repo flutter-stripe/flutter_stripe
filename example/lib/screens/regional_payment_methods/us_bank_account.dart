@@ -112,11 +112,12 @@ class _UsBankAccountScreenState extends State<UsBankAccountScreen> {
 
   void handleNexAction(NextAction? action, String clientSecret) {
     action?.maybeWhen(
-      verifyWithMicroDeposits: (_, __, ___) {
+      verifyWithMicroDeposits: (arrivalDate, redirectUrl, microdepositType) {
         showDialog(
             context: context,
             builder: (context) {
               return _VerifyMicroDepositsDialog(
+                microdepositType: microdepositType!,
                 clientSecret: clientSecret,
               );
             });
@@ -153,9 +154,11 @@ class _UsBankAccountScreenState extends State<UsBankAccountScreen> {
 class _VerifyMicroDepositsDialog extends StatefulWidget {
   const _VerifyMicroDepositsDialog({
     required this.clientSecret,
+    required this.microdepositType,
     Key? key,
   }) : super(key: key);
   final String clientSecret;
+  final String microdepositType;
 
   @override
   State<_VerifyMicroDepositsDialog> createState() =>
@@ -190,13 +193,11 @@ class _VerifyMicroDepositsDialogState
           isPaymentIntent: true,
           clientSecret: widget.clientSecret,
           params: VerifyMicroDepositsParams(
-            descriptorCode: _descriptorController.text.isNotEmpty
-                ? _descriptorController.text
+            descriptorCode: widget.microdepositType == "descriptorCode"
+                    ? _descriptorController.text
                 : null,
-            amounts: _descriptorController.text.isEmpty &&
-                    _amount1Controller.text.isNotEmpty &&
-                    _amount2Controller.text.isNotEmpty
-                ? [
+            amounts: widget.microdepositType != "descriptorCode"
+                    ? [
                     int.parse(_amount1Controller.text),
                     int.parse(_amount2Controller.text),
                   ]
@@ -221,33 +222,39 @@ class _VerifyMicroDepositsDialogState
           children: [
             Text('Enter the details of the micro deposits verification'),
             SizedBox(height: 10),
-            TextField(
+            Visibility(
+              visible: widget.microdepositType =="descriptorCode",
+              child:  TextField(
               controller: _descriptorController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Descriptor',
               ),
-            ),
-            SizedBox(height: 10),
-            Text('As alternative enter the microdeposits'),
-            SizedBox(height: 10),
-            TextField(
-              keyboardType: TextInputType.number,
-              controller: _amount1Controller,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Microdeposit 1 value',
-              ),
-            ),
-            SizedBox(height: 10),
-            TextField(
-              controller: _amount2Controller,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Microdeposit 1 value',
-              ),
-            ),
+            ),),
+           Visibility(
+              visible: widget.microdepositType !="descriptorCode",
+              child: Column(
+              children: [
+                SizedBox(height: 10),
+                  TextField(
+                    keyboardType: TextInputType.number,
+                    controller: _amount1Controller,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Microdeposit 1 value',
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  TextField(
+                    controller: _amount2Controller,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Microdeposit 2 value',
+                    ),
+                  ),
+              ],
+            )),
             SizedBox(height: 10),
             LoadingButton(
               onPressed: () async {

@@ -6,25 +6,25 @@ part of 'google_pay.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PresentGooglePayParams _$$_PresentGooglePayParamsFromJson(
+_$PresentGooglePayParamsImpl _$$PresentGooglePayParamsImplFromJson(
         Map<String, dynamic> json) =>
-    _$_PresentGooglePayParams(
+    _$PresentGooglePayParamsImpl(
       clientSecret: json['clientSecret'] as String,
       forSetupIntent: json['forSetupIntent'] as bool? ?? false,
       currencyCode: json['currencyCode'] as String?,
     );
 
-Map<String, dynamic> _$$_PresentGooglePayParamsToJson(
-        _$_PresentGooglePayParams instance) =>
+Map<String, dynamic> _$$PresentGooglePayParamsImplToJson(
+        _$PresentGooglePayParamsImpl instance) =>
     <String, dynamic>{
       'clientSecret': instance.clientSecret,
       'forSetupIntent': instance.forSetupIntent,
       'currencyCode': instance.currencyCode,
     };
 
-_$_GooglePayInitParams _$$_GooglePayInitParamsFromJson(
+_$GooglePayInitParamsImpl _$$GooglePayInitParamsImplFromJson(
         Map<String, dynamic> json) =>
-    _$_GooglePayInitParams(
+    _$GooglePayInitParamsImpl(
       merchantName: json['merchantName'] as String,
       countryCode: json['countryCode'] as String,
       testEnv: json['testEnv'] as bool? ?? false,
@@ -35,10 +35,12 @@ _$_GooglePayInitParams _$$_GooglePayInitParamsFromJson(
       isEmailRequired: json['isEmailRequired'] as bool? ?? false,
       existingPaymentMethodRequired:
           json['existingPaymentMethodRequired'] as bool? ?? true,
+      label: json['label'] as String?,
+      amount: (json['amount'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$_GooglePayInitParamsToJson(
-        _$_GooglePayInitParams instance) =>
+Map<String, dynamic> _$$GooglePayInitParamsImplToJson(
+        _$GooglePayInitParamsImpl instance) =>
     <String, dynamic>{
       'merchantName': instance.merchantName,
       'countryCode': instance.countryCode,
@@ -46,19 +48,21 @@ Map<String, dynamic> _$$_GooglePayInitParamsToJson(
       'billingAddressConfig': instance.billingAddressConfig?.toJson(),
       'isEmailRequired': instance.isEmailRequired,
       'existingPaymentMethodRequired': instance.existingPaymentMethodRequired,
+      'label': instance.label,
+      'amount': instance.amount,
     };
 
-_$_BillingAddressConfig _$$_BillingAddressConfigFromJson(
+_$BillingAddressConfigImpl _$$BillingAddressConfigImplFromJson(
         Map<String, dynamic> json) =>
-    _$_BillingAddressConfig(
+    _$BillingAddressConfigImpl(
       isRequired: json['isRequired'] as bool?,
       format:
           $enumDecodeNullable(_$BillingAddressFormatEnumMap, json['format']),
       isPhoneNumberRequired: json['isPhoneNumberRequired'] as bool?,
     );
 
-Map<String, dynamic> _$$_BillingAddressConfigToJson(
-        _$_BillingAddressConfig instance) =>
+Map<String, dynamic> _$$BillingAddressConfigImplToJson(
+        _$BillingAddressConfigImpl instance) =>
     <String, dynamic>{
       'isRequired': instance.isRequired,
       'format': _$BillingAddressFormatEnumMap[instance.format],
@@ -70,31 +74,31 @@ const _$BillingAddressFormatEnumMap = {
   BillingAddressFormat.MIN: 'MIN',
 };
 
-_$_CreateGooglePayPaymentParams _$$_CreateGooglePayPaymentParamsFromJson(
+_$CreateGooglePayPaymentParamsImpl _$$CreateGooglePayPaymentParamsImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CreateGooglePayPaymentParams(
+    _$CreateGooglePayPaymentParamsImpl(
       currencyCode: json['currencyCode'] as String,
       amount: json['amount'] as int,
     );
 
-Map<String, dynamic> _$$_CreateGooglePayPaymentParamsToJson(
-        _$_CreateGooglePayPaymentParams instance) =>
+Map<String, dynamic> _$$CreateGooglePayPaymentParamsImplToJson(
+        _$CreateGooglePayPaymentParamsImpl instance) =>
     <String, dynamic>{
       'currencyCode': instance.currencyCode,
       'amount': instance.amount,
     };
 
-_$_IsGooglePaySupportedParams _$$_IsGooglePaySupportedParamsFromJson(
+_$IsGooglePaySupportedParamsImpl _$$IsGooglePaySupportedParamsImplFromJson(
         Map<String, dynamic> json) =>
-    _$_IsGooglePaySupportedParams(
+    _$IsGooglePaySupportedParamsImpl(
       testEnv: json['testEnv'] as bool? ?? false,
       existingPaymentMethodRequired:
           json['existingPaymentMethodRequired'] as bool? ?? false,
       supportsTapToPay: json['supportsTapToPay'] as bool? ?? true,
     );
 
-Map<String, dynamic> _$$_IsGooglePaySupportedParamsToJson(
-        _$_IsGooglePaySupportedParams instance) =>
+Map<String, dynamic> _$$IsGooglePaySupportedParamsImplToJson(
+        _$IsGooglePaySupportedParamsImpl instance) =>
     <String, dynamic>{
       'testEnv': instance.testEnv,
       'existingPaymentMethodRequired': instance.existingPaymentMethodRequired,

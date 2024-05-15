@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:stripe_example/screens/checkout/checkout_screen.dart';
+import 'package:stripe_example/screens/customer_sheet/customer_sheet_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_element/payment_element.dart';
+import 'package:stripe_example/screens/payment_sheet/payment_sheet_deffered_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_screen_custom_flow.dart';
 import 'package:stripe_example/screens/regional_payment_methods/ali_pay_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/aubecs_debit.dart';
+import 'package:stripe_example/screens/regional_payment_methods/cash_app_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/fpx_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/ideal_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/klarna_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/paypal_screen.dart';
+import 'package:stripe_example/screens/regional_payment_methods/revolutpay_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/sofort_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/us_bank_account.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen.dart';
@@ -101,6 +105,11 @@ class Example extends StatelessWidget {
           platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
         ),
         Example(
+          title: 'Single Step (deffered payment)',
+          builder: (context) => PaymentSheetDefferedScreen(),
+          platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+        ),
+        Example(
           title: 'Custom Flow',
           builder: (context) => PaymentSheetScreenWithCustomFlow(),
           platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
@@ -115,6 +124,13 @@ class Example extends StatelessWidget {
       ],
       expanded: true,
     ),
+    ExampleSection(title: 'Customer sheet', children: [
+      Example(
+        title: 'Customer sheet',
+        builder: (context) => CustomerSheetScreen(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+      ),
+    ]),
     ExampleSection(
       title: 'Card Payments',
       children: [
@@ -222,6 +238,11 @@ class Example extends StatelessWidget {
         platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
       Example(
+        title: 'Cash app Pay',
+        builder: (context) => CashAppScreen(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+      ),
+      Example(
         title: 'Ideal',
         leading: Image.asset(
           'assets/ideal_pay.png',
@@ -274,6 +295,15 @@ class Example extends StatelessWidget {
           width: 48,
         ),
         builder: (contex) => PayPalScreen(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+      ),
+      Example(
+        title: 'RevolutPay',
+        leading: Image.asset(
+          'assets/revolut.png',
+          width: 48,
+        ),
+        builder: (context) => RevolutPayScreen(),
         platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
       Example(

@@ -109,6 +109,11 @@ If you continue to have trouble, follow this discussion to get some support http
                 paymentIntentClientSecret = call.requiredArgument("paymentIntentClientSecret"),
                 promise = Promise(result)
             )
+            "handleNextActionForSetup" -> stripeSdk.handleNextActionForSetup(
+                setupIntentClientSecret = call.requiredArgument("setupIntentClientSecret"),
+                promise = Promise(result)
+            )
+
             "confirmPayment" -> stripeSdk.confirmPayment(
                 paymentIntentClientSecret = call.requiredArgument("paymentIntentClientSecret"),
                 params = call.optionalArgument("params"),
@@ -118,6 +123,10 @@ If you continue to have trouble, follow this discussion to get some support http
             "retrievePaymentIntent" -> stripeSdk.retrievePaymentIntent(
                 clientSecret = call.requiredArgument("clientSecret"),
                 promise = Promise(result)
+            )
+            "retrieveSetupIntent" -> stripeSdk.retrieveSetupIntent(
+                    clientSecret = call.requiredArgument("clientSecret"),
+                    promise = Promise(result)
             )
             "initPaymentSheet" -> stripeSdk.initPaymentSheet(
                 params = call.requiredArgument("params"),
@@ -141,22 +150,6 @@ If you continue to have trouble, follow this discussion to get some support http
                 )
                 result.success(null)
             }
-            "initGooglePay" -> stripeSdk.initGooglePay(
-                params = call.requiredArgument("params"),
-                promise = Promise(result)
-            )
-            "presentGooglePay" -> stripeSdk.presentGooglePay(
-                params = call.requiredArgument("params"),
-                promise = Promise(result)
-            )
-            "createGooglePayPaymentMethod" -> stripeSdk.createGooglePayPaymentMethod(
-                params = call.requiredArgument("params"),
-                promise = Promise(result)
-            )
-            "isGooglePaySupported" -> stripeSdk.isGooglePaySupported(
-                params = call.requiredArgument("params"),
-                promise = Promise(result)
-            )
             "collectBankAccount" -> stripeSdk.collectBankAccount(
                 isPaymentIntent = call.requiredArgument("isPaymentIntent"),
                 clientSecret = call.requiredArgument("clientSecret"),
@@ -188,6 +181,10 @@ If you continue to have trouble, follow this discussion to get some support http
             "resetPaymentSheetCustomer" -> stripeSdk.resetPaymentSheetCustomer(
                 promise = Promise(result)
             )
+            "intentCreationCallback" -> stripeSdk.intentCreationCallback(
+                params = call.requiredArgument("params"),
+                promise = Promise(result)
+            )
             "createPlatformPayPaymentMethod" -> stripeSdk.createPlatformPayPaymentMethod(
                 params = call.requiredArgument("params"),
                 usesDeprecatedTokenFlow = call.requiredArgument("usesDeprecatedTokenFlow"),
@@ -203,6 +200,67 @@ If you continue to have trouble, follow this discussion to get some support http
                 isPaymentIntent = call.requiredArgument("isPaymentIntent"),
                 promise = Promise(result)
             )
+            "addListener" -> {
+                stripeSdk.addListener(eventName = call.requiredArgument("eventName"))
+                result.success("OK")
+            }
+            "removeListener" -> {
+                stripeSdk.removeListeners(count = call.requiredArgument("count"))
+                result.success("OK")
+            }
+            "initCustomerSheet" -> {
+                stripeSdk.initCustomerSheet(
+                    params = call.requiredArgument("params"),
+                    customerAdapterOverrides = call.requiredArgument("customerAdapterOverrides"),
+                    promise = Promise(result)
+                )
+            }
+            "presentCustomerSheet" -> {
+                stripeSdk.presentCustomerSheet(
+                    params = call.requiredArgument("params"),
+                    promise = Promise(result)
+                )
+            }
+            "retrieveCustomerSheetPaymentOptionSelection" -> {
+                stripeSdk.retrieveCustomerSheetPaymentOptionSelection(
+                    promise = Promise(result)
+                )
+            }
+            "customerAdapterFetchPaymentMethodsCallback" -> {
+                stripeSdk.customerAdapterFetchPaymentMethodsCallback(
+                    paymentMethodJsonObjects = call.requiredArgument("paymentMethodJsonObjects"),
+                    promise = Promise(result)
+                )
+            }
+            "customerAdapterAttachPaymentMethodCallback" -> {
+                stripeSdk.customerAdapterAttachPaymentMethodCallback(
+                    paymentMethodJson = call.requiredArgument("paymentMethodJson"),
+                    promise = Promise(result)
+                )
+            }
+            "customerAdapterDetachPaymentMethodCallback" -> {
+                stripeSdk.customerAdapterDetachPaymentMethodCallback(
+                    paymentMethodJson = call.requiredArgument("paymentMethodJson"),
+                    promise = Promise(result)
+                )
+            }
+            "customerAdapterSetSelectedPaymentOptionCallback" -> {
+                stripeSdk.customerAdapterSetSelectedPaymentOptionCallback(
+                    promise = Promise(result)
+                )
+            }
+            "customerAdapterFetchSelectedPaymentOptionCallback" -> {
+                stripeSdk.customerAdapterFetchSelectedPaymentOptionCallback(
+                    paymentOption = call.optionalArgument("paymentOption"),
+                    promise = Promise(result)
+                )
+            }
+            "customerAdapterSetupIntentClientSecretForCustomerAttachCallback" -> {
+                stripeSdk.customerAdapterSetupIntentClientSecretForCustomerAttachCallback(
+                    clientSecret = call.requiredArgument("clientSecret"),
+                    promise = Promise(result)
+                )
+            }
             else -> result.notImplemented()
         }
     }
@@ -223,7 +281,10 @@ If you continue to have trouble, follow this discussion to get some support http
                 initializationError =
                     "Your theme isn't set to use Theme.AppCompat or Theme.MaterialComponents."
             }
-            else -> stripeSdk = StripeSdkModule(ReactApplicationContext(binding))
+            else -> {
+                val context = ReactApplicationContext(binding, channel) { stripeSdk }
+                stripeSdk = StripeSdkModule(context)
+            }
         }
     }
 

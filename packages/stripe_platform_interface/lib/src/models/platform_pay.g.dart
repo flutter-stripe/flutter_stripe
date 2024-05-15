@@ -6,9 +6,27 @@ part of 'platform_pay.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PlatformPaySheetUpdateParams _$$_PlatformPaySheetUpdateParamsFromJson(
+_$PlatformPayPaymentMethodImpl _$$PlatformPayPaymentMethodImplFromJson(
         Map<String, dynamic> json) =>
-    _$_PlatformPaySheetUpdateParams(
+    _$PlatformPayPaymentMethodImpl(
+      paymentMethod:
+          PaymentMethod.fromJson(json['paymentMethod'] as Map<String, dynamic>),
+      shippingContact: json['shippingContact'] == null
+          ? null
+          : PlatformPayShippingContact.fromJson(
+              json['shippingContact'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$PlatformPayPaymentMethodImplToJson(
+        _$PlatformPayPaymentMethodImpl instance) =>
+    <String, dynamic>{
+      'paymentMethod': instance.paymentMethod.toJson(),
+      'shippingContact': instance.shippingContact?.toJson(),
+    };
+
+_$PlatformPaySheetUpdateParamsImpl _$$PlatformPaySheetUpdateParamsImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PlatformPaySheetUpdateParamsImpl(
       summaryItems: (json['summaryItems'] as List<dynamic>)
           .map((e) =>
               ApplePayCartSummaryItem.fromJson(e as Map<String, dynamic>))
@@ -22,8 +40,8 @@ _$_PlatformPaySheetUpdateParams _$$_PlatformPaySheetUpdateParamsFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$_PlatformPaySheetUpdateParamsToJson(
-        _$_PlatformPaySheetUpdateParams instance) =>
+Map<String, dynamic> _$$PlatformPaySheetUpdateParamsImplToJson(
+        _$PlatformPaySheetUpdateParamsImpl instance) =>
     <String, dynamic>{
       'summaryItems': instance.summaryItems.map((e) => e.toJson()).toList(),
       'shippingMethods':
@@ -31,16 +49,17 @@ Map<String, dynamic> _$$_PlatformPaySheetUpdateParamsToJson(
       'errors': instance.errors?.map((e) => e.toJson()).toList(),
     };
 
-_$_ApplePaySheetErrorInvalidShipping
-    _$$_ApplePaySheetErrorInvalidShippingFromJson(Map<String, dynamic> json) =>
-        _$_ApplePaySheetErrorInvalidShipping(
+_$ApplePaySheetErrorInvalidShippingImpl
+    _$$ApplePaySheetErrorInvalidShippingImplFromJson(
+            Map<String, dynamic> json) =>
+        _$ApplePaySheetErrorInvalidShippingImpl(
           field: $enumDecode(_$InvalidShippingFieldEnumMap, json['field']),
           message: json['message'] as String?,
           $type: json['errorType'] as String?,
         );
 
-Map<String, dynamic> _$$_ApplePaySheetErrorInvalidShippingToJson(
-        _$_ApplePaySheetErrorInvalidShipping instance) =>
+Map<String, dynamic> _$$ApplePaySheetErrorInvalidShippingImplToJson(
+        _$ApplePaySheetErrorInvalidShippingImpl instance) =>
     <String, dynamic>{
       'field': _$InvalidShippingFieldEnumMap[instance.field]!,
       'message': instance.message,
@@ -58,115 +77,165 @@ const _$InvalidShippingFieldEnumMap = {
   InvalidShippingField.SubLocality: 'SubLocality',
 };
 
-_$_ApplePaySheetErrorUnserviceableShipping
-    _$$_ApplePaySheetErrorUnserviceableShippingFromJson(
+_$ApplePaySheetErrorUnserviceableShippingImpl
+    _$$ApplePaySheetErrorUnserviceableShippingImplFromJson(
             Map<String, dynamic> json) =>
-        _$_ApplePaySheetErrorUnserviceableShipping(
+        _$ApplePaySheetErrorUnserviceableShippingImpl(
           message: json['message'] as String?,
           $type: json['errorType'] as String?,
         );
 
-Map<String, dynamic> _$$_ApplePaySheetErrorUnserviceableShippingToJson(
-        _$_ApplePaySheetErrorUnserviceableShipping instance) =>
+Map<String, dynamic> _$$ApplePaySheetErrorUnserviceableShippingImplToJson(
+        _$ApplePaySheetErrorUnserviceableShippingImpl instance) =>
     <String, dynamic>{
       'message': instance.message,
       'errorType': instance.$type,
     };
 
-_$_ApplePaySheetErrorInvalidCouponCode
-    _$$_ApplePaySheetErrorInvalidCouponCodeFromJson(
+_$ApplePaySheetErrorInvalidCouponCodeImpl
+    _$$ApplePaySheetErrorInvalidCouponCodeImplFromJson(
             Map<String, dynamic> json) =>
-        _$_ApplePaySheetErrorInvalidCouponCode(
+        _$ApplePaySheetErrorInvalidCouponCodeImpl(
           message: json['message'] as String?,
           $type: json['errorType'] as String?,
         );
 
-Map<String, dynamic> _$$_ApplePaySheetErrorInvalidCouponCodeToJson(
-        _$_ApplePaySheetErrorInvalidCouponCode instance) =>
+Map<String, dynamic> _$$ApplePaySheetErrorInvalidCouponCodeImplToJson(
+        _$ApplePaySheetErrorInvalidCouponCodeImpl instance) =>
     <String, dynamic>{
       'message': instance.message,
       'errorType': instance.$type,
     };
 
-_$_ApplePaySheetErrorExpiredCouponCode
-    _$$_ApplePaySheetErrorExpiredCouponCodeFromJson(
+_$ApplePaySheetErrorExpiredCouponCodeImpl
+    _$$ApplePaySheetErrorExpiredCouponCodeImplFromJson(
             Map<String, dynamic> json) =>
-        _$_ApplePaySheetErrorExpiredCouponCode(
+        _$ApplePaySheetErrorExpiredCouponCodeImpl(
           message: json['message'] as String?,
           $type: json['errorType'] as String?,
         );
 
-Map<String, dynamic> _$$_ApplePaySheetErrorExpiredCouponCodeToJson(
-        _$_ApplePaySheetErrorExpiredCouponCode instance) =>
+Map<String, dynamic> _$$ApplePaySheetErrorExpiredCouponCodeImplToJson(
+        _$ApplePaySheetErrorExpiredCouponCodeImpl instance) =>
     <String, dynamic>{
       'message': instance.message,
       'errorType': instance.$type,
     };
 
-_$PlatformPayPaymentMethodParamsGooglePay
-    _$$PlatformPayPaymentMethodParamsGooglePayFromJson(
+_$PlatformPayPaymentMethodParamsGooglePayImpl
+    _$$PlatformPayPaymentMethodParamsGooglePayImplFromJson(
             Map<String, dynamic> json) =>
-        _$PlatformPayPaymentMethodParamsGooglePay(
+        _$PlatformPayPaymentMethodParamsGooglePayImpl(
           googlePayParams: GooglePayParams.fromJson(
               json['googlePayParams'] as Map<String, dynamic>),
           googlePayPaymentMethodParams: GooglePayPaymentMethodParams.fromJson(
               json['googlePayPaymentMethodParams'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$$PlatformPayPaymentMethodParamsGooglePayToJson(
-        _$PlatformPayPaymentMethodParamsGooglePay instance) =>
+Map<String, dynamic> _$$PlatformPayPaymentMethodParamsGooglePayImplToJson(
+        _$PlatformPayPaymentMethodParamsGooglePayImpl instance) =>
     <String, dynamic>{
       'googlePayParams': instance.googlePayParams.toJson(),
       'googlePayPaymentMethodParams':
           instance.googlePayPaymentMethodParams.toJson(),
     };
 
-_$PlatformPayPaymentMethodParamsApplePay
-    _$$PlatformPayPaymentMethodParamsApplePayFromJson(
+_$PlatformPayPaymentMethodParamsApplePayImpl
+    _$$PlatformPayPaymentMethodParamsApplePayImplFromJson(
             Map<String, dynamic> json) =>
-        _$PlatformPayPaymentMethodParamsApplePay(
+        _$PlatformPayPaymentMethodParamsApplePayImpl(
           applePayParams: ApplePayParams.fromJson(
               json['applePayParams'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$$PlatformPayPaymentMethodParamsApplePayToJson(
-        _$PlatformPayPaymentMethodParamsApplePay instance) =>
+Map<String, dynamic> _$$PlatformPayPaymentMethodParamsApplePayImplToJson(
+        _$PlatformPayPaymentMethodParamsApplePayImpl instance) =>
     <String, dynamic>{
       'applePayParams': instance.applePayParams.toJson(),
     };
 
-_$PlatformPayConfirmParamsGooglePay
-    _$$PlatformPayConfirmParamsGooglePayFromJson(Map<String, dynamic> json) =>
-        _$PlatformPayConfirmParamsGooglePay(
+_$PlatformPayPaymentMethodParamsWebImpl
+    _$$PlatformPayPaymentMethodParamsWebImplFromJson(
+            Map<String, dynamic> json) =>
+        _$PlatformPayPaymentMethodParamsWebImpl(
+          options: PlatformPayWebPaymentRequestCreateOptions.fromJson(
+              json['options'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$$PlatformPayPaymentMethodParamsWebImplToJson(
+        _$PlatformPayPaymentMethodParamsWebImpl instance) =>
+    <String, dynamic>{
+      'options': instance.options.toJson(),
+    };
+
+_$PlatformPayConfirmParamsGooglePayImpl
+    _$$PlatformPayConfirmParamsGooglePayImplFromJson(
+            Map<String, dynamic> json) =>
+        _$PlatformPayConfirmParamsGooglePayImpl(
           googlePay: GooglePayParams.fromJson(
               json['googlePay'] as Map<String, dynamic>),
           $type: json['runtimeType'] as String?,
         );
 
-Map<String, dynamic> _$$PlatformPayConfirmParamsGooglePayToJson(
-        _$PlatformPayConfirmParamsGooglePay instance) =>
+Map<String, dynamic> _$$PlatformPayConfirmParamsGooglePayImplToJson(
+        _$PlatformPayConfirmParamsGooglePayImpl instance) =>
     <String, dynamic>{
       'googlePay': instance.googlePay.toJson(),
       'runtimeType': instance.$type,
     };
 
-_$PlatformPayConfirmParamsApplePay _$$PlatformPayConfirmParamsApplePayFromJson(
-        Map<String, dynamic> json) =>
-    _$PlatformPayConfirmParamsApplePay(
-      applePay:
-          ApplePayParams.fromJson(json['applePay'] as Map<String, dynamic>),
-      $type: json['runtimeType'] as String?,
-    );
+_$PlatformPayConfirmParamsApplePayImpl
+    _$$PlatformPayConfirmParamsApplePayImplFromJson(
+            Map<String, dynamic> json) =>
+        _$PlatformPayConfirmParamsApplePayImpl(
+          applePay:
+              ApplePayParams.fromJson(json['applePay'] as Map<String, dynamic>),
+          $type: json['runtimeType'] as String?,
+        );
 
-Map<String, dynamic> _$$PlatformPayConfirmParamsApplePayToJson(
-        _$PlatformPayConfirmParamsApplePay instance) =>
+Map<String, dynamic> _$$PlatformPayConfirmParamsApplePayImplToJson(
+        _$PlatformPayConfirmParamsApplePayImpl instance) =>
     <String, dynamic>{
       'applePay': instance.applePay.toJson(),
       'runtimeType': instance.$type,
     };
 
-_$_ApplePayParams _$$_ApplePayParamsFromJson(Map<String, dynamic> json) =>
-    _$_ApplePayParams(
+_$PlatformPayConfirmParamsWebImpl _$$PlatformPayConfirmParamsWebImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PlatformPayConfirmParamsWebImpl(
+      options: PlatformPayWebPaymentRequestCreateOptions.fromJson(
+          json['options'] as Map<String, dynamic>),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$PlatformPayConfirmParamsWebImplToJson(
+        _$PlatformPayConfirmParamsWebImpl instance) =>
+    <String, dynamic>{
+      'options': instance.options.toJson(),
+      'runtimeType': instance.$type,
+    };
+
+_$PlatformPayShippingContactImpl _$$PlatformPayShippingContactImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PlatformPayShippingContactImpl(
+      emailAddress: json['emailAddress'] as String?,
+      name: ApplePayContactName.fromJson(json['name'] as Map<String, dynamic>),
+      postalAddress: ApplePayPostalAddress.fromJson(
+          json['postalAddress'] as Map<String, dynamic>),
+      phoneNumber: json['phoneNumber'] as String?,
+    );
+
+Map<String, dynamic> _$$PlatformPayShippingContactImplToJson(
+        _$PlatformPayShippingContactImpl instance) =>
+    <String, dynamic>{
+      'emailAddress': instance.emailAddress,
+      'name': instance.name.toJson(),
+      'postalAddress': instance.postalAddress.toJson(),
+      'phoneNumber': instance.phoneNumber,
+    };
+
+_$ApplePayParamsImpl _$$ApplePayParamsImplFromJson(Map<String, dynamic> json) =>
+    _$ApplePayParamsImpl(
       merchantCountryCode: json['merchantCountryCode'] as String,
       currencyCode: json['currencyCode'] as String,
       additionalEnabledNetworks:
@@ -205,7 +274,8 @@ _$_ApplePayParams _$$_ApplePayParamsFromJson(Map<String, dynamic> json) =>
               json['request'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_ApplePayParamsToJson(_$_ApplePayParams instance) =>
+Map<String, dynamic> _$$ApplePayParamsImplToJson(
+        _$ApplePayParamsImpl instance) =>
     <String, dynamic>{
       'merchantCountryCode': instance.merchantCountryCode,
       'currencyCode': instance.currencyCode,
@@ -250,8 +320,9 @@ const _$ApplePayShippingTypeEnumMap = {
   ApplePayShippingType.shipping: 'shipping',
 };
 
-_$_GooglePayParams _$$_GooglePayParamsFromJson(Map<String, dynamic> json) =>
-    _$_GooglePayParams(
+_$GooglePayParamsImpl _$$GooglePayParamsImplFromJson(
+        Map<String, dynamic> json) =>
+    _$GooglePayParamsImpl(
       testEnv: json['testEnv'] as bool? ?? false,
       merchantCountryCode: json['merchantCountryCode'] as String,
       currencyCode: json['currencyCode'] as String,
@@ -260,7 +331,8 @@ _$_GooglePayParams _$$_GooglePayParamsFromJson(Map<String, dynamic> json) =>
       allowCreditCards: json['allowCreditCards'] as bool?,
     );
 
-Map<String, dynamic> _$$_GooglePayParamsToJson(_$_GooglePayParams instance) =>
+Map<String, dynamic> _$$GooglePayParamsImplToJson(
+        _$GooglePayParamsImpl instance) =>
     <String, dynamic>{
       'testEnv': instance.testEnv,
       'merchantCountryCode': instance.merchantCountryCode,
@@ -270,9 +342,9 @@ Map<String, dynamic> _$$_GooglePayParamsToJson(_$_GooglePayParams instance) =>
       'allowCreditCards': instance.allowCreditCards,
     };
 
-_$_GooglePayPaymentMethodParams _$$_GooglePayPaymentMethodParamsFromJson(
+_$GooglePayPaymentMethodParamsImpl _$$GooglePayPaymentMethodParamsImplFromJson(
         Map<String, dynamic> json) =>
-    _$_GooglePayPaymentMethodParams(
+    _$GooglePayPaymentMethodParamsImpl(
       existingPaymentMethodRequired:
           json['existingPaymentMethodRequired'] as bool?,
       amount: json['amount'] as int,
@@ -286,8 +358,8 @@ _$_GooglePayPaymentMethodParams _$$_GooglePayPaymentMethodParamsFromJson(
               json['shippingAddressConfig'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_GooglePayPaymentMethodParamsToJson(
-        _$_GooglePayPaymentMethodParams instance) =>
+Map<String, dynamic> _$$GooglePayPaymentMethodParamsImplToJson(
+        _$GooglePayPaymentMethodParamsImpl instance) =>
     <String, dynamic>{
       'existingPaymentMethodRequired': instance.existingPaymentMethodRequired,
       'amount': instance.amount,
@@ -295,17 +367,17 @@ Map<String, dynamic> _$$_GooglePayPaymentMethodParamsToJson(
       'shippingAddressConfig': instance.shippingAddressConfig?.toJson(),
     };
 
-_$_GooglePayBillingAddressConfig _$$_GooglePayBillingAddressConfigFromJson(
-        Map<String, dynamic> json) =>
-    _$_GooglePayBillingAddressConfig(
-      isRequired: json['isRequired'] as bool?,
-      isPhoneNumberRequired: json['isPhoneNumberRequired'] as bool?,
-      format:
-          $enumDecodeNullable(_$BillingAddressFormatEnumMap, json['format']),
-    );
+_$GooglePayBillingAddressConfigImpl
+    _$$GooglePayBillingAddressConfigImplFromJson(Map<String, dynamic> json) =>
+        _$GooglePayBillingAddressConfigImpl(
+          isRequired: json['isRequired'] as bool?,
+          isPhoneNumberRequired: json['isPhoneNumberRequired'] as bool?,
+          format: $enumDecodeNullable(
+              _$BillingAddressFormatEnumMap, json['format']),
+        );
 
-Map<String, dynamic> _$$_GooglePayBillingAddressConfigToJson(
-        _$_GooglePayBillingAddressConfig instance) =>
+Map<String, dynamic> _$$GooglePayBillingAddressConfigImplToJson(
+        _$GooglePayBillingAddressConfigImpl instance) =>
     <String, dynamic>{
       'isRequired': instance.isRequired,
       'isPhoneNumberRequired': instance.isPhoneNumberRequired,
@@ -317,27 +389,27 @@ const _$BillingAddressFormatEnumMap = {
   BillingAddressFormat.MIN: 'MIN',
 };
 
-_$_GooglePayShippingAddressConfig _$$_GooglePayShippingAddressConfigFromJson(
-        Map<String, dynamic> json) =>
-    _$_GooglePayShippingAddressConfig(
-      isRequired: json['isRequired'] as bool?,
-      isPhoneNumberRequired: json['isPhoneNumberRequired'] as bool?,
-      allowedCountryCodes: (json['allowedCountryCodes'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-    );
+_$GooglePayShippingAddressConfigImpl
+    _$$GooglePayShippingAddressConfigImplFromJson(Map<String, dynamic> json) =>
+        _$GooglePayShippingAddressConfigImpl(
+          isRequired: json['isRequired'] as bool?,
+          isPhoneNumberRequired: json['isPhoneNumberRequired'] as bool?,
+          allowedCountryCodes: (json['allowedCountryCodes'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList(),
+        );
 
-Map<String, dynamic> _$$_GooglePayShippingAddressConfigToJson(
-        _$_GooglePayShippingAddressConfig instance) =>
+Map<String, dynamic> _$$GooglePayShippingAddressConfigImplToJson(
+        _$GooglePayShippingAddressConfigImpl instance) =>
     <String, dynamic>{
       'isRequired': instance.isRequired,
       'isPhoneNumberRequired': instance.isPhoneNumberRequired,
       'allowedCountryCodes': instance.allowedCountryCodes,
     };
 
-_$_PaymentRequestTypeRecurring _$$_PaymentRequestTypeRecurringFromJson(
+_$PaymentRequestTypeRecurringImpl _$$PaymentRequestTypeRecurringImplFromJson(
         Map<String, dynamic> json) =>
-    _$_PaymentRequestTypeRecurring(
+    _$PaymentRequestTypeRecurringImpl(
       description: json['description'] as String,
       managementUrl: json['managementUrl'] as String,
       billing: ImmediateCartSummaryItem.fromJson(
@@ -351,8 +423,8 @@ _$_PaymentRequestTypeRecurring _$$_PaymentRequestTypeRecurringFromJson(
       $type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$_PaymentRequestTypeRecurringToJson(
-        _$_PaymentRequestTypeRecurring instance) =>
+Map<String, dynamic> _$$PaymentRequestTypeRecurringImplToJson(
+        _$PaymentRequestTypeRecurringImpl instance) =>
     <String, dynamic>{
       'description': instance.description,
       'managementUrl': instance.managementUrl,
@@ -363,9 +435,9 @@ Map<String, dynamic> _$$_PaymentRequestTypeRecurringToJson(
       'type': instance.$type,
     };
 
-_$_PaymentRequestTypeReload _$$_PaymentRequestTypeReloadFromJson(
+_$PaymentRequestTypeReloadImpl _$$PaymentRequestTypeReloadImplFromJson(
         Map<String, dynamic> json) =>
-    _$_PaymentRequestTypeReload(
+    _$PaymentRequestTypeReloadImpl(
       description: json['description'] as String,
       managementUrl: json['managementUrl'] as String,
       label: json['label'] as String,
@@ -376,8 +448,8 @@ _$_PaymentRequestTypeReload _$$_PaymentRequestTypeReloadFromJson(
       $type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$_PaymentRequestTypeReloadToJson(
-        _$_PaymentRequestTypeReload instance) =>
+Map<String, dynamic> _$$PaymentRequestTypeReloadImplToJson(
+        _$PaymentRequestTypeReloadImpl instance) =>
     <String, dynamic>{
       'description': instance.description,
       'managementUrl': instance.managementUrl,
@@ -389,25 +461,26 @@ Map<String, dynamic> _$$_PaymentRequestTypeReloadToJson(
       'type': instance.$type,
     };
 
-_$_PaymentRequestTypeMultiMerchant _$$_PaymentRequestTypeMultiMerchantFromJson(
-        Map<String, dynamic> json) =>
-    _$_PaymentRequestTypeMultiMerchant(
-      merchants: (json['merchants'] as List<dynamic>)
-          .map((e) => ApplePayMultiMerchant.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      $type: json['type'] as String?,
-    );
+_$PaymentRequestTypeMultiMerchantImpl
+    _$$PaymentRequestTypeMultiMerchantImplFromJson(Map<String, dynamic> json) =>
+        _$PaymentRequestTypeMultiMerchantImpl(
+          merchants: (json['merchants'] as List<dynamic>)
+              .map((e) =>
+                  ApplePayMultiMerchant.fromJson(e as Map<String, dynamic>))
+              .toList(),
+          $type: json['type'] as String?,
+        );
 
-Map<String, dynamic> _$$_PaymentRequestTypeMultiMerchantToJson(
-        _$_PaymentRequestTypeMultiMerchant instance) =>
+Map<String, dynamic> _$$PaymentRequestTypeMultiMerchantImplToJson(
+        _$PaymentRequestTypeMultiMerchantImpl instance) =>
     <String, dynamic>{
       'merchants': instance.merchants,
       'type': instance.$type,
     };
 
-_$_ApplePayMultiMerchant _$$_ApplePayMultiMerchantFromJson(
+_$ApplePayMultiMerchantImpl _$$ApplePayMultiMerchantImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ApplePayMultiMerchant(
+    _$ApplePayMultiMerchantImpl(
       merchantIdentifier: json['merchantIdentifier'] as String,
       externalIdentifier: json['externalIdentifier'] as String,
       merchantName: json['merchantName'] as String,
@@ -415,8 +488,8 @@ _$_ApplePayMultiMerchant _$$_ApplePayMultiMerchantFromJson(
       amount: json['amount'] as String,
     );
 
-Map<String, dynamic> _$$_ApplePayMultiMerchantToJson(
-        _$_ApplePayMultiMerchant instance) =>
+Map<String, dynamic> _$$ApplePayMultiMerchantImplToJson(
+        _$ApplePayMultiMerchantImpl instance) =>
     <String, dynamic>{
       'merchantIdentifier': instance.merchantIdentifier,
       'externalIdentifier': instance.externalIdentifier,
@@ -425,20 +498,104 @@ Map<String, dynamic> _$$_ApplePayMultiMerchantToJson(
       'amount': instance.amount,
     };
 
-_$_PlatformPayOrderDetails _$$_PlatformPayOrderDetailsFromJson(
+_$PlatformPayOrderDetailsImpl _$$PlatformPayOrderDetailsImplFromJson(
         Map<String, dynamic> json) =>
-    _$_PlatformPayOrderDetails(
+    _$PlatformPayOrderDetailsImpl(
       orderTypeIdentifier: json['orderTypeIdentifier'] as String,
       orderIdentifier: json['orderIdentifier'] as String,
       webServiceUrl: json['webServiceUrl'] as String,
       authenticationToken: json['authenticationToken'] as String,
     );
 
-Map<String, dynamic> _$$_PlatformPayOrderDetailsToJson(
-        _$_PlatformPayOrderDetails instance) =>
+Map<String, dynamic> _$$PlatformPayOrderDetailsImplToJson(
+        _$PlatformPayOrderDetailsImpl instance) =>
     <String, dynamic>{
       'orderTypeIdentifier': instance.orderTypeIdentifier,
       'orderIdentifier': instance.orderIdentifier,
       'webServiceUrl': instance.webServiceUrl,
       'authenticationToken': instance.authenticationToken,
+    };
+
+_$PaymentRequestCreateOptionsImpl _$$PaymentRequestCreateOptionsImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PaymentRequestCreateOptionsImpl(
+      country: json['country'] as String,
+      currency: json['currency'] as String,
+      total: PlatformPayWebPaymentItem.fromJson(
+          json['total'] as Map<String, dynamic>),
+      displayItems: (json['displayItems'] as List<dynamic>?)
+              ?.map((e) =>
+                  PlatformPayWebPaymentItem.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      requestPayerName: json['requestPayerName'] as bool? ?? false,
+      requestPayerEmail: json['requestPayerEmail'] as bool? ?? false,
+      requestPayerPhone: json['requestPayerPhone'] as bool? ?? false,
+      requestShipping: json['requestShipping'] as bool? ?? false,
+      shippingOptions: (json['shippingOptions'] as List<dynamic>?)
+              ?.map((e) => PlatformPayWebShippingOption.fromJson(
+                  e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      disableWallets: (json['disableWallets'] as List<dynamic>?)
+              ?.map((e) => $enumDecode(_$PlatformPayWebWalletTypeEnumMap, e))
+              .toList() ??
+          const [],
+    );
+
+Map<String, dynamic> _$$PaymentRequestCreateOptionsImplToJson(
+        _$PaymentRequestCreateOptionsImpl instance) =>
+    <String, dynamic>{
+      'country': instance.country,
+      'currency': instance.currency,
+      'total': instance.total.toJson(),
+      'displayItems': instance.displayItems.map((e) => e.toJson()).toList(),
+      'requestPayerName': instance.requestPayerName,
+      'requestPayerEmail': instance.requestPayerEmail,
+      'requestPayerPhone': instance.requestPayerPhone,
+      'requestShipping': instance.requestShipping,
+      'shippingOptions':
+          instance.shippingOptions.map((e) => e.toJson()).toList(),
+      'disableWallets': instance.disableWallets
+          .map((e) => _$PlatformPayWebWalletTypeEnumMap[e]!)
+          .toList(),
+    };
+
+const _$PlatformPayWebWalletTypeEnumMap = {
+  PlatformPayWebWalletType.applePay: 'applePay',
+  PlatformPayWebWalletType.googlePay: 'googlePay',
+  PlatformPayWebWalletType.link: 'link',
+  PlatformPayWebWalletType.browserCard: 'browserCard',
+};
+
+_$$ShippingOptionImpl _$$$ShippingOptionImplFromJson(
+        Map<String, dynamic> json) =>
+    _$$ShippingOptionImpl(
+      id: json['id'] as String,
+      label: json['label'] as String,
+      detail: json['detail'] as String,
+      amount: json['amount'] as num,
+    );
+
+Map<String, dynamic> _$$$ShippingOptionImplToJson(
+        _$$ShippingOptionImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'label': instance.label,
+      'detail': instance.detail,
+      'amount': instance.amount,
+    };
+
+_$$PaymentItemImpl _$$$PaymentItemImplFromJson(Map<String, dynamic> json) =>
+    _$$PaymentItemImpl(
+      amount: json['amount'] as num,
+      label: json['label'] as String,
+      pending: json['pending'] as bool? ?? false,
+    );
+
+Map<String, dynamic> _$$$PaymentItemImplToJson(_$$PaymentItemImpl instance) =>
+    <String, dynamic>{
+      'amount': instance.amount,
+      'label': instance.label,
+      'pending': instance.pending,
     };

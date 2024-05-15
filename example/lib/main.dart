@@ -61,5 +61,6 @@ final exampleAppTheme = ThemeData(
     secondary: Color(0xff6058F7),
   ),
   primaryColor: Colors.white,
+  useMaterial3: false,
   appBarTheme: AppBarTheme(elevation: 1),
 );

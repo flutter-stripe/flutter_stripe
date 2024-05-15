@@ -41,6 +41,11 @@ abstract class StripePlatform extends PlatformInterface {
 
   Future<PaymentIntent> handleNextAction(String paymentIntentClientSecret,
       {String? returnURL});
+
+  Future<SetupIntent> handleNextActionForSetupIntent(
+      String setupIntentClientSecret,
+      {String? returnURL});
+
   Future<PaymentIntent> confirmPayment(
     String paymentIntentClientSecret,
     PaymentMethodParams? params,
@@ -49,11 +54,9 @@ abstract class StripePlatform extends PlatformInterface {
     PaymentMethodOptions? options,
   );
 
-  @Deprecated('This method is deprecated use [isPlatformPaySupported] instead')
-  Future<bool> isApplePaySupported() async => false;
-
   /// Configure the payment sheet using [SetupPaymentSheetParameters] as config.
-  Future<PaymentSheetPaymentOption?> initPaymentSheet(SetupPaymentSheetParameters params);
+  Future<PaymentSheetPaymentOption?> initPaymentSheet(
+      SetupPaymentSheetParameters params);
 
   /// Display the payment sheet.
   Future<PaymentSheetPaymentOption?> presentPaymentSheet({
@@ -66,18 +69,20 @@ abstract class StripePlatform extends PlatformInterface {
   /// Confirm the payment on a payment sheet.
   Future<void> confirmPaymentSheetPayment();
 
-  Future<void> openApplePaySetup();
-  Future<void> presentApplePay(
-    ApplePayPresentParams params,
-    OnDidSetShippingContact? onDidSetShippingContact,
-    OnDidSetShippingMethod? onDidSetShippingMethod,
-  );
-  Future<void> confirmApplePayPayment(String clientSecret);
-  Future<TokenData> createApplePayToken(Map<String, dynamic> payment);
-  Future<void> updateApplePaySummaryItems({
-    required List<ApplePayCartSummaryItem> summaryItems,
-    List<ApplePayErrorAddressField>? errorAddressFields,
+  /// Configure the payment sheet using [CustomerSheetInitParams] as config.
+  Future<CustomerSheetResult?> initCustomerSheet(
+      CustomerSheetInitParams params);
+
+  /// Display the customersheet sheet.
+  Future<CustomerSheetResult?> presentCustomerSheet({
+    CustomerSheetPresentParams? options,
   });
+
+  Future<CustomerSheetResult?> retrieveCustomerSheetPaymentOptionSelection();
+
+  Future<void> openApplePaySetup();
+
+  Future<TokenData> createApplePayToken(Map<String, dynamic> payment);
 
   Future<bool> handleURLCallback(String url);
 
@@ -89,11 +94,18 @@ abstract class StripePlatform extends PlatformInterface {
   Future<PaymentMethod> createGooglePayPaymentMethod(
       CreateGooglePayPaymentParams params);
 
+  @Deprecated('use the new method [CanAddCardToWalletParams] instead')
   Future<AddToWalletResult> canAddToWallet(String last4);
+
+  Future<CanAddCardToWalletResult> canAddCardToWallet(
+      CanAddCardToWalletParams params);
+
+  Future<IsCardInWalletResult> isCardInWallet(String cardLastFour);
 
   /// Check if either google pay or apple pay  is supported on device.
   Future<bool> isPlatformPaySupported({
     IsGooglePaySupportedParams? params,
+    PlatformPayWebPaymentRequestCreateOptions? paymentRequestOptions,
   });
 
   /// Start native Payment sheet to confirm setup intent
@@ -109,7 +121,7 @@ abstract class StripePlatform extends PlatformInterface {
   });
 
   /// Use native payment sheet to create payment method
-  Future<PaymentMethod> platformPayCreatePaymentMethod({
+  Future<PlatformPayPaymentMethod> platformPayCreatePaymentMethod({
     required PlatformPayPaymentMethodParams params,
     bool usesDeprecatedTokenFlow = false,
   });
@@ -130,6 +142,7 @@ abstract class StripePlatform extends PlatformInterface {
     PaymentMethodOptions? options,
   );
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret);
+  Future<SetupIntent> retrieveSetupIntent(String clientSecret);
   Future<String> createTokenForCVCUpdate(String cvc);
 
   /// Methods related to ACH payments
@@ -160,6 +173,10 @@ abstract class StripePlatform extends PlatformInterface {
   /// details: https://stripe.com/docs/security/guide#validating-pci-compliance
   Future<void> dangerouslyUpdateCardDetails(CardDetails card);
 
+  /// Method used to confirm to the user that the intent is created successfull
+  /// or not successfull when using a defferred payment method.
+  Future<void> intentCreationCallback(IntentCreationCallbackParams params);
+
   Widget buildCard({
     Key? key,
     required CardEditController controller,
@@ -174,6 +191,18 @@ abstract class StripePlatform extends PlatformInterface {
     FocusNode? focusNode,
     bool autofocus = false,
     bool dangerouslyUpdateFullCardDetails = false,
+  }) {
+    throw UnimplementedError();
+  }
+
+  Widget buildPaymentRequestButton({
+    Key? key,
+    required VoidCallback onPressed,
+    required PlatformPayWebPaymentRequestCreateOptions
+        paymentRequestCreateOptions,
+    BoxConstraints? constraints,
+    PlatformButtonType? type,
+    PlatformButtonStyle? style,
   }) {
     throw UnimplementedError();
   }

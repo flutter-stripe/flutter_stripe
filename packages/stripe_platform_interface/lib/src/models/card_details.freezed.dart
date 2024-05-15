@@ -12,7 +12,7 @@ part of 'card_details.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CardDetails _$CardDetailsFromJson(Map<String, dynamic> json) {
   return _CardDetailsConstructor.fromJson(json);
@@ -81,11 +81,12 @@ class _$CardDetailsCopyWithImpl<$Res, $Val extends CardDetails>
 }
 
 /// @nodoc
-abstract class _$$_CardDetailsConstructorCopyWith<$Res>
+abstract class _$$CardDetailsConstructorImplCopyWith<$Res>
     implements $CardDetailsCopyWith<$Res> {
-  factory _$$_CardDetailsConstructorCopyWith(_$_CardDetailsConstructor value,
-          $Res Function(_$_CardDetailsConstructor) then) =
-      __$$_CardDetailsConstructorCopyWithImpl<$Res>;
+  factory _$$CardDetailsConstructorImplCopyWith(
+          _$CardDetailsConstructorImpl value,
+          $Res Function(_$CardDetailsConstructorImpl) then) =
+      __$$CardDetailsConstructorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -93,11 +94,12 @@ abstract class _$$_CardDetailsConstructorCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CardDetailsConstructorCopyWithImpl<$Res>
-    extends _$CardDetailsCopyWithImpl<$Res, _$_CardDetailsConstructor>
-    implements _$$_CardDetailsConstructorCopyWith<$Res> {
-  __$$_CardDetailsConstructorCopyWithImpl(_$_CardDetailsConstructor _value,
-      $Res Function(_$_CardDetailsConstructor) _then)
+class __$$CardDetailsConstructorImplCopyWithImpl<$Res>
+    extends _$CardDetailsCopyWithImpl<$Res, _$CardDetailsConstructorImpl>
+    implements _$$CardDetailsConstructorImplCopyWith<$Res> {
+  __$$CardDetailsConstructorImplCopyWithImpl(
+      _$CardDetailsConstructorImpl _value,
+      $Res Function(_$CardDetailsConstructorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -108,7 +110,7 @@ class __$$_CardDetailsConstructorCopyWithImpl<$Res>
     Object? expirationMonth = freezed,
     Object? cvc = freezed,
   }) {
-    return _then(_$_CardDetailsConstructor(
+    return _then(_$CardDetailsConstructorImpl(
       number: freezed == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
@@ -132,13 +134,13 @@ class __$$_CardDetailsConstructorCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_CardDetailsConstructor extends _CardDetailsConstructor {
-  _$_CardDetailsConstructor(
+class _$CardDetailsConstructorImpl extends _CardDetailsConstructor {
+  _$CardDetailsConstructorImpl(
       {this.number, this.expirationYear, this.expirationMonth, this.cvc})
       : super._();
 
-  factory _$_CardDetailsConstructor.fromJson(Map<String, dynamic> json) =>
-      _$$_CardDetailsConstructorFromJson(json);
+  factory _$CardDetailsConstructorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CardDetailsConstructorImplFromJson(json);
 
   @override
   final String? number;
@@ -155,10 +157,10 @@ class _$_CardDetailsConstructor extends _CardDetailsConstructor {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CardDetailsConstructor &&
+            other is _$CardDetailsConstructorImpl &&
             (identical(other.number, number) || other.number == number) &&
             (identical(other.expirationYear, expirationYear) ||
                 other.expirationYear == expirationYear) &&
@@ -175,13 +177,13 @@ class _$_CardDetailsConstructor extends _CardDetailsConstructor {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CardDetailsConstructorCopyWith<_$_CardDetailsConstructor> get copyWith =>
-      __$$_CardDetailsConstructorCopyWithImpl<_$_CardDetailsConstructor>(
-          this, _$identity);
+  _$$CardDetailsConstructorImplCopyWith<_$CardDetailsConstructorImpl>
+      get copyWith => __$$CardDetailsConstructorImplCopyWithImpl<
+          _$CardDetailsConstructorImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CardDetailsConstructorToJson(
+    return _$$CardDetailsConstructorImplToJson(
       this,
     );
   }
@@ -192,11 +194,11 @@ abstract class _CardDetailsConstructor extends CardDetails {
       {final String? number,
       final int? expirationYear,
       final int? expirationMonth,
-      final String? cvc}) = _$_CardDetailsConstructor;
+      final String? cvc}) = _$CardDetailsConstructorImpl;
   _CardDetailsConstructor._() : super._();
 
   factory _CardDetailsConstructor.fromJson(Map<String, dynamic> json) =
-      _$_CardDetailsConstructor.fromJson;
+      _$CardDetailsConstructorImpl.fromJson;
 
   @override
   String? get number;
@@ -208,6 +210,6 @@ abstract class _CardDetailsConstructor extends CardDetails {
   String? get cvc;
   @override
   @JsonKey(ignore: true)
-  _$$_CardDetailsConstructorCopyWith<_$_CardDetailsConstructor> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$CardDetailsConstructorImplCopyWith<_$CardDetailsConstructorImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

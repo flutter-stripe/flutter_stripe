@@ -8,51 +8,6 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 import 'checkout.dart';
 
-/// Redirects to a prebuilt payment web page hosted on Stripe
-///
-/// The view is rendered directly for web and inside a webview for
-/// mobile platforms
-///
-/// [successUrl] and [canceledUrl] are required on mobile platforms,
-/// they should be https and match the ones used to create the checkout
-/// session in your server
-///
-/// To have a custom route transition use [CheckoutPage] directly
-@Deprecated('Use CheckoutPage instead')
-Future<CheckoutResponse> redirectToCheckout({
-  required BuildContext context,
-  required String sessionId,
-  required String publishableKey,
-  String? stripeAccountId,
-  String? successUrl,
-  String? canceledUrl,
-}) async {
-  assert(() {
-    assert(
-      successUrl != null,
-      'successUrl can not be null when using checkout inside a webview',
-    );
-    assert(
-      canceledUrl != null,
-      'canceledUrl can not be null when using checkout inside a webview',
-    );
-    return true;
-  }());
-  final response = await Navigator.of(context).push(
-    MaterialPageRoute(
-      builder: (context) => CheckoutPage(
-        sessionId: sessionId,
-        publishableKey: publishableKey,
-        stripeAccountId: stripeAccountId,
-        onCompleted: (response) => Navigator.of(context).pop(response),
-        successUrl: successUrl!,
-        canceledUrl: canceledUrl!,
-      ),
-    ),
-  );
-  return response ?? const CheckoutResponse.canceled();
-}
-
 /// Prebuilt payment web page hosted on Stripe loaded
 /// in app via a webview
 class CheckoutPage extends StatefulWidget {
@@ -107,9 +62,39 @@ class CheckoutPage extends StatefulWidget {
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
-  WebViewController? _webViewController;
+  late WebViewController _webViewController;
 
   static const String _baseUrl = 'https://stripe.com/base_url/';
+
+  @override
+  void initState() {
+    super.initState();
+    _webViewController = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onNavigationRequest: (NavigationRequest request) {
+            final successUrl = widget.successUrl;
+            final canceledUrl = widget.canceledUrl;
+
+            if (request.url.startsWith(successUrl)) {
+              widget.onCompleted?.call(const CheckoutResponse.success());
+              return NavigationDecision.prevent;
+            } else if (request.url.startsWith(canceledUrl)) {
+              widget.onCompleted?.call(const CheckoutResponse.canceled());
+              return NavigationDecision.prevent;
+            }
+            return NavigationDecision.navigate;
+          },
+          onPageFinished: (String url) {
+            if (url == _baseUrl) {
+              _redirectToStripe(widget.sessionId);
+            }
+          },
+        ),
+      )
+      ..loadRequest(Uri.parse(_baseUrl));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -118,31 +103,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: SafeArea(
-          child: WebView(
-            initialUrl: _baseUrl,
-            javascriptMode: JavascriptMode.unrestricted,
-            onWebViewCreated: (webViewController) {
-              _webViewController = webViewController;
-              _webViewController!.loadHtmlString(_htmlPage, baseUrl: _baseUrl);
-            },
-            onPageFinished: (String url) {
-              if (url == _baseUrl) {
-                _redirectToStripe(widget.sessionId);
-              }
-            },
-            navigationDelegate: (NavigationRequest request) {
-              final successUrl = widget.successUrl;
-              final canceledUrl = widget.canceledUrl;
-
-              if (request.url.startsWith(successUrl)) {
-                widget.onCompleted?.call(const CheckoutResponse.success());
-                return NavigationDecision.prevent;
-              } else if (request.url.startsWith(canceledUrl)) {
-                widget.onCompleted?.call(const CheckoutResponse.canceled());
-                return NavigationDecision.prevent;
-              }
-              return NavigationDecision.navigate;
-            },
+          child: WebViewWidget(
+            controller: _webViewController,
           ),
         ),
       ),
@@ -168,8 +130,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
       stripe.redirectToCheckout({sessionId: "$sessionId"});
     ''';
     try {
-      assert(_webViewController != null, 'WebView has not been created');
-      await _webViewController!.runJavascript(redirectToCheckoutJs);
+      await _webViewController.runJavaScript(redirectToCheckoutJs);
     } on PlatformException catch (e) {
       if (!e.details.contains(
           'JavaScript execution returned a result of an unsupported type')) {

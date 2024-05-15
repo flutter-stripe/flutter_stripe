@@ -67,7 +67,7 @@ enum PlatformButtonType {
   final int id;
 }
 
-/// iOS only property to style buttons.
+/// Property to style buttons.
 enum PlatformButtonStyle {
   /// White button with black lettering.
   white(0),

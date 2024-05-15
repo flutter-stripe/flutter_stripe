@@ -6,15 +6,22 @@
         ["Overview", "/"],
         ["Accept a Payment", [
           ["Payment Sheet", "/sheet"],
+          ["Payment sheet (deferred payment)", "/sheet_deferred"],
           ["CardField", "/card_field"],
           ["CardFormField", "/card_field"]
           ]      
+        ],
+        ["Mobile elements",
+          ["Customer Sheet", "/customer_sheet"]
         ],
         ["Regional payments", [
             ["ACH direct debit", "/ach"],
             ["Ideal", "/ideal"]
           ]
         ],
+        ["Wallets", [
+          ["Google pay", "/google_pay"]
+        ]],
         ["Financial connections", "/financial_connections" ],
         ["Troubleshooting", "/troubleshooting"],
         ["Migration guide platformpay", "/platform_pay_migration"],

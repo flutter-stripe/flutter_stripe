@@ -1,5 +1,6 @@
 package com.reactnativestripesdk
 
+import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Build
@@ -30,7 +31,7 @@ import com.flutter.stripe.R
 
 
 class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
-  internal var cardForm: CardFormView = CardFormView(context, null, R.style.StripeCardFormView_Borderless)
+  internal var cardForm: CardFormView = CardFormView(context, null, com.stripe.android.R.style.StripeCardFormView_Borderless)
   private var mEventDispatcher: EventDispatcher? = context.getNativeModule(UIManagerModule::class.java)?.eventDispatcher
   private var dangerouslyGetFullCardDetails: Boolean = false
   private var currentFocusedField: String? = null
@@ -64,6 +65,11 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
     cardForm.isEnabled = !isDisabled
   }
 
+  fun setPreferredNetworks(preferredNetworks: ArrayList<Int>?) {
+    cardForm.setPreferredNetworks(mapToPreferredNetworks(preferredNetworks))
+  }
+
+  @SuppressLint("RestrictedApi")
   private fun setCountry(countryString: String?) {
     if (countryString != null) {
       cardFormViewBinding.countryLayout.setSelectedCountryCode(CountryCode(countryString))
@@ -124,6 +130,7 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
       CardFocusEvent(id, currentFocusedField))
   }
 
+  @SuppressLint("RestrictedApi")
   fun setCardStyle(value: ReadableMap) {
     val backgroundColor = getValOr(value, "backgroundColor", null)
     val textColor = getValOr(value, "textColor", null)
@@ -289,6 +296,7 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
     )
   }
 
+  @SuppressLint("RestrictedApi")
   private fun createPostalCodeInputFilter(): InputFilter {
     return InputFilter { charSequence, start, end, _, _, _ ->
       if (cardFormViewBinding.countryLayout.getSelectedCountryCode() == CountryCode.US) {

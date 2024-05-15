@@ -33,7 +33,7 @@ class Stripe {
     return instance._publishableKey!;
   }
 
-  /// Whether or not to set the return url for Androdi as well
+  /// Whether or not to set the return url for Android as well
   static set setReturnUrlSchemeOnAndroid(bool? value) {
     if (value == instance._setReturnUrlSchemeOnAndroid) {
       return;
@@ -110,19 +110,6 @@ class Stripe {
         setReturnUrlSchemeOnAndroid: setReturnUrlSchemeOnAndroid,
       );
 
-  /// Exposes a [ValueListenable] whether or not Apple pay is supported for this
-  /// device.
-  ///
-  /// Always returns false on non Apple platforms.
-  @Deprecated('Use [isPlatformPaySupportedListenable] instead.')
-  ValueListenable<bool> get isApplePaySupported {
-    if (_isApplePaySupported == null) {
-      _isApplePaySupported = ValueNotifier(false);
-      checkApplePaySupport();
-    }
-    return _isApplePaySupported!;
-  }
-
   /// Exposes a [ValueListenable] whether or not GooglePay (on Android) or Apple Pay (on iOS)
   /// is supported for this device.
   ValueListenable<bool> get isPlatformPaySupportedListenable {
@@ -133,29 +120,21 @@ class Stripe {
     return _isPlatformPaySupported!;
   }
 
-  ///Checks if Apple pay is supported on this device.
-  ///
-  /// Always returns false on non Apple devices.
-  @Deprecated('Use [isPlatformPaySupported] instead')
-  Future<bool> checkApplePaySupport() async {
-    await _awaitForSettings();
-    final isSupported = await _platform.isApplePaySupported();
-    _isApplePaySupported ??= ValueNotifier(false);
-    _isApplePaySupported?.value = isSupported;
-    return isSupported;
-  }
-
   /// Check if the relevant native wallet (Apple Pay on iOS and Google Pay on Android)
   /// is supported.
   ///
   /// The [googlePay] param can be provided to check if platform pay is supported on
   /// Google Pay test env or if a payment method is required.
+  /// The [webPaymentRequestCreateOptions] param can be provided to confirm what
+  /// if any platform pay options are available on web.
   Future<bool> isPlatformPaySupported({
     IsGooglePaySupportedParams? googlePay,
+    PlatformPayWebPaymentRequestCreateOptions? webPaymentRequestCreateOptions,
   }) async {
     await _awaitForSettings();
-    final isSupported =
-        await _platform.isPlatformPaySupported(params: googlePay);
+    final isSupported = await _platform.isPlatformPaySupported(
+        params: googlePay,
+        paymentRequestOptions: webPaymentRequestCreateOptions);
 
     _isPlatformPaySupported ??= ValueNotifier(false);
     _isPlatformPaySupported?.value = isSupported;
@@ -169,13 +148,16 @@ class Stripe {
   /// Creating payment method does not return a token by default. Use `usesDeprecatedTokenFlow` instead.
   ///
   /// throws [StripeError] in case creating payment method is failing.
-  Future<PaymentMethod> createPlatformPayPaymentMethod({
+  Future<PlatformPayPaymentMethod> createPlatformPayPaymentMethod({
     required PlatformPayPaymentMethodParams params,
     bool usesDeprecatedTokenFlow = false,
   }) async {
     try {
       await _awaitForSettings();
-      return await _platform.platformPayCreatePaymentMethod(params: params);
+      return await _platform.platformPayCreatePaymentMethod(
+        params: params,
+        usesDeprecatedTokenFlow: usesDeprecatedTokenFlow,
+      );
     } on StripeError {
       rethrow;
     }
@@ -331,57 +313,22 @@ class Stripe {
     }
   }
 
+  /// Retrieves a [SetupIntent] using the provided [clientSecret].
+  ///
+  /// Throws a [StripeException] in case retrieving the intent fails.
+  Future<SetupIntent> retrieveSetupIntent(String clientSecret) async {
+    await _awaitForSettings();
+    try {
+      final setupIntent = await _platform.retrieveSetupIntent(clientSecret);
+      return setupIntent;
+    } on StripeError catch (error) {
+      throw StripeError(message: error.message, code: error.message);
+    }
+  }
+
   /// Opens the UI to set up credit cards for Apple Pay.
   Future<void> openApplePaySetup() async {
     await _platform.openApplePaySetup();
-  }
-
-  /// Presents an Apple payment sheet using [params] for additional
-  /// configuration. See [ApplePayPresentParams] for more details.
-  ///
-  /// Throws an [StripeError] in case presenting the payment sheet fails.
-  @Deprecated(
-      'Use either [confirmPlatformPaySetupIntent] or [confirmPlatformPayPaymentIntent].')
-  Future<void> presentApplePay({
-    required ApplePayPresentParams params,
-    OnDidSetShippingContact? onDidSetShippingContact,
-    OnDidSetShippingMethod? onDidSetShippingMethod,
-  }) async {
-    await _awaitForSettings();
-    if (!isApplePaySupported.value) {
-      //throw StripeError<ApplePayError>
-      //(ApplePayError.canceled, 'APPLE_PAY_NOT_SUPPORTED_MESSAGE');
-    }
-    try {
-      await _platform.presentApplePay(
-        params,
-        onDidSetShippingContact,
-        onDidSetShippingMethod,
-      );
-    } on StripeError {
-      rethrow;
-    }
-  }
-
-  /// Confirms the Apple pay payment using the provided [clientSecret].
-  /// Use this method when the form is being submitted.
-  ///
-  /// Throws an [StripeError] in confirming the payment fails.
-  @Deprecated(
-      'Use [confirmPlatformPaySetupIntent] or [confirmPlatformPayPaymentIntent].')
-  Future<void> confirmApplePayPayment(
-    String clientSecret,
-  ) async {
-    await _awaitForSettings();
-    if (!isApplePaySupported.value) {
-      //throw StripeError<ApplePayError>
-      //(ApplePayError.canceled, 'APPLE_PAY_NOT_SUPPORTED_MESSAGE');
-    }
-    try {
-      await _platform.confirmApplePayPayment(clientSecret);
-    } on StripeError {
-      rethrow;
-    }
   }
 
   /// Handle URL callback from iDeal payment returnUrl to close iOS in-app webview
@@ -432,6 +379,25 @@ class Stripe {
       return paymentIntent;
     } on StripeError {
       //throw StripeError<CardActionError>(error.code, error.message);
+      rethrow;
+    }
+  }
+
+  /// Use this method in case the [SetupIntent] status is
+  /// [PaymentIntentsStatus.RequiresAction]. Executing this action can take
+  /// several seconds and it is important to not resubmit the form.
+  ///
+  /// Throws a [StripeException] when confirming the handle card action fails.
+  Future<SetupIntent> handleNextActionForSetupIntent(
+      String setupIntentClientSecret,
+      {String? returnURL}) async {
+    await _awaitForSettings();
+    try {
+      final paymentIntent = await _platform.handleNextActionForSetupIntent(
+          setupIntentClientSecret,
+          returnURL: returnURL);
+      return paymentIntent;
+    } on StripeError {
       rethrow;
     }
   }
@@ -502,6 +468,14 @@ class Stripe {
   }) async {
     await _awaitForSettings();
     return await _platform.presentPaymentSheet(options: options);
+  }
+
+  /// Method used to confirm to the user that the intent is created successfull
+  /// or not successfull when using a defferred payment method.
+  Future<void> intentCreationCallback(
+      IntentCreationCallbackParams params) async {
+    await _awaitForSettings();
+    return await _platform.intentCreationCallback(params);
   }
 
   /// Call this method when the user logs out from your app.
@@ -612,8 +586,26 @@ class Stripe {
 
   /// check if a particular card can be provisioned with the current app
   /// on this particular device.
+  ///
+  /// This method is deprecated. Use [canAddCardToWallet] instead.
+  @Deprecated('Use [canAddCardToWallet] instead')
   Future<AddToWalletResult> canAddToWallet(String last4) async {
     return await _platform.canAddToWallet(last4);
+  }
+
+  /// check if a particular card can be provisioned with the current app
+  /// on this particular device.
+  /// Throws [StripeException] in case creating the token fails.
+  Future<CanAddCardToWalletResult> canAddCardToWallet(
+      CanAddCardToWalletParams params) async {
+    return await _platform.canAddCardToWallet(params);
+  }
+
+  /// check if a particular card can be provisioned with the current app
+  /// on this particular device.
+  /// Throws [StripeException] in case creating the token fails.
+  Future<IsCardInWalletResult> isCardInWallet(String cardLastFour) async {
+    return await _platform.isCardInWallet(cardLastFour);
   }
 
   /// Call the financial connections authentication flow in order to collect a US bank account to enhance payouts.
@@ -647,6 +639,29 @@ class Stripe {
     } on StripeError {
       rethrow;
     }
+  }
+
+  /// Initializes the customer sheet with the provided [parameters].
+  Future<CustomerSheetResult?> initCustomerSheet(
+      {required CustomerSheetInitParams customerSheetInitParams}) async {
+    await _awaitForSettings();
+    return _platform.initCustomerSheet(customerSheetInitParams);
+  }
+
+  /// Display the customersheet sheet. With the provided [options].
+  Future<CustomerSheetResult?> presentCustomerSheet({
+    CustomerSheetPresentParams? options,
+  }) async {
+    await _awaitForSettings();
+    return _platform.presentCustomerSheet(options: options);
+  }
+
+  /// Retrieve the customer sheet payment option selection.
+  Future<CustomerSheetResult?>
+      retrieveCustomerSheetPaymentOptionSelection() async {
+    await _awaitForSettings();
+
+    return _platform.retrieveCustomerSheetPaymentOptionSelection();
   }
 
   FutureOr<void> _awaitForSettings() {
@@ -705,9 +720,9 @@ class Stripe {
     );
   }
 
-  ValueNotifier<bool>? _isApplePaySupported;
   ValueNotifier<bool>? _isPlatformPaySupported;
 
   // Internal use only
   static final buildWebCard = _platform.buildCard;
+  static final buildPaymentRequestButton = _platform.buildPaymentRequestButton;
 }

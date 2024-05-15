@@ -17,7 +17,7 @@ class ApplePayButton extends StatelessWidget {
     Key? key,
     this.style = PlatformButtonStyle.automatic,
     this.type = PlatformButtonType.plain,
-    this.cornerRadius = 4.0,
+    this.cornerRadius = 4,
     this.onPressed,
     double? width,
     double? height = _kApplePayButtonDefaultHeight,
@@ -50,7 +50,7 @@ class ApplePayButton extends StatelessWidget {
   /// Modifies the **corner radius** of the payment button.
   /// To remove the rounded courners, set this value to 0.0.
   /// The default value is set to 4.0
-  final double cornerRadius;
+  final int cornerRadius;
 
   /// Callback that is executed when the button is pressed.
   final VoidCallback? onPressed;
@@ -116,7 +116,7 @@ class _UiKitApplePayButton extends StatefulWidget {
     Key? key,
     required this.style,
     required this.type,
-    this.cornerRadius = 4.0,
+    this.cornerRadius = 4,
     this.onPressed,
     this.onShippingContactSelected,
     this.onCouponCodeEntered,
@@ -126,7 +126,7 @@ class _UiKitApplePayButton extends StatefulWidget {
 
   final PlatformButtonStyle style;
   final PlatformButtonType type;
-  final double cornerRadius;
+  final int cornerRadius;
   final VoidCallback? onPressed;
   final OnDidSetShippingContact? onShippingContactSelected;
   final OnDidSetShippingMethod? onShippingMethodSelected;
@@ -222,7 +222,7 @@ class _UiKitApplePayButtonState extends State<_UiKitApplePayButton> {
     if (widget.style != oldWidget.style || widget.type != oldWidget.type) {
       methodChannel?.invokeMethod('updateStyle', {
         'type': widget.type.id,
-        'style': widget.style.id,
+        'buttonStyle': widget.style.id,
       });
       _updateHandlers();
     }
@@ -242,8 +242,8 @@ class _UiKitApplePayButtonState extends State<_UiKitApplePayButton> {
 }
 
 // For some reason json serializable cannot be cast
-ApplePayShippingContact _convertShippingContact(dynamic json) =>
-    ApplePayShippingContact(
+PlatformPayShippingContact _convertShippingContact(dynamic json) =>
+    PlatformPayShippingContact(
       phoneNumber: json['phoneNumber'],
       name: ApplePayContactName(
         familyName: json['name']['familyName'],

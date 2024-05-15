@@ -4,9 +4,27 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'apple_pay.dart';
 import 'google_pay.dart';
+import 'payment_methods.dart';
 
 part 'platform_pay.freezed.dart';
 part 'platform_pay.g.dart';
+
+@freezed
+
+/// Result object when creating a payment method through apple pay or google pay.
+class PlatformPayPaymentMethod with _$PlatformPayPaymentMethod {
+  @JsonSerializable(explicitToJson: true)
+  const factory PlatformPayPaymentMethod({
+    /// The payment method
+    required PaymentMethod paymentMethod,
+
+    /// shipping contact of the user
+    PlatformPayShippingContact? shippingContact,
+  }) = _PlatformPayPaymentMethod;
+
+  factory PlatformPayPaymentMethod.fromJson(Map<String, dynamic> json) =>
+      _$PlatformPayPaymentMethodFromJson(json);
+}
 
 @freezed
 
@@ -97,6 +115,11 @@ class PlatformPayPaymentMethodParams with _$PlatformPayPaymentMethodParams {
   const factory PlatformPayPaymentMethodParams.applePay({
     required ApplePayParams applePayParams,
   }) = PlatformPayPaymentMethodParamsApplePay;
+
+  @JsonSerializable(explicitToJson: true)
+  const factory PlatformPayPaymentMethodParams.web({
+    required PlatformPayWebPaymentRequestCreateOptions options,
+  }) = PlatformPayPaymentMethodParamsWeb;
 }
 
 @freezed
@@ -111,8 +134,36 @@ class PlatformPayConfirmParams with _$PlatformPayConfirmParams {
     required ApplePayParams applePay,
   }) = PlatformPayConfirmParamsApplePay;
 
+  @JsonSerializable(explicitToJson: true)
+  const factory PlatformPayConfirmParams.web({
+    required PlatformPayWebPaymentRequestCreateOptions options,
+  }) = PlatformPayConfirmParamsWeb;
+
   factory PlatformPayConfirmParams.fromJson(Map<String, dynamic> json) =>
       _$PlatformPayConfirmParamsFromJson(json);
+}
+
+@freezed
+
+/// Entered Shipping contact data
+class PlatformPayShippingContact with _$PlatformPayShippingContact {
+  @JsonSerializable(explicitToJson: true)
+  const factory PlatformPayShippingContact({
+    /// Email address of the shipping contact
+    String? emailAddress,
+
+    /// Name of shipping contact
+    required ApplePayContactName name,
+
+    /// Postal address of shipping contact
+    required ApplePayPostalAddress postalAddress,
+
+    ///Phone Number of the shipping contact
+    String? phoneNumber,
+  }) = _PlatformPayShippingContact;
+
+  factory PlatformPayShippingContact.fromJson(Map<String, dynamic> json) =>
+      _$PlatformPayShippingContactFromJson(json);
 }
 
 @freezed
@@ -218,6 +269,7 @@ class GooglePayPaymentMethodParams with _$GooglePayPaymentMethodParams {
     bool? existingPaymentMethodRequired,
 
     /// Total monetary value of the transaction.
+    /// Provide this value in the currency’s smallest unit.
     required int amount,
 
     /// Describes the configuration for billing address collection in the Google Pay sheet.
@@ -292,7 +344,7 @@ class PaymentRequestType with _$PaymentRequestType {
   ///
   /// For example a subscription
   const factory PaymentRequestType.recurring({
-    /// Descirption that you provide to the recurring payment.
+    /// Description that you provide to the recurring payment.
     ///
     /// Apple will display this in the sheet
     required String description,
@@ -409,4 +461,114 @@ class PlatformPayOrderDetails with _$PlatformPayOrderDetails {
 
   factory PlatformPayOrderDetails.fromJson(Map<String, dynamic> json) =>
       _$PlatformPayOrderDetailsFromJson(json);
+}
+
+enum PlatformPayWebWalletType {
+  applePay,
+  googlePay,
+  link,
+  browserCard,
+}
+
+@freezed
+class PlatformPayWebPaymentRequestCreateOptions
+    with _$PlatformPayWebPaymentRequestCreateOptions {
+  @JsonSerializable(explicitToJson: true)
+  const factory PlatformPayWebPaymentRequestCreateOptions({
+    /// The two-letter country code of your Stripe account (e.g., US).
+    required String country,
+
+    /// Three character currency code (e.g., usd).
+    required String currency,
+
+    /// A PaymentItem object. This PaymentItem is shown to the customer in the browser’s payment interface.
+    required PlatformPayWebPaymentItem total,
+
+    /// An array of PaymentItem objects. These objects are shown as line items in the browser’s payment interface.
+    /// Note that the sum of the line item amounts does not need to add up to the total amount above.
+    @Default([]) List<PlatformPayWebPaymentItem> displayItems,
+
+    /// By default, the browser‘s payment interface only asks the customer for actual payment information. A customer
+    /// name can be collected by setting this option to true. This collected name will appears in the PaymentResponse object.
+    ///
+    ///  We highly recommend you collect name as this also results in collection of billing address for Apple Pay.
+    ///  The billing address can be used to perform address verification and block fraudulent payments.
+    ///  For all other payment methods, the billing address is automatically collected when available.
+    @Default(false) bool requestPayerName,
+
+    /// See the requestPayerName option.
+    @Default(false) bool requestPayerEmail,
+
+    /// See the requestPayerName option.
+    @Default(false) bool requestPayerPhone,
+
+    /// Collect shipping address by setting this option to true. The address appears in the PaymentResponse.
+    ///
+    ///  You must also supply a valid [ShippingOptions] to the shippingOptions property. This can be up front at the
+    ///  time stripe.paymentRequest is called, or in response to a shippingaddresschange event using the updateWith callback.
+    @Default(false) bool requestShipping,
+
+    /// An array of ShippingOption objects. The first shipping option listed appears in the browser payment interface as the default option.
+    @Default([]) List<PlatformPayWebShippingOption> shippingOptions,
+
+    /// An array of wallet strings. Can be one or more of applePay, googlePay, link, and browserCard. Use this option
+    /// to disable Apple Pay, Google Pay, Link, and/or browser-saved cards.
+    @Default([]) List<PlatformPayWebWalletType> disableWallets,
+  }) = _PaymentRequestCreateOptions;
+
+  factory PlatformPayWebPaymentRequestCreateOptions.fromJson(
+          Map<String, dynamic> json) =>
+      _$PlatformPayWebPaymentRequestCreateOptionsFromJson(json);
+
+  static const defaultOptions = PlatformPayWebPaymentRequestCreateOptions(
+    country: 'US',
+    currency: 'usd',
+    total: PlatformPayWebPaymentItem(
+      amount: 0,
+      label: 'Payment',
+    ),
+  );
+}
+
+@freezed
+class PlatformPayWebShippingOption with _$PlatformPayWebShippingOption {
+  @JsonSerializable(explicitToJson: true)
+  const factory PlatformPayWebShippingOption({
+    /// A unique ID you create to keep track of this shipping option. You’ll be told the ID of the selected option
+    /// on changes and on completion.
+    required String id,
+
+    /// A short label for this shipping option.
+    required String label,
+
+    /// A longer description of this shipping option.
+    required String detail,
+
+    /// The amount to show for this shipping option. If the cost of this shipping option depends on the shipping address
+    /// the customer enters, listen for the shippingaddresschange event.
+    required num amount,
+  }) = _$ShippingOption;
+
+  factory PlatformPayWebShippingOption.fromJson(Map<String, dynamic> json) =>
+      _$PlatformPayWebShippingOptionFromJson(json);
+}
+
+@freezed
+class PlatformPayWebPaymentItem with _$PlatformPayWebPaymentItem {
+  @JsonSerializable(explicitToJson: true)
+  const factory PlatformPayWebPaymentItem({
+    /// The amount in the currency's subunit (e.g. cents, yen, etc.)
+    required num amount,
+
+    /// A name that the browser shows the customer in the payment interface.
+    required String label,
+
+    /// If you might change this amount later (for example, after you have calculated shipping costs), set this to true.
+    /// Note that browsers treat this as a hint for how to display things, and not necessarily as something that will
+    /// prevent submission.
+    @Default(false) bool pending,
+  }) = _$PaymentItem;
+
+  factory PlatformPayWebPaymentItem.fromJson(Map<String, dynamic> json) =>
+      _$PlatformPayWebPaymentItemFromJson(json);
 }

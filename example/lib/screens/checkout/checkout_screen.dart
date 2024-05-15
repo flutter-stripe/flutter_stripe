@@ -1,15 +1,16 @@
 import 'dart:convert';
 import 'dart:developer';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:stripe_checkout/stripe_checkout.dart';
 import 'package:stripe_example/.env.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
+
 import '../../config.dart';
 import 'platforms/stripe_checkout.dart'
     if (dart.library.js) 'platforms/stripe_checkout_web.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
-import 'package:stripe_checkout/stripe_checkout.dart';
-import 'package:http/http.dart' as http;
 
 class CheckoutScreenExample extends StatefulWidget {
   CheckoutScreenExample({
@@ -49,14 +50,14 @@ class _CheckoutScreenExample extends State<CheckoutScreenExample> {
     );
 
     if (mounted) {
-      final text = result.when(
+      final text = result?.when(
         success: () => 'Paid succesfully',
         canceled: () => 'Checkout canceled',
         error: (e) => 'Error $e',
         redirected: () => 'Redirected succesfully',
       );
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(text)),
+        SnackBar(content: Text(text ?? '')),
       );
     }
   }

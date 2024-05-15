@@ -6,14 +6,19 @@ part of 'payment_sheet.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SetupParameters _$$_SetupParametersFromJson(Map<String, dynamic> json) =>
-    _$_SetupParameters(
+_$SetupParametersImpl _$$SetupParametersImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SetupParametersImpl(
       customFlow: json['customFlow'] as bool? ?? false,
       customerId: json['customerId'] as String?,
       primaryButtonLabel: json['primaryButtonLabel'] as String?,
       customerEphemeralKeySecret: json['customerEphemeralKeySecret'] as String?,
       paymentIntentClientSecret: json['paymentIntentClientSecret'] as String?,
       setupIntentClientSecret: json['setupIntentClientSecret'] as String?,
+      intentConfiguration: json['intentConfiguration'] == null
+          ? null
+          : IntentConfiguration.fromJson(
+              json['intentConfiguration'] as Map<String, dynamic>),
       merchantDisplayName: json['merchantDisplayName'] as String?,
       applePay: json['applePay'] == null
           ? null
@@ -41,9 +46,15 @@ _$_SetupParameters _$$_SetupParametersFromJson(Map<String, dynamic> json) =>
               : BillingDetailsCollectionConfiguration.fromJson(
                   json['billingDetailsCollectionConfiguration']
                       as Map<String, dynamic>),
+      removeSavedPaymentMethodMessage:
+          json['removeSavedPaymentMethodMessage'] as String?,
+      preferredNetworks: (json['preferredNetworks'] as List<dynamic>?)
+          ?.map((e) => $enumDecode(_$CardBrandEnumMap, e))
+          .toList(),
     );
 
-Map<String, dynamic> _$$_SetupParametersToJson(_$_SetupParameters instance) =>
+Map<String, dynamic> _$$SetupParametersImplToJson(
+        _$SetupParametersImpl instance) =>
     <String, dynamic>{
       'customFlow': instance.customFlow,
       'customerId': instance.customerId,
@@ -51,6 +62,7 @@ Map<String, dynamic> _$$_SetupParametersToJson(_$_SetupParameters instance) =>
       'customerEphemeralKeySecret': instance.customerEphemeralKeySecret,
       'paymentIntentClientSecret': instance.paymentIntentClientSecret,
       'setupIntentClientSecret': instance.setupIntentClientSecret,
+      'intentConfiguration': instance.intentConfiguration?.toJson(),
       'merchantDisplayName': instance.merchantDisplayName,
       'applePay': instance.applePay?.toJson(),
       'style': UserInterfaceStyleKey.toJson(instance.style),
@@ -61,6 +73,9 @@ Map<String, dynamic> _$$_SetupParametersToJson(_$_SetupParameters instance) =>
       'returnURL': instance.returnURL,
       'billingDetailsCollectionConfiguration':
           instance.billingDetailsCollectionConfiguration?.toJson(),
+      'removeSavedPaymentMethodMessage':
+          instance.removeSavedPaymentMethodMessage,
+      'preferredNetworks': _cardBrandListToJson(instance.preferredNetworks),
     };
 
 const _$ThemeModeEnumMap = {
@@ -69,9 +84,67 @@ const _$ThemeModeEnumMap = {
   ThemeMode.dark: 'dark',
 };
 
-_$_PaymentSheetApplePay _$$_PaymentSheetApplePayFromJson(
+const _$CardBrandEnumMap = {
+  CardBrand.JCB: 'JCB',
+  CardBrand.Amex: 'Amex',
+  CardBrand.CartesBancaires: 'CartesBancaires',
+  CardBrand.DinersClub: 'DinersClub',
+  CardBrand.Discover: 'Discover',
+  CardBrand.Mastercard: 'Mastercard',
+  CardBrand.UnionPay: 'UnionPay',
+  CardBrand.Visa: 'Visa',
+  CardBrand.Unknown: 'Unknown',
+};
+
+_$IntentConfigurationImpl _$$IntentConfigurationImplFromJson(
         Map<String, dynamic> json) =>
-    _$_PaymentSheetApplePay(
+    _$IntentConfigurationImpl(
+      mode: IntentMode.fromJson(json['mode'] as Map<String, dynamic>),
+      paymentMethodTypes: (json['paymentMethodTypes'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+    );
+
+Map<String, dynamic> _$$IntentConfigurationImplToJson(
+        _$IntentConfigurationImpl instance) =>
+    <String, dynamic>{
+      'mode': instance.mode.toJson(),
+      'paymentMethodTypes': instance.paymentMethodTypes,
+    };
+
+_$IntentModeImpl _$$IntentModeImplFromJson(Map<String, dynamic> json) =>
+    _$IntentModeImpl(
+      currencyCode: json['currencyCode'] as String,
+      amount: json['amount'] as int,
+      setupFutureUsage: $enumDecodeNullable(
+          _$IntentFutureUsageEnumMap, json['setupFutureUsage']),
+      captureMethod:
+          $enumDecodeNullable(_$CaptureMethodEnumMap, json['captureMethod']),
+    );
+
+Map<String, dynamic> _$$IntentModeImplToJson(_$IntentModeImpl instance) =>
+    <String, dynamic>{
+      'currencyCode': instance.currencyCode,
+      'amount': instance.amount,
+      'setupFutureUsage': _$IntentFutureUsageEnumMap[instance.setupFutureUsage],
+      'captureMethod': _$CaptureMethodEnumMap[instance.captureMethod],
+    };
+
+const _$IntentFutureUsageEnumMap = {
+  IntentFutureUsage.OffSession: 'OffSession',
+  IntentFutureUsage.OnSession: 'OnSession',
+};
+
+const _$CaptureMethodEnumMap = {
+  CaptureMethod.Manual: 'Manual',
+  CaptureMethod.Automatic: 'Automatic',
+  CaptureMethod.AutomaticAsync: 'AutomaticAsync',
+  CaptureMethod.Unknown: 'Unknown',
+};
+
+_$PaymentSheetApplePayImpl _$$PaymentSheetApplePayImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PaymentSheetApplePayImpl(
       merchantCountryCode: json['merchantCountryCode'] as String,
       cartItems: (json['cartItems'] as List<dynamic>?)
           ?.map((e) =>
@@ -85,8 +158,8 @@ _$_PaymentSheetApplePay _$$_PaymentSheetApplePayFromJson(
               json['request'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_PaymentSheetApplePayToJson(
-        _$_PaymentSheetApplePay instance) =>
+Map<String, dynamic> _$$PaymentSheetApplePayImplToJson(
+        _$PaymentSheetApplePayImpl instance) =>
     <String, dynamic>{
       'merchantCountryCode': instance.merchantCountryCode,
       'cartItems': instance.cartItems?.map((e) => e.toJson()).toList(),
@@ -116,25 +189,32 @@ const _$PlatformButtonTypeEnumMap = {
   PlatformButtonType.googlePayMark: 'googlePayMark',
 };
 
-_$_PaymentSheetGooglePay _$$_PaymentSheetGooglePayFromJson(
+_$PaymentSheetGooglePayImpl _$$PaymentSheetGooglePayImplFromJson(
         Map<String, dynamic> json) =>
-    _$_PaymentSheetGooglePay(
+    _$PaymentSheetGooglePayImpl(
       merchantCountryCode: json['merchantCountryCode'] as String,
       currencyCode: json['currencyCode'] as String?,
       testEnv: json['testEnv'] as bool? ?? false,
+      label: json['label'] as String?,
+      amount: json['amount'] as String?,
+      buttonType:
+          $enumDecodeNullable(_$PlatformButtonTypeEnumMap, json['buttonType']),
     );
 
-Map<String, dynamic> _$$_PaymentSheetGooglePayToJson(
-        _$_PaymentSheetGooglePay instance) =>
+Map<String, dynamic> _$$PaymentSheetGooglePayImplToJson(
+        _$PaymentSheetGooglePayImpl instance) =>
     <String, dynamic>{
       'merchantCountryCode': instance.merchantCountryCode,
       'currencyCode': instance.currencyCode,
       'testEnv': instance.testEnv,
+      'label': instance.label,
+      'amount': instance.amount,
+      'buttonType': _$PlatformButtonTypeEnumMap[instance.buttonType],
     };
 
-_$_PaymentSheetAppearance _$$_PaymentSheetAppearanceFromJson(
+_$PaymentSheetAppearanceImpl _$$PaymentSheetAppearanceImplFromJson(
         Map<String, dynamic> json) =>
-    _$_PaymentSheetAppearance(
+    _$PaymentSheetAppearanceImpl(
       colors: json['colors'] == null
           ? null
           : PaymentSheetAppearanceColors.fromJson(
@@ -148,17 +228,17 @@ _$_PaymentSheetAppearance _$$_PaymentSheetAppearanceFromJson(
               json['primaryButton'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_PaymentSheetAppearanceToJson(
-        _$_PaymentSheetAppearance instance) =>
+Map<String, dynamic> _$$PaymentSheetAppearanceImplToJson(
+        _$PaymentSheetAppearanceImpl instance) =>
     <String, dynamic>{
       'colors': instance.colors?.toJson(),
       'shapes': instance.shapes?.toJson(),
       'primaryButton': instance.primaryButton?.toJson(),
     };
 
-_$_PaymentSheetAppearanceColors _$$_PaymentSheetAppearanceColorsFromJson(
+_$PaymentSheetAppearanceColorsImpl _$$PaymentSheetAppearanceColorsImplFromJson(
         Map<String, dynamic> json) =>
-    _$_PaymentSheetAppearanceColors(
+    _$PaymentSheetAppearanceColorsImpl(
       primary: ColorKey.fromJson(json['primary']),
       background: ColorKey.fromJson(json['background']),
       componentBackground: ColorKey.fromJson(json['componentBackground']),
@@ -172,8 +252,8 @@ _$_PaymentSheetAppearanceColors _$$_PaymentSheetAppearanceColorsFromJson(
       error: ColorKey.fromJson(json['error']),
     );
 
-Map<String, dynamic> _$$_PaymentSheetAppearanceColorsToJson(
-        _$_PaymentSheetAppearanceColors instance) =>
+Map<String, dynamic> _$$PaymentSheetAppearanceColorsImplToJson(
+        _$PaymentSheetAppearanceColorsImpl instance) =>
     <String, dynamic>{
       'primary': ColorKey.toJson(instance.primary),
       'background': ColorKey.toJson(instance.background),
@@ -188,8 +268,9 @@ Map<String, dynamic> _$$_PaymentSheetAppearanceColorsToJson(
       'error': ColorKey.toJson(instance.error),
     };
 
-_$_PaymentSheetShape _$$_PaymentSheetShapeFromJson(Map<String, dynamic> json) =>
-    _$_PaymentSheetShape(
+_$PaymentSheetShapeImpl _$$PaymentSheetShapeImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PaymentSheetShapeImpl(
       borderRadius: (json['borderRadius'] as num?)?.toDouble(),
       borderWidth: (json['borderWidth'] as num?)?.toDouble(),
       shadow: json['shadow'] == null
@@ -198,17 +279,17 @@ _$_PaymentSheetShape _$$_PaymentSheetShapeFromJson(Map<String, dynamic> json) =>
               json['shadow'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_PaymentSheetShapeToJson(
-        _$_PaymentSheetShape instance) =>
+Map<String, dynamic> _$$PaymentSheetShapeImplToJson(
+        _$PaymentSheetShapeImpl instance) =>
     <String, dynamic>{
       'borderRadius': instance.borderRadius,
       'borderWidth': instance.borderWidth,
       'shadow': instance.shadow?.toJson(),
     };
 
-_$_PaymentSheetShadowParams _$$_PaymentSheetShadowParamsFromJson(
+_$PaymentSheetShadowParamsImpl _$$PaymentSheetShadowParamsImplFromJson(
         Map<String, dynamic> json) =>
-    _$_PaymentSheetShadowParams(
+    _$PaymentSheetShadowParamsImpl(
       color: ColorKey.fromJson(json['color']),
       opacity: (json['opacity'] as num?)?.toDouble(),
       offset: json['offset'] == null
@@ -217,32 +298,32 @@ _$_PaymentSheetShadowParams _$$_PaymentSheetShadowParamsFromJson(
               json['offset'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_PaymentSheetShadowParamsToJson(
-        _$_PaymentSheetShadowParams instance) =>
+Map<String, dynamic> _$$PaymentSheetShadowParamsImplToJson(
+        _$PaymentSheetShadowParamsImpl instance) =>
     <String, dynamic>{
       'color': ColorKey.toJson(instance.color),
       'opacity': instance.opacity,
       'offset': instance.offset?.toJson(),
     };
 
-_$_PaymentSheetShadowOffset _$$_PaymentSheetShadowOffsetFromJson(
+_$PaymentSheetShadowOffsetImpl _$$PaymentSheetShadowOffsetImplFromJson(
         Map<String, dynamic> json) =>
-    _$_PaymentSheetShadowOffset(
+    _$PaymentSheetShadowOffsetImpl(
       x: (json['x'] as num?)?.toDouble(),
       y: (json['y'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$_PaymentSheetShadowOffsetToJson(
-        _$_PaymentSheetShadowOffset instance) =>
+Map<String, dynamic> _$$PaymentSheetShadowOffsetImplToJson(
+        _$PaymentSheetShadowOffsetImpl instance) =>
     <String, dynamic>{
       'x': instance.x,
       'y': instance.y,
     };
 
-_$_PaymentSheetPrimaryButtonAppearance
-    _$$_PaymentSheetPrimaryButtonAppearanceFromJson(
+_$PaymentSheetPrimaryButtonAppearanceImpl
+    _$$PaymentSheetPrimaryButtonAppearanceImplFromJson(
             Map<String, dynamic> json) =>
-        _$_PaymentSheetPrimaryButtonAppearance(
+        _$PaymentSheetPrimaryButtonAppearanceImpl(
           colors: json['colors'] == null
               ? null
               : PaymentSheetPrimaryButtonTheme.fromJson(
@@ -253,112 +334,113 @@ _$_PaymentSheetPrimaryButtonAppearance
                   json['shapes'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$$_PaymentSheetPrimaryButtonAppearanceToJson(
-        _$_PaymentSheetPrimaryButtonAppearance instance) =>
+Map<String, dynamic> _$$PaymentSheetPrimaryButtonAppearanceImplToJson(
+        _$PaymentSheetPrimaryButtonAppearanceImpl instance) =>
     <String, dynamic>{
       'colors': instance.colors?.toJson(),
       'shapes': instance.shapes?.toJson(),
     };
 
-_$_PaymentSheetPrimaryButtonShape _$$_PaymentSheetPrimaryButtonShapeFromJson(
-        Map<String, dynamic> json) =>
-    _$_PaymentSheetPrimaryButtonShape(
-      shadow: json['shadow'] == null
-          ? null
-          : PaymentSheetShadowParams.fromJson(
-              json['shadow'] as Map<String, dynamic>),
-      blurRadius: (json['blurRadius'] as num?)?.toDouble(),
-      borderWidth: (json['borderWidth'] as num?)?.toDouble(),
-    );
+_$PaymentSheetPrimaryButtonShapeImpl
+    _$$PaymentSheetPrimaryButtonShapeImplFromJson(Map<String, dynamic> json) =>
+        _$PaymentSheetPrimaryButtonShapeImpl(
+          shadow: json['shadow'] == null
+              ? null
+              : PaymentSheetShadowParams.fromJson(
+                  json['shadow'] as Map<String, dynamic>),
+          blurRadius: (json['blurRadius'] as num?)?.toDouble(),
+          borderWidth: (json['borderWidth'] as num?)?.toDouble(),
+        );
 
-Map<String, dynamic> _$$_PaymentSheetPrimaryButtonShapeToJson(
-        _$_PaymentSheetPrimaryButtonShape instance) =>
+Map<String, dynamic> _$$PaymentSheetPrimaryButtonShapeImplToJson(
+        _$PaymentSheetPrimaryButtonShapeImpl instance) =>
     <String, dynamic>{
       'shadow': instance.shadow?.toJson(),
       'blurRadius': instance.blurRadius,
       'borderWidth': instance.borderWidth,
     };
 
-_$_PaymentSheetPrimaryButtonTheme _$$_PaymentSheetPrimaryButtonThemeFromJson(
-        Map<String, dynamic> json) =>
-    _$_PaymentSheetPrimaryButtonTheme(
-      dark: json['dark'] == null
-          ? null
-          : PaymentSheetPrimaryButtonThemeColors.fromJson(
-              json['dark'] as Map<String, dynamic>),
-      light: json['light'] == null
-          ? null
-          : PaymentSheetPrimaryButtonThemeColors.fromJson(
-              json['light'] as Map<String, dynamic>),
-    );
+_$PaymentSheetPrimaryButtonThemeImpl
+    _$$PaymentSheetPrimaryButtonThemeImplFromJson(Map<String, dynamic> json) =>
+        _$PaymentSheetPrimaryButtonThemeImpl(
+          dark: json['dark'] == null
+              ? null
+              : PaymentSheetPrimaryButtonThemeColors.fromJson(
+                  json['dark'] as Map<String, dynamic>),
+          light: json['light'] == null
+              ? null
+              : PaymentSheetPrimaryButtonThemeColors.fromJson(
+                  json['light'] as Map<String, dynamic>),
+        );
 
-Map<String, dynamic> _$$_PaymentSheetPrimaryButtonThemeToJson(
-        _$_PaymentSheetPrimaryButtonTheme instance) =>
+Map<String, dynamic> _$$PaymentSheetPrimaryButtonThemeImplToJson(
+        _$PaymentSheetPrimaryButtonThemeImpl instance) =>
     <String, dynamic>{
       'dark': instance.dark?.toJson(),
       'light': instance.light?.toJson(),
     };
 
-_$_PaymentSheetPrimaryButtonThemeColors
-    _$$_PaymentSheetPrimaryButtonThemeColorsFromJson(
+_$PaymentSheetPrimaryButtonThemeColorsImpl
+    _$$PaymentSheetPrimaryButtonThemeColorsImplFromJson(
             Map<String, dynamic> json) =>
-        _$_PaymentSheetPrimaryButtonThemeColors(
+        _$PaymentSheetPrimaryButtonThemeColorsImpl(
           background: ColorKey.fromJson(json['background']),
           text: ColorKey.fromJson(json['text']),
           border: ColorKey.fromJson(json['border']),
         );
 
-Map<String, dynamic> _$$_PaymentSheetPrimaryButtonThemeColorsToJson(
-        _$_PaymentSheetPrimaryButtonThemeColors instance) =>
+Map<String, dynamic> _$$PaymentSheetPrimaryButtonThemeColorsImplToJson(
+        _$PaymentSheetPrimaryButtonThemeColorsImpl instance) =>
     <String, dynamic>{
       'background': ColorKey.toJson(instance.background),
       'text': ColorKey.toJson(instance.text),
       'border': ColorKey.toJson(instance.border),
     };
 
-_$_PresentParameters _$$_PresentParametersFromJson(Map<String, dynamic> json) =>
-    _$_PresentParameters(
+_$PresentParametersImpl _$$PresentParametersImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PresentParametersImpl(
       clientSecret: json['clientSecret'] as String,
       confirmPayment: json['confirmPayment'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$_PresentParametersToJson(
-        _$_PresentParameters instance) =>
+Map<String, dynamic> _$$PresentParametersImplToJson(
+        _$PresentParametersImpl instance) =>
     <String, dynamic>{
       'clientSecret': instance.clientSecret,
       'confirmPayment': instance.confirmPayment,
     };
 
-_$_PaymentSheetPresentOptions _$$_PaymentSheetPresentOptionsFromJson(
+_$PaymentSheetPresentOptionsImpl _$$PaymentSheetPresentOptionsImplFromJson(
         Map<String, dynamic> json) =>
-    _$_PaymentSheetPresentOptions(
+    _$PaymentSheetPresentOptionsImpl(
       timeout: json['timeout'] as int?,
     );
 
-Map<String, dynamic> _$$_PaymentSheetPresentOptionsToJson(
-        _$_PaymentSheetPresentOptions instance) =>
+Map<String, dynamic> _$$PaymentSheetPresentOptionsImplToJson(
+        _$PaymentSheetPresentOptionsImpl instance) =>
     <String, dynamic>{
       'timeout': instance.timeout,
     };
 
-_$_PaymentSheetPaymentOption _$$_PaymentSheetPaymentOptionFromJson(
+_$PaymentSheetPaymentOptionImpl _$$PaymentSheetPaymentOptionImplFromJson(
         Map<String, dynamic> json) =>
-    _$_PaymentSheetPaymentOption(
+    _$PaymentSheetPaymentOptionImpl(
       label: json['label'] as String,
-      image: json['image'] as String,
+      image: json['image'] as String?,
     );
 
-Map<String, dynamic> _$$_PaymentSheetPaymentOptionToJson(
-        _$_PaymentSheetPaymentOption instance) =>
+Map<String, dynamic> _$$PaymentSheetPaymentOptionImplToJson(
+        _$PaymentSheetPaymentOptionImpl instance) =>
     <String, dynamic>{
       'label': instance.label,
       'image': instance.image,
     };
 
-_$_BillingDetailsCollectionConfiguration
-    _$$_BillingDetailsCollectionConfigurationFromJson(
+_$BillingDetailsCollectionConfigurationImpl
+    _$$BillingDetailsCollectionConfigurationImplFromJson(
             Map<String, dynamic> json) =>
-        _$_BillingDetailsCollectionConfiguration(
+        _$BillingDetailsCollectionConfigurationImpl(
           name: $enumDecodeNullable(_$CollectionModeEnumMap, json['name']),
           phone: $enumDecodeNullable(_$CollectionModeEnumMap, json['phone']),
           email: $enumDecodeNullable(_$CollectionModeEnumMap, json['email']),
@@ -368,8 +450,8 @@ _$_BillingDetailsCollectionConfiguration
               json['attachDefaultsToPaymentMethod'] as bool?,
         );
 
-Map<String, dynamic> _$$_BillingDetailsCollectionConfigurationToJson(
-        _$_BillingDetailsCollectionConfiguration instance) =>
+Map<String, dynamic> _$$BillingDetailsCollectionConfigurationImplToJson(
+        _$BillingDetailsCollectionConfigurationImpl instance) =>
     <String, dynamic>{
       'name': _$CollectionModeEnumMap[instance.name],
       'phone': _$CollectionModeEnumMap[instance.phone],

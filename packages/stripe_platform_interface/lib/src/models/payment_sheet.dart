@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:stripe_platform_interface/src/models/color.dart';
@@ -41,6 +43,10 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
 
     String? setupIntentClientSecret,
 
+    /// Use this when you want to collect payment information before creating a
+    /// setupintent or payment intent.
+    IntentConfiguration? intentConfiguration,
+
     /// Display name of the merchant
     String? merchantDisplayName,
 
@@ -75,16 +81,65 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// paymentIntent since the customer can change those.
     @JsonKey(name: 'defaultBillingDetails') BillingDetails? billingDetails,
 
-    /// Return URL is required for IDEAL and few other payment methods
+    /// Return URL is required for IDEAL, Klarna and few other payment methods
     String? returnURL,
 
     /// Configuration for how billing details are collected during checkout.
     BillingDetailsCollectionConfiguration?
         billingDetailsCollectionConfiguration,
+
+    ///  Optional configuration to display a custom message when a saved payment method is removed. iOS only.
+    String? removeSavedPaymentMethodMessage,
+
+    /// The list of preferred networks that should be used to process payments made with a co-branded card.
+    /// This value will only be used if your user hasn't selected a network themselves.
+    @JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks,
   }) = _SetupParameters;
 
   factory SetupPaymentSheetParameters.fromJson(Map<String, dynamic> json) =>
       _$SetupPaymentSheetParametersFromJson(json);
+}
+
+@freezed
+class IntentConfiguration with _$IntentConfiguration {
+  @JsonSerializable(explicitToJson: true)
+  const factory IntentConfiguration({
+    /// Data related to the future payment intent
+    required IntentMode mode,
+
+    /// The list of payment method types that the customer can use in the payment sheet.
+    ///
+    /// If not set, the payment sheet will display all the payment methods enabled in your Stripe dashboard.
+    List<String>? paymentMethodTypes,
+
+    /// Called when the customer confirms payment. Your implementation should create
+    /// a payment intent or setupintent on your server and call the intent creation callback with its client secret or an error if one occurred.
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    ConfirmHandler? confirmHandler,
+
+    /// Confirm handler
+  }) = _IntentConfiguration;
+
+  factory IntentConfiguration.fromJson(Map<String, dynamic> json) =>
+      _$IntentConfigurationFromJson(json);
+}
+
+@freezed
+class IntentMode with _$IntentMode {
+  @JsonSerializable(explicitToJson: true)
+  const factory IntentMode({
+    required String currencyCode,
+    required int amount,
+
+    /// Data related to the future payment intent
+    IntentFutureUsage? setupFutureUsage,
+
+    /// Capture method for the future payment intent
+    CaptureMethod? captureMethod,
+  }) = _IntentMode;
+
+  factory IntentMode.fromJson(Map<String, dynamic> json) =>
+      _$IntentModeFromJson(json);
 }
 
 /// Parameters related to the Payment sheet Apple Pay config.
@@ -130,6 +185,15 @@ class PaymentSheetGooglePay with _$PaymentSheetGooglePay {
 
     /// Whether or not to use the google pay test environment.  Set to `true` until you have applied for and been granted access to the Production environment.
     @Default(false) bool testEnv,
+
+    /// An optional label to display with the amount. Google Pay may or may not display this label depending on its own internal logic. Defaults to a generic label if none is provided.
+    String? label,
+
+    /// An optional amount to display for setup intents. Google Pay may or may not display this amount depending on its own internal logic. Defaults to 0 if none is provided.
+    String? amount,
+
+    /// The Google Pay button type to use. Set to "Pay" by default.
+    PlatformButtonType? buttonType,
   }) = _PaymentSheetGooglePay;
 
   factory PaymentSheetGooglePay.fromJson(Map<String, dynamic> json) =>
@@ -400,7 +464,7 @@ class PaymentSheetPaymentOption with _$PaymentSheetPaymentOption {
     required String label,
 
     /// String decoding of the image
-    required String image,
+    String? image,
   }) = _PaymentSheetPaymentOption;
 
   factory PaymentSheetPaymentOption.fromJson(Map<String, dynamic> json) =>
@@ -469,4 +533,25 @@ enum AddressCollectionMode {
 
   /// Collect the full billing address, regardless of the Payment Method's requirements. */
   full,
+}
+
+/// The type of payment method to attach to a Customer.
+enum IntentFutureUsage {
+  /// The payment method will be used for future off-session payments.
+  OffSession,
+
+  /// The payment method will be used for future on-session payments.
+  OnSession,
+}
+
+typedef ConfirmHandler = void Function(
+  PaymentMethod result,
+  bool shouldSavePaymentMethod,
+);
+
+List<int> _cardBrandListToJson(List<CardBrand>? list) {
+  if (list == null) {
+    return [];
+  }
+  return list.map((e) => e.brandValue).toList();
 }

@@ -90,9 +90,12 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
           // Main params
           paymentIntentClientSecret: data['paymentIntent'],
           merchantDisplayName: 'Flutter Stripe Store Demo',
+          preferredNetworks: [CardBrand.Amex],
           // Customer params
           customerId: data['customer'],
           customerEphemeralKeySecret: data['ephemeralKey'],
+          returnURL: 'flutterstripe://redirect',
+
           // Extra params
           primaryButtonLabel: 'Pay now',
           applePay: PaymentSheetApplePay(

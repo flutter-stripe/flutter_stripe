@@ -12,7 +12,7 @@ part of 'card_element_change_event.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CardElementChangeEvent _$CardElementChangeEventFromJson(
     Map<String, dynamic> json) {
@@ -127,11 +127,12 @@ class _$CardElementChangeEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CardElementChangeEventCopyWith<$Res>
+abstract class _$$CardElementChangeEventImplCopyWith<$Res>
     implements $CardElementChangeEventCopyWith<$Res> {
-  factory _$$_CardElementChangeEventCopyWith(_$_CardElementChangeEvent value,
-          $Res Function(_$_CardElementChangeEvent) then) =
-      __$$_CardElementChangeEventCopyWithImpl<$Res>;
+  factory _$$CardElementChangeEventImplCopyWith(
+          _$CardElementChangeEventImpl value,
+          $Res Function(_$CardElementChangeEventImpl) then) =
+      __$$CardElementChangeEventImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -149,12 +150,13 @@ abstract class _$$_CardElementChangeEventCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CardElementChangeEventCopyWithImpl<$Res>
+class __$$CardElementChangeEventImplCopyWithImpl<$Res>
     extends _$CardElementChangeEventCopyWithImpl<$Res,
-        _$_CardElementChangeEvent>
-    implements _$$_CardElementChangeEventCopyWith<$Res> {
-  __$$_CardElementChangeEventCopyWithImpl(_$_CardElementChangeEvent _value,
-      $Res Function(_$_CardElementChangeEvent) _then)
+        _$CardElementChangeEventImpl>
+    implements _$$CardElementChangeEventImplCopyWith<$Res> {
+  __$$CardElementChangeEventImplCopyWithImpl(
+      _$CardElementChangeEventImpl _value,
+      $Res Function(_$CardElementChangeEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -167,7 +169,7 @@ class __$$_CardElementChangeEventCopyWithImpl<$Res>
     Object? brand = null,
     Object? value = freezed,
   }) {
-    return _then(_$_CardElementChangeEvent(
+    return _then(_$CardElementChangeEventImpl(
       elementType: null == elementType
           ? _value.elementType
           : elementType // ignore: cast_nullable_to_non_nullable
@@ -198,8 +200,8 @@ class __$$_CardElementChangeEventCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CardElementChangeEvent implements _CardElementChangeEvent {
-  const _$_CardElementChangeEvent(
+class _$CardElementChangeEventImpl implements _CardElementChangeEvent {
+  const _$CardElementChangeEventImpl(
       {required this.elementType,
       required this.empty,
       required this.complete,
@@ -207,8 +209,8 @@ class _$_CardElementChangeEvent implements _CardElementChangeEvent {
       required this.brand,
       this.value});
 
-  factory _$_CardElementChangeEvent.fromJson(Map<String, dynamic> json) =>
-      _$$_CardElementChangeEventFromJson(json);
+  factory _$CardElementChangeEventImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CardElementChangeEventImplFromJson(json);
 
   @override
   final String elementType;
@@ -229,10 +231,10 @@ class _$_CardElementChangeEvent implements _CardElementChangeEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CardElementChangeEvent &&
+            other is _$CardElementChangeEventImpl &&
             (identical(other.elementType, elementType) ||
                 other.elementType == elementType) &&
             (identical(other.empty, empty) || other.empty == empty) &&
@@ -251,13 +253,13 @@ class _$_CardElementChangeEvent implements _CardElementChangeEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CardElementChangeEventCopyWith<_$_CardElementChangeEvent> get copyWith =>
-      __$$_CardElementChangeEventCopyWithImpl<_$_CardElementChangeEvent>(
-          this, _$identity);
+  _$$CardElementChangeEventImplCopyWith<_$CardElementChangeEventImpl>
+      get copyWith => __$$CardElementChangeEventImplCopyWithImpl<
+          _$CardElementChangeEventImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CardElementChangeEventToJson(
+    return _$$CardElementChangeEventImplToJson(
       this,
     );
   }
@@ -270,10 +272,10 @@ abstract class _CardElementChangeEvent implements CardElementChangeEvent {
       required final bool complete,
       final StripeError? error,
       required final String brand,
-      final CardElementChangeEventValue? value}) = _$_CardElementChangeEvent;
+      final CardElementChangeEventValue? value}) = _$CardElementChangeEventImpl;
 
   factory _CardElementChangeEvent.fromJson(Map<String, dynamic> json) =
-      _$_CardElementChangeEvent.fromJson;
+      _$CardElementChangeEventImpl.fromJson;
 
   @override
   String get elementType;
@@ -289,8 +291,8 @@ abstract class _CardElementChangeEvent implements CardElementChangeEvent {
   CardElementChangeEventValue? get value;
   @override
   @JsonKey(ignore: true)
-  _$$_CardElementChangeEventCopyWith<_$_CardElementChangeEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$CardElementChangeEventImplCopyWith<_$CardElementChangeEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 CardElementChangeEventValue _$CardElementChangeEventValueFromJson(
@@ -345,25 +347,25 @@ class _$CardElementChangeEventValueCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CardElementChangeEventValueCopyWith<$Res>
+abstract class _$$CardElementChangeEventValueImplCopyWith<$Res>
     implements $CardElementChangeEventValueCopyWith<$Res> {
-  factory _$$_CardElementChangeEventValueCopyWith(
-          _$_CardElementChangeEventValue value,
-          $Res Function(_$_CardElementChangeEventValue) then) =
-      __$$_CardElementChangeEventValueCopyWithImpl<$Res>;
+  factory _$$CardElementChangeEventValueImplCopyWith(
+          _$CardElementChangeEventValueImpl value,
+          $Res Function(_$CardElementChangeEventValueImpl) then) =
+      __$$CardElementChangeEventValueImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? postalCode});
 }
 
 /// @nodoc
-class __$$_CardElementChangeEventValueCopyWithImpl<$Res>
+class __$$CardElementChangeEventValueImplCopyWithImpl<$Res>
     extends _$CardElementChangeEventValueCopyWithImpl<$Res,
-        _$_CardElementChangeEventValue>
-    implements _$$_CardElementChangeEventValueCopyWith<$Res> {
-  __$$_CardElementChangeEventValueCopyWithImpl(
-      _$_CardElementChangeEventValue _value,
-      $Res Function(_$_CardElementChangeEventValue) _then)
+        _$CardElementChangeEventValueImpl>
+    implements _$$CardElementChangeEventValueImplCopyWith<$Res> {
+  __$$CardElementChangeEventValueImplCopyWithImpl(
+      _$CardElementChangeEventValueImpl _value,
+      $Res Function(_$CardElementChangeEventValueImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -371,7 +373,7 @@ class __$$_CardElementChangeEventValueCopyWithImpl<$Res>
   $Res call({
     Object? postalCode = freezed,
   }) {
-    return _then(_$_CardElementChangeEventValue(
+    return _then(_$CardElementChangeEventValueImpl(
       postalCode: freezed == postalCode
           ? _value.postalCode
           : postalCode // ignore: cast_nullable_to_non_nullable
@@ -382,11 +384,13 @@ class __$$_CardElementChangeEventValueCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CardElementChangeEventValue implements _CardElementChangeEventValue {
-  const _$_CardElementChangeEventValue({required this.postalCode});
+class _$CardElementChangeEventValueImpl
+    implements _CardElementChangeEventValue {
+  const _$CardElementChangeEventValueImpl({required this.postalCode});
 
-  factory _$_CardElementChangeEventValue.fromJson(Map<String, dynamic> json) =>
-      _$$_CardElementChangeEventValueFromJson(json);
+  factory _$CardElementChangeEventValueImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CardElementChangeEventValueImplFromJson(json);
 
   @override
   final String? postalCode;
@@ -397,10 +401,10 @@ class _$_CardElementChangeEventValue implements _CardElementChangeEventValue {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CardElementChangeEventValue &&
+            other is _$CardElementChangeEventValueImpl &&
             (identical(other.postalCode, postalCode) ||
                 other.postalCode == postalCode));
   }
@@ -412,13 +416,13 @@ class _$_CardElementChangeEventValue implements _CardElementChangeEventValue {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CardElementChangeEventValueCopyWith<_$_CardElementChangeEventValue>
-      get copyWith => __$$_CardElementChangeEventValueCopyWithImpl<
-          _$_CardElementChangeEventValue>(this, _$identity);
+  _$$CardElementChangeEventValueImplCopyWith<_$CardElementChangeEventValueImpl>
+      get copyWith => __$$CardElementChangeEventValueImplCopyWithImpl<
+          _$CardElementChangeEventValueImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CardElementChangeEventValueToJson(
+    return _$$CardElementChangeEventValueImplToJson(
       this,
     );
   }
@@ -427,15 +431,15 @@ class _$_CardElementChangeEventValue implements _CardElementChangeEventValue {
 abstract class _CardElementChangeEventValue
     implements CardElementChangeEventValue {
   const factory _CardElementChangeEventValue(
-      {required final String? postalCode}) = _$_CardElementChangeEventValue;
+      {required final String? postalCode}) = _$CardElementChangeEventValueImpl;
 
   factory _CardElementChangeEventValue.fromJson(Map<String, dynamic> json) =
-      _$_CardElementChangeEventValue.fromJson;
+      _$CardElementChangeEventValueImpl.fromJson;
 
   @override
   String? get postalCode;
   @override
   @JsonKey(ignore: true)
-  _$$_CardElementChangeEventValueCopyWith<_$_CardElementChangeEventValue>
+  _$$CardElementChangeEventValueImplCopyWith<_$CardElementChangeEventValueImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

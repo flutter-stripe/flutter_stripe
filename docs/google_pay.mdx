@@ -1,0 +1,212 @@
+---
+title: Google pay
+description: Integrate google pay in your app.
+---
+
+# Mobile elements - Google pay
+
+## 1. Set up Stripe [Server Side] [Client Side]
+
+First, you need a Stripe account. [Register now](https://dashboard.stripe.com/register).
+
+#### Server-side
+
+This integration requires endpoints on your server that talk to the Stripe API. Use one official libraries for access to the Stripe API from your server. [Follow the steps here](https://stripe.com/docs/payments/accept-a-payment?platform=ios&ui=payment-sheet#setup-server-side)
+
+#### Client-side
+
+The Flutter SDK is open source, fully documented.
+
+To install the SDK, follow these steps:
+ - Run the commmand `flutter pub add flutter_stripe`
+ - This will add a line like this to your project's pubspec.yaml with the latest package version
+
+
+For details on the latest SDK release and past versions, see the [Releases](https://github.com/flutter-stripe/flutter_stripe/releases) page on GitHub. To receive notifications when a new release is published, [watch releases for the repository](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/managing-subscriptions-for-activity-on-github/viewing-your-subscriptions#watching-releases-for-a-repository).
+
+
+When your app starts, configure the SDK with your Stripe [publishable key](https://dashboard.stripe.com/) so that it can make requests to the Stripe API. 
+
+```dart
+void main() async {
+  Stripe.publishableKey = stripePublishableKey;
+  runApp(const App());
+}
+```
+
+Use your [test mode](https://stripe.com/docs/keys#obtain-api-keys) keys while you test and develop, and your [live mode](https://stripe.com/docs/keys#test-live-modes) keys when you publish your app.
+
+## 2. Enable Google Pay [client Side]
+Add the 
+
+To use Google pay you must enable the Api by adding the following to the `AndroidManifest.xml` file between the `<application>` tags.
+
+```xml
+ <meta-data
+    android:name="com.google.android.gms.wallet.api.enabled"
+    android:value="true" />
+```
+For more details see: [Google Pay](https://developers.google.com/pay/api/android/guides/setup).
+
+## 3. Add an enpoint [Server Side]
+
+#### Server-side
+
+This integration uses three Stripe API objects:
+
+1. A [PaymentIntent](https://stripe.com/docs/api/payment_intents). Stripe uses this to represent your intent to collect payment from a customer, tracking your charge attempts and payment state changes throughout the process.
+
+2. A [Customer](https://stripe.com/docs/api/customers) (optional). To set up a card for future payments, it must be attached to a Customer. Create a Customer object when your customer creates an account with your business. If your customer is making a payment as a guest, you can create a Customer object before payment and associate it with your own internal representation of the customer’s account later.
+
+3. A Customer Ephemeral Key (optional). Information on the Customer object is sensitive, and can’t be retrieved directly from an app. An Ephemeral Key grants the SDK temporary access to the Customer.
+
+>> If you never save cards to a Customer and don’t allow returning Customers to reuse saved cards, you can omit the Customer and Customer Ephemeral Key objects from your integration.
+
+For security reasons, your app can’t create these objects. Instead, add an endpoint on your server that:
+
+1. Retrieves the Customer, or creates a new one.
+2. Creates an Ephemeral Key for the Customer.
+3. Creates a PaymentIntent, passing the Customer id.
+4. Returns the Payment Intent’s [client secret](https://stripe.com/docs/api/payment_intents/object#payment_intent_object-client_secret), the Ephemeral Key’s secret, and the Customer’s id to your app.
+
+Check examples implementations for your server [here](https://stripe.com/docs/payments/accept-a-payment?platform=ios#add-server-endpoint)
+
+## 4a. Option1: Use the Stripe native buttons
+
+Note there 
+
+First add the `PlatformPayButton` to your screen. See [docs](https://pub.dev/documentation/flutter_stripe/latest/flutter_stripe/PlatformPayButton-class.html) for all config options.
+
+```dart
+PlatformPayButton(
+  type: PlatformButtonType.buy,
+  onPressed: () {
+    startGooglePay();
+  },
+),
+```
+
+Then add the `startGooglePay` method to your screen. 
+
+```dart
+ Future<void> startGooglePay() async {
+  final googlePaySupported = await Stripe.instance
+      .isPlatformPaySupported(googlePay: IsGooglePaySupportedParams());
+  if (googlePaySupported) {
+    try {
+      // 1. fetch Intent Client Secret from backend
+      final response = await fetchPaymentIntentClientSecret();
+      final clientSecret = response['clientSecret'];
+      // 2.present google pay sheet
+      await Stripe.instance.confirmPlatformPayPaymentIntent(
+          clientSecret: clientSecret,
+          confirmParams: PlatformPayConfirmParams.googlePay(
+            googlePay: GooglePayParams(
+              testEnv: true,
+              merchantName: 'Example Merchant Name',
+              merchantCountryCode: 'Es',
+              currencyCode: 'EUR',
+            ),
+          )
+          // PresentGooglePayParams(clientSecret: clientSecret),
+          );
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text('Google Pay payment succesfully completed')),
+      );
+    } catch (e) {
+      if (e is StripeException) {
+        log('Error during google pay',
+            error: e.error, stackTrace: StackTrace.current);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: ${e.error}')),
+        );
+      } else {
+        log('Error during google pay',
+            error: e, stackTrace: (e as Error?)?.stackTrace);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: $e')),
+        );
+      }
+    }
+  } else {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Google pay is not supported on this device')),
+    );
+  }
+}
+```
+
+## 4b. Option2: Use the Pay plugin
+
+First read the docs thoroughly of package [pay](https://pub.dev/packages/pay).
+
+Add pay to your pubspec.yaml
+
+```yaml
+dependencies:
+  pay: ^1.1.2
+```
+
+Furthermore you need to create a json config file. See for an example [our config](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/assets/google_pay_payment_profile.json).
+
+Add the GooglePayButton to your screen.
+
+```dart
+ pay.GooglePayButton(
+  paymentConfiguration: pay.PaymentConfiguration.fromJsonString(
+    _paymentProfile,
+  ),
+  paymentItems: _paymentItems,
+  margin: const EdgeInsets.only(top: 15),
+  onPaymentResult: onGooglePayResult,
+  loadingIndicator: const Center(
+    child: CircularProgressIndicator(),
+  ),
+  onPressed: () async {},
+  childOnError: Text('Google Pay is not available in this device'),
+  onError: (e) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+            'There was an error while trying to perform the payment'),
+      ),
+    );
+  },
+),
+```
+In the callback generate the correct stripe token and confirm the payment.
+
+```dart
+ Future<void> onGooglePayResult(paymentResult) async {
+  try {
+    debugPrint(paymentResult.toString());
+    // 2. fetch Intent Client Secret from backend
+    final response = await fetchPaymentIntentClientSecret();
+    final clientSecret = response['clientSecret'];
+    final token =
+        paymentResult['paymentMethodData']['tokenizationData']['token'];
+    final tokenJson = Map.castFrom(json.decode(token));
+    debugPrint(tokenJson.toString());
+    final params = PaymentMethodParams.cardFromToken(
+      paymentMethodData: PaymentMethodDataCardFromToken(
+        token: tokenJson['id'], // TODO extract the actual token
+      ),
+    );
+    // 3. Confirm Google pay payment method
+    await Stripe.instance.confirmPayment(
+      paymentIntentClientSecret: clientSecret,
+      data: params,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+          content: Text('Google Pay payment succesfully completed')),
+    );
+  } catch (e) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Error: $e')),
+    );
+  }
+```
+
+

@@ -30,6 +30,7 @@ class CardField extends StatefulWidget {
     this.cvcHintText,
     this.postalCodeHintText,
     this.controller,
+    this.preferredNetworks,
     this.androidPlatformViewRenderType =
         AndroidPlatformViewRenderType.expensiveAndroidView,
   }) : super(key: key);
@@ -103,6 +104,10 @@ class CardField extends StatefulWidget {
   //  'https://stripe.com/docs/security/guide#validating-pci-compliance'
   /// Default is `false`.
   final bool dangerouslyUpdateFullCardDetails;
+
+  /// The list of preferred networks that should be used to process payments made with a co-branded card.
+  /// This value will only be used if your user hasn't selected a network themselves.
+  final List<CardBrand>? preferredNetworks;
 
   /// Type of platformview used for rendering on Android.
   ///
@@ -185,6 +190,7 @@ class _CardFieldState extends State<CardField> {
             child: _MethodChannelCardField(
               controller: controller,
               disabled: widget.disabled,
+              preferredNetworks: widget.preferredNetworks,
               height: platformCardHeight,
               androidPlatformViewRenderType:
                   widget.androidPlatformViewRenderType,
@@ -287,6 +293,7 @@ class _MethodChannelCardField extends StatefulWidget {
     double? height = kCardFieldDefaultHeight,
     BoxConstraints? constraints,
     required this.focusNode,
+    this.preferredNetworks,
     this.dangerouslyGetFullCardDetails = false,
     this.dangerouslyUpdateFullCardDetails = false,
     this.autofocus = false,
@@ -311,6 +318,7 @@ class _MethodChannelCardField extends StatefulWidget {
   final bool dangerouslyGetFullCardDetails;
   final bool dangerouslyUpdateFullCardDetails;
   final AndroidPlatformViewRenderType androidPlatformViewRenderType;
+  final List<CardBrand>? preferredNetworks;
 
   // This is used in the platform side to register the view.
   static const _viewType = 'flutter.stripe/card_field';
@@ -399,6 +407,9 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
       'placeholder': placeholder.toJson(),
       'postalCodeEnabled': widget.enablePostalCode,
       'countryCode': widget.countryCode,
+      if (widget.preferredNetworks != null)
+        'preferredNetworks':
+            widget.preferredNetworks?.map((e) => e.brandValue).toList(),
       'dangerouslyGetFullCardDetails': widget.dangerouslyGetFullCardDetails,
       if (widget.dangerouslyUpdateFullCardDetails &&
           controller.initalDetails != null)

@@ -12,7 +12,7 @@ part of 'payment_intents.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 PaymentIntent _$PaymentIntentFromJson(Map<String, dynamic> json) {
   return _PaymentIntent.fromJson(json);
@@ -70,6 +70,11 @@ mixin _$PaymentIntent {
   /// Mandata data for this paymentintent.
   MandateData? get mandateData => throw _privateConstructorUsedError;
 
+  /// The latest charge created by this payment intent.
+  ///
+  /// This field is only available on stripe web.
+  String? get latestCharge => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentIntentCopyWith<PaymentIntent> get copyWith =>
@@ -98,7 +103,8 @@ abstract class $PaymentIntentCopyWith<$Res> {
       String? canceledAt,
       NextAction? nextAction,
       ShippingDetails? shipping,
-      MandateData? mandateData});
+      MandateData? mandateData,
+      String? latestCharge});
 
   $NextActionCopyWith<$Res>? get nextAction;
   $ShippingDetailsCopyWith<$Res>? get shipping;
@@ -134,6 +140,7 @@ class _$PaymentIntentCopyWithImpl<$Res, $Val extends PaymentIntent>
     Object? nextAction = freezed,
     Object? shipping = freezed,
     Object? mandateData = freezed,
+    Object? latestCharge = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -200,6 +207,10 @@ class _$PaymentIntentCopyWithImpl<$Res, $Val extends PaymentIntent>
           ? _value.mandateData
           : mandateData // ignore: cast_nullable_to_non_nullable
               as MandateData?,
+      latestCharge: freezed == latestCharge
+          ? _value.latestCharge
+          : latestCharge // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -241,11 +252,11 @@ class _$PaymentIntentCopyWithImpl<$Res, $Val extends PaymentIntent>
 }
 
 /// @nodoc
-abstract class _$$_PaymentIntentCopyWith<$Res>
+abstract class _$$PaymentIntentImplCopyWith<$Res>
     implements $PaymentIntentCopyWith<$Res> {
-  factory _$$_PaymentIntentCopyWith(
-          _$_PaymentIntent value, $Res Function(_$_PaymentIntent) then) =
-      __$$_PaymentIntentCopyWithImpl<$Res>;
+  factory _$$PaymentIntentImplCopyWith(
+          _$PaymentIntentImpl value, $Res Function(_$PaymentIntentImpl) then) =
+      __$$PaymentIntentImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -264,7 +275,8 @@ abstract class _$$_PaymentIntentCopyWith<$Res>
       String? canceledAt,
       NextAction? nextAction,
       ShippingDetails? shipping,
-      MandateData? mandateData});
+      MandateData? mandateData,
+      String? latestCharge});
 
   @override
   $NextActionCopyWith<$Res>? get nextAction;
@@ -275,11 +287,11 @@ abstract class _$$_PaymentIntentCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaymentIntentCopyWithImpl<$Res>
-    extends _$PaymentIntentCopyWithImpl<$Res, _$_PaymentIntent>
-    implements _$$_PaymentIntentCopyWith<$Res> {
-  __$$_PaymentIntentCopyWithImpl(
-      _$_PaymentIntent _value, $Res Function(_$_PaymentIntent) _then)
+class __$$PaymentIntentImplCopyWithImpl<$Res>
+    extends _$PaymentIntentCopyWithImpl<$Res, _$PaymentIntentImpl>
+    implements _$$PaymentIntentImplCopyWith<$Res> {
+  __$$PaymentIntentImplCopyWithImpl(
+      _$PaymentIntentImpl _value, $Res Function(_$PaymentIntentImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -301,8 +313,9 @@ class __$$_PaymentIntentCopyWithImpl<$Res>
     Object? nextAction = freezed,
     Object? shipping = freezed,
     Object? mandateData = freezed,
+    Object? latestCharge = freezed,
   }) {
-    return _then(_$_PaymentIntent(
+    return _then(_$PaymentIntentImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -367,6 +380,10 @@ class __$$_PaymentIntentCopyWithImpl<$Res>
           ? _value.mandateData
           : mandateData // ignore: cast_nullable_to_non_nullable
               as MandateData?,
+      latestCharge: freezed == latestCharge
+          ? _value.latestCharge
+          : latestCharge // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -374,8 +391,8 @@ class __$$_PaymentIntentCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_PaymentIntent implements _PaymentIntent {
-  const _$_PaymentIntent(
+class _$PaymentIntentImpl implements _PaymentIntent {
+  const _$PaymentIntentImpl(
       {required this.id,
       required this.amount,
       required this.created,
@@ -391,10 +408,11 @@ class _$_PaymentIntent implements _PaymentIntent {
       this.canceledAt,
       this.nextAction,
       this.shipping,
-      this.mandateData});
+      this.mandateData,
+      this.latestCharge});
 
-  factory _$_PaymentIntent.fromJson(Map<String, dynamic> json) =>
-      _$$_PaymentIntentFromJson(json);
+  factory _$PaymentIntentImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaymentIntentImplFromJson(json);
 
   /// Unique identifier.
   @override
@@ -461,16 +479,22 @@ class _$_PaymentIntent implements _PaymentIntent {
   @override
   final MandateData? mandateData;
 
+  /// The latest charge created by this payment intent.
+  ///
+  /// This field is only available on stripe web.
+  @override
+  final String? latestCharge;
+
   @override
   String toString() {
-    return 'PaymentIntent(id: $id, amount: $amount, created: $created, currency: $currency, status: $status, clientSecret: $clientSecret, livemode: $livemode, captureMethod: $captureMethod, confirmationMethod: $confirmationMethod, paymentMethodId: $paymentMethodId, description: $description, receiptEmail: $receiptEmail, canceledAt: $canceledAt, nextAction: $nextAction, shipping: $shipping, mandateData: $mandateData)';
+    return 'PaymentIntent(id: $id, amount: $amount, created: $created, currency: $currency, status: $status, clientSecret: $clientSecret, livemode: $livemode, captureMethod: $captureMethod, confirmationMethod: $confirmationMethod, paymentMethodId: $paymentMethodId, description: $description, receiptEmail: $receiptEmail, canceledAt: $canceledAt, nextAction: $nextAction, shipping: $shipping, mandateData: $mandateData, latestCharge: $latestCharge)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentIntent &&
+            other is _$PaymentIntentImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.created, created) || other.created == created) &&
@@ -498,7 +522,9 @@ class _$_PaymentIntent implements _PaymentIntent {
             (identical(other.shipping, shipping) ||
                 other.shipping == shipping) &&
             (identical(other.mandateData, mandateData) ||
-                other.mandateData == mandateData));
+                other.mandateData == mandateData) &&
+            (identical(other.latestCharge, latestCharge) ||
+                other.latestCharge == latestCharge));
   }
 
   @JsonKey(ignore: true)
@@ -520,17 +546,18 @@ class _$_PaymentIntent implements _PaymentIntent {
       canceledAt,
       nextAction,
       shipping,
-      mandateData);
+      mandateData,
+      latestCharge);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentIntentCopyWith<_$_PaymentIntent> get copyWith =>
-      __$$_PaymentIntentCopyWithImpl<_$_PaymentIntent>(this, _$identity);
+  _$$PaymentIntentImplCopyWith<_$PaymentIntentImpl> get copyWith =>
+      __$$PaymentIntentImplCopyWithImpl<_$PaymentIntentImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentIntentToJson(
+    return _$$PaymentIntentImplToJson(
       this,
     );
   }
@@ -553,10 +580,11 @@ abstract class _PaymentIntent implements PaymentIntent {
       final String? canceledAt,
       final NextAction? nextAction,
       final ShippingDetails? shipping,
-      final MandateData? mandateData}) = _$_PaymentIntent;
+      final MandateData? mandateData,
+      final String? latestCharge}) = _$PaymentIntentImpl;
 
   factory _PaymentIntent.fromJson(Map<String, dynamic> json) =
-      _$_PaymentIntent.fromJson;
+      _$PaymentIntentImpl.fromJson;
 
   @override
 
@@ -624,8 +652,14 @@ abstract class _PaymentIntent implements PaymentIntent {
   /// Mandata data for this paymentintent.
   MandateData? get mandateData;
   @override
+
+  /// The latest charge created by this payment intent.
+  ///
+  /// This field is only available on stripe web.
+  String? get latestCharge;
+  @override
   @JsonKey(ignore: true)
-  _$$_PaymentIntentCopyWith<_$_PaymentIntent> get copyWith =>
+  _$$PaymentIntentImplCopyWith<_$PaymentIntentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -726,11 +760,11 @@ class _$ShippingDetailsCopyWithImpl<$Res, $Val extends ShippingDetails>
 }
 
 /// @nodoc
-abstract class _$$_ShippingDetailsCopyWith<$Res>
+abstract class _$$ShippingDetailsImplCopyWith<$Res>
     implements $ShippingDetailsCopyWith<$Res> {
-  factory _$$_ShippingDetailsCopyWith(
-          _$_ShippingDetails value, $Res Function(_$_ShippingDetails) then) =
-      __$$_ShippingDetailsCopyWithImpl<$Res>;
+  factory _$$ShippingDetailsImplCopyWith(_$ShippingDetailsImpl value,
+          $Res Function(_$ShippingDetailsImpl) then) =
+      __$$ShippingDetailsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -745,11 +779,11 @@ abstract class _$$_ShippingDetailsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ShippingDetailsCopyWithImpl<$Res>
-    extends _$ShippingDetailsCopyWithImpl<$Res, _$_ShippingDetails>
-    implements _$$_ShippingDetailsCopyWith<$Res> {
-  __$$_ShippingDetailsCopyWithImpl(
-      _$_ShippingDetails _value, $Res Function(_$_ShippingDetails) _then)
+class __$$ShippingDetailsImplCopyWithImpl<$Res>
+    extends _$ShippingDetailsCopyWithImpl<$Res, _$ShippingDetailsImpl>
+    implements _$$ShippingDetailsImplCopyWith<$Res> {
+  __$$ShippingDetailsImplCopyWithImpl(
+      _$ShippingDetailsImpl _value, $Res Function(_$ShippingDetailsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -761,7 +795,7 @@ class __$$_ShippingDetailsCopyWithImpl<$Res>
     Object? phone = freezed,
     Object? trackingNumber = freezed,
   }) {
-    return _then(_$_ShippingDetails(
+    return _then(_$ShippingDetailsImpl(
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -789,16 +823,16 @@ class __$$_ShippingDetailsCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_ShippingDetails implements _ShippingDetails {
-  const _$_ShippingDetails(
+class _$ShippingDetailsImpl implements _ShippingDetails {
+  const _$ShippingDetailsImpl(
       {required this.address,
       this.name,
       this.carrier,
       this.phone,
       this.trackingNumber});
 
-  factory _$_ShippingDetails.fromJson(Map<String, dynamic> json) =>
-      _$$_ShippingDetailsFromJson(json);
+  factory _$ShippingDetailsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ShippingDetailsImplFromJson(json);
 
   /// Recipient address.
   @override
@@ -827,10 +861,10 @@ class _$_ShippingDetails implements _ShippingDetails {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ShippingDetails &&
+            other is _$ShippingDetailsImpl &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.carrier, carrier) || other.carrier == carrier) &&
@@ -847,12 +881,13 @@ class _$_ShippingDetails implements _ShippingDetails {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ShippingDetailsCopyWith<_$_ShippingDetails> get copyWith =>
-      __$$_ShippingDetailsCopyWithImpl<_$_ShippingDetails>(this, _$identity);
+  _$$ShippingDetailsImplCopyWith<_$ShippingDetailsImpl> get copyWith =>
+      __$$ShippingDetailsImplCopyWithImpl<_$ShippingDetailsImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ShippingDetailsToJson(
+    return _$$ShippingDetailsImplToJson(
       this,
     );
   }
@@ -864,10 +899,10 @@ abstract class _ShippingDetails implements ShippingDetails {
       final String? name,
       final String? carrier,
       final String? phone,
-      final String? trackingNumber}) = _$_ShippingDetails;
+      final String? trackingNumber}) = _$ShippingDetailsImpl;
 
   factory _ShippingDetails.fromJson(Map<String, dynamic> json) =
-      _$_ShippingDetails.fromJson;
+      _$ShippingDetailsImpl.fromJson;
 
   @override
 
@@ -892,6 +927,6 @@ abstract class _ShippingDetails implements ShippingDetails {
   String? get trackingNumber;
   @override
   @JsonKey(ignore: true)
-  _$$_ShippingDetailsCopyWith<_$_ShippingDetails> get copyWith =>
+  _$$ShippingDetailsImplCopyWith<_$ShippingDetailsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

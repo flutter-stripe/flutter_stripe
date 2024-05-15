@@ -12,7 +12,7 @@ part of 'wallet.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AddToWalletResult {
@@ -80,11 +80,11 @@ class _$AddToWalletResultCopyWithImpl<$Res, $Val extends AddToWalletResult>
 }
 
 /// @nodoc
-abstract class _$$_AddToWalletResultCopyWith<$Res>
+abstract class _$$AddToWalletResultImplCopyWith<$Res>
     implements $AddToWalletResultCopyWith<$Res> {
-  factory _$$_AddToWalletResultCopyWith(_$_AddToWalletResult value,
-          $Res Function(_$_AddToWalletResult) then) =
-      __$$_AddToWalletResultCopyWithImpl<$Res>;
+  factory _$$AddToWalletResultImplCopyWith(_$AddToWalletResultImpl value,
+          $Res Function(_$AddToWalletResultImpl) then) =
+      __$$AddToWalletResultImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool canAddToWallet, AddToWalletDetails? details});
@@ -94,11 +94,11 @@ abstract class _$$_AddToWalletResultCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AddToWalletResultCopyWithImpl<$Res>
-    extends _$AddToWalletResultCopyWithImpl<$Res, _$_AddToWalletResult>
-    implements _$$_AddToWalletResultCopyWith<$Res> {
-  __$$_AddToWalletResultCopyWithImpl(
-      _$_AddToWalletResult _value, $Res Function(_$_AddToWalletResult) _then)
+class __$$AddToWalletResultImplCopyWithImpl<$Res>
+    extends _$AddToWalletResultCopyWithImpl<$Res, _$AddToWalletResultImpl>
+    implements _$$AddToWalletResultImplCopyWith<$Res> {
+  __$$AddToWalletResultImplCopyWithImpl(_$AddToWalletResultImpl _value,
+      $Res Function(_$AddToWalletResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -107,7 +107,7 @@ class __$$_AddToWalletResultCopyWithImpl<$Res>
     Object? canAddToWallet = null,
     Object? details = freezed,
   }) {
-    return _then(_$_AddToWalletResult(
+    return _then(_$AddToWalletResultImpl(
       canAddToWallet: null == canAddToWallet
           ? _value.canAddToWallet
           : canAddToWallet // ignore: cast_nullable_to_non_nullable
@@ -122,8 +122,8 @@ class __$$_AddToWalletResultCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddToWalletResult implements _AddToWalletResult {
-  const _$_AddToWalletResult({required this.canAddToWallet, this.details});
+class _$AddToWalletResultImpl implements _AddToWalletResult {
+  const _$AddToWalletResultImpl({required this.canAddToWallet, this.details});
 
   /// Whether or not the card can be added to the wallet
   @override
@@ -139,10 +139,10 @@ class _$_AddToWalletResult implements _AddToWalletResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AddToWalletResult &&
+            other is _$AddToWalletResultImpl &&
             (identical(other.canAddToWallet, canAddToWallet) ||
                 other.canAddToWallet == canAddToWallet) &&
             (identical(other.details, details) || other.details == details));
@@ -154,15 +154,15 @@ class _$_AddToWalletResult implements _AddToWalletResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddToWalletResultCopyWith<_$_AddToWalletResult> get copyWith =>
-      __$$_AddToWalletResultCopyWithImpl<_$_AddToWalletResult>(
+  _$$AddToWalletResultImplCopyWith<_$AddToWalletResultImpl> get copyWith =>
+      __$$AddToWalletResultImplCopyWithImpl<_$AddToWalletResultImpl>(
           this, _$identity);
 }
 
 abstract class _AddToWalletResult implements AddToWalletResult {
   const factory _AddToWalletResult(
       {required final bool canAddToWallet,
-      final AddToWalletDetails? details}) = _$_AddToWalletResult;
+      final AddToWalletDetails? details}) = _$AddToWalletResultImpl;
 
   @override
 
@@ -174,7 +174,7 @@ abstract class _AddToWalletResult implements AddToWalletResult {
   AddToWalletDetails? get details;
   @override
   @JsonKey(ignore: true)
-  _$$_AddToWalletResultCopyWith<_$_AddToWalletResult> get copyWith =>
+  _$$AddToWalletResultImplCopyWith<_$AddToWalletResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -235,22 +235,22 @@ class _$AddToWalletDetailsCopyWithImpl<$Res, $Val extends AddToWalletDetails>
 }
 
 /// @nodoc
-abstract class _$$_AddToWalletDetailsCopyWith<$Res>
+abstract class _$$AddToWalletDetailsImplCopyWith<$Res>
     implements $AddToWalletDetailsCopyWith<$Res> {
-  factory _$$_AddToWalletDetailsCopyWith(_$_AddToWalletDetails value,
-          $Res Function(_$_AddToWalletDetails) then) =
-      __$$_AddToWalletDetailsCopyWithImpl<$Res>;
+  factory _$$AddToWalletDetailsImplCopyWith(_$AddToWalletDetailsImpl value,
+          $Res Function(_$AddToWalletDetailsImpl) then) =
+      __$$AddToWalletDetailsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({CanAddToWalletErrorStatus? status, String? token});
 }
 
 /// @nodoc
-class __$$_AddToWalletDetailsCopyWithImpl<$Res>
-    extends _$AddToWalletDetailsCopyWithImpl<$Res, _$_AddToWalletDetails>
-    implements _$$_AddToWalletDetailsCopyWith<$Res> {
-  __$$_AddToWalletDetailsCopyWithImpl(
-      _$_AddToWalletDetails _value, $Res Function(_$_AddToWalletDetails) _then)
+class __$$AddToWalletDetailsImplCopyWithImpl<$Res>
+    extends _$AddToWalletDetailsCopyWithImpl<$Res, _$AddToWalletDetailsImpl>
+    implements _$$AddToWalletDetailsImplCopyWith<$Res> {
+  __$$AddToWalletDetailsImplCopyWithImpl(_$AddToWalletDetailsImpl _value,
+      $Res Function(_$AddToWalletDetailsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -259,7 +259,7 @@ class __$$_AddToWalletDetailsCopyWithImpl<$Res>
     Object? status = freezed,
     Object? token = freezed,
   }) {
-    return _then(_$_AddToWalletDetails(
+    return _then(_$AddToWalletDetailsImpl(
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -274,11 +274,11 @@ class __$$_AddToWalletDetailsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AddToWalletDetails implements _AddToWalletDetails {
-  const _$_AddToWalletDetails({this.status, this.token});
+class _$AddToWalletDetailsImpl implements _AddToWalletDetails {
+  const _$AddToWalletDetailsImpl({this.status, this.token});
 
-  factory _$_AddToWalletDetails.fromJson(Map<String, dynamic> json) =>
-      _$$_AddToWalletDetailsFromJson(json);
+  factory _$AddToWalletDetailsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AddToWalletDetailsImplFromJson(json);
 
   /// The status of the can add to wallet request in case it failed.
   @override
@@ -294,10 +294,10 @@ class _$_AddToWalletDetails implements _AddToWalletDetails {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AddToWalletDetails &&
+            other is _$AddToWalletDetailsImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.token, token) || other.token == token));
   }
@@ -309,13 +309,13 @@ class _$_AddToWalletDetails implements _AddToWalletDetails {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddToWalletDetailsCopyWith<_$_AddToWalletDetails> get copyWith =>
-      __$$_AddToWalletDetailsCopyWithImpl<_$_AddToWalletDetails>(
+  _$$AddToWalletDetailsImplCopyWith<_$AddToWalletDetailsImpl> get copyWith =>
+      __$$AddToWalletDetailsImplCopyWithImpl<_$AddToWalletDetailsImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AddToWalletDetailsToJson(
+    return _$$AddToWalletDetailsImplToJson(
       this,
     );
   }
@@ -324,10 +324,10 @@ class _$_AddToWalletDetails implements _AddToWalletDetails {
 abstract class _AddToWalletDetails implements AddToWalletDetails {
   const factory _AddToWalletDetails(
       {final CanAddToWalletErrorStatus? status,
-      final String? token}) = _$_AddToWalletDetails;
+      final String? token}) = _$AddToWalletDetailsImpl;
 
   factory _AddToWalletDetails.fromJson(Map<String, dynamic> json) =
-      _$_AddToWalletDetails.fromJson;
+      _$AddToWalletDetailsImpl.fromJson;
 
   @override
 
@@ -339,6 +339,6 @@ abstract class _AddToWalletDetails implements AddToWalletDetails {
   String? get token;
   @override
   @JsonKey(ignore: true)
-  _$$_AddToWalletDetailsCopyWith<_$_AddToWalletDetails> get copyWith =>
+  _$$AddToWalletDetailsImplCopyWith<_$AddToWalletDetailsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
