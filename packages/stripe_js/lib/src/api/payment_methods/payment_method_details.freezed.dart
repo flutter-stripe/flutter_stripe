@@ -12,7 +12,7 @@ part of 'payment_method_details.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CardPaymentMethodDetails _$CardPaymentMethodDetailsFromJson(
     Map<String, dynamic> json) {
@@ -163,7 +163,7 @@ class _$CardPaymentMethodRefImpl implements _CardPaymentMethodRef {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardPaymentMethodRefImpl &&
@@ -370,7 +370,7 @@ class _$CardPaymentMethodDefaultImpl implements _CardPaymentMethodDefault {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardPaymentMethodDefaultImpl &&
@@ -595,7 +595,7 @@ class _$CardPaymentMethodDetailsTokenImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardPaymentMethodDetailsTokenImpl &&
@@ -881,7 +881,7 @@ class _$IdIdealPaymentMethodDetailsImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IdIdealPaymentMethodDetailsImpl &&
@@ -1088,7 +1088,7 @@ class _$IdealPaymentMethodDetailsImpl implements _IdealPaymentMethodDetails {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IdealPaymentMethodDetailsImpl &&
@@ -1314,7 +1314,7 @@ class _$IdealPaymentMethodDetailsSelfCollectImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IdealPaymentMethodDetailsSelfCollectImpl &&
@@ -1547,7 +1547,7 @@ class _$IdealBankDataImpl implements _IdealBankData {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IdealBankDataImpl &&
@@ -1691,7 +1691,7 @@ class _$CardTokenPaymentMethodImpl implements _CardTokenPaymentMethod {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardTokenPaymentMethodImpl &&

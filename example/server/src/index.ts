@@ -6,6 +6,7 @@ env.config({ path: './.env' });
 
 import bodyParser from 'body-parser';
 import express from 'express';
+import cors from 'cors';
 
 import Stripe from 'stripe';
 import { generateResponse } from './utils';
@@ -15,6 +16,8 @@ const stripeSecretKey = process.env.STRIPE_SECRET_KEY || '';
 const stripeWebhookSecret = process.env.STRIPE_WEBHOOK_SECRET || '';
 
 const app = express();
+
+app.use(cors());
 
 app.use(
   (

@@ -51,6 +51,7 @@ class LocalizedErrorMessage with _$LocalizedErrorMessage {
   @JsonSerializable(explicitToJson: true)
   const factory LocalizedErrorMessage({
     /// The error code for example Cancelled
+    @JsonKey(unknownEnumValue: FailureCode.Unknown)
     required FailureCode code,
 
     /// Localized error message if any
@@ -73,7 +74,7 @@ class LocalizedErrorMessage with _$LocalizedErrorMessage {
       _$LocalizedErrorMessageFromJson(json);
 }
 
-enum FailureCode { Failed, Canceled, Timeout }
+enum FailureCode { Failed, Canceled, Timeout, Unknown }
 
 class StripeConfigException implements Exception {
   const StripeConfigException(this.message);
