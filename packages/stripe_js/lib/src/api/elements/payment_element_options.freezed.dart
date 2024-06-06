@@ -12,7 +12,7 @@ part of 'payment_element_options.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 PaymentElementOptions _$PaymentElementOptionsFromJson(
     Map<String, dynamic> json) {
@@ -50,7 +50,7 @@ mixin _$PaymentElementOptions {
   /// you must pass that same data to stripe.confirmPayment or the payment will
   /// be rejected.
   PaymentElementFields? get fields => throw _privateConstructorUsedError;
-  dynamic get readOnly => throw _privateConstructorUsedError;
+  bool? get readOnly => throw _privateConstructorUsedError;
   dynamic get terms => throw _privateConstructorUsedError;
   dynamic get wallets => throw _privateConstructorUsedError;
 
@@ -72,7 +72,7 @@ abstract class $PaymentElementOptionsCopyWith<$Res> {
       PaymentElementBusiness? business,
       dynamic paymentMethodOrder,
       PaymentElementFields? fields,
-      dynamic readOnly,
+      bool? readOnly,
       dynamic terms,
       dynamic wallets});
 
@@ -129,7 +129,7 @@ class _$PaymentElementOptionsCopyWithImpl<$Res,
       readOnly: freezed == readOnly
           ? _value.readOnly
           : readOnly // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as bool?,
       terms: freezed == terms
           ? _value.terms
           : terms // ignore: cast_nullable_to_non_nullable
@@ -206,7 +206,7 @@ abstract class _$$PaymentElementOptionsImplCopyWith<$Res>
       PaymentElementBusiness? business,
       dynamic paymentMethodOrder,
       PaymentElementFields? fields,
-      dynamic readOnly,
+      bool? readOnly,
       dynamic terms,
       dynamic wallets});
 
@@ -265,7 +265,7 @@ class __$$PaymentElementOptionsImplCopyWithImpl<$Res>
       readOnly: freezed == readOnly
           ? _value.readOnly
           : readOnly // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as bool?,
       terms: freezed == terms
           ? _value.terms
           : terms // ignore: cast_nullable_to_non_nullable
@@ -328,7 +328,7 @@ class _$PaymentElementOptionsImpl implements _PaymentElementOptions {
   @override
   final PaymentElementFields? fields;
   @override
-  final dynamic readOnly;
+  final bool? readOnly;
   @override
   final dynamic terms;
   @override
@@ -340,7 +340,7 @@ class _$PaymentElementOptionsImpl implements _PaymentElementOptions {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentElementOptionsImpl &&
@@ -352,7 +352,8 @@ class _$PaymentElementOptionsImpl implements _PaymentElementOptions {
             const DeepCollectionEquality()
                 .equals(other.paymentMethodOrder, paymentMethodOrder) &&
             (identical(other.fields, fields) || other.fields == fields) &&
-            const DeepCollectionEquality().equals(other.readOnly, readOnly) &&
+            (identical(other.readOnly, readOnly) ||
+                other.readOnly == readOnly) &&
             const DeepCollectionEquality().equals(other.terms, terms) &&
             const DeepCollectionEquality().equals(other.wallets, wallets));
   }
@@ -366,7 +367,7 @@ class _$PaymentElementOptionsImpl implements _PaymentElementOptions {
       business,
       const DeepCollectionEquality().hash(paymentMethodOrder),
       fields,
-      const DeepCollectionEquality().hash(readOnly),
+      readOnly,
       const DeepCollectionEquality().hash(terms),
       const DeepCollectionEquality().hash(wallets));
 
@@ -392,7 +393,7 @@ abstract class _PaymentElementOptions implements PaymentElementOptions {
       final PaymentElementBusiness? business,
       final dynamic paymentMethodOrder,
       final PaymentElementFields? fields,
-      final dynamic readOnly,
+      final bool? readOnly,
       final dynamic terms,
       final dynamic wallets}) = _$PaymentElementOptionsImpl;
 
@@ -433,7 +434,7 @@ abstract class _PaymentElementOptions implements PaymentElementOptions {
   /// be rejected.
   PaymentElementFields? get fields;
   @override
-  dynamic get readOnly;
+  bool? get readOnly;
   @override
   dynamic get terms;
   @override
@@ -472,6 +473,12 @@ mixin _$PaymentElementLayout {
   /// This property is only applicable to the accordion layout.
   bool? get spacedAccordionItems => throw _privateConstructorUsedError;
 
+  /// Sets the max number of Payment Methods visible before using the "More"
+  /// button to hide additional Payment Methods. Set this value to 0 to
+  /// disable the "More" button and render all available Payment Methods.
+  /// Default is 5. This property is only applicable to the accordion layout.
+  int? get visibleAccordionItemsCount => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentElementLayoutCopyWith<PaymentElementLayout> get copyWith =>
@@ -488,7 +495,8 @@ abstract class $PaymentElementLayoutCopyWith<$Res> {
       {PaymentElementLayoutType type,
       bool? defaultCollapsed,
       bool? radios,
-      bool? spacedAccordionItems});
+      bool? spacedAccordionItems,
+      int? visibleAccordionItemsCount});
 }
 
 /// @nodoc
@@ -509,6 +517,7 @@ class _$PaymentElementLayoutCopyWithImpl<$Res,
     Object? defaultCollapsed = freezed,
     Object? radios = freezed,
     Object? spacedAccordionItems = freezed,
+    Object? visibleAccordionItemsCount = freezed,
   }) {
     return _then(_value.copyWith(
       type: null == type
@@ -527,6 +536,10 @@ class _$PaymentElementLayoutCopyWithImpl<$Res,
           ? _value.spacedAccordionItems
           : spacedAccordionItems // ignore: cast_nullable_to_non_nullable
               as bool?,
+      visibleAccordionItemsCount: freezed == visibleAccordionItemsCount
+          ? _value.visibleAccordionItemsCount
+          : visibleAccordionItemsCount // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -543,7 +556,8 @@ abstract class _$$PaymentElementLayoutImplCopyWith<$Res>
       {PaymentElementLayoutType type,
       bool? defaultCollapsed,
       bool? radios,
-      bool? spacedAccordionItems});
+      bool? spacedAccordionItems,
+      int? visibleAccordionItemsCount});
 }
 
 /// @nodoc
@@ -561,6 +575,7 @@ class __$$PaymentElementLayoutImplCopyWithImpl<$Res>
     Object? defaultCollapsed = freezed,
     Object? radios = freezed,
     Object? spacedAccordionItems = freezed,
+    Object? visibleAccordionItemsCount = freezed,
   }) {
     return _then(_$PaymentElementLayoutImpl(
       type: null == type
@@ -579,6 +594,10 @@ class __$$PaymentElementLayoutImplCopyWithImpl<$Res>
           ? _value.spacedAccordionItems
           : spacedAccordionItems // ignore: cast_nullable_to_non_nullable
               as bool?,
+      visibleAccordionItemsCount: freezed == visibleAccordionItemsCount
+          ? _value.visibleAccordionItemsCount
+          : visibleAccordionItemsCount // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -590,7 +609,8 @@ class _$PaymentElementLayoutImpl implements _PaymentElementLayout {
       {required this.type,
       this.defaultCollapsed,
       this.radios,
-      this.spacedAccordionItems});
+      this.spacedAccordionItems,
+      this.visibleAccordionItemsCount});
 
   factory _$PaymentElementLayoutImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentElementLayoutImplFromJson(json);
@@ -621,13 +641,20 @@ class _$PaymentElementLayoutImpl implements _PaymentElementLayout {
   @override
   final bool? spacedAccordionItems;
 
+  /// Sets the max number of Payment Methods visible before using the "More"
+  /// button to hide additional Payment Methods. Set this value to 0 to
+  /// disable the "More" button and render all available Payment Methods.
+  /// Default is 5. This property is only applicable to the accordion layout.
+  @override
+  final int? visibleAccordionItemsCount;
+
   @override
   String toString() {
-    return 'PaymentElementLayout(type: $type, defaultCollapsed: $defaultCollapsed, radios: $radios, spacedAccordionItems: $spacedAccordionItems)';
+    return 'PaymentElementLayout(type: $type, defaultCollapsed: $defaultCollapsed, radios: $radios, spacedAccordionItems: $spacedAccordionItems, visibleAccordionItemsCount: $visibleAccordionItemsCount)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentElementLayoutImpl &&
@@ -636,13 +663,17 @@ class _$PaymentElementLayoutImpl implements _PaymentElementLayout {
                 other.defaultCollapsed == defaultCollapsed) &&
             (identical(other.radios, radios) || other.radios == radios) &&
             (identical(other.spacedAccordionItems, spacedAccordionItems) ||
-                other.spacedAccordionItems == spacedAccordionItems));
+                other.spacedAccordionItems == spacedAccordionItems) &&
+            (identical(other.visibleAccordionItemsCount,
+                    visibleAccordionItemsCount) ||
+                other.visibleAccordionItemsCount ==
+                    visibleAccordionItemsCount));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, type, defaultCollapsed, radios, spacedAccordionItems);
+  int get hashCode => Object.hash(runtimeType, type, defaultCollapsed, radios,
+      spacedAccordionItems, visibleAccordionItemsCount);
 
   @JsonKey(ignore: true)
   @override
@@ -665,7 +696,8 @@ abstract class _PaymentElementLayout implements PaymentElementLayout {
       {required final PaymentElementLayoutType type,
       final bool? defaultCollapsed,
       final bool? radios,
-      final bool? spacedAccordionItems}) = _$PaymentElementLayoutImpl;
+      final bool? spacedAccordionItems,
+      final int? visibleAccordionItemsCount}) = _$PaymentElementLayoutImpl;
 
   factory _PaymentElementLayout.fromJson(Map<String, dynamic> json) =
       _$PaymentElementLayoutImpl.fromJson;
@@ -697,6 +729,13 @@ abstract class _PaymentElementLayout implements PaymentElementLayout {
   /// This property is only applicable to the accordion layout.
   bool? get spacedAccordionItems;
   @override
+
+  /// Sets the max number of Payment Methods visible before using the "More"
+  /// button to hide additional Payment Methods. Set this value to 0 to
+  /// disable the "More" button and render all available Payment Methods.
+  /// Default is 5. This property is only applicable to the accordion layout.
+  int? get visibleAccordionItemsCount;
+  @override
   @JsonKey(ignore: true)
   _$$PaymentElementLayoutImplCopyWith<_$PaymentElementLayoutImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -717,6 +756,11 @@ mixin _$PaymentElementDefaultValues {
   PaymentElementBillingDetails? get billingDetails =>
       throw _privateConstructorUsedError;
 
+  ///  Specify customer's default information for different payment methods.
+  /// Pre-filling as much information as possible streamlines the checkout process.
+  PaymentElementPaymentMethodDefaults? get paymentMethods =>
+      throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentElementDefaultValuesCopyWith<PaymentElementDefaultValues>
@@ -731,9 +775,12 @@ abstract class $PaymentElementDefaultValuesCopyWith<$Res> {
       _$PaymentElementDefaultValuesCopyWithImpl<$Res,
           PaymentElementDefaultValues>;
   @useResult
-  $Res call({PaymentElementBillingDetails? billingDetails});
+  $Res call(
+      {PaymentElementBillingDetails? billingDetails,
+      PaymentElementPaymentMethodDefaults? paymentMethods});
 
   $PaymentElementBillingDetailsCopyWith<$Res>? get billingDetails;
+  $PaymentElementPaymentMethodDefaultsCopyWith<$Res>? get paymentMethods;
 }
 
 /// @nodoc
@@ -751,12 +798,17 @@ class _$PaymentElementDefaultValuesCopyWithImpl<$Res,
   @override
   $Res call({
     Object? billingDetails = freezed,
+    Object? paymentMethods = freezed,
   }) {
     return _then(_value.copyWith(
       billingDetails: freezed == billingDetails
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
               as PaymentElementBillingDetails?,
+      paymentMethods: freezed == paymentMethods
+          ? _value.paymentMethods
+          : paymentMethods // ignore: cast_nullable_to_non_nullable
+              as PaymentElementPaymentMethodDefaults?,
     ) as $Val);
   }
 
@@ -772,6 +824,19 @@ class _$PaymentElementDefaultValuesCopyWithImpl<$Res,
       return _then(_value.copyWith(billingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentElementPaymentMethodDefaultsCopyWith<$Res>? get paymentMethods {
+    if (_value.paymentMethods == null) {
+      return null;
+    }
+
+    return $PaymentElementPaymentMethodDefaultsCopyWith<$Res>(
+        _value.paymentMethods!, (value) {
+      return _then(_value.copyWith(paymentMethods: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -783,10 +848,14 @@ abstract class _$$PaymentElementDefaultValuesImplCopyWith<$Res>
       __$$PaymentElementDefaultValuesImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({PaymentElementBillingDetails? billingDetails});
+  $Res call(
+      {PaymentElementBillingDetails? billingDetails,
+      PaymentElementPaymentMethodDefaults? paymentMethods});
 
   @override
   $PaymentElementBillingDetailsCopyWith<$Res>? get billingDetails;
+  @override
+  $PaymentElementPaymentMethodDefaultsCopyWith<$Res>? get paymentMethods;
 }
 
 /// @nodoc
@@ -803,12 +872,17 @@ class __$$PaymentElementDefaultValuesImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? billingDetails = freezed,
+    Object? paymentMethods = freezed,
   }) {
     return _then(_$PaymentElementDefaultValuesImpl(
       billingDetails: freezed == billingDetails
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
               as PaymentElementBillingDetails?,
+      paymentMethods: freezed == paymentMethods
+          ? _value.paymentMethods
+          : paymentMethods // ignore: cast_nullable_to_non_nullable
+              as PaymentElementPaymentMethodDefaults?,
     ));
   }
 }
@@ -817,7 +891,8 @@ class __$$PaymentElementDefaultValuesImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PaymentElementDefaultValuesImpl
     implements _PaymentElementDefaultValues {
-  const _$PaymentElementDefaultValuesImpl({this.billingDetails});
+  const _$PaymentElementDefaultValuesImpl(
+      {this.billingDetails, this.paymentMethods});
 
   factory _$PaymentElementDefaultValuesImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -831,23 +906,30 @@ class _$PaymentElementDefaultValuesImpl
   @override
   final PaymentElementBillingDetails? billingDetails;
 
+  ///  Specify customer's default information for different payment methods.
+  /// Pre-filling as much information as possible streamlines the checkout process.
+  @override
+  final PaymentElementPaymentMethodDefaults? paymentMethods;
+
   @override
   String toString() {
-    return 'PaymentElementDefaultValues(billingDetails: $billingDetails)';
+    return 'PaymentElementDefaultValues(billingDetails: $billingDetails, paymentMethods: $paymentMethods)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentElementDefaultValuesImpl &&
             (identical(other.billingDetails, billingDetails) ||
-                other.billingDetails == billingDetails));
+                other.billingDetails == billingDetails) &&
+            (identical(other.paymentMethods, paymentMethods) ||
+                other.paymentMethods == paymentMethods));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, billingDetails);
+  int get hashCode => Object.hash(runtimeType, billingDetails, paymentMethods);
 
   @JsonKey(ignore: true)
   @override
@@ -867,7 +949,8 @@ class _$PaymentElementDefaultValuesImpl
 abstract class _PaymentElementDefaultValues
     implements PaymentElementDefaultValues {
   const factory _PaymentElementDefaultValues(
-          {final PaymentElementBillingDetails? billingDetails}) =
+          {final PaymentElementBillingDetails? billingDetails,
+          final PaymentElementPaymentMethodDefaults? paymentMethods}) =
       _$PaymentElementDefaultValuesImpl;
 
   factory _PaymentElementDefaultValues.fromJson(Map<String, dynamic> json) =
@@ -882,8 +965,557 @@ abstract class _PaymentElementDefaultValues
   /// the checkout process.
   PaymentElementBillingDetails? get billingDetails;
   @override
+
+  ///  Specify customer's default information for different payment methods.
+  /// Pre-filling as much information as possible streamlines the checkout process.
+  PaymentElementPaymentMethodDefaults? get paymentMethods;
+  @override
   @JsonKey(ignore: true)
   _$$PaymentElementDefaultValuesImplCopyWith<_$PaymentElementDefaultValuesImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+PaymentElementPaymentMethodDefaults
+    _$PaymentElementPaymentMethodDefaultsFromJson(Map<String, dynamic> json) {
+  return _PaymentElementPaymentMethodDefaults.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentElementPaymentMethodDefaults {
+  /// Defaults for ideal
+  PaymentElementIdealDefaults? get ideal => throw _privateConstructorUsedError;
+
+  /// Defaults for card payment method
+  PaymentElementCardDefaults? get card => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentElementPaymentMethodDefaultsCopyWith<
+          PaymentElementPaymentMethodDefaults>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentElementPaymentMethodDefaultsCopyWith<$Res> {
+  factory $PaymentElementPaymentMethodDefaultsCopyWith(
+          PaymentElementPaymentMethodDefaults value,
+          $Res Function(PaymentElementPaymentMethodDefaults) then) =
+      _$PaymentElementPaymentMethodDefaultsCopyWithImpl<$Res,
+          PaymentElementPaymentMethodDefaults>;
+  @useResult
+  $Res call(
+      {PaymentElementIdealDefaults? ideal, PaymentElementCardDefaults? card});
+
+  $PaymentElementIdealDefaultsCopyWith<$Res>? get ideal;
+  $PaymentElementCardDefaultsCopyWith<$Res>? get card;
+}
+
+/// @nodoc
+class _$PaymentElementPaymentMethodDefaultsCopyWithImpl<$Res,
+        $Val extends PaymentElementPaymentMethodDefaults>
+    implements $PaymentElementPaymentMethodDefaultsCopyWith<$Res> {
+  _$PaymentElementPaymentMethodDefaultsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ideal = freezed,
+    Object? card = freezed,
+  }) {
+    return _then(_value.copyWith(
+      ideal: freezed == ideal
+          ? _value.ideal
+          : ideal // ignore: cast_nullable_to_non_nullable
+              as PaymentElementIdealDefaults?,
+      card: freezed == card
+          ? _value.card
+          : card // ignore: cast_nullable_to_non_nullable
+              as PaymentElementCardDefaults?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentElementIdealDefaultsCopyWith<$Res>? get ideal {
+    if (_value.ideal == null) {
+      return null;
+    }
+
+    return $PaymentElementIdealDefaultsCopyWith<$Res>(_value.ideal!, (value) {
+      return _then(_value.copyWith(ideal: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentElementCardDefaultsCopyWith<$Res>? get card {
+    if (_value.card == null) {
+      return null;
+    }
+
+    return $PaymentElementCardDefaultsCopyWith<$Res>(_value.card!, (value) {
+      return _then(_value.copyWith(card: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$PaymentElementPaymentMethodDefaultsImplCopyWith<$Res>
+    implements $PaymentElementPaymentMethodDefaultsCopyWith<$Res> {
+  factory _$$PaymentElementPaymentMethodDefaultsImplCopyWith(
+          _$PaymentElementPaymentMethodDefaultsImpl value,
+          $Res Function(_$PaymentElementPaymentMethodDefaultsImpl) then) =
+      __$$PaymentElementPaymentMethodDefaultsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {PaymentElementIdealDefaults? ideal, PaymentElementCardDefaults? card});
+
+  @override
+  $PaymentElementIdealDefaultsCopyWith<$Res>? get ideal;
+  @override
+  $PaymentElementCardDefaultsCopyWith<$Res>? get card;
+}
+
+/// @nodoc
+class __$$PaymentElementPaymentMethodDefaultsImplCopyWithImpl<$Res>
+    extends _$PaymentElementPaymentMethodDefaultsCopyWithImpl<$Res,
+        _$PaymentElementPaymentMethodDefaultsImpl>
+    implements _$$PaymentElementPaymentMethodDefaultsImplCopyWith<$Res> {
+  __$$PaymentElementPaymentMethodDefaultsImplCopyWithImpl(
+      _$PaymentElementPaymentMethodDefaultsImpl _value,
+      $Res Function(_$PaymentElementPaymentMethodDefaultsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ideal = freezed,
+    Object? card = freezed,
+  }) {
+    return _then(_$PaymentElementPaymentMethodDefaultsImpl(
+      ideal: freezed == ideal
+          ? _value.ideal
+          : ideal // ignore: cast_nullable_to_non_nullable
+              as PaymentElementIdealDefaults?,
+      card: freezed == card
+          ? _value.card
+          : card // ignore: cast_nullable_to_non_nullable
+              as PaymentElementCardDefaults?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$PaymentElementPaymentMethodDefaultsImpl
+    implements _PaymentElementPaymentMethodDefaults {
+  const _$PaymentElementPaymentMethodDefaultsImpl({this.ideal, this.card});
+
+  factory _$PaymentElementPaymentMethodDefaultsImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$PaymentElementPaymentMethodDefaultsImplFromJson(json);
+
+  /// Defaults for ideal
+  @override
+  final PaymentElementIdealDefaults? ideal;
+
+  /// Defaults for card payment method
+  @override
+  final PaymentElementCardDefaults? card;
+
+  @override
+  String toString() {
+    return 'PaymentElementPaymentMethodDefaults(ideal: $ideal, card: $card)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaymentElementPaymentMethodDefaultsImpl &&
+            (identical(other.ideal, ideal) || other.ideal == ideal) &&
+            (identical(other.card, card) || other.card == card));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, ideal, card);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaymentElementPaymentMethodDefaultsImplCopyWith<
+          _$PaymentElementPaymentMethodDefaultsImpl>
+      get copyWith => __$$PaymentElementPaymentMethodDefaultsImplCopyWithImpl<
+          _$PaymentElementPaymentMethodDefaultsImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PaymentElementPaymentMethodDefaultsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymentElementPaymentMethodDefaults
+    implements PaymentElementPaymentMethodDefaults {
+  const factory _PaymentElementPaymentMethodDefaults(
+          {final PaymentElementIdealDefaults? ideal,
+          final PaymentElementCardDefaults? card}) =
+      _$PaymentElementPaymentMethodDefaultsImpl;
+
+  factory _PaymentElementPaymentMethodDefaults.fromJson(
+          Map<String, dynamic> json) =
+      _$PaymentElementPaymentMethodDefaultsImpl.fromJson;
+
+  @override
+
+  /// Defaults for ideal
+  PaymentElementIdealDefaults? get ideal;
+  @override
+
+  /// Defaults for card payment method
+  PaymentElementCardDefaults? get card;
+  @override
+  @JsonKey(ignore: true)
+  _$$PaymentElementPaymentMethodDefaultsImplCopyWith<
+          _$PaymentElementPaymentMethodDefaultsImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+PaymentElementIdealDefaults _$PaymentElementIdealDefaultsFromJson(
+    Map<String, dynamic> json) {
+  return _PaymentElementIdealDefaults.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentElementIdealDefaults {
+  /// The customer’s bank name.
+  ///
+  /// See https://docs.stripe.com/payments/ideal/accept-a-payment?ui=element#bank-reference
+  /// for all options.
+  String? get bank => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentElementIdealDefaultsCopyWith<PaymentElementIdealDefaults>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentElementIdealDefaultsCopyWith<$Res> {
+  factory $PaymentElementIdealDefaultsCopyWith(
+          PaymentElementIdealDefaults value,
+          $Res Function(PaymentElementIdealDefaults) then) =
+      _$PaymentElementIdealDefaultsCopyWithImpl<$Res,
+          PaymentElementIdealDefaults>;
+  @useResult
+  $Res call({String? bank});
+}
+
+/// @nodoc
+class _$PaymentElementIdealDefaultsCopyWithImpl<$Res,
+        $Val extends PaymentElementIdealDefaults>
+    implements $PaymentElementIdealDefaultsCopyWith<$Res> {
+  _$PaymentElementIdealDefaultsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? bank = freezed,
+  }) {
+    return _then(_value.copyWith(
+      bank: freezed == bank
+          ? _value.bank
+          : bank // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$PaymentElementIdealDefaultsImplCopyWith<$Res>
+    implements $PaymentElementIdealDefaultsCopyWith<$Res> {
+  factory _$$PaymentElementIdealDefaultsImplCopyWith(
+          _$PaymentElementIdealDefaultsImpl value,
+          $Res Function(_$PaymentElementIdealDefaultsImpl) then) =
+      __$$PaymentElementIdealDefaultsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? bank});
+}
+
+/// @nodoc
+class __$$PaymentElementIdealDefaultsImplCopyWithImpl<$Res>
+    extends _$PaymentElementIdealDefaultsCopyWithImpl<$Res,
+        _$PaymentElementIdealDefaultsImpl>
+    implements _$$PaymentElementIdealDefaultsImplCopyWith<$Res> {
+  __$$PaymentElementIdealDefaultsImplCopyWithImpl(
+      _$PaymentElementIdealDefaultsImpl _value,
+      $Res Function(_$PaymentElementIdealDefaultsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? bank = freezed,
+  }) {
+    return _then(_$PaymentElementIdealDefaultsImpl(
+      bank: freezed == bank
+          ? _value.bank
+          : bank // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$PaymentElementIdealDefaultsImpl
+    implements _PaymentElementIdealDefaults {
+  const _$PaymentElementIdealDefaultsImpl({this.bank});
+
+  factory _$PaymentElementIdealDefaultsImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$PaymentElementIdealDefaultsImplFromJson(json);
+
+  /// The customer’s bank name.
+  ///
+  /// See https://docs.stripe.com/payments/ideal/accept-a-payment?ui=element#bank-reference
+  /// for all options.
+  @override
+  final String? bank;
+
+  @override
+  String toString() {
+    return 'PaymentElementIdealDefaults(bank: $bank)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaymentElementIdealDefaultsImpl &&
+            (identical(other.bank, bank) || other.bank == bank));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, bank);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaymentElementIdealDefaultsImplCopyWith<_$PaymentElementIdealDefaultsImpl>
+      get copyWith => __$$PaymentElementIdealDefaultsImplCopyWithImpl<
+          _$PaymentElementIdealDefaultsImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PaymentElementIdealDefaultsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymentElementIdealDefaults
+    implements PaymentElementIdealDefaults {
+  const factory _PaymentElementIdealDefaults({final String? bank}) =
+      _$PaymentElementIdealDefaultsImpl;
+
+  factory _PaymentElementIdealDefaults.fromJson(Map<String, dynamic> json) =
+      _$PaymentElementIdealDefaultsImpl.fromJson;
+
+  @override
+
+  /// The customer’s bank name.
+  ///
+  /// See https://docs.stripe.com/payments/ideal/accept-a-payment?ui=element#bank-reference
+  /// for all options.
+  String? get bank;
+  @override
+  @JsonKey(ignore: true)
+  _$$PaymentElementIdealDefaultsImplCopyWith<_$PaymentElementIdealDefaultsImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+PaymentElementCardDefaults _$PaymentElementCardDefaultsFromJson(
+    Map<String, dynamic> json) {
+  return _PaymentElementCardDefaults.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentElementCardDefaults {
+  /// The specified network prferences for card brand choice. The first network in the array
+  /// that matches a network on the enetered cobranded card will be selected by default
+  /// in the card brand choice.
+  List<String>? get network => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentElementCardDefaultsCopyWith<PaymentElementCardDefaults>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentElementCardDefaultsCopyWith<$Res> {
+  factory $PaymentElementCardDefaultsCopyWith(PaymentElementCardDefaults value,
+          $Res Function(PaymentElementCardDefaults) then) =
+      _$PaymentElementCardDefaultsCopyWithImpl<$Res,
+          PaymentElementCardDefaults>;
+  @useResult
+  $Res call({List<String>? network});
+}
+
+/// @nodoc
+class _$PaymentElementCardDefaultsCopyWithImpl<$Res,
+        $Val extends PaymentElementCardDefaults>
+    implements $PaymentElementCardDefaultsCopyWith<$Res> {
+  _$PaymentElementCardDefaultsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? network = freezed,
+  }) {
+    return _then(_value.copyWith(
+      network: freezed == network
+          ? _value.network
+          : network // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$PaymentElementCardDefaultsImplCopyWith<$Res>
+    implements $PaymentElementCardDefaultsCopyWith<$Res> {
+  factory _$$PaymentElementCardDefaultsImplCopyWith(
+          _$PaymentElementCardDefaultsImpl value,
+          $Res Function(_$PaymentElementCardDefaultsImpl) then) =
+      __$$PaymentElementCardDefaultsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<String>? network});
+}
+
+/// @nodoc
+class __$$PaymentElementCardDefaultsImplCopyWithImpl<$Res>
+    extends _$PaymentElementCardDefaultsCopyWithImpl<$Res,
+        _$PaymentElementCardDefaultsImpl>
+    implements _$$PaymentElementCardDefaultsImplCopyWith<$Res> {
+  __$$PaymentElementCardDefaultsImplCopyWithImpl(
+      _$PaymentElementCardDefaultsImpl _value,
+      $Res Function(_$PaymentElementCardDefaultsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? network = freezed,
+  }) {
+    return _then(_$PaymentElementCardDefaultsImpl(
+      network: freezed == network
+          ? _value._network
+          : network // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$PaymentElementCardDefaultsImpl implements _PaymentElementCardDefaults {
+  const _$PaymentElementCardDefaultsImpl({final List<String>? network})
+      : _network = network;
+
+  factory _$PaymentElementCardDefaultsImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$PaymentElementCardDefaultsImplFromJson(json);
+
+  /// The specified network prferences for card brand choice. The first network in the array
+  /// that matches a network on the enetered cobranded card will be selected by default
+  /// in the card brand choice.
+  final List<String>? _network;
+
+  /// The specified network prferences for card brand choice. The first network in the array
+  /// that matches a network on the enetered cobranded card will be selected by default
+  /// in the card brand choice.
+  @override
+  List<String>? get network {
+    final value = _network;
+    if (value == null) return null;
+    if (_network is EqualUnmodifiableListView) return _network;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'PaymentElementCardDefaults(network: $network)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaymentElementCardDefaultsImpl &&
+            const DeepCollectionEquality().equals(other._network, _network));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_network));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaymentElementCardDefaultsImplCopyWith<_$PaymentElementCardDefaultsImpl>
+      get copyWith => __$$PaymentElementCardDefaultsImplCopyWithImpl<
+          _$PaymentElementCardDefaultsImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PaymentElementCardDefaultsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymentElementCardDefaults
+    implements PaymentElementCardDefaults {
+  const factory _PaymentElementCardDefaults({final List<String>? network}) =
+      _$PaymentElementCardDefaultsImpl;
+
+  factory _PaymentElementCardDefaults.fromJson(Map<String, dynamic> json) =
+      _$PaymentElementCardDefaultsImpl.fromJson;
+
+  @override
+
+  /// The specified network prferences for card brand choice. The first network in the array
+  /// that matches a network on the enetered cobranded card will be selected by default
+  /// in the card brand choice.
+  List<String>? get network;
+  @override
+  @JsonKey(ignore: true)
+  _$$PaymentElementCardDefaultsImplCopyWith<_$PaymentElementCardDefaultsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1060,7 +1692,7 @@ class _$PaymentElementBillingDetailsImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentElementBillingDetailsImpl &&
@@ -1331,7 +1963,7 @@ class _$PaymentElementBillingDetailsAddressImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentElementBillingDetailsAddressImpl &&
@@ -1514,7 +2146,7 @@ class _$PaymentElementBusinessImpl implements _PaymentElementBusiness {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentElementBusinessImpl &&
@@ -1680,7 +2312,7 @@ class _$PaymentElementFieldsImpl implements _PaymentElementFields {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentElementFieldsImpl &&
@@ -1896,7 +2528,7 @@ class _$BillingDetailsFieldsImpl implements _BillingDetailsFields {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BillingDetailsFieldsImpl &&
@@ -2146,7 +2778,7 @@ class _$PaymentElementAddressFieldsImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentElementAddressFieldsImpl &&

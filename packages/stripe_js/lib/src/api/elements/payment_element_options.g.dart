@@ -25,7 +25,7 @@ _$PaymentElementOptionsImpl _$$PaymentElementOptionsImplFromJson(Map json) =>
           ? null
           : PaymentElementFields.fromJson(
               Map<String, dynamic>.from(json['fields'] as Map)),
-      readOnly: json['readOnly'],
+      readOnly: json['readOnly'] as bool?,
       terms: json['terms'],
       wallets: json['wallets'],
     );
@@ -57,6 +57,8 @@ _$PaymentElementLayoutImpl _$$PaymentElementLayoutImplFromJson(Map json) =>
       defaultCollapsed: json['defaultCollapsed'] as bool?,
       radios: json['radios'] as bool?,
       spacedAccordionItems: json['spacedAccordionItems'] as bool?,
+      visibleAccordionItemsCount:
+          (json['visibleAccordionItemsCount'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$PaymentElementLayoutImplToJson(
@@ -74,6 +76,8 @@ Map<String, dynamic> _$$PaymentElementLayoutImplToJson(
   writeNotNull('defaultCollapsed', instance.defaultCollapsed);
   writeNotNull('radios', instance.radios);
   writeNotNull('spacedAccordionItems', instance.spacedAccordionItems);
+  writeNotNull(
+      'visibleAccordionItemsCount', instance.visibleAccordionItemsCount);
   return val;
 }
 
@@ -89,6 +93,10 @@ _$PaymentElementDefaultValuesImpl _$$PaymentElementDefaultValuesImplFromJson(
           ? null
           : PaymentElementBillingDetails.fromJson(
               Map<String, dynamic>.from(json['billingDetails'] as Map)),
+      paymentMethods: json['paymentMethods'] == null
+          ? null
+          : PaymentElementPaymentMethodDefaults.fromJson(
+              Map<String, dynamic>.from(json['paymentMethods'] as Map)),
     );
 
 Map<String, dynamic> _$$PaymentElementDefaultValuesImplToJson(
@@ -102,6 +110,76 @@ Map<String, dynamic> _$$PaymentElementDefaultValuesImplToJson(
   }
 
   writeNotNull('billingDetails', instance.billingDetails?.toJson());
+  writeNotNull('paymentMethods', instance.paymentMethods?.toJson());
+  return val;
+}
+
+_$PaymentElementPaymentMethodDefaultsImpl
+    _$$PaymentElementPaymentMethodDefaultsImplFromJson(Map json) =>
+        _$PaymentElementPaymentMethodDefaultsImpl(
+          ideal: json['ideal'] == null
+              ? null
+              : PaymentElementIdealDefaults.fromJson(
+                  Map<String, dynamic>.from(json['ideal'] as Map)),
+          card: json['card'] == null
+              ? null
+              : PaymentElementCardDefaults.fromJson(
+                  Map<String, dynamic>.from(json['card'] as Map)),
+        );
+
+Map<String, dynamic> _$$PaymentElementPaymentMethodDefaultsImplToJson(
+    _$PaymentElementPaymentMethodDefaultsImpl instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('ideal', instance.ideal?.toJson());
+  writeNotNull('card', instance.card?.toJson());
+  return val;
+}
+
+_$PaymentElementIdealDefaultsImpl _$$PaymentElementIdealDefaultsImplFromJson(
+        Map json) =>
+    _$PaymentElementIdealDefaultsImpl(
+      bank: json['bank'] as String?,
+    );
+
+Map<String, dynamic> _$$PaymentElementIdealDefaultsImplToJson(
+    _$PaymentElementIdealDefaultsImpl instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('bank', instance.bank);
+  return val;
+}
+
+_$PaymentElementCardDefaultsImpl _$$PaymentElementCardDefaultsImplFromJson(
+        Map json) =>
+    _$PaymentElementCardDefaultsImpl(
+      network:
+          (json['network'] as List<dynamic>?)?.map((e) => e as String).toList(),
+    );
+
+Map<String, dynamic> _$$PaymentElementCardDefaultsImplToJson(
+    _$PaymentElementCardDefaultsImpl instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('network', instance.network);
   return val;
 }
 

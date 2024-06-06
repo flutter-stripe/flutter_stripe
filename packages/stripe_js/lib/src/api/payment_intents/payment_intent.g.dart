@@ -10,21 +10,21 @@ _$PaymentIntentImpl _$$PaymentIntentImplFromJson(Map json) =>
     _$PaymentIntentImpl(
       id: json['id'] as String,
       object: json['object'] as String? ?? "payment_intent",
-      amount: json['amount'] as int,
-      amountCapturable: json['amount_capturable'] as int?,
+      amount: (json['amount'] as num).toInt(),
+      amountCapturable: (json['amount_capturable'] as num?)?.toInt(),
       amountDetails: json['amount_details'] == null
           ? const PaymentIntentAmountDetails()
           : PaymentIntentAmountDetails.fromJson(
               Map<String, dynamic>.from(json['amount_details'] as Map)),
-      amountReceived: json['amount_received'] as int?,
+      amountReceived: (json['amount_received'] as num?)?.toInt(),
       application: json['application'] as String?,
-      applicationFeeAmount: json['application_fee_amount'] as int?,
+      applicationFeeAmount: (json['application_fee_amount'] as num?)?.toInt(),
       automaticPaymentMethods: json['automatic_payment_methods'] == null
           ? null
           : PaymentIntentAutomaticPaymentMethods.fromJson(
               Map<String, dynamic>.from(
                   json['automatic_payment_methods'] as Map)),
-      canceledAt: json['canceled_at'] as int?,
+      canceledAt: (json['canceled_at'] as num?)?.toInt(),
       cancellationReason: $enumDecodeNullable(
           _$PaymentIntentCancellationReasonEnumMap,
           json['cancellation_reason']),
@@ -36,7 +36,7 @@ _$PaymentIntentImpl _$$PaymentIntentImplFromJson(Map json) =>
               _$PaymentIntentConfirmationMethodEnumMap,
               json['confirmation_method']) ??
           PaymentIntentConfirmationMethod.automatic,
-      created: json['created'] as int?,
+      created: (json['created'] as num?)?.toInt(),
       currency: json['currency'] as String,
       customer: json['customer'] as String?,
       description: json['description'] as String?,
@@ -230,7 +230,7 @@ Map<String, dynamic> _$$PaymentIntentAmountDetailsImplToJson(
 
 _$PaymentIntentTipImpl _$$PaymentIntentTipImplFromJson(Map json) =>
     _$PaymentIntentTipImpl(
-      amount: json['amount'] as int?,
+      amount: (json['amount'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$PaymentIntentTipImplToJson(

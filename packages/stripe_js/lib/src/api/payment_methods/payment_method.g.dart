@@ -20,7 +20,7 @@ _$PaymentMethodImpl _$$PaymentMethodImplFromJson(Map json) =>
           ) ??
           const {},
       livemode: json['livemode'] as bool? ?? true,
-      created: json['created'] as int?,
+      created: (json['created'] as num?)?.toInt(),
       card: json['card'] == null
           ? null
           : CardPaymentMethod.fromJson(
@@ -167,8 +167,8 @@ _$CardPaymentMethodImpl _$$CardPaymentMethodImplFromJson(Map json) =>
     _$CardPaymentMethodImpl(
       brand: json['brand'] as String?,
       country: json['country'] as String?,
-      expYear: json['expYear'] as int?,
-      expMonth: json['expMonth'] as int?,
+      expYear: (json['expYear'] as num?)?.toInt(),
+      expMonth: (json['expMonth'] as num?)?.toInt(),
       funding: json['funding'] as String?,
       last4: json['last4'] as String?,
       preferredNetwork: json['preferredNetwork'] as String?,

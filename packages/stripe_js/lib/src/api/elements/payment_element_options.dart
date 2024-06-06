@@ -37,7 +37,7 @@ class PaymentElementOptions with _$PaymentElementOptions {
     /// be rejected.
 
     PaymentElementFields? fields,
-    dynamic readOnly,
+    bool? readOnly,
     dynamic terms,
     dynamic wallets,
   }) = _PaymentElementOptions;
@@ -78,6 +78,12 @@ class PaymentElementLayout with _$PaymentElementLayout {
     /// with space in between them.
     /// This property is only applicable to the accordion layout.
     bool? spacedAccordionItems,
+
+    /// Sets the max number of Payment Methods visible before using the "More"
+    /// button to hide additional Payment Methods. Set this value to 0 to
+    /// disable the "More" button and render all available Payment Methods.
+    /// Default is 5. This property is only applicable to the accordion layout.
+    int? visibleAccordionItemsCount,
   }) = _PaymentElementLayout;
   static const tabs = PaymentElementLayout(type: PaymentElementLayoutType.tabs);
   static const accordion =
@@ -96,10 +102,57 @@ class PaymentElementDefaultValues with _$PaymentElementDefaultValues {
     /// Pre-filling as much information as possible streamlines
     /// the checkout process.
     PaymentElementBillingDetails? billingDetails,
+
+    ///  Specify customer's default information for different payment methods.
+    /// Pre-filling as much information as possible streamlines the checkout process.
+    PaymentElementPaymentMethodDefaults? paymentMethods,
   }) = _PaymentElementDefaultValues;
 
   factory PaymentElementDefaultValues.fromJson(Map<String, dynamic> json) =>
       _$PaymentElementDefaultValuesFromJson(json);
+}
+
+@freezed
+class PaymentElementPaymentMethodDefaults
+    with _$PaymentElementPaymentMethodDefaults {
+  const factory PaymentElementPaymentMethodDefaults({
+    /// Defaults for ideal
+    PaymentElementIdealDefaults? ideal,
+
+    /// Defaults for card payment method
+    PaymentElementCardDefaults? card,
+  }) = _PaymentElementPaymentMethodDefaults;
+
+  factory PaymentElementPaymentMethodDefaults.fromJson(
+          Map<String, dynamic> json) =>
+      _$PaymentElementPaymentMethodDefaultsFromJson(json);
+}
+
+@freezed
+class PaymentElementIdealDefaults with _$PaymentElementIdealDefaults {
+  const factory PaymentElementIdealDefaults({
+    /// The customer’s bank name.
+    ///
+    /// See https://docs.stripe.com/payments/ideal/accept-a-payment?ui=element#bank-reference
+    /// for all options.
+    String? bank,
+  }) = _PaymentElementIdealDefaults;
+
+  factory PaymentElementIdealDefaults.fromJson(Map<String, dynamic> json) =>
+      _$PaymentElementIdealDefaultsFromJson(json);
+}
+
+@freezed
+class PaymentElementCardDefaults with _$PaymentElementCardDefaults {
+  const factory PaymentElementCardDefaults({
+    /// The specified network prferences for card brand choice. The first network in the array
+    /// that matches a network on the enetered cobranded card will be selected by default
+    /// in the card brand choice.
+    List<String>? network,
+  }) = _PaymentElementCardDefaults;
+
+  factory PaymentElementCardDefaults.fromJson(Map<String, dynamic> json) =>
+      _$PaymentElementCardDefaultsFromJson(json);
 }
 
 @freezed
