@@ -26,7 +26,10 @@ _$PaymentElementOptionsImpl _$$PaymentElementOptionsImplFromJson(Map json) =>
           : PaymentElementFields.fromJson(
               Map<String, dynamic>.from(json['fields'] as Map)),
       readOnly: json['readOnly'] as bool?,
-      terms: json['terms'],
+      terms: json['terms'] == null
+          ? null
+          : PaymentElementOptionsTerms.fromJson(
+              Map<String, dynamic>.from(json['terms'] as Map)),
       wallets: json['wallets'],
     );
 
@@ -46,7 +49,7 @@ Map<String, dynamic> _$$PaymentElementOptionsImplToJson(
   writeNotNull('paymentMethodOrder', instance.paymentMethodOrder);
   writeNotNull('fields', instance.fields?.toJson());
   writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('terms', instance.terms);
+  writeNotNull('terms', instance.terms?.toJson());
   writeNotNull('wallets', instance.wallets);
   return val;
 }
@@ -339,3 +342,174 @@ Map<String, dynamic> _$$PaymentElementAddressFieldsImplToJson(
       'country': _$PaymentElementFieldRequiredEnumMap[instance.country]!,
       'postalCode': _$PaymentElementFieldRequiredEnumMap[instance.postalCode]!,
     };
+
+_$PaymentElementOptionsTermsImpl _$$PaymentElementOptionsTermsImplFromJson(
+        Map json) =>
+    _$PaymentElementOptionsTermsImpl(
+      applePay: $enumDecodeNullable(
+          _$PaymentElementShowTermsEnumMap, json['applePay']),
+      auBecsDebit: $enumDecodeNullable(
+          _$PaymentElementShowTermsEnumMap, json['auBecsDebit']),
+      bancontact: $enumDecodeNullable(
+          _$PaymentElementShowTermsEnumMap, json['bancontact']),
+      card: $enumDecodeNullable(_$PaymentElementShowTermsEnumMap, json['card']),
+      cashApp: $enumDecodeNullable(
+          _$PaymentElementShowTermsEnumMap, json['cashApp']),
+      googlePay: $enumDecodeNullable(
+          _$PaymentElementShowTermsEnumMap, json['googlePay']),
+      ideal:
+          $enumDecodeNullable(_$PaymentElementShowTermsEnumMap, json['ideal']),
+      payPal:
+          $enumDecodeNullable(_$PaymentElementShowTermsEnumMap, json['payPal']),
+      sepaDebit: $enumDecodeNullable(
+          _$PaymentElementShowTermsEnumMap, json['sepaDebit']),
+      sofort:
+          $enumDecodeNullable(_$PaymentElementShowTermsEnumMap, json['sofort']),
+      usBankAccount: $enumDecodeNullable(
+          _$PaymentElementShowTermsEnumMap, json['usBankAccount']),
+    );
+
+Map<String, dynamic> _$$PaymentElementOptionsTermsImplToJson(
+    _$PaymentElementOptionsTermsImpl instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('applePay', _$PaymentElementShowTermsEnumMap[instance.applePay]);
+  writeNotNull(
+      'auBecsDebit', _$PaymentElementShowTermsEnumMap[instance.auBecsDebit]);
+  writeNotNull(
+      'bancontact', _$PaymentElementShowTermsEnumMap[instance.bancontact]);
+  writeNotNull('card', _$PaymentElementShowTermsEnumMap[instance.card]);
+  writeNotNull('cashApp', _$PaymentElementShowTermsEnumMap[instance.cashApp]);
+  writeNotNull(
+      'googlePay', _$PaymentElementShowTermsEnumMap[instance.googlePay]);
+  writeNotNull('ideal', _$PaymentElementShowTermsEnumMap[instance.ideal]);
+  writeNotNull('payPal', _$PaymentElementShowTermsEnumMap[instance.payPal]);
+  writeNotNull(
+      'sepaDebit', _$PaymentElementShowTermsEnumMap[instance.sepaDebit]);
+  writeNotNull('sofort', _$PaymentElementShowTermsEnumMap[instance.sofort]);
+  writeNotNull('usBankAccount',
+      _$PaymentElementShowTermsEnumMap[instance.usBankAccount]);
+  return val;
+}
+
+const _$PaymentElementShowTermsEnumMap = {
+  PaymentElementShowTerms.never: 'never',
+  PaymentElementShowTerms.auto: 'auto',
+  PaymentElementShowTerms.always: 'always',
+};
+
+_$PaymentElementApplePayOptionsImpl
+    _$$PaymentElementApplePayOptionsImplFromJson(Map json) =>
+        _$PaymentElementApplePayOptionsImpl(
+          recurringPaymentRequest: json['recurringPaymentRequest'] == null
+              ? null
+              : PaymentElementAppleRecurringRequest.fromJson(
+                  Map<String, dynamic>.from(
+                      json['recurringPaymentRequest'] as Map)),
+        );
+
+Map<String, dynamic> _$$PaymentElementApplePayOptionsImplToJson(
+    _$PaymentElementApplePayOptionsImpl instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull(
+      'recurringPaymentRequest', instance.recurringPaymentRequest?.toJson());
+  return val;
+}
+
+_$PaymentElementAppleRecurringRequestImpl
+    _$$PaymentElementAppleRecurringRequestImplFromJson(Map json) =>
+        _$PaymentElementAppleRecurringRequestImpl(
+          paymentDescription: json['paymentDescription'] as String,
+          managementUrl: json['managementUrl'] as String,
+          trialBilling: json['trialBilling'] == null
+              ? null
+              : PaymentElementRecurringPaymentProperties.fromJson(
+                  Map<String, dynamic>.from(json['trialBilling'] as Map)),
+          regularBilling: json['regularBilling'] == null
+              ? null
+              : PaymentElementRecurringPaymentProperties.fromJson(
+                  Map<String, dynamic>.from(json['regularBilling'] as Map)),
+        );
+
+Map<String, dynamic> _$$PaymentElementAppleRecurringRequestImplToJson(
+    _$PaymentElementAppleRecurringRequestImpl instance) {
+  final val = <String, dynamic>{
+    'paymentDescription': instance.paymentDescription,
+    'managementUrl': instance.managementUrl,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('trialBilling', instance.trialBilling?.toJson());
+  writeNotNull('regularBilling', instance.regularBilling?.toJson());
+  return val;
+}
+
+_$PaymentElementRecurringPaymentPropertiesImpl
+    _$$PaymentElementRecurringPaymentPropertiesImplFromJson(Map json) =>
+        _$PaymentElementRecurringPaymentPropertiesImpl(
+          amount: (json['amount'] as num).toDouble(),
+          label: json['label'] as String,
+          recurringPaymentStartDate: json['recurringPaymentStartDate'] == null
+              ? null
+              : DateTime.parse(json['recurringPaymentStartDate'] as String),
+          recurringPaymentEndDate: json['recurringPaymentEndDate'] == null
+              ? null
+              : DateTime.parse(json['recurringPaymentEndDate'] as String),
+          recurringPaymentIntervalUnit: $enumDecodeNullable(
+              _$ApplePayRecurringPaymentTimeInterValEnumMap,
+              json['recurringPaymentIntervalUnit']),
+          recurringPaymentIntervalCount:
+              (json['recurringPaymentIntervalCount'] as num?)?.toInt(),
+        );
+
+Map<String, dynamic> _$$PaymentElementRecurringPaymentPropertiesImplToJson(
+    _$PaymentElementRecurringPaymentPropertiesImpl instance) {
+  final val = <String, dynamic>{
+    'amount': instance.amount,
+    'label': instance.label,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('recurringPaymentStartDate',
+      instance.recurringPaymentStartDate?.toIso8601String());
+  writeNotNull('recurringPaymentEndDate',
+      instance.recurringPaymentEndDate?.toIso8601String());
+  writeNotNull(
+      'recurringPaymentIntervalUnit',
+      _$ApplePayRecurringPaymentTimeInterValEnumMap[
+          instance.recurringPaymentIntervalUnit]);
+  writeNotNull(
+      'recurringPaymentIntervalCount', instance.recurringPaymentIntervalCount);
+  return val;
+}
+
+const _$ApplePayRecurringPaymentTimeInterValEnumMap = {
+  ApplePayRecurringPaymentTimeInterVal.year: 'year',
+  ApplePayRecurringPaymentTimeInterVal.month: 'month',
+  ApplePayRecurringPaymentTimeInterVal.day: 'day',
+  ApplePayRecurringPaymentTimeInterVal.hour: 'hour',
+  ApplePayRecurringPaymentTimeInterVal.minute: 'minute',
+};

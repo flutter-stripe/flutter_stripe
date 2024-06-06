@@ -38,7 +38,7 @@ class PaymentElementOptions with _$PaymentElementOptions {
 
     PaymentElementFields? fields,
     bool? readOnly,
-    dynamic terms,
+    PaymentElementOptionsTerms? terms,
     dynamic wallets,
   }) = _PaymentElementOptions;
 
@@ -208,6 +208,8 @@ class PaymentElementBusiness with _$PaymentElementBusiness {
 
 enum PaymentElementFieldRequired { never, auto }
 
+enum PaymentElementShowTerms { never, auto, always }
+
 @freezed
 class PaymentElementFields with _$PaymentElementFields {
   const factory PaymentElementFields({
@@ -263,3 +265,106 @@ class PaymentElementAddressFields with _$PaymentElementAddressFields {
   factory PaymentElementAddressFields.fromJson(Map<String, dynamic> json) =>
       _$PaymentElementAddressFieldsFromJson(json);
 }
+
+@freezed
+
+///Control how mandates or other legal agreements are displayed in the Payment Element.
+/// The default setting is auto, which causes legal agreements to only be shown when necessary.
+class PaymentElementOptionsTerms with _$PaymentElementOptionsTerms {
+  const factory PaymentElementOptionsTerms({
+    /// Terms for apple pay
+    PaymentElementShowTerms? applePay,
+
+    /// Terms for aubecs debit
+    PaymentElementShowTerms? auBecsDebit,
+
+    /// Terms for bancontact
+    PaymentElementShowTerms? bancontact,
+
+    /// Terms for card
+    PaymentElementShowTerms? card,
+
+    /// Terms for cashapp
+    PaymentElementShowTerms? cashApp,
+
+    /// Terms for googlePay
+    PaymentElementShowTerms? googlePay,
+
+    /// Terms for ideal
+    PaymentElementShowTerms? ideal,
+
+    /// Terms for paypal
+    PaymentElementShowTerms? payPal,
+
+    /// Terms for sepa debit
+    PaymentElementShowTerms? sepaDebit,
+
+    /// Terms for sofort
+    PaymentElementShowTerms? sofort,
+
+    /// Terms for usBankAccount
+    PaymentElementShowTerms? usBankAccount,
+  }) = _PaymentElementOptionsTerms;
+
+  factory PaymentElementOptionsTerms.fromJson(Map<String, dynamic> json) =>
+      _$PaymentElementOptionsTermsFromJson(json);
+}
+
+@freezed
+class PaymentElementApplePayOptions with _$PaymentElementApplePayOptions {
+  const factory PaymentElementApplePayOptions({
+    /// Information about a recurring payment with ApplePay
+    PaymentElementAppleRecurringRequest? recurringPaymentRequest
+  }) = _PaymentElementApplePayOptions;
+
+  factory PaymentElementApplePayOptions.fromJson(Map<String, dynamic> json) =>
+      _$PaymentElementApplePayOptionsFromJson(json);
+}
+
+@freezed
+class PaymentElementAppleRecurringRequest with _$PaymentElementAppleRecurringRequest {
+  const factory PaymentElementAppleRecurringRequest({
+    /// The description of the payment
+    required String paymentDescription,
+
+    /// Management url
+    required String managementUrl,
+
+   /// Information in case of a trial billing 
+   PaymentElementRecurringPaymentProperties?  trialBilling,
+
+   /// Information in case of a regular billing
+   PaymentElementRecurringPaymentProperties? regularBilling,
+  
+  }) = _PaymentElementAppleRecurringRequest;
+
+  factory PaymentElementAppleRecurringRequest.fromJson(Map<String, dynamic> json) =>
+      _$PaymentElementAppleRecurringRequestFromJson(json);
+}
+@freezed
+class PaymentElementRecurringPaymentProperties with _$PaymentElementRecurringPaymentProperties {
+  const factory PaymentElementRecurringPaymentProperties({
+   /// The amount of the payment
+   required double amount,
+
+   /// Description label
+   required String label,
+
+  /// The startdate of the recurring payment 
+  DateTime? recurringPaymentStartDate,
+
+  /// The enddate of the recurring payment
+  DateTime? recurringPaymentEndDate,
+
+  /// The interval of payment
+  ApplePayRecurringPaymentTimeInterVal? recurringPaymentIntervalUnit,
+
+  /// The amount of intervals
+  int? recurringPaymentIntervalCount,
+  }) = _PaymentElementRecurringPaymentProperties;
+
+  factory PaymentElementRecurringPaymentProperties.fromJson(Map<String, dynamic> json) =>
+      _$PaymentElementRecurringPaymentPropertiesFromJson(json);
+}
+
+enum ApplePayRecurringPaymentTimeInterVal{year, month, day, hour, minute}
