@@ -451,6 +451,12 @@ _$PaymentElementApplePayOptionsImpl
               : PaymentElementApplePayDeferredPaymentRequest.fromJson(
                   Map<String, dynamic>.from(
                       json['deferredPaymentRequest'] as Map)),
+          automaticReloadPaymentRequest:
+              json['automaticReloadPaymentRequest'] == null
+                  ? null
+                  : PaymentElementApplePayAutoReloadPaymentRequest.fromJson(
+                      Map<String, dynamic>.from(
+                          json['automaticReloadPaymentRequest'] as Map)),
         );
 
 Map<String, dynamic> _$$PaymentElementApplePayOptionsImplToJson(
@@ -467,6 +473,8 @@ Map<String, dynamic> _$$PaymentElementApplePayOptionsImplToJson(
       'recurringPaymentRequest', instance.recurringPaymentRequest?.toJson());
   writeNotNull(
       'deferredPaymentRequest', instance.deferredPaymentRequest?.toJson());
+  writeNotNull('automaticReloadPaymentRequest',
+      instance.automaticReloadPaymentRequest?.toJson());
   return val;
 }
 
@@ -608,3 +616,41 @@ Map<String, dynamic>
           'label': instance.label,
           'deferredPaymentDate': instance.deferredPaymentDate.toIso8601String(),
         };
+
+_$PaymentElementApplePayAutoReloadPaymentRequestImpl
+    _$$PaymentElementApplePayAutoReloadPaymentRequestImplFromJson(Map json) =>
+        _$PaymentElementApplePayAutoReloadPaymentRequestImpl(
+          paymentDescription: json['paymentDescription'] as String,
+          managementUrl: json['managementUrl'] as String,
+          automaticReloadBilling:
+              PaymentElementApplePayReloadPaymentProperties.fromJson(
+                  Map<String, dynamic>.from(
+                      json['automaticReloadBilling'] as Map)),
+        );
+
+Map<String, dynamic>
+    _$$PaymentElementApplePayAutoReloadPaymentRequestImplToJson(
+            _$PaymentElementApplePayAutoReloadPaymentRequestImpl instance) =>
+        <String, dynamic>{
+          'paymentDescription': instance.paymentDescription,
+          'managementUrl': instance.managementUrl,
+          'automaticReloadBilling': instance.automaticReloadBilling.toJson(),
+        };
+
+_$PaymentElementApplePayReloadPaymentPropertiesImpl
+    _$$PaymentElementApplePayReloadPaymentPropertiesImplFromJson(Map json) =>
+        _$PaymentElementApplePayReloadPaymentPropertiesImpl(
+          amount: (json['amount'] as num).toDouble(),
+          label: json['label'] as String,
+          automaticReloadPaymentThresholdAmount: DateTime.parse(
+              json['automaticReloadPaymentThresholdAmount'] as String),
+        );
+
+Map<String, dynamic> _$$PaymentElementApplePayReloadPaymentPropertiesImplToJson(
+        _$PaymentElementApplePayReloadPaymentPropertiesImpl instance) =>
+    <String, dynamic>{
+      'amount': instance.amount,
+      'label': instance.label,
+      'automaticReloadPaymentThresholdAmount':
+          instance.automaticReloadPaymentThresholdAmount.toIso8601String(),
+    };
