@@ -52,7 +52,10 @@ mixin _$PaymentElementOptions {
   PaymentElementFields? get fields => throw _privateConstructorUsedError;
   bool? get readOnly => throw _privateConstructorUsedError;
   PaymentElementOptionsTerms? get terms => throw _privateConstructorUsedError;
-  dynamic get wallets => throw _privateConstructorUsedError;
+  PaymentElementWalletOptions? get wallets =>
+      throw _privateConstructorUsedError;
+  PaymentElementApplePayOptions? get applePay =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -74,13 +77,16 @@ abstract class $PaymentElementOptionsCopyWith<$Res> {
       PaymentElementFields? fields,
       bool? readOnly,
       PaymentElementOptionsTerms? terms,
-      dynamic wallets});
+      PaymentElementWalletOptions? wallets,
+      PaymentElementApplePayOptions? applePay});
 
   $PaymentElementLayoutCopyWith<$Res>? get layout;
   $PaymentElementDefaultValuesCopyWith<$Res>? get defaultValues;
   $PaymentElementBusinessCopyWith<$Res>? get business;
   $PaymentElementFieldsCopyWith<$Res>? get fields;
   $PaymentElementOptionsTermsCopyWith<$Res>? get terms;
+  $PaymentElementWalletOptionsCopyWith<$Res>? get wallets;
+  $PaymentElementApplePayOptionsCopyWith<$Res>? get applePay;
 }
 
 /// @nodoc
@@ -105,6 +111,7 @@ class _$PaymentElementOptionsCopyWithImpl<$Res,
     Object? readOnly = freezed,
     Object? terms = freezed,
     Object? wallets = freezed,
+    Object? applePay = freezed,
   }) {
     return _then(_value.copyWith(
       layout: freezed == layout
@@ -138,7 +145,11 @@ class _$PaymentElementOptionsCopyWithImpl<$Res,
       wallets: freezed == wallets
           ? _value.wallets
           : wallets // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as PaymentElementWalletOptions?,
+      applePay: freezed == applePay
+          ? _value.applePay
+          : applePay // ignore: cast_nullable_to_non_nullable
+              as PaymentElementApplePayOptions?,
     ) as $Val);
   }
 
@@ -202,6 +213,31 @@ class _$PaymentElementOptionsCopyWithImpl<$Res,
       return _then(_value.copyWith(terms: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentElementWalletOptionsCopyWith<$Res>? get wallets {
+    if (_value.wallets == null) {
+      return null;
+    }
+
+    return $PaymentElementWalletOptionsCopyWith<$Res>(_value.wallets!, (value) {
+      return _then(_value.copyWith(wallets: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentElementApplePayOptionsCopyWith<$Res>? get applePay {
+    if (_value.applePay == null) {
+      return null;
+    }
+
+    return $PaymentElementApplePayOptionsCopyWith<$Res>(_value.applePay!,
+        (value) {
+      return _then(_value.copyWith(applePay: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -221,7 +257,8 @@ abstract class _$$PaymentElementOptionsImplCopyWith<$Res>
       PaymentElementFields? fields,
       bool? readOnly,
       PaymentElementOptionsTerms? terms,
-      dynamic wallets});
+      PaymentElementWalletOptions? wallets,
+      PaymentElementApplePayOptions? applePay});
 
   @override
   $PaymentElementLayoutCopyWith<$Res>? get layout;
@@ -233,6 +270,10 @@ abstract class _$$PaymentElementOptionsImplCopyWith<$Res>
   $PaymentElementFieldsCopyWith<$Res>? get fields;
   @override
   $PaymentElementOptionsTermsCopyWith<$Res>? get terms;
+  @override
+  $PaymentElementWalletOptionsCopyWith<$Res>? get wallets;
+  @override
+  $PaymentElementApplePayOptionsCopyWith<$Res>? get applePay;
 }
 
 /// @nodoc
@@ -255,6 +296,7 @@ class __$$PaymentElementOptionsImplCopyWithImpl<$Res>
     Object? readOnly = freezed,
     Object? terms = freezed,
     Object? wallets = freezed,
+    Object? applePay = freezed,
   }) {
     return _then(_$PaymentElementOptionsImpl(
       layout: freezed == layout
@@ -288,7 +330,11 @@ class __$$PaymentElementOptionsImplCopyWithImpl<$Res>
       wallets: freezed == wallets
           ? _value.wallets
           : wallets // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as PaymentElementWalletOptions?,
+      applePay: freezed == applePay
+          ? _value.applePay
+          : applePay // ignore: cast_nullable_to_non_nullable
+              as PaymentElementApplePayOptions?,
     ));
   }
 }
@@ -304,7 +350,8 @@ class _$PaymentElementOptionsImpl implements _PaymentElementOptions {
       this.fields,
       this.readOnly,
       this.terms,
-      this.wallets});
+      this.wallets,
+      this.applePay});
 
   factory _$PaymentElementOptionsImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentElementOptionsImplFromJson(json);
@@ -347,11 +394,13 @@ class _$PaymentElementOptionsImpl implements _PaymentElementOptions {
   @override
   final PaymentElementOptionsTerms? terms;
   @override
-  final dynamic wallets;
+  final PaymentElementWalletOptions? wallets;
+  @override
+  final PaymentElementApplePayOptions? applePay;
 
   @override
   String toString() {
-    return 'PaymentElementOptions(layout: $layout, defaultValues: $defaultValues, business: $business, paymentMethodOrder: $paymentMethodOrder, fields: $fields, readOnly: $readOnly, terms: $terms, wallets: $wallets)';
+    return 'PaymentElementOptions(layout: $layout, defaultValues: $defaultValues, business: $business, paymentMethodOrder: $paymentMethodOrder, fields: $fields, readOnly: $readOnly, terms: $terms, wallets: $wallets, applePay: $applePay)';
   }
 
   @override
@@ -370,7 +419,9 @@ class _$PaymentElementOptionsImpl implements _PaymentElementOptions {
             (identical(other.readOnly, readOnly) ||
                 other.readOnly == readOnly) &&
             (identical(other.terms, terms) || other.terms == terms) &&
-            const DeepCollectionEquality().equals(other.wallets, wallets));
+            (identical(other.wallets, wallets) || other.wallets == wallets) &&
+            (identical(other.applePay, applePay) ||
+                other.applePay == applePay));
   }
 
   @JsonKey(ignore: true)
@@ -384,7 +435,8 @@ class _$PaymentElementOptionsImpl implements _PaymentElementOptions {
       fields,
       readOnly,
       terms,
-      const DeepCollectionEquality().hash(wallets));
+      wallets,
+      applePay);
 
   @JsonKey(ignore: true)
   @override
@@ -403,14 +455,16 @@ class _$PaymentElementOptionsImpl implements _PaymentElementOptions {
 
 abstract class _PaymentElementOptions implements PaymentElementOptions {
   const factory _PaymentElementOptions(
-      {final PaymentElementLayout? layout,
-      final PaymentElementDefaultValues? defaultValues,
-      final PaymentElementBusiness? business,
-      final dynamic paymentMethodOrder,
-      final PaymentElementFields? fields,
-      final bool? readOnly,
-      final PaymentElementOptionsTerms? terms,
-      final dynamic wallets}) = _$PaymentElementOptionsImpl;
+          {final PaymentElementLayout? layout,
+          final PaymentElementDefaultValues? defaultValues,
+          final PaymentElementBusiness? business,
+          final dynamic paymentMethodOrder,
+          final PaymentElementFields? fields,
+          final bool? readOnly,
+          final PaymentElementOptionsTerms? terms,
+          final PaymentElementWalletOptions? wallets,
+          final PaymentElementApplePayOptions? applePay}) =
+      _$PaymentElementOptionsImpl;
 
   factory _PaymentElementOptions.fromJson(Map<String, dynamic> json) =
       _$PaymentElementOptionsImpl.fromJson;
@@ -453,7 +507,9 @@ abstract class _PaymentElementOptions implements PaymentElementOptions {
   @override
   PaymentElementOptionsTerms? get terms;
   @override
-  dynamic get wallets;
+  PaymentElementWalletOptions? get wallets;
+  @override
+  PaymentElementApplePayOptions? get applePay;
   @override
   @JsonKey(ignore: true)
   _$$PaymentElementOptionsImplCopyWith<_$PaymentElementOptionsImpl>
@@ -1201,6 +1257,190 @@ abstract class _PaymentElementPaymentMethodDefaults
   @JsonKey(ignore: true)
   _$$PaymentElementPaymentMethodDefaultsImplCopyWith<
           _$PaymentElementPaymentMethodDefaultsImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+PaymentElementWalletOptions _$PaymentElementWalletOptionsFromJson(
+    Map<String, dynamic> json) {
+  return _PaymentElementWalletOptions.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentElementWalletOptions {
+  /// Apple pay required options
+  PaymentElementFieldRequired? get applePay =>
+      throw _privateConstructorUsedError;
+
+  /// Google pay required options
+  PaymentElementFieldRequired? get googlePay =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentElementWalletOptionsCopyWith<PaymentElementWalletOptions>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentElementWalletOptionsCopyWith<$Res> {
+  factory $PaymentElementWalletOptionsCopyWith(
+          PaymentElementWalletOptions value,
+          $Res Function(PaymentElementWalletOptions) then) =
+      _$PaymentElementWalletOptionsCopyWithImpl<$Res,
+          PaymentElementWalletOptions>;
+  @useResult
+  $Res call(
+      {PaymentElementFieldRequired? applePay,
+      PaymentElementFieldRequired? googlePay});
+}
+
+/// @nodoc
+class _$PaymentElementWalletOptionsCopyWithImpl<$Res,
+        $Val extends PaymentElementWalletOptions>
+    implements $PaymentElementWalletOptionsCopyWith<$Res> {
+  _$PaymentElementWalletOptionsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? applePay = freezed,
+    Object? googlePay = freezed,
+  }) {
+    return _then(_value.copyWith(
+      applePay: freezed == applePay
+          ? _value.applePay
+          : applePay // ignore: cast_nullable_to_non_nullable
+              as PaymentElementFieldRequired?,
+      googlePay: freezed == googlePay
+          ? _value.googlePay
+          : googlePay // ignore: cast_nullable_to_non_nullable
+              as PaymentElementFieldRequired?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$PaymentElementWalletOptionsImplCopyWith<$Res>
+    implements $PaymentElementWalletOptionsCopyWith<$Res> {
+  factory _$$PaymentElementWalletOptionsImplCopyWith(
+          _$PaymentElementWalletOptionsImpl value,
+          $Res Function(_$PaymentElementWalletOptionsImpl) then) =
+      __$$PaymentElementWalletOptionsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {PaymentElementFieldRequired? applePay,
+      PaymentElementFieldRequired? googlePay});
+}
+
+/// @nodoc
+class __$$PaymentElementWalletOptionsImplCopyWithImpl<$Res>
+    extends _$PaymentElementWalletOptionsCopyWithImpl<$Res,
+        _$PaymentElementWalletOptionsImpl>
+    implements _$$PaymentElementWalletOptionsImplCopyWith<$Res> {
+  __$$PaymentElementWalletOptionsImplCopyWithImpl(
+      _$PaymentElementWalletOptionsImpl _value,
+      $Res Function(_$PaymentElementWalletOptionsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? applePay = freezed,
+    Object? googlePay = freezed,
+  }) {
+    return _then(_$PaymentElementWalletOptionsImpl(
+      applePay: freezed == applePay
+          ? _value.applePay
+          : applePay // ignore: cast_nullable_to_non_nullable
+              as PaymentElementFieldRequired?,
+      googlePay: freezed == googlePay
+          ? _value.googlePay
+          : googlePay // ignore: cast_nullable_to_non_nullable
+              as PaymentElementFieldRequired?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$PaymentElementWalletOptionsImpl
+    implements _PaymentElementWalletOptions {
+  const _$PaymentElementWalletOptionsImpl({this.applePay, this.googlePay});
+
+  factory _$PaymentElementWalletOptionsImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$PaymentElementWalletOptionsImplFromJson(json);
+
+  /// Apple pay required options
+  @override
+  final PaymentElementFieldRequired? applePay;
+
+  /// Google pay required options
+  @override
+  final PaymentElementFieldRequired? googlePay;
+
+  @override
+  String toString() {
+    return 'PaymentElementWalletOptions(applePay: $applePay, googlePay: $googlePay)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaymentElementWalletOptionsImpl &&
+            (identical(other.applePay, applePay) ||
+                other.applePay == applePay) &&
+            (identical(other.googlePay, googlePay) ||
+                other.googlePay == googlePay));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, applePay, googlePay);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaymentElementWalletOptionsImplCopyWith<_$PaymentElementWalletOptionsImpl>
+      get copyWith => __$$PaymentElementWalletOptionsImplCopyWithImpl<
+          _$PaymentElementWalletOptionsImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PaymentElementWalletOptionsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymentElementWalletOptions
+    implements PaymentElementWalletOptions {
+  const factory _PaymentElementWalletOptions(
+          {final PaymentElementFieldRequired? applePay,
+          final PaymentElementFieldRequired? googlePay}) =
+      _$PaymentElementWalletOptionsImpl;
+
+  factory _PaymentElementWalletOptions.fromJson(Map<String, dynamic> json) =
+      _$PaymentElementWalletOptionsImpl.fromJson;
+
+  @override
+
+  /// Apple pay required options
+  PaymentElementFieldRequired? get applePay;
+  @override
+
+  /// Google pay required options
+  PaymentElementFieldRequired? get googlePay;
+  @override
+  @JsonKey(ignore: true)
+  _$$PaymentElementWalletOptionsImplCopyWith<_$PaymentElementWalletOptionsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -3303,6 +3543,10 @@ mixin _$PaymentElementApplePayOptions {
   PaymentElementAppleRecurringRequest? get recurringPaymentRequest =>
       throw _privateConstructorUsedError;
 
+  /// Information about a deferred payment with ApplePay
+  PaymentElementApplePayDeferredPaymentRequest? get deferredPaymentRequest =>
+      throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PaymentElementApplePayOptionsCopyWith<PaymentElementApplePayOptions>
@@ -3317,10 +3561,14 @@ abstract class $PaymentElementApplePayOptionsCopyWith<$Res> {
       _$PaymentElementApplePayOptionsCopyWithImpl<$Res,
           PaymentElementApplePayOptions>;
   @useResult
-  $Res call({PaymentElementAppleRecurringRequest? recurringPaymentRequest});
+  $Res call(
+      {PaymentElementAppleRecurringRequest? recurringPaymentRequest,
+      PaymentElementApplePayDeferredPaymentRequest? deferredPaymentRequest});
 
   $PaymentElementAppleRecurringRequestCopyWith<$Res>?
       get recurringPaymentRequest;
+  $PaymentElementApplePayDeferredPaymentRequestCopyWith<$Res>?
+      get deferredPaymentRequest;
 }
 
 /// @nodoc
@@ -3338,12 +3586,17 @@ class _$PaymentElementApplePayOptionsCopyWithImpl<$Res,
   @override
   $Res call({
     Object? recurringPaymentRequest = freezed,
+    Object? deferredPaymentRequest = freezed,
   }) {
     return _then(_value.copyWith(
       recurringPaymentRequest: freezed == recurringPaymentRequest
           ? _value.recurringPaymentRequest
           : recurringPaymentRequest // ignore: cast_nullable_to_non_nullable
               as PaymentElementAppleRecurringRequest?,
+      deferredPaymentRequest: freezed == deferredPaymentRequest
+          ? _value.deferredPaymentRequest
+          : deferredPaymentRequest // ignore: cast_nullable_to_non_nullable
+              as PaymentElementApplePayDeferredPaymentRequest?,
     ) as $Val);
   }
 
@@ -3360,6 +3613,20 @@ class _$PaymentElementApplePayOptionsCopyWithImpl<$Res,
       return _then(_value.copyWith(recurringPaymentRequest: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentElementApplePayDeferredPaymentRequestCopyWith<$Res>?
+      get deferredPaymentRequest {
+    if (_value.deferredPaymentRequest == null) {
+      return null;
+    }
+
+    return $PaymentElementApplePayDeferredPaymentRequestCopyWith<$Res>(
+        _value.deferredPaymentRequest!, (value) {
+      return _then(_value.copyWith(deferredPaymentRequest: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -3371,11 +3638,16 @@ abstract class _$$PaymentElementApplePayOptionsImplCopyWith<$Res>
       __$$PaymentElementApplePayOptionsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({PaymentElementAppleRecurringRequest? recurringPaymentRequest});
+  $Res call(
+      {PaymentElementAppleRecurringRequest? recurringPaymentRequest,
+      PaymentElementApplePayDeferredPaymentRequest? deferredPaymentRequest});
 
   @override
   $PaymentElementAppleRecurringRequestCopyWith<$Res>?
       get recurringPaymentRequest;
+  @override
+  $PaymentElementApplePayDeferredPaymentRequestCopyWith<$Res>?
+      get deferredPaymentRequest;
 }
 
 /// @nodoc
@@ -3392,12 +3664,17 @@ class __$$PaymentElementApplePayOptionsImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? recurringPaymentRequest = freezed,
+    Object? deferredPaymentRequest = freezed,
   }) {
     return _then(_$PaymentElementApplePayOptionsImpl(
       recurringPaymentRequest: freezed == recurringPaymentRequest
           ? _value.recurringPaymentRequest
           : recurringPaymentRequest // ignore: cast_nullable_to_non_nullable
               as PaymentElementAppleRecurringRequest?,
+      deferredPaymentRequest: freezed == deferredPaymentRequest
+          ? _value.deferredPaymentRequest
+          : deferredPaymentRequest // ignore: cast_nullable_to_non_nullable
+              as PaymentElementApplePayDeferredPaymentRequest?,
     ));
   }
 }
@@ -3406,7 +3683,8 @@ class __$$PaymentElementApplePayOptionsImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PaymentElementApplePayOptionsImpl
     implements _PaymentElementApplePayOptions {
-  const _$PaymentElementApplePayOptionsImpl({this.recurringPaymentRequest});
+  const _$PaymentElementApplePayOptionsImpl(
+      {this.recurringPaymentRequest, this.deferredPaymentRequest});
 
   factory _$PaymentElementApplePayOptionsImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -3416,9 +3694,13 @@ class _$PaymentElementApplePayOptionsImpl
   @override
   final PaymentElementAppleRecurringRequest? recurringPaymentRequest;
 
+  /// Information about a deferred payment with ApplePay
+  @override
+  final PaymentElementApplePayDeferredPaymentRequest? deferredPaymentRequest;
+
   @override
   String toString() {
-    return 'PaymentElementApplePayOptions(recurringPaymentRequest: $recurringPaymentRequest)';
+    return 'PaymentElementApplePayOptions(recurringPaymentRequest: $recurringPaymentRequest, deferredPaymentRequest: $deferredPaymentRequest)';
   }
 
   @override
@@ -3428,12 +3710,15 @@ class _$PaymentElementApplePayOptionsImpl
             other is _$PaymentElementApplePayOptionsImpl &&
             (identical(
                     other.recurringPaymentRequest, recurringPaymentRequest) ||
-                other.recurringPaymentRequest == recurringPaymentRequest));
+                other.recurringPaymentRequest == recurringPaymentRequest) &&
+            (identical(other.deferredPaymentRequest, deferredPaymentRequest) ||
+                other.deferredPaymentRequest == deferredPaymentRequest));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, recurringPaymentRequest);
+  int get hashCode =>
+      Object.hash(runtimeType, recurringPaymentRequest, deferredPaymentRequest);
 
   @JsonKey(ignore: true)
   @override
@@ -3454,8 +3739,9 @@ class _$PaymentElementApplePayOptionsImpl
 abstract class _PaymentElementApplePayOptions
     implements PaymentElementApplePayOptions {
   const factory _PaymentElementApplePayOptions(
-      {final PaymentElementAppleRecurringRequest?
-          recurringPaymentRequest}) = _$PaymentElementApplePayOptionsImpl;
+      {final PaymentElementAppleRecurringRequest? recurringPaymentRequest,
+      final PaymentElementApplePayDeferredPaymentRequest?
+          deferredPaymentRequest}) = _$PaymentElementApplePayOptionsImpl;
 
   factory _PaymentElementApplePayOptions.fromJson(Map<String, dynamic> json) =
       _$PaymentElementApplePayOptionsImpl.fromJson;
@@ -3464,6 +3750,10 @@ abstract class _PaymentElementApplePayOptions
 
   /// Information about a recurring payment with ApplePay
   PaymentElementAppleRecurringRequest? get recurringPaymentRequest;
+  @override
+
+  /// Information about a deferred payment with ApplePay
+  PaymentElementApplePayDeferredPaymentRequest? get deferredPaymentRequest;
   @override
   @JsonKey(ignore: true)
   _$$PaymentElementApplePayOptionsImplCopyWith<
@@ -4058,5 +4348,550 @@ abstract class _PaymentElementRecurringPaymentProperties
   @JsonKey(ignore: true)
   _$$PaymentElementRecurringPaymentPropertiesImplCopyWith<
           _$PaymentElementRecurringPaymentPropertiesImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+PaymentElementApplePayDeferredPaymentRequest
+    _$PaymentElementApplePayDeferredPaymentRequestFromJson(
+        Map<String, dynamic> json) {
+  return _PaymentElementApplePayDeferredPaymentRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentElementApplePayDeferredPaymentRequest {
+  /// The description of the payment
+  String get paymentDescription => throw _privateConstructorUsedError;
+
+  /// Management url
+  String get managementUrl => throw _privateConstructorUsedError;
+
+  /// Billing agreement label
+  String? get billingAgreement => throw _privateConstructorUsedError;
+
+  /// The date when you can cancel for free
+  DateTime? get freeCancellationDate => throw _privateConstructorUsedError;
+
+  /// The timezone of the free cancellation date
+  String? get freeCancellationTimezone => throw _privateConstructorUsedError;
+
+  /// Billing information of the deffered payment
+  PaymentElementApplePayDeferredPaymentProperties get deferredBilling =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentElementApplePayDeferredPaymentRequestCopyWith<
+          PaymentElementApplePayDeferredPaymentRequest>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentElementApplePayDeferredPaymentRequestCopyWith<$Res> {
+  factory $PaymentElementApplePayDeferredPaymentRequestCopyWith(
+          PaymentElementApplePayDeferredPaymentRequest value,
+          $Res Function(PaymentElementApplePayDeferredPaymentRequest) then) =
+      _$PaymentElementApplePayDeferredPaymentRequestCopyWithImpl<$Res,
+          PaymentElementApplePayDeferredPaymentRequest>;
+  @useResult
+  $Res call(
+      {String paymentDescription,
+      String managementUrl,
+      String? billingAgreement,
+      DateTime? freeCancellationDate,
+      String? freeCancellationTimezone,
+      PaymentElementApplePayDeferredPaymentProperties deferredBilling});
+
+  $PaymentElementApplePayDeferredPaymentPropertiesCopyWith<$Res>
+      get deferredBilling;
+}
+
+/// @nodoc
+class _$PaymentElementApplePayDeferredPaymentRequestCopyWithImpl<$Res,
+        $Val extends PaymentElementApplePayDeferredPaymentRequest>
+    implements $PaymentElementApplePayDeferredPaymentRequestCopyWith<$Res> {
+  _$PaymentElementApplePayDeferredPaymentRequestCopyWithImpl(
+      this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? paymentDescription = null,
+    Object? managementUrl = null,
+    Object? billingAgreement = freezed,
+    Object? freeCancellationDate = freezed,
+    Object? freeCancellationTimezone = freezed,
+    Object? deferredBilling = null,
+  }) {
+    return _then(_value.copyWith(
+      paymentDescription: null == paymentDescription
+          ? _value.paymentDescription
+          : paymentDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      managementUrl: null == managementUrl
+          ? _value.managementUrl
+          : managementUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      billingAgreement: freezed == billingAgreement
+          ? _value.billingAgreement
+          : billingAgreement // ignore: cast_nullable_to_non_nullable
+              as String?,
+      freeCancellationDate: freezed == freeCancellationDate
+          ? _value.freeCancellationDate
+          : freeCancellationDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      freeCancellationTimezone: freezed == freeCancellationTimezone
+          ? _value.freeCancellationTimezone
+          : freeCancellationTimezone // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deferredBilling: null == deferredBilling
+          ? _value.deferredBilling
+          : deferredBilling // ignore: cast_nullable_to_non_nullable
+              as PaymentElementApplePayDeferredPaymentProperties,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentElementApplePayDeferredPaymentPropertiesCopyWith<$Res>
+      get deferredBilling {
+    return $PaymentElementApplePayDeferredPaymentPropertiesCopyWith<$Res>(
+        _value.deferredBilling, (value) {
+      return _then(_value.copyWith(deferredBilling: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$PaymentElementApplePayDeferredPaymentRequestImplCopyWith<$Res>
+    implements $PaymentElementApplePayDeferredPaymentRequestCopyWith<$Res> {
+  factory _$$PaymentElementApplePayDeferredPaymentRequestImplCopyWith(
+          _$PaymentElementApplePayDeferredPaymentRequestImpl value,
+          $Res Function(_$PaymentElementApplePayDeferredPaymentRequestImpl)
+              then) =
+      __$$PaymentElementApplePayDeferredPaymentRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String paymentDescription,
+      String managementUrl,
+      String? billingAgreement,
+      DateTime? freeCancellationDate,
+      String? freeCancellationTimezone,
+      PaymentElementApplePayDeferredPaymentProperties deferredBilling});
+
+  @override
+  $PaymentElementApplePayDeferredPaymentPropertiesCopyWith<$Res>
+      get deferredBilling;
+}
+
+/// @nodoc
+class __$$PaymentElementApplePayDeferredPaymentRequestImplCopyWithImpl<$Res>
+    extends _$PaymentElementApplePayDeferredPaymentRequestCopyWithImpl<$Res,
+        _$PaymentElementApplePayDeferredPaymentRequestImpl>
+    implements
+        _$$PaymentElementApplePayDeferredPaymentRequestImplCopyWith<$Res> {
+  __$$PaymentElementApplePayDeferredPaymentRequestImplCopyWithImpl(
+      _$PaymentElementApplePayDeferredPaymentRequestImpl _value,
+      $Res Function(_$PaymentElementApplePayDeferredPaymentRequestImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? paymentDescription = null,
+    Object? managementUrl = null,
+    Object? billingAgreement = freezed,
+    Object? freeCancellationDate = freezed,
+    Object? freeCancellationTimezone = freezed,
+    Object? deferredBilling = null,
+  }) {
+    return _then(_$PaymentElementApplePayDeferredPaymentRequestImpl(
+      paymentDescription: null == paymentDescription
+          ? _value.paymentDescription
+          : paymentDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      managementUrl: null == managementUrl
+          ? _value.managementUrl
+          : managementUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      billingAgreement: freezed == billingAgreement
+          ? _value.billingAgreement
+          : billingAgreement // ignore: cast_nullable_to_non_nullable
+              as String?,
+      freeCancellationDate: freezed == freeCancellationDate
+          ? _value.freeCancellationDate
+          : freeCancellationDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      freeCancellationTimezone: freezed == freeCancellationTimezone
+          ? _value.freeCancellationTimezone
+          : freeCancellationTimezone // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deferredBilling: null == deferredBilling
+          ? _value.deferredBilling
+          : deferredBilling // ignore: cast_nullable_to_non_nullable
+              as PaymentElementApplePayDeferredPaymentProperties,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$PaymentElementApplePayDeferredPaymentRequestImpl
+    implements _PaymentElementApplePayDeferredPaymentRequest {
+  const _$PaymentElementApplePayDeferredPaymentRequestImpl(
+      {required this.paymentDescription,
+      required this.managementUrl,
+      this.billingAgreement,
+      this.freeCancellationDate,
+      this.freeCancellationTimezone,
+      required this.deferredBilling});
+
+  factory _$PaymentElementApplePayDeferredPaymentRequestImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$PaymentElementApplePayDeferredPaymentRequestImplFromJson(json);
+
+  /// The description of the payment
+  @override
+  final String paymentDescription;
+
+  /// Management url
+  @override
+  final String managementUrl;
+
+  /// Billing agreement label
+  @override
+  final String? billingAgreement;
+
+  /// The date when you can cancel for free
+  @override
+  final DateTime? freeCancellationDate;
+
+  /// The timezone of the free cancellation date
+  @override
+  final String? freeCancellationTimezone;
+
+  /// Billing information of the deffered payment
+  @override
+  final PaymentElementApplePayDeferredPaymentProperties deferredBilling;
+
+  @override
+  String toString() {
+    return 'PaymentElementApplePayDeferredPaymentRequest(paymentDescription: $paymentDescription, managementUrl: $managementUrl, billingAgreement: $billingAgreement, freeCancellationDate: $freeCancellationDate, freeCancellationTimezone: $freeCancellationTimezone, deferredBilling: $deferredBilling)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaymentElementApplePayDeferredPaymentRequestImpl &&
+            (identical(other.paymentDescription, paymentDescription) ||
+                other.paymentDescription == paymentDescription) &&
+            (identical(other.managementUrl, managementUrl) ||
+                other.managementUrl == managementUrl) &&
+            (identical(other.billingAgreement, billingAgreement) ||
+                other.billingAgreement == billingAgreement) &&
+            (identical(other.freeCancellationDate, freeCancellationDate) ||
+                other.freeCancellationDate == freeCancellationDate) &&
+            (identical(
+                    other.freeCancellationTimezone, freeCancellationTimezone) ||
+                other.freeCancellationTimezone == freeCancellationTimezone) &&
+            (identical(other.deferredBilling, deferredBilling) ||
+                other.deferredBilling == deferredBilling));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      paymentDescription,
+      managementUrl,
+      billingAgreement,
+      freeCancellationDate,
+      freeCancellationTimezone,
+      deferredBilling);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaymentElementApplePayDeferredPaymentRequestImplCopyWith<
+          _$PaymentElementApplePayDeferredPaymentRequestImpl>
+      get copyWith =>
+          __$$PaymentElementApplePayDeferredPaymentRequestImplCopyWithImpl<
+                  _$PaymentElementApplePayDeferredPaymentRequestImpl>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PaymentElementApplePayDeferredPaymentRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymentElementApplePayDeferredPaymentRequest
+    implements PaymentElementApplePayDeferredPaymentRequest {
+  const factory _PaymentElementApplePayDeferredPaymentRequest(
+          {required final String paymentDescription,
+          required final String managementUrl,
+          final String? billingAgreement,
+          final DateTime? freeCancellationDate,
+          final String? freeCancellationTimezone,
+          required final PaymentElementApplePayDeferredPaymentProperties
+              deferredBilling}) =
+      _$PaymentElementApplePayDeferredPaymentRequestImpl;
+
+  factory _PaymentElementApplePayDeferredPaymentRequest.fromJson(
+          Map<String, dynamic> json) =
+      _$PaymentElementApplePayDeferredPaymentRequestImpl.fromJson;
+
+  @override
+
+  /// The description of the payment
+  String get paymentDescription;
+  @override
+
+  /// Management url
+  String get managementUrl;
+  @override
+
+  /// Billing agreement label
+  String? get billingAgreement;
+  @override
+
+  /// The date when you can cancel for free
+  DateTime? get freeCancellationDate;
+  @override
+
+  /// The timezone of the free cancellation date
+  String? get freeCancellationTimezone;
+  @override
+
+  /// Billing information of the deffered payment
+  PaymentElementApplePayDeferredPaymentProperties get deferredBilling;
+  @override
+  @JsonKey(ignore: true)
+  _$$PaymentElementApplePayDeferredPaymentRequestImplCopyWith<
+          _$PaymentElementApplePayDeferredPaymentRequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+PaymentElementApplePayDeferredPaymentProperties
+    _$PaymentElementApplePayDeferredPaymentPropertiesFromJson(
+        Map<String, dynamic> json) {
+  return _PaymentElementApplePayDeferredPaymentProperties.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentElementApplePayDeferredPaymentProperties {
+  /// The amount of the payment
+  double get amount => throw _privateConstructorUsedError;
+
+  /// Description label
+  String get label => throw _privateConstructorUsedError;
+
+  /// The date when the payment will be processed
+  DateTime get deferredPaymentDate => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentElementApplePayDeferredPaymentPropertiesCopyWith<
+          PaymentElementApplePayDeferredPaymentProperties>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentElementApplePayDeferredPaymentPropertiesCopyWith<$Res> {
+  factory $PaymentElementApplePayDeferredPaymentPropertiesCopyWith(
+          PaymentElementApplePayDeferredPaymentProperties value,
+          $Res Function(PaymentElementApplePayDeferredPaymentProperties) then) =
+      _$PaymentElementApplePayDeferredPaymentPropertiesCopyWithImpl<$Res,
+          PaymentElementApplePayDeferredPaymentProperties>;
+  @useResult
+  $Res call({double amount, String label, DateTime deferredPaymentDate});
+}
+
+/// @nodoc
+class _$PaymentElementApplePayDeferredPaymentPropertiesCopyWithImpl<$Res,
+        $Val extends PaymentElementApplePayDeferredPaymentProperties>
+    implements $PaymentElementApplePayDeferredPaymentPropertiesCopyWith<$Res> {
+  _$PaymentElementApplePayDeferredPaymentPropertiesCopyWithImpl(
+      this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? amount = null,
+    Object? label = null,
+    Object? deferredPaymentDate = null,
+  }) {
+    return _then(_value.copyWith(
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+      label: null == label
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String,
+      deferredPaymentDate: null == deferredPaymentDate
+          ? _value.deferredPaymentDate
+          : deferredPaymentDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$PaymentElementApplePayDeferredPaymentPropertiesImplCopyWith<
+        $Res>
+    implements $PaymentElementApplePayDeferredPaymentPropertiesCopyWith<$Res> {
+  factory _$$PaymentElementApplePayDeferredPaymentPropertiesImplCopyWith(
+          _$PaymentElementApplePayDeferredPaymentPropertiesImpl value,
+          $Res Function(_$PaymentElementApplePayDeferredPaymentPropertiesImpl)
+              then) =
+      __$$PaymentElementApplePayDeferredPaymentPropertiesImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({double amount, String label, DateTime deferredPaymentDate});
+}
+
+/// @nodoc
+class __$$PaymentElementApplePayDeferredPaymentPropertiesImplCopyWithImpl<$Res>
+    extends _$PaymentElementApplePayDeferredPaymentPropertiesCopyWithImpl<$Res,
+        _$PaymentElementApplePayDeferredPaymentPropertiesImpl>
+    implements
+        _$$PaymentElementApplePayDeferredPaymentPropertiesImplCopyWith<$Res> {
+  __$$PaymentElementApplePayDeferredPaymentPropertiesImplCopyWithImpl(
+      _$PaymentElementApplePayDeferredPaymentPropertiesImpl _value,
+      $Res Function(_$PaymentElementApplePayDeferredPaymentPropertiesImpl)
+          _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? amount = null,
+    Object? label = null,
+    Object? deferredPaymentDate = null,
+  }) {
+    return _then(_$PaymentElementApplePayDeferredPaymentPropertiesImpl(
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+      label: null == label
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String,
+      deferredPaymentDate: null == deferredPaymentDate
+          ? _value.deferredPaymentDate
+          : deferredPaymentDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$PaymentElementApplePayDeferredPaymentPropertiesImpl
+    implements _PaymentElementApplePayDeferredPaymentProperties {
+  const _$PaymentElementApplePayDeferredPaymentPropertiesImpl(
+      {required this.amount,
+      required this.label,
+      required this.deferredPaymentDate});
+
+  factory _$PaymentElementApplePayDeferredPaymentPropertiesImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$PaymentElementApplePayDeferredPaymentPropertiesImplFromJson(json);
+
+  /// The amount of the payment
+  @override
+  final double amount;
+
+  /// Description label
+  @override
+  final String label;
+
+  /// The date when the payment will be processed
+  @override
+  final DateTime deferredPaymentDate;
+
+  @override
+  String toString() {
+    return 'PaymentElementApplePayDeferredPaymentProperties(amount: $amount, label: $label, deferredPaymentDate: $deferredPaymentDate)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaymentElementApplePayDeferredPaymentPropertiesImpl &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.deferredPaymentDate, deferredPaymentDate) ||
+                other.deferredPaymentDate == deferredPaymentDate));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, amount, label, deferredPaymentDate);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaymentElementApplePayDeferredPaymentPropertiesImplCopyWith<
+          _$PaymentElementApplePayDeferredPaymentPropertiesImpl>
+      get copyWith =>
+          __$$PaymentElementApplePayDeferredPaymentPropertiesImplCopyWithImpl<
+                  _$PaymentElementApplePayDeferredPaymentPropertiesImpl>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PaymentElementApplePayDeferredPaymentPropertiesImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymentElementApplePayDeferredPaymentProperties
+    implements PaymentElementApplePayDeferredPaymentProperties {
+  const factory _PaymentElementApplePayDeferredPaymentProperties(
+          {required final double amount,
+          required final String label,
+          required final DateTime deferredPaymentDate}) =
+      _$PaymentElementApplePayDeferredPaymentPropertiesImpl;
+
+  factory _PaymentElementApplePayDeferredPaymentProperties.fromJson(
+          Map<String, dynamic> json) =
+      _$PaymentElementApplePayDeferredPaymentPropertiesImpl.fromJson;
+
+  @override
+
+  /// The amount of the payment
+  double get amount;
+  @override
+
+  /// Description label
+  String get label;
+  @override
+
+  /// The date when the payment will be processed
+  DateTime get deferredPaymentDate;
+  @override
+  @JsonKey(ignore: true)
+  _$$PaymentElementApplePayDeferredPaymentPropertiesImplCopyWith<
+          _$PaymentElementApplePayDeferredPaymentPropertiesImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

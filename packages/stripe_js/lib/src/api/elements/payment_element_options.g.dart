@@ -30,7 +30,14 @@ _$PaymentElementOptionsImpl _$$PaymentElementOptionsImplFromJson(Map json) =>
           ? null
           : PaymentElementOptionsTerms.fromJson(
               Map<String, dynamic>.from(json['terms'] as Map)),
-      wallets: json['wallets'],
+      wallets: json['wallets'] == null
+          ? null
+          : PaymentElementWalletOptions.fromJson(
+              Map<String, dynamic>.from(json['wallets'] as Map)),
+      applePay: json['applePay'] == null
+          ? null
+          : PaymentElementApplePayOptions.fromJson(
+              Map<String, dynamic>.from(json['applePay'] as Map)),
     );
 
 Map<String, dynamic> _$$PaymentElementOptionsImplToJson(
@@ -50,7 +57,8 @@ Map<String, dynamic> _$$PaymentElementOptionsImplToJson(
   writeNotNull('fields', instance.fields?.toJson());
   writeNotNull('readOnly', instance.readOnly);
   writeNotNull('terms', instance.terms?.toJson());
-  writeNotNull('wallets', instance.wallets);
+  writeNotNull('wallets', instance.wallets?.toJson());
+  writeNotNull('applePay', instance.applePay?.toJson());
   return val;
 }
 
@@ -144,6 +152,37 @@ Map<String, dynamic> _$$PaymentElementPaymentMethodDefaultsImplToJson(
   writeNotNull('card', instance.card?.toJson());
   return val;
 }
+
+_$PaymentElementWalletOptionsImpl _$$PaymentElementWalletOptionsImplFromJson(
+        Map json) =>
+    _$PaymentElementWalletOptionsImpl(
+      applePay: $enumDecodeNullable(
+          _$PaymentElementFieldRequiredEnumMap, json['applePay']),
+      googlePay: $enumDecodeNullable(
+          _$PaymentElementFieldRequiredEnumMap, json['googlePay']),
+    );
+
+Map<String, dynamic> _$$PaymentElementWalletOptionsImplToJson(
+    _$PaymentElementWalletOptionsImpl instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull(
+      'applePay', _$PaymentElementFieldRequiredEnumMap[instance.applePay]);
+  writeNotNull(
+      'googlePay', _$PaymentElementFieldRequiredEnumMap[instance.googlePay]);
+  return val;
+}
+
+const _$PaymentElementFieldRequiredEnumMap = {
+  PaymentElementFieldRequired.never: 'never',
+  PaymentElementFieldRequired.auto: 'auto',
+};
 
 _$PaymentElementIdealDefaultsImpl _$$PaymentElementIdealDefaultsImplFromJson(
         Map json) =>
@@ -304,11 +343,6 @@ Map<String, dynamic> _$$BillingDetailsFieldsImplToJson(
       'address': instance.address.toJson(),
     };
 
-const _$PaymentElementFieldRequiredEnumMap = {
-  PaymentElementFieldRequired.never: 'never',
-  PaymentElementFieldRequired.auto: 'auto',
-};
-
 _$PaymentElementAddressFieldsImpl _$$PaymentElementAddressFieldsImplFromJson(
         Map json) =>
     _$PaymentElementAddressFieldsImpl(
@@ -412,6 +446,11 @@ _$PaymentElementApplePayOptionsImpl
               : PaymentElementAppleRecurringRequest.fromJson(
                   Map<String, dynamic>.from(
                       json['recurringPaymentRequest'] as Map)),
+          deferredPaymentRequest: json['deferredPaymentRequest'] == null
+              ? null
+              : PaymentElementApplePayDeferredPaymentRequest.fromJson(
+                  Map<String, dynamic>.from(
+                      json['deferredPaymentRequest'] as Map)),
         );
 
 Map<String, dynamic> _$$PaymentElementApplePayOptionsImplToJson(
@@ -426,6 +465,8 @@ Map<String, dynamic> _$$PaymentElementApplePayOptionsImplToJson(
 
   writeNotNull(
       'recurringPaymentRequest', instance.recurringPaymentRequest?.toJson());
+  writeNotNull(
+      'deferredPaymentRequest', instance.deferredPaymentRequest?.toJson());
   return val;
 }
 
@@ -513,3 +554,57 @@ const _$ApplePayRecurringPaymentTimeInterValEnumMap = {
   ApplePayRecurringPaymentTimeInterVal.hour: 'hour',
   ApplePayRecurringPaymentTimeInterVal.minute: 'minute',
 };
+
+_$PaymentElementApplePayDeferredPaymentRequestImpl
+    _$$PaymentElementApplePayDeferredPaymentRequestImplFromJson(Map json) =>
+        _$PaymentElementApplePayDeferredPaymentRequestImpl(
+          paymentDescription: json['paymentDescription'] as String,
+          managementUrl: json['managementUrl'] as String,
+          billingAgreement: json['billingAgreement'] as String?,
+          freeCancellationDate: json['freeCancellationDate'] == null
+              ? null
+              : DateTime.parse(json['freeCancellationDate'] as String),
+          freeCancellationTimezone: json['freeCancellationTimezone'] as String?,
+          deferredBilling:
+              PaymentElementApplePayDeferredPaymentProperties.fromJson(
+                  Map<String, dynamic>.from(json['deferredBilling'] as Map)),
+        );
+
+Map<String, dynamic> _$$PaymentElementApplePayDeferredPaymentRequestImplToJson(
+    _$PaymentElementApplePayDeferredPaymentRequestImpl instance) {
+  final val = <String, dynamic>{
+    'paymentDescription': instance.paymentDescription,
+    'managementUrl': instance.managementUrl,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('billingAgreement', instance.billingAgreement);
+  writeNotNull(
+      'freeCancellationDate', instance.freeCancellationDate?.toIso8601String());
+  writeNotNull('freeCancellationTimezone', instance.freeCancellationTimezone);
+  val['deferredBilling'] = instance.deferredBilling.toJson();
+  return val;
+}
+
+_$PaymentElementApplePayDeferredPaymentPropertiesImpl
+    _$$PaymentElementApplePayDeferredPaymentPropertiesImplFromJson(Map json) =>
+        _$PaymentElementApplePayDeferredPaymentPropertiesImpl(
+          amount: (json['amount'] as num).toDouble(),
+          label: json['label'] as String,
+          deferredPaymentDate:
+              DateTime.parse(json['deferredPaymentDate'] as String),
+        );
+
+Map<String, dynamic>
+    _$$PaymentElementApplePayDeferredPaymentPropertiesImplToJson(
+            _$PaymentElementApplePayDeferredPaymentPropertiesImpl instance) =>
+        <String, dynamic>{
+          'amount': instance.amount,
+          'label': instance.label,
+          'deferredPaymentDate': instance.deferredPaymentDate.toIso8601String(),
+        };
