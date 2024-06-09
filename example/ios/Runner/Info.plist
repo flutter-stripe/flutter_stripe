@@ -39,6 +39,8 @@
 	<true/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+    <key>CFBundleAllowMixedLocalizations</key>
+    <string>true</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Scan your card to add it automatically</string>
 	<key>NSCameraUsageDescription
