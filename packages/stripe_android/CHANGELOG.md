@@ -1,5 +1,5 @@
-## 10.1.1
-- Fix build error on SDK 34
+## 10.1.2
+- fix Readeable map array type
 
 ## 10.1.0
 
