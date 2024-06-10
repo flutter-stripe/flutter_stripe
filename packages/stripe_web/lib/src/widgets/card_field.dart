@@ -53,9 +53,6 @@ class WebCardField extends StatefulWidget {
 class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   CardEditController get controller => widget.controller;
 
-  late MutationObserver mutationObserver;
-
-  @override
   void initState() {
     // ignore: undefined_prefixed_name
     ui.platformViewRegistry.registerViewFactory(
@@ -64,24 +61,6 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
         ..id = 'card-element'
         ..style.border = 'none',
     );
-    mutationObserver = MutationObserver((entries, observer) {
-      if (document.getElementById('card-element') != null) {
-        mutationObserver.disconnect();
-
-        updateCardDetails(
-          const CardFieldInputDetails(complete: false),
-          controller,
-        );
-        element = WebStripe.js
-            .elements(createElementOptions())
-            .createCard(createOptions())
-          ..mount('#card-element')
-          ..onBlur(requestBlur)
-          ..onFocus(requestFocus)
-          ..onChange(onCardChanged);
-      }
-    });
-    mutationObserver.observe(document, childList: true, subtree: true);
     initStripe();
     super.initState();
   }
@@ -100,7 +79,6 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
           dev.log('WARNING! Initial card data value has been ignored. \n'
               '$kDebugPCIMessage');
         }
-
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           updateCardDetails(
             const CardFieldInputDetails(complete: false),
@@ -209,7 +187,6 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   void dispose() {
     detachController(controller);
     element?.unmount();
-    mutationObserver.disconnect();
     super.dispose();
   }
 

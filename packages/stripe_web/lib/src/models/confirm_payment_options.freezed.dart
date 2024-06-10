@@ -98,12 +98,12 @@ class _$ConfirmPaymentElementOptionsCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ConfirmPaymentElementOptionsCopyWith<$Res>
+abstract class _$$ConfirmPaymentElementOptionsImplCopyWith<$Res>
     implements $ConfirmPaymentElementOptionsCopyWith<$Res> {
-  factory _$$_ConfirmPaymentElementOptionsCopyWith(
-          _$_ConfirmPaymentElementOptions value,
-          $Res Function(_$_ConfirmPaymentElementOptions) then) =
-      __$$_ConfirmPaymentElementOptionsCopyWithImpl<$Res>;
+  factory _$$ConfirmPaymentElementOptionsImplCopyWith(
+          _$ConfirmPaymentElementOptionsImpl value,
+          $Res Function(_$ConfirmPaymentElementOptionsImpl) then) =
+      __$$ConfirmPaymentElementOptionsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -115,13 +115,13 @@ abstract class _$$_ConfirmPaymentElementOptionsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ConfirmPaymentElementOptionsCopyWithImpl<$Res>
+class __$$ConfirmPaymentElementOptionsImplCopyWithImpl<$Res>
     extends _$ConfirmPaymentElementOptionsCopyWithImpl<$Res,
-        _$_ConfirmPaymentElementOptions>
-    implements _$$_ConfirmPaymentElementOptionsCopyWith<$Res> {
-  __$$_ConfirmPaymentElementOptionsCopyWithImpl(
-      _$_ConfirmPaymentElementOptions _value,
-      $Res Function(_$_ConfirmPaymentElementOptions) _then)
+        _$ConfirmPaymentElementOptionsImpl>
+    implements _$$ConfirmPaymentElementOptionsImplCopyWith<$Res> {
+  __$$ConfirmPaymentElementOptionsImplCopyWithImpl(
+      _$ConfirmPaymentElementOptionsImpl _value,
+      $Res Function(_$ConfirmPaymentElementOptionsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -130,7 +130,7 @@ class __$$_ConfirmPaymentElementOptionsCopyWithImpl<$Res>
     Object? confirmParams = null,
     Object? redirect = freezed,
   }) {
-    return _then(_$_ConfirmPaymentElementOptions(
+    return _then(_$ConfirmPaymentElementOptionsImpl(
       confirmParams: null == confirmParams
           ? _value.confirmParams
           : confirmParams // ignore: cast_nullable_to_non_nullable
@@ -145,12 +145,14 @@ class __$$_ConfirmPaymentElementOptionsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ConfirmPaymentElementOptions implements _ConfirmPaymentElementOptions {
-  const _$_ConfirmPaymentElementOptions(
+class _$ConfirmPaymentElementOptionsImpl
+    implements _ConfirmPaymentElementOptions {
+  const _$ConfirmPaymentElementOptionsImpl(
       {required this.confirmParams, this.redirect});
 
-  factory _$_ConfirmPaymentElementOptions.fromJson(Map<String, dynamic> json) =>
-      _$$_ConfirmPaymentElementOptionsFromJson(json);
+  factory _$ConfirmPaymentElementOptionsImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$ConfirmPaymentElementOptionsImplFromJson(json);
 
   /// Parameters that will be passed on to the Stripe API.
   /// Refer to the Payment Intents API for a full list of parameters.
@@ -179,7 +181,7 @@ class _$_ConfirmPaymentElementOptions implements _ConfirmPaymentElementOptions {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ConfirmPaymentElementOptions &&
+            other is _$ConfirmPaymentElementOptionsImpl &&
             (identical(other.confirmParams, confirmParams) ||
                 other.confirmParams == confirmParams) &&
             (identical(other.redirect, redirect) ||
@@ -193,13 +195,14 @@ class _$_ConfirmPaymentElementOptions implements _ConfirmPaymentElementOptions {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ConfirmPaymentElementOptionsCopyWith<_$_ConfirmPaymentElementOptions>
-      get copyWith => __$$_ConfirmPaymentElementOptionsCopyWithImpl<
-          _$_ConfirmPaymentElementOptions>(this, _$identity);
+  _$$ConfirmPaymentElementOptionsImplCopyWith<
+          _$ConfirmPaymentElementOptionsImpl>
+      get copyWith => __$$ConfirmPaymentElementOptionsImplCopyWithImpl<
+          _$ConfirmPaymentElementOptionsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ConfirmPaymentElementOptionsToJson(
+    return _$$ConfirmPaymentElementOptionsImplToJson(
       this,
     );
   }
@@ -210,10 +213,10 @@ abstract class _ConfirmPaymentElementOptions
   const factory _ConfirmPaymentElementOptions(
           {required final ConfirmPaymentParams confirmParams,
           final PaymentConfirmationRedirect? redirect}) =
-      _$_ConfirmPaymentElementOptions;
+      _$ConfirmPaymentElementOptionsImpl;
 
   factory _ConfirmPaymentElementOptions.fromJson(Map<String, dynamic> json) =
-      _$_ConfirmPaymentElementOptions.fromJson;
+      _$ConfirmPaymentElementOptionsImpl.fromJson;
 
   @override
 
@@ -235,6 +238,7 @@ abstract class _ConfirmPaymentElementOptions
   PaymentConfirmationRedirect? get redirect;
   @override
   @JsonKey(ignore: true)
-  _$$_ConfirmPaymentElementOptionsCopyWith<_$_ConfirmPaymentElementOptions>
+  _$$ConfirmPaymentElementOptionsImplCopyWith<
+          _$ConfirmPaymentElementOptionsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
