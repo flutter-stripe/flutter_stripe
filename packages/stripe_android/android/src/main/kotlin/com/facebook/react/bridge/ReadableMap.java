@@ -83,7 +83,7 @@ public class ReadableMap extends WritableMap {
             final Object value = map.get(key);
             if (value instanceof Boolean) {
                 return ReadableType.Boolean;
-            } else if (value instanceof Iterable) {
+            } else if (value instanceof Iterable || (value instanceof JSONArray)) {
                 return ReadableType.Array;
             } else if (value instanceof Number) {
                 return ReadableType.Number;
