@@ -84,23 +84,25 @@ class _$PresentGooglePayParamsCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PresentGooglePayParamsCopyWith<$Res>
+abstract class _$$PresentGooglePayParamsImplCopyWith<$Res>
     implements $PresentGooglePayParamsCopyWith<$Res> {
-  factory _$$_PresentGooglePayParamsCopyWith(_$_PresentGooglePayParams value,
-          $Res Function(_$_PresentGooglePayParams) then) =
-      __$$_PresentGooglePayParamsCopyWithImpl<$Res>;
+  factory _$$PresentGooglePayParamsImplCopyWith(
+          _$PresentGooglePayParamsImpl value,
+          $Res Function(_$PresentGooglePayParamsImpl) then) =
+      __$$PresentGooglePayParamsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String clientSecret, bool forSetupIntent, String? currencyCode});
 }
 
 /// @nodoc
-class __$$_PresentGooglePayParamsCopyWithImpl<$Res>
+class __$$PresentGooglePayParamsImplCopyWithImpl<$Res>
     extends _$PresentGooglePayParamsCopyWithImpl<$Res,
-        _$_PresentGooglePayParams>
-    implements _$$_PresentGooglePayParamsCopyWith<$Res> {
-  __$$_PresentGooglePayParamsCopyWithImpl(_$_PresentGooglePayParams _value,
-      $Res Function(_$_PresentGooglePayParams) _then)
+        _$PresentGooglePayParamsImpl>
+    implements _$$PresentGooglePayParamsImplCopyWith<$Res> {
+  __$$PresentGooglePayParamsImplCopyWithImpl(
+      _$PresentGooglePayParamsImpl _value,
+      $Res Function(_$PresentGooglePayParamsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -110,7 +112,7 @@ class __$$_PresentGooglePayParamsCopyWithImpl<$Res>
     Object? forSetupIntent = null,
     Object? currencyCode = freezed,
   }) {
-    return _then(_$_PresentGooglePayParams(
+    return _then(_$PresentGooglePayParamsImpl(
       clientSecret: null == clientSecret
           ? _value.clientSecret
           : clientSecret // ignore: cast_nullable_to_non_nullable
@@ -130,14 +132,14 @@ class __$$_PresentGooglePayParamsCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_PresentGooglePayParams implements _PresentGooglePayParams {
-  const _$_PresentGooglePayParams(
+class _$PresentGooglePayParamsImpl implements _PresentGooglePayParams {
+  const _$PresentGooglePayParamsImpl(
       {required this.clientSecret,
       this.forSetupIntent = false,
       this.currencyCode});
 
-  factory _$_PresentGooglePayParams.fromJson(Map<String, dynamic> json) =>
-      _$$_PresentGooglePayParamsFromJson(json);
+  factory _$PresentGooglePayParamsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PresentGooglePayParamsImplFromJson(json);
 
   /// The client is secret is used for handling the payment from the Client side.
   @override
@@ -164,7 +166,7 @@ class _$_PresentGooglePayParams implements _PresentGooglePayParams {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PresentGooglePayParams &&
+            other is _$PresentGooglePayParamsImpl &&
             (identical(other.clientSecret, clientSecret) ||
                 other.clientSecret == clientSecret) &&
             (identical(other.forSetupIntent, forSetupIntent) ||
@@ -181,13 +183,13 @@ class _$_PresentGooglePayParams implements _PresentGooglePayParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PresentGooglePayParamsCopyWith<_$_PresentGooglePayParams> get copyWith =>
-      __$$_PresentGooglePayParamsCopyWithImpl<_$_PresentGooglePayParams>(
-          this, _$identity);
+  _$$PresentGooglePayParamsImplCopyWith<_$PresentGooglePayParamsImpl>
+      get copyWith => __$$PresentGooglePayParamsImplCopyWithImpl<
+          _$PresentGooglePayParamsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PresentGooglePayParamsToJson(
+    return _$$PresentGooglePayParamsImplToJson(
       this,
     );
   }
@@ -197,10 +199,10 @@ abstract class _PresentGooglePayParams implements PresentGooglePayParams {
   const factory _PresentGooglePayParams(
       {required final String clientSecret,
       final bool forSetupIntent,
-      final String? currencyCode}) = _$_PresentGooglePayParams;
+      final String? currencyCode}) = _$PresentGooglePayParamsImpl;
 
   factory _PresentGooglePayParams.fromJson(Map<String, dynamic> json) =
-      _$_PresentGooglePayParams.fromJson;
+      _$PresentGooglePayParamsImpl.fromJson;
 
   @override
 
@@ -219,8 +221,8 @@ abstract class _PresentGooglePayParams implements PresentGooglePayParams {
   String? get currencyCode;
   @override
   @JsonKey(ignore: true)
-  _$$_PresentGooglePayParamsCopyWith<_$_PresentGooglePayParams> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PresentGooglePayParamsImplCopyWith<_$PresentGooglePayParamsImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 GooglePayInitParams _$GooglePayInitParamsFromJson(Map<String, dynamic> json) {
@@ -353,11 +355,11 @@ class _$GooglePayInitParamsCopyWithImpl<$Res, $Val extends GooglePayInitParams>
 }
 
 /// @nodoc
-abstract class _$$_GooglePayInitParamsCopyWith<$Res>
+abstract class _$$GooglePayInitParamsImplCopyWith<$Res>
     implements $GooglePayInitParamsCopyWith<$Res> {
-  factory _$$_GooglePayInitParamsCopyWith(_$_GooglePayInitParams value,
-          $Res Function(_$_GooglePayInitParams) then) =
-      __$$_GooglePayInitParamsCopyWithImpl<$Res>;
+  factory _$$GooglePayInitParamsImplCopyWith(_$GooglePayInitParamsImpl value,
+          $Res Function(_$GooglePayInitParamsImpl) then) =
+      __$$GooglePayInitParamsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -375,11 +377,11 @@ abstract class _$$_GooglePayInitParamsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_GooglePayInitParamsCopyWithImpl<$Res>
-    extends _$GooglePayInitParamsCopyWithImpl<$Res, _$_GooglePayInitParams>
-    implements _$$_GooglePayInitParamsCopyWith<$Res> {
-  __$$_GooglePayInitParamsCopyWithImpl(_$_GooglePayInitParams _value,
-      $Res Function(_$_GooglePayInitParams) _then)
+class __$$GooglePayInitParamsImplCopyWithImpl<$Res>
+    extends _$GooglePayInitParamsCopyWithImpl<$Res, _$GooglePayInitParamsImpl>
+    implements _$$GooglePayInitParamsImplCopyWith<$Res> {
+  __$$GooglePayInitParamsImplCopyWithImpl(_$GooglePayInitParamsImpl _value,
+      $Res Function(_$GooglePayInitParamsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -394,7 +396,7 @@ class __$$_GooglePayInitParamsCopyWithImpl<$Res>
     Object? label = freezed,
     Object? amount = freezed,
   }) {
-    return _then(_$_GooglePayInitParams(
+    return _then(_$GooglePayInitParamsImpl(
       merchantName: null == merchantName
           ? _value.merchantName
           : merchantName // ignore: cast_nullable_to_non_nullable
@@ -434,8 +436,8 @@ class __$$_GooglePayInitParamsCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_GooglePayInitParams implements _GooglePayInitParams {
-  const _$_GooglePayInitParams(
+class _$GooglePayInitParamsImpl implements _GooglePayInitParams {
+  const _$GooglePayInitParamsImpl(
       {required this.merchantName,
       required this.countryCode,
       this.testEnv = false,
@@ -445,8 +447,8 @@ class _$_GooglePayInitParams implements _GooglePayInitParams {
       this.label,
       this.amount});
 
-  factory _$_GooglePayInitParams.fromJson(Map<String, dynamic> json) =>
-      _$$_GooglePayInitParamsFromJson(json);
+  factory _$GooglePayInitParamsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GooglePayInitParamsImplFromJson(json);
 
   /// Merchant name
   @override
@@ -493,7 +495,7 @@ class _$_GooglePayInitParams implements _GooglePayInitParams {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GooglePayInitParams &&
+            other is _$GooglePayInitParamsImpl &&
             (identical(other.merchantName, merchantName) ||
                 other.merchantName == merchantName) &&
             (identical(other.countryCode, countryCode) ||
@@ -527,13 +529,13 @@ class _$_GooglePayInitParams implements _GooglePayInitParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GooglePayInitParamsCopyWith<_$_GooglePayInitParams> get copyWith =>
-      __$$_GooglePayInitParamsCopyWithImpl<_$_GooglePayInitParams>(
+  _$$GooglePayInitParamsImplCopyWith<_$GooglePayInitParamsImpl> get copyWith =>
+      __$$GooglePayInitParamsImplCopyWithImpl<_$GooglePayInitParamsImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GooglePayInitParamsToJson(
+    return _$$GooglePayInitParamsImplToJson(
       this,
     );
   }
@@ -548,10 +550,10 @@ abstract class _GooglePayInitParams implements GooglePayInitParams {
       final bool isEmailRequired,
       final bool existingPaymentMethodRequired,
       final String? label,
-      final double? amount}) = _$_GooglePayInitParams;
+      final double? amount}) = _$GooglePayInitParamsImpl;
 
   factory _GooglePayInitParams.fromJson(Map<String, dynamic> json) =
-      _$_GooglePayInitParams.fromJson;
+      _$GooglePayInitParamsImpl.fromJson;
 
   @override
 
@@ -588,7 +590,7 @@ abstract class _GooglePayInitParams implements GooglePayInitParams {
   double? get amount;
   @override
   @JsonKey(ignore: true)
-  _$$_GooglePayInitParamsCopyWith<_$_GooglePayInitParams> get copyWith =>
+  _$$GooglePayInitParamsImplCopyWith<_$GooglePayInitParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -663,11 +665,11 @@ class _$BillingAddressConfigCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_BillingAddressConfigCopyWith<$Res>
+abstract class _$$BillingAddressConfigImplCopyWith<$Res>
     implements $BillingAddressConfigCopyWith<$Res> {
-  factory _$$_BillingAddressConfigCopyWith(_$_BillingAddressConfig value,
-          $Res Function(_$_BillingAddressConfig) then) =
-      __$$_BillingAddressConfigCopyWithImpl<$Res>;
+  factory _$$BillingAddressConfigImplCopyWith(_$BillingAddressConfigImpl value,
+          $Res Function(_$BillingAddressConfigImpl) then) =
+      __$$BillingAddressConfigImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -677,11 +679,11 @@ abstract class _$$_BillingAddressConfigCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_BillingAddressConfigCopyWithImpl<$Res>
-    extends _$BillingAddressConfigCopyWithImpl<$Res, _$_BillingAddressConfig>
-    implements _$$_BillingAddressConfigCopyWith<$Res> {
-  __$$_BillingAddressConfigCopyWithImpl(_$_BillingAddressConfig _value,
-      $Res Function(_$_BillingAddressConfig) _then)
+class __$$BillingAddressConfigImplCopyWithImpl<$Res>
+    extends _$BillingAddressConfigCopyWithImpl<$Res, _$BillingAddressConfigImpl>
+    implements _$$BillingAddressConfigImplCopyWith<$Res> {
+  __$$BillingAddressConfigImplCopyWithImpl(_$BillingAddressConfigImpl _value,
+      $Res Function(_$BillingAddressConfigImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -691,7 +693,7 @@ class __$$_BillingAddressConfigCopyWithImpl<$Res>
     Object? format = freezed,
     Object? isPhoneNumberRequired = freezed,
   }) {
-    return _then(_$_BillingAddressConfig(
+    return _then(_$BillingAddressConfigImpl(
       isRequired: freezed == isRequired
           ? _value.isRequired
           : isRequired // ignore: cast_nullable_to_non_nullable
@@ -711,12 +713,12 @@ class __$$_BillingAddressConfigCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_BillingAddressConfig implements _BillingAddressConfig {
-  const _$_BillingAddressConfig(
+class _$BillingAddressConfigImpl implements _BillingAddressConfig {
+  const _$BillingAddressConfigImpl(
       {this.isRequired, this.format, this.isPhoneNumberRequired});
 
-  factory _$_BillingAddressConfig.fromJson(Map<String, dynamic> json) =>
-      _$$_BillingAddressConfigFromJson(json);
+  factory _$BillingAddressConfigImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BillingAddressConfigImplFromJson(json);
 
   /// If `true` Google pay requires a Billing address in order to process the
   /// payment.
@@ -741,7 +743,7 @@ class _$_BillingAddressConfig implements _BillingAddressConfig {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_BillingAddressConfig &&
+            other is _$BillingAddressConfigImpl &&
             (identical(other.isRequired, isRequired) ||
                 other.isRequired == isRequired) &&
             (identical(other.format, format) || other.format == format) &&
@@ -757,13 +759,14 @@ class _$_BillingAddressConfig implements _BillingAddressConfig {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BillingAddressConfigCopyWith<_$_BillingAddressConfig> get copyWith =>
-      __$$_BillingAddressConfigCopyWithImpl<_$_BillingAddressConfig>(
-          this, _$identity);
+  _$$BillingAddressConfigImplCopyWith<_$BillingAddressConfigImpl>
+      get copyWith =>
+          __$$BillingAddressConfigImplCopyWithImpl<_$BillingAddressConfigImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BillingAddressConfigToJson(
+    return _$$BillingAddressConfigImplToJson(
       this,
     );
   }
@@ -773,10 +776,10 @@ abstract class _BillingAddressConfig implements BillingAddressConfig {
   const factory _BillingAddressConfig(
       {final bool? isRequired,
       final BillingAddressFormat? format,
-      final bool? isPhoneNumberRequired}) = _$_BillingAddressConfig;
+      final bool? isPhoneNumberRequired}) = _$BillingAddressConfigImpl;
 
   factory _BillingAddressConfig.fromJson(Map<String, dynamic> json) =
-      _$_BillingAddressConfig.fromJson;
+      _$BillingAddressConfigImpl.fromJson;
 
   @override
 
@@ -794,8 +797,8 @@ abstract class _BillingAddressConfig implements BillingAddressConfig {
   bool? get isPhoneNumberRequired;
   @override
   @JsonKey(ignore: true)
-  _$$_BillingAddressConfigCopyWith<_$_BillingAddressConfig> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$BillingAddressConfigImplCopyWith<_$BillingAddressConfigImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 CreateGooglePayPaymentParams _$CreateGooglePayPaymentParamsFromJson(
@@ -864,25 +867,25 @@ class _$CreateGooglePayPaymentParamsCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CreateGooglePayPaymentParamsCopyWith<$Res>
+abstract class _$$CreateGooglePayPaymentParamsImplCopyWith<$Res>
     implements $CreateGooglePayPaymentParamsCopyWith<$Res> {
-  factory _$$_CreateGooglePayPaymentParamsCopyWith(
-          _$_CreateGooglePayPaymentParams value,
-          $Res Function(_$_CreateGooglePayPaymentParams) then) =
-      __$$_CreateGooglePayPaymentParamsCopyWithImpl<$Res>;
+  factory _$$CreateGooglePayPaymentParamsImplCopyWith(
+          _$CreateGooglePayPaymentParamsImpl value,
+          $Res Function(_$CreateGooglePayPaymentParamsImpl) then) =
+      __$$CreateGooglePayPaymentParamsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String currencyCode, int amount});
 }
 
 /// @nodoc
-class __$$_CreateGooglePayPaymentParamsCopyWithImpl<$Res>
+class __$$CreateGooglePayPaymentParamsImplCopyWithImpl<$Res>
     extends _$CreateGooglePayPaymentParamsCopyWithImpl<$Res,
-        _$_CreateGooglePayPaymentParams>
-    implements _$$_CreateGooglePayPaymentParamsCopyWith<$Res> {
-  __$$_CreateGooglePayPaymentParamsCopyWithImpl(
-      _$_CreateGooglePayPaymentParams _value,
-      $Res Function(_$_CreateGooglePayPaymentParams) _then)
+        _$CreateGooglePayPaymentParamsImpl>
+    implements _$$CreateGooglePayPaymentParamsImplCopyWith<$Res> {
+  __$$CreateGooglePayPaymentParamsImplCopyWithImpl(
+      _$CreateGooglePayPaymentParamsImpl _value,
+      $Res Function(_$CreateGooglePayPaymentParamsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -891,7 +894,7 @@ class __$$_CreateGooglePayPaymentParamsCopyWithImpl<$Res>
     Object? currencyCode = null,
     Object? amount = null,
   }) {
-    return _then(_$_CreateGooglePayPaymentParams(
+    return _then(_$CreateGooglePayPaymentParamsImpl(
       currencyCode: null == currencyCode
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
@@ -907,12 +910,14 @@ class __$$_CreateGooglePayPaymentParamsCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_CreateGooglePayPaymentParams implements _CreateGooglePayPaymentParams {
-  const _$_CreateGooglePayPaymentParams(
+class _$CreateGooglePayPaymentParamsImpl
+    implements _CreateGooglePayPaymentParams {
+  const _$CreateGooglePayPaymentParamsImpl(
       {required this.currencyCode, required this.amount});
 
-  factory _$_CreateGooglePayPaymentParams.fromJson(Map<String, dynamic> json) =>
-      _$$_CreateGooglePayPaymentParamsFromJson(json);
+  factory _$CreateGooglePayPaymentParamsImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CreateGooglePayPaymentParamsImplFromJson(json);
 
   /// ISO 4217 alphabetic currency code.
   ///
@@ -936,7 +941,7 @@ class _$_CreateGooglePayPaymentParams implements _CreateGooglePayPaymentParams {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CreateGooglePayPaymentParams &&
+            other is _$CreateGooglePayPaymentParamsImpl &&
             (identical(other.currencyCode, currencyCode) ||
                 other.currencyCode == currencyCode) &&
             (identical(other.amount, amount) || other.amount == amount));
@@ -949,13 +954,14 @@ class _$_CreateGooglePayPaymentParams implements _CreateGooglePayPaymentParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CreateGooglePayPaymentParamsCopyWith<_$_CreateGooglePayPaymentParams>
-      get copyWith => __$$_CreateGooglePayPaymentParamsCopyWithImpl<
-          _$_CreateGooglePayPaymentParams>(this, _$identity);
+  _$$CreateGooglePayPaymentParamsImplCopyWith<
+          _$CreateGooglePayPaymentParamsImpl>
+      get copyWith => __$$CreateGooglePayPaymentParamsImplCopyWithImpl<
+          _$CreateGooglePayPaymentParamsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CreateGooglePayPaymentParamsToJson(
+    return _$$CreateGooglePayPaymentParamsImplToJson(
       this,
     );
   }
@@ -965,10 +971,10 @@ abstract class _CreateGooglePayPaymentParams
     implements CreateGooglePayPaymentParams {
   const factory _CreateGooglePayPaymentParams(
       {required final String currencyCode,
-      required final int amount}) = _$_CreateGooglePayPaymentParams;
+      required final int amount}) = _$CreateGooglePayPaymentParamsImpl;
 
   factory _CreateGooglePayPaymentParams.fromJson(Map<String, dynamic> json) =
-      _$_CreateGooglePayPaymentParams.fromJson;
+      _$CreateGooglePayPaymentParamsImpl.fromJson;
 
   @override
 
@@ -985,7 +991,8 @@ abstract class _CreateGooglePayPaymentParams
   int get amount;
   @override
   @JsonKey(ignore: true)
-  _$$_CreateGooglePayPaymentParamsCopyWith<_$_CreateGooglePayPaymentParams>
+  _$$CreateGooglePayPaymentParamsImplCopyWith<
+          _$CreateGooglePayPaymentParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1066,12 +1073,12 @@ class _$IsGooglePaySupportedParamsCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_IsGooglePaySupportedParamsCopyWith<$Res>
+abstract class _$$IsGooglePaySupportedParamsImplCopyWith<$Res>
     implements $IsGooglePaySupportedParamsCopyWith<$Res> {
-  factory _$$_IsGooglePaySupportedParamsCopyWith(
-          _$_IsGooglePaySupportedParams value,
-          $Res Function(_$_IsGooglePaySupportedParams) then) =
-      __$$_IsGooglePaySupportedParamsCopyWithImpl<$Res>;
+  factory _$$IsGooglePaySupportedParamsImplCopyWith(
+          _$IsGooglePaySupportedParamsImpl value,
+          $Res Function(_$IsGooglePaySupportedParamsImpl) then) =
+      __$$IsGooglePaySupportedParamsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1081,13 +1088,13 @@ abstract class _$$_IsGooglePaySupportedParamsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_IsGooglePaySupportedParamsCopyWithImpl<$Res>
+class __$$IsGooglePaySupportedParamsImplCopyWithImpl<$Res>
     extends _$IsGooglePaySupportedParamsCopyWithImpl<$Res,
-        _$_IsGooglePaySupportedParams>
-    implements _$$_IsGooglePaySupportedParamsCopyWith<$Res> {
-  __$$_IsGooglePaySupportedParamsCopyWithImpl(
-      _$_IsGooglePaySupportedParams _value,
-      $Res Function(_$_IsGooglePaySupportedParams) _then)
+        _$IsGooglePaySupportedParamsImpl>
+    implements _$$IsGooglePaySupportedParamsImplCopyWith<$Res> {
+  __$$IsGooglePaySupportedParamsImplCopyWithImpl(
+      _$IsGooglePaySupportedParamsImpl _value,
+      $Res Function(_$IsGooglePaySupportedParamsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1097,7 +1104,7 @@ class __$$_IsGooglePaySupportedParamsCopyWithImpl<$Res>
     Object? existingPaymentMethodRequired = null,
     Object? supportsTapToPay = null,
   }) {
-    return _then(_$_IsGooglePaySupportedParams(
+    return _then(_$IsGooglePaySupportedParamsImpl(
       testEnv: null == testEnv
           ? _value.testEnv
           : testEnv // ignore: cast_nullable_to_non_nullable
@@ -1117,14 +1124,15 @@ class __$$_IsGooglePaySupportedParamsCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_IsGooglePaySupportedParams implements _IsGooglePaySupportedParams {
-  const _$_IsGooglePaySupportedParams(
+class _$IsGooglePaySupportedParamsImpl implements _IsGooglePaySupportedParams {
+  const _$IsGooglePaySupportedParamsImpl(
       {this.testEnv = false,
       this.existingPaymentMethodRequired = false,
       this.supportsTapToPay = true});
 
-  factory _$_IsGooglePaySupportedParams.fromJson(Map<String, dynamic> json) =>
-      _$$_IsGooglePaySupportedParamsFromJson(json);
+  factory _$IsGooglePaySupportedParamsImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$IsGooglePaySupportedParamsImplFromJson(json);
 
   /// Flag to use test environment or live environment.
   ///
@@ -1156,7 +1164,7 @@ class _$_IsGooglePaySupportedParams implements _IsGooglePaySupportedParams {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IsGooglePaySupportedParams &&
+            other is _$IsGooglePaySupportedParamsImpl &&
             (identical(other.testEnv, testEnv) || other.testEnv == testEnv) &&
             (identical(other.existingPaymentMethodRequired,
                     existingPaymentMethodRequired) ||
@@ -1174,13 +1182,13 @@ class _$_IsGooglePaySupportedParams implements _IsGooglePaySupportedParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IsGooglePaySupportedParamsCopyWith<_$_IsGooglePaySupportedParams>
-      get copyWith => __$$_IsGooglePaySupportedParamsCopyWithImpl<
-          _$_IsGooglePaySupportedParams>(this, _$identity);
+  _$$IsGooglePaySupportedParamsImplCopyWith<_$IsGooglePaySupportedParamsImpl>
+      get copyWith => __$$IsGooglePaySupportedParamsImplCopyWithImpl<
+          _$IsGooglePaySupportedParamsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IsGooglePaySupportedParamsToJson(
+    return _$$IsGooglePaySupportedParamsImplToJson(
       this,
     );
   }
@@ -1191,10 +1199,10 @@ abstract class _IsGooglePaySupportedParams
   const factory _IsGooglePaySupportedParams(
       {final bool testEnv,
       final bool existingPaymentMethodRequired,
-      final bool supportsTapToPay}) = _$_IsGooglePaySupportedParams;
+      final bool supportsTapToPay}) = _$IsGooglePaySupportedParamsImpl;
 
   factory _IsGooglePaySupportedParams.fromJson(Map<String, dynamic> json) =
-      _$_IsGooglePaySupportedParams.fromJson;
+      _$IsGooglePaySupportedParamsImpl.fromJson;
 
   @override
 
@@ -1215,6 +1223,6 @@ abstract class _IsGooglePaySupportedParams
   bool get supportsTapToPay;
   @override
   @JsonKey(ignore: true)
-  _$$_IsGooglePaySupportedParamsCopyWith<_$_IsGooglePaySupportedParams>
+  _$$IsGooglePaySupportedParamsImplCopyWith<_$IsGooglePaySupportedParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

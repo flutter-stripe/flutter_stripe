@@ -207,11 +207,11 @@ class _$SetupIntentCopyWithImpl<$Res, $Val extends SetupIntent>
 }
 
 /// @nodoc
-abstract class _$$_SetupIntentCopyWith<$Res>
+abstract class _$$SetupIntentImplCopyWith<$Res>
     implements $SetupIntentCopyWith<$Res> {
-  factory _$$_SetupIntentCopyWith(
-          _$_SetupIntent value, $Res Function(_$_SetupIntent) then) =
-      __$$_SetupIntentCopyWithImpl<$Res>;
+  factory _$$SetupIntentImplCopyWith(
+          _$SetupIntentImpl value, $Res Function(_$SetupIntentImpl) then) =
+      __$$SetupIntentImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -237,11 +237,11 @@ abstract class _$$_SetupIntentCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SetupIntentCopyWithImpl<$Res>
-    extends _$SetupIntentCopyWithImpl<$Res, _$_SetupIntent>
-    implements _$$_SetupIntentCopyWith<$Res> {
-  __$$_SetupIntentCopyWithImpl(
-      _$_SetupIntent _value, $Res Function(_$_SetupIntent) _then)
+class __$$SetupIntentImplCopyWithImpl<$Res>
+    extends _$SetupIntentCopyWithImpl<$Res, _$SetupIntentImpl>
+    implements _$$SetupIntentImplCopyWith<$Res> {
+  __$$SetupIntentImplCopyWithImpl(
+      _$SetupIntentImpl _value, $Res Function(_$SetupIntentImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -260,7 +260,7 @@ class __$$_SetupIntentCopyWithImpl<$Res>
     Object? nextAction = freezed,
     Object? mandateData = freezed,
   }) {
-    return _then(_$_SetupIntent(
+    return _then(_$SetupIntentImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -316,8 +316,8 @@ class __$$_SetupIntentCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_SetupIntent implements _SetupIntent {
-  const _$_SetupIntent(
+class _$SetupIntentImpl implements _SetupIntent {
+  const _$SetupIntentImpl(
       {required this.id,
       required this.status,
       required this.livemode,
@@ -332,8 +332,8 @@ class _$_SetupIntent implements _SetupIntent {
       this.mandateData})
       : _paymentMethodTypes = paymentMethodTypes;
 
-  factory _$_SetupIntent.fromJson(Map<String, dynamic> json) =>
-      _$$_SetupIntentFromJson(json);
+  factory _$SetupIntentImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SetupIntentImplFromJson(json);
 
   /// Unique identifier.
   @override
@@ -403,7 +403,7 @@ class _$_SetupIntent implements _SetupIntent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SetupIntent &&
+            other is _$SetupIntentImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.livemode, livemode) ||
@@ -446,12 +446,12 @@ class _$_SetupIntent implements _SetupIntent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SetupIntentCopyWith<_$_SetupIntent> get copyWith =>
-      __$$_SetupIntentCopyWithImpl<_$_SetupIntent>(this, _$identity);
+  _$$SetupIntentImplCopyWith<_$SetupIntentImpl> get copyWith =>
+      __$$SetupIntentImplCopyWithImpl<_$SetupIntentImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SetupIntentToJson(
+    return _$$SetupIntentImplToJson(
       this,
     );
   }
@@ -470,10 +470,10 @@ abstract class _SetupIntent implements SetupIntent {
       final String? created,
       final LastSetupError? lastSetupError,
       final NextAction? nextAction,
-      final MandateData? mandateData}) = _$_SetupIntent;
+      final MandateData? mandateData}) = _$SetupIntentImpl;
 
   factory _SetupIntent.fromJson(Map<String, dynamic> json) =
-      _$_SetupIntent.fromJson;
+      _$SetupIntentImpl.fromJson;
 
   @override
 
@@ -528,7 +528,7 @@ abstract class _SetupIntent implements SetupIntent {
   MandateData? get mandateData;
   @override
   @JsonKey(ignore: true)
-  _$$_SetupIntentCopyWith<_$_SetupIntent> get copyWith =>
+  _$$SetupIntentImplCopyWith<_$SetupIntentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -589,22 +589,22 @@ class _$LastSetupErrorCopyWithImpl<$Res, $Val extends LastSetupError>
 }
 
 /// @nodoc
-abstract class _$$_LastSetupErrorCopyWith<$Res>
+abstract class _$$LastSetupErrorImplCopyWith<$Res>
     implements $LastSetupErrorCopyWith<$Res> {
-  factory _$$_LastSetupErrorCopyWith(
-          _$_LastSetupError value, $Res Function(_$_LastSetupError) then) =
-      __$$_LastSetupErrorCopyWithImpl<$Res>;
+  factory _$$LastSetupErrorImplCopyWith(_$LastSetupErrorImpl value,
+          $Res Function(_$LastSetupErrorImpl) then) =
+      __$$LastSetupErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String code, String message});
 }
 
 /// @nodoc
-class __$$_LastSetupErrorCopyWithImpl<$Res>
-    extends _$LastSetupErrorCopyWithImpl<$Res, _$_LastSetupError>
-    implements _$$_LastSetupErrorCopyWith<$Res> {
-  __$$_LastSetupErrorCopyWithImpl(
-      _$_LastSetupError _value, $Res Function(_$_LastSetupError) _then)
+class __$$LastSetupErrorImplCopyWithImpl<$Res>
+    extends _$LastSetupErrorCopyWithImpl<$Res, _$LastSetupErrorImpl>
+    implements _$$LastSetupErrorImplCopyWith<$Res> {
+  __$$LastSetupErrorImplCopyWithImpl(
+      _$LastSetupErrorImpl _value, $Res Function(_$LastSetupErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -613,7 +613,7 @@ class __$$_LastSetupErrorCopyWithImpl<$Res>
     Object? code = null,
     Object? message = null,
   }) {
-    return _then(_$_LastSetupError(
+    return _then(_$LastSetupErrorImpl(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -629,11 +629,11 @@ class __$$_LastSetupErrorCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_LastSetupError implements _LastSetupError {
-  const _$_LastSetupError({required this.code, required this.message});
+class _$LastSetupErrorImpl implements _LastSetupError {
+  const _$LastSetupErrorImpl({required this.code, required this.message});
 
-  factory _$_LastSetupError.fromJson(Map<String, dynamic> json) =>
-      _$$_LastSetupErrorFromJson(json);
+  factory _$LastSetupErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LastSetupErrorImplFromJson(json);
 
   /// Code.
   @override
@@ -652,7 +652,7 @@ class _$_LastSetupError implements _LastSetupError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LastSetupError &&
+            other is _$LastSetupErrorImpl &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.message, message) || other.message == message));
   }
@@ -664,12 +664,13 @@ class _$_LastSetupError implements _LastSetupError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LastSetupErrorCopyWith<_$_LastSetupError> get copyWith =>
-      __$$_LastSetupErrorCopyWithImpl<_$_LastSetupError>(this, _$identity);
+  _$$LastSetupErrorImplCopyWith<_$LastSetupErrorImpl> get copyWith =>
+      __$$LastSetupErrorImplCopyWithImpl<_$LastSetupErrorImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LastSetupErrorToJson(
+    return _$$LastSetupErrorImplToJson(
       this,
     );
   }
@@ -678,10 +679,10 @@ class _$_LastSetupError implements _LastSetupError {
 abstract class _LastSetupError implements LastSetupError {
   const factory _LastSetupError(
       {required final String code,
-      required final String message}) = _$_LastSetupError;
+      required final String message}) = _$LastSetupErrorImpl;
 
   factory _LastSetupError.fromJson(Map<String, dynamic> json) =
-      _$_LastSetupError.fromJson;
+      _$LastSetupErrorImpl.fromJson;
 
   @override
 
@@ -693,6 +694,6 @@ abstract class _LastSetupError implements LastSetupError {
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$_LastSetupErrorCopyWith<_$_LastSetupError> get copyWith =>
+  _$$LastSetupErrorImplCopyWith<_$LastSetupErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

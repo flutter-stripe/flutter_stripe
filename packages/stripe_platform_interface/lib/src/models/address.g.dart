@@ -6,8 +6,8 @@ part of 'address.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AddressDetails _$$_AddressDetailsFromJson(Map<String, dynamic> json) =>
-    _$_AddressDetails(
+_$AddressDetailsImpl _$$AddressDetailsImplFromJson(Map<String, dynamic> json) =>
+    _$AddressDetailsImpl(
       name: json['name'] as String?,
       address: json['address'] == null
           ? null
@@ -15,14 +15,16 @@ _$_AddressDetails _$$_AddressDetailsFromJson(Map<String, dynamic> json) =>
       phoneNumber: json['phoneNumber'] as String?,
     );
 
-Map<String, dynamic> _$$_AddressDetailsToJson(_$_AddressDetails instance) =>
+Map<String, dynamic> _$$AddressDetailsImplToJson(
+        _$AddressDetailsImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'address': instance.address?.toJson(),
       'phoneNumber': instance.phoneNumber,
     };
 
-_$_Address _$$_AddressFromJson(Map<String, dynamic> json) => _$_Address(
+_$AddressImpl _$$AddressImplFromJson(Map<String, dynamic> json) =>
+    _$AddressImpl(
       city: json['city'] as String?,
       country: json['country'] as String?,
       line1: json['line1'] as String?,
@@ -31,7 +33,7 @@ _$_Address _$$_AddressFromJson(Map<String, dynamic> json) => _$_Address(
       state: json['state'] as String?,
     );
 
-Map<String, dynamic> _$$_AddressToJson(_$_Address instance) =>
+Map<String, dynamic> _$$AddressImplToJson(_$AddressImpl instance) =>
     <String, dynamic>{
       'city': instance.city,
       'country': instance.country,

@@ -538,9 +538,7 @@ class Stripe {
   ///
   /// Only US bank accounts are supported. This method is only implemented for
   /// iOS at the moment.
-  Future<PaymentIntent> collectBankAccount({
-    /// Whether the clientsecret is associated with setup or paymentintent
-    required bool isPaymentIntent,
+  Future<PaymentIntent> collectBankAccountPayment({
 
     /// The clientSecret of the payment and setup intent
     required String clientSecret,
@@ -550,8 +548,27 @@ class Stripe {
     /// The name and email is required.
     required CollectBankAccountParams params,
   }) async {
-    return await _platform.collectBankAccount(
-      isPaymentIntent: isPaymentIntent,
+    return await _platform.collectBankAccountPayment(
+      clientSecret: clientSecret,
+      params: params,
+    );
+  }
+
+  /// Collect the bankaccount details for the setup intent.
+  ///
+  /// Only US bank accounts are supported. This method is only implemented for
+  /// iOS at the moment.
+  Future<SetupIntent> collectBankAccountSetup({
+
+    /// The clientSecret of the payment and setup intent
+    required String clientSecret,
+
+    /// Parameters associated with the account holder.
+    ///
+    /// The name and email is required.
+    required CollectBankAccountParams params,
+  }) async {
+    return await _platform.collectBankAccountSetup(
       clientSecret: clientSecret,
       params: params,
     );

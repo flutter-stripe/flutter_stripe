@@ -6,34 +6,36 @@ part of 'errors.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_StripeErrorGeneric<T> _$$_StripeErrorGenericFromJson<T>(
+_$StripeErrorGenericImpl<T> _$$StripeErrorGenericImplFromJson<T>(
         Map<String, dynamic> json) =>
-    _$_StripeErrorGeneric<T>(
+    _$StripeErrorGenericImpl<T>(
       message: json['message'] as String,
       code: _dataFromJson(json['code'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_StripeErrorGenericToJson<T>(
-        _$_StripeErrorGeneric<T> instance) =>
+Map<String, dynamic> _$$StripeErrorGenericImplToJson<T>(
+        _$StripeErrorGenericImpl<T> instance) =>
     <String, dynamic>{
       'message': instance.message,
       'code': _dataToJson(instance.code),
     };
 
-_$_StripeException _$$_StripeExceptionFromJson(Map<String, dynamic> json) =>
-    _$_StripeException(
+_$StripeExceptionImpl _$$StripeExceptionImplFromJson(
+        Map<String, dynamic> json) =>
+    _$StripeExceptionImpl(
       error:
           LocalizedErrorMessage.fromJson(json['error'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_StripeExceptionToJson(_$_StripeException instance) =>
+Map<String, dynamic> _$$StripeExceptionImplToJson(
+        _$StripeExceptionImpl instance) =>
     <String, dynamic>{
       'error': instance.error,
     };
 
-_$_LocalizedErrorMessage _$$_LocalizedErrorMessageFromJson(
+_$LocalizedErrorMessageImpl _$$LocalizedErrorMessageImplFromJson(
         Map<String, dynamic> json) =>
-    _$_LocalizedErrorMessage(
+    _$LocalizedErrorMessageImpl(
       code: $enumDecode(_$FailureCodeEnumMap, json['code']),
       localizedMessage: json['localizedMessage'] as String?,
       message: json['message'] as String?,
@@ -42,8 +44,8 @@ _$_LocalizedErrorMessage _$$_LocalizedErrorMessageFromJson(
       type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$_LocalizedErrorMessageToJson(
-        _$_LocalizedErrorMessage instance) =>
+Map<String, dynamic> _$$LocalizedErrorMessageImplToJson(
+        _$LocalizedErrorMessageImpl instance) =>
     <String, dynamic>{
       'code': _$FailureCodeEnumMap[instance.code]!,
       'localizedMessage': instance.localizedMessage,

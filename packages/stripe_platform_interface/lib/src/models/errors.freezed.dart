@@ -71,11 +71,11 @@ class _$StripeErrorCopyWithImpl<T, $Res, $Val extends StripeError<T>>
 }
 
 /// @nodoc
-abstract class _$$_StripeErrorGenericCopyWith<T, $Res>
+abstract class _$$StripeErrorGenericImplCopyWith<T, $Res>
     implements $StripeErrorCopyWith<T, $Res> {
-  factory _$$_StripeErrorGenericCopyWith(_$_StripeErrorGeneric<T> value,
-          $Res Function(_$_StripeErrorGeneric<T>) then) =
-      __$$_StripeErrorGenericCopyWithImpl<T, $Res>;
+  factory _$$StripeErrorGenericImplCopyWith(_$StripeErrorGenericImpl<T> value,
+          $Res Function(_$StripeErrorGenericImpl<T>) then) =
+      __$$StripeErrorGenericImplCopyWithImpl<T, $Res>;
   @override
   @useResult
   $Res call(
@@ -84,11 +84,11 @@ abstract class _$$_StripeErrorGenericCopyWith<T, $Res>
 }
 
 /// @nodoc
-class __$$_StripeErrorGenericCopyWithImpl<T, $Res>
-    extends _$StripeErrorCopyWithImpl<T, $Res, _$_StripeErrorGeneric<T>>
-    implements _$$_StripeErrorGenericCopyWith<T, $Res> {
-  __$$_StripeErrorGenericCopyWithImpl(_$_StripeErrorGeneric<T> _value,
-      $Res Function(_$_StripeErrorGeneric<T>) _then)
+class __$$StripeErrorGenericImplCopyWithImpl<T, $Res>
+    extends _$StripeErrorCopyWithImpl<T, $Res, _$StripeErrorGenericImpl<T>>
+    implements _$$StripeErrorGenericImplCopyWith<T, $Res> {
+  __$$StripeErrorGenericImplCopyWithImpl(_$StripeErrorGenericImpl<T> _value,
+      $Res Function(_$StripeErrorGenericImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -97,7 +97,7 @@ class __$$_StripeErrorGenericCopyWithImpl<T, $Res>
     Object? message = null,
     Object? code = freezed,
   }) {
-    return _then(_$_StripeErrorGeneric<T>(
+    return _then(_$StripeErrorGenericImpl<T>(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -113,14 +113,14 @@ class __$$_StripeErrorGenericCopyWithImpl<T, $Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_StripeErrorGeneric<T> implements _StripeErrorGeneric<T> {
-  const _$_StripeErrorGeneric(
+class _$StripeErrorGenericImpl<T> implements _StripeErrorGeneric<T> {
+  const _$StripeErrorGenericImpl(
       {required this.message,
       @JsonKey(fromJson: _dataFromJson, toJson: _dataToJson)
       required this.code});
 
-  factory _$_StripeErrorGeneric.fromJson(Map<String, dynamic> json) =>
-      _$$_StripeErrorGenericFromJson(json);
+  factory _$StripeErrorGenericImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StripeErrorGenericImplFromJson(json);
 
   @override
   final String message;
@@ -137,7 +137,7 @@ class _$_StripeErrorGeneric<T> implements _StripeErrorGeneric<T> {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StripeErrorGeneric<T> &&
+            other is _$StripeErrorGenericImpl<T> &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other.code, code));
   }
@@ -150,13 +150,13 @@ class _$_StripeErrorGeneric<T> implements _StripeErrorGeneric<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StripeErrorGenericCopyWith<T, _$_StripeErrorGeneric<T>> get copyWith =>
-      __$$_StripeErrorGenericCopyWithImpl<T, _$_StripeErrorGeneric<T>>(
-          this, _$identity);
+  _$$StripeErrorGenericImplCopyWith<T, _$StripeErrorGenericImpl<T>>
+      get copyWith => __$$StripeErrorGenericImplCopyWithImpl<T,
+          _$StripeErrorGenericImpl<T>>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_StripeErrorGenericToJson<T>(
+    return _$$StripeErrorGenericImplToJson<T>(
       this,
     );
   }
@@ -166,10 +166,10 @@ abstract class _StripeErrorGeneric<T> implements StripeError<T> {
   const factory _StripeErrorGeneric(
       {required final String message,
       @JsonKey(fromJson: _dataFromJson, toJson: _dataToJson)
-      required final T code}) = _$_StripeErrorGeneric<T>;
+      required final T code}) = _$StripeErrorGenericImpl<T>;
 
   factory _StripeErrorGeneric.fromJson(Map<String, dynamic> json) =
-      _$_StripeErrorGeneric<T>.fromJson;
+      _$StripeErrorGenericImpl<T>.fromJson;
 
   @override
   String get message;
@@ -178,8 +178,8 @@ abstract class _StripeErrorGeneric<T> implements StripeError<T> {
   T get code;
   @override
   @JsonKey(ignore: true)
-  _$$_StripeErrorGenericCopyWith<T, _$_StripeErrorGeneric<T>> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$StripeErrorGenericImplCopyWith<T, _$StripeErrorGenericImpl<T>>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 StripeException _$StripeExceptionFromJson(Map<String, dynamic> json) {
@@ -241,11 +241,11 @@ class _$StripeExceptionCopyWithImpl<$Res, $Val extends StripeException>
 }
 
 /// @nodoc
-abstract class _$$_StripeExceptionCopyWith<$Res>
+abstract class _$$StripeExceptionImplCopyWith<$Res>
     implements $StripeExceptionCopyWith<$Res> {
-  factory _$$_StripeExceptionCopyWith(
-          _$_StripeException value, $Res Function(_$_StripeException) then) =
-      __$$_StripeExceptionCopyWithImpl<$Res>;
+  factory _$$StripeExceptionImplCopyWith(_$StripeExceptionImpl value,
+          $Res Function(_$StripeExceptionImpl) then) =
+      __$$StripeExceptionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({LocalizedErrorMessage error});
@@ -255,11 +255,11 @@ abstract class _$$_StripeExceptionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_StripeExceptionCopyWithImpl<$Res>
-    extends _$StripeExceptionCopyWithImpl<$Res, _$_StripeException>
-    implements _$$_StripeExceptionCopyWith<$Res> {
-  __$$_StripeExceptionCopyWithImpl(
-      _$_StripeException _value, $Res Function(_$_StripeException) _then)
+class __$$StripeExceptionImplCopyWithImpl<$Res>
+    extends _$StripeExceptionCopyWithImpl<$Res, _$StripeExceptionImpl>
+    implements _$$StripeExceptionImplCopyWith<$Res> {
+  __$$StripeExceptionImplCopyWithImpl(
+      _$StripeExceptionImpl _value, $Res Function(_$StripeExceptionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -267,7 +267,7 @@ class __$$_StripeExceptionCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$_StripeException(
+    return _then(_$StripeExceptionImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -278,11 +278,11 @@ class __$$_StripeExceptionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_StripeException implements _StripeException {
-  const _$_StripeException({required this.error});
+class _$StripeExceptionImpl implements _StripeException {
+  const _$StripeExceptionImpl({required this.error});
 
-  factory _$_StripeException.fromJson(Map<String, dynamic> json) =>
-      _$$_StripeExceptionFromJson(json);
+  factory _$StripeExceptionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StripeExceptionImplFromJson(json);
 
   /// error details
   @override
@@ -297,7 +297,7 @@ class _$_StripeException implements _StripeException {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StripeException &&
+            other is _$StripeExceptionImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -308,12 +308,13 @@ class _$_StripeException implements _StripeException {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StripeExceptionCopyWith<_$_StripeException> get copyWith =>
-      __$$_StripeExceptionCopyWithImpl<_$_StripeException>(this, _$identity);
+  _$$StripeExceptionImplCopyWith<_$StripeExceptionImpl> get copyWith =>
+      __$$StripeExceptionImplCopyWithImpl<_$StripeExceptionImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_StripeExceptionToJson(
+    return _$$StripeExceptionImplToJson(
       this,
     );
   }
@@ -321,10 +322,10 @@ class _$_StripeException implements _StripeException {
 
 abstract class _StripeException implements StripeException {
   const factory _StripeException({required final LocalizedErrorMessage error}) =
-      _$_StripeException;
+      _$StripeExceptionImpl;
 
   factory _StripeException.fromJson(Map<String, dynamic> json) =
-      _$_StripeException.fromJson;
+      _$StripeExceptionImpl.fromJson;
 
   @override
 
@@ -332,7 +333,7 @@ abstract class _StripeException implements StripeException {
   LocalizedErrorMessage get error;
   @override
   @JsonKey(ignore: true)
-  _$$_StripeExceptionCopyWith<_$_StripeException> get copyWith =>
+  _$$StripeExceptionImplCopyWith<_$StripeExceptionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -433,11 +434,12 @@ class _$LocalizedErrorMessageCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_LocalizedErrorMessageCopyWith<$Res>
+abstract class _$$LocalizedErrorMessageImplCopyWith<$Res>
     implements $LocalizedErrorMessageCopyWith<$Res> {
-  factory _$$_LocalizedErrorMessageCopyWith(_$_LocalizedErrorMessage value,
-          $Res Function(_$_LocalizedErrorMessage) then) =
-      __$$_LocalizedErrorMessageCopyWithImpl<$Res>;
+  factory _$$LocalizedErrorMessageImplCopyWith(
+          _$LocalizedErrorMessageImpl value,
+          $Res Function(_$LocalizedErrorMessageImpl) then) =
+      __$$LocalizedErrorMessageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -450,11 +452,12 @@ abstract class _$$_LocalizedErrorMessageCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_LocalizedErrorMessageCopyWithImpl<$Res>
-    extends _$LocalizedErrorMessageCopyWithImpl<$Res, _$_LocalizedErrorMessage>
-    implements _$$_LocalizedErrorMessageCopyWith<$Res> {
-  __$$_LocalizedErrorMessageCopyWithImpl(_$_LocalizedErrorMessage _value,
-      $Res Function(_$_LocalizedErrorMessage) _then)
+class __$$LocalizedErrorMessageImplCopyWithImpl<$Res>
+    extends _$LocalizedErrorMessageCopyWithImpl<$Res,
+        _$LocalizedErrorMessageImpl>
+    implements _$$LocalizedErrorMessageImplCopyWith<$Res> {
+  __$$LocalizedErrorMessageImplCopyWithImpl(_$LocalizedErrorMessageImpl _value,
+      $Res Function(_$LocalizedErrorMessageImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -467,7 +470,7 @@ class __$$_LocalizedErrorMessageCopyWithImpl<$Res>
     Object? declineCode = freezed,
     Object? type = freezed,
   }) {
-    return _then(_$_LocalizedErrorMessage(
+    return _then(_$LocalizedErrorMessageImpl(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -499,8 +502,8 @@ class __$$_LocalizedErrorMessageCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_LocalizedErrorMessage implements _LocalizedErrorMessage {
-  const _$_LocalizedErrorMessage(
+class _$LocalizedErrorMessageImpl implements _LocalizedErrorMessage {
+  const _$LocalizedErrorMessageImpl(
       {required this.code,
       this.localizedMessage,
       this.message,
@@ -508,8 +511,8 @@ class _$_LocalizedErrorMessage implements _LocalizedErrorMessage {
       this.declineCode,
       this.type});
 
-  factory _$_LocalizedErrorMessage.fromJson(Map<String, dynamic> json) =>
-      _$$_LocalizedErrorMessageFromJson(json);
+  factory _$LocalizedErrorMessageImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LocalizedErrorMessageImplFromJson(json);
 
   /// The error code for example Cancelled
   @override
@@ -544,7 +547,7 @@ class _$_LocalizedErrorMessage implements _LocalizedErrorMessage {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LocalizedErrorMessage &&
+            other is _$LocalizedErrorMessageImpl &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.localizedMessage, localizedMessage) ||
                 other.localizedMessage == localizedMessage) &&
@@ -564,13 +567,13 @@ class _$_LocalizedErrorMessage implements _LocalizedErrorMessage {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LocalizedErrorMessageCopyWith<_$_LocalizedErrorMessage> get copyWith =>
-      __$$_LocalizedErrorMessageCopyWithImpl<_$_LocalizedErrorMessage>(
-          this, _$identity);
+  _$$LocalizedErrorMessageImplCopyWith<_$LocalizedErrorMessageImpl>
+      get copyWith => __$$LocalizedErrorMessageImplCopyWithImpl<
+          _$LocalizedErrorMessageImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LocalizedErrorMessageToJson(
+    return _$$LocalizedErrorMessageImplToJson(
       this,
     );
   }
@@ -583,10 +586,10 @@ abstract class _LocalizedErrorMessage implements LocalizedErrorMessage {
       final String? message,
       final String? stripeErrorCode,
       final String? declineCode,
-      final String? type}) = _$_LocalizedErrorMessage;
+      final String? type}) = _$LocalizedErrorMessageImpl;
 
   factory _LocalizedErrorMessage.fromJson(Map<String, dynamic> json) =
-      _$_LocalizedErrorMessage.fromJson;
+      _$LocalizedErrorMessageImpl.fromJson;
 
   @override
 
@@ -614,6 +617,6 @@ abstract class _LocalizedErrorMessage implements LocalizedErrorMessage {
   String? get type;
   @override
   @JsonKey(ignore: true)
-  _$$_LocalizedErrorMessageCopyWith<_$_LocalizedErrorMessage> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$LocalizedErrorMessageImplCopyWith<_$LocalizedErrorMessageImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
