@@ -141,7 +141,9 @@ class PaymentSheetFragment(
         putBoolean("shouldSavePaymentMethod", shouldSavePaymentMethod)
       }
 
-      stripeSdkModule.sendEvent(context, "onConfirmHandlerCallback", params)
+      context.currentActivity?.runOnUiThread {
+        stripeSdkModule.sendEvent(context, "onConfirmHandlerCallback", params)
+      }
 
       val resultFromJavascript = paymentSheetIntentCreationCallback.await()
 
