@@ -115,20 +115,30 @@ Map<String, dynamic> _$$IntentConfigurationImplToJson(
 _$IntentModeImpl _$$IntentModeImplFromJson(Map<String, dynamic> json) =>
     _$IntentModeImpl(
       currencyCode: json['currencyCode'] as String,
-      amount: json['amount'] as int,
+      amount: (json['amount'] as num).toInt(),
       setupFutureUsage: $enumDecodeNullable(
           _$IntentFutureUsageEnumMap, json['setupFutureUsage']),
       captureMethod:
           $enumDecodeNullable(_$CaptureMethodEnumMap, json['captureMethod']),
     );
 
-Map<String, dynamic> _$$IntentModeImplToJson(_$IntentModeImpl instance) =>
-    <String, dynamic>{
-      'currencyCode': instance.currencyCode,
-      'amount': instance.amount,
-      'setupFutureUsage': _$IntentFutureUsageEnumMap[instance.setupFutureUsage],
-      'captureMethod': _$CaptureMethodEnumMap[instance.captureMethod],
-    };
+Map<String, dynamic> _$$IntentModeImplToJson(_$IntentModeImpl instance) {
+  final val = <String, dynamic>{
+    'currencyCode': instance.currencyCode,
+    'amount': instance.amount,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('setupFutureUsage',
+      _$IntentFutureUsageEnumMap[instance.setupFutureUsage]);
+  writeNotNull('captureMethod', _$CaptureMethodEnumMap[instance.captureMethod]);
+  return val;
+}
 
 const _$IntentFutureUsageEnumMap = {
   IntentFutureUsage.OffSession: 'OffSession',
@@ -414,7 +424,7 @@ Map<String, dynamic> _$$PresentParametersImplToJson(
 _$PaymentSheetPresentOptionsImpl _$$PaymentSheetPresentOptionsImplFromJson(
         Map<String, dynamic> json) =>
     _$PaymentSheetPresentOptionsImpl(
-      timeout: json['timeout'] as int?,
+      timeout: (json['timeout'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$PaymentSheetPresentOptionsImplToJson(

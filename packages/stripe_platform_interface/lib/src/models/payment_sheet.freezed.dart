@@ -1228,7 +1228,7 @@ class __$$IntentModeImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$IntentModeImpl implements _IntentMode {
   const _$IntentModeImpl(
       {required this.currencyCode,
