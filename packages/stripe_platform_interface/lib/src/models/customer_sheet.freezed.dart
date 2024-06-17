@@ -12,7 +12,7 @@ part of 'customer_sheet.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CustomerSheetInitParams _$CustomerSheetInitParamsFromJson(
     Map<String, dynamic> json) {
@@ -41,6 +41,12 @@ mixin _$CustomerSheetInitParams {
 
   /// Your customer-facing business name. The default value is the name of your app.
   String? get merchantDisplayName => throw _privateConstructorUsedError;
+
+  ///This is an experimental feature that may be removed at any time.
+  /// Defaults to true. If true, the customer can delete all saved payment methods.
+  /// If false, the customer can't delete if they only have one saved payment method remaining.
+  bool? get allowsRemovalOfLastSavedPaymentMethod =>
+      throw _privateConstructorUsedError;
 
   /// Optional configuration for setting the header text of the Payment Method selection screen
   String? get headerTextForSelectionScreen =>
@@ -92,6 +98,7 @@ abstract class $CustomerSheetInitParamsCopyWith<$Res> {
       String customerId,
       String customerEphemeralKeySecret,
       String? merchantDisplayName,
+      bool? allowsRemovalOfLastSavedPaymentMethod,
       String? headerTextForSelectionScreen,
       BillingDetails? defaultBillingDetails,
       BillingDetailsCollectionConfiguration?
@@ -129,6 +136,7 @@ class _$CustomerSheetInitParamsCopyWithImpl<$Res,
     Object? customerId = null,
     Object? customerEphemeralKeySecret = null,
     Object? merchantDisplayName = freezed,
+    Object? allowsRemovalOfLastSavedPaymentMethod = freezed,
     Object? headerTextForSelectionScreen = freezed,
     Object? defaultBillingDetails = freezed,
     Object? billingDetailsCollectionConfiguration = freezed,
@@ -163,6 +171,11 @@ class _$CustomerSheetInitParamsCopyWithImpl<$Res,
           ? _value.merchantDisplayName
           : merchantDisplayName // ignore: cast_nullable_to_non_nullable
               as String?,
+      allowsRemovalOfLastSavedPaymentMethod: freezed ==
+              allowsRemovalOfLastSavedPaymentMethod
+          ? _value.allowsRemovalOfLastSavedPaymentMethod
+          : allowsRemovalOfLastSavedPaymentMethod // ignore: cast_nullable_to_non_nullable
+              as bool?,
       headerTextForSelectionScreen: freezed == headerTextForSelectionScreen
           ? _value.headerTextForSelectionScreen
           : headerTextForSelectionScreen // ignore: cast_nullable_to_non_nullable
@@ -257,6 +270,7 @@ abstract class _$$CustomerSheetInitParamsImplCopyWith<$Res>
       String customerId,
       String customerEphemeralKeySecret,
       String? merchantDisplayName,
+      bool? allowsRemovalOfLastSavedPaymentMethod,
       String? headerTextForSelectionScreen,
       BillingDetails? defaultBillingDetails,
       BillingDetailsCollectionConfiguration?
@@ -296,6 +310,7 @@ class __$$CustomerSheetInitParamsImplCopyWithImpl<$Res>
     Object? customerId = null,
     Object? customerEphemeralKeySecret = null,
     Object? merchantDisplayName = freezed,
+    Object? allowsRemovalOfLastSavedPaymentMethod = freezed,
     Object? headerTextForSelectionScreen = freezed,
     Object? defaultBillingDetails = freezed,
     Object? billingDetailsCollectionConfiguration = freezed,
@@ -330,6 +345,11 @@ class __$$CustomerSheetInitParamsImplCopyWithImpl<$Res>
           ? _value.merchantDisplayName
           : merchantDisplayName // ignore: cast_nullable_to_non_nullable
               as String?,
+      allowsRemovalOfLastSavedPaymentMethod: freezed ==
+              allowsRemovalOfLastSavedPaymentMethod
+          ? _value.allowsRemovalOfLastSavedPaymentMethod
+          : allowsRemovalOfLastSavedPaymentMethod // ignore: cast_nullable_to_non_nullable
+              as bool?,
       headerTextForSelectionScreen: freezed == headerTextForSelectionScreen
           ? _value.headerTextForSelectionScreen
           : headerTextForSelectionScreen // ignore: cast_nullable_to_non_nullable
@@ -379,6 +399,7 @@ class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
       required this.customerId,
       required this.customerEphemeralKeySecret,
       this.merchantDisplayName,
+      this.allowsRemovalOfLastSavedPaymentMethod,
       this.headerTextForSelectionScreen,
       this.defaultBillingDetails,
       this.billingDetailsCollectionConfiguration,
@@ -419,6 +440,12 @@ class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
   /// Your customer-facing business name. The default value is the name of your app.
   @override
   final String? merchantDisplayName;
+
+  ///This is an experimental feature that may be removed at any time.
+  /// Defaults to true. If true, the customer can delete all saved payment methods.
+  /// If false, the customer can't delete if they only have one saved payment method remaining.
+  @override
+  final bool? allowsRemovalOfLastSavedPaymentMethod;
 
   /// Optional configuration for setting the header text of the Payment Method selection screen
   @override
@@ -470,19 +497,18 @@ class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
 
   @override
   String toString() {
-    return 'CustomerSheetInitParams(style: $style, appearance: $appearance, setupIntentClientSecret: $setupIntentClientSecret, customerId: $customerId, customerEphemeralKeySecret: $customerEphemeralKeySecret, merchantDisplayName: $merchantDisplayName, headerTextForSelectionScreen: $headerTextForSelectionScreen, defaultBillingDetails: $defaultBillingDetails, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, returnURL: $returnURL, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, applePayEnabled: $applePayEnabled, googlePayEnabled: $googlePayEnabled, preferredNetworks: $preferredNetworks)';
+    return 'CustomerSheetInitParams(style: $style, appearance: $appearance, setupIntentClientSecret: $setupIntentClientSecret, customerId: $customerId, customerEphemeralKeySecret: $customerEphemeralKeySecret, merchantDisplayName: $merchantDisplayName, allowsRemovalOfLastSavedPaymentMethod: $allowsRemovalOfLastSavedPaymentMethod, headerTextForSelectionScreen: $headerTextForSelectionScreen, defaultBillingDetails: $defaultBillingDetails, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, returnURL: $returnURL, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, applePayEnabled: $applePayEnabled, googlePayEnabled: $googlePayEnabled, preferredNetworks: $preferredNetworks)';
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomerSheetInitParamsImpl &&
             (identical(other.style, style) || other.style == style) &&
             (identical(other.appearance, appearance) ||
                 other.appearance == appearance) &&
-            (identical(
-                    other.setupIntentClientSecret, setupIntentClientSecret) ||
+            (identical(other.setupIntentClientSecret, setupIntentClientSecret) ||
                 other.setupIntentClientSecret == setupIntentClientSecret) &&
             (identical(other.customerId, customerId) ||
                 other.customerId == customerId) &&
@@ -491,6 +517,10 @@ class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
                     customerEphemeralKeySecret) &&
             (identical(other.merchantDisplayName, merchantDisplayName) ||
                 other.merchantDisplayName == merchantDisplayName) &&
+            (identical(other.allowsRemovalOfLastSavedPaymentMethod,
+                    allowsRemovalOfLastSavedPaymentMethod) ||
+                other.allowsRemovalOfLastSavedPaymentMethod ==
+                    allowsRemovalOfLastSavedPaymentMethod) &&
             (identical(other.headerTextForSelectionScreen, headerTextForSelectionScreen) ||
                 other.headerTextForSelectionScreen ==
                     headerTextForSelectionScreen) &&
@@ -502,16 +532,14 @@ class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
                     billingDetailsCollectionConfiguration) &&
             (identical(other.returnURL, returnURL) ||
                 other.returnURL == returnURL) &&
-            (identical(other.removeSavedPaymentMethodMessage,
-                    removeSavedPaymentMethodMessage) ||
+            (identical(other.removeSavedPaymentMethodMessage, removeSavedPaymentMethodMessage) ||
                 other.removeSavedPaymentMethodMessage ==
                     removeSavedPaymentMethodMessage) &&
             (identical(other.applePayEnabled, applePayEnabled) ||
                 other.applePayEnabled == applePayEnabled) &&
             (identical(other.googlePayEnabled, googlePayEnabled) ||
                 other.googlePayEnabled == googlePayEnabled) &&
-            const DeepCollectionEquality()
-                .equals(other._preferredNetworks, _preferredNetworks));
+            const DeepCollectionEquality().equals(other._preferredNetworks, _preferredNetworks));
   }
 
   @JsonKey(ignore: true)
@@ -524,6 +552,7 @@ class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
       customerId,
       customerEphemeralKeySecret,
       merchantDisplayName,
+      allowsRemovalOfLastSavedPaymentMethod,
       headerTextForSelectionScreen,
       defaultBillingDetails,
       billingDetailsCollectionConfiguration,
@@ -556,6 +585,7 @@ abstract class _CustomerSheetInitParams implements CustomerSheetInitParams {
       required final String customerId,
       required final String customerEphemeralKeySecret,
       final String? merchantDisplayName,
+      final bool? allowsRemovalOfLastSavedPaymentMethod,
       final String? headerTextForSelectionScreen,
       final BillingDetails? defaultBillingDetails,
       final BillingDetailsCollectionConfiguration?
@@ -598,6 +628,12 @@ abstract class _CustomerSheetInitParams implements CustomerSheetInitParams {
 
   /// Your customer-facing business name. The default value is the name of your app.
   String? get merchantDisplayName;
+  @override
+
+  ///This is an experimental feature that may be removed at any time.
+  /// Defaults to true. If true, the customer can delete all saved payment methods.
+  /// If false, the customer can't delete if they only have one saved payment method remaining.
+  bool? get allowsRemovalOfLastSavedPaymentMethod;
   @override
 
   /// Optional configuration for setting the header text of the Payment Method selection screen
@@ -791,7 +827,7 @@ class _$CustomerSheetPresentParamsImpl implements _CustomerSheetPresentParams {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomerSheetPresentParamsImpl &&
@@ -1041,7 +1077,7 @@ class _$CustomerSheetResultImpl implements _CustomerSheetResult {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomerSheetResultImpl &&

@@ -12,7 +12,7 @@ part of 'financial_connections.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 FinancialConnectionSessionResult _$FinancialConnectionSessionResultFromJson(
     Map<String, dynamic> json) {
@@ -134,7 +134,7 @@ class _$FinancialConnectionSessionResultImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FinancialConnectionSessionResultImpl &&
@@ -331,7 +331,7 @@ class _$FinancialConnectionTokenResultImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FinancialConnectionTokenResultImpl &&
@@ -559,7 +559,7 @@ class _$FinancialConnectionSessionImpl implements _FinancialConnectionSession {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FinancialConnectionSessionImpl &&
@@ -835,7 +835,7 @@ class _$FinancialConnectionBankAccountTokenImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FinancialConnectionBankAccountTokenImpl &&
@@ -1314,7 +1314,7 @@ class _$FinancialConnectionAccountImpl implements _FinancialConnectionAccount {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FinancialConnectionAccountImpl &&
@@ -1572,7 +1572,7 @@ class _$BalanceRefreshImpl implements _BalanceRefresh {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BalanceRefreshImpl &&
@@ -1865,7 +1865,7 @@ class _$AccountBalanceImpl implements _AccountBalance {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AccountBalanceImpl &&

@@ -12,7 +12,7 @@ part of 'apple_pay.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ApplePayShippingMethod _$ApplePayShippingMethodFromJson(
     Map<String, dynamic> json) {
@@ -258,7 +258,7 @@ class _$ApplePayShippingMethodImpl implements _ApplePayShippingMethod {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplePayShippingMethodImpl &&
@@ -568,7 +568,7 @@ class _$ImmediateCartSummaryItemImpl implements ImmediateCartSummaryItem {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ImmediateCartSummaryItemImpl &&
@@ -793,7 +793,7 @@ class _$DeferredSummaryItemImpl implements DeferredSummaryItem {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeferredSummaryItemImpl &&
@@ -1055,7 +1055,7 @@ class _$RecurringCartSummaryItemImpl implements RecurringCartSummaryItem {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RecurringCartSummaryItemImpl &&
@@ -1499,7 +1499,7 @@ class _$ApplePayPresentParamsImpl implements _ApplePayPresentParams {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplePayPresentParamsImpl &&
@@ -1722,7 +1722,7 @@ class _$ApplePayErrorAddressFieldImpl implements _ApplePayErrorAddressField {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplePayErrorAddressFieldImpl &&
@@ -1954,7 +1954,7 @@ class _$ApplePayContactNameImpl implements _ApplePayContactName {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplePayContactNameImpl &&
@@ -2239,7 +2239,7 @@ class _$ApplePayPostalAddressImpl implements _ApplePayPostalAddress {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplePayPostalAddressImpl &&
