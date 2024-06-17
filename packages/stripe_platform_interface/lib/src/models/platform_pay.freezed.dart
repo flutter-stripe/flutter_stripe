@@ -4716,8 +4716,8 @@ mixin _$PaymentRequestType {
     required TResult Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)
         recurring,
@@ -4739,8 +4739,8 @@ mixin _$PaymentRequestType {
     TResult? Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)?
         recurring,
@@ -4761,8 +4761,8 @@ mixin _$PaymentRequestType {
     TResult Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)?
         recurring,
@@ -4833,8 +4833,8 @@ abstract class _$$PaymentRequestTypeRecurringImplCopyWith<$Res> {
   $Res call(
       {String description,
       String managementUrl,
-      ImmediateCartSummaryItem billing,
-      ImmediateCartSummaryItem? trialBilling,
+      RecurringCartSummaryItem billing,
+      RecurringCartSummaryItem? trialBilling,
       String? billingAgreement,
       String? tokenNotificationURL});
 }
@@ -4871,11 +4871,11 @@ class __$$PaymentRequestTypeRecurringImplCopyWithImpl<$Res>
       billing: freezed == billing
           ? _value.billing
           : billing // ignore: cast_nullable_to_non_nullable
-              as ImmediateCartSummaryItem,
+              as RecurringCartSummaryItem,
       trialBilling: freezed == trialBilling
           ? _value.trialBilling
           : trialBilling // ignore: cast_nullable_to_non_nullable
-              as ImmediateCartSummaryItem?,
+              as RecurringCartSummaryItem?,
       billingAgreement: freezed == billingAgreement
           ? _value.billingAgreement
           : billingAgreement // ignore: cast_nullable_to_non_nullable
@@ -4919,11 +4919,11 @@ class _$PaymentRequestTypeRecurringImpl
 
   /// The regular billing cycle for the payment, including start end dates, interval and count.
   @override
-  final ImmediateCartSummaryItem billing;
+  final RecurringCartSummaryItem billing;
 
   /// Same as the billing property but related to trial period.
   @override
-  final ImmediateCartSummaryItem? trialBilling;
+  final RecurringCartSummaryItem? trialBilling;
 
   /// A localized billing agreement that Apple displays to user before authorizing the payment
   @override
@@ -4985,8 +4985,8 @@ class _$PaymentRequestTypeRecurringImpl
     required TResult Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)
         recurring,
@@ -5012,8 +5012,8 @@ class _$PaymentRequestTypeRecurringImpl
     TResult? Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)?
         recurring,
@@ -5038,8 +5038,8 @@ class _$PaymentRequestTypeRecurringImpl
     TResult Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)?
         recurring,
@@ -5109,8 +5109,8 @@ abstract class _PaymentRequestTypeRecurring implements PaymentRequestType {
   const factory _PaymentRequestTypeRecurring(
       {required final String description,
       required final String managementUrl,
-      required final ImmediateCartSummaryItem billing,
-      final ImmediateCartSummaryItem? trialBilling,
+      required final RecurringCartSummaryItem billing,
+      final RecurringCartSummaryItem? trialBilling,
       final String? billingAgreement,
       final String? tokenNotificationURL}) = _$PaymentRequestTypeRecurringImpl;
 
@@ -5126,10 +5126,10 @@ abstract class _PaymentRequestTypeRecurring implements PaymentRequestType {
   String get managementUrl;
 
   /// The regular billing cycle for the payment, including start end dates, interval and count.
-  ImmediateCartSummaryItem get billing;
+  RecurringCartSummaryItem get billing;
 
   /// Same as the billing property but related to trial period.
-  ImmediateCartSummaryItem? get trialBilling;
+  RecurringCartSummaryItem? get trialBilling;
 
   /// A localized billing agreement that Apple displays to user before authorizing the payment
   String? get billingAgreement;
@@ -5316,8 +5316,8 @@ class _$PaymentRequestTypeReloadImpl implements _PaymentRequestTypeReload {
     required TResult Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)
         recurring,
@@ -5343,8 +5343,8 @@ class _$PaymentRequestTypeReloadImpl implements _PaymentRequestTypeReload {
     TResult? Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)?
         recurring,
@@ -5369,8 +5369,8 @@ class _$PaymentRequestTypeReloadImpl implements _PaymentRequestTypeReload {
     TResult Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)?
         recurring,
@@ -5570,8 +5570,8 @@ class _$PaymentRequestTypeMultiMerchantImpl
     required TResult Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)
         recurring,
@@ -5596,8 +5596,8 @@ class _$PaymentRequestTypeMultiMerchantImpl
     TResult? Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)?
         recurring,
@@ -5621,8 +5621,8 @@ class _$PaymentRequestTypeMultiMerchantImpl
     TResult Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)?
         recurring,

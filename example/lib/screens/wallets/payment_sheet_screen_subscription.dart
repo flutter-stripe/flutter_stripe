@@ -108,10 +108,15 @@ class _PaymentSheetScreenState extends State<ApplePayPaymentSheetScreen> {
             request: PaymentRequestType.recurring(
               description: 'subscription',
               managementUrl: 'https://flutter.dev',
-              billing: ImmediateCartSummaryItem(
+              billing: RecurringCartSummaryItem(
                 label: 'Subscription',
                 amount: '10.0',
-                isPending: false,
+                intervalCount: 12,
+                intervalUnit: ApplePayIntervalUnit.month,
+                startDate: DateTime.now().millisecondsSinceEpoch,
+                endDate: DateTime.now()
+                    .add(Duration(days: 365))
+                    .millisecondsSinceEpoch,
               ),
             ),
           ),

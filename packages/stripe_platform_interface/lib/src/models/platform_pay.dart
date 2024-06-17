@@ -353,10 +353,10 @@ class PaymentRequestType with _$PaymentRequestType {
     required String managementUrl,
 
     /// The regular billing cycle for the payment, including start end dates, interval and count.
-    required ImmediateCartSummaryItem billing,
+    required RecurringCartSummaryItem billing,
 
     /// Same as the billing property but related to trial period.
-    ImmediateCartSummaryItem? trialBilling,
+    RecurringCartSummaryItem? trialBilling,
 
     /// A localized billing agreement that Apple displays to user before authorizing the payment
     String? billingAgreement,
