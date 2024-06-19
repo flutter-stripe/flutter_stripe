@@ -12,6 +12,11 @@ abstract class JsElementsCreateOptions {
     JsArray<Font>? fonts,
     String? locale,
     String? clientSecret,
+    int? amount,
+    String? mode,
+    String? currency,
+    List<String>? paymentMethodTypes,
+    String? paymentMethodCreation,
     JsElementAppearance? appearance,
     String loader = "auto",
   });
@@ -19,6 +24,11 @@ abstract class JsElementsCreateOptions {
   external JsArray<Font> fonts;
   external String locale;
   external String clientSecret;
+  external int amount;
+  external String mode;
+  external String currency;
+  external List<String> paymentMethodTypes;
+  external String paymentMethodCreation;
   external JsElementAppearance appearance;
 }
 
@@ -29,6 +39,7 @@ class JsElementAppearance {
   external Map<String, String>? variables;
   external Map<String, Map<String, String>>? rules;
   external String? labels;
+
   @JS("ElementAppearance")
   external factory JsElementAppearance({
     String? theme,

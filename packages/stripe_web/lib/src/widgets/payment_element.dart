@@ -1,18 +1,26 @@
 import 'dart:html';
 import 'dart:ui_web' as ui;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
-import '../../flutter_stripe_web.dart';
 import 'package:stripe_js/stripe_api.dart' as js;
 import 'package:stripe_js/stripe_js.dart' as js;
+
+import '../../flutter_stripe_web.dart';
 
 export 'package:stripe_js/stripe_api.dart' show PaymentElementLayout;
 
 typedef PaymentElementTheme = js.ElementTheme;
 
 class PaymentElement extends StatefulWidget {
-  final String clientSecret;
+  final String? clientSecret;
+
+  final int? amount;
+  final String? currency;
+  final String? mode;
+  final String? paymentMethodCreation;
+  final List<String>? paymentMethodTypes;
+
   final double? width;
   final double? height;
   final CardStyle? style;
@@ -27,7 +35,12 @@ class PaymentElement extends StatefulWidget {
 
   PaymentElement({
     super.key,
-    required this.clientSecret,
+    this.clientSecret,
+    this.amount,
+    this.currency,
+    this.mode,
+    this.paymentMethodTypes,
+    this.paymentMethodCreation,
     this.width,
     this.height,
     this.style,
@@ -158,6 +171,11 @@ class PaymentElementState extends State<PaymentElement> {
     final appearance = widget.appearance ?? js.ElementAppearance();
     return js.JsElementsCreateOptions(
       clientSecret: widget.clientSecret,
+      amount: widget.amount,
+      currency: widget.currency,
+      mode: widget.mode,
+      paymentMethodTypes: widget.paymentMethodTypes,
+      paymentMethodCreation: widget.paymentMethodCreation,
       appearance: js.jsify(appearance.toJson()) as js.JsElementAppearance,
     );
   }
