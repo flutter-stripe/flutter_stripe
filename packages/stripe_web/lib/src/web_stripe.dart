@@ -351,8 +351,11 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<PaymentIntent> retrievePaymentIntent(String clientSecret) async {
-    throw UnimplementedError();
+  Future<PaymentIntent> retrievePaymentIntent(final String clientSecret) async {
+    final stripe_js.PaymentIntentResponse response =
+        await _stripe.retrievePaymentIntent(clientSecret);
+
+    return response.paymentIntent!.parse();
   }
 
   @override
