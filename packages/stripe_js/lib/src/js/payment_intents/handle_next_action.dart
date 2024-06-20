@@ -15,7 +15,9 @@ extension ExtensionHandleNextAction on Stripe {
   /// temporarily redirected from your site and brought back to the return_url
   /// parameter provided when the PaymentIntent is confirmed.
   Future<PaymentIntentResponse> handleNextAction(String clientSecret) {
-    return parseIntentResponse(js.handleNextAction(clientSecret));
+    return parseIntentResponse(
+      js.handleNextAction({'clientSecret': clientSecret}),
+    );
   }
 }
 
