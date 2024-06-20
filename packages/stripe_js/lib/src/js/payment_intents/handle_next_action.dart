@@ -16,7 +16,7 @@ extension ExtensionHandleNextAction on Stripe {
   /// parameter provided when the PaymentIntent is confirmed.
   Future<PaymentIntentResponse> handleNextAction(String clientSecret) {
     return parseIntentResponse(
-      js.handleNextAction({'clientSecret': clientSecret}),
+      js.handleNextAction(jsify({'clientSecret': clientSecret})),
     );
   }
 }
