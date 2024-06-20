@@ -1,6 +1,7 @@
 import 'package:js/js.dart';
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
+
 import '../utils/utils.dart';
 
 extension ExtensionCreatePaymentMethod on Stripe {

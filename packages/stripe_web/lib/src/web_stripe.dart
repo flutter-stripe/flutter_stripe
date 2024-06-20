@@ -401,6 +401,13 @@ class WebStripe extends StripePlatform {
     }
   }
 
+  Future<void> elementsSubmit() => elements!.submit();
+
+  Future<stripe_js.PaymentMethodResponse> createPaymentMethodWithElements() =>
+      js.createPaymentMethodWithElements(
+        stripe_js.CreatePaymentMethodWithElementsData(elements: elements!),
+      );
+
   @override
   Widget buildCard({
     Key? key,
