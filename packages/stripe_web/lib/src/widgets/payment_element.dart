@@ -169,8 +169,15 @@ class PaymentElementState extends State<PaymentElement> {
 
   js.JsElementsCreateOptions createOptions() {
     final appearance = widget.appearance ?? js.ElementAppearance();
+
+    if (widget.clientSecret?.isNotEmpty == true) {
+      return js.JsElementsCreateOptions(
+        clientSecret: widget.clientSecret,
+        appearance: js.jsify(appearance.toJson()) as js.JsElementAppearance,
+      );
+    }
+
     return js.JsElementsCreateOptions(
-      clientSecret: widget.clientSecret,
       amount: widget.amount,
       currency: widget.currency,
       mode: widget.mode,
