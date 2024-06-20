@@ -1,7 +1,6 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:stripe_js/src/api/converters/js_converter.dart';
 import 'package:stripe_js/stripe_api.dart';
-
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'confirm_payment_options.freezed.dart';
 part 'confirm_payment_options.g.dart';
@@ -11,6 +10,7 @@ class ConfirmPaymentOptions with _$ConfirmPaymentOptions {
   const factory ConfirmPaymentOptions({
     /// The Elements instance that was used to create the Payment Element.
     @ElementsConverter() required Elements elements,
+    String? clientSecret,
 
     /// Parameters that will be passed on to the Stripe API.
     /// Refer to the Payment Intents API for a full list of parameters.

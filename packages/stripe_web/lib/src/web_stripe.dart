@@ -386,10 +386,12 @@ class WebStripe extends StripePlatform {
 
   Future<PaymentIntent> confirmPaymentElement(
     ConfirmPaymentElementOptions options,
+    String? clientSecret,
   ) async {
     final response = await js.confirmPayment(
       stripe_js.ConfirmPaymentOptions(
         elements: elements!,
+        clientSecret: clientSecret,
         confirmParams: options.confirmParams,
         redirect: options.redirect,
       ),

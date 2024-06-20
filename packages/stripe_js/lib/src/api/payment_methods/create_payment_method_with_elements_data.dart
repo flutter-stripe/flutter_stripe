@@ -9,7 +9,7 @@ part 'create_payment_method_with_elements_data.g.dart';
 class CreatePaymentMethodWithElementsData
     with _$CreatePaymentMethodWithElementsData {
   const factory CreatePaymentMethodWithElementsData({
-    @ElementsConverter() Elements elements,
+    @ElementsConverter() required Elements elements,
   }) = _CreatePaymentMethodWithElementsData;
 
   factory CreatePaymentMethodWithElementsData.fromJson(

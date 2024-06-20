@@ -22,15 +22,6 @@ Map<String, dynamic> _$$CreatePaymentMethodWithElementsDataImplToJson(
     }
   }
 
-  writeNotNull(
-      'elements',
-      _$JsonConverterToJson<dynamic, Elements>(
-          instance.elements, const ElementsConverter().toJson));
+  writeNotNull('elements', const ElementsConverter().toJson(instance.elements));
   return val;
 }
-
-Json? _$JsonConverterToJson<Json, Value>(
-  Value? value,
-  Json? Function(Value value) toJson,
-) =>
-    value == null ? null : toJson(value);

@@ -22,7 +22,7 @@ CreatePaymentMethodWithElementsData
 /// @nodoc
 mixin _$CreatePaymentMethodWithElementsData {
   @ElementsConverter()
-  Elements? get elements => throw _privateConstructorUsedError;
+  Elements get elements => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,7 +39,7 @@ abstract class $CreatePaymentMethodWithElementsDataCopyWith<$Res> {
       _$CreatePaymentMethodWithElementsDataCopyWithImpl<$Res,
           CreatePaymentMethodWithElementsData>;
   @useResult
-  $Res call({@ElementsConverter() Elements? elements});
+  $Res call({@ElementsConverter() Elements elements});
 }
 
 /// @nodoc
@@ -56,13 +56,13 @@ class _$CreatePaymentMethodWithElementsDataCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? elements = freezed,
+    Object? elements = null,
   }) {
     return _then(_value.copyWith(
-      elements: freezed == elements
+      elements: null == elements
           ? _value.elements
           : elements // ignore: cast_nullable_to_non_nullable
-              as Elements?,
+              as Elements,
     ) as $Val);
   }
 }
@@ -76,7 +76,7 @@ abstract class _$$CreatePaymentMethodWithElementsDataImplCopyWith<$Res>
       __$$CreatePaymentMethodWithElementsDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@ElementsConverter() Elements? elements});
+  $Res call({@ElementsConverter() Elements elements});
 }
 
 /// @nodoc
@@ -92,13 +92,13 @@ class __$$CreatePaymentMethodWithElementsDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? elements = freezed,
+    Object? elements = null,
   }) {
     return _then(_$CreatePaymentMethodWithElementsDataImpl(
-      elements: freezed == elements
+      elements: null == elements
           ? _value.elements
           : elements // ignore: cast_nullable_to_non_nullable
-              as Elements?,
+              as Elements,
     ));
   }
 }
@@ -108,7 +108,7 @@ class __$$CreatePaymentMethodWithElementsDataImplCopyWithImpl<$Res>
 class _$CreatePaymentMethodWithElementsDataImpl
     implements _CreatePaymentMethodWithElementsData {
   const _$CreatePaymentMethodWithElementsDataImpl(
-      {@ElementsConverter() this.elements});
+      {@ElementsConverter() required this.elements});
 
   factory _$CreatePaymentMethodWithElementsDataImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -116,7 +116,7 @@ class _$CreatePaymentMethodWithElementsDataImpl
 
   @override
   @ElementsConverter()
-  final Elements? elements;
+  final Elements elements;
 
   @override
   String toString() {
@@ -155,7 +155,7 @@ class _$CreatePaymentMethodWithElementsDataImpl
 abstract class _CreatePaymentMethodWithElementsData
     implements CreatePaymentMethodWithElementsData {
   const factory _CreatePaymentMethodWithElementsData(
-          {@ElementsConverter() final Elements? elements}) =
+          {@ElementsConverter() required final Elements elements}) =
       _$CreatePaymentMethodWithElementsDataImpl;
 
   factory _CreatePaymentMethodWithElementsData.fromJson(
@@ -164,7 +164,7 @@ abstract class _CreatePaymentMethodWithElementsData
 
   @override
   @ElementsConverter()
-  Elements? get elements;
+  Elements get elements;
   @override
   @JsonKey(ignore: true)
   _$$CreatePaymentMethodWithElementsDataImplCopyWith<
