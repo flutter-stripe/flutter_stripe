@@ -264,6 +264,16 @@ class WebStripe extends StripePlatform {
       {String? returnURL}) async {
     final stripe_js.PaymentIntentResponse response =
         await _stripe.handleCardAction(paymentIntentClientSecret);
+
+    return response.paymentIntent!.parse();
+  }
+
+  Future<PaymentIntent> handleNextActionWithClientSecret(
+    String paymentIntentClientSecret,
+  ) async {
+    final stripe_js.PaymentIntentResponse response =
+        await _stripe.handleNextAction(paymentIntentClientSecret);
+
     return response.paymentIntent!.parse();
   }
 

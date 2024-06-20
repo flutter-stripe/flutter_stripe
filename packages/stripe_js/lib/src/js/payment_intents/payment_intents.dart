@@ -5,4 +5,5 @@ export 'confirm_ideal_payment.dart';
 export 'confirm_payment.dart';
 export 'confirm_sepa_debit_payment.dart';
 export 'handle_card_action.dart';
+export 'handle_next_action.dart';
 export 'retrieve_payment_intent.dart';
