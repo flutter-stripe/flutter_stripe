@@ -1292,6 +1292,9 @@ mixin _$Card {
   /// last four digits of the card.
   String? get last4 => throw _privateConstructorUsedError;
 
+  /// fingerprint of the card.
+  String? get fingerprint => throw _privateConstructorUsedError;
+
   /// The preffered card brand for payment
   String? get preferredNetwork => throw _privateConstructorUsedError;
 
@@ -1319,6 +1322,7 @@ abstract class $CardCopyWith<$Res> {
       int? expMonth,
       String? funding,
       String? last4,
+      String? fingerprint,
       String? preferredNetwork,
       List<String>? availableNetworks,
       ThreeDSecureUsage? threeDSecureUsage});
@@ -1345,6 +1349,7 @@ class _$CardCopyWithImpl<$Res, $Val extends Card>
     Object? expMonth = freezed,
     Object? funding = freezed,
     Object? last4 = freezed,
+    Object? fingerprint = freezed,
     Object? preferredNetwork = freezed,
     Object? availableNetworks = freezed,
     Object? threeDSecureUsage = freezed,
@@ -1373,6 +1378,10 @@ class _$CardCopyWithImpl<$Res, $Val extends Card>
       last4: freezed == last4
           ? _value.last4
           : last4 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fingerprint: freezed == fingerprint
+          ? _value.fingerprint
+          : fingerprint // ignore: cast_nullable_to_non_nullable
               as String?,
       preferredNetwork: freezed == preferredNetwork
           ? _value.preferredNetwork
@@ -1416,6 +1425,7 @@ abstract class _$$CardImplCopyWith<$Res> implements $CardCopyWith<$Res> {
       int? expMonth,
       String? funding,
       String? last4,
+      String? fingerprint,
       String? preferredNetwork,
       List<String>? availableNetworks,
       ThreeDSecureUsage? threeDSecureUsage});
@@ -1440,6 +1450,7 @@ class __$$CardImplCopyWithImpl<$Res>
     Object? expMonth = freezed,
     Object? funding = freezed,
     Object? last4 = freezed,
+    Object? fingerprint = freezed,
     Object? preferredNetwork = freezed,
     Object? availableNetworks = freezed,
     Object? threeDSecureUsage = freezed,
@@ -1469,6 +1480,10 @@ class __$$CardImplCopyWithImpl<$Res>
           ? _value.last4
           : last4 // ignore: cast_nullable_to_non_nullable
               as String?,
+      fingerprint: freezed == fingerprint
+          ? _value.fingerprint
+          : fingerprint // ignore: cast_nullable_to_non_nullable
+              as String?,
       preferredNetwork: freezed == preferredNetwork
           ? _value.preferredNetwork
           : preferredNetwork // ignore: cast_nullable_to_non_nullable
@@ -1496,6 +1511,7 @@ class _$CardImpl implements _Card {
       this.expMonth,
       this.funding,
       this.last4,
+      this.fingerprint,
       this.preferredNetwork,
       final List<String>? availableNetworks,
       this.threeDSecureUsage})
@@ -1528,6 +1544,10 @@ class _$CardImpl implements _Card {
   @override
   final String? last4;
 
+  /// fingerprint of the card.
+  @override
+  final String? fingerprint;
+
   /// The preffered card brand for payment
   @override
   final String? preferredNetwork;
@@ -1552,7 +1572,7 @@ class _$CardImpl implements _Card {
 
   @override
   String toString() {
-    return 'Card(brand: $brand, country: $country, expYear: $expYear, expMonth: $expMonth, funding: $funding, last4: $last4, preferredNetwork: $preferredNetwork, availableNetworks: $availableNetworks, threeDSecureUsage: $threeDSecureUsage)';
+    return 'Card(brand: $brand, country: $country, expYear: $expYear, expMonth: $expMonth, funding: $funding, last4: $last4, fingerprint: $fingerprint, preferredNetwork: $preferredNetwork, availableNetworks: $availableNetworks, threeDSecureUsage: $threeDSecureUsage)';
   }
 
   @override
@@ -1567,6 +1587,8 @@ class _$CardImpl implements _Card {
                 other.expMonth == expMonth) &&
             (identical(other.funding, funding) || other.funding == funding) &&
             (identical(other.last4, last4) || other.last4 == last4) &&
+            (identical(other.fingerprint, fingerprint) ||
+                other.fingerprint == fingerprint) &&
             (identical(other.preferredNetwork, preferredNetwork) ||
                 other.preferredNetwork == preferredNetwork) &&
             const DeepCollectionEquality()
@@ -1585,6 +1607,7 @@ class _$CardImpl implements _Card {
       expMonth,
       funding,
       last4,
+      fingerprint,
       preferredNetwork,
       const DeepCollectionEquality().hash(_availableNetworks),
       threeDSecureUsage);
@@ -1611,6 +1634,7 @@ abstract class _Card implements Card {
       final int? expMonth,
       final String? funding,
       final String? last4,
+      final String? fingerprint,
       final String? preferredNetwork,
       final List<String>? availableNetworks,
       final ThreeDSecureUsage? threeDSecureUsage}) = _$CardImpl;
@@ -1641,6 +1665,10 @@ abstract class _Card implements Card {
 
   /// last four digits of the card.
   String? get last4;
+  @override
+
+  /// fingerprint of the card.
+  String? get fingerprint;
   @override
 
   /// The preffered card brand for payment

@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-05-09
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_platform_interface` - `v10.2.0`](#stripe_platform_interface---v1020)
+ - [`flutter_stripe_web` - `v5.1.1`](#flutter_stripe_web---v511)
+ - [`flutter_stripe` - `v10.1.2`](#flutter_stripe---v1012)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v5.1.1`
+ - `flutter_stripe` - `v10.1.2`
+
+---
+
+#### `stripe_platform_interface` - `v10.2.0`
+
+ - **FIX**: Not Getting Card's Fingerprint in Flutter (#707).
+ - **FIX**: validate with fingerprint (#688).
+ - **FIX**: Fixed Type cast fails on Customer Sheet cancel (#1721)
+
 ## 2024-03-26
 
 ### Changes

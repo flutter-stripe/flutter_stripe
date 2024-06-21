@@ -99,6 +99,7 @@ _$CardImpl _$$CardImplFromJson(Map<String, dynamic> json) => _$CardImpl(
       expMonth: json['expMonth'] as int?,
       funding: json['funding'] as String?,
       last4: json['last4'] as String?,
+      fingerprint: json['fingerprint'] as String?,
       preferredNetwork: json['preferredNetwork'] as String?,
       availableNetworks: (json['availableNetworks'] as List<dynamic>?)
           ?.map((e) => e as String)
@@ -117,6 +118,7 @@ Map<String, dynamic> _$$CardImplToJson(_$CardImpl instance) =>
       'expMonth': instance.expMonth,
       'funding': instance.funding,
       'last4': instance.last4,
+      'fingerprint': instance.fingerprint,
       'preferredNetwork': instance.preferredNetwork,
       'availableNetworks': instance.availableNetworks,
       'threeDSecureUsage': instance.threeDSecureUsage?.toJson(),
