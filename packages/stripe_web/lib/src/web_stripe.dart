@@ -268,7 +268,8 @@ class WebStripe extends StripePlatform {
     return response.paymentIntent!.parse();
   }
 
-  Future<PaymentIntent> handleNextActionWithClientSecret(
+  @override
+  Future<PaymentIntent> handleNextActionForNonCard(
     String paymentIntentClientSecret,
   ) async {
     final stripe_js.PaymentIntentResponse response =
@@ -418,10 +419,25 @@ class WebStripe extends StripePlatform {
 
   Future<void> elementsSubmit() => elements!.submit();
 
-  Future<stripe_js.PaymentMethodResponse> createPaymentMethodWithElements() =>
-      js.createPaymentMethodWithElements(
+  @override
+  Future<PaymentMethod> createPaymentMethodWithElements() async {
+    try {
+      final response = await js.createPaymentMethodWithElements(
         stripe_js.CreatePaymentMethodWithElementsData(elements: elements!),
       );
+
+      if (response.error != null) {
+        throw response.error!;
+      }
+
+      print(response);
+
+      return response.paymentMethod!.parse();
+    } catch (e) {
+      dev.log('Error $e');
+      rethrow;
+    }
+  }
 
   @override
   Widget buildCard({

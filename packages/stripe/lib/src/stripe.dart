@@ -284,6 +284,16 @@ class Stripe {
     }
   }
 
+  Future<PaymentMethod> createPaymentMethodWithElements() =>
+      _platform.createPaymentMethodWithElements();
+
+  Future<void> elementsSubmit() => _platform.elementsSubmit();
+
+  Future<PaymentIntent> handleNextActionForNonCard(
+    final String paymentIntentClientSecret,
+  ) =>
+      _platform.handleNextActionForNonCard(paymentIntentClientSecret);
+
   /// Creates a single-use token that represents a credit card’s details.
   ///
   /// Tokens are considered legacy, use [PaymentMethod] and [PaymentIntent]
@@ -696,6 +706,7 @@ class Stripe {
   }
 
   bool _needsSettings = true;
+
   void markNeedsSettings() {
     _needsSettings = true;
     if (!_platform.updateSettingsLazily) {

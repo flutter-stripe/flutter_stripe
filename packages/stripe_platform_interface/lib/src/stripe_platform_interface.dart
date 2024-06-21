@@ -39,8 +39,14 @@ abstract class StripePlatform extends PlatformInterface {
     PaymentMethodOptions? options,
   ]);
 
+  Future<PaymentMethod> createPaymentMethodWithElements();
+
   Future<PaymentIntent> handleNextAction(String paymentIntentClientSecret,
       {String? returnURL});
+
+  Future<PaymentIntent> handleNextActionForNonCard(
+    String paymentIntentClientSecret,
+  );
 
   Future<SetupIntent> handleNextActionForSetupIntent(
       String setupIntentClientSecret,
@@ -164,6 +170,8 @@ abstract class StripePlatform extends PlatformInterface {
 
   Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts(
       {required String clientSecret});
+
+  Future<void> elementsSubmit();
 
   /// Updates the internal card details. This method will not validate the card
   /// information so you should validate the information yourself.
