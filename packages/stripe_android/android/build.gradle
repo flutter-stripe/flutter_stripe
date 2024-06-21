@@ -3,7 +3,7 @@ version '1.0-SNAPSHOT'
 
 buildscript {
     ext.kotlin_version = '1.8.0'
-    ext.stripe_version = '20.41.+'
+    ext.stripe_version = '20.44.+'
 
     repositories {
         google()
@@ -60,7 +60,7 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
 
     // play-services-wallet is already included in stripe-android
-    compileOnly "com.google.android.gms:play-services-wallet:19.2.0"
+    compileOnly "com.google.android.gms:play-services-wallet:19.3.0"
 
     // Users need to declare this dependency on their own, otherwise all methods are a no-op
     compileOnly 'com.stripe:stripe-android-issuing-push-provisioning:1.1.0'

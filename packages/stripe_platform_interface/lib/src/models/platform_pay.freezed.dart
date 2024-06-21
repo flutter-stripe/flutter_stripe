@@ -12,7 +12,7 @@ part of 'platform_pay.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 PlatformPayPaymentMethod _$PlatformPayPaymentMethodFromJson(
     Map<String, dynamic> json) {
@@ -171,7 +171,7 @@ class _$PlatformPayPaymentMethodImpl implements _PlatformPayPaymentMethod {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PlatformPayPaymentMethodImpl &&
@@ -446,7 +446,7 @@ class _$PlatformPaySheetUpdateParamsImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PlatformPaySheetUpdateParamsImpl &&
@@ -774,7 +774,7 @@ class _$ApplePaySheetErrorInvalidShippingImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplePaySheetErrorInvalidShippingImpl &&
@@ -974,7 +974,7 @@ class _$ApplePaySheetErrorUnserviceableShippingImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplePaySheetErrorUnserviceableShippingImpl &&
@@ -1170,7 +1170,7 @@ class _$ApplePaySheetErrorInvalidCouponCodeImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplePaySheetErrorInvalidCouponCodeImpl &&
@@ -1366,7 +1366,7 @@ class _$ApplePaySheetErrorExpiredCouponCodeImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplePaySheetErrorExpiredCouponCodeImpl &&
@@ -1659,7 +1659,7 @@ class _$PlatformPayPaymentMethodParamsGooglePayImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PlatformPayPaymentMethodParamsGooglePayImpl &&
@@ -1839,7 +1839,7 @@ class _$PlatformPayPaymentMethodParamsApplePayImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PlatformPayPaymentMethodParamsApplePayImpl &&
@@ -2011,7 +2011,7 @@ class _$PlatformPayPaymentMethodParamsWebImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PlatformPayPaymentMethodParamsWebImpl &&
@@ -2278,7 +2278,7 @@ class _$PlatformPayConfirmParamsGooglePayImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PlatformPayConfirmParamsGooglePayImpl &&
@@ -2462,7 +2462,7 @@ class _$PlatformPayConfirmParamsApplePayImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PlatformPayConfirmParamsApplePayImpl &&
@@ -2645,7 +2645,7 @@ class _$PlatformPayConfirmParamsWebImpl implements PlatformPayConfirmParamsWeb {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PlatformPayConfirmParamsWebImpl &&
@@ -2949,7 +2949,7 @@ class _$PlatformPayShippingContactImpl implements _PlatformPayShippingContact {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PlatformPayShippingContactImpl &&
@@ -3466,7 +3466,7 @@ class _$ApplePayParamsImpl implements _ApplePayParams {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplePayParamsImpl &&
@@ -3839,7 +3839,7 @@ class _$GooglePayParamsImpl implements _GooglePayParams {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GooglePayParamsImpl &&
@@ -4141,7 +4141,7 @@ class _$GooglePayPaymentMethodParamsImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GooglePayPaymentMethodParamsImpl &&
@@ -4377,7 +4377,7 @@ class _$GooglePayBillingAddressConfigImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GooglePayBillingAddressConfigImpl &&
@@ -4622,7 +4622,7 @@ class _$GooglePayShippingAddressConfigImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GooglePayShippingAddressConfigImpl &&
@@ -4716,8 +4716,8 @@ mixin _$PaymentRequestType {
     required TResult Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)
         recurring,
@@ -4739,8 +4739,8 @@ mixin _$PaymentRequestType {
     TResult? Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)?
         recurring,
@@ -4761,8 +4761,8 @@ mixin _$PaymentRequestType {
     TResult Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)?
         recurring,
@@ -4833,8 +4833,8 @@ abstract class _$$PaymentRequestTypeRecurringImplCopyWith<$Res> {
   $Res call(
       {String description,
       String managementUrl,
-      ImmediateCartSummaryItem billing,
-      ImmediateCartSummaryItem? trialBilling,
+      RecurringCartSummaryItem billing,
+      RecurringCartSummaryItem? trialBilling,
       String? billingAgreement,
       String? tokenNotificationURL});
 }
@@ -4871,11 +4871,11 @@ class __$$PaymentRequestTypeRecurringImplCopyWithImpl<$Res>
       billing: freezed == billing
           ? _value.billing
           : billing // ignore: cast_nullable_to_non_nullable
-              as ImmediateCartSummaryItem,
+              as RecurringCartSummaryItem,
       trialBilling: freezed == trialBilling
           ? _value.trialBilling
           : trialBilling // ignore: cast_nullable_to_non_nullable
-              as ImmediateCartSummaryItem?,
+              as RecurringCartSummaryItem?,
       billingAgreement: freezed == billingAgreement
           ? _value.billingAgreement
           : billingAgreement // ignore: cast_nullable_to_non_nullable
@@ -4919,11 +4919,11 @@ class _$PaymentRequestTypeRecurringImpl
 
   /// The regular billing cycle for the payment, including start end dates, interval and count.
   @override
-  final ImmediateCartSummaryItem billing;
+  final RecurringCartSummaryItem billing;
 
   /// Same as the billing property but related to trial period.
   @override
-  final ImmediateCartSummaryItem? trialBilling;
+  final RecurringCartSummaryItem? trialBilling;
 
   /// A localized billing agreement that Apple displays to user before authorizing the payment
   @override
@@ -4944,7 +4944,7 @@ class _$PaymentRequestTypeRecurringImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentRequestTypeRecurringImpl &&
@@ -4985,8 +4985,8 @@ class _$PaymentRequestTypeRecurringImpl
     required TResult Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)
         recurring,
@@ -5012,8 +5012,8 @@ class _$PaymentRequestTypeRecurringImpl
     TResult? Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)?
         recurring,
@@ -5038,8 +5038,8 @@ class _$PaymentRequestTypeRecurringImpl
     TResult Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)?
         recurring,
@@ -5109,8 +5109,8 @@ abstract class _PaymentRequestTypeRecurring implements PaymentRequestType {
   const factory _PaymentRequestTypeRecurring(
       {required final String description,
       required final String managementUrl,
-      required final ImmediateCartSummaryItem billing,
-      final ImmediateCartSummaryItem? trialBilling,
+      required final RecurringCartSummaryItem billing,
+      final RecurringCartSummaryItem? trialBilling,
       final String? billingAgreement,
       final String? tokenNotificationURL}) = _$PaymentRequestTypeRecurringImpl;
 
@@ -5126,10 +5126,10 @@ abstract class _PaymentRequestTypeRecurring implements PaymentRequestType {
   String get managementUrl;
 
   /// The regular billing cycle for the payment, including start end dates, interval and count.
-  ImmediateCartSummaryItem get billing;
+  RecurringCartSummaryItem get billing;
 
   /// Same as the billing property but related to trial period.
-  ImmediateCartSummaryItem? get trialBilling;
+  RecurringCartSummaryItem? get trialBilling;
 
   /// A localized billing agreement that Apple displays to user before authorizing the payment
   String? get billingAgreement;
@@ -5272,7 +5272,7 @@ class _$PaymentRequestTypeReloadImpl implements _PaymentRequestTypeReload {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentRequestTypeReloadImpl &&
@@ -5316,8 +5316,8 @@ class _$PaymentRequestTypeReloadImpl implements _PaymentRequestTypeReload {
     required TResult Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)
         recurring,
@@ -5343,8 +5343,8 @@ class _$PaymentRequestTypeReloadImpl implements _PaymentRequestTypeReload {
     TResult? Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)?
         recurring,
@@ -5369,8 +5369,8 @@ class _$PaymentRequestTypeReloadImpl implements _PaymentRequestTypeReload {
     TResult Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)?
         recurring,
@@ -5543,7 +5543,7 @@ class _$PaymentRequestTypeMultiMerchantImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentRequestTypeMultiMerchantImpl &&
@@ -5570,8 +5570,8 @@ class _$PaymentRequestTypeMultiMerchantImpl
     required TResult Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)
         recurring,
@@ -5596,8 +5596,8 @@ class _$PaymentRequestTypeMultiMerchantImpl
     TResult? Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)?
         recurring,
@@ -5621,8 +5621,8 @@ class _$PaymentRequestTypeMultiMerchantImpl
     TResult Function(
             String description,
             String managementUrl,
-            ImmediateCartSummaryItem billing,
-            ImmediateCartSummaryItem? trialBilling,
+            RecurringCartSummaryItem billing,
+            RecurringCartSummaryItem? trialBilling,
             String? billingAgreement,
             String? tokenNotificationURL)?
         recurring,
@@ -5889,7 +5889,7 @@ class _$ApplePayMultiMerchantImpl implements _ApplePayMultiMerchant {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApplePayMultiMerchantImpl &&
@@ -6169,7 +6169,7 @@ class _$PlatformPayOrderDetailsImpl implements _PlatformPayOrderDetails {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PlatformPayOrderDetailsImpl &&
@@ -6668,7 +6668,7 @@ class _$PaymentRequestCreateOptionsImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentRequestCreateOptionsImpl &&
@@ -6959,7 +6959,7 @@ class _$$ShippingOptionImpl implements _$ShippingOption {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$$ShippingOptionImpl &&
@@ -7164,7 +7164,7 @@ class _$$PaymentItemImpl implements _$PaymentItem {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$$PaymentItemImpl &&

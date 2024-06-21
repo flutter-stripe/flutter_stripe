@@ -12,7 +12,7 @@ part of 'google_pay.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 PresentGooglePayParams _$PresentGooglePayParamsFromJson(
     Map<String, dynamic> json) {
@@ -163,7 +163,7 @@ class _$PresentGooglePayParamsImpl implements _PresentGooglePayParams {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PresentGooglePayParamsImpl &&
@@ -492,7 +492,7 @@ class _$GooglePayInitParamsImpl implements _GooglePayInitParams {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GooglePayInitParamsImpl &&
@@ -740,7 +740,7 @@ class _$BillingAddressConfigImpl implements _BillingAddressConfig {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BillingAddressConfigImpl &&
@@ -938,7 +938,7 @@ class _$CreateGooglePayPaymentParamsImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateGooglePayPaymentParamsImpl &&
@@ -1161,7 +1161,7 @@ class _$IsGooglePaySupportedParamsImpl implements _IsGooglePaySupportedParams {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IsGooglePaySupportedParamsImpl &&

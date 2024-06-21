@@ -75,7 +75,7 @@ _$RecurringCartSummaryItemImpl _$$RecurringCartSummaryItemImplFromJson(
           $enumDecode(_$ApplePayIntervalUnitEnumMap, json['intervalUnit']),
       intervalCount: json['intervalCount'] as int,
       startDate: json['startDate'] as int?,
-      number: json['number'] as int?,
+      endDate: json['endDate'] as int?,
       $type: json['paymentType'] as String?,
     );
 
@@ -87,7 +87,7 @@ Map<String, dynamic> _$$RecurringCartSummaryItemImplToJson(
       'intervalUnit': _$ApplePayIntervalUnitEnumMap[instance.intervalUnit]!,
       'intervalCount': instance.intervalCount,
       'startDate': instance.startDate,
-      'number': instance.number,
+      'endDate': instance.endDate,
       'paymentType': instance.$type,
     };
 

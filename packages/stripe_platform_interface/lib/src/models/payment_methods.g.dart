@@ -180,15 +180,14 @@ _$UsBankAccountImpl _$$UsBankAccountImplFromJson(Map<String, dynamic> json) =>
     _$UsBankAccountImpl(
       routingNumber: json['routingNumber'] as String?,
       last4: json['last4'] as String?,
-      accountHolderType: $enumDecode(
+      accountHolderType: $enumDecodeNullable(
           _$BankAccountHolderTypeEnumMap, json['accountHolderType']),
-      accountType: $enumDecode(_$UsBankAccountTypeEnumMap, json['accountType']),
+      accountType:
+          $enumDecodeNullable(_$UsBankAccountTypeEnumMap, json['accountType']),
       bankName: json['bankName'] as String?,
       fingerprint: json['fingerprint'] as String?,
       linkedAccount: json['linkedAccount'] as String?,
-      preferredNetworks: (json['preferredNetworks'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
+      preferredNetwork: json['preferredNetwork'] as String?,
       supportedNetworks: (json['supportedNetworks'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -199,12 +198,12 @@ Map<String, dynamic> _$$UsBankAccountImplToJson(_$UsBankAccountImpl instance) =>
       'routingNumber': instance.routingNumber,
       'last4': instance.last4,
       'accountHolderType':
-          _$BankAccountHolderTypeEnumMap[instance.accountHolderType]!,
-      'accountType': _$UsBankAccountTypeEnumMap[instance.accountType]!,
+          _$BankAccountHolderTypeEnumMap[instance.accountHolderType],
+      'accountType': _$UsBankAccountTypeEnumMap[instance.accountType],
       'bankName': instance.bankName,
       'fingerprint': instance.fingerprint,
       'linkedAccount': instance.linkedAccount,
-      'preferredNetworks': instance.preferredNetworks,
+      'preferredNetwork': instance.preferredNetwork,
       'supportedNetworks': instance.supportedNetworks,
     };
 
@@ -792,8 +791,8 @@ Map<String, dynamic> _$$PaymentMethodDataAfterPayImplToJson(
 _$PaymentMethodDataUsBankImpl _$$PaymentMethodDataUsBankImplFromJson(
         Map<String, dynamic> json) =>
     _$PaymentMethodDataUsBankImpl(
-      accountNumber: json['accountNumber'] as String?,
-      routingNumber: json['routingNumber'] as String?,
+      accountNumber: json['accountNumber'] as String,
+      routingNumber: json['routingNumber'] as String,
       accountHolderType: $enumDecodeNullable(
           _$BankAccountHolderTypeEnumMap, json['accountHolderType']),
       accountType:

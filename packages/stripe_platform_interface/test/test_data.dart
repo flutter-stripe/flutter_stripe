@@ -33,8 +33,8 @@ extension PaymentMethodTestInstance on PaymentMethod {
         'USBankAccount': {
           'routingNumber': usBankAccount.routingNumber,
           'last4': usBankAccount.last4,
-          'accountHolderType': usBankAccount.accountHolderType.name,
-          'accountType': usBankAccount.accountType.name,
+          'accountHolderType': usBankAccount.accountHolderType?.name,
+          'accountType': usBankAccount.accountType?.name,
           'bankName': usBankAccount.bankName,
           'fingerprint': usBankAccount.fingerprint,
           'linkedAccount': usBankAccount.linkedAccount,

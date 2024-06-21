@@ -81,6 +81,18 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// paymentIntent since the customer can change those.
     @JsonKey(name: 'defaultBillingDetails') BillingDetails? billingDetails,
 
+    ///This is an experimental feature that may be removed at any time.
+    /// Defaults to true. If true, the customer can delete all saved payment methods.
+    /// If false, the customer can't delete if they only have one saved payment method remaining.
+    bool? allowsRemovalOfLastSavedPaymentMethod,
+
+    /// By default, PaymentSheet will use a dynamic ordering that optimizes payment method display for the customer.
+    /// You can override the default order in which payment methods are displayed in PaymentSheet with a list of payment method types.
+    /// See https://stripe.com/docs/api/payment_methods/object#payment_method_object-type for the list of valid types.  You may also pass external payment methods.
+    /// Example: ["card", "external_paypal", "klarna"]
+    /// If you omit payment methods from this list, they’ll be automatically ordered by Stripe after the ones you provide. Invalid payment methods are ignored.
+    List<String>? paymentMethodOrder,
+
     /// Return URL is required for IDEAL, Klarna and few other payment methods
     String? returnURL,
 

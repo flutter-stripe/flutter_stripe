@@ -261,10 +261,10 @@ class UsBankAccount with _$UsBankAccount {
     String? last4,
 
     /// The bank account type of the holder
-    required BankAccountHolderType accountHolderType,
+     BankAccountHolderType? accountHolderType,
 
     /// The account type
-    required UsBankAccountType accountType,
+     UsBankAccountType? accountType,
 
     /// The name of the bank of the account
     String? bankName,
@@ -275,8 +275,8 @@ class UsBankAccount with _$UsBankAccount {
     /// Number of linkedaccount
     String? linkedAccount,
 
-    /// list of preferred network names
-    List<String>? preferredNetworks,
+    /// list of preferred network
+    String? preferredNetwork,
 
     /// list of preferred network names
     List<String>? supportedNetworks,
@@ -739,11 +739,11 @@ class PaymentMethodDataUsBank with _$PaymentMethodDataUsBank {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodDataUsBank({
     /// The account number of the bank account.
-    String? accountNumber,
+    required String accountNumber,
 
     ///The routing number, sort code, or other country-appropriate institution
     ///number for the bank account.
-    String? routingNumber,
+    required String routingNumber,
 
     /// The bank account type of the holder
     BankAccountHolderType? accountHolderType,
