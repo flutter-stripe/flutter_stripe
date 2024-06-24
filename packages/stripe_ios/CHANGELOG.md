@@ -1,3 +1,30 @@
+## 10.2.0
+
+**Features**
+  - Sync with Stripe [0.38.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.38.0):
+    - Adds support for paymentMethodOrder in PaymentSheet, which provides client side sorting of payment methods.
+**Fixes**
+  - Fix: Apply dynamic Stripe account ID to confirmPayment method in WebStripe (#1798)
+  - Update models and bugfixes for flutter_stripe_web
+
+## 10.1.1
+
+**Fixes**
+- #1670 Fix issue when not providing preferredNetworks on `CardField` or `CardForm`
+
+## 10.1.0
+
+**Features**
+- #1122 Add google pay and apple pay for web
+- Sync with Stripe [0.37.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.37.0)
+- #1606 Enable tap to pay
+
+**Fixes**
+- #1637 Cash app pay causes crash on web.
+- #1608 prevent paymentintent crash.
+- #1465 unknow result.
+- #1512 add latest charge field to payment intent (Web only).
+
 ## 10.0.0
 
 **Breaking changes**
@@ -5,8 +32,12 @@ Rename `ApplePayShippingContact` to `PlatformpayshippingContact`.
 
 **Fixes**
 - #1465 Handle nullable result coming from Stripe sdk.
+- #1512 add latest charge field to payment intent (Web only).
 - #1522 add bankidentifiercode to ideal paymentdata.
 - #1560 fix payment sheet crash when pressing back button.
+
+## 9.6.0+1
+- add requirement for Android gradle plugin to readme
 
 ## 9.6.0
 Sync with Stripe React Native v0.34 and v0.35:
@@ -17,7 +48,7 @@ Sync with Stripe React Native v0.34 and v0.35:
 - Support PlatformPayButton's appearance and borderRadius props on Android.
 - PaymentSheet now supports Swish for PaymentIntents in private beta.
 - PaymentSheet now supports saved payment method support for SEPA family payment methods.
-- Added support for Flutter 3.16.
+- Added support for Flutter 3.16 and AGP 8
 
 **Fixes**
 #1459 allow image to be null (#1466).

@@ -3,6 +3,227 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-03-26
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_platform_interface` - `v10.1.1`](#stripe_platform_interface---v1011)
+ - [`flutter_stripe_web` - `v5.1.1`](#flutter_stripe_web---v511)
+ - [`flutter_stripe` - `v10.1.2`](#flutter_stripe---v1012)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v5.1.1`
+ - `flutter_stripe` - `v10.1.2`
+
+---
+
+#### `stripe_platform_interface` - `v10.1.1`
+
+ - Fix #1639 cashapp payments
+
+
+## 2024-03-07
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_android` - `v10.1.1`](#stripe_android---v1011)
+ - [`flutter_stripe` - `v10.1.1`](#flutter_stripe---v1011)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v10.1.1`
+
+---
+
+#### `stripe_android` - `v10.1.1`
+
+ - Fix build error on SDK 34
+
+
+## 2024-03-02
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`flutter_stripe` - `v10.1.0`](#flutter_stripe---v1010)
+
+Packages with other changes:
+
+ - There are no other changes in this release.
+
+---
+
+#### `flutter_stripe` - `v10.1.0`
+
+ - aa
+
+ - **BREAKING** **BREAKING**: rename ApplePayShippingContact to Platformpayshipping contact.
+
+
+## 2024-03-02
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`flutter_stripe_web` - `v5.1.0`](#flutter_stripe_web---v510)
+
+Packages with other changes:
+
+ - There are no other changes in this release.
+
+---
+
+#### `flutter_stripe_web` - `v5.1.0`
+
+ - aaa
+
+ - **FIX**: Respect the font color for CardField on web platforms (#1658).
+ - **FIX**: #1512 add latest charge field to payment intent (Web only).
+ - **BREAKING** **BREAKING**: rename ApplePayShippingContact to Platformpayshipping contact.
+
+
+## 2024-03-02
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_js` - `v3.4.0`](#stripe_js---v340)
+ - [`flutter_stripe_web` - `v5.0.1`](#flutter_stripe_web---v501)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v5.0.1`
+
+---
+
+#### `stripe_js` - `v3.4.0`
+
+ - a
+
+
+## 2024-03-02
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_ios` - `v10.1.0`](#stripe_ios---v1010)
+ - [`flutter_stripe` - `v10.0.1`](#flutter_stripe---v1001)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v10.0.1`
+
+---
+
+#### `stripe_ios` - `v10.1.0`
+
+
+## 2024-03-02
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_android` - `v10.1.0`](#stripe_android---v1010)
+ - [`flutter_stripe` - `v10.0.1`](#flutter_stripe---v1001)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v10.0.1`
+
+---
+
+#### `stripe_android` - `v10.1.0`
+
+ - aa
+
+
+## 2024-03-02
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`stripe_platform_interface` - `v10.1.0`](#stripe_platform_interface---v1010)
+
+Packages with other changes:
+
+ - [`flutter_stripe` - `v10.0.1`](#flutter_stripe---v1001)
+ - [`flutter_stripe_web` - `v5.0.1`](#flutter_stripe_web---v501)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v10.0.1`
+ - `flutter_stripe_web` - `v5.0.1`
+
+---
+
+#### `stripe_platform_interface` - `v10.1.0`
+
+ - aaa
+
+ - **FIX**: #1465 unknow result.
+ - **FIX**: #1512 add latest charge field to payment intent (Web only).
+ - **BREAKING** **BREAKING**: rename ApplePayShippingContact to Platformpayshipping contact.
+
+
 ## 2023-12-19
 
 ### Changes

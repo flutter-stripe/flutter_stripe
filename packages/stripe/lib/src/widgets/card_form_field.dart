@@ -49,6 +49,8 @@ class CardFormField extends StatefulWidget {
   /// Defaults is `true`. If your configuration in Stripe requires a postalcode
   /// check as defined in https://stripe.com/docs/radar/rules#traditional-bank-checks
   /// make sure this one is set to `true`.
+  ///
+  /// This is only supported on android
   final bool enablePostalCode;
 
   /// Android only: Controls the postal code entry shown (when `enablePostalCode` is set to true).
@@ -217,7 +219,7 @@ class _MethodChannelCardFormField extends StatefulWidget {
     Key? key,
     this.onFocus,
     this.style,
-    this.enablePostalCode = false,
+    this.enablePostalCode = true,
     double? width,
     double? height,
     BoxConstraints? constraints,
@@ -316,8 +318,9 @@ class _MethodChannelCardFormFieldState
           controller._initalDetails != null)
         'cardDetails': controller._initalDetails?.toJson(),
       'autofocus': widget.autofocus,
-      'preferredNetworks':
-          widget.preferredNetworks?.map((e) => e.brandValue).toList(),
+      if (widget.preferredNetworks != null)
+        'preferredNetworks':
+            widget.preferredNetworks?.map((e) => e.brandValue).toList(),
       'disabled': widget.disabled,
       'defaultValues': {
         'countryCode': widget.countryCode,

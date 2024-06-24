@@ -68,3 +68,17 @@ Map<String, dynamic> _$$NextActionMicroDepositsImplToJson(
       'microdepositType': instance.microdepositType,
       'type': instance.$type,
     };
+
+_$NextActionMultiBancoImpl _$$NextActionMultiBancoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$NextActionMultiBancoImpl(
+      voucherURL: json['voucherURL'] as String?,
+      $type: json['type'] as String?,
+    );
+
+Map<String, dynamic> _$$NextActionMultiBancoImplToJson(
+        _$NextActionMultiBancoImpl instance) =>
+    <String, dynamic>{
+      'voucherURL': instance.voucherURL,
+      'type': instance.$type,
+    };

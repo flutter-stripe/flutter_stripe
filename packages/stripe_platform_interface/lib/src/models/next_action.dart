@@ -58,6 +58,14 @@ class NextAction with _$NextAction {
 
   factory NextAction.fromJson(Map<String, dynamic> json) =>
       _$NextActionFromJson(json);
+
+  /// Contains details necessary for the customer to complete the payment.
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('multibanco')
+  const factory NextAction.multibanco({
+    /// The URL for the hosted multibanco voucher page, which allows customers to view and print an multibanco voucher.
+    String? voucherURL,
+  }) = _NextActionMultiBanco;
 }
 
 /// The type of followup action the customer needs to do in order to complete

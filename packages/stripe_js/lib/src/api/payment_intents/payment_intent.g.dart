@@ -6,7 +6,8 @@ part of 'payment_intent.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PaymentIntent _$$_PaymentIntentFromJson(Map json) => _$_PaymentIntent(
+_$PaymentIntentImpl _$$PaymentIntentImplFromJson(Map json) =>
+    _$PaymentIntentImpl(
       id: json['id'] as String,
       object: json['object'] as String? ?? "payment_intent",
       amount: json['amount'] as int,
@@ -55,7 +56,8 @@ _$_PaymentIntent _$$_PaymentIntentFromJson(Map json) => _$_PaymentIntent(
       paymentMethod: json['payment_method'] as String?,
       paymentMethodOptions: json['payment_method_options'] as Map? ?? const {},
       paymentMethodTypes: (json['payment_method_types'] as List<dynamic>?)
-              ?.map((e) => $enumDecode(_$PaymentMethodTypeEnumMap, e))
+              ?.map((e) => $enumDecode(_$PaymentMethodTypeEnumMap, e,
+                  unknownValue: PaymentMethodType.unknown))
               .toList() ??
           const [],
       processing: json['processing'],
@@ -74,7 +76,7 @@ _$_PaymentIntent _$$_PaymentIntentFromJson(Map json) => _$_PaymentIntent(
       transferGroup: json['transfer_group'],
     );
 
-Map<String, dynamic> _$$_PaymentIntentToJson(_$_PaymentIntent instance) {
+Map<String, dynamic> _$$PaymentIntentImplToJson(_$PaymentIntentImpl instance) {
   final val = <String, dynamic>{
     'id': instance.id,
     'object': instance.object,
@@ -145,6 +147,7 @@ const _$PaymentIntentCancellationReasonEnumMap = {
 
 const _$PaymentIntentCaptureMethodEnumMap = {
   PaymentIntentCaptureMethod.automatic: 'automatic',
+  PaymentIntentCaptureMethod.automaticAsync: 'automatic_async',
   PaymentIntentCaptureMethod.manual: 'manual',
 };
 
@@ -154,24 +157,25 @@ const _$PaymentIntentConfirmationMethodEnumMap = {
 };
 
 const _$PaymentMethodTypeEnumMap = {
-  PaymentMethodType.acssDebit: 'acssDebit',
+  PaymentMethodType.acssDebit: 'acss_debit',
   PaymentMethodType.affirm: 'affirm',
-  PaymentMethodType.afterpayClearpay: 'afterpayClearpay',
+  PaymentMethodType.afterpayClearpay: 'afterpay_clearpay',
   PaymentMethodType.alipay: 'alipay',
-  PaymentMethodType.auBecsDebit: 'auBecsDebit',
-  PaymentMethodType.bacsDebit: 'bacsDebit',
+  PaymentMethodType.auBecsDebit: 'au_becs_debit',
+  PaymentMethodType.bacsDebit: 'bacs_debit',
   PaymentMethodType.bancontact: 'bancontact',
   PaymentMethodType.blik: 'blik',
   PaymentMethodType.boleto: 'boleto',
   PaymentMethodType.card: 'card',
-  PaymentMethodType.cardPresent: 'cardPresent',
-  PaymentMethodType.customerBalance: 'customerBalance',
+  PaymentMethodType.cashapp: 'cashapp',
+  PaymentMethodType.cardPresent: 'bacs_debit',
+  PaymentMethodType.customerBalance: 'customer_balance',
   PaymentMethodType.eps: 'eps',
   PaymentMethodType.fpx: 'fpx',
   PaymentMethodType.giropay: 'giropay',
   PaymentMethodType.grabpay: 'grabpay',
   PaymentMethodType.ideal: 'ideal',
-  PaymentMethodType.interacPresent: 'interacPresent',
+  PaymentMethodType.interacPresent: 'interac_present',
   PaymentMethodType.klarna: 'klarna',
   PaymentMethodType.konbini: 'konbini',
   PaymentMethodType.link: 'link',
@@ -180,10 +184,11 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.paynow: 'paynow',
   PaymentMethodType.pix: 'pix',
   PaymentMethodType.promptpay: 'promptpay',
-  PaymentMethodType.sepaDebit: 'sepaDebit',
+  PaymentMethodType.sepaDebit: 'sepa_debit',
   PaymentMethodType.sofort: 'sofort',
-  PaymentMethodType.usBankAccount: 'usBankAccount',
-  PaymentMethodType.wechatPay: 'wechatPay',
+  PaymentMethodType.usBankAccount: 'us_bank_account',
+  PaymentMethodType.wechatPay: 'wechat_pay',
+  PaymentMethodType.unknown: 'unknown',
 };
 
 const _$PaymentIntentSetupFutureUsageEnumMap = {
@@ -201,17 +206,17 @@ const _$PaymentIntentsStatusEnumMap = {
   PaymentIntentsStatus.canceled: 'canceled',
 };
 
-_$_PaymentIntentAmountDetails _$$_PaymentIntentAmountDetailsFromJson(
+_$PaymentIntentAmountDetailsImpl _$$PaymentIntentAmountDetailsImplFromJson(
         Map json) =>
-    _$_PaymentIntentAmountDetails(
+    _$PaymentIntentAmountDetailsImpl(
       tip: json['tip'] == null
           ? const PaymentIntentTip()
           : PaymentIntentTip.fromJson(
               Map<String, dynamic>.from(json['tip'] as Map)),
     );
 
-Map<String, dynamic> _$$_PaymentIntentAmountDetailsToJson(
-    _$_PaymentIntentAmountDetails instance) {
+Map<String, dynamic> _$$PaymentIntentAmountDetailsImplToJson(
+    _$PaymentIntentAmountDetailsImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -224,12 +229,13 @@ Map<String, dynamic> _$$_PaymentIntentAmountDetailsToJson(
   return val;
 }
 
-_$_PaymentIntentTip _$$_PaymentIntentTipFromJson(Map json) =>
-    _$_PaymentIntentTip(
+_$PaymentIntentTipImpl _$$PaymentIntentTipImplFromJson(Map json) =>
+    _$PaymentIntentTipImpl(
       amount: json['amount'] as int?,
     );
 
-Map<String, dynamic> _$$_PaymentIntentTipToJson(_$_PaymentIntentTip instance) {
+Map<String, dynamic> _$$PaymentIntentTipImplToJson(
+    _$PaymentIntentTipImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -242,14 +248,14 @@ Map<String, dynamic> _$$_PaymentIntentTipToJson(_$_PaymentIntentTip instance) {
   return val;
 }
 
-_$_PaymentIntentAutomaticPaymentMethods
-    _$$_PaymentIntentAutomaticPaymentMethodsFromJson(Map json) =>
-        _$_PaymentIntentAutomaticPaymentMethods(
+_$PaymentIntentAutomaticPaymentMethodsImpl
+    _$$PaymentIntentAutomaticPaymentMethodsImplFromJson(Map json) =>
+        _$PaymentIntentAutomaticPaymentMethodsImpl(
           enabled: json['enabled'] as bool?,
         );
 
-Map<String, dynamic> _$$_PaymentIntentAutomaticPaymentMethodsToJson(
-    _$_PaymentIntentAutomaticPaymentMethods instance) {
+Map<String, dynamic> _$$PaymentIntentAutomaticPaymentMethodsImplToJson(
+    _$PaymentIntentAutomaticPaymentMethodsImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

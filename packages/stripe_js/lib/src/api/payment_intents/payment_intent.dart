@@ -1,6 +1,5 @@
-import 'package:stripe_js/stripe_api.dart';
-
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:stripe_js/stripe_api.dart';
 
 part 'payment_intent.freezed.dart';
 part 'payment_intent.g.dart';
@@ -25,6 +24,12 @@ enum PaymentIntentCaptureMethod {
   /// (Default) Stripe automatically captures funds when the
   /// customer authorizes the payment.
   automatic,
+
+  /// Asynchronously capture funds when the customer authorizes the payment.
+  /// Note: Recommended over [automatic] due to improved latency, but may require additional integration changes.
+  /// Seealso: https://stripe.com/docs/payments/payment-intents/asynchronous-capture-automatic-async
+  @JsonValue('automatic_async')
+  automaticAsync,
 
   /// Place a hold on the funds when the customer authorizes the payment,
   /// but don’t capture the funds until later.
@@ -210,7 +215,10 @@ class PaymentIntent with _$PaymentIntent {
 
     /// The list of payment method types (e.g. card) that this PaymentIntent
     /// is allowed to use.
-    @JsonKey(name: "payment_method_types")
+    @JsonKey(
+      name: "payment_method_types",
+      unknownEnumValue: PaymentMethodType.unknown,
+    )
     @Default([])
     List<PaymentMethodType> paymentMethodTypes,
 

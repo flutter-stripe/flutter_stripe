@@ -2476,11 +2476,11 @@ mixin _$UsBankAccount {
   String? get last4 => throw _privateConstructorUsedError;
 
   /// The bank account type of the holder
-  BankAccountHolderType get accountHolderType =>
+  BankAccountHolderType? get accountHolderType =>
       throw _privateConstructorUsedError;
 
   /// The account type
-  UsBankAccountType get accountType => throw _privateConstructorUsedError;
+  UsBankAccountType? get accountType => throw _privateConstructorUsedError;
 
   /// The name of the bank of the account
   String? get bankName => throw _privateConstructorUsedError;
@@ -2491,8 +2491,8 @@ mixin _$UsBankAccount {
   /// Number of linkedaccount
   String? get linkedAccount => throw _privateConstructorUsedError;
 
-  /// list of preferred network names
-  List<String>? get preferredNetworks => throw _privateConstructorUsedError;
+  /// list of preferred network
+  String? get preferredNetwork => throw _privateConstructorUsedError;
 
   /// list of preferred network names
   List<String>? get supportedNetworks => throw _privateConstructorUsedError;
@@ -2512,12 +2512,12 @@ abstract class $UsBankAccountCopyWith<$Res> {
   $Res call(
       {String? routingNumber,
       String? last4,
-      BankAccountHolderType accountHolderType,
-      UsBankAccountType accountType,
+      BankAccountHolderType? accountHolderType,
+      UsBankAccountType? accountType,
       String? bankName,
       String? fingerprint,
       String? linkedAccount,
-      List<String>? preferredNetworks,
+      String? preferredNetwork,
       List<String>? supportedNetworks});
 }
 
@@ -2536,12 +2536,12 @@ class _$UsBankAccountCopyWithImpl<$Res, $Val extends UsBankAccount>
   $Res call({
     Object? routingNumber = freezed,
     Object? last4 = freezed,
-    Object? accountHolderType = null,
-    Object? accountType = null,
+    Object? accountHolderType = freezed,
+    Object? accountType = freezed,
     Object? bankName = freezed,
     Object? fingerprint = freezed,
     Object? linkedAccount = freezed,
-    Object? preferredNetworks = freezed,
+    Object? preferredNetwork = freezed,
     Object? supportedNetworks = freezed,
   }) {
     return _then(_value.copyWith(
@@ -2553,14 +2553,14 @@ class _$UsBankAccountCopyWithImpl<$Res, $Val extends UsBankAccount>
           ? _value.last4
           : last4 // ignore: cast_nullable_to_non_nullable
               as String?,
-      accountHolderType: null == accountHolderType
+      accountHolderType: freezed == accountHolderType
           ? _value.accountHolderType
           : accountHolderType // ignore: cast_nullable_to_non_nullable
-              as BankAccountHolderType,
-      accountType: null == accountType
+              as BankAccountHolderType?,
+      accountType: freezed == accountType
           ? _value.accountType
           : accountType // ignore: cast_nullable_to_non_nullable
-              as UsBankAccountType,
+              as UsBankAccountType?,
       bankName: freezed == bankName
           ? _value.bankName
           : bankName // ignore: cast_nullable_to_non_nullable
@@ -2573,10 +2573,10 @@ class _$UsBankAccountCopyWithImpl<$Res, $Val extends UsBankAccount>
           ? _value.linkedAccount
           : linkedAccount // ignore: cast_nullable_to_non_nullable
               as String?,
-      preferredNetworks: freezed == preferredNetworks
-          ? _value.preferredNetworks
-          : preferredNetworks // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+      preferredNetwork: freezed == preferredNetwork
+          ? _value.preferredNetwork
+          : preferredNetwork // ignore: cast_nullable_to_non_nullable
+              as String?,
       supportedNetworks: freezed == supportedNetworks
           ? _value.supportedNetworks
           : supportedNetworks // ignore: cast_nullable_to_non_nullable
@@ -2596,12 +2596,12 @@ abstract class _$$UsBankAccountImplCopyWith<$Res>
   $Res call(
       {String? routingNumber,
       String? last4,
-      BankAccountHolderType accountHolderType,
-      UsBankAccountType accountType,
+      BankAccountHolderType? accountHolderType,
+      UsBankAccountType? accountType,
       String? bankName,
       String? fingerprint,
       String? linkedAccount,
-      List<String>? preferredNetworks,
+      String? preferredNetwork,
       List<String>? supportedNetworks});
 }
 
@@ -2618,12 +2618,12 @@ class __$$UsBankAccountImplCopyWithImpl<$Res>
   $Res call({
     Object? routingNumber = freezed,
     Object? last4 = freezed,
-    Object? accountHolderType = null,
-    Object? accountType = null,
+    Object? accountHolderType = freezed,
+    Object? accountType = freezed,
     Object? bankName = freezed,
     Object? fingerprint = freezed,
     Object? linkedAccount = freezed,
-    Object? preferredNetworks = freezed,
+    Object? preferredNetwork = freezed,
     Object? supportedNetworks = freezed,
   }) {
     return _then(_$UsBankAccountImpl(
@@ -2635,14 +2635,14 @@ class __$$UsBankAccountImplCopyWithImpl<$Res>
           ? _value.last4
           : last4 // ignore: cast_nullable_to_non_nullable
               as String?,
-      accountHolderType: null == accountHolderType
+      accountHolderType: freezed == accountHolderType
           ? _value.accountHolderType
           : accountHolderType // ignore: cast_nullable_to_non_nullable
-              as BankAccountHolderType,
-      accountType: null == accountType
+              as BankAccountHolderType?,
+      accountType: freezed == accountType
           ? _value.accountType
           : accountType // ignore: cast_nullable_to_non_nullable
-              as UsBankAccountType,
+              as UsBankAccountType?,
       bankName: freezed == bankName
           ? _value.bankName
           : bankName // ignore: cast_nullable_to_non_nullable
@@ -2655,10 +2655,10 @@ class __$$UsBankAccountImplCopyWithImpl<$Res>
           ? _value.linkedAccount
           : linkedAccount // ignore: cast_nullable_to_non_nullable
               as String?,
-      preferredNetworks: freezed == preferredNetworks
-          ? _value._preferredNetworks
-          : preferredNetworks // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+      preferredNetwork: freezed == preferredNetwork
+          ? _value.preferredNetwork
+          : preferredNetwork // ignore: cast_nullable_to_non_nullable
+              as String?,
       supportedNetworks: freezed == supportedNetworks
           ? _value._supportedNetworks
           : supportedNetworks // ignore: cast_nullable_to_non_nullable
@@ -2674,15 +2674,14 @@ class _$UsBankAccountImpl implements _UsBankAccount {
   const _$UsBankAccountImpl(
       {this.routingNumber,
       this.last4,
-      required this.accountHolderType,
-      required this.accountType,
+      this.accountHolderType,
+      this.accountType,
       this.bankName,
       this.fingerprint,
       this.linkedAccount,
-      final List<String>? preferredNetworks,
+      this.preferredNetwork,
       final List<String>? supportedNetworks})
-      : _preferredNetworks = preferredNetworks,
-        _supportedNetworks = supportedNetworks;
+      : _supportedNetworks = supportedNetworks;
 
   factory _$UsBankAccountImpl.fromJson(Map<String, dynamic> json) =>
       _$$UsBankAccountImplFromJson(json);
@@ -2697,11 +2696,11 @@ class _$UsBankAccountImpl implements _UsBankAccount {
 
   /// The bank account type of the holder
   @override
-  final BankAccountHolderType accountHolderType;
+  final BankAccountHolderType? accountHolderType;
 
   /// The account type
   @override
-  final UsBankAccountType accountType;
+  final UsBankAccountType? accountType;
 
   /// The name of the bank of the account
   @override
@@ -2715,19 +2714,9 @@ class _$UsBankAccountImpl implements _UsBankAccount {
   @override
   final String? linkedAccount;
 
-  /// list of preferred network names
-  final List<String>? _preferredNetworks;
-
-  /// list of preferred network names
+  /// list of preferred network
   @override
-  List<String>? get preferredNetworks {
-    final value = _preferredNetworks;
-    if (value == null) return null;
-    if (_preferredNetworks is EqualUnmodifiableListView)
-      return _preferredNetworks;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final String? preferredNetwork;
 
   /// list of preferred network names
   final List<String>? _supportedNetworks;
@@ -2745,7 +2734,7 @@ class _$UsBankAccountImpl implements _UsBankAccount {
 
   @override
   String toString() {
-    return 'UsBankAccount(routingNumber: $routingNumber, last4: $last4, accountHolderType: $accountHolderType, accountType: $accountType, bankName: $bankName, fingerprint: $fingerprint, linkedAccount: $linkedAccount, preferredNetworks: $preferredNetworks, supportedNetworks: $supportedNetworks)';
+    return 'UsBankAccount(routingNumber: $routingNumber, last4: $last4, accountHolderType: $accountHolderType, accountType: $accountType, bankName: $bankName, fingerprint: $fingerprint, linkedAccount: $linkedAccount, preferredNetwork: $preferredNetwork, supportedNetworks: $supportedNetworks)';
   }
 
   @override
@@ -2766,8 +2755,8 @@ class _$UsBankAccountImpl implements _UsBankAccount {
                 other.fingerprint == fingerprint) &&
             (identical(other.linkedAccount, linkedAccount) ||
                 other.linkedAccount == linkedAccount) &&
-            const DeepCollectionEquality()
-                .equals(other._preferredNetworks, _preferredNetworks) &&
+            (identical(other.preferredNetwork, preferredNetwork) ||
+                other.preferredNetwork == preferredNetwork) &&
             const DeepCollectionEquality()
                 .equals(other._supportedNetworks, _supportedNetworks));
   }
@@ -2783,7 +2772,7 @@ class _$UsBankAccountImpl implements _UsBankAccount {
       bankName,
       fingerprint,
       linkedAccount,
-      const DeepCollectionEquality().hash(_preferredNetworks),
+      preferredNetwork,
       const DeepCollectionEquality().hash(_supportedNetworks));
 
   @JsonKey(ignore: true)
@@ -2804,12 +2793,12 @@ abstract class _UsBankAccount implements UsBankAccount {
   const factory _UsBankAccount(
       {final String? routingNumber,
       final String? last4,
-      required final BankAccountHolderType accountHolderType,
-      required final UsBankAccountType accountType,
+      final BankAccountHolderType? accountHolderType,
+      final UsBankAccountType? accountType,
       final String? bankName,
       final String? fingerprint,
       final String? linkedAccount,
-      final List<String>? preferredNetworks,
+      final String? preferredNetwork,
       final List<String>? supportedNetworks}) = _$UsBankAccountImpl;
 
   factory _UsBankAccount.fromJson(Map<String, dynamic> json) =
@@ -2826,11 +2815,11 @@ abstract class _UsBankAccount implements UsBankAccount {
   @override
 
   /// The bank account type of the holder
-  BankAccountHolderType get accountHolderType;
+  BankAccountHolderType? get accountHolderType;
   @override
 
   /// The account type
-  UsBankAccountType get accountType;
+  UsBankAccountType? get accountType;
   @override
 
   /// The name of the bank of the account
@@ -2845,8 +2834,8 @@ abstract class _UsBankAccount implements UsBankAccount {
   String? get linkedAccount;
   @override
 
-  /// list of preferred network names
-  List<String>? get preferredNetworks;
+  /// list of preferred network
+  String? get preferredNetwork;
   @override
 
   /// list of preferred network names
@@ -12593,11 +12582,11 @@ PaymentMethodDataUsBank _$PaymentMethodDataUsBankFromJson(
 /// @nodoc
 mixin _$PaymentMethodDataUsBank {
   /// The account number of the bank account.
-  String? get accountNumber => throw _privateConstructorUsedError;
+  String get accountNumber => throw _privateConstructorUsedError;
 
   ///The routing number, sort code, or other country-appropriate institution
   ///number for the bank account.
-  String? get routingNumber => throw _privateConstructorUsedError;
+  String get routingNumber => throw _privateConstructorUsedError;
 
   /// The bank account type of the holder
   BankAccountHolderType? get accountHolderType =>
@@ -12628,8 +12617,8 @@ abstract class $PaymentMethodDataUsBankCopyWith<$Res> {
       _$PaymentMethodDataUsBankCopyWithImpl<$Res, PaymentMethodDataUsBank>;
   @useResult
   $Res call(
-      {String? accountNumber,
-      String? routingNumber,
+      {String accountNumber,
+      String routingNumber,
       BankAccountHolderType? accountHolderType,
       UsBankAccountType? accountType,
       BillingDetails? billingDetails,
@@ -12655,8 +12644,8 @@ class _$PaymentMethodDataUsBankCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? accountNumber = freezed,
-    Object? routingNumber = freezed,
+    Object? accountNumber = null,
+    Object? routingNumber = null,
     Object? accountHolderType = freezed,
     Object? accountType = freezed,
     Object? billingDetails = freezed,
@@ -12664,14 +12653,14 @@ class _$PaymentMethodDataUsBankCopyWithImpl<$Res,
     Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
-      accountNumber: freezed == accountNumber
+      accountNumber: null == accountNumber
           ? _value.accountNumber
           : accountNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      routingNumber: freezed == routingNumber
+              as String,
+      routingNumber: null == routingNumber
           ? _value.routingNumber
           : routingNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       accountHolderType: freezed == accountHolderType
           ? _value.accountHolderType
           : accountHolderType // ignore: cast_nullable_to_non_nullable
@@ -12742,8 +12731,8 @@ abstract class _$$PaymentMethodDataUsBankImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? accountNumber,
-      String? routingNumber,
+      {String accountNumber,
+      String routingNumber,
       BankAccountHolderType? accountHolderType,
       UsBankAccountType? accountType,
       BillingDetails? billingDetails,
@@ -12771,8 +12760,8 @@ class __$$PaymentMethodDataUsBankImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? accountNumber = freezed,
-    Object? routingNumber = freezed,
+    Object? accountNumber = null,
+    Object? routingNumber = null,
     Object? accountHolderType = freezed,
     Object? accountType = freezed,
     Object? billingDetails = freezed,
@@ -12780,14 +12769,14 @@ class __$$PaymentMethodDataUsBankImplCopyWithImpl<$Res>
     Object? mandateData = freezed,
   }) {
     return _then(_$PaymentMethodDataUsBankImpl(
-      accountNumber: freezed == accountNumber
+      accountNumber: null == accountNumber
           ? _value.accountNumber
           : accountNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      routingNumber: freezed == routingNumber
+              as String,
+      routingNumber: null == routingNumber
           ? _value.routingNumber
           : routingNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       accountHolderType: freezed == accountHolderType
           ? _value.accountHolderType
           : accountHolderType // ignore: cast_nullable_to_non_nullable
@@ -12817,8 +12806,8 @@ class __$$PaymentMethodDataUsBankImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$PaymentMethodDataUsBankImpl implements _PaymentMethodDataUsBank {
   const _$PaymentMethodDataUsBankImpl(
-      {this.accountNumber,
-      this.routingNumber,
+      {required this.accountNumber,
+      required this.routingNumber,
       this.accountHolderType,
       this.accountType,
       this.billingDetails,
@@ -12830,12 +12819,12 @@ class _$PaymentMethodDataUsBankImpl implements _PaymentMethodDataUsBank {
 
   /// The account number of the bank account.
   @override
-  final String? accountNumber;
+  final String accountNumber;
 
   ///The routing number, sort code, or other country-appropriate institution
   ///number for the bank account.
   @override
-  final String? routingNumber;
+  final String routingNumber;
 
   /// The bank account type of the holder
   @override
@@ -12912,8 +12901,8 @@ class _$PaymentMethodDataUsBankImpl implements _PaymentMethodDataUsBank {
 
 abstract class _PaymentMethodDataUsBank implements PaymentMethodDataUsBank {
   const factory _PaymentMethodDataUsBank(
-      {final String? accountNumber,
-      final String? routingNumber,
+      {required final String accountNumber,
+      required final String routingNumber,
       final BankAccountHolderType? accountHolderType,
       final UsBankAccountType? accountType,
       final BillingDetails? billingDetails,
@@ -12926,12 +12915,12 @@ abstract class _PaymentMethodDataUsBank implements PaymentMethodDataUsBank {
   @override
 
   /// The account number of the bank account.
-  String? get accountNumber;
+  String get accountNumber;
   @override
 
   ///The routing number, sort code, or other country-appropriate institution
   ///number for the bank account.
-  String? get routingNumber;
+  String get routingNumber;
   @override
 
   /// The bank account type of the holder

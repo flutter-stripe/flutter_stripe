@@ -39,6 +39,11 @@ _$SetupParametersImpl _$$SetupParametersImplFromJson(
           ? null
           : BillingDetails.fromJson(
               json['defaultBillingDetails'] as Map<String, dynamic>),
+      allowsRemovalOfLastSavedPaymentMethod:
+          json['allowsRemovalOfLastSavedPaymentMethod'] as bool?,
+      paymentMethodOrder: (json['paymentMethodOrder'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
       returnURL: json['returnURL'] as String?,
       billingDetailsCollectionConfiguration:
           json['billingDetailsCollectionConfiguration'] == null
@@ -70,6 +75,9 @@ Map<String, dynamic> _$$SetupParametersImplToJson(
       'allowsDelayedPaymentMethods': instance.allowsDelayedPaymentMethods,
       'appearance': instance.appearance?.toJson(),
       'defaultBillingDetails': instance.billingDetails?.toJson(),
+      'allowsRemovalOfLastSavedPaymentMethod':
+          instance.allowsRemovalOfLastSavedPaymentMethod,
+      'paymentMethodOrder': instance.paymentMethodOrder,
       'returnURL': instance.returnURL,
       'billingDetailsCollectionConfiguration':
           instance.billingDetailsCollectionConfiguration?.toJson(),
@@ -139,6 +147,7 @@ const _$CaptureMethodEnumMap = {
   CaptureMethod.Manual: 'Manual',
   CaptureMethod.Automatic: 'Automatic',
   CaptureMethod.AutomaticAsync: 'AutomaticAsync',
+  CaptureMethod.Unknown: 'Unknown',
 };
 
 _$PaymentSheetApplePayImpl _$$PaymentSheetApplePayImplFromJson(

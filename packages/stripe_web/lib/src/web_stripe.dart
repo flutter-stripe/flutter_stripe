@@ -55,13 +55,21 @@ class WebStripe extends StripePlatform {
     bool? setReturnUrlSchemeOnAndroid,
   }) async {
     this._urlScheme = urlScheme;
+
     if (__stripe != null) {
-      __stripe!.stripeAccount = stripeAccountId;
+      // Check if the new stripeAccountId is different
+      if (__stripe!.stripeAccount != stripeAccountId) {
+        // Re-initialize with new stripeAccountId
+        await stripe_js.loadStripe();
+        var stripeOption = stripe_js.StripeOptions();
+        stripeOption.stripeAccount = stripeAccountId;
+        __stripe = stripe_js.Stripe(publishableKey, stripeOption);
+      }
       return;
     }
 
     await stripe_js.loadStripe();
-    final stripeOption = stripe_js.StripeOptions();
+    var stripeOption = stripe_js.StripeOptions();
     if (stripeAccountId != null) {
       stripeOption.stripeAccount = stripeAccountId;
     }
@@ -119,9 +127,7 @@ class WebStripe extends StripePlatform {
           paymentIntentClientSecret,
           data: stripe_js.ConfirmCardPaymentData(
             paymentMethod: stripe_js.CardPaymentMethodDetails(card: element!),
-            setupFutureUsage: (options?.setupFutureUsage ??
-                    PaymentIntentsFutureUsage.OnSession)
-                .toJs(),
+            setupFutureUsage: options?.setupFutureUsage?.toJs(),
           ),
         );
       },
@@ -603,6 +609,17 @@ class WebStripe extends StripePlatform {
   Future<CustomerSheetResult?> retrieveCustomerSheetPaymentOptionSelection() {
     throw WebUnsupportedError.method(
         'retrieveCustomerSheetPaymentOptionSelection');
+  }
+
+  @override
+  Future<CanAddCardToWalletResult> canAddCardToWallet(
+      CanAddCardToWalletParams params) {
+    throw WebUnsupportedError.method('canAddCardToWallet');
+  }
+
+  @override
+  Future<IsCardInWalletResult> isCardInWallet(String cardLastFour) {
+    throw WebUnsupportedError.method('isCardInWallet');
   }
 }
 

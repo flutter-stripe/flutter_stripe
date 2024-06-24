@@ -52,7 +52,7 @@ Map<String, dynamic> _$$SetupIntentImplToJson(_$SetupIntentImpl instance) =>
 const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.AfterpayClearpay: 'AfterpayClearpay',
   PaymentMethodType.Card: 'Card',
-  PaymentMethodType.CashAppPay: 'CashAppPay',
+  PaymentMethodType.CashApp: 'CashApp',
   PaymentMethodType.Alipay: 'Alipay',
   PaymentMethodType.Grabpay: 'Grabpay',
   PaymentMethodType.Ideal: 'Ideal',

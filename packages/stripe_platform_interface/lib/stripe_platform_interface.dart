@@ -22,6 +22,7 @@ export 'src/models/payment_methods.dart';
 export 'src/models/payment_sheet.dart';
 export 'src/models/platform_pay.dart';
 export 'src/models/platform_pay_button.dart';
+export 'src/models/push_provisioning.dart';
 export 'src/models/setup_intent.dart';
 export 'src/models/three_d_secure.dart';
 export 'src/models/wallet.dart';

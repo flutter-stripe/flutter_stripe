@@ -138,8 +138,9 @@ class ApplePayCartSummaryItem with _$ApplePayCartSummaryItem {
 
     /// The unix timestamp of the start date. Measured in seconds.
     int? startDate,
+
     ////The unix timestamp of the end date. Measured in seconds. */
-    int? number,
+    int? endDate,
   }) = RecurringCartSummaryItem;
 
   factory ApplePayCartSummaryItem.fromJson(Map<String, dynamic> json) =>

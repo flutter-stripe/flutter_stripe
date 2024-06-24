@@ -79,12 +79,12 @@ class _$ConfirmAlipayPaymentDataCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ConfirmAlipayPaymentDataCopyWith<$Res>
+abstract class _$$ConfirmAlipayPaymentDataImplCopyWith<$Res>
     implements $ConfirmAlipayPaymentDataCopyWith<$Res> {
-  factory _$$_ConfirmAlipayPaymentDataCopyWith(
-          _$_ConfirmAlipayPaymentData value,
-          $Res Function(_$_ConfirmAlipayPaymentData) then) =
-      __$$_ConfirmAlipayPaymentDataCopyWithImpl<$Res>;
+  factory _$$ConfirmAlipayPaymentDataImplCopyWith(
+          _$ConfirmAlipayPaymentDataImpl value,
+          $Res Function(_$ConfirmAlipayPaymentDataImpl) then) =
+      __$$ConfirmAlipayPaymentDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -93,12 +93,13 @@ abstract class _$$_ConfirmAlipayPaymentDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ConfirmAlipayPaymentDataCopyWithImpl<$Res>
+class __$$ConfirmAlipayPaymentDataImplCopyWithImpl<$Res>
     extends _$ConfirmAlipayPaymentDataCopyWithImpl<$Res,
-        _$_ConfirmAlipayPaymentData>
-    implements _$$_ConfirmAlipayPaymentDataCopyWith<$Res> {
-  __$$_ConfirmAlipayPaymentDataCopyWithImpl(_$_ConfirmAlipayPaymentData _value,
-      $Res Function(_$_ConfirmAlipayPaymentData) _then)
+        _$ConfirmAlipayPaymentDataImpl>
+    implements _$$ConfirmAlipayPaymentDataImplCopyWith<$Res> {
+  __$$ConfirmAlipayPaymentDataImplCopyWithImpl(
+      _$ConfirmAlipayPaymentDataImpl _value,
+      $Res Function(_$ConfirmAlipayPaymentDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -107,7 +108,7 @@ class __$$_ConfirmAlipayPaymentDataCopyWithImpl<$Res>
     Object? paymentMethod = freezed,
     Object? returnUrl = freezed,
   }) {
-    return _then(_$_ConfirmAlipayPaymentData(
+    return _then(_$ConfirmAlipayPaymentDataImpl(
       paymentMethod: freezed == paymentMethod
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
@@ -122,13 +123,13 @@ class __$$_ConfirmAlipayPaymentDataCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ConfirmAlipayPaymentData implements _ConfirmAlipayPaymentData {
-  const _$_ConfirmAlipayPaymentData(
+class _$ConfirmAlipayPaymentDataImpl implements _ConfirmAlipayPaymentData {
+  const _$ConfirmAlipayPaymentDataImpl(
       {@JsonKey(name: "payment_method") this.paymentMethod,
       @JsonKey(name: "return_url") this.returnUrl});
 
-  factory _$_ConfirmAlipayPaymentData.fromJson(Map<String, dynamic> json) =>
-      _$$_ConfirmAlipayPaymentDataFromJson(json);
+  factory _$ConfirmAlipayPaymentDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ConfirmAlipayPaymentDataImplFromJson(json);
 
   /// Either the id of an existing PaymentMethod, or an object containing
   /// data to create a PaymentMethod with.
@@ -151,7 +152,7 @@ class _$_ConfirmAlipayPaymentData implements _ConfirmAlipayPaymentData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ConfirmAlipayPaymentData &&
+            other is _$ConfirmAlipayPaymentDataImpl &&
             (identical(other.paymentMethod, paymentMethod) ||
                 other.paymentMethod == paymentMethod) &&
             (identical(other.returnUrl, returnUrl) ||
@@ -165,13 +166,13 @@ class _$_ConfirmAlipayPaymentData implements _ConfirmAlipayPaymentData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ConfirmAlipayPaymentDataCopyWith<_$_ConfirmAlipayPaymentData>
-      get copyWith => __$$_ConfirmAlipayPaymentDataCopyWithImpl<
-          _$_ConfirmAlipayPaymentData>(this, _$identity);
+  _$$ConfirmAlipayPaymentDataImplCopyWith<_$ConfirmAlipayPaymentDataImpl>
+      get copyWith => __$$ConfirmAlipayPaymentDataImplCopyWithImpl<
+          _$ConfirmAlipayPaymentDataImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ConfirmAlipayPaymentDataToJson(
+    return _$$ConfirmAlipayPaymentDataImplToJson(
       this,
     );
   }
@@ -181,10 +182,10 @@ abstract class _ConfirmAlipayPaymentData implements ConfirmAlipayPaymentData {
   const factory _ConfirmAlipayPaymentData(
           {@JsonKey(name: "payment_method") final String? paymentMethod,
           @JsonKey(name: "return_url") final String? returnUrl}) =
-      _$_ConfirmAlipayPaymentData;
+      _$ConfirmAlipayPaymentDataImpl;
 
   factory _ConfirmAlipayPaymentData.fromJson(Map<String, dynamic> json) =
-      _$_ConfirmAlipayPaymentData.fromJson;
+      _$ConfirmAlipayPaymentDataImpl.fromJson;
 
   @override
 
@@ -200,6 +201,6 @@ abstract class _ConfirmAlipayPaymentData implements ConfirmAlipayPaymentData {
   String? get returnUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_ConfirmAlipayPaymentDataCopyWith<_$_ConfirmAlipayPaymentData>
+  _$$ConfirmAlipayPaymentDataImplCopyWith<_$ConfirmAlipayPaymentDataImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -6,7 +6,7 @@ part of 'setup_intent.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SetupIntent _$$_SetupIntentFromJson(Map json) => _$_SetupIntent(
+_$SetupIntentImpl _$$SetupIntentImplFromJson(Map json) => _$SetupIntentImpl(
       id: json['id'] as String,
       object: json['object'] as String? ?? "setup_intent",
       application: json['application'] as String?,
@@ -42,7 +42,7 @@ _$_SetupIntent _$$_SetupIntentFromJson(Map json) => _$_SetupIntent(
           SetupIntentUsage.offSession,
     );
 
-Map<String, dynamic> _$$_SetupIntentToJson(_$_SetupIntent instance) {
+Map<String, dynamic> _$$SetupIntentImplToJson(_$SetupIntentImpl instance) {
   final val = <String, dynamic>{
     'id': instance.id,
     'object': instance.object,
@@ -97,24 +97,25 @@ const _$SetupIntentFlowDirectionsEnumMap = {
 };
 
 const _$PaymentMethodTypeEnumMap = {
-  PaymentMethodType.acssDebit: 'acssDebit',
+  PaymentMethodType.acssDebit: 'acss_debit',
   PaymentMethodType.affirm: 'affirm',
-  PaymentMethodType.afterpayClearpay: 'afterpayClearpay',
+  PaymentMethodType.afterpayClearpay: 'afterpay_clearpay',
   PaymentMethodType.alipay: 'alipay',
-  PaymentMethodType.auBecsDebit: 'auBecsDebit',
-  PaymentMethodType.bacsDebit: 'bacsDebit',
+  PaymentMethodType.auBecsDebit: 'au_becs_debit',
+  PaymentMethodType.bacsDebit: 'bacs_debit',
   PaymentMethodType.bancontact: 'bancontact',
   PaymentMethodType.blik: 'blik',
   PaymentMethodType.boleto: 'boleto',
   PaymentMethodType.card: 'card',
-  PaymentMethodType.cardPresent: 'cardPresent',
-  PaymentMethodType.customerBalance: 'customerBalance',
+  PaymentMethodType.cashapp: 'cashapp',
+  PaymentMethodType.cardPresent: 'bacs_debit',
+  PaymentMethodType.customerBalance: 'customer_balance',
   PaymentMethodType.eps: 'eps',
   PaymentMethodType.fpx: 'fpx',
   PaymentMethodType.giropay: 'giropay',
   PaymentMethodType.grabpay: 'grabpay',
   PaymentMethodType.ideal: 'ideal',
-  PaymentMethodType.interacPresent: 'interacPresent',
+  PaymentMethodType.interacPresent: 'interac_present',
   PaymentMethodType.klarna: 'klarna',
   PaymentMethodType.konbini: 'konbini',
   PaymentMethodType.link: 'link',
@@ -123,10 +124,11 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.paynow: 'paynow',
   PaymentMethodType.pix: 'pix',
   PaymentMethodType.promptpay: 'promptpay',
-  PaymentMethodType.sepaDebit: 'sepaDebit',
+  PaymentMethodType.sepaDebit: 'sepa_debit',
   PaymentMethodType.sofort: 'sofort',
-  PaymentMethodType.usBankAccount: 'usBankAccount',
-  PaymentMethodType.wechatPay: 'wechatPay',
+  PaymentMethodType.usBankAccount: 'us_bank_account',
+  PaymentMethodType.wechatPay: 'wechat_pay',
+  PaymentMethodType.unknown: 'unknown',
 };
 
 const _$SetupIntentsStatusEnumMap = {

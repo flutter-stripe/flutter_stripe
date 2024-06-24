@@ -100,11 +100,12 @@ class _$PaymentMethodResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PaymentMethodResponseCopyWith<$Res>
+abstract class _$$PaymentMethodResponseImplCopyWith<$Res>
     implements $PaymentMethodResponseCopyWith<$Res> {
-  factory _$$_PaymentMethodResponseCopyWith(_$_PaymentMethodResponse value,
-          $Res Function(_$_PaymentMethodResponse) then) =
-      __$$_PaymentMethodResponseCopyWithImpl<$Res>;
+  factory _$$PaymentMethodResponseImplCopyWith(
+          _$PaymentMethodResponseImpl value,
+          $Res Function(_$PaymentMethodResponseImpl) then) =
+      __$$PaymentMethodResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({PaymentMethod? paymentMethod, StripeError? error});
@@ -116,11 +117,12 @@ abstract class _$$_PaymentMethodResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaymentMethodResponseCopyWithImpl<$Res>
-    extends _$PaymentMethodResponseCopyWithImpl<$Res, _$_PaymentMethodResponse>
-    implements _$$_PaymentMethodResponseCopyWith<$Res> {
-  __$$_PaymentMethodResponseCopyWithImpl(_$_PaymentMethodResponse _value,
-      $Res Function(_$_PaymentMethodResponse) _then)
+class __$$PaymentMethodResponseImplCopyWithImpl<$Res>
+    extends _$PaymentMethodResponseCopyWithImpl<$Res,
+        _$PaymentMethodResponseImpl>
+    implements _$$PaymentMethodResponseImplCopyWith<$Res> {
+  __$$PaymentMethodResponseImplCopyWithImpl(_$PaymentMethodResponseImpl _value,
+      $Res Function(_$PaymentMethodResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -129,7 +131,7 @@ class __$$_PaymentMethodResponseCopyWithImpl<$Res>
     Object? paymentMethod = freezed,
     Object? error = freezed,
   }) {
-    return _then(_$_PaymentMethodResponse(
+    return _then(_$PaymentMethodResponseImpl(
       paymentMethod: freezed == paymentMethod
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
@@ -144,11 +146,11 @@ class __$$_PaymentMethodResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PaymentMethodResponse implements _PaymentMethodResponse {
-  const _$_PaymentMethodResponse({this.paymentMethod, this.error});
+class _$PaymentMethodResponseImpl implements _PaymentMethodResponse {
+  const _$PaymentMethodResponseImpl({this.paymentMethod, this.error});
 
-  factory _$_PaymentMethodResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_PaymentMethodResponseFromJson(json);
+  factory _$PaymentMethodResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaymentMethodResponseImplFromJson(json);
 
   /// If not null, a PaymentMethod was created  successfully
   @override
@@ -167,7 +169,7 @@ class _$_PaymentMethodResponse implements _PaymentMethodResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentMethodResponse &&
+            other is _$PaymentMethodResponseImpl &&
             (identical(other.paymentMethod, paymentMethod) ||
                 other.paymentMethod == paymentMethod) &&
             (identical(other.error, error) || other.error == error));
@@ -180,13 +182,13 @@ class _$_PaymentMethodResponse implements _PaymentMethodResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentMethodResponseCopyWith<_$_PaymentMethodResponse> get copyWith =>
-      __$$_PaymentMethodResponseCopyWithImpl<_$_PaymentMethodResponse>(
-          this, _$identity);
+  _$$PaymentMethodResponseImplCopyWith<_$PaymentMethodResponseImpl>
+      get copyWith => __$$PaymentMethodResponseImplCopyWithImpl<
+          _$PaymentMethodResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentMethodResponseToJson(
+    return _$$PaymentMethodResponseImplToJson(
       this,
     );
   }
@@ -195,10 +197,10 @@ class _$_PaymentMethodResponse implements _PaymentMethodResponse {
 abstract class _PaymentMethodResponse implements PaymentMethodResponse {
   const factory _PaymentMethodResponse(
       {final PaymentMethod? paymentMethod,
-      final StripeError? error}) = _$_PaymentMethodResponse;
+      final StripeError? error}) = _$PaymentMethodResponseImpl;
 
   factory _PaymentMethodResponse.fromJson(Map<String, dynamic> json) =
-      _$_PaymentMethodResponse.fromJson;
+      _$PaymentMethodResponseImpl.fromJson;
 
   @override
 
@@ -210,6 +212,6 @@ abstract class _PaymentMethodResponse implements PaymentMethodResponse {
   StripeError? get error;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentMethodResponseCopyWith<_$_PaymentMethodResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PaymentMethodResponseImplCopyWith<_$PaymentMethodResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

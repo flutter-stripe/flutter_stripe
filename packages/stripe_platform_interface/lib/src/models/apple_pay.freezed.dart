@@ -387,7 +387,7 @@ mixin _$ApplePayCartSummaryItem {
             ApplePayIntervalUnit intervalUnit,
             int intervalCount,
             int? startDate,
-            int? number)
+            int? endDate)
         recurring,
   }) =>
       throw _privateConstructorUsedError;
@@ -401,7 +401,7 @@ mixin _$ApplePayCartSummaryItem {
             ApplePayIntervalUnit intervalUnit,
             int intervalCount,
             int? startDate,
-            int? number)?
+            int? endDate)?
         recurring,
   }) =>
       throw _privateConstructorUsedError;
@@ -415,7 +415,7 @@ mixin _$ApplePayCartSummaryItem {
             ApplePayIntervalUnit intervalUnit,
             int intervalCount,
             int? startDate,
-            int? number)?
+            int? endDate)?
         recurring,
     required TResult orElse(),
   }) =>
@@ -602,7 +602,7 @@ class _$ImmediateCartSummaryItemImpl implements ImmediateCartSummaryItem {
             ApplePayIntervalUnit intervalUnit,
             int intervalCount,
             int? startDate,
-            int? number)
+            int? endDate)
         recurring,
   }) {
     return immediate(label, amount, isPending);
@@ -619,7 +619,7 @@ class _$ImmediateCartSummaryItemImpl implements ImmediateCartSummaryItem {
             ApplePayIntervalUnit intervalUnit,
             int intervalCount,
             int? startDate,
-            int? number)?
+            int? endDate)?
         recurring,
   }) {
     return immediate?.call(label, amount, isPending);
@@ -636,7 +636,7 @@ class _$ImmediateCartSummaryItemImpl implements ImmediateCartSummaryItem {
             ApplePayIntervalUnit intervalUnit,
             int intervalCount,
             int? startDate,
-            int? number)?
+            int? endDate)?
         recurring,
     required TResult orElse(),
   }) {
@@ -827,7 +827,7 @@ class _$DeferredSummaryItemImpl implements DeferredSummaryItem {
             ApplePayIntervalUnit intervalUnit,
             int intervalCount,
             int? startDate,
-            int? number)
+            int? endDate)
         recurring,
   }) {
     return deferred(label, amount, deferredDate);
@@ -844,7 +844,7 @@ class _$DeferredSummaryItemImpl implements DeferredSummaryItem {
             ApplePayIntervalUnit intervalUnit,
             int intervalCount,
             int? startDate,
-            int? number)?
+            int? endDate)?
         recurring,
   }) {
     return deferred?.call(label, amount, deferredDate);
@@ -861,7 +861,7 @@ class _$DeferredSummaryItemImpl implements DeferredSummaryItem {
             ApplePayIntervalUnit intervalUnit,
             int intervalCount,
             int? startDate,
-            int? number)?
+            int? endDate)?
         recurring,
     required TResult orElse(),
   }) {
@@ -954,7 +954,7 @@ abstract class _$$RecurringCartSummaryItemImplCopyWith<$Res>
       ApplePayIntervalUnit intervalUnit,
       int intervalCount,
       int? startDate,
-      int? number});
+      int? endDate});
 }
 
 /// @nodoc
@@ -975,7 +975,7 @@ class __$$RecurringCartSummaryItemImplCopyWithImpl<$Res>
     Object? intervalUnit = null,
     Object? intervalCount = null,
     Object? startDate = freezed,
-    Object? number = freezed,
+    Object? endDate = freezed,
   }) {
     return _then(_$RecurringCartSummaryItemImpl(
       label: null == label
@@ -998,9 +998,9 @@ class __$$RecurringCartSummaryItemImplCopyWithImpl<$Res>
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
               as int?,
-      number: freezed == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
+      endDate: freezed == endDate
+          ? _value.endDate
+          : endDate // ignore: cast_nullable_to_non_nullable
               as int?,
     ));
   }
@@ -1016,7 +1016,7 @@ class _$RecurringCartSummaryItemImpl implements RecurringCartSummaryItem {
       required this.intervalUnit,
       required this.intervalCount,
       this.startDate,
-      this.number,
+      this.endDate,
       final String? $type})
       : $type = $type ?? 'Recurring';
 
@@ -1044,14 +1044,14 @@ class _$RecurringCartSummaryItemImpl implements RecurringCartSummaryItem {
   final int? startDate;
 ////The unix timestamp of the end date. Measured in seconds. */
   @override
-  final int? number;
+  final int? endDate;
 
   @JsonKey(name: 'paymentType')
   final String $type;
 
   @override
   String toString() {
-    return 'ApplePayCartSummaryItem.recurring(label: $label, amount: $amount, intervalUnit: $intervalUnit, intervalCount: $intervalCount, startDate: $startDate, number: $number)';
+    return 'ApplePayCartSummaryItem.recurring(label: $label, amount: $amount, intervalUnit: $intervalUnit, intervalCount: $intervalCount, startDate: $startDate, endDate: $endDate)';
   }
 
   @override
@@ -1067,13 +1067,13 @@ class _$RecurringCartSummaryItemImpl implements RecurringCartSummaryItem {
                 other.intervalCount == intervalCount) &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
-            (identical(other.number, number) || other.number == number));
+            (identical(other.endDate, endDate) || other.endDate == endDate));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, label, amount, intervalUnit,
-      intervalCount, startDate, number);
+      intervalCount, startDate, endDate);
 
   @JsonKey(ignore: true)
   @override
@@ -1095,11 +1095,11 @@ class _$RecurringCartSummaryItemImpl implements RecurringCartSummaryItem {
             ApplePayIntervalUnit intervalUnit,
             int intervalCount,
             int? startDate,
-            int? number)
+            int? endDate)
         recurring,
   }) {
     return recurring(
-        label, amount, intervalUnit, intervalCount, startDate, number);
+        label, amount, intervalUnit, intervalCount, startDate, endDate);
   }
 
   @override
@@ -1113,11 +1113,11 @@ class _$RecurringCartSummaryItemImpl implements RecurringCartSummaryItem {
             ApplePayIntervalUnit intervalUnit,
             int intervalCount,
             int? startDate,
-            int? number)?
+            int? endDate)?
         recurring,
   }) {
     return recurring?.call(
-        label, amount, intervalUnit, intervalCount, startDate, number);
+        label, amount, intervalUnit, intervalCount, startDate, endDate);
   }
 
   @override
@@ -1131,13 +1131,13 @@ class _$RecurringCartSummaryItemImpl implements RecurringCartSummaryItem {
             ApplePayIntervalUnit intervalUnit,
             int intervalCount,
             int? startDate,
-            int? number)?
+            int? endDate)?
         recurring,
     required TResult orElse(),
   }) {
     if (recurring != null) {
       return recurring(
-          label, amount, intervalUnit, intervalCount, startDate, number);
+          label, amount, intervalUnit, intervalCount, startDate, endDate);
     }
     return orElse();
   }
@@ -1191,7 +1191,7 @@ abstract class RecurringCartSummaryItem implements ApplePayCartSummaryItem {
       required final ApplePayIntervalUnit intervalUnit,
       required final int intervalCount,
       final int? startDate,
-      final int? number}) = _$RecurringCartSummaryItemImpl;
+      final int? endDate}) = _$RecurringCartSummaryItemImpl;
 
   factory RecurringCartSummaryItem.fromJson(Map<String, dynamic> json) =
       _$RecurringCartSummaryItemImpl.fromJson;
@@ -1214,7 +1214,7 @@ abstract class RecurringCartSummaryItem implements ApplePayCartSummaryItem {
   /// The unix timestamp of the start date. Measured in seconds.
   int?
       get startDate; ////The unix timestamp of the end date. Measured in seconds. */
-  int? get number;
+  int? get endDate;
   @override
   @JsonKey(ignore: true)
   _$$RecurringCartSummaryItemImplCopyWith<_$RecurringCartSummaryItemImpl>
