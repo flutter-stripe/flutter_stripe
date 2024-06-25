@@ -34,6 +34,7 @@ class PaymentElement extends StatefulWidget {
   final CardChangedCallback onCardChanged;
   final PaymentElementLayout layout;
   final js.ElementAppearance? appearance;
+  final String? locale;
 
   PaymentElement({
     super.key,
@@ -54,6 +55,7 @@ class PaymentElement extends StatefulWidget {
     required this.onCardChanged,
     this.layout = PaymentElementLayout.accordion,
     this.appearance,
+    this.locale,
   });
 
   @override
@@ -180,6 +182,7 @@ class PaymentElementState extends State<PaymentElement> {
       return js.JsElementsCreateOptions(
         clientSecret: widget.clientSecret,
         appearance: js.jsify(appearance.toJson()) as js.JsElementAppearance,
+        locale: widget.locale,
       );
     }
 
@@ -190,6 +193,7 @@ class PaymentElementState extends State<PaymentElement> {
       paymentMethodTypes: widget.paymentMethodTypes,
       paymentMethodCreation: widget.paymentMethodCreation,
       appearance: js.jsify(appearance.toJson()) as js.JsElementAppearance,
+      locale: widget.locale,
     );
   }
 
