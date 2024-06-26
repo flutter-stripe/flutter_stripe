@@ -8,7 +8,12 @@ import 'package:stripe_js/stripe_js.dart' as js;
 
 import '../../flutter_stripe_web.dart';
 
-export 'package:stripe_js/stripe_api.dart' show PaymentElementLayout;
+export 'package:stripe_js/stripe_api.dart'
+    show
+        PaymentElementLayout,
+        PaymentElementDefaultValues,
+        PaymentElementBillingDetails,
+        PaymentElementBillingDetailsAddress;
 
 typedef PaymentElementTheme = js.ElementTheme;
 typedef PaymentElementAppearance = js.ElementAppearance;
@@ -35,6 +40,7 @@ class PaymentElement extends StatefulWidget {
   final PaymentElementLayout layout;
   final js.ElementAppearance? appearance;
   final String? locale;
+  final PaymentElementDefaultValues? paymentElementDefaultValues;
 
   PaymentElement({
     super.key,
@@ -56,6 +62,7 @@ class PaymentElement extends StatefulWidget {
     this.layout = PaymentElementLayout.accordion,
     this.appearance,
     this.locale,
+    this.paymentElementDefaultValues,
   });
 
   @override
@@ -198,7 +205,10 @@ class PaymentElementState extends State<PaymentElement> {
   }
 
   js.PaymentElementOptions elementOptions() {
-    return js.PaymentElementOptions(layout: widget.layout);
+    return js.PaymentElementOptions(
+      layout: widget.layout,
+      defaultValues: widget.paymentElementDefaultValues,
+    );
   }
 
   @override
