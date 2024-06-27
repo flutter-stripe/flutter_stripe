@@ -51,8 +51,7 @@ class LocalizedErrorMessage with _$LocalizedErrorMessage {
   @JsonSerializable(explicitToJson: true)
   const factory LocalizedErrorMessage({
     /// The error code for example Cancelled
-    @JsonKey(unknownEnumValue: FailureCode.Unknown)
-    required FailureCode code,
+    @JsonKey(unknownEnumValue: FailureCode.Unknown) required FailureCode code,
 
     /// Localized error message if any
     String? localizedMessage,

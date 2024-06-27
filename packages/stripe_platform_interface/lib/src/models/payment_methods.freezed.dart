@@ -12,7 +12,7 @@ part of 'payment_methods.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 PaymentMethod _$PaymentMethodFromJson(Map<String, dynamic> json) {
   return _PaymentMethod.fromJson(json);
@@ -507,7 +507,7 @@ class _$PaymentMethodImpl implements _PaymentMethod {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodImpl &&
@@ -828,7 +828,7 @@ class _$BillingDetailsImpl implements _BillingDetails {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BillingDetailsImpl &&
@@ -1023,7 +1023,7 @@ class _$AuBecsDebitImpl implements _AuBecsDebit {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuBecsDebitImpl &&
@@ -1212,7 +1212,7 @@ class _$BacsDebitImpl implements _BacsDebit {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BacsDebitImpl &&
@@ -1556,7 +1556,7 @@ class _$CardImpl implements _Card {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardImpl &&
@@ -1769,7 +1769,7 @@ class _$FpxImpl implements _Fpx {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FpxImpl &&
@@ -1930,7 +1930,7 @@ class _$IdealImpl implements _Ideal {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IdealImpl &&
@@ -2130,7 +2130,7 @@ class _$SepaDebitImpl implements _SepaDebit {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SepaDebitImpl &&
@@ -2290,7 +2290,7 @@ class _$SofortImpl implements _Sofort {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SofortImpl &&
@@ -2423,7 +2423,7 @@ class _$UpiImpl implements _Upi {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpiImpl &&
@@ -2476,11 +2476,11 @@ mixin _$UsBankAccount {
   String? get last4 => throw _privateConstructorUsedError;
 
   /// The bank account type of the holder
-  BankAccountHolderType get accountHolderType =>
+  BankAccountHolderType? get accountHolderType =>
       throw _privateConstructorUsedError;
 
   /// The account type
-  UsBankAccountType get accountType => throw _privateConstructorUsedError;
+  UsBankAccountType? get accountType => throw _privateConstructorUsedError;
 
   /// The name of the bank of the account
   String? get bankName => throw _privateConstructorUsedError;
@@ -2491,8 +2491,8 @@ mixin _$UsBankAccount {
   /// Number of linkedaccount
   String? get linkedAccount => throw _privateConstructorUsedError;
 
-  /// list of preferred network names
-  List<String>? get preferredNetworks => throw _privateConstructorUsedError;
+  /// list of preferred network
+  String? get preferredNetwork => throw _privateConstructorUsedError;
 
   /// list of preferred network names
   List<String>? get supportedNetworks => throw _privateConstructorUsedError;
@@ -2512,12 +2512,12 @@ abstract class $UsBankAccountCopyWith<$Res> {
   $Res call(
       {String? routingNumber,
       String? last4,
-      BankAccountHolderType accountHolderType,
-      UsBankAccountType accountType,
+      BankAccountHolderType? accountHolderType,
+      UsBankAccountType? accountType,
       String? bankName,
       String? fingerprint,
       String? linkedAccount,
-      List<String>? preferredNetworks,
+      String? preferredNetwork,
       List<String>? supportedNetworks});
 }
 
@@ -2536,12 +2536,12 @@ class _$UsBankAccountCopyWithImpl<$Res, $Val extends UsBankAccount>
   $Res call({
     Object? routingNumber = freezed,
     Object? last4 = freezed,
-    Object? accountHolderType = null,
-    Object? accountType = null,
+    Object? accountHolderType = freezed,
+    Object? accountType = freezed,
     Object? bankName = freezed,
     Object? fingerprint = freezed,
     Object? linkedAccount = freezed,
-    Object? preferredNetworks = freezed,
+    Object? preferredNetwork = freezed,
     Object? supportedNetworks = freezed,
   }) {
     return _then(_value.copyWith(
@@ -2553,14 +2553,14 @@ class _$UsBankAccountCopyWithImpl<$Res, $Val extends UsBankAccount>
           ? _value.last4
           : last4 // ignore: cast_nullable_to_non_nullable
               as String?,
-      accountHolderType: null == accountHolderType
+      accountHolderType: freezed == accountHolderType
           ? _value.accountHolderType
           : accountHolderType // ignore: cast_nullable_to_non_nullable
-              as BankAccountHolderType,
-      accountType: null == accountType
+              as BankAccountHolderType?,
+      accountType: freezed == accountType
           ? _value.accountType
           : accountType // ignore: cast_nullable_to_non_nullable
-              as UsBankAccountType,
+              as UsBankAccountType?,
       bankName: freezed == bankName
           ? _value.bankName
           : bankName // ignore: cast_nullable_to_non_nullable
@@ -2573,10 +2573,10 @@ class _$UsBankAccountCopyWithImpl<$Res, $Val extends UsBankAccount>
           ? _value.linkedAccount
           : linkedAccount // ignore: cast_nullable_to_non_nullable
               as String?,
-      preferredNetworks: freezed == preferredNetworks
-          ? _value.preferredNetworks
-          : preferredNetworks // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+      preferredNetwork: freezed == preferredNetwork
+          ? _value.preferredNetwork
+          : preferredNetwork // ignore: cast_nullable_to_non_nullable
+              as String?,
       supportedNetworks: freezed == supportedNetworks
           ? _value.supportedNetworks
           : supportedNetworks // ignore: cast_nullable_to_non_nullable
@@ -2596,12 +2596,12 @@ abstract class _$$UsBankAccountImplCopyWith<$Res>
   $Res call(
       {String? routingNumber,
       String? last4,
-      BankAccountHolderType accountHolderType,
-      UsBankAccountType accountType,
+      BankAccountHolderType? accountHolderType,
+      UsBankAccountType? accountType,
       String? bankName,
       String? fingerprint,
       String? linkedAccount,
-      List<String>? preferredNetworks,
+      String? preferredNetwork,
       List<String>? supportedNetworks});
 }
 
@@ -2618,12 +2618,12 @@ class __$$UsBankAccountImplCopyWithImpl<$Res>
   $Res call({
     Object? routingNumber = freezed,
     Object? last4 = freezed,
-    Object? accountHolderType = null,
-    Object? accountType = null,
+    Object? accountHolderType = freezed,
+    Object? accountType = freezed,
     Object? bankName = freezed,
     Object? fingerprint = freezed,
     Object? linkedAccount = freezed,
-    Object? preferredNetworks = freezed,
+    Object? preferredNetwork = freezed,
     Object? supportedNetworks = freezed,
   }) {
     return _then(_$UsBankAccountImpl(
@@ -2635,14 +2635,14 @@ class __$$UsBankAccountImplCopyWithImpl<$Res>
           ? _value.last4
           : last4 // ignore: cast_nullable_to_non_nullable
               as String?,
-      accountHolderType: null == accountHolderType
+      accountHolderType: freezed == accountHolderType
           ? _value.accountHolderType
           : accountHolderType // ignore: cast_nullable_to_non_nullable
-              as BankAccountHolderType,
-      accountType: null == accountType
+              as BankAccountHolderType?,
+      accountType: freezed == accountType
           ? _value.accountType
           : accountType // ignore: cast_nullable_to_non_nullable
-              as UsBankAccountType,
+              as UsBankAccountType?,
       bankName: freezed == bankName
           ? _value.bankName
           : bankName // ignore: cast_nullable_to_non_nullable
@@ -2655,10 +2655,10 @@ class __$$UsBankAccountImplCopyWithImpl<$Res>
           ? _value.linkedAccount
           : linkedAccount // ignore: cast_nullable_to_non_nullable
               as String?,
-      preferredNetworks: freezed == preferredNetworks
-          ? _value._preferredNetworks
-          : preferredNetworks // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+      preferredNetwork: freezed == preferredNetwork
+          ? _value.preferredNetwork
+          : preferredNetwork // ignore: cast_nullable_to_non_nullable
+              as String?,
       supportedNetworks: freezed == supportedNetworks
           ? _value._supportedNetworks
           : supportedNetworks // ignore: cast_nullable_to_non_nullable
@@ -2674,15 +2674,14 @@ class _$UsBankAccountImpl implements _UsBankAccount {
   const _$UsBankAccountImpl(
       {this.routingNumber,
       this.last4,
-      required this.accountHolderType,
-      required this.accountType,
+      this.accountHolderType,
+      this.accountType,
       this.bankName,
       this.fingerprint,
       this.linkedAccount,
-      final List<String>? preferredNetworks,
+      this.preferredNetwork,
       final List<String>? supportedNetworks})
-      : _preferredNetworks = preferredNetworks,
-        _supportedNetworks = supportedNetworks;
+      : _supportedNetworks = supportedNetworks;
 
   factory _$UsBankAccountImpl.fromJson(Map<String, dynamic> json) =>
       _$$UsBankAccountImplFromJson(json);
@@ -2697,11 +2696,11 @@ class _$UsBankAccountImpl implements _UsBankAccount {
 
   /// The bank account type of the holder
   @override
-  final BankAccountHolderType accountHolderType;
+  final BankAccountHolderType? accountHolderType;
 
   /// The account type
   @override
-  final UsBankAccountType accountType;
+  final UsBankAccountType? accountType;
 
   /// The name of the bank of the account
   @override
@@ -2715,19 +2714,9 @@ class _$UsBankAccountImpl implements _UsBankAccount {
   @override
   final String? linkedAccount;
 
-  /// list of preferred network names
-  final List<String>? _preferredNetworks;
-
-  /// list of preferred network names
+  /// list of preferred network
   @override
-  List<String>? get preferredNetworks {
-    final value = _preferredNetworks;
-    if (value == null) return null;
-    if (_preferredNetworks is EqualUnmodifiableListView)
-      return _preferredNetworks;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final String? preferredNetwork;
 
   /// list of preferred network names
   final List<String>? _supportedNetworks;
@@ -2745,11 +2734,11 @@ class _$UsBankAccountImpl implements _UsBankAccount {
 
   @override
   String toString() {
-    return 'UsBankAccount(routingNumber: $routingNumber, last4: $last4, accountHolderType: $accountHolderType, accountType: $accountType, bankName: $bankName, fingerprint: $fingerprint, linkedAccount: $linkedAccount, preferredNetworks: $preferredNetworks, supportedNetworks: $supportedNetworks)';
+    return 'UsBankAccount(routingNumber: $routingNumber, last4: $last4, accountHolderType: $accountHolderType, accountType: $accountType, bankName: $bankName, fingerprint: $fingerprint, linkedAccount: $linkedAccount, preferredNetwork: $preferredNetwork, supportedNetworks: $supportedNetworks)';
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UsBankAccountImpl &&
@@ -2766,8 +2755,8 @@ class _$UsBankAccountImpl implements _UsBankAccount {
                 other.fingerprint == fingerprint) &&
             (identical(other.linkedAccount, linkedAccount) ||
                 other.linkedAccount == linkedAccount) &&
-            const DeepCollectionEquality()
-                .equals(other._preferredNetworks, _preferredNetworks) &&
+            (identical(other.preferredNetwork, preferredNetwork) ||
+                other.preferredNetwork == preferredNetwork) &&
             const DeepCollectionEquality()
                 .equals(other._supportedNetworks, _supportedNetworks));
   }
@@ -2783,7 +2772,7 @@ class _$UsBankAccountImpl implements _UsBankAccount {
       bankName,
       fingerprint,
       linkedAccount,
-      const DeepCollectionEquality().hash(_preferredNetworks),
+      preferredNetwork,
       const DeepCollectionEquality().hash(_supportedNetworks));
 
   @JsonKey(ignore: true)
@@ -2804,12 +2793,12 @@ abstract class _UsBankAccount implements UsBankAccount {
   const factory _UsBankAccount(
       {final String? routingNumber,
       final String? last4,
-      required final BankAccountHolderType accountHolderType,
-      required final UsBankAccountType accountType,
+      final BankAccountHolderType? accountHolderType,
+      final UsBankAccountType? accountType,
       final String? bankName,
       final String? fingerprint,
       final String? linkedAccount,
-      final List<String>? preferredNetworks,
+      final String? preferredNetwork,
       final List<String>? supportedNetworks}) = _$UsBankAccountImpl;
 
   factory _UsBankAccount.fromJson(Map<String, dynamic> json) =
@@ -2826,11 +2815,11 @@ abstract class _UsBankAccount implements UsBankAccount {
   @override
 
   /// The bank account type of the holder
-  BankAccountHolderType get accountHolderType;
+  BankAccountHolderType? get accountHolderType;
   @override
 
   /// The account type
-  UsBankAccountType get accountType;
+  UsBankAccountType? get accountType;
   @override
 
   /// The name of the bank of the account
@@ -2845,8 +2834,8 @@ abstract class _UsBankAccount implements UsBankAccount {
   String? get linkedAccount;
   @override
 
-  /// list of preferred network names
-  List<String>? get preferredNetworks;
+  /// list of preferred network
+  String? get preferredNetwork;
   @override
 
   /// list of preferred network names
@@ -3183,7 +3172,7 @@ class _$PaymentMethodParamsCardImpl implements _PaymentMethodParamsCard {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsCardImpl &&
@@ -3499,7 +3488,7 @@ class _$PaymentMethodParamsCardWithTokenImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsCardWithTokenImpl &&
@@ -3819,7 +3808,7 @@ class _$PaymentMethodParamsCardWithMethodIdImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsCardWithMethodIdImpl &&
@@ -4136,7 +4125,7 @@ class _$PaymentMethodParamsAlipayImpl implements _PaymentMethodParamsAlipay {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsAlipayImpl &&
@@ -4451,7 +4440,7 @@ class _$PaymentMethodParamsCashAppPayImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsCashAppPayImpl &&
@@ -4767,7 +4756,7 @@ class _$PaymentMethodParamsIdealImpl implements _PaymentMethodParamsIdeal {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsIdealImpl &&
@@ -5081,7 +5070,7 @@ class _$PaymentMethodParamsAubecsImpl implements _PaymentMethodParamsAubecs {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsAubecsImpl &&
@@ -5396,7 +5385,7 @@ class _$PaymentMethodParamsBankContactImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsBankContactImpl &&
@@ -5712,7 +5701,7 @@ class _$PaymentMethodParamsGiroPayImpl implements _PaymentMethodParamsGiroPay {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsGiroPayImpl &&
@@ -6025,7 +6014,7 @@ class _$PaymentMethodParamsEpsImpl implements _PaymentMethodParamsEps {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsEpsImpl &&
@@ -6338,7 +6327,7 @@ class _$PaymentMethodParamsAffirmImpl implements _PaymentMethodParamsAffirm {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsAffirmImpl &&
@@ -6651,7 +6640,7 @@ class _$PaymentMethodParamsPayImpl implements _PaymentMethodParamsPay {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsPayImpl &&
@@ -6964,7 +6953,7 @@ class _$PaymentMethodParamsP24Impl implements _PaymentMethodParamsP24 {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsP24Impl &&
@@ -7278,7 +7267,7 @@ class _$PaymentMethodParamsFpxImpl implements _PaymentMethodParamsFpx {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsFpxImpl &&
@@ -7594,7 +7583,7 @@ class _$PaymentMethodParamsSepaDebitImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsSepaDebitImpl &&
@@ -7909,7 +7898,7 @@ class _$PaymentMethodParamsSofortImpl implements _PaymentMethodParamsSofort {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsSofortImpl &&
@@ -8222,7 +8211,7 @@ class _$PaymentMethodParamsAfterpayClearpayImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsAfterpayClearpayImpl &&
@@ -8537,7 +8526,7 @@ class _$PaymentMethodParamsOxxoImpl implements _PaymentMethodParamsOxxo {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsOxxoImpl &&
@@ -8853,7 +8842,7 @@ class _$PaymentMethodParamsKlarnaImpl implements _PaymentMethodParamsKlarna {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsKlarnaImpl &&
@@ -9169,7 +9158,7 @@ class _$PaymentMethodParamsPayPalImpl implements _PaymentMethodParamsPayPal {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsPayPalImpl &&
@@ -9484,7 +9473,7 @@ class _$PaymentMethodParamsRevolutPayImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsRevolutPayImpl &&
@@ -9802,7 +9791,7 @@ class _$PaymentMethodParamsUsBankAccountImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsUsBankAccountImpl &&
@@ -10239,7 +10228,7 @@ class _$PaymentMethodDataImpl implements _PaymentMethodData {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataImpl &&
@@ -10517,7 +10506,7 @@ class _$PaymentMethodDataCardFromTokenImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataCardFromTokenImpl &&
@@ -10824,7 +10813,7 @@ class _$PaymentMethodDataCardFromMethodImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataCardFromMethodImpl &&
@@ -11134,7 +11123,7 @@ class _$PaymentMethodDataIdealImpl implements _PaymentMethodDataIdeal {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataIdealImpl &&
@@ -11433,7 +11422,7 @@ class _$PaymentMethodDataAubecsImpl implements _PaymentMethodDataAubecs {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataAubecsImpl &&
@@ -11711,7 +11700,7 @@ class _$PaymentMethodDataFpxImpl implements _PaymentMethodDataFpx {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataFpxImpl &&
@@ -11993,7 +11982,7 @@ class _$PaymentMethodDataSofortImpl implements _PaymentMethodDataSofort {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataSofortImpl &&
@@ -12272,7 +12261,7 @@ class _$PaymentMethodDataSepaImpl implements _PaymentMethodDataSepa {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataSepaImpl &&
@@ -12526,7 +12515,7 @@ class _$PaymentMethodDataAfterPayImpl implements _PaymentMethodDataAfterPay {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataAfterPayImpl &&
@@ -12593,11 +12582,11 @@ PaymentMethodDataUsBank _$PaymentMethodDataUsBankFromJson(
 /// @nodoc
 mixin _$PaymentMethodDataUsBank {
   /// The account number of the bank account.
-  String? get accountNumber => throw _privateConstructorUsedError;
+  String get accountNumber => throw _privateConstructorUsedError;
 
   ///The routing number, sort code, or other country-appropriate institution
   ///number for the bank account.
-  String? get routingNumber => throw _privateConstructorUsedError;
+  String get routingNumber => throw _privateConstructorUsedError;
 
   /// The bank account type of the holder
   BankAccountHolderType? get accountHolderType =>
@@ -12628,8 +12617,8 @@ abstract class $PaymentMethodDataUsBankCopyWith<$Res> {
       _$PaymentMethodDataUsBankCopyWithImpl<$Res, PaymentMethodDataUsBank>;
   @useResult
   $Res call(
-      {String? accountNumber,
-      String? routingNumber,
+      {String accountNumber,
+      String routingNumber,
       BankAccountHolderType? accountHolderType,
       UsBankAccountType? accountType,
       BillingDetails? billingDetails,
@@ -12655,8 +12644,8 @@ class _$PaymentMethodDataUsBankCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? accountNumber = freezed,
-    Object? routingNumber = freezed,
+    Object? accountNumber = null,
+    Object? routingNumber = null,
     Object? accountHolderType = freezed,
     Object? accountType = freezed,
     Object? billingDetails = freezed,
@@ -12664,14 +12653,14 @@ class _$PaymentMethodDataUsBankCopyWithImpl<$Res,
     Object? mandateData = freezed,
   }) {
     return _then(_value.copyWith(
-      accountNumber: freezed == accountNumber
+      accountNumber: null == accountNumber
           ? _value.accountNumber
           : accountNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      routingNumber: freezed == routingNumber
+              as String,
+      routingNumber: null == routingNumber
           ? _value.routingNumber
           : routingNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       accountHolderType: freezed == accountHolderType
           ? _value.accountHolderType
           : accountHolderType // ignore: cast_nullable_to_non_nullable
@@ -12742,8 +12731,8 @@ abstract class _$$PaymentMethodDataUsBankImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? accountNumber,
-      String? routingNumber,
+      {String accountNumber,
+      String routingNumber,
       BankAccountHolderType? accountHolderType,
       UsBankAccountType? accountType,
       BillingDetails? billingDetails,
@@ -12771,8 +12760,8 @@ class __$$PaymentMethodDataUsBankImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? accountNumber = freezed,
-    Object? routingNumber = freezed,
+    Object? accountNumber = null,
+    Object? routingNumber = null,
     Object? accountHolderType = freezed,
     Object? accountType = freezed,
     Object? billingDetails = freezed,
@@ -12780,14 +12769,14 @@ class __$$PaymentMethodDataUsBankImplCopyWithImpl<$Res>
     Object? mandateData = freezed,
   }) {
     return _then(_$PaymentMethodDataUsBankImpl(
-      accountNumber: freezed == accountNumber
+      accountNumber: null == accountNumber
           ? _value.accountNumber
           : accountNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      routingNumber: freezed == routingNumber
+              as String,
+      routingNumber: null == routingNumber
           ? _value.routingNumber
           : routingNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       accountHolderType: freezed == accountHolderType
           ? _value.accountHolderType
           : accountHolderType // ignore: cast_nullable_to_non_nullable
@@ -12817,8 +12806,8 @@ class __$$PaymentMethodDataUsBankImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$PaymentMethodDataUsBankImpl implements _PaymentMethodDataUsBank {
   const _$PaymentMethodDataUsBankImpl(
-      {this.accountNumber,
-      this.routingNumber,
+      {required this.accountNumber,
+      required this.routingNumber,
       this.accountHolderType,
       this.accountType,
       this.billingDetails,
@@ -12830,12 +12819,12 @@ class _$PaymentMethodDataUsBankImpl implements _PaymentMethodDataUsBank {
 
   /// The account number of the bank account.
   @override
-  final String? accountNumber;
+  final String accountNumber;
 
   ///The routing number, sort code, or other country-appropriate institution
   ///number for the bank account.
   @override
-  final String? routingNumber;
+  final String routingNumber;
 
   /// The bank account type of the holder
   @override
@@ -12863,7 +12852,7 @@ class _$PaymentMethodDataUsBankImpl implements _PaymentMethodDataUsBank {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataUsBankImpl &&
@@ -12912,8 +12901,8 @@ class _$PaymentMethodDataUsBankImpl implements _PaymentMethodDataUsBank {
 
 abstract class _PaymentMethodDataUsBank implements PaymentMethodDataUsBank {
   const factory _PaymentMethodDataUsBank(
-      {final String? accountNumber,
-      final String? routingNumber,
+      {required final String accountNumber,
+      required final String routingNumber,
       final BankAccountHolderType? accountHolderType,
       final UsBankAccountType? accountType,
       final BillingDetails? billingDetails,
@@ -12926,12 +12915,12 @@ abstract class _PaymentMethodDataUsBank implements PaymentMethodDataUsBank {
   @override
 
   /// The account number of the bank account.
-  String? get accountNumber;
+  String get accountNumber;
   @override
 
   ///The routing number, sort code, or other country-appropriate institution
   ///number for the bank account.
-  String? get routingNumber;
+  String get routingNumber;
   @override
 
   /// The bank account type of the holder
@@ -13060,7 +13049,7 @@ class _$PaymentMethodOptionsImpl implements _PaymentMethodOptions {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodOptionsImpl &&
@@ -13225,7 +13214,7 @@ class _$MandateDataImpl implements _MandateData {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MandateDataImpl &&
@@ -13384,7 +13373,7 @@ class _$MandateDataCustomerAcceptanceImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MandateDataCustomerAcceptanceImpl &&
@@ -13543,7 +13532,7 @@ class _$MandateDataOnlineDataImpl implements _MandateDataOnlineData {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MandateDataOnlineDataImpl &&
@@ -13694,7 +13683,7 @@ class _$ThreeDSecureUsageImpl implements _ThreeDSecureUsage {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ThreeDSecureUsageImpl &&

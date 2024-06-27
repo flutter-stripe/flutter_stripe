@@ -1,4 +1,13 @@
-## 10.1.2
+## 10.2.0
+
+**Features**
+  - Sync with Stripe [0.38.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.38.0):
+    - Adds support for paymentMethodOrder in PaymentSheet, which provides client side sorting of payment methods.
+**Fixes**
+  - Fix: Apply dynamic Stripe account ID to confirmPayment method in WebStripe (#1798)
+  - Update models and bugfixes for flutter_stripe_web
+
+## 10.1.1
 
 **Fixes**
 - #1670 Fix issue when not providing preferredNetworks on `CardField` or `CardForm`

@@ -32,6 +32,11 @@ class CustomerSheetInitParams with _$CustomerSheetInitParams {
     /// Your customer-facing business name. The default value is the name of your app.
     String? merchantDisplayName,
 
+    ///This is an experimental feature that may be removed at any time.
+    /// Defaults to true. If true, the customer can delete all saved payment methods.
+    /// If false, the customer can't delete if they only have one saved payment method remaining.
+    bool? allowsRemovalOfLastSavedPaymentMethod,
+
     /// Optional configuration for setting the header text of the Payment Method selection screen
     String? headerTextForSelectionScreen,
 

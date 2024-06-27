@@ -18,6 +18,8 @@ _$CustomerSheetInitParamsImpl _$$CustomerSheetInitParamsImplFromJson(
       customerId: json['customerId'] as String,
       customerEphemeralKeySecret: json['customerEphemeralKeySecret'] as String,
       merchantDisplayName: json['merchantDisplayName'] as String?,
+      allowsRemovalOfLastSavedPaymentMethod:
+          json['allowsRemovalOfLastSavedPaymentMethod'] as bool?,
       headerTextForSelectionScreen:
           json['headerTextForSelectionScreen'] as String?,
       defaultBillingDetails: json['defaultBillingDetails'] == null
@@ -49,6 +51,8 @@ Map<String, dynamic> _$$CustomerSheetInitParamsImplToJson(
       'customerId': instance.customerId,
       'customerEphemeralKeySecret': instance.customerEphemeralKeySecret,
       'merchantDisplayName': instance.merchantDisplayName,
+      'allowsRemovalOfLastSavedPaymentMethod':
+          instance.allowsRemovalOfLastSavedPaymentMethod,
       'headerTextForSelectionScreen': instance.headerTextForSelectionScreen,
       'defaultBillingDetails': instance.defaultBillingDetails?.toJson(),
       'billingDetailsCollectionConfiguration':
