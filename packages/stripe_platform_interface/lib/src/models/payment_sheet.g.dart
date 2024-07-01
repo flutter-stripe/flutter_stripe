@@ -56,6 +56,8 @@ _$SetupParametersImpl _$$SetupParametersImplFromJson(
       preferredNetworks: (json['preferredNetworks'] as List<dynamic>?)
           ?.map((e) => $enumDecode(_$CardBrandEnumMap, e))
           .toList(),
+      languageCode: json['languageCode'] as String?,
+      countryCode: json['countryCode'] as String?,
     );
 
 Map<String, dynamic> _$$SetupParametersImplToJson(
@@ -84,6 +86,8 @@ Map<String, dynamic> _$$SetupParametersImplToJson(
       'removeSavedPaymentMethodMessage':
           instance.removeSavedPaymentMethodMessage,
       'preferredNetworks': _cardBrandListToJson(instance.preferredNetworks),
+      'languageCode': instance.languageCode,
+      'countryCode': instance.countryCode,
     };
 
 const _$ThemeModeEnumMap = {

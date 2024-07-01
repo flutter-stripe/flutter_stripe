@@ -106,6 +106,13 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// The list of preferred networks that should be used to process payments made with a co-branded card.
     /// This value will only be used if your user hasn't selected a network themselves.
     @JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks,
+
+    /// set the payment sheet language
+    String? languageCode,
+
+    /// this can only be used with [languageCode] to give a different
+    /// variation of a language
+    String? countryCode,
   }) = _SetupParameters;
 
   factory SetupPaymentSheetParameters.fromJson(Map<String, dynamic> json) =>
