@@ -1,3 +1,7 @@
+## 10.2.1
+**Fixes**
+- Run method channel messages on UI Thread to prevent crash (#1831)
+
 ## 10.2.0
 
 **Features**
