@@ -91,6 +91,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetDefferedScreen> {
       await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
           // Main params
+          returnURL: 'flutterstripe://stripe-redirect"',
           merchantDisplayName: 'Flutter Stripe Store Demo',
           intentConfiguration: IntentConfiguration(
               mode: IntentMode(
