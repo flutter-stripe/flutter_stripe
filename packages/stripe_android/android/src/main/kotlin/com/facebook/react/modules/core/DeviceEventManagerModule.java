@@ -1,11 +1,15 @@
 package com.facebook.react.modules.core;
 
+import android.os.Handler;
+import android.os.Looper;
+
 import com.facebook.react.bridge.WritableMap;
 
 import io.flutter.plugin.common.MethodChannel;
 
 public class DeviceEventManagerModule {
     public static class RCTDeviceEventEmitter {
+        private Handler uiThreadHandler = new Handler(Looper.getMainLooper());
 
         private final MethodChannel channel;
 
@@ -14,7 +18,7 @@ public class DeviceEventManagerModule {
         }
 
         public void emit(String eventName, WritableMap params) {
-            channel.invokeMethod(eventName, params);
+            uiThreadHandler.post(() -> channel.invokeMethod(eventName, params));
         }
     }
 }
