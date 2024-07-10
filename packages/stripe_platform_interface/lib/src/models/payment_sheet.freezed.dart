@@ -12,7 +12,7 @@ part of 'payment_sheet.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SetupPaymentSheetParameters _$SetupPaymentSheetParametersFromJson(
     Map<String, dynamic> json) {
@@ -711,7 +711,7 @@ class _$SetupParametersImpl implements _SetupParameters {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SetupParametersImpl &&
@@ -1130,7 +1130,7 @@ class _$IntentConfigurationImpl implements _IntentConfiguration {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IntentConfigurationImpl &&
@@ -1320,7 +1320,7 @@ class __$$IntentModeImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$IntentModeImpl implements _IntentMode {
   const _$IntentModeImpl(
       {required this.currencyCode,
@@ -1350,7 +1350,7 @@ class _$IntentModeImpl implements _IntentMode {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IntentModeImpl &&
@@ -1636,7 +1636,7 @@ class _$PaymentSheetApplePayImpl implements _PaymentSheetApplePay {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetApplePayImpl &&
@@ -1928,7 +1928,7 @@ class _$PaymentSheetGooglePayImpl implements _PaymentSheetGooglePay {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetGooglePayImpl &&
@@ -2201,7 +2201,7 @@ class _$PaymentSheetAppearanceImpl implements _PaymentSheetAppearance {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetAppearanceImpl &&
@@ -2631,7 +2631,7 @@ class _$PaymentSheetAppearanceColorsImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetAppearanceColorsImpl &&
@@ -2941,7 +2941,7 @@ class _$PaymentSheetShapeImpl implements _PaymentSheetShape {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetShapeImpl &&
@@ -3169,7 +3169,7 @@ class _$PaymentSheetShadowParamsImpl implements _PaymentSheetShadowParams {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetShadowParamsImpl &&
@@ -3348,7 +3348,7 @@ class _$PaymentSheetShadowOffsetImpl implements _PaymentSheetShadowOffset {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetShadowOffsetImpl &&
@@ -3563,7 +3563,7 @@ class _$PaymentSheetPrimaryButtonAppearanceImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetPrimaryButtonAppearanceImpl &&
@@ -3784,7 +3784,7 @@ class _$PaymentSheetPrimaryButtonShapeImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetPrimaryButtonShapeImpl &&
@@ -4010,7 +4010,7 @@ class _$PaymentSheetPrimaryButtonThemeImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetPrimaryButtonThemeImpl &&
@@ -4229,7 +4229,7 @@ class _$PaymentSheetPrimaryButtonThemeColorsImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetPrimaryButtonThemeColorsImpl &&
@@ -4430,7 +4430,7 @@ class _$PresentParametersImpl implements _PresentParameters {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PresentParametersImpl &&
@@ -4600,7 +4600,7 @@ class _$PaymentSheetPresentOptionsImpl implements _PaymentSheetPresentOptions {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetPresentOptionsImpl &&
@@ -4769,7 +4769,7 @@ class _$PaymentSheetPaymentOptionImpl implements _PaymentSheetPaymentOption {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetPaymentOptionImpl &&
@@ -5031,7 +5031,7 @@ class _$BillingDetailsCollectionConfigurationImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BillingDetailsCollectionConfigurationImpl &&
