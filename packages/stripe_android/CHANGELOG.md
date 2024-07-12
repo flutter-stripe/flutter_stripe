@@ -1,7 +1,11 @@
-## 10.1.2
+## 10.3.0
 
 **Fixes**
-- Fix: readable map array type 
+- Fixing elements filtering using provided payment methods
+
+## 10.2.1
+**Fixes**
+- Run method channel messages on UI Thread to prevent crash (#1831)
 
 ## 10.2.0
 

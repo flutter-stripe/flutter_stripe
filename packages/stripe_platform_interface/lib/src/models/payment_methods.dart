@@ -55,7 +55,7 @@ class PaymentMethod with _$PaymentMethod {
 
     @JsonKey(name: 'Upi') required Upi upi,
 
-    /// Containing additional data in case paymentmethod type is UPI.
+    /// Containing additional data in case paymentmethod type is Us bank account.
     @JsonKey(name: 'USBankAccount') required UsBankAccount usBankAccount,
 
     /// Id related to the customer to which this paymentmethod has been saved.
