@@ -1,6 +1,15 @@
 ## 10.2.0
 
 **Features**
+- Add locale change to Android 
+**Fixes**
+- Fix: payment methods can now be filtered on android
+- Fix: on ios payment types like 'ideal' now work due
+
+
+## 10.2.0
+
+**Features**
   - Sync with Stripe [0.38.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.38.0):
     - Adds support for paymentMethodOrder in PaymentSheet, which provides client side sorting of payment methods.
 **Fixes**

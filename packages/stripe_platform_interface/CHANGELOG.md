@@ -1,3 +1,12 @@
+## 10.2.1
+
+**Features**
+- add methods for deferred payment on web
+- add locale change for android payment sheet
+**Fixes**
+- Fix: fix 'setupFutureUsage' value for ios (this makes payment types like 'ideal' usable, would 
+- throw an error otherwise)
+
 ## 10.2.0
 
 **Features**

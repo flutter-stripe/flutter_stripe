@@ -1,3 +1,8 @@
+## 5.2.1
+
+**Features**
+- add methods for deferred payments
+
 ## 5.1.0
 
 **Features**

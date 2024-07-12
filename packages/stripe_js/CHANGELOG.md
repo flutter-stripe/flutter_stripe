@@ -1,3 +1,7 @@
+## 3.4.1
+**Features**
+- add method for deferred payment
+
 ## 3.4.0
 **Features**
 - #1122 Add google pay and apple pay for web

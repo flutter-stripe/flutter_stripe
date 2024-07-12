@@ -2,6 +2,7 @@
 
 **Fixes**
 - Fixing elements filtering using provided payment methods
+- Add locale change
 
 ## 10.2.1
 **Fixes**
