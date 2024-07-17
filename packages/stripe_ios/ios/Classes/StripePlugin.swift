@@ -204,7 +204,7 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
                 resolver: resolver(for: result),
                 rejecter: rejecter(for: result)
             )
-        case "handleNextActionForSetupIntent":
+        case "handleNextActionForSetup":
             return handleNextActionForSetupIntent(call, result: result)
         default:
             result(FlutterMethodNotImplemented)
