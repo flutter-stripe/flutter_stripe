@@ -11,7 +11,7 @@ const String kDebugPCIMessage =
 typedef CardChangedCallback = void Function(CardFieldInputDetails? details);
 typedef CardFocusCallback = void Function(CardFieldName? focusedField);
 
-abstract class CardFieldContext {
+mixin CardFieldContext {
   void focus();
   void blur();
   void clear();

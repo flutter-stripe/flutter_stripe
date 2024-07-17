@@ -4,7 +4,7 @@ version: 3.4.0
 homepage: https://github.com/flutter-stripe/flutter_stripe
 
 environment:
-  sdk: ">=2.17.0 <4.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   freezed_annotation: ^2.2.0
