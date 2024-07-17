@@ -138,7 +138,7 @@ class IntentConfiguration with _$IntentConfiguration {
 
 @freezed
 class IntentMode with _$IntentMode {
-  @JsonSerializable(explicitToJson: true)
+  @JsonSerializable(explicitToJson: true,includeIfNull: false)
   const factory IntentMode({
     required String currencyCode,
     required int amount,
