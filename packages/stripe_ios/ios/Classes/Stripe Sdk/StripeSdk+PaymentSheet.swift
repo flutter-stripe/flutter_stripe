@@ -224,11 +224,9 @@ extension StripeSdk {
             mode = PaymentSheet.IntentConfiguration.Mode.payment(
                 amount: amount,
                 currency: modeParams["currencyCode"] as? String ?? "",
-                setupFutureUsage: { return switch modeParams["setupFutureUsage"] as? String {
-                                                      case "OffSession":  .offSession
-                                                      case "OnSession":  .onSession
-                                                      default:  nil
-                                                  } }(),
+                setupFutureUsage: modeParams["setupFutureUsage"] != nil
+                    ? (modeParams["setupFutureUsage"] as? String == "OffSession" ? .offSession : .onSession)
+                    : nil,
             captureMethod: captureMethod
             )
         } else {
