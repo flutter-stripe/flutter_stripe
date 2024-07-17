@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 
-import '../../../checkout/platforms/stripe_checkout_web.dart';
+import 'stripe_checkout_web.dart';
 
 Future<void> pay() async {
   await WebStripe.instance.confirmPaymentElement(
