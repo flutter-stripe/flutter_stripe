@@ -1,6 +1,6 @@
 import 'dart:developer' as dev;
 import 'dart:js_interop';
-import 'dart:ui' as ui;
+import 'dart:ui_web' as ui;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +54,6 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   CardEditController get controller => widget.controller;
 
   void initState() {
-    // ignore: undefined_prefixed_name
     ui.platformViewRegistry.registerViewFactory(
       'stripe_card',
       (int viewId) => web.HTMLDivElement()
