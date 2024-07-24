@@ -180,6 +180,30 @@ class WebStripe extends StripePlatform {
           ),
         );
       },
+      klarna: (paymentData) {
+        return js.confirmKlarnaPayment(
+          paymentIntentClientSecret,
+          data: stripe_js.ConfirmKlarnaPaymentData(
+            paymentMethod: stripe_js.KlarnaPaymentMethodDetails(
+              billingDetails: stripe_js.BillingDetails(
+                name: paymentData.billingDetails?.name,
+                address: stripe_js.BillingAddress(
+                  line1: paymentData.billingDetails?.address?.line1,
+                  line2: paymentData.billingDetails?.address?.line2,
+                  city: paymentData.billingDetails?.address?.city,
+                  state: paymentData.billingDetails?.address?.state,
+                  country: paymentData.billingDetails?.address?.country,
+                  postalCode:
+                  paymentData.billingDetails?.address?.postalCode,
+                ),
+                email: paymentData.billingDetails?.email,
+                phone: paymentData.billingDetails?.phone,
+              ),
+            ),
+            returnUrl: urlScheme,
+          ),
+        );
+      },
       orElse: () {
         throw WebUnsupportedError();
       },

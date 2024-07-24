@@ -12,7 +12,7 @@ part of 'payment_method_params.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
   switch (json['paymentMethodType']) {
@@ -324,7 +324,7 @@ class _$PaymentMethodParamsCardImpl implements _PaymentMethodParamsCard {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsCardImpl &&
@@ -628,7 +628,7 @@ class _$PaymentMethodParamsCardWithTokenImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsCardWithTokenImpl &&
@@ -936,7 +936,7 @@ class _$PaymentMethodParamsCardWithMethodIdImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsCardWithMethodIdImpl &&
@@ -1241,7 +1241,7 @@ class _$PaymentMethodParamsAlipayImpl implements _PaymentMethodParamsAlipay {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsAlipayImpl &&
@@ -1543,7 +1543,7 @@ class _$PaymentMethodParamsIdealImpl implements _PaymentMethodParamsIdeal {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsIdealImpl &&
@@ -1845,7 +1845,7 @@ class _$PaymentMethodParamsAubecsImpl implements _PaymentMethodParamsAubecs {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsAubecsImpl &&
@@ -2148,7 +2148,7 @@ class _$PaymentMethodParamsBankContactImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsBankContactImpl &&
@@ -2452,7 +2452,7 @@ class _$PaymentMethodParamsGiroPayImpl implements _PaymentMethodParamsGiroPay {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsGiroPayImpl &&
@@ -2753,7 +2753,7 @@ class _$PaymentMethodParamsEpsImpl implements _PaymentMethodParamsEps {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsEpsImpl &&
@@ -3054,7 +3054,7 @@ class _$PaymentMethodParamsAffirmImpl implements _PaymentMethodParamsAffirm {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsAffirmImpl &&
@@ -3355,7 +3355,7 @@ class _$PaymentMethodParamsPayImpl implements _PaymentMethodParamsPay {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsPayImpl &&
@@ -3656,7 +3656,7 @@ class _$PaymentMethodParamsP24Impl implements _PaymentMethodParamsP24 {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsP24Impl &&
@@ -3958,7 +3958,7 @@ class _$PaymentMethodParamsFpxImpl implements _PaymentMethodParamsFpx {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsFpxImpl &&
@@ -4262,7 +4262,7 @@ class _$PaymentMethodParamsSepaDebitImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsSepaDebitImpl &&
@@ -4565,7 +4565,7 @@ class _$PaymentMethodParamsSofortImpl implements _PaymentMethodParamsSofort {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsSofortImpl &&
@@ -4866,7 +4866,7 @@ class _$PaymentMethodParamsAfterpayClearpayImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsAfterpayClearpayImpl &&
@@ -5169,7 +5169,7 @@ class _$PaymentMethodParamsOxxoImpl implements _PaymentMethodParamsOxxo {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsOxxoImpl &&
@@ -5473,7 +5473,7 @@ class _$PaymentMethodParamsKlarnaImpl implements _PaymentMethodParamsKlarna {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsKlarnaImpl &&
@@ -5780,7 +5780,7 @@ class _$PaymentMethodParamsPayPalImpl implements _PaymentMethodParamsPayPal {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsPayPalImpl &&
@@ -6087,7 +6087,7 @@ class _$PaymentMethodParamsUsBankAccountImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodParamsUsBankAccountImpl &&
@@ -6473,7 +6473,7 @@ class _$PaymentMethodDataImpl implements _PaymentMethodData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataImpl &&
@@ -6706,7 +6706,7 @@ class _$PaymentMethodDataCardFromTokenImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataCardFromTokenImpl &&
@@ -6972,7 +6972,7 @@ class _$PaymentMethodDataCardFromMethodImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataCardFromMethodImpl &&
@@ -7219,7 +7219,7 @@ class _$PaymentMethodDataIdealImpl implements _PaymentMethodDataIdeal {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataIdealImpl &&
@@ -7456,7 +7456,7 @@ class _$PaymentMethodDataAubecsImpl implements _PaymentMethodDataAubecs {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataAubecsImpl &&
@@ -7695,7 +7695,7 @@ class _$PaymentMethodDataFpxImpl implements _PaymentMethodDataFpx {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataFpxImpl &&
@@ -7933,7 +7933,7 @@ class _$PaymentMethodDataSofortImpl implements _PaymentMethodDataSofort {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataSofortImpl &&
@@ -8168,7 +8168,7 @@ class _$PaymentMethodDataSepaImpl implements _PaymentMethodDataSepa {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataSepaImpl &&
@@ -8377,7 +8377,7 @@ class _$PaymentMethodDataAfterPayImpl implements _PaymentMethodDataAfterPay {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataAfterPayImpl &&
@@ -8672,7 +8672,7 @@ class _$PaymentMethodDataUsBankImpl implements _PaymentMethodDataUsBank {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodDataUsBankImpl &&

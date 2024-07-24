@@ -14,7 +14,7 @@ _$SetupIntentImpl _$$SetupIntentImplFromJson(Map json) => _$SetupIntentImpl(
       cancellationReason: $enumDecodeNullable(
           _$SetupIntentCancellationReasonEnumMap, json['cancellation_reason']),
       clientSecret: json['client_secret'] as String,
-      created: json['created'] as int?,
+      created: (json['created'] as num?)?.toInt(),
       customer: json['customer'] as String?,
       description: json['description'] as String?,
       flowDirections: (json['flow_directions'] as List<dynamic>?)
