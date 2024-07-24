@@ -98,7 +98,7 @@ class CardFormField extends StatefulWidget {
   _CardFormFieldState createState() => _CardFormFieldState();
 }
 
-abstract class CardFormFieldContext {
+mixin CardFormFieldContext {
   void focus();
   void blur();
 

@@ -120,17 +120,18 @@ Map<String, dynamic> _$$IntentConfigurationImplToJson(
       'paymentMethodTypes': instance.paymentMethodTypes,
     };
 
-_$IntentModeImpl _$$IntentModeImplFromJson(Map<String, dynamic> json) =>
-    _$IntentModeImpl(
+_$PaymentModeImpl _$$PaymentModeImplFromJson(Map<String, dynamic> json) =>
+    _$PaymentModeImpl(
       currencyCode: json['currencyCode'] as String,
-      amount: (json['amount'] as num).toInt(),
+      amount: json['amount'] as int,
       setupFutureUsage: $enumDecodeNullable(
           _$IntentFutureUsageEnumMap, json['setupFutureUsage']),
       captureMethod:
           $enumDecodeNullable(_$CaptureMethodEnumMap, json['captureMethod']),
+      $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$IntentModeImplToJson(_$IntentModeImpl instance) {
+Map<String, dynamic> _$$PaymentModeImplToJson(_$PaymentModeImpl instance) {
   final val = <String, dynamic>{
     'currencyCode': instance.currencyCode,
     'amount': instance.amount,
@@ -145,6 +146,7 @@ Map<String, dynamic> _$$IntentModeImplToJson(_$IntentModeImpl instance) {
   writeNotNull('setupFutureUsage',
       _$IntentFutureUsageEnumMap[instance.setupFutureUsage]);
   writeNotNull('captureMethod', _$CaptureMethodEnumMap[instance.captureMethod]);
+  val['runtimeType'] = instance.$type;
   return val;
 }
 
@@ -159,6 +161,22 @@ const _$CaptureMethodEnumMap = {
   CaptureMethod.AutomaticAsync: 'AutomaticAsync',
   CaptureMethod.Unknown: 'Unknown',
 };
+
+_$SetupModeImpl _$$SetupModeImplFromJson(Map<String, dynamic> json) =>
+    _$SetupModeImpl(
+      currencyCode: json['currencyCode'] as String?,
+      setupFutureUsage:
+          $enumDecode(_$IntentFutureUsageEnumMap, json['setupFutureUsage']),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$SetupModeImplToJson(_$SetupModeImpl instance) =>
+    <String, dynamic>{
+      'currencyCode': instance.currencyCode,
+      'setupFutureUsage':
+          _$IntentFutureUsageEnumMap[instance.setupFutureUsage]!,
+      'runtimeType': instance.$type,
+    };
 
 _$PaymentSheetApplePayImpl _$$PaymentSheetApplePayImplFromJson(
         Map<String, dynamic> json) =>
@@ -432,7 +450,7 @@ Map<String, dynamic> _$$PresentParametersImplToJson(
 _$PaymentSheetPresentOptionsImpl _$$PaymentSheetPresentOptionsImplFromJson(
         Map<String, dynamic> json) =>
     _$PaymentSheetPresentOptionsImpl(
-      timeout: (json['timeout'] as num?)?.toInt(),
+      timeout: json['timeout'] as int?,
     );
 
 Map<String, dynamic> _$$PaymentSheetPresentOptionsImplToJson(

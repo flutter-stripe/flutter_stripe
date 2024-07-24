@@ -137,9 +137,9 @@ class IntentConfiguration with _$IntentConfiguration {
 }
 
 @freezed
-class IntentMode with _$IntentMode {
-  @JsonSerializable(explicitToJson: true,includeIfNull: false)
-  const factory IntentMode({
+sealed class IntentMode with _$IntentMode {
+  @JsonSerializable(explicitToJson: true, includeIfNull: false)
+  const factory IntentMode.paymentMode({
     required String currencyCode,
     required int amount,
 
@@ -148,7 +148,15 @@ class IntentMode with _$IntentMode {
 
     /// Capture method for the future payment intent
     CaptureMethod? captureMethod,
-  }) = _IntentMode;
+  }) = _PaymentMode;
+
+  @JsonSerializable(explicitToJson: true)
+  const factory IntentMode.setupMode({
+    String? currencyCode,
+
+    /// Data related to the future payment intent
+    required IntentFutureUsage setupFutureUsage,
+  }) = _SetupMode;
 
   factory IntentMode.fromJson(Map<String, dynamic> json) =>
       _$IntentModeFromJson(json);
