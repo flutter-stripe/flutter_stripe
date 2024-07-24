@@ -86,10 +86,6 @@ class KlarnaPaymentMethodDetails
   const factory KlarnaPaymentMethodDetails.id(String id) =
   _IdKlarnaPaymentMethodDetails;
 
-  /// Use stripe.confirmCardPayment with payment data from an Element by
-  /// passing a card or cardNumber Element as payment_method[card] in the
-  /// data argument.
-  ///
   /// The new PaymentMethod will be created with data collected by the
   /// Element and will be used to confirm the PaymentIntent.
   @FreezedUnionValue('klarna')
