@@ -61,7 +61,7 @@ class _WebPlatformPayButtonState extends State<WebPlatformPayButton> {
   _initButton() {
     ambiguate(WidgetsBinding.instance)?.addPostFrameCallback((timeStamp) {
       PaymentRequest paymentRequest = WebStripe.js
-          .paymentRequest((widget.paymentRequestCreateOptions).toJS());
+          .paymentRequest((widget.paymentRequestCreateOptions).toJS()).toPaymentRequest;
 
       paymentRequest.canMakePayment().then((value) {
         WebStripe.js.elements().createPaymentRequestButton(

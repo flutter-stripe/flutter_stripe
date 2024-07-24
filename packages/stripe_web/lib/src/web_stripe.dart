@@ -549,7 +549,7 @@ class WebStripe extends StripePlatform {
   }) {
     final paymentRequest = js.paymentRequest((paymentRequestOptions ??
             PlatformPayWebPaymentRequestCreateOptions.defaultOptions)
-        .toJS());
+        .toJS()).toPaymentRequest;
 
     return paymentRequest.isPaymentAvailable;
   }
@@ -580,7 +580,7 @@ class WebStripe extends StripePlatform {
 
     Completer<PlatformPayPaymentMethod> completer = Completer();
     stripe_js.PaymentRequest paymentRequest =
-        js.paymentRequest(params.options.toJS());
+        js.paymentRequest(params.options.toJS()).toPaymentRequest;
     paymentRequest.onPaymentMethod((response) {
       completer.complete(PlatformPayPaymentMethod(
           paymentMethod: response.paymentMethod.parse()));

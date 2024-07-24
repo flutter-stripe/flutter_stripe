@@ -3,16 +3,6 @@ import 'package:stripe_js/src/js/utils/parse_intent_response.dart';
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 
-extension PaymentRequestExtension on Stripe {
-  _JS get _js => this as _JS;
-
-  PaymentRequest paymentRequest(
-    PaymentRequestCreateOptions options,
-  ) {
-    return PaymentRequest.of(_js.paymentRequest(options));
-  }
-}
-
 class PaymentRequest {
   final JsPaymentRequest _js;
 
@@ -53,14 +43,6 @@ class PaymentResponse {
 
 @anonymous
 @JS()
-abstract class _JS {
-  external JsPaymentRequest paymentRequest(
-    PaymentRequestCreateOptions options,
-  );
-}
-
-@anonymous
-@JS()
 abstract class JsPaymentResponse {
   external dynamic get paymentMethod;
   external String get walletName;
@@ -74,6 +56,11 @@ abstract class JsPaymentRequest {
   external Promise<CanMakePaymentResponse?> canMakePayment();
   external void show();
   external void on(String event, dynamic callback);
+}
+
+extension JsPaymentRequestExtension on JsPaymentRequest {
+  PaymentRequest get toPaymentRequest =>
+      PaymentRequest.of(this);
 }
 
 @anonymous
