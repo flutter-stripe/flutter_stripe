@@ -1,3 +1,9 @@
+## 11.0.0
+
+ - a
+
+ - **FIX**: parse unknown error (#1729).
+
 ## 10.2.0
 
 **Features**
