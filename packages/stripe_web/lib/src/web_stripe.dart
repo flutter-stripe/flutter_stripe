@@ -543,13 +543,35 @@ class WebStripe extends StripePlatform {
   }
 
   @override
+  Future<AvailableMobilePayOptions> availableMobilePayOptions({
+    IsGooglePaySupportedParams? params,
+    PlatformPayWebPaymentRequestCreateOptions? paymentRequestOptions,
+  }) async {
+    final paymentRequest = js
+        .paymentRequest((paymentRequestOptions ??
+                PlatformPayWebPaymentRequestCreateOptions.defaultOptions)
+            .toJS())
+        .toPaymentRequest;
+
+    final paymentOptions = await paymentRequest.canMakePayment();
+
+    return AvailableMobilePayOptions(
+      googlePay: paymentOptions?.googlePay ?? false,
+      applePay: paymentOptions?.applePay ?? false,
+      link: paymentOptions?.link ?? false,
+    );
+  }
+
+  @override
   Future<bool> isPlatformPaySupported({
     IsGooglePaySupportedParams? params,
     PlatformPayWebPaymentRequestCreateOptions? paymentRequestOptions,
   }) {
-    final paymentRequest = js.paymentRequest((paymentRequestOptions ??
-            PlatformPayWebPaymentRequestCreateOptions.defaultOptions)
-        .toJS()).toPaymentRequest;
+    final paymentRequest = js
+        .paymentRequest((paymentRequestOptions ??
+                PlatformPayWebPaymentRequestCreateOptions.defaultOptions)
+            .toJS())
+        .toPaymentRequest;
 
     return paymentRequest.isPaymentAvailable;
   }

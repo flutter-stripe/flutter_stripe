@@ -13,6 +13,7 @@ import 'package:stripe_platform_interface/src/models/wallet.dart';
 import 'package:stripe_platform_interface/src/result_parser.dart';
 
 import 'models/app_info.dart';
+import 'models/available_mobile_pay_options.dart';
 import 'models/card_details.dart';
 import 'models/errors.dart';
 import 'models/payment_intents.dart';
@@ -428,6 +429,28 @@ class MethodChannelStripe extends StripePlatform {
         .invokeMethod('isGooglePaySupported', {'params': params.toJson()});
 
     return isSupported ?? false;
+  }
+
+  @override
+  Future<AvailableMobilePayOptions> availableMobilePayOptions({
+    IsGooglePaySupportedParams? params,
+    PlatformPayWebPaymentRequestCreateOptions? paymentRequestOptions,
+  }) async {
+    final bool isSupported;
+    if (params == null) {
+      isSupported =
+          await _methodChannel.invokeMethod('isPlatformPaySupported', {
+        'params': {},
+      });
+    } else {
+      isSupported = await _methodChannel
+          .invokeMethod('isPlatformPaySupported', {'params': params.toJson()});
+    }
+
+    return AvailableMobilePayOptions(
+      googlePay: isSupported && _platformIsAndroid,
+      applePay: isSupported && _platformIsIos,
+    );
   }
 
   @override

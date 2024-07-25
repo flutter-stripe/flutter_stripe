@@ -141,6 +141,18 @@ class Stripe {
     return isSupported;
   }
 
+  Future<AvailableMobilePayOptions> availableMobilePayOptions({
+    IsGooglePaySupportedParams? googlePay,
+    PlatformPayWebPaymentRequestCreateOptions? webPaymentRequestCreateOptions,
+  }) async {
+    await _awaitForSettings();
+
+    return await _platform.availableMobilePayOptions(
+      params: googlePay,
+      paymentRequestOptions: webPaymentRequestCreateOptions,
+    );
+  }
+
   /// Laucnhes the relevant native wallsheet (Apple Pay on iOS and Google Pay on Android)
   /// in order to create a payment intent
   ///

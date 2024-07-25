@@ -108,6 +108,11 @@ abstract class StripePlatform extends PlatformInterface {
 
   Future<IsCardInWalletResult> isCardInWallet(String cardLastFour);
 
+  Future<AvailableMobilePayOptions> availableMobilePayOptions({
+    IsGooglePaySupportedParams? params,
+    PlatformPayWebPaymentRequestCreateOptions? paymentRequestOptions,
+  });
+
   /// Check if either google pay or apple pay  is supported on device.
   Future<bool> isPlatformPaySupported({
     IsGooglePaySupportedParams? params,
