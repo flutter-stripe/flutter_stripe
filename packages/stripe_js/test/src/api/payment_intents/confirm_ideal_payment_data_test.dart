@@ -1,7 +1,9 @@
 import 'package:stripe_js/stripe_api.dart';
 import 'package:test/test.dart';
 
-class FakeElement extends Element {}
+extension type FakeElement._(Object o) implements Element {
+  FakeElement() : o = 1;
+}
 
 void main() {
   group('ConfirmIdealPaymentData', () {

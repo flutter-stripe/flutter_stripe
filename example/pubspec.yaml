@@ -4,7 +4,7 @@ version: 1.0.0
 publish_to: 'none'
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=3.3.0 <4.0.0"
   flutter: ">=3.0.0"
 
 dependencies:
@@ -16,7 +16,7 @@ dependencies:
   http: ^1.1.0
   font_awesome_flutter: ^10.6.0
   platform: ^3.0.0
-
+  web: ^0.5.1
 
 dev_dependencies:
   integration_test:

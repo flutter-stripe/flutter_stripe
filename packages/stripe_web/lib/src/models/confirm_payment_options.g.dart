@@ -6,17 +6,17 @@ part of 'confirm_payment_options.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ConfirmPaymentElementOptions _$$_ConfirmPaymentElementOptionsFromJson(
+_$ConfirmPaymentElementOptionsImpl _$$ConfirmPaymentElementOptionsImplFromJson(
         Map json) =>
-    _$_ConfirmPaymentElementOptions(
+    _$ConfirmPaymentElementOptionsImpl(
       confirmParams: ConfirmPaymentParams.fromJson(
           Map<String, dynamic>.from(json['confirmParams'] as Map)),
       redirect: $enumDecodeNullable(
           _$PaymentConfirmationRedirectEnumMap, json['redirect']),
     );
 
-Map<String, dynamic> _$$_ConfirmPaymentElementOptionsToJson(
-    _$_ConfirmPaymentElementOptions instance) {
+Map<String, dynamic> _$$ConfirmPaymentElementOptionsImplToJson(
+    _$ConfirmPaymentElementOptionsImpl instance) {
   final val = <String, dynamic>{
     'confirmParams': instance.confirmParams.toJson(),
   };
@@ -34,5 +34,5 @@ Map<String, dynamic> _$$_ConfirmPaymentElementOptionsToJson(
 
 const _$PaymentConfirmationRedirectEnumMap = {
   PaymentConfirmationRedirect.always: 'always',
-  PaymentConfirmationRedirect.ifRequired: 'ifRequired',
+  PaymentConfirmationRedirect.ifRequired: 'if_required',
 };

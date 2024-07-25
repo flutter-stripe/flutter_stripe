@@ -1,11 +1,9 @@
-import 'package:js/js.dart';
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 import '../utils/utils.dart';
+import 'dart:js_interop';
 
 extension ExtensionConfirmSepaDebitSetup on Stripe {
-  _JS get js => this as _JS;
-
   /// Use stripe.confirmSepaDebitSetup in the SEPA Direct Debit with Setup Intents flow when the customer submits your payment form. When called, it will confirm the SetupIntent with data you provide. Note that there are some additional requirements to this flow that are not covered in this reference. Refer to our integration guide for more details.
   /// When you confirm a SetupIntent, it needs to have an attached PaymentMethod.
   /// In addition to confirming the SetupIntent, this method can automatically
@@ -19,18 +17,15 @@ extension ExtensionConfirmSepaDebitSetup on Stripe {
     String clientSecret, {
     ConfirmSepaDebitSetupData? data,
   }) {
-    final jsData = dartify(data?.toJson() ?? {});
-    return parseSetupIntentResponse(
-      js.confirmSepaDebitSetup(clientSecret, jsData),
-    );
+    final jsData = (data?.toJson() ?? {}).jsify();
+    return _confirmSepaDebitSetup(clientSecret, jsData)
+        .toDart
+        .then((response) => response.toDart);
   }
-}
 
-@anonymous
-@JS()
-abstract class _JS {
-  external Promise<dynamic> confirmSepaDebitSetup(
+  @JS('confirmSepaDebitSetup')
+  external JSPromise<JSSetupIntentResponse> _confirmSepaDebitSetup(
     String clientSecret, [
-    dynamic data,
+    JSAny? data,
   ]);
 }

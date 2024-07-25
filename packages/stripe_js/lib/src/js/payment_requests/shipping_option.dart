@@ -1,8 +1,6 @@
-import 'package:js/js.dart';
+import 'dart:js_interop';
 
-@anonymous
-@JS()
-abstract class ShippingOption {
+extension type ShippingOption._(JSObject o) implements JSObject {
   external factory ShippingOption({
     required String id,
     required String label,

@@ -1,11 +1,9 @@
-import 'package:js/js.dart';
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 import '../utils/utils.dart';
+import 'dart:js_interop';
 
 extension ExtensionHandleCardAction on Stripe {
-  _JS get js => this as _JS;
-
   /// Use stripe.handleCardAction in the Payment Intents API manual confirmation
   /// flow to handle a PaymentIntent with the requires_action status.
   /// It will throw an error if the PaymentIntent has a different status.
@@ -24,12 +22,11 @@ extension ExtensionHandleCardAction on Stripe {
   /// Ensure that your form is accessible by ensuring that success or
   /// error messages are clearly read out.
   Future<PaymentIntentResponse> handleCardAction(String clientSecret) {
-    return parseIntentResponse(js.handleCardAction(clientSecret));
+    return _handleCardAction(clientSecret)
+        .toDart
+        .then((response) => response.toDart);
   }
-}
 
-@anonymous
-@JS()
-abstract class _JS {
-  external Promise<dynamic> handleCardAction(dynamic clientSecret);
+  @JS('handleCardAction')
+  external JSPromise<JSIntentResponse> _handleCardAction(String clientSecret);
 }
