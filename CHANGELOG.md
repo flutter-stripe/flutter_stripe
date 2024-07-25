@@ -15,6 +15,43 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`stripe_js` - `v6.0.0`](#stripe_js---v600)
+ - [`flutter_stripe_web` - `v6.0.0-dev.1`](#flutter_stripe_web---v600-dev1)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v6.0.0-dev.1`
+
+---
+
+#### `stripe_js` - `v6.0.0`
+
+ - aa
+
+ - **FIX**: invalid argument `requires_capture` on web (#1431).
+ - **FIX**: PaymentConfirmationRedirect enum value (#1221).
+ - **FIX**: confirmation redirect and stripeAccountId (#1201).
+ - **FEAT**: release versions (#1283).
+ - **FEAT**: web fixes and features (#1270).
+ - **FEAT**: release 9.2.1 (#1262).
+ - **FEAT**: tokens for web (#1079).
+ - **FEAT**: stripe js (#1052).
+
+
+## 2024-07-25
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_ios` - `v11.0.0`](#stripe_ios---v1100)
  - [`flutter_stripe` - `v10.2.1`](#flutter_stripe---v1021)
 
