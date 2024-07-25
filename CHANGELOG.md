@@ -15,6 +15,46 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe_web` - `v6.0.0`](#flutter_stripe_web---v600)
+
+---
+
+#### `flutter_stripe_web` - `v6.0.0`
+
+ - aa
+
+ - **FIX**: Apply dynamic Stripe account ID to confirmPayment method in WebStripe (#1798).
+ - **FIX**: wait html element load (#1730).
+ - **FIX**: [WEB]Issue of saving/not saving payment information for future. #1673 (#1674).
+ - **FIX**: Respect the font color for CardField on web platforms (#1658).
+ - **FIX**: invalid argument `requires_capture` on web (#1431).
+ - **FIX**: confirmation redirect and stripeAccountId (#1201).
+ - **FIX**: apple pay (#1202).
+ - **FIX**: timeout payment sheet (#1161).
+ - **FIX**: payment intent error in web (#1010).
+ - **FIX**: web_checkout (#973).
+ - **FIX**: implemented handleURLCallback method for iOS iDeal payment. (#939).
+ - **FEAT**: add retrieveSetupIntent (#1302).
+ - **FEAT**: release versions (#1283).
+ - **FEAT**: web fixes and features (#1270).
+ - **FEAT**: release 9.2.1 (#1262).
+ - **FEAT**: tokens for web (#1079).
+ - **FEAT**: stripe js (#1052).
+ - **FEAT**: update checkout (#582).
+
+
+## 2024-07-25
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_js` - `v6.0.0`](#stripe_js---v600)
  - [`flutter_stripe_web` - `v6.0.0-dev.1`](#flutter_stripe_web---v600-dev1)
 
