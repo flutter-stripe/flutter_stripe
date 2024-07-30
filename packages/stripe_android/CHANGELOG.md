@@ -1,3 +1,15 @@
+## 11.0.0
+**Breaking changes**
+- Add support for intentmode setupMode. If you used `IntentMode before` change it to `IntentMode.paymentMode` instead.
+- This library now only supports Dart sdk 3.0.0 for mobile and Dart sdk 3.3.0 for web and higher.
+
+**Features**
+- Sync with Stripe [0.38.3](https://github.com/stripe/stripe-react-native/releases/tag/v0.38.3). 
+
+**Fixes** 
+- #1729 parse unknown error.
+- #1837 fix for deferred payment methods.
+
 ## 10.2.1
 **Fixes**
 - Run method channel messages on UI Thread to prevent crash (#1831)

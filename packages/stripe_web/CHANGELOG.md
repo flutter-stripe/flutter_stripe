@@ -1,3 +1,21 @@
+## 6.0.0
+**Breaking changes**
+- Converted the library to the new js interop so this library can be compiled to WASM.
+- This library requires Dart sdk 3.3.0 and higher.
+
+**Features**
+- Payment element add support for Apple pay elements.
+- Payment element add support for payment method order
+
+## 6.0.0
+**Breaking changes**
+- Converted the library to the new js interop so this library can be compiled to WASM.
+- This requires Dart sdk 3.3.0 and higher.
+
+**Features**
+- Payment element add support for Apple pay elements.
+- Payment element add support for payment method order
+
 ## 5.1.0
 
 **Features**
