@@ -102,7 +102,8 @@ class ExpressCheckoutElementState extends State<ExpressCheckoutElement> {
     super.initState();
   }
 
-  js.PaymentElement? get element => WebStripe.element as js.PaymentElement?;
+  js.ExpressCheckoutElement? get element =>
+      WebStripe.element as js.ExpressCheckoutElement?;
   set element(js.StripeElement? value) => WebStripe.element = value;
 
   js.StripeElements? get elements => WebStripe.elements;
@@ -125,7 +126,7 @@ class ExpressCheckoutElementState extends State<ExpressCheckoutElement> {
   //   return;
   // }
 
-  final FocusNode _focusNode = FocusNode(debugLabel: 'CardField');
+  final FocusNode _focusNode = FocusNode(debugLabel: 'ExpressField');
   FocusNode get _effectiveNode => widget.focusNode ?? _focusNode;
 
   @override

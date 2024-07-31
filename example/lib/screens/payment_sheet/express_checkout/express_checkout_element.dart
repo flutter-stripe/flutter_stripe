@@ -66,9 +66,7 @@ class _ThemeCardExampleState extends State<ExpressCheckoutElementExample> {
       },
       body: json.encode({
         'currency': 'usd',
-        'amount': 1099,
-        'payment_method_types': ['card'],
-        'request_three_d_secure': 'any',
+        'amount': 5099,
       }),
     );
     return json.decode(response.body)['clientSecret'];
