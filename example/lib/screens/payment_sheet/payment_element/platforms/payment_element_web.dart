@@ -1,7 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
+import 'package:web/web.dart' as web;
 
-import '../../../checkout/platforms/stripe_checkout_web.dart';
+String getUrlPort() => web.window.location.port;
+
+String getReturnUrl() => web.window.location.href;
 
 Future<void> pay() async {
   await WebStripe.instance.confirmPaymentElement(

@@ -17,7 +17,7 @@ _$TokenImpl _$$TokenImplFromJson(Map json) => _$TokenImpl(
           ? null
           : CardToken.fromJson(Map<String, dynamic>.from(json['card'] as Map)),
       clientIP: json['client_ip'] as String?,
-      created: json['created'] as int?,
+      created: (json['created'] as num?)?.toInt(),
       livemode: json['livemode'] as bool? ?? true,
       type: $enumDecode(_$TokenTypeEnumMap, json['type']),
       used: json['used'] as bool? ?? false,
@@ -129,8 +129,8 @@ _$CardTokenImpl _$$CardTokenImplFromJson(Map json) => _$CardTokenImpl(
       cvcCheck:
           $enumDecodeNullable(_$VerificationCheckEnumMap, json['cvc_check']),
       dynamicLast4: json['dynamic_last4'] as String?,
-      expMonth: json['exp_month'] as int?,
-      expYear: json['exp_year'] as int?,
+      expMonth: (json['exp_month'] as num?)?.toInt(),
+      expYear: (json['exp_year'] as num?)?.toInt(),
       fingerprint: json['fingerprint'] as String?,
       funding: $enumDecodeNullable(_$CardFundingTypeEnumMap, json['funding']),
       last4: json['last4'] as String?,

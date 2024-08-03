@@ -1,7 +1,25 @@
-## 5.2.1
+## 6.0.1
 
 **Features**
 - add methods for deferred payments
+
+## 6.0.0
+**Breaking changes**
+- Converted the library to the new js interop so this library can be compiled to WASM.
+- This library requires Dart sdk 3.3.0 and higher.
+
+**Features**
+- Payment element add support for Apple pay elements.
+- Payment element add support for payment method order
+
+## 6.0.0
+**Breaking changes**
+- Converted the library to the new js interop so this library can be compiled to WASM.
+- This requires Dart sdk 3.3.0 and higher.
+
+**Features**
+- Payment element add support for Apple pay elements.
+- Payment element add support for payment method order
 
 ## 5.1.0
 

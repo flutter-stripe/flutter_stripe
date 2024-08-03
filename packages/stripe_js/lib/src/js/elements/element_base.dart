@@ -1,21 +1,14 @@
-import 'package:js/js.dart';
 import 'package:stripe_js/stripe_api.dart';
+import 'dart:js_interop';
+import '../utils/utils.dart';
 
 typedef EventCallback<T> = void Function(T event);
 
-@anonymous
-@JS()
-abstract class StripeElement implements Element {
+extension type const StripeElement(JSObject o) implements JSObject, Element {
   /// HTMLElement keeps giving this error for some reason:
   /// Cannot find name 'HTMLElement'
-  external void mount(dynamic domElement);
-  /*external void on('blur'|'change'|'focus'|'ready' event, handler handler);*/
-  /*external void on('click' event, void handler({ preventDefault: () => void } response));*/
+  external void mount(JSAny domElement);
 
-  /*external void addEventJsArrayener('blur'|'change'|'focus'|'ready' event, handler handler);*/
-  /*external void addEventJsArrayener('click' event, void handler({ preventDefault: () => void } response));*/
-  external void addEventJsArrayener(
-      String event, EventCallback<dynamic> handler);
   external void focus();
   external void blur();
   external void clear();
@@ -23,25 +16,13 @@ abstract class StripeElement implements Element {
   external void destroy();
 
   @JS("on")
-  external void on(String event, EventCallback<dynamic> handler);
-}
+  external void _on(String event, JSExportedDartFunction handler);
 
-extension ElementExtension on StripeElement {
-  void onFocus(EventCallback<dynamic> onEvent) {
-    return on("focus", allowInterop((e) {
-      onEvent(e);
-    }));
+  void on(String event, EventCallback<JSMap> handler) {
+    return _on(event, handler.toJS);
   }
 
-  void onReady(EventCallback<dynamic> onEvent) {
-    return on("ready", allowInterop((e) {
-      onEvent(e);
-    }));
-  }
-
-  void onBlur(EventCallback<dynamic> onEvent) {
-    return on("blur", allowInterop((e) {
-      onEvent(e);
-    }));
-  }
+  void onFocus(EventCallback<void> onEvent) => on("focus", onEvent);
+  void onReady(EventCallback<void> onEvent) => on("ready", onEvent);
+  void onBlur(EventCallback<void> onEvent) => on("blur", onEvent);
 }

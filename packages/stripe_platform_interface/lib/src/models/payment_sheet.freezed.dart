@@ -12,7 +12,7 @@ part of 'payment_sheet.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 SetupPaymentSheetParameters _$SetupPaymentSheetParametersFromJson(
     Map<String, dynamic> json) {
@@ -119,13 +119,6 @@ mixin _$SetupPaymentSheetParameters {
   @JsonKey(toJson: _cardBrandListToJson)
   List<CardBrand>? get preferredNetworks => throw _privateConstructorUsedError;
 
-  /// set the payment sheet language
-  String? get languageCode => throw _privateConstructorUsedError;
-
-  /// this can only be used with [languageCode] to give a different
-  /// variation of a language
-  String? get countryCode => throw _privateConstructorUsedError;
-
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SetupPaymentSheetParametersCopyWith<SetupPaymentSheetParameters>
@@ -161,9 +154,8 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
       BillingDetailsCollectionConfiguration?
           billingDetailsCollectionConfiguration,
       String? removeSavedPaymentMethodMessage,
-      @JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks,
-      String? languageCode,
-      String? countryCode});
+      @JsonKey(toJson: _cardBrandListToJson)
+      List<CardBrand>? preferredNetworks});
 
   $IntentConfigurationCopyWith<$Res>? get intentConfiguration;
   $PaymentSheetApplePayCopyWith<$Res>? get applePay;
@@ -208,8 +200,6 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
     Object? billingDetailsCollectionConfiguration = freezed,
     Object? removeSavedPaymentMethodMessage = freezed,
     Object? preferredNetworks = freezed,
-    Object? languageCode = freezed,
-    Object? countryCode = freezed,
   }) {
     return _then(_value.copyWith(
       customFlow: null == customFlow
@@ -295,14 +285,6 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
           ? _value.preferredNetworks
           : preferredNetworks // ignore: cast_nullable_to_non_nullable
               as List<CardBrand>?,
-      languageCode: freezed == languageCode
-          ? _value.languageCode
-          : languageCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      countryCode: freezed == countryCode
-          ? _value.countryCode
-          : countryCode // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 
@@ -412,9 +394,8 @@ abstract class _$$SetupParametersImplCopyWith<$Res>
       BillingDetailsCollectionConfiguration?
           billingDetailsCollectionConfiguration,
       String? removeSavedPaymentMethodMessage,
-      @JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks,
-      String? languageCode,
-      String? countryCode});
+      @JsonKey(toJson: _cardBrandListToJson)
+      List<CardBrand>? preferredNetworks});
 
   @override
   $IntentConfigurationCopyWith<$Res>? get intentConfiguration;
@@ -462,8 +443,6 @@ class __$$SetupParametersImplCopyWithImpl<$Res>
     Object? billingDetailsCollectionConfiguration = freezed,
     Object? removeSavedPaymentMethodMessage = freezed,
     Object? preferredNetworks = freezed,
-    Object? languageCode = freezed,
-    Object? countryCode = freezed,
   }) {
     return _then(_$SetupParametersImpl(
       customFlow: null == customFlow
@@ -549,14 +528,6 @@ class __$$SetupParametersImplCopyWithImpl<$Res>
           ? _value._preferredNetworks
           : preferredNetworks // ignore: cast_nullable_to_non_nullable
               as List<CardBrand>?,
-      languageCode: freezed == languageCode
-          ? _value.languageCode
-          : languageCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      countryCode: freezed == countryCode
-          ? _value.countryCode
-          : countryCode // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -586,9 +557,7 @@ class _$SetupParametersImpl implements _SetupParameters {
       this.billingDetailsCollectionConfiguration,
       this.removeSavedPaymentMethodMessage,
       @JsonKey(toJson: _cardBrandListToJson)
-      final List<CardBrand>? preferredNetworks,
-      this.languageCode,
-      this.countryCode})
+      final List<CardBrand>? preferredNetworks})
       : _paymentMethodOrder = paymentMethodOrder,
         _preferredNetworks = preferredNetworks;
 
@@ -736,22 +705,13 @@ class _$SetupParametersImpl implements _SetupParameters {
     return EqualUnmodifiableListView(value);
   }
 
-  /// set the payment sheet language
-  @override
-  final String? languageCode;
-
-  /// this can only be used with [languageCode] to give a different
-  /// variation of a language
-  @override
-  final String? countryCode;
-
   @override
   String toString() {
-    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, intentConfiguration: $intentConfiguration, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, allowsRemovalOfLastSavedPaymentMethod: $allowsRemovalOfLastSavedPaymentMethod, paymentMethodOrder: $paymentMethodOrder, returnURL: $returnURL, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, preferredNetworks: $preferredNetworks, languageCode: $languageCode, countryCode: $countryCode)';
+    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, intentConfiguration: $intentConfiguration, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, allowsRemovalOfLastSavedPaymentMethod: $allowsRemovalOfLastSavedPaymentMethod, paymentMethodOrder: $paymentMethodOrder, returnURL: $returnURL, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, preferredNetworks: $preferredNetworks)';
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SetupParametersImpl &&
@@ -797,9 +757,7 @@ class _$SetupParametersImpl implements _SetupParameters {
             (identical(other.removeSavedPaymentMethodMessage, removeSavedPaymentMethodMessage) ||
                 other.removeSavedPaymentMethodMessage ==
                     removeSavedPaymentMethodMessage) &&
-            const DeepCollectionEquality().equals(other._preferredNetworks, _preferredNetworks) &&
-            (identical(other.languageCode, languageCode) || other.languageCode == languageCode) &&
-            (identical(other.countryCode, countryCode) || other.countryCode == countryCode));
+            const DeepCollectionEquality().equals(other._preferredNetworks, _preferredNetworks));
   }
 
   @JsonKey(ignore: true)
@@ -825,9 +783,7 @@ class _$SetupParametersImpl implements _SetupParameters {
         returnURL,
         billingDetailsCollectionConfiguration,
         removeSavedPaymentMethodMessage,
-        const DeepCollectionEquality().hash(_preferredNetworks),
-        languageCode,
-        countryCode
+        const DeepCollectionEquality().hash(_preferredNetworks)
       ]);
 
   @JsonKey(ignore: true)
@@ -869,9 +825,7 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
           billingDetailsCollectionConfiguration,
       final String? removeSavedPaymentMethodMessage,
       @JsonKey(toJson: _cardBrandListToJson)
-      final List<CardBrand>? preferredNetworks,
-      final String? languageCode,
-      final String? countryCode}) = _$SetupParametersImpl;
+      final List<CardBrand>? preferredNetworks}) = _$SetupParametersImpl;
 
   factory _SetupParameters.fromJson(Map<String, dynamic> json) =
       _$SetupParametersImpl.fromJson;
@@ -990,15 +944,6 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   /// This value will only be used if your user hasn't selected a network themselves.
   @JsonKey(toJson: _cardBrandListToJson)
   List<CardBrand>? get preferredNetworks;
-  @override
-
-  /// set the payment sheet language
-  String? get languageCode;
-  @override
-
-  /// this can only be used with [languageCode] to give a different
-  /// variation of a language
-  String? get countryCode;
   @override
   @JsonKey(ignore: true)
   _$$SetupParametersImplCopyWith<_$SetupParametersImpl> get copyWith =>
@@ -1185,7 +1130,7 @@ class _$IntentConfigurationImpl implements _IntentConfiguration {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IntentConfigurationImpl &&
@@ -1249,20 +1194,72 @@ abstract class _IntentConfiguration implements IntentConfiguration {
 }
 
 IntentMode _$IntentModeFromJson(Map<String, dynamic> json) {
-  return _IntentMode.fromJson(json);
+  switch (json['runtimeType']) {
+    case 'paymentMode':
+      return _PaymentMode.fromJson(json);
+    case 'setupMode':
+      return _SetupMode.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'IntentMode',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
 }
 
 /// @nodoc
 mixin _$IntentMode {
-  String get currencyCode => throw _privateConstructorUsedError;
-  int get amount => throw _privateConstructorUsedError;
+  String? get currencyCode => throw _privateConstructorUsedError;
 
   /// Data related to the future payment intent
   IntentFutureUsage? get setupFutureUsage => throw _privateConstructorUsedError;
-
-  /// Capture method for the future payment intent
-  CaptureMethod? get captureMethod => throw _privateConstructorUsedError;
-
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String currencyCode, int amount,
+            IntentFutureUsage? setupFutureUsage, CaptureMethod? captureMethod)
+        paymentMode,
+    required TResult Function(
+            String? currencyCode, IntentFutureUsage setupFutureUsage)
+        setupMode,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String currencyCode, int amount,
+            IntentFutureUsage? setupFutureUsage, CaptureMethod? captureMethod)?
+        paymentMode,
+    TResult? Function(String? currencyCode, IntentFutureUsage setupFutureUsage)?
+        setupMode,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String currencyCode, int amount,
+            IntentFutureUsage? setupFutureUsage, CaptureMethod? captureMethod)?
+        paymentMode,
+    TResult Function(String? currencyCode, IntentFutureUsage setupFutureUsage)?
+        setupMode,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentMode value) paymentMode,
+    required TResult Function(_SetupMode value) setupMode,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PaymentMode value)? paymentMode,
+    TResult? Function(_SetupMode value)? setupMode,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentMode value)? paymentMode,
+    TResult Function(_SetupMode value)? setupMode,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $IntentModeCopyWith<IntentMode> get copyWith =>
@@ -1275,11 +1272,7 @@ abstract class $IntentModeCopyWith<$Res> {
           IntentMode value, $Res Function(IntentMode) then) =
       _$IntentModeCopyWithImpl<$Res, IntentMode>;
   @useResult
-  $Res call(
-      {String currencyCode,
-      int amount,
-      IntentFutureUsage? setupFutureUsage,
-      CaptureMethod? captureMethod});
+  $Res call({String currencyCode, IntentFutureUsage setupFutureUsage});
 }
 
 /// @nodoc
@@ -1296,37 +1289,27 @@ class _$IntentModeCopyWithImpl<$Res, $Val extends IntentMode>
   @override
   $Res call({
     Object? currencyCode = null,
-    Object? amount = null,
-    Object? setupFutureUsage = freezed,
-    Object? captureMethod = freezed,
+    Object? setupFutureUsage = null,
   }) {
     return _then(_value.copyWith(
       currencyCode: null == currencyCode
-          ? _value.currencyCode
+          ? _value.currencyCode!
           : currencyCode // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as int,
-      setupFutureUsage: freezed == setupFutureUsage
-          ? _value.setupFutureUsage
+      setupFutureUsage: null == setupFutureUsage
+          ? _value.setupFutureUsage!
           : setupFutureUsage // ignore: cast_nullable_to_non_nullable
-              as IntentFutureUsage?,
-      captureMethod: freezed == captureMethod
-          ? _value.captureMethod
-          : captureMethod // ignore: cast_nullable_to_non_nullable
-              as CaptureMethod?,
+              as IntentFutureUsage,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$IntentModeImplCopyWith<$Res>
+abstract class _$$PaymentModeImplCopyWith<$Res>
     implements $IntentModeCopyWith<$Res> {
-  factory _$$IntentModeImplCopyWith(
-          _$IntentModeImpl value, $Res Function(_$IntentModeImpl) then) =
-      __$$IntentModeImplCopyWithImpl<$Res>;
+  factory _$$PaymentModeImplCopyWith(
+          _$PaymentModeImpl value, $Res Function(_$PaymentModeImpl) then) =
+      __$$PaymentModeImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1337,11 +1320,11 @@ abstract class _$$IntentModeImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$IntentModeImplCopyWithImpl<$Res>
-    extends _$IntentModeCopyWithImpl<$Res, _$IntentModeImpl>
-    implements _$$IntentModeImplCopyWith<$Res> {
-  __$$IntentModeImplCopyWithImpl(
-      _$IntentModeImpl _value, $Res Function(_$IntentModeImpl) _then)
+class __$$PaymentModeImplCopyWithImpl<$Res>
+    extends _$IntentModeCopyWithImpl<$Res, _$PaymentModeImpl>
+    implements _$$PaymentModeImplCopyWith<$Res> {
+  __$$PaymentModeImplCopyWithImpl(
+      _$PaymentModeImpl _value, $Res Function(_$PaymentModeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1352,7 +1335,7 @@ class __$$IntentModeImplCopyWithImpl<$Res>
     Object? setupFutureUsage = freezed,
     Object? captureMethod = freezed,
   }) {
-    return _then(_$IntentModeImpl(
+    return _then(_$PaymentModeImpl(
       currencyCode: null == currencyCode
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
@@ -1376,15 +1359,17 @@ class __$$IntentModeImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class _$IntentModeImpl implements _IntentMode {
-  const _$IntentModeImpl(
+class _$PaymentModeImpl implements _PaymentMode {
+  const _$PaymentModeImpl(
       {required this.currencyCode,
       required this.amount,
       this.setupFutureUsage,
-      this.captureMethod});
+      this.captureMethod,
+      final String? $type})
+      : $type = $type ?? 'paymentMode';
 
-  factory _$IntentModeImpl.fromJson(Map<String, dynamic> json) =>
-      _$$IntentModeImplFromJson(json);
+  factory _$PaymentModeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaymentModeImplFromJson(json);
 
   @override
   final String currencyCode;
@@ -1399,16 +1384,19 @@ class _$IntentModeImpl implements _IntentMode {
   @override
   final CaptureMethod? captureMethod;
 
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
   @override
   String toString() {
-    return 'IntentMode(currencyCode: $currencyCode, amount: $amount, setupFutureUsage: $setupFutureUsage, captureMethod: $captureMethod)';
+    return 'IntentMode.paymentMode(currencyCode: $currencyCode, amount: $amount, setupFutureUsage: $setupFutureUsage, captureMethod: $captureMethod)';
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$IntentModeImpl &&
+            other is _$PaymentModeImpl &&
             (identical(other.currencyCode, currencyCode) ||
                 other.currencyCode == currencyCode) &&
             (identical(other.amount, amount) || other.amount == amount) &&
@@ -1426,42 +1414,298 @@ class _$IntentModeImpl implements _IntentMode {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$IntentModeImplCopyWith<_$IntentModeImpl> get copyWith =>
-      __$$IntentModeImplCopyWithImpl<_$IntentModeImpl>(this, _$identity);
+  _$$PaymentModeImplCopyWith<_$PaymentModeImpl> get copyWith =>
+      __$$PaymentModeImplCopyWithImpl<_$PaymentModeImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String currencyCode, int amount,
+            IntentFutureUsage? setupFutureUsage, CaptureMethod? captureMethod)
+        paymentMode,
+    required TResult Function(
+            String? currencyCode, IntentFutureUsage setupFutureUsage)
+        setupMode,
+  }) {
+    return paymentMode(currencyCode, amount, setupFutureUsage, captureMethod);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String currencyCode, int amount,
+            IntentFutureUsage? setupFutureUsage, CaptureMethod? captureMethod)?
+        paymentMode,
+    TResult? Function(String? currencyCode, IntentFutureUsage setupFutureUsage)?
+        setupMode,
+  }) {
+    return paymentMode?.call(
+        currencyCode, amount, setupFutureUsage, captureMethod);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String currencyCode, int amount,
+            IntentFutureUsage? setupFutureUsage, CaptureMethod? captureMethod)?
+        paymentMode,
+    TResult Function(String? currencyCode, IntentFutureUsage setupFutureUsage)?
+        setupMode,
+    required TResult orElse(),
+  }) {
+    if (paymentMode != null) {
+      return paymentMode(currencyCode, amount, setupFutureUsage, captureMethod);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentMode value) paymentMode,
+    required TResult Function(_SetupMode value) setupMode,
+  }) {
+    return paymentMode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PaymentMode value)? paymentMode,
+    TResult? Function(_SetupMode value)? setupMode,
+  }) {
+    return paymentMode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentMode value)? paymentMode,
+    TResult Function(_SetupMode value)? setupMode,
+    required TResult orElse(),
+  }) {
+    if (paymentMode != null) {
+      return paymentMode(this);
+    }
+    return orElse();
+  }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$IntentModeImplToJson(
+    return _$$PaymentModeImplToJson(
       this,
     );
   }
 }
 
-abstract class _IntentMode implements IntentMode {
-  const factory _IntentMode(
+abstract class _PaymentMode implements IntentMode {
+  const factory _PaymentMode(
       {required final String currencyCode,
       required final int amount,
       final IntentFutureUsage? setupFutureUsage,
-      final CaptureMethod? captureMethod}) = _$IntentModeImpl;
+      final CaptureMethod? captureMethod}) = _$PaymentModeImpl;
 
-  factory _IntentMode.fromJson(Map<String, dynamic> json) =
-      _$IntentModeImpl.fromJson;
+  factory _PaymentMode.fromJson(Map<String, dynamic> json) =
+      _$PaymentModeImpl.fromJson;
 
   @override
   String get currencyCode;
-  @override
   int get amount;
   @override
 
   /// Data related to the future payment intent
   IntentFutureUsage? get setupFutureUsage;
-  @override
 
   /// Capture method for the future payment intent
   CaptureMethod? get captureMethod;
   @override
   @JsonKey(ignore: true)
-  _$$IntentModeImplCopyWith<_$IntentModeImpl> get copyWith =>
+  _$$PaymentModeImplCopyWith<_$PaymentModeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SetupModeImplCopyWith<$Res>
+    implements $IntentModeCopyWith<$Res> {
+  factory _$$SetupModeImplCopyWith(
+          _$SetupModeImpl value, $Res Function(_$SetupModeImpl) then) =
+      __$$SetupModeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? currencyCode, IntentFutureUsage setupFutureUsage});
+}
+
+/// @nodoc
+class __$$SetupModeImplCopyWithImpl<$Res>
+    extends _$IntentModeCopyWithImpl<$Res, _$SetupModeImpl>
+    implements _$$SetupModeImplCopyWith<$Res> {
+  __$$SetupModeImplCopyWithImpl(
+      _$SetupModeImpl _value, $Res Function(_$SetupModeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? currencyCode = freezed,
+    Object? setupFutureUsage = null,
+  }) {
+    return _then(_$SetupModeImpl(
+      currencyCode: freezed == currencyCode
+          ? _value.currencyCode
+          : currencyCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      setupFutureUsage: null == setupFutureUsage
+          ? _value.setupFutureUsage
+          : setupFutureUsage // ignore: cast_nullable_to_non_nullable
+              as IntentFutureUsage,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$SetupModeImpl implements _SetupMode {
+  const _$SetupModeImpl(
+      {this.currencyCode, required this.setupFutureUsage, final String? $type})
+      : $type = $type ?? 'setupMode';
+
+  factory _$SetupModeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SetupModeImplFromJson(json);
+
+  @override
+  final String? currencyCode;
+
+  /// Data related to the future payment intent
+  @override
+  final IntentFutureUsage setupFutureUsage;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'IntentMode.setupMode(currencyCode: $currencyCode, setupFutureUsage: $setupFutureUsage)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetupModeImpl &&
+            (identical(other.currencyCode, currencyCode) ||
+                other.currencyCode == currencyCode) &&
+            (identical(other.setupFutureUsage, setupFutureUsage) ||
+                other.setupFutureUsage == setupFutureUsage));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, currencyCode, setupFutureUsage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetupModeImplCopyWith<_$SetupModeImpl> get copyWith =>
+      __$$SetupModeImplCopyWithImpl<_$SetupModeImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String currencyCode, int amount,
+            IntentFutureUsage? setupFutureUsage, CaptureMethod? captureMethod)
+        paymentMode,
+    required TResult Function(
+            String? currencyCode, IntentFutureUsage setupFutureUsage)
+        setupMode,
+  }) {
+    return setupMode(currencyCode, setupFutureUsage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String currencyCode, int amount,
+            IntentFutureUsage? setupFutureUsage, CaptureMethod? captureMethod)?
+        paymentMode,
+    TResult? Function(String? currencyCode, IntentFutureUsage setupFutureUsage)?
+        setupMode,
+  }) {
+    return setupMode?.call(currencyCode, setupFutureUsage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String currencyCode, int amount,
+            IntentFutureUsage? setupFutureUsage, CaptureMethod? captureMethod)?
+        paymentMode,
+    TResult Function(String? currencyCode, IntentFutureUsage setupFutureUsage)?
+        setupMode,
+    required TResult orElse(),
+  }) {
+    if (setupMode != null) {
+      return setupMode(currencyCode, setupFutureUsage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentMode value) paymentMode,
+    required TResult Function(_SetupMode value) setupMode,
+  }) {
+    return setupMode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PaymentMode value)? paymentMode,
+    TResult? Function(_SetupMode value)? setupMode,
+  }) {
+    return setupMode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentMode value)? paymentMode,
+    TResult Function(_SetupMode value)? setupMode,
+    required TResult orElse(),
+  }) {
+    if (setupMode != null) {
+      return setupMode(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SetupModeImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SetupMode implements IntentMode {
+  const factory _SetupMode(
+      {final String? currencyCode,
+      required final IntentFutureUsage setupFutureUsage}) = _$SetupModeImpl;
+
+  factory _SetupMode.fromJson(Map<String, dynamic> json) =
+      _$SetupModeImpl.fromJson;
+
+  @override
+  String? get currencyCode;
+  @override
+
+  /// Data related to the future payment intent
+  IntentFutureUsage get setupFutureUsage;
+  @override
+  @JsonKey(ignore: true)
+  _$$SetupModeImplCopyWith<_$SetupModeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1691,7 +1935,7 @@ class _$PaymentSheetApplePayImpl implements _PaymentSheetApplePay {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetApplePayImpl &&
@@ -1983,7 +2227,7 @@ class _$PaymentSheetGooglePayImpl implements _PaymentSheetGooglePay {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetGooglePayImpl &&
@@ -2256,7 +2500,7 @@ class _$PaymentSheetAppearanceImpl implements _PaymentSheetAppearance {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetAppearanceImpl &&
@@ -2686,7 +2930,7 @@ class _$PaymentSheetAppearanceColorsImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetAppearanceColorsImpl &&
@@ -2996,7 +3240,7 @@ class _$PaymentSheetShapeImpl implements _PaymentSheetShape {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetShapeImpl &&
@@ -3224,7 +3468,7 @@ class _$PaymentSheetShadowParamsImpl implements _PaymentSheetShadowParams {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetShadowParamsImpl &&
@@ -3403,7 +3647,7 @@ class _$PaymentSheetShadowOffsetImpl implements _PaymentSheetShadowOffset {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetShadowOffsetImpl &&
@@ -3618,7 +3862,7 @@ class _$PaymentSheetPrimaryButtonAppearanceImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetPrimaryButtonAppearanceImpl &&
@@ -3839,7 +4083,7 @@ class _$PaymentSheetPrimaryButtonShapeImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetPrimaryButtonShapeImpl &&
@@ -4065,7 +4309,7 @@ class _$PaymentSheetPrimaryButtonThemeImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetPrimaryButtonThemeImpl &&
@@ -4284,7 +4528,7 @@ class _$PaymentSheetPrimaryButtonThemeColorsImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetPrimaryButtonThemeColorsImpl &&
@@ -4485,7 +4729,7 @@ class _$PresentParametersImpl implements _PresentParameters {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PresentParametersImpl &&
@@ -4655,7 +4899,7 @@ class _$PaymentSheetPresentOptionsImpl implements _PaymentSheetPresentOptions {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetPresentOptionsImpl &&
@@ -4824,7 +5068,7 @@ class _$PaymentSheetPaymentOptionImpl implements _PaymentSheetPaymentOption {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetPaymentOptionImpl &&
@@ -5086,7 +5330,7 @@ class _$BillingDetailsCollectionConfigurationImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BillingDetailsCollectionConfigurationImpl &&

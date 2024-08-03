@@ -11,6 +11,16 @@
             "type": "dart",
         },
         {
+            "name": "example no web security",
+            "cwd": "example",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--web-browser-flag",
+                "--disable-web-security",
+            ]
+        },
+        {
             "name": "Stripe.js web tests",
             "request": "launch",
             "type": "dart",

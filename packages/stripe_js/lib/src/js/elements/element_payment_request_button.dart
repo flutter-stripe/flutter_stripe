@@ -1,10 +1,8 @@
-import 'package:js/js.dart';
+import 'dart:js_interop';
 import 'package:stripe_js/stripe_js.dart';
 
-@anonymous
-@JS()
-abstract class JsPaymentRequestButtonElementCreateOptions {
-  @JS("PaymentRequestButtonElementCreateOptions")
+extension type JsPaymentRequestButtonElementCreateOptions._(JSObject o)
+    implements JSObject {
   external factory JsPaymentRequestButtonElementCreateOptions({
     JsPaymentRequest? paymentRequest,
     JsPaymentRequestButtonElementStyle? style,
@@ -13,47 +11,22 @@ abstract class JsPaymentRequestButtonElementCreateOptions {
   external JsPaymentRequest paymentRequest;
 }
 
-@anonymous
-@JS()
-abstract class JsPaymentRequestButtonElementStyle {
-  @JS("PaymentRequestButtonElementStyle")
+extension type JsPaymentRequestButtonElementStyle._(JSObject o)
+    implements JSObject {
   external factory JsPaymentRequestButtonElementStyle({
-    JsPaymentRequestButtonElementStyleProps? paymentRequestButton,
+    PaymentRequestButtonStyleOptions? paymentRequestButton,
   });
 
-  external JsPaymentRequestButtonElementStyleProps? paymentRequestButton;
+  external PaymentRequestButtonStyleOptions? paymentRequestButton;
 }
 
-@anonymous
-@JS()
-abstract class JsPaymentRequestButtonElementStyleProps {
-  @JS("PaymentRequestButtonElementStyleProps")
-  external factory JsPaymentRequestButtonElementStyleProps({
-    String? theme,
-    String? type,
-    String? height,
-  });
-
-  /// One of 'dark', 'light', or 'light-outline'
-  /// Defaults to 'dark'
-  external String? theme;
-
-  /// One of 'default', 'book', 'buy', or 'donate'
-  /// Defaults to 'default'
-  external String? type;
-
-  /// Defaults to '40px'. The width is always '100%'.
-  external String? height;
-}
-
-@anonymous
-@JS()
-abstract class PaymentRequestButtonElement extends StripeElement {}
+extension type PaymentRequestButtonElement(StripeElement o)
+    implements StripeElement {}
 
 extension ElementsPaymentRequestExtension on StripeElements {
   PaymentRequestButtonElement createPaymentRequestButton(
       JsPaymentRequestButtonElementCreateOptions options) {
-    return create('paymentRequestButton', options)
+    return create('paymentRequestButton', options.jsify())
         as PaymentRequestButtonElement;
   }
 }

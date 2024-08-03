@@ -1,8 +1,7 @@
 @TestOn('browser')
 @Tags(["browser"])
 
-import 'dart:html';
-
+import 'package:web/web.dart';
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 import 'package:test/test.dart';
@@ -19,7 +18,7 @@ void main() {
 
     group('createCardElementToken', () {
       test('can be called', () async {
-        final child = DivElement();
+        final child = HTMLDivElement();
         document.body!.append(child);
         final card = stripe.elements().createCard();
         card.mount(child);
@@ -44,7 +43,7 @@ void main() {
       });
 
       test('returns error when no filled', () async {
-        final child = DivElement();
+        final child = HTMLDivElement();
         document.body!.append(child);
         final card = stripe.elements().createCard();
         card.mount(child);

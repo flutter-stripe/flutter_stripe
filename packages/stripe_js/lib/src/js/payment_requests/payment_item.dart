@@ -1,8 +1,6 @@
-import 'package:js/js.dart';
+import 'dart:js_interop';
 
-@anonymous
-@JS()
-abstract class PaymentItem {
+extension type PaymentItem._(JSObject o) {
   external factory PaymentItem({
     required num amount,
     required String label,

@@ -106,13 +106,6 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// The list of preferred networks that should be used to process payments made with a co-branded card.
     /// This value will only be used if your user hasn't selected a network themselves.
     @JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks,
-
-    /// set the payment sheet language
-    String? languageCode,
-
-    /// this can only be used with [languageCode] to give a different
-    /// variation of a language
-    String? countryCode,
   }) = _SetupParameters;
 
   factory SetupPaymentSheetParameters.fromJson(Map<String, dynamic> json) =>
@@ -144,9 +137,9 @@ class IntentConfiguration with _$IntentConfiguration {
 }
 
 @freezed
-class IntentMode with _$IntentMode {
+sealed class IntentMode with _$IntentMode {
   @JsonSerializable(explicitToJson: true, includeIfNull: false)
-  const factory IntentMode({
+  const factory IntentMode.paymentMode({
     required String currencyCode,
     required int amount,
 
@@ -155,7 +148,15 @@ class IntentMode with _$IntentMode {
 
     /// Capture method for the future payment intent
     CaptureMethod? captureMethod,
-  }) = _IntentMode;
+  }) = _PaymentMode;
+
+  @JsonSerializable(explicitToJson: true)
+  const factory IntentMode.setupMode({
+    String? currencyCode,
+
+    /// Data related to the future payment intent
+    required IntentFutureUsage setupFutureUsage,
+  }) = _SetupMode;
 
   factory IntentMode.fromJson(Map<String, dynamic> json) =>
       _$IntentModeFromJson(json);

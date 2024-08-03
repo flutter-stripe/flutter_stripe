@@ -37,9 +37,10 @@ class PaymentElementOptions with _$PaymentElementOptions {
     /// be rejected.
 
     PaymentElementFields? fields,
-    dynamic readOnly,
-    dynamic terms,
-    dynamic wallets,
+    bool? readOnly,
+    PaymentElementOptionsTerms? terms,
+    PaymentElementWalletOptions? wallets,
+    PaymentElementApplePayOptions? applePay,
   }) = _PaymentElementOptions;
 
   factory PaymentElementOptions.fromJson(Map<String, dynamic> json) =>
@@ -78,6 +79,12 @@ class PaymentElementLayout with _$PaymentElementLayout {
     /// with space in between them.
     /// This property is only applicable to the accordion layout.
     bool? spacedAccordionItems,
+
+    /// Sets the max number of Payment Methods visible before using the "More"
+    /// button to hide additional Payment Methods. Set this value to 0 to
+    /// disable the "More" button and render all available Payment Methods.
+    /// Default is 5. This property is only applicable to the accordion layout.
+    int? visibleAccordionItemsCount,
   }) = _PaymentElementLayout;
   static const tabs = PaymentElementLayout(type: PaymentElementLayoutType.tabs);
   static const accordion =
@@ -96,10 +103,76 @@ class PaymentElementDefaultValues with _$PaymentElementDefaultValues {
     /// Pre-filling as much information as possible streamlines
     /// the checkout process.
     PaymentElementBillingDetails? billingDetails,
+
+    ///  Specify customer's default information for different payment methods.
+    /// Pre-filling as much information as possible streamlines the checkout process.
+    PaymentElementPaymentMethodDefaults? paymentMethods,
   }) = _PaymentElementDefaultValues;
 
   factory PaymentElementDefaultValues.fromJson(Map<String, dynamic> json) =>
       _$PaymentElementDefaultValuesFromJson(json);
+}
+
+@freezed
+class PaymentElementPaymentMethodDefaults
+    with _$PaymentElementPaymentMethodDefaults {
+  const factory PaymentElementPaymentMethodDefaults({
+    /// Defaults for ideal
+    PaymentElementIdealDefaults? ideal,
+
+    /// Defaults for card payment method
+    PaymentElementCardDefaults? card,
+  }) = _PaymentElementPaymentMethodDefaults;
+
+  factory PaymentElementPaymentMethodDefaults.fromJson(
+          Map<String, dynamic> json) =>
+      _$PaymentElementPaymentMethodDefaultsFromJson(json);
+}
+
+@freezed
+
+/// By default, the Payment Element will display all the payment methods that the underlying Payment Intent was created with.
+/// However, wallets like Apple Pay and Google Pay are not payment methods per the Payment Intent API. They will show when the Payment Intent has the card payment method and the customer is using a supported platform and have an active card in their account.
+/// This is the auto behavior, and it is the default for choice for all wallets.
+/// If you do not want to show a given wallet as a payment option, you can set its property in wallets to never.
+class PaymentElementWalletOptions with _$PaymentElementWalletOptions {
+  const factory PaymentElementWalletOptions({
+    /// Apple pay required options
+    PaymentElementFieldRequired? applePay,
+
+    /// Google pay required options
+    PaymentElementFieldRequired? googlePay,
+  }) = _PaymentElementWalletOptions;
+
+  factory PaymentElementWalletOptions.fromJson(Map<String, dynamic> json) =>
+      _$PaymentElementWalletOptionsFromJson(json);
+}
+
+@freezed
+class PaymentElementIdealDefaults with _$PaymentElementIdealDefaults {
+  const factory PaymentElementIdealDefaults({
+    /// The customer’s bank name.
+    ///
+    /// See https://docs.stripe.com/payments/ideal/accept-a-payment?ui=element#bank-reference
+    /// for all options.
+    String? bank,
+  }) = _PaymentElementIdealDefaults;
+
+  factory PaymentElementIdealDefaults.fromJson(Map<String, dynamic> json) =>
+      _$PaymentElementIdealDefaultsFromJson(json);
+}
+
+@freezed
+class PaymentElementCardDefaults with _$PaymentElementCardDefaults {
+  const factory PaymentElementCardDefaults({
+    /// The specified network prferences for card brand choice. The first network in the array
+    /// that matches a network on the enetered cobranded card will be selected by default
+    /// in the card brand choice.
+    List<String>? network,
+  }) = _PaymentElementCardDefaults;
+
+  factory PaymentElementCardDefaults.fromJson(Map<String, dynamic> json) =>
+      _$PaymentElementCardDefaultsFromJson(json);
 }
 
 @freezed
@@ -154,6 +227,8 @@ class PaymentElementBusiness with _$PaymentElementBusiness {
 }
 
 enum PaymentElementFieldRequired { never, auto }
+
+enum PaymentElementShowTerms { never, auto, always }
 
 @freezed
 class PaymentElementFields with _$PaymentElementFields {
@@ -210,3 +285,203 @@ class PaymentElementAddressFields with _$PaymentElementAddressFields {
   factory PaymentElementAddressFields.fromJson(Map<String, dynamic> json) =>
       _$PaymentElementAddressFieldsFromJson(json);
 }
+
+@freezed
+
+///Control how mandates or other legal agreements are displayed in the Payment Element.
+/// The default setting is auto, which causes legal agreements to only be shown when necessary.
+class PaymentElementOptionsTerms with _$PaymentElementOptionsTerms {
+  const factory PaymentElementOptionsTerms({
+    /// Terms for apple pay
+    PaymentElementShowTerms? applePay,
+
+    /// Terms for aubecs debit
+    PaymentElementShowTerms? auBecsDebit,
+
+    /// Terms for bancontact
+    PaymentElementShowTerms? bancontact,
+
+    /// Terms for card
+    PaymentElementShowTerms? card,
+
+    /// Terms for cashapp
+    PaymentElementShowTerms? cashApp,
+
+    /// Terms for googlePay
+    PaymentElementShowTerms? googlePay,
+
+    /// Terms for ideal
+    PaymentElementShowTerms? ideal,
+
+    /// Terms for paypal
+    PaymentElementShowTerms? payPal,
+
+    /// Terms for sepa debit
+    PaymentElementShowTerms? sepaDebit,
+
+    /// Terms for sofort
+    PaymentElementShowTerms? sofort,
+
+    /// Terms for usBankAccount
+    PaymentElementShowTerms? usBankAccount,
+  }) = _PaymentElementOptionsTerms;
+
+  factory PaymentElementOptionsTerms.fromJson(Map<String, dynamic> json) =>
+      _$PaymentElementOptionsTermsFromJson(json);
+}
+
+@freezed
+class PaymentElementApplePayOptions with _$PaymentElementApplePayOptions {
+  const factory PaymentElementApplePayOptions({
+    /// Information about a recurring payment with ApplePay
+    PaymentElementAppleRecurringRequest? recurringPaymentRequest,
+
+    /// Information about a deferred payment with ApplePay
+    PaymentElementApplePayDeferredPaymentRequest? deferredPaymentRequest,
+
+    /// Information about an auto reload payment with ApplePay
+    PaymentElementApplePayAutoReloadPaymentRequest?
+        automaticReloadPaymentRequest,
+  }) = _PaymentElementApplePayOptions;
+
+  factory PaymentElementApplePayOptions.fromJson(Map<String, dynamic> json) =>
+      _$PaymentElementApplePayOptionsFromJson(json);
+}
+
+@freezed
+class PaymentElementAppleRecurringRequest
+    with _$PaymentElementAppleRecurringRequest {
+  const factory PaymentElementAppleRecurringRequest({
+    /// The description of the payment
+    required String paymentDescription,
+
+    /// Management url
+    required String managementUrl,
+
+    /// Information in case of a trial billing
+    PaymentElementRecurringPaymentProperties? trialBilling,
+
+    /// Information in case of a regular billing
+    PaymentElementRecurringPaymentProperties? regularBilling,
+  }) = _PaymentElementAppleRecurringRequest;
+
+  factory PaymentElementAppleRecurringRequest.fromJson(
+          Map<String, dynamic> json) =>
+      _$PaymentElementAppleRecurringRequestFromJson(json);
+}
+
+@freezed
+class PaymentElementRecurringPaymentProperties
+    with _$PaymentElementRecurringPaymentProperties {
+  const factory PaymentElementRecurringPaymentProperties({
+    /// The amount of the payment
+    required double amount,
+
+    /// Description label
+    required String label,
+
+    /// The startdate of the recurring payment
+    DateTime? recurringPaymentStartDate,
+
+    /// The enddate of the recurring payment
+    DateTime? recurringPaymentEndDate,
+
+    /// The interval of payment
+    ApplePayRecurringPaymentTimeInterVal? recurringPaymentIntervalUnit,
+
+    /// The amount of intervals
+    int? recurringPaymentIntervalCount,
+  }) = _PaymentElementRecurringPaymentProperties;
+
+  factory PaymentElementRecurringPaymentProperties.fromJson(
+          Map<String, dynamic> json) =>
+      _$PaymentElementRecurringPaymentPropertiesFromJson(json);
+}
+
+@freezed
+class PaymentElementApplePayDeferredPaymentRequest
+    with _$PaymentElementApplePayDeferredPaymentRequest {
+  const factory PaymentElementApplePayDeferredPaymentRequest({
+    /// The description of the payment
+    required String paymentDescription,
+
+    /// Management url
+    required String managementUrl,
+
+    /// Billing agreement label
+    String? billingAgreement,
+
+    /// The date when you can cancel for free
+    DateTime? freeCancellationDate,
+
+    /// The timezone of the free cancellation date
+    String? freeCancellationTimezone,
+
+    /// Billing information of the deffered payment
+    required PaymentElementApplePayDeferredPaymentProperties deferredBilling,
+  }) = _PaymentElementApplePayDeferredPaymentRequest;
+
+  factory PaymentElementApplePayDeferredPaymentRequest.fromJson(
+          Map<String, dynamic> json) =>
+      _$PaymentElementApplePayDeferredPaymentRequestFromJson(json);
+}
+
+@freezed
+class PaymentElementApplePayDeferredPaymentProperties
+    with _$PaymentElementApplePayDeferredPaymentProperties {
+  const factory PaymentElementApplePayDeferredPaymentProperties({
+    /// The amount of the payment
+    required double amount,
+
+    /// Description label
+    required String label,
+
+    /// The date when the payment will be processed
+    required DateTime deferredPaymentDate,
+  }) = _PaymentElementApplePayDeferredPaymentProperties;
+
+  factory PaymentElementApplePayDeferredPaymentProperties.fromJson(
+          Map<String, dynamic> json) =>
+      _$PaymentElementApplePayDeferredPaymentPropertiesFromJson(json);
+}
+
+@freezed
+class PaymentElementApplePayAutoReloadPaymentRequest
+    with _$PaymentElementApplePayAutoReloadPaymentRequest {
+  const factory PaymentElementApplePayAutoReloadPaymentRequest({
+    /// The description of the payment
+    required String paymentDescription,
+
+    /// Management url
+    required String managementUrl,
+
+    /// Billing information of the deffered payment
+    required PaymentElementApplePayReloadPaymentProperties
+        automaticReloadBilling,
+  }) = _PaymentElementApplePayAutoReloadPaymentRequest;
+
+  factory PaymentElementApplePayAutoReloadPaymentRequest.fromJson(
+          Map<String, dynamic> json) =>
+      _$PaymentElementApplePayAutoReloadPaymentRequestFromJson(json);
+}
+
+@freezed
+class PaymentElementApplePayReloadPaymentProperties
+    with _$PaymentElementApplePayReloadPaymentProperties {
+  const factory PaymentElementApplePayReloadPaymentProperties({
+    /// The amount of the payment
+    required double amount,
+
+    /// Description label
+    required String label,
+
+    /// The date when the threshold amount will be reached
+    required DateTime automaticReloadPaymentThresholdAmount,
+  }) = _PaymentElementApplePayReloadPaymentProperties;
+
+  factory PaymentElementApplePayReloadPaymentProperties.fromJson(
+          Map<String, dynamic> json) =>
+      _$PaymentElementApplePayReloadPaymentPropertiesFromJson(json);
+}
+
+enum ApplePayRecurringPaymentTimeInterVal { year, month, day, hour, minute }

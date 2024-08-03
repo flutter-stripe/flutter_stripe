@@ -1,57 +1,38 @@
-import 'dart:js';
-
-import 'package:js/js.dart';
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
+import 'dart:js_interop';
 
-@anonymous
-@JS()
-abstract class StripeElements implements Elements {
-  external StripeElement create(String type, [dynamic options]);
-
+extension type StripeElements(JSObject o) implements JSObject, Elements {
+  external StripeElement create(String type, [JSAny? options]);
   external StripeElement? getElement(String type);
 }
 
-@anonymous
-@JS()
-abstract class ElementChangeResponse {
-  external String get elementType;
-  external set elementType(String v);
-  external String get brand;
-  external set brand(String v);
-  external bool get complete;
-  external set complete(bool v);
-  external bool get empty;
-  external set empty(bool v);
-  /*{ postalCode: string | number }|String*/
-  external dynamic /*{ postalCode: string | number }|String*/ get value;
-  external set value(dynamic /*{ postalCode: string | number }|String*/ v);
-  external String get country;
-  external set country(String v);
-  external String get bankName;
-  external set bankName(String v);
-  external dynamic get error;
-  external set error(dynamic v);
-  external factory ElementChangeResponse({
+extension type ElementChangeResponse._(JSObject o) {
+  external ElementChangeResponse({
     String elementType,
     String brand,
     bool complete,
     bool empty,
-    dynamic /*{ postalCode: string | number }|String*/ value,
+    JSAny /*{ postalCode: string | number }|String*/ value,
     String country,
     String bankName,
-    dynamic error,
+    JSAny error,
   });
+  external String elementType;
+  external String brand;
+  external bool complete;
+  external bool empty;
+  external JSAny /*{ postalCode: string | number }|String*/ get value;
+  external String country;
+  external String bankName;
+  external JSAny error;
 }
 
-@anonymous
-@JS()
-abstract class ElementOptions {
-  external JsArray<Font> get fonts;
-  external set fonts(JsArray<Font> v);
-  external String get locale;
-  external set locale(String v);
-  external factory ElementOptions({JsArray<Font> fonts, String locale});
+extension type ElementOptions._(JSObject o) {
+  external ElementOptions({JSArray<Font> fonts, String locale});
+
+  external JSArray<Font> fonts;
+  external String locale;
 }
 
 enum ElementsType {

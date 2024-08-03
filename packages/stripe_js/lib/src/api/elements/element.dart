@@ -1,3 +1,3 @@
-abstract class Element {}
+extension type const Element._(Object o) implements Object {}
 
-abstract class Elements {}
+extension type const Elements._(Object o) implements Object {}

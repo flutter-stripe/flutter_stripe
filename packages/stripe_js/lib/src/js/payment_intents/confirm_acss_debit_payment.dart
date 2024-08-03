@@ -1,11 +1,9 @@
-import 'package:js/js.dart';
+import 'package:stripe_js/src/js/utils/utils.dart';
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
-import '../utils/utils.dart';
+import 'dart:js_interop';
 
 extension ExtensionAcssDebitPayment on Stripe {
-  _JS get js => this as _JS;
-
   /// Use stripe.confirmAcssDebitPayment in the Accept a payment flow for the
   /// Canadian pre-authorized debit payment method when the customer submits
   /// your payment form. When called, it will automatically load an on-page
@@ -32,21 +30,18 @@ extension ExtensionAcssDebitPayment on Stripe {
     String clientSecret, {
     ConfirmAcssDebitPaymentData? data,
     ConfirmAcssDebitPaymentOptions? options,
-  }) {
-    final jsData = jsify(data?.toJson() ?? {});
-    final jsOptions = jsify(options?.toJson() ?? {});
-    return parseIntentResponse(
-      js.confirmAcssDebitPayment(clientSecret, jsData, jsOptions),
-    );
+  }) async {
+    final jsData = (data?.toJson() ?? {}).jsify();
+    final jsOptions = (options?.toJson() ?? {}).jsify();
+    return _confirmAcssDebitPayment(clientSecret, jsData, jsOptions)
+        .toDart
+        .then((response) => response.toDart);
   }
-}
 
-@anonymous
-@JS()
-abstract class _JS {
-  external Promise<dynamic> confirmAcssDebitPayment(
+  @JS('confirmAcssDebitPayment')
+  external JSPromise<JSIntentResponse> _confirmAcssDebitPayment(
     String clientSecret, [
-    dynamic data,
-    dynamic options,
+    JSAny? data,
+    JSAny? options,
   ]);
 }

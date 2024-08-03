@@ -85,6 +85,8 @@ public class ReadableMap extends WritableMap {
                 return ReadableType.Boolean;
             } else if (value instanceof Iterable || (value instanceof JSONArray)) {
                 return ReadableType.Array;
+            } else if (value instanceof JSONArray) {
+                return ReadableType.Array;
             } else if (value instanceof Number) {
                 return ReadableType.Number;
             } else if (value instanceof Map || (value instanceof  JSONObject)) {

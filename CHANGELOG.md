@@ -3,6 +3,192 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-07-25
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_stripe` - `v11.0.0`](#flutter_stripe---v1100)
+
+---
+
+#### `flutter_stripe` - `v11.0.0`
+
+ - aaa
+
+
+## 2024-07-25
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_stripe_web` - `v6.0.0`](#flutter_stripe_web---v600)
+
+---
+
+#### `flutter_stripe_web` - `v6.0.0`
+
+ - aa
+
+ - **FIX**: Apply dynamic Stripe account ID to confirmPayment method in WebStripe (#1798).
+ - **FIX**: wait html element load (#1730).
+ - **FIX**: [WEB]Issue of saving/not saving payment information for future. #1673 (#1674).
+ - **FIX**: Respect the font color for CardField on web platforms (#1658).
+ - **FIX**: invalid argument `requires_capture` on web (#1431).
+ - **FIX**: confirmation redirect and stripeAccountId (#1201).
+ - **FIX**: apple pay (#1202).
+ - **FIX**: timeout payment sheet (#1161).
+ - **FIX**: payment intent error in web (#1010).
+ - **FIX**: web_checkout (#973).
+ - **FIX**: implemented handleURLCallback method for iOS iDeal payment. (#939).
+ - **FEAT**: add retrieveSetupIntent (#1302).
+ - **FEAT**: release versions (#1283).
+ - **FEAT**: web fixes and features (#1270).
+ - **FEAT**: release 9.2.1 (#1262).
+ - **FEAT**: tokens for web (#1079).
+ - **FEAT**: stripe js (#1052).
+ - **FEAT**: update checkout (#582).
+
+
+## 2024-07-25
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_js` - `v6.0.0`](#stripe_js---v600)
+ - [`flutter_stripe_web` - `v6.0.0-dev.1`](#flutter_stripe_web---v600-dev1)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v6.0.0-dev.1`
+
+---
+
+#### `stripe_js` - `v6.0.0`
+
+ - aa
+
+ - **FIX**: invalid argument `requires_capture` on web (#1431).
+ - **FIX**: PaymentConfirmationRedirect enum value (#1221).
+ - **FIX**: confirmation redirect and stripeAccountId (#1201).
+ - **FEAT**: release versions (#1283).
+ - **FEAT**: web fixes and features (#1270).
+ - **FEAT**: release 9.2.1 (#1262).
+ - **FEAT**: tokens for web (#1079).
+ - **FEAT**: stripe js (#1052).
+
+
+## 2024-07-25
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_ios` - `v11.0.0`](#stripe_ios---v1100)
+ - [`flutter_stripe` - `v10.2.1`](#flutter_stripe---v1021)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v10.2.1`
+
+---
+
+#### `stripe_ios` - `v11.0.0`
+
+ - aa
+
+
+## 2024-07-25
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_android` - `v11.0.0`](#stripe_android---v1100)
+ - [`flutter_stripe` - `v10.2.1`](#flutter_stripe---v1021)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v10.2.1`
+
+---
+
+#### `stripe_android` - `v11.0.0`
+
+ - aa
+
+
+## 2024-07-25
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_platform_interface` - `v11.0.0`](#stripe_platform_interface---v1100)
+ - [`flutter_stripe_web` - `v6.0.0-dev.1`](#flutter_stripe_web---v600-dev1)
+ - [`flutter_stripe` - `v10.2.1`](#flutter_stripe---v1021)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v6.0.0-dev.1`
+ - `flutter_stripe` - `v10.2.1`
+
+---
+
+#### `stripe_platform_interface` - `v11.0.0`
+
+ - a
+
+ - **FIX**: parse unknown error (#1729).
+
+
 ## 2024-03-26
 
 ### Changes

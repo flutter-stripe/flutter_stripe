@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:stripe_example/screens/checkout/checkout_screen.dart';
 import 'package:stripe_example/screens/customer_sheet/customer_sheet_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_element/payment_element.dart';
 import 'package:stripe_example/screens/payment_sheet/payment_sheet_deffered_screen.dart';
@@ -370,14 +369,5 @@ class Example extends StatelessWidget {
         ],
       ),
     ]),
-    Example(
-      title: 'Checkout',
-      builder: (c) => CheckoutScreenExample(),
-      platformsSupported: [
-        DevicePlatform.android,
-        DevicePlatform.ios,
-        DevicePlatform.web
-      ],
-    ),
   ];
 }

@@ -1,10 +1,12 @@
-import 'dart:html';
+import 'dart:js_interop';
+
+import 'package:web/web.dart' as web;
 import 'dart:ui' as ui;
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 import 'package:flutter_stripe_web/src/parser/payment_request.dart';
-import 'package:flutter_stripe_web/src/utils.dart';
+
 import 'package:stripe_js/stripe_js.dart';
 
 const kPlatformPayButtonDefaultHeight = 40.0;
@@ -40,7 +42,7 @@ class _WebPlatformPayButtonState extends State<WebPlatformPayButton> {
   void initState() {
     // ignore: undefined_prefixed_name
     ui.platformViewRegistry.registerViewFactory('stripe_platform_pay_button',
-        (int viewId) => DivElement()..id = 'platform-pay-button');
+        (int viewId) => web.HTMLDivElement()..id = 'platform-pay-button');
     _initButton();
     super.initState();
   }
@@ -59,7 +61,7 @@ class _WebPlatformPayButtonState extends State<WebPlatformPayButton> {
   }
 
   _initButton() {
-    ambiguate(WidgetsBinding.instance)?.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       PaymentRequest paymentRequest = WebStripe.js
           .paymentRequest((widget.paymentRequestCreateOptions).toJS()).toPaymentRequest;
 
@@ -68,48 +70,50 @@ class _WebPlatformPayButtonState extends State<WebPlatformPayButton> {
             JsPaymentRequestButtonElementCreateOptions(
                 paymentRequest: paymentRequest.js,
                 style: JsPaymentRequestButtonElementStyle(
-                    paymentRequestButton:
-                        JsPaymentRequestButtonElementStyleProps(
-                  theme: theme,
+                    paymentRequestButton: PaymentRequestButtonStyleOptions(
+                  theme: theme(Theme.of(context).brightness),
                   type: type,
                   height: '${constraints.maxHeight}px',
                 ))))
-          ..on('click', allowInterop((event) {
-            callMethod(event, 'preventDefault', []);
+          ..on('click', (event) {
+            //callMethod(event, 'preventDefault', []);
             widget.onPressed();
-          }))
-          ..mount('#platform-pay-button');
+          })
+          ..mount('#platform-pay-button'.toJS);
       });
     });
   }
 
-  String get type {
+  PaymentRequestButtonType get type {
     switch (widget.type) {
       case PlatformButtonType.buy:
-        return 'buy';
+        return PaymentRequestButtonType.buy;
       case PlatformButtonType.book:
-        return 'book';
+        return PaymentRequestButtonType.book;
       case PlatformButtonType.donate:
-        return 'donate';
+        return PaymentRequestButtonType.donate;
       case PlatformButtonType.plain:
+      case null:
+        return PaymentRequestButtonType.defaultType;
       default:
-        if (widget.type != null && widget.type != PlatformButtonType.plain) {
-          window.console.warn(
-              'PlatformPayButton: ${widget.type} is not supported on web - defaulting to plain presentation');
-        }
-        return 'default';
+        web.console.warn(
+          'PlatformPayButton: ${widget.type} is not supported on web - '
+                  'defaulting to plain presentation'
+              .toJS,
+        );
+        return PaymentRequestButtonType.defaultType;
     }
   }
 
-  String get theme {
-    switch (widget.style) {
-      case PlatformButtonStyle.white:
-        return 'light';
-      case PlatformButtonStyle.whiteOutline:
-        return 'light-outline';
-      case PlatformButtonStyle.black:
-      default:
-        return 'dark';
-    }
+  PaymentRequestButtonTheme theme(Brightness brightness) {
+    return switch (widget.style) {
+      PlatformButtonStyle.white => PaymentRequestButtonTheme.light,
+      PlatformButtonStyle.whiteOutline =>
+        PaymentRequestButtonTheme.lightOutline,
+      PlatformButtonStyle.black => PaymentRequestButtonTheme.dark,
+      PlatformButtonStyle.automatic || null => brightness == Brightness.light
+          ? PaymentRequestButtonTheme.light
+          : PaymentRequestButtonTheme.dark,
+    };
   }
 }

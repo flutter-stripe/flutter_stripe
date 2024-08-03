@@ -1,7 +1,17 @@
-import 'package:js/js.dart';
 import 'package:stripe_js/src/js/utils/parse_intent_response.dart';
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
+import 'dart:js_interop';
+
+extension PaymentRequestExtension on Stripe {
+  _JS get _js => this as _JS;
+
+  PaymentRequest paymentRequest(
+    PaymentRequestCreateOptions options,
+  ) {
+    return PaymentRequest.of(_js.paymentRequest(options));
+  }
+}
 
 class PaymentRequest {
   final JsPaymentRequest _js;
@@ -12,21 +22,20 @@ class PaymentRequest {
   JsPaymentRequest get js => _js;
 
   Future<CanMakePaymentResponse?> canMakePayment() =>
-      promiseToFuture(_js.canMakePayment());
+      _js.canMakePayment().toDart;
 
   show() {
     _js.show();
   }
 
   void onPaymentMethod(void Function(PaymentResponse) callback) {
-    _js.on(
-        'paymentmethod',
-        allowInterop((JsPaymentResponse jsResponse) =>
-            callback(PaymentResponse.of(jsResponse))));
+    _js.on('paymentmethod', (JsPaymentResponse response) {
+      callback(PaymentResponse.of(response));
+    });
   }
 
   void onCancel(void Function() callback) {
-    _js.on('cancel', allowInterop(callback));
+    _js.on('cancel', ([_]) => callback);
   }
 }
 
@@ -36,36 +45,39 @@ class PaymentResponse {
   PaymentResponse.of(this._js);
 
   PaymentMethod get paymentMethod =>
-      PaymentMethod.fromJson(jsToJsonMap(_js.paymentMethod));
+      PaymentMethod.fromJson(_js.paymentMethod.toDart);
   String get walletName => _js.walletName;
   Function(String complete) get complete => _js.complete;
 }
 
-@anonymous
-@JS()
-abstract class JsPaymentResponse {
-  external dynamic get paymentMethod;
+extension type _JS._(JSObject o) {
+  external JsPaymentRequest paymentRequest(
+    PaymentRequestCreateOptions options,
+  );
+}
+
+extension type JsPaymentResponse._(JSObject o) {
+  external JSMap get paymentMethod;
   external String get walletName;
-  external void Function(String) get complete;
+  @JS('complete')
+  external JSFunction get _complete;
+  void Function(String) get complete {
+    return (String val) => _complete.callAsFunction(val.toJS);
+  }
 }
 
-@anonymous
-@JS()
-abstract class JsPaymentRequest {
+extension type JsPaymentRequest._(JSObject o) {
   external String get id;
-  external Promise<CanMakePaymentResponse?> canMakePayment();
+  external JSPromise<CanMakePaymentResponse?> canMakePayment();
   external void show();
-  external void on(String event, dynamic callback);
+  @JS('on')
+  external void _on(String event, JSExportedDartFunction callback);
+  void on<T extends JSAny?>(String event, void Function(T v) callback) {
+    return _on(event, callback.toJS);
+  }
 }
 
-extension JsPaymentRequestExtension on JsPaymentRequest {
-  PaymentRequest get toPaymentRequest =>
-      PaymentRequest.of(this);
-}
-
-@anonymous
-@JS()
-abstract class CanMakePaymentResponse {
+extension type CanMakePaymentResponse._(JSObject o) implements JSObject {
   external bool get applePay;
   external bool get googlePay;
   external bool get link;

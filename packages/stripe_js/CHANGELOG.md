@@ -1,6 +1,19 @@
-## 3.4.1
+## 6.0.1
 **Features**
 - add method for deferred payment
+
+## 6.0.0
+
+ - aa
+
+ - **FIX**: invalid argument `requires_capture` on web (#1431).
+ - **FIX**: PaymentConfirmationRedirect enum value (#1221).
+ - **FIX**: confirmation redirect and stripeAccountId (#1201).
+ - **FEAT**: release versions (#1283).
+ - **FEAT**: web fixes and features (#1270).
+ - **FEAT**: release 9.2.1 (#1262).
+ - **FEAT**: tokens for web (#1079).
+ - **FEAT**: stripe js (#1052).
 
 ## 3.4.0
 **Features**

@@ -64,7 +64,7 @@ mixin _$PaymentMethod {
   @JsonKey(name: 'Upi')
   Upi get upi => throw _privateConstructorUsedError;
 
-  /// Containing additional data in case paymentmethod type is UPI.
+  /// Containing additional data in case paymentmethod type is Us bank account.
   @JsonKey(name: 'USBankAccount')
   UsBankAccount get usBankAccount => throw _privateConstructorUsedError;
 
@@ -492,7 +492,7 @@ class _$PaymentMethodImpl implements _PaymentMethod {
   @JsonKey(name: 'Upi')
   final Upi upi;
 
-  /// Containing additional data in case paymentmethod type is UPI.
+  /// Containing additional data in case paymentmethod type is Us bank account.
   @override
   @JsonKey(name: 'USBankAccount')
   final UsBankAccount usBankAccount;
@@ -647,7 +647,7 @@ abstract class _PaymentMethod implements PaymentMethod {
   Upi get upi;
   @override
 
-  /// Containing additional data in case paymentmethod type is UPI.
+  /// Containing additional data in case paymentmethod type is Us bank account.
   @JsonKey(name: 'USBankAccount')
   UsBankAccount get usBankAccount;
   @override

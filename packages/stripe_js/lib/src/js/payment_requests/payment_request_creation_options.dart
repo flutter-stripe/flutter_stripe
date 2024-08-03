@@ -1,10 +1,7 @@
-import 'package:js/js.dart';
 import 'package:stripe_js/stripe_js.dart';
+import 'dart:js_interop';
 
-@anonymous
-@JS()
-abstract class PaymentRequestCreateOptions {
-  @JS("PaymentRequestCreateOptions")
+extension type PaymentRequestCreateOptions._(JSObject o) {
   external factory PaymentRequestCreateOptions({
     required String country,
     required String currency,
@@ -13,8 +10,8 @@ abstract class PaymentRequestCreateOptions {
     bool requestPayerEmail,
     bool requestPayerPhone,
     bool requestShipping,
-    List<ShippingOption> shippingOptions,
-    List<String> disableWallets,
+    JSArray<ShippingOption> shippingOptions,
+    JSArray<JSString> disableWallets,
   });
 
   external String country;
@@ -24,6 +21,6 @@ abstract class PaymentRequestCreateOptions {
   external bool requestPayerEmail;
   external bool requestPayerPhone;
   external bool requestShipping;
-  external ShippingOption shippingOptions;
-  external List<String> disableWallets;
+  external JSArray<ShippingOption> shippingOptions;
+  external JSArray<JSString> disableWallets;
 }
