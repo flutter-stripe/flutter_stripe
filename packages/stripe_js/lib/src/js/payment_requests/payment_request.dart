@@ -47,7 +47,7 @@ class PaymentResponse {
   PaymentMethod get paymentMethod =>
       PaymentMethod.fromJson(_js.paymentMethod.toDart);
   String get walletName => _js.walletName;
-  Function(String complete) get complete => _js.complete;
+  void complete(final String complete) => _js.complete(complete);
 }
 
 extension type _JS._(JSObject o) {
@@ -60,10 +60,8 @@ extension type JsPaymentResponse._(JSObject o) {
   external JSMap get paymentMethod;
   external String get walletName;
   @JS('complete')
-  external JSFunction get _complete;
-  void Function(String) get complete {
-    return (String val) => _complete.callAsFunction(val.toJS);
-  }
+  external void _complete(final String complete);
+  void complete(final String complete) => _complete(complete);
 }
 
 extension type JsPaymentRequest._(JSObject o) {
