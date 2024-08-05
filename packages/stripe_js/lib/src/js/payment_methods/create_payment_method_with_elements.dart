@@ -1,4 +1,5 @@
-import 'package:js/js.dart';
+import 'dart:js_interop';
+
 import 'package:stripe_js/src/api/payment_methods/create_payment_method_with_elements_data.dart';
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
@@ -6,8 +7,6 @@ import 'package:stripe_js/stripe_js.dart';
 import '../utils/utils.dart';
 
 extension ExtensionCreatePaymentMethodWithElements on Stripe {
-  _JS get js => this as _JS;
-
   /// Use stripe.createPaymentMethod to convert payment information collected by
   /// elements into a PaymentMethod object that you safely pass to your server
   /// to use in an API call.
@@ -20,16 +19,13 @@ extension ExtensionCreatePaymentMethodWithElements on Stripe {
   Future<PaymentMethodResponse> createPaymentMethodWithElements(
     CreatePaymentMethodWithElementsData data,
   ) {
-    final jsData = jsify(data.toJson());
+    final jsData = data.toJson().jsify();
 
-    return parsePaymentMethodResponse(
-      js.createPaymentMethod(jsData),
-    );
+    return _createPaymentMethod(jsData)
+        .toDart
+        .then((response) => response.toDart);
   }
-}
 
-@anonymous
-@JS()
-abstract class _JS {
-  external Promise<dynamic> createPaymentMethod(dynamic data);
+  @JS('createPaymentMethod')
+  external JSPromise<JSPaymentMethodResponse> _createPaymentMethod(JSAny? data);
 }

@@ -203,7 +203,10 @@ class PaymentElementState extends State<PaymentElement> {
       amount: widget.amount,
       currency: widget.currency,
       mode: widget.mode,
-      paymentMethodTypes: widget.paymentMethodTypes,
+      paymentMethodTypes: widget.paymentMethodTypes
+          ?.map((pmt) => pmt.toJS)
+          .toList(growable: false)
+          .toJS,
       paymentMethodCreation: widget.paymentMethodCreation,
       appearance: appearance.toJson().jsify() as js.JsElementAppearance,
       locale: widget.locale,

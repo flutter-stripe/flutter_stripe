@@ -545,11 +545,9 @@ class WebStripe extends StripePlatform {
     IsGooglePaySupportedParams? params,
     PlatformPayWebPaymentRequestCreateOptions? paymentRequestOptions,
   }) async {
-    final paymentRequest = js
-        .paymentRequest((paymentRequestOptions ??
-                PlatformPayWebPaymentRequestCreateOptions.defaultOptions)
-            .toJS())
-        .toPaymentRequest;
+    final paymentRequest = js.paymentRequest((paymentRequestOptions ??
+            PlatformPayWebPaymentRequestCreateOptions.defaultOptions)
+        .toJS());
 
     final paymentOptions = await paymentRequest.canMakePayment();
 
@@ -565,11 +563,9 @@ class WebStripe extends StripePlatform {
     IsGooglePaySupportedParams? params,
     PlatformPayWebPaymentRequestCreateOptions? paymentRequestOptions,
   }) {
-    final paymentRequest = js
-        .paymentRequest((paymentRequestOptions ??
-                PlatformPayWebPaymentRequestCreateOptions.defaultOptions)
-            .toJS())
-        .toPaymentRequest;
+    final paymentRequest = js.paymentRequest((paymentRequestOptions ??
+            PlatformPayWebPaymentRequestCreateOptions.defaultOptions)
+        .toJS());
 
     return paymentRequest.isPaymentAvailable;
   }
@@ -600,7 +596,7 @@ class WebStripe extends StripePlatform {
 
     Completer<PlatformPayPaymentMethod> completer = Completer();
     stripe_js.PaymentRequest paymentRequest =
-        js.paymentRequest(params.options.toJS()).toPaymentRequest;
+        js.paymentRequest(params.options.toJS());
     paymentRequest.onPaymentMethod((response) {
       completer.complete(PlatformPayPaymentMethod(
           paymentMethod: response.paymentMethod.parse()));

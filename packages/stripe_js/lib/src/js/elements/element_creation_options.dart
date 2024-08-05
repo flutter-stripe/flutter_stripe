@@ -11,7 +11,7 @@ extension type JsElementsCreateOptions._(JSObject o) {
     int? amount,
     String? mode,
     String? currency,
-    List<String>? paymentMethodTypes,
+    JSArray<JSString>? paymentMethodTypes,
     String? paymentMethodCreation,
     JsElementAppearance? appearance,
     String loader,
@@ -23,7 +23,7 @@ extension type JsElementsCreateOptions._(JSObject o) {
   external int amount;
   external String mode;
   external String currency;
-  external List<String> paymentMethodTypes;
+  external JSArray<JSString> paymentMethodTypes;
   external String paymentMethodCreation;
   external JsElementAppearance appearance;
 }
