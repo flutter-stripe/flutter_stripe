@@ -19,6 +19,7 @@ import 'package:stripe_example/screens/wallets/apple_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen_plugin.dart';
 import 'package:stripe_example/screens/wallets/google_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/google_pay_stripe_screen.dart';
+import 'package:stripe_example/screens/wallets/mobile_pay_create_payment_method_screen.dart';
 import 'package:stripe_example/screens/wallets/open_apple_pay_setup_screen.dart';
 import 'package:stripe_example/widgets/platform_icons.dart';
 
@@ -224,6 +225,11 @@ class Example extends StatelessWidget {
           title: 'Google Pay - Pay Plugin',
           builder: (c) => GooglePayScreen(),
           platformsSupported: [DevicePlatform.android],
+        ),
+        Example(
+          title: 'Google/Apple Pay - Create payment method',
+          builder: (c) => MobilePayCreatePaymentMethodScreen(),
+          platformsSupported: [DevicePlatform.web],
         ),
       ],
     ),
