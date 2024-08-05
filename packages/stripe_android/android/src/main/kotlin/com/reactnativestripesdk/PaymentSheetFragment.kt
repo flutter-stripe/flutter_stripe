@@ -145,9 +145,7 @@ class PaymentSheetFragment(
         putBoolean("shouldSavePaymentMethod", shouldSavePaymentMethod)
       }
 
-      context.currentActivity?.runOnUiThread {
-        stripeSdkModule.sendEvent(context, "onConfirmHandlerCallback", params)
-      }
+      stripeSdkModule.sendEvent(context, "onConfirmHandlerCallback", params)
 
       val resultFromJavascript = paymentSheetIntentCreationCallback.await()
       // reset the completable

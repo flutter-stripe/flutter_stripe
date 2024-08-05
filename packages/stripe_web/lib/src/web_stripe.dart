@@ -1,7 +1,6 @@
 //@dart=2.12
 import 'dart:async';
 import 'dart:developer' as dev;
-import 'package:web/web.dart' as web;
 import 'dart:ui' as ui;
 
 import 'package:flutter/widgets.dart';
@@ -10,6 +9,7 @@ import 'package:flutter_stripe_web/platform_pay_button.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:stripe_js/stripe_api.dart' as stripe_js;
 import 'package:stripe_js/stripe_js.dart' as stripe_js;
+import 'package:web/web.dart' as web;
 
 import 'parser/payment_intent.dart';
 import 'parser/payment_methods.dart';
@@ -271,17 +271,17 @@ class WebStripe extends StripePlatform {
   Future<PaymentIntent> handleNextAction(String paymentIntentClientSecret,
       {String? returnURL}) async {
     final stripe_js.PaymentIntentResponse response =
-        await _stripe.handleCardAction(paymentIntentClientSecret);
+        await _stripe.handleNextAction(paymentIntentClientSecret);
 
     return response.paymentIntent!.parse();
   }
 
   @override
-  Future<PaymentIntent> handleNextActionForNonCard(
+  Future<PaymentIntent> handleCardAction(
     String paymentIntentClientSecret,
   ) async {
     final stripe_js.PaymentIntentResponse response =
-        await _stripe.handleNextAction(paymentIntentClientSecret);
+        await _stripe.handleCardAction(paymentIntentClientSecret);
 
     return response.paymentIntent!.parse();
   }
@@ -437,8 +437,6 @@ class WebStripe extends StripePlatform {
       if (response.error != null) {
         throw response.error!;
       }
-
-      print(response);
 
       return response.paymentMethod!.parse();
     } catch (e) {

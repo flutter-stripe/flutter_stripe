@@ -301,10 +301,10 @@ class Stripe {
 
   Future<void> elementsSubmit() => _platform.elementsSubmit();
 
-  Future<PaymentIntent> handleNextActionForNonCard(
+  Future<PaymentIntent> handleCardAction(
     final String paymentIntentClientSecret,
   ) =>
-      _platform.handleNextActionForNonCard(paymentIntentClientSecret);
+      _platform.handleCardAction(paymentIntentClientSecret);
 
   /// Creates a single-use token that represents a credit card’s details.
   ///

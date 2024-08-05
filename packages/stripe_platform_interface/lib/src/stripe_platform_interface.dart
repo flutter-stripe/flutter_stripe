@@ -44,7 +44,7 @@ abstract class StripePlatform extends PlatformInterface {
   Future<PaymentIntent> handleNextAction(String paymentIntentClientSecret,
       {String? returnURL});
 
-  Future<PaymentIntent> handleNextActionForNonCard(
+  Future<PaymentIntent> handleCardAction(
     String paymentIntentClientSecret,
   );
 

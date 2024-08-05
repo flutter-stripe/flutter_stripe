@@ -16,8 +16,6 @@ extension type Stripe.__(JSObject o) {
 
   external StripeElements elements([JsElementsCreateOptions options]);
 
-  external JsPaymentRequest paymentRequest([PaymentRequestCreateOptions options]);
-
   external String? get stripeAccount;
   external set stripeAccount(String? stripeAccount);
 }

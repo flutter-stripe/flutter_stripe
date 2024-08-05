@@ -100,7 +100,7 @@ class MethodChannelStripe extends StripePlatform {
   Future<void> elementsSubmit() => throw UnimplementedError();
 
   @override
-  Future<PaymentIntent> handleNextActionForNonCard(
+  Future<PaymentIntent> handleCardAction(
     final String paymentIntentClientSecret,
   ) =>
       throw UnimplementedError();

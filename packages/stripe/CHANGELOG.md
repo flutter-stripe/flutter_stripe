@@ -1,3 +1,8 @@
+## 11.0.1
+
+**Features**
+- Add deferred payment methods for web
+
 ## 11.0.0
 **Breaking changes**
 - Add support for intentmode setupMode. If you used `IntentMode before` change it to `IntentMode.paymentMode` instead.
@@ -10,15 +15,6 @@
 - #1729 parse unknown error.
 - #1837 fix for deferred payment methods.
 - #1630 handle next action setup for ios.
-
-## 10.2.0
-
-**Features**
-- Add locale change to Android 
-**Fixes**
-- Fix: payment methods can now be filtered on android
-- Fix: on ios payment types like 'ideal' now work due
-
 
 ## 10.2.0
 

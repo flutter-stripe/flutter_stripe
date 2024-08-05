@@ -25,9 +25,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONObject
-import android.content.res.Configuration
-import android.os.Build
-import java.util.Locale
 
 
 @ReactModule(name = StripeSdkModule.NAME)
@@ -163,28 +160,8 @@ class StripeSdkModule(val reactContext: ReactApplicationContext) : ReactContextB
     promise.resolve(null)
   }
 
-    private fun updateLocale(context: ReactApplicationContext, language: String, country: String = "") {
-        val locale = if (country.isEmpty()) {
-            Locale(language)
-        } else {
-            Locale(language, country)
-        }
-        Locale.setDefault(locale)
-
-        val config = context.resources.configuration
-        config.setLocale(locale)
-
-        context.createConfigurationContext(config)
-
-        context.resources.updateConfiguration(config, context.resources.displayMetrics)
-    }
-
   @ReactMethod
   fun initPaymentSheet(params: ReadableMap, promise: Promise) {
-      params.getString("languageCode")?.let {
-          updateLocale(reactApplicationContext, it, params.getString("countryCode") ?: "")
-      }
-
     getCurrentActivityOrResolveWithError(promise)?.let { activity ->
       paymentSheetFragment?.removeFragment(reactApplicationContext)
       paymentSheetFragment = PaymentSheetFragment(reactApplicationContext, promise).also {
