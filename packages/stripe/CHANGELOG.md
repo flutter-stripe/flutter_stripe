@@ -1,3 +1,8 @@
+## 11.0.1
+
+**Features**
+- Add deferred payment methods for web
+
 ## 11.0.0
 **Breaking changes**
 - Add support for intentmode setupMode. If you used `IntentMode before` change it to `IntentMode.paymentMode` instead.

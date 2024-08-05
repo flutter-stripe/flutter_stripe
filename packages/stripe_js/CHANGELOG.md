@@ -1,3 +1,7 @@
+## 6.0.1
+**Features**
+- add method for deferred payment
+
 ## 6.0.0
 
  - aa

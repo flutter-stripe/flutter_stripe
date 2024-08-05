@@ -1,3 +1,8 @@
+## 6.0.1
+
+**Features**
+- add methods for deferred payments
+
 ## 6.0.0
 **Breaking changes**
 - Converted the library to the new js interop so this library can be compiled to WASM.

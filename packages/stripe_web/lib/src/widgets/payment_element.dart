@@ -1,20 +1,34 @@
 import 'dart:js_interop';
-
-import 'package:web/web.dart' as web;
 import 'dart:ui_web' as ui;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
-import '../../flutter_stripe_web.dart';
 import 'package:stripe_js/stripe_api.dart' as js;
 import 'package:stripe_js/stripe_js.dart' as js;
+import 'package:web/web.dart' as web;
 
-export 'package:stripe_js/stripe_api.dart' show PaymentElementLayout;
+import '../../flutter_stripe_web.dart';
+
+export 'package:stripe_js/stripe_api.dart'
+    show
+        PaymentElementLayout,
+        PaymentElementDefaultValues,
+        PaymentElementBillingDetails,
+        PaymentElementBillingDetailsAddress;
 
 typedef PaymentElementTheme = js.ElementTheme;
+typedef PaymentElementAppearance = js.ElementAppearance;
+typedef PaymentElementAppearanceLabels = js.ElementAppearanceLabels;
 
 class PaymentElement extends StatefulWidget {
-  final String clientSecret;
+  final String? clientSecret;
+
+  final int? amount;
+  final String? currency;
+  final String? mode;
+  final String? paymentMethodCreation;
+  final List<String>? paymentMethodTypes;
+
   final double? width;
   final double? height;
   final CardStyle? style;
@@ -26,10 +40,17 @@ class PaymentElement extends StatefulWidget {
   final CardChangedCallback onCardChanged;
   final PaymentElementLayout layout;
   final js.ElementAppearance? appearance;
+  final String? locale;
+  final PaymentElementDefaultValues? paymentElementDefaultValues;
 
   PaymentElement({
     super.key,
-    required this.clientSecret,
+    this.clientSecret,
+    this.amount,
+    this.currency,
+    this.mode,
+    this.paymentMethodTypes,
+    this.paymentMethodCreation,
     this.width,
     this.height,
     this.style,
@@ -41,6 +62,8 @@ class PaymentElement extends StatefulWidget {
     required this.onCardChanged,
     this.layout = PaymentElementLayout.accordion,
     this.appearance,
+    this.locale,
+    this.paymentElementDefaultValues,
   });
 
   @override
@@ -103,7 +126,7 @@ class PaymentElementState extends State<PaymentElement> {
       ..style.border = 'none'
       ..style.width = '100%'
       ..style.height = '${height}'
-      ..style.overflow = 'scroll'
+      ..style.overflow = 'auto'
       ..style.overflowX = 'hidden';
 
     elements = WebStripe.js.elements(createOptions());
@@ -167,14 +190,34 @@ class PaymentElementState extends State<PaymentElement> {
 
   js.JsElementsCreateOptions createOptions() {
     final appearance = widget.appearance ?? js.ElementAppearance();
+
+    if (widget.clientSecret?.isNotEmpty == true) {
+      return js.JsElementsCreateOptions(
+        clientSecret: widget.clientSecret,
+        appearance: appearance.toJson().jsify() as js.JsElementAppearance,
+        locale: widget.locale,
+      );
+    }
+
     return js.JsElementsCreateOptions(
-      clientSecret: widget.clientSecret,
+      amount: widget.amount,
+      currency: widget.currency,
+      mode: widget.mode,
+      paymentMethodTypes: widget.paymentMethodTypes
+          ?.map((pmt) => pmt.toJS)
+          .toList(growable: false)
+          .toJS,
+      paymentMethodCreation: widget.paymentMethodCreation,
       appearance: appearance.toJson().jsify() as js.JsElementAppearance,
+      locale: widget.locale,
     );
   }
 
   js.PaymentElementOptions elementOptions() {
-    return js.PaymentElementOptions(layout: widget.layout);
+    return js.PaymentElementOptions(
+      layout: widget.layout,
+      defaultValues: widget.paymentElementDefaultValues,
+    );
   }
 
   @override

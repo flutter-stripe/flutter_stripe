@@ -8,6 +8,11 @@ extension type JsElementsCreateOptions._(JSObject o) {
     JSArray<Font>? fonts,
     String? locale,
     String? clientSecret,
+    int? amount,
+    String? mode,
+    String? currency,
+    JSArray<JSString>? paymentMethodTypes,
+    String? paymentMethodCreation,
     JsElementAppearance? appearance,
     String loader,
   });
@@ -15,6 +20,11 @@ extension type JsElementsCreateOptions._(JSObject o) {
   external JSArray<Font> fonts;
   external String locale;
   external String clientSecret;
+  external int amount;
+  external String mode;
+  external String currency;
+  external JSArray<JSString> paymentMethodTypes;
+  external String paymentMethodCreation;
   external JsElementAppearance appearance;
 }
 
