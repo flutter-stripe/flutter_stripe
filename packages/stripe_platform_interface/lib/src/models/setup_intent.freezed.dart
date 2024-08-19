@@ -12,7 +12,7 @@ part of 'setup_intent.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SetupIntent _$SetupIntentFromJson(Map<String, dynamic> json) {
   return _SetupIntent.fromJson(json);
@@ -60,8 +60,12 @@ mixin _$SetupIntent {
   /// Mandata data for this paymentintent.
   MandateData? get mandateData => throw _privateConstructorUsedError;
 
+  /// Serializes this SetupIntent to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SetupIntentCopyWith<SetupIntent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -101,6 +105,8 @@ class _$SetupIntentCopyWithImpl<$Res, $Val extends SetupIntent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -169,6 +175,8 @@ class _$SetupIntentCopyWithImpl<$Res, $Val extends SetupIntent>
     ) as $Val);
   }
 
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $LastSetupErrorCopyWith<$Res>? get lastSetupError {
@@ -181,6 +189,8 @@ class _$SetupIntentCopyWithImpl<$Res, $Val extends SetupIntent>
     });
   }
 
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $NextActionCopyWith<$Res>? get nextAction {
@@ -193,6 +203,8 @@ class _$SetupIntentCopyWithImpl<$Res, $Val extends SetupIntent>
     });
   }
 
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $MandateDataCopyWith<$Res>? get mandateData {
@@ -244,6 +256,8 @@ class __$$SetupIntentImplCopyWithImpl<$Res>
       _$SetupIntentImpl _value, $Res Function(_$SetupIntentImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -400,7 +414,7 @@ class _$SetupIntentImpl implements _SetupIntent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SetupIntentImpl &&
@@ -426,7 +440,7 @@ class _$SetupIntentImpl implements _SetupIntent {
                 other.mandateData == mandateData));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -443,7 +457,9 @@ class _$SetupIntentImpl implements _SetupIntent {
       nextAction,
       mandateData);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SetupIntentImplCopyWith<_$SetupIntentImpl> get copyWith =>
@@ -475,59 +491,61 @@ abstract class _SetupIntent implements SetupIntent {
   factory _SetupIntent.fromJson(Map<String, dynamic> json) =
       _$SetupIntentImpl.fromJson;
 
-  @override
-
   /// Unique identifier.
-  String get id;
   @override
+  String get id;
 
   /// Status of the intent.
   ///
   /// See https://stripe.com/docs/payments/intents#intent-statuses.
-  String get status;
   @override
+  String get status;
 
   /// Determines whether the intent is in live mode or in test mode.
-  bool get livemode;
   @override
+  bool get livemode;
 
   /// The client is secret is used for handling the payment from the Client side.
-  String get clientSecret;
   @override
+  String get clientSecret;
 
   /// Id of the payment method used in this intent.
-  String get paymentMethodId;
   @override
+  String get paymentMethodId;
 
   /// Indicates how the intent is used in the future.
-  String get usage;
   @override
+  String get usage;
 
   /// List of payment method types associated with this intent.
-  List<PaymentMethodType> get paymentMethodTypes;
   @override
+  List<PaymentMethodType> get paymentMethodTypes;
 
   /// Localized description that provides additional context to users.
-  String? get description;
   @override
+  String? get description;
 
   /// Timestamp since epoch that represents the time the intent is created.
-  String? get created;
   @override
+  String? get created;
 
   /// Error encountered since last configmration.
-  LastSetupError? get lastSetupError;
   @override
+  LastSetupError? get lastSetupError;
 
   /// Additional action that needs to be taken in order to complete a payment
   /// using the provided resource.
-  NextAction? get nextAction;
   @override
+  NextAction? get nextAction;
 
   /// Mandata data for this paymentintent.
-  MandateData? get mandateData;
   @override
-  @JsonKey(ignore: true)
+  MandateData? get mandateData;
+
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetupIntentImplCopyWith<_$SetupIntentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -544,8 +562,12 @@ mixin _$LastSetupError {
   /// Message.
   String get message => throw _privateConstructorUsedError;
 
+  /// Serializes this LastSetupError to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LastSetupError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LastSetupErrorCopyWith<LastSetupError> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -569,6 +591,8 @@ class _$LastSetupErrorCopyWithImpl<$Res, $Val extends LastSetupError>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LastSetupError
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -607,6 +631,8 @@ class __$$LastSetupErrorImplCopyWithImpl<$Res>
       _$LastSetupErrorImpl _value, $Res Function(_$LastSetupErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LastSetupError
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -649,7 +675,7 @@ class _$LastSetupErrorImpl implements _LastSetupError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LastSetupErrorImpl &&
@@ -657,11 +683,13 @@ class _$LastSetupErrorImpl implements _LastSetupError {
             (identical(other.message, message) || other.message == message));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, code, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LastSetupError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LastSetupErrorImplCopyWith<_$LastSetupErrorImpl> get copyWith =>
@@ -684,16 +712,18 @@ abstract class _LastSetupError implements LastSetupError {
   factory _LastSetupError.fromJson(Map<String, dynamic> json) =
       _$LastSetupErrorImpl.fromJson;
 
-  @override
-
   /// Code.
-  String get code;
   @override
+  String get code;
 
   /// Message.
-  String get message;
   @override
-  @JsonKey(ignore: true)
+  String get message;
+
+  /// Create a copy of LastSetupError
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LastSetupErrorImplCopyWith<_$LastSetupErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -10,8 +10,8 @@ _$CardDetailsConstructorImpl _$$CardDetailsConstructorImplFromJson(
         Map<String, dynamic> json) =>
     _$CardDetailsConstructorImpl(
       number: json['number'] as String?,
-      expirationYear: json['expirationYear'] as int?,
-      expirationMonth: json['expirationMonth'] as int?,
+      expirationYear: (json['expirationYear'] as num?)?.toInt(),
+      expirationMonth: (json['expirationMonth'] as num?)?.toInt(),
       cvc: json['cvc'] as String?,
     );
 

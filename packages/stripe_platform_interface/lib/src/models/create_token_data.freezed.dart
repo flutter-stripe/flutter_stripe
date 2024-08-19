@@ -12,7 +12,7 @@ part of 'create_token_data.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CreateTokenParams _$CreateTokenParamsFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
@@ -85,6 +85,8 @@ mixin _$CreateTokenParams {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this CreateTokenParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -104,6 +106,9 @@ class _$CreateTokenParamsCopyWithImpl<$Res, $Val extends CreateTokenParams>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CreateTokenParams
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -127,6 +132,8 @@ class __$$CreateTokenParamsLegacyImplCopyWithImpl<$Res>
       $Res Function(_$CreateTokenParamsLegacyImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CreateTokenParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -150,6 +157,8 @@ class __$$CreateTokenParamsLegacyImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CreateTokenParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AddressCopyWith<$Res>? get address {
@@ -200,7 +209,7 @@ class _$CreateTokenParamsLegacyImpl implements _CreateTokenParamsLegacy {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateTokenParamsLegacyImpl &&
@@ -209,11 +218,13 @@ class _$CreateTokenParamsLegacyImpl implements _CreateTokenParamsLegacy {
             (identical(other.address, address) || other.address == address));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, type, name, address);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CreateTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateTokenParamsLegacyImplCopyWith<_$CreateTokenParamsLegacyImpl>
@@ -321,7 +332,10 @@ abstract class _CreateTokenParamsLegacy implements CreateTokenParams {
 
   /// Additional address details
   Address? get address;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CreateTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateTokenParamsLegacyImplCopyWith<_$CreateTokenParamsLegacyImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -346,6 +360,8 @@ class __$$CreateTokenParamsCardImplCopyWithImpl<$Res>
       $Res Function(_$CreateTokenParamsCardImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CreateTokenParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -359,6 +375,8 @@ class __$$CreateTokenParamsCardImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CreateTokenParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CardTokenParamsCopyWith<$Res> get params {
@@ -390,18 +408,20 @@ class _$CreateTokenParamsCardImpl implements _CreateTokenParamsCard {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateTokenParamsCardImpl &&
             (identical(other.params, params) || other.params == params));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, params);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CreateTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateTokenParamsCardImplCopyWith<_$CreateTokenParamsCardImpl>
@@ -500,7 +520,10 @@ abstract class _CreateTokenParamsCard implements CreateTokenParams {
       _$CreateTokenParamsCardImpl.fromJson;
 
   CardTokenParams get params;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CreateTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateTokenParamsCardImplCopyWith<_$CreateTokenParamsCardImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -527,6 +550,8 @@ class __$$CreateTokenParamsBankAccountImplCopyWithImpl<$Res>
       $Res Function(_$CreateTokenParamsBankAccountImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CreateTokenParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -540,6 +565,8 @@ class __$$CreateTokenParamsBankAccountImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CreateTokenParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BankAccountTokenParamsCopyWith<$Res> get params {
@@ -574,18 +601,20 @@ class _$CreateTokenParamsBankAccountImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateTokenParamsBankAccountImpl &&
             (identical(other.params, params) || other.params == params));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, params);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CreateTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateTokenParamsBankAccountImplCopyWith<
@@ -686,7 +715,10 @@ abstract class _CreateTokenParamsBankAccount implements CreateTokenParams {
       _$CreateTokenParamsBankAccountImpl.fromJson;
 
   BankAccountTokenParams get params;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CreateTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateTokenParamsBankAccountImplCopyWith<
           _$CreateTokenParamsBankAccountImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -711,6 +743,8 @@ class __$$CreateTokenParamsPIIImplCopyWithImpl<$Res>
       $Res Function(_$CreateTokenParamsPIIImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CreateTokenParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -724,6 +758,8 @@ class __$$CreateTokenParamsPIIImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CreateTokenParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PIITokenParamsCopyWith<$Res> get params {
@@ -755,18 +791,20 @@ class _$CreateTokenParamsPIIImpl implements _CreateTokenParamsPII {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateTokenParamsPIIImpl &&
             (identical(other.params, params) || other.params == params));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, params);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CreateTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateTokenParamsPIIImplCopyWith<_$CreateTokenParamsPIIImpl>
@@ -866,7 +904,10 @@ abstract class _CreateTokenParamsPII implements CreateTokenParams {
       _$CreateTokenParamsPIIImpl.fromJson;
 
   PIITokenParams get params;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CreateTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateTokenParamsPIIImplCopyWith<_$CreateTokenParamsPIIImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -889,8 +930,12 @@ mixin _$CardTokenParams {
   /// The three letter ISO 4217 code for the currency.
   String? get currency => throw _privateConstructorUsedError;
 
+  /// Serializes this CardTokenParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CardTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CardTokenParamsCopyWith<CardTokenParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -916,6 +961,8 @@ class _$CardTokenParamsCopyWithImpl<$Res, $Val extends CardTokenParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CardTokenParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -944,6 +991,8 @@ class _$CardTokenParamsCopyWithImpl<$Res, $Val extends CardTokenParams>
     ) as $Val);
   }
 
+  /// Create a copy of CardTokenParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AddressCopyWith<$Res>? get address {
@@ -979,6 +1028,8 @@ class __$$CardTokenParamsImplCopyWithImpl<$Res>
       _$CardTokenParamsImpl _value, $Res Function(_$CardTokenParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CardTokenParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1040,7 +1091,7 @@ class _$CardTokenParamsImpl implements _CardTokenParams {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardTokenParamsImpl &&
@@ -1051,11 +1102,13 @@ class _$CardTokenParamsImpl implements _CardTokenParams {
                 other.currency == currency));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, type, name, address, currency);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CardTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CardTokenParamsImplCopyWith<_$CardTokenParamsImpl> get copyWith =>
@@ -1080,24 +1133,26 @@ abstract class _CardTokenParams implements CardTokenParams {
   factory _CardTokenParams.fromJson(Map<String, dynamic> json) =
       _$CardTokenParamsImpl.fromJson;
 
-  @override
-
   /// Type of token.
-  TokenType get type;
   @override
+  TokenType get type;
 
   /// Name of the card holder
-  String? get name;
   @override
+  String? get name;
 
   /// Additional address details
-  Address? get address;
   @override
+  Address? get address;
 
   /// The three letter ISO 4217 code for the currency.
-  String? get currency;
   @override
-  @JsonKey(ignore: true)
+  String? get currency;
+
+  /// Create a copy of CardTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CardTokenParamsImplCopyWith<_$CardTokenParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1114,8 +1169,12 @@ mixin _$PIITokenParams {
   /// The user's personal ID number
   String get personalId => throw _privateConstructorUsedError;
 
+  /// Serializes this PIITokenParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PIITokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PIITokenParamsCopyWith<PIITokenParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1139,6 +1198,8 @@ class _$PIITokenParamsCopyWithImpl<$Res, $Val extends PIITokenParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PIITokenParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1177,6 +1238,8 @@ class __$$PIITokenParamsImplCopyWithImpl<$Res>
       _$PIITokenParamsImpl _value, $Res Function(_$PIITokenParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PIITokenParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1220,7 +1283,7 @@ class _$PIITokenParamsImpl implements _PIITokenParams {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PIITokenParamsImpl &&
@@ -1229,11 +1292,13 @@ class _$PIITokenParamsImpl implements _PIITokenParams {
                 other.personalId == personalId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, type, personalId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PIITokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PIITokenParamsImplCopyWith<_$PIITokenParamsImpl> get copyWith =>
@@ -1256,16 +1321,18 @@ abstract class _PIITokenParams implements PIITokenParams {
   factory _PIITokenParams.fromJson(Map<String, dynamic> json) =
       _$PIITokenParamsImpl.fromJson;
 
-  @override
-
   /// Type of token.
-  TokenType get type;
   @override
+  TokenType get type;
 
   /// The user's personal ID number
-  String get personalId;
   @override
-  @JsonKey(ignore: true)
+  String get personalId;
+
+  /// Create a copy of PIITokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PIITokenParamsImplCopyWith<_$PIITokenParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1299,8 +1366,12 @@ mixin _$BankAccountTokenParams {
   /// The routing number of the bank account (e.g. needer for US accounts).
   String? get routingNumber => throw _privateConstructorUsedError;
 
+  /// Serializes this BankAccountTokenParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BankAccountTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BankAccountTokenParamsCopyWith<BankAccountTokenParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1332,6 +1403,8 @@ class _$BankAccountTokenParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BankAccountTokenParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1405,6 +1478,8 @@ class __$$BankAccountTokenParamsImplCopyWithImpl<$Res>
       $Res Function(_$BankAccountTokenParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BankAccountTokenParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1499,7 +1574,7 @@ class _$BankAccountTokenParamsImpl implements _BankAccountTokenParams {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BankAccountTokenParamsImpl &&
@@ -1517,12 +1592,14 @@ class _$BankAccountTokenParamsImpl implements _BankAccountTokenParams {
                 other.routingNumber == routingNumber));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, type, accountNumber, country,
       currency, accountHolderName, accountHolderType, routingNumber);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BankAccountTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BankAccountTokenParamsImplCopyWith<_$BankAccountTokenParamsImpl>
@@ -1550,36 +1627,38 @@ abstract class _BankAccountTokenParams implements BankAccountTokenParams {
   factory _BankAccountTokenParams.fromJson(Map<String, dynamic> json) =
       _$BankAccountTokenParamsImpl.fromJson;
 
-  @override
-
   /// Type of token.
-  TokenType get type;
   @override
+  TokenType get type;
 
   /// unique number of the account.
-  String get accountNumber;
   @override
+  String get accountNumber;
 
   /// 2 letter code of the country where the account is located
-  String get country;
   @override
+  String get country;
 
   /// The three letter ISO 4217 code for the currency.
-  String get currency;
   @override
+  String get currency;
 
   /// Full name of the account holder
-  String? get accountHolderName;
   @override
+  String? get accountHolderName;
 
   /// Entity that is holder of the account.
-  BankAccountHolderType? get accountHolderType;
   @override
+  BankAccountHolderType? get accountHolderType;
 
   /// The routing number of the bank account (e.g. needer for US accounts).
-  String? get routingNumber;
   @override
-  @JsonKey(ignore: true)
+  String? get routingNumber;
+
+  /// Create a copy of BankAccountTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BankAccountTokenParamsImplCopyWith<_$BankAccountTokenParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1609,8 +1688,12 @@ mixin _$TokenData {
   /// Card data
   CardData? get card => throw _privateConstructorUsedError;
 
+  /// Serializes this TokenData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TokenData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TokenDataCopyWith<TokenData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1642,6 +1725,8 @@ class _$TokenDataCopyWithImpl<$Res, $Val extends TokenData>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TokenData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1680,6 +1765,8 @@ class _$TokenDataCopyWithImpl<$Res, $Val extends TokenData>
     ) as $Val);
   }
 
+  /// Create a copy of TokenData
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BankAccountCopyWith<$Res>? get bankAccount {
@@ -1692,6 +1779,8 @@ class _$TokenDataCopyWithImpl<$Res, $Val extends TokenData>
     });
   }
 
+  /// Create a copy of TokenData
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CardDataCopyWith<$Res>? get card {
@@ -1735,6 +1824,8 @@ class __$$TokenDataImplCopyWithImpl<$Res>
       _$TokenDataImpl _value, $Res Function(_$TokenDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TokenData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1820,7 +1911,7 @@ class _$TokenDataImpl extends _TokenData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TokenDataImpl &&
@@ -1834,12 +1925,14 @@ class _$TokenDataImpl extends _TokenData {
             (identical(other.card, card) || other.card == card));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, created, type, livemode, bankAccount, card);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TokenData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TokenDataImplCopyWith<_$TokenDataImpl> get copyWith =>
@@ -1866,33 +1959,35 @@ abstract class _TokenData extends TokenData {
   factory _TokenData.fromJson(Map<String, dynamic> json) =
       _$TokenDataImpl.fromJson;
 
-  @override
-
   /// Unique identifier of the token
-  String get id;
   @override
+  String get id;
 
   /// Timestamp when token was created
+  @override
   @JsonKey(name: 'created')
   String get created;
-  @override
 
   /// Type of the token
-  TokenType get type;
   @override
+  TokenType get type;
 
   /// Whether or not the object exists in livemode
-  bool get livemode;
   @override
+  bool get livemode;
 
   /// Bank account data
-  BankAccount? get bankAccount;
   @override
+  BankAccount? get bankAccount;
 
   /// Card data
-  CardData? get card;
   @override
-  @JsonKey(ignore: true)
+  CardData? get card;
+
+  /// Create a copy of TokenData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TokenDataImplCopyWith<_$TokenDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1933,8 +2028,12 @@ mixin _$CardData {
   /// Address of the cardholder
   Address? get address => throw _privateConstructorUsedError;
 
+  /// Serializes this CardData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CardData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CardDataCopyWith<CardData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1969,6 +2068,8 @@ class _$CardDataCopyWithImpl<$Res, $Val extends CardData>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CardData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2027,6 +2128,8 @@ class _$CardDataCopyWithImpl<$Res, $Val extends CardData>
     ) as $Val);
   }
 
+  /// Create a copy of CardData
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AddressCopyWith<$Res>? get address {
@@ -2072,6 +2175,8 @@ class __$$CardDataImplCopyWithImpl<$Res>
       _$CardDataImpl _value, $Res Function(_$CardDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CardData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2196,7 +2301,7 @@ class _$CardDataImpl implements _CardData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardDataImpl &&
@@ -2214,12 +2319,14 @@ class _$CardDataImpl implements _CardData {
             (identical(other.address, address) || other.address == address));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, brand, country, currency,
       expYear, expMonth, name, funding, last4, address);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CardData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CardDataImplCopyWith<_$CardDataImpl> get copyWith =>
@@ -2249,48 +2356,50 @@ abstract class _CardData implements CardData {
   factory _CardData.fromJson(Map<String, dynamic> json) =
       _$CardDataImpl.fromJson;
 
-  @override
-
   /// Unique identifier
-  String? get id;
   @override
+  String? get id;
 
   /// The brand associated to the card e.g. (visa, amex).
-  String get brand;
   @override
+  String get brand;
 
   /// Two letter iso code.
-  String? get country;
   @override
+  String? get country;
 
   /// The three letter ISO 4217 code for the currency.
-  String? get currency;
   @override
+  String? get currency;
 
   /// four digit number representing the year of expiry of the card.
-  int? get expYear;
   @override
+  int? get expYear;
 
   /// two digit number representing the month of expire of the card.
-  int? get expMonth;
   @override
+  int? get expMonth;
 
   /// Fullname of the cardholder
-  String? get name;
   @override
+  String? get name;
 
   /// card funding type e.g. (credit, debit).
-  String? get funding;
   @override
+  String? get funding;
 
   /// last four digits of the card.
-  String? get last4;
   @override
+  String? get last4;
 
   /// Address of the cardholder
-  Address? get address;
   @override
-  @JsonKey(ignore: true)
+  Address? get address;
+
+  /// Create a copy of CardData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CardDataImplCopyWith<_$CardDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2334,8 +2443,12 @@ mixin _$BankAccount {
   /// Last four numbers of the bank account number
   String? get last4 => throw _privateConstructorUsedError;
 
+  /// Serializes this BankAccount to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BankAccount
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BankAccountCopyWith<BankAccount> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2369,6 +2482,8 @@ class _$BankAccountCopyWithImpl<$Res, $Val extends BankAccount>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BankAccount
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2457,6 +2572,8 @@ class __$$BankAccountImplCopyWithImpl<$Res>
       _$BankAccountImpl _value, $Res Function(_$BankAccountImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BankAccount
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2582,7 +2699,7 @@ class _$BankAccountImpl implements _BankAccount {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BankAccountImpl &&
@@ -2604,7 +2721,7 @@ class _$BankAccountImpl implements _BankAccount {
             (identical(other.last4, last4) || other.last4 == last4));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -2619,7 +2736,9 @@ class _$BankAccountImpl implements _BankAccount {
       fingerprint,
       last4);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BankAccount
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BankAccountImplCopyWith<_$BankAccountImpl> get copyWith =>
@@ -2649,50 +2768,52 @@ abstract class _BankAccount implements BankAccount {
   factory _BankAccount.fromJson(Map<String, dynamic> json) =
       _$BankAccountImpl.fromJson;
 
-  @override
-
   /// Unique id for this bank account
-  String get id;
   @override
+  String get id;
 
   /// Entity that is holder of the account.
-  BankAccountHolderType? get accountHolderType;
   @override
+  BankAccountHolderType? get accountHolderType;
 
   /// Name of the bank where the account is registered.
-  String? get bankName;
   @override
+  String? get bankName;
 
   /// Full name of the account holder
-  String? get accountHolderName;
   @override
+  String? get accountHolderName;
 
   /// 2 letter code of the country where the account is located
-  String? get country;
   @override
+  String? get country;
 
   /// The three letter ISO 4217 code for the currency.
-  String? get currency;
   @override
+  String? get currency;
 
   /// The routing number of the bank account (e.g. needer for US accounts).
-  String? get routingNumber;
   @override
+  String? get routingNumber;
 
   /// Status of the bank account.
-  BankAccountStatus? get status;
   @override
+  BankAccountStatus? get status;
 
   /// Uniquely identifies the particular bank account.
   ///
   /// You can use this to check whether or not two bank accounts are the same.
-  String? get fingerprint;
   @override
+  String? get fingerprint;
 
   /// Last four numbers of the bank account number
-  String? get last4;
   @override
-  @JsonKey(ignore: true)
+  String? get last4;
+
+  /// Create a copy of BankAccount
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BankAccountImplCopyWith<_$BankAccountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
