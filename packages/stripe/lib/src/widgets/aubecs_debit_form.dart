@@ -11,8 +11,8 @@ class AubecsFormField extends StatelessWidget {
     this.style,
     this.companyName,
     this.controller,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +36,7 @@ class _AubecsFormField extends StatefulWidget {
     this.style,
     this.companyName,
     this.controller,
-    Key? key,
-  }) : super(key: key);
+  });
 
   @override
   _AubecsFormFieldState createState() => _AubecsFormFieldState();

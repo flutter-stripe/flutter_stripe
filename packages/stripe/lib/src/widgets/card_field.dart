@@ -14,7 +14,7 @@ import 'keep_visible_on_focus.dart';
 class CardField extends StatefulWidget {
   const CardField({
     this.onCardChanged,
-    Key? key,
+    super.key,
     this.onFocus,
     this.decoration,
     this.enablePostalCode = false,
@@ -33,7 +33,7 @@ class CardField extends StatefulWidget {
     this.preferredNetworks,
     this.androidPlatformViewRenderType =
         AndroidPlatformViewRenderType.expensiveAndroidView,
-  }) : super(key: key);
+  });
 
   /// Decoration related to the input fields.
   final InputDecoration? decoration;
@@ -282,7 +282,6 @@ class _MethodChannelCardField extends StatefulWidget {
     this.onCardChanged,
     required this.controller,
     required this.androidPlatformViewRenderType,
-    Key? key,
     this.onFocus,
     this.style,
     this.placeholder,
@@ -301,8 +300,7 @@ class _MethodChannelCardField extends StatefulWidget {
         constraints = (width != null || height != null)
             ? constraints?.tighten(width: width, height: height) ??
                 BoxConstraints.tightFor(width: width, height: height)
-            : constraints,
-        super(key: key);
+            : constraints;
 
   final BoxConstraints? constraints;
   final CardFocusCallback? onFocus;
@@ -613,12 +611,12 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
 
 class _AndroidCardField extends StatelessWidget {
   const _AndroidCardField({
-    Key? key,
     required this.viewType,
     required this.creationParams,
     required this.onPlatformViewCreated,
     required this.androidPlatformViewRenderType,
-  }) : super(key: key);
+    super.key,
+  });
 
   final AndroidPlatformViewRenderType androidPlatformViewRenderType;
   final String viewType;
@@ -673,11 +671,11 @@ class _AndroidCardField extends StatelessWidget {
 
 class _UiKitCardField extends StatelessWidget {
   const _UiKitCardField({
-    Key? key,
     required this.viewType,
     required this.creationParams,
     required this.onPlatformViewCreated,
-  }) : super(key: key);
+    super.key,
+  });
 
   final String viewType;
   final Map<String, dynamic> creationParams;
