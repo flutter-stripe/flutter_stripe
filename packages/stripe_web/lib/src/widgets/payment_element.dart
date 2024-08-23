@@ -2,12 +2,13 @@ import 'dart:js_interop';
 
 import 'package:web/web.dart' as web;
 import 'dart:ui_web' as ui;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
-import '../../flutter_stripe_web.dart';
 import 'package:stripe_js/stripe_api.dart' as js;
 import 'package:stripe_js/stripe_js.dart' as js;
+
+import '../../flutter_stripe_web.dart';
 
 export 'package:stripe_js/stripe_api.dart' show PaymentElementLayout;
 
@@ -26,6 +27,7 @@ class PaymentElement extends StatefulWidget {
   final CardChangedCallback onCardChanged;
   final PaymentElementLayout layout;
   final js.ElementAppearance? appearance;
+  final js.PaymentElementDefaultValues? defaultValues;
 
   PaymentElement({
     super.key,
@@ -41,6 +43,7 @@ class PaymentElement extends StatefulWidget {
     required this.onCardChanged,
     this.layout = PaymentElementLayout.accordion,
     this.appearance,
+    this.defaultValues,
   });
 
   @override
@@ -174,7 +177,8 @@ class PaymentElementState extends State<PaymentElement> {
   }
 
   js.PaymentElementOptions elementOptions() {
-    return js.PaymentElementOptions(layout: widget.layout);
+    return js.PaymentElementOptions(
+        layout: widget.layout, defaultValues: widget.defaultValues);
   }
 
   @override
