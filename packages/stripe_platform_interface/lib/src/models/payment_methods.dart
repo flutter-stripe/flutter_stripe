@@ -261,10 +261,10 @@ class UsBankAccount with _$UsBankAccount {
     String? last4,
 
     /// The bank account type of the holder
-     BankAccountHolderType? accountHolderType,
+    BankAccountHolderType? accountHolderType,
 
     /// The account type
-     UsBankAccountType? accountType,
+    UsBankAccountType? accountType,
 
     /// The name of the bank of the account
     String? bankName,

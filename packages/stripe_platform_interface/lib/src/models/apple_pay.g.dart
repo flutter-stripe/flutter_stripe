@@ -14,8 +14,8 @@ _$ApplePayShippingMethodImpl _$$ApplePayShippingMethodImplFromJson(
       identifier: json['identifier'] as String,
       isPending: json['isPending'] as bool?,
       detail: json['detail'] as String?,
-      startDate: json['startDate'] as int?,
-      endDate: json['endDate'] as int?,
+      startDate: (json['startDate'] as num?)?.toInt(),
+      endDate: (json['endDate'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$ApplePayShippingMethodImplToJson(
@@ -53,7 +53,7 @@ _$DeferredSummaryItemImpl _$$DeferredSummaryItemImplFromJson(
     _$DeferredSummaryItemImpl(
       label: json['label'] as String,
       amount: json['amount'] as String,
-      deferredDate: json['deferredDate'] as int,
+      deferredDate: (json['deferredDate'] as num).toInt(),
       $type: json['paymentType'] as String?,
     );
 
@@ -73,9 +73,9 @@ _$RecurringCartSummaryItemImpl _$$RecurringCartSummaryItemImplFromJson(
       amount: json['amount'] as String,
       intervalUnit:
           $enumDecode(_$ApplePayIntervalUnitEnumMap, json['intervalUnit']),
-      intervalCount: json['intervalCount'] as int,
-      startDate: json['startDate'] as int?,
-      endDate: json['endDate'] as int?,
+      intervalCount: (json['intervalCount'] as num).toInt(),
+      startDate: (json['startDate'] as num?)?.toInt(),
+      endDate: (json['endDate'] as num?)?.toInt(),
       $type: json['paymentType'] as String?,
     );
 

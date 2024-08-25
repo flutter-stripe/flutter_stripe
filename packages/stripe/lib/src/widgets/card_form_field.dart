@@ -20,7 +20,6 @@ import 'keep_visible_on_focus.dart';
 class CardFormField extends StatefulWidget {
   const CardFormField({
     this.onCardChanged,
-    Key? key,
     this.onFocus,
     this.enablePostalCode = true,
     this.countryCode,
@@ -31,7 +30,8 @@ class CardFormField extends StatefulWidget {
     this.disabled = false,
     this.controller,
     this.preferredNetworks,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Callback that will be executed when a specific field gets focus.
   final CardFocusCallback? onFocus;
@@ -216,7 +216,6 @@ class _MethodChannelCardFormField extends StatefulWidget {
   _MethodChannelCardFormField({
     this.onCardChanged,
     required this.controller,
-    Key? key,
     this.onFocus,
     this.style,
     this.enablePostalCode = true,
@@ -234,8 +233,7 @@ class _MethodChannelCardFormField extends StatefulWidget {
         constraints = (width != null || height != null)
             ? constraints?.tighten(width: width, height: height) ??
                 BoxConstraints.tightFor(width: width, height: height)
-            : constraints,
-        super(key: key);
+            : constraints;
 
   final BoxConstraints? constraints;
   final CardFocusCallback? onFocus;
@@ -526,11 +524,11 @@ class _MethodChannelCardFormFieldState
 
 class _AndroidCardFormField extends StatelessWidget {
   const _AndroidCardFormField({
-    Key? key,
     required this.viewType,
     required this.creationParams,
     required this.onPlatformViewCreated,
-  }) : super(key: key);
+    super.key,
+  });
 
   final String viewType;
   final Map<String, dynamic> creationParams;
@@ -568,11 +566,11 @@ class _AndroidCardFormField extends StatelessWidget {
 
 class _UiKitCardFormField extends StatelessWidget {
   const _UiKitCardFormField({
-    Key? key,
     required this.viewType,
     required this.creationParams,
     required this.onPlatformViewCreated,
-  }) : super(key: key);
+    super.key,
+  });
 
   final String viewType;
   final Map<String, dynamic> creationParams;

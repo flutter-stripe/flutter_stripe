@@ -78,7 +78,7 @@ _$CreateGooglePayPaymentParamsImpl _$$CreateGooglePayPaymentParamsImplFromJson(
         Map<String, dynamic> json) =>
     _$CreateGooglePayPaymentParamsImpl(
       currencyCode: json['currencyCode'] as String,
-      amount: json['amount'] as int,
+      amount: (json['amount'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$CreateGooglePayPaymentParamsImplToJson(

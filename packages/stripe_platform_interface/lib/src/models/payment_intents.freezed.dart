@@ -12,7 +12,7 @@ part of 'payment_intents.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 PaymentIntent _$PaymentIntentFromJson(Map<String, dynamic> json) {
   return _PaymentIntent.fromJson(json);
@@ -75,8 +75,12 @@ mixin _$PaymentIntent {
   /// This field is only available on stripe web.
   String? get latestCharge => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentIntent to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentIntentCopyWith<PaymentIntent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -121,6 +125,8 @@ class _$PaymentIntentCopyWithImpl<$Res, $Val extends PaymentIntent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentIntent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -214,6 +220,8 @@ class _$PaymentIntentCopyWithImpl<$Res, $Val extends PaymentIntent>
     ) as $Val);
   }
 
+  /// Create a copy of PaymentIntent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $NextActionCopyWith<$Res>? get nextAction {
@@ -226,6 +234,8 @@ class _$PaymentIntentCopyWithImpl<$Res, $Val extends PaymentIntent>
     });
   }
 
+  /// Create a copy of PaymentIntent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ShippingDetailsCopyWith<$Res>? get shipping {
@@ -238,6 +248,8 @@ class _$PaymentIntentCopyWithImpl<$Res, $Val extends PaymentIntent>
     });
   }
 
+  /// Create a copy of PaymentIntent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $MandateDataCopyWith<$Res>? get mandateData {
@@ -294,6 +306,8 @@ class __$$PaymentIntentImplCopyWithImpl<$Res>
       _$PaymentIntentImpl _value, $Res Function(_$PaymentIntentImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentIntent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -491,7 +505,7 @@ class _$PaymentIntentImpl implements _PaymentIntent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentIntentImpl &&
@@ -527,7 +541,7 @@ class _$PaymentIntentImpl implements _PaymentIntent {
                 other.latestCharge == latestCharge));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -549,7 +563,9 @@ class _$PaymentIntentImpl implements _PaymentIntent {
       mandateData,
       latestCharge);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentIntentImplCopyWith<_$PaymentIntentImpl> get copyWith =>
@@ -586,79 +602,81 @@ abstract class _PaymentIntent implements PaymentIntent {
   factory _PaymentIntent.fromJson(Map<String, dynamic> json) =
       _$PaymentIntentImpl.fromJson;
 
-  @override
-
   /// Unique identifier.
-  String get id;
   @override
+  String get id;
 
   /// Amount that will be collected in the payment intent.
-  num get amount;
   @override
+  num get amount;
 
   /// Timestamp since epoch that represents the time the intent is created.
-  String get created;
   @override
+  String get created;
 
   /// The three letter ISO 4217 code for the currency.
-  String get currency;
   @override
+  String get currency;
 
   /// Current status of the intent.
-  PaymentIntentsStatus get status;
   @override
+  PaymentIntentsStatus get status;
 
   /// The client is secret is used for handling the payment from the Client side.
-  String get clientSecret;
   @override
+  String get clientSecret;
 
   /// Determines whether the intent is in live mode or in test mode.
-  bool get livemode;
   @override
+  bool get livemode;
 
   /// How the funds will be caputure from the customer's account.
-  CaptureMethod get captureMethod;
   @override
+  CaptureMethod get captureMethod;
 
   /// Method of how the payment will be confirmed.
-  ConfirmationMethod get confirmationMethod;
   @override
+  ConfirmationMethod get confirmationMethod;
 
   /// Id of the payment method used in this intent.
-  String? get paymentMethodId;
   @override
+  String? get paymentMethodId;
 
   /// Localized description that provides additional context to users.
-  String? get description;
   @override
+  String? get description;
 
   /// Email address where the receipt will be send to.
-  String? get receiptEmail;
   @override
+  String? get receiptEmail;
 
   /// Timestamp since epoch when the intent is cancelled.
-  String? get canceledAt;
   @override
+  String? get canceledAt;
 
   /// Additional action that needs to be taken in order to complete a payment
   /// using the provided resource.
-  NextAction? get nextAction;
   @override
+  NextAction? get nextAction;
 
   /// Shipping information of the payment intent.
-  ShippingDetails? get shipping;
   @override
+  ShippingDetails? get shipping;
 
   /// Mandata data for this paymentintent.
-  MandateData? get mandateData;
   @override
+  MandateData? get mandateData;
 
   /// The latest charge created by this payment intent.
   ///
   /// This field is only available on stripe web.
-  String? get latestCharge;
   @override
-  @JsonKey(ignore: true)
+  String? get latestCharge;
+
+  /// Create a copy of PaymentIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentIntentImplCopyWith<_$PaymentIntentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -685,8 +703,12 @@ mixin _$ShippingDetails {
   /// with commas.
   String? get trackingNumber => throw _privateConstructorUsedError;
 
+  /// Serializes this ShippingDetails to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShippingDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ShippingDetailsCopyWith<ShippingDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -717,6 +739,8 @@ class _$ShippingDetailsCopyWithImpl<$Res, $Val extends ShippingDetails>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ShippingDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -750,6 +774,8 @@ class _$ShippingDetailsCopyWithImpl<$Res, $Val extends ShippingDetails>
     ) as $Val);
   }
 
+  /// Create a copy of ShippingDetails
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AddressCopyWith<$Res> get address {
@@ -786,6 +812,8 @@ class __$$ShippingDetailsImplCopyWithImpl<$Res>
       _$ShippingDetailsImpl _value, $Res Function(_$ShippingDetailsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShippingDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -861,7 +889,7 @@ class _$ShippingDetailsImpl implements _ShippingDetails {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ShippingDetailsImpl &&
@@ -873,12 +901,14 @@ class _$ShippingDetailsImpl implements _ShippingDetails {
                 other.trackingNumber == trackingNumber));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, address, name, carrier, phone, trackingNumber);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShippingDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShippingDetailsImplCopyWith<_$ShippingDetailsImpl> get copyWith =>
@@ -904,29 +934,31 @@ abstract class _ShippingDetails implements ShippingDetails {
   factory _ShippingDetails.fromJson(Map<String, dynamic> json) =
       _$ShippingDetailsImpl.fromJson;
 
-  @override
-
   /// Recipient address.
-  Address get address;
   @override
+  Address get address;
 
   /// Recipient name.
-  String? get name;
   @override
+  String? get name;
 
   /// Deliver service that will ship the product
-  String? get carrier;
   @override
+  String? get carrier;
 
   /// Recipient phone number.
-  String? get phone;
   @override
+  String? get phone;
 
   /// Tracking number of the shipment. If multiple tracking numbers separate them
   /// with commas.
-  String? get trackingNumber;
   @override
-  @JsonKey(ignore: true)
+  String? get trackingNumber;
+
+  /// Create a copy of ShippingDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShippingDetailsImplCopyWith<_$ShippingDetailsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,7 +12,7 @@ part of 'card_details.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CardDetails _$CardDetailsFromJson(Map<String, dynamic> json) {
   return _CardDetailsConstructor.fromJson(json);
@@ -25,8 +25,12 @@ mixin _$CardDetails {
   int? get expirationMonth => throw _privateConstructorUsedError;
   String? get cvc => throw _privateConstructorUsedError;
 
+  /// Serializes this CardDetails to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CardDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CardDetailsCopyWith<CardDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$CardDetailsCopyWithImpl<$Res, $Val extends CardDetails>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CardDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -102,6 +108,8 @@ class __$$CardDetailsConstructorImplCopyWithImpl<$Res>
       $Res Function(_$CardDetailsConstructorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CardDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -157,7 +165,7 @@ class _$CardDetailsConstructorImpl extends _CardDetailsConstructor {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardDetailsConstructorImpl &&
@@ -169,12 +177,14 @@ class _$CardDetailsConstructorImpl extends _CardDetailsConstructor {
             (identical(other.cvc, cvc) || other.cvc == cvc));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, number, expirationYear, expirationMonth, cvc);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CardDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CardDetailsConstructorImplCopyWith<_$CardDetailsConstructorImpl>
@@ -208,8 +218,11 @@ abstract class _CardDetailsConstructor extends CardDetails {
   int? get expirationMonth;
   @override
   String? get cvc;
+
+  /// Create a copy of CardDetails
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CardDetailsConstructorImplCopyWith<_$CardDetailsConstructorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

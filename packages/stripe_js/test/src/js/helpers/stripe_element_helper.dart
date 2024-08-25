@@ -26,7 +26,6 @@ extension ElementWaitFor on web.Element {
     String selectors, {
     Duration timeout = const Duration(seconds: 2),
   }) async {
-    web.console.log(this.innerHTML.toJS);
     final element = this.querySelector(selectors);
     if (element != null) {
       return element;
