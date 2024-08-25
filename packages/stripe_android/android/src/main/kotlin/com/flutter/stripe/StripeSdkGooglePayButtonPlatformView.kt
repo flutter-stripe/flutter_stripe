@@ -38,9 +38,6 @@ class StripeSdkGooglePayButtonPlatformView(
             googlePayButtonManager.borderRadius(payButton, creationParams["borderRadius"] as Int)
         }
         payButton.initialize()
-        payButton.getChildAt(0).setOnClickListener {
-            channel.invokeMethod("onPressed", null)
-        }
     }
 
     override fun getView(): View {
@@ -53,5 +50,12 @@ class StripeSdkGooglePayButtonPlatformView(
 
     override fun onFlutterViewAttached(flutterView: View) {
         googlePayButtonManager.onAfterUpdateTransaction(payButton)
+
+        // wait until view is attached to the view hierarchy
+        payButton.post {
+            (payButton.parent as View).setOnClickListener {
+                channel.invokeMethod("onPressed", null)
+            }
+        };
     }
 }
