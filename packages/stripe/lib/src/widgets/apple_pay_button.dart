@@ -14,7 +14,7 @@ const double _kApplePayButtonDefaultHeight = 48;
 
 class ApplePayButton extends StatelessWidget {
   ApplePayButton({
-    Key? key,
+    super.key,
     this.style = PlatformButtonStyle.automatic,
     this.type = PlatformButtonType.plain,
     this.cornerRadius = 4,
@@ -30,8 +30,7 @@ class ApplePayButton extends StatelessWidget {
         constraints = (width != null || height != null)
             ? constraints?.tighten(width: width, height: height) ??
                 BoxConstraints.tightFor(width: width, height: height)
-            : constraints,
-        super(key: key);
+            : constraints;
 
   /// Style of the the apple payment button.
   ///
@@ -113,7 +112,6 @@ class ApplePayButton extends StatelessWidget {
 
 class _UiKitApplePayButton extends StatefulWidget {
   const _UiKitApplePayButton({
-    Key? key,
     required this.style,
     required this.type,
     this.cornerRadius = 4,
@@ -122,7 +120,7 @@ class _UiKitApplePayButton extends StatefulWidget {
     this.onCouponCodeEntered,
     this.onShippingMethodSelected,
     this.onOrderTracking,
-  }) : super(key: key);
+  });
 
   final PlatformButtonStyle style;
   final PlatformButtonType type;

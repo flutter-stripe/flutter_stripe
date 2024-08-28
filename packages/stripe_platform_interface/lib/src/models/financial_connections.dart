@@ -146,6 +146,7 @@ class BalanceRefresh with _$BalanceRefresh {
       _$BalanceRefreshFromJson(json);
 }
 
+/// information related to the bank account
 @freezed
 class AccountBalance with _$AccountBalance {
   @JsonSerializable(explicitToJson: true)

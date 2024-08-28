@@ -123,7 +123,7 @@ Map<String, dynamic> _$$IntentConfigurationImplToJson(
 _$PaymentModeImpl _$$PaymentModeImplFromJson(Map<String, dynamic> json) =>
     _$PaymentModeImpl(
       currencyCode: json['currencyCode'] as String,
-      amount: json['amount'] as int,
+      amount: (json['amount'] as num).toInt(),
       setupFutureUsage: $enumDecodeNullable(
           _$IntentFutureUsageEnumMap, json['setupFutureUsage']),
       captureMethod:
@@ -450,7 +450,7 @@ Map<String, dynamic> _$$PresentParametersImplToJson(
 _$PaymentSheetPresentOptionsImpl _$$PaymentSheetPresentOptionsImplFromJson(
         Map<String, dynamic> json) =>
     _$PaymentSheetPresentOptionsImpl(
-      timeout: json['timeout'] as int?,
+      timeout: (json['timeout'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$PaymentSheetPresentOptionsImplToJson(

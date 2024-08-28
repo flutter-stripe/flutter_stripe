@@ -9,12 +9,14 @@ extension type JsElementsCreateOptions._(JSObject o) {
     String? locale,
     String? clientSecret,
     JsElementAppearance? appearance,
+    String? customerSessionClientSecret,
     String loader,
   });
 
   external JSArray<Font> fonts;
   external String locale;
   external String clientSecret;
+  external String customerSessionClientSecret;
   external JsElementAppearance appearance;
 }
 

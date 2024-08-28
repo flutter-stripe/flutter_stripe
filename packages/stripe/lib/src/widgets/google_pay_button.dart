@@ -12,8 +12,8 @@ class GooglePayButton extends StatefulWidget {
     this.buttonType = PlatformButtonType.pay,
     this.borderRadius,
     this.appearance = PlatformButtonStyle.automatic,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   static const _viewType = 'flutter.stripe/google_pay_button';
 

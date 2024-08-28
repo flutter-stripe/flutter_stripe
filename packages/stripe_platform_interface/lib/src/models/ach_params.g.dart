@@ -52,8 +52,9 @@ const _$PaymentMethodTypeEnumMap = {
 _$VerifyMicroDepositsParamsImpl _$$VerifyMicroDepositsParamsImplFromJson(
         Map<String, dynamic> json) =>
     _$VerifyMicroDepositsParamsImpl(
-      amounts:
-          (json['amounts'] as List<dynamic>?)?.map((e) => e as int).toList(),
+      amounts: (json['amounts'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList(),
       descriptorCode: json['descriptorCode'] as String?,
     );
 

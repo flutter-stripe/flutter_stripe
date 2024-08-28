@@ -1,13 +1,13 @@
 import 'dart:js_interop';
-
-import 'package:web/web.dart' as web;
 import 'dart:ui_web' as ui;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
-import '../../flutter_stripe_web.dart';
 import 'package:stripe_js/stripe_api.dart' as js;
 import 'package:stripe_js/stripe_js.dart' as js;
+import 'package:web/web.dart' as web;
+
+import '../../flutter_stripe_web.dart';
 
 export 'package:stripe_js/stripe_api.dart' show PaymentElementLayout;
 
@@ -15,6 +15,7 @@ typedef PaymentElementTheme = js.ElementTheme;
 
 class PaymentElement extends StatefulWidget {
   final String clientSecret;
+  final String? customerSessionClientSecret;
   final double? width;
   final double? height;
   final CardStyle? style;
@@ -26,10 +27,19 @@ class PaymentElement extends StatefulWidget {
   final CardChangedCallback onCardChanged;
   final PaymentElementLayout layout;
   final js.ElementAppearance? appearance;
+  final js.PaymentElementDefaultValues? defaultValues;
+  final js.PaymentElementBusiness? business;
+  final dynamic paymentMethodOrder;
+  final js.PaymentElementFields? fields;
+  final bool? readOnly;
+  final js.PaymentElementOptionsTerms? terms;
+  final js.PaymentElementWalletOptions? wallets;
+  final js.PaymentElementApplePayOptions? applePay;
 
   PaymentElement({
     super.key,
     required this.clientSecret,
+    this.customerSessionClientSecret,
     this.width,
     this.height,
     this.style,
@@ -41,6 +51,14 @@ class PaymentElement extends StatefulWidget {
     required this.onCardChanged,
     this.layout = PaymentElementLayout.accordion,
     this.appearance,
+    this.defaultValues,
+    this.business,
+    this.paymentMethodOrder,
+    this.fields,
+    this.readOnly,
+    this.terms,
+    this.wallets,
+    this.applePay,
   });
 
   @override
@@ -169,12 +187,23 @@ class PaymentElementState extends State<PaymentElement> {
     final appearance = widget.appearance ?? js.ElementAppearance();
     return js.JsElementsCreateOptions(
       clientSecret: widget.clientSecret,
+      customerSessionClientSecret: widget.customerSessionClientSecret,
       appearance: appearance.toJson().jsify() as js.JsElementAppearance,
     );
   }
 
   js.PaymentElementOptions elementOptions() {
-    return js.PaymentElementOptions(layout: widget.layout);
+    return js.PaymentElementOptions(
+      layout: widget.layout,
+      defaultValues: widget.defaultValues,
+      business: widget.business,
+      paymentMethodOrder: widget.paymentMethodOrder,
+      fields: widget.fields,
+      readOnly: widget.readOnly,
+      terms: widget.terms,
+      wallets: widget.wallets,
+      applePay: widget.applePay,
+    );
   }
 
   @override

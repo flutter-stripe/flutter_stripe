@@ -12,11 +12,11 @@ _$AubecsFormStyleImpl _$$AubecsFormStyleImplFromJson(
       textColor: ColorKey.fromJson(json['textColor']),
       textErrorColor: ColorKey.fromJson(json['textErrorColor']),
       placeholderColor: ColorKey.fromJson(json['placeholderColor']),
-      fontSize: json['fontSize'] as int?,
-      borderWidth: json['borderWidth'] as int?,
+      fontSize: (json['fontSize'] as num?)?.toInt(),
+      borderWidth: (json['borderWidth'] as num?)?.toInt(),
       backgroundColor: ColorKey.fromJson(json['backgroundColor']),
       borderColor: ColorKey.fromJson(json['borderColor']),
-      borderRadius: json['borderRadius'] as int?,
+      borderRadius: (json['borderRadius'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$AubecsFormStyleImplToJson(

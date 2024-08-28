@@ -11,7 +11,7 @@ _$ThreeDSecureConfigurationParamsImpl
         _$ThreeDSecureConfigurationParamsImpl(
           navigationBar: ThreeDSecureNavigationBarThemeData.fromJson(
               json['navigationBar'] as Map<String, dynamic>),
-          timeout: json['timeout'] as int?,
+          timeout: (json['timeout'] as num?)?.toInt(),
           label: json['label'] == null
               ? null
               : ThreeDSecureLabelThemeData.fromJson(

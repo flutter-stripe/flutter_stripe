@@ -68,7 +68,7 @@ _$FinancialConnectionBankAccountTokenImpl
           livemode: json['livemode'] as bool,
           id: json['id'] as String?,
           used: json['used'] as bool,
-          created: json['created'] as int?,
+          created: (json['created'] as num?)?.toInt(),
         );
 
 Map<String, dynamic> _$$FinancialConnectionBankAccountTokenImplToJson(
@@ -90,7 +90,7 @@ _$FinancialConnectionAccountImpl _$$FinancialConnectionAccountImplFromJson(
       status: $enumDecode(_$AccountStatusEnumMap, json['status']),
       institutionName: json['institutionName'] as String,
       last4: json['last4'] as String?,
-      created: json['created'] as int,
+      created: (json['created'] as num).toInt(),
       balance: json['balance'] == null
           ? null
           : AccountBalance.fromJson(json['balance'] as Map<String, dynamic>),
@@ -171,7 +171,7 @@ const _$FinancialConnectionsPaymentMethodTypeEnumMap = {
 _$BalanceRefreshImpl _$$BalanceRefreshImplFromJson(Map<String, dynamic> json) =>
     _$BalanceRefreshImpl(
       status: $enumDecode(_$BalanceRefreshStatusEnumMap, json['status']),
-      lastAttemptedAt: json['lastAttemptedAt'] as int,
+      lastAttemptedAt: (json['lastAttemptedAt'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$BalanceRefreshImplToJson(
@@ -189,16 +189,16 @@ const _$BalanceRefreshStatusEnumMap = {
 
 _$AccountBalanceImpl _$$AccountBalanceImplFromJson(Map<String, dynamic> json) =>
     _$AccountBalanceImpl(
-      asOf: json['asOf'] as int,
+      asOf: (json['asOf'] as num).toInt(),
       type: $enumDecode(_$BalanceTypeEnumMap, json['type']),
       cash: (json['cash'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, e as int),
+        (k, e) => MapEntry(k, (e as num).toInt()),
       ),
       credit: (json['credit'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, e as int),
+        (k, e) => MapEntry(k, (e as num).toInt()),
       ),
       current: (json['current'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, e as int),
+        (k, e) => MapEntry(k, (e as num).toInt()),
       ),
     );
 
