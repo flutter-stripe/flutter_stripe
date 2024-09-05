@@ -62,7 +62,7 @@ extension type JsPaymentResponse._(JSObject o) {
   @JS('complete')
   external JSFunction get _complete;
   void Function(String) get complete {
-    return (String val) => _complete.callAsFunction(val.toJS);
+    return _complete.dartify() as void Function(String);
   }
 }
 
