@@ -53,7 +53,7 @@
   },
   "dependencies": {
     "@types/cors": "^2.8.12",
-    "body-parser": "^1.20.2",
+    "body-parser": "^1.20.3",
     "eslint-plugin-jest": "^24.1.0",
     "jest": "^26.5.3",
     "ts-jest": "^26.4.1"
