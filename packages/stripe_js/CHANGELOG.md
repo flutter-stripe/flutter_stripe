@@ -1,8 +1,9 @@
 ## 6.1.0
+- Sync with Stripe [0.38.6](https://github.com/stripe/stripe-react-native/releases/tag/v0.38.6). 
+- Minor fixes and improvements.
+- Fix webelement parameters.
 
 ## 6.0.0
-
- - aa
 
  - **FIX**: invalid argument `requires_capture` on web (#1431).
  - **FIX**: PaymentConfirmationRedirect enum value (#1221).
