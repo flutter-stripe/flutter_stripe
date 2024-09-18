@@ -1,3 +1,7 @@
+## 6.1.0
+
+ - :wq
+
 ## 6.0.0
 **Breaking changes**
 - Converted the library to the new js interop so this library can be compiled to WASM.
