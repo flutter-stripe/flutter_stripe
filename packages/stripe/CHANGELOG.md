@@ -1,3 +1,7 @@
+## 11.1.0
+
+ - :wq
+
 ## 11.0.0
 **Breaking changes**
 - Add support for intentmode setupMode. If you used `IntentMode before` change it to `IntentMode.paymentMode` instead.

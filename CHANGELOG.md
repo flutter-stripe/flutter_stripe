@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe` - `v11.1.0`](#flutter_stripe---v1110)
+
+---
+
+#### `flutter_stripe` - `v11.1.0`
+
+ - :wq
+
+
+## 2024-09-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_ios` - `v11.1.0`](#stripe_ios---v1110)
  - [`flutter_stripe` - `v11.0.1`](#flutter_stripe---v1101)
 
