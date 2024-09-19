@@ -300,10 +300,10 @@ class PaymentSheetShape with _$PaymentSheetShape {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetShape({
     /// Borderradius for the paymentsheet corners
-    double? borderRadius,
+    int? borderRadius,
 
     /// Borderwidth for the paymentsheet components
-    double? borderWidth,
+    int? borderWidth,
 
     /// Appearance config of the payment sheet shadow
     PaymentSheetShadowParams? shadow,
@@ -338,10 +338,10 @@ class PaymentSheetShadowOffset with _$PaymentSheetShadowOffset {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetShadowOffset({
     /// X value
-    double? x,
+    int? x,
 
     /// Y value
-    double? y,
+    int? y,
   }) = _PaymentSheetShadowOffset;
 
   factory PaymentSheetShadowOffset.fromJson(Map<String, dynamic> json) =>
@@ -373,10 +373,13 @@ class PaymentSheetPrimaryButtonShape with _$PaymentSheetPrimaryButtonShape {
     PaymentSheetShadowParams? shadow,
 
     /// the blur radius of the button
-    double? blurRadius,
+    int? blurRadius,
+
+    /// the border radius of the button
+    int? borderRadius,
 
     /// border width of the primary button on the payment sheet
-    double? borderWidth,
+    int? borderWidth,
   }) = _PaymentSheetPrimaryButtonShape;
 
   factory PaymentSheetPrimaryButtonShape.fromJson(Map<String, dynamic> json) =>

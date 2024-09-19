@@ -3204,10 +3204,10 @@ PaymentSheetShape _$PaymentSheetShapeFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PaymentSheetShape {
   /// Borderradius for the paymentsheet corners
-  double? get borderRadius => throw _privateConstructorUsedError;
+  int? get borderRadius => throw _privateConstructorUsedError;
 
   /// Borderwidth for the paymentsheet components
-  double? get borderWidth => throw _privateConstructorUsedError;
+  int? get borderWidth => throw _privateConstructorUsedError;
 
   /// Appearance config of the payment sheet shadow
   PaymentSheetShadowParams? get shadow => throw _privateConstructorUsedError;
@@ -3229,9 +3229,7 @@ abstract class $PaymentSheetShapeCopyWith<$Res> {
       _$PaymentSheetShapeCopyWithImpl<$Res, PaymentSheetShape>;
   @useResult
   $Res call(
-      {double? borderRadius,
-      double? borderWidth,
-      PaymentSheetShadowParams? shadow});
+      {int? borderRadius, int? borderWidth, PaymentSheetShadowParams? shadow});
 
   $PaymentSheetShadowParamsCopyWith<$Res>? get shadow;
 }
@@ -3259,11 +3257,11 @@ class _$PaymentSheetShapeCopyWithImpl<$Res, $Val extends PaymentSheetShape>
       borderRadius: freezed == borderRadius
           ? _value.borderRadius
           : borderRadius // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
       borderWidth: freezed == borderWidth
           ? _value.borderWidth
           : borderWidth // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
       shadow: freezed == shadow
           ? _value.shadow
           : shadow // ignore: cast_nullable_to_non_nullable
@@ -3295,9 +3293,7 @@ abstract class _$$PaymentSheetShapeImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {double? borderRadius,
-      double? borderWidth,
-      PaymentSheetShadowParams? shadow});
+      {int? borderRadius, int? borderWidth, PaymentSheetShadowParams? shadow});
 
   @override
   $PaymentSheetShadowParamsCopyWith<$Res>? get shadow;
@@ -3324,11 +3320,11 @@ class __$$PaymentSheetShapeImplCopyWithImpl<$Res>
       borderRadius: freezed == borderRadius
           ? _value.borderRadius
           : borderRadius // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
       borderWidth: freezed == borderWidth
           ? _value.borderWidth
           : borderWidth // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
       shadow: freezed == shadow
           ? _value.shadow
           : shadow // ignore: cast_nullable_to_non_nullable
@@ -3349,11 +3345,11 @@ class _$PaymentSheetShapeImpl implements _PaymentSheetShape {
 
   /// Borderradius for the paymentsheet corners
   @override
-  final double? borderRadius;
+  final int? borderRadius;
 
   /// Borderwidth for the paymentsheet components
   @override
-  final double? borderWidth;
+  final int? borderWidth;
 
   /// Appearance config of the payment sheet shadow
   @override
@@ -3400,8 +3396,8 @@ class _$PaymentSheetShapeImpl implements _PaymentSheetShape {
 
 abstract class _PaymentSheetShape implements PaymentSheetShape {
   const factory _PaymentSheetShape(
-      {final double? borderRadius,
-      final double? borderWidth,
+      {final int? borderRadius,
+      final int? borderWidth,
       final PaymentSheetShadowParams? shadow}) = _$PaymentSheetShapeImpl;
 
   factory _PaymentSheetShape.fromJson(Map<String, dynamic> json) =
@@ -3409,11 +3405,11 @@ abstract class _PaymentSheetShape implements PaymentSheetShape {
 
   /// Borderradius for the paymentsheet corners
   @override
-  double? get borderRadius;
+  int? get borderRadius;
 
   /// Borderwidth for the paymentsheet components
   @override
-  double? get borderWidth;
+  int? get borderWidth;
 
   /// Appearance config of the payment sheet shadow
   @override
@@ -3676,10 +3672,10 @@ PaymentSheetShadowOffset _$PaymentSheetShadowOffsetFromJson(
 /// @nodoc
 mixin _$PaymentSheetShadowOffset {
   /// X value
-  double? get x => throw _privateConstructorUsedError;
+  int? get x => throw _privateConstructorUsedError;
 
   /// Y value
-  double? get y => throw _privateConstructorUsedError;
+  int? get y => throw _privateConstructorUsedError;
 
   /// Serializes this PaymentSheetShadowOffset to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -3697,7 +3693,7 @@ abstract class $PaymentSheetShadowOffsetCopyWith<$Res> {
           $Res Function(PaymentSheetShadowOffset) then) =
       _$PaymentSheetShadowOffsetCopyWithImpl<$Res, PaymentSheetShadowOffset>;
   @useResult
-  $Res call({double? x, double? y});
+  $Res call({int? x, int? y});
 }
 
 /// @nodoc
@@ -3723,11 +3719,11 @@ class _$PaymentSheetShadowOffsetCopyWithImpl<$Res,
       x: freezed == x
           ? _value.x
           : x // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
       y: freezed == y
           ? _value.y
           : y // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
     ) as $Val);
   }
 }
@@ -3741,7 +3737,7 @@ abstract class _$$PaymentSheetShadowOffsetImplCopyWith<$Res>
       __$$PaymentSheetShadowOffsetImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({double? x, double? y});
+  $Res call({int? x, int? y});
 }
 
 /// @nodoc
@@ -3766,11 +3762,11 @@ class __$$PaymentSheetShadowOffsetImplCopyWithImpl<$Res>
       x: freezed == x
           ? _value.x
           : x // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
       y: freezed == y
           ? _value.y
           : y // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
     ));
   }
 }
@@ -3786,11 +3782,11 @@ class _$PaymentSheetShadowOffsetImpl implements _PaymentSheetShadowOffset {
 
   /// X value
   @override
-  final double? x;
+  final int? x;
 
   /// Y value
   @override
-  final double? y;
+  final int? y;
 
   @override
   String toString() {
@@ -3828,7 +3824,7 @@ class _$PaymentSheetShadowOffsetImpl implements _PaymentSheetShadowOffset {
 }
 
 abstract class _PaymentSheetShadowOffset implements PaymentSheetShadowOffset {
-  const factory _PaymentSheetShadowOffset({final double? x, final double? y}) =
+  const factory _PaymentSheetShadowOffset({final int? x, final int? y}) =
       _$PaymentSheetShadowOffsetImpl;
 
   factory _PaymentSheetShadowOffset.fromJson(Map<String, dynamic> json) =
@@ -3836,11 +3832,11 @@ abstract class _PaymentSheetShadowOffset implements PaymentSheetShadowOffset {
 
   /// X value
   @override
-  double? get x;
+  int? get x;
 
   /// Y value
   @override
-  double? get y;
+  int? get y;
 
   /// Create a copy of PaymentSheetShadowOffset
   /// with the given fields replaced by the non-null parameter values.
@@ -4098,10 +4094,13 @@ mixin _$PaymentSheetPrimaryButtonShape {
   PaymentSheetShadowParams? get shadow => throw _privateConstructorUsedError;
 
   /// the blur radius of the button
-  double? get blurRadius => throw _privateConstructorUsedError;
+  int? get blurRadius => throw _privateConstructorUsedError;
+
+  /// the border radius of the button
+  int? get borderRadius => throw _privateConstructorUsedError;
 
   /// border width of the primary button on the payment sheet
-  double? get borderWidth => throw _privateConstructorUsedError;
+  int? get borderWidth => throw _privateConstructorUsedError;
 
   /// Serializes this PaymentSheetPrimaryButtonShape to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -4123,8 +4122,9 @@ abstract class $PaymentSheetPrimaryButtonShapeCopyWith<$Res> {
   @useResult
   $Res call(
       {PaymentSheetShadowParams? shadow,
-      double? blurRadius,
-      double? borderWidth});
+      int? blurRadius,
+      int? borderRadius,
+      int? borderWidth});
 
   $PaymentSheetShadowParamsCopyWith<$Res>? get shadow;
 }
@@ -4147,6 +4147,7 @@ class _$PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res,
   $Res call({
     Object? shadow = freezed,
     Object? blurRadius = freezed,
+    Object? borderRadius = freezed,
     Object? borderWidth = freezed,
   }) {
     return _then(_value.copyWith(
@@ -4157,11 +4158,15 @@ class _$PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res,
       blurRadius: freezed == blurRadius
           ? _value.blurRadius
           : blurRadius // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
+      borderRadius: freezed == borderRadius
+          ? _value.borderRadius
+          : borderRadius // ignore: cast_nullable_to_non_nullable
+              as int?,
       borderWidth: freezed == borderWidth
           ? _value.borderWidth
           : borderWidth // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
     ) as $Val);
   }
 
@@ -4191,8 +4196,9 @@ abstract class _$$PaymentSheetPrimaryButtonShapeImplCopyWith<$Res>
   @useResult
   $Res call(
       {PaymentSheetShadowParams? shadow,
-      double? blurRadius,
-      double? borderWidth});
+      int? blurRadius,
+      int? borderRadius,
+      int? borderWidth});
 
   @override
   $PaymentSheetShadowParamsCopyWith<$Res>? get shadow;
@@ -4215,6 +4221,7 @@ class __$$PaymentSheetPrimaryButtonShapeImplCopyWithImpl<$Res>
   $Res call({
     Object? shadow = freezed,
     Object? blurRadius = freezed,
+    Object? borderRadius = freezed,
     Object? borderWidth = freezed,
   }) {
     return _then(_$PaymentSheetPrimaryButtonShapeImpl(
@@ -4225,11 +4232,15 @@ class __$$PaymentSheetPrimaryButtonShapeImplCopyWithImpl<$Res>
       blurRadius: freezed == blurRadius
           ? _value.blurRadius
           : blurRadius // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
+      borderRadius: freezed == borderRadius
+          ? _value.borderRadius
+          : borderRadius // ignore: cast_nullable_to_non_nullable
+              as int?,
       borderWidth: freezed == borderWidth
           ? _value.borderWidth
           : borderWidth // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
     ));
   }
 }
@@ -4240,7 +4251,7 @@ class __$$PaymentSheetPrimaryButtonShapeImplCopyWithImpl<$Res>
 class _$PaymentSheetPrimaryButtonShapeImpl
     implements _PaymentSheetPrimaryButtonShape {
   const _$PaymentSheetPrimaryButtonShapeImpl(
-      {this.shadow, this.blurRadius, this.borderWidth});
+      {this.shadow, this.blurRadius, this.borderRadius, this.borderWidth});
 
   factory _$PaymentSheetPrimaryButtonShapeImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -4252,15 +4263,19 @@ class _$PaymentSheetPrimaryButtonShapeImpl
 
   /// the blur radius of the button
   @override
-  final double? blurRadius;
+  final int? blurRadius;
+
+  /// the border radius of the button
+  @override
+  final int? borderRadius;
 
   /// border width of the primary button on the payment sheet
   @override
-  final double? borderWidth;
+  final int? borderWidth;
 
   @override
   String toString() {
-    return 'PaymentSheetPrimaryButtonShape(shadow: $shadow, blurRadius: $blurRadius, borderWidth: $borderWidth)';
+    return 'PaymentSheetPrimaryButtonShape(shadow: $shadow, blurRadius: $blurRadius, borderRadius: $borderRadius, borderWidth: $borderWidth)';
   }
 
   @override
@@ -4271,13 +4286,16 @@ class _$PaymentSheetPrimaryButtonShapeImpl
             (identical(other.shadow, shadow) || other.shadow == shadow) &&
             (identical(other.blurRadius, blurRadius) ||
                 other.blurRadius == blurRadius) &&
+            (identical(other.borderRadius, borderRadius) ||
+                other.borderRadius == borderRadius) &&
             (identical(other.borderWidth, borderWidth) ||
                 other.borderWidth == borderWidth));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, shadow, blurRadius, borderWidth);
+  int get hashCode =>
+      Object.hash(runtimeType, shadow, blurRadius, borderRadius, borderWidth);
 
   /// Create a copy of PaymentSheetPrimaryButtonShape
   /// with the given fields replaced by the non-null parameter values.
@@ -4301,8 +4319,9 @@ abstract class _PaymentSheetPrimaryButtonShape
     implements PaymentSheetPrimaryButtonShape {
   const factory _PaymentSheetPrimaryButtonShape(
       {final PaymentSheetShadowParams? shadow,
-      final double? blurRadius,
-      final double? borderWidth}) = _$PaymentSheetPrimaryButtonShapeImpl;
+      final int? blurRadius,
+      final int? borderRadius,
+      final int? borderWidth}) = _$PaymentSheetPrimaryButtonShapeImpl;
 
   factory _PaymentSheetPrimaryButtonShape.fromJson(Map<String, dynamic> json) =
       _$PaymentSheetPrimaryButtonShapeImpl.fromJson;
@@ -4313,11 +4332,15 @@ abstract class _PaymentSheetPrimaryButtonShape
 
   /// the blur radius of the button
   @override
-  double? get blurRadius;
+  int? get blurRadius;
+
+  /// the border radius of the button
+  @override
+  int? get borderRadius;
 
   /// border width of the primary button on the payment sheet
   @override
-  double? get borderWidth;
+  int? get borderWidth;
 
   /// Create a copy of PaymentSheetPrimaryButtonShape
   /// with the given fields replaced by the non-null parameter values.

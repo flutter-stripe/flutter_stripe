@@ -307,8 +307,8 @@ Map<String, dynamic> _$$PaymentSheetAppearanceColorsImplToJson(
 _$PaymentSheetShapeImpl _$$PaymentSheetShapeImplFromJson(
         Map<String, dynamic> json) =>
     _$PaymentSheetShapeImpl(
-      borderRadius: (json['borderRadius'] as num?)?.toDouble(),
-      borderWidth: (json['borderWidth'] as num?)?.toDouble(),
+      borderRadius: (json['borderRadius'] as num?)?.toInt(),
+      borderWidth: (json['borderWidth'] as num?)?.toInt(),
       shadow: json['shadow'] == null
           ? null
           : PaymentSheetShadowParams.fromJson(
@@ -345,8 +345,8 @@ Map<String, dynamic> _$$PaymentSheetShadowParamsImplToJson(
 _$PaymentSheetShadowOffsetImpl _$$PaymentSheetShadowOffsetImplFromJson(
         Map<String, dynamic> json) =>
     _$PaymentSheetShadowOffsetImpl(
-      x: (json['x'] as num?)?.toDouble(),
-      y: (json['y'] as num?)?.toDouble(),
+      x: (json['x'] as num?)?.toInt(),
+      y: (json['y'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$PaymentSheetShadowOffsetImplToJson(
@@ -384,8 +384,9 @@ _$PaymentSheetPrimaryButtonShapeImpl
               ? null
               : PaymentSheetShadowParams.fromJson(
                   json['shadow'] as Map<String, dynamic>),
-          blurRadius: (json['blurRadius'] as num?)?.toDouble(),
-          borderWidth: (json['borderWidth'] as num?)?.toDouble(),
+          blurRadius: (json['blurRadius'] as num?)?.toInt(),
+          borderRadius: (json['borderRadius'] as num?)?.toInt(),
+          borderWidth: (json['borderWidth'] as num?)?.toInt(),
         );
 
 Map<String, dynamic> _$$PaymentSheetPrimaryButtonShapeImplToJson(
@@ -393,6 +394,7 @@ Map<String, dynamic> _$$PaymentSheetPrimaryButtonShapeImplToJson(
     <String, dynamic>{
       'shadow': instance.shadow?.toJson(),
       'blurRadius': instance.blurRadius,
+      'borderRadius': instance.borderRadius,
       'borderWidth': instance.borderWidth,
     };
 
