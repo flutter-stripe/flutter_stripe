@@ -1,3 +1,7 @@
+## 11.1.1
+- BREAKING: Changed payment sheet appearance related variables to use `int` instead of `double` to support android rendering. 
+- Support for PaymentSheetPrimaryButtonShape's added borderRadius added Android.
+
 ## 11.1.0
 - Sync with Stripe [0.38.6](https://github.com/stripe/stripe-react-native/releases/tag/v0.38.6). 
 - Minor fixes and improvements.
