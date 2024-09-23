@@ -12,7 +12,7 @@ part of 'confirm_sepa_debit_payment_data.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ConfirmSepaDebitPaymentData _$ConfirmSepaDebitPaymentDataFromJson(
     Map<String, dynamic> json) {
@@ -37,8 +37,12 @@ mixin _$ConfirmSepaDebitPaymentData {
   PaymentIntentSetupFutureUsage? get setupFutureUsage =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this ConfirmSepaDebitPaymentData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ConfirmSepaDebitPaymentData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ConfirmSepaDebitPaymentDataCopyWith<ConfirmSepaDebitPaymentData>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -70,6 +74,8 @@ class _$ConfirmSepaDebitPaymentDataCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ConfirmSepaDebitPaymentData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -88,6 +94,8 @@ class _$ConfirmSepaDebitPaymentDataCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of ConfirmSepaDebitPaymentData
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SepaDebitPaymentMethodDetailsCopyWith<$Res>? get paymentMethod {
@@ -130,6 +138,8 @@ class __$$ConfirmSepaDebitPaymentDataImplCopyWithImpl<$Res>
       $Res Function(_$ConfirmSepaDebitPaymentDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ConfirmSepaDebitPaymentData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -183,7 +193,7 @@ class _$ConfirmSepaDebitPaymentDataImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ConfirmSepaDebitPaymentDataImpl &&
@@ -193,11 +203,13 @@ class _$ConfirmSepaDebitPaymentDataImpl
                 other.setupFutureUsage == setupFutureUsage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, paymentMethod, setupFutureUsage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ConfirmSepaDebitPaymentData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ConfirmSepaDebitPaymentDataImplCopyWith<_$ConfirmSepaDebitPaymentDataImpl>
@@ -224,24 +236,26 @@ abstract class _ConfirmSepaDebitPaymentData
   factory _ConfirmSepaDebitPaymentData.fromJson(Map<String, dynamic> json) =
       _$ConfirmSepaDebitPaymentDataImpl.fromJson;
 
-  @override
-
   /// Either the id of an existing PaymentMethod, or an object containing
   /// data to create a PaymentMethod with.
   /// See the use case sections below for details.
+  @override
   @paymentMethodDetailJsonKey
   SepaDebitPaymentMethodDetails? get paymentMethod;
-  @override
 
   /// To set up the SEPA Direct Debit account for reuse, set this parameter
   /// to off_session. SEPA Direct Debit only accepts an off_session value
   /// for this parameter. If a customer is provided on this PaymentIntent,
   /// the PaymentMethod will be attached to the customer when the
   /// PaymentIntent transitions to processing.
+  @override
   @JsonKey(name: "setup_future_usage")
   PaymentIntentSetupFutureUsage? get setupFutureUsage;
+
+  /// Create a copy of ConfirmSepaDebitPaymentData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ConfirmSepaDebitPaymentDataImplCopyWith<_$ConfirmSepaDebitPaymentDataImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -336,6 +350,8 @@ mixin _$SepaDebitPaymentMethodDetails {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this SepaDebitPaymentMethodDetails to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -358,6 +374,9 @@ class _$SepaDebitPaymentMethodDetailsCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SepaDebitPaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -380,6 +399,8 @@ class __$$IdSepaDebitPaymentMethodDetailsImplCopyWithImpl<$Res>
       $Res Function(_$IdSepaDebitPaymentMethodDetailsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SepaDebitPaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -417,18 +438,20 @@ class _$IdSepaDebitPaymentMethodDetailsImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IdSepaDebitPaymentMethodDetailsImpl &&
             (identical(other.id, id) || other.id == id));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SepaDebitPaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IdSepaDebitPaymentMethodDetailsImplCopyWith<
@@ -546,7 +569,10 @@ abstract class _IdSepaDebitPaymentMethodDetails
       _$IdSepaDebitPaymentMethodDetailsImpl.fromJson;
 
   String get id;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SepaDebitPaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IdSepaDebitPaymentMethodDetailsImplCopyWith<
           _$IdSepaDebitPaymentMethodDetailsImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -576,6 +602,8 @@ class __$$SepaDebitPaymentMethodDetailsImplCopyWithImpl<$Res>
       $Res Function(_$SepaDebitPaymentMethodDetailsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SepaDebitPaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -594,6 +622,8 @@ class __$$SepaDebitPaymentMethodDetailsImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of SepaDebitPaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SepaBillingDetailsCopyWith<$Res>? get billingDetails {
@@ -641,7 +671,7 @@ class _$SepaDebitPaymentMethodDetailsImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SepaDebitPaymentMethodDetailsImpl &&
@@ -651,11 +681,13 @@ class _$SepaDebitPaymentMethodDetailsImpl
                 other.billingDetails == billingDetails));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, sepaDebit, billingDetails);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SepaDebitPaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SepaDebitPaymentMethodDetailsImplCopyWith<
@@ -785,7 +817,10 @@ abstract class _SepaDebitPaymentMethodDetails
   /// The customer's billing_details. name and email are required.
   @JsonKey(name: "billing_details")
   SepaBillingDetails? get billingDetails;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SepaDebitPaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SepaDebitPaymentMethodDetailsImplCopyWith<
           _$SepaDebitPaymentMethodDetailsImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -816,6 +851,8 @@ class __$$SepaDebitPaymentMethodDetailsWithIbanImplCopyWithImpl<$Res>
       $Res Function(_$SepaDebitPaymentMethodDetailsWithIbanImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SepaDebitPaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -834,6 +871,8 @@ class __$$SepaDebitPaymentMethodDetailsWithIbanImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of SepaDebitPaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SepaDebitIbanDataCopyWith<$Res> get sepaDebit {
@@ -842,6 +881,8 @@ class __$$SepaDebitPaymentMethodDetailsWithIbanImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of SepaDebitPaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SepaBillingDetailsCopyWith<$Res>? get billingDetails {
@@ -888,7 +929,7 @@ class _$SepaDebitPaymentMethodDetailsWithIbanImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SepaDebitPaymentMethodDetailsWithIbanImpl &&
@@ -898,11 +939,13 @@ class _$SepaDebitPaymentMethodDetailsWithIbanImpl
                 other.billingDetails == billingDetails));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, sepaDebit, billingDetails);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SepaDebitPaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SepaDebitPaymentMethodDetailsWithIbanImplCopyWith<
@@ -1030,7 +1073,10 @@ abstract class _SepaDebitPaymentMethodDetailsWithIban
   /// The customer's billing_details. name and email are required.
   @JsonKey(name: "billing_details")
   SepaBillingDetails? get billingDetails;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SepaDebitPaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SepaDebitPaymentMethodDetailsWithIbanImplCopyWith<
           _$SepaDebitPaymentMethodDetailsWithIbanImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1045,8 +1091,12 @@ mixin _$SepaDebitIbanData {
   /// An IBAN account number.
   String get iban => throw _privateConstructorUsedError;
 
+  /// Serializes this SepaDebitIbanData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SepaDebitIbanData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SepaDebitIbanDataCopyWith<SepaDebitIbanData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1070,6 +1120,8 @@ class _$SepaDebitIbanDataCopyWithImpl<$Res, $Val extends SepaDebitIbanData>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SepaDebitIbanData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1103,6 +1155,8 @@ class __$$SepaDebitIbanDataImplCopyWithImpl<$Res>
       $Res Function(_$SepaDebitIbanDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SepaDebitIbanData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1135,18 +1189,20 @@ class _$SepaDebitIbanDataImpl implements _SepaDebitIbanData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SepaDebitIbanDataImpl &&
             (identical(other.iban, iban) || other.iban == iban));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, iban);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SepaDebitIbanData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SepaDebitIbanDataImplCopyWith<_$SepaDebitIbanDataImpl> get copyWith =>
@@ -1168,12 +1224,14 @@ abstract class _SepaDebitIbanData implements SepaDebitIbanData {
   factory _SepaDebitIbanData.fromJson(Map<String, dynamic> json) =
       _$SepaDebitIbanDataImpl.fromJson;
 
-  @override
-
   /// An IBAN account number.
-  String get iban;
   @override
-  @JsonKey(ignore: true)
+  String get iban;
+
+  /// Create a copy of SepaDebitIbanData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SepaDebitIbanDataImplCopyWith<_$SepaDebitIbanDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1196,8 +1254,12 @@ mixin _$SepaBillingDetails {
   /// Full name.
   String get name => throw _privateConstructorUsedError;
 
+  /// Serializes this SepaBillingDetails to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SepaBillingDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SepaBillingDetailsCopyWith<SepaBillingDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1224,6 +1286,8 @@ class _$SepaBillingDetailsCopyWithImpl<$Res, $Val extends SepaBillingDetails>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SepaBillingDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1252,6 +1316,8 @@ class _$SepaBillingDetailsCopyWithImpl<$Res, $Val extends SepaBillingDetails>
     ) as $Val);
   }
 
+  /// Create a copy of SepaBillingDetails
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BillingAddressCopyWith<$Res>? get address {
@@ -1288,6 +1354,8 @@ class __$$SepaBillingDetailsImplCopyWithImpl<$Res>
       $Res Function(_$SepaBillingDetailsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SepaBillingDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1348,7 +1416,7 @@ class _$SepaBillingDetailsImpl implements _SepaBillingDetails {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SepaBillingDetailsImpl &&
@@ -1358,11 +1426,13 @@ class _$SepaBillingDetailsImpl implements _SepaBillingDetails {
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, email, address, phone, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SepaBillingDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SepaBillingDetailsImplCopyWith<_$SepaBillingDetailsImpl> get copyWith =>
@@ -1387,24 +1457,26 @@ abstract class _SepaBillingDetails implements SepaBillingDetails {
   factory _SepaBillingDetails.fromJson(Map<String, dynamic> json) =
       _$SepaBillingDetailsImpl.fromJson;
 
-  @override
-
   /// Email address.
-  String get email;
   @override
+  String get email;
 
   /// Billing address.
-  BillingAddress? get address;
   @override
+  BillingAddress? get address;
 
   /// Billing phone number.
-  String? get phone;
   @override
+  String? get phone;
 
   /// Full name.
-  String get name;
   @override
-  @JsonKey(ignore: true)
+  String get name;
+
+  /// Create a copy of SepaBillingDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SepaBillingDetailsImplCopyWith<_$SepaBillingDetailsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

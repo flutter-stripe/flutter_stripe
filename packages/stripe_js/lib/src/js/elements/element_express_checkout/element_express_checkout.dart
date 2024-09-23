@@ -29,11 +29,11 @@ extension type ExpressCheckoutElement(StripeElement o)
     return _update((options?.toJson() ?? {}).jsify());
   }
 
-  external void collapse();
-
-  void onChange(EventCallback<PaymentElementChangeEvent> onEvent) {
-    return on("change", (event) {
-      onEvent(PaymentElementChangeEvent.fromJson(event.toDart));
+  void onConfirm(EventCallback<ExpressCheckoutConfirmEvent> onEvent) {
+    return on("confirm", (event) {
+      onEvent(ExpressCheckoutConfirmEvent.fromJson(event.toDart));
     });
   }
+
+  external void collapse();
 }

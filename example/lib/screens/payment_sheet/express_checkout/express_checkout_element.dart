@@ -18,8 +18,8 @@ class _ThemeCardExampleState extends State<ExpressCheckoutElementExample> {
 
   @override
   void initState() {
-    getClientSecret();
     super.initState();
+    getClientSecret();
   }
 
   Future<void> getClientSecret() async {
@@ -45,14 +45,20 @@ class _ThemeCardExampleState extends State<ExpressCheckoutElementExample> {
       appBar: AppBar(
         title: Text('Flutter App'),
       ),
-      body: Column(
-        children: [
-          Container(
-              child: clientSecret != null
-                  ? ExpressCheckoutWidget(clientSecret)
-                  : Center(child: CircularProgressIndicator())),
-          LoadingButton(onPressed: pay, text: 'Pay'),
-        ],
+      body: Center(
+        child: Container(
+          constraints: BoxConstraints(maxWidth: 600),
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 52),
+          child: Column(
+            children: [
+              SizedBox(
+                  child: clientSecret != null
+                      ? ExpressCheckoutWidget(clientSecret)
+                      : Center(child: CircularProgressIndicator())),
+              LoadingButton(onPressed: pay, text: 'Pay'),
+            ],
+          ),
+        ),
       ),
     );
   }

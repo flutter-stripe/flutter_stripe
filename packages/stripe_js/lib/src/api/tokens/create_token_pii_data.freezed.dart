@@ -23,8 +23,12 @@ mixin _$CreateTokenPIIData {
   @JsonKey(name: "personal_id_number")
   String get personalIdNumber => throw _privateConstructorUsedError;
 
+  /// Serializes this CreateTokenPIIData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CreateTokenPIIData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CreateTokenPIIDataCopyWith<CreateTokenPIIData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$CreateTokenPIIDataCopyWithImpl<$Res, $Val extends CreateTokenPIIData>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CreateTokenPIIData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +87,8 @@ class __$$CreateTokenPIIDataImplCopyWithImpl<$Res>
       $Res Function(_$CreateTokenPIIDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CreateTokenPIIData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,11 +130,13 @@ class _$CreateTokenPIIDataImpl implements _CreateTokenPIIData {
                 other.personalIdNumber == personalIdNumber));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, personalIdNumber);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CreateTokenPIIData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateTokenPIIDataImplCopyWith<_$CreateTokenPIIDataImpl> get copyWith =>
@@ -152,8 +162,11 @@ abstract class _CreateTokenPIIData implements CreateTokenPIIData {
   @override
   @JsonKey(name: "personal_id_number")
   String get personalIdNumber;
+
+  /// Create a copy of CreateTokenPIIData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateTokenPIIDataImplCopyWith<_$CreateTokenPIIDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

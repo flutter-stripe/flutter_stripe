@@ -12,7 +12,7 @@ part of 'payment_method.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 PaymentMethod _$PaymentMethodFromJson(Map<String, dynamic> json) {
   return _PaymentMethod.fromJson(json);
@@ -80,8 +80,12 @@ mixin _$PaymentMethod {
   /// It contains additional information specific to the PaymentMethod type.
   PaymentMethodType get type => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentMethod to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentMethodCopyWith<PaymentMethod> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -133,6 +137,8 @@ class _$PaymentMethodCopyWithImpl<$Res, $Val extends PaymentMethod>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -226,6 +232,8 @@ class _$PaymentMethodCopyWithImpl<$Res, $Val extends PaymentMethod>
     ) as $Val);
   }
 
+  /// Create a copy of PaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BillingDetailsCopyWith<$Res>? get billingDetails {
@@ -238,6 +246,8 @@ class _$PaymentMethodCopyWithImpl<$Res, $Val extends PaymentMethod>
     });
   }
 
+  /// Create a copy of PaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CardPaymentMethodCopyWith<$Res>? get card {
@@ -250,6 +260,8 @@ class _$PaymentMethodCopyWithImpl<$Res, $Val extends PaymentMethod>
     });
   }
 
+  /// Create a copy of PaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SepaDebitCopyWith<$Res>? get sepaDebit {
@@ -262,6 +274,8 @@ class _$PaymentMethodCopyWithImpl<$Res, $Val extends PaymentMethod>
     });
   }
 
+  /// Create a copy of PaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BacsDebitCopyWith<$Res>? get bacsDebit {
@@ -274,6 +288,8 @@ class _$PaymentMethodCopyWithImpl<$Res, $Val extends PaymentMethod>
     });
   }
 
+  /// Create a copy of PaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AuBecsDebitCopyWith<$Res>? get auBecsDebit {
@@ -286,6 +302,8 @@ class _$PaymentMethodCopyWithImpl<$Res, $Val extends PaymentMethod>
     });
   }
 
+  /// Create a copy of PaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SofortCopyWith<$Res>? get sofort {
@@ -298,6 +316,8 @@ class _$PaymentMethodCopyWithImpl<$Res, $Val extends PaymentMethod>
     });
   }
 
+  /// Create a copy of PaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $IdealCopyWith<$Res>? get ideal {
@@ -310,6 +330,8 @@ class _$PaymentMethodCopyWithImpl<$Res, $Val extends PaymentMethod>
     });
   }
 
+  /// Create a copy of PaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FpxCopyWith<$Res>? get fpx {
@@ -322,6 +344,8 @@ class _$PaymentMethodCopyWithImpl<$Res, $Val extends PaymentMethod>
     });
   }
 
+  /// Create a copy of PaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UpiCopyWith<$Res>? get upi {
@@ -334,6 +358,8 @@ class _$PaymentMethodCopyWithImpl<$Res, $Val extends PaymentMethod>
     });
   }
 
+  /// Create a copy of PaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UsBankAccountCopyWith<$Res>? get usBankAccount {
@@ -404,6 +430,8 @@ class __$$PaymentMethodImplCopyWithImpl<$Res>
       _$PaymentMethodImpl _value, $Res Function(_$PaymentMethodImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -620,7 +648,7 @@ class _$PaymentMethodImpl implements _PaymentMethod {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodImpl &&
@@ -650,7 +678,7 @@ class _$PaymentMethodImpl implements _PaymentMethod {
             (identical(other.type, type) || other.type == type));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -672,7 +700,9 @@ class _$PaymentMethodImpl implements _PaymentMethod {
       usBankAccount,
       type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentMethodImplCopyWith<_$PaymentMethodImpl> get copyWith =>
@@ -709,85 +739,87 @@ abstract class _PaymentMethod implements PaymentMethod {
   factory _PaymentMethod.fromJson(Map<String, dynamic> json) =
       _$PaymentMethodImpl.fromJson;
 
-  @override
-
   /// Unique identifier for the object.
-  String get id;
   @override
+  String get id;
 
   /// String representing the object’s type.
   /// Objects of the same type share the same value.
-  String get object;
   @override
+  String get object;
 
   /// Billing information associated with the PaymentMethod that may be used
   /// or required by particular types of payment methods.
-  BillingDetails? get billingDetails;
   @override
+  BillingDetails? get billingDetails;
 
   /// The ID of the Customer to which this PaymentMethod is saved.
   /// This will not be set when the PaymentMethod has not been saved to a
   /// Customer.
-  String? get customer;
   @override
+  String? get customer;
 
   /// Set of key-value pairs that you can attach to an object.
   /// This can be useful for storing additional information about the object
   /// in a structured format.
-  Map<String, dynamic> get metadata;
   @override
+  Map<String, dynamic> get metadata;
 
   /// Has the value true if the object exists in live mode or the value false
   /// if the object exists in test mode.
-  bool get livemode;
   @override
+  bool get livemode;
 
   /// Time at which the object was created.
   /// Measured in seconds since the Unix epoch.
-  int? get created;
   @override
+  int? get created;
 
   /// Containing additional data in case paymentmethod type is card.
-  CardPaymentMethod? get card;
   @override
+  CardPaymentMethod? get card;
 
   /// Containing additional data in case paymentmethod type is sepa.
-  SepaDebit? get sepaDebit;
   @override
+  SepaDebit? get sepaDebit;
 
   /// Containing additional data in case paymentmethod type is Bacs debit.
-  BacsDebit? get bacsDebit;
   @override
+  BacsDebit? get bacsDebit;
 
   /// Containing additional data in case paymentmethod type is Aubecs debit.
-  AuBecsDebit? get auBecsDebit;
   @override
+  AuBecsDebit? get auBecsDebit;
 
   /// Containing additional data in case paymentmethod type is sofort.
-  Sofort? get sofort;
   @override
+  Sofort? get sofort;
 
   /// Containing additional data in case paymentmethod type is Ideal.
-  Ideal? get ideal;
   @override
+  Ideal? get ideal;
 
   /// Containing additional data in case paymentmethod type is FPX.
-  Fpx? get fpx;
   @override
+  Fpx? get fpx;
 
   /// Containing additional data in case paymentmethod type is UPI.
+  @override
   Upi? get upi;
   @override
   UsBankAccount? get usBankAccount;
-  @override
 
   /// The type of the PaymentMethod.
   /// An additional hash is included on the PaymentMethod with a name
   /// matching this value.
   /// It contains additional information specific to the PaymentMethod type.
-  PaymentMethodType get type;
   @override
-  @JsonKey(ignore: true)
+  PaymentMethodType get type;
+
+  /// Create a copy of PaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentMethodImplCopyWith<_$PaymentMethodImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -807,8 +839,12 @@ mixin _$AuBecsDebit {
   /// Six digit number identifying the bank or branch for this account.
   String? get bsbNumber => throw _privateConstructorUsedError;
 
+  /// Serializes this AuBecsDebit to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AuBecsDebit
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AuBecsDebitCopyWith<AuBecsDebit> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -832,6 +868,8 @@ class _$AuBecsDebitCopyWithImpl<$Res, $Val extends AuBecsDebit>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AuBecsDebit
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -875,6 +913,8 @@ class __$$AuBecsDebitImplCopyWithImpl<$Res>
       _$AuBecsDebitImpl _value, $Res Function(_$AuBecsDebitImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuBecsDebit
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -926,7 +966,7 @@ class _$AuBecsDebitImpl implements _AuBecsDebit {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuBecsDebitImpl &&
@@ -937,11 +977,13 @@ class _$AuBecsDebitImpl implements _AuBecsDebit {
                 other.bsbNumber == bsbNumber));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, fingerprint, last4, bsbNumber);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuBecsDebit
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AuBecsDebitImplCopyWith<_$AuBecsDebitImpl> get copyWith =>
@@ -964,20 +1006,22 @@ abstract class _AuBecsDebit implements AuBecsDebit {
   factory _AuBecsDebit.fromJson(Map<String, dynamic> json) =
       _$AuBecsDebitImpl.fromJson;
 
-  @override
-
   /// Unique identifier for the bankaccount.
-  String? get fingerprint;
   @override
+  String? get fingerprint;
 
   /// Last 4 digits of the bankaccount number.
-  String? get last4;
   @override
+  String? get last4;
 
   /// Six digit number identifying the bank or branch for this account.
-  String? get bsbNumber;
   @override
-  @JsonKey(ignore: true)
+  String? get bsbNumber;
+
+  /// Create a copy of AuBecsDebit
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AuBecsDebitImplCopyWith<_$AuBecsDebitImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -997,8 +1041,12 @@ mixin _$BacsDebit {
   /// Last 4 digits of the bank account.
   String? get last4 => throw _privateConstructorUsedError;
 
+  /// Serializes this BacsDebit to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BacsDebit
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BacsDebitCopyWith<BacsDebit> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1021,6 +1069,8 @@ class _$BacsDebitCopyWithImpl<$Res, $Val extends BacsDebit>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BacsDebit
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1064,6 +1114,8 @@ class __$$BacsDebitImplCopyWithImpl<$Res>
       _$BacsDebitImpl _value, $Res Function(_$BacsDebitImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BacsDebit
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1115,7 +1167,7 @@ class _$BacsDebitImpl implements _BacsDebit {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BacsDebitImpl &&
@@ -1126,11 +1178,13 @@ class _$BacsDebitImpl implements _BacsDebit {
             (identical(other.last4, last4) || other.last4 == last4));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, sortCode, fingerprint, last4);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BacsDebit
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BacsDebitImplCopyWith<_$BacsDebitImpl> get copyWith =>
@@ -1153,20 +1207,22 @@ abstract class _BacsDebit implements BacsDebit {
   factory _BacsDebit.fromJson(Map<String, dynamic> json) =
       _$BacsDebitImpl.fromJson;
 
-  @override
-
   /// Sort code of the bankaccount.
-  String? get sortCode;
   @override
+  String? get sortCode;
 
   /// Unique identifier for the bankaccount.
-  String? get fingerprint;
   @override
+  String? get fingerprint;
 
   /// Last 4 digits of the bank account.
-  String? get last4;
   @override
-  @JsonKey(ignore: true)
+  String? get last4;
+
+  /// Create a copy of BacsDebit
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BacsDebitImplCopyWith<_$BacsDebitImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1201,8 +1257,12 @@ mixin _$CardPaymentMethod {
   /// The available networks the card can run.
   List<String>? get availableNetworks => throw _privateConstructorUsedError;
 
+  /// Serializes this CardPaymentMethod to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CardPaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CardPaymentMethodCopyWith<CardPaymentMethod> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1234,6 +1294,8 @@ class _$CardPaymentMethodCopyWithImpl<$Res, $Val extends CardPaymentMethod>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CardPaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1310,6 +1372,8 @@ class __$$CardPaymentMethodImplCopyWithImpl<$Res>
       $Res Function(_$CardPaymentMethodImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CardPaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1425,7 +1489,7 @@ class _$CardPaymentMethodImpl implements _CardPaymentMethod {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardPaymentMethodImpl &&
@@ -1442,7 +1506,7 @@ class _$CardPaymentMethodImpl implements _CardPaymentMethod {
                 .equals(other._availableNetworks, _availableNetworks));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1455,7 +1519,9 @@ class _$CardPaymentMethodImpl implements _CardPaymentMethod {
       preferredNetwork,
       const DeepCollectionEquality().hash(_availableNetworks));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CardPaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CardPaymentMethodImplCopyWith<_$CardPaymentMethodImpl> get copyWith =>
@@ -1484,40 +1550,42 @@ abstract class _CardPaymentMethod implements CardPaymentMethod {
   factory _CardPaymentMethod.fromJson(Map<String, dynamic> json) =
       _$CardPaymentMethodImpl.fromJson;
 
-  @override
-
   /// The brand associated to the card e.g. (visa, amex).
-  String? get brand;
   @override
+  String? get brand;
 
   /// Two letter iso code.
-  String? get country;
   @override
+  String? get country;
 
   /// four digit number representing the year of expiry of the card.
-  int? get expYear;
   @override
+  int? get expYear;
 
   /// two digit number representing the month of expire of the card.
-  int? get expMonth;
   @override
+  int? get expMonth;
 
   /// card funding type e.g. (credit, debit).
-  String? get funding;
   @override
+  String? get funding;
 
   /// last four digits of the card.
-  String? get last4;
   @override
+  String? get last4;
 
   /// The preffered card brand for payment
-  String? get preferredNetwork;
   @override
+  String? get preferredNetwork;
 
   /// The available networks the card can run.
-  List<String>? get availableNetworks;
   @override
-  @JsonKey(ignore: true)
+  List<String>? get availableNetworks;
+
+  /// Create a copy of CardPaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CardPaymentMethodImplCopyWith<_$CardPaymentMethodImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1534,8 +1602,12 @@ mixin _$Fpx {
   /// accountholder type
   String? get accountHolderType => throw _privateConstructorUsedError;
 
+  /// Serializes this Fpx to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Fpx
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FpxCopyWith<Fpx> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1556,6 +1628,8 @@ class _$FpxCopyWithImpl<$Res, $Val extends Fpx> implements $FpxCopyWith<$Res> {
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Fpx
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1590,6 +1664,8 @@ class __$$FpxImplCopyWithImpl<$Res> extends _$FpxCopyWithImpl<$Res, _$FpxImpl>
   __$$FpxImplCopyWithImpl(_$FpxImpl _value, $Res Function(_$FpxImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Fpx
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1632,7 +1708,7 @@ class _$FpxImpl implements _Fpx {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FpxImpl &&
@@ -1641,11 +1717,13 @@ class _$FpxImpl implements _Fpx {
                 other.accountHolderType == accountHolderType));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, bank, accountHolderType);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Fpx
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FpxImplCopyWith<_$FpxImpl> get copyWith =>
@@ -1665,16 +1743,18 @@ abstract class _Fpx implements Fpx {
 
   factory _Fpx.fromJson(Map<String, dynamic> json) = _$FpxImpl.fromJson;
 
-  @override
-
   /// the customer bank
-  String? get bank;
   @override
+  String? get bank;
 
   /// accountholder type
-  String? get accountHolderType;
   @override
-  @JsonKey(ignore: true)
+  String? get accountHolderType;
+
+  /// Create a copy of Fpx
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FpxImplCopyWith<_$FpxImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1691,8 +1771,12 @@ mixin _$Ideal {
   /// The bank of the customer
   String? get bank => throw _privateConstructorUsedError;
 
+  /// Serializes this Ideal to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Ideal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $IdealCopyWith<Ideal> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1714,6 +1798,8 @@ class _$IdealCopyWithImpl<$Res, $Val extends Ideal>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Ideal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1751,6 +1837,8 @@ class __$$IdealImplCopyWithImpl<$Res>
       _$IdealImpl _value, $Res Function(_$IdealImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Ideal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1793,7 +1881,7 @@ class _$IdealImpl implements _Ideal {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IdealImpl &&
@@ -1802,11 +1890,13 @@ class _$IdealImpl implements _Ideal {
             (identical(other.bank, bank) || other.bank == bank));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, bankIdentifierCode, bank);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Ideal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IdealImplCopyWith<_$IdealImpl> get copyWith =>
@@ -1826,16 +1916,18 @@ abstract class _Ideal implements Ideal {
 
   factory _Ideal.fromJson(Map<String, dynamic> json) = _$IdealImpl.fromJson;
 
-  @override
-
   /// The BIC code of the bank
-  String? get bankIdentifierCode;
   @override
+  String? get bankIdentifierCode;
 
   /// The bank of the customer
-  String? get bank;
   @override
-  @JsonKey(ignore: true)
+  String? get bank;
+
+  /// Create a copy of Ideal
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IdealImplCopyWith<_$IdealImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1858,8 +1950,12 @@ mixin _$SepaDebit {
   /// Last four characters of IBAN.
   String? get last4 => throw _privateConstructorUsedError;
 
+  /// Serializes this SepaDebit to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SepaDebit
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SepaDebitCopyWith<SepaDebit> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1883,6 +1979,8 @@ class _$SepaDebitCopyWithImpl<$Res, $Val extends SepaDebit>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SepaDebit
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1932,6 +2030,8 @@ class __$$SepaDebitImplCopyWithImpl<$Res>
       _$SepaDebitImpl _value, $Res Function(_$SepaDebitImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SepaDebit
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1993,7 +2093,7 @@ class _$SepaDebitImpl implements _SepaDebit {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SepaDebitImpl &&
@@ -2005,12 +2105,14 @@ class _$SepaDebitImpl implements _SepaDebit {
             (identical(other.last4, last4) || other.last4 == last4));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, country, bankCode, fingerprint, last4);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SepaDebit
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SepaDebitImplCopyWith<_$SepaDebitImpl> get copyWith =>
@@ -2034,24 +2136,26 @@ abstract class _SepaDebit implements SepaDebit {
   factory _SepaDebit.fromJson(Map<String, dynamic> json) =
       _$SepaDebitImpl.fromJson;
 
-  @override
-
   /// Two letter ISO code representing the country of the bank account.
-  String? get country;
   @override
+  String? get country;
 
   /// Bank code associated with the bankaccount.
-  String? get bankCode;
   @override
+  String? get bankCode;
 
   /// Unique ID for the bank account.
-  String? get fingerprint;
   @override
+  String? get fingerprint;
 
   /// Last four characters of IBAN.
-  String? get last4;
   @override
-  @JsonKey(ignore: true)
+  String? get last4;
+
+  /// Create a copy of SepaDebit
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SepaDebitImplCopyWith<_$SepaDebitImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2065,8 +2169,12 @@ mixin _$Sofort {
   /// Two letter ISO code representing the country of the bank account.
   String? get country => throw _privateConstructorUsedError;
 
+  /// Serializes this Sofort to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Sofort
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SofortCopyWith<Sofort> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -2088,6 +2196,8 @@ class _$SofortCopyWithImpl<$Res, $Val extends Sofort>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Sofort
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2120,6 +2230,8 @@ class __$$SofortImplCopyWithImpl<$Res>
       _$SofortImpl _value, $Res Function(_$SofortImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Sofort
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2153,18 +2265,20 @@ class _$SofortImpl implements _Sofort {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SofortImpl &&
             (identical(other.country, country) || other.country == country));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, country);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Sofort
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SofortImplCopyWith<_$SofortImpl> get copyWith =>
@@ -2183,12 +2297,14 @@ abstract class _Sofort implements Sofort {
 
   factory _Sofort.fromJson(Map<String, dynamic> json) = _$SofortImpl.fromJson;
 
-  @override
-
   /// Two letter ISO code representing the country of the bank account.
-  String? get country;
   @override
-  @JsonKey(ignore: true)
+  String? get country;
+
+  /// Create a copy of Sofort
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SofortImplCopyWith<_$SofortImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2202,8 +2318,12 @@ mixin _$Upi {
   /// The customer's vpa.
   String? get vpa => throw _privateConstructorUsedError;
 
+  /// Serializes this Upi to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Upi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UpiCopyWith<Upi> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -2224,6 +2344,8 @@ class _$UpiCopyWithImpl<$Res, $Val extends Upi> implements $UpiCopyWith<$Res> {
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Upi
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2253,6 +2375,8 @@ class __$$UpiImplCopyWithImpl<$Res> extends _$UpiCopyWithImpl<$Res, _$UpiImpl>
   __$$UpiImplCopyWithImpl(_$UpiImpl _value, $Res Function(_$UpiImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Upi
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2286,18 +2410,20 @@ class _$UpiImpl implements _Upi {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpiImpl &&
             (identical(other.vpa, vpa) || other.vpa == vpa));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, vpa);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Upi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpiImplCopyWith<_$UpiImpl> get copyWith =>
@@ -2316,12 +2442,14 @@ abstract class _Upi implements Upi {
 
   factory _Upi.fromJson(Map<String, dynamic> json) = _$UpiImpl.fromJson;
 
-  @override
-
   /// The customer's vpa.
-  String? get vpa;
   @override
-  @JsonKey(ignore: true)
+  String? get vpa;
+
+  /// Create a copy of Upi
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpiImplCopyWith<_$UpiImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2360,8 +2488,12 @@ mixin _$UsBankAccount {
   /// list of preferred network names
   List<String>? get supportedNetworks => throw _privateConstructorUsedError;
 
+  /// Serializes this UsBankAccount to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UsBankAccount
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UsBankAccountCopyWith<UsBankAccount> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2394,6 +2526,8 @@ class _$UsBankAccountCopyWithImpl<$Res, $Val extends UsBankAccount>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UsBankAccount
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2476,6 +2610,8 @@ class __$$UsBankAccountImplCopyWithImpl<$Res>
       _$UsBankAccountImpl _value, $Res Function(_$UsBankAccountImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UsBankAccount
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2612,7 +2748,7 @@ class _$UsBankAccountImpl implements _UsBankAccount {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UsBankAccountImpl &&
@@ -2635,7 +2771,7 @@ class _$UsBankAccountImpl implements _UsBankAccount {
                 .equals(other._supportedNetworks, _supportedNetworks));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -2649,7 +2785,9 @@ class _$UsBankAccountImpl implements _UsBankAccount {
       const DeepCollectionEquality().hash(_preferredNetworks),
       const DeepCollectionEquality().hash(_supportedNetworks));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UsBankAccount
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UsBankAccountImplCopyWith<_$UsBankAccountImpl> get copyWith =>
@@ -2678,44 +2816,46 @@ abstract class _UsBankAccount implements UsBankAccount {
   factory _UsBankAccount.fromJson(Map<String, dynamic> json) =
       _$UsBankAccountImpl.fromJson;
 
-  @override
-
   /// Routing number of the bank account
-  String? get routingNumber;
   @override
+  String? get routingNumber;
 
   /// Last 4  digits of the account
-  String? get last4;
   @override
+  String? get last4;
 
   /// The bank account type of the holder
-  UsBankAccountHolderType get accountHolderType;
   @override
+  UsBankAccountHolderType get accountHolderType;
 
   /// The account type
-  UsBankAccountType get accountType;
   @override
+  UsBankAccountType get accountType;
 
   /// The name of the bank of the account
-  String? get bankName;
   @override
+  String? get bankName;
 
   /// Unique identifier for the bankaccount.
-  String? get fingerprint;
   @override
+  String? get fingerprint;
 
   /// Number of linkedaccount
+  @override
   String? get linkedAccount;
-  @override
 
   /// list of preferred network names
+  @override
   List<String>? get preferredNetworks;
-  @override
 
   /// list of preferred network names
-  List<String>? get supportedNetworks;
   @override
-  @JsonKey(ignore: true)
+  List<String>? get supportedNetworks;
+
+  /// Create a copy of UsBankAccount
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UsBankAccountImplCopyWith<_$UsBankAccountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

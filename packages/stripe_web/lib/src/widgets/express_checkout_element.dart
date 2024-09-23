@@ -17,6 +17,7 @@ class ExpressCheckoutElement extends StatefulWidget {
   final FocusNode? focusNode;
   final js.ElementAppearance? appearance;
   final js.ExpressCheckoutLayout? layout;
+  final ValueChanged<String> onConfirm;
 
   ExpressCheckoutElement({
     super.key,
@@ -25,6 +26,7 @@ class ExpressCheckoutElement extends StatefulWidget {
     this.focusNode,
     this.appearance,
     this.layout,
+    required this.onConfirm,
   });
 
   @override
@@ -43,7 +45,8 @@ class ExpressCheckoutElementState extends State<ExpressCheckoutElement> {
         element = elements!.createExpressCheckout(elementOptions())
           ..mount('#express-checkout-element'.toJS)
           ..onBlur(requestBlur)
-          ..onFocus(requestFocus);
+          ..onFocus(requestFocus)
+          ..onConfirm(confirm);
         mutationObserver = web.MutationObserver(
             (JSArray<web.MutationRecord> entries,
                 web.MutationObserver observer) {
@@ -115,6 +118,12 @@ class ExpressCheckoutElementState extends State<ExpressCheckoutElement> {
 
   void requestFocus(response) {
     _effectiveNode.requestFocus();
+  }
+
+  void confirm(js.ExpressCheckoutConfirmEvent response) {
+    widget.onConfirm(response.expressPaymentType);
+
+    return;
   }
 
   // void onCardChanged(js.PaymentElementChangeEvent response) {

@@ -45,6 +45,32 @@ Map<String, dynamic> _$$ExpressCheckoutOptionsImplToJson(
   return val;
 }
 
+_$ExpressCheckoutConfirmEventImpl _$$ExpressCheckoutConfirmEventImplFromJson(
+        Map json) =>
+    _$ExpressCheckoutConfirmEventImpl(
+      expressPaymentType: json['expressPaymentType'] as String,
+      billingDetails: json['billingDetails'] == null
+          ? null
+          : BillingDetails.fromJson(
+              Map<String, dynamic>.from(json['billingDetails'] as Map)),
+    );
+
+Map<String, dynamic> _$$ExpressCheckoutConfirmEventImplToJson(
+    _$ExpressCheckoutConfirmEventImpl instance) {
+  final val = <String, dynamic>{
+    'expressPaymentType': instance.expressPaymentType,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('billingDetails', instance.billingDetails?.toJson());
+  return val;
+}
+
 _$ExpressCheckoutLayoutImpl _$$ExpressCheckoutLayoutImplFromJson(Map json) =>
     _$ExpressCheckoutLayoutImpl(
       maxColumns: (json['maxColumns'] as num?)?.toInt(),

@@ -12,7 +12,7 @@ part of 'card_element_change_event.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CardElementChangeEvent _$CardElementChangeEventFromJson(
     Map<String, dynamic> json) {
@@ -28,8 +28,12 @@ mixin _$CardElementChangeEvent {
   String get brand => throw _privateConstructorUsedError;
   CardElementChangeEventValue? get value => throw _privateConstructorUsedError;
 
+  /// Serializes this CardElementChangeEvent to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CardElementChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CardElementChangeEventCopyWith<CardElementChangeEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -63,6 +67,8 @@ class _$CardElementChangeEventCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CardElementChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,6 +107,8 @@ class _$CardElementChangeEventCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of CardElementChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $StripeErrorCopyWith<$Res>? get error {
@@ -113,6 +121,8 @@ class _$CardElementChangeEventCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of CardElementChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CardElementChangeEventValueCopyWith<$Res>? get value {
@@ -159,6 +169,8 @@ class __$$CardElementChangeEventImplCopyWithImpl<$Res>
       $Res Function(_$CardElementChangeEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CardElementChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -231,7 +243,7 @@ class _$CardElementChangeEventImpl implements _CardElementChangeEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardElementChangeEventImpl &&
@@ -245,12 +257,14 @@ class _$CardElementChangeEventImpl implements _CardElementChangeEvent {
             (identical(other.value, value) || other.value == value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, elementType, empty, complete, error, brand, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CardElementChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CardElementChangeEventImplCopyWith<_$CardElementChangeEventImpl>
@@ -289,8 +303,11 @@ abstract class _CardElementChangeEvent implements CardElementChangeEvent {
   String get brand;
   @override
   CardElementChangeEventValue? get value;
+
+  /// Create a copy of CardElementChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CardElementChangeEventImplCopyWith<_$CardElementChangeEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -304,8 +321,12 @@ CardElementChangeEventValue _$CardElementChangeEventValueFromJson(
 mixin _$CardElementChangeEventValue {
   String? get postalCode => throw _privateConstructorUsedError;
 
+  /// Serializes this CardElementChangeEventValue to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CardElementChangeEventValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CardElementChangeEventValueCopyWith<CardElementChangeEventValue>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -332,6 +353,8 @@ class _$CardElementChangeEventValueCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CardElementChangeEventValue
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -368,6 +391,8 @@ class __$$CardElementChangeEventValueImplCopyWithImpl<$Res>
       $Res Function(_$CardElementChangeEventValueImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CardElementChangeEventValue
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -401,7 +426,7 @@ class _$CardElementChangeEventValueImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CardElementChangeEventValueImpl &&
@@ -409,11 +434,13 @@ class _$CardElementChangeEventValueImpl
                 other.postalCode == postalCode));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, postalCode);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CardElementChangeEventValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CardElementChangeEventValueImplCopyWith<_$CardElementChangeEventValueImpl>
@@ -438,8 +465,11 @@ abstract class _CardElementChangeEventValue
 
   @override
   String? get postalCode;
+
+  /// Create a copy of CardElementChangeEventValue
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CardElementChangeEventValueImplCopyWith<_$CardElementChangeEventValueImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

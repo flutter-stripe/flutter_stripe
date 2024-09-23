@@ -26,8 +26,12 @@ mixin _$ConfirmCardSetupOptions {
   /// (e.g. for use in the PaymentRequest API). Default is true.
   bool? get handleActions => throw _privateConstructorUsedError;
 
+  /// Serializes this ConfirmCardSetupOptions to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ConfirmCardSetupOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ConfirmCardSetupOptionsCopyWith<ConfirmCardSetupOptions> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$ConfirmCardSetupOptionsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ConfirmCardSetupOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -88,6 +94,8 @@ class __$$ConfirmCardSetupOptionsImplCopyWithImpl<$Res>
       $Res Function(_$ConfirmCardSetupOptionsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ConfirmCardSetupOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -131,11 +139,13 @@ class _$ConfirmCardSetupOptionsImpl implements _ConfirmCardSetupOptions {
                 other.handleActions == handleActions));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, handleActions);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ConfirmCardSetupOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ConfirmCardSetupOptionsImplCopyWith<_$ConfirmCardSetupOptionsImpl>
@@ -157,14 +167,16 @@ abstract class _ConfirmCardSetupOptions implements ConfirmCardSetupOptions {
   factory _ConfirmCardSetupOptions.fromJson(Map<String, dynamic> json) =
       _$ConfirmCardSetupOptionsImpl.fromJson;
 
-  @override
-
   /// Set this to false if you want to handle next actions yourself,
   /// or if you want to defer next action handling until later
   /// (e.g. for use in the PaymentRequest API). Default is true.
-  bool? get handleActions;
   @override
-  @JsonKey(ignore: true)
+  bool? get handleActions;
+
+  /// Create a copy of ConfirmCardSetupOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ConfirmCardSetupOptionsImplCopyWith<_$ConfirmCardSetupOptionsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

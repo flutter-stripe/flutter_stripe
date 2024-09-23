@@ -12,7 +12,7 @@ part of 'confirm_card_payment_options.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ConfirmCardPaymentOptions _$ConfirmCardPaymentOptionsFromJson(
     Map<String, dynamic> json) {
@@ -26,8 +26,12 @@ mixin _$ConfirmCardPaymentOptions {
   /// (e.g. for use in the PaymentRequest API). Default is true.
   bool? get handleActions => throw _privateConstructorUsedError;
 
+  /// Serializes this ConfirmCardPaymentOptions to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ConfirmCardPaymentOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ConfirmCardPaymentOptionsCopyWith<ConfirmCardPaymentOptions> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$ConfirmCardPaymentOptionsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ConfirmCardPaymentOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -88,6 +94,8 @@ class __$$ConfirmCardPaymentOptionsImplCopyWithImpl<$Res>
       $Res Function(_$ConfirmCardPaymentOptionsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ConfirmCardPaymentOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -123,7 +131,7 @@ class _$ConfirmCardPaymentOptionsImpl implements _ConfirmCardPaymentOptions {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ConfirmCardPaymentOptionsImpl &&
@@ -131,11 +139,13 @@ class _$ConfirmCardPaymentOptionsImpl implements _ConfirmCardPaymentOptions {
                 other.handleActions == handleActions));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, handleActions);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ConfirmCardPaymentOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ConfirmCardPaymentOptionsImplCopyWith<_$ConfirmCardPaymentOptionsImpl>
@@ -157,14 +167,16 @@ abstract class _ConfirmCardPaymentOptions implements ConfirmCardPaymentOptions {
   factory _ConfirmCardPaymentOptions.fromJson(Map<String, dynamic> json) =
       _$ConfirmCardPaymentOptionsImpl.fromJson;
 
-  @override
-
   /// Set this to false if you want to handle next actions yourself,
   /// or if you want to defer next action handling until later
   /// (e.g. for use in the PaymentRequest API). Default is true.
-  bool? get handleActions;
   @override
-  @JsonKey(ignore: true)
+  bool? get handleActions;
+
+  /// Create a copy of ConfirmCardPaymentOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ConfirmCardPaymentOptionsImplCopyWith<_$ConfirmCardPaymentOptionsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

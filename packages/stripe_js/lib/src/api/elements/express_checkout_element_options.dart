@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:stripe_js/src/api/core/core.dart';
 
 part 'express_checkout_element_options.freezed.dart';
 part 'express_checkout_element_options.g.dart';
@@ -26,6 +27,20 @@ class ExpressCheckoutOptions with _$ExpressCheckoutOptions {
 
   factory ExpressCheckoutOptions.fromJson(Map<String, dynamic> json) =>
       _$ExpressCheckoutOptionsFromJson(json);
+}
+
+@freezed
+
+/// Confirm parameters from the express checkout element
+class ExpressCheckoutConfirmEvent with _$ExpressCheckoutConfirmEvent {
+  factory ExpressCheckoutConfirmEvent({
+    /// The method that was used to pay.
+    required String expressPaymentType,
+    BillingDetails? billingDetails,
+  }) = _ExpressCheckoutConfirmEvent;
+
+  factory ExpressCheckoutConfirmEvent.fromJson(Map<String, dynamic> json) =>
+      _$ExpressCheckoutConfirmEventFromJson(json);
 }
 
 @freezed

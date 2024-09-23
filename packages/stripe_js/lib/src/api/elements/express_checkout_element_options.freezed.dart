@@ -39,8 +39,12 @@ mixin _$ExpressCheckoutOptions {
   ExpressCheckoutPaymentMethods? get paymentMethods =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this ExpressCheckoutOptions to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ExpressCheckoutOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ExpressCheckoutOptionsCopyWith<ExpressCheckoutOptions> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -75,6 +79,8 @@ class _$ExpressCheckoutOptionsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ExpressCheckoutOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -108,6 +114,8 @@ class _$ExpressCheckoutOptionsCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of ExpressCheckoutOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ExpressCheckoutButtonThemeCopyWith<$Res>? get buttonTheme {
@@ -121,6 +129,8 @@ class _$ExpressCheckoutOptionsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of ExpressCheckoutOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ExpressCheckoutButtonTypeCopyWith<$Res>? get buttonType {
@@ -134,6 +144,8 @@ class _$ExpressCheckoutOptionsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of ExpressCheckoutOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ExpressCheckoutLayoutCopyWith<$Res>? get layout {
@@ -146,6 +158,8 @@ class _$ExpressCheckoutOptionsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of ExpressCheckoutOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ExpressCheckoutPaymentMethodsCopyWith<$Res>? get paymentMethods {
@@ -196,6 +210,8 @@ class __$$ExpressCheckoutOptionsImplCopyWithImpl<$Res>
       $Res Function(_$ExpressCheckoutOptionsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ExpressCheckoutOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -283,12 +299,14 @@ class _$ExpressCheckoutOptionsImpl implements _ExpressCheckoutOptions {
                 other.paymentMethods == paymentMethods));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, height, buttonTheme, buttonType, layout, paymentMethods);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ExpressCheckoutOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ExpressCheckoutOptionsImplCopyWith<_$ExpressCheckoutOptionsImpl>
@@ -315,29 +333,233 @@ abstract class _ExpressCheckoutOptions implements ExpressCheckoutOptions {
   factory _ExpressCheckoutOptions.fromJson(Map<String, dynamic> json) =
       _$ExpressCheckoutOptionsImpl.fromJson;
 
-  @override
-
   /// height of the widget
-  double? get height;
   @override
+  double? get height;
 
   /// The theme of the buttons
-  ExpressCheckoutButtonTheme? get buttonTheme;
   @override
+  ExpressCheckoutButtonTheme? get buttonTheme;
 
   /// The type of buttons
-  ExpressCheckoutButtonType? get buttonType;
   @override
+  ExpressCheckoutButtonType? get buttonType;
 
   /// Layout parameters of the express checkout element
-  ExpressCheckoutLayout? get layout;
   @override
+  ExpressCheckoutLayout? get layout;
 
   /// Payment methods to display
-  ExpressCheckoutPaymentMethods? get paymentMethods;
   @override
-  @JsonKey(ignore: true)
+  ExpressCheckoutPaymentMethods? get paymentMethods;
+
+  /// Create a copy of ExpressCheckoutOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ExpressCheckoutOptionsImplCopyWith<_$ExpressCheckoutOptionsImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+ExpressCheckoutConfirmEvent _$ExpressCheckoutConfirmEventFromJson(
+    Map<String, dynamic> json) {
+  return _ExpressCheckoutConfirmEvent.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ExpressCheckoutConfirmEvent {
+  String get expressPaymentType => throw _privateConstructorUsedError;
+  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
+
+  /// Serializes this ExpressCheckoutConfirmEvent to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of ExpressCheckoutConfirmEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ExpressCheckoutConfirmEventCopyWith<ExpressCheckoutConfirmEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ExpressCheckoutConfirmEventCopyWith<$Res> {
+  factory $ExpressCheckoutConfirmEventCopyWith(
+          ExpressCheckoutConfirmEvent value,
+          $Res Function(ExpressCheckoutConfirmEvent) then) =
+      _$ExpressCheckoutConfirmEventCopyWithImpl<$Res,
+          ExpressCheckoutConfirmEvent>;
+  @useResult
+  $Res call({String expressPaymentType, BillingDetails? billingDetails});
+
+  $BillingDetailsCopyWith<$Res>? get billingDetails;
+}
+
+/// @nodoc
+class _$ExpressCheckoutConfirmEventCopyWithImpl<$Res,
+        $Val extends ExpressCheckoutConfirmEvent>
+    implements $ExpressCheckoutConfirmEventCopyWith<$Res> {
+  _$ExpressCheckoutConfirmEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ExpressCheckoutConfirmEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? expressPaymentType = null,
+    Object? billingDetails = freezed,
+  }) {
+    return _then(_value.copyWith(
+      expressPaymentType: null == expressPaymentType
+          ? _value.expressPaymentType
+          : expressPaymentType // ignore: cast_nullable_to_non_nullable
+              as String,
+      billingDetails: freezed == billingDetails
+          ? _value.billingDetails
+          : billingDetails // ignore: cast_nullable_to_non_nullable
+              as BillingDetails?,
+    ) as $Val);
+  }
+
+  /// Create a copy of ExpressCheckoutConfirmEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $BillingDetailsCopyWith<$Res>? get billingDetails {
+    if (_value.billingDetails == null) {
+      return null;
+    }
+
+    return $BillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
+      return _then(_value.copyWith(billingDetails: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$ExpressCheckoutConfirmEventImplCopyWith<$Res>
+    implements $ExpressCheckoutConfirmEventCopyWith<$Res> {
+  factory _$$ExpressCheckoutConfirmEventImplCopyWith(
+          _$ExpressCheckoutConfirmEventImpl value,
+          $Res Function(_$ExpressCheckoutConfirmEventImpl) then) =
+      __$$ExpressCheckoutConfirmEventImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String expressPaymentType, BillingDetails? billingDetails});
+
+  @override
+  $BillingDetailsCopyWith<$Res>? get billingDetails;
+}
+
+/// @nodoc
+class __$$ExpressCheckoutConfirmEventImplCopyWithImpl<$Res>
+    extends _$ExpressCheckoutConfirmEventCopyWithImpl<$Res,
+        _$ExpressCheckoutConfirmEventImpl>
+    implements _$$ExpressCheckoutConfirmEventImplCopyWith<$Res> {
+  __$$ExpressCheckoutConfirmEventImplCopyWithImpl(
+      _$ExpressCheckoutConfirmEventImpl _value,
+      $Res Function(_$ExpressCheckoutConfirmEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ExpressCheckoutConfirmEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? expressPaymentType = null,
+    Object? billingDetails = freezed,
+  }) {
+    return _then(_$ExpressCheckoutConfirmEventImpl(
+      expressPaymentType: null == expressPaymentType
+          ? _value.expressPaymentType
+          : expressPaymentType // ignore: cast_nullable_to_non_nullable
+              as String,
+      billingDetails: freezed == billingDetails
+          ? _value.billingDetails
+          : billingDetails // ignore: cast_nullable_to_non_nullable
+              as BillingDetails?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ExpressCheckoutConfirmEventImpl
+    implements _ExpressCheckoutConfirmEvent {
+  _$ExpressCheckoutConfirmEventImpl(
+      {required this.expressPaymentType, this.billingDetails});
+
+  factory _$ExpressCheckoutConfirmEventImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$ExpressCheckoutConfirmEventImplFromJson(json);
+
+  @override
+  final String expressPaymentType;
+  @override
+  final BillingDetails? billingDetails;
+
+  @override
+  String toString() {
+    return 'ExpressCheckoutConfirmEvent(expressPaymentType: $expressPaymentType, billingDetails: $billingDetails)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ExpressCheckoutConfirmEventImpl &&
+            (identical(other.expressPaymentType, expressPaymentType) ||
+                other.expressPaymentType == expressPaymentType) &&
+            (identical(other.billingDetails, billingDetails) ||
+                other.billingDetails == billingDetails));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, expressPaymentType, billingDetails);
+
+  /// Create a copy of ExpressCheckoutConfirmEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ExpressCheckoutConfirmEventImplCopyWith<_$ExpressCheckoutConfirmEventImpl>
+      get copyWith => __$$ExpressCheckoutConfirmEventImplCopyWithImpl<
+          _$ExpressCheckoutConfirmEventImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ExpressCheckoutConfirmEventImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ExpressCheckoutConfirmEvent
+    implements ExpressCheckoutConfirmEvent {
+  factory _ExpressCheckoutConfirmEvent(
+          {required final String expressPaymentType,
+          final BillingDetails? billingDetails}) =
+      _$ExpressCheckoutConfirmEventImpl;
+
+  factory _ExpressCheckoutConfirmEvent.fromJson(Map<String, dynamic> json) =
+      _$ExpressCheckoutConfirmEventImpl.fromJson;
+
+  @override
+  String get expressPaymentType;
+  @override
+  BillingDetails? get billingDetails;
+
+  /// Create a copy of ExpressCheckoutConfirmEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ExpressCheckoutConfirmEventImplCopyWith<_$ExpressCheckoutConfirmEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -352,8 +574,12 @@ mixin _$ExpressCheckoutLayout {
   int? get maxRows => throw _privateConstructorUsedError;
   ExpressCheckoutOverflow? get overflow => throw _privateConstructorUsedError;
 
+  /// Serializes this ExpressCheckoutLayout to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ExpressCheckoutLayout
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ExpressCheckoutLayoutCopyWith<ExpressCheckoutLayout> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -378,6 +604,8 @@ class _$ExpressCheckoutLayoutCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ExpressCheckoutLayout
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -423,6 +651,8 @@ class __$$ExpressCheckoutLayoutImplCopyWithImpl<$Res>
       $Res Function(_$ExpressCheckoutLayoutImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ExpressCheckoutLayout
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -480,11 +710,13 @@ class _$ExpressCheckoutLayoutImpl implements _ExpressCheckoutLayout {
                 other.overflow == overflow));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, maxColumns, maxRows, overflow);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ExpressCheckoutLayout
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ExpressCheckoutLayoutImplCopyWith<_$ExpressCheckoutLayoutImpl>
@@ -514,8 +746,11 @@ abstract class _ExpressCheckoutLayout implements ExpressCheckoutLayout {
   int? get maxRows;
   @override
   ExpressCheckoutOverflow? get overflow;
+
+  /// Create a copy of ExpressCheckoutLayout
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ExpressCheckoutLayoutImplCopyWith<_$ExpressCheckoutLayoutImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -533,8 +768,12 @@ mixin _$ExpressCheckoutButtonTheme {
       throw _privateConstructorUsedError;
   ExpressPaypalButtonTheme? get paypal => throw _privateConstructorUsedError;
 
+  /// Serializes this ExpressCheckoutButtonTheme to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ExpressCheckoutButtonTheme
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ExpressCheckoutButtonThemeCopyWith<ExpressCheckoutButtonTheme>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -563,6 +802,8 @@ class _$ExpressCheckoutButtonThemeCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ExpressCheckoutButtonTheme
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -612,6 +853,8 @@ class __$$ExpressCheckoutButtonThemeImplCopyWithImpl<$Res>
       $Res Function(_$ExpressCheckoutButtonThemeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ExpressCheckoutButtonTheme
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -670,11 +913,13 @@ class _$ExpressCheckoutButtonThemeImpl implements _ExpressCheckoutButtonTheme {
             (identical(other.paypal, paypal) || other.paypal == paypal));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, applePay, googlePay, paypal);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ExpressCheckoutButtonTheme
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ExpressCheckoutButtonThemeImplCopyWith<_$ExpressCheckoutButtonThemeImpl>
@@ -706,8 +951,11 @@ abstract class _ExpressCheckoutButtonTheme
   ExpressGooglePayButtonTheme? get googlePay;
   @override
   ExpressPaypalButtonTheme? get paypal;
+
+  /// Create a copy of ExpressCheckoutButtonTheme
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ExpressCheckoutButtonThemeImplCopyWith<_$ExpressCheckoutButtonThemeImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -724,8 +972,12 @@ mixin _$ExpressCheckoutButtonType {
       throw _privateConstructorUsedError;
   ExpressPaypalButtonType? get paypal => throw _privateConstructorUsedError;
 
+  /// Serializes this ExpressCheckoutButtonType to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ExpressCheckoutButtonType
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ExpressCheckoutButtonTypeCopyWith<ExpressCheckoutButtonType> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -753,6 +1005,8 @@ class _$ExpressCheckoutButtonTypeCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ExpressCheckoutButtonType
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -802,6 +1056,8 @@ class __$$ExpressCheckoutButtonTypeImplCopyWithImpl<$Res>
       $Res Function(_$ExpressCheckoutButtonTypeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ExpressCheckoutButtonType
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -859,11 +1115,13 @@ class _$ExpressCheckoutButtonTypeImpl implements _ExpressCheckoutButtonType {
             (identical(other.paypal, paypal) || other.paypal == paypal));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, applePay, googlePay, paypal);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ExpressCheckoutButtonType
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ExpressCheckoutButtonTypeImplCopyWith<_$ExpressCheckoutButtonTypeImpl>
@@ -893,8 +1151,11 @@ abstract class _ExpressCheckoutButtonType implements ExpressCheckoutButtonType {
   ExpressGooglePayButtonType? get googlePay;
   @override
   ExpressPaypalButtonType? get paypal;
+
+  /// Create a copy of ExpressCheckoutButtonType
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ExpressCheckoutButtonTypeImplCopyWith<_$ExpressCheckoutButtonTypeImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -915,8 +1176,12 @@ mixin _$ExpressCheckoutPaymentMethods {
   ExpressPaymentNethodEnabled? get amazonPay =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this ExpressCheckoutPaymentMethods to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ExpressCheckoutPaymentMethods
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ExpressCheckoutPaymentMethodsCopyWith<ExpressCheckoutPaymentMethods>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -948,6 +1213,8 @@ class _$ExpressCheckoutPaymentMethodsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ExpressCheckoutPaymentMethods
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1009,6 +1276,8 @@ class __$$ExpressCheckoutPaymentMethodsImplCopyWithImpl<$Res>
       $Res Function(_$ExpressCheckoutPaymentMethodsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ExpressCheckoutPaymentMethods
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1085,12 +1354,14 @@ class _$ExpressCheckoutPaymentMethodsImpl
                 other.amazonPay == amazonPay));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, applePay, googlePay, paypal, link, amazonPay);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ExpressCheckoutPaymentMethods
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ExpressCheckoutPaymentMethodsImplCopyWith<
@@ -1129,8 +1400,11 @@ abstract class _ExpressCheckoutPaymentMethods
   ExpressPaymentNethodEnabled? get link;
   @override
   ExpressPaymentNethodEnabled? get amazonPay;
+
+  /// Create a copy of ExpressCheckoutPaymentMethods
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ExpressCheckoutPaymentMethodsImplCopyWith<
           _$ExpressCheckoutPaymentMethodsImpl>
       get copyWith => throw _privateConstructorUsedError;

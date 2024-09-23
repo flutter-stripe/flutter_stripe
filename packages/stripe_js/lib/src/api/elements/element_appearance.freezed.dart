@@ -26,8 +26,12 @@ mixin _$ElementAppearance {
       throw _privateConstructorUsedError;
   ElementAppearanceLabels get labels => throw _privateConstructorUsedError;
 
+  /// Serializes this ElementAppearance to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ElementAppearance
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ElementAppearanceCopyWith<ElementAppearance> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,6 +59,8 @@ class _$ElementAppearanceCopyWithImpl<$Res, $Val extends ElementAppearance>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ElementAppearance
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +113,8 @@ class __$$ElementAppearanceImplCopyWithImpl<$Res>
       $Res Function(_$ElementAppearanceImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ElementAppearance
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -194,7 +202,7 @@ class _$ElementAppearanceImpl implements _ElementAppearance {
             (identical(other.labels, labels) || other.labels == labels));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -203,7 +211,9 @@ class _$ElementAppearanceImpl implements _ElementAppearance {
       const DeepCollectionEquality().hash(_rules),
       labels);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ElementAppearance
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ElementAppearanceImplCopyWith<_$ElementAppearanceImpl> get copyWith =>
@@ -236,8 +246,11 @@ abstract class _ElementAppearance implements ElementAppearance {
   Map<String, Map<String, String>>? get rules;
   @override
   ElementAppearanceLabels get labels;
+
+  /// Create a copy of ElementAppearance
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ElementAppearanceImplCopyWith<_$ElementAppearanceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

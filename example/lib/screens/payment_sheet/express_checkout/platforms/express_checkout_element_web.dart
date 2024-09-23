@@ -22,6 +22,9 @@ class ExpressCheckoutWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpressCheckoutElement(
+      onConfirm: (value) {
+        pay();
+      },
       clientSecret: clientSecret ?? '',
     );
   }
