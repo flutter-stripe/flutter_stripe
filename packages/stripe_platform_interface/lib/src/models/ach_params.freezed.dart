@@ -12,7 +12,7 @@ part of 'ach_params.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CollectBankAccountParams _$CollectBankAccountParamsFromJson(
     Map<String, dynamic> json) {
@@ -30,8 +30,12 @@ mixin _$CollectBankAccountParams {
   /// is supported.
   PaymentMethodType get paymentMethodType => throw _privateConstructorUsedError;
 
+  /// Serializes this CollectBankAccountParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CollectBankAccountParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CollectBankAccountParamsCopyWith<CollectBankAccountParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,6 +63,8 @@ class _$CollectBankAccountParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CollectBankAccountParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -77,6 +83,8 @@ class _$CollectBankAccountParamsCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of CollectBankAccountParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BillingDetailsCopyWith<$Res> get billingDetails {
@@ -112,6 +120,8 @@ class __$$CollectBankAccountParamsImplCopyWithImpl<$Res>
       $Res Function(_$CollectBankAccountParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CollectBankAccountParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -160,7 +170,7 @@ class _$CollectBankAccountParamsImpl implements _CollectBankAccountParams {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CollectBankAccountParamsImpl &&
@@ -170,12 +180,14 @@ class _$CollectBankAccountParamsImpl implements _CollectBankAccountParams {
                 other.paymentMethodType == paymentMethodType));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, billingDetails, paymentMethodType);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CollectBankAccountParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CollectBankAccountParamsImplCopyWith<_$CollectBankAccountParamsImpl>
@@ -199,19 +211,21 @@ abstract class _CollectBankAccountParams implements CollectBankAccountParams {
   factory _CollectBankAccountParams.fromJson(Map<String, dynamic> json) =
       _$CollectBankAccountParamsImpl.fromJson;
 
-  @override
-
   /// Billingdetails of the account holder
   ///
   /// It is required to fill in the name in the billing details
-  BillingDetails get billingDetails;
   @override
+  BillingDetails get billingDetails;
 
   /// The paymentmethod type. At this point only method [PaymentMethodType.USBankAccount]
   /// is supported.
-  PaymentMethodType get paymentMethodType;
   @override
-  @JsonKey(ignore: true)
+  PaymentMethodType get paymentMethodType;
+
+  /// Create a copy of CollectBankAccountParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CollectBankAccountParamsImplCopyWith<_$CollectBankAccountParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -234,8 +248,12 @@ mixin _$VerifyMicroDepositsParams {
   /// When Using this field make sure [amounts] is `null`.
   String? get descriptorCode => throw _privateConstructorUsedError;
 
+  /// Serializes this VerifyMicroDepositsParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VerifyMicroDepositsParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VerifyMicroDepositsParamsCopyWith<VerifyMicroDepositsParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -260,6 +278,8 @@ class _$VerifyMicroDepositsParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of VerifyMicroDepositsParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -301,6 +321,8 @@ class __$$VerifyMicroDepositsParamsImplCopyWithImpl<$Res>
       $Res Function(_$VerifyMicroDepositsParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VerifyMicroDepositsParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -362,7 +384,7 @@ class _$VerifyMicroDepositsParamsImpl implements _VerifyMicroDepositsParams {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VerifyMicroDepositsParamsImpl &&
@@ -371,12 +393,14 @@ class _$VerifyMicroDepositsParamsImpl implements _VerifyMicroDepositsParams {
                 other.descriptorCode == descriptorCode));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_amounts), descriptorCode);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VerifyMicroDepositsParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VerifyMicroDepositsParamsImplCopyWith<_$VerifyMicroDepositsParamsImpl>
@@ -399,21 +423,23 @@ abstract class _VerifyMicroDepositsParams implements VerifyMicroDepositsParams {
   factory _VerifyMicroDepositsParams.fromJson(Map<String, dynamic> json) =
       _$VerifyMicroDepositsParamsImpl.fromJson;
 
-  @override
-
   /// The amounts of the microdeposits that are deposited on the account.
   ///
   /// Make sure that the amount is exactly 2. When using this field make sure
   /// [descriptorCode] is `null`.
-  List<int>? get amounts;
   @override
+  List<int>? get amounts;
 
   /// The descriptor code that is part of the microdepot to the customer bank account.
   ///
   /// When Using this field make sure [amounts] is `null`.
-  String? get descriptorCode;
   @override
-  @JsonKey(ignore: true)
+  String? get descriptorCode;
+
+  /// Create a copy of VerifyMicroDepositsParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VerifyMicroDepositsParamsImplCopyWith<_$VerifyMicroDepositsParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

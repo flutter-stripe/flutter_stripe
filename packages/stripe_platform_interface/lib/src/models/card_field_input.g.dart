@@ -9,13 +9,13 @@ part of 'card_field_input.dart';
 _$CardStyleConstructorImpl _$$CardStyleConstructorImplFromJson(
         Map<String, dynamic> json) =>
     _$CardStyleConstructorImpl(
-      borderWidth: json['borderWidth'] as int?,
+      borderWidth: (json['borderWidth'] as num?)?.toInt(),
       backgroundColor: ColorKey.fromJson(json['backgroundColor']),
       borderColor: ColorKey.fromJson(json['borderColor']),
-      borderRadius: json['borderRadius'] as int?,
+      borderRadius: (json['borderRadius'] as num?)?.toInt(),
       cursorColor: ColorKey.fromJson(json['cursorColor']),
       textColor: ColorKey.fromJson(json['textColor']),
-      fontSize: json['fontSize'] as int?,
+      fontSize: (json['fontSize'] as num?)?.toInt(),
       fontFamily: json['fontFamily'] as String?,
       textErrorColor: ColorKey.fromJson(json['textErrorColor']),
       placeholderColor: ColorKey.fromJson(json['placeholderColor']),
@@ -40,12 +40,12 @@ _$CardFormStyleConstructorImpl _$$CardFormStyleConstructorImplFromJson(
         Map<String, dynamic> json) =>
     _$CardFormStyleConstructorImpl(
       backgroundColor: ColorKey.fromJson(json['backgroundColor']),
-      borderWidth: json['borderWidth'] as int?,
+      borderWidth: (json['borderWidth'] as num?)?.toInt(),
       borderColor: ColorKey.fromJson(json['borderColor']),
-      borderRadius: json['borderRadius'] as int?,
+      borderRadius: (json['borderRadius'] as num?)?.toInt(),
       cursorColor: ColorKey.fromJson(json['cursorColor']),
       textColor: ColorKey.fromJson(json['textColor']),
-      fontSize: json['fontSize'] as int?,
+      fontSize: (json['fontSize'] as num?)?.toInt(),
       textErrorColor: ColorKey.fromJson(json['textErrorColor']),
       placeholderColor: ColorKey.fromJson(json['placeholderColor']),
     );
@@ -87,8 +87,8 @@ _$CardFieldInputDetailsImpl _$$CardFieldInputDetailsImplFromJson(
     _$CardFieldInputDetailsImpl(
       complete: json['complete'] as bool,
       last4: json['last4'] as String?,
-      expiryMonth: json['expiryMonth'] as int?,
-      expiryYear: json['expiryYear'] as int?,
+      expiryMonth: (json['expiryMonth'] as num?)?.toInt(),
+      expiryYear: (json['expiryYear'] as num?)?.toInt(),
       postalCode: json['postalCode'] as String?,
       brand: json['brand'] as String?,
       number: json['number'] as String?,

@@ -347,7 +347,7 @@ _$GooglePayPaymentMethodParamsImpl _$$GooglePayPaymentMethodParamsImplFromJson(
     _$GooglePayPaymentMethodParamsImpl(
       existingPaymentMethodRequired:
           json['existingPaymentMethodRequired'] as bool?,
-      amount: json['amount'] as int,
+      amount: (json['amount'] as num).toInt(),
       billingAddressConfig: json['billingAddressConfig'] == null
           ? null
           : GooglePayBillingAddressConfig.fromJson(

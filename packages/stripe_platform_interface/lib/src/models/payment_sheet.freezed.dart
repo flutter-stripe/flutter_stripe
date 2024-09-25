@@ -12,7 +12,7 @@ part of 'payment_sheet.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SetupPaymentSheetParameters _$SetupPaymentSheetParametersFromJson(
     Map<String, dynamic> json) {
@@ -119,8 +119,12 @@ mixin _$SetupPaymentSheetParameters {
   @JsonKey(toJson: _cardBrandListToJson)
   List<CardBrand>? get preferredNetworks => throw _privateConstructorUsedError;
 
+  /// Serializes this SetupPaymentSheetParameters to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SetupPaymentSheetParameters
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SetupPaymentSheetParametersCopyWith<SetupPaymentSheetParameters>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -177,6 +181,8 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SetupPaymentSheetParameters
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -288,6 +294,8 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of SetupPaymentSheetParameters
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $IntentConfigurationCopyWith<$Res>? get intentConfiguration {
@@ -301,6 +309,8 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of SetupPaymentSheetParameters
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentSheetApplePayCopyWith<$Res>? get applePay {
@@ -313,6 +323,8 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of SetupPaymentSheetParameters
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentSheetGooglePayCopyWith<$Res>? get googlePay {
@@ -325,6 +337,8 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of SetupPaymentSheetParameters
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentSheetAppearanceCopyWith<$Res>? get appearance {
@@ -337,6 +351,8 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of SetupPaymentSheetParameters
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BillingDetailsCopyWith<$Res>? get billingDetails {
@@ -349,6 +365,8 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of SetupPaymentSheetParameters
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BillingDetailsCollectionConfigurationCopyWith<$Res>?
@@ -420,6 +438,8 @@ class __$$SetupParametersImplCopyWithImpl<$Res>
       _$SetupParametersImpl _value, $Res Function(_$SetupParametersImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SetupPaymentSheetParameters
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -711,7 +731,7 @@ class _$SetupParametersImpl implements _SetupParameters {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SetupParametersImpl &&
@@ -760,7 +780,7 @@ class _$SetupParametersImpl implements _SetupParameters {
             const DeepCollectionEquality().equals(other._preferredNetworks, _preferredNetworks));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -786,7 +806,9 @@ class _$SetupParametersImpl implements _SetupParameters {
         const DeepCollectionEquality().hash(_preferredNetworks)
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SetupPaymentSheetParameters
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SetupParametersImplCopyWith<_$SetupParametersImpl> get copyWith =>
@@ -830,78 +852,76 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   factory _SetupParameters.fromJson(Map<String, dynamic> json) =
       _$SetupParametersImpl.fromJson;
 
-  @override
-
   /// Whether or not to use a custom flow.
   ///
   /// If this value is true, the payment sheet will allow to select a payment method
   /// and a later confirmation will be needed by calling [confirmPaymentSheetPayment]
   /// By default, false.
-  bool get customFlow;
   @override
+  bool get customFlow;
 
   /// The identifier of the Stripe Customer object.
   /// See https://stripe.com/docs/api/customers/object#customer_object-id
-  String? get customerId;
   @override
+  String? get customerId;
 
   ///  The label to use for the primary button. If not set, Payment Sheet will display suitable default labels for payment and setup intents
-  String? get primaryButtonLabel;
   @override
+  String? get primaryButtonLabel;
 
   ///A temp key can be used for API operations that require a secret key.
-  String? get customerEphemeralKeySecret;
   @override
+  String? get customerEphemeralKeySecret;
 
   /// Secret used for client-side retrieval using a publishable key.
   ///
   /// If this value is null make sure to add a [setupIntentClientSecret]
-  String? get paymentIntentClientSecret;
   @override
+  String? get paymentIntentClientSecret;
 
   /// The client secret of this SetupIntent
   ///
   /// If this value is null make sure to add a [paymentIntentClientSecret]
-  String? get setupIntentClientSecret;
   @override
+  String? get setupIntentClientSecret;
 
   /// Use this when you want to collect payment information before creating a
   /// setupintent or payment intent.
-  IntentConfiguration? get intentConfiguration;
   @override
+  IntentConfiguration? get intentConfiguration;
 
   /// Display name of the merchant
-  String? get merchantDisplayName;
   @override
+  String? get merchantDisplayName;
 
   /// Configuration related to Apple Pay
   /// If set, PaymentSheet displays Apple Pay as a payment option
-  PaymentSheetApplePay? get applePay;
   @override
+  PaymentSheetApplePay? get applePay;
 
   /// iOS only style options for colors in PaymentSheet
   ///
   /// Parts can be overridden by [appearance].
+  @override
   @JsonKey(toJson: UserInterfaceStyleKey.toJson)
   ThemeMode? get style;
-  @override
 
   /// Configuration related to Google Pay
   /// If set, PaymentSheet displays Google Pay as a payment option
-  PaymentSheetGooglePay? get googlePay;
   @override
+  PaymentSheetGooglePay? get googlePay;
 
   /// Flag that allows payment methods that do not move money at the send of the checkout.
   ///
   /// Defaul value is false.
-  bool get allowsDelayedPaymentMethods;
   @override
+  bool get allowsDelayedPaymentMethods;
 
   /// Appearance of the paymentsheet.
   ///
   /// When no appearance defined it will fallback to [style] or Stripe default.
-  PaymentSheetAppearance? get appearance;
   @override
+  PaymentSheetAppearance? get appearance;
 
   /// Default billing information of the customer.
   ///
@@ -909,43 +929,47 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   /// For example when you supply a country the country will be set on the payment sheet +
   /// alternative localization options. This does not set the billingDetails on the
   /// paymentIntent since the customer can change those.
+  @override
   @JsonKey(name: 'defaultBillingDetails')
   BillingDetails? get billingDetails;
-  @override
 
   ///This is an experimental feature that may be removed at any time.
   /// Defaults to true. If true, the customer can delete all saved payment methods.
   /// If false, the customer can't delete if they only have one saved payment method remaining.
-  bool? get allowsRemovalOfLastSavedPaymentMethod;
   @override
+  bool? get allowsRemovalOfLastSavedPaymentMethod;
 
   /// By default, PaymentSheet will use a dynamic ordering that optimizes payment method display for the customer.
   /// You can override the default order in which payment methods are displayed in PaymentSheet with a list of payment method types.
   /// See https://stripe.com/docs/api/payment_methods/object#payment_method_object-type for the list of valid types.  You may also pass external payment methods.
   /// Example: ["card", "external_paypal", "klarna"]
   /// If you omit payment methods from this list, they’ll be automatically ordered by Stripe after the ones you provide. Invalid payment methods are ignored.
-  List<String>? get paymentMethodOrder;
   @override
+  List<String>? get paymentMethodOrder;
 
   /// Return URL is required for IDEAL, Klarna and few other payment methods
-  String? get returnURL;
   @override
+  String? get returnURL;
 
   /// Configuration for how billing details are collected during checkout.
+  @override
   BillingDetailsCollectionConfiguration?
       get billingDetailsCollectionConfiguration;
-  @override
 
   ///  Optional configuration to display a custom message when a saved payment method is removed. iOS only.
-  String? get removeSavedPaymentMethodMessage;
   @override
+  String? get removeSavedPaymentMethodMessage;
 
   /// The list of preferred networks that should be used to process payments made with a co-branded card.
   /// This value will only be used if your user hasn't selected a network themselves.
+  @override
   @JsonKey(toJson: _cardBrandListToJson)
   List<CardBrand>? get preferredNetworks;
+
+  /// Create a copy of SetupPaymentSheetParameters
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetupParametersImplCopyWith<_$SetupParametersImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -969,8 +993,12 @@ mixin _$IntentConfiguration {
   @JsonKey(includeFromJson: false, includeToJson: false)
   ConfirmHandler? get confirmHandler => throw _privateConstructorUsedError;
 
+  /// Serializes this IntentConfiguration to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of IntentConfiguration
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $IntentConfigurationCopyWith<IntentConfiguration> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1000,6 +1028,8 @@ class _$IntentConfigurationCopyWithImpl<$Res, $Val extends IntentConfiguration>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IntentConfiguration
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1023,6 +1053,8 @@ class _$IntentConfigurationCopyWithImpl<$Res, $Val extends IntentConfiguration>
     ) as $Val);
   }
 
+  /// Create a copy of IntentConfiguration
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $IntentModeCopyWith<$Res> get mode {
@@ -1058,6 +1090,8 @@ class __$$IntentConfigurationImplCopyWithImpl<$Res>
       $Res Function(_$IntentConfigurationImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IntentConfiguration
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1130,7 +1164,7 @@ class _$IntentConfigurationImpl implements _IntentConfiguration {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IntentConfigurationImpl &&
@@ -1141,12 +1175,14 @@ class _$IntentConfigurationImpl implements _IntentConfiguration {
                 other.confirmHandler == confirmHandler));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, mode,
       const DeepCollectionEquality().hash(_paymentMethodTypes), confirmHandler);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IntentConfiguration
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IntentConfigurationImplCopyWith<_$IntentConfigurationImpl> get copyWith =>
@@ -1171,24 +1207,26 @@ abstract class _IntentConfiguration implements IntentConfiguration {
   factory _IntentConfiguration.fromJson(Map<String, dynamic> json) =
       _$IntentConfigurationImpl.fromJson;
 
-  @override
-
   /// Data related to the future payment intent
-  IntentMode get mode;
   @override
+  IntentMode get mode;
 
   /// The list of payment method types that the customer can use in the payment sheet.
   ///
   /// If not set, the payment sheet will display all the payment methods enabled in your Stripe dashboard.
-  List<String>? get paymentMethodTypes;
   @override
+  List<String>? get paymentMethodTypes;
 
   /// Called when the customer confirms payment. Your implementation should create
   /// a payment intent or setupintent on your server and call the intent creation callback with its client secret or an error if one occurred.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   ConfirmHandler? get confirmHandler;
+
+  /// Create a copy of IntentConfiguration
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IntentConfigurationImplCopyWith<_$IntentConfigurationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1260,8 +1298,13 @@ mixin _$IntentMode {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this IntentMode to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of IntentMode
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $IntentModeCopyWith<IntentMode> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1285,6 +1328,8 @@ class _$IntentModeCopyWithImpl<$Res, $Val extends IntentMode>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IntentMode
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1327,6 +1372,8 @@ class __$$PaymentModeImplCopyWithImpl<$Res>
       _$PaymentModeImpl _value, $Res Function(_$PaymentModeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IntentMode
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1393,7 +1440,7 @@ class _$PaymentModeImpl implements _PaymentMode {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentModeImpl &&
@@ -1406,12 +1453,14 @@ class _$PaymentModeImpl implements _PaymentMode {
                 other.captureMethod == captureMethod));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, currencyCode, amount, setupFutureUsage, captureMethod);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IntentMode
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentModeImplCopyWith<_$PaymentModeImpl> get copyWith =>
@@ -1511,15 +1560,18 @@ abstract class _PaymentMode implements IntentMode {
   @override
   String get currencyCode;
   int get amount;
-  @override
 
   /// Data related to the future payment intent
+  @override
   IntentFutureUsage? get setupFutureUsage;
 
   /// Capture method for the future payment intent
   CaptureMethod? get captureMethod;
+
+  /// Create a copy of IntentMode
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentModeImplCopyWith<_$PaymentModeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1543,6 +1595,8 @@ class __$$SetupModeImplCopyWithImpl<$Res>
       _$SetupModeImpl _value, $Res Function(_$SetupModeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IntentMode
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1589,7 +1643,7 @@ class _$SetupModeImpl implements _SetupMode {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SetupModeImpl &&
@@ -1599,11 +1653,13 @@ class _$SetupModeImpl implements _SetupMode {
                 other.setupFutureUsage == setupFutureUsage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, currencyCode, setupFutureUsage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IntentMode
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SetupModeImplCopyWith<_$SetupModeImpl> get copyWith =>
@@ -1699,12 +1755,15 @@ abstract class _SetupMode implements IntentMode {
 
   @override
   String? get currencyCode;
-  @override
 
   /// Data related to the future payment intent
-  IntentFutureUsage get setupFutureUsage;
   @override
-  @JsonKey(ignore: true)
+  IntentFutureUsage get setupFutureUsage;
+
+  /// Create a copy of IntentMode
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetupModeImplCopyWith<_$SetupModeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1736,8 +1795,12 @@ mixin _$PaymentSheetApplePay {
   @JsonKey(includeFromJson: false, includeToJson: false)
   OnOrderTracking? get setOrderTracking => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentSheetApplePay to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentSheetApplePay
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentSheetApplePayCopyWith<PaymentSheetApplePay> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1770,6 +1833,8 @@ class _$PaymentSheetApplePayCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentSheetApplePay
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1803,6 +1868,8 @@ class _$PaymentSheetApplePayCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of PaymentSheetApplePay
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentRequestTypeCopyWith<$Res>? get request {
@@ -1844,6 +1911,8 @@ class __$$PaymentSheetApplePayImplCopyWithImpl<$Res>
       $Res Function(_$PaymentSheetApplePayImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentSheetApplePay
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1935,7 +2004,7 @@ class _$PaymentSheetApplePayImpl implements _PaymentSheetApplePay {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetApplePayImpl &&
@@ -1950,7 +2019,7 @@ class _$PaymentSheetApplePayImpl implements _PaymentSheetApplePay {
                 other.setOrderTracking == setOrderTracking));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1960,7 +2029,9 @@ class _$PaymentSheetApplePayImpl implements _PaymentSheetApplePay {
       request,
       setOrderTracking);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentSheetApplePay
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentSheetApplePayImplCopyWith<_$PaymentSheetApplePayImpl>
@@ -1988,33 +2059,35 @@ abstract class _PaymentSheetApplePay implements PaymentSheetApplePay {
   factory _PaymentSheetApplePay.fromJson(Map<String, dynamic> json) =
       _$PaymentSheetApplePayImpl.fromJson;
 
-  @override
-
   ///The two-letter ISO 3166 code of the country of your business, e.g. "US"
-  String get merchantCountryCode;
   @override
+  String get merchantCountryCode;
 
   ///An array of CartSummaryItem item objects that summarize the amount of the payment. If you're using a SetupIntent
   /// for a recurring payment, you should set this to display the amount you intend to charge.
-  List<ApplePayCartSummaryItem>? get cartItems;
   @override
+  List<ApplePayCartSummaryItem>? get cartItems;
 
   /// Sets the the text displayed by the call to action button in the apple pay sheet.
-  PlatformButtonType? get buttonType;
   @override
+  PlatformButtonType? get buttonType;
 
   /// Use this for a different payment request than a one time request.
-  PaymentRequestType? get request;
   @override
+  PaymentRequestType? get request;
 
   /// Callback function for setting the order details (retrieved from your server) to give users the
   /// ability to track and manage their purchases in Wallet. Stripe calls your implementation after the
   /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
   /// function, or else the Apple Pay sheet will hang.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   OnOrderTracking? get setOrderTracking;
+
+  /// Create a copy of PaymentSheetApplePay
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentSheetApplePayImplCopyWith<_$PaymentSheetApplePayImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2044,8 +2117,12 @@ mixin _$PaymentSheetGooglePay {
   /// The Google Pay button type to use. Set to "Pay" by default.
   PlatformButtonType? get buttonType => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentSheetGooglePay to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentSheetGooglePay
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentSheetGooglePayCopyWith<PaymentSheetGooglePay> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2076,6 +2153,8 @@ class _$PaymentSheetGooglePayCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentSheetGooglePay
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2142,6 +2221,8 @@ class __$$PaymentSheetGooglePayImplCopyWithImpl<$Res>
       $Res Function(_$PaymentSheetGooglePayImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentSheetGooglePay
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2227,7 +2308,7 @@ class _$PaymentSheetGooglePayImpl implements _PaymentSheetGooglePay {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetGooglePayImpl &&
@@ -2242,12 +2323,14 @@ class _$PaymentSheetGooglePayImpl implements _PaymentSheetGooglePay {
                 other.buttonType == buttonType));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, merchantCountryCode,
       currencyCode, testEnv, label, amount, buttonType);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentSheetGooglePay
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentSheetGooglePayImplCopyWith<_$PaymentSheetGooglePayImpl>
@@ -2274,32 +2357,34 @@ abstract class _PaymentSheetGooglePay implements PaymentSheetGooglePay {
   factory _PaymentSheetGooglePay.fromJson(Map<String, dynamic> json) =
       _$PaymentSheetGooglePayImpl.fromJson;
 
-  @override
-
   ///The two-letter ISO 3166 code of the country of your business, e.g. "US"
-  String get merchantCountryCode;
   @override
+  String get merchantCountryCode;
 
   /// The three-letter ISO 4217 alphabetic currency code, e.g. "USD" or "EUR". Required in order to support Google Pay when processing a Setup Intent.
-  String? get currencyCode;
   @override
+  String? get currencyCode;
 
   /// Whether or not to use the google pay test environment.  Set to `true` until you have applied for and been granted access to the Production environment.
-  bool get testEnv;
   @override
+  bool get testEnv;
 
   /// An optional label to display with the amount. Google Pay may or may not display this label depending on its own internal logic. Defaults to a generic label if none is provided.
-  String? get label;
   @override
+  String? get label;
 
   /// An optional amount to display for setup intents. Google Pay may or may not display this amount depending on its own internal logic. Defaults to 0 if none is provided.
-  String? get amount;
   @override
+  String? get amount;
 
   /// The Google Pay button type to use. Set to "Pay" by default.
-  PlatformButtonType? get buttonType;
   @override
-  @JsonKey(ignore: true)
+  PlatformButtonType? get buttonType;
+
+  /// Create a copy of PaymentSheetGooglePay
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentSheetGooglePayImplCopyWith<_$PaymentSheetGooglePayImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2322,8 +2407,12 @@ mixin _$PaymentSheetAppearance {
   PaymentSheetPrimaryButtonAppearance? get primaryButton =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentSheetAppearance to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentSheetAppearance
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentSheetAppearanceCopyWith<PaymentSheetAppearance> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2355,6 +2444,8 @@ class _$PaymentSheetAppearanceCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentSheetAppearance
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2378,6 +2469,8 @@ class _$PaymentSheetAppearanceCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of PaymentSheetAppearance
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentSheetAppearanceColorsCopyWith<$Res>? get colors {
@@ -2390,6 +2483,8 @@ class _$PaymentSheetAppearanceCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of PaymentSheetAppearance
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentSheetShapeCopyWith<$Res>? get shapes {
@@ -2402,6 +2497,8 @@ class _$PaymentSheetAppearanceCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of PaymentSheetAppearance
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentSheetPrimaryButtonAppearanceCopyWith<$Res>? get primaryButton {
@@ -2448,6 +2545,8 @@ class __$$PaymentSheetAppearanceImplCopyWithImpl<$Res>
       $Res Function(_$PaymentSheetAppearanceImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentSheetAppearance
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2500,7 +2599,7 @@ class _$PaymentSheetAppearanceImpl implements _PaymentSheetAppearance {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetAppearanceImpl &&
@@ -2510,11 +2609,13 @@ class _$PaymentSheetAppearanceImpl implements _PaymentSheetAppearance {
                 other.primaryButton == primaryButton));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, colors, shapes, primaryButton);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentSheetAppearance
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentSheetAppearanceImplCopyWith<_$PaymentSheetAppearanceImpl>
@@ -2539,20 +2640,22 @@ abstract class _PaymentSheetAppearance implements PaymentSheetAppearance {
   factory _PaymentSheetAppearance.fromJson(Map<String, dynamic> json) =
       _$PaymentSheetAppearanceImpl.fromJson;
 
-  @override
-
   /// Color parameters
-  PaymentSheetAppearanceColors? get colors;
   @override
+  PaymentSheetAppearanceColors? get colors;
 
   /// Shapes parameters
-  PaymentSheetShape? get shapes;
   @override
+  PaymentSheetShape? get shapes;
 
   /// PaymentSheet appearance
-  PaymentSheetPrimaryButtonAppearance? get primaryButton;
   @override
-  @JsonKey(ignore: true)
+  PaymentSheetPrimaryButtonAppearance? get primaryButton;
+
+  /// Create a copy of PaymentSheetAppearance
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentSheetAppearanceImplCopyWith<_$PaymentSheetAppearanceImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2612,8 +2715,12 @@ mixin _$PaymentSheetAppearanceColors {
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get error => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentSheetAppearanceColors to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentSheetAppearanceColors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentSheetAppearanceColorsCopyWith<PaymentSheetAppearanceColors>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2662,6 +2769,8 @@ class _$PaymentSheetAppearanceColorsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentSheetAppearanceColors
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2770,6 +2879,8 @@ class __$$PaymentSheetAppearanceColorsImplCopyWithImpl<$Res>
       $Res Function(_$PaymentSheetAppearanceColorsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentSheetAppearanceColors
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2930,7 +3041,7 @@ class _$PaymentSheetAppearanceColorsImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetAppearanceColorsImpl &&
@@ -2955,7 +3066,7 @@ class _$PaymentSheetAppearanceColorsImpl
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -2971,7 +3082,9 @@ class _$PaymentSheetAppearanceColorsImpl
       icon,
       error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentSheetAppearanceColors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentSheetAppearanceColorsImplCopyWith<
@@ -3016,67 +3129,69 @@ abstract class _PaymentSheetAppearanceColors
   factory _PaymentSheetAppearanceColors.fromJson(Map<String, dynamic> json) =
       _$PaymentSheetAppearanceColorsImpl.fromJson;
 
-  @override
-
   ///  Color of the button that represents the primary action on the payment sheet.
   ///
   /// Make sure there is enough contrast with [background].
+  @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get primary;
-  @override
 
   /// Background color of the payment sheet.
   ///
   /// Make sure there is enough contrast with [primary].
+  @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get background;
-  @override
 
   /// Background color of the payment sheet components.
+  @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get componentBackground;
-  @override
 
   ///  Border color of the payment sheet components.
+  @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get componentBorder;
-  @override
 
   ///  Divider color of the payment sheet components.
+  @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get componentDivider;
-  @override
 
   /// Color of the entered text in the payment components.
+  @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get componentText;
-  @override
 
   /// Primary text color.
+  @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get primaryText;
-  @override
 
   /// Secondary text color.
+  @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get secondaryText;
-  @override
 
   /// Place holder text color.
+  @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get placeholderText;
-  @override
 
   /// Color of the displayed icons
+  @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get icon;
-  @override
 
   /// Color of the warning and error messages.
+  @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get error;
+
+  /// Create a copy of PaymentSheetAppearanceColors
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentSheetAppearanceColorsImplCopyWith<
           _$PaymentSheetAppearanceColorsImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -3097,8 +3212,12 @@ mixin _$PaymentSheetShape {
   /// Appearance config of the payment sheet shadow
   PaymentSheetShadowParams? get shadow => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentSheetShape to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentSheetShape
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentSheetShapeCopyWith<PaymentSheetShape> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -3127,6 +3246,8 @@ class _$PaymentSheetShapeCopyWithImpl<$Res, $Val extends PaymentSheetShape>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentSheetShape
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3150,6 +3271,8 @@ class _$PaymentSheetShapeCopyWithImpl<$Res, $Val extends PaymentSheetShape>
     ) as $Val);
   }
 
+  /// Create a copy of PaymentSheetShape
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentSheetShadowParamsCopyWith<$Res>? get shadow {
@@ -3188,6 +3311,8 @@ class __$$PaymentSheetShapeImplCopyWithImpl<$Res>
       $Res Function(_$PaymentSheetShapeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentSheetShape
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3240,7 +3365,7 @@ class _$PaymentSheetShapeImpl implements _PaymentSheetShape {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetShapeImpl &&
@@ -3251,12 +3376,14 @@ class _$PaymentSheetShapeImpl implements _PaymentSheetShape {
             (identical(other.shadow, shadow) || other.shadow == shadow));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, borderRadius, borderWidth, shadow);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentSheetShape
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentSheetShapeImplCopyWith<_$PaymentSheetShapeImpl> get copyWith =>
@@ -3280,20 +3407,22 @@ abstract class _PaymentSheetShape implements PaymentSheetShape {
   factory _PaymentSheetShape.fromJson(Map<String, dynamic> json) =
       _$PaymentSheetShapeImpl.fromJson;
 
-  @override
-
   /// Borderradius for the paymentsheet corners
-  double? get borderRadius;
   @override
+  double? get borderRadius;
 
   /// Borderwidth for the paymentsheet components
-  double? get borderWidth;
   @override
+  double? get borderWidth;
 
   /// Appearance config of the payment sheet shadow
-  PaymentSheetShadowParams? get shadow;
   @override
-  @JsonKey(ignore: true)
+  PaymentSheetShadowParams? get shadow;
+
+  /// Create a copy of PaymentSheetShape
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentSheetShapeImplCopyWith<_$PaymentSheetShapeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -3315,8 +3444,12 @@ mixin _$PaymentSheetShadowParams {
   /// Shadow offset
   PaymentSheetShadowOffset? get offset => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentSheetShadowParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentSheetShadowParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentSheetShadowParamsCopyWith<PaymentSheetShadowParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -3347,6 +3480,8 @@ class _$PaymentSheetShadowParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentSheetShadowParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3370,6 +3505,8 @@ class _$PaymentSheetShadowParamsCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of PaymentSheetShadowParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentSheetShadowOffsetCopyWith<$Res>? get offset {
@@ -3412,6 +3549,8 @@ class __$$PaymentSheetShadowParamsImplCopyWithImpl<$Res>
       $Res Function(_$PaymentSheetShadowParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentSheetShadowParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3468,7 +3607,7 @@ class _$PaymentSheetShadowParamsImpl implements _PaymentSheetShadowParams {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetShadowParamsImpl &&
@@ -3477,11 +3616,13 @@ class _$PaymentSheetShadowParamsImpl implements _PaymentSheetShadowParams {
             (identical(other.offset, offset) || other.offset == offset));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, color, opacity, offset);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentSheetShadowParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentSheetShadowParamsImplCopyWith<_$PaymentSheetShadowParamsImpl>
@@ -3506,21 +3647,23 @@ abstract class _PaymentSheetShadowParams implements PaymentSheetShadowParams {
   factory _PaymentSheetShadowParams.fromJson(Map<String, dynamic> json) =
       _$PaymentSheetShadowParamsImpl.fromJson;
 
-  @override
-
   /// Shadow color
+  @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get color;
-  @override
 
   /// Shadow opacity
-  double? get opacity;
   @override
+  double? get opacity;
 
   /// Shadow offset
-  PaymentSheetShadowOffset? get offset;
   @override
-  @JsonKey(ignore: true)
+  PaymentSheetShadowOffset? get offset;
+
+  /// Create a copy of PaymentSheetShadowParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentSheetShadowParamsImplCopyWith<_$PaymentSheetShadowParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3538,8 +3681,12 @@ mixin _$PaymentSheetShadowOffset {
   /// Y value
   double? get y => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentSheetShadowOffset to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentSheetShadowOffset
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentSheetShadowOffsetCopyWith<PaymentSheetShadowOffset> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -3564,6 +3711,8 @@ class _$PaymentSheetShadowOffsetCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentSheetShadowOffset
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3605,6 +3754,8 @@ class __$$PaymentSheetShadowOffsetImplCopyWithImpl<$Res>
       $Res Function(_$PaymentSheetShadowOffsetImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentSheetShadowOffset
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3647,7 +3798,7 @@ class _$PaymentSheetShadowOffsetImpl implements _PaymentSheetShadowOffset {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetShadowOffsetImpl &&
@@ -3655,11 +3806,13 @@ class _$PaymentSheetShadowOffsetImpl implements _PaymentSheetShadowOffset {
             (identical(other.y, y) || other.y == y));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, x, y);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentSheetShadowOffset
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentSheetShadowOffsetImplCopyWith<_$PaymentSheetShadowOffsetImpl>
@@ -3681,16 +3834,18 @@ abstract class _PaymentSheetShadowOffset implements PaymentSheetShadowOffset {
   factory _PaymentSheetShadowOffset.fromJson(Map<String, dynamic> json) =
       _$PaymentSheetShadowOffsetImpl.fromJson;
 
-  @override
-
   /// X value
-  double? get x;
   @override
+  double? get x;
 
   /// Y value
-  double? get y;
   @override
-  @JsonKey(ignore: true)
+  double? get y;
+
+  /// Create a copy of PaymentSheetShadowOffset
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentSheetShadowOffsetImplCopyWith<_$PaymentSheetShadowOffsetImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3710,8 +3865,12 @@ mixin _$PaymentSheetPrimaryButtonAppearance {
   PaymentSheetPrimaryButtonShape? get shapes =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentSheetPrimaryButtonAppearance to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentSheetPrimaryButtonAppearance
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentSheetPrimaryButtonAppearanceCopyWith<
           PaymentSheetPrimaryButtonAppearance>
       get copyWith => throw _privateConstructorUsedError;
@@ -3744,6 +3903,8 @@ class _$PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentSheetPrimaryButtonAppearance
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3762,6 +3923,8 @@ class _$PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of PaymentSheetPrimaryButtonAppearance
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentSheetPrimaryButtonThemeCopyWith<$Res>? get colors {
@@ -3775,6 +3938,8 @@ class _$PaymentSheetPrimaryButtonAppearanceCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of PaymentSheetPrimaryButtonAppearance
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentSheetPrimaryButtonShapeCopyWith<$Res>? get shapes {
@@ -3818,6 +3983,8 @@ class __$$PaymentSheetPrimaryButtonAppearanceImplCopyWithImpl<$Res>
       $Res Function(_$PaymentSheetPrimaryButtonAppearanceImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentSheetPrimaryButtonAppearance
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3862,7 +4029,7 @@ class _$PaymentSheetPrimaryButtonAppearanceImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetPrimaryButtonAppearanceImpl &&
@@ -3870,11 +4037,13 @@ class _$PaymentSheetPrimaryButtonAppearanceImpl
             (identical(other.shapes, shapes) || other.shapes == shapes));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, colors, shapes);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentSheetPrimaryButtonAppearance
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentSheetPrimaryButtonAppearanceImplCopyWith<
@@ -3901,16 +4070,18 @@ abstract class _PaymentSheetPrimaryButtonAppearance
           Map<String, dynamic> json) =
       _$PaymentSheetPrimaryButtonAppearanceImpl.fromJson;
 
-  @override
-
   /// color theme of the primary button
-  PaymentSheetPrimaryButtonTheme? get colors;
   @override
+  PaymentSheetPrimaryButtonTheme? get colors;
 
   /// Shape params of the primary button
-  PaymentSheetPrimaryButtonShape? get shapes;
   @override
-  @JsonKey(ignore: true)
+  PaymentSheetPrimaryButtonShape? get shapes;
+
+  /// Create a copy of PaymentSheetPrimaryButtonAppearance
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentSheetPrimaryButtonAppearanceImplCopyWith<
           _$PaymentSheetPrimaryButtonAppearanceImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -3932,8 +4103,12 @@ mixin _$PaymentSheetPrimaryButtonShape {
   /// border width of the primary button on the payment sheet
   double? get borderWidth => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentSheetPrimaryButtonShape to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentSheetPrimaryButtonShape
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentSheetPrimaryButtonShapeCopyWith<PaymentSheetPrimaryButtonShape>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3965,6 +4140,8 @@ class _$PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentSheetPrimaryButtonShape
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3988,6 +4165,8 @@ class _$PaymentSheetPrimaryButtonShapeCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of PaymentSheetPrimaryButtonShape
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentSheetShadowParamsCopyWith<$Res>? get shadow {
@@ -4029,6 +4208,8 @@ class __$$PaymentSheetPrimaryButtonShapeImplCopyWithImpl<$Res>
       $Res Function(_$PaymentSheetPrimaryButtonShapeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentSheetPrimaryButtonShape
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4083,7 +4264,7 @@ class _$PaymentSheetPrimaryButtonShapeImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetPrimaryButtonShapeImpl &&
@@ -4094,11 +4275,13 @@ class _$PaymentSheetPrimaryButtonShapeImpl
                 other.borderWidth == borderWidth));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, shadow, blurRadius, borderWidth);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentSheetPrimaryButtonShape
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentSheetPrimaryButtonShapeImplCopyWith<
@@ -4124,20 +4307,22 @@ abstract class _PaymentSheetPrimaryButtonShape
   factory _PaymentSheetPrimaryButtonShape.fromJson(Map<String, dynamic> json) =
       _$PaymentSheetPrimaryButtonShapeImpl.fromJson;
 
-  @override
-
   /// Configuration of the primary button's shadow.
-  PaymentSheetShadowParams? get shadow;
   @override
+  PaymentSheetShadowParams? get shadow;
 
   /// the blur radius of the button
-  double? get blurRadius;
   @override
+  double? get blurRadius;
 
   /// border width of the primary button on the payment sheet
-  double? get borderWidth;
   @override
-  @JsonKey(ignore: true)
+  double? get borderWidth;
+
+  /// Create a copy of PaymentSheetPrimaryButtonShape
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentSheetPrimaryButtonShapeImplCopyWith<
           _$PaymentSheetPrimaryButtonShapeImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -4158,8 +4343,12 @@ mixin _$PaymentSheetPrimaryButtonTheme {
   PaymentSheetPrimaryButtonThemeColors? get light =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentSheetPrimaryButtonTheme to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentSheetPrimaryButtonTheme
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentSheetPrimaryButtonThemeCopyWith<PaymentSheetPrimaryButtonTheme>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -4191,6 +4380,8 @@ class _$PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentSheetPrimaryButtonTheme
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4209,6 +4400,8 @@ class _$PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of PaymentSheetPrimaryButtonTheme
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>? get dark {
@@ -4222,6 +4415,8 @@ class _$PaymentSheetPrimaryButtonThemeCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of PaymentSheetPrimaryButtonTheme
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentSheetPrimaryButtonThemeColorsCopyWith<$Res>? get light {
@@ -4265,6 +4460,8 @@ class __$$PaymentSheetPrimaryButtonThemeImplCopyWithImpl<$Res>
       $Res Function(_$PaymentSheetPrimaryButtonThemeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentSheetPrimaryButtonTheme
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4309,7 +4506,7 @@ class _$PaymentSheetPrimaryButtonThemeImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetPrimaryButtonThemeImpl &&
@@ -4317,11 +4514,13 @@ class _$PaymentSheetPrimaryButtonThemeImpl
             (identical(other.light, light) || other.light == light));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, dark, light);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentSheetPrimaryButtonTheme
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentSheetPrimaryButtonThemeImplCopyWith<
@@ -4347,16 +4546,18 @@ abstract class _PaymentSheetPrimaryButtonTheme
   factory _PaymentSheetPrimaryButtonTheme.fromJson(Map<String, dynamic> json) =
       _$PaymentSheetPrimaryButtonThemeImpl.fromJson;
 
-  @override
-
   /// Colors when displaying button in dark theme
-  PaymentSheetPrimaryButtonThemeColors? get dark;
   @override
+  PaymentSheetPrimaryButtonThemeColors? get dark;
 
   /// Colors when displaying button in light theme
-  PaymentSheetPrimaryButtonThemeColors? get light;
   @override
-  @JsonKey(ignore: true)
+  PaymentSheetPrimaryButtonThemeColors? get light;
+
+  /// Create a copy of PaymentSheetPrimaryButtonTheme
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentSheetPrimaryButtonThemeImplCopyWith<
           _$PaymentSheetPrimaryButtonThemeImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -4381,8 +4582,12 @@ mixin _$PaymentSheetPrimaryButtonThemeColors {
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get border => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentSheetPrimaryButtonThemeColors to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentSheetPrimaryButtonThemeColors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentSheetPrimaryButtonThemeColorsCopyWith<
           PaymentSheetPrimaryButtonThemeColors>
       get copyWith => throw _privateConstructorUsedError;
@@ -4416,6 +4621,8 @@ class _$PaymentSheetPrimaryButtonThemeColorsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentSheetPrimaryButtonThemeColors
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4468,6 +4675,8 @@ class __$$PaymentSheetPrimaryButtonThemeColorsImplCopyWithImpl<$Res>
       $Res Function(_$PaymentSheetPrimaryButtonThemeColorsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentSheetPrimaryButtonThemeColors
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4528,7 +4737,7 @@ class _$PaymentSheetPrimaryButtonThemeColorsImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetPrimaryButtonThemeColorsImpl &&
@@ -4538,11 +4747,13 @@ class _$PaymentSheetPrimaryButtonThemeColorsImpl
             (identical(other.border, border) || other.border == border));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, background, text, border);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentSheetPrimaryButtonThemeColors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentSheetPrimaryButtonThemeColorsImplCopyWith<
@@ -4572,23 +4783,25 @@ abstract class _PaymentSheetPrimaryButtonThemeColors
           Map<String, dynamic> json) =
       _$PaymentSheetPrimaryButtonThemeColorsImpl.fromJson;
 
-  @override
-
   /// Primary button background color
+  @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get background;
-  @override
 
   /// Primary button text color
+  @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get text;
-  @override
 
   /// Primary button border color
+  @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get border;
+
+  /// Create a copy of PaymentSheetPrimaryButtonThemeColors
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentSheetPrimaryButtonThemeColorsImplCopyWith<
           _$PaymentSheetPrimaryButtonThemeColorsImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -4613,8 +4826,12 @@ mixin _$PresentPaymentSheetParameters {
   /// has to be set to `false` when initializing the payment sheet.
   bool get confirmPayment => throw _privateConstructorUsedError;
 
+  /// Serializes this PresentPaymentSheetParameters to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PresentPaymentSheetParameters
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PresentPaymentSheetParametersCopyWith<PresentPaymentSheetParameters>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -4641,6 +4858,8 @@ class _$PresentPaymentSheetParametersCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PresentPaymentSheetParameters
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4680,6 +4899,8 @@ class __$$PresentParametersImplCopyWithImpl<$Res>
       $Res Function(_$PresentParametersImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PresentPaymentSheetParameters
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4729,7 +4950,7 @@ class _$PresentParametersImpl implements _PresentParameters {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PresentParametersImpl &&
@@ -4739,11 +4960,13 @@ class _$PresentParametersImpl implements _PresentParameters {
                 other.confirmPayment == confirmPayment));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, clientSecret, confirmPayment);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PresentPaymentSheetParameters
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PresentParametersImplCopyWith<_$PresentParametersImpl> get copyWith =>
@@ -4766,11 +4989,9 @@ abstract class _PresentParameters implements PresentPaymentSheetParameters {
   factory _PresentParameters.fromJson(Map<String, dynamic> json) =
       _$PresentParametersImpl.fromJson;
 
-  @override
-
   /// Key used for client-side retrieval using a publishable key.
-  String get clientSecret;
   @override
+  String get clientSecret;
 
   /// Flag that determines whether or not to present payment options or
   /// directly goes to confirm payment.
@@ -4779,9 +5000,13 @@ abstract class _PresentParameters implements PresentPaymentSheetParameters {
   /// is set to `true` when initializing the payment sheet.
   /// If value is set to `true` [SetupPaymentSheetParameters.customFlow]
   /// has to be set to `false` when initializing the payment sheet.
-  bool get confirmPayment;
   @override
-  @JsonKey(ignore: true)
+  bool get confirmPayment;
+
+  /// Create a copy of PresentPaymentSheetParameters
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PresentParametersImplCopyWith<_$PresentParametersImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -4799,8 +5024,12 @@ mixin _$PaymentSheetPresentOptions {
   /// At which point presentPaymentSheet` will resolve with an error.
   int? get timeout => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentSheetPresentOptions to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentSheetPresentOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentSheetPresentOptionsCopyWith<PaymentSheetPresentOptions>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -4826,6 +5055,8 @@ class _$PaymentSheetPresentOptionsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentSheetPresentOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4862,6 +5093,8 @@ class __$$PaymentSheetPresentOptionsImplCopyWithImpl<$Res>
       $Res Function(_$PaymentSheetPresentOptionsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentSheetPresentOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4899,18 +5132,20 @@ class _$PaymentSheetPresentOptionsImpl implements _PaymentSheetPresentOptions {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetPresentOptionsImpl &&
             (identical(other.timeout, timeout) || other.timeout == timeout));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, timeout);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentSheetPresentOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentSheetPresentOptionsImplCopyWith<_$PaymentSheetPresentOptionsImpl>
@@ -4933,15 +5168,17 @@ abstract class _PaymentSheetPresentOptions
   factory _PaymentSheetPresentOptions.fromJson(Map<String, dynamic> json) =
       _$PaymentSheetPresentOptionsImpl.fromJson;
 
-  @override
-
   /// The number of milliseconds (after presenting) before the Payment Sheet
   /// closes automatically.
   ///
   /// At which point presentPaymentSheet` will resolve with an error.
-  int? get timeout;
   @override
-  @JsonKey(ignore: true)
+  int? get timeout;
+
+  /// Create a copy of PaymentSheetPresentOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentSheetPresentOptionsImplCopyWith<_$PaymentSheetPresentOptionsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -4959,8 +5196,12 @@ mixin _$PaymentSheetPaymentOption {
   /// String decoding of the image
   String? get image => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentSheetPaymentOption to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentSheetPaymentOption
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentSheetPaymentOptionCopyWith<PaymentSheetPaymentOption> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -4985,6 +5226,8 @@ class _$PaymentSheetPaymentOptionCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentSheetPaymentOption
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5026,6 +5269,8 @@ class __$$PaymentSheetPaymentOptionImplCopyWithImpl<$Res>
       $Res Function(_$PaymentSheetPaymentOptionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentSheetPaymentOption
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5068,7 +5313,7 @@ class _$PaymentSheetPaymentOptionImpl implements _PaymentSheetPaymentOption {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSheetPaymentOptionImpl &&
@@ -5076,11 +5321,13 @@ class _$PaymentSheetPaymentOptionImpl implements _PaymentSheetPaymentOption {
             (identical(other.image, image) || other.image == image));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, label, image);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentSheetPaymentOption
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentSheetPaymentOptionImplCopyWith<_$PaymentSheetPaymentOptionImpl>
@@ -5103,16 +5350,18 @@ abstract class _PaymentSheetPaymentOption implements PaymentSheetPaymentOption {
   factory _PaymentSheetPaymentOption.fromJson(Map<String, dynamic> json) =
       _$PaymentSheetPaymentOptionImpl.fromJson;
 
-  @override
-
   /// The label of the payment option
-  String get label;
   @override
+  String get label;
 
   /// String decoding of the image
-  String? get image;
   @override
-  @JsonKey(ignore: true)
+  String? get image;
+
+  /// Create a copy of PaymentSheetPaymentOption
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentSheetPaymentOptionImplCopyWith<_$PaymentSheetPaymentOptionImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -5149,8 +5398,12 @@ mixin _$BillingDetailsCollectionConfiguration {
   /// If `false` (the default), those values will only be used to prefill the corresponding fields in the form.
   bool? get attachDefaultsToPaymentMethod => throw _privateConstructorUsedError;
 
+  /// Serializes this BillingDetailsCollectionConfiguration to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BillingDetailsCollectionConfiguration
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BillingDetailsCollectionConfigurationCopyWith<
           BillingDetailsCollectionConfiguration>
       get copyWith => throw _privateConstructorUsedError;
@@ -5183,6 +5436,8 @@ class _$BillingDetailsCollectionConfigurationCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BillingDetailsCollectionConfiguration
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5244,6 +5499,8 @@ class __$$BillingDetailsCollectionConfigurationImplCopyWithImpl<$Res>
       $Res Function(_$BillingDetailsCollectionConfigurationImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BillingDetailsCollectionConfiguration
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5330,7 +5587,7 @@ class _$BillingDetailsCollectionConfigurationImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BillingDetailsCollectionConfigurationImpl &&
@@ -5344,12 +5601,14 @@ class _$BillingDetailsCollectionConfigurationImpl
                     attachDefaultsToPaymentMethod));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, name, phone, email, address, attachDefaultsToPaymentMethod);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BillingDetailsCollectionConfiguration
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BillingDetailsCollectionConfigurationImplCopyWith<
@@ -5379,38 +5638,40 @@ abstract class _BillingDetailsCollectionConfiguration
           Map<String, dynamic> json) =
       _$BillingDetailsCollectionConfigurationImpl.fromJson;
 
-  @override
-
   /// How to collect the name field.
   ///
   /// Defaults to `CollectionMode.automatic`.
-  CollectionMode? get name;
   @override
+  CollectionMode? get name;
 
   /// How to collect the phone field.
   ///
   /// Defaults to `CollectionMode.automatic`.
-  CollectionMode? get phone;
   @override
+  CollectionMode? get phone;
 
   /// How to collect the email field.
   ///
   /// Defaults to `CollectionMode.automatic`.
-  CollectionMode? get email;
   @override
+  CollectionMode? get email;
 
   /// How to collect the billing address.
   ///
   /// Defaults to `CollectionMode.automatic`.
-  AddressCollectionMode? get address;
   @override
+  AddressCollectionMode? get address;
 
   /// Whether the values included in `Configuration.defaultBillingDetails` should be attached to the payment method, this includes fields that aren't displayed in the form.
   ///
   /// If `false` (the default), those values will only be used to prefill the corresponding fields in the form.
-  bool? get attachDefaultsToPaymentMethod;
   @override
-  @JsonKey(ignore: true)
+  bool? get attachDefaultsToPaymentMethod;
+
+  /// Create a copy of BillingDetailsCollectionConfiguration
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BillingDetailsCollectionConfigurationImplCopyWith<
           _$BillingDetailsCollectionConfigurationImpl>
       get copyWith => throw _privateConstructorUsedError;

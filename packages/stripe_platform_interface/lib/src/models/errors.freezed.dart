@@ -12,7 +12,7 @@ part of 'errors.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 StripeError<T> _$StripeErrorFromJson<T>(Map<String, dynamic> json) {
   return _StripeErrorGeneric<T>.fromJson(json);
@@ -24,8 +24,12 @@ mixin _$StripeError<T> {
   @JsonKey(fromJson: _dataFromJson, toJson: _dataToJson)
   T get code => throw _privateConstructorUsedError;
 
+  /// Serializes this StripeError to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StripeError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StripeErrorCopyWith<T, StripeError<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$StripeErrorCopyWithImpl<T, $Res, $Val extends StripeError<T>>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StripeError
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,6 +97,8 @@ class __$$StripeErrorGenericImplCopyWithImpl<T, $Res>
       $Res Function(_$StripeErrorGenericImpl<T>) _then)
       : super(_value, _then);
 
+  /// Create a copy of StripeError
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -135,7 +143,7 @@ class _$StripeErrorGenericImpl<T> implements _StripeErrorGeneric<T> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StripeErrorGenericImpl<T> &&
@@ -143,12 +151,14 @@ class _$StripeErrorGenericImpl<T> implements _StripeErrorGeneric<T> {
             const DeepCollectionEquality().equals(other.code, code));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, message, const DeepCollectionEquality().hash(code));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StripeError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StripeErrorGenericImplCopyWith<T, _$StripeErrorGenericImpl<T>>
@@ -177,8 +187,11 @@ abstract class _StripeErrorGeneric<T> implements StripeError<T> {
   @override
   @JsonKey(fromJson: _dataFromJson, toJson: _dataToJson)
   T get code;
+
+  /// Create a copy of StripeError
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StripeErrorGenericImplCopyWith<T, _$StripeErrorGenericImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -192,8 +205,12 @@ mixin _$StripeException {
   /// error details
   LocalizedErrorMessage get error => throw _privateConstructorUsedError;
 
+  /// Serializes this StripeException to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StripeException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StripeExceptionCopyWith<StripeException> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -219,6 +236,8 @@ class _$StripeExceptionCopyWithImpl<$Res, $Val extends StripeException>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StripeException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -232,6 +251,8 @@ class _$StripeExceptionCopyWithImpl<$Res, $Val extends StripeException>
     ) as $Val);
   }
 
+  /// Create a copy of StripeException
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $LocalizedErrorMessageCopyWith<$Res> get error {
@@ -263,6 +284,8 @@ class __$$StripeExceptionImplCopyWithImpl<$Res>
       _$StripeExceptionImpl _value, $Res Function(_$StripeExceptionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StripeException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -295,18 +318,20 @@ class _$StripeExceptionImpl implements _StripeException {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StripeExceptionImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StripeException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StripeExceptionImplCopyWith<_$StripeExceptionImpl> get copyWith =>
@@ -328,12 +353,14 @@ abstract class _StripeException implements StripeException {
   factory _StripeException.fromJson(Map<String, dynamic> json) =
       _$StripeExceptionImpl.fromJson;
 
-  @override
-
   /// error details
-  LocalizedErrorMessage get error;
   @override
-  @JsonKey(ignore: true)
+  LocalizedErrorMessage get error;
+
+  /// Create a copy of StripeException
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StripeExceptionImplCopyWith<_$StripeExceptionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -364,8 +391,12 @@ mixin _$LocalizedErrorMessage {
   /// Error type
   String? get type => throw _privateConstructorUsedError;
 
+  /// Serializes this LocalizedErrorMessage to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LocalizedErrorMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LocalizedErrorMessageCopyWith<LocalizedErrorMessage> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -396,6 +427,8 @@ class _$LocalizedErrorMessageCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LocalizedErrorMessage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -462,6 +495,8 @@ class __$$LocalizedErrorMessageImplCopyWithImpl<$Res>
       $Res Function(_$LocalizedErrorMessageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LocalizedErrorMessage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -547,7 +582,7 @@ class _$LocalizedErrorMessageImpl implements _LocalizedErrorMessage {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LocalizedErrorMessageImpl &&
@@ -562,12 +597,14 @@ class _$LocalizedErrorMessageImpl implements _LocalizedErrorMessage {
             (identical(other.type, type) || other.type == type));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, code, localizedMessage, message,
       stripeErrorCode, declineCode, type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LocalizedErrorMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LocalizedErrorMessageImplCopyWith<_$LocalizedErrorMessageImpl>
@@ -595,33 +632,35 @@ abstract class _LocalizedErrorMessage implements LocalizedErrorMessage {
   factory _LocalizedErrorMessage.fromJson(Map<String, dynamic> json) =
       _$LocalizedErrorMessageImpl.fromJson;
 
-  @override
-
   /// The error code for example Cancelled
+  @override
   @JsonKey(unknownEnumValue: FailureCode.Unknown)
   FailureCode get code;
-  @override
 
   /// Localized error message if any
-  String? get localizedMessage;
   @override
+  String? get localizedMessage;
 
   /// Generic untranslated error message.
-  String? get message;
   @override
+  String? get message;
 
   /// Stripe error code
-  String? get stripeErrorCode;
   @override
+  String? get stripeErrorCode;
 
   /// Code in case payment is declined
-  String? get declineCode;
   @override
+  String? get declineCode;
 
   /// Error type
-  String? get type;
   @override
-  @JsonKey(ignore: true)
+  String? get type;
+
+  /// Create a copy of LocalizedErrorMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LocalizedErrorMessageImplCopyWith<_$LocalizedErrorMessageImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

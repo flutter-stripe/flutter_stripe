@@ -95,8 +95,8 @@ Map<String, dynamic> _$$BacsDebitImplToJson(_$BacsDebitImpl instance) =>
 _$CardImpl _$$CardImplFromJson(Map<String, dynamic> json) => _$CardImpl(
       brand: json['brand'] as String?,
       country: json['country'] as String?,
-      expYear: json['expYear'] as int?,
-      expMonth: json['expMonth'] as int?,
+      expYear: (json['expYear'] as num?)?.toInt(),
+      expMonth: (json['expMonth'] as num?)?.toInt(),
       funding: json['funding'] as String?,
       last4: json['last4'] as String?,
       preferredNetwork: json['preferredNetwork'] as String?,

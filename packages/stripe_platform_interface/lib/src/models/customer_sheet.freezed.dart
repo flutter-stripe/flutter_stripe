@@ -12,7 +12,7 @@ part of 'customer_sheet.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CustomerSheetInitParams _$CustomerSheetInitParamsFromJson(
     Map<String, dynamic> json) {
@@ -79,8 +79,12 @@ mixin _$CustomerSheetInitParams {
   @JsonKey(toJson: _cardBrandListToJson)
   List<CardBrand>? get preferredNetworks => throw _privateConstructorUsedError;
 
+  /// Serializes this CustomerSheetInitParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomerSheetInitParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CustomerSheetInitParamsCopyWith<CustomerSheetInitParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -127,6 +131,8 @@ class _$CustomerSheetInitParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CustomerSheetInitParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -213,6 +219,8 @@ class _$CustomerSheetInitParamsCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of CustomerSheetInitParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentSheetAppearanceCopyWith<$Res>? get appearance {
@@ -225,6 +233,8 @@ class _$CustomerSheetInitParamsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of CustomerSheetInitParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BillingDetailsCopyWith<$Res>? get defaultBillingDetails {
@@ -238,6 +248,8 @@ class _$CustomerSheetInitParamsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of CustomerSheetInitParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BillingDetailsCollectionConfigurationCopyWith<$Res>?
@@ -301,6 +313,8 @@ class __$$CustomerSheetInitParamsImplCopyWithImpl<$Res>
       $Res Function(_$CustomerSheetInitParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerSheetInitParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -501,7 +515,7 @@ class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomerSheetInitParamsImpl &&
@@ -542,7 +556,7 @@ class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
             const DeepCollectionEquality().equals(other._preferredNetworks, _preferredNetworks));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -562,7 +576,9 @@ class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
       googlePayEnabled,
       const DeepCollectionEquality().hash(_preferredNetworks));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerSheetInitParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomerSheetInitParamsImplCopyWith<_$CustomerSheetInitParamsImpl>
@@ -601,76 +617,78 @@ abstract class _CustomerSheetInitParams implements CustomerSheetInitParams {
   factory _CustomerSheetInitParams.fromJson(Map<String, dynamic> json) =
       _$CustomerSheetInitParamsImpl.fromJson;
 
-  @override
-
   /// Color styling used for the Customersheet UI
+  @override
   @JsonKey(toJson: UserInterfaceStyleKey.toJson)
   ThemeMode? get style;
-  @override
 
   /// Appearance of the customersheet.
   ///
   /// When no appearance defined it will fallback to [style] or Stripe default.
-  PaymentSheetAppearance? get appearance;
   @override
+  PaymentSheetAppearance? get appearance;
 
   /// Optional but recommended for cards, required for other payment methods. The SetupIntent client secret that will be used to confirm a new payment method. If this is missing, you will only be able to add cards without authentication steps.
-  String? get setupIntentClientSecret;
   @override
+  String? get setupIntentClientSecret;
 
   /// The identifier of the Stripe Customer object. See https://stripe.com/docs/api/customers/object#customer_object-id
-  String get customerId;
   @override
+  String get customerId;
 
   /// A short-lived token that allows the SDK to access a Customer's payment methods.
-  String get customerEphemeralKeySecret;
   @override
+  String get customerEphemeralKeySecret;
 
   /// Your customer-facing business name. The default value is the name of your app.
-  String? get merchantDisplayName;
   @override
+  String? get merchantDisplayName;
 
   ///This is an experimental feature that may be removed at any time.
   /// Defaults to true. If true, the customer can delete all saved payment methods.
   /// If false, the customer can't delete if they only have one saved payment method remaining.
-  bool? get allowsRemovalOfLastSavedPaymentMethod;
   @override
+  bool? get allowsRemovalOfLastSavedPaymentMethod;
 
   /// Optional configuration for setting the header text of the Payment Method selection screen
-  String? get headerTextForSelectionScreen;
   @override
+  String? get headerTextForSelectionScreen;
 
   /// CustomerSheet pre-populates fields with the values provided. If `billingDetailsCollectionConfiguration.attachDefaultsToPaymentMethod` is `true`, these values will be attached to the payment method even if they are not collected by the CustomerSheet UI.
-  BillingDetails? get defaultBillingDetails;
   @override
+  BillingDetails? get defaultBillingDetails;
 
   /// Describes how billing details should be collected. All values default to `AUTOMATIC`. If `NEVER` is used for a required field for the Payment Method, you must provide an appropriate value as part of `defaultBillingDetails`.
+  @override
   BillingDetailsCollectionConfiguration?
       get billingDetailsCollectionConfiguration;
-  @override
 
   ///  URL that redirects back to your app that CustomerSheet can use to auto-dismiss web views used for additional authentication, e.g. 3DS2
-  String? get returnURL;
   @override
+  String? get returnURL;
 
   /// Optional configuration to display a custom message when a saved payment method is removed. iOS only.
-  String? get removeSavedPaymentMethodMessage;
   @override
+  String? get removeSavedPaymentMethodMessage;
 
   ///  Whether to show Apple Pay as an option. Defaults to `false`.
-  bool get applePayEnabled;
   @override
+  bool get applePayEnabled;
 
   /// Whether to show Google Pay as an option. Defaults to `false`.
-  bool get googlePayEnabled;
   @override
+  bool get googlePayEnabled;
 
   /// The list of preferred networks that should be used to process payments made with a co-branded card.
   /// This value will only be used if your user hasn't selected a network themselves.
+  @override
   @JsonKey(toJson: _cardBrandListToJson)
   List<CardBrand>? get preferredNetworks;
+
+  /// Create a copy of CustomerSheetInitParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomerSheetInitParamsImplCopyWith<_$CustomerSheetInitParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -694,8 +712,12 @@ mixin _$CustomerSheetPresentParams {
   /// Time (in milliseconds) before the Customer Sheet will automatically dismiss.
   int? get timeout => throw _privateConstructorUsedError;
 
+  /// Serializes this CustomerSheetPresentParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomerSheetPresentParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CustomerSheetPresentParamsCopyWith<CustomerSheetPresentParams>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -724,6 +746,8 @@ class _$CustomerSheetPresentParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CustomerSheetPresentParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -773,6 +797,8 @@ class __$$CustomerSheetPresentParamsImplCopyWithImpl<$Res>
       $Res Function(_$CustomerSheetPresentParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerSheetPresentParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -827,7 +853,7 @@ class _$CustomerSheetPresentParamsImpl implements _CustomerSheetPresentParams {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomerSheetPresentParamsImpl &&
@@ -838,12 +864,14 @@ class _$CustomerSheetPresentParamsImpl implements _CustomerSheetPresentParams {
             (identical(other.timeout, timeout) || other.timeout == timeout));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, presentationStyle, animationStyle, timeout);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerSheetPresentParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomerSheetPresentParamsImplCopyWith<_$CustomerSheetPresentParamsImpl>
@@ -868,21 +896,23 @@ abstract class _CustomerSheetPresentParams
   factory _CustomerSheetPresentParams.fromJson(Map<String, dynamic> json) =
       _$CustomerSheetPresentParamsImpl.fromJson;
 
-  @override
-
   /// Controls how the modal is presented (after animation). iOS only. Defaults to `popover`.
   /// See https://developer.apple.com/documentation/uikit/uimodalpresentationstyle for more info.
-  CustomerSheetPresentationStyle? get presentationStyle;
   @override
+  CustomerSheetPresentationStyle? get presentationStyle;
 
   /// Controls how the modal animates. iOS only.
-  CustomerSheetAnimationStyle? get animationStyle;
   @override
+  CustomerSheetAnimationStyle? get animationStyle;
 
   /// Time (in milliseconds) before the Customer Sheet will automatically dismiss.
-  int? get timeout;
   @override
-  @JsonKey(ignore: true)
+  int? get timeout;
+
+  /// Create a copy of CustomerSheetPresentParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomerSheetPresentParamsImplCopyWith<_$CustomerSheetPresentParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -903,8 +933,12 @@ mixin _$CustomerSheetResult {
   /// The error that occurred
   StripeError<dynamic>? get error => throw _privateConstructorUsedError;
 
+  /// Serializes this CustomerSheetResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomerSheetResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CustomerSheetResultCopyWith<CustomerSheetResult> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -935,6 +969,8 @@ class _$CustomerSheetResultCopyWithImpl<$Res, $Val extends CustomerSheetResult>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CustomerSheetResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -958,6 +994,8 @@ class _$CustomerSheetResultCopyWithImpl<$Res, $Val extends CustomerSheetResult>
     ) as $Val);
   }
 
+  /// Create a copy of CustomerSheetResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentSheetPaymentOptionCopyWith<$Res>? get paymentOption {
@@ -971,6 +1009,8 @@ class _$CustomerSheetResultCopyWithImpl<$Res, $Val extends CustomerSheetResult>
     });
   }
 
+  /// Create a copy of CustomerSheetResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentMethodCopyWith<$Res>? get paymentMethod {
@@ -983,6 +1023,8 @@ class _$CustomerSheetResultCopyWithImpl<$Res, $Val extends CustomerSheetResult>
     });
   }
 
+  /// Create a copy of CustomerSheetResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $StripeErrorCopyWith<dynamic, $Res>? get error {
@@ -1025,6 +1067,8 @@ class __$$CustomerSheetResultImplCopyWithImpl<$Res>
       $Res Function(_$CustomerSheetResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerSheetResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1077,7 +1121,7 @@ class _$CustomerSheetResultImpl implements _CustomerSheetResult {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CustomerSheetResultImpl &&
@@ -1088,12 +1132,14 @@ class _$CustomerSheetResultImpl implements _CustomerSheetResult {
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, paymentOption, paymentMethod, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerSheetResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomerSheetResultImplCopyWith<_$CustomerSheetResultImpl> get copyWith =>
@@ -1117,20 +1163,22 @@ abstract class _CustomerSheetResult implements CustomerSheetResult {
   factory _CustomerSheetResult.fromJson(Map<String, dynamic> json) =
       _$CustomerSheetResultImpl.fromJson;
 
-  @override
-
   /// The users selected payment option, if one exists.
-  PaymentSheetPaymentOption? get paymentOption;
   @override
+  PaymentSheetPaymentOption? get paymentOption;
 
   /// The Stripe PaymentMethod associated with the paymentOption, if it exists.
-  PaymentMethod? get paymentMethod;
   @override
+  PaymentMethod? get paymentMethod;
 
   /// The error that occurred
-  StripeError<dynamic>? get error;
   @override
-  @JsonKey(ignore: true)
+  StripeError<dynamic>? get error;
+
+  /// Create a copy of CustomerSheetResult
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomerSheetResultImplCopyWith<_$CustomerSheetResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

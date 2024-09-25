@@ -14,12 +14,14 @@ extension type JsElementsCreateOptions._(JSObject o) {
     JSArray<JSString>? paymentMethodTypes,
     String? paymentMethodCreation,
     JsElementAppearance? appearance,
+    String? customerSessionClientSecret,
     String loader,
   });
 
   external JSArray<Font> fonts;
   external String locale;
   external String clientSecret;
+  external String customerSessionClientSecret;
   external int amount;
   external String mode;
   external String currency;

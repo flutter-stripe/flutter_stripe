@@ -153,7 +153,7 @@ class Stripe {
     );
   }
 
-  /// Laucnhes the relevant native wallsheet (Apple Pay on iOS and Google Pay on Android)
+  /// Launches the relevant native wallsheet (Apple Pay on iOS and Google Pay on Android)
   /// in order to create a payment intent
   ///
   /// Argument [params] is describing the the Apple Pay or Google pay configuration.

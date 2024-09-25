@@ -90,7 +90,7 @@ _$CustomerSheetPresentParamsImpl _$$CustomerSheetPresentParamsImplFromJson(
           _$CustomerSheetPresentationStyleEnumMap, json['presentationStyle']),
       animationStyle: $enumDecodeNullable(
           _$CustomerSheetAnimationStyleEnumMap, json['animationStyle']),
-      timeout: json['timeout'] as int?,
+      timeout: (json['timeout'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$CustomerSheetPresentParamsImplToJson(

@@ -21,7 +21,8 @@ typedef PaymentElementAppearance = js.ElementAppearance;
 typedef PaymentElementAppearanceLabels = js.ElementAppearanceLabels;
 
 class PaymentElement extends StatefulWidget {
-  final String? clientSecret;
+  final String clientSecret;
+  final String? customerSessionClientSecret;
 
   final int? amount;
   final String? currency;
@@ -40,12 +41,20 @@ class PaymentElement extends StatefulWidget {
   final CardChangedCallback onCardChanged;
   final PaymentElementLayout layout;
   final js.ElementAppearance? appearance;
+  final js.PaymentElementDefaultValues? defaultValues;
+  final js.PaymentElementBusiness? business;
+  final dynamic paymentMethodOrder;
+  final js.PaymentElementFields? fields;
+  final bool? readOnly;
+  final js.PaymentElementOptionsTerms? terms;
+  final js.PaymentElementWalletOptions? wallets;
+  final js.PaymentElementApplePayOptions? applePay;
   final String? locale;
-  final PaymentElementDefaultValues? paymentElementDefaultValues;
 
   PaymentElement({
     super.key,
     this.clientSecret,
+    this.customerSessionClientSecret,
     this.amount,
     this.currency,
     this.mode,
@@ -63,7 +72,14 @@ class PaymentElement extends StatefulWidget {
     this.layout = PaymentElementLayout.accordion,
     this.appearance,
     this.locale,
-    this.paymentElementDefaultValues,
+    this.defaultValues,
+    this.business,
+    this.paymentMethodOrder,
+    this.fields,
+    this.readOnly,
+    this.terms,
+    this.wallets,
+    this.applePay,
   });
 
   @override
@@ -194,6 +210,7 @@ class PaymentElementState extends State<PaymentElement> {
     if (widget.clientSecret?.isNotEmpty == true) {
       return js.JsElementsCreateOptions(
         clientSecret: widget.clientSecret,
+        customerSessionClientSecret: widget.customerSessionClientSecret,
         appearance: appearance.toJson().jsify() as js.JsElementAppearance,
         locale: widget.locale,
       );
@@ -216,7 +233,14 @@ class PaymentElementState extends State<PaymentElement> {
   js.PaymentElementOptions elementOptions() {
     return js.PaymentElementOptions(
       layout: widget.layout,
-      defaultValues: widget.paymentElementDefaultValues,
+      defaultValues: widget.defaultValues,
+      business: widget.business,
+      paymentMethodOrder: widget.paymentMethodOrder,
+      fields: widget.fields,
+      readOnly: widget.readOnly,
+      terms: widget.terms,
+      wallets: widget.wallets,
+      applePay: widget.applePay,
     );
   }
 

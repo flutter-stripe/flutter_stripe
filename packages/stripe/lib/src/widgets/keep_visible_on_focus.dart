@@ -3,10 +3,10 @@ import 'package:flutter/widgets.dart';
 
 class KeepVisibleOnFocus extends StatefulWidget {
   const KeepVisibleOnFocus({
-    Key? key,
     required this.focusNode,
     required this.child,
-  }) : super(key: key);
+    super.key,
+  });
 
   final FocusNode focusNode;
 
