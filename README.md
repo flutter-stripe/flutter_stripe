@@ -66,6 +66,10 @@ These changes are needed because the Android Stripe SDK requires the use of the 
 
 If you are having troubles to make this package to work on Android, join [this discussion](https://github.com/flutter-stripe/flutter_stripe/discussions/538) to get some support.
 
+##### Issue with latest Android plugin
+
+We are aware of an issue with `com.android.application` plugin version 8.0.0 and above. Do not upgrade to this version as it can crash the payment sheet in release builds. See [issue](https://github.com/flutter-stripe/flutter_stripe/issues/1909) to follow the progress.
+
 #### iOS
 
 Compatible with apps targeting iOS 13 or above.
