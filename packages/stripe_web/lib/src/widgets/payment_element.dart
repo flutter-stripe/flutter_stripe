@@ -21,7 +21,7 @@ typedef PaymentElementAppearance = js.ElementAppearance;
 typedef PaymentElementAppearanceLabels = js.ElementAppearanceLabels;
 
 class PaymentElement extends StatefulWidget {
-  final String clientSecret;
+  final String? clientSecret;
   final String? customerSessionClientSecret;
 
   final int? amount;
