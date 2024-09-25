@@ -76,6 +76,7 @@ extension CaptureMethodExtension on CaptureMethod {
         return CaptureMethod.Automatic;
       case 'AutomaticAsync':
       case 'automatic_async':
+      case 'automaticAsync':
         return CaptureMethod.AutomaticAsync;
       case 'Manual':
       case 'manual':
