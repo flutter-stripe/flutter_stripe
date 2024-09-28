@@ -69,7 +69,6 @@ dependencies {
 afterEvaluate {
     // check version of com.android.application - fail if 8.0.0 or higher
     def androidPluginVersion = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION
-    print("android plugin version: " + androidPluginVersion)
     if (androidPluginVersion >= '8.0.0') {
         throw new GradleException("flutter_stripe: Stripe Android SDK requires com.android.application plugin lower than 8.0.0.\nSee https://github.com/flutter-stripe/flutter_stripe/issues/1909\n")
     }
