@@ -1,3 +1,7 @@
+## 6.1.1
+**Features**
+- add method for deferred payment
+
 ## 6.1.0
 - Sync with Stripe [0.38.6](https://github.com/stripe/stripe-react-native/releases/tag/v0.38.6). 
 - Minor fixes and improvements.

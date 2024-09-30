@@ -12,7 +12,7 @@ part of 'confirm_payment_options.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ConfirmPaymentOptions _$ConfirmPaymentOptionsFromJson(
     Map<String, dynamic> json) {
@@ -24,6 +24,7 @@ mixin _$ConfirmPaymentOptions {
   /// The Elements instance that was used to create the Payment Element.
   @ElementsConverter()
   Elements get elements => throw _privateConstructorUsedError;
+  String? get clientSecret => throw _privateConstructorUsedError;
 
   /// Parameters that will be passed on to the Stripe API.
   /// Refer to the Payment Intents API for a full list of parameters.
@@ -56,6 +57,7 @@ abstract class $ConfirmPaymentOptionsCopyWith<$Res> {
   @useResult
   $Res call(
       {@ElementsConverter() Elements elements,
+      String? clientSecret,
       ConfirmPaymentParams confirmParams,
       PaymentConfirmationRedirect? redirect});
 
@@ -77,6 +79,7 @@ class _$ConfirmPaymentOptionsCopyWithImpl<$Res,
   @override
   $Res call({
     Object? elements = null,
+    Object? clientSecret = freezed,
     Object? confirmParams = null,
     Object? redirect = freezed,
   }) {
@@ -85,6 +88,10 @@ class _$ConfirmPaymentOptionsCopyWithImpl<$Res,
           ? _value.elements
           : elements // ignore: cast_nullable_to_non_nullable
               as Elements,
+      clientSecret: freezed == clientSecret
+          ? _value.clientSecret
+          : clientSecret // ignore: cast_nullable_to_non_nullable
+              as String?,
       confirmParams: null == confirmParams
           ? _value.confirmParams
           : confirmParams // ignore: cast_nullable_to_non_nullable
@@ -116,6 +123,7 @@ abstract class _$$ConfirmPaymentOptionsImplCopyWith<$Res>
   @useResult
   $Res call(
       {@ElementsConverter() Elements elements,
+      String? clientSecret,
       ConfirmPaymentParams confirmParams,
       PaymentConfirmationRedirect? redirect});
 
@@ -136,6 +144,7 @@ class __$$ConfirmPaymentOptionsImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? elements = null,
+    Object? clientSecret = freezed,
     Object? confirmParams = null,
     Object? redirect = freezed,
   }) {
@@ -144,6 +153,10 @@ class __$$ConfirmPaymentOptionsImplCopyWithImpl<$Res>
           ? _value.elements
           : elements // ignore: cast_nullable_to_non_nullable
               as Elements,
+      clientSecret: freezed == clientSecret
+          ? _value.clientSecret
+          : clientSecret // ignore: cast_nullable_to_non_nullable
+              as String?,
       confirmParams: null == confirmParams
           ? _value.confirmParams
           : confirmParams // ignore: cast_nullable_to_non_nullable
@@ -161,6 +174,7 @@ class __$$ConfirmPaymentOptionsImplCopyWithImpl<$Res>
 class _$ConfirmPaymentOptionsImpl implements _ConfirmPaymentOptions {
   const _$ConfirmPaymentOptionsImpl(
       {@ElementsConverter() required this.elements,
+      this.clientSecret,
       required this.confirmParams,
       this.redirect});
 
@@ -171,6 +185,8 @@ class _$ConfirmPaymentOptionsImpl implements _ConfirmPaymentOptions {
   @override
   @ElementsConverter()
   final Elements elements;
+  @override
+  final String? clientSecret;
 
   /// Parameters that will be passed on to the Stripe API.
   /// Refer to the Payment Intents API for a full list of parameters.
@@ -192,16 +208,18 @@ class _$ConfirmPaymentOptionsImpl implements _ConfirmPaymentOptions {
 
   @override
   String toString() {
-    return 'ConfirmPaymentOptions(elements: $elements, confirmParams: $confirmParams, redirect: $redirect)';
+    return 'ConfirmPaymentOptions(elements: $elements, clientSecret: $clientSecret, confirmParams: $confirmParams, redirect: $redirect)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ConfirmPaymentOptionsImpl &&
             (identical(other.elements, elements) ||
                 other.elements == elements) &&
+            (identical(other.clientSecret, clientSecret) ||
+                other.clientSecret == clientSecret) &&
             (identical(other.confirmParams, confirmParams) ||
                 other.confirmParams == confirmParams) &&
             (identical(other.redirect, redirect) ||
@@ -211,7 +229,7 @@ class _$ConfirmPaymentOptionsImpl implements _ConfirmPaymentOptions {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, elements, confirmParams, redirect);
+      Object.hash(runtimeType, elements, clientSecret, confirmParams, redirect);
 
   @JsonKey(ignore: true)
   @override
@@ -231,6 +249,7 @@ class _$ConfirmPaymentOptionsImpl implements _ConfirmPaymentOptions {
 abstract class _ConfirmPaymentOptions implements ConfirmPaymentOptions {
   const factory _ConfirmPaymentOptions(
           {@ElementsConverter() required final Elements elements,
+          final String? clientSecret,
           required final ConfirmPaymentParams confirmParams,
           final PaymentConfirmationRedirect? redirect}) =
       _$ConfirmPaymentOptionsImpl;
@@ -243,6 +262,8 @@ abstract class _ConfirmPaymentOptions implements ConfirmPaymentOptions {
   /// The Elements instance that was used to create the Payment Element.
   @ElementsConverter()
   Elements get elements;
+  @override
+  String? get clientSecret;
   @override
 
   /// Parameters that will be passed on to the Stripe API.
@@ -367,7 +388,7 @@ class _$ConfirmPaymentParamsImpl implements _ConfirmPaymentParams {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ConfirmPaymentParamsImpl &&
