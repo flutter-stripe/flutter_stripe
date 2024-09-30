@@ -14,8 +14,7 @@ extension PaymentIntentExtension on js.PaymentIntent {
       latestCharge: latestCharge,
       //paymentMethodId: payment_method,
       captureMethod: CaptureMethodExtension.parse(captureMethod.name),
-      confirmationMethod:
-          ConfirmationMethodExtension.parse(confirmationMethod.name),
+      confirmationMethod: ConfirmationMethodExtension.parse(confirmationMethod.name),
 //
       description: description,
       // receiptEmail: receipt_email,
@@ -75,6 +74,7 @@ extension CaptureMethodExtension on CaptureMethod {
       case 'automatic':
         return CaptureMethod.Automatic;
       case 'AutomaticAsync':
+      case 'automaticAsync':
       case 'automatic_async':
         return CaptureMethod.AutomaticAsync;
       case 'Manual':

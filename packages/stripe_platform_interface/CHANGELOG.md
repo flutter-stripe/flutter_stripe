@@ -1,7 +1,11 @@
-## 11.1.1
+## 11.2.0
 
 **Features**
 - add methods for deferred payment on web
+
+## 11.1.1
+
+ - #1912 wallet parsing.
 
 ## 11.1.0
 - Sync with Stripe [0.38.6](https://github.com/stripe/stripe-react-native/releases/tag/v0.38.6). 
