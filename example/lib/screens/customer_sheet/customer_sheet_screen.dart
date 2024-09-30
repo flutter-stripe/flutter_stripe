@@ -87,8 +87,9 @@ class _CustomerSheetScreenState extends State<CustomerSheetScreen> {
       await Stripe.instance.initCustomerSheet(
         customerSheetInitParams: CustomerSheetInitParams(
           // Main params
-          setupIntentClientSecret: data['setupIntent'],
+          // setupIntentClientSecret: data['setupIntent'],
           merchantDisplayName: 'Flutter Stripe Store Demo',
+          allowsRemovalOfLastSavedPaymentMethod: true,
           // Customer params
           customerId: data['customer'],
           customerEphemeralKeySecret: data['ephemeralKeySecret'],

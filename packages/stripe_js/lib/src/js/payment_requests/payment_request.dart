@@ -1,7 +1,8 @@
+import 'dart:js_interop';
+
 import 'package:stripe_js/src/js/utils/parse_intent_response.dart';
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
-import 'dart:js_interop';
 
 extension PaymentRequestExtension on Stripe {
   _JS get _js => this as _JS;

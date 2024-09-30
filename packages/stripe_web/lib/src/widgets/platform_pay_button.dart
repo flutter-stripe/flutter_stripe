@@ -1,13 +1,11 @@
 import 'dart:js_interop';
-
-import 'package:web/web.dart' as web;
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 import 'package:flutter_stripe_web/src/parser/payment_request.dart';
-
 import 'package:stripe_js/stripe_js.dart';
+import 'package:web/web.dart' as web;
 
 const kPlatformPayButtonDefaultHeight = 40.0;
 
@@ -76,7 +74,7 @@ class _WebPlatformPayButtonState extends State<WebPlatformPayButton> {
                   height: '${constraints.maxHeight}px',
                 ))))
           ..on('click', (event) {
-            //callMethod(event, 'preventDefault', []);
+            event.toDart['preventDefault']();
             widget.onPressed();
           })
           ..mount('#platform-pay-button'.toJS);
