@@ -120,9 +120,7 @@ class PaymentElementState extends State<PaymentElement> {
       ..id = 'payment-element'
       ..style.border = 'none'
       ..style.width = '100%'
-      ..style.height = '${height}'
-      ..style.overflow = 'scroll'
-      ..style.overflowX = 'hidden';
+      ..style.height = '${height}';
 
     elements = WebStripe.js.elements(createOptions());
     mutationObserver!.observe(
