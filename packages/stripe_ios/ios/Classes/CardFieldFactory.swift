@@ -162,7 +162,7 @@ extension CardFieldView {
         cardParams.type = STPPaymentMethodType.card
         cardParams.card = cardMethodParams
         
-        self.cardField.paymentMethodParams.card = cardMethodParams
+        self.cardField.paymentMethodParams = STPPaymentMethodParams.paramsWith(card: cardMethodParams, billingDetails: nil, metadata: nil)
         self.cardField.postalCode = params["postalCode"] as? String
         self.cardParams = cardParams
         self.cardPostalCode = params["postalCode"] as? String
