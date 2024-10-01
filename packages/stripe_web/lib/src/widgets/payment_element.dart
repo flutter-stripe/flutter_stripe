@@ -9,7 +9,8 @@ import 'package:web/web.dart' as web;
 
 import '../../flutter_stripe_web.dart';
 
-export 'package:stripe_js/stripe_api.dart' show PaymentElementLayout;
+export 'package:stripe_js/stripe_api.dart'
+    show PaymentElementLayout, ElementAppearance, ElementTheme;
 
 typedef PaymentElementTheme = js.ElementTheme;
 
