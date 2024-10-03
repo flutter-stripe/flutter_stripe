@@ -1,4 +1,4 @@
-import 'dart:html' as html;
+import 'package:web/web.dart' as html;
 
 String getUrlPort() => html.window.location.port;
 
