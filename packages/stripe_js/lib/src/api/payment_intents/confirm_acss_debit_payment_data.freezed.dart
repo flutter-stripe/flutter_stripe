@@ -27,8 +27,12 @@ mixin _$ConfirmAcssDebitPaymentData {
   @JsonKey(name: "payment_method")
   String? get paymentMethod => throw _privateConstructorUsedError;
 
+  /// Serializes this ConfirmAcssDebitPaymentData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ConfirmAcssDebitPaymentData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ConfirmAcssDebitPaymentDataCopyWith<ConfirmAcssDebitPaymentData>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -55,6 +59,8 @@ class _$ConfirmAcssDebitPaymentDataCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ConfirmAcssDebitPaymentData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,6 +97,8 @@ class __$$ConfirmAcssDebitPaymentDataImplCopyWithImpl<$Res>
       $Res Function(_$ConfirmAcssDebitPaymentDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ConfirmAcssDebitPaymentData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,11 +145,13 @@ class _$ConfirmAcssDebitPaymentDataImpl
                 other.paymentMethod == paymentMethod));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, paymentMethod);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ConfirmAcssDebitPaymentData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ConfirmAcssDebitPaymentDataImplCopyWith<_$ConfirmAcssDebitPaymentDataImpl>
@@ -165,15 +175,17 @@ abstract class _ConfirmAcssDebitPaymentData
   factory _ConfirmAcssDebitPaymentData.fromJson(Map<String, dynamic> json) =
       _$ConfirmAcssDebitPaymentDataImpl.fromJson;
 
-  @override
-
   /// Either the id of an existing PaymentMethod, or an object containing
   /// data to create a PaymentMethod with.
   /// See the use case sections below for details.
+  @override
   @JsonKey(name: "payment_method")
   String? get paymentMethod;
+
+  /// Create a copy of ConfirmAcssDebitPaymentData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ConfirmAcssDebitPaymentDataImplCopyWith<_$ConfirmAcssDebitPaymentDataImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

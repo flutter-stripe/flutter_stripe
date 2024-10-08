@@ -55,8 +55,12 @@ mixin _$CreateTokenCardData {
   @JsonKey(name: "currency")
   String? get currency => throw _privateConstructorUsedError;
 
+  /// Serializes this CreateTokenCardData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CreateTokenCardData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CreateTokenCardDataCopyWith<CreateTokenCardData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -88,6 +92,8 @@ class _$CreateTokenCardDataCopyWithImpl<$Res, $Val extends CreateTokenCardData>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CreateTokenCardData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -164,6 +170,8 @@ class __$$CreateTokenCardDataImplCopyWithImpl<$Res>
       $Res Function(_$CreateTokenCardDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CreateTokenCardData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -299,12 +307,14 @@ class _$CreateTokenCardDataImpl implements _CreateTokenCardData {
                 other.currency == currency));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, addressLine1, addressLine2,
       addressCity, addressState, addressZip, addressCountry, currency);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CreateTokenCardData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateTokenCardDataImplCopyWith<_$CreateTokenCardDataImpl> get copyWith =>
@@ -334,51 +344,53 @@ abstract class _CreateTokenCardData implements CreateTokenCardData {
   factory _CreateTokenCardData.fromJson(Map<String, dynamic> json) =
       _$CreateTokenCardDataImpl.fromJson;
 
-  @override
-
   /// RECOMMENDED
   /// Cardholder name.
-  String? get name;
   @override
+  String? get name;
 
   /// Address line 1 (Street address/PO Box/Company name).
+  @override
   @JsonKey(name: "address_line1")
   String? get addressLine1;
-  @override
 
   /// Address line 2 (Apartment/Suite/Unit/Building).
+  @override
   @JsonKey(name: "address_line2")
   String? get addressLine2;
-  @override
 
   /// City/District/Suburb/Town/Village.
+  @override
   @JsonKey(name: "address_city")
   String? get addressCity;
-  @override
 
   /// State/County/Province/Region.
+  @override
   @JsonKey(name: "address_state")
   String? get addressState;
-  @override
 
   /// ZIP or postal code.
+  @override
   @JsonKey(name: "address_zip")
   String? get addressZip;
-  @override
 
   /// RECOMMENDED.
   /// A two character country code (for example, US).
   /// Billing address country
+  @override
   @JsonKey(name: "address_country")
   String? get addressCountry;
-  @override
 
   /// Required in order to add the card to a Connect account
   ///(in all other cases, this parameter is not used).
+  @override
   @JsonKey(name: "currency")
   String? get currency;
+
+  /// Create a copy of CreateTokenCardData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateTokenCardDataImplCopyWith<_$CreateTokenCardDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -57,8 +57,12 @@ mixin _$PaymentElementOptions {
   PaymentElementApplePayOptions? get applePay =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementOptions to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementOptionsCopyWith<PaymentElementOptions> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -100,6 +104,8 @@ class _$PaymentElementOptionsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -153,6 +159,8 @@ class _$PaymentElementOptionsCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of PaymentElementOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementLayoutCopyWith<$Res>? get layout {
@@ -165,6 +173,8 @@ class _$PaymentElementOptionsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of PaymentElementOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementDefaultValuesCopyWith<$Res>? get defaultValues {
@@ -178,6 +188,8 @@ class _$PaymentElementOptionsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of PaymentElementOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementBusinessCopyWith<$Res>? get business {
@@ -190,6 +202,8 @@ class _$PaymentElementOptionsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of PaymentElementOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementFieldsCopyWith<$Res>? get fields {
@@ -202,6 +216,8 @@ class _$PaymentElementOptionsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of PaymentElementOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementOptionsTermsCopyWith<$Res>? get terms {
@@ -214,6 +230,8 @@ class _$PaymentElementOptionsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of PaymentElementOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementWalletOptionsCopyWith<$Res>? get wallets {
@@ -226,6 +244,8 @@ class _$PaymentElementOptionsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of PaymentElementOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementApplePayOptionsCopyWith<$Res>? get applePay {
@@ -285,6 +305,8 @@ class __$$PaymentElementOptionsImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementOptionsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -424,7 +446,7 @@ class _$PaymentElementOptionsImpl implements _PaymentElementOptions {
                 other.applePay == applePay));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -438,7 +460,9 @@ class _$PaymentElementOptionsImpl implements _PaymentElementOptions {
       wallets,
       applePay);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementOptionsImplCopyWith<_$PaymentElementOptionsImpl>
@@ -471,22 +495,21 @@ abstract class _PaymentElementOptions implements PaymentElementOptions {
 
   @override
   PaymentElementLayout? get layout;
-  @override
 
   /// Provide initial customer information that will be displayed
   /// in the Payment Element.
   /// The form will render with empty fields if not provided.
-  PaymentElementDefaultValues? get defaultValues;
   @override
+  PaymentElementDefaultValues? get defaultValues;
 
   /// Provide information about your business that will
   /// be displayed in the Payment Element.
   /// This information will be retrieved from your Stripe account
   /// if not provided.
+  @override
   PaymentElementBusiness? get business;
   @override
   dynamic get paymentMethodOrder;
-  @override
 
   /// By default, the Payment Element will collect all necessary details to
   /// complete a payment.
@@ -501,6 +524,7 @@ abstract class _PaymentElementOptions implements PaymentElementOptions {
   /// If you disable the collection of a certain field with the fields option,
   /// you must pass that same data to stripe.confirmPayment or the payment will
   /// be rejected.
+  @override
   PaymentElementFields? get fields;
   @override
   bool? get readOnly;
@@ -510,8 +534,11 @@ abstract class _PaymentElementOptions implements PaymentElementOptions {
   PaymentElementWalletOptions? get wallets;
   @override
   PaymentElementApplePayOptions? get applePay;
+
+  /// Create a copy of PaymentElementOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementOptionsImplCopyWith<_$PaymentElementOptionsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -550,8 +577,12 @@ mixin _$PaymentElementLayout {
   /// Default is 5. This property is only applicable to the accordion layout.
   int? get visibleAccordionItemsCount => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementLayout to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementLayout
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementLayoutCopyWith<PaymentElementLayout> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -581,6 +612,8 @@ class _$PaymentElementLayoutCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementLayout
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -639,6 +672,8 @@ class __$$PaymentElementLayoutImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementLayoutImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementLayout
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -741,12 +776,14 @@ class _$PaymentElementLayoutImpl implements _PaymentElementLayout {
                     visibleAccordionItemsCount));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, type, defaultCollapsed, radios,
       spacedAccordionItems, visibleAccordionItemsCount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementLayout
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementLayoutImplCopyWith<_$PaymentElementLayoutImpl>
@@ -773,41 +810,43 @@ abstract class _PaymentElementLayout implements PaymentElementLayout {
   factory _PaymentElementLayout.fromJson(Map<String, dynamic> json) =
       _$PaymentElementLayoutImpl.fromJson;
 
-  @override
-
   /// Defines the layout to render the Payment Element.
-  PaymentElementLayoutType get type;
   @override
+  PaymentElementLayoutType get type;
 
   /// Controls if the Payment Element renders in a collapsed state
   /// (where no payment method is selected by default).
   /// When you leave this `undefined``,
   /// Stripe renders the experience that it determines
   /// will have the best conversion.
-  bool? get defaultCollapsed;
   @override
+  bool? get defaultCollapsed;
 
   /// Renders each Payment Method with a radio input next to its logo.
   /// The radios visually indicate the current selection of the Payment
   /// Element.
   ///
   /// This property is only applicable to the accordion layout.
-  bool? get radios;
   @override
+  bool? get radios;
 
   /// When true, the Payment Methods renders as standalone buttons
   /// with space in between them.
   /// This property is only applicable to the accordion layout.
-  bool? get spacedAccordionItems;
   @override
+  bool? get spacedAccordionItems;
 
   /// Sets the max number of Payment Methods visible before using the "More"
   /// button to hide additional Payment Methods. Set this value to 0 to
   /// disable the "More" button and render all available Payment Methods.
   /// Default is 5. This property is only applicable to the accordion layout.
-  int? get visibleAccordionItemsCount;
   @override
-  @JsonKey(ignore: true)
+  int? get visibleAccordionItemsCount;
+
+  /// Create a copy of PaymentElementLayout
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementLayoutImplCopyWith<_$PaymentElementLayoutImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -832,8 +871,12 @@ mixin _$PaymentElementDefaultValues {
   PaymentElementPaymentMethodDefaults? get paymentMethods =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementDefaultValues to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementDefaultValues
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementDefaultValuesCopyWith<PaymentElementDefaultValues>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -865,6 +908,8 @@ class _$PaymentElementDefaultValuesCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementDefaultValues
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -883,6 +928,8 @@ class _$PaymentElementDefaultValuesCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of PaymentElementDefaultValues
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementBillingDetailsCopyWith<$Res>? get billingDetails {
@@ -896,6 +943,8 @@ class _$PaymentElementDefaultValuesCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of PaymentElementDefaultValues
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementPaymentMethodDefaultsCopyWith<$Res>? get paymentMethods {
@@ -939,6 +988,8 @@ class __$$PaymentElementDefaultValuesImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementDefaultValuesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementDefaultValues
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -998,11 +1049,13 @@ class _$PaymentElementDefaultValuesImpl
                 other.paymentMethods == paymentMethods));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, billingDetails, paymentMethods);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementDefaultValues
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementDefaultValuesImplCopyWith<_$PaymentElementDefaultValuesImpl>
@@ -1027,21 +1080,23 @@ abstract class _PaymentElementDefaultValues
   factory _PaymentElementDefaultValues.fromJson(Map<String, dynamic> json) =
       _$PaymentElementDefaultValuesImpl.fromJson;
 
-  @override
-
   /// Specify customer's billing details, which lets you pre-fill a
   /// customer’s name, email, phone number and address if required by
   /// payment method.
   /// Pre-filling as much information as possible streamlines
   /// the checkout process.
-  PaymentElementBillingDetails? get billingDetails;
   @override
+  PaymentElementBillingDetails? get billingDetails;
 
   ///  Specify customer's default information for different payment methods.
   /// Pre-filling as much information as possible streamlines the checkout process.
-  PaymentElementPaymentMethodDefaults? get paymentMethods;
   @override
-  @JsonKey(ignore: true)
+  PaymentElementPaymentMethodDefaults? get paymentMethods;
+
+  /// Create a copy of PaymentElementDefaultValues
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementDefaultValuesImplCopyWith<_$PaymentElementDefaultValuesImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1059,8 +1114,12 @@ mixin _$PaymentElementPaymentMethodDefaults {
   /// Defaults for card payment method
   PaymentElementCardDefaults? get card => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementPaymentMethodDefaults to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementPaymentMethodDefaults
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementPaymentMethodDefaultsCopyWith<
           PaymentElementPaymentMethodDefaults>
       get copyWith => throw _privateConstructorUsedError;
@@ -1092,6 +1151,8 @@ class _$PaymentElementPaymentMethodDefaultsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementPaymentMethodDefaults
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1110,6 +1171,8 @@ class _$PaymentElementPaymentMethodDefaultsCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of PaymentElementPaymentMethodDefaults
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementIdealDefaultsCopyWith<$Res>? get ideal {
@@ -1122,6 +1185,8 @@ class _$PaymentElementPaymentMethodDefaultsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of PaymentElementPaymentMethodDefaults
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementCardDefaultsCopyWith<$Res>? get card {
@@ -1163,6 +1228,8 @@ class __$$PaymentElementPaymentMethodDefaultsImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementPaymentMethodDefaultsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementPaymentMethodDefaults
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1214,11 +1281,13 @@ class _$PaymentElementPaymentMethodDefaultsImpl
             (identical(other.card, card) || other.card == card));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, ideal, card);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementPaymentMethodDefaults
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementPaymentMethodDefaultsImplCopyWith<
@@ -1245,16 +1314,18 @@ abstract class _PaymentElementPaymentMethodDefaults
           Map<String, dynamic> json) =
       _$PaymentElementPaymentMethodDefaultsImpl.fromJson;
 
-  @override
-
   /// Defaults for ideal
-  PaymentElementIdealDefaults? get ideal;
   @override
+  PaymentElementIdealDefaults? get ideal;
 
   /// Defaults for card payment method
-  PaymentElementCardDefaults? get card;
   @override
-  @JsonKey(ignore: true)
+  PaymentElementCardDefaults? get card;
+
+  /// Create a copy of PaymentElementPaymentMethodDefaults
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementPaymentMethodDefaultsImplCopyWith<
           _$PaymentElementPaymentMethodDefaultsImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1275,8 +1346,12 @@ mixin _$PaymentElementWalletOptions {
   PaymentElementFieldRequired? get googlePay =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementWalletOptions to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementWalletOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementWalletOptionsCopyWith<PaymentElementWalletOptions>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1305,6 +1380,8 @@ class _$PaymentElementWalletOptionsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementWalletOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1348,6 +1425,8 @@ class __$$PaymentElementWalletOptionsImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementWalletOptionsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementWalletOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1401,11 +1480,13 @@ class _$PaymentElementWalletOptionsImpl
                 other.googlePay == googlePay));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, applePay, googlePay);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementWalletOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementWalletOptionsImplCopyWith<_$PaymentElementWalletOptionsImpl>
@@ -1430,16 +1511,18 @@ abstract class _PaymentElementWalletOptions
   factory _PaymentElementWalletOptions.fromJson(Map<String, dynamic> json) =
       _$PaymentElementWalletOptionsImpl.fromJson;
 
-  @override
-
   /// Apple pay required options
-  PaymentElementFieldRequired? get applePay;
   @override
+  PaymentElementFieldRequired? get applePay;
 
   /// Google pay required options
-  PaymentElementFieldRequired? get googlePay;
   @override
-  @JsonKey(ignore: true)
+  PaymentElementFieldRequired? get googlePay;
+
+  /// Create a copy of PaymentElementWalletOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementWalletOptionsImplCopyWith<_$PaymentElementWalletOptionsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1457,8 +1540,12 @@ mixin _$PaymentElementIdealDefaults {
   /// for all options.
   String? get bank => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementIdealDefaults to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementIdealDefaults
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementIdealDefaultsCopyWith<PaymentElementIdealDefaults>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1485,6 +1572,8 @@ class _$PaymentElementIdealDefaultsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementIdealDefaults
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1521,6 +1610,8 @@ class __$$PaymentElementIdealDefaultsImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementIdealDefaultsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementIdealDefaults
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1565,11 +1656,13 @@ class _$PaymentElementIdealDefaultsImpl
             (identical(other.bank, bank) || other.bank == bank));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, bank);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementIdealDefaults
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementIdealDefaultsImplCopyWith<_$PaymentElementIdealDefaultsImpl>
@@ -1592,15 +1685,17 @@ abstract class _PaymentElementIdealDefaults
   factory _PaymentElementIdealDefaults.fromJson(Map<String, dynamic> json) =
       _$PaymentElementIdealDefaultsImpl.fromJson;
 
-  @override
-
   /// The customer’s bank name.
   ///
   /// See https://docs.stripe.com/payments/ideal/accept-a-payment?ui=element#bank-reference
   /// for all options.
-  String? get bank;
   @override
-  @JsonKey(ignore: true)
+  String? get bank;
+
+  /// Create a copy of PaymentElementIdealDefaults
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementIdealDefaultsImplCopyWith<_$PaymentElementIdealDefaultsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1617,8 +1712,12 @@ mixin _$PaymentElementCardDefaults {
   /// in the card brand choice.
   List<String>? get network => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementCardDefaults to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementCardDefaults
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementCardDefaultsCopyWith<PaymentElementCardDefaults>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1644,6 +1743,8 @@ class _$PaymentElementCardDefaultsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementCardDefaults
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1680,6 +1781,8 @@ class __$$PaymentElementCardDefaultsImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementCardDefaultsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementCardDefaults
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1734,12 +1837,14 @@ class _$PaymentElementCardDefaultsImpl implements _PaymentElementCardDefaults {
             const DeepCollectionEquality().equals(other._network, _network));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_network));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementCardDefaults
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementCardDefaultsImplCopyWith<_$PaymentElementCardDefaultsImpl>
@@ -1762,14 +1867,16 @@ abstract class _PaymentElementCardDefaults
   factory _PaymentElementCardDefaults.fromJson(Map<String, dynamic> json) =
       _$PaymentElementCardDefaultsImpl.fromJson;
 
-  @override
-
   /// The specified network prferences for card brand choice. The first network in the array
   /// that matches a network on the enetered cobranded card will be selected by default
   /// in the card brand choice.
-  List<String>? get network;
   @override
-  @JsonKey(ignore: true)
+  List<String>? get network;
+
+  /// Create a copy of PaymentElementCardDefaults
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementCardDefaultsImplCopyWith<_$PaymentElementCardDefaultsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1787,8 +1894,12 @@ mixin _$PaymentElementBillingDetails {
   PaymentElementBillingDetailsAddress? get address =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementBillingDetails to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementBillingDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementBillingDetailsCopyWith<PaymentElementBillingDetails>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1821,6 +1932,8 @@ class _$PaymentElementBillingDetailsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementBillingDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1849,6 +1962,8 @@ class _$PaymentElementBillingDetailsCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of PaymentElementBillingDetails
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementBillingDetailsAddressCopyWith<$Res>? get address {
@@ -1892,6 +2007,8 @@ class __$$PaymentElementBillingDetailsImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementBillingDetailsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementBillingDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1957,11 +2074,13 @@ class _$PaymentElementBillingDetailsImpl
             (identical(other.address, address) || other.address == address));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, email, phone, address);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementBillingDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementBillingDetailsImplCopyWith<
@@ -1997,8 +2116,11 @@ abstract class _PaymentElementBillingDetails
   String? get phone;
   @override
   PaymentElementBillingDetailsAddress? get address;
+
+  /// Create a copy of PaymentElementBillingDetails
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementBillingDetailsImplCopyWith<
           _$PaymentElementBillingDetailsImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2030,8 +2152,12 @@ mixin _$PaymentElementBillingDetailsAddress {
   @JsonKey(name: 'postal_code')
   String? get postalCode => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementBillingDetailsAddress to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementBillingDetailsAddress
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementBillingDetailsAddressCopyWith<
           PaymentElementBillingDetailsAddress>
       get copyWith => throw _privateConstructorUsedError;
@@ -2065,6 +2191,8 @@ class _$PaymentElementBillingDetailsAddressCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementBillingDetailsAddress
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2132,6 +2260,8 @@ class __$$PaymentElementBillingDetailsAddressImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementBillingDetailsAddressImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementBillingDetailsAddress
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2231,12 +2361,14 @@ class _$PaymentElementBillingDetailsAddressImpl
                 other.postalCode == postalCode));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, line1, line2, city, state, country, postalCode);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementBillingDetailsAddress
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementBillingDetailsAddressImplCopyWith<
@@ -2267,33 +2399,35 @@ abstract class _PaymentElementBillingDetailsAddress
           Map<String, dynamic> json) =
       _$PaymentElementBillingDetailsAddressImpl.fromJson;
 
-  @override
-
   /// Address line 1 (e.g., street, PO Box, or company name).
-  String? get line1;
   @override
+  String? get line1;
 
   /// Address line 2 (e.g., apartment, suite, unit, or building).
-  String? get line2;
   @override
+  String? get line2;
 
   /// City, district, suburb, town, or village.
-  String? get city;
   @override
+  String? get city;
 
   /// State, county, province, or region.
-  String? get state;
   @override
+  String? get state;
 
   /// Two-letter country code (ISO 3166-1 alpha-2).
-  String? get country;
   @override
+  String? get country;
 
   /// ZIP or postal code.
+  @override
   @JsonKey(name: 'postal_code')
   String? get postalCode;
+
+  /// Create a copy of PaymentElementBillingDetailsAddress
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementBillingDetailsAddressImplCopyWith<
           _$PaymentElementBillingDetailsAddressImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2308,8 +2442,12 @@ PaymentElementBusiness _$PaymentElementBusinessFromJson(
 mixin _$PaymentElementBusiness {
   String? get name => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementBusiness to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementBusiness
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementBusinessCopyWith<PaymentElementBusiness> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2334,6 +2472,8 @@ class _$PaymentElementBusinessCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementBusiness
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2370,6 +2510,8 @@ class __$$PaymentElementBusinessImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementBusinessImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementBusiness
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2408,11 +2550,13 @@ class _$PaymentElementBusinessImpl implements _PaymentElementBusiness {
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementBusiness
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementBusinessImplCopyWith<_$PaymentElementBusinessImpl>
@@ -2436,8 +2580,11 @@ abstract class _PaymentElementBusiness implements PaymentElementBusiness {
 
   @override
   String? get name;
+
+  /// Create a copy of PaymentElementBusiness
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementBusinessImplCopyWith<_$PaymentElementBusinessImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2456,8 +2603,12 @@ mixin _$PaymentElementFields {
   /// The default setting for each field  is auto.
   BillingDetailsFields get billingDetails => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementFields to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementFields
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementFieldsCopyWith<PaymentElementFields> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2484,6 +2635,8 @@ class _$PaymentElementFieldsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementFields
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2497,6 +2650,8 @@ class _$PaymentElementFieldsCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of PaymentElementFields
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BillingDetailsFieldsCopyWith<$Res> get billingDetails {
@@ -2528,6 +2683,8 @@ class __$$PaymentElementFieldsImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementFieldsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementFields
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2575,11 +2732,13 @@ class _$PaymentElementFieldsImpl implements _PaymentElementFields {
                 other.billingDetails == billingDetails));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, billingDetails);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementFields
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementFieldsImplCopyWith<_$PaymentElementFieldsImpl>
@@ -2602,17 +2761,19 @@ abstract class _PaymentElementFields implements PaymentElementFields {
   factory _PaymentElementFields.fromJson(Map<String, dynamic> json) =
       _$PaymentElementFieldsImpl.fromJson;
 
-  @override
-
   /// Specify never to avoid collecting all billing details in the
   /// Payment Element.
   /// If you would like to disable only certain billing details,
   /// pass an BillingDetailsFields specifying which fields you would like
   /// to disable collection for.
   /// The default setting for each field  is auto.
-  BillingDetailsFields get billingDetails;
   @override
-  @JsonKey(ignore: true)
+  BillingDetailsFields get billingDetails;
+
+  /// Create a copy of PaymentElementFields
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementFieldsImplCopyWith<_$PaymentElementFieldsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2628,8 +2789,12 @@ mixin _$BillingDetailsFields {
   PaymentElementFieldRequired get phone => throw _privateConstructorUsedError;
   PaymentElementAddressFields get address => throw _privateConstructorUsedError;
 
+  /// Serializes this BillingDetailsFields to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BillingDetailsFields
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BillingDetailsFieldsCopyWith<BillingDetailsFields> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2660,6 +2825,8 @@ class _$BillingDetailsFieldsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BillingDetailsFields
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2688,6 +2855,8 @@ class _$BillingDetailsFieldsCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of BillingDetailsFields
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementAddressFieldsCopyWith<$Res> get address {
@@ -2723,6 +2892,8 @@ class __$$BillingDetailsFieldsImplCopyWithImpl<$Res>
       $Res Function(_$BillingDetailsFieldsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BillingDetailsFields
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2793,11 +2964,13 @@ class _$BillingDetailsFieldsImpl implements _BillingDetailsFields {
             (identical(other.address, address) || other.address == address));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, email, phone, address);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BillingDetailsFields
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BillingDetailsFieldsImplCopyWith<_$BillingDetailsFieldsImpl>
@@ -2831,8 +3004,11 @@ abstract class _BillingDetailsFields implements BillingDetailsFields {
   PaymentElementFieldRequired get phone;
   @override
   PaymentElementAddressFields get address;
+
+  /// Create a copy of BillingDetailsFields
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BillingDetailsFieldsImplCopyWith<_$BillingDetailsFieldsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2852,8 +3028,12 @@ mixin _$PaymentElementAddressFields {
   PaymentElementFieldRequired get postalCode =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementAddressFields to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementAddressFields
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementAddressFieldsCopyWith<PaymentElementAddressFields>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2886,6 +3066,8 @@ class _$PaymentElementAddressFieldsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementAddressFields
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2953,6 +3135,8 @@ class __$$PaymentElementAddressFieldsImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementAddressFieldsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementAddressFields
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3046,12 +3230,14 @@ class _$PaymentElementAddressFieldsImpl
                 other.postalCode == postalCode));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, line1, line2, city, state, country, postalCode);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementAddressFields
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementAddressFieldsImplCopyWith<_$PaymentElementAddressFieldsImpl>
@@ -3092,8 +3278,11 @@ abstract class _PaymentElementAddressFields
   PaymentElementFieldRequired get country;
   @override
   PaymentElementFieldRequired get postalCode;
+
+  /// Create a copy of PaymentElementAddressFields
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementAddressFieldsImplCopyWith<_$PaymentElementAddressFieldsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3140,8 +3329,12 @@ mixin _$PaymentElementOptionsTerms {
   PaymentElementShowTerms? get usBankAccount =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementOptionsTerms to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementOptionsTerms
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementOptionsTermsCopyWith<PaymentElementOptionsTerms>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3178,6 +3371,8 @@ class _$PaymentElementOptionsTermsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementOptionsTerms
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3275,6 +3470,8 @@ class __$$PaymentElementOptionsTermsImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementOptionsTermsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementOptionsTerms
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3432,7 +3629,7 @@ class _$PaymentElementOptionsTermsImpl implements _PaymentElementOptionsTerms {
                 other.usBankAccount == usBankAccount));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -3448,7 +3645,9 @@ class _$PaymentElementOptionsTermsImpl implements _PaymentElementOptionsTerms {
       sofort,
       usBankAccount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementOptionsTerms
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementOptionsTermsImplCopyWith<_$PaymentElementOptionsTermsImpl>
@@ -3482,52 +3681,54 @@ abstract class _PaymentElementOptionsTerms
   factory _PaymentElementOptionsTerms.fromJson(Map<String, dynamic> json) =
       _$PaymentElementOptionsTermsImpl.fromJson;
 
-  @override
-
   /// Terms for apple pay
-  PaymentElementShowTerms? get applePay;
   @override
+  PaymentElementShowTerms? get applePay;
 
   /// Terms for aubecs debit
-  PaymentElementShowTerms? get auBecsDebit;
   @override
+  PaymentElementShowTerms? get auBecsDebit;
 
   /// Terms for bancontact
-  PaymentElementShowTerms? get bancontact;
   @override
+  PaymentElementShowTerms? get bancontact;
 
   /// Terms for card
-  PaymentElementShowTerms? get card;
   @override
+  PaymentElementShowTerms? get card;
 
   /// Terms for cashapp
-  PaymentElementShowTerms? get cashApp;
   @override
+  PaymentElementShowTerms? get cashApp;
 
   /// Terms for googlePay
-  PaymentElementShowTerms? get googlePay;
   @override
+  PaymentElementShowTerms? get googlePay;
 
   /// Terms for ideal
-  PaymentElementShowTerms? get ideal;
   @override
+  PaymentElementShowTerms? get ideal;
 
   /// Terms for paypal
-  PaymentElementShowTerms? get payPal;
   @override
+  PaymentElementShowTerms? get payPal;
 
   /// Terms for sepa debit
-  PaymentElementShowTerms? get sepaDebit;
   @override
+  PaymentElementShowTerms? get sepaDebit;
 
   /// Terms for sofort
-  PaymentElementShowTerms? get sofort;
   @override
+  PaymentElementShowTerms? get sofort;
 
   /// Terms for usBankAccount
-  PaymentElementShowTerms? get usBankAccount;
   @override
-  @JsonKey(ignore: true)
+  PaymentElementShowTerms? get usBankAccount;
+
+  /// Create a copy of PaymentElementOptionsTerms
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementOptionsTermsImplCopyWith<_$PaymentElementOptionsTermsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3551,8 +3752,12 @@ mixin _$PaymentElementApplePayOptions {
   PaymentElementApplePayAutoReloadPaymentRequest?
       get automaticReloadPaymentRequest => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementApplePayOptions to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementApplePayOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementApplePayOptionsCopyWith<PaymentElementApplePayOptions>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3590,6 +3795,8 @@ class _$PaymentElementApplePayOptionsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementApplePayOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3613,6 +3820,8 @@ class _$PaymentElementApplePayOptionsCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of PaymentElementApplePayOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementAppleRecurringRequestCopyWith<$Res>?
@@ -3627,6 +3836,8 @@ class _$PaymentElementApplePayOptionsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of PaymentElementApplePayOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementApplePayDeferredPaymentRequestCopyWith<$Res>?
@@ -3641,6 +3852,8 @@ class _$PaymentElementApplePayOptionsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of PaymentElementApplePayOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementApplePayAutoReloadPaymentRequestCopyWith<$Res>?
@@ -3693,6 +3906,8 @@ class __$$PaymentElementApplePayOptionsImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementApplePayOptionsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementApplePayOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3764,12 +3979,14 @@ class _$PaymentElementApplePayOptionsImpl
                     automaticReloadPaymentRequest));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, recurringPaymentRequest,
       deferredPaymentRequest, automaticReloadPaymentRequest);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementApplePayOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementApplePayOptionsImplCopyWith<
@@ -3797,21 +4014,23 @@ abstract class _PaymentElementApplePayOptions
   factory _PaymentElementApplePayOptions.fromJson(Map<String, dynamic> json) =
       _$PaymentElementApplePayOptionsImpl.fromJson;
 
-  @override
-
   /// Information about a recurring payment with ApplePay
-  PaymentElementAppleRecurringRequest? get recurringPaymentRequest;
   @override
+  PaymentElementAppleRecurringRequest? get recurringPaymentRequest;
 
   /// Information about a deferred payment with ApplePay
-  PaymentElementApplePayDeferredPaymentRequest? get deferredPaymentRequest;
   @override
+  PaymentElementApplePayDeferredPaymentRequest? get deferredPaymentRequest;
 
   /// Information about an auto reload payment with ApplePay
+  @override
   PaymentElementApplePayAutoReloadPaymentRequest?
       get automaticReloadPaymentRequest;
+
+  /// Create a copy of PaymentElementApplePayOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementApplePayOptionsImplCopyWith<
           _$PaymentElementApplePayOptionsImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -3838,8 +4057,12 @@ mixin _$PaymentElementAppleRecurringRequest {
   PaymentElementRecurringPaymentProperties? get regularBilling =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementAppleRecurringRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementAppleRecurringRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementAppleRecurringRequestCopyWith<
           PaymentElementAppleRecurringRequest>
       get copyWith => throw _privateConstructorUsedError;
@@ -3874,6 +4097,8 @@ class _$PaymentElementAppleRecurringRequestCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementAppleRecurringRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3902,6 +4127,8 @@ class _$PaymentElementAppleRecurringRequestCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of PaymentElementAppleRecurringRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementRecurringPaymentPropertiesCopyWith<$Res>? get trialBilling {
@@ -3915,6 +4142,8 @@ class _$PaymentElementAppleRecurringRequestCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of PaymentElementAppleRecurringRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementRecurringPaymentPropertiesCopyWith<$Res>? get regularBilling {
@@ -3960,6 +4189,8 @@ class __$$PaymentElementAppleRecurringRequestImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementAppleRecurringRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementAppleRecurringRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4039,12 +4270,14 @@ class _$PaymentElementAppleRecurringRequestImpl
                 other.regularBilling == regularBilling));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, paymentDescription,
       managementUrl, trialBilling, regularBilling);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementAppleRecurringRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementAppleRecurringRequestImplCopyWith<
@@ -4073,24 +4306,26 @@ abstract class _PaymentElementAppleRecurringRequest
           Map<String, dynamic> json) =
       _$PaymentElementAppleRecurringRequestImpl.fromJson;
 
-  @override
-
   /// The description of the payment
-  String get paymentDescription;
   @override
+  String get paymentDescription;
 
   /// Management url
-  String get managementUrl;
   @override
+  String get managementUrl;
 
   /// Information in case of a trial billing
-  PaymentElementRecurringPaymentProperties? get trialBilling;
   @override
+  PaymentElementRecurringPaymentProperties? get trialBilling;
 
   /// Information in case of a regular billing
-  PaymentElementRecurringPaymentProperties? get regularBilling;
   @override
-  @JsonKey(ignore: true)
+  PaymentElementRecurringPaymentProperties? get regularBilling;
+
+  /// Create a copy of PaymentElementAppleRecurringRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementAppleRecurringRequestImplCopyWith<
           _$PaymentElementAppleRecurringRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -4123,8 +4358,12 @@ mixin _$PaymentElementRecurringPaymentProperties {
   /// The amount of intervals
   int? get recurringPaymentIntervalCount => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementRecurringPaymentProperties to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementRecurringPaymentProperties
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementRecurringPaymentPropertiesCopyWith<
           PaymentElementRecurringPaymentProperties>
       get copyWith => throw _privateConstructorUsedError;
@@ -4159,6 +4398,8 @@ class _$PaymentElementRecurringPaymentPropertiesCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementRecurringPaymentProperties
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4226,6 +4467,8 @@ class __$$PaymentElementRecurringPaymentPropertiesImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementRecurringPaymentPropertiesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementRecurringPaymentProperties
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4333,7 +4576,7 @@ class _$PaymentElementRecurringPaymentPropertiesImpl
                     recurringPaymentIntervalCount));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -4344,7 +4587,9 @@ class _$PaymentElementRecurringPaymentPropertiesImpl
       recurringPaymentIntervalUnit,
       recurringPaymentIntervalCount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementRecurringPaymentProperties
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementRecurringPaymentPropertiesImplCopyWith<
@@ -4376,32 +4621,34 @@ abstract class _PaymentElementRecurringPaymentProperties
           Map<String, dynamic> json) =
       _$PaymentElementRecurringPaymentPropertiesImpl.fromJson;
 
-  @override
-
   /// The amount of the payment
-  double get amount;
   @override
+  double get amount;
 
   /// Description label
-  String get label;
   @override
+  String get label;
 
   /// The startdate of the recurring payment
-  DateTime? get recurringPaymentStartDate;
   @override
+  DateTime? get recurringPaymentStartDate;
 
   /// The enddate of the recurring payment
-  DateTime? get recurringPaymentEndDate;
   @override
+  DateTime? get recurringPaymentEndDate;
 
   /// The interval of payment
-  ApplePayRecurringPaymentTimeInterVal? get recurringPaymentIntervalUnit;
   @override
+  ApplePayRecurringPaymentTimeInterVal? get recurringPaymentIntervalUnit;
 
   /// The amount of intervals
-  int? get recurringPaymentIntervalCount;
   @override
-  @JsonKey(ignore: true)
+  int? get recurringPaymentIntervalCount;
+
+  /// Create a copy of PaymentElementRecurringPaymentProperties
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementRecurringPaymentPropertiesImplCopyWith<
           _$PaymentElementRecurringPaymentPropertiesImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -4434,8 +4681,12 @@ mixin _$PaymentElementApplePayDeferredPaymentRequest {
   PaymentElementApplePayDeferredPaymentProperties get deferredBilling =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementApplePayDeferredPaymentRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementApplePayDeferredPaymentRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementApplePayDeferredPaymentRequestCopyWith<
           PaymentElementApplePayDeferredPaymentRequest>
       get copyWith => throw _privateConstructorUsedError;
@@ -4473,6 +4724,8 @@ class _$PaymentElementApplePayDeferredPaymentRequestCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementApplePayDeferredPaymentRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4511,6 +4764,8 @@ class _$PaymentElementApplePayDeferredPaymentRequestCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of PaymentElementApplePayDeferredPaymentRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementApplePayDeferredPaymentPropertiesCopyWith<$Res>
@@ -4556,6 +4811,8 @@ class __$$PaymentElementApplePayDeferredPaymentRequestImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementApplePayDeferredPaymentRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementApplePayDeferredPaymentRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4660,7 +4917,7 @@ class _$PaymentElementApplePayDeferredPaymentRequestImpl
                 other.deferredBilling == deferredBilling));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -4671,7 +4928,9 @@ class _$PaymentElementApplePayDeferredPaymentRequestImpl
       freeCancellationTimezone,
       deferredBilling);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementApplePayDeferredPaymentRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementApplePayDeferredPaymentRequestImplCopyWith<
@@ -4705,32 +4964,34 @@ abstract class _PaymentElementApplePayDeferredPaymentRequest
           Map<String, dynamic> json) =
       _$PaymentElementApplePayDeferredPaymentRequestImpl.fromJson;
 
-  @override
-
   /// The description of the payment
-  String get paymentDescription;
   @override
+  String get paymentDescription;
 
   /// Management url
-  String get managementUrl;
   @override
+  String get managementUrl;
 
   /// Billing agreement label
-  String? get billingAgreement;
   @override
+  String? get billingAgreement;
 
   /// The date when you can cancel for free
-  DateTime? get freeCancellationDate;
   @override
+  DateTime? get freeCancellationDate;
 
   /// The timezone of the free cancellation date
-  String? get freeCancellationTimezone;
   @override
+  String? get freeCancellationTimezone;
 
   /// Billing information of the deffered payment
-  PaymentElementApplePayDeferredPaymentProperties get deferredBilling;
   @override
-  @JsonKey(ignore: true)
+  PaymentElementApplePayDeferredPaymentProperties get deferredBilling;
+
+  /// Create a copy of PaymentElementApplePayDeferredPaymentRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementApplePayDeferredPaymentRequestImplCopyWith<
           _$PaymentElementApplePayDeferredPaymentRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -4753,8 +5014,12 @@ mixin _$PaymentElementApplePayDeferredPaymentProperties {
   /// The date when the payment will be processed
   DateTime get deferredPaymentDate => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementApplePayDeferredPaymentProperties to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementApplePayDeferredPaymentProperties
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementApplePayDeferredPaymentPropertiesCopyWith<
           PaymentElementApplePayDeferredPaymentProperties>
       get copyWith => throw _privateConstructorUsedError;
@@ -4783,6 +5048,8 @@ class _$PaymentElementApplePayDeferredPaymentPropertiesCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementApplePayDeferredPaymentProperties
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4833,6 +5100,8 @@ class __$$PaymentElementApplePayDeferredPaymentPropertiesImplCopyWithImpl<$Res>
           _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementApplePayDeferredPaymentProperties
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4898,12 +5167,14 @@ class _$PaymentElementApplePayDeferredPaymentPropertiesImpl
                 other.deferredPaymentDate == deferredPaymentDate));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, amount, label, deferredPaymentDate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementApplePayDeferredPaymentProperties
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementApplePayDeferredPaymentPropertiesImplCopyWith<
@@ -4933,20 +5204,22 @@ abstract class _PaymentElementApplePayDeferredPaymentProperties
           Map<String, dynamic> json) =
       _$PaymentElementApplePayDeferredPaymentPropertiesImpl.fromJson;
 
-  @override
-
   /// The amount of the payment
-  double get amount;
   @override
+  double get amount;
 
   /// Description label
-  String get label;
   @override
+  String get label;
 
   /// The date when the payment will be processed
-  DateTime get deferredPaymentDate;
   @override
-  @JsonKey(ignore: true)
+  DateTime get deferredPaymentDate;
+
+  /// Create a copy of PaymentElementApplePayDeferredPaymentProperties
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementApplePayDeferredPaymentPropertiesImplCopyWith<
           _$PaymentElementApplePayDeferredPaymentPropertiesImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -4970,8 +5243,12 @@ mixin _$PaymentElementApplePayAutoReloadPaymentRequest {
   PaymentElementApplePayReloadPaymentProperties get automaticReloadBilling =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementApplePayAutoReloadPaymentRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementApplePayAutoReloadPaymentRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementApplePayAutoReloadPaymentRequestCopyWith<
           PaymentElementApplePayAutoReloadPaymentRequest>
       get copyWith => throw _privateConstructorUsedError;
@@ -5006,6 +5283,8 @@ class _$PaymentElementApplePayAutoReloadPaymentRequestCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementApplePayAutoReloadPaymentRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5029,6 +5308,8 @@ class _$PaymentElementApplePayAutoReloadPaymentRequestCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of PaymentElementApplePayAutoReloadPaymentRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementApplePayReloadPaymentPropertiesCopyWith<$Res>
@@ -5072,6 +5353,8 @@ class __$$PaymentElementApplePayAutoReloadPaymentRequestImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementApplePayAutoReloadPaymentRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementApplePayAutoReloadPaymentRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5139,12 +5422,14 @@ class _$PaymentElementApplePayAutoReloadPaymentRequestImpl
                 other.automaticReloadBilling == automaticReloadBilling));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, paymentDescription, managementUrl, automaticReloadBilling);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementApplePayAutoReloadPaymentRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementApplePayAutoReloadPaymentRequestImplCopyWith<
@@ -5175,20 +5460,22 @@ abstract class _PaymentElementApplePayAutoReloadPaymentRequest
           Map<String, dynamic> json) =
       _$PaymentElementApplePayAutoReloadPaymentRequestImpl.fromJson;
 
-  @override
-
   /// The description of the payment
-  String get paymentDescription;
   @override
+  String get paymentDescription;
 
   /// Management url
-  String get managementUrl;
   @override
+  String get managementUrl;
 
   /// Billing information of the deffered payment
-  PaymentElementApplePayReloadPaymentProperties get automaticReloadBilling;
   @override
-  @JsonKey(ignore: true)
+  PaymentElementApplePayReloadPaymentProperties get automaticReloadBilling;
+
+  /// Create a copy of PaymentElementApplePayAutoReloadPaymentRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementApplePayAutoReloadPaymentRequestImplCopyWith<
           _$PaymentElementApplePayAutoReloadPaymentRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -5212,8 +5499,12 @@ mixin _$PaymentElementApplePayReloadPaymentProperties {
   DateTime get automaticReloadPaymentThresholdAmount =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementApplePayReloadPaymentProperties to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementApplePayReloadPaymentProperties
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementApplePayReloadPaymentPropertiesCopyWith<
           PaymentElementApplePayReloadPaymentProperties>
       get copyWith => throw _privateConstructorUsedError;
@@ -5245,6 +5536,8 @@ class _$PaymentElementApplePayReloadPaymentPropertiesCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementApplePayReloadPaymentProperties
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5298,6 +5591,8 @@ class __$$PaymentElementApplePayReloadPaymentPropertiesImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementApplePayReloadPaymentPropertiesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementApplePayReloadPaymentProperties
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5366,12 +5661,14 @@ class _$PaymentElementApplePayReloadPaymentPropertiesImpl
                     automaticReloadPaymentThresholdAmount));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, amount, label, automaticReloadPaymentThresholdAmount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementApplePayReloadPaymentProperties
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementApplePayReloadPaymentPropertiesImplCopyWith<
@@ -5401,20 +5698,22 @@ abstract class _PaymentElementApplePayReloadPaymentProperties
           Map<String, dynamic> json) =
       _$PaymentElementApplePayReloadPaymentPropertiesImpl.fromJson;
 
-  @override
-
   /// The amount of the payment
-  double get amount;
   @override
+  double get amount;
 
   /// Description label
-  String get label;
   @override
+  String get label;
 
   /// The date when the threshold amount will be reached
-  DateTime get automaticReloadPaymentThresholdAmount;
   @override
-  @JsonKey(ignore: true)
+  DateTime get automaticReloadPaymentThresholdAmount;
+
+  /// Create a copy of PaymentElementApplePayReloadPaymentProperties
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementApplePayReloadPaymentPropertiesImplCopyWith<
           _$PaymentElementApplePayReloadPaymentPropertiesImpl>
       get copyWith => throw _privateConstructorUsedError;

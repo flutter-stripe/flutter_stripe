@@ -12,7 +12,7 @@ part of 'token_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 TokenResponse _$TokenResponseFromJson(Map<String, dynamic> json) {
   return _TokenResponse.fromJson(json);
@@ -27,8 +27,12 @@ mixin _$TokenResponse {
   /// This includes client-side validation errors
   StripeError? get error => throw _privateConstructorUsedError;
 
+  /// Serializes this TokenResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TokenResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TokenResponseCopyWith<TokenResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,6 +59,8 @@ class _$TokenResponseCopyWithImpl<$Res, $Val extends TokenResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TokenResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -73,6 +79,8 @@ class _$TokenResponseCopyWithImpl<$Res, $Val extends TokenResponse>
     ) as $Val);
   }
 
+  /// Create a copy of TokenResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $TokenCopyWith<$Res>? get token {
@@ -85,6 +93,8 @@ class _$TokenResponseCopyWithImpl<$Res, $Val extends TokenResponse>
     });
   }
 
+  /// Create a copy of TokenResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $StripeErrorCopyWith<$Res>? get error {
@@ -122,6 +132,8 @@ class __$$TokenResponseImplCopyWithImpl<$Res>
       _$TokenResponseImpl _value, $Res Function(_$TokenResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TokenResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -164,7 +176,7 @@ class _$TokenResponseImpl implements _TokenResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TokenResponseImpl &&
@@ -172,11 +184,13 @@ class _$TokenResponseImpl implements _TokenResponse {
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, token, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TokenResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TokenResponseImplCopyWith<_$TokenResponseImpl> get copyWith =>
@@ -197,17 +211,19 @@ abstract class _TokenResponse implements TokenResponse {
   factory _TokenResponse.fromJson(Map<String, dynamic> json) =
       _$TokenResponseImpl.fromJson;
 
-  @override
-
   /// If not null, a Token was created successfully.
-  Token? get token;
   @override
+  Token? get token;
 
   /// If not null, an error occurred.
   /// This includes client-side validation errors
-  StripeError? get error;
   @override
-  @JsonKey(ignore: true)
+  StripeError? get error;
+
+  /// Create a copy of TokenResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TokenResponseImplCopyWith<_$TokenResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

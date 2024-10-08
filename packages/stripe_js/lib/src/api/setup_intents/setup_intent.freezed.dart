@@ -12,7 +12,7 @@ part of 'setup_intent.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SetupIntent _$SetupIntentFromJson(Map<String, dynamic> json) {
   return _SetupIntent.fromJson(json);
@@ -139,8 +139,12 @@ mixin _$SetupIntent {
   ///  If not provided, this value defaults to off_session.
   SetupIntentUsage get usage => throw _privateConstructorUsedError;
 
+  /// Serializes this SetupIntent to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SetupIntentCopyWith<SetupIntent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -190,6 +194,8 @@ class _$SetupIntentCopyWithImpl<$Res, $Val extends SetupIntent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -359,6 +365,8 @@ class __$$SetupIntentImplCopyWithImpl<$Res>
       _$SetupIntentImpl _value, $Res Function(_$SetupIntentImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -702,7 +710,7 @@ class _$SetupIntentImpl implements _SetupIntent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SetupIntentImpl &&
@@ -747,7 +755,7 @@ class _$SetupIntentImpl implements _SetupIntent {
             (identical(other.usage, usage) || other.usage == usage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -776,7 +784,9 @@ class _$SetupIntentImpl implements _SetupIntent {
         usage
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SetupIntentImplCopyWith<_$SetupIntentImpl> get copyWith =>
@@ -823,22 +833,20 @@ abstract class _SetupIntent implements SetupIntent {
   factory _SetupIntent.fromJson(Map<String, dynamic> json) =
       _$SetupIntentImpl.fromJson;
 
-  @override
-
   /// Unique identifier for the object.
-  String get id;
   @override
+  String get id;
 
   /// String representing the object’s type.
   /// Objects of the same type share the same value.
   /// Value is "setup_intent".
-  String get object;
   @override
+  String get object;
 
   /// CONNECT ONLY
   /// ID of the Connect application that created the SetupIntent.
-  String? get application;
   @override
+  String? get application;
 
   /// If present, the SetupIntent’s payment method will be attached to
   /// the in-context Stripe Account.
@@ -846,15 +854,15 @@ abstract class _SetupIntent implements SetupIntent {
   /// flows like InboundTransfer and OutboundTransfers.
   /// It cannot be set to true when setting up a PaymentMethod for a Customer,
   /// and defaults to false when attaching a PaymentMethod to a Customer.
+  @override
   @JsonKey(name: "attach_to_self")
   String? get attachToSelf;
-  @override
 
   /// Reason for cancellation of this SetupIntent,
   /// one of abandoned, requested_by_customer, or duplicate.
+  @override
   @JsonKey(name: "cancellation_reason")
   SetupIntentCancellationReason? get cancellationReason;
-  @override
 
   /// The client secret of this SetupIntent.
   /// Used for client-side retrieval using a publishable key.
@@ -862,23 +870,23 @@ abstract class _SetupIntent implements SetupIntent {
   /// It should not be stored, logged, or exposed to anyone other than the
   /// customer. Make sure that you have TLS enabled on any page that includes
   /// the client secret.
+  @override
   @JsonKey(name: "client_secret")
   String get clientSecret;
-  @override
 
   /// Time at which the object was created. Measured in seconds since the
   /// Unix epoch.
-  int? get created;
   @override
+  int? get created;
 
   /// The ID of the Customer this SetupIntent belongs to.
-  String? get customer;
   @override
+  String? get customer;
 
   /// An arbitrary string attached to the object.
   /// Often useful for displaying to users.
-  String? get description;
   @override
+  String? get description;
 
   /// Indicates the directions of money movement for which this payment
   /// method is intended to be used.
@@ -888,82 +896,86 @@ abstract class _SetupIntent implements SetupIntent {
   /// the destination to send funds to.
   /// You can include both if you intend to use the payment
   ///  method for both purposes
+  @override
   @JsonKey(name: "flow_directions")
   List<SetupIntentFlowDirections>? get flowDirections;
-  @override
 
   /// The error encountered in the previous SetupIntent confirmation.
+  @override
   @JsonKey(name: "last_setup_error")
   dynamic get lastSetupError;
-  @override
 
   /// The most recent SetupAttempt for this SetupIntent.
+  @override
   @JsonKey(name: "latest_attempt")
   String? get latestAttempt;
-  @override
 
   /// Has the value true if the object exists in live mode or the
   /// value false if the object exists in test mode.
-  bool get livemode;
   @override
+  bool get livemode;
 
   /// ID of the multi use Mandate generated by the SetupIntent.
-  String? get mandate;
   @override
+  String? get mandate;
 
   /// Set of key-value pairs that you can attach to an object.
   /// This can be useful for storing additional information about the
   /// object in a structured format.
-  Map<String, dynamic> get metadata;
   @override
+  Map<String, dynamic> get metadata;
 
   /// If present, this property tells you what actions you need to
   /// take in order for your customer to continue payment setup.
+  @override
   @JsonKey(name: "next_action")
   dynamic get nextAction;
-  @override
 
   /// CONNECT ONLY
   /// The account (if any) for which the setup is intended.
+  @override
   @JsonKey(name: "on_behalf_of")
   String? get onBehalfOf;
-  @override
 
   /// ID of the payment method used in this SetupIntent.
+  @override
   @JsonKey(name: "payment_method")
   String? get paymentMethod;
-  @override
 
   /// Payment-method-specific configuration for this SetupIntent.
+  @override
   @JsonKey(name: "payment_method_options")
   dynamic get paymentMethodOptions;
-  @override
 
   /// The list of payment method types (e.g. card) that this SetupIntent
   /// is allowed to set up.
+  @override
   @JsonKey(name: "payment_method_types")
   List<PaymentMethodType> get paymentMethodTypes;
-  @override
 
   /// ID of the single_use Mandate generated by the SetupIntent.
+  @override
   @JsonKey(name: "single_use_mandate")
   String? get singleUseMandate;
-  @override
 
   /// Status of this SetupIntent, one of requires_payment_method,
   /// requires_confirmation, requires_action, processing, canceled, or
   /// succeeded.
-  SetupIntentsStatus get status;
   @override
+  SetupIntentsStatus get status;
 
   /// Indicates how the payment method is intended to be used in the future.
   /// Use on_session if you intend to only reuse the payment method when
   /// the customer is in your checkout flow.
   ///  Use off_session if your customer may or may not be in your checkout flow.
   ///  If not provided, this value defaults to off_session.
-  SetupIntentUsage get usage;
   @override
-  @JsonKey(ignore: true)
+  SetupIntentUsage get usage;
+
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetupIntentImplCopyWith<_$SetupIntentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

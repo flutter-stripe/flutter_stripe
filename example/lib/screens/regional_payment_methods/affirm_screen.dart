@@ -24,7 +24,6 @@ class AffirmScreen extends StatelessWidget {
       }),
     );
 
-    print('blaat ${json.decode(response.body)}');
     return json.decode(response.body);
   }
 

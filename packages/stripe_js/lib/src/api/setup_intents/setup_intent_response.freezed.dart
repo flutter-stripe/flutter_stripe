@@ -12,7 +12,7 @@ part of 'setup_intent_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SetupIntentResponse _$SetupIntentResponseFromJson(Map<String, dynamic> json) {
   return _SetupIntentResponse.fromJson(json);
@@ -26,8 +26,12 @@ mixin _$SetupIntentResponse {
   /// If not null, an error occurred
   StripeError? get error => throw _privateConstructorUsedError;
 
+  /// Serializes this SetupIntentResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SetupIntentResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SetupIntentResponseCopyWith<SetupIntentResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +58,8 @@ class _$SetupIntentResponseCopyWithImpl<$Res, $Val extends SetupIntentResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SetupIntentResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -72,6 +78,8 @@ class _$SetupIntentResponseCopyWithImpl<$Res, $Val extends SetupIntentResponse>
     ) as $Val);
   }
 
+  /// Create a copy of SetupIntentResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SetupIntentCopyWith<$Res>? get setupIntent {
@@ -84,6 +92,8 @@ class _$SetupIntentResponseCopyWithImpl<$Res, $Val extends SetupIntentResponse>
     });
   }
 
+  /// Create a copy of SetupIntentResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $StripeErrorCopyWith<$Res>? get error {
@@ -121,6 +131,8 @@ class __$$SetupIntentResponseImplCopyWithImpl<$Res>
       $Res Function(_$SetupIntentResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SetupIntentResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -162,7 +174,7 @@ class _$SetupIntentResponseImpl implements _SetupIntentResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SetupIntentResponseImpl &&
@@ -171,11 +183,13 @@ class _$SetupIntentResponseImpl implements _SetupIntentResponse {
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, setupIntent, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SetupIntentResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SetupIntentResponseImplCopyWith<_$SetupIntentResponseImpl> get copyWith =>
@@ -198,16 +212,18 @@ abstract class _SetupIntentResponse implements SetupIntentResponse {
   factory _SetupIntentResponse.fromJson(Map<String, dynamic> json) =
       _$SetupIntentResponseImpl.fromJson;
 
-  @override
-
   /// If not null, a SetupIntent was retrieved successfully
-  SetupIntent? get setupIntent;
   @override
+  SetupIntent? get setupIntent;
 
   /// If not null, an error occurred
-  StripeError? get error;
   @override
-  @JsonKey(ignore: true)
+  StripeError? get error;
+
+  /// Create a copy of SetupIntentResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetupIntentResponseImplCopyWith<_$SetupIntentResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

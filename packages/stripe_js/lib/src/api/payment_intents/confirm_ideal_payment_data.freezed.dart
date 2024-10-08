@@ -12,7 +12,7 @@ part of 'confirm_ideal_payment_data.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ConfirmIdealPaymentData _$ConfirmIdealPaymentDataFromJson(
     Map<String, dynamic> json) {
@@ -41,8 +41,12 @@ mixin _$ConfirmIdealPaymentData {
   PaymentIntentSetupFutureUsage? get setupFutureUsage =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this ConfirmIdealPaymentData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ConfirmIdealPaymentData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ConfirmIdealPaymentDataCopyWith<ConfirmIdealPaymentData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -73,6 +77,8 @@ class _$ConfirmIdealPaymentDataCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ConfirmIdealPaymentData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -96,6 +102,8 @@ class _$ConfirmIdealPaymentDataCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of ConfirmIdealPaymentData
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $IdealPaymentMethodDetailsCopyWith<$Res>? get paymentMethod {
@@ -139,6 +147,8 @@ class __$$ConfirmIdealPaymentDataImplCopyWithImpl<$Res>
       $Res Function(_$ConfirmIdealPaymentDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ConfirmIdealPaymentData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -201,7 +211,7 @@ class _$ConfirmIdealPaymentDataImpl implements _ConfirmIdealPaymentData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ConfirmIdealPaymentDataImpl &&
@@ -213,12 +223,14 @@ class _$ConfirmIdealPaymentDataImpl implements _ConfirmIdealPaymentData {
                 other.setupFutureUsage == setupFutureUsage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, paymentMethod, returnUrl, setupFutureUsage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ConfirmIdealPaymentData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ConfirmIdealPaymentDataImplCopyWith<_$ConfirmIdealPaymentDataImpl>
@@ -245,29 +257,31 @@ abstract class _ConfirmIdealPaymentData implements ConfirmIdealPaymentData {
   factory _ConfirmIdealPaymentData.fromJson(Map<String, dynamic> json) =
       _$ConfirmIdealPaymentDataImpl.fromJson;
 
-  @override
-
   /// Either the id of an existing PaymentMethod, or an object containing
   /// data to create a PaymentMethod with.
   /// See the use case sections below for details.
+  @override
   @paymentMethodDetailJsonKey
   IdealPaymentMethodDetails? get paymentMethod;
-  @override
 
   /// The url your customer will be directed to after they complete authentication.
+  @override
   @JsonKey(name: "return_url")
   String? get returnUrl;
-  @override
 
   /// To set up a SEPA Direct Debit payment method using the bank details
   ///  from this iDEAL payment, set this parameter to off_session.
   /// When using this parameter, a customer will need to be set on the
   /// PaymentIntent. The newly created SEPA Direct Debit PaymentMethod
   /// will be attached to this customer.
+  @override
   @JsonKey(name: "setup_future_usage")
   PaymentIntentSetupFutureUsage? get setupFutureUsage;
+
+  /// Create a copy of ConfirmIdealPaymentData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ConfirmIdealPaymentDataImplCopyWith<_$ConfirmIdealPaymentDataImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
