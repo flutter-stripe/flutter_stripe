@@ -1,3 +1,5 @@
+## 6.2.0
+
 ## 6.1.1
 
 - **FIX**: The platformPayCreatePaymentMethod method results in an error on web (#1879).
