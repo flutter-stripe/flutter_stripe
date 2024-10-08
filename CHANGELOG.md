@@ -15,6 +15,25 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe` - `v11.2.0`](#flutter_stripe---v1120)
+
+---
+
+#### `flutter_stripe` - `v11.2.0`
+
+
+## 2024-10-08
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_android` - `v11.2.0`](#stripe_android---v1120)
  - [`flutter_stripe` - `v11.1.1`](#flutter_stripe---v1111)
 
