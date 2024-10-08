@@ -1,3 +1,7 @@
+## 11.2.0
+
+ - **FIX**: #1912 wallet parsing.
+
 ## 11.1.1
 
  - #1912 wallet parsing.
