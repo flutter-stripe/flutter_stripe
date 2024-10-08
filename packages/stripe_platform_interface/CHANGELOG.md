@@ -1,6 +1,10 @@
 ## 11.2.0
 
- - **FIX**: #1912 wallet parsing.
+**Features**
+- Add basic support for Expresscheckout on the web
+
+**Fixes** 
+- Export elementappearance and element theme
 
 ## 11.1.1
 

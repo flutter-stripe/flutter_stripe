@@ -90,7 +90,7 @@ For card scanning add the following to your Info.plist:
 <string>To scan cards</string>
 ```
 
-#### Web (Experimental)
+#### Web
 
 Now you can use Stripe with Flutter web! Notice right now it is highly experimental and only a subset of features is implemented. Namely:
 
@@ -98,7 +98,10 @@ Now you can use Stripe with Flutter web! Notice right now it is highly experimen
 - Confirm payment intent
 - Confirm setup intent
 - Create token
-- Confirm payment element (recommended way of handling payments on web)
+
+### Supported widgets
+- [Confirm payment element](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/lib/screens/payment_sheet/payment_element/platforms/payment_element_web.dart) (recommended way of handling payments on web)
+- [Express checkout](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/lib/screens/payment_sheet/express_checkout/platforms/express_checkout_element_web.dart)
 
 To use Stripe on web, it is required to add `flutter_stripe_web` in your pubspec file
 

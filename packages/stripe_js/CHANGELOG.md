@@ -1,4 +1,9 @@
 ## 6.2.0
+**Features**
+- Add basic support for Expresscheckout on the web
+
+**Fixes** 
+- Export elementappearance and element theme
 
 ## 6.1.1
 
