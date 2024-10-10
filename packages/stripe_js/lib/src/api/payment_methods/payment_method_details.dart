@@ -78,6 +78,27 @@ class CardPaymentMethodDetails
 }
 
 @Freezed(unionKey: 'type')
+class KlarnaPaymentMethodDetails
+    with _$KlarnaPaymentMethodDetails
+    implements PaymentMethodDetails {
+  @FreezedUnionValue('klarna')
+  @Implements<IdPaymentMethodDetails>()
+  const factory KlarnaPaymentMethodDetails.id(String id) =
+  _IdKlarnaPaymentMethodDetails;
+
+  /// The new PaymentMethod will be created with data collected by the
+  /// Element and will be used to confirm the PaymentIntent.
+  @FreezedUnionValue('klarna')
+  const factory KlarnaPaymentMethodDetails({
+    /// The billing_details associated with the card.
+    @JsonKey(name: 'billing_details') BillingDetails? billingDetails,
+  }) = _KlarnaPaymentMethodDetails;
+
+  factory KlarnaPaymentMethodDetails.fromJson(Map<String, dynamic> json) =>
+      _$KlarnaPaymentMethodDetailsFromJson(json);
+}
+
+@Freezed(unionKey: 'type')
 class IdealPaymentMethodDetails
     with _$IdealPaymentMethodDetails
     implements PaymentMethodDetails {
