@@ -1,3 +1,11 @@
+## 11.2.0
+
+**Features**
+- Add basic support for Expresscheckout on the web
+
+**Fixes** 
+- Export elementappearance and element theme
+
 ## 11.1.1
 
  - #1912 wallet parsing.

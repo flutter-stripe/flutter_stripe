@@ -1,5 +1,8 @@
-## 11.1.1
+## 11.2.1
 - Remove com.android.application gradle plugin version check
+
+## 11.2.0
+- Minor fixes and improvements
 
 ## 11.1.0
 - Sync with Stripe [0.38.6](https://github.com/stripe/stripe-react-native/releases/tag/v0.38.6). 

@@ -1,3 +1,11 @@
+## 11.2.0
+
+**Features**
+- Add basic support for Expresscheckout on the web
+
+**Fixes** 
+- Export elementappearance and element theme
+
 ## 11.1.0
 - Sync with Stripe [0.38.6](https://github.com/stripe/stripe-react-native/releases/tag/v0.38.6). 
 - Minor fixes and improvements.
