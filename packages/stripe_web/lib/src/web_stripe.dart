@@ -409,6 +409,23 @@ class WebStripe extends StripePlatform {
     }
   }
 
+  Future<void> confirmSetupElement(
+    ConfirmSetupElementOptions options,
+  ) async {
+    final response = await js.confirmSetup(
+      stripe_js.ConfirmSetupOptions(
+        elements: elements!,
+        confirmParams: options.confirmParams,
+        redirect: options.redirect,
+      ),
+    );
+    if (response.error != null) {
+      throw response.error!;
+    } else {
+      return;
+    }
+  }
+
   @override
   Widget buildCard({
     Key? key,
