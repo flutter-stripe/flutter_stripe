@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:stripe_js/stripe_api.dart';
 export 'package:stripe_js/stripe_api.dart'
-    show PaymentConfirmationRedirect, ConfirmPaymentParams;
+    show SetupConfirmationRedirect, ConfirmSetupParams;
 
 part 'confirm_setup_options.freezed.dart';
 part 'confirm_setup_options.g.dart';
