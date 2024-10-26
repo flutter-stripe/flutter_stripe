@@ -6,7 +6,6 @@ homepage: https://github.com/flutter-stripe/flutter_stripe
 environment:
   sdk: ">=3.3.0 <4.0.0"
 
-
 dependencies:
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.1
@@ -18,7 +17,6 @@ dev_dependencies:
   freezed: ^2.3.5
   json_serializable: ^6.5.4
   test: ^1.22.0
-  
+
 false_secrets:
   - /tests/**
-
