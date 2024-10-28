@@ -1,3 +1,7 @@
+## 6.2.1
+**Features**
+- Add support for any kind of payment method in setup intent with [confirmSetup]
+
 ## 6.2.0
 **Features**
 - Add basic support for Expresscheckout on the web
