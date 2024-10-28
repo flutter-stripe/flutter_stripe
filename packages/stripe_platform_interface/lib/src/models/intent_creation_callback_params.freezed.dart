@@ -27,12 +27,8 @@ mixin _$IntentCreationCallbackParams {
   /// Error that occurred during the creation of the payment intent or setup intent.
   StripeException? get error => throw _privateConstructorUsedError;
 
-  /// Serializes this IntentCreationCallbackParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of IntentCreationCallbackParams
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $IntentCreationCallbackParamsCopyWith<IntentCreationCallbackParams>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -61,8 +57,6 @@ class _$IntentCreationCallbackParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of IntentCreationCallbackParams
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,8 +75,6 @@ class _$IntentCreationCallbackParamsCopyWithImpl<$Res,
     ) as $Val);
   }
 
-  /// Create a copy of IntentCreationCallbackParams
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $StripeExceptionCopyWith<$Res>? get error {
@@ -121,8 +113,6 @@ class __$$IntentCreationCallbackParamsImplCopyWithImpl<$Res>
       $Res Function(_$IntentCreationCallbackParamsImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of IntentCreationCallbackParams
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -176,13 +166,11 @@ class _$IntentCreationCallbackParamsImpl
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, clientSecret, error);
 
-  /// Create a copy of IntentCreationCallbackParams
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$IntentCreationCallbackParamsImplCopyWith<
@@ -207,18 +195,16 @@ abstract class _IntentCreationCallbackParams
   factory _IntentCreationCallbackParams.fromJson(Map<String, dynamic> json) =
       _$IntentCreationCallbackParamsImpl.fromJson;
 
-  /// Client secret of the payment intent or setup intent.
   @override
+
+  /// Client secret of the payment intent or setup intent.
   String? get clientSecret;
+  @override
 
   /// Error that occurred during the creation of the payment intent or setup intent.
-  @override
   StripeException? get error;
-
-  /// Create a copy of IntentCreationCallbackParams
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$IntentCreationCallbackParamsImplCopyWith<
           _$IntentCreationCallbackParamsImpl>
       get copyWith => throw _privateConstructorUsedError;

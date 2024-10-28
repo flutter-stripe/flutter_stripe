@@ -23,12 +23,8 @@ FinancialConnectionSessionResult _$FinancialConnectionSessionResultFromJson(
 mixin _$FinancialConnectionSessionResult {
   FinancialConnectionSession get session => throw _privateConstructorUsedError;
 
-  /// Serializes this FinancialConnectionSessionResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of FinancialConnectionSessionResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $FinancialConnectionSessionResultCopyWith<FinancialConnectionSessionResult>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -57,8 +53,6 @@ class _$FinancialConnectionSessionResultCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of FinancialConnectionSessionResult
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -72,8 +66,6 @@ class _$FinancialConnectionSessionResultCopyWithImpl<$Res,
     ) as $Val);
   }
 
-  /// Create a copy of FinancialConnectionSessionResult
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FinancialConnectionSessionCopyWith<$Res> get session {
@@ -108,8 +100,6 @@ class __$$FinancialConnectionSessionResultImplCopyWithImpl<$Res>
       $Res Function(_$FinancialConnectionSessionResultImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of FinancialConnectionSessionResult
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,13 +141,11 @@ class _$FinancialConnectionSessionResultImpl
             (identical(other.session, session) || other.session == session));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, session);
 
-  /// Create a copy of FinancialConnectionSessionResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$FinancialConnectionSessionResultImplCopyWith<
@@ -185,11 +173,8 @@ abstract class _FinancialConnectionSessionResult
 
   @override
   FinancialConnectionSession get session;
-
-  /// Create a copy of FinancialConnectionSessionResult
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$FinancialConnectionSessionResultImplCopyWith<
           _$FinancialConnectionSessionResultImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -206,12 +191,8 @@ mixin _$FinancialConnectionTokenResult {
   FinancialConnectionBankAccountToken get token =>
       throw _privateConstructorUsedError;
 
-  /// Serializes this FinancialConnectionTokenResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of FinancialConnectionTokenResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $FinancialConnectionTokenResultCopyWith<FinancialConnectionTokenResult>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -243,8 +224,6 @@ class _$FinancialConnectionTokenResultCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of FinancialConnectionTokenResult
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -263,8 +242,6 @@ class _$FinancialConnectionTokenResultCopyWithImpl<$Res,
     ) as $Val);
   }
 
-  /// Create a copy of FinancialConnectionTokenResult
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FinancialConnectionSessionCopyWith<$Res> get session {
@@ -273,8 +250,6 @@ class _$FinancialConnectionTokenResultCopyWithImpl<$Res,
     });
   }
 
-  /// Create a copy of FinancialConnectionTokenResult
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FinancialConnectionBankAccountTokenCopyWith<$Res> get token {
@@ -314,8 +289,6 @@ class __$$FinancialConnectionTokenResultImplCopyWithImpl<$Res>
       $Res Function(_$FinancialConnectionTokenResultImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of FinancialConnectionTokenResult
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -366,13 +339,11 @@ class _$FinancialConnectionTokenResultImpl
             (identical(other.token, token) || other.token == token));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, session, token);
 
-  /// Create a copy of FinancialConnectionTokenResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$FinancialConnectionTokenResultImplCopyWith<
@@ -402,11 +373,8 @@ abstract class _FinancialConnectionTokenResult
   FinancialConnectionSession get session;
   @override
   FinancialConnectionBankAccountToken get token;
-
-  /// Create a copy of FinancialConnectionTokenResult
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$FinancialConnectionTokenResultImplCopyWith<
           _$FinancialConnectionTokenResultImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -432,12 +400,8 @@ mixin _$FinancialConnectionSession {
   List<FinancialConnectionAccount> get accounts =>
       throw _privateConstructorUsedError;
 
-  /// Serializes this FinancialConnectionSession to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of FinancialConnectionSession
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $FinancialConnectionSessionCopyWith<FinancialConnectionSession>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -467,8 +431,6 @@ class _$FinancialConnectionSessionCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of FinancialConnectionSession
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -524,8 +486,6 @@ class __$$FinancialConnectionSessionImplCopyWithImpl<$Res>
       $Res Function(_$FinancialConnectionSessionImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of FinancialConnectionSession
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -611,14 +571,12 @@ class _$FinancialConnectionSessionImpl implements _FinancialConnectionSession {
             const DeepCollectionEquality().equals(other._accounts, _accounts));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, clientSecret, livemode,
       const DeepCollectionEquality().hash(_accounts));
 
-  /// Create a copy of FinancialConnectionSession
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$FinancialConnectionSessionImplCopyWith<_$FinancialConnectionSessionImpl>
@@ -645,26 +603,24 @@ abstract class _FinancialConnectionSession
   factory _FinancialConnectionSession.fromJson(Map<String, dynamic> json) =
       _$FinancialConnectionSessionImpl.fromJson;
 
-  /// Unique id for this session
   @override
+
+  /// Unique id for this session
   String get id;
+  @override
 
   /// The client secret of the session
-  @override
   String get clientSecret;
+  @override
 
   /// When `true` the object exists in livemode and when false the object exists in test mode.
-  @override
   bool get livemode;
+  @override
 
   /// The accounts that were collected as part of this session
-  @override
   List<FinancialConnectionAccount> get accounts;
-
-  /// Create a copy of FinancialConnectionSession
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$FinancialConnectionSessionImplCopyWith<_$FinancialConnectionSessionImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -691,12 +647,8 @@ mixin _$FinancialConnectionBankAccountToken {
   /// The Unix timestamp (in milliseconds) of the date this token was created
   int? get created => throw _privateConstructorUsedError;
 
-  /// Serializes this FinancialConnectionBankAccountToken to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of FinancialConnectionBankAccountToken
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $FinancialConnectionBankAccountTokenCopyWith<
           FinancialConnectionBankAccountToken>
       get copyWith => throw _privateConstructorUsedError;
@@ -731,8 +683,6 @@ class _$FinancialConnectionBankAccountTokenCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of FinancialConnectionBankAccountToken
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -766,8 +716,6 @@ class _$FinancialConnectionBankAccountTokenCopyWithImpl<$Res,
     ) as $Val);
   }
 
-  /// Create a copy of FinancialConnectionBankAccountToken
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BankAccountCopyWith<$Res>? get bankAccount {
@@ -811,8 +759,6 @@ class __$$FinancialConnectionBankAccountTokenImplCopyWithImpl<$Res>
       $Res Function(_$FinancialConnectionBankAccountTokenImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of FinancialConnectionBankAccountToken
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -902,14 +848,12 @@ class _$FinancialConnectionBankAccountTokenImpl
             (identical(other.created, created) || other.created == created));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, bankAccount, livemode, id, used, created);
 
-  /// Create a copy of FinancialConnectionBankAccountToken
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$FinancialConnectionBankAccountTokenImplCopyWith<
@@ -938,30 +882,28 @@ abstract class _FinancialConnectionBankAccountToken
           Map<String, dynamic> json) =
       _$FinancialConnectionBankAccountTokenImpl.fromJson;
 
-  /// Bamkaccount details
   @override
+
+  /// Bamkaccount details
   BankAccount? get bankAccount;
+  @override
 
   /// When `true` the object exists in livemode and when false the object exists in test mode.
-  @override
   bool get livemode;
+  @override
 
   /// Unique id for this token.
-  @override
   String? get id;
+  @override
 
   /// whether or not this token has been used
-  @override
   bool get used;
+  @override
 
   /// The Unix timestamp (in milliseconds) of the date this token was created
-  @override
   int? get created;
-
-  /// Create a copy of FinancialConnectionBankAccountToken
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$FinancialConnectionBankAccountTokenImplCopyWith<
           _$FinancialConnectionBankAccountTokenImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1015,12 +957,8 @@ mixin _$FinancialConnectionAccount {
   List<FinancialConnectionsPaymentMethodType> get supportedPaymentMethodTypes =>
       throw _privateConstructorUsedError;
 
-  /// Serializes this FinancialConnectionAccount to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of FinancialConnectionAccount
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $FinancialConnectionAccountCopyWith<FinancialConnectionAccount>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1062,8 +1000,6 @@ class _$FinancialConnectionAccountCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of FinancialConnectionAccount
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1137,8 +1073,6 @@ class _$FinancialConnectionAccountCopyWithImpl<$Res,
     ) as $Val);
   }
 
-  /// Create a copy of FinancialConnectionAccount
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AccountBalanceCopyWith<$Res>? get balance {
@@ -1151,8 +1085,6 @@ class _$FinancialConnectionAccountCopyWithImpl<$Res,
     });
   }
 
-  /// Create a copy of FinancialConnectionAccount
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BalanceRefreshCopyWith<$Res>? get balanceRefresh {
@@ -1206,8 +1138,6 @@ class __$$FinancialConnectionAccountImplCopyWithImpl<$Res>
       $Res Function(_$FinancialConnectionAccountImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of FinancialConnectionAccount
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1412,7 +1342,7 @@ class _$FinancialConnectionAccountImpl implements _FinancialConnectionAccount {
                 _supportedPaymentMethodTypes));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1430,9 +1360,7 @@ class _$FinancialConnectionAccountImpl implements _FinancialConnectionAccount {
       const DeepCollectionEquality().hash(_permissions),
       const DeepCollectionEquality().hash(_supportedPaymentMethodTypes));
 
-  /// Create a copy of FinancialConnectionAccount
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$FinancialConnectionAccountImplCopyWith<_$FinancialConnectionAccountImpl>
@@ -1468,62 +1396,60 @@ abstract class _FinancialConnectionAccount
   factory _FinancialConnectionAccount.fromJson(Map<String, dynamic> json) =
       _$FinancialConnectionAccountImpl.fromJson;
 
-  /// Unique id for this Financial connection account.
   @override
+
+  /// Unique id for this Financial connection account.
   String get id;
+  @override
 
   /// Has the value true if the object exist in livemode.
-  @override
   bool get livemode;
+  @override
 
   /// display name of the account.
-  @override
   String? get displayName;
+  @override
 
   /// The current status of the account.
-  @override
   AccountStatus get status;
+  @override
 
   /// The name of the financial institution.
-  @override
   String get institutionName;
+  @override
 
   /// Last4 of the account number.
-  @override
   String? get last4;
+  @override
 
   /// Unix timestamp in milliseconds of the date this account was created.
-  @override
   int get created;
+  @override
 
   /// The balance of the account
-  @override
   AccountBalance? get balance;
+  @override
 
   /// The last balance refresh.
-  @override
   BalanceRefresh? get balanceRefresh;
+  @override
 
   /// The category of this account
-  @override
   AccountCategory get category;
+  @override
 
   /// The subcategory of this account,
-  @override
   AccountSubcategory get subcategory;
+  @override
 
   /// Permissions requested for accounts collected during this session.
-  @override
   List<AccountPermission>? get permissions;
+  @override
 
   /// Support payment method types for this account.
-  @override
   List<FinancialConnectionsPaymentMethodType> get supportedPaymentMethodTypes;
-
-  /// Create a copy of FinancialConnectionAccount
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$FinancialConnectionAccountImplCopyWith<_$FinancialConnectionAccountImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1540,12 +1466,8 @@ mixin _$BalanceRefresh {
   /// Unix timestamp (in milliseconds) of the time of the last refresh attempt.
   int get lastAttemptedAt => throw _privateConstructorUsedError;
 
-  /// Serializes this BalanceRefresh to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of BalanceRefresh
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $BalanceRefreshCopyWith<BalanceRefresh> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1569,8 +1491,6 @@ class _$BalanceRefreshCopyWithImpl<$Res, $Val extends BalanceRefresh>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of BalanceRefresh
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1609,8 +1529,6 @@ class __$$BalanceRefreshImplCopyWithImpl<$Res>
       _$BalanceRefreshImpl _value, $Res Function(_$BalanceRefreshImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of BalanceRefresh
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1663,13 +1581,11 @@ class _$BalanceRefreshImpl implements _BalanceRefresh {
                 other.lastAttemptedAt == lastAttemptedAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, status, lastAttemptedAt);
 
-  /// Create a copy of BalanceRefresh
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$BalanceRefreshImplCopyWith<_$BalanceRefreshImpl> get copyWith =>
@@ -1692,18 +1608,16 @@ abstract class _BalanceRefresh implements BalanceRefresh {
   factory _BalanceRefresh.fromJson(Map<String, dynamic> json) =
       _$BalanceRefreshImpl.fromJson;
 
-  /// Status of the balance refresh attempt
   @override
+
+  /// Status of the balance refresh attempt
   BalanceRefreshStatus get status;
+  @override
 
   /// Unix timestamp (in milliseconds) of the time of the last refresh attempt.
-  @override
   int get lastAttemptedAt;
-
-  /// Create a copy of BalanceRefresh
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$BalanceRefreshImplCopyWith<_$BalanceRefreshImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1739,12 +1653,8 @@ mixin _$AccountBalance {
   /// Each value is a integer amount. A positive amount indicates money owed to the account holder. A negative amount indicates money owed by the account holder.
   Map<String, int>? get current => throw _privateConstructorUsedError;
 
-  /// Serializes this AccountBalance to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of AccountBalance
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $AccountBalanceCopyWith<AccountBalance> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1773,8 +1683,6 @@ class _$AccountBalanceCopyWithImpl<$Res, $Val extends AccountBalance>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AccountBalance
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1833,8 +1741,6 @@ class __$$AccountBalanceImplCopyWithImpl<$Res>
       _$AccountBalanceImpl _value, $Res Function(_$AccountBalanceImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AccountBalance
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1970,7 +1876,7 @@ class _$AccountBalanceImpl implements _AccountBalance {
             const DeepCollectionEquality().equals(other._current, _current));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1980,9 +1886,7 @@ class _$AccountBalanceImpl implements _AccountBalance {
       const DeepCollectionEquality().hash(_credit),
       const DeepCollectionEquality().hash(_current));
 
-  /// Create a copy of AccountBalance
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AccountBalanceImplCopyWith<_$AccountBalanceImpl> get copyWith =>
@@ -2008,40 +1912,38 @@ abstract class _AccountBalance implements AccountBalance {
   factory _AccountBalance.fromJson(Map<String, dynamic> json) =
       _$AccountBalanceImpl.fromJson;
 
-  /// Unix timestamp in milliseconds of time the external instition calculated this balance.
   @override
+
+  /// Unix timestamp in milliseconds of time the external instition calculated this balance.
   int get asOf;
+  @override
 
   /// The type of balance.
-  @override
   BalanceType get type;
+  @override
 
   /// The funds available to the account holder.
   ///
   /// Typically this is the current balance less any holds.
   /// Each key is a three letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) in lowercase.
   /// Each value is an integer amount. A positive amount indicates money owed to the account holder. A negative amount indicates money owed by the account holder.
-  @override
   Map<String, int>? get cash;
+  @override
 
   /// The credit that has been used by the account holder.
   ///
   /// Each key is a three letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) in lowercase.
   /// Each value is a integer amount. A positive amount indicates money owed to the account holder. A negative amount indicates money owed by the account holder.
-  @override
   Map<String, int>? get credit;
+  @override
 
   /// The balances owed to (or by) the account holder.
   ///
   /// Each key is a three letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) in lowercase.
   /// Each value is a integer amount. A positive amount indicates money owed to the account holder. A negative amount indicates money owed by the account holder.
-  @override
   Map<String, int>? get current;
-
-  /// Create a copy of AccountBalance
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AccountBalanceImplCopyWith<_$AccountBalanceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -245,7 +245,8 @@ Map<String, dynamic> _$$PaymentSheetGooglePayImplToJson(
       'testEnv': instance.testEnv,
       'label': instance.label,
       'amount': instance.amount,
-      'buttonType': _$PlatformButtonTypeEnumMap[instance.buttonType],
+      'buttonType':
+          PaymentSheetGooglePay.platformButtonTypeToJson(instance.buttonType),
     };
 
 _$PaymentSheetAppearanceImpl _$$PaymentSheetAppearanceImplFromJson(

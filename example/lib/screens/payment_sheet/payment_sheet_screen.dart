@@ -104,6 +104,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreen> {
           googlePay: PaymentSheetGooglePay(
             merchantCountryCode: 'DE',
             testEnv: true,
+            buttonType: PlatformButtonType.book,
           ),
           style: ThemeMode.dark,
           appearance: PaymentSheetAppearance(

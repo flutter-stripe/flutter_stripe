@@ -213,8 +213,11 @@ class PaymentSheetGooglePay with _$PaymentSheetGooglePay {
     String? amount,
 
     /// The Google Pay button type to use. Set to "Pay" by default.
+    @JsonKey(toJson: PaymentSheetGooglePay.platformButtonTypeToJson)
     PlatformButtonType? buttonType,
   }) = _PaymentSheetGooglePay;
+
+  static int? platformButtonTypeToJson(PlatformButtonType? type) => type?.id;
 
   factory PaymentSheetGooglePay.fromJson(Map<String, dynamic> json) =>
       _$PaymentSheetGooglePayFromJson(json);
