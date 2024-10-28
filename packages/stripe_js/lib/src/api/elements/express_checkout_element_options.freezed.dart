@@ -368,6 +368,7 @@ ExpressCheckoutConfirmEvent _$ExpressCheckoutConfirmEventFromJson(
 
 /// @nodoc
 mixin _$ExpressCheckoutConfirmEvent {
+  /// The method that was used to pay.
   String get expressPaymentType => throw _privateConstructorUsedError;
   BillingDetails? get billingDetails => throw _privateConstructorUsedError;
 
@@ -497,6 +498,7 @@ class _$ExpressCheckoutConfirmEventImpl
           Map<String, dynamic> json) =>
       _$$ExpressCheckoutConfirmEventImplFromJson(json);
 
+  /// The method that was used to pay.
   @override
   final String expressPaymentType;
   @override
@@ -550,6 +552,7 @@ abstract class _ExpressCheckoutConfirmEvent
   factory _ExpressCheckoutConfirmEvent.fromJson(Map<String, dynamic> json) =
       _$ExpressCheckoutConfirmEventImpl.fromJson;
 
+  /// The method that was used to pay.
   @override
   String get expressPaymentType;
   @override
