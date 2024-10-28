@@ -32,34 +32,14 @@ class WebPlatformPayButton extends StatefulWidget {
 }
 
 class _WebPlatformPayButtonState extends State<WebPlatformPayButton> {
-  BoxConstraints get constraints =>
-      widget.constraints ??
-      const BoxConstraints.expand(height: kPlatformPayButtonDefaultHeight);
+  final web.HTMLDivElement _divElement = web.HTMLDivElement()
+    ..id = 'platform-pay-button';
 
-  @override
-  void initState() {
-    // ignore: undefined_prefixed_name
-    ui.platformViewRegistry.registerViewFactory('stripe_platform_pay_button',
-        (int viewId) => web.HTMLDivElement()..id = 'platform-pay-button');
-    _initButton();
-    super.initState();
-  }
+  late final web.MutationObserver mutationObserver = web.MutationObserver(
+      ((JSArray<web.MutationRecord> entries, web.MutationObserver observer) {
+    if (web.document.getElementById('platform-pay-button') != null) {
+      mutationObserver.disconnect();
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Focus(
-        child: ConstrainedBox(
-          constraints: constraints,
-          child: const HtmlElementView(viewType: 'stripe_platform_pay_button'),
-        ),
-      ),
-    );
-  }
-
-  _initButton() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       PaymentRequest paymentRequest = WebStripe.js
           .paymentRequest((widget.paymentRequestCreateOptions).toJS());
 
@@ -79,7 +59,38 @@ class _WebPlatformPayButtonState extends State<WebPlatformPayButton> {
           })
           ..mount('#platform-pay-button'.toJS);
       });
-    });
+    }
+  }.toJS));
+
+  BoxConstraints get constraints =>
+      widget.constraints ??
+      const BoxConstraints.expand(height: kPlatformPayButtonDefaultHeight);
+
+  @override
+  void initState() {
+    // ignore: undefined_prefixed_name
+    ui.platformViewRegistry.registerViewFactory('stripe_platform_pay_button',
+        (int viewId) => _divElement);
+
+    mutationObserver.observe(
+      web.document,
+      web.MutationObserverInit(childList: true, subtree: true),
+    );
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Focus(
+        child: ConstrainedBox(
+          constraints: constraints,
+          child: const HtmlElementView(viewType: 'stripe_platform_pay_button'),
+        ),
+      ),
+    );
   }
 
   PaymentRequestButtonType get type {
