@@ -9,4 +9,3 @@ export 'src/widgets/card_field.dart' hide WebStripeCardState;
 export 'src/widgets/express_checkout_element.dart'
     hide ExpressCheckoutElementState;
 export 'src/widgets/payment_element.dart' hide PaymentElementState;
-export 'src/widgets/payment_element.dart';
