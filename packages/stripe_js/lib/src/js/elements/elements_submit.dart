@@ -1,6 +1,5 @@
 import 'dart:js_interop';
 
-import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 
 extension ExtensionElementsSubmit on StripeElements {
