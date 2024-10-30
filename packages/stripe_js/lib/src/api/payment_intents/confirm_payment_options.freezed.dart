@@ -43,8 +43,12 @@ mixin _$ConfirmPaymentOptions {
   PaymentConfirmationRedirect? get redirect =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this ConfirmPaymentOptions to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ConfirmPaymentOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ConfirmPaymentOptionsCopyWith<ConfirmPaymentOptions> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -75,6 +79,8 @@ class _$ConfirmPaymentOptionsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ConfirmPaymentOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -103,6 +109,8 @@ class _$ConfirmPaymentOptionsCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of ConfirmPaymentOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ConfirmPaymentParamsCopyWith<$Res> get confirmParams {
@@ -140,6 +148,8 @@ class __$$ConfirmPaymentOptionsImplCopyWithImpl<$Res>
       $Res Function(_$ConfirmPaymentOptionsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ConfirmPaymentOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -226,12 +236,14 @@ class _$ConfirmPaymentOptionsImpl implements _ConfirmPaymentOptions {
                 other.redirect == redirect));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, elements, clientSecret, confirmParams, redirect);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ConfirmPaymentOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ConfirmPaymentOptionsImplCopyWith<_$ConfirmPaymentOptionsImpl>
@@ -257,19 +269,17 @@ abstract class _ConfirmPaymentOptions implements ConfirmPaymentOptions {
   factory _ConfirmPaymentOptions.fromJson(Map<String, dynamic> json) =
       _$ConfirmPaymentOptionsImpl.fromJson;
 
-  @override
-
   /// The Elements instance that was used to create the Payment Element.
+  @override
   @ElementsConverter()
   Elements get elements;
   @override
   String? get clientSecret;
-  @override
 
   /// Parameters that will be passed on to the Stripe API.
   /// Refer to the Payment Intents API for a full list of parameters.
-  ConfirmPaymentParams get confirmParams;
   @override
+  ConfirmPaymentParams get confirmParams;
 
   /// By default, stripe.confirmPayment will always redirect to your
   /// return_url after a successful confirmation.
@@ -281,9 +291,13 @@ abstract class _ConfirmPaymentOptions implements ConfirmPaymentOptions {
   /// methods separately. When a non-redirect based payment method is
   /// successfully confirmed, stripe.confirmPayment will resolve with a
   /// {paymentIntent} object.
-  PaymentConfirmationRedirect? get redirect;
   @override
-  @JsonKey(ignore: true)
+  PaymentConfirmationRedirect? get redirect;
+
+  /// Create a copy of ConfirmPaymentOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ConfirmPaymentOptionsImplCopyWith<_$ConfirmPaymentOptionsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -297,8 +311,12 @@ mixin _$ConfirmPaymentParams {
   /// The url your customer will be directed to after they complete payment.
   String get return_url => throw _privateConstructorUsedError;
 
+  /// Serializes this ConfirmPaymentParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ConfirmPaymentParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ConfirmPaymentParamsCopyWith<ConfirmPaymentParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -323,6 +341,8 @@ class _$ConfirmPaymentParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ConfirmPaymentParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -356,6 +376,8 @@ class __$$ConfirmPaymentParamsImplCopyWithImpl<$Res>
       $Res Function(_$ConfirmPaymentParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ConfirmPaymentParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -396,11 +418,13 @@ class _$ConfirmPaymentParamsImpl implements _ConfirmPaymentParams {
                 other.return_url == return_url));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, return_url);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ConfirmPaymentParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ConfirmPaymentParamsImplCopyWith<_$ConfirmPaymentParamsImpl>
@@ -423,12 +447,14 @@ abstract class _ConfirmPaymentParams implements ConfirmPaymentParams {
   factory _ConfirmPaymentParams.fromJson(Map<String, dynamic> json) =
       _$ConfirmPaymentParamsImpl.fromJson;
 
-  @override
-
   /// The url your customer will be directed to after they complete payment.
-  String get return_url;
   @override
-  @JsonKey(ignore: true)
+  String get return_url;
+
+  /// Create a copy of ConfirmPaymentParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ConfirmPaymentParamsImplCopyWith<_$ConfirmPaymentParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

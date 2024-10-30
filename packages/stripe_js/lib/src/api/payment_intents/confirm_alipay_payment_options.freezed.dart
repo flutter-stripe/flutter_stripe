@@ -12,7 +12,7 @@ part of 'confirm_alipay_payment_options.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ConfirmAlipayPaymentOptions _$ConfirmAlipayPaymentOptionsFromJson(
     Map<String, dynamic> json) {
@@ -25,8 +25,12 @@ mixin _$ConfirmAlipayPaymentOptions {
   /// the authorization redirect. Default is true.
   bool? get handleActions => throw _privateConstructorUsedError;
 
+  /// Serializes this ConfirmAlipayPaymentOptions to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ConfirmAlipayPaymentOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ConfirmAlipayPaymentOptionsCopyWith<ConfirmAlipayPaymentOptions>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$ConfirmAlipayPaymentOptionsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ConfirmAlipayPaymentOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -89,6 +95,8 @@ class __$$ConfirmAlipayPaymentOptionsImplCopyWithImpl<$Res>
       $Res Function(_$ConfirmAlipayPaymentOptionsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ConfirmAlipayPaymentOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -125,7 +133,7 @@ class _$ConfirmAlipayPaymentOptionsImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ConfirmAlipayPaymentOptionsImpl &&
@@ -133,11 +141,13 @@ class _$ConfirmAlipayPaymentOptionsImpl
                 other.handleActions == handleActions));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, handleActions);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ConfirmAlipayPaymentOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ConfirmAlipayPaymentOptionsImplCopyWith<_$ConfirmAlipayPaymentOptionsImpl>
@@ -160,13 +170,15 @@ abstract class _ConfirmAlipayPaymentOptions
   factory _ConfirmAlipayPaymentOptions.fromJson(Map<String, dynamic> json) =
       _$ConfirmAlipayPaymentOptionsImpl.fromJson;
 
-  @override
-
   /// Set this to false if you want to manually handle
   /// the authorization redirect. Default is true.
-  bool? get handleActions;
   @override
-  @JsonKey(ignore: true)
+  bool? get handleActions;
+
+  /// Create a copy of ConfirmAlipayPaymentOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ConfirmAlipayPaymentOptionsImplCopyWith<_$ConfirmAlipayPaymentOptionsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

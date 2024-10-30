@@ -1,6 +1,21 @@
-## 6.1.1
+## 6.3.0
 **Features**
 - add method for deferred payment
+
+## 6.2.1
+**Features**
+- Add support for any kind of payment method in setup intent with [confirmSetup]
+
+## 6.2.0
+**Features**
+- Add basic support for Expresscheckout on the web
+
+**Fixes** 
+- Export elementappearance and element theme
+
+## 6.1.1
+
+- **FIX**: The platformPayCreatePaymentMethod method results in an error on web (#1879).
 
 ## 6.1.0
 - Sync with Stripe [0.38.6](https://github.com/stripe/stripe-react-native/releases/tag/v0.38.6). 

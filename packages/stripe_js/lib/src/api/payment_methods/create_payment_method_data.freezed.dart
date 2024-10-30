@@ -12,7 +12,7 @@ part of 'create_payment_method_data.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CreatePaymentMethodData _$CreatePaymentMethodDataFromJson(
     Map<String, dynamic> json) {
@@ -70,8 +70,12 @@ mixin _$CreatePaymentMethodData {
   @JsonKey(name: "billing_details")
   BillingDetails? get billingDetails => throw _privateConstructorUsedError;
 
+  /// Serializes this CreatePaymentMethodData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CreatePaymentMethodData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CreatePaymentMethodDataCopyWith<CreatePaymentMethodData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -110,6 +114,8 @@ class _$CreatePaymentMethodDataCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CreatePaymentMethodData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -178,6 +184,8 @@ class _$CreatePaymentMethodDataCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of CreatePaymentMethodData
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BillingDetailsCopyWith<$Res>? get billingDetails {
@@ -228,6 +236,8 @@ class __$$CreatePaymentMethodDataImplCopyWithImpl<$Res>
       $Res Function(_$CreatePaymentMethodDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CreatePaymentMethodData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -384,7 +394,7 @@ class _$CreatePaymentMethodDataImpl implements _CreatePaymentMethodData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreatePaymentMethodDataImpl &&
@@ -408,7 +418,7 @@ class _$CreatePaymentMethodDataImpl implements _CreatePaymentMethodData {
                 other.billingDetails == billingDetails));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -425,7 +435,9 @@ class _$CreatePaymentMethodDataImpl implements _CreatePaymentMethodData {
       upiVpa,
       billingDetails);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CreatePaymentMethodData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreatePaymentMethodDataImplCopyWith<_$CreatePaymentMethodDataImpl>
@@ -461,69 +473,71 @@ abstract class _CreatePaymentMethodData implements CreatePaymentMethodData {
   factory _CreatePaymentMethodData.fromJson(Map<String, dynamic> json) =
       _$CreatePaymentMethodDataImpl.fromJson;
 
-  @override
-
   /// Unique identifier for the object.
-  String get type;
   @override
+  String get type;
 
   /// A card or cardNumber Element.
+  @override
   @ElementConverter()
   Element? get card;
-  @override
 
   /// An auBankAccount Element.
+  @override
   @JsonKey(name: "au_becs_debit")
   @ElementConverter()
   Element? get auBecsDebit;
-  @override
 
   /// An fpx Element.
+  @override
   @ElementConverter()
   Element? get fpx;
-  @override
 
   /// The customer's bank.
+  @override
   @JsonKey(name: "fpx[bank]")
   String? get fpxBank;
-  @override
 
   /// The customer's bank.
+  @override
   @JsonKey(name: "netbanking[bank]")
   String? get netbankingBank;
-  @override
 
   /// An idealBank Element.
+  @override
   @ElementConverter()
   Element? get ideal;
-  @override
 
   /// The customer's bank.
+  @override
   @JsonKey(name: "ideal[bank]")
   String? get idealBank;
-  @override
 
   /// An iban Element.
+  @override
   @JsonKey(name: "sepa_debit")
   @ElementConverter()
   Element? get sepaDebit;
-  @override
 
   /// An IBAN account number.
+  @override
   @JsonKey(name: "sepa_debit[iban]")
   String? get sepaDebitIban;
-  @override
 
   /// The customer's VPA.
+  @override
   @JsonKey(name: "upi[vpa]")
   String? get upiVpa;
-  @override
 
   /// Billing information associated with the PaymentMethod that may be used or required by particular types of payment methods.
+  @override
   @JsonKey(name: "billing_details")
   BillingDetails? get billingDetails;
+
+  /// Create a copy of CreatePaymentMethodData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreatePaymentMethodDataImplCopyWith<_$CreatePaymentMethodDataImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

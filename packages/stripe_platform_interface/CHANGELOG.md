@@ -1,7 +1,15 @@
-## 11.2.0
+## 11.2.1
 
 **Features**
 - add methods for deferred payment on web
+
+## 11.2.0
+
+**Features**
+- Add basic support for Expresscheckout on the web
+
+**Fixes** 
+- Export elementappearance and element theme
 
 ## 11.1.1
 

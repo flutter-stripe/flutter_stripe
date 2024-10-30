@@ -30,8 +30,12 @@ mixin _$CardElementOptions {
   bool? get hideIcon => throw _privateConstructorUsedError;
   bool? get disabled => throw _privateConstructorUsedError;
 
+  /// Serializes this CardElementOptions to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CardElementOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CardElementOptionsCopyWith<CardElementOptions> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -64,6 +68,8 @@ class _$CardElementOptionsCopyWithImpl<$Res, $Val extends CardElementOptions>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CardElementOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +113,8 @@ class _$CardElementOptionsCopyWithImpl<$Res, $Val extends CardElementOptions>
     ) as $Val);
   }
 
+  /// Create a copy of CardElementOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CardElementClassesCopyWith<$Res>? get classes {
@@ -149,6 +157,8 @@ class __$$CardElementOptionsImplCopyWithImpl<$Res>
       $Res Function(_$CardElementOptionsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CardElementOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -248,7 +258,7 @@ class _$CardElementOptionsImpl implements _CardElementOptions {
                 other.disabled == disabled));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -260,7 +270,9 @@ class _$CardElementOptionsImpl implements _CardElementOptions {
       hideIcon,
       disabled);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CardElementOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CardElementOptionsImplCopyWith<_$CardElementOptionsImpl> get copyWith =>
@@ -288,10 +300,9 @@ abstract class _CardElementOptions implements CardElementOptions {
   factory _CardElementOptions.fromJson(Map<String, dynamic> json) =
       _$CardElementOptionsImpl.fromJson;
 
-  @override
-
   /// Set custom class names on the container DOM element when the
   /// Stripe element is in a particular state.
+  @override
   CardElementClasses? get classes;
   @override
   dynamic get style;
@@ -305,8 +316,11 @@ abstract class _CardElementOptions implements CardElementOptions {
   bool? get hideIcon;
   @override
   bool? get disabled;
+
+  /// Create a copy of CardElementOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CardElementOptionsImplCopyWith<_$CardElementOptionsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -341,8 +355,12 @@ mixin _$CardElementClasses {
   /// Defaults to StripeElement--webkit-autofill.
   bool? get webkitAutofill => throw _privateConstructorUsedError;
 
+  /// Serializes this CardElementClasses to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CardElementClasses
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CardElementClassesCopyWith<CardElementClasses> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -372,6 +390,8 @@ class _$CardElementClassesCopyWithImpl<$Res, $Val extends CardElementClasses>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CardElementClasses
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -436,6 +456,8 @@ class __$$CardElementClassesImplCopyWithImpl<$Res>
       $Res Function(_$CardElementClassesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CardElementClasses
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -539,12 +561,14 @@ class _$CardElementClassesImpl implements _CardElementClasses {
                 other.webkitAutofill == webkitAutofill));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, base, complete, empty, focus, invalid, webkitAutofill);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CardElementClasses
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CardElementClassesImplCopyWith<_$CardElementClassesImpl> get copyWith =>
@@ -571,38 +595,40 @@ abstract class _CardElementClasses implements CardElementClasses {
   factory _CardElementClasses.fromJson(Map<String, dynamic> json) =
       _$CardElementClassesImpl.fromJson;
 
-  @override
-
   /// The base class applied to the container. Defaults to StripeElement.
-  String? get base;
   @override
+  String? get base;
 
   /// The class name to apply when the Element is complete.
   /// Defaults to StripeElement--complete
-  String? get complete;
   @override
+  String? get complete;
 
   /// The class name to apply when the Element is empty.
   /// Defaults to StripeElement--empty.
-  String? get empty;
   @override
+  String? get empty;
 
   /// The class name to apply when the Element is focus.
   /// Defaults to StripeElement--focus.
-  String? get focus;
   @override
+  String? get focus;
 
   /// The class name to apply when the Element is invalid.
   /// Defaults to StripeElement--invalid.
-  String? get invalid;
   @override
+  String? get invalid;
 
   /// The class name to apply when the Element has its value autofilled
   /// by the browser (only on Chrome and Safari).
   /// Defaults to StripeElement--webkit-autofill.
-  bool? get webkitAutofill;
   @override
-  @JsonKey(ignore: true)
+  bool? get webkitAutofill;
+
+  /// Create a copy of CardElementClasses
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CardElementClassesImplCopyWith<_$CardElementClassesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

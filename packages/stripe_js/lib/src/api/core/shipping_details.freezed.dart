@@ -39,8 +39,12 @@ mixin _$ShippingDetails {
   @JsonKey(name: 'tracking_number')
   String? get trackingNumber => throw _privateConstructorUsedError;
 
+  /// Serializes this ShippingDetails to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShippingDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ShippingDetailsCopyWith<ShippingDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -71,6 +75,8 @@ class _$ShippingDetailsCopyWithImpl<$Res, $Val extends ShippingDetails>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ShippingDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -104,6 +110,8 @@ class _$ShippingDetailsCopyWithImpl<$Res, $Val extends ShippingDetails>
     ) as $Val);
   }
 
+  /// Create a copy of ShippingDetails
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ShippingDetailsAddressCopyWith<$Res> get address {
@@ -142,6 +150,8 @@ class __$$PaymentElementChangeEventImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementChangeEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShippingDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -232,12 +242,14 @@ class _$PaymentElementChangeEventImpl implements _PaymentElementChangeEvent {
                 other.trackingNumber == trackingNumber));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, address, carrier, name, phone, trackingNumber);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShippingDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementChangeEventImplCopyWith<_$PaymentElementChangeEventImpl>
@@ -264,32 +276,34 @@ abstract class _PaymentElementChangeEvent implements ShippingDetails {
   factory _PaymentElementChangeEvent.fromJson(Map<String, dynamic> json) =
       _$PaymentElementChangeEventImpl.fromJson;
 
-  @override
-
   /// Shipping address.
-  ShippingDetailsAddress get address;
   @override
+  ShippingDetailsAddress get address;
 
   /// The delivery service that shipped a physical product,
   /// such as Fedex, UPS, USPS, etc.
-  String? get carrier;
   @override
+  String? get carrier;
 
   /// Recipient name.
-  String? get name;
   @override
+  String? get name;
 
   /// Recipient phone (including extension).
-  String? get phone;
   @override
+  String? get phone;
 
   /// The tracking number for a physical product, obtained from the
   /// delivery service. If multiple tracking numbers were
   /// generated for this purchase, please separate them with commas.
+  @override
   @JsonKey(name: 'tracking_number')
   String? get trackingNumber;
+
+  /// Create a copy of ShippingDetails
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementChangeEventImplCopyWith<_$PaymentElementChangeEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -320,8 +334,12 @@ mixin _$ShippingDetailsAddress {
   @JsonKey(name: 'postal_code')
   String? get postalCode => throw _privateConstructorUsedError;
 
+  /// Serializes this ShippingDetailsAddress to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShippingDetailsAddress
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ShippingDetailsAddressCopyWith<ShippingDetailsAddress> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -352,6 +370,8 @@ class _$ShippingDetailsAddressCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ShippingDetailsAddress
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -419,6 +439,8 @@ class __$$PaymentElementBillingDetailsAddressImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementBillingDetailsAddressImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShippingDetailsAddress
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -518,12 +540,14 @@ class _$PaymentElementBillingDetailsAddressImpl
                 other.postalCode == postalCode));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, line1, line2, city, state, country, postalCode);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShippingDetailsAddress
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementBillingDetailsAddressImplCopyWith<
@@ -554,33 +578,35 @@ abstract class _PaymentElementBillingDetailsAddress
           Map<String, dynamic> json) =
       _$PaymentElementBillingDetailsAddressImpl.fromJson;
 
-  @override
-
   /// Address line 1 (e.g., street, PO Box, or company name).
-  String? get line1;
   @override
+  String? get line1;
 
   /// Address line 2 (e.g., apartment, suite, unit, or building).
-  String? get line2;
   @override
+  String? get line2;
 
   /// City, district, suburb, town, or village.
-  String? get city;
   @override
+  String? get city;
 
   /// State, county, province, or region.
-  String? get state;
   @override
+  String? get state;
 
   /// Two-letter country code (ISO 3166-1 alpha-2).
-  String? get country;
   @override
+  String? get country;
 
   /// ZIP or postal code.
+  @override
   @JsonKey(name: 'postal_code')
   String? get postalCode;
+
+  /// Create a copy of ShippingDetailsAddress
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementBillingDetailsAddressImplCopyWith<
           _$PaymentElementBillingDetailsAddressImpl>
       get copyWith => throw _privateConstructorUsedError;

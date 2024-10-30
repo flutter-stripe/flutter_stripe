@@ -28,8 +28,12 @@ mixin _$PaymentElementChangeEvent {
   PaymentElementChangeEventValue? get value =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementChangeEvent to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementChangeEventCopyWith<PaymentElementChangeEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -61,6 +65,8 @@ class _$PaymentElementChangeEventCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -94,6 +100,8 @@ class _$PaymentElementChangeEventCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of PaymentElementChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentElementChangeEventValueCopyWith<$Res>? get value {
@@ -138,6 +146,8 @@ class __$$PaymentElementChangeEventImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementChangeEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -216,12 +226,14 @@ class _$PaymentElementChangeEventImpl implements _PaymentElementChangeEvent {
             (identical(other.value, value) || other.value == value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, elementType, empty, complete, collapsed, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementChangeEventImplCopyWith<_$PaymentElementChangeEventImpl>
@@ -258,8 +270,11 @@ abstract class _PaymentElementChangeEvent implements PaymentElementChangeEvent {
   bool get collapsed;
   @override
   PaymentElementChangeEventValue? get value;
+
+  /// Create a copy of PaymentElementChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementChangeEventImplCopyWith<_$PaymentElementChangeEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -273,8 +288,12 @@ PaymentElementChangeEventValue _$PaymentElementChangeEventValueFromJson(
 mixin _$PaymentElementChangeEventValue {
   String? get type => throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentElementChangeEventValue to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentElementChangeEventValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentElementChangeEventValueCopyWith<PaymentElementChangeEventValue>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -301,6 +320,8 @@ class _$PaymentElementChangeEventValueCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentElementChangeEventValue
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -337,6 +358,8 @@ class __$$PaymentElementChangeEventValueImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementChangeEventValueImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentElementChangeEventValue
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -377,11 +400,13 @@ class _$PaymentElementChangeEventValueImpl
             (identical(other.type, type) || other.type == type));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentElementChangeEventValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementChangeEventValueImplCopyWith<
@@ -407,8 +432,11 @@ abstract class _PaymentElementChangeEventValue
 
   @override
   String? get type;
+
+  /// Create a copy of PaymentElementChangeEventValue
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementChangeEventValueImplCopyWith<
           _$PaymentElementChangeEventValueImpl>
       get copyWith => throw _privateConstructorUsedError;

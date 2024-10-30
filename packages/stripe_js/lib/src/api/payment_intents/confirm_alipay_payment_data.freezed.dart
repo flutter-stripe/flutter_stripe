@@ -12,7 +12,7 @@ part of 'confirm_alipay_payment_data.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ConfirmAlipayPaymentData _$ConfirmAlipayPaymentDataFromJson(
     Map<String, dynamic> json) {
@@ -31,8 +31,12 @@ mixin _$ConfirmAlipayPaymentData {
   @JsonKey(name: "return_url")
   String? get returnUrl => throw _privateConstructorUsedError;
 
+  /// Serializes this ConfirmAlipayPaymentData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ConfirmAlipayPaymentData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ConfirmAlipayPaymentDataCopyWith<ConfirmAlipayPaymentData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,6 +63,8 @@ class _$ConfirmAlipayPaymentDataCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ConfirmAlipayPaymentData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -102,6 +108,8 @@ class __$$ConfirmAlipayPaymentDataImplCopyWithImpl<$Res>
       $Res Function(_$ConfirmAlipayPaymentDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ConfirmAlipayPaymentData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,7 +157,7 @@ class _$ConfirmAlipayPaymentDataImpl implements _ConfirmAlipayPaymentData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ConfirmAlipayPaymentDataImpl &&
@@ -159,11 +167,13 @@ class _$ConfirmAlipayPaymentDataImpl implements _ConfirmAlipayPaymentData {
                 other.returnUrl == returnUrl));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, paymentMethod, returnUrl);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ConfirmAlipayPaymentData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ConfirmAlipayPaymentDataImplCopyWith<_$ConfirmAlipayPaymentDataImpl>
@@ -187,20 +197,22 @@ abstract class _ConfirmAlipayPaymentData implements ConfirmAlipayPaymentData {
   factory _ConfirmAlipayPaymentData.fromJson(Map<String, dynamic> json) =
       _$ConfirmAlipayPaymentDataImpl.fromJson;
 
-  @override
-
   /// Either the id of an existing PaymentMethod, or an object containing
   /// data to create a PaymentMethod with.
   /// See the use case sections below for details.
+  @override
   @JsonKey(name: "payment_method")
   String? get paymentMethod;
-  @override
 
   /// The url your customer will be directed to after they complete authentication.
+  @override
   @JsonKey(name: "return_url")
   String? get returnUrl;
+
+  /// Create a copy of ConfirmAlipayPaymentData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ConfirmAlipayPaymentDataImplCopyWith<_$ConfirmAlipayPaymentDataImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

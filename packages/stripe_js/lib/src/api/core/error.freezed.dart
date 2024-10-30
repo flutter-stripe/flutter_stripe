@@ -41,8 +41,12 @@ mixin _$StripeError {
   /// field.
   String? get param => throw _privateConstructorUsedError;
 
+  /// Serializes this StripeError to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StripeError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StripeErrorCopyWith<StripeError> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -71,6 +75,8 @@ class _$StripeErrorCopyWithImpl<$Res, $Val extends StripeError>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StripeError
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -131,6 +137,8 @@ class __$$PaymentElementChangeEventImplCopyWithImpl<$Res>
       $Res Function(_$PaymentElementChangeEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StripeError
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -218,12 +226,14 @@ class _$PaymentElementChangeEventImpl implements _PaymentElementChangeEvent {
             (identical(other.param, param) || other.param == param));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, type, code, decline_code, message, param);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StripeError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentElementChangeEventImplCopyWith<_$PaymentElementChangeEventImpl>
@@ -249,34 +259,36 @@ abstract class _PaymentElementChangeEvent implements StripeError {
   factory _PaymentElementChangeEvent.fromJson(Map<String, dynamic> json) =
       _$PaymentElementChangeEventImpl.fromJson;
 
-  @override
-
   /// The type of error returned. One of api_error, card_error,
   /// idempotency_error, or invalid_request_error
-  String? get type;
   @override
+  String? get type;
 
   /// For some errors that could be handled programmatically,
   /// a short string indicating the error code reported.
-  String? get code;
   @override
+  String? get code;
 
   /// For card errors resulting from a card issuer decline, a short string
   /// indicating the card issuer’s reason for the decline if they provide one.
-  String? get decline_code;
   @override
+  String? get decline_code;
 
   /// A human-readable message providing more details about the error.
   /// For card errors, these messages can be shown to your users.
-  String? get message;
   @override
+  String? get message;
 
   /// If the error is parameter-specific, the parameter related to the error.
   /// For example, you can use this to display a message near the correct form
   /// field.
-  String? get param;
   @override
-  @JsonKey(ignore: true)
+  String? get param;
+
+  /// Create a copy of StripeError
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentElementChangeEventImplCopyWith<_$PaymentElementChangeEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

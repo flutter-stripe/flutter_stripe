@@ -53,8 +53,12 @@ mixin _$Token {
   /// (tokens can be used only once).
   bool get used => throw _privateConstructorUsedError;
 
+  /// Serializes this Token to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Token
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TokenCopyWith<Token> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -88,6 +92,8 @@ class _$TokenCopyWithImpl<$Res, $Val extends Token>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Token
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -141,6 +147,8 @@ class _$TokenCopyWithImpl<$Res, $Val extends Token>
     ) as $Val);
   }
 
+  /// Create a copy of Token
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BankAccountTokenCopyWith<$Res>? get bankAccount {
@@ -153,6 +161,8 @@ class _$TokenCopyWithImpl<$Res, $Val extends Token>
     });
   }
 
+  /// Create a copy of Token
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CardTokenCopyWith<$Res>? get card {
@@ -198,6 +208,8 @@ class __$$TokenImplCopyWithImpl<$Res>
       _$TokenImpl _value, $Res Function(_$TokenImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Token
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -338,12 +350,14 @@ class _$TokenImpl implements _Token {
             (identical(other.used, used) || other.used == used));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, object, bankAccount, card,
       clientIP, created, livemode, type, used);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Token
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TokenImplCopyWith<_$TokenImpl> get copyWith =>
@@ -371,50 +385,52 @@ abstract class _Token implements Token {
 
   factory _Token.fromJson(Map<String, dynamic> json) = _$TokenImpl.fromJson;
 
-  @override
-
   /// Unique identifier for the object.
-  String get id;
   @override
+  String get id;
 
   /// String representing the object’s type.
   /// Objects of the same type share the same value.
   /// Value is "token".
-  String get object;
   @override
+  String get object;
 
   /// Hash describing the bank account.
+  @override
   @JsonKey(name: "bank_account")
   BankAccountToken? get bankAccount;
-  @override
 
   /// Hash describing the card used to make the charge.
-  CardToken? get card;
   @override
+  CardToken? get card;
 
   /// IP address of the client that generated the token.
+  @override
   @JsonKey(name: "client_ip")
   String? get clientIP;
-  @override
 
   /// Time at which the object was created. Measured in seconds since the Unix epoch.
-  int? get created;
   @override
+  int? get created;
 
   /// Type of the token: account, bank_account, card, or pii.
-  bool get livemode;
   @override
+  bool get livemode;
 
   /// Has the value true if the object exists in live mode or the
   /// value false if the object exists in test mode.
-  TokenType get type;
   @override
+  TokenType get type;
 
   /// Whether this token has already been used
   /// (tokens can be used only once).
-  bool get used;
   @override
-  @JsonKey(ignore: true)
+  bool get used;
+
+  /// Create a copy of Token
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TokenImplCopyWith<_$TokenImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -494,8 +510,12 @@ mixin _$BankAccountToken {
   /// stopped until account details are updated.
   BankAccountStatus? get status => throw _privateConstructorUsedError;
 
+  /// Serializes this BankAccountToken to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BankAccountToken
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BankAccountTokenCopyWith<BankAccountToken> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -532,6 +552,8 @@ class _$BankAccountTokenCopyWithImpl<$Res, $Val extends BankAccountToken>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BankAccountToken
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -633,6 +655,8 @@ class __$$BankAccountTokenImplCopyWithImpl<$Res>
       $Res Function(_$BankAccountTokenImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BankAccountToken
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -834,7 +858,7 @@ class _$BankAccountTokenImpl implements _BankAccountToken {
             (identical(other.status, status) || other.status == status));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -851,7 +875,9 @@ class _$BankAccountTokenImpl implements _BankAccountToken {
       routingNumber,
       status);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BankAccountToken
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BankAccountTokenImplCopyWith<_$BankAccountTokenImpl> get copyWith =>
@@ -885,64 +911,62 @@ abstract class _BankAccountToken implements BankAccountToken {
   factory _BankAccountToken.fromJson(Map<String, dynamic> json) =
       _$BankAccountTokenImpl.fromJson;
 
-  @override
-
   /// Unique identifier for the object.
-  String get id;
   @override
+  String get id;
 
   /// String representing the object’s type.
   /// Objects of the same type share the same value.
   /// Value is "bank_account".
-  String get object;
   @override
+  String get object;
 
   /// The name of the person or business that owns the bank account.
+  @override
   @JsonKey(name: "account_holder_name")
   String? get accountHolderName;
-  @override
 
   /// The type of entity that holds the account.
   /// This can be either individual or company.
+  @override
   @JsonKey(name: "account_holder_type")
   BankAccountHolderType? get accountHolderType;
-  @override
 
   /// The bank account type.
   /// This can only be checking or savings in most countries.
   /// In Japan, this can only be futsu or toza.
+  @override
   @JsonKey(name: "account_type")
   String? get accountType;
-  @override
 
   /// Name of the bank associated with the routing number (e.g., WELLS FARGO).
+  @override
   @JsonKey(name: "bank_name")
   String? get bankName;
-  @override
 
   /// Two-letter ISO code representing the country the bank account is
   /// located in.
-  String? get country;
   @override
+  String? get country;
 
   /// Three-letter ISO code for the currency paid out to the bank account.
-  String? get currency;
   @override
+  String? get currency;
 
   /// Uniquely identifies this particular bank account.
   /// You can use this attribute to check whether two bank accounts are
   /// the same.
-  String? get fingerprint;
   @override
+  String? get fingerprint;
 
   /// The last four digits of the bank account number.
-  String? get last4;
   @override
+  String? get last4;
 
   /// The routing transit number for the bank account.
+  @override
   @JsonKey(name: "routing_number")
   String? get routingNumber;
-  @override
 
   /// For bank accounts, possible values are new, validated, verified,
   /// verification_failed, or errored.
@@ -964,9 +988,13 @@ abstract class _BankAccountToken implements BankAccountToken {
   /// only used for payouts. This means the other statuses don’t apply.
   /// If a transfer fails, the status is set to errored and transfers are
   /// stopped until account details are updated.
-  BankAccountStatus? get status;
   @override
-  @JsonKey(ignore: true)
+  BankAccountStatus? get status;
+
+  /// Create a copy of BankAccountToken
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BankAccountTokenImplCopyWith<_$BankAccountTokenImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1089,8 +1117,12 @@ mixin _$CardToken {
   CardTokenizationMethod? get tokenizationMethod =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this CardToken to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CardToken
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CardTokenCopyWith<CardToken> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1138,6 +1170,8 @@ class _$CardTokenCopyWithImpl<$Res, $Val extends CardToken>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CardToken
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1306,6 +1340,8 @@ class __$$CardTokenImplCopyWithImpl<$Res>
       _$CardTokenImpl _value, $Res Function(_$CardTokenImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CardToken
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1656,7 +1692,7 @@ class _$CardTokenImpl implements _CardToken {
                 other.tokenizationMethod == tokenizationMethod));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -1685,7 +1721,9 @@ class _$CardTokenImpl implements _CardToken {
         tokenizationMethod
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CardToken
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CardTokenImplCopyWith<_$CardTokenImpl> get copyWith =>
@@ -1731,75 +1769,73 @@ abstract class _CardToken implements CardToken {
   factory _CardToken.fromJson(Map<String, dynamic> json) =
       _$CardTokenImpl.fromJson;
 
-  @override
-
   /// Unique identifier for the object.
-  String get id;
   @override
+  String get id;
 
   /// String representing the object’s type.
   /// Objects of the same type share the same value.
   /// Value is "card".
-  String get object;
   @override
+  String get object;
 
   /// City/District/Suburb/Town/Village.
+  @override
   @JsonKey(name: "address_city")
   String? get addressCity;
-  @override
 
   /// Billing address country, if provided when creating card.
+  @override
   @JsonKey(name: "address_country")
   String? get addressCountry;
-  @override
 
   /// Address line 1 (Street address/PO Box/Company name).
+  @override
   @JsonKey(name: "address_line1")
   String? get addressLine1;
-  @override
 
   /// If address_line1 was provided, results of the check:
   /// pass, fail, unavailable, or unchecked.
+  @override
   @JsonKey(name: "address_line1_check")
   VerificationCheck? get addressLine1Check;
-  @override
 
   /// Address line 2 (Apartment/Suite/Unit/Building).
+  @override
   @JsonKey(name: "address_line2")
   String? get addressLine2;
-  @override
 
   /// State/County/Province/Region.
+  @override
   @JsonKey(name: "address_state")
   String? get addressState;
-  @override
 
   /// ZIP or postal code.
+  @override
   @JsonKey(name: "address_zip")
   String? get addressZip;
-  @override
 
   /// If address_zip was provided, results of the check:
   /// pass, fail, unavailable, or unchecked.
+  @override
   @JsonKey(name: "address_zip_check")
   VerificationCheck? get addressZipCheck;
-  @override
 
   /// If address_zip was provided, results of the check:
   /// pass, fail, unavailable, or unchecked.
-  CardTokenBrand? get brand;
   @override
+  CardTokenBrand? get brand;
 
   /// Two-letter ISO code representing the country of the card.
   /// You could use this attribute to get a sense of the
   /// international breakdown of cards you’ve collected.
-  String? get country;
   @override
+  String? get country;
 
   /// Three-letter ISO currency code, in lowercase.
   /// Must be a supported currency.
-  String? get currency;
   @override
+  String? get currency;
 
   /// If a CVC was provided, results of the check:
   /// pass, fail, unavailable, or unchecked.
@@ -1809,25 +1845,25 @@ abstract class _CardToken implements CardToken {
   /// object, or when creating a charge. For more details, see
   /// Check if a card is valid without a charge.
   /// https://support.stripe.com/questions/check-if-a-card-is-valid-without-a-charge
+  @override
   @JsonKey(name: "cvc_check")
   VerificationCheck? get cvcCheck;
-  @override
 
   /// (For tokenized numbers only.)
   /// The last four digits of the device account number.
+  @override
   @JsonKey(name: "dynamic_last4")
   String? get dynamicLast4;
-  @override
 
   /// Two-digit number representing the card’s expiration month.
+  @override
   @JsonKey(name: "exp_month")
   int? get expMonth;
-  @override
 
   /// Four-digit number representing the card’s expiration year.
+  @override
   @JsonKey(name: "exp_year")
   int? get expYear;
-  @override
 
   /// Uniquely identifies this particular card number.
   /// You can use this attribute to check whether two customers who’ve
@@ -1838,34 +1874,38 @@ abstract class _CardToken implements CardToken {
   /// Starting May 1, 2021, card fingerprint in India for Connect will
   /// change to allow two fingerprints for the same card — one for India and
   /// one for the rest of the world.
-  String? get fingerprint;
   @override
+  String? get fingerprint;
 
   /// Card funding type. Can be credit, debit, prepaid, or unknown.
-  CardFundingType? get funding;
   @override
+  CardFundingType? get funding;
 
   /// The last four digits of the card.
-  String? get last4;
   @override
+  String? get last4;
 
   /// Set of key-value pairs that you can attach to an object.
   /// This can be useful for storing additional information about the object
   /// in a structured forma
-  Map<String, dynamic> get metadata;
   @override
+  Map<String, dynamic> get metadata;
 
   /// Cardholder name.
-  String? get name;
   @override
+  String? get name;
 
   /// If the card number is tokenized, this is the method that was used.
   /// Can be android_pay (includes Google Pay), apple_pay, masterpass,
   /// visa_checkout, or null.
+  @override
   @JsonKey(name: "tokenization_method")
   CardTokenizationMethod? get tokenizationMethod;
+
+  /// Create a copy of CardToken
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CardTokenImplCopyWith<_$CardTokenImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
