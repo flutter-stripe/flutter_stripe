@@ -156,7 +156,6 @@ class PaymentElementState extends State<PaymentElement> {
     ui.platformViewRegistry.registerViewFactory(
       'stripe_payment_element',
       (int viewId) => _divElement,
-      ..style.height = '${height}';
     );
 
     super.initState();
