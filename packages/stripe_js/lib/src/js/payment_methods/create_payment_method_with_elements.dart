@@ -1,6 +1,5 @@
 import 'dart:js_interop';
 
-import 'package:stripe_js/src/api/payment_methods/create_payment_method_with_elements_data.dart';
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 
