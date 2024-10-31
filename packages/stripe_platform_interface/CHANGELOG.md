@@ -1,3 +1,8 @@
+## 11.2.1
+
+**Features**
+- add methods for deferred payment on web
+
 ## 11.2.0
 
 **Features**

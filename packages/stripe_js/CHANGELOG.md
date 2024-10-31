@@ -1,3 +1,7 @@
+## 6.3.0
+**Features**
+- add method for deferred payment
+
 ## 6.2.1
 **Features**
 - Add support for any kind of payment method in setup intent with [confirmSetup]
