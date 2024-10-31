@@ -13,14 +13,13 @@ export 'package:stripe_js/stripe_api.dart'
     show
         ElementAppearance,
         ElementTheme,
+        ElementAppearanceLabels,
         PaymentElementLayout,
         PaymentElementDefaultValues,
         PaymentElementBillingDetails,
-        PaymentElementBillingDetailsAddress;
-
-typedef PaymentElementTheme = js.ElementTheme;
-typedef PaymentElementAppearance = js.ElementAppearance;
-typedef PaymentElementAppearanceLabels = js.ElementAppearanceLabels;
+        PaymentElementBillingDetailsAddress,
+        PaymentElementWalletOptions,
+        PaymentElementFieldRequired;
 
 class PaymentElement extends StatefulWidget {
   final String? clientSecret;
