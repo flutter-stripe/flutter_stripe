@@ -645,6 +645,7 @@ extension  StripePlugin {
         }
         
         intentCreationCallback(result: params, resolver: resolver(for: result), rejecter: rejecter(for: result))
+        result(nil)
     }
     
     func dangerouslyUpdateCardDetails(_ call: FlutterMethodCall, result: @escaping FlutterResult) {

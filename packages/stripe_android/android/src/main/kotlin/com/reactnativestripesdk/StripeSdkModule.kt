@@ -219,6 +219,7 @@ class StripeSdkModule(val reactContext: ReactApplicationContext) : ReactContextB
     }
 
     paymentSheetFragment?.paymentSheetIntentCreationCallback?.complete(params)
+    promise.resolve(null)
   }
 
   private fun payWithFpx() {
