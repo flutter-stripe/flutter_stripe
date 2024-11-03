@@ -32,6 +32,10 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     ///A temp key can be used for API operations that require a secret key.
     String? customerEphemeralKeySecret,
 
+    /// (Experimental) This parameter can be changed or removed at any time (use at your own risk).
+    /// The client secret of this Customer Session. Used on the client to set up secure access to the given customer.
+    String? customerSessionClientSecret,
+
     /// Secret used for client-side retrieval using a publishable key.
     ///
     /// If this value is null make sure to add a [setupIntentClientSecret]

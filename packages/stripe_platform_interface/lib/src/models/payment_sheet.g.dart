@@ -13,6 +13,8 @@ _$SetupParametersImpl _$$SetupParametersImplFromJson(
       customerId: json['customerId'] as String?,
       primaryButtonLabel: json['primaryButtonLabel'] as String?,
       customerEphemeralKeySecret: json['customerEphemeralKeySecret'] as String?,
+      customerSessionClientSecret:
+          json['customerSessionClientSecret'] as String?,
       paymentIntentClientSecret: json['paymentIntentClientSecret'] as String?,
       setupIntentClientSecret: json['setupIntentClientSecret'] as String?,
       intentConfiguration: json['intentConfiguration'] == null
@@ -65,6 +67,7 @@ Map<String, dynamic> _$$SetupParametersImplToJson(
       'customerId': instance.customerId,
       'primaryButtonLabel': instance.primaryButtonLabel,
       'customerEphemeralKeySecret': instance.customerEphemeralKeySecret,
+      'customerSessionClientSecret': instance.customerSessionClientSecret,
       'paymentIntentClientSecret': instance.paymentIntentClientSecret,
       'setupIntentClientSecret': instance.setupIntentClientSecret,
       'intentConfiguration': instance.intentConfiguration?.toJson(),

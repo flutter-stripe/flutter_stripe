@@ -38,6 +38,10 @@ mixin _$SetupPaymentSheetParameters {
   ///A temp key can be used for API operations that require a secret key.
   String? get customerEphemeralKeySecret => throw _privateConstructorUsedError;
 
+  /// (Experimental) This parameter can be changed or removed at any time (use at your own risk).
+  /// The client secret of this Customer Session. Used on the client to set up secure access to the given customer.
+  String? get customerSessionClientSecret => throw _privateConstructorUsedError;
+
   /// Secret used for client-side retrieval using a publishable key.
   ///
   /// If this value is null make sure to add a [setupIntentClientSecret]
@@ -138,6 +142,7 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
       String? customerId,
       String? primaryButtonLabel,
       String? customerEphemeralKeySecret,
+      String? customerSessionClientSecret,
       String? paymentIntentClientSecret,
       String? setupIntentClientSecret,
       IntentConfiguration? intentConfiguration,
@@ -184,6 +189,7 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
     Object? customerId = freezed,
     Object? primaryButtonLabel = freezed,
     Object? customerEphemeralKeySecret = freezed,
+    Object? customerSessionClientSecret = freezed,
     Object? paymentIntentClientSecret = freezed,
     Object? setupIntentClientSecret = freezed,
     Object? intentConfiguration = freezed,
@@ -217,6 +223,10 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
       customerEphemeralKeySecret: freezed == customerEphemeralKeySecret
           ? _value.customerEphemeralKeySecret
           : customerEphemeralKeySecret // ignore: cast_nullable_to_non_nullable
+              as String?,
+      customerSessionClientSecret: freezed == customerSessionClientSecret
+          ? _value.customerSessionClientSecret
+          : customerSessionClientSecret // ignore: cast_nullable_to_non_nullable
               as String?,
       paymentIntentClientSecret: freezed == paymentIntentClientSecret
           ? _value.paymentIntentClientSecret
@@ -378,6 +388,7 @@ abstract class _$$SetupParametersImplCopyWith<$Res>
       String? customerId,
       String? primaryButtonLabel,
       String? customerEphemeralKeySecret,
+      String? customerSessionClientSecret,
       String? paymentIntentClientSecret,
       String? setupIntentClientSecret,
       IntentConfiguration? intentConfiguration,
@@ -427,6 +438,7 @@ class __$$SetupParametersImplCopyWithImpl<$Res>
     Object? customerId = freezed,
     Object? primaryButtonLabel = freezed,
     Object? customerEphemeralKeySecret = freezed,
+    Object? customerSessionClientSecret = freezed,
     Object? paymentIntentClientSecret = freezed,
     Object? setupIntentClientSecret = freezed,
     Object? intentConfiguration = freezed,
@@ -460,6 +472,10 @@ class __$$SetupParametersImplCopyWithImpl<$Res>
       customerEphemeralKeySecret: freezed == customerEphemeralKeySecret
           ? _value.customerEphemeralKeySecret
           : customerEphemeralKeySecret // ignore: cast_nullable_to_non_nullable
+              as String?,
+      customerSessionClientSecret: freezed == customerSessionClientSecret
+          ? _value.customerSessionClientSecret
+          : customerSessionClientSecret // ignore: cast_nullable_to_non_nullable
               as String?,
       paymentIntentClientSecret: freezed == paymentIntentClientSecret
           ? _value.paymentIntentClientSecret
@@ -541,6 +557,7 @@ class _$SetupParametersImpl implements _SetupParameters {
       this.customerId,
       this.primaryButtonLabel,
       this.customerEphemeralKeySecret,
+      this.customerSessionClientSecret,
       this.paymentIntentClientSecret,
       this.setupIntentClientSecret,
       this.intentConfiguration,
@@ -585,6 +602,11 @@ class _$SetupParametersImpl implements _SetupParameters {
   ///A temp key can be used for API operations that require a secret key.
   @override
   final String? customerEphemeralKeySecret;
+
+  /// (Experimental) This parameter can be changed or removed at any time (use at your own risk).
+  /// The client secret of this Customer Session. Used on the client to set up secure access to the given customer.
+  @override
+  final String? customerSessionClientSecret;
 
   /// Secret used for client-side retrieval using a publishable key.
   ///
@@ -707,7 +729,7 @@ class _$SetupParametersImpl implements _SetupParameters {
 
   @override
   String toString() {
-    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, intentConfiguration: $intentConfiguration, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, allowsRemovalOfLastSavedPaymentMethod: $allowsRemovalOfLastSavedPaymentMethod, paymentMethodOrder: $paymentMethodOrder, returnURL: $returnURL, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, preferredNetworks: $preferredNetworks)';
+    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, customerSessionClientSecret: $customerSessionClientSecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, intentConfiguration: $intentConfiguration, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, allowsRemovalOfLastSavedPaymentMethod: $allowsRemovalOfLastSavedPaymentMethod, paymentMethodOrder: $paymentMethodOrder, returnURL: $returnURL, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, preferredNetworks: $preferredNetworks)';
   }
 
   @override
@@ -724,6 +746,9 @@ class _$SetupParametersImpl implements _SetupParameters {
             (identical(other.customerEphemeralKeySecret, customerEphemeralKeySecret) ||
                 other.customerEphemeralKeySecret ==
                     customerEphemeralKeySecret) &&
+            (identical(other.customerSessionClientSecret, customerSessionClientSecret) ||
+                other.customerSessionClientSecret ==
+                    customerSessionClientSecret) &&
             (identical(other.paymentIntentClientSecret, paymentIntentClientSecret) ||
                 other.paymentIntentClientSecret == paymentIntentClientSecret) &&
             (identical(other.setupIntentClientSecret, setupIntentClientSecret) ||
@@ -754,9 +779,7 @@ class _$SetupParametersImpl implements _SetupParameters {
             (identical(other.billingDetailsCollectionConfiguration, billingDetailsCollectionConfiguration) ||
                 other.billingDetailsCollectionConfiguration ==
                     billingDetailsCollectionConfiguration) &&
-            (identical(other.removeSavedPaymentMethodMessage, removeSavedPaymentMethodMessage) ||
-                other.removeSavedPaymentMethodMessage ==
-                    removeSavedPaymentMethodMessage) &&
+            (identical(other.removeSavedPaymentMethodMessage, removeSavedPaymentMethodMessage) || other.removeSavedPaymentMethodMessage == removeSavedPaymentMethodMessage) &&
             const DeepCollectionEquality().equals(other._preferredNetworks, _preferredNetworks));
   }
 
@@ -768,6 +791,7 @@ class _$SetupParametersImpl implements _SetupParameters {
         customerId,
         primaryButtonLabel,
         customerEphemeralKeySecret,
+        customerSessionClientSecret,
         paymentIntentClientSecret,
         setupIntentClientSecret,
         intentConfiguration,
@@ -807,6 +831,7 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
       final String? customerId,
       final String? primaryButtonLabel,
       final String? customerEphemeralKeySecret,
+      final String? customerSessionClientSecret,
       final String? paymentIntentClientSecret,
       final String? setupIntentClientSecret,
       final IntentConfiguration? intentConfiguration,
@@ -852,6 +877,14 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   ///A temp key can be used for API operations that require a secret key.
   String? get customerEphemeralKeySecret;
   @override
+<<<<<<< HEAD
+=======
+
+  /// (Experimental) This parameter can be changed or removed at any time (use at your own risk).
+  /// The client secret of this Customer Session. Used on the client to set up secure access to the given customer.
+  String? get customerSessionClientSecret;
+  @override
+>>>>>>> d1fce74 (feat: add customer session client secret to payment sheet)
 
   /// Secret used for client-side retrieval using a publishable key.
   ///
@@ -2303,7 +2336,10 @@ abstract class _PaymentSheetGooglePay implements PaymentSheetGooglePay {
   @override
 
   /// The Google Pay button type to use. Set to "Pay" by default.
+<<<<<<< HEAD
   @JsonKey(toJson: PaymentSheetGooglePay.platformButtonTypeToJson)
+=======
+>>>>>>> d1fce74 (feat: add customer session client secret to payment sheet)
   PlatformButtonType? get buttonType;
   @override
   @JsonKey(ignore: true)
