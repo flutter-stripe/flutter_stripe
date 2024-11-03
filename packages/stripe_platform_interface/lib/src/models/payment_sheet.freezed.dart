@@ -877,14 +877,11 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   ///A temp key can be used for API operations that require a secret key.
   String? get customerEphemeralKeySecret;
   @override
-<<<<<<< HEAD
-=======
 
   /// (Experimental) This parameter can be changed or removed at any time (use at your own risk).
   /// The client secret of this Customer Session. Used on the client to set up secure access to the given customer.
   String? get customerSessionClientSecret;
   @override
->>>>>>> d1fce74 (feat: add customer session client secret to payment sheet)
 
   /// Secret used for client-side retrieval using a publishable key.
   ///
@@ -2336,10 +2333,7 @@ abstract class _PaymentSheetGooglePay implements PaymentSheetGooglePay {
   @override
 
   /// The Google Pay button type to use. Set to "Pay" by default.
-<<<<<<< HEAD
   @JsonKey(toJson: PaymentSheetGooglePay.platformButtonTypeToJson)
-=======
->>>>>>> d1fce74 (feat: add customer session client secret to payment sheet)
   PlatformButtonType? get buttonType;
   @override
   @JsonKey(ignore: true)
