@@ -44,12 +44,8 @@ mixin _$GooglePayCardToken {
   /// Deprecated. Use fpanLastFour or dpanLastFour.,
   String get cardLastFour => throw _privateConstructorUsedError;
 
-  /// Serializes this GooglePayCardToken to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of GooglePayCardToken
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $GooglePayCardTokenCopyWith<GooglePayCardToken> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -81,8 +77,6 @@ class _$GooglePayCardTokenCopyWithImpl<$Res, $Val extends GooglePayCardToken>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of GooglePayCardToken
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,8 +153,6 @@ class __$$GooglePayCardTokenImplCopyWithImpl<$Res>
       $Res Function(_$GooglePayCardTokenImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of GooglePayCardToken
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -283,14 +275,12 @@ class _$GooglePayCardTokenImpl implements _GooglePayCardToken {
                 other.cardLastFour == cardLastFour));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, fpanLastFour, dpanLastFour,
       network, serviceProvider, issuer, status, cardLastFour);
 
-  /// Create a copy of GooglePayCardToken
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$GooglePayCardTokenImplCopyWith<_$GooglePayCardTokenImpl> get copyWith =>
@@ -319,42 +309,40 @@ abstract class _GooglePayCardToken implements GooglePayCardToken {
   factory _GooglePayCardToken.fromJson(Map<String, dynamic> json) =
       _$GooglePayCardTokenImpl.fromJson;
 
-  /// The token reference ID.,
   @override
+
+  /// The token reference ID.,
   String get id;
+  @override
 
   /// Last four digits of the FPAN,
-  @override
   String get fpanLastFour;
+  @override
 
   /// Last four digits of the DPAN,
-  @override
   String get dpanLastFour;
+  @override
 
   /// The network of the card.
-  @override
   int get network;
+  @override
 
   /// The service provider of the card.
-  @override
   int get serviceProvider;
+  @override
 
   /// The name of the issuer.,
-  @override
   String get issuer;
+  @override
 
   /// The GooglePayCardTokenStatus.,
-  @override
   GooglePayCardTokenStatus get status;
+  @override
 
   /// Deprecated. Use fpanLastFour or dpanLastFour.,
-  @override
   String get cardLastFour;
-
-  /// Create a copy of GooglePayCardToken
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$GooglePayCardTokenImplCopyWith<_$GooglePayCardTokenImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -368,12 +356,8 @@ mixin _$IsCardInWalletResult {
   bool get isInWallet => throw _privateConstructorUsedError;
   GooglePayCardToken? get token => throw _privateConstructorUsedError;
 
-  /// Serializes this IsCardInWalletResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of IsCardInWalletResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $IsCardInWalletResultCopyWith<IsCardInWalletResult> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -400,8 +384,6 @@ class _$IsCardInWalletResultCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of IsCardInWalletResult
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -420,8 +402,6 @@ class _$IsCardInWalletResultCopyWithImpl<$Res,
     ) as $Val);
   }
 
-  /// Create a copy of IsCardInWalletResult
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $GooglePayCardTokenCopyWith<$Res>? get token {
@@ -457,8 +437,6 @@ class __$$IsCardInWalletResultImplCopyWithImpl<$Res>
       $Res Function(_$IsCardInWalletResultImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of IsCardInWalletResult
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -507,13 +485,11 @@ class _$IsCardInWalletResultImpl implements _IsCardInWalletResult {
             (identical(other.token, token) || other.token == token));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, isInWallet, token);
 
-  /// Create a copy of IsCardInWalletResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$IsCardInWalletResultImplCopyWith<_$IsCardInWalletResultImpl>
@@ -541,11 +517,8 @@ abstract class _IsCardInWalletResult implements IsCardInWalletResult {
   bool get isInWallet;
   @override
   GooglePayCardToken? get token;
-
-  /// Create a copy of IsCardInWalletResult
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$IsCardInWalletResultImplCopyWith<_$IsCardInWalletResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -560,12 +533,8 @@ mixin _$CanAddCardToWalletResult {
   bool get canAddCard => throw _privateConstructorUsedError;
   CanAddCardToDetails? get details => throw _privateConstructorUsedError;
 
-  /// Serializes this CanAddCardToWalletResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of CanAddCardToWalletResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $CanAddCardToWalletResultCopyWith<CanAddCardToWalletResult> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -592,8 +561,6 @@ class _$CanAddCardToWalletResultCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of CanAddCardToWalletResult
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -612,8 +579,6 @@ class _$CanAddCardToWalletResultCopyWithImpl<$Res,
     ) as $Val);
   }
 
-  /// Create a copy of CanAddCardToWalletResult
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CanAddCardToDetailsCopyWith<$Res>? get details {
@@ -652,8 +617,6 @@ class __$$CanAddCardToWalletResultImplCopyWithImpl<$Res>
       $Res Function(_$CanAddCardToWalletResultImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CanAddCardToWalletResult
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -703,13 +666,11 @@ class _$CanAddCardToWalletResultImpl implements _CanAddCardToWalletResult {
             (identical(other.details, details) || other.details == details));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, canAddCard, details);
 
-  /// Create a copy of CanAddCardToWalletResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$CanAddCardToWalletResultImplCopyWith<_$CanAddCardToWalletResultImpl>
@@ -736,11 +697,8 @@ abstract class _CanAddCardToWalletResult implements CanAddCardToWalletResult {
   bool get canAddCard;
   @override
   CanAddCardToDetails? get details;
-
-  /// Create a copy of CanAddCardToWalletResult
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$CanAddCardToWalletResultImplCopyWith<_$CanAddCardToWalletResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -754,12 +712,8 @@ mixin _$CanAddCardToDetails {
   GooglePayCardToken? get token => throw _privateConstructorUsedError;
   CanAddCardToWalletStatus? get status => throw _privateConstructorUsedError;
 
-  /// Serializes this CanAddCardToDetails to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of CanAddCardToDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $CanAddCardToDetailsCopyWith<CanAddCardToDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -785,8 +739,6 @@ class _$CanAddCardToDetailsCopyWithImpl<$Res, $Val extends CanAddCardToDetails>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of CanAddCardToDetails
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -805,8 +757,6 @@ class _$CanAddCardToDetailsCopyWithImpl<$Res, $Val extends CanAddCardToDetails>
     ) as $Val);
   }
 
-  /// Create a copy of CanAddCardToDetails
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $GooglePayCardTokenCopyWith<$Res>? get token {
@@ -842,8 +792,6 @@ class __$$CanAddCardToDetailsImplCopyWithImpl<$Res>
       $Res Function(_$CanAddCardToDetailsImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CanAddCardToDetails
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -891,13 +839,11 @@ class _$CanAddCardToDetailsImpl implements _CanAddCardToDetails {
             (identical(other.status, status) || other.status == status));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, token, status);
 
-  /// Create a copy of CanAddCardToDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$CanAddCardToDetailsImplCopyWith<_$CanAddCardToDetailsImpl> get copyWith =>
@@ -924,11 +870,8 @@ abstract class _CanAddCardToDetails implements CanAddCardToDetails {
   GooglePayCardToken? get token;
   @override
   CanAddCardToWalletStatus? get status;
-
-  /// Create a copy of CanAddCardToDetails
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$CanAddCardToDetailsImplCopyWith<_$CanAddCardToDetailsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -955,12 +898,8 @@ mixin _$CanAddCardToWalletParams {
   /// Android only, defaults to `true`. Set this to `false` if you'd like to allow users without NFC-enabled devices to add cards to the wallet. NFC is required for paying in stores.
   bool? get supportsTapToPay => throw _privateConstructorUsedError;
 
-  /// Serializes this CanAddCardToWalletParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of CanAddCardToWalletParams
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $CanAddCardToWalletParamsCopyWith<CanAddCardToWalletParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -990,8 +929,6 @@ class _$CanAddCardToWalletParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of CanAddCardToWalletParams
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1053,8 +990,6 @@ class __$$CanAddCardToWalletParamsImplCopyWithImpl<$Res>
       $Res Function(_$CanAddCardToWalletParamsImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CanAddCardToWalletParams
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1145,14 +1080,12 @@ class _$CanAddCardToWalletParamsImpl implements _CanAddCardToWalletParams {
                 other.supportsTapToPay == supportsTapToPay));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, primaryAccountIdentifier,
       cardLastFour, testEnv, hasPairedAppleWatch, supportsTapToPay);
 
-  /// Create a copy of CanAddCardToWalletParams
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$CanAddCardToWalletParamsImplCopyWith<_$CanAddCardToWalletParamsImpl>
@@ -1178,30 +1111,28 @@ abstract class _CanAddCardToWalletParams implements CanAddCardToWalletParams {
   factory _CanAddCardToWalletParams.fromJson(Map<String, dynamic> json) =
       _$CanAddCardToWalletParamsImpl.fromJson;
 
-  ///The `primary_account_identifier` value from the issued card. Can be an empty string.
   @override
+
+  ///The `primary_account_identifier` value from the issued card. Can be an empty string.
   String? get primaryAccountIdentifier;
+  @override
 
   /// Last 4 digits of the card number. Required for Android.
-  @override
   String get cardLastFour;
+  @override
 
   /// iOS only. Set this to `true` until shipping through TestFlight || App Store. If false, you must be using live cards, and have the proper iOS entitlement set up. See https://stripe.com/docs/issuing/cards/digital-wallets?platform=react-native#requesting-access-for-ios
-  @override
   bool? get testEnv;
+  @override
 
   /// iOS only. Set this to `true` if: your user has an Apple Watch device currently paired, and you want to check that device for the presence of the specified card.
-  @override
   bool? get hasPairedAppleWatch;
+  @override
 
   /// Android only, defaults to `true`. Set this to `false` if you'd like to allow users without NFC-enabled devices to add cards to the wallet. NFC is required for paying in stores.
-  @override
   bool? get supportsTapToPay;
-
-  /// Create a copy of CanAddCardToWalletParams
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$CanAddCardToWalletParamsImplCopyWith<_$CanAddCardToWalletParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
