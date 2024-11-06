@@ -1,3 +1,8 @@
+## 6.2.1
+
+**Features**
+- add methods for deferred payments
+
 ## 6.2.0
 **Features**
 - Add basic support for Expresscheckout on the web
