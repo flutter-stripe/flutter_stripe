@@ -4,7 +4,7 @@ import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 import '_create_setup_intent.dart';
 
 extension ToHex on Color {
-  String toRgb() => 'rgb($r, $g, $b)';
+  String toRgb() => 'rgb($red, $green, $blue)';
 }
 
 class AddPaymentMethodScreenLoader {
@@ -64,13 +64,16 @@ class _AddPaymentMethodScreenPlatformState
       ),
       body: Column(
         children: [
-          PaymentElement(
-            clientSecret: widget.setupKeys.clientSecret,
-            onCardChanged: (c) {
-              setState(() => isComplete = c?.complete ?? false);
-            },
-            layout: PaymentElementLayout.tabs,
-            appearance: buildAppearance(context),
+          Padding(
+            padding: const EdgeInsets.all(24),
+            child: PaymentElement(
+              clientSecret: widget.setupKeys.clientSecret,
+              onCardChanged: (c) {
+                setState(() => isComplete = c?.complete ?? false);
+              },
+              layout: PaymentElementLayout.tabs,
+              appearance: buildAppearance(context),
+            ),
           ),
           const SizedBox(height: 8),
           ElevatedButton(
@@ -86,8 +89,10 @@ class _AddPaymentMethodScreenPlatformState
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
 
+    print(theme.colorScheme.surface.toRgb());
+
     return ElementAppearance(
-      theme: isDark ? ElementTheme.night : ElementTheme.none,
+      theme: isDark ? ElementTheme.night : ElementTheme.stripe,
       variables: {
         'fontFamily': 'roboto, system-ui, sans-serif',
         'colorBackground': theme.colorScheme.surface.toRgb(),

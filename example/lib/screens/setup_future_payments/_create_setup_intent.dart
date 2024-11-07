@@ -16,7 +16,7 @@ Future<SetupKeys> createSetupIntent() async {
       'Content-Type': 'application/json',
     },
     body: json.encode({
-      'payment_method_types': ['cards', 'sepa_debit'],
+      'payment_method_types': ['card', 'sepa_debit'],
     }),
   );
   final body = json.decode(response.body);
