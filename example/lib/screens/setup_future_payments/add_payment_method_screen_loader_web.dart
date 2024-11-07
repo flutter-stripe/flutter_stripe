@@ -64,6 +64,10 @@ class _AddPaymentMethodScreenPlatformState
       ),
       body: Column(
         children: [
+          SizedBox(height: 12),
+          Text(
+              'This will redirect to the bank in production. In the example it\'s going to redirect to home with the result in the url'),
+          SizedBox(height: 12),
           Padding(
             padding: const EdgeInsets.all(24),
             child: PaymentElement(

@@ -51,11 +51,11 @@ class AddPaymentMethodScreenLoader {
         // applePay: const PaymentSheetApplePay(
         //   merchantCountryCode: 'BE',
         // ),
-        googlePay: PaymentSheetGooglePay(
-            merchantCountryCode: 'BE',
-            buttonType: stripe.PlatformButtonType.book,
-            label: 'ADD',
-            testEnv: kDebugMode),
+        // googlePay: PaymentSheetGooglePay(
+        //   merchantCountryCode: 'BE',
+        //   label: 'ADD',
+        //   testEnv: kDebugMode,
+        // ),
         primaryButtonLabel: 'confirm',
         style: Theme.of(context).brightness == Brightness.dark
             ? ThemeMode.dark
