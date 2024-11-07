@@ -22,9 +22,7 @@ mixin _$AddToWalletResult {
   /// additional details from the add to wallet request
   AddToWalletDetails? get details => throw _privateConstructorUsedError;
 
-  /// Create a copy of AddToWalletResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $AddToWalletResultCopyWith<AddToWalletResult> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,8 +48,6 @@ class _$AddToWalletResultCopyWithImpl<$Res, $Val extends AddToWalletResult>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AddToWalletResult
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -70,8 +66,6 @@ class _$AddToWalletResultCopyWithImpl<$Res, $Val extends AddToWalletResult>
     ) as $Val);
   }
 
-  /// Create a copy of AddToWalletResult
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AddToWalletDetailsCopyWith<$Res>? get details {
@@ -107,8 +101,6 @@ class __$$AddToWalletResultImplCopyWithImpl<$Res>
       $Res Function(_$AddToWalletResultImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AddToWalletResult
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,9 +151,7 @@ class _$AddToWalletResultImpl implements _AddToWalletResult {
   @override
   int get hashCode => Object.hash(runtimeType, canAddToWallet, details);
 
-  /// Create a copy of AddToWalletResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AddToWalletResultImplCopyWith<_$AddToWalletResultImpl> get copyWith =>
@@ -174,18 +164,16 @@ abstract class _AddToWalletResult implements AddToWalletResult {
       {required final bool canAddToWallet,
       final AddToWalletDetails? details}) = _$AddToWalletResultImpl;
 
-  /// Whether or not the card can be added to the wallet
   @override
+
+  /// Whether or not the card can be added to the wallet
   bool get canAddToWallet;
+  @override
 
   /// additional details from the add to wallet request
-  @override
   AddToWalletDetails? get details;
-
-  /// Create a copy of AddToWalletResult
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AddToWalletResultImplCopyWith<_$AddToWalletResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -202,12 +190,8 @@ mixin _$AddToWalletDetails {
   /// The card token
   String? get token => throw _privateConstructorUsedError;
 
-  /// Serializes this AddToWalletDetails to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of AddToWalletDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $AddToWalletDetailsCopyWith<AddToWalletDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -231,8 +215,6 @@ class _$AddToWalletDetailsCopyWithImpl<$Res, $Val extends AddToWalletDetails>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AddToWalletDetails
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -271,8 +253,6 @@ class __$$AddToWalletDetailsImplCopyWithImpl<$Res>
       $Res Function(_$AddToWalletDetailsImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AddToWalletDetails
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -322,13 +302,11 @@ class _$AddToWalletDetailsImpl implements _AddToWalletDetails {
             (identical(other.token, token) || other.token == token));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, status, token);
 
-  /// Create a copy of AddToWalletDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AddToWalletDetailsImplCopyWith<_$AddToWalletDetailsImpl> get copyWith =>
@@ -351,18 +329,16 @@ abstract class _AddToWalletDetails implements AddToWalletDetails {
   factory _AddToWalletDetails.fromJson(Map<String, dynamic> json) =
       _$AddToWalletDetailsImpl.fromJson;
 
-  /// The status of the can add to wallet request in case it failed.
   @override
+
+  /// The status of the can add to wallet request in case it failed.
   CanAddToWalletErrorStatus? get status;
+  @override
 
   /// The card token
-  @override
   String? get token;
-
-  /// Create a copy of AddToWalletDetails
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AddToWalletDetailsImplCopyWith<_$AddToWalletDetailsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

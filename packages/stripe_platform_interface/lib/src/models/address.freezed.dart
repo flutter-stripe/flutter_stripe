@@ -29,12 +29,8 @@ mixin _$AddressDetails {
   /// the customer's phonumber
   String? get phoneNumber => throw _privateConstructorUsedError;
 
-  /// Serializes this AddressDetails to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of AddressDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $AddressDetailsCopyWith<AddressDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,8 +56,6 @@ class _$AddressDetailsCopyWithImpl<$Res, $Val extends AddressDetails>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AddressDetails
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,8 +79,6 @@ class _$AddressDetailsCopyWithImpl<$Res, $Val extends AddressDetails>
     ) as $Val);
   }
 
-  /// Create a copy of AddressDetails
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AddressCopyWith<$Res>? get address {
@@ -122,8 +114,6 @@ class __$$AddressDetailsImplCopyWithImpl<$Res>
       _$AddressDetailsImpl _value, $Res Function(_$AddressDetailsImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AddressDetails
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -185,13 +175,11 @@ class _$AddressDetailsImpl implements _AddressDetails {
                 other.phoneNumber == phoneNumber));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, name, address, phoneNumber);
 
-  /// Create a copy of AddressDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AddressDetailsImplCopyWith<_$AddressDetailsImpl> get copyWith =>
@@ -215,22 +203,20 @@ abstract class _AddressDetails implements AddressDetails {
   factory _AddressDetails.fromJson(Map<String, dynamic> json) =
       _$AddressDetailsImpl.fromJson;
 
-  /// The customer's full name
   @override
+
+  /// The customer's full name
   String? get name;
+  @override
 
   /// The customer's address
-  @override
   Address? get address;
+  @override
 
   /// the customer's phonumber
-  @override
   String? get phoneNumber;
-
-  /// Create a copy of AddressDetails
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AddressDetailsImplCopyWith<_$AddressDetailsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -259,12 +245,8 @@ mixin _$Address {
   /// State or province.
   String? get state => throw _privateConstructorUsedError;
 
-  /// Serializes this Address to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Address
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $AddressCopyWith<Address> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -292,8 +274,6 @@ class _$AddressCopyWithImpl<$Res, $Val extends Address>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Address
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -357,8 +337,6 @@ class __$$AddressImplCopyWithImpl<$Res>
       _$AddressImpl _value, $Res Function(_$AddressImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Address
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -457,14 +435,12 @@ class _$AddressImpl extends _Address {
             (identical(other.state, state) || other.state == state));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, city, country, line1, line2, postalCode, state);
 
-  /// Create a copy of Address
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AddressImplCopyWith<_$AddressImpl> get copyWith =>
@@ -490,34 +466,32 @@ abstract class _Address extends Address {
 
   factory _Address.fromJson(Map<String, dynamic> json) = _$AddressImpl.fromJson;
 
-  /// City, town or district.
   @override
+
+  /// City, town or district.
   String? get city;
+  @override
 
   /// Country
-  @override
   String? get country;
+  @override
 
   /// Address line1 (e.g. Street, C/O , PO Box).
-  @override
   String? get line1;
+  @override
 
   /// Address line2 (e.g. building, appartment or unit).
-  @override
   String? get line2;
+  @override
 
   /// ZIP or postal code.
-  @override
   String? get postalCode;
+  @override
 
   /// State or province.
-  @override
   String? get state;
-
-  /// Create a copy of Address
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AddressImplCopyWith<_$AddressImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

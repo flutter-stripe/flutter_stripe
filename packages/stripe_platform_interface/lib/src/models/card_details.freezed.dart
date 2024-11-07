@@ -25,12 +25,8 @@ mixin _$CardDetails {
   int? get expirationMonth => throw _privateConstructorUsedError;
   String? get cvc => throw _privateConstructorUsedError;
 
-  /// Serializes this CardDetails to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of CardDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $CardDetailsCopyWith<CardDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,8 +51,6 @@ class _$CardDetailsCopyWithImpl<$Res, $Val extends CardDetails>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of CardDetails
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -108,8 +102,6 @@ class __$$CardDetailsConstructorImplCopyWithImpl<$Res>
       $Res Function(_$CardDetailsConstructorImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CardDetails
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -177,14 +169,12 @@ class _$CardDetailsConstructorImpl extends _CardDetailsConstructor {
             (identical(other.cvc, cvc) || other.cvc == cvc));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, number, expirationYear, expirationMonth, cvc);
 
-  /// Create a copy of CardDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$CardDetailsConstructorImplCopyWith<_$CardDetailsConstructorImpl>
@@ -218,11 +208,8 @@ abstract class _CardDetailsConstructor extends CardDetails {
   int? get expirationMonth;
   @override
   String? get cvc;
-
-  /// Create a copy of CardDetails
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$CardDetailsConstructorImplCopyWith<_$CardDetailsConstructorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
