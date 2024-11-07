@@ -370,7 +370,7 @@ app.post('/create-setup-intent', async (req, res) => {
   //@ts-ignore
   const setupIntent = await stripe.setupIntents.create({
     ...{
-      customer: customer.id,
+      customerId: customer.id,
       payment_method_types,
       usage: ['off_session'],
     },
