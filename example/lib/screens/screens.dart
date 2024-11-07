@@ -17,6 +17,7 @@ import 'package:stripe_example/screens/regional_payment_methods/paypal_screen.da
 import 'package:stripe_example/screens/regional_payment_methods/revolutpay_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/sofort_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/us_bank_account.dart';
+import 'package:stripe_example/screens/setup_future_payments/setup_future_payments_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen_plugin.dart';
 import 'package:stripe_example/screens/wallets/google_pay_screen.dart';
@@ -33,7 +34,6 @@ import 'financial_connections.dart/financial_connections_session_screen.dart';
 import 'others/cvc_re_collection_screen.dart';
 import 'others/legacy_token_bank_screen.dart';
 import 'others/legacy_token_card_screen.dart';
-import 'others/setup_future_payment_screen.dart';
 import 'regional_payment_methods/grab_pay_screen.dart';
 import 'themes.dart';
 import 'wallets/apple_pay_create_payment_method.dart';
@@ -131,6 +131,15 @@ class Example extends StatelessWidget {
             DevicePlatform.web,
           ],
         ),
+        Example(
+          title: 'Setup future payments',
+          builder: (_) => SetupFuturePaymentsScreen(),
+          platformsSupported: [
+            DevicePlatform.android,
+            DevicePlatform.ios,
+            DevicePlatform.web,
+          ],
+        )
       ],
       expanded: true,
     ),
@@ -356,10 +365,6 @@ class Example extends StatelessWidget {
       ],
     ),
     ExampleSection(title: 'Others', children: [
-      Example(
-        title: 'Setup Future Payment',
-        builder: (c) => SetupFuturePaymentScreen(),
-      ),
       Example(
         title: 'Re-collect CVC',
         builder: (c) => CVCReCollectionScreen(),
