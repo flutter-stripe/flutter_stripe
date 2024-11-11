@@ -1,4 +1,4 @@
-## 6.2.1
+## 6.3.0
 **Features**
 - Add support for any kind of payment method in setup intent with [confirmSetup]
 

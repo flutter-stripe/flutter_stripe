@@ -369,9 +369,7 @@ app.post('/create-setup-intent', async (req, res) => {
 
   //@ts-ignore
   const setupIntent = await stripe.setupIntents.create({
-    customer: customer.id,
-    payment_method_types,
-    usage: 'off_session',
+    ...{ customer: customer.id, payment_method_types },
     ...(payment_method_types?.includes('paypal') ? payPalIntentPayload : {}),
   });
 
