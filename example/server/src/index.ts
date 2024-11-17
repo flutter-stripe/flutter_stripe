@@ -377,6 +377,7 @@ app.post('/create-setup-intent', async (req, res) => {
   return res.send({
     publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
     clientSecret: setupIntent.client_secret,
+    customerId: customer.id,
   });
 });
 
@@ -619,7 +620,7 @@ app.post('/payment-sheet-subscription', async (_, res) => {
   } else {
     throw new Error(
       'Expected response type string, but received: ' +
-        typeof subscription.pending_setup_intent
+      typeof subscription.pending_setup_intent
     );
   }
 });
