@@ -38,7 +38,7 @@ class StripeSdkCardPlatformView(
         if (creationParams?.containsKey("postalCodeEnabled") == true) {
             stripeSdkCardViewManager.setPostalCodeEnabled(cardView, creationParams["postalCodeEnabled"] as Boolean)
         }
-        if(creationParams?.containsKey("onBehalfOf")==true){
+        if (creationParams?.containsKey("onBehalfOf") == true){
             stripeSdkCardViewManager.setOnBehalfOf(cardView, creationParams["onBehalfOf"] as String)
         }
         if (creationParams?.containsKey("countryCode") == true) {
