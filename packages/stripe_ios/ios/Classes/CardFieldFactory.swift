@@ -137,6 +137,10 @@ class CardFieldPlatformView: NSObject, FlutterPlatformView, STPPaymentCardTextFi
             cardField.disabled = disabled
         }
         
+        if let onBehalfOf = arguments["onBehalfOf"] as? String{
+            cardField.onBehalfOf = onBehalfOf
+        }
+        
         if let preferredNetworks = arguments["preferredNetworks"] as? Array<Int>{
             cardField.preferredNetworks = preferredNetworks
         }

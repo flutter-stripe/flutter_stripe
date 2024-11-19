@@ -1,8 +1,20 @@
-## 11.2.1
-- Remove com.android.application gradle plugin version check
+## 11.3.0
+Align with Stripe React Native [0.39.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.39.0):
+**Features**
+- Adds support for CustomerSession in private beta 1744
+- Added onBehalfOf prop to CardField
+
+**Fixes**
+- Updated stripe-ios to 23.30.*
+- Updated stripe-android to 20.52.*
 
 ## 11.2.0
-- Minor fixes and improvements
+
+**Features**
+- Add basic support for Expresscheckout on the web
+
+**Fixes** 
+- Export elementappearance and element theme
 
 ## 11.1.0
 - Sync with Stripe [0.38.6](https://github.com/stripe/stripe-react-native/releases/tag/v0.38.6). 
@@ -19,10 +31,7 @@
 **Fixes** 
 - #1729 parse unknown error.
 - #1837 fix for deferred payment methods.
-
-## 10.2.1
-**Fixes**
-- Run method channel messages on UI Thread to prevent crash (#1831)
+- #1630 handle next action setup for ios.
 
 ## 10.2.0
 

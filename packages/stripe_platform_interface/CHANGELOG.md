@@ -1,3 +1,13 @@
+## 11.3.0
+Align with Stripe React Native [0.39.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.39.0):
+**Features**
+- Adds support for CustomerSession in private beta 1744
+- Added onBehalfOf prop to CardField
+
+**Fixes**
+- Updated stripe-ios to 23.30.*
+- Updated stripe-android to 20.52.*
+
 ## 11.2.0
 
 **Features**
@@ -5,10 +15,6 @@
 
 **Fixes** 
 - Export elementappearance and element theme
-
-## 11.1.1
-
- - #1912 wallet parsing.
 
 ## 11.1.0
 - Sync with Stripe [0.38.6](https://github.com/stripe/stripe-react-native/releases/tag/v0.38.6). 
