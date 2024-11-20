@@ -78,6 +78,7 @@ class PaymentMethod with _$PaymentMethod {
     /// An additional hash is included on the PaymentMethod with a name
     /// matching this value.
     /// It contains additional information specific to the PaymentMethod type.
+    @JsonKey(unknownEnumValue: PaymentMethodType.unknown)
     required PaymentMethodType type,
   }) = _PaymentMethod;
 

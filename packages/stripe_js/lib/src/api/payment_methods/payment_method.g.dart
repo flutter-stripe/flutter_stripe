@@ -53,7 +53,8 @@ _$PaymentMethodImpl _$$PaymentMethodImplFromJson(Map json) =>
           ? null
           : UsBankAccount.fromJson(
               Map<String, dynamic>.from(json['usBankAccount'] as Map)),
-      type: $enumDecode(_$PaymentMethodTypeEnumMap, json['type']),
+      type: $enumDecode(_$PaymentMethodTypeEnumMap, json['type'],
+          unknownValue: PaymentMethodType.unknown),
     );
 
 Map<String, dynamic> _$$PaymentMethodImplToJson(_$PaymentMethodImpl instance) {
