@@ -11,6 +11,6 @@ enum CaptureMethod {
   /// The payment was collected outside of Stripe.
   AutomaticAsync,
 
-  /// Unknown method
+  /// Unknown capture method
   Unknown,
 }
