@@ -1,7 +1,6 @@
 //@dart=2.12
 import 'dart:async';
 import 'dart:developer' as dev;
-import 'package:web/web.dart' as web;
 import 'dart:ui' as ui;
 
 import 'package:flutter/widgets.dart';
@@ -10,6 +9,7 @@ import 'package:flutter_stripe_web/platform_pay_button.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:stripe_js/stripe_api.dart' as stripe_js;
 import 'package:stripe_js/stripe_js.dart' as stripe_js;
+import 'package:web/web.dart' as web;
 
 import 'parser/payment_intent.dart';
 import 'parser/payment_methods.dart';
@@ -173,6 +173,19 @@ class WebStripe extends StripePlatform {
           data: stripe_js.ConfirmIdealPaymentData(
             paymentMethod: stripe_js.IdealPaymentMethodDetails.withBank(
               ideal: stripe_js.IdealBankData(bank: paymentData.bankName!),
+            ),
+            returnUrl: urlScheme,
+            // recommended
+            // setup_future_usage:
+          ),
+        );
+      },
+      p24: (paymentData) {
+        return js.confirmP24Payment(
+          paymentIntentClientSecret,
+          data: stripe_js.ConfirmP24PaymentData(
+            paymentMethod: stripe_js.P24PaymentMethodDetails(
+              billingDetails: paymentData.billingDetails!.toJs(),
             ),
             returnUrl: urlScheme,
             // recommended
