@@ -6,6 +6,8 @@ export 'confirm_card_payment_data.dart';
 export 'confirm_card_payment_options.dart';
 export 'confirm_ideal_payment_data.dart';
 export 'confirm_ideal_payment_options.dart';
+export 'confirm_p24_payment_data.dart';
+export 'confirm_p24_payment_options.dart';
 export 'confirm_payment_options.dart';
 export 'confirm_sepa_debit_payment_data.dart';
 export 'payment_intent.dart';
