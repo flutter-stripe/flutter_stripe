@@ -60,15 +60,16 @@ This plugin requires several changes to be able to work on Android devices. Plea
 -dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter
 -dontwarn com.stripe.android.pushProvisioning.PushProvisioningEphemeralKeyProvider
 ```
-8. Rebuild the app, as the above changes don't update with hot reload
+8. Add the following line to your `gradle.properties` file: [example](https://github.com/flutter-stripe/flutter_stripe/blob/master/example/android/gradle.properties)
+```properties
+android.enableR8.fullMode=false
+```
+This will prevent crashes with the Stripe SDK on Android (see [issue](https://github.com/flutter-stripe/flutter_stripe/issues/1909)).
+9. Rebuild the app, as the above changes don't update with hot reload
 
 These changes are needed because the Android Stripe SDK requires the use of the AppCompat theme for their UI components and the Support Fragment Manager for the Payment Sheets
 
 If you are having troubles to make this package to work on Android, join [this discussion](https://github.com/flutter-stripe/flutter_stripe/discussions/538) to get some support.
-
-##### Issue with latest Android plugin
-
-We are aware of an issue with `com.android.application` plugin version 8.0.0 and above. Do not upgrade to this version as it can crash the payment sheet in release builds. See [issue](https://github.com/flutter-stripe/flutter_stripe/issues/1909) to follow the progress.
 
 #### iOS
 
