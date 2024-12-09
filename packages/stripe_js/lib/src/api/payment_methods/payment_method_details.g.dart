@@ -75,6 +75,45 @@ Map<String, dynamic> _$$CardPaymentMethodDetailsTokenImplToJson(
   return val;
 }
 
+_$IdKlarnaPaymentMethodDetailsImpl _$$IdKlarnaPaymentMethodDetailsImplFromJson(
+        Map json) =>
+    _$IdKlarnaPaymentMethodDetailsImpl(
+      json['id'] as String,
+      $type: json['type'] as String?,
+    );
+
+Map<String, dynamic> _$$IdKlarnaPaymentMethodDetailsImplToJson(
+        _$IdKlarnaPaymentMethodDetailsImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'type': instance.$type,
+    };
+
+_$KlarnaPaymentMethodDetailsImpl _$$KlarnaPaymentMethodDetailsImplFromJson(
+        Map json) =>
+    _$KlarnaPaymentMethodDetailsImpl(
+      billingDetails: json['billing_details'] == null
+          ? null
+          : BillingDetails.fromJson(
+              Map<String, dynamic>.from(json['billing_details'] as Map)),
+      $type: json['type'] as String?,
+    );
+
+Map<String, dynamic> _$$KlarnaPaymentMethodDetailsImplToJson(
+    _$KlarnaPaymentMethodDetailsImpl instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('billing_details', instance.billingDetails?.toJson());
+  val['type'] = instance.$type;
+  return val;
+}
+
 _$IdIdealPaymentMethodDetailsImpl _$$IdIdealPaymentMethodDetailsImplFromJson(
         Map json) =>
     _$IdIdealPaymentMethodDetailsImpl(
