@@ -65,6 +65,7 @@ This plugin requires several changes to be able to work on Android devices. Plea
 android.enableR8.fullMode=false
 ```
 This will prevent crashes with the Stripe SDK on Android (see [issue](https://github.com/flutter-stripe/flutter_stripe/issues/1909)).
+
 9. Rebuild the app, as the above changes don't update with hot reload
 
 These changes are needed because the Android Stripe SDK requires the use of the AppCompat theme for their UI components and the Support Fragment Manager for the Payment Sheets
@@ -86,8 +87,7 @@ For card scanning add the following to your Info.plist:
 ```xml
 <key>NSCameraUsageDescription</key>
 <string>Scan your card to add it automatically</string>
-<key>NSCameraUsageDescription
-&lt;string&gt;To scan cards&lt;/string&gt;</key>
+<key>NSCameraUsageDescription</key>
 <string>To scan cards</string>
 ```
 
