@@ -18,6 +18,7 @@ import 'package:stripe_example/screens/regional_payment_methods/revolutpay_scree
 import 'package:stripe_example/screens/regional_payment_methods/sofort_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/us_bank_account_direct_debit_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/us_bank_account_screen.dart';
+import 'package:stripe_example/screens/regional_payment_methods/p24_screen.dart';
 import 'package:stripe_example/screens/setup_future_payments/setup_future_payments_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen_plugin.dart';
@@ -346,6 +347,11 @@ class Example extends StatelessWidget {
         title: 'Us bank accounts Direct debit(ACH)',
         builder: (contex) => UsBankAccountDirectDebitScreen(),
         platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+      ),
+      Example(
+        title: 'P24 Payment',
+        leading: SizedBox(),
+        builder: (context) => P24Screen(),
       ),
       // TODO: uncomment when we can re-enable wechat pay
       // Example(
