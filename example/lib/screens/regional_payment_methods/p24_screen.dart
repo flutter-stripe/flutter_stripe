@@ -9,7 +9,7 @@ import 'package:stripe_example/widgets/loading_button.dart';
 import '../../config.dart';
 
 class P24Screen extends StatelessWidget {
-  const P24Screen({Key? key}) : super(key: key);
+  const P24Screen({super.key});
 
   Future<Map<String, dynamic>> _createPaymentIntent() async {
     final url = Uri.parse('$kApiUrl/create-payment-intent');
@@ -30,6 +30,7 @@ class P24Screen extends StatelessWidget {
 
   Future<void> _pay(BuildContext context) async {
     // 1. Create payment intent on the backend
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     final result = await _createPaymentIntent();
     final clientSecret = result['clientSecret'];
 
@@ -46,21 +47,23 @@ class P24Screen extends StatelessWidget {
         ),
       );
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Payment successfully completed'),
-        ),
-      );
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Payment successfully completed'),
+          ),
+        );
+      }
     } on Exception catch (e) {
-      if (e is StripeException) {
+      if (e is StripeException && context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
                 'Error from Stripe: ${e.error.localizedMessage ?? e.error.code}'),
           ),
         );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
+      } else if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
           SnackBar(
             content: Text('Unforeseen error: $e'),
           ),

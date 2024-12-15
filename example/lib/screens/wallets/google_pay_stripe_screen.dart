@@ -9,7 +9,7 @@ import 'package:stripe_example/config.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
 
 class GooglePayStripeScreen extends StatefulWidget {
-  const GooglePayStripeScreen({Key? key}) : super(key: key);
+  const GooglePayStripeScreen({super.key});
 
   @override
   _GooglePayStripeScreenState createState() => _GooglePayStripeScreenState();
@@ -17,8 +17,10 @@ class GooglePayStripeScreen extends StatefulWidget {
 
 class _GooglePayStripeScreenState extends State<GooglePayStripeScreen> {
   Future<void> startGooglePay() async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     final googlePaySupported = await Stripe.instance
         .isPlatformPaySupported(googlePay: IsGooglePaySupportedParams());
+
     if (googlePaySupported) {
       try {
         // 1. fetch Intent Client Secret from backend
@@ -39,29 +41,35 @@ class _GooglePayStripeScreenState extends State<GooglePayStripeScreen> {
             // PresentGooglePayParams(clientSecret: clientSecret),
             );
 
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-              content: Text('Google Pay payment succesfully completed')),
-        );
+        if (context.mounted) {
+          scaffoldMessenger.showSnackBar(
+            const SnackBar(
+                content: Text('Google Pay payment succesfully completed')),
+          );
+        }
       } catch (e) {
-        if (e is StripeException) {
+        if (e is StripeException && context.mounted) {
           log('Error during google pay',
               error: e.error, stackTrace: StackTrace.current);
-          ScaffoldMessenger.of(context).showSnackBar(
+          scaffoldMessenger.showSnackBar(
             SnackBar(content: Text('Error: ${e.error}')),
           );
         } else {
           log('Error during google pay',
               error: e, stackTrace: (e as Error?)?.stackTrace);
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Error: $e')),
-          );
+          if (context.mounted) {
+            scaffoldMessenger.showSnackBar(
+              SnackBar(content: Text('Error: $e')),
+            );
+          }
         }
       }
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Google pay is not supported on this device')),
-      );
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
+          SnackBar(content: Text('Google pay is not supported on this device')),
+        );
+      }
     }
   }
 

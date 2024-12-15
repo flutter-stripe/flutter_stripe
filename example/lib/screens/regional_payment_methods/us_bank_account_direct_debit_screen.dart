@@ -9,6 +9,8 @@ import 'package:stripe_example/widgets/loading_button.dart';
 import '../../config.dart';
 
 class UsBankAccountDirectDebitScreen extends StatefulWidget {
+  const UsBankAccountDirectDebitScreen({super.key});
+
   @override
   _UsBankAccountDirectDebitScreenState createState() =>
       _UsBankAccountDirectDebitScreenState();
@@ -92,14 +94,17 @@ class _UsBankAccountDirectDebitScreenState
   }
 
   Future<void> _handlePayPress() async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     try {
       // 1. call API to create PaymentIntent
       final paymentIntentResult = await _createPaymentIntent();
 
       if (paymentIntentResult['error'] != null) {
-        // Error during creating or confirming Intent
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Error: ${paymentIntentResult['error']}')));
+        if (context.mounted) {
+          // Error during creating or confirming Intent
+          scaffoldMessenger.showSnackBar(SnackBar(
+              content: Text('Error: ${paymentIntentResult['error']}')));
+        }
         return;
       }
 
@@ -134,34 +139,41 @@ class _UsBankAccountDirectDebitScreenState
             canConfirm = true;
             clientSecretForConfirm = result.clientSecret;
           });
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('You can now confirm the payment'),
-            ),
-          );
+          if (context.mounted) {
+            scaffoldMessenger.showSnackBar(
+              SnackBar(
+                content: Text('You can now confirm the payment'),
+              ),
+            );
+          }
         }
       }
     } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Error: $e')));
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(SnackBar(content: Text('Error: $e')));
+      }
       rethrow;
     }
   }
 
   Future<void> confirmPayment(String clientSecret) async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     try {
       await Stripe.instance.confirmPayment(
         paymentIntentClientSecret: clientSecret,
       );
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Payment succesfully completed'),
-        ),
-      );
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
+          SnackBar(
+            content: Text('Payment succesfully completed'),
+          ),
+        );
+      }
     } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Error: $e')));
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(SnackBar(content: Text('Error: $e')));
+      }
       rethrow;
     }
   }

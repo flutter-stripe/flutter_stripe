@@ -121,7 +121,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreenWithCustomFlow> {
           if (context.mounted) {
             scaffoldMessenger.showSnackBar(
               SnackBar(
-                content: Text('Unforeseen error: ${e}'),
+                content: Text('Unforeseen error: $e'),
               ),
             );
           }
@@ -160,7 +160,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreenWithCustomFlow> {
         if (context.mounted) {
           scaffoldMessenger.showSnackBar(
             SnackBar(
-              content: Text('Unforeseen error: ${e}'),
+              content: Text('Unforeseen error: $e'),
             ),
           );
         }
@@ -189,4 +189,5 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreenWithCustomFlow> {
   }
 }
 
-final ControlsWidgetBuilder emptyControlBuilder = (_, __) => Container();
+Widget emptyControlBuilder(BuildContext context, ControlsDetails details) =>
+    Container();

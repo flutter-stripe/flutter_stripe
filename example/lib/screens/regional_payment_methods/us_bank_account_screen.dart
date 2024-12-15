@@ -9,6 +9,8 @@ import 'package:stripe_example/widgets/loading_button.dart';
 import '../../config.dart';
 
 class UsBankAccountScreen extends StatefulWidget {
+  const UsBankAccountScreen({super.key});
+
   @override
   _UsBankAccountScreenState createState() => _UsBankAccountScreenState();
 }
@@ -64,6 +66,7 @@ class _UsBankAccountScreenState extends State<UsBankAccountScreen> {
   }
 
   Future<void> _handlePayPress() async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     try {
       // 1. Gather customer billing information (ex. email)
       final billingDetails = BillingDetails(
@@ -85,8 +88,10 @@ class _UsBankAccountScreenState extends State<UsBankAccountScreen> {
 
       if (paymentIntentResult['error'] != null) {
         // Error during creating or confirming Intent
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Error: ${paymentIntentResult['error']}')));
+        if (context.mounted) {
+          scaffoldMessenger.showSnackBar(SnackBar(
+              content: Text('Error: ${paymentIntentResult['error']}')));
+        }
         return;
       }
 
@@ -104,8 +109,9 @@ class _UsBankAccountScreenState extends State<UsBankAccountScreen> {
         handleNexAction(intent.nextAction, intent.clientSecret);
       }
     } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Error: $e')));
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(SnackBar(content: Text('Error: $e')));
+      }
       rethrow;
     }
   }
@@ -155,8 +161,7 @@ class _VerifyMicroDepositsDialog extends StatefulWidget {
   const _VerifyMicroDepositsDialog({
     required this.clientSecret,
     required this.microdepositType,
-    Key? key,
-  }) : super(key: key);
+  });
   final String clientSecret;
   final String microdepositType;
 
@@ -188,27 +193,27 @@ class _VerifyMicroDepositsDialogState
   }
 
   Future<void> verifyIntentWithMicroDeposit() async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     try {
       await Stripe.instance.verifyPaymentIntentWithMicrodeposits(
           isPaymentIntent: true,
           clientSecret: widget.clientSecret,
           params: VerifyMicroDepositsParams(
             descriptorCode: widget.microdepositType == "descriptorCode"
-                    ? _descriptorController.text
+                ? _descriptorController.text
                 : null,
             amounts: widget.microdepositType != "descriptorCode"
-                    ? [
+                ? [
                     int.parse(_amount1Controller.text),
                     int.parse(_amount2Controller.text),
                   ]
                 : null,
           ));
 
-      ScaffoldMessenger.of(context).showSnackBar(
+      scaffoldMessenger.showSnackBar(
           SnackBar(content: Text('Account verified successfully')));
     } on Exception catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Error: $e')));
+      scaffoldMessenger.showSnackBar(SnackBar(content: Text('Error: $e')));
       rethrow;
     }
   }
@@ -223,42 +228,44 @@ class _VerifyMicroDepositsDialogState
             Text('Enter the details of the micro deposits verification'),
             SizedBox(height: 10),
             Visibility(
-              visible: widget.microdepositType =="descriptorCode",
-              child:  TextField(
-              controller: _descriptorController,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Descriptor',
+              visible: widget.microdepositType == "descriptorCode",
+              child: TextField(
+                controller: _descriptorController,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Descriptor',
+                ),
               ),
-            ),),
-           Visibility(
-              visible: widget.microdepositType !="descriptorCode",
-              child: Column(
-              children: [
-                SizedBox(height: 10),
-                  TextField(
-                    keyboardType: TextInputType.number,
-                    controller: _amount1Controller,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Microdeposit 1 value',
+            ),
+            Visibility(
+                visible: widget.microdepositType != "descriptorCode",
+                child: Column(
+                  children: [
+                    SizedBox(height: 10),
+                    TextField(
+                      keyboardType: TextInputType.number,
+                      controller: _amount1Controller,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Microdeposit 1 value',
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  TextField(
-                    controller: _amount2Controller,
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Microdeposit 2 value',
+                    SizedBox(height: 10),
+                    TextField(
+                      controller: _amount2Controller,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Microdeposit 2 value',
+                      ),
                     ),
-                  ),
-              ],
-            )),
+                  ],
+                )),
             SizedBox(height: 10),
             LoadingButton(
               onPressed: () async {
                 await verifyIntentWithMicroDeposit();
+                // ignore: use_build_context_synchronously
                 Navigator.of(context).pop();
               },
               text: 'Confirm',

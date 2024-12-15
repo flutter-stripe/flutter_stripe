@@ -9,6 +9,8 @@ import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 
 class ApplePayPaymentSheetScreen extends StatefulWidget {
+  const ApplePayPaymentSheetScreen({super.key});
+
   @override
   _PaymentSheetScreenState createState() => _PaymentSheetScreenState();
 }
@@ -65,6 +67,7 @@ class _PaymentSheetScreenState extends State<ApplePayPaymentSheetScreen> {
   }
 
   Future<void> initPaymentSheet() async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     try {
       // 1. create payment intent on the server
       final data = await _createTestPaymentSheet();
@@ -153,14 +156,17 @@ class _PaymentSheetScreenState extends State<ApplePayPaymentSheetScreen> {
         step = 1;
       });
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e')),
-      );
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
+          SnackBar(content: Text('Error: $e')),
+        );
+      }
       rethrow;
     }
   }
 
   Future<void> confirmPayment() async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     try {
       // 3. display the payment sheet.
       await Stripe.instance.presentPaymentSheet();
@@ -169,24 +175,30 @@ class _PaymentSheetScreenState extends State<ApplePayPaymentSheetScreen> {
         step = 0;
       });
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Payment succesfully completed'),
-        ),
-      );
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
+          SnackBar(
+            content: Text('Payment succesfully completed'),
+          ),
+        );
+      }
     } on Exception catch (e) {
       if (e is StripeException) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error from Stripe: ${e.error.localizedMessage}'),
-          ),
-        );
+        if (context.mounted) {
+          scaffoldMessenger.showSnackBar(
+            SnackBar(
+              content: Text('Error from Stripe: ${e.error.localizedMessage}'),
+            ),
+          );
+        }
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Unforeseen error: ${e}'),
-          ),
-        );
+        if (context.mounted) {
+          scaffoldMessenger.showSnackBar(
+            SnackBar(
+              content: Text('Unforeseen error: $e'),
+            ),
+          );
+        }
       }
     }
   }
