@@ -88,8 +88,7 @@ class CollectAddressResult with _$CollectAddressResult {
 typedef OnAddressSheetSubmit = FutureOr<void> Function(
     CollectAddressResult result);
 
-typedef OnAddressSheetError = FutureOr<void> Function(
-    StripeError<AddressSheetError> error);
+typedef OnAddressSheetError = FutureOr<void> Function(StripeException error);
 
 @freezed
 class AddressSheetParams with _$AddressSheetParams {

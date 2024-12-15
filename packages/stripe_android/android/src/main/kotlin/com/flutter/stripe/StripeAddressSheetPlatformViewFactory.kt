@@ -21,6 +21,6 @@ class StripeAddressSheetPlatformViewFactory(
         if(context == null){
             throw AssertionError("Context is not allowed to be null when launching aubecs view.")
         }
-        return AddressSheetPlatformView(context,channel,viewId, creationParams, addresSheetViewManager, sdkAccessor)
+        return StripeAddressSheetPlatformView(context,channel,viewId, creationParams, addresSheetViewManager, sdkAccessor)
     }
 }
