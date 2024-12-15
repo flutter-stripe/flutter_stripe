@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
@@ -19,9 +20,9 @@ void main() {
   group('Payment sheet', () {
     testWidgets('init payment sheet', (_) async {
       // 1. create payment intent on the server
-      final _paymentSheetData = await _createTestPaymentSheet();
+      final paymentSheetData = await _createTestPaymentSheet();
 
-      expect(_paymentSheetData['paymentIntent'], isNotNull);
+      expect(paymentSheetData['paymentIntent'], isNotNull);
       // 2. initialize the payment sheet
       expect(
         Stripe.instance.initPaymentSheet(
@@ -33,9 +34,9 @@ void main() {
             ),
             style: ThemeMode.dark,
             merchantDisplayName: 'Flutter Stripe Store Demo',
-            customerId: _paymentSheetData['customer'],
-            paymentIntentClientSecret: _paymentSheetData['paymentIntent'],
-            customerEphemeralKeySecret: _paymentSheetData['ephemeralKey'],
+            customerId: paymentSheetData['customer'],
+            paymentIntentClientSecret: paymentSheetData['paymentIntent'],
+            customerEphemeralKeySecret: paymentSheetData['ephemeralKey'],
           ),
         ),
         completes,
@@ -90,7 +91,7 @@ void main() {
 Future<Map<String, dynamic>> _createTestPaymentSheet() async {
   // ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' could return multiple IPs, divided by new line - use the last one
   final ipAddress = kApiUrl.split('\n').last.trim();
-  print('IP Address of the server: $ipAddress');
+  log('IP Address of the server: $ipAddress');
   final url = Uri.parse('http://$ipAddress:4242/payment-sheet');
   final response = await http.post(
     url,

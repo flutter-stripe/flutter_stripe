@@ -6,11 +6,13 @@ import 'package:stripe_example/widgets/loading_button.dart';
 import 'package:stripe_example/widgets/response_card.dart';
 
 class CanAddToWalletScreen extends StatefulWidget {
+  const CanAddToWalletScreen({super.key});
+
   @override
-  _CanAddToWalletScreenState createState() => _CanAddToWalletScreenState();
+  CanAddToWalletScreenState createState() => CanAddToWalletScreenState();
 }
 
-class _CanAddToWalletScreenState extends State<CanAddToWalletScreen> {
+class CanAddToWalletScreenState extends State<CanAddToWalletScreen> {
   late TextEditingController _controller;
   CanAddCardToWalletResult? canAddCardToWallet;
   IsCardInWalletResult? isCardInWallet;
@@ -73,33 +75,42 @@ class _CanAddToWalletScreenState extends State<CanAddToWalletScreen> {
   }
 
   Future<CanAddCardToWalletResult> _handleCanAddToWallet(String last4) async {
+    final scaffoldManager = ScaffoldMessenger.of(context);
+
     try {
       final result = await Stripe.instance.canAddCardToWallet(
         CanAddCardToWalletParams(
           cardLastFour: last4,
         ),
       );
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Can add card to wallet: ${result}')),
-      );
+      if (mounted) {
+        scaffoldManager.showSnackBar(
+          SnackBar(content: Text('Can add card to wallet: $result')),
+        );
+      }
       return result;
     } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Error: $e')));
+      if (mounted) {
+        scaffoldManager.showSnackBar(SnackBar(content: Text('Error: $e')));
+      }
       rethrow;
     }
   }
 
   Future<IsCardInWalletResult> _isCardInToWallet(String last4) async {
+    final scaffoldManager = ScaffoldMessenger.of(context);
     try {
       final result = await Stripe.instance.isCardInWallet(last4);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Can add card to wallet: ${result}')),
-      );
+      if (mounted) {
+        scaffoldManager.showSnackBar(
+          SnackBar(content: Text('Is card in wallet: $result')),
+        );
+      }
       return result;
     } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Error: $e')));
+      if (mounted) {
+        scaffoldManager.showSnackBar(SnackBar(content: Text('Error: $e')));
+      }
       rethrow;
     }
   }

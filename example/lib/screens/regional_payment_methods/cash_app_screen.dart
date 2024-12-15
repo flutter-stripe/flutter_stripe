@@ -9,7 +9,7 @@ import 'package:stripe_example/widgets/loading_button.dart';
 import '../../config.dart';
 
 class CashAppScreen extends StatelessWidget {
-  const CashAppScreen({Key? key}) : super(key: key);
+  const CashAppScreen({super.key});
 
   Future<Map<String, dynamic>> _createPaymentIntent() async {
     final url = Uri.parse('$kApiUrl/create-payment-intent');
@@ -29,16 +29,17 @@ class CashAppScreen extends StatelessWidget {
   }
 
   Future<void> _pay(BuildContext context) async {
-    // Precondition:
-    //Make sure to have set a custom URI scheme in your app and add it to Stripe SDK
-    // see file main.dart in this example app.
-    // 1. on the backend create a payment intent for payment method and save the
-    // client secret.
-    final result = await _createPaymentIntent();
-    final clientSecret = await result['clientSecret'];
-
-    // 2. use the client secret to confirm the payment and handle the result.
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     try {
+      // Precondition:
+      //Make sure to have set a custom URI scheme in your app and add it to Stripe SDK
+      // see file main.dart in this example app.
+      // 1. on the backend create a payment intent for payment method and save the
+      // client secret.
+      final result = await _createPaymentIntent();
+      final clientSecret = result['clientSecret'];
+
+      // 2. use the client secret to confirm the payment and handle the result.
       await Stripe.instance.confirmPayment(
         paymentIntentClientSecret: clientSecret,
         data: PaymentMethodParams.cashAppPay(
@@ -46,23 +47,25 @@ class CashAppScreen extends StatelessWidget {
         ),
       );
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+      if (!context.mounted) return;
+      scaffoldMessenger.showSnackBar(
+        const SnackBar(
           content: Text('Payment succesfully completed'),
         ),
       );
     } on Exception catch (e) {
+      if (!context.mounted) return;
       if (e is StripeException) {
-        ScaffoldMessenger.of(context).showSnackBar(
+        scaffoldMessenger.showSnackBar(
           SnackBar(
             content: Text(
                 'Error from Stripe: ${e.error.localizedMessage ?? e.error.code}'),
           ),
         );
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
+        scaffoldMessenger.showSnackBar(
           SnackBar(
-            content: Text('Unforeseen error: ${e}'),
+            content: Text('Unforeseen error: $e'),
           ),
         );
       }
