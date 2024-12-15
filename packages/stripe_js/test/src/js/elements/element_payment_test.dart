@@ -1,3 +1,5 @@
+// ignore_for_file: library_annotations
+
 @TestOn('browser')
 @Tags(["browser"])
 
@@ -51,7 +53,7 @@ void main() {
 
     test('calls on ready', () async {
       final child = HTMLDivElement();
-      ;
+
       document.body!.append(child);
       await Future.delayed(Duration(seconds: 4));
       final card = elements.createPayment();
