@@ -18,10 +18,13 @@ class _UsBankAccountDirectDebitScreenState
     extends State<UsBankAccountDirectDebitScreen> {
   late TextEditingController _nameController;
   late TextEditingController _emailController;
+  bool canConfirm = false;
+  String clientSecretForConfirm = '';
 
   @override
   void initState() {
     super.initState();
+
     _nameController = TextEditingController();
     _emailController = TextEditingController();
   }
@@ -76,7 +79,13 @@ class _UsBankAccountDirectDebitScreenState
         SizedBox(height: 10),
         LoadingButton(
           onPressed: _handlePayPress,
-          text: 'Pay',
+          text: 'Collect account',
+        ),
+        SizedBox(height: 10),
+        LoadingButton(
+          onPressed:
+              canConfirm ? () => confirmPayment(clientSecretForConfirm) : null,
+          text: 'Confirm',
         ),
       ],
     );
@@ -87,8 +96,6 @@ class _UsBankAccountDirectDebitScreenState
       // 1. call API to create PaymentIntent
       final paymentIntentResult = await _createPaymentIntent();
 
-      print('blaat $json');
-
       if (paymentIntentResult['error'] != null) {
         // Error during creating or confirming Intent
         ScaffoldMessenger.of(context).showSnackBar(
@@ -97,30 +104,61 @@ class _UsBankAccountDirectDebitScreenState
       }
 
       // collect the bankaccount
+      final clientSecret = paymentIntentResult['clientSecret'];
 
       if (paymentIntentResult['clientSecret'] != null) {
         final result = await Stripe.instance.collectBankAccount(
-          clientSecret: paymentIntentResult['clientSecret'],
+          clientSecret: clientSecret,
           isPaymentIntent: true,
           params: CollectBankAccountParams(
-            billingDetails: BillingDetails(
-              email: _emailController.text,
-              name: _nameController.text,
-              phone: '+48888000888',
-              address: Address(
-                city: 'Houston',
-                country: 'US',
-                line1: '1459  Circle Drive',
-                line2: '',
-                state: 'Texas',
-                postalCode: '77063',
+            paymentMethodData: CollectBankAccountPaymentMethodData(
+              billingDetails: BillingDetails(
+                email: _emailController.text,
+                name: _nameController.text,
+                phone: '+48888000888',
+                address: Address(
+                  city: 'Houston',
+                  country: 'US',
+                  line1: '1459  Circle Drive',
+                  line2: '',
+                  state: 'Texas',
+                  postalCode: '77063',
+                ),
               ),
             ),
           ),
         );
 
-        print('result');
+        if (result.status == PaymentIntentsStatus.RequiresConfirmation) {
+          setState(() {
+            canConfirm = true;
+            clientSecretForConfirm = result.clientSecret;
+          });
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('You can now confirm the payment'),
+            ),
+          );
+        }
       }
+    } catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Error: $e')));
+      rethrow;
+    }
+  }
+
+  Future<void> confirmPayment(String clientSecret) async {
+    try {
+      await Stripe.instance.confirmPayment(
+        paymentIntentClientSecret: clientSecret,
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Payment succesfully completed'),
+        ),
+      );
     } catch (e) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text('Error: $e')));

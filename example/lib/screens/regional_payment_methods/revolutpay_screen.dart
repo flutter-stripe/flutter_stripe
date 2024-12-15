@@ -35,7 +35,6 @@ class RevolutPayScreen extends StatelessWidget {
     // 1. on the backend create a payment intent for payment method and save the
     // client secret.
     final result = await _createPaymentIntent();
-    print('blaat $result');
     final clientSecret = await result['clientSecret'];
 
     // 2. use the client secret to confirm the payment and handle the result.
