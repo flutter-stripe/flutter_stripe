@@ -10,6 +10,8 @@ enum CreateTokenError { unknown }
 
 enum PaymentSheetError { unknown }
 
+enum AddressSheetError { unknown }
+
 enum CustomerSheetError { unknown, failed, canceled }
 
 @freezed
