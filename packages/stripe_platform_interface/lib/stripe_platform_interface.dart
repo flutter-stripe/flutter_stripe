@@ -1,6 +1,7 @@
 library stripe_platform_interface;
 
 export 'src/card_edit_controller.dart';
+export 'src/models/address_sheet.dart';
 export 'src/models/ach_params.dart';
 export 'src/models/address.dart';
 export 'src/models/app_info.dart';
