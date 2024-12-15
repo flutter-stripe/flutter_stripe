@@ -18,7 +18,7 @@ class AddressSheet extends StatelessWidget {
   final int height;
 
   /// Called when the user submits their information
-  final OnAddressSheetError onSubmit;
+  final OnAddressSheetSubmit onSubmit;
 
   /// Called when the user taps the button to close the sheet before submitting their information, or when an error occurs
   final OnAddressSheetError onError;
@@ -31,7 +31,7 @@ class AddressSheet extends StatelessWidget {
     return _AddressSheet(
       onSubmit: onSubmit,
       onError: onError,
-      params: params,
+      addressSheetParams: params,
       height: height,
     );
   }
@@ -42,11 +42,11 @@ class _AddressSheet extends StatefulWidget {
     required this.onSubmit,
     required this.onError,
     required this.height,
-    required this.params,
+    required this.addressSheetParams,
   });
 
-  final AddressSheetParams params;
-  final OnAddressSheetError onSubmit;
+  final AddressSheetParams addressSheetParams;
+  final OnAddressSheetSubmit onSubmit;
   final OnAddressSheetError onError;
   final int height;
 
@@ -61,11 +61,23 @@ class _AddressSheetState extends State<_AddressSheet> {
   void onPlatformViewCreated(int viewId) {
     _methodChannel = MethodChannel('flutter.stripe/address_sheet/$viewId');
     _methodChannel?.setMethodCallHandler((call) async {
-      if (call.method == 'onSubmit') {
-        print('blaat details ${call.arguments}');
-        // widget.onSubmit.call();
-      } else if (call.method == 'onError') {
-        print('blaat details ${call.arguments}');
+      if (call.method == 'onSubmitAction') {
+        final tmp = Map<String, dynamic>.from(call.arguments as Map);
+        final tmpAdress = Map<String, dynamic>.from(tmp['address'] as Map);
+
+        widget.onSubmit(
+          CollectAddressResult(
+            address: Address.fromJson(tmpAdress),
+            name: tmp['name'] as String,
+            phoneNumber: tmp['phone'] as String?,
+          ),
+        );
+      } else if (call.method == 'onErrorAction') {
+        final tmp = Map<String, dynamic>.from(call.arguments as Map);
+        final foo = Map<String, dynamic>.from(tmp['error'] as Map);
+
+        widget.onError(
+            StripeException(error: LocalizedErrorMessage.fromJson(foo)));
       }
     });
   }
@@ -94,7 +106,7 @@ class _AddressSheetState extends State<_AddressSheet> {
                   id: params.id,
                   viewType: _viewType,
                   layoutDirection: TextDirection.ltr,
-                  creationParams: {},
+                  creationParams: widget.addressSheetParams.toJson(),
                   creationParamsCodec: const StandardMessageCodec(),
                 )
                   ..addOnPlatformViewCreatedListener(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stripe_example/screens/address_sheet/address_sheet.dart';
 import 'package:stripe_example/screens/customer_sheet/customer_sheet_screen.dart';
 import 'package:stripe_example/screens/others/can_add_to_wallet_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/express_checkout/express_checkout_element.dart';
@@ -146,6 +147,13 @@ class Example extends StatelessWidget {
         )
       ],
     ),
+    ExampleSection(title: 'Address sheet', children: [
+      Example(
+        title: 'Address sheet',
+        builder: (context) => AddressSheetExample(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+      ),
+    ]),
     ExampleSection(title: 'Customer sheet', children: [
       Example(
         title: 'Customer sheet',
