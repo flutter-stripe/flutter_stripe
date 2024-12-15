@@ -9,6 +9,7 @@ import com.facebook.react.uimanager.DisplayMetricsHolder
 import com.facebook.react.uimanager.ThemedReactContext
 import com.google.android.material.internal.ThemeEnforcement
 import com.reactnativestripesdk.*
+import com.reactnativestripesdk.addresssheet.AddressSheetViewManager
 import com.reactnativestripesdk.pushprovisioning.AddToWalletButtonManager
 import io.flutter.embedding.android.FlutterFragmentActivity
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -49,6 +50,10 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         AuBECSDebitFormViewManager()
     }
 
+    private val addressSheetFormViewManager: AddressSheetViewManager by lazy {
+        AddressSheetViewManager()
+    }
+
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         DisplayMetricsHolder.initDisplayMetricsIfNotInitialized(flutterPluginBinding.applicationContext)
 
@@ -69,6 +74,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         flutterPluginBinding
             .platformViewRegistry
             .registerViewFactory("flutter.stripe/add_to_wallet", StripeAddToWalletPlatformViewFactory(flutterPluginBinding, AddToWalletButtonManager(flutterPluginBinding.applicationContext)){stripeSdk})
+        flutterPluginBinding.platformViewRegistry.registerViewFactory("flutter.stripe/address_sheet", StripeAddressSheetPlatformViewFactory(flutterPluginBinding, addressSheetFormViewManager ){stripeSdk})
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
