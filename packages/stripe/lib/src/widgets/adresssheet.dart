@@ -89,7 +89,9 @@ class _AddressSheetState extends State<_AddressSheet> {
       child: defaultTargetPlatform == TargetPlatform.iOS
           ? UiKitView(
               viewType: _viewType,
-              creationParams: const StandardMessageCodec(),
+              creationParamsCodec: const StandardMessageCodec(),
+              creationParams: widget.addressSheetParams.toJson(),
+              onPlatformViewCreated: onPlatformViewCreated,
             )
           : PlatformViewLink(
               surfaceFactory: (context, controller) {
