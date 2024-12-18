@@ -1,8 +1,7 @@
 import 'dart:async';
+import 'dart:js_interop';
 
 import 'package:stripe_js/stripe_js.dart';
-
-import 'dart:js_interop';
 import 'package:web/web.dart' as web;
 
 extension type JSIFrameElement(JSObject element) {
@@ -26,17 +25,18 @@ extension ElementWaitFor on web.Element {
     String selectors, {
     Duration timeout = const Duration(seconds: 2),
   }) async {
-    final element = this.querySelector(selectors);
+    final element = querySelector(selectors);
     if (element != null) {
       return element;
     }
 
     final completer = Completer<web.Element>();
+    // ignore: prefer_typing_uninitialized_variables
     late final mutationObserver;
     mutationObserver = web.MutationObserver(
         (JSArray<web.MutationRecord> entries, web.MutationObserver observer) {
-      web.console.log("${this.innerHTML}".toJS);
-      final element = this.querySelector(selectors);
+      web.console.log("$innerHTML".toJS);
+      final element = querySelector(selectors);
       if (element != null) {
         web.console.log("found".toJS);
         mutationObserver.disconnect();
@@ -46,9 +46,9 @@ extension ElementWaitFor on web.Element {
     web.console.log("searching".toJS);
 
     mutationObserver.observe(this, childList: true, subtree: true);
-    this.append(web.HTMLDivElement());
+    append(web.HTMLDivElement());
     await Future.delayed(Duration(seconds: 2));
-    this.append(web.HTMLDivElement());
+    append(web.HTMLDivElement());
     return completer.future.timeout(timeout, onTimeout: () {
       mutationObserver.disconnect();
       throw TimeoutException('Could not find element $selectors');

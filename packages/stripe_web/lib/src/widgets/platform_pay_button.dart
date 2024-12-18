@@ -17,7 +17,7 @@ class WebPlatformPayButton extends StatefulWidget {
       this.constraints,
       this.type,
       this.style,
-      required ui.VoidCallback this.onPressed});
+      required this.onPressed});
 
   final PlatformPayWebPaymentRequestCreateOptions paymentRequestCreateOptions;
   final PlatformButtonType? type;
@@ -40,6 +40,8 @@ class _WebPlatformPayButtonState extends State<WebPlatformPayButton> {
     if (web.document.getElementById('platform-pay-button') != null) {
       mutationObserver.disconnect();
 
+      final currentTheme = Theme.of(context);
+
       PaymentRequest paymentRequest = WebStripe.js
           .paymentRequest((widget.paymentRequestCreateOptions).toJS());
 
@@ -49,7 +51,7 @@ class _WebPlatformPayButtonState extends State<WebPlatformPayButton> {
                 paymentRequest: paymentRequest.js,
                 style: JsPaymentRequestButtonElementStyle(
                     paymentRequestButton: PaymentRequestButtonStyleOptions(
-                  theme: theme(Theme.of(context).brightness),
+                  theme: theme(currentTheme.brightness),
                   type: type,
                   height: '${constraints.maxHeight}px',
                 ))))
@@ -69,8 +71,8 @@ class _WebPlatformPayButtonState extends State<WebPlatformPayButton> {
   @override
   void initState() {
     // ignore: undefined_prefixed_name
-    ui.platformViewRegistry.registerViewFactory('stripe_platform_pay_button',
-        (int viewId) => _divElement);
+    ui.platformViewRegistry.registerViewFactory(
+        'stripe_platform_pay_button', (int viewId) => _divElement);
 
     mutationObserver.observe(
       web.document,

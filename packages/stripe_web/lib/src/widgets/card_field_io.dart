@@ -5,7 +5,7 @@ class WebCardField extends StatelessWidget {
   const WebCardField({
     required this.controller,
     this.onCardChanged,
-    Key? key,
+    super.key,
     this.onFocus,
     this.style,
     this.placeholder,
@@ -16,7 +16,7 @@ class WebCardField extends StatelessWidget {
     this.focusNode,
     this.autofocus = false,
     this.dangerouslyUpdateFullCardDetails = false,
-  }) : super(key: key);
+  });
 
   final BoxConstraints? constraints;
   final CardFocusCallback? onFocus;

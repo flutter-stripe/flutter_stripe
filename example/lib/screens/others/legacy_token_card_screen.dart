@@ -6,11 +6,13 @@ import 'package:stripe_example/widgets/loading_button.dart';
 import 'package:stripe_example/widgets/response_card.dart';
 
 class LegacyTokenCardScreen extends StatefulWidget {
+  const LegacyTokenCardScreen({super.key});
+
   @override
-  _LegacyTokenCardScreenState createState() => _LegacyTokenCardScreenState();
+  LegacyTokenCardScreenState createState() => LegacyTokenCardScreenState();
 }
 
-class _LegacyTokenCardScreenState extends State<LegacyTokenCardScreen> {
+class LegacyTokenCardScreenState extends State<LegacyTokenCardScreen> {
   CardFieldInputDetails? _card;
 
   TokenData? tokenData;
@@ -48,6 +50,7 @@ class _LegacyTokenCardScreenState extends State<LegacyTokenCardScreen> {
     if (_card == null) {
       return;
     }
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
 
     try {
       // 1. Gather customer billing information (ex. email)
@@ -67,12 +70,15 @@ class _LegacyTokenCardScreenState extends State<LegacyTokenCardScreen> {
       setState(() {
         this.tokenData = tokenData;
       });
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Success: The token was created successfully!')));
+      if (mounted) {
+        scaffoldMessenger.showSnackBar(SnackBar(
+            content: Text('Success: The token was created successfully!')));
+      }
       return;
     } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Error: $e')));
+      if (mounted) {
+        scaffoldMessenger.showSnackBar(SnackBar(content: Text('Error: $e')));
+      }
       rethrow;
     }
   }

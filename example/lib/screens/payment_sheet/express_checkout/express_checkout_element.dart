@@ -9,11 +9,13 @@ import 'platforms/express_checkout_element.dart'
     if (dart.library.js) 'platforms/express_checkout_element_web.dart';
 
 class ExpressCheckoutElementExample extends StatefulWidget {
+  const ExpressCheckoutElementExample({super.key});
+
   @override
-  _ThemeCardExampleState createState() => _ThemeCardExampleState();
+  ThemeCardExampleState createState() => ThemeCardExampleState();
 }
 
-class _ThemeCardExampleState extends State<ExpressCheckoutElementExample> {
+class ThemeCardExampleState extends State<ExpressCheckoutElementExample> {
   String? clientSecret;
 
   @override
@@ -23,19 +25,22 @@ class _ThemeCardExampleState extends State<ExpressCheckoutElementExample> {
   }
 
   Future<void> getClientSecret() async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     try {
       final client = await createPaymentIntent();
       setState(() {
         clientSecret = client;
       });
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            e.toString(),
+      if (mounted) {
+        scaffoldMessenger.showSnackBar(
+          SnackBar(
+            content: Text(
+              e.toString(),
+            ),
           ),
-        ),
-      );
+        );
+      }
     }
   }
 

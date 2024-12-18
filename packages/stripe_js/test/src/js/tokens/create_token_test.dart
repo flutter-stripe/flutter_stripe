@@ -1,10 +1,12 @@
+// ignore_for_file: library_annotations
+
 @TestOn('browser')
 @Tags(["browser"])
 
-import 'package:web/web.dart';
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart';
 
 import '../helpers/helpers.dart';
 

@@ -14,7 +14,7 @@ class CollectBankAccountParams with _$CollectBankAccountParams {
     /// Billingdetails of the account holder
     ///
     /// It is required to fill in the name in the billing details
-    required BillingDetails billingDetails,
+    required CollectBankAccountPaymentMethodData paymentMethodData,
 
     /// The paymentmethod type. At this point only method [PaymentMethodType.USBankAccount]
     /// is supported.
@@ -24,6 +24,21 @@ class CollectBankAccountParams with _$CollectBankAccountParams {
 
   factory CollectBankAccountParams.fromJson(Map<String, dynamic> json) =>
       _$CollectBankAccountParamsFromJson(json);
+}
+
+/// Specific payment method data needed for collecting the bank account of
+/// an payment method
+@freezed
+class CollectBankAccountPaymentMethodData
+    with _$CollectBankAccountPaymentMethodData {
+  @JsonSerializable(explicitToJson: true)
+  const factory CollectBankAccountPaymentMethodData({
+    required BillingDetails billingDetails,
+  }) = _CollectBankAccountPaymentMethodData;
+
+  factory CollectBankAccountPaymentMethodData.fromJson(
+          Map<String, dynamic> json) =>
+      _$CollectBankAccountPaymentMethodDataFromJson(json);
 }
 
 /// The type of payment intent used for collecting bank accoutn

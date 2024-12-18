@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart' as stripe;
 import 'package:flutter_stripe/flutter_stripe.dart';
@@ -11,73 +10,79 @@ class AddPaymentMethodScreenLoader {
   Future<void> display({
     required BuildContext context,
   }) async {
+    final theme = Theme.of(context);
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     final setupKeys = await createSetupIntent();
 
-    await Stripe.instance.initPaymentSheet(
-      paymentSheetParameters: SetupPaymentSheetParameters(
-        // Main params
-        setupIntentClientSecret: setupKeys.clientSecret,
-        customerId: setupKeys.customerId,
-        merchantDisplayName: 'Comover',
-        returnURL: 'flutterstripe://redirect',
-        allowsDelayedPaymentMethods: true,
-        allowsRemovalOfLastSavedPaymentMethod: false,
-        intentConfiguration: IntentConfiguration(
-          mode: IntentMode.setupMode(
-            currencyCode: 'EUR',
-            setupFutureUsage: IntentFutureUsage.OffSession,
+    if (context.mounted) {
+      await Stripe.instance.initPaymentSheet(
+        paymentSheetParameters: SetupPaymentSheetParameters(
+          // Main params
+          setupIntentClientSecret: setupKeys.clientSecret,
+          customerId: setupKeys.customerId,
+          merchantDisplayName: 'Comover',
+          returnURL: 'flutterstripe://redirect',
+          allowsDelayedPaymentMethods: true,
+          allowsRemovalOfLastSavedPaymentMethod: false,
+          intentConfiguration: IntentConfiguration(
+            mode: IntentMode.setupMode(
+              currencyCode: 'EUR',
+              setupFutureUsage: IntentFutureUsage.OffSession,
+            ),
+            paymentMethodTypes: ['card', 'bancontact'],
           ),
-          paymentMethodTypes: ['card', 'bancontact'],
-        ),
-        billingDetails: BillingDetails(
-          name: 'Flutter Stripe',
-          email: 'email@stripe.com',
-          phone: '+48888000888',
-          address: Address(
-            city: 'Houston',
-            country: 'US',
-            line1: '1459  Circle Drive',
-            line2: '',
-            state: 'Texas',
-            postalCode: '77063',
+          billingDetails: BillingDetails(
+            name: 'Flutter Stripe',
+            email: 'email@stripe.com',
+            phone: '+48888000888',
+            address: Address(
+              city: 'Houston',
+              country: 'US',
+              line1: '1459  Circle Drive',
+              line2: '',
+              state: 'Texas',
+              postalCode: '77063',
+            ),
           ),
+          billingDetailsCollectionConfiguration:
+              BillingDetailsCollectionConfiguration(
+            address: AddressCollectionMode.full,
+          ),
+          // Customer params
+          // Extra params
+          // applePay: const PaymentSheetApplePay(
+          //   merchantCountryCode: 'BE',
+          // ),
+          // googlePay: PaymentSheetGooglePay(
+          //   merchantCountryCode: 'BE',
+          //   label: 'ADD',
+          //   testEnv: kDebugMode,
+          // ),
+          primaryButtonLabel: 'confirm',
+          style: theme.brightness == Brightness.dark
+              ? ThemeMode.dark
+              : ThemeMode.light,
+          appearance: _buildSheetAppearance(context),
         ),
-        billingDetailsCollectionConfiguration:
-            BillingDetailsCollectionConfiguration(
-          address: AddressCollectionMode.full,
-        ),
-        // Customer params
-        // Extra params
-        // applePay: const PaymentSheetApplePay(
-        //   merchantCountryCode: 'BE',
-        // ),
-        // googlePay: PaymentSheetGooglePay(
-        //   merchantCountryCode: 'BE',
-        //   label: 'ADD',
-        //   testEnv: kDebugMode,
-        // ),
-        primaryButtonLabel: 'confirm',
-        style: Theme.of(context).brightness == Brightness.dark
-            ? ThemeMode.dark
-            : ThemeMode.light,
-        appearance: _buildSheetAppearance(context),
-      ),
-    );
+      );
+    }
     try {
       await Stripe.instance.presentPaymentSheet();
     } catch (e) {
-      if (e is StripeException) {
-        ScaffoldMessenger.of(context).showSnackBar(
+      if (e is StripeException && context.mounted) {
+        scaffoldMessenger.showSnackBar(
           SnackBar(
             content: Text('Error from Stripe: ${e.error.localizedMessage}'),
           ),
         );
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Unforeseen error: ${e}'),
-          ),
-        );
+        if (context.mounted) {
+          scaffoldMessenger.showSnackBar(
+            SnackBar(
+              content: Text('Unforeseen error: $e'),
+            ),
+          );
+        }
       }
     }
   }

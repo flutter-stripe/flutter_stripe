@@ -7,6 +7,8 @@ import 'package:stripe_example/config.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 
 class CustomCardPaymentScreen extends StatefulWidget {
+  const CustomCardPaymentScreen({super.key});
+
   @override
   _CustomCardPaymentScreenState createState() =>
       _CustomCardPaymentScreenState();
@@ -120,6 +122,8 @@ class _CustomCardPaymentScreenState extends State<CustomCardPaymentScreen> {
   }
 
   Future<void> _handlePayPress() async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
+
     await Stripe.instance.dangerouslyUpdateCardDetails(_card);
 
     try {
@@ -158,16 +162,18 @@ class _CustomCardPaymentScreenState extends State<CustomCardPaymentScreen> {
 
       if (paymentIntentResult['error'] != null) {
         // Error during creating or confirming Intent
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Error: ${paymentIntentResult['error']}')));
-        return;
+        if (context.mounted) {
+          scaffoldMessenger.showSnackBar(SnackBar(
+              content: Text('Error: ${paymentIntentResult['error']}')));
+          return;
+        }
       }
 
       if (paymentIntentResult['clientSecret'] != null &&
           paymentIntentResult['requiresAction'] == null) {
         // Payment succedeed
 
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        scaffoldMessenger.showSnackBar(SnackBar(
             content:
                 Text('Success!: The payment was confirmed successfully!')));
         return;
@@ -184,25 +190,27 @@ class _CustomCardPaymentScreenState extends State<CustomCardPaymentScreen> {
           await confirmIntent(paymentIntent.id);
         } else {
           // Payment succedeed
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text('Error: ${paymentIntentResult['error']}')));
+          if (context.mounted) {
+            scaffoldMessenger.showSnackBar(SnackBar(
+                content: Text('Error: ${paymentIntentResult['error']}')));
+          }
         }
       }
     } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Error: $e')));
+      scaffoldMessenger.showSnackBar(SnackBar(content: Text('Error: $e')));
       rethrow;
     }
   }
 
   Future<void> confirmIntent(String paymentIntentId) async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     final result = await callNoWebhookPayEndpointIntentId(
         paymentIntentId: paymentIntentId);
-    if (result['error'] != null) {
-      ScaffoldMessenger.of(context)
+    if (result['error'] != null && context.mounted) {
+      scaffoldMessenger
           .showSnackBar(SnackBar(content: Text('Error: ${result['error']}')));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      scaffoldMessenger.showSnackBar(SnackBar(
           content: Text('Success!: The payment was confirmed successfully!')));
     }
   }

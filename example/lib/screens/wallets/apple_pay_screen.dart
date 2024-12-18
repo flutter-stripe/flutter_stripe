@@ -8,6 +8,8 @@ import 'package:stripe_example/widgets/example_scaffold.dart';
 import '../../config.dart';
 
 class ApplePayScreen extends StatefulWidget {
+  const ApplePayScreen({super.key});
+
   @override
   _ApplePayScreenState createState() => _ApplePayScreenState();
 }
@@ -120,6 +122,7 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
     required List<ApplePayCartSummaryItem> summaryItems,
     required List<ApplePayShippingMethod> shippingMethods,
   }) async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     try {
       // 1. fetch Intent Client Secret from backend
       final response = await fetchPaymentIntentClientSecret();
@@ -144,14 +147,18 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
               couponCode: 'Coupon'),
         ),
       );
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text('Apple Pay payment succesfully completed')),
-      );
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
+          const SnackBar(
+              content: Text('Apple Pay payment succesfully completed')),
+        );
+      }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e')),
-      );
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
+          SnackBar(content: Text('Error: $e')),
+        );
+      }
       rethrow;
     }
   }

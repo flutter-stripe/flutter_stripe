@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 
 class ThemeCardExample extends StatefulWidget {
+  const ThemeCardExample({super.key});
+
   @override
   _ThemeCardExampleState createState() => _ThemeCardExampleState();
 }

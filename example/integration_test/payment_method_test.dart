@@ -43,7 +43,7 @@ void main() {
         expirationMonth: 04,
         expirationYear: 2025,
       ));
-      ;
+
       final paymentIntent = await Stripe.instance.confirmPayment(
         paymentIntentClientSecret: clientSecret['clientSecret'],
         data: PaymentMethodParams.card(

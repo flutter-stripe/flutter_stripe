@@ -1,9 +1,11 @@
 // ignore_for_file: non_constant_identifier_names
 
 @JS()
+// ignore: unnecessary_library_name
 library types;
 
 import 'dart:js_interop';
+
 import 'package:stripe_js/stripe_js.dart';
 
 extension type Stripe.__(JSObject o) {

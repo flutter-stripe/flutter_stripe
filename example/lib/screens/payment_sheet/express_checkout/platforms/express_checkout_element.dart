@@ -5,7 +5,7 @@ Future<void> pay() async {
 }
 
 class ExpressCheckoutWidget extends StatelessWidget {
-  const ExpressCheckoutWidget(this.clientSecret);
+  const ExpressCheckoutWidget(this.clientSecret, {super.key});
 
   final String? clientSecret;
 

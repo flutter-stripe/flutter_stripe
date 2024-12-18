@@ -486,7 +486,7 @@ class MethodChannelStripe extends StripePlatform {
   }) async {
     final result = await _methodChannel
         .invokeMapMethod<String, dynamic>('collectBankAccount', {
-      'isPaymentIntent': isPaymentIntent,
+      'intentType': isPaymentIntent,
       'params': params.toJson(),
       'clientSecret': clientSecret,
     });

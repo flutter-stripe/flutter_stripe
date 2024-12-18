@@ -10,7 +10,7 @@ import '../../config.dart';
 import '../../widgets/response_card.dart';
 
 class FinancialConnectionsScreen extends StatefulWidget {
-  const FinancialConnectionsScreen({Key? key}) : super(key: key);
+  const FinancialConnectionsScreen({super.key});
 
   @override
   State<FinancialConnectionsScreen> createState() =>
@@ -40,32 +40,31 @@ class _FinancialConnectionsScreenState
   }
 
   Future<void> _collectAccount(BuildContext context) async {
-    // Precondition:
-    // 1. Make sure to create a financial connection session on the backend and
-    // forward the client secret of the session to the app.
+    final messenger = ScaffoldMessenger.of(context);
     final result = await _financialConnectionsSheet();
     final clientSecret = await result['clientSecret'];
 
-    // 2. use the client secret to confirm the payment and handle the result.
     try {
       final result = await Stripe.instance.collectFinancialConnectionsAccounts(
         clientSecret: clientSecret,
       );
 
+      if (!mounted) return;
       setState(() {
         response = result.toString();
       });
     } on Exception catch (e) {
+      if (!mounted) return;
       if (e is StripeException) {
-        ScaffoldMessenger.of(context).showSnackBar(
+        messenger.showSnackBar(
           SnackBar(
             content: Text('Error from Stripe: ${e.error.localizedMessage}'),
           ),
         );
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
+        messenger.showSnackBar(
           SnackBar(
-            content: Text('Unforeseen error: ${e}'),
+            content: Text('Unforeseen error: $e'),
           ),
         );
       }
@@ -73,32 +72,31 @@ class _FinancialConnectionsScreenState
   }
 
   Future<void> _collectBankToken(BuildContext context) async {
-    // Precondition:
-    // 1. Make sure to create a financial connection session on the backend and
-    // forward the client secret of the session to the app.
+    final messenger = ScaffoldMessenger.of(context);
     final result = await _financialConnectionsSheet();
     final clientSecret = await result['clientSecret'];
 
-    // 2. use the client secret to confirm the payment and handle the result.
     try {
       final result = await Stripe.instance.collectBankAccountToken(
         clientSecret: clientSecret,
       );
 
+      if (!mounted) return;
       setState(() {
         response = result.toString();
       });
     } on Exception catch (e) {
+      if (!mounted) return;
       if (e is StripeException) {
-        ScaffoldMessenger.of(context).showSnackBar(
+        messenger.showSnackBar(
           SnackBar(
             content: Text('Error from Stripe: ${e.error.localizedMessage}'),
           ),
         );
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
+        messenger.showSnackBar(
           SnackBar(
-            content: Text('Unforeseen error: ${e}'),
+            content: Text('Unforeseen error: $e'),
           ),
         );
       }

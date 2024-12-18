@@ -14,13 +14,15 @@ class AddPaymentMethodScreenLoader {
     required BuildContext context,
   }) async {
     final setupKeys = await createSetupIntent();
-    await Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => _AddPaymentMethodScreenWeb(
-          setupKeys: setupKeys,
+    if (context.mounted) {
+      await Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => _AddPaymentMethodScreenWeb(
+            setupKeys: setupKeys,
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
 }
 
@@ -92,8 +94,6 @@ class _AddPaymentMethodScreenPlatformState
   ElementAppearance buildAppearance(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-
-    print(theme.colorScheme.surface.toRgb());
 
     return ElementAppearance(
       theme: isDark ? ElementTheme.night : ElementTheme.stripe,

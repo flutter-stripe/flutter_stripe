@@ -8,8 +8,8 @@ import 'package:stripe_example/widgets/loading_button.dart';
 
 import '../../config.dart';
 
-class AliPayScreen extends StatelessWidget {
-  const AliPayScreen({super.key});
+class P24Screen extends StatelessWidget {
+  const P24Screen({super.key});
 
   Future<Map<String, dynamic>> _createPaymentIntent() async {
     final url = Uri.parse('$kApiUrl/create-payment-intent');
@@ -19,9 +19,9 @@ class AliPayScreen extends StatelessWidget {
         'Content-Type': 'application/json',
       },
       body: json.encode({
-        'currency': 'cny',
-        'payment_method_types': ['alipay'],
-        'amount': 1099
+        'currency': 'pln',
+        'payment_method_types': ['p24'],
+        'amount': 5000
       }),
     );
 
@@ -29,45 +29,45 @@ class AliPayScreen extends StatelessWidget {
   }
 
   Future<void> _pay(BuildContext context) async {
-    // Precondition:
-    //Make sure to have set a custom URI scheme in your app and add it to Stripe SDK
-    // see file main.dart in this example app.
-    // 1. on the backend create a payment intent for payment method and save the
-    // client secret.
+    // 1. Create payment intent on the backend
     final scaffoldMessenger = ScaffoldMessenger.of(context);
     final result = await _createPaymentIntent();
-    final clientSecret = await result['clientSecret'];
+    final clientSecret = result['clientSecret'];
 
-    // 2. use the client secret to confirm the payment and handle the result.
+    // 2. Use the client secret to confirm the payment
     try {
       await Stripe.instance.confirmPayment(
         paymentIntentClientSecret: clientSecret,
-        data: PaymentMethodParams.alipay(
-          paymentMethodData: const PaymentMethodData(),
+        data: PaymentMethodParams.p24(
+          paymentMethodData: PaymentMethodData(
+            billingDetails: BillingDetails(
+              email: 'test@example.com',
+            ),
+          ),
         ),
       );
+
       if (context.mounted) {
-        scaffoldMessenger.showSnackBar(
-          SnackBar(
-            content: Text('Payment succesfully completed'),
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Payment successfully completed'),
           ),
         );
       }
     } on Exception catch (e) {
       if (e is StripeException && context.mounted) {
-        scaffoldMessenger.showSnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Error from Stripe: ${e.error.localizedMessage}'),
+            content: Text(
+                'Error from Stripe: ${e.error.localizedMessage ?? e.error.code}'),
           ),
         );
-      } else {
-        if (context.mounted) {
-          scaffoldMessenger.showSnackBar(
-            SnackBar(
-              content: Text('Unforeseen error: $e'),
-            ),
-          );
-        }
+      } else if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
+          SnackBar(
+            content: Text('Unforeseen error: $e'),
+          ),
+        );
       }
     }
   }
@@ -75,15 +75,15 @@ class AliPayScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      title: 'AliPay',
+      title: 'P24',
       tags: ['Payment method'],
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       children: [
         LoadingButton(
           onPressed: () async {
             await _pay(context);
           },
-          text: 'Pay',
+          text: 'Pay with P24',
         ),
       ],
     );

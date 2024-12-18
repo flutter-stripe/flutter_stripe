@@ -37,6 +37,7 @@ class ConfirmPaymentOptions with _$ConfirmPaymentOptions {
 class ConfirmPaymentParams with _$ConfirmPaymentParams {
   const factory ConfirmPaymentParams({
     /// The url your customer will be directed to after they complete payment.
+    // ignore: non_constant_identifier_names
     required String return_url,
   }) = _ConfirmPaymentParams;
 

@@ -6,12 +6,12 @@ class ExampleScaffold extends StatelessWidget {
   final String title;
   final EdgeInsets? padding;
   const ExampleScaffold({
-    Key? key,
+    super.key,
     this.children = const [],
     this.tags = const [],
     this.title = '',
     this.padding,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,18 +24,18 @@ class ExampleScaffold extends StatelessWidget {
           children: [
             SizedBox(height: 60),
             Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
               child:
                   Text(title, style: Theme.of(context).textTheme.headlineSmall),
-              padding: EdgeInsets.symmetric(horizontal: 20),
             ),
             SizedBox(height: 4),
             Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 children: [
                   for (final tag in tags) Chip(label: Text(tag)),
                 ],
               ),
-              padding: EdgeInsets.symmetric(horizontal: 20),
             ),
             SizedBox(height: 20),
             if (padding != null)

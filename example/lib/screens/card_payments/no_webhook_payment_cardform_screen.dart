@@ -10,6 +10,8 @@ import 'package:stripe_example/widgets/loading_button.dart';
 import 'package:stripe_example/widgets/response_card.dart';
 
 class NoWebhookPaymentCardFormScreen extends StatefulWidget {
+  const NoWebhookPaymentCardFormScreen({super.key});
+
   @override
   _NoWebhookPaymentCardFormScreenState createState() =>
       _NoWebhookPaymentCardFormScreenState();
@@ -86,6 +88,8 @@ class _NoWebhookPaymentCardFormScreenState
       return;
     }
 
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
+
     try {
       // 1. Gather customer billing information (ex. email)
 
@@ -120,8 +124,10 @@ class _NoWebhookPaymentCardFormScreenState
 
       if (paymentIntentResult['error'] != null) {
         // Error during creating or confirming Intent
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Error: ${paymentIntentResult['error']}')));
+        if (context.mounted) {
+          scaffoldMessenger.showSnackBar(SnackBar(
+              content: Text('Error: ${paymentIntentResult['error']}')));
+        }
         return;
       }
 
@@ -129,10 +135,12 @@ class _NoWebhookPaymentCardFormScreenState
           paymentIntentResult['requiresAction'] == null) {
         // Payment succedeed
 
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content:
-                Text('Success!: The payment was confirmed successfully!')));
-        return;
+        if (context.mounted) {
+          scaffoldMessenger.showSnackBar(SnackBar(
+              content:
+                  Text('Success!: The payment was confirmed successfully!')));
+          return;
+        }
       }
 
       if (paymentIntentResult['clientSecret'] != null &&
@@ -153,27 +161,34 @@ class _NoWebhookPaymentCardFormScreenState
           // 5. Call API to confirm intent
           await confirmIntent(paymentIntent.id);
         } else {
-          // Payment succedeed
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text('Error: ${paymentIntentResult['error']}')));
+          if (context.mounted) {
+            // Payment succedeed
+            scaffoldMessenger.showSnackBar(SnackBar(
+                content: Text('Error: ${paymentIntentResult['error']}')));
+          }
         }
       }
     } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Error: $e')));
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(SnackBar(content: Text('Error: $e')));
+      }
       rethrow;
     }
   }
 
   Future<void> confirmIntent(String paymentIntentId) async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     final result = await callNoWebhookPayEndpointIntentId(
         paymentIntentId: paymentIntentId);
-    if (result['error'] != null) {
-      ScaffoldMessenger.of(context)
+    if (result['error'] != null && context.mounted) {
+      scaffoldMessenger
           .showSnackBar(SnackBar(content: Text('Error: ${result['error']}')));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Success!: The payment was confirmed successfully!')));
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(SnackBar(
+            content:
+                Text('Success!: The payment was confirmed successfully!')));
+      }
     }
   }
 
