@@ -14,7 +14,9 @@ A new flutter plugin project.
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Your Company' => 'email@example.com' }
   s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
+  s.source_files = 'stripe_ios/Sources/**/*.<m,h,swift>'
+  s.public_header_files = 'stripe_ios/Sources/stripe_objc/include/**/*.h'
+  s.module_map = 'stripe_ios/Sources/stripe_objc/include/stripe_objc.modulemap'
   s.dependency 'Flutter'
   s.dependency 'Stripe', stripe_version
   s.dependency 'StripePaymentSheet', stripe_version
