@@ -1,7 +1,9 @@
 import Foundation
 import UIKit
 import Stripe
+#if canImport(stripe_objc)
 import stripe_objc
+#endif
 
 @objc(AuBECSDebitFormView)
 class AuBECSDebitFormView: UIView, STPAUBECSDebitFormViewDelegate {

@@ -8,7 +8,9 @@
 import Foundation
 import Stripe
 import PassKit
+#if canImport(stripe_objc)
 import stripe_objc
+#endif
 
 @objc(AddToWalletButtonView)
 class AddToWalletButtonView: UIView {

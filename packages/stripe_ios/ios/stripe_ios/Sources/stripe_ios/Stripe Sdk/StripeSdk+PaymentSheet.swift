@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(stripe_objc)
 import stripe_objc
+#endif
 @_spi(ExperimentalAllowsRemovalOfLastSavedPaymentMethodAPI) @_spi(CustomerSessionBetaAccess) @_spi(STP) import StripePaymentSheet
 
 extension StripeSdk {
@@ -311,4 +313,3 @@ extension StripeSdk {
         }
     }
 }
-

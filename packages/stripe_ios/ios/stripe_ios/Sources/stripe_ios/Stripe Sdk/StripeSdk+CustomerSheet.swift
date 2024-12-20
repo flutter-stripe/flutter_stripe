@@ -8,7 +8,9 @@
 import Foundation
 @_spi(PrivateBetaCustomerSheet) @_spi(STP) import StripePaymentSheet
 import UIKit
+#if canImport(stripe_objc)
 import stripe_objc
+#endif
 
 extension StripeSdk {
     @objc(initCustomerSheet:customerAdapterOverrides:resolver:rejecter:)

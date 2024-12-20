@@ -3,7 +3,9 @@ import Stripe
 import StripePaymentSheet
 import StripeFinancialConnections
 import Foundation
+#if canImport(stripe_objc)
 import stripe_objc
+#endif
 
 @objc(StripeSdk)
 class StripeSdk: RCTEventEmitter, STPBankSelectionViewControllerDelegate, UIAdaptivePresentationControllerDelegate {

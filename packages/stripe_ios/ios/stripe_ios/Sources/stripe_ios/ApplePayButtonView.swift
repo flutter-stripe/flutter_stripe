@@ -8,7 +8,9 @@
 import Flutter
 import UIKit
 import PassKit
+#if canImport(stripe_objc)
 import stripe_objc
+#endif
 
 class ApplePayButtonViewFactory: NSObject, FlutterPlatformViewFactory {
     private var messenger: FlutterBinaryMessenger

@@ -8,7 +8,9 @@
 import Foundation
 import StripePaymentSheet
 import UIKit
+#if canImport(stripe_objc)
 import stripe_objc
+#endif
 
 @objc(AddressSheetView)
 class AddressSheetView: UIView {

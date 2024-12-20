@@ -2,7 +2,9 @@ import Flutter
 import UIKit
 import Stripe
 import PassKit
+#if canImport(stripe_objc)
 import stripe_objc
+#endif
 
 protocol ViewManagerDelegate {
     var cardFieldView: CardFieldView? { get set }
@@ -660,4 +662,3 @@ extension  StripePlugin {
         result(nil)
     }
 }
-

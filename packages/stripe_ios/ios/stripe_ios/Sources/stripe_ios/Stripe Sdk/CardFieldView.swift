@@ -1,7 +1,9 @@
 import Foundation
 import UIKit
 import Stripe
+#if canImport(stripe_objc)
 import stripe_objc
+#endif
 
 class CardFieldView: UIView, STPPaymentCardTextFieldDelegate {
     @objc var onCardChange: RCTDirectEventBlock?
