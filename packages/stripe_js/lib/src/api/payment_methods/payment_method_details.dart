@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:meta/meta_meta.dart';
 import 'package:stripe_js/src/api/converters/js_converter.dart';
 import 'package:stripe_js/stripe_api.dart';
-import 'package:meta/meta_meta.dart';
 
 part 'payment_method_details.freezed.dart';
 part 'payment_method_details.g.dart';
@@ -116,6 +116,31 @@ class IdealPaymentMethodDetails
 
   factory IdealPaymentMethodDetails.fromJson(Map<String, dynamic> json) =>
       _$IdealPaymentMethodDetailsFromJson(json);
+}
+
+@Freezed(unionKey: 'type')
+class P24PaymentMethodDetails
+    with _$P24PaymentMethodDetails
+    implements PaymentMethodDetails {
+  @FreezedUnionValue('p24')
+  @Implements<IdPaymentMethodDetails>()
+  const factory P24PaymentMethodDetails.id(String id) =
+      _IdP24PaymentMethodDetails;
+
+  /// Use stripe.confirmCardPayment with payment data from an Element by
+  /// passing a card or cardNumber Element as payment_method[card] in the
+  /// data argument.
+  ///
+  /// The new PaymentMethod will be created with data collected by the
+  /// Element and will be used to confirm the PaymentIntent.
+  @FreezedUnionValue('p24')
+  const factory P24PaymentMethodDetails({
+    /// The billing_details associated with the card.
+    @JsonKey(name: "billing_details") required BillingDetails? billingDetails,
+  }) = _P24PaymentMethodDetails;
+
+  factory P24PaymentMethodDetails.fromJson(Map<String, dynamic> json) =>
+      _$P24PaymentMethodDetailsFromJson(json);
 }
 
 /// An object detailing the customer's iDEAL bank.

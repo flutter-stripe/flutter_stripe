@@ -179,6 +179,19 @@ class WebStripe extends StripePlatform {
           ),
         );
       },
+      p24: (paymentData) {
+        return js.confirmP24Payment(
+          paymentIntentClientSecret,
+          data: stripe_js.ConfirmP24PaymentData(
+            paymentMethod: stripe_js.P24PaymentMethodDetails(
+              billingDetails: paymentData.billingDetails!.toJs(),
+            ),
+            returnUrl: urlScheme,
+            // recommended
+            // setup_future_usage:
+          ),
+        );
+      },
       orElse: () {
         throw WebUnsupportedError();
       },
