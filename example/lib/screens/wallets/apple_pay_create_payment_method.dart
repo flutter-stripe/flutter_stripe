@@ -4,6 +4,8 @@ import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_example/widgets/response_card.dart';
 
 class ApplePayCreatePaymentMethodScreen extends StatefulWidget {
+  const ApplePayCreatePaymentMethodScreen({super.key});
+
   @override
   _ApplePayScreenState createState() => _ApplePayScreenState();
 }
@@ -50,6 +52,7 @@ class _ApplePayScreenState extends State<ApplePayCreatePaymentMethodScreen> {
   Future<void> _handlePayPress() async {
     // 1. create payment method
 
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     final paymentMethod = await Stripe.instance.createPlatformPayPaymentMethod(
       params: PlatformPayPaymentMethodParams.applePay(
         applePayParams: ApplePayParams(
@@ -86,8 +89,10 @@ class _ApplePayScreenState extends State<ApplePayCreatePaymentMethodScreen> {
       response = paymentMethod;
     });
 
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(
-            'Success!: The payment method with id: ${paymentMethod.paymentMethod.id} was created successfully,')));
+    if (context.mounted) {
+      scaffoldMessenger.showSnackBar(SnackBar(
+          content: Text(
+              'Success!: The payment method with id: ${paymentMethod.paymentMethod.id} was created successfully,')));
+    }
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ResponseCard extends StatelessWidget {
   final String response;
-  const ResponseCard({Key? key, required this.response}) : super(key: key);
+  const ResponseCard({super.key, required this.response});
 
   @override
   Widget build(BuildContext context) {

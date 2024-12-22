@@ -3,12 +3,13 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
+import 'package:stripe_example/config.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 
-import 'package:stripe_example/config.dart';
-
 class PaymentSheetScreenWithCustomFlow extends StatefulWidget {
+  const PaymentSheetScreenWithCustomFlow({super.key});
+
   @override
   _PaymentSheetScreenState createState() => _PaymentSheetScreenState();
 }
@@ -54,6 +55,7 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreenWithCustomFlow> {
   }
 
   Future<void> initPaymentSheet() async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     try {
       // 1. create payment intent on the server
       final data = await createTestPaymentSheet();
@@ -81,14 +83,17 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreenWithCustomFlow> {
         step = 1;
       });
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e')),
-      );
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
+          SnackBar(content: Text('Error: $e')),
+        );
+      }
       rethrow;
     }
   }
 
   Future<void> presentPaymentSheet() async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     try {
       // 3. display the payment sheet.
       await Stripe.instance.presentPaymentSheet();
@@ -97,29 +102,36 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreenWithCustomFlow> {
         step = 2;
       });
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Payment option selected'),
-        ),
-      );
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
+          SnackBar(
+            content: Text('Payment option selected'),
+          ),
+        );
+      }
     } on Exception catch (e) {
       if (e is StripeException) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error from Stripe: ${e.error.localizedMessage}'),
-          ),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Unforeseen error: ${e}'),
-          ),
-        );
+        if (context.mounted) {
+          scaffoldMessenger.showSnackBar(
+            SnackBar(
+              content: Text('Error from Stripe: ${e.error.localizedMessage}'),
+            ),
+          );
+        } else {
+          if (context.mounted) {
+            scaffoldMessenger.showSnackBar(
+              SnackBar(
+                content: Text('Unforeseen error: $e'),
+              ),
+            );
+          }
+        }
       }
     }
   }
 
   Future<void> confirmPayment() async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     try {
       // 4. Confirm the payment sheet.
       await Stripe.instance.confirmPaymentSheetPayment();
@@ -128,24 +140,30 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreenWithCustomFlow> {
         step = 0;
       });
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Payment succesfully completed'),
-        ),
-      );
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
+          SnackBar(
+            content: Text('Payment succesfully completed'),
+          ),
+        );
+      }
     } on Exception catch (e) {
       if (e is StripeException) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error from Stripe: ${e.error.localizedMessage}'),
-          ),
-        );
+        if (context.mounted) {
+          scaffoldMessenger.showSnackBar(
+            SnackBar(
+              content: Text('Error from Stripe: ${e.error.localizedMessage}'),
+            ),
+          );
+        }
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Unforeseen error: ${e}'),
-          ),
-        );
+        if (context.mounted) {
+          scaffoldMessenger.showSnackBar(
+            SnackBar(
+              content: Text('Unforeseen error: $e'),
+            ),
+          );
+        }
       }
     }
   }
@@ -171,4 +189,5 @@ class _PaymentSheetScreenState extends State<PaymentSheetScreenWithCustomFlow> {
   }
 }
 
-final ControlsWidgetBuilder emptyControlBuilder = (_, __) => Container();
+Widget emptyControlBuilder(BuildContext context, ControlsDetails details) =>
+    Container();

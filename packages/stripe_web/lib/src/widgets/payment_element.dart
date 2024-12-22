@@ -44,7 +44,7 @@ class PaymentElement extends StatefulWidget {
   final js.PaymentElementWalletOptions? wallets;
   final js.PaymentElementApplePayOptions? applePay;
 
-  PaymentElement({
+  const PaymentElement({
     super.key,
     required this.clientSecret,
     this.customerSessionClientSecret,
@@ -128,7 +128,7 @@ class PaymentElementState extends State<PaymentElement> {
       ..id = 'payment-element'
       ..style.border = 'none'
       ..style.width = '100%'
-      ..style.height = '${height}';
+      ..style.height = '$height';
 
     elements = WebStripe.js.elements(createOptions());
     mutationObserver!.observe(

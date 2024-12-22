@@ -8,6 +8,8 @@ import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 
 class CustomerSheetScreen extends StatefulWidget {
+  const CustomerSheetScreen({super.key});
+
   @override
   _CustomerSheetScreenState createState() => _CustomerSheetScreenState();
 }
@@ -64,6 +66,7 @@ class _CustomerSheetScreenState extends State<CustomerSheetScreen> {
   }
 
   Future<void> initCustomerSheet() async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     try {
       // 1. retrieve customer from backend.
       final data = await _createTestCustomerSheet();
@@ -101,14 +104,17 @@ class _CustomerSheetScreenState extends State<CustomerSheetScreen> {
         step = 1;
       });
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e')),
-      );
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
+          SnackBar(content: Text('Error: $e')),
+        );
+      }
       rethrow;
     }
   }
 
   Future<void> confirmCustomerSheet() async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     try {
       // 3. display the customer sheet.
       final result = await Stripe.instance.presentCustomerSheet();
@@ -117,25 +123,31 @@ class _CustomerSheetScreenState extends State<CustomerSheetScreen> {
         step = 0;
       });
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-              'Payment preferences modfied completed option selected: ${result?.paymentOption?.label}}'),
-        ),
-      );
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
+          SnackBar(
+            content: Text(
+                'Payment preferences modfied completed option selected: ${result?.paymentOption?.label}}'),
+          ),
+        );
+      }
     } on Exception catch (e) {
       if (e is StripeException) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error from Stripe: ${e.error.localizedMessage}'),
-          ),
-        );
+        if (context.mounted) {
+          scaffoldMessenger.showSnackBar(
+            SnackBar(
+              content: Text('Error from Stripe: ${e.error.localizedMessage}'),
+            ),
+          );
+        }
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Unforeseen error: ${e}'),
-          ),
-        );
+        if (context.mounted) {
+          scaffoldMessenger.showSnackBar(
+            SnackBar(
+              content: Text('Unforeseen error: $e'),
+            ),
+          );
+        }
       }
     }
   }

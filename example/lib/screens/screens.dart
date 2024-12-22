@@ -13,10 +13,12 @@ import 'package:stripe_example/screens/regional_payment_methods/cash_app_screen.
 import 'package:stripe_example/screens/regional_payment_methods/fpx_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/ideal_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/klarna_screen.dart';
+import 'package:stripe_example/screens/regional_payment_methods/p24_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/paypal_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/revolutpay_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/sofort_screen.dart';
-import 'package:stripe_example/screens/regional_payment_methods/us_bank_account.dart';
+import 'package:stripe_example/screens/regional_payment_methods/us_bank_account_direct_debit_screen.dart';
+import 'package:stripe_example/screens/regional_payment_methods/us_bank_account_screen.dart';
 import 'package:stripe_example/screens/setup_future_payments/setup_future_payments_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen_plugin.dart';
@@ -45,11 +47,11 @@ class ExampleSection extends StatelessWidget {
   final bool expanded;
 
   const ExampleSection({
-    Key? key,
+    super.key,
     required this.title,
     required this.children,
     this.expanded = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +74,8 @@ class Example extends StatelessWidget {
 
   final WidgetBuilder builder;
 
-  Example({
+  const Example({
+    super.key,
     required this.title,
     required this.builder,
     this.style,
@@ -88,7 +91,7 @@ class Example extends StatelessWidget {
         Navigator.push(context, route);
       },
       title: Text(title, style: style),
-      leading: this.leading,
+      leading: leading,
       trailing: Row(mainAxisSize: MainAxisSize.min, children: [
         PlatformIcons(supported: platformsSupported),
         Icon(Icons.chevron_right_rounded),
@@ -101,6 +104,7 @@ class Example extends StatelessWidget {
   static List<Widget> screens = [
     ExampleSection(
       title: 'Payment Sheet',
+      expanded: true,
       children: [
         Example(
           title: 'Single Step',
@@ -141,7 +145,6 @@ class Example extends StatelessWidget {
           ],
         )
       ],
-      expanded: true,
     ),
     ExampleSection(title: 'Customer sheet', children: [
       Example(
@@ -340,6 +343,16 @@ class Example extends StatelessWidget {
         title: 'Us bank accounts (ACH)',
         builder: (contex) => UsBankAccountScreen(),
         platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+      ),
+      Example(
+        title: 'Us bank accounts Direct debit(ACH)',
+        builder: (contex) => UsBankAccountDirectDebitScreen(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+      ),
+      Example(
+        title: 'P24 Payment',
+        leading: SizedBox(),
+        builder: (context) => P24Screen(),
       ),
       // TODO: uncomment when we can re-enable wechat pay
       // Example(

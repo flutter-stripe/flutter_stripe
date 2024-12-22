@@ -1,3 +1,5 @@
+// ignore_for_file: library_annotations
+
 @TestOn('browser')
 @Tags(["browser"])
 import 'dart:js';
