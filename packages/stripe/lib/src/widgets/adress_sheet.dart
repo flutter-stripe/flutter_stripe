@@ -77,35 +77,39 @@ class _AddressSheetState extends State<_AddressSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return defaultTargetPlatform == TargetPlatform.iOS
-        ? UiKitView(
-            viewType: _viewType,
-            creationParamsCodec: const StandardMessageCodec(),
-            creationParams: widget.addressSheetParams.toJson(),
-            onPlatformViewCreated: onPlatformViewCreated,
-          )
-        : PlatformViewLink(
-            surfaceFactory: (context, controller) {
-              return AndroidViewSurface(
-                controller: controller as AndroidViewController,
-                hitTestBehavior: PlatformViewHitTestBehavior.opaque,
-                gestureRecognizers: const <Factory<
-                    OneSequenceGestureRecognizer>>{},
-              );
-            },
-            onCreatePlatformView: (params) {
-              onPlatformViewCreated(params.id);
-              return PlatformViewsService.initExpensiveAndroidView(
-                id: params.id,
-                viewType: _viewType,
-                layoutDirection: TextDirection.ltr,
-                creationParams: widget.addressSheetParams.toJson(),
-                creationParamsCodec: const StandardMessageCodec(),
-              )
-                ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
-                ..create();
-            },
-            viewType: _viewType,
-          );
+    return SizedBox(
+      height: 10,
+      child: defaultTargetPlatform == TargetPlatform.iOS
+          ? UiKitView(
+              viewType: _viewType,
+              creationParamsCodec: const StandardMessageCodec(),
+              creationParams: widget.addressSheetParams.toJson(),
+              onPlatformViewCreated: onPlatformViewCreated,
+            )
+          : PlatformViewLink(
+              surfaceFactory: (context, controller) {
+                return AndroidViewSurface(
+                  controller: controller as AndroidViewController,
+                  hitTestBehavior: PlatformViewHitTestBehavior.opaque,
+                  gestureRecognizers: const <Factory<
+                      OneSequenceGestureRecognizer>>{},
+                );
+              },
+              onCreatePlatformView: (params) {
+                onPlatformViewCreated(params.id);
+                return PlatformViewsService.initExpensiveAndroidView(
+                  id: params.id,
+                  viewType: _viewType,
+                  layoutDirection: TextDirection.ltr,
+                  creationParams: widget.addressSheetParams.toJson(),
+                  creationParamsCodec: const StandardMessageCodec(),
+                )
+                  ..addOnPlatformViewCreatedListener(
+                      params.onPlatformViewCreated)
+                  ..create();
+              },
+              viewType: _viewType,
+            ),
+    );
   }
 }
