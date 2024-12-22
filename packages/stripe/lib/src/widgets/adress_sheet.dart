@@ -10,12 +10,8 @@ class AddressSheet extends StatelessWidget {
     required this.onSubmit,
     required this.onError,
     required this.params,
-    this.height = 300,
     super.key,
   });
-
-  /// The height of the address sheet
-  final int height;
 
   /// Called when the user submits their information
   final OnAddressSheetSubmit onSubmit;
@@ -32,7 +28,6 @@ class AddressSheet extends StatelessWidget {
       onSubmit: onSubmit,
       onError: onError,
       addressSheetParams: params,
-      height: height,
     );
   }
 }
@@ -41,14 +36,12 @@ class _AddressSheet extends StatefulWidget {
   const _AddressSheet({
     required this.onSubmit,
     required this.onError,
-    required this.height,
     required this.addressSheetParams,
   });
 
   final AddressSheetParams addressSheetParams;
   final OnAddressSheetSubmit onSubmit;
   final OnAddressSheetError onError;
-  final int height;
 
   @override
   State<_AddressSheet> createState() => _AddressSheetState();
@@ -84,39 +77,35 @@ class _AddressSheetState extends State<_AddressSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: widget.height.toDouble(),
-      child: defaultTargetPlatform == TargetPlatform.iOS
-          ? UiKitView(
-              viewType: _viewType,
-              creationParamsCodec: const StandardMessageCodec(),
-              creationParams: widget.addressSheetParams.toJson(),
-              onPlatformViewCreated: onPlatformViewCreated,
-            )
-          : PlatformViewLink(
-              surfaceFactory: (context, controller) {
-                return AndroidViewSurface(
-                  controller: controller as AndroidViewController,
-                  hitTestBehavior: PlatformViewHitTestBehavior.opaque,
-                  gestureRecognizers: const <Factory<
-                      OneSequenceGestureRecognizer>>{},
-                );
-              },
-              onCreatePlatformView: (params) {
-                onPlatformViewCreated(params.id);
-                return PlatformViewsService.initExpensiveAndroidView(
-                  id: params.id,
-                  viewType: _viewType,
-                  layoutDirection: TextDirection.ltr,
-                  creationParams: widget.addressSheetParams.toJson(),
-                  creationParamsCodec: const StandardMessageCodec(),
-                )
-                  ..addOnPlatformViewCreatedListener(
-                      params.onPlatformViewCreated)
-                  ..create();
-              },
-              viewType: _viewType,
-            ),
-    );
+    return defaultTargetPlatform == TargetPlatform.iOS
+        ? UiKitView(
+            viewType: _viewType,
+            creationParamsCodec: const StandardMessageCodec(),
+            creationParams: widget.addressSheetParams.toJson(),
+            onPlatformViewCreated: onPlatformViewCreated,
+          )
+        : PlatformViewLink(
+            surfaceFactory: (context, controller) {
+              return AndroidViewSurface(
+                controller: controller as AndroidViewController,
+                hitTestBehavior: PlatformViewHitTestBehavior.opaque,
+                gestureRecognizers: const <Factory<
+                    OneSequenceGestureRecognizer>>{},
+              );
+            },
+            onCreatePlatformView: (params) {
+              onPlatformViewCreated(params.id);
+              return PlatformViewsService.initExpensiveAndroidView(
+                id: params.id,
+                viewType: _viewType,
+                layoutDirection: TextDirection.ltr,
+                creationParams: widget.addressSheetParams.toJson(),
+                creationParamsCodec: const StandardMessageCodec(),
+              )
+                ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
+                ..create();
+            },
+            viewType: _viewType,
+          );
   }
 }

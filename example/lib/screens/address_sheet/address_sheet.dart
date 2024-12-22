@@ -5,7 +5,7 @@ import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_example/widgets/response_card.dart';
 
 class AddressSheetExample extends StatefulWidget {
-  const AddressSheetExample({Key? key}) : super(key: key);
+  const AddressSheetExample({super.key});
 
   @override
   State<AddressSheetExample> createState() => _AddressSheetExampleState();

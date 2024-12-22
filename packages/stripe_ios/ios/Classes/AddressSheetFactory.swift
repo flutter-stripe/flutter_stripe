@@ -65,10 +65,14 @@ class AddressSheetPlatformView: NSObject, FlutterPlatformView {
     
     public func onCompleteAction(addressData: Dictionary<AnyHashable, Any>?) {
         channel.invokeMethod("onSubmitAction", arguments: addressData)
+        formView.visible=false
+        formView.didSetProps(["visible"])
     }
     
     public func onCancelAction(errorData: Dictionary<AnyHashable, Any>?) {
         channel.invokeMethod("onErrorAction", arguments: errorData)
+        formView.visible=false
+        formView.didSetProps(["visible"])
     }
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
