@@ -169,15 +169,35 @@ class PaymentElementState extends State<PaymentElement> {
   final FocusNode _focusNode = FocusNode(debugLabel: 'CardField');
   FocusNode get _effectiveNode => widget.focusNode ?? _focusNode;
 
+  bool _isManuallyFocusing = false; // Track manual focus/blur actions
+  bool _isCurrentlyFocused = false; // Track current focus state
+
   @override
   Widget build(BuildContext context) {
     return Focus(
       focusNode: _effectiveNode,
-      onFocusChange: (focus) {
-        /*  if (focus)
-            element?.focus();
-          else
-            element?.blur(); */
+     onFocusChange: (focus) {
+        // Prevent feedback loop from manual focus/blur actions
+        if (_isManuallyFocusing) {
+          _isManuallyFocusing = false;
+          return;
+        }
+
+        // Check if the focus state has actually changed
+        if (_isCurrentlyFocused == focus) {
+          return; // No state change, do nothing
+        }
+
+        // Update the current focus state
+        _isCurrentlyFocused = focus;
+
+        if (focus) {
+          _isManuallyFocusing = true;
+          element?.focus();
+        } else {
+          _isManuallyFocusing = true;
+          element?.blur();
+        }
       },
       child: ConstrainedBox(
         constraints: BoxConstraints(
