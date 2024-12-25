@@ -59,7 +59,7 @@ class _MobilePayCreatePaymentMethodScreenState
 
   Future<void> _handlePayPress() async {
     // 1. create payment method
-
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     final paymentMethod = await Stripe.instance.createPlatformPayPaymentMethod(
       params: PlatformPayPaymentMethodParams.web(
         options: PlatformPayWebPaymentRequestCreateOptions(
@@ -76,9 +76,10 @@ class _MobilePayCreatePaymentMethodScreenState
     setState(() {
       response = paymentMethod;
     });
-
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(
-            'Success!: The payment method with id: ${paymentMethod.paymentMethod.id} was created successfully,')));
+    if (context.mounted) {
+      scaffoldMessenger.showSnackBar(SnackBar(
+          content: Text(
+              'Success!: The payment method with id: ${paymentMethod.paymentMethod.id} was created successfully,')));
+    }
   }
 }

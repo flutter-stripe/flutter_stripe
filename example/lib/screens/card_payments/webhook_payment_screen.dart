@@ -10,6 +10,8 @@ import 'package:stripe_example/widgets/loading_button.dart';
 import 'package:stripe_example/widgets/response_card.dart';
 
 class WebhookPaymentScreen extends StatefulWidget {
+  const WebhookPaymentScreen({super.key});
+
   @override
   _WebhookPaymentScreenState createState() => _WebhookPaymentScreenState();
 }
@@ -71,6 +73,7 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
   }
 
   Future<void> _handlePayPress() async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     if (_card == null) {
       return;
     }
@@ -107,9 +110,10 @@ class _WebhookPaymentScreenState extends State<WebhookPaymentScreen> {
             _saveCard == true ? PaymentIntentsFutureUsage.OffSession : null,
       ),
     );
-
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text('Success!: The payment was confirmed successfully!')));
+    if (context.mounted) {
+      scaffoldMessenger.showSnackBar(SnackBar(
+          content: Text('Success!: The payment was confirmed successfully!')));
+    }
   }
 
   Future<Map<String, dynamic>> fetchPaymentIntentClientSecret() async {

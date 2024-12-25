@@ -540,8 +540,7 @@ class Stripe {
 
   /// Collect the bankaccount details for the payment intent.
   ///
-  /// Only US bank accounts are supported. This method is only implemented for
-  /// iOS at the moment.
+  /// Only US bank accounts are supported. 
   Future<PaymentIntent> collectBankAccount({
     /// Whether the clientsecret is associated with setup or paymentintent
     required bool isPaymentIntent,

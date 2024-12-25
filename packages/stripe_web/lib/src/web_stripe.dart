@@ -1,7 +1,6 @@
 //@dart=2.12
 import 'dart:async';
 import 'dart:developer' as dev;
-import 'package:web/web.dart' as web;
 import 'dart:ui' as ui;
 
 import 'package:flutter/widgets.dart';
@@ -10,6 +9,7 @@ import 'package:flutter_stripe_web/platform_pay_button.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:stripe_js/stripe_api.dart' as stripe_js;
 import 'package:stripe_js/stripe_js.dart' as stripe_js;
+import 'package:web/web.dart' as web;
 
 import 'parser/payment_intent.dart';
 import 'parser/payment_methods.dart';
@@ -54,7 +54,7 @@ class WebStripe extends StripePlatform {
     String? urlScheme,
     bool? setReturnUrlSchemeOnAndroid,
   }) async {
-    this._urlScheme = urlScheme;
+    _urlScheme = urlScheme;
 
     if (__stripe != null) {
       // Check if the new stripeAccountId is different
@@ -105,7 +105,6 @@ class WebStripe extends StripePlatform {
       if (response.error != null) {
         throw response.error!;
       }
-      print(response);
       return response.paymentMethod!.parse();
     } catch (e) {
       dev.log('Error $e');
@@ -173,6 +172,19 @@ class WebStripe extends StripePlatform {
           data: stripe_js.ConfirmIdealPaymentData(
             paymentMethod: stripe_js.IdealPaymentMethodDetails.withBank(
               ideal: stripe_js.IdealBankData(bank: paymentData.bankName!),
+            ),
+            returnUrl: urlScheme,
+            // recommended
+            // setup_future_usage:
+          ),
+        );
+      },
+      p24: (paymentData) {
+        return js.confirmP24Payment(
+          paymentIntentClientSecret,
+          data: stripe_js.ConfirmP24PaymentData(
+            paymentMethod: stripe_js.P24PaymentMethodDetails(
+              billingDetails: paymentData.billingDetails!.toJs(),
             ),
             returnUrl: urlScheme,
             // recommended
@@ -552,7 +564,7 @@ class WebStripe extends StripePlatform {
     required PlatformPayPaymentMethodParams params,
     bool usesDeprecatedTokenFlow = false,
   }) {
-    if (!(params is PlatformPayPaymentMethodParamsWeb)) {
+    if (params is! PlatformPayPaymentMethodParamsWeb) {
       throw WebUnsupportedError(
           "platformPayCreatePaymentMethod - ${params.runtimeType} is not supported on web");
     }
@@ -658,7 +670,7 @@ class WebUnsupportedError extends Error implements UnsupportedError {
 }
 
 extension CanMakePayment on stripe_js.PaymentRequest {
-  Future<bool> get isPaymentAvailable => this.canMakePayment().then((value) =>
+  Future<bool> get isPaymentAvailable => canMakePayment().then((value) =>
       value?.applePay == true ||
       value?.googlePay == true ||
       value?.link == true);

@@ -26,7 +26,7 @@ extension ExtensionCreateTokenMethod on Stripe {
     CardPaymentElement element, [
     CreateTokenCardData? data,
   ]) {
-    final jsData = data != null ? data.toJson().jsify() : null;
+    final jsData = data?.toJson().jsify();
     return _createToken(element, jsData)
         .toDart
         .then((response) => response.toDart);

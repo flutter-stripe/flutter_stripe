@@ -1,4 +1,4 @@
-library stripe_web;
+library;
 
 export 'package:stripe_js/stripe_api.dart'
     show ConfirmPaymentParams, ConfirmSetupParams;

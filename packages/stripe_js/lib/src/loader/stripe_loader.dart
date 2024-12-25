@@ -44,6 +44,6 @@ Future<void> loadStripe() async {
 
   return _injectSrcScript(
     'https://js.stripe.com/v3/',
-    'stripe_${_version}',
+    'stripe_$_version',
   );
 }

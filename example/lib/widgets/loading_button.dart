@@ -6,8 +6,7 @@ class LoadingButton extends StatefulWidget {
   final Future Function()? onPressed;
   final String text;
 
-  const LoadingButton({Key? key, required this.onPressed, required this.text})
-      : super(key: key);
+  const LoadingButton({super.key, required this.onPressed, required this.text});
 
   @override
   _LoadingButtonState createState() => _LoadingButtonState();
@@ -45,13 +44,13 @@ class _LoadingButtonState extends State<LoadingButton> {
     setState(() {
       _isLoading = true;
     });
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
 
     try {
       await widget.onPressed!();
     } catch (e, s) {
       log(e.toString(), error: e, stackTrace: s);
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Error $e')));
+      scaffoldMessenger.showSnackBar(SnackBar(content: Text('Error $e')));
       rethrow;
     } finally {
       setState(() {
