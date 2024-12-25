@@ -1,0 +1,6 @@
+framework module stripe_objc {
+  umbrella header "stripe_objc-umbrella.h"
+
+  export *
+  module * { export * }
+}
