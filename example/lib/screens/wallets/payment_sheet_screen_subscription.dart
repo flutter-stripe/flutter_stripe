@@ -178,7 +178,7 @@ class _PaymentSheetScreenState extends State<ApplePayPaymentSheetScreen> {
       if (context.mounted) {
         scaffoldMessenger.showSnackBar(
           SnackBar(
-            content: Text('Payment succesfully completed'),
+            content: Text('Payment successfully completed'),
           ),
         );
       }

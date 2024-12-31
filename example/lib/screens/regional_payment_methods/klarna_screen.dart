@@ -64,7 +64,7 @@ class KlarnaScreen extends StatelessWidget {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Payment succesfully completed'),
+            content: Text('Payment successfully completed'),
           ),
         );
       }
