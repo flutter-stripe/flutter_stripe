@@ -12,6 +12,7 @@
           ]      
         ],
         ["Mobile elements",
+          ["Address Sheet", "/address_sheet"],
           ["Customer Sheet", "/customer_sheet"]
         ],
         ["Regional payments", [
