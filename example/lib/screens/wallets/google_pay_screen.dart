@@ -98,7 +98,7 @@ class _GooglePayScreenState extends State<GooglePayScreen> {
       if (context.mounted) {
         scaffoldMessenger.showSnackBar(
           const SnackBar(
-              content: Text('Google Pay payment succesfully completed')),
+              content: Text('Google Pay payment successfully completed')),
         );
       }
     } catch (e) {

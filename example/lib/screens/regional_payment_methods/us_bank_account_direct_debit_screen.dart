@@ -166,7 +166,7 @@ class _UsBankAccountDirectDebitScreenState
       if (context.mounted) {
         scaffoldMessenger.showSnackBar(
           SnackBar(
-            content: Text('Payment succesfully completed'),
+            content: Text('Payment successfully completed'),
           ),
         );
       }
