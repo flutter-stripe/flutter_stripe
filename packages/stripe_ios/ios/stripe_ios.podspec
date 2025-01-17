@@ -14,7 +14,6 @@ A new flutter plugin project.
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Your Company' => 'email@example.com' }
   s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
   s.dependency 'Stripe', stripe_version
   s.dependency 'StripePaymentSheet', stripe_version
@@ -22,6 +21,17 @@ A new flutter plugin project.
   s.dependency 'StripePaymentsUI', stripe_version
   s.dependency 'StripeApplePay', stripe_version
   s.dependency 'StripeFinancialConnections', stripe_version
+
+  s.subspec 'stripe_objc' do |ss|
+    ss.source_files = 'stripe_ios/Sources/**/*.{m,h}'
+    ss.public_header_files = 'stripe_ios/Sources/stripe_objc/include/**/*.h'
+  end
+
+  s.subspec 'stripe_ios' do |ss|
+    ss.source_files = 'stripe_ios/Sources/**/*.{swift}'
+    ss.dependency 'stripe_ios/stripe_objc'
+  end
+
   s.platform = :ios, '13.0'
 
   # Flutter.framework does not contain a i386 slice.
