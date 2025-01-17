@@ -1,0 +1,167 @@
+# Address Sheet Implementation Guide
+
+The Address Sheet is a pre-built UI component that allows you to collect shipping or billing addresses from your users in a Flutter application using Stripe's native UI components.
+
+## Installation
+
+Make sure you have the `flutter_stripe` package installed in your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  flutter_stripe: ^latest_version
+```
+
+### Set up Stripe [Server Side] [Client Side]
+
+First, you need a Stripe account. [Register now](https://dashboard.stripe.com/register).
+
+#### Server-side
+
+This integration requires endpoints on your server that talk to the Stripe API. Use one official libraries for access to the Stripe API from your server. [Follow the steps here](https://stripe.com/docs/payments/accept-a-payment?platform=ios&ui=payment-sheet#setup-server-side)
+
+#### Client-side
+
+The Flutter SDK is open source, fully documented.
+
+To install the SDK, follow these steps:
+ - Run the commmand `flutter pub add flutter_stripe`
+ - This will add a line like this to your project's pubspec.yaml with the latest package version
+
+
+For details on the latest SDK release and past versions, see the [Releases](https://github.com/flutter-stripe/flutter_stripe/releases) page on GitHub. To receive notifications when a new release is published, [watch releases for the repository](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/managing-subscriptions-for-activity-on-github/viewing-your-subscriptions#watching-releases-for-a-repository).
+
+
+When your app starts, configure the SDK with your Stripe [publishable key](https://dashboard.stripe.com/) so that it can make requests to the Stripe API. 
+
+```dart
+void main() async {
+  Stripe.publishableKey = stripePublishableKey;
+  runApp(const App());
+}
+```
+
+Use your [test mode](https://stripe.com/docs/keys#obtain-api-keys) keys while you test and develop, and your [live mode](https://stripe.com/docs/keys#test-live-modes) keys when you publish your app.
+
+
+### Basic Implementation
+
+Here's a basic example of how to implement the Address Sheet:
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+
+AddressSheet(
+  onSubmit: (details) {
+    // Handle the submitted address details
+    print(details.toJson());
+  },
+  onError: (error) {
+    // Handle any errors that occur
+    print(error.error.localizedMessage);
+  },
+  params: AddressSheetParams(),
+)
+```
+
+## Parameters
+
+### Required Parameters
+
+- `onSubmit`: Callback function that is called when the user successfully submits their address information. Receives a `CollectAddressResult` object containing:
+  - `address`: The collected address details
+  - `name`: The customer's name
+  - `phoneNumber`: The customer's phone number (optional)
+
+- `onError`: Callback function that is called when an error occurs or when the user closes the sheet before submitting. Receives a `StripeException` object.
+
+- `params`: An `AddressSheetParams` object that configures the address sheet behavior and appearance.
+
+### Address Result Structure
+
+The `CollectAddressResult` object contains the following information:
+
+```dart
+class CollectAddressResult {
+  final Address address;
+  final String name;
+  final String? phoneNumber;
+}
+```
+
+The `Address` object contains standard address fields like street, city, state, postal code, and country.
+
+## Example Implementation
+
+Here's a complete example showing how to implement the Address Sheet in a Flutter screen:
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+
+class AddressSheetExample extends StatefulWidget {
+  const AddressSheetExample({super.key});
+
+  @override
+  State<AddressSheetExample> createState() => _AddressSheetExampleState();
+}
+
+class _AddressSheetExampleState extends State<AddressSheetExample> {
+  String? result;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Address Sheet Example'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          children: [
+            AddressSheet(
+              onError: (error) {
+                setState(() {
+                  result = error.error.localizedMessage;
+                });
+              },
+              onSubmit: (details) {
+                setState(() {
+                  result = details.toJson().toString();
+                });
+              },
+              params: AddressSheetParams(),
+            ),
+            SizedBox(height: 20),
+            Text(result ?? ''),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+### Customization
+
+You can customize the Address Sheet behavior by configuring the `AddressSheetParams`. This allows you to:
+- Set default values
+- Configure which fields are required
+- Customize the appearance
+- Set specific country restrictions
+
+## Platform Support
+
+The Address Sheet is supported on both iOS and Android platforms, providing a native UI experience on each platform.
+
+## Best Practices
+
+1. Always handle both the `onSubmit` and `onError` callbacks to ensure a good user experience.
+2. Validate the collected address information before using it in your application.
+3. Consider implementing proper error handling and display appropriate error messages to users.
+4. Store the collected address information securely if you need to reuse it later.
+
+## Related Resources
+
+- [Stripe Documentation](https://stripe.com/docs)
+- [Flutter Stripe Package](https://pub.dev/packages/flutter_stripe)

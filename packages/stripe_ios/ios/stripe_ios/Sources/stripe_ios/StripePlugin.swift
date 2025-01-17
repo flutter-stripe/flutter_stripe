@@ -44,6 +44,11 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
         // Apple Pay Button
         let applePayFactory = ApplePayButtonViewFactory(messenger: registrar.messenger(),stripeSdk: instance)
         registrar.register(applePayFactory, withId: "flutter.stripe/apple_pay")
+        
+        // Addressheet
+        let addressSheetFactory = AddressSheetViewFactory(messenger: registrar.messenger(), delegate: instance)
+        registrar.register(addressSheetFactory, withId: "flutter.stripe/address_sheet")
+        
     }
     
     init(channel : FlutterMethodChannel) {

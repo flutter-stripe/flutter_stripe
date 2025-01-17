@@ -2,6 +2,7 @@ export 'package:stripe_platform_interface/stripe_platform_interface.dart';
 
 export 'src/model/apple_pay_button.dart';
 export 'src/stripe.dart';
+export 'src/widgets/adress_sheet.dart';
 // export 'src/widgets/apple_pay_button.dart';
 export 'src/widgets/aubecs_debit_form.dart';
 export 'src/widgets/card_field.dart';
