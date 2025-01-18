@@ -1,3 +1,7 @@
+## 11.4.0
+
+ - Bump "stripe_ios" to `11.4.0`.
+
 ## 11.3.1
 
 **Features**

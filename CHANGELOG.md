@@ -15,6 +15,34 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`stripe_ios` - `v11.4.0`](#stripe_ios---v1140)
+ - [`flutter_stripe` - `v11.3.1`](#flutter_stripe---v1131)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v11.3.1`
+
+---
+
+#### `stripe_ios` - `v11.4.0`
+
+ - Bump "stripe_ios" to `11.4.0`.
+
+
+## 2025-01-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_platform_interface` - `v11.4.0`](#stripe_platform_interface---v1140)
  - [`flutter_stripe_web` - `v6.3.1`](#flutter_stripe_web---v631)
  - [`flutter_stripe` - `v11.3.1`](#flutter_stripe---v1131)
