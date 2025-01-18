@@ -50,7 +50,7 @@ class CashAppScreen extends StatelessWidget {
       if (!context.mounted) return;
       scaffoldMessenger.showSnackBar(
         const SnackBar(
-          content: Text('Payment succesfully completed'),
+          content: Text('Payment successfully completed'),
         ),
       );
     } on Exception catch (e) {

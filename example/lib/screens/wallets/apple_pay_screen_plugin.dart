@@ -96,7 +96,7 @@ class _ApplePayExternalPluginScreenState
       if (context.mounted) {
         scaffoldMessenger.showSnackBar(
           const SnackBar(
-              content: Text('Apple Pay payment succesfully completed')),
+              content: Text('Apple Pay payment successfully completed')),
         );
       }
     } catch (e) {

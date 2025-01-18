@@ -109,7 +109,7 @@ class _AubecsExampleState extends State<AubecsExample> {
       if (context.mounted) {
         scaffoldMessenger.showSnackBar(
           SnackBar(
-            content: Text('Payment succesfully completed'),
+            content: Text('Payment successfully completed'),
           ),
         );
       }

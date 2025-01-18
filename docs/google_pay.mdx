@@ -112,7 +112,7 @@ Then add the `startGooglePay` method to your screen.
           );
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-            content: Text('Google Pay payment succesfully completed')),
+            content: Text('Google Pay payment successfully completed')),
       );
     } catch (e) {
       if (e is StripeException) {
@@ -200,7 +200,7 @@ In the callback generate the correct stripe token and confirm the payment.
     );
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-          content: Text('Google Pay payment succesfully completed')),
+          content: Text('Google Pay payment successfully completed')),
     );
   } catch (e) {
     ScaffoldMessenger.of(context).showSnackBar(
