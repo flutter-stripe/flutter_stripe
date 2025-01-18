@@ -15,6 +15,25 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe` - `v11.4.0`](#flutter_stripe---v1140)
+
+---
+
+#### `flutter_stripe` - `v11.4.0`
+
+
+## 2025-01-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`flutter_stripe_web` - `v6.4.0`](#flutter_stripe_web---v640)
 
 ---
