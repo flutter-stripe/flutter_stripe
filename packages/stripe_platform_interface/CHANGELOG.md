@@ -1,6 +1,13 @@
 ## 11.4.0
 
- - Bump "stripe_platform_interface" to `11.4.0`.
+**Features**
+- Swift package manager support
+- Implemented Address sheet widget
+- Add P24 support on Stripe web
+
+**Fixes**
+- Compliance with latest Dart analyzer
+- Prevent focus loop in Payment element for the web
 
 ## 11.3.0
 Align with Stripe React Native [0.39.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.39.0):
