@@ -1,3 +1,7 @@
+## 6.4.0
+
+ - **FIX**: prevent focus loop in PaymentElement widget (#2022).
+
 ## 6.3.0
 **Features**
 - Add support for any kind of payment method in setup intent with [confirmSetup]

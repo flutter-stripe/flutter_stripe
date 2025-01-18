@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe_web` - `v6.4.0`](#flutter_stripe_web---v640)
+
+---
+
+#### `flutter_stripe_web` - `v6.4.0`
+
+ - **FIX**: prevent focus loop in PaymentElement widget (#2022).
+
+
+## 2025-01-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_js` - `v6.3.0`](#stripe_js---v630)
  - [`flutter_stripe_web` - `v6.3.1`](#flutter_stripe_web---v631)
 
