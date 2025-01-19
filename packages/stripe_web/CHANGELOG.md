@@ -1,3 +1,12 @@
+## 6.4.0
+
+**Features**
+- Add P24 support on Stripe web
+
+**Fixes**
+- Compliance with latest Dart analyzer
+- Prevent focus loop in Payment element for the web
+
 ## 6.3.0
 **Features**
 - Add support for any kind of payment method in setup intent with [confirmSetup]

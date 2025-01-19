@@ -1,3 +1,12 @@
+## 11.4.0
+
+**Features**
+- Swift package manager support
+- Implemented Address sheet widget
+
+**Fixes**
+- Compliance with latest Dart analyzer
+
 ## 11.3.1
 
 **Features**
