@@ -100,7 +100,7 @@ class Stripe {
 
   /// Reconfigures the Stripe platform by applying the current values for
   /// [publishableKey], [merchantIdentifier], [stripeAccountId],
-  /// [threeDSecureParams], [urlScheme]
+  /// [threeDSecureParams], [urlScheme], [setReturnUrlSchemeOnAndroid]
   Future<void> applySettings() => _initialise(
         publishableKey: publishableKey,
         merchantIdentifier: merchantIdentifier,
@@ -716,6 +716,7 @@ class Stripe {
       threeDSecureParams: threeDSecureParams,
       merchantIdentifier: merchantIdentifier,
       urlScheme: urlScheme,
+      setReturnUrlSchemeOnAndroid: setReturnUrlSchemeOnAndroid,
     );
   }
 
