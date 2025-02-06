@@ -50,7 +50,7 @@ class WeChatPayScreen extends StatelessWidget {
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Payment succesfully completed'),
+          content: Text('Payment successfully completed'),
         ),
       );
     } on Exception catch (e) {

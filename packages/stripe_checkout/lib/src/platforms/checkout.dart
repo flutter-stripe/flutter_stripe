@@ -9,7 +9,7 @@ class CheckoutResponse with _$CheckoutResponse {
   /// Web only
   const factory CheckoutResponse.redirected() = _Redirect;
 
-  /// The checkout payment has been completed succesfully
+  /// The checkout payment has been completed successfully
   /// Mobile only
   const factory CheckoutResponse.success() = _Success;
 
