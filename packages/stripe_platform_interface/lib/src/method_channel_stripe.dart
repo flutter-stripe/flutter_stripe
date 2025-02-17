@@ -424,10 +424,16 @@ class MethodChannelStripe extends StripePlatform {
   }) async {
     bool? isSupported;
     if (params == null) {
-      isSupported =
-          await _methodChannel.invokeMethod('isPlatformPaySupported', {
+      final result =
+          await _methodChannel.invokeMethod<dynamic>('isPlatformPaySupported', {
         'params': {},
       });
+
+      if (result is bool) {
+        isSupported = result;
+      } else {
+        StripeException.fromJson(result);
+      }
     } else {
       isSupported = await _methodChannel
           .invokeMethod('isPlatformPaySupported', {'params': params.toJson()});
