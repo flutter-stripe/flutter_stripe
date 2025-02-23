@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:http/http.dart' as http;
 import 'package:stripe_example/config.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
@@ -21,7 +22,9 @@ class ThemeCardExampleState extends State<ExpressCheckoutElementExample> {
   @override
   void initState() {
     super.initState();
-    getClientSecret();
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      getClientSecret();
+    });
   }
 
   Future<void> getClientSecret() async {
