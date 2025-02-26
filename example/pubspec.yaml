@@ -10,8 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_stripe: ^10.2.0
-  flutter_stripe_web: ^5.1.0
+  flutter_stripe: ^11.4.0
+  flutter_stripe_web: ^6.4.0
   pay: ^2.0.0
   http: ^1.1.0
   font_awesome_flutter: ^10.6.0
