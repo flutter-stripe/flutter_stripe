@@ -9,15 +9,14 @@ import 'package:web/web.dart' as web;
 
 import '../../flutter_stripe_web.dart';
 
+// TODO: should not use src of other package
+export 'package:stripe_js/src/api/elements/payment_element_options.dart';
 export 'package:stripe_js/stripe_api.dart'
     show
         PaymentElementLayout,
         ElementAppearance,
         ElementTheme,
         ElementAppearanceLabels;
-
-// TODO: should not use src of other package
-export 'package:stripe_js/src/api/elements/payment_element_options.dart';
 
 typedef PaymentElementTheme = js.ElementTheme;
 
@@ -169,36 +168,11 @@ class PaymentElementState extends State<PaymentElement> {
   final FocusNode _focusNode = FocusNode(debugLabel: 'CardField');
   FocusNode get _effectiveNode => widget.focusNode ?? _focusNode;
 
-  bool _isManuallyFocusing = false; // Track manual focus/blur actions
-  bool _isCurrentlyFocused = false; // Track current focus state
-
   @override
   Widget build(BuildContext context) {
     return Focus(
+      autofocus: true,
       focusNode: _effectiveNode,
-     onFocusChange: (focus) {
-        // Prevent feedback loop from manual focus/blur actions
-        if (_isManuallyFocusing) {
-          _isManuallyFocusing = false;
-          return;
-        }
-
-        // Check if the focus state has actually changed
-        if (_isCurrentlyFocused == focus) {
-          return; // No state change, do nothing
-        }
-
-        // Update the current focus state
-        _isCurrentlyFocused = focus;
-
-        if (focus) {
-          _isManuallyFocusing = true;
-          element?.focus();
-        } else {
-          _isManuallyFocusing = true;
-          element?.blur();
-        }
-      },
       child: ConstrainedBox(
         constraints: BoxConstraints(
           maxWidth: double.infinity,
