@@ -18,10 +18,16 @@ class FinancialConnections {
     internal static func present(
         withClientSecret: String,
         returnURL: String? = nil,
+        onEvent: ((FinancialConnectionsEvent) -> Void)? = nil,
         resolve: @escaping RCTPromiseResolveBlock
     ) -> Void {
         DispatchQueue.main.async {
-            FinancialConnectionsSheet(financialConnectionsSessionClientSecret: withClientSecret, returnURL: returnURL).present(
+            let financialConnectionsSheet = FinancialConnectionsSheet(
+              financialConnectionsSessionClientSecret: withClientSecret,
+              returnURL: returnURL
+            )
+            financialConnectionsSheet.onEvent = onEvent
+            financialConnectionsSheet.present(
               from: findViewControllerPresenter(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController()),
               completion: { result in
                   switch result {
@@ -39,10 +45,16 @@ class FinancialConnections {
     internal static func presentForToken(
         withClientSecret: String,
         returnURL: String? = nil,
+        onEvent: ((FinancialConnectionsEvent) -> Void)? = nil,
         resolve: @escaping RCTPromiseResolveBlock
     ) -> Void {
         DispatchQueue.main.async {
-            FinancialConnectionsSheet(financialConnectionsSessionClientSecret: withClientSecret, returnURL: returnURL).presentForToken(
+            let financialConnectionsSheet = FinancialConnectionsSheet(
+              financialConnectionsSessionClientSecret: withClientSecret,
+              returnURL: returnURL
+            )
+            financialConnectionsSheet.onEvent = onEvent
+            financialConnectionsSheet.presentForToken(
               from: findViewControllerPresenter(from: UIApplication.shared.delegate?.window??.rootViewController ?? UIViewController()),
               completion: { result in
                   switch result {
