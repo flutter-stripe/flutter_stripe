@@ -1,6 +1,7 @@
 package com.facebook.react.bridge;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,7 +10,19 @@ import java.util.Map;
 /**
  * Created by FFuF, Jonas Bark on 2019-10-02.
  */
-public class WritableMap extends HashMap<String, Object> implements Map<String, Object> {
+public class WritableMap extends ReadableMap {
+
+    public WritableMap() {
+        super();
+    }
+
+    public WritableMap(JSONObject map) {
+        super(map);
+    }
+
+    public WritableMap(Map<String, Object> map) {
+        super(map);
+    }
 
     public void putString(String key, String value) {
         this.put(key, value);
@@ -20,6 +33,10 @@ public class WritableMap extends HashMap<String, Object> implements Map<String, 
     }
 
     public void putMap(String key, WritableMap map) {
+        put(key, map);
+    }
+
+    public void putMap(String key, ReadableMap map) {
         put(key, map);
     }
 

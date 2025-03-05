@@ -22,7 +22,27 @@ public class WritableArray extends ReadableArray {
         add(value);
     }
 
-    public void pushMap(@NotNull WritableNativeMap map) {
+    public void pushMap(@NotNull ReadableMap map) {
         add(map);
+    }
+
+    public void pushNull() {
+        add(null);
+    }
+
+    public void pushBoolean(boolean value) {
+        add(value);
+    }
+
+    public void pushInt(int value) {
+        add(value);
+    }
+
+    public void pushDouble(double value) {
+        add(value);
+    }
+
+    public void pushArray(@NotNull WritableArray toWritableArray) {
+        add(toWritableArray);
     }
 }
