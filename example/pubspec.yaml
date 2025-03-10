@@ -12,7 +12,7 @@ dependencies:
     sdk: flutter
   flutter_stripe: ^10.2.0
   flutter_stripe_web: ^5.1.0
-  pay: ^2.0.0
+  pay: ^3.1.0
   http: ^1.1.0
   font_awesome_flutter: ^10.6.0
   platform: ^3.0.0

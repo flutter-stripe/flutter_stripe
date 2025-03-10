@@ -18,7 +18,7 @@ sealed class NextAction with _$NextAction {
   const factory NextAction.redirectToUrl({
     /// Url to redirect to
     String? redirectUrl,
-  }) = _NextActionRedirect;
+  }) = NextActionRedirect;
 
   /// Contains details necessary for the customer to complete the payment.
   @JsonSerializable(explicitToJson: true)
@@ -32,7 +32,7 @@ sealed class NextAction with _$NextAction {
 
     /// Oxxo reference number
     String? voucherNumber,
-  }) = _NextActionOxxo;
+  }) = NextActionOxxo;
 
   /// Contains the url for the wechat redirect QR code
   @JsonSerializable(explicitToJson: true)
@@ -40,7 +40,7 @@ sealed class NextAction with _$NextAction {
   const factory NextAction.wechatPayRedirect({
     /// Url to the Qr code.
     String? redirectUrl,
-  }) = _NextActionWeChatRedirect;
+  }) = NextActionWeChatRedirect;
 
   /// Contains details describing microdeposits verification flow.
   @JsonSerializable(explicitToJson: true)
@@ -54,7 +54,7 @@ sealed class NextAction with _$NextAction {
 
     /// The type of the microdeposit sent to the customer.
     String? microdepositType,
-  }) = _NextActionMicroDeposits;
+  }) = NextActionMicroDeposits;
 
   factory NextAction.fromJson(Map<String, dynamic> json) =>
       _$NextActionFromJson(json);
@@ -65,7 +65,7 @@ sealed class NextAction with _$NextAction {
   const factory NextAction.multibanco({
     /// The URL for the hosted multibanco voucher page, which allows customers to view and print an multibanco voucher.
     String? voucherURL,
-  }) = _NextActionMultiBanco;
+  }) = NextActionMultiBanco;
 }
 
 /// The type of followup action the customer needs to do in order to complete

@@ -57,7 +57,7 @@ class ExampleSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      backgroundColor: Theme.of(context).primaryColor.withOpacity(0.2),
+      backgroundColor: Theme.of(context).primaryColor.withAlpha(51),
       initiallyExpanded: expanded,
       childrenPadding: EdgeInsets.only(left: 20),
       title: Text(title),

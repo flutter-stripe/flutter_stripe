@@ -15,15 +15,15 @@ T _$identity<T>(T value) => value;
 NextAction _$NextActionFromJson(Map<String, dynamic> json) {
   switch (json['type']) {
     case 'urlRedirect':
-      return _NextActionRedirect.fromJson(json);
+      return NextActionRedirect.fromJson(json);
     case 'oxxoVoucher':
-      return _NextActionOxxo.fromJson(json);
+      return NextActionOxxo.fromJson(json);
     case 'weChatRedirect':
-      return _NextActionWeChatRedirect.fromJson(json);
+      return NextActionWeChatRedirect.fromJson(json);
     case 'verifyWithMicrodeposits':
-      return _NextActionMicroDeposits.fromJson(json);
+      return NextActionMicroDeposits.fromJson(json);
     case 'multibanco':
-      return _NextActionMultiBanco.fromJson(json);
+      return NextActionMultiBanco.fromJson(json);
 
     default:
       throw CheckedFromJsonException(
@@ -60,10 +60,10 @@ class $NextActionCopyWith<$Res> {
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _NextActionRedirect implements NextAction {
-  const _NextActionRedirect({this.redirectUrl, final String? $type})
+class NextActionRedirect implements NextAction {
+  const NextActionRedirect({this.redirectUrl, final String? $type})
       : $type = $type ?? 'urlRedirect';
-  factory _NextActionRedirect.fromJson(Map<String, dynamic> json) =>
+  factory NextActionRedirect.fromJson(Map<String, dynamic> json) =>
       _$NextActionRedirectFromJson(json);
 
   /// Url to redirect to
@@ -76,8 +76,8 @@ class _NextActionRedirect implements NextAction {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$NextActionRedirectCopyWith<_NextActionRedirect> get copyWith =>
-      __$NextActionRedirectCopyWithImpl<_NextActionRedirect>(this, _$identity);
+  $NextActionRedirectCopyWith<NextActionRedirect> get copyWith =>
+      _$NextActionRedirectCopyWithImpl<NextActionRedirect>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -90,7 +90,7 @@ class _NextActionRedirect implements NextAction {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _NextActionRedirect &&
+            other is NextActionRedirect &&
             (identical(other.redirectUrl, redirectUrl) ||
                 other.redirectUrl == redirectUrl));
   }
@@ -106,22 +106,22 @@ class _NextActionRedirect implements NextAction {
 }
 
 /// @nodoc
-abstract mixin class _$NextActionRedirectCopyWith<$Res>
+abstract mixin class $NextActionRedirectCopyWith<$Res>
     implements $NextActionCopyWith<$Res> {
-  factory _$NextActionRedirectCopyWith(
-          _NextActionRedirect value, $Res Function(_NextActionRedirect) _then) =
-      __$NextActionRedirectCopyWithImpl;
+  factory $NextActionRedirectCopyWith(
+          NextActionRedirect value, $Res Function(NextActionRedirect) _then) =
+      _$NextActionRedirectCopyWithImpl;
   @useResult
   $Res call({String? redirectUrl});
 }
 
 /// @nodoc
-class __$NextActionRedirectCopyWithImpl<$Res>
-    implements _$NextActionRedirectCopyWith<$Res> {
-  __$NextActionRedirectCopyWithImpl(this._self, this._then);
+class _$NextActionRedirectCopyWithImpl<$Res>
+    implements $NextActionRedirectCopyWith<$Res> {
+  _$NextActionRedirectCopyWithImpl(this._self, this._then);
 
-  final _NextActionRedirect _self;
-  final $Res Function(_NextActionRedirect) _then;
+  final NextActionRedirect _self;
+  final $Res Function(NextActionRedirect) _then;
 
   /// Create a copy of NextAction
   /// with the given fields replaced by the non-null parameter values.
@@ -129,7 +129,7 @@ class __$NextActionRedirectCopyWithImpl<$Res>
   $Res call({
     Object? redirectUrl = freezed,
   }) {
-    return _then(_NextActionRedirect(
+    return _then(NextActionRedirect(
       redirectUrl: freezed == redirectUrl
           ? _self.redirectUrl
           : redirectUrl // ignore: cast_nullable_to_non_nullable
@@ -141,14 +141,14 @@ class __$NextActionRedirectCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _NextActionOxxo implements NextAction {
-  const _NextActionOxxo(
+class NextActionOxxo implements NextAction {
+  const NextActionOxxo(
       {this.expiration,
       this.voucherURL,
       this.voucherNumber,
       final String? $type})
       : $type = $type ?? 'oxxoVoucher';
-  factory _NextActionOxxo.fromJson(Map<String, dynamic> json) =>
+  factory NextActionOxxo.fromJson(Map<String, dynamic> json) =>
       _$NextActionOxxoFromJson(json);
 
   /// expiration date of the voucher in UTC
@@ -167,8 +167,8 @@ class _NextActionOxxo implements NextAction {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$NextActionOxxoCopyWith<_NextActionOxxo> get copyWith =>
-      __$NextActionOxxoCopyWithImpl<_NextActionOxxo>(this, _$identity);
+  $NextActionOxxoCopyWith<NextActionOxxo> get copyWith =>
+      _$NextActionOxxoCopyWithImpl<NextActionOxxo>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -181,7 +181,7 @@ class _NextActionOxxo implements NextAction {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _NextActionOxxo &&
+            other is NextActionOxxo &&
             (identical(other.expiration, expiration) ||
                 other.expiration == expiration) &&
             (identical(other.voucherURL, voucherURL) ||
@@ -202,22 +202,22 @@ class _NextActionOxxo implements NextAction {
 }
 
 /// @nodoc
-abstract mixin class _$NextActionOxxoCopyWith<$Res>
+abstract mixin class $NextActionOxxoCopyWith<$Res>
     implements $NextActionCopyWith<$Res> {
-  factory _$NextActionOxxoCopyWith(
-          _NextActionOxxo value, $Res Function(_NextActionOxxo) _then) =
-      __$NextActionOxxoCopyWithImpl;
+  factory $NextActionOxxoCopyWith(
+          NextActionOxxo value, $Res Function(NextActionOxxo) _then) =
+      _$NextActionOxxoCopyWithImpl;
   @useResult
   $Res call({int? expiration, String? voucherURL, String? voucherNumber});
 }
 
 /// @nodoc
-class __$NextActionOxxoCopyWithImpl<$Res>
-    implements _$NextActionOxxoCopyWith<$Res> {
-  __$NextActionOxxoCopyWithImpl(this._self, this._then);
+class _$NextActionOxxoCopyWithImpl<$Res>
+    implements $NextActionOxxoCopyWith<$Res> {
+  _$NextActionOxxoCopyWithImpl(this._self, this._then);
 
-  final _NextActionOxxo _self;
-  final $Res Function(_NextActionOxxo) _then;
+  final NextActionOxxo _self;
+  final $Res Function(NextActionOxxo) _then;
 
   /// Create a copy of NextAction
   /// with the given fields replaced by the non-null parameter values.
@@ -227,7 +227,7 @@ class __$NextActionOxxoCopyWithImpl<$Res>
     Object? voucherURL = freezed,
     Object? voucherNumber = freezed,
   }) {
-    return _then(_NextActionOxxo(
+    return _then(NextActionOxxo(
       expiration: freezed == expiration
           ? _self.expiration
           : expiration // ignore: cast_nullable_to_non_nullable
@@ -247,10 +247,10 @@ class __$NextActionOxxoCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _NextActionWeChatRedirect implements NextAction {
-  const _NextActionWeChatRedirect({this.redirectUrl, final String? $type})
+class NextActionWeChatRedirect implements NextAction {
+  const NextActionWeChatRedirect({this.redirectUrl, final String? $type})
       : $type = $type ?? 'weChatRedirect';
-  factory _NextActionWeChatRedirect.fromJson(Map<String, dynamic> json) =>
+  factory NextActionWeChatRedirect.fromJson(Map<String, dynamic> json) =>
       _$NextActionWeChatRedirectFromJson(json);
 
   /// Url to the Qr code.
@@ -263,8 +263,8 @@ class _NextActionWeChatRedirect implements NextAction {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$NextActionWeChatRedirectCopyWith<_NextActionWeChatRedirect> get copyWith =>
-      __$NextActionWeChatRedirectCopyWithImpl<_NextActionWeChatRedirect>(
+  $NextActionWeChatRedirectCopyWith<NextActionWeChatRedirect> get copyWith =>
+      _$NextActionWeChatRedirectCopyWithImpl<NextActionWeChatRedirect>(
           this, _$identity);
 
   @override
@@ -278,7 +278,7 @@ class _NextActionWeChatRedirect implements NextAction {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _NextActionWeChatRedirect &&
+            other is NextActionWeChatRedirect &&
             (identical(other.redirectUrl, redirectUrl) ||
                 other.redirectUrl == redirectUrl));
   }
@@ -294,22 +294,22 @@ class _NextActionWeChatRedirect implements NextAction {
 }
 
 /// @nodoc
-abstract mixin class _$NextActionWeChatRedirectCopyWith<$Res>
+abstract mixin class $NextActionWeChatRedirectCopyWith<$Res>
     implements $NextActionCopyWith<$Res> {
-  factory _$NextActionWeChatRedirectCopyWith(_NextActionWeChatRedirect value,
-          $Res Function(_NextActionWeChatRedirect) _then) =
-      __$NextActionWeChatRedirectCopyWithImpl;
+  factory $NextActionWeChatRedirectCopyWith(NextActionWeChatRedirect value,
+          $Res Function(NextActionWeChatRedirect) _then) =
+      _$NextActionWeChatRedirectCopyWithImpl;
   @useResult
   $Res call({String? redirectUrl});
 }
 
 /// @nodoc
-class __$NextActionWeChatRedirectCopyWithImpl<$Res>
-    implements _$NextActionWeChatRedirectCopyWith<$Res> {
-  __$NextActionWeChatRedirectCopyWithImpl(this._self, this._then);
+class _$NextActionWeChatRedirectCopyWithImpl<$Res>
+    implements $NextActionWeChatRedirectCopyWith<$Res> {
+  _$NextActionWeChatRedirectCopyWithImpl(this._self, this._then);
 
-  final _NextActionWeChatRedirect _self;
-  final $Res Function(_NextActionWeChatRedirect) _then;
+  final NextActionWeChatRedirect _self;
+  final $Res Function(NextActionWeChatRedirect) _then;
 
   /// Create a copy of NextAction
   /// with the given fields replaced by the non-null parameter values.
@@ -317,7 +317,7 @@ class __$NextActionWeChatRedirectCopyWithImpl<$Res>
   $Res call({
     Object? redirectUrl = freezed,
   }) {
-    return _then(_NextActionWeChatRedirect(
+    return _then(NextActionWeChatRedirect(
       redirectUrl: freezed == redirectUrl
           ? _self.redirectUrl
           : redirectUrl // ignore: cast_nullable_to_non_nullable
@@ -329,14 +329,14 @@ class __$NextActionWeChatRedirectCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _NextActionMicroDeposits implements NextAction {
-  const _NextActionMicroDeposits(
+class NextActionMicroDeposits implements NextAction {
+  const NextActionMicroDeposits(
       {this.arrivalDate,
       this.redirectUrl,
       this.microdepositType,
       final String? $type})
       : $type = $type ?? 'verifyWithMicrodeposits';
-  factory _NextActionMicroDeposits.fromJson(Map<String, dynamic> json) =>
+  factory NextActionMicroDeposits.fromJson(Map<String, dynamic> json) =>
       _$NextActionMicroDepositsFromJson(json);
 
   /// The timestamp of when the microdeposits are expended to land
@@ -355,8 +355,8 @@ class _NextActionMicroDeposits implements NextAction {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$NextActionMicroDepositsCopyWith<_NextActionMicroDeposits> get copyWith =>
-      __$NextActionMicroDepositsCopyWithImpl<_NextActionMicroDeposits>(
+  $NextActionMicroDepositsCopyWith<NextActionMicroDeposits> get copyWith =>
+      _$NextActionMicroDepositsCopyWithImpl<NextActionMicroDeposits>(
           this, _$identity);
 
   @override
@@ -370,7 +370,7 @@ class _NextActionMicroDeposits implements NextAction {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _NextActionMicroDeposits &&
+            other is NextActionMicroDeposits &&
             (identical(other.arrivalDate, arrivalDate) ||
                 other.arrivalDate == arrivalDate) &&
             (identical(other.redirectUrl, redirectUrl) ||
@@ -391,23 +391,23 @@ class _NextActionMicroDeposits implements NextAction {
 }
 
 /// @nodoc
-abstract mixin class _$NextActionMicroDepositsCopyWith<$Res>
+abstract mixin class $NextActionMicroDepositsCopyWith<$Res>
     implements $NextActionCopyWith<$Res> {
-  factory _$NextActionMicroDepositsCopyWith(_NextActionMicroDeposits value,
-          $Res Function(_NextActionMicroDeposits) _then) =
-      __$NextActionMicroDepositsCopyWithImpl;
+  factory $NextActionMicroDepositsCopyWith(NextActionMicroDeposits value,
+          $Res Function(NextActionMicroDeposits) _then) =
+      _$NextActionMicroDepositsCopyWithImpl;
   @useResult
   $Res call(
       {String? arrivalDate, String? redirectUrl, String? microdepositType});
 }
 
 /// @nodoc
-class __$NextActionMicroDepositsCopyWithImpl<$Res>
-    implements _$NextActionMicroDepositsCopyWith<$Res> {
-  __$NextActionMicroDepositsCopyWithImpl(this._self, this._then);
+class _$NextActionMicroDepositsCopyWithImpl<$Res>
+    implements $NextActionMicroDepositsCopyWith<$Res> {
+  _$NextActionMicroDepositsCopyWithImpl(this._self, this._then);
 
-  final _NextActionMicroDeposits _self;
-  final $Res Function(_NextActionMicroDeposits) _then;
+  final NextActionMicroDeposits _self;
+  final $Res Function(NextActionMicroDeposits) _then;
 
   /// Create a copy of NextAction
   /// with the given fields replaced by the non-null parameter values.
@@ -417,7 +417,7 @@ class __$NextActionMicroDepositsCopyWithImpl<$Res>
     Object? redirectUrl = freezed,
     Object? microdepositType = freezed,
   }) {
-    return _then(_NextActionMicroDeposits(
+    return _then(NextActionMicroDeposits(
       arrivalDate: freezed == arrivalDate
           ? _self.arrivalDate
           : arrivalDate // ignore: cast_nullable_to_non_nullable
@@ -437,10 +437,10 @@ class __$NextActionMicroDepositsCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _NextActionMultiBanco implements NextAction {
-  const _NextActionMultiBanco({this.voucherURL, final String? $type})
+class NextActionMultiBanco implements NextAction {
+  const NextActionMultiBanco({this.voucherURL, final String? $type})
       : $type = $type ?? 'multibanco';
-  factory _NextActionMultiBanco.fromJson(Map<String, dynamic> json) =>
+  factory NextActionMultiBanco.fromJson(Map<String, dynamic> json) =>
       _$NextActionMultiBancoFromJson(json);
 
   /// The URL for the hosted multibanco voucher page, which allows customers to view and print an multibanco voucher.
@@ -453,8 +453,8 @@ class _NextActionMultiBanco implements NextAction {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$NextActionMultiBancoCopyWith<_NextActionMultiBanco> get copyWith =>
-      __$NextActionMultiBancoCopyWithImpl<_NextActionMultiBanco>(
+  $NextActionMultiBancoCopyWith<NextActionMultiBanco> get copyWith =>
+      _$NextActionMultiBancoCopyWithImpl<NextActionMultiBanco>(
           this, _$identity);
 
   @override
@@ -468,7 +468,7 @@ class _NextActionMultiBanco implements NextAction {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _NextActionMultiBanco &&
+            other is NextActionMultiBanco &&
             (identical(other.voucherURL, voucherURL) ||
                 other.voucherURL == voucherURL));
   }
@@ -484,22 +484,22 @@ class _NextActionMultiBanco implements NextAction {
 }
 
 /// @nodoc
-abstract mixin class _$NextActionMultiBancoCopyWith<$Res>
+abstract mixin class $NextActionMultiBancoCopyWith<$Res>
     implements $NextActionCopyWith<$Res> {
-  factory _$NextActionMultiBancoCopyWith(_NextActionMultiBanco value,
-          $Res Function(_NextActionMultiBanco) _then) =
-      __$NextActionMultiBancoCopyWithImpl;
+  factory $NextActionMultiBancoCopyWith(NextActionMultiBanco value,
+          $Res Function(NextActionMultiBanco) _then) =
+      _$NextActionMultiBancoCopyWithImpl;
   @useResult
   $Res call({String? voucherURL});
 }
 
 /// @nodoc
-class __$NextActionMultiBancoCopyWithImpl<$Res>
-    implements _$NextActionMultiBancoCopyWith<$Res> {
-  __$NextActionMultiBancoCopyWithImpl(this._self, this._then);
+class _$NextActionMultiBancoCopyWithImpl<$Res>
+    implements $NextActionMultiBancoCopyWith<$Res> {
+  _$NextActionMultiBancoCopyWithImpl(this._self, this._then);
 
-  final _NextActionMultiBanco _self;
-  final $Res Function(_NextActionMultiBanco) _then;
+  final NextActionMultiBanco _self;
+  final $Res Function(NextActionMultiBanco) _then;
 
   /// Create a copy of NextAction
   /// with the given fields replaced by the non-null parameter values.
@@ -507,7 +507,7 @@ class __$NextActionMultiBancoCopyWithImpl<$Res>
   $Res call({
     Object? voucherURL = freezed,
   }) {
-    return _then(_NextActionMultiBanco(
+    return _then(NextActionMultiBanco(
       voucherURL: freezed == voucherURL
           ? _self.voucherURL
           : voucherURL // ignore: cast_nullable_to_non_nullable

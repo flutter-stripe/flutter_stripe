@@ -22,7 +22,7 @@ class ResponseCard extends StatelessWidget {
                       .textTheme
                       .bodySmall
                       ?.color
-                      ?.withOpacity(0.5),
+                      ?.withAlpha(125),
                 ),
           ),
           SizedBox(height: 12),

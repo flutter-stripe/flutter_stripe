@@ -117,23 +117,19 @@ class _UsBankAccountScreenState extends State<UsBankAccountScreen> {
   }
 
   void handleNexAction(NextAction? action, String clientSecret) {
-    action?.maybeWhen(
-      verifyWithMicroDeposits: (arrivalDate, redirectUrl, microdepositType) {
-        showDialog(
-            context: context,
-            builder: (context) {
-              return _VerifyMicroDepositsDialog(
-                microdepositType: microdepositType!,
-                clientSecret: clientSecret,
-              );
-            });
-      },
-      orElse: () {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content:
-                Text('Error unknown followupaction rectrievied: $action')));
-      },
-    );
+    if (action is NextActionMicroDeposits) {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return _VerifyMicroDepositsDialog(
+              microdepositType: action.microdepositType!,
+              clientSecret: clientSecret,
+            );
+          });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('Error unknown followupaction rectrievied: $action')));
+    }
   }
 
   Future<Map<String, dynamic>> _createPaymentIntent() async {
