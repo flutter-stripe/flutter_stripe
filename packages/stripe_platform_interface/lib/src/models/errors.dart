@@ -17,7 +17,7 @@ enum CustomerSheetError { unknown, failed, canceled }
 @freezed
 
 /// Wrapper class that represents an error with the Stripe platform.
-class StripeError<T> with _$StripeError<T> implements Exception {
+abstract class StripeError<T> with _$StripeError<T> implements Exception {
   @JsonSerializable(explicitToJson: true)
   const factory StripeError({
     @Default('Unknown error') String message,
@@ -36,7 +36,7 @@ Map<String, dynamic> _dataToJson<T>(T input) => {'code': input};
 @freezed
 
 /// Exception retrieved from the Stripe platform.
-class StripeException with _$StripeException implements Exception {
+abstract class StripeException with _$StripeException implements Exception {
   const factory StripeException({
     /// error details
     required LocalizedErrorMessage error,
@@ -49,7 +49,7 @@ class StripeException with _$StripeException implements Exception {
 @freezed
 
 /// Provides details about the error
-class LocalizedErrorMessage with _$LocalizedErrorMessage {
+abstract class LocalizedErrorMessage with _$LocalizedErrorMessage {
   @JsonSerializable(explicitToJson: true)
   const factory LocalizedErrorMessage({
     /// The error code for example Cancelled

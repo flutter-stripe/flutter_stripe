@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,107 +10,83 @@ part of 'address_sheet.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-AddressSheetAdditionalFields _$AddressSheetAdditionalFieldsFromJson(
-    Map<String, dynamic> json) {
-  return _AddressSheetAdditionalFields.fromJson(json);
-}
 
 /// @nodoc
 mixin _$AddressSheetAdditionalFields {
   ///Determines whether the phone number is hidden, required, or optional. Defaults to hidden
-  AddressSheetPhoneNumberField get phoneNumber =>
-      throw _privateConstructorUsedError;
+  AddressSheetPhoneNumberField get phoneNumber;
 
   /// The label of a checkbox displayed below other fields. If null or undefined, the checkbox is not displayed
-  String? get checkboxLabel => throw _privateConstructorUsedError;
+  String? get checkboxLabel;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $AddressSheetAdditionalFieldsCopyWith<AddressSheetAdditionalFields>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AddressSheetAdditionalFieldsCopyWith<$Res> {
-  factory $AddressSheetAdditionalFieldsCopyWith(
-          AddressSheetAdditionalFields value,
-          $Res Function(AddressSheetAdditionalFields) then) =
-      _$AddressSheetAdditionalFieldsCopyWithImpl<$Res,
-          AddressSheetAdditionalFields>;
-  @useResult
-  $Res call({AddressSheetPhoneNumberField phoneNumber, String? checkboxLabel});
-}
-
-/// @nodoc
-class _$AddressSheetAdditionalFieldsCopyWithImpl<$Res,
-        $Val extends AddressSheetAdditionalFields>
-    implements $AddressSheetAdditionalFieldsCopyWith<$Res> {
-  _$AddressSheetAdditionalFieldsCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of AddressSheetAdditionalFields
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $AddressSheetAdditionalFieldsCopyWith<AddressSheetAdditionalFields>
+      get copyWith => _$AddressSheetAdditionalFieldsCopyWithImpl<
+              AddressSheetAdditionalFields>(
+          this as AddressSheetAdditionalFields, _$identity);
+
+  /// Serializes this AddressSheetAdditionalFields to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? phoneNumber = null,
-    Object? checkboxLabel = freezed,
-  }) {
-    return _then(_value.copyWith(
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as AddressSheetPhoneNumberField,
-      checkboxLabel: freezed == checkboxLabel
-          ? _value.checkboxLabel
-          : checkboxLabel // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AddressSheetAdditionalFields &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.checkboxLabel, checkboxLabel) ||
+                other.checkboxLabel == checkboxLabel));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, phoneNumber, checkboxLabel);
+
+  @override
+  String toString() {
+    return 'AddressSheetAdditionalFields(phoneNumber: $phoneNumber, checkboxLabel: $checkboxLabel)';
   }
 }
 
 /// @nodoc
-abstract class _$$AddressSheetAdditionalFieldsImplCopyWith<$Res>
-    implements $AddressSheetAdditionalFieldsCopyWith<$Res> {
-  factory _$$AddressSheetAdditionalFieldsImplCopyWith(
-          _$AddressSheetAdditionalFieldsImpl value,
-          $Res Function(_$AddressSheetAdditionalFieldsImpl) then) =
-      __$$AddressSheetAdditionalFieldsImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $AddressSheetAdditionalFieldsCopyWith<$Res> {
+  factory $AddressSheetAdditionalFieldsCopyWith(
+          AddressSheetAdditionalFields value,
+          $Res Function(AddressSheetAdditionalFields) _then) =
+      _$AddressSheetAdditionalFieldsCopyWithImpl;
   @useResult
   $Res call({AddressSheetPhoneNumberField phoneNumber, String? checkboxLabel});
 }
 
 /// @nodoc
-class __$$AddressSheetAdditionalFieldsImplCopyWithImpl<$Res>
-    extends _$AddressSheetAdditionalFieldsCopyWithImpl<$Res,
-        _$AddressSheetAdditionalFieldsImpl>
-    implements _$$AddressSheetAdditionalFieldsImplCopyWith<$Res> {
-  __$$AddressSheetAdditionalFieldsImplCopyWithImpl(
-      _$AddressSheetAdditionalFieldsImpl _value,
-      $Res Function(_$AddressSheetAdditionalFieldsImpl) _then)
-      : super(_value, _then);
+class _$AddressSheetAdditionalFieldsCopyWithImpl<$Res>
+    implements $AddressSheetAdditionalFieldsCopyWith<$Res> {
+  _$AddressSheetAdditionalFieldsCopyWithImpl(this._self, this._then);
 
+  final AddressSheetAdditionalFields _self;
+  final $Res Function(AddressSheetAdditionalFields) _then;
+
+  /// Create a copy of AddressSheetAdditionalFields
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? phoneNumber = null,
     Object? checkboxLabel = freezed,
   }) {
-    return _then(_$AddressSheetAdditionalFieldsImpl(
+    return _then(_self.copyWith(
       phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
+          ? _self.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as AddressSheetPhoneNumberField,
       checkboxLabel: freezed == checkboxLabel
-          ? _value.checkboxLabel
+          ? _self.checkboxLabel
           : checkboxLabel // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
@@ -118,14 +95,11 @@ class __$$AddressSheetAdditionalFieldsImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AddressSheetAdditionalFieldsImpl
-    implements _AddressSheetAdditionalFields {
-  const _$AddressSheetAdditionalFieldsImpl(
+class _AddressSheetAdditionalFields implements AddressSheetAdditionalFields {
+  const _AddressSheetAdditionalFields(
       {required this.phoneNumber, required this.checkboxLabel});
-
-  factory _$AddressSheetAdditionalFieldsImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$AddressSheetAdditionalFieldsImplFromJson(json);
+  factory _AddressSheetAdditionalFields.fromJson(Map<String, dynamic> json) =>
+      _$AddressSheetAdditionalFieldsFromJson(json);
 
   ///Determines whether the phone number is hidden, required, or optional. Defaults to hidden
   @override
@@ -135,196 +109,189 @@ class _$AddressSheetAdditionalFieldsImpl
   @override
   final String? checkboxLabel;
 
+  /// Create a copy of AddressSheetAdditionalFields
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'AddressSheetAdditionalFields(phoneNumber: $phoneNumber, checkboxLabel: $checkboxLabel)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AddressSheetAdditionalFieldsCopyWith<_AddressSheetAdditionalFields>
+      get copyWith => __$AddressSheetAdditionalFieldsCopyWithImpl<
+          _AddressSheetAdditionalFields>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AddressSheetAdditionalFieldsToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddressSheetAdditionalFieldsImpl &&
+            other is _AddressSheetAdditionalFields &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
             (identical(other.checkboxLabel, checkboxLabel) ||
                 other.checkboxLabel == checkboxLabel));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, phoneNumber, checkboxLabel);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$AddressSheetAdditionalFieldsImplCopyWith<
-          _$AddressSheetAdditionalFieldsImpl>
-      get copyWith => __$$AddressSheetAdditionalFieldsImplCopyWithImpl<
-          _$AddressSheetAdditionalFieldsImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AddressSheetAdditionalFieldsImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _AddressSheetAdditionalFields
-    implements AddressSheetAdditionalFields {
-  const factory _AddressSheetAdditionalFields(
-          {required final AddressSheetPhoneNumberField phoneNumber,
-          required final String? checkboxLabel}) =
-      _$AddressSheetAdditionalFieldsImpl;
-
-  factory _AddressSheetAdditionalFields.fromJson(Map<String, dynamic> json) =
-      _$AddressSheetAdditionalFieldsImpl.fromJson;
-
-  @override
-
-  ///Determines whether the phone number is hidden, required, or optional. Defaults to hidden
-  AddressSheetPhoneNumberField get phoneNumber;
-  @override
-
-  /// The label of a checkbox displayed below other fields. If null or undefined, the checkbox is not displayed
-  String? get checkboxLabel;
-  @override
-  @JsonKey(ignore: true)
-  _$$AddressSheetAdditionalFieldsImplCopyWith<
-          _$AddressSheetAdditionalFieldsImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-CollectAddressResult _$CollectAddressResultFromJson(Map<String, dynamic> json) {
-  return _CollectAddressResult.fromJson(json);
-}
-
-/// @nodoc
-mixin _$CollectAddressResult {
-  /// The customer's full name
-  String get name => throw _privateConstructorUsedError;
-
-  /// The customer's address
-  Address get address => throw _privateConstructorUsedError;
-
-  /// The customer's phone number
-  String? get phoneNumber => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $CollectAddressResultCopyWith<CollectAddressResult> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CollectAddressResultCopyWith<$Res> {
-  factory $CollectAddressResultCopyWith(CollectAddressResult value,
-          $Res Function(CollectAddressResult) then) =
-      _$CollectAddressResultCopyWithImpl<$Res, CollectAddressResult>;
-  @useResult
-  $Res call({String name, Address address, String? phoneNumber});
-
-  $AddressCopyWith<$Res> get address;
-}
-
-/// @nodoc
-class _$CollectAddressResultCopyWithImpl<$Res,
-        $Val extends CollectAddressResult>
-    implements $CollectAddressResultCopyWith<$Res> {
-  _$CollectAddressResultCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? address = null,
-    Object? phoneNumber = freezed,
-  }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as Address,
-      phoneNumber: freezed == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AddressCopyWith<$Res> get address {
-    return $AddressCopyWith<$Res>(_value.address, (value) {
-      return _then(_value.copyWith(address: value) as $Val);
-    });
+  String toString() {
+    return 'AddressSheetAdditionalFields(phoneNumber: $phoneNumber, checkboxLabel: $checkboxLabel)';
   }
 }
 
 /// @nodoc
-abstract class _$$CollectAddressResultImplCopyWith<$Res>
-    implements $CollectAddressResultCopyWith<$Res> {
-  factory _$$CollectAddressResultImplCopyWith(_$CollectAddressResultImpl value,
-          $Res Function(_$CollectAddressResultImpl) then) =
-      __$$CollectAddressResultImplCopyWithImpl<$Res>;
+abstract mixin class _$AddressSheetAdditionalFieldsCopyWith<$Res>
+    implements $AddressSheetAdditionalFieldsCopyWith<$Res> {
+  factory _$AddressSheetAdditionalFieldsCopyWith(
+          _AddressSheetAdditionalFields value,
+          $Res Function(_AddressSheetAdditionalFields) _then) =
+      __$AddressSheetAdditionalFieldsCopyWithImpl;
   @override
   @useResult
-  $Res call({String name, Address address, String? phoneNumber});
-
-  @override
-  $AddressCopyWith<$Res> get address;
+  $Res call({AddressSheetPhoneNumberField phoneNumber, String? checkboxLabel});
 }
 
 /// @nodoc
-class __$$CollectAddressResultImplCopyWithImpl<$Res>
-    extends _$CollectAddressResultCopyWithImpl<$Res, _$CollectAddressResultImpl>
-    implements _$$CollectAddressResultImplCopyWith<$Res> {
-  __$$CollectAddressResultImplCopyWithImpl(_$CollectAddressResultImpl _value,
-      $Res Function(_$CollectAddressResultImpl) _then)
-      : super(_value, _then);
+class __$AddressSheetAdditionalFieldsCopyWithImpl<$Res>
+    implements _$AddressSheetAdditionalFieldsCopyWith<$Res> {
+  __$AddressSheetAdditionalFieldsCopyWithImpl(this._self, this._then);
 
-  @pragma('vm:prefer-inline')
+  final _AddressSheetAdditionalFields _self;
+  final $Res Function(_AddressSheetAdditionalFields) _then;
+
+  /// Create a copy of AddressSheetAdditionalFields
+  /// with the given fields replaced by the non-null parameter values.
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
-    Object? name = null,
-    Object? address = null,
-    Object? phoneNumber = freezed,
+    Object? phoneNumber = null,
+    Object? checkboxLabel = freezed,
   }) {
-    return _then(_$CollectAddressResultImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as Address,
-      phoneNumber: freezed == phoneNumber
-          ? _value.phoneNumber
+    return _then(_AddressSheetAdditionalFields(
+      phoneNumber: null == phoneNumber
+          ? _self.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as AddressSheetPhoneNumberField,
+      checkboxLabel: freezed == checkboxLabel
+          ? _self.checkboxLabel
+          : checkboxLabel // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$CollectAddressResultImpl implements _CollectAddressResult {
-  const _$CollectAddressResultImpl(
-      {required this.name, required this.address, this.phoneNumber});
+mixin _$CollectAddressResult {
+  /// The customer's full name
+  String get name;
 
-  factory _$CollectAddressResultImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CollectAddressResultImplFromJson(json);
+  /// The customer's address
+  Address get address;
+
+  /// The customer's phone number
+  String? get phoneNumber;
+
+  /// Create a copy of CollectAddressResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $CollectAddressResultCopyWith<CollectAddressResult> get copyWith =>
+      _$CollectAddressResultCopyWithImpl<CollectAddressResult>(
+          this as CollectAddressResult, _$identity);
+
+  /// Serializes this CollectAddressResult to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CollectAddressResult &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, address, phoneNumber);
+
+  @override
+  String toString() {
+    return 'CollectAddressResult(name: $name, address: $address, phoneNumber: $phoneNumber)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $CollectAddressResultCopyWith<$Res> {
+  factory $CollectAddressResultCopyWith(CollectAddressResult value,
+          $Res Function(CollectAddressResult) _then) =
+      _$CollectAddressResultCopyWithImpl;
+  @useResult
+  $Res call({String name, Address address, String? phoneNumber});
+
+  $AddressCopyWith<$Res> get address;
+}
+
+/// @nodoc
+class _$CollectAddressResultCopyWithImpl<$Res>
+    implements $CollectAddressResultCopyWith<$Res> {
+  _$CollectAddressResultCopyWithImpl(this._self, this._then);
+
+  final CollectAddressResult _self;
+  final $Res Function(CollectAddressResult) _then;
+
+  /// Create a copy of CollectAddressResult
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? address = null,
+    Object? phoneNumber = freezed,
+  }) {
+    return _then(_self.copyWith(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: null == address
+          ? _self.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as Address,
+      phoneNumber: freezed == phoneNumber
+          ? _self.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+
+  /// Create a copy of CollectAddressResult
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AddressCopyWith<$Res> get address {
+    return $AddressCopyWith<$Res>(_self.address, (value) {
+      return _then(_self.copyWith(address: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _CollectAddressResult implements CollectAddressResult {
+  const _CollectAddressResult(
+      {required this.name, required this.address, this.phoneNumber});
+  factory _CollectAddressResult.fromJson(Map<String, dynamic> json) =>
+      _$CollectAddressResultFromJson(json);
 
   /// The customer's full name
   @override
@@ -338,122 +305,202 @@ class _$CollectAddressResultImpl implements _CollectAddressResult {
   @override
   final String? phoneNumber;
 
+  /// Create a copy of CollectAddressResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'CollectAddressResult(name: $name, address: $address, phoneNumber: $phoneNumber)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CollectAddressResultCopyWith<_CollectAddressResult> get copyWith =>
+      __$CollectAddressResultCopyWithImpl<_CollectAddressResult>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$CollectAddressResultToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CollectAddressResultImpl &&
+            other is _CollectAddressResult &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, address, phoneNumber);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$CollectAddressResultImplCopyWith<_$CollectAddressResultImpl>
-      get copyWith =>
-          __$$CollectAddressResultImplCopyWithImpl<_$CollectAddressResultImpl>(
-              this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CollectAddressResultImplToJson(
-      this,
-    );
+  String toString() {
+    return 'CollectAddressResult(name: $name, address: $address, phoneNumber: $phoneNumber)';
   }
 }
 
-abstract class _CollectAddressResult implements CollectAddressResult {
-  const factory _CollectAddressResult(
-      {required final String name,
-      required final Address address,
-      final String? phoneNumber}) = _$CollectAddressResultImpl;
-
-  factory _CollectAddressResult.fromJson(Map<String, dynamic> json) =
-      _$CollectAddressResultImpl.fromJson;
+/// @nodoc
+abstract mixin class _$CollectAddressResultCopyWith<$Res>
+    implements $CollectAddressResultCopyWith<$Res> {
+  factory _$CollectAddressResultCopyWith(_CollectAddressResult value,
+          $Res Function(_CollectAddressResult) _then) =
+      __$CollectAddressResultCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String name, Address address, String? phoneNumber});
 
   @override
-
-  /// The customer's full name
-  String get name;
-  @override
-
-  /// The customer's address
-  Address get address;
-  @override
-
-  /// The customer's phone number
-  String? get phoneNumber;
-  @override
-  @JsonKey(ignore: true)
-  _$$CollectAddressResultImplCopyWith<_$CollectAddressResultImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  $AddressCopyWith<$Res> get address;
 }
 
-AddressSheetParams _$AddressSheetParamsFromJson(Map<String, dynamic> json) {
-  return _AddressSheetParams.fromJson(json);
+/// @nodoc
+class __$CollectAddressResultCopyWithImpl<$Res>
+    implements _$CollectAddressResultCopyWith<$Res> {
+  __$CollectAddressResultCopyWithImpl(this._self, this._then);
+
+  final _CollectAddressResult _self;
+  final $Res Function(_CollectAddressResult) _then;
+
+  /// Create a copy of CollectAddressResult
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? name = null,
+    Object? address = null,
+    Object? phoneNumber = freezed,
+  }) {
+    return _then(_CollectAddressResult(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: null == address
+          ? _self.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as Address,
+      phoneNumber: freezed == phoneNumber
+          ? _self.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+
+  /// Create a copy of CollectAddressResult
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AddressCopyWith<$Res> get address {
+    return $AddressCopyWith<$Res>(_self.address, (value) {
+      return _then(_self.copyWith(address: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$AddressSheetParams {
   /// Whether the address sheet is visible
-  bool get visible => throw _privateConstructorUsedError;
+  bool get visible;
 
   /// Controls how the modal is presented (after animation). iOS only.
-  AddressSheetPresentationStyle? get presentationStyle =>
-      throw _privateConstructorUsedError;
+  AddressSheetPresentationStyle? get presentationStyle;
 
   /// Controls how the modal animates. iOS only.
-  AddressSheetAnimationStyle? get animationStyle =>
-      throw _privateConstructorUsedError;
+  AddressSheetAnimationStyle? get animationStyle;
 
   /// Configuration for the appearance of the address sheet
-  PaymentSheetAppearance? get appearance => throw _privateConstructorUsedError;
+  PaymentSheetAppearance? get appearance;
 
   /// Default values to prepoulate the address sheet
-  AddressDetails? get defaultValues => throw _privateConstructorUsedError;
+  AddressDetails? get defaultValues;
 
   /// Configuration for additional fields besides the physical address
-  AddressSheetAdditionalFields? get additionalFields =>
-      throw _privateConstructorUsedError;
+  AddressSheetAdditionalFields? get additionalFields;
 
   /// A list of two-letter country codes representing countries the customers can select. If the list is empty (the default), we display all countries.
-  List<String>? get allowedCountries => throw _privateConstructorUsedError;
+  List<String>? get allowedCountries;
 
   /// A list of two-letter country codes representing countries that support address autocomplete. Defaults to a list of countries that Stripe has audited to ensure a good autocomplete experience.
-  List<String>? get autocompleteCountries => throw _privateConstructorUsedError;
+  List<String>? get autocompleteCountries;
 
   /// The title of the primary button displayed at the bottom of the screen. Defaults to "Save Address"
-  String? get primaryButtonTitle => throw _privateConstructorUsedError;
+  String? get primaryButtonTitle;
 
   /// The title of the address sheet. Defaults to "Address"
-  String? get sheetTitle => throw _privateConstructorUsedError;
+  String? get sheetTitle;
 
   /// Android only. Google Places api key used to provide autocomplete suggestions. When null, autocomplete is disabled on Android.
-  String? get googlePlacesApiKey => throw _privateConstructorUsedError;
+  String? get googlePlacesApiKey;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+  /// Create a copy of AddressSheetParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $AddressSheetParamsCopyWith<AddressSheetParams> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$AddressSheetParamsCopyWithImpl<AddressSheetParams>(
+          this as AddressSheetParams, _$identity);
+
+  /// Serializes this AddressSheetParams to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AddressSheetParams &&
+            (identical(other.visible, visible) || other.visible == visible) &&
+            (identical(other.presentationStyle, presentationStyle) ||
+                other.presentationStyle == presentationStyle) &&
+            (identical(other.animationStyle, animationStyle) ||
+                other.animationStyle == animationStyle) &&
+            (identical(other.appearance, appearance) ||
+                other.appearance == appearance) &&
+            (identical(other.defaultValues, defaultValues) ||
+                other.defaultValues == defaultValues) &&
+            (identical(other.additionalFields, additionalFields) ||
+                other.additionalFields == additionalFields) &&
+            const DeepCollectionEquality()
+                .equals(other.allowedCountries, allowedCountries) &&
+            const DeepCollectionEquality()
+                .equals(other.autocompleteCountries, autocompleteCountries) &&
+            (identical(other.primaryButtonTitle, primaryButtonTitle) ||
+                other.primaryButtonTitle == primaryButtonTitle) &&
+            (identical(other.sheetTitle, sheetTitle) ||
+                other.sheetTitle == sheetTitle) &&
+            (identical(other.googlePlacesApiKey, googlePlacesApiKey) ||
+                other.googlePlacesApiKey == googlePlacesApiKey));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      visible,
+      presentationStyle,
+      animationStyle,
+      appearance,
+      defaultValues,
+      additionalFields,
+      const DeepCollectionEquality().hash(allowedCountries),
+      const DeepCollectionEquality().hash(autocompleteCountries),
+      primaryButtonTitle,
+      sheetTitle,
+      googlePlacesApiKey);
+
+  @override
+  String toString() {
+    return 'AddressSheetParams(visible: $visible, presentationStyle: $presentationStyle, animationStyle: $animationStyle, appearance: $appearance, defaultValues: $defaultValues, additionalFields: $additionalFields, allowedCountries: $allowedCountries, autocompleteCountries: $autocompleteCountries, primaryButtonTitle: $primaryButtonTitle, sheetTitle: $sheetTitle, googlePlacesApiKey: $googlePlacesApiKey)';
+  }
 }
 
 /// @nodoc
-abstract class $AddressSheetParamsCopyWith<$Res> {
+abstract mixin class $AddressSheetParamsCopyWith<$Res> {
   factory $AddressSheetParamsCopyWith(
-          AddressSheetParams value, $Res Function(AddressSheetParams) then) =
-      _$AddressSheetParamsCopyWithImpl<$Res, AddressSheetParams>;
+          AddressSheetParams value, $Res Function(AddressSheetParams) _then) =
+      _$AddressSheetParamsCopyWithImpl;
   @useResult
   $Res call(
       {bool visible,
@@ -474,15 +521,15 @@ abstract class $AddressSheetParamsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AddressSheetParamsCopyWithImpl<$Res, $Val extends AddressSheetParams>
+class _$AddressSheetParamsCopyWithImpl<$Res>
     implements $AddressSheetParamsCopyWith<$Res> {
-  _$AddressSheetParamsCopyWithImpl(this._value, this._then);
+  _$AddressSheetParamsCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final AddressSheetParams _self;
+  final $Res Function(AddressSheetParams) _then;
 
+  /// Create a copy of AddressSheetParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -498,198 +545,103 @@ class _$AddressSheetParamsCopyWithImpl<$Res, $Val extends AddressSheetParams>
     Object? sheetTitle = freezed,
     Object? googlePlacesApiKey = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       visible: null == visible
-          ? _value.visible
+          ? _self.visible
           : visible // ignore: cast_nullable_to_non_nullable
               as bool,
       presentationStyle: freezed == presentationStyle
-          ? _value.presentationStyle
+          ? _self.presentationStyle
           : presentationStyle // ignore: cast_nullable_to_non_nullable
               as AddressSheetPresentationStyle?,
       animationStyle: freezed == animationStyle
-          ? _value.animationStyle
+          ? _self.animationStyle
           : animationStyle // ignore: cast_nullable_to_non_nullable
               as AddressSheetAnimationStyle?,
       appearance: freezed == appearance
-          ? _value.appearance
+          ? _self.appearance
           : appearance // ignore: cast_nullable_to_non_nullable
               as PaymentSheetAppearance?,
       defaultValues: freezed == defaultValues
-          ? _value.defaultValues
+          ? _self.defaultValues
           : defaultValues // ignore: cast_nullable_to_non_nullable
               as AddressDetails?,
       additionalFields: freezed == additionalFields
-          ? _value.additionalFields
+          ? _self.additionalFields
           : additionalFields // ignore: cast_nullable_to_non_nullable
               as AddressSheetAdditionalFields?,
       allowedCountries: freezed == allowedCountries
-          ? _value.allowedCountries
+          ? _self.allowedCountries
           : allowedCountries // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       autocompleteCountries: freezed == autocompleteCountries
-          ? _value.autocompleteCountries
+          ? _self.autocompleteCountries
           : autocompleteCountries // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       primaryButtonTitle: freezed == primaryButtonTitle
-          ? _value.primaryButtonTitle
+          ? _self.primaryButtonTitle
           : primaryButtonTitle // ignore: cast_nullable_to_non_nullable
               as String?,
       sheetTitle: freezed == sheetTitle
-          ? _value.sheetTitle
+          ? _self.sheetTitle
           : sheetTitle // ignore: cast_nullable_to_non_nullable
               as String?,
       googlePlacesApiKey: freezed == googlePlacesApiKey
-          ? _value.googlePlacesApiKey
-          : googlePlacesApiKey // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PaymentSheetAppearanceCopyWith<$Res>? get appearance {
-    if (_value.appearance == null) {
-      return null;
-    }
-
-    return $PaymentSheetAppearanceCopyWith<$Res>(_value.appearance!, (value) {
-      return _then(_value.copyWith(appearance: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AddressDetailsCopyWith<$Res>? get defaultValues {
-    if (_value.defaultValues == null) {
-      return null;
-    }
-
-    return $AddressDetailsCopyWith<$Res>(_value.defaultValues!, (value) {
-      return _then(_value.copyWith(defaultValues: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AddressSheetAdditionalFieldsCopyWith<$Res>? get additionalFields {
-    if (_value.additionalFields == null) {
-      return null;
-    }
-
-    return $AddressSheetAdditionalFieldsCopyWith<$Res>(_value.additionalFields!,
-        (value) {
-      return _then(_value.copyWith(additionalFields: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$AddressSheetParamsImplCopyWith<$Res>
-    implements $AddressSheetParamsCopyWith<$Res> {
-  factory _$$AddressSheetParamsImplCopyWith(_$AddressSheetParamsImpl value,
-          $Res Function(_$AddressSheetParamsImpl) then) =
-      __$$AddressSheetParamsImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {bool visible,
-      AddressSheetPresentationStyle? presentationStyle,
-      AddressSheetAnimationStyle? animationStyle,
-      PaymentSheetAppearance? appearance,
-      AddressDetails? defaultValues,
-      AddressSheetAdditionalFields? additionalFields,
-      List<String>? allowedCountries,
-      List<String>? autocompleteCountries,
-      String? primaryButtonTitle,
-      String? sheetTitle,
-      String? googlePlacesApiKey});
-
-  @override
-  $PaymentSheetAppearanceCopyWith<$Res>? get appearance;
-  @override
-  $AddressDetailsCopyWith<$Res>? get defaultValues;
-  @override
-  $AddressSheetAdditionalFieldsCopyWith<$Res>? get additionalFields;
-}
-
-/// @nodoc
-class __$$AddressSheetParamsImplCopyWithImpl<$Res>
-    extends _$AddressSheetParamsCopyWithImpl<$Res, _$AddressSheetParamsImpl>
-    implements _$$AddressSheetParamsImplCopyWith<$Res> {
-  __$$AddressSheetParamsImplCopyWithImpl(_$AddressSheetParamsImpl _value,
-      $Res Function(_$AddressSheetParamsImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? visible = null,
-    Object? presentationStyle = freezed,
-    Object? animationStyle = freezed,
-    Object? appearance = freezed,
-    Object? defaultValues = freezed,
-    Object? additionalFields = freezed,
-    Object? allowedCountries = freezed,
-    Object? autocompleteCountries = freezed,
-    Object? primaryButtonTitle = freezed,
-    Object? sheetTitle = freezed,
-    Object? googlePlacesApiKey = freezed,
-  }) {
-    return _then(_$AddressSheetParamsImpl(
-      visible: null == visible
-          ? _value.visible
-          : visible // ignore: cast_nullable_to_non_nullable
-              as bool,
-      presentationStyle: freezed == presentationStyle
-          ? _value.presentationStyle
-          : presentationStyle // ignore: cast_nullable_to_non_nullable
-              as AddressSheetPresentationStyle?,
-      animationStyle: freezed == animationStyle
-          ? _value.animationStyle
-          : animationStyle // ignore: cast_nullable_to_non_nullable
-              as AddressSheetAnimationStyle?,
-      appearance: freezed == appearance
-          ? _value.appearance
-          : appearance // ignore: cast_nullable_to_non_nullable
-              as PaymentSheetAppearance?,
-      defaultValues: freezed == defaultValues
-          ? _value.defaultValues
-          : defaultValues // ignore: cast_nullable_to_non_nullable
-              as AddressDetails?,
-      additionalFields: freezed == additionalFields
-          ? _value.additionalFields
-          : additionalFields // ignore: cast_nullable_to_non_nullable
-              as AddressSheetAdditionalFields?,
-      allowedCountries: freezed == allowedCountries
-          ? _value._allowedCountries
-          : allowedCountries // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      autocompleteCountries: freezed == autocompleteCountries
-          ? _value._autocompleteCountries
-          : autocompleteCountries // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      primaryButtonTitle: freezed == primaryButtonTitle
-          ? _value.primaryButtonTitle
-          : primaryButtonTitle // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sheetTitle: freezed == sheetTitle
-          ? _value.sheetTitle
-          : sheetTitle // ignore: cast_nullable_to_non_nullable
-              as String?,
-      googlePlacesApiKey: freezed == googlePlacesApiKey
-          ? _value.googlePlacesApiKey
+          ? _self.googlePlacesApiKey
           : googlePlacesApiKey // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
+  }
+
+  /// Create a copy of AddressSheetParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentSheetAppearanceCopyWith<$Res>? get appearance {
+    if (_self.appearance == null) {
+      return null;
+    }
+
+    return $PaymentSheetAppearanceCopyWith<$Res>(_self.appearance!, (value) {
+      return _then(_self.copyWith(appearance: value));
+    });
+  }
+
+  /// Create a copy of AddressSheetParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AddressDetailsCopyWith<$Res>? get defaultValues {
+    if (_self.defaultValues == null) {
+      return null;
+    }
+
+    return $AddressDetailsCopyWith<$Res>(_self.defaultValues!, (value) {
+      return _then(_self.copyWith(defaultValues: value));
+    });
+  }
+
+  /// Create a copy of AddressSheetParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AddressSheetAdditionalFieldsCopyWith<$Res>? get additionalFields {
+    if (_self.additionalFields == null) {
+      return null;
+    }
+
+    return $AddressSheetAdditionalFieldsCopyWith<$Res>(_self.additionalFields!,
+        (value) {
+      return _then(_self.copyWith(additionalFields: value));
+    });
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$AddressSheetParamsImpl implements _AddressSheetParams {
-  const _$AddressSheetParamsImpl(
+class _AddressSheetParams implements AddressSheetParams {
+  const _AddressSheetParams(
       {this.visible = true,
       this.presentationStyle,
       this.animationStyle,
@@ -703,9 +655,8 @@ class _$AddressSheetParamsImpl implements _AddressSheetParams {
       this.googlePlacesApiKey})
       : _allowedCountries = allowedCountries,
         _autocompleteCountries = autocompleteCountries;
-
-  factory _$AddressSheetParamsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AddressSheetParamsImplFromJson(json);
+  factory _AddressSheetParams.fromJson(Map<String, dynamic> json) =>
+      _$AddressSheetParamsFromJson(json);
 
   /// Whether the address sheet is visible
   @override
@@ -772,16 +723,26 @@ class _$AddressSheetParamsImpl implements _AddressSheetParams {
   @override
   final String? googlePlacesApiKey;
 
+  /// Create a copy of AddressSheetParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'AddressSheetParams(visible: $visible, presentationStyle: $presentationStyle, animationStyle: $animationStyle, appearance: $appearance, defaultValues: $defaultValues, additionalFields: $additionalFields, allowedCountries: $allowedCountries, autocompleteCountries: $autocompleteCountries, primaryButtonTitle: $primaryButtonTitle, sheetTitle: $sheetTitle, googlePlacesApiKey: $googlePlacesApiKey)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AddressSheetParamsCopyWith<_AddressSheetParams> get copyWith =>
+      __$AddressSheetParamsCopyWithImpl<_AddressSheetParams>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AddressSheetParamsToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddressSheetParamsImpl &&
+            other is _AddressSheetParams &&
             (identical(other.visible, visible) || other.visible == visible) &&
             (identical(other.presentationStyle, presentationStyle) ||
                 other.presentationStyle == presentationStyle) &&
@@ -805,7 +766,7 @@ class _$AddressSheetParamsImpl implements _AddressSheetParams {
                 other.googlePlacesApiKey == googlePlacesApiKey));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -821,84 +782,156 @@ class _$AddressSheetParamsImpl implements _AddressSheetParams {
       sheetTitle,
       googlePlacesApiKey);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$AddressSheetParamsImplCopyWith<_$AddressSheetParamsImpl> get copyWith =>
-      __$$AddressSheetParamsImplCopyWithImpl<_$AddressSheetParamsImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AddressSheetParamsImplToJson(
-      this,
-    );
+  String toString() {
+    return 'AddressSheetParams(visible: $visible, presentationStyle: $presentationStyle, animationStyle: $animationStyle, appearance: $appearance, defaultValues: $defaultValues, additionalFields: $additionalFields, allowedCountries: $allowedCountries, autocompleteCountries: $autocompleteCountries, primaryButtonTitle: $primaryButtonTitle, sheetTitle: $sheetTitle, googlePlacesApiKey: $googlePlacesApiKey)';
   }
 }
 
-abstract class _AddressSheetParams implements AddressSheetParams {
-  const factory _AddressSheetParams(
-      {final bool visible,
-      final AddressSheetPresentationStyle? presentationStyle,
-      final AddressSheetAnimationStyle? animationStyle,
-      final PaymentSheetAppearance? appearance,
-      final AddressDetails? defaultValues,
-      final AddressSheetAdditionalFields? additionalFields,
-      final List<String>? allowedCountries,
-      final List<String>? autocompleteCountries,
-      final String? primaryButtonTitle,
-      final String? sheetTitle,
-      final String? googlePlacesApiKey}) = _$AddressSheetParamsImpl;
-
-  factory _AddressSheetParams.fromJson(Map<String, dynamic> json) =
-      _$AddressSheetParamsImpl.fromJson;
+/// @nodoc
+abstract mixin class _$AddressSheetParamsCopyWith<$Res>
+    implements $AddressSheetParamsCopyWith<$Res> {
+  factory _$AddressSheetParamsCopyWith(
+          _AddressSheetParams value, $Res Function(_AddressSheetParams) _then) =
+      __$AddressSheetParamsCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {bool visible,
+      AddressSheetPresentationStyle? presentationStyle,
+      AddressSheetAnimationStyle? animationStyle,
+      PaymentSheetAppearance? appearance,
+      AddressDetails? defaultValues,
+      AddressSheetAdditionalFields? additionalFields,
+      List<String>? allowedCountries,
+      List<String>? autocompleteCountries,
+      String? primaryButtonTitle,
+      String? sheetTitle,
+      String? googlePlacesApiKey});
 
   @override
-
-  /// Whether the address sheet is visible
-  bool get visible;
+  $PaymentSheetAppearanceCopyWith<$Res>? get appearance;
   @override
-
-  /// Controls how the modal is presented (after animation). iOS only.
-  AddressSheetPresentationStyle? get presentationStyle;
+  $AddressDetailsCopyWith<$Res>? get defaultValues;
   @override
-
-  /// Controls how the modal animates. iOS only.
-  AddressSheetAnimationStyle? get animationStyle;
-  @override
-
-  /// Configuration for the appearance of the address sheet
-  PaymentSheetAppearance? get appearance;
-  @override
-
-  /// Default values to prepoulate the address sheet
-  AddressDetails? get defaultValues;
-  @override
-
-  /// Configuration for additional fields besides the physical address
-  AddressSheetAdditionalFields? get additionalFields;
-  @override
-
-  /// A list of two-letter country codes representing countries the customers can select. If the list is empty (the default), we display all countries.
-  List<String>? get allowedCountries;
-  @override
-
-  /// A list of two-letter country codes representing countries that support address autocomplete. Defaults to a list of countries that Stripe has audited to ensure a good autocomplete experience.
-  List<String>? get autocompleteCountries;
-  @override
-
-  /// The title of the primary button displayed at the bottom of the screen. Defaults to "Save Address"
-  String? get primaryButtonTitle;
-  @override
-
-  /// The title of the address sheet. Defaults to "Address"
-  String? get sheetTitle;
-  @override
-
-  /// Android only. Google Places api key used to provide autocomplete suggestions. When null, autocomplete is disabled on Android.
-  String? get googlePlacesApiKey;
-  @override
-  @JsonKey(ignore: true)
-  _$$AddressSheetParamsImplCopyWith<_$AddressSheetParamsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  $AddressSheetAdditionalFieldsCopyWith<$Res>? get additionalFields;
 }
+
+/// @nodoc
+class __$AddressSheetParamsCopyWithImpl<$Res>
+    implements _$AddressSheetParamsCopyWith<$Res> {
+  __$AddressSheetParamsCopyWithImpl(this._self, this._then);
+
+  final _AddressSheetParams _self;
+  final $Res Function(_AddressSheetParams) _then;
+
+  /// Create a copy of AddressSheetParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? visible = null,
+    Object? presentationStyle = freezed,
+    Object? animationStyle = freezed,
+    Object? appearance = freezed,
+    Object? defaultValues = freezed,
+    Object? additionalFields = freezed,
+    Object? allowedCountries = freezed,
+    Object? autocompleteCountries = freezed,
+    Object? primaryButtonTitle = freezed,
+    Object? sheetTitle = freezed,
+    Object? googlePlacesApiKey = freezed,
+  }) {
+    return _then(_AddressSheetParams(
+      visible: null == visible
+          ? _self.visible
+          : visible // ignore: cast_nullable_to_non_nullable
+              as bool,
+      presentationStyle: freezed == presentationStyle
+          ? _self.presentationStyle
+          : presentationStyle // ignore: cast_nullable_to_non_nullable
+              as AddressSheetPresentationStyle?,
+      animationStyle: freezed == animationStyle
+          ? _self.animationStyle
+          : animationStyle // ignore: cast_nullable_to_non_nullable
+              as AddressSheetAnimationStyle?,
+      appearance: freezed == appearance
+          ? _self.appearance
+          : appearance // ignore: cast_nullable_to_non_nullable
+              as PaymentSheetAppearance?,
+      defaultValues: freezed == defaultValues
+          ? _self.defaultValues
+          : defaultValues // ignore: cast_nullable_to_non_nullable
+              as AddressDetails?,
+      additionalFields: freezed == additionalFields
+          ? _self.additionalFields
+          : additionalFields // ignore: cast_nullable_to_non_nullable
+              as AddressSheetAdditionalFields?,
+      allowedCountries: freezed == allowedCountries
+          ? _self._allowedCountries
+          : allowedCountries // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      autocompleteCountries: freezed == autocompleteCountries
+          ? _self._autocompleteCountries
+          : autocompleteCountries // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      primaryButtonTitle: freezed == primaryButtonTitle
+          ? _self.primaryButtonTitle
+          : primaryButtonTitle // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sheetTitle: freezed == sheetTitle
+          ? _self.sheetTitle
+          : sheetTitle // ignore: cast_nullable_to_non_nullable
+              as String?,
+      googlePlacesApiKey: freezed == googlePlacesApiKey
+          ? _self.googlePlacesApiKey
+          : googlePlacesApiKey // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+
+  /// Create a copy of AddressSheetParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentSheetAppearanceCopyWith<$Res>? get appearance {
+    if (_self.appearance == null) {
+      return null;
+    }
+
+    return $PaymentSheetAppearanceCopyWith<$Res>(_self.appearance!, (value) {
+      return _then(_self.copyWith(appearance: value));
+    });
+  }
+
+  /// Create a copy of AddressSheetParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AddressDetailsCopyWith<$Res>? get defaultValues {
+    if (_self.defaultValues == null) {
+      return null;
+    }
+
+    return $AddressDetailsCopyWith<$Res>(_self.defaultValues!, (value) {
+      return _then(_self.copyWith(defaultValues: value));
+    });
+  }
+
+  /// Create a copy of AddressSheetParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AddressSheetAdditionalFieldsCopyWith<$Res>? get additionalFields {
+    if (_self.additionalFields == null) {
+      return null;
+    }
+
+    return $AddressSheetAdditionalFieldsCopyWith<$Res>(_self.additionalFields!,
+        (value) {
+      return _then(_self.copyWith(additionalFields: value));
+    });
+  }
+}
+
+// dart format on

@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,83 +10,146 @@ part of 'payment_intents.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-PaymentIntent _$PaymentIntentFromJson(Map<String, dynamic> json) {
-  return _PaymentIntent.fromJson(json);
-}
 
 /// @nodoc
 mixin _$PaymentIntent {
   /// Unique identifier.
-  String get id => throw _privateConstructorUsedError;
+  String get id;
 
   /// Amount that will be collected in the payment intent.
-  num get amount => throw _privateConstructorUsedError;
+  num get amount;
 
   /// Timestamp since epoch that represents the time the intent is created.
-  String get created => throw _privateConstructorUsedError;
+  String get created;
 
   /// The three letter ISO 4217 code for the currency.
-  String get currency => throw _privateConstructorUsedError;
+  String get currency;
 
   /// Current status of the intent.
-  PaymentIntentsStatus get status => throw _privateConstructorUsedError;
+  PaymentIntentsStatus get status;
 
   /// The client is secret is used for handling the payment from the Client side.
-  String get clientSecret => throw _privateConstructorUsedError;
+  String get clientSecret;
 
   /// Determines whether the intent is in live mode or in test mode.
-  bool get livemode => throw _privateConstructorUsedError;
+  bool get livemode;
 
   /// How the funds will be caputure from the customer's account.
-  CaptureMethod get captureMethod => throw _privateConstructorUsedError;
+  CaptureMethod get captureMethod;
 
   /// Method of how the payment will be confirmed.
-  ConfirmationMethod get confirmationMethod =>
-      throw _privateConstructorUsedError;
+  ConfirmationMethod get confirmationMethod;
 
   /// Id of the payment method used in this intent.
-  String? get paymentMethodId => throw _privateConstructorUsedError;
+  String? get paymentMethodId;
 
   /// Localized description that provides additional context to users.
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
 
   /// Email address where the receipt will be send to.
-  String? get receiptEmail => throw _privateConstructorUsedError;
+  String? get receiptEmail;
 
   /// Timestamp since epoch when the intent is cancelled.
-  String? get canceledAt => throw _privateConstructorUsedError;
+  String? get canceledAt;
 
   /// Additional action that needs to be taken in order to complete a payment
   /// using the provided resource.
-  NextAction? get nextAction => throw _privateConstructorUsedError;
+  NextAction? get nextAction;
 
   /// Shipping information of the payment intent.
-  ShippingDetails? get shipping => throw _privateConstructorUsedError;
+  ShippingDetails? get shipping;
 
   /// Mandata data for this paymentintent.
-  MandateData? get mandateData => throw _privateConstructorUsedError;
+  MandateData? get mandateData;
 
   /// The latest charge created by this payment intent.
   ///
   /// This field is only available on stripe web.
-  String? get latestCharge => throw _privateConstructorUsedError;
+  String? get latestCharge;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $PaymentIntentCopyWith<PaymentIntent> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$PaymentIntentCopyWithImpl<PaymentIntent>(
+          this as PaymentIntent, _$identity);
+
+  /// Serializes this PaymentIntent to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PaymentIntent &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.created, created) || other.created == created) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.clientSecret, clientSecret) ||
+                other.clientSecret == clientSecret) &&
+            (identical(other.livemode, livemode) ||
+                other.livemode == livemode) &&
+            (identical(other.captureMethod, captureMethod) ||
+                other.captureMethod == captureMethod) &&
+            (identical(other.confirmationMethod, confirmationMethod) ||
+                other.confirmationMethod == confirmationMethod) &&
+            (identical(other.paymentMethodId, paymentMethodId) ||
+                other.paymentMethodId == paymentMethodId) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.receiptEmail, receiptEmail) ||
+                other.receiptEmail == receiptEmail) &&
+            (identical(other.canceledAt, canceledAt) ||
+                other.canceledAt == canceledAt) &&
+            (identical(other.nextAction, nextAction) ||
+                other.nextAction == nextAction) &&
+            (identical(other.shipping, shipping) ||
+                other.shipping == shipping) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData) &&
+            (identical(other.latestCharge, latestCharge) ||
+                other.latestCharge == latestCharge));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      amount,
+      created,
+      currency,
+      status,
+      clientSecret,
+      livemode,
+      captureMethod,
+      confirmationMethod,
+      paymentMethodId,
+      description,
+      receiptEmail,
+      canceledAt,
+      nextAction,
+      shipping,
+      mandateData,
+      latestCharge);
+
+  @override
+  String toString() {
+    return 'PaymentIntent(id: $id, amount: $amount, created: $created, currency: $currency, status: $status, clientSecret: $clientSecret, livemode: $livemode, captureMethod: $captureMethod, confirmationMethod: $confirmationMethod, paymentMethodId: $paymentMethodId, description: $description, receiptEmail: $receiptEmail, canceledAt: $canceledAt, nextAction: $nextAction, shipping: $shipping, mandateData: $mandateData, latestCharge: $latestCharge)';
+  }
 }
 
 /// @nodoc
-abstract class $PaymentIntentCopyWith<$Res> {
+abstract mixin class $PaymentIntentCopyWith<$Res> {
   factory $PaymentIntentCopyWith(
-          PaymentIntent value, $Res Function(PaymentIntent) then) =
-      _$PaymentIntentCopyWithImpl<$Res, PaymentIntent>;
+          PaymentIntent value, $Res Function(PaymentIntent) _then) =
+      _$PaymentIntentCopyWithImpl;
   @useResult
   $Res call(
       {String id,
@@ -112,15 +176,15 @@ abstract class $PaymentIntentCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PaymentIntentCopyWithImpl<$Res, $Val extends PaymentIntent>
+class _$PaymentIntentCopyWithImpl<$Res>
     implements $PaymentIntentCopyWith<$Res> {
-  _$PaymentIntentCopyWithImpl(this._value, this._then);
+  _$PaymentIntentCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PaymentIntent _self;
+  final $Res Function(PaymentIntent) _then;
 
+  /// Create a copy of PaymentIntent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -142,257 +206,126 @@ class _$PaymentIntentCopyWithImpl<$Res, $Val extends PaymentIntent>
     Object? mandateData = freezed,
     Object? latestCharge = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       id: null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
       amount: null == amount
-          ? _value.amount
+          ? _self.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as num,
       created: null == created
-          ? _value.created
+          ? _self.created
           : created // ignore: cast_nullable_to_non_nullable
               as String,
       currency: null == currency
-          ? _value.currency
+          ? _self.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
       status: null == status
-          ? _value.status
+          ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
               as PaymentIntentsStatus,
       clientSecret: null == clientSecret
-          ? _value.clientSecret
+          ? _self.clientSecret
           : clientSecret // ignore: cast_nullable_to_non_nullable
               as String,
       livemode: null == livemode
-          ? _value.livemode
+          ? _self.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
       captureMethod: null == captureMethod
-          ? _value.captureMethod
+          ? _self.captureMethod
           : captureMethod // ignore: cast_nullable_to_non_nullable
               as CaptureMethod,
       confirmationMethod: null == confirmationMethod
-          ? _value.confirmationMethod
+          ? _self.confirmationMethod
           : confirmationMethod // ignore: cast_nullable_to_non_nullable
               as ConfirmationMethod,
       paymentMethodId: freezed == paymentMethodId
-          ? _value.paymentMethodId
+          ? _self.paymentMethodId
           : paymentMethodId // ignore: cast_nullable_to_non_nullable
               as String?,
       description: freezed == description
-          ? _value.description
+          ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
       receiptEmail: freezed == receiptEmail
-          ? _value.receiptEmail
+          ? _self.receiptEmail
           : receiptEmail // ignore: cast_nullable_to_non_nullable
               as String?,
       canceledAt: freezed == canceledAt
-          ? _value.canceledAt
+          ? _self.canceledAt
           : canceledAt // ignore: cast_nullable_to_non_nullable
               as String?,
       nextAction: freezed == nextAction
-          ? _value.nextAction
+          ? _self.nextAction
           : nextAction // ignore: cast_nullable_to_non_nullable
               as NextAction?,
       shipping: freezed == shipping
-          ? _value.shipping
+          ? _self.shipping
           : shipping // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
       mandateData: freezed == mandateData
-          ? _value.mandateData
+          ? _self.mandateData
           : mandateData // ignore: cast_nullable_to_non_nullable
               as MandateData?,
       latestCharge: freezed == latestCharge
-          ? _value.latestCharge
-          : latestCharge // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $NextActionCopyWith<$Res>? get nextAction {
-    if (_value.nextAction == null) {
-      return null;
-    }
-
-    return $NextActionCopyWith<$Res>(_value.nextAction!, (value) {
-      return _then(_value.copyWith(nextAction: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ShippingDetailsCopyWith<$Res>? get shipping {
-    if (_value.shipping == null) {
-      return null;
-    }
-
-    return $ShippingDetailsCopyWith<$Res>(_value.shipping!, (value) {
-      return _then(_value.copyWith(shipping: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $MandateDataCopyWith<$Res>? get mandateData {
-    if (_value.mandateData == null) {
-      return null;
-    }
-
-    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
-      return _then(_value.copyWith(mandateData: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$PaymentIntentImplCopyWith<$Res>
-    implements $PaymentIntentCopyWith<$Res> {
-  factory _$$PaymentIntentImplCopyWith(
-          _$PaymentIntentImpl value, $Res Function(_$PaymentIntentImpl) then) =
-      __$$PaymentIntentImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String id,
-      num amount,
-      String created,
-      String currency,
-      PaymentIntentsStatus status,
-      String clientSecret,
-      bool livemode,
-      CaptureMethod captureMethod,
-      ConfirmationMethod confirmationMethod,
-      String? paymentMethodId,
-      String? description,
-      String? receiptEmail,
-      String? canceledAt,
-      NextAction? nextAction,
-      ShippingDetails? shipping,
-      MandateData? mandateData,
-      String? latestCharge});
-
-  @override
-  $NextActionCopyWith<$Res>? get nextAction;
-  @override
-  $ShippingDetailsCopyWith<$Res>? get shipping;
-  @override
-  $MandateDataCopyWith<$Res>? get mandateData;
-}
-
-/// @nodoc
-class __$$PaymentIntentImplCopyWithImpl<$Res>
-    extends _$PaymentIntentCopyWithImpl<$Res, _$PaymentIntentImpl>
-    implements _$$PaymentIntentImplCopyWith<$Res> {
-  __$$PaymentIntentImplCopyWithImpl(
-      _$PaymentIntentImpl _value, $Res Function(_$PaymentIntentImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? amount = null,
-    Object? created = null,
-    Object? currency = null,
-    Object? status = null,
-    Object? clientSecret = null,
-    Object? livemode = null,
-    Object? captureMethod = null,
-    Object? confirmationMethod = null,
-    Object? paymentMethodId = freezed,
-    Object? description = freezed,
-    Object? receiptEmail = freezed,
-    Object? canceledAt = freezed,
-    Object? nextAction = freezed,
-    Object? shipping = freezed,
-    Object? mandateData = freezed,
-    Object? latestCharge = freezed,
-  }) {
-    return _then(_$PaymentIntentImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as num,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as String,
-      currency: null == currency
-          ? _value.currency
-          : currency // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as PaymentIntentsStatus,
-      clientSecret: null == clientSecret
-          ? _value.clientSecret
-          : clientSecret // ignore: cast_nullable_to_non_nullable
-              as String,
-      livemode: null == livemode
-          ? _value.livemode
-          : livemode // ignore: cast_nullable_to_non_nullable
-              as bool,
-      captureMethod: null == captureMethod
-          ? _value.captureMethod
-          : captureMethod // ignore: cast_nullable_to_non_nullable
-              as CaptureMethod,
-      confirmationMethod: null == confirmationMethod
-          ? _value.confirmationMethod
-          : confirmationMethod // ignore: cast_nullable_to_non_nullable
-              as ConfirmationMethod,
-      paymentMethodId: freezed == paymentMethodId
-          ? _value.paymentMethodId
-          : paymentMethodId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      receiptEmail: freezed == receiptEmail
-          ? _value.receiptEmail
-          : receiptEmail // ignore: cast_nullable_to_non_nullable
-              as String?,
-      canceledAt: freezed == canceledAt
-          ? _value.canceledAt
-          : canceledAt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nextAction: freezed == nextAction
-          ? _value.nextAction
-          : nextAction // ignore: cast_nullable_to_non_nullable
-              as NextAction?,
-      shipping: freezed == shipping
-          ? _value.shipping
-          : shipping // ignore: cast_nullable_to_non_nullable
-              as ShippingDetails?,
-      mandateData: freezed == mandateData
-          ? _value.mandateData
-          : mandateData // ignore: cast_nullable_to_non_nullable
-              as MandateData?,
-      latestCharge: freezed == latestCharge
-          ? _value.latestCharge
+          ? _self.latestCharge
           : latestCharge // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
+  }
+
+  /// Create a copy of PaymentIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $NextActionCopyWith<$Res>? get nextAction {
+    if (_self.nextAction == null) {
+      return null;
+    }
+
+    return $NextActionCopyWith<$Res>(_self.nextAction!, (value) {
+      return _then(_self.copyWith(nextAction: value));
+    });
+  }
+
+  /// Create a copy of PaymentIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ShippingDetailsCopyWith<$Res>? get shipping {
+    if (_self.shipping == null) {
+      return null;
+    }
+
+    return $ShippingDetailsCopyWith<$Res>(_self.shipping!, (value) {
+      return _then(_self.copyWith(shipping: value));
+    });
+  }
+
+  /// Create a copy of PaymentIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_self.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_self.mandateData!, (value) {
+      return _then(_self.copyWith(mandateData: value));
+    });
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$PaymentIntentImpl implements _PaymentIntent {
-  const _$PaymentIntentImpl(
+class _PaymentIntent implements PaymentIntent {
+  const _PaymentIntent(
       {required this.id,
       required this.amount,
       required this.created,
@@ -410,9 +343,8 @@ class _$PaymentIntentImpl implements _PaymentIntent {
       this.shipping,
       this.mandateData,
       this.latestCharge});
-
-  factory _$PaymentIntentImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PaymentIntentImplFromJson(json);
+  factory _PaymentIntent.fromJson(Map<String, dynamic> json) =>
+      _$PaymentIntentFromJson(json);
 
   /// Unique identifier.
   @override
@@ -485,16 +417,26 @@ class _$PaymentIntentImpl implements _PaymentIntent {
   @override
   final String? latestCharge;
 
+  /// Create a copy of PaymentIntent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PaymentIntent(id: $id, amount: $amount, created: $created, currency: $currency, status: $status, clientSecret: $clientSecret, livemode: $livemode, captureMethod: $captureMethod, confirmationMethod: $confirmationMethod, paymentMethodId: $paymentMethodId, description: $description, receiptEmail: $receiptEmail, canceledAt: $canceledAt, nextAction: $nextAction, shipping: $shipping, mandateData: $mandateData, latestCharge: $latestCharge)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PaymentIntentCopyWith<_PaymentIntent> get copyWith =>
+      __$PaymentIntentCopyWithImpl<_PaymentIntent>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PaymentIntentToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PaymentIntentImpl &&
+            other is _PaymentIntent &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.created, created) || other.created == created) &&
@@ -527,7 +469,7 @@ class _$PaymentIntentImpl implements _PaymentIntent {
                 other.latestCharge == latestCharge));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -549,223 +491,251 @@ class _$PaymentIntentImpl implements _PaymentIntent {
       mandateData,
       latestCharge);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$PaymentIntentImplCopyWith<_$PaymentIntentImpl> get copyWith =>
-      __$$PaymentIntentImplCopyWithImpl<_$PaymentIntentImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PaymentIntentImplToJson(
-      this,
-    );
+  String toString() {
+    return 'PaymentIntent(id: $id, amount: $amount, created: $created, currency: $currency, status: $status, clientSecret: $clientSecret, livemode: $livemode, captureMethod: $captureMethod, confirmationMethod: $confirmationMethod, paymentMethodId: $paymentMethodId, description: $description, receiptEmail: $receiptEmail, canceledAt: $canceledAt, nextAction: $nextAction, shipping: $shipping, mandateData: $mandateData, latestCharge: $latestCharge)';
   }
 }
 
-abstract class _PaymentIntent implements PaymentIntent {
-  const factory _PaymentIntent(
-      {required final String id,
-      required final num amount,
-      required final String created,
-      required final String currency,
-      required final PaymentIntentsStatus status,
-      required final String clientSecret,
-      required final bool livemode,
-      required final CaptureMethod captureMethod,
-      required final ConfirmationMethod confirmationMethod,
-      final String? paymentMethodId,
-      final String? description,
-      final String? receiptEmail,
-      final String? canceledAt,
-      final NextAction? nextAction,
-      final ShippingDetails? shipping,
-      final MandateData? mandateData,
-      final String? latestCharge}) = _$PaymentIntentImpl;
-
-  factory _PaymentIntent.fromJson(Map<String, dynamic> json) =
-      _$PaymentIntentImpl.fromJson;
-
-  @override
-
-  /// Unique identifier.
-  String get id;
-  @override
-
-  /// Amount that will be collected in the payment intent.
-  num get amount;
-  @override
-
-  /// Timestamp since epoch that represents the time the intent is created.
-  String get created;
-  @override
-
-  /// The three letter ISO 4217 code for the currency.
-  String get currency;
-  @override
-
-  /// Current status of the intent.
-  PaymentIntentsStatus get status;
-  @override
-
-  /// The client is secret is used for handling the payment from the Client side.
-  String get clientSecret;
-  @override
-
-  /// Determines whether the intent is in live mode or in test mode.
-  bool get livemode;
-  @override
-
-  /// How the funds will be caputure from the customer's account.
-  CaptureMethod get captureMethod;
-  @override
-
-  /// Method of how the payment will be confirmed.
-  ConfirmationMethod get confirmationMethod;
-  @override
-
-  /// Id of the payment method used in this intent.
-  String? get paymentMethodId;
-  @override
-
-  /// Localized description that provides additional context to users.
-  String? get description;
-  @override
-
-  /// Email address where the receipt will be send to.
-  String? get receiptEmail;
-  @override
-
-  /// Timestamp since epoch when the intent is cancelled.
-  String? get canceledAt;
-  @override
-
-  /// Additional action that needs to be taken in order to complete a payment
-  /// using the provided resource.
-  NextAction? get nextAction;
-  @override
-
-  /// Shipping information of the payment intent.
-  ShippingDetails? get shipping;
-  @override
-
-  /// Mandata data for this paymentintent.
-  MandateData? get mandateData;
-  @override
-
-  /// The latest charge created by this payment intent.
-  ///
-  /// This field is only available on stripe web.
-  String? get latestCharge;
-  @override
-  @JsonKey(ignore: true)
-  _$$PaymentIntentImplCopyWith<_$PaymentIntentImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-ShippingDetails _$ShippingDetailsFromJson(Map<String, dynamic> json) {
-  return _ShippingDetails.fromJson(json);
-}
-
 /// @nodoc
-mixin _$ShippingDetails {
-  /// Recipient address.
-  Address get address => throw _privateConstructorUsedError;
-
-  /// Recipient name.
-  String? get name => throw _privateConstructorUsedError;
-
-  /// Deliver service that will ship the product
-  String? get carrier => throw _privateConstructorUsedError;
-
-  /// Recipient phone number.
-  String? get phone => throw _privateConstructorUsedError;
-
-  /// Tracking number of the shipment. If multiple tracking numbers separate them
-  /// with commas.
-  String? get trackingNumber => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ShippingDetailsCopyWith<ShippingDetails> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ShippingDetailsCopyWith<$Res> {
-  factory $ShippingDetailsCopyWith(
-          ShippingDetails value, $Res Function(ShippingDetails) then) =
-      _$ShippingDetailsCopyWithImpl<$Res, ShippingDetails>;
+abstract mixin class _$PaymentIntentCopyWith<$Res>
+    implements $PaymentIntentCopyWith<$Res> {
+  factory _$PaymentIntentCopyWith(
+          _PaymentIntent value, $Res Function(_PaymentIntent) _then) =
+      __$PaymentIntentCopyWithImpl;
+  @override
   @useResult
   $Res call(
-      {Address address,
-      String? name,
-      String? carrier,
-      String? phone,
-      String? trackingNumber});
+      {String id,
+      num amount,
+      String created,
+      String currency,
+      PaymentIntentsStatus status,
+      String clientSecret,
+      bool livemode,
+      CaptureMethod captureMethod,
+      ConfirmationMethod confirmationMethod,
+      String? paymentMethodId,
+      String? description,
+      String? receiptEmail,
+      String? canceledAt,
+      NextAction? nextAction,
+      ShippingDetails? shipping,
+      MandateData? mandateData,
+      String? latestCharge});
 
-  $AddressCopyWith<$Res> get address;
+  @override
+  $NextActionCopyWith<$Res>? get nextAction;
+  @override
+  $ShippingDetailsCopyWith<$Res>? get shipping;
+  @override
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
 /// @nodoc
-class _$ShippingDetailsCopyWithImpl<$Res, $Val extends ShippingDetails>
-    implements $ShippingDetailsCopyWith<$Res> {
-  _$ShippingDetailsCopyWithImpl(this._value, this._then);
+class __$PaymentIntentCopyWithImpl<$Res>
+    implements _$PaymentIntentCopyWith<$Res> {
+  __$PaymentIntentCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final _PaymentIntent _self;
+  final $Res Function(_PaymentIntent) _then;
 
-  @pragma('vm:prefer-inline')
+  /// Create a copy of PaymentIntent
+  /// with the given fields replaced by the non-null parameter values.
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
-    Object? address = null,
-    Object? name = freezed,
-    Object? carrier = freezed,
-    Object? phone = freezed,
-    Object? trackingNumber = freezed,
+    Object? id = null,
+    Object? amount = null,
+    Object? created = null,
+    Object? currency = null,
+    Object? status = null,
+    Object? clientSecret = null,
+    Object? livemode = null,
+    Object? captureMethod = null,
+    Object? confirmationMethod = null,
+    Object? paymentMethodId = freezed,
+    Object? description = freezed,
+    Object? receiptEmail = freezed,
+    Object? canceledAt = freezed,
+    Object? nextAction = freezed,
+    Object? shipping = freezed,
+    Object? mandateData = freezed,
+    Object? latestCharge = freezed,
   }) {
-    return _then(_value.copyWith(
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as Address,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+    return _then(_PaymentIntent(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      amount: null == amount
+          ? _self.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as num,
+      created: null == created
+          ? _self.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as String,
+      currency: null == currency
+          ? _self.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as PaymentIntentsStatus,
+      clientSecret: null == clientSecret
+          ? _self.clientSecret
+          : clientSecret // ignore: cast_nullable_to_non_nullable
+              as String,
+      livemode: null == livemode
+          ? _self.livemode
+          : livemode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      captureMethod: null == captureMethod
+          ? _self.captureMethod
+          : captureMethod // ignore: cast_nullable_to_non_nullable
+              as CaptureMethod,
+      confirmationMethod: null == confirmationMethod
+          ? _self.confirmationMethod
+          : confirmationMethod // ignore: cast_nullable_to_non_nullable
+              as ConfirmationMethod,
+      paymentMethodId: freezed == paymentMethodId
+          ? _self.paymentMethodId
+          : paymentMethodId // ignore: cast_nullable_to_non_nullable
               as String?,
-      carrier: freezed == carrier
-          ? _value.carrier
-          : carrier // ignore: cast_nullable_to_non_nullable
+      description: freezed == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      phone: freezed == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
+      receiptEmail: freezed == receiptEmail
+          ? _self.receiptEmail
+          : receiptEmail // ignore: cast_nullable_to_non_nullable
               as String?,
-      trackingNumber: freezed == trackingNumber
-          ? _value.trackingNumber
-          : trackingNumber // ignore: cast_nullable_to_non_nullable
+      canceledAt: freezed == canceledAt
+          ? _self.canceledAt
+          : canceledAt // ignore: cast_nullable_to_non_nullable
               as String?,
-    ) as $Val);
+      nextAction: freezed == nextAction
+          ? _self.nextAction
+          : nextAction // ignore: cast_nullable_to_non_nullable
+              as NextAction?,
+      shipping: freezed == shipping
+          ? _self.shipping
+          : shipping // ignore: cast_nullable_to_non_nullable
+              as ShippingDetails?,
+      mandateData: freezed == mandateData
+          ? _self.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
+      latestCharge: freezed == latestCharge
+          ? _self.latestCharge
+          : latestCharge // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 
+  /// Create a copy of PaymentIntent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $AddressCopyWith<$Res> get address {
-    return $AddressCopyWith<$Res>(_value.address, (value) {
-      return _then(_value.copyWith(address: value) as $Val);
+  $NextActionCopyWith<$Res>? get nextAction {
+    if (_self.nextAction == null) {
+      return null;
+    }
+
+    return $NextActionCopyWith<$Res>(_self.nextAction!, (value) {
+      return _then(_self.copyWith(nextAction: value));
+    });
+  }
+
+  /// Create a copy of PaymentIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ShippingDetailsCopyWith<$Res>? get shipping {
+    if (_self.shipping == null) {
+      return null;
+    }
+
+    return $ShippingDetailsCopyWith<$Res>(_self.shipping!, (value) {
+      return _then(_self.copyWith(shipping: value));
+    });
+  }
+
+  /// Create a copy of PaymentIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_self.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_self.mandateData!, (value) {
+      return _then(_self.copyWith(mandateData: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$ShippingDetailsImplCopyWith<$Res>
-    implements $ShippingDetailsCopyWith<$Res> {
-  factory _$$ShippingDetailsImplCopyWith(_$ShippingDetailsImpl value,
-          $Res Function(_$ShippingDetailsImpl) then) =
-      __$$ShippingDetailsImplCopyWithImpl<$Res>;
+mixin _$ShippingDetails {
+  /// Recipient address.
+  Address get address;
+
+  /// Recipient name.
+  String? get name;
+
+  /// Deliver service that will ship the product
+  String? get carrier;
+
+  /// Recipient phone number.
+  String? get phone;
+
+  /// Tracking number of the shipment. If multiple tracking numbers separate them
+  /// with commas.
+  String? get trackingNumber;
+
+  /// Create a copy of ShippingDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $ShippingDetailsCopyWith<ShippingDetails> get copyWith =>
+      _$ShippingDetailsCopyWithImpl<ShippingDetails>(
+          this as ShippingDetails, _$identity);
+
+  /// Serializes this ShippingDetails to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ShippingDetails &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.carrier, carrier) || other.carrier == carrier) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.trackingNumber, trackingNumber) ||
+                other.trackingNumber == trackingNumber));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, address, name, carrier, phone, trackingNumber);
+
+  @override
+  String toString() {
+    return 'ShippingDetails(address: $address, name: $name, carrier: $carrier, phone: $phone, trackingNumber: $trackingNumber)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $ShippingDetailsCopyWith<$Res> {
+  factory $ShippingDetailsCopyWith(
+          ShippingDetails value, $Res Function(ShippingDetails) _then) =
+      _$ShippingDetailsCopyWithImpl;
   @useResult
   $Res call(
       {Address address,
@@ -774,18 +744,19 @@ abstract class _$$ShippingDetailsImplCopyWith<$Res>
       String? phone,
       String? trackingNumber});
 
-  @override
   $AddressCopyWith<$Res> get address;
 }
 
 /// @nodoc
-class __$$ShippingDetailsImplCopyWithImpl<$Res>
-    extends _$ShippingDetailsCopyWithImpl<$Res, _$ShippingDetailsImpl>
-    implements _$$ShippingDetailsImplCopyWith<$Res> {
-  __$$ShippingDetailsImplCopyWithImpl(
-      _$ShippingDetailsImpl _value, $Res Function(_$ShippingDetailsImpl) _then)
-      : super(_value, _then);
+class _$ShippingDetailsCopyWithImpl<$Res>
+    implements $ShippingDetailsCopyWith<$Res> {
+  _$ShippingDetailsCopyWithImpl(this._self, this._then);
 
+  final ShippingDetails _self;
+  final $Res Function(ShippingDetails) _then;
+
+  /// Create a copy of ShippingDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -795,44 +766,53 @@ class __$$ShippingDetailsImplCopyWithImpl<$Res>
     Object? phone = freezed,
     Object? trackingNumber = freezed,
   }) {
-    return _then(_$ShippingDetailsImpl(
+    return _then(_self.copyWith(
       address: null == address
-          ? _value.address
+          ? _self.address
           : address // ignore: cast_nullable_to_non_nullable
               as Address,
       name: freezed == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
       carrier: freezed == carrier
-          ? _value.carrier
+          ? _self.carrier
           : carrier // ignore: cast_nullable_to_non_nullable
               as String?,
       phone: freezed == phone
-          ? _value.phone
+          ? _self.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
       trackingNumber: freezed == trackingNumber
-          ? _value.trackingNumber
+          ? _self.trackingNumber
           : trackingNumber // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
+  }
+
+  /// Create a copy of ShippingDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AddressCopyWith<$Res> get address {
+    return $AddressCopyWith<$Res>(_self.address, (value) {
+      return _then(_self.copyWith(address: value));
+    });
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$ShippingDetailsImpl implements _ShippingDetails {
-  const _$ShippingDetailsImpl(
+class _ShippingDetails implements ShippingDetails {
+  const _ShippingDetails(
       {required this.address,
       this.name,
       this.carrier,
       this.phone,
       this.trackingNumber});
-
-  factory _$ShippingDetailsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ShippingDetailsImplFromJson(json);
+  factory _ShippingDetails.fromJson(Map<String, dynamic> json) =>
+      _$ShippingDetailsFromJson(json);
 
   /// Recipient address.
   @override
@@ -855,16 +835,26 @@ class _$ShippingDetailsImpl implements _ShippingDetails {
   @override
   final String? trackingNumber;
 
+  /// Create a copy of ShippingDetails
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'ShippingDetails(address: $address, name: $name, carrier: $carrier, phone: $phone, trackingNumber: $trackingNumber)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ShippingDetailsCopyWith<_ShippingDetails> get copyWith =>
+      __$ShippingDetailsCopyWithImpl<_ShippingDetails>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ShippingDetailsToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ShippingDetailsImpl &&
+            other is _ShippingDetails &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.carrier, carrier) || other.carrier == carrier) &&
@@ -873,60 +863,88 @@ class _$ShippingDetailsImpl implements _ShippingDetails {
                 other.trackingNumber == trackingNumber));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, address, name, carrier, phone, trackingNumber);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ShippingDetailsImplCopyWith<_$ShippingDetailsImpl> get copyWith =>
-      __$$ShippingDetailsImplCopyWithImpl<_$ShippingDetailsImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ShippingDetailsImplToJson(
-      this,
-    );
+  String toString() {
+    return 'ShippingDetails(address: $address, name: $name, carrier: $carrier, phone: $phone, trackingNumber: $trackingNumber)';
   }
 }
 
-abstract class _ShippingDetails implements ShippingDetails {
-  const factory _ShippingDetails(
-      {required final Address address,
-      final String? name,
-      final String? carrier,
-      final String? phone,
-      final String? trackingNumber}) = _$ShippingDetailsImpl;
-
-  factory _ShippingDetails.fromJson(Map<String, dynamic> json) =
-      _$ShippingDetailsImpl.fromJson;
+/// @nodoc
+abstract mixin class _$ShippingDetailsCopyWith<$Res>
+    implements $ShippingDetailsCopyWith<$Res> {
+  factory _$ShippingDetailsCopyWith(
+          _ShippingDetails value, $Res Function(_ShippingDetails) _then) =
+      __$ShippingDetailsCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {Address address,
+      String? name,
+      String? carrier,
+      String? phone,
+      String? trackingNumber});
 
   @override
-
-  /// Recipient address.
-  Address get address;
-  @override
-
-  /// Recipient name.
-  String? get name;
-  @override
-
-  /// Deliver service that will ship the product
-  String? get carrier;
-  @override
-
-  /// Recipient phone number.
-  String? get phone;
-  @override
-
-  /// Tracking number of the shipment. If multiple tracking numbers separate them
-  /// with commas.
-  String? get trackingNumber;
-  @override
-  @JsonKey(ignore: true)
-  _$$ShippingDetailsImplCopyWith<_$ShippingDetailsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  $AddressCopyWith<$Res> get address;
 }
+
+/// @nodoc
+class __$ShippingDetailsCopyWithImpl<$Res>
+    implements _$ShippingDetailsCopyWith<$Res> {
+  __$ShippingDetailsCopyWithImpl(this._self, this._then);
+
+  final _ShippingDetails _self;
+  final $Res Function(_ShippingDetails) _then;
+
+  /// Create a copy of ShippingDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? address = null,
+    Object? name = freezed,
+    Object? carrier = freezed,
+    Object? phone = freezed,
+    Object? trackingNumber = freezed,
+  }) {
+    return _then(_ShippingDetails(
+      address: null == address
+          ? _self.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as Address,
+      name: freezed == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      carrier: freezed == carrier
+          ? _self.carrier
+          : carrier // ignore: cast_nullable_to_non_nullable
+              as String?,
+      phone: freezed == phone
+          ? _self.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String?,
+      trackingNumber: freezed == trackingNumber
+          ? _self.trackingNumber
+          : trackingNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+
+  /// Create a copy of ShippingDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AddressCopyWith<$Res> get address {
+    return $AddressCopyWith<$Res>(_self.address, (value) {
+      return _then(_self.copyWith(address: value));
+    });
+  }
+}
+
+// dart format on

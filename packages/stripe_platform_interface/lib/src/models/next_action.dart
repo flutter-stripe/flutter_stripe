@@ -10,7 +10,7 @@ part 'next_action.g.dart';
 ///
 /// See: https://stripe.com/docs/api/payment_intents/object#payment_intent_object-next_action-type
 /// for more details.
-class NextAction with _$NextAction {
+sealed class NextAction with _$NextAction {
   /// Contains instructions for redirecting the customer to a certain url
   /// in order to authorise the payment.
   @JsonSerializable(explicitToJson: true)

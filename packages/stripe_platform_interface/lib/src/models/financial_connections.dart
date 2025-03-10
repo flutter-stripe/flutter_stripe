@@ -7,7 +7,8 @@ part 'financial_connections.freezed.dart';
 part 'financial_connections.g.dart';
 
 @freezed
-class FinancialConnectionSessionResult with _$FinancialConnectionSessionResult {
+abstract class FinancialConnectionSessionResult
+    with _$FinancialConnectionSessionResult {
   @JsonSerializable(explicitToJson: true)
   const factory FinancialConnectionSessionResult({
     required FinancialConnectionSession session,
@@ -19,7 +20,8 @@ class FinancialConnectionSessionResult with _$FinancialConnectionSessionResult {
 }
 
 @freezed
-class FinancialConnectionTokenResult with _$FinancialConnectionTokenResult {
+abstract class FinancialConnectionTokenResult
+    with _$FinancialConnectionTokenResult {
   @JsonSerializable(explicitToJson: true)
   const factory FinancialConnectionTokenResult({
     required FinancialConnectionSession session,
@@ -33,7 +35,7 @@ class FinancialConnectionTokenResult with _$FinancialConnectionTokenResult {
 @freezed
 
 /// Data related to the session retrieved from the financial connection.
-class FinancialConnectionSession with _$FinancialConnectionSession {
+abstract class FinancialConnectionSession with _$FinancialConnectionSession {
   @JsonSerializable(explicitToJson: true)
   const factory FinancialConnectionSession({
     /// Unique id for this session
@@ -56,7 +58,7 @@ class FinancialConnectionSession with _$FinancialConnectionSession {
 @freezed
 
 /// Data related to the session retrieved from the financial connection.
-class FinancialConnectionBankAccountToken
+abstract class FinancialConnectionBankAccountToken
     with _$FinancialConnectionBankAccountToken {
   @JsonSerializable(explicitToJson: true)
   const factory FinancialConnectionBankAccountToken({
@@ -83,7 +85,7 @@ class FinancialConnectionBankAccountToken
 
 /// Data linked to an account
 @freezed
-class FinancialConnectionAccount with _$FinancialConnectionAccount {
+abstract class FinancialConnectionAccount with _$FinancialConnectionAccount {
   @JsonSerializable(explicitToJson: true)
   const factory FinancialConnectionAccount({
     /// Unique id for this Financial connection account.
@@ -132,7 +134,7 @@ class FinancialConnectionAccount with _$FinancialConnectionAccount {
 }
 
 @freezed
-class BalanceRefresh with _$BalanceRefresh {
+abstract class BalanceRefresh with _$BalanceRefresh {
   @JsonSerializable(explicitToJson: true)
   const factory BalanceRefresh({
     /// Status of the balance refresh attempt
@@ -148,7 +150,7 @@ class BalanceRefresh with _$BalanceRefresh {
 
 /// information related to the bank account
 @freezed
-class AccountBalance with _$AccountBalance {
+abstract class AccountBalance with _$AccountBalance {
   @JsonSerializable(explicitToJson: true)
   const factory AccountBalance({
     /// Unix timestamp in milliseconds of time the external instition calculated this balance.
@@ -215,7 +217,7 @@ enum FinancialConnectSheetError { Failed, Canceled }
 
 /// Parameters associated with the `collectFinancialConnectionsAccounts` method.
 @freezed
-class CollectFinancialConnectionsAccountsParams
+abstract class CollectFinancialConnectionsAccountsParams
     with _$CollectFinancialConnectionsAccountsParams {
   @JsonSerializable(explicitToJson: true)
   const factory CollectFinancialConnectionsAccountsParams({
@@ -250,7 +252,7 @@ enum UserInterfaceStyle {
 
 /// The event that occurred during the Financial Connections process.
 @freezed
-class FinancialConnectionsEvent with _$FinancialConnectionsEvent {
+abstract class FinancialConnectionsEvent with _$FinancialConnectionsEvent {
   @JsonSerializable(explicitToJson: true)
   const factory FinancialConnectionsEvent({
     /// The event's name. Represents the type of event that has occurred during the Financial Connections process.
@@ -266,7 +268,7 @@ class FinancialConnectionsEvent with _$FinancialConnectionsEvent {
 
 /// The metadata of the financial connections event
 @freezed
-class FinancialConnectionsEventMetadata
+abstract class FinancialConnectionsEventMetadata
     with _$FinancialConnectionsEventMetadata {
   @JsonSerializable(explicitToJson: true)
   const factory FinancialConnectionsEventMetadata({

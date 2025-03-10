@@ -48,7 +48,7 @@ enum ApplePayShippingType {
 @freezed
 
 /// Shipping method details regarding apple pay
-class ApplePayShippingMethod with _$ApplePayShippingMethod {
+abstract class ApplePayShippingMethod with _$ApplePayShippingMethod {
   @JsonSerializable(explicitToJson: true)
   const factory ApplePayShippingMethod({
     ///  A short, localized description.
@@ -88,7 +88,7 @@ class ApplePayShippingMethod with _$ApplePayShippingMethod {
 @Freezed(unionKey: 'paymentType')
 
 /// Object that can be used to explain the different charges on the Apple Pay sheet.
-class ApplePayCartSummaryItem with _$ApplePayCartSummaryItem {
+sealed class ApplePayCartSummaryItem with _$ApplePayCartSummaryItem {
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Immediate')
 
@@ -156,7 +156,7 @@ enum ApplePayMerchantCapability {
 }
 
 @freezed
-class ApplePayPresentParams with _$ApplePayPresentParams {
+abstract class ApplePayPresentParams with _$ApplePayPresentParams {
   @JsonSerializable(explicitToJson: true)
   const factory ApplePayPresentParams({
     /// Line Items of the payment request.
@@ -188,7 +188,7 @@ class ApplePayPresentParams with _$ApplePayPresentParams {
 }
 
 @freezed
-class ApplePayErrorAddressField with _$ApplePayErrorAddressField {
+abstract class ApplePayErrorAddressField with _$ApplePayErrorAddressField {
   @JsonSerializable(explicitToJson: true)
   const factory ApplePayErrorAddressField({
     /// Address field that is affected by the error
@@ -207,7 +207,7 @@ class ApplePayErrorAddressField with _$ApplePayErrorAddressField {
 @freezed
 
 /// Contact name data for Apple pay
-class ApplePayContactName with _$ApplePayContactName {
+abstract class ApplePayContactName with _$ApplePayContactName {
   @JsonSerializable(explicitToJson: true)
   const factory ApplePayContactName({
     String? familyName,
@@ -225,7 +225,7 @@ class ApplePayContactName with _$ApplePayContactName {
 @freezed
 
 /// Postal address data for Apple pay
-class ApplePayPostalAddress with _$ApplePayPostalAddress {
+abstract class ApplePayPostalAddress with _$ApplePayPostalAddress {
   @JsonSerializable(explicitToJson: true)
   const factory ApplePayPostalAddress({
     String? city,

@@ -6,9 +6,9 @@ part of 'customer_sheet.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CustomerSheetInitParamsImpl _$$CustomerSheetInitParamsImplFromJson(
+_CustomerSheetInitParams _$CustomerSheetInitParamsFromJson(
         Map<String, dynamic> json) =>
-    _$CustomerSheetInitParamsImpl(
+    _CustomerSheetInitParams(
       style: $enumDecodeNullable(_$ThemeModeEnumMap, json['style']),
       appearance: json['appearance'] == null
           ? null
@@ -42,8 +42,8 @@ _$CustomerSheetInitParamsImpl _$$CustomerSheetInitParamsImplFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$CustomerSheetInitParamsImplToJson(
-        _$CustomerSheetInitParamsImpl instance) =>
+Map<String, dynamic> _$CustomerSheetInitParamsToJson(
+        _CustomerSheetInitParams instance) =>
     <String, dynamic>{
       'style': UserInterfaceStyleKey.toJson(instance.style),
       'appearance': instance.appearance?.toJson(),
@@ -83,9 +83,9 @@ const _$CardBrandEnumMap = {
   CardBrand.Unknown: 'Unknown',
 };
 
-_$CustomerSheetPresentParamsImpl _$$CustomerSheetPresentParamsImplFromJson(
+_CustomerSheetPresentParams _$CustomerSheetPresentParamsFromJson(
         Map<String, dynamic> json) =>
-    _$CustomerSheetPresentParamsImpl(
+    _CustomerSheetPresentParams(
       presentationStyle: $enumDecodeNullable(
           _$CustomerSheetPresentationStyleEnumMap, json['presentationStyle']),
       animationStyle: $enumDecodeNullable(
@@ -93,8 +93,8 @@ _$CustomerSheetPresentParamsImpl _$$CustomerSheetPresentParamsImplFromJson(
       timeout: (json['timeout'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$CustomerSheetPresentParamsImplToJson(
-        _$CustomerSheetPresentParamsImpl instance) =>
+Map<String, dynamic> _$CustomerSheetPresentParamsToJson(
+        _CustomerSheetPresentParams instance) =>
     <String, dynamic>{
       'presentationStyle':
           _$CustomerSheetPresentationStyleEnumMap[instance.presentationStyle],
@@ -119,9 +119,8 @@ const _$CustomerSheetAnimationStyleEnumMap = {
   CustomerSheetAnimationStyle.dissolve: 'dissolve',
 };
 
-_$CustomerSheetResultImpl _$$CustomerSheetResultImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CustomerSheetResultImpl(
+_CustomerSheetResult _$CustomerSheetResultFromJson(Map<String, dynamic> json) =>
+    _CustomerSheetResult(
       paymentOption: json['paymentOption'] == null
           ? null
           : PaymentSheetPaymentOption.fromJson(
@@ -136,8 +135,8 @@ _$CustomerSheetResultImpl _$$CustomerSheetResultImplFromJson(
               json['error'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$CustomerSheetResultImplToJson(
-        _$CustomerSheetResultImpl instance) =>
+Map<String, dynamic> _$CustomerSheetResultToJson(
+        _CustomerSheetResult instance) =>
     <String, dynamic>{
       'paymentOption': instance.paymentOption?.toJson(),
       'paymentMethod': instance.paymentMethod?.toJson(),

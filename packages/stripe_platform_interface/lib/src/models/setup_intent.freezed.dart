@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,68 +10,115 @@ part of 'setup_intent.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-SetupIntent _$SetupIntentFromJson(Map<String, dynamic> json) {
-  return _SetupIntent.fromJson(json);
-}
 
 /// @nodoc
 mixin _$SetupIntent {
   /// Unique identifier.
-  String get id => throw _privateConstructorUsedError;
+  String get id;
 
   /// Status of the intent.
   ///
   /// See https://stripe.com/docs/payments/intents#intent-statuses.
-  String get status => throw _privateConstructorUsedError;
+  String get status;
 
   /// Determines whether the intent is in live mode or in test mode.
-  bool get livemode => throw _privateConstructorUsedError;
+  bool get livemode;
 
   /// The client is secret is used for handling the payment from the Client side.
-  String get clientSecret => throw _privateConstructorUsedError;
+  String get clientSecret;
 
   /// Id of the payment method used in this intent.
-  String get paymentMethodId => throw _privateConstructorUsedError;
+  String get paymentMethodId;
 
   /// Indicates how the intent is used in the future.
-  String get usage => throw _privateConstructorUsedError;
+  String get usage;
 
   /// List of payment method types associated with this intent.
-  List<PaymentMethodType> get paymentMethodTypes =>
-      throw _privateConstructorUsedError;
+  List<PaymentMethodType> get paymentMethodTypes;
 
   /// Localized description that provides additional context to users.
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
 
   /// Timestamp since epoch that represents the time the intent is created.
-  String? get created => throw _privateConstructorUsedError;
+  String? get created;
 
   /// Error encountered since last configmration.
-  LastSetupError? get lastSetupError => throw _privateConstructorUsedError;
+  LastSetupError? get lastSetupError;
 
   /// Additional action that needs to be taken in order to complete a payment
   /// using the provided resource.
-  NextAction? get nextAction => throw _privateConstructorUsedError;
+  NextAction? get nextAction;
 
   /// Mandata data for this paymentintent.
-  MandateData? get mandateData => throw _privateConstructorUsedError;
+  MandateData? get mandateData;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $SetupIntentCopyWith<SetupIntent> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$SetupIntentCopyWithImpl<SetupIntent>(this as SetupIntent, _$identity);
+
+  /// Serializes this SetupIntent to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SetupIntent &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.livemode, livemode) ||
+                other.livemode == livemode) &&
+            (identical(other.clientSecret, clientSecret) ||
+                other.clientSecret == clientSecret) &&
+            (identical(other.paymentMethodId, paymentMethodId) ||
+                other.paymentMethodId == paymentMethodId) &&
+            (identical(other.usage, usage) || other.usage == usage) &&
+            const DeepCollectionEquality()
+                .equals(other.paymentMethodTypes, paymentMethodTypes) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.created, created) || other.created == created) &&
+            (identical(other.lastSetupError, lastSetupError) ||
+                other.lastSetupError == lastSetupError) &&
+            (identical(other.nextAction, nextAction) ||
+                other.nextAction == nextAction) &&
+            (identical(other.mandateData, mandateData) ||
+                other.mandateData == mandateData));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      status,
+      livemode,
+      clientSecret,
+      paymentMethodId,
+      usage,
+      const DeepCollectionEquality().hash(paymentMethodTypes),
+      description,
+      created,
+      lastSetupError,
+      nextAction,
+      mandateData);
+
+  @override
+  String toString() {
+    return 'SetupIntent(id: $id, status: $status, livemode: $livemode, clientSecret: $clientSecret, paymentMethodId: $paymentMethodId, usage: $usage, paymentMethodTypes: $paymentMethodTypes, description: $description, created: $created, lastSetupError: $lastSetupError, nextAction: $nextAction, mandateData: $mandateData)';
+  }
 }
 
 /// @nodoc
-abstract class $SetupIntentCopyWith<$Res> {
+abstract mixin class $SetupIntentCopyWith<$Res> {
   factory $SetupIntentCopyWith(
-          SetupIntent value, $Res Function(SetupIntent) then) =
-      _$SetupIntentCopyWithImpl<$Res, SetupIntent>;
+          SetupIntent value, $Res Function(SetupIntent) _then) =
+      _$SetupIntentCopyWithImpl;
   @useResult
   $Res call(
       {String id,
@@ -92,15 +140,14 @@ abstract class $SetupIntentCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SetupIntentCopyWithImpl<$Res, $Val extends SetupIntent>
-    implements $SetupIntentCopyWith<$Res> {
-  _$SetupIntentCopyWithImpl(this._value, this._then);
+class _$SetupIntentCopyWithImpl<$Res> implements $SetupIntentCopyWith<$Res> {
+  _$SetupIntentCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final SetupIntent _self;
+  final $Res Function(SetupIntent) _then;
 
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -117,207 +164,106 @@ class _$SetupIntentCopyWithImpl<$Res, $Val extends SetupIntent>
     Object? nextAction = freezed,
     Object? mandateData = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       id: null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
       status: null == status
-          ? _value.status
+          ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
       livemode: null == livemode
-          ? _value.livemode
+          ? _self.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
       clientSecret: null == clientSecret
-          ? _value.clientSecret
+          ? _self.clientSecret
           : clientSecret // ignore: cast_nullable_to_non_nullable
               as String,
       paymentMethodId: null == paymentMethodId
-          ? _value.paymentMethodId
+          ? _self.paymentMethodId
           : paymentMethodId // ignore: cast_nullable_to_non_nullable
               as String,
       usage: null == usage
-          ? _value.usage
+          ? _self.usage
           : usage // ignore: cast_nullable_to_non_nullable
               as String,
       paymentMethodTypes: null == paymentMethodTypes
-          ? _value.paymentMethodTypes
+          ? _self.paymentMethodTypes
           : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
               as List<PaymentMethodType>,
       description: freezed == description
-          ? _value.description
+          ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
       created: freezed == created
-          ? _value.created
+          ? _self.created
           : created // ignore: cast_nullable_to_non_nullable
               as String?,
       lastSetupError: freezed == lastSetupError
-          ? _value.lastSetupError
+          ? _self.lastSetupError
           : lastSetupError // ignore: cast_nullable_to_non_nullable
               as LastSetupError?,
       nextAction: freezed == nextAction
-          ? _value.nextAction
+          ? _self.nextAction
           : nextAction // ignore: cast_nullable_to_non_nullable
               as NextAction?,
       mandateData: freezed == mandateData
-          ? _value.mandateData
-          : mandateData // ignore: cast_nullable_to_non_nullable
-              as MandateData?,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $LastSetupErrorCopyWith<$Res>? get lastSetupError {
-    if (_value.lastSetupError == null) {
-      return null;
-    }
-
-    return $LastSetupErrorCopyWith<$Res>(_value.lastSetupError!, (value) {
-      return _then(_value.copyWith(lastSetupError: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $NextActionCopyWith<$Res>? get nextAction {
-    if (_value.nextAction == null) {
-      return null;
-    }
-
-    return $NextActionCopyWith<$Res>(_value.nextAction!, (value) {
-      return _then(_value.copyWith(nextAction: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $MandateDataCopyWith<$Res>? get mandateData {
-    if (_value.mandateData == null) {
-      return null;
-    }
-
-    return $MandateDataCopyWith<$Res>(_value.mandateData!, (value) {
-      return _then(_value.copyWith(mandateData: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$SetupIntentImplCopyWith<$Res>
-    implements $SetupIntentCopyWith<$Res> {
-  factory _$$SetupIntentImplCopyWith(
-          _$SetupIntentImpl value, $Res Function(_$SetupIntentImpl) then) =
-      __$$SetupIntentImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String id,
-      String status,
-      bool livemode,
-      String clientSecret,
-      String paymentMethodId,
-      String usage,
-      List<PaymentMethodType> paymentMethodTypes,
-      String? description,
-      String? created,
-      LastSetupError? lastSetupError,
-      NextAction? nextAction,
-      MandateData? mandateData});
-
-  @override
-  $LastSetupErrorCopyWith<$Res>? get lastSetupError;
-  @override
-  $NextActionCopyWith<$Res>? get nextAction;
-  @override
-  $MandateDataCopyWith<$Res>? get mandateData;
-}
-
-/// @nodoc
-class __$$SetupIntentImplCopyWithImpl<$Res>
-    extends _$SetupIntentCopyWithImpl<$Res, _$SetupIntentImpl>
-    implements _$$SetupIntentImplCopyWith<$Res> {
-  __$$SetupIntentImplCopyWithImpl(
-      _$SetupIntentImpl _value, $Res Function(_$SetupIntentImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? status = null,
-    Object? livemode = null,
-    Object? clientSecret = null,
-    Object? paymentMethodId = null,
-    Object? usage = null,
-    Object? paymentMethodTypes = null,
-    Object? description = freezed,
-    Object? created = freezed,
-    Object? lastSetupError = freezed,
-    Object? nextAction = freezed,
-    Object? mandateData = freezed,
-  }) {
-    return _then(_$SetupIntentImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      livemode: null == livemode
-          ? _value.livemode
-          : livemode // ignore: cast_nullable_to_non_nullable
-              as bool,
-      clientSecret: null == clientSecret
-          ? _value.clientSecret
-          : clientSecret // ignore: cast_nullable_to_non_nullable
-              as String,
-      paymentMethodId: null == paymentMethodId
-          ? _value.paymentMethodId
-          : paymentMethodId // ignore: cast_nullable_to_non_nullable
-              as String,
-      usage: null == usage
-          ? _value.usage
-          : usage // ignore: cast_nullable_to_non_nullable
-              as String,
-      paymentMethodTypes: null == paymentMethodTypes
-          ? _value._paymentMethodTypes
-          : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
-              as List<PaymentMethodType>,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      created: freezed == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastSetupError: freezed == lastSetupError
-          ? _value.lastSetupError
-          : lastSetupError // ignore: cast_nullable_to_non_nullable
-              as LastSetupError?,
-      nextAction: freezed == nextAction
-          ? _value.nextAction
-          : nextAction // ignore: cast_nullable_to_non_nullable
-              as NextAction?,
-      mandateData: freezed == mandateData
-          ? _value.mandateData
+          ? _self.mandateData
           : mandateData // ignore: cast_nullable_to_non_nullable
               as MandateData?,
     ));
+  }
+
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $LastSetupErrorCopyWith<$Res>? get lastSetupError {
+    if (_self.lastSetupError == null) {
+      return null;
+    }
+
+    return $LastSetupErrorCopyWith<$Res>(_self.lastSetupError!, (value) {
+      return _then(_self.copyWith(lastSetupError: value));
+    });
+  }
+
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $NextActionCopyWith<$Res>? get nextAction {
+    if (_self.nextAction == null) {
+      return null;
+    }
+
+    return $NextActionCopyWith<$Res>(_self.nextAction!, (value) {
+      return _then(_self.copyWith(nextAction: value));
+    });
+  }
+
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_self.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_self.mandateData!, (value) {
+      return _then(_self.copyWith(mandateData: value));
+    });
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$SetupIntentImpl implements _SetupIntent {
-  const _$SetupIntentImpl(
+class _SetupIntent implements SetupIntent {
+  const _SetupIntent(
       {required this.id,
       required this.status,
       required this.livemode,
@@ -331,9 +277,8 @@ class _$SetupIntentImpl implements _SetupIntent {
       this.nextAction,
       this.mandateData})
       : _paymentMethodTypes = paymentMethodTypes;
-
-  factory _$SetupIntentImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SetupIntentImplFromJson(json);
+  factory _SetupIntent.fromJson(Map<String, dynamic> json) =>
+      _$SetupIntentFromJson(json);
 
   /// Unique identifier.
   @override
@@ -394,16 +339,26 @@ class _$SetupIntentImpl implements _SetupIntent {
   @override
   final MandateData? mandateData;
 
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'SetupIntent(id: $id, status: $status, livemode: $livemode, clientSecret: $clientSecret, paymentMethodId: $paymentMethodId, usage: $usage, paymentMethodTypes: $paymentMethodTypes, description: $description, created: $created, lastSetupError: $lastSetupError, nextAction: $nextAction, mandateData: $mandateData)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SetupIntentCopyWith<_SetupIntent> get copyWith =>
+      __$SetupIntentCopyWithImpl<_SetupIntent>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$SetupIntentToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SetupIntentImpl &&
+            other is _SetupIntent &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.livemode, livemode) ||
@@ -426,7 +381,7 @@ class _$SetupIntentImpl implements _SetupIntent {
                 other.mandateData == mandateData));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -443,183 +398,232 @@ class _$SetupIntentImpl implements _SetupIntent {
       nextAction,
       mandateData);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SetupIntentImplCopyWith<_$SetupIntentImpl> get copyWith =>
-      __$$SetupIntentImplCopyWithImpl<_$SetupIntentImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SetupIntentImplToJson(
-      this,
-    );
+  String toString() {
+    return 'SetupIntent(id: $id, status: $status, livemode: $livemode, clientSecret: $clientSecret, paymentMethodId: $paymentMethodId, usage: $usage, paymentMethodTypes: $paymentMethodTypes, description: $description, created: $created, lastSetupError: $lastSetupError, nextAction: $nextAction, mandateData: $mandateData)';
   }
 }
 
-abstract class _SetupIntent implements SetupIntent {
-  const factory _SetupIntent(
-      {required final String id,
-      required final String status,
-      required final bool livemode,
-      required final String clientSecret,
-      required final String paymentMethodId,
-      required final String usage,
-      required final List<PaymentMethodType> paymentMethodTypes,
-      final String? description,
-      final String? created,
-      final LastSetupError? lastSetupError,
-      final NextAction? nextAction,
-      final MandateData? mandateData}) = _$SetupIntentImpl;
-
-  factory _SetupIntent.fromJson(Map<String, dynamic> json) =
-      _$SetupIntentImpl.fromJson;
+/// @nodoc
+abstract mixin class _$SetupIntentCopyWith<$Res>
+    implements $SetupIntentCopyWith<$Res> {
+  factory _$SetupIntentCopyWith(
+          _SetupIntent value, $Res Function(_SetupIntent) _then) =
+      __$SetupIntentCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String id,
+      String status,
+      bool livemode,
+      String clientSecret,
+      String paymentMethodId,
+      String usage,
+      List<PaymentMethodType> paymentMethodTypes,
+      String? description,
+      String? created,
+      LastSetupError? lastSetupError,
+      NextAction? nextAction,
+      MandateData? mandateData});
 
   @override
-
-  /// Unique identifier.
-  String get id;
+  $LastSetupErrorCopyWith<$Res>? get lastSetupError;
   @override
-
-  /// Status of the intent.
-  ///
-  /// See https://stripe.com/docs/payments/intents#intent-statuses.
-  String get status;
+  $NextActionCopyWith<$Res>? get nextAction;
   @override
-
-  /// Determines whether the intent is in live mode or in test mode.
-  bool get livemode;
-  @override
-
-  /// The client is secret is used for handling the payment from the Client side.
-  String get clientSecret;
-  @override
-
-  /// Id of the payment method used in this intent.
-  String get paymentMethodId;
-  @override
-
-  /// Indicates how the intent is used in the future.
-  String get usage;
-  @override
-
-  /// List of payment method types associated with this intent.
-  List<PaymentMethodType> get paymentMethodTypes;
-  @override
-
-  /// Localized description that provides additional context to users.
-  String? get description;
-  @override
-
-  /// Timestamp since epoch that represents the time the intent is created.
-  String? get created;
-  @override
-
-  /// Error encountered since last configmration.
-  LastSetupError? get lastSetupError;
-  @override
-
-  /// Additional action that needs to be taken in order to complete a payment
-  /// using the provided resource.
-  NextAction? get nextAction;
-  @override
-
-  /// Mandata data for this paymentintent.
-  MandateData? get mandateData;
-  @override
-  @JsonKey(ignore: true)
-  _$$SetupIntentImplCopyWith<_$SetupIntentImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MandateDataCopyWith<$Res>? get mandateData;
 }
 
-LastSetupError _$LastSetupErrorFromJson(Map<String, dynamic> json) {
-  return _LastSetupError.fromJson(json);
+/// @nodoc
+class __$SetupIntentCopyWithImpl<$Res> implements _$SetupIntentCopyWith<$Res> {
+  __$SetupIntentCopyWithImpl(this._self, this._then);
+
+  final _SetupIntent _self;
+  final $Res Function(_SetupIntent) _then;
+
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? status = null,
+    Object? livemode = null,
+    Object? clientSecret = null,
+    Object? paymentMethodId = null,
+    Object? usage = null,
+    Object? paymentMethodTypes = null,
+    Object? description = freezed,
+    Object? created = freezed,
+    Object? lastSetupError = freezed,
+    Object? nextAction = freezed,
+    Object? mandateData = freezed,
+  }) {
+    return _then(_SetupIntent(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      livemode: null == livemode
+          ? _self.livemode
+          : livemode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      clientSecret: null == clientSecret
+          ? _self.clientSecret
+          : clientSecret // ignore: cast_nullable_to_non_nullable
+              as String,
+      paymentMethodId: null == paymentMethodId
+          ? _self.paymentMethodId
+          : paymentMethodId // ignore: cast_nullable_to_non_nullable
+              as String,
+      usage: null == usage
+          ? _self.usage
+          : usage // ignore: cast_nullable_to_non_nullable
+              as String,
+      paymentMethodTypes: null == paymentMethodTypes
+          ? _self._paymentMethodTypes
+          : paymentMethodTypes // ignore: cast_nullable_to_non_nullable
+              as List<PaymentMethodType>,
+      description: freezed == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      created: freezed == created
+          ? _self.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastSetupError: freezed == lastSetupError
+          ? _self.lastSetupError
+          : lastSetupError // ignore: cast_nullable_to_non_nullable
+              as LastSetupError?,
+      nextAction: freezed == nextAction
+          ? _self.nextAction
+          : nextAction // ignore: cast_nullable_to_non_nullable
+              as NextAction?,
+      mandateData: freezed == mandateData
+          ? _self.mandateData
+          : mandateData // ignore: cast_nullable_to_non_nullable
+              as MandateData?,
+    ));
+  }
+
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $LastSetupErrorCopyWith<$Res>? get lastSetupError {
+    if (_self.lastSetupError == null) {
+      return null;
+    }
+
+    return $LastSetupErrorCopyWith<$Res>(_self.lastSetupError!, (value) {
+      return _then(_self.copyWith(lastSetupError: value));
+    });
+  }
+
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $NextActionCopyWith<$Res>? get nextAction {
+    if (_self.nextAction == null) {
+      return null;
+    }
+
+    return $NextActionCopyWith<$Res>(_self.nextAction!, (value) {
+      return _then(_self.copyWith(nextAction: value));
+    });
+  }
+
+  /// Create a copy of SetupIntent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $MandateDataCopyWith<$Res>? get mandateData {
+    if (_self.mandateData == null) {
+      return null;
+    }
+
+    return $MandateDataCopyWith<$Res>(_self.mandateData!, (value) {
+      return _then(_self.copyWith(mandateData: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$LastSetupError {
   /// Code.
-  String get code => throw _privateConstructorUsedError;
+  String get code;
 
   /// Message.
-  String get message => throw _privateConstructorUsedError;
+  String get message;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $LastSetupErrorCopyWith<LastSetupError> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $LastSetupErrorCopyWith<$Res> {
-  factory $LastSetupErrorCopyWith(
-          LastSetupError value, $Res Function(LastSetupError) then) =
-      _$LastSetupErrorCopyWithImpl<$Res, LastSetupError>;
-  @useResult
-  $Res call({String code, String message});
-}
-
-/// @nodoc
-class _$LastSetupErrorCopyWithImpl<$Res, $Val extends LastSetupError>
-    implements $LastSetupErrorCopyWith<$Res> {
-  _$LastSetupErrorCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of LastSetupError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $LastSetupErrorCopyWith<LastSetupError> get copyWith =>
+      _$LastSetupErrorCopyWithImpl<LastSetupError>(
+          this as LastSetupError, _$identity);
+
+  /// Serializes this LastSetupError to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? code = null,
-    Object? message = null,
-  }) {
-    return _then(_value.copyWith(
-      code: null == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is LastSetupError &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, code, message);
+
+  @override
+  String toString() {
+    return 'LastSetupError(code: $code, message: $message)';
   }
 }
 
 /// @nodoc
-abstract class _$$LastSetupErrorImplCopyWith<$Res>
-    implements $LastSetupErrorCopyWith<$Res> {
-  factory _$$LastSetupErrorImplCopyWith(_$LastSetupErrorImpl value,
-          $Res Function(_$LastSetupErrorImpl) then) =
-      __$$LastSetupErrorImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $LastSetupErrorCopyWith<$Res> {
+  factory $LastSetupErrorCopyWith(
+          LastSetupError value, $Res Function(LastSetupError) _then) =
+      _$LastSetupErrorCopyWithImpl;
   @useResult
   $Res call({String code, String message});
 }
 
 /// @nodoc
-class __$$LastSetupErrorImplCopyWithImpl<$Res>
-    extends _$LastSetupErrorCopyWithImpl<$Res, _$LastSetupErrorImpl>
-    implements _$$LastSetupErrorImplCopyWith<$Res> {
-  __$$LastSetupErrorImplCopyWithImpl(
-      _$LastSetupErrorImpl _value, $Res Function(_$LastSetupErrorImpl) _then)
-      : super(_value, _then);
+class _$LastSetupErrorCopyWithImpl<$Res>
+    implements $LastSetupErrorCopyWith<$Res> {
+  _$LastSetupErrorCopyWithImpl(this._self, this._then);
 
+  final LastSetupError _self;
+  final $Res Function(LastSetupError) _then;
+
+  /// Create a copy of LastSetupError
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? code = null,
     Object? message = null,
   }) {
-    return _then(_$LastSetupErrorImpl(
+    return _then(_self.copyWith(
       code: null == code
-          ? _value.code
+          ? _self.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
       message: null == message
-          ? _value.message
+          ? _self.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -629,11 +633,10 @@ class __$$LastSetupErrorImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$LastSetupErrorImpl implements _LastSetupError {
-  const _$LastSetupErrorImpl({required this.code, required this.message});
-
-  factory _$LastSetupErrorImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LastSetupErrorImplFromJson(json);
+class _LastSetupError implements LastSetupError {
+  const _LastSetupError({required this.code, required this.message});
+  factory _LastSetupError.fromJson(Map<String, dynamic> json) =>
+      _$LastSetupErrorFromJson(json);
 
   /// Code.
   @override
@@ -643,57 +646,78 @@ class _$LastSetupErrorImpl implements _LastSetupError {
   @override
   final String message;
 
+  /// Create a copy of LastSetupError
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'LastSetupError(code: $code, message: $message)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$LastSetupErrorCopyWith<_LastSetupError> get copyWith =>
+      __$LastSetupErrorCopyWithImpl<_LastSetupError>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$LastSetupErrorToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LastSetupErrorImpl &&
+            other is _LastSetupError &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.message, message) || other.message == message));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, code, message);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$LastSetupErrorImplCopyWith<_$LastSetupErrorImpl> get copyWith =>
-      __$$LastSetupErrorImplCopyWithImpl<_$LastSetupErrorImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$LastSetupErrorImplToJson(
-      this,
-    );
+  String toString() {
+    return 'LastSetupError(code: $code, message: $message)';
   }
 }
 
-abstract class _LastSetupError implements LastSetupError {
-  const factory _LastSetupError(
-      {required final String code,
-      required final String message}) = _$LastSetupErrorImpl;
-
-  factory _LastSetupError.fromJson(Map<String, dynamic> json) =
-      _$LastSetupErrorImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$LastSetupErrorCopyWith<$Res>
+    implements $LastSetupErrorCopyWith<$Res> {
+  factory _$LastSetupErrorCopyWith(
+          _LastSetupError value, $Res Function(_LastSetupError) _then) =
+      __$LastSetupErrorCopyWithImpl;
   @override
-
-  /// Code.
-  String get code;
-  @override
-
-  /// Message.
-  String get message;
-  @override
-  @JsonKey(ignore: true)
-  _$$LastSetupErrorImplCopyWith<_$LastSetupErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @useResult
+  $Res call({String code, String message});
 }
+
+/// @nodoc
+class __$LastSetupErrorCopyWithImpl<$Res>
+    implements _$LastSetupErrorCopyWith<$Res> {
+  __$LastSetupErrorCopyWithImpl(this._self, this._then);
+
+  final _LastSetupError _self;
+  final $Res Function(_LastSetupError) _then;
+
+  /// Create a copy of LastSetupError
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? code = null,
+    Object? message = null,
+  }) {
+    return _then(_LastSetupError(
+      code: null == code
+          ? _self.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: null == message
+          ? _self.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+// dart format on

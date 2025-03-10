@@ -12,7 +12,7 @@ part 'platform_pay.g.dart';
 @freezed
 
 /// Result object when creating a payment method through apple pay or google pay.
-class PlatformPayPaymentMethod with _$PlatformPayPaymentMethod {
+abstract class PlatformPayPaymentMethod with _$PlatformPayPaymentMethod {
   @JsonSerializable(explicitToJson: true)
   const factory PlatformPayPaymentMethod({
     /// The payment method
@@ -31,7 +31,7 @@ class PlatformPayPaymentMethod with _$PlatformPayPaymentMethod {
 ///Parameters related to updating the platform pay sheet
 ///
 /// At this moment only Apple pay is supported
-class PlatformPaySheetUpdateParams with _$PlatformPaySheetUpdateParams {
+sealed class PlatformPaySheetUpdateParams with _$PlatformPaySheetUpdateParams {
   @JsonSerializable(explicitToJson: true)
   const factory PlatformPaySheetUpdateParams.applePay({
     /// list of updated summary items
@@ -49,7 +49,7 @@ class PlatformPaySheetUpdateParams with _$PlatformPaySheetUpdateParams {
 }
 
 @Freezed(unionKey: 'errorType')
-class ApplePaySheetError with _$ApplePaySheetError {
+sealed class ApplePaySheetError with _$ApplePaySheetError {
   @FreezedUnionValue('InvalidShippingAddress')
   @JsonSerializable(explicitToJson: true)
 
@@ -104,7 +104,7 @@ enum InvalidShippingField {
 }
 
 @freezed
-class PlatformPayPaymentMethodParams with _$PlatformPayPaymentMethodParams {
+sealed class PlatformPayPaymentMethodParams with _$PlatformPayPaymentMethodParams {
   @JsonSerializable(explicitToJson: true)
   const factory PlatformPayPaymentMethodParams.googlePay({
     required GooglePayParams googlePayParams,
@@ -123,7 +123,7 @@ class PlatformPayPaymentMethodParams with _$PlatformPayPaymentMethodParams {
 }
 
 @freezed
-class PlatformPayConfirmParams with _$PlatformPayConfirmParams {
+sealed class PlatformPayConfirmParams with _$PlatformPayConfirmParams {
   @JsonSerializable(explicitToJson: true)
   const factory PlatformPayConfirmParams.googlePay({
     required GooglePayParams googlePay,
@@ -146,7 +146,7 @@ class PlatformPayConfirmParams with _$PlatformPayConfirmParams {
 @freezed
 
 /// Entered Shipping contact data
-class PlatformPayShippingContact with _$PlatformPayShippingContact {
+abstract class PlatformPayShippingContact with _$PlatformPayShippingContact {
   @JsonSerializable(explicitToJson: true)
   const factory PlatformPayShippingContact({
     /// Email address of the shipping contact
@@ -167,7 +167,7 @@ class PlatformPayShippingContact with _$PlatformPayShippingContact {
 }
 
 @freezed
-class ApplePayParams with _$ApplePayParams {
+abstract class ApplePayParams with _$ApplePayParams {
   @JsonSerializable(explicitToJson: true)
   const factory ApplePayParams({
     /// ISO 3166-1 alpha-2 country code where the transaction is processed.
@@ -221,7 +221,7 @@ class ApplePayParams with _$ApplePayParams {
 }
 
 @freezed
-class GooglePayParams with _$GooglePayParams {
+abstract class GooglePayParams with _$GooglePayParams {
   @JsonSerializable(explicitToJson: true)
   const factory GooglePayParams({
 /**
@@ -260,7 +260,7 @@ class GooglePayParams with _$GooglePayParams {
 @freezed
 
 /// Payment method parameters for google pay
-class GooglePayPaymentMethodParams with _$GooglePayPaymentMethodParams {
+abstract class GooglePayPaymentMethodParams with _$GooglePayPaymentMethodParams {
   @JsonSerializable(explicitToJson: true)
   const factory GooglePayPaymentMethodParams({
     /// If true, Google Pay is considered "available" if the customer's Google Pay wallet has an existing payment method.
@@ -284,7 +284,7 @@ class GooglePayPaymentMethodParams with _$GooglePayPaymentMethodParams {
 }
 
 @freezed
-class GooglePayBillingAddressConfig with _$GooglePayBillingAddressConfig {
+abstract class GooglePayBillingAddressConfig with _$GooglePayBillingAddressConfig {
   @JsonSerializable(explicitToJson: true)
   const factory GooglePayBillingAddressConfig({
     /// Set to true if billing address is required for payment.
@@ -308,7 +308,7 @@ class GooglePayBillingAddressConfig with _$GooglePayBillingAddressConfig {
 }
 
 @freezed
-class GooglePayShippingAddressConfig with _$GooglePayShippingAddressConfig {
+abstract class GooglePayShippingAddressConfig with _$GooglePayShippingAddressConfig {
   @JsonSerializable(explicitToJson: true)
   const factory GooglePayShippingAddressConfig({
     /// Set to true if shipping address is required for payment.
@@ -336,7 +336,7 @@ class GooglePayShippingAddressConfig with _$GooglePayShippingAddressConfig {
 /// To support different types of payments request include a payment request type.
 ///Only supported on iOS 16 and higher.
 @Freezed(unionKey: 'type')
-class PaymentRequestType with _$PaymentRequestType {
+sealed class PaymentRequestType with _$PaymentRequestType {
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Recurring')
 
@@ -413,7 +413,7 @@ class PaymentRequestType with _$PaymentRequestType {
 @freezed
 
 /// Data record for multimerchant payment
-class ApplePayMultiMerchant with _$ApplePayMultiMerchant {
+abstract class ApplePayMultiMerchant with _$ApplePayMultiMerchant {
   @JsonSerializable(explicitToJson: true)
   const factory ApplePayMultiMerchant({
     /// The apple pay merchant identifier
@@ -443,7 +443,7 @@ class ApplePayMultiMerchant with _$ApplePayMultiMerchant {
 /// At this moment only Apple pay is supported.
 /// Similar to [KPaymentOrderDetails]
 /// See https://stripe.com/docs/apple-pay?platform=ios&locale=es-ES#order-tracking
-class PlatformPayOrderDetails with _$PlatformPayOrderDetails {
+sealed class PlatformPayOrderDetails with _$PlatformPayOrderDetails {
   @JsonSerializable(explicitToJson: true)
   const factory PlatformPayOrderDetails.applePay({
     /// eg: "com.myapp.order"
@@ -471,7 +471,7 @@ enum PlatformPayWebWalletType {
 }
 
 @freezed
-class PlatformPayWebPaymentRequestCreateOptions
+abstract class PlatformPayWebPaymentRequestCreateOptions
     with _$PlatformPayWebPaymentRequestCreateOptions {
   @JsonSerializable(explicitToJson: true)
   const factory PlatformPayWebPaymentRequestCreateOptions({
@@ -531,7 +531,7 @@ class PlatformPayWebPaymentRequestCreateOptions
 }
 
 @freezed
-class PlatformPayWebShippingOption with _$PlatformPayWebShippingOption {
+abstract class PlatformPayWebShippingOption with _$PlatformPayWebShippingOption {
   @JsonSerializable(explicitToJson: true)
   const factory PlatformPayWebShippingOption({
     /// A unique ID you create to keep track of this shipping option. You’ll be told the ID of the selected option
@@ -554,7 +554,7 @@ class PlatformPayWebShippingOption with _$PlatformPayWebShippingOption {
 }
 
 @freezed
-class PlatformPayWebPaymentItem with _$PlatformPayWebPaymentItem {
+abstract class PlatformPayWebPaymentItem with _$PlatformPayWebPaymentItem {
   @JsonSerializable(explicitToJson: true)
   const factory PlatformPayWebPaymentItem({
     /// The amount in the currency's subunit (e.g. cents, yen, etc.)

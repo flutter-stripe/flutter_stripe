@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,99 +10,72 @@ part of 'card_details.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 CardDetails _$CardDetailsFromJson(Map<String, dynamic> json) {
   return _CardDetailsConstructor.fromJson(json);
 }
 
 /// @nodoc
 mixin _$CardDetails {
-  String? get number => throw _privateConstructorUsedError;
-  int? get expirationYear => throw _privateConstructorUsedError;
-  int? get expirationMonth => throw _privateConstructorUsedError;
-  String? get cvc => throw _privateConstructorUsedError;
+  String? get number;
+  int? get expirationYear;
+  int? get expirationMonth;
+  String? get cvc;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $CardDetailsCopyWith<CardDetails> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CardDetailsCopyWith<$Res> {
-  factory $CardDetailsCopyWith(
-          CardDetails value, $Res Function(CardDetails) then) =
-      _$CardDetailsCopyWithImpl<$Res, CardDetails>;
-  @useResult
-  $Res call(
-      {String? number, int? expirationYear, int? expirationMonth, String? cvc});
-}
-
-/// @nodoc
-class _$CardDetailsCopyWithImpl<$Res, $Val extends CardDetails>
-    implements $CardDetailsCopyWith<$Res> {
-  _$CardDetailsCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of CardDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $CardDetailsCopyWith<CardDetails> get copyWith =>
+      _$CardDetailsCopyWithImpl<CardDetails>(this as CardDetails, _$identity);
+
+  /// Serializes this CardDetails to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? number = freezed,
-    Object? expirationYear = freezed,
-    Object? expirationMonth = freezed,
-    Object? cvc = freezed,
-  }) {
-    return _then(_value.copyWith(
-      number: freezed == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
-              as String?,
-      expirationYear: freezed == expirationYear
-          ? _value.expirationYear
-          : expirationYear // ignore: cast_nullable_to_non_nullable
-              as int?,
-      expirationMonth: freezed == expirationMonth
-          ? _value.expirationMonth
-          : expirationMonth // ignore: cast_nullable_to_non_nullable
-              as int?,
-      cvc: freezed == cvc
-          ? _value.cvc
-          : cvc // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CardDetails &&
+            (identical(other.number, number) || other.number == number) &&
+            (identical(other.expirationYear, expirationYear) ||
+                other.expirationYear == expirationYear) &&
+            (identical(other.expirationMonth, expirationMonth) ||
+                other.expirationMonth == expirationMonth) &&
+            (identical(other.cvc, cvc) || other.cvc == cvc));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, number, expirationYear, expirationMonth, cvc);
+
+  @override
+  String toString() {
+    return 'CardDetails(number: $number, expirationYear: $expirationYear, expirationMonth: $expirationMonth, cvc: $cvc)';
   }
 }
 
 /// @nodoc
-abstract class _$$CardDetailsConstructorImplCopyWith<$Res>
-    implements $CardDetailsCopyWith<$Res> {
-  factory _$$CardDetailsConstructorImplCopyWith(
-          _$CardDetailsConstructorImpl value,
-          $Res Function(_$CardDetailsConstructorImpl) then) =
-      __$$CardDetailsConstructorImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $CardDetailsCopyWith<$Res> {
+  factory $CardDetailsCopyWith(
+          CardDetails value, $Res Function(CardDetails) _then) =
+      _$CardDetailsCopyWithImpl;
   @useResult
   $Res call(
       {String? number, int? expirationYear, int? expirationMonth, String? cvc});
 }
 
 /// @nodoc
-class __$$CardDetailsConstructorImplCopyWithImpl<$Res>
-    extends _$CardDetailsCopyWithImpl<$Res, _$CardDetailsConstructorImpl>
-    implements _$$CardDetailsConstructorImplCopyWith<$Res> {
-  __$$CardDetailsConstructorImplCopyWithImpl(
-      _$CardDetailsConstructorImpl _value,
-      $Res Function(_$CardDetailsConstructorImpl) _then)
-      : super(_value, _then);
+class _$CardDetailsCopyWithImpl<$Res> implements $CardDetailsCopyWith<$Res> {
+  _$CardDetailsCopyWithImpl(this._self, this._then);
 
+  final CardDetails _self;
+  final $Res Function(CardDetails) _then;
+
+  /// Create a copy of CardDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -110,21 +84,21 @@ class __$$CardDetailsConstructorImplCopyWithImpl<$Res>
     Object? expirationMonth = freezed,
     Object? cvc = freezed,
   }) {
-    return _then(_$CardDetailsConstructorImpl(
+    return _then(_self.copyWith(
       number: freezed == number
-          ? _value.number
+          ? _self.number
           : number // ignore: cast_nullable_to_non_nullable
               as String?,
       expirationYear: freezed == expirationYear
-          ? _value.expirationYear
+          ? _self.expirationYear
           : expirationYear // ignore: cast_nullable_to_non_nullable
               as int?,
       expirationMonth: freezed == expirationMonth
-          ? _value.expirationMonth
+          ? _self.expirationMonth
           : expirationMonth // ignore: cast_nullable_to_non_nullable
               as int?,
       cvc: freezed == cvc
-          ? _value.cvc
+          ? _self.cvc
           : cvc // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
@@ -134,13 +108,12 @@ class __$$CardDetailsConstructorImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$CardDetailsConstructorImpl extends _CardDetailsConstructor {
-  _$CardDetailsConstructorImpl(
+class _CardDetailsConstructor extends CardDetails {
+  _CardDetailsConstructor(
       {this.number, this.expirationYear, this.expirationMonth, this.cvc})
       : super._();
-
-  factory _$CardDetailsConstructorImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CardDetailsConstructorImplFromJson(json);
+  factory _CardDetailsConstructor.fromJson(Map<String, dynamic> json) =>
+      _$CardDetailsConstructorFromJson(json);
 
   @override
   final String? number;
@@ -151,16 +124,27 @@ class _$CardDetailsConstructorImpl extends _CardDetailsConstructor {
   @override
   final String? cvc;
 
+  /// Create a copy of CardDetails
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'CardDetails(number: $number, expirationYear: $expirationYear, expirationMonth: $expirationMonth, cvc: $cvc)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CardDetailsConstructorCopyWith<_CardDetailsConstructor> get copyWith =>
+      __$CardDetailsConstructorCopyWithImpl<_CardDetailsConstructor>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$CardDetailsConstructorToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CardDetailsConstructorImpl &&
+            other is _CardDetailsConstructor &&
             (identical(other.number, number) || other.number == number) &&
             (identical(other.expirationYear, expirationYear) ||
                 other.expirationYear == expirationYear) &&
@@ -169,47 +153,66 @@ class _$CardDetailsConstructorImpl extends _CardDetailsConstructor {
             (identical(other.cvc, cvc) || other.cvc == cvc));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, number, expirationYear, expirationMonth, cvc);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$CardDetailsConstructorImplCopyWith<_$CardDetailsConstructorImpl>
-      get copyWith => __$$CardDetailsConstructorImplCopyWithImpl<
-          _$CardDetailsConstructorImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CardDetailsConstructorImplToJson(
-      this,
-    );
+  String toString() {
+    return 'CardDetails(number: $number, expirationYear: $expirationYear, expirationMonth: $expirationMonth, cvc: $cvc)';
   }
 }
 
-abstract class _CardDetailsConstructor extends CardDetails {
-  factory _CardDetailsConstructor(
-      {final String? number,
-      final int? expirationYear,
-      final int? expirationMonth,
-      final String? cvc}) = _$CardDetailsConstructorImpl;
-  _CardDetailsConstructor._() : super._();
-
-  factory _CardDetailsConstructor.fromJson(Map<String, dynamic> json) =
-      _$CardDetailsConstructorImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$CardDetailsConstructorCopyWith<$Res>
+    implements $CardDetailsCopyWith<$Res> {
+  factory _$CardDetailsConstructorCopyWith(_CardDetailsConstructor value,
+          $Res Function(_CardDetailsConstructor) _then) =
+      __$CardDetailsConstructorCopyWithImpl;
   @override
-  String? get number;
-  @override
-  int? get expirationYear;
-  @override
-  int? get expirationMonth;
-  @override
-  String? get cvc;
-  @override
-  @JsonKey(ignore: true)
-  _$$CardDetailsConstructorImplCopyWith<_$CardDetailsConstructorImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @useResult
+  $Res call(
+      {String? number, int? expirationYear, int? expirationMonth, String? cvc});
 }
+
+/// @nodoc
+class __$CardDetailsConstructorCopyWithImpl<$Res>
+    implements _$CardDetailsConstructorCopyWith<$Res> {
+  __$CardDetailsConstructorCopyWithImpl(this._self, this._then);
+
+  final _CardDetailsConstructor _self;
+  final $Res Function(_CardDetailsConstructor) _then;
+
+  /// Create a copy of CardDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? number = freezed,
+    Object? expirationYear = freezed,
+    Object? expirationMonth = freezed,
+    Object? cvc = freezed,
+  }) {
+    return _then(_CardDetailsConstructor(
+      number: freezed == number
+          ? _self.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String?,
+      expirationYear: freezed == expirationYear
+          ? _self.expirationYear
+          : expirationYear // ignore: cast_nullable_to_non_nullable
+              as int?,
+      expirationMonth: freezed == expirationMonth
+          ? _self.expirationMonth
+          : expirationMonth // ignore: cast_nullable_to_non_nullable
+              as int?,
+      cvc: freezed == cvc
+          ? _self.cvc
+          : cvc // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+// dart format on

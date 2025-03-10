@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,33 +10,49 @@ part of 'financial_connections.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-FinancialConnectionSessionResult _$FinancialConnectionSessionResultFromJson(
-    Map<String, dynamic> json) {
-  return _FinancialConnectionSessionResult.fromJson(json);
-}
 
 /// @nodoc
 mixin _$FinancialConnectionSessionResult {
-  FinancialConnectionSession get session => throw _privateConstructorUsedError;
+  FinancialConnectionSession get session;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+  /// Create a copy of FinancialConnectionSessionResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $FinancialConnectionSessionResultCopyWith<FinancialConnectionSessionResult>
-      get copyWith => throw _privateConstructorUsedError;
+      get copyWith => _$FinancialConnectionSessionResultCopyWithImpl<
+              FinancialConnectionSessionResult>(
+          this as FinancialConnectionSessionResult, _$identity);
+
+  /// Serializes this FinancialConnectionSessionResult to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is FinancialConnectionSessionResult &&
+            (identical(other.session, session) || other.session == session));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, session);
+
+  @override
+  String toString() {
+    return 'FinancialConnectionSessionResult(session: $session)';
+  }
 }
 
 /// @nodoc
-abstract class $FinancialConnectionSessionResultCopyWith<$Res> {
+abstract mixin class $FinancialConnectionSessionResultCopyWith<$Res> {
   factory $FinancialConnectionSessionResultCopyWith(
           FinancialConnectionSessionResult value,
-          $Res Function(FinancialConnectionSessionResult) then) =
-      _$FinancialConnectionSessionResultCopyWithImpl<$Res,
-          FinancialConnectionSessionResult>;
+          $Res Function(FinancialConnectionSessionResult) _then) =
+      _$FinancialConnectionSessionResultCopyWithImpl;
   @useResult
   $Res call({FinancialConnectionSession session});
 
@@ -43,167 +60,177 @@ abstract class $FinancialConnectionSessionResultCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FinancialConnectionSessionResultCopyWithImpl<$Res,
-        $Val extends FinancialConnectionSessionResult>
+class _$FinancialConnectionSessionResultCopyWithImpl<$Res>
     implements $FinancialConnectionSessionResultCopyWith<$Res> {
-  _$FinancialConnectionSessionResultCopyWithImpl(this._value, this._then);
+  _$FinancialConnectionSessionResultCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final FinancialConnectionSessionResult _self;
+  final $Res Function(FinancialConnectionSessionResult) _then;
 
+  /// Create a copy of FinancialConnectionSessionResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? session = null,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       session: null == session
-          ? _value.session
-          : session // ignore: cast_nullable_to_non_nullable
-              as FinancialConnectionSession,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FinancialConnectionSessionCopyWith<$Res> get session {
-    return $FinancialConnectionSessionCopyWith<$Res>(_value.session, (value) {
-      return _then(_value.copyWith(session: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$FinancialConnectionSessionResultImplCopyWith<$Res>
-    implements $FinancialConnectionSessionResultCopyWith<$Res> {
-  factory _$$FinancialConnectionSessionResultImplCopyWith(
-          _$FinancialConnectionSessionResultImpl value,
-          $Res Function(_$FinancialConnectionSessionResultImpl) then) =
-      __$$FinancialConnectionSessionResultImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({FinancialConnectionSession session});
-
-  @override
-  $FinancialConnectionSessionCopyWith<$Res> get session;
-}
-
-/// @nodoc
-class __$$FinancialConnectionSessionResultImplCopyWithImpl<$Res>
-    extends _$FinancialConnectionSessionResultCopyWithImpl<$Res,
-        _$FinancialConnectionSessionResultImpl>
-    implements _$$FinancialConnectionSessionResultImplCopyWith<$Res> {
-  __$$FinancialConnectionSessionResultImplCopyWithImpl(
-      _$FinancialConnectionSessionResultImpl _value,
-      $Res Function(_$FinancialConnectionSessionResultImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? session = null,
-  }) {
-    return _then(_$FinancialConnectionSessionResultImpl(
-      session: null == session
-          ? _value.session
+          ? _self.session
           : session // ignore: cast_nullable_to_non_nullable
               as FinancialConnectionSession,
     ));
+  }
+
+  /// Create a copy of FinancialConnectionSessionResult
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $FinancialConnectionSessionCopyWith<$Res> get session {
+    return $FinancialConnectionSessionCopyWith<$Res>(_self.session, (value) {
+      return _then(_self.copyWith(session: value));
+    });
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$FinancialConnectionSessionResultImpl
-    implements _FinancialConnectionSessionResult {
-  const _$FinancialConnectionSessionResultImpl({required this.session});
-
-  factory _$FinancialConnectionSessionResultImpl.fromJson(
+class _FinancialConnectionSessionResult
+    implements FinancialConnectionSessionResult {
+  const _FinancialConnectionSessionResult({required this.session});
+  factory _FinancialConnectionSessionResult.fromJson(
           Map<String, dynamic> json) =>
-      _$$FinancialConnectionSessionResultImplFromJson(json);
+      _$FinancialConnectionSessionResultFromJson(json);
 
   @override
   final FinancialConnectionSession session;
 
+  /// Create a copy of FinancialConnectionSessionResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'FinancialConnectionSessionResult(session: $session)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FinancialConnectionSessionResultCopyWith<_FinancialConnectionSessionResult>
+      get copyWith => __$FinancialConnectionSessionResultCopyWithImpl<
+          _FinancialConnectionSessionResult>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$FinancialConnectionSessionResultToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FinancialConnectionSessionResultImpl &&
+            other is _FinancialConnectionSessionResult &&
             (identical(other.session, session) || other.session == session));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, session);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$FinancialConnectionSessionResultImplCopyWith<
-          _$FinancialConnectionSessionResultImpl>
-      get copyWith => __$$FinancialConnectionSessionResultImplCopyWithImpl<
-          _$FinancialConnectionSessionResultImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$FinancialConnectionSessionResultImplToJson(
-      this,
-    );
+  String toString() {
+    return 'FinancialConnectionSessionResult(session: $session)';
   }
 }
 
-abstract class _FinancialConnectionSessionResult
-    implements FinancialConnectionSessionResult {
-  const factory _FinancialConnectionSessionResult(
-          {required final FinancialConnectionSession session}) =
-      _$FinancialConnectionSessionResultImpl;
-
-  factory _FinancialConnectionSessionResult.fromJson(
-          Map<String, dynamic> json) =
-      _$FinancialConnectionSessionResultImpl.fromJson;
+/// @nodoc
+abstract mixin class _$FinancialConnectionSessionResultCopyWith<$Res>
+    implements $FinancialConnectionSessionResultCopyWith<$Res> {
+  factory _$FinancialConnectionSessionResultCopyWith(
+          _FinancialConnectionSessionResult value,
+          $Res Function(_FinancialConnectionSessionResult) _then) =
+      __$FinancialConnectionSessionResultCopyWithImpl;
+  @override
+  @useResult
+  $Res call({FinancialConnectionSession session});
 
   @override
-  FinancialConnectionSession get session;
-  @override
-  @JsonKey(ignore: true)
-  _$$FinancialConnectionSessionResultImplCopyWith<
-          _$FinancialConnectionSessionResultImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  $FinancialConnectionSessionCopyWith<$Res> get session;
 }
 
-FinancialConnectionTokenResult _$FinancialConnectionTokenResultFromJson(
-    Map<String, dynamic> json) {
-  return _FinancialConnectionTokenResult.fromJson(json);
+/// @nodoc
+class __$FinancialConnectionSessionResultCopyWithImpl<$Res>
+    implements _$FinancialConnectionSessionResultCopyWith<$Res> {
+  __$FinancialConnectionSessionResultCopyWithImpl(this._self, this._then);
+
+  final _FinancialConnectionSessionResult _self;
+  final $Res Function(_FinancialConnectionSessionResult) _then;
+
+  /// Create a copy of FinancialConnectionSessionResult
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? session = null,
+  }) {
+    return _then(_FinancialConnectionSessionResult(
+      session: null == session
+          ? _self.session
+          : session // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionSession,
+    ));
+  }
+
+  /// Create a copy of FinancialConnectionSessionResult
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $FinancialConnectionSessionCopyWith<$Res> get session {
+    return $FinancialConnectionSessionCopyWith<$Res>(_self.session, (value) {
+      return _then(_self.copyWith(session: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$FinancialConnectionTokenResult {
-  FinancialConnectionSession get session => throw _privateConstructorUsedError;
-  FinancialConnectionBankAccountToken get token =>
-      throw _privateConstructorUsedError;
+  FinancialConnectionSession get session;
+  FinancialConnectionBankAccountToken get token;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+  /// Create a copy of FinancialConnectionTokenResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $FinancialConnectionTokenResultCopyWith<FinancialConnectionTokenResult>
-      get copyWith => throw _privateConstructorUsedError;
+      get copyWith => _$FinancialConnectionTokenResultCopyWithImpl<
+              FinancialConnectionTokenResult>(
+          this as FinancialConnectionTokenResult, _$identity);
+
+  /// Serializes this FinancialConnectionTokenResult to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is FinancialConnectionTokenResult &&
+            (identical(other.session, session) || other.session == session) &&
+            (identical(other.token, token) || other.token == token));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, session, token);
+
+  @override
+  String toString() {
+    return 'FinancialConnectionTokenResult(session: $session, token: $token)';
+  }
 }
 
 /// @nodoc
-abstract class $FinancialConnectionTokenResultCopyWith<$Res> {
+abstract mixin class $FinancialConnectionTokenResultCopyWith<$Res> {
   factory $FinancialConnectionTokenResultCopyWith(
           FinancialConnectionTokenResult value,
-          $Res Function(FinancialConnectionTokenResult) then) =
-      _$FinancialConnectionTokenResultCopyWithImpl<$Res,
-          FinancialConnectionTokenResult>;
+          $Res Function(FinancialConnectionTokenResult) _then) =
+      _$FinancialConnectionTokenResultCopyWithImpl;
   @useResult
   $Res call(
       {FinancialConnectionSession session,
@@ -214,260 +241,229 @@ abstract class $FinancialConnectionTokenResultCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FinancialConnectionTokenResultCopyWithImpl<$Res,
-        $Val extends FinancialConnectionTokenResult>
+class _$FinancialConnectionTokenResultCopyWithImpl<$Res>
     implements $FinancialConnectionTokenResultCopyWith<$Res> {
-  _$FinancialConnectionTokenResultCopyWithImpl(this._value, this._then);
+  _$FinancialConnectionTokenResultCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final FinancialConnectionTokenResult _self;
+  final $Res Function(FinancialConnectionTokenResult) _then;
 
+  /// Create a copy of FinancialConnectionTokenResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? session = null,
     Object? token = null,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       session: null == session
-          ? _value.session
+          ? _self.session
           : session // ignore: cast_nullable_to_non_nullable
               as FinancialConnectionSession,
       token: null == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as FinancialConnectionBankAccountToken,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FinancialConnectionSessionCopyWith<$Res> get session {
-    return $FinancialConnectionSessionCopyWith<$Res>(_value.session, (value) {
-      return _then(_value.copyWith(session: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FinancialConnectionBankAccountTokenCopyWith<$Res> get token {
-    return $FinancialConnectionBankAccountTokenCopyWith<$Res>(_value.token,
-        (value) {
-      return _then(_value.copyWith(token: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$FinancialConnectionTokenResultImplCopyWith<$Res>
-    implements $FinancialConnectionTokenResultCopyWith<$Res> {
-  factory _$$FinancialConnectionTokenResultImplCopyWith(
-          _$FinancialConnectionTokenResultImpl value,
-          $Res Function(_$FinancialConnectionTokenResultImpl) then) =
-      __$$FinancialConnectionTokenResultImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {FinancialConnectionSession session,
-      FinancialConnectionBankAccountToken token});
-
-  @override
-  $FinancialConnectionSessionCopyWith<$Res> get session;
-  @override
-  $FinancialConnectionBankAccountTokenCopyWith<$Res> get token;
-}
-
-/// @nodoc
-class __$$FinancialConnectionTokenResultImplCopyWithImpl<$Res>
-    extends _$FinancialConnectionTokenResultCopyWithImpl<$Res,
-        _$FinancialConnectionTokenResultImpl>
-    implements _$$FinancialConnectionTokenResultImplCopyWith<$Res> {
-  __$$FinancialConnectionTokenResultImplCopyWithImpl(
-      _$FinancialConnectionTokenResultImpl _value,
-      $Res Function(_$FinancialConnectionTokenResultImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? session = null,
-    Object? token = null,
-  }) {
-    return _then(_$FinancialConnectionTokenResultImpl(
-      session: null == session
-          ? _value.session
-          : session // ignore: cast_nullable_to_non_nullable
-              as FinancialConnectionSession,
-      token: null == token
-          ? _value.token
+          ? _self.token
           : token // ignore: cast_nullable_to_non_nullable
               as FinancialConnectionBankAccountToken,
     ));
+  }
+
+  /// Create a copy of FinancialConnectionTokenResult
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $FinancialConnectionSessionCopyWith<$Res> get session {
+    return $FinancialConnectionSessionCopyWith<$Res>(_self.session, (value) {
+      return _then(_self.copyWith(session: value));
+    });
+  }
+
+  /// Create a copy of FinancialConnectionTokenResult
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $FinancialConnectionBankAccountTokenCopyWith<$Res> get token {
+    return $FinancialConnectionBankAccountTokenCopyWith<$Res>(_self.token,
+        (value) {
+      return _then(_self.copyWith(token: value));
+    });
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$FinancialConnectionTokenResultImpl
-    implements _FinancialConnectionTokenResult {
-  const _$FinancialConnectionTokenResultImpl(
+class _FinancialConnectionTokenResult
+    implements FinancialConnectionTokenResult {
+  const _FinancialConnectionTokenResult(
       {required this.session, required this.token});
-
-  factory _$FinancialConnectionTokenResultImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$FinancialConnectionTokenResultImplFromJson(json);
+  factory _FinancialConnectionTokenResult.fromJson(Map<String, dynamic> json) =>
+      _$FinancialConnectionTokenResultFromJson(json);
 
   @override
   final FinancialConnectionSession session;
   @override
   final FinancialConnectionBankAccountToken token;
 
+  /// Create a copy of FinancialConnectionTokenResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'FinancialConnectionTokenResult(session: $session, token: $token)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FinancialConnectionTokenResultCopyWith<_FinancialConnectionTokenResult>
+      get copyWith => __$FinancialConnectionTokenResultCopyWithImpl<
+          _FinancialConnectionTokenResult>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$FinancialConnectionTokenResultToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FinancialConnectionTokenResultImpl &&
+            other is _FinancialConnectionTokenResult &&
             (identical(other.session, session) || other.session == session) &&
             (identical(other.token, token) || other.token == token));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, session, token);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$FinancialConnectionTokenResultImplCopyWith<
-          _$FinancialConnectionTokenResultImpl>
-      get copyWith => __$$FinancialConnectionTokenResultImplCopyWithImpl<
-          _$FinancialConnectionTokenResultImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$FinancialConnectionTokenResultImplToJson(
-      this,
-    );
+  String toString() {
+    return 'FinancialConnectionTokenResult(session: $session, token: $token)';
   }
 }
 
-abstract class _FinancialConnectionTokenResult
-    implements FinancialConnectionTokenResult {
-  const factory _FinancialConnectionTokenResult(
-          {required final FinancialConnectionSession session,
-          required final FinancialConnectionBankAccountToken token}) =
-      _$FinancialConnectionTokenResultImpl;
+/// @nodoc
+abstract mixin class _$FinancialConnectionTokenResultCopyWith<$Res>
+    implements $FinancialConnectionTokenResultCopyWith<$Res> {
+  factory _$FinancialConnectionTokenResultCopyWith(
+          _FinancialConnectionTokenResult value,
+          $Res Function(_FinancialConnectionTokenResult) _then) =
+      __$FinancialConnectionTokenResultCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {FinancialConnectionSession session,
+      FinancialConnectionBankAccountToken token});
 
-  factory _FinancialConnectionTokenResult.fromJson(Map<String, dynamic> json) =
-      _$FinancialConnectionTokenResultImpl.fromJson;
-
   @override
-  FinancialConnectionSession get session;
+  $FinancialConnectionSessionCopyWith<$Res> get session;
   @override
-  FinancialConnectionBankAccountToken get token;
-  @override
-  @JsonKey(ignore: true)
-  _$$FinancialConnectionTokenResultImplCopyWith<
-          _$FinancialConnectionTokenResultImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  $FinancialConnectionBankAccountTokenCopyWith<$Res> get token;
 }
 
-FinancialConnectionSession _$FinancialConnectionSessionFromJson(
-    Map<String, dynamic> json) {
-  return _FinancialConnectionSession.fromJson(json);
+/// @nodoc
+class __$FinancialConnectionTokenResultCopyWithImpl<$Res>
+    implements _$FinancialConnectionTokenResultCopyWith<$Res> {
+  __$FinancialConnectionTokenResultCopyWithImpl(this._self, this._then);
+
+  final _FinancialConnectionTokenResult _self;
+  final $Res Function(_FinancialConnectionTokenResult) _then;
+
+  /// Create a copy of FinancialConnectionTokenResult
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? session = null,
+    Object? token = null,
+  }) {
+    return _then(_FinancialConnectionTokenResult(
+      session: null == session
+          ? _self.session
+          : session // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionSession,
+      token: null == token
+          ? _self.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionBankAccountToken,
+    ));
+  }
+
+  /// Create a copy of FinancialConnectionTokenResult
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $FinancialConnectionSessionCopyWith<$Res> get session {
+    return $FinancialConnectionSessionCopyWith<$Res>(_self.session, (value) {
+      return _then(_self.copyWith(session: value));
+    });
+  }
+
+  /// Create a copy of FinancialConnectionTokenResult
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $FinancialConnectionBankAccountTokenCopyWith<$Res> get token {
+    return $FinancialConnectionBankAccountTokenCopyWith<$Res>(_self.token,
+        (value) {
+      return _then(_self.copyWith(token: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$FinancialConnectionSession {
   /// Unique id for this session
-  String get id => throw _privateConstructorUsedError;
+  String get id;
 
   /// The client secret of the session
-  String get clientSecret => throw _privateConstructorUsedError;
+  String get clientSecret;
 
   /// When `true` the object exists in livemode and when false the object exists in test mode.
-  bool get livemode => throw _privateConstructorUsedError;
+  bool get livemode;
 
   /// The accounts that were collected as part of this session
-  List<FinancialConnectionAccount> get accounts =>
-      throw _privateConstructorUsedError;
+  List<FinancialConnectionAccount> get accounts;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $FinancialConnectionSessionCopyWith<FinancialConnectionSession>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $FinancialConnectionSessionCopyWith<$Res> {
-  factory $FinancialConnectionSessionCopyWith(FinancialConnectionSession value,
-          $Res Function(FinancialConnectionSession) then) =
-      _$FinancialConnectionSessionCopyWithImpl<$Res,
-          FinancialConnectionSession>;
-  @useResult
-  $Res call(
-      {String id,
-      String clientSecret,
-      bool livemode,
-      List<FinancialConnectionAccount> accounts});
-}
-
-/// @nodoc
-class _$FinancialConnectionSessionCopyWithImpl<$Res,
-        $Val extends FinancialConnectionSession>
-    implements $FinancialConnectionSessionCopyWith<$Res> {
-  _$FinancialConnectionSessionCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of FinancialConnectionSession
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $FinancialConnectionSessionCopyWith<FinancialConnectionSession>
+      get copyWith =>
+          _$FinancialConnectionSessionCopyWithImpl<FinancialConnectionSession>(
+              this as FinancialConnectionSession, _$identity);
+
+  /// Serializes this FinancialConnectionSession to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? id = null,
-    Object? clientSecret = null,
-    Object? livemode = null,
-    Object? accounts = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      clientSecret: null == clientSecret
-          ? _value.clientSecret
-          : clientSecret // ignore: cast_nullable_to_non_nullable
-              as String,
-      livemode: null == livemode
-          ? _value.livemode
-          : livemode // ignore: cast_nullable_to_non_nullable
-              as bool,
-      accounts: null == accounts
-          ? _value.accounts
-          : accounts // ignore: cast_nullable_to_non_nullable
-              as List<FinancialConnectionAccount>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is FinancialConnectionSession &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.clientSecret, clientSecret) ||
+                other.clientSecret == clientSecret) &&
+            (identical(other.livemode, livemode) ||
+                other.livemode == livemode) &&
+            const DeepCollectionEquality().equals(other.accounts, accounts));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, clientSecret, livemode,
+      const DeepCollectionEquality().hash(accounts));
+
+  @override
+  String toString() {
+    return 'FinancialConnectionSession(id: $id, clientSecret: $clientSecret, livemode: $livemode, accounts: $accounts)';
   }
 }
 
 /// @nodoc
-abstract class _$$FinancialConnectionSessionImplCopyWith<$Res>
-    implements $FinancialConnectionSessionCopyWith<$Res> {
-  factory _$$FinancialConnectionSessionImplCopyWith(
-          _$FinancialConnectionSessionImpl value,
-          $Res Function(_$FinancialConnectionSessionImpl) then) =
-      __$$FinancialConnectionSessionImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $FinancialConnectionSessionCopyWith<$Res> {
+  factory $FinancialConnectionSessionCopyWith(FinancialConnectionSession value,
+          $Res Function(FinancialConnectionSession) _then) =
+      _$FinancialConnectionSessionCopyWithImpl;
   @useResult
   $Res call(
       {String id,
@@ -477,15 +473,15 @@ abstract class _$$FinancialConnectionSessionImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$FinancialConnectionSessionImplCopyWithImpl<$Res>
-    extends _$FinancialConnectionSessionCopyWithImpl<$Res,
-        _$FinancialConnectionSessionImpl>
-    implements _$$FinancialConnectionSessionImplCopyWith<$Res> {
-  __$$FinancialConnectionSessionImplCopyWithImpl(
-      _$FinancialConnectionSessionImpl _value,
-      $Res Function(_$FinancialConnectionSessionImpl) _then)
-      : super(_value, _then);
+class _$FinancialConnectionSessionCopyWithImpl<$Res>
+    implements $FinancialConnectionSessionCopyWith<$Res> {
+  _$FinancialConnectionSessionCopyWithImpl(this._self, this._then);
 
+  final FinancialConnectionSession _self;
+  final $Res Function(FinancialConnectionSession) _then;
+
+  /// Create a copy of FinancialConnectionSession
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -494,21 +490,21 @@ class __$$FinancialConnectionSessionImplCopyWithImpl<$Res>
     Object? livemode = null,
     Object? accounts = null,
   }) {
-    return _then(_$FinancialConnectionSessionImpl(
+    return _then(_self.copyWith(
       id: null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
       clientSecret: null == clientSecret
-          ? _value.clientSecret
+          ? _self.clientSecret
           : clientSecret // ignore: cast_nullable_to_non_nullable
               as String,
       livemode: null == livemode
-          ? _value.livemode
+          ? _self.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
       accounts: null == accounts
-          ? _value._accounts
+          ? _self.accounts
           : accounts // ignore: cast_nullable_to_non_nullable
               as List<FinancialConnectionAccount>,
     ));
@@ -518,17 +514,15 @@ class __$$FinancialConnectionSessionImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$FinancialConnectionSessionImpl implements _FinancialConnectionSession {
-  const _$FinancialConnectionSessionImpl(
+class _FinancialConnectionSession implements FinancialConnectionSession {
+  const _FinancialConnectionSession(
       {required this.id,
       required this.clientSecret,
       required this.livemode,
       required final List<FinancialConnectionAccount> accounts})
       : _accounts = accounts;
-
-  factory _$FinancialConnectionSessionImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$FinancialConnectionSessionImplFromJson(json);
+  factory _FinancialConnectionSession.fromJson(Map<String, dynamic> json) =>
+      _$FinancialConnectionSessionFromJson(json);
 
   /// Unique id for this session
   @override
@@ -553,16 +547,27 @@ class _$FinancialConnectionSessionImpl implements _FinancialConnectionSession {
     return EqualUnmodifiableListView(_accounts);
   }
 
+  /// Create a copy of FinancialConnectionSession
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'FinancialConnectionSession(id: $id, clientSecret: $clientSecret, livemode: $livemode, accounts: $accounts)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FinancialConnectionSessionCopyWith<_FinancialConnectionSession>
+      get copyWith => __$FinancialConnectionSessionCopyWithImpl<
+          _FinancialConnectionSession>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$FinancialConnectionSessionToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FinancialConnectionSessionImpl &&
+            other is _FinancialConnectionSession &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.clientSecret, clientSecret) ||
                 other.clientSecret == clientSecret) &&
@@ -571,96 +576,133 @@ class _$FinancialConnectionSessionImpl implements _FinancialConnectionSession {
             const DeepCollectionEquality().equals(other._accounts, _accounts));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, clientSecret, livemode,
       const DeepCollectionEquality().hash(_accounts));
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$FinancialConnectionSessionImplCopyWith<_$FinancialConnectionSessionImpl>
-      get copyWith => __$$FinancialConnectionSessionImplCopyWithImpl<
-          _$FinancialConnectionSessionImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$FinancialConnectionSessionImplToJson(
-      this,
-    );
+  String toString() {
+    return 'FinancialConnectionSession(id: $id, clientSecret: $clientSecret, livemode: $livemode, accounts: $accounts)';
   }
 }
 
-abstract class _FinancialConnectionSession
-    implements FinancialConnectionSession {
-  const factory _FinancialConnectionSession(
-          {required final String id,
-          required final String clientSecret,
-          required final bool livemode,
-          required final List<FinancialConnectionAccount> accounts}) =
-      _$FinancialConnectionSessionImpl;
-
-  factory _FinancialConnectionSession.fromJson(Map<String, dynamic> json) =
-      _$FinancialConnectionSessionImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$FinancialConnectionSessionCopyWith<$Res>
+    implements $FinancialConnectionSessionCopyWith<$Res> {
+  factory _$FinancialConnectionSessionCopyWith(
+          _FinancialConnectionSession value,
+          $Res Function(_FinancialConnectionSession) _then) =
+      __$FinancialConnectionSessionCopyWithImpl;
   @override
-
-  /// Unique id for this session
-  String get id;
-  @override
-
-  /// The client secret of the session
-  String get clientSecret;
-  @override
-
-  /// When `true` the object exists in livemode and when false the object exists in test mode.
-  bool get livemode;
-  @override
-
-  /// The accounts that were collected as part of this session
-  List<FinancialConnectionAccount> get accounts;
-  @override
-  @JsonKey(ignore: true)
-  _$$FinancialConnectionSessionImplCopyWith<_$FinancialConnectionSessionImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @useResult
+  $Res call(
+      {String id,
+      String clientSecret,
+      bool livemode,
+      List<FinancialConnectionAccount> accounts});
 }
 
-FinancialConnectionBankAccountToken
-    _$FinancialConnectionBankAccountTokenFromJson(Map<String, dynamic> json) {
-  return _FinancialConnectionBankAccountToken.fromJson(json);
+/// @nodoc
+class __$FinancialConnectionSessionCopyWithImpl<$Res>
+    implements _$FinancialConnectionSessionCopyWith<$Res> {
+  __$FinancialConnectionSessionCopyWithImpl(this._self, this._then);
+
+  final _FinancialConnectionSession _self;
+  final $Res Function(_FinancialConnectionSession) _then;
+
+  /// Create a copy of FinancialConnectionSession
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? clientSecret = null,
+    Object? livemode = null,
+    Object? accounts = null,
+  }) {
+    return _then(_FinancialConnectionSession(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      clientSecret: null == clientSecret
+          ? _self.clientSecret
+          : clientSecret // ignore: cast_nullable_to_non_nullable
+              as String,
+      livemode: null == livemode
+          ? _self.livemode
+          : livemode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      accounts: null == accounts
+          ? _self._accounts
+          : accounts // ignore: cast_nullable_to_non_nullable
+              as List<FinancialConnectionAccount>,
+    ));
+  }
 }
 
 /// @nodoc
 mixin _$FinancialConnectionBankAccountToken {
   /// Bamkaccount details
-  BankAccount? get bankAccount => throw _privateConstructorUsedError;
+  BankAccount? get bankAccount;
 
   /// When `true` the object exists in livemode and when false the object exists in test mode.
-  bool get livemode => throw _privateConstructorUsedError;
+  bool get livemode;
 
   /// Unique id for this token.
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
 
   /// whether or not this token has been used
-  bool get used => throw _privateConstructorUsedError;
+  bool get used;
 
   /// The Unix timestamp (in milliseconds) of the date this token was created
-  int? get created => throw _privateConstructorUsedError;
+  int? get created;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+  /// Create a copy of FinancialConnectionBankAccountToken
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $FinancialConnectionBankAccountTokenCopyWith<
           FinancialConnectionBankAccountToken>
-      get copyWith => throw _privateConstructorUsedError;
+      get copyWith => _$FinancialConnectionBankAccountTokenCopyWithImpl<
+              FinancialConnectionBankAccountToken>(
+          this as FinancialConnectionBankAccountToken, _$identity);
+
+  /// Serializes this FinancialConnectionBankAccountToken to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is FinancialConnectionBankAccountToken &&
+            (identical(other.bankAccount, bankAccount) ||
+                other.bankAccount == bankAccount) &&
+            (identical(other.livemode, livemode) ||
+                other.livemode == livemode) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.used, used) || other.used == used) &&
+            (identical(other.created, created) || other.created == created));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, bankAccount, livemode, id, used, created);
+
+  @override
+  String toString() {
+    return 'FinancialConnectionBankAccountToken(bankAccount: $bankAccount, livemode: $livemode, id: $id, used: $used, created: $created)';
+  }
 }
 
 /// @nodoc
-abstract class $FinancialConnectionBankAccountTokenCopyWith<$Res> {
+abstract mixin class $FinancialConnectionBankAccountTokenCopyWith<$Res> {
   factory $FinancialConnectionBankAccountTokenCopyWith(
           FinancialConnectionBankAccountToken value,
-          $Res Function(FinancialConnectionBankAccountToken) then) =
-      _$FinancialConnectionBankAccountTokenCopyWithImpl<$Res,
-          FinancialConnectionBankAccountToken>;
+          $Res Function(FinancialConnectionBankAccountToken) _then) =
+      _$FinancialConnectionBankAccountTokenCopyWithImpl;
   @useResult
   $Res call(
       {BankAccount? bankAccount,
@@ -673,16 +715,15 @@ abstract class $FinancialConnectionBankAccountTokenCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FinancialConnectionBankAccountTokenCopyWithImpl<$Res,
-        $Val extends FinancialConnectionBankAccountToken>
+class _$FinancialConnectionBankAccountTokenCopyWithImpl<$Res>
     implements $FinancialConnectionBankAccountTokenCopyWith<$Res> {
-  _$FinancialConnectionBankAccountTokenCopyWithImpl(this._value, this._then);
+  _$FinancialConnectionBankAccountTokenCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final FinancialConnectionBankAccountToken _self;
+  final $Res Function(FinancialConnectionBankAccountToken) _then;
 
+  /// Create a copy of FinancialConnectionBankAccountToken
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -692,122 +733,59 @@ class _$FinancialConnectionBankAccountTokenCopyWithImpl<$Res,
     Object? used = null,
     Object? created = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       bankAccount: freezed == bankAccount
-          ? _value.bankAccount
+          ? _self.bankAccount
           : bankAccount // ignore: cast_nullable_to_non_nullable
               as BankAccount?,
       livemode: null == livemode
-          ? _value.livemode
+          ? _self.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
       id: freezed == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
       used: null == used
-          ? _value.used
+          ? _self.used
           : used // ignore: cast_nullable_to_non_nullable
               as bool,
       created: freezed == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BankAccountCopyWith<$Res>? get bankAccount {
-    if (_value.bankAccount == null) {
-      return null;
-    }
-
-    return $BankAccountCopyWith<$Res>(_value.bankAccount!, (value) {
-      return _then(_value.copyWith(bankAccount: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$FinancialConnectionBankAccountTokenImplCopyWith<$Res>
-    implements $FinancialConnectionBankAccountTokenCopyWith<$Res> {
-  factory _$$FinancialConnectionBankAccountTokenImplCopyWith(
-          _$FinancialConnectionBankAccountTokenImpl value,
-          $Res Function(_$FinancialConnectionBankAccountTokenImpl) then) =
-      __$$FinancialConnectionBankAccountTokenImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {BankAccount? bankAccount,
-      bool livemode,
-      String? id,
-      bool used,
-      int? created});
-
-  @override
-  $BankAccountCopyWith<$Res>? get bankAccount;
-}
-
-/// @nodoc
-class __$$FinancialConnectionBankAccountTokenImplCopyWithImpl<$Res>
-    extends _$FinancialConnectionBankAccountTokenCopyWithImpl<$Res,
-        _$FinancialConnectionBankAccountTokenImpl>
-    implements _$$FinancialConnectionBankAccountTokenImplCopyWith<$Res> {
-  __$$FinancialConnectionBankAccountTokenImplCopyWithImpl(
-      _$FinancialConnectionBankAccountTokenImpl _value,
-      $Res Function(_$FinancialConnectionBankAccountTokenImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? bankAccount = freezed,
-    Object? livemode = null,
-    Object? id = freezed,
-    Object? used = null,
-    Object? created = freezed,
-  }) {
-    return _then(_$FinancialConnectionBankAccountTokenImpl(
-      bankAccount: freezed == bankAccount
-          ? _value.bankAccount
-          : bankAccount // ignore: cast_nullable_to_non_nullable
-              as BankAccount?,
-      livemode: null == livemode
-          ? _value.livemode
-          : livemode // ignore: cast_nullable_to_non_nullable
-              as bool,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      used: null == used
-          ? _value.used
-          : used // ignore: cast_nullable_to_non_nullable
-              as bool,
-      created: freezed == created
-          ? _value.created
+          ? _self.created
           : created // ignore: cast_nullable_to_non_nullable
               as int?,
     ));
+  }
+
+  /// Create a copy of FinancialConnectionBankAccountToken
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $BankAccountCopyWith<$Res>? get bankAccount {
+    if (_self.bankAccount == null) {
+      return null;
+    }
+
+    return $BankAccountCopyWith<$Res>(_self.bankAccount!, (value) {
+      return _then(_self.copyWith(bankAccount: value));
+    });
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$FinancialConnectionBankAccountTokenImpl
-    implements _FinancialConnectionBankAccountToken {
-  const _$FinancialConnectionBankAccountTokenImpl(
+class _FinancialConnectionBankAccountToken
+    implements FinancialConnectionBankAccountToken {
+  const _FinancialConnectionBankAccountToken(
       {this.bankAccount,
       required this.livemode,
       this.id,
       required this.used,
       this.created});
-
-  factory _$FinancialConnectionBankAccountTokenImpl.fromJson(
+  factory _FinancialConnectionBankAccountToken.fromJson(
           Map<String, dynamic> json) =>
-      _$$FinancialConnectionBankAccountTokenImplFromJson(json);
+      _$FinancialConnectionBankAccountTokenFromJson(json);
 
   /// Bamkaccount details
   @override
@@ -829,16 +807,28 @@ class _$FinancialConnectionBankAccountTokenImpl
   @override
   final int? created;
 
+  /// Create a copy of FinancialConnectionBankAccountToken
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'FinancialConnectionBankAccountToken(bankAccount: $bankAccount, livemode: $livemode, id: $id, used: $used, created: $created)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FinancialConnectionBankAccountTokenCopyWith<
+          _FinancialConnectionBankAccountToken>
+      get copyWith => __$FinancialConnectionBankAccountTokenCopyWithImpl<
+          _FinancialConnectionBankAccountToken>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$FinancialConnectionBankAccountTokenToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FinancialConnectionBankAccountTokenImpl &&
+            other is _FinancialConnectionBankAccountToken &&
             (identical(other.bankAccount, bankAccount) ||
                 other.bankAccount == bankAccount) &&
             (identical(other.livemode, livemode) ||
@@ -848,127 +838,206 @@ class _$FinancialConnectionBankAccountTokenImpl
             (identical(other.created, created) || other.created == created));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, bankAccount, livemode, id, used, created);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$FinancialConnectionBankAccountTokenImplCopyWith<
-          _$FinancialConnectionBankAccountTokenImpl>
-      get copyWith => __$$FinancialConnectionBankAccountTokenImplCopyWithImpl<
-          _$FinancialConnectionBankAccountTokenImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$FinancialConnectionBankAccountTokenImplToJson(
-      this,
-    );
+  String toString() {
+    return 'FinancialConnectionBankAccountToken(bankAccount: $bankAccount, livemode: $livemode, id: $id, used: $used, created: $created)';
   }
 }
 
-abstract class _FinancialConnectionBankAccountToken
-    implements FinancialConnectionBankAccountToken {
-  const factory _FinancialConnectionBankAccountToken(
-      {final BankAccount? bankAccount,
-      required final bool livemode,
-      final String? id,
-      required final bool used,
-      final int? created}) = _$FinancialConnectionBankAccountTokenImpl;
-
-  factory _FinancialConnectionBankAccountToken.fromJson(
-          Map<String, dynamic> json) =
-      _$FinancialConnectionBankAccountTokenImpl.fromJson;
+/// @nodoc
+abstract mixin class _$FinancialConnectionBankAccountTokenCopyWith<$Res>
+    implements $FinancialConnectionBankAccountTokenCopyWith<$Res> {
+  factory _$FinancialConnectionBankAccountTokenCopyWith(
+          _FinancialConnectionBankAccountToken value,
+          $Res Function(_FinancialConnectionBankAccountToken) _then) =
+      __$FinancialConnectionBankAccountTokenCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {BankAccount? bankAccount,
+      bool livemode,
+      String? id,
+      bool used,
+      int? created});
 
   @override
-
-  /// Bamkaccount details
-  BankAccount? get bankAccount;
-  @override
-
-  /// When `true` the object exists in livemode and when false the object exists in test mode.
-  bool get livemode;
-  @override
-
-  /// Unique id for this token.
-  String? get id;
-  @override
-
-  /// whether or not this token has been used
-  bool get used;
-  @override
-
-  /// The Unix timestamp (in milliseconds) of the date this token was created
-  int? get created;
-  @override
-  @JsonKey(ignore: true)
-  _$$FinancialConnectionBankAccountTokenImplCopyWith<
-          _$FinancialConnectionBankAccountTokenImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  $BankAccountCopyWith<$Res>? get bankAccount;
 }
 
-FinancialConnectionAccount _$FinancialConnectionAccountFromJson(
-    Map<String, dynamic> json) {
-  return _FinancialConnectionAccount.fromJson(json);
+/// @nodoc
+class __$FinancialConnectionBankAccountTokenCopyWithImpl<$Res>
+    implements _$FinancialConnectionBankAccountTokenCopyWith<$Res> {
+  __$FinancialConnectionBankAccountTokenCopyWithImpl(this._self, this._then);
+
+  final _FinancialConnectionBankAccountToken _self;
+  final $Res Function(_FinancialConnectionBankAccountToken) _then;
+
+  /// Create a copy of FinancialConnectionBankAccountToken
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? bankAccount = freezed,
+    Object? livemode = null,
+    Object? id = freezed,
+    Object? used = null,
+    Object? created = freezed,
+  }) {
+    return _then(_FinancialConnectionBankAccountToken(
+      bankAccount: freezed == bankAccount
+          ? _self.bankAccount
+          : bankAccount // ignore: cast_nullable_to_non_nullable
+              as BankAccount?,
+      livemode: null == livemode
+          ? _self.livemode
+          : livemode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      id: freezed == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      used: null == used
+          ? _self.used
+          : used // ignore: cast_nullable_to_non_nullable
+              as bool,
+      created: freezed == created
+          ? _self.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+
+  /// Create a copy of FinancialConnectionBankAccountToken
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $BankAccountCopyWith<$Res>? get bankAccount {
+    if (_self.bankAccount == null) {
+      return null;
+    }
+
+    return $BankAccountCopyWith<$Res>(_self.bankAccount!, (value) {
+      return _then(_self.copyWith(bankAccount: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$FinancialConnectionAccount {
   /// Unique id for this Financial connection account.
-  String get id => throw _privateConstructorUsedError;
+  String get id;
 
   /// Has the value true if the object exist in livemode.
-  bool get livemode => throw _privateConstructorUsedError;
+  bool get livemode;
 
   /// display name of the account.
-  String? get displayName => throw _privateConstructorUsedError;
+  String? get displayName;
 
   /// The current status of the account.
-  AccountStatus get status => throw _privateConstructorUsedError;
+  AccountStatus get status;
 
   /// The name of the financial institution.
-  String get institutionName => throw _privateConstructorUsedError;
+  String get institutionName;
 
   /// Last4 of the account number.
-  String? get last4 => throw _privateConstructorUsedError;
+  String? get last4;
 
   /// Unix timestamp in milliseconds of the date this account was created.
-  int get created => throw _privateConstructorUsedError;
+  int get created;
 
   /// The balance of the account
-  AccountBalance? get balance => throw _privateConstructorUsedError;
+  AccountBalance? get balance;
 
   /// The last balance refresh.
-  BalanceRefresh? get balanceRefresh => throw _privateConstructorUsedError;
+  BalanceRefresh? get balanceRefresh;
 
   /// The category of this account
-  AccountCategory get category => throw _privateConstructorUsedError;
+  AccountCategory get category;
 
   /// The subcategory of this account,
-  AccountSubcategory get subcategory => throw _privateConstructorUsedError;
+  AccountSubcategory get subcategory;
 
   /// Permissions requested for accounts collected during this session.
-  List<AccountPermission>? get permissions =>
-      throw _privateConstructorUsedError;
+  List<AccountPermission>? get permissions;
 
   /// Support payment method types for this account.
-  List<FinancialConnectionsPaymentMethodType> get supportedPaymentMethodTypes =>
-      throw _privateConstructorUsedError;
+  List<FinancialConnectionsPaymentMethodType> get supportedPaymentMethodTypes;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+  /// Create a copy of FinancialConnectionAccount
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $FinancialConnectionAccountCopyWith<FinancialConnectionAccount>
-      get copyWith => throw _privateConstructorUsedError;
+      get copyWith =>
+          _$FinancialConnectionAccountCopyWithImpl<FinancialConnectionAccount>(
+              this as FinancialConnectionAccount, _$identity);
+
+  /// Serializes this FinancialConnectionAccount to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is FinancialConnectionAccount &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.livemode, livemode) ||
+                other.livemode == livemode) &&
+            (identical(other.displayName, displayName) ||
+                other.displayName == displayName) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.institutionName, institutionName) ||
+                other.institutionName == institutionName) &&
+            (identical(other.last4, last4) || other.last4 == last4) &&
+            (identical(other.created, created) || other.created == created) &&
+            (identical(other.balance, balance) || other.balance == balance) &&
+            (identical(other.balanceRefresh, balanceRefresh) ||
+                other.balanceRefresh == balanceRefresh) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
+            (identical(other.subcategory, subcategory) ||
+                other.subcategory == subcategory) &&
+            const DeepCollectionEquality()
+                .equals(other.permissions, permissions) &&
+            const DeepCollectionEquality().equals(
+                other.supportedPaymentMethodTypes,
+                supportedPaymentMethodTypes));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      livemode,
+      displayName,
+      status,
+      institutionName,
+      last4,
+      created,
+      balance,
+      balanceRefresh,
+      category,
+      subcategory,
+      const DeepCollectionEquality().hash(permissions),
+      const DeepCollectionEquality().hash(supportedPaymentMethodTypes));
+
+  @override
+  String toString() {
+    return 'FinancialConnectionAccount(id: $id, livemode: $livemode, displayName: $displayName, status: $status, institutionName: $institutionName, last4: $last4, created: $created, balance: $balance, balanceRefresh: $balanceRefresh, category: $category, subcategory: $subcategory, permissions: $permissions, supportedPaymentMethodTypes: $supportedPaymentMethodTypes)';
+  }
 }
 
 /// @nodoc
-abstract class $FinancialConnectionAccountCopyWith<$Res> {
+abstract mixin class $FinancialConnectionAccountCopyWith<$Res> {
   factory $FinancialConnectionAccountCopyWith(FinancialConnectionAccount value,
-          $Res Function(FinancialConnectionAccount) then) =
-      _$FinancialConnectionAccountCopyWithImpl<$Res,
-          FinancialConnectionAccount>;
+          $Res Function(FinancialConnectionAccount) _then) =
+      _$FinancialConnectionAccountCopyWithImpl;
   @useResult
   $Res call(
       {String id,
@@ -990,16 +1059,15 @@ abstract class $FinancialConnectionAccountCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FinancialConnectionAccountCopyWithImpl<$Res,
-        $Val extends FinancialConnectionAccount>
+class _$FinancialConnectionAccountCopyWithImpl<$Res>
     implements $FinancialConnectionAccountCopyWith<$Res> {
-  _$FinancialConnectionAccountCopyWithImpl(this._value, this._then);
+  _$FinancialConnectionAccountCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final FinancialConnectionAccount _self;
+  final $Res Function(FinancialConnectionAccount) _then;
 
+  /// Create a copy of FinancialConnectionAccount
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1017,206 +1085,96 @@ class _$FinancialConnectionAccountCopyWithImpl<$Res,
     Object? permissions = freezed,
     Object? supportedPaymentMethodTypes = null,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       id: null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
       livemode: null == livemode
-          ? _value.livemode
+          ? _self.livemode
           : livemode // ignore: cast_nullable_to_non_nullable
               as bool,
       displayName: freezed == displayName
-          ? _value.displayName
+          ? _self.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String?,
       status: null == status
-          ? _value.status
+          ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
               as AccountStatus,
       institutionName: null == institutionName
-          ? _value.institutionName
+          ? _self.institutionName
           : institutionName // ignore: cast_nullable_to_non_nullable
               as String,
       last4: freezed == last4
-          ? _value.last4
+          ? _self.last4
           : last4 // ignore: cast_nullable_to_non_nullable
               as String?,
       created: null == created
-          ? _value.created
+          ? _self.created
           : created // ignore: cast_nullable_to_non_nullable
               as int,
       balance: freezed == balance
-          ? _value.balance
+          ? _self.balance
           : balance // ignore: cast_nullable_to_non_nullable
               as AccountBalance?,
       balanceRefresh: freezed == balanceRefresh
-          ? _value.balanceRefresh
+          ? _self.balanceRefresh
           : balanceRefresh // ignore: cast_nullable_to_non_nullable
               as BalanceRefresh?,
       category: null == category
-          ? _value.category
+          ? _self.category
           : category // ignore: cast_nullable_to_non_nullable
               as AccountCategory,
       subcategory: null == subcategory
-          ? _value.subcategory
+          ? _self.subcategory
           : subcategory // ignore: cast_nullable_to_non_nullable
               as AccountSubcategory,
       permissions: freezed == permissions
-          ? _value.permissions
+          ? _self.permissions
           : permissions // ignore: cast_nullable_to_non_nullable
               as List<AccountPermission>?,
       supportedPaymentMethodTypes: null == supportedPaymentMethodTypes
-          ? _value.supportedPaymentMethodTypes
-          : supportedPaymentMethodTypes // ignore: cast_nullable_to_non_nullable
-              as List<FinancialConnectionsPaymentMethodType>,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AccountBalanceCopyWith<$Res>? get balance {
-    if (_value.balance == null) {
-      return null;
-    }
-
-    return $AccountBalanceCopyWith<$Res>(_value.balance!, (value) {
-      return _then(_value.copyWith(balance: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BalanceRefreshCopyWith<$Res>? get balanceRefresh {
-    if (_value.balanceRefresh == null) {
-      return null;
-    }
-
-    return $BalanceRefreshCopyWith<$Res>(_value.balanceRefresh!, (value) {
-      return _then(_value.copyWith(balanceRefresh: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$FinancialConnectionAccountImplCopyWith<$Res>
-    implements $FinancialConnectionAccountCopyWith<$Res> {
-  factory _$$FinancialConnectionAccountImplCopyWith(
-          _$FinancialConnectionAccountImpl value,
-          $Res Function(_$FinancialConnectionAccountImpl) then) =
-      __$$FinancialConnectionAccountImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String id,
-      bool livemode,
-      String? displayName,
-      AccountStatus status,
-      String institutionName,
-      String? last4,
-      int created,
-      AccountBalance? balance,
-      BalanceRefresh? balanceRefresh,
-      AccountCategory category,
-      AccountSubcategory subcategory,
-      List<AccountPermission>? permissions,
-      List<FinancialConnectionsPaymentMethodType> supportedPaymentMethodTypes});
-
-  @override
-  $AccountBalanceCopyWith<$Res>? get balance;
-  @override
-  $BalanceRefreshCopyWith<$Res>? get balanceRefresh;
-}
-
-/// @nodoc
-class __$$FinancialConnectionAccountImplCopyWithImpl<$Res>
-    extends _$FinancialConnectionAccountCopyWithImpl<$Res,
-        _$FinancialConnectionAccountImpl>
-    implements _$$FinancialConnectionAccountImplCopyWith<$Res> {
-  __$$FinancialConnectionAccountImplCopyWithImpl(
-      _$FinancialConnectionAccountImpl _value,
-      $Res Function(_$FinancialConnectionAccountImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? livemode = null,
-    Object? displayName = freezed,
-    Object? status = null,
-    Object? institutionName = null,
-    Object? last4 = freezed,
-    Object? created = null,
-    Object? balance = freezed,
-    Object? balanceRefresh = freezed,
-    Object? category = null,
-    Object? subcategory = null,
-    Object? permissions = freezed,
-    Object? supportedPaymentMethodTypes = null,
-  }) {
-    return _then(_$FinancialConnectionAccountImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      livemode: null == livemode
-          ? _value.livemode
-          : livemode // ignore: cast_nullable_to_non_nullable
-              as bool,
-      displayName: freezed == displayName
-          ? _value.displayName
-          : displayName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as AccountStatus,
-      institutionName: null == institutionName
-          ? _value.institutionName
-          : institutionName // ignore: cast_nullable_to_non_nullable
-              as String,
-      last4: freezed == last4
-          ? _value.last4
-          : last4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as int,
-      balance: freezed == balance
-          ? _value.balance
-          : balance // ignore: cast_nullable_to_non_nullable
-              as AccountBalance?,
-      balanceRefresh: freezed == balanceRefresh
-          ? _value.balanceRefresh
-          : balanceRefresh // ignore: cast_nullable_to_non_nullable
-              as BalanceRefresh?,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as AccountCategory,
-      subcategory: null == subcategory
-          ? _value.subcategory
-          : subcategory // ignore: cast_nullable_to_non_nullable
-              as AccountSubcategory,
-      permissions: freezed == permissions
-          ? _value._permissions
-          : permissions // ignore: cast_nullable_to_non_nullable
-              as List<AccountPermission>?,
-      supportedPaymentMethodTypes: null == supportedPaymentMethodTypes
-          ? _value._supportedPaymentMethodTypes
+          ? _self.supportedPaymentMethodTypes
           : supportedPaymentMethodTypes // ignore: cast_nullable_to_non_nullable
               as List<FinancialConnectionsPaymentMethodType>,
     ));
+  }
+
+  /// Create a copy of FinancialConnectionAccount
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AccountBalanceCopyWith<$Res>? get balance {
+    if (_self.balance == null) {
+      return null;
+    }
+
+    return $AccountBalanceCopyWith<$Res>(_self.balance!, (value) {
+      return _then(_self.copyWith(balance: value));
+    });
+  }
+
+  /// Create a copy of FinancialConnectionAccount
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $BalanceRefreshCopyWith<$Res>? get balanceRefresh {
+    if (_self.balanceRefresh == null) {
+      return null;
+    }
+
+    return $BalanceRefreshCopyWith<$Res>(_self.balanceRefresh!, (value) {
+      return _then(_self.copyWith(balanceRefresh: value));
+    });
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$FinancialConnectionAccountImpl implements _FinancialConnectionAccount {
-  const _$FinancialConnectionAccountImpl(
+class _FinancialConnectionAccount implements FinancialConnectionAccount {
+  const _FinancialConnectionAccount(
       {required this.id,
       required this.livemode,
       this.displayName,
@@ -1233,10 +1191,8 @@ class _$FinancialConnectionAccountImpl implements _FinancialConnectionAccount {
           supportedPaymentMethodTypes})
       : _permissions = permissions,
         _supportedPaymentMethodTypes = supportedPaymentMethodTypes;
-
-  factory _$FinancialConnectionAccountImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$FinancialConnectionAccountImplFromJson(json);
+  factory _FinancialConnectionAccount.fromJson(Map<String, dynamic> json) =>
+      _$FinancialConnectionAccountFromJson(json);
 
   /// Unique id for this Financial connection account.
   @override
@@ -1308,16 +1264,27 @@ class _$FinancialConnectionAccountImpl implements _FinancialConnectionAccount {
     return EqualUnmodifiableListView(_supportedPaymentMethodTypes);
   }
 
+  /// Create a copy of FinancialConnectionAccount
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'FinancialConnectionAccount(id: $id, livemode: $livemode, displayName: $displayName, status: $status, institutionName: $institutionName, last4: $last4, created: $created, balance: $balance, balanceRefresh: $balanceRefresh, category: $category, subcategory: $subcategory, permissions: $permissions, supportedPaymentMethodTypes: $supportedPaymentMethodTypes)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FinancialConnectionAccountCopyWith<_FinancialConnectionAccount>
+      get copyWith => __$FinancialConnectionAccountCopyWithImpl<
+          _FinancialConnectionAccount>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$FinancialConnectionAccountToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FinancialConnectionAccountImpl &&
+            other is _FinancialConnectionAccount &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.livemode, livemode) ||
                 other.livemode == livemode) &&
@@ -1342,7 +1309,7 @@ class _$FinancialConnectionAccountImpl implements _FinancialConnectionAccount {
                 _supportedPaymentMethodTypes));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1360,188 +1327,225 @@ class _$FinancialConnectionAccountImpl implements _FinancialConnectionAccount {
       const DeepCollectionEquality().hash(_permissions),
       const DeepCollectionEquality().hash(_supportedPaymentMethodTypes));
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$FinancialConnectionAccountImplCopyWith<_$FinancialConnectionAccountImpl>
-      get copyWith => __$$FinancialConnectionAccountImplCopyWithImpl<
-          _$FinancialConnectionAccountImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$FinancialConnectionAccountImplToJson(
-      this,
-    );
+  String toString() {
+    return 'FinancialConnectionAccount(id: $id, livemode: $livemode, displayName: $displayName, status: $status, institutionName: $institutionName, last4: $last4, created: $created, balance: $balance, balanceRefresh: $balanceRefresh, category: $category, subcategory: $subcategory, permissions: $permissions, supportedPaymentMethodTypes: $supportedPaymentMethodTypes)';
   }
 }
 
-abstract class _FinancialConnectionAccount
-    implements FinancialConnectionAccount {
-  const factory _FinancialConnectionAccount(
-      {required final String id,
-      required final bool livemode,
-      final String? displayName,
-      required final AccountStatus status,
-      required final String institutionName,
-      final String? last4,
-      required final int created,
-      final AccountBalance? balance,
-      final BalanceRefresh? balanceRefresh,
-      required final AccountCategory category,
-      required final AccountSubcategory subcategory,
-      final List<AccountPermission>? permissions,
-      required final List<FinancialConnectionsPaymentMethodType>
-          supportedPaymentMethodTypes}) = _$FinancialConnectionAccountImpl;
-
-  factory _FinancialConnectionAccount.fromJson(Map<String, dynamic> json) =
-      _$FinancialConnectionAccountImpl.fromJson;
+/// @nodoc
+abstract mixin class _$FinancialConnectionAccountCopyWith<$Res>
+    implements $FinancialConnectionAccountCopyWith<$Res> {
+  factory _$FinancialConnectionAccountCopyWith(
+          _FinancialConnectionAccount value,
+          $Res Function(_FinancialConnectionAccount) _then) =
+      __$FinancialConnectionAccountCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String id,
+      bool livemode,
+      String? displayName,
+      AccountStatus status,
+      String institutionName,
+      String? last4,
+      int created,
+      AccountBalance? balance,
+      BalanceRefresh? balanceRefresh,
+      AccountCategory category,
+      AccountSubcategory subcategory,
+      List<AccountPermission>? permissions,
+      List<FinancialConnectionsPaymentMethodType> supportedPaymentMethodTypes});
 
   @override
-
-  /// Unique id for this Financial connection account.
-  String get id;
+  $AccountBalanceCopyWith<$Res>? get balance;
   @override
-
-  /// Has the value true if the object exist in livemode.
-  bool get livemode;
-  @override
-
-  /// display name of the account.
-  String? get displayName;
-  @override
-
-  /// The current status of the account.
-  AccountStatus get status;
-  @override
-
-  /// The name of the financial institution.
-  String get institutionName;
-  @override
-
-  /// Last4 of the account number.
-  String? get last4;
-  @override
-
-  /// Unix timestamp in milliseconds of the date this account was created.
-  int get created;
-  @override
-
-  /// The balance of the account
-  AccountBalance? get balance;
-  @override
-
-  /// The last balance refresh.
-  BalanceRefresh? get balanceRefresh;
-  @override
-
-  /// The category of this account
-  AccountCategory get category;
-  @override
-
-  /// The subcategory of this account,
-  AccountSubcategory get subcategory;
-  @override
-
-  /// Permissions requested for accounts collected during this session.
-  List<AccountPermission>? get permissions;
-  @override
-
-  /// Support payment method types for this account.
-  List<FinancialConnectionsPaymentMethodType> get supportedPaymentMethodTypes;
-  @override
-  @JsonKey(ignore: true)
-  _$$FinancialConnectionAccountImplCopyWith<_$FinancialConnectionAccountImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  $BalanceRefreshCopyWith<$Res>? get balanceRefresh;
 }
 
-BalanceRefresh _$BalanceRefreshFromJson(Map<String, dynamic> json) {
-  return _BalanceRefresh.fromJson(json);
+/// @nodoc
+class __$FinancialConnectionAccountCopyWithImpl<$Res>
+    implements _$FinancialConnectionAccountCopyWith<$Res> {
+  __$FinancialConnectionAccountCopyWithImpl(this._self, this._then);
+
+  final _FinancialConnectionAccount _self;
+  final $Res Function(_FinancialConnectionAccount) _then;
+
+  /// Create a copy of FinancialConnectionAccount
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? livemode = null,
+    Object? displayName = freezed,
+    Object? status = null,
+    Object? institutionName = null,
+    Object? last4 = freezed,
+    Object? created = null,
+    Object? balance = freezed,
+    Object? balanceRefresh = freezed,
+    Object? category = null,
+    Object? subcategory = null,
+    Object? permissions = freezed,
+    Object? supportedPaymentMethodTypes = null,
+  }) {
+    return _then(_FinancialConnectionAccount(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      livemode: null == livemode
+          ? _self.livemode
+          : livemode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      displayName: freezed == displayName
+          ? _self.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: null == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as AccountStatus,
+      institutionName: null == institutionName
+          ? _self.institutionName
+          : institutionName // ignore: cast_nullable_to_non_nullable
+              as String,
+      last4: freezed == last4
+          ? _self.last4
+          : last4 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      created: null == created
+          ? _self.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as int,
+      balance: freezed == balance
+          ? _self.balance
+          : balance // ignore: cast_nullable_to_non_nullable
+              as AccountBalance?,
+      balanceRefresh: freezed == balanceRefresh
+          ? _self.balanceRefresh
+          : balanceRefresh // ignore: cast_nullable_to_non_nullable
+              as BalanceRefresh?,
+      category: null == category
+          ? _self.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as AccountCategory,
+      subcategory: null == subcategory
+          ? _self.subcategory
+          : subcategory // ignore: cast_nullable_to_non_nullable
+              as AccountSubcategory,
+      permissions: freezed == permissions
+          ? _self._permissions
+          : permissions // ignore: cast_nullable_to_non_nullable
+              as List<AccountPermission>?,
+      supportedPaymentMethodTypes: null == supportedPaymentMethodTypes
+          ? _self._supportedPaymentMethodTypes
+          : supportedPaymentMethodTypes // ignore: cast_nullable_to_non_nullable
+              as List<FinancialConnectionsPaymentMethodType>,
+    ));
+  }
+
+  /// Create a copy of FinancialConnectionAccount
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AccountBalanceCopyWith<$Res>? get balance {
+    if (_self.balance == null) {
+      return null;
+    }
+
+    return $AccountBalanceCopyWith<$Res>(_self.balance!, (value) {
+      return _then(_self.copyWith(balance: value));
+    });
+  }
+
+  /// Create a copy of FinancialConnectionAccount
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $BalanceRefreshCopyWith<$Res>? get balanceRefresh {
+    if (_self.balanceRefresh == null) {
+      return null;
+    }
+
+    return $BalanceRefreshCopyWith<$Res>(_self.balanceRefresh!, (value) {
+      return _then(_self.copyWith(balanceRefresh: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$BalanceRefresh {
   /// Status of the balance refresh attempt
-  BalanceRefreshStatus get status => throw _privateConstructorUsedError;
+  BalanceRefreshStatus get status;
 
   /// Unix timestamp (in milliseconds) of the time of the last refresh attempt.
-  int get lastAttemptedAt => throw _privateConstructorUsedError;
+  int get lastAttemptedAt;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $BalanceRefreshCopyWith<BalanceRefresh> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $BalanceRefreshCopyWith<$Res> {
-  factory $BalanceRefreshCopyWith(
-          BalanceRefresh value, $Res Function(BalanceRefresh) then) =
-      _$BalanceRefreshCopyWithImpl<$Res, BalanceRefresh>;
-  @useResult
-  $Res call({BalanceRefreshStatus status, int lastAttemptedAt});
-}
-
-/// @nodoc
-class _$BalanceRefreshCopyWithImpl<$Res, $Val extends BalanceRefresh>
-    implements $BalanceRefreshCopyWith<$Res> {
-  _$BalanceRefreshCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of BalanceRefresh
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $BalanceRefreshCopyWith<BalanceRefresh> get copyWith =>
+      _$BalanceRefreshCopyWithImpl<BalanceRefresh>(
+          this as BalanceRefresh, _$identity);
+
+  /// Serializes this BalanceRefresh to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? status = null,
-    Object? lastAttemptedAt = null,
-  }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as BalanceRefreshStatus,
-      lastAttemptedAt: null == lastAttemptedAt
-          ? _value.lastAttemptedAt
-          : lastAttemptedAt // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is BalanceRefresh &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.lastAttemptedAt, lastAttemptedAt) ||
+                other.lastAttemptedAt == lastAttemptedAt));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, status, lastAttemptedAt);
+
+  @override
+  String toString() {
+    return 'BalanceRefresh(status: $status, lastAttemptedAt: $lastAttemptedAt)';
   }
 }
 
 /// @nodoc
-abstract class _$$BalanceRefreshImplCopyWith<$Res>
-    implements $BalanceRefreshCopyWith<$Res> {
-  factory _$$BalanceRefreshImplCopyWith(_$BalanceRefreshImpl value,
-          $Res Function(_$BalanceRefreshImpl) then) =
-      __$$BalanceRefreshImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $BalanceRefreshCopyWith<$Res> {
+  factory $BalanceRefreshCopyWith(
+          BalanceRefresh value, $Res Function(BalanceRefresh) _then) =
+      _$BalanceRefreshCopyWithImpl;
   @useResult
   $Res call({BalanceRefreshStatus status, int lastAttemptedAt});
 }
 
 /// @nodoc
-class __$$BalanceRefreshImplCopyWithImpl<$Res>
-    extends _$BalanceRefreshCopyWithImpl<$Res, _$BalanceRefreshImpl>
-    implements _$$BalanceRefreshImplCopyWith<$Res> {
-  __$$BalanceRefreshImplCopyWithImpl(
-      _$BalanceRefreshImpl _value, $Res Function(_$BalanceRefreshImpl) _then)
-      : super(_value, _then);
+class _$BalanceRefreshCopyWithImpl<$Res>
+    implements $BalanceRefreshCopyWith<$Res> {
+  _$BalanceRefreshCopyWithImpl(this._self, this._then);
 
+  final BalanceRefresh _self;
+  final $Res Function(BalanceRefresh) _then;
+
+  /// Create a copy of BalanceRefresh
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? status = null,
     Object? lastAttemptedAt = null,
   }) {
-    return _then(_$BalanceRefreshImpl(
+    return _then(_self.copyWith(
       status: null == status
-          ? _value.status
+          ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
               as BalanceRefreshStatus,
       lastAttemptedAt: null == lastAttemptedAt
-          ? _value.lastAttemptedAt
+          ? _self.lastAttemptedAt
           : lastAttemptedAt // ignore: cast_nullable_to_non_nullable
               as int,
     ));
@@ -1551,12 +1555,10 @@ class __$$BalanceRefreshImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$BalanceRefreshImpl implements _BalanceRefresh {
-  const _$BalanceRefreshImpl(
-      {required this.status, required this.lastAttemptedAt});
-
-  factory _$BalanceRefreshImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BalanceRefreshImplFromJson(json);
+class _BalanceRefresh implements BalanceRefresh {
+  const _BalanceRefresh({required this.status, required this.lastAttemptedAt});
+  factory _BalanceRefresh.fromJson(Map<String, dynamic> json) =>
+      _$BalanceRefreshFromJson(json);
 
   /// Status of the balance refresh attempt
   @override
@@ -1566,164 +1568,152 @@ class _$BalanceRefreshImpl implements _BalanceRefresh {
   @override
   final int lastAttemptedAt;
 
+  /// Create a copy of BalanceRefresh
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'BalanceRefresh(status: $status, lastAttemptedAt: $lastAttemptedAt)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$BalanceRefreshCopyWith<_BalanceRefresh> get copyWith =>
+      __$BalanceRefreshCopyWithImpl<_BalanceRefresh>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$BalanceRefreshToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BalanceRefreshImpl &&
+            other is _BalanceRefresh &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.lastAttemptedAt, lastAttemptedAt) ||
                 other.lastAttemptedAt == lastAttemptedAt));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, status, lastAttemptedAt);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$BalanceRefreshImplCopyWith<_$BalanceRefreshImpl> get copyWith =>
-      __$$BalanceRefreshImplCopyWithImpl<_$BalanceRefreshImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$BalanceRefreshImplToJson(
-      this,
-    );
+  String toString() {
+    return 'BalanceRefresh(status: $status, lastAttemptedAt: $lastAttemptedAt)';
   }
 }
 
-abstract class _BalanceRefresh implements BalanceRefresh {
-  const factory _BalanceRefresh(
-      {required final BalanceRefreshStatus status,
-      required final int lastAttemptedAt}) = _$BalanceRefreshImpl;
-
-  factory _BalanceRefresh.fromJson(Map<String, dynamic> json) =
-      _$BalanceRefreshImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$BalanceRefreshCopyWith<$Res>
+    implements $BalanceRefreshCopyWith<$Res> {
+  factory _$BalanceRefreshCopyWith(
+          _BalanceRefresh value, $Res Function(_BalanceRefresh) _then) =
+      __$BalanceRefreshCopyWithImpl;
   @override
-
-  /// Status of the balance refresh attempt
-  BalanceRefreshStatus get status;
-  @override
-
-  /// Unix timestamp (in milliseconds) of the time of the last refresh attempt.
-  int get lastAttemptedAt;
-  @override
-  @JsonKey(ignore: true)
-  _$$BalanceRefreshImplCopyWith<_$BalanceRefreshImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @useResult
+  $Res call({BalanceRefreshStatus status, int lastAttemptedAt});
 }
 
-AccountBalance _$AccountBalanceFromJson(Map<String, dynamic> json) {
-  return _AccountBalance.fromJson(json);
+/// @nodoc
+class __$BalanceRefreshCopyWithImpl<$Res>
+    implements _$BalanceRefreshCopyWith<$Res> {
+  __$BalanceRefreshCopyWithImpl(this._self, this._then);
+
+  final _BalanceRefresh _self;
+  final $Res Function(_BalanceRefresh) _then;
+
+  /// Create a copy of BalanceRefresh
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? status = null,
+    Object? lastAttemptedAt = null,
+  }) {
+    return _then(_BalanceRefresh(
+      status: null == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as BalanceRefreshStatus,
+      lastAttemptedAt: null == lastAttemptedAt
+          ? _self.lastAttemptedAt
+          : lastAttemptedAt // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 mixin _$AccountBalance {
   /// Unix timestamp in milliseconds of time the external instition calculated this balance.
-  int get asOf => throw _privateConstructorUsedError;
+  int get asOf;
 
   /// The type of balance.
-  BalanceType get type => throw _privateConstructorUsedError;
+  BalanceType get type;
 
   /// The funds available to the account holder.
   ///
   /// Typically this is the current balance less any holds.
   /// Each key is a three letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) in lowercase.
   /// Each value is an integer amount. A positive amount indicates money owed to the account holder. A negative amount indicates money owed by the account holder.
-  Map<String, int>? get cash => throw _privateConstructorUsedError;
+  Map<String, int>? get cash;
 
   /// The credit that has been used by the account holder.
   ///
   /// Each key is a three letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) in lowercase.
   /// Each value is a integer amount. A positive amount indicates money owed to the account holder. A negative amount indicates money owed by the account holder.
-  Map<String, int>? get credit => throw _privateConstructorUsedError;
+  Map<String, int>? get credit;
 
   /// The balances owed to (or by) the account holder.
   ///
   /// Each key is a three letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) in lowercase.
   /// Each value is a integer amount. A positive amount indicates money owed to the account holder. A negative amount indicates money owed by the account holder.
-  Map<String, int>? get current => throw _privateConstructorUsedError;
+  Map<String, int>? get current;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $AccountBalanceCopyWith<AccountBalance> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AccountBalanceCopyWith<$Res> {
-  factory $AccountBalanceCopyWith(
-          AccountBalance value, $Res Function(AccountBalance) then) =
-      _$AccountBalanceCopyWithImpl<$Res, AccountBalance>;
-  @useResult
-  $Res call(
-      {int asOf,
-      BalanceType type,
-      Map<String, int>? cash,
-      Map<String, int>? credit,
-      Map<String, int>? current});
-}
-
-/// @nodoc
-class _$AccountBalanceCopyWithImpl<$Res, $Val extends AccountBalance>
-    implements $AccountBalanceCopyWith<$Res> {
-  _$AccountBalanceCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of AccountBalance
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $AccountBalanceCopyWith<AccountBalance> get copyWith =>
+      _$AccountBalanceCopyWithImpl<AccountBalance>(
+          this as AccountBalance, _$identity);
+
+  /// Serializes this AccountBalance to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? asOf = null,
-    Object? type = null,
-    Object? cash = freezed,
-    Object? credit = freezed,
-    Object? current = freezed,
-  }) {
-    return _then(_value.copyWith(
-      asOf: null == asOf
-          ? _value.asOf
-          : asOf // ignore: cast_nullable_to_non_nullable
-              as int,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as BalanceType,
-      cash: freezed == cash
-          ? _value.cash
-          : cash // ignore: cast_nullable_to_non_nullable
-              as Map<String, int>?,
-      credit: freezed == credit
-          ? _value.credit
-          : credit // ignore: cast_nullable_to_non_nullable
-              as Map<String, int>?,
-      current: freezed == current
-          ? _value.current
-          : current // ignore: cast_nullable_to_non_nullable
-              as Map<String, int>?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AccountBalance &&
+            (identical(other.asOf, asOf) || other.asOf == asOf) &&
+            (identical(other.type, type) || other.type == type) &&
+            const DeepCollectionEquality().equals(other.cash, cash) &&
+            const DeepCollectionEquality().equals(other.credit, credit) &&
+            const DeepCollectionEquality().equals(other.current, current));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      asOf,
+      type,
+      const DeepCollectionEquality().hash(cash),
+      const DeepCollectionEquality().hash(credit),
+      const DeepCollectionEquality().hash(current));
+
+  @override
+  String toString() {
+    return 'AccountBalance(asOf: $asOf, type: $type, cash: $cash, credit: $credit, current: $current)';
   }
 }
 
 /// @nodoc
-abstract class _$$AccountBalanceImplCopyWith<$Res>
-    implements $AccountBalanceCopyWith<$Res> {
-  factory _$$AccountBalanceImplCopyWith(_$AccountBalanceImpl value,
-          $Res Function(_$AccountBalanceImpl) then) =
-      __$$AccountBalanceImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $AccountBalanceCopyWith<$Res> {
+  factory $AccountBalanceCopyWith(
+          AccountBalance value, $Res Function(AccountBalance) _then) =
+      _$AccountBalanceCopyWithImpl;
   @useResult
   $Res call(
       {int asOf,
@@ -1734,13 +1724,15 @@ abstract class _$$AccountBalanceImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$AccountBalanceImplCopyWithImpl<$Res>
-    extends _$AccountBalanceCopyWithImpl<$Res, _$AccountBalanceImpl>
-    implements _$$AccountBalanceImplCopyWith<$Res> {
-  __$$AccountBalanceImplCopyWithImpl(
-      _$AccountBalanceImpl _value, $Res Function(_$AccountBalanceImpl) _then)
-      : super(_value, _then);
+class _$AccountBalanceCopyWithImpl<$Res>
+    implements $AccountBalanceCopyWith<$Res> {
+  _$AccountBalanceCopyWithImpl(this._self, this._then);
 
+  final AccountBalance _self;
+  final $Res Function(AccountBalance) _then;
+
+  /// Create a copy of AccountBalance
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1750,25 +1742,25 @@ class __$$AccountBalanceImplCopyWithImpl<$Res>
     Object? credit = freezed,
     Object? current = freezed,
   }) {
-    return _then(_$AccountBalanceImpl(
+    return _then(_self.copyWith(
       asOf: null == asOf
-          ? _value.asOf
+          ? _self.asOf
           : asOf // ignore: cast_nullable_to_non_nullable
               as int,
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as BalanceType,
       cash: freezed == cash
-          ? _value._cash
+          ? _self.cash
           : cash // ignore: cast_nullable_to_non_nullable
               as Map<String, int>?,
       credit: freezed == credit
-          ? _value._credit
+          ? _self.credit
           : credit // ignore: cast_nullable_to_non_nullable
               as Map<String, int>?,
       current: freezed == current
-          ? _value._current
+          ? _self.current
           : current // ignore: cast_nullable_to_non_nullable
               as Map<String, int>?,
     ));
@@ -1778,8 +1770,8 @@ class __$$AccountBalanceImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$AccountBalanceImpl implements _AccountBalance {
-  const _$AccountBalanceImpl(
+class _AccountBalance implements AccountBalance {
+  const _AccountBalance(
       {required this.asOf,
       required this.type,
       final Map<String, int>? cash,
@@ -1788,9 +1780,8 @@ class _$AccountBalanceImpl implements _AccountBalance {
       : _cash = cash,
         _credit = credit,
         _current = current;
-
-  factory _$AccountBalanceImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AccountBalanceImplFromJson(json);
+  factory _AccountBalance.fromJson(Map<String, dynamic> json) =>
+      _$AccountBalanceFromJson(json);
 
   /// Unix timestamp in milliseconds of time the external instition calculated this balance.
   @override
@@ -1859,16 +1850,26 @@ class _$AccountBalanceImpl implements _AccountBalance {
     return EqualUnmodifiableMapView(value);
   }
 
+  /// Create a copy of AccountBalance
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'AccountBalance(asOf: $asOf, type: $type, cash: $cash, credit: $credit, current: $current)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AccountBalanceCopyWith<_AccountBalance> get copyWith =>
+      __$AccountBalanceCopyWithImpl<_AccountBalance>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AccountBalanceToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AccountBalanceImpl &&
+            other is _AccountBalance &&
             (identical(other.asOf, asOf) || other.asOf == asOf) &&
             (identical(other.type, type) || other.type == type) &&
             const DeepCollectionEquality().equals(other._cash, _cash) &&
@@ -1876,7 +1877,7 @@ class _$AccountBalanceImpl implements _AccountBalance {
             const DeepCollectionEquality().equals(other._current, _current));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1886,144 +1887,119 @@ class _$AccountBalanceImpl implements _AccountBalance {
       const DeepCollectionEquality().hash(_credit),
       const DeepCollectionEquality().hash(_current));
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$AccountBalanceImplCopyWith<_$AccountBalanceImpl> get copyWith =>
-      __$$AccountBalanceImplCopyWithImpl<_$AccountBalanceImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AccountBalanceImplToJson(
-      this,
-    );
+  String toString() {
+    return 'AccountBalance(asOf: $asOf, type: $type, cash: $cash, credit: $credit, current: $current)';
   }
 }
 
-abstract class _AccountBalance implements AccountBalance {
-  const factory _AccountBalance(
-      {required final int asOf,
-      required final BalanceType type,
-      final Map<String, int>? cash,
-      final Map<String, int>? credit,
-      final Map<String, int>? current}) = _$AccountBalanceImpl;
-
-  factory _AccountBalance.fromJson(Map<String, dynamic> json) =
-      _$AccountBalanceImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$AccountBalanceCopyWith<$Res>
+    implements $AccountBalanceCopyWith<$Res> {
+  factory _$AccountBalanceCopyWith(
+          _AccountBalance value, $Res Function(_AccountBalance) _then) =
+      __$AccountBalanceCopyWithImpl;
   @override
-
-  /// Unix timestamp in milliseconds of time the external instition calculated this balance.
-  int get asOf;
-  @override
-
-  /// The type of balance.
-  BalanceType get type;
-  @override
-
-  /// The funds available to the account holder.
-  ///
-  /// Typically this is the current balance less any holds.
-  /// Each key is a three letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) in lowercase.
-  /// Each value is an integer amount. A positive amount indicates money owed to the account holder. A negative amount indicates money owed by the account holder.
-  Map<String, int>? get cash;
-  @override
-
-  /// The credit that has been used by the account holder.
-  ///
-  /// Each key is a three letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) in lowercase.
-  /// Each value is a integer amount. A positive amount indicates money owed to the account holder. A negative amount indicates money owed by the account holder.
-  Map<String, int>? get credit;
-  @override
-
-  /// The balances owed to (or by) the account holder.
-  ///
-  /// Each key is a three letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) in lowercase.
-  /// Each value is a integer amount. A positive amount indicates money owed to the account holder. A negative amount indicates money owed by the account holder.
-  Map<String, int>? get current;
-  @override
-  @JsonKey(ignore: true)
-  _$$AccountBalanceImplCopyWith<_$AccountBalanceImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @useResult
+  $Res call(
+      {int asOf,
+      BalanceType type,
+      Map<String, int>? cash,
+      Map<String, int>? credit,
+      Map<String, int>? current});
 }
 
-CollectFinancialConnectionsAccountsParams
-    _$CollectFinancialConnectionsAccountsParamsFromJson(
-        Map<String, dynamic> json) {
-  return _CollectFinancialConnectionsAccountsParams.fromJson(json);
+/// @nodoc
+class __$AccountBalanceCopyWithImpl<$Res>
+    implements _$AccountBalanceCopyWith<$Res> {
+  __$AccountBalanceCopyWithImpl(this._self, this._then);
+
+  final _AccountBalance _self;
+  final $Res Function(_AccountBalance) _then;
+
+  /// Create a copy of AccountBalance
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? asOf = null,
+    Object? type = null,
+    Object? cash = freezed,
+    Object? credit = freezed,
+    Object? current = freezed,
+  }) {
+    return _then(_AccountBalance(
+      asOf: null == asOf
+          ? _self.asOf
+          : asOf // ignore: cast_nullable_to_non_nullable
+              as int,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as BalanceType,
+      cash: freezed == cash
+          ? _self._cash
+          : cash // ignore: cast_nullable_to_non_nullable
+              as Map<String, int>?,
+      credit: freezed == credit
+          ? _self._credit
+          : credit // ignore: cast_nullable_to_non_nullable
+              as Map<String, int>?,
+      current: freezed == current
+          ? _self._current
+          : current // ignore: cast_nullable_to_non_nullable
+              as Map<String, int>?,
+    ));
+  }
 }
 
 /// @nodoc
 mixin _$CollectFinancialConnectionsAccountsParams {
   /// iOS Only. Style options for colors in Financial Connections. By default, the bank account collector will automatically switch between light and dark mode compatible colors based on device settings.
-  UserInterfaceStyle? get style => throw _privateConstructorUsedError;
+  UserInterfaceStyle? get style;
 
   /// An optional event listener to receive [FinancialConnectionsEvent] for specific events during the process of a user connecting their financial accounts.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  FinancialConnectionsEventHandler? get onEvent =>
-      throw _privateConstructorUsedError;
+  FinancialConnectionsEventHandler? get onEvent;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+  /// Create a copy of CollectFinancialConnectionsAccountsParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $CollectFinancialConnectionsAccountsParamsCopyWith<
           CollectFinancialConnectionsAccountsParams>
-      get copyWith => throw _privateConstructorUsedError;
-}
+      get copyWith => _$CollectFinancialConnectionsAccountsParamsCopyWithImpl<
+              CollectFinancialConnectionsAccountsParams>(
+          this as CollectFinancialConnectionsAccountsParams, _$identity);
 
-/// @nodoc
-abstract class $CollectFinancialConnectionsAccountsParamsCopyWith<$Res> {
-  factory $CollectFinancialConnectionsAccountsParamsCopyWith(
-          CollectFinancialConnectionsAccountsParams value,
-          $Res Function(CollectFinancialConnectionsAccountsParams) then) =
-      _$CollectFinancialConnectionsAccountsParamsCopyWithImpl<$Res,
-          CollectFinancialConnectionsAccountsParams>;
-  @useResult
-  $Res call(
-      {UserInterfaceStyle? style,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      FinancialConnectionsEventHandler? onEvent});
-}
+  /// Serializes this CollectFinancialConnectionsAccountsParams to a JSON map.
+  Map<String, dynamic> toJson();
 
-/// @nodoc
-class _$CollectFinancialConnectionsAccountsParamsCopyWithImpl<$Res,
-        $Val extends CollectFinancialConnectionsAccountsParams>
-    implements $CollectFinancialConnectionsAccountsParamsCopyWith<$Res> {
-  _$CollectFinancialConnectionsAccountsParamsCopyWithImpl(
-      this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? style = freezed,
-    Object? onEvent = freezed,
-  }) {
-    return _then(_value.copyWith(
-      style: freezed == style
-          ? _value.style
-          : style // ignore: cast_nullable_to_non_nullable
-              as UserInterfaceStyle?,
-      onEvent: freezed == onEvent
-          ? _value.onEvent
-          : onEvent // ignore: cast_nullable_to_non_nullable
-              as FinancialConnectionsEventHandler?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CollectFinancialConnectionsAccountsParams &&
+            (identical(other.style, style) || other.style == style) &&
+            (identical(other.onEvent, onEvent) || other.onEvent == onEvent));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, style, onEvent);
+
+  @override
+  String toString() {
+    return 'CollectFinancialConnectionsAccountsParams(style: $style, onEvent: $onEvent)';
   }
 }
 
 /// @nodoc
-abstract class _$$CollectFinancialConnectionsAccountsParamsImplCopyWith<$Res>
-    implements $CollectFinancialConnectionsAccountsParamsCopyWith<$Res> {
-  factory _$$CollectFinancialConnectionsAccountsParamsImplCopyWith(
-          _$CollectFinancialConnectionsAccountsParamsImpl value,
-          $Res Function(_$CollectFinancialConnectionsAccountsParamsImpl) then) =
-      __$$CollectFinancialConnectionsAccountsParamsImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $CollectFinancialConnectionsAccountsParamsCopyWith<$Res> {
+  factory $CollectFinancialConnectionsAccountsParamsCopyWith(
+          CollectFinancialConnectionsAccountsParams value,
+          $Res Function(CollectFinancialConnectionsAccountsParams) _then) =
+      _$CollectFinancialConnectionsAccountsParamsCopyWithImpl;
   @useResult
   $Res call(
       {UserInterfaceStyle? style,
@@ -2032,28 +2008,29 @@ abstract class _$$CollectFinancialConnectionsAccountsParamsImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CollectFinancialConnectionsAccountsParamsImplCopyWithImpl<$Res>
-    extends _$CollectFinancialConnectionsAccountsParamsCopyWithImpl<$Res,
-        _$CollectFinancialConnectionsAccountsParamsImpl>
-    implements _$$CollectFinancialConnectionsAccountsParamsImplCopyWith<$Res> {
-  __$$CollectFinancialConnectionsAccountsParamsImplCopyWithImpl(
-      _$CollectFinancialConnectionsAccountsParamsImpl _value,
-      $Res Function(_$CollectFinancialConnectionsAccountsParamsImpl) _then)
-      : super(_value, _then);
+class _$CollectFinancialConnectionsAccountsParamsCopyWithImpl<$Res>
+    implements $CollectFinancialConnectionsAccountsParamsCopyWith<$Res> {
+  _$CollectFinancialConnectionsAccountsParamsCopyWithImpl(
+      this._self, this._then);
 
+  final CollectFinancialConnectionsAccountsParams _self;
+  final $Res Function(CollectFinancialConnectionsAccountsParams) _then;
+
+  /// Create a copy of CollectFinancialConnectionsAccountsParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? style = freezed,
     Object? onEvent = freezed,
   }) {
-    return _then(_$CollectFinancialConnectionsAccountsParamsImpl(
+    return _then(_self.copyWith(
       style: freezed == style
-          ? _value.style
+          ? _self.style
           : style // ignore: cast_nullable_to_non_nullable
               as UserInterfaceStyle?,
       onEvent: freezed == onEvent
-          ? _value.onEvent
+          ? _self.onEvent
           : onEvent // ignore: cast_nullable_to_non_nullable
               as FinancialConnectionsEventHandler?,
     ));
@@ -2063,15 +2040,14 @@ class __$$CollectFinancialConnectionsAccountsParamsImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$CollectFinancialConnectionsAccountsParamsImpl
-    implements _CollectFinancialConnectionsAccountsParams {
-  const _$CollectFinancialConnectionsAccountsParamsImpl(
+class _CollectFinancialConnectionsAccountsParams
+    implements CollectFinancialConnectionsAccountsParams {
+  const _CollectFinancialConnectionsAccountsParams(
       {this.style,
       @JsonKey(includeFromJson: false, includeToJson: false) this.onEvent});
-
-  factory _$CollectFinancialConnectionsAccountsParamsImpl.fromJson(
+  factory _CollectFinancialConnectionsAccountsParams.fromJson(
           Map<String, dynamic> json) =>
-      _$$CollectFinancialConnectionsAccountsParamsImplFromJson(json);
+      _$CollectFinancialConnectionsAccountsParamsFromJson(json);
 
   /// iOS Only. Style options for colors in Financial Connections. By default, the bank account collector will automatically switch between light and dark mode compatible colors based on device settings.
   @override
@@ -2082,95 +2058,131 @@ class _$CollectFinancialConnectionsAccountsParamsImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   final FinancialConnectionsEventHandler? onEvent;
 
+  /// Create a copy of CollectFinancialConnectionsAccountsParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'CollectFinancialConnectionsAccountsParams(style: $style, onEvent: $onEvent)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CollectFinancialConnectionsAccountsParamsCopyWith<
+          _CollectFinancialConnectionsAccountsParams>
+      get copyWith => __$CollectFinancialConnectionsAccountsParamsCopyWithImpl<
+          _CollectFinancialConnectionsAccountsParams>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$CollectFinancialConnectionsAccountsParamsToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CollectFinancialConnectionsAccountsParamsImpl &&
+            other is _CollectFinancialConnectionsAccountsParams &&
             (identical(other.style, style) || other.style == style) &&
             (identical(other.onEvent, onEvent) || other.onEvent == onEvent));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, style, onEvent);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$CollectFinancialConnectionsAccountsParamsImplCopyWith<
-          _$CollectFinancialConnectionsAccountsParamsImpl>
-      get copyWith =>
-          __$$CollectFinancialConnectionsAccountsParamsImplCopyWithImpl<
-                  _$CollectFinancialConnectionsAccountsParamsImpl>(
-              this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CollectFinancialConnectionsAccountsParamsImplToJson(
-      this,
-    );
+  String toString() {
+    return 'CollectFinancialConnectionsAccountsParams(style: $style, onEvent: $onEvent)';
   }
 }
 
-abstract class _CollectFinancialConnectionsAccountsParams
-    implements CollectFinancialConnectionsAccountsParams {
-  const factory _CollectFinancialConnectionsAccountsParams(
-          {final UserInterfaceStyle? style,
-          @JsonKey(includeFromJson: false, includeToJson: false)
-          final FinancialConnectionsEventHandler? onEvent}) =
-      _$CollectFinancialConnectionsAccountsParamsImpl;
-
-  factory _CollectFinancialConnectionsAccountsParams.fromJson(
-          Map<String, dynamic> json) =
-      _$CollectFinancialConnectionsAccountsParamsImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$CollectFinancialConnectionsAccountsParamsCopyWith<$Res>
+    implements $CollectFinancialConnectionsAccountsParamsCopyWith<$Res> {
+  factory _$CollectFinancialConnectionsAccountsParamsCopyWith(
+          _CollectFinancialConnectionsAccountsParams value,
+          $Res Function(_CollectFinancialConnectionsAccountsParams) _then) =
+      __$CollectFinancialConnectionsAccountsParamsCopyWithImpl;
   @override
-
-  /// iOS Only. Style options for colors in Financial Connections. By default, the bank account collector will automatically switch between light and dark mode compatible colors based on device settings.
-  UserInterfaceStyle? get style;
-  @override
-
-  /// An optional event listener to receive [FinancialConnectionsEvent] for specific events during the process of a user connecting their financial accounts.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  FinancialConnectionsEventHandler? get onEvent;
-  @override
-  @JsonKey(ignore: true)
-  _$$CollectFinancialConnectionsAccountsParamsImplCopyWith<
-          _$CollectFinancialConnectionsAccountsParamsImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @useResult
+  $Res call(
+      {UserInterfaceStyle? style,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      FinancialConnectionsEventHandler? onEvent});
 }
 
-FinancialConnectionsEvent _$FinancialConnectionsEventFromJson(
-    Map<String, dynamic> json) {
-  return _FinancialConnectionsEvent.fromJson(json);
+/// @nodoc
+class __$CollectFinancialConnectionsAccountsParamsCopyWithImpl<$Res>
+    implements _$CollectFinancialConnectionsAccountsParamsCopyWith<$Res> {
+  __$CollectFinancialConnectionsAccountsParamsCopyWithImpl(
+      this._self, this._then);
+
+  final _CollectFinancialConnectionsAccountsParams _self;
+  final $Res Function(_CollectFinancialConnectionsAccountsParams) _then;
+
+  /// Create a copy of CollectFinancialConnectionsAccountsParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? style = freezed,
+    Object? onEvent = freezed,
+  }) {
+    return _then(_CollectFinancialConnectionsAccountsParams(
+      style: freezed == style
+          ? _self.style
+          : style // ignore: cast_nullable_to_non_nullable
+              as UserInterfaceStyle?,
+      onEvent: freezed == onEvent
+          ? _self.onEvent
+          : onEvent // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionsEventHandler?,
+    ));
+  }
 }
 
 /// @nodoc
 mixin _$FinancialConnectionsEvent {
   /// The event's name. Represents the type of event that has occurred during the Financial Connections process.
-  FinancialConnectionsEventName get name => throw _privateConstructorUsedError;
+  FinancialConnectionsEventName get name;
 
   /// Event-associated metadata. Provides further detail related to the occurred event.
-  FinancialConnectionsEventMetadata get metadata =>
-      throw _privateConstructorUsedError;
+  FinancialConnectionsEventMetadata get metadata;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+  /// Create a copy of FinancialConnectionsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $FinancialConnectionsEventCopyWith<FinancialConnectionsEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$FinancialConnectionsEventCopyWithImpl<FinancialConnectionsEvent>(
+          this as FinancialConnectionsEvent, _$identity);
+
+  /// Serializes this FinancialConnectionsEvent to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is FinancialConnectionsEvent &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.metadata, metadata) ||
+                other.metadata == metadata));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, metadata);
+
+  @override
+  String toString() {
+    return 'FinancialConnectionsEvent(name: $name, metadata: $metadata)';
+  }
 }
 
 /// @nodoc
-abstract class $FinancialConnectionsEventCopyWith<$Res> {
+abstract mixin class $FinancialConnectionsEventCopyWith<$Res> {
   factory $FinancialConnectionsEventCopyWith(FinancialConnectionsEvent value,
-          $Res Function(FinancialConnectionsEvent) then) =
-      _$FinancialConnectionsEventCopyWithImpl<$Res, FinancialConnectionsEvent>;
+          $Res Function(FinancialConnectionsEvent) _then) =
+      _$FinancialConnectionsEventCopyWithImpl;
   @useResult
   $Res call(
       {FinancialConnectionsEventName name,
@@ -2180,99 +2192,53 @@ abstract class $FinancialConnectionsEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FinancialConnectionsEventCopyWithImpl<$Res,
-        $Val extends FinancialConnectionsEvent>
+class _$FinancialConnectionsEventCopyWithImpl<$Res>
     implements $FinancialConnectionsEventCopyWith<$Res> {
-  _$FinancialConnectionsEventCopyWithImpl(this._value, this._then);
+  _$FinancialConnectionsEventCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final FinancialConnectionsEvent _self;
+  final $Res Function(FinancialConnectionsEvent) _then;
 
+  /// Create a copy of FinancialConnectionsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = null,
     Object? metadata = null,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as FinancialConnectionsEventName,
       metadata: null == metadata
-          ? _value.metadata
-          : metadata // ignore: cast_nullable_to_non_nullable
-              as FinancialConnectionsEventMetadata,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FinancialConnectionsEventMetadataCopyWith<$Res> get metadata {
-    return $FinancialConnectionsEventMetadataCopyWith<$Res>(_value.metadata,
-        (value) {
-      return _then(_value.copyWith(metadata: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$FinancialConnectionsEventImplCopyWith<$Res>
-    implements $FinancialConnectionsEventCopyWith<$Res> {
-  factory _$$FinancialConnectionsEventImplCopyWith(
-          _$FinancialConnectionsEventImpl value,
-          $Res Function(_$FinancialConnectionsEventImpl) then) =
-      __$$FinancialConnectionsEventImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {FinancialConnectionsEventName name,
-      FinancialConnectionsEventMetadata metadata});
-
-  @override
-  $FinancialConnectionsEventMetadataCopyWith<$Res> get metadata;
-}
-
-/// @nodoc
-class __$$FinancialConnectionsEventImplCopyWithImpl<$Res>
-    extends _$FinancialConnectionsEventCopyWithImpl<$Res,
-        _$FinancialConnectionsEventImpl>
-    implements _$$FinancialConnectionsEventImplCopyWith<$Res> {
-  __$$FinancialConnectionsEventImplCopyWithImpl(
-      _$FinancialConnectionsEventImpl _value,
-      $Res Function(_$FinancialConnectionsEventImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? metadata = null,
-  }) {
-    return _then(_$FinancialConnectionsEventImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as FinancialConnectionsEventName,
-      metadata: null == metadata
-          ? _value.metadata
+          ? _self.metadata
           : metadata // ignore: cast_nullable_to_non_nullable
               as FinancialConnectionsEventMetadata,
     ));
+  }
+
+  /// Create a copy of FinancialConnectionsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $FinancialConnectionsEventMetadataCopyWith<$Res> get metadata {
+    return $FinancialConnectionsEventMetadataCopyWith<$Res>(_self.metadata,
+        (value) {
+      return _then(_self.copyWith(metadata: value));
+    });
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$FinancialConnectionsEventImpl implements _FinancialConnectionsEvent {
-  const _$FinancialConnectionsEventImpl(
+class _FinancialConnectionsEvent implements FinancialConnectionsEvent {
+  const _FinancialConnectionsEvent(
       {required this.name, required this.metadata});
-
-  factory _$FinancialConnectionsEventImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FinancialConnectionsEventImplFromJson(json);
+  factory _FinancialConnectionsEvent.fromJson(Map<String, dynamic> json) =>
+      _$FinancialConnectionsEventFromJson(json);
 
   /// The event's name. Represents the type of event that has occurred during the Financial Connections process.
   @override
@@ -2282,143 +2248,152 @@ class _$FinancialConnectionsEventImpl implements _FinancialConnectionsEvent {
   @override
   final FinancialConnectionsEventMetadata metadata;
 
+  /// Create a copy of FinancialConnectionsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'FinancialConnectionsEvent(name: $name, metadata: $metadata)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FinancialConnectionsEventCopyWith<_FinancialConnectionsEvent>
+      get copyWith =>
+          __$FinancialConnectionsEventCopyWithImpl<_FinancialConnectionsEvent>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$FinancialConnectionsEventToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FinancialConnectionsEventImpl &&
+            other is _FinancialConnectionsEvent &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.metadata, metadata) ||
                 other.metadata == metadata));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, metadata);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$FinancialConnectionsEventImplCopyWith<_$FinancialConnectionsEventImpl>
-      get copyWith => __$$FinancialConnectionsEventImplCopyWithImpl<
-          _$FinancialConnectionsEventImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$FinancialConnectionsEventImplToJson(
-      this,
-    );
+  String toString() {
+    return 'FinancialConnectionsEvent(name: $name, metadata: $metadata)';
   }
 }
 
-abstract class _FinancialConnectionsEvent implements FinancialConnectionsEvent {
-  const factory _FinancialConnectionsEvent(
-          {required final FinancialConnectionsEventName name,
-          required final FinancialConnectionsEventMetadata metadata}) =
-      _$FinancialConnectionsEventImpl;
-
-  factory _FinancialConnectionsEvent.fromJson(Map<String, dynamic> json) =
-      _$FinancialConnectionsEventImpl.fromJson;
+/// @nodoc
+abstract mixin class _$FinancialConnectionsEventCopyWith<$Res>
+    implements $FinancialConnectionsEventCopyWith<$Res> {
+  factory _$FinancialConnectionsEventCopyWith(_FinancialConnectionsEvent value,
+          $Res Function(_FinancialConnectionsEvent) _then) =
+      __$FinancialConnectionsEventCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {FinancialConnectionsEventName name,
+      FinancialConnectionsEventMetadata metadata});
 
   @override
-
-  /// The event's name. Represents the type of event that has occurred during the Financial Connections process.
-  FinancialConnectionsEventName get name;
-  @override
-
-  /// Event-associated metadata. Provides further detail related to the occurred event.
-  FinancialConnectionsEventMetadata get metadata;
-  @override
-  @JsonKey(ignore: true)
-  _$$FinancialConnectionsEventImplCopyWith<_$FinancialConnectionsEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  $FinancialConnectionsEventMetadataCopyWith<$Res> get metadata;
 }
 
-FinancialConnectionsEventMetadata _$FinancialConnectionsEventMetadataFromJson(
-    Map<String, dynamic> json) {
-  return _FinancialConnectionsEventMetadata.fromJson(json);
+/// @nodoc
+class __$FinancialConnectionsEventCopyWithImpl<$Res>
+    implements _$FinancialConnectionsEventCopyWith<$Res> {
+  __$FinancialConnectionsEventCopyWithImpl(this._self, this._then);
+
+  final _FinancialConnectionsEvent _self;
+  final $Res Function(_FinancialConnectionsEvent) _then;
+
+  /// Create a copy of FinancialConnectionsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? name = null,
+    Object? metadata = null,
+  }) {
+    return _then(_FinancialConnectionsEvent(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionsEventName,
+      metadata: null == metadata
+          ? _self.metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionsEventMetadata,
+    ));
+  }
+
+  /// Create a copy of FinancialConnectionsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $FinancialConnectionsEventMetadataCopyWith<$Res> get metadata {
+    return $FinancialConnectionsEventMetadataCopyWith<$Res>(_self.metadata,
+        (value) {
+      return _then(_self.copyWith(metadata: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$FinancialConnectionsEventMetadata {
   /// A Boolean value that indicates if the user completed the process through the manual entry flow.
-  bool? get manualEntry => throw _privateConstructorUsedError;
+  bool? get manualEntry;
 
   /// A String value containing the name of the institution that the user selected.
-  String? get institutionName => throw _privateConstructorUsedError;
+  String? get institutionName;
 
   /// An ErrorCode value representing the type of error that occurred.
-  FinancialConnectionsEventErrorCode? get errorCode =>
-      throw _privateConstructorUsedError;
+  FinancialConnectionsEventErrorCode? get errorCode;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $FinancialConnectionsEventMetadataCopyWith<FinancialConnectionsEventMetadata>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $FinancialConnectionsEventMetadataCopyWith<$Res> {
-  factory $FinancialConnectionsEventMetadataCopyWith(
-          FinancialConnectionsEventMetadata value,
-          $Res Function(FinancialConnectionsEventMetadata) then) =
-      _$FinancialConnectionsEventMetadataCopyWithImpl<$Res,
-          FinancialConnectionsEventMetadata>;
-  @useResult
-  $Res call(
-      {bool? manualEntry,
-      String? institutionName,
-      FinancialConnectionsEventErrorCode? errorCode});
-}
-
-/// @nodoc
-class _$FinancialConnectionsEventMetadataCopyWithImpl<$Res,
-        $Val extends FinancialConnectionsEventMetadata>
-    implements $FinancialConnectionsEventMetadataCopyWith<$Res> {
-  _$FinancialConnectionsEventMetadataCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of FinancialConnectionsEventMetadata
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $FinancialConnectionsEventMetadataCopyWith<FinancialConnectionsEventMetadata>
+      get copyWith => _$FinancialConnectionsEventMetadataCopyWithImpl<
+              FinancialConnectionsEventMetadata>(
+          this as FinancialConnectionsEventMetadata, _$identity);
+
+  /// Serializes this FinancialConnectionsEventMetadata to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? manualEntry = freezed,
-    Object? institutionName = freezed,
-    Object? errorCode = freezed,
-  }) {
-    return _then(_value.copyWith(
-      manualEntry: freezed == manualEntry
-          ? _value.manualEntry
-          : manualEntry // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      institutionName: freezed == institutionName
-          ? _value.institutionName
-          : institutionName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      errorCode: freezed == errorCode
-          ? _value.errorCode
-          : errorCode // ignore: cast_nullable_to_non_nullable
-              as FinancialConnectionsEventErrorCode?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is FinancialConnectionsEventMetadata &&
+            (identical(other.manualEntry, manualEntry) ||
+                other.manualEntry == manualEntry) &&
+            (identical(other.institutionName, institutionName) ||
+                other.institutionName == institutionName) &&
+            (identical(other.errorCode, errorCode) ||
+                other.errorCode == errorCode));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, manualEntry, institutionName, errorCode);
+
+  @override
+  String toString() {
+    return 'FinancialConnectionsEventMetadata(manualEntry: $manualEntry, institutionName: $institutionName, errorCode: $errorCode)';
   }
 }
 
 /// @nodoc
-abstract class _$$FinancialConnectionsEventMetadataImplCopyWith<$Res>
-    implements $FinancialConnectionsEventMetadataCopyWith<$Res> {
-  factory _$$FinancialConnectionsEventMetadataImplCopyWith(
-          _$FinancialConnectionsEventMetadataImpl value,
-          $Res Function(_$FinancialConnectionsEventMetadataImpl) then) =
-      __$$FinancialConnectionsEventMetadataImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $FinancialConnectionsEventMetadataCopyWith<$Res> {
+  factory $FinancialConnectionsEventMetadataCopyWith(
+          FinancialConnectionsEventMetadata value,
+          $Res Function(FinancialConnectionsEventMetadata) _then) =
+      _$FinancialConnectionsEventMetadataCopyWithImpl;
   @useResult
   $Res call(
       {bool? manualEntry,
@@ -2427,15 +2402,15 @@ abstract class _$$FinancialConnectionsEventMetadataImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$FinancialConnectionsEventMetadataImplCopyWithImpl<$Res>
-    extends _$FinancialConnectionsEventMetadataCopyWithImpl<$Res,
-        _$FinancialConnectionsEventMetadataImpl>
-    implements _$$FinancialConnectionsEventMetadataImplCopyWith<$Res> {
-  __$$FinancialConnectionsEventMetadataImplCopyWithImpl(
-      _$FinancialConnectionsEventMetadataImpl _value,
-      $Res Function(_$FinancialConnectionsEventMetadataImpl) _then)
-      : super(_value, _then);
+class _$FinancialConnectionsEventMetadataCopyWithImpl<$Res>
+    implements $FinancialConnectionsEventMetadataCopyWith<$Res> {
+  _$FinancialConnectionsEventMetadataCopyWithImpl(this._self, this._then);
 
+  final FinancialConnectionsEventMetadata _self;
+  final $Res Function(FinancialConnectionsEventMetadata) _then;
+
+  /// Create a copy of FinancialConnectionsEventMetadata
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2443,17 +2418,17 @@ class __$$FinancialConnectionsEventMetadataImplCopyWithImpl<$Res>
     Object? institutionName = freezed,
     Object? errorCode = freezed,
   }) {
-    return _then(_$FinancialConnectionsEventMetadataImpl(
+    return _then(_self.copyWith(
       manualEntry: freezed == manualEntry
-          ? _value.manualEntry
+          ? _self.manualEntry
           : manualEntry // ignore: cast_nullable_to_non_nullable
               as bool?,
       institutionName: freezed == institutionName
-          ? _value.institutionName
+          ? _self.institutionName
           : institutionName // ignore: cast_nullable_to_non_nullable
               as String?,
       errorCode: freezed == errorCode
-          ? _value.errorCode
+          ? _self.errorCode
           : errorCode // ignore: cast_nullable_to_non_nullable
               as FinancialConnectionsEventErrorCode?,
     ));
@@ -2463,14 +2438,13 @@ class __$$FinancialConnectionsEventMetadataImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$FinancialConnectionsEventMetadataImpl
-    implements _FinancialConnectionsEventMetadata {
-  const _$FinancialConnectionsEventMetadataImpl(
+class _FinancialConnectionsEventMetadata
+    implements FinancialConnectionsEventMetadata {
+  const _FinancialConnectionsEventMetadata(
       {this.manualEntry, this.institutionName, this.errorCode});
-
-  factory _$FinancialConnectionsEventMetadataImpl.fromJson(
+  factory _FinancialConnectionsEventMetadata.fromJson(
           Map<String, dynamic> json) =>
-      _$$FinancialConnectionsEventMetadataImplFromJson(json);
+      _$FinancialConnectionsEventMetadataFromJson(json);
 
   /// A Boolean value that indicates if the user completed the process through the manual entry flow.
   @override
@@ -2484,16 +2458,28 @@ class _$FinancialConnectionsEventMetadataImpl
   @override
   final FinancialConnectionsEventErrorCode? errorCode;
 
+  /// Create a copy of FinancialConnectionsEventMetadata
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'FinancialConnectionsEventMetadata(manualEntry: $manualEntry, institutionName: $institutionName, errorCode: $errorCode)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FinancialConnectionsEventMetadataCopyWith<
+          _FinancialConnectionsEventMetadata>
+      get copyWith => __$FinancialConnectionsEventMetadataCopyWithImpl<
+          _FinancialConnectionsEventMetadata>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$FinancialConnectionsEventMetadataToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FinancialConnectionsEventMetadataImpl &&
+            other is _FinancialConnectionsEventMetadata &&
             (identical(other.manualEntry, manualEntry) ||
                 other.manualEntry == manualEntry) &&
             (identical(other.institutionName, institutionName) ||
@@ -2502,54 +2488,64 @@ class _$FinancialConnectionsEventMetadataImpl
                 other.errorCode == errorCode));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, manualEntry, institutionName, errorCode);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$FinancialConnectionsEventMetadataImplCopyWith<
-          _$FinancialConnectionsEventMetadataImpl>
-      get copyWith => __$$FinancialConnectionsEventMetadataImplCopyWithImpl<
-          _$FinancialConnectionsEventMetadataImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$FinancialConnectionsEventMetadataImplToJson(
-      this,
-    );
+  String toString() {
+    return 'FinancialConnectionsEventMetadata(manualEntry: $manualEntry, institutionName: $institutionName, errorCode: $errorCode)';
   }
 }
 
-abstract class _FinancialConnectionsEventMetadata
-    implements FinancialConnectionsEventMetadata {
-  const factory _FinancialConnectionsEventMetadata(
-          {final bool? manualEntry,
-          final String? institutionName,
-          final FinancialConnectionsEventErrorCode? errorCode}) =
-      _$FinancialConnectionsEventMetadataImpl;
-
-  factory _FinancialConnectionsEventMetadata.fromJson(
-          Map<String, dynamic> json) =
-      _$FinancialConnectionsEventMetadataImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$FinancialConnectionsEventMetadataCopyWith<$Res>
+    implements $FinancialConnectionsEventMetadataCopyWith<$Res> {
+  factory _$FinancialConnectionsEventMetadataCopyWith(
+          _FinancialConnectionsEventMetadata value,
+          $Res Function(_FinancialConnectionsEventMetadata) _then) =
+      __$FinancialConnectionsEventMetadataCopyWithImpl;
   @override
-
-  /// A Boolean value that indicates if the user completed the process through the manual entry flow.
-  bool? get manualEntry;
-  @override
-
-  /// A String value containing the name of the institution that the user selected.
-  String? get institutionName;
-  @override
-
-  /// An ErrorCode value representing the type of error that occurred.
-  FinancialConnectionsEventErrorCode? get errorCode;
-  @override
-  @JsonKey(ignore: true)
-  _$$FinancialConnectionsEventMetadataImplCopyWith<
-          _$FinancialConnectionsEventMetadataImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @useResult
+  $Res call(
+      {bool? manualEntry,
+      String? institutionName,
+      FinancialConnectionsEventErrorCode? errorCode});
 }
+
+/// @nodoc
+class __$FinancialConnectionsEventMetadataCopyWithImpl<$Res>
+    implements _$FinancialConnectionsEventMetadataCopyWith<$Res> {
+  __$FinancialConnectionsEventMetadataCopyWithImpl(this._self, this._then);
+
+  final _FinancialConnectionsEventMetadata _self;
+  final $Res Function(_FinancialConnectionsEventMetadata) _then;
+
+  /// Create a copy of FinancialConnectionsEventMetadata
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? manualEntry = freezed,
+    Object? institutionName = freezed,
+    Object? errorCode = freezed,
+  }) {
+    return _then(_FinancialConnectionsEventMetadata(
+      manualEntry: freezed == manualEntry
+          ? _self.manualEntry
+          : manualEntry // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      institutionName: freezed == institutionName
+          ? _self.institutionName
+          : institutionName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _self.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionsEventErrorCode?,
+    ));
+  }
+}
+
+// dart format on

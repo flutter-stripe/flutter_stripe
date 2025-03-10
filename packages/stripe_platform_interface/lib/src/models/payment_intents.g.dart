@@ -6,8 +6,8 @@ part of 'payment_intents.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PaymentIntentImpl _$$PaymentIntentImplFromJson(Map<String, dynamic> json) =>
-    _$PaymentIntentImpl(
+_PaymentIntent _$PaymentIntentFromJson(Map<String, dynamic> json) =>
+    _PaymentIntent(
       id: json['id'] as String,
       amount: json['amount'] as num,
       created: json['created'] as String,
@@ -34,7 +34,7 @@ _$PaymentIntentImpl _$$PaymentIntentImplFromJson(Map<String, dynamic> json) =>
       latestCharge: json['latestCharge'] as String?,
     );
 
-Map<String, dynamic> _$$PaymentIntentImplToJson(_$PaymentIntentImpl instance) =>
+Map<String, dynamic> _$PaymentIntentToJson(_PaymentIntent instance) =>
     <String, dynamic>{
       'id': instance.id,
       'amount': instance.amount,
@@ -80,9 +80,8 @@ const _$ConfirmationMethodEnumMap = {
   ConfirmationMethod.Unknown: 'Unknown',
 };
 
-_$ShippingDetailsImpl _$$ShippingDetailsImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ShippingDetailsImpl(
+_ShippingDetails _$ShippingDetailsFromJson(Map<String, dynamic> json) =>
+    _ShippingDetails(
       address: Address.fromJson(json['address'] as Map<String, dynamic>),
       name: json['name'] as String?,
       carrier: json['carrier'] as String?,
@@ -90,8 +89,7 @@ _$ShippingDetailsImpl _$$ShippingDetailsImplFromJson(
       trackingNumber: json['trackingNumber'] as String?,
     );
 
-Map<String, dynamic> _$$ShippingDetailsImplToJson(
-        _$ShippingDetailsImpl instance) =>
+Map<String, dynamic> _$ShippingDetailsToJson(_ShippingDetails instance) =>
     <String, dynamic>{
       'address': instance.address.toJson(),
       'name': instance.name,

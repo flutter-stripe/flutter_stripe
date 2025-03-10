@@ -9,7 +9,7 @@ part 'customer_sheet.g.dart';
 ///
 /// For more info see https://stripe.com/docs/elements/customer-sheet?platform=react-native
 @freezed
-class CustomerSheetInitParams with _$CustomerSheetInitParams {
+abstract class CustomerSheetInitParams with _$CustomerSheetInitParams {
   @JsonSerializable(explicitToJson: true)
   const factory CustomerSheetInitParams({
     /// Color styling used for the Customersheet UI
@@ -69,7 +69,7 @@ class CustomerSheetInitParams with _$CustomerSheetInitParams {
 }
 
 @freezed
-class CustomerSheetPresentParams with _$CustomerSheetPresentParams {
+abstract class CustomerSheetPresentParams with _$CustomerSheetPresentParams {
   @JsonSerializable(explicitToJson: true)
   const factory CustomerSheetPresentParams({
     /// Controls how the modal is presented (after animation). iOS only. Defaults to `popover`.
@@ -88,7 +88,7 @@ class CustomerSheetPresentParams with _$CustomerSheetPresentParams {
 }
 
 @freezed
-class CustomerSheetResult with _$CustomerSheetResult {
+abstract class CustomerSheetResult with _$CustomerSheetResult {
   @JsonSerializable(explicitToJson: true)
   const factory CustomerSheetResult({
     /// The users selected payment option, if one exists.

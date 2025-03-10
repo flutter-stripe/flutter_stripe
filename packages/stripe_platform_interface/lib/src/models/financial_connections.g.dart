@@ -6,39 +6,38 @@ part of 'financial_connections.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$FinancialConnectionSessionResultImpl
-    _$$FinancialConnectionSessionResultImplFromJson(
-            Map<String, dynamic> json) =>
-        _$FinancialConnectionSessionResultImpl(
-          session: FinancialConnectionSession.fromJson(
-              json['session'] as Map<String, dynamic>),
-        );
+_FinancialConnectionSessionResult _$FinancialConnectionSessionResultFromJson(
+        Map<String, dynamic> json) =>
+    _FinancialConnectionSessionResult(
+      session: FinancialConnectionSession.fromJson(
+          json['session'] as Map<String, dynamic>),
+    );
 
-Map<String, dynamic> _$$FinancialConnectionSessionResultImplToJson(
-        _$FinancialConnectionSessionResultImpl instance) =>
+Map<String, dynamic> _$FinancialConnectionSessionResultToJson(
+        _FinancialConnectionSessionResult instance) =>
     <String, dynamic>{
       'session': instance.session.toJson(),
     };
 
-_$FinancialConnectionTokenResultImpl
-    _$$FinancialConnectionTokenResultImplFromJson(Map<String, dynamic> json) =>
-        _$FinancialConnectionTokenResultImpl(
-          session: FinancialConnectionSession.fromJson(
-              json['session'] as Map<String, dynamic>),
-          token: FinancialConnectionBankAccountToken.fromJson(
-              json['token'] as Map<String, dynamic>),
-        );
+_FinancialConnectionTokenResult _$FinancialConnectionTokenResultFromJson(
+        Map<String, dynamic> json) =>
+    _FinancialConnectionTokenResult(
+      session: FinancialConnectionSession.fromJson(
+          json['session'] as Map<String, dynamic>),
+      token: FinancialConnectionBankAccountToken.fromJson(
+          json['token'] as Map<String, dynamic>),
+    );
 
-Map<String, dynamic> _$$FinancialConnectionTokenResultImplToJson(
-        _$FinancialConnectionTokenResultImpl instance) =>
+Map<String, dynamic> _$FinancialConnectionTokenResultToJson(
+        _FinancialConnectionTokenResult instance) =>
     <String, dynamic>{
       'session': instance.session.toJson(),
       'token': instance.token.toJson(),
     };
 
-_$FinancialConnectionSessionImpl _$$FinancialConnectionSessionImplFromJson(
+_FinancialConnectionSession _$FinancialConnectionSessionFromJson(
         Map<String, dynamic> json) =>
-    _$FinancialConnectionSessionImpl(
+    _FinancialConnectionSession(
       id: json['id'] as String,
       clientSecret: json['clientSecret'] as String,
       livemode: json['livemode'] as bool,
@@ -48,8 +47,8 @@ _$FinancialConnectionSessionImpl _$$FinancialConnectionSessionImplFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$FinancialConnectionSessionImplToJson(
-        _$FinancialConnectionSessionImpl instance) =>
+Map<String, dynamic> _$FinancialConnectionSessionToJson(
+        _FinancialConnectionSession instance) =>
     <String, dynamic>{
       'id': instance.id,
       'clientSecret': instance.clientSecret,
@@ -57,10 +56,9 @@ Map<String, dynamic> _$$FinancialConnectionSessionImplToJson(
       'accounts': instance.accounts.map((e) => e.toJson()).toList(),
     };
 
-_$FinancialConnectionBankAccountTokenImpl
-    _$$FinancialConnectionBankAccountTokenImplFromJson(
-            Map<String, dynamic> json) =>
-        _$FinancialConnectionBankAccountTokenImpl(
+_FinancialConnectionBankAccountToken
+    _$FinancialConnectionBankAccountTokenFromJson(Map<String, dynamic> json) =>
+        _FinancialConnectionBankAccountToken(
           bankAccount: json['bankAccount'] == null
               ? null
               : BankAccount.fromJson(
@@ -71,8 +69,8 @@ _$FinancialConnectionBankAccountTokenImpl
           created: (json['created'] as num?)?.toInt(),
         );
 
-Map<String, dynamic> _$$FinancialConnectionBankAccountTokenImplToJson(
-        _$FinancialConnectionBankAccountTokenImpl instance) =>
+Map<String, dynamic> _$FinancialConnectionBankAccountTokenToJson(
+        _FinancialConnectionBankAccountToken instance) =>
     <String, dynamic>{
       'bankAccount': instance.bankAccount?.toJson(),
       'livemode': instance.livemode,
@@ -81,9 +79,9 @@ Map<String, dynamic> _$$FinancialConnectionBankAccountTokenImplToJson(
       'created': instance.created,
     };
 
-_$FinancialConnectionAccountImpl _$$FinancialConnectionAccountImplFromJson(
+_FinancialConnectionAccount _$FinancialConnectionAccountFromJson(
         Map<String, dynamic> json) =>
-    _$FinancialConnectionAccountImpl(
+    _FinancialConnectionAccount(
       id: json['id'] as String,
       livemode: json['livemode'] as bool,
       displayName: json['displayName'] as String?,
@@ -111,8 +109,8 @@ _$FinancialConnectionAccountImpl _$$FinancialConnectionAccountImplFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$FinancialConnectionAccountImplToJson(
-        _$FinancialConnectionAccountImpl instance) =>
+Map<String, dynamic> _$FinancialConnectionAccountToJson(
+        _FinancialConnectionAccount instance) =>
     <String, dynamic>{
       'id': instance.id,
       'livemode': instance.livemode,
@@ -168,14 +166,13 @@ const _$FinancialConnectionsPaymentMethodTypeEnumMap = {
   FinancialConnectionsPaymentMethodType.link: 'link',
 };
 
-_$BalanceRefreshImpl _$$BalanceRefreshImplFromJson(Map<String, dynamic> json) =>
-    _$BalanceRefreshImpl(
+_BalanceRefresh _$BalanceRefreshFromJson(Map<String, dynamic> json) =>
+    _BalanceRefresh(
       status: $enumDecode(_$BalanceRefreshStatusEnumMap, json['status']),
       lastAttemptedAt: (json['lastAttemptedAt'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$BalanceRefreshImplToJson(
-        _$BalanceRefreshImpl instance) =>
+Map<String, dynamic> _$BalanceRefreshToJson(_BalanceRefresh instance) =>
     <String, dynamic>{
       'status': _$BalanceRefreshStatusEnumMap[instance.status]!,
       'lastAttemptedAt': instance.lastAttemptedAt,
@@ -187,8 +184,8 @@ const _$BalanceRefreshStatusEnumMap = {
   BalanceRefreshStatus.succeeded: 'succeeded',
 };
 
-_$AccountBalanceImpl _$$AccountBalanceImplFromJson(Map<String, dynamic> json) =>
-    _$AccountBalanceImpl(
+_AccountBalance _$AccountBalanceFromJson(Map<String, dynamic> json) =>
+    _AccountBalance(
       asOf: (json['asOf'] as num).toInt(),
       type: $enumDecode(_$BalanceTypeEnumMap, json['type']),
       cash: (json['cash'] as Map<String, dynamic>?)?.map(
@@ -202,8 +199,7 @@ _$AccountBalanceImpl _$$AccountBalanceImplFromJson(Map<String, dynamic> json) =>
       ),
     );
 
-Map<String, dynamic> _$$AccountBalanceImplToJson(
-        _$AccountBalanceImpl instance) =>
+Map<String, dynamic> _$AccountBalanceToJson(_AccountBalance instance) =>
     <String, dynamic>{
       'asOf': instance.asOf,
       'type': _$BalanceTypeEnumMap[instance.type]!,
@@ -217,16 +213,16 @@ const _$BalanceTypeEnumMap = {
   BalanceType.credit: 'credit',
 };
 
-_$CollectFinancialConnectionsAccountsParamsImpl
-    _$$CollectFinancialConnectionsAccountsParamsImplFromJson(
+_CollectFinancialConnectionsAccountsParams
+    _$CollectFinancialConnectionsAccountsParamsFromJson(
             Map<String, dynamic> json) =>
-        _$CollectFinancialConnectionsAccountsParamsImpl(
+        _CollectFinancialConnectionsAccountsParams(
           style:
               $enumDecodeNullable(_$UserInterfaceStyleEnumMap, json['style']),
         );
 
-Map<String, dynamic> _$$CollectFinancialConnectionsAccountsParamsImplToJson(
-        _$CollectFinancialConnectionsAccountsParamsImpl instance) =>
+Map<String, dynamic> _$CollectFinancialConnectionsAccountsParamsToJson(
+        _CollectFinancialConnectionsAccountsParams instance) =>
     <String, dynamic>{
       'style': _$UserInterfaceStyleEnumMap[instance.style],
     };
@@ -237,16 +233,16 @@ const _$UserInterfaceStyleEnumMap = {
   UserInterfaceStyle.automatic: 'automatic',
 };
 
-_$FinancialConnectionsEventImpl _$$FinancialConnectionsEventImplFromJson(
+_FinancialConnectionsEvent _$FinancialConnectionsEventFromJson(
         Map<String, dynamic> json) =>
-    _$FinancialConnectionsEventImpl(
+    _FinancialConnectionsEvent(
       name: $enumDecode(_$FinancialConnectionsEventNameEnumMap, json['name']),
       metadata: FinancialConnectionsEventMetadata.fromJson(
           json['metadata'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$FinancialConnectionsEventImplToJson(
-        _$FinancialConnectionsEventImpl instance) =>
+Map<String, dynamic> _$FinancialConnectionsEventToJson(
+        _FinancialConnectionsEvent instance) =>
     <String, dynamic>{
       'name': _$FinancialConnectionsEventNameEnumMap[instance.name]!,
       'metadata': instance.metadata.toJson(),
@@ -269,18 +265,17 @@ const _$FinancialConnectionsEventNameEnumMap = {
       'flow_launched_in_browser',
 };
 
-_$FinancialConnectionsEventMetadataImpl
-    _$$FinancialConnectionsEventMetadataImplFromJson(
-            Map<String, dynamic> json) =>
-        _$FinancialConnectionsEventMetadataImpl(
-          manualEntry: json['manualEntry'] as bool?,
-          institutionName: json['institutionName'] as String?,
-          errorCode: $enumDecodeNullable(
-              _$FinancialConnectionsEventErrorCodeEnumMap, json['errorCode']),
-        );
+_FinancialConnectionsEventMetadata _$FinancialConnectionsEventMetadataFromJson(
+        Map<String, dynamic> json) =>
+    _FinancialConnectionsEventMetadata(
+      manualEntry: json['manualEntry'] as bool?,
+      institutionName: json['institutionName'] as String?,
+      errorCode: $enumDecodeNullable(
+          _$FinancialConnectionsEventErrorCodeEnumMap, json['errorCode']),
+    );
 
-Map<String, dynamic> _$$FinancialConnectionsEventMetadataImplToJson(
-        _$FinancialConnectionsEventMetadataImpl instance) =>
+Map<String, dynamic> _$FinancialConnectionsEventMetadataToJson(
+        _FinancialConnectionsEventMetadata instance) =>
     <String, dynamic>{
       'manualEntry': instance.manualEntry,
       'institutionName': instance.institutionName,

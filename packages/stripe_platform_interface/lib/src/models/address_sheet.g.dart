@@ -6,16 +6,16 @@ part of 'address_sheet.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AddressSheetAdditionalFieldsImpl _$$AddressSheetAdditionalFieldsImplFromJson(
+_AddressSheetAdditionalFields _$AddressSheetAdditionalFieldsFromJson(
         Map<String, dynamic> json) =>
-    _$AddressSheetAdditionalFieldsImpl(
+    _AddressSheetAdditionalFields(
       phoneNumber: $enumDecode(
           _$AddressSheetPhoneNumberFieldEnumMap, json['phoneNumber']),
       checkboxLabel: json['checkboxLabel'] as String?,
     );
 
-Map<String, dynamic> _$$AddressSheetAdditionalFieldsImplToJson(
-        _$AddressSheetAdditionalFieldsImpl instance) =>
+Map<String, dynamic> _$AddressSheetAdditionalFieldsToJson(
+        _AddressSheetAdditionalFields instance) =>
     <String, dynamic>{
       'phoneNumber':
           _$AddressSheetPhoneNumberFieldEnumMap[instance.phoneNumber]!,
@@ -28,25 +28,24 @@ const _$AddressSheetPhoneNumberFieldEnumMap = {
   AddressSheetPhoneNumberField.hidden: 'hidden',
 };
 
-_$CollectAddressResultImpl _$$CollectAddressResultImplFromJson(
+_CollectAddressResult _$CollectAddressResultFromJson(
         Map<String, dynamic> json) =>
-    _$CollectAddressResultImpl(
+    _CollectAddressResult(
       name: json['name'] as String,
       address: Address.fromJson(json['address'] as Map<String, dynamic>),
       phoneNumber: json['phoneNumber'] as String?,
     );
 
-Map<String, dynamic> _$$CollectAddressResultImplToJson(
-        _$CollectAddressResultImpl instance) =>
+Map<String, dynamic> _$CollectAddressResultToJson(
+        _CollectAddressResult instance) =>
     <String, dynamic>{
       'name': instance.name,
       'address': instance.address,
       'phoneNumber': instance.phoneNumber,
     };
 
-_$AddressSheetParamsImpl _$$AddressSheetParamsImplFromJson(
-        Map<String, dynamic> json) =>
-    _$AddressSheetParamsImpl(
+_AddressSheetParams _$AddressSheetParamsFromJson(Map<String, dynamic> json) =>
+    _AddressSheetParams(
       visible: json['visible'] as bool? ?? true,
       presentationStyle: $enumDecodeNullable(
           _$AddressSheetPresentationStyleEnumMap, json['presentationStyle']),
@@ -75,8 +74,7 @@ _$AddressSheetParamsImpl _$$AddressSheetParamsImplFromJson(
       googlePlacesApiKey: json['googlePlacesApiKey'] as String?,
     );
 
-Map<String, dynamic> _$$AddressSheetParamsImplToJson(
-        _$AddressSheetParamsImpl instance) =>
+Map<String, dynamic> _$AddressSheetParamsToJson(_AddressSheetParams instance) =>
     <String, dynamic>{
       'visible': instance.visible,
       'presentationStyle':

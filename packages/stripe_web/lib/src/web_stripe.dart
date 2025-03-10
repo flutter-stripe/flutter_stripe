@@ -14,8 +14,6 @@ import 'package:web/web.dart' as web;
 import 'parser/payment_intent.dart';
 import 'parser/payment_methods.dart';
 import 'parser/payment_request.dart';
-import 'parser/setup_intent.dart';
-import 'parser/token.dart';
 
 /// An implementation of [StripePlatform] that uses method channels.
 class WebStripe extends StripePlatform {

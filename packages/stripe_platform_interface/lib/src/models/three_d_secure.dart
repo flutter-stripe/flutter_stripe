@@ -5,7 +5,7 @@ part 'three_d_secure.g.dart';
 
 /// Parameters to configure the 3d secure screen.
 @freezed
-class ThreeDSecureConfigurationParams with _$ThreeDSecureConfigurationParams {
+abstract class ThreeDSecureConfigurationParams with _$ThreeDSecureConfigurationParams {
   @JsonSerializable(explicitToJson: true)
   const factory ThreeDSecureConfigurationParams({
     /// Styling for the 3d secure navigation bar.
@@ -45,7 +45,7 @@ class ThreeDSecureConfigurationParams with _$ThreeDSecureConfigurationParams {
 @freezed
 
 /// Styling info related to the 3d secure navigation bar.
-class ThreeDSecureNavigationBarThemeData
+abstract class ThreeDSecureNavigationBarThemeData
     with _$ThreeDSecureNavigationBarThemeData {
   @JsonSerializable(explicitToJson: true)
   const factory ThreeDSecureNavigationBarThemeData({
@@ -79,7 +79,7 @@ class ThreeDSecureNavigationBarThemeData
 
 /// Styling info related to the 3d secure label.
 
-class ThreeDSecureLabelThemeData with _$ThreeDSecureLabelThemeData {
+abstract class ThreeDSecureLabelThemeData with _$ThreeDSecureLabelThemeData {
   @JsonSerializable(explicitToJson: true)
   const factory ThreeDSecureLabelThemeData({
     /// Color in hex for header text.
@@ -105,7 +105,7 @@ class ThreeDSecureLabelThemeData with _$ThreeDSecureLabelThemeData {
 
 /// Styling info related to the 3d secure text field.
 
-class ThreeDSecureTextFieldThemeData with _$ThreeDSecureTextFieldThemeData {
+abstract class ThreeDSecureTextFieldThemeData with _$ThreeDSecureTextFieldThemeData {
   @JsonSerializable(explicitToJson: true)
   const factory ThreeDSecureTextFieldThemeData({
     /// Color in hex for the border
@@ -133,7 +133,7 @@ class ThreeDSecureTextFieldThemeData with _$ThreeDSecureTextFieldThemeData {
 
 /// Styling info related to the 3d secure button.
 
-class ThreeDSecureButtonThemeData with _$ThreeDSecureButtonThemeData {
+abstract class ThreeDSecureButtonThemeData with _$ThreeDSecureButtonThemeData {
   @JsonSerializable(explicitToJson: true)
   const factory ThreeDSecureButtonThemeData({
     /// Color in hex for button background

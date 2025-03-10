@@ -6,30 +6,27 @@ part of 'next_action.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$NextActionRedirectImpl _$$NextActionRedirectImplFromJson(
-        Map<String, dynamic> json) =>
-    _$NextActionRedirectImpl(
+_NextActionRedirect _$NextActionRedirectFromJson(Map<String, dynamic> json) =>
+    _NextActionRedirect(
       redirectUrl: json['redirectUrl'] as String?,
       $type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$NextActionRedirectImplToJson(
-        _$NextActionRedirectImpl instance) =>
+Map<String, dynamic> _$NextActionRedirectToJson(_NextActionRedirect instance) =>
     <String, dynamic>{
       'redirectUrl': instance.redirectUrl,
       'type': instance.$type,
     };
 
-_$NextActionOxxoImpl _$$NextActionOxxoImplFromJson(Map<String, dynamic> json) =>
-    _$NextActionOxxoImpl(
+_NextActionOxxo _$NextActionOxxoFromJson(Map<String, dynamic> json) =>
+    _NextActionOxxo(
       expiration: (json['expiration'] as num?)?.toInt(),
       voucherURL: json['voucherURL'] as String?,
       voucherNumber: json['voucherNumber'] as String?,
       $type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$NextActionOxxoImplToJson(
-        _$NextActionOxxoImpl instance) =>
+Map<String, dynamic> _$NextActionOxxoToJson(_NextActionOxxo instance) =>
     <String, dynamic>{
       'expiration': instance.expiration,
       'voucherURL': instance.voucherURL,
@@ -37,31 +34,31 @@ Map<String, dynamic> _$$NextActionOxxoImplToJson(
       'type': instance.$type,
     };
 
-_$NextActionWeChatRedirectImpl _$$NextActionWeChatRedirectImplFromJson(
+_NextActionWeChatRedirect _$NextActionWeChatRedirectFromJson(
         Map<String, dynamic> json) =>
-    _$NextActionWeChatRedirectImpl(
+    _NextActionWeChatRedirect(
       redirectUrl: json['redirectUrl'] as String?,
       $type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$NextActionWeChatRedirectImplToJson(
-        _$NextActionWeChatRedirectImpl instance) =>
+Map<String, dynamic> _$NextActionWeChatRedirectToJson(
+        _NextActionWeChatRedirect instance) =>
     <String, dynamic>{
       'redirectUrl': instance.redirectUrl,
       'type': instance.$type,
     };
 
-_$NextActionMicroDepositsImpl _$$NextActionMicroDepositsImplFromJson(
+_NextActionMicroDeposits _$NextActionMicroDepositsFromJson(
         Map<String, dynamic> json) =>
-    _$NextActionMicroDepositsImpl(
+    _NextActionMicroDeposits(
       arrivalDate: json['arrivalDate'] as String?,
       redirectUrl: json['redirectUrl'] as String?,
       microdepositType: json['microdepositType'] as String?,
       $type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$NextActionMicroDepositsImplToJson(
-        _$NextActionMicroDepositsImpl instance) =>
+Map<String, dynamic> _$NextActionMicroDepositsToJson(
+        _NextActionMicroDeposits instance) =>
     <String, dynamic>{
       'arrivalDate': instance.arrivalDate,
       'redirectUrl': instance.redirectUrl,
@@ -69,15 +66,15 @@ Map<String, dynamic> _$$NextActionMicroDepositsImplToJson(
       'type': instance.$type,
     };
 
-_$NextActionMultiBancoImpl _$$NextActionMultiBancoImplFromJson(
+_NextActionMultiBanco _$NextActionMultiBancoFromJson(
         Map<String, dynamic> json) =>
-    _$NextActionMultiBancoImpl(
+    _NextActionMultiBanco(
       voucherURL: json['voucherURL'] as String?,
       $type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$NextActionMultiBancoImplToJson(
-        _$NextActionMultiBancoImpl instance) =>
+Map<String, dynamic> _$NextActionMultiBancoToJson(
+        _NextActionMultiBanco instance) =>
     <String, dynamic>{
       'voucherURL': instance.voucherURL,
       'type': instance.$type,

@@ -6,9 +6,9 @@ part of 'apple_pay.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ApplePayShippingMethodImpl _$$ApplePayShippingMethodImplFromJson(
+_ApplePayShippingMethod _$ApplePayShippingMethodFromJson(
         Map<String, dynamic> json) =>
-    _$ApplePayShippingMethodImpl(
+    _ApplePayShippingMethod(
       label: json['label'] as String,
       amount: json['amount'] as String,
       identifier: json['identifier'] as String,
@@ -18,8 +18,8 @@ _$ApplePayShippingMethodImpl _$$ApplePayShippingMethodImplFromJson(
       endDate: (json['endDate'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$ApplePayShippingMethodImplToJson(
-        _$ApplePayShippingMethodImpl instance) =>
+Map<String, dynamic> _$ApplePayShippingMethodToJson(
+        _ApplePayShippingMethod instance) =>
     <String, dynamic>{
       'label': instance.label,
       'amount': instance.amount,
@@ -30,17 +30,17 @@ Map<String, dynamic> _$$ApplePayShippingMethodImplToJson(
       'endDate': instance.endDate,
     };
 
-_$ImmediateCartSummaryItemImpl _$$ImmediateCartSummaryItemImplFromJson(
+ImmediateCartSummaryItem _$ImmediateCartSummaryItemFromJson(
         Map<String, dynamic> json) =>
-    _$ImmediateCartSummaryItemImpl(
+    ImmediateCartSummaryItem(
       label: json['label'] as String,
       amount: json['amount'] as String,
       isPending: json['isPending'] as bool?,
       $type: json['paymentType'] as String?,
     );
 
-Map<String, dynamic> _$$ImmediateCartSummaryItemImplToJson(
-        _$ImmediateCartSummaryItemImpl instance) =>
+Map<String, dynamic> _$ImmediateCartSummaryItemToJson(
+        ImmediateCartSummaryItem instance) =>
     <String, dynamic>{
       'label': instance.label,
       'amount': instance.amount,
@@ -48,17 +48,16 @@ Map<String, dynamic> _$$ImmediateCartSummaryItemImplToJson(
       'paymentType': instance.$type,
     };
 
-_$DeferredSummaryItemImpl _$$DeferredSummaryItemImplFromJson(
-        Map<String, dynamic> json) =>
-    _$DeferredSummaryItemImpl(
+DeferredSummaryItem _$DeferredSummaryItemFromJson(Map<String, dynamic> json) =>
+    DeferredSummaryItem(
       label: json['label'] as String,
       amount: json['amount'] as String,
       deferredDate: (json['deferredDate'] as num).toInt(),
       $type: json['paymentType'] as String?,
     );
 
-Map<String, dynamic> _$$DeferredSummaryItemImplToJson(
-        _$DeferredSummaryItemImpl instance) =>
+Map<String, dynamic> _$DeferredSummaryItemToJson(
+        DeferredSummaryItem instance) =>
     <String, dynamic>{
       'label': instance.label,
       'amount': instance.amount,
@@ -66,9 +65,9 @@ Map<String, dynamic> _$$DeferredSummaryItemImplToJson(
       'paymentType': instance.$type,
     };
 
-_$RecurringCartSummaryItemImpl _$$RecurringCartSummaryItemImplFromJson(
+RecurringCartSummaryItem _$RecurringCartSummaryItemFromJson(
         Map<String, dynamic> json) =>
-    _$RecurringCartSummaryItemImpl(
+    RecurringCartSummaryItem(
       label: json['label'] as String,
       amount: json['amount'] as String,
       intervalUnit:
@@ -79,8 +78,8 @@ _$RecurringCartSummaryItemImpl _$$RecurringCartSummaryItemImplFromJson(
       $type: json['paymentType'] as String?,
     );
 
-Map<String, dynamic> _$$RecurringCartSummaryItemImplToJson(
-        _$RecurringCartSummaryItemImpl instance) =>
+Map<String, dynamic> _$RecurringCartSummaryItemToJson(
+        RecurringCartSummaryItem instance) =>
     <String, dynamic>{
       'label': instance.label,
       'amount': instance.amount,
@@ -99,9 +98,9 @@ const _$ApplePayIntervalUnitEnumMap = {
   ApplePayIntervalUnit.year: 'year',
 };
 
-_$ApplePayPresentParamsImpl _$$ApplePayPresentParamsImplFromJson(
+_ApplePayPresentParams _$ApplePayPresentParamsFromJson(
         Map<String, dynamic> json) =>
-    _$ApplePayPresentParamsImpl(
+    _ApplePayPresentParams(
       cartItems: (json['cartItems'] as List<dynamic>)
           .map((e) =>
               ApplePayCartSummaryItem.fromJson(e as Map<String, dynamic>))
@@ -123,8 +122,8 @@ _$ApplePayPresentParamsImpl _$$ApplePayPresentParamsImplFromJson(
       jcbEnabled: json['jcbEnabled'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$ApplePayPresentParamsImplToJson(
-        _$ApplePayPresentParamsImpl instance) =>
+Map<String, dynamic> _$ApplePayPresentParamsToJson(
+        _ApplePayPresentParams instance) =>
     <String, dynamic>{
       'cartItems': instance.cartItems.map((e) => e.toJson()).toList(),
       'country': instance.country,
@@ -148,23 +147,22 @@ const _$ApplePayContactFieldsTypeEnumMap = {
   ApplePayContactFieldsType.postalAddress: 'postalAddress',
 };
 
-_$ApplePayErrorAddressFieldImpl _$$ApplePayErrorAddressFieldImplFromJson(
+_ApplePayErrorAddressField _$ApplePayErrorAddressFieldFromJson(
         Map<String, dynamic> json) =>
-    _$ApplePayErrorAddressFieldImpl(
+    _ApplePayErrorAddressField(
       field: $enumDecode(_$ApplePayContactFieldsTypeEnumMap, json['field']),
       message: json['message'] as String?,
     );
 
-Map<String, dynamic> _$$ApplePayErrorAddressFieldImplToJson(
-        _$ApplePayErrorAddressFieldImpl instance) =>
+Map<String, dynamic> _$ApplePayErrorAddressFieldToJson(
+        _ApplePayErrorAddressField instance) =>
     <String, dynamic>{
       'field': _$ApplePayContactFieldsTypeEnumMap[instance.field]!,
       'message': instance.message,
     };
 
-_$ApplePayContactNameImpl _$$ApplePayContactNameImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ApplePayContactNameImpl(
+_ApplePayContactName _$ApplePayContactNameFromJson(Map<String, dynamic> json) =>
+    _ApplePayContactName(
       familyName: json['familyName'] as String?,
       namePrefix: json['namePrefix'] as String?,
       nameSuffix: json['nameSuffix'] as String?,
@@ -173,8 +171,8 @@ _$ApplePayContactNameImpl _$$ApplePayContactNameImplFromJson(
       nickname: json['nickname'] as String?,
     );
 
-Map<String, dynamic> _$$ApplePayContactNameImplToJson(
-        _$ApplePayContactNameImpl instance) =>
+Map<String, dynamic> _$ApplePayContactNameToJson(
+        _ApplePayContactName instance) =>
     <String, dynamic>{
       'familyName': instance.familyName,
       'namePrefix': instance.namePrefix,
@@ -184,9 +182,9 @@ Map<String, dynamic> _$$ApplePayContactNameImplToJson(
       'nickname': instance.nickname,
     };
 
-_$ApplePayPostalAddressImpl _$$ApplePayPostalAddressImplFromJson(
+_ApplePayPostalAddress _$ApplePayPostalAddressFromJson(
         Map<String, dynamic> json) =>
-    _$ApplePayPostalAddressImpl(
+    _ApplePayPostalAddress(
       city: json['city'] as String?,
       country: json['country'] as String?,
       postalCode: json['postalCode'] as String?,
@@ -197,8 +195,8 @@ _$ApplePayPostalAddressImpl _$$ApplePayPostalAddressImplFromJson(
       subLocality: json['subLocality'] as String?,
     );
 
-Map<String, dynamic> _$$ApplePayPostalAddressImplToJson(
-        _$ApplePayPostalAddressImpl instance) =>
+Map<String, dynamic> _$ApplePayPostalAddressToJson(
+        _ApplePayPostalAddress instance) =>
     <String, dynamic>{
       'city': instance.city,
       'country': instance.country,

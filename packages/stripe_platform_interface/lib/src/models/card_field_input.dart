@@ -11,7 +11,7 @@ part 'card_field_input.g.dart';
 @freezed
 
 /// Styiling information for the cardfield.
-class CardStyle with _$CardStyle {
+abstract class CardStyle with _$CardStyle {
   @JsonSerializable(explicitToJson: true)
   factory CardStyle({
     /// Width for the border.
@@ -75,7 +75,7 @@ class CardStyle with _$CardStyle {
 @freezed
 
 /// Styiling information for the cardfield.
-class CardFormStyle with _$CardFormStyle {
+abstract class CardFormStyle with _$CardFormStyle {
   @JsonSerializable(explicitToJson: true)
   factory CardFormStyle({
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -136,7 +136,7 @@ class CardFormStyle with _$CardFormStyle {
 @freezed
 
 /// Localized text for the placeholders of the card fields.
-class CardPlaceholder with _$CardPlaceholder {
+abstract class CardPlaceholder with _$CardPlaceholder {
   @JsonSerializable(explicitToJson: true)
   factory CardPlaceholder({
     /// Localized placeholder for card number field.
@@ -171,7 +171,7 @@ class CardPlaceholder with _$CardPlaceholder {
 @freezed
 
 /// User input details.
-class CardFieldInputDetails with _$CardFieldInputDetails {
+abstract class CardFieldInputDetails with _$CardFieldInputDetails {
   const CardFieldInputDetails._();
 
   @JsonSerializable(explicitToJson: true)
@@ -218,7 +218,7 @@ class CardFieldInputDetails with _$CardFieldInputDetails {
 
 /// Used to communicate with the card handler on the native platform side when focus changes.
 @freezed
-class CardFieldFocusName with _$CardFieldFocusName {
+abstract class CardFieldFocusName with _$CardFieldFocusName {
   @JsonSerializable(explicitToJson: true)
   factory CardFieldFocusName({CardFieldName? focusedField}) =
       _CardFieldFocusName;

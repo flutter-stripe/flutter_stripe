@@ -5,7 +5,7 @@ part 'address.g.dart';
 
 /// Information regarding the Address sheet field
 @freezed
-class AddressDetails with _$AddressDetails {
+abstract class AddressDetails with _$AddressDetails {
   @JsonSerializable(explicitToJson: true)
   const factory AddressDetails({
     /// The customer's full name
@@ -25,7 +25,7 @@ class AddressDetails with _$AddressDetails {
 @freezed
 
 /// Address information
-class Address with _$Address {
+abstract class Address with _$Address {
   const Address._();
   @JsonSerializable(explicitToJson: true)
   const factory Address({

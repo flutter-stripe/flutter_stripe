@@ -21,7 +21,7 @@ enum CanAddToWalletErrorStatus {
 @freezed
 
 /// The result when asking the Stripe sdk to add a card to wallet
-class AddToWalletResult with _$AddToWalletResult {
+abstract class AddToWalletResult with _$AddToWalletResult {
   const factory AddToWalletResult({
     /// Whether or not the card can be added to the wallet
     required bool canAddToWallet,
@@ -34,7 +34,7 @@ class AddToWalletResult with _$AddToWalletResult {
 @freezed
 
 /// The Details object that provides some additional result
-class AddToWalletDetails with _$AddToWalletDetails {
+abstract class AddToWalletDetails with _$AddToWalletDetails {
   const factory AddToWalletDetails({
     /// The status of the can add to wallet request in case it failed.
     CanAddToWalletErrorStatus? status,

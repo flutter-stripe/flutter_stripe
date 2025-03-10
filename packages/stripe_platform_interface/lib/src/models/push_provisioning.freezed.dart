@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,130 +10,81 @@ part of 'push_provisioning.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-GooglePayCardToken _$GooglePayCardTokenFromJson(Map<String, dynamic> json) {
-  return _GooglePayCardToken.fromJson(json);
-}
 
 /// @nodoc
 mixin _$GooglePayCardToken {
   /// The token reference ID.,
-  String get id => throw _privateConstructorUsedError;
+  String get id;
 
   /// Last four digits of the FPAN,
-  String get fpanLastFour => throw _privateConstructorUsedError;
+  String get fpanLastFour;
 
   /// Last four digits of the DPAN,
-  String get dpanLastFour => throw _privateConstructorUsedError;
+  String get dpanLastFour;
 
   /// The network of the card.
-  int get network => throw _privateConstructorUsedError;
+  int get network;
 
   /// The service provider of the card.
-  int get serviceProvider => throw _privateConstructorUsedError;
+  int get serviceProvider;
 
   /// The name of the issuer.,
-  String get issuer => throw _privateConstructorUsedError;
+  String get issuer;
 
   /// The GooglePayCardTokenStatus.,
-  GooglePayCardTokenStatus get status => throw _privateConstructorUsedError;
+  GooglePayCardTokenStatus get status;
 
   /// Deprecated. Use fpanLastFour or dpanLastFour.,
-  String get cardLastFour => throw _privateConstructorUsedError;
+  String get cardLastFour;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $GooglePayCardTokenCopyWith<GooglePayCardToken> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $GooglePayCardTokenCopyWith<$Res> {
-  factory $GooglePayCardTokenCopyWith(
-          GooglePayCardToken value, $Res Function(GooglePayCardToken) then) =
-      _$GooglePayCardTokenCopyWithImpl<$Res, GooglePayCardToken>;
-  @useResult
-  $Res call(
-      {String id,
-      String fpanLastFour,
-      String dpanLastFour,
-      int network,
-      int serviceProvider,
-      String issuer,
-      GooglePayCardTokenStatus status,
-      String cardLastFour});
-}
-
-/// @nodoc
-class _$GooglePayCardTokenCopyWithImpl<$Res, $Val extends GooglePayCardToken>
-    implements $GooglePayCardTokenCopyWith<$Res> {
-  _$GooglePayCardTokenCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of GooglePayCardToken
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $GooglePayCardTokenCopyWith<GooglePayCardToken> get copyWith =>
+      _$GooglePayCardTokenCopyWithImpl<GooglePayCardToken>(
+          this as GooglePayCardToken, _$identity);
+
+  /// Serializes this GooglePayCardToken to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? id = null,
-    Object? fpanLastFour = null,
-    Object? dpanLastFour = null,
-    Object? network = null,
-    Object? serviceProvider = null,
-    Object? issuer = null,
-    Object? status = null,
-    Object? cardLastFour = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      fpanLastFour: null == fpanLastFour
-          ? _value.fpanLastFour
-          : fpanLastFour // ignore: cast_nullable_to_non_nullable
-              as String,
-      dpanLastFour: null == dpanLastFour
-          ? _value.dpanLastFour
-          : dpanLastFour // ignore: cast_nullable_to_non_nullable
-              as String,
-      network: null == network
-          ? _value.network
-          : network // ignore: cast_nullable_to_non_nullable
-              as int,
-      serviceProvider: null == serviceProvider
-          ? _value.serviceProvider
-          : serviceProvider // ignore: cast_nullable_to_non_nullable
-              as int,
-      issuer: null == issuer
-          ? _value.issuer
-          : issuer // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as GooglePayCardTokenStatus,
-      cardLastFour: null == cardLastFour
-          ? _value.cardLastFour
-          : cardLastFour // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is GooglePayCardToken &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.fpanLastFour, fpanLastFour) ||
+                other.fpanLastFour == fpanLastFour) &&
+            (identical(other.dpanLastFour, dpanLastFour) ||
+                other.dpanLastFour == dpanLastFour) &&
+            (identical(other.network, network) || other.network == network) &&
+            (identical(other.serviceProvider, serviceProvider) ||
+                other.serviceProvider == serviceProvider) &&
+            (identical(other.issuer, issuer) || other.issuer == issuer) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.cardLastFour, cardLastFour) ||
+                other.cardLastFour == cardLastFour));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, fpanLastFour, dpanLastFour,
+      network, serviceProvider, issuer, status, cardLastFour);
+
+  @override
+  String toString() {
+    return 'GooglePayCardToken(id: $id, fpanLastFour: $fpanLastFour, dpanLastFour: $dpanLastFour, network: $network, serviceProvider: $serviceProvider, issuer: $issuer, status: $status, cardLastFour: $cardLastFour)';
   }
 }
 
 /// @nodoc
-abstract class _$$GooglePayCardTokenImplCopyWith<$Res>
-    implements $GooglePayCardTokenCopyWith<$Res> {
-  factory _$$GooglePayCardTokenImplCopyWith(_$GooglePayCardTokenImpl value,
-          $Res Function(_$GooglePayCardTokenImpl) then) =
-      __$$GooglePayCardTokenImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $GooglePayCardTokenCopyWith<$Res> {
+  factory $GooglePayCardTokenCopyWith(
+          GooglePayCardToken value, $Res Function(GooglePayCardToken) _then) =
+      _$GooglePayCardTokenCopyWithImpl;
   @useResult
   $Res call(
       {String id,
@@ -146,13 +98,15 @@ abstract class _$$GooglePayCardTokenImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$GooglePayCardTokenImplCopyWithImpl<$Res>
-    extends _$GooglePayCardTokenCopyWithImpl<$Res, _$GooglePayCardTokenImpl>
-    implements _$$GooglePayCardTokenImplCopyWith<$Res> {
-  __$$GooglePayCardTokenImplCopyWithImpl(_$GooglePayCardTokenImpl _value,
-      $Res Function(_$GooglePayCardTokenImpl) _then)
-      : super(_value, _then);
+class _$GooglePayCardTokenCopyWithImpl<$Res>
+    implements $GooglePayCardTokenCopyWith<$Res> {
+  _$GooglePayCardTokenCopyWithImpl(this._self, this._then);
 
+  final GooglePayCardToken _self;
+  final $Res Function(GooglePayCardToken) _then;
+
+  /// Create a copy of GooglePayCardToken
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -165,37 +119,37 @@ class __$$GooglePayCardTokenImplCopyWithImpl<$Res>
     Object? status = null,
     Object? cardLastFour = null,
   }) {
-    return _then(_$GooglePayCardTokenImpl(
+    return _then(_self.copyWith(
       id: null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
       fpanLastFour: null == fpanLastFour
-          ? _value.fpanLastFour
+          ? _self.fpanLastFour
           : fpanLastFour // ignore: cast_nullable_to_non_nullable
               as String,
       dpanLastFour: null == dpanLastFour
-          ? _value.dpanLastFour
+          ? _self.dpanLastFour
           : dpanLastFour // ignore: cast_nullable_to_non_nullable
               as String,
       network: null == network
-          ? _value.network
+          ? _self.network
           : network // ignore: cast_nullable_to_non_nullable
               as int,
       serviceProvider: null == serviceProvider
-          ? _value.serviceProvider
+          ? _self.serviceProvider
           : serviceProvider // ignore: cast_nullable_to_non_nullable
               as int,
       issuer: null == issuer
-          ? _value.issuer
+          ? _self.issuer
           : issuer // ignore: cast_nullable_to_non_nullable
               as String,
       status: null == status
-          ? _value.status
+          ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
               as GooglePayCardTokenStatus,
       cardLastFour: null == cardLastFour
-          ? _value.cardLastFour
+          ? _self.cardLastFour
           : cardLastFour // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -205,8 +159,8 @@ class __$$GooglePayCardTokenImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$GooglePayCardTokenImpl implements _GooglePayCardToken {
-  const _$GooglePayCardTokenImpl(
+class _GooglePayCardToken implements GooglePayCardToken {
+  const _GooglePayCardToken(
       {required this.id,
       required this.fpanLastFour,
       required this.dpanLastFour,
@@ -215,9 +169,8 @@ class _$GooglePayCardTokenImpl implements _GooglePayCardToken {
       required this.issuer,
       required this.status,
       required this.cardLastFour});
-
-  factory _$GooglePayCardTokenImpl.fromJson(Map<String, dynamic> json) =>
-      _$$GooglePayCardTokenImplFromJson(json);
+  factory _GooglePayCardToken.fromJson(Map<String, dynamic> json) =>
+      _$GooglePayCardTokenFromJson(json);
 
   /// The token reference ID.,
   @override
@@ -251,16 +204,26 @@ class _$GooglePayCardTokenImpl implements _GooglePayCardToken {
   @override
   final String cardLastFour;
 
+  /// Create a copy of GooglePayCardToken
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'GooglePayCardToken(id: $id, fpanLastFour: $fpanLastFour, dpanLastFour: $dpanLastFour, network: $network, serviceProvider: $serviceProvider, issuer: $issuer, status: $status, cardLastFour: $cardLastFour)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$GooglePayCardTokenCopyWith<_GooglePayCardToken> get copyWith =>
+      __$GooglePayCardTokenCopyWithImpl<_GooglePayCardToken>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$GooglePayCardTokenToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GooglePayCardTokenImpl &&
+            other is _GooglePayCardToken &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.fpanLastFour, fpanLastFour) ||
                 other.fpanLastFour == fpanLastFour) &&
@@ -275,98 +238,136 @@ class _$GooglePayCardTokenImpl implements _GooglePayCardToken {
                 other.cardLastFour == cardLastFour));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, fpanLastFour, dpanLastFour,
       network, serviceProvider, issuer, status, cardLastFour);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$GooglePayCardTokenImplCopyWith<_$GooglePayCardTokenImpl> get copyWith =>
-      __$$GooglePayCardTokenImplCopyWithImpl<_$GooglePayCardTokenImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$GooglePayCardTokenImplToJson(
-      this,
-    );
+  String toString() {
+    return 'GooglePayCardToken(id: $id, fpanLastFour: $fpanLastFour, dpanLastFour: $dpanLastFour, network: $network, serviceProvider: $serviceProvider, issuer: $issuer, status: $status, cardLastFour: $cardLastFour)';
   }
 }
 
-abstract class _GooglePayCardToken implements GooglePayCardToken {
-  const factory _GooglePayCardToken(
-      {required final String id,
-      required final String fpanLastFour,
-      required final String dpanLastFour,
-      required final int network,
-      required final int serviceProvider,
-      required final String issuer,
-      required final GooglePayCardTokenStatus status,
-      required final String cardLastFour}) = _$GooglePayCardTokenImpl;
-
-  factory _GooglePayCardToken.fromJson(Map<String, dynamic> json) =
-      _$GooglePayCardTokenImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$GooglePayCardTokenCopyWith<$Res>
+    implements $GooglePayCardTokenCopyWith<$Res> {
+  factory _$GooglePayCardTokenCopyWith(
+          _GooglePayCardToken value, $Res Function(_GooglePayCardToken) _then) =
+      __$GooglePayCardTokenCopyWithImpl;
   @override
-
-  /// The token reference ID.,
-  String get id;
-  @override
-
-  /// Last four digits of the FPAN,
-  String get fpanLastFour;
-  @override
-
-  /// Last four digits of the DPAN,
-  String get dpanLastFour;
-  @override
-
-  /// The network of the card.
-  int get network;
-  @override
-
-  /// The service provider of the card.
-  int get serviceProvider;
-  @override
-
-  /// The name of the issuer.,
-  String get issuer;
-  @override
-
-  /// The GooglePayCardTokenStatus.,
-  GooglePayCardTokenStatus get status;
-  @override
-
-  /// Deprecated. Use fpanLastFour or dpanLastFour.,
-  String get cardLastFour;
-  @override
-  @JsonKey(ignore: true)
-  _$$GooglePayCardTokenImplCopyWith<_$GooglePayCardTokenImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @useResult
+  $Res call(
+      {String id,
+      String fpanLastFour,
+      String dpanLastFour,
+      int network,
+      int serviceProvider,
+      String issuer,
+      GooglePayCardTokenStatus status,
+      String cardLastFour});
 }
 
-IsCardInWalletResult _$IsCardInWalletResultFromJson(Map<String, dynamic> json) {
-  return _IsCardInWalletResult.fromJson(json);
+/// @nodoc
+class __$GooglePayCardTokenCopyWithImpl<$Res>
+    implements _$GooglePayCardTokenCopyWith<$Res> {
+  __$GooglePayCardTokenCopyWithImpl(this._self, this._then);
+
+  final _GooglePayCardToken _self;
+  final $Res Function(_GooglePayCardToken) _then;
+
+  /// Create a copy of GooglePayCardToken
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? fpanLastFour = null,
+    Object? dpanLastFour = null,
+    Object? network = null,
+    Object? serviceProvider = null,
+    Object? issuer = null,
+    Object? status = null,
+    Object? cardLastFour = null,
+  }) {
+    return _then(_GooglePayCardToken(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      fpanLastFour: null == fpanLastFour
+          ? _self.fpanLastFour
+          : fpanLastFour // ignore: cast_nullable_to_non_nullable
+              as String,
+      dpanLastFour: null == dpanLastFour
+          ? _self.dpanLastFour
+          : dpanLastFour // ignore: cast_nullable_to_non_nullable
+              as String,
+      network: null == network
+          ? _self.network
+          : network // ignore: cast_nullable_to_non_nullable
+              as int,
+      serviceProvider: null == serviceProvider
+          ? _self.serviceProvider
+          : serviceProvider // ignore: cast_nullable_to_non_nullable
+              as int,
+      issuer: null == issuer
+          ? _self.issuer
+          : issuer // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as GooglePayCardTokenStatus,
+      cardLastFour: null == cardLastFour
+          ? _self.cardLastFour
+          : cardLastFour // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 mixin _$IsCardInWalletResult {
-  bool get isInWallet => throw _privateConstructorUsedError;
-  GooglePayCardToken? get token => throw _privateConstructorUsedError;
+  bool get isInWallet;
+  GooglePayCardToken? get token;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+  /// Create a copy of IsCardInWalletResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $IsCardInWalletResultCopyWith<IsCardInWalletResult> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$IsCardInWalletResultCopyWithImpl<IsCardInWalletResult>(
+          this as IsCardInWalletResult, _$identity);
+
+  /// Serializes this IsCardInWalletResult to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is IsCardInWalletResult &&
+            (identical(other.isInWallet, isInWallet) ||
+                other.isInWallet == isInWallet) &&
+            (identical(other.token, token) || other.token == token));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, isInWallet, token);
+
+  @override
+  String toString() {
+    return 'IsCardInWalletResult(isInWallet: $isInWallet, token: $token)';
+  }
 }
 
 /// @nodoc
-abstract class $IsCardInWalletResultCopyWith<$Res> {
+abstract mixin class $IsCardInWalletResultCopyWith<$Res> {
   factory $IsCardInWalletResultCopyWith(IsCardInWalletResult value,
-          $Res Function(IsCardInWalletResult) then) =
-      _$IsCardInWalletResultCopyWithImpl<$Res, IsCardInWalletResult>;
+          $Res Function(IsCardInWalletResult) _then) =
+      _$IsCardInWalletResultCopyWithImpl;
   @useResult
   $Res call({bool isInWallet, GooglePayCardToken? token});
 
@@ -374,603 +375,605 @@ abstract class $IsCardInWalletResultCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$IsCardInWalletResultCopyWithImpl<$Res,
-        $Val extends IsCardInWalletResult>
+class _$IsCardInWalletResultCopyWithImpl<$Res>
     implements $IsCardInWalletResultCopyWith<$Res> {
-  _$IsCardInWalletResultCopyWithImpl(this._value, this._then);
+  _$IsCardInWalletResultCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final IsCardInWalletResult _self;
+  final $Res Function(IsCardInWalletResult) _then;
 
+  /// Create a copy of IsCardInWalletResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? isInWallet = null,
     Object? token = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       isInWallet: null == isInWallet
-          ? _value.isInWallet
+          ? _self.isInWallet
           : isInWallet // ignore: cast_nullable_to_non_nullable
               as bool,
       token: freezed == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as GooglePayCardToken?,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $GooglePayCardTokenCopyWith<$Res>? get token {
-    if (_value.token == null) {
-      return null;
-    }
-
-    return $GooglePayCardTokenCopyWith<$Res>(_value.token!, (value) {
-      return _then(_value.copyWith(token: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$IsCardInWalletResultImplCopyWith<$Res>
-    implements $IsCardInWalletResultCopyWith<$Res> {
-  factory _$$IsCardInWalletResultImplCopyWith(_$IsCardInWalletResultImpl value,
-          $Res Function(_$IsCardInWalletResultImpl) then) =
-      __$$IsCardInWalletResultImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({bool isInWallet, GooglePayCardToken? token});
-
-  @override
-  $GooglePayCardTokenCopyWith<$Res>? get token;
-}
-
-/// @nodoc
-class __$$IsCardInWalletResultImplCopyWithImpl<$Res>
-    extends _$IsCardInWalletResultCopyWithImpl<$Res, _$IsCardInWalletResultImpl>
-    implements _$$IsCardInWalletResultImplCopyWith<$Res> {
-  __$$IsCardInWalletResultImplCopyWithImpl(_$IsCardInWalletResultImpl _value,
-      $Res Function(_$IsCardInWalletResultImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isInWallet = null,
-    Object? token = freezed,
-  }) {
-    return _then(_$IsCardInWalletResultImpl(
-      isInWallet: null == isInWallet
-          ? _value.isInWallet
-          : isInWallet // ignore: cast_nullable_to_non_nullable
-              as bool,
-      token: freezed == token
-          ? _value.token
+          ? _self.token
           : token // ignore: cast_nullable_to_non_nullable
               as GooglePayCardToken?,
     ));
+  }
+
+  /// Create a copy of IsCardInWalletResult
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $GooglePayCardTokenCopyWith<$Res>? get token {
+    if (_self.token == null) {
+      return null;
+    }
+
+    return $GooglePayCardTokenCopyWith<$Res>(_self.token!, (value) {
+      return _then(_self.copyWith(token: value));
+    });
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$IsCardInWalletResultImpl implements _IsCardInWalletResult {
-  const _$IsCardInWalletResultImpl({required this.isInWallet, this.token});
-
-  factory _$IsCardInWalletResultImpl.fromJson(Map<String, dynamic> json) =>
-      _$$IsCardInWalletResultImplFromJson(json);
+class _IsCardInWalletResult implements IsCardInWalletResult {
+  const _IsCardInWalletResult({required this.isInWallet, this.token});
+  factory _IsCardInWalletResult.fromJson(Map<String, dynamic> json) =>
+      _$IsCardInWalletResultFromJson(json);
 
   @override
   final bool isInWallet;
   @override
   final GooglePayCardToken? token;
 
+  /// Create a copy of IsCardInWalletResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'IsCardInWalletResult(isInWallet: $isInWallet, token: $token)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$IsCardInWalletResultCopyWith<_IsCardInWalletResult> get copyWith =>
+      __$IsCardInWalletResultCopyWithImpl<_IsCardInWalletResult>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$IsCardInWalletResultToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$IsCardInWalletResultImpl &&
+            other is _IsCardInWalletResult &&
             (identical(other.isInWallet, isInWallet) ||
                 other.isInWallet == isInWallet) &&
             (identical(other.token, token) || other.token == token));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, isInWallet, token);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$IsCardInWalletResultImplCopyWith<_$IsCardInWalletResultImpl>
-      get copyWith =>
-          __$$IsCardInWalletResultImplCopyWithImpl<_$IsCardInWalletResultImpl>(
-              this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$IsCardInWalletResultImplToJson(
-      this,
-    );
+  String toString() {
+    return 'IsCardInWalletResult(isInWallet: $isInWallet, token: $token)';
   }
 }
 
-abstract class _IsCardInWalletResult implements IsCardInWalletResult {
-  const factory _IsCardInWalletResult(
-      {required final bool isInWallet,
-      final GooglePayCardToken? token}) = _$IsCardInWalletResultImpl;
-
-  factory _IsCardInWalletResult.fromJson(Map<String, dynamic> json) =
-      _$IsCardInWalletResultImpl.fromJson;
-
-  @override
-  bool get isInWallet;
-  @override
-  GooglePayCardToken? get token;
-  @override
-  @JsonKey(ignore: true)
-  _$$IsCardInWalletResultImplCopyWith<_$IsCardInWalletResultImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-CanAddCardToWalletResult _$CanAddCardToWalletResultFromJson(
-    Map<String, dynamic> json) {
-  return _CanAddCardToWalletResult.fromJson(json);
-}
-
 /// @nodoc
-mixin _$CanAddCardToWalletResult {
-  bool get canAddCard => throw _privateConstructorUsedError;
-  CanAddCardToDetails? get details => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $CanAddCardToWalletResultCopyWith<CanAddCardToWalletResult> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CanAddCardToWalletResultCopyWith<$Res> {
-  factory $CanAddCardToWalletResultCopyWith(CanAddCardToWalletResult value,
-          $Res Function(CanAddCardToWalletResult) then) =
-      _$CanAddCardToWalletResultCopyWithImpl<$Res, CanAddCardToWalletResult>;
+abstract mixin class _$IsCardInWalletResultCopyWith<$Res>
+    implements $IsCardInWalletResultCopyWith<$Res> {
+  factory _$IsCardInWalletResultCopyWith(_IsCardInWalletResult value,
+          $Res Function(_IsCardInWalletResult) _then) =
+      __$IsCardInWalletResultCopyWithImpl;
+  @override
   @useResult
-  $Res call({bool canAddCard, CanAddCardToDetails? details});
+  $Res call({bool isInWallet, GooglePayCardToken? token});
 
-  $CanAddCardToDetailsCopyWith<$Res>? get details;
+  @override
+  $GooglePayCardTokenCopyWith<$Res>? get token;
 }
 
 /// @nodoc
-class _$CanAddCardToWalletResultCopyWithImpl<$Res,
-        $Val extends CanAddCardToWalletResult>
-    implements $CanAddCardToWalletResultCopyWith<$Res> {
-  _$CanAddCardToWalletResultCopyWithImpl(this._value, this._then);
+class __$IsCardInWalletResultCopyWithImpl<$Res>
+    implements _$IsCardInWalletResultCopyWith<$Res> {
+  __$IsCardInWalletResultCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final _IsCardInWalletResult _self;
+  final $Res Function(_IsCardInWalletResult) _then;
 
-  @pragma('vm:prefer-inline')
+  /// Create a copy of IsCardInWalletResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
-    Object? canAddCard = null,
-    Object? details = freezed,
+    Object? isInWallet = null,
+    Object? token = freezed,
   }) {
-    return _then(_value.copyWith(
-      canAddCard: null == canAddCard
-          ? _value.canAddCard
-          : canAddCard // ignore: cast_nullable_to_non_nullable
+    return _then(_IsCardInWalletResult(
+      isInWallet: null == isInWallet
+          ? _self.isInWallet
+          : isInWallet // ignore: cast_nullable_to_non_nullable
               as bool,
-      details: freezed == details
-          ? _value.details
-          : details // ignore: cast_nullable_to_non_nullable
-              as CanAddCardToDetails?,
-    ) as $Val);
+      token: freezed == token
+          ? _self.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as GooglePayCardToken?,
+    ));
   }
 
+  /// Create a copy of IsCardInWalletResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $CanAddCardToDetailsCopyWith<$Res>? get details {
-    if (_value.details == null) {
+  $GooglePayCardTokenCopyWith<$Res>? get token {
+    if (_self.token == null) {
       return null;
     }
 
-    return $CanAddCardToDetailsCopyWith<$Res>(_value.details!, (value) {
-      return _then(_value.copyWith(details: value) as $Val);
+    return $GooglePayCardTokenCopyWith<$Res>(_self.token!, (value) {
+      return _then(_self.copyWith(token: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$CanAddCardToWalletResultImplCopyWith<$Res>
-    implements $CanAddCardToWalletResultCopyWith<$Res> {
-  factory _$$CanAddCardToWalletResultImplCopyWith(
-          _$CanAddCardToWalletResultImpl value,
-          $Res Function(_$CanAddCardToWalletResultImpl) then) =
-      __$$CanAddCardToWalletResultImplCopyWithImpl<$Res>;
+mixin _$CanAddCardToWalletResult {
+  bool get canAddCard;
+  CanAddCardToDetails? get details;
+
+  /// Create a copy of CanAddCardToWalletResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $CanAddCardToWalletResultCopyWith<CanAddCardToWalletResult> get copyWith =>
+      _$CanAddCardToWalletResultCopyWithImpl<CanAddCardToWalletResult>(
+          this as CanAddCardToWalletResult, _$identity);
+
+  /// Serializes this CanAddCardToWalletResult to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CanAddCardToWalletResult &&
+            (identical(other.canAddCard, canAddCard) ||
+                other.canAddCard == canAddCard) &&
+            (identical(other.details, details) || other.details == details));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, canAddCard, details);
+
+  @override
+  String toString() {
+    return 'CanAddCardToWalletResult(canAddCard: $canAddCard, details: $details)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $CanAddCardToWalletResultCopyWith<$Res> {
+  factory $CanAddCardToWalletResultCopyWith(CanAddCardToWalletResult value,
+          $Res Function(CanAddCardToWalletResult) _then) =
+      _$CanAddCardToWalletResultCopyWithImpl;
   @useResult
   $Res call({bool canAddCard, CanAddCardToDetails? details});
 
-  @override
   $CanAddCardToDetailsCopyWith<$Res>? get details;
 }
 
 /// @nodoc
-class __$$CanAddCardToWalletResultImplCopyWithImpl<$Res>
-    extends _$CanAddCardToWalletResultCopyWithImpl<$Res,
-        _$CanAddCardToWalletResultImpl>
-    implements _$$CanAddCardToWalletResultImplCopyWith<$Res> {
-  __$$CanAddCardToWalletResultImplCopyWithImpl(
-      _$CanAddCardToWalletResultImpl _value,
-      $Res Function(_$CanAddCardToWalletResultImpl) _then)
-      : super(_value, _then);
+class _$CanAddCardToWalletResultCopyWithImpl<$Res>
+    implements $CanAddCardToWalletResultCopyWith<$Res> {
+  _$CanAddCardToWalletResultCopyWithImpl(this._self, this._then);
 
+  final CanAddCardToWalletResult _self;
+  final $Res Function(CanAddCardToWalletResult) _then;
+
+  /// Create a copy of CanAddCardToWalletResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? canAddCard = null,
     Object? details = freezed,
   }) {
-    return _then(_$CanAddCardToWalletResultImpl(
+    return _then(_self.copyWith(
       canAddCard: null == canAddCard
-          ? _value.canAddCard
+          ? _self.canAddCard
           : canAddCard // ignore: cast_nullable_to_non_nullable
               as bool,
       details: freezed == details
-          ? _value.details
+          ? _self.details
           : details // ignore: cast_nullable_to_non_nullable
               as CanAddCardToDetails?,
     ));
+  }
+
+  /// Create a copy of CanAddCardToWalletResult
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CanAddCardToDetailsCopyWith<$Res>? get details {
+    if (_self.details == null) {
+      return null;
+    }
+
+    return $CanAddCardToDetailsCopyWith<$Res>(_self.details!, (value) {
+      return _then(_self.copyWith(details: value));
+    });
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$CanAddCardToWalletResultImpl implements _CanAddCardToWalletResult {
-  const _$CanAddCardToWalletResultImpl(
-      {required this.canAddCard, this.details});
-
-  factory _$CanAddCardToWalletResultImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CanAddCardToWalletResultImplFromJson(json);
+class _CanAddCardToWalletResult implements CanAddCardToWalletResult {
+  const _CanAddCardToWalletResult({required this.canAddCard, this.details});
+  factory _CanAddCardToWalletResult.fromJson(Map<String, dynamic> json) =>
+      _$CanAddCardToWalletResultFromJson(json);
 
   @override
   final bool canAddCard;
   @override
   final CanAddCardToDetails? details;
 
+  /// Create a copy of CanAddCardToWalletResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'CanAddCardToWalletResult(canAddCard: $canAddCard, details: $details)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CanAddCardToWalletResultCopyWith<_CanAddCardToWalletResult> get copyWith =>
+      __$CanAddCardToWalletResultCopyWithImpl<_CanAddCardToWalletResult>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$CanAddCardToWalletResultToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CanAddCardToWalletResultImpl &&
+            other is _CanAddCardToWalletResult &&
             (identical(other.canAddCard, canAddCard) ||
                 other.canAddCard == canAddCard) &&
             (identical(other.details, details) || other.details == details));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, canAddCard, details);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$CanAddCardToWalletResultImplCopyWith<_$CanAddCardToWalletResultImpl>
-      get copyWith => __$$CanAddCardToWalletResultImplCopyWithImpl<
-          _$CanAddCardToWalletResultImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CanAddCardToWalletResultImplToJson(
-      this,
-    );
+  String toString() {
+    return 'CanAddCardToWalletResult(canAddCard: $canAddCard, details: $details)';
   }
 }
 
-abstract class _CanAddCardToWalletResult implements CanAddCardToWalletResult {
-  const factory _CanAddCardToWalletResult(
-      {required final bool canAddCard,
-      final CanAddCardToDetails? details}) = _$CanAddCardToWalletResultImpl;
-
-  factory _CanAddCardToWalletResult.fromJson(Map<String, dynamic> json) =
-      _$CanAddCardToWalletResultImpl.fromJson;
-
-  @override
-  bool get canAddCard;
-  @override
-  CanAddCardToDetails? get details;
-  @override
-  @JsonKey(ignore: true)
-  _$$CanAddCardToWalletResultImplCopyWith<_$CanAddCardToWalletResultImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-CanAddCardToDetails _$CanAddCardToDetailsFromJson(Map<String, dynamic> json) {
-  return _CanAddCardToDetails.fromJson(json);
-}
-
 /// @nodoc
-mixin _$CanAddCardToDetails {
-  GooglePayCardToken? get token => throw _privateConstructorUsedError;
-  CanAddCardToWalletStatus? get status => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $CanAddCardToDetailsCopyWith<CanAddCardToDetails> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CanAddCardToDetailsCopyWith<$Res> {
-  factory $CanAddCardToDetailsCopyWith(
-          CanAddCardToDetails value, $Res Function(CanAddCardToDetails) then) =
-      _$CanAddCardToDetailsCopyWithImpl<$Res, CanAddCardToDetails>;
+abstract mixin class _$CanAddCardToWalletResultCopyWith<$Res>
+    implements $CanAddCardToWalletResultCopyWith<$Res> {
+  factory _$CanAddCardToWalletResultCopyWith(_CanAddCardToWalletResult value,
+          $Res Function(_CanAddCardToWalletResult) _then) =
+      __$CanAddCardToWalletResultCopyWithImpl;
+  @override
   @useResult
-  $Res call({GooglePayCardToken? token, CanAddCardToWalletStatus? status});
+  $Res call({bool canAddCard, CanAddCardToDetails? details});
 
-  $GooglePayCardTokenCopyWith<$Res>? get token;
+  @override
+  $CanAddCardToDetailsCopyWith<$Res>? get details;
 }
 
 /// @nodoc
-class _$CanAddCardToDetailsCopyWithImpl<$Res, $Val extends CanAddCardToDetails>
-    implements $CanAddCardToDetailsCopyWith<$Res> {
-  _$CanAddCardToDetailsCopyWithImpl(this._value, this._then);
+class __$CanAddCardToWalletResultCopyWithImpl<$Res>
+    implements _$CanAddCardToWalletResultCopyWith<$Res> {
+  __$CanAddCardToWalletResultCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final _CanAddCardToWalletResult _self;
+  final $Res Function(_CanAddCardToWalletResult) _then;
 
-  @pragma('vm:prefer-inline')
+  /// Create a copy of CanAddCardToWalletResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
-    Object? token = freezed,
-    Object? status = freezed,
+    Object? canAddCard = null,
+    Object? details = freezed,
   }) {
-    return _then(_value.copyWith(
-      token: freezed == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as GooglePayCardToken?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as CanAddCardToWalletStatus?,
-    ) as $Val);
+    return _then(_CanAddCardToWalletResult(
+      canAddCard: null == canAddCard
+          ? _self.canAddCard
+          : canAddCard // ignore: cast_nullable_to_non_nullable
+              as bool,
+      details: freezed == details
+          ? _self.details
+          : details // ignore: cast_nullable_to_non_nullable
+              as CanAddCardToDetails?,
+    ));
   }
 
+  /// Create a copy of CanAddCardToWalletResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $GooglePayCardTokenCopyWith<$Res>? get token {
-    if (_value.token == null) {
+  $CanAddCardToDetailsCopyWith<$Res>? get details {
+    if (_self.details == null) {
       return null;
     }
 
-    return $GooglePayCardTokenCopyWith<$Res>(_value.token!, (value) {
-      return _then(_value.copyWith(token: value) as $Val);
+    return $CanAddCardToDetailsCopyWith<$Res>(_self.details!, (value) {
+      return _then(_self.copyWith(details: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$CanAddCardToDetailsImplCopyWith<$Res>
-    implements $CanAddCardToDetailsCopyWith<$Res> {
-  factory _$$CanAddCardToDetailsImplCopyWith(_$CanAddCardToDetailsImpl value,
-          $Res Function(_$CanAddCardToDetailsImpl) then) =
-      __$$CanAddCardToDetailsImplCopyWithImpl<$Res>;
+mixin _$CanAddCardToDetails {
+  GooglePayCardToken? get token;
+  CanAddCardToWalletStatus? get status;
+
+  /// Create a copy of CanAddCardToDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $CanAddCardToDetailsCopyWith<CanAddCardToDetails> get copyWith =>
+      _$CanAddCardToDetailsCopyWithImpl<CanAddCardToDetails>(
+          this as CanAddCardToDetails, _$identity);
+
+  /// Serializes this CanAddCardToDetails to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CanAddCardToDetails &&
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, token, status);
+
+  @override
+  String toString() {
+    return 'CanAddCardToDetails(token: $token, status: $status)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $CanAddCardToDetailsCopyWith<$Res> {
+  factory $CanAddCardToDetailsCopyWith(
+          CanAddCardToDetails value, $Res Function(CanAddCardToDetails) _then) =
+      _$CanAddCardToDetailsCopyWithImpl;
   @useResult
   $Res call({GooglePayCardToken? token, CanAddCardToWalletStatus? status});
 
-  @override
   $GooglePayCardTokenCopyWith<$Res>? get token;
 }
 
 /// @nodoc
-class __$$CanAddCardToDetailsImplCopyWithImpl<$Res>
-    extends _$CanAddCardToDetailsCopyWithImpl<$Res, _$CanAddCardToDetailsImpl>
-    implements _$$CanAddCardToDetailsImplCopyWith<$Res> {
-  __$$CanAddCardToDetailsImplCopyWithImpl(_$CanAddCardToDetailsImpl _value,
-      $Res Function(_$CanAddCardToDetailsImpl) _then)
-      : super(_value, _then);
+class _$CanAddCardToDetailsCopyWithImpl<$Res>
+    implements $CanAddCardToDetailsCopyWith<$Res> {
+  _$CanAddCardToDetailsCopyWithImpl(this._self, this._then);
 
+  final CanAddCardToDetails _self;
+  final $Res Function(CanAddCardToDetails) _then;
+
+  /// Create a copy of CanAddCardToDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? token = freezed,
     Object? status = freezed,
   }) {
-    return _then(_$CanAddCardToDetailsImpl(
+    return _then(_self.copyWith(
       token: freezed == token
-          ? _value.token
+          ? _self.token
           : token // ignore: cast_nullable_to_non_nullable
               as GooglePayCardToken?,
       status: freezed == status
-          ? _value.status
+          ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
               as CanAddCardToWalletStatus?,
     ));
+  }
+
+  /// Create a copy of CanAddCardToDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $GooglePayCardTokenCopyWith<$Res>? get token {
+    if (_self.token == null) {
+      return null;
+    }
+
+    return $GooglePayCardTokenCopyWith<$Res>(_self.token!, (value) {
+      return _then(_self.copyWith(token: value));
+    });
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$CanAddCardToDetailsImpl implements _CanAddCardToDetails {
-  const _$CanAddCardToDetailsImpl({this.token, this.status});
-
-  factory _$CanAddCardToDetailsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CanAddCardToDetailsImplFromJson(json);
+class _CanAddCardToDetails implements CanAddCardToDetails {
+  const _CanAddCardToDetails({this.token, this.status});
+  factory _CanAddCardToDetails.fromJson(Map<String, dynamic> json) =>
+      _$CanAddCardToDetailsFromJson(json);
 
   @override
   final GooglePayCardToken? token;
   @override
   final CanAddCardToWalletStatus? status;
 
+  /// Create a copy of CanAddCardToDetails
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'CanAddCardToDetails(token: $token, status: $status)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CanAddCardToDetailsCopyWith<_CanAddCardToDetails> get copyWith =>
+      __$CanAddCardToDetailsCopyWithImpl<_CanAddCardToDetails>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$CanAddCardToDetailsToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CanAddCardToDetailsImpl &&
+            other is _CanAddCardToDetails &&
             (identical(other.token, token) || other.token == token) &&
             (identical(other.status, status) || other.status == status));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, token, status);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$CanAddCardToDetailsImplCopyWith<_$CanAddCardToDetailsImpl> get copyWith =>
-      __$$CanAddCardToDetailsImplCopyWithImpl<_$CanAddCardToDetailsImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CanAddCardToDetailsImplToJson(
-      this,
-    );
+  String toString() {
+    return 'CanAddCardToDetails(token: $token, status: $status)';
   }
 }
 
-abstract class _CanAddCardToDetails implements CanAddCardToDetails {
-  const factory _CanAddCardToDetails(
-      {final GooglePayCardToken? token,
-      final CanAddCardToWalletStatus? status}) = _$CanAddCardToDetailsImpl;
+/// @nodoc
+abstract mixin class _$CanAddCardToDetailsCopyWith<$Res>
+    implements $CanAddCardToDetailsCopyWith<$Res> {
+  factory _$CanAddCardToDetailsCopyWith(_CanAddCardToDetails value,
+          $Res Function(_CanAddCardToDetails) _then) =
+      __$CanAddCardToDetailsCopyWithImpl;
+  @override
+  @useResult
+  $Res call({GooglePayCardToken? token, CanAddCardToWalletStatus? status});
 
-  factory _CanAddCardToDetails.fromJson(Map<String, dynamic> json) =
-      _$CanAddCardToDetailsImpl.fromJson;
-
   @override
-  GooglePayCardToken? get token;
-  @override
-  CanAddCardToWalletStatus? get status;
-  @override
-  @JsonKey(ignore: true)
-  _$$CanAddCardToDetailsImplCopyWith<_$CanAddCardToDetailsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  $GooglePayCardTokenCopyWith<$Res>? get token;
 }
 
-CanAddCardToWalletParams _$CanAddCardToWalletParamsFromJson(
-    Map<String, dynamic> json) {
-  return _CanAddCardToWalletParams.fromJson(json);
+/// @nodoc
+class __$CanAddCardToDetailsCopyWithImpl<$Res>
+    implements _$CanAddCardToDetailsCopyWith<$Res> {
+  __$CanAddCardToDetailsCopyWithImpl(this._self, this._then);
+
+  final _CanAddCardToDetails _self;
+  final $Res Function(_CanAddCardToDetails) _then;
+
+  /// Create a copy of CanAddCardToDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? token = freezed,
+    Object? status = freezed,
+  }) {
+    return _then(_CanAddCardToDetails(
+      token: freezed == token
+          ? _self.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as GooglePayCardToken?,
+      status: freezed == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as CanAddCardToWalletStatus?,
+    ));
+  }
+
+  /// Create a copy of CanAddCardToDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $GooglePayCardTokenCopyWith<$Res>? get token {
+    if (_self.token == null) {
+      return null;
+    }
+
+    return $GooglePayCardTokenCopyWith<$Res>(_self.token!, (value) {
+      return _then(_self.copyWith(token: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$CanAddCardToWalletParams {
   ///The `primary_account_identifier` value from the issued card. Can be an empty string.
-  String? get primaryAccountIdentifier => throw _privateConstructorUsedError;
+  String? get primaryAccountIdentifier;
 
   /// Last 4 digits of the card number. Required for Android.
-  String get cardLastFour => throw _privateConstructorUsedError;
+  String get cardLastFour;
 
   /// iOS only. Set this to `true` until shipping through TestFlight || App Store. If false, you must be using live cards, and have the proper iOS entitlement set up. See https://stripe.com/docs/issuing/cards/digital-wallets?platform=react-native#requesting-access-for-ios
-  bool? get testEnv => throw _privateConstructorUsedError;
+  bool? get testEnv;
 
   /// iOS only. Set this to `true` if: your user has an Apple Watch device currently paired, and you want to check that device for the presence of the specified card.
-  bool? get hasPairedAppleWatch => throw _privateConstructorUsedError;
+  bool? get hasPairedAppleWatch;
 
   /// Android only, defaults to `true`. Set this to `false` if you'd like to allow users without NFC-enabled devices to add cards to the wallet. NFC is required for paying in stores.
-  bool? get supportsTapToPay => throw _privateConstructorUsedError;
+  bool? get supportsTapToPay;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $CanAddCardToWalletParamsCopyWith<CanAddCardToWalletParams> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CanAddCardToWalletParamsCopyWith<$Res> {
-  factory $CanAddCardToWalletParamsCopyWith(CanAddCardToWalletParams value,
-          $Res Function(CanAddCardToWalletParams) then) =
-      _$CanAddCardToWalletParamsCopyWithImpl<$Res, CanAddCardToWalletParams>;
-  @useResult
-  $Res call(
-      {String? primaryAccountIdentifier,
-      String cardLastFour,
-      bool? testEnv,
-      bool? hasPairedAppleWatch,
-      bool? supportsTapToPay});
-}
-
-/// @nodoc
-class _$CanAddCardToWalletParamsCopyWithImpl<$Res,
-        $Val extends CanAddCardToWalletParams>
-    implements $CanAddCardToWalletParamsCopyWith<$Res> {
-  _$CanAddCardToWalletParamsCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of CanAddCardToWalletParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $CanAddCardToWalletParamsCopyWith<CanAddCardToWalletParams> get copyWith =>
+      _$CanAddCardToWalletParamsCopyWithImpl<CanAddCardToWalletParams>(
+          this as CanAddCardToWalletParams, _$identity);
+
+  /// Serializes this CanAddCardToWalletParams to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? primaryAccountIdentifier = freezed,
-    Object? cardLastFour = null,
-    Object? testEnv = freezed,
-    Object? hasPairedAppleWatch = freezed,
-    Object? supportsTapToPay = freezed,
-  }) {
-    return _then(_value.copyWith(
-      primaryAccountIdentifier: freezed == primaryAccountIdentifier
-          ? _value.primaryAccountIdentifier
-          : primaryAccountIdentifier // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cardLastFour: null == cardLastFour
-          ? _value.cardLastFour
-          : cardLastFour // ignore: cast_nullable_to_non_nullable
-              as String,
-      testEnv: freezed == testEnv
-          ? _value.testEnv
-          : testEnv // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      hasPairedAppleWatch: freezed == hasPairedAppleWatch
-          ? _value.hasPairedAppleWatch
-          : hasPairedAppleWatch // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      supportsTapToPay: freezed == supportsTapToPay
-          ? _value.supportsTapToPay
-          : supportsTapToPay // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CanAddCardToWalletParams &&
+            (identical(
+                    other.primaryAccountIdentifier, primaryAccountIdentifier) ||
+                other.primaryAccountIdentifier == primaryAccountIdentifier) &&
+            (identical(other.cardLastFour, cardLastFour) ||
+                other.cardLastFour == cardLastFour) &&
+            (identical(other.testEnv, testEnv) || other.testEnv == testEnv) &&
+            (identical(other.hasPairedAppleWatch, hasPairedAppleWatch) ||
+                other.hasPairedAppleWatch == hasPairedAppleWatch) &&
+            (identical(other.supportsTapToPay, supportsTapToPay) ||
+                other.supportsTapToPay == supportsTapToPay));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, primaryAccountIdentifier,
+      cardLastFour, testEnv, hasPairedAppleWatch, supportsTapToPay);
+
+  @override
+  String toString() {
+    return 'CanAddCardToWalletParams(primaryAccountIdentifier: $primaryAccountIdentifier, cardLastFour: $cardLastFour, testEnv: $testEnv, hasPairedAppleWatch: $hasPairedAppleWatch, supportsTapToPay: $supportsTapToPay)';
   }
 }
 
 /// @nodoc
-abstract class _$$CanAddCardToWalletParamsImplCopyWith<$Res>
-    implements $CanAddCardToWalletParamsCopyWith<$Res> {
-  factory _$$CanAddCardToWalletParamsImplCopyWith(
-          _$CanAddCardToWalletParamsImpl value,
-          $Res Function(_$CanAddCardToWalletParamsImpl) then) =
-      __$$CanAddCardToWalletParamsImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $CanAddCardToWalletParamsCopyWith<$Res> {
+  factory $CanAddCardToWalletParamsCopyWith(CanAddCardToWalletParams value,
+          $Res Function(CanAddCardToWalletParams) _then) =
+      _$CanAddCardToWalletParamsCopyWithImpl;
   @useResult
   $Res call(
       {String? primaryAccountIdentifier,
@@ -981,15 +984,15 @@ abstract class _$$CanAddCardToWalletParamsImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CanAddCardToWalletParamsImplCopyWithImpl<$Res>
-    extends _$CanAddCardToWalletParamsCopyWithImpl<$Res,
-        _$CanAddCardToWalletParamsImpl>
-    implements _$$CanAddCardToWalletParamsImplCopyWith<$Res> {
-  __$$CanAddCardToWalletParamsImplCopyWithImpl(
-      _$CanAddCardToWalletParamsImpl _value,
-      $Res Function(_$CanAddCardToWalletParamsImpl) _then)
-      : super(_value, _then);
+class _$CanAddCardToWalletParamsCopyWithImpl<$Res>
+    implements $CanAddCardToWalletParamsCopyWith<$Res> {
+  _$CanAddCardToWalletParamsCopyWithImpl(this._self, this._then);
 
+  final CanAddCardToWalletParams _self;
+  final $Res Function(CanAddCardToWalletParams) _then;
+
+  /// Create a copy of CanAddCardToWalletParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -999,25 +1002,25 @@ class __$$CanAddCardToWalletParamsImplCopyWithImpl<$Res>
     Object? hasPairedAppleWatch = freezed,
     Object? supportsTapToPay = freezed,
   }) {
-    return _then(_$CanAddCardToWalletParamsImpl(
+    return _then(_self.copyWith(
       primaryAccountIdentifier: freezed == primaryAccountIdentifier
-          ? _value.primaryAccountIdentifier
+          ? _self.primaryAccountIdentifier
           : primaryAccountIdentifier // ignore: cast_nullable_to_non_nullable
               as String?,
       cardLastFour: null == cardLastFour
-          ? _value.cardLastFour
+          ? _self.cardLastFour
           : cardLastFour // ignore: cast_nullable_to_non_nullable
               as String,
       testEnv: freezed == testEnv
-          ? _value.testEnv
+          ? _self.testEnv
           : testEnv // ignore: cast_nullable_to_non_nullable
               as bool?,
       hasPairedAppleWatch: freezed == hasPairedAppleWatch
-          ? _value.hasPairedAppleWatch
+          ? _self.hasPairedAppleWatch
           : hasPairedAppleWatch // ignore: cast_nullable_to_non_nullable
               as bool?,
       supportsTapToPay: freezed == supportsTapToPay
-          ? _value.supportsTapToPay
+          ? _self.supportsTapToPay
           : supportsTapToPay // ignore: cast_nullable_to_non_nullable
               as bool?,
     ));
@@ -1027,16 +1030,15 @@ class __$$CanAddCardToWalletParamsImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$CanAddCardToWalletParamsImpl implements _CanAddCardToWalletParams {
-  const _$CanAddCardToWalletParamsImpl(
+class _CanAddCardToWalletParams implements CanAddCardToWalletParams {
+  const _CanAddCardToWalletParams(
       {this.primaryAccountIdentifier,
       required this.cardLastFour,
       this.testEnv,
       this.hasPairedAppleWatch,
       this.supportsTapToPay});
-
-  factory _$CanAddCardToWalletParamsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CanAddCardToWalletParamsImplFromJson(json);
+  factory _CanAddCardToWalletParams.fromJson(Map<String, dynamic> json) =>
+      _$CanAddCardToWalletParamsFromJson(json);
 
   ///The `primary_account_identifier` value from the issued card. Can be an empty string.
   @override
@@ -1058,16 +1060,27 @@ class _$CanAddCardToWalletParamsImpl implements _CanAddCardToWalletParams {
   @override
   final bool? supportsTapToPay;
 
+  /// Create a copy of CanAddCardToWalletParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'CanAddCardToWalletParams(primaryAccountIdentifier: $primaryAccountIdentifier, cardLastFour: $cardLastFour, testEnv: $testEnv, hasPairedAppleWatch: $hasPairedAppleWatch, supportsTapToPay: $supportsTapToPay)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CanAddCardToWalletParamsCopyWith<_CanAddCardToWalletParams> get copyWith =>
+      __$CanAddCardToWalletParamsCopyWithImpl<_CanAddCardToWalletParams>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$CanAddCardToWalletParamsToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CanAddCardToWalletParamsImpl &&
+            other is _CanAddCardToWalletParams &&
             (identical(
                     other.primaryAccountIdentifier, primaryAccountIdentifier) ||
                 other.primaryAccountIdentifier == primaryAccountIdentifier) &&
@@ -1080,59 +1093,75 @@ class _$CanAddCardToWalletParamsImpl implements _CanAddCardToWalletParams {
                 other.supportsTapToPay == supportsTapToPay));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, primaryAccountIdentifier,
       cardLastFour, testEnv, hasPairedAppleWatch, supportsTapToPay);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$CanAddCardToWalletParamsImplCopyWith<_$CanAddCardToWalletParamsImpl>
-      get copyWith => __$$CanAddCardToWalletParamsImplCopyWithImpl<
-          _$CanAddCardToWalletParamsImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CanAddCardToWalletParamsImplToJson(
-      this,
-    );
+  String toString() {
+    return 'CanAddCardToWalletParams(primaryAccountIdentifier: $primaryAccountIdentifier, cardLastFour: $cardLastFour, testEnv: $testEnv, hasPairedAppleWatch: $hasPairedAppleWatch, supportsTapToPay: $supportsTapToPay)';
   }
 }
 
-abstract class _CanAddCardToWalletParams implements CanAddCardToWalletParams {
-  const factory _CanAddCardToWalletParams(
-      {final String? primaryAccountIdentifier,
-      required final String cardLastFour,
-      final bool? testEnv,
-      final bool? hasPairedAppleWatch,
-      final bool? supportsTapToPay}) = _$CanAddCardToWalletParamsImpl;
-
-  factory _CanAddCardToWalletParams.fromJson(Map<String, dynamic> json) =
-      _$CanAddCardToWalletParamsImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$CanAddCardToWalletParamsCopyWith<$Res>
+    implements $CanAddCardToWalletParamsCopyWith<$Res> {
+  factory _$CanAddCardToWalletParamsCopyWith(_CanAddCardToWalletParams value,
+          $Res Function(_CanAddCardToWalletParams) _then) =
+      __$CanAddCardToWalletParamsCopyWithImpl;
   @override
-
-  ///The `primary_account_identifier` value from the issued card. Can be an empty string.
-  String? get primaryAccountIdentifier;
-  @override
-
-  /// Last 4 digits of the card number. Required for Android.
-  String get cardLastFour;
-  @override
-
-  /// iOS only. Set this to `true` until shipping through TestFlight || App Store. If false, you must be using live cards, and have the proper iOS entitlement set up. See https://stripe.com/docs/issuing/cards/digital-wallets?platform=react-native#requesting-access-for-ios
-  bool? get testEnv;
-  @override
-
-  /// iOS only. Set this to `true` if: your user has an Apple Watch device currently paired, and you want to check that device for the presence of the specified card.
-  bool? get hasPairedAppleWatch;
-  @override
-
-  /// Android only, defaults to `true`. Set this to `false` if you'd like to allow users without NFC-enabled devices to add cards to the wallet. NFC is required for paying in stores.
-  bool? get supportsTapToPay;
-  @override
-  @JsonKey(ignore: true)
-  _$$CanAddCardToWalletParamsImplCopyWith<_$CanAddCardToWalletParamsImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @useResult
+  $Res call(
+      {String? primaryAccountIdentifier,
+      String cardLastFour,
+      bool? testEnv,
+      bool? hasPairedAppleWatch,
+      bool? supportsTapToPay});
 }
+
+/// @nodoc
+class __$CanAddCardToWalletParamsCopyWithImpl<$Res>
+    implements _$CanAddCardToWalletParamsCopyWith<$Res> {
+  __$CanAddCardToWalletParamsCopyWithImpl(this._self, this._then);
+
+  final _CanAddCardToWalletParams _self;
+  final $Res Function(_CanAddCardToWalletParams) _then;
+
+  /// Create a copy of CanAddCardToWalletParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? primaryAccountIdentifier = freezed,
+    Object? cardLastFour = null,
+    Object? testEnv = freezed,
+    Object? hasPairedAppleWatch = freezed,
+    Object? supportsTapToPay = freezed,
+  }) {
+    return _then(_CanAddCardToWalletParams(
+      primaryAccountIdentifier: freezed == primaryAccountIdentifier
+          ? _self.primaryAccountIdentifier
+          : primaryAccountIdentifier // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cardLastFour: null == cardLastFour
+          ? _self.cardLastFour
+          : cardLastFour // ignore: cast_nullable_to_non_nullable
+              as String,
+      testEnv: freezed == testEnv
+          ? _self.testEnv
+          : testEnv // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      hasPairedAppleWatch: freezed == hasPairedAppleWatch
+          ? _self.hasPairedAppleWatch
+          : hasPairedAppleWatch // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      supportsTapToPay: freezed == supportsTapToPay
+          ? _self.supportsTapToPay
+          : supportsTapToPay // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ));
+  }
+}
+
+// dart format on

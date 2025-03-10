@@ -8,7 +8,7 @@ part 'aubecs_form.g.dart';
 @freezed
 
 /// Styling information for the AubecsFormField
-class AubecsFormStyle with _$AubecsFormStyle {
+abstract class AubecsFormStyle with _$AubecsFormStyle {
   @JsonSerializable(explicitToJson: true)
   const factory AubecsFormStyle({
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -58,7 +58,7 @@ class AubecsFormStyle with _$AubecsFormStyle {
 @freezed
 
 /// Input details that will be returned from the form.
-class AubecsFormInputDetails with _$AubecsFormInputDetails {
+abstract class AubecsFormInputDetails with _$AubecsFormInputDetails {
   @JsonSerializable(explicitToJson: true)
   const factory AubecsFormInputDetails({
     /// Six digit identifier to identify the branch of an financial institution.

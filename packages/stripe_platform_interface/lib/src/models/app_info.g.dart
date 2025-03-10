@@ -6,16 +6,14 @@ part of 'app_info.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AppInfoImpl _$$AppInfoImplFromJson(Map<String, dynamic> json) =>
-    _$AppInfoImpl(
+_AppInfo _$AppInfoFromJson(Map<String, dynamic> json) => _AppInfo(
       name: json['name'] as String?,
       partnerId: json['partnerId'] as String?,
       url: json['url'] as String?,
       version: json['version'] as String?,
     );
 
-Map<String, dynamic> _$$AppInfoImplToJson(_$AppInfoImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$AppInfoToJson(_AppInfo instance) => <String, dynamic>{
       'name': instance.name,
       'partnerId': instance.partnerId,
       'url': instance.url,

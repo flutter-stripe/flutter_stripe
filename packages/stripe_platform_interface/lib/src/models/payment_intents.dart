@@ -15,7 +15,7 @@ part 'payment_intents.g.dart';
 /// A payment intent represents the interaction between the user and the payment form.
 ///
 /// For more detailed info see: https://stripe.com/docs/payments/payment-intents.
-class PaymentIntent with _$PaymentIntent {
+abstract class PaymentIntent with _$PaymentIntent {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentIntent({
     /// Unique identifier.
@@ -94,7 +94,7 @@ enum ConfirmationMethod {
 @freezed
 
 /// Shipping information
-class ShippingDetails with _$ShippingDetails {
+abstract class ShippingDetails with _$ShippingDetails {
   @JsonSerializable(explicitToJson: true)
   const factory ShippingDetails({
     /// Recipient address.

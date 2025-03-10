@@ -8,7 +8,7 @@ part 'ach_params.g.dart';
 
 /// Parameters that provide additional information for collecting the bankaccount
 /// for ACH payment
-class CollectBankAccountParams with _$CollectBankAccountParams {
+abstract class CollectBankAccountParams with _$CollectBankAccountParams {
   @JsonSerializable(explicitToJson: true)
   const factory CollectBankAccountParams({
     /// Billingdetails of the account holder
@@ -29,7 +29,7 @@ class CollectBankAccountParams with _$CollectBankAccountParams {
 /// Specific payment method data needed for collecting the bank account of
 /// an payment method
 @freezed
-class CollectBankAccountPaymentMethodData
+abstract class CollectBankAccountPaymentMethodData
     with _$CollectBankAccountPaymentMethodData {
   @JsonSerializable(explicitToJson: true)
   const factory CollectBankAccountPaymentMethodData({
@@ -46,7 +46,7 @@ class CollectBankAccountPaymentMethodData
 @freezed
 
 /// Parameters that provide additional information for verifyting microdeposits
-class VerifyMicroDepositsParams with _$VerifyMicroDepositsParams {
+abstract class VerifyMicroDepositsParams with _$VerifyMicroDepositsParams {
   @JsonSerializable(explicitToJson: true)
   const factory VerifyMicroDepositsParams({
     /// The amounts of the microdeposits that are deposited on the account.

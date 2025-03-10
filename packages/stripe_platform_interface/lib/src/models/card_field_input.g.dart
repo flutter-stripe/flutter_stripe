@@ -6,9 +6,9 @@ part of 'card_field_input.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CardStyleConstructorImpl _$$CardStyleConstructorImplFromJson(
+_CardStyleConstructor _$CardStyleConstructorFromJson(
         Map<String, dynamic> json) =>
-    _$CardStyleConstructorImpl(
+    _CardStyleConstructor(
       borderWidth: (json['borderWidth'] as num?)?.toInt(),
       backgroundColor: ColorKey.fromJson(json['backgroundColor']),
       borderColor: ColorKey.fromJson(json['borderColor']),
@@ -21,8 +21,8 @@ _$CardStyleConstructorImpl _$$CardStyleConstructorImplFromJson(
       placeholderColor: ColorKey.fromJson(json['placeholderColor']),
     );
 
-Map<String, dynamic> _$$CardStyleConstructorImplToJson(
-        _$CardStyleConstructorImpl instance) =>
+Map<String, dynamic> _$CardStyleConstructorToJson(
+        _CardStyleConstructor instance) =>
     <String, dynamic>{
       'borderWidth': instance.borderWidth,
       'backgroundColor': ColorKey.toJson(instance.backgroundColor),
@@ -36,9 +36,9 @@ Map<String, dynamic> _$$CardStyleConstructorImplToJson(
       'placeholderColor': ColorKey.toJson(instance.placeholderColor),
     };
 
-_$CardFormStyleConstructorImpl _$$CardFormStyleConstructorImplFromJson(
+_CardFormStyleConstructor _$CardFormStyleConstructorFromJson(
         Map<String, dynamic> json) =>
-    _$CardFormStyleConstructorImpl(
+    _CardFormStyleConstructor(
       backgroundColor: ColorKey.fromJson(json['backgroundColor']),
       borderWidth: (json['borderWidth'] as num?)?.toInt(),
       borderColor: ColorKey.fromJson(json['borderColor']),
@@ -50,8 +50,8 @@ _$CardFormStyleConstructorImpl _$$CardFormStyleConstructorImplFromJson(
       placeholderColor: ColorKey.fromJson(json['placeholderColor']),
     );
 
-Map<String, dynamic> _$$CardFormStyleConstructorImplToJson(
-        _$CardFormStyleConstructorImpl instance) =>
+Map<String, dynamic> _$CardFormStyleConstructorToJson(
+        _CardFormStyleConstructor instance) =>
     <String, dynamic>{
       'backgroundColor': ColorKey.toJson(instance.backgroundColor),
       'borderWidth': instance.borderWidth,
@@ -64,17 +64,17 @@ Map<String, dynamic> _$$CardFormStyleConstructorImplToJson(
       'placeholderColor': ColorKey.toJson(instance.placeholderColor),
     };
 
-_$CardPlaceholderConstructorImpl _$$CardPlaceholderConstructorImplFromJson(
+_CardPlaceholderConstructor _$CardPlaceholderConstructorFromJson(
         Map<String, dynamic> json) =>
-    _$CardPlaceholderConstructorImpl(
+    _CardPlaceholderConstructor(
       number: json['number'] as String?,
       expiration: json['expiration'] as String?,
       cvc: json['cvc'] as String?,
       postalCode: json['postalCode'] as String?,
     );
 
-Map<String, dynamic> _$$CardPlaceholderConstructorImplToJson(
-        _$CardPlaceholderConstructorImpl instance) =>
+Map<String, dynamic> _$CardPlaceholderConstructorToJson(
+        _CardPlaceholderConstructor instance) =>
     <String, dynamic>{
       'number': instance.number,
       'expiration': instance.expiration,
@@ -82,9 +82,9 @@ Map<String, dynamic> _$$CardPlaceholderConstructorImplToJson(
       'postalCode': instance.postalCode,
     };
 
-_$CardFieldInputDetailsImpl _$$CardFieldInputDetailsImplFromJson(
+_CardFieldInputDetails _$CardFieldInputDetailsFromJson(
         Map<String, dynamic> json) =>
-    _$CardFieldInputDetailsImpl(
+    _CardFieldInputDetails(
       complete: json['complete'] as bool,
       last4: json['last4'] as String?,
       expiryMonth: (json['expiryMonth'] as num?)?.toInt(),
@@ -104,8 +104,8 @@ _$CardFieldInputDetailsImpl _$$CardFieldInputDetailsImplFromJson(
           CardValidationState.Unknown,
     );
 
-Map<String, dynamic> _$$CardFieldInputDetailsImplToJson(
-        _$CardFieldInputDetailsImpl instance) =>
+Map<String, dynamic> _$CardFieldInputDetailsToJson(
+        _CardFieldInputDetails instance) =>
     <String, dynamic>{
       'complete': instance.complete,
       'last4': instance.last4,
@@ -128,15 +128,13 @@ const _$CardValidationStateEnumMap = {
   CardValidationState.Incomplete: 'Incomplete',
 };
 
-_$CardFieldFocusNameImpl _$$CardFieldFocusNameImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CardFieldFocusNameImpl(
+_CardFieldFocusName _$CardFieldFocusNameFromJson(Map<String, dynamic> json) =>
+    _CardFieldFocusName(
       focusedField:
           $enumDecodeNullable(_$CardFieldNameEnumMap, json['focusedField']),
     );
 
-Map<String, dynamic> _$$CardFieldFocusNameImplToJson(
-        _$CardFieldFocusNameImpl instance) =>
+Map<String, dynamic> _$CardFieldFocusNameToJson(_CardFieldFocusName instance) =>
     <String, dynamic>{
       'focusedField': _$CardFieldNameEnumMap[instance.focusedField],
     };

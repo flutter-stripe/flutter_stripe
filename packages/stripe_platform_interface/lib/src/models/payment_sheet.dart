@@ -12,7 +12,7 @@ part 'payment_sheet.g.dart';
 ///
 /// For more info about the payment sheet see: https://stripe.com/docs/payments/accept-a-payment.
 @freezed
-class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
+abstract class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
   @JsonSerializable(explicitToJson: true)
   const factory SetupPaymentSheetParameters({
     /// Whether or not to use a custom flow.
@@ -117,7 +117,7 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
 }
 
 @freezed
-class IntentConfiguration with _$IntentConfiguration {
+abstract class IntentConfiguration with _$IntentConfiguration {
   @JsonSerializable(explicitToJson: true)
   const factory IntentConfiguration({
     /// Data related to the future payment intent
@@ -168,7 +168,7 @@ sealed class IntentMode with _$IntentMode {
 
 /// Parameters related to the Payment sheet Apple Pay config.
 @freezed
-class PaymentSheetApplePay with _$PaymentSheetApplePay {
+abstract class PaymentSheetApplePay with _$PaymentSheetApplePay {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetApplePay({
     ///The two-letter ISO 3166 code of the country of your business, e.g. "US"
@@ -198,7 +198,7 @@ class PaymentSheetApplePay with _$PaymentSheetApplePay {
 
 /// Parameters related to the Payment sheet Google Pay config.
 @freezed
-class PaymentSheetGooglePay with _$PaymentSheetGooglePay {
+abstract class PaymentSheetGooglePay with _$PaymentSheetGooglePay {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetGooglePay({
     ///The two-letter ISO 3166 code of the country of your business, e.g. "US"
@@ -229,7 +229,7 @@ class PaymentSheetGooglePay with _$PaymentSheetGooglePay {
 
 /// Parameters that change the appearance of the payment sheet.
 @freezed
-class PaymentSheetAppearance with _$PaymentSheetAppearance {
+abstract class PaymentSheetAppearance with _$PaymentSheetAppearance {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetAppearance({
     /// Color parameters
@@ -248,7 +248,7 @@ class PaymentSheetAppearance with _$PaymentSheetAppearance {
 
 /// Color settings for the Paymentsheet.
 @freezed
-class PaymentSheetAppearanceColors with _$PaymentSheetAppearanceColors {
+abstract class PaymentSheetAppearanceColors with _$PaymentSheetAppearanceColors {
   const factory PaymentSheetAppearanceColors({
     ///  Color of the button that represents the primary action on the payment sheet.
     ///
@@ -303,7 +303,7 @@ class PaymentSheetAppearanceColors with _$PaymentSheetAppearanceColors {
 
 /// Parameters that change the appearance of the payment sheet.
 @freezed
-class PaymentSheetShape with _$PaymentSheetShape {
+abstract class PaymentSheetShape with _$PaymentSheetShape {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetShape({
     /// Borderradius for the paymentsheet corners
@@ -322,7 +322,7 @@ class PaymentSheetShape with _$PaymentSheetShape {
 
 /// Shadow config parameters
 @freezed
-class PaymentSheetShadowParams with _$PaymentSheetShadowParams {
+abstract class PaymentSheetShadowParams with _$PaymentSheetShadowParams {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetShadowParams({
     /// Shadow color
@@ -341,7 +341,7 @@ class PaymentSheetShadowParams with _$PaymentSheetShadowParams {
 
 /// Shadow config parameters
 @freezed
-class PaymentSheetShadowOffset with _$PaymentSheetShadowOffset {
+abstract class PaymentSheetShadowOffset with _$PaymentSheetShadowOffset {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetShadowOffset({
     /// X value
@@ -356,7 +356,7 @@ class PaymentSheetShadowOffset with _$PaymentSheetShadowOffset {
 }
 
 @freezed
-class PaymentSheetPrimaryButtonAppearance
+abstract class PaymentSheetPrimaryButtonAppearance
     with _$PaymentSheetPrimaryButtonAppearance {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetPrimaryButtonAppearance({
@@ -373,7 +373,7 @@ class PaymentSheetPrimaryButtonAppearance
 }
 
 @freezed
-class PaymentSheetPrimaryButtonShape with _$PaymentSheetPrimaryButtonShape {
+abstract class PaymentSheetPrimaryButtonShape with _$PaymentSheetPrimaryButtonShape {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetPrimaryButtonShape({
     /// Configuration of the primary button's shadow.
@@ -391,7 +391,7 @@ class PaymentSheetPrimaryButtonShape with _$PaymentSheetPrimaryButtonShape {
 }
 
 @freezed
-class PaymentSheetPrimaryButtonTheme with _$PaymentSheetPrimaryButtonTheme {
+abstract class PaymentSheetPrimaryButtonTheme with _$PaymentSheetPrimaryButtonTheme {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetPrimaryButtonTheme({
     /// Colors when displaying button in dark theme
@@ -406,7 +406,7 @@ class PaymentSheetPrimaryButtonTheme with _$PaymentSheetPrimaryButtonTheme {
 }
 
 @freezed
-class PaymentSheetPrimaryButtonThemeColors
+abstract class PaymentSheetPrimaryButtonThemeColors
     with _$PaymentSheetPrimaryButtonThemeColors {
   const factory PaymentSheetPrimaryButtonThemeColors({
     /// Primary button background color
@@ -449,7 +449,7 @@ class UserInterfaceStyleKey {
 /// Parameters used to display the payment sheet.
 @freezed
 @Deprecated('Parameters are now inherited from initPaymentSheet')
-class PresentPaymentSheetParameters with _$PresentPaymentSheetParameters {
+abstract class PresentPaymentSheetParameters with _$PresentPaymentSheetParameters {
   const factory PresentPaymentSheetParameters({
     /// Key used for client-side retrieval using a publishable key.
     required String clientSecret,
@@ -469,7 +469,7 @@ class PresentPaymentSheetParameters with _$PresentPaymentSheetParameters {
 }
 
 @freezed
-class PaymentSheetPresentOptions with _$PaymentSheetPresentOptions {
+abstract class PaymentSheetPresentOptions with _$PaymentSheetPresentOptions {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetPresentOptions({
     /// The number of milliseconds (after presenting) before the Payment Sheet
@@ -484,7 +484,7 @@ class PaymentSheetPresentOptions with _$PaymentSheetPresentOptions {
 }
 
 @freezed
-class PaymentSheetPaymentOption with _$PaymentSheetPaymentOption {
+abstract class PaymentSheetPaymentOption with _$PaymentSheetPaymentOption {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetPaymentOption({
     /// The label of the payment option
@@ -499,7 +499,7 @@ class PaymentSheetPaymentOption with _$PaymentSheetPaymentOption {
 }
 
 @freezed
-class BillingDetailsCollectionConfiguration
+abstract class BillingDetailsCollectionConfiguration
     with _$BillingDetailsCollectionConfiguration {
   @JsonSerializable(explicitToJson: true)
   const factory BillingDetailsCollectionConfiguration({

@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,37 +10,55 @@ part of 'intent_creation_callback_params.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-IntentCreationCallbackParams _$IntentCreationCallbackParamsFromJson(
-    Map<String, dynamic> json) {
-  return _IntentCreationCallbackParams.fromJson(json);
-}
 
 /// @nodoc
 mixin _$IntentCreationCallbackParams {
   /// Client secret of the payment intent or setup intent.
-  String? get clientSecret => throw _privateConstructorUsedError;
+  String? get clientSecret;
 
   /// Error that occurred during the creation of the payment intent or setup intent.
-  StripeException? get error => throw _privateConstructorUsedError;
+  StripeException? get error;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+  /// Create a copy of IntentCreationCallbackParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $IntentCreationCallbackParamsCopyWith<IntentCreationCallbackParams>
-      get copyWith => throw _privateConstructorUsedError;
+      get copyWith => _$IntentCreationCallbackParamsCopyWithImpl<
+              IntentCreationCallbackParams>(
+          this as IntentCreationCallbackParams, _$identity);
+
+  /// Serializes this IntentCreationCallbackParams to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is IntentCreationCallbackParams &&
+            (identical(other.clientSecret, clientSecret) ||
+                other.clientSecret == clientSecret) &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, clientSecret, error);
+
+  @override
+  String toString() {
+    return 'IntentCreationCallbackParams(clientSecret: $clientSecret, error: $error)';
+  }
 }
 
 /// @nodoc
-abstract class $IntentCreationCallbackParamsCopyWith<$Res> {
+abstract mixin class $IntentCreationCallbackParamsCopyWith<$Res> {
   factory $IntentCreationCallbackParamsCopyWith(
           IntentCreationCallbackParams value,
-          $Res Function(IntentCreationCallbackParams) then) =
-      _$IntentCreationCallbackParamsCopyWithImpl<$Res,
-          IntentCreationCallbackParams>;
+          $Res Function(IntentCreationCallbackParams) _then) =
+      _$IntentCreationCallbackParamsCopyWithImpl;
   @useResult
   $Res call({String? clientSecret, StripeException? error});
 
@@ -47,101 +66,55 @@ abstract class $IntentCreationCallbackParamsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$IntentCreationCallbackParamsCopyWithImpl<$Res,
-        $Val extends IntentCreationCallbackParams>
+class _$IntentCreationCallbackParamsCopyWithImpl<$Res>
     implements $IntentCreationCallbackParamsCopyWith<$Res> {
-  _$IntentCreationCallbackParamsCopyWithImpl(this._value, this._then);
+  _$IntentCreationCallbackParamsCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final IntentCreationCallbackParams _self;
+  final $Res Function(IntentCreationCallbackParams) _then;
 
+  /// Create a copy of IntentCreationCallbackParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? clientSecret = freezed,
     Object? error = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       clientSecret: freezed == clientSecret
-          ? _value.clientSecret
+          ? _self.clientSecret
           : clientSecret // ignore: cast_nullable_to_non_nullable
               as String?,
       error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as StripeException?,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $StripeExceptionCopyWith<$Res>? get error {
-    if (_value.error == null) {
-      return null;
-    }
-
-    return $StripeExceptionCopyWith<$Res>(_value.error!, (value) {
-      return _then(_value.copyWith(error: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$IntentCreationCallbackParamsImplCopyWith<$Res>
-    implements $IntentCreationCallbackParamsCopyWith<$Res> {
-  factory _$$IntentCreationCallbackParamsImplCopyWith(
-          _$IntentCreationCallbackParamsImpl value,
-          $Res Function(_$IntentCreationCallbackParamsImpl) then) =
-      __$$IntentCreationCallbackParamsImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? clientSecret, StripeException? error});
-
-  @override
-  $StripeExceptionCopyWith<$Res>? get error;
-}
-
-/// @nodoc
-class __$$IntentCreationCallbackParamsImplCopyWithImpl<$Res>
-    extends _$IntentCreationCallbackParamsCopyWithImpl<$Res,
-        _$IntentCreationCallbackParamsImpl>
-    implements _$$IntentCreationCallbackParamsImplCopyWith<$Res> {
-  __$$IntentCreationCallbackParamsImplCopyWithImpl(
-      _$IntentCreationCallbackParamsImpl _value,
-      $Res Function(_$IntentCreationCallbackParamsImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? clientSecret = freezed,
-    Object? error = freezed,
-  }) {
-    return _then(_$IntentCreationCallbackParamsImpl(
-      clientSecret: freezed == clientSecret
-          ? _value.clientSecret
-          : clientSecret // ignore: cast_nullable_to_non_nullable
-              as String?,
-      error: freezed == error
-          ? _value.error
+          ? _self.error
           : error // ignore: cast_nullable_to_non_nullable
               as StripeException?,
     ));
+  }
+
+  /// Create a copy of IntentCreationCallbackParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $StripeExceptionCopyWith<$Res>? get error {
+    if (_self.error == null) {
+      return null;
+    }
+
+    return $StripeExceptionCopyWith<$Res>(_self.error!, (value) {
+      return _then(_self.copyWith(error: value));
+    });
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$IntentCreationCallbackParamsImpl
-    implements _IntentCreationCallbackParams {
-  const _$IntentCreationCallbackParamsImpl({this.clientSecret, this.error});
-
-  factory _$IntentCreationCallbackParamsImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$IntentCreationCallbackParamsImplFromJson(json);
+class _IntentCreationCallbackParams implements IntentCreationCallbackParams {
+  const _IntentCreationCallbackParams({this.clientSecret, this.error});
+  factory _IntentCreationCallbackParams.fromJson(Map<String, dynamic> json) =>
+      _$IntentCreationCallbackParamsFromJson(json);
 
   /// Client secret of the payment intent or setup intent.
   @override
@@ -151,61 +124,98 @@ class _$IntentCreationCallbackParamsImpl
   @override
   final StripeException? error;
 
+  /// Create a copy of IntentCreationCallbackParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'IntentCreationCallbackParams(clientSecret: $clientSecret, error: $error)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$IntentCreationCallbackParamsCopyWith<_IntentCreationCallbackParams>
+      get copyWith => __$IntentCreationCallbackParamsCopyWithImpl<
+          _IntentCreationCallbackParams>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$IntentCreationCallbackParamsToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$IntentCreationCallbackParamsImpl &&
+            other is _IntentCreationCallbackParams &&
             (identical(other.clientSecret, clientSecret) ||
                 other.clientSecret == clientSecret) &&
             (identical(other.error, error) || other.error == error));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, clientSecret, error);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$IntentCreationCallbackParamsImplCopyWith<
-          _$IntentCreationCallbackParamsImpl>
-      get copyWith => __$$IntentCreationCallbackParamsImplCopyWithImpl<
-          _$IntentCreationCallbackParamsImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$IntentCreationCallbackParamsImplToJson(
-      this,
-    );
+  String toString() {
+    return 'IntentCreationCallbackParams(clientSecret: $clientSecret, error: $error)';
   }
 }
 
-abstract class _IntentCreationCallbackParams
-    implements IntentCreationCallbackParams {
-  const factory _IntentCreationCallbackParams(
-      {final String? clientSecret,
-      final StripeException? error}) = _$IntentCreationCallbackParamsImpl;
-
-  factory _IntentCreationCallbackParams.fromJson(Map<String, dynamic> json) =
-      _$IntentCreationCallbackParamsImpl.fromJson;
+/// @nodoc
+abstract mixin class _$IntentCreationCallbackParamsCopyWith<$Res>
+    implements $IntentCreationCallbackParamsCopyWith<$Res> {
+  factory _$IntentCreationCallbackParamsCopyWith(
+          _IntentCreationCallbackParams value,
+          $Res Function(_IntentCreationCallbackParams) _then) =
+      __$IntentCreationCallbackParamsCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String? clientSecret, StripeException? error});
 
   @override
-
-  /// Client secret of the payment intent or setup intent.
-  String? get clientSecret;
-  @override
-
-  /// Error that occurred during the creation of the payment intent or setup intent.
-  StripeException? get error;
-  @override
-  @JsonKey(ignore: true)
-  _$$IntentCreationCallbackParamsImplCopyWith<
-          _$IntentCreationCallbackParamsImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  $StripeExceptionCopyWith<$Res>? get error;
 }
+
+/// @nodoc
+class __$IntentCreationCallbackParamsCopyWithImpl<$Res>
+    implements _$IntentCreationCallbackParamsCopyWith<$Res> {
+  __$IntentCreationCallbackParamsCopyWithImpl(this._self, this._then);
+
+  final _IntentCreationCallbackParams _self;
+  final $Res Function(_IntentCreationCallbackParams) _then;
+
+  /// Create a copy of IntentCreationCallbackParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? clientSecret = freezed,
+    Object? error = freezed,
+  }) {
+    return _then(_IntentCreationCallbackParams(
+      clientSecret: freezed == clientSecret
+          ? _self.clientSecret
+          : clientSecret // ignore: cast_nullable_to_non_nullable
+              as String?,
+      error: freezed == error
+          ? _self.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as StripeException?,
+    ));
+  }
+
+  /// Create a copy of IntentCreationCallbackParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $StripeExceptionCopyWith<$Res>? get error {
+    if (_self.error == null) {
+      return null;
+    }
+
+    return $StripeExceptionCopyWith<$Res>(_self.error!, (value) {
+      return _then(_self.copyWith(error: value));
+    });
+  }
+}
+
+// dart format on

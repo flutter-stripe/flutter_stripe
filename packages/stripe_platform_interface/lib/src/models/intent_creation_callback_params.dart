@@ -5,7 +5,7 @@ part 'intent_creation_callback_params.freezed.dart';
 part 'intent_creation_callback_params.g.dart';
 
 @freezed
-class IntentCreationCallbackParams with _$IntentCreationCallbackParams {
+abstract class IntentCreationCallbackParams with _$IntentCreationCallbackParams {
   @JsonSerializable(explicitToJson: true)
   const factory IntentCreationCallbackParams({
     /// Client secret of the payment intent or setup intent.
