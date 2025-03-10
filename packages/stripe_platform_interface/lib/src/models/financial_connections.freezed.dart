@@ -1947,3 +1947,609 @@ abstract class _AccountBalance implements AccountBalance {
   _$$AccountBalanceImplCopyWith<_$AccountBalanceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+CollectFinancialConnectionsAccountsParams
+    _$CollectFinancialConnectionsAccountsParamsFromJson(
+        Map<String, dynamic> json) {
+  return _CollectFinancialConnectionsAccountsParams.fromJson(json);
+}
+
+/// @nodoc
+mixin _$CollectFinancialConnectionsAccountsParams {
+  /// iOS Only. Style options for colors in Financial Connections. By default, the bank account collector will automatically switch between light and dark mode compatible colors based on device settings.
+  UserInterfaceStyle? get style => throw _privateConstructorUsedError;
+
+  /// An optional event listener to receive [FinancialConnectionsEvent] for specific events during the process of a user connecting their financial accounts.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  FinancialConnectionsEventHandler? get onEvent =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CollectFinancialConnectionsAccountsParamsCopyWith<
+          CollectFinancialConnectionsAccountsParams>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CollectFinancialConnectionsAccountsParamsCopyWith<$Res> {
+  factory $CollectFinancialConnectionsAccountsParamsCopyWith(
+          CollectFinancialConnectionsAccountsParams value,
+          $Res Function(CollectFinancialConnectionsAccountsParams) then) =
+      _$CollectFinancialConnectionsAccountsParamsCopyWithImpl<$Res,
+          CollectFinancialConnectionsAccountsParams>;
+  @useResult
+  $Res call(
+      {UserInterfaceStyle? style,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      FinancialConnectionsEventHandler? onEvent});
+}
+
+/// @nodoc
+class _$CollectFinancialConnectionsAccountsParamsCopyWithImpl<$Res,
+        $Val extends CollectFinancialConnectionsAccountsParams>
+    implements $CollectFinancialConnectionsAccountsParamsCopyWith<$Res> {
+  _$CollectFinancialConnectionsAccountsParamsCopyWithImpl(
+      this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? style = freezed,
+    Object? onEvent = freezed,
+  }) {
+    return _then(_value.copyWith(
+      style: freezed == style
+          ? _value.style
+          : style // ignore: cast_nullable_to_non_nullable
+              as UserInterfaceStyle?,
+      onEvent: freezed == onEvent
+          ? _value.onEvent
+          : onEvent // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionsEventHandler?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CollectFinancialConnectionsAccountsParamsImplCopyWith<$Res>
+    implements $CollectFinancialConnectionsAccountsParamsCopyWith<$Res> {
+  factory _$$CollectFinancialConnectionsAccountsParamsImplCopyWith(
+          _$CollectFinancialConnectionsAccountsParamsImpl value,
+          $Res Function(_$CollectFinancialConnectionsAccountsParamsImpl) then) =
+      __$$CollectFinancialConnectionsAccountsParamsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {UserInterfaceStyle? style,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      FinancialConnectionsEventHandler? onEvent});
+}
+
+/// @nodoc
+class __$$CollectFinancialConnectionsAccountsParamsImplCopyWithImpl<$Res>
+    extends _$CollectFinancialConnectionsAccountsParamsCopyWithImpl<$Res,
+        _$CollectFinancialConnectionsAccountsParamsImpl>
+    implements _$$CollectFinancialConnectionsAccountsParamsImplCopyWith<$Res> {
+  __$$CollectFinancialConnectionsAccountsParamsImplCopyWithImpl(
+      _$CollectFinancialConnectionsAccountsParamsImpl _value,
+      $Res Function(_$CollectFinancialConnectionsAccountsParamsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? style = freezed,
+    Object? onEvent = freezed,
+  }) {
+    return _then(_$CollectFinancialConnectionsAccountsParamsImpl(
+      style: freezed == style
+          ? _value.style
+          : style // ignore: cast_nullable_to_non_nullable
+              as UserInterfaceStyle?,
+      onEvent: freezed == onEvent
+          ? _value.onEvent
+          : onEvent // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionsEventHandler?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$CollectFinancialConnectionsAccountsParamsImpl
+    implements _CollectFinancialConnectionsAccountsParams {
+  const _$CollectFinancialConnectionsAccountsParamsImpl(
+      {this.style,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.onEvent});
+
+  factory _$CollectFinancialConnectionsAccountsParamsImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CollectFinancialConnectionsAccountsParamsImplFromJson(json);
+
+  /// iOS Only. Style options for colors in Financial Connections. By default, the bank account collector will automatically switch between light and dark mode compatible colors based on device settings.
+  @override
+  final UserInterfaceStyle? style;
+
+  /// An optional event listener to receive [FinancialConnectionsEvent] for specific events during the process of a user connecting their financial accounts.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final FinancialConnectionsEventHandler? onEvent;
+
+  @override
+  String toString() {
+    return 'CollectFinancialConnectionsAccountsParams(style: $style, onEvent: $onEvent)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CollectFinancialConnectionsAccountsParamsImpl &&
+            (identical(other.style, style) || other.style == style) &&
+            (identical(other.onEvent, onEvent) || other.onEvent == onEvent));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, style, onEvent);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CollectFinancialConnectionsAccountsParamsImplCopyWith<
+          _$CollectFinancialConnectionsAccountsParamsImpl>
+      get copyWith =>
+          __$$CollectFinancialConnectionsAccountsParamsImplCopyWithImpl<
+                  _$CollectFinancialConnectionsAccountsParamsImpl>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CollectFinancialConnectionsAccountsParamsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CollectFinancialConnectionsAccountsParams
+    implements CollectFinancialConnectionsAccountsParams {
+  const factory _CollectFinancialConnectionsAccountsParams(
+          {final UserInterfaceStyle? style,
+          @JsonKey(includeFromJson: false, includeToJson: false)
+          final FinancialConnectionsEventHandler? onEvent}) =
+      _$CollectFinancialConnectionsAccountsParamsImpl;
+
+  factory _CollectFinancialConnectionsAccountsParams.fromJson(
+          Map<String, dynamic> json) =
+      _$CollectFinancialConnectionsAccountsParamsImpl.fromJson;
+
+  @override
+
+  /// iOS Only. Style options for colors in Financial Connections. By default, the bank account collector will automatically switch between light and dark mode compatible colors based on device settings.
+  UserInterfaceStyle? get style;
+  @override
+
+  /// An optional event listener to receive [FinancialConnectionsEvent] for specific events during the process of a user connecting their financial accounts.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  FinancialConnectionsEventHandler? get onEvent;
+  @override
+  @JsonKey(ignore: true)
+  _$$CollectFinancialConnectionsAccountsParamsImplCopyWith<
+          _$CollectFinancialConnectionsAccountsParamsImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+FinancialConnectionsEvent _$FinancialConnectionsEventFromJson(
+    Map<String, dynamic> json) {
+  return _FinancialConnectionsEvent.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FinancialConnectionsEvent {
+  /// The event's name. Represents the type of event that has occurred during the Financial Connections process.
+  FinancialConnectionsEventName get name => throw _privateConstructorUsedError;
+
+  /// Event-associated metadata. Provides further detail related to the occurred event.
+  FinancialConnectionsEventMetadata get metadata =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $FinancialConnectionsEventCopyWith<FinancialConnectionsEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FinancialConnectionsEventCopyWith<$Res> {
+  factory $FinancialConnectionsEventCopyWith(FinancialConnectionsEvent value,
+          $Res Function(FinancialConnectionsEvent) then) =
+      _$FinancialConnectionsEventCopyWithImpl<$Res, FinancialConnectionsEvent>;
+  @useResult
+  $Res call(
+      {FinancialConnectionsEventName name,
+      FinancialConnectionsEventMetadata metadata});
+
+  $FinancialConnectionsEventMetadataCopyWith<$Res> get metadata;
+}
+
+/// @nodoc
+class _$FinancialConnectionsEventCopyWithImpl<$Res,
+        $Val extends FinancialConnectionsEvent>
+    implements $FinancialConnectionsEventCopyWith<$Res> {
+  _$FinancialConnectionsEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? metadata = null,
+  }) {
+    return _then(_value.copyWith(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionsEventName,
+      metadata: null == metadata
+          ? _value.metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionsEventMetadata,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FinancialConnectionsEventMetadataCopyWith<$Res> get metadata {
+    return $FinancialConnectionsEventMetadataCopyWith<$Res>(_value.metadata,
+        (value) {
+      return _then(_value.copyWith(metadata: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$FinancialConnectionsEventImplCopyWith<$Res>
+    implements $FinancialConnectionsEventCopyWith<$Res> {
+  factory _$$FinancialConnectionsEventImplCopyWith(
+          _$FinancialConnectionsEventImpl value,
+          $Res Function(_$FinancialConnectionsEventImpl) then) =
+      __$$FinancialConnectionsEventImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {FinancialConnectionsEventName name,
+      FinancialConnectionsEventMetadata metadata});
+
+  @override
+  $FinancialConnectionsEventMetadataCopyWith<$Res> get metadata;
+}
+
+/// @nodoc
+class __$$FinancialConnectionsEventImplCopyWithImpl<$Res>
+    extends _$FinancialConnectionsEventCopyWithImpl<$Res,
+        _$FinancialConnectionsEventImpl>
+    implements _$$FinancialConnectionsEventImplCopyWith<$Res> {
+  __$$FinancialConnectionsEventImplCopyWithImpl(
+      _$FinancialConnectionsEventImpl _value,
+      $Res Function(_$FinancialConnectionsEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? metadata = null,
+  }) {
+    return _then(_$FinancialConnectionsEventImpl(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionsEventName,
+      metadata: null == metadata
+          ? _value.metadata
+          : metadata // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionsEventMetadata,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$FinancialConnectionsEventImpl implements _FinancialConnectionsEvent {
+  const _$FinancialConnectionsEventImpl(
+      {required this.name, required this.metadata});
+
+  factory _$FinancialConnectionsEventImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FinancialConnectionsEventImplFromJson(json);
+
+  /// The event's name. Represents the type of event that has occurred during the Financial Connections process.
+  @override
+  final FinancialConnectionsEventName name;
+
+  /// Event-associated metadata. Provides further detail related to the occurred event.
+  @override
+  final FinancialConnectionsEventMetadata metadata;
+
+  @override
+  String toString() {
+    return 'FinancialConnectionsEvent(name: $name, metadata: $metadata)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FinancialConnectionsEventImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.metadata, metadata) ||
+                other.metadata == metadata));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, name, metadata);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FinancialConnectionsEventImplCopyWith<_$FinancialConnectionsEventImpl>
+      get copyWith => __$$FinancialConnectionsEventImplCopyWithImpl<
+          _$FinancialConnectionsEventImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$FinancialConnectionsEventImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _FinancialConnectionsEvent implements FinancialConnectionsEvent {
+  const factory _FinancialConnectionsEvent(
+          {required final FinancialConnectionsEventName name,
+          required final FinancialConnectionsEventMetadata metadata}) =
+      _$FinancialConnectionsEventImpl;
+
+  factory _FinancialConnectionsEvent.fromJson(Map<String, dynamic> json) =
+      _$FinancialConnectionsEventImpl.fromJson;
+
+  @override
+
+  /// The event's name. Represents the type of event that has occurred during the Financial Connections process.
+  FinancialConnectionsEventName get name;
+  @override
+
+  /// Event-associated metadata. Provides further detail related to the occurred event.
+  FinancialConnectionsEventMetadata get metadata;
+  @override
+  @JsonKey(ignore: true)
+  _$$FinancialConnectionsEventImplCopyWith<_$FinancialConnectionsEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+FinancialConnectionsEventMetadata _$FinancialConnectionsEventMetadataFromJson(
+    Map<String, dynamic> json) {
+  return _FinancialConnectionsEventMetadata.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FinancialConnectionsEventMetadata {
+  /// A Boolean value that indicates if the user completed the process through the manual entry flow.
+  bool? get manualEntry => throw _privateConstructorUsedError;
+
+  /// A String value containing the name of the institution that the user selected.
+  String? get institutionName => throw _privateConstructorUsedError;
+
+  /// An ErrorCode value representing the type of error that occurred.
+  FinancialConnectionsEventErrorCode? get errorCode =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $FinancialConnectionsEventMetadataCopyWith<FinancialConnectionsEventMetadata>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FinancialConnectionsEventMetadataCopyWith<$Res> {
+  factory $FinancialConnectionsEventMetadataCopyWith(
+          FinancialConnectionsEventMetadata value,
+          $Res Function(FinancialConnectionsEventMetadata) then) =
+      _$FinancialConnectionsEventMetadataCopyWithImpl<$Res,
+          FinancialConnectionsEventMetadata>;
+  @useResult
+  $Res call(
+      {bool? manualEntry,
+      String? institutionName,
+      FinancialConnectionsEventErrorCode? errorCode});
+}
+
+/// @nodoc
+class _$FinancialConnectionsEventMetadataCopyWithImpl<$Res,
+        $Val extends FinancialConnectionsEventMetadata>
+    implements $FinancialConnectionsEventMetadataCopyWith<$Res> {
+  _$FinancialConnectionsEventMetadataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? manualEntry = freezed,
+    Object? institutionName = freezed,
+    Object? errorCode = freezed,
+  }) {
+    return _then(_value.copyWith(
+      manualEntry: freezed == manualEntry
+          ? _value.manualEntry
+          : manualEntry // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      institutionName: freezed == institutionName
+          ? _value.institutionName
+          : institutionName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionsEventErrorCode?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$FinancialConnectionsEventMetadataImplCopyWith<$Res>
+    implements $FinancialConnectionsEventMetadataCopyWith<$Res> {
+  factory _$$FinancialConnectionsEventMetadataImplCopyWith(
+          _$FinancialConnectionsEventMetadataImpl value,
+          $Res Function(_$FinancialConnectionsEventMetadataImpl) then) =
+      __$$FinancialConnectionsEventMetadataImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {bool? manualEntry,
+      String? institutionName,
+      FinancialConnectionsEventErrorCode? errorCode});
+}
+
+/// @nodoc
+class __$$FinancialConnectionsEventMetadataImplCopyWithImpl<$Res>
+    extends _$FinancialConnectionsEventMetadataCopyWithImpl<$Res,
+        _$FinancialConnectionsEventMetadataImpl>
+    implements _$$FinancialConnectionsEventMetadataImplCopyWith<$Res> {
+  __$$FinancialConnectionsEventMetadataImplCopyWithImpl(
+      _$FinancialConnectionsEventMetadataImpl _value,
+      $Res Function(_$FinancialConnectionsEventMetadataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? manualEntry = freezed,
+    Object? institutionName = freezed,
+    Object? errorCode = freezed,
+  }) {
+    return _then(_$FinancialConnectionsEventMetadataImpl(
+      manualEntry: freezed == manualEntry
+          ? _value.manualEntry
+          : manualEntry // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      institutionName: freezed == institutionName
+          ? _value.institutionName
+          : institutionName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorCode: freezed == errorCode
+          ? _value.errorCode
+          : errorCode // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionsEventErrorCode?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$FinancialConnectionsEventMetadataImpl
+    implements _FinancialConnectionsEventMetadata {
+  const _$FinancialConnectionsEventMetadataImpl(
+      {this.manualEntry, this.institutionName, this.errorCode});
+
+  factory _$FinancialConnectionsEventMetadataImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$FinancialConnectionsEventMetadataImplFromJson(json);
+
+  /// A Boolean value that indicates if the user completed the process through the manual entry flow.
+  @override
+  final bool? manualEntry;
+
+  /// A String value containing the name of the institution that the user selected.
+  @override
+  final String? institutionName;
+
+  /// An ErrorCode value representing the type of error that occurred.
+  @override
+  final FinancialConnectionsEventErrorCode? errorCode;
+
+  @override
+  String toString() {
+    return 'FinancialConnectionsEventMetadata(manualEntry: $manualEntry, institutionName: $institutionName, errorCode: $errorCode)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FinancialConnectionsEventMetadataImpl &&
+            (identical(other.manualEntry, manualEntry) ||
+                other.manualEntry == manualEntry) &&
+            (identical(other.institutionName, institutionName) ||
+                other.institutionName == institutionName) &&
+            (identical(other.errorCode, errorCode) ||
+                other.errorCode == errorCode));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, manualEntry, institutionName, errorCode);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FinancialConnectionsEventMetadataImplCopyWith<
+          _$FinancialConnectionsEventMetadataImpl>
+      get copyWith => __$$FinancialConnectionsEventMetadataImplCopyWithImpl<
+          _$FinancialConnectionsEventMetadataImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$FinancialConnectionsEventMetadataImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _FinancialConnectionsEventMetadata
+    implements FinancialConnectionsEventMetadata {
+  const factory _FinancialConnectionsEventMetadata(
+          {final bool? manualEntry,
+          final String? institutionName,
+          final FinancialConnectionsEventErrorCode? errorCode}) =
+      _$FinancialConnectionsEventMetadataImpl;
+
+  factory _FinancialConnectionsEventMetadata.fromJson(
+          Map<String, dynamic> json) =
+      _$FinancialConnectionsEventMetadataImpl.fromJson;
+
+  @override
+
+  /// A Boolean value that indicates if the user completed the process through the manual entry flow.
+  bool? get manualEntry;
+  @override
+
+  /// A String value containing the name of the institution that the user selected.
+  String? get institutionName;
+  @override
+
+  /// An ErrorCode value representing the type of error that occurred.
+  FinancialConnectionsEventErrorCode? get errorCode;
+  @override
+  @JsonKey(ignore: true)
+  _$$FinancialConnectionsEventMetadataImplCopyWith<
+          _$FinancialConnectionsEventMetadataImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
