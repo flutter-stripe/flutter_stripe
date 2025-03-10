@@ -6,31 +6,23 @@ part of 'confirm_payment_options.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ConfirmPaymentElementOptionsImpl _$$ConfirmPaymentElementOptionsImplFromJson(
+_ConfirmPaymentElementOptions _$ConfirmPaymentElementOptionsFromJson(
         Map json) =>
-    _$ConfirmPaymentElementOptionsImpl(
+    _ConfirmPaymentElementOptions(
       confirmParams: ConfirmPaymentParams.fromJson(
           Map<String, dynamic>.from(json['confirmParams'] as Map)),
       redirect: $enumDecodeNullable(
           _$PaymentConfirmationRedirectEnumMap, json['redirect']),
     );
 
-Map<String, dynamic> _$$ConfirmPaymentElementOptionsImplToJson(
-    _$ConfirmPaymentElementOptionsImpl instance) {
-  final val = <String, dynamic>{
-    'confirmParams': instance.confirmParams.toJson(),
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull(
-      'redirect', _$PaymentConfirmationRedirectEnumMap[instance.redirect]);
-  return val;
-}
+Map<String, dynamic> _$ConfirmPaymentElementOptionsToJson(
+        _ConfirmPaymentElementOptions instance) =>
+    <String, dynamic>{
+      'confirmParams': instance.confirmParams.toJson(),
+      if (_$PaymentConfirmationRedirectEnumMap[instance.redirect]
+          case final value?)
+        'redirect': value,
+    };
 
 const _$PaymentConfirmationRedirectEnumMap = {
   PaymentConfirmationRedirect.always: 'always',

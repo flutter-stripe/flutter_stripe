@@ -150,16 +150,14 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   }
 
   String colorToCssString(Color color) {
-    return 'rgb(${color.red}, ${color.green}, ${color.blue})';
+    return 'rgb(${color.r}, ${color.g}, ${color.b})';
   }
 
   js.CardElementOptions createOptions() {
     final textColor = widget.style?.textColor;
     return js.CardElementOptions(
       style: {
-        'base': {
-          if (textColor != null) 'color': colorToCssString(textColor)
-        }
+        'base': {if (textColor != null) 'color': colorToCssString(textColor)}
       },
       hidePostalCode: !widget.enablePostalCode,
     );
