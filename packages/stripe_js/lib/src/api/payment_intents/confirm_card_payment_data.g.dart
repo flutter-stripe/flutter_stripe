@@ -6,8 +6,8 @@ part of 'confirm_card_payment_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ConfirmCardPaymentDataImpl _$$ConfirmCardPaymentDataImplFromJson(Map json) =>
-    _$ConfirmCardPaymentDataImpl(
+_ConfirmCardPaymentData _$ConfirmCardPaymentDataFromJson(Map json) =>
+    _ConfirmCardPaymentData(
       paymentMethod: json['payment_method'] == null
           ? null
           : CardPaymentMethodDetails.fromJson(
@@ -23,26 +23,21 @@ _$ConfirmCardPaymentDataImpl _$$ConfirmCardPaymentDataImplFromJson(Map json) =>
       paymentMethodOptions: json['payment_method_options'],
     );
 
-Map<String, dynamic> _$$ConfirmCardPaymentDataImplToJson(
-    _$ConfirmCardPaymentDataImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('payment_method',
-      PaymentMethodDetails.toJsonConverter(instance.paymentMethod));
-  writeNotNull('shipping', instance.shipping?.toJson());
-  writeNotNull('return_url', instance.returnUrl);
-  writeNotNull('receipt_email', instance.receiptEmail);
-  writeNotNull('setup_future_usage',
-      _$PaymentIntentSetupFutureUsageEnumMap[instance.setupFutureUsage]);
-  writeNotNull('payment_method_options', instance.paymentMethodOptions);
-  return val;
-}
+Map<String, dynamic> _$ConfirmCardPaymentDataToJson(
+        _ConfirmCardPaymentData instance) =>
+    <String, dynamic>{
+      if (PaymentMethodDetails.toJsonConverter(instance.paymentMethod)
+          case final value?)
+        'payment_method': value,
+      if (instance.shipping?.toJson() case final value?) 'shipping': value,
+      if (instance.returnUrl case final value?) 'return_url': value,
+      if (instance.receiptEmail case final value?) 'receipt_email': value,
+      if (_$PaymentIntentSetupFutureUsageEnumMap[instance.setupFutureUsage]
+          case final value?)
+        'setup_future_usage': value,
+      if (instance.paymentMethodOptions case final value?)
+        'payment_method_options': value,
+    };
 
 const _$PaymentIntentSetupFutureUsageEnumMap = {
   PaymentIntentSetupFutureUsage.onSession: 'on_session',

@@ -6,8 +6,8 @@ part of 'confirm_setup_options.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ConfirmSetupOptionsImpl _$$ConfirmSetupOptionsImplFromJson(Map json) =>
-    _$ConfirmSetupOptionsImpl(
+_ConfirmSetupOptions _$ConfirmSetupOptionsFromJson(Map json) =>
+    _ConfirmSetupOptions(
       elements: const ElementsConverter().fromJson(json['elements']),
       clientSecret: json['clientSecret'] as String?,
       confirmParams: ConfirmSetupParams.fromJson(
@@ -16,47 +16,32 @@ _$ConfirmSetupOptionsImpl _$$ConfirmSetupOptionsImplFromJson(Map json) =>
           _$SetupConfirmationRedirectEnumMap, json['redirect']),
     );
 
-Map<String, dynamic> _$$ConfirmSetupOptionsImplToJson(
-    _$ConfirmSetupOptionsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('elements', const ElementsConverter().toJson(instance.elements));
-  writeNotNull('clientSecret', instance.clientSecret);
-  val['confirmParams'] = instance.confirmParams.toJson();
-  writeNotNull(
-      'redirect', _$SetupConfirmationRedirectEnumMap[instance.redirect]);
-  return val;
-}
+Map<String, dynamic> _$ConfirmSetupOptionsToJson(
+        _ConfirmSetupOptions instance) =>
+    <String, dynamic>{
+      if (const ElementsConverter().toJson(instance.elements) case final value?)
+        'elements': value,
+      if (instance.clientSecret case final value?) 'clientSecret': value,
+      'confirmParams': instance.confirmParams.toJson(),
+      if (_$SetupConfirmationRedirectEnumMap[instance.redirect]
+          case final value?)
+        'redirect': value,
+    };
 
 const _$SetupConfirmationRedirectEnumMap = {
   SetupConfirmationRedirect.always: 'always',
   SetupConfirmationRedirect.ifRequired: 'if_required',
 };
 
-_$ConfirmSetupParamsImpl _$$ConfirmSetupParamsImplFromJson(Map json) =>
-    _$ConfirmSetupParamsImpl(
+_ConfirmSetupParams _$ConfirmSetupParamsFromJson(Map json) =>
+    _ConfirmSetupParams(
       return_url: json['return_url'] as String,
       confirmation_token: json['confirmation_token'] as String?,
     );
 
-Map<String, dynamic> _$$ConfirmSetupParamsImplToJson(
-    _$ConfirmSetupParamsImpl instance) {
-  final val = <String, dynamic>{
-    'return_url': instance.return_url,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('confirmation_token', instance.confirmation_token);
-  return val;
-}
+Map<String, dynamic> _$ConfirmSetupParamsToJson(_ConfirmSetupParams instance) =>
+    <String, dynamic>{
+      'return_url': instance.return_url,
+      if (instance.confirmation_token case final value?)
+        'confirmation_token': value,
+    };

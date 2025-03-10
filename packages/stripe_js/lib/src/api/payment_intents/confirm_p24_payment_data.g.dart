@@ -6,8 +6,8 @@ part of 'confirm_p24_payment_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ConfirmP24PaymentDataImpl _$$ConfirmP24PaymentDataImplFromJson(Map json) =>
-    _$ConfirmP24PaymentDataImpl(
+_ConfirmP24PaymentData _$ConfirmP24PaymentDataFromJson(Map json) =>
+    _ConfirmP24PaymentData(
       paymentMethod: json['payment_method'] == null
           ? null
           : P24PaymentMethodDetails.fromJson(
@@ -17,8 +17,8 @@ _$ConfirmP24PaymentDataImpl _$$ConfirmP24PaymentDataImplFromJson(Map json) =>
           _$PaymentIntentSetupFutureUsageEnumMap, json['setup_future_usage']),
     );
 
-Map<String, dynamic> _$$ConfirmP24PaymentDataImplToJson(
-        _$ConfirmP24PaymentDataImpl instance) =>
+Map<String, dynamic> _$ConfirmP24PaymentDataToJson(
+        _ConfirmP24PaymentData instance) =>
     <String, dynamic>{
       if (PaymentMethodDetails.toJsonConverter(instance.paymentMethod)
           case final value?)

@@ -5,7 +5,7 @@ part 'payment_intent_response.freezed.dart';
 part 'payment_intent_response.g.dart';
 
 @freezed
-class PaymentIntentResponse with _$PaymentIntentResponse {
+abstract class PaymentIntentResponse with _$PaymentIntentResponse {
   const factory PaymentIntentResponse({
     /// If not null, a PaymentIntent was retrieved successfully
     PaymentIntent? paymentIntent,

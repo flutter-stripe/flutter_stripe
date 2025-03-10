@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,15 +10,8 @@ part of 'confirm_card_payment_data.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-ConfirmCardPaymentData _$ConfirmCardPaymentDataFromJson(
-    Map<String, dynamic> json) {
-  return _ConfirmCardPaymentData.fromJson(json);
-}
 
 /// @nodoc
 mixin _$ConfirmCardPaymentData {
@@ -25,21 +19,20 @@ mixin _$ConfirmCardPaymentData {
   /// data to create a PaymentMethod with.
   /// See the use case sections below for details.
   @paymentMethodDetailJsonKey
-  CardPaymentMethodDetails? get paymentMethod =>
-      throw _privateConstructorUsedError;
+  CardPaymentMethodDetails? get paymentMethod;
 
   /// The shipping details for the payment, if collected.
-  ShippingDetails? get shipping => throw _privateConstructorUsedError;
+  ShippingDetails? get shipping;
 
   /// If you are handling next actions yourself, pass in a return_url.
   /// If the subsequent action is redirect_to_url,
   /// this URL will be used on the return path for the redirect.
   @JsonKey(name: "return_url")
-  String? get returnUrl => throw _privateConstructorUsedError;
+  String? get returnUrl;
 
   /// Email address that the receipt for the resulting payment will be sent to.
   @JsonKey(name: "receipt_email")
-  String? get receiptEmail => throw _privateConstructorUsedError;
+  String? get receiptEmail;
 
   /// Indicates that you intend to make future payments with this
   /// PaymentIntent's payment method.
@@ -56,29 +49,65 @@ mixin _$ConfirmCardPaymentData {
   /// and comply with regional legislation and network rules. For example, if
   /// your customer is impacted by SCA, using off_session will ensure that they are authenticated while processing this PaymentIntent. You will then be able to collect off-session payments for this customer.
   @JsonKey(name: "setup_future_usage")
-  PaymentIntentSetupFutureUsage? get setupFutureUsage =>
-      throw _privateConstructorUsedError;
+  PaymentIntentSetupFutureUsage? get setupFutureUsage;
 
   /// An object containing payment-method-specific configuration to
   /// confirm the PaymentIntent with.
   @JsonKey(name: "payment_method_options")
-  dynamic get paymentMethodOptions => throw _privateConstructorUsedError;
-
-  /// Serializes this ConfirmCardPaymentData to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  dynamic get paymentMethodOptions;
 
   /// Create a copy of ConfirmCardPaymentData
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $ConfirmCardPaymentDataCopyWith<ConfirmCardPaymentData> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$ConfirmCardPaymentDataCopyWithImpl<ConfirmCardPaymentData>(
+          this as ConfirmCardPaymentData, _$identity);
+
+  /// Serializes this ConfirmCardPaymentData to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ConfirmCardPaymentData &&
+            (identical(other.paymentMethod, paymentMethod) ||
+                other.paymentMethod == paymentMethod) &&
+            (identical(other.shipping, shipping) ||
+                other.shipping == shipping) &&
+            (identical(other.returnUrl, returnUrl) ||
+                other.returnUrl == returnUrl) &&
+            (identical(other.receiptEmail, receiptEmail) ||
+                other.receiptEmail == receiptEmail) &&
+            (identical(other.setupFutureUsage, setupFutureUsage) ||
+                other.setupFutureUsage == setupFutureUsage) &&
+            const DeepCollectionEquality()
+                .equals(other.paymentMethodOptions, paymentMethodOptions));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      paymentMethod,
+      shipping,
+      returnUrl,
+      receiptEmail,
+      setupFutureUsage,
+      const DeepCollectionEquality().hash(paymentMethodOptions));
+
+  @override
+  String toString() {
+    return 'ConfirmCardPaymentData(paymentMethod: $paymentMethod, shipping: $shipping, returnUrl: $returnUrl, receiptEmail: $receiptEmail, setupFutureUsage: $setupFutureUsage, paymentMethodOptions: $paymentMethodOptions)';
+  }
 }
 
 /// @nodoc
-abstract class $ConfirmCardPaymentDataCopyWith<$Res> {
+abstract mixin class $ConfirmCardPaymentDataCopyWith<$Res> {
   factory $ConfirmCardPaymentDataCopyWith(ConfirmCardPaymentData value,
-          $Res Function(ConfirmCardPaymentData) then) =
-      _$ConfirmCardPaymentDataCopyWithImpl<$Res, ConfirmCardPaymentData>;
+          $Res Function(ConfirmCardPaymentData) _then) =
+      _$ConfirmCardPaymentDataCopyWithImpl;
   @useResult
   $Res call(
       {@paymentMethodDetailJsonKey CardPaymentMethodDetails? paymentMethod,
@@ -94,15 +123,12 @@ abstract class $ConfirmCardPaymentDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ConfirmCardPaymentDataCopyWithImpl<$Res,
-        $Val extends ConfirmCardPaymentData>
+class _$ConfirmCardPaymentDataCopyWithImpl<$Res>
     implements $ConfirmCardPaymentDataCopyWith<$Res> {
-  _$ConfirmCardPaymentDataCopyWithImpl(this._value, this._then);
+  _$ConfirmCardPaymentDataCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ConfirmCardPaymentData _self;
+  final $Res Function(ConfirmCardPaymentData) _then;
 
   /// Create a copy of ConfirmCardPaymentData
   /// with the given fields replaced by the non-null parameter values.
@@ -116,32 +142,32 @@ class _$ConfirmCardPaymentDataCopyWithImpl<$Res,
     Object? setupFutureUsage = freezed,
     Object? paymentMethodOptions = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       paymentMethod: freezed == paymentMethod
-          ? _value.paymentMethod
+          ? _self.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
               as CardPaymentMethodDetails?,
       shipping: freezed == shipping
-          ? _value.shipping
+          ? _self.shipping
           : shipping // ignore: cast_nullable_to_non_nullable
               as ShippingDetails?,
       returnUrl: freezed == returnUrl
-          ? _value.returnUrl
+          ? _self.returnUrl
           : returnUrl // ignore: cast_nullable_to_non_nullable
               as String?,
       receiptEmail: freezed == receiptEmail
-          ? _value.receiptEmail
+          ? _self.receiptEmail
           : receiptEmail // ignore: cast_nullable_to_non_nullable
               as String?,
       setupFutureUsage: freezed == setupFutureUsage
-          ? _value.setupFutureUsage
+          ? _self.setupFutureUsage
           : setupFutureUsage // ignore: cast_nullable_to_non_nullable
               as PaymentIntentSetupFutureUsage?,
       paymentMethodOptions: freezed == paymentMethodOptions
-          ? _value.paymentMethodOptions
+          ? _self.paymentMethodOptions
           : paymentMethodOptions // ignore: cast_nullable_to_non_nullable
               as dynamic,
-    ) as $Val);
+    ));
   }
 
   /// Create a copy of ConfirmCardPaymentData
@@ -149,13 +175,13 @@ class _$ConfirmCardPaymentDataCopyWithImpl<$Res,
   @override
   @pragma('vm:prefer-inline')
   $CardPaymentMethodDetailsCopyWith<$Res>? get paymentMethod {
-    if (_value.paymentMethod == null) {
+    if (_self.paymentMethod == null) {
       return null;
     }
 
-    return $CardPaymentMethodDetailsCopyWith<$Res>(_value.paymentMethod!,
+    return $CardPaymentMethodDetailsCopyWith<$Res>(_self.paymentMethod!,
         (value) {
-      return _then(_value.copyWith(paymentMethod: value) as $Val);
+      return _then(_self.copyWith(paymentMethod: value));
     });
   }
 
@@ -164,104 +190,28 @@ class _$ConfirmCardPaymentDataCopyWithImpl<$Res,
   @override
   @pragma('vm:prefer-inline')
   $ShippingDetailsCopyWith<$Res>? get shipping {
-    if (_value.shipping == null) {
+    if (_self.shipping == null) {
       return null;
     }
 
-    return $ShippingDetailsCopyWith<$Res>(_value.shipping!, (value) {
-      return _then(_value.copyWith(shipping: value) as $Val);
+    return $ShippingDetailsCopyWith<$Res>(_self.shipping!, (value) {
+      return _then(_self.copyWith(shipping: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$ConfirmCardPaymentDataImplCopyWith<$Res>
-    implements $ConfirmCardPaymentDataCopyWith<$Res> {
-  factory _$$ConfirmCardPaymentDataImplCopyWith(
-          _$ConfirmCardPaymentDataImpl value,
-          $Res Function(_$ConfirmCardPaymentDataImpl) then) =
-      __$$ConfirmCardPaymentDataImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@paymentMethodDetailJsonKey CardPaymentMethodDetails? paymentMethod,
-      ShippingDetails? shipping,
-      @JsonKey(name: "return_url") String? returnUrl,
-      @JsonKey(name: "receipt_email") String? receiptEmail,
-      @JsonKey(name: "setup_future_usage")
-      PaymentIntentSetupFutureUsage? setupFutureUsage,
-      @JsonKey(name: "payment_method_options") dynamic paymentMethodOptions});
-
-  @override
-  $CardPaymentMethodDetailsCopyWith<$Res>? get paymentMethod;
-  @override
-  $ShippingDetailsCopyWith<$Res>? get shipping;
-}
-
-/// @nodoc
-class __$$ConfirmCardPaymentDataImplCopyWithImpl<$Res>
-    extends _$ConfirmCardPaymentDataCopyWithImpl<$Res,
-        _$ConfirmCardPaymentDataImpl>
-    implements _$$ConfirmCardPaymentDataImplCopyWith<$Res> {
-  __$$ConfirmCardPaymentDataImplCopyWithImpl(
-      _$ConfirmCardPaymentDataImpl _value,
-      $Res Function(_$ConfirmCardPaymentDataImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ConfirmCardPaymentData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? paymentMethod = freezed,
-    Object? shipping = freezed,
-    Object? returnUrl = freezed,
-    Object? receiptEmail = freezed,
-    Object? setupFutureUsage = freezed,
-    Object? paymentMethodOptions = freezed,
-  }) {
-    return _then(_$ConfirmCardPaymentDataImpl(
-      paymentMethod: freezed == paymentMethod
-          ? _value.paymentMethod
-          : paymentMethod // ignore: cast_nullable_to_non_nullable
-              as CardPaymentMethodDetails?,
-      shipping: freezed == shipping
-          ? _value.shipping
-          : shipping // ignore: cast_nullable_to_non_nullable
-              as ShippingDetails?,
-      returnUrl: freezed == returnUrl
-          ? _value.returnUrl
-          : returnUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      receiptEmail: freezed == receiptEmail
-          ? _value.receiptEmail
-          : receiptEmail // ignore: cast_nullable_to_non_nullable
-              as String?,
-      setupFutureUsage: freezed == setupFutureUsage
-          ? _value.setupFutureUsage
-          : setupFutureUsage // ignore: cast_nullable_to_non_nullable
-              as PaymentIntentSetupFutureUsage?,
-      paymentMethodOptions: freezed == paymentMethodOptions
-          ? _value.paymentMethodOptions
-          : paymentMethodOptions // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ));
-  }
-}
-
-/// @nodoc
 @JsonSerializable()
-class _$ConfirmCardPaymentDataImpl implements _ConfirmCardPaymentData {
-  const _$ConfirmCardPaymentDataImpl(
+class _ConfirmCardPaymentData implements ConfirmCardPaymentData {
+  const _ConfirmCardPaymentData(
       {@paymentMethodDetailJsonKey this.paymentMethod,
       this.shipping,
       @JsonKey(name: "return_url") this.returnUrl,
       @JsonKey(name: "receipt_email") this.receiptEmail,
       @JsonKey(name: "setup_future_usage") this.setupFutureUsage,
       @JsonKey(name: "payment_method_options") this.paymentMethodOptions});
-
-  factory _$ConfirmCardPaymentDataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ConfirmCardPaymentDataImplFromJson(json);
+  factory _ConfirmCardPaymentData.fromJson(Map<String, dynamic> json) =>
+      _$ConfirmCardPaymentDataFromJson(json);
 
   /// Either the id of an existing PaymentMethod, or an object containing
   /// data to create a PaymentMethod with.
@@ -310,16 +260,27 @@ class _$ConfirmCardPaymentDataImpl implements _ConfirmCardPaymentData {
   @JsonKey(name: "payment_method_options")
   final dynamic paymentMethodOptions;
 
+  /// Create a copy of ConfirmCardPaymentData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'ConfirmCardPaymentData(paymentMethod: $paymentMethod, shipping: $shipping, returnUrl: $returnUrl, receiptEmail: $receiptEmail, setupFutureUsage: $setupFutureUsage, paymentMethodOptions: $paymentMethodOptions)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ConfirmCardPaymentDataCopyWith<_ConfirmCardPaymentData> get copyWith =>
+      __$ConfirmCardPaymentDataCopyWithImpl<_ConfirmCardPaymentData>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ConfirmCardPaymentDataToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ConfirmCardPaymentDataImpl &&
+            other is _ConfirmCardPaymentData &&
             (identical(other.paymentMethod, paymentMethod) ||
                 other.paymentMethod == paymentMethod) &&
             (identical(other.shipping, shipping) ||
@@ -345,89 +306,111 @@ class _$ConfirmCardPaymentDataImpl implements _ConfirmCardPaymentData {
       setupFutureUsage,
       const DeepCollectionEquality().hash(paymentMethodOptions));
 
-  /// Create a copy of ConfirmCardPaymentData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ConfirmCardPaymentDataImplCopyWith<_$ConfirmCardPaymentDataImpl>
-      get copyWith => __$$ConfirmCardPaymentDataImplCopyWithImpl<
-          _$ConfirmCardPaymentDataImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ConfirmCardPaymentDataImplToJson(
-      this,
-    );
+  String toString() {
+    return 'ConfirmCardPaymentData(paymentMethod: $paymentMethod, shipping: $shipping, returnUrl: $returnUrl, receiptEmail: $receiptEmail, setupFutureUsage: $setupFutureUsage, paymentMethodOptions: $paymentMethodOptions)';
   }
 }
 
-abstract class _ConfirmCardPaymentData implements ConfirmCardPaymentData {
-  const factory _ConfirmCardPaymentData(
-      {@paymentMethodDetailJsonKey
-      final CardPaymentMethodDetails? paymentMethod,
-      final ShippingDetails? shipping,
-      @JsonKey(name: "return_url") final String? returnUrl,
-      @JsonKey(name: "receipt_email") final String? receiptEmail,
+/// @nodoc
+abstract mixin class _$ConfirmCardPaymentDataCopyWith<$Res>
+    implements $ConfirmCardPaymentDataCopyWith<$Res> {
+  factory _$ConfirmCardPaymentDataCopyWith(_ConfirmCardPaymentData value,
+          $Res Function(_ConfirmCardPaymentData) _then) =
+      __$ConfirmCardPaymentDataCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@paymentMethodDetailJsonKey CardPaymentMethodDetails? paymentMethod,
+      ShippingDetails? shipping,
+      @JsonKey(name: "return_url") String? returnUrl,
+      @JsonKey(name: "receipt_email") String? receiptEmail,
       @JsonKey(name: "setup_future_usage")
-      final PaymentIntentSetupFutureUsage? setupFutureUsage,
-      @JsonKey(name: "payment_method_options")
-      final dynamic paymentMethodOptions}) = _$ConfirmCardPaymentDataImpl;
+      PaymentIntentSetupFutureUsage? setupFutureUsage,
+      @JsonKey(name: "payment_method_options") dynamic paymentMethodOptions});
 
-  factory _ConfirmCardPaymentData.fromJson(Map<String, dynamic> json) =
-      _$ConfirmCardPaymentDataImpl.fromJson;
-
-  /// Either the id of an existing PaymentMethod, or an object containing
-  /// data to create a PaymentMethod with.
-  /// See the use case sections below for details.
   @override
-  @paymentMethodDetailJsonKey
-  CardPaymentMethodDetails? get paymentMethod;
-
-  /// The shipping details for the payment, if collected.
+  $CardPaymentMethodDetailsCopyWith<$Res>? get paymentMethod;
   @override
-  ShippingDetails? get shipping;
+  $ShippingDetailsCopyWith<$Res>? get shipping;
+}
 
-  /// If you are handling next actions yourself, pass in a return_url.
-  /// If the subsequent action is redirect_to_url,
-  /// this URL will be used on the return path for the redirect.
-  @override
-  @JsonKey(name: "return_url")
-  String? get returnUrl;
+/// @nodoc
+class __$ConfirmCardPaymentDataCopyWithImpl<$Res>
+    implements _$ConfirmCardPaymentDataCopyWith<$Res> {
+  __$ConfirmCardPaymentDataCopyWithImpl(this._self, this._then);
 
-  /// Email address that the receipt for the resulting payment will be sent to.
-  @override
-  @JsonKey(name: "receipt_email")
-  String? get receiptEmail;
-
-  /// Indicates that you intend to make future payments with this
-  /// PaymentIntent's payment method.
-  ///
-  /// If present, the payment method used with this PaymentIntent can be attached
-  /// to a Customer, even after the transaction completes.
-  ///
-  /// Use on_session if you intend to only reuse the payment method when your
-  /// customer is present in your checkout flow. Use off_session if your customer
-  /// may or may not be in your checkout flow. See saving card details during
-  ///  payment to learn more.
-  ///
-  /// Stripe uses setup_future_usage to dynamically optimize your payment flow
-  /// and comply with regional legislation and network rules. For example, if
-  /// your customer is impacted by SCA, using off_session will ensure that they are authenticated while processing this PaymentIntent. You will then be able to collect off-session payments for this customer.
-  @override
-  @JsonKey(name: "setup_future_usage")
-  PaymentIntentSetupFutureUsage? get setupFutureUsage;
-
-  /// An object containing payment-method-specific configuration to
-  /// confirm the PaymentIntent with.
-  @override
-  @JsonKey(name: "payment_method_options")
-  dynamic get paymentMethodOptions;
+  final _ConfirmCardPaymentData _self;
+  final $Res Function(_ConfirmCardPaymentData) _then;
 
   /// Create a copy of ConfirmCardPaymentData
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ConfirmCardPaymentDataImplCopyWith<_$ConfirmCardPaymentDataImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? paymentMethod = freezed,
+    Object? shipping = freezed,
+    Object? returnUrl = freezed,
+    Object? receiptEmail = freezed,
+    Object? setupFutureUsage = freezed,
+    Object? paymentMethodOptions = freezed,
+  }) {
+    return _then(_ConfirmCardPaymentData(
+      paymentMethod: freezed == paymentMethod
+          ? _self.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as CardPaymentMethodDetails?,
+      shipping: freezed == shipping
+          ? _self.shipping
+          : shipping // ignore: cast_nullable_to_non_nullable
+              as ShippingDetails?,
+      returnUrl: freezed == returnUrl
+          ? _self.returnUrl
+          : returnUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      receiptEmail: freezed == receiptEmail
+          ? _self.receiptEmail
+          : receiptEmail // ignore: cast_nullable_to_non_nullable
+              as String?,
+      setupFutureUsage: freezed == setupFutureUsage
+          ? _self.setupFutureUsage
+          : setupFutureUsage // ignore: cast_nullable_to_non_nullable
+              as PaymentIntentSetupFutureUsage?,
+      paymentMethodOptions: freezed == paymentMethodOptions
+          ? _self.paymentMethodOptions
+          : paymentMethodOptions // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
+
+  /// Create a copy of ConfirmCardPaymentData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CardPaymentMethodDetailsCopyWith<$Res>? get paymentMethod {
+    if (_self.paymentMethod == null) {
+      return null;
+    }
+
+    return $CardPaymentMethodDetailsCopyWith<$Res>(_self.paymentMethod!,
+        (value) {
+      return _then(_self.copyWith(paymentMethod: value));
+    });
+  }
+
+  /// Create a copy of ConfirmCardPaymentData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ShippingDetailsCopyWith<$Res>? get shipping {
+    if (_self.shipping == null) {
+      return null;
+    }
+
+    return $ShippingDetailsCopyWith<$Res>(_self.shipping!, (value) {
+      return _then(_self.copyWith(shipping: value));
+    });
+  }
 }
+
+// dart format on

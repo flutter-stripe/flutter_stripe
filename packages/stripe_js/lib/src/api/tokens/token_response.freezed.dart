@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,39 +10,53 @@ part of 'token_response.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-TokenResponse _$TokenResponseFromJson(Map<String, dynamic> json) {
-  return _TokenResponse.fromJson(json);
-}
 
 /// @nodoc
 mixin _$TokenResponse {
   /// If not null, a Token was created successfully.
-  Token? get token => throw _privateConstructorUsedError;
+  Token? get token;
 
   /// If not null, an error occurred.
   /// This includes client-side validation errors
-  StripeError? get error => throw _privateConstructorUsedError;
-
-  /// Serializes this TokenResponse to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  StripeError? get error;
 
   /// Create a copy of TokenResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $TokenResponseCopyWith<TokenResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$TokenResponseCopyWithImpl<TokenResponse>(
+          this as TokenResponse, _$identity);
+
+  /// Serializes this TokenResponse to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is TokenResponse &&
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, token, error);
+
+  @override
+  String toString() {
+    return 'TokenResponse(token: $token, error: $error)';
+  }
 }
 
 /// @nodoc
-abstract class $TokenResponseCopyWith<$Res> {
+abstract mixin class $TokenResponseCopyWith<$Res> {
   factory $TokenResponseCopyWith(
-          TokenResponse value, $Res Function(TokenResponse) then) =
-      _$TokenResponseCopyWithImpl<$Res, TokenResponse>;
+          TokenResponse value, $Res Function(TokenResponse) _then) =
+      _$TokenResponseCopyWithImpl;
   @useResult
   $Res call({Token? token, StripeError? error});
 
@@ -50,14 +65,12 @@ abstract class $TokenResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TokenResponseCopyWithImpl<$Res, $Val extends TokenResponse>
+class _$TokenResponseCopyWithImpl<$Res>
     implements $TokenResponseCopyWith<$Res> {
-  _$TokenResponseCopyWithImpl(this._value, this._then);
+  _$TokenResponseCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final TokenResponse _self;
+  final $Res Function(TokenResponse) _then;
 
   /// Create a copy of TokenResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -67,16 +80,16 @@ class _$TokenResponseCopyWithImpl<$Res, $Val extends TokenResponse>
     Object? token = freezed,
     Object? error = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       token: freezed == token
-          ? _value.token
+          ? _self.token
           : token // ignore: cast_nullable_to_non_nullable
               as Token?,
       error: freezed == error
-          ? _value.error
+          ? _self.error
           : error // ignore: cast_nullable_to_non_nullable
               as StripeError?,
-    ) as $Val);
+    ));
   }
 
   /// Create a copy of TokenResponse
@@ -84,12 +97,12 @@ class _$TokenResponseCopyWithImpl<$Res, $Val extends TokenResponse>
   @override
   @pragma('vm:prefer-inline')
   $TokenCopyWith<$Res>? get token {
-    if (_value.token == null) {
+    if (_self.token == null) {
       return null;
     }
 
-    return $TokenCopyWith<$Res>(_value.token!, (value) {
-      return _then(_value.copyWith(token: value) as $Val);
+    return $TokenCopyWith<$Res>(_self.token!, (value) {
+      return _then(_self.copyWith(token: value));
     });
   }
 
@@ -98,68 +111,22 @@ class _$TokenResponseCopyWithImpl<$Res, $Val extends TokenResponse>
   @override
   @pragma('vm:prefer-inline')
   $StripeErrorCopyWith<$Res>? get error {
-    if (_value.error == null) {
+    if (_self.error == null) {
       return null;
     }
 
-    return $StripeErrorCopyWith<$Res>(_value.error!, (value) {
-      return _then(_value.copyWith(error: value) as $Val);
+    return $StripeErrorCopyWith<$Res>(_self.error!, (value) {
+      return _then(_self.copyWith(error: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$TokenResponseImplCopyWith<$Res>
-    implements $TokenResponseCopyWith<$Res> {
-  factory _$$TokenResponseImplCopyWith(
-          _$TokenResponseImpl value, $Res Function(_$TokenResponseImpl) then) =
-      __$$TokenResponseImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Token? token, StripeError? error});
-
-  @override
-  $TokenCopyWith<$Res>? get token;
-  @override
-  $StripeErrorCopyWith<$Res>? get error;
-}
-
-/// @nodoc
-class __$$TokenResponseImplCopyWithImpl<$Res>
-    extends _$TokenResponseCopyWithImpl<$Res, _$TokenResponseImpl>
-    implements _$$TokenResponseImplCopyWith<$Res> {
-  __$$TokenResponseImplCopyWithImpl(
-      _$TokenResponseImpl _value, $Res Function(_$TokenResponseImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of TokenResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? token = freezed,
-    Object? error = freezed,
-  }) {
-    return _then(_$TokenResponseImpl(
-      token: freezed == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as Token?,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as StripeError?,
-    ));
-  }
-}
-
-/// @nodoc
 @JsonSerializable()
-class _$TokenResponseImpl implements _TokenResponse {
-  const _$TokenResponseImpl({this.token, this.error});
-
-  factory _$TokenResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TokenResponseImplFromJson(json);
+class _TokenResponse implements TokenResponse {
+  const _TokenResponse({this.token, this.error});
+  factory _TokenResponse.fromJson(Map<String, dynamic> json) =>
+      _$TokenResponseFromJson(json);
 
   /// If not null, a Token was created successfully.
   @override
@@ -170,16 +137,26 @@ class _$TokenResponseImpl implements _TokenResponse {
   @override
   final StripeError? error;
 
+  /// Create a copy of TokenResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'TokenResponse(token: $token, error: $error)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$TokenResponseCopyWith<_TokenResponse> get copyWith =>
+      __$TokenResponseCopyWithImpl<_TokenResponse>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$TokenResponseToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TokenResponseImpl &&
+            other is _TokenResponse &&
             (identical(other.token, token) || other.token == token) &&
             (identical(other.error, error) || other.error == error));
   }
@@ -188,42 +165,83 @@ class _$TokenResponseImpl implements _TokenResponse {
   @override
   int get hashCode => Object.hash(runtimeType, token, error);
 
-  /// Create a copy of TokenResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$TokenResponseImplCopyWith<_$TokenResponseImpl> get copyWith =>
-      __$$TokenResponseImplCopyWithImpl<_$TokenResponseImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$TokenResponseImplToJson(
-      this,
-    );
+  String toString() {
+    return 'TokenResponse(token: $token, error: $error)';
   }
 }
 
-abstract class _TokenResponse implements TokenResponse {
-  const factory _TokenResponse({final Token? token, final StripeError? error}) =
-      _$TokenResponseImpl;
-
-  factory _TokenResponse.fromJson(Map<String, dynamic> json) =
-      _$TokenResponseImpl.fromJson;
-
-  /// If not null, a Token was created successfully.
+/// @nodoc
+abstract mixin class _$TokenResponseCopyWith<$Res>
+    implements $TokenResponseCopyWith<$Res> {
+  factory _$TokenResponseCopyWith(
+          _TokenResponse value, $Res Function(_TokenResponse) _then) =
+      __$TokenResponseCopyWithImpl;
   @override
-  Token? get token;
+  @useResult
+  $Res call({Token? token, StripeError? error});
 
-  /// If not null, an error occurred.
-  /// This includes client-side validation errors
   @override
-  StripeError? get error;
+  $TokenCopyWith<$Res>? get token;
+  @override
+  $StripeErrorCopyWith<$Res>? get error;
+}
+
+/// @nodoc
+class __$TokenResponseCopyWithImpl<$Res>
+    implements _$TokenResponseCopyWith<$Res> {
+  __$TokenResponseCopyWithImpl(this._self, this._then);
+
+  final _TokenResponse _self;
+  final $Res Function(_TokenResponse) _then;
 
   /// Create a copy of TokenResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TokenResponseImplCopyWith<_$TokenResponseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? token = freezed,
+    Object? error = freezed,
+  }) {
+    return _then(_TokenResponse(
+      token: freezed == token
+          ? _self.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as Token?,
+      error: freezed == error
+          ? _self.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as StripeError?,
+    ));
+  }
+
+  /// Create a copy of TokenResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $TokenCopyWith<$Res>? get token {
+    if (_self.token == null) {
+      return null;
+    }
+
+    return $TokenCopyWith<$Res>(_self.token!, (value) {
+      return _then(_self.copyWith(token: value));
+    });
+  }
+
+  /// Create a copy of TokenResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $StripeErrorCopyWith<$Res>? get error {
+    if (_self.error == null) {
+      return null;
+    }
+
+    return $StripeErrorCopyWith<$Res>(_self.error!, (value) {
+      return _then(_self.copyWith(error: value));
+    });
+  }
 }
+
+// dart format on

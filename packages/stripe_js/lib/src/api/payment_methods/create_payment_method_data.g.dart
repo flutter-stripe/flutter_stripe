@@ -6,9 +6,8 @@ part of 'create_payment_method_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CreatePaymentMethodDataImpl _$$CreatePaymentMethodDataImplFromJson(
-        Map json) =>
-    _$CreatePaymentMethodDataImpl(
+_CreatePaymentMethodData _$CreatePaymentMethodDataFromJson(Map json) =>
+    _CreatePaymentMethodData(
       type: json['type'] as String,
       card: const ElementConverter().fromJson(json['card']),
       auBecsDebit: const ElementConverter().fromJson(json['au_becs_debit']),
@@ -26,46 +25,38 @@ _$CreatePaymentMethodDataImpl _$$CreatePaymentMethodDataImplFromJson(
               Map<String, dynamic>.from(json['billing_details'] as Map)),
     );
 
-Map<String, dynamic> _$$CreatePaymentMethodDataImplToJson(
-    _$CreatePaymentMethodDataImpl instance) {
-  final val = <String, dynamic>{
-    'type': instance.type,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull(
-      'card',
-      _$JsonConverterToJson<dynamic, Element>(
-          instance.card, const ElementConverter().toJson));
-  writeNotNull(
-      'au_becs_debit',
-      _$JsonConverterToJson<dynamic, Element>(
-          instance.auBecsDebit, const ElementConverter().toJson));
-  writeNotNull(
-      'fpx',
-      _$JsonConverterToJson<dynamic, Element>(
-          instance.fpx, const ElementConverter().toJson));
-  writeNotNull('fpx[bank]', instance.fpxBank);
-  writeNotNull('netbanking[bank]', instance.netbankingBank);
-  writeNotNull(
-      'ideal',
-      _$JsonConverterToJson<dynamic, Element>(
-          instance.ideal, const ElementConverter().toJson));
-  writeNotNull('ideal[bank]', instance.idealBank);
-  writeNotNull(
-      'sepa_debit',
-      _$JsonConverterToJson<dynamic, Element>(
-          instance.sepaDebit, const ElementConverter().toJson));
-  writeNotNull('sepa_debit[iban]', instance.sepaDebitIban);
-  writeNotNull('upi[vpa]', instance.upiVpa);
-  writeNotNull('billing_details', instance.billingDetails?.toJson());
-  return val;
-}
+Map<String, dynamic> _$CreatePaymentMethodDataToJson(
+        _CreatePaymentMethodData instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      if (_$JsonConverterToJson<dynamic, Element>(
+              instance.card, const ElementConverter().toJson)
+          case final value?)
+        'card': value,
+      if (_$JsonConverterToJson<dynamic, Element>(
+              instance.auBecsDebit, const ElementConverter().toJson)
+          case final value?)
+        'au_becs_debit': value,
+      if (_$JsonConverterToJson<dynamic, Element>(
+              instance.fpx, const ElementConverter().toJson)
+          case final value?)
+        'fpx': value,
+      if (instance.fpxBank case final value?) 'fpx[bank]': value,
+      if (instance.netbankingBank case final value?) 'netbanking[bank]': value,
+      if (_$JsonConverterToJson<dynamic, Element>(
+              instance.ideal, const ElementConverter().toJson)
+          case final value?)
+        'ideal': value,
+      if (instance.idealBank case final value?) 'ideal[bank]': value,
+      if (_$JsonConverterToJson<dynamic, Element>(
+              instance.sepaDebit, const ElementConverter().toJson)
+          case final value?)
+        'sepa_debit': value,
+      if (instance.sepaDebitIban case final value?) 'sepa_debit[iban]': value,
+      if (instance.upiVpa case final value?) 'upi[vpa]': value,
+      if (instance.billingDetails?.toJson() case final value?)
+        'billing_details': value,
+    };
 
 Json? _$JsonConverterToJson<Json, Value>(
   Value? value,

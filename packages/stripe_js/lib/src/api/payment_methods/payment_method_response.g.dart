@@ -6,8 +6,8 @@ part of 'payment_method_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PaymentMethodResponseImpl _$$PaymentMethodResponseImplFromJson(Map json) =>
-    _$PaymentMethodResponseImpl(
+_PaymentMethodResponse _$PaymentMethodResponseFromJson(Map json) =>
+    _PaymentMethodResponse(
       paymentMethod: json['paymentMethod'] == null
           ? null
           : PaymentMethod.fromJson(
@@ -18,17 +18,10 @@ _$PaymentMethodResponseImpl _$$PaymentMethodResponseImplFromJson(Map json) =>
               Map<String, dynamic>.from(json['error'] as Map)),
     );
 
-Map<String, dynamic> _$$PaymentMethodResponseImplToJson(
-    _$PaymentMethodResponseImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('paymentMethod', instance.paymentMethod?.toJson());
-  writeNotNull('error', instance.error?.toJson());
-  return val;
-}
+Map<String, dynamic> _$PaymentMethodResponseToJson(
+        _PaymentMethodResponse instance) =>
+    <String, dynamic>{
+      if (instance.paymentMethod?.toJson() case final value?)
+        'paymentMethod': value,
+      if (instance.error?.toJson() case final value?) 'error': value,
+    };

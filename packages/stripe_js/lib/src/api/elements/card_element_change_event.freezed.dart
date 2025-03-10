@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,244 +10,34 @@ part of 'card_element_change_event.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-CardElementChangeEvent _$CardElementChangeEventFromJson(
-    Map<String, dynamic> json) {
-  return _CardElementChangeEvent.fromJson(json);
-}
 
 /// @nodoc
 mixin _$CardElementChangeEvent {
-  String get elementType => throw _privateConstructorUsedError;
-  bool get empty => throw _privateConstructorUsedError;
-  bool get complete => throw _privateConstructorUsedError;
-  StripeError? get error => throw _privateConstructorUsedError;
-  String get brand => throw _privateConstructorUsedError;
-  CardElementChangeEventValue? get value => throw _privateConstructorUsedError;
-
-  /// Serializes this CardElementChangeEvent to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get elementType;
+  bool get empty;
+  bool get complete;
+  StripeError? get error;
+  String get brand;
+  CardElementChangeEventValue? get value;
 
   /// Create a copy of CardElementChangeEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $CardElementChangeEventCopyWith<CardElementChangeEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$CardElementChangeEventCopyWithImpl<CardElementChangeEvent>(
+          this as CardElementChangeEvent, _$identity);
 
-/// @nodoc
-abstract class $CardElementChangeEventCopyWith<$Res> {
-  factory $CardElementChangeEventCopyWith(CardElementChangeEvent value,
-          $Res Function(CardElementChangeEvent) then) =
-      _$CardElementChangeEventCopyWithImpl<$Res, CardElementChangeEvent>;
-  @useResult
-  $Res call(
-      {String elementType,
-      bool empty,
-      bool complete,
-      StripeError? error,
-      String brand,
-      CardElementChangeEventValue? value});
-
-  $StripeErrorCopyWith<$Res>? get error;
-  $CardElementChangeEventValueCopyWith<$Res>? get value;
-}
-
-/// @nodoc
-class _$CardElementChangeEventCopyWithImpl<$Res,
-        $Val extends CardElementChangeEvent>
-    implements $CardElementChangeEventCopyWith<$Res> {
-  _$CardElementChangeEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of CardElementChangeEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? elementType = null,
-    Object? empty = null,
-    Object? complete = null,
-    Object? error = freezed,
-    Object? brand = null,
-    Object? value = freezed,
-  }) {
-    return _then(_value.copyWith(
-      elementType: null == elementType
-          ? _value.elementType
-          : elementType // ignore: cast_nullable_to_non_nullable
-              as String,
-      empty: null == empty
-          ? _value.empty
-          : empty // ignore: cast_nullable_to_non_nullable
-              as bool,
-      complete: null == complete
-          ? _value.complete
-          : complete // ignore: cast_nullable_to_non_nullable
-              as bool,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as StripeError?,
-      brand: null == brand
-          ? _value.brand
-          : brand // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as CardElementChangeEventValue?,
-    ) as $Val);
-  }
-
-  /// Create a copy of CardElementChangeEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $StripeErrorCopyWith<$Res>? get error {
-    if (_value.error == null) {
-      return null;
-    }
-
-    return $StripeErrorCopyWith<$Res>(_value.error!, (value) {
-      return _then(_value.copyWith(error: value) as $Val);
-    });
-  }
-
-  /// Create a copy of CardElementChangeEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CardElementChangeEventValueCopyWith<$Res>? get value {
-    if (_value.value == null) {
-      return null;
-    }
-
-    return $CardElementChangeEventValueCopyWith<$Res>(_value.value!, (value) {
-      return _then(_value.copyWith(value: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$CardElementChangeEventImplCopyWith<$Res>
-    implements $CardElementChangeEventCopyWith<$Res> {
-  factory _$$CardElementChangeEventImplCopyWith(
-          _$CardElementChangeEventImpl value,
-          $Res Function(_$CardElementChangeEventImpl) then) =
-      __$$CardElementChangeEventImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String elementType,
-      bool empty,
-      bool complete,
-      StripeError? error,
-      String brand,
-      CardElementChangeEventValue? value});
-
-  @override
-  $StripeErrorCopyWith<$Res>? get error;
-  @override
-  $CardElementChangeEventValueCopyWith<$Res>? get value;
-}
-
-/// @nodoc
-class __$$CardElementChangeEventImplCopyWithImpl<$Res>
-    extends _$CardElementChangeEventCopyWithImpl<$Res,
-        _$CardElementChangeEventImpl>
-    implements _$$CardElementChangeEventImplCopyWith<$Res> {
-  __$$CardElementChangeEventImplCopyWithImpl(
-      _$CardElementChangeEventImpl _value,
-      $Res Function(_$CardElementChangeEventImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of CardElementChangeEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? elementType = null,
-    Object? empty = null,
-    Object? complete = null,
-    Object? error = freezed,
-    Object? brand = null,
-    Object? value = freezed,
-  }) {
-    return _then(_$CardElementChangeEventImpl(
-      elementType: null == elementType
-          ? _value.elementType
-          : elementType // ignore: cast_nullable_to_non_nullable
-              as String,
-      empty: null == empty
-          ? _value.empty
-          : empty // ignore: cast_nullable_to_non_nullable
-              as bool,
-      complete: null == complete
-          ? _value.complete
-          : complete // ignore: cast_nullable_to_non_nullable
-              as bool,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as StripeError?,
-      brand: null == brand
-          ? _value.brand
-          : brand // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as CardElementChangeEventValue?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$CardElementChangeEventImpl implements _CardElementChangeEvent {
-  const _$CardElementChangeEventImpl(
-      {required this.elementType,
-      required this.empty,
-      required this.complete,
-      this.error,
-      required this.brand,
-      this.value});
-
-  factory _$CardElementChangeEventImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CardElementChangeEventImplFromJson(json);
-
-  @override
-  final String elementType;
-  @override
-  final bool empty;
-  @override
-  final bool complete;
-  @override
-  final StripeError? error;
-  @override
-  final String brand;
-  @override
-  final CardElementChangeEventValue? value;
-
-  @override
-  String toString() {
-    return 'CardElementChangeEvent(elementType: $elementType, empty: $empty, complete: $complete, error: $error, brand: $brand, value: $value)';
-  }
+  /// Serializes this CardElementChangeEvent to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CardElementChangeEventImpl &&
+            other is CardElementChangeEvent &&
             (identical(other.elementType, elementType) ||
                 other.elementType == elementType) &&
             (identical(other.empty, empty) || other.empty == empty) &&
@@ -262,174 +53,295 @@ class _$CardElementChangeEventImpl implements _CardElementChangeEvent {
   int get hashCode => Object.hash(
       runtimeType, elementType, empty, complete, error, brand, value);
 
-  /// Create a copy of CardElementChangeEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$CardElementChangeEventImplCopyWith<_$CardElementChangeEventImpl>
-      get copyWith => __$$CardElementChangeEventImplCopyWithImpl<
-          _$CardElementChangeEventImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CardElementChangeEventImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _CardElementChangeEvent implements CardElementChangeEvent {
-  const factory _CardElementChangeEvent(
-      {required final String elementType,
-      required final bool empty,
-      required final bool complete,
-      final StripeError? error,
-      required final String brand,
-      final CardElementChangeEventValue? value}) = _$CardElementChangeEventImpl;
-
-  factory _CardElementChangeEvent.fromJson(Map<String, dynamic> json) =
-      _$CardElementChangeEventImpl.fromJson;
-
-  @override
-  String get elementType;
-  @override
-  bool get empty;
-  @override
-  bool get complete;
-  @override
-  StripeError? get error;
-  @override
-  String get brand;
-  @override
-  CardElementChangeEventValue? get value;
-
-  /// Create a copy of CardElementChangeEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CardElementChangeEventImplCopyWith<_$CardElementChangeEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-CardElementChangeEventValue _$CardElementChangeEventValueFromJson(
-    Map<String, dynamic> json) {
-  return _CardElementChangeEventValue.fromJson(json);
-}
-
-/// @nodoc
-mixin _$CardElementChangeEventValue {
-  String? get postalCode => throw _privateConstructorUsedError;
-
-  /// Serializes this CardElementChangeEventValue to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of CardElementChangeEventValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $CardElementChangeEventValueCopyWith<CardElementChangeEventValue>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CardElementChangeEventValueCopyWith<$Res> {
-  factory $CardElementChangeEventValueCopyWith(
-          CardElementChangeEventValue value,
-          $Res Function(CardElementChangeEventValue) then) =
-      _$CardElementChangeEventValueCopyWithImpl<$Res,
-          CardElementChangeEventValue>;
-  @useResult
-  $Res call({String? postalCode});
-}
-
-/// @nodoc
-class _$CardElementChangeEventValueCopyWithImpl<$Res,
-        $Val extends CardElementChangeEventValue>
-    implements $CardElementChangeEventValueCopyWith<$Res> {
-  _$CardElementChangeEventValueCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of CardElementChangeEventValue
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? postalCode = freezed,
-  }) {
-    return _then(_value.copyWith(
-      postalCode: freezed == postalCode
-          ? _value.postalCode
-          : postalCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  String toString() {
+    return 'CardElementChangeEvent(elementType: $elementType, empty: $empty, complete: $complete, error: $error, brand: $brand, value: $value)';
   }
 }
 
 /// @nodoc
-abstract class _$$CardElementChangeEventValueImplCopyWith<$Res>
-    implements $CardElementChangeEventValueCopyWith<$Res> {
-  factory _$$CardElementChangeEventValueImplCopyWith(
-          _$CardElementChangeEventValueImpl value,
-          $Res Function(_$CardElementChangeEventValueImpl) then) =
-      __$$CardElementChangeEventValueImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $CardElementChangeEventCopyWith<$Res> {
+  factory $CardElementChangeEventCopyWith(CardElementChangeEvent value,
+          $Res Function(CardElementChangeEvent) _then) =
+      _$CardElementChangeEventCopyWithImpl;
   @useResult
-  $Res call({String? postalCode});
+  $Res call(
+      {String elementType,
+      bool empty,
+      bool complete,
+      StripeError? error,
+      String brand,
+      CardElementChangeEventValue? value});
+
+  $StripeErrorCopyWith<$Res>? get error;
+  $CardElementChangeEventValueCopyWith<$Res>? get value;
 }
 
 /// @nodoc
-class __$$CardElementChangeEventValueImplCopyWithImpl<$Res>
-    extends _$CardElementChangeEventValueCopyWithImpl<$Res,
-        _$CardElementChangeEventValueImpl>
-    implements _$$CardElementChangeEventValueImplCopyWith<$Res> {
-  __$$CardElementChangeEventValueImplCopyWithImpl(
-      _$CardElementChangeEventValueImpl _value,
-      $Res Function(_$CardElementChangeEventValueImpl) _then)
-      : super(_value, _then);
+class _$CardElementChangeEventCopyWithImpl<$Res>
+    implements $CardElementChangeEventCopyWith<$Res> {
+  _$CardElementChangeEventCopyWithImpl(this._self, this._then);
 
-  /// Create a copy of CardElementChangeEventValue
+  final CardElementChangeEvent _self;
+  final $Res Function(CardElementChangeEvent) _then;
+
+  /// Create a copy of CardElementChangeEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? postalCode = freezed,
+    Object? elementType = null,
+    Object? empty = null,
+    Object? complete = null,
+    Object? error = freezed,
+    Object? brand = null,
+    Object? value = freezed,
   }) {
-    return _then(_$CardElementChangeEventValueImpl(
-      postalCode: freezed == postalCode
-          ? _value.postalCode
-          : postalCode // ignore: cast_nullable_to_non_nullable
-              as String?,
+    return _then(_self.copyWith(
+      elementType: null == elementType
+          ? _self.elementType
+          : elementType // ignore: cast_nullable_to_non_nullable
+              as String,
+      empty: null == empty
+          ? _self.empty
+          : empty // ignore: cast_nullable_to_non_nullable
+              as bool,
+      complete: null == complete
+          ? _self.complete
+          : complete // ignore: cast_nullable_to_non_nullable
+              as bool,
+      error: freezed == error
+          ? _self.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as StripeError?,
+      brand: null == brand
+          ? _self.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as String,
+      value: freezed == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as CardElementChangeEventValue?,
     ));
+  }
+
+  /// Create a copy of CardElementChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $StripeErrorCopyWith<$Res>? get error {
+    if (_self.error == null) {
+      return null;
+    }
+
+    return $StripeErrorCopyWith<$Res>(_self.error!, (value) {
+      return _then(_self.copyWith(error: value));
+    });
+  }
+
+  /// Create a copy of CardElementChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CardElementChangeEventValueCopyWith<$Res>? get value {
+    if (_self.value == null) {
+      return null;
+    }
+
+    return $CardElementChangeEventValueCopyWith<$Res>(_self.value!, (value) {
+      return _then(_self.copyWith(value: value));
+    });
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$CardElementChangeEventValueImpl
-    implements _CardElementChangeEventValue {
-  const _$CardElementChangeEventValueImpl({required this.postalCode});
-
-  factory _$CardElementChangeEventValueImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$CardElementChangeEventValueImplFromJson(json);
+class _CardElementChangeEvent implements CardElementChangeEvent {
+  const _CardElementChangeEvent(
+      {required this.elementType,
+      required this.empty,
+      required this.complete,
+      this.error,
+      required this.brand,
+      this.value});
+  factory _CardElementChangeEvent.fromJson(Map<String, dynamic> json) =>
+      _$CardElementChangeEventFromJson(json);
 
   @override
-  final String? postalCode;
+  final String elementType;
+  @override
+  final bool empty;
+  @override
+  final bool complete;
+  @override
+  final StripeError? error;
+  @override
+  final String brand;
+  @override
+  final CardElementChangeEventValue? value;
+
+  /// Create a copy of CardElementChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CardElementChangeEventCopyWith<_CardElementChangeEvent> get copyWith =>
+      __$CardElementChangeEventCopyWithImpl<_CardElementChangeEvent>(
+          this, _$identity);
 
   @override
-  String toString() {
-    return 'CardElementChangeEventValue(postalCode: $postalCode)';
+  Map<String, dynamic> toJson() {
+    return _$CardElementChangeEventToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CardElementChangeEventValueImpl &&
+            other is _CardElementChangeEvent &&
+            (identical(other.elementType, elementType) ||
+                other.elementType == elementType) &&
+            (identical(other.empty, empty) || other.empty == empty) &&
+            (identical(other.complete, complete) ||
+                other.complete == complete) &&
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.brand, brand) || other.brand == brand) &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, elementType, empty, complete, error, brand, value);
+
+  @override
+  String toString() {
+    return 'CardElementChangeEvent(elementType: $elementType, empty: $empty, complete: $complete, error: $error, brand: $brand, value: $value)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$CardElementChangeEventCopyWith<$Res>
+    implements $CardElementChangeEventCopyWith<$Res> {
+  factory _$CardElementChangeEventCopyWith(_CardElementChangeEvent value,
+          $Res Function(_CardElementChangeEvent) _then) =
+      __$CardElementChangeEventCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String elementType,
+      bool empty,
+      bool complete,
+      StripeError? error,
+      String brand,
+      CardElementChangeEventValue? value});
+
+  @override
+  $StripeErrorCopyWith<$Res>? get error;
+  @override
+  $CardElementChangeEventValueCopyWith<$Res>? get value;
+}
+
+/// @nodoc
+class __$CardElementChangeEventCopyWithImpl<$Res>
+    implements _$CardElementChangeEventCopyWith<$Res> {
+  __$CardElementChangeEventCopyWithImpl(this._self, this._then);
+
+  final _CardElementChangeEvent _self;
+  final $Res Function(_CardElementChangeEvent) _then;
+
+  /// Create a copy of CardElementChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? elementType = null,
+    Object? empty = null,
+    Object? complete = null,
+    Object? error = freezed,
+    Object? brand = null,
+    Object? value = freezed,
+  }) {
+    return _then(_CardElementChangeEvent(
+      elementType: null == elementType
+          ? _self.elementType
+          : elementType // ignore: cast_nullable_to_non_nullable
+              as String,
+      empty: null == empty
+          ? _self.empty
+          : empty // ignore: cast_nullable_to_non_nullable
+              as bool,
+      complete: null == complete
+          ? _self.complete
+          : complete // ignore: cast_nullable_to_non_nullable
+              as bool,
+      error: freezed == error
+          ? _self.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as StripeError?,
+      brand: null == brand
+          ? _self.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as String,
+      value: freezed == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as CardElementChangeEventValue?,
+    ));
+  }
+
+  /// Create a copy of CardElementChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $StripeErrorCopyWith<$Res>? get error {
+    if (_self.error == null) {
+      return null;
+    }
+
+    return $StripeErrorCopyWith<$Res>(_self.error!, (value) {
+      return _then(_self.copyWith(error: value));
+    });
+  }
+
+  /// Create a copy of CardElementChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CardElementChangeEventValueCopyWith<$Res>? get value {
+    if (_self.value == null) {
+      return null;
+    }
+
+    return $CardElementChangeEventValueCopyWith<$Res>(_self.value!, (value) {
+      return _then(_self.copyWith(value: value));
+    });
+  }
+}
+
+/// @nodoc
+mixin _$CardElementChangeEventValue {
+  String? get postalCode;
+
+  /// Create a copy of CardElementChangeEventValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $CardElementChangeEventValueCopyWith<CardElementChangeEventValue>
+      get copyWith => _$CardElementChangeEventValueCopyWithImpl<
+              CardElementChangeEventValue>(
+          this as CardElementChangeEventValue, _$identity);
+
+  /// Serializes this CardElementChangeEventValue to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CardElementChangeEventValue &&
             (identical(other.postalCode, postalCode) ||
                 other.postalCode == postalCode));
   }
@@ -438,38 +350,125 @@ class _$CardElementChangeEventValueImpl
   @override
   int get hashCode => Object.hash(runtimeType, postalCode);
 
-  /// Create a copy of CardElementChangeEventValue
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$CardElementChangeEventValueImplCopyWith<_$CardElementChangeEventValueImpl>
-      get copyWith => __$$CardElementChangeEventValueImplCopyWithImpl<
-          _$CardElementChangeEventValueImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CardElementChangeEventValueImplToJson(
-      this,
-    );
+  String toString() {
+    return 'CardElementChangeEventValue(postalCode: $postalCode)';
   }
 }
 
-abstract class _CardElementChangeEventValue
-    implements CardElementChangeEventValue {
-  const factory _CardElementChangeEventValue(
-      {required final String? postalCode}) = _$CardElementChangeEventValueImpl;
+/// @nodoc
+abstract mixin class $CardElementChangeEventValueCopyWith<$Res> {
+  factory $CardElementChangeEventValueCopyWith(
+          CardElementChangeEventValue value,
+          $Res Function(CardElementChangeEventValue) _then) =
+      _$CardElementChangeEventValueCopyWithImpl;
+  @useResult
+  $Res call({String? postalCode});
+}
 
-  factory _CardElementChangeEventValue.fromJson(Map<String, dynamic> json) =
-      _$CardElementChangeEventValueImpl.fromJson;
+/// @nodoc
+class _$CardElementChangeEventValueCopyWithImpl<$Res>
+    implements $CardElementChangeEventValueCopyWith<$Res> {
+  _$CardElementChangeEventValueCopyWithImpl(this._self, this._then);
+
+  final CardElementChangeEventValue _self;
+  final $Res Function(CardElementChangeEventValue) _then;
+
+  /// Create a copy of CardElementChangeEventValue
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? postalCode = freezed,
+  }) {
+    return _then(_self.copyWith(
+      postalCode: freezed == postalCode
+          ? _self.postalCode
+          : postalCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _CardElementChangeEventValue implements CardElementChangeEventValue {
+  const _CardElementChangeEventValue({required this.postalCode});
+  factory _CardElementChangeEventValue.fromJson(Map<String, dynamic> json) =>
+      _$CardElementChangeEventValueFromJson(json);
 
   @override
-  String? get postalCode;
+  final String? postalCode;
 
   /// Create a copy of CardElementChangeEventValue
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CardElementChangeEventValueImplCopyWith<_$CardElementChangeEventValueImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$CardElementChangeEventValueCopyWith<_CardElementChangeEventValue>
+      get copyWith => __$CardElementChangeEventValueCopyWithImpl<
+          _CardElementChangeEventValue>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$CardElementChangeEventValueToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _CardElementChangeEventValue &&
+            (identical(other.postalCode, postalCode) ||
+                other.postalCode == postalCode));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, postalCode);
+
+  @override
+  String toString() {
+    return 'CardElementChangeEventValue(postalCode: $postalCode)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$CardElementChangeEventValueCopyWith<$Res>
+    implements $CardElementChangeEventValueCopyWith<$Res> {
+  factory _$CardElementChangeEventValueCopyWith(
+          _CardElementChangeEventValue value,
+          $Res Function(_CardElementChangeEventValue) _then) =
+      __$CardElementChangeEventValueCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String? postalCode});
+}
+
+/// @nodoc
+class __$CardElementChangeEventValueCopyWithImpl<$Res>
+    implements _$CardElementChangeEventValueCopyWith<$Res> {
+  __$CardElementChangeEventValueCopyWithImpl(this._self, this._then);
+
+  final _CardElementChangeEventValue _self;
+  final $Res Function(_CardElementChangeEventValue) _then;
+
+  /// Create a copy of CardElementChangeEventValue
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? postalCode = freezed,
+  }) {
+    return _then(_CardElementChangeEventValue(
+      postalCode: freezed == postalCode
+          ? _self.postalCode
+          : postalCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+// dart format on

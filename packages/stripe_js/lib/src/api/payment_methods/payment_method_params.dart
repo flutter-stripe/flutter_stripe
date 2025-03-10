@@ -7,7 +7,7 @@ part 'payment_method_params.g.dart';
 @Freezed(unionKey: 'paymentMethodType')
 
 /// Parameters that specify the desired configuration of a specific payment method.
-class PaymentMethodParams with _$PaymentMethodParams {
+sealed class PaymentMethodParams with _$PaymentMethodParams {
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('Card')
 
@@ -199,7 +199,7 @@ class PaymentMethodParams with _$PaymentMethodParams {
 @freezed
 
 /// Generic payment method data object that holds the billingdetails.
-class PaymentMethodData with _$PaymentMethodData {
+abstract class PaymentMethodData with _$PaymentMethodData {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodData({
     /// Billing information.
@@ -216,7 +216,7 @@ class PaymentMethodData with _$PaymentMethodData {
 @freezed
 
 /// Payment method data object for card with token payment method.
-class PaymentMethodDataCardFromToken with _$PaymentMethodDataCardFromToken {
+abstract class PaymentMethodDataCardFromToken with _$PaymentMethodDataCardFromToken {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodDataCardFromToken({
     /// Token.
@@ -236,7 +236,7 @@ class PaymentMethodDataCardFromToken with _$PaymentMethodDataCardFromToken {
 @freezed
 
 /// Payment method data object for card from payment method.
-class PaymentMethodDataCardFromMethod with _$PaymentMethodDataCardFromMethod {
+abstract class PaymentMethodDataCardFromMethod with _$PaymentMethodDataCardFromMethod {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodDataCardFromMethod({
     /// Payment method id.
@@ -259,7 +259,7 @@ class PaymentMethodDataCardFromMethod with _$PaymentMethodDataCardFromMethod {
 @freezed
 
 /// Payment method data object for ideal payment method.
-class PaymentMethodDataIdeal with _$PaymentMethodDataIdeal {
+abstract class PaymentMethodDataIdeal with _$PaymentMethodDataIdeal {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodDataIdeal({
     /// The name of bank.
@@ -279,7 +279,7 @@ class PaymentMethodDataIdeal with _$PaymentMethodDataIdeal {
 @freezed
 
 /// Payment method data object for Aubecs payment method.
-class PaymentMethodDataAubecs with _$PaymentMethodDataAubecs {
+abstract class PaymentMethodDataAubecs with _$PaymentMethodDataAubecs {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodDataAubecs({
     /// form input details
@@ -299,7 +299,7 @@ class PaymentMethodDataAubecs with _$PaymentMethodDataAubecs {
 @freezed
 
 /// Payment method data object for Fpx payment method.
-class PaymentMethodDataFpx with _$PaymentMethodDataFpx {
+abstract class PaymentMethodDataFpx with _$PaymentMethodDataFpx {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodDataFpx({
     /// When set to true you can test offline payment.
@@ -319,7 +319,7 @@ class PaymentMethodDataFpx with _$PaymentMethodDataFpx {
 @freezed
 
 /// Payment method data object for Sofort payment method.
-class PaymentMethodDataSofort with _$PaymentMethodDataSofort {
+abstract class PaymentMethodDataSofort with _$PaymentMethodDataSofort {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodDataSofort({
     /// Country of the accountholder
@@ -339,7 +339,7 @@ class PaymentMethodDataSofort with _$PaymentMethodDataSofort {
 @freezed
 
 /// Payment method data object for Sepa debit payment method.
-class PaymentMethodDataSepa with _$PaymentMethodDataSepa {
+abstract class PaymentMethodDataSepa with _$PaymentMethodDataSepa {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodDataSepa({
     /// Iban number of the accountholder
@@ -359,7 +359,7 @@ class PaymentMethodDataSepa with _$PaymentMethodDataSepa {
 @freezed
 
 /// Payment method data object for Afterpay / clearpay  payment method.
-class PaymentMethodDataAfterPay with _$PaymentMethodDataAfterPay {
+abstract class PaymentMethodDataAfterPay with _$PaymentMethodDataAfterPay {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodDataAfterPay({
     /// Billing information.
@@ -375,7 +375,7 @@ class PaymentMethodDataAfterPay with _$PaymentMethodDataAfterPay {
 
 /// Payment method data object forUsbankaccount  payment method.
 @freezed
-class PaymentMethodDataUsBank with _$PaymentMethodDataUsBank {
+abstract class PaymentMethodDataUsBank with _$PaymentMethodDataUsBank {
   @JsonSerializable(explicitToJson: true)
   const factory PaymentMethodDataUsBank({
     /// The account number of the bank account.

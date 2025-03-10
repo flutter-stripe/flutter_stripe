@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,25 +10,18 @@ part of 'confirm_payment_options.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-ConfirmPaymentOptions _$ConfirmPaymentOptionsFromJson(
-    Map<String, dynamic> json) {
-  return _ConfirmPaymentOptions.fromJson(json);
-}
 
 /// @nodoc
 mixin _$ConfirmPaymentOptions {
   /// The Elements instance that was used to create the Payment Element.
   @ElementsConverter()
-  Elements get elements => throw _privateConstructorUsedError;
+  Elements get elements;
 
   /// Parameters that will be passed on to the Stripe API.
   /// Refer to the Payment Intents API for a full list of parameters.
-  ConfirmPaymentParams get confirmParams => throw _privateConstructorUsedError;
+  ConfirmPaymentParams get confirmParams;
 
   /// By default, stripe.confirmPayment will always redirect to your
   /// return_url after a successful confirmation.
@@ -39,24 +33,48 @@ mixin _$ConfirmPaymentOptions {
   /// methods separately. When a non-redirect based payment method is
   /// successfully confirmed, stripe.confirmPayment will resolve with a
   /// {paymentIntent} object.
-  PaymentConfirmationRedirect? get redirect =>
-      throw _privateConstructorUsedError;
-
-  /// Serializes this ConfirmPaymentOptions to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  PaymentConfirmationRedirect? get redirect;
 
   /// Create a copy of ConfirmPaymentOptions
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $ConfirmPaymentOptionsCopyWith<ConfirmPaymentOptions> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$ConfirmPaymentOptionsCopyWithImpl<ConfirmPaymentOptions>(
+          this as ConfirmPaymentOptions, _$identity);
+
+  /// Serializes this ConfirmPaymentOptions to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ConfirmPaymentOptions &&
+            (identical(other.elements, elements) ||
+                other.elements == elements) &&
+            (identical(other.confirmParams, confirmParams) ||
+                other.confirmParams == confirmParams) &&
+            (identical(other.redirect, redirect) ||
+                other.redirect == redirect));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, elements, confirmParams, redirect);
+
+  @override
+  String toString() {
+    return 'ConfirmPaymentOptions(elements: $elements, confirmParams: $confirmParams, redirect: $redirect)';
+  }
 }
 
 /// @nodoc
-abstract class $ConfirmPaymentOptionsCopyWith<$Res> {
+abstract mixin class $ConfirmPaymentOptionsCopyWith<$Res> {
   factory $ConfirmPaymentOptionsCopyWith(ConfirmPaymentOptions value,
-          $Res Function(ConfirmPaymentOptions) then) =
-      _$ConfirmPaymentOptionsCopyWithImpl<$Res, ConfirmPaymentOptions>;
+          $Res Function(ConfirmPaymentOptions) _then) =
+      _$ConfirmPaymentOptionsCopyWithImpl;
   @useResult
   $Res call(
       {@ElementsConverter() Elements elements,
@@ -67,15 +85,12 @@ abstract class $ConfirmPaymentOptionsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ConfirmPaymentOptionsCopyWithImpl<$Res,
-        $Val extends ConfirmPaymentOptions>
+class _$ConfirmPaymentOptionsCopyWithImpl<$Res>
     implements $ConfirmPaymentOptionsCopyWith<$Res> {
-  _$ConfirmPaymentOptionsCopyWithImpl(this._value, this._then);
+  _$ConfirmPaymentOptionsCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ConfirmPaymentOptions _self;
+  final $Res Function(ConfirmPaymentOptions) _then;
 
   /// Create a copy of ConfirmPaymentOptions
   /// with the given fields replaced by the non-null parameter values.
@@ -86,20 +101,20 @@ class _$ConfirmPaymentOptionsCopyWithImpl<$Res,
     Object? confirmParams = null,
     Object? redirect = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       elements: null == elements
-          ? _value.elements
+          ? _self.elements
           : elements // ignore: cast_nullable_to_non_nullable
               as Elements,
       confirmParams: null == confirmParams
-          ? _value.confirmParams
+          ? _self.confirmParams
           : confirmParams // ignore: cast_nullable_to_non_nullable
               as ConfirmPaymentParams,
       redirect: freezed == redirect
-          ? _value.redirect
+          ? _self.redirect
           : redirect // ignore: cast_nullable_to_non_nullable
               as PaymentConfirmationRedirect?,
-    ) as $Val);
+    ));
   }
 
   /// Create a copy of ConfirmPaymentOptions
@@ -107,75 +122,21 @@ class _$ConfirmPaymentOptionsCopyWithImpl<$Res,
   @override
   @pragma('vm:prefer-inline')
   $ConfirmPaymentParamsCopyWith<$Res> get confirmParams {
-    return $ConfirmPaymentParamsCopyWith<$Res>(_value.confirmParams, (value) {
-      return _then(_value.copyWith(confirmParams: value) as $Val);
+    return $ConfirmPaymentParamsCopyWith<$Res>(_self.confirmParams, (value) {
+      return _then(_self.copyWith(confirmParams: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$ConfirmPaymentOptionsImplCopyWith<$Res>
-    implements $ConfirmPaymentOptionsCopyWith<$Res> {
-  factory _$$ConfirmPaymentOptionsImplCopyWith(
-          _$ConfirmPaymentOptionsImpl value,
-          $Res Function(_$ConfirmPaymentOptionsImpl) then) =
-      __$$ConfirmPaymentOptionsImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@ElementsConverter() Elements elements,
-      ConfirmPaymentParams confirmParams,
-      PaymentConfirmationRedirect? redirect});
-
-  @override
-  $ConfirmPaymentParamsCopyWith<$Res> get confirmParams;
-}
-
-/// @nodoc
-class __$$ConfirmPaymentOptionsImplCopyWithImpl<$Res>
-    extends _$ConfirmPaymentOptionsCopyWithImpl<$Res,
-        _$ConfirmPaymentOptionsImpl>
-    implements _$$ConfirmPaymentOptionsImplCopyWith<$Res> {
-  __$$ConfirmPaymentOptionsImplCopyWithImpl(_$ConfirmPaymentOptionsImpl _value,
-      $Res Function(_$ConfirmPaymentOptionsImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ConfirmPaymentOptions
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? elements = null,
-    Object? confirmParams = null,
-    Object? redirect = freezed,
-  }) {
-    return _then(_$ConfirmPaymentOptionsImpl(
-      elements: null == elements
-          ? _value.elements
-          : elements // ignore: cast_nullable_to_non_nullable
-              as Elements,
-      confirmParams: null == confirmParams
-          ? _value.confirmParams
-          : confirmParams // ignore: cast_nullable_to_non_nullable
-              as ConfirmPaymentParams,
-      redirect: freezed == redirect
-          ? _value.redirect
-          : redirect // ignore: cast_nullable_to_non_nullable
-              as PaymentConfirmationRedirect?,
-    ));
-  }
-}
-
-/// @nodoc
 @JsonSerializable()
-class _$ConfirmPaymentOptionsImpl implements _ConfirmPaymentOptions {
-  const _$ConfirmPaymentOptionsImpl(
+class _ConfirmPaymentOptions implements ConfirmPaymentOptions {
+  const _ConfirmPaymentOptions(
       {@ElementsConverter() required this.elements,
       required this.confirmParams,
       this.redirect});
-
-  factory _$ConfirmPaymentOptionsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ConfirmPaymentOptionsImplFromJson(json);
+  factory _ConfirmPaymentOptions.fromJson(Map<String, dynamic> json) =>
+      _$ConfirmPaymentOptionsFromJson(json);
 
   /// The Elements instance that was used to create the Payment Element.
   @override
@@ -200,16 +161,27 @@ class _$ConfirmPaymentOptionsImpl implements _ConfirmPaymentOptions {
   @override
   final PaymentConfirmationRedirect? redirect;
 
+  /// Create a copy of ConfirmPaymentOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'ConfirmPaymentOptions(elements: $elements, confirmParams: $confirmParams, redirect: $redirect)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ConfirmPaymentOptionsCopyWith<_ConfirmPaymentOptions> get copyWith =>
+      __$ConfirmPaymentOptionsCopyWithImpl<_ConfirmPaymentOptions>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ConfirmPaymentOptionsToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ConfirmPaymentOptionsImpl &&
+            other is _ConfirmPaymentOptions &&
             (identical(other.elements, elements) ||
                 other.elements == elements) &&
             (identical(other.confirmParams, confirmParams) ||
@@ -223,176 +195,95 @@ class _$ConfirmPaymentOptionsImpl implements _ConfirmPaymentOptions {
   int get hashCode =>
       Object.hash(runtimeType, elements, confirmParams, redirect);
 
-  /// Create a copy of ConfirmPaymentOptions
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ConfirmPaymentOptionsImplCopyWith<_$ConfirmPaymentOptionsImpl>
-      get copyWith => __$$ConfirmPaymentOptionsImplCopyWithImpl<
-          _$ConfirmPaymentOptionsImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ConfirmPaymentOptionsImplToJson(
-      this,
-    );
+  String toString() {
+    return 'ConfirmPaymentOptions(elements: $elements, confirmParams: $confirmParams, redirect: $redirect)';
   }
 }
 
-abstract class _ConfirmPaymentOptions implements ConfirmPaymentOptions {
-  const factory _ConfirmPaymentOptions(
-          {@ElementsConverter() required final Elements elements,
-          required final ConfirmPaymentParams confirmParams,
-          final PaymentConfirmationRedirect? redirect}) =
-      _$ConfirmPaymentOptionsImpl;
-
-  factory _ConfirmPaymentOptions.fromJson(Map<String, dynamic> json) =
-      _$ConfirmPaymentOptionsImpl.fromJson;
-
-  /// The Elements instance that was used to create the Payment Element.
+/// @nodoc
+abstract mixin class _$ConfirmPaymentOptionsCopyWith<$Res>
+    implements $ConfirmPaymentOptionsCopyWith<$Res> {
+  factory _$ConfirmPaymentOptionsCopyWith(_ConfirmPaymentOptions value,
+          $Res Function(_ConfirmPaymentOptions) _then) =
+      __$ConfirmPaymentOptionsCopyWithImpl;
   @override
-  @ElementsConverter()
-  Elements get elements;
+  @useResult
+  $Res call(
+      {@ElementsConverter() Elements elements,
+      ConfirmPaymentParams confirmParams,
+      PaymentConfirmationRedirect? redirect});
 
-  /// Parameters that will be passed on to the Stripe API.
-  /// Refer to the Payment Intents API for a full list of parameters.
   @override
-  ConfirmPaymentParams get confirmParams;
+  $ConfirmPaymentParamsCopyWith<$Res> get confirmParams;
+}
 
-  /// By default, stripe.confirmPayment will always redirect to your
-  /// return_url after a successful confirmation.
-  /// If you set redirect: "if_required", then stripe.confirmPayment will
-  /// only redirect if your user chooses a redirect-based payment method.
-  ///
-  /// Note: Setting if_required requires that you handle successful
-  /// confirmations for redirect-based and non-redirect based payment
-  /// methods separately. When a non-redirect based payment method is
-  /// successfully confirmed, stripe.confirmPayment will resolve with a
-  /// {paymentIntent} object.
-  @override
-  PaymentConfirmationRedirect? get redirect;
+/// @nodoc
+class __$ConfirmPaymentOptionsCopyWithImpl<$Res>
+    implements _$ConfirmPaymentOptionsCopyWith<$Res> {
+  __$ConfirmPaymentOptionsCopyWithImpl(this._self, this._then);
+
+  final _ConfirmPaymentOptions _self;
+  final $Res Function(_ConfirmPaymentOptions) _then;
 
   /// Create a copy of ConfirmPaymentOptions
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ConfirmPaymentOptionsImplCopyWith<_$ConfirmPaymentOptionsImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? elements = null,
+    Object? confirmParams = null,
+    Object? redirect = freezed,
+  }) {
+    return _then(_ConfirmPaymentOptions(
+      elements: null == elements
+          ? _self.elements
+          : elements // ignore: cast_nullable_to_non_nullable
+              as Elements,
+      confirmParams: null == confirmParams
+          ? _self.confirmParams
+          : confirmParams // ignore: cast_nullable_to_non_nullable
+              as ConfirmPaymentParams,
+      redirect: freezed == redirect
+          ? _self.redirect
+          : redirect // ignore: cast_nullable_to_non_nullable
+              as PaymentConfirmationRedirect?,
+    ));
+  }
 
-ConfirmPaymentParams _$ConfirmPaymentParamsFromJson(Map<String, dynamic> json) {
-  return _ConfirmPaymentParams.fromJson(json);
+  /// Create a copy of ConfirmPaymentOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ConfirmPaymentParamsCopyWith<$Res> get confirmParams {
+    return $ConfirmPaymentParamsCopyWith<$Res>(_self.confirmParams, (value) {
+      return _then(_self.copyWith(confirmParams: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$ConfirmPaymentParams {
   /// The url your customer will be directed to after they complete payment.
-  String get return_url => throw _privateConstructorUsedError;
-
-  /// Serializes this ConfirmPaymentParams to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+// ignore: non_constant_identifier_names
+  String get return_url;
 
   /// Create a copy of ConfirmPaymentParams
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $ConfirmPaymentParamsCopyWith<ConfirmPaymentParams> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$ConfirmPaymentParamsCopyWithImpl<ConfirmPaymentParams>(
+          this as ConfirmPaymentParams, _$identity);
 
-/// @nodoc
-abstract class $ConfirmPaymentParamsCopyWith<$Res> {
-  factory $ConfirmPaymentParamsCopyWith(ConfirmPaymentParams value,
-          $Res Function(ConfirmPaymentParams) then) =
-      _$ConfirmPaymentParamsCopyWithImpl<$Res, ConfirmPaymentParams>;
-  @useResult
-  $Res call({String return_url});
-}
-
-/// @nodoc
-class _$ConfirmPaymentParamsCopyWithImpl<$Res,
-        $Val extends ConfirmPaymentParams>
-    implements $ConfirmPaymentParamsCopyWith<$Res> {
-  _$ConfirmPaymentParamsCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of ConfirmPaymentParams
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? return_url = null,
-  }) {
-    return _then(_value.copyWith(
-      return_url: null == return_url
-          ? _value.return_url
-          : return_url // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$ConfirmPaymentParamsImplCopyWith<$Res>
-    implements $ConfirmPaymentParamsCopyWith<$Res> {
-  factory _$$ConfirmPaymentParamsImplCopyWith(_$ConfirmPaymentParamsImpl value,
-          $Res Function(_$ConfirmPaymentParamsImpl) then) =
-      __$$ConfirmPaymentParamsImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String return_url});
-}
-
-/// @nodoc
-class __$$ConfirmPaymentParamsImplCopyWithImpl<$Res>
-    extends _$ConfirmPaymentParamsCopyWithImpl<$Res, _$ConfirmPaymentParamsImpl>
-    implements _$$ConfirmPaymentParamsImplCopyWith<$Res> {
-  __$$ConfirmPaymentParamsImplCopyWithImpl(_$ConfirmPaymentParamsImpl _value,
-      $Res Function(_$ConfirmPaymentParamsImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ConfirmPaymentParams
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? return_url = null,
-  }) {
-    return _then(_$ConfirmPaymentParamsImpl(
-      return_url: null == return_url
-          ? _value.return_url
-          : return_url // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$ConfirmPaymentParamsImpl implements _ConfirmPaymentParams {
-  const _$ConfirmPaymentParamsImpl({required this.return_url});
-
-  factory _$ConfirmPaymentParamsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ConfirmPaymentParamsImplFromJson(json);
-
-  /// The url your customer will be directed to after they complete payment.
-  @override
-  final String return_url;
-
-  @override
-  String toString() {
-    return 'ConfirmPaymentParams(return_url: $return_url)';
-  }
+  /// Serializes this ConfirmPaymentParams to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ConfirmPaymentParamsImpl &&
+            other is ConfirmPaymentParams &&
             (identical(other.return_url, return_url) ||
                 other.return_url == return_url));
   }
@@ -401,39 +292,125 @@ class _$ConfirmPaymentParamsImpl implements _ConfirmPaymentParams {
   @override
   int get hashCode => Object.hash(runtimeType, return_url);
 
-  /// Create a copy of ConfirmPaymentParams
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ConfirmPaymentParamsImplCopyWith<_$ConfirmPaymentParamsImpl>
-      get copyWith =>
-          __$$ConfirmPaymentParamsImplCopyWithImpl<_$ConfirmPaymentParamsImpl>(
-              this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ConfirmPaymentParamsImplToJson(
-      this,
-    );
+  String toString() {
+    return 'ConfirmPaymentParams(return_url: $return_url)';
   }
 }
 
-abstract class _ConfirmPaymentParams implements ConfirmPaymentParams {
-  const factory _ConfirmPaymentParams({required final String return_url}) =
-      _$ConfirmPaymentParamsImpl;
+/// @nodoc
+abstract mixin class $ConfirmPaymentParamsCopyWith<$Res> {
+  factory $ConfirmPaymentParamsCopyWith(ConfirmPaymentParams value,
+          $Res Function(ConfirmPaymentParams) _then) =
+      _$ConfirmPaymentParamsCopyWithImpl;
+  @useResult
+  $Res call({String return_url});
+}
 
-  factory _ConfirmPaymentParams.fromJson(Map<String, dynamic> json) =
-      _$ConfirmPaymentParamsImpl.fromJson;
+/// @nodoc
+class _$ConfirmPaymentParamsCopyWithImpl<$Res>
+    implements $ConfirmPaymentParamsCopyWith<$Res> {
+  _$ConfirmPaymentParamsCopyWithImpl(this._self, this._then);
+
+  final ConfirmPaymentParams _self;
+  final $Res Function(ConfirmPaymentParams) _then;
+
+  /// Create a copy of ConfirmPaymentParams
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? return_url = null,
+  }) {
+    return _then(_self.copyWith(
+      return_url: null == return_url
+          ? _self.return_url
+          : return_url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _ConfirmPaymentParams implements ConfirmPaymentParams {
+  const _ConfirmPaymentParams({required this.return_url});
+  factory _ConfirmPaymentParams.fromJson(Map<String, dynamic> json) =>
+      _$ConfirmPaymentParamsFromJson(json);
 
   /// The url your customer will be directed to after they complete payment.
+// ignore: non_constant_identifier_names
   @override
-  String get return_url;
+  final String return_url;
 
   /// Create a copy of ConfirmPaymentParams
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ConfirmPaymentParamsImplCopyWith<_$ConfirmPaymentParamsImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$ConfirmPaymentParamsCopyWith<_ConfirmPaymentParams> get copyWith =>
+      __$ConfirmPaymentParamsCopyWithImpl<_ConfirmPaymentParams>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ConfirmPaymentParamsToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ConfirmPaymentParams &&
+            (identical(other.return_url, return_url) ||
+                other.return_url == return_url));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, return_url);
+
+  @override
+  String toString() {
+    return 'ConfirmPaymentParams(return_url: $return_url)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$ConfirmPaymentParamsCopyWith<$Res>
+    implements $ConfirmPaymentParamsCopyWith<$Res> {
+  factory _$ConfirmPaymentParamsCopyWith(_ConfirmPaymentParams value,
+          $Res Function(_ConfirmPaymentParams) _then) =
+      __$ConfirmPaymentParamsCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String return_url});
+}
+
+/// @nodoc
+class __$ConfirmPaymentParamsCopyWithImpl<$Res>
+    implements _$ConfirmPaymentParamsCopyWith<$Res> {
+  __$ConfirmPaymentParamsCopyWithImpl(this._self, this._then);
+
+  final _ConfirmPaymentParams _self;
+  final $Res Function(_ConfirmPaymentParams) _then;
+
+  /// Create a copy of ConfirmPaymentParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? return_url = null,
+  }) {
+    return _then(_ConfirmPaymentParams(
+      return_url: null == return_url
+          ? _self.return_url
+          : return_url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+// dart format on

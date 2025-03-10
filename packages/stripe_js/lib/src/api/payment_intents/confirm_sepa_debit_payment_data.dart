@@ -6,7 +6,7 @@ part 'confirm_sepa_debit_payment_data.freezed.dart';
 part 'confirm_sepa_debit_payment_data.g.dart';
 
 @freezed
-class ConfirmSepaDebitPaymentData with _$ConfirmSepaDebitPaymentData {
+abstract class ConfirmSepaDebitPaymentData with _$ConfirmSepaDebitPaymentData {
   const factory ConfirmSepaDebitPaymentData({
     /// Either the id of an existing PaymentMethod, or an object containing
     /// data to create a PaymentMethod with.
@@ -27,7 +27,7 @@ class ConfirmSepaDebitPaymentData with _$ConfirmSepaDebitPaymentData {
 }
 
 @Freezed(unionKey: 'type')
-class SepaDebitPaymentMethodDetails
+abstract class SepaDebitPaymentMethodDetails
     with _$SepaDebitPaymentMethodDetails
     implements PaymentMethodDetails {
   @FreezedUnionValue('sepa_debit')
@@ -48,7 +48,7 @@ class SepaDebitPaymentMethodDetails
 
     /// The customer's billing_details. name and email are required.
     @JsonKey(name: "billing_details") SepaBillingDetails? billingDetails,
-  }) = _SepaDebitPaymentMethodDetails;
+  }) = _SepaDebitPaymentMethodDetailsElement;
 
   /// If you already know the customer’s bank or want to collect it yourself,
   /// then you do not need to use the idealBank Element.
@@ -68,7 +68,7 @@ class SepaDebitPaymentMethodDetails
 }
 
 @freezed
-class SepaDebitIbanData with _$SepaDebitIbanData {
+abstract class SepaDebitIbanData with _$SepaDebitIbanData {
   const factory SepaDebitIbanData({
     /// An IBAN account number.
     required String iban,
@@ -80,7 +80,7 @@ class SepaDebitIbanData with _$SepaDebitIbanData {
 
 /// Billing information associated with the payment method.
 @freezed
-class SepaBillingDetails with _$SepaBillingDetails {
+abstract class SepaBillingDetails with _$SepaBillingDetails {
   const factory SepaBillingDetails({
     /// Email address.
     required String email,

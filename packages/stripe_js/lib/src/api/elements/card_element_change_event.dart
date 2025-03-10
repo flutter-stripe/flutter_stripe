@@ -5,7 +5,7 @@ part 'card_element_change_event.freezed.dart';
 part 'card_element_change_event.g.dart';
 
 @freezed
-class CardElementChangeEvent with _$CardElementChangeEvent {
+abstract class CardElementChangeEvent with _$CardElementChangeEvent {
   const factory CardElementChangeEvent({
     required String elementType,
     required bool empty,
@@ -20,7 +20,7 @@ class CardElementChangeEvent with _$CardElementChangeEvent {
 }
 
 @freezed
-class CardElementChangeEventValue with _$CardElementChangeEventValue {
+abstract class CardElementChangeEventValue with _$CardElementChangeEventValue {
   const factory CardElementChangeEventValue({
     required String? postalCode,
   }) = _CardElementChangeEventValue;

@@ -6,7 +6,7 @@ part of 'setup_intent.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SetupIntentImpl _$$SetupIntentImplFromJson(Map json) => _$SetupIntentImpl(
+_SetupIntent _$SetupIntentFromJson(Map json) => _SetupIntent(
       id: json['id'] as String,
       object: json['object'] as String? ?? "setup_intent",
       application: json['application'] as String?,
@@ -42,48 +42,42 @@ _$SetupIntentImpl _$$SetupIntentImplFromJson(Map json) => _$SetupIntentImpl(
           SetupIntentUsage.offSession,
     );
 
-Map<String, dynamic> _$$SetupIntentImplToJson(_$SetupIntentImpl instance) {
-  final val = <String, dynamic>{
-    'id': instance.id,
-    'object': instance.object,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('application', instance.application);
-  writeNotNull('attach_to_self', instance.attachToSelf);
-  writeNotNull('cancellation_reason',
-      _$SetupIntentCancellationReasonEnumMap[instance.cancellationReason]);
-  val['client_secret'] = instance.clientSecret;
-  writeNotNull('created', instance.created);
-  writeNotNull('customer', instance.customer);
-  writeNotNull('description', instance.description);
-  writeNotNull(
-      'flow_directions',
-      instance.flowDirections
-          ?.map((e) => _$SetupIntentFlowDirectionsEnumMap[e]!)
-          .toList());
-  writeNotNull('last_setup_error', instance.lastSetupError);
-  writeNotNull('latest_attempt', instance.latestAttempt);
-  val['livemode'] = instance.livemode;
-  writeNotNull('mandate', instance.mandate);
-  val['metadata'] = instance.metadata;
-  writeNotNull('next_action', instance.nextAction);
-  writeNotNull('on_behalf_of', instance.onBehalfOf);
-  writeNotNull('payment_method', instance.paymentMethod);
-  writeNotNull('payment_method_options', instance.paymentMethodOptions);
-  val['payment_method_types'] = instance.paymentMethodTypes
-      .map((e) => _$PaymentMethodTypeEnumMap[e]!)
-      .toList();
-  writeNotNull('single_use_mandate', instance.singleUseMandate);
-  val['status'] = _$SetupIntentsStatusEnumMap[instance.status]!;
-  val['usage'] = _$SetupIntentUsageEnumMap[instance.usage]!;
-  return val;
-}
+Map<String, dynamic> _$SetupIntentToJson(_SetupIntent instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'object': instance.object,
+      if (instance.application case final value?) 'application': value,
+      if (instance.attachToSelf case final value?) 'attach_to_self': value,
+      if (_$SetupIntentCancellationReasonEnumMap[instance.cancellationReason]
+          case final value?)
+        'cancellation_reason': value,
+      'client_secret': instance.clientSecret,
+      if (instance.created case final value?) 'created': value,
+      if (instance.customer case final value?) 'customer': value,
+      if (instance.description case final value?) 'description': value,
+      if (instance.flowDirections
+              ?.map((e) => _$SetupIntentFlowDirectionsEnumMap[e]!)
+              .toList()
+          case final value?)
+        'flow_directions': value,
+      if (instance.lastSetupError case final value?) 'last_setup_error': value,
+      if (instance.latestAttempt case final value?) 'latest_attempt': value,
+      'livemode': instance.livemode,
+      if (instance.mandate case final value?) 'mandate': value,
+      'metadata': instance.metadata,
+      if (instance.nextAction case final value?) 'next_action': value,
+      if (instance.onBehalfOf case final value?) 'on_behalf_of': value,
+      if (instance.paymentMethod case final value?) 'payment_method': value,
+      if (instance.paymentMethodOptions case final value?)
+        'payment_method_options': value,
+      'payment_method_types': instance.paymentMethodTypes
+          .map((e) => _$PaymentMethodTypeEnumMap[e]!)
+          .toList(),
+      if (instance.singleUseMandate case final value?)
+        'single_use_mandate': value,
+      'status': _$SetupIntentsStatusEnumMap[instance.status]!,
+      'usage': _$SetupIntentUsageEnumMap[instance.usage]!,
+    };
 
 const _$SetupIntentCancellationReasonEnumMap = {
   SetupIntentCancellationReason.duplicate: 'duplicate',
