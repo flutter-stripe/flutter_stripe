@@ -151,12 +151,12 @@ Map<String, dynamic> _$$P24PaymentMethodDetailsImplToJson(
 
 _$IdealBankDataImpl _$$IdealBankDataImplFromJson(Map json) =>
     _$IdealBankDataImpl(
-      bank: json['bank'] as String,
+      bank: json['bank'] as String?,
     );
 
 Map<String, dynamic> _$$IdealBankDataImplToJson(_$IdealBankDataImpl instance) =>
     <String, dynamic>{
-      'bank': instance.bank,
+      if (instance.bank case final value?) 'bank': value,
     };
 
 _$CardTokenPaymentMethodImpl _$$CardTokenPaymentMethodImplFromJson(Map json) =>
