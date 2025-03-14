@@ -424,10 +424,16 @@ class MethodChannelStripe extends StripePlatform {
   }) async {
     bool? isSupported;
     if (params == null) {
-      isSupported =
-          await _methodChannel.invokeMethod('isPlatformPaySupported', {
+      final result =
+          await _methodChannel.invokeMethod<dynamic>('isPlatformPaySupported', {
         'params': {},
       });
+
+      if (result is bool) {
+        isSupported = result;
+      } else {
+        StripeException.fromJson(result);
+      }
     } else {
       isSupported = await _methodChannel
           .invokeMethod('isPlatformPaySupported', {'params': params.toJson()});
@@ -549,11 +555,15 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts(
-      {required String clientSecret}) async {
+  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts({
+    required String clientSecret,
+    CollectFinancialConnectionsAccountsParams? params =
+        const CollectFinancialConnectionsAccountsParams(),
+  }) async {
     final result = await _methodChannel.invokeMapMethod<String, dynamic>(
         'collectFinancialConnectionsAccounts', {
       'clientSecret': clientSecret,
+      'params': params?.toJson(),
     });
 
     if (result!.containsKey('error')) {

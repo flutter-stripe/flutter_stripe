@@ -8,13 +8,23 @@ class ColorKey {
 
   static String? toJson(Color? color) {
     if (color != null) {
-      // ignore: lines_longer_than_80_chars
-      return '#${color.value.toRadixString(16).padLeft(8, '0').toUpperCase()}';
+      return '#${color.colorHexString.toUpperCase()}';
     }
     return null;
   }
 
   static Color? fromJson(value) {
     throw UnimplementedError();
+  }
+}
+
+extension ColorX on Color {
+  String get colorHexString {
+    final red = (r * 255).toInt().toRadixString(16).padLeft(2, '0');
+    final green = (g * 255).toInt().toRadixString(16).padLeft(2, '0');
+    final blue = (b * 255).toInt().toRadixString(16).padLeft(2, '0');
+    final alpha = (a * 255).toInt().toRadixString(16).padLeft(2, '0');
+
+    return '$alpha$red$green$blue';
   }
 }

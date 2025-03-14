@@ -162,8 +162,11 @@ abstract class StripePlatform extends PlatformInterface {
   Future<FinancialConnectionTokenResult> collectBankAccountToken(
       {required String clientSecret});
 
-  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts(
-      {required String clientSecret});
+  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts({
+    required String clientSecret,
+    CollectFinancialConnectionsAccountsParams? params =
+        const CollectFinancialConnectionsAccountsParams(),
+  });
 
   /// Updates the internal card details. This method will not validate the card
   /// information so you should validate the information yourself.

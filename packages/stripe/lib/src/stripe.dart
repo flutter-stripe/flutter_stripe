@@ -100,7 +100,7 @@ class Stripe {
 
   /// Reconfigures the Stripe platform by applying the current values for
   /// [publishableKey], [merchantIdentifier], [stripeAccountId],
-  /// [threeDSecureParams], [urlScheme]
+  /// [threeDSecureParams], [urlScheme], [setReturnUrlSchemeOnAndroid]
   Future<void> applySettings() => _initialise(
         publishableKey: publishableKey,
         merchantIdentifier: merchantIdentifier,
@@ -540,7 +540,7 @@ class Stripe {
 
   /// Collect the bankaccount details for the payment intent.
   ///
-  /// Only US bank accounts are supported. 
+  /// Only US bank accounts are supported.
   Future<PaymentIntent> collectBankAccount({
     /// Whether the clientsecret is associated with setup or paymentintent
     required bool isPaymentIntent,
@@ -630,11 +630,15 @@ class Stripe {
   ///
   /// Throws [StripeError] in case creating the token fails.
 
-  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts(
-      {required String clientSecret}) async {
+  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts({
+    required String clientSecret,
+    CollectFinancialConnectionsAccountsParams? params,
+  }) async {
     try {
       return _platform.collectFinancialConnectionsAccounts(
-          clientSecret: clientSecret);
+        clientSecret: clientSecret,
+        params: params,
+      );
     } on StripeError {
       rethrow;
     }
@@ -716,6 +720,7 @@ class Stripe {
       threeDSecureParams: threeDSecureParams,
       merchantIdentifier: merchantIdentifier,
       urlScheme: urlScheme,
+      setReturnUrlSchemeOnAndroid: setReturnUrlSchemeOnAndroid,
     );
   }
 

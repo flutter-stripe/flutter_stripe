@@ -212,3 +212,142 @@ enum BalanceType { cash, credit }
 enum AccountStatus { active, inactive, disconnected }
 
 enum FinancialConnectSheetError { Failed, Canceled }
+
+/// Parameters associated with the `collectFinancialConnectionsAccounts` method.
+@freezed
+class CollectFinancialConnectionsAccountsParams
+    with _$CollectFinancialConnectionsAccountsParams {
+  @JsonSerializable(explicitToJson: true)
+  const factory CollectFinancialConnectionsAccountsParams({
+    /// iOS Only. Style options for colors in Financial Connections. By default, the bank account collector will automatically switch between light and dark mode compatible colors based on device settings.
+    UserInterfaceStyle? style,
+
+    /// An optional event listener to receive [FinancialConnectionsEvent] for specific events during the process of a user connecting their financial accounts.
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    FinancialConnectionsEventHandler? onEvent,
+  }) = _CollectFinancialConnectionsAccountsParams;
+
+  factory CollectFinancialConnectionsAccountsParams.fromJson(
+          Map<String, dynamic> json) =>
+      _$CollectFinancialConnectionsAccountsParamsFromJson(json);
+}
+
+typedef FinancialConnectionsEventHandler = void Function(
+  FinancialConnectionsEvent event,
+);
+
+///Theme options for colors used in our UI.
+enum UserInterfaceStyle {
+  /// Always use light colors.
+  alwaysLight,
+
+  /// Always use dark colors.
+  alwaysDark,
+
+  /// Use light or dark colors based on the user's system settings.
+  automatic,
+}
+
+/// The event that occurred during the Financial Connections process.
+@freezed
+class FinancialConnectionsEvent with _$FinancialConnectionsEvent {
+  @JsonSerializable(explicitToJson: true)
+  const factory FinancialConnectionsEvent({
+    /// The event's name. Represents the type of event that has occurred during the Financial Connections process.
+    required FinancialConnectionsEventName name,
+
+    /// Event-associated metadata. Provides further detail related to the occurred event.
+    required FinancialConnectionsEventMetadata metadata,
+  }) = _FinancialConnectionsEvent;
+
+  factory FinancialConnectionsEvent.fromJson(Map<String, dynamic> json) =>
+      _$FinancialConnectionsEventFromJson(json);
+}
+
+/// The metadata of the financial connections event
+@freezed
+class FinancialConnectionsEventMetadata
+    with _$FinancialConnectionsEventMetadata {
+  @JsonSerializable(explicitToJson: true)
+  const factory FinancialConnectionsEventMetadata({
+    /// A Boolean value that indicates if the user completed the process through the manual entry flow.
+    bool? manualEntry,
+
+    /// A String value containing the name of the institution that the user selected.
+    String? institutionName,
+
+    /// An ErrorCode value representing the type of error that occurred.
+    FinancialConnectionsEventErrorCode? errorCode,
+  }) = _FinancialConnectionsEventMetadata;
+
+  factory FinancialConnectionsEventMetadata.fromJson(
+          Map<String, dynamic> json) =>
+      _$FinancialConnectionsEventMetadataFromJson(json);
+}
+
+enum FinancialConnectionsEventName {
+  /// Invoked when the sheet successfully opens.
+  open,
+
+  /// Invoked when the manual entry flow is initiated.
+  manual_entry_initiated,
+
+  /// Invoked when "Agree and continue" is selected on the consent pane.
+  consent_acquired,
+
+  /// Invoked when the search bar is selected, the user inputs search terms, and receives an API response.
+  search_initiated,
+
+  /// Invoked when an institution is selected, either from featured institutions or search results.
+  institution_selected,
+
+  /// Invoked when the authorization is successfully completed.
+  institution_authorized,
+
+  /// Invoked when accounts are selected and "confirm" is selected.
+  accounts_selected,
+
+  /// Invoked when the flow is completed and selected accounts are correctly connected to the payment instrument.
+  success,
+
+  /// Invoked when an error is encountered. Refer to error codes for more details.
+  error,
+
+  /// Invoked when the flow is cancelled, typically by the user pressing the "X" button.
+  cancel,
+
+  /// Invoked when the modal is launched in an external browser. After this event, no other events will be sent until the completion of the browser session.
+  flow_launched_in_browser;
+}
+
+enum FinancialConnectionsEventErrorCode {
+  /// The system could not retrieve account numbers for selected accounts.
+  account_numbers_unavailable,
+
+  /// The system could not retrieve accounts for the selected institution.
+  accounts_unavailable,
+
+  /// For payment flows, no debitable account was available at the selected institution.
+  no_debitable_account,
+
+  /// Authorization with the selected institution has failed.
+  authorization_failed,
+
+  /// The selected institution is down for expected maintenance.
+  institution_unavailable_planned,
+
+  /// The selected institution is unexpectedly down.
+  institution_unavailable_unplanned,
+
+  /// A timeout occurred while communicating with our partner or downstream institutions.
+  institution_timeout,
+
+  /// An unexpected error occurred, either in an API call or on the client-side.
+  unexpected_error,
+
+  /// The client secret that powers the session has expired.
+  session_expired,
+
+  /// The hCaptcha challenge failed.
+  failed_bot_detection,
+}

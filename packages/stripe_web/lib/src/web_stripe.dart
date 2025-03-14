@@ -517,8 +517,11 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts(
-      {required String clientSecret}) {
+  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts({
+    required String clientSecret,
+    CollectFinancialConnectionsAccountsParams? params =
+        const CollectFinancialConnectionsAccountsParams(),
+  }) {
     throw WebUnsupportedError.method('collectFinancialConnectionsAccounts');
   }
 
