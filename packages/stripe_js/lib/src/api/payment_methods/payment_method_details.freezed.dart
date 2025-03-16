@@ -1970,7 +1970,7 @@ IdealBankData _$IdealBankDataFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$IdealBankData {
   /// The customer's bank.
-  String get bank => throw _privateConstructorUsedError;
+  String? get bank => throw _privateConstructorUsedError;
 
   /// Serializes this IdealBankData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1988,7 +1988,7 @@ abstract class $IdealBankDataCopyWith<$Res> {
           IdealBankData value, $Res Function(IdealBankData) then) =
       _$IdealBankDataCopyWithImpl<$Res, IdealBankData>;
   @useResult
-  $Res call({String bank});
+  $Res call({String? bank});
 }
 
 /// @nodoc
@@ -2006,13 +2006,13 @@ class _$IdealBankDataCopyWithImpl<$Res, $Val extends IdealBankData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? bank = null,
+    Object? bank = freezed,
   }) {
     return _then(_value.copyWith(
-      bank: null == bank
+      bank: freezed == bank
           ? _value.bank
           : bank // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -2025,7 +2025,7 @@ abstract class _$$IdealBankDataImplCopyWith<$Res>
       __$$IdealBankDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String bank});
+  $Res call({String? bank});
 }
 
 /// @nodoc
@@ -2041,13 +2041,13 @@ class __$$IdealBankDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? bank = null,
+    Object? bank = freezed,
   }) {
     return _then(_$IdealBankDataImpl(
-      bank: null == bank
+      bank: freezed == bank
           ? _value.bank
           : bank // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -2055,14 +2055,14 @@ class __$$IdealBankDataImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$IdealBankDataImpl implements _IdealBankData {
-  const _$IdealBankDataImpl({required this.bank});
+  const _$IdealBankDataImpl({this.bank});
 
   factory _$IdealBankDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$IdealBankDataImplFromJson(json);
 
   /// The customer's bank.
   @override
-  final String bank;
+  final String? bank;
 
   @override
   String toString() {
@@ -2098,15 +2098,14 @@ class _$IdealBankDataImpl implements _IdealBankData {
 }
 
 abstract class _IdealBankData implements IdealBankData {
-  const factory _IdealBankData({required final String bank}) =
-      _$IdealBankDataImpl;
+  const factory _IdealBankData({final String? bank}) = _$IdealBankDataImpl;
 
   factory _IdealBankData.fromJson(Map<String, dynamic> json) =
       _$IdealBankDataImpl.fromJson;
 
   /// The customer's bank.
   @override
-  String get bank;
+  String? get bank;
 
   /// Create a copy of IdealBankData
   /// with the given fields replaced by the non-null parameter values.

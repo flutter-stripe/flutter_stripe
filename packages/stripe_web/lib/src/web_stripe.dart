@@ -165,13 +165,12 @@ class WebStripe extends StripePlatform {
         );
       },
       ideal: (paymentData) {
-        if (paymentData.bankName == null) throw 'bankName is required for web';
-        // https://stripe.com/docs/js/payment_intents/confirm_alipay_payment#stripe_confirm_alipay_payment-options
+        // https://stripe.com/docs/js/payment_intents/confirm_ideal_payment#stripe_confirm_ideal_payment-self_collected
         return js.confirmIdealPayment(
           paymentIntentClientSecret,
           data: stripe_js.ConfirmIdealPaymentData(
             paymentMethod: stripe_js.IdealPaymentMethodDetails.withBank(
-              ideal: stripe_js.IdealBankData(bank: paymentData.bankName!),
+              ideal: stripe_js.IdealBankData(bank: paymentData.bankName),
             ),
             returnUrl: urlScheme,
             // recommended
@@ -209,13 +208,12 @@ class WebStripe extends StripePlatform {
   Future<PaymentIntent> confirmIdealPayment(
       String paymentIntentClientSecret, PaymentMethodDataIdeal paymentData,
       {String? returnUrl}) async {
-    if (paymentData.bankName == null) throw 'bankName is required for web';
-    // https://stripe.com/docs/js/payment_intents/confirm_alipay_payment#stripe_confirm_alipay_payment-options
+    // https://stripe.com/docs/js/payment_intents/confirm_ideal_payment#stripe_confirm_ideal_payment-self_collected
     final response = await js.confirmIdealPayment(
       paymentIntentClientSecret,
       data: stripe_js.ConfirmIdealPaymentData(
         paymentMethod: stripe_js.IdealPaymentMethodDetails.withBank(
-          ideal: stripe_js.IdealBankData(bank: paymentData.bankName!),
+          ideal: stripe_js.IdealBankData(bank: paymentData.bankName),
         ),
         returnUrl: returnUrl ?? urlScheme,
       ),

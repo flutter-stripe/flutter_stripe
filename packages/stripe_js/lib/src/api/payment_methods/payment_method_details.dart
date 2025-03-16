@@ -148,7 +148,7 @@ class P24PaymentMethodDetails
 class IdealBankData with _$IdealBankData {
   const factory IdealBankData({
     /// The customer's bank.
-    required String bank,
+    String? bank,
   }) = _IdealBankData;
 
   factory IdealBankData.fromJson(Map<String, dynamic> json) =>
