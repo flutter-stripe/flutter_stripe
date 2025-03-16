@@ -41,6 +41,7 @@ class MethodChannelStripe extends StripePlatform {
   final bool _platformIsIos;
   final bool _platformIsAndroid;
   ConfirmHandler? _confirmHandler;
+  FinancialConnectionsEventHandler? _financialConnectionsEventHandler;
 
   @override
   Future<void> initialise({
@@ -71,6 +72,15 @@ class MethodChannelStripe extends StripePlatform {
           method,
           call.arguments['shouldSavePaymentMethod'] as bool,
         );
+      } else if (call.method == 'onFinancialConnectionsEvent' &&
+          _financialConnectionsEventHandler != null) {
+        final event = FinancialConnectionsEvent(
+          name: call.arguments['name'],
+          metadata: FinancialConnectionsEventMetadata.fromJson(
+            call.arguments['metadata'],
+          ),
+        );
+        _financialConnectionsEventHandler!(event);
       }
     });
   }
@@ -565,6 +575,8 @@ class MethodChannelStripe extends StripePlatform {
       'clientSecret': clientSecret,
       'params': params?.toJson(),
     });
+
+    _financialConnectionsEventHandler = params?.onEvent;
 
     if (result!.containsKey('error')) {
       throw ResultParser<void>(parseJson: (json) => {}).parseError(result);
