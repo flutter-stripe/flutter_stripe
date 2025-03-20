@@ -16,6 +16,7 @@ import com.facebook.react.bridge.WritableMap
 import com.facebook.react.bridge.WritableNativeMap
 import com.facebook.react.module.annotations.ReactModule
 import com.facebook.react.modules.core.DeviceEventManagerModule
+import com.flutter.stripe.invoke
 import com.reactnativestripesdk.addresssheet.AddressLauncherFragment
 import com.reactnativestripesdk.pushprovisioning.PushProvisioningProxy
 import com.reactnativestripesdk.utils.ConfirmPaymentErrorType
@@ -68,7 +69,7 @@ import org.json.JSONObject
 
 @ReactModule(name = StripeSdkModule.NAME)
 class StripeSdkModule(
-  reactContext: ReactApplicationContext,
+  val reactContext: ReactApplicationContext,
 ) : ReactContextBaseJavaModule(reactContext) {
   override fun getName(): String = NAME
 

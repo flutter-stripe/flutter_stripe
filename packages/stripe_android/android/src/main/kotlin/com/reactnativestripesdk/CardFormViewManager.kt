@@ -11,7 +11,7 @@ import com.facebook.react.uimanager.annotations.ReactProp
 class CardFormViewManager : SimpleViewManager<CardFormView>() {
   override fun getName() = REACT_CLASS
 
-  private var reactContextRef: ThemedReactContext? = null
+  internal var reactContextRef: ThemedReactContext? = null
 
   override fun getExportedCustomDirectEventTypeConstants() =
     mutableMapOf(
