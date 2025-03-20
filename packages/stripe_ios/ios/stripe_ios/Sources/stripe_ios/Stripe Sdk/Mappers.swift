@@ -1,4 +1,5 @@
 import Stripe
+import PassKit
 import StripePaymentSheet
 
 class Mappers {

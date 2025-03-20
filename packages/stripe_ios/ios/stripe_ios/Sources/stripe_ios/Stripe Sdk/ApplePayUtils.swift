@@ -7,6 +7,7 @@
 
 import Foundation
 import StripePaymentSheet
+import PassKit
 
 class ApplePayUtils {
     
