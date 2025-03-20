@@ -271,29 +271,37 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
     val expiryEditText = multilineWidgetBinding.etExpiry
     val postalCodeEditText = cardFormViewBinding.postalCode
 
-    cardNumberEditText.onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
-      currentFocusedField = if (hasFocus) CardInputListener.FocusField.CardNumber.toString() else  null
-      onChangeFocus()
-    }
-    cvcEditText.onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
-      currentFocusedField = if (hasFocus) CardInputListener.FocusField.Cvc.toString() else  null
-      onChangeFocus()
-    }
-    expiryEditText.onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
-      currentFocusedField = if (hasFocus) CardInputListener.FocusField.ExpiryDate.toString() else  null
-      onChangeFocus()
-    }
-    postalCodeEditText.onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
-      currentFocusedField = if (hasFocus) CardInputListener.FocusField.PostalCode.toString() else  null
-      onChangeFocus()
-    }
+    cardNumberEditText.onFocusChangeListener =
+      OnFocusChangeListener { _, hasFocus ->
+        currentFocusedField =
+          if (hasFocus) CardInputListener.FocusField.CardNumber.toString() else null
+        onChangeFocus()
+      }
+    cvcEditText.onFocusChangeListener =
+      OnFocusChangeListener { _, hasFocus ->
+        currentFocusedField = if (hasFocus) CardInputListener.FocusField.Cvc.toString() else null
+        onChangeFocus()
+      }
+    expiryEditText.onFocusChangeListener =
+      OnFocusChangeListener { _, hasFocus ->
+        currentFocusedField =
+          if (hasFocus) CardInputListener.FocusField.ExpiryDate.toString() else null
+        onChangeFocus()
+      }
+    postalCodeEditText.onFocusChangeListener =
+      OnFocusChangeListener { _, hasFocus ->
+        currentFocusedField =
+          if (hasFocus) CardInputListener.FocusField.PostalCode.toString() else null
+        onChangeFocus()
+      }
   }
 
   private fun setPostalCodeFilter() {
-    cardFormViewBinding.postalCode.filters = arrayOf(
-      *cardFormViewBinding.postalCode.filters,
-      createPostalCodeInputFilter()
-    )
+    cardFormViewBinding.postalCode.filters =
+      arrayOf(
+        *cardFormViewBinding.postalCode.filters,
+        createPostalCodeInputFilter(),
+      )
   }
 
   @SuppressLint("RestrictedApi")
@@ -318,10 +326,12 @@ class CardFormView(context: ThemedReactContext) : FrameLayout(context) {
     post(mLayoutRunnable)
   }
 
-  private val mLayoutRunnable = Runnable {
-    measure(
-      MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY),
-      MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY))
-    layout(left, top, right, bottom)
-  }
+  private val mLayoutRunnable =
+    Runnable {
+      measure(
+        MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY),
+        MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY),
+      )
+      layout(left, top, right, bottom)
+    }
 }

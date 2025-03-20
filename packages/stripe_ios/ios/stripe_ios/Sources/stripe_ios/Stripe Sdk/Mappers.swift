@@ -1,6 +1,5 @@
 import Stripe
 import StripePaymentSheet
-import PassKit
 
 class Mappers {
     class func createResult(_ key: String, _ value: NSDictionary?) -> NSDictionary {
