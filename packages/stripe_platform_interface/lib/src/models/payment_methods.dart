@@ -803,7 +803,6 @@ class PaymentMethodOptions with _$PaymentMethodOptions {
   const factory PaymentMethodOptions({
     /// Indicates whether or not you want to reuse this method for future payments.
     PaymentIntentsFutureUsage? setupFutureUsage,
-    
   }) = _PaymentMethodOptions;
 
   factory PaymentMethodOptions.fromJson(Map<String, dynamic> json) =>

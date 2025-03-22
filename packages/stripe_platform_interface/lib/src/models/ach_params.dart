@@ -27,7 +27,7 @@ class CollectBankAccountParams with _$CollectBankAccountParams {
     /// user's system settings.
     UserInterfaceStyle? userInterfaceStyle,
 
-    /// An optional event listener to receive [FinancialConnectionsEvent] for 
+    /// An optional event listener to receive [FinancialConnectionsEvent] for
     /// specific events during the process of a user connecting their financial accounts.
     @JsonKey(includeFromJson: false, includeToJson: false)
     FinancialConnectionsEventHandler? onEvent,

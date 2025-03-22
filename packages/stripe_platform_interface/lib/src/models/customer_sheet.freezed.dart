@@ -79,6 +79,14 @@ mixin _$CustomerSheetInitParams {
   @JsonKey(toJson: _cardBrandListToJson)
   List<CardBrand>? get preferredNetworks => throw _privateConstructorUsedError;
 
+  /// By default, PaymentSheet will accept all supported cards by Stripe.
+  /// You can specify card brands PaymentSheet should block or allow payment for by providing an array of those card brands.
+  ///
+  /// Note: This is only a client-side solution.
+  ///Note: Card brand filtering is not currently supported in Link.
+  CardBrandAcceptance? get cardBrandAcceptance =>
+      throw _privateConstructorUsedError;
+
   /// Serializes this CustomerSheetInitParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
@@ -111,13 +119,14 @@ abstract class $CustomerSheetInitParamsCopyWith<$Res> {
       String? removeSavedPaymentMethodMessage,
       bool applePayEnabled,
       bool googlePayEnabled,
-      @JsonKey(toJson: _cardBrandListToJson)
-      List<CardBrand>? preferredNetworks});
+      @JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks,
+      CardBrandAcceptance? cardBrandAcceptance});
 
   $PaymentSheetAppearanceCopyWith<$Res>? get appearance;
   $BillingDetailsCopyWith<$Res>? get defaultBillingDetails;
   $BillingDetailsCollectionConfigurationCopyWith<$Res>?
       get billingDetailsCollectionConfiguration;
+  $CardBrandAcceptanceCopyWith<$Res>? get cardBrandAcceptance;
 }
 
 /// @nodoc
@@ -151,6 +160,7 @@ class _$CustomerSheetInitParamsCopyWithImpl<$Res,
     Object? applePayEnabled = null,
     Object? googlePayEnabled = null,
     Object? preferredNetworks = freezed,
+    Object? cardBrandAcceptance = freezed,
   }) {
     return _then(_value.copyWith(
       style: freezed == style
@@ -216,6 +226,10 @@ class _$CustomerSheetInitParamsCopyWithImpl<$Res,
           ? _value.preferredNetworks
           : preferredNetworks // ignore: cast_nullable_to_non_nullable
               as List<CardBrand>?,
+      cardBrandAcceptance: freezed == cardBrandAcceptance
+          ? _value.cardBrandAcceptance
+          : cardBrandAcceptance // ignore: cast_nullable_to_non_nullable
+              as CardBrandAcceptance?,
     ) as $Val);
   }
 
@@ -264,6 +278,21 @@ class _$CustomerSheetInitParamsCopyWithImpl<$Res,
           as $Val);
     });
   }
+
+  /// Create a copy of CustomerSheetInitParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CardBrandAcceptanceCopyWith<$Res>? get cardBrandAcceptance {
+    if (_value.cardBrandAcceptance == null) {
+      return null;
+    }
+
+    return $CardBrandAcceptanceCopyWith<$Res>(_value.cardBrandAcceptance!,
+        (value) {
+      return _then(_value.copyWith(cardBrandAcceptance: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -291,8 +320,8 @@ abstract class _$$CustomerSheetInitParamsImplCopyWith<$Res>
       String? removeSavedPaymentMethodMessage,
       bool applePayEnabled,
       bool googlePayEnabled,
-      @JsonKey(toJson: _cardBrandListToJson)
-      List<CardBrand>? preferredNetworks});
+      @JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks,
+      CardBrandAcceptance? cardBrandAcceptance});
 
   @override
   $PaymentSheetAppearanceCopyWith<$Res>? get appearance;
@@ -301,6 +330,8 @@ abstract class _$$CustomerSheetInitParamsImplCopyWith<$Res>
   @override
   $BillingDetailsCollectionConfigurationCopyWith<$Res>?
       get billingDetailsCollectionConfiguration;
+  @override
+  $CardBrandAcceptanceCopyWith<$Res>? get cardBrandAcceptance;
 }
 
 /// @nodoc
@@ -333,6 +364,7 @@ class __$$CustomerSheetInitParamsImplCopyWithImpl<$Res>
     Object? applePayEnabled = null,
     Object? googlePayEnabled = null,
     Object? preferredNetworks = freezed,
+    Object? cardBrandAcceptance = freezed,
   }) {
     return _then(_$CustomerSheetInitParamsImpl(
       style: freezed == style
@@ -398,6 +430,10 @@ class __$$CustomerSheetInitParamsImplCopyWithImpl<$Res>
           ? _value._preferredNetworks
           : preferredNetworks // ignore: cast_nullable_to_non_nullable
               as List<CardBrand>?,
+      cardBrandAcceptance: freezed == cardBrandAcceptance
+          ? _value.cardBrandAcceptance
+          : cardBrandAcceptance // ignore: cast_nullable_to_non_nullable
+              as CardBrandAcceptance?,
     ));
   }
 }
@@ -422,7 +458,8 @@ class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
       this.applePayEnabled = true,
       this.googlePayEnabled = true,
       @JsonKey(toJson: _cardBrandListToJson)
-      final List<CardBrand>? preferredNetworks})
+      final List<CardBrand>? preferredNetworks,
+      this.cardBrandAcceptance})
       : _preferredNetworks = preferredNetworks;
 
   factory _$CustomerSheetInitParamsImpl.fromJson(Map<String, dynamic> json) =>
@@ -509,9 +546,17 @@ class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
     return EqualUnmodifiableListView(value);
   }
 
+  /// By default, PaymentSheet will accept all supported cards by Stripe.
+  /// You can specify card brands PaymentSheet should block or allow payment for by providing an array of those card brands.
+  ///
+  /// Note: This is only a client-side solution.
+  ///Note: Card brand filtering is not currently supported in Link.
+  @override
+  final CardBrandAcceptance? cardBrandAcceptance;
+
   @override
   String toString() {
-    return 'CustomerSheetInitParams(style: $style, appearance: $appearance, setupIntentClientSecret: $setupIntentClientSecret, customerId: $customerId, customerEphemeralKeySecret: $customerEphemeralKeySecret, merchantDisplayName: $merchantDisplayName, allowsRemovalOfLastSavedPaymentMethod: $allowsRemovalOfLastSavedPaymentMethod, headerTextForSelectionScreen: $headerTextForSelectionScreen, defaultBillingDetails: $defaultBillingDetails, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, returnURL: $returnURL, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, applePayEnabled: $applePayEnabled, googlePayEnabled: $googlePayEnabled, preferredNetworks: $preferredNetworks)';
+    return 'CustomerSheetInitParams(style: $style, appearance: $appearance, setupIntentClientSecret: $setupIntentClientSecret, customerId: $customerId, customerEphemeralKeySecret: $customerEphemeralKeySecret, merchantDisplayName: $merchantDisplayName, allowsRemovalOfLastSavedPaymentMethod: $allowsRemovalOfLastSavedPaymentMethod, headerTextForSelectionScreen: $headerTextForSelectionScreen, defaultBillingDetails: $defaultBillingDetails, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, returnURL: $returnURL, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, applePayEnabled: $applePayEnabled, googlePayEnabled: $googlePayEnabled, preferredNetworks: $preferredNetworks, cardBrandAcceptance: $cardBrandAcceptance)';
   }
 
   @override
@@ -531,8 +576,7 @@ class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
                     customerEphemeralKeySecret) &&
             (identical(other.merchantDisplayName, merchantDisplayName) ||
                 other.merchantDisplayName == merchantDisplayName) &&
-            (identical(other.allowsRemovalOfLastSavedPaymentMethod,
-                    allowsRemovalOfLastSavedPaymentMethod) ||
+            (identical(other.allowsRemovalOfLastSavedPaymentMethod, allowsRemovalOfLastSavedPaymentMethod) ||
                 other.allowsRemovalOfLastSavedPaymentMethod ==
                     allowsRemovalOfLastSavedPaymentMethod) &&
             (identical(other.headerTextForSelectionScreen, headerTextForSelectionScreen) ||
@@ -553,7 +597,10 @@ class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
                 other.applePayEnabled == applePayEnabled) &&
             (identical(other.googlePayEnabled, googlePayEnabled) ||
                 other.googlePayEnabled == googlePayEnabled) &&
-            const DeepCollectionEquality().equals(other._preferredNetworks, _preferredNetworks));
+            const DeepCollectionEquality()
+                .equals(other._preferredNetworks, _preferredNetworks) &&
+            (identical(other.cardBrandAcceptance, cardBrandAcceptance) ||
+                other.cardBrandAcceptance == cardBrandAcceptance));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -574,7 +621,8 @@ class _$CustomerSheetInitParamsImpl implements _CustomerSheetInitParams {
       removeSavedPaymentMethodMessage,
       applePayEnabled,
       googlePayEnabled,
-      const DeepCollectionEquality().hash(_preferredNetworks));
+      const DeepCollectionEquality().hash(_preferredNetworks),
+      cardBrandAcceptance);
 
   /// Create a copy of CustomerSheetInitParams
   /// with the given fields replaced by the non-null parameter values.
@@ -611,8 +659,9 @@ abstract class _CustomerSheetInitParams implements CustomerSheetInitParams {
       final bool applePayEnabled,
       final bool googlePayEnabled,
       @JsonKey(toJson: _cardBrandListToJson)
-      final List<CardBrand>?
-          preferredNetworks}) = _$CustomerSheetInitParamsImpl;
+      final List<CardBrand>? preferredNetworks,
+      final CardBrandAcceptance?
+          cardBrandAcceptance}) = _$CustomerSheetInitParamsImpl;
 
   factory _CustomerSheetInitParams.fromJson(Map<String, dynamic> json) =
       _$CustomerSheetInitParamsImpl.fromJson;
@@ -684,6 +733,14 @@ abstract class _CustomerSheetInitParams implements CustomerSheetInitParams {
   @override
   @JsonKey(toJson: _cardBrandListToJson)
   List<CardBrand>? get preferredNetworks;
+
+  /// By default, PaymentSheet will accept all supported cards by Stripe.
+  /// You can specify card brands PaymentSheet should block or allow payment for by providing an array of those card brands.
+  ///
+  /// Note: This is only a client-side solution.
+  ///Note: Card brand filtering is not currently supported in Link.
+  @override
+  CardBrandAcceptance? get cardBrandAcceptance;
 
   /// Create a copy of CustomerSheetInitParams
   /// with the given fields replaced by the non-null parameter values.

@@ -123,7 +123,7 @@ mixin _$SetupPaymentSheetParameters {
   @JsonKey(toJson: _cardBrandListToJson)
   List<CardBrand>? get preferredNetworks => throw _privateConstructorUsedError;
 
-  ///  By default, PaymentSheet will accept all supported cards by Stripe.
+  /// By default, PaymentSheet will accept all supported cards by Stripe.
   /// You can specify card brands PaymentSheet should block or allow payment for by providing an array of those card brands.
   ///
   /// Note: This is only a client-side solution.
@@ -784,7 +784,7 @@ class _$SetupParametersImpl implements _SetupParameters {
     return EqualUnmodifiableListView(value);
   }
 
-  ///  By default, PaymentSheet will accept all supported cards by Stripe.
+  /// By default, PaymentSheet will accept all supported cards by Stripe.
   /// You can specify card brands PaymentSheet should block or allow payment for by providing an array of those card brands.
   ///
   /// Note: This is only a client-side solution.
@@ -1044,7 +1044,7 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   @JsonKey(toJson: _cardBrandListToJson)
   List<CardBrand>? get preferredNetworks;
 
-  ///  By default, PaymentSheet will accept all supported cards by Stripe.
+  /// By default, PaymentSheet will accept all supported cards by Stripe.
   /// You can specify card brands PaymentSheet should block or allow payment for by providing an array of those card brands.
   ///
   /// Note: This is only a client-side solution.
