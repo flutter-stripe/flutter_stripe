@@ -28,8 +28,12 @@ mixin _$AddressSheetAdditionalFields {
   /// The label of a checkbox displayed below other fields. If null or undefined, the checkbox is not displayed
   String? get checkboxLabel => throw _privateConstructorUsedError;
 
+  /// Serializes this AddressSheetAdditionalFields to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AddressSheetAdditionalFields
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AddressSheetAdditionalFieldsCopyWith<AddressSheetAdditionalFields>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -56,6 +60,8 @@ class _$AddressSheetAdditionalFieldsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AddressSheetAdditionalFields
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,6 +103,8 @@ class __$$AddressSheetAdditionalFieldsImplCopyWithImpl<$Res>
       $Res Function(_$AddressSheetAdditionalFieldsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AddressSheetAdditionalFields
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,11 +159,13 @@ class _$AddressSheetAdditionalFieldsImpl
                 other.checkboxLabel == checkboxLabel));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, phoneNumber, checkboxLabel);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AddressSheetAdditionalFields
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddressSheetAdditionalFieldsImplCopyWith<
@@ -181,16 +191,18 @@ abstract class _AddressSheetAdditionalFields
   factory _AddressSheetAdditionalFields.fromJson(Map<String, dynamic> json) =
       _$AddressSheetAdditionalFieldsImpl.fromJson;
 
-  @override
-
   ///Determines whether the phone number is hidden, required, or optional. Defaults to hidden
-  AddressSheetPhoneNumberField get phoneNumber;
   @override
+  AddressSheetPhoneNumberField get phoneNumber;
 
   /// The label of a checkbox displayed below other fields. If null or undefined, the checkbox is not displayed
-  String? get checkboxLabel;
   @override
-  @JsonKey(ignore: true)
+  String? get checkboxLabel;
+
+  /// Create a copy of AddressSheetAdditionalFields
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddressSheetAdditionalFieldsImplCopyWith<
           _$AddressSheetAdditionalFieldsImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -211,8 +223,12 @@ mixin _$CollectAddressResult {
   /// The customer's phone number
   String? get phoneNumber => throw _privateConstructorUsedError;
 
+  /// Serializes this CollectAddressResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CollectAddressResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CollectAddressResultCopyWith<CollectAddressResult> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -239,6 +255,8 @@ class _$CollectAddressResultCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CollectAddressResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -262,6 +280,8 @@ class _$CollectAddressResultCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of CollectAddressResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AddressCopyWith<$Res> get address {
@@ -293,6 +313,8 @@ class __$$CollectAddressResultImplCopyWithImpl<$Res>
       $Res Function(_$CollectAddressResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CollectAddressResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -354,11 +376,13 @@ class _$CollectAddressResultImpl implements _CollectAddressResult {
                 other.phoneNumber == phoneNumber));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, address, phoneNumber);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CollectAddressResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CollectAddressResultImplCopyWith<_$CollectAddressResultImpl>
@@ -383,20 +407,22 @@ abstract class _CollectAddressResult implements CollectAddressResult {
   factory _CollectAddressResult.fromJson(Map<String, dynamic> json) =
       _$CollectAddressResultImpl.fromJson;
 
-  @override
-
   /// The customer's full name
-  String get name;
   @override
+  String get name;
 
   /// The customer's address
-  Address get address;
   @override
+  Address get address;
 
   /// The customer's phone number
-  String? get phoneNumber;
   @override
-  @JsonKey(ignore: true)
+  String? get phoneNumber;
+
+  /// Create a copy of CollectAddressResult
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CollectAddressResultImplCopyWith<_$CollectAddressResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -443,8 +469,12 @@ mixin _$AddressSheetParams {
   /// Android only. Google Places api key used to provide autocomplete suggestions. When null, autocomplete is disabled on Android.
   String? get googlePlacesApiKey => throw _privateConstructorUsedError;
 
+  /// Serializes this AddressSheetParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AddressSheetParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AddressSheetParamsCopyWith<AddressSheetParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -483,6 +513,8 @@ class _$AddressSheetParamsCopyWithImpl<$Res, $Val extends AddressSheetParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AddressSheetParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -546,6 +578,8 @@ class _$AddressSheetParamsCopyWithImpl<$Res, $Val extends AddressSheetParams>
     ) as $Val);
   }
 
+  /// Create a copy of AddressSheetParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentSheetAppearanceCopyWith<$Res>? get appearance {
@@ -558,6 +592,8 @@ class _$AddressSheetParamsCopyWithImpl<$Res, $Val extends AddressSheetParams>
     });
   }
 
+  /// Create a copy of AddressSheetParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AddressDetailsCopyWith<$Res>? get defaultValues {
@@ -570,6 +606,8 @@ class _$AddressSheetParamsCopyWithImpl<$Res, $Val extends AddressSheetParams>
     });
   }
 
+  /// Create a copy of AddressSheetParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AddressSheetAdditionalFieldsCopyWith<$Res>? get additionalFields {
@@ -621,6 +659,8 @@ class __$$AddressSheetParamsImplCopyWithImpl<$Res>
       $Res Function(_$AddressSheetParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AddressSheetParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -805,7 +845,7 @@ class _$AddressSheetParamsImpl implements _AddressSheetParams {
                 other.googlePlacesApiKey == googlePlacesApiKey));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -821,7 +861,9 @@ class _$AddressSheetParamsImpl implements _AddressSheetParams {
       sheetTitle,
       googlePlacesApiKey);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AddressSheetParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddressSheetParamsImplCopyWith<_$AddressSheetParamsImpl> get copyWith =>
@@ -853,52 +895,54 @@ abstract class _AddressSheetParams implements AddressSheetParams {
   factory _AddressSheetParams.fromJson(Map<String, dynamic> json) =
       _$AddressSheetParamsImpl.fromJson;
 
-  @override
-
   /// Whether the address sheet is visible
-  bool get visible;
   @override
+  bool get visible;
 
   /// Controls how the modal is presented (after animation). iOS only.
-  AddressSheetPresentationStyle? get presentationStyle;
   @override
+  AddressSheetPresentationStyle? get presentationStyle;
 
   /// Controls how the modal animates. iOS only.
-  AddressSheetAnimationStyle? get animationStyle;
   @override
+  AddressSheetAnimationStyle? get animationStyle;
 
   /// Configuration for the appearance of the address sheet
-  PaymentSheetAppearance? get appearance;
   @override
+  PaymentSheetAppearance? get appearance;
 
   /// Default values to prepoulate the address sheet
-  AddressDetails? get defaultValues;
   @override
+  AddressDetails? get defaultValues;
 
   /// Configuration for additional fields besides the physical address
-  AddressSheetAdditionalFields? get additionalFields;
   @override
+  AddressSheetAdditionalFields? get additionalFields;
 
   /// A list of two-letter country codes representing countries the customers can select. If the list is empty (the default), we display all countries.
-  List<String>? get allowedCountries;
   @override
+  List<String>? get allowedCountries;
 
   /// A list of two-letter country codes representing countries that support address autocomplete. Defaults to a list of countries that Stripe has audited to ensure a good autocomplete experience.
-  List<String>? get autocompleteCountries;
   @override
+  List<String>? get autocompleteCountries;
 
   /// The title of the primary button displayed at the bottom of the screen. Defaults to "Save Address"
-  String? get primaryButtonTitle;
   @override
+  String? get primaryButtonTitle;
 
   /// The title of the address sheet. Defaults to "Address"
-  String? get sheetTitle;
   @override
+  String? get sheetTitle;
 
   /// Android only. Google Places api key used to provide autocomplete suggestions. When null, autocomplete is disabled on Android.
-  String? get googlePlacesApiKey;
   @override
-  @JsonKey(ignore: true)
+  String? get googlePlacesApiKey;
+
+  /// Create a copy of AddressSheetParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddressSheetParamsImplCopyWith<_$AddressSheetParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

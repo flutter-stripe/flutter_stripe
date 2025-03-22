@@ -119,9 +119,9 @@ jobs:
 
   android_integration_test:
     name: integration test (Android)
-    needs: [analyze, test, ios_integration_test]
+    needs: [analyze, test]
     timeout-minutes: 60
-    runs-on: macos-14
+    runs-on: macos-13
     steps:
     - uses: actions/checkout@v2
     - uses: subosito/flutter-action@v2

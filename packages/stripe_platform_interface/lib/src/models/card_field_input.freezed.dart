@@ -46,8 +46,12 @@ mixin _$CardStyle {
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get placeholderColor => throw _privateConstructorUsedError;
 
+  /// Serializes this CardStyle to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CardStyle
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CardStyleCopyWith<CardStyle> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -86,6 +90,8 @@ class _$CardStyleCopyWithImpl<$Res, $Val extends CardStyle>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CardStyle
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -180,6 +186,8 @@ class __$$CardStyleConstructorImplCopyWithImpl<$Res>
       $Res Function(_$CardStyleConstructorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CardStyle
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -333,7 +341,7 @@ class _$CardStyleConstructorImpl extends _CardStyleConstructor {
                 other.placeholderColor == placeholderColor));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -348,7 +356,9 @@ class _$CardStyleConstructorImpl extends _CardStyleConstructor {
       textErrorColor,
       placeholderColor);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CardStyle
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CardStyleConstructorImplCopyWith<_$CardStyleConstructorImpl>
@@ -387,9 +397,8 @@ abstract class _CardStyleConstructor extends CardStyle {
   factory _CardStyleConstructor.fromJson(Map<String, dynamic> json) =
       _$CardStyleConstructorImpl.fromJson;
 
-  @override
-
   /// Width for the border.
+  @override
   int? get borderWidth;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -397,9 +406,9 @@ abstract class _CardStyleConstructor extends CardStyle {
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get borderColor;
-  @override
 
   /// Borderradius that can give the Cardfield rounded corners.
+  @override
   int? get borderRadius;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -407,24 +416,27 @@ abstract class _CardStyleConstructor extends CardStyle {
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get textColor;
-  @override
 
   /// Font size.
-  int? get fontSize;
   @override
+  int? get fontSize;
 
   /// Font family
-  String? get fontFamily;
   @override
+  String? get fontFamily;
 
   /// Color of the input in case incorrect data is entered.
+  @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get textErrorColor;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get placeholderColor;
+
+  /// Create a copy of CardStyle
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CardStyleConstructorImplCopyWith<_$CardStyleConstructorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -459,8 +471,12 @@ mixin _$CardFormStyle {
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get placeholderColor => throw _privateConstructorUsedError;
 
+  /// Serializes this CardFormStyle to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CardFormStyle
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CardFormStyleCopyWith<CardFormStyle> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -499,6 +515,8 @@ class _$CardFormStyleCopyWithImpl<$Res, $Val extends CardFormStyle>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CardFormStyle
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -589,6 +607,8 @@ class __$$CardFormStyleConstructorImplCopyWithImpl<$Res>
       $Res Function(_$CardFormStyleConstructorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CardFormStyle
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -731,7 +751,7 @@ class _$CardFormStyleConstructorImpl extends _CardFormStyleConstructor {
                 other.placeholderColor == placeholderColor));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -745,7 +765,9 @@ class _$CardFormStyleConstructorImpl extends _CardFormStyleConstructor {
       textErrorColor,
       placeholderColor);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CardFormStyle
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CardFormStyleConstructorImplCopyWith<_$CardFormStyleConstructorImpl>
@@ -785,16 +807,16 @@ abstract class _CardFormStyleConstructor extends CardFormStyle {
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get backgroundColor;
-  @override
 
   /// Width for the border.
+  @override
   int? get borderWidth;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get borderColor;
-  @override
 
   /// Borderradius that can give the Cardfield rounded corners.
+  @override
   int? get borderRadius;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -802,20 +824,23 @@ abstract class _CardFormStyleConstructor extends CardFormStyle {
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get textColor;
-  @override
 
   /// Font size.
-  int? get fontSize;
   @override
+  int? get fontSize;
 
   /// Color of the input in case incorrect data is entered.
+  @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get textErrorColor;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get placeholderColor;
+
+  /// Create a copy of CardFormStyle
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CardFormStyleConstructorImplCopyWith<_$CardFormStyleConstructorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -838,8 +863,12 @@ mixin _$CardPlaceholder {
   /// Localized placeholder for postal code field.
   String? get postalCode => throw _privateConstructorUsedError;
 
+  /// Serializes this CardPlaceholder to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CardPlaceholder
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CardPlaceholderCopyWith<CardPlaceholder> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -864,6 +893,8 @@ class _$CardPlaceholderCopyWithImpl<$Res, $Val extends CardPlaceholder>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CardPlaceholder
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -916,6 +947,8 @@ class __$$CardPlaceholderConstructorImplCopyWithImpl<$Res>
       $Res Function(_$CardPlaceholderConstructorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CardPlaceholder
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -991,12 +1024,14 @@ class _$CardPlaceholderConstructorImpl extends _CardPlaceholderConstructor {
                 other.postalCode == postalCode));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, number, expiration, cvc, postalCode);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CardPlaceholder
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CardPlaceholderConstructorImplCopyWith<_$CardPlaceholderConstructorImpl>
@@ -1022,24 +1057,26 @@ abstract class _CardPlaceholderConstructor extends CardPlaceholder {
   factory _CardPlaceholderConstructor.fromJson(Map<String, dynamic> json) =
       _$CardPlaceholderConstructorImpl.fromJson;
 
-  @override
-
   /// Localized placeholder for card number field.
-  String? get number;
   @override
+  String? get number;
 
   /// Localized placeholder for expiration field.
-  String? get expiration;
   @override
+  String? get expiration;
 
   /// Localized placeholder for cvc field.
-  String? get cvc;
   @override
+  String? get cvc;
 
   /// Localized placeholder for postal code field.
-  String? get postalCode;
   @override
-  @JsonKey(ignore: true)
+  String? get postalCode;
+
+  /// Create a copy of CardPlaceholder
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CardPlaceholderConstructorImplCopyWith<_$CardPlaceholderConstructorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1086,8 +1123,12 @@ mixin _$CardFieldInputDetails {
   /// The [CardValidationState] of the entered card number.
   CardValidationState get validNumber => throw _privateConstructorUsedError;
 
+  /// Serializes this CardFieldInputDetails to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CardFieldInputDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CardFieldInputDetailsCopyWith<CardFieldInputDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1123,6 +1164,8 @@ class _$CardFieldInputDetailsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CardFieldInputDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1219,6 +1262,8 @@ class __$$CardFieldInputDetailsImplCopyWithImpl<$Res>
       $Res Function(_$CardFieldInputDetailsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CardFieldInputDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1383,7 +1428,7 @@ class _$CardFieldInputDetailsImpl extends _CardFieldInputDetails {
                 other.validNumber == validNumber));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1399,7 +1444,9 @@ class _$CardFieldInputDetailsImpl extends _CardFieldInputDetails {
       validCVC,
       validNumber);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CardFieldInputDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CardFieldInputDetailsImplCopyWith<_$CardFieldInputDetailsImpl>
@@ -1432,54 +1479,56 @@ abstract class _CardFieldInputDetails extends CardFieldInputDetails {
   factory _CardFieldInputDetails.fromJson(Map<String, dynamic> json) =
       _$CardFieldInputDetailsImpl.fromJson;
 
-  @override
-
   /// Indicates whether the card field input is complete.
-  bool get complete;
   @override
+  bool get complete;
 
   /// Last 4 digits of the entered card number.
-  String? get last4;
   @override
+  String? get last4;
 
   /// Month of the entered expiry date of the card.
-  int? get expiryMonth;
   @override
+  int? get expiryMonth;
 
   /// Year of the entered expiry date of the card.
-  int? get expiryYear;
   @override
+  int? get expiryYear;
 
   /// Entered postcal code.
-  String? get postalCode;
   @override
+  String? get postalCode;
 
   /// Brand of the card.
-  String? get brand;
   @override
+  String? get brand;
 
   /// Card number.
   /// This information is not available by default to comply with the PCI compliance
-  String? get number;
   @override
+  String? get number;
 
   /// CVC code.
   /// This information is not available by default to comply with the PCI compliance
-  String? get cvc;
   @override
+  String? get cvc;
 
   /// The [CardValidationState] of the entered expiry date.
-  CardValidationState get validExpiryDate;
   @override
+  CardValidationState get validExpiryDate;
 
   /// The [CardValidationState] of the entered cvc.
-  CardValidationState get validCVC;
   @override
+  CardValidationState get validCVC;
 
   /// The [CardValidationState] of the entered card number.
-  CardValidationState get validNumber;
   @override
-  @JsonKey(ignore: true)
+  CardValidationState get validNumber;
+
+  /// Create a copy of CardFieldInputDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CardFieldInputDetailsImplCopyWith<_$CardFieldInputDetailsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1492,8 +1541,12 @@ CardFieldFocusName _$CardFieldFocusNameFromJson(Map<String, dynamic> json) {
 mixin _$CardFieldFocusName {
   CardFieldName? get focusedField => throw _privateConstructorUsedError;
 
+  /// Serializes this CardFieldFocusName to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CardFieldFocusName
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CardFieldFocusNameCopyWith<CardFieldFocusName> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1517,6 +1570,8 @@ class _$CardFieldFocusNameCopyWithImpl<$Res, $Val extends CardFieldFocusName>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CardFieldFocusName
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1550,6 +1605,8 @@ class __$$CardFieldFocusNameImplCopyWithImpl<$Res>
       $Res Function(_$CardFieldFocusNameImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CardFieldFocusName
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1590,11 +1647,13 @@ class _$CardFieldFocusNameImpl implements _CardFieldFocusName {
                 other.focusedField == focusedField));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, focusedField);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CardFieldFocusName
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CardFieldFocusNameImplCopyWith<_$CardFieldFocusNameImpl> get copyWith =>
@@ -1618,8 +1677,11 @@ abstract class _CardFieldFocusName implements CardFieldFocusName {
 
   @override
   CardFieldName? get focusedField;
+
+  /// Create a copy of CardFieldFocusName
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CardFieldFocusNameImplCopyWith<_$CardFieldFocusNameImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

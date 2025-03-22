@@ -527,7 +527,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
     _methodChannel?.setMethodCallHandler((call) async {
       if (call.method == 'topFocusChange') {
         _handlePlatformFocusChanged(call.arguments);
-      } else if (call.method == 'onCardChange') {
+      } else if (call.method == 'topCardChange') {
         _handleCardChanged(call.arguments);
       }
     });

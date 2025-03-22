@@ -42,8 +42,12 @@ mixin _$AubecsFormStyle {
   /// Only available for Android
   int? get borderRadius => throw _privateConstructorUsedError;
 
+  /// Serializes this AubecsFormStyle to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AubecsFormStyle
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AubecsFormStyleCopyWith<AubecsFormStyle> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -80,6 +84,8 @@ class _$AubecsFormStyleCopyWithImpl<$Res, $Val extends AubecsFormStyle>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AubecsFormStyle
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -161,6 +167,8 @@ class __$$AubecsFormStyleImplCopyWithImpl<$Res>
       _$AubecsFormStyleImpl _value, $Res Function(_$AubecsFormStyleImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AubecsFormStyle
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -290,7 +298,7 @@ class _$AubecsFormStyleImpl implements _AubecsFormStyle {
                 other.borderRadius == borderRadius));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -303,7 +311,9 @@ class _$AubecsFormStyleImpl implements _AubecsFormStyle {
       borderColor,
       borderRadius);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AubecsFormStyle
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AubecsFormStyleImplCopyWith<_$AubecsFormStyleImpl> get copyWith =>
@@ -346,14 +356,14 @@ abstract class _AubecsFormStyle implements AubecsFormStyle {
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get placeholderColor;
-  @override
 
   /// Size of the font in the input form.
-  int? get fontSize;
   @override
+  int? get fontSize;
 
   /// Borderwith of the form
   /// Only available for Android
+  @override
   int? get borderWidth;
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
@@ -361,13 +371,16 @@ abstract class _AubecsFormStyle implements AubecsFormStyle {
   @override
   @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
   Color? get borderColor;
-  @override
 
   /// Borderadius of the form
   /// Only available for Android
-  int? get borderRadius;
   @override
-  @JsonKey(ignore: true)
+  int? get borderRadius;
+
+  /// Create a copy of AubecsFormStyle
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AubecsFormStyleImplCopyWith<_$AubecsFormStyleImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -391,8 +404,12 @@ mixin _$AubecsFormInputDetails {
   /// Email of the accountholder.
   String? get email => throw _privateConstructorUsedError;
 
+  /// Serializes this AubecsFormInputDetails to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AubecsFormInputDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AubecsFormInputDetailsCopyWith<AubecsFormInputDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -418,6 +435,8 @@ class _$AubecsFormInputDetailsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AubecsFormInputDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -470,6 +489,8 @@ class __$$AubecsFormInputDetailsImplCopyWithImpl<$Res>
       $Res Function(_$AubecsFormInputDetailsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AubecsFormInputDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -543,12 +564,14 @@ class _$AubecsFormInputDetailsImpl implements _AubecsFormInputDetails {
             (identical(other.email, email) || other.email == email));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, bsbNumber, name, accountNumber, email);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AubecsFormInputDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AubecsFormInputDetailsImplCopyWith<_$AubecsFormInputDetailsImpl>
@@ -573,24 +596,26 @@ abstract class _AubecsFormInputDetails implements AubecsFormInputDetails {
   factory _AubecsFormInputDetails.fromJson(Map<String, dynamic> json) =
       _$AubecsFormInputDetailsImpl.fromJson;
 
-  @override
-
   /// Six digit identifier to identify the branch of an financial institution.
-  String? get bsbNumber;
   @override
+  String? get bsbNumber;
 
   /// The name of the accountholder.
-  String? get name;
   @override
+  String? get name;
 
   /// The account number.
-  String? get accountNumber;
   @override
+  String? get accountNumber;
 
   /// Email of the accountholder.
-  String? get email;
   @override
-  @JsonKey(ignore: true)
+  String? get email;
+
+  /// Create a copy of AubecsFormInputDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AubecsFormInputDetailsImplCopyWith<_$AubecsFormInputDetailsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

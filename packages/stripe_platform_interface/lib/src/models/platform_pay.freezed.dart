@@ -28,8 +28,12 @@ mixin _$PlatformPayPaymentMethod {
   PlatformPayShippingContact? get shippingContact =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this PlatformPayPaymentMethod to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PlatformPayPaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PlatformPayPaymentMethodCopyWith<PlatformPayPaymentMethod> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,6 +63,8 @@ class _$PlatformPayPaymentMethodCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PlatformPayPaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -77,6 +83,8 @@ class _$PlatformPayPaymentMethodCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of PlatformPayPaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentMethodCopyWith<$Res> get paymentMethod {
@@ -85,6 +93,8 @@ class _$PlatformPayPaymentMethodCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of PlatformPayPaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PlatformPayShippingContactCopyWith<$Res>? get shippingContact {
@@ -128,6 +138,8 @@ class __$$PlatformPayPaymentMethodImplCopyWithImpl<$Res>
       $Res Function(_$PlatformPayPaymentMethodImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlatformPayPaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -181,11 +193,13 @@ class _$PlatformPayPaymentMethodImpl implements _PlatformPayPaymentMethod {
                 other.shippingContact == shippingContact));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, paymentMethod, shippingContact);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlatformPayPaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlatformPayPaymentMethodImplCopyWith<_$PlatformPayPaymentMethodImpl>
@@ -209,16 +223,18 @@ abstract class _PlatformPayPaymentMethod implements PlatformPayPaymentMethod {
   factory _PlatformPayPaymentMethod.fromJson(Map<String, dynamic> json) =
       _$PlatformPayPaymentMethodImpl.fromJson;
 
-  @override
-
   /// The payment method
-  PaymentMethod get paymentMethod;
   @override
+  PaymentMethod get paymentMethod;
 
   /// shipping contact of the user
-  PlatformPayShippingContact? get shippingContact;
   @override
-  @JsonKey(ignore: true)
+  PlatformPayShippingContact? get shippingContact;
+
+  /// Create a copy of PlatformPayPaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlatformPayPaymentMethodImplCopyWith<_$PlatformPayPaymentMethodImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -284,8 +300,13 @@ mixin _$PlatformPaySheetUpdateParams {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this PlatformPaySheetUpdateParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PlatformPaySheetUpdateParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PlatformPaySheetUpdateParamsCopyWith<PlatformPaySheetUpdateParams>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -315,6 +336,8 @@ class _$PlatformPaySheetUpdateParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PlatformPaySheetUpdateParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -364,6 +387,8 @@ class __$$PlatformPaySheetUpdateParamsImplCopyWithImpl<$Res>
       $Res Function(_$PlatformPaySheetUpdateParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlatformPaySheetUpdateParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -457,7 +482,7 @@ class _$PlatformPaySheetUpdateParamsImpl
             const DeepCollectionEquality().equals(other._errors, _errors));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -465,7 +490,9 @@ class _$PlatformPaySheetUpdateParamsImpl
       const DeepCollectionEquality().hash(_shippingMethods),
       const DeepCollectionEquality().hash(_errors));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlatformPaySheetUpdateParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlatformPaySheetUpdateParamsImplCopyWith<
@@ -560,20 +587,22 @@ abstract class _PlatformPaySheetUpdateParams
   factory _PlatformPaySheetUpdateParams.fromJson(Map<String, dynamic> json) =
       _$PlatformPaySheetUpdateParamsImpl.fromJson;
 
-  @override
-
   /// list of updated summary items
-  List<ApplePayCartSummaryItem> get summaryItems;
   @override
+  List<ApplePayCartSummaryItem> get summaryItems;
 
   /// list of updated shipping methods
-  List<ApplePayShippingMethod> get shippingMethods;
   @override
+  List<ApplePayShippingMethod> get shippingMethods;
 
   /// In case user input is wrong use this to display the errors in the apple pay sheet.
-  List<ApplePaySheetError>? get errors;
   @override
-  @JsonKey(ignore: true)
+  List<ApplePaySheetError>? get errors;
+
+  /// Create a copy of PlatformPaySheetUpdateParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlatformPaySheetUpdateParamsImplCopyWith<
           _$PlatformPaySheetUpdateParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -665,8 +694,13 @@ mixin _$ApplePaySheetError {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this ApplePaySheetError to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApplePaySheetError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ApplePaySheetErrorCopyWith<ApplePaySheetError> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -690,6 +724,8 @@ class _$ApplePaySheetErrorCopyWithImpl<$Res, $Val extends ApplePaySheetError>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ApplePaySheetError
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -726,6 +762,8 @@ class __$$ApplePaySheetErrorInvalidShippingImplCopyWithImpl<$Res>
       $Res Function(_$ApplePaySheetErrorInvalidShippingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApplePaySheetError
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -782,11 +820,13 @@ class _$ApplePaySheetErrorInvalidShippingImpl
             (identical(other.message, message) || other.message == message));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, field, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApplePaySheetError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApplePaySheetErrorInvalidShippingImplCopyWith<
@@ -902,11 +942,15 @@ abstract class _ApplePaySheetErrorInvalidShipping
       _$ApplePaySheetErrorInvalidShippingImpl.fromJson;
 
 // Field that will be marked as invalid
-  InvalidShippingField get field;
-  @override // message that needs to be displayed on the sheet
-  String? get message;
+  InvalidShippingField
+      get field; // message that needs to be displayed on the sheet
   @override
-  @JsonKey(ignore: true)
+  String? get message;
+
+  /// Create a copy of ApplePaySheetError
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApplePaySheetErrorInvalidShippingImplCopyWith<
           _$ApplePaySheetErrorInvalidShippingImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -934,6 +978,8 @@ class __$$ApplePaySheetErrorUnserviceableShippingImplCopyWithImpl<$Res>
       $Res Function(_$ApplePaySheetErrorUnserviceableShippingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApplePaySheetError
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -981,11 +1027,13 @@ class _$ApplePaySheetErrorUnserviceableShippingImpl
             (identical(other.message, message) || other.message == message));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApplePaySheetError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApplePaySheetErrorUnserviceableShippingImplCopyWith<
@@ -1100,10 +1148,14 @@ abstract class _ApplePaySheetErrorUnserviceableShipping
           Map<String, dynamic> json) =
       _$ApplePaySheetErrorUnserviceableShippingImpl.fromJson;
 
-  @override // message that needs to be displayed on the sheet
-  String? get message;
+// message that needs to be displayed on the sheet
   @override
-  @JsonKey(ignore: true)
+  String? get message;
+
+  /// Create a copy of ApplePaySheetError
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApplePaySheetErrorUnserviceableShippingImplCopyWith<
           _$ApplePaySheetErrorUnserviceableShippingImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1131,6 +1183,8 @@ class __$$ApplePaySheetErrorInvalidCouponCodeImplCopyWithImpl<$Res>
       $Res Function(_$ApplePaySheetErrorInvalidCouponCodeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApplePaySheetError
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1177,11 +1231,13 @@ class _$ApplePaySheetErrorInvalidCouponCodeImpl
             (identical(other.message, message) || other.message == message));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApplePaySheetError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApplePaySheetErrorInvalidCouponCodeImplCopyWith<
@@ -1295,10 +1351,14 @@ abstract class _ApplePaySheetErrorInvalidCouponCode
           Map<String, dynamic> json) =
       _$ApplePaySheetErrorInvalidCouponCodeImpl.fromJson;
 
-  @override // message that needs to be displayed on the sheet
-  String? get message;
+// message that needs to be displayed on the sheet
   @override
-  @JsonKey(ignore: true)
+  String? get message;
+
+  /// Create a copy of ApplePaySheetError
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApplePaySheetErrorInvalidCouponCodeImplCopyWith<
           _$ApplePaySheetErrorInvalidCouponCodeImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1326,6 +1386,8 @@ class __$$ApplePaySheetErrorExpiredCouponCodeImplCopyWithImpl<$Res>
       $Res Function(_$ApplePaySheetErrorExpiredCouponCodeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApplePaySheetError
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1373,11 +1435,13 @@ class _$ApplePaySheetErrorExpiredCouponCodeImpl
             (identical(other.message, message) || other.message == message));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApplePaySheetError
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApplePaySheetErrorExpiredCouponCodeImplCopyWith<
@@ -1491,10 +1555,14 @@ abstract class _ApplePaySheetErrorExpiredCouponCode
           Map<String, dynamic> json) =
       _$ApplePaySheetErrorExpiredCouponCodeImpl.fromJson;
 
-  @override // message that needs to be displayed on the sheet
-  String? get message;
+// message that needs to be displayed on the sheet
   @override
-  @JsonKey(ignore: true)
+  String? get message;
+
+  /// Create a copy of ApplePaySheetError
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApplePaySheetErrorExpiredCouponCodeImplCopyWith<
           _$ApplePaySheetErrorExpiredCouponCodeImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1576,6 +1644,9 @@ class _$PlatformPayPaymentMethodParamsCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PlatformPayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1603,6 +1674,8 @@ class __$$PlatformPayPaymentMethodParamsGooglePayImplCopyWithImpl<$Res>
       $Res Function(_$PlatformPayPaymentMethodParamsGooglePayImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlatformPayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1621,6 +1694,8 @@ class __$$PlatformPayPaymentMethodParamsGooglePayImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of PlatformPayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $GooglePayParamsCopyWith<$Res> get googlePayParams {
@@ -1629,6 +1704,8 @@ class __$$PlatformPayPaymentMethodParamsGooglePayImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of PlatformPayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $GooglePayPaymentMethodParamsCopyWith<$Res> get googlePayPaymentMethodParams {
@@ -1675,7 +1752,9 @@ class _$PlatformPayPaymentMethodParamsGooglePayImpl
   int get hashCode =>
       Object.hash(runtimeType, googlePayParams, googlePayPaymentMethodParams);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlatformPayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlatformPayPaymentMethodParamsGooglePayImplCopyWith<
@@ -1772,7 +1851,10 @@ abstract class PlatformPayPaymentMethodParamsGooglePay
 
   GooglePayParams get googlePayParams;
   GooglePayPaymentMethodParams get googlePayPaymentMethodParams;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PlatformPayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlatformPayPaymentMethodParamsGooglePayImplCopyWith<
           _$PlatformPayPaymentMethodParamsGooglePayImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1800,6 +1882,8 @@ class __$$PlatformPayPaymentMethodParamsApplePayImplCopyWithImpl<$Res>
       $Res Function(_$PlatformPayPaymentMethodParamsApplePayImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlatformPayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1813,6 +1897,8 @@ class __$$PlatformPayPaymentMethodParamsApplePayImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of PlatformPayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ApplePayParamsCopyWith<$Res> get applePayParams {
@@ -1850,7 +1936,9 @@ class _$PlatformPayPaymentMethodParamsApplePayImpl
   @override
   int get hashCode => Object.hash(runtimeType, applePayParams);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlatformPayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlatformPayPaymentMethodParamsApplePayImplCopyWith<
@@ -1944,7 +2032,10 @@ abstract class PlatformPayPaymentMethodParamsApplePay
       _$PlatformPayPaymentMethodParamsApplePayImpl;
 
   ApplePayParams get applePayParams;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PlatformPayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlatformPayPaymentMethodParamsApplePayImplCopyWith<
           _$PlatformPayPaymentMethodParamsApplePayImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1972,6 +2063,8 @@ class __$$PlatformPayPaymentMethodParamsWebImplCopyWithImpl<$Res>
       $Res Function(_$PlatformPayPaymentMethodParamsWebImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlatformPayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1985,6 +2078,8 @@ class __$$PlatformPayPaymentMethodParamsWebImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of PlatformPayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PlatformPayWebPaymentRequestCreateOptionsCopyWith<$Res> get options {
@@ -2021,7 +2116,9 @@ class _$PlatformPayPaymentMethodParamsWebImpl
   @override
   int get hashCode => Object.hash(runtimeType, options);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlatformPayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlatformPayPaymentMethodParamsWebImplCopyWith<
@@ -2114,7 +2211,10 @@ abstract class PlatformPayPaymentMethodParamsWeb
       _$PlatformPayPaymentMethodParamsWebImpl;
 
   PlatformPayWebPaymentRequestCreateOptions get options;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PlatformPayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlatformPayPaymentMethodParamsWebImplCopyWith<
           _$PlatformPayPaymentMethodParamsWebImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2187,6 +2287,8 @@ mixin _$PlatformPayConfirmParams {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this PlatformPayConfirmParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -2207,6 +2309,9 @@ class _$PlatformPayConfirmParamsCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PlatformPayConfirmParams
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2231,6 +2336,8 @@ class __$$PlatformPayConfirmParamsGooglePayImplCopyWithImpl<$Res>
       $Res Function(_$PlatformPayConfirmParamsGooglePayImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlatformPayConfirmParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2244,6 +2351,8 @@ class __$$PlatformPayConfirmParamsGooglePayImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of PlatformPayConfirmParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $GooglePayParamsCopyWith<$Res> get googlePay {
@@ -2286,11 +2395,13 @@ class _$PlatformPayConfirmParamsGooglePayImpl
                 other.googlePay == googlePay));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, googlePay);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlatformPayConfirmParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlatformPayConfirmParamsGooglePayImplCopyWith<
@@ -2387,7 +2498,10 @@ abstract class PlatformPayConfirmParamsGooglePay
       _$PlatformPayConfirmParamsGooglePayImpl.fromJson;
 
   GooglePayParams get googlePay;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PlatformPayConfirmParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlatformPayConfirmParamsGooglePayImplCopyWith<
           _$PlatformPayConfirmParamsGooglePayImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2415,6 +2529,8 @@ class __$$PlatformPayConfirmParamsApplePayImplCopyWithImpl<$Res>
       $Res Function(_$PlatformPayConfirmParamsApplePayImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlatformPayConfirmParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2428,6 +2544,8 @@ class __$$PlatformPayConfirmParamsApplePayImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of PlatformPayConfirmParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ApplePayParamsCopyWith<$Res> get applePay {
@@ -2470,11 +2588,13 @@ class _$PlatformPayConfirmParamsApplePayImpl
                 other.applePay == applePay));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, applePay);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlatformPayConfirmParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlatformPayConfirmParamsApplePayImplCopyWith<
@@ -2570,7 +2690,10 @@ abstract class PlatformPayConfirmParamsApplePay
       _$PlatformPayConfirmParamsApplePayImpl.fromJson;
 
   ApplePayParams get applePay;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PlatformPayConfirmParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlatformPayConfirmParamsApplePayImplCopyWith<
           _$PlatformPayConfirmParamsApplePayImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2598,6 +2721,8 @@ class __$$PlatformPayConfirmParamsWebImplCopyWithImpl<$Res>
       $Res Function(_$PlatformPayConfirmParamsWebImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlatformPayConfirmParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2611,6 +2736,8 @@ class __$$PlatformPayConfirmParamsWebImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of PlatformPayConfirmParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PlatformPayWebPaymentRequestCreateOptionsCopyWith<$Res> get options {
@@ -2652,11 +2779,13 @@ class _$PlatformPayConfirmParamsWebImpl implements PlatformPayConfirmParamsWeb {
             (identical(other.options, options) || other.options == options));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, options);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlatformPayConfirmParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlatformPayConfirmParamsWebImplCopyWith<_$PlatformPayConfirmParamsWebImpl>
@@ -2750,7 +2879,10 @@ abstract class PlatformPayConfirmParamsWeb implements PlatformPayConfirmParams {
       _$PlatformPayConfirmParamsWebImpl.fromJson;
 
   PlatformPayWebPaymentRequestCreateOptions get options;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PlatformPayConfirmParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlatformPayConfirmParamsWebImplCopyWith<_$PlatformPayConfirmParamsWebImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2774,8 +2906,12 @@ mixin _$PlatformPayShippingContact {
   ///Phone Number of the shipping contact
   String? get phoneNumber => throw _privateConstructorUsedError;
 
+  /// Serializes this PlatformPayShippingContact to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PlatformPayShippingContact
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PlatformPayShippingContactCopyWith<PlatformPayShippingContact>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2808,6 +2944,8 @@ class _$PlatformPayShippingContactCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PlatformPayShippingContact
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2836,6 +2974,8 @@ class _$PlatformPayShippingContactCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of PlatformPayShippingContact
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ApplePayContactNameCopyWith<$Res> get name {
@@ -2844,6 +2984,8 @@ class _$PlatformPayShippingContactCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of PlatformPayShippingContact
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ApplePayPostalAddressCopyWith<$Res> get postalAddress {
@@ -2884,6 +3026,8 @@ class __$$PlatformPayShippingContactImplCopyWithImpl<$Res>
       $Res Function(_$PlatformPayShippingContactImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlatformPayShippingContact
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2962,12 +3106,14 @@ class _$PlatformPayShippingContactImpl implements _PlatformPayShippingContact {
                 other.phoneNumber == phoneNumber));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, emailAddress, name, postalAddress, phoneNumber);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlatformPayShippingContact
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlatformPayShippingContactImplCopyWith<_$PlatformPayShippingContactImpl>
@@ -2993,24 +3139,26 @@ abstract class _PlatformPayShippingContact
   factory _PlatformPayShippingContact.fromJson(Map<String, dynamic> json) =
       _$PlatformPayShippingContactImpl.fromJson;
 
-  @override
-
   /// Email address of the shipping contact
-  String? get emailAddress;
   @override
+  String? get emailAddress;
 
   /// Name of shipping contact
-  ApplePayContactName get name;
   @override
+  ApplePayContactName get name;
 
   /// Postal address of shipping contact
-  ApplePayPostalAddress get postalAddress;
   @override
+  ApplePayPostalAddress get postalAddress;
 
   ///Phone Number of the shipping contact
-  String? get phoneNumber;
   @override
-  @JsonKey(ignore: true)
+  String? get phoneNumber;
+
+  /// Create a copy of PlatformPayShippingContact
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlatformPayShippingContactImplCopyWith<_$PlatformPayShippingContactImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3072,8 +3220,12 @@ mixin _$ApplePayParams {
   /// Only supported on iOS 16 and higher.
   PaymentRequestType? get request => throw _privateConstructorUsedError;
 
+  /// Serializes this ApplePayParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApplePayParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ApplePayParamsCopyWith<ApplePayParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -3112,6 +3264,8 @@ class _$ApplePayParamsCopyWithImpl<$Res, $Val extends ApplePayParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ApplePayParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3185,6 +3339,8 @@ class _$ApplePayParamsCopyWithImpl<$Res, $Val extends ApplePayParams>
     ) as $Val);
   }
 
+  /// Create a copy of ApplePayParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentRequestTypeCopyWith<$Res>? get request {
@@ -3233,6 +3389,8 @@ class __$$ApplePayParamsImplCopyWithImpl<$Res>
       _$ApplePayParamsImpl _value, $Res Function(_$ApplePayParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApplePayParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3499,7 +3657,7 @@ class _$ApplePayParamsImpl implements _ApplePayParams {
             (identical(other.request, request) || other.request == request));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -3517,7 +3675,9 @@ class _$ApplePayParamsImpl implements _ApplePayParams {
       couponCode,
       request);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApplePayParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApplePayParamsImplCopyWith<_$ApplePayParamsImpl> get copyWith =>
@@ -3551,66 +3711,68 @@ abstract class _ApplePayParams implements ApplePayParams {
   factory _ApplePayParams.fromJson(Map<String, dynamic> json) =
       _$ApplePayParamsImpl.fromJson;
 
-  @override
-
   /// ISO 3166-1 alpha-2 country code where the transaction is processed.
-  String get merchantCountryCode;
   @override
+  String get merchantCountryCode;
 
   /// ISO 4217 alphabetic currency code.
-  String get currencyCode;
   @override
+  String get currencyCode;
 
   /// The SDK accepts Amex, Mastercard, Visa, and Discover for Apple Pay by default. Set this property to enable other card networks, for example: ["JCB", "barcode", "chinaUnionPay"]. A full list of possible networks can be found at https://developer.apple.com/documentation/passkit/pkpaymentnetwork.
-  List<String>? get additionalEnabledNetworks;
   @override
+  List<String>? get additionalEnabledNetworks;
 
   /// The list of items that describe a purchase. For example: total, tax, discount, and grand total.
-  List<ApplePayCartSummaryItem> get cartItems;
   @override
+  List<ApplePayCartSummaryItem> get cartItems;
 
   /// The list of fields that you need for a shipping contact in order to process the transaction. If provided, you must implement the PlatformPayButton component's `onShippingContactSelected` callback and call `updatePlatformPaySheet` from there.
-  List<ApplePayContactFieldsType>? get requiredShippingAddressFields;
   @override
+  List<ApplePayContactFieldsType>? get requiredShippingAddressFields;
 
   /// The list of fields that you need for a billing contact in order to process the transaction.
-  List<ApplePayContactFieldsType>? get requiredBillingContactFields;
   @override
+  List<ApplePayContactFieldsType>? get requiredBillingContactFields;
 
   /// An array of shipping method objects that describe the supported shipping methods. If provided, you must implement the PlatformPayButton component's `onShippingMethodSelected` callback and call `updatePlatformPaySheet` from there.
-  List<ApplePayShippingMethod>? get shippingMethods;
   @override
+  List<ApplePayShippingMethod>? get shippingMethods;
 
   /// Set the payment capabilities you support. If set, 3DS is required.
-  List<ApplePayMerchantCapability>? get merchantCapabilities;
   @override
+  List<ApplePayMerchantCapability>? get merchantCapabilities;
 
   /// An optional value that indicates how to ship purchased items. Defaults to 'Shipping'.
-  ApplePayShippingType? get shippingType;
   @override
+  ApplePayShippingType? get shippingType;
 
   /// A list of two-letter ISO 3166 country codes for limiting payment to cards from specific countries or regions.
-  List<String>? get supportedCountries;
   @override
+  List<String>? get supportedCountries;
 
   /// Enables support for coupon codes in the Apple Pay button.
   /// When this is set to true it shows the coupon code field and if [couponCode]
   /// has a value it will display the value as default
   ///
   /// Supported on iOS 15 and higher.
-  bool? get supportsCouponCode;
   @override
+  bool? get supportsCouponCode;
 
   /// Default coupon code display in the apple pay sheet
-  String? get couponCode;
   @override
+  String? get couponCode;
 
   /// Use this to support different types of payment request.
   ///
   /// Only supported on iOS 16 and higher.
-  PaymentRequestType? get request;
   @override
-  @JsonKey(ignore: true)
+  PaymentRequestType? get request;
+
+  /// Create a copy of ApplePayParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApplePayParamsImplCopyWith<_$ApplePayParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -3649,8 +3811,12 @@ mixin _$GooglePayParams {
   /// Defaults to true.
   bool? get allowCreditCards => throw _privateConstructorUsedError;
 
+  /// Serializes this GooglePayParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GooglePayParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GooglePayParamsCopyWith<GooglePayParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -3680,6 +3846,8 @@ class _$GooglePayParamsCopyWithImpl<$Res, $Val extends GooglePayParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GooglePayParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3744,6 +3912,8 @@ class __$$GooglePayParamsImplCopyWithImpl<$Res>
       _$GooglePayParamsImpl _value, $Res Function(_$GooglePayParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GooglePayParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3856,12 +4026,14 @@ class _$GooglePayParamsImpl implements _GooglePayParams {
                 other.allowCreditCards == allowCreditCards));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, testEnv, merchantCountryCode,
       currencyCode, merchantName, isEmailRequired, allowCreditCards);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GooglePayParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GooglePayParamsImplCopyWith<_$GooglePayParamsImpl> get copyWith =>
@@ -3888,41 +4060,44 @@ abstract class _GooglePayParams implements GooglePayParams {
   factory _GooglePayParams.fromJson(Map<String, dynamic> json) =
       _$GooglePayParamsImpl.fromJson;
 
-  @override
-  /**
+/**
    * Set to true to run in a test environment with relaxed application / merchant requirements. This environment is suggested for early development and for easily testing SDK.
       - Does not require the application to be uploaded to the Google Play Store.
       - Does not require a Google Pay Developer Profile.
       - It uses production data, but at the end of the transaction you will receive a fake and non chargeable payment credential.
       - The user will see a warning message that the app is not recognized/verified.
    */
-  bool get testEnv;
   @override
+  bool get testEnv;
 
   /// ISO 3166-1 alpha-2 country code where the transaction is processed.
-  String get merchantCountryCode;
   @override
+  String get merchantCountryCode;
 
   /// ISO 4217 alphabetic currency code.
-  String get currencyCode;
   @override
+  String get currencyCode;
 
   /// Merchant name, displayed in the Google Pay sheet.
-  String? get merchantName;
   @override
+  String? get merchantName;
 
   /// Set to true to request an email address.
   ///
   /// Defaults to false.
-  bool? get isEmailRequired;
   @override
+  bool? get isEmailRequired;
 
   /// Set to false if you don't support credit cards.
   ///
   /// Defaults to true.
-  bool? get allowCreditCards;
   @override
-  @JsonKey(ignore: true)
+  bool? get allowCreditCards;
+
+  /// Create a copy of GooglePayParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GooglePayParamsImplCopyWith<_$GooglePayParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -3951,8 +4126,12 @@ mixin _$GooglePayPaymentMethodParams {
   GooglePayShippingAddressConfig? get shippingAddressConfig =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this GooglePayPaymentMethodParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GooglePayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GooglePayPaymentMethodParamsCopyWith<GooglePayPaymentMethodParams>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3986,6 +4165,8 @@ class _$GooglePayPaymentMethodParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GooglePayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4014,6 +4195,8 @@ class _$GooglePayPaymentMethodParamsCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of GooglePayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $GooglePayBillingAddressConfigCopyWith<$Res>? get billingAddressConfig {
@@ -4027,6 +4210,8 @@ class _$GooglePayPaymentMethodParamsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of GooglePayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $GooglePayShippingAddressConfigCopyWith<$Res>? get shippingAddressConfig {
@@ -4072,6 +4257,8 @@ class __$$GooglePayPaymentMethodParamsImplCopyWithImpl<$Res>
       $Res Function(_$GooglePayPaymentMethodParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GooglePayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4156,12 +4343,14 @@ class _$GooglePayPaymentMethodParamsImpl
                 other.shippingAddressConfig == shippingAddressConfig));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, existingPaymentMethodRequired,
       amount, billingAddressConfig, shippingAddressConfig);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GooglePayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GooglePayPaymentMethodParamsImplCopyWith<
@@ -4189,27 +4378,29 @@ abstract class _GooglePayPaymentMethodParams
   factory _GooglePayPaymentMethodParams.fromJson(Map<String, dynamic> json) =
       _$GooglePayPaymentMethodParamsImpl.fromJson;
 
-  @override
-
   /// If true, Google Pay is considered "available" if the customer's Google Pay wallet has an existing payment method.
   ///
   /// Defaults to false.
-  bool? get existingPaymentMethodRequired;
   @override
+  bool? get existingPaymentMethodRequired;
 
   /// Total monetary value of the transaction.
   /// Provide this value in the currency’s smallest unit.
-  int get amount;
   @override
+  int get amount;
 
   /// Describes the configuration for billing address collection in the Google Pay sheet.
-  GooglePayBillingAddressConfig? get billingAddressConfig;
   @override
+  GooglePayBillingAddressConfig? get billingAddressConfig;
 
   /// Describes the configuration for shipping address collection in the Google Pay sheet.
-  GooglePayShippingAddressConfig? get shippingAddressConfig;
   @override
-  @JsonKey(ignore: true)
+  GooglePayShippingAddressConfig? get shippingAddressConfig;
+
+  /// Create a copy of GooglePayPaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GooglePayPaymentMethodParamsImplCopyWith<
           _$GooglePayPaymentMethodParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -4237,8 +4428,12 @@ mixin _$GooglePayBillingAddressConfig {
   /// Defaults to [BillingAddressFormat.MIN]
   BillingAddressFormat? get format => throw _privateConstructorUsedError;
 
+  /// Serializes this GooglePayBillingAddressConfig to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GooglePayBillingAddressConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GooglePayBillingAddressConfigCopyWith<GooglePayBillingAddressConfig>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -4268,6 +4463,8 @@ class _$GooglePayBillingAddressConfigCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GooglePayBillingAddressConfig
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4317,6 +4514,8 @@ class __$$GooglePayBillingAddressConfigImplCopyWithImpl<$Res>
       $Res Function(_$GooglePayBillingAddressConfigImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GooglePayBillingAddressConfig
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4388,12 +4587,14 @@ class _$GooglePayBillingAddressConfigImpl
             (identical(other.format, format) || other.format == format));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, isRequired, isPhoneNumberRequired, format);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GooglePayBillingAddressConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GooglePayBillingAddressConfigImplCopyWith<
@@ -4420,26 +4621,28 @@ abstract class _GooglePayBillingAddressConfig
   factory _GooglePayBillingAddressConfig.fromJson(Map<String, dynamic> json) =
       _$GooglePayBillingAddressConfigImpl.fromJson;
 
-  @override
-
   /// Set to true if billing address is required for payment.
   ///
   /// Defaults to false.
-  bool? get isRequired;
   @override
+  bool? get isRequired;
 
   /// Set to true if phone number is required for payment.
   ///
   /// Defaults to false.
-  bool? get isPhoneNumberRequired;
   @override
+  bool? get isPhoneNumberRequired;
 
   /// Defines what address fields to collect.
   ///
   /// Defaults to [BillingAddressFormat.MIN]
-  BillingAddressFormat? get format;
   @override
-  @JsonKey(ignore: true)
+  BillingAddressFormat? get format;
+
+  /// Create a copy of GooglePayBillingAddressConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GooglePayBillingAddressConfigImplCopyWith<
           _$GooglePayBillingAddressConfigImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -4467,8 +4670,12 @@ mixin _$GooglePayShippingAddressConfig {
   /// Defaults to all shipping address countries.
   List<String>? get allowedCountryCodes => throw _privateConstructorUsedError;
 
+  /// Serializes this GooglePayShippingAddressConfig to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GooglePayShippingAddressConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GooglePayShippingAddressConfigCopyWith<GooglePayShippingAddressConfig>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -4498,6 +4705,8 @@ class _$GooglePayShippingAddressConfigCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GooglePayShippingAddressConfig
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4547,6 +4756,8 @@ class __$$GooglePayShippingAddressConfigImplCopyWithImpl<$Res>
       $Res Function(_$GooglePayShippingAddressConfigImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GooglePayShippingAddressConfig
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4634,7 +4845,7 @@ class _$GooglePayShippingAddressConfigImpl
                 .equals(other._allowedCountryCodes, _allowedCountryCodes));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -4642,7 +4853,9 @@ class _$GooglePayShippingAddressConfigImpl
       isPhoneNumberRequired,
       const DeepCollectionEquality().hash(_allowedCountryCodes));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GooglePayShippingAddressConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GooglePayShippingAddressConfigImplCopyWith<
@@ -4669,26 +4882,28 @@ abstract class _GooglePayShippingAddressConfig
   factory _GooglePayShippingAddressConfig.fromJson(Map<String, dynamic> json) =
       _$GooglePayShippingAddressConfigImpl.fromJson;
 
-  @override
-
   /// Set to true if shipping address is required for payment.
   ///
   /// Defaults to false
-  bool? get isRequired;
   @override
+  bool? get isRequired;
 
   /// Set to true if phone number is required for payment.
   ///
   /// Defaults to false.
-  bool? get isPhoneNumberRequired;
   @override
+  bool? get isPhoneNumberRequired;
 
   /// List of ISO 3166-1 alpha-2 country code values of the countries where shipping is allowed.
   ///
   /// Defaults to all shipping address countries.
-  List<String>? get allowedCountryCodes;
   @override
-  @JsonKey(ignore: true)
+  List<String>? get allowedCountryCodes;
+
+  /// Create a copy of GooglePayShippingAddressConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GooglePayShippingAddressConfigImplCopyWith<
           _$GooglePayShippingAddressConfigImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -4802,6 +5017,8 @@ mixin _$PaymentRequestType {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this PaymentRequestType to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -4821,6 +5038,9 @@ class _$PaymentRequestTypeCopyWithImpl<$Res, $Val extends PaymentRequestType>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PaymentRequestType
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -4849,6 +5069,8 @@ class __$$PaymentRequestTypeRecurringImplCopyWithImpl<$Res>
       $Res Function(_$PaymentRequestTypeRecurringImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentRequestType
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4961,7 +5183,7 @@ class _$PaymentRequestTypeRecurringImpl
                 other.tokenNotificationURL == tokenNotificationURL));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -4972,7 +5194,9 @@ class _$PaymentRequestTypeRecurringImpl
       billingAgreement,
       tokenNotificationURL);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentRequestType
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentRequestTypeRecurringImplCopyWith<_$PaymentRequestTypeRecurringImpl>
@@ -5138,7 +5362,10 @@ abstract class _PaymentRequestTypeRecurring implements PaymentRequestType {
   ///
   /// For more info see receiving and handling merchant token notifications
   String? get tokenNotificationURL;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentRequestType
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentRequestTypeRecurringImplCopyWith<_$PaymentRequestTypeRecurringImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -5170,6 +5397,8 @@ class __$$PaymentRequestTypeReloadImplCopyWithImpl<$Res>
       $Res Function(_$PaymentRequestTypeReloadImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentRequestType
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5291,7 +5520,7 @@ class _$PaymentRequestTypeReloadImpl implements _PaymentRequestTypeReload {
                 other.tokenNotificationURL == tokenNotificationURL));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -5303,7 +5532,9 @@ class _$PaymentRequestTypeReloadImpl implements _PaymentRequestTypeReload {
       billingAgreement,
       tokenNotificationURL);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentRequestType
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentRequestTypeReloadImplCopyWith<_$PaymentRequestTypeReloadImpl>
@@ -5473,7 +5704,10 @@ abstract class _PaymentRequestTypeReload implements PaymentRequestType {
   ///
   /// For more info see receiving and handling merchant token notifications
   String? get tokenNotificationURL;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentRequestType
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentRequestTypeReloadImplCopyWith<_$PaymentRequestTypeReloadImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -5498,6 +5732,8 @@ class __$$PaymentRequestTypeMultiMerchantImplCopyWithImpl<$Res>
       $Res Function(_$PaymentRequestTypeMultiMerchantImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentRequestType
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5551,12 +5787,14 @@ class _$PaymentRequestTypeMultiMerchantImpl
                 .equals(other._merchants, _merchants));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_merchants));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentRequestType
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentRequestTypeMultiMerchantImplCopyWith<
@@ -5696,7 +5934,10 @@ abstract class _PaymentRequestTypeMultiMerchant implements PaymentRequestType {
       _$PaymentRequestTypeMultiMerchantImpl.fromJson;
 
   List<ApplePayMultiMerchant> get merchants;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentRequestType
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentRequestTypeMultiMerchantImplCopyWith<
           _$PaymentRequestTypeMultiMerchantImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -5724,8 +5965,12 @@ mixin _$ApplePayMultiMerchant {
   /// Amount to authorize for the payment token
   String get amount => throw _privateConstructorUsedError;
 
+  /// Serializes this ApplePayMultiMerchant to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApplePayMultiMerchant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ApplePayMultiMerchantCopyWith<ApplePayMultiMerchant> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -5755,6 +6000,8 @@ class _$ApplePayMultiMerchantCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ApplePayMultiMerchant
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5815,6 +6062,8 @@ class __$$ApplePayMultiMerchantImplCopyWithImpl<$Res>
       $Res Function(_$ApplePayMultiMerchantImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApplePayMultiMerchant
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5904,12 +6153,14 @@ class _$ApplePayMultiMerchantImpl implements _ApplePayMultiMerchant {
             (identical(other.amount, amount) || other.amount == amount));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, merchantIdentifier,
       externalIdentifier, merchantName, merchantDomain, amount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApplePayMultiMerchant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApplePayMultiMerchantImplCopyWith<_$ApplePayMultiMerchantImpl>
@@ -5935,28 +6186,30 @@ abstract class _ApplePayMultiMerchant implements ApplePayMultiMerchant {
   factory _ApplePayMultiMerchant.fromJson(Map<String, dynamic> json) =
       _$ApplePayMultiMerchantImpl.fromJson;
 
-  @override
-
   /// The apple pay merchant identifier
-  String get merchantIdentifier;
   @override
+  String get merchantIdentifier;
 
   /// External identifier for the merchant
-  String get externalIdentifier;
   @override
+  String get externalIdentifier;
 
   /// The merchant display name Apple pay associates with the payment token
-  String get merchantName;
   @override
+  String get merchantName;
 
   /// The merchant top level domain Apple Pay associates with teh payment token
-  String? get merchantDomain;
   @override
+  String? get merchantDomain;
 
   /// Amount to authorize for the payment token
-  String get amount;
   @override
-  @JsonKey(ignore: true)
+  String get amount;
+
+  /// Create a copy of ApplePayMultiMerchant
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApplePayMultiMerchantImplCopyWith<_$ApplePayMultiMerchantImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -6020,8 +6273,13 @@ mixin _$PlatformPayOrderDetails {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this PlatformPayOrderDetails to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PlatformPayOrderDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PlatformPayOrderDetailsCopyWith<PlatformPayOrderDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -6050,6 +6308,8 @@ class _$PlatformPayOrderDetailsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PlatformPayOrderDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -6105,6 +6365,8 @@ class __$$PlatformPayOrderDetailsImplCopyWithImpl<$Res>
       $Res Function(_$PlatformPayOrderDetailsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlatformPayOrderDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -6183,12 +6445,14 @@ class _$PlatformPayOrderDetailsImpl implements _PlatformPayOrderDetails {
                 other.authenticationToken == authenticationToken));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, orderTypeIdentifier,
       orderIdentifier, webServiceUrl, authenticationToken);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlatformPayOrderDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlatformPayOrderDetailsImplCopyWith<_$PlatformPayOrderDetailsImpl>
@@ -6282,24 +6546,26 @@ abstract class _PlatformPayOrderDetails implements PlatformPayOrderDetails {
   factory _PlatformPayOrderDetails.fromJson(Map<String, dynamic> json) =
       _$PlatformPayOrderDetailsImpl.fromJson;
 
-  @override
-
   /// eg: "com.myapp.order"
-  String get orderTypeIdentifier;
   @override
+  String get orderTypeIdentifier;
 
   /// eg: "ABC123-AAAA-1111"
-  String get orderIdentifier;
   @override
+  String get orderIdentifier;
 
   /// eg: "https://my-backend.example.com/apple-order-tracking-backend"
-  String get webServiceUrl;
   @override
+  String get webServiceUrl;
 
   /// eg: "abc123"
-  String get authenticationToken;
   @override
-  @JsonKey(ignore: true)
+  String get authenticationToken;
+
+  /// Create a copy of PlatformPayOrderDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlatformPayOrderDetailsImplCopyWith<_$PlatformPayOrderDetailsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -6355,8 +6621,12 @@ mixin _$PlatformPayWebPaymentRequestCreateOptions {
   List<PlatformPayWebWalletType> get disableWallets =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this PlatformPayWebPaymentRequestCreateOptions to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PlatformPayWebPaymentRequestCreateOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PlatformPayWebPaymentRequestCreateOptionsCopyWith<
           PlatformPayWebPaymentRequestCreateOptions>
       get copyWith => throw _privateConstructorUsedError;
@@ -6397,6 +6667,8 @@ class _$PlatformPayWebPaymentRequestCreateOptionsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PlatformPayWebPaymentRequestCreateOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -6455,6 +6727,8 @@ class _$PlatformPayWebPaymentRequestCreateOptionsCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of PlatformPayWebPaymentRequestCreateOptions
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PlatformPayWebPaymentItemCopyWith<$Res> get total {
@@ -6499,6 +6773,8 @@ class __$$PaymentRequestCreateOptionsImplCopyWithImpl<$Res>
       $Res Function(_$PaymentRequestCreateOptionsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlatformPayWebPaymentRequestCreateOptions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -6692,7 +6968,7 @@ class _$PaymentRequestCreateOptionsImpl
                 .equals(other._disableWallets, _disableWallets));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -6707,7 +6983,9 @@ class _$PaymentRequestCreateOptionsImpl
       const DeepCollectionEquality().hash(_shippingOptions),
       const DeepCollectionEquality().hash(_disableWallets));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlatformPayWebPaymentRequestCreateOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentRequestCreateOptionsImplCopyWith<_$PaymentRequestCreateOptionsImpl>
@@ -6740,24 +7018,22 @@ abstract class _PaymentRequestCreateOptions
   factory _PaymentRequestCreateOptions.fromJson(Map<String, dynamic> json) =
       _$PaymentRequestCreateOptionsImpl.fromJson;
 
-  @override
-
   /// The two-letter country code of your Stripe account (e.g., US).
-  String get country;
   @override
+  String get country;
 
   /// Three character currency code (e.g., usd).
-  String get currency;
   @override
+  String get currency;
 
   /// A PaymentItem object. This PaymentItem is shown to the customer in the browser’s payment interface.
-  PlatformPayWebPaymentItem get total;
   @override
+  PlatformPayWebPaymentItem get total;
 
   /// An array of PaymentItem objects. These objects are shown as line items in the browser’s payment interface.
   /// Note that the sum of the line item amounts does not need to add up to the total amount above.
-  List<PlatformPayWebPaymentItem> get displayItems;
   @override
+  List<PlatformPayWebPaymentItem> get displayItems;
 
   /// By default, the browser‘s payment interface only asks the customer for actual payment information. A customer
   /// name can be collected by setting this option to true. This collected name will appears in the PaymentResponse object.
@@ -6765,33 +7041,37 @@ abstract class _PaymentRequestCreateOptions
   ///  We highly recommend you collect name as this also results in collection of billing address for Apple Pay.
   ///  The billing address can be used to perform address verification and block fraudulent payments.
   ///  For all other payment methods, the billing address is automatically collected when available.
+  @override
   bool get requestPayerName;
-  @override
 
   /// See the requestPayerName option.
+  @override
   bool get requestPayerEmail;
-  @override
 
   /// See the requestPayerName option.
-  bool get requestPayerPhone;
   @override
+  bool get requestPayerPhone;
 
   /// Collect shipping address by setting this option to true. The address appears in the PaymentResponse.
   ///
   ///  You must also supply a valid [ShippingOptions] to the shippingOptions property. This can be up front at the
   ///  time stripe.paymentRequest is called, or in response to a shippingaddresschange event using the updateWith callback.
-  bool get requestShipping;
   @override
+  bool get requestShipping;
 
   /// An array of ShippingOption objects. The first shipping option listed appears in the browser payment interface as the default option.
-  List<PlatformPayWebShippingOption> get shippingOptions;
   @override
+  List<PlatformPayWebShippingOption> get shippingOptions;
 
   /// An array of wallet strings. Can be one or more of applePay, googlePay, link, and browserCard. Use this option
   /// to disable Apple Pay, Google Pay, Link, and/or browser-saved cards.
-  List<PlatformPayWebWalletType> get disableWallets;
   @override
-  @JsonKey(ignore: true)
+  List<PlatformPayWebWalletType> get disableWallets;
+
+  /// Create a copy of PlatformPayWebPaymentRequestCreateOptions
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentRequestCreateOptionsImplCopyWith<_$PaymentRequestCreateOptionsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -6817,8 +7097,12 @@ mixin _$PlatformPayWebShippingOption {
   /// the customer enters, listen for the shippingaddresschange event.
   num get amount => throw _privateConstructorUsedError;
 
+  /// Serializes this PlatformPayWebShippingOption to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PlatformPayWebShippingOption
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PlatformPayWebShippingOptionCopyWith<PlatformPayWebShippingOption>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -6845,6 +7129,8 @@ class _$PlatformPayWebShippingOptionCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PlatformPayWebShippingOption
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -6893,6 +7179,8 @@ class __$$$ShippingOptionImplCopyWithImpl<$Res>
       _$$ShippingOptionImpl _value, $Res Function(_$$ShippingOptionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlatformPayWebShippingOption
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -6969,11 +7257,13 @@ class _$$ShippingOptionImpl implements _$ShippingOption {
             (identical(other.amount, amount) || other.amount == amount));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, label, detail, amount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlatformPayWebShippingOption
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$$ShippingOptionImplCopyWith<_$$ShippingOptionImpl> get copyWith =>
@@ -6998,26 +7288,28 @@ abstract class _$ShippingOption implements PlatformPayWebShippingOption {
   factory _$ShippingOption.fromJson(Map<String, dynamic> json) =
       _$$ShippingOptionImpl.fromJson;
 
-  @override
-
   /// A unique ID you create to keep track of this shipping option. You’ll be told the ID of the selected option
   /// on changes and on completion.
-  String get id;
   @override
+  String get id;
 
   /// A short label for this shipping option.
-  String get label;
   @override
+  String get label;
 
   /// A longer description of this shipping option.
-  String get detail;
   @override
+  String get detail;
 
   /// The amount to show for this shipping option. If the cost of this shipping option depends on the shipping address
   /// the customer enters, listen for the shippingaddresschange event.
-  num get amount;
   @override
-  @JsonKey(ignore: true)
+  num get amount;
+
+  /// Create a copy of PlatformPayWebShippingOption
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$$ShippingOptionImplCopyWith<_$$ShippingOptionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -7040,8 +7332,12 @@ mixin _$PlatformPayWebPaymentItem {
   /// prevent submission.
   bool get pending => throw _privateConstructorUsedError;
 
+  /// Serializes this PlatformPayWebPaymentItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PlatformPayWebPaymentItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PlatformPayWebPaymentItemCopyWith<PlatformPayWebPaymentItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -7066,6 +7362,8 @@ class _$PlatformPayWebPaymentItemCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PlatformPayWebPaymentItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -7109,6 +7407,8 @@ class __$$$PaymentItemImplCopyWithImpl<$Res>
       _$$PaymentItemImpl _value, $Res Function(_$$PaymentItemImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PlatformPayWebPaymentItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -7173,11 +7473,13 @@ class _$$PaymentItemImpl implements _$PaymentItem {
             (identical(other.pending, pending) || other.pending == pending));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, amount, label, pending);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PlatformPayWebPaymentItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$$PaymentItemImplCopyWith<_$$PaymentItemImpl> get copyWith =>
@@ -7200,22 +7502,24 @@ abstract class _$PaymentItem implements PlatformPayWebPaymentItem {
   factory _$PaymentItem.fromJson(Map<String, dynamic> json) =
       _$$PaymentItemImpl.fromJson;
 
-  @override
-
   /// The amount in the currency's subunit (e.g. cents, yen, etc.)
-  num get amount;
   @override
+  num get amount;
 
   /// A name that the browser shows the customer in the payment interface.
-  String get label;
   @override
+  String get label;
 
   /// If you might change this amount later (for example, after you have calculated shipping costs), set this to true.
   /// Note that browsers treat this as a hint for how to display things, and not necessarily as something that will
   /// prevent submission.
-  bool get pending;
   @override
-  @JsonKey(ignore: true)
+  bool get pending;
+
+  /// Create a copy of PlatformPayWebPaymentItem
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$$PaymentItemImplCopyWith<_$$PaymentItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

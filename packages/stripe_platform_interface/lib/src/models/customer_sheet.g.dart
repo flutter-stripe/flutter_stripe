@@ -40,6 +40,10 @@ _$CustomerSheetInitParamsImpl _$$CustomerSheetInitParamsImplFromJson(
       preferredNetworks: (json['preferredNetworks'] as List<dynamic>?)
           ?.map((e) => $enumDecode(_$CardBrandEnumMap, e))
           .toList(),
+      cardBrandAcceptance: json['cardBrandAcceptance'] == null
+          ? null
+          : CardBrandAcceptance.fromJson(
+              json['cardBrandAcceptance'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$CustomerSheetInitParamsImplToJson(
@@ -63,6 +67,7 @@ Map<String, dynamic> _$$CustomerSheetInitParamsImplToJson(
       'applePayEnabled': instance.applePayEnabled,
       'googlePayEnabled': instance.googlePayEnabled,
       'preferredNetworks': _cardBrandListToJson(instance.preferredNetworks),
+      'cardBrandAcceptance': instance.cardBrandAcceptance?.toJson(),
     };
 
 const _$ThemeModeEnumMap = {

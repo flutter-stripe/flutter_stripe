@@ -26,7 +26,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace 'com.flutter.stripe.example'
-    compileSdk 34
+    compileSdk 35
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
@@ -36,12 +36,14 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
-
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17
+    }
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.flutter.stripe.example"
         minSdkVersion 21
-        targetSdkVersion 34
+        targetSdkVersion 35
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -52,7 +54,7 @@ android {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
-   
+
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
 
         }

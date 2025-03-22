@@ -51,7 +51,7 @@ class _PlatformIcon extends StatelessWidget {
     final color = isSupported ? Colors.green[400]! : Colors.red[400]!;
     return Container(
       decoration: BoxDecoration(
-        color: isCurrent ? color : color.withOpacity(0.2),
+        color: isCurrent ? color : color.withAlpha(51),
         borderRadius: BorderRadius.circular(12),
       ),
       padding: EdgeInsets.all(8),

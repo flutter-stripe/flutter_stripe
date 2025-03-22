@@ -105,6 +105,8 @@ mixin _$NextAction {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this NextAction to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -124,6 +126,9 @@ class _$NextActionCopyWithImpl<$Res, $Val extends NextAction>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of NextAction
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -143,6 +148,8 @@ class __$$NextActionRedirectImplCopyWithImpl<$Res>
       $Res Function(_$NextActionRedirectImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NextAction
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -188,11 +195,13 @@ class _$NextActionRedirectImpl implements _NextActionRedirect {
                 other.redirectUrl == redirectUrl));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, redirectUrl);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NextAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NextActionRedirectImplCopyWith<_$NextActionRedirectImpl> get copyWith =>
@@ -310,7 +319,10 @@ abstract class _NextActionRedirect implements NextAction {
 
   /// Url to redirect to
   String? get redirectUrl;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NextAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NextActionRedirectImplCopyWith<_$NextActionRedirectImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -332,6 +344,8 @@ class __$$NextActionOxxoImplCopyWithImpl<$Res>
       _$NextActionOxxoImpl _value, $Res Function(_$NextActionOxxoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NextAction
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -403,12 +417,14 @@ class _$NextActionOxxoImpl implements _NextActionOxxo {
                 other.voucherNumber == voucherNumber));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, expiration, voucherURL, voucherNumber);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NextAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NextActionOxxoImplCopyWith<_$NextActionOxxoImpl> get copyWith =>
@@ -534,7 +550,10 @@ abstract class _NextActionOxxo implements NextAction {
 
   /// Oxxo reference number
   String? get voucherNumber;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NextAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NextActionOxxoImplCopyWith<_$NextActionOxxoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -558,6 +577,8 @@ class __$$NextActionWeChatRedirectImplCopyWithImpl<$Res>
       $Res Function(_$NextActionWeChatRedirectImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NextAction
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -603,11 +624,13 @@ class _$NextActionWeChatRedirectImpl implements _NextActionWeChatRedirect {
                 other.redirectUrl == redirectUrl));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, redirectUrl);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NextAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NextActionWeChatRedirectImplCopyWith<_$NextActionWeChatRedirectImpl>
@@ -725,7 +748,10 @@ abstract class _NextActionWeChatRedirect implements NextAction {
 
   /// Url to the Qr code.
   String? get redirectUrl;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NextAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NextActionWeChatRedirectImplCopyWith<_$NextActionWeChatRedirectImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -750,6 +776,8 @@ class __$$NextActionMicroDepositsImplCopyWithImpl<$Res>
       $Res Function(_$NextActionMicroDepositsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NextAction
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -821,12 +849,14 @@ class _$NextActionMicroDepositsImpl implements _NextActionMicroDeposits {
                 other.microdepositType == microdepositType));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, arrivalDate, redirectUrl, microdepositType);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NextAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NextActionMicroDepositsImplCopyWith<_$NextActionMicroDepositsImpl>
@@ -954,7 +984,10 @@ abstract class _NextActionMicroDeposits implements NextAction {
 
   /// The type of the microdeposit sent to the customer.
   String? get microdepositType;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NextAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NextActionMicroDepositsImplCopyWith<_$NextActionMicroDepositsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -976,6 +1009,8 @@ class __$$NextActionMultiBancoImplCopyWithImpl<$Res>
       $Res Function(_$NextActionMultiBancoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NextAction
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1021,11 +1056,13 @@ class _$NextActionMultiBancoImpl implements _NextActionMultiBanco {
                 other.voucherURL == voucherURL));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, voucherURL);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NextAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NextActionMultiBancoImplCopyWith<_$NextActionMultiBancoImpl>
@@ -1144,7 +1181,10 @@ abstract class _NextActionMultiBanco implements NextAction {
 
   /// The URL for the hosted multibanco voucher page, which allows customers to view and print an multibanco voucher.
   String? get voucherURL;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NextAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NextActionMultiBancoImplCopyWith<_$NextActionMultiBancoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

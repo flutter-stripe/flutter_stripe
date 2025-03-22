@@ -50,8 +50,12 @@ mixin _$ApplePayShippingMethod {
   /// Measured in seconds.
   int? get endDate => throw _privateConstructorUsedError;
 
+  /// Serializes this ApplePayShippingMethod to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApplePayShippingMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ApplePayShippingMethodCopyWith<ApplePayShippingMethod> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -83,6 +87,8 @@ class _$ApplePayShippingMethodCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ApplePayShippingMethod
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -156,6 +162,8 @@ class __$$ApplePayShippingMethodImplCopyWithImpl<$Res>
       $Res Function(_$ApplePayShippingMethodImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApplePayShippingMethod
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -274,12 +282,14 @@ class _$ApplePayShippingMethodImpl implements _ApplePayShippingMethod {
             (identical(other.endDate, endDate) || other.endDate == endDate));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, label, amount, identifier,
       isPending, detail, startDate, endDate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApplePayShippingMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApplePayShippingMethodImplCopyWith<_$ApplePayShippingMethodImpl>
@@ -307,44 +317,46 @@ abstract class _ApplePayShippingMethod implements ApplePayShippingMethod {
   factory _ApplePayShippingMethod.fromJson(Map<String, dynamic> json) =
       _$ApplePayShippingMethodImpl.fromJson;
 
-  @override
-
   ///  A short, localized description.
-  String get label;
   @override
+  String get label;
 
   /// The cost associated with this shipping option.
-  String get amount;
   @override
+  String get amount;
 
   /// A unique identifier for the shipping method.
-  String get identifier;
   @override
+  String get identifier;
 
   /// When creating items for estimates or charges whose final value is not yet known, set this to true.
   ///
   /// Defaults to false.
-  bool? get isPending;
   @override
+  bool? get isPending;
 
   ///  A user-readable description of the shipping method.
   ///
   /// For example “Ships in 24 hours.” Don't repeat content
-  String? get detail;
   @override
+  String? get detail;
 
   ///  The unix timestamp of the start date of the expected range of delivery or shipping dates for a package, or the time range when an item is available for pickup.
   ///
   /// Measured in seconds
-  int? get startDate;
   @override
+  int? get startDate;
 
   ///  The unix timestamp of the end date of the expected range of delivery or shipping dates for a package, or the time range when an item is available for pickup.
   ///
   /// Measured in seconds.
-  int? get endDate;
   @override
-  @JsonKey(ignore: true)
+  int? get endDate;
+
+  /// Create a copy of ApplePayShippingMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApplePayShippingMethodImplCopyWith<_$ApplePayShippingMethodImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -442,8 +454,13 @@ mixin _$ApplePayCartSummaryItem {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this ApplePayCartSummaryItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApplePayCartSummaryItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ApplePayCartSummaryItemCopyWith<ApplePayCartSummaryItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -468,6 +485,8 @@ class _$ApplePayCartSummaryItemCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ApplePayCartSummaryItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -509,6 +528,8 @@ class __$$ImmediateCartSummaryItemImplCopyWithImpl<$Res>
       $Res Function(_$ImmediateCartSummaryItemImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApplePayCartSummaryItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -578,11 +599,13 @@ class _$ImmediateCartSummaryItemImpl implements ImmediateCartSummaryItem {
                 other.isPending == isPending));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, label, amount, isPending);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApplePayCartSummaryItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ImmediateCartSummaryItemImplCopyWith<_$ImmediateCartSummaryItemImpl>
@@ -697,19 +720,21 @@ abstract class ImmediateCartSummaryItem implements ApplePayCartSummaryItem {
   factory ImmediateCartSummaryItem.fromJson(Map<String, dynamic> json) =
       _$ImmediateCartSummaryItemImpl.fromJson;
 
-  @override
-
   /// Short localized description of the item.
-  String get label;
   @override
+  String get label;
 
   /// The monetary amount.
+  @override
   String get amount;
 
   /// When creating items for estimates or charges whose final value is not yet known, set this to true.
   bool? get isPending;
+
+  /// Create a copy of ApplePayCartSummaryItem
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ImmediateCartSummaryItemImplCopyWith<_$ImmediateCartSummaryItemImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -734,6 +759,8 @@ class __$$DeferredSummaryItemImplCopyWithImpl<$Res>
       $Res Function(_$DeferredSummaryItemImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApplePayCartSummaryItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -803,11 +830,13 @@ class _$DeferredSummaryItemImpl implements DeferredSummaryItem {
                 other.deferredDate == deferredDate));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, label, amount, deferredDate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApplePayCartSummaryItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeferredSummaryItemImplCopyWith<_$DeferredSummaryItemImpl> get copyWith =>
@@ -922,19 +951,21 @@ abstract class DeferredSummaryItem implements ApplePayCartSummaryItem {
   factory DeferredSummaryItem.fromJson(Map<String, dynamic> json) =
       _$DeferredSummaryItemImpl.fromJson;
 
-  @override
-
   /// Short localized description of the item.
-  String get label;
   @override
+  String get label;
 
   /// The monetary amount.
+  @override
   String get amount;
 
   /// The unix timestamp of the date, in the future, of the payment. Measured in seconds.
   int get deferredDate;
+
+  /// Create a copy of ApplePayCartSummaryItem
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeferredSummaryItemImplCopyWith<_$DeferredSummaryItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -967,6 +998,8 @@ class __$$RecurringCartSummaryItemImplCopyWithImpl<$Res>
       $Res Function(_$RecurringCartSummaryItemImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApplePayCartSummaryItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1070,12 +1103,14 @@ class _$RecurringCartSummaryItemImpl implements RecurringCartSummaryItem {
             (identical(other.endDate, endDate) || other.endDate == endDate));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, label, amount, intervalUnit,
       intervalCount, startDate, endDate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApplePayCartSummaryItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RecurringCartSummaryItemImplCopyWith<_$RecurringCartSummaryItemImpl>
@@ -1196,13 +1231,12 @@ abstract class RecurringCartSummaryItem implements ApplePayCartSummaryItem {
   factory RecurringCartSummaryItem.fromJson(Map<String, dynamic> json) =
       _$RecurringCartSummaryItemImpl.fromJson;
 
-  @override
-
   /// Short localized description of the item.
-  String get label;
   @override
+  String get label;
 
   /// The monetary amount.
+  @override
   String get amount;
 
   /// The amount of time – in calendar units such as day, month, or year – that represents a fraction of the total payment interval. For example, if you set the intervalUnit to 'month' and intervalCount to 3, then the payment interval is three months.
@@ -1215,8 +1249,11 @@ abstract class RecurringCartSummaryItem implements ApplePayCartSummaryItem {
   int?
       get startDate; ////The unix timestamp of the end date. Measured in seconds. */
   int? get endDate;
+
+  /// Create a copy of ApplePayCartSummaryItem
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RecurringCartSummaryItemImplCopyWith<_$RecurringCartSummaryItemImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1255,8 +1292,12 @@ mixin _$ApplePayPresentParams {
   /// Add support for jcb as additional payment method.
   bool get jcbEnabled => throw _privateConstructorUsedError;
 
+  /// Serializes this ApplePayPresentParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApplePayPresentParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ApplePayPresentParamsCopyWith<ApplePayPresentParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1288,6 +1329,8 @@ class _$ApplePayPresentParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ApplePayPresentParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1360,6 +1403,8 @@ class __$$ApplePayPresentParamsImplCopyWithImpl<$Res>
       $Res Function(_$ApplePayPresentParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApplePayPresentParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1520,7 +1565,7 @@ class _$ApplePayPresentParamsImpl implements _ApplePayPresentParams {
                 other.jcbEnabled == jcbEnabled));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1532,7 +1577,9 @@ class _$ApplePayPresentParamsImpl implements _ApplePayPresentParams {
       const DeepCollectionEquality().hash(_shippingMethods),
       jcbEnabled);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApplePayPresentParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApplePayPresentParamsImplCopyWith<_$ApplePayPresentParamsImpl>
@@ -1560,38 +1607,40 @@ abstract class _ApplePayPresentParams implements ApplePayPresentParams {
   factory _ApplePayPresentParams.fromJson(Map<String, dynamic> json) =
       _$ApplePayPresentParamsImpl.fromJson;
 
-  @override
-
   /// Line Items of the payment request.
-  List<ApplePayCartSummaryItem> get cartItems;
   @override
+  List<ApplePayCartSummaryItem> get cartItems;
 
   /// The two letter ISO 3166 country code representing the merchant.
-  String get country;
   @override
+  String get country;
 
   /// The three letter ISO 4217 code for the currency.
-  String get currency;
   @override
+  String get currency;
 
   /// Fields that will be shown on the required shipping address section. If
   /// empty no fields will be displayed.
-  List<ApplePayContactFieldsType>? get requiredShippingAddressFields;
   @override
+  List<ApplePayContactFieldsType>? get requiredShippingAddressFields;
 
   /// Fields that will be shown on the required billing address section. If
   /// empty no fields will be displayed.
-  List<ApplePayContactFieldsType>? get requiredBillingContactFields;
   @override
+  List<ApplePayContactFieldsType>? get requiredBillingContactFields;
 
   /// List of available shipping methods for goods.
-  List<ApplePayShippingMethod>? get shippingMethods;
   @override
+  List<ApplePayShippingMethod>? get shippingMethods;
 
   /// Add support for jcb as additional payment method.
-  bool get jcbEnabled;
   @override
-  @JsonKey(ignore: true)
+  bool get jcbEnabled;
+
+  /// Create a copy of ApplePayPresentParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApplePayPresentParamsImplCopyWith<_$ApplePayPresentParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1611,8 +1660,12 @@ mixin _$ApplePayErrorAddressField {
   /// Defaults to error in the stripe sdk.
   String? get message => throw _privateConstructorUsedError;
 
+  /// Serializes this ApplePayErrorAddressField to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApplePayErrorAddressField
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ApplePayErrorAddressFieldCopyWith<ApplePayErrorAddressField> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1637,6 +1690,8 @@ class _$ApplePayErrorAddressFieldCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ApplePayErrorAddressField
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1678,6 +1733,8 @@ class __$$ApplePayErrorAddressFieldImplCopyWithImpl<$Res>
       $Res Function(_$ApplePayErrorAddressFieldImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApplePayErrorAddressField
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1730,11 +1787,13 @@ class _$ApplePayErrorAddressFieldImpl implements _ApplePayErrorAddressField {
             (identical(other.message, message) || other.message == message));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, field, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApplePayErrorAddressField
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApplePayErrorAddressFieldImplCopyWith<_$ApplePayErrorAddressFieldImpl>
@@ -1757,18 +1816,20 @@ abstract class _ApplePayErrorAddressField implements ApplePayErrorAddressField {
   factory _ApplePayErrorAddressField.fromJson(Map<String, dynamic> json) =
       _$ApplePayErrorAddressFieldImpl.fromJson;
 
-  @override
-
   /// Address field that is affected by the error
-  ApplePayContactFieldsType get field;
   @override
+  ApplePayContactFieldsType get field;
 
   /// The error message that will be shown when it is invalid
   ///
   /// Defaults to error in the stripe sdk.
-  String? get message;
   @override
-  @JsonKey(ignore: true)
+  String? get message;
+
+  /// Create a copy of ApplePayErrorAddressField
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApplePayErrorAddressFieldImplCopyWith<_$ApplePayErrorAddressFieldImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1786,8 +1847,12 @@ mixin _$ApplePayContactName {
   String? get middleName => throw _privateConstructorUsedError;
   String? get nickname => throw _privateConstructorUsedError;
 
+  /// Serializes this ApplePayContactName to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApplePayContactName
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ApplePayContactNameCopyWith<ApplePayContactName> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1817,6 +1882,8 @@ class _$ApplePayContactNameCopyWithImpl<$Res, $Val extends ApplePayContactName>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ApplePayContactName
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1881,6 +1948,8 @@ class __$$ApplePayContactNameImplCopyWithImpl<$Res>
       $Res Function(_$ApplePayContactNameImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApplePayContactName
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1972,12 +2041,14 @@ class _$ApplePayContactNameImpl implements _ApplePayContactName {
                 other.nickname == nickname));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, familyName, namePrefix,
       nameSuffix, givenName, middleName, nickname);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApplePayContactName
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApplePayContactNameImplCopyWith<_$ApplePayContactNameImpl> get copyWith =>
@@ -2016,8 +2087,11 @@ abstract class _ApplePayContactName implements ApplePayContactName {
   String? get middleName;
   @override
   String? get nickname;
+
+  /// Create a copy of ApplePayContactName
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApplePayContactNameImplCopyWith<_$ApplePayContactNameImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2038,8 +2112,12 @@ mixin _$ApplePayPostalAddress {
   String? get subAdministrativeArea => throw _privateConstructorUsedError;
   String? get subLocality => throw _privateConstructorUsedError;
 
+  /// Serializes this ApplePayPostalAddress to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApplePayPostalAddress
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ApplePayPostalAddressCopyWith<ApplePayPostalAddress> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2072,6 +2150,8 @@ class _$ApplePayPostalAddressCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ApplePayPostalAddress
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2150,6 +2230,8 @@ class __$$ApplePayPostalAddressImplCopyWithImpl<$Res>
       $Res Function(_$ApplePayPostalAddressImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApplePayPostalAddress
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2257,12 +2339,14 @@ class _$ApplePayPostalAddressImpl implements _ApplePayPostalAddress {
                 other.subLocality == subLocality));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, city, country, postalCode, state,
       street, isoCountryCode, subAdministrativeArea, subLocality);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApplePayPostalAddress
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApplePayPostalAddressImplCopyWith<_$ApplePayPostalAddressImpl>
@@ -2307,8 +2391,11 @@ abstract class _ApplePayPostalAddress implements ApplePayPostalAddress {
   String? get subAdministrativeArea;
   @override
   String? get subLocality;
+
+  /// Create a copy of ApplePayPostalAddress
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApplePayPostalAddressImplCopyWith<_$ApplePayPostalAddressImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

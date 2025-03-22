@@ -55,8 +55,12 @@ mixin _$ThreeDSecureConfigurationParams {
   ThreeDSecureButtonThemeData? get resendButton =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this ThreeDSecureConfigurationParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ThreeDSecureConfigurationParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ThreeDSecureConfigurationParamsCopyWith<ThreeDSecureConfigurationParams>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -101,6 +105,8 @@ class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ThreeDSecureConfigurationParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,6 +160,8 @@ class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of ThreeDSecureConfigurationParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ThreeDSecureNavigationBarThemeDataCopyWith<$Res> get navigationBar {
@@ -163,6 +171,8 @@ class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of ThreeDSecureConfigurationParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ThreeDSecureLabelThemeDataCopyWith<$Res>? get label {
@@ -175,6 +185,8 @@ class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of ThreeDSecureConfigurationParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ThreeDSecureTextFieldThemeDataCopyWith<$Res>? get textField {
@@ -188,6 +200,8 @@ class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of ThreeDSecureConfigurationParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ThreeDSecureButtonThemeDataCopyWith<$Res>? get submitButton {
@@ -201,6 +215,8 @@ class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of ThreeDSecureConfigurationParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ThreeDSecureButtonThemeDataCopyWith<$Res>? get cancelButton {
@@ -214,6 +230,8 @@ class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of ThreeDSecureConfigurationParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ThreeDSecureButtonThemeDataCopyWith<$Res>? get nextButton {
@@ -227,6 +245,8 @@ class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of ThreeDSecureConfigurationParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ThreeDSecureButtonThemeDataCopyWith<$Res>? get continueButton {
@@ -240,6 +260,8 @@ class _$ThreeDSecureConfigurationParamsCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of ThreeDSecureConfigurationParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ThreeDSecureButtonThemeDataCopyWith<$Res>? get resendButton {
@@ -302,6 +324,8 @@ class __$$ThreeDSecureConfigurationParamsImplCopyWithImpl<$Res>
       $Res Function(_$ThreeDSecureConfigurationParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ThreeDSecureConfigurationParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -440,7 +464,7 @@ class _$ThreeDSecureConfigurationParamsImpl
                 other.resendButton == resendButton));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -454,7 +478,9 @@ class _$ThreeDSecureConfigurationParamsImpl
       continueButton,
       resendButton);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ThreeDSecureConfigurationParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ThreeDSecureConfigurationParamsImplCopyWith<
@@ -487,44 +513,46 @@ abstract class _ThreeDSecureConfigurationParams
   factory _ThreeDSecureConfigurationParams.fromJson(Map<String, dynamic> json) =
       _$ThreeDSecureConfigurationParamsImpl.fromJson;
 
-  @override
-
   /// Styling for the 3d secure navigation bar.
-  ThreeDSecureNavigationBarThemeData get navigationBar;
   @override
+  ThreeDSecureNavigationBarThemeData get navigationBar;
 
   /// Desired timeout in milliseconds.
-  int? get timeout;
   @override
+  int? get timeout;
 
   /// Styling for the 3d secure label.
-  ThreeDSecureLabelThemeData? get label;
   @override
+  ThreeDSecureLabelThemeData? get label;
 
   /// Styling for the 3d secure textfield.
-  ThreeDSecureTextFieldThemeData? get textField;
   @override
+  ThreeDSecureTextFieldThemeData? get textField;
 
   /// Styling for the 3d secure confirmation button.
-  ThreeDSecureButtonThemeData? get submitButton;
   @override
+  ThreeDSecureButtonThemeData? get submitButton;
 
   /// Styling for the 3d secure cancel button.
-  ThreeDSecureButtonThemeData? get cancelButton;
   @override
+  ThreeDSecureButtonThemeData? get cancelButton;
 
   /// Styling for the 3d secure next button.
-  ThreeDSecureButtonThemeData? get nextButton;
   @override
+  ThreeDSecureButtonThemeData? get nextButton;
 
   /// Styling for the 3d secure continue button.
-  ThreeDSecureButtonThemeData? get continueButton;
   @override
+  ThreeDSecureButtonThemeData? get continueButton;
 
   /// Styling for the 3d secure resend button.
-  ThreeDSecureButtonThemeData? get resendButton;
   @override
-  @JsonKey(ignore: true)
+  ThreeDSecureButtonThemeData? get resendButton;
+
+  /// Create a copy of ThreeDSecureConfigurationParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ThreeDSecureConfigurationParamsImplCopyWith<
           _$ThreeDSecureConfigurationParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -555,8 +583,12 @@ mixin _$ThreeDSecureNavigationBarThemeData {
   /// Font size of header text.
   double? get textFontSize => throw _privateConstructorUsedError;
 
+  /// Serializes this ThreeDSecureNavigationBarThemeData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ThreeDSecureNavigationBarThemeData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ThreeDSecureNavigationBarThemeDataCopyWith<
           ThreeDSecureNavigationBarThemeData>
       get copyWith => throw _privateConstructorUsedError;
@@ -590,6 +622,8 @@ class _$ThreeDSecureNavigationBarThemeDataCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ThreeDSecureNavigationBarThemeData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -657,6 +691,8 @@ class __$$ThreeDSecureNavigationBarThemeDataImplCopyWithImpl<$Res>
       $Res Function(_$ThreeDSecureNavigationBarThemeDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ThreeDSecureNavigationBarThemeData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -761,12 +797,14 @@ class _$ThreeDSecureNavigationBarThemeDataImpl
                 other.textFontSize == textFontSize));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, headerText, buttonText,
       textColor, statusBarColor, backgroundColor, textFontSize);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ThreeDSecureNavigationBarThemeData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ThreeDSecureNavigationBarThemeDataImplCopyWith<
@@ -796,32 +834,34 @@ abstract class _ThreeDSecureNavigationBarThemeData
           Map<String, dynamic> json) =
       _$ThreeDSecureNavigationBarThemeDataImpl.fromJson;
 
-  @override
-
   /// Localised text of the header.
-  String? get headerText;
   @override
+  String? get headerText;
 
   /// localised text of the button
-  String? get buttonText;
   @override
+  String? get buttonText;
 
   /// Color in hex to display navigation bar header text.
-  String? get textColor;
   @override
+  String? get textColor;
 
   /// Color in hex for the status bar.
-  String? get statusBarColor;
   @override
+  String? get statusBarColor;
 
   /// Color in hex to display navigation bar background.
-  String? get backgroundColor;
   @override
+  String? get backgroundColor;
 
   /// Font size of header text.
-  double? get textFontSize;
   @override
-  @JsonKey(ignore: true)
+  double? get textFontSize;
+
+  /// Create a copy of ThreeDSecureNavigationBarThemeData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ThreeDSecureNavigationBarThemeDataImplCopyWith<
           _$ThreeDSecureNavigationBarThemeDataImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -845,8 +885,12 @@ mixin _$ThreeDSecureLabelThemeData {
       throw _privateConstructorUsedError; // Font size for header.
   double? get headingFontSize => throw _privateConstructorUsedError;
 
+  /// Serializes this ThreeDSecureLabelThemeData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ThreeDSecureLabelThemeData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ThreeDSecureLabelThemeDataCopyWith<ThreeDSecureLabelThemeData>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -876,6 +920,8 @@ class _$ThreeDSecureLabelThemeDataCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ThreeDSecureLabelThemeData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -931,6 +977,8 @@ class __$$ThreeDSecureLabelThemeDataImplCopyWithImpl<$Res>
       $Res Function(_$ThreeDSecureLabelThemeDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ThreeDSecureLabelThemeData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1009,12 +1057,14 @@ class _$ThreeDSecureLabelThemeDataImpl implements _ThreeDSecureLabelThemeData {
                 other.headingFontSize == headingFontSize));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, headingTextColor, textColor, textFontSize, headingFontSize);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ThreeDSecureLabelThemeData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ThreeDSecureLabelThemeDataImplCopyWith<_$ThreeDSecureLabelThemeDataImpl>
@@ -1040,22 +1090,24 @@ abstract class _ThreeDSecureLabelThemeData
   factory _ThreeDSecureLabelThemeData.fromJson(Map<String, dynamic> json) =
       _$ThreeDSecureLabelThemeDataImpl.fromJson;
 
-  @override
-
   /// Color in hex for header text.
-  String? get headingTextColor;
   @override
+  String? get headingTextColor;
 
   /// Color in hex for label text.
-  String? get textColor;
   @override
+  String? get textColor;
 
   /// Font size for label text.
-  double? get textFontSize;
-  @override // Font size for header.
-  double? get headingFontSize;
   @override
-  @JsonKey(ignore: true)
+  double? get textFontSize; // Font size for header.
+  @override
+  double? get headingFontSize;
+
+  /// Create a copy of ThreeDSecureLabelThemeData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ThreeDSecureLabelThemeDataImplCopyWith<_$ThreeDSecureLabelThemeDataImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1082,8 +1134,12 @@ mixin _$ThreeDSecureTextFieldThemeData {
   /// Font size for the textfield text.
   double? get textFontSize => throw _privateConstructorUsedError;
 
+  /// Serializes this ThreeDSecureTextFieldThemeData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ThreeDSecureTextFieldThemeData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ThreeDSecureTextFieldThemeDataCopyWith<ThreeDSecureTextFieldThemeData>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1115,6 +1171,8 @@ class _$ThreeDSecureTextFieldThemeDataCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ThreeDSecureTextFieldThemeData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1176,6 +1234,8 @@ class __$$ThreeDSecureTextFieldThemeDataImplCopyWithImpl<$Res>
       $Res Function(_$ThreeDSecureTextFieldThemeDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ThreeDSecureTextFieldThemeData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1268,12 +1328,14 @@ class _$ThreeDSecureTextFieldThemeDataImpl
                 other.textFontSize == textFontSize));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, borderColor, borderWidth,
       cornerRadius, textColor, textFontSize);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ThreeDSecureTextFieldThemeData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ThreeDSecureTextFieldThemeDataImplCopyWith<
@@ -1301,28 +1363,30 @@ abstract class _ThreeDSecureTextFieldThemeData
   factory _ThreeDSecureTextFieldThemeData.fromJson(Map<String, dynamic> json) =
       _$ThreeDSecureTextFieldThemeDataImpl.fromJson;
 
-  @override
-
   /// Color in hex for the border
-  String? get borderColor;
   @override
+  String? get borderColor;
 
   /// Thickness of the textfield border.
-  double? get borderWidth;
   @override
+  double? get borderWidth;
 
   /// Radius for the textfield corners.
-  double? get cornerRadius;
   @override
+  double? get cornerRadius;
 
   /// Color in hex for the textfield value.
-  String? get textColor;
   @override
+  String? get textColor;
 
   /// Font size for the textfield text.
-  double? get textFontSize;
   @override
-  @JsonKey(ignore: true)
+  double? get textFontSize;
+
+  /// Create a copy of ThreeDSecureTextFieldThemeData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ThreeDSecureTextFieldThemeDataImplCopyWith<
           _$ThreeDSecureTextFieldThemeDataImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1347,8 +1411,12 @@ mixin _$ThreeDSecureButtonThemeData {
   /// Font size for the button text.
   double? get textFontSize => throw _privateConstructorUsedError;
 
+  /// Serializes this ThreeDSecureButtonThemeData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ThreeDSecureButtonThemeData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ThreeDSecureButtonThemeDataCopyWith<ThreeDSecureButtonThemeData>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1379,6 +1447,8 @@ class _$ThreeDSecureButtonThemeDataCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ThreeDSecureButtonThemeData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1434,6 +1504,8 @@ class __$$ThreeDSecureButtonThemeDataImplCopyWithImpl<$Res>
       $Res Function(_$ThreeDSecureButtonThemeDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ThreeDSecureButtonThemeData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1514,12 +1586,14 @@ class _$ThreeDSecureButtonThemeDataImpl
                 other.textFontSize == textFontSize));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, backgroundColor, cornerRadius, textColor, textFontSize);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ThreeDSecureButtonThemeData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ThreeDSecureButtonThemeDataImplCopyWith<_$ThreeDSecureButtonThemeDataImpl>
@@ -1545,24 +1619,26 @@ abstract class _ThreeDSecureButtonThemeData
   factory _ThreeDSecureButtonThemeData.fromJson(Map<String, dynamic> json) =
       _$ThreeDSecureButtonThemeDataImpl.fromJson;
 
-  @override
-
   /// Color in hex for button background
-  String? get backgroundColor;
   @override
+  String? get backgroundColor;
 
   /// Button corner radius.
-  double? get cornerRadius;
   @override
+  double? get cornerRadius;
 
   /// Color in hex for button text.
-  String? get textColor;
   @override
+  String? get textColor;
 
   /// Font size for the button text.
-  double? get textFontSize;
   @override
-  @JsonKey(ignore: true)
+  double? get textFontSize;
+
+  /// Create a copy of ThreeDSecureButtonThemeData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ThreeDSecureButtonThemeDataImplCopyWith<_$ThreeDSecureButtonThemeDataImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

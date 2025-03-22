@@ -150,7 +150,7 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   }
 
   String colorToCssString(Color color) {
-    return 'rgb(${color.red}, ${color.green}, ${color.blue})';
+    return 'rgb(${color.r}, ${color.g}, ${color.b})';
   }
 
   js.CardElementOptions createOptions() {

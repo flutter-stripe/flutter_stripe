@@ -540,6 +540,9 @@ class PaymentMethodData with _$PaymentMethodData {
 
     /// Mandata data for this paymentmethod.
     MandateData? mandateData,
+
+    /// Metadata for this payment method
+    Map<String, String>? metadata,
   }) = _PaymentMethodData;
 
   factory PaymentMethodData.fromJson(Map<String, dynamic> json) =>
@@ -563,6 +566,9 @@ class PaymentMethodDataCardFromToken with _$PaymentMethodDataCardFromToken {
 
     /// Mandata data for this paymentmethod.
     MandateData? mandateData,
+
+    /// Metadata for this payment method
+    Map<String, String>? metadata,
   }) = _PaymentMethodDataCardFromToken;
 
   factory PaymentMethodDataCardFromToken.fromJson(Map<String, dynamic> json) =>
@@ -589,6 +595,9 @@ class PaymentMethodDataCardFromMethod with _$PaymentMethodDataCardFromMethod {
 
     /// Mandata data for this paymentmethod.
     MandateData? mandateData,
+
+    /// Metadata for this payment method
+    Map<String, String>? metadata,
   }) = _PaymentMethodDataCardFromMethod;
 
   factory PaymentMethodDataCardFromMethod.fromJson(Map<String, dynamic> json) =>
@@ -615,6 +624,9 @@ class PaymentMethodDataIdeal with _$PaymentMethodDataIdeal {
 
     /// Mandata data for this paymentmethod.
     MandateData? mandateData,
+
+    /// Metadata for this payment method
+    Map<String, String>? metadata,
   }) = _PaymentMethodDataIdeal;
 
   factory PaymentMethodDataIdeal.fromJson(Map<String, dynamic> json) =>
@@ -638,6 +650,9 @@ class PaymentMethodDataAubecs with _$PaymentMethodDataAubecs {
 
     /// Mandata data for this paymentmethod.
     MandateData? mandateData,
+
+    /// Metadata for this payment method
+    Map<String, String>? metadata,
   }) = _PaymentMethodDataAubecs;
 
   factory PaymentMethodDataAubecs.fromJson(Map<String, dynamic> json) =>
@@ -661,6 +676,9 @@ class PaymentMethodDataFpx with _$PaymentMethodDataFpx {
 
     /// Mandata data for this paymentmethod.
     MandateData? mandateData,
+
+    /// Metadata for this payment method
+    Map<String, String>? metadata,
   }) = _PaymentMethodDataFpx;
 
   factory PaymentMethodDataFpx.fromJson(Map<String, dynamic> json) =>
@@ -684,6 +702,9 @@ class PaymentMethodDataSofort with _$PaymentMethodDataSofort {
 
     /// Mandata data for this paymentmethod.
     MandateData? mandateData,
+
+    /// Metadata for this payment method
+    Map<String, String>? metadata,
   }) = _PaymentMethodDataSofort;
 
   factory PaymentMethodDataSofort.fromJson(Map<String, dynamic> json) =>
@@ -707,6 +728,9 @@ class PaymentMethodDataSepa with _$PaymentMethodDataSepa {
 
     /// Mandata data for this paymentmethod.
     MandateData? mandateData,
+
+    /// Metadata for this payment method
+    Map<String, String>? metadata,
   }) = _PaymentMethodDataSepa;
 
   factory PaymentMethodDataSepa.fromJson(Map<String, dynamic> json) =>
@@ -727,6 +751,9 @@ class PaymentMethodDataAfterPay with _$PaymentMethodDataAfterPay {
 
     /// Mandata data for this paymentmethod.
     MandateData? mandateData,
+
+    /// Metadata for this payment method
+    Map<String, String>? metadata,
   }) = _PaymentMethodDataAfterPay;
 
   factory PaymentMethodDataAfterPay.fromJson(Map<String, dynamic> json) =>
@@ -759,6 +786,9 @@ class PaymentMethodDataUsBank with _$PaymentMethodDataUsBank {
 
     /// Mandata data for this paymentmethod.
     MandateData? mandateData,
+
+    /// Metadata for this payment method
+    Map<String, String>? metadata,
   }) = _PaymentMethodDataUsBank;
 
   factory PaymentMethodDataUsBank.fromJson(Map<String, dynamic> json) =>
