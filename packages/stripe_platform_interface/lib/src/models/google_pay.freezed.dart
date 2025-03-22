@@ -33,8 +33,12 @@ mixin _$PresentGooglePayParams {
   /// For more details see: https://developers.google.com/pay/api/android/reference/request-objects#TransactionInfo .
   String? get currencyCode => throw _privateConstructorUsedError;
 
+  /// Serializes this PresentGooglePayParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PresentGooglePayParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PresentGooglePayParamsCopyWith<PresentGooglePayParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,6 +63,8 @@ class _$PresentGooglePayParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PresentGooglePayParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -105,6 +111,8 @@ class __$$PresentGooglePayParamsImplCopyWithImpl<$Res>
       $Res Function(_$PresentGooglePayParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PresentGooglePayParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -175,12 +183,14 @@ class _$PresentGooglePayParamsImpl implements _PresentGooglePayParams {
                 other.currencyCode == currencyCode));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, clientSecret, forSetupIntent, currencyCode);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PresentGooglePayParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PresentGooglePayParamsImplCopyWith<_$PresentGooglePayParamsImpl>
@@ -204,23 +214,25 @@ abstract class _PresentGooglePayParams implements PresentGooglePayParams {
   factory _PresentGooglePayParams.fromJson(Map<String, dynamic> json) =
       _$PresentGooglePayParamsImpl.fromJson;
 
-  @override
-
   /// The client is secret is used for handling the payment from the Client side.
-  String get clientSecret;
   @override
+  String get clientSecret;
 
   /// Determines whether to present Google Pay in order to confirm a [SetupIntent]
   /// or a [PaymentIntent].
-  bool get forSetupIntent;
   @override
+  bool get forSetupIntent;
 
   /// When forSetupIntent is `true` it is required to provide a currencyCode.
   ///
   /// For more details see: https://developers.google.com/pay/api/android/reference/request-objects#TransactionInfo .
-  String? get currencyCode;
   @override
-  @JsonKey(ignore: true)
+  String? get currencyCode;
+
+  /// Create a copy of PresentGooglePayParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PresentGooglePayParamsImplCopyWith<_$PresentGooglePayParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -257,8 +269,12 @@ mixin _$GooglePayInitParams {
   /// An optional amount to display for setup intents. Google Pay may or may not display this amount depending on its own internal logic. Defaults to 0 if none is provided.
   double? get amount => throw _privateConstructorUsedError;
 
+  /// Serializes this GooglePayInitParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GooglePayInitParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GooglePayInitParamsCopyWith<GooglePayInitParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -292,6 +308,8 @@ class _$GooglePayInitParamsCopyWithImpl<$Res, $Val extends GooglePayInitParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GooglePayInitParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -340,6 +358,8 @@ class _$GooglePayInitParamsCopyWithImpl<$Res, $Val extends GooglePayInitParams>
     ) as $Val);
   }
 
+  /// Create a copy of GooglePayInitParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BillingAddressConfigCopyWith<$Res>? get billingAddressConfig {
@@ -384,6 +404,8 @@ class __$$GooglePayInitParamsImplCopyWithImpl<$Res>
       $Res Function(_$GooglePayInitParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GooglePayInitParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -513,7 +535,7 @@ class _$GooglePayInitParamsImpl implements _GooglePayInitParams {
             (identical(other.amount, amount) || other.amount == amount));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -526,7 +548,9 @@ class _$GooglePayInitParamsImpl implements _GooglePayInitParams {
       label,
       amount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GooglePayInitParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GooglePayInitParamsImplCopyWith<_$GooglePayInitParamsImpl> get copyWith =>
@@ -555,41 +579,43 @@ abstract class _GooglePayInitParams implements GooglePayInitParams {
   factory _GooglePayInitParams.fromJson(Map<String, dynamic> json) =
       _$GooglePayInitParamsImpl.fromJson;
 
-  @override
-
   /// Merchant name
-  String get merchantName;
   @override
+  String get merchantName;
 
   /// ISO country code of the merchant
-  String get countryCode;
   @override
+  String get countryCode;
 
   /// Flag to use test environment or live environment.
-  bool get testEnv;
   @override
+  bool get testEnv;
 
   /// Configuration regarding collection of billing address,
-  BillingAddressConfig? get billingAddressConfig;
   @override
+  BillingAddressConfig? get billingAddressConfig;
 
   /// Flag to indicate wheter Google Pay should collect email of the customer.
-  bool get isEmailRequired;
   @override
+  bool get isEmailRequired;
 
   /// When `true` Google Pay is considered ready if the customers's Google Pay
   /// wallet has existing payment methods.
-  bool get existingPaymentMethodRequired;
   @override
+  bool get existingPaymentMethodRequired;
 
   /// An optional label to display with the amount. Google Pay may or may not display this label depending on its own internal logic. Defaults to a generic label if none is provided.
-  String? get label;
   @override
+  String? get label;
 
   /// An optional amount to display for setup intents. Google Pay may or may not display this amount depending on its own internal logic. Defaults to 0 if none is provided.
-  double? get amount;
   @override
-  @JsonKey(ignore: true)
+  double? get amount;
+
+  /// Create a copy of GooglePayInitParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GooglePayInitParamsImplCopyWith<_$GooglePayInitParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -611,8 +637,12 @@ mixin _$BillingAddressConfig {
   /// the transaction.
   bool? get isPhoneNumberRequired => throw _privateConstructorUsedError;
 
+  /// Serializes this BillingAddressConfig to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BillingAddressConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BillingAddressConfigCopyWith<BillingAddressConfig> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -640,6 +670,8 @@ class _$BillingAddressConfigCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BillingAddressConfig
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -686,6 +718,8 @@ class __$$BillingAddressConfigImplCopyWithImpl<$Res>
       $Res Function(_$BillingAddressConfigImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BillingAddressConfig
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -751,12 +785,14 @@ class _$BillingAddressConfigImpl implements _BillingAddressConfig {
                 other.isPhoneNumberRequired == isPhoneNumberRequired));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, isRequired, format, isPhoneNumberRequired);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BillingAddressConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BillingAddressConfigImplCopyWith<_$BillingAddressConfigImpl>
@@ -781,22 +817,24 @@ abstract class _BillingAddressConfig implements BillingAddressConfig {
   factory _BillingAddressConfig.fromJson(Map<String, dynamic> json) =
       _$BillingAddressConfigImpl.fromJson;
 
-  @override
-
   /// If `true` Google pay requires a Billing address in order to process the
   /// payment.
-  bool? get isRequired;
   @override
+  bool? get isRequired;
 
   /// Desired format
-  BillingAddressFormat? get format;
   @override
+  BillingAddressFormat? get format;
 
   /// If `true` customer needs to provide a phonenummer in order to process
   /// the transaction.
-  bool? get isPhoneNumberRequired;
   @override
-  @JsonKey(ignore: true)
+  bool? get isPhoneNumberRequired;
+
+  /// Create a copy of BillingAddressConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BillingAddressConfigImplCopyWith<_$BillingAddressConfigImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -819,8 +857,12 @@ mixin _$CreateGooglePayPaymentParams {
   /// in the smallest currency unit (e.g. cents for US dollar).
   int get amount => throw _privateConstructorUsedError;
 
+  /// Serializes this CreateGooglePayPaymentParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CreateGooglePayPaymentParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CreateGooglePayPaymentParamsCopyWith<CreateGooglePayPaymentParams>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -847,6 +889,8 @@ class _$CreateGooglePayPaymentParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CreateGooglePayPaymentParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -888,6 +932,8 @@ class __$$CreateGooglePayPaymentParamsImplCopyWithImpl<$Res>
       $Res Function(_$CreateGooglePayPaymentParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CreateGooglePayPaymentParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -947,11 +993,13 @@ class _$CreateGooglePayPaymentParamsImpl
             (identical(other.amount, amount) || other.amount == amount));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, currencyCode, amount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CreateGooglePayPaymentParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateGooglePayPaymentParamsImplCopyWith<
@@ -976,21 +1024,23 @@ abstract class _CreateGooglePayPaymentParams
   factory _CreateGooglePayPaymentParams.fromJson(Map<String, dynamic> json) =
       _$CreateGooglePayPaymentParamsImpl.fromJson;
 
-  @override
-
   /// ISO 4217 alphabetic currency code.
   ///
   /// For example: `USD`
-  String get currencyCode;
   @override
+  String get currencyCode;
 
   /// Amount intended to be collected.
   ///
   /// The amount has to be a positive zero-digit integer representing the charge
   /// in the smallest currency unit (e.g. cents for US dollar).
-  int get amount;
   @override
-  @JsonKey(ignore: true)
+  int get amount;
+
+  /// Create a copy of CreateGooglePayPaymentParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateGooglePayPaymentParamsImplCopyWith<
           _$CreateGooglePayPaymentParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1018,8 +1068,12 @@ mixin _$IsGooglePaySupportedParams {
 //NFC is required for paying in stores. Defaults to `true`. Set this to `false`
   bool get supportsTapToPay => throw _privateConstructorUsedError;
 
+  /// Serializes this IsGooglePaySupportedParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of IsGooglePaySupportedParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $IsGooglePaySupportedParamsCopyWith<IsGooglePaySupportedParams>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1048,6 +1102,8 @@ class _$IsGooglePaySupportedParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IsGooglePaySupportedParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1097,6 +1153,8 @@ class __$$IsGooglePaySupportedParamsImplCopyWithImpl<$Res>
       $Res Function(_$IsGooglePaySupportedParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IsGooglePaySupportedParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1174,12 +1232,14 @@ class _$IsGooglePaySupportedParamsImpl implements _IsGooglePaySupportedParams {
                 other.supportsTapToPay == supportsTapToPay));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, testEnv, existingPaymentMethodRequired, supportsTapToPay);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IsGooglePaySupportedParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IsGooglePaySupportedParamsImplCopyWith<_$IsGooglePaySupportedParamsImpl>
@@ -1204,25 +1264,28 @@ abstract class _IsGooglePaySupportedParams
   factory _IsGooglePaySupportedParams.fromJson(Map<String, dynamic> json) =
       _$IsGooglePaySupportedParamsImpl.fromJson;
 
-  @override
-
   /// Flag to use test environment or live environment.
   ///
   /// Defaults to `false`.
-  bool get testEnv;
   @override
+  bool get testEnv;
 
   /// When set to true Google pay is only considered ready in case the
   /// customers google Pay wallet has an existing payment method configured.
   ///
   /// Defaults to `false`.
-  bool get existingPaymentMethodRequired;
-  @override // When set to true it allow users without NFC-enabled devices to add cards to the wallet.
+  @override
+  bool
+      get existingPaymentMethodRequired; // When set to true it allow users without NFC-enabled devices to add cards to the wallet.
 //
 //NFC is required for paying in stores. Defaults to `true`. Set this to `false`
-  bool get supportsTapToPay;
   @override
-  @JsonKey(ignore: true)
+  bool get supportsTapToPay;
+
+  /// Create a copy of IsGooglePaySupportedParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IsGooglePaySupportedParamsImplCopyWith<_$IsGooglePaySupportedParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
