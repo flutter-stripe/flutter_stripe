@@ -31,6 +31,19 @@ mixin _$CollectBankAccountParams {
   /// is supported.
   PaymentMethodType get paymentMethodType => throw _privateConstructorUsedError;
 
+  /// ios only. Style options for colors in Financial connections
+  ///
+  /// By default the bank account collector will automatically choose colors based on the
+  /// user's system settings.
+  UserInterfaceStyle? get userInterfaceStyle =>
+      throw _privateConstructorUsedError;
+
+  /// An optional event listener to receive [FinancialConnectionsEvent] for
+  /// specific events during the process of a user connecting their financial accounts.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  FinancialConnectionsEventHandler? get onEvent =>
+      throw _privateConstructorUsedError;
+
   /// Serializes this CollectBankAccountParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
@@ -49,7 +62,10 @@ abstract class $CollectBankAccountParamsCopyWith<$Res> {
   @useResult
   $Res call(
       {CollectBankAccountPaymentMethodData paymentMethodData,
-      PaymentMethodType paymentMethodType});
+      PaymentMethodType paymentMethodType,
+      UserInterfaceStyle? userInterfaceStyle,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      FinancialConnectionsEventHandler? onEvent});
 
   $CollectBankAccountPaymentMethodDataCopyWith<$Res> get paymentMethodData;
 }
@@ -72,6 +88,8 @@ class _$CollectBankAccountParamsCopyWithImpl<$Res,
   $Res call({
     Object? paymentMethodData = null,
     Object? paymentMethodType = null,
+    Object? userInterfaceStyle = freezed,
+    Object? onEvent = freezed,
   }) {
     return _then(_value.copyWith(
       paymentMethodData: null == paymentMethodData
@@ -82,6 +100,14 @@ class _$CollectBankAccountParamsCopyWithImpl<$Res,
           ? _value.paymentMethodType
           : paymentMethodType // ignore: cast_nullable_to_non_nullable
               as PaymentMethodType,
+      userInterfaceStyle: freezed == userInterfaceStyle
+          ? _value.userInterfaceStyle
+          : userInterfaceStyle // ignore: cast_nullable_to_non_nullable
+              as UserInterfaceStyle?,
+      onEvent: freezed == onEvent
+          ? _value.onEvent
+          : onEvent // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionsEventHandler?,
     ) as $Val);
   }
 
@@ -108,7 +134,10 @@ abstract class _$$CollectBankAccountParamsImplCopyWith<$Res>
   @useResult
   $Res call(
       {CollectBankAccountPaymentMethodData paymentMethodData,
-      PaymentMethodType paymentMethodType});
+      PaymentMethodType paymentMethodType,
+      UserInterfaceStyle? userInterfaceStyle,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      FinancialConnectionsEventHandler? onEvent});
 
   @override
   $CollectBankAccountPaymentMethodDataCopyWith<$Res> get paymentMethodData;
@@ -131,6 +160,8 @@ class __$$CollectBankAccountParamsImplCopyWithImpl<$Res>
   $Res call({
     Object? paymentMethodData = null,
     Object? paymentMethodType = null,
+    Object? userInterfaceStyle = freezed,
+    Object? onEvent = freezed,
   }) {
     return _then(_$CollectBankAccountParamsImpl(
       paymentMethodData: null == paymentMethodData
@@ -141,6 +172,14 @@ class __$$CollectBankAccountParamsImplCopyWithImpl<$Res>
           ? _value.paymentMethodType
           : paymentMethodType // ignore: cast_nullable_to_non_nullable
               as PaymentMethodType,
+      userInterfaceStyle: freezed == userInterfaceStyle
+          ? _value.userInterfaceStyle
+          : userInterfaceStyle // ignore: cast_nullable_to_non_nullable
+              as UserInterfaceStyle?,
+      onEvent: freezed == onEvent
+          ? _value.onEvent
+          : onEvent // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionsEventHandler?,
     ));
   }
 }
@@ -151,7 +190,9 @@ class __$$CollectBankAccountParamsImplCopyWithImpl<$Res>
 class _$CollectBankAccountParamsImpl implements _CollectBankAccountParams {
   const _$CollectBankAccountParamsImpl(
       {required this.paymentMethodData,
-      this.paymentMethodType = PaymentMethodType.USBankAccount});
+      this.paymentMethodType = PaymentMethodType.USBankAccount,
+      this.userInterfaceStyle,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.onEvent});
 
   factory _$CollectBankAccountParamsImpl.fromJson(Map<String, dynamic> json) =>
       _$$CollectBankAccountParamsImplFromJson(json);
@@ -168,9 +209,22 @@ class _$CollectBankAccountParamsImpl implements _CollectBankAccountParams {
   @JsonKey()
   final PaymentMethodType paymentMethodType;
 
+  /// ios only. Style options for colors in Financial connections
+  ///
+  /// By default the bank account collector will automatically choose colors based on the
+  /// user's system settings.
+  @override
+  final UserInterfaceStyle? userInterfaceStyle;
+
+  /// An optional event listener to receive [FinancialConnectionsEvent] for
+  /// specific events during the process of a user connecting their financial accounts.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final FinancialConnectionsEventHandler? onEvent;
+
   @override
   String toString() {
-    return 'CollectBankAccountParams(paymentMethodData: $paymentMethodData, paymentMethodType: $paymentMethodType)';
+    return 'CollectBankAccountParams(paymentMethodData: $paymentMethodData, paymentMethodType: $paymentMethodType, userInterfaceStyle: $userInterfaceStyle, onEvent: $onEvent)';
   }
 
   @override
@@ -181,13 +235,16 @@ class _$CollectBankAccountParamsImpl implements _CollectBankAccountParams {
             (identical(other.paymentMethodData, paymentMethodData) ||
                 other.paymentMethodData == paymentMethodData) &&
             (identical(other.paymentMethodType, paymentMethodType) ||
-                other.paymentMethodType == paymentMethodType));
+                other.paymentMethodType == paymentMethodType) &&
+            (identical(other.userInterfaceStyle, userInterfaceStyle) ||
+                other.userInterfaceStyle == userInterfaceStyle) &&
+            (identical(other.onEvent, onEvent) || other.onEvent == onEvent));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, paymentMethodData, paymentMethodType);
+  int get hashCode => Object.hash(runtimeType, paymentMethodData,
+      paymentMethodType, userInterfaceStyle, onEvent);
 
   /// Create a copy of CollectBankAccountParams
   /// with the given fields replaced by the non-null parameter values.
@@ -209,7 +266,10 @@ class _$CollectBankAccountParamsImpl implements _CollectBankAccountParams {
 abstract class _CollectBankAccountParams implements CollectBankAccountParams {
   const factory _CollectBankAccountParams(
           {required final CollectBankAccountPaymentMethodData paymentMethodData,
-          final PaymentMethodType paymentMethodType}) =
+          final PaymentMethodType paymentMethodType,
+          final UserInterfaceStyle? userInterfaceStyle,
+          @JsonKey(includeFromJson: false, includeToJson: false)
+          final FinancialConnectionsEventHandler? onEvent}) =
       _$CollectBankAccountParamsImpl;
 
   factory _CollectBankAccountParams.fromJson(Map<String, dynamic> json) =
@@ -225,6 +285,19 @@ abstract class _CollectBankAccountParams implements CollectBankAccountParams {
   /// is supported.
   @override
   PaymentMethodType get paymentMethodType;
+
+  /// ios only. Style options for colors in Financial connections
+  ///
+  /// By default the bank account collector will automatically choose colors based on the
+  /// user's system settings.
+  @override
+  UserInterfaceStyle? get userInterfaceStyle;
+
+  /// An optional event listener to receive [FinancialConnectionsEvent] for
+  /// specific events during the process of a user connecting their financial accounts.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  FinancialConnectionsEventHandler? get onEvent;
 
   /// Create a copy of CollectBankAccountParams
   /// with the given fields replaced by the non-null parameter values.

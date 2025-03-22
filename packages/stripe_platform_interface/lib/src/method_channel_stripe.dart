@@ -507,6 +507,8 @@ class MethodChannelStripe extends StripePlatform {
       'clientSecret': clientSecret,
     });
 
+    _financialConnectionsEventHandler = params.onEvent;
+
     return ResultParser<PaymentIntent>(
             parseJson: (json) => PaymentIntent.fromJson(json))
         .parse(result: result!, successResultKey: 'paymentIntent');

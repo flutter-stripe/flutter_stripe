@@ -110,6 +110,13 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// The list of preferred networks that should be used to process payments made with a co-branded card.
     /// This value will only be used if your user hasn't selected a network themselves.
     @JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks,
+
+    /// By default, PaymentSheet will accept all supported cards by Stripe.
+    /// You can specify card brands PaymentSheet should block or allow payment for by providing an array of those card brands.
+    ///
+    /// Note: This is only a client-side solution.
+    ///Note: Card brand filtering is not currently supported in Link.
+    CardBrandAcceptance? cardBrandAcceptance,
   }) = _SetupParameters;
 
   factory SetupPaymentSheetParameters.fromJson(Map<String, dynamic> json) =>
@@ -581,4 +588,62 @@ List<int> _cardBrandListToJson(List<CardBrand>? list) {
     return [];
   }
   return list.map((e) => e.brandValue).toList();
+}
+
+/// Card brand categories that can be allowed or disallowed
+enum CardBrandCategory {
+  /// Visa branded cards
+  visa,
+
+  /// Mastercard branded cards
+  mastercard,
+
+  /// American Express branded cards
+  amex,
+
+  /// Discover branded cards
+  /// Note: Encompasses all of Discover Global Network (Discover, Diners, JCB, UnionPay, Elo)
+  discover,
+}
+
+///Filter types for card brand acceptance
+enum CardBrandAcceptanceFilter {
+  /// Accept all card brands supported by Stripe
+  all,
+
+  /// Accept only the specified card brands
+  allowed,
+
+  /// Accept all card brands except the specified ones
+  disallowed,
+}
+
+@freezed
+
+/// Options to block certain card brands on the client
+class CardBrandAcceptance with _$CardBrandAcceptance {
+  const factory CardBrandAcceptance.all({
+    @Default(CardBrandAcceptanceFilter.all) CardBrandAcceptanceFilter filter,
+  }) = _CardBrandAcceptanceAll;
+
+  const factory CardBrandAcceptance.allowed({
+    @Default(CardBrandAcceptanceFilter.allowed)
+    CardBrandAcceptanceFilter filter,
+    required List<CardBrandCategory> brands,
+
+    /// List of card brands to accept
+    /// Note: Any card brands that do not map to a CardBrandCategory will be blocked when using an allow list
+  }) = _CardBrandAcceptanceAllowed;
+
+  const factory CardBrandAcceptance.disallowed({
+    @Default(CardBrandAcceptanceFilter.disallowed)
+    CardBrandAcceptanceFilter filter,
+    required List<CardBrandCategory> brands,
+
+    /// List of card brands to block
+    /// Note: Any card brands that do not map to a CardBrandCategory will be accepted when using a disallow list
+  }) = _CardBrandAcceptanceDisallowed;
+
+  factory CardBrandAcceptance.fromJson(Map<String, Object?> json) =>
+      _$CardBrandAcceptanceFromJson(json);
 }
