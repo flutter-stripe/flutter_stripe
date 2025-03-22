@@ -59,6 +59,20 @@ const _$UserInterfaceStyleEnumMap = {
   UserInterfaceStyle.automatic: 'automatic',
 };
 
+_$CollectBankAccountTokenParamsImpl
+    _$$CollectBankAccountTokenParamsImplFromJson(Map<String, dynamic> json) =>
+        _$CollectBankAccountTokenParamsImpl(
+          userInterfaceStyle: $enumDecodeNullable(
+              _$UserInterfaceStyleEnumMap, json['userInterfaceStyle']),
+        );
+
+Map<String, dynamic> _$$CollectBankAccountTokenParamsImplToJson(
+        _$CollectBankAccountTokenParamsImpl instance) =>
+    <String, dynamic>{
+      'userInterfaceStyle':
+          _$UserInterfaceStyleEnumMap[instance.userInterfaceStyle],
+    };
+
 _$CollectBankAccountPaymentMethodDataImpl
     _$$CollectBankAccountPaymentMethodDataImplFromJson(
             Map<String, dynamic> json) =>

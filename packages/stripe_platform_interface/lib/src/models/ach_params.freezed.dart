@@ -307,6 +307,224 @@ abstract class _CollectBankAccountParams implements CollectBankAccountParams {
       get copyWith => throw _privateConstructorUsedError;
 }
 
+CollectBankAccountTokenParams _$CollectBankAccountTokenParamsFromJson(
+    Map<String, dynamic> json) {
+  return _CollectBankAccountTokenParams.fromJson(json);
+}
+
+/// @nodoc
+mixin _$CollectBankAccountTokenParams {
+  /// ios only. Style options for colors in Financial connections
+  ///
+  /// By default the bank account collector will automatically choose colors based on the
+  /// user's system settings.
+  UserInterfaceStyle? get userInterfaceStyle =>
+      throw _privateConstructorUsedError;
+
+  /// An optional event listener to receive [FinancialConnectionsEvent] for
+  /// specific events during the process of a user connecting their financial accounts.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  FinancialConnectionsEventHandler? get onEvent =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this CollectBankAccountTokenParams to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of CollectBankAccountTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $CollectBankAccountTokenParamsCopyWith<CollectBankAccountTokenParams>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CollectBankAccountTokenParamsCopyWith<$Res> {
+  factory $CollectBankAccountTokenParamsCopyWith(
+          CollectBankAccountTokenParams value,
+          $Res Function(CollectBankAccountTokenParams) then) =
+      _$CollectBankAccountTokenParamsCopyWithImpl<$Res,
+          CollectBankAccountTokenParams>;
+  @useResult
+  $Res call(
+      {UserInterfaceStyle? userInterfaceStyle,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      FinancialConnectionsEventHandler? onEvent});
+}
+
+/// @nodoc
+class _$CollectBankAccountTokenParamsCopyWithImpl<$Res,
+        $Val extends CollectBankAccountTokenParams>
+    implements $CollectBankAccountTokenParamsCopyWith<$Res> {
+  _$CollectBankAccountTokenParamsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of CollectBankAccountTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userInterfaceStyle = freezed,
+    Object? onEvent = freezed,
+  }) {
+    return _then(_value.copyWith(
+      userInterfaceStyle: freezed == userInterfaceStyle
+          ? _value.userInterfaceStyle
+          : userInterfaceStyle // ignore: cast_nullable_to_non_nullable
+              as UserInterfaceStyle?,
+      onEvent: freezed == onEvent
+          ? _value.onEvent
+          : onEvent // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionsEventHandler?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CollectBankAccountTokenParamsImplCopyWith<$Res>
+    implements $CollectBankAccountTokenParamsCopyWith<$Res> {
+  factory _$$CollectBankAccountTokenParamsImplCopyWith(
+          _$CollectBankAccountTokenParamsImpl value,
+          $Res Function(_$CollectBankAccountTokenParamsImpl) then) =
+      __$$CollectBankAccountTokenParamsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {UserInterfaceStyle? userInterfaceStyle,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      FinancialConnectionsEventHandler? onEvent});
+}
+
+/// @nodoc
+class __$$CollectBankAccountTokenParamsImplCopyWithImpl<$Res>
+    extends _$CollectBankAccountTokenParamsCopyWithImpl<$Res,
+        _$CollectBankAccountTokenParamsImpl>
+    implements _$$CollectBankAccountTokenParamsImplCopyWith<$Res> {
+  __$$CollectBankAccountTokenParamsImplCopyWithImpl(
+      _$CollectBankAccountTokenParamsImpl _value,
+      $Res Function(_$CollectBankAccountTokenParamsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CollectBankAccountTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userInterfaceStyle = freezed,
+    Object? onEvent = freezed,
+  }) {
+    return _then(_$CollectBankAccountTokenParamsImpl(
+      userInterfaceStyle: freezed == userInterfaceStyle
+          ? _value.userInterfaceStyle
+          : userInterfaceStyle // ignore: cast_nullable_to_non_nullable
+              as UserInterfaceStyle?,
+      onEvent: freezed == onEvent
+          ? _value.onEvent
+          : onEvent // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionsEventHandler?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$CollectBankAccountTokenParamsImpl
+    implements _CollectBankAccountTokenParams {
+  const _$CollectBankAccountTokenParamsImpl(
+      {this.userInterfaceStyle,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.onEvent});
+
+  factory _$CollectBankAccountTokenParamsImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CollectBankAccountTokenParamsImplFromJson(json);
+
+  /// ios only. Style options for colors in Financial connections
+  ///
+  /// By default the bank account collector will automatically choose colors based on the
+  /// user's system settings.
+  @override
+  final UserInterfaceStyle? userInterfaceStyle;
+
+  /// An optional event listener to receive [FinancialConnectionsEvent] for
+  /// specific events during the process of a user connecting their financial accounts.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final FinancialConnectionsEventHandler? onEvent;
+
+  @override
+  String toString() {
+    return 'CollectBankAccountTokenParams(userInterfaceStyle: $userInterfaceStyle, onEvent: $onEvent)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CollectBankAccountTokenParamsImpl &&
+            (identical(other.userInterfaceStyle, userInterfaceStyle) ||
+                other.userInterfaceStyle == userInterfaceStyle) &&
+            (identical(other.onEvent, onEvent) || other.onEvent == onEvent));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, userInterfaceStyle, onEvent);
+
+  /// Create a copy of CollectBankAccountTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CollectBankAccountTokenParamsImplCopyWith<
+          _$CollectBankAccountTokenParamsImpl>
+      get copyWith => __$$CollectBankAccountTokenParamsImplCopyWithImpl<
+          _$CollectBankAccountTokenParamsImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CollectBankAccountTokenParamsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CollectBankAccountTokenParams
+    implements CollectBankAccountTokenParams {
+  const factory _CollectBankAccountTokenParams(
+          {final UserInterfaceStyle? userInterfaceStyle,
+          @JsonKey(includeFromJson: false, includeToJson: false)
+          final FinancialConnectionsEventHandler? onEvent}) =
+      _$CollectBankAccountTokenParamsImpl;
+
+  factory _CollectBankAccountTokenParams.fromJson(Map<String, dynamic> json) =
+      _$CollectBankAccountTokenParamsImpl.fromJson;
+
+  /// ios only. Style options for colors in Financial connections
+  ///
+  /// By default the bank account collector will automatically choose colors based on the
+  /// user's system settings.
+  @override
+  UserInterfaceStyle? get userInterfaceStyle;
+
+  /// An optional event listener to receive [FinancialConnectionsEvent] for
+  /// specific events during the process of a user connecting their financial accounts.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  FinancialConnectionsEventHandler? get onEvent;
+
+  /// Create a copy of CollectBankAccountTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CollectBankAccountTokenParamsImplCopyWith<
+          _$CollectBankAccountTokenParamsImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
 CollectBankAccountPaymentMethodData
     _$CollectBankAccountPaymentMethodDataFromJson(Map<String, dynamic> json) {
   return _CollectBankAccountPaymentMethodData.fromJson(json);

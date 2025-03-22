@@ -37,6 +37,29 @@ class CollectBankAccountParams with _$CollectBankAccountParams {
       _$CollectBankAccountParamsFromJson(json);
 }
 
+@freezed
+
+/// Parameters that provide additional information for collecting the bankaccount
+/// for ACH payment
+class CollectBankAccountTokenParams with _$CollectBankAccountTokenParams {
+  @JsonSerializable(explicitToJson: true)
+  const factory CollectBankAccountTokenParams({
+    /// ios only. Style options for colors in Financial connections
+    ///
+    /// By default the bank account collector will automatically choose colors based on the
+    /// user's system settings.
+    UserInterfaceStyle? userInterfaceStyle,
+
+    /// An optional event listener to receive [FinancialConnectionsEvent] for
+    /// specific events during the process of a user connecting their financial accounts.
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    FinancialConnectionsEventHandler? onEvent,
+  }) = _CollectBankAccountTokenParams;
+
+  factory CollectBankAccountTokenParams.fromJson(Map<String, dynamic> json) =>
+      _$CollectBankAccountTokenParamsFromJson(json);
+}
+
 /// Specific payment method data needed for collecting the bank account of
 /// an payment method
 @freezed

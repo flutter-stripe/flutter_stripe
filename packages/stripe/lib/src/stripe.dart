@@ -614,8 +614,10 @@ class Stripe {
   ///
   ///  Throws [StripeError] in case creating the token fails.
 
-  Future<FinancialConnectionTokenResult> collectBankAccountToken(
-      {required String clientSecret}) async {
+  Future<FinancialConnectionTokenResult> collectBankAccountToken({
+    required String clientSecret,
+    CollectBankAccountTokenParams? params,
+  }) async {
     try {
       return _platform.collectBankAccountToken(clientSecret: clientSecret);
     } on StripeError {

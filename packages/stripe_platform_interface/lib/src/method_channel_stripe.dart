@@ -552,12 +552,17 @@ class MethodChannelStripe extends StripePlatform {
   }
 
   @override
-  Future<FinancialConnectionTokenResult> collectBankAccountToken(
-      {required String clientSecret}) async {
+  Future<FinancialConnectionTokenResult> collectBankAccountToken({
+    required String clientSecret,
+    CollectBankAccountTokenParams? params,
+  }) async {
     final result = await _methodChannel
         .invokeMapMethod<String, dynamic>('collectBankAccountToken', {
       'clientSecret': clientSecret,
+      'params': params?.toJson(),
     });
+
+    _financialConnectionsEventHandler = params?.onEvent;
 
     if (result!.containsKey('error')) {
       throw ResultParser<void>(parseJson: (json) => {}).parseError(result);
