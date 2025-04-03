@@ -3,7 +3,7 @@ version '1.0-SNAPSHOT'
 
 buildscript {
     ext.kotlin_version = '1.8.0'
-    ext.stripe_version = '20.52.+'
+    ext.stripe_version = '21.6.+'
 
     repositories {
         google()
@@ -28,7 +28,7 @@ apply plugin: 'kotlin-android'
 
 android {
     namespace 'com.flutter.stripe'
-    compileSdk 34
+    compileSdk 35
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17

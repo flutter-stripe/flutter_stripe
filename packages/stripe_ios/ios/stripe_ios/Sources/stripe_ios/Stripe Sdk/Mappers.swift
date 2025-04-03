@@ -1,6 +1,6 @@
 import Stripe
-import StripePaymentSheet
 import PassKit
+import StripePaymentSheet
 
 class Mappers {
     class func createResult(_ key: String, _ value: NSDictionary?) -> NSDictionary {
@@ -1050,5 +1050,28 @@ class Mappers {
         default:
             return nil
         }
+    }
+
+    class func financialConnectionsEventToMap(_ event: FinancialConnectionsEvent) -> [String: Any] {
+      var metadata: [String: Any] = [:]
+
+      if let manualEntry = event.metadata.manualEntry {
+        metadata["manualEntry"] = manualEntry
+      }
+
+      if let institutionName = event.metadata.institutionName {
+        metadata["institutionName"] = institutionName
+      }
+
+      if let errorCode = event.metadata.errorCode {
+        metadata["errorCode"] = errorCode.rawValue
+      }
+
+      let mappedEvent: [String: Any] = [
+        "name": event.name.rawValue,
+        "metadata": metadata
+      ]
+
+      return mappedEvent
     }
 }

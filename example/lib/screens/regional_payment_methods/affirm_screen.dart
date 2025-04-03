@@ -20,6 +20,7 @@ class AffirmScreen extends StatelessWidget {
       },
       body: json.encode({
         'currency': 'usd',
+        'items': ['id-4', 'id-5'],
         'payment_method_types': ['affirm'],
       }),
     );

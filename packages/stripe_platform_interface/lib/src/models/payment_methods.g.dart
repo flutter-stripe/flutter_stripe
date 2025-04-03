@@ -567,6 +567,9 @@ _$PaymentMethodDataImpl _$$PaymentMethodDataImplFromJson(
       mandateData: json['mandateData'] == null
           ? null
           : MandateData.fromJson(json['mandateData'] as Map<String, dynamic>),
+      metadata: (json['metadata'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
     );
 
 Map<String, dynamic> _$$PaymentMethodDataImplToJson(
@@ -575,6 +578,7 @@ Map<String, dynamic> _$$PaymentMethodDataImplToJson(
       'billingDetails': instance.billingDetails?.toJson(),
       'shippingDetails': instance.shippingDetails?.toJson(),
       'mandateData': instance.mandateData?.toJson(),
+      'metadata': instance.metadata,
     };
 
 _$PaymentMethodDataCardFromTokenImpl
@@ -593,6 +597,9 @@ _$PaymentMethodDataCardFromTokenImpl
               ? null
               : MandateData.fromJson(
                   json['mandateData'] as Map<String, dynamic>),
+          metadata: (json['metadata'] as Map<String, dynamic>?)?.map(
+            (k, e) => MapEntry(k, e as String),
+          ),
         );
 
 Map<String, dynamic> _$$PaymentMethodDataCardFromTokenImplToJson(
@@ -602,6 +609,7 @@ Map<String, dynamic> _$$PaymentMethodDataCardFromTokenImplToJson(
       'billingDetails': instance.billingDetails?.toJson(),
       'shippingDetails': instance.shippingDetails?.toJson(),
       'mandateData': instance.mandateData?.toJson(),
+      'metadata': instance.metadata,
     };
 
 _$PaymentMethodDataCardFromMethodImpl
@@ -621,6 +629,9 @@ _$PaymentMethodDataCardFromMethodImpl
               ? null
               : MandateData.fromJson(
                   json['mandateData'] as Map<String, dynamic>),
+          metadata: (json['metadata'] as Map<String, dynamic>?)?.map(
+            (k, e) => MapEntry(k, e as String),
+          ),
         );
 
 Map<String, dynamic> _$$PaymentMethodDataCardFromMethodImplToJson(
@@ -631,6 +642,7 @@ Map<String, dynamic> _$$PaymentMethodDataCardFromMethodImplToJson(
       'billingDetails': instance.billingDetails?.toJson(),
       'shippingDetails': instance.shippingDetails?.toJson(),
       'mandateData': instance.mandateData?.toJson(),
+      'metadata': instance.metadata,
     };
 
 _$PaymentMethodDataIdealImpl _$$PaymentMethodDataIdealImplFromJson(
@@ -649,6 +661,9 @@ _$PaymentMethodDataIdealImpl _$$PaymentMethodDataIdealImplFromJson(
       mandateData: json['mandateData'] == null
           ? null
           : MandateData.fromJson(json['mandateData'] as Map<String, dynamic>),
+      metadata: (json['metadata'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
     );
 
 Map<String, dynamic> _$$PaymentMethodDataIdealImplToJson(
@@ -659,6 +674,7 @@ Map<String, dynamic> _$$PaymentMethodDataIdealImplToJson(
       'billingDetails': instance.billingDetails?.toJson(),
       'shippingDetails': instance.shippingDetails?.toJson(),
       'mandateData': instance.mandateData?.toJson(),
+      'metadata': instance.metadata,
     };
 
 _$PaymentMethodDataAubecsImpl _$$PaymentMethodDataAubecsImplFromJson(
@@ -677,6 +693,9 @@ _$PaymentMethodDataAubecsImpl _$$PaymentMethodDataAubecsImplFromJson(
       mandateData: json['mandateData'] == null
           ? null
           : MandateData.fromJson(json['mandateData'] as Map<String, dynamic>),
+      metadata: (json['metadata'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
     );
 
 Map<String, dynamic> _$$PaymentMethodDataAubecsImplToJson(
@@ -686,6 +705,7 @@ Map<String, dynamic> _$$PaymentMethodDataAubecsImplToJson(
       'billingDetails': instance.billingDetails?.toJson(),
       'shippingDetails': instance.shippingDetails?.toJson(),
       'mandateData': instance.mandateData?.toJson(),
+      'metadata': instance.metadata,
     };
 
 _$PaymentMethodDataFpxImpl _$$PaymentMethodDataFpxImplFromJson(
@@ -703,6 +723,9 @@ _$PaymentMethodDataFpxImpl _$$PaymentMethodDataFpxImplFromJson(
       mandateData: json['mandateData'] == null
           ? null
           : MandateData.fromJson(json['mandateData'] as Map<String, dynamic>),
+      metadata: (json['metadata'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
     );
 
 Map<String, dynamic> _$$PaymentMethodDataFpxImplToJson(
@@ -712,6 +735,7 @@ Map<String, dynamic> _$$PaymentMethodDataFpxImplToJson(
       'billingDetails': instance.billingDetails?.toJson(),
       'shippingDetails': instance.shippingDetails?.toJson(),
       'mandateData': instance.mandateData?.toJson(),
+      'metadata': instance.metadata,
     };
 
 _$PaymentMethodDataSofortImpl _$$PaymentMethodDataSofortImplFromJson(
@@ -729,6 +753,9 @@ _$PaymentMethodDataSofortImpl _$$PaymentMethodDataSofortImplFromJson(
       mandateData: json['mandateData'] == null
           ? null
           : MandateData.fromJson(json['mandateData'] as Map<String, dynamic>),
+      metadata: (json['metadata'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
     );
 
 Map<String, dynamic> _$$PaymentMethodDataSofortImplToJson(
@@ -738,6 +765,7 @@ Map<String, dynamic> _$$PaymentMethodDataSofortImplToJson(
       'billingDetails': instance.billingDetails?.toJson(),
       'shippingDetails': instance.shippingDetails?.toJson(),
       'mandateData': instance.mandateData?.toJson(),
+      'metadata': instance.metadata,
     };
 
 _$PaymentMethodDataSepaImpl _$$PaymentMethodDataSepaImplFromJson(
@@ -755,6 +783,9 @@ _$PaymentMethodDataSepaImpl _$$PaymentMethodDataSepaImplFromJson(
       mandateData: json['mandateData'] == null
           ? null
           : MandateData.fromJson(json['mandateData'] as Map<String, dynamic>),
+      metadata: (json['metadata'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
     );
 
 Map<String, dynamic> _$$PaymentMethodDataSepaImplToJson(
@@ -764,6 +795,7 @@ Map<String, dynamic> _$$PaymentMethodDataSepaImplToJson(
       'billingDetails': instance.billingDetails?.toJson(),
       'shippingDetails': instance.shippingDetails?.toJson(),
       'mandateData': instance.mandateData?.toJson(),
+      'metadata': instance.metadata,
     };
 
 _$PaymentMethodDataAfterPayImpl _$$PaymentMethodDataAfterPayImplFromJson(
@@ -778,6 +810,9 @@ _$PaymentMethodDataAfterPayImpl _$$PaymentMethodDataAfterPayImplFromJson(
       mandateData: json['mandateData'] == null
           ? null
           : MandateData.fromJson(json['mandateData'] as Map<String, dynamic>),
+      metadata: (json['metadata'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
     );
 
 Map<String, dynamic> _$$PaymentMethodDataAfterPayImplToJson(
@@ -786,6 +821,7 @@ Map<String, dynamic> _$$PaymentMethodDataAfterPayImplToJson(
       'billingDetails': instance.billingDetails.toJson(),
       'shippingDetails': instance.shippingDetails?.toJson(),
       'mandateData': instance.mandateData?.toJson(),
+      'metadata': instance.metadata,
     };
 
 _$PaymentMethodDataUsBankImpl _$$PaymentMethodDataUsBankImplFromJson(
@@ -808,6 +844,9 @@ _$PaymentMethodDataUsBankImpl _$$PaymentMethodDataUsBankImplFromJson(
       mandateData: json['mandateData'] == null
           ? null
           : MandateData.fromJson(json['mandateData'] as Map<String, dynamic>),
+      metadata: (json['metadata'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
     );
 
 Map<String, dynamic> _$$PaymentMethodDataUsBankImplToJson(
@@ -821,6 +860,7 @@ Map<String, dynamic> _$$PaymentMethodDataUsBankImplToJson(
       'billingDetails': instance.billingDetails?.toJson(),
       'shippingDetails': instance.shippingDetails?.toJson(),
       'mandateData': instance.mandateData?.toJson(),
+      'metadata': instance.metadata,
     };
 
 _$PaymentMethodOptionsImpl _$$PaymentMethodOptionsImplFromJson(

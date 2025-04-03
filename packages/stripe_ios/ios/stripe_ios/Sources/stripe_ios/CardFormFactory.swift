@@ -67,7 +67,7 @@ class CardFormPlatformView : NSObject, FlutterPlatformView  {
     }
     
     public func onFormComplete(cardData: Dictionary<AnyHashable, Any>?) {
-        channel.invokeMethod("onFormComplete", arguments: cardData!)
+        channel.invokeMethod("topFormComplete", arguments: cardData!)
     }
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {

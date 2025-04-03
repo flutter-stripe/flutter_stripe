@@ -515,23 +515,39 @@ extension  StripePlugin {
     }
     
     func collectBankAccountToken(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        guard let arguments = call.arguments as? FlutterMap,
-        let clientSecret = arguments["clientSecret"] as? String else {
+        guard let arguments = call.arguments as? FlutterMap else {
+            result(FlutterError.invalidParams)
+            return
+        }
+        guard let clientSecret = arguments["clientSecret"] as? String else {
+            result(FlutterError.invalidParams)
+            return
+        }
+        guard let params = arguments["params"] as? NSDictionary else {
             result(FlutterError.invalidParams)
             return
         }
         collectBankAccountToken(clientSecret: clientSecret,
+                                params: params,
                     resolver: resolver(for: result),
                     rejecter: rejecter(for: result))
     }
     
     func collectFinancialConnectionsAccounts(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        guard let arguments = call.arguments as? FlutterMap,
-       let clientSecret = arguments["clientSecret"] as? String else {
+        guard let arguments = call.arguments as? FlutterMap else {
+            result(FlutterError.invalidParams)
+            return
+        }
+        guard let clientSecret = arguments["clientSecret"] as? String else {
            result(FlutterError.invalidParams)
            return
-       }
+        }
+        guard let params = arguments["params"] as? NSDictionary else {
+            result(FlutterError.invalidParams)
+            return
+        }
         collectFinancialConnectionsAccounts(clientSecret: clientSecret,
+                                            params: params,
                     resolver: resolver(for: result),
                     rejecter: rejecter(for: result))
     }

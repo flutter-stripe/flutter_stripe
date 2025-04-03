@@ -62,6 +62,13 @@ class CustomerSheetInitParams with _$CustomerSheetInitParams {
     /// The list of preferred networks that should be used to process payments made with a co-branded card.
     /// This value will only be used if your user hasn't selected a network themselves.
     @JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks,
+
+    /// By default, PaymentSheet will accept all supported cards by Stripe.
+    /// You can specify card brands PaymentSheet should block or allow payment for by providing an array of those card brands.
+    ///
+    /// Note: This is only a client-side solution.
+    ///Note: Card brand filtering is not currently supported in Link.
+    CardBrandAcceptance? cardBrandAcceptance,
   }) = _CustomerSheetInitParams;
 
   factory CustomerSheetInitParams.fromJson(Map<String, dynamic> json) =>

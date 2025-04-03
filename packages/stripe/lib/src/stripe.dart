@@ -540,7 +540,7 @@ class Stripe {
 
   /// Collect the bankaccount details for the payment intent.
   ///
-  /// Only US bank accounts are supported. 
+  /// Only US bank accounts are supported.
   Future<PaymentIntent> collectBankAccount({
     /// Whether the clientsecret is associated with setup or paymentintent
     required bool isPaymentIntent,
@@ -614,8 +614,10 @@ class Stripe {
   ///
   ///  Throws [StripeError] in case creating the token fails.
 
-  Future<FinancialConnectionTokenResult> collectBankAccountToken(
-      {required String clientSecret}) async {
+  Future<FinancialConnectionTokenResult> collectBankAccountToken({
+    required String clientSecret,
+    CollectBankAccountTokenParams? params,
+  }) async {
     try {
       return _platform.collectBankAccountToken(clientSecret: clientSecret);
     } on StripeError {
@@ -630,11 +632,15 @@ class Stripe {
   ///
   /// Throws [StripeError] in case creating the token fails.
 
-  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts(
-      {required String clientSecret}) async {
+  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts({
+    required String clientSecret,
+    CollectFinancialConnectionsAccountsParams? params,
+  }) async {
     try {
       return _platform.collectFinancialConnectionsAccounts(
-          clientSecret: clientSecret);
+        clientSecret: clientSecret,
+        params: params,
+      );
     } on StripeError {
       rethrow;
     }

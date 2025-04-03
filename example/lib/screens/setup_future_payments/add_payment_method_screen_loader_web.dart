@@ -4,7 +4,7 @@ import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 import '_create_setup_intent.dart';
 
 extension ToHex on Color {
-  String toRgb() => 'rgb($red, $green, $blue)';
+  String toRgb() => 'rgb($r, $g, $b)';
 }
 
 class AddPaymentMethodScreenLoader {

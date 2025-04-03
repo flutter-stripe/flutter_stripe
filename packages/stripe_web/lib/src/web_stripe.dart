@@ -509,14 +509,19 @@ class WebStripe extends StripePlatform {
   }
 
   @override
-  Future<FinancialConnectionTokenResult> collectBankAccountToken(
-      {required String clientSecret}) {
+  Future<FinancialConnectionTokenResult> collectBankAccountToken({
+    required String clientSecret,
+    CollectBankAccountTokenParams? params,
+  }) {
     throw WebUnsupportedError.method('collectBankAccountToken');
   }
 
   @override
-  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts(
-      {required String clientSecret}) {
+  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts({
+    required String clientSecret,
+    CollectFinancialConnectionsAccountsParams? params =
+        const CollectFinancialConnectionsAccountsParams(),
+  }) {
     throw WebUnsupportedError.method('collectFinancialConnectionsAccounts');
   }
 

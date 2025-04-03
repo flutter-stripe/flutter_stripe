@@ -21,7 +21,8 @@ class CustomerSheetUtils {
         billingDetailsCollectionConfiguration: NSDictionary?,
         defaultBillingDetails: NSDictionary?,
         preferredNetworks: Array<Int>?,
-        allowsRemovalOfLastSavedPaymentMethod: Bool?
+        allowsRemovalOfLastSavedPaymentMethod: Bool?,
+        cardBrandAcceptance: PaymentSheet.CardBrandAcceptance
     ) -> CustomerSheet.Configuration {
         var config = CustomerSheet.Configuration()
         config.appearance = appearance
@@ -59,6 +60,7 @@ class CustomerSheetUtils {
         if let allowsRemovalOfLastSavedPaymentMethod = allowsRemovalOfLastSavedPaymentMethod {
             config.allowsRemovalOfLastSavedPaymentMethod = allowsRemovalOfLastSavedPaymentMethod
         }
+        config.cardBrandAcceptance = cardBrandAcceptance
         return config
     }
     

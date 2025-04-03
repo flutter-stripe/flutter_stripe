@@ -119,6 +119,17 @@ extension StripeSdk {
         if let paymentMethodOrder = params["paymentMethodOrder"] as? Array<String> {
             configuration.paymentMethodOrder = paymentMethodOrder
         }
+      
+        switch params["paymentMethodLayout"] as? String? {
+          case "Horizontal":
+            configuration.paymentMethodLayout = .horizontal
+          case "Vertical":
+            configuration.paymentMethodLayout = .vertical
+          default:
+            configuration.paymentMethodLayout = .automatic
+        }
+      
+        configuration.cardBrandAcceptance = computeCardBrandAcceptance(params: params)
                 
         return (nil, configuration)
     }
@@ -208,6 +219,46 @@ extension StripeSdk {
                 )
                 resolve([])
             }
+        }
+    }
+  
+    internal func computeCardBrandAcceptance(params: NSDictionary) -> PaymentSheet.CardBrandAcceptance {
+      if let cardBrandAcceptanceParams = params["cardBrandAcceptance"] as? NSDictionary {
+          if let filter = cardBrandAcceptanceParams["filter"] as? String {
+              switch filter {
+              case "all":
+                return .all
+              case "allowed":
+                  if let brands = cardBrandAcceptanceParams["brands"] as? [String] {
+                      let cardBrands = brands.compactMap { mapToCardBrandCategory(brand: $0) }
+                    return .allowed(brands: cardBrands)
+                  }
+              case "disallowed":
+                  if let brands = cardBrandAcceptanceParams["brands"] as? [String] {
+                      let cardBrands = brands.compactMap { mapToCardBrandCategory(brand: $0) }
+                    return .disallowed(brands: cardBrands)
+                  }
+              default:
+                  break
+              }
+          }
+      }
+      
+      return .all
+    }
+  
+    private func mapToCardBrandCategory(brand: String) -> PaymentSheet.CardBrandAcceptance.BrandCategory? {
+        switch brand {
+        case "visa":
+            return .visa
+        case "mastercard":
+            return .mastercard
+        case "amex":
+            return .amex
+        case "discover":
+            return .discover
+        default:
+            return nil
         }
     }
     
@@ -313,3 +364,4 @@ extension StripeSdk {
         }
     }
 }
+

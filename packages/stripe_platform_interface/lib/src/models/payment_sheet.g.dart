@@ -58,6 +58,10 @@ _$SetupParametersImpl _$$SetupParametersImplFromJson(
       preferredNetworks: (json['preferredNetworks'] as List<dynamic>?)
           ?.map((e) => $enumDecode(_$CardBrandEnumMap, e))
           .toList(),
+      cardBrandAcceptance: json['cardBrandAcceptance'] == null
+          ? null
+          : CardBrandAcceptance.fromJson(
+              json['cardBrandAcceptance'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$SetupParametersImplToJson(
@@ -87,6 +91,7 @@ Map<String, dynamic> _$$SetupParametersImplToJson(
       'removeSavedPaymentMethodMessage':
           instance.removeSavedPaymentMethodMessage,
       'preferredNetworks': _cardBrandListToJson(instance.preferredNetworks),
+      'cardBrandAcceptance': instance.cardBrandAcceptance?.toJson(),
     };
 
 const _$ThemeModeEnumMap = {
@@ -134,24 +139,17 @@ _$PaymentModeImpl _$$PaymentModeImplFromJson(Map<String, dynamic> json) =>
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$PaymentModeImplToJson(_$PaymentModeImpl instance) {
-  final val = <String, dynamic>{
-    'currencyCode': instance.currencyCode,
-    'amount': instance.amount,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('setupFutureUsage',
-      _$IntentFutureUsageEnumMap[instance.setupFutureUsage]);
-  writeNotNull('captureMethod', _$CaptureMethodEnumMap[instance.captureMethod]);
-  val['runtimeType'] = instance.$type;
-  return val;
-}
+Map<String, dynamic> _$$PaymentModeImplToJson(_$PaymentModeImpl instance) =>
+    <String, dynamic>{
+      'currencyCode': instance.currencyCode,
+      'amount': instance.amount,
+      if (_$IntentFutureUsageEnumMap[instance.setupFutureUsage]
+          case final value?)
+        'setupFutureUsage': value,
+      if (_$CaptureMethodEnumMap[instance.captureMethod] case final value?)
+        'captureMethod': value,
+      'runtimeType': instance.$type,
+    };
 
 const _$IntentFutureUsageEnumMap = {
   IntentFutureUsage.OffSession: 'OffSession',
@@ -511,3 +509,74 @@ const _$AddressCollectionModeEnumMap = {
   AddressCollectionMode.never: 'never',
   AddressCollectionMode.full: 'full',
 };
+
+_$CardBrandAcceptanceAllImpl _$$CardBrandAcceptanceAllImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CardBrandAcceptanceAllImpl(
+      filter: $enumDecodeNullable(
+              _$CardBrandAcceptanceFilterEnumMap, json['filter']) ??
+          CardBrandAcceptanceFilter.all,
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$CardBrandAcceptanceAllImplToJson(
+        _$CardBrandAcceptanceAllImpl instance) =>
+    <String, dynamic>{
+      'filter': _$CardBrandAcceptanceFilterEnumMap[instance.filter]!,
+      'runtimeType': instance.$type,
+    };
+
+const _$CardBrandAcceptanceFilterEnumMap = {
+  CardBrandAcceptanceFilter.all: 'all',
+  CardBrandAcceptanceFilter.allowed: 'allowed',
+  CardBrandAcceptanceFilter.disallowed: 'disallowed',
+};
+
+_$CardBrandAcceptanceAllowedImpl _$$CardBrandAcceptanceAllowedImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CardBrandAcceptanceAllowedImpl(
+      filter: $enumDecodeNullable(
+              _$CardBrandAcceptanceFilterEnumMap, json['filter']) ??
+          CardBrandAcceptanceFilter.allowed,
+      brands: (json['brands'] as List<dynamic>)
+          .map((e) => $enumDecode(_$CardBrandCategoryEnumMap, e))
+          .toList(),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$CardBrandAcceptanceAllowedImplToJson(
+        _$CardBrandAcceptanceAllowedImpl instance) =>
+    <String, dynamic>{
+      'filter': _$CardBrandAcceptanceFilterEnumMap[instance.filter]!,
+      'brands':
+          instance.brands.map((e) => _$CardBrandCategoryEnumMap[e]!).toList(),
+      'runtimeType': instance.$type,
+    };
+
+const _$CardBrandCategoryEnumMap = {
+  CardBrandCategory.visa: 'visa',
+  CardBrandCategory.mastercard: 'mastercard',
+  CardBrandCategory.amex: 'amex',
+  CardBrandCategory.discover: 'discover',
+};
+
+_$CardBrandAcceptanceDisallowedImpl
+    _$$CardBrandAcceptanceDisallowedImplFromJson(Map<String, dynamic> json) =>
+        _$CardBrandAcceptanceDisallowedImpl(
+          filter: $enumDecodeNullable(
+                  _$CardBrandAcceptanceFilterEnumMap, json['filter']) ??
+              CardBrandAcceptanceFilter.disallowed,
+          brands: (json['brands'] as List<dynamic>)
+              .map((e) => $enumDecode(_$CardBrandCategoryEnumMap, e))
+              .toList(),
+          $type: json['runtimeType'] as String?,
+        );
+
+Map<String, dynamic> _$$CardBrandAcceptanceDisallowedImplToJson(
+        _$CardBrandAcceptanceDisallowedImpl instance) =>
+    <String, dynamic>{
+      'filter': _$CardBrandAcceptanceFilterEnumMap[instance.filter]!,
+      'brands':
+          instance.brands.map((e) => _$CardBrandCategoryEnumMap[e]!).toList(),
+      'runtimeType': instance.$type,
+    };

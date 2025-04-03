@@ -28,7 +28,8 @@ extension StripeSdk {
                 billingDetailsCollectionConfiguration: params["billingDetailsCollectionConfiguration"] as? NSDictionary,
                 defaultBillingDetails: params["defaultBillingDetails"] as? NSDictionary,
                 preferredNetworks: params["preferredNetworks"] as? Array<Int>,
-                allowsRemovalOfLastSavedPaymentMethod: params["allowsRemovalOfLastSavedPaymentMethod"] as? Bool
+                allowsRemovalOfLastSavedPaymentMethod: params["allowsRemovalOfLastSavedPaymentMethod"] as? Bool,
+                cardBrandAcceptance: computeCardBrandAcceptance(params: params)
             )
         } catch {
             resolve(
