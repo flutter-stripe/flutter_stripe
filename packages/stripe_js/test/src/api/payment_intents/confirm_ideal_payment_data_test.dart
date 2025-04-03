@@ -37,7 +37,7 @@ void main() {
       );
     });
 
-    test('with token parses correctly', () {
+    test('with bank parses correctly when bank is not null', () {
       expect(
         ConfirmIdealPaymentData(
           paymentMethod: IdealPaymentMethodDetails.withBank(
@@ -56,6 +56,27 @@ void main() {
         },
       );
     });
+
+    test('with bank parses correctly when bank is null', () {
+      expect(
+        ConfirmIdealPaymentData(
+          paymentMethod: IdealPaymentMethodDetails.withBank(
+            ideal: IdealBankData(bank: null),
+            billingDetails: BillingDetails(name: 'Jenny Rosen'),
+          ),
+        ).toJson(),
+        {
+          "payment_method": {
+            "ideal": {},
+            "type": "ideal",
+            "billing_details": {
+              "name": "Jenny Rosen",
+            },
+          }
+        },
+      );
+    });
+
     test('extra params parse correctly', () {
       expect(
         ConfirmIdealPaymentData(
