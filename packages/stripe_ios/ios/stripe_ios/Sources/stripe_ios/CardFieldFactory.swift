@@ -103,7 +103,7 @@ class CardFieldPlatformView: NSObject, FlutterPlatformView, STPPaymentCardTextFi
     }
     
     func onCardChange(_ arguments: Dictionary<AnyHashable, Any>?) {
-        channel.invokeMethod("onCardChange", arguments: arguments)
+        channel.invokeMethod("topCardChange", arguments: arguments)
     }
     
     func updateProps (_ args : Any? ) {
