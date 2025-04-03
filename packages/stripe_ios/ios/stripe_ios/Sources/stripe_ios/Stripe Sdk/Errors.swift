@@ -1,4 +1,5 @@
 import Stripe
+import Foundation
 @_spi(STP) import StripeCore
 
 enum ErrorType {

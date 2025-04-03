@@ -12,7 +12,7 @@ let package = Package(
         .library(name: "stripe-ios", targets: ["stripe_ios"])
     ],
     dependencies: [
-        .package(url: "https://github.com/stripe/stripe-ios-spm", .upToNextMajor(from: "23.30.0"))
+        .package(url: "https://github.com/stripe/stripe-ios-spm", exact: "24.7.0")
     ],
     targets: [
         .target(
