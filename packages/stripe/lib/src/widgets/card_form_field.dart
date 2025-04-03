@@ -431,7 +431,7 @@ class _MethodChannelCardFormFieldState
     _methodChannel?.setMethodCallHandler((call) async {
       if (call.method == 'topFocusChange') {
         _handlePlatformFocusChanged(call.arguments);
-      } else if (call.method == 'topFormComplete') {
+      } else if (call.method == 'onFormComplete') {
         _handleCardChanged(call.arguments);
       }
     });
