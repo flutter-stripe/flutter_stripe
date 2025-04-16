@@ -1,3 +1,7 @@
+## 6.5.0
+
+ - Bug fixes
+
 ## 6.4.0
 
 **Features**
