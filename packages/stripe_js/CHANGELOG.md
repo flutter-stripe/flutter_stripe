@@ -1,3 +1,7 @@
+## 6.4.0
+
+ - Use latest platform interface
+
 ## 6.3.0
 **Features**
 - Add P24 support on Stripe web

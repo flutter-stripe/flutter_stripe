@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-04-16
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_js` - `v6.4.0`](#stripe_js---v640)
+ - [`flutter_stripe_web` - `v6.4.1`](#flutter_stripe_web---v641)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v6.4.1`
+
+---
+
+#### `stripe_js` - `v6.4.0`
+
+ - Use latest platform interface
+
+
 ## 2025-01-18
 
 ### Changes
