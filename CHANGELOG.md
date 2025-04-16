@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`flutter_stripe_web` - `v6.5.0`](#flutter_stripe_web---v650)
+
+---
+
+#### `flutter_stripe_web` - `v6.5.0`
+
+ - Bug fixes
+
+
+## 2025-04-16
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`stripe_js` - `v6.4.0`](#stripe_js---v640)
  - [`flutter_stripe_web` - `v6.4.1`](#flutter_stripe_web---v641)
 
