@@ -1,5 +1,5 @@
 import 'dart:js_interop';
-import 'dart:ui' as ui;
+import 'dart:ui_web' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
@@ -23,7 +23,7 @@ class WebPlatformPayButton extends StatefulWidget {
   final PlatformButtonType? type;
   final PlatformButtonStyle? style;
   final BoxConstraints? constraints;
-  final ui.VoidCallback onPressed;
+  final void Function() onPressed;
 
   @override
   State<StatefulWidget> createState() {
@@ -70,7 +70,6 @@ class _WebPlatformPayButtonState extends State<WebPlatformPayButton> {
 
   @override
   void initState() {
-    // ignore: undefined_prefixed_name
     ui.platformViewRegistry.registerViewFactory(
         'stripe_platform_pay_button', (int viewId) => _divElement);
 
