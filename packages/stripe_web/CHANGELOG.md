@@ -3,6 +3,7 @@
 
 ## 6.5.0
 - Bug fixes
+ - Alignment with latest platform interface
 
 ## 6.4.0
 

@@ -1,6 +1,5 @@
 ## 6.4.0
-
- - Use latest platform interface
+- Use latest platform interface
 
 ## 6.3.0
 **Features**
