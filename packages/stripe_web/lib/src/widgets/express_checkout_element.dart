@@ -142,12 +142,6 @@ class ExpressCheckoutElementState extends State<ExpressCheckoutElement> {
   Widget build(BuildContext context) {
     return Focus(
       focusNode: _effectiveNode,
-      onFocusChange: (focus) {
-        /*  if (focus)
-            element?.focus();
-          else
-            element?.blur(); */
-      },
       child: ConstrainedBox(
         constraints: BoxConstraints(
           maxWidth: double.infinity,
