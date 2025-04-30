@@ -1,5 +1,9 @@
-## 6.4.1
+## 6.5.1
 - remove usage of `dart:ui` in favor of `dart:ui_web`
+
+## 6.5.0
+- Bug fixes
+ - Alignment with latest platform interface
 
 ## 6.4.0
 
