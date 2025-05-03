@@ -1,16 +1,42 @@
+## 11.5.0
+Align with Stripe React Native [0.43.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.43.0):
+
+**Breaking changes**
+
+- Removed support for FPX payments via the bank picker UI. If you'd like to accept FPX payments, we recommend using [Mobile Payment Element](https://docs.stripe.com/payments/accept-a-payment?platform=react-native). Also see the [FPX Payment guide](https://docs.stripe.com/payments/fpx/accept-a-payment?web-or-mobile=mobile) for more info on how to integrate FPX specifically.
+
+**Features**
+
+- Financial Connections now supports dark mode, and will automatically adapt to the device's theme. [Learn more](https://docs.stripe.com/financial-connections/other-data-powered-products?platform=react-native#connections-customize-react-native) about configuring appearance settings.
+- Added card brand filtering to PaymentSheet and CustomerSheet to specify allowed or blocked card brands. [1857](https://github.com/stripe/stripe-react-native/pull/1857)
+- Added ability to pass an `onEvent` listener to Financial Connections methods via a `params` argument:
+  - `collectBankAccountForPayment`
+  - `collectBankAccountForSetup`
+  - `collectBankAccountToken`
+  - `collectFinancialConnectionsAccounts`
+- Added ability to pass `metadata` to `PaymentMethod.ConfirmParams` and `PaymentMethod.CreateParams`
+
+- `CustomerSheet` is now generally available!
+  - If you were using `CustomerSheetBeta`, change that to `CustomerSheet`.
+  - If you were using `CustomerSheetBeta.CustomerSheet`, change that to `CustomerSheet.Component`
+- Enabled vertical mode
+
+**Fixes**
+
+- Updated `stripe-ios` to 24.7.\*
+- Updated `stripe-android` to 21.6.\*
+
+
 ## 11.4.0
 
 **Features**
 - Swift package manager support
 - Implemented Address sheet widget
+- Add P24 support on Stripe web
 
 **Fixes**
 - Compliance with latest Dart analyzer
-
-## 11.3.1
-
-**Features**
-- Adds support for Swift Package Manager for compatibility with new projects.
+- Prevent focus loop in Payment element for the web
 
 ## 11.3.0
 Align with Stripe React Native [0.39.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.39.0):
