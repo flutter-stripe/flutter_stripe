@@ -25,7 +25,7 @@ class PaymentIntent with _$PaymentIntent {
     required num amount,
 
     /// Timestamp since epoch that represents the time the intent is created.
-    required String created,
+    required num created,
 
     /// The three letter ISO 4217 code for the currency.
     required String currency,
