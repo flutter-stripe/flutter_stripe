@@ -1,5 +1,7 @@
 ## 6.5.1
-- remove usage of `dart:ui` in favor of `dart:ui_web`
+
+**Fixes**
+ - Make web compile for flutter 3.32.0
 
 ## 6.5.0
 - Bug fixes

@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-05-26
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_stripe_web` - `v6.5.1`](#flutter_stripe_web---v651)
+
+---
+
+#### `flutter_stripe_web` - `v6.5.1`
+
+ - Make web compile for flutter 3.32.0
+
+
 ## 2025-04-16
 
 ### Changes
