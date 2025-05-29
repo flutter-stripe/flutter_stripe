@@ -1,4 +1,4 @@
-package com.reactnativestripesdk
+package com.reactnativestripesdk.customersheet
 
 import android.app.Activity
 import android.app.Application
@@ -7,21 +7,23 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.FrameLayout
-import androidx.fragment.app.Fragment
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.WritableMap
 import com.facebook.react.bridge.WritableNativeMap
-import com.reactnativestripesdk.customersheet.ReactNativeCustomerAdapter
+import com.reactnativestripesdk.ReactNativeCustomerAdapter
+import com.reactnativestripesdk.buildPaymentSheetAppearance
+import com.reactnativestripesdk.getBase64FromBitmap
+import com.reactnativestripesdk.getBitmapFromDrawable
+import com.reactnativestripesdk.mapToAddressCollectionMode
+import com.reactnativestripesdk.mapToCardBrandAcceptance
+import com.reactnativestripesdk.mapToCollectionMode
 import com.reactnativestripesdk.utils.CreateTokenErrorType
 import com.reactnativestripesdk.utils.ErrorType
 import com.reactnativestripesdk.utils.KeepJsAwakeTask
 import com.reactnativestripesdk.utils.PaymentSheetAppearanceException
+import com.reactnativestripesdk.utils.StripeFragment
 import com.reactnativestripesdk.utils.createError
 import com.reactnativestripesdk.utils.mapFromPaymentMethod
 import com.reactnativestripesdk.utils.mapToPreferredNetworks
@@ -38,7 +40,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalAllowsRemovalOfLastSavedPaymentMethodApi::class)
-class CustomerSheetFragment : Fragment() {
+class CustomerSheetFragment : StripeFragment() {
   private var customerSheet: CustomerSheet? = null
   internal var customerAdapter: ReactNativeCustomerAdapter? = null
   internal var context: ReactApplicationContext? = null
@@ -46,18 +48,7 @@ class CustomerSheetFragment : Fragment() {
   private var presentPromise: Promise? = null
   private var keepJsAwake: KeepJsAwakeTask? = null
 
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?,
-  ): View = FrameLayout(requireActivity()).also { it.visibility = View.GONE }
-
-  override fun onViewCreated(
-    view: View,
-    savedInstanceState: Bundle?,
-  ) {
-    super.onViewCreated(view, savedInstanceState)
-
+  override fun prepare() {
     val context =
       context
         ?: run {
@@ -161,9 +152,11 @@ class CustomerSheetFragment : Fragment() {
       is CustomerSheetResult.Failed -> {
         resolvePresentPromise(createError(ErrorType.Failed.toString(), result.exception))
       }
+
       is CustomerSheetResult.Selected -> {
         promiseResult = createPaymentOptionResult(result.selection)
       }
+
       is CustomerSheetResult.Canceled -> {
         promiseResult = createPaymentOptionResult(result.selection)
         promiseResult.putMap(
@@ -188,7 +181,6 @@ class CustomerSheetFragment : Fragment() {
   }
 
   private fun presentWithTimeout(timeout: Long) {
-    var customerSheetActivity: Activity? = null
     var activities: MutableList<Activity> = mutableListOf()
     val activityLifecycleCallbacks =
       object : Application.ActivityLifecycleCallbacks {
@@ -196,7 +188,6 @@ class CustomerSheetFragment : Fragment() {
           activity: Activity,
           savedInstanceState: Bundle?,
         ) {
-          customerSheetActivity = activity
           activities.add(activity)
         }
 
@@ -211,10 +202,10 @@ class CustomerSheetFragment : Fragment() {
         override fun onActivitySaveInstanceState(
           activity: Activity,
           outState: Bundle,
-        ) {}
+        ) {
+        }
 
         override fun onActivityDestroyed(activity: Activity) {
-          customerSheetActivity = null
           activities = mutableListOf()
           context?.currentActivity?.application?.unregisterActivityLifecycleCallbacks(this)
         }
@@ -253,9 +244,11 @@ class CustomerSheetFragment : Fragment() {
           is CustomerSheetResult.Failed -> {
             promise.resolve(createError(ErrorType.Failed.toString(), result.exception))
           }
+
           is CustomerSheetResult.Selected -> {
             promiseResult = createPaymentOptionResult(result.selection)
           }
+
           is CustomerSheetResult.Canceled -> {
             promiseResult = createPaymentOptionResult(result.selection)
             promiseResult.putMap(
@@ -380,6 +373,7 @@ class CustomerSheetFragment : Fragment() {
           paymentOptionResult =
             buildResult(selection.paymentOption.label, selection.paymentOption.icon(), null)
         }
+
         is PaymentOptionSelection.PaymentMethod -> {
           paymentOptionResult =
             buildResult(
@@ -388,6 +382,7 @@ class CustomerSheetFragment : Fragment() {
               selection.paymentMethod,
             )
         }
+
         null -> {}
       }
 

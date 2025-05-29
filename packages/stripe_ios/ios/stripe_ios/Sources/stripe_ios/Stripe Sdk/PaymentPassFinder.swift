@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import PassKit
 
 internal class PaymentPassFinder: NSObject {
     enum PassLocation: String {

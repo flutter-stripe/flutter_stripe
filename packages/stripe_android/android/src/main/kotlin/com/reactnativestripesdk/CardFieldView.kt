@@ -39,7 +39,7 @@ import com.stripe.android.view.StripeEditText
 class CardFieldView(
   private val context: ThemedReactContext,
 ) : FrameLayout(context) {
-  internal var mCardWidget: CardInputWidget = CardInputWidget(context)
+  private var mCardWidget: CardInputWidget = CardInputWidget(context)
   private val cardInputWidgetBinding = StripeCardInputWidgetBinding.bind(mCardWidget)
   val cardDetails: MutableMap<String, Any?> =
     mutableMapOf(
@@ -99,10 +99,10 @@ class CardFieldView(
   private fun onChangeFocus() {
     UIManagerHelper
       .getEventDispatcherForReactTag(context, id)
-      ?.dispatchEvent(CardFocusEvent(context.surfaceId, id, currentFocusedField))
+      ?.dispatchEvent(CardFocusChangeEvent(context.surfaceId, id, currentFocusedField))
   }
 
-  fun setCardStyle(value: ReadableMap) {
+  fun setCardStyle(value: ReadableMap?) {
     val borderWidth = getIntOrNull(value, "borderWidth")
     val backgroundColor = getValOr(value, "backgroundColor", null)
     val borderColor = getValOr(value, "borderColor", null)
@@ -206,7 +206,7 @@ class CardFieldView(
     }
   }
 
-  fun setPlaceHolders(value: ReadableMap) {
+  fun setPlaceHolders(value: ReadableMap?) {
     val numberPlaceholder = getValOr(value, "number", null)
     val expirationPlaceholder = getValOr(value, "expiration", null)
     val cvcPlaceholder = getValOr(value, "cvc", null)
@@ -295,7 +295,7 @@ class CardFieldView(
     UIManagerHelper
       .getEventDispatcherForReactTag(context, id)
       ?.dispatchEvent(
-        CardChangedEvent(
+        CardChangeEvent(
           context.surfaceId,
           id,
           cardDetails,
