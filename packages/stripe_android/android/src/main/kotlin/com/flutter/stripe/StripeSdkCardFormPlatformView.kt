@@ -36,26 +36,12 @@ class StripeSdkCardFormPlatformView(
 
     init {
         channel.setMethodCallHandler(this)
-        if (creationParams?.containsKey("cardStyle") == true) {
-            cardFormViewManager.setCardStyle(cardView, ReadableMap(creationParams["cardStyle"] as Map<String, Any>))
-        }
-        if (creationParams?.containsKey("defaultValues") == true) {
-            cardFormViewManager.setDefaultValues(cardView, ReadableMap(creationParams["defaultValues"] as Map<String, Any>))
-        }
-        if (creationParams?.containsKey("postalCodeEnabled") == true) {
-            cardFormViewManager.setPostalCodeEnabled(cardView, creationParams["postalCodeEnabled"] as Boolean)
-        }
-        if (creationParams?.containsKey("dangerouslyGetFullCardDetails") == true) {
-            cardFormViewManager.setDangerouslyGetFullCardDetails(cardView, creationParams["dangerouslyGetFullCardDetails"] as Boolean)
-        }
-        if (creationParams?.containsKey("autofocus") == true) {
-            cardFormViewManager.setAutofocus(cardView, creationParams["autofocus"] as Boolean)
-        }
-        if (creationParams?.containsKey("disabled") == true) {
-            cardFormViewManager.setDisabled(cardView, creationParams["disabled"] as Boolean)
-        }
-        if (creationParams?.containsKey("preferredNetworks") == true) {
-            cardFormViewManager.setPreferredNetworks(cardView, ReadableArray(creationParams["preferredNetworks"] as List<Any>))
+        creationParams.convertToReadables()?.forEach { entry ->
+            cardFormViewManager.getDelegate().setProperty(
+                cardView,
+                entry.key,
+                entry.value,
+            )
         }
         if (creationParams?.containsKey("cardDetails") == true) {
             val value = ReadableMap(creationParams["cardDetails"] as Map<String, Any>)
@@ -90,31 +76,6 @@ class StripeSdkCardFormPlatformView(
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: MethodChannel.Result) {
 
         when (call.method) {
-            "onStyleChanged" -> {
-                val arguments = ReadableMap(call.arguments as Map<String, Any>)
-                cardFormViewManager.setCardStyle(cardView, arguments.getMap("cardStyle") as  ReadableMap)
-                result.success(null)
-            }
-            "onPostalCodeEnabledChanged" -> {
-                val arguments = ReadableMap(call.arguments as Map<String, Any>)
-                cardFormViewManager.setPostalCodeEnabled(cardView, arguments.getBoolean("postalCodeEnabled"))
-                result.success(null)
-            }
-            "dangerouslyGetFullCardDetails" -> {
-                val arguments = ReadableMap(call.arguments as Map<String, Any>)
-                cardFormViewManager.setDangerouslyGetFullCardDetails(cardView, arguments.getBoolean("dangerouslyGetFullCardDetails"))
-                result.success(null)
-            }
-            "autofocus" -> {
-                val arguments = ReadableMap(call.arguments as Map<String, Any>)
-                cardFormViewManager.setAutofocus(cardView, arguments.getBoolean("autofocus"))
-                result.success(null)
-            }
-            "disabled" -> {
-                val arguments = ReadableMap(call.arguments as Map<String, Any>)
-                cardFormViewManager.setDisabled(cardView, arguments.getBoolean("disabled"))
-                result.success(null)
-            }
             "requestFocus" -> {
                 val binding = StripeCardMultilineWidgetBinding.bind(cardView.cardForm)
                 binding.etCardNumber.requestFocus()
@@ -131,6 +92,14 @@ class StripeSdkCardFormPlatformView(
                 result.success(null)
             }
             "focus", "blur", "clear" -> cardFormViewManager.receiveCommand(cardView, call.method, null)
+            else -> {
+                cardFormViewManager.delegate.setProperty(
+                    cardView,
+                    call.method,
+                    call.arguments.convertToReadable(),
+                )
+                result.success(null)
+            }
         }
     }
 

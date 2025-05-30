@@ -18,6 +18,7 @@ import com.facebook.react.bridge.UiThreadUtil
 import com.facebook.react.bridge.WritableMap
 import com.facebook.react.bridge.WritableNativeMap
 import com.facebook.react.module.annotations.ReactModule
+import com.flutter.stripe.invoke
 import com.reactnativestripesdk.addresssheet.AddressLauncherFragment
 import com.reactnativestripesdk.customersheet.CustomerSheetFragment
 import com.reactnativestripesdk.pushprovisioning.PushProvisioningProxy
@@ -72,7 +73,7 @@ import org.json.JSONObject
 
 @ReactModule(name = StripeSdkModule.NAME)
 class StripeSdkModule(
-  reactContext: ReactApplicationContext,
+  val reactContext: ReactApplicationContext,
 ) : NativeStripeSdkModuleSpec(reactContext) {
   var cardFieldView: CardFieldView? = null
   var cardFormView: CardFormView? = null

@@ -36,7 +36,7 @@ import com.stripe.android.view.CardInputListener
 class CardFormView(
   private val context: ThemedReactContext,
 ) : FrameLayout(context) {
-  private var cardForm: CardFormView =
+  var cardForm: CardFormView =
     CardFormView(context, null, com.stripe.android.R.style.StripeCardFormView_Borderless)
   private var dangerouslyGetFullCardDetails: Boolean = false
   private var currentFocusedField: String? = null

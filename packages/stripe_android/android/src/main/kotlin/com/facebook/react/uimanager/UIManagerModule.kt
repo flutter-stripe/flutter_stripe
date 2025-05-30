@@ -1,5 +1,6 @@
 package com.facebook.react.uimanager
 
+import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.events.Event
 import com.facebook.react.uimanager.events.EventDispatcher
 import com.facebook.react.uimanager.events.RCTEventEmitter
@@ -12,6 +13,14 @@ class UIManagerModule(channel: MethodChannel) {
     val eventDispatcher: EventDispatcher = object : EventDispatcher {
         override fun dispatchEvent(event: Event<*>) {
             event.dispatch(rctInstance)
+        }
+
+        override fun invoke(name: String, value: ReadableMap) {
+            rctInstance.receiveEvent(name, name, value)
+        }
+
+        override fun invoke(name: String) {
+            rctInstance.receiveEvent(name, name, null)
         }
     }
 }

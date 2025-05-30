@@ -3,6 +3,8 @@ package com.flutter.stripe
 import android.content.Intent
 import androidx.fragment.app.FragmentActivity
 import com.facebook.react.bridge.Promise
+import com.facebook.react.bridge.ReadableArray
+import com.facebook.react.bridge.ReadableMap
 import com.reactnativestripesdk.StripeSdkModule
 import com.reactnativestripesdk.utils.createMissingActivityError
 
@@ -30,4 +32,26 @@ internal val FragmentActivity?.activityResultRegistry: Dispatcher
 
 internal class Dispatcher {
     fun dispatchResult(requestCode: Int, resultCode: Int, data: Intent?) {}
+}
+
+
+fun Map<String?, Any?>?.convertToReadables(): Map<String?, Any?>? {
+    return this?.mapValues {
+        it.value?.convertToReadable()
+    }?.toMap()
+}
+
+fun Any.convertToReadable(): Any {
+    return when (this) {
+        is Map<*, *> -> ReadableMap((this as Map<String?, Any?>).convertToReadables())
+        is List<*> -> ReadableArray(this.map { item ->
+            when (item) {
+                is Map<*, *> -> ReadableMap((item as Map<String?, Any?>).convertToReadables())
+                is List<*> -> ReadableArray(item.map { it })
+                else -> item
+            }
+        })
+
+        else -> this
+    }
 }

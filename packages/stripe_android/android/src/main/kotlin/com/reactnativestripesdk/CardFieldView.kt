@@ -39,7 +39,7 @@ import com.stripe.android.view.StripeEditText
 class CardFieldView(
   private val context: ThemedReactContext,
 ) : FrameLayout(context) {
-  private var mCardWidget: CardInputWidget = CardInputWidget(context)
+  var mCardWidget: CardInputWidget = CardInputWidget(context)
   private val cardInputWidgetBinding = StripeCardInputWidgetBinding.bind(mCardWidget)
   val cardDetails: MutableMap<String, Any?> =
     mutableMapOf(
