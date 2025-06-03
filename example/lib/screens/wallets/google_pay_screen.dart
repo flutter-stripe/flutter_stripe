@@ -18,6 +18,8 @@ const _paymentItems = [
 ];
 
 class GooglePayScreen extends StatefulWidget {
+  const GooglePayScreen({super.key});
+
   @override
   _GooglePayScreenState createState() => _GooglePayScreenState();
 }
@@ -70,6 +72,7 @@ class _GooglePayScreenState extends State<GooglePayScreen> {
   }
 
   Future<void> onGooglePayResult(paymentResult) async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     try {
       debugPrint(paymentResult.toString());
       // 2. fetch Intent Client Secret from backend
@@ -92,14 +95,18 @@ class _GooglePayScreenState extends State<GooglePayScreen> {
         data: params,
       );
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text('Google Pay payment succesfully completed')),
-      );
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
+          const SnackBar(
+              content: Text('Google Pay payment successfully completed')),
+        );
+      }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e')),
-      );
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
+          SnackBar(content: Text('Error: $e')),
+        );
+      }
     }
   }
 

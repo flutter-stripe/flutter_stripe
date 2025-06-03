@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ResponseCard extends StatelessWidget {
   final String response;
-  const ResponseCard({Key? key, required this.response}) : super(key: key);
+  const ResponseCard({super.key, required this.response});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class ResponseCard extends StatelessWidget {
                       .textTheme
                       .bodySmall
                       ?.color
-                      ?.withOpacity(0.5),
+                      ?.withValues(alpha: 0.5),
                 ),
           ),
           SizedBox(height: 12),

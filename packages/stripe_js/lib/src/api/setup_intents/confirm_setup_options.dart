@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:stripe_js/src/api/converters/js_converter.dart';
 import 'package:stripe_js/stripe_api.dart';
 

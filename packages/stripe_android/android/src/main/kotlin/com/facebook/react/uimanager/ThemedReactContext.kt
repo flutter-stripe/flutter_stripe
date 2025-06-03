@@ -15,4 +15,6 @@ class ThemedReactContext(
     context.currentActivity,
     channel = channel,
     sdkAccessor = sdkAccessor
-)
+) {
+    val surfaceId: Int = 0
+}

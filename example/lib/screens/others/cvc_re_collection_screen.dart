@@ -9,11 +9,13 @@ import 'package:stripe_example/widgets/loading_button.dart';
 import '../../config.dart';
 
 class CVCReCollectionScreen extends StatefulWidget {
+  const CVCReCollectionScreen({super.key});
+
   @override
-  _CVCReCollectionScreenState createState() => _CVCReCollectionScreenState();
+  CVCReCollectionScreenState createState() => CVCReCollectionScreenState();
 }
 
-class _CVCReCollectionScreenState extends State<CVCReCollectionScreen> {
+class CVCReCollectionScreenState extends State<CVCReCollectionScreen> {
   String _email = 'email@stripe.com';
   String _cvc = '';
 
@@ -62,15 +64,18 @@ class _CVCReCollectionScreenState extends State<CVCReCollectionScreen> {
     }
 
     // 1. fetch Intent Client Secret from backend
-    final paymentMethod = await _fetchPaymentIntentWithPaymentMethod();
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
 
+    final paymentMethod = await _fetchPaymentIntentWithPaymentMethod();
     if (paymentMethod['error'] != null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error code: ${paymentMethod['error']}')));
+      if (mounted) {
+        scaffoldMessenger.showSnackBar(
+            SnackBar(content: Text('Error code: ${paymentMethod['error']}')));
+      }
       return;
     }
 
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    scaffoldMessenger.showSnackBar(SnackBar(
         content: Text('Success!: The payment was confirmed successfully!')));
   }
 
@@ -78,17 +83,23 @@ class _CVCReCollectionScreenState extends State<CVCReCollectionScreen> {
     if (_cvc.isEmpty || _email.isEmpty) {
       return;
     }
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
 
     final paymentIntent = await _callChargeCardOffSession(
       email: _email,
     );
     log('paymentIntent $paymentIntent');
     if (paymentIntent['error'] != null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error code: ${paymentIntent['error']}')));
+      if (mounted) {
+        scaffoldMessenger.showSnackBar(
+            SnackBar(content: Text('Error code: ${paymentIntent['error']}')));
+      }
     } else if (paymentIntent['succeeded'] == true) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Success!: The payment was confirmed successfully!')));
+      if (mounted) {
+        scaffoldMessenger.showSnackBar(SnackBar(
+            content:
+                Text('Success!: The payment was confirmed successfully!')));
+      }
     } else {
       // Handle other statuses accordingly
       throw UnimplementedError();

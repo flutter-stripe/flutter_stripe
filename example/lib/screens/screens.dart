@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stripe_example/screens/address_sheet/address_sheet.dart';
 import 'package:stripe_example/screens/customer_sheet/customer_sheet_screen.dart';
 import 'package:stripe_example/screens/others/can_add_to_wallet_screen.dart';
 import 'package:stripe_example/screens/payment_sheet/express_checkout/express_checkout_element.dart';
@@ -13,10 +14,13 @@ import 'package:stripe_example/screens/regional_payment_methods/cash_app_screen.
 import 'package:stripe_example/screens/regional_payment_methods/fpx_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/ideal_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/klarna_screen.dart';
+import 'package:stripe_example/screens/regional_payment_methods/p24_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/paypal_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/revolutpay_screen.dart';
 import 'package:stripe_example/screens/regional_payment_methods/sofort_screen.dart';
-import 'package:stripe_example/screens/regional_payment_methods/us_bank_account.dart';
+import 'package:stripe_example/screens/regional_payment_methods/us_bank_account_direct_debit_screen.dart';
+import 'package:stripe_example/screens/regional_payment_methods/us_bank_account_screen.dart';
+import 'package:stripe_example/screens/setup_future_payments/setup_future_payments_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen.dart';
 import 'package:stripe_example/screens/wallets/apple_pay_screen_plugin.dart';
 import 'package:stripe_example/screens/wallets/google_pay_screen.dart';
@@ -33,7 +37,6 @@ import 'financial_connections.dart/financial_connections_session_screen.dart';
 import 'others/cvc_re_collection_screen.dart';
 import 'others/legacy_token_bank_screen.dart';
 import 'others/legacy_token_card_screen.dart';
-import 'others/setup_future_payment_screen.dart';
 import 'regional_payment_methods/grab_pay_screen.dart';
 import 'themes.dart';
 import 'wallets/apple_pay_create_payment_method.dart';
@@ -45,16 +48,16 @@ class ExampleSection extends StatelessWidget {
   final bool expanded;
 
   const ExampleSection({
-    Key? key,
+    super.key,
     required this.title,
     required this.children,
     this.expanded = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      backgroundColor: Theme.of(context).primaryColor.withOpacity(0.2),
+      backgroundColor: Theme.of(context).primaryColor.withValues(alpha: 0.2),
       initiallyExpanded: expanded,
       childrenPadding: EdgeInsets.only(left: 20),
       title: Text(title),
@@ -72,7 +75,8 @@ class Example extends StatelessWidget {
 
   final WidgetBuilder builder;
 
-  Example({
+  const Example({
+    super.key,
     required this.title,
     required this.builder,
     this.style,
@@ -88,7 +92,7 @@ class Example extends StatelessWidget {
         Navigator.push(context, route);
       },
       title: Text(title, style: style),
-      leading: this.leading,
+      leading: leading,
       trailing: Row(mainAxisSize: MainAxisSize.min, children: [
         PlatformIcons(supported: platformsSupported),
         Icon(Icons.chevron_right_rounded),
@@ -101,6 +105,7 @@ class Example extends StatelessWidget {
   static List<Widget> screens = [
     ExampleSection(
       title: 'Payment Sheet',
+      expanded: true,
       children: [
         Example(
           title: 'Single Step',
@@ -131,9 +136,24 @@ class Example extends StatelessWidget {
             DevicePlatform.web,
           ],
         ),
+        Example(
+          title: 'Setup future payments',
+          builder: (_) => SetupFuturePaymentsScreen(),
+          platformsSupported: [
+            DevicePlatform.android,
+            DevicePlatform.ios,
+            DevicePlatform.web,
+          ],
+        )
       ],
-      expanded: true,
     ),
+    ExampleSection(title: 'Address sheet', children: [
+      Example(
+        title: 'Address sheet',
+        builder: (context) => AddressSheetExample(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+      ),
+    ]),
     ExampleSection(title: 'Customer sheet', children: [
       Example(
         title: 'Customer sheet',
@@ -332,6 +352,16 @@ class Example extends StatelessWidget {
         builder: (contex) => UsBankAccountScreen(),
         platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
       ),
+      Example(
+        title: 'Us bank accounts Direct debit(ACH)',
+        builder: (contex) => UsBankAccountDirectDebitScreen(),
+        platformsSupported: [DevicePlatform.android, DevicePlatform.ios],
+      ),
+      Example(
+        title: 'P24 Payment',
+        leading: SizedBox(),
+        builder: (context) => P24Screen(),
+      ),
       // TODO: uncomment when we can re-enable wechat pay
       // Example(
       //   title: 'WeChat Pay',
@@ -356,10 +386,6 @@ class Example extends StatelessWidget {
       ],
     ),
     ExampleSection(title: 'Others', children: [
-      Example(
-        title: 'Setup Future Payment',
-        builder: (c) => SetupFuturePaymentScreen(),
-      ),
       Example(
         title: 'Re-collect CVC',
         builder: (c) => CVCReCollectionScreen(),

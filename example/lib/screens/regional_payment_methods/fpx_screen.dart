@@ -9,7 +9,7 @@ import 'package:stripe_example/widgets/loading_button.dart';
 import '../../config.dart';
 
 class FpxScreen extends StatelessWidget {
-  const FpxScreen({Key? key}) : super(key: key);
+  const FpxScreen({super.key});
 
   Future<Map<String, dynamic>> _createPaymentIntent() async {
     final url = Uri.parse('$kApiUrl/create-payment-intent');
@@ -29,6 +29,7 @@ class FpxScreen extends StatelessWidget {
   }
 
   Future<void> _pay(BuildContext context) async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     // Precondition:
     //Make sure to have set a custom URI scheme in your app and add it to Stripe SDK
     // see file main.dart in this example app.
@@ -47,23 +48,24 @@ class FpxScreen extends StatelessWidget {
           ),
         ),
       );
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Payment succesfully completed'),
-        ),
-      );
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
+          SnackBar(
+            content: Text('Payment successfully completed'),
+          ),
+        );
+      }
     } on Exception catch (e) {
-      if (e is StripeException) {
-        ScaffoldMessenger.of(context).showSnackBar(
+      if (e is StripeException && context.mounted) {
+        scaffoldMessenger.showSnackBar(
           SnackBar(
             content: Text('Error from Stripe: ${e.error.localizedMessage}'),
           ),
         );
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
+        scaffoldMessenger.showSnackBar(
           SnackBar(
-            content: Text('Unforeseen error: ${e}'),
+            content: Text('Unforeseen error: $e'),
           ),
         );
       }

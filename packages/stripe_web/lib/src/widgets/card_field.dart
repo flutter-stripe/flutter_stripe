@@ -18,7 +18,7 @@ class WebCardField extends StatefulWidget {
   WebCardField({
     required this.controller,
     this.onCardChanged,
-    Key? key,
+    super.key,
     this.onFocus,
     this.style,
     this.placeholder,
@@ -33,8 +33,7 @@ class WebCardField extends StatefulWidget {
         constraints = (width != null || height != null)
             ? constraints?.tighten(width: width, height: height) ??
                 BoxConstraints.tightFor(width: width, height: height)
-            : constraints,
-        super(key: key);
+            : constraints;
 
   final BoxConstraints? constraints;
   final CardFocusCallback? onFocus;
@@ -53,6 +52,7 @@ class WebCardField extends StatefulWidget {
 class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   CardEditController get controller => widget.controller;
 
+  @override
   void initState() {
     ui.platformViewRegistry.registerViewFactory(
       'stripe_card',
@@ -150,7 +150,7 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   }
 
   String colorToCssString(Color color) {
-    return 'rgb(${color.red}, ${color.green}, ${color.blue})';
+    return 'rgb(${color.r}, ${color.g}, ${color.b})';
   }
 
   js.CardElementOptions createOptions() {
@@ -158,7 +158,7 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
     return js.CardElementOptions(
       style: {
         'base': {
-          if (textColor != null) 'color': '${colorToCssString(textColor)}'
+          if (textColor != null) 'color': colorToCssString(textColor)
         }
       },
       hidePostalCode: !widget.enablePostalCode,

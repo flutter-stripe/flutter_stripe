@@ -38,6 +38,10 @@ mixin _$SetupPaymentSheetParameters {
   ///A temp key can be used for API operations that require a secret key.
   String? get customerEphemeralKeySecret => throw _privateConstructorUsedError;
 
+  /// (Experimental) This parameter can be changed or removed at any time (use at your own risk).
+  /// The client secret of this Customer Session. Used on the client to set up secure access to the given customer.
+  String? get customerSessionClientSecret => throw _privateConstructorUsedError;
+
   /// Secret used for client-side retrieval using a publishable key.
   ///
   /// If this value is null make sure to add a [setupIntentClientSecret]
@@ -119,6 +123,14 @@ mixin _$SetupPaymentSheetParameters {
   @JsonKey(toJson: _cardBrandListToJson)
   List<CardBrand>? get preferredNetworks => throw _privateConstructorUsedError;
 
+  /// By default, PaymentSheet will accept all supported cards by Stripe.
+  /// You can specify card brands PaymentSheet should block or allow payment for by providing an array of those card brands.
+  ///
+  /// Note: This is only a client-side solution.
+  ///Note: Card brand filtering is not currently supported in Link.
+  CardBrandAcceptance? get cardBrandAcceptance =>
+      throw _privateConstructorUsedError;
+
   /// Serializes this SetupPaymentSheetParameters to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
@@ -142,6 +154,7 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
       String? customerId,
       String? primaryButtonLabel,
       String? customerEphemeralKeySecret,
+      String? customerSessionClientSecret,
       String? paymentIntentClientSecret,
       String? setupIntentClientSecret,
       IntentConfiguration? intentConfiguration,
@@ -158,8 +171,8 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
       BillingDetailsCollectionConfiguration?
           billingDetailsCollectionConfiguration,
       String? removeSavedPaymentMethodMessage,
-      @JsonKey(toJson: _cardBrandListToJson)
-      List<CardBrand>? preferredNetworks});
+      @JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks,
+      CardBrandAcceptance? cardBrandAcceptance});
 
   $IntentConfigurationCopyWith<$Res>? get intentConfiguration;
   $PaymentSheetApplePayCopyWith<$Res>? get applePay;
@@ -168,6 +181,7 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   $BillingDetailsCollectionConfigurationCopyWith<$Res>?
       get billingDetailsCollectionConfiguration;
+  $CardBrandAcceptanceCopyWith<$Res>? get cardBrandAcceptance;
 }
 
 /// @nodoc
@@ -190,6 +204,7 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
     Object? customerId = freezed,
     Object? primaryButtonLabel = freezed,
     Object? customerEphemeralKeySecret = freezed,
+    Object? customerSessionClientSecret = freezed,
     Object? paymentIntentClientSecret = freezed,
     Object? setupIntentClientSecret = freezed,
     Object? intentConfiguration = freezed,
@@ -206,6 +221,7 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
     Object? billingDetailsCollectionConfiguration = freezed,
     Object? removeSavedPaymentMethodMessage = freezed,
     Object? preferredNetworks = freezed,
+    Object? cardBrandAcceptance = freezed,
   }) {
     return _then(_value.copyWith(
       customFlow: null == customFlow
@@ -223,6 +239,10 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
       customerEphemeralKeySecret: freezed == customerEphemeralKeySecret
           ? _value.customerEphemeralKeySecret
           : customerEphemeralKeySecret // ignore: cast_nullable_to_non_nullable
+              as String?,
+      customerSessionClientSecret: freezed == customerSessionClientSecret
+          ? _value.customerSessionClientSecret
+          : customerSessionClientSecret // ignore: cast_nullable_to_non_nullable
               as String?,
       paymentIntentClientSecret: freezed == paymentIntentClientSecret
           ? _value.paymentIntentClientSecret
@@ -291,6 +311,10 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
           ? _value.preferredNetworks
           : preferredNetworks // ignore: cast_nullable_to_non_nullable
               as List<CardBrand>?,
+      cardBrandAcceptance: freezed == cardBrandAcceptance
+          ? _value.cardBrandAcceptance
+          : cardBrandAcceptance // ignore: cast_nullable_to_non_nullable
+              as CardBrandAcceptance?,
     ) as $Val);
   }
 
@@ -381,6 +405,21 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
           as $Val);
     });
   }
+
+  /// Create a copy of SetupPaymentSheetParameters
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CardBrandAcceptanceCopyWith<$Res>? get cardBrandAcceptance {
+    if (_value.cardBrandAcceptance == null) {
+      return null;
+    }
+
+    return $CardBrandAcceptanceCopyWith<$Res>(_value.cardBrandAcceptance!,
+        (value) {
+      return _then(_value.copyWith(cardBrandAcceptance: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -396,6 +435,7 @@ abstract class _$$SetupParametersImplCopyWith<$Res>
       String? customerId,
       String? primaryButtonLabel,
       String? customerEphemeralKeySecret,
+      String? customerSessionClientSecret,
       String? paymentIntentClientSecret,
       String? setupIntentClientSecret,
       IntentConfiguration? intentConfiguration,
@@ -412,8 +452,8 @@ abstract class _$$SetupParametersImplCopyWith<$Res>
       BillingDetailsCollectionConfiguration?
           billingDetailsCollectionConfiguration,
       String? removeSavedPaymentMethodMessage,
-      @JsonKey(toJson: _cardBrandListToJson)
-      List<CardBrand>? preferredNetworks});
+      @JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks,
+      CardBrandAcceptance? cardBrandAcceptance});
 
   @override
   $IntentConfigurationCopyWith<$Res>? get intentConfiguration;
@@ -428,6 +468,8 @@ abstract class _$$SetupParametersImplCopyWith<$Res>
   @override
   $BillingDetailsCollectionConfigurationCopyWith<$Res>?
       get billingDetailsCollectionConfiguration;
+  @override
+  $CardBrandAcceptanceCopyWith<$Res>? get cardBrandAcceptance;
 }
 
 /// @nodoc
@@ -447,6 +489,7 @@ class __$$SetupParametersImplCopyWithImpl<$Res>
     Object? customerId = freezed,
     Object? primaryButtonLabel = freezed,
     Object? customerEphemeralKeySecret = freezed,
+    Object? customerSessionClientSecret = freezed,
     Object? paymentIntentClientSecret = freezed,
     Object? setupIntentClientSecret = freezed,
     Object? intentConfiguration = freezed,
@@ -463,6 +506,7 @@ class __$$SetupParametersImplCopyWithImpl<$Res>
     Object? billingDetailsCollectionConfiguration = freezed,
     Object? removeSavedPaymentMethodMessage = freezed,
     Object? preferredNetworks = freezed,
+    Object? cardBrandAcceptance = freezed,
   }) {
     return _then(_$SetupParametersImpl(
       customFlow: null == customFlow
@@ -480,6 +524,10 @@ class __$$SetupParametersImplCopyWithImpl<$Res>
       customerEphemeralKeySecret: freezed == customerEphemeralKeySecret
           ? _value.customerEphemeralKeySecret
           : customerEphemeralKeySecret // ignore: cast_nullable_to_non_nullable
+              as String?,
+      customerSessionClientSecret: freezed == customerSessionClientSecret
+          ? _value.customerSessionClientSecret
+          : customerSessionClientSecret // ignore: cast_nullable_to_non_nullable
               as String?,
       paymentIntentClientSecret: freezed == paymentIntentClientSecret
           ? _value.paymentIntentClientSecret
@@ -548,6 +596,10 @@ class __$$SetupParametersImplCopyWithImpl<$Res>
           ? _value._preferredNetworks
           : preferredNetworks // ignore: cast_nullable_to_non_nullable
               as List<CardBrand>?,
+      cardBrandAcceptance: freezed == cardBrandAcceptance
+          ? _value.cardBrandAcceptance
+          : cardBrandAcceptance // ignore: cast_nullable_to_non_nullable
+              as CardBrandAcceptance?,
     ));
   }
 }
@@ -561,6 +613,7 @@ class _$SetupParametersImpl implements _SetupParameters {
       this.customerId,
       this.primaryButtonLabel,
       this.customerEphemeralKeySecret,
+      this.customerSessionClientSecret,
       this.paymentIntentClientSecret,
       this.setupIntentClientSecret,
       this.intentConfiguration,
@@ -577,7 +630,8 @@ class _$SetupParametersImpl implements _SetupParameters {
       this.billingDetailsCollectionConfiguration,
       this.removeSavedPaymentMethodMessage,
       @JsonKey(toJson: _cardBrandListToJson)
-      final List<CardBrand>? preferredNetworks})
+      final List<CardBrand>? preferredNetworks,
+      this.cardBrandAcceptance})
       : _paymentMethodOrder = paymentMethodOrder,
         _preferredNetworks = preferredNetworks;
 
@@ -605,6 +659,11 @@ class _$SetupParametersImpl implements _SetupParameters {
   ///A temp key can be used for API operations that require a secret key.
   @override
   final String? customerEphemeralKeySecret;
+
+  /// (Experimental) This parameter can be changed or removed at any time (use at your own risk).
+  /// The client secret of this Customer Session. Used on the client to set up secure access to the given customer.
+  @override
+  final String? customerSessionClientSecret;
 
   /// Secret used for client-side retrieval using a publishable key.
   ///
@@ -725,9 +784,17 @@ class _$SetupParametersImpl implements _SetupParameters {
     return EqualUnmodifiableListView(value);
   }
 
+  /// By default, PaymentSheet will accept all supported cards by Stripe.
+  /// You can specify card brands PaymentSheet should block or allow payment for by providing an array of those card brands.
+  ///
+  /// Note: This is only a client-side solution.
+  ///Note: Card brand filtering is not currently supported in Link.
+  @override
+  final CardBrandAcceptance? cardBrandAcceptance;
+
   @override
   String toString() {
-    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, intentConfiguration: $intentConfiguration, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, allowsRemovalOfLastSavedPaymentMethod: $allowsRemovalOfLastSavedPaymentMethod, paymentMethodOrder: $paymentMethodOrder, returnURL: $returnURL, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, preferredNetworks: $preferredNetworks)';
+    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, customerSessionClientSecret: $customerSessionClientSecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, intentConfiguration: $intentConfiguration, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, allowsRemovalOfLastSavedPaymentMethod: $allowsRemovalOfLastSavedPaymentMethod, paymentMethodOrder: $paymentMethodOrder, returnURL: $returnURL, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, preferredNetworks: $preferredNetworks, cardBrandAcceptance: $cardBrandAcceptance)';
   }
 
   @override
@@ -744,6 +811,9 @@ class _$SetupParametersImpl implements _SetupParameters {
             (identical(other.customerEphemeralKeySecret, customerEphemeralKeySecret) ||
                 other.customerEphemeralKeySecret ==
                     customerEphemeralKeySecret) &&
+            (identical(other.customerSessionClientSecret, customerSessionClientSecret) ||
+                other.customerSessionClientSecret ==
+                    customerSessionClientSecret) &&
             (identical(other.paymentIntentClientSecret, paymentIntentClientSecret) ||
                 other.paymentIntentClientSecret == paymentIntentClientSecret) &&
             (identical(other.setupIntentClientSecret, setupIntentClientSecret) ||
@@ -774,10 +844,9 @@ class _$SetupParametersImpl implements _SetupParameters {
             (identical(other.billingDetailsCollectionConfiguration, billingDetailsCollectionConfiguration) ||
                 other.billingDetailsCollectionConfiguration ==
                     billingDetailsCollectionConfiguration) &&
-            (identical(other.removeSavedPaymentMethodMessage, removeSavedPaymentMethodMessage) ||
-                other.removeSavedPaymentMethodMessage ==
-                    removeSavedPaymentMethodMessage) &&
-            const DeepCollectionEquality().equals(other._preferredNetworks, _preferredNetworks));
+            (identical(other.removeSavedPaymentMethodMessage, removeSavedPaymentMethodMessage) || other.removeSavedPaymentMethodMessage == removeSavedPaymentMethodMessage) &&
+            const DeepCollectionEquality().equals(other._preferredNetworks, _preferredNetworks) &&
+            (identical(other.cardBrandAcceptance, cardBrandAcceptance) || other.cardBrandAcceptance == cardBrandAcceptance));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -788,6 +857,7 @@ class _$SetupParametersImpl implements _SetupParameters {
         customerId,
         primaryButtonLabel,
         customerEphemeralKeySecret,
+        customerSessionClientSecret,
         paymentIntentClientSecret,
         setupIntentClientSecret,
         intentConfiguration,
@@ -803,7 +873,8 @@ class _$SetupParametersImpl implements _SetupParameters {
         returnURL,
         billingDetailsCollectionConfiguration,
         removeSavedPaymentMethodMessage,
-        const DeepCollectionEquality().hash(_preferredNetworks)
+        const DeepCollectionEquality().hash(_preferredNetworks),
+        cardBrandAcceptance
       ]);
 
   /// Create a copy of SetupPaymentSheetParameters
@@ -829,6 +900,7 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
       final String? customerId,
       final String? primaryButtonLabel,
       final String? customerEphemeralKeySecret,
+      final String? customerSessionClientSecret,
       final String? paymentIntentClientSecret,
       final String? setupIntentClientSecret,
       final IntentConfiguration? intentConfiguration,
@@ -847,7 +919,8 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
           billingDetailsCollectionConfiguration,
       final String? removeSavedPaymentMethodMessage,
       @JsonKey(toJson: _cardBrandListToJson)
-      final List<CardBrand>? preferredNetworks}) = _$SetupParametersImpl;
+      final List<CardBrand>? preferredNetworks,
+      final CardBrandAcceptance? cardBrandAcceptance}) = _$SetupParametersImpl;
 
   factory _SetupParameters.fromJson(Map<String, dynamic> json) =
       _$SetupParametersImpl.fromJson;
@@ -872,6 +945,11 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   ///A temp key can be used for API operations that require a secret key.
   @override
   String? get customerEphemeralKeySecret;
+
+  /// (Experimental) This parameter can be changed or removed at any time (use at your own risk).
+  /// The client secret of this Customer Session. Used on the client to set up secure access to the given customer.
+  @override
+  String? get customerSessionClientSecret;
 
   /// Secret used for client-side retrieval using a publishable key.
   ///
@@ -965,6 +1043,14 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   @override
   @JsonKey(toJson: _cardBrandListToJson)
   List<CardBrand>? get preferredNetworks;
+
+  /// By default, PaymentSheet will accept all supported cards by Stripe.
+  /// You can specify card brands PaymentSheet should block or allow payment for by providing an array of those card brands.
+  ///
+  /// Note: This is only a client-side solution.
+  ///Note: Card brand filtering is not currently supported in Link.
+  @override
+  CardBrandAcceptance? get cardBrandAcceptance;
 
   /// Create a copy of SetupPaymentSheetParameters
   /// with the given fields replaced by the non-null parameter values.
@@ -2115,6 +2201,7 @@ mixin _$PaymentSheetGooglePay {
   String? get amount => throw _privateConstructorUsedError;
 
   /// The Google Pay button type to use. Set to "Pay" by default.
+  @JsonKey(toJson: PaymentSheetGooglePay.platformButtonTypeToJson)
   PlatformButtonType? get buttonType => throw _privateConstructorUsedError;
 
   /// Serializes this PaymentSheetGooglePay to a JSON map.
@@ -2139,6 +2226,7 @@ abstract class $PaymentSheetGooglePayCopyWith<$Res> {
       bool testEnv,
       String? label,
       String? amount,
+      @JsonKey(toJson: PaymentSheetGooglePay.platformButtonTypeToJson)
       PlatformButtonType? buttonType});
 }
 
@@ -2209,6 +2297,7 @@ abstract class _$$PaymentSheetGooglePayImplCopyWith<$Res>
       bool testEnv,
       String? label,
       String? amount,
+      @JsonKey(toJson: PaymentSheetGooglePay.platformButtonTypeToJson)
       PlatformButtonType? buttonType});
 }
 
@@ -2272,6 +2361,7 @@ class _$PaymentSheetGooglePayImpl implements _PaymentSheetGooglePay {
       this.testEnv = false,
       this.label,
       this.amount,
+      @JsonKey(toJson: PaymentSheetGooglePay.platformButtonTypeToJson)
       this.buttonType});
 
   factory _$PaymentSheetGooglePayImpl.fromJson(Map<String, dynamic> json) =>
@@ -2300,6 +2390,7 @@ class _$PaymentSheetGooglePayImpl implements _PaymentSheetGooglePay {
 
   /// The Google Pay button type to use. Set to "Pay" by default.
   @override
+  @JsonKey(toJson: PaymentSheetGooglePay.platformButtonTypeToJson)
   final PlatformButtonType? buttonType;
 
   @override
@@ -2352,6 +2443,7 @@ abstract class _PaymentSheetGooglePay implements PaymentSheetGooglePay {
       final bool testEnv,
       final String? label,
       final String? amount,
+      @JsonKey(toJson: PaymentSheetGooglePay.platformButtonTypeToJson)
       final PlatformButtonType? buttonType}) = _$PaymentSheetGooglePayImpl;
 
   factory _PaymentSheetGooglePay.fromJson(Map<String, dynamic> json) =
@@ -2379,6 +2471,7 @@ abstract class _PaymentSheetGooglePay implements PaymentSheetGooglePay {
 
   /// The Google Pay button type to use. Set to "Pay" by default.
   @override
+  @JsonKey(toJson: PaymentSheetGooglePay.platformButtonTypeToJson)
   PlatformButtonType? get buttonType;
 
   /// Create a copy of PaymentSheetGooglePay
@@ -5674,5 +5767,731 @@ abstract class _BillingDetailsCollectionConfiguration
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BillingDetailsCollectionConfigurationImplCopyWith<
           _$BillingDetailsCollectionConfigurationImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+CardBrandAcceptance _$CardBrandAcceptanceFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'all':
+      return _CardBrandAcceptanceAll.fromJson(json);
+    case 'allowed':
+      return _CardBrandAcceptanceAllowed.fromJson(json);
+    case 'disallowed':
+      return _CardBrandAcceptanceDisallowed.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'CardBrandAcceptance',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$CardBrandAcceptance {
+  CardBrandAcceptanceFilter get filter => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CardBrandAcceptanceFilter filter) all,
+    required TResult Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)
+        allowed,
+    required TResult Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)
+        disallowed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(CardBrandAcceptanceFilter filter)? all,
+    TResult? Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)?
+        allowed,
+    TResult? Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)?
+        disallowed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CardBrandAcceptanceFilter filter)? all,
+    TResult Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)?
+        allowed,
+    TResult Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)?
+        disallowed,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CardBrandAcceptanceAll value) all,
+    required TResult Function(_CardBrandAcceptanceAllowed value) allowed,
+    required TResult Function(_CardBrandAcceptanceDisallowed value) disallowed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CardBrandAcceptanceAll value)? all,
+    TResult? Function(_CardBrandAcceptanceAllowed value)? allowed,
+    TResult? Function(_CardBrandAcceptanceDisallowed value)? disallowed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CardBrandAcceptanceAll value)? all,
+    TResult Function(_CardBrandAcceptanceAllowed value)? allowed,
+    TResult Function(_CardBrandAcceptanceDisallowed value)? disallowed,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this CardBrandAcceptance to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of CardBrandAcceptance
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $CardBrandAcceptanceCopyWith<CardBrandAcceptance> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CardBrandAcceptanceCopyWith<$Res> {
+  factory $CardBrandAcceptanceCopyWith(
+          CardBrandAcceptance value, $Res Function(CardBrandAcceptance) then) =
+      _$CardBrandAcceptanceCopyWithImpl<$Res, CardBrandAcceptance>;
+  @useResult
+  $Res call({CardBrandAcceptanceFilter filter});
+}
+
+/// @nodoc
+class _$CardBrandAcceptanceCopyWithImpl<$Res, $Val extends CardBrandAcceptance>
+    implements $CardBrandAcceptanceCopyWith<$Res> {
+  _$CardBrandAcceptanceCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of CardBrandAcceptance
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? filter = null,
+  }) {
+    return _then(_value.copyWith(
+      filter: null == filter
+          ? _value.filter
+          : filter // ignore: cast_nullable_to_non_nullable
+              as CardBrandAcceptanceFilter,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CardBrandAcceptanceAllImplCopyWith<$Res>
+    implements $CardBrandAcceptanceCopyWith<$Res> {
+  factory _$$CardBrandAcceptanceAllImplCopyWith(
+          _$CardBrandAcceptanceAllImpl value,
+          $Res Function(_$CardBrandAcceptanceAllImpl) then) =
+      __$$CardBrandAcceptanceAllImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({CardBrandAcceptanceFilter filter});
+}
+
+/// @nodoc
+class __$$CardBrandAcceptanceAllImplCopyWithImpl<$Res>
+    extends _$CardBrandAcceptanceCopyWithImpl<$Res,
+        _$CardBrandAcceptanceAllImpl>
+    implements _$$CardBrandAcceptanceAllImplCopyWith<$Res> {
+  __$$CardBrandAcceptanceAllImplCopyWithImpl(
+      _$CardBrandAcceptanceAllImpl _value,
+      $Res Function(_$CardBrandAcceptanceAllImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CardBrandAcceptance
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? filter = null,
+  }) {
+    return _then(_$CardBrandAcceptanceAllImpl(
+      filter: null == filter
+          ? _value.filter
+          : filter // ignore: cast_nullable_to_non_nullable
+              as CardBrandAcceptanceFilter,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$CardBrandAcceptanceAllImpl implements _CardBrandAcceptanceAll {
+  const _$CardBrandAcceptanceAllImpl(
+      {this.filter = CardBrandAcceptanceFilter.all, final String? $type})
+      : $type = $type ?? 'all';
+
+  factory _$CardBrandAcceptanceAllImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CardBrandAcceptanceAllImplFromJson(json);
+
+  @override
+  @JsonKey()
+  final CardBrandAcceptanceFilter filter;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'CardBrandAcceptance.all(filter: $filter)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CardBrandAcceptanceAllImpl &&
+            (identical(other.filter, filter) || other.filter == filter));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, filter);
+
+  /// Create a copy of CardBrandAcceptance
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CardBrandAcceptanceAllImplCopyWith<_$CardBrandAcceptanceAllImpl>
+      get copyWith => __$$CardBrandAcceptanceAllImplCopyWithImpl<
+          _$CardBrandAcceptanceAllImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CardBrandAcceptanceFilter filter) all,
+    required TResult Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)
+        allowed,
+    required TResult Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)
+        disallowed,
+  }) {
+    return all(filter);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(CardBrandAcceptanceFilter filter)? all,
+    TResult? Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)?
+        allowed,
+    TResult? Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)?
+        disallowed,
+  }) {
+    return all?.call(filter);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CardBrandAcceptanceFilter filter)? all,
+    TResult Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)?
+        allowed,
+    TResult Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)?
+        disallowed,
+    required TResult orElse(),
+  }) {
+    if (all != null) {
+      return all(filter);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CardBrandAcceptanceAll value) all,
+    required TResult Function(_CardBrandAcceptanceAllowed value) allowed,
+    required TResult Function(_CardBrandAcceptanceDisallowed value) disallowed,
+  }) {
+    return all(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CardBrandAcceptanceAll value)? all,
+    TResult? Function(_CardBrandAcceptanceAllowed value)? allowed,
+    TResult? Function(_CardBrandAcceptanceDisallowed value)? disallowed,
+  }) {
+    return all?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CardBrandAcceptanceAll value)? all,
+    TResult Function(_CardBrandAcceptanceAllowed value)? allowed,
+    TResult Function(_CardBrandAcceptanceDisallowed value)? disallowed,
+    required TResult orElse(),
+  }) {
+    if (all != null) {
+      return all(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CardBrandAcceptanceAllImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CardBrandAcceptanceAll implements CardBrandAcceptance {
+  const factory _CardBrandAcceptanceAll(
+      {final CardBrandAcceptanceFilter filter}) = _$CardBrandAcceptanceAllImpl;
+
+  factory _CardBrandAcceptanceAll.fromJson(Map<String, dynamic> json) =
+      _$CardBrandAcceptanceAllImpl.fromJson;
+
+  @override
+  CardBrandAcceptanceFilter get filter;
+
+  /// Create a copy of CardBrandAcceptance
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CardBrandAcceptanceAllImplCopyWith<_$CardBrandAcceptanceAllImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CardBrandAcceptanceAllowedImplCopyWith<$Res>
+    implements $CardBrandAcceptanceCopyWith<$Res> {
+  factory _$$CardBrandAcceptanceAllowedImplCopyWith(
+          _$CardBrandAcceptanceAllowedImpl value,
+          $Res Function(_$CardBrandAcceptanceAllowedImpl) then) =
+      __$$CardBrandAcceptanceAllowedImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands});
+}
+
+/// @nodoc
+class __$$CardBrandAcceptanceAllowedImplCopyWithImpl<$Res>
+    extends _$CardBrandAcceptanceCopyWithImpl<$Res,
+        _$CardBrandAcceptanceAllowedImpl>
+    implements _$$CardBrandAcceptanceAllowedImplCopyWith<$Res> {
+  __$$CardBrandAcceptanceAllowedImplCopyWithImpl(
+      _$CardBrandAcceptanceAllowedImpl _value,
+      $Res Function(_$CardBrandAcceptanceAllowedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CardBrandAcceptance
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? filter = null,
+    Object? brands = null,
+  }) {
+    return _then(_$CardBrandAcceptanceAllowedImpl(
+      filter: null == filter
+          ? _value.filter
+          : filter // ignore: cast_nullable_to_non_nullable
+              as CardBrandAcceptanceFilter,
+      brands: null == brands
+          ? _value._brands
+          : brands // ignore: cast_nullable_to_non_nullable
+              as List<CardBrandCategory>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$CardBrandAcceptanceAllowedImpl implements _CardBrandAcceptanceAllowed {
+  const _$CardBrandAcceptanceAllowedImpl(
+      {this.filter = CardBrandAcceptanceFilter.allowed,
+      required final List<CardBrandCategory> brands,
+      final String? $type})
+      : _brands = brands,
+        $type = $type ?? 'allowed';
+
+  factory _$CardBrandAcceptanceAllowedImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CardBrandAcceptanceAllowedImplFromJson(json);
+
+  @override
+  @JsonKey()
+  final CardBrandAcceptanceFilter filter;
+  final List<CardBrandCategory> _brands;
+  @override
+  List<CardBrandCategory> get brands {
+    if (_brands is EqualUnmodifiableListView) return _brands;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_brands);
+  }
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'CardBrandAcceptance.allowed(filter: $filter, brands: $brands)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CardBrandAcceptanceAllowedImpl &&
+            (identical(other.filter, filter) || other.filter == filter) &&
+            const DeepCollectionEquality().equals(other._brands, _brands));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, filter, const DeepCollectionEquality().hash(_brands));
+
+  /// Create a copy of CardBrandAcceptance
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CardBrandAcceptanceAllowedImplCopyWith<_$CardBrandAcceptanceAllowedImpl>
+      get copyWith => __$$CardBrandAcceptanceAllowedImplCopyWithImpl<
+          _$CardBrandAcceptanceAllowedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CardBrandAcceptanceFilter filter) all,
+    required TResult Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)
+        allowed,
+    required TResult Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)
+        disallowed,
+  }) {
+    return allowed(filter, brands);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(CardBrandAcceptanceFilter filter)? all,
+    TResult? Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)?
+        allowed,
+    TResult? Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)?
+        disallowed,
+  }) {
+    return allowed?.call(filter, brands);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CardBrandAcceptanceFilter filter)? all,
+    TResult Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)?
+        allowed,
+    TResult Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)?
+        disallowed,
+    required TResult orElse(),
+  }) {
+    if (allowed != null) {
+      return allowed(filter, brands);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CardBrandAcceptanceAll value) all,
+    required TResult Function(_CardBrandAcceptanceAllowed value) allowed,
+    required TResult Function(_CardBrandAcceptanceDisallowed value) disallowed,
+  }) {
+    return allowed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CardBrandAcceptanceAll value)? all,
+    TResult? Function(_CardBrandAcceptanceAllowed value)? allowed,
+    TResult? Function(_CardBrandAcceptanceDisallowed value)? disallowed,
+  }) {
+    return allowed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CardBrandAcceptanceAll value)? all,
+    TResult Function(_CardBrandAcceptanceAllowed value)? allowed,
+    TResult Function(_CardBrandAcceptanceDisallowed value)? disallowed,
+    required TResult orElse(),
+  }) {
+    if (allowed != null) {
+      return allowed(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CardBrandAcceptanceAllowedImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CardBrandAcceptanceAllowed implements CardBrandAcceptance {
+  const factory _CardBrandAcceptanceAllowed(
+          {final CardBrandAcceptanceFilter filter,
+          required final List<CardBrandCategory> brands}) =
+      _$CardBrandAcceptanceAllowedImpl;
+
+  factory _CardBrandAcceptanceAllowed.fromJson(Map<String, dynamic> json) =
+      _$CardBrandAcceptanceAllowedImpl.fromJson;
+
+  @override
+  CardBrandAcceptanceFilter get filter;
+  List<CardBrandCategory> get brands;
+
+  /// Create a copy of CardBrandAcceptance
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CardBrandAcceptanceAllowedImplCopyWith<_$CardBrandAcceptanceAllowedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CardBrandAcceptanceDisallowedImplCopyWith<$Res>
+    implements $CardBrandAcceptanceCopyWith<$Res> {
+  factory _$$CardBrandAcceptanceDisallowedImplCopyWith(
+          _$CardBrandAcceptanceDisallowedImpl value,
+          $Res Function(_$CardBrandAcceptanceDisallowedImpl) then) =
+      __$$CardBrandAcceptanceDisallowedImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands});
+}
+
+/// @nodoc
+class __$$CardBrandAcceptanceDisallowedImplCopyWithImpl<$Res>
+    extends _$CardBrandAcceptanceCopyWithImpl<$Res,
+        _$CardBrandAcceptanceDisallowedImpl>
+    implements _$$CardBrandAcceptanceDisallowedImplCopyWith<$Res> {
+  __$$CardBrandAcceptanceDisallowedImplCopyWithImpl(
+      _$CardBrandAcceptanceDisallowedImpl _value,
+      $Res Function(_$CardBrandAcceptanceDisallowedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CardBrandAcceptance
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? filter = null,
+    Object? brands = null,
+  }) {
+    return _then(_$CardBrandAcceptanceDisallowedImpl(
+      filter: null == filter
+          ? _value.filter
+          : filter // ignore: cast_nullable_to_non_nullable
+              as CardBrandAcceptanceFilter,
+      brands: null == brands
+          ? _value._brands
+          : brands // ignore: cast_nullable_to_non_nullable
+              as List<CardBrandCategory>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$CardBrandAcceptanceDisallowedImpl
+    implements _CardBrandAcceptanceDisallowed {
+  const _$CardBrandAcceptanceDisallowedImpl(
+      {this.filter = CardBrandAcceptanceFilter.disallowed,
+      required final List<CardBrandCategory> brands,
+      final String? $type})
+      : _brands = brands,
+        $type = $type ?? 'disallowed';
+
+  factory _$CardBrandAcceptanceDisallowedImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CardBrandAcceptanceDisallowedImplFromJson(json);
+
+  @override
+  @JsonKey()
+  final CardBrandAcceptanceFilter filter;
+  final List<CardBrandCategory> _brands;
+  @override
+  List<CardBrandCategory> get brands {
+    if (_brands is EqualUnmodifiableListView) return _brands;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_brands);
+  }
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'CardBrandAcceptance.disallowed(filter: $filter, brands: $brands)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CardBrandAcceptanceDisallowedImpl &&
+            (identical(other.filter, filter) || other.filter == filter) &&
+            const DeepCollectionEquality().equals(other._brands, _brands));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, filter, const DeepCollectionEquality().hash(_brands));
+
+  /// Create a copy of CardBrandAcceptance
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CardBrandAcceptanceDisallowedImplCopyWith<
+          _$CardBrandAcceptanceDisallowedImpl>
+      get copyWith => __$$CardBrandAcceptanceDisallowedImplCopyWithImpl<
+          _$CardBrandAcceptanceDisallowedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CardBrandAcceptanceFilter filter) all,
+    required TResult Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)
+        allowed,
+    required TResult Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)
+        disallowed,
+  }) {
+    return disallowed(filter, brands);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(CardBrandAcceptanceFilter filter)? all,
+    TResult? Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)?
+        allowed,
+    TResult? Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)?
+        disallowed,
+  }) {
+    return disallowed?.call(filter, brands);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CardBrandAcceptanceFilter filter)? all,
+    TResult Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)?
+        allowed,
+    TResult Function(
+            CardBrandAcceptanceFilter filter, List<CardBrandCategory> brands)?
+        disallowed,
+    required TResult orElse(),
+  }) {
+    if (disallowed != null) {
+      return disallowed(filter, brands);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CardBrandAcceptanceAll value) all,
+    required TResult Function(_CardBrandAcceptanceAllowed value) allowed,
+    required TResult Function(_CardBrandAcceptanceDisallowed value) disallowed,
+  }) {
+    return disallowed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CardBrandAcceptanceAll value)? all,
+    TResult? Function(_CardBrandAcceptanceAllowed value)? allowed,
+    TResult? Function(_CardBrandAcceptanceDisallowed value)? disallowed,
+  }) {
+    return disallowed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CardBrandAcceptanceAll value)? all,
+    TResult Function(_CardBrandAcceptanceAllowed value)? allowed,
+    TResult Function(_CardBrandAcceptanceDisallowed value)? disallowed,
+    required TResult orElse(),
+  }) {
+    if (disallowed != null) {
+      return disallowed(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CardBrandAcceptanceDisallowedImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CardBrandAcceptanceDisallowed implements CardBrandAcceptance {
+  const factory _CardBrandAcceptanceDisallowed(
+          {final CardBrandAcceptanceFilter filter,
+          required final List<CardBrandCategory> brands}) =
+      _$CardBrandAcceptanceDisallowedImpl;
+
+  factory _CardBrandAcceptanceDisallowed.fromJson(Map<String, dynamic> json) =
+      _$CardBrandAcceptanceDisallowedImpl.fromJson;
+
+  @override
+  CardBrandAcceptanceFilter get filter;
+  List<CardBrandCategory> get brands;
+
+  /// Create a copy of CardBrandAcceptance
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CardBrandAcceptanceDisallowedImplCopyWith<
+          _$CardBrandAcceptanceDisallowedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

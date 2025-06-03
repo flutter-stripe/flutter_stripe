@@ -19,7 +19,7 @@ class ExpressCheckoutElement extends StatefulWidget {
   final js.ExpressCheckoutLayout? layout;
   final ValueChanged<String> onConfirm;
 
-  ExpressCheckoutElement({
+  const ExpressCheckoutElement({
     super.key,
     required this.clientSecret,
     this.height,
@@ -88,7 +88,7 @@ class ExpressCheckoutElementState extends State<ExpressCheckoutElement> {
       ..id = 'express-checkout-element'
       ..style.border = 'none'
       ..style.width = '100%'
-      ..style.height = '${height}'
+      ..style.height = '$height'
       ..style.overflow = 'scroll'
       ..style.overflowX = 'hidden';
 
@@ -142,12 +142,6 @@ class ExpressCheckoutElementState extends State<ExpressCheckoutElement> {
   Widget build(BuildContext context) {
     return Focus(
       focusNode: _effectiveNode,
-      onFocusChange: (focus) {
-        /*  if (focus)
-            element?.focus();
-          else
-            element?.blur(); */
-      },
       child: ConstrainedBox(
         constraints: BoxConstraints(
           maxWidth: double.infinity,

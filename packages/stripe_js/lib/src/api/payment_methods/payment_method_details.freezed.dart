@@ -1512,6 +1512,457 @@ abstract class _IdealPaymentMethodDetailsSelfCollect
       get copyWith => throw _privateConstructorUsedError;
 }
 
+P24PaymentMethodDetails _$P24PaymentMethodDetailsFromJson(
+    Map<String, dynamic> json) {
+  switch (json['type']) {
+    case 'p24':
+      return _IdP24PaymentMethodDetails.fromJson(json);
+    case 'p24':
+      return _P24PaymentMethodDetails.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'type', 'P24PaymentMethodDetails',
+          'Invalid union type "${json['type']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$P24PaymentMethodDetails {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
+        $default, {
+    required TResult Function(String id) id,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+        $default, {
+    TResult? Function(String id)? id,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+        $default, {
+    TResult Function(String id)? id,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_P24PaymentMethodDetails value) $default, {
+    required TResult Function(_IdP24PaymentMethodDetails value) id,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_P24PaymentMethodDetails value)? $default, {
+    TResult? Function(_IdP24PaymentMethodDetails value)? id,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_P24PaymentMethodDetails value)? $default, {
+    TResult Function(_IdP24PaymentMethodDetails value)? id,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this P24PaymentMethodDetails to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $P24PaymentMethodDetailsCopyWith<$Res> {
+  factory $P24PaymentMethodDetailsCopyWith(P24PaymentMethodDetails value,
+          $Res Function(P24PaymentMethodDetails) then) =
+      _$P24PaymentMethodDetailsCopyWithImpl<$Res, P24PaymentMethodDetails>;
+}
+
+/// @nodoc
+class _$P24PaymentMethodDetailsCopyWithImpl<$Res,
+        $Val extends P24PaymentMethodDetails>
+    implements $P24PaymentMethodDetailsCopyWith<$Res> {
+  _$P24PaymentMethodDetailsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of P24PaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$IdP24PaymentMethodDetailsImplCopyWith<$Res> {
+  factory _$$IdP24PaymentMethodDetailsImplCopyWith(
+          _$IdP24PaymentMethodDetailsImpl value,
+          $Res Function(_$IdP24PaymentMethodDetailsImpl) then) =
+      __$$IdP24PaymentMethodDetailsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$IdP24PaymentMethodDetailsImplCopyWithImpl<$Res>
+    extends _$P24PaymentMethodDetailsCopyWithImpl<$Res,
+        _$IdP24PaymentMethodDetailsImpl>
+    implements _$$IdP24PaymentMethodDetailsImplCopyWith<$Res> {
+  __$$IdP24PaymentMethodDetailsImplCopyWithImpl(
+      _$IdP24PaymentMethodDetailsImpl _value,
+      $Res Function(_$IdP24PaymentMethodDetailsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of P24PaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$IdP24PaymentMethodDetailsImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$IdP24PaymentMethodDetailsImpl implements _IdP24PaymentMethodDetails {
+  const _$IdP24PaymentMethodDetailsImpl(this.id, {final String? $type})
+      : $type = $type ?? 'p24';
+
+  factory _$IdP24PaymentMethodDetailsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IdP24PaymentMethodDetailsImplFromJson(json);
+
+  @override
+  final String id;
+
+  @JsonKey(name: 'type')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'P24PaymentMethodDetails.id(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$IdP24PaymentMethodDetailsImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  /// Create a copy of P24PaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$IdP24PaymentMethodDetailsImplCopyWith<_$IdP24PaymentMethodDetailsImpl>
+      get copyWith => __$$IdP24PaymentMethodDetailsImplCopyWithImpl<
+          _$IdP24PaymentMethodDetailsImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
+        $default, {
+    required TResult Function(String id) id,
+  }) {
+    return id(this.id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+        $default, {
+    TResult? Function(String id)? id,
+  }) {
+    return id?.call(this.id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+        $default, {
+    TResult Function(String id)? id,
+    required TResult orElse(),
+  }) {
+    if (id != null) {
+      return id(this.id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_P24PaymentMethodDetails value) $default, {
+    required TResult Function(_IdP24PaymentMethodDetails value) id,
+  }) {
+    return id(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_P24PaymentMethodDetails value)? $default, {
+    TResult? Function(_IdP24PaymentMethodDetails value)? id,
+  }) {
+    return id?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_P24PaymentMethodDetails value)? $default, {
+    TResult Function(_IdP24PaymentMethodDetails value)? id,
+    required TResult orElse(),
+  }) {
+    if (id != null) {
+      return id(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$IdP24PaymentMethodDetailsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _IdP24PaymentMethodDetails
+    implements P24PaymentMethodDetails, IdPaymentMethodDetails {
+  const factory _IdP24PaymentMethodDetails(final String id) =
+      _$IdP24PaymentMethodDetailsImpl;
+
+  factory _IdP24PaymentMethodDetails.fromJson(Map<String, dynamic> json) =
+      _$IdP24PaymentMethodDetailsImpl.fromJson;
+
+  String get id;
+
+  /// Create a copy of P24PaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$IdP24PaymentMethodDetailsImplCopyWith<_$IdP24PaymentMethodDetailsImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$P24PaymentMethodDetailsImplCopyWith<$Res> {
+  factory _$$P24PaymentMethodDetailsImplCopyWith(
+          _$P24PaymentMethodDetailsImpl value,
+          $Res Function(_$P24PaymentMethodDetailsImpl) then) =
+      __$$P24PaymentMethodDetailsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({@JsonKey(name: "billing_details") BillingDetails? billingDetails});
+
+  $BillingDetailsCopyWith<$Res>? get billingDetails;
+}
+
+/// @nodoc
+class __$$P24PaymentMethodDetailsImplCopyWithImpl<$Res>
+    extends _$P24PaymentMethodDetailsCopyWithImpl<$Res,
+        _$P24PaymentMethodDetailsImpl>
+    implements _$$P24PaymentMethodDetailsImplCopyWith<$Res> {
+  __$$P24PaymentMethodDetailsImplCopyWithImpl(
+      _$P24PaymentMethodDetailsImpl _value,
+      $Res Function(_$P24PaymentMethodDetailsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of P24PaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? billingDetails = freezed,
+  }) {
+    return _then(_$P24PaymentMethodDetailsImpl(
+      billingDetails: freezed == billingDetails
+          ? _value.billingDetails
+          : billingDetails // ignore: cast_nullable_to_non_nullable
+              as BillingDetails?,
+    ));
+  }
+
+  /// Create a copy of P24PaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $BillingDetailsCopyWith<$Res>? get billingDetails {
+    if (_value.billingDetails == null) {
+      return null;
+    }
+
+    return $BillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
+      return _then(_value.copyWith(billingDetails: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$P24PaymentMethodDetailsImpl implements _P24PaymentMethodDetails {
+  const _$P24PaymentMethodDetailsImpl(
+      {@JsonKey(name: "billing_details") required this.billingDetails,
+      final String? $type})
+      : $type = $type ?? 'p24';
+
+  factory _$P24PaymentMethodDetailsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$P24PaymentMethodDetailsImplFromJson(json);
+
+  /// The billing_details associated with the card.
+  @override
+  @JsonKey(name: "billing_details")
+  final BillingDetails? billingDetails;
+
+  @JsonKey(name: 'type')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'P24PaymentMethodDetails(billingDetails: $billingDetails)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$P24PaymentMethodDetailsImpl &&
+            (identical(other.billingDetails, billingDetails) ||
+                other.billingDetails == billingDetails));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, billingDetails);
+
+  /// Create a copy of P24PaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$P24PaymentMethodDetailsImplCopyWith<_$P24PaymentMethodDetailsImpl>
+      get copyWith => __$$P24PaymentMethodDetailsImplCopyWithImpl<
+          _$P24PaymentMethodDetailsImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
+        $default, {
+    required TResult Function(String id) id,
+  }) {
+    return $default(billingDetails);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+        $default, {
+    TResult? Function(String id)? id,
+  }) {
+    return $default?.call(billingDetails);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+        $default, {
+    TResult Function(String id)? id,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(billingDetails);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_P24PaymentMethodDetails value) $default, {
+    required TResult Function(_IdP24PaymentMethodDetails value) id,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_P24PaymentMethodDetails value)? $default, {
+    TResult? Function(_IdP24PaymentMethodDetails value)? id,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_P24PaymentMethodDetails value)? $default, {
+    TResult Function(_IdP24PaymentMethodDetails value)? id,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$P24PaymentMethodDetailsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _P24PaymentMethodDetails implements P24PaymentMethodDetails {
+  const factory _P24PaymentMethodDetails(
+          {@JsonKey(name: "billing_details")
+          required final BillingDetails? billingDetails}) =
+      _$P24PaymentMethodDetailsImpl;
+
+  factory _P24PaymentMethodDetails.fromJson(Map<String, dynamic> json) =
+      _$P24PaymentMethodDetailsImpl.fromJson;
+
+  /// The billing_details associated with the card.
+  @JsonKey(name: "billing_details")
+  BillingDetails? get billingDetails;
+
+  /// Create a copy of P24PaymentMethodDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$P24PaymentMethodDetailsImplCopyWith<_$P24PaymentMethodDetailsImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
 IdealBankData _$IdealBankDataFromJson(Map<String, dynamic> json) {
   return _IdealBankData.fromJson(json);
 }
@@ -1519,7 +1970,7 @@ IdealBankData _$IdealBankDataFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$IdealBankData {
   /// The customer's bank.
-  String get bank => throw _privateConstructorUsedError;
+  String? get bank => throw _privateConstructorUsedError;
 
   /// Serializes this IdealBankData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1537,7 +1988,7 @@ abstract class $IdealBankDataCopyWith<$Res> {
           IdealBankData value, $Res Function(IdealBankData) then) =
       _$IdealBankDataCopyWithImpl<$Res, IdealBankData>;
   @useResult
-  $Res call({String bank});
+  $Res call({String? bank});
 }
 
 /// @nodoc
@@ -1555,13 +2006,13 @@ class _$IdealBankDataCopyWithImpl<$Res, $Val extends IdealBankData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? bank = null,
+    Object? bank = freezed,
   }) {
     return _then(_value.copyWith(
-      bank: null == bank
+      bank: freezed == bank
           ? _value.bank
           : bank // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -1574,7 +2025,7 @@ abstract class _$$IdealBankDataImplCopyWith<$Res>
       __$$IdealBankDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String bank});
+  $Res call({String? bank});
 }
 
 /// @nodoc
@@ -1590,13 +2041,13 @@ class __$$IdealBankDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? bank = null,
+    Object? bank = freezed,
   }) {
     return _then(_$IdealBankDataImpl(
-      bank: null == bank
+      bank: freezed == bank
           ? _value.bank
           : bank // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -1604,14 +2055,14 @@ class __$$IdealBankDataImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$IdealBankDataImpl implements _IdealBankData {
-  const _$IdealBankDataImpl({required this.bank});
+  const _$IdealBankDataImpl({this.bank});
 
   factory _$IdealBankDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$IdealBankDataImplFromJson(json);
 
   /// The customer's bank.
   @override
-  final String bank;
+  final String? bank;
 
   @override
   String toString() {
@@ -1647,15 +2098,14 @@ class _$IdealBankDataImpl implements _IdealBankData {
 }
 
 abstract class _IdealBankData implements IdealBankData {
-  const factory _IdealBankData({required final String bank}) =
-      _$IdealBankDataImpl;
+  const factory _IdealBankData({final String? bank}) = _$IdealBankDataImpl;
 
   factory _IdealBankData.fromJson(Map<String, dynamic> json) =
       _$IdealBankDataImpl.fromJson;
 
   /// The customer's bank.
   @override
-  String get bank;
+  String? get bank;
 
   /// Create a copy of IdealBankData
   /// with the given fields replaced by the non-null parameter values.

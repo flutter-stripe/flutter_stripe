@@ -1,6 +1,17 @@
-## 6.3.0
+## 6.4.1
 **Features**
 - add method for deferred payment
+
+## 6.4.0
+- Use latest platform interface
+
+## 6.3.0
+**Features**
+- Add P24 support on Stripe web
+
+**Fixes**
+- Compliance with latest Dart analyzer
+- Prevent focus loop in Payment element for the web
 
 ## 6.2.1
 **Features**

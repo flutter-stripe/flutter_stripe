@@ -170,11 +170,16 @@ abstract class StripePlatform extends PlatformInterface {
   });
 
   /// Methods related to financial connections
-  Future<FinancialConnectionTokenResult> collectBankAccountToken(
-      {required String clientSecret});
+  Future<FinancialConnectionTokenResult> collectBankAccountToken({
+    required String clientSecret,
+    CollectBankAccountTokenParams? params,
+  });
 
-  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts(
-      {required String clientSecret});
+  Future<FinancialConnectionSessionResult> collectFinancialConnectionsAccounts({
+    required String clientSecret,
+    CollectFinancialConnectionsAccountsParams? params =
+        const CollectFinancialConnectionsAccountsParams(),
+  });
 
   Future<void> elementsSubmit();
 

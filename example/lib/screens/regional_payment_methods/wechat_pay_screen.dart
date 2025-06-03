@@ -4,7 +4,7 @@ import 'package:stripe_example/widgets/example_scaffold.dart';
 import 'package:stripe_example/widgets/loading_button.dart';
 
 class WeChatPayScreen extends StatelessWidget {
-  const WeChatPayScreen({Key? key}) : super(key: key);
+  const WeChatPayScreen({super.key});
 
   // Future<Map<String, dynamic>> _createPaymentIntent() async {
   //   final url = Uri.parse('$kApiUrl/create-payment-intent');
@@ -50,7 +50,7 @@ class WeChatPayScreen extends StatelessWidget {
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Payment succesfully completed'),
+          content: Text('Payment successfully completed'),
         ),
       );
     } on Exception catch (e) {
@@ -63,7 +63,7 @@ class WeChatPayScreen extends StatelessWidget {
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Unforeseen error: ${e}'),
+            content: Text('Unforeseen error: $e'),
           ),
         );
       }

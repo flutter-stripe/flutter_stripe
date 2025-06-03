@@ -16,6 +16,8 @@ const _paymentItems = [
 ];
 
 class ApplePayExternalPluginScreen extends StatefulWidget {
+  const ApplePayExternalPluginScreen({super.key});
+
   @override
   _ApplePayExternalPluginScreenState createState() =>
       _ApplePayExternalPluginScreenState();
@@ -69,6 +71,7 @@ class _ApplePayExternalPluginScreenState
   }
 
   Future<void> onApplePayResult(paymentResult) async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     try {
       //debugPrint(paymentResult.toString());
       // 1. Get Stripe token from payment result
@@ -90,14 +93,18 @@ class _ApplePayExternalPluginScreenState
         data: params,
       );
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text('Apple Pay payment succesfully completed')),
-      );
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
+          const SnackBar(
+              content: Text('Apple Pay payment successfully completed')),
+        );
+      }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e')),
-      );
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
+          SnackBar(content: Text('Error: $e')),
+        );
+      }
     }
   }
 

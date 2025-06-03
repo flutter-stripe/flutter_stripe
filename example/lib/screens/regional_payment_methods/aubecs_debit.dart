@@ -9,7 +9,7 @@ import 'package:stripe_example/widgets/loading_button.dart';
 import '../../config.dart';
 
 class AubecsExample extends StatefulWidget {
-  const AubecsExample({Key? key}) : super(key: key);
+  const AubecsExample({super.key});
 
   @override
   State<AubecsExample> createState() => _AubecsExampleState();
@@ -89,6 +89,7 @@ class _AubecsExampleState extends State<AubecsExample> {
   }
 
   Future<void> _pay(BuildContext context) async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     // Precondition:
     //Make sure to have set a custom URI scheme in your app and add it to Stripe SDK
     // see file main.dart in this example app.
@@ -105,23 +106,24 @@ class _AubecsExampleState extends State<AubecsExample> {
           paymentMethodData: PaymentMethodDataAubecs(formDetails: _details!),
         ),
       );
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Payment succesfully completed'),
-        ),
-      );
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
+          SnackBar(
+            content: Text('Payment successfully completed'),
+          ),
+        );
+      }
     } on Exception catch (e) {
-      if (e is StripeException) {
-        ScaffoldMessenger.of(context).showSnackBar(
+      if (e is StripeException && context.mounted) {
+        scaffoldMessenger.showSnackBar(
           SnackBar(
             content: Text('Error from Stripe: ${e.error.localizedMessage}'),
           ),
         );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
+      } else if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
           SnackBar(
-            content: Text('Unforeseen error: ${e}'),
+            content: Text('Unforeseen error: $e'),
           ),
         );
       }

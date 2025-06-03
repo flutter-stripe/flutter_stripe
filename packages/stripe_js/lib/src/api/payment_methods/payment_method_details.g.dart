@@ -31,20 +31,14 @@ _$CardPaymentMethodDefaultImpl _$$CardPaymentMethodDefaultImplFromJson(
     );
 
 Map<String, dynamic> _$$CardPaymentMethodDefaultImplToJson(
-    _$CardPaymentMethodDefaultImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('card', const ElementConverter().toJson(instance.card));
-  writeNotNull('billing_details', instance.billingDetails?.toJson());
-  val['type'] = instance.$type;
-  return val;
-}
+        _$CardPaymentMethodDefaultImpl instance) =>
+    <String, dynamic>{
+      if (const ElementConverter().toJson(instance.card) case final value?)
+        'card': value,
+      if (instance.billingDetails?.toJson() case final value?)
+        'billing_details': value,
+      'type': instance.$type,
+    };
 
 _$CardPaymentMethodDetailsTokenImpl
     _$$CardPaymentMethodDetailsTokenImplFromJson(Map json) =>
@@ -59,21 +53,13 @@ _$CardPaymentMethodDetailsTokenImpl
         );
 
 Map<String, dynamic> _$$CardPaymentMethodDetailsTokenImplToJson(
-    _$CardPaymentMethodDetailsTokenImpl instance) {
-  final val = <String, dynamic>{
-    'card': instance.card.toJson(),
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('billing_details', instance.billingDetails?.toJson());
-  val['type'] = instance.$type;
-  return val;
-}
+        _$CardPaymentMethodDetailsTokenImpl instance) =>
+    <String, dynamic>{
+      'card': instance.card.toJson(),
+      if (instance.billingDetails?.toJson() case final value?)
+        'billing_details': value,
+      'type': instance.$type,
+    };
 
 _$IdIdealPaymentMethodDetailsImpl _$$IdIdealPaymentMethodDetailsImplFromJson(
         Map json) =>
@@ -101,20 +87,14 @@ _$IdealPaymentMethodDetailsImpl _$$IdealPaymentMethodDetailsImplFromJson(
     );
 
 Map<String, dynamic> _$$IdealPaymentMethodDetailsImplToJson(
-    _$IdealPaymentMethodDetailsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ideal', const ElementConverter().toJson(instance.ideal));
-  writeNotNull('billing_details', instance.billingDetails?.toJson());
-  val['type'] = instance.$type;
-  return val;
-}
+        _$IdealPaymentMethodDetailsImpl instance) =>
+    <String, dynamic>{
+      if (const ElementConverter().toJson(instance.ideal) case final value?)
+        'ideal': value,
+      if (instance.billingDetails?.toJson() case final value?)
+        'billing_details': value,
+      'type': instance.$type,
+    };
 
 _$IdealPaymentMethodDetailsSelfCollectImpl
     _$$IdealPaymentMethodDetailsSelfCollectImplFromJson(Map json) =>
@@ -129,30 +109,54 @@ _$IdealPaymentMethodDetailsSelfCollectImpl
         );
 
 Map<String, dynamic> _$$IdealPaymentMethodDetailsSelfCollectImplToJson(
-    _$IdealPaymentMethodDetailsSelfCollectImpl instance) {
-  final val = <String, dynamic>{
-    'ideal': instance.ideal.toJson(),
-  };
+        _$IdealPaymentMethodDetailsSelfCollectImpl instance) =>
+    <String, dynamic>{
+      'ideal': instance.ideal.toJson(),
+      if (instance.billingDetails?.toJson() case final value?)
+        'billing_details': value,
+      'type': instance.$type,
+    };
 
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
+_$IdP24PaymentMethodDetailsImpl _$$IdP24PaymentMethodDetailsImplFromJson(
+        Map json) =>
+    _$IdP24PaymentMethodDetailsImpl(
+      json['id'] as String,
+      $type: json['type'] as String?,
+    );
 
-  writeNotNull('billing_details', instance.billingDetails?.toJson());
-  val['type'] = instance.$type;
-  return val;
-}
+Map<String, dynamic> _$$IdP24PaymentMethodDetailsImplToJson(
+        _$IdP24PaymentMethodDetailsImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'type': instance.$type,
+    };
+
+_$P24PaymentMethodDetailsImpl _$$P24PaymentMethodDetailsImplFromJson(
+        Map json) =>
+    _$P24PaymentMethodDetailsImpl(
+      billingDetails: json['billing_details'] == null
+          ? null
+          : BillingDetails.fromJson(
+              Map<String, dynamic>.from(json['billing_details'] as Map)),
+      $type: json['type'] as String?,
+    );
+
+Map<String, dynamic> _$$P24PaymentMethodDetailsImplToJson(
+        _$P24PaymentMethodDetailsImpl instance) =>
+    <String, dynamic>{
+      if (instance.billingDetails?.toJson() case final value?)
+        'billing_details': value,
+      'type': instance.$type,
+    };
 
 _$IdealBankDataImpl _$$IdealBankDataImplFromJson(Map json) =>
     _$IdealBankDataImpl(
-      bank: json['bank'] as String,
+      bank: json['bank'] as String?,
     );
 
 Map<String, dynamic> _$$IdealBankDataImplToJson(_$IdealBankDataImpl instance) =>
     <String, dynamic>{
-      'bank': instance.bank,
+      if (instance.bank case final value?) 'bank': value,
     };
 
 _$CardTokenPaymentMethodImpl _$$CardTokenPaymentMethodImplFromJson(Map json) =>

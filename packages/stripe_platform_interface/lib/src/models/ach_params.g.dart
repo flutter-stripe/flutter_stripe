@@ -9,19 +9,23 @@ part of 'ach_params.dart';
 _$CollectBankAccountParamsImpl _$$CollectBankAccountParamsImplFromJson(
         Map<String, dynamic> json) =>
     _$CollectBankAccountParamsImpl(
-      billingDetails: BillingDetails.fromJson(
-          json['billingDetails'] as Map<String, dynamic>),
+      paymentMethodData: CollectBankAccountPaymentMethodData.fromJson(
+          json['paymentMethodData'] as Map<String, dynamic>),
       paymentMethodType: $enumDecodeNullable(
               _$PaymentMethodTypeEnumMap, json['paymentMethodType']) ??
           PaymentMethodType.USBankAccount,
+      userInterfaceStyle: $enumDecodeNullable(
+          _$UserInterfaceStyleEnumMap, json['userInterfaceStyle']),
     );
 
 Map<String, dynamic> _$$CollectBankAccountParamsImplToJson(
         _$CollectBankAccountParamsImpl instance) =>
     <String, dynamic>{
-      'billingDetails': instance.billingDetails.toJson(),
+      'paymentMethodData': instance.paymentMethodData.toJson(),
       'paymentMethodType':
           _$PaymentMethodTypeEnumMap[instance.paymentMethodType]!,
+      'userInterfaceStyle':
+          _$UserInterfaceStyleEnumMap[instance.userInterfaceStyle],
     };
 
 const _$PaymentMethodTypeEnumMap = {
@@ -48,6 +52,40 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.RevolutPay: 'RevolutPay',
   PaymentMethodType.Unknown: 'Unknown',
 };
+
+const _$UserInterfaceStyleEnumMap = {
+  UserInterfaceStyle.alwaysLight: 'alwaysLight',
+  UserInterfaceStyle.alwaysDark: 'alwaysDark',
+  UserInterfaceStyle.automatic: 'automatic',
+};
+
+_$CollectBankAccountTokenParamsImpl
+    _$$CollectBankAccountTokenParamsImplFromJson(Map<String, dynamic> json) =>
+        _$CollectBankAccountTokenParamsImpl(
+          userInterfaceStyle: $enumDecodeNullable(
+              _$UserInterfaceStyleEnumMap, json['userInterfaceStyle']),
+        );
+
+Map<String, dynamic> _$$CollectBankAccountTokenParamsImplToJson(
+        _$CollectBankAccountTokenParamsImpl instance) =>
+    <String, dynamic>{
+      'userInterfaceStyle':
+          _$UserInterfaceStyleEnumMap[instance.userInterfaceStyle],
+    };
+
+_$CollectBankAccountPaymentMethodDataImpl
+    _$$CollectBankAccountPaymentMethodDataImplFromJson(
+            Map<String, dynamic> json) =>
+        _$CollectBankAccountPaymentMethodDataImpl(
+          billingDetails: BillingDetails.fromJson(
+              json['billingDetails'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$$CollectBankAccountPaymentMethodDataImplToJson(
+        _$CollectBankAccountPaymentMethodDataImpl instance) =>
+    <String, dynamic>{
+      'billingDetails': instance.billingDetails.toJson(),
+    };
 
 _$VerifyMicroDepositsParamsImpl _$$VerifyMicroDepositsParamsImplFromJson(
         Map<String, dynamic> json) =>

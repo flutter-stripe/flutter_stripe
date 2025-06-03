@@ -1,5 +1,5 @@
 import 'dart:js_interop';
-import 'dart:ui' as ui;
+import 'dart:ui_web' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
@@ -17,13 +17,13 @@ class WebPlatformPayButton extends StatefulWidget {
       this.constraints,
       this.type,
       this.style,
-      required ui.VoidCallback this.onPressed});
+      required this.onPressed});
 
   final PlatformPayWebPaymentRequestCreateOptions paymentRequestCreateOptions;
   final PlatformButtonType? type;
   final PlatformButtonStyle? style;
   final BoxConstraints? constraints;
-  final ui.VoidCallback onPressed;
+  final void Function() onPressed;
 
   @override
   State<StatefulWidget> createState() {
@@ -40,6 +40,8 @@ class _WebPlatformPayButtonState extends State<WebPlatformPayButton> {
     if (web.document.getElementById('platform-pay-button') != null) {
       mutationObserver.disconnect();
 
+      final currentTheme = Theme.of(context);
+
       PaymentRequest paymentRequest = WebStripe.js
           .paymentRequest((widget.paymentRequestCreateOptions).toJS());
 
@@ -49,7 +51,7 @@ class _WebPlatformPayButtonState extends State<WebPlatformPayButton> {
                 paymentRequest: paymentRequest.js,
                 style: JsPaymentRequestButtonElementStyle(
                     paymentRequestButton: PaymentRequestButtonStyleOptions(
-                  theme: theme(Theme.of(context).brightness),
+                  theme: theme(currentTheme.brightness),
                   type: type,
                   height: '${constraints.maxHeight}px',
                 ))))
@@ -68,9 +70,8 @@ class _WebPlatformPayButtonState extends State<WebPlatformPayButton> {
 
   @override
   void initState() {
-    // ignore: undefined_prefixed_name
-    ui.platformViewRegistry.registerViewFactory('stripe_platform_pay_button',
-        (int viewId) => _divElement);
+    ui.platformViewRegistry.registerViewFactory(
+        'stripe_platform_pay_button', (int viewId) => _divElement);
 
     mutationObserver.observe(
       web.document,

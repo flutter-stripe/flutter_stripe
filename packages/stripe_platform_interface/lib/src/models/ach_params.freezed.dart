@@ -24,11 +24,25 @@ mixin _$CollectBankAccountParams {
   /// Billingdetails of the account holder
   ///
   /// It is required to fill in the name in the billing details
-  BillingDetails get billingDetails => throw _privateConstructorUsedError;
+  CollectBankAccountPaymentMethodData get paymentMethodData =>
+      throw _privateConstructorUsedError;
 
   /// The paymentmethod type. At this point only method [PaymentMethodType.USBankAccount]
   /// is supported.
   PaymentMethodType get paymentMethodType => throw _privateConstructorUsedError;
+
+  /// ios only. Style options for colors in Financial connections
+  ///
+  /// By default the bank account collector will automatically choose colors based on the
+  /// user's system settings.
+  UserInterfaceStyle? get userInterfaceStyle =>
+      throw _privateConstructorUsedError;
+
+  /// An optional event listener to receive [FinancialConnectionsEvent] for
+  /// specific events during the process of a user connecting their financial accounts.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  FinancialConnectionsEventHandler? get onEvent =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this CollectBankAccountParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,9 +61,13 @@ abstract class $CollectBankAccountParamsCopyWith<$Res> {
       _$CollectBankAccountParamsCopyWithImpl<$Res, CollectBankAccountParams>;
   @useResult
   $Res call(
-      {BillingDetails billingDetails, PaymentMethodType paymentMethodType});
+      {CollectBankAccountPaymentMethodData paymentMethodData,
+      PaymentMethodType paymentMethodType,
+      UserInterfaceStyle? userInterfaceStyle,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      FinancialConnectionsEventHandler? onEvent});
 
-  $BillingDetailsCopyWith<$Res> get billingDetails;
+  $CollectBankAccountPaymentMethodDataCopyWith<$Res> get paymentMethodData;
 }
 
 /// @nodoc
@@ -68,18 +86,28 @@ class _$CollectBankAccountParamsCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? billingDetails = null,
+    Object? paymentMethodData = null,
     Object? paymentMethodType = null,
+    Object? userInterfaceStyle = freezed,
+    Object? onEvent = freezed,
   }) {
     return _then(_value.copyWith(
-      billingDetails: null == billingDetails
-          ? _value.billingDetails
-          : billingDetails // ignore: cast_nullable_to_non_nullable
-              as BillingDetails,
+      paymentMethodData: null == paymentMethodData
+          ? _value.paymentMethodData
+          : paymentMethodData // ignore: cast_nullable_to_non_nullable
+              as CollectBankAccountPaymentMethodData,
       paymentMethodType: null == paymentMethodType
           ? _value.paymentMethodType
           : paymentMethodType // ignore: cast_nullable_to_non_nullable
               as PaymentMethodType,
+      userInterfaceStyle: freezed == userInterfaceStyle
+          ? _value.userInterfaceStyle
+          : userInterfaceStyle // ignore: cast_nullable_to_non_nullable
+              as UserInterfaceStyle?,
+      onEvent: freezed == onEvent
+          ? _value.onEvent
+          : onEvent // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionsEventHandler?,
     ) as $Val);
   }
 
@@ -87,9 +115,10 @@ class _$CollectBankAccountParamsCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $BillingDetailsCopyWith<$Res> get billingDetails {
-    return $BillingDetailsCopyWith<$Res>(_value.billingDetails, (value) {
-      return _then(_value.copyWith(billingDetails: value) as $Val);
+  $CollectBankAccountPaymentMethodDataCopyWith<$Res> get paymentMethodData {
+    return $CollectBankAccountPaymentMethodDataCopyWith<$Res>(
+        _value.paymentMethodData, (value) {
+      return _then(_value.copyWith(paymentMethodData: value) as $Val);
     });
   }
 }
@@ -104,10 +133,14 @@ abstract class _$$CollectBankAccountParamsImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {BillingDetails billingDetails, PaymentMethodType paymentMethodType});
+      {CollectBankAccountPaymentMethodData paymentMethodData,
+      PaymentMethodType paymentMethodType,
+      UserInterfaceStyle? userInterfaceStyle,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      FinancialConnectionsEventHandler? onEvent});
 
   @override
-  $BillingDetailsCopyWith<$Res> get billingDetails;
+  $CollectBankAccountPaymentMethodDataCopyWith<$Res> get paymentMethodData;
 }
 
 /// @nodoc
@@ -125,18 +158,28 @@ class __$$CollectBankAccountParamsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? billingDetails = null,
+    Object? paymentMethodData = null,
     Object? paymentMethodType = null,
+    Object? userInterfaceStyle = freezed,
+    Object? onEvent = freezed,
   }) {
     return _then(_$CollectBankAccountParamsImpl(
-      billingDetails: null == billingDetails
-          ? _value.billingDetails
-          : billingDetails // ignore: cast_nullable_to_non_nullable
-              as BillingDetails,
+      paymentMethodData: null == paymentMethodData
+          ? _value.paymentMethodData
+          : paymentMethodData // ignore: cast_nullable_to_non_nullable
+              as CollectBankAccountPaymentMethodData,
       paymentMethodType: null == paymentMethodType
           ? _value.paymentMethodType
           : paymentMethodType // ignore: cast_nullable_to_non_nullable
               as PaymentMethodType,
+      userInterfaceStyle: freezed == userInterfaceStyle
+          ? _value.userInterfaceStyle
+          : userInterfaceStyle // ignore: cast_nullable_to_non_nullable
+              as UserInterfaceStyle?,
+      onEvent: freezed == onEvent
+          ? _value.onEvent
+          : onEvent // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionsEventHandler?,
     ));
   }
 }
@@ -146,8 +189,10 @@ class __$$CollectBankAccountParamsImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$CollectBankAccountParamsImpl implements _CollectBankAccountParams {
   const _$CollectBankAccountParamsImpl(
-      {required this.billingDetails,
-      this.paymentMethodType = PaymentMethodType.USBankAccount});
+      {required this.paymentMethodData,
+      this.paymentMethodType = PaymentMethodType.USBankAccount,
+      this.userInterfaceStyle,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.onEvent});
 
   factory _$CollectBankAccountParamsImpl.fromJson(Map<String, dynamic> json) =>
       _$$CollectBankAccountParamsImplFromJson(json);
@@ -156,7 +201,7 @@ class _$CollectBankAccountParamsImpl implements _CollectBankAccountParams {
   ///
   /// It is required to fill in the name in the billing details
   @override
-  final BillingDetails billingDetails;
+  final CollectBankAccountPaymentMethodData paymentMethodData;
 
   /// The paymentmethod type. At this point only method [PaymentMethodType.USBankAccount]
   /// is supported.
@@ -164,9 +209,22 @@ class _$CollectBankAccountParamsImpl implements _CollectBankAccountParams {
   @JsonKey()
   final PaymentMethodType paymentMethodType;
 
+  /// ios only. Style options for colors in Financial connections
+  ///
+  /// By default the bank account collector will automatically choose colors based on the
+  /// user's system settings.
+  @override
+  final UserInterfaceStyle? userInterfaceStyle;
+
+  /// An optional event listener to receive [FinancialConnectionsEvent] for
+  /// specific events during the process of a user connecting their financial accounts.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final FinancialConnectionsEventHandler? onEvent;
+
   @override
   String toString() {
-    return 'CollectBankAccountParams(billingDetails: $billingDetails, paymentMethodType: $paymentMethodType)';
+    return 'CollectBankAccountParams(paymentMethodData: $paymentMethodData, paymentMethodType: $paymentMethodType, userInterfaceStyle: $userInterfaceStyle, onEvent: $onEvent)';
   }
 
   @override
@@ -174,16 +232,19 @@ class _$CollectBankAccountParamsImpl implements _CollectBankAccountParams {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CollectBankAccountParamsImpl &&
-            (identical(other.billingDetails, billingDetails) ||
-                other.billingDetails == billingDetails) &&
+            (identical(other.paymentMethodData, paymentMethodData) ||
+                other.paymentMethodData == paymentMethodData) &&
             (identical(other.paymentMethodType, paymentMethodType) ||
-                other.paymentMethodType == paymentMethodType));
+                other.paymentMethodType == paymentMethodType) &&
+            (identical(other.userInterfaceStyle, userInterfaceStyle) ||
+                other.userInterfaceStyle == userInterfaceStyle) &&
+            (identical(other.onEvent, onEvent) || other.onEvent == onEvent));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, billingDetails, paymentMethodType);
+  int get hashCode => Object.hash(runtimeType, paymentMethodData,
+      paymentMethodType, userInterfaceStyle, onEvent);
 
   /// Create a copy of CollectBankAccountParams
   /// with the given fields replaced by the non-null parameter values.
@@ -204,8 +265,11 @@ class _$CollectBankAccountParamsImpl implements _CollectBankAccountParams {
 
 abstract class _CollectBankAccountParams implements CollectBankAccountParams {
   const factory _CollectBankAccountParams(
-          {required final BillingDetails billingDetails,
-          final PaymentMethodType paymentMethodType}) =
+          {required final CollectBankAccountPaymentMethodData paymentMethodData,
+          final PaymentMethodType paymentMethodType,
+          final UserInterfaceStyle? userInterfaceStyle,
+          @JsonKey(includeFromJson: false, includeToJson: false)
+          final FinancialConnectionsEventHandler? onEvent}) =
       _$CollectBankAccountParamsImpl;
 
   factory _CollectBankAccountParams.fromJson(Map<String, dynamic> json) =
@@ -215,18 +279,433 @@ abstract class _CollectBankAccountParams implements CollectBankAccountParams {
   ///
   /// It is required to fill in the name in the billing details
   @override
-  BillingDetails get billingDetails;
+  CollectBankAccountPaymentMethodData get paymentMethodData;
 
   /// The paymentmethod type. At this point only method [PaymentMethodType.USBankAccount]
   /// is supported.
   @override
   PaymentMethodType get paymentMethodType;
 
+  /// ios only. Style options for colors in Financial connections
+  ///
+  /// By default the bank account collector will automatically choose colors based on the
+  /// user's system settings.
+  @override
+  UserInterfaceStyle? get userInterfaceStyle;
+
+  /// An optional event listener to receive [FinancialConnectionsEvent] for
+  /// specific events during the process of a user connecting their financial accounts.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  FinancialConnectionsEventHandler? get onEvent;
+
   /// Create a copy of CollectBankAccountParams
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CollectBankAccountParamsImplCopyWith<_$CollectBankAccountParamsImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+CollectBankAccountTokenParams _$CollectBankAccountTokenParamsFromJson(
+    Map<String, dynamic> json) {
+  return _CollectBankAccountTokenParams.fromJson(json);
+}
+
+/// @nodoc
+mixin _$CollectBankAccountTokenParams {
+  /// ios only. Style options for colors in Financial connections
+  ///
+  /// By default the bank account collector will automatically choose colors based on the
+  /// user's system settings.
+  UserInterfaceStyle? get userInterfaceStyle =>
+      throw _privateConstructorUsedError;
+
+  /// An optional event listener to receive [FinancialConnectionsEvent] for
+  /// specific events during the process of a user connecting their financial accounts.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  FinancialConnectionsEventHandler? get onEvent =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this CollectBankAccountTokenParams to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of CollectBankAccountTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $CollectBankAccountTokenParamsCopyWith<CollectBankAccountTokenParams>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CollectBankAccountTokenParamsCopyWith<$Res> {
+  factory $CollectBankAccountTokenParamsCopyWith(
+          CollectBankAccountTokenParams value,
+          $Res Function(CollectBankAccountTokenParams) then) =
+      _$CollectBankAccountTokenParamsCopyWithImpl<$Res,
+          CollectBankAccountTokenParams>;
+  @useResult
+  $Res call(
+      {UserInterfaceStyle? userInterfaceStyle,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      FinancialConnectionsEventHandler? onEvent});
+}
+
+/// @nodoc
+class _$CollectBankAccountTokenParamsCopyWithImpl<$Res,
+        $Val extends CollectBankAccountTokenParams>
+    implements $CollectBankAccountTokenParamsCopyWith<$Res> {
+  _$CollectBankAccountTokenParamsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of CollectBankAccountTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userInterfaceStyle = freezed,
+    Object? onEvent = freezed,
+  }) {
+    return _then(_value.copyWith(
+      userInterfaceStyle: freezed == userInterfaceStyle
+          ? _value.userInterfaceStyle
+          : userInterfaceStyle // ignore: cast_nullable_to_non_nullable
+              as UserInterfaceStyle?,
+      onEvent: freezed == onEvent
+          ? _value.onEvent
+          : onEvent // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionsEventHandler?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CollectBankAccountTokenParamsImplCopyWith<$Res>
+    implements $CollectBankAccountTokenParamsCopyWith<$Res> {
+  factory _$$CollectBankAccountTokenParamsImplCopyWith(
+          _$CollectBankAccountTokenParamsImpl value,
+          $Res Function(_$CollectBankAccountTokenParamsImpl) then) =
+      __$$CollectBankAccountTokenParamsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {UserInterfaceStyle? userInterfaceStyle,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      FinancialConnectionsEventHandler? onEvent});
+}
+
+/// @nodoc
+class __$$CollectBankAccountTokenParamsImplCopyWithImpl<$Res>
+    extends _$CollectBankAccountTokenParamsCopyWithImpl<$Res,
+        _$CollectBankAccountTokenParamsImpl>
+    implements _$$CollectBankAccountTokenParamsImplCopyWith<$Res> {
+  __$$CollectBankAccountTokenParamsImplCopyWithImpl(
+      _$CollectBankAccountTokenParamsImpl _value,
+      $Res Function(_$CollectBankAccountTokenParamsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CollectBankAccountTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userInterfaceStyle = freezed,
+    Object? onEvent = freezed,
+  }) {
+    return _then(_$CollectBankAccountTokenParamsImpl(
+      userInterfaceStyle: freezed == userInterfaceStyle
+          ? _value.userInterfaceStyle
+          : userInterfaceStyle // ignore: cast_nullable_to_non_nullable
+              as UserInterfaceStyle?,
+      onEvent: freezed == onEvent
+          ? _value.onEvent
+          : onEvent // ignore: cast_nullable_to_non_nullable
+              as FinancialConnectionsEventHandler?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$CollectBankAccountTokenParamsImpl
+    implements _CollectBankAccountTokenParams {
+  const _$CollectBankAccountTokenParamsImpl(
+      {this.userInterfaceStyle,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.onEvent});
+
+  factory _$CollectBankAccountTokenParamsImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CollectBankAccountTokenParamsImplFromJson(json);
+
+  /// ios only. Style options for colors in Financial connections
+  ///
+  /// By default the bank account collector will automatically choose colors based on the
+  /// user's system settings.
+  @override
+  final UserInterfaceStyle? userInterfaceStyle;
+
+  /// An optional event listener to receive [FinancialConnectionsEvent] for
+  /// specific events during the process of a user connecting their financial accounts.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final FinancialConnectionsEventHandler? onEvent;
+
+  @override
+  String toString() {
+    return 'CollectBankAccountTokenParams(userInterfaceStyle: $userInterfaceStyle, onEvent: $onEvent)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CollectBankAccountTokenParamsImpl &&
+            (identical(other.userInterfaceStyle, userInterfaceStyle) ||
+                other.userInterfaceStyle == userInterfaceStyle) &&
+            (identical(other.onEvent, onEvent) || other.onEvent == onEvent));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, userInterfaceStyle, onEvent);
+
+  /// Create a copy of CollectBankAccountTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CollectBankAccountTokenParamsImplCopyWith<
+          _$CollectBankAccountTokenParamsImpl>
+      get copyWith => __$$CollectBankAccountTokenParamsImplCopyWithImpl<
+          _$CollectBankAccountTokenParamsImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CollectBankAccountTokenParamsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CollectBankAccountTokenParams
+    implements CollectBankAccountTokenParams {
+  const factory _CollectBankAccountTokenParams(
+          {final UserInterfaceStyle? userInterfaceStyle,
+          @JsonKey(includeFromJson: false, includeToJson: false)
+          final FinancialConnectionsEventHandler? onEvent}) =
+      _$CollectBankAccountTokenParamsImpl;
+
+  factory _CollectBankAccountTokenParams.fromJson(Map<String, dynamic> json) =
+      _$CollectBankAccountTokenParamsImpl.fromJson;
+
+  /// ios only. Style options for colors in Financial connections
+  ///
+  /// By default the bank account collector will automatically choose colors based on the
+  /// user's system settings.
+  @override
+  UserInterfaceStyle? get userInterfaceStyle;
+
+  /// An optional event listener to receive [FinancialConnectionsEvent] for
+  /// specific events during the process of a user connecting their financial accounts.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  FinancialConnectionsEventHandler? get onEvent;
+
+  /// Create a copy of CollectBankAccountTokenParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CollectBankAccountTokenParamsImplCopyWith<
+          _$CollectBankAccountTokenParamsImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+CollectBankAccountPaymentMethodData
+    _$CollectBankAccountPaymentMethodDataFromJson(Map<String, dynamic> json) {
+  return _CollectBankAccountPaymentMethodData.fromJson(json);
+}
+
+/// @nodoc
+mixin _$CollectBankAccountPaymentMethodData {
+  BillingDetails get billingDetails => throw _privateConstructorUsedError;
+
+  /// Serializes this CollectBankAccountPaymentMethodData to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of CollectBankAccountPaymentMethodData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $CollectBankAccountPaymentMethodDataCopyWith<
+          CollectBankAccountPaymentMethodData>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CollectBankAccountPaymentMethodDataCopyWith<$Res> {
+  factory $CollectBankAccountPaymentMethodDataCopyWith(
+          CollectBankAccountPaymentMethodData value,
+          $Res Function(CollectBankAccountPaymentMethodData) then) =
+      _$CollectBankAccountPaymentMethodDataCopyWithImpl<$Res,
+          CollectBankAccountPaymentMethodData>;
+  @useResult
+  $Res call({BillingDetails billingDetails});
+
+  $BillingDetailsCopyWith<$Res> get billingDetails;
+}
+
+/// @nodoc
+class _$CollectBankAccountPaymentMethodDataCopyWithImpl<$Res,
+        $Val extends CollectBankAccountPaymentMethodData>
+    implements $CollectBankAccountPaymentMethodDataCopyWith<$Res> {
+  _$CollectBankAccountPaymentMethodDataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of CollectBankAccountPaymentMethodData
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? billingDetails = null,
+  }) {
+    return _then(_value.copyWith(
+      billingDetails: null == billingDetails
+          ? _value.billingDetails
+          : billingDetails // ignore: cast_nullable_to_non_nullable
+              as BillingDetails,
+    ) as $Val);
+  }
+
+  /// Create a copy of CollectBankAccountPaymentMethodData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $BillingDetailsCopyWith<$Res> get billingDetails {
+    return $BillingDetailsCopyWith<$Res>(_value.billingDetails, (value) {
+      return _then(_value.copyWith(billingDetails: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$CollectBankAccountPaymentMethodDataImplCopyWith<$Res>
+    implements $CollectBankAccountPaymentMethodDataCopyWith<$Res> {
+  factory _$$CollectBankAccountPaymentMethodDataImplCopyWith(
+          _$CollectBankAccountPaymentMethodDataImpl value,
+          $Res Function(_$CollectBankAccountPaymentMethodDataImpl) then) =
+      __$$CollectBankAccountPaymentMethodDataImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({BillingDetails billingDetails});
+
+  @override
+  $BillingDetailsCopyWith<$Res> get billingDetails;
+}
+
+/// @nodoc
+class __$$CollectBankAccountPaymentMethodDataImplCopyWithImpl<$Res>
+    extends _$CollectBankAccountPaymentMethodDataCopyWithImpl<$Res,
+        _$CollectBankAccountPaymentMethodDataImpl>
+    implements _$$CollectBankAccountPaymentMethodDataImplCopyWith<$Res> {
+  __$$CollectBankAccountPaymentMethodDataImplCopyWithImpl(
+      _$CollectBankAccountPaymentMethodDataImpl _value,
+      $Res Function(_$CollectBankAccountPaymentMethodDataImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CollectBankAccountPaymentMethodData
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? billingDetails = null,
+  }) {
+    return _then(_$CollectBankAccountPaymentMethodDataImpl(
+      billingDetails: null == billingDetails
+          ? _value.billingDetails
+          : billingDetails // ignore: cast_nullable_to_non_nullable
+              as BillingDetails,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$CollectBankAccountPaymentMethodDataImpl
+    implements _CollectBankAccountPaymentMethodData {
+  const _$CollectBankAccountPaymentMethodDataImpl(
+      {required this.billingDetails});
+
+  factory _$CollectBankAccountPaymentMethodDataImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CollectBankAccountPaymentMethodDataImplFromJson(json);
+
+  @override
+  final BillingDetails billingDetails;
+
+  @override
+  String toString() {
+    return 'CollectBankAccountPaymentMethodData(billingDetails: $billingDetails)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CollectBankAccountPaymentMethodDataImpl &&
+            (identical(other.billingDetails, billingDetails) ||
+                other.billingDetails == billingDetails));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, billingDetails);
+
+  /// Create a copy of CollectBankAccountPaymentMethodData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CollectBankAccountPaymentMethodDataImplCopyWith<
+          _$CollectBankAccountPaymentMethodDataImpl>
+      get copyWith => __$$CollectBankAccountPaymentMethodDataImplCopyWithImpl<
+          _$CollectBankAccountPaymentMethodDataImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CollectBankAccountPaymentMethodDataImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CollectBankAccountPaymentMethodData
+    implements CollectBankAccountPaymentMethodData {
+  const factory _CollectBankAccountPaymentMethodData(
+          {required final BillingDetails billingDetails}) =
+      _$CollectBankAccountPaymentMethodDataImpl;
+
+  factory _CollectBankAccountPaymentMethodData.fromJson(
+          Map<String, dynamic> json) =
+      _$CollectBankAccountPaymentMethodDataImpl.fromJson;
+
+  @override
+  BillingDetails get billingDetails;
+
+  /// Create a copy of CollectBankAccountPaymentMethodData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CollectBankAccountPaymentMethodDataImplCopyWith<
+          _$CollectBankAccountPaymentMethodDataImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 

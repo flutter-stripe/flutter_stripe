@@ -9,7 +9,11 @@ import com.facebook.react.uimanager.DisplayMetricsHolder
 import com.facebook.react.uimanager.ThemedReactContext
 import com.google.android.material.internal.ThemeEnforcement
 import com.reactnativestripesdk.*
+import com.reactnativestripesdk.addresssheet.AddressSheetViewManager
 import com.reactnativestripesdk.pushprovisioning.AddToWalletButtonManager
+import com.reactnativestripesdk.utils.getIntOrNull
+import com.reactnativestripesdk.utils.getValOr
+import com.stripe.android.model.PaymentMethodCreateParams
 import io.flutter.embedding.android.FlutterFragmentActivity
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
@@ -49,6 +53,10 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         AuBECSDebitFormViewManager()
     }
 
+    private val addressSheetFormViewManager: AddressSheetViewManager by lazy {
+        AddressSheetViewManager()
+    }
+
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         DisplayMetricsHolder.initDisplayMetricsIfNotInitialized(flutterPluginBinding.applicationContext)
 
@@ -69,6 +77,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         flutterPluginBinding
             .platformViewRegistry
             .registerViewFactory("flutter.stripe/add_to_wallet", StripeAddToWalletPlatformViewFactory(flutterPluginBinding, AddToWalletButtonManager(flutterPluginBinding.applicationContext)){stripeSdk})
+        flutterPluginBinding.platformViewRegistry.registerViewFactory("flutter.stripe/address_sheet", StripeAddressSheetPlatformViewFactory(flutterPluginBinding, addressSheetFormViewManager ){stripeSdk})
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
@@ -314,3 +323,30 @@ private inline fun <reified T> MethodCall.requiredArgument(key: String): T {
     }
     return argument<T>(key) ?: error("Required parameter $key not set")
 }
+
+
+fun CardFormViewManager.getCardViewInstance(): CardFormView? {
+    val stripeSdkModule: StripeSdkModule? = reactContextRef?.getNativeModule(StripeSdkModule::class.java)
+    return stripeSdkModule?.cardFormView
+}
+
+
+fun CardFieldViewManager.getCardViewInstance(): CardFieldView? {
+    val stripeSdkModule: StripeSdkModule? = reactContextRef?.getNativeModule(StripeSdkModule::class.java)
+    return stripeSdkModule?.cardFieldView
+}
+
+fun CardFieldViewManager.setCardDetails(value: ReadableMap, reactContext: ThemedReactContext) {
+    val number = getValOr(value, "number", null)
+    val expirationYear = getIntOrNull(value, "expirationYear")
+    val expirationMonth = getIntOrNull(value, "expirationMonth")
+    val cvc = getValOr(value, "cvc", null)
+
+    val cardViewInstance = getCardViewInstance() ?: createViewInstance(reactContext)
+    cardViewInstance.cardParams = PaymentMethodCreateParams.Card.Builder()
+        .setNumber(number)
+        .setCvc(cvc)
+        .setExpiryMonth(expirationMonth)
+        .setExpiryYear(expirationYear)
+        .build()
+    }

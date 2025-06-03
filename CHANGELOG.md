@@ -3,6 +3,226 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-05-26
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_stripe_web` - `v6.5.1`](#flutter_stripe_web---v651)
+
+---
+
+#### `flutter_stripe_web` - `v6.5.1`
+
+ - Make web compile for flutter 3.32.0
+
+
+## 2025-04-16
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_stripe_web` - `v6.5.0`](#flutter_stripe_web---v650)
+
+---
+
+#### `flutter_stripe_web` - `v6.5.0`
+
+ - Bug fixes
+
+
+## 2025-04-16
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_js` - `v6.4.0`](#stripe_js---v640)
+ - [`flutter_stripe_web` - `v6.4.1`](#flutter_stripe_web---v641)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v6.4.1`
+
+---
+
+#### `stripe_js` - `v6.4.0`
+
+ - Use latest platform interface
+
+
+## 2025-01-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_stripe` - `v11.4.0`](#flutter_stripe---v1140)
+
+---
+
+#### `flutter_stripe` - `v11.4.0`
+
+
+## 2025-01-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_stripe_web` - `v6.4.0`](#flutter_stripe_web---v640)
+
+---
+
+#### `flutter_stripe_web` - `v6.4.0`
+
+ - **FIX**: prevent focus loop in PaymentElement widget (#2022).
+
+
+## 2025-01-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_js` - `v6.3.0`](#stripe_js---v630)
+ - [`flutter_stripe_web` - `v6.3.1`](#flutter_stripe_web---v631)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v6.3.1`
+
+---
+
+#### `stripe_js` - `v6.3.0`
+
+
+## 2025-01-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_android` - `v11.4.0`](#stripe_android---v1140)
+ - [`flutter_stripe` - `v11.3.1`](#flutter_stripe---v1131)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v11.3.1`
+
+---
+
+#### `stripe_android` - `v11.4.0`
+
+
+## 2025-01-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_ios` - `v11.4.0`](#stripe_ios---v1140)
+ - [`flutter_stripe` - `v11.3.1`](#flutter_stripe---v1131)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe` - `v11.3.1`
+
+---
+
+#### `stripe_ios` - `v11.4.0`
+
+ - Bump "stripe_ios" to `11.4.0`.
+
+
+## 2025-01-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`stripe_platform_interface` - `v11.4.0`](#stripe_platform_interface---v1140)
+ - [`flutter_stripe_web` - `v6.3.1`](#flutter_stripe_web---v631)
+ - [`flutter_stripe` - `v11.3.1`](#flutter_stripe---v1131)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_stripe_web` - `v6.3.1`
+ - `flutter_stripe` - `v11.3.1`
+
+---
+
+#### `stripe_platform_interface` - `v11.4.0`
+
+ - Bump "stripe_platform_interface" to `11.4.0`.
+
+
 ## 2024-10-08
 
 ### Changes

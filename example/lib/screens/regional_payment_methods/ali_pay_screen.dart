@@ -9,7 +9,7 @@ import 'package:stripe_example/widgets/loading_button.dart';
 import '../../config.dart';
 
 class AliPayScreen extends StatelessWidget {
-  const AliPayScreen({Key? key}) : super(key: key);
+  const AliPayScreen({super.key});
 
   Future<Map<String, dynamic>> _createPaymentIntent() async {
     final url = Uri.parse('$kApiUrl/create-payment-intent');
@@ -34,6 +34,7 @@ class AliPayScreen extends StatelessWidget {
     // see file main.dart in this example app.
     // 1. on the backend create a payment intent for payment method and save the
     // client secret.
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     final result = await _createPaymentIntent();
     final clientSecret = await result['clientSecret'];
 
@@ -45,25 +46,28 @@ class AliPayScreen extends StatelessWidget {
           paymentMethodData: const PaymentMethodData(),
         ),
       );
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Payment succesfully completed'),
-        ),
-      );
+      if (context.mounted) {
+        scaffoldMessenger.showSnackBar(
+          SnackBar(
+            content: Text('Payment successfully completed'),
+          ),
+        );
+      }
     } on Exception catch (e) {
-      if (e is StripeException) {
-        ScaffoldMessenger.of(context).showSnackBar(
+      if (e is StripeException && context.mounted) {
+        scaffoldMessenger.showSnackBar(
           SnackBar(
             content: Text('Error from Stripe: ${e.error.localizedMessage}'),
           ),
         );
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Unforeseen error: ${e}'),
-          ),
-        );
+        if (context.mounted) {
+          scaffoldMessenger.showSnackBar(
+            SnackBar(
+              content: Text('Unforeseen error: $e'),
+            ),
+          );
+        }
       }
     }
   }

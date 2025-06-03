@@ -9,6 +9,8 @@ import 'package:web/web.dart' as web;
 
 import '../../flutter_stripe_web.dart';
 
+// TODO: should not use src of other package
+export 'package:stripe_js/src/api/elements/payment_element_options.dart';
 export 'package:stripe_js/stripe_api.dart'
     show
         ElementAppearance,
@@ -20,6 +22,8 @@ export 'package:stripe_js/stripe_api.dart'
         PaymentElementBillingDetailsAddress,
         PaymentElementWalletOptions,
         PaymentElementFieldRequired;
+
+typedef PaymentElementTheme = js.ElementTheme;
 
 class PaymentElement extends StatefulWidget {
   final String? clientSecret;
@@ -52,7 +56,7 @@ class PaymentElement extends StatefulWidget {
   final js.PaymentElementApplePayOptions? applePay;
   final String? locale;
 
-  PaymentElement({
+  const PaymentElement({
     super.key,
     this.clientSecret,
     this.customerSessionClientSecret,
@@ -143,7 +147,7 @@ class PaymentElementState extends State<PaymentElement> {
       ..id = 'payment-element'
       ..style.border = 'none'
       ..style.width = '100%'
-      ..style.height = '${height}'
+      ..style.height = '$height'
       ..style.overflow = 'scroll'
       ..style.overflowX = 'hidden';
 
@@ -192,13 +196,8 @@ class PaymentElementState extends State<PaymentElement> {
   @override
   Widget build(BuildContext context) {
     return Focus(
+      autofocus: true,
       focusNode: _effectiveNode,
-      onFocusChange: (focus) {
-        /*  if (focus)
-            element?.focus();
-          else
-            element?.blur(); */
-      },
       child: ConstrainedBox(
         constraints: BoxConstraints(
           maxWidth: double.infinity,

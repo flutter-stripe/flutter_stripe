@@ -3,7 +3,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:stripe_example/widgets/example_scaffold.dart';
 
 class OpenApplePaySetup extends StatefulWidget {
-  const OpenApplePaySetup({Key? key}) : super(key: key);
+  const OpenApplePaySetup({super.key});
 
   @override
   _OpenApplePaySetupState createState() => _OpenApplePaySetupState();

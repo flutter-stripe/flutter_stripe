@@ -31,7 +31,7 @@ The Stripe Flutter SDK allows you to build delightful payment experiences in you
 
 #### Recommended usage
 
-If you're selling digital products or services within your app, (e.g. subscriptions, in-game currencies, game levels, access to premium content, or unlocking a full version), you must use the app store's in-app purchase APIs. See [Apple's](https://developer.apple.com/app-store/review/guidelines/#payments) and [Google's](https://support.google.com/googleplay/android-developer/answer/9858738?hl=en&ref_topic=9857752) guidelines for more information. For all other scenarios you can use this SDK to process payments via Stripe.
+If you're selling digital products or services within your app, (e.g. subscriptions, in-game currencies, game levels, access to premium content, or unlocking a full version), you must use the app store's in-app purchase APIs. This does not apply to app developers in the USA as they are excluded by new court ruling in 2025. See [Apple's](https://developer.apple.com/app-store/review/guidelines/#payments) and [Google's](https://support.google.com/googleplay/android-developer/answer/9858738?hl=en&ref_topic=9857752) guidelines for more information. For all other scenarios you can use this SDK to process payments via Stripe.
 
 ## Installation
 
@@ -47,7 +47,7 @@ dart pub add flutter_stripe
 This plugin requires several changes to be able to work on Android devices. Please make sure you follow all these steps:
 
 1. Use Android 5.0 (API level 21) and above.
-2. Use Kotlin version 1.8.0 and above: [example](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/build.gradle)
+2. Use Kotlin version 1.8.0 and above: [example](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/settings.gradle#L22)
 3. Requires Android Gradle plugin 8 and higher
 4. Using a descendant of `Theme.AppCompat` for your activity: [example](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/app/src/main/res/values/styles.xml#L15), [example night theme](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/app/src/main/res/values-night/styles.xml#L16)
 5. Using an up-to-date Android gradle build tools version: [example](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/build.gradle#L9) and an up-to-date gradle version accordingly: [example](https://github.com/flutter-stripe/flutter_stripe/blob/main/example/android/gradle/wrapper/gradle-wrapper.properties#L6) 
@@ -60,15 +60,17 @@ This plugin requires several changes to be able to work on Android devices. Plea
 -dontwarn com.stripe.android.pushProvisioning.PushProvisioningActivityStarter
 -dontwarn com.stripe.android.pushProvisioning.PushProvisioningEphemeralKeyProvider
 ```
-8. Rebuild the app, as the above changes don't update with hot reload
+8. Add the following line to your `gradle.properties` file: [example](https://github.com/flutter-stripe/flutter_stripe/blob/master/example/android/gradle.properties)
+```properties
+android.enableR8.fullMode=false
+```
+This will prevent crashes with the Stripe SDK on Android (see [issue](https://github.com/flutter-stripe/flutter_stripe/issues/1909)).
+
+9. Rebuild the app, as the above changes don't update with hot reload
 
 These changes are needed because the Android Stripe SDK requires the use of the AppCompat theme for their UI components and the Support Fragment Manager for the Payment Sheets
 
 If you are having troubles to make this package to work on Android, join [this discussion](https://github.com/flutter-stripe/flutter_stripe/discussions/538) to get some support.
-
-##### Issue with latest Android plugin
-
-We are aware of an issue with `com.android.application` plugin version 8.0.0 and above. Do not upgrade to this version as it can crash the payment sheet in release builds. See [issue](https://github.com/flutter-stripe/flutter_stripe/issues/1909) to follow the progress.
 
 #### iOS
 
@@ -85,8 +87,7 @@ For card scanning add the following to your Info.plist:
 ```xml
 <key>NSCameraUsageDescription</key>
 <string>Scan your card to add it automatically</string>
-<key>NSCameraUsageDescription
-&lt;string&gt;To scan cards&lt;/string&gt;</key>
+<key>NSCameraUsageDescription</key>
 <string>To scan cards</string>
 ```
 
