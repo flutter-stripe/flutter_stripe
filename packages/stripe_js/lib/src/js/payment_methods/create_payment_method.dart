@@ -1,5 +1,6 @@
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
+
 import '../utils/utils.dart';
 import 'dart:js_interop';
 
