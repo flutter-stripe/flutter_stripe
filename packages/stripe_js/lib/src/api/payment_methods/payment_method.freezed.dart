@@ -78,6 +78,7 @@ mixin _$PaymentMethod {
   /// An additional hash is included on the PaymentMethod with a name
   /// matching this value.
   /// It contains additional information specific to the PaymentMethod type.
+  @JsonKey(unknownEnumValue: PaymentMethodType.unknown)
   PaymentMethodType get type => throw _privateConstructorUsedError;
 
   /// Serializes this PaymentMethod to a JSON map.
@@ -113,6 +114,7 @@ abstract class $PaymentMethodCopyWith<$Res> {
       Fpx? fpx,
       Upi? upi,
       UsBankAccount? usBankAccount,
+      @JsonKey(unknownEnumValue: PaymentMethodType.unknown)
       PaymentMethodType type});
 
   $BillingDetailsCopyWith<$Res>? get billingDetails;
@@ -398,6 +400,7 @@ abstract class _$$PaymentMethodImplCopyWith<$Res>
       Fpx? fpx,
       Upi? upi,
       UsBankAccount? usBankAccount,
+      @JsonKey(unknownEnumValue: PaymentMethodType.unknown)
       PaymentMethodType type});
 
   @override
@@ -547,7 +550,7 @@ class _$PaymentMethodImpl implements _PaymentMethod {
       this.fpx,
       this.upi,
       this.usBankAccount,
-      required this.type})
+      @JsonKey(unknownEnumValue: PaymentMethodType.unknown) required this.type})
       : _metadata = metadata;
 
   factory _$PaymentMethodImpl.fromJson(Map<String, dynamic> json) =>
@@ -640,6 +643,7 @@ class _$PaymentMethodImpl implements _PaymentMethod {
   /// matching this value.
   /// It contains additional information specific to the PaymentMethod type.
   @override
+  @JsonKey(unknownEnumValue: PaymentMethodType.unknown)
   final PaymentMethodType type;
 
   @override
@@ -734,6 +738,7 @@ abstract class _PaymentMethod implements PaymentMethod {
       final Fpx? fpx,
       final Upi? upi,
       final UsBankAccount? usBankAccount,
+      @JsonKey(unknownEnumValue: PaymentMethodType.unknown)
       required final PaymentMethodType type}) = _$PaymentMethodImpl;
 
   factory _PaymentMethod.fromJson(Map<String, dynamic> json) =
@@ -814,6 +819,7 @@ abstract class _PaymentMethod implements PaymentMethod {
   /// matching this value.
   /// It contains additional information specific to the PaymentMethod type.
   @override
+  @JsonKey(unknownEnumValue: PaymentMethodType.unknown)
   PaymentMethodType get type;
 
   /// Create a copy of PaymentMethod

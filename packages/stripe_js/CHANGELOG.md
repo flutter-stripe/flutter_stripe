@@ -1,3 +1,7 @@
+## 6.4.1
+**Features**
+- add method for deferred payment
+
 ## 6.4.0
 - Use latest platform interface
 
