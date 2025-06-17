@@ -16,7 +16,7 @@ func RCTMakeAndLogError(_ error: String, _ something: String?, _ anotherSomethin
 }
 
 @objc(StripePlugin)
-class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
+class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
 
     
     private var channel: FlutterMethodChannel
@@ -238,10 +238,10 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
         }
     }
     
-    override
+    /*override
     func sendEvent(withName name: String, body: [String:  Any]) {
         channel.invokeMethod(name, arguments: body)
-    }
+    }*/
     
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return StripeAPI.handleURLCallback(with: url)
@@ -652,11 +652,11 @@ extension  StripePlugin {
     }
     
     func addListener(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        startObserving()
+        //startObserving()
     }
     
     func removeListener(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        stopObserving()
+        //stopObserving()
     }
     
     func intentCreationCallback(_ call: FlutterMethodCall, result: @escaping FlutterResult) {

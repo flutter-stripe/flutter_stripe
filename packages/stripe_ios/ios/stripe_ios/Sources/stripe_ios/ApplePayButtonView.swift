@@ -14,9 +14,9 @@ import stripe_objc
 
 class ApplePayButtonViewFactory: NSObject, FlutterPlatformViewFactory {
     private var messenger: FlutterBinaryMessenger
-    private var stripeSdk: StripeSdk
+    private var stripeSdk: StripeSdkImpl
     
-    init(messenger: FlutterBinaryMessenger, stripeSdk: StripeSdk) {
+    init(messenger: FlutterBinaryMessenger, stripeSdk: StripeSdkImpl) {
         self.messenger = messenger
         self.stripeSdk = stripeSdk
         super.init()
@@ -51,7 +51,7 @@ class ApplePayButtonView: NSObject, FlutterPlatformView {
     private let channel: FlutterMethodChannel
     
     var applePayButton: PKPaymentButton?
-    var stripeSdk: StripeSdk?
+    var stripeSdk: StripeSdkImpl?
     
     @objc var onShippingMethodSelectedAction: RCTDirectEventBlock?
     @objc var onShippingContactSelectedAction: RCTDirectEventBlock?

@@ -3,9 +3,9 @@
 
 #ifndef RCT_NEW_ARCH_ENABLED
 
-#import <React/RCTEventEmitter.h>
 
-@interface StripeSdkEventEmitterCompat : RCTEventEmitter
+
+@interface StripeSdkEventEmitterCompat : NSObject
 - (void)emitOnConfirmHandlerCallback:(NSDictionary *)value;
 - (void)emitOnFinancialConnectionsEvent:(NSDictionary *)value;
 - (void)emitOnOrderTrackingCallback;
@@ -21,6 +21,15 @@
 - (void)emitEmbeddedPaymentElementFormSheetConfirmComplete:(NSDictionary *)value;
 - (void)emitEmbeddedPaymentElementRowSelectionImmediateAction;
 - (void)emitEmbeddedPaymentElementLoadingFailed:(NSDictionary *)value;
+- (void)sendEventWithName:(NSString *)name body:(NSDictionary<NSString *, id> *)body;
+
+- (NSArray<NSString *> *)supportedEvents;
+
+- (NSDictionary<id, id> *)constantsToExport;
+
+- (void)startObserving;
+
+- (void)stopObserving;
 
 @end
 
