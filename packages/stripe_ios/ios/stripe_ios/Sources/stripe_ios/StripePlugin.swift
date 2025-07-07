@@ -17,7 +17,7 @@ func RCTMakeAndLogError(_ error: String, _ something: String?, _ anotherSomethin
 
 @objc(StripePlugin)
 class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
-
+    
     
     private var channel: FlutterMethodChannel
 
@@ -26,6 +26,7 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
         let channel = FlutterMethodChannel(name: "flutter.stripe/payments", binaryMessenger: registrar.messenger(), codec: FlutterJSONMethodCodec())
         
         let instance = StripePlugin(channel: channel)
+        instance.emitter = instance
         registrar.addMethodCallDelegate(instance, channel: channel)
         registrar.addApplicationDelegate(instance)
         
@@ -238,10 +239,9 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
         }
     }
     
-    /*override
     func sendEvent(withName name: String, body: [String:  Any]) {
         channel.invokeMethod(name, arguments: body)
-    }*/
+    }
     
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return StripeAPI.handleURLCallback(with: url)
@@ -256,6 +256,70 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
         }
         return false
     }
+}
+
+extension StripePlugin: StripeSdkEmitter {
+    
+    func emitOnConfirmHandlerCallback(_ value: [String : Any]) {
+        self.sendEvent(withName: "onConfirmHandlerCallback", body: value)
+    }
+    
+    func emitOnFinancialConnectionsEvent(_ value: [String : Any]) {
+        self.sendEvent(withName: "onFinancialConnectionsEvent", body: value)
+    }
+    
+    func emitOnOrderTrackingCallback() {
+        self.sendEvent(withName: "onOrderTrackingCallback", body:[:])
+    }
+    
+    func emitOnCustomerAdapterFetchPaymentMethodsCallback() {
+        self.sendEvent(withName: "onCustomerAdapterFetchPaymentMethodsCallback", body:[:])
+    }
+    
+    func emitOnCustomerAdapterAttachPaymentMethodCallback(_ value: [String : Any]) {
+        self.sendEvent(withName: "onCustomerAdapterAttachPaymentMethodCallback", body:value)
+    }
+    
+    func emitOnCustomerAdapterDetachPaymentMethodCallback(_ value: [String : Any]) {
+        self.sendEvent(withName: "onCustomerAdapterDetachPaymentMethodCallback", body:value)
+    }
+    
+    func emitOnCustomerAdapterSetSelectedPaymentOptionCallback(_ value: [String : Any]) {
+        self.sendEvent(withName: "onCustomerAdapterSetSelectedPaymentOptionCallback", body:value)
+    }
+    
+    func emitOnCustomerAdapterFetchSelectedPaymentOptionCallback() {
+        self.sendEvent(withName: "onCustomerAdapterFetchSelectedPaymentOptionCallback", body:[:])
+    }
+    
+    func emitOnCustomerAdapterSetupIntentClientSecretForCustomerAttachCallback() {
+        self.sendEvent(withName: "onCustomerAdapterSetupIntentClientSecretForCustomerAttachCallback", body:[:])
+    }
+    
+    func emitEmbeddedPaymentElementDidUpdateHeight(_ value: [String : Any]) {
+        self.sendEvent(withName: "embeddedPaymentElementDidUpdateHeight", body:value)
+    }
+    
+    func emitEmbeddedPaymentElementWillPresent() {
+        self.sendEvent(withName: "embeddedPaymentElementWillPresent", body:[:])
+    }
+    
+    func emitEmbeddedPaymentElementDidUpdatePaymentOption(_ value: [String : Any]) {
+        self.sendEvent(withName: "embeddedPaymentElementDidUpdatePaymentOption", body: value)
+    }
+    
+    func emitEmbeddedPaymentElementFormSheetConfirmComplete(_ value: [String : Any]) {
+        self.sendEvent(withName: "embeddedPaymentElementFormSheetConfirmComplete", body: value)
+    }
+    
+    func emitEmbeddedPaymentElementRowSelectionImmediateAction() {
+        self.sendEvent(withName: "embeddedPaymentElementRowSelectionImmediateAction", body:[:])
+    }
+    
+    func emitEmbeddedPaymentElementLoadingFailed(_ value: [String : Any]) {
+        self.sendEvent(withName: "embeddedPaymentElementLoadingFailed", body:value)
+    }
+    
 }
 
 
