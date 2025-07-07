@@ -36,7 +36,7 @@ class PaymentRequest {
   }
 
   void onCancel(void Function() callback) {
-    _js.on('cancel', ([_]) => callback);
+    _js.on('cancel', ([_]) => callback());
   }
 }
 
