@@ -5,4 +5,5 @@ export 'element_express_checkout/element_express_checkout.dart';
 export 'element_payment.dart';
 export 'element_payment_request_button.dart';
 export 'elements_base.dart';
+export 'elements_submit.dart';
 export 'styles.dart';
