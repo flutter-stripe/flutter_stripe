@@ -41,7 +41,7 @@ void main() {
         number: '378282246310005', // Use a card does not support 3DS
         cvc: '424',
         expirationMonth: 04,
-        expirationYear: 2025,
+        expirationYear: 2026,
       ));
 
       final paymentIntent = await Stripe.instance.confirmPayment(
@@ -63,7 +63,7 @@ void main() {
         number: '4242424242424242',
         cvc: '424',
         expirationMonth: 04,
-        expirationYear: 2025,
+        expirationYear: 2026,
       ));
 
       final paymentMethod = await Stripe.instance.createPaymentMethod(
@@ -78,7 +78,7 @@ void main() {
       expect(paymentMethod.card.brand, equals('Visa'));
       expect(paymentMethod.card.country, equals('US'));
       expect(paymentMethod.card.expMonth, equals(04));
-      expect(paymentMethod.card.expYear, equals(2025));
+      expect(paymentMethod.card.expYear, equals(2026));
       expect(paymentMethod.card.last4, equals('4242'));
     });
 
@@ -87,7 +87,7 @@ void main() {
         number: '4242424242424242',
         cvc: '424',
         expirationMonth: 04,
-        expirationYear: 2025,
+        expirationYear: 2026,
       ));
 
       final cardPaymentMethod = await Stripe.instance.createPaymentMethod(
@@ -110,7 +110,7 @@ void main() {
       expect(paymentMethod.card.brand, equals('Visa'));
       expect(paymentMethod.card.country, equals('US'));
       expect(paymentMethod.card.expMonth, equals(04));
-      expect(paymentMethod.card.expYear, equals(2025));
+      expect(paymentMethod.card.expYear, equals(2026));
       expect(paymentMethod.card.last4, equals('4242'));
     });
 
@@ -119,7 +119,7 @@ void main() {
         number: '4242424242424242',
         cvc: '424',
         expirationMonth: 04,
-        expirationYear: 2025,
+        expirationYear: 2026,
       ));
 
       final token = await Stripe.instance.createToken(
@@ -137,7 +137,7 @@ void main() {
       expect(paymentMethod.card.brand, equals('Visa'));
       expect(paymentMethod.card.country, equals('US'));
       expect(paymentMethod.card.expMonth, equals(04));
-      expect(paymentMethod.card.expYear, equals(2025));
+      expect(paymentMethod.card.expYear, equals(2026));
       expect(paymentMethod.card.last4, equals('4242'));
     });
     testWidgets('alipay', (tester) async {
