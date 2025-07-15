@@ -1,8 +1,10 @@
 #ifdef RCT_NEW_ARCH_ENABLED
 #import <rnstripe/rnstripe.h>
 #else
-#import <React/RCTBridgeModule.h>
+#import <UIKit/UIKit.h>
+
 #import "StripeSdkEventEmitterCompat.h"
+
 #endif
 
 NS_ASSUME_NONNULL_BEGIN
@@ -12,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 #ifdef RCT_NEW_ARCH_ENABLED
 @interface StripeSdk : NativeStripeSdkModuleSpecBase <NativeStripeSdkModuleSpec>
 #else
-@interface StripeSdk : StripeSdkEventEmitterCompat <RCTBridgeModule>
+@interface StripeSdk : StripeSdkEventEmitterCompat
 #endif
 
 @end

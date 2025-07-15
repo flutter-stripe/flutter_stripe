@@ -7,6 +7,7 @@
 
 import Foundation
 @_spi(PrivateBetaCustomerSheet) @_spi(STP) import StripePaymentSheet
+import UIKit
 
 class CustomerSheetUtils {
     internal class func buildCustomerSheetConfiguration(

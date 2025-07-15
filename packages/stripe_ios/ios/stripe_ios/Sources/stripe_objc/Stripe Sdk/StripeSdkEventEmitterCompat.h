@@ -3,7 +3,7 @@
 
 #ifndef RCT_NEW_ARCH_ENABLED
 
-
+#import <Foundation/Foundation.h>
 
 @interface StripeSdkEventEmitterCompat : NSObject
 - (void)emitOnConfirmHandlerCallback:(NSDictionary *)value;

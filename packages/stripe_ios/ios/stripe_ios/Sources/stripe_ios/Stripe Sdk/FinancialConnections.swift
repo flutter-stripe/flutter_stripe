@@ -8,6 +8,7 @@
 import Foundation
 import StripeFinancialConnections
 import Stripe
+import UIKit
 
 class FinancialConnections {
 

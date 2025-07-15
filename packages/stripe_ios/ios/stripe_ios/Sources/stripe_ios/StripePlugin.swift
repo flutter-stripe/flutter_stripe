@@ -6,6 +6,28 @@ import PassKit
 import stripe_objc
 #endif
 
+/// The type of a closure that is capable of sending a response to a bridged operation.
+/// Use this for returning callback methods to JS.
+public typealias RCTResponseSenderBlock = ([Any]) -> Void
+
+/// The type of a closure that is capable of sending an error response to a bridged operation.
+/// Use this for returning error information to JS.
+public typealias RCTResponseErrorBlock = (Error) -> Void
+
+/// Closure that bridge modules use to resolve the JS promise waiting for a result.
+/// Nil results are supported and are converted to JS's undefined value.
+public typealias RCTPromiseResolveBlock = (Any?) -> Void
+
+/// Closure that bridge modules use to reject the JS promise waiting for a result.
+/// The error may be nil but it is preferable to pass an NSError object for more precise error messages.
+public typealias RCTPromiseRejectBlock = (_ code: String, _ message: String, _ error: Error?) -> Void
+
+/// These closure types can be used for mapping input event handlers from JS to view properties.
+/// Unlike JS method callbacks, these can be called multiple times.
+public typealias RCTDirectEventBlock = ([AnyHashable: Any]?) -> Void
+public typealias RCTBubblingEventBlock = ([String: Any]) -> Void
+
+
 protocol ViewManagerDelegate {
     var cardFieldView: CardFieldView? { get set }
     var cardFormView: CardFormView? { get set }
