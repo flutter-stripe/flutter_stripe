@@ -619,7 +619,10 @@ class Stripe {
     CollectBankAccountTokenParams? params,
   }) async {
     try {
-      return _platform.collectBankAccountToken(clientSecret: clientSecret);
+      return _platform.collectBankAccountToken(
+        clientSecret: clientSecret,
+        params: params,
+      );
     } on StripeError {
       rethrow;
     }
