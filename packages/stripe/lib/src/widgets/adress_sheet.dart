@@ -55,7 +55,7 @@ class _AddressSheetState extends State<_AddressSheet> {
     _methodChannel = MethodChannel('flutter.stripe/address_sheet/$viewId');
     _methodChannel?.setMethodCallHandler((call) async {
       if (call.method == 'onSubmitAction') {
-        final tmp = Map<String, dynamic>.from(call.arguments as Map);
+        final tmp = Map<String, dynamic>.from(call.arguments as Map)['result'];
         final tmpAdress = Map<String, dynamic>.from(tmp['address'] as Map);
 
         widget.onSubmit(

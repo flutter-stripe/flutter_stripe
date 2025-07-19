@@ -445,7 +445,8 @@ class _MethodChannelCardFormFieldState
         controller._updateDetails(details);
         widget.onCardChanged?.call(details);
       } else {
-        final details = CardFieldInputDetails.fromJson(map);
+        final details = CardFieldInputDetails.fromJson(
+            Map<String, dynamic>.from(map['card']));
         controller._updateDetails(details);
         widget.onCardChanged?.call(details);
       }
