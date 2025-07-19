@@ -31,6 +31,10 @@ _$SetupParametersImpl _$$SetupParametersImplFromJson(
           ? null
           : PaymentSheetGooglePay.fromJson(
               json['googlePay'] as Map<String, dynamic>),
+      linkDisplayParams: json['linkDisplayParams'] == null
+          ? null
+          : LinkDisplayParams.fromJson(
+              json['linkDisplayParams'] as Map<String, dynamic>),
       allowsDelayedPaymentMethods:
           json['allowsDelayedPaymentMethods'] as bool? ?? false,
       appearance: json['appearance'] == null
@@ -79,6 +83,7 @@ Map<String, dynamic> _$$SetupParametersImplToJson(
       'applePay': instance.applePay?.toJson(),
       'style': UserInterfaceStyleKey.toJson(instance.style),
       'googlePay': instance.googlePay?.toJson(),
+      'linkDisplayParams': instance.linkDisplayParams?.toJson(),
       'allowsDelayedPaymentMethods': instance.allowsDelayedPaymentMethods,
       'appearance': instance.appearance?.toJson(),
       'defaultBillingDetails': instance.billingDetails?.toJson(),
@@ -136,6 +141,10 @@ _$PaymentModeImpl _$$PaymentModeImplFromJson(Map<String, dynamic> json) =>
           _$IntentFutureUsageEnumMap, json['setupFutureUsage']),
       captureMethod:
           $enumDecodeNullable(_$CaptureMethodEnumMap, json['captureMethod']),
+      paymentMethodOptions: json['paymentMethodOptions'] == null
+          ? null
+          : PaymentMethodOptions.fromJson(
+              json['paymentMethodOptions'] as Map<String, dynamic>),
       $type: json['runtimeType'] as String?,
     );
 
@@ -148,6 +157,8 @@ Map<String, dynamic> _$$PaymentModeImplToJson(_$PaymentModeImpl instance) =>
         'setupFutureUsage': value,
       if (_$CaptureMethodEnumMap[instance.captureMethod] case final value?)
         'captureMethod': value,
+      if (instance.paymentMethodOptions?.toJson() case final value?)
+        'paymentMethodOptions': value,
       'runtimeType': instance.$type,
     };
 
@@ -264,6 +275,14 @@ _$PaymentSheetAppearanceImpl _$$PaymentSheetAppearanceImplFromJson(
           ? null
           : PaymentSheetPrimaryButtonAppearance.fromJson(
               json['primaryButton'] as Map<String, dynamic>),
+      embeddedPaymentElement: json['embeddedPaymentElement'] == null
+          ? null
+          : EmbeddedPaymentElementAppearance.fromJson(
+              json['embeddedPaymentElement'] as Map<String, dynamic>),
+      formInsetValues: json['formInsetValues'] == null
+          ? null
+          : EdgeInsetsConfig.fromJson(
+              json['formInsetValues'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$PaymentSheetAppearanceImplToJson(
@@ -272,6 +291,8 @@ Map<String, dynamic> _$$PaymentSheetAppearanceImplToJson(
       'colors': instance.colors?.toJson(),
       'shapes': instance.shapes?.toJson(),
       'primaryButton': instance.primaryButton?.toJson(),
+      'embeddedPaymentElement': instance.embeddedPaymentElement?.toJson(),
+      'formInsetValues': instance.formInsetValues?.toJson(),
     };
 
 _$PaymentSheetAppearanceColorsImpl _$$PaymentSheetAppearanceColorsImplFromJson(
@@ -579,4 +600,159 @@ Map<String, dynamic> _$$CardBrandAcceptanceDisallowedImplToJson(
       'brands':
           instance.brands.map((e) => _$CardBrandCategoryEnumMap[e]!).toList(),
       'runtimeType': instance.$type,
+    };
+
+_$LinkDisplayParamsImpl _$$LinkDisplayParamsImplFromJson(
+        Map<String, dynamic> json) =>
+    _$LinkDisplayParamsImpl(
+      linkDisplay: $enumDecode(_$LinkDisplayEnumMap, json['linkDisplay']),
+    );
+
+Map<String, dynamic> _$$LinkDisplayParamsImplToJson(
+        _$LinkDisplayParamsImpl instance) =>
+    <String, dynamic>{
+      'linkDisplay': _$LinkDisplayEnumMap[instance.linkDisplay]!,
+    };
+
+const _$LinkDisplayEnumMap = {
+  LinkDisplay.automatic: 'automatic',
+  LinkDisplay.manual: 'manual',
+};
+
+_$EdgeInsetsConfigImpl _$$EdgeInsetsConfigImplFromJson(
+        Map<String, dynamic> json) =>
+    _$EdgeInsetsConfigImpl(
+      top: (json['top'] as num?)?.toDouble(),
+      bottom: (json['bottom'] as num?)?.toDouble(),
+      left: (json['left'] as num?)?.toDouble(),
+      right: (json['right'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$$EdgeInsetsConfigImplToJson(
+        _$EdgeInsetsConfigImpl instance) =>
+    <String, dynamic>{
+      'top': instance.top,
+      'bottom': instance.bottom,
+      'left': instance.left,
+      'right': instance.right,
+    };
+
+_$RadioConfigImpl _$$RadioConfigImplFromJson(Map<String, dynamic> json) =>
+    _$RadioConfigImpl(
+      selectedColor: ColorKey.fromJson(json['selectedColor']),
+      unselectedColor: ColorKey.fromJson(json['unselectedColor']),
+    );
+
+Map<String, dynamic> _$$RadioConfigImplToJson(_$RadioConfigImpl instance) =>
+    <String, dynamic>{
+      'selectedColor': ColorKey.toJson(instance.selectedColor),
+      'unselectedColor': ColorKey.toJson(instance.unselectedColor),
+    };
+
+_$CheckmarkConfigImpl _$$CheckmarkConfigImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CheckmarkConfigImpl(
+      color: ColorKey.fromJson(json['color']),
+    );
+
+Map<String, dynamic> _$$CheckmarkConfigImplToJson(
+        _$CheckmarkConfigImpl instance) =>
+    <String, dynamic>{
+      'color': ColorKey.toJson(instance.color),
+    };
+
+_$ChevronConfigImpl _$$ChevronConfigImplFromJson(Map<String, dynamic> json) =>
+    _$ChevronConfigImpl(
+      color: ColorKey.fromJson(json['color']),
+    );
+
+Map<String, dynamic> _$$ChevronConfigImplToJson(_$ChevronConfigImpl instance) =>
+    <String, dynamic>{
+      'color': ColorKey.toJson(instance.color),
+    };
+
+_$FlatConfigImpl _$$FlatConfigImplFromJson(Map<String, dynamic> json) =>
+    _$FlatConfigImpl(
+      separatorThickness: (json['separatorThickness'] as num?)?.toDouble(),
+      separatorColor: ColorKey.fromJson(json['separatorColor']),
+      separatorInsets: json['separatorInsets'] == null
+          ? null
+          : EdgeInsetsConfig.fromJson(
+              json['separatorInsets'] as Map<String, dynamic>),
+      topSeparatorEnabled: json['topSeparatorEnabled'] as bool?,
+      bottomSeparatorEnabled: json['bottomSeparatorEnabled'] as bool?,
+      radio: json['radio'] == null
+          ? null
+          : RadioConfig.fromJson(json['radio'] as Map<String, dynamic>),
+      checkmark: json['checkmark'] == null
+          ? null
+          : CheckmarkConfig.fromJson(json['checkmark'] as Map<String, dynamic>),
+      chevron: json['chevron'] == null
+          ? null
+          : ChevronConfig.fromJson(json['chevron'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$FlatConfigImplToJson(_$FlatConfigImpl instance) =>
+    <String, dynamic>{
+      'separatorThickness': instance.separatorThickness,
+      'separatorColor': ColorKey.toJson(instance.separatorColor),
+      'separatorInsets': instance.separatorInsets,
+      'topSeparatorEnabled': instance.topSeparatorEnabled,
+      'bottomSeparatorEnabled': instance.bottomSeparatorEnabled,
+      'radio': instance.radio,
+      'checkmark': instance.checkmark,
+      'chevron': instance.chevron,
+    };
+
+_$FloatingConfigImpl _$$FloatingConfigImplFromJson(Map<String, dynamic> json) =>
+    _$FloatingConfigImpl(
+      spacing: (json['spacing'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$$FloatingConfigImplToJson(
+        _$FloatingConfigImpl instance) =>
+    <String, dynamic>{
+      'spacing': instance.spacing,
+    };
+
+_$RowConfigImpl _$$RowConfigImplFromJson(Map<String, dynamic> json) =>
+    _$RowConfigImpl(
+      style: $enumDecodeNullable(_$RowStyleEnumMap, json['style']),
+      additionalInsets: (json['additionalInsets'] as num?)?.toDouble(),
+      flat: json['flat'] == null
+          ? null
+          : FlatConfig.fromJson(json['flat'] as Map<String, dynamic>),
+      floating: json['floating'] == null
+          ? null
+          : FloatingConfig.fromJson(json['floating'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$RowConfigImplToJson(_$RowConfigImpl instance) =>
+    <String, dynamic>{
+      'style': _$RowStyleEnumMap[instance.style],
+      'additionalInsets': instance.additionalInsets,
+      'flat': instance.flat,
+      'floating': instance.floating,
+    };
+
+const _$RowStyleEnumMap = {
+  RowStyle.flatWithRadio: 'flatWithRadio',
+  RowStyle.floatingButton: 'floatingButton',
+  RowStyle.flatWithCheckmark: 'flatWithCheckmark',
+  RowStyle.flatWithChevron: 'flatWithChevron',
+};
+
+_$EmbeddedPaymentElementAppearanceImpl
+    _$$EmbeddedPaymentElementAppearanceImplFromJson(
+            Map<String, dynamic> json) =>
+        _$EmbeddedPaymentElementAppearanceImpl(
+          row: json['row'] == null
+              ? null
+              : RowConfig.fromJson(json['row'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$$EmbeddedPaymentElementAppearanceImplToJson(
+        _$EmbeddedPaymentElementAppearanceImpl instance) =>
+    <String, dynamic>{
+      'row': instance.row,
     };

@@ -13882,6 +13882,12 @@ mixin _$PaymentMethodOptions {
   PaymentIntentsFutureUsage? get setupFutureUsage =>
       throw _privateConstructorUsedError;
 
+  /// This is an experimental feature that may be removed at any time
+  /// A map of payment method types to setup_future_usage value. (e.g. card: 'OffSession')
+  @JsonKey(name: 'setup_future_usage_values')
+  Map<String, IntentFutureUsage>? get setupFutureUsageValues =>
+      throw _privateConstructorUsedError;
+
   /// Serializes this PaymentMethodOptions to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
@@ -13898,7 +13904,10 @@ abstract class $PaymentMethodOptionsCopyWith<$Res> {
           $Res Function(PaymentMethodOptions) then) =
       _$PaymentMethodOptionsCopyWithImpl<$Res, PaymentMethodOptions>;
   @useResult
-  $Res call({PaymentIntentsFutureUsage? setupFutureUsage});
+  $Res call(
+      {PaymentIntentsFutureUsage? setupFutureUsage,
+      @JsonKey(name: 'setup_future_usage_values')
+      Map<String, IntentFutureUsage>? setupFutureUsageValues});
 }
 
 /// @nodoc
@@ -13918,12 +13927,17 @@ class _$PaymentMethodOptionsCopyWithImpl<$Res,
   @override
   $Res call({
     Object? setupFutureUsage = freezed,
+    Object? setupFutureUsageValues = freezed,
   }) {
     return _then(_value.copyWith(
       setupFutureUsage: freezed == setupFutureUsage
           ? _value.setupFutureUsage
           : setupFutureUsage // ignore: cast_nullable_to_non_nullable
               as PaymentIntentsFutureUsage?,
+      setupFutureUsageValues: freezed == setupFutureUsageValues
+          ? _value.setupFutureUsageValues
+          : setupFutureUsageValues // ignore: cast_nullable_to_non_nullable
+              as Map<String, IntentFutureUsage>?,
     ) as $Val);
   }
 }
@@ -13936,7 +13950,10 @@ abstract class _$$PaymentMethodOptionsImplCopyWith<$Res>
       __$$PaymentMethodOptionsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({PaymentIntentsFutureUsage? setupFutureUsage});
+  $Res call(
+      {PaymentIntentsFutureUsage? setupFutureUsage,
+      @JsonKey(name: 'setup_future_usage_values')
+      Map<String, IntentFutureUsage>? setupFutureUsageValues});
 }
 
 /// @nodoc
@@ -13953,12 +13970,17 @@ class __$$PaymentMethodOptionsImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? setupFutureUsage = freezed,
+    Object? setupFutureUsageValues = freezed,
   }) {
     return _then(_$PaymentMethodOptionsImpl(
       setupFutureUsage: freezed == setupFutureUsage
           ? _value.setupFutureUsage
           : setupFutureUsage // ignore: cast_nullable_to_non_nullable
               as PaymentIntentsFutureUsage?,
+      setupFutureUsageValues: freezed == setupFutureUsageValues
+          ? _value._setupFutureUsageValues
+          : setupFutureUsageValues // ignore: cast_nullable_to_non_nullable
+              as Map<String, IntentFutureUsage>?,
     ));
   }
 }
@@ -13967,7 +13989,11 @@ class __$$PaymentMethodOptionsImplCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$PaymentMethodOptionsImpl implements _PaymentMethodOptions {
-  const _$PaymentMethodOptionsImpl({this.setupFutureUsage});
+  const _$PaymentMethodOptionsImpl(
+      {this.setupFutureUsage,
+      @JsonKey(name: 'setup_future_usage_values')
+      final Map<String, IntentFutureUsage>? setupFutureUsageValues})
+      : _setupFutureUsageValues = setupFutureUsageValues;
 
   factory _$PaymentMethodOptionsImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentMethodOptionsImplFromJson(json);
@@ -13976,9 +14002,26 @@ class _$PaymentMethodOptionsImpl implements _PaymentMethodOptions {
   @override
   final PaymentIntentsFutureUsage? setupFutureUsage;
 
+  /// This is an experimental feature that may be removed at any time
+  /// A map of payment method types to setup_future_usage value. (e.g. card: 'OffSession')
+  final Map<String, IntentFutureUsage>? _setupFutureUsageValues;
+
+  /// This is an experimental feature that may be removed at any time
+  /// A map of payment method types to setup_future_usage value. (e.g. card: 'OffSession')
+  @override
+  @JsonKey(name: 'setup_future_usage_values')
+  Map<String, IntentFutureUsage>? get setupFutureUsageValues {
+    final value = _setupFutureUsageValues;
+    if (value == null) return null;
+    if (_setupFutureUsageValues is EqualUnmodifiableMapView)
+      return _setupFutureUsageValues;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
   @override
   String toString() {
-    return 'PaymentMethodOptions(setupFutureUsage: $setupFutureUsage)';
+    return 'PaymentMethodOptions(setupFutureUsage: $setupFutureUsage, setupFutureUsageValues: $setupFutureUsageValues)';
   }
 
   @override
@@ -13987,12 +14030,15 @@ class _$PaymentMethodOptionsImpl implements _PaymentMethodOptions {
         (other.runtimeType == runtimeType &&
             other is _$PaymentMethodOptionsImpl &&
             (identical(other.setupFutureUsage, setupFutureUsage) ||
-                other.setupFutureUsage == setupFutureUsage));
+                other.setupFutureUsage == setupFutureUsage) &&
+            const DeepCollectionEquality().equals(
+                other._setupFutureUsageValues, _setupFutureUsageValues));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, setupFutureUsage);
+  int get hashCode => Object.hash(runtimeType, setupFutureUsage,
+      const DeepCollectionEquality().hash(_setupFutureUsageValues));
 
   /// Create a copy of PaymentMethodOptions
   /// with the given fields replaced by the non-null parameter values.
@@ -14014,7 +14060,9 @@ class _$PaymentMethodOptionsImpl implements _PaymentMethodOptions {
 
 abstract class _PaymentMethodOptions implements PaymentMethodOptions {
   const factory _PaymentMethodOptions(
-          {final PaymentIntentsFutureUsage? setupFutureUsage}) =
+          {final PaymentIntentsFutureUsage? setupFutureUsage,
+          @JsonKey(name: 'setup_future_usage_values')
+          final Map<String, IntentFutureUsage>? setupFutureUsageValues}) =
       _$PaymentMethodOptionsImpl;
 
   factory _PaymentMethodOptions.fromJson(Map<String, dynamic> json) =
@@ -14023,6 +14071,12 @@ abstract class _PaymentMethodOptions implements PaymentMethodOptions {
   /// Indicates whether or not you want to reuse this method for future payments.
   @override
   PaymentIntentsFutureUsage? get setupFutureUsage;
+
+  /// This is an experimental feature that may be removed at any time
+  /// A map of payment method types to setup_future_usage value. (e.g. card: 'OffSession')
+  @override
+  @JsonKey(name: 'setup_future_usage_values')
+  Map<String, IntentFutureUsage>? get setupFutureUsageValues;
 
   /// Create a copy of PaymentMethodOptions
   /// with the given fields replaced by the non-null parameter values.

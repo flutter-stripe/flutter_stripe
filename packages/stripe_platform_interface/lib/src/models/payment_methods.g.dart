@@ -868,6 +868,10 @@ _$PaymentMethodOptionsImpl _$$PaymentMethodOptionsImplFromJson(
     _$PaymentMethodOptionsImpl(
       setupFutureUsage: $enumDecodeNullable(
           _$PaymentIntentsFutureUsageEnumMap, json['setupFutureUsage']),
+      setupFutureUsageValues:
+          (json['setup_future_usage_values'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, $enumDecode(_$IntentFutureUsageEnumMap, e)),
+      ),
     );
 
 Map<String, dynamic> _$$PaymentMethodOptionsImplToJson(
@@ -875,11 +879,18 @@ Map<String, dynamic> _$$PaymentMethodOptionsImplToJson(
     <String, dynamic>{
       'setupFutureUsage':
           _$PaymentIntentsFutureUsageEnumMap[instance.setupFutureUsage],
+      'setup_future_usage_values': instance.setupFutureUsageValues
+          ?.map((k, e) => MapEntry(k, _$IntentFutureUsageEnumMap[e]!)),
     };
 
 const _$PaymentIntentsFutureUsageEnumMap = {
   PaymentIntentsFutureUsage.OffSession: 'OffSession',
   PaymentIntentsFutureUsage.OnSession: 'OnSession',
+};
+
+const _$IntentFutureUsageEnumMap = {
+  IntentFutureUsage.OffSession: 'OffSession',
+  IntentFutureUsage.OnSession: 'OnSession',
 };
 
 _$MandateDataImpl _$$MandateDataImplFromJson(Map<String, dynamic> json) =>

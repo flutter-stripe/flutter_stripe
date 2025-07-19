@@ -803,6 +803,11 @@ class PaymentMethodOptions with _$PaymentMethodOptions {
   const factory PaymentMethodOptions({
     /// Indicates whether or not you want to reuse this method for future payments.
     PaymentIntentsFutureUsage? setupFutureUsage,
+
+    /// This is an experimental feature that may be removed at any time
+    /// A map of payment method types to setup_future_usage value. (e.g. card: 'OffSession')
+    @JsonKey(name: 'setup_future_usage_values')
+    Map<String, IntentFutureUsage>? setupFutureUsageValues,
   }) = _PaymentMethodOptions;
 
   factory PaymentMethodOptions.fromJson(Map<String, dynamic> json) =>

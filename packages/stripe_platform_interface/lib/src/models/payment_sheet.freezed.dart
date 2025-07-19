@@ -74,6 +74,10 @@ mixin _$SetupPaymentSheetParameters {
   /// If set, PaymentSheet displays Google Pay as a payment option
   PaymentSheetGooglePay? get googlePay => throw _privateConstructorUsedError;
 
+  /// Configuration related to Link
+  LinkDisplayParams? get linkDisplayParams =>
+      throw _privateConstructorUsedError;
+
   /// Flag that allows payment methods that do not move money at the send of the checkout.
   ///
   /// Defaul value is false.
@@ -162,6 +166,7 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
       PaymentSheetApplePay? applePay,
       @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style,
       PaymentSheetGooglePay? googlePay,
+      LinkDisplayParams? linkDisplayParams,
       bool allowsDelayedPaymentMethods,
       PaymentSheetAppearance? appearance,
       @JsonKey(name: 'defaultBillingDetails') BillingDetails? billingDetails,
@@ -177,6 +182,7 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
   $IntentConfigurationCopyWith<$Res>? get intentConfiguration;
   $PaymentSheetApplePayCopyWith<$Res>? get applePay;
   $PaymentSheetGooglePayCopyWith<$Res>? get googlePay;
+  $LinkDisplayParamsCopyWith<$Res>? get linkDisplayParams;
   $PaymentSheetAppearanceCopyWith<$Res>? get appearance;
   $BillingDetailsCopyWith<$Res>? get billingDetails;
   $BillingDetailsCollectionConfigurationCopyWith<$Res>?
@@ -212,6 +218,7 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
     Object? applePay = freezed,
     Object? style = freezed,
     Object? googlePay = freezed,
+    Object? linkDisplayParams = freezed,
     Object? allowsDelayedPaymentMethods = null,
     Object? appearance = freezed,
     Object? billingDetails = freezed,
@@ -272,6 +279,10 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
           ? _value.googlePay
           : googlePay // ignore: cast_nullable_to_non_nullable
               as PaymentSheetGooglePay?,
+      linkDisplayParams: freezed == linkDisplayParams
+          ? _value.linkDisplayParams
+          : linkDisplayParams // ignore: cast_nullable_to_non_nullable
+              as LinkDisplayParams?,
       allowsDelayedPaymentMethods: null == allowsDelayedPaymentMethods
           ? _value.allowsDelayedPaymentMethods
           : allowsDelayedPaymentMethods // ignore: cast_nullable_to_non_nullable
@@ -365,6 +376,20 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
+  $LinkDisplayParamsCopyWith<$Res>? get linkDisplayParams {
+    if (_value.linkDisplayParams == null) {
+      return null;
+    }
+
+    return $LinkDisplayParamsCopyWith<$Res>(_value.linkDisplayParams!, (value) {
+      return _then(_value.copyWith(linkDisplayParams: value) as $Val);
+    });
+  }
+
+  /// Create a copy of SetupPaymentSheetParameters
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
   $PaymentSheetAppearanceCopyWith<$Res>? get appearance {
     if (_value.appearance == null) {
       return null;
@@ -443,6 +468,7 @@ abstract class _$$SetupParametersImplCopyWith<$Res>
       PaymentSheetApplePay? applePay,
       @JsonKey(toJson: UserInterfaceStyleKey.toJson) ThemeMode? style,
       PaymentSheetGooglePay? googlePay,
+      LinkDisplayParams? linkDisplayParams,
       bool allowsDelayedPaymentMethods,
       PaymentSheetAppearance? appearance,
       @JsonKey(name: 'defaultBillingDetails') BillingDetails? billingDetails,
@@ -461,6 +487,8 @@ abstract class _$$SetupParametersImplCopyWith<$Res>
   $PaymentSheetApplePayCopyWith<$Res>? get applePay;
   @override
   $PaymentSheetGooglePayCopyWith<$Res>? get googlePay;
+  @override
+  $LinkDisplayParamsCopyWith<$Res>? get linkDisplayParams;
   @override
   $PaymentSheetAppearanceCopyWith<$Res>? get appearance;
   @override
@@ -497,6 +525,7 @@ class __$$SetupParametersImplCopyWithImpl<$Res>
     Object? applePay = freezed,
     Object? style = freezed,
     Object? googlePay = freezed,
+    Object? linkDisplayParams = freezed,
     Object? allowsDelayedPaymentMethods = null,
     Object? appearance = freezed,
     Object? billingDetails = freezed,
@@ -557,6 +586,10 @@ class __$$SetupParametersImplCopyWithImpl<$Res>
           ? _value.googlePay
           : googlePay // ignore: cast_nullable_to_non_nullable
               as PaymentSheetGooglePay?,
+      linkDisplayParams: freezed == linkDisplayParams
+          ? _value.linkDisplayParams
+          : linkDisplayParams // ignore: cast_nullable_to_non_nullable
+              as LinkDisplayParams?,
       allowsDelayedPaymentMethods: null == allowsDelayedPaymentMethods
           ? _value.allowsDelayedPaymentMethods
           : allowsDelayedPaymentMethods // ignore: cast_nullable_to_non_nullable
@@ -621,6 +654,7 @@ class _$SetupParametersImpl implements _SetupParameters {
       this.applePay,
       @JsonKey(toJson: UserInterfaceStyleKey.toJson) this.style,
       this.googlePay,
+      this.linkDisplayParams,
       this.allowsDelayedPaymentMethods = false,
       this.appearance,
       @JsonKey(name: 'defaultBillingDetails') this.billingDetails,
@@ -702,6 +736,10 @@ class _$SetupParametersImpl implements _SetupParameters {
   /// If set, PaymentSheet displays Google Pay as a payment option
   @override
   final PaymentSheetGooglePay? googlePay;
+
+  /// Configuration related to Link
+  @override
+  final LinkDisplayParams? linkDisplayParams;
 
   /// Flag that allows payment methods that do not move money at the send of the checkout.
   ///
@@ -794,7 +832,7 @@ class _$SetupParametersImpl implements _SetupParameters {
 
   @override
   String toString() {
-    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, customerSessionClientSecret: $customerSessionClientSecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, intentConfiguration: $intentConfiguration, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, allowsRemovalOfLastSavedPaymentMethod: $allowsRemovalOfLastSavedPaymentMethod, paymentMethodOrder: $paymentMethodOrder, returnURL: $returnURL, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, preferredNetworks: $preferredNetworks, cardBrandAcceptance: $cardBrandAcceptance)';
+    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, customerSessionClientSecret: $customerSessionClientSecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, intentConfiguration: $intentConfiguration, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, linkDisplayParams: $linkDisplayParams, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, allowsRemovalOfLastSavedPaymentMethod: $allowsRemovalOfLastSavedPaymentMethod, paymentMethodOrder: $paymentMethodOrder, returnURL: $returnURL, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, preferredNetworks: $preferredNetworks, cardBrandAcceptance: $cardBrandAcceptance)';
   }
 
   @override
@@ -827,6 +865,8 @@ class _$SetupParametersImpl implements _SetupParameters {
             (identical(other.style, style) || other.style == style) &&
             (identical(other.googlePay, googlePay) ||
                 other.googlePay == googlePay) &&
+            (identical(other.linkDisplayParams, linkDisplayParams) ||
+                other.linkDisplayParams == linkDisplayParams) &&
             (identical(other.allowsDelayedPaymentMethods, allowsDelayedPaymentMethods) ||
                 other.allowsDelayedPaymentMethods ==
                     allowsDelayedPaymentMethods) &&
@@ -842,8 +882,7 @@ class _$SetupParametersImpl implements _SetupParameters {
             (identical(other.returnURL, returnURL) ||
                 other.returnURL == returnURL) &&
             (identical(other.billingDetailsCollectionConfiguration, billingDetailsCollectionConfiguration) ||
-                other.billingDetailsCollectionConfiguration ==
-                    billingDetailsCollectionConfiguration) &&
+                other.billingDetailsCollectionConfiguration == billingDetailsCollectionConfiguration) &&
             (identical(other.removeSavedPaymentMethodMessage, removeSavedPaymentMethodMessage) || other.removeSavedPaymentMethodMessage == removeSavedPaymentMethodMessage) &&
             const DeepCollectionEquality().equals(other._preferredNetworks, _preferredNetworks) &&
             (identical(other.cardBrandAcceptance, cardBrandAcceptance) || other.cardBrandAcceptance == cardBrandAcceptance));
@@ -865,6 +904,7 @@ class _$SetupParametersImpl implements _SetupParameters {
         applePay,
         style,
         googlePay,
+        linkDisplayParams,
         allowsDelayedPaymentMethods,
         appearance,
         billingDetails,
@@ -908,6 +948,7 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
       final PaymentSheetApplePay? applePay,
       @JsonKey(toJson: UserInterfaceStyleKey.toJson) final ThemeMode? style,
       final PaymentSheetGooglePay? googlePay,
+      final LinkDisplayParams? linkDisplayParams,
       final bool allowsDelayedPaymentMethods,
       final PaymentSheetAppearance? appearance,
       @JsonKey(name: 'defaultBillingDetails')
@@ -988,6 +1029,10 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   /// If set, PaymentSheet displays Google Pay as a payment option
   @override
   PaymentSheetGooglePay? get googlePay;
+
+  /// Configuration related to Link
+  @override
+  LinkDisplayParams? get linkDisplayParams;
 
   /// Flag that allows payment methods that do not move money at the send of the checkout.
   ///
@@ -1338,8 +1383,12 @@ mixin _$IntentMode {
   IntentFutureUsage? get setupFutureUsage => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String currencyCode, int amount,
-            IntentFutureUsage? setupFutureUsage, CaptureMethod? captureMethod)
+    required TResult Function(
+            String currencyCode,
+            int amount,
+            IntentFutureUsage? setupFutureUsage,
+            CaptureMethod? captureMethod,
+            PaymentMethodOptions? paymentMethodOptions)
         paymentMode,
     required TResult Function(
             String? currencyCode, IntentFutureUsage setupFutureUsage)
@@ -1348,8 +1397,12 @@ mixin _$IntentMode {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String currencyCode, int amount,
-            IntentFutureUsage? setupFutureUsage, CaptureMethod? captureMethod)?
+    TResult? Function(
+            String currencyCode,
+            int amount,
+            IntentFutureUsage? setupFutureUsage,
+            CaptureMethod? captureMethod,
+            PaymentMethodOptions? paymentMethodOptions)?
         paymentMode,
     TResult? Function(String? currencyCode, IntentFutureUsage setupFutureUsage)?
         setupMode,
@@ -1357,8 +1410,12 @@ mixin _$IntentMode {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String currencyCode, int amount,
-            IntentFutureUsage? setupFutureUsage, CaptureMethod? captureMethod)?
+    TResult Function(
+            String currencyCode,
+            int amount,
+            IntentFutureUsage? setupFutureUsage,
+            CaptureMethod? captureMethod,
+            PaymentMethodOptions? paymentMethodOptions)?
         paymentMode,
     TResult Function(String? currencyCode, IntentFutureUsage setupFutureUsage)?
         setupMode,
@@ -1447,7 +1504,10 @@ abstract class _$$PaymentModeImplCopyWith<$Res>
       {String currencyCode,
       int amount,
       IntentFutureUsage? setupFutureUsage,
-      CaptureMethod? captureMethod});
+      CaptureMethod? captureMethod,
+      PaymentMethodOptions? paymentMethodOptions});
+
+  $PaymentMethodOptionsCopyWith<$Res>? get paymentMethodOptions;
 }
 
 /// @nodoc
@@ -1467,6 +1527,7 @@ class __$$PaymentModeImplCopyWithImpl<$Res>
     Object? amount = null,
     Object? setupFutureUsage = freezed,
     Object? captureMethod = freezed,
+    Object? paymentMethodOptions = freezed,
   }) {
     return _then(_$PaymentModeImpl(
       currencyCode: null == currencyCode
@@ -1485,7 +1546,26 @@ class __$$PaymentModeImplCopyWithImpl<$Res>
           ? _value.captureMethod
           : captureMethod // ignore: cast_nullable_to_non_nullable
               as CaptureMethod?,
+      paymentMethodOptions: freezed == paymentMethodOptions
+          ? _value.paymentMethodOptions
+          : paymentMethodOptions // ignore: cast_nullable_to_non_nullable
+              as PaymentMethodOptions?,
     ));
+  }
+
+  /// Create a copy of IntentMode
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentMethodOptionsCopyWith<$Res>? get paymentMethodOptions {
+    if (_value.paymentMethodOptions == null) {
+      return null;
+    }
+
+    return $PaymentMethodOptionsCopyWith<$Res>(_value.paymentMethodOptions!,
+        (value) {
+      return _then(_value.copyWith(paymentMethodOptions: value));
+    });
   }
 }
 
@@ -1498,6 +1578,7 @@ class _$PaymentModeImpl implements _PaymentMode {
       required this.amount,
       this.setupFutureUsage,
       this.captureMethod,
+      this.paymentMethodOptions,
       final String? $type})
       : $type = $type ?? 'paymentMode';
 
@@ -1517,12 +1598,16 @@ class _$PaymentModeImpl implements _PaymentMode {
   @override
   final CaptureMethod? captureMethod;
 
+  /// Payment method options
+  @override
+  final PaymentMethodOptions? paymentMethodOptions;
+
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'IntentMode.paymentMode(currencyCode: $currencyCode, amount: $amount, setupFutureUsage: $setupFutureUsage, captureMethod: $captureMethod)';
+    return 'IntentMode.paymentMode(currencyCode: $currencyCode, amount: $amount, setupFutureUsage: $setupFutureUsage, captureMethod: $captureMethod, paymentMethodOptions: $paymentMethodOptions)';
   }
 
   @override
@@ -1536,13 +1621,15 @@ class _$PaymentModeImpl implements _PaymentMode {
             (identical(other.setupFutureUsage, setupFutureUsage) ||
                 other.setupFutureUsage == setupFutureUsage) &&
             (identical(other.captureMethod, captureMethod) ||
-                other.captureMethod == captureMethod));
+                other.captureMethod == captureMethod) &&
+            (identical(other.paymentMethodOptions, paymentMethodOptions) ||
+                other.paymentMethodOptions == paymentMethodOptions));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, currencyCode, amount, setupFutureUsage, captureMethod);
+  int get hashCode => Object.hash(runtimeType, currencyCode, amount,
+      setupFutureUsage, captureMethod, paymentMethodOptions);
 
   /// Create a copy of IntentMode
   /// with the given fields replaced by the non-null parameter values.
@@ -1555,41 +1642,55 @@ class _$PaymentModeImpl implements _PaymentMode {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String currencyCode, int amount,
-            IntentFutureUsage? setupFutureUsage, CaptureMethod? captureMethod)
+    required TResult Function(
+            String currencyCode,
+            int amount,
+            IntentFutureUsage? setupFutureUsage,
+            CaptureMethod? captureMethod,
+            PaymentMethodOptions? paymentMethodOptions)
         paymentMode,
     required TResult Function(
             String? currencyCode, IntentFutureUsage setupFutureUsage)
         setupMode,
   }) {
-    return paymentMode(currencyCode, amount, setupFutureUsage, captureMethod);
+    return paymentMode(currencyCode, amount, setupFutureUsage, captureMethod,
+        paymentMethodOptions);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String currencyCode, int amount,
-            IntentFutureUsage? setupFutureUsage, CaptureMethod? captureMethod)?
+    TResult? Function(
+            String currencyCode,
+            int amount,
+            IntentFutureUsage? setupFutureUsage,
+            CaptureMethod? captureMethod,
+            PaymentMethodOptions? paymentMethodOptions)?
         paymentMode,
     TResult? Function(String? currencyCode, IntentFutureUsage setupFutureUsage)?
         setupMode,
   }) {
-    return paymentMode?.call(
-        currencyCode, amount, setupFutureUsage, captureMethod);
+    return paymentMode?.call(currencyCode, amount, setupFutureUsage,
+        captureMethod, paymentMethodOptions);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String currencyCode, int amount,
-            IntentFutureUsage? setupFutureUsage, CaptureMethod? captureMethod)?
+    TResult Function(
+            String currencyCode,
+            int amount,
+            IntentFutureUsage? setupFutureUsage,
+            CaptureMethod? captureMethod,
+            PaymentMethodOptions? paymentMethodOptions)?
         paymentMode,
     TResult Function(String? currencyCode, IntentFutureUsage setupFutureUsage)?
         setupMode,
     required TResult orElse(),
   }) {
     if (paymentMode != null) {
-      return paymentMode(currencyCode, amount, setupFutureUsage, captureMethod);
+      return paymentMode(currencyCode, amount, setupFutureUsage, captureMethod,
+          paymentMethodOptions);
     }
     return orElse();
   }
@@ -1638,7 +1739,8 @@ abstract class _PaymentMode implements IntentMode {
       {required final String currencyCode,
       required final int amount,
       final IntentFutureUsage? setupFutureUsage,
-      final CaptureMethod? captureMethod}) = _$PaymentModeImpl;
+      final CaptureMethod? captureMethod,
+      final PaymentMethodOptions? paymentMethodOptions}) = _$PaymentModeImpl;
 
   factory _PaymentMode.fromJson(Map<String, dynamic> json) =
       _$PaymentModeImpl.fromJson;
@@ -1653,6 +1755,9 @@ abstract class _PaymentMode implements IntentMode {
 
   /// Capture method for the future payment intent
   CaptureMethod? get captureMethod;
+
+  /// Payment method options
+  PaymentMethodOptions? get paymentMethodOptions;
 
   /// Create a copy of IntentMode
   /// with the given fields replaced by the non-null parameter values.
@@ -1754,8 +1859,12 @@ class _$SetupModeImpl implements _SetupMode {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String currencyCode, int amount,
-            IntentFutureUsage? setupFutureUsage, CaptureMethod? captureMethod)
+    required TResult Function(
+            String currencyCode,
+            int amount,
+            IntentFutureUsage? setupFutureUsage,
+            CaptureMethod? captureMethod,
+            PaymentMethodOptions? paymentMethodOptions)
         paymentMode,
     required TResult Function(
             String? currencyCode, IntentFutureUsage setupFutureUsage)
@@ -1767,8 +1876,12 @@ class _$SetupModeImpl implements _SetupMode {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String currencyCode, int amount,
-            IntentFutureUsage? setupFutureUsage, CaptureMethod? captureMethod)?
+    TResult? Function(
+            String currencyCode,
+            int amount,
+            IntentFutureUsage? setupFutureUsage,
+            CaptureMethod? captureMethod,
+            PaymentMethodOptions? paymentMethodOptions)?
         paymentMode,
     TResult? Function(String? currencyCode, IntentFutureUsage setupFutureUsage)?
         setupMode,
@@ -1779,8 +1892,12 @@ class _$SetupModeImpl implements _SetupMode {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String currencyCode, int amount,
-            IntentFutureUsage? setupFutureUsage, CaptureMethod? captureMethod)?
+    TResult Function(
+            String currencyCode,
+            int amount,
+            IntentFutureUsage? setupFutureUsage,
+            CaptureMethod? captureMethod,
+            PaymentMethodOptions? paymentMethodOptions)?
         paymentMode,
     TResult Function(String? currencyCode, IntentFutureUsage setupFutureUsage)?
         setupMode,
@@ -2500,6 +2617,13 @@ mixin _$PaymentSheetAppearance {
   PaymentSheetPrimaryButtonAppearance? get primaryButton =>
       throw _privateConstructorUsedError;
 
+  /// Describes the appearance of the Embedded Mobile Payment Element
+  EmbeddedPaymentElementAppearance? get embeddedPaymentElement =>
+      throw _privateConstructorUsedError;
+
+  /// Describes the inset values applied to Mobile Payment Element forms
+  EdgeInsetsConfig? get formInsetValues => throw _privateConstructorUsedError;
+
   /// Serializes this PaymentSheetAppearance to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
@@ -2519,11 +2643,15 @@ abstract class $PaymentSheetAppearanceCopyWith<$Res> {
   $Res call(
       {PaymentSheetAppearanceColors? colors,
       PaymentSheetShape? shapes,
-      PaymentSheetPrimaryButtonAppearance? primaryButton});
+      PaymentSheetPrimaryButtonAppearance? primaryButton,
+      EmbeddedPaymentElementAppearance? embeddedPaymentElement,
+      EdgeInsetsConfig? formInsetValues});
 
   $PaymentSheetAppearanceColorsCopyWith<$Res>? get colors;
   $PaymentSheetShapeCopyWith<$Res>? get shapes;
   $PaymentSheetPrimaryButtonAppearanceCopyWith<$Res>? get primaryButton;
+  $EmbeddedPaymentElementAppearanceCopyWith<$Res>? get embeddedPaymentElement;
+  $EdgeInsetsConfigCopyWith<$Res>? get formInsetValues;
 }
 
 /// @nodoc
@@ -2545,6 +2673,8 @@ class _$PaymentSheetAppearanceCopyWithImpl<$Res,
     Object? colors = freezed,
     Object? shapes = freezed,
     Object? primaryButton = freezed,
+    Object? embeddedPaymentElement = freezed,
+    Object? formInsetValues = freezed,
   }) {
     return _then(_value.copyWith(
       colors: freezed == colors
@@ -2559,6 +2689,14 @@ class _$PaymentSheetAppearanceCopyWithImpl<$Res,
           ? _value.primaryButton
           : primaryButton // ignore: cast_nullable_to_non_nullable
               as PaymentSheetPrimaryButtonAppearance?,
+      embeddedPaymentElement: freezed == embeddedPaymentElement
+          ? _value.embeddedPaymentElement
+          : embeddedPaymentElement // ignore: cast_nullable_to_non_nullable
+              as EmbeddedPaymentElementAppearance?,
+      formInsetValues: freezed == formInsetValues
+          ? _value.formInsetValues
+          : formInsetValues // ignore: cast_nullable_to_non_nullable
+              as EdgeInsetsConfig?,
     ) as $Val);
   }
 
@@ -2604,6 +2742,35 @@ class _$PaymentSheetAppearanceCopyWithImpl<$Res,
       return _then(_value.copyWith(primaryButton: value) as $Val);
     });
   }
+
+  /// Create a copy of PaymentSheetAppearance
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $EmbeddedPaymentElementAppearanceCopyWith<$Res>? get embeddedPaymentElement {
+    if (_value.embeddedPaymentElement == null) {
+      return null;
+    }
+
+    return $EmbeddedPaymentElementAppearanceCopyWith<$Res>(
+        _value.embeddedPaymentElement!, (value) {
+      return _then(_value.copyWith(embeddedPaymentElement: value) as $Val);
+    });
+  }
+
+  /// Create a copy of PaymentSheetAppearance
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $EdgeInsetsConfigCopyWith<$Res>? get formInsetValues {
+    if (_value.formInsetValues == null) {
+      return null;
+    }
+
+    return $EdgeInsetsConfigCopyWith<$Res>(_value.formInsetValues!, (value) {
+      return _then(_value.copyWith(formInsetValues: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -2618,7 +2785,9 @@ abstract class _$$PaymentSheetAppearanceImplCopyWith<$Res>
   $Res call(
       {PaymentSheetAppearanceColors? colors,
       PaymentSheetShape? shapes,
-      PaymentSheetPrimaryButtonAppearance? primaryButton});
+      PaymentSheetPrimaryButtonAppearance? primaryButton,
+      EmbeddedPaymentElementAppearance? embeddedPaymentElement,
+      EdgeInsetsConfig? formInsetValues});
 
   @override
   $PaymentSheetAppearanceColorsCopyWith<$Res>? get colors;
@@ -2626,6 +2795,10 @@ abstract class _$$PaymentSheetAppearanceImplCopyWith<$Res>
   $PaymentSheetShapeCopyWith<$Res>? get shapes;
   @override
   $PaymentSheetPrimaryButtonAppearanceCopyWith<$Res>? get primaryButton;
+  @override
+  $EmbeddedPaymentElementAppearanceCopyWith<$Res>? get embeddedPaymentElement;
+  @override
+  $EdgeInsetsConfigCopyWith<$Res>? get formInsetValues;
 }
 
 /// @nodoc
@@ -2646,6 +2819,8 @@ class __$$PaymentSheetAppearanceImplCopyWithImpl<$Res>
     Object? colors = freezed,
     Object? shapes = freezed,
     Object? primaryButton = freezed,
+    Object? embeddedPaymentElement = freezed,
+    Object? formInsetValues = freezed,
   }) {
     return _then(_$PaymentSheetAppearanceImpl(
       colors: freezed == colors
@@ -2660,6 +2835,14 @@ class __$$PaymentSheetAppearanceImplCopyWithImpl<$Res>
           ? _value.primaryButton
           : primaryButton // ignore: cast_nullable_to_non_nullable
               as PaymentSheetPrimaryButtonAppearance?,
+      embeddedPaymentElement: freezed == embeddedPaymentElement
+          ? _value.embeddedPaymentElement
+          : embeddedPaymentElement // ignore: cast_nullable_to_non_nullable
+              as EmbeddedPaymentElementAppearance?,
+      formInsetValues: freezed == formInsetValues
+          ? _value.formInsetValues
+          : formInsetValues // ignore: cast_nullable_to_non_nullable
+              as EdgeInsetsConfig?,
     ));
   }
 }
@@ -2669,7 +2852,11 @@ class __$$PaymentSheetAppearanceImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$PaymentSheetAppearanceImpl implements _PaymentSheetAppearance {
   const _$PaymentSheetAppearanceImpl(
-      {this.colors, this.shapes, this.primaryButton});
+      {this.colors,
+      this.shapes,
+      this.primaryButton,
+      this.embeddedPaymentElement,
+      this.formInsetValues});
 
   factory _$PaymentSheetAppearanceImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentSheetAppearanceImplFromJson(json);
@@ -2686,9 +2873,17 @@ class _$PaymentSheetAppearanceImpl implements _PaymentSheetAppearance {
   @override
   final PaymentSheetPrimaryButtonAppearance? primaryButton;
 
+  /// Describes the appearance of the Embedded Mobile Payment Element
+  @override
+  final EmbeddedPaymentElementAppearance? embeddedPaymentElement;
+
+  /// Describes the inset values applied to Mobile Payment Element forms
+  @override
+  final EdgeInsetsConfig? formInsetValues;
+
   @override
   String toString() {
-    return 'PaymentSheetAppearance(colors: $colors, shapes: $shapes, primaryButton: $primaryButton)';
+    return 'PaymentSheetAppearance(colors: $colors, shapes: $shapes, primaryButton: $primaryButton, embeddedPaymentElement: $embeddedPaymentElement, formInsetValues: $formInsetValues)';
   }
 
   @override
@@ -2699,12 +2894,17 @@ class _$PaymentSheetAppearanceImpl implements _PaymentSheetAppearance {
             (identical(other.colors, colors) || other.colors == colors) &&
             (identical(other.shapes, shapes) || other.shapes == shapes) &&
             (identical(other.primaryButton, primaryButton) ||
-                other.primaryButton == primaryButton));
+                other.primaryButton == primaryButton) &&
+            (identical(other.embeddedPaymentElement, embeddedPaymentElement) ||
+                other.embeddedPaymentElement == embeddedPaymentElement) &&
+            (identical(other.formInsetValues, formInsetValues) ||
+                other.formInsetValues == formInsetValues));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, colors, shapes, primaryButton);
+  int get hashCode => Object.hash(runtimeType, colors, shapes, primaryButton,
+      embeddedPaymentElement, formInsetValues);
 
   /// Create a copy of PaymentSheetAppearance
   /// with the given fields replaced by the non-null parameter values.
@@ -2725,10 +2925,11 @@ class _$PaymentSheetAppearanceImpl implements _PaymentSheetAppearance {
 
 abstract class _PaymentSheetAppearance implements PaymentSheetAppearance {
   const factory _PaymentSheetAppearance(
-          {final PaymentSheetAppearanceColors? colors,
-          final PaymentSheetShape? shapes,
-          final PaymentSheetPrimaryButtonAppearance? primaryButton}) =
-      _$PaymentSheetAppearanceImpl;
+      {final PaymentSheetAppearanceColors? colors,
+      final PaymentSheetShape? shapes,
+      final PaymentSheetPrimaryButtonAppearance? primaryButton,
+      final EmbeddedPaymentElementAppearance? embeddedPaymentElement,
+      final EdgeInsetsConfig? formInsetValues}) = _$PaymentSheetAppearanceImpl;
 
   factory _PaymentSheetAppearance.fromJson(Map<String, dynamic> json) =
       _$PaymentSheetAppearanceImpl.fromJson;
@@ -2744,6 +2945,14 @@ abstract class _PaymentSheetAppearance implements PaymentSheetAppearance {
   /// PaymentSheet appearance
   @override
   PaymentSheetPrimaryButtonAppearance? get primaryButton;
+
+  /// Describes the appearance of the Embedded Mobile Payment Element
+  @override
+  EmbeddedPaymentElementAppearance? get embeddedPaymentElement;
+
+  /// Describes the inset values applied to Mobile Payment Element forms
+  @override
+  EdgeInsetsConfig? get formInsetValues;
 
   /// Create a copy of PaymentSheetAppearance
   /// with the given fields replaced by the non-null parameter values.
@@ -6493,5 +6702,1958 @@ abstract class _CardBrandAcceptanceDisallowed implements CardBrandAcceptance {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CardBrandAcceptanceDisallowedImplCopyWith<
           _$CardBrandAcceptanceDisallowedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+LinkDisplayParams _$LinkDisplayParamsFromJson(Map<String, dynamic> json) {
+  return _LinkDisplayParams.fromJson(json);
+}
+
+/// @nodoc
+mixin _$LinkDisplayParams {
+  /// Display configuration for Link
+  LinkDisplay get linkDisplay => throw _privateConstructorUsedError;
+
+  /// Serializes this LinkDisplayParams to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of LinkDisplayParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $LinkDisplayParamsCopyWith<LinkDisplayParams> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LinkDisplayParamsCopyWith<$Res> {
+  factory $LinkDisplayParamsCopyWith(
+          LinkDisplayParams value, $Res Function(LinkDisplayParams) then) =
+      _$LinkDisplayParamsCopyWithImpl<$Res, LinkDisplayParams>;
+  @useResult
+  $Res call({LinkDisplay linkDisplay});
+}
+
+/// @nodoc
+class _$LinkDisplayParamsCopyWithImpl<$Res, $Val extends LinkDisplayParams>
+    implements $LinkDisplayParamsCopyWith<$Res> {
+  _$LinkDisplayParamsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of LinkDisplayParams
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? linkDisplay = null,
+  }) {
+    return _then(_value.copyWith(
+      linkDisplay: null == linkDisplay
+          ? _value.linkDisplay
+          : linkDisplay // ignore: cast_nullable_to_non_nullable
+              as LinkDisplay,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$LinkDisplayParamsImplCopyWith<$Res>
+    implements $LinkDisplayParamsCopyWith<$Res> {
+  factory _$$LinkDisplayParamsImplCopyWith(_$LinkDisplayParamsImpl value,
+          $Res Function(_$LinkDisplayParamsImpl) then) =
+      __$$LinkDisplayParamsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({LinkDisplay linkDisplay});
+}
+
+/// @nodoc
+class __$$LinkDisplayParamsImplCopyWithImpl<$Res>
+    extends _$LinkDisplayParamsCopyWithImpl<$Res, _$LinkDisplayParamsImpl>
+    implements _$$LinkDisplayParamsImplCopyWith<$Res> {
+  __$$LinkDisplayParamsImplCopyWithImpl(_$LinkDisplayParamsImpl _value,
+      $Res Function(_$LinkDisplayParamsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of LinkDisplayParams
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? linkDisplay = null,
+  }) {
+    return _then(_$LinkDisplayParamsImpl(
+      linkDisplay: null == linkDisplay
+          ? _value.linkDisplay
+          : linkDisplay // ignore: cast_nullable_to_non_nullable
+              as LinkDisplay,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$LinkDisplayParamsImpl implements _LinkDisplayParams {
+  const _$LinkDisplayParamsImpl({required this.linkDisplay});
+
+  factory _$LinkDisplayParamsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LinkDisplayParamsImplFromJson(json);
+
+  /// Display configuration for Link
+  @override
+  final LinkDisplay linkDisplay;
+
+  @override
+  String toString() {
+    return 'LinkDisplayParams(linkDisplay: $linkDisplay)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LinkDisplayParamsImpl &&
+            (identical(other.linkDisplay, linkDisplay) ||
+                other.linkDisplay == linkDisplay));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, linkDisplay);
+
+  /// Create a copy of LinkDisplayParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LinkDisplayParamsImplCopyWith<_$LinkDisplayParamsImpl> get copyWith =>
+      __$$LinkDisplayParamsImplCopyWithImpl<_$LinkDisplayParamsImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$LinkDisplayParamsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _LinkDisplayParams implements LinkDisplayParams {
+  const factory _LinkDisplayParams({required final LinkDisplay linkDisplay}) =
+      _$LinkDisplayParamsImpl;
+
+  factory _LinkDisplayParams.fromJson(Map<String, dynamic> json) =
+      _$LinkDisplayParamsImpl.fromJson;
+
+  /// Display configuration for Link
+  @override
+  LinkDisplay get linkDisplay;
+
+  /// Create a copy of LinkDisplayParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LinkDisplayParamsImplCopyWith<_$LinkDisplayParamsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+EdgeInsetsConfig _$EdgeInsetsConfigFromJson(Map<String, dynamic> json) {
+  return _EdgeInsetsConfig.fromJson(json);
+}
+
+/// @nodoc
+mixin _$EdgeInsetsConfig {
+  double? get top => throw _privateConstructorUsedError;
+  double? get bottom => throw _privateConstructorUsedError;
+  double? get left => throw _privateConstructorUsedError;
+  double? get right => throw _privateConstructorUsedError;
+
+  /// Serializes this EdgeInsetsConfig to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of EdgeInsetsConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $EdgeInsetsConfigCopyWith<EdgeInsetsConfig> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EdgeInsetsConfigCopyWith<$Res> {
+  factory $EdgeInsetsConfigCopyWith(
+          EdgeInsetsConfig value, $Res Function(EdgeInsetsConfig) then) =
+      _$EdgeInsetsConfigCopyWithImpl<$Res, EdgeInsetsConfig>;
+  @useResult
+  $Res call({double? top, double? bottom, double? left, double? right});
+}
+
+/// @nodoc
+class _$EdgeInsetsConfigCopyWithImpl<$Res, $Val extends EdgeInsetsConfig>
+    implements $EdgeInsetsConfigCopyWith<$Res> {
+  _$EdgeInsetsConfigCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of EdgeInsetsConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? top = freezed,
+    Object? bottom = freezed,
+    Object? left = freezed,
+    Object? right = freezed,
+  }) {
+    return _then(_value.copyWith(
+      top: freezed == top
+          ? _value.top
+          : top // ignore: cast_nullable_to_non_nullable
+              as double?,
+      bottom: freezed == bottom
+          ? _value.bottom
+          : bottom // ignore: cast_nullable_to_non_nullable
+              as double?,
+      left: freezed == left
+          ? _value.left
+          : left // ignore: cast_nullable_to_non_nullable
+              as double?,
+      right: freezed == right
+          ? _value.right
+          : right // ignore: cast_nullable_to_non_nullable
+              as double?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$EdgeInsetsConfigImplCopyWith<$Res>
+    implements $EdgeInsetsConfigCopyWith<$Res> {
+  factory _$$EdgeInsetsConfigImplCopyWith(_$EdgeInsetsConfigImpl value,
+          $Res Function(_$EdgeInsetsConfigImpl) then) =
+      __$$EdgeInsetsConfigImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({double? top, double? bottom, double? left, double? right});
+}
+
+/// @nodoc
+class __$$EdgeInsetsConfigImplCopyWithImpl<$Res>
+    extends _$EdgeInsetsConfigCopyWithImpl<$Res, _$EdgeInsetsConfigImpl>
+    implements _$$EdgeInsetsConfigImplCopyWith<$Res> {
+  __$$EdgeInsetsConfigImplCopyWithImpl(_$EdgeInsetsConfigImpl _value,
+      $Res Function(_$EdgeInsetsConfigImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of EdgeInsetsConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? top = freezed,
+    Object? bottom = freezed,
+    Object? left = freezed,
+    Object? right = freezed,
+  }) {
+    return _then(_$EdgeInsetsConfigImpl(
+      top: freezed == top
+          ? _value.top
+          : top // ignore: cast_nullable_to_non_nullable
+              as double?,
+      bottom: freezed == bottom
+          ? _value.bottom
+          : bottom // ignore: cast_nullable_to_non_nullable
+              as double?,
+      left: freezed == left
+          ? _value.left
+          : left // ignore: cast_nullable_to_non_nullable
+              as double?,
+      right: freezed == right
+          ? _value.right
+          : right // ignore: cast_nullable_to_non_nullable
+              as double?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$EdgeInsetsConfigImpl implements _EdgeInsetsConfig {
+  const _$EdgeInsetsConfigImpl({this.top, this.bottom, this.left, this.right});
+
+  factory _$EdgeInsetsConfigImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EdgeInsetsConfigImplFromJson(json);
+
+  @override
+  final double? top;
+  @override
+  final double? bottom;
+  @override
+  final double? left;
+  @override
+  final double? right;
+
+  @override
+  String toString() {
+    return 'EdgeInsetsConfig(top: $top, bottom: $bottom, left: $left, right: $right)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EdgeInsetsConfigImpl &&
+            (identical(other.top, top) || other.top == top) &&
+            (identical(other.bottom, bottom) || other.bottom == bottom) &&
+            (identical(other.left, left) || other.left == left) &&
+            (identical(other.right, right) || other.right == right));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, top, bottom, left, right);
+
+  /// Create a copy of EdgeInsetsConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EdgeInsetsConfigImplCopyWith<_$EdgeInsetsConfigImpl> get copyWith =>
+      __$$EdgeInsetsConfigImplCopyWithImpl<_$EdgeInsetsConfigImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EdgeInsetsConfigImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _EdgeInsetsConfig implements EdgeInsetsConfig {
+  const factory _EdgeInsetsConfig(
+      {final double? top,
+      final double? bottom,
+      final double? left,
+      final double? right}) = _$EdgeInsetsConfigImpl;
+
+  factory _EdgeInsetsConfig.fromJson(Map<String, dynamic> json) =
+      _$EdgeInsetsConfigImpl.fromJson;
+
+  @override
+  double? get top;
+  @override
+  double? get bottom;
+  @override
+  double? get left;
+  @override
+  double? get right;
+
+  /// Create a copy of EdgeInsetsConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$EdgeInsetsConfigImplCopyWith<_$EdgeInsetsConfigImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+RadioConfig _$RadioConfigFromJson(Map<String, dynamic> json) {
+  return _RadioConfig.fromJson(json);
+}
+
+/// @nodoc
+mixin _$RadioConfig {
+  /// The color of the radio button when selected, represented as a hex string #AARRGGBB or #RRGGBB.
+  /// @default The root appearance.colors.primary
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get selectedColor => throw _privateConstructorUsedError;
+
+  /// The color of the radio button when unselected, represented as a hex string #AARRGGBB or #RRGGBB.
+  /// @default The root appearance.colors.componentBorder
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get unselectedColor => throw _privateConstructorUsedError;
+
+  /// Serializes this RadioConfig to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of RadioConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $RadioConfigCopyWith<RadioConfig> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $RadioConfigCopyWith<$Res> {
+  factory $RadioConfigCopyWith(
+          RadioConfig value, $Res Function(RadioConfig) then) =
+      _$RadioConfigCopyWithImpl<$Res, RadioConfig>;
+  @useResult
+  $Res call(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      Color? selectedColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      Color? unselectedColor});
+}
+
+/// @nodoc
+class _$RadioConfigCopyWithImpl<$Res, $Val extends RadioConfig>
+    implements $RadioConfigCopyWith<$Res> {
+  _$RadioConfigCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of RadioConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? selectedColor = freezed,
+    Object? unselectedColor = freezed,
+  }) {
+    return _then(_value.copyWith(
+      selectedColor: freezed == selectedColor
+          ? _value.selectedColor
+          : selectedColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      unselectedColor: freezed == unselectedColor
+          ? _value.unselectedColor
+          : unselectedColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$RadioConfigImplCopyWith<$Res>
+    implements $RadioConfigCopyWith<$Res> {
+  factory _$$RadioConfigImplCopyWith(
+          _$RadioConfigImpl value, $Res Function(_$RadioConfigImpl) then) =
+      __$$RadioConfigImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      Color? selectedColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      Color? unselectedColor});
+}
+
+/// @nodoc
+class __$$RadioConfigImplCopyWithImpl<$Res>
+    extends _$RadioConfigCopyWithImpl<$Res, _$RadioConfigImpl>
+    implements _$$RadioConfigImplCopyWith<$Res> {
+  __$$RadioConfigImplCopyWithImpl(
+      _$RadioConfigImpl _value, $Res Function(_$RadioConfigImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of RadioConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? selectedColor = freezed,
+    Object? unselectedColor = freezed,
+  }) {
+    return _then(_$RadioConfigImpl(
+      selectedColor: freezed == selectedColor
+          ? _value.selectedColor
+          : selectedColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      unselectedColor: freezed == unselectedColor
+          ? _value.unselectedColor
+          : unselectedColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$RadioConfigImpl implements _RadioConfig {
+  const _$RadioConfigImpl(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      this.selectedColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      this.unselectedColor});
+
+  factory _$RadioConfigImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RadioConfigImplFromJson(json);
+
+  /// The color of the radio button when selected, represented as a hex string #AARRGGBB or #RRGGBB.
+  /// @default The root appearance.colors.primary
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? selectedColor;
+
+  /// The color of the radio button when unselected, represented as a hex string #AARRGGBB or #RRGGBB.
+  /// @default The root appearance.colors.componentBorder
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? unselectedColor;
+
+  @override
+  String toString() {
+    return 'RadioConfig(selectedColor: $selectedColor, unselectedColor: $unselectedColor)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RadioConfigImpl &&
+            (identical(other.selectedColor, selectedColor) ||
+                other.selectedColor == selectedColor) &&
+            (identical(other.unselectedColor, unselectedColor) ||
+                other.unselectedColor == unselectedColor));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, selectedColor, unselectedColor);
+
+  /// Create a copy of RadioConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RadioConfigImplCopyWith<_$RadioConfigImpl> get copyWith =>
+      __$$RadioConfigImplCopyWithImpl<_$RadioConfigImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$RadioConfigImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _RadioConfig implements RadioConfig {
+  const factory _RadioConfig(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      final Color? selectedColor,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      final Color? unselectedColor}) = _$RadioConfigImpl;
+
+  factory _RadioConfig.fromJson(Map<String, dynamic> json) =
+      _$RadioConfigImpl.fromJson;
+
+  /// The color of the radio button when selected, represented as a hex string #AARRGGBB or #RRGGBB.
+  /// @default The root appearance.colors.primary
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get selectedColor;
+
+  /// The color of the radio button when unselected, represented as a hex string #AARRGGBB or #RRGGBB.
+  /// @default The root appearance.colors.componentBorder
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get unselectedColor;
+
+  /// Create a copy of RadioConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$RadioConfigImplCopyWith<_$RadioConfigImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+CheckmarkConfig _$CheckmarkConfigFromJson(Map<String, dynamic> json) {
+  return _CheckmarkConfig.fromJson(json);
+}
+
+/// @nodoc
+mixin _$CheckmarkConfig {
+  /// The color of the checkmark when selected, represented as a hex string #AARRGGBB or #RRGGBB.
+  /// @default The root appearance.colors.primary
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get color => throw _privateConstructorUsedError;
+
+  /// Serializes this CheckmarkConfig to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of CheckmarkConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $CheckmarkConfigCopyWith<CheckmarkConfig> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CheckmarkConfigCopyWith<$Res> {
+  factory $CheckmarkConfigCopyWith(
+          CheckmarkConfig value, $Res Function(CheckmarkConfig) then) =
+      _$CheckmarkConfigCopyWithImpl<$Res, CheckmarkConfig>;
+  @useResult
+  $Res call(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      Color? color});
+}
+
+/// @nodoc
+class _$CheckmarkConfigCopyWithImpl<$Res, $Val extends CheckmarkConfig>
+    implements $CheckmarkConfigCopyWith<$Res> {
+  _$CheckmarkConfigCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of CheckmarkConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? color = freezed,
+  }) {
+    return _then(_value.copyWith(
+      color: freezed == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CheckmarkConfigImplCopyWith<$Res>
+    implements $CheckmarkConfigCopyWith<$Res> {
+  factory _$$CheckmarkConfigImplCopyWith(_$CheckmarkConfigImpl value,
+          $Res Function(_$CheckmarkConfigImpl) then) =
+      __$$CheckmarkConfigImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      Color? color});
+}
+
+/// @nodoc
+class __$$CheckmarkConfigImplCopyWithImpl<$Res>
+    extends _$CheckmarkConfigCopyWithImpl<$Res, _$CheckmarkConfigImpl>
+    implements _$$CheckmarkConfigImplCopyWith<$Res> {
+  __$$CheckmarkConfigImplCopyWithImpl(
+      _$CheckmarkConfigImpl _value, $Res Function(_$CheckmarkConfigImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CheckmarkConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? color = freezed,
+  }) {
+    return _then(_$CheckmarkConfigImpl(
+      color: freezed == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$CheckmarkConfigImpl implements _CheckmarkConfig {
+  const _$CheckmarkConfigImpl(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      this.color});
+
+  factory _$CheckmarkConfigImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CheckmarkConfigImplFromJson(json);
+
+  /// The color of the checkmark when selected, represented as a hex string #AARRGGBB or #RRGGBB.
+  /// @default The root appearance.colors.primary
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? color;
+
+  @override
+  String toString() {
+    return 'CheckmarkConfig(color: $color)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CheckmarkConfigImpl &&
+            (identical(other.color, color) || other.color == color));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, color);
+
+  /// Create a copy of CheckmarkConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CheckmarkConfigImplCopyWith<_$CheckmarkConfigImpl> get copyWith =>
+      __$$CheckmarkConfigImplCopyWithImpl<_$CheckmarkConfigImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CheckmarkConfigImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CheckmarkConfig implements CheckmarkConfig {
+  const factory _CheckmarkConfig(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      final Color? color}) = _$CheckmarkConfigImpl;
+
+  factory _CheckmarkConfig.fromJson(Map<String, dynamic> json) =
+      _$CheckmarkConfigImpl.fromJson;
+
+  /// The color of the checkmark when selected, represented as a hex string #AARRGGBB or #RRGGBB.
+  /// @default The root appearance.colors.primary
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get color;
+
+  /// Create a copy of CheckmarkConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CheckmarkConfigImplCopyWith<_$CheckmarkConfigImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ChevronConfig _$ChevronConfigFromJson(Map<String, dynamic> json) {
+  return _ChevronConfig.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ChevronConfig {
+  /// The color of the chevron, represented as a hex string #AARRGGBB or #RRGGBB.
+  /// @default The iOS or Android system gray color
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get color => throw _privateConstructorUsedError;
+
+  /// Serializes this ChevronConfig to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of ChevronConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ChevronConfigCopyWith<ChevronConfig> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ChevronConfigCopyWith<$Res> {
+  factory $ChevronConfigCopyWith(
+          ChevronConfig value, $Res Function(ChevronConfig) then) =
+      _$ChevronConfigCopyWithImpl<$Res, ChevronConfig>;
+  @useResult
+  $Res call(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      Color? color});
+}
+
+/// @nodoc
+class _$ChevronConfigCopyWithImpl<$Res, $Val extends ChevronConfig>
+    implements $ChevronConfigCopyWith<$Res> {
+  _$ChevronConfigCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ChevronConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? color = freezed,
+  }) {
+    return _then(_value.copyWith(
+      color: freezed == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ChevronConfigImplCopyWith<$Res>
+    implements $ChevronConfigCopyWith<$Res> {
+  factory _$$ChevronConfigImplCopyWith(
+          _$ChevronConfigImpl value, $Res Function(_$ChevronConfigImpl) then) =
+      __$$ChevronConfigImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      Color? color});
+}
+
+/// @nodoc
+class __$$ChevronConfigImplCopyWithImpl<$Res>
+    extends _$ChevronConfigCopyWithImpl<$Res, _$ChevronConfigImpl>
+    implements _$$ChevronConfigImplCopyWith<$Res> {
+  __$$ChevronConfigImplCopyWithImpl(
+      _$ChevronConfigImpl _value, $Res Function(_$ChevronConfigImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChevronConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? color = freezed,
+  }) {
+    return _then(_$ChevronConfigImpl(
+      color: freezed == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ChevronConfigImpl implements _ChevronConfig {
+  const _$ChevronConfigImpl(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      this.color});
+
+  factory _$ChevronConfigImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ChevronConfigImplFromJson(json);
+
+  /// The color of the chevron, represented as a hex string #AARRGGBB or #RRGGBB.
+  /// @default The iOS or Android system gray color
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? color;
+
+  @override
+  String toString() {
+    return 'ChevronConfig(color: $color)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChevronConfigImpl &&
+            (identical(other.color, color) || other.color == color));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, color);
+
+  /// Create a copy of ChevronConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChevronConfigImplCopyWith<_$ChevronConfigImpl> get copyWith =>
+      __$$ChevronConfigImplCopyWithImpl<_$ChevronConfigImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ChevronConfigImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ChevronConfig implements ChevronConfig {
+  const factory _ChevronConfig(
+      {@JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      final Color? color}) = _$ChevronConfigImpl;
+
+  factory _ChevronConfig.fromJson(Map<String, dynamic> json) =
+      _$ChevronConfigImpl.fromJson;
+
+  /// The color of the chevron, represented as a hex string #AARRGGBB or #RRGGBB.
+  /// @default The iOS or Android system gray color
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get color;
+
+  /// Create a copy of ChevronConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChevronConfigImplCopyWith<_$ChevronConfigImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+FlatConfig _$FlatConfigFromJson(Map<String, dynamic> json) {
+  return _FlatConfig.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FlatConfig {
+  /// The thickness of the separator line between rows.
+  /// @default 1.0
+  double? get separatorThickness => throw _privateConstructorUsedError;
+
+  /// The color of the separator line between rows, represented as a hex string #AARRGGBB or #RRGGBB.
+  /// @default The root appearance.colors.componentBorder
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get separatorColor => throw _privateConstructorUsedError;
+
+  /// The insets of the separator line between rows.
+  /// @default { top: 0, left: 30, bottom: 0, right: 0 } for RowStyle.FlatWithRadio
+  /// @default { top: 0, left: 0, bottom: 0, right: 0 } for RowStyle.FlatWithCheckmark, RowStyle.FlatWithChevron, and RowStyle.FloatingButton
+  EdgeInsetsConfig? get separatorInsets => throw _privateConstructorUsedError;
+
+  /// Determines if the top separator is visible at the top of the Element.
+  /// @default true
+  bool? get topSeparatorEnabled => throw _privateConstructorUsedError;
+
+  /// Determines if the bottom separator is visible at the bottom of the Element.
+  /// @default true
+  bool? get bottomSeparatorEnabled => throw _privateConstructorUsedError;
+
+  /// Appearance settings for the radio button (used when RowStyle is FlatWithRadio)
+  RadioConfig? get radio => throw _privateConstructorUsedError;
+
+  /// Appearance settings for the checkmark (used when RowStyle is FlatWithCheckmark)
+  CheckmarkConfig? get checkmark => throw _privateConstructorUsedError;
+
+  /// Appearance settings for the chevron (used when RowStyle is FlatWithChevron)
+  ChevronConfig? get chevron => throw _privateConstructorUsedError;
+
+  /// Serializes this FlatConfig to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of FlatConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $FlatConfigCopyWith<FlatConfig> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FlatConfigCopyWith<$Res> {
+  factory $FlatConfigCopyWith(
+          FlatConfig value, $Res Function(FlatConfig) then) =
+      _$FlatConfigCopyWithImpl<$Res, FlatConfig>;
+  @useResult
+  $Res call(
+      {double? separatorThickness,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      Color? separatorColor,
+      EdgeInsetsConfig? separatorInsets,
+      bool? topSeparatorEnabled,
+      bool? bottomSeparatorEnabled,
+      RadioConfig? radio,
+      CheckmarkConfig? checkmark,
+      ChevronConfig? chevron});
+
+  $EdgeInsetsConfigCopyWith<$Res>? get separatorInsets;
+  $RadioConfigCopyWith<$Res>? get radio;
+  $CheckmarkConfigCopyWith<$Res>? get checkmark;
+  $ChevronConfigCopyWith<$Res>? get chevron;
+}
+
+/// @nodoc
+class _$FlatConfigCopyWithImpl<$Res, $Val extends FlatConfig>
+    implements $FlatConfigCopyWith<$Res> {
+  _$FlatConfigCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of FlatConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? separatorThickness = freezed,
+    Object? separatorColor = freezed,
+    Object? separatorInsets = freezed,
+    Object? topSeparatorEnabled = freezed,
+    Object? bottomSeparatorEnabled = freezed,
+    Object? radio = freezed,
+    Object? checkmark = freezed,
+    Object? chevron = freezed,
+  }) {
+    return _then(_value.copyWith(
+      separatorThickness: freezed == separatorThickness
+          ? _value.separatorThickness
+          : separatorThickness // ignore: cast_nullable_to_non_nullable
+              as double?,
+      separatorColor: freezed == separatorColor
+          ? _value.separatorColor
+          : separatorColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      separatorInsets: freezed == separatorInsets
+          ? _value.separatorInsets
+          : separatorInsets // ignore: cast_nullable_to_non_nullable
+              as EdgeInsetsConfig?,
+      topSeparatorEnabled: freezed == topSeparatorEnabled
+          ? _value.topSeparatorEnabled
+          : topSeparatorEnabled // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      bottomSeparatorEnabled: freezed == bottomSeparatorEnabled
+          ? _value.bottomSeparatorEnabled
+          : bottomSeparatorEnabled // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      radio: freezed == radio
+          ? _value.radio
+          : radio // ignore: cast_nullable_to_non_nullable
+              as RadioConfig?,
+      checkmark: freezed == checkmark
+          ? _value.checkmark
+          : checkmark // ignore: cast_nullable_to_non_nullable
+              as CheckmarkConfig?,
+      chevron: freezed == chevron
+          ? _value.chevron
+          : chevron // ignore: cast_nullable_to_non_nullable
+              as ChevronConfig?,
+    ) as $Val);
+  }
+
+  /// Create a copy of FlatConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $EdgeInsetsConfigCopyWith<$Res>? get separatorInsets {
+    if (_value.separatorInsets == null) {
+      return null;
+    }
+
+    return $EdgeInsetsConfigCopyWith<$Res>(_value.separatorInsets!, (value) {
+      return _then(_value.copyWith(separatorInsets: value) as $Val);
+    });
+  }
+
+  /// Create a copy of FlatConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $RadioConfigCopyWith<$Res>? get radio {
+    if (_value.radio == null) {
+      return null;
+    }
+
+    return $RadioConfigCopyWith<$Res>(_value.radio!, (value) {
+      return _then(_value.copyWith(radio: value) as $Val);
+    });
+  }
+
+  /// Create a copy of FlatConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CheckmarkConfigCopyWith<$Res>? get checkmark {
+    if (_value.checkmark == null) {
+      return null;
+    }
+
+    return $CheckmarkConfigCopyWith<$Res>(_value.checkmark!, (value) {
+      return _then(_value.copyWith(checkmark: value) as $Val);
+    });
+  }
+
+  /// Create a copy of FlatConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ChevronConfigCopyWith<$Res>? get chevron {
+    if (_value.chevron == null) {
+      return null;
+    }
+
+    return $ChevronConfigCopyWith<$Res>(_value.chevron!, (value) {
+      return _then(_value.copyWith(chevron: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$FlatConfigImplCopyWith<$Res>
+    implements $FlatConfigCopyWith<$Res> {
+  factory _$$FlatConfigImplCopyWith(
+          _$FlatConfigImpl value, $Res Function(_$FlatConfigImpl) then) =
+      __$$FlatConfigImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {double? separatorThickness,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      Color? separatorColor,
+      EdgeInsetsConfig? separatorInsets,
+      bool? topSeparatorEnabled,
+      bool? bottomSeparatorEnabled,
+      RadioConfig? radio,
+      CheckmarkConfig? checkmark,
+      ChevronConfig? chevron});
+
+  @override
+  $EdgeInsetsConfigCopyWith<$Res>? get separatorInsets;
+  @override
+  $RadioConfigCopyWith<$Res>? get radio;
+  @override
+  $CheckmarkConfigCopyWith<$Res>? get checkmark;
+  @override
+  $ChevronConfigCopyWith<$Res>? get chevron;
+}
+
+/// @nodoc
+class __$$FlatConfigImplCopyWithImpl<$Res>
+    extends _$FlatConfigCopyWithImpl<$Res, _$FlatConfigImpl>
+    implements _$$FlatConfigImplCopyWith<$Res> {
+  __$$FlatConfigImplCopyWithImpl(
+      _$FlatConfigImpl _value, $Res Function(_$FlatConfigImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of FlatConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? separatorThickness = freezed,
+    Object? separatorColor = freezed,
+    Object? separatorInsets = freezed,
+    Object? topSeparatorEnabled = freezed,
+    Object? bottomSeparatorEnabled = freezed,
+    Object? radio = freezed,
+    Object? checkmark = freezed,
+    Object? chevron = freezed,
+  }) {
+    return _then(_$FlatConfigImpl(
+      separatorThickness: freezed == separatorThickness
+          ? _value.separatorThickness
+          : separatorThickness // ignore: cast_nullable_to_non_nullable
+              as double?,
+      separatorColor: freezed == separatorColor
+          ? _value.separatorColor
+          : separatorColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      separatorInsets: freezed == separatorInsets
+          ? _value.separatorInsets
+          : separatorInsets // ignore: cast_nullable_to_non_nullable
+              as EdgeInsetsConfig?,
+      topSeparatorEnabled: freezed == topSeparatorEnabled
+          ? _value.topSeparatorEnabled
+          : topSeparatorEnabled // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      bottomSeparatorEnabled: freezed == bottomSeparatorEnabled
+          ? _value.bottomSeparatorEnabled
+          : bottomSeparatorEnabled // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      radio: freezed == radio
+          ? _value.radio
+          : radio // ignore: cast_nullable_to_non_nullable
+              as RadioConfig?,
+      checkmark: freezed == checkmark
+          ? _value.checkmark
+          : checkmark // ignore: cast_nullable_to_non_nullable
+              as CheckmarkConfig?,
+      chevron: freezed == chevron
+          ? _value.chevron
+          : chevron // ignore: cast_nullable_to_non_nullable
+              as ChevronConfig?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$FlatConfigImpl implements _FlatConfig {
+  const _$FlatConfigImpl(
+      {this.separatorThickness,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      this.separatorColor,
+      this.separatorInsets,
+      this.topSeparatorEnabled,
+      this.bottomSeparatorEnabled,
+      this.radio,
+      this.checkmark,
+      this.chevron});
+
+  factory _$FlatConfigImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FlatConfigImplFromJson(json);
+
+  /// The thickness of the separator line between rows.
+  /// @default 1.0
+  @override
+  final double? separatorThickness;
+
+  /// The color of the separator line between rows, represented as a hex string #AARRGGBB or #RRGGBB.
+  /// @default The root appearance.colors.componentBorder
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  final Color? separatorColor;
+
+  /// The insets of the separator line between rows.
+  /// @default { top: 0, left: 30, bottom: 0, right: 0 } for RowStyle.FlatWithRadio
+  /// @default { top: 0, left: 0, bottom: 0, right: 0 } for RowStyle.FlatWithCheckmark, RowStyle.FlatWithChevron, and RowStyle.FloatingButton
+  @override
+  final EdgeInsetsConfig? separatorInsets;
+
+  /// Determines if the top separator is visible at the top of the Element.
+  /// @default true
+  @override
+  final bool? topSeparatorEnabled;
+
+  /// Determines if the bottom separator is visible at the bottom of the Element.
+  /// @default true
+  @override
+  final bool? bottomSeparatorEnabled;
+
+  /// Appearance settings for the radio button (used when RowStyle is FlatWithRadio)
+  @override
+  final RadioConfig? radio;
+
+  /// Appearance settings for the checkmark (used when RowStyle is FlatWithCheckmark)
+  @override
+  final CheckmarkConfig? checkmark;
+
+  /// Appearance settings for the chevron (used when RowStyle is FlatWithChevron)
+  @override
+  final ChevronConfig? chevron;
+
+  @override
+  String toString() {
+    return 'FlatConfig(separatorThickness: $separatorThickness, separatorColor: $separatorColor, separatorInsets: $separatorInsets, topSeparatorEnabled: $topSeparatorEnabled, bottomSeparatorEnabled: $bottomSeparatorEnabled, radio: $radio, checkmark: $checkmark, chevron: $chevron)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FlatConfigImpl &&
+            (identical(other.separatorThickness, separatorThickness) ||
+                other.separatorThickness == separatorThickness) &&
+            (identical(other.separatorColor, separatorColor) ||
+                other.separatorColor == separatorColor) &&
+            (identical(other.separatorInsets, separatorInsets) ||
+                other.separatorInsets == separatorInsets) &&
+            (identical(other.topSeparatorEnabled, topSeparatorEnabled) ||
+                other.topSeparatorEnabled == topSeparatorEnabled) &&
+            (identical(other.bottomSeparatorEnabled, bottomSeparatorEnabled) ||
+                other.bottomSeparatorEnabled == bottomSeparatorEnabled) &&
+            (identical(other.radio, radio) || other.radio == radio) &&
+            (identical(other.checkmark, checkmark) ||
+                other.checkmark == checkmark) &&
+            (identical(other.chevron, chevron) || other.chevron == chevron));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      separatorThickness,
+      separatorColor,
+      separatorInsets,
+      topSeparatorEnabled,
+      bottomSeparatorEnabled,
+      radio,
+      checkmark,
+      chevron);
+
+  /// Create a copy of FlatConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FlatConfigImplCopyWith<_$FlatConfigImpl> get copyWith =>
+      __$$FlatConfigImplCopyWithImpl<_$FlatConfigImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$FlatConfigImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _FlatConfig implements FlatConfig {
+  const factory _FlatConfig(
+      {final double? separatorThickness,
+      @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+      final Color? separatorColor,
+      final EdgeInsetsConfig? separatorInsets,
+      final bool? topSeparatorEnabled,
+      final bool? bottomSeparatorEnabled,
+      final RadioConfig? radio,
+      final CheckmarkConfig? checkmark,
+      final ChevronConfig? chevron}) = _$FlatConfigImpl;
+
+  factory _FlatConfig.fromJson(Map<String, dynamic> json) =
+      _$FlatConfigImpl.fromJson;
+
+  /// The thickness of the separator line between rows.
+  /// @default 1.0
+  @override
+  double? get separatorThickness;
+
+  /// The color of the separator line between rows, represented as a hex string #AARRGGBB or #RRGGBB.
+  /// @default The root appearance.colors.componentBorder
+  @override
+  @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+  Color? get separatorColor;
+
+  /// The insets of the separator line between rows.
+  /// @default { top: 0, left: 30, bottom: 0, right: 0 } for RowStyle.FlatWithRadio
+  /// @default { top: 0, left: 0, bottom: 0, right: 0 } for RowStyle.FlatWithCheckmark, RowStyle.FlatWithChevron, and RowStyle.FloatingButton
+  @override
+  EdgeInsetsConfig? get separatorInsets;
+
+  /// Determines if the top separator is visible at the top of the Element.
+  /// @default true
+  @override
+  bool? get topSeparatorEnabled;
+
+  /// Determines if the bottom separator is visible at the bottom of the Element.
+  /// @default true
+  @override
+  bool? get bottomSeparatorEnabled;
+
+  /// Appearance settings for the radio button (used when RowStyle is FlatWithRadio)
+  @override
+  RadioConfig? get radio;
+
+  /// Appearance settings for the checkmark (used when RowStyle is FlatWithCheckmark)
+  @override
+  CheckmarkConfig? get checkmark;
+
+  /// Appearance settings for the chevron (used when RowStyle is FlatWithChevron)
+  @override
+  ChevronConfig? get chevron;
+
+  /// Create a copy of FlatConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FlatConfigImplCopyWith<_$FlatConfigImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+FloatingConfig _$FloatingConfigFromJson(Map<String, dynamic> json) {
+  return _FloatingConfig.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FloatingConfig {
+  /// The spacing between payment method rows.
+  double? get spacing => throw _privateConstructorUsedError;
+
+  /// Serializes this FloatingConfig to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of FloatingConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $FloatingConfigCopyWith<FloatingConfig> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FloatingConfigCopyWith<$Res> {
+  factory $FloatingConfigCopyWith(
+          FloatingConfig value, $Res Function(FloatingConfig) then) =
+      _$FloatingConfigCopyWithImpl<$Res, FloatingConfig>;
+  @useResult
+  $Res call({double? spacing});
+}
+
+/// @nodoc
+class _$FloatingConfigCopyWithImpl<$Res, $Val extends FloatingConfig>
+    implements $FloatingConfigCopyWith<$Res> {
+  _$FloatingConfigCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of FloatingConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? spacing = freezed,
+  }) {
+    return _then(_value.copyWith(
+      spacing: freezed == spacing
+          ? _value.spacing
+          : spacing // ignore: cast_nullable_to_non_nullable
+              as double?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$FloatingConfigImplCopyWith<$Res>
+    implements $FloatingConfigCopyWith<$Res> {
+  factory _$$FloatingConfigImplCopyWith(_$FloatingConfigImpl value,
+          $Res Function(_$FloatingConfigImpl) then) =
+      __$$FloatingConfigImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({double? spacing});
+}
+
+/// @nodoc
+class __$$FloatingConfigImplCopyWithImpl<$Res>
+    extends _$FloatingConfigCopyWithImpl<$Res, _$FloatingConfigImpl>
+    implements _$$FloatingConfigImplCopyWith<$Res> {
+  __$$FloatingConfigImplCopyWithImpl(
+      _$FloatingConfigImpl _value, $Res Function(_$FloatingConfigImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of FloatingConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? spacing = freezed,
+  }) {
+    return _then(_$FloatingConfigImpl(
+      spacing: freezed == spacing
+          ? _value.spacing
+          : spacing // ignore: cast_nullable_to_non_nullable
+              as double?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$FloatingConfigImpl implements _FloatingConfig {
+  const _$FloatingConfigImpl({this.spacing});
+
+  factory _$FloatingConfigImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FloatingConfigImplFromJson(json);
+
+  /// The spacing between payment method rows.
+  @override
+  final double? spacing;
+
+  @override
+  String toString() {
+    return 'FloatingConfig(spacing: $spacing)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FloatingConfigImpl &&
+            (identical(other.spacing, spacing) || other.spacing == spacing));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, spacing);
+
+  /// Create a copy of FloatingConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FloatingConfigImplCopyWith<_$FloatingConfigImpl> get copyWith =>
+      __$$FloatingConfigImplCopyWithImpl<_$FloatingConfigImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$FloatingConfigImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _FloatingConfig implements FloatingConfig {
+  const factory _FloatingConfig({final double? spacing}) = _$FloatingConfigImpl;
+
+  factory _FloatingConfig.fromJson(Map<String, dynamic> json) =
+      _$FloatingConfigImpl.fromJson;
+
+  /// The spacing between payment method rows.
+  @override
+  double? get spacing;
+
+  /// Create a copy of FloatingConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FloatingConfigImplCopyWith<_$FloatingConfigImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+RowConfig _$RowConfigFromJson(Map<String, dynamic> json) {
+  return _RowConfig.fromJson(json);
+}
+
+/// @nodoc
+mixin _$RowConfig {
+  /// The display style of the row.
+  RowStyle? get style => throw _privateConstructorUsedError;
+
+  /// Additional vertical insets applied to a payment method row.
+  /// Increasing this value increases the height of each row.
+  /// @default 6.0
+  double? get additionalInsets => throw _privateConstructorUsedError;
+
+  /// Appearance settings for the flat style row
+  FlatConfig? get flat => throw _privateConstructorUsedError;
+
+  /// Appearance settings for the floating button style row
+  FloatingConfig? get floating => throw _privateConstructorUsedError;
+
+  /// Serializes this RowConfig to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of RowConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $RowConfigCopyWith<RowConfig> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $RowConfigCopyWith<$Res> {
+  factory $RowConfigCopyWith(RowConfig value, $Res Function(RowConfig) then) =
+      _$RowConfigCopyWithImpl<$Res, RowConfig>;
+  @useResult
+  $Res call(
+      {RowStyle? style,
+      double? additionalInsets,
+      FlatConfig? flat,
+      FloatingConfig? floating});
+
+  $FlatConfigCopyWith<$Res>? get flat;
+  $FloatingConfigCopyWith<$Res>? get floating;
+}
+
+/// @nodoc
+class _$RowConfigCopyWithImpl<$Res, $Val extends RowConfig>
+    implements $RowConfigCopyWith<$Res> {
+  _$RowConfigCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of RowConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? style = freezed,
+    Object? additionalInsets = freezed,
+    Object? flat = freezed,
+    Object? floating = freezed,
+  }) {
+    return _then(_value.copyWith(
+      style: freezed == style
+          ? _value.style
+          : style // ignore: cast_nullable_to_non_nullable
+              as RowStyle?,
+      additionalInsets: freezed == additionalInsets
+          ? _value.additionalInsets
+          : additionalInsets // ignore: cast_nullable_to_non_nullable
+              as double?,
+      flat: freezed == flat
+          ? _value.flat
+          : flat // ignore: cast_nullable_to_non_nullable
+              as FlatConfig?,
+      floating: freezed == floating
+          ? _value.floating
+          : floating // ignore: cast_nullable_to_non_nullable
+              as FloatingConfig?,
+    ) as $Val);
+  }
+
+  /// Create a copy of RowConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $FlatConfigCopyWith<$Res>? get flat {
+    if (_value.flat == null) {
+      return null;
+    }
+
+    return $FlatConfigCopyWith<$Res>(_value.flat!, (value) {
+      return _then(_value.copyWith(flat: value) as $Val);
+    });
+  }
+
+  /// Create a copy of RowConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $FloatingConfigCopyWith<$Res>? get floating {
+    if (_value.floating == null) {
+      return null;
+    }
+
+    return $FloatingConfigCopyWith<$Res>(_value.floating!, (value) {
+      return _then(_value.copyWith(floating: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$RowConfigImplCopyWith<$Res>
+    implements $RowConfigCopyWith<$Res> {
+  factory _$$RowConfigImplCopyWith(
+          _$RowConfigImpl value, $Res Function(_$RowConfigImpl) then) =
+      __$$RowConfigImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {RowStyle? style,
+      double? additionalInsets,
+      FlatConfig? flat,
+      FloatingConfig? floating});
+
+  @override
+  $FlatConfigCopyWith<$Res>? get flat;
+  @override
+  $FloatingConfigCopyWith<$Res>? get floating;
+}
+
+/// @nodoc
+class __$$RowConfigImplCopyWithImpl<$Res>
+    extends _$RowConfigCopyWithImpl<$Res, _$RowConfigImpl>
+    implements _$$RowConfigImplCopyWith<$Res> {
+  __$$RowConfigImplCopyWithImpl(
+      _$RowConfigImpl _value, $Res Function(_$RowConfigImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of RowConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? style = freezed,
+    Object? additionalInsets = freezed,
+    Object? flat = freezed,
+    Object? floating = freezed,
+  }) {
+    return _then(_$RowConfigImpl(
+      style: freezed == style
+          ? _value.style
+          : style // ignore: cast_nullable_to_non_nullable
+              as RowStyle?,
+      additionalInsets: freezed == additionalInsets
+          ? _value.additionalInsets
+          : additionalInsets // ignore: cast_nullable_to_non_nullable
+              as double?,
+      flat: freezed == flat
+          ? _value.flat
+          : flat // ignore: cast_nullable_to_non_nullable
+              as FlatConfig?,
+      floating: freezed == floating
+          ? _value.floating
+          : floating // ignore: cast_nullable_to_non_nullable
+              as FloatingConfig?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$RowConfigImpl implements _RowConfig {
+  const _$RowConfigImpl(
+      {this.style, this.additionalInsets, this.flat, this.floating});
+
+  factory _$RowConfigImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RowConfigImplFromJson(json);
+
+  /// The display style of the row.
+  @override
+  final RowStyle? style;
+
+  /// Additional vertical insets applied to a payment method row.
+  /// Increasing this value increases the height of each row.
+  /// @default 6.0
+  @override
+  final double? additionalInsets;
+
+  /// Appearance settings for the flat style row
+  @override
+  final FlatConfig? flat;
+
+  /// Appearance settings for the floating button style row
+  @override
+  final FloatingConfig? floating;
+
+  @override
+  String toString() {
+    return 'RowConfig(style: $style, additionalInsets: $additionalInsets, flat: $flat, floating: $floating)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RowConfigImpl &&
+            (identical(other.style, style) || other.style == style) &&
+            (identical(other.additionalInsets, additionalInsets) ||
+                other.additionalInsets == additionalInsets) &&
+            (identical(other.flat, flat) || other.flat == flat) &&
+            (identical(other.floating, floating) ||
+                other.floating == floating));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, style, additionalInsets, flat, floating);
+
+  /// Create a copy of RowConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RowConfigImplCopyWith<_$RowConfigImpl> get copyWith =>
+      __$$RowConfigImplCopyWithImpl<_$RowConfigImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$RowConfigImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _RowConfig implements RowConfig {
+  const factory _RowConfig(
+      {final RowStyle? style,
+      final double? additionalInsets,
+      final FlatConfig? flat,
+      final FloatingConfig? floating}) = _$RowConfigImpl;
+
+  factory _RowConfig.fromJson(Map<String, dynamic> json) =
+      _$RowConfigImpl.fromJson;
+
+  /// The display style of the row.
+  @override
+  RowStyle? get style;
+
+  /// Additional vertical insets applied to a payment method row.
+  /// Increasing this value increases the height of each row.
+  /// @default 6.0
+  @override
+  double? get additionalInsets;
+
+  /// Appearance settings for the flat style row
+  @override
+  FlatConfig? get flat;
+
+  /// Appearance settings for the floating button style row
+  @override
+  FloatingConfig? get floating;
+
+  /// Create a copy of RowConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$RowConfigImplCopyWith<_$RowConfigImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+EmbeddedPaymentElementAppearance _$EmbeddedPaymentElementAppearanceFromJson(
+    Map<String, dynamic> json) {
+  return _EmbeddedPaymentElementAppearance.fromJson(json);
+}
+
+/// @nodoc
+mixin _$EmbeddedPaymentElementAppearance {
+  RowConfig? get row => throw _privateConstructorUsedError;
+
+  /// Serializes this EmbeddedPaymentElementAppearance to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of EmbeddedPaymentElementAppearance
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $EmbeddedPaymentElementAppearanceCopyWith<EmbeddedPaymentElementAppearance>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EmbeddedPaymentElementAppearanceCopyWith<$Res> {
+  factory $EmbeddedPaymentElementAppearanceCopyWith(
+          EmbeddedPaymentElementAppearance value,
+          $Res Function(EmbeddedPaymentElementAppearance) then) =
+      _$EmbeddedPaymentElementAppearanceCopyWithImpl<$Res,
+          EmbeddedPaymentElementAppearance>;
+  @useResult
+  $Res call({RowConfig? row});
+
+  $RowConfigCopyWith<$Res>? get row;
+}
+
+/// @nodoc
+class _$EmbeddedPaymentElementAppearanceCopyWithImpl<$Res,
+        $Val extends EmbeddedPaymentElementAppearance>
+    implements $EmbeddedPaymentElementAppearanceCopyWith<$Res> {
+  _$EmbeddedPaymentElementAppearanceCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of EmbeddedPaymentElementAppearance
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? row = freezed,
+  }) {
+    return _then(_value.copyWith(
+      row: freezed == row
+          ? _value.row
+          : row // ignore: cast_nullable_to_non_nullable
+              as RowConfig?,
+    ) as $Val);
+  }
+
+  /// Create a copy of EmbeddedPaymentElementAppearance
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $RowConfigCopyWith<$Res>? get row {
+    if (_value.row == null) {
+      return null;
+    }
+
+    return $RowConfigCopyWith<$Res>(_value.row!, (value) {
+      return _then(_value.copyWith(row: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$EmbeddedPaymentElementAppearanceImplCopyWith<$Res>
+    implements $EmbeddedPaymentElementAppearanceCopyWith<$Res> {
+  factory _$$EmbeddedPaymentElementAppearanceImplCopyWith(
+          _$EmbeddedPaymentElementAppearanceImpl value,
+          $Res Function(_$EmbeddedPaymentElementAppearanceImpl) then) =
+      __$$EmbeddedPaymentElementAppearanceImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({RowConfig? row});
+
+  @override
+  $RowConfigCopyWith<$Res>? get row;
+}
+
+/// @nodoc
+class __$$EmbeddedPaymentElementAppearanceImplCopyWithImpl<$Res>
+    extends _$EmbeddedPaymentElementAppearanceCopyWithImpl<$Res,
+        _$EmbeddedPaymentElementAppearanceImpl>
+    implements _$$EmbeddedPaymentElementAppearanceImplCopyWith<$Res> {
+  __$$EmbeddedPaymentElementAppearanceImplCopyWithImpl(
+      _$EmbeddedPaymentElementAppearanceImpl _value,
+      $Res Function(_$EmbeddedPaymentElementAppearanceImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of EmbeddedPaymentElementAppearance
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? row = freezed,
+  }) {
+    return _then(_$EmbeddedPaymentElementAppearanceImpl(
+      row: freezed == row
+          ? _value.row
+          : row // ignore: cast_nullable_to_non_nullable
+              as RowConfig?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$EmbeddedPaymentElementAppearanceImpl
+    implements _EmbeddedPaymentElementAppearance {
+  const _$EmbeddedPaymentElementAppearanceImpl({this.row});
+
+  factory _$EmbeddedPaymentElementAppearanceImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$EmbeddedPaymentElementAppearanceImplFromJson(json);
+
+  @override
+  final RowConfig? row;
+
+  @override
+  String toString() {
+    return 'EmbeddedPaymentElementAppearance(row: $row)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EmbeddedPaymentElementAppearanceImpl &&
+            (identical(other.row, row) || other.row == row));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, row);
+
+  /// Create a copy of EmbeddedPaymentElementAppearance
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EmbeddedPaymentElementAppearanceImplCopyWith<
+          _$EmbeddedPaymentElementAppearanceImpl>
+      get copyWith => __$$EmbeddedPaymentElementAppearanceImplCopyWithImpl<
+          _$EmbeddedPaymentElementAppearanceImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EmbeddedPaymentElementAppearanceImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _EmbeddedPaymentElementAppearance
+    implements EmbeddedPaymentElementAppearance {
+  const factory _EmbeddedPaymentElementAppearance({final RowConfig? row}) =
+      _$EmbeddedPaymentElementAppearanceImpl;
+
+  factory _EmbeddedPaymentElementAppearance.fromJson(
+          Map<String, dynamic> json) =
+      _$EmbeddedPaymentElementAppearanceImpl.fromJson;
+
+  @override
+  RowConfig? get row;
+
+  /// Create a copy of EmbeddedPaymentElementAppearance
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$EmbeddedPaymentElementAppearanceImplCopyWith<
+          _$EmbeddedPaymentElementAppearanceImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

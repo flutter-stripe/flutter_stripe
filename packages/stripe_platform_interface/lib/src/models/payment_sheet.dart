@@ -67,6 +67,9 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// If set, PaymentSheet displays Google Pay as a payment option
     PaymentSheetGooglePay? googlePay,
 
+    /// Configuration related to Link
+    LinkDisplayParams? linkDisplayParams,
+
     /// Flag that allows payment methods that do not move money at the send of the checkout.
     ///
     /// Defaul value is false.
@@ -159,6 +162,9 @@ sealed class IntentMode with _$IntentMode {
 
     /// Capture method for the future payment intent
     CaptureMethod? captureMethod,
+
+    /// Payment method options
+    PaymentMethodOptions? paymentMethodOptions,
   }) = _PaymentMode;
 
   @JsonSerializable(explicitToJson: true)
@@ -247,6 +253,12 @@ class PaymentSheetAppearance with _$PaymentSheetAppearance {
 
     /// PaymentSheet appearance
     PaymentSheetPrimaryButtonAppearance? primaryButton,
+
+    /// Describes the appearance of the Embedded Mobile Payment Element
+    EmbeddedPaymentElementAppearance? embeddedPaymentElement,
+
+    /// Describes the inset values applied to Mobile Payment Element forms
+    EdgeInsetsConfig? formInsetValues,
   }) = _PaymentSheetAppearance;
 
   factory PaymentSheetAppearance.fromJson(Map<String, dynamic> json) =>
@@ -646,4 +658,185 @@ class CardBrandAcceptance with _$CardBrandAcceptance {
 
   factory CardBrandAcceptance.fromJson(Map<String, Object?> json) =>
       _$CardBrandAcceptanceFromJson(json);
+}
+
+@freezed
+
+/// Parameters for Link display
+class LinkDisplayParams with _$LinkDisplayParams {
+  const factory LinkDisplayParams({
+    /// Display configuration for Link
+    required LinkDisplay linkDisplay,
+  }) = _LinkDisplayParams;
+
+  factory LinkDisplayParams.fromJson(Map<String, Object?> json) =>
+      _$LinkDisplayParamsFromJson(json);
+}
+
+enum LinkDisplay {
+  /// Link will be displayed when available
+  automatic,
+
+  /// Link will be displayed when available
+  manual,
+}
+
+@freezed
+class EdgeInsetsConfig with _$EdgeInsetsConfig {
+  const factory EdgeInsetsConfig({
+    double? top,
+    double? bottom,
+    double? left,
+    double? right,
+  }) = _EdgeInsetsConfig;
+
+  factory EdgeInsetsConfig.fromJson(Map<String, Object?> json) =>
+      _$EdgeInsetsConfigFromJson(json);
+}
+
+enum RowStyle {
+  /// A flat style with radio buttons
+  flatWithRadio,
+
+  /// A floating button style
+  floatingButton,
+
+  /// A flat style with a checkmark
+  flatWithCheckmark,
+
+  /// A flat style with a chevron
+  /// Note that the EmbeddedPaymentElementConfiguration.rowSelectionBehavior must be set to `immediateAction` to use this style.
+  flatWithChevron,
+}
+
+/// Describes the appearance of the radio button
+@freezed
+class RadioConfig with _$RadioConfig {
+  const factory RadioConfig({
+    /// The color of the radio button when selected, represented as a hex string #AARRGGBB or #RRGGBB.
+    /// @default The root appearance.colors.primary
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+    Color? selectedColor,
+
+    /// The color of the radio button when unselected, represented as a hex string #AARRGGBB or #RRGGBB.
+    /// @default The root appearance.colors.componentBorder
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+    Color? unselectedColor,
+  }) = _RadioConfig;
+
+  factory RadioConfig.fromJson(Map<String, Object?> json) =>
+      _$RadioConfigFromJson(json);
+}
+
+/// Describes the appearance of the checkmark
+@freezed
+class CheckmarkConfig with _$CheckmarkConfig {
+  const factory CheckmarkConfig({
+    /// The color of the checkmark when selected, represented as a hex string #AARRGGBB or #RRGGBB.
+    /// @default The root appearance.colors.primary
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? color,
+  }) = _CheckmarkConfig;
+
+  factory CheckmarkConfig.fromJson(Map<String, Object?> json) =>
+      _$CheckmarkConfigFromJson(json);
+}
+
+/// Describes the appearance of the chevron
+@freezed
+class ChevronConfig with _$ChevronConfig {
+  const factory ChevronConfig({
+    /// The color of the chevron, represented as a hex string #AARRGGBB or #RRGGBB.
+    /// @default The iOS or Android system gray color
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? color,
+  }) = _ChevronConfig;
+
+  factory ChevronConfig.fromJson(Map<String, Object?> json) =>
+      _$ChevronConfigFromJson(json);
+}
+
+/// Describes the appearance of the flat style row
+@freezed
+class FlatConfig with _$FlatConfig {
+  const factory FlatConfig({
+    /// The thickness of the separator line between rows.
+    /// @default 1.0
+    double? separatorThickness,
+
+    /// The color of the separator line between rows, represented as a hex string #AARRGGBB or #RRGGBB.
+    /// @default The root appearance.colors.componentBorder
+    @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
+    Color? separatorColor,
+
+    /// The insets of the separator line between rows.
+    /// @default { top: 0, left: 30, bottom: 0, right: 0 } for RowStyle.FlatWithRadio
+    /// @default { top: 0, left: 0, bottom: 0, right: 0 } for RowStyle.FlatWithCheckmark, RowStyle.FlatWithChevron, and RowStyle.FloatingButton
+    EdgeInsetsConfig? separatorInsets,
+
+    /// Determines if the top separator is visible at the top of the Element.
+    /// @default true
+    bool? topSeparatorEnabled,
+
+    /// Determines if the bottom separator is visible at the bottom of the Element.
+    /// @default true
+    bool? bottomSeparatorEnabled,
+
+    /// Appearance settings for the radio button (used when RowStyle is FlatWithRadio)
+    RadioConfig? radio,
+
+    /// Appearance settings for the checkmark (used when RowStyle is FlatWithCheckmark)
+    CheckmarkConfig? checkmark,
+
+    /// Appearance settings for the chevron (used when RowStyle is FlatWithChevron)
+    ChevronConfig? chevron,
+  }) = _FlatConfig;
+
+  factory FlatConfig.fromJson(Map<String, Object?> json) =>
+      _$FlatConfigFromJson(json);
+}
+
+/// Describes the appearance of the floating button style payment method row
+@freezed
+class FloatingConfig with _$FloatingConfig {
+  const factory FloatingConfig({
+    /// The spacing between payment method rows.
+    double? spacing,
+  }) = _FloatingConfig;
+
+  factory FloatingConfig.fromJson(Map<String, Object?> json) =>
+      _$FloatingConfigFromJson(json);
+}
+
+/// Describes the appearance of the row in the Embedded Mobile Payment Element
+@freezed
+class RowConfig with _$RowConfig {
+  const factory RowConfig({
+    /// The display style of the row.
+    RowStyle? style,
+
+    /// Additional vertical insets applied to a payment method row.
+    /// Increasing this value increases the height of each row.
+    /// @default 6.0
+    double? additionalInsets,
+
+    /// Appearance settings for the flat style row
+    FlatConfig? flat,
+
+    /// Appearance settings for the floating button style row
+    FloatingConfig? floating,
+  }) = _RowConfig;
+
+  factory RowConfig.fromJson(Map<String, Object?> json) =>
+      _$RowConfigFromJson(json);
+}
+
+/// Describes the appearance of the Embedded Mobile Payment Element
+@freezed
+class EmbeddedPaymentElementAppearance with _$EmbeddedPaymentElementAppearance {
+  const factory EmbeddedPaymentElementAppearance({
+    RowConfig? row,
+  }) = _EmbeddedPaymentElementAppearance;
+
+  factory EmbeddedPaymentElementAppearance.fromJson(
+          Map<String, Object?> json) =>
+      _$EmbeddedPaymentElementAppearanceFromJson(json);
 }
