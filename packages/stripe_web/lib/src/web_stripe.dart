@@ -212,7 +212,7 @@ class WebStripe extends StripePlatform {
       paymentIntentClientSecret,
       data: stripe_js.ConfirmIdealPaymentData(
         paymentMethod: stripe_js.IdealPaymentMethodDetails.withBank(
-          ideal: stripe_js.IdealBankData(bank: paymentData.bankName ?? ""),
+          ideal: stripe_js.IdealBankData(),
         ),
         returnUrl: returnUrl ?? urlScheme,
       ),
