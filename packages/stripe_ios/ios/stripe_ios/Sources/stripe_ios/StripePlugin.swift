@@ -281,6 +281,10 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
 }
 
 extension StripePlugin: StripeSdkEmitter {
+    func emitOnCustomPaymentMethodConfirmHandlerCallback(_ value: [String : Any]) {
+        self.sendEvent(withName: "onCustomPaymentMethodConfirmHandlerCallback", body: value)
+    }
+    
     
     func emitOnConfirmHandlerCallback(_ value: [String : Any]) {
         self.sendEvent(withName: "onConfirmHandlerCallback", body: value)

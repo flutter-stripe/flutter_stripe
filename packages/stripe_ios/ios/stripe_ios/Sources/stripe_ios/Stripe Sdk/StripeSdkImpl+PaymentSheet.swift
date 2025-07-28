@@ -6,7 +6,8 @@
 //
 
 import Foundation
-@_spi(ExperimentalAllowsRemovalOfLastSavedPaymentMethodAPI) @_spi(CustomerSessionBetaAccess) @_spi(EmbeddedPaymentElementPrivateBeta) @_spi(STP) import StripePaymentSheet
+@_spi(ExperimentalAllowsRemovalOfLastSavedPaymentMethodAPI) @_spi(CustomerSessionBetaAccess) @_spi(EmbeddedPaymentElementPrivateBeta) @_spi(STP) @_spi(PaymentMethodOptionsSetupFutureUsagePreview) @_spi(CustomPaymentMethodsBeta) import StripePaymentSheet
+
 
 extension StripeSdkImpl {
     internal func buildPaymentSheetConfiguration(
@@ -137,6 +138,14 @@ extension StripeSdkImpl {
 
         configuration.cardBrandAcceptance = computeCardBrandAcceptance(params: params)
 
+        // Parse custom payment method configuration
+        if let customPaymentMethodConfig = params["customPaymentMethodConfiguration"] as? [String: Any] {
+            configuration.customPaymentMethodConfiguration = StripeSdkImpl.buildCustomPaymentMethodConfiguration(
+            from: customPaymentMethodConfig,
+            sdkImpl: self
+          )
+        }
+        
         return (nil, configuration)
     }
 
@@ -290,10 +299,9 @@ extension StripeSdkImpl {
             mode = PaymentSheet.IntentConfiguration.Mode.payment(
                 amount: amount,
                 currency: modeParams["currencyCode"] as? String ?? "",
-                setupFutureUsage: modeParams["setupFutureUsage"] != nil
-                    ? (modeParams["setupFutureUsage"] as? String == "OffSession" ? .offSession : .onSession)
-                    : nil,
-            captureMethod: captureMethod
+                setupFutureUsage: setupFutureUsageFromString(from: modeParams["setupFutureUsage"] as? String ?? ""),
+                captureMethod: captureMethod,
+                paymentMethodOptions: buildPaymentMethodOptions(paymentMethodOptionsParams: modeParams["paymentMethodOptions"] as? NSDictionary ?? [:])
             )
         } else {
             mode = PaymentSheet.IntentConfiguration.Mode.setup(
@@ -312,6 +320,45 @@ extension StripeSdkImpl {
                     "shouldSavePaymentMethod": shouldSavePaymentMethod
                 ])
             })
+    }
+    
+    func buildPaymentMethodOptions(paymentMethodOptionsParams: NSDictionary) -> PaymentSheet.IntentConfiguration.Mode.PaymentMethodOptions? {
+        if let sfuDictionary = paymentMethodOptionsParams["setupFutureUsageValues"] as? NSDictionary {
+            var setupFutureUsageValues: [STPPaymentMethodType: PaymentSheet.IntentConfiguration.SetupFutureUsage] = [:]
+            
+            for (paymentMethodCode, sfuValue) in sfuDictionary {
+                if let paymentMethodCode = paymentMethodCode as? String,
+                    let sfuString = sfuValue as? String {
+                    let setupFutureUsage = setupFutureUsageFromString(from: sfuString)
+                    let paymentMethodType = STPPaymentMethodType.fromIdentifier(paymentMethodCode)
+                    
+                    if let setupFutureUsage = setupFutureUsage {
+                        if paymentMethodType != .unknown {
+                            setupFutureUsageValues[paymentMethodType] = setupFutureUsage
+                        }
+                    }
+                }
+            }
+            
+            if !setupFutureUsageValues.isEmpty {
+                return PaymentSheet.IntentConfiguration.Mode.PaymentMethodOptions(setupFutureUsageValues: setupFutureUsageValues)
+            }
+        }
+
+        return nil
+    }
+    
+    func setupFutureUsageFromString(from string: String) -> PaymentSheet.IntentConfiguration.SetupFutureUsage? {
+        switch string {
+        case "OnSession":
+            return PaymentSheet.IntentConfiguration.SetupFutureUsage.onSession
+        case "OffSession":
+            return PaymentSheet.IntentConfiguration.SetupFutureUsage.offSession
+        case "None":
+            return PaymentSheet.IntentConfiguration.SetupFutureUsage.none
+        default:
+            return nil
+        }
     }
 
     func buildCustomerHandlersForPaymentSheet(applePayParams: NSDictionary) -> PaymentSheet.ApplePayConfiguration.Handlers? {
@@ -371,6 +418,110 @@ extension StripeSdkImpl {
         default:
             return .automatic
         }
+    }
+    
+    // MARK: - Common Custom Payment Method Helper
+
+    // Simple data structure for parsed custom payment method data
+    struct ParsedCustomPaymentMethod {
+      let id: String
+      let subtitle: String?
+      let disableBillingDetailCollection: Bool
+    }
+
+    // Simple parser that extracts data without type complexity
+    static func parseCustomPaymentMethods(from config: [String: Any]) -> [ParsedCustomPaymentMethod] {
+      guard let customMethods = config["customPaymentMethods"] as? [[String: Any]],
+            !customMethods.isEmpty else { return [] }
+
+      return customMethods.compactMap { methodDict in
+        guard let id = methodDict["id"] as? String else { return nil }
+        let subtitle = methodDict["subtitle"] as? String
+        let disableBillingDetailCollection = methodDict["disableBillingDetailCollection"] as? Bool ?? true
+
+        return ParsedCustomPaymentMethod(
+          id: id,
+          subtitle: subtitle,
+          disableBillingDetailCollection: disableBillingDetailCollection
+        )
+      }
+    }
+
+    // Overload for NSDictionary
+    static func parseCustomPaymentMethods(from config: NSDictionary) -> [ParsedCustomPaymentMethod] {
+      guard let customPaymentMethods = config["customPaymentMethods"] as? NSArray,
+            customPaymentMethods.count > 0 else { return [] }
+
+      var parsedMethods: [ParsedCustomPaymentMethod] = []
+
+      for customPaymentMethodData in customPaymentMethods {
+        if let customPaymentMethodDict = customPaymentMethodData as? NSDictionary,
+           let id = customPaymentMethodDict["id"] as? String {
+          let subtitle = customPaymentMethodDict["subtitle"] as? String
+          let disableBillingDetailCollection = customPaymentMethodDict["disableBillingDetailCollection"] as? Bool ?? true
+
+          parsedMethods.append(ParsedCustomPaymentMethod(
+            id: id,
+            subtitle: subtitle,
+            disableBillingDetailCollection: disableBillingDetailCollection
+          ))
+        }
+      }
+
+      return parsedMethods
+    }
+
+    private static func buildCustomPaymentMethodConfiguration(
+      from config: [String: Any],
+      sdkImpl: StripeSdkImpl
+    ) -> PaymentSheet.CustomPaymentMethodConfiguration? {
+      let parsedMethods = parseCustomPaymentMethods(from: config)
+      guard !parsedMethods.isEmpty else { return nil }
+
+      let customMethods = parsedMethods.map { parsed in
+         var cpm = PaymentSheet.CustomPaymentMethodConfiguration.CustomPaymentMethod(
+          id: parsed.id,
+          subtitle: parsed.subtitle
+        )
+        cpm.disableBillingDetailCollection = parsed.disableBillingDetailCollection
+        return cpm
+      }
+
+      return .init(
+        customPaymentMethods: customMethods,
+        customPaymentMethodConfirmHandler: createCustomPaymentMethodConfirmHandler(sdkImpl: sdkImpl)
+      )
+    }
+
+    // MARK: - Common Custom Payment Method Handler
+
+    static func createCustomPaymentMethodConfirmHandler(
+      sdkImpl: StripeSdkImpl?
+    ) -> PaymentSheet.CustomPaymentMethodConfiguration.CustomPaymentMethodConfirmHandler {
+      return { customPaymentMethod, billingDetails in
+        // Send event to JS with the custom payment method data
+        let customPaymentMethodDict: [String: Any] = [
+            "id": customPaymentMethod.id
+        ]
+
+        let billingDetailsDict = Mappers.mapFromBillingDetails(billingDetails: billingDetails)
+        let payload: [String: Any] = [
+          "customPaymentMethod": customPaymentMethodDict,
+          "billingDetails": billingDetailsDict
+        ]
+
+        // Use async/await with continuation instead of blocking semaphore
+        return await withCheckedContinuation { continuation in
+          // Set up callback to receive result from JavaScript
+          sdkImpl?.customPaymentMethodResultCallback = { result in
+            sdkImpl?.customPaymentMethodResultCallback = nil
+            continuation.resume(returning: result)
+          }
+          
+          // Emit event to JavaScript
+          sdkImpl?.emitter?.emitOnCustomPaymentMethodConfirmHandlerCallback(payload)
+        }
+      }
     }
 }
 

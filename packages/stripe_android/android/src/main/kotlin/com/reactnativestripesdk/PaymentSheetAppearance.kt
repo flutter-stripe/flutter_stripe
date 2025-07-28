@@ -6,8 +6,9 @@ import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Bundle
 import com.reactnativestripesdk.utils.PaymentSheetAppearanceException
-import com.stripe.android.paymentelement.ExperimentalEmbeddedPaymentElementApi
+import com.stripe.android.paymentelement.AppearanceAPIAdditionsPreview
 import com.stripe.android.paymentsheet.PaymentSheet
+import com.stripe.android.uicore.StripeThemeDefaults
 
 @SuppressLint("RestrictedApi")
 fun buildPaymentSheetAppearance(
@@ -17,6 +18,7 @@ fun buildPaymentSheetAppearance(
   val colorParams = userParams?.getBundle(PaymentSheetAppearanceKeys.COLORS)
   val lightColorParams = colorParams?.getBundle(PaymentSheetAppearanceKeys.LIGHT) ?: colorParams
   val darkColorParams = colorParams?.getBundle(PaymentSheetAppearanceKeys.DARK) ?: colorParams
+  val insetParams = userParams?.getBundle(PaymentSheetAppearanceKeys.FORM_INSETS)
 
   val embeddedAppearance =
     buildEmbeddedAppearance(
@@ -37,6 +39,7 @@ fun buildPaymentSheetAppearance(
           context,
         ),
       embeddedAppearance = embeddedAppearance,
+      formInsetValues = buildFormInsets(insetParams),
     )
   }
 
@@ -50,9 +53,11 @@ fun buildPaymentSheetAppearance(
         userParams?.getBundle(PaymentSheetAppearanceKeys.PRIMARY_BUTTON),
         context,
       ),
+    formInsetValues = buildFormInsets(insetParams),
   )
 }
 
+@OptIn(AppearanceAPIAdditionsPreview::class)
 private fun buildTypography(
   fontParams: Bundle?,
   context: Context,
@@ -198,6 +203,7 @@ private fun buildPrimaryButton(
           getFloatOrNull(shapeParams, PaymentSheetAppearanceKeys.BORDER_RADIUS),
         borderStrokeWidthDp =
           getFloatOrNull(shapeParams, PaymentSheetAppearanceKeys.BORDER_WIDTH),
+        heightDp = getFloatOrNull(shapeParams, PaymentSheetAppearanceKeys.HEIGHT),
       ),
     typography =
       PaymentSheet.PrimaryButtonTypography(
@@ -239,7 +245,6 @@ private fun buildPrimaryButtonColors(
       ),
   )
 
-@OptIn(ExperimentalEmbeddedPaymentElementApi::class)
 @SuppressLint("RestrictedApi")
 @Throws(PaymentSheetAppearanceException::class)
 private fun buildEmbeddedAppearance(
@@ -336,7 +341,7 @@ private fun buildEmbeddedAppearance(
         val checkmarkParams = getBundleOrNull(flatParams, PaymentSheetAppearanceKeys.CHECKMARK)
         val separatorInsetsParams = getBundleOrNull(flatParams, PaymentSheetAppearanceKeys.SEPARATOR_INSETS)
 
-        // Default separator insets specific to FlatWithCheckmark
+        // Default separator insets specific to FlatWithCheckmark and FlatWithChevron
         val defaultSeparatorStartInsetDp = 0.0f
         val defaultSeparatorEndInsetDp = 0.0f
 
@@ -387,6 +392,59 @@ private fun buildEmbeddedAppearance(
           colorsDark = flatCheckmarkColors,
         )
       }
+      "flatWithChevron" -> {
+        val flatParams = getBundleOrNull(rowParams, PaymentSheetAppearanceKeys.FLAT)
+        val chevronParams = getBundleOrNull(flatParams, PaymentSheetAppearanceKeys.CHEVRON)
+        val separatorInsetsParams = getBundleOrNull(flatParams, PaymentSheetAppearanceKeys.SEPARATOR_INSETS)
+
+        // Default separator insets specific to FlatWithCheckmark and FlatWithChevron
+        val defaultSeparatorStartInsetDp = 0.0f
+        val defaultSeparatorEndInsetDp = 0.0f
+
+        // Parse dimensions as Floats
+        val separatorThickness = getFloatOr(flatParams, PaymentSheetAppearanceKeys.SEPARATOR_THICKNESS, defaultSeparatorThicknessDp)
+        val startSeparatorInset = getFloatOr(separatorInsetsParams, PaymentSheetAppearanceKeys.LEFT, defaultSeparatorStartInsetDp)
+        val endSeparatorInset = getFloatOr(separatorInsetsParams, PaymentSheetAppearanceKeys.RIGHT, defaultSeparatorEndInsetDp)
+
+        // Parse booleans
+        val topEnabled = getBooleanOr(flatParams, PaymentSheetAppearanceKeys.TOP_SEPARATOR_ENABLED, true)
+        val bottomEnabled = getBooleanOr(flatParams, PaymentSheetAppearanceKeys.BOTTOM_SEPARATOR_ENABLED, true)
+
+        val parsedSeparatorColor =
+          dynamicColorFromParams(
+            context,
+            flatParams,
+            PaymentSheetAppearanceKeys.SEPARATOR_COLOR,
+            Color.GRAY,
+          )
+
+        val parsedChevronColor =
+          dynamicColorFromParams(
+            context,
+            chevronParams,
+            PaymentSheetAppearanceKeys.COLOR,
+            defaultColors.componentBorder, // Default to component border color like other elements
+          )
+
+        // Create the required Colors object
+        val flatChevronColors =
+          PaymentSheet.Appearance.Embedded.RowStyle.FlatWithChevron.Colors(
+            separatorColor = parsedSeparatorColor,
+            chevronColor = parsedChevronColor,
+          )
+
+        PaymentSheet.Appearance.Embedded.RowStyle.FlatWithChevron(
+          separatorThicknessDp = separatorThickness,
+          startSeparatorInsetDp = startSeparatorInset,
+          endSeparatorInsetDp = endSeparatorInset,
+          topSeparatorEnabled = topEnabled,
+          bottomSeparatorEnabled = bottomEnabled,
+          additionalVerticalInsetsDp = additionalInsets,
+          horizontalInsetsDp = 0.0F, // We do not have an iOS equal for this API so it's not configurable in React Native
+          colorsLight = flatChevronColors,
+          colorsDark = flatChevronColors,
+        )
+      }
       "floatingButton" -> {
         val floatingParams = getBundleOrNull(rowParams, PaymentSheetAppearanceKeys.FLOATING)
         PaymentSheet.Appearance.Embedded.RowStyle.FloatingButton(
@@ -403,10 +461,28 @@ private fun buildEmbeddedAppearance(
   return PaymentSheet.Appearance.Embedded(style = rowStyle)
 }
 
+@SuppressLint("RestrictedApi")
+private fun buildFormInsets(insetParams: Bundle?): PaymentSheet.Insets {
+  val defaults = StripeThemeDefaults.formInsets
+  val left = getFloatOr(insetParams, PaymentSheetAppearanceKeys.LEFT, defaults.start)
+  val top = getFloatOr(insetParams, PaymentSheetAppearanceKeys.TOP, defaults.top)
+  val right = getFloatOr(insetParams, PaymentSheetAppearanceKeys.RIGHT, defaults.end)
+  val bottom = getFloatOr(insetParams, PaymentSheetAppearanceKeys.BOTTOM, defaults.bottom)
+
+  return PaymentSheet.Insets(
+    startDp = left,
+    topDp = top,
+    endDp = right,
+    bottomDp = bottom,
+  )
+}
+
 /**
- * Pulls a light/dark hex‑string map out of [params],
- * chooses the right one based on the current UI mode,
- * and parses it (falling back to [defaultColor]).
+ * Parses a ThemedColor from [params] at [key]. Supports both:
+ * - Single hex string: "#RRGGBB"
+ * - Light/dark object: { "light": "#RRGGBB", "dark": "#RRGGBB" }
+ * For light/dark objects, chooses the appropriate color based on current UI mode.
+ * Falls back to [defaultColor] if no color is provided.
  */
 private fun dynamicColorFromParams(
   context: Context,
@@ -414,8 +490,12 @@ private fun dynamicColorFromParams(
   key: String,
   defaultColor: Int,
 ): Int {
-  // Expect a nested Bundle { "light": "#RRGGBB", "dark": "#RRGGBB" }
-  val colorBundle = params?.getBundle(key)
+  if (params == null) {
+    return defaultColor
+  }
+
+  // First check if it's a nested Bundle { "light": "#RRGGBB", "dark": "#RRGGBB" }
+  val colorBundle = params.getBundle(key)
   if (colorBundle != null) {
     val isDark =
       (
@@ -434,7 +514,12 @@ private fun dynamicColorFromParams(
     return colorFromHexOrDefault(hex, defaultColor)
   }
 
-  // no override bundle → just use default
+  // Check if it's a single color string
+  params.getString(key)?.let { colorString ->
+    return colorFromHexOrDefault(colorString, defaultColor)
+  }
+
+  // no override → just use default
   return defaultColor
 }
 
@@ -564,6 +649,7 @@ private class PaymentSheetAppearanceKeys {
     const val SHAPES = "shapes"
     const val BORDER_RADIUS = "borderRadius"
     const val BORDER_WIDTH = "borderWidth"
+    const val HEIGHT = "height"
 
     const val PRIMARY_BUTTON = "primaryButton"
     const val TEXT = "text"
@@ -584,6 +670,7 @@ private class PaymentSheetAppearanceKeys {
     const val SELECTED_COLOR = "selectedColor"
     const val UNSELECTED_COLOR = "unselectedColor"
     const val CHECKMARK = "checkmark"
+    const val CHEVRON = "chevron"
     const val COLOR = "color"
     const val CHECKMARK_INSET = "inset"
 
@@ -593,5 +680,9 @@ private class PaymentSheetAppearanceKeys {
     // Keys for EdgeInsetsConfig
     const val LEFT = "left"
     const val RIGHT = "right"
+    const val TOP = "top"
+    const val BOTTOM = "bottom"
+
+    const val FORM_INSETS = "formInsetValues"
   }
 }

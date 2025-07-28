@@ -3,8 +3,6 @@
 
 #ifndef RCT_NEW_ARCH_ENABLED
 
-#import <Foundation/Foundation.h>
-
 @interface StripeSdkEventEmitterCompat : NSObject
 - (void)emitOnConfirmHandlerCallback:(NSDictionary *)value;
 - (void)emitOnFinancialConnectionsEvent:(NSDictionary *)value;
@@ -21,16 +19,9 @@
 - (void)emitEmbeddedPaymentElementFormSheetConfirmComplete:(NSDictionary *)value;
 - (void)emitEmbeddedPaymentElementRowSelectionImmediateAction;
 - (void)emitEmbeddedPaymentElementLoadingFailed:(NSDictionary *)value;
+- (void)emitOnCustomPaymentMethodConfirmHandlerCallback:(NSDictionary *)value;
+
 - (void)sendEventWithName:(NSString *)name body:(NSDictionary<NSString *, id> *)body;
-
-- (NSArray<NSString *> *)supportedEvents;
-
-- (NSDictionary<id, id> *)constantsToExport;
-
-- (void)startObserving;
-
-- (void)stopObserving;
-
 @end
 
 #endif

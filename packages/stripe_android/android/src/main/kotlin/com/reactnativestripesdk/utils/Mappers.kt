@@ -27,6 +27,8 @@ import com.stripe.android.model.StripeIntent
 import com.stripe.android.model.StripeIntent.NextActionData
 import com.stripe.android.model.StripeIntent.NextActionType
 import com.stripe.android.model.Token
+import com.stripe.android.paymentelement.ExperimentalCustomPaymentMethodsApi
+import com.stripe.android.paymentsheet.PaymentSheet
 
 internal fun createResult(
   key: String,
@@ -138,7 +140,6 @@ internal fun mapPaymentMethodType(type: PaymentMethod.Type?): String =
     PaymentMethod.Type.Oxxo -> "Oxxo"
     PaymentMethod.Type.P24 -> "P24"
     PaymentMethod.Type.SepaDebit -> "SepaDebit"
-    PaymentMethod.Type.Sofort -> "Sofort"
     PaymentMethod.Type.Upi -> "Upi"
     PaymentMethod.Type.WeChatPay -> "WeChatPay"
     PaymentMethod.Type.Klarna -> "Klarna"
@@ -168,7 +169,6 @@ internal fun mapToPaymentMethodType(type: String?): PaymentMethod.Type? =
     "Oxxo" -> PaymentMethod.Type.Oxxo
     "P24" -> PaymentMethod.Type.P24
     "SepaDebit" -> PaymentMethod.Type.SepaDebit
-    "Sofort" -> PaymentMethod.Type.Sofort
     "Upi" -> PaymentMethod.Type.Upi
     "WeChatPay" -> PaymentMethod.Type.WeChatPay
     "Klarna" -> PaymentMethod.Type.Klarna
@@ -414,10 +414,6 @@ internal fun mapFromPaymentMethod(paymentMethod: PaymentMethod): WritableMap {
       it.putString("fingerprint", paymentMethod.bacsDebit?.fingerprint)
       it.putString("last4", paymentMethod.bacsDebit?.last4)
     },
-  )
-  pm.putMap(
-    "Sofort",
-    WritableNativeMap().also { it.putString("country", paymentMethod.sofort?.country) },
   )
   pm.putMap(
     "Ideal",
@@ -1065,3 +1061,53 @@ private fun Map<String, Any?>.toReadableMap(): ReadableMap {
 
   return writableMap
 }
+
+@OptIn(ExperimentalCustomPaymentMethodsApi::class)
+@SuppressLint("RestrictedApi")
+internal fun parseCustomPaymentMethods(customPaymentMethodConfig: Bundle?): List<PaymentSheet.CustomPaymentMethod> {
+  if (customPaymentMethodConfig == null) {
+    return emptyList()
+  }
+
+  val configHashMap = customPaymentMethodConfig.getSerializable("customPaymentMethodConfigurationReadableMap") as? HashMap<String, Any>
+  if (configHashMap != null) {
+    val customPaymentMethods = configHashMap["customPaymentMethods"] as? List<HashMap<String, Any>>
+    if (customPaymentMethods != null) {
+      val result = mutableListOf<PaymentSheet.CustomPaymentMethod>()
+
+      for (customPaymentMethodMap in customPaymentMethods) {
+        val id = customPaymentMethodMap["id"] as? String
+        if (id != null) {
+          val subtitle = customPaymentMethodMap["subtitle"] as? String
+          val disableBillingDetailCollection = customPaymentMethodMap["disableBillingDetailCollection"] as? Boolean ?: false
+          result.add(
+            PaymentSheet.CustomPaymentMethod(
+              id = id,
+              subtitle = subtitle,
+              disableBillingDetailCollection = disableBillingDetailCollection,
+            ),
+          )
+        }
+      }
+
+      return result
+    }
+  }
+
+  return emptyList()
+}
+
+@SuppressLint("RestrictedApi")
+internal fun mapFromCustomPaymentMethod(
+  customPaymentMethod: PaymentSheet.CustomPaymentMethod,
+  billingDetails: PaymentMethod.BillingDetails,
+): WritableMap =
+  WritableNativeMap().apply {
+    putMap(
+      "customPaymentMethod",
+      WritableNativeMap().apply {
+        putString("id", customPaymentMethod.id)
+      },
+    )
+    putMap("billingDetails", mapFromBillingDetails(billingDetails))
+  }
