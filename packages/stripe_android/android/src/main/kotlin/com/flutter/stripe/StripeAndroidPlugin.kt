@@ -198,6 +198,10 @@ If you continue to have trouble, follow this discussion to get some support http
                 params = call.requiredArgument("params"),
                 promise = Promise(result)
             )
+            "onCustomPaymentMethodConfirmHandlerCallback"-> stripeSdk.customPaymentMethodResultCallback(
+                result = call.requiredArgument("result"),
+                promise = Promise(result)
+            )
             "createPlatformPayPaymentMethod" -> stripeSdk.createPlatformPayPaymentMethod(
                 params = call.requiredArgument("params"),
                 usesDeprecatedTokenFlow = call.requiredArgument("usesDeprecatedTokenFlow"),

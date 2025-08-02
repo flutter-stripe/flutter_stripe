@@ -147,6 +147,8 @@ class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
             return removeListener(call, result: result)
         case "intentCreationCallback":
             return intentCreationCallback(call, result: result)
+        case "customPaymentMethodConfirmHandlerCallback":
+            return confirmCustomPaymentMethodCallback(call, result: result)
         case "initCustomerSheet":
             guard let arguments = call.arguments as? FlutterMap,
             let customerAdapterOverrides = arguments["customerAdapterOverrides"] as? NSDictionary,
@@ -758,6 +760,18 @@ extension  StripePlugin {
         }
         
         intentCreationCallback(result: params, resolver: resolver(for: result), rejecter: rejecter(for: result))
+        result(nil)
+    }
+    
+    func confirmCustomPaymentMethodCallback (_ call: FlutterMethodCall, result: @escaping FlutterResult){
+        guard let arguments = call.arguments as? FlutterMap,
+              let params = arguments["params"] as? NSDictionary
+        else {
+            result(FlutterError.invalidParams)
+            return
+        }
+        
+        customPaymentMethodResultCallback(result: params, resolver: resolver(for: result),  rejecter: rejecter(for: result))
         result(nil)
     }
     

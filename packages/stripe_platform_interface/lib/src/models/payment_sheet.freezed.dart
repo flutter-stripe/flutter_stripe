@@ -135,6 +135,10 @@ mixin _$SetupPaymentSheetParameters {
   CardBrandAcceptance? get cardBrandAcceptance =>
       throw _privateConstructorUsedError;
 
+  /// Configuration for custom payment methods in PaymentSheet
+  CustomPaymentMethodConfiguration? get customPaymentMethodConfiguration =>
+      throw _privateConstructorUsedError;
+
   /// Serializes this SetupPaymentSheetParameters to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
@@ -177,7 +181,8 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
           billingDetailsCollectionConfiguration,
       String? removeSavedPaymentMethodMessage,
       @JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks,
-      CardBrandAcceptance? cardBrandAcceptance});
+      CardBrandAcceptance? cardBrandAcceptance,
+      CustomPaymentMethodConfiguration? customPaymentMethodConfiguration});
 
   $IntentConfigurationCopyWith<$Res>? get intentConfiguration;
   $PaymentSheetApplePayCopyWith<$Res>? get applePay;
@@ -188,6 +193,8 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
   $BillingDetailsCollectionConfigurationCopyWith<$Res>?
       get billingDetailsCollectionConfiguration;
   $CardBrandAcceptanceCopyWith<$Res>? get cardBrandAcceptance;
+  $CustomPaymentMethodConfigurationCopyWith<$Res>?
+      get customPaymentMethodConfiguration;
 }
 
 /// @nodoc
@@ -229,6 +236,7 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
     Object? removeSavedPaymentMethodMessage = freezed,
     Object? preferredNetworks = freezed,
     Object? cardBrandAcceptance = freezed,
+    Object? customPaymentMethodConfiguration = freezed,
   }) {
     return _then(_value.copyWith(
       customFlow: null == customFlow
@@ -326,6 +334,11 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
           ? _value.cardBrandAcceptance
           : cardBrandAcceptance // ignore: cast_nullable_to_non_nullable
               as CardBrandAcceptance?,
+      customPaymentMethodConfiguration: freezed ==
+              customPaymentMethodConfiguration
+          ? _value.customPaymentMethodConfiguration
+          : customPaymentMethodConfiguration // ignore: cast_nullable_to_non_nullable
+              as CustomPaymentMethodConfiguration?,
     ) as $Val);
   }
 
@@ -445,6 +458,23 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
       return _then(_value.copyWith(cardBrandAcceptance: value) as $Val);
     });
   }
+
+  /// Create a copy of SetupPaymentSheetParameters
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CustomPaymentMethodConfigurationCopyWith<$Res>?
+      get customPaymentMethodConfiguration {
+    if (_value.customPaymentMethodConfiguration == null) {
+      return null;
+    }
+
+    return $CustomPaymentMethodConfigurationCopyWith<$Res>(
+        _value.customPaymentMethodConfiguration!, (value) {
+      return _then(
+          _value.copyWith(customPaymentMethodConfiguration: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -479,7 +509,8 @@ abstract class _$$SetupParametersImplCopyWith<$Res>
           billingDetailsCollectionConfiguration,
       String? removeSavedPaymentMethodMessage,
       @JsonKey(toJson: _cardBrandListToJson) List<CardBrand>? preferredNetworks,
-      CardBrandAcceptance? cardBrandAcceptance});
+      CardBrandAcceptance? cardBrandAcceptance,
+      CustomPaymentMethodConfiguration? customPaymentMethodConfiguration});
 
   @override
   $IntentConfigurationCopyWith<$Res>? get intentConfiguration;
@@ -498,6 +529,9 @@ abstract class _$$SetupParametersImplCopyWith<$Res>
       get billingDetailsCollectionConfiguration;
   @override
   $CardBrandAcceptanceCopyWith<$Res>? get cardBrandAcceptance;
+  @override
+  $CustomPaymentMethodConfigurationCopyWith<$Res>?
+      get customPaymentMethodConfiguration;
 }
 
 /// @nodoc
@@ -536,6 +570,7 @@ class __$$SetupParametersImplCopyWithImpl<$Res>
     Object? removeSavedPaymentMethodMessage = freezed,
     Object? preferredNetworks = freezed,
     Object? cardBrandAcceptance = freezed,
+    Object? customPaymentMethodConfiguration = freezed,
   }) {
     return _then(_$SetupParametersImpl(
       customFlow: null == customFlow
@@ -633,6 +668,11 @@ class __$$SetupParametersImplCopyWithImpl<$Res>
           ? _value.cardBrandAcceptance
           : cardBrandAcceptance // ignore: cast_nullable_to_non_nullable
               as CardBrandAcceptance?,
+      customPaymentMethodConfiguration: freezed ==
+              customPaymentMethodConfiguration
+          ? _value.customPaymentMethodConfiguration
+          : customPaymentMethodConfiguration // ignore: cast_nullable_to_non_nullable
+              as CustomPaymentMethodConfiguration?,
     ));
   }
 }
@@ -665,7 +705,8 @@ class _$SetupParametersImpl implements _SetupParameters {
       this.removeSavedPaymentMethodMessage,
       @JsonKey(toJson: _cardBrandListToJson)
       final List<CardBrand>? preferredNetworks,
-      this.cardBrandAcceptance})
+      this.cardBrandAcceptance,
+      this.customPaymentMethodConfiguration})
       : _paymentMethodOrder = paymentMethodOrder,
         _preferredNetworks = preferredNetworks;
 
@@ -830,9 +871,13 @@ class _$SetupParametersImpl implements _SetupParameters {
   @override
   final CardBrandAcceptance? cardBrandAcceptance;
 
+  /// Configuration for custom payment methods in PaymentSheet
+  @override
+  final CustomPaymentMethodConfiguration? customPaymentMethodConfiguration;
+
   @override
   String toString() {
-    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, customerSessionClientSecret: $customerSessionClientSecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, intentConfiguration: $intentConfiguration, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, linkDisplayParams: $linkDisplayParams, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, allowsRemovalOfLastSavedPaymentMethod: $allowsRemovalOfLastSavedPaymentMethod, paymentMethodOrder: $paymentMethodOrder, returnURL: $returnURL, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, preferredNetworks: $preferredNetworks, cardBrandAcceptance: $cardBrandAcceptance)';
+    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, customerSessionClientSecret: $customerSessionClientSecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, intentConfiguration: $intentConfiguration, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, linkDisplayParams: $linkDisplayParams, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, allowsRemovalOfLastSavedPaymentMethod: $allowsRemovalOfLastSavedPaymentMethod, paymentMethodOrder: $paymentMethodOrder, returnURL: $returnURL, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration, removeSavedPaymentMethodMessage: $removeSavedPaymentMethodMessage, preferredNetworks: $preferredNetworks, cardBrandAcceptance: $cardBrandAcceptance, customPaymentMethodConfiguration: $customPaymentMethodConfiguration)';
   }
 
   @override
@@ -885,7 +930,8 @@ class _$SetupParametersImpl implements _SetupParameters {
                 other.billingDetailsCollectionConfiguration == billingDetailsCollectionConfiguration) &&
             (identical(other.removeSavedPaymentMethodMessage, removeSavedPaymentMethodMessage) || other.removeSavedPaymentMethodMessage == removeSavedPaymentMethodMessage) &&
             const DeepCollectionEquality().equals(other._preferredNetworks, _preferredNetworks) &&
-            (identical(other.cardBrandAcceptance, cardBrandAcceptance) || other.cardBrandAcceptance == cardBrandAcceptance));
+            (identical(other.cardBrandAcceptance, cardBrandAcceptance) || other.cardBrandAcceptance == cardBrandAcceptance) &&
+            (identical(other.customPaymentMethodConfiguration, customPaymentMethodConfiguration) || other.customPaymentMethodConfiguration == customPaymentMethodConfiguration));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -914,7 +960,8 @@ class _$SetupParametersImpl implements _SetupParameters {
         billingDetailsCollectionConfiguration,
         removeSavedPaymentMethodMessage,
         const DeepCollectionEquality().hash(_preferredNetworks),
-        cardBrandAcceptance
+        cardBrandAcceptance,
+        customPaymentMethodConfiguration
       ]);
 
   /// Create a copy of SetupPaymentSheetParameters
@@ -961,7 +1008,9 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
       final String? removeSavedPaymentMethodMessage,
       @JsonKey(toJson: _cardBrandListToJson)
       final List<CardBrand>? preferredNetworks,
-      final CardBrandAcceptance? cardBrandAcceptance}) = _$SetupParametersImpl;
+      final CardBrandAcceptance? cardBrandAcceptance,
+      final CustomPaymentMethodConfiguration?
+          customPaymentMethodConfiguration}) = _$SetupParametersImpl;
 
   factory _SetupParameters.fromJson(Map<String, dynamic> json) =
       _$SetupParametersImpl.fromJson;
@@ -1096,6 +1145,10 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   ///Note: Card brand filtering is not currently supported in Link.
   @override
   CardBrandAcceptance? get cardBrandAcceptance;
+
+  /// Configuration for custom payment methods in PaymentSheet
+  @override
+  CustomPaymentMethodConfiguration? get customPaymentMethodConfiguration;
 
   /// Create a copy of SetupPaymentSheetParameters
   /// with the given fields replaced by the non-null parameter values.
@@ -8655,5 +8708,448 @@ abstract class _EmbeddedPaymentElementAppearance
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EmbeddedPaymentElementAppearanceImplCopyWith<
           _$EmbeddedPaymentElementAppearanceImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+CustomPaymentMethod _$CustomPaymentMethodFromJson(Map<String, dynamic> json) {
+  return _CustomPaymentMethod.fromJson(json);
+}
+
+/// @nodoc
+mixin _$CustomPaymentMethod {
+  /// The custom payment method ID (beginning with `cpmt_`) as created in your Stripe Dashboard.
+  String get id => throw _privateConstructorUsedError;
+
+  /// Optional subtitle to display beneath the custom payment method name.
+  String? get subtitle => throw _privateConstructorUsedError;
+
+  /// Whether to disable billing detail collection for this custom payment method. Defaults to true.
+  bool? get disableBillingDetailCollection =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this CustomPaymentMethod to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of CustomPaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $CustomPaymentMethodCopyWith<CustomPaymentMethod> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CustomPaymentMethodCopyWith<$Res> {
+  factory $CustomPaymentMethodCopyWith(
+          CustomPaymentMethod value, $Res Function(CustomPaymentMethod) then) =
+      _$CustomPaymentMethodCopyWithImpl<$Res, CustomPaymentMethod>;
+  @useResult
+  $Res call(
+      {String id, String? subtitle, bool? disableBillingDetailCollection});
+}
+
+/// @nodoc
+class _$CustomPaymentMethodCopyWithImpl<$Res, $Val extends CustomPaymentMethod>
+    implements $CustomPaymentMethodCopyWith<$Res> {
+  _$CustomPaymentMethodCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of CustomPaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? subtitle = freezed,
+    Object? disableBillingDetailCollection = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      subtitle: freezed == subtitle
+          ? _value.subtitle
+          : subtitle // ignore: cast_nullable_to_non_nullable
+              as String?,
+      disableBillingDetailCollection: freezed == disableBillingDetailCollection
+          ? _value.disableBillingDetailCollection
+          : disableBillingDetailCollection // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CustomPaymentMethodImplCopyWith<$Res>
+    implements $CustomPaymentMethodCopyWith<$Res> {
+  factory _$$CustomPaymentMethodImplCopyWith(_$CustomPaymentMethodImpl value,
+          $Res Function(_$CustomPaymentMethodImpl) then) =
+      __$$CustomPaymentMethodImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String id, String? subtitle, bool? disableBillingDetailCollection});
+}
+
+/// @nodoc
+class __$$CustomPaymentMethodImplCopyWithImpl<$Res>
+    extends _$CustomPaymentMethodCopyWithImpl<$Res, _$CustomPaymentMethodImpl>
+    implements _$$CustomPaymentMethodImplCopyWith<$Res> {
+  __$$CustomPaymentMethodImplCopyWithImpl(_$CustomPaymentMethodImpl _value,
+      $Res Function(_$CustomPaymentMethodImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CustomPaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? subtitle = freezed,
+    Object? disableBillingDetailCollection = freezed,
+  }) {
+    return _then(_$CustomPaymentMethodImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      subtitle: freezed == subtitle
+          ? _value.subtitle
+          : subtitle // ignore: cast_nullable_to_non_nullable
+              as String?,
+      disableBillingDetailCollection: freezed == disableBillingDetailCollection
+          ? _value.disableBillingDetailCollection
+          : disableBillingDetailCollection // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$CustomPaymentMethodImpl implements _CustomPaymentMethod {
+  const _$CustomPaymentMethodImpl(
+      {required this.id, this.subtitle, this.disableBillingDetailCollection});
+
+  factory _$CustomPaymentMethodImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CustomPaymentMethodImplFromJson(json);
+
+  /// The custom payment method ID (beginning with `cpmt_`) as created in your Stripe Dashboard.
+  @override
+  final String id;
+
+  /// Optional subtitle to display beneath the custom payment method name.
+  @override
+  final String? subtitle;
+
+  /// Whether to disable billing detail collection for this custom payment method. Defaults to true.
+  @override
+  final bool? disableBillingDetailCollection;
+
+  @override
+  String toString() {
+    return 'CustomPaymentMethod(id: $id, subtitle: $subtitle, disableBillingDetailCollection: $disableBillingDetailCollection)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CustomPaymentMethodImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.subtitle, subtitle) ||
+                other.subtitle == subtitle) &&
+            (identical(other.disableBillingDetailCollection,
+                    disableBillingDetailCollection) ||
+                other.disableBillingDetailCollection ==
+                    disableBillingDetailCollection));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, id, subtitle, disableBillingDetailCollection);
+
+  /// Create a copy of CustomPaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CustomPaymentMethodImplCopyWith<_$CustomPaymentMethodImpl> get copyWith =>
+      __$$CustomPaymentMethodImplCopyWithImpl<_$CustomPaymentMethodImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CustomPaymentMethodImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CustomPaymentMethod implements CustomPaymentMethod {
+  const factory _CustomPaymentMethod(
+      {required final String id,
+      final String? subtitle,
+      final bool? disableBillingDetailCollection}) = _$CustomPaymentMethodImpl;
+
+  factory _CustomPaymentMethod.fromJson(Map<String, dynamic> json) =
+      _$CustomPaymentMethodImpl.fromJson;
+
+  /// The custom payment method ID (beginning with `cpmt_`) as created in your Stripe Dashboard.
+  @override
+  String get id;
+
+  /// Optional subtitle to display beneath the custom payment method name.
+  @override
+  String? get subtitle;
+
+  /// Whether to disable billing detail collection for this custom payment method. Defaults to true.
+  @override
+  bool? get disableBillingDetailCollection;
+
+  /// Create a copy of CustomPaymentMethod
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CustomPaymentMethodImplCopyWith<_$CustomPaymentMethodImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+CustomPaymentMethodConfiguration _$CustomPaymentMethodConfigurationFromJson(
+    Map<String, dynamic> json) {
+  return _CustomPaymentMethodConfiguration.fromJson(json);
+}
+
+/// @nodoc
+mixin _$CustomPaymentMethodConfiguration {
+  /// Array of custom payment methods to display in the Payment Sheet
+  @JsonKey(name: 'customPaymentMethods')
+  List<CustomPaymentMethod> get customPaymentMethods =>
+      throw _privateConstructorUsedError;
+
+  /// Callback function to handle custom payment method confirmation
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  ConfirmCustomPaymentMethodCallback? get confirmCustomPaymentMethodCallback =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this CustomPaymentMethodConfiguration to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of CustomPaymentMethodConfiguration
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $CustomPaymentMethodConfigurationCopyWith<CustomPaymentMethodConfiguration>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CustomPaymentMethodConfigurationCopyWith<$Res> {
+  factory $CustomPaymentMethodConfigurationCopyWith(
+          CustomPaymentMethodConfiguration value,
+          $Res Function(CustomPaymentMethodConfiguration) then) =
+      _$CustomPaymentMethodConfigurationCopyWithImpl<$Res,
+          CustomPaymentMethodConfiguration>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'customPaymentMethods')
+      List<CustomPaymentMethod> customPaymentMethods,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      ConfirmCustomPaymentMethodCallback? confirmCustomPaymentMethodCallback});
+}
+
+/// @nodoc
+class _$CustomPaymentMethodConfigurationCopyWithImpl<$Res,
+        $Val extends CustomPaymentMethodConfiguration>
+    implements $CustomPaymentMethodConfigurationCopyWith<$Res> {
+  _$CustomPaymentMethodConfigurationCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of CustomPaymentMethodConfiguration
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? customPaymentMethods = null,
+    Object? confirmCustomPaymentMethodCallback = freezed,
+  }) {
+    return _then(_value.copyWith(
+      customPaymentMethods: null == customPaymentMethods
+          ? _value.customPaymentMethods
+          : customPaymentMethods // ignore: cast_nullable_to_non_nullable
+              as List<CustomPaymentMethod>,
+      confirmCustomPaymentMethodCallback: freezed ==
+              confirmCustomPaymentMethodCallback
+          ? _value.confirmCustomPaymentMethodCallback
+          : confirmCustomPaymentMethodCallback // ignore: cast_nullable_to_non_nullable
+              as ConfirmCustomPaymentMethodCallback?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CustomPaymentMethodConfigurationImplCopyWith<$Res>
+    implements $CustomPaymentMethodConfigurationCopyWith<$Res> {
+  factory _$$CustomPaymentMethodConfigurationImplCopyWith(
+          _$CustomPaymentMethodConfigurationImpl value,
+          $Res Function(_$CustomPaymentMethodConfigurationImpl) then) =
+      __$$CustomPaymentMethodConfigurationImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'customPaymentMethods')
+      List<CustomPaymentMethod> customPaymentMethods,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      ConfirmCustomPaymentMethodCallback? confirmCustomPaymentMethodCallback});
+}
+
+/// @nodoc
+class __$$CustomPaymentMethodConfigurationImplCopyWithImpl<$Res>
+    extends _$CustomPaymentMethodConfigurationCopyWithImpl<$Res,
+        _$CustomPaymentMethodConfigurationImpl>
+    implements _$$CustomPaymentMethodConfigurationImplCopyWith<$Res> {
+  __$$CustomPaymentMethodConfigurationImplCopyWithImpl(
+      _$CustomPaymentMethodConfigurationImpl _value,
+      $Res Function(_$CustomPaymentMethodConfigurationImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CustomPaymentMethodConfiguration
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? customPaymentMethods = null,
+    Object? confirmCustomPaymentMethodCallback = freezed,
+  }) {
+    return _then(_$CustomPaymentMethodConfigurationImpl(
+      customPaymentMethods: null == customPaymentMethods
+          ? _value._customPaymentMethods
+          : customPaymentMethods // ignore: cast_nullable_to_non_nullable
+              as List<CustomPaymentMethod>,
+      confirmCustomPaymentMethodCallback: freezed ==
+              confirmCustomPaymentMethodCallback
+          ? _value.confirmCustomPaymentMethodCallback
+          : confirmCustomPaymentMethodCallback // ignore: cast_nullable_to_non_nullable
+              as ConfirmCustomPaymentMethodCallback?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$CustomPaymentMethodConfigurationImpl
+    implements _CustomPaymentMethodConfiguration {
+  const _$CustomPaymentMethodConfigurationImpl(
+      {@JsonKey(name: 'customPaymentMethods')
+      required final List<CustomPaymentMethod> customPaymentMethods,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      this.confirmCustomPaymentMethodCallback})
+      : _customPaymentMethods = customPaymentMethods;
+
+  factory _$CustomPaymentMethodConfigurationImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CustomPaymentMethodConfigurationImplFromJson(json);
+
+  /// Array of custom payment methods to display in the Payment Sheet
+  final List<CustomPaymentMethod> _customPaymentMethods;
+
+  /// Array of custom payment methods to display in the Payment Sheet
+  @override
+  @JsonKey(name: 'customPaymentMethods')
+  List<CustomPaymentMethod> get customPaymentMethods {
+    if (_customPaymentMethods is EqualUnmodifiableListView)
+      return _customPaymentMethods;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_customPaymentMethods);
+  }
+
+  /// Callback function to handle custom payment method confirmation
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final ConfirmCustomPaymentMethodCallback? confirmCustomPaymentMethodCallback;
+
+  @override
+  String toString() {
+    return 'CustomPaymentMethodConfiguration(customPaymentMethods: $customPaymentMethods, confirmCustomPaymentMethodCallback: $confirmCustomPaymentMethodCallback)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CustomPaymentMethodConfigurationImpl &&
+            const DeepCollectionEquality()
+                .equals(other._customPaymentMethods, _customPaymentMethods) &&
+            (identical(other.confirmCustomPaymentMethodCallback,
+                    confirmCustomPaymentMethodCallback) ||
+                other.confirmCustomPaymentMethodCallback ==
+                    confirmCustomPaymentMethodCallback));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_customPaymentMethods),
+      confirmCustomPaymentMethodCallback);
+
+  /// Create a copy of CustomPaymentMethodConfiguration
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CustomPaymentMethodConfigurationImplCopyWith<
+          _$CustomPaymentMethodConfigurationImpl>
+      get copyWith => __$$CustomPaymentMethodConfigurationImplCopyWithImpl<
+          _$CustomPaymentMethodConfigurationImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CustomPaymentMethodConfigurationImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CustomPaymentMethodConfiguration
+    implements CustomPaymentMethodConfiguration {
+  const factory _CustomPaymentMethodConfiguration(
+          {@JsonKey(name: 'customPaymentMethods')
+          required final List<CustomPaymentMethod> customPaymentMethods,
+          @JsonKey(includeFromJson: false, includeToJson: false)
+          final ConfirmCustomPaymentMethodCallback?
+              confirmCustomPaymentMethodCallback}) =
+      _$CustomPaymentMethodConfigurationImpl;
+
+  factory _CustomPaymentMethodConfiguration.fromJson(
+          Map<String, dynamic> json) =
+      _$CustomPaymentMethodConfigurationImpl.fromJson;
+
+  /// Array of custom payment methods to display in the Payment Sheet
+  @override
+  @JsonKey(name: 'customPaymentMethods')
+  List<CustomPaymentMethod> get customPaymentMethods;
+
+  /// Callback function to handle custom payment method confirmation
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  ConfirmCustomPaymentMethodCallback? get confirmCustomPaymentMethodCallback;
+
+  /// Create a copy of CustomPaymentMethodConfiguration
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CustomPaymentMethodConfigurationImplCopyWith<
+          _$CustomPaymentMethodConfigurationImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

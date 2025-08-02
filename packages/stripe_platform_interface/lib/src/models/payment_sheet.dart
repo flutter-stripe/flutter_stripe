@@ -120,6 +120,9 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
     /// Note: This is only a client-side solution.
     ///Note: Card brand filtering is not currently supported in Link.
     CardBrandAcceptance? cardBrandAcceptance,
+
+    /// Configuration for custom payment methods in PaymentSheet
+    CustomPaymentMethodConfiguration? customPaymentMethodConfiguration,
   }) = _SetupParameters;
 
   factory SetupPaymentSheetParameters.fromJson(Map<String, dynamic> json) =>
@@ -839,4 +842,66 @@ class EmbeddedPaymentElementAppearance with _$EmbeddedPaymentElementAppearance {
   factory EmbeddedPaymentElementAppearance.fromJson(
           Map<String, Object?> json) =>
       _$EmbeddedPaymentElementAppearanceFromJson(json);
+}
+
+///
+///Configuration for a custom payment method.
+///
+@freezed
+class CustomPaymentMethod with _$CustomPaymentMethod {
+  @JsonSerializable(explicitToJson: true)
+  const factory CustomPaymentMethod({
+    /// The custom payment method ID (beginning with `cpmt_`) as created in your Stripe Dashboard.
+    required String id,
+
+    /// Optional subtitle to display beneath the custom payment method name.
+    String? subtitle,
+
+    /// Whether to disable billing detail collection for this custom payment method. Defaults to true.
+    bool? disableBillingDetailCollection,
+  }) = _CustomPaymentMethod;
+
+  factory CustomPaymentMethod.fromJson(Map<String, Object?> json) =>
+      _$CustomPaymentMethodFromJson(json);
+}
+
+///
+/// Custom payment method confirmation result type for PaymentSheet.
+///
+enum CustomPaymentMethodResultStatus {
+  /// The custom payment method transaction was completed successfully */
+  completed,
+
+  /// The custom payment method transaction was canceled by the user */
+  canceled,
+
+  /// The custom payment method transaction failed */
+  failed,
+}
+
+/// Callback function called when a custom payment method is selected and confirmed.
+/// Your implementation should complete the payment using your custom payment provider's SDK.
+typedef ConfirmCustomPaymentMethodCallback = void Function(
+  CustomPaymentMethod customPaymentMethod,
+  BillingDetails? billingDetails,
+  void Function(CustomPaymentMethodResultStatus result) resultHandler,
+);
+
+/// Configuration for custom payment methods in PaymentSheet.
+@freezed
+class CustomPaymentMethodConfiguration with _$CustomPaymentMethodConfiguration {
+  @JsonSerializable(explicitToJson: true)
+  const factory CustomPaymentMethodConfiguration({
+    /// Array of custom payment methods to display in the Payment Sheet
+    @JsonKey(name: 'customPaymentMethods')
+    required List<CustomPaymentMethod> customPaymentMethods,
+
+    /// Callback function to handle custom payment method confirmation
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    ConfirmCustomPaymentMethodCallback? confirmCustomPaymentMethodCallback,
+  }) = _CustomPaymentMethodConfiguration;
+
+  factory CustomPaymentMethodConfiguration.fromJson(
+          Map<String, dynamic> json) =>
+      _$CustomPaymentMethodConfigurationFromJson(json);
 }

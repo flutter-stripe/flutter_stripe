@@ -66,6 +66,12 @@ _$SetupParametersImpl _$$SetupParametersImplFromJson(
           ? null
           : CardBrandAcceptance.fromJson(
               json['cardBrandAcceptance'] as Map<String, dynamic>),
+      customPaymentMethodConfiguration:
+          json['customPaymentMethodConfiguration'] == null
+              ? null
+              : CustomPaymentMethodConfiguration.fromJson(
+                  json['customPaymentMethodConfiguration']
+                      as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$SetupParametersImplToJson(
@@ -97,6 +103,8 @@ Map<String, dynamic> _$$SetupParametersImplToJson(
           instance.removeSavedPaymentMethodMessage,
       'preferredNetworks': _cardBrandListToJson(instance.preferredNetworks),
       'cardBrandAcceptance': instance.cardBrandAcceptance?.toJson(),
+      'customPaymentMethodConfiguration':
+          instance.customPaymentMethodConfiguration?.toJson(),
     };
 
 const _$ThemeModeEnumMap = {
@@ -755,4 +763,38 @@ Map<String, dynamic> _$$EmbeddedPaymentElementAppearanceImplToJson(
         _$EmbeddedPaymentElementAppearanceImpl instance) =>
     <String, dynamic>{
       'row': instance.row,
+    };
+
+_$CustomPaymentMethodImpl _$$CustomPaymentMethodImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CustomPaymentMethodImpl(
+      id: json['id'] as String,
+      subtitle: json['subtitle'] as String?,
+      disableBillingDetailCollection:
+          json['disableBillingDetailCollection'] as bool?,
+    );
+
+Map<String, dynamic> _$$CustomPaymentMethodImplToJson(
+        _$CustomPaymentMethodImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'subtitle': instance.subtitle,
+      'disableBillingDetailCollection': instance.disableBillingDetailCollection,
+    };
+
+_$CustomPaymentMethodConfigurationImpl
+    _$$CustomPaymentMethodConfigurationImplFromJson(
+            Map<String, dynamic> json) =>
+        _$CustomPaymentMethodConfigurationImpl(
+          customPaymentMethods: (json['customPaymentMethods'] as List<dynamic>)
+              .map((e) =>
+                  CustomPaymentMethod.fromJson(e as Map<String, dynamic>))
+              .toList(),
+        );
+
+Map<String, dynamic> _$$CustomPaymentMethodConfigurationImplToJson(
+        _$CustomPaymentMethodConfigurationImpl instance) =>
+    <String, dynamic>{
+      'customPaymentMethods':
+          instance.customPaymentMethods.map((e) => e.toJson()).toList(),
     };
