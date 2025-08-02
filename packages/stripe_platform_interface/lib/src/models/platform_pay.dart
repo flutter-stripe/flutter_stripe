@@ -251,6 +251,9 @@ class GooglePayParams with _$GooglePayParams {
     ///
     /// Defaults to true.
     bool? allowCreditCards,
+
+    /// Describes the configuration for billing address collection in the Google Pay sheet.
+    GooglePayBillingAddressConfig? billingAddressConfig,
   }) = _GooglePayParams;
 
   factory GooglePayParams.fromJson(Map<String, dynamic> json) =>

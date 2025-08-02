@@ -329,6 +329,10 @@ _$GooglePayParamsImpl _$$GooglePayParamsImplFromJson(
       merchantName: json['merchantName'] as String?,
       isEmailRequired: json['isEmailRequired'] as bool?,
       allowCreditCards: json['allowCreditCards'] as bool?,
+      billingAddressConfig: json['billingAddressConfig'] == null
+          ? null
+          : GooglePayBillingAddressConfig.fromJson(
+              json['billingAddressConfig'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$GooglePayParamsImplToJson(
@@ -340,6 +344,7 @@ Map<String, dynamic> _$$GooglePayParamsImplToJson(
       'merchantName': instance.merchantName,
       'isEmailRequired': instance.isEmailRequired,
       'allowCreditCards': instance.allowCreditCards,
+      'billingAddressConfig': instance.billingAddressConfig?.toJson(),
     };
 
 _$GooglePayPaymentMethodParamsImpl _$$GooglePayPaymentMethodParamsImplFromJson(
