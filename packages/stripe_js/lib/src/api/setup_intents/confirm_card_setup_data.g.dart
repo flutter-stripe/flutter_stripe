@@ -16,17 +16,10 @@ _$ConfirmCardSetupDataImpl _$$ConfirmCardSetupDataImplFromJson(Map json) =>
     );
 
 Map<String, dynamic> _$$ConfirmCardSetupDataImplToJson(
-    _$ConfirmCardSetupDataImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('payment_method',
-      PaymentMethodDetails.toJsonConverter(instance.paymentMethod));
-  writeNotNull('return_url', instance.returnUrl);
-  return val;
-}
+        _$ConfirmCardSetupDataImpl instance) =>
+    <String, dynamic>{
+      if (PaymentMethodDetails.toJsonConverter(instance.paymentMethod)
+          case final value?)
+        'payment_method': value,
+      if (instance.returnUrl case final value?) 'return_url': value,
+    };

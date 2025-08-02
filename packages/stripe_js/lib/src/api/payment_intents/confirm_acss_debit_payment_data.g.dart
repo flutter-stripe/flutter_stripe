@@ -13,15 +13,7 @@ _$ConfirmAcssDebitPaymentDataImpl _$$ConfirmAcssDebitPaymentDataImplFromJson(
     );
 
 Map<String, dynamic> _$$ConfirmAcssDebitPaymentDataImplToJson(
-    _$ConfirmAcssDebitPaymentDataImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('payment_method', instance.paymentMethod);
-  return val;
-}
+        _$ConfirmAcssDebitPaymentDataImpl instance) =>
+    <String, dynamic>{
+      if (instance.paymentMethod case final value?) 'payment_method': value,
+    };

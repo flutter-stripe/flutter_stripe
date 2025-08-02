@@ -22,24 +22,17 @@ _$CardElementOptionsImpl _$$CardElementOptionsImplFromJson(Map json) =>
     );
 
 Map<String, dynamic> _$$CardElementOptionsImplToJson(
-    _$CardElementOptionsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('classes', instance.classes?.toJson());
-  writeNotNull('style', instance.style);
-  writeNotNull('value', instance.value);
-  writeNotNull('hidePostalCode', instance.hidePostalCode);
-  writeNotNull('iconStyle', _$CardElementIconStyleEnumMap[instance.iconStyle]);
-  writeNotNull('hideIcon', instance.hideIcon);
-  writeNotNull('disabled', instance.disabled);
-  return val;
-}
+        _$CardElementOptionsImpl instance) =>
+    <String, dynamic>{
+      if (instance.classes?.toJson() case final value?) 'classes': value,
+      if (instance.style case final value?) 'style': value,
+      if (instance.value case final value?) 'value': value,
+      if (instance.hidePostalCode case final value?) 'hidePostalCode': value,
+      if (_$CardElementIconStyleEnumMap[instance.iconStyle] case final value?)
+        'iconStyle': value,
+      if (instance.hideIcon case final value?) 'hideIcon': value,
+      if (instance.disabled case final value?) 'disabled': value,
+    };
 
 const _$CardElementIconStyleEnumMap = {
   CardElementIconStyle.solid: 'solid',
@@ -57,20 +50,12 @@ _$CardElementClassesImpl _$$CardElementClassesImplFromJson(Map json) =>
     );
 
 Map<String, dynamic> _$$CardElementClassesImplToJson(
-    _$CardElementClassesImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('base', instance.base);
-  writeNotNull('complete', instance.complete);
-  writeNotNull('empty', instance.empty);
-  writeNotNull('focus', instance.focus);
-  writeNotNull('invalid', instance.invalid);
-  writeNotNull('webkitAutofill', instance.webkitAutofill);
-  return val;
-}
+        _$CardElementClassesImpl instance) =>
+    <String, dynamic>{
+      if (instance.base case final value?) 'base': value,
+      if (instance.complete case final value?) 'complete': value,
+      if (instance.empty case final value?) 'empty': value,
+      if (instance.focus case final value?) 'focus': value,
+      if (instance.invalid case final value?) 'invalid': value,
+      if (instance.webkitAutofill case final value?) 'webkitAutofill': value,
+    };

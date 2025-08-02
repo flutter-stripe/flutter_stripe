@@ -13,15 +13,7 @@ _$ConfirmAlipayPaymentOptionsImpl _$$ConfirmAlipayPaymentOptionsImplFromJson(
     );
 
 Map<String, dynamic> _$$ConfirmAlipayPaymentOptionsImplToJson(
-    _$ConfirmAlipayPaymentOptionsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('handleActions', instance.handleActions);
-  return val;
-}
+        _$ConfirmAlipayPaymentOptionsImpl instance) =>
+    <String, dynamic>{
+      if (instance.handleActions case final value?) 'handleActions': value,
+    };

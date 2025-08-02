@@ -76,64 +76,62 @@ _$PaymentIntentImpl _$$PaymentIntentImplFromJson(Map json) =>
       transferGroup: json['transfer_group'],
     );
 
-Map<String, dynamic> _$$PaymentIntentImplToJson(_$PaymentIntentImpl instance) {
-  final val = <String, dynamic>{
-    'id': instance.id,
-    'object': instance.object,
-    'amount': instance.amount,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('amount_capturable', instance.amountCapturable);
-  writeNotNull('amount_details', instance.amountDetails?.toJson());
-  writeNotNull('amount_received', instance.amountReceived);
-  writeNotNull('application', instance.application);
-  writeNotNull('application_fee_amount', instance.applicationFeeAmount);
-  writeNotNull(
-      'automatic_payment_methods', instance.automaticPaymentMethods?.toJson());
-  writeNotNull('canceled_at', instance.canceledAt);
-  writeNotNull('cancellation_reason',
-      _$PaymentIntentCancellationReasonEnumMap[instance.cancellationReason]);
-  val['client_secret'] = instance.clientSecret;
-  val['capture_method'] =
-      _$PaymentIntentCaptureMethodEnumMap[instance.captureMethod]!;
-  val['confirmation_method'] =
-      _$PaymentIntentConfirmationMethodEnumMap[instance.confirmationMethod]!;
-  writeNotNull('created', instance.created);
-  val['currency'] = instance.currency;
-  writeNotNull('customer', instance.customer);
-  writeNotNull('description', instance.description);
-  writeNotNull('invoice', instance.invoice);
-  writeNotNull('last_payment_error', instance.lastPaymentError?.toJson());
-  writeNotNull('latest_charge', instance.latestCharge);
-  val['livemode'] = instance.livemode;
-  val['metadata'] = instance.metadata;
-  writeNotNull('next_action', instance.nextAction);
-  writeNotNull('on_behalf_of', instance.onBehalfOf);
-  writeNotNull('payment_method', instance.paymentMethod);
-  val['payment_method_options'] = instance.paymentMethodOptions;
-  val['payment_method_types'] = instance.paymentMethodTypes
-      .map((e) => _$PaymentMethodTypeEnumMap[e]!)
-      .toList();
-  writeNotNull('processing', instance.processing);
-  writeNotNull('receipt_email', instance.receiptEmail);
-  writeNotNull('review', instance.review);
-  writeNotNull('setup_future_usage',
-      _$PaymentIntentSetupFutureUsageEnumMap[instance.setupFutureUsage]);
-  writeNotNull('shipping', instance.shipping?.toJson());
-  writeNotNull('statement_descriptor', instance.statementDescriptor);
-  writeNotNull(
-      'statement_descriptor_suffix', instance.statementDescriptorSuffix);
-  val['status'] = _$PaymentIntentsStatusEnumMap[instance.status]!;
-  writeNotNull('transfer_data', instance.transferData);
-  writeNotNull('transfer_group', instance.transferGroup);
-  return val;
-}
+Map<String, dynamic> _$$PaymentIntentImplToJson(_$PaymentIntentImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'object': instance.object,
+      'amount': instance.amount,
+      if (instance.amountCapturable case final value?)
+        'amount_capturable': value,
+      if (instance.amountDetails?.toJson() case final value?)
+        'amount_details': value,
+      if (instance.amountReceived case final value?) 'amount_received': value,
+      if (instance.application case final value?) 'application': value,
+      if (instance.applicationFeeAmount case final value?)
+        'application_fee_amount': value,
+      if (instance.automaticPaymentMethods?.toJson() case final value?)
+        'automatic_payment_methods': value,
+      if (instance.canceledAt case final value?) 'canceled_at': value,
+      if (_$PaymentIntentCancellationReasonEnumMap[instance.cancellationReason]
+          case final value?)
+        'cancellation_reason': value,
+      'client_secret': instance.clientSecret,
+      'capture_method':
+          _$PaymentIntentCaptureMethodEnumMap[instance.captureMethod]!,
+      'confirmation_method': _$PaymentIntentConfirmationMethodEnumMap[
+          instance.confirmationMethod]!,
+      if (instance.created case final value?) 'created': value,
+      'currency': instance.currency,
+      if (instance.customer case final value?) 'customer': value,
+      if (instance.description case final value?) 'description': value,
+      if (instance.invoice case final value?) 'invoice': value,
+      if (instance.lastPaymentError?.toJson() case final value?)
+        'last_payment_error': value,
+      if (instance.latestCharge case final value?) 'latest_charge': value,
+      'livemode': instance.livemode,
+      'metadata': instance.metadata,
+      if (instance.nextAction case final value?) 'next_action': value,
+      if (instance.onBehalfOf case final value?) 'on_behalf_of': value,
+      if (instance.paymentMethod case final value?) 'payment_method': value,
+      'payment_method_options': instance.paymentMethodOptions,
+      'payment_method_types': instance.paymentMethodTypes
+          .map((e) => _$PaymentMethodTypeEnumMap[e]!)
+          .toList(),
+      if (instance.processing case final value?) 'processing': value,
+      if (instance.receiptEmail case final value?) 'receipt_email': value,
+      if (instance.review case final value?) 'review': value,
+      if (_$PaymentIntentSetupFutureUsageEnumMap[instance.setupFutureUsage]
+          case final value?)
+        'setup_future_usage': value,
+      if (instance.shipping?.toJson() case final value?) 'shipping': value,
+      if (instance.statementDescriptor case final value?)
+        'statement_descriptor': value,
+      if (instance.statementDescriptorSuffix case final value?)
+        'statement_descriptor_suffix': value,
+      'status': _$PaymentIntentsStatusEnumMap[instance.status]!,
+      if (instance.transferData case final value?) 'transfer_data': value,
+      if (instance.transferGroup case final value?) 'transfer_group': value,
+    };
 
 const _$PaymentIntentCancellationReasonEnumMap = {
   PaymentIntentCancellationReason.duplicate: 'duplicate',
@@ -185,7 +183,6 @@ const _$PaymentMethodTypeEnumMap = {
   PaymentMethodType.pix: 'pix',
   PaymentMethodType.promptpay: 'promptpay',
   PaymentMethodType.sepaDebit: 'sepa_debit',
-  PaymentMethodType.sofort: 'sofort',
   PaymentMethodType.usBankAccount: 'us_bank_account',
   PaymentMethodType.wechatPay: 'wechat_pay',
   PaymentMethodType.unknown: 'unknown',
@@ -216,18 +213,10 @@ _$PaymentIntentAmountDetailsImpl _$$PaymentIntentAmountDetailsImplFromJson(
     );
 
 Map<String, dynamic> _$$PaymentIntentAmountDetailsImplToJson(
-    _$PaymentIntentAmountDetailsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('tip', instance.tip?.toJson());
-  return val;
-}
+        _$PaymentIntentAmountDetailsImpl instance) =>
+    <String, dynamic>{
+      if (instance.tip?.toJson() case final value?) 'tip': value,
+    };
 
 _$PaymentIntentTipImpl _$$PaymentIntentTipImplFromJson(Map json) =>
     _$PaymentIntentTipImpl(
@@ -235,18 +224,10 @@ _$PaymentIntentTipImpl _$$PaymentIntentTipImplFromJson(Map json) =>
     );
 
 Map<String, dynamic> _$$PaymentIntentTipImplToJson(
-    _$PaymentIntentTipImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('amount', instance.amount);
-  return val;
-}
+        _$PaymentIntentTipImpl instance) =>
+    <String, dynamic>{
+      if (instance.amount case final value?) 'amount': value,
+    };
 
 _$PaymentIntentAutomaticPaymentMethodsImpl
     _$$PaymentIntentAutomaticPaymentMethodsImplFromJson(Map json) =>
@@ -255,15 +236,7 @@ _$PaymentIntentAutomaticPaymentMethodsImpl
         );
 
 Map<String, dynamic> _$$PaymentIntentAutomaticPaymentMethodsImplToJson(
-    _$PaymentIntentAutomaticPaymentMethodsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('enabled', instance.enabled);
-  return val;
-}
+        _$PaymentIntentAutomaticPaymentMethodsImpl instance) =>
+    <String, dynamic>{
+      if (instance.enabled case final value?) 'enabled': value,
+    };

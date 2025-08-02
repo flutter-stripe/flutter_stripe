@@ -23,27 +23,19 @@ _$TokenImpl _$$TokenImplFromJson(Map json) => _$TokenImpl(
       used: json['used'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$TokenImplToJson(_$TokenImpl instance) {
-  final val = <String, dynamic>{
-    'id': instance.id,
-    'object': instance.object,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('bank_account', instance.bankAccount?.toJson());
-  writeNotNull('card', instance.card?.toJson());
-  writeNotNull('client_ip', instance.clientIP);
-  writeNotNull('created', instance.created);
-  val['livemode'] = instance.livemode;
-  val['type'] = _$TokenTypeEnumMap[instance.type]!;
-  val['used'] = instance.used;
-  return val;
-}
+Map<String, dynamic> _$$TokenImplToJson(_$TokenImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'object': instance.object,
+      if (instance.bankAccount?.toJson() case final value?)
+        'bank_account': value,
+      if (instance.card?.toJson() case final value?) 'card': value,
+      if (instance.clientIP case final value?) 'client_ip': value,
+      if (instance.created case final value?) 'created': value,
+      'livemode': instance.livemode,
+      'type': _$TokenTypeEnumMap[instance.type]!,
+      'used': instance.used,
+    };
 
 const _$TokenTypeEnumMap = {
   TokenType.account: 'account',
@@ -70,31 +62,25 @@ _$BankAccountTokenImpl _$$BankAccountTokenImplFromJson(Map json) =>
     );
 
 Map<String, dynamic> _$$BankAccountTokenImplToJson(
-    _$BankAccountTokenImpl instance) {
-  final val = <String, dynamic>{
-    'id': instance.id,
-    'object': instance.object,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('account_holder_name', instance.accountHolderName);
-  writeNotNull('account_holder_type',
-      _$BankAccountHolderTypeEnumMap[instance.accountHolderType]);
-  writeNotNull('account_type', instance.accountType);
-  writeNotNull('bank_name', instance.bankName);
-  writeNotNull('country', instance.country);
-  writeNotNull('currency', instance.currency);
-  writeNotNull('fingerprint', instance.fingerprint);
-  writeNotNull('last4', instance.last4);
-  writeNotNull('routing_number', instance.routingNumber);
-  writeNotNull('status', _$BankAccountStatusEnumMap[instance.status]);
-  return val;
-}
+        _$BankAccountTokenImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'object': instance.object,
+      if (instance.accountHolderName case final value?)
+        'account_holder_name': value,
+      if (_$BankAccountHolderTypeEnumMap[instance.accountHolderType]
+          case final value?)
+        'account_holder_type': value,
+      if (instance.accountType case final value?) 'account_type': value,
+      if (instance.bankName case final value?) 'bank_name': value,
+      if (instance.country case final value?) 'country': value,
+      if (instance.currency case final value?) 'currency': value,
+      if (instance.fingerprint case final value?) 'fingerprint': value,
+      if (instance.last4 case final value?) 'last4': value,
+      if (instance.routingNumber case final value?) 'routing_number': value,
+      if (_$BankAccountStatusEnumMap[instance.status] case final value?)
+        'status': value,
+    };
 
 const _$BankAccountHolderTypeEnumMap = {
   BankAccountHolderType.company: 'company',
@@ -143,44 +129,41 @@ _$CardTokenImpl _$$CardTokenImplFromJson(Map json) => _$CardTokenImpl(
           _$CardTokenizationMethodEnumMap, json['tokenization_method']),
     );
 
-Map<String, dynamic> _$$CardTokenImplToJson(_$CardTokenImpl instance) {
-  final val = <String, dynamic>{
-    'id': instance.id,
-    'object': instance.object,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('address_city', instance.addressCity);
-  writeNotNull('address_country', instance.addressCountry);
-  writeNotNull('address_line1', instance.addressLine1);
-  writeNotNull('address_line1_check',
-      _$VerificationCheckEnumMap[instance.addressLine1Check]);
-  writeNotNull('address_line2', instance.addressLine2);
-  writeNotNull('address_state', instance.addressState);
-  writeNotNull('address_zip', instance.addressZip);
-  writeNotNull('address_zip_check',
-      _$VerificationCheckEnumMap[instance.addressZipCheck]);
-  writeNotNull('brand', _$CardTokenBrandEnumMap[instance.brand]);
-  writeNotNull('country', instance.country);
-  writeNotNull('currency', instance.currency);
-  writeNotNull('cvc_check', _$VerificationCheckEnumMap[instance.cvcCheck]);
-  writeNotNull('dynamic_last4', instance.dynamicLast4);
-  writeNotNull('exp_month', instance.expMonth);
-  writeNotNull('exp_year', instance.expYear);
-  writeNotNull('fingerprint', instance.fingerprint);
-  writeNotNull('funding', _$CardFundingTypeEnumMap[instance.funding]);
-  writeNotNull('last4', instance.last4);
-  val['metadata'] = instance.metadata;
-  writeNotNull('name', instance.name);
-  writeNotNull('tokenization_method',
-      _$CardTokenizationMethodEnumMap[instance.tokenizationMethod]);
-  return val;
-}
+Map<String, dynamic> _$$CardTokenImplToJson(_$CardTokenImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'object': instance.object,
+      if (instance.addressCity case final value?) 'address_city': value,
+      if (instance.addressCountry case final value?) 'address_country': value,
+      if (instance.addressLine1 case final value?) 'address_line1': value,
+      if (_$VerificationCheckEnumMap[instance.addressLine1Check]
+          case final value?)
+        'address_line1_check': value,
+      if (instance.addressLine2 case final value?) 'address_line2': value,
+      if (instance.addressState case final value?) 'address_state': value,
+      if (instance.addressZip case final value?) 'address_zip': value,
+      if (_$VerificationCheckEnumMap[instance.addressZipCheck]
+          case final value?)
+        'address_zip_check': value,
+      if (_$CardTokenBrandEnumMap[instance.brand] case final value?)
+        'brand': value,
+      if (instance.country case final value?) 'country': value,
+      if (instance.currency case final value?) 'currency': value,
+      if (_$VerificationCheckEnumMap[instance.cvcCheck] case final value?)
+        'cvc_check': value,
+      if (instance.dynamicLast4 case final value?) 'dynamic_last4': value,
+      if (instance.expMonth case final value?) 'exp_month': value,
+      if (instance.expYear case final value?) 'exp_year': value,
+      if (instance.fingerprint case final value?) 'fingerprint': value,
+      if (_$CardFundingTypeEnumMap[instance.funding] case final value?)
+        'funding': value,
+      if (instance.last4 case final value?) 'last4': value,
+      'metadata': instance.metadata,
+      if (instance.name case final value?) 'name': value,
+      if (_$CardTokenizationMethodEnumMap[instance.tokenizationMethod]
+          case final value?)
+        'tokenization_method': value,
+    };
 
 const _$VerificationCheckEnumMap = {
   VerificationCheck.pass: 'pass',

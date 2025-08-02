@@ -17,19 +17,11 @@ _$PaymentElementChangeEventImpl _$$PaymentElementChangeEventImplFromJson(
     );
 
 Map<String, dynamic> _$$PaymentElementChangeEventImplToJson(
-    _$PaymentElementChangeEventImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('type', instance.type);
-  writeNotNull('code', instance.code);
-  writeNotNull('decline_code', instance.decline_code);
-  writeNotNull('message', instance.message);
-  writeNotNull('param', instance.param);
-  return val;
-}
+        _$PaymentElementChangeEventImpl instance) =>
+    <String, dynamic>{
+      if (instance.type case final value?) 'type': value,
+      if (instance.code case final value?) 'code': value,
+      if (instance.decline_code case final value?) 'decline_code': value,
+      if (instance.message case final value?) 'message': value,
+      if (instance.param case final value?) 'param': value,
+    };

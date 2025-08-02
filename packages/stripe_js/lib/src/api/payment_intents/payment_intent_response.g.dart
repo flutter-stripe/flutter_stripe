@@ -19,16 +19,9 @@ _$PaymentIntentResponseImpl _$$PaymentIntentResponseImplFromJson(Map json) =>
     );
 
 Map<String, dynamic> _$$PaymentIntentResponseImplToJson(
-    _$PaymentIntentResponseImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('paymentIntent', instance.paymentIntent?.toJson());
-  writeNotNull('error', instance.error?.toJson());
-  return val;
-}
+        _$PaymentIntentResponseImpl instance) =>
+    <String, dynamic>{
+      if (instance.paymentIntent?.toJson() case final value?)
+        'paymentIntent': value,
+      if (instance.error?.toJson() case final value?) 'error': value,
+    };

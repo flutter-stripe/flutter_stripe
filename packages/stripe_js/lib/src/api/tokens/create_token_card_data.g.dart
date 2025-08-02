@@ -19,22 +19,14 @@ _$CreateTokenCardDataImpl _$$CreateTokenCardDataImplFromJson(Map json) =>
     );
 
 Map<String, dynamic> _$$CreateTokenCardDataImplToJson(
-    _$CreateTokenCardDataImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('name', instance.name);
-  writeNotNull('address_line1', instance.addressLine1);
-  writeNotNull('address_line2', instance.addressLine2);
-  writeNotNull('address_city', instance.addressCity);
-  writeNotNull('address_state', instance.addressState);
-  writeNotNull('address_zip', instance.addressZip);
-  writeNotNull('address_country', instance.addressCountry);
-  writeNotNull('currency', instance.currency);
-  return val;
-}
+        _$CreateTokenCardDataImpl instance) =>
+    <String, dynamic>{
+      if (instance.name case final value?) 'name': value,
+      if (instance.addressLine1 case final value?) 'address_line1': value,
+      if (instance.addressLine2 case final value?) 'address_line2': value,
+      if (instance.addressCity case final value?) 'address_city': value,
+      if (instance.addressState case final value?) 'address_state': value,
+      if (instance.addressZip case final value?) 'address_zip': value,
+      if (instance.addressCountry case final value?) 'address_country': value,
+      if (instance.currency case final value?) 'currency': value,
+    };

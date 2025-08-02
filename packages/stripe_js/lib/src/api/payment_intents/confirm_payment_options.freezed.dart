@@ -288,6 +288,7 @@ ConfirmPaymentParams _$ConfirmPaymentParamsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ConfirmPaymentParams {
   /// The url your customer will be directed to after they complete payment.
+// ignore: non_constant_identifier_names
   String get return_url => throw _privateConstructorUsedError;
 
   /// Serializes this ConfirmPaymentParams to a JSON map.
@@ -380,6 +381,7 @@ class _$ConfirmPaymentParamsImpl implements _ConfirmPaymentParams {
       _$$ConfirmPaymentParamsImplFromJson(json);
 
   /// The url your customer will be directed to after they complete payment.
+// ignore: non_constant_identifier_names
   @override
   final String return_url;
 
@@ -427,6 +429,7 @@ abstract class _ConfirmPaymentParams implements ConfirmPaymentParams {
       _$ConfirmPaymentParamsImpl.fromJson;
 
   /// The url your customer will be directed to after they complete payment.
+// ignore: non_constant_identifier_names
   @override
   String get return_url;
 

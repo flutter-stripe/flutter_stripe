@@ -22,22 +22,13 @@ _$ElementAppearanceImpl _$$ElementAppearanceImplFromJson(Map json) =>
     );
 
 Map<String, dynamic> _$$ElementAppearanceImplToJson(
-    _$ElementAppearanceImpl instance) {
-  final val = <String, dynamic>{
-    'theme': _$ElementThemeEnumMap[instance.theme]!,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('variables', instance.variables);
-  writeNotNull('rules', instance.rules);
-  val['labels'] = _$ElementAppearanceLabelsEnumMap[instance.labels]!;
-  return val;
-}
+        _$ElementAppearanceImpl instance) =>
+    <String, dynamic>{
+      'theme': _$ElementThemeEnumMap[instance.theme]!,
+      if (instance.variables case final value?) 'variables': value,
+      if (instance.rules case final value?) 'rules': value,
+      'labels': _$ElementAppearanceLabelsEnumMap[instance.labels]!,
+    };
 
 const _$ElementThemeEnumMap = {
   ElementTheme.stripe: 'stripe',

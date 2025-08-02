@@ -61,9 +61,6 @@ mixin _$PaymentMethod {
   /// Containing additional data in case paymentmethod type is Aubecs debit.
   AuBecsDebit? get auBecsDebit => throw _privateConstructorUsedError;
 
-  /// Containing additional data in case paymentmethod type is sofort.
-  Sofort? get sofort => throw _privateConstructorUsedError;
-
   /// Containing additional data in case paymentmethod type is Ideal.
   Ideal? get ideal => throw _privateConstructorUsedError;
 
@@ -108,7 +105,6 @@ abstract class $PaymentMethodCopyWith<$Res> {
       SepaDebit? sepaDebit,
       BacsDebit? bacsDebit,
       AuBecsDebit? auBecsDebit,
-      Sofort? sofort,
       Ideal? ideal,
       Fpx? fpx,
       Upi? upi,
@@ -120,7 +116,6 @@ abstract class $PaymentMethodCopyWith<$Res> {
   $SepaDebitCopyWith<$Res>? get sepaDebit;
   $BacsDebitCopyWith<$Res>? get bacsDebit;
   $AuBecsDebitCopyWith<$Res>? get auBecsDebit;
-  $SofortCopyWith<$Res>? get sofort;
   $IdealCopyWith<$Res>? get ideal;
   $FpxCopyWith<$Res>? get fpx;
   $UpiCopyWith<$Res>? get upi;
@@ -153,7 +148,6 @@ class _$PaymentMethodCopyWithImpl<$Res, $Val extends PaymentMethod>
     Object? sepaDebit = freezed,
     Object? bacsDebit = freezed,
     Object? auBecsDebit = freezed,
-    Object? sofort = freezed,
     Object? ideal = freezed,
     Object? fpx = freezed,
     Object? upi = freezed,
@@ -205,10 +199,6 @@ class _$PaymentMethodCopyWithImpl<$Res, $Val extends PaymentMethod>
           ? _value.auBecsDebit
           : auBecsDebit // ignore: cast_nullable_to_non_nullable
               as AuBecsDebit?,
-      sofort: freezed == sofort
-          ? _value.sofort
-          : sofort // ignore: cast_nullable_to_non_nullable
-              as Sofort?,
       ideal: freezed == ideal
           ? _value.ideal
           : ideal // ignore: cast_nullable_to_non_nullable
@@ -306,20 +296,6 @@ class _$PaymentMethodCopyWithImpl<$Res, $Val extends PaymentMethod>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $SofortCopyWith<$Res>? get sofort {
-    if (_value.sofort == null) {
-      return null;
-    }
-
-    return $SofortCopyWith<$Res>(_value.sofort!, (value) {
-      return _then(_value.copyWith(sofort: value) as $Val);
-    });
-  }
-
-  /// Create a copy of PaymentMethod
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
   $IdealCopyWith<$Res>? get ideal {
     if (_value.ideal == null) {
       return null;
@@ -393,7 +369,6 @@ abstract class _$$PaymentMethodImplCopyWith<$Res>
       SepaDebit? sepaDebit,
       BacsDebit? bacsDebit,
       AuBecsDebit? auBecsDebit,
-      Sofort? sofort,
       Ideal? ideal,
       Fpx? fpx,
       Upi? upi,
@@ -410,8 +385,6 @@ abstract class _$$PaymentMethodImplCopyWith<$Res>
   $BacsDebitCopyWith<$Res>? get bacsDebit;
   @override
   $AuBecsDebitCopyWith<$Res>? get auBecsDebit;
-  @override
-  $SofortCopyWith<$Res>? get sofort;
   @override
   $IdealCopyWith<$Res>? get ideal;
   @override
@@ -446,7 +419,6 @@ class __$$PaymentMethodImplCopyWithImpl<$Res>
     Object? sepaDebit = freezed,
     Object? bacsDebit = freezed,
     Object? auBecsDebit = freezed,
-    Object? sofort = freezed,
     Object? ideal = freezed,
     Object? fpx = freezed,
     Object? upi = freezed,
@@ -498,10 +470,6 @@ class __$$PaymentMethodImplCopyWithImpl<$Res>
           ? _value.auBecsDebit
           : auBecsDebit // ignore: cast_nullable_to_non_nullable
               as AuBecsDebit?,
-      sofort: freezed == sofort
-          ? _value.sofort
-          : sofort // ignore: cast_nullable_to_non_nullable
-              as Sofort?,
       ideal: freezed == ideal
           ? _value.ideal
           : ideal // ignore: cast_nullable_to_non_nullable
@@ -542,7 +510,6 @@ class _$PaymentMethodImpl implements _PaymentMethod {
       this.sepaDebit,
       this.bacsDebit,
       this.auBecsDebit,
-      this.sofort,
       this.ideal,
       this.fpx,
       this.upi,
@@ -617,10 +584,6 @@ class _$PaymentMethodImpl implements _PaymentMethod {
   @override
   final AuBecsDebit? auBecsDebit;
 
-  /// Containing additional data in case paymentmethod type is sofort.
-  @override
-  final Sofort? sofort;
-
   /// Containing additional data in case paymentmethod type is Ideal.
   @override
   final Ideal? ideal;
@@ -644,7 +607,7 @@ class _$PaymentMethodImpl implements _PaymentMethod {
 
   @override
   String toString() {
-    return 'PaymentMethod(id: $id, object: $object, billingDetails: $billingDetails, customer: $customer, metadata: $metadata, livemode: $livemode, created: $created, card: $card, sepaDebit: $sepaDebit, bacsDebit: $bacsDebit, auBecsDebit: $auBecsDebit, sofort: $sofort, ideal: $ideal, fpx: $fpx, upi: $upi, usBankAccount: $usBankAccount, type: $type)';
+    return 'PaymentMethod(id: $id, object: $object, billingDetails: $billingDetails, customer: $customer, metadata: $metadata, livemode: $livemode, created: $created, card: $card, sepaDebit: $sepaDebit, bacsDebit: $bacsDebit, auBecsDebit: $auBecsDebit, ideal: $ideal, fpx: $fpx, upi: $upi, usBankAccount: $usBankAccount, type: $type)';
   }
 
   @override
@@ -669,7 +632,6 @@ class _$PaymentMethodImpl implements _PaymentMethod {
                 other.bacsDebit == bacsDebit) &&
             (identical(other.auBecsDebit, auBecsDebit) ||
                 other.auBecsDebit == auBecsDebit) &&
-            (identical(other.sofort, sofort) || other.sofort == sofort) &&
             (identical(other.ideal, ideal) || other.ideal == ideal) &&
             (identical(other.fpx, fpx) || other.fpx == fpx) &&
             (identical(other.upi, upi) || other.upi == upi) &&
@@ -693,7 +655,6 @@ class _$PaymentMethodImpl implements _PaymentMethod {
       sepaDebit,
       bacsDebit,
       auBecsDebit,
-      sofort,
       ideal,
       fpx,
       upi,
@@ -729,7 +690,6 @@ abstract class _PaymentMethod implements PaymentMethod {
       final SepaDebit? sepaDebit,
       final BacsDebit? bacsDebit,
       final AuBecsDebit? auBecsDebit,
-      final Sofort? sofort,
       final Ideal? ideal,
       final Fpx? fpx,
       final Upi? upi,
@@ -790,10 +750,6 @@ abstract class _PaymentMethod implements PaymentMethod {
   /// Containing additional data in case paymentmethod type is Aubecs debit.
   @override
   AuBecsDebit? get auBecsDebit;
-
-  /// Containing additional data in case paymentmethod type is sofort.
-  @override
-  Sofort? get sofort;
 
   /// Containing additional data in case paymentmethod type is Ideal.
   @override
@@ -2157,155 +2113,6 @@ abstract class _SepaDebit implements SepaDebit {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SepaDebitImplCopyWith<_$SepaDebitImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-Sofort _$SofortFromJson(Map<String, dynamic> json) {
-  return _Sofort.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Sofort {
-  /// Two letter ISO code representing the country of the bank account.
-  String? get country => throw _privateConstructorUsedError;
-
-  /// Serializes this Sofort to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Sofort
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SofortCopyWith<Sofort> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SofortCopyWith<$Res> {
-  factory $SofortCopyWith(Sofort value, $Res Function(Sofort) then) =
-      _$SofortCopyWithImpl<$Res, Sofort>;
-  @useResult
-  $Res call({String? country});
-}
-
-/// @nodoc
-class _$SofortCopyWithImpl<$Res, $Val extends Sofort>
-    implements $SofortCopyWith<$Res> {
-  _$SofortCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Sofort
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? country = freezed,
-  }) {
-    return _then(_value.copyWith(
-      country: freezed == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$SofortImplCopyWith<$Res> implements $SofortCopyWith<$Res> {
-  factory _$$SofortImplCopyWith(
-          _$SofortImpl value, $Res Function(_$SofortImpl) then) =
-      __$$SofortImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? country});
-}
-
-/// @nodoc
-class __$$SofortImplCopyWithImpl<$Res>
-    extends _$SofortCopyWithImpl<$Res, _$SofortImpl>
-    implements _$$SofortImplCopyWith<$Res> {
-  __$$SofortImplCopyWithImpl(
-      _$SofortImpl _value, $Res Function(_$SofortImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Sofort
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? country = freezed,
-  }) {
-    return _then(_$SofortImpl(
-      country: freezed == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-
-@JsonSerializable(explicitToJson: true)
-class _$SofortImpl implements _Sofort {
-  const _$SofortImpl({this.country});
-
-  factory _$SofortImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SofortImplFromJson(json);
-
-  /// Two letter ISO code representing the country of the bank account.
-  @override
-  final String? country;
-
-  @override
-  String toString() {
-    return 'Sofort(country: $country)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SofortImpl &&
-            (identical(other.country, country) || other.country == country));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, country);
-
-  /// Create a copy of Sofort
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SofortImplCopyWith<_$SofortImpl> get copyWith =>
-      __$$SofortImplCopyWithImpl<_$SofortImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SofortImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _Sofort implements Sofort {
-  const factory _Sofort({final String? country}) = _$SofortImpl;
-
-  factory _Sofort.fromJson(Map<String, dynamic> json) = _$SofortImpl.fromJson;
-
-  /// Two letter ISO code representing the country of the bank account.
-  @override
-  String? get country;
-
-  /// Create a copy of Sofort
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SofortImplCopyWith<_$SofortImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

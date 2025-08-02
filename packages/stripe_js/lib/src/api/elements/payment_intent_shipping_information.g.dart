@@ -13,15 +13,7 @@ _$PaymentElementShippingDetailsImpl
         );
 
 Map<String, dynamic> _$$PaymentElementShippingDetailsImplToJson(
-    _$PaymentElementShippingDetailsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('trackingNumber', instance.trackingNumber);
-  return val;
-}
+        _$PaymentElementShippingDetailsImpl instance) =>
+    <String, dynamic>{
+      if (instance.trackingNumber case final value?) 'trackingNumber': value,
+    };
