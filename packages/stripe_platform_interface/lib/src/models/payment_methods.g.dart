@@ -18,7 +18,6 @@ _$PaymentMethodImpl _$$PaymentMethodImplFromJson(Map<String, dynamic> json) =>
       bacsDebit: BacsDebit.fromJson(json['BacsDebit'] as Map<String, dynamic>),
       auBecsDebit:
           AuBecsDebit.fromJson(json['AuBecsDebit'] as Map<String, dynamic>),
-      sofort: Sofort.fromJson(json['Sofort'] as Map<String, dynamic>),
       ideal: Ideal.fromJson(json['Ideal'] as Map<String, dynamic>),
       fpx: Fpx.fromJson(json['Fpx'] as Map<String, dynamic>),
       upi: Upi.fromJson(json['Upi'] as Map<String, dynamic>),
@@ -37,7 +36,6 @@ Map<String, dynamic> _$$PaymentMethodImplToJson(_$PaymentMethodImpl instance) =>
       'SepaDebit': instance.sepaDebit.toJson(),
       'BacsDebit': instance.bacsDebit.toJson(),
       'AuBecsDebit': instance.auBecsDebit.toJson(),
-      'Sofort': instance.sofort.toJson(),
       'Ideal': instance.ideal.toJson(),
       'Fpx': instance.fpx.toJson(),
       'Upi': instance.upi.toJson(),
@@ -157,15 +155,6 @@ Map<String, dynamic> _$$SepaDebitImplToJson(_$SepaDebitImpl instance) =>
       'bankCode': instance.bankCode,
       'fingerprint': instance.fingerprint,
       'last4': instance.last4,
-    };
-
-_$SofortImpl _$$SofortImplFromJson(Map<String, dynamic> json) => _$SofortImpl(
-      country: json['country'] as String?,
-    );
-
-Map<String, dynamic> _$$SofortImplToJson(_$SofortImpl instance) =>
-    <String, dynamic>{
-      'country': instance.country,
     };
 
 _$UpiImpl _$$UpiImplFromJson(Map<String, dynamic> json) => _$UpiImpl(
@@ -441,21 +430,6 @@ _$PaymentMethodParamsSepaDebitImpl _$$PaymentMethodParamsSepaDebitImplFromJson(
 
 Map<String, dynamic> _$$PaymentMethodParamsSepaDebitImplToJson(
         _$PaymentMethodParamsSepaDebitImpl instance) =>
-    <String, dynamic>{
-      'paymentMethodData': instance.paymentMethodData.toJson(),
-      'paymentMethodType': instance.$type,
-    };
-
-_$PaymentMethodParamsSofortImpl _$$PaymentMethodParamsSofortImplFromJson(
-        Map<String, dynamic> json) =>
-    _$PaymentMethodParamsSofortImpl(
-      paymentMethodData: PaymentMethodDataSofort.fromJson(
-          json['paymentMethodData'] as Map<String, dynamic>),
-      $type: json['paymentMethodType'] as String?,
-    );
-
-Map<String, dynamic> _$$PaymentMethodParamsSofortImplToJson(
-        _$PaymentMethodParamsSofortImpl instance) =>
     <String, dynamic>{
       'paymentMethodData': instance.paymentMethodData.toJson(),
       'paymentMethodType': instance.$type,

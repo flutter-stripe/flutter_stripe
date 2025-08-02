@@ -10,7 +10,6 @@ extension PaymentMethodTestInstance on PaymentMethod {
         sepaDebit: const SepaDebit(),
         bacsDebit: const BacsDebit(),
         auBecsDebit: const AuBecsDebit(),
-        sofort: const Sofort(),
         ideal: const Ideal(),
         fpx: const Fpx(),
         upi: const Upi(),
@@ -63,7 +62,6 @@ extension PaymentMethodTestInstance on PaymentMethod {
           'last4': auBecsDebit.last4,
           'bsbNumber': auBecsDebit.bsbNumber,
         },
-        'Sofort': {'country': sofort.country},
         'Ideal': {
           'bankIdentifierCode': ideal.bankIdentifierCode,
           'bank': ideal.bank

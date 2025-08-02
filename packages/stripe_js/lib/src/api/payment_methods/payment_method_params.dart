@@ -137,11 +137,6 @@ class PaymentMethodParams with _$PaymentMethodParams {
     required PaymentMethodDataSepa paymentMethodData,
   }) = _PaymentMethodParamsSepaDebit;
 
-  @JsonSerializable(explicitToJson: true)
-  @FreezedUnionValue('Sofort')
-  const factory PaymentMethodParams.sofort({
-    required PaymentMethodDataSofort paymentMethodData,
-  }) = _PaymentMethodParamsSofort;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('AfterpayClearpay')

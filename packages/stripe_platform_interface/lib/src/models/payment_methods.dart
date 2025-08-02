@@ -39,10 +39,6 @@ class PaymentMethod with _$PaymentMethod {
 
     @JsonKey(name: 'AuBecsDebit') required AuBecsDebit auBecsDebit,
 
-    /// Containing additional data in case paymentmethod type is sofort.
-
-    @JsonKey(name: 'Sofort') required Sofort sofort,
-
     /// Containing additional data in case paymentmethod type is Ideal.
 
     @JsonKey(name: 'Ideal') required Ideal ideal,
@@ -221,19 +217,7 @@ class SepaDebit with _$SepaDebit {
       _$SepaDebitFromJson(json);
 }
 
-@freezed
 
-/// Sofort data associated with the payment method
-
-class Sofort with _$Sofort {
-  @JsonSerializable(explicitToJson: true)
-  const factory Sofort({
-    /// Two letter ISO code representing the country of the bank account.
-    String? country,
-  }) = _Sofort;
-
-  factory Sofort.fromJson(Map<String, dynamic> json) => _$SofortFromJson(json);
-}
 
 @freezed
 
@@ -311,7 +295,6 @@ enum PaymentMethodType {
   Bancontact,
   Oxxo,
   PayPal,
-  Sofort,
   Upi,
   USBankAccount,
   RevolutPay,
@@ -460,12 +443,6 @@ class PaymentMethodParams with _$PaymentMethodParams {
     /// Paymentmethod data for this paymentmethod.
     required PaymentMethodDataSepa paymentMethodData,
   }) = _PaymentMethodParamsSepaDebit;
-
-  @JsonSerializable(explicitToJson: true)
-  @FreezedUnionValue('Sofort')
-  const factory PaymentMethodParams.sofort({
-    required PaymentMethodDataSofort paymentMethodData,
-  }) = _PaymentMethodParamsSofort;
 
   @JsonSerializable(explicitToJson: true)
   @FreezedUnionValue('AfterpayClearpay')

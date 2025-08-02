@@ -59,10 +59,6 @@ class PaymentMethod with _$PaymentMethod {
 
     AuBecsDebit? auBecsDebit,
 
-    /// Containing additional data in case paymentmethod type is sofort.
-
-    Sofort? sofort,
-
     /// Containing additional data in case paymentmethod type is Ideal.
 
     Ideal? ideal,
@@ -218,19 +214,6 @@ class SepaDebit with _$SepaDebit {
       _$SepaDebitFromJson(json);
 }
 
-@freezed
-
-/// Sofort data associated with the payment method
-
-class Sofort with _$Sofort {
-  @JsonSerializable(explicitToJson: true)
-  const factory Sofort({
-    /// Two letter ISO code representing the country of the bank account.
-    String? country,
-  }) = _Sofort;
-
-  factory Sofort.fromJson(Map<String, dynamic> json) => _$SofortFromJson(json);
-}
 
 @freezed
 
