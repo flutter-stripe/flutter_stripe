@@ -299,6 +299,7 @@ class WebStripe extends StripePlatform {
             addressState: params.address?.state,
             addressCountry: params.address?.country,
             addressZip: params.address?.postalCode,
+            currency: params.currency,
           ),
         );
       },
