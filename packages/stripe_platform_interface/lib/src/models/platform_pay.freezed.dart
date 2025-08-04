@@ -3811,6 +3811,10 @@ mixin _$GooglePayParams {
   /// Defaults to true.
   bool? get allowCreditCards => throw _privateConstructorUsedError;
 
+  /// Describes the configuration for billing address collection in the Google Pay sheet.
+  GooglePayBillingAddressConfig? get billingAddressConfig =>
+      throw _privateConstructorUsedError;
+
   /// Serializes this GooglePayParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
@@ -3833,7 +3837,10 @@ abstract class $GooglePayParamsCopyWith<$Res> {
       String currencyCode,
       String? merchantName,
       bool? isEmailRequired,
-      bool? allowCreditCards});
+      bool? allowCreditCards,
+      GooglePayBillingAddressConfig? billingAddressConfig});
+
+  $GooglePayBillingAddressConfigCopyWith<$Res>? get billingAddressConfig;
 }
 
 /// @nodoc
@@ -3857,6 +3864,7 @@ class _$GooglePayParamsCopyWithImpl<$Res, $Val extends GooglePayParams>
     Object? merchantName = freezed,
     Object? isEmailRequired = freezed,
     Object? allowCreditCards = freezed,
+    Object? billingAddressConfig = freezed,
   }) {
     return _then(_value.copyWith(
       testEnv: null == testEnv
@@ -3883,7 +3891,26 @@ class _$GooglePayParamsCopyWithImpl<$Res, $Val extends GooglePayParams>
           ? _value.allowCreditCards
           : allowCreditCards // ignore: cast_nullable_to_non_nullable
               as bool?,
+      billingAddressConfig: freezed == billingAddressConfig
+          ? _value.billingAddressConfig
+          : billingAddressConfig // ignore: cast_nullable_to_non_nullable
+              as GooglePayBillingAddressConfig?,
     ) as $Val);
+  }
+
+  /// Create a copy of GooglePayParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $GooglePayBillingAddressConfigCopyWith<$Res>? get billingAddressConfig {
+    if (_value.billingAddressConfig == null) {
+      return null;
+    }
+
+    return $GooglePayBillingAddressConfigCopyWith<$Res>(
+        _value.billingAddressConfig!, (value) {
+      return _then(_value.copyWith(billingAddressConfig: value) as $Val);
+    });
   }
 }
 
@@ -3901,7 +3928,11 @@ abstract class _$$GooglePayParamsImplCopyWith<$Res>
       String currencyCode,
       String? merchantName,
       bool? isEmailRequired,
-      bool? allowCreditCards});
+      bool? allowCreditCards,
+      GooglePayBillingAddressConfig? billingAddressConfig});
+
+  @override
+  $GooglePayBillingAddressConfigCopyWith<$Res>? get billingAddressConfig;
 }
 
 /// @nodoc
@@ -3923,6 +3954,7 @@ class __$$GooglePayParamsImplCopyWithImpl<$Res>
     Object? merchantName = freezed,
     Object? isEmailRequired = freezed,
     Object? allowCreditCards = freezed,
+    Object? billingAddressConfig = freezed,
   }) {
     return _then(_$GooglePayParamsImpl(
       testEnv: null == testEnv
@@ -3949,6 +3981,10 @@ class __$$GooglePayParamsImplCopyWithImpl<$Res>
           ? _value.allowCreditCards
           : allowCreditCards // ignore: cast_nullable_to_non_nullable
               as bool?,
+      billingAddressConfig: freezed == billingAddressConfig
+          ? _value.billingAddressConfig
+          : billingAddressConfig // ignore: cast_nullable_to_non_nullable
+              as GooglePayBillingAddressConfig?,
     ));
   }
 }
@@ -3963,7 +3999,8 @@ class _$GooglePayParamsImpl implements _GooglePayParams {
       required this.currencyCode,
       this.merchantName,
       this.isEmailRequired,
-      this.allowCreditCards});
+      this.allowCreditCards,
+      this.billingAddressConfig});
 
   factory _$GooglePayParamsImpl.fromJson(Map<String, dynamic> json) =>
       _$$GooglePayParamsImplFromJson(json);
@@ -4003,9 +4040,13 @@ class _$GooglePayParamsImpl implements _GooglePayParams {
   @override
   final bool? allowCreditCards;
 
+  /// Describes the configuration for billing address collection in the Google Pay sheet.
+  @override
+  final GooglePayBillingAddressConfig? billingAddressConfig;
+
   @override
   String toString() {
-    return 'GooglePayParams(testEnv: $testEnv, merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, merchantName: $merchantName, isEmailRequired: $isEmailRequired, allowCreditCards: $allowCreditCards)';
+    return 'GooglePayParams(testEnv: $testEnv, merchantCountryCode: $merchantCountryCode, currencyCode: $currencyCode, merchantName: $merchantName, isEmailRequired: $isEmailRequired, allowCreditCards: $allowCreditCards, billingAddressConfig: $billingAddressConfig)';
   }
 
   @override
@@ -4023,13 +4064,22 @@ class _$GooglePayParamsImpl implements _GooglePayParams {
             (identical(other.isEmailRequired, isEmailRequired) ||
                 other.isEmailRequired == isEmailRequired) &&
             (identical(other.allowCreditCards, allowCreditCards) ||
-                other.allowCreditCards == allowCreditCards));
+                other.allowCreditCards == allowCreditCards) &&
+            (identical(other.billingAddressConfig, billingAddressConfig) ||
+                other.billingAddressConfig == billingAddressConfig));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, testEnv, merchantCountryCode,
-      currencyCode, merchantName, isEmailRequired, allowCreditCards);
+  int get hashCode => Object.hash(
+      runtimeType,
+      testEnv,
+      merchantCountryCode,
+      currencyCode,
+      merchantName,
+      isEmailRequired,
+      allowCreditCards,
+      billingAddressConfig);
 
   /// Create a copy of GooglePayParams
   /// with the given fields replaced by the non-null parameter values.
@@ -4050,12 +4100,14 @@ class _$GooglePayParamsImpl implements _GooglePayParams {
 
 abstract class _GooglePayParams implements GooglePayParams {
   const factory _GooglePayParams(
-      {final bool testEnv,
-      required final String merchantCountryCode,
-      required final String currencyCode,
-      final String? merchantName,
-      final bool? isEmailRequired,
-      final bool? allowCreditCards}) = _$GooglePayParamsImpl;
+          {final bool testEnv,
+          required final String merchantCountryCode,
+          required final String currencyCode,
+          final String? merchantName,
+          final bool? isEmailRequired,
+          final bool? allowCreditCards,
+          final GooglePayBillingAddressConfig? billingAddressConfig}) =
+      _$GooglePayParamsImpl;
 
   factory _GooglePayParams.fromJson(Map<String, dynamic> json) =
       _$GooglePayParamsImpl.fromJson;
@@ -4093,6 +4145,10 @@ abstract class _GooglePayParams implements GooglePayParams {
   /// Defaults to true.
   @override
   bool? get allowCreditCards;
+
+  /// Describes the configuration for billing address collection in the Google Pay sheet.
+  @override
+  GooglePayBillingAddressConfig? get billingAddressConfig;
 
   /// Create a copy of GooglePayParams
   /// with the given fields replaced by the non-null parameter values.
