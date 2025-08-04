@@ -2,6 +2,7 @@
 // for the new arch. This implements the same methods, but using old arch apis.
 
 #ifndef RCT_NEW_ARCH_ENABLED
+#import <Foundation/Foundation.h>
 
 @interface StripeSdkEventEmitterCompat : NSObject
 - (void)emitOnConfirmHandlerCallback:(NSDictionary *)value;
