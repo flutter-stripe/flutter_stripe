@@ -16,7 +16,6 @@ extension PaymentMethodParser on js.PaymentMethod {
       fpx: const Fpx(),
       ideal: const Ideal(),
       sepaDebit: const SepaDebit(),
-      sofort: const Sofort(),
       upi: const Upi(),
       usBankAccount: const UsBankAccount(
         accountHolderType: BankAccountHolderType.Unknown,

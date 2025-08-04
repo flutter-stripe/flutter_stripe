@@ -19,16 +19,9 @@ _$PaymentMethodResponseImpl _$$PaymentMethodResponseImplFromJson(Map json) =>
     );
 
 Map<String, dynamic> _$$PaymentMethodResponseImplToJson(
-    _$PaymentMethodResponseImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('paymentMethod', instance.paymentMethod?.toJson());
-  writeNotNull('error', instance.error?.toJson());
-  return val;
-}
+        _$PaymentMethodResponseImpl instance) =>
+    <String, dynamic>{
+      if (instance.paymentMethod?.toJson() case final value?)
+        'paymentMethod': value,
+      if (instance.error?.toJson() case final value?) 'error': value,
+    };

@@ -20,23 +20,14 @@ _$PaymentElementChangeEventImpl _$$PaymentElementChangeEventImplFromJson(
     );
 
 Map<String, dynamic> _$$PaymentElementChangeEventImplToJson(
-    _$PaymentElementChangeEventImpl instance) {
-  final val = <String, dynamic>{
-    'elementType': instance.elementType,
-    'empty': instance.empty,
-    'complete': instance.complete,
-    'collapsed': instance.collapsed,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('value', instance.value?.toJson());
-  return val;
-}
+        _$PaymentElementChangeEventImpl instance) =>
+    <String, dynamic>{
+      'elementType': instance.elementType,
+      'empty': instance.empty,
+      'complete': instance.complete,
+      'collapsed': instance.collapsed,
+      if (instance.value?.toJson() case final value?) 'value': value,
+    };
 
 _$PaymentElementChangeEventValueImpl
     _$$PaymentElementChangeEventValueImplFromJson(Map json) =>
@@ -45,15 +36,7 @@ _$PaymentElementChangeEventValueImpl
         );
 
 Map<String, dynamic> _$$PaymentElementChangeEventValueImplToJson(
-    _$PaymentElementChangeEventValueImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('type', instance.type);
-  return val;
-}
+        _$PaymentElementChangeEventValueImpl instance) =>
+    <String, dynamic>{
+      if (instance.type case final value?) 'type': value,
+    };

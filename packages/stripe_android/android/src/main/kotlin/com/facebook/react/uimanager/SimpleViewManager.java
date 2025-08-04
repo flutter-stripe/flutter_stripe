@@ -9,7 +9,7 @@ import com.facebook.react.bridge.ReadableArray;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class SimpleViewManager<T extends View> {
+public abstract class SimpleViewManager<T extends View> extends BaseViewManager<T, LayoutShadowNode> {
 
     public abstract String getName();
 
@@ -24,4 +24,8 @@ public abstract class SimpleViewManager<T extends View> {
     public void receiveCommand(T root, String commandId, ReadableArray args) {}
 
     public void onAfterUpdateTransaction(@NonNull T view) {}
+
+    public ViewManagerDelegate<T> getDelegate() {
+        return null;
+    }
 }

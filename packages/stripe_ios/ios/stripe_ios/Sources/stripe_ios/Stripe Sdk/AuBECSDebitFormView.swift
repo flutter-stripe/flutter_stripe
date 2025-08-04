@@ -1,18 +1,15 @@
 import Foundation
 import UIKit
 import Stripe
-#if canImport(stripe_objc)
-import stripe_objc
-#endif
 
 @objc(AuBECSDebitFormView)
-class AuBECSDebitFormView: UIView, STPAUBECSDebitFormViewDelegate {
+public class AuBECSDebitFormView: UIView, STPAUBECSDebitFormViewDelegate {
 
     var auBecsFormView: STPAUBECSDebitFormView?
-    @objc var onCompleteAction: RCTDirectEventBlock?
-    @objc var companyName: NSString?
+    @objc public var onCompleteAction: RCTDirectEventBlock?
+    @objc public var companyName: NSString?
     
-    override func didSetProps(_ changedProps: [String]!) {
+    @objc public func didSetProps() {
         if let auBecsFormView = self.auBecsFormView {
             auBecsFormView.removeFromSuperview()
         }
@@ -27,8 +24,14 @@ class AuBECSDebitFormView: UIView, STPAUBECSDebitFormViewDelegate {
             setStyles()
         }
     }
+  
+    override public func didSetProps(_ changedProps: [String]!) {
+        // This is only called on old arch, for new arch didSetProps() will be called
+        // by the view component.
+        self.didSetProps();
+    }
     
-    @objc var formStyle: NSDictionary = NSDictionary() {
+    @objc public var formStyle: NSDictionary = NSDictionary() {
         didSet {
            setStyles()
         }
@@ -63,7 +66,7 @@ class AuBECSDebitFormView: UIView, STPAUBECSDebitFormViewDelegate {
         }
     }
     
-    func auBECSDebitForm(_ form: STPAUBECSDebitFormView, didChangeToStateComplete complete: Bool) {
+    public func auBECSDebitForm(_ form: STPAUBECSDebitFormView, didChangeToStateComplete complete: Bool) {
         onCompleteAction!([
             "accountNumber": form.paymentMethodParams?.auBECSDebit?.accountNumber ?? "",
             "bsbNumber": form.paymentMethodParams?.auBECSDebit?.bsbNumber ?? "",
@@ -72,11 +75,11 @@ class AuBECSDebitFormView: UIView, STPAUBECSDebitFormViewDelegate {
         ])
     }
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         if let auBecsFormView = self.auBecsFormView {
             auBecsFormView.frame = self.bounds
         }

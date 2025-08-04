@@ -23,24 +23,15 @@ _$CardElementChangeEventImpl _$$CardElementChangeEventImplFromJson(Map json) =>
     );
 
 Map<String, dynamic> _$$CardElementChangeEventImplToJson(
-    _$CardElementChangeEventImpl instance) {
-  final val = <String, dynamic>{
-    'elementType': instance.elementType,
-    'empty': instance.empty,
-    'complete': instance.complete,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('error', instance.error?.toJson());
-  val['brand'] = instance.brand;
-  writeNotNull('value', instance.value?.toJson());
-  return val;
-}
+        _$CardElementChangeEventImpl instance) =>
+    <String, dynamic>{
+      'elementType': instance.elementType,
+      'empty': instance.empty,
+      'complete': instance.complete,
+      if (instance.error?.toJson() case final value?) 'error': value,
+      'brand': instance.brand,
+      if (instance.value?.toJson() case final value?) 'value': value,
+    };
 
 _$CardElementChangeEventValueImpl _$$CardElementChangeEventValueImplFromJson(
         Map json) =>
@@ -49,15 +40,7 @@ _$CardElementChangeEventValueImpl _$$CardElementChangeEventValueImplFromJson(
     );
 
 Map<String, dynamic> _$$CardElementChangeEventValueImplToJson(
-    _$CardElementChangeEventValueImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('postalCode', instance.postalCode);
-  return val;
-}
+        _$CardElementChangeEventValueImpl instance) =>
+    <String, dynamic>{
+      if (instance.postalCode case final value?) 'postalCode': value,
+    };

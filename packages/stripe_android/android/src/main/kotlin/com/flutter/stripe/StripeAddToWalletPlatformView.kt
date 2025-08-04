@@ -34,17 +34,11 @@ class StripeAddToWalletPlatformView(
 
         channel.setMethodCallHandler(this)
 
-        if (creationParams?.containsKey("androidAssetSource") == true) {
-            viewManager.source(
+        creationParams.convertToReadables()?.forEach { entry ->
+            viewManager.getDelegate().setProperty(
                 nativeView,
-                ReadableMap(creationParams["androidAssetSource"] as Map<String, Any>)
-            )
-        }
-
-        if (creationParams?.containsKey("cardDetails") == true) {
-            viewManager.cardDetails(
-                nativeView,
-                ReadableMap(creationParams["cardDetails"] as Map<String, Any>)
+                entry.key,
+                entry.value,
             )
         }
 

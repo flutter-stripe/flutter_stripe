@@ -1,23 +1,27 @@
 package com.reactnativestripesdk
 
+import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.Application
 import android.content.Intent
+import android.os.Bundle
 import android.util.Log
+import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
+import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.BaseActivityEventListener
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReactContext
-import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.ReadableArray
 import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.bridge.UiThreadUtil
 import com.facebook.react.bridge.WritableMap
 import com.facebook.react.bridge.WritableNativeMap
 import com.facebook.react.module.annotations.ReactModule
-import com.facebook.react.modules.core.DeviceEventManagerModule
 import com.flutter.stripe.invoke
 import com.reactnativestripesdk.addresssheet.AddressLauncherFragment
+import com.reactnativestripesdk.customersheet.CustomerSheetFragment
 import com.reactnativestripesdk.pushprovisioning.PushProvisioningProxy
 import com.reactnativestripesdk.utils.ConfirmPaymentErrorType
 import com.reactnativestripesdk.utils.CreateTokenErrorType
@@ -62,6 +66,7 @@ import com.stripe.android.model.SetupIntent
 import com.stripe.android.model.Token
 import com.stripe.android.payments.bankaccount.CollectBankAccountConfiguration
 import com.stripe.android.paymentsheet.PaymentSheet
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -70,9 +75,7 @@ import org.json.JSONObject
 @ReactModule(name = StripeSdkModule.NAME)
 class StripeSdkModule(
   val reactContext: ReactApplicationContext,
-) : ReactContextBaseJavaModule(reactContext) {
-  override fun getName(): String = NAME
-
+) : NativeStripeSdkModuleSpec(reactContext) {
   var cardFieldView: CardFieldView? = null
   var cardFormView: CardFormView? = null
 
@@ -90,7 +93,10 @@ class StripeSdkModule(
 
   private var customerSheetFragment: CustomerSheetFragment? = null
 
-  internal var eventListenerCount = 0
+  internal var embeddedIntentCreationCallback = CompletableDeferred<ReadableMap>()
+  internal var customPaymentMethodResultCallback = CompletableDeferred<ReadableMap>()
+
+  internal var composeCompatView: StripeAbstractComposeView.CompatView? = null
 
   // If you create a new Fragment, you must put the tag here, otherwise result callbacks for that
   // Fragment will not work on RN < 0.65
@@ -177,17 +183,18 @@ class StripeSdkModule(
     )
   }
 
-  override fun getConstants(): MutableMap<String, Any> =
-    hashMapOf(
+  @SuppressLint("RestrictedApi")
+  override fun getTypedExportedConstants() =
+    mapOf(
       "API_VERSIONS" to
-        hashMapOf(
+        mapOf(
           "CORE" to ApiVersion.API_VERSION_CODE,
           "ISSUING" to PushProvisioningProxy.getApiVersion(),
         ),
     )
 
   @ReactMethod
-  fun initialise(
+  override fun initialise(
     params: ReadableMap,
     promise: Promise,
   ) {
@@ -214,21 +221,31 @@ class StripeSdkModule(
     stripe = Stripe(reactApplicationContext, publishableKey, stripeAccountId)
 
     PaymentConfiguration.init(reactApplicationContext, publishableKey, stripeAccountId)
+
+    preventActivityRecreation()
+    setupComposeCompatView()
+
     promise.resolve(null)
   }
 
   @ReactMethod
-  fun initPaymentSheet(
+  override fun initPaymentSheet(
     params: ReadableMap,
     promise: Promise,
   ) {
     getCurrentActivityOrResolveWithError(promise)?.let { activity ->
       paymentSheetFragment?.removeFragment(reactApplicationContext)
+      val bundle = toBundleObject(params)
+
+      // Handle custom payment methods separately since toBundleObject cannot handle arrays of objects
+      val customPaymentMethodConfig = params.getMap("customPaymentMethodConfiguration")
+      if (customPaymentMethodConfig != null) {
+        // Store the original ReadableMap for custom payment methods
+        bundle.putSerializable("customPaymentMethodConfigurationReadableMap", customPaymentMethodConfig.toHashMap())
+      }
+
       paymentSheetFragment =
-        PaymentSheetFragment(reactApplicationContext, promise).also {
-          val bundle = toBundleObject(params)
-          it.arguments = bundle
-        }
+        PaymentSheetFragment.create(reactApplicationContext, bundle, promise)
       try {
         activity.supportFragmentManager
           .beginTransaction()
@@ -241,7 +258,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun presentPaymentSheet(
+  override fun presentPaymentSheet(
     options: ReadableMap,
     promise: Promise,
   ) {
@@ -262,7 +279,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun confirmPaymentSheetPayment(promise: Promise) {
+  override fun confirmPaymentSheetPayment(promise: Promise) {
     if (paymentSheetFragment == null) {
       promise.resolve(PaymentSheetFragment.createMissingInitError())
       return
@@ -272,16 +289,18 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun resetPaymentSheetCustomer(promise: Promise) {
+  override fun resetPaymentSheetCustomer(promise: Promise) {
     PaymentSheet.resetCustomer(context = reactApplicationContext)
     promise.resolve(null)
   }
 
   @ReactMethod
-  fun intentCreationCallback(
+  override fun intentCreationCallback(
     params: ReadableMap,
     promise: Promise,
   ) {
+    embeddedIntentCreationCallback.complete(params)
+
     if (paymentSheetFragment == null) {
       promise.resolve(PaymentSheetFragment.createMissingInitError())
       return
@@ -291,7 +310,19 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun createPaymentMethod(
+  override fun customPaymentMethodResultCallback(
+    result: ReadableMap?,
+    promise: Promise?,
+  ) {
+    // Complete the deferred with the result from JavaScript
+    customPaymentMethodResultCallback.complete(result ?: Arguments.createMap())
+    // Reset for next use
+    customPaymentMethodResultCallback = CompletableDeferred()
+    promise?.resolve(null)
+  }
+
+  @ReactMethod
+  override fun createPaymentMethod(
     data: ReadableMap,
     options: ReadableMap,
     promise: Promise,
@@ -331,7 +362,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun createToken(
+  override fun createToken(
     params: ReadableMap,
     promise: Promise,
   ) {
@@ -468,7 +499,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun createTokenForCVCUpdate(
+  override fun createTokenForCVCUpdate(
     cvc: String,
     promise: Promise,
   ) {
@@ -491,8 +522,9 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun handleNextAction(
+  override fun handleNextAction(
     paymentIntentClientSecret: String,
+    returnUrl: String?,
     promise: Promise,
   ) {
     paymentLauncherFragment =
@@ -507,8 +539,9 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun handleNextActionForSetup(
+  override fun handleNextActionForSetup(
     setupIntentClientSecret: String,
+    returnUrl: String?,
     promise: Promise,
   ) {
     paymentLauncherFragment =
@@ -542,10 +575,10 @@ class StripeSdkModule(
 //  }
 
   @ReactMethod
-  fun confirmPayment(
+  override fun confirmPayment(
     paymentIntentClientSecret: String,
     params: ReadableMap?,
-    options: ReadableMap,
+    options: ReadableMap?,
     promise: Promise,
   ) {
     val paymentMethodData = getMapOrNull(params, "paymentMethodData")
@@ -605,7 +638,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun retrievePaymentIntent(
+  override fun retrievePaymentIntent(
     clientSecret: String,
     promise: Promise,
   ) {
@@ -616,7 +649,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun retrieveSetupIntent(
+  override fun retrieveSetupIntent(
     clientSecret: String,
     promise: Promise,
   ) {
@@ -627,7 +660,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun confirmSetupIntent(
+  override fun confirmSetupIntent(
     setupIntentClientSecret: String,
     params: ReadableMap,
     options: ReadableMap,
@@ -678,13 +711,13 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun isPlatformPaySupported(
+  override fun isPlatformPaySupported(
     params: ReadableMap?,
     promise: Promise,
   ) {
     val googlePayParams = params?.getMap("googlePay")
     val fragment =
-      GooglePayPaymentMethodLauncherFragment(
+      GooglePayPaymentMethodLauncherFragment.create(
         reactApplicationContext,
         getBooleanOrFalse(googlePayParams, "testEnv"),
         getBooleanOrFalse(googlePayParams, "existingPaymentMethodRequired"),
@@ -704,7 +737,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun confirmPlatformPay(
+  override fun confirmPlatformPay(
     clientSecret: String,
     params: ReadableMap,
     isPaymentIntent: Boolean,
@@ -800,7 +833,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun createPlatformPayPaymentMethod(
+  override fun createPlatformPayPaymentMethod(
     params: ReadableMap,
     usesDeprecatedTokenFlow: Boolean,
     promise: Promise,
@@ -829,7 +862,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun canAddCardToWallet(
+  override fun canAddCardToWallet(
     params: ReadableMap,
     promise: Promise,
   ) {
@@ -863,7 +896,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun isCardInWallet(
+  override fun isCardInWallet(
     params: ReadableMap,
     promise: Promise,
   ) {
@@ -887,7 +920,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun collectBankAccount(
+  override fun collectBankAccount(
     isPaymentIntent: Boolean,
     clientSecret: String,
     params: ReadableMap,
@@ -925,7 +958,7 @@ class StripeSdkModule(
       )
 
     collectBankAccountLauncherFragment =
-      CollectBankAccountLauncherFragment(
+      CollectBankAccountLauncherFragment.create(
         reactApplicationContext,
         publishableKey,
         stripeAccountId,
@@ -947,7 +980,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun verifyMicrodeposits(
+  override fun verifyMicrodeposits(
     isPaymentIntent: Boolean,
     clientSecret: String,
     params: ReadableMap,
@@ -1032,8 +1065,9 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun collectBankAccountToken(
+  override fun collectBankAccountToken(
     clientSecret: String,
+    params: ReadableMap,
     promise: Promise,
   ) {
     if (!::stripe.isInitialized) {
@@ -1053,8 +1087,9 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun collectFinancialConnectionsAccounts(
+  override fun collectFinancialConnectionsAccounts(
     clientSecret: String,
+    params: ReadableMap,
     promise: Promise,
   ) {
     if (!::stripe.isInitialized) {
@@ -1074,7 +1109,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun initCustomerSheet(
+  override fun initCustomerSheet(
     params: ReadableMap,
     customerAdapterOverrides: ReadableMap,
     promise: Promise,
@@ -1106,7 +1141,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun presentCustomerSheet(
+  override fun presentCustomerSheet(
     params: ReadableMap,
     promise: Promise,
   ) {
@@ -1120,14 +1155,14 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun retrieveCustomerSheetPaymentOptionSelection(promise: Promise) {
+  override fun retrieveCustomerSheetPaymentOptionSelection(promise: Promise) {
     customerSheetFragment?.retrievePaymentOptionSelection(promise) ?: run {
       promise.resolve(CustomerSheetFragment.createMissingInitError())
     }
   }
 
   @ReactMethod
-  fun customerAdapterFetchPaymentMethodsCallback(
+  override fun customerAdapterFetchPaymentMethodsCallback(
     paymentMethodJsonObjects: ReadableArray,
     promise: Promise,
   ) {
@@ -1151,7 +1186,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun customerAdapterAttachPaymentMethodCallback(
+  override fun customerAdapterAttachPaymentMethodCallback(
     paymentMethodJson: ReadableMap,
     promise: Promise,
   ) {
@@ -1173,7 +1208,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun customerAdapterDetachPaymentMethodCallback(
+  override fun customerAdapterDetachPaymentMethodCallback(
     paymentMethodJson: ReadableMap,
     promise: Promise,
   ) {
@@ -1195,7 +1230,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun customerAdapterSetSelectedPaymentOptionCallback(promise: Promise) {
+  override fun customerAdapterSetSelectedPaymentOptionCallback(promise: Promise) {
     customerSheetFragment?.let {
       it.customerAdapter?.setSelectedPaymentOptionCallback?.complete(Unit)
     } ?: run {
@@ -1205,7 +1240,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun customerAdapterFetchSelectedPaymentOptionCallback(
+  override fun customerAdapterFetchSelectedPaymentOptionCallback(
     paymentOption: String?,
     promise: Promise,
   ) {
@@ -1218,7 +1253,7 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun customerAdapterSetupIntentClientSecretForCustomerAttachCallback(
+  override fun customerAdapterSetupIntentClientSecretForCustomerAttachCallback(
     clientSecret: String,
     promise: Promise,
   ) {
@@ -1231,26 +1266,70 @@ class StripeSdkModule(
   }
 
   @ReactMethod
-  fun addListener(eventName: String) {
-    eventListenerCount++
+  override fun createEmbeddedPaymentElement(
+    intentConfig: ReadableMap,
+    configuration: ReadableMap,
+    promise: Promise,
+  ) {
+    // TODO:
   }
 
   @ReactMethod
-  fun removeListeners(count: Int) {
-    eventListenerCount -= count
-    if (eventListenerCount < 0) {
-      eventListenerCount = 0
-    }
+  override fun confirmEmbeddedPaymentElement(
+    viewTag: Double,
+    promise: Promise,
+  ) {
+    // noop, iOS only
   }
 
-  internal fun sendEvent(
-    reactContext: ReactContext,
-    eventName: String,
-    params: WritableMap,
+  @ReactMethod
+  override fun updateEmbeddedPaymentElement(
+    intentConfig: ReadableMap,
+    promise: Promise,
   ) {
-    reactContext
-      .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
-      .emit(eventName, params)
+    // TODO:
+  }
+
+  @ReactMethod
+  override fun clearEmbeddedPaymentOption(
+    viewTag: Double,
+    promise: Promise,
+  ) {
+    // noop, iOS only
+  }
+
+  override fun handleURLCallback(
+    url: String,
+    promise: Promise,
+  ) {
+    // noop, iOS only.
+  }
+
+  override fun openApplePaySetup(promise: Promise) {
+    // noop, iOS only.
+  }
+
+  override fun configureOrderTracking(
+    orderTypeIdentifier: String,
+    orderIdentifier: String,
+    webServiceUrl: String,
+    authenticationToken: String,
+    promise: Promise,
+  ) {
+    // noop, iOS only.
+  }
+
+  override fun dismissPlatformPay(promise: Promise?) {
+    // noop, iOS only.
+  }
+
+  override fun updatePlatformPaySheet(
+    summaryItems: ReadableArray?,
+    shippingMethods: ReadableArray?,
+    errors: ReadableArray?,
+    promise: Promise?,
+  ) {
+    // noop, iOS only.
   }
 
   /**
@@ -1265,7 +1344,67 @@ class StripeSdkModule(
     return null
   }
 
+  private var isRecreatingActivities = false
+  private val activityLifecycleCallbacks =
+    object : Application.ActivityLifecycleCallbacks {
+      override fun onActivityCreated(
+        activity: Activity,
+        bundle: Bundle?,
+      ) {
+        if (bundle != null) {
+          isRecreatingActivities = true
+        }
+        if (isRecreatingActivities && activity.javaClass.name.startsWith("com.stripe.android")) {
+          activity.finish()
+        }
+      }
+
+      override fun onActivityStarted(activity: Activity) {
+      }
+
+      override fun onActivityResumed(activity: Activity) {
+        isRecreatingActivities = false
+      }
+
+      override fun onActivityPaused(activity: Activity) {
+      }
+
+      override fun onActivityStopped(activity: Activity) {
+      }
+
+      override fun onActivitySaveInstanceState(
+        activity: Activity,
+        bundle: Bundle,
+      ) {
+      }
+
+      override fun onActivityDestroyed(activity: Activity) {
+      }
+    }
+
+  /**
+   * React native apps do not properly handle activity re-creation so make
+   * sure to dismiss any stripe ui when that happens to make sure apps stay
+   * in a consistent state.
+   *
+   * Note that because of some restrictions on some system ui like google
+   * pay this might not always work.
+   */
+  private fun preventActivityRecreation() {
+    currentActivity?.application?.registerActivityLifecycleCallbacks(activityLifecycleCallbacks)
+  }
+
+  private fun setupComposeCompatView() {
+    UiThreadUtil.runOnUiThread {
+      composeCompatView = composeCompatView ?: StripeAbstractComposeView.CompatView(context = reactApplicationContext).also {
+        currentActivity?.findViewById<ViewGroup>(android.R.id.content)?.addView(
+          it,
+        )
+      }
+    }
+  }
+
   companion object {
-    const val NAME = "StripeSdk"
+    const val NAME = NativeStripeSdkModuleSpec.NAME
   }
 }

@@ -21,9 +21,14 @@ ConfirmP24PaymentData _$ConfirmP24PaymentDataFromJson(
 
 /// @nodoc
 mixin _$ConfirmP24PaymentData {
-  /// Either the id of an existing PaymentMethod, or an object containing
+  /// Either the ID of an existing PaymentMethod, or an object containing
   /// data to create a PaymentMethod with.
-  /// See the use case sections below for details.
+  ///
+  /// This is required to process the payment. If you already have a PaymentMethod
+  /// attached to the PaymentIntent, you do not need to specify this field.
+  ///
+  /// See the official Stripe documentation for additional details:
+  /// https://stripe.com/docs/payments/p24
   @paymentMethodDetailJsonKey
   P24PaymentMethodDetails? get paymentMethod =>
       throw _privateConstructorUsedError;
@@ -33,7 +38,7 @@ mixin _$ConfirmP24PaymentData {
   String? get returnUrl => throw _privateConstructorUsedError;
 
   /// To set up a SEPA Direct Debit payment method using the bank details
-  ///  from this iDEAL payment, set this parameter to off_session.
+  ///  from this P24 payment, set this parameter to off_session.
   /// When using this parameter, a customer will need to be set on the
   /// PaymentIntent. The newly created SEPA Direct Debit PaymentMethod
   /// will be attached to this customer.
@@ -183,9 +188,14 @@ class _$ConfirmP24PaymentDataImpl implements _ConfirmP24PaymentData {
   factory _$ConfirmP24PaymentDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$ConfirmP24PaymentDataImplFromJson(json);
 
-  /// Either the id of an existing PaymentMethod, or an object containing
+  /// Either the ID of an existing PaymentMethod, or an object containing
   /// data to create a PaymentMethod with.
-  /// See the use case sections below for details.
+  ///
+  /// This is required to process the payment. If you already have a PaymentMethod
+  /// attached to the PaymentIntent, you do not need to specify this field.
+  ///
+  /// See the official Stripe documentation for additional details:
+  /// https://stripe.com/docs/payments/p24
   @override
   @paymentMethodDetailJsonKey
   final P24PaymentMethodDetails? paymentMethod;
@@ -196,7 +206,7 @@ class _$ConfirmP24PaymentDataImpl implements _ConfirmP24PaymentData {
   final String? returnUrl;
 
   /// To set up a SEPA Direct Debit payment method using the bank details
-  ///  from this iDEAL payment, set this parameter to off_session.
+  ///  from this P24 payment, set this parameter to off_session.
   /// When using this parameter, a customer will need to be set on the
   /// PaymentIntent. The newly created SEPA Direct Debit PaymentMethod
   /// will be attached to this customer.
@@ -255,9 +265,14 @@ abstract class _ConfirmP24PaymentData implements ConfirmP24PaymentData {
   factory _ConfirmP24PaymentData.fromJson(Map<String, dynamic> json) =
       _$ConfirmP24PaymentDataImpl.fromJson;
 
-  /// Either the id of an existing PaymentMethod, or an object containing
+  /// Either the ID of an existing PaymentMethod, or an object containing
   /// data to create a PaymentMethod with.
-  /// See the use case sections below for details.
+  ///
+  /// This is required to process the payment. If you already have a PaymentMethod
+  /// attached to the PaymentIntent, you do not need to specify this field.
+  ///
+  /// See the official Stripe documentation for additional details:
+  /// https://stripe.com/docs/payments/p24
   @override
   @paymentMethodDetailJsonKey
   P24PaymentMethodDetails? get paymentMethod;
@@ -268,7 +283,7 @@ abstract class _ConfirmP24PaymentData implements ConfirmP24PaymentData {
   String? get returnUrl;
 
   /// To set up a SEPA Direct Debit payment method using the bank details
-  ///  from this iDEAL payment, set this parameter to off_session.
+  ///  from this P24 payment, set this parameter to off_session.
   /// When using this parameter, a customer will need to be set on the
   /// PaymentIntent. The newly created SEPA Direct Debit PaymentMethod
   /// will be attached to this customer.

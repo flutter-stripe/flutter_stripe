@@ -34,20 +34,13 @@ class StripeAubecsDebitPlatformView(
 
         channel.setMethodCallHandler(this)
 
-        if (creationParams?.containsKey("formStyle") == true) {
-            aubecsFormViewManager.setFormStyle(
+        creationParams.convertToReadables()?.forEach { entry ->
+            aubecsFormViewManager.getDelegate().setProperty(
                 aubecsView,
-                ReadableMap(creationParams["formStyle"] as Map<String, Any>)
+                entry.key,
+                entry.value,
             )
         }
-
-        if (creationParams?.containsKey("companyName") == true) {
-            aubecsFormViewManager.setCompanyName(
-                aubecsView,
-                creationParams["companyName"] as String
-            )
-        }
-
     }
 
     override fun getView(): View {
@@ -63,17 +56,13 @@ class StripeAubecsDebitPlatformView(
     }
 
     override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
-        when (call.method) {
-            "onStyleChanged" -> {
-                val arguments = ReadableMap(call.arguments as Map<String, Any>)
-                aubecsFormViewManager.setFormStyle(
-                    aubecsView,
-                    arguments.getMap("formStyle") as ReadableMap
-                )
 
-                result.success(null)
-            }
-        }
+        aubecsFormViewManager.delegate.setProperty(
+            aubecsView,
+            call.method,
+            call.arguments.convertToReadable()
+        )
+        result.success(null)
     }
 
 

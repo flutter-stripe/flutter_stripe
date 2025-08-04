@@ -4,6 +4,8 @@
 <dict>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+	<key>CFBundleAllowMixedLocalizations</key>
+	<string>true</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -39,13 +41,13 @@
 	<true/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-    <key>CFBundleAllowMixedLocalizations</key>
-    <string>true</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Scan your card to add it automatically</string>
 	<key>NSCameraUsageDescription
 	&lt;string&gt;To scan cards&lt;/string&gt;</key>
 	<string>To scan cards</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -65,7 +67,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIApplicationSupportsIndirectInputEvents</key>
-	<true/>
 </dict>
 </plist>

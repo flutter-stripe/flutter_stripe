@@ -41,6 +41,7 @@ class MethodChannelStripe extends StripePlatform {
   final bool _platformIsIos;
   final bool _platformIsAndroid;
   ConfirmHandler? _confirmHandler;
+  ConfirmCustomPaymentMethodCallback? _confirmCustomPaymentMethodCallback;
   FinancialConnectionsEventHandler? _financialConnectionsEventHandler;
 
   @override
@@ -72,6 +73,23 @@ class MethodChannelStripe extends StripePlatform {
           method,
           call.arguments['shouldSavePaymentMethod'] as bool,
         );
+      } else if (call.method == 'onCustomPaymentMethodConfirmHandlerCallback' &&
+          _confirmCustomPaymentMethodCallback != null) {
+        final method = ResultParser<CustomPaymentMethod>(
+                parseJson: (json) => CustomPaymentMethod.fromJson(json))
+            .parse(
+                result: call.arguments!,
+                successResultKey: 'customPaymentMethod');
+
+        final billingDetails = ResultParser<BillingDetails>(
+                parseJson: (json) => BillingDetails.fromJson(json))
+            .parse(result: call.arguments!, successResultKey: 'billingDetails');
+        _confirmCustomPaymentMethodCallback!(method, billingDetails, (result) {
+          _methodChannel
+              .invokeMethod('customPaymentMethodConfirmHandlerCallback', {
+            'result': result.name,
+          });
+        });
       } else if (call.method == 'onFinancialConnectionsEvent' &&
           _financialConnectionsEventHandler != null) {
         final event = FinancialConnectionsEvent(
@@ -216,8 +234,13 @@ class MethodChannelStripe extends StripePlatform {
       {'params': params.toJson()},
     );
     if (params.intentConfiguration?.confirmHandler != null) {
-      _addListenerForDeffered();
       _confirmHandler = params.intentConfiguration?.confirmHandler;
+    }
+    if (params.customPaymentMethodConfiguration
+            ?.confirmCustomPaymentMethodCallback !=
+        null) {
+      _confirmCustomPaymentMethodCallback = params
+          .customPaymentMethodConfiguration?.confirmCustomPaymentMethodCallback;
     }
     if (result is List) {
       return null;
@@ -321,13 +344,6 @@ class MethodChannelStripe extends StripePlatform {
     await _methodChannel.invokeMethod('dangerouslyUpdateCardDetails', {
       'params': card.toJson(),
     });
-  }
-
-  Future<void> _addListenerForDeffered() async {
-    await _methodChannel.invokeMethod(
-      'addListener',
-      {'eventName': 'onConfirmHandlerCallback'},
-    );
   }
 
   PaymentSheetPaymentOption? _parsePaymentSheetResult(

@@ -18,21 +18,13 @@ _$BillingDetailsImpl _$$BillingDetailsImplFromJson(Map json) =>
     );
 
 Map<String, dynamic> _$$BillingDetailsImplToJson(
-    _$BillingDetailsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('email', instance.email);
-  writeNotNull('address', instance.address?.toJson());
-  writeNotNull('phone', instance.phone);
-  writeNotNull('name', instance.name);
-  return val;
-}
+        _$BillingDetailsImpl instance) =>
+    <String, dynamic>{
+      if (instance.email case final value?) 'email': value,
+      if (instance.address?.toJson() case final value?) 'address': value,
+      if (instance.phone case final value?) 'phone': value,
+      if (instance.name case final value?) 'name': value,
+    };
 
 _$PaymentElementBillingDetailsAddressImpl
     _$$PaymentElementBillingDetailsAddressImplFromJson(Map json) =>
@@ -46,20 +38,12 @@ _$PaymentElementBillingDetailsAddressImpl
         );
 
 Map<String, dynamic> _$$PaymentElementBillingDetailsAddressImplToJson(
-    _$PaymentElementBillingDetailsAddressImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('line1', instance.line1);
-  writeNotNull('line2', instance.line2);
-  writeNotNull('city', instance.city);
-  writeNotNull('state', instance.state);
-  writeNotNull('country', instance.country);
-  writeNotNull('postal_code', instance.postalCode);
-  return val;
-}
+        _$PaymentElementBillingDetailsAddressImpl instance) =>
+    <String, dynamic>{
+      if (instance.line1 case final value?) 'line1': value,
+      if (instance.line2 case final value?) 'line2': value,
+      if (instance.city case final value?) 'city': value,
+      if (instance.state case final value?) 'state': value,
+      if (instance.country case final value?) 'country': value,
+      if (instance.postalCode case final value?) 'postal_code': value,
+    };

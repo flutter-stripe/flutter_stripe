@@ -17,16 +17,8 @@ _$TokenResponseImpl _$$TokenResponseImplFromJson(Map json) =>
               Map<String, dynamic>.from(json['error'] as Map)),
     );
 
-Map<String, dynamic> _$$TokenResponseImplToJson(_$TokenResponseImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('token', instance.token?.toJson());
-  writeNotNull('error', instance.error?.toJson());
-  return val;
-}
+Map<String, dynamic> _$$TokenResponseImplToJson(_$TokenResponseImpl instance) =>
+    <String, dynamic>{
+      if (instance.token?.toJson() case final value?) 'token': value,
+      if (instance.error?.toJson() case final value?) 'error': value,
+    };

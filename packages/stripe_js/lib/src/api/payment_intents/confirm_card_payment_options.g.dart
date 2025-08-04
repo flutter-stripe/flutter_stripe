@@ -13,15 +13,7 @@ _$ConfirmCardPaymentOptionsImpl _$$ConfirmCardPaymentOptionsImplFromJson(
     );
 
 Map<String, dynamic> _$$ConfirmCardPaymentOptionsImplToJson(
-    _$ConfirmCardPaymentOptionsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('handleActions', instance.handleActions);
-  return val;
-}
+        _$ConfirmCardPaymentOptionsImpl instance) =>
+    <String, dynamic>{
+      if (instance.handleActions case final value?) 'handleActions': value,
+    };

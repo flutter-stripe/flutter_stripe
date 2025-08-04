@@ -1,6 +1,8 @@
 package com.flutter.stripe
 
 import android.content.Context
+import com.facebook.react.bridge.ReadableArray
+import com.facebook.react.bridge.ReadableMap
 import com.reactnativestripesdk.CardFieldViewManager
 import com.reactnativestripesdk.StripeSdkModule
 import io.flutter.embedding.engine.plugins.FlutterPlugin

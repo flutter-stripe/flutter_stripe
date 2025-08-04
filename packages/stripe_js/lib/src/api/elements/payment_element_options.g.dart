@@ -41,26 +41,20 @@ _$PaymentElementOptionsImpl _$$PaymentElementOptionsImplFromJson(Map json) =>
     );
 
 Map<String, dynamic> _$$PaymentElementOptionsImplToJson(
-    _$PaymentElementOptionsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('layout', instance.layout?.toJson());
-  writeNotNull('defaultValues', instance.defaultValues?.toJson());
-  writeNotNull('business', instance.business?.toJson());
-  writeNotNull('paymentMethodOrder', instance.paymentMethodOrder);
-  writeNotNull('fields', instance.fields?.toJson());
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('terms', instance.terms?.toJson());
-  writeNotNull('wallets', instance.wallets?.toJson());
-  writeNotNull('applePay', instance.applePay?.toJson());
-  return val;
-}
+        _$PaymentElementOptionsImpl instance) =>
+    <String, dynamic>{
+      if (instance.layout?.toJson() case final value?) 'layout': value,
+      if (instance.defaultValues?.toJson() case final value?)
+        'defaultValues': value,
+      if (instance.business?.toJson() case final value?) 'business': value,
+      if (instance.paymentMethodOrder case final value?)
+        'paymentMethodOrder': value,
+      if (instance.fields?.toJson() case final value?) 'fields': value,
+      if (instance.readOnly case final value?) 'readOnly': value,
+      if (instance.terms?.toJson() case final value?) 'terms': value,
+      if (instance.wallets?.toJson() case final value?) 'wallets': value,
+      if (instance.applePay?.toJson() case final value?) 'applePay': value,
+    };
 
 _$PaymentElementLayoutImpl _$$PaymentElementLayoutImplFromJson(Map json) =>
     _$PaymentElementLayoutImpl(
@@ -73,24 +67,17 @@ _$PaymentElementLayoutImpl _$$PaymentElementLayoutImplFromJson(Map json) =>
     );
 
 Map<String, dynamic> _$$PaymentElementLayoutImplToJson(
-    _$PaymentElementLayoutImpl instance) {
-  final val = <String, dynamic>{
-    'type': _$PaymentElementLayoutTypeEnumMap[instance.type]!,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('defaultCollapsed', instance.defaultCollapsed);
-  writeNotNull('radios', instance.radios);
-  writeNotNull('spacedAccordionItems', instance.spacedAccordionItems);
-  writeNotNull(
-      'visibleAccordionItemsCount', instance.visibleAccordionItemsCount);
-  return val;
-}
+        _$PaymentElementLayoutImpl instance) =>
+    <String, dynamic>{
+      'type': _$PaymentElementLayoutTypeEnumMap[instance.type]!,
+      if (instance.defaultCollapsed case final value?)
+        'defaultCollapsed': value,
+      if (instance.radios case final value?) 'radios': value,
+      if (instance.spacedAccordionItems case final value?)
+        'spacedAccordionItems': value,
+      if (instance.visibleAccordionItemsCount case final value?)
+        'visibleAccordionItemsCount': value,
+    };
 
 const _$PaymentElementLayoutTypeEnumMap = {
   PaymentElementLayoutType.accordion: 'accordion',
@@ -111,19 +98,13 @@ _$PaymentElementDefaultValuesImpl _$$PaymentElementDefaultValuesImplFromJson(
     );
 
 Map<String, dynamic> _$$PaymentElementDefaultValuesImplToJson(
-    _$PaymentElementDefaultValuesImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('billingDetails', instance.billingDetails?.toJson());
-  writeNotNull('paymentMethods', instance.paymentMethods?.toJson());
-  return val;
-}
+        _$PaymentElementDefaultValuesImpl instance) =>
+    <String, dynamic>{
+      if (instance.billingDetails?.toJson() case final value?)
+        'billingDetails': value,
+      if (instance.paymentMethods?.toJson() case final value?)
+        'paymentMethods': value,
+    };
 
 _$PaymentElementPaymentMethodDefaultsImpl
     _$$PaymentElementPaymentMethodDefaultsImplFromJson(Map json) =>
@@ -139,19 +120,11 @@ _$PaymentElementPaymentMethodDefaultsImpl
         );
 
 Map<String, dynamic> _$$PaymentElementPaymentMethodDefaultsImplToJson(
-    _$PaymentElementPaymentMethodDefaultsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ideal', instance.ideal?.toJson());
-  writeNotNull('card', instance.card?.toJson());
-  return val;
-}
+        _$PaymentElementPaymentMethodDefaultsImpl instance) =>
+    <String, dynamic>{
+      if (instance.ideal?.toJson() case final value?) 'ideal': value,
+      if (instance.card?.toJson() case final value?) 'card': value,
+    };
 
 _$PaymentElementWalletOptionsImpl _$$PaymentElementWalletOptionsImplFromJson(
         Map json) =>
@@ -163,21 +136,15 @@ _$PaymentElementWalletOptionsImpl _$$PaymentElementWalletOptionsImplFromJson(
     );
 
 Map<String, dynamic> _$$PaymentElementWalletOptionsImplToJson(
-    _$PaymentElementWalletOptionsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull(
-      'applePay', _$PaymentElementFieldRequiredEnumMap[instance.applePay]);
-  writeNotNull(
-      'googlePay', _$PaymentElementFieldRequiredEnumMap[instance.googlePay]);
-  return val;
-}
+        _$PaymentElementWalletOptionsImpl instance) =>
+    <String, dynamic>{
+      if (_$PaymentElementFieldRequiredEnumMap[instance.applePay]
+          case final value?)
+        'applePay': value,
+      if (_$PaymentElementFieldRequiredEnumMap[instance.googlePay]
+          case final value?)
+        'googlePay': value,
+    };
 
 const _$PaymentElementFieldRequiredEnumMap = {
   PaymentElementFieldRequired.never: 'never',
@@ -191,18 +158,10 @@ _$PaymentElementIdealDefaultsImpl _$$PaymentElementIdealDefaultsImplFromJson(
     );
 
 Map<String, dynamic> _$$PaymentElementIdealDefaultsImplToJson(
-    _$PaymentElementIdealDefaultsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('bank', instance.bank);
-  return val;
-}
+        _$PaymentElementIdealDefaultsImpl instance) =>
+    <String, dynamic>{
+      if (instance.bank case final value?) 'bank': value,
+    };
 
 _$PaymentElementCardDefaultsImpl _$$PaymentElementCardDefaultsImplFromJson(
         Map json) =>
@@ -212,18 +171,10 @@ _$PaymentElementCardDefaultsImpl _$$PaymentElementCardDefaultsImplFromJson(
     );
 
 Map<String, dynamic> _$$PaymentElementCardDefaultsImplToJson(
-    _$PaymentElementCardDefaultsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('network', instance.network);
-  return val;
-}
+        _$PaymentElementCardDefaultsImpl instance) =>
+    <String, dynamic>{
+      if (instance.network case final value?) 'network': value,
+    };
 
 _$PaymentElementBillingDetailsImpl _$$PaymentElementBillingDetailsImplFromJson(
         Map json) =>
@@ -238,21 +189,13 @@ _$PaymentElementBillingDetailsImpl _$$PaymentElementBillingDetailsImplFromJson(
     );
 
 Map<String, dynamic> _$$PaymentElementBillingDetailsImplToJson(
-    _$PaymentElementBillingDetailsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('name', instance.name);
-  writeNotNull('email', instance.email);
-  writeNotNull('phone', instance.phone);
-  writeNotNull('address', instance.address?.toJson());
-  return val;
-}
+        _$PaymentElementBillingDetailsImpl instance) =>
+    <String, dynamic>{
+      if (instance.name case final value?) 'name': value,
+      if (instance.email case final value?) 'email': value,
+      if (instance.phone case final value?) 'phone': value,
+      if (instance.address?.toJson() case final value?) 'address': value,
+    };
 
 _$PaymentElementBillingDetailsAddressImpl
     _$$PaymentElementBillingDetailsAddressImplFromJson(Map json) =>
@@ -266,23 +209,15 @@ _$PaymentElementBillingDetailsAddressImpl
         );
 
 Map<String, dynamic> _$$PaymentElementBillingDetailsAddressImplToJson(
-    _$PaymentElementBillingDetailsAddressImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('line1', instance.line1);
-  writeNotNull('line2', instance.line2);
-  writeNotNull('city', instance.city);
-  writeNotNull('state', instance.state);
-  writeNotNull('country', instance.country);
-  writeNotNull('postal_code', instance.postalCode);
-  return val;
-}
+        _$PaymentElementBillingDetailsAddressImpl instance) =>
+    <String, dynamic>{
+      if (instance.line1 case final value?) 'line1': value,
+      if (instance.line2 case final value?) 'line2': value,
+      if (instance.city case final value?) 'city': value,
+      if (instance.state case final value?) 'state': value,
+      if (instance.country case final value?) 'country': value,
+      if (instance.postalCode case final value?) 'postal_code': value,
+    };
 
 _$PaymentElementBusinessImpl _$$PaymentElementBusinessImplFromJson(Map json) =>
     _$PaymentElementBusinessImpl(
@@ -290,18 +225,10 @@ _$PaymentElementBusinessImpl _$$PaymentElementBusinessImplFromJson(Map json) =>
     );
 
 Map<String, dynamic> _$$PaymentElementBusinessImplToJson(
-    _$PaymentElementBusinessImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('name', instance.name);
-  return val;
-}
+        _$PaymentElementBusinessImpl instance) =>
+    <String, dynamic>{
+      if (instance.name case final value?) 'name': value,
+    };
 
 _$PaymentElementFieldsImpl _$$PaymentElementFieldsImplFromJson(Map json) =>
     _$PaymentElementFieldsImpl(
@@ -404,33 +331,36 @@ _$PaymentElementOptionsTermsImpl _$$PaymentElementOptionsTermsImplFromJson(
     );
 
 Map<String, dynamic> _$$PaymentElementOptionsTermsImplToJson(
-    _$PaymentElementOptionsTermsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('applePay', _$PaymentElementShowTermsEnumMap[instance.applePay]);
-  writeNotNull(
-      'auBecsDebit', _$PaymentElementShowTermsEnumMap[instance.auBecsDebit]);
-  writeNotNull(
-      'bancontact', _$PaymentElementShowTermsEnumMap[instance.bancontact]);
-  writeNotNull('card', _$PaymentElementShowTermsEnumMap[instance.card]);
-  writeNotNull('cashApp', _$PaymentElementShowTermsEnumMap[instance.cashApp]);
-  writeNotNull(
-      'googlePay', _$PaymentElementShowTermsEnumMap[instance.googlePay]);
-  writeNotNull('ideal', _$PaymentElementShowTermsEnumMap[instance.ideal]);
-  writeNotNull('payPal', _$PaymentElementShowTermsEnumMap[instance.payPal]);
-  writeNotNull(
-      'sepaDebit', _$PaymentElementShowTermsEnumMap[instance.sepaDebit]);
-  writeNotNull('sofort', _$PaymentElementShowTermsEnumMap[instance.sofort]);
-  writeNotNull('usBankAccount',
-      _$PaymentElementShowTermsEnumMap[instance.usBankAccount]);
-  return val;
-}
+        _$PaymentElementOptionsTermsImpl instance) =>
+    <String, dynamic>{
+      if (_$PaymentElementShowTermsEnumMap[instance.applePay] case final value?)
+        'applePay': value,
+      if (_$PaymentElementShowTermsEnumMap[instance.auBecsDebit]
+          case final value?)
+        'auBecsDebit': value,
+      if (_$PaymentElementShowTermsEnumMap[instance.bancontact]
+          case final value?)
+        'bancontact': value,
+      if (_$PaymentElementShowTermsEnumMap[instance.card] case final value?)
+        'card': value,
+      if (_$PaymentElementShowTermsEnumMap[instance.cashApp] case final value?)
+        'cashApp': value,
+      if (_$PaymentElementShowTermsEnumMap[instance.googlePay]
+          case final value?)
+        'googlePay': value,
+      if (_$PaymentElementShowTermsEnumMap[instance.ideal] case final value?)
+        'ideal': value,
+      if (_$PaymentElementShowTermsEnumMap[instance.payPal] case final value?)
+        'payPal': value,
+      if (_$PaymentElementShowTermsEnumMap[instance.sepaDebit]
+          case final value?)
+        'sepaDebit': value,
+      if (_$PaymentElementShowTermsEnumMap[instance.sofort] case final value?)
+        'sofort': value,
+      if (_$PaymentElementShowTermsEnumMap[instance.usBankAccount]
+          case final value?)
+        'usBankAccount': value,
+    };
 
 const _$PaymentElementShowTermsEnumMap = {
   PaymentElementShowTerms.never: 'never',
@@ -460,23 +390,15 @@ _$PaymentElementApplePayOptionsImpl
         );
 
 Map<String, dynamic> _$$PaymentElementApplePayOptionsImplToJson(
-    _$PaymentElementApplePayOptionsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull(
-      'recurringPaymentRequest', instance.recurringPaymentRequest?.toJson());
-  writeNotNull(
-      'deferredPaymentRequest', instance.deferredPaymentRequest?.toJson());
-  writeNotNull('automaticReloadPaymentRequest',
-      instance.automaticReloadPaymentRequest?.toJson());
-  return val;
-}
+        _$PaymentElementApplePayOptionsImpl instance) =>
+    <String, dynamic>{
+      if (instance.recurringPaymentRequest?.toJson() case final value?)
+        'recurringPaymentRequest': value,
+      if (instance.deferredPaymentRequest?.toJson() case final value?)
+        'deferredPaymentRequest': value,
+      if (instance.automaticReloadPaymentRequest?.toJson() case final value?)
+        'automaticReloadPaymentRequest': value,
+    };
 
 _$PaymentElementAppleRecurringRequestImpl
     _$$PaymentElementAppleRecurringRequestImplFromJson(Map json) =>
@@ -494,22 +416,15 @@ _$PaymentElementAppleRecurringRequestImpl
         );
 
 Map<String, dynamic> _$$PaymentElementAppleRecurringRequestImplToJson(
-    _$PaymentElementAppleRecurringRequestImpl instance) {
-  final val = <String, dynamic>{
-    'paymentDescription': instance.paymentDescription,
-    'managementUrl': instance.managementUrl,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('trialBilling', instance.trialBilling?.toJson());
-  writeNotNull('regularBilling', instance.regularBilling?.toJson());
-  return val;
-}
+        _$PaymentElementAppleRecurringRequestImpl instance) =>
+    <String, dynamic>{
+      'paymentDescription': instance.paymentDescription,
+      'managementUrl': instance.managementUrl,
+      if (instance.trialBilling?.toJson() case final value?)
+        'trialBilling': value,
+      if (instance.regularBilling?.toJson() case final value?)
+        'regularBilling': value,
+    };
 
 _$PaymentElementRecurringPaymentPropertiesImpl
     _$$PaymentElementRecurringPaymentPropertiesImplFromJson(Map json) =>
@@ -530,30 +445,22 @@ _$PaymentElementRecurringPaymentPropertiesImpl
         );
 
 Map<String, dynamic> _$$PaymentElementRecurringPaymentPropertiesImplToJson(
-    _$PaymentElementRecurringPaymentPropertiesImpl instance) {
-  final val = <String, dynamic>{
-    'amount': instance.amount,
-    'label': instance.label,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('recurringPaymentStartDate',
-      instance.recurringPaymentStartDate?.toIso8601String());
-  writeNotNull('recurringPaymentEndDate',
-      instance.recurringPaymentEndDate?.toIso8601String());
-  writeNotNull(
-      'recurringPaymentIntervalUnit',
-      _$ApplePayRecurringPaymentTimeInterValEnumMap[
-          instance.recurringPaymentIntervalUnit]);
-  writeNotNull(
-      'recurringPaymentIntervalCount', instance.recurringPaymentIntervalCount);
-  return val;
-}
+        _$PaymentElementRecurringPaymentPropertiesImpl instance) =>
+    <String, dynamic>{
+      'amount': instance.amount,
+      'label': instance.label,
+      if (instance.recurringPaymentStartDate?.toIso8601String()
+          case final value?)
+        'recurringPaymentStartDate': value,
+      if (instance.recurringPaymentEndDate?.toIso8601String() case final value?)
+        'recurringPaymentEndDate': value,
+      if (_$ApplePayRecurringPaymentTimeInterValEnumMap[
+              instance.recurringPaymentIntervalUnit]
+          case final value?)
+        'recurringPaymentIntervalUnit': value,
+      if (instance.recurringPaymentIntervalCount case final value?)
+        'recurringPaymentIntervalCount': value,
+    };
 
 const _$ApplePayRecurringPaymentTimeInterValEnumMap = {
   ApplePayRecurringPaymentTimeInterVal.year: 'year',
@@ -579,25 +486,18 @@ _$PaymentElementApplePayDeferredPaymentRequestImpl
         );
 
 Map<String, dynamic> _$$PaymentElementApplePayDeferredPaymentRequestImplToJson(
-    _$PaymentElementApplePayDeferredPaymentRequestImpl instance) {
-  final val = <String, dynamic>{
-    'paymentDescription': instance.paymentDescription,
-    'managementUrl': instance.managementUrl,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('billingAgreement', instance.billingAgreement);
-  writeNotNull(
-      'freeCancellationDate', instance.freeCancellationDate?.toIso8601String());
-  writeNotNull('freeCancellationTimezone', instance.freeCancellationTimezone);
-  val['deferredBilling'] = instance.deferredBilling.toJson();
-  return val;
-}
+        _$PaymentElementApplePayDeferredPaymentRequestImpl instance) =>
+    <String, dynamic>{
+      'paymentDescription': instance.paymentDescription,
+      'managementUrl': instance.managementUrl,
+      if (instance.billingAgreement case final value?)
+        'billingAgreement': value,
+      if (instance.freeCancellationDate?.toIso8601String() case final value?)
+        'freeCancellationDate': value,
+      if (instance.freeCancellationTimezone case final value?)
+        'freeCancellationTimezone': value,
+      'deferredBilling': instance.deferredBilling.toJson(),
+    };
 
 _$PaymentElementApplePayDeferredPaymentPropertiesImpl
     _$$PaymentElementApplePayDeferredPaymentPropertiesImplFromJson(Map json) =>

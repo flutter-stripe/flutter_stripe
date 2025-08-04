@@ -28,14 +28,12 @@ class StripeSdkGooglePayButtonPlatformView(
     )
 
     init {
-        if (creationParams?.containsKey("type") == true) {
-            googlePayButtonManager.type(payButton, creationParams["type"] as Int)
-        }
-        if (creationParams?.containsKey("appearance") == true) {
-            googlePayButtonManager.appearance(payButton, creationParams["appearance"] as Int)
-        }
-        if (creationParams?.containsKey("borderRadius") == true) {
-            googlePayButtonManager.borderRadius(payButton, creationParams["borderRadius"] as Int)
+        creationParams.convertToReadables()?.forEach {
+            googlePayButtonManager.getDelegate().setProperty(
+                payButton,
+                it.key,
+                it.value,
+            )
         }
         payButton.initialize()
     }

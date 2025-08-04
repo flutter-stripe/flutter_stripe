@@ -14,16 +14,8 @@ _$ConfirmAlipayPaymentDataImpl _$$ConfirmAlipayPaymentDataImplFromJson(
     );
 
 Map<String, dynamic> _$$ConfirmAlipayPaymentDataImplToJson(
-    _$ConfirmAlipayPaymentDataImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('payment_method', instance.paymentMethod);
-  writeNotNull('return_url', instance.returnUrl);
-  return val;
-}
+        _$ConfirmAlipayPaymentDataImpl instance) =>
+    <String, dynamic>{
+      if (instance.paymentMethod case final value?) 'payment_method': value,
+      if (instance.returnUrl case final value?) 'return_url': value,
+    };

@@ -3,6 +3,7 @@ package com.reactnativestripesdk
 import android.app.Activity
 import android.app.Application
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
@@ -11,13 +12,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Base64
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.FrameLayout
+import android.util.Log
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.drawable.DrawableCompat
-import androidx.fragment.app.Fragment
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
@@ -30,12 +27,21 @@ import com.reactnativestripesdk.utils.KeepJsAwakeTask
 import com.reactnativestripesdk.utils.PaymentSheetAppearanceException
 import com.reactnativestripesdk.utils.PaymentSheetErrorType
 import com.reactnativestripesdk.utils.PaymentSheetException
+import com.reactnativestripesdk.utils.StripeFragment
 import com.reactnativestripesdk.utils.createError
 import com.reactnativestripesdk.utils.createResult
+import com.reactnativestripesdk.utils.mapFromCustomPaymentMethod
 import com.reactnativestripesdk.utils.mapFromPaymentMethod
 import com.reactnativestripesdk.utils.mapToPreferredNetworks
+import com.reactnativestripesdk.utils.parseCustomPaymentMethods
 import com.reactnativestripesdk.utils.removeFragment
 import com.stripe.android.ExperimentalAllowsRemovalOfLastSavedPaymentMethodApi
+import com.stripe.android.model.PaymentMethod
+import com.stripe.android.paymentelement.ConfirmCustomPaymentMethodCallback
+import com.stripe.android.paymentelement.CustomPaymentMethodResult
+import com.stripe.android.paymentelement.CustomPaymentMethodResultHandler
+import com.stripe.android.paymentelement.ExperimentalCustomPaymentMethodsApi
+import com.stripe.android.paymentelement.PaymentMethodOptionsSetupFutureUsagePreview
 import com.stripe.android.paymentsheet.CreateIntentCallback
 import com.stripe.android.paymentsheet.CreateIntentResult
 import com.stripe.android.paymentsheet.ExperimentalCustomerSessionApi
@@ -44,14 +50,19 @@ import com.stripe.android.paymentsheet.PaymentSheet
 import com.stripe.android.paymentsheet.PaymentSheetResult
 import com.stripe.android.paymentsheet.PaymentSheetResultCallback
 import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 import kotlin.Exception
 
-@OptIn(ExperimentalAllowsRemovalOfLastSavedPaymentMethodApi::class)
-class PaymentSheetFragment(
-  private val context: ReactApplicationContext,
-  private val initPromise: Promise,
-) : Fragment() {
+@OptIn(ExperimentalAllowsRemovalOfLastSavedPaymentMethodApi::class, ExperimentalCustomPaymentMethodsApi::class)
+class PaymentSheetFragment :
+  StripeFragment(),
+  ConfirmCustomPaymentMethodCallback {
+  private lateinit var context: ReactApplicationContext
+  private lateinit var initPromise: Promise
   private var paymentSheet: PaymentSheet? = null
   private var flowController: PaymentSheet.FlowController? = null
   private var paymentIntentClientSecret: String? = null
@@ -64,17 +75,8 @@ class PaymentSheetFragment(
   internal var paymentSheetIntentCreationCallback = CompletableDeferred<ReadableMap>()
   private var keepJsAwake: KeepJsAwakeTask? = null
 
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?,
-  ): View = FrameLayout(requireActivity()).also { it.visibility = View.GONE }
-
-  override fun onViewCreated(
-    view: View,
-    savedInstanceState: Bundle?,
-  ) {
-    super.onViewCreated(view, savedInstanceState)
+  @OptIn(ExperimentalCustomPaymentMethodsApi::class)
+  override fun prepare() {
     val merchantDisplayName = arguments?.getString("merchantDisplayName").orEmpty()
     if (merchantDisplayName.isEmpty()) {
       initPromise.resolve(
@@ -84,6 +86,7 @@ class PaymentSheetFragment(
     }
     val primaryButtonLabel = arguments?.getString("primaryButtonLabel")
     val googlePayConfig = buildGooglePayConfig(arguments?.getBundle("googlePay"))
+    val linkConfig = buildLinkConfig(arguments?.getBundle("link"))
     val allowsDelayedPaymentMethods = arguments?.getBoolean("allowsDelayedPaymentMethods")
     val billingDetailsBundle = arguments?.getBundle("defaultBillingDetails")
     val billingConfigParams = arguments?.getBundle("billingDetailsCollectionConfiguration")
@@ -162,11 +165,13 @@ class PaymentSheetFragment(
                 ),
               )
             }
+
             is PaymentSheetResult.Failed -> {
               resolvePaymentResult(
                 createError(PaymentSheetErrorType.Failed.toString(), paymentResult.error),
               )
             }
+
             is PaymentSheetResult.Completed -> {
               resolvePaymentResult(WritableNativeMap())
               // Remove the fragment now, we can be sure it won't be needed again if an intent is
@@ -182,22 +187,13 @@ class PaymentSheetFragment(
     val createIntentCallback =
       CreateIntentCallback { paymentMethod, shouldSavePaymentMethod ->
         val stripeSdkModule: StripeSdkModule? = context.getNativeModule(StripeSdkModule::class.java)
-        if (stripeSdkModule == null || stripeSdkModule.eventListenerCount == 0) {
-          return@CreateIntentCallback CreateIntentResult.Failure(
-            cause =
-              Exception(
-                "Tried to call confirmHandler, but no callback was found. Please file an issue: https://github.com/stripe/stripe-react-native/issues",
-              ),
-            displayMessage = "An unexpected error occurred",
-          )
-        }
         val params =
           Arguments.createMap().apply {
             putMap("paymentMethod", mapFromPaymentMethod(paymentMethod))
             putBoolean("shouldSavePaymentMethod", shouldSavePaymentMethod)
           }
 
-        stripeSdkModule.sendEvent(context, "onConfirmHandlerCallback", params)
+        stripeSdkModule?.emitOnConfirmHandlerCallback(params)
 
         val resultFromJavascript = paymentSheetIntentCreationCallback.await()
         // reset the completable
@@ -222,7 +218,7 @@ class PaymentSheetFragment(
         email = mapToCollectionMode(billingConfigParams?.getString("email")),
         address = mapToAddressCollectionMode(billingConfigParams?.getString("address")),
         attachDefaultsToPaymentMethod =
-          billingConfigParams?.getBoolean("attachDefaultsToPaymentMethod") ?: false,
+          billingConfigParams?.getBoolean("attachDefaultsToPaymentMethod", false) ?: false,
       )
 
     var defaultBillingDetails: PaymentSheet.BillingDetails? = null
@@ -259,6 +255,7 @@ class PaymentSheetFragment(
           mapToPreferredNetworks(arguments?.getIntegerArrayList("preferredNetworks")),
         ).allowsRemovalOfLastSavedPaymentMethod(allowsRemovalOfLastSavedPaymentMethod)
         .cardBrandAcceptance(mapToCardBrandAcceptance(arguments))
+        .customPaymentMethods(parseCustomPaymentMethods(arguments))
 
     primaryButtonLabel?.let { configurationBuilder.primaryButtonLabel(it) }
     paymentMethodOrder?.let { configurationBuilder.paymentMethodOrder(it) }
@@ -272,30 +269,35 @@ class PaymentSheetFragment(
     if (arguments?.getBoolean("customFlow") == true) {
       flowController =
         if (intentConfiguration != null) {
-          PaymentSheet.FlowController.create(
-            this,
-            paymentOptionCallback = paymentOptionCallback,
-            createIntentCallback = createIntentCallback,
-            paymentResultCallback = paymentResultCallback,
-          )
+          PaymentSheet.FlowController
+            .Builder(
+              resultCallback = paymentResultCallback,
+              paymentOptionCallback = paymentOptionCallback,
+            ).createIntentCallback(createIntentCallback)
+            .confirmCustomPaymentMethodCallback(this)
+            .build(this)
         } else {
-          PaymentSheet.FlowController.create(
-            this,
-            paymentOptionCallback = paymentOptionCallback,
-            paymentResultCallback = paymentResultCallback,
-          )
+          PaymentSheet.FlowController
+            .Builder(
+              resultCallback = paymentResultCallback,
+              paymentOptionCallback = paymentOptionCallback,
+            ).confirmCustomPaymentMethodCallback(this)
+            .build(this)
         }
       configureFlowController()
     } else {
       paymentSheet =
         if (intentConfiguration != null) {
-          PaymentSheet(
-            this,
-            createIntentCallback = createIntentCallback,
-            paymentResultCallback = paymentResultCallback,
-          )
+          PaymentSheet
+            .Builder(paymentResultCallback)
+            .createIntentCallback(createIntentCallback)
+            .confirmCustomPaymentMethodCallback(this)
+            .build(this)
         } else {
-          PaymentSheet(this, callback = paymentResultCallback)
+          PaymentSheet
+            .Builder(paymentResultCallback)
+            .confirmCustomPaymentMethodCallback(this)
+            .build(this)
         }
       initPromise.resolve(WritableNativeMap())
     }
@@ -351,7 +353,8 @@ class PaymentSheetFragment(
         override fun onActivitySaveInstanceState(
           activity: Activity,
           outState: Bundle,
-        ) {}
+        ) {
+        }
 
         override fun onActivityDestroyed(activity: Activity) {
           paymentSheetActivity = null
@@ -438,8 +441,95 @@ class PaymentSheetFragment(
     } ?: run { resolvePresentPromise(map) }
   }
 
+  @OptIn(ExperimentalCustomPaymentMethodsApi::class)
+  override fun onConfirmCustomPaymentMethod(
+    customPaymentMethod: PaymentSheet.CustomPaymentMethod,
+    billingDetails: PaymentMethod.BillingDetails,
+  ) {
+    // Launch a transparent Activity to ensure React Native UI can appear on top of the Stripe proxy activity.
+    try {
+      val intent =
+        Intent(context, CustomPaymentMethodActivity::class.java).apply {
+          addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+          addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        }
+      context.startActivity(intent)
+    } catch (e: Exception) {
+      Log.e("StripeReactNative", "Failed to start CustomPaymentMethodActivity", e)
+    }
+
+    val stripeSdkModule =
+      try {
+        context.getNativeModule(StripeSdkModule::class.java)
+          ?: throw IllegalArgumentException("StripeSdkModule not found")
+      } catch (ex: IllegalArgumentException) {
+        Log.e("StripeReactNative", "StripeSdkModule not found for CPM callback", ex)
+        CustomPaymentMethodActivity.finishCurrent()
+        return
+      }
+
+    // Keep JS awake while React Native is backgrounded by Stripe SDK.
+    val keepJsAwakeTask =
+      KeepJsAwakeTask(context).apply { start() }
+
+    // Run on main coroutine scope.
+    CoroutineScope(Dispatchers.Main).launch {
+      try {
+        // Give the CustomPaymentMethodActivity a moment to fully initialize
+        delay(100)
+
+        // Emit event so JS can show the Alert and eventually respond via `customPaymentMethodResultCallback`.
+        stripeSdkModule.emitOnCustomPaymentMethodConfirmHandlerCallback(
+          mapFromCustomPaymentMethod(customPaymentMethod, billingDetails),
+        )
+
+        // Await JS result.
+        val resultFromJs = stripeSdkModule.customPaymentMethodResultCallback.await()
+
+        keepJsAwakeTask.stop()
+
+        val status = resultFromJs.getString("status")
+
+        val nativeResult =
+          when (status) {
+            "completed" ->
+              CustomPaymentMethodResult.completed()
+            "canceled" ->
+              CustomPaymentMethodResult.canceled()
+            "failed" -> {
+              val errMsg = resultFromJs.getString("error") ?: "Custom payment failed"
+              CustomPaymentMethodResult.failed(displayMessage = errMsg)
+            }
+            else ->
+              CustomPaymentMethodResult.failed(displayMessage = "Unknown status")
+          }
+
+        // Return result to Stripe SDK.
+        CustomPaymentMethodResultHandler.handleCustomPaymentMethodResult(
+          context,
+          nativeResult,
+        )
+      } finally {
+        // Clean up the transparent activity
+        CustomPaymentMethodActivity.finishCurrent()
+      }
+    }
+  }
+
   companion object {
     internal const val TAG = "payment_sheet_launch_fragment"
+
+    internal fun create(
+      context: ReactApplicationContext,
+      arguments: Bundle,
+      initPromise: Promise,
+    ): PaymentSheetFragment {
+      val instance = PaymentSheetFragment()
+      instance.context = context
+      instance.initPromise = initPromise
+      instance.arguments = arguments
+      return instance
+    }
 
     private val mapIntToButtonType =
       mapOf(
@@ -488,8 +578,27 @@ class PaymentSheetFragment(
       )
     }
 
+    internal fun buildLinkConfig(params: Bundle?): PaymentSheet.LinkConfiguration {
+      if (params == null) {
+        return PaymentSheet.LinkConfiguration()
+      }
+
+      val display = mapStringToLinkDisplay(params.getString("display"))
+
+      return PaymentSheet.LinkConfiguration(
+        display = display,
+      )
+    }
+
+    private fun mapStringToLinkDisplay(value: String?): PaymentSheet.LinkConfiguration.Display =
+      when (value) {
+        "automatic" -> PaymentSheet.LinkConfiguration.Display.Automatic
+        "never" -> PaymentSheet.LinkConfiguration.Display.Never
+        else -> PaymentSheet.LinkConfiguration.Display.Automatic
+      }
+
     @Throws(PaymentSheetException::class)
-    private fun buildIntentConfiguration(intentConfigurationParams: Bundle?): PaymentSheet.IntentConfiguration? {
+    internal fun buildIntentConfiguration(intentConfigurationParams: Bundle?): PaymentSheet.IntentConfiguration? {
       if (intentConfigurationParams == null) {
         return null
       }
@@ -507,6 +616,7 @@ class PaymentSheetFragment(
       )
     }
 
+    @OptIn(PaymentMethodOptionsSetupFutureUsagePreview::class)
     private fun buildIntentConfigurationMode(modeParams: Bundle): PaymentSheet.IntentConfiguration.Mode {
       val currencyCode =
         modeParams.getString("currencyCode")
@@ -520,6 +630,7 @@ class PaymentSheetFragment(
           currency = currencyCode,
           setupFutureUse = mapToSetupFutureUse(modeParams.getString("setupFutureUsage")),
           captureMethod = mapToCaptureMethod(modeParams.getString("captureMethod")),
+          paymentMethodOptions = mapToPaymentMethodOptions(modeParams.getBundle("paymentMethodOptions")),
         )
       } else {
         val setupFutureUsage =
@@ -536,7 +647,7 @@ class PaymentSheetFragment(
 
     @OptIn(ExperimentalCustomerSessionApi::class)
     @Throws(PaymentSheetException::class)
-    private fun buildCustomerConfiguration(bundle: Bundle?): PaymentSheet.CustomerConfiguration? {
+    internal fun buildCustomerConfiguration(bundle: Bundle?): PaymentSheet.CustomerConfiguration? {
       val customerId = bundle?.getString("customerId").orEmpty()
       val customerEphemeralKeySecret = bundle?.getString("customerEphemeralKeySecret").orEmpty()
       val customerSessionClientSecret = bundle?.getString("customerSessionClientSecret").orEmpty()
@@ -618,6 +729,7 @@ fun mapToAddressCollectionMode(str: String?): PaymentSheet.BillingDetailsCollect
   when (str) {
     "automatic" ->
       PaymentSheet.BillingDetailsCollectionConfiguration.AddressCollectionMode.Automatic
+
     "never" -> PaymentSheet.BillingDetailsCollectionConfiguration.AddressCollectionMode.Never
     "full" -> PaymentSheet.BillingDetailsCollectionConfiguration.AddressCollectionMode.Full
     else -> PaymentSheet.BillingDetailsCollectionConfiguration.AddressCollectionMode.Automatic
@@ -627,6 +739,7 @@ fun mapToSetupFutureUse(type: String?): PaymentSheet.IntentConfiguration.SetupFu
   when (type) {
     "OffSession" -> PaymentSheet.IntentConfiguration.SetupFutureUse.OffSession
     "OnSession" -> PaymentSheet.IntentConfiguration.SetupFutureUse.OnSession
+    "None" -> PaymentSheet.IntentConfiguration.SetupFutureUse.None
     else -> null
   }
 
@@ -637,6 +750,26 @@ fun mapToCaptureMethod(type: String?): PaymentSheet.IntentConfiguration.CaptureM
     "AutomaticAsync" -> PaymentSheet.IntentConfiguration.CaptureMethod.AutomaticAsync
     else -> PaymentSheet.IntentConfiguration.CaptureMethod.Automatic
   }
+
+@OptIn(PaymentMethodOptionsSetupFutureUsagePreview::class)
+fun mapToPaymentMethodOptions(options: Bundle?): PaymentSheet.IntentConfiguration.Mode.Payment.PaymentMethodOptions? {
+  val sfuBundle = options?.getBundle("setupFutureUsageValues")
+  val paymentMethodToSfuMap = mutableMapOf<PaymentMethod.Type, PaymentSheet.IntentConfiguration.SetupFutureUse>()
+  sfuBundle?.keySet()?.forEach { code ->
+    val sfuValue = mapToSetupFutureUse(sfuBundle?.getString(code))
+    val paymentMethodType = PaymentMethod.Type.fromCode(code)
+    if (paymentMethodType != null && sfuValue != null) {
+      paymentMethodToSfuMap[paymentMethodType] = sfuValue
+    }
+  }
+  return if (paymentMethodToSfuMap.isNotEmpty()) {
+    PaymentSheet.IntentConfiguration.Mode.Payment.PaymentMethodOptions(
+      setupFutureUsageValues = paymentMethodToSfuMap,
+    )
+  } else {
+    null
+  }
+}
 
 fun mapToCardBrandAcceptance(params: Bundle?): PaymentSheet.CardBrandAcceptance {
   val cardBrandAcceptanceParams = params?.getBundle("cardBrandAcceptance") ?: return PaymentSheet.CardBrandAcceptance.all()

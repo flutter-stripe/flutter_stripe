@@ -19,22 +19,16 @@ _$ConfirmIdealPaymentDataImpl _$$ConfirmIdealPaymentDataImplFromJson(
     );
 
 Map<String, dynamic> _$$ConfirmIdealPaymentDataImplToJson(
-    _$ConfirmIdealPaymentDataImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('payment_method',
-      PaymentMethodDetails.toJsonConverter(instance.paymentMethod));
-  writeNotNull('return_url', instance.returnUrl);
-  writeNotNull('setup_future_usage',
-      _$PaymentIntentSetupFutureUsageEnumMap[instance.setupFutureUsage]);
-  return val;
-}
+        _$ConfirmIdealPaymentDataImpl instance) =>
+    <String, dynamic>{
+      if (PaymentMethodDetails.toJsonConverter(instance.paymentMethod)
+          case final value?)
+        'payment_method': value,
+      if (instance.returnUrl case final value?) 'return_url': value,
+      if (_$PaymentIntentSetupFutureUsageEnumMap[instance.setupFutureUsage]
+          case final value?)
+        'setup_future_usage': value,
+    };
 
 const _$PaymentIntentSetupFutureUsageEnumMap = {
   PaymentIntentSetupFutureUsage.onSession: 'on_session',

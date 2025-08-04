@@ -57,7 +57,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         AddressSheetViewManager()
     }
 
-    override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+    override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         DisplayMetricsHolder.initDisplayMetricsIfNotInitialized(flutterPluginBinding.applicationContext)
 
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter.stripe/payments", JSONMethodCodec.INSTANCE)
@@ -80,7 +80,7 @@ class StripeAndroidPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         flutterPluginBinding.platformViewRegistry.registerViewFactory("flutter.stripe/address_sheet", StripeAddressSheetPlatformViewFactory(flutterPluginBinding, addressSheetFormViewManager ){stripeSdk})
     }
 
-    override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
+    override fun onMethodCall(call: MethodCall, result: Result) {
         if (initializationError != null || !this::stripeSdk.isInitialized) {
             result.error(
                 "flutter_stripe initialization failed",
@@ -116,10 +116,12 @@ If you continue to have trouble, follow this discussion to get some support http
             )
             "handleNextAction" -> stripeSdk.handleNextAction(
                 paymentIntentClientSecret = call.requiredArgument("paymentIntentClientSecret"),
+                returnUrl = call.optionalArgument("returnUrl"),
                 promise = Promise(result)
             )
             "handleNextActionForSetup" -> stripeSdk.handleNextActionForSetup(
                 setupIntentClientSecret = call.requiredArgument("setupIntentClientSecret"),
+                returnUrl = call.optionalArgument("returnUrl"),
                 promise = Promise(result)
             )
 
@@ -181,10 +183,12 @@ If you continue to have trouble, follow this discussion to get some support http
             )
             "collectBankAccountToken" -> stripeSdk.collectBankAccountToken(
                 clientSecret = call.requiredArgument("clientSecret"),
+                params = call.requiredArgument("params"),
                 promise = Promise(result)
             )
             "collectFinancialConnectionsAccounts" -> stripeSdk.collectFinancialConnectionsAccounts(
                 clientSecret = call.requiredArgument("clientSecret"),
+                params = call.requiredArgument("params"),
                 promise = Promise(result)
             )
             "resetPaymentSheetCustomer" -> stripeSdk.resetPaymentSheetCustomer(
@@ -192,6 +196,10 @@ If you continue to have trouble, follow this discussion to get some support http
             )
             "intentCreationCallback" -> stripeSdk.intentCreationCallback(
                 params = call.requiredArgument("params"),
+                promise = Promise(result)
+            )
+            "onCustomPaymentMethodConfirmHandlerCallback"-> stripeSdk.customPaymentMethodResultCallback(
+                result = call.requiredArgument("result"),
                 promise = Promise(result)
             )
             "createPlatformPayPaymentMethod" -> stripeSdk.createPlatformPayPaymentMethod(
@@ -210,11 +218,11 @@ If you continue to have trouble, follow this discussion to get some support http
                 promise = Promise(result)
             )
             "addListener" -> {
-                stripeSdk.addListener(eventName = call.requiredArgument("eventName"))
+                //stripeSdk.addListener(eventName = call.requiredArgument("eventName"))
                 result.success("OK")
             }
             "removeListener" -> {
-                stripeSdk.removeListeners(count = call.requiredArgument("count"))
+                //stripeSdk.removeListeners(count = call.requiredArgument("count"))
                 result.success("OK")
             }
             "initCustomerSheet" -> {

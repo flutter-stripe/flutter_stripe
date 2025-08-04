@@ -32,32 +32,13 @@ class StripeSdkCardPlatformView(
 
     init {
         channel.setMethodCallHandler(this)
-        if (creationParams?.containsKey("cardStyle") == true) {
-            stripeSdkCardViewManager.setCardStyle(cardView, ReadableMap(creationParams["cardStyle"] as Map<String, Any>))
-        }
-        if (creationParams?.containsKey("postalCodeEnabled") == true) {
-            stripeSdkCardViewManager.setPostalCodeEnabled(cardView, creationParams["postalCodeEnabled"] as Boolean)
-        }
-        if (creationParams?.containsKey("onBehalfOf") == true){
-            stripeSdkCardViewManager.setOnBehalfOf(cardView, creationParams["onBehalfOf"] as String)
-        }
-        if (creationParams?.containsKey("countryCode") == true) {
-            stripeSdkCardViewManager.setCountryCode(cardView, creationParams["countryCode"] as? String)
-        }
-        if (creationParams?.containsKey("placeholder") == true) {
-            stripeSdkCardViewManager.setPlaceHolders(cardView, ReadableMap(creationParams["placeholder"] as Map<String, Any>))
-        }
-        if (creationParams?.containsKey("disabled") == true) {
-            stripeSdkCardViewManager.setDisabled(cardView, creationParams["disabled"] as Boolean)
-        }
-        if (creationParams?.containsKey("preferredNetworks") == true) {
-            stripeSdkCardViewManager.setPreferredNetworks(cardView, ReadableArray(creationParams["preferredNetworks"] as List<Any>))
-        }
-        if (creationParams?.containsKey("dangerouslyGetFullCardDetails") == true) {
-            stripeSdkCardViewManager.setDangerouslyGetFullCardDetails(cardView, creationParams["dangerouslyGetFullCardDetails"] as Boolean)
-        }
-        if (creationParams?.containsKey("autofocus") == true) {
-            stripeSdkCardViewManager.setAutofocus(cardView, creationParams["autofocus"] as Boolean)
+
+        creationParams?.convertToReadables()?.forEach { entry ->
+            stripeSdkCardViewManager.getDelegate().setProperty(
+                cardView,
+                entry.key,
+                entry.value,
+            )
         }
         if (creationParams?.containsKey("cardDetails") == true) {
             val value = ReadableMap(creationParams["cardDetails"] as Map<String, Any>)
@@ -95,44 +76,9 @@ class StripeSdkCardPlatformView(
         }
     }
 
-    override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: MethodChannel.Result) {
+    override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
 
         when (call.method) {
-            "onStyleChanged" -> {
-                val arguments = ReadableMap(call.arguments as Map<String, Any>)
-                stripeSdkCardViewManager.setCardStyle(cardView, arguments.getMap("cardStyle") as  ReadableMap)
-                result.success(null)
-            }
-            "onPlaceholderChanged" -> {
-                val arguments = ReadableMap(call.arguments as Map<String, Any>)
-                stripeSdkCardViewManager.setPlaceHolders(cardView,  arguments.getMap("placeholder") as ReadableMap )
-                result.success(null)
-            }
-            "onPostalCodeEnabledChanged" -> {
-                val arguments = ReadableMap(call.arguments as Map<String, Any>)
-                stripeSdkCardViewManager.setPostalCodeEnabled(cardView, arguments.getBoolean("postalCodeEnabled"))
-                result.success(null)
-            }
-            "onCountryCodeChangedEvent" -> {
-                val arguments = ReadableMap(call.arguments as Map<String, Any>)
-                stripeSdkCardViewManager.setCountryCode(cardView, arguments.getString("countryCode"))
-                result.success(null)
-            }
-            "dangerouslyGetFullCardDetails" -> {
-                val arguments = ReadableMap(call.arguments as Map<String, Any>)
-                stripeSdkCardViewManager.setDangerouslyGetFullCardDetails(cardView, arguments.getBoolean("dangerouslyGetFullCardDetails"))
-                result.success(null)
-            }
-            "autofocus" -> {
-                val arguments = ReadableMap(call.arguments as Map<String, Any>)
-                stripeSdkCardViewManager.setAutofocus(cardView, arguments.getBoolean("autofocus"))
-                result.success(null)
-            }
-            "disabled" -> {
-                val arguments = ReadableMap(call.arguments as Map<String, Any>)
-                stripeSdkCardViewManager.setDisabled(cardView, arguments.getBoolean("disabled"))
-                result.success(null)
-            }
             "requestFocus" -> {
                 val binding = StripeCardInputWidgetBinding.bind(cardView.mCardWidget)
                 binding.cardNumberEditText.requestFocus()
@@ -149,6 +95,13 @@ class StripeSdkCardPlatformView(
                 result.success(null)
             }
             "focus", "blur", "clear" -> stripeSdkCardViewManager.receiveCommand(cardView, call.method, null)
+            else -> {
+                stripeSdkCardViewManager.delegate.setProperty(
+                    cardView,
+                    call.method,
+                    call.arguments.convertToReadable()
+                )
+            }
         }
     }
 

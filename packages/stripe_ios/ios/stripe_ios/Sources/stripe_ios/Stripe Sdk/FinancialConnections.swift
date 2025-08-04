@@ -9,9 +9,6 @@ import Foundation
 import StripeFinancialConnections
 import Stripe
 import UIKit
-#if canImport(stripe_objc)
-import stripe_objc
-#endif
 
 class FinancialConnections {
 

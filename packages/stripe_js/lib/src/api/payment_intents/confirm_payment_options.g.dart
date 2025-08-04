@@ -16,21 +16,15 @@ _$ConfirmPaymentOptionsImpl _$$ConfirmPaymentOptionsImplFromJson(Map json) =>
     );
 
 Map<String, dynamic> _$$ConfirmPaymentOptionsImplToJson(
-    _$ConfirmPaymentOptionsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('elements', const ElementsConverter().toJson(instance.elements));
-  val['confirmParams'] = instance.confirmParams.toJson();
-  writeNotNull(
-      'redirect', _$PaymentConfirmationRedirectEnumMap[instance.redirect]);
-  return val;
-}
+        _$ConfirmPaymentOptionsImpl instance) =>
+    <String, dynamic>{
+      if (const ElementsConverter().toJson(instance.elements) case final value?)
+        'elements': value,
+      'confirmParams': instance.confirmParams.toJson(),
+      if (_$PaymentConfirmationRedirectEnumMap[instance.redirect]
+          case final value?)
+        'redirect': value,
+    };
 
 const _$PaymentConfirmationRedirectEnumMap = {
   PaymentConfirmationRedirect.always: 'always',

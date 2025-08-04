@@ -24,57 +24,19 @@ class StripeAddressSheetPlatformView(
     private val themedContext = ThemedReactContext(sdkAccessor().reactContext, channel, sdkAccessor)
 
 
-    lateinit var addressSheetView: AddressSheetView
+    var addressSheetView: AddressSheetView
 
     init {
 
         addressSheetView = addressSheetManager.createViewInstance(themedContext)
         channel.setMethodCallHandler(this)
 
-        if (creationParams?.containsKey("visible") == true) {
-            addressSheetManager.setVisible(addressSheetView, creationParams?.containsKey("visible") as Boolean)
-        }
-
-        if (creationParams?.containsKey("appearance") == true) {
-            addressSheetManager.setAppearance(
-                addressSheetView, ReadableMap(creationParams["appearance"] as Map<String, Any>)
+        creationParams?.convertToReadables()?.forEach { entry ->
+            addressSheetManager.getDelegate().setProperty(
+                addressSheetView,
+                entry.key,
+                entry.value,
             )
-        }
-
-        if (creationParams?.containsKey("defaultValues") == true) {
-            addressSheetManager.setDefaultValues(
-                addressSheetView, ReadableMap(creationParams["defaultValues"] as Map<String, Any>)
-            )
-        }
-
-        if (creationParams?.containsKey("additionalFields") == true) {
-            addressSheetManager.setAdditionalFields(
-                addressSheetView, ReadableMap(creationParams["additionalFields"] as Map<String, Any>)
-            )
-        }
-
-        if (creationParams?.containsKey("allowedCountries") == true) {
-            addressSheetManager.setAllowedCountries(
-                addressSheetView, ReadableArray(creationParams["allowedCountries"] as List<String>)
-            )
-        }
-
-        if (creationParams?.containsKey("autocompleteCountries") == true) {
-            addressSheetManager.setAllowedCountries(
-                addressSheetView, ReadableArray(creationParams["autocompleteCountries"] as List<String>)
-            )
-        }
-
-        if (creationParams?.containsKey("primaryButtonTitle") == true) {
-            addressSheetManager.setPrimaryButtonTitle(addressSheetView, creationParams?.containsKey("primaryButtonTitle") as String)
-        }
-
-        if (creationParams?.containsKey("sheetTitle") == true) {
-            addressSheetManager.setPrimaryButtonTitle(addressSheetView, creationParams?.containsKey("sheetTitle") as String)
-        }
-
-        if (creationParams?.containsKey("googlePlacesApiKey") == true) {
-            addressSheetManager.setPrimaryButtonTitle(addressSheetView, creationParams?.containsKey("googlePlacesApiKey") as String)
         }
 
     }

@@ -13,15 +13,7 @@ _$ConfirmAcssDebitPaymentOptionsImpl
         );
 
 Map<String, dynamic> _$$ConfirmAcssDebitPaymentOptionsImplToJson(
-    _$ConfirmAcssDebitPaymentOptionsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('skipMandate', instance.skipMandate);
-  return val;
-}
+        _$ConfirmAcssDebitPaymentOptionsImpl instance) =>
+    <String, dynamic>{
+      if (instance.skipMandate case final value?) 'skipMandate': value,
+    };

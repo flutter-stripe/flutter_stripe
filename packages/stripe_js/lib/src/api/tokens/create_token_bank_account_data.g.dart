@@ -20,26 +20,19 @@ _$CreateTokenBankAccountDataImpl _$$CreateTokenBankAccountDataImplFromJson(
     );
 
 Map<String, dynamic> _$$CreateTokenBankAccountDataImplToJson(
-    _$CreateTokenBankAccountDataImpl instance) {
-  final val = <String, dynamic>{
-    'country': instance.country,
-    'currency': instance.currency,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('routing_number', instance.routingNumber);
-  val['account_number'] = instance.accountNumber;
-  writeNotNull('account_holder_name', instance.accountHolderName);
-  writeNotNull('account_holder_type',
-      _$BankAccountHolderTypeEnumMap[instance.accountHolderType]);
-  writeNotNull('account_type', instance.accountType);
-  return val;
-}
+        _$CreateTokenBankAccountDataImpl instance) =>
+    <String, dynamic>{
+      'country': instance.country,
+      'currency': instance.currency,
+      if (instance.routingNumber case final value?) 'routing_number': value,
+      'account_number': instance.accountNumber,
+      if (instance.accountHolderName case final value?)
+        'account_holder_name': value,
+      if (_$BankAccountHolderTypeEnumMap[instance.accountHolderType]
+          case final value?)
+        'account_holder_type': value,
+      if (instance.accountType case final value?) 'account_type': value,
+    };
 
 const _$BankAccountHolderTypeEnumMap = {
   BankAccountHolderType.company: 'company',

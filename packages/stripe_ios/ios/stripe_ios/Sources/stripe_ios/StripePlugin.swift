@@ -6,6 +6,28 @@ import PassKit
 import stripe_objc
 #endif
 
+/// The type of a closure that is capable of sending a response to a bridged operation.
+/// Use this for returning callback methods to JS.
+public typealias RCTResponseSenderBlock = ([Any]) -> Void
+
+/// The type of a closure that is capable of sending an error response to a bridged operation.
+/// Use this for returning error information to JS.
+public typealias RCTResponseErrorBlock = (Error) -> Void
+
+/// Closure that bridge modules use to resolve the JS promise waiting for a result.
+/// Nil results are supported and are converted to JS's undefined value.
+public typealias RCTPromiseResolveBlock = (Any?) -> Void
+
+/// Closure that bridge modules use to reject the JS promise waiting for a result.
+/// The error may be nil but it is preferable to pass an NSError object for more precise error messages.
+public typealias RCTPromiseRejectBlock = (_ code: String, _ message: String, _ error: Error?) -> Void
+
+/// These closure types can be used for mapping input event handlers from JS to view properties.
+/// Unlike JS method callbacks, these can be called multiple times.
+public typealias RCTDirectEventBlock = ([AnyHashable: Any]?) -> Void
+public typealias RCTBubblingEventBlock = ([String: Any]) -> Void
+
+
 protocol ViewManagerDelegate {
     var cardFieldView: CardFieldView? { get set }
     var cardFormView: CardFormView? { get set }
@@ -16,8 +38,8 @@ func RCTMakeAndLogError(_ error: String, _ something: String?, _ anotherSomethin
 }
 
 @objc(StripePlugin)
-class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
-
+class StripePlugin: StripeSdkImpl, FlutterPlugin, ViewManagerDelegate {
+    
     
     private var channel: FlutterMethodChannel
 
@@ -26,6 +48,7 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
         let channel = FlutterMethodChannel(name: "flutter.stripe/payments", binaryMessenger: registrar.messenger(), codec: FlutterJSONMethodCodec())
         
         let instance = StripePlugin(channel: channel)
+        instance.emitter = instance
         registrar.addMethodCallDelegate(instance, channel: channel)
         registrar.addApplicationDelegate(instance)
         
@@ -124,6 +147,8 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
             return removeListener(call, result: result)
         case "intentCreationCallback":
             return intentCreationCallback(call, result: result)
+        case "customPaymentMethodConfirmHandlerCallback":
+            return confirmCustomPaymentMethodCallback(call, result: result)
         case "initCustomerSheet":
             guard let arguments = call.arguments as? FlutterMap,
             let customerAdapterOverrides = arguments["customerAdapterOverrides"] as? NSDictionary,
@@ -238,7 +263,6 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
         }
     }
     
-    override
     func sendEvent(withName name: String, body: [String:  Any]) {
         channel.invokeMethod(name, arguments: body)
     }
@@ -256,6 +280,74 @@ class StripePlugin: StripeSdk, FlutterPlugin, ViewManagerDelegate {
         }
         return false
     }
+}
+
+extension StripePlugin: StripeSdkEmitter {
+    func emitOnCustomPaymentMethodConfirmHandlerCallback(_ value: [String : Any]) {
+        self.sendEvent(withName: "onCustomPaymentMethodConfirmHandlerCallback", body: value)
+    }
+    
+    
+    func emitOnConfirmHandlerCallback(_ value: [String : Any]) {
+        self.sendEvent(withName: "onConfirmHandlerCallback", body: value)
+    }
+    
+    func emitOnFinancialConnectionsEvent(_ value: [String : Any]) {
+        self.sendEvent(withName: "onFinancialConnectionsEvent", body: value)
+    }
+    
+    func emitOnOrderTrackingCallback() {
+        self.sendEvent(withName: "onOrderTrackingCallback", body:[:])
+    }
+    
+    func emitOnCustomerAdapterFetchPaymentMethodsCallback() {
+        self.sendEvent(withName: "onCustomerAdapterFetchPaymentMethodsCallback", body:[:])
+    }
+    
+    func emitOnCustomerAdapterAttachPaymentMethodCallback(_ value: [String : Any]) {
+        self.sendEvent(withName: "onCustomerAdapterAttachPaymentMethodCallback", body:value)
+    }
+    
+    func emitOnCustomerAdapterDetachPaymentMethodCallback(_ value: [String : Any]) {
+        self.sendEvent(withName: "onCustomerAdapterDetachPaymentMethodCallback", body:value)
+    }
+    
+    func emitOnCustomerAdapterSetSelectedPaymentOptionCallback(_ value: [String : Any]) {
+        self.sendEvent(withName: "onCustomerAdapterSetSelectedPaymentOptionCallback", body:value)
+    }
+    
+    func emitOnCustomerAdapterFetchSelectedPaymentOptionCallback() {
+        self.sendEvent(withName: "onCustomerAdapterFetchSelectedPaymentOptionCallback", body:[:])
+    }
+    
+    func emitOnCustomerAdapterSetupIntentClientSecretForCustomerAttachCallback() {
+        self.sendEvent(withName: "onCustomerAdapterSetupIntentClientSecretForCustomerAttachCallback", body:[:])
+    }
+    
+    func emitEmbeddedPaymentElementDidUpdateHeight(_ value: [String : Any]) {
+        self.sendEvent(withName: "embeddedPaymentElementDidUpdateHeight", body:value)
+    }
+    
+    func emitEmbeddedPaymentElementWillPresent() {
+        self.sendEvent(withName: "embeddedPaymentElementWillPresent", body:[:])
+    }
+    
+    func emitEmbeddedPaymentElementDidUpdatePaymentOption(_ value: [String : Any]) {
+        self.sendEvent(withName: "embeddedPaymentElementDidUpdatePaymentOption", body: value)
+    }
+    
+    func emitEmbeddedPaymentElementFormSheetConfirmComplete(_ value: [String : Any]) {
+        self.sendEvent(withName: "embeddedPaymentElementFormSheetConfirmComplete", body: value)
+    }
+    
+    func emitEmbeddedPaymentElementRowSelectionImmediateAction() {
+        self.sendEvent(withName: "embeddedPaymentElementRowSelectionImmediateAction", body:[:])
+    }
+    
+    func emitEmbeddedPaymentElementLoadingFailed(_ value: [String : Any]) {
+        self.sendEvent(withName: "embeddedPaymentElementLoadingFailed", body:value)
+    }
+    
 }
 
 
@@ -652,11 +744,11 @@ extension  StripePlugin {
     }
     
     func addListener(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        startObserving()
+        //startObserving()
     }
     
     func removeListener(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        stopObserving()
+        //stopObserving()
     }
     
     func intentCreationCallback(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -668,6 +760,18 @@ extension  StripePlugin {
         }
         
         intentCreationCallback(result: params, resolver: resolver(for: result), rejecter: rejecter(for: result))
+        result(nil)
+    }
+    
+    func confirmCustomPaymentMethodCallback (_ call: FlutterMethodCall, result: @escaping FlutterResult){
+        guard let arguments = call.arguments as? FlutterMap,
+              let params = arguments["params"] as? NSDictionary
+        else {
+            result(FlutterError.invalidParams)
+            return
+        }
+        
+        customPaymentMethodResultCallback(result: params, resolver: resolver(for: result),  rejecter: rejecter(for: result))
         result(nil)
     }
     
