@@ -298,6 +298,7 @@ enum PaymentMethodType {
   Upi,
   USBankAccount,
   RevolutPay,
+  Klarna,
   // WeChatPay,
   Unknown
 }
