@@ -21,7 +21,7 @@ class PlatformPaymentElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PaymentElement(
+    return PaymentElement.withIntent(
       autofocus: true,
       enablePostalCode: true,
       onCardChanged: (_) {},

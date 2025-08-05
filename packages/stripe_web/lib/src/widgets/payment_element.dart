@@ -56,13 +56,12 @@ class PaymentElement extends StatefulWidget {
   final js.PaymentElementApplePayOptions? applePay;
   final String? locale;
 
-  const PaymentElement({
+  const PaymentElement.withoutIntent({
     super.key,
-    this.clientSecret,
-    this.customerSessionClientSecret,
-    this.amount,
-    this.currency,
-    this.mode,
+    required this.amount,
+    required this.currency,
+    required this.mode,
+    required this.onCardChanged,
     this.paymentMethodTypes,
     this.paymentMethodCreation,
     this.width,
@@ -73,7 +72,6 @@ class PaymentElement extends StatefulWidget {
     this.autofocus = false,
     this.focusNode,
     this.onFocus,
-    required this.onCardChanged,
     this.layout = PaymentElementLayout.accordion,
     this.appearance,
     this.locale,
@@ -85,7 +83,38 @@ class PaymentElement extends StatefulWidget {
     this.terms,
     this.wallets,
     this.applePay,
-  });
+  })  : clientSecret = null,
+        customerSessionClientSecret = null;
+
+  const PaymentElement.withIntent({
+    super.key,
+    required this.clientSecret,
+    required this.onCardChanged,
+    this.customerSessionClientSecret,
+    this.paymentMethodTypes,
+    this.paymentMethodCreation,
+    this.width,
+    this.height,
+    this.style,
+    this.placeholder,
+    this.enablePostalCode = false,
+    this.autofocus = false,
+    this.focusNode,
+    this.onFocus,
+    this.layout = PaymentElementLayout.accordion,
+    this.appearance,
+    this.locale,
+    this.defaultValues,
+    this.business,
+    this.paymentMethodOrder,
+    this.fields,
+    this.readOnly,
+    this.terms,
+    this.wallets,
+    this.applePay,
+  })  : amount = null,
+        currency = null,
+        mode = null;
 
   @override
   State<PaymentElement> createState() => PaymentElementState();
