@@ -1,8 +1,3 @@
-## 11.6.0
-
-**Features**
-- Add deferred payment methods for web
-
 ## 11.5.1
 - retain compatibility with older Flutter versions #2132
 

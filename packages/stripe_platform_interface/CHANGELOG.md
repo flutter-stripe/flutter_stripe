@@ -1,8 +1,3 @@
-## 11.5.1
-
-**Features**
-- add methods for deferred payment on web
-
 ## 11.5.0
 Align with Stripe React Native [0.43.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.43.0):
 

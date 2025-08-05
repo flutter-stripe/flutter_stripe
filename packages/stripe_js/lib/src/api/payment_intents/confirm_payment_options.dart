@@ -10,6 +10,8 @@ class ConfirmPaymentOptions with _$ConfirmPaymentOptions {
   const factory ConfirmPaymentOptions({
     /// The Elements instance that was used to create the Payment Element.
     @ElementsConverter() required Elements elements,
+
+    /// The PaymentIntent's client secret.
     String? clientSecret,
 
     /// Parameters that will be passed on to the Stripe API.
