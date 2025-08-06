@@ -1,8 +1,9 @@
+import 'dart:js_interop';
+
 import 'package:stripe_js/stripe_api.dart';
 import 'package:stripe_js/stripe_js.dart';
 
 import '../utils/utils.dart';
-import 'dart:js_interop';
 
 extension ExtensionCreatePaymentMethod on Stripe {
   /// Use stripe.createPaymentMethod to convert payment information
@@ -16,7 +17,9 @@ extension ExtensionCreatePaymentMethod on Stripe {
   /// https://stripe.com/docs/js/payment_methods/create_payment_method
   Future<PaymentMethodResponse> createPaymentMethod(
       CreatePaymentMethodData data) {
-    final jsData = data.toJson().jsify();
+    /// with multiple constructors freezed will add a `runtimeType` field to the
+    /// JSON which is not compatible with the Stripe API so we remove it manually
+    final jsData = (data.toJson()..remove('runtimeType')).jsify();
     return _createPaymentMethod(jsData)
         .toDart
         .then((response) => response.toDart);

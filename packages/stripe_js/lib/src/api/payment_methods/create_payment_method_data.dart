@@ -53,8 +53,4 @@ class CreatePaymentMethodData with _$CreatePaymentMethodData {
 
   factory CreatePaymentMethodData.fromJson(Map<String, dynamic> json) =>
       _$CreatePaymentMethodDataFromJson(json);
-
-  /// with multiple constructors freezed will add a `runtimeType` field to the
-  /// JSON which is not compatible with the Stripe API so we remove it manually
-  Map<String, Object?> toJson() => super.toJson()..remove('runtimeType');
 }
