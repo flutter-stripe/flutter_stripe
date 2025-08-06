@@ -42,6 +42,10 @@ abstract class StripePlatform extends PlatformInterface {
   Future<PaymentIntent> handleNextAction(String paymentIntentClientSecret,
       {String? returnURL});
 
+  Future<PaymentIntent> handleCardAction(
+    String paymentIntentClientSecret,
+  );
+
   Future<SetupIntent> handleNextActionForSetupIntent(
       String setupIntentClientSecret,
       {String? returnURL});
@@ -101,6 +105,11 @@ abstract class StripePlatform extends PlatformInterface {
       CanAddCardToWalletParams params);
 
   Future<IsCardInWalletResult> isCardInWallet(String cardLastFour);
+
+  Future<AvailableMobilePayOptions> availableMobilePayOptions({
+    IsGooglePaySupportedParams? params,
+    PlatformPayWebPaymentRequestCreateOptions? paymentRequestOptions,
+  });
 
   /// Check if either google pay or apple pay  is supported on device.
   Future<bool> isPlatformPaySupported({
@@ -169,6 +178,8 @@ abstract class StripePlatform extends PlatformInterface {
     CollectFinancialConnectionsAccountsParams? params =
         const CollectFinancialConnectionsAccountsParams(),
   });
+
+  Future<void> elementsSubmit();
 
   /// Updates the internal card details. This method will not validate the card
   /// information so you should validate the information yourself.

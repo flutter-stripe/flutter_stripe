@@ -3048,6 +3048,8 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
       return _PaymentMethodParamsRevolutPay.fromJson(json);
     case 'USBankAccount':
       return _PaymentMethodParamsUsBankAccount.fromJson(json);
+    case 'Elements':
+      return _PaymentMethodParamsElements.fromJson(json);
 
     default:
       throw CheckedFromJsonException(
@@ -3060,8 +3062,6 @@ PaymentMethodParams _$PaymentMethodParamsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PaymentMethodParams {
-  /// Paymentmethod data for this paymentmethod.
-  Object get paymentMethodData => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(PaymentMethodData paymentMethodData) card,
@@ -3091,6 +3091,7 @@ mixin _$PaymentMethodParams {
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -3120,6 +3121,7 @@ mixin _$PaymentMethodParams {
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -3149,6 +3151,7 @@ mixin _$PaymentMethodParams {
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -3180,6 +3183,7 @@ mixin _$PaymentMethodParams {
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -3208,6 +3212,7 @@ mixin _$PaymentMethodParams {
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -3236,6 +3241,7 @@ mixin _$PaymentMethodParams {
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -3388,6 +3394,7 @@ class _$PaymentMethodParamsCardImpl implements _PaymentMethodParamsCard {
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return card(paymentMethodData);
   }
@@ -3420,6 +3427,7 @@ class _$PaymentMethodParamsCardImpl implements _PaymentMethodParamsCard {
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return card?.call(paymentMethodData);
   }
@@ -3452,6 +3460,7 @@ class _$PaymentMethodParamsCardImpl implements _PaymentMethodParamsCard {
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (card != null) {
@@ -3489,6 +3498,7 @@ class _$PaymentMethodParamsCardImpl implements _PaymentMethodParamsCard {
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return card(this);
   }
@@ -3520,6 +3530,7 @@ class _$PaymentMethodParamsCardImpl implements _PaymentMethodParamsCard {
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return card?.call(this);
   }
@@ -3551,6 +3562,7 @@ class _$PaymentMethodParamsCardImpl implements _PaymentMethodParamsCard {
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (card != null) {
@@ -3576,7 +3588,6 @@ abstract class _PaymentMethodParamsCard implements PaymentMethodParams {
       _$PaymentMethodParamsCardImpl.fromJson;
 
   /// Paymentmethod data for this paymentmethod.
-  @override
   PaymentMethodData get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -3713,6 +3724,7 @@ class _$PaymentMethodParamsCardWithTokenImpl
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return cardFromToken(paymentMethodData);
   }
@@ -3745,6 +3757,7 @@ class _$PaymentMethodParamsCardWithTokenImpl
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return cardFromToken?.call(paymentMethodData);
   }
@@ -3777,6 +3790,7 @@ class _$PaymentMethodParamsCardWithTokenImpl
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (cardFromToken != null) {
@@ -3814,6 +3828,7 @@ class _$PaymentMethodParamsCardWithTokenImpl
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return cardFromToken(this);
   }
@@ -3845,6 +3860,7 @@ class _$PaymentMethodParamsCardWithTokenImpl
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return cardFromToken?.call(this);
   }
@@ -3876,6 +3892,7 @@ class _$PaymentMethodParamsCardWithTokenImpl
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (cardFromToken != null) {
@@ -3903,7 +3920,6 @@ abstract class _PaymentMethodParamsCardWithToken
       _$PaymentMethodParamsCardWithTokenImpl.fromJson;
 
   /// Paymentmethod data for this paymentmethod.
-  @override
   PaymentMethodDataCardFromToken get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -4041,6 +4057,7 @@ class _$PaymentMethodParamsCardWithMethodIdImpl
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return cardFromMethodId(paymentMethodData);
   }
@@ -4073,6 +4090,7 @@ class _$PaymentMethodParamsCardWithMethodIdImpl
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return cardFromMethodId?.call(paymentMethodData);
   }
@@ -4105,6 +4123,7 @@ class _$PaymentMethodParamsCardWithMethodIdImpl
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (cardFromMethodId != null) {
@@ -4142,6 +4161,7 @@ class _$PaymentMethodParamsCardWithMethodIdImpl
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return cardFromMethodId(this);
   }
@@ -4173,6 +4193,7 @@ class _$PaymentMethodParamsCardWithMethodIdImpl
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return cardFromMethodId?.call(this);
   }
@@ -4204,6 +4225,7 @@ class _$PaymentMethodParamsCardWithMethodIdImpl
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (cardFromMethodId != null) {
@@ -4231,7 +4253,6 @@ abstract class _PaymentMethodParamsCardWithMethodId
       _$PaymentMethodParamsCardWithMethodIdImpl.fromJson;
 
   /// Payment method data object for card from payment method.
-  @override
   PaymentMethodDataCardFromMethod get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -4365,6 +4386,7 @@ class _$PaymentMethodParamsAlipayImpl implements _PaymentMethodParamsAlipay {
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return alipay(paymentMethodData);
   }
@@ -4397,6 +4419,7 @@ class _$PaymentMethodParamsAlipayImpl implements _PaymentMethodParamsAlipay {
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return alipay?.call(paymentMethodData);
   }
@@ -4429,6 +4452,7 @@ class _$PaymentMethodParamsAlipayImpl implements _PaymentMethodParamsAlipay {
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (alipay != null) {
@@ -4466,6 +4490,7 @@ class _$PaymentMethodParamsAlipayImpl implements _PaymentMethodParamsAlipay {
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return alipay(this);
   }
@@ -4497,6 +4522,7 @@ class _$PaymentMethodParamsAlipayImpl implements _PaymentMethodParamsAlipay {
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return alipay?.call(this);
   }
@@ -4528,6 +4554,7 @@ class _$PaymentMethodParamsAlipayImpl implements _PaymentMethodParamsAlipay {
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (alipay != null) {
@@ -4553,7 +4580,6 @@ abstract class _PaymentMethodParamsAlipay implements PaymentMethodParams {
       _$PaymentMethodParamsAlipayImpl.fromJson;
 
   /// Paymentmethod data for this paymentmethod.
-  @override
   PaymentMethodData get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -4689,6 +4715,7 @@ class _$PaymentMethodParamsCashAppPayImpl
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return cashAppPay(paymentMethodData);
   }
@@ -4721,6 +4748,7 @@ class _$PaymentMethodParamsCashAppPayImpl
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return cashAppPay?.call(paymentMethodData);
   }
@@ -4753,6 +4781,7 @@ class _$PaymentMethodParamsCashAppPayImpl
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (cashAppPay != null) {
@@ -4790,6 +4819,7 @@ class _$PaymentMethodParamsCashAppPayImpl
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return cashAppPay(this);
   }
@@ -4821,6 +4851,7 @@ class _$PaymentMethodParamsCashAppPayImpl
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return cashAppPay?.call(this);
   }
@@ -4852,6 +4883,7 @@ class _$PaymentMethodParamsCashAppPayImpl
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (cashAppPay != null) {
@@ -4877,7 +4909,6 @@ abstract class _PaymentMethodParamsCashAppPay implements PaymentMethodParams {
       _$PaymentMethodParamsCashAppPayImpl.fromJson;
 
   /// Paymentmethod data for this paymentmethod.
-  @override
   PaymentMethodData get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -5012,6 +5043,7 @@ class _$PaymentMethodParamsIdealImpl implements _PaymentMethodParamsIdeal {
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return ideal(paymentMethodData);
   }
@@ -5044,6 +5076,7 @@ class _$PaymentMethodParamsIdealImpl implements _PaymentMethodParamsIdeal {
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return ideal?.call(paymentMethodData);
   }
@@ -5076,6 +5109,7 @@ class _$PaymentMethodParamsIdealImpl implements _PaymentMethodParamsIdeal {
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (ideal != null) {
@@ -5113,6 +5147,7 @@ class _$PaymentMethodParamsIdealImpl implements _PaymentMethodParamsIdeal {
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return ideal(this);
   }
@@ -5144,6 +5179,7 @@ class _$PaymentMethodParamsIdealImpl implements _PaymentMethodParamsIdeal {
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return ideal?.call(this);
   }
@@ -5175,6 +5211,7 @@ class _$PaymentMethodParamsIdealImpl implements _PaymentMethodParamsIdeal {
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (ideal != null) {
@@ -5200,7 +5237,6 @@ abstract class _PaymentMethodParamsIdeal implements PaymentMethodParams {
       _$PaymentMethodParamsIdealImpl.fromJson;
 
   /// Paymentmethod data for this paymentmethod.
-  @override
   PaymentMethodDataIdeal get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -5334,6 +5370,7 @@ class _$PaymentMethodParamsAubecsImpl implements _PaymentMethodParamsAubecs {
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return aubecs(paymentMethodData);
   }
@@ -5366,6 +5403,7 @@ class _$PaymentMethodParamsAubecsImpl implements _PaymentMethodParamsAubecs {
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return aubecs?.call(paymentMethodData);
   }
@@ -5398,6 +5436,7 @@ class _$PaymentMethodParamsAubecsImpl implements _PaymentMethodParamsAubecs {
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (aubecs != null) {
@@ -5435,6 +5474,7 @@ class _$PaymentMethodParamsAubecsImpl implements _PaymentMethodParamsAubecs {
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return aubecs(this);
   }
@@ -5466,6 +5506,7 @@ class _$PaymentMethodParamsAubecsImpl implements _PaymentMethodParamsAubecs {
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return aubecs?.call(this);
   }
@@ -5497,6 +5538,7 @@ class _$PaymentMethodParamsAubecsImpl implements _PaymentMethodParamsAubecs {
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (aubecs != null) {
@@ -5522,7 +5564,6 @@ abstract class _PaymentMethodParamsAubecs implements PaymentMethodParams {
       _$PaymentMethodParamsAubecsImpl.fromJson;
 
   /// Paymentmethod data for this paymentmethod.
-  @override
   PaymentMethodDataAubecs get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -5658,6 +5699,7 @@ class _$PaymentMethodParamsBankContactImpl
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return bancontact(paymentMethodData);
   }
@@ -5690,6 +5732,7 @@ class _$PaymentMethodParamsBankContactImpl
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return bancontact?.call(paymentMethodData);
   }
@@ -5722,6 +5765,7 @@ class _$PaymentMethodParamsBankContactImpl
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (bancontact != null) {
@@ -5759,6 +5803,7 @@ class _$PaymentMethodParamsBankContactImpl
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return bancontact(this);
   }
@@ -5790,6 +5835,7 @@ class _$PaymentMethodParamsBankContactImpl
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return bancontact?.call(this);
   }
@@ -5821,6 +5867,7 @@ class _$PaymentMethodParamsBankContactImpl
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (bancontact != null) {
@@ -5846,7 +5893,6 @@ abstract class _PaymentMethodParamsBankContact implements PaymentMethodParams {
       _$PaymentMethodParamsBankContactImpl.fromJson;
 
   /// Paymentmethod data for this paymentmethod.
-  @override
   PaymentMethodData get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -5981,6 +6027,7 @@ class _$PaymentMethodParamsGiroPayImpl implements _PaymentMethodParamsGiroPay {
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return giroPay(paymentMethodData);
   }
@@ -6013,6 +6060,7 @@ class _$PaymentMethodParamsGiroPayImpl implements _PaymentMethodParamsGiroPay {
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return giroPay?.call(paymentMethodData);
   }
@@ -6045,6 +6093,7 @@ class _$PaymentMethodParamsGiroPayImpl implements _PaymentMethodParamsGiroPay {
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (giroPay != null) {
@@ -6082,6 +6131,7 @@ class _$PaymentMethodParamsGiroPayImpl implements _PaymentMethodParamsGiroPay {
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return giroPay(this);
   }
@@ -6113,6 +6163,7 @@ class _$PaymentMethodParamsGiroPayImpl implements _PaymentMethodParamsGiroPay {
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return giroPay?.call(this);
   }
@@ -6144,6 +6195,7 @@ class _$PaymentMethodParamsGiroPayImpl implements _PaymentMethodParamsGiroPay {
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (giroPay != null) {
@@ -6169,7 +6221,6 @@ abstract class _PaymentMethodParamsGiroPay implements PaymentMethodParams {
       _$PaymentMethodParamsGiroPayImpl.fromJson;
 
   /// Paymentmethod data for this paymentmethod.
-  @override
   PaymentMethodData get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -6302,6 +6353,7 @@ class _$PaymentMethodParamsEpsImpl implements _PaymentMethodParamsEps {
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return eps(paymentMethodData);
   }
@@ -6334,6 +6386,7 @@ class _$PaymentMethodParamsEpsImpl implements _PaymentMethodParamsEps {
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return eps?.call(paymentMethodData);
   }
@@ -6366,6 +6419,7 @@ class _$PaymentMethodParamsEpsImpl implements _PaymentMethodParamsEps {
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (eps != null) {
@@ -6403,6 +6457,7 @@ class _$PaymentMethodParamsEpsImpl implements _PaymentMethodParamsEps {
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return eps(this);
   }
@@ -6434,6 +6489,7 @@ class _$PaymentMethodParamsEpsImpl implements _PaymentMethodParamsEps {
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return eps?.call(this);
   }
@@ -6465,6 +6521,7 @@ class _$PaymentMethodParamsEpsImpl implements _PaymentMethodParamsEps {
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (eps != null) {
@@ -6490,7 +6547,6 @@ abstract class _PaymentMethodParamsEps implements PaymentMethodParams {
       _$PaymentMethodParamsEpsImpl.fromJson;
 
   /// Paymentmethod data for this paymentmethod.
-  @override
   PaymentMethodData get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -6623,6 +6679,7 @@ class _$PaymentMethodParamsAffirmImpl implements _PaymentMethodParamsAffirm {
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return affirm(paymentMethodData);
   }
@@ -6655,6 +6712,7 @@ class _$PaymentMethodParamsAffirmImpl implements _PaymentMethodParamsAffirm {
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return affirm?.call(paymentMethodData);
   }
@@ -6687,6 +6745,7 @@ class _$PaymentMethodParamsAffirmImpl implements _PaymentMethodParamsAffirm {
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (affirm != null) {
@@ -6724,6 +6783,7 @@ class _$PaymentMethodParamsAffirmImpl implements _PaymentMethodParamsAffirm {
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return affirm(this);
   }
@@ -6755,6 +6815,7 @@ class _$PaymentMethodParamsAffirmImpl implements _PaymentMethodParamsAffirm {
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return affirm?.call(this);
   }
@@ -6786,6 +6847,7 @@ class _$PaymentMethodParamsAffirmImpl implements _PaymentMethodParamsAffirm {
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (affirm != null) {
@@ -6811,7 +6873,6 @@ abstract class _PaymentMethodParamsAffirm implements PaymentMethodParams {
       _$PaymentMethodParamsAffirmImpl.fromJson;
 
   /// Paymentmethod data for this paymentmethod.
-  @override
   PaymentMethodData get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -6944,6 +7005,7 @@ class _$PaymentMethodParamsPayImpl implements _PaymentMethodParamsPay {
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return grabPay(paymentMethodData);
   }
@@ -6976,6 +7038,7 @@ class _$PaymentMethodParamsPayImpl implements _PaymentMethodParamsPay {
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return grabPay?.call(paymentMethodData);
   }
@@ -7008,6 +7071,7 @@ class _$PaymentMethodParamsPayImpl implements _PaymentMethodParamsPay {
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (grabPay != null) {
@@ -7045,6 +7109,7 @@ class _$PaymentMethodParamsPayImpl implements _PaymentMethodParamsPay {
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return grabPay(this);
   }
@@ -7076,6 +7141,7 @@ class _$PaymentMethodParamsPayImpl implements _PaymentMethodParamsPay {
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return grabPay?.call(this);
   }
@@ -7107,6 +7173,7 @@ class _$PaymentMethodParamsPayImpl implements _PaymentMethodParamsPay {
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (grabPay != null) {
@@ -7132,7 +7199,6 @@ abstract class _PaymentMethodParamsPay implements PaymentMethodParams {
       _$PaymentMethodParamsPayImpl.fromJson;
 
   /// Paymentmethod data for this paymentmethod.
-  @override
   PaymentMethodData get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -7265,6 +7331,7 @@ class _$PaymentMethodParamsP24Impl implements _PaymentMethodParamsP24 {
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return p24(paymentMethodData);
   }
@@ -7297,6 +7364,7 @@ class _$PaymentMethodParamsP24Impl implements _PaymentMethodParamsP24 {
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return p24?.call(paymentMethodData);
   }
@@ -7329,6 +7397,7 @@ class _$PaymentMethodParamsP24Impl implements _PaymentMethodParamsP24 {
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (p24 != null) {
@@ -7366,6 +7435,7 @@ class _$PaymentMethodParamsP24Impl implements _PaymentMethodParamsP24 {
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return p24(this);
   }
@@ -7397,6 +7467,7 @@ class _$PaymentMethodParamsP24Impl implements _PaymentMethodParamsP24 {
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return p24?.call(this);
   }
@@ -7428,6 +7499,7 @@ class _$PaymentMethodParamsP24Impl implements _PaymentMethodParamsP24 {
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (p24 != null) {
@@ -7453,7 +7525,6 @@ abstract class _PaymentMethodParamsP24 implements PaymentMethodParams {
       _$PaymentMethodParamsP24Impl.fromJson;
 
   /// Paymentmethod data for this paymentmethod.
-  @override
   PaymentMethodData get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -7587,6 +7658,7 @@ class _$PaymentMethodParamsFpxImpl implements _PaymentMethodParamsFpx {
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return fpx(paymentMethodData);
   }
@@ -7619,6 +7691,7 @@ class _$PaymentMethodParamsFpxImpl implements _PaymentMethodParamsFpx {
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return fpx?.call(paymentMethodData);
   }
@@ -7651,6 +7724,7 @@ class _$PaymentMethodParamsFpxImpl implements _PaymentMethodParamsFpx {
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (fpx != null) {
@@ -7688,6 +7762,7 @@ class _$PaymentMethodParamsFpxImpl implements _PaymentMethodParamsFpx {
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return fpx(this);
   }
@@ -7719,6 +7794,7 @@ class _$PaymentMethodParamsFpxImpl implements _PaymentMethodParamsFpx {
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return fpx?.call(this);
   }
@@ -7750,6 +7826,7 @@ class _$PaymentMethodParamsFpxImpl implements _PaymentMethodParamsFpx {
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (fpx != null) {
@@ -7775,7 +7852,6 @@ abstract class _PaymentMethodParamsFpx implements PaymentMethodParams {
       _$PaymentMethodParamsFpxImpl.fromJson;
 
   /// Paymentmethod data for this paymentmethod.
-  @override
   PaymentMethodDataFpx get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -7912,6 +7988,7 @@ class _$PaymentMethodParamsSepaDebitImpl
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return sepaDebit(paymentMethodData);
   }
@@ -7944,6 +8021,7 @@ class _$PaymentMethodParamsSepaDebitImpl
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return sepaDebit?.call(paymentMethodData);
   }
@@ -7976,6 +8054,7 @@ class _$PaymentMethodParamsSepaDebitImpl
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (sepaDebit != null) {
@@ -8013,6 +8092,7 @@ class _$PaymentMethodParamsSepaDebitImpl
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return sepaDebit(this);
   }
@@ -8044,6 +8124,7 @@ class _$PaymentMethodParamsSepaDebitImpl
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return sepaDebit?.call(this);
   }
@@ -8075,6 +8156,7 @@ class _$PaymentMethodParamsSepaDebitImpl
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (sepaDebit != null) {
@@ -8100,7 +8182,6 @@ abstract class _PaymentMethodParamsSepaDebit implements PaymentMethodParams {
       _$PaymentMethodParamsSepaDebitImpl.fromJson;
 
   /// Paymentmethod data for this paymentmethod.
-  @override
   PaymentMethodDataSepa get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -8234,6 +8315,7 @@ class _$PaymentMethodParamsSofortImpl implements _PaymentMethodParamsSofort {
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return sofort(paymentMethodData);
   }
@@ -8266,6 +8348,7 @@ class _$PaymentMethodParamsSofortImpl implements _PaymentMethodParamsSofort {
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return sofort?.call(paymentMethodData);
   }
@@ -8298,6 +8381,7 @@ class _$PaymentMethodParamsSofortImpl implements _PaymentMethodParamsSofort {
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (sofort != null) {
@@ -8335,6 +8419,7 @@ class _$PaymentMethodParamsSofortImpl implements _PaymentMethodParamsSofort {
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return sofort(this);
   }
@@ -8366,6 +8451,7 @@ class _$PaymentMethodParamsSofortImpl implements _PaymentMethodParamsSofort {
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return sofort?.call(this);
   }
@@ -8397,6 +8483,7 @@ class _$PaymentMethodParamsSofortImpl implements _PaymentMethodParamsSofort {
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (sofort != null) {
@@ -8421,7 +8508,6 @@ abstract class _PaymentMethodParamsSofort implements PaymentMethodParams {
   factory _PaymentMethodParamsSofort.fromJson(Map<String, dynamic> json) =
       _$PaymentMethodParamsSofortImpl.fromJson;
 
-  @override
   PaymentMethodDataSofort get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -8557,6 +8643,7 @@ class _$PaymentMethodParamsAfterpayClearpayImpl
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return afterpayClearpay(paymentMethodData);
   }
@@ -8589,6 +8676,7 @@ class _$PaymentMethodParamsAfterpayClearpayImpl
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return afterpayClearpay?.call(paymentMethodData);
   }
@@ -8621,6 +8709,7 @@ class _$PaymentMethodParamsAfterpayClearpayImpl
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (afterpayClearpay != null) {
@@ -8658,6 +8747,7 @@ class _$PaymentMethodParamsAfterpayClearpayImpl
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return afterpayClearpay(this);
   }
@@ -8689,6 +8779,7 @@ class _$PaymentMethodParamsAfterpayClearpayImpl
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return afterpayClearpay?.call(this);
   }
@@ -8720,6 +8811,7 @@ class _$PaymentMethodParamsAfterpayClearpayImpl
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (afterpayClearpay != null) {
@@ -8746,7 +8838,6 @@ abstract class _PaymentMethodParamsAfterpayClearpay
           Map<String, dynamic> json) =
       _$PaymentMethodParamsAfterpayClearpayImpl.fromJson;
 
-  @override
   PaymentMethodDataAfterPay get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -8880,6 +8971,7 @@ class _$PaymentMethodParamsOxxoImpl implements _PaymentMethodParamsOxxo {
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return oxxo(paymentMethodData);
   }
@@ -8912,6 +9004,7 @@ class _$PaymentMethodParamsOxxoImpl implements _PaymentMethodParamsOxxo {
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return oxxo?.call(paymentMethodData);
   }
@@ -8944,6 +9037,7 @@ class _$PaymentMethodParamsOxxoImpl implements _PaymentMethodParamsOxxo {
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (oxxo != null) {
@@ -8981,6 +9075,7 @@ class _$PaymentMethodParamsOxxoImpl implements _PaymentMethodParamsOxxo {
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return oxxo(this);
   }
@@ -9012,6 +9107,7 @@ class _$PaymentMethodParamsOxxoImpl implements _PaymentMethodParamsOxxo {
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return oxxo?.call(this);
   }
@@ -9043,6 +9139,7 @@ class _$PaymentMethodParamsOxxoImpl implements _PaymentMethodParamsOxxo {
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (oxxo != null) {
@@ -9068,7 +9165,6 @@ abstract class _PaymentMethodParamsOxxo implements PaymentMethodParams {
       _$PaymentMethodParamsOxxoImpl.fromJson;
 
   /// Paymentmethod data for this paymentmethod.
-  @override
   PaymentMethodData get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -9204,6 +9300,7 @@ class _$PaymentMethodParamsKlarnaImpl implements _PaymentMethodParamsKlarna {
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return klarna(paymentMethodData);
   }
@@ -9236,6 +9333,7 @@ class _$PaymentMethodParamsKlarnaImpl implements _PaymentMethodParamsKlarna {
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return klarna?.call(paymentMethodData);
   }
@@ -9268,6 +9366,7 @@ class _$PaymentMethodParamsKlarnaImpl implements _PaymentMethodParamsKlarna {
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (klarna != null) {
@@ -9305,6 +9404,7 @@ class _$PaymentMethodParamsKlarnaImpl implements _PaymentMethodParamsKlarna {
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return klarna(this);
   }
@@ -9336,6 +9436,7 @@ class _$PaymentMethodParamsKlarnaImpl implements _PaymentMethodParamsKlarna {
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return klarna?.call(this);
   }
@@ -9367,6 +9468,7 @@ class _$PaymentMethodParamsKlarnaImpl implements _PaymentMethodParamsKlarna {
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (klarna != null) {
@@ -9395,7 +9497,6 @@ abstract class _PaymentMethodParamsKlarna implements PaymentMethodParams {
   ///
   /// Make sure to add an email and country (part of the address) in the
   /// billingdetails which is required for using Klarna.
-  @override
   PaymentMethodData get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -9528,6 +9629,7 @@ class _$PaymentMethodParamsPayPalImpl implements _PaymentMethodParamsPayPal {
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return payPal(paymentMethodData);
   }
@@ -9560,6 +9662,7 @@ class _$PaymentMethodParamsPayPalImpl implements _PaymentMethodParamsPayPal {
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return payPal?.call(paymentMethodData);
   }
@@ -9592,6 +9695,7 @@ class _$PaymentMethodParamsPayPalImpl implements _PaymentMethodParamsPayPal {
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (payPal != null) {
@@ -9629,6 +9733,7 @@ class _$PaymentMethodParamsPayPalImpl implements _PaymentMethodParamsPayPal {
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return payPal(this);
   }
@@ -9660,6 +9765,7 @@ class _$PaymentMethodParamsPayPalImpl implements _PaymentMethodParamsPayPal {
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return payPal?.call(this);
   }
@@ -9691,6 +9797,7 @@ class _$PaymentMethodParamsPayPalImpl implements _PaymentMethodParamsPayPal {
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (payPal != null) {
@@ -9716,7 +9823,6 @@ abstract class _PaymentMethodParamsPayPal implements PaymentMethodParams {
       _$PaymentMethodParamsPayPalImpl.fromJson;
 
   /// Paymentmethod data for this paymentmethod.
-  @override
   PaymentMethodData get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -9852,6 +9958,7 @@ class _$PaymentMethodParamsRevolutPayImpl
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return revolutPay(paymentMethodData);
   }
@@ -9884,6 +9991,7 @@ class _$PaymentMethodParamsRevolutPayImpl
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return revolutPay?.call(paymentMethodData);
   }
@@ -9916,6 +10024,7 @@ class _$PaymentMethodParamsRevolutPayImpl
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (revolutPay != null) {
@@ -9953,6 +10062,7 @@ class _$PaymentMethodParamsRevolutPayImpl
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return revolutPay(this);
   }
@@ -9984,6 +10094,7 @@ class _$PaymentMethodParamsRevolutPayImpl
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return revolutPay?.call(this);
   }
@@ -10015,6 +10126,7 @@ class _$PaymentMethodParamsRevolutPayImpl
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (revolutPay != null) {
@@ -10040,7 +10152,6 @@ abstract class _PaymentMethodParamsRevolutPay implements PaymentMethodParams {
       _$PaymentMethodParamsRevolutPayImpl.fromJson;
 
   /// Paymentmethod data for this paymentmethod.
-  @override
   PaymentMethodData get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -10178,6 +10289,7 @@ class _$PaymentMethodParamsUsBankAccountImpl
     required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
     required TResult Function(PaymentMethodDataUsBank paymentMethodData)
         usBankAccount,
+    required TResult Function() elements,
   }) {
     return usBankAccount(paymentMethodData);
   }
@@ -10210,6 +10322,7 @@ class _$PaymentMethodParamsUsBankAccountImpl
     TResult? Function(PaymentMethodData paymentMethodData)? payPal,
     TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
   }) {
     return usBankAccount?.call(paymentMethodData);
   }
@@ -10242,6 +10355,7 @@ class _$PaymentMethodParamsUsBankAccountImpl
     TResult Function(PaymentMethodData paymentMethodData)? payPal,
     TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
     TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
     required TResult orElse(),
   }) {
     if (usBankAccount != null) {
@@ -10279,6 +10393,7 @@ class _$PaymentMethodParamsUsBankAccountImpl
     required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
     required TResult Function(_PaymentMethodParamsUsBankAccount value)
         usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
   }) {
     return usBankAccount(this);
   }
@@ -10310,6 +10425,7 @@ class _$PaymentMethodParamsUsBankAccountImpl
     TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
   }) {
     return usBankAccount?.call(this);
   }
@@ -10341,6 +10457,7 @@ class _$PaymentMethodParamsUsBankAccountImpl
     TResult Function(_PaymentMethodParamsPayPal value)? payPal,
     TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
     TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
     required TResult orElse(),
   }) {
     if (usBankAccount != null) {
@@ -10368,7 +10485,6 @@ abstract class _PaymentMethodParamsUsBankAccount
       _$PaymentMethodParamsUsBankAccountImpl.fromJson;
 
   /// Paymentmethod data for this paymentmethod.
-  @override
   PaymentMethodDataUsBank get paymentMethodData;
 
   /// Create a copy of PaymentMethodParams
@@ -10377,6 +10493,282 @@ abstract class _PaymentMethodParamsUsBankAccount
   _$$PaymentMethodParamsUsBankAccountImplCopyWith<
           _$PaymentMethodParamsUsBankAccountImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PaymentMethodParamsElementsImplCopyWith<$Res> {
+  factory _$$PaymentMethodParamsElementsImplCopyWith(
+          _$PaymentMethodParamsElementsImpl value,
+          $Res Function(_$PaymentMethodParamsElementsImpl) then) =
+      __$$PaymentMethodParamsElementsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PaymentMethodParamsElementsImplCopyWithImpl<$Res>
+    extends _$PaymentMethodParamsCopyWithImpl<$Res,
+        _$PaymentMethodParamsElementsImpl>
+    implements _$$PaymentMethodParamsElementsImplCopyWith<$Res> {
+  __$$PaymentMethodParamsElementsImplCopyWithImpl(
+      _$PaymentMethodParamsElementsImpl _value,
+      $Res Function(_$PaymentMethodParamsElementsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of PaymentMethodParams
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$PaymentMethodParamsElementsImpl
+    implements _PaymentMethodParamsElements {
+  const _$PaymentMethodParamsElementsImpl({final String? $type})
+      : $type = $type ?? 'Elements';
+
+  factory _$PaymentMethodParamsElementsImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$PaymentMethodParamsElementsImplFromJson(json);
+
+  @JsonKey(name: 'paymentMethodType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'PaymentMethodParams.elements()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaymentMethodParamsElementsImpl);
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PaymentMethodData paymentMethodData) card,
+    required TResult Function(PaymentMethodDataCardFromToken paymentMethodData)
+        cardFromToken,
+    required TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)
+        cardFromMethodId,
+    required TResult Function(PaymentMethodData paymentMethodData) alipay,
+    required TResult Function(PaymentMethodData paymentMethodData) cashAppPay,
+    required TResult Function(PaymentMethodDataIdeal paymentMethodData) ideal,
+    required TResult Function(PaymentMethodDataAubecs paymentMethodData) aubecs,
+    required TResult Function(PaymentMethodData paymentMethodData) bancontact,
+    required TResult Function(PaymentMethodData paymentMethodData) giroPay,
+    required TResult Function(PaymentMethodData paymentMethodData) eps,
+    required TResult Function(PaymentMethodData paymentMethodData) affirm,
+    required TResult Function(PaymentMethodData paymentMethodData) grabPay,
+    required TResult Function(PaymentMethodData paymentMethodData) p24,
+    required TResult Function(PaymentMethodDataFpx paymentMethodData) fpx,
+    required TResult Function(PaymentMethodDataSepa paymentMethodData)
+        sepaDebit,
+    required TResult Function(PaymentMethodDataSofort paymentMethodData) sofort,
+    required TResult Function(PaymentMethodDataAfterPay paymentMethodData)
+        afterpayClearpay,
+    required TResult Function(PaymentMethodData paymentMethodData) oxxo,
+    required TResult Function(PaymentMethodData paymentMethodData) klarna,
+    required TResult Function(PaymentMethodData paymentMethodData) payPal,
+    required TResult Function(PaymentMethodData paymentMethodData) revolutPay,
+    required TResult Function(PaymentMethodDataUsBank paymentMethodData)
+        usBankAccount,
+    required TResult Function() elements,
+  }) {
+    return elements();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PaymentMethodData paymentMethodData)? card,
+    TResult? Function(PaymentMethodDataCardFromToken paymentMethodData)?
+        cardFromToken,
+    TResult? Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+        cardFromMethodId,
+    TResult? Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult? Function(PaymentMethodData paymentMethodData)? cashAppPay,
+    TResult? Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
+    TResult? Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
+    TResult? Function(PaymentMethodData paymentMethodData)? bancontact,
+    TResult? Function(PaymentMethodData paymentMethodData)? giroPay,
+    TResult? Function(PaymentMethodData paymentMethodData)? eps,
+    TResult? Function(PaymentMethodData paymentMethodData)? affirm,
+    TResult? Function(PaymentMethodData paymentMethodData)? grabPay,
+    TResult? Function(PaymentMethodData paymentMethodData)? p24,
+    TResult? Function(PaymentMethodDataFpx paymentMethodData)? fpx,
+    TResult? Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult? Function(PaymentMethodDataSofort paymentMethodData)? sofort,
+    TResult? Function(PaymentMethodDataAfterPay paymentMethodData)?
+        afterpayClearpay,
+    TResult? Function(PaymentMethodData paymentMethodData)? oxxo,
+    TResult? Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult? Function(PaymentMethodData paymentMethodData)? payPal,
+    TResult? Function(PaymentMethodData paymentMethodData)? revolutPay,
+    TResult? Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult? Function()? elements,
+  }) {
+    return elements?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PaymentMethodData paymentMethodData)? card,
+    TResult Function(PaymentMethodDataCardFromToken paymentMethodData)?
+        cardFromToken,
+    TResult Function(PaymentMethodDataCardFromMethod paymentMethodData)?
+        cardFromMethodId,
+    TResult Function(PaymentMethodData paymentMethodData)? alipay,
+    TResult Function(PaymentMethodData paymentMethodData)? cashAppPay,
+    TResult Function(PaymentMethodDataIdeal paymentMethodData)? ideal,
+    TResult Function(PaymentMethodDataAubecs paymentMethodData)? aubecs,
+    TResult Function(PaymentMethodData paymentMethodData)? bancontact,
+    TResult Function(PaymentMethodData paymentMethodData)? giroPay,
+    TResult Function(PaymentMethodData paymentMethodData)? eps,
+    TResult Function(PaymentMethodData paymentMethodData)? affirm,
+    TResult Function(PaymentMethodData paymentMethodData)? grabPay,
+    TResult Function(PaymentMethodData paymentMethodData)? p24,
+    TResult Function(PaymentMethodDataFpx paymentMethodData)? fpx,
+    TResult Function(PaymentMethodDataSepa paymentMethodData)? sepaDebit,
+    TResult Function(PaymentMethodDataSofort paymentMethodData)? sofort,
+    TResult Function(PaymentMethodDataAfterPay paymentMethodData)?
+        afterpayClearpay,
+    TResult Function(PaymentMethodData paymentMethodData)? oxxo,
+    TResult Function(PaymentMethodData paymentMethodData)? klarna,
+    TResult Function(PaymentMethodData paymentMethodData)? payPal,
+    TResult Function(PaymentMethodData paymentMethodData)? revolutPay,
+    TResult Function(PaymentMethodDataUsBank paymentMethodData)? usBankAccount,
+    TResult Function()? elements,
+    required TResult orElse(),
+  }) {
+    if (elements != null) {
+      return elements();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentMethodParamsCard value) card,
+    required TResult Function(_PaymentMethodParamsCardWithToken value)
+        cardFromToken,
+    required TResult Function(_PaymentMethodParamsCardWithMethodId value)
+        cardFromMethodId,
+    required TResult Function(_PaymentMethodParamsAlipay value) alipay,
+    required TResult Function(_PaymentMethodParamsCashAppPay value) cashAppPay,
+    required TResult Function(_PaymentMethodParamsIdeal value) ideal,
+    required TResult Function(_PaymentMethodParamsAubecs value) aubecs,
+    required TResult Function(_PaymentMethodParamsBankContact value) bancontact,
+    required TResult Function(_PaymentMethodParamsGiroPay value) giroPay,
+    required TResult Function(_PaymentMethodParamsEps value) eps,
+    required TResult Function(_PaymentMethodParamsAffirm value) affirm,
+    required TResult Function(_PaymentMethodParamsPay value) grabPay,
+    required TResult Function(_PaymentMethodParamsP24 value) p24,
+    required TResult Function(_PaymentMethodParamsFpx value) fpx,
+    required TResult Function(_PaymentMethodParamsSepaDebit value) sepaDebit,
+    required TResult Function(_PaymentMethodParamsSofort value) sofort,
+    required TResult Function(_PaymentMethodParamsAfterpayClearpay value)
+        afterpayClearpay,
+    required TResult Function(_PaymentMethodParamsOxxo value) oxxo,
+    required TResult Function(_PaymentMethodParamsKlarna value) klarna,
+    required TResult Function(_PaymentMethodParamsPayPal value) payPal,
+    required TResult Function(_PaymentMethodParamsRevolutPay value) revolutPay,
+    required TResult Function(_PaymentMethodParamsUsBankAccount value)
+        usBankAccount,
+    required TResult Function(_PaymentMethodParamsElements value) elements,
+  }) {
+    return elements(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PaymentMethodParamsCard value)? card,
+    TResult? Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
+    TResult? Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult? Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult? Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
+    TResult? Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult? Function(_PaymentMethodParamsAubecs value)? aubecs,
+    TResult? Function(_PaymentMethodParamsBankContact value)? bancontact,
+    TResult? Function(_PaymentMethodParamsGiroPay value)? giroPay,
+    TResult? Function(_PaymentMethodParamsEps value)? eps,
+    TResult? Function(_PaymentMethodParamsAffirm value)? affirm,
+    TResult? Function(_PaymentMethodParamsPay value)? grabPay,
+    TResult? Function(_PaymentMethodParamsP24 value)? p24,
+    TResult? Function(_PaymentMethodParamsFpx value)? fpx,
+    TResult? Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult? Function(_PaymentMethodParamsSofort value)? sofort,
+    TResult? Function(_PaymentMethodParamsAfterpayClearpay value)?
+        afterpayClearpay,
+    TResult? Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult? Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult? Function(_PaymentMethodParamsPayPal value)? payPal,
+    TResult? Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
+    TResult? Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult? Function(_PaymentMethodParamsElements value)? elements,
+  }) {
+    return elements?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentMethodParamsCard value)? card,
+    TResult Function(_PaymentMethodParamsCardWithToken value)? cardFromToken,
+    TResult Function(_PaymentMethodParamsCardWithMethodId value)?
+        cardFromMethodId,
+    TResult Function(_PaymentMethodParamsAlipay value)? alipay,
+    TResult Function(_PaymentMethodParamsCashAppPay value)? cashAppPay,
+    TResult Function(_PaymentMethodParamsIdeal value)? ideal,
+    TResult Function(_PaymentMethodParamsAubecs value)? aubecs,
+    TResult Function(_PaymentMethodParamsBankContact value)? bancontact,
+    TResult Function(_PaymentMethodParamsGiroPay value)? giroPay,
+    TResult Function(_PaymentMethodParamsEps value)? eps,
+    TResult Function(_PaymentMethodParamsAffirm value)? affirm,
+    TResult Function(_PaymentMethodParamsPay value)? grabPay,
+    TResult Function(_PaymentMethodParamsP24 value)? p24,
+    TResult Function(_PaymentMethodParamsFpx value)? fpx,
+    TResult Function(_PaymentMethodParamsSepaDebit value)? sepaDebit,
+    TResult Function(_PaymentMethodParamsSofort value)? sofort,
+    TResult Function(_PaymentMethodParamsAfterpayClearpay value)?
+        afterpayClearpay,
+    TResult Function(_PaymentMethodParamsOxxo value)? oxxo,
+    TResult Function(_PaymentMethodParamsKlarna value)? klarna,
+    TResult Function(_PaymentMethodParamsPayPal value)? payPal,
+    TResult Function(_PaymentMethodParamsRevolutPay value)? revolutPay,
+    TResult Function(_PaymentMethodParamsUsBankAccount value)? usBankAccount,
+    TResult Function(_PaymentMethodParamsElements value)? elements,
+    required TResult orElse(),
+  }) {
+    if (elements != null) {
+      return elements(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PaymentMethodParamsElementsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymentMethodParamsElements implements PaymentMethodParams {
+  const factory _PaymentMethodParamsElements() =
+      _$PaymentMethodParamsElementsImpl;
+
+  factory _PaymentMethodParamsElements.fromJson(Map<String, dynamic> json) =
+      _$PaymentMethodParamsElementsImpl.fromJson;
 }
 
 PaymentMethodData _$PaymentMethodDataFromJson(Map<String, dynamic> json) {

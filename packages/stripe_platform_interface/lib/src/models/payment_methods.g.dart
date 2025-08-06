@@ -553,6 +553,18 @@ Map<String, dynamic> _$$PaymentMethodParamsUsBankAccountImplToJson(
       'paymentMethodType': instance.$type,
     };
 
+_$PaymentMethodParamsElementsImpl _$$PaymentMethodParamsElementsImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PaymentMethodParamsElementsImpl(
+      $type: json['paymentMethodType'] as String?,
+    );
+
+Map<String, dynamic> _$$PaymentMethodParamsElementsImplToJson(
+        _$PaymentMethodParamsElementsImpl instance) =>
+    <String, dynamic>{
+      'paymentMethodType': instance.$type,
+    };
+
 _$PaymentMethodDataImpl _$$PaymentMethodDataImplFromJson(
         Map<String, dynamic> json) =>
     _$PaymentMethodDataImpl(

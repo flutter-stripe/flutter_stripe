@@ -7,7 +7,7 @@ part 'create_payment_method_data.g.dart';
 
 @freezed
 class CreatePaymentMethodData with _$CreatePaymentMethodData {
-  const factory CreatePaymentMethodData({
+  const factory CreatePaymentMethodData.card({
     /// Unique identifier for the object.
     required String type,
 
@@ -45,7 +45,11 @@ class CreatePaymentMethodData with _$CreatePaymentMethodData {
     /// Billing information associated with the PaymentMethod that may be used or required by particular types of payment methods.
 
     @JsonKey(name: "billing_details") BillingDetails? billingDetails,
-  }) = _CreatePaymentMethodData;
+  }) = _CreatePaymentMethodDataCard;
+
+  const factory CreatePaymentMethodData.elements({
+    @ElementsConverter() required Elements elements,
+  }) = _CreatePaymentMethodDataElements;
 
   factory CreatePaymentMethodData.fromJson(Map<String, dynamic> json) =>
       _$CreatePaymentMethodDataFromJson(json);
