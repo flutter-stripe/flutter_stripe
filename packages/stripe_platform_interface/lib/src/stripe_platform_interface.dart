@@ -39,8 +39,6 @@ abstract class StripePlatform extends PlatformInterface {
     PaymentMethodOptions? options,
   ]);
 
-  Future<PaymentMethod> createPaymentMethodWithElements();
-
   Future<PaymentIntent> handleNextAction(String paymentIntentClientSecret,
       {String? returnURL});
 

@@ -6,9 +6,9 @@ part of 'create_payment_method_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CreatePaymentMethodDataImpl _$$CreatePaymentMethodDataImplFromJson(
+_$CreatePaymentMethodDataCardImpl _$$CreatePaymentMethodDataCardImplFromJson(
         Map json) =>
-    _$CreatePaymentMethodDataImpl(
+    _$CreatePaymentMethodDataCardImpl(
       type: json['type'] as String,
       card: const ElementConverter().fromJson(json['card']),
       auBecsDebit: const ElementConverter().fromJson(json['au_becs_debit']),
@@ -24,10 +24,11 @@ _$CreatePaymentMethodDataImpl _$$CreatePaymentMethodDataImplFromJson(
           ? null
           : BillingDetails.fromJson(
               Map<String, dynamic>.from(json['billing_details'] as Map)),
+      $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$CreatePaymentMethodDataImplToJson(
-    _$CreatePaymentMethodDataImpl instance) {
+Map<String, dynamic> _$$CreatePaymentMethodDataCardImplToJson(
+    _$CreatePaymentMethodDataCardImpl instance) {
   final val = <String, dynamic>{
     'type': instance.type,
   };
@@ -64,6 +65,7 @@ Map<String, dynamic> _$$CreatePaymentMethodDataImplToJson(
   writeNotNull('sepa_debit[iban]', instance.sepaDebitIban);
   writeNotNull('upi[vpa]', instance.upiVpa);
   writeNotNull('billing_details', instance.billingDetails?.toJson());
+  val['runtimeType'] = instance.$type;
   return val;
 }
 
@@ -72,3 +74,25 @@ Json? _$JsonConverterToJson<Json, Value>(
   Json? Function(Value value) toJson,
 ) =>
     value == null ? null : toJson(value);
+
+_$CreatePaymentMethodDataElementsImpl
+    _$$CreatePaymentMethodDataElementsImplFromJson(Map json) =>
+        _$CreatePaymentMethodDataElementsImpl(
+          elements: const ElementsConverter().fromJson(json['elements']),
+          $type: json['runtimeType'] as String?,
+        );
+
+Map<String, dynamic> _$$CreatePaymentMethodDataElementsImplToJson(
+    _$CreatePaymentMethodDataElementsImpl instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('elements', const ElementsConverter().toJson(instance.elements));
+  val['runtimeType'] = instance.$type;
+  return val;
+}

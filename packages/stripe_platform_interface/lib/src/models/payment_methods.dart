@@ -515,6 +515,10 @@ class PaymentMethodParams with _$PaymentMethodParams {
     required PaymentMethodDataUsBank paymentMethodData,
   }) = _PaymentMethodParamsUsBankAccount;
 
+  @JsonSerializable(explicitToJson: true)
+  @FreezedUnionValue('Elements')
+  const factory PaymentMethodParams.elements() = _PaymentMethodParamsElements;
+
   // TODO uncomment and regenerate when we can re-enable wechat pay
   // @JsonSerializable(explicitToJson: true)
   // @FreezedUnionValue('WeChatPay')

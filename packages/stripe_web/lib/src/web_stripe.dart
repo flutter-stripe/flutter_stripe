@@ -87,6 +87,9 @@ class WebStripe extends StripePlatform {
       card: (data) {
         return _createCardPaymentMethod(data);
       },
+      elements: () {
+        return _createPaymentMethodWithElements();
+      },
       orElse: () {
         throw UnimplementedError();
       },
@@ -94,10 +97,26 @@ class WebStripe extends StripePlatform {
   }
 
   Future<PaymentMethod> _createCardPaymentMethod(PaymentMethodData data) async {
-    final params = stripe_js.CreatePaymentMethodData(
+    final params = stripe_js.CreatePaymentMethodData.card(
       type: 'card',
       card: element!,
       billingDetails: data.billingDetails?.toJs(),
+    );
+    try {
+      final response = await js.createPaymentMethod(params);
+      if (response.error != null) {
+        throw response.error!;
+      }
+      return response.paymentMethod!.parse();
+    } catch (e) {
+      dev.log('Error $e');
+      rethrow;
+    }
+  }
+
+  Future<PaymentMethod> _createPaymentMethodWithElements() async {
+    final params = stripe_js.CreatePaymentMethodData.elements(
+      elements: elements!,
     );
     try {
       final response = await js.createPaymentMethod(params);
@@ -435,24 +454,6 @@ class WebStripe extends StripePlatform {
   }
 
   Future<void> elementsSubmit() => elements!.submit();
-
-  @override
-  Future<PaymentMethod> createPaymentMethodWithElements() async {
-    try {
-      final response = await js.createPaymentMethodWithElements(
-        stripe_js.CreatePaymentMethodWithElementsData(elements: elements!),
-      );
-
-      if (response.error != null) {
-        throw response.error!;
-      }
-
-      return response.paymentMethod!.parse();
-    } catch (e) {
-      dev.log('Error $e');
-      rethrow;
-    }
-  }
 
   Future<void> confirmSetupElement(
     ConfirmSetupElementOptions options,

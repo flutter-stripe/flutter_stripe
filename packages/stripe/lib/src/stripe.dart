@@ -296,9 +296,6 @@ class Stripe {
     }
   }
 
-  Future<PaymentMethod> createPaymentMethodWithElements() =>
-      _platform.createPaymentMethodWithElements();
-
   Future<void> elementsSubmit() => _platform.elementsSubmit();
 
   Future<PaymentIntent> handleCardAction(
