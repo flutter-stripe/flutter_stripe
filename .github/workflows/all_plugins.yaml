@@ -111,7 +111,7 @@ jobs:
 
     - name: "Start iOS Simulator"
       run: |
-        xcrun simctl boot "iPhone 15" 
+        xcrun simctl boot "iPhone 16" 
 
     - name: "Run Flutter Driver tests on iOS"
       working-directory: example
@@ -167,6 +167,7 @@ jobs:
       with:
         api-level: 34
         arch: x86_64
+        emulator-boot-timeout: 1000
         working-directory: example
         script: | 
           sleep 15;
