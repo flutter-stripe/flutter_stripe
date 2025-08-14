@@ -85,6 +85,11 @@ jobs:
         node-version: 16
         cache: 'yarn'
         cache-dependency-path: example/server/yarn.lock
+
+    - uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
+
     - name: "Install Tools"
       run: |
         ./.github/workflows/scripts/install-tools.sh
@@ -167,7 +172,7 @@ jobs:
       with:
         api-level: 34
         arch: x86_64
-        emulator-boot-timeout: 1000
+        emulator-boot-timeout: 1400
         working-directory: example
         script: | 
           sleep 15;
