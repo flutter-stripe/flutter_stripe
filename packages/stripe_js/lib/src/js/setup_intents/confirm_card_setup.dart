@@ -25,9 +25,11 @@ extension ExtensionConfirmCardSetup on Stripe {
   }) {
     final jsData = (data?.toJson() ?? {}).jsify();
     final jsOptions = (options?.toJson() ?? {}).jsify();
-    return _confirmCardSetup(clientSecret, jsData, jsOptions)
-        .toDart
-        .then((response) => response.toDart);
+    return _confirmCardSetup(
+      clientSecret,
+      jsData,
+      jsOptions,
+    ).toDart.then((response) => response.toDart);
   }
 
   @JS('confirmCardSetup')

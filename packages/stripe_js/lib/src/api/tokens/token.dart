@@ -244,18 +244,10 @@ abstract class CardToken with _$CardToken {
       _$CardTokenFromJson(json);
 }
 
-enum BankAccountHolderType {
-  company,
-  individual,
-}
+enum BankAccountHolderType { company, individual }
 
 @JsonEnum(fieldRename: FieldRename.snake)
-enum TokenType {
-  account,
-  bankAccount,
-  card,
-  pii,
-}
+enum TokenType { account, bankAccount, card, pii }
 
 @JsonEnum(fieldRename: FieldRename.snake)
 enum BankAccountStatus {
@@ -267,27 +259,12 @@ enum BankAccountStatus {
   errored,
 }
 
-enum VerificationCheck {
-  pass,
-  fail,
-  unavailable,
-  unchecked,
-}
+enum VerificationCheck { pass, fail, unavailable, unchecked }
 
-enum CardFundingType {
-  credit,
-  debit,
-  prepaid,
-  unkwown,
-}
+enum CardFundingType { credit, debit, prepaid, unkwown }
 
 @JsonEnum(fieldRename: FieldRename.snake)
-enum CardTokenizationMethod {
-  androidPay,
-  applePay,
-  masterpass,
-  visaCheckout,
-}
+enum CardTokenizationMethod { androidPay, applePay, masterpass, visaCheckout }
 
 enum CardTokenBrand {
   @JsonValue('American Express')

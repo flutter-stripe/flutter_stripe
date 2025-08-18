@@ -314,6 +314,6 @@ abstract class PaymentIntentAutomaticPaymentMethods
   }) = _PaymentIntentAutomaticPaymentMethods;
 
   factory PaymentIntentAutomaticPaymentMethods.fromJson(
-          Map<String, dynamic> json) =>
-      _$PaymentIntentAutomaticPaymentMethodsFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$PaymentIntentAutomaticPaymentMethodsFromJson(json);
 }

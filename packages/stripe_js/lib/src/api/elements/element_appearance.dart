@@ -10,7 +10,6 @@ enum ElementTheme { stripe, night, flat, none }
 enum ElementAppearanceLabels { above, floating }
 
 @freezed
-
 /// Appareance options for the Payment Element and other elements.
 /// https://stripe.com/docs/elements/appearance-api
 abstract class ElementAppearance with _$ElementAppearance {

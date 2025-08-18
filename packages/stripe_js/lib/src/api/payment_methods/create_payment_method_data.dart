@@ -39,11 +39,9 @@ abstract class CreatePaymentMethodData with _$CreatePaymentMethodData {
     @JsonKey(name: "sepa_debit[iban]") String? sepaDebitIban,
 
     /// The customer's VPA.
-
     @JsonKey(name: "upi[vpa]") String? upiVpa,
 
     /// Billing information associated with the PaymentMethod that may be used or required by particular types of payment methods.
-
     @JsonKey(name: "billing_details") BillingDetails? billingDetails,
   }) = _CreatePaymentMethodData;
 

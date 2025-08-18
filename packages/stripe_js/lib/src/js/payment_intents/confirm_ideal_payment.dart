@@ -31,9 +31,11 @@ extension ExtensionIdealPayment on Stripe {
   }) {
     final jsData = (data?.toJson() ?? {}).jsify();
     final jsOptions = (options?.toJson() ?? {}).jsify();
-    return _confirmIdealPayment(clientSecret, jsData, jsOptions)
-        .toDart
-        .then((response) => response.toDart);
+    return _confirmIdealPayment(
+      clientSecret,
+      jsData,
+      jsOptions,
+    ).toDart.then((response) => response.toDart);
   }
 
   @JS('confirmIdealPayment')

@@ -2,7 +2,6 @@
 
 @TestOn('browser')
 @Tags(["browser"])
-
 import 'dart:async';
 
 import 'package:stripe_js/stripe_api.dart';
@@ -21,9 +20,7 @@ void main() {
       final stripe = Stripe(stripePublishableKey);
 
       elements = stripe.elements(
-        JsElementsCreateOptions(
-          clientSecret: setupInputClientSecret,
-        ),
+        JsElementsCreateOptions(clientSecret: setupInputClientSecret),
       );
     });
 
@@ -59,11 +56,9 @@ void main() {
       final card = elements.createPayment();
       card.mount(child);
       final completer = Completer();
-      card.onReady(
-        (event) {
-          completer.complete();
-        },
-      );
+      card.onReady((event) {
+        completer.complete();
+      });
       expect(completer.future, completes);
     });
 
@@ -74,11 +69,9 @@ void main() {
       card.mount(child);
 
       final onFocusCompleter = Completer();
-      card.onFocus(
-        (event) {
-          onFocusCompleter.complete();
-        },
-      );
+      card.onFocus((event) {
+        onFocusCompleter.complete();
+      });
       await card.waitForReady();
       card.focus();
       expect(onFocusCompleter.future, completes);
@@ -90,11 +83,9 @@ void main() {
       card.mount(child);
 
       final onBlurCompleter = Completer();
-      card.onFocus(
-        (event) {
-          onBlurCompleter.complete();
-        },
-      );
+      card.onFocus((event) {
+        onBlurCompleter.complete();
+      });
       await card.waitForReady();
       card.focus();
       card.blur();

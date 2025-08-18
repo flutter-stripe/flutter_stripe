@@ -7,7 +7,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 enum SetupIntentsStatus {
   /// When the SetupIntent is created, it has a status of
   /// requires_payment_method until a payment method is attached.
-
   requiresPaymentMethod,
 
   /// Optional
@@ -16,12 +15,10 @@ enum SetupIntentsStatus {
   /// In most integrations, this state is skipped because payment method
   /// information is submitted at the same time that the SetupIntent is
   /// confirmed.
-
   requiresConfirmation,
 
   /// If the payment requires additional actions, such as authenticating
   /// with 3D Secure, the SetupIntent has a status of requires_action.
-
   requiresAction,
 
   /// After required actions are handled, the SetupIntent moves to processing.

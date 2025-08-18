@@ -4,7 +4,8 @@ part 'payment_intent_shipping_information.freezed.dart';
 part 'payment_intent_shipping_information.g.dart';
 
 @freezed
-abstract class PaymentElementShippingDetails with _$PaymentElementShippingDetails {
+abstract class PaymentElementShippingDetails
+    with _$PaymentElementShippingDetails {
   const factory PaymentElementShippingDetails({
     /// The Elements instance that was used to create the Payment Element.
     //  @ElementsConverter() required Elements elements,

@@ -10,11 +10,7 @@ void main() {
           currency: 'USD',
           accountNumber: '000123456789',
         ).toJson(),
-        {
-          "country": "US",
-          "currency": "USD",
-          "account_number": "000123456789",
-        },
+        {"country": "US", "currency": "USD", "account_number": "000123456789"},
       );
     });
 

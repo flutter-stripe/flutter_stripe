@@ -14,11 +14,9 @@ abstract class ShippingDetails with _$ShippingDetails {
     String? carrier,
 
     /// Recipient name.
-
     String? name,
 
     /// Recipient phone (including extension).
-
     String? phone,
 
     /// The tracking number for a physical product, obtained from the

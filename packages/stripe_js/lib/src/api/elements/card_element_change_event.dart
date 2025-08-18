@@ -21,9 +21,8 @@ abstract class CardElementChangeEvent with _$CardElementChangeEvent {
 
 @freezed
 abstract class CardElementChangeEventValue with _$CardElementChangeEventValue {
-  const factory CardElementChangeEventValue({
-    required String? postalCode,
-  }) = _CardElementChangeEventValue;
+  const factory CardElementChangeEventValue({required String? postalCode}) =
+      _CardElementChangeEventValue;
 
   factory CardElementChangeEventValue.fromJson(Map<String, dynamic> json) =>
       _$CardElementChangeEventValueFromJson(json);

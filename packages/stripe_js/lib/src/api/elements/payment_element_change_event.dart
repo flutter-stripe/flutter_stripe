@@ -18,10 +18,10 @@ abstract class PaymentElementChangeEvent with _$PaymentElementChangeEvent {
 }
 
 @freezed
-abstract class PaymentElementChangeEventValue with _$PaymentElementChangeEventValue {
-  const factory PaymentElementChangeEventValue({
-    required String? type,
-  }) = _PaymentElementChangeEventValue;
+abstract class PaymentElementChangeEventValue
+    with _$PaymentElementChangeEventValue {
+  const factory PaymentElementChangeEventValue({required String? type}) =
+      _PaymentElementChangeEventValue;
 
   factory PaymentElementChangeEventValue.fromJson(Map<String, dynamic> json) =>
       _$PaymentElementChangeEventValueFromJson(json);

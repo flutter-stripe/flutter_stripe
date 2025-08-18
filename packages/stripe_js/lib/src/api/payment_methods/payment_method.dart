@@ -48,27 +48,21 @@ abstract class PaymentMethod with _$PaymentMethod {
     CardPaymentMethod? card,
 
     /// Containing additional data in case paymentmethod type is sepa.
-
     SepaDebit? sepaDebit,
 
     /// Containing additional data in case paymentmethod type is Bacs debit.
-
     BacsDebit? bacsDebit,
 
     /// Containing additional data in case paymentmethod type is Aubecs debit.
-
     AuBecsDebit? auBecsDebit,
 
     /// Containing additional data in case paymentmethod type is Ideal.
-
     Ideal? ideal,
 
     /// Containing additional data in case paymentmethod type is FPX.
-
     Fpx? fpx,
 
     /// Containing additional data in case paymentmethod type is UPI.
-
     Upi? upi,
     UsBankAccount? usBankAccount,
 
@@ -84,9 +78,7 @@ abstract class PaymentMethod with _$PaymentMethod {
 }
 
 @freezed
-
 /// AubecsDebit data associated with the payment method
-
 abstract class AuBecsDebit with _$AuBecsDebit {
   @JsonSerializable(explicitToJson: true)
   const factory AuBecsDebit({
@@ -105,7 +97,6 @@ abstract class AuBecsDebit with _$AuBecsDebit {
 }
 
 @freezed
-
 /// BacsDebit data associated with the payment method
 abstract class BacsDebit with _$BacsDebit {
   @JsonSerializable(explicitToJson: true)
@@ -114,7 +105,6 @@ abstract class BacsDebit with _$BacsDebit {
     String? sortCode,
 
     /// Unique identifier for the bankaccount.
-
     String? fingerprint,
 
     /// Last 4 digits of the bank account.
@@ -125,7 +115,6 @@ abstract class BacsDebit with _$BacsDebit {
 }
 
 @freezed
-
 /// Card data associated with the payment method
 abstract class CardPaymentMethod with _$CardPaymentMethod {
   @JsonSerializable(explicitToJson: true)
@@ -176,7 +165,6 @@ abstract class Fpx with _$Fpx {
 }
 
 @freezed
-
 /// Ideal data associated with the payment method
 abstract class Ideal with _$Ideal {
   @JsonSerializable(explicitToJson: true)
@@ -191,9 +179,7 @@ abstract class Ideal with _$Ideal {
 }
 
 @freezed
-
 /// SepaDebit data associated with the payment method
-
 abstract class SepaDebit with _$SepaDebit {
   @JsonSerializable(explicitToJson: true)
   const factory SepaDebit({
@@ -214,11 +200,8 @@ abstract class SepaDebit with _$SepaDebit {
       _$SepaDebitFromJson(json);
 }
 
-
 @freezed
-
 /// Upi data associated with the payment method.
-
 abstract class Upi with _$Upi {
   @JsonSerializable(explicitToJson: true)
   const factory Upi({
@@ -277,8 +260,4 @@ abstract class UsBankAccount with _$UsBankAccount {
       _$UsBankAccountFromJson(json);
 }
 
-enum UsBankAccountType {
-  Savings,
-  Checking,
-  Unknown,
-}
+enum UsBankAccountType { Savings, Checking, Unknown }

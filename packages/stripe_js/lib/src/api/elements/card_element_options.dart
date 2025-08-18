@@ -6,7 +6,7 @@ part 'card_element_options.g.dart';
 enum CardElementIconStyle {
   solid,
   @JsonKey(name: 'default')
-  defaultStyle
+  defaultStyle,
 }
 
 @freezed

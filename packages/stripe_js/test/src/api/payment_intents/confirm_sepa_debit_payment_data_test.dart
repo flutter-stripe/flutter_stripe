@@ -14,7 +14,9 @@ void main() {
           paymentMethod: SepaDebitPaymentMethodDetails(
             sepaDebit: fakeElement,
             billingDetails: SepaBillingDetails(
-                name: 'Jenny Rosen', email: 'jenny@example.com'),
+              name: 'Jenny Rosen',
+              email: 'jenny@example.com',
+            ),
           ),
         ).toJson(),
         {
@@ -25,7 +27,7 @@ void main() {
               "name": "Jenny Rosen",
               "email": 'jenny@example.com',
             },
-          }
+          },
         },
       );
     });
@@ -58,15 +60,12 @@ void main() {
               "name": "Jenny Rosen",
               "email": 'jenny@example.com',
             },
-          }
+          },
         },
       );
     });
     test('extra params parse correctly', () {
-      expect(
-        ConfirmSepaDebitPaymentData().toJson(),
-        {},
-      );
+      expect(ConfirmSepaDebitPaymentData().toJson(), {});
     });
   });
 }

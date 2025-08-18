@@ -4,10 +4,7 @@ import 'package:test/test.dart';
 void main() {
   group('ConfirmAlipayPaymentData', () {
     test('expected default value', () {
-      expect(
-        ConfirmAlipayPaymentData().toJson(),
-        {},
-      );
+      expect(ConfirmAlipayPaymentData().toJson(), {});
     });
 
     test('parses correctly', () {
@@ -16,10 +13,7 @@ void main() {
           paymentMethod: 'id',
           returnUrl: 'returnUrl',
         ).toJson(),
-        {
-          "payment_method": "id",
-          "return_url": "returnUrl",
-        },
+        {"payment_method": "id", "return_url": "returnUrl"},
       );
     });
   });

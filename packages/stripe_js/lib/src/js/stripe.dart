@@ -23,8 +23,11 @@ extension type Stripe.__(JSObject o) {
 }
 
 extension type StripeOptions._(JSObject o) implements JSObject {
-  external StripeOptions(
-      {String? stripeAccount, String? apiVersion, String locale});
+  external StripeOptions({
+    String? stripeAccount,
+    String? apiVersion,
+    String locale,
+  });
 
   external String? stripeAccount;
   external String? apiVersion;

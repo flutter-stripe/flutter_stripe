@@ -5,7 +5,6 @@ part 'express_checkout_element_options.freezed.dart';
 part 'express_checkout_element_options.g.dart';
 
 @freezed
-
 /// Options for the express checkout element
 abstract class ExpressCheckoutOptions with _$ExpressCheckoutOptions {
   factory ExpressCheckoutOptions({
@@ -30,7 +29,6 @@ abstract class ExpressCheckoutOptions with _$ExpressCheckoutOptions {
 }
 
 @freezed
-
 /// Confirm parameters from the express checkout element
 abstract class ExpressCheckoutConfirmEvent with _$ExpressCheckoutConfirmEvent {
   factory ExpressCheckoutConfirmEvent({
@@ -44,7 +42,6 @@ abstract class ExpressCheckoutConfirmEvent with _$ExpressCheckoutConfirmEvent {
 }
 
 @freezed
-
 /// Layout parameters of the express checkout element
 abstract class ExpressCheckoutLayout with _$ExpressCheckoutLayout {
   const factory ExpressCheckoutLayout({
@@ -58,7 +55,6 @@ abstract class ExpressCheckoutLayout with _$ExpressCheckoutLayout {
 }
 
 @freezed
-
 /// The theme of the express checkout button
 abstract class ExpressCheckoutButtonTheme with _$ExpressCheckoutButtonTheme {
   const factory ExpressCheckoutButtonTheme({
@@ -72,7 +68,6 @@ abstract class ExpressCheckoutButtonTheme with _$ExpressCheckoutButtonTheme {
 }
 
 @freezed
-
 /// Specify the preferred button type to display.
 abstract class ExpressCheckoutButtonType with _$ExpressCheckoutButtonType {
   const factory ExpressCheckoutButtonType({
@@ -86,9 +81,9 @@ abstract class ExpressCheckoutButtonType with _$ExpressCheckoutButtonType {
 }
 
 @freezed
-
 /// The layout of the express checkout button
-abstract class ExpressCheckoutPaymentMethods with _$ExpressCheckoutPaymentMethods {
+abstract class ExpressCheckoutPaymentMethods
+    with _$ExpressCheckoutPaymentMethods {
   const factory ExpressCheckoutPaymentMethods({
     ExpressPaymentNethodEnabled? applePay,
     ExpressPaymentNethodEnabled? googlePay,
@@ -128,7 +123,7 @@ enum ExpressApplePayButtonType {
   subscribe,
   support,
   tip,
-  topUp
+  topUp,
 }
 
 /// The type of google pay button to display
@@ -140,7 +135,7 @@ enum ExpressGooglePayButtonType {
   order,
   pay,
   plain,
-  subscribe
+  subscribe,
 }
 
 /// The type of paypal button to display
